@@ -1,3 +1,47 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans: 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
+
+	--color-canvas: #f9f7f4;
+	--color-surface: #ffffff;
+
+	--color-brand: #2a9d8f;
+	--color-brand-dark: #23867b;
+	--color-brand-soft: #e6f2f0;
+
+	--color-accent: #e9c46a;
+	--color-accent-soft: #fbf1da;
+
+	--color-ink: #1f2937;
+	--color-muted: #6b7280;
+	--color-line: #ece8e1;
+
+	--color-danger: #e76f51;
+	--color-danger-soft: #fdeae4;
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		background-color: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		line-height: 1.6;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-brand);
+		outline-offset: 2px;
+	}
+}
+
+@utility tabular {
+	font-variant-numeric: tabular-nums;
+}
