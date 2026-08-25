@@ -1,21 +1,24 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
+	import { EXAM_MINUTES } from '$lib/curriculum';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	let mod = $derived(data.mod);
 	let group = $derived(data.group);
+	let mod = $derived(data.mod);
+	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 </script>
 
 <AppBar title="מודול {mod.letter}" back="/unit/{group.id}" backLabel="חזרה לרשימת המודולים" />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	{#if mod.sections.length === 0}
-		<div
-			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
+	<div class="flex flex-col gap-4">
+		<a
+			href="{base}/lessons"
+			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
 			<span
-				class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-ink/60"
+				class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-ink/70"
 			>
 				<svg
 					viewBox="0 0 24 24"
@@ -24,47 +27,52 @@
 					stroke-width="2"
 					stroke-linecap="round"
 					stroke-linejoin="round"
-					class="h-7 w-7"
+					class="h-6 w-6"
 					aria-hidden="true"
 				>
-					<circle cx="12" cy="12" r="9" />
-					<path d="M12 8v4l2.5 2.5" />
+					<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+					<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
 				</svg>
 			</span>
-			<p class="mt-4 font-semibold">תוכן מודול {mod.letter} יתווסף בקרוב</p>
-		</div>
-	{:else}
-		<p class="mb-6 leading-relaxed text-muted">בחרו חלק כדי להתחיל לתרגל.</p>
-		<ul class="flex flex-col gap-4">
-			{#each mod.sections as section, i (section.id)}
-				<li>
-					<a
-						href="/unit/{group.id}/module/{mod.id}/section/{section.id}"
-						class="flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
-					>
-						<span
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-lg font-extrabold text-brand-dark"
-						>
-							{i + 1}
-						</span>
-						<span class="min-w-0 flex-1" dir="ltr">
-							<span class="block text-lg font-bold">{section.label}</span>
-						</span>
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="h-5 w-5 shrink-0 text-muted rtl:rotate-180"
-							aria-hidden="true"
-						>
-							<path d="m9 18 6-6-6-6" />
-						</svg>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	{/if}
+			<span class="min-w-0 flex-1">
+				<span class="block text-xl font-bold">שיעורים</span>
+				<span class="mt-1 block text-sm leading-relaxed text-muted">
+					מסע לימוד שלב אחר שלב לפי נושאים
+				</span>
+			</span>
+		</a>
+
+		<a
+			href="{base}/exam"
+			class="flex w-full items-start gap-4 rounded-3xl bg-brand p-5 text-right text-white shadow-md shadow-brand/25 transition duration-150 hover:bg-brand-dark active:scale-[0.99]"
+		>
+			<span
+				class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="h-6 w-6"
+					aria-hidden="true"
+				>
+					<path d="M15 3H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" />
+					<path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2" />
+					<path d="m9 14 2 2 4-4" />
+				</svg>
+			</span>
+			<span class="min-w-0 flex-1">
+				<span class="block text-xl font-bold">הבנה למבחן</span>
+				<span class="mt-1 block text-sm leading-relaxed text-white/85">
+					תרגול בתנאי בחינה · {EXAM_MINUTES} דקות
+					{#if mod.sections.length}
+						· <span dir="ltr">{mod.sections.map((s) => s.label).join(' · ')}</span>
+					{/if}
+				</span>
+			</span>
+		</a>
+	</div>
 </main>

@@ -40,14 +40,13 @@
 		<ul class="flex flex-col gap-4">
 			{#each moduleList as mod (mod.id)}
 				{@const placeholder = mod.sections.length === 0}
-				{@const single = mod.sections.length === 1}
 				<li>
 					{#if placeholder}
 						<div
 							class="flex items-center gap-4 rounded-3xl bg-surface p-5 opacity-60 ring-1 ring-line/70"
 						>
 							<span
-								class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-line/60 text-lg font-extrabold text-muted"
+								class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-line/60 text-sm font-extrabold text-muted"
 								dir="ltr"
 							>
 								{mod.letter}
@@ -69,14 +68,10 @@
 								{mod.letter}
 							</span>
 							<span class="min-w-0 flex-1">
-								{#if single}
-									<span class="block text-lg font-bold">
-										מודול {mod.letter} — {mod.sections[0].label}
-									</span>
-								{:else}
-									<span class="block text-lg font-bold">מודול {mod.letter}</span>
-									<span class="mt-1 block text-sm text-muted">{mod.sections.length} חלקים</span>
-								{/if}
+								<span class="block text-lg font-bold">מודול {mod.letter}</span>
+								<span class="mt-1 block text-sm text-muted" dir="ltr">
+									{mod.sections.map((s) => s.label).join(' · ')}
+								</span>
 							</span>
 							<svg
 								viewBox="0 0 24 24"

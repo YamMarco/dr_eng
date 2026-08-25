@@ -16,24 +16,20 @@ export type UnitGroup = {
 	moduleIds: string[];
 };
 
-const partReception: CurriculumSection = { id: 'part-1', label: 'PART I: WRITTEN RECEPTION' };
-const partProduction: CurriculumSection = { id: 'part-2', label: 'PART II: WRITTEN PRODUCTION' };
-const partLexical: CurriculumSection = { id: 'part-2', label: 'PART II: LEXICAL KNOWLEDGE' };
+const textSection: CurriculumSection = { id: 'text', label: 'טקסט' };
+const wordsSection: CurriculumSection = { id: 'words', label: 'מילים' };
+const writingSection: CurriculumSection = { id: 'writing', label: 'חיבור' };
 
 export const modules: Record<string, CurriculumModule> = {
-	a: { id: 'a', letter: 'A', sections: [] },
-	b: { id: 'b', letter: 'B', sections: [{ id: 'main', label: 'WRITTEN RECEPTION' }] },
-	c: { id: 'c', letter: 'C', sections: [partReception, partProduction] },
-	d: { id: 'd', letter: 'D', sections: [partReception, partProduction] },
-	e: { id: 'e', letter: 'E', sections: [partReception, partLexical] },
-	f: { id: 'f', letter: 'F', sections: [partReception, partProduction] },
-	g: { id: 'g', letter: 'G', sections: [partReception, partProduction] }
+	c: { id: 'c', letter: 'C', sections: [textSection, writingSection] },
+	e: { id: 'e', letter: 'E', sections: [textSection, wordsSection] },
+	g: { id: 'g', letter: 'G', sections: [textSection, writingSection] },
+	cobe: { id: 'cobe', letter: 'COBE', sections: [] }
 };
 
 export const unitGroups: UnitGroup[] = [
-	{ id: '3', units: 3, moduleIds: ['a', 'b', 'c'] },
-	{ id: '4', units: 4, moduleIds: ['c', 'd', 'e'] },
-	{ id: '5', units: 5, moduleIds: ['e', 'f', 'g'] }
+	{ id: '4', units: 4, moduleIds: ['c', 'e', 'cobe'] },
+	{ id: '5', units: 5, moduleIds: ['e', 'g', 'cobe'] }
 ];
 
 export function getUnitGroup(id: string): UnitGroup | undefined {
@@ -42,13 +38,6 @@ export function getUnitGroup(id: string): UnitGroup | undefined {
 
 export function getModule(id: string): CurriculumModule | undefined {
 	return modules[id.toLowerCase()];
-}
-
-export function getSection(
-	mod: CurriculumModule,
-	sectionId: string
-): CurriculumSection | undefined {
-	return mod.sections.find((section) => section.id === sectionId);
 }
 
 export const EXAM_MINUTES = 30;
