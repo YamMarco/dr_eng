@@ -8,7 +8,10 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	let mod = $derived(data.module);
+	let group = $derived(data.group);
+	let mod = $derived(data.mod);
+	let section = $derived(data.section);
+	let base = $derived(`/unit/${group.id}/module/${mod.id}/section/${section.id}`);
 
 	const parts = [
 		{ id: 1, label: 'I', title: 'חלק I', subtitle: 'הבנת הנקרא ואוצר מילים' },
@@ -22,12 +25,12 @@
 
 	// Someone landing here without starting the exam goes back to the start screen.
 	$effect(() => {
-		if (!exam.running && !exam.finished) goto(`/module/${mod.id}/exam`, { replaceState: true });
+		if (!exam.running && !exam.finished) goto(`${base}/exam`, { replaceState: true });
 	});
 
 	async function leave() {
 		// Navigate first: resetting while still mounted would trip the guard effect above.
-		await goto(`/module/${mod.id}`);
+		await goto(base);
 		exam.reset();
 	}
 </script>

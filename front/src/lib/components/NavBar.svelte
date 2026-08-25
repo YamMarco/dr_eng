@@ -5,7 +5,7 @@
 		{
 			href: '/',
 			label: 'בית',
-			match: (path: string) => path === '/' || path.startsWith('/module'),
+			match: (path: string) => path === '/' || path.startsWith('/unit'),
 			icon: 'home'
 		},
 		{

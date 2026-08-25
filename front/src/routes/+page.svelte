@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { modules } from '$lib/modules';
+	import { modules, unitGroups } from '$lib/curriculum';
+
+	function letters(moduleIds: string[]) {
+		return moduleIds.map((id) => modules[id].letter.toUpperCase()).join(' · ');
+	}
 </script>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-10 pb-12 sm:pt-14">
@@ -24,36 +28,33 @@
 			בגרות באנגלית
 		</span>
 
-		<h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">בחרו מודול</h1>
-		<p class="mt-2 leading-relaxed text-muted">
-			כל מודול כולל תרגול שאלות ומבחן מלא בתנאי בחינה אמיתיים.
-		</p>
+		<h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">בחרו יחידות לימוד</h1>
+		<p class="mt-2 leading-relaxed text-muted">כל רמת יחידות כוללת מספר מודולים לתרגול.</p>
 	</div>
 
 	<ul class="flex flex-col gap-4">
-		{#each modules as mod (mod.id)}
+		{#each unitGroups as group (group.id)}
 			<li>
 				<a
-					href="/module/{mod.id}"
+					href="/unit/{group.id}"
 					class="group flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 				>
 					<span
 						class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-2xl font-extrabold text-brand-dark"
 						dir="ltr"
 					>
-						{mod.letter}
+						{group.units}
 					</span>
 
 					<span class="min-w-0 flex-1">
-						<span class="flex flex-wrap items-center gap-2">
-							<span class="text-xl font-bold">{mod.title}</span>
-							<span
-								class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-ink/70"
-							>
-								{mod.units}
-							</span>
+						<span class="text-xl font-bold">{group.units} יח"ל</span>
+						<span class="mt-1 block text-sm leading-relaxed text-muted" dir="ltr">
+							{#if group.moduleIds.length}
+								{letters(group.moduleIds)}
+							{:else}
+								בקרוב
+							{/if}
 						</span>
-						<span class="mt-1 block text-sm leading-relaxed text-muted">{mod.description}</span>
 					</span>
 
 					<svg

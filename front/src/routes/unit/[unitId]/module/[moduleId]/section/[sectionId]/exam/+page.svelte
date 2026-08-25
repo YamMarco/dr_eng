@@ -4,11 +4,14 @@
 	import Button from '$lib/components/Button.svelte';
 	import Timer from '$lib/components/Timer.svelte';
 	import { EXAM_SECONDS, exam } from '$lib/exam.svelte';
-	import { EXAM_MINUTES } from '$lib/modules';
+	import { EXAM_MINUTES } from '$lib/curriculum';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	let mod = $derived(data.module);
+	let group = $derived(data.group);
+	let mod = $derived(data.mod);
+	let section = $derived(data.section);
+	let base = $derived(`/unit/${group.id}/module/${mod.id}/section/${section.id}`);
 
 	const parts = [
 		{ label: 'חלק I', description: 'הבנת הנקרא ואוצר מילים' },
@@ -16,12 +19,12 @@
 	];
 
 	function startExam() {
-		exam.start(mod.id);
-		goto(`/module/${mod.id}/exam/run`);
+		exam.start(`${mod.id}-${section.id}`);
+		goto(`${base}/exam/run`);
 	}
 </script>
 
-<AppBar title="מבחן — {mod.title}" back="/module/{mod.id}" />
+<AppBar title="מבחן — מודול {mod.letter}" back={base} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<div class="rounded-3xl bg-surface p-6 text-center shadow-md ring-1 shadow-ink/5 ring-line/70">
@@ -56,6 +59,6 @@
 
 	<div class="mt-8 flex flex-col gap-3">
 		<Button onclick={startExam}>התחלה</Button>
-		<Button variant="secondary" href="/module/{mod.id}">חזרה</Button>
+		<Button variant="secondary" href={base}>חזרה</Button>
 	</div>
 </main>

@@ -4,10 +4,13 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	let mod = $derived(data.module);
+	let group = $derived(data.group);
+	let mod = $derived(data.mod);
+	let section = $derived(data.section);
+	let base = $derived(`/unit/${group.id}/module/${mod.id}/section/${section.id}`);
 </script>
 
-<AppBar title="מילים — {mod.title}" back="/module/{mod.id}/questions" />
+<AppBar title="מילים — מודול {mod.letter}" back="{base}/questions" />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<p class="mb-6 leading-relaxed text-muted">בחרו סט תרגילים להשלמת מילים.</p>
@@ -16,7 +19,7 @@
 		{#each wordSets as set, i (set.id)}
 			<li>
 				<a
-					href="/module/{mod.id}/questions/words/{set.id}"
+					href="{base}/questions/words/{set.id}"
 					class="flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 				>
 					<span

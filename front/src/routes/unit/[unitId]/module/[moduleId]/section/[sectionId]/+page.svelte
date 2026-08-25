@@ -1,20 +1,27 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
-	import { EXAM_MINUTES } from '$lib/modules';
+	import { EXAM_MINUTES } from '$lib/curriculum';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	let mod = $derived(data.module);
+	let group = $derived(data.group);
+	let mod = $derived(data.mod);
+	let section = $derived(data.section);
+
+	let base = $derived(`/unit/${group.id}/module/${mod.id}/section/${section.id}`);
+	let backHref = $derived(
+		mod.sections.length === 1 ? `/unit/${group.id}` : `/unit/${group.id}/module/${mod.id}`
+	);
 </script>
 
-<AppBar title={mod.title} back="/" backLabel="חזרה לבחירת מודול" />
+<AppBar title="מודול {mod.letter}" back={backHref} backLabel="חזרה" />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	<p class="mb-6 leading-relaxed text-muted">{mod.description}</p>
+	<p class="mb-6 leading-relaxed text-muted" dir="ltr">{section.label}</p>
 
 	<div class="flex flex-col gap-4">
 		<a
-			href="/module/{mod.id}/questions"
+			href="{base}/questions"
 			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
 			<span
@@ -44,7 +51,7 @@
 		</a>
 
 		<a
-			href="/module/{mod.id}/exam"
+			href="{base}/exam"
 			class="flex w-full items-start gap-4 rounded-3xl bg-brand p-5 text-right text-white shadow-md shadow-brand/25 transition duration-150 hover:bg-brand-dark active:scale-[0.99]"
 		>
 			<span

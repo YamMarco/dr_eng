@@ -1,4 +1,4 @@
-import { EXAM_MINUTES } from './modules';
+import { EXAM_MINUTES } from './curriculum';
 
 export const EXAM_SECONDS = EXAM_MINUTES * 60;
 
