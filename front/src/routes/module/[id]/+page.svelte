@@ -1,14 +1,10 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
-	import Button from '$lib/components/Button.svelte';
-	import Sheet from '$lib/components/Sheet.svelte';
 	import { EXAM_MINUTES } from '$lib/modules';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let mod = $derived(data.module);
-
-	let showQuestionsPrompt = $state(false);
 </script>
 
 <AppBar title={mod.title} back="/" backLabel="חזרה לבחירת מודול" />
@@ -17,9 +13,8 @@
 	<p class="mb-6 leading-relaxed text-muted">{mod.description}</p>
 
 	<div class="flex flex-col gap-4">
-		<button
-			type="button"
-			onclick={() => (showQuestionsPrompt = true)}
+		<a
+			href="/module/{mod.id}/questions"
 			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-ink/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
 			<span
@@ -46,7 +41,7 @@
 					תרגול שאלות בודדות, ללא הגבלת זמן
 				</span>
 			</span>
-		</button>
+		</a>
 
 		<a
 			href="/module/{mod.id}/exam"
@@ -79,12 +74,3 @@
 		</a>
 	</div>
 </main>
-
-<Sheet
-	bind:open={showQuestionsPrompt}
-	title="תרגול שאלות עדיין לא זמין"
-	description="בינתיים אפשר לתרגל דרך המבחן המלא, שכולל את כל סוגי השאלות של המודול."
->
-	<Button href="/module/{mod.id}/exam">מעבר למבחן</Button>
-	<Button variant="ghost" onclick={() => (showQuestionsPrompt = false)}>לא עכשיו</Button>
-</Sheet>
