@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 335 nodes · 375 edges · 34 communities (20 shown, 14 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.9)
+- 331 nodes · 370 edges · 34 communities (20 shown, 14 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cc715b89`
+- Built from commit: `433bbd1f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,12 +99,12 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, lucide, name, private, scripts, build (+10 more)
 
 ### Community 4 - "index.svelte.ts"
-Cohesion: 0.12
+Cohesion: 0.10
 Nodes (7): dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he
 
 ### Community 5 - "curriculum.ts"
-Cohesion: 0.10
-Nodes (17): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+9 more)
+Cohesion: 0.11
+Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
 
 ### Community 6 - "$effect Rune"
 Cohesion: 0.12
@@ -115,7 +115,7 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "lessons.ts"
-Cohesion: 0.31
+Cohesion: 0.36
 Nodes (6): getLesson(), getLessons(), Lesson, lessonsByModule, moduleCLessons, load()
 
 ### Community 9 - "compilerOptions"
@@ -151,11 +151,11 @@ Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
 
 ### Community 33 - "types.ts"
-Cohesion: 0.07
-Nodes (20): screenComponents, KEY, LessonSession, LessonScreen, MarkWordScreen, McqScreen, PrefaceScreen, QuestionPreviewScreen (+12 more)
+Cohesion: 0.08
+Nodes (19): screenComponents, KEY, LessonSession, LessonScreen, MarkWordScreen, McqScreen, PrefaceScreen, QuestionPreviewScreen (+11 more)
 
 ## Knowledge Gaps
-- **161 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `Language` (+156 more)
+- **161 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `LessonSession` (+156 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
