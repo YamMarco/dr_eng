@@ -31,5 +31,6 @@
   "29": "graphify reference: transcribe video and audio",
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
-  "32": "extraction-spec.md"
+  "32": "extraction-spec.md",
+  "33": "types.ts"
 }

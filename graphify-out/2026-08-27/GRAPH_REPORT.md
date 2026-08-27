@@ -1,16 +1,16 @@
-# Graph Report - dr_eng  (2026-08-25)
+# Graph Report - dr_eng  (2026-08-27)
 
 ## Corpus Check
-- 59 files · ~21,967 words
+- 62 files · ~22,894 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 285 nodes · 287 edges · 33 communities (19 shown, 14 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.9)
+- 302 nodes · 323 edges · 33 communities (19 shown, 14 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9295bc99`
+- Built from commit: `89648101`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - Svelte MCP Server (Project Config)
 - Snippet Blocks ({#snippet})
 - scripts
-- exam.svelte.ts
+- index.svelte.ts
 - curriculum.ts
 - $effect Rune
 - What You Must Do When Invoked
@@ -27,6 +27,7 @@
 - compilerOptions
 - Bagrut English Prep App (Mission)
 - graphify reference: extra exports and benchmark
+- ExamSession
 - eslint.config.js
 - Keyed Each Blocks
 - prettier.config.js
@@ -96,13 +97,13 @@ Nodes (19): Await Expressions, experimental.async Config Option, fork() API (Pre
 Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, lucide, name, private, scripts, build (+10 more)
 
-### Community 4 - "exam.svelte.ts"
-Cohesion: 0.13
-Nodes (7): EXAM_MINUTES, exam, EXAM_SECONDS, ExamSession, WARNING_SECONDS, ./$types, ./$types
+### Community 4 - "index.svelte.ts"
+Cohesion: 0.07
+Nodes (13): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS, dictionaries, I18n, Language, ar (+5 more)
 
 ### Community 5 - "curriculum.ts"
-Cohesion: 0.09
-Nodes (15): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+7 more)
+Cohesion: 0.13
+Nodes (14): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+6 more)
 
 ### Community 6 - "$effect Rune"
 Cohesion: 0.12
@@ -144,8 +145,12 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
+### Community 30 - "CLAUDE.md"
+Cohesion: 0.40
+Nodes (4): graphify, mission, persona, skills
+
 ## Knowledge Gaps
-- **139 isolated node(s):** `graphify`, `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)`, `Step 1 - Ensure graphify is installed` (+134 more)
+- **143 isolated node(s):** `mission`, `persona`, `graphify`, `Language`, `dictionaries` (+138 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -153,9 +158,11 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
-- **What connects `graphify`, `Usage`, `What graphify is for` to the rest of the system?**
-  _139 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **Why does `ExamSession` connect `ExamSession` to `index.svelte.ts`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **What connects `mission`, `persona`, `graphify` to the rest of the system?**
+  _143 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**
@@ -164,5 +171,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `exam.svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected._
