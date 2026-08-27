@@ -59,8 +59,7 @@
 					role="tab"
 					aria-selected={activeTab === i}
 					onclick={() => (activeTab = i)}
-					class="min-h-[44px] flex-1 rounded-xl px-3 text-base font-semibold transition {activeTab ===
-					i
+					class="min-h-11 flex-1 rounded-xl px-3 text-base font-semibold transition {activeTab === i
 						? 'bg-surface text-brand-dark shadow-sm'
 						: 'text-muted hover:text-ink'}"
 					dir="ltr"
