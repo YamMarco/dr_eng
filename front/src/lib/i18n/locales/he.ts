@@ -39,7 +39,16 @@ export const he = {
 	lesson: {
 		titlePrefix: 'שיעור',
 		placeholderTitle: 'תוכן השיעור יתווסף בקרוב',
-		placeholderDesc: 'זוהי גרסת הדגמה של רשימת השיעורים.'
+		placeholderDesc: 'זוהי גרסת הדגמה של רשימת השיעורים.',
+		pathIntro: 'עברו על החלקים לפי הסדר.',
+		partLabel: (n: number) => `חלק ${n}`,
+		partLocked: 'החלק הזה ייפתח בקרוב',
+		exitLabel: 'יציאה מהחלק',
+		continueButton: 'המשך',
+		doneButton: 'סיום',
+		completeTitle: 'כל הכבוד!',
+		completeDesc: 'סיימת את החלק הזה.',
+		backToPath: 'חזרה למסלול'
 	},
 	examStart: {
 		titlePrefix: 'הבנה למבחן — מודול',
@@ -96,3 +105,8 @@ export const he = {
 };
 
 export type Dictionary = typeof he;
+
+/** Same shape as Dictionary, but every section's keys are optional. */
+export type DictionaryOverride = {
+	[K in keyof Dictionary]?: Dictionary[K] extends object ? Partial<Dictionary[K]> : Dictionary[K];
+};

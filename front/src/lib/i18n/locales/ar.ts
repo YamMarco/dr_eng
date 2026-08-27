@@ -1,6 +1,9 @@
-import type { Dictionary } from './he';
+import type { DictionaryOverride } from './he';
 
-export const ar: Dictionary = {
+// Partial on purpose: Hebrew is the source of truth. New keys only need to be
+// added here when someone asks for Arabic copy — until then they fall back
+// to the Hebrew string (see mergeDictionary in ../index.svelte.ts).
+export const ar: DictionaryOverride = {
 	common: {
 		back: 'رجوع',
 		close: 'إغلاق',

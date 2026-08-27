@@ -1,16 +1,16 @@
-# Graph Report - dr_eng  (2026-08-25)
+# Graph Report - dr_eng  (2026-08-27)
 
 ## Corpus Check
-- 59 files · ~21,967 words
+- 76 files · ~26,095 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 285 nodes · 287 edges · 33 communities (19 shown, 14 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.9)
+- 335 nodes · 375 edges · 34 communities (20 shown, 14 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9295bc99`
+- Built from commit: `cc715b89`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - Svelte MCP Server (Project Config)
 - Snippet Blocks ({#snippet})
 - scripts
-- exam.svelte.ts
+- index.svelte.ts
 - curriculum.ts
 - $effect Rune
 - What You Must Do When Invoked
@@ -27,6 +27,7 @@
 - compilerOptions
 - Bagrut English Prep App (Mission)
 - graphify reference: extra exports and benchmark
+- ExamSession
 - eslint.config.js
 - Keyed Each Blocks
 - prettier.config.js
@@ -45,6 +46,7 @@
 - CLAUDE.md
 - .claude/CLAUDE.md
 - extraction-spec.md
+- types.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `What You Must Do When Invoked` - 12 edges
@@ -78,7 +80,7 @@
 - **Svelte 5 Runes & Reactivity Best Practices Guidance** — front_github_skills_svelte_core_bestpractices_skill_svelte_core_bestpractices, front_github_skills_svelte_core_bestpractices_references_attach_attachments, front_github_skills_svelte_core_bestpractices_references_bind_function_bindings, front_github_skills_svelte_core_bestpractices_references_each_keyed_each_blocks, front_github_skills_svelte_core_bestpractices_references_hydratable_hydratable, front_github_skills_svelte_core_bestpractices_references_inspect_inspect, front_github_skills_svelte_core_bestpractices_references_render_render_tag, front_github_skills_svelte_core_bestpractices_references_snippet_snippets, front_github_skills_svelte_core_bestpractices_references_svelte_reactivity_createsubscriber [INFERRED 0.85]
 - **Svelte MCP Tool Trio (list-sections, get-documentation, svelte-autofixer)** — front_github_agents_svelte_file_editor_agent_list_sections, front_github_agents_svelte_file_editor_agent_get_documentation, front_github_agents_svelte_file_editor_agent_svelte_autofixer, front_agents_list_sections, front_agents_get_documentation, front_agents_svelte_autofixer, front_github_skills_svelte_code_writer_skill_list_sections, front_github_skills_svelte_code_writer_skill_get_documentation, front_github_skills_svelte_code_writer_skill_svelte_autofixer [INFERRED 0.85]
 
-## Communities (33 total, 14 thin omitted)
+## Communities (34 total, 14 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -96,13 +98,13 @@ Nodes (19): Await Expressions, experimental.async Config Option, fork() API (Pre
 Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, lucide, name, private, scripts, build (+10 more)
 
-### Community 4 - "exam.svelte.ts"
-Cohesion: 0.13
-Nodes (7): EXAM_MINUTES, exam, EXAM_SECONDS, ExamSession, WARNING_SECONDS, ./$types, ./$types
+### Community 4 - "index.svelte.ts"
+Cohesion: 0.12
+Nodes (7): dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he
 
 ### Community 5 - "curriculum.ts"
-Cohesion: 0.09
-Nodes (15): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+7 more)
+Cohesion: 0.10
+Nodes (17): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+9 more)
 
 ### Community 6 - "$effect Rune"
 Cohesion: 0.12
@@ -113,8 +115,8 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "lessons.ts"
-Cohesion: 0.27
-Nodes (7): getLesson(), getLessons(), Lesson, lessonsByModule, moduleCLessons, load(), ./$types
+Cohesion: 0.31
+Nodes (6): getLesson(), getLessons(), Lesson, lessonsByModule, moduleCLessons, load()
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.14
@@ -144,8 +146,16 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
+### Community 30 - "CLAUDE.md"
+Cohesion: 0.33
+Nodes (5): graphify, mission, persona, skills, workflow
+
+### Community 33 - "types.ts"
+Cohesion: 0.07
+Nodes (20): screenComponents, KEY, LessonSession, LessonScreen, MarkWordScreen, McqScreen, PrefaceScreen, QuestionPreviewScreen (+12 more)
+
 ## Knowledge Gaps
-- **139 isolated node(s):** `graphify`, `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)`, `Step 1 - Ensure graphify is installed` (+134 more)
+- **161 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `Language` (+156 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -153,9 +163,11 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
-- **What connects `graphify`, `Usage`, `What graphify is for` to the rest of the system?**
-  _139 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+- **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **What connects `mission`, `workflow`, `persona` to the rest of the system?**
+  _161 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**
@@ -164,5 +176,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `exam.svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected._
