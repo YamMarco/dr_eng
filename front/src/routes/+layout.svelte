@@ -2,8 +2,10 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import NavBar from '$lib/components/NavBar.svelte';
+	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
 	import { page } from '$app/state';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { debugStore } from '$lib/debug.svelte';
 
 	let { children } = $props();
 
@@ -32,3 +34,7 @@
 		<NavBar />
 	{/if}
 </div>
+
+{#if debugStore.enabled}
+	<DebugTooltip />
+{/if}

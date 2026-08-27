@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { TimedReadingScreen } from './types';
 	import { getLessonSession } from './session.svelte';
+	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	// disabled is write-only here: always allowed, we just need it declared
 	// bindable so the runner's footer resets correctly on every screen.
@@ -23,6 +25,7 @@
 	});
 </script>
 
+<ExerciseKindBadge label={i18n.dict.exerciseKind.timedReading} />
 <div class="flex items-center justify-between">
 	<span class="font-semibold text-muted">{screen.label}</span>
 	<span

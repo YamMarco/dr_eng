@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { MarkWordScreen } from './types';
+	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	// disabled is written but never read locally — the runner reads it
 	// through the bindable prop.
@@ -17,6 +19,7 @@
 	}
 </script>
 
+<ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
 <div class="flex flex-wrap gap-2" dir={screen.dir ?? 'ltr'}>
 	{#each words as word, i (i)}
 		{@const isCorrect = i === screen.correctWordIndex}

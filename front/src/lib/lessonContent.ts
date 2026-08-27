@@ -44,30 +44,12 @@ const moduleCLesson1: LessonContent = {
 			screens: [
 				{
 					type: 'preface',
-					text: 'רוב התלמידים קוראים קודם את הטקסט ואז את השאלות — ואז קוראים את הטקסט שוב, ושוב. מתעייפים, מתייאשים, ומרגישים "אני לא טוב באנגלית". אבל הבעיה לא בהם — בסדר העבודה. מהיום עובדים הפוך, כמו בלש שיודע מה הוא מחפש לפני שהוא נכנס לחדר:'
+					text: 'רוב התלמידים קוראים קודם את הטקסט ואז את השאלות — ואז קוראים את הטקסט שוב, ושוב. מתעייפים, מתייאשים, ומרגישים "אני לא טוב באנגלית". אבל הבעיה לא בהם — בסדר העבודה. מהיום עובדים הפוך, כמו בלש שיודע מה הוא מחפש לפני שהוא נכנס לחדר:\n\nצעד 1: קרא את כל השאלות לפני הטקסט. עכשיו אתה יודע בדיוק מה מחפשים — הקריאה הופכת מחיפוש באפלה לחיפוש עם פנס. בואו תרגישו את זה בעצמכם.'
 				},
-				{
-					type: 'steps',
-					steps: [
-						'צעד 1: קרא את כל השאלות לפני הטקסט. עכשיו אתה יודע בדיוק מה מחפשים — הקריאה הופכת מחיפוש באפלה לחיפוש עם פנס.',
-						'צעד 2: סמן בכל שאלה את מילת השאלה: Who = אדם · What = דבר או פעולה · When = זמן · Where = מקום · Why = סיבה (חפש because) · How = איך.',
-						'צעד 3: קרא את הטקסט פעם אחת בלבד — וכשאתה פוגש תשובה, ענה מיד. לא לחכות לסוף.'
-					]
-				},
-				{
-					type: 'summary',
-					title: '🗂 כרטיס שיטה 1 — שאלות קודם',
-					lines: [
-						'קרא שאלות ← סמן מילת שאלה ← רק אז קרא את הטקסט',
-						'Who=מי · What=מה · When=מתי · Where=איפה · Why=למה (because!) · How=איך',
-						'פגשת תשובה תוך כדי קריאה? ענה מיד'
-					]
-				},
-				// The exercise for this step: feel the difference yourself, on two
-				// short (non-English) texts, once in each reading order.
+				// Transition into the exercise, right before it starts.
 				{
 					type: 'preface',
-					text: 'עכשיו נבדוק את זה בעצמכם. שני טקסטים קצרים, לא באנגלית — פעם אחת תקראו טקסט ואז שאלות, ופעם שנייה תקראו שאלות ואז טקסט. שימו לב להבדל בתחושה.'
+					text: 'מעולה! עכשיו ננסה את זה על אמת — יהיו לנו טקסט ושאלות, פעם בסדר אחד ופעם בסדר הפוך.'
 				},
 				{
 					type: 'timed-reading',
@@ -88,6 +70,13 @@ const moduleCLesson1: LessonContent = {
 					correctIndex: 1
 				},
 				{ type: 'time-result', label: 'סיימתם את סיבוב 1!', timerKey: 'roundA' },
+				// Step 3, right before the round that practices it: now that
+				// you know what you're looking for, read once and answer the
+				// moment you meet the answer.
+				{
+					type: 'preface',
+					text: 'צעד 3: קרא את הטקסט פעם אחת בלבד — וכשאתה פוגש תשובה, ענה מיד. לא לחכות לסוף. הפעם תדעו כבר מה מחפשים, אז ננסה את זה:'
+				},
 				{
 					type: 'question-preview',
 					intro: 'קראו את השאלות הבאות לפני הטקסט, ושימו לב מה לחפש:',
@@ -121,16 +110,11 @@ const moduleCLesson1: LessonContent = {
 					fasterMessage: 'הרגשתם? כשידעתם מה לחפש, קראתם מהר ובטוח יותר.',
 					tieMessage:
 						'גם אם הפעם הזמן דומה — בטקסט ארוך ואמיתי ההבדל הרבה יותר משמעותי. קודם שאלות, תמיד.'
-				}
-			]
-		},
-		{
-			id: 'mark-question-words',
-			titleHe: 'זיהוי מילות שאלה במשפט',
-			screens: [
+				},
+				// Step 2, right before the exercise that practices it.
 				{
 					type: 'preface',
-					text: 'עכשיו נסמן ביחד. בכל משפט, הקישו על המילה שהיא מילת השאלה — זו המילה שאומרת לכם מה לחפש. נתחיל בעברית כדי לוודא שהרעיון ברור, ואז נעבור לאנגלית.'
+					text: 'צעד 2: סמן בכל שאלה את מילת השאלה: Who = אדם · What = דבר או פעולה · When = זמן · Where = מקום · Why = סיבה (חפש because) · How = איך. עכשיו נסמן ביחד. בכל משפט, הקישו על המילה שהיא מילת השאלה. נתחיל בעברית כדי לוודא שהרעיון ברור, ואז נעבור לאנגלית.'
 				},
 				{ type: 'mark-word', sentence: 'מי הלך אתמול לבית הספר?', correctWordIndex: 0, dir: 'rtl' },
 				{
@@ -152,12 +136,21 @@ const moduleCLesson1: LessonContent = {
 					correctWordIndex: 0,
 					dir: 'ltr'
 				},
-				{ type: 'mark-word', sentence: 'What made her laugh?', correctWordIndex: 0, dir: 'ltr' }
+				{ type: 'mark-word', sentence: 'What made her laugh?', correctWordIndex: 0, dir: 'ltr' },
+				{
+					type: 'summary',
+					title: '🗂 כרטיס שיטה 1 — שאלות קודם',
+					lines: [
+						'קרא שאלות ← סמן מילת שאלה ← רק אז קרא את הטקסט',
+						'Who=מי · What=מה · When=מתי · Where=איפה · Why=למה (because!) · How=איך',
+						'פגשת תשובה תוך כדי קריאה? ענה מיד'
+					]
+				}
 			]
 		},
 		// Placeholder: sub-lesson not written yet. Shows up on the path
 		// lowlighted and non-clickable.
-		{ id: 'coming-soon-3', titleHe: 'בקרוב', screens: [] }
+		{ id: 'coming-soon-2', titleHe: 'בקרוב', screens: [] }
 	]
 };
 

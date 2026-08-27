@@ -50,6 +50,13 @@ export const he = {
 		completeDesc: 'סיימת את החלק הזה.',
 		backToPath: 'חזרה למסלול'
 	},
+	// Shown as a small badge before each exercise screen, so the student
+	// knows what they're about to do before it starts.
+	exerciseKind: {
+		mcq: 'שאלה',
+		markWord: 'תרגיל: סמנו מילה',
+		timedReading: 'תרגיל מתוזמן: קריאה'
+	},
 	examStart: {
 		titlePrefix: 'הבנה למבחן — מודול',
 		durationLabel: 'משך התרגול',
@@ -91,6 +98,9 @@ export const he = {
 		dailyRemindersDesc: 'התראה לתרגול יומי',
 		showHints: 'רמזים בתרגילים',
 		showHintsDesc: 'הצגת רמז לפני בדיקת תשובה',
+		developerSection: 'מפתחים',
+		debugTools: 'כלי דיבוג',
+		debugToolsDesc: 'הצגת כפתור דיבוג צף בכל האפליקציה',
 		aboutSection: 'אודות',
 		version: 'גרסה',
 		versionValue: '0.1.0 (הדגמה מקומית)',

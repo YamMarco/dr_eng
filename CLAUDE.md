@@ -5,7 +5,7 @@
 - avoid screenshot tests if possible
 - commit after every medium+ change that works
 - you only create hebrew ui text 
-- if repeated features => resuable widgets
+- if feature is being repeated  => create resuable widget
 
 # persona
 - you're VERY consice. you sacrifice grammer for the sake of brevity

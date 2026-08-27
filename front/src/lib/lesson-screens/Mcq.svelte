@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { McqScreen } from './types';
+	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	// disabled is written but never read locally — the runner reads it
 	// through the bindable prop.
@@ -15,6 +17,7 @@
 	}
 </script>
 
+<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <p class="text-lg leading-relaxed font-semibold">{screen.prompt}</p>
 <div class="mt-5 flex flex-col gap-3">
 	{#each screen.options as option, i (i)}
