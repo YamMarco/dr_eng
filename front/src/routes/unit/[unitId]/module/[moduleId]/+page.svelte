@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { EXAM_MINUTES } from '$lib/curriculum';
+	import { i18n } from '$lib/i18n/index.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -9,7 +10,11 @@
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 </script>
 
-<AppBar title="מודול {mod.letter}" back="/unit/{group.id}" backLabel="חזרה לרשימת המודולים" />
+<AppBar
+	title="{i18n.dict.unit.modulePrefix} {mod.letter}"
+	back="/unit/{group.id}"
+	backLabel={i18n.dict.module.backLabel}
+/>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<div class="flex flex-col gap-4">
@@ -35,9 +40,9 @@
 				</svg>
 			</span>
 			<span class="min-w-0 flex-1">
-				<span class="block text-xl font-bold">שיעורים</span>
+				<span class="block text-xl font-bold">{i18n.dict.module.lessonsTitle}</span>
 				<span class="mt-1 block text-sm leading-relaxed text-muted">
-					מסע לימוד שלב אחר שלב לפי נושאים
+					{i18n.dict.module.lessonsDesc}
 				</span>
 			</span>
 		</a>
@@ -65,9 +70,9 @@
 				</svg>
 			</span>
 			<span class="min-w-0 flex-1">
-				<span class="block text-xl font-bold">הבנה למבחן</span>
+				<span class="block text-xl font-bold">{i18n.dict.module.examTitle}</span>
 				<span class="mt-1 block text-sm leading-relaxed text-white/85">
-					תרגול בתנאי בחינה · {EXAM_MINUTES} דקות
+					{i18n.dict.module.examSubtitle(EXAM_MINUTES)}
 					{#if mod.sections.length}
 						· <span dir="ltr">{mod.sections.map((s) => s.label).join(' · ')}</span>
 					{/if}

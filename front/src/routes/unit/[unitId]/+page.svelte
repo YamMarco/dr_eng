@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { modules } from '$lib/curriculum';
+	import { i18n } from '$lib/i18n/index.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -8,10 +9,14 @@
 	let moduleList = $derived(group.moduleIds.map((id) => modules[id]));
 </script>
 
-<AppBar title={`${group.units} יח"ל`} back="/" backLabel="חזרה לבחירת יחידות" />
+<AppBar
+	title={`${group.units} ${i18n.dict.home.unitsSuffix}`}
+	back="/"
+	backLabel={i18n.dict.unit.backLabel}
+/>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	<p class="mb-6 leading-relaxed text-muted">בחרו מודול כדי להתחיל לתרגל.</p>
+	<p class="mb-6 leading-relaxed text-muted">{i18n.dict.unit.subtitle}</p>
 
 	{#if moduleList.length === 0}
 		<div
@@ -34,7 +39,7 @@
 					<path d="M12 8v4l2.5 2.5" />
 				</svg>
 			</span>
-			<p class="mt-4 font-semibold">המודולים ברמה זו יתווספו בקרוב</p>
+			<p class="mt-4 font-semibold">{i18n.dict.unit.emptyTitle}</p>
 		</div>
 	{:else}
 		<ul class="flex flex-col gap-4">
@@ -52,8 +57,10 @@
 								{mod.letter}
 							</span>
 							<span class="min-w-0 flex-1">
-								<span class="block text-lg font-bold">מודול {mod.letter}</span>
-								<span class="mt-1 block text-sm text-muted">בקרוב</span>
+								<span class="block text-lg font-bold"
+									>{i18n.dict.unit.modulePrefix} {mod.letter}</span
+								>
+								<span class="mt-1 block text-sm text-muted">{i18n.dict.common.comingSoon}</span>
 							</span>
 						</div>
 					{:else}
@@ -68,7 +75,9 @@
 								{mod.letter}
 							</span>
 							<span class="min-w-0 flex-1">
-								<span class="block text-lg font-bold">מודול {mod.letter}</span>
+								<span class="block text-lg font-bold"
+									>{i18n.dict.unit.modulePrefix} {mod.letter}</span
+								>
 								<span class="mt-1 block text-sm text-muted" dir="ltr">
 									{mod.sections.map((s) => s.label).join(' · ')}
 								</span>

@@ -5,6 +5,8 @@
 	import Sheet from '$lib/components/Sheet.svelte';
 	import Timer from '$lib/components/Timer.svelte';
 	import { exam, formatTime } from '$lib/exam.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
+	import { EXAM_MINUTES } from '$lib/curriculum';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -12,7 +14,9 @@
 	let mod = $derived(data.mod);
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 
-	let tabs = $derived(mod.sections.length ? mod.sections : [{ id: 'general', label: 'תרגול' }]);
+	let tabs = $derived(
+		mod.sections.length ? mod.sections : [{ id: 'general', label: i18n.dict.examRun.generalTab }]
+	);
 
 	let activeTab = $state(0);
 	let showExitPrompt = $state(false);
@@ -32,7 +36,11 @@
 	}
 </script>
 
-<AppBar title={current.label} onback={() => (showExitPrompt = true)} backLabel="יציאה מהתרגול">
+<AppBar
+	title={current.label}
+	onback={() => (showExitPrompt = true)}
+	backLabel={i18n.dict.examRun.exitLabel}
+>
 	{#snippet trailing()}
 		<Timer seconds={exam.remaining} warning={exam.warning} />
 	{/snippet}
@@ -40,7 +48,11 @@
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-4 pb-28">
 	{#if tabs.length > 1}
-		<div role="tablist" aria-label="חלקי התרגול" class="flex gap-1 rounded-2xl bg-line/50 p-1">
+		<div
+			role="tablist"
+			aria-label={i18n.dict.examRun.tabsAriaLabel}
+			class="flex gap-1 rounded-2xl bg-line/50 p-1"
+		>
 			{#each tabs as tab, i (tab.id)}
 				<button
 					type="button"
@@ -82,9 +94,11 @@
 					<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
 				</svg>
 			</span>
-			<p class="mt-4 font-semibold" dir="ltr">השאלות של {current.label} ייטענו כאן</p>
+			<p class="mt-4 font-semibold" dir="ltr">
+				{i18n.dict.examRun.placeholderTitle(current.label)}
+			</p>
 			<p class="mt-1 text-sm leading-relaxed text-muted">
-				זוהי גרסת הדגמה — התוכן יתווסף בשלב הבא. הטיימר פועל כרגיל.
+				{i18n.dict.examRun.placeholderDesc}
 			</p>
 		</div>
 	</section>
@@ -93,23 +107,27 @@
 <div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">
 	<div class="mx-auto flex max-w-lg gap-3">
 		{#if !isLast}
-			<Button onclick={() => (activeTab += 1)}>המשך</Button>
+			<Button onclick={() => (activeTab += 1)}>{i18n.dict.examRun.continueButton}</Button>
 		{:else}
 			{#if tabs.length > 1}
-				<Button variant="secondary" onclick={() => (activeTab = 0)}>חזרה להתחלה</Button>
+				<Button variant="secondary" onclick={() => (activeTab = 0)}
+					>{i18n.dict.examRun.restartButton}</Button
+				>
 			{/if}
-			<Button onclick={() => exam.finish()}>סיום התרגול</Button>
+			<Button onclick={() => exam.finish()}>{i18n.dict.examRun.finishButton}</Button>
 		{/if}
 	</div>
 </div>
 
 <Sheet
 	bind:open={showExitPrompt}
-	title="לצאת מהתרגול?"
-	description="היציאה תעצור את הטיימר וההתקדמות לא תישמר."
+	title={i18n.dict.examRun.exitPromptTitle}
+	description={i18n.dict.examRun.exitPromptDesc}
 >
-	<Button onclick={leave}>יציאה מהתרגול</Button>
-	<Button variant="ghost" onclick={() => (showExitPrompt = false)}>המשך בתרגול</Button>
+	<Button onclick={leave}>{i18n.dict.examRun.exitConfirm}</Button>
+	<Button variant="ghost" onclick={() => (showExitPrompt = false)}
+		>{i18n.dict.examRun.exitCancel}</Button
+	>
 </Sheet>
 
 {#if exam.finished}
@@ -136,20 +154,20 @@
 			</span>
 
 			<h2 class="mt-4 text-2xl font-extrabold">
-				{exam.remaining === 0 ? 'הזמן נגמר' : 'התרגול הסתיים'}
+				{exam.remaining === 0 ? i18n.dict.examRun.timeUpTitle : i18n.dict.examRun.finishedTitle}
 			</h2>
 			<p class="mt-2 leading-relaxed text-muted">
 				{#if exam.remaining === 0}
-					התרגול נסגר אוטומטית בתום 30 הדקות.
+					{i18n.dict.examRun.timeUpDesc(EXAM_MINUTES)}
 				{:else}
-					סיימתם את התרגול עם <span class="font-semibold text-ink tabular" dir="ltr"
-						>{formatTime(exam.remaining)}</span
-					> דקות שנותרו.
+					{i18n.dict.examRun.finishedDescBefore}
+					<span class="font-semibold text-ink tabular" dir="ltr">{formatTime(exam.remaining)}</span>
+					{i18n.dict.examRun.finishedDescAfter}
 				{/if}
 			</p>
 
 			<div class="mt-6 flex flex-col gap-3">
-				<Button onclick={leave}>חזרה למודול</Button>
+				<Button onclick={leave}>{i18n.dict.examRun.backToModule}</Button>
 			</div>
 		</div>
 	</div>

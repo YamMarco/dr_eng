@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { i18n } from '$lib/i18n/index.svelte';
 
-	const items = [
+	let items = $derived([
 		{
 			href: '/',
-			label: 'בית',
+			label: i18n.dict.nav.home,
 			match: (path: string) => path === '/' || path.startsWith('/unit'),
 			icon: 'home'
 		},
 		{
 			href: '/settings',
-			label: 'הגדרות',
+			label: i18n.dict.nav.settings,
 			match: (path: string) => path.startsWith('/settings'),
 			icon: 'settings'
 		}
-	] as const;
+	] as const);
 
 	let path = $derived(page.url.pathname);
 </script>
@@ -54,7 +55,7 @@
 {/snippet}
 
 <nav
-	aria-label="ניווט ראשי"
+	aria-label={i18n.dict.nav.mainNav}
 	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/85"
 	style="padding-bottom: env(safe-area-inset-bottom)"
 >

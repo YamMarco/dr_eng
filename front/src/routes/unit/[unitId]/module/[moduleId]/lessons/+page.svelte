@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { getLessons } from '$lib/lessons';
+	import { i18n } from '$lib/i18n/index.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -10,7 +11,7 @@
 	let lessons = $derived(getLessons(mod.id));
 </script>
 
-<AppBar title="שיעורים — מודול {mod.letter}" back={base} />
+<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	{#if lessons.length === 0}
@@ -34,10 +35,10 @@
 					<path d="M12 8v4l2.5 2.5" />
 				</svg>
 			</span>
-			<p class="mt-4 font-semibold">השיעורים של מודול {mod.letter} יתווספו בקרוב</p>
+			<p class="mt-4 font-semibold">{i18n.dict.lessons.emptyTitle(mod.letter)}</p>
 		</div>
 	{:else}
-		<p class="mb-6 leading-relaxed text-muted">בחרו שיעור כדי להתחיל.</p>
+		<p class="mb-6 leading-relaxed text-muted">{i18n.dict.lessons.subtitle}</p>
 		<ol class="flex flex-col gap-3">
 			{#each lessons as lesson (lesson.id)}
 				<li>
@@ -52,7 +53,8 @@
 						</span>
 						<span class="min-w-0 flex-1">
 							<span class="block font-semibold">
-								שיעור {lesson.id}
+								{i18n.dict.lessons.lessonPrefix}
+								{lesson.id}
 								{#if lesson.titleEn}
 									— <span dir="ltr">{lesson.titleEn}</span> ({lesson.titleHe})
 								{:else}

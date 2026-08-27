@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { modules, unitGroups } from '$lib/curriculum';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	function letters(moduleIds: string[]) {
 		return moduleIds.map((id) => modules[id].letter.toUpperCase()).join(' · ');
@@ -25,11 +26,11 @@
 				<path d="M21 8v6" />
 				<path d="M7 10.5V16c0 1.1 2.2 2.5 5 2.5s5-1.4 5-2.5v-5.5" />
 			</svg>
-			בגרות באנגלית
+			{i18n.dict.home.badge}
 		</span>
 
-		<h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">בחרו יחידות לימוד</h1>
-		<p class="mt-2 leading-relaxed text-muted">כל רמת יחידות כוללת מספר מודולים לתרגול.</p>
+		<h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">{i18n.dict.home.title}</h1>
+		<p class="mt-2 leading-relaxed text-muted">{i18n.dict.home.subtitle}</p>
 	</div>
 
 	<ul class="flex flex-col gap-4">
@@ -47,12 +48,12 @@
 					</span>
 
 					<span class="min-w-0 flex-1">
-						<span class="text-xl font-bold">{group.units} יח"ל</span>
+						<span class="text-xl font-bold">{group.units} {i18n.dict.home.unitsSuffix}</span>
 						<span class="mt-1 block text-sm leading-relaxed text-muted" dir="ltr">
 							{#if group.moduleIds.length}
 								{letters(group.moduleIds)}
 							{:else}
-								בקרוב
+								{i18n.dict.common.comingSoon}
 							{/if}
 						</span>
 					</span>

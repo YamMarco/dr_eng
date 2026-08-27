@@ -5,6 +5,7 @@
 	import Timer from '$lib/components/Timer.svelte';
 	import { EXAM_SECONDS, exam } from '$lib/exam.svelte';
 	import { EXAM_MINUTES } from '$lib/curriculum';
+	import { i18n } from '$lib/i18n/index.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -18,22 +19,22 @@
 	}
 </script>
 
-<AppBar title="הבנה למבחן — מודול {mod.letter}" back={base} />
+<AppBar title="{i18n.dict.examStart.titlePrefix} {mod.letter}" back={base} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<div class="rounded-3xl bg-surface p-6 text-center shadow-md ring-1 shadow-ink/5 ring-line/70">
-		<p class="text-sm font-semibold text-muted">משך התרגול</p>
+		<p class="text-sm font-semibold text-muted">{i18n.dict.examStart.durationLabel}</p>
 		<div class="mt-3 flex justify-center">
 			<Timer seconds={EXAM_SECONDS} size="lg" />
 		</div>
 		<p class="mt-4 leading-relaxed text-muted">
-			התרגול נמשך {EXAM_MINUTES} דקות. הטיימר מתחיל לרוץ ברגע הלחיצה על "התחלה" ונעצר אוטומטית בסיום הזמן.
+			{i18n.dict.examStart.description(EXAM_MINUTES)}
 		</p>
 	</div>
 
 	{#if mod.sections.length}
 		<div class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70">
-			<h2 class="mb-3 text-base font-bold">מבנה התרגול</h2>
+			<h2 class="mb-3 text-base font-bold">{i18n.dict.examStart.structureTitle}</h2>
 			<ul class="flex flex-col divide-y divide-line/70">
 				{#each mod.sections as section, i (section.id)}
 					<li class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
@@ -50,7 +51,7 @@
 	{/if}
 
 	<div class="mt-8 flex flex-col gap-3">
-		<Button onclick={startExam}>התחלה</Button>
-		<Button variant="secondary" href={base}>חזרה</Button>
+		<Button onclick={startExam}>{i18n.dict.examStart.startButton}</Button>
+		<Button variant="secondary" href={base}>{i18n.dict.examStart.backButton}</Button>
 	</div>
 </main>

@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import NavBar from '$lib/components/NavBar.svelte';
 	import { page } from '$app/state';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	let { children } = $props();
 
@@ -11,11 +12,15 @@
 	const noNavPatterns = [/\/exam\/run$/];
 
 	let showNav = $derived(!noNavPatterns.some((re) => re.test(page.url.pathname)));
+
+	$effect(() => {
+		document.documentElement.lang = i18n.language;
+	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>בגרות באנגלית — תרגול</title>
+	<title>{i18n.dict.appTitle}</title>
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-canvas">

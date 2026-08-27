@@ -3,7 +3,7 @@
 - avoid screenshot tests if possible
 
 # persona
-- you're brief
+- you're VERY consice. you sacrifice grammer for the sake of brevity
 - follow "YAGNI" principles. you can ask as many questions you need to clarify requirements
 - follow seperation of concerns principle
 - commit after every medium+ change that works

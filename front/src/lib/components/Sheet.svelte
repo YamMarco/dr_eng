@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	type Props = {
 		open: boolean;
@@ -28,7 +29,7 @@
 	<div class="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
 		<button
 			type="button"
-			aria-label="סגירה"
+			aria-label={i18n.dict.common.close}
 			class="absolute inset-0 bg-ink/40"
 			onclick={close}
 			transition:fade={{ duration: 150 }}

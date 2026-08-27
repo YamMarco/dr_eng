@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	type Props = {
 		title?: string;
@@ -9,7 +10,8 @@
 		trailing?: Snippet;
 	};
 
-	let { title = '', back, onback, backLabel = 'חזרה', trailing }: Props = $props();
+	let { title = '', back, onback, backLabel, trailing }: Props = $props();
+	let resolvedBackLabel = $derived(backLabel ?? i18n.dict.common.back);
 
 	const backClasses =
 		'-ms-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink transition hover:bg-line/70 active:scale-95';
@@ -36,11 +38,11 @@
 		{/snippet}
 
 		{#if onback}
-			<button type="button" aria-label={backLabel} class={backClasses} onclick={onback}>
+			<button type="button" aria-label={resolvedBackLabel} class={backClasses} onclick={onback}>
 				{@render chevron()}
 			</button>
 		{:else if back}
-			<a href={back} aria-label={backLabel} class={backClasses}>
+			<a href={back} aria-label={resolvedBackLabel} class={backClasses}>
 				{@render chevron()}
 			</a>
 		{/if}
