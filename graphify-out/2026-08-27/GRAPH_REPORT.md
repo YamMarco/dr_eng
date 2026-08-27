@@ -1,6 +1,7 @@
 # Graph Report - dr_eng  (2026-08-27)
 
 ## Corpus Check
+<<<<<<< Updated upstream
 - 76 files · ~26,095 words
 - Verdict: corpus is large enough that graph structure adds value.
 
@@ -11,6 +12,18 @@
 
 ## Graph Freshness
 - Built from commit: `cc715b89`
+=======
+- 62 files · ~22,894 words
+- Verdict: corpus is large enough that graph structure adds value.
+
+## Summary
+- 302 nodes · 323 edges · 33 communities (19 shown, 14 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `89648101`
+>>>>>>> Stashed changes
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,12 +112,21 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, lucide, name, private, scripts, build (+10 more)
 
 ### Community 4 - "index.svelte.ts"
+<<<<<<< Updated upstream
 Cohesion: 0.12
 Nodes (7): dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he
 
 ### Community 5 - "curriculum.ts"
 Cohesion: 0.10
 Nodes (17): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+9 more)
+=======
+Cohesion: 0.07
+Nodes (13): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS, dictionaries, I18n, Language, ar (+5 more)
+
+### Community 5 - "curriculum.ts"
+Cohesion: 0.13
+Nodes (14): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+6 more)
+>>>>>>> Stashed changes
 
 ### Community 6 - "$effect Rune"
 Cohesion: 0.12
@@ -147,6 +169,7 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ### Community 30 - "CLAUDE.md"
+<<<<<<< Updated upstream
 Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
 
@@ -156,6 +179,13 @@ Nodes (20): screenComponents, KEY, LessonSession, LessonScreen, MarkWordScreen, 
 
 ## Knowledge Gaps
 - **161 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `Language` (+156 more)
+=======
+Cohesion: 0.40
+Nodes (4): graphify, mission, persona, skills
+
+## Knowledge Gaps
+- **143 isolated node(s):** `mission`, `persona`, `graphify`, `Language`, `dictionaries` (+138 more)
+>>>>>>> Stashed changes
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -163,11 +193,19 @@ Nodes (20): screenComponents, KEY, LessonSession, LessonScreen, MarkWordScreen, 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
+<<<<<<< Updated upstream
   _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `mission`, `workflow`, `persona` to the rest of the system?**
   _161 weakly-connected nodes found - possible documentation gaps or missing edges._
+=======
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **Why does `ExamSession` connect `ExamSession` to `index.svelte.ts`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **What connects `mission`, `persona`, `graphify` to the rest of the system?**
+  _143 weakly-connected nodes found - possible documentation gaps or missing edges._
+>>>>>>> Stashed changes
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**

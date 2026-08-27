@@ -8,8 +8,8 @@
   "front/.vscode/mcp.json": {
     "mtime": 1787655107.725987,
     "seen": 1787674364.0829086,
-    "ast_hash": "afbe58d41216bef6dd35782feabea224",
-    "semantic_hash": "afbe58d41216bef6dd35782feabea224"
+    "ast_hash": "",
+    "semantic_hash": ""
   },
   "front/.vscode/settings.json": {
     "mtime": 1787655107.690438,
@@ -43,7 +43,11 @@
   },
   "front/src/lib/components/AppBar.svelte": {
     "mtime": 1787816929.924662,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531252,
+=======
+    "seen": 1787835389.8819985,
+>>>>>>> Stashed changes
     "ast_hash": "e1689a6ba8307ed13f8699bf2ab6670b",
     "semantic_hash": ""
   },
@@ -55,13 +59,21 @@
   },
   "front/src/lib/components/NavBar.svelte": {
     "mtime": 1787816930.077705,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531288,
+=======
+    "seen": 1787835389.8821468,
+>>>>>>> Stashed changes
     "ast_hash": "b3210ef191b82bcc6d66054339e633d3",
     "semantic_hash": ""
   },
   "front/src/lib/components/Sheet.svelte": {
     "mtime": 1787816930.1303482,
+<<<<<<< Updated upstream
     "seen": 1787819187.45313,
+=======
+    "seen": 1787835389.8821485,
+>>>>>>> Stashed changes
     "ast_hash": "4c02d79c8dc54a5077c62083bed506a5",
     "semantic_hash": ""
   },
@@ -97,25 +109,41 @@
   },
   "front/src/routes/+error.svelte": {
     "mtime": 1787816930.4710176,
+<<<<<<< Updated upstream
     "seen": 1787819187.453163,
+=======
+    "seen": 1787835389.882879,
+>>>>>>> Stashed changes
     "ast_hash": "358a19f74de48b6247dfd87e7f47b81f",
     "semantic_hash": ""
   },
   "front/src/routes/+layout.svelte": {
     "mtime": 1787816930.5097208,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531643,
+=======
+    "seen": 1787835389.8828804,
+>>>>>>> Stashed changes
     "ast_hash": "c040fe3b83977a565a9b3830e7493c5f",
     "semantic_hash": ""
   },
   "front/src/routes/+page.svelte": {
     "mtime": 1787816930.5585625,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531655,
+=======
+    "seen": 1787835389.8828819,
+>>>>>>> Stashed changes
     "ast_hash": "4ec8c841157e9d77a3157a951c1a62a8",
     "semantic_hash": ""
   },
   "front/src/routes/settings/+page.svelte": {
     "mtime": 1787816930.8339,
+<<<<<<< Updated upstream
     "seen": 1787819187.453167,
+=======
+    "seen": 1787835389.8828828,
+>>>>>>> Stashed changes
     "ast_hash": "61d965f054c3bfb4f92d5f045a60ed77",
     "semantic_hash": ""
   },
@@ -127,7 +155,11 @@
   },
   "front/src/routes/unit/[unitId]/+page.svelte": {
     "mtime": 1787816931.1199539,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531698,
+=======
+    "seen": 1787835389.883032,
+>>>>>>> Stashed changes
     "ast_hash": "5c2ef044e8552b0b1071be92484b758a",
     "semantic_hash": ""
   },
@@ -139,7 +171,11 @@
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte": {
     "mtime": 1787816931.3928254,
+<<<<<<< Updated upstream
     "seen": 1787819187.453173,
+=======
+    "seen": 1787835389.8831878,
+>>>>>>> Stashed changes
     "ast_hash": "fd8e7026a6e0dfa5bcdc920e0b528f2d",
     "semantic_hash": ""
   },
@@ -271,32 +307,56 @@
   },
   "front/src/lib/lessons.ts": {
     "mtime": 1787817129.9997811,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531615,
+=======
+    "seen": 1787835389.8828773,
+>>>>>>> Stashed changes
     "ast_hash": "23f5d13c24ea13f94f6158940504fb86",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
     "mtime": 1787816931.6026838,
+<<<<<<< Updated upstream
     "seen": 1787819187.4531744,
+=======
+    "seen": 1787835389.8831892,
+>>>>>>> Stashed changes
     "ast_hash": "d77cc59e753ed43e4d25c91dc5c497f7",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte": {
+<<<<<<< Updated upstream
     "mtime": 1787816932.105286,
     "seen": 1787819187.4531758,
     "ast_hash": "a0bfc4d0b6e3f193158ca53f227ab6ec",
+=======
+    "mtime": 1787835386.3986673,
+    "seen": 1787835389.8831906,
+    "ast_hash": "69fb17b140b290ee62848cd4fd271094",
+>>>>>>> Stashed changes
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
     "mtime": 1787816932.362828,
+<<<<<<< Updated upstream
     "seen": 1787819187.453177,
+=======
+    "seen": 1787835389.883192,
+>>>>>>> Stashed changes
     "ast_hash": "f4cc1a0a6db8e6d41b1099e13b796e2c",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.svelte": {
+<<<<<<< Updated upstream
     "mtime": 1787818952.0043283,
     "seen": 1787819187.4531784,
     "ast_hash": "3ac9741dfaed4ef1c63fce8064323e40",
+=======
+    "mtime": 1787835386.399678,
+    "seen": 1787835389.8831933,
+    "ast_hash": "d62d3ea27e61b6ba8b1560ee3bde56b0",
+>>>>>>> Stashed changes
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.ts": {
@@ -366,6 +426,7 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
+<<<<<<< Updated upstream
     "mtime": 1787819174.7523327,
     "seen": 1787819187.4532003,
     "ast_hash": "cdfa85e4de04f03d2a612d2545371926",
@@ -471,6 +532,29 @@
     "mtime": 1787818832.5625856,
     "seen": 1787819187.45316,
     "ast_hash": "0fffb78435a51a89325552ce252ab4a3",
+=======
+    "mtime": 1787835386.3953755,
+    "seen": 1787835389.8850746,
+    "ast_hash": "44ec360c183fefb19e9fc4a10a15c594",
+    "semantic_hash": ""
+  },
+  "front/src/lib/i18n/index.svelte.ts": {
+    "mtime": 1787835386.396542,
+    "seen": 1787835389.8827271,
+    "ast_hash": "2dc6c0ee783bd3503aa5c5528ad2504c",
+    "semantic_hash": ""
+  },
+  "front/src/lib/i18n/locales/ar.ts": {
+    "mtime": 1787835386.396542,
+    "seen": 1787835389.8827288,
+    "ast_hash": "da92625a6275724ce76e16367e23a037",
+    "semantic_hash": ""
+  },
+  "front/src/lib/i18n/locales/he.ts": {
+    "mtime": 1787835386.3976657,
+    "seen": 1787835389.8827305,
+    "ast_hash": "ddd21d0ca81178fd975ce381fa084e5c",
+>>>>>>> Stashed changes
     "semantic_hash": ""
   }
 }

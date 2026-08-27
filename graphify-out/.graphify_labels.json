@@ -32,5 +32,10 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
+<<<<<<< Updated upstream
   "33": "types.ts"
+=======
+  "33": "prettier",
+  "34": "svelte"
+>>>>>>> Stashed changes
 }

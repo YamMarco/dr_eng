@@ -72,6 +72,7 @@
       "source_location": "L8"
     },
     {
+<<<<<<< Updated upstream
       "id": "front_src_lib_lesson_screens_session_svelte_lessonsession",
       "label": "LessonSession",
       "_callable": true,
@@ -254,6 +255,8 @@
       "source_location": "L17"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "front_src_lib_i18n_index_svelte_i18n",
       "label": "I18n",
       "_callable": true,
@@ -264,7 +267,11 @@
       "file_type": "code",
       "norm_label": "i18n",
       "source_file": "front/src/lib/i18n/index.svelte.ts",
+<<<<<<< Updated upstream
       "source_location": "L34"
+=======
+      "source_location": "L15"
+>>>>>>> Stashed changes
     },
     {
       "id": "front_src_lib_i18n_index_svelte_language",
@@ -290,6 +297,7 @@
       "file_type": "code",
       "norm_label": "dictionary",
       "source_file": "front/src/lib/i18n/locales/he.ts",
+<<<<<<< Updated upstream
       "source_location": "L107"
     },
     {
@@ -304,6 +312,9 @@
       "norm_label": "dictionaryoverride",
       "source_file": "front/src/lib/i18n/locales/he.ts",
       "source_location": "L110"
+=======
+      "source_location": "L98"
+>>>>>>> Stashed changes
     },
     {
       "id": "front_src_lib_curriculum_curriculummodule",
@@ -430,6 +441,7 @@
       "source_location": "L17"
     },
     {
+<<<<<<< Updated upstream
       "id": "front_src_lib_lesson_screens_session_svelte_createlessonsession",
       "label": "createLessonSession()",
       "_callable": true,
@@ -480,6 +492,34 @@
     {
       "id": "front_src_lib_components_navbar_each",
       "label": "#each()",
+=======
+      "id": "front_src_lib_components_navbar_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L63"
+    },
+    {
+      "id": "front_src_lib_components_navbar_homeicon",
+      "label": "homeIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "homeicon()",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L73"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_formattime",
+      "label": "formatTime()",
+>>>>>>> Stashed changes
       "_callable": true,
       "_origin": "ast",
       "community": 4,
@@ -548,6 +588,42 @@
       "norm_label": "mergedictionary()",
       "source_file": "front/src/lib/i18n/index.svelte.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_i18n_dict",
+      "label": ".dict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".dict()",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_i18n_setlanguage",
+      "label": ".setLanguage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".setlanguage()",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_loadinitiallanguage",
+      "label": "loadInitialLanguage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "loadinitiallanguage()",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L9"
     },
     {
       "id": "front_src_lib_curriculum_getmodule",
@@ -1855,7 +1931,11 @@
       "node_kind": "heading",
       "norm_label": "graphify",
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L18"
+=======
+      "source_location": "L13"
+>>>>>>> Stashed changes
     },
     {
       "id": "claude_mission",
@@ -1879,7 +1959,11 @@
       "node_kind": "heading",
       "norm_label": "persona",
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L10"
+=======
+      "source_location": "L5"
+>>>>>>> Stashed changes
     },
     {
       "id": "claude_skills",
@@ -1891,6 +1975,7 @@
       "node_kind": "heading",
       "norm_label": "skills",
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L16"
     },
     {
@@ -1904,6 +1989,9 @@
       "norm_label": "workflow",
       "source_file": "CLAUDE.md",
       "source_location": "L4"
+=======
+      "source_location": "L11"
+>>>>>>> Stashed changes
     },
     {
       "id": "claude_claude",
@@ -1957,8 +2045,13 @@
       "id": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_types",
       "label": "./$types",
       "_origin": "ast",
+<<<<<<< Updated upstream
       "community": 33,
       "community_name": "types.ts",
+=======
+      "community": 4,
+      "community_name": "index.svelte.ts",
+>>>>>>> Stashed changes
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "./$types",
@@ -1968,25 +2061,106 @@
       "id": "reactivity",
       "label": "svelte/reactivity",
       "_origin": "ast",
+<<<<<<< Updated upstream
       "community": 33,
       "community_name": "types.ts",
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "svelte/reactivity",
       "source_file": "svelte/reactivity"
+=======
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/$types"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/$types"
+    },
+    {
+      "id": "navigation",
+      "label": "$app/navigation",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/navigation",
+      "source_file": "$app/navigation"
+>>>>>>> Stashed changes
+    },
+    {
+      "id": "state",
+      "label": "$app/state",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/state",
+      "source_file": "$app/state"
+    },
+    {
+      "id": "svelte",
+      "label": "svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte",
+      "source_file": "svelte"
+    },
+    {
+      "id": "transition",
+      "label": "svelte/transition",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte/transition",
+      "source_file": "svelte/transition"
+    },
+    {
+      "id": "front_src_lib_components_appbar",
+      "label": "AppBar.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "appbar.svelte",
+      "source_file": "front/src/lib/components/AppBar.svelte",
+      "source_location": "L1"
     },
     {
       "id": "front_src_lib_components_button",
       "label": "Button.svelte",
       "_origin": "ast",
+<<<<<<< Updated upstream
       "community": 33,
       "community_name": "types.ts",
+=======
+      "community": 4,
+      "community_name": "index.svelte.ts",
+>>>>>>> Stashed changes
       "file_type": "code",
       "norm_label": "button.svelte",
       "source_file": "front/src/lib/components/Button.svelte",
       "source_location": "L1"
     },
     {
+<<<<<<< Updated upstream
       "id": "front_src_lib_lesson_screens_lessonrunner",
       "label": "LessonRunner.svelte",
       "_origin": "ast",
@@ -2218,6 +2392,8 @@
       "source_location": "L1"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "front_src_lib_components_navbar",
       "label": "NavBar.svelte",
       "_origin": "ast",
@@ -2229,6 +2405,7 @@
       "source_location": "L1"
     },
     {
+<<<<<<< Updated upstream
       "id": "front_src_lib_components_toggle",
       "label": "Toggle.svelte",
       "_origin": "ast",
@@ -2377,6 +2554,13 @@
       "_origin": "ast",
       "community": 5,
       "community_name": "curriculum.ts",
+=======
+      "id": "front_src_lib_components_sheet",
+      "label": "Sheet.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+>>>>>>> Stashed changes
       "file_type": "code",
       "norm_label": "sheet.svelte",
       "source_file": "front/src/lib/components/Sheet.svelte",
@@ -2386,14 +2570,253 @@
       "id": "front_src_lib_components_timer",
       "label": "Timer.svelte",
       "_origin": "ast",
+<<<<<<< Updated upstream
       "community": 5,
       "community_name": "curriculum.ts",
+=======
+      "community": 4,
+      "community_name": "index.svelte.ts",
+>>>>>>> Stashed changes
       "file_type": "code",
       "norm_label": "timer.svelte",
       "source_file": "front/src/lib/components/Timer.svelte",
       "source_location": "L1"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "id": "front_src_lib_components_toggle",
+      "label": "Toggle.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "toggle.svelte",
+      "source_file": "front/src/lib/components/Toggle.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_curriculum_exam_minutes",
+      "label": "EXAM_MINUTES",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam_minutes",
+      "source_file": "front/src/lib/curriculum.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "front_src_lib_exam_svelte",
+      "label": "exam.svelte.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam.svelte.ts",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_exam",
+      "label": "exam",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_exam_seconds",
+      "label": "EXAM_SECONDS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam_seconds",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_warning_seconds",
+      "label": "WARNING_SECONDS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "warning_seconds",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte",
+      "label": "index.svelte.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "index.svelte.ts",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_dictionaries",
+      "label": "dictionaries",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "dictionaries",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_i18n_locales_ar",
+      "label": "ar.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "ar.ts",
+      "source_file": "front/src/lib/i18n/locales/ar.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_i18n_locales_ar_ar",
+      "label": "ar",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "ar",
+      "source_file": "front/src/lib/i18n/locales/ar.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "front_src_lib_i18n_locales_he",
+      "label": "he.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "he.ts",
+      "source_file": "front/src/lib/i18n/locales/he.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_i18n_locales_he_he",
+      "label": "he",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "he",
+      "source_file": "front/src/lib/i18n/locales/he.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_error",
+      "label": "+error.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "+error.svelte",
+      "source_file": "front/src/routes/+error.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_layout",
+      "label": "+layout.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "+layout.svelte",
+      "source_file": "front/src/routes/+layout.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_page",
+      "label": "routes/+page.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "routes/+page.svelte",
+      "source_file": "front/src/routes/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_settings_page",
+      "label": "settings/+page.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "settings/+page.svelte",
+      "source_file": "front/src/routes/settings/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_page",
+      "label": "exam/+page.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_run_page",
+      "label": "run/+page.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "run/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_page",
+      "label": "[lessonId]/+page.svelte",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "[lessonid]/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "curriculum.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/$types"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "curriculum.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front/src/routes/unit/[unitId]/$types"
+    },
+    {
+>>>>>>> Stashed changes
       "id": "front_src_lib_curriculum",
       "label": "curriculum.ts",
       "_origin": "ast",
@@ -2471,6 +2894,7 @@
       "source_location": "L21"
     },
     {
+<<<<<<< Updated upstream
       "id": "front_src_lib_exam_svelte",
       "label": "exam.svelte.ts",
       "_origin": "ast",
@@ -2526,6 +2950,8 @@
       "source_location": "L1"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "front_src_routes_unit_unitid_layout",
       "label": "[unitId]/+layout.ts",
       "_origin": "ast",
@@ -2570,6 +2996,31 @@
       "source_location": "L1"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "id": "front_src_routes_unit_unitid_module_moduleid_page",
+      "label": "[moduleId]/+page.svelte",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "curriculum.ts",
+      "file_type": "code",
+      "norm_label": "[moduleid]/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_page",
+      "label": "[unitId]/+page.svelte",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "curriculum.ts",
+      "file_type": "code",
+      "norm_label": "[unitid]/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+>>>>>>> Stashed changes
       "id": "claude_skills_graphify_skill",
       "label": "SKILL.md",
       "_origin": "ast",
@@ -4613,6 +5064,7 @@
     },
     {
       "source": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
       "target": "front_src_lib_i18n_locales_he_dictionary",
       "relation": "imports",
       "_origin": "ast",
@@ -4625,6 +5077,8 @@
     },
     {
       "source": "front_src_lib_i18n_index_svelte",
+=======
+>>>>>>> Stashed changes
       "target": "front_src_lib_i18n_locales_he_he",
       "relation": "imports",
       "_origin": "ast",
@@ -4649,7 +5103,11 @@
     },
     {
       "source": "front_src_lib_i18n_locales_ar",
+<<<<<<< Updated upstream
       "target": "front_src_lib_i18n_locales_he_dictionaryoverride",
+=======
+      "target": "front_src_lib_i18n_locales_he_dictionary",
+>>>>>>> Stashed changes
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4660,6 +5118,7 @@
       "weight": 1.0
     },
     {
+<<<<<<< Updated upstream
       "source": "front_src_lib_lesson_screens_registry",
       "target": "front_src_lib_lesson_screens_types_lessonscreen",
       "relation": "imports",
@@ -4684,6 +5143,8 @@
       "weight": 1.0
     },
     {
+=======
+>>>>>>> Stashed changes
       "source": "front_src_routes_unit_unitid_layout",
       "target": "front_src_lib_curriculum_getunitgroup",
       "relation": "imports",
@@ -4768,6 +5229,7 @@
       "weight": 1.0
     },
     {
+<<<<<<< Updated upstream
       "source": "front_src_lib_lesson_screens_registry",
       "target": "front_src_lib_lesson_screens_mcq",
       "relation": "imports_from",
@@ -4888,6 +5350,8 @@
       "weight": 1.0
     },
     {
+=======
+>>>>>>> Stashed changes
       "source": "front_src_routes_unit_unitid_layout",
       "target": "front_src_lib_curriculum",
       "relation": "imports_from",
@@ -4936,6 +5400,7 @@
     },
     {
       "source": "claude",
+<<<<<<< Updated upstream
       "target": "claude_persona",
       "relation": "contains",
       "_origin": "ast",
@@ -4947,24 +5412,38 @@
     },
     {
       "source": "claude",
+=======
+>>>>>>> Stashed changes
       "target": "claude_skills",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L16",
+=======
+      "source_location": "L11",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
       "source": "claude",
+<<<<<<< Updated upstream
       "target": "claude_workflow",
+=======
+      "target": "claude_persona",
+>>>>>>> Stashed changes
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L4",
+=======
+      "source_location": "L5",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -4986,7 +5465,11 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
+<<<<<<< Updated upstream
       "source_location": "L18",
+=======
+      "source_location": "L13",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -6212,6 +6695,7 @@
     },
     {
       "source": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
       "target": "front_src_lib_i18n_index_svelte_mergedictionary",
       "relation": "contains",
       "_origin": "ast",
@@ -6235,6 +6719,9 @@
     {
       "source": "front_src_lib_i18n_index_svelte",
       "target": "front_src_lib_i18n_index_svelte_loadinitiallanguage",
+=======
+      "target": "front_src_lib_i18n_index_svelte_i18n",
+>>>>>>> Stashed changes
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6256,13 +6743,32 @@
     },
     {
       "source": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
       "target": "front_src_lib_i18n_index_svelte_i18n",
+=======
+      "target": "front_src_lib_i18n_index_svelte_dictionaries",
+>>>>>>> Stashed changes
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/index.svelte.ts",
+<<<<<<< Updated upstream
       "source_location": "L47",
+=======
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_i18n_index_svelte",
+      "target": "front_src_lib_i18n_index_svelte_loadinitiallanguage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L9",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -6273,7 +6779,11 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/ar.ts",
+<<<<<<< Updated upstream
       "source_location": "L6",
+=======
+      "source_location": "L3",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -6295,6 +6805,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/he.ts",
+<<<<<<< Updated upstream
       "source_location": "L107",
       "weight": 1.0
     },
@@ -6538,6 +7049,9 @@
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lessonContent.ts",
       "source_location": "L34",
+=======
+      "source_location": "L98",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -6770,6 +7284,18 @@
       "source_file": "front/src/lib/components/AppBar.svelte"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "source": "front_src_lib_components_appbar",
+      "target": "svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/components/AppBar.svelte"
+    },
+    {
+>>>>>>> Stashed changes
       "source": "front_src_lib_components_navbar",
       "target": "front_src_lib_i18n_index_svelte",
       "relation": "imports_from",
@@ -6779,6 +7305,18 @@
       "source_file": "front/src/lib/components/NavBar.svelte"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "source": "front_src_lib_components_navbar",
+      "target": "state",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/components/NavBar.svelte"
+    },
+    {
+>>>>>>> Stashed changes
       "source": "front_src_lib_components_sheet",
       "target": "front_src_lib_i18n_index_svelte",
       "relation": "imports_from",
@@ -6788,6 +7326,27 @@
       "source_file": "front/src/lib/components/Sheet.svelte"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "source": "front_src_lib_components_sheet",
+      "target": "svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/components/Sheet.svelte"
+    },
+    {
+      "source": "front_src_lib_components_sheet",
+      "target": "transition",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/components/Sheet.svelte"
+    },
+    {
+>>>>>>> Stashed changes
       "source": "front_src_lib_components_timer",
       "target": "front_src_lib_exam_svelte",
       "relation": "imports_from",
@@ -6977,6 +7536,18 @@
       "source_file": "front/src/routes/+error.svelte"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "source": "front_src_routes_error",
+      "target": "state",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/+error.svelte"
+    },
+    {
+>>>>>>> Stashed changes
       "source": "front_src_routes_layout",
       "target": "front_src_lib_components_navbar",
       "relation": "imports_from",
@@ -6995,6 +7566,18 @@
       "source_file": "front/src/routes/+layout.svelte"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "source": "front_src_routes_layout",
+      "target": "state",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/+layout.svelte"
+    },
+    {
+>>>>>>> Stashed changes
       "source": "front_src_routes_page",
       "target": "front_src_lib_curriculum",
       "relation": "imports_from",
@@ -7087,6 +7670,18 @@
     {
       "source": "front_src_routes_unit_unitid_module_moduleid_exam_page",
       "target": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
+=======
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte"
+    },
+    {
+      "source": "front_src_routes_unit_unitid_module_moduleid_exam_page",
+      "target": "front_src_routes_unit_unitid_module_moduleid_exam_types",
+>>>>>>> Stashed changes
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7203,6 +7798,7 @@
     },
     {
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_page",
+<<<<<<< Updated upstream
       "target": "front_src_lib_lesson_screens_lessonrunner",
       "relation": "imports_from",
       "_origin": "ast",
@@ -7221,6 +7817,8 @@
     },
     {
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_page",
+=======
+>>>>>>> Stashed changes
       "target": "front_src_routes_unit_unitid_module_moduleid_lessons_lessonid_types",
       "relation": "imports_from",
       "_origin": "ast",
@@ -7285,6 +7883,18 @@
     {
       "source": "front_src_routes_unit_unitid_module_moduleid_page",
       "target": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
+=======
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte"
+    },
+    {
+      "source": "front_src_routes_unit_unitid_module_moduleid_page",
+      "target": "front_src_routes_unit_unitid_module_moduleid_types",
+>>>>>>> Stashed changes
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7312,6 +7922,18 @@
     {
       "source": "front_src_routes_unit_unitid_page",
       "target": "front_src_lib_i18n_index_svelte",
+<<<<<<< Updated upstream
+=======
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/+page.svelte"
+    },
+    {
+      "source": "front_src_routes_unit_unitid_page",
+      "target": "front_src_routes_unit_unitid_types",
+>>>>>>> Stashed changes
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7388,6 +8010,7 @@
       "source": "front_src_lib_i18n_index_svelte_i18n",
       "target": "front_src_lib_i18n_index_svelte_i18n_dict",
       "relation": "method",
+<<<<<<< Updated upstream
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -7440,6 +8063,24 @@
       "context": "argument",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.svelte",
       "source_location": "L88",
+=======
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_i18n_index_svelte_i18n",
+      "target": "front_src_lib_i18n_index_svelte_i18n_setlanguage",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L22",
+>>>>>>> Stashed changes
       "weight": 1.0
     },
     {
@@ -8300,5 +8941,9 @@
       "source_file": "front/.github/agents/svelte-file-editor.agent.md"
     }
   ],
+<<<<<<< Updated upstream
   "built_at_commit": "cc715b892363bf9e59d6715bf8b12735f2cfc15e"
+=======
+  "built_at_commit": "89648101e18b0d9915b65cfb6185174b902077ee"
+>>>>>>> Stashed changes
 }
