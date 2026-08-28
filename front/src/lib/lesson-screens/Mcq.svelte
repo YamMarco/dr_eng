@@ -40,7 +40,7 @@
 			if (selected === null) return;
 			checked = true;
 			recordAnswer(score, selected === screen.correctIndex);
-			label = '';
+			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
 		}

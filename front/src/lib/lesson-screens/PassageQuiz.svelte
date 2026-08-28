@@ -54,7 +54,7 @@
 			});
 			results.forEach((correct) => recordAnswer(score, correct));
 			checked = true;
-			label = '';
+			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
 		}

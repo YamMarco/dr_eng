@@ -39,7 +39,7 @@
 			if (selected === null) return;
 			checked = true;
 			recordAnswer(score, selected === screen.correctWordIndex);
-			label = '';
+			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
 		}

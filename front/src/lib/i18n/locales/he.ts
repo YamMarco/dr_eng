@@ -64,7 +64,15 @@ export const he = {
 		mcq: 'שאלה',
 		markWord: 'תרגיל: סמנו מילה',
 		timedReading: 'תרגיל מתוזמן: קריאה',
+		writingTask: 'משימת כתיבה',
 		submitButton: 'בדיקה'
+	},
+	writingTask: {
+		wordBankLabel: 'מילים לשימוש',
+		linePlaceholder: (n: number) => `משפט ${n}...`,
+		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
+		checkPunctuation: 'אות גדולה בהתחלה ונקודה בסוף בכל משפט',
+		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
 	},
 	examStart: {
 		titlePrefix: 'הבנה למבחן — מודול',

@@ -71,6 +71,20 @@ export type PassageQuizScreen = {
 	questions: PassageQuizQuestion[];
 };
 
+/**
+ * Open-ended writing task, lightly auto-checked (not graded for real grammar):
+ * enough sentences, each one capitalized and period-terminated, and enough
+ * of the given word bank actually used. One overall right/wrong, no per-word
+ * grading.
+ */
+export type WritingTaskScreen = {
+	type: 'writing-task';
+	prompt: string;
+	wordBank: string[];
+	minSentences: number;
+	minWordsUsed: number;
+};
+
 /** Compares two previously-recorded timer values. */
 export type TimeComparisonScreen = {
 	type: 'time-comparison';
@@ -93,7 +107,8 @@ export type LessonScreen =
 	| TimeResultScreen
 	| TimeComparisonScreen
 	| TimedPassageScreen
-	| PassageQuizScreen;
+	| PassageQuizScreen
+	| WritingTaskScreen;
 
 /**
  * A screen with no real content (e.g. a message left with empty text, or a
@@ -118,6 +133,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'timed-passage':
 		case 'passage-quiz':
 			return !screen.text.trim() || screen.questions.length === 0;
+		case 'writing-task':
+			return !screen.prompt.trim();
 		case 'time-result':
 		case 'time-comparison':
 			return false;
@@ -133,6 +150,8 @@ export function countQuestions(screen: LessonScreen): number {
 		case 'timed-passage':
 		case 'passage-quiz':
 			return screen.questions.length;
+		case 'writing-task':
+			return 1;
 		default:
 			return 0;
 	}
