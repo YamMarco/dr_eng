@@ -32,9 +32,10 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
-  "33": "registry.ts",
-  "34": "score.svelte.ts",
+  "33": "session.svelte.ts",
+  "34": "WritingTask.svelte",
   "35": "types.ts",
   "36": "LessonRunner.svelte",
-  "37": "lessonContent.ts"
+  "37": "lessonContent.ts",
+  "38": "registry.ts"
 }

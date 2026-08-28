@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-28)
 
 ## Corpus Check
-- 84 files · ~29,090 words
+- 85 files · ~30,020 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 386 nodes · 452 edges · 38 communities (23 shown, 15 thin omitted)
+- 396 nodes · 469 edges · 39 communities (23 shown, 16 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9f6f2aec`
+- Built from commit: `c0627091`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,11 +46,12 @@
 - CLAUDE.md
 - .claude/CLAUDE.md
 - extraction-spec.md
-- registry.ts
-- score.svelte.ts
+- session.svelte.ts
+- WritingTask.svelte
 - types.ts
 - LessonRunner.svelte
 - lessonContent.ts
+- registry.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `What You Must Do When Invoked` - 12 edges
@@ -79,7 +80,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 15 thin omitted)
+## Communities (39 total, 16 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -114,7 +115,7 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "lessons.ts"
-Cohesion: 0.36
+Cohesion: 0.31
 Nodes (6): getLesson(), getLessons(), Lesson, lessonsByModule, moduleCLessons, load()
 
 ### Community 9 - "compilerOptions"
@@ -149,13 +150,13 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
 
-### Community 33 - "registry.ts"
-Cohesion: 0.16
-Nodes (3): screenComponents, KEY, LessonSession
+### Community 34 - "WritingTask.svelte"
+Cohesion: 0.11
+Nodes (11): KEY, LessonScore, recordAnswer(), allFilled, allOk, checked, combinedText, primaryAction() (+3 more)
 
 ### Community 35 - "types.ts"
-Cohesion: 0.14
-Nodes (12): MarkWordScreen, McqScreen, PassageQuizQuestion, PassageQuizScreen, PrefaceScreen, QuestionPreviewScreen, StepsScreen, SummaryScreen (+4 more)
+Cohesion: 0.13
+Nodes (13): MarkWordScreen, McqScreen, PassageQuizQuestion, PassageQuizScreen, PrefaceScreen, QuestionPreviewScreen, StepsScreen, SummaryScreen (+5 more)
 
 ### Community 36 - "LessonRunner.svelte"
 Cohesion: 0.13
@@ -166,19 +167,19 @@ Cohesion: 0.25
 Nodes (6): LessonScreen, contentByLesson, LessonContent, LessonIntro, LessonPart, moduleCLesson1
 
 ## Knowledge Gaps
-- **181 isolated node(s):** `score`, `screenIndex`, `footerDisabled`, `footerLabel`, `justFinished` (+176 more)
+- **189 isolated node(s):** `checked`, `allFilled`, `punctuationOk`, `combinedText`, `wordsUsed` (+184 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `index.svelte.ts`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `score`, `screenIndex`, `footerDisabled` to the rest of the system?**
-  _181 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **What connects `checked`, `allFilled`, `punctuationOk` to the rest of the system?**
+  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**
