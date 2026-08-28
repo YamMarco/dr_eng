@@ -123,3 +123,17 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return false;
 	}
 }
+
+/** How many scored questions a screen contributes, for a fixed-denominator score badge. */
+export function countQuestions(screen: LessonScreen): number {
+	switch (screen.type) {
+		case 'mcq':
+		case 'mark-word':
+			return 1;
+		case 'timed-passage':
+		case 'passage-quiz':
+			return screen.questions.length;
+		default:
+			return 0;
+	}
+}

@@ -1,6 +1,10 @@
-// Tracks how many of the questions the student answered correctly during one
-// LessonRunner session — shared via context so any question-type screen
-// (mcq, mark-word, timed-passage, ...) can record onto it.
+// Tracks how many of the questions the student answered correctly out of the
+// part's total question count — shared via context so any question-type
+// screen (mcq, mark-word, timed-passage, ...) can record onto it.
+//
+// `total` is fixed upfront by the runner (see countQuestions in types.ts), so
+// the badge reads e.g. 1/3, 1/3, 2/3 as questions are answered — never a
+// growing denominator like 1/1, 1/2, 2/3.
 //
 // getContext/setContext only work during a component's synchronous init, not
 // from inside a later event handler — so every consumer must call
@@ -14,8 +18,8 @@ const KEY = Symbol('lesson-score');
 
 export type LessonScore = { correct: number; total: number };
 
-export function createLessonScore(): LessonScore {
-	const score = $state<LessonScore>({ correct: 0, total: 0 });
+export function createLessonScore(total: number): LessonScore {
+	const score = $state<LessonScore>({ correct: 0, total });
 	setContext(KEY, score);
 	return score;
 }
@@ -27,6 +31,5 @@ export function getLessonScore(): LessonScore {
 }
 
 export function recordAnswer(score: LessonScore, correct: boolean) {
-	score.total += 1;
 	if (correct) score.correct += 1;
 }

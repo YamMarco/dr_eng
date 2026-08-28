@@ -6,7 +6,7 @@
 	import { screenComponents } from './registry';
 	import { createLessonSession } from './session.svelte';
 	import { createLessonScore } from './score.svelte';
-	import { isScreenEmpty } from './types';
+	import { isScreenEmpty, countQuestions } from './types';
 	import type { LessonPart } from '$lib/lessonContent';
 
 	const PASS_THRESHOLD = 0.8;
@@ -26,11 +26,16 @@
 	let { part, partLabel, hasNextPart, onExit, onFinish, onFinishAndContinue }: Props = $props();
 
 	const session = createLessonSession();
-	let score = createLessonScore();
 
 	// A screen left with no real content (empty message, no options, ...) is
 	// skipped entirely rather than shown blank.
 	let screens = $derived(part.screens.filter((screen) => !isScreenEmpty(screen)));
+	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are
+	// answered — never a growing denominator like 1/1, 1/2, 2/3.
+	const totalQuestions = untrack(() =>
+		screens.reduce((sum, screen) => sum + countQuestions(screen), 0)
+	);
+	let score = createLessonScore(totalQuestions);
 
 	let screenIndex = $state(0);
 	// Bound down into whichever screen component is active. It decides when
@@ -72,7 +77,7 @@
 		footerLabel = '';
 		justFinished = false;
 		score.correct = 0;
-		score.total = 0;
+		score.total = totalQuestions;
 		for (const key of Object.keys(session)) delete session[key];
 	}
 </script>
