@@ -1,11 +1,23 @@
 <script lang="ts">
 	import type { StepsScreen } from './types';
 
-	// disabled is write-only here: always allowed, we just need it declared
-	// bindable so the runner's footer resets correctly on every screen.
-	// eslint-disable-next-line no-useless-assignment
-	let { screen, disabled = $bindable(false) }: { screen: StepsScreen; disabled?: boolean } =
-		$props();
+	let {
+		screen,
+		onAdvance,
+		// eslint-disable-next-line no-useless-assignment
+		disabled = $bindable(false),
+		// eslint-disable-next-line no-useless-assignment
+		label = $bindable('')
+	}: {
+		screen: StepsScreen;
+		onAdvance: () => void;
+		disabled?: boolean;
+		label?: string;
+	} = $props();
+
+	export function primaryAction() {
+		onAdvance();
+	}
 </script>
 
 <ol class="flex flex-col gap-4">

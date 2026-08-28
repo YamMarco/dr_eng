@@ -3,7 +3,8 @@
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { getLessonContent } from '$lib/lessonContent';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { SvelteSet } from 'svelte/reactivity';
+	import { debugStore } from '$lib/debug.svelte';
+	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -11,12 +12,15 @@
 	let mod = $derived(data.mod);
 	let lesson = $derived(data.lesson);
 	let content = $derived(getLessonContent(mod.id, lesson.id));
+	// Parts with no screens yet aren't shown at all — nothing to lowlight.
+	let visibleParts = $derived(content?.parts.filter((part) => part.screens.length > 0) ?? []);
+	let lessonKey = $derived(`${mod.id}-${lesson.id}`);
 
 	// Which part is currently open in the runner (null = showing the path).
 	let activePartIndex = $state<number | null>(null);
-	let completedParts = new SvelteSet<number>();
 
-	let activePart = $derived(activePartIndex !== null ? content?.parts[activePartIndex] : undefined);
+	let activePart = $derived(activePartIndex !== null ? visibleParts[activePartIndex] : undefined);
+	let hasNextPart = $derived(activePartIndex !== null && activePartIndex < visibleParts.length - 1);
 
 	function openPart(index: number) {
 		activePartIndex = index;
@@ -27,8 +31,14 @@
 	}
 
 	function finishPart() {
-		if (activePartIndex !== null) completedParts.add(activePartIndex);
+		if (activePartIndex !== null) lessonProgress.markCompleted(lessonKey, activePartIndex);
 		activePartIndex = null;
+	}
+
+	function finishPartAndContinue() {
+		if (activePartIndex === null) return;
+		lessonProgress.markCompleted(lessonKey, activePartIndex);
+		activePartIndex += 1;
 	}
 </script>
 
@@ -46,7 +56,7 @@
 		{/if}
 	</h1>
 
-	{#if !content}
+	{#if !content || visibleParts.length === 0}
 		<div
 			class="mt-6 flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
 		>
@@ -82,10 +92,10 @@
 
 		<!-- Duolingo-style path: a vertical row of nodes, one per part. -->
 		<ol class="mt-8 flex flex-col items-center">
-			{#each content.parts as part, i (part.id)}
-				{@const hasContent = part.screens.length > 0}
-				{@const unlocked = hasContent && (i === 0 || completedParts.has(i - 1))}
-				{@const done = completedParts.has(i)}
+			{#each visibleParts as part, i (part.id)}
+				{@const unlocked =
+					debugStore.unlockAll || i === 0 || lessonProgress.isCompleted(lessonKey, i - 1)}
+				{@const done = lessonProgress.isCompleted(lessonKey, i)}
 				<li
 					class="flex flex-col items-center transition-opacity {unlocked || done
 						? ''
@@ -144,10 +154,16 @@
 </main>
 
 {#if activePart}
-	<LessonRunner
-		part={activePart}
-		partLabel={i18n.dict.lesson.partLabel((activePartIndex ?? 0) + 1)}
-		onExit={closePart}
-		onFinish={finishPart}
-	/>
+	<!-- Keyed on the index so "continue to next part" forces a full remount
+	     instead of just handing the same runner instance a new `part` prop. -->
+	{#key activePartIndex}
+		<LessonRunner
+			part={activePart}
+			partLabel={i18n.dict.lesson.partLabel((activePartIndex ?? 0) + 1)}
+			{hasNextPart}
+			onExit={closePart}
+			onFinish={finishPart}
+			onFinishAndContinue={finishPartAndContinue}
+		/>
+	{/key}
 {/if}

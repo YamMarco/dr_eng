@@ -13,6 +13,8 @@ import TimedReading from './TimedReading.svelte';
 import QuestionPreview from './QuestionPreview.svelte';
 import TimeResult from './TimeResult.svelte';
 import TimeComparison from './TimeComparison.svelte';
+import TimedPassage from './TimedPassage.svelte';
+import PassageQuiz from './PassageQuiz.svelte';
 
 // Prop shapes differ per screen type, so this registry is intentionally
 // loosely typed at the map level; each component fully types its own props.
@@ -26,5 +28,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'timed-reading': TimedReading,
 	'question-preview': QuestionPreview,
 	'time-result': TimeResult,
-	'time-comparison': TimeComparison
+	'time-comparison': TimeComparison,
+	'timed-passage': TimedPassage,
+	'passage-quiz': PassageQuiz
 };

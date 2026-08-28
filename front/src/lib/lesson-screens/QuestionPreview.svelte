@@ -1,13 +1,23 @@
 <script lang="ts">
 	import type { QuestionPreviewScreen } from './types';
 
-	// disabled is write-only here: always allowed, we just need it declared
-	// bindable so the runner's footer resets correctly on every screen.
 	let {
 		screen,
+		onAdvance,
 		// eslint-disable-next-line no-useless-assignment
-		disabled = $bindable(false)
-	}: { screen: QuestionPreviewScreen; disabled?: boolean } = $props();
+		disabled = $bindable(false),
+		// eslint-disable-next-line no-useless-assignment
+		label = $bindable('')
+	}: {
+		screen: QuestionPreviewScreen;
+		onAdvance: () => void;
+		disabled?: boolean;
+		label?: string;
+	} = $props();
+
+	export function primaryAction() {
+		onAdvance();
+	}
 </script>
 
 <p class="font-semibold">{screen.intro}</p>

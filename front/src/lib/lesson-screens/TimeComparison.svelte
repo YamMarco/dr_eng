@@ -2,17 +2,27 @@
 	import type { TimeComparisonScreen } from './types';
 	import { getLessonSession } from './session.svelte';
 
-	// disabled is write-only here: always allowed, we just need it declared
-	// bindable so the runner's footer resets correctly on every screen.
 	let {
 		screen,
+		onAdvance,
 		// eslint-disable-next-line no-useless-assignment
-		disabled = $bindable(false)
-	}: { screen: TimeComparisonScreen; disabled?: boolean } = $props();
+		disabled = $bindable(false),
+		// eslint-disable-next-line no-useless-assignment
+		label = $bindable('')
+	}: {
+		screen: TimeComparisonScreen;
+		onAdvance: () => void;
+		disabled?: boolean;
+		label?: string;
+	} = $props();
 
 	const session = getLessonSession();
 	let aMs = $derived(session[screen.aKey] ?? 0);
 	let bMs = $derived(session[screen.bKey] ?? 0);
+
+	export function primaryAction() {
+		onAdvance();
+	}
 </script>
 
 <div class="flex flex-col gap-3">

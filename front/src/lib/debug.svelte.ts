@@ -2,19 +2,30 @@
 // Lives outside the settings page since it has to be readable from the root
 // layout, not just the settings screen — same pattern as i18n's language.
 
-const STORAGE_KEY = 'debug-tools-enabled';
+const ENABLED_KEY = 'debug-tools-enabled';
+const UNLOCK_ALL_KEY = 'debug-unlock-all';
 
-function loadInitial(): boolean {
-	if (typeof localStorage === 'undefined') return false;
-	return localStorage.getItem(STORAGE_KEY) === 'true';
+function loadBool(key: string, defaultValue: boolean): boolean {
+	if (typeof localStorage === 'undefined') return defaultValue;
+	const stored = localStorage.getItem(key);
+	return stored === null ? defaultValue : stored === 'true';
 }
 
 class DebugStore {
-	enabled = $state(loadInitial());
+	// Defaults to open during this build phase — flip off in settings once
+	// the app is closer to shipping.
+	enabled = $state(loadBool(ENABLED_KEY, true));
+	/** Bypasses the sequential lock on lesson sub-lessons, for QA. */
+	unlockAll = $state(loadBool(UNLOCK_ALL_KEY, false));
 
 	setEnabled(value: boolean) {
 		this.enabled = value;
-		if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, String(value));
+		if (typeof localStorage !== 'undefined') localStorage.setItem(ENABLED_KEY, String(value));
+	}
+
+	setUnlockAll(value: boolean) {
+		this.unlockAll = value;
+		if (typeof localStorage !== 'undefined') localStorage.setItem(UNLOCK_ALL_KEY, String(value));
 	}
 }
 

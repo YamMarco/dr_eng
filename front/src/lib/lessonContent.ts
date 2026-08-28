@@ -17,7 +17,7 @@ export type { LessonScreen };
 export type LessonPart = {
 	id: string;
 	titleHe: string;
-	/** Empty = content not written yet (node shows lowlighted, not clickable). */
+	/** Empty = content not written yet — the node is skipped from the path entirely. */
 	screens: LessonScreen[];
 };
 
@@ -49,7 +49,7 @@ const moduleCLesson1: LessonContent = {
 				// Transition into the exercise, right before it starts.
 				{
 					type: 'preface',
-					text: 'מעולה! עכשיו ננסה את זה על אמת — יהיו לנו טקסט ושאלות, פעם בסדר אחד ופעם בסדר הפוך.'
+					text: 'מעולה! עכשיו ננסה את זה על אמת — יהיו לנו טקסט ושאלות, פעם בסדר אחד ופעם בסדר הפוך. יהיה גם טיימר, כדי שתרגישו את ההבדל במהירות ולא רק בהרגשה.'
 				},
 				{
 					type: 'timed-reading',
@@ -111,10 +111,25 @@ const moduleCLesson1: LessonContent = {
 					tieMessage:
 						'גם אם הפעם הזמן דומה — בטקסט ארוך ואמיתי ההבדל הרבה יותר משמעותי. קודם שאלות, תמיד.'
 				},
+				{
+					type: 'summary',
+					title: '🗂 כרטיס שיטה 1 — שאלות קודם',
+					lines: [
+						'קרא שאלות ← סמן מילת שאלה ← רק אז קרא את הטקסט',
+						'Who=מי · What=מה · When=מתי · Where=איפה · Why=למה (because!) · How=איך',
+						'פגשת תשובה תוך כדי קריאה? ענה מיד'
+					]
+				}
+			]
+		},
+		{
+			id: 'mark-question-words',
+			titleHe: 'זיהוי מילות שאלה במשפט',
+			screens: [
 				// Step 2, right before the exercise that practices it.
 				{
 					type: 'preface',
-					text: 'צעד 2: סמן בכל שאלה את מילת השאלה: Who = אדם · What = דבר או פעולה · When = זמן · Where = מקום · Why = סיבה (חפש because) · How = איך. עכשיו נסמן ביחד. בכל משפט, הקישו על המילה שהיא מילת השאלה. נתחיל בעברית כדי לוודא שהרעיון ברור, ואז נעבור לאנגלית.'
+					text: 'צעד 2: סמן בכל שאלה את מילת השאלה: Who = אדם · What = דבר או פעולה · When = זמן · Where = מקום · Why = סיבה (חפש because) · How = איך.'
 				},
 				{ type: 'mark-word', sentence: 'מי הלך אתמול לבית הספר?', correctWordIndex: 0, dir: 'rtl' },
 				{
@@ -136,7 +151,69 @@ const moduleCLesson1: LessonContent = {
 					correctWordIndex: 0,
 					dir: 'ltr'
 				},
-				{ type: 'mark-word', sentence: 'What made her laugh?', correctWordIndex: 0, dir: 'ltr' },
+				{ type: 'mark-word', sentence: 'What made her laugh?', correctWordIndex: 0, dir: 'ltr' }
+			]
+		},
+		{
+			id: 'read-once-answer-immediately',
+			titleHe: 'קרא פעם אחת וענה מיד',
+			screens: [
+				{
+					type: 'preface',
+					text: 'צעד 3: קרא את הטקסט פעם אחת בלבד — וכשאתה פוגש תשובה, ענה מיד. לא לחכות לסוף.'
+				},
+				{
+					type: 'timed-passage',
+					label: 'קטע 1',
+					timerKey: 'step3A',
+					text: 'נועה הגיעה לספרייה בשעה ארבע אחר הצהריים כדי להחזיר שני ספרים. בדרך היא פגשה את השכנה שלה ודיברו כמה דקות על מזג האוויר. כשנכנסה לספרייה, נועה גם שאלה את הספרן אם הגיע ספר חדש שהזמינה, אבל הוא ענה שהוא עוד לא הגיע.',
+					questions: [
+						{
+							prompt: 'מתי נועה הגיעה לספרייה?',
+							options: ['בשתיים', 'בשלוש', 'בארבע', 'בחמש'],
+							correctIndex: 2
+						},
+						{
+							prompt: 'מה נועה שאלה את הספרן?',
+							options: [
+								'אם יש ספר חדש שהיא הזמינה',
+								'איך מגיעים הביתה',
+								'כמה עולה כרטיס ספרייה',
+								'מתי הספרייה נסגרת'
+							],
+							correctIndex: 0
+						}
+					]
+				},
+				{
+					type: 'timed-passage',
+					label: 'קטע 2',
+					timerKey: 'step3B',
+					text: 'רון תכנן לנסוע לעבודה ברכבת השמונה, אבל התעורר מאוחר ופספס אותה. הוא חיכה לרכבת הבאה שיצאה רק בשמונה וחצי. בגלל האיחור, הוא שלח הודעה לבוס שלו כדי להסביר שהוא יגיע קצת אחרי תשע.',
+					questions: [
+						{
+							prompt: 'לאיזו רכבת רון פספס?',
+							options: ['לרכבת שבע', 'לרכבת שמונה', 'לרכבת תשע', 'לרכבת עשר'],
+							correctIndex: 1
+						},
+						{
+							prompt: 'למה רון שלח הודעה לבוס?',
+							options: [
+								'כדי לבקש יום חופש',
+								'כדי להסביר שהוא יאחר',
+								'כדי לשאול שאלה על העבודה',
+								'כדי לבטל פגישה'
+							],
+							correctIndex: 1
+						}
+					]
+				}
+			]
+		},
+		{
+			id: 'test-1',
+			titleHe: 'מבחן קצר',
+			screens: [
 				{
 					type: 'summary',
 					title: '🗂 כרטיס שיטה 1 — שאלות קודם',
@@ -145,12 +222,50 @@ const moduleCLesson1: LessonContent = {
 						'Who=מי · What=מה · When=מתי · Where=איפה · Why=למה (because!) · How=איך',
 						'פגשת תשובה תוך כדי קריאה? ענה מיד'
 					]
+				},
+				{
+					type: 'summary',
+					title: 'חמש מילים שיצילו אותך בטקסט (קרא לפני!)',
+					lines: [
+						'first day = יום ראשון (במקום חדש)',
+						'gets up = קם (מהשינה)',
+						'breakfast = ארוחת בוקר',
+						'neighbor = שכן',
+						'gives = נותן'
+					]
+				},
+				{
+					type: 'passage-quiz',
+					text: 'Today is Dan\'s first day at his new school in Haifa. He gets up at seven o\'clock and eats breakfast with his mother. At eight, he walks to school with his new neighbor, Omer. The teacher, Mrs. Levi, gives Dan a book and a notebook. In the English lesson, Dan answers a question — and his answer is right! After school, Dan tells his mother: "I love my new school!"',
+					questions: [
+						{
+							prompt: 'Who walks to school with Dan?',
+							keywords: ['omer'],
+							answerHint: 'Omer (his new neighbor)',
+							points: 10
+						},
+						{
+							prompt: 'When does Dan get up?',
+							keywords: ['seven'],
+							answerHint: "at seven (o'clock)",
+							points: 10
+						},
+						{
+							prompt: 'What does the teacher give Dan?',
+							keywords: ['book', 'notebook'],
+							answerHint: 'a book and a notebook',
+							points: 10
+						},
+						{
+							prompt: "Where is Dan's new school?",
+							keywords: ['haifa'],
+							answerHint: 'in Haifa',
+							points: 10
+						}
+					]
 				}
 			]
-		},
-		// Placeholder: sub-lesson not written yet. Shows up on the path
-		// lowlighted and non-clickable.
-		{ id: 'coming-soon-2', titleHe: 'בקרוב', screens: [] }
+		}
 	]
 };
 

@@ -48,14 +48,23 @@ export const he = {
 		doneButton: 'סיום',
 		completeTitle: 'כל הכבוד!',
 		completeDesc: 'סיימת את החלק הזה.',
-		backToPath: 'חזרה למסלול'
+		backToPath: 'חזרה למסלול',
+		scoreLabel: 'תשובות נכונות',
+		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
+		nextQuestionButton: 'הבא',
+		continueNextPart: 'המשך לחלק הבא',
+		retryButton: 'נסה שוב',
+		failTitle: 'כמעט!',
+		failDesc: (percent: number) =>
+			`כדי להמשיך צריך לפחות ${percent}% תשובות נכונות. אפשר לנסות שוב.`
 	},
 	// Shown as a small badge before each exercise screen, so the student
 	// knows what they're about to do before it starts.
 	exerciseKind: {
 		mcq: 'שאלה',
 		markWord: 'תרגיל: סמנו מילה',
-		timedReading: 'תרגיל מתוזמן: קריאה'
+		timedReading: 'תרגיל מתוזמן: קריאה',
+		submitButton: 'בדיקה'
 	},
 	examStart: {
 		titlePrefix: 'הבנה למבחן — מודול',

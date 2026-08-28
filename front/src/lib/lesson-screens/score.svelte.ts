@@ -1,0 +1,32 @@
+// Tracks how many of the questions the student answered correctly during one
+// LessonRunner session — shared via context so any question-type screen
+// (mcq, mark-word, timed-passage, ...) can record onto it.
+//
+// getContext/setContext only work during a component's synchronous init, not
+// from inside a later event handler — so every consumer must call
+// getLessonScore() once at the top of its script (like getLessonSession())
+// and hang onto the returned object, then mutate it directly (or via
+// recordAnswer) whenever an answer is checked.
+
+import { getContext, setContext } from 'svelte';
+
+const KEY = Symbol('lesson-score');
+
+export type LessonScore = { correct: number; total: number };
+
+export function createLessonScore(): LessonScore {
+	const score = $state<LessonScore>({ correct: 0, total: 0 });
+	setContext(KEY, score);
+	return score;
+}
+
+export function getLessonScore(): LessonScore {
+	const score = getContext<LessonScore>(KEY);
+	if (!score) throw new Error('getLessonScore() called outside a LessonRunner');
+	return score;
+}
+
+export function recordAnswer(score: LessonScore, correct: boolean) {
+	score.total += 1;
+	if (correct) score.correct += 1;
+}

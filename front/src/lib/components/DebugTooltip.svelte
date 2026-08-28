@@ -1,6 +1,8 @@
 <script lang="ts">
 	// Dev-only floating widget, shown when the "כלי דיבוג" setting is on.
 	// Hover (or focus, for keyboard) the badge to reveal the panel.
+	import { debugStore } from '$lib/debug.svelte';
+	import { lessonProgress } from '$lib/lessonProgress.svelte';
 </script>
 
 <div class="group fixed inset-e-4 bottom-20 z-40">
@@ -18,10 +20,19 @@
 		<p class="mb-2 text-xs font-semibold text-muted">כלי דיבוג</p>
 		<button
 			type="button"
-			onclick={() => console.log('debug: placeholder button clicked')}
-			class="w-full rounded-xl border-2 border-line px-3 py-2 text-sm font-semibold transition hover:border-brand"
+			onclick={() => debugStore.setUnlockAll(!debugStore.unlockAll)}
+			class="w-full rounded-xl border-2 px-3 py-2 text-sm font-semibold transition {debugStore.unlockAll
+				? 'border-brand bg-brand-soft text-brand-dark'
+				: 'border-line hover:border-brand'}"
 		>
-			כפתור לדוגמה
+			{debugStore.unlockAll ? '✅ הכול פתוח' : 'פתח את כל השיעורים'}
+		</button>
+		<button
+			type="button"
+			onclick={() => lessonProgress.resetAll()}
+			class="mt-2 w-full rounded-xl border-2 border-line px-3 py-2 text-sm font-semibold transition hover:border-brand"
+		>
+			אפס התקדמות בכל השיעורים
 		</button>
 	</div>
 </div>
