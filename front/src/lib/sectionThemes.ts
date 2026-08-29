@@ -1,10 +1,10 @@
 // Color theming for the continuous lesson path (see
-// routes/.../lessons/+page.svelte). Each lesson acts as one "zone" — its
-// parts are the path nodes, its title is the zone banner — so this is just a
-// small palette cycled by the lesson's position among lessons that actually
-// have content. Purely visual, scoped to that one page.
+// routes/.../lessons/+page.svelte). Each section is one colored zone — its
+// lessons are the path nodes, its title is the zone banner — so this is just
+// a small palette cycled by the section's position among sections that
+// actually have content. Purely visual, scoped to that one page.
 
-export type ZoneTheme = {
+export type SectionTheme = {
 	/** Node circle background + text when unlocked. */
 	node: string;
 	/** Node circle background + text once completed. */
@@ -13,7 +13,7 @@ export type ZoneTheme = {
 	banner: string;
 };
 
-const PALETTE: ZoneTheme[] = [
+const PALETTE: SectionTheme[] = [
 	{
 		node: 'bg-teal-500 text-white',
 		nodeDone: 'bg-teal-100 text-teal-700',
@@ -41,6 +41,6 @@ const PALETTE: ZoneTheme[] = [
 	}
 ];
 
-export function themeForZoneIndex(index: number): ZoneTheme {
+export function themeForSectionIndex(index: number): SectionTheme {
 	return PALETTE[index % PALETTE.length];
 }

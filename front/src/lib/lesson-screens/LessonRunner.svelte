@@ -7,29 +7,30 @@
 	import { createLessonSession } from './session.svelte';
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
-	import type { LessonPart } from '$lib/lessonContent';
+	import type { Lesson } from '$lib/sectionContent';
 
 	const PASS_THRESHOLD = 0.8;
 
 	type Props = {
-		part: LessonPart;
-		partLabel: string;
-		hasNextPart: boolean;
-		/** Leaving mid-exercise (or after a failed attempt) — never marks the part complete. */
+		lesson: Lesson;
+		lessonLabel: string;
+		hasNextLesson: boolean;
+		/** Leaving mid-exercise (or after a failed attempt) — never marks the lesson complete. */
 		onExit: () => void;
-		/** Finished with a passing score — parent marks the part complete and closes the runner. */
+		/** Finished with a passing score — parent marks the lesson complete and closes the runner. */
 		onFinish: () => void;
-		/** Finished with a passing score and there's a next part — marks complete and opens it. */
+		/** Finished with a passing score and there's a next lesson — marks complete and opens it. */
 		onFinishAndContinue: () => void;
 	};
 
-	let { part, partLabel, hasNextPart, onExit, onFinish, onFinishAndContinue }: Props = $props();
+	let { lesson, lessonLabel, hasNextLesson, onExit, onFinish, onFinishAndContinue }: Props =
+		$props();
 
 	const session = createLessonSession();
 
 	// A screen left with no real content (empty message, no options, ...) is
 	// skipped entirely rather than shown blank.
-	let screens = $derived(part.screens.filter((screen) => !isScreenEmpty(screen)));
+	let screens = $derived(lesson.screens.filter((screen) => !isScreenEmpty(screen)));
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are
 	// answered — never a growing denominator like 1/1, 1/2, 2/3.
 	const totalQuestions = untrack(() =>
@@ -50,7 +51,7 @@
 	// can't be typed more precisely than this without losing that genericity.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screenInstance = $state<any>(null);
-	// One-time read: `part` (and so `screens`) is fixed for this instance's
+	// One-time read: `lesson` (and so `screens`) is fixed for this instance's
 	// lifetime, so only the initial emptiness matters here.
 	let justFinished = $state(untrack(() => screens.length === 0));
 
@@ -60,7 +61,7 @@
 	let primaryLabel = $derived(
 		footerLabel || (isLastScreen ? i18n.dict.lesson.doneButton : i18n.dict.lesson.continueButton)
 	);
-	// A part with no scored questions (pure teaching content) can't be failed.
+	// A lesson with no scored questions (pure teaching content) can't be failed.
 	let passed = $derived(score.total === 0 || score.correct / score.total >= PASS_THRESHOLD);
 
 	function advance() {
@@ -83,7 +84,7 @@
 </script>
 
 <div class="fixed inset-0 z-50 flex flex-col bg-canvas">
-	<AppBar title={partLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel} />
+	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel} />
 
 	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-6 pb-6">
 		{#if justFinished}
@@ -155,10 +156,10 @@
 		<div class="mx-auto flex max-w-lg flex-col gap-3">
 			{#if justFinished}
 				{#if passed}
-					{#if hasNextPart}
-						<Button onclick={onFinishAndContinue}>{i18n.dict.lesson.continueNextPart}</Button>
+					{#if hasNextLesson}
+						<Button onclick={onFinishAndContinue}>{i18n.dict.lesson.continueNextLesson}</Button>
 					{/if}
-					<Button variant={hasNextPart ? 'secondary' : 'primary'} onclick={onFinish}>
+					<Button variant={hasNextLesson ? 'secondary' : 'primary'} onclick={onFinish}>
 						{i18n.dict.lesson.backToPath}
 					</Button>
 				{:else}

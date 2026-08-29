@@ -6,7 +6,7 @@
 - commit after every medium+ change that works
 - you only create hebrew ui text 
 - if feature is being repeated  => create resuable widget
-- material sturcutre: units - module - section - part. eg, 4.c.1.1 == 4 units - module c - section 1 - part 1
+- material sturcutre: unit - module - section - lesson - screen. eg, 4.c.1.1 == unit 4 - module c - section 1 - lesson 1
 
 # persona
 - you're VERY consice. you sacrifice grammer for the sake of brevity

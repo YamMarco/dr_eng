@@ -1,9 +1,14 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
-	import { getLessons } from '$lib/lessons';
-	import { getLessonContent, type LessonIntro, type LessonPart } from '$lib/lessonContent';
-	import { themeForZoneIndex, type ZoneTheme } from '$lib/zones';
+	import { getSections } from '$lib/sections';
+	import {
+		getSectionContent,
+		getModulePreface,
+		type SectionIntro,
+		type Lesson
+	} from '$lib/sectionContent';
+	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -15,36 +20,64 @@
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 
 	type PathNode = {
-		part: LessonPart;
-		lessonId: number;
-		partIndexInLesson: number;
-		isFirstOfLesson: boolean;
-		zoneTitle: string;
-		zoneIntro?: LessonIntro;
-		theme: ZoneTheme;
+		lesson: Lesson;
+		sectionId: number;
+		lessonIndexInSection: number;
+		isFirstOfSection: boolean;
+		sectionTitle: string;
+		sectionIntro?: SectionIntro;
+		theme: SectionTheme;
 	};
 
-	// The whole module as one continuous path: every lesson's non-empty parts,
-	// back to back. A lesson with no content yet contributes nothing — same
-	// "empty = skipped" rule as within a single lesson. Each lesson acts as one
-	// colored zone; its parts are the actual clickable nodes.
+	// A neutral, non-palette color so this doesn't shift the section color
+	// cycling — it isn't really a section, just the module's opening node.
+	const introTheme: SectionTheme = {
+		node: 'bg-brand text-white',
+		nodeDone: 'bg-brand-soft text-brand-dark',
+		banner: ''
+	};
+
+	// The whole module as one continuous path: an optional module-preface
+	// node first, then every section's non-empty lessons, back to back. A
+	// section with no content yet contributes nothing — same "empty =
+	// skipped" rule as within a single section. Each section acts as one
+	// colored zone; its lessons are the actual clickable nodes.
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
+
+		const preface = getModulePreface(mod.id);
+		if (preface) {
+			const prefaceLesson: Lesson = {
+				id: 'module-preface',
+				titleHe: 'לפני שמתחילים',
+				screens: [{ type: 'preface', text: preface.text }]
+			};
+			result.push({
+				lesson: prefaceLesson,
+				sectionId: 0,
+				lessonIndexInSection: 0,
+				isFirstOfSection: false,
+				sectionTitle: '',
+				sectionIntro: undefined,
+				theme: introTheme
+			});
+		}
+
 		let zoneIndex = 0;
-		for (const lesson of getLessons(mod.id)) {
-			const content = getLessonContent(mod.id, lesson.id);
-			const parts = content?.parts.filter((part) => part.screens.length > 0) ?? [];
-			if (parts.length === 0) continue;
-			const theme = themeForZoneIndex(zoneIndex);
+		for (const section of getSections(mod.id)) {
+			const content = getSectionContent(mod.id, section.id);
+			const lessons = content?.lessons.filter((lesson) => lesson.screens.length > 0) ?? [];
+			if (lessons.length === 0) continue;
+			const theme = themeForSectionIndex(zoneIndex);
 			zoneIndex += 1;
-			parts.forEach((part, partIndexInLesson) => {
+			lessons.forEach((lesson, lessonIndexInSection) => {
 				result.push({
-					part,
-					lessonId: lesson.id,
-					partIndexInLesson,
-					isFirstOfLesson: partIndexInLesson === 0,
-					zoneTitle: lesson.titleHe,
-					zoneIntro: partIndexInLesson === 0 ? content?.intro : undefined,
+					lesson,
+					sectionId: section.id,
+					lessonIndexInSection,
+					isFirstOfSection: lessonIndexInSection === 0,
+					sectionTitle: section.titleHe,
+					sectionIntro: lessonIndexInSection === 0 ? content?.intro : undefined,
 					theme
 				});
 			});
@@ -52,13 +85,13 @@
 		return result;
 	});
 
-	function lessonKeyOf(node: PathNode) {
-		return `${mod.id}-${node.lessonId}`;
+	function sectionKeyOf(node: PathNode) {
+		return `${mod.id}-${node.sectionId}`;
 	}
 
 	function isDone(index: number) {
 		const node = nodes[index];
-		return lessonProgress.isCompleted(lessonKeyOf(node), node.partIndexInLesson);
+		return lessonProgress.isCompleted(sectionKeyOf(node), node.lessonIndexInSection);
 	}
 
 	function isUnlocked(index: number) {
@@ -69,7 +102,7 @@
 	let activeIndex = $state<number | null>(null);
 
 	let activeNode = $derived(activeIndex !== null ? nodes[activeIndex] : undefined);
-	let hasNextPart = $derived(activeIndex !== null && activeIndex < nodes.length - 1);
+	let hasNextLesson = $derived(activeIndex !== null && activeIndex < nodes.length - 1);
 
 	function openNode(index: number) {
 		activeIndex = index;
@@ -82,7 +115,7 @@
 	function finishNode() {
 		if (activeIndex !== null) {
 			const node = nodes[activeIndex];
-			lessonProgress.markCompleted(lessonKeyOf(node), node.partIndexInLesson);
+			lessonProgress.markCompleted(sectionKeyOf(node), node.lessonIndexInSection);
 		}
 		activeIndex = null;
 	}
@@ -90,12 +123,12 @@
 	function finishNodeAndContinue() {
 		if (activeIndex === null) return;
 		const node = nodes[activeIndex];
-		lessonProgress.markCompleted(lessonKeyOf(node), node.partIndexInLesson);
+		lessonProgress.markCompleted(sectionKeyOf(node), node.lessonIndexInSection);
 		activeIndex += 1;
 	}
 
 	// A repeating left/right wave so the whole module reads as one continuous
-	// winding path, with zone banners just breaking it up visually.
+	// winding path, with section banners just breaking it up visually.
 	const WAVE = [0, 64, 96, 64, 0, -64, -96, -64];
 	function waveOffset(index: number): number {
 		return WAVE[index % WAVE.length];
@@ -130,23 +163,25 @@
 		</div>
 	{:else}
 		<div class="flex flex-col items-center">
-			{#each nodes as node, i (node.lessonId + '-' + node.partIndexInLesson)}
+			{#each nodes as node, i (node.sectionId + '-' + node.lessonIndexInSection)}
 				{@const unlocked = isUnlocked(i)}
 				{@const done = isDone(i)}
 
-				{#if node.isFirstOfLesson}
+				{#if node.isFirstOfSection}
 					<div
 						class="mt-8 w-full max-w-xs rounded-2xl px-4 py-3 text-center shadow-md first:mt-0 {node
 							.theme.banner}"
 					>
-						<span class="text-sm font-bold">{node.zoneTitle}</span>
+						<span class="text-sm font-bold">{node.sectionTitle}</span>
 					</div>
-					{#if node.zoneIntro}
+					{#if node.sectionIntro}
 						<div
 							class="mt-4 w-full rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70"
 						>
-							<p class="leading-relaxed">{node.zoneIntro.greeting}</p>
-							<p class="mt-3 leading-relaxed font-semibold">{node.zoneIntro.goal}</p>
+							<p class="leading-relaxed">{node.sectionIntro.greeting}</p>
+							{#if node.sectionIntro.goal}
+								<p class="mt-3 leading-relaxed font-semibold">{node.sectionIntro.goal}</p>
+							{/if}
 						</div>
 					{/if}
 				{/if}
@@ -160,7 +195,7 @@
 					<button
 						type="button"
 						disabled={!unlocked}
-						title={unlocked ? undefined : i18n.dict.lesson.partLocked}
+						title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
 						onclick={() => openNode(i)}
 						class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-2xl font-extrabold shadow-md transition {unlocked
 							? done
@@ -199,7 +234,7 @@
 							</svg>
 						{/if}
 					</button>
-					<span class="mt-2 max-w-32 text-center text-sm font-semibold">{node.part.titleHe}</span>
+					<span class="mt-2 max-w-32 text-center text-sm font-semibold">{node.lesson.titleHe}</span>
 				</div>
 			{/each}
 		</div>
@@ -207,13 +242,13 @@
 </main>
 
 {#if activeNode}
-	<!-- Keyed so "continue to next part" forces a full remount instead of just
-	     handing the same runner instance a new `part` prop. -->
+	<!-- Keyed so "continue to next lesson" forces a full remount instead of
+	     just handing the same runner instance a new `lesson` prop. -->
 	{#key activeIndex}
 		<LessonRunner
-			part={activeNode.part}
-			partLabel={i18n.dict.lesson.partLabel((activeIndex ?? 0) + 1)}
-			{hasNextPart}
+			lesson={activeNode.lesson}
+			lessonLabel={i18n.dict.lesson.lessonLabel((activeIndex ?? 0) + 1)}
+			{hasNextLesson}
 			onExit={closeNode}
 			onFinish={finishNode}
 			onFinishAndContinue={finishNodeAndContinue}

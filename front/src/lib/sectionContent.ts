@@ -1,43 +1,46 @@
-// Structured content for individual lessons. A lesson without an entry here
-// falls back to the generic "coming soon" placeholder on the lesson page.
+// Structured content for a module's sections. A section without an entry
+// here falls back to the generic "coming soon" placeholder.
 //
 // Content strings are authored Hebrew teaching material (not UI chrome), so
 // they aren't run through the i18n dictionaries — same convention as
 // curriculum.ts section labels.
 //
-// Each part is just a flat, declarative list of screens — plug in a message
-// or a question, no new code needed. See lesson-screens/types.ts for the
-// available screen shapes and lesson-screens/registry.ts for how they're
-// rendered.
+// A section's `lessons` array is a flat, declarative list — plug in a
+// message or a question, no new code needed. See lesson-screens/types.ts for
+// the available screen shapes and lesson-screens/registry.ts for how
+// they're rendered. Cascade: unit → module → section → lesson → screen.
 
 import type { LessonScreen } from './lesson-screens/types';
 
 export type { LessonScreen };
 
-export type LessonPart = {
+export type Lesson = {
 	id: string;
 	titleHe: string;
 	/** Empty = content not written yet — the node is skipped from the path entirely. */
 	screens: LessonScreen[];
 };
 
-export type LessonIntro = {
+export type SectionIntro = {
 	greeting: string;
-	goal: string;
+	goal?: string;
 };
 
-export type LessonContent = {
-	intro?: LessonIntro;
-	parts: LessonPart[];
+export type SectionContent = {
+	intro?: SectionIntro;
+	lessons: Lesson[];
 };
 
-const moduleCLesson1: LessonContent = {
+// The real section 1 content (the detective-reading-strategy material) —
+// kept for later, not currently served (see contentBySection below). Do not
+// delete: this is the actual authored lesson, just set aside for now.
+export const archivedSectionOneContent: SectionContent = {
 	intro: {
 		greeting:
 			'💬 ברוך הבא לאקדמיית הבלשים. מהיום, כל טקסט באנגלית הוא זירת חקירה — ואתה הבלש. וסוד ראשון שמורידים איתו חצי מהפחד: בלש לא צריך להבין כל פרט בזירה כדי לפתור את התיק. הוא צריך לדעת מה לחפש. אף אחד לא מבין כל מילה — גם התלמידים הכי חזקים. בקורס הזה תלמד לפתור את התיק גם כשלא הבנת הכול. זו בדיוק המיומנות שהבחינה בודקת.',
 		goal: '🎯 בסוף השיעור תדע: לקרוא שאלות לפני הטקסט, לזהות 6 מילות שאלה, ולכתוב 3 משפטים נכונים באנגלית — בעצמך.'
 	},
-	parts: [
+	lessons: [
 		{
 			id: 'read-questions-first',
 			titleHe: 'קריאת השאלות לפני הטקסט',
@@ -345,48 +348,95 @@ const moduleCLesson1: LessonContent = {
 	]
 };
 
-// Mockup only — placeholder content so the zone-color transition between
-// lesson 1 and lesson 2 is visible on the continuous path. Not real material.
-const moduleCLesson2: LessonContent = {
+// Mockup only — 3 sections × 2 lessons each, so the zone-color transitions
+// between sections are visible on the continuous path. Not real material.
+function mockLesson(id: string, titleHe: string, promptWord: string, answer: string): Lesson {
+	return {
+		id,
+		titleHe,
+		screens: [
+			{ type: 'preface', text: `(מוקאפ) תוכן לדוגמה עבור "${titleHe}".` },
+			{
+				type: 'mcq',
+				prompt: `(מוקאפ) מה זה "${promptWord}"?`,
+				options: ['תשובה א', answer, 'תשובה ג', 'תשובה ד'],
+				correctIndex: 1
+			}
+		]
+	};
+}
+
+// Section 1 is real content now — "Eye Catchers": noticing the words a
+// question is really built around. Section's own lesson 2+ is still a
+// mockup placeholder until that content is written.
+const eyeCatchersSection: SectionContent = {
 	intro: {
-		greeting: '💬 (מוקאפ) עכשיו נכיר את האנשים סביבך — משפחה, חברים ואנשים בבית הספר.',
-		goal: '🎯 (מוקאפ) בסוף השיעור תדע: לתאר אנשים סביבך במשפטים פשוטים.'
+		greeting: 'Can you spot them?'
 	},
-	parts: [
+	lessons: [
 		{
-			id: 'mock-people-1',
-			titleHe: '(מוקאפ) אנשים במשפחה',
+			id: 'eye-catcher-words',
+			titleHe: '4 מילים לפני שמתחילים',
 			screens: [
-				{ type: 'preface', text: '(מוקאפ) זהו תוכן דמה לבדיקת המעבר בין שיעור 1 לשיעור 2.' },
 				{
-					type: 'mcq',
-					prompt: '(מוקאפ) מי זה "sister"?',
-					options: ['אח', 'אחות', 'חבר', 'שכן'],
-					correctIndex: 1
+					type: 'summary',
+					title: '4 מילים שצריך להכיר לפני שמתחילים:',
+					lines: [
+						'volunteer = מתנדב/ת',
+						'benefit = יתרון / תועלת',
+						'effective = יעיל/ה',
+						'replace = להחליף'
+					]
 				}
 			]
 		},
-		{
-			id: 'mock-people-2',
-			titleHe: '(מוקאפ) חברים ושכנים',
-			screens: [
-				{ type: 'preface', text: '(מוקאפ) חלק שני, עדיין בתוך אותו אזור צבע (שיעור 2).' },
-				{
-					type: 'mcq',
-					prompt: '(מוקאפ) מי זה "neighbor"?',
-					options: ['מורה', 'שכן', 'אח', 'חבר'],
-					correctIndex: 1
-				}
-			]
-		}
+		mockLesson('mock-1-2', '(מוקאפ) שיעור א׳.2', 'book', 'ספר')
 	]
 };
 
-const contentByLesson: Record<string, LessonContent> = {
-	'c-1': moduleCLesson1,
-	'c-2': moduleCLesson2
+const mockSection2: SectionContent = {
+	intro: {
+		greeting: '💬 (מוקאפ) עוברים ליחידה ב׳.',
+		goal: '🎯 (מוקאפ) עוד שני דברים בסיסיים.'
+	},
+	lessons: [
+		mockLesson('mock-2-1', '(מוקאפ) שיעור ב׳.1', 'friend', 'חבר'),
+		mockLesson('mock-2-2', '(מוקאפ) שיעור ב׳.2', 'school', 'בית ספר')
+	]
 };
 
-export function getLessonContent(moduleId: string, lessonId: number): LessonContent | undefined {
-	return contentByLesson[`${moduleId.toLowerCase()}-${lessonId}`];
+const mockSection3: SectionContent = {
+	intro: {
+		greeting: '💬 (מוקאפ) יחידה ג׳ — האחרונה במוקאפ.',
+		goal: '🎯 (מוקאפ) עוד שני דברים בסיסיים.'
+	},
+	lessons: [
+		mockLesson('mock-3-1', '(מוקאפ) שיעור ג׳.1', 'family', 'משפחה'),
+		mockLesson('mock-3-2', '(מוקאפ) שיעור ג׳.2', 'teacher', 'מורה')
+	]
+};
+
+// A one-time message shown above the whole continuous path, before any
+// section — introduces the module as a whole rather than one specific
+// section/lesson.
+export type ModulePreface = { text: string };
+
+const modulePrefaceByModule: Record<string, ModulePreface> = {
+	c: {
+		text: 'לפני שמתחילים.\nבין כל שאלוני האנגלית — קריאה, כתיבה, דיבור — יש משהו משותף.\nכולם בודקים את אותן יכולות, עם אותם סוגי שאלות.\nמה שאתה בונה כאן הוא לא מיומנות לשאלון אחד.\nאתה בונה שיטה ואוצר מילים שיעבדו בכל שאלוני האנגלית שתיפגוש — קריאה, כתיבה ודיבור.\nהמילים שתלמד. הדרך שבה תקרא שאלה. הדרך שבה תבדוק שהבנת.\nהכל מתחבר.'
+	}
+};
+
+export function getModulePreface(moduleId: string): ModulePreface | undefined {
+	return modulePrefaceByModule[moduleId.toLowerCase()];
+}
+
+const contentBySection: Record<string, SectionContent> = {
+	'c-1': eyeCatchersSection,
+	'c-2': mockSection2,
+	'c-3': mockSection3
+};
+
+export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {
+	return contentBySection[`${moduleId.toLowerCase()}-${sectionId}`];
 }

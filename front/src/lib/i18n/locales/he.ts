@@ -32,27 +32,21 @@ export const he = {
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
-		subtitle: 'בחרו שיעור כדי להתחיל.',
-		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`,
-		lessonPrefix: 'שיעור'
+		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`
 	},
 	lesson: {
-		titlePrefix: 'שיעור',
-		placeholderTitle: 'תוכן השיעור יתווסף בקרוב',
-		placeholderDesc: 'זוהי גרסת הדגמה של רשימת השיעורים.',
-		pathIntro: 'עברו על החלקים לפי הסדר.',
-		partLabel: (n: number) => `חלק ${n}`,
-		partLocked: 'החלק הזה ייפתח בקרוב',
-		exitLabel: 'יציאה מהחלק',
+		lessonLabel: (n: number) => `שיעור ${n}`,
+		lessonLocked: 'השיעור הזה ייפתח בקרוב',
+		exitLabel: 'יציאה מהשיעור',
 		continueButton: 'המשך',
 		doneButton: 'סיום',
 		completeTitle: 'כל הכבוד!',
-		completeDesc: 'סיימת את החלק הזה.',
+		completeDesc: 'סיימת את השיעור הזה.',
 		backToPath: 'חזרה למסלול',
 		scoreLabel: 'תשובות נכונות',
 		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
 		nextQuestionButton: 'הבא',
-		continueNextPart: 'המשך לחלק הבא',
+		continueNextLesson: 'המשך לשיעור הבא',
 		retryButton: 'נסה שוב',
 		failTitle: 'כמעט!',
 		failDesc: (percent: number) =>

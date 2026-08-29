@@ -37,14 +37,7 @@ export const ar: DictionaryOverride = {
 	},
 	lessons: {
 		titlePrefix: 'دروس — وحدة',
-		subtitle: 'اختاروا درسًا للبدء.',
-		emptyTitle: (letter: string) => `ستُضاف دروس وحدة ${letter} قريبًا`,
-		lessonPrefix: 'درس'
-	},
-	lesson: {
-		titlePrefix: 'درس',
-		placeholderTitle: 'سيُضاف محتوى الدرس قريبًا',
-		placeholderDesc: 'هذه نسخة تجريبية من قائمة الدروس.'
+		emptyTitle: (letter: string) => `ستُضاف دروس وحدة ${letter} قريبًا`
 	},
 	examStart: {
 		titlePrefix: 'فهم للامتحان — وحدة',

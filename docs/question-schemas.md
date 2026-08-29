@@ -1,7 +1,11 @@
 # Lesson screen / question schemas
 
+Cascade: **unit → module → section → lesson → screen**. A section is a
+themed, colored zone on the path; a lesson is the actual clickable node; a
+screen is one step inside a lesson's runner.
+
 Source of truth: [`front/src/lib/lesson-screens/types.ts`](../front/src/lib/lesson-screens/types.ts).
-Every lesson part (`front/src/lib/lessonContent.ts`) is just a flat array of these
+Every lesson (`front/src/lib/sectionContent.ts`) is just a flat array of these
 objects — plug in a new one, no code changes needed. To add a genuinely new
 shape: add the type here, write a matching component in
 `front/src/lib/lesson-screens/`, register it in `registry.ts`.
@@ -198,10 +202,12 @@ actually used somewhere across the lines. Renders one text input per
 
 ---
 
-## Lesson / part wrapper shapes
+## Section / lesson wrapper shapes
 
-For context, screens don't stand alone — they're nested inside a `LessonPart`
-inside a `LessonContent` (see `front/src/lib/lessonContent.ts`):
+For context, screens don't stand alone — they're nested inside a `Lesson`
+inside a `SectionContent` (see `front/src/lib/sectionContent.ts`), keyed by
+`` `${moduleId}-${sectionId}` `` via `getSectionContent`. The section's own
+metadata (id/titleHe) lives separately in `front/src/lib/sections.ts`.
 
 ```json
 {
@@ -209,7 +215,7 @@ inside a `LessonContent` (see `front/src/lib/lessonContent.ts`):
 		"greeting": "💬 ברוך הבא לאקדמיית הבלשים...",
 		"goal": "🎯 בסוף השיעור תדע: ..."
 	},
-	"parts": [
+	"lessons": [
 		{
 			"id": "read-questions-first",
 			"titleHe": "קריאת השאלות לפני הטקסט",
@@ -220,9 +226,10 @@ inside a `LessonContent` (see `front/src/lib/lessonContent.ts`):
 ```
 
 - `intro` is optional — shown as a card above the path, skipped entirely if absent.
-- A `LessonPart` with an **empty** `screens` array is skipped from the path
+- A `Lesson` with an **empty** `screens` array is skipped from the path
   entirely (not even shown lowlighted) — useful as a placeholder for a
-  sub-lesson not written yet.
-- Within a non-empty part, an individual screen left with empty content
+  lesson not written yet. A `Section` with no lessons at all is skipped the
+  same way, banner included.
+- Within a non-empty lesson, an individual screen left with empty content
   (e.g. `text: ""`, or `options: []`) is auto-skipped by the runner too — see
   `isScreenEmpty` in `types.ts`.

@@ -1,6 +1,6 @@
-// Persisted record of which sub-lessons (path nodes) the student has
-// completed, keyed by "moduleId-lessonId". Lives outside the lesson page so
-// the debug tooltip (in the root layout) can reset it.
+// Persisted record of which lessons (path nodes) the student has completed,
+// keyed by "moduleId-sectionId". Lives outside the lessons page so the debug
+// tooltip (in the root layout) can reset it.
 
 const STORAGE_KEY = 'lesson-progress';
 
@@ -23,14 +23,14 @@ function persist(map: ProgressMap) {
 class LessonProgressStore {
 	private map = $state<ProgressMap>(load());
 
-	isCompleted(lessonKey: string, partIndex: number): boolean {
-		return (this.map[lessonKey] ?? []).includes(partIndex);
+	isCompleted(sectionKey: string, lessonIndex: number): boolean {
+		return (this.map[sectionKey] ?? []).includes(lessonIndex);
 	}
 
-	markCompleted(lessonKey: string, partIndex: number) {
-		const current = this.map[lessonKey] ?? [];
-		if (current.includes(partIndex)) return;
-		this.map = { ...this.map, [lessonKey]: [...current, partIndex] };
+	markCompleted(sectionKey: string, lessonIndex: number) {
+		const current = this.map[sectionKey] ?? [];
+		if (current.includes(lessonIndex)) return;
+		this.map = { ...this.map, [sectionKey]: [...current, lessonIndex] };
 		persist(this.map);
 	}
 
