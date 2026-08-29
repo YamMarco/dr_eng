@@ -1,7 +1,8 @@
-// Groups a module's lessons into themed "zones" for the Duolingo-style
-// continuous path (see routes/.../lessons/+page.svelte). Purely a display
-// grouping — it doesn't change how lessons themselves are loaded or run.
-// Zone color theming is scoped to that one selection page only.
+// Color theming for the continuous lesson path (see
+// routes/.../lessons/+page.svelte). Each lesson acts as one "zone" — its
+// parts are the path nodes, its title is the zone banner — so this is just a
+// small palette cycled by the lesson's position among lessons that actually
+// have content. Purely visual, scoped to that one page.
 
 export type ZoneTheme = {
 	/** Node circle background + text when unlocked. */
@@ -12,50 +13,34 @@ export type ZoneTheme = {
 	banner: string;
 };
 
-export type Zone = {
-	id: string;
-	titleHe: string;
-	theme: ZoneTheme;
-	lessonIds: number[];
-};
-
-const moduleCZones: Zone[] = [
+const PALETTE: ZoneTheme[] = [
 	{
-		id: 'my-day',
-		titleHe: 'היום שלי',
-		theme: {
-			node: 'bg-teal-500 text-white',
-			nodeDone: 'bg-teal-100 text-teal-700',
-			banner: 'bg-teal-500 text-white'
-		},
-		lessonIds: [1, 2, 3]
+		node: 'bg-teal-500 text-white',
+		nodeDone: 'bg-teal-100 text-teal-700',
+		banner: 'bg-teal-500 text-white'
 	},
 	{
-		id: 'actions-and-feelings',
-		titleHe: 'פעולות ורגשות',
-		theme: {
-			node: 'bg-violet-500 text-white',
-			nodeDone: 'bg-violet-100 text-violet-700',
-			banner: 'bg-violet-500 text-white'
-		},
-		lessonIds: [4, 5, 6]
+		node: 'bg-violet-500 text-white',
+		nodeDone: 'bg-violet-100 text-violet-700',
+		banner: 'bg-violet-500 text-white'
 	},
 	{
-		id: 'reading-like-a-detective',
-		titleHe: 'קוראים כמו בלשים',
-		theme: {
-			node: 'bg-amber-500 text-white',
-			nodeDone: 'bg-amber-100 text-amber-700',
-			banner: 'bg-amber-500 text-white'
-		},
-		lessonIds: [7, 8, 9]
+		node: 'bg-amber-500 text-white',
+		nodeDone: 'bg-amber-100 text-amber-700',
+		banner: 'bg-amber-500 text-white'
+	},
+	{
+		node: 'bg-rose-500 text-white',
+		nodeDone: 'bg-rose-100 text-rose-700',
+		banner: 'bg-rose-500 text-white'
+	},
+	{
+		node: 'bg-sky-500 text-white',
+		nodeDone: 'bg-sky-100 text-sky-700',
+		banner: 'bg-sky-500 text-white'
 	}
 ];
 
-const zonesByModule: Record<string, Zone[]> = {
-	c: moduleCZones
-};
-
-export function getZones(moduleId: string): Zone[] {
-	return zonesByModule[moduleId.toLowerCase()] ?? [];
+export function themeForZoneIndex(index: number): ZoneTheme {
+	return PALETTE[index % PALETTE.length];
 }

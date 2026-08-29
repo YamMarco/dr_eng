@@ -345,8 +345,46 @@ const moduleCLesson1: LessonContent = {
 	]
 };
 
+// Mockup only — placeholder content so the zone-color transition between
+// lesson 1 and lesson 2 is visible on the continuous path. Not real material.
+const moduleCLesson2: LessonContent = {
+	intro: {
+		greeting: '💬 (מוקאפ) עכשיו נכיר את האנשים סביבך — משפחה, חברים ואנשים בבית הספר.',
+		goal: '🎯 (מוקאפ) בסוף השיעור תדע: לתאר אנשים סביבך במשפטים פשוטים.'
+	},
+	parts: [
+		{
+			id: 'mock-people-1',
+			titleHe: '(מוקאפ) אנשים במשפחה',
+			screens: [
+				{ type: 'preface', text: '(מוקאפ) זהו תוכן דמה לבדיקת המעבר בין שיעור 1 לשיעור 2.' },
+				{
+					type: 'mcq',
+					prompt: '(מוקאפ) מי זה "sister"?',
+					options: ['אח', 'אחות', 'חבר', 'שכן'],
+					correctIndex: 1
+				}
+			]
+		},
+		{
+			id: 'mock-people-2',
+			titleHe: '(מוקאפ) חברים ושכנים',
+			screens: [
+				{ type: 'preface', text: '(מוקאפ) חלק שני, עדיין בתוך אותו אזור צבע (שיעור 2).' },
+				{
+					type: 'mcq',
+					prompt: '(מוקאפ) מי זה "neighbor"?',
+					options: ['מורה', 'שכן', 'אח', 'חבר'],
+					correctIndex: 1
+				}
+			]
+		}
+	]
+};
+
 const contentByLesson: Record<string, LessonContent> = {
-	'c-1': moduleCLesson1
+	'c-1': moduleCLesson1,
+	'c-2': moduleCLesson2
 };
 
 export function getLessonContent(moduleId: string, lessonId: number): LessonContent | undefined {
