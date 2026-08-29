@@ -114,15 +114,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/ar.ts": {
-    "mtime": 1787836934.2103236,
-    "seen": 1787837258.2971153,
-    "ast_hash": "b3f52dec9dcbc71f01ca051dd619f629",
+    "mtime": 1787987405.8974204,
+    "seen": 1787988824.3944604,
+    "ast_hash": "2c09f5713e233aa7c4c928ac1423c8d4",
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1787931652.8058176,
-    "seen": 1787932928.979288,
-    "ast_hash": "0eacbc8fe8f9eb5aa433a616e279532f",
+    "mtime": 1787987263.6247742,
+    "seen": 1787988824.3944623,
+    "ast_hash": "914d03ed999e9652da6687686368de54",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1787903767.7165656,
-    "seen": 1787903965.7715764,
-    "ast_hash": "0d22ce1c26b109ff5752be2498bd7135",
+    "mtime": 1787987439.3317554,
+    "seen": 1787988824.3944674,
+    "ast_hash": "a837bd96a886c91c6dd8a6580b0cb3f4",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -215,18 +215,6 @@
     "ast_hash": "0961d3fcf11f65d542caa61ef0f579e8",
     "semantic_hash": ""
   },
-  "front/src/lib/lessonContent.ts": {
-    "mtime": 1787932008.2484686,
-    "seen": 1787932928.9793248,
-    "ast_hash": "7f0d93651e3a130f1c0dda4dad94d6c6",
-    "semantic_hash": ""
-  },
-  "front/src/lib/lessons.ts": {
-    "mtime": 1787817129.9997811,
-    "seen": 1787837258.297135,
-    "ast_hash": "23f5d13c24ea13f94f6158940504fb86",
-    "semantic_hash": ""
-  },
   "front/src/routes/+error.svelte": {
     "mtime": 1787816930.4710176,
     "seen": 1787837258.2971363,
@@ -288,21 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1787816932.362828,
-    "seen": 1787837258.2971478,
-    "ast_hash": "f4cc1a0a6db8e6d41b1099e13b796e2c",
-    "semantic_hash": ""
-  },
-  "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.svelte": {
-    "mtime": 1787899673.4990654,
-    "seen": 1787901048.4722426,
-    "ast_hash": "971026101bea6582352ac18958f0cdd9",
-    "semantic_hash": ""
-  },
-  "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/[lessonId]/+page.ts": {
-    "mtime": 1787675534.06417,
-    "seen": 1787837258.2971497,
-    "ast_hash": "b786714a2d417aee555336a77bc613eb",
+    "mtime": 1787988731.8254135,
+    "seen": 1787988824.3945208,
+    "ast_hash": "e85f827ef51902ba3eb3177308182c74",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -312,9 +288,9 @@
     "semantic_hash": ""
   },
   "front/vite.config.ts": {
-    "mtime": 1787931410.9754355,
-    "seen": 1787932928.9793537,
-    "ast_hash": "19dc3b5701bb6ad224bb6ffe172a6e0b",
+    "mtime": 1787988023.093329,
+    "seen": 1787988824.3945239,
+    "ast_hash": "3b4ed0bc4bfbe7e0631921236189ed91",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
@@ -378,9 +354,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1787896173.9132514,
-    "seen": 1787901048.4722636,
-    "ast_hash": "c99effd68894cbfdae64090a952d7b44",
+    "mtime": 1787987317.153661,
+    "seen": 1787988824.3945405,
+    "ast_hash": "b53f25b027ccf05e1f928df1ca94a3cd",
     "semantic_hash": ""
   },
   "agents.md": {
@@ -516,15 +492,39 @@
     "semantic_hash": ""
   },
   "front/src/lib/lessonProgress.svelte.ts": {
-    "mtime": 1787898552.6014159,
-    "seen": 1787901048.472222,
-    "ast_hash": "01f84bfafac653a66aa43fe8a5fa17f4",
+    "mtime": 1787987191.9043095,
+    "seen": 1787988824.394497,
+    "ast_hash": "83287c3817dcefa7d633769a3fe20dde",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WritingTask.svelte": {
     "mtime": 1787931726.1105237,
     "seen": 1787932928.9793165,
     "ast_hash": "75fadd42bdc18c898a4668468d8f7299",
+    "semantic_hash": ""
+  },
+  "front/src/lib/sectionContent.ts": {
+    "mtime": 1787988696.3893442,
+    "seen": 1787988824.3944988,
+    "ast_hash": "16c20794a9b2ebb54d20b50de85e0fb3",
+    "semantic_hash": ""
+  },
+  "front/src/lib/sectionThemes.ts": {
+    "mtime": 1787987173.683046,
+    "seen": 1787988824.3945005,
+    "ast_hash": "e1fd0a4a024a435870558b79e5c596d3",
+    "semantic_hash": ""
+  },
+  "front/src/lib/sections.ts": {
+    "mtime": 1787988713.7155268,
+    "seen": 1787988824.3945038,
+    "ast_hash": "026531db4eddb9c5957f3b47b5739de9",
+    "semantic_hash": ""
+  },
+  "docs/question-schemas.md": {
+    "mtime": 1787987352.094309,
+    "seen": 1787988824.3945434,
+    "ast_hash": "859a00658fccc2fa0c91de1babc20f9e",
     "semantic_hash": ""
   }
 }

@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-29)
 
 ## Corpus Check
-- 85 files · ~31,760 words
+- 85 files · ~32,907 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 413 nodes · 481 edges · 35 communities (22 shown, 13 thin omitted)
+- 410 nodes · 481 edges · 35 communities (22 shown, 13 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `08fa2cd8`
+- Built from commit: `391d3632`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - Snippet Blocks ({#snippet})
 - scripts
 - index.svelte.ts
-- lessonProgress.svelte.ts
+- debug.svelte.ts
 - $effect Rune
 - What You Must Do When Invoked
 - sectionContent.ts
@@ -98,8 +98,8 @@ Nodes (18): @capacitor/core, dependencies, @capacitor/core, lucide, name, privat
 Cohesion: 0.06
 Nodes (24): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+16 more)
 
-### Community 5 - "lessonProgress.svelte.ts"
-Cohesion: 0.11
+### Community 5 - "debug.svelte.ts"
+Cohesion: 0.12
 Nodes (5): DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap
 
 ### Community 6 - "$effect Rune"
@@ -112,7 +112,7 @@ Nodes (24): For /graphify add and --watch, For /graphify query, For the commit h
 
 ### Community 8 - "sectionContent.ts"
 Cohesion: 0.08
-Nodes (19): archivedSectionOneContent, contentBySection, eyeCatchersSection, Lesson, mockSection2, mockSection3, ModulePreface, modulePrefaceByModule (+11 more)
+Nodes (18): LessonScreen, archivedSectionOneContent, contentBySection, eyeCatchersSection, Lesson, mockSection2, mockSection3, SectionContent (+10 more)
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.14
@@ -152,14 +152,14 @@ Nodes (5): graphify, mission, persona, skills, workflow
 
 ### Community 34 - "types.ts"
 Cohesion: 0.06
-Nodes (28): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkWordScreen (+20 more)
+Nodes (27): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkWordScreen, McqScreen (+19 more)
 
 ### Community 36 - "LessonRunner.svelte"
 Cohesion: 0.13
 Nodes (12): currentScreen, footerDisabled, footerLabel, isLastScreen, justFinished, passed, primaryLabel, score (+4 more)
 
 ## Knowledge Gaps
-- **207 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `preface` (+202 more)
+- **205 isolated node(s):** `score`, `screenIndex`, `footerDisabled`, `footerLabel`, `justFinished` (+200 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -168,8 +168,8 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **What connects `mission`, `workflow`, `persona` to the rest of the system?**
-  _207 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `score`, `screenIndex`, `footerDisabled` to the rest of the system?**
+  _205 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**
@@ -179,4 +179,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `index.svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06108597285067873 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05870020964360587 - nodes in this community are weakly interconnected._
