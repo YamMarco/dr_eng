@@ -37,6 +37,7 @@ export const he = {
 	lesson: {
 		lessonLabel: (n: number) => `שיעור ${n}`,
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
+		startButton: 'התחלה',
 		exitLabel: 'יציאה מהשיעור',
 		continueButton: 'המשך',
 		doneButton: 'סיום',

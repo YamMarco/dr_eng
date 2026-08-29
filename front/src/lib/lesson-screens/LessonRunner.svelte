@@ -7,6 +7,7 @@
 	import { createLessonSession } from './session.svelte';
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
+	import { debugStore } from '$lib/debug.svelte';
 	import type { Lesson } from '$lib/sectionContent';
 
 	const PASS_THRESHOLD = 0.8;
@@ -170,6 +171,9 @@
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
 					{primaryLabel}
 				</Button>
+				{#if debugStore.enabled}
+					<Button variant="ghost" onclick={advance}>דלג על מסך (דיבוג)</Button>
+				{/if}
 			{/if}
 		</div>
 	</div>

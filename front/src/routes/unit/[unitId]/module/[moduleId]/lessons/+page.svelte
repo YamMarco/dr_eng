@@ -1,14 +1,11 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { getSections } from '$lib/sections';
-	import {
-		getSectionContent,
-		getModulePreface,
-		type SectionIntro,
-		type Lesson
-	} from '$lib/sectionContent';
+	import { getSectionContent, type Lesson } from '$lib/sectionContent';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
+	import { isScreenEmpty, countQuestions } from '$lib/lesson-screens/types';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -23,45 +20,25 @@
 		lesson: Lesson;
 		sectionId: number;
 		lessonIndexInSection: number;
-		isFirstOfSection: boolean;
-		sectionTitle: string;
-		sectionIntro?: SectionIntro;
 		theme: SectionTheme;
+		/** No scored questions at all (or explicitly forced via `lesson.big`). Shown bigger. */
+		isBig: boolean;
 	};
 
-	// A neutral, non-palette color so this doesn't shift the section color
-	// cycling — it isn't really a section, just the module's opening node.
-	const introTheme: SectionTheme = {
-		node: 'bg-brand text-white',
-		nodeDone: 'bg-brand-soft text-brand-dark',
-		banner: ''
-	};
+	function isBigNode(lesson: Lesson): boolean {
+		if (lesson.big !== undefined) return lesson.big;
+		return lesson.screens
+			.filter((screen) => !isScreenEmpty(screen))
+			.every((screen) => countQuestions(screen) === 0);
+	}
 
-	// The whole module as one continuous path: an optional module-preface
-	// node first, then every section's non-empty lessons, back to back. A
-	// section with no content yet contributes nothing — same "empty =
-	// skipped" rule as within a single section. Each section acts as one
-	// colored zone; its lessons are the actual clickable nodes.
+	// The whole module as one continuous path: every section's non-empty
+	// lessons, back to back. A section with no content yet contributes
+	// nothing — same "empty = skipped" rule as within a single section. Each
+	// section's lessons share one color (cycled per section) but no
+	// banner/text is shown for it.
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
-
-		const preface = getModulePreface(mod.id);
-		if (preface) {
-			const prefaceLesson: Lesson = {
-				id: 'module-preface',
-				titleHe: 'לפני שמתחילים',
-				screens: [{ type: 'preface', text: preface.text }]
-			};
-			result.push({
-				lesson: prefaceLesson,
-				sectionId: 0,
-				lessonIndexInSection: 0,
-				isFirstOfSection: false,
-				sectionTitle: '',
-				sectionIntro: undefined,
-				theme: introTheme
-			});
-		}
 
 		let zoneIndex = 0;
 		for (const section of getSections(mod.id)) {
@@ -75,10 +52,8 @@
 					lesson,
 					sectionId: section.id,
 					lessonIndexInSection,
-					isFirstOfSection: lessonIndexInSection === 0,
-					sectionTitle: section.titleHe,
-					sectionIntro: lessonIndexInSection === 0 ? content?.intro : undefined,
-					theme
+					theme,
+					isBig: isBigNode(lesson)
 				});
 			});
 		}
@@ -98,6 +73,13 @@
 		return debugStore.unlockAll || index === 0 || isDone(index - 1);
 	}
 
+	// Which node's title+start label is showing (click to toggle, not hover).
+	let openLabelIndex = $state<number | null>(null);
+
+	function toggleLabel(index: number) {
+		openLabelIndex = openLabelIndex === index ? null : index;
+	}
+
 	// Which node is currently open in the runner (null = showing the path).
 	let activeIndex = $state<number | null>(null);
 
@@ -105,6 +87,7 @@
 	let hasNextLesson = $derived(activeIndex !== null && activeIndex < nodes.length - 1);
 
 	function openNode(index: number) {
+		openLabelIndex = null;
 		activeIndex = index;
 	}
 
@@ -128,16 +111,24 @@
 	}
 
 	// A repeating left/right wave so the whole module reads as one continuous
-	// winding path, with section banners just breaking it up visually.
+	// winding path.
 	const WAVE = [0, 64, 96, 64, 0, -64, -96, -64];
 	function waveOffset(index: number): number {
 		return WAVE[index % WAVE.length];
 	}
+
+	function dismissLabelOnOutsideClick(event: MouseEvent) {
+		if (openLabelIndex === null) return;
+		const target = event.target as HTMLElement;
+		if (!target.closest('[data-lesson-node]')) openLabelIndex = null;
+	}
 </script>
+
+<svelte:window onclick={dismissLabelOnOutsideClick} />
 
 <AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
+<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-36 pb-12">
 	{#if nodes.length === 0}
 		<div
 			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
@@ -166,38 +157,21 @@
 			{#each nodes as node, i (node.sectionId + '-' + node.lessonIndexInSection)}
 				{@const unlocked = isUnlocked(i)}
 				{@const done = isDone(i)}
-
-				{#if node.isFirstOfSection}
-					<div
-						class="mt-8 w-full max-w-xs rounded-2xl px-4 py-3 text-center shadow-md first:mt-0 {node
-							.theme.banner}"
-					>
-						<span class="text-sm font-bold">{node.sectionTitle}</span>
-					</div>
-					{#if node.sectionIntro}
-						<div
-							class="mt-4 w-full rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70"
-						>
-							<p class="leading-relaxed">{node.sectionIntro.greeting}</p>
-							{#if node.sectionIntro.goal}
-								<p class="mt-3 leading-relaxed font-semibold">{node.sectionIntro.goal}</p>
-							{/if}
-						</div>
-					{/if}
-				{/if}
-
+				{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 				<div
-					class="mt-6 flex flex-col items-center transition-opacity {unlocked || done
+					data-lesson-node
+					class="relative mt-6 flex flex-col items-center transition-opacity first:mt-0 {unlocked ||
+					done
 						? ''
-						: 'opacity-40'}"
+						: 'opacity-40'} {openLabelIndex === i ? 'z-10' : ''}"
 					style="margin-inline-start: {waveOffset(i)}px"
 				>
 					<button
 						type="button"
 						disabled={!unlocked}
 						title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
-						onclick={() => openNode(i)}
-						class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-2xl font-extrabold shadow-md transition {unlocked
+						onclick={() => toggleLabel(i)}
+						class="flex shrink-0 items-center justify-center rounded-full font-extrabold shadow-md transition {size} {unlocked
 							? done
 								? node.theme.nodeDone
 								: `${node.theme.node} active:scale-95`
@@ -234,7 +208,16 @@
 							</svg>
 						{/if}
 					</button>
-					<span class="mt-2 max-w-32 text-center text-sm font-semibold">{node.lesson.titleHe}</span>
+
+					{#if unlocked && openLabelIndex === i}
+						<!-- Click-triggered label instead of a full-screen modal: title + start. -->
+						<div
+							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
+						>
+							<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+							<Button onclick={() => openNode(i)}>{i18n.dict.lesson.startButton}</Button>
+						</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
