@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-30)
 
 ## Corpus Check
-- 85 files · ~31,933 words
+- 85 files · ~32,011 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 417 nodes · 485 edges · 37 communities (23 shown, 14 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
+- 418 nodes · 486 edges · 37 communities (23 shown, 14 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `94af8ece`
+- Built from commit: `c23441fc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -161,11 +161,11 @@ Cohesion: 0.06
 Nodes (28): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkWordScreen (+20 more)
 
 ### Community 36 - "LessonRunner.svelte"
-Cohesion: 0.13
+Cohesion: 0.12
 Nodes (12): currentScreen, footerDisabled, footerLabel, isLastScreen, justFinished, passed, primaryLabel, score (+4 more)
 
 ## Knowledge Gaps
-- **211 isolated node(s):** `Lesson`, `SectionIntro`, `SectionContent`, `archivedEyeCatchersSection`, `archivedMockSection2` (+206 more)
+- **211 isolated node(s):** `score`, `screenIndex`, `footerDisabled`, `footerLabel`, `justFinished` (+206 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -176,7 +176,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `index.svelte.ts`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `Lesson`, `SectionIntro`, `SectionContent` to the rest of the system?**
+- **What connects `score`, `screenIndex`, `footerDisabled` to the rest of the system?**
   _211 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
