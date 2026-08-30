@@ -37,6 +37,8 @@ export const he = {
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
 		startButton: 'התחלה',
+		/** Shown on the node's start button once round 1 is done — offers the next round. */
+		roundLabel: (current: number, total: number) => `סבב ${current} מתוך ${total}`,
 		exitLabel: 'יציאה מהשיעור',
 		continueButton: 'המשך',
 		doneButton: 'סיום',

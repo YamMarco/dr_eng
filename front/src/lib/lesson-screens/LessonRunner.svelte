@@ -8,30 +8,37 @@
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
-	import type { Lesson } from '$lib/sectionContent';
+	import type { LessonScreen } from '$lib/sectionContent';
 
 	const PASS_THRESHOLD = 0.8;
 
 	type Props = {
-		lesson: Lesson;
+		/** One round's worth of screens (see the lessons path page — a lesson can have several rounds). */
+		screens: LessonScreen[];
 		lessonLabel: string;
 		hasNextLesson: boolean;
-		/** Leaving mid-exercise (or after a failed attempt) — never marks the lesson complete. */
+		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
 		onExit: () => void;
-		/** Finished with a passing score — parent marks the lesson complete and closes the runner. */
+		/** Finished with a passing score — parent marks the round complete and closes the runner. */
 		onFinish: () => void;
 		/** Finished with a passing score and there's a next lesson — marks complete and opens it. */
 		onFinishAndContinue: () => void;
 	};
 
-	let { lesson, lessonLabel, hasNextLesson, onExit, onFinish, onFinishAndContinue }: Props =
-		$props();
+	let {
+		screens: allScreens,
+		lessonLabel,
+		hasNextLesson,
+		onExit,
+		onFinish,
+		onFinishAndContinue
+	}: Props = $props();
 
 	const session = createLessonSession();
 
 	// A screen left with no real content (empty message, no options, ...) is
 	// skipped entirely rather than shown blank.
-	let screens = $derived(lesson.screens.filter((screen) => !isScreenEmpty(screen)));
+	let screens = $derived(allScreens.filter((screen) => !isScreenEmpty(screen)));
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are
 	// answered — never a growing denominator like 1/1, 1/2, 2/3.
 	const totalQuestions = untrack(() =>
@@ -52,8 +59,9 @@
 	// can't be typed more precisely than this without losing that genericity.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screenInstance = $state<any>(null);
-	// One-time read: `lesson` (and so `screens`) is fixed for this instance's
-	// lifetime, so only the initial emptiness matters here.
+	// One-time read: `screens` is fixed for this instance's lifetime (the
+	// parent remounts the whole runner on a new round — see the lessons path
+	// page), so only the initial emptiness matters here.
 	let justFinished = $state(untrack(() => screens.length === 0));
 
 	let currentScreen = $derived(screens[screenIndex]);

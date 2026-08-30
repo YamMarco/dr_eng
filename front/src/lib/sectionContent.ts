@@ -17,8 +17,20 @@ export type { LessonScreen };
 export type Lesson = {
 	id: string;
 	titleHe: string;
-	/** Empty = content not written yet — the node still shows (title only) but is locked. */
-	screens: LessonScreen[];
+	/**
+	 * Single-round shorthand — most lessons only ever have one round. Missing
+	 * or empty = content not written yet — the node still shows (title only)
+	 * but is locked. Ignored when `rounds` is set; use `getRounds()` rather
+	 * than reading either field directly.
+	 */
+	screens?: LessonScreen[];
+	/**
+	 * Multiple rounds of the same lesson (Duolingo-style): completing round 1
+	 * unlocks the path same as any lesson, and tapping the node again offers
+	 * the next round — usually a harder or differently-shaped rehash of the
+	 * same words. See getRounds().
+	 */
+	rounds?: LessonScreen[][];
 	/** Force the path node's size, overriding the automatic message-only sizing. */
 	big?: boolean;
 	/**
@@ -32,6 +44,12 @@ export type Lesson = {
 	x?: number;
 	y?: number;
 };
+
+/** A lesson's rounds — always at least one entry, even for single-round lessons. */
+export function getRounds(lesson: Lesson): LessonScreen[][] {
+	if (lesson.rounds && lesson.rounds.length > 0) return lesson.rounds;
+	return [lesson.screens ?? []];
+}
 
 export type SectionIntro = {
 	greeting: string;
@@ -386,106 +404,113 @@ const vocabFoundationSection: SectionContent = {
 			prerequisites: [],
 			x: 70,
 			y: 0,
-			screens: [
-				{
-					type: 'preface',
-					text: 'אוצר מילים בתחום הטכנולוגיה חיוני להבנת טקסטים לא מוכרים ביחידה C. הכירו את 5 מילות המפתח הבאות.'
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "device"?',
-					options: ['מכשיר', 'מסלול', 'תהליך', 'רעיון'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "innovate"?',
-					options: ['לחדש', 'להעתיק', 'למחוק', 'להאט'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "digital"?',
-					options: ['דיגיטלי', 'ידני', 'ישן', 'כבד'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "access"?',
-					options: ['גישה', 'איסור', 'תשלום', 'עיכוב'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "download"?',
-					options: ['להוריד', 'להעלות', 'למחוק', 'לשתף'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'My phone is a useful ______ for taking photos.',
-					options: ['device', 'innovate', 'digital', 'access'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'Companies must ______ constantly to stay ahead of competitors.',
-					options: ['download', 'innovate', 'access', 'digital'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'We now use ______ maps instead of paper ones.',
-					options: ['device', 'digital', 'download', 'access'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: "Students need ______ to the library's computers.",
-					options: ['innovate', 'digital', 'access', 'download'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt: 'You can ______ the app for free.',
-					options: ['device', 'access', 'download', 'innovate'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"The doctor used a small device to check the patient\'s heart rate." — מה המשמעות של device במשפט הזה?',
-					options: ['מכשיר', 'תרופה', 'ניתוח', 'בדיקה'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"To stay competitive, the company decided to innovate and create new products every year." — מה המשמעות של innovate במשפט הזה?',
-					options: ['לחדש', 'להעתיק', 'לפטר', 'למכור'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"Most schools today use digital textbooks instead of paper ones." — מה המשמעות של digital במשפט הזה?',
-					options: ['דיגיטלי', 'ישן', 'יקר', 'כבד'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"People in remote villages often lack access to good hospitals." — מה המשמעות של access במשפט הזה?',
-					options: ['גישה', 'כסף', 'זמן', 'רישיון'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"He tried to download the movie, but his internet was too slow." — מה המשמעות של download במשפט הזה?',
-					options: ['להוריד', 'למחוק', 'לצפות', 'לשדר'],
-					correctIndex: 0
-				}
+			// Round 1: meaning-mcq. Round 2: fill-blank. Round 3: context.
+			rounds: [
+				[
+					{
+						type: 'preface',
+						text: 'אוצר מילים בתחום הטכנולוגיה חיוני להבנת טקסטים לא מוכרים ביחידה C. הכירו את 5 מילות המפתח הבאות.'
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "device"?',
+						options: ['מכשיר', 'מסלול', 'תהליך', 'רעיון'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "innovate"?',
+						options: ['לחדש', 'להעתיק', 'למחוק', 'להאט'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "digital"?',
+						options: ['דיגיטלי', 'ידני', 'ישן', 'כבד'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "access"?',
+						options: ['גישה', 'איסור', 'תשלום', 'עיכוב'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "download"?',
+						options: ['להוריד', 'להעלות', 'למחוק', 'לשתף'],
+						correctIndex: 0
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt: 'My phone is a useful ______ for taking photos.',
+						options: ['device', 'innovate', 'digital', 'access'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'Companies must ______ constantly to stay ahead of competitors.',
+						options: ['download', 'innovate', 'access', 'digital'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'We now use ______ maps instead of paper ones.',
+						options: ['device', 'digital', 'download', 'access'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: "Students need ______ to the library's computers.",
+						options: ['innovate', 'digital', 'access', 'download'],
+						correctIndex: 2
+					},
+					{
+						type: 'mcq',
+						prompt: 'You can ______ the app for free.',
+						options: ['device', 'access', 'download', 'innovate'],
+						correctIndex: 2
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"The doctor used a small device to check the patient\'s heart rate." — מה המשמעות של device במשפט הזה?',
+						options: ['מכשיר', 'תרופה', 'ניתוח', 'בדיקה'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"To stay competitive, the company decided to innovate and create new products every year." — מה המשמעות של innovate במשפט הזה?',
+						options: ['לחדש', 'להעתיק', 'לפטר', 'למכור'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"Most schools today use digital textbooks instead of paper ones." — מה המשמעות של digital במשפט הזה?',
+						options: ['דיגיטלי', 'ישן', 'יקר', 'כבד'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"People in remote villages often lack access to good hospitals." — מה המשמעות של access במשפט הזה?',
+						options: ['גישה', 'כסף', 'זמן', 'רישיון'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"He tried to download the movie, but his internet was too slow." — מה המשמעות של download במשפט הזה?',
+						options: ['להוריד', 'למחוק', 'לצפות', 'לשדר'],
+						correctIndex: 0
+					}
+				]
 			]
 		},
 		{
@@ -494,69 +519,76 @@ const vocabFoundationSection: SectionContent = {
 			prerequisites: ['s1-l1'],
 			x: 90,
 			y: 110,
-			screens: [
-				{
-					type: 'preface',
-					text: 'נושאים סביבתיים מופיעים לעיתים קרובות בטקסטים לא מוכרים. נלמד מילים חשובות בנושא: protect, pollute, ignore.'
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "protect"?',
-					options: ['להגן', 'לזהם', 'להתעלם', 'לעזור'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "pollute"?',
-					options: ['לנקות', 'לזהם', 'להגן', 'לתקן'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "ignore"?',
-					options: ['להתעלם', 'להקשיב', 'לענות', 'לעזור'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"We need to ______ the environment by using less plastic." — באיזו מילה משלימים את המשפט?',
-					options: ['protect', 'pollute', 'ignore'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'Factories that ______ rivers must be punished.',
-					options: ['protect', 'pollute', 'ignore'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: "Don't ______ the problem — we must act now.",
-					options: ['protect', 'pollute', 'ignore'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"Parents naturally want to protect their children from danger." — מה המשמעות של protect במשפט הזה?',
-					options: ['להגן', 'להעניש', 'להתעלם', 'לשכוח'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"The factory was fined for continuing to pollute the river with chemicals." — מה המשמעות של pollute במשפט הזה?',
-					options: ['לנקות', 'לזהם', 'לתקן', 'להגן'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"She decided to ignore the rude comment and keep smiling." — מה המשמעות של ignore במשפט הזה?',
-					options: ['להתעלם', 'לענות', 'לצעוק', 'לבכות'],
-					correctIndex: 0
-				}
+			// Round 1: meaning-mcq. Round 2: fill-blank. Round 3: context.
+			rounds: [
+				[
+					{
+						type: 'preface',
+						text: 'נושאים סביבתיים מופיעים לעיתים קרובות בטקסטים לא מוכרים. נלמד מילים חשובות בנושא: protect, pollute, ignore.'
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "protect"?',
+						options: ['להגן', 'לזהם', 'להתעלם', 'לעזור'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "pollute"?',
+						options: ['לנקות', 'לזהם', 'להגן', 'לתקן'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "ignore"?',
+						options: ['להתעלם', 'להקשיב', 'לענות', 'לעזור'],
+						correctIndex: 0
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"We need to ______ the environment by using less plastic." — באיזו מילה משלימים את המשפט?',
+						options: ['protect', 'pollute', 'ignore'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'Factories that ______ rivers must be punished.',
+						options: ['protect', 'pollute', 'ignore'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: "Don't ______ the problem — we must act now.",
+						options: ['protect', 'pollute', 'ignore'],
+						correctIndex: 2
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"Parents naturally want to protect their children from danger." — מה המשמעות של protect במשפט הזה?',
+						options: ['להגן', 'להעניש', 'להתעלם', 'לשכוח'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"The factory was fined for continuing to pollute the river with chemicals." — מה המשמעות של pollute במשפט הזה?',
+						options: ['לנקות', 'לזהם', 'לתקן', 'להגן'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"She decided to ignore the rude comment and keep smiling." — מה המשמעות של ignore במשפט הזה?',
+						options: ['להתעלם', 'לענות', 'לצעוק', 'לבכות'],
+						correctIndex: 0
+					}
+				]
 			]
 		},
 		{
@@ -565,107 +597,114 @@ const vocabFoundationSection: SectionContent = {
 			prerequisites: ['s1-l2'],
 			x: 100,
 			y: 220,
-			screens: [
-				{
-					type: 'preface',
-					text: 'מילות קישור עוזרות לכתיבה שלכם לזרום. נלמד: "first of all", "second of all", "in my opinion", "for example", "to sum up".'
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של הביטוי "first of all"?',
-					options: ['קודם כל', 'שנית', 'לדעתי', 'לסיכום'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של הביטוי "second of all"?',
-					options: ['לדוגמה', 'שנית', 'קודם כל', 'לדעתי'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של הביטוי "in my opinion"?',
-					options: ['לסיכום', 'לדוגמה', 'לדעתי', 'קודם כל'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של הביטוי "for example"?',
-					options: ['קודם כל', 'לדוגמה', 'שנית', 'לסיכום'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של הביטוי "to sum up"?',
-					options: ['שנית', 'לדעתי', 'לדוגמה', 'לסיכום'],
-					correctIndex: 3
-				},
-				{
-					type: 'mcq',
-					prompt: '"______, let\'s discuss the benefits of exercise."',
-					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: '"______, it improves your mood."',
-					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"______, I believe childhood is the most important time." — באיזה ביטוי משלימים את המשפט?',
-					options: ['In my opinion', 'However', 'Therefore'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'Many students enjoy sports — ______, basketball and swimming.',
-					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
-					correctIndex: 3
-				},
-				{
-					type: 'mcq',
-					prompt: '"______, exercise benefits both body and mind."',
-					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
-					correctIndex: 4
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"First of all, let me thank everyone for coming today." — מה תפקידו של הביטוי "first of all" במשפט?',
-					options: ['לפתוח רשימת נקודות', 'לסכם', 'להביע דעה', 'לתת דוגמה'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"Second of all, the plan will also save us money." — מה תפקידו של הביטוי "second of all" במשפט?',
-					options: ['לתת דוגמה', 'להוסיף נקודה שנייה', 'לסכם', 'לפתוח נאום'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"In my opinion, homework should be shorter." — מה תפקידו של הביטוי "in my opinion" במשפט?',
-					options: ['לצטט מישהו אחר', 'להביע דעה אישית', 'לתת דוגמה', 'לסכם'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"Many fruits are healthy — for example, apples and bananas." — מה תפקידו של הביטוי "for example" במשפט?',
-					options: ['לסכם', 'להביע דעה', 'לתת דוגמה', 'לשאול שאלה'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"To sum up, exercise is essential for a healthy life." — מה תפקידו של הביטוי "to sum up" במשפט?',
-					options: ['לפתוח נושא', 'לתת דוגמה', 'להביע דעה', 'לסכם'],
-					correctIndex: 3
-				}
+			// Round 1: meaning-mcq. Round 2: fill-blank. Round 3: context.
+			rounds: [
+				[
+					{
+						type: 'preface',
+						text: 'מילות קישור עוזרות לכתיבה שלכם לזרום. נלמד: "first of all", "second of all", "in my opinion", "for example", "to sum up".'
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של הביטוי "first of all"?',
+						options: ['קודם כל', 'שנית', 'לדעתי', 'לסיכום'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של הביטוי "second of all"?',
+						options: ['לדוגמה', 'שנית', 'קודם כל', 'לדעתי'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של הביטוי "in my opinion"?',
+						options: ['לסיכום', 'לדוגמה', 'לדעתי', 'קודם כל'],
+						correctIndex: 2
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של הביטוי "for example"?',
+						options: ['קודם כל', 'לדוגמה', 'שנית', 'לסיכום'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של הביטוי "to sum up"?',
+						options: ['שנית', 'לדעתי', 'לדוגמה', 'לסיכום'],
+						correctIndex: 3
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt: '"______, let\'s discuss the benefits of exercise."',
+						options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: '"______, it improves your mood."',
+						options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"______, I believe childhood is the most important time." — באיזה ביטוי משלימים את המשפט?',
+						options: ['In my opinion', 'However', 'Therefore'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'Many students enjoy sports — ______, basketball and swimming.',
+						options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+						correctIndex: 3
+					},
+					{
+						type: 'mcq',
+						prompt: '"______, exercise benefits both body and mind."',
+						options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+						correctIndex: 4
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"First of all, let me thank everyone for coming today." — מה תפקידו של הביטוי "first of all" במשפט?',
+						options: ['לפתוח רשימת נקודות', 'לסכם', 'להביע דעה', 'לתת דוגמה'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"Second of all, the plan will also save us money." — מה תפקידו של הביטוי "second of all" במשפט?',
+						options: ['לתת דוגמה', 'להוסיף נקודה שנייה', 'לסכם', 'לפתוח נאום'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"In my opinion, homework should be shorter." — מה תפקידו של הביטוי "in my opinion" במשפט?',
+						options: ['לצטט מישהו אחר', 'להביע דעה אישית', 'לתת דוגמה', 'לסכם'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"Many fruits are healthy — for example, apples and bananas." — מה תפקידו של הביטוי "for example" במשפט?',
+						options: ['לסכם', 'להביע דעה', 'לתת דוגמה', 'לשאול שאלה'],
+						correctIndex: 2
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"To sum up, exercise is essential for a healthy life." — מה תפקידו של הביטוי "to sum up" במשפט?',
+						options: ['לפתוח נושא', 'לתת דוגמה', 'להביע דעה', 'לסכם'],
+						correctIndex: 3
+					}
+				]
 			]
 		},
 		{
@@ -674,65 +713,72 @@ const vocabFoundationSection: SectionContent = {
 			prerequisites: ['s1-l3'],
 			x: 90,
 			y: 330,
-			screens: [
-				{ type: 'preface', text: 'חינוך הוא נושא נפוץ ביחידה C.' },
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "learn"?',
-					options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'להתכונן למבחן', 'לשכוח'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "teach"?',
-					options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'לשחק', 'לנוח'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'מה המשמעות של המילה "study"?',
-					options: ['לשחק', 'לנוח', 'להתעמק וללמוד לעומק', 'להעביר ידע'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt: '"We all ______ at home and at school." — באיזו מילה משלימים את המשפט?',
-					options: ['learn', 'teach', 'study'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt: 'Teachers ______ their students new skills every day.',
-					options: ['learn', 'teach', 'study'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt: 'She likes to ______ for her exams a week in advance.',
-					options: ['learn', 'teach', 'study'],
-					correctIndex: 2
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"Every day, students learn new facts about the world in science class." — מה המשמעות של learn במשפט הזה?',
-					options: ['לרכוש ידע חדש', 'להעביר ידע', 'לשכוח', 'לנוח'],
-					correctIndex: 0
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"My older sister loves to teach little kids how to read." — מה המשמעות של teach במשפט הזה?',
-					options: ['לרכוש ידע', 'להעביר ידע לאחרים', 'לשחק', 'לישון'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"He stayed up late to study for his history exam." — מה המשמעות של study במשפט הזה?',
-					options: ['לשחק', 'לנוח', 'להתכונן וללמוד לעומק', 'לאכול'],
-					correctIndex: 2
-				}
+			// Round 1: meaning-mcq. Round 2: fill-blank. Round 3: context.
+			rounds: [
+				[
+					{ type: 'preface', text: 'חינוך הוא נושא נפוץ ביחידה C.' },
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "learn"?',
+						options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'להתכונן למבחן', 'לשכוח'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "teach"?',
+						options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'לשחק', 'לנוח'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של המילה "study"?',
+						options: ['לשחק', 'לנוח', 'להתעמק וללמוד לעומק', 'להעביר ידע'],
+						correctIndex: 2
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt: '"We all ______ at home and at school." — באיזו מילה משלימים את המשפט?',
+						options: ['learn', 'teach', 'study'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'Teachers ______ their students new skills every day.',
+						options: ['learn', 'teach', 'study'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'She likes to ______ for her exams a week in advance.',
+						options: ['learn', 'teach', 'study'],
+						correctIndex: 2
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"Every day, students learn new facts about the world in science class." — מה המשמעות של learn במשפט הזה?',
+						options: ['לרכוש ידע חדש', 'להעביר ידע', 'לשכוח', 'לנוח'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"My older sister loves to teach little kids how to read." — מה המשמעות של teach במשפט הזה?',
+						options: ['לרכוש ידע', 'להעביר ידע לאחרים', 'לשחק', 'לישון'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'"He stayed up late to study for his history exam." — מה המשמעות של study במשפט הזה?',
+						options: ['לשחק', 'לנוח', 'להתעמק וללמוד לעומק', 'לאכול'],
+						correctIndex: 2
+					}
+				]
 			]
 		},
 		{
@@ -741,31 +787,38 @@ const vocabFoundationSection: SectionContent = {
 			prerequisites: ['s1-l4'],
 			x: 70,
 			y: 440,
-			screens: [
-				{
-					type: 'preface',
-					text: 'אוצר מילים מתחום הבריאות ואורח החיים מופיע בטקסטים לא מוכרים.'
-				},
-				{
-					type: 'mcq',
-					prompt: 'איזו מילה פירושה "להתמודד עם בעיה" (to deal with a problem)?',
-					options: ['ignore', 'cope with', 'avoid'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						"When things get difficult, it's important to ______ your problems instead of running from them.",
-					options: ['ignore', 'cope with', 'avoid'],
-					correctIndex: 1
-				},
-				{
-					type: 'mcq',
-					prompt:
-						'"After losing his job, he found it hard to cope with the stress." — מה המשמעות של cope with במשפט הזה?',
-					options: ['להתעלם מ', 'להתמודד עם', 'להימנע מ'],
-					correctIndex: 1
-				}
+			// Round 1: meaning-mcq. Round 2: fill-blank. Round 3: context.
+			rounds: [
+				[
+					{
+						type: 'preface',
+						text: 'אוצר מילים מתחום הבריאות ואורח החיים מופיע בטקסטים לא מוכרים.'
+					},
+					{
+						type: 'mcq',
+						prompt: 'איזו מילה פירושה "להתמודד עם בעיה" (to deal with a problem)?',
+						options: ['ignore', 'cope with', 'avoid'],
+						correctIndex: 1
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							"When things get difficult, it's important to ______ your problems instead of running from them.",
+						options: ['ignore', 'cope with', 'avoid'],
+						correctIndex: 1
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt:
+							'"After losing his job, he found it hard to cope with the stress." — מה המשמעות של cope with במשפט הזה?',
+						options: ['להתעלם מ', 'להתמודד עם', 'להימנע מ'],
+						correctIndex: 1
+					}
+				]
 			]
 		},
 		{

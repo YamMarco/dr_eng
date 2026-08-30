@@ -3,7 +3,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { getSections } from '$lib/sections';
-	import { getSectionContent, type Lesson } from '$lib/sectionContent';
+	import { getSectionContent, getRounds, type Lesson } from '$lib/sectionContent';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import { isScreenEmpty, countQuestions } from '$lib/lesson-screens/types';
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
@@ -41,14 +41,15 @@
 
 	function isBigNode(lesson: Lesson): boolean {
 		if (lesson.big !== undefined) return lesson.big;
-		return lesson.screens
+		return getRounds(lesson)
+			.flat()
 			.filter((screen) => !isScreenEmpty(screen))
 			.every((screen) => countQuestions(screen) === 0);
 	}
 
-	/** No screens written yet — the node still shows (title only) but never unlocks. */
+	/** No screens written yet in any round — the node still shows (title only) but never unlocks. */
 	function hasContent(lesson: Lesson): boolean {
-		return lesson.screens.length > 0;
+		return getRounds(lesson).some((round) => round.some((screen) => !isScreenEmpty(screen)));
 	}
 
 	// Every section's lessons, flattened into one graph. Section order only
@@ -119,6 +120,19 @@
 		return lessonProgress.isCompleted(mod.id, lessonId);
 	}
 
+	function roundsCompleted(lessonId: string): number {
+		return lessonProgress.completedRounds(mod.id, lessonId);
+	}
+
+	function totalRounds(node: PathNode): number {
+		return getRounds(node.lesson).length;
+	}
+
+	/** The round to open next: the first not-yet-completed one, capped at the last. */
+	function nextRoundIndex(node: PathNode): number {
+		return Math.min(roundsCompleted(node.lesson.id), totalRounds(node) - 1);
+	}
+
 	// The debug "unlock all" flag is a full override — it comes before every
 	// other check, content-availability included, so it always does what it
 	// says regardless of what's been authored yet.
@@ -135,10 +149,15 @@
 		openLabelId = openLabelId === lessonId ? null : lessonId;
 	}
 
-	// Which node is currently open in the runner (null = showing the path).
+	// Which node (and which of its rounds) is currently open in the runner —
+	// null activeId means we're showing the path.
 	let activeId = $state<string | null>(null);
+	let activeRoundIndex = $state(0);
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
+	let activeRoundScreens = $derived(
+		activeNode ? (getRounds(activeNode.lesson)[activeRoundIndex] ?? []) : []
+	);
 
 	// "Continue to next lesson" only makes sense within the same section's
 	// authored order — a node feeding into another section (e.g. a
@@ -170,9 +189,10 @@
 		);
 	});
 
-	function openNode(lessonId: string) {
+	function openNode(node: PathNode) {
 		openLabelId = null;
-		activeId = lessonId;
+		activeId = node.lesson.id;
+		activeRoundIndex = nextRoundIndex(node);
 	}
 
 	function closeNode() {
@@ -180,15 +200,20 @@
 	}
 
 	function finishNode() {
-		if (activeId) lessonProgress.markCompleted(mod.id, activeId);
+		if (activeId) lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
 		activeId = null;
 	}
 
 	function finishNodeAndContinue() {
 		if (!activeNode) return;
-		lessonProgress.markCompleted(mod.id, activeNode.lesson.id);
+		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
 		const next = nextInSameSection(activeNode);
-		activeId = next?.lesson.id ?? null;
+		if (!next) {
+			activeId = null;
+			return;
+		}
+		activeId = next.lesson.id;
+		activeRoundIndex = nextRoundIndex(next);
 	}
 
 	function dismissLabelOnOutsideClick(event: MouseEvent) {
@@ -312,14 +337,17 @@
 					</button>
 
 					{#if unlocked && openLabelId === node.lesson.id}
-						<!-- Click-triggered label instead of a full-screen modal: title + start. -->
+						<!-- Click-triggered label instead of a full-screen modal: title + start
+						     (or, once round 1 is done, the next round to play). -->
 						<div
 							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
 						>
 							<p class="text-sm font-bold">{node.lesson.titleHe}</p>
-							<Button onclick={() => openNode(node.lesson.id)}
-								>{i18n.dict.lesson.startButton}</Button
-							>
+							<Button onclick={() => openNode(node)}>
+								{roundsCompleted(node.lesson.id) === 0
+									? i18n.dict.lesson.startButton
+									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
+							</Button>
 						</div>
 					{/if}
 				</div>
@@ -333,8 +361,10 @@
 	     just handing the same runner instance a new `lesson` prop. -->
 	{#key activeId}
 		<LessonRunner
-			lesson={activeNode.lesson}
-			lessonLabel={activeNode.lesson.titleHe}
+			screens={activeRoundScreens}
+			lessonLabel={totalRounds(activeNode) > 1
+				? `${activeNode.lesson.titleHe} — ${i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))}`
+				: activeNode.lesson.titleHe}
 			{hasNextLesson}
 			onExit={closeNode}
 			onFinish={finishNode}
