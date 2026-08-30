@@ -19,6 +19,7 @@
 	type PathNode = {
 		lesson: Lesson;
 		sectionId: number;
+		sectionTitleHe: string;
 		lessonIndexInSection: number;
 		theme: SectionTheme;
 		/** No scored questions at all (or explicitly forced via `lesson.big`). Shown bigger. */
@@ -32,95 +33,134 @@
 			.every((screen) => countQuestions(screen) === 0);
 	}
 
-	// The whole module as one continuous path: every section's non-empty
-	// lessons, back to back. A section with no content yet contributes
-	// nothing — same "empty = skipped" rule as within a single section. Each
-	// section's lessons share one color (cycled per section) but no
-	// banner/text is shown for it.
-	let nodes = $derived.by(() => {
-		const result: PathNode[] = [];
+	/** No screens written yet — the node still shows (title only) but never unlocks. */
+	function hasContent(lesson: Lesson): boolean {
+		return lesson.screens.length > 0;
+	}
 
-		let zoneIndex = 0;
-		for (const section of getSections(mod.id)) {
-			const content = getSectionContent(mod.id, section.id);
-			const lessons = content?.lessons.filter((lesson) => lesson.screens.length > 0) ?? [];
-			if (lessons.length === 0) continue;
-			const theme = themeForSectionIndex(zoneIndex);
-			zoneIndex += 1;
-			lessons.forEach((lesson, lessonIndexInSection) => {
-				result.push({
-					lesson,
-					sectionId: section.id,
-					lessonIndexInSection,
-					theme,
-					isBig: isBigNode(lesson)
-				});
-			});
+	function buildTrack(sectionIndex: number, zoneIndex: number): PathNode[] {
+		const section = getSections(mod.id)[sectionIndex];
+		if (!section) return [];
+		const content = getSectionContent(mod.id, section.id);
+		const theme = themeForSectionIndex(zoneIndex);
+		return (content?.lessons ?? []).map((lesson, lessonIndexInSection) => ({
+			lesson,
+			sectionId: section.id,
+			sectionTitleHe: section.titleHe,
+			lessonIndexInSection,
+			theme,
+			isBig: isBigNode(lesson)
+		}));
+	}
+
+	// Sections 1 and 2 are learned side by side, as two independent path
+	// tracks — everything from section 3 onward continues as one flattened
+	// path below them, unlocked once both tracks are complete.
+	let trackA = $derived(buildTrack(0, 0));
+	let trackB = $derived(buildTrack(1, 1));
+	let restNodes = $derived.by(() => {
+		const result: PathNode[] = [];
+		const sectionCount = getSections(mod.id).length;
+		for (let sectionIndex = 2; sectionIndex < sectionCount; sectionIndex++) {
+			result.push(...buildTrack(sectionIndex, sectionIndex));
 		}
 		return result;
 	});
+	let totalNodeCount = $derived(trackA.length + trackB.length + restNodes.length);
+
+	type ListId = 'a' | 'b' | 'rest';
+
+	function listFor(listId: ListId): PathNode[] {
+		if (listId === 'a') return trackA;
+		if (listId === 'b') return trackB;
+		return restNodes;
+	}
 
 	function sectionKeyOf(node: PathNode) {
 		return `${mod.id}-${node.sectionId}`;
 	}
 
-	function isDone(index: number) {
-		const node = nodes[index];
-		return lessonProgress.isCompleted(sectionKeyOf(node), node.lessonIndexInSection);
+	function isDone(list: PathNode[], index: number): boolean {
+		const node = list[index];
+		return !!node && lessonProgress.isCompleted(sectionKeyOf(node), node.lessonIndexInSection);
 	}
 
-	function isUnlocked(index: number) {
-		return debugStore.unlockAll || index === 0 || isDone(index - 1);
+	// Tracks A and B unlock independently of each other (race ahead in
+	// either). The "rest" path only starts once both are fully done.
+	function isUnlocked(listId: ListId, index: number): boolean {
+		const list = listFor(listId);
+		const node = list[index];
+		if (!node || !hasContent(node.lesson)) return false;
+		if (debugStore.unlockAll) return true;
+		if (listId === 'rest' && index === 0) {
+			return (
+				trackA.length > 0 &&
+				isDone(trackA, trackA.length - 1) &&
+				trackB.length > 0 &&
+				isDone(trackB, trackB.length - 1)
+			);
+		}
+		if (index === 0) return true;
+		return isDone(list, index - 1);
 	}
 
 	// Which node's title+start label is showing (click to toggle, not hover).
-	let openLabelIndex = $state<number | null>(null);
+	let openLabelKey = $state<string | null>(null);
 
-	function toggleLabel(index: number) {
-		openLabelIndex = openLabelIndex === index ? null : index;
+	function keyOf(listId: ListId, index: number) {
+		return `${listId}-${index}`;
+	}
+
+	function toggleLabel(listId: ListId, index: number) {
+		const key = keyOf(listId, index);
+		openLabelKey = openLabelKey === key ? null : key;
 	}
 
 	// Which node is currently open in the runner (null = showing the path).
-	let activeIndex = $state<number | null>(null);
+	let activeRef = $state<{ listId: ListId; index: number } | null>(null);
 
-	let activeNode = $derived(activeIndex !== null ? nodes[activeIndex] : undefined);
-	let hasNextLesson = $derived(activeIndex !== null && activeIndex < nodes.length - 1);
+	let activeNode = $derived(activeRef ? listFor(activeRef.listId)[activeRef.index] : undefined);
+	let hasNextLesson = $derived(
+		activeRef ? activeRef.index < listFor(activeRef.listId).length - 1 : false
+	);
 
-	function openNode(index: number) {
-		openLabelIndex = null;
-		activeIndex = index;
+	function openNode(listId: ListId, index: number) {
+		openLabelKey = null;
+		activeRef = { listId, index };
 	}
 
 	function closeNode() {
-		activeIndex = null;
+		activeRef = null;
 	}
 
 	function finishNode() {
-		if (activeIndex !== null) {
-			const node = nodes[activeIndex];
+		if (activeRef) {
+			const node = listFor(activeRef.listId)[activeRef.index];
 			lessonProgress.markCompleted(sectionKeyOf(node), node.lessonIndexInSection);
 		}
-		activeIndex = null;
+		activeRef = null;
 	}
 
 	function finishNodeAndContinue() {
-		if (activeIndex === null) return;
-		const node = nodes[activeIndex];
+		if (!activeRef) return;
+		const node = listFor(activeRef.listId)[activeRef.index];
 		lessonProgress.markCompleted(sectionKeyOf(node), node.lessonIndexInSection);
-		activeIndex += 1;
+		activeRef = { listId: activeRef.listId, index: activeRef.index + 1 };
 	}
 
-	// A repeating left/right wave so the whole module reads as one continuous
-	// winding path.
+	// A repeating left/right wave so each path reads as one continuous
+	// winding trail. A smaller amplitude for the side-by-side tracks keeps
+	// them from overlapping their narrower columns.
 	const WAVE = [0, 64, 96, 64, 0, -64, -96, -64];
-	function waveOffset(index: number): number {
-		return WAVE[index % WAVE.length];
+	const WAVE_NARROW = [0, 20, 30, 20, 0, -20, -30, -20];
+	function waveOffset(index: number, wave: number[]): number {
+		return wave[index % wave.length];
 	}
 
 	function dismissLabelOnOutsideClick(event: MouseEvent) {
-		if (openLabelIndex === null) return;
+		if (openLabelKey === null) return;
 		const target = event.target as HTMLElement;
-		if (!target.closest('[data-lesson-node]')) openLabelIndex = null;
+		if (!target.closest('[data-lesson-node]')) openLabelKey = null;
 	}
 </script>
 
@@ -128,8 +168,80 @@
 
 <AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-36 pb-12">
-	{#if nodes.length === 0}
+{#snippet trackPath(list: PathNode[], listId: ListId, wave: number[])}
+	<div class="flex flex-col items-center">
+		{#each list as node, i (node.sectionId + '-' + node.lessonIndexInSection)}
+			{@const unlocked = isUnlocked(listId, i)}
+			{@const done = isDone(list, i)}
+			{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
+			{@const key = keyOf(listId, i)}
+			<div
+				data-lesson-node
+				class="relative mt-6 flex flex-col items-center transition-opacity first:mt-0 {unlocked ||
+				done
+					? ''
+					: 'opacity-40'} {openLabelKey === key ? 'z-10' : ''}"
+				style="margin-inline-start: {waveOffset(i, wave)}px"
+			>
+				<button
+					type="button"
+					disabled={!unlocked}
+					title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
+					onclick={() => toggleLabel(listId, i)}
+					class="flex shrink-0 items-center justify-center rounded-full font-extrabold shadow-md transition {size} {unlocked
+						? done
+							? node.theme.nodeDone
+							: `${node.theme.node} active:scale-95`
+						: 'cursor-not-allowed bg-line/60 text-muted shadow-none'}"
+				>
+					{#if done}
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-7 w-7"
+							aria-hidden="true"
+						>
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
+					{:else if unlocked}
+						{i + 1}
+					{:else}
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-6 w-6"
+							aria-hidden="true"
+						>
+							<rect x="4" y="10" width="16" height="10" rx="2" />
+							<path d="M8 10V7a4 4 0 0 1 8 0v3" />
+						</svg>
+					{/if}
+				</button>
+
+				{#if unlocked && openLabelKey === key}
+					<!-- Click-triggered label instead of a full-screen modal: title + start. -->
+					<div
+						class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
+					>
+						<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+						<Button onclick={() => openNode(listId, i)}>{i18n.dict.lesson.startButton}</Button>
+					</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+{/snippet}
+
+<main class="mx-auto w-full max-w-2xl flex-1 px-4 pt-36 pb-12">
+	{#if totalNodeCount === 0}
 		<div
 			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
 		>
@@ -153,84 +265,37 @@
 			<p class="mt-4 font-semibold">{i18n.dict.lessons.emptyTitle(mod.letter)}</p>
 		</div>
 	{:else}
-		<div class="flex flex-col items-center">
-			{#each nodes as node, i (node.sectionId + '-' + node.lessonIndexInSection)}
-				{@const unlocked = isUnlocked(i)}
-				{@const done = isDone(i)}
-				{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
-				<div
-					data-lesson-node
-					class="relative mt-6 flex flex-col items-center transition-opacity first:mt-0 {unlocked ||
-					done
-						? ''
-						: 'opacity-40'} {openLabelIndex === i ? 'z-10' : ''}"
-					style="margin-inline-start: {waveOffset(i)}px"
-				>
-					<button
-						type="button"
-						disabled={!unlocked}
-						title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
-						onclick={() => toggleLabel(i)}
-						class="flex shrink-0 items-center justify-center rounded-full font-extrabold shadow-md transition {size} {unlocked
-							? done
-								? node.theme.nodeDone
-								: `${node.theme.node} active:scale-95`
-							: 'cursor-not-allowed bg-line/60 text-muted shadow-none'}"
-					>
-						{#if done}
-							<svg
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2.5"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="h-7 w-7"
-								aria-hidden="true"
-							>
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						{:else if unlocked}
-							{i + 1}
-						{:else}
-							<svg
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="h-6 w-6"
-								aria-hidden="true"
-							>
-								<rect x="4" y="10" width="16" height="10" rx="2" />
-								<path d="M8 10V7a4 4 0 0 1 8 0v3" />
-							</svg>
-						{/if}
-					</button>
-
-					{#if unlocked && openLabelIndex === i}
-						<!-- Click-triggered label instead of a full-screen modal: title + start. -->
-						<div
-							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
-						>
-							<p class="text-sm font-bold">{node.lesson.titleHe}</p>
-							<Button onclick={() => openNode(i)}>{i18n.dict.lesson.startButton}</Button>
-						</div>
-					{/if}
-				</div>
-			{/each}
-		</div>
+		{#if trackA.length > 0 || trackB.length > 0}
+			<div class="flex justify-center gap-8">
+				{#if trackA.length > 0}
+					<div class="flex flex-1 flex-col items-center">
+						<p class="mb-4 text-xs font-bold text-muted">{trackA[0].sectionTitleHe}</p>
+						{@render trackPath(trackA, 'a', WAVE_NARROW)}
+					</div>
+				{/if}
+				{#if trackB.length > 0}
+					<div class="flex flex-1 flex-col items-center">
+						<p class="mb-4 text-xs font-bold text-muted">{trackB[0].sectionTitleHe}</p>
+						{@render trackPath(trackB, 'b', WAVE_NARROW)}
+					</div>
+				{/if}
+			</div>
+		{/if}
+		{#if restNodes.length > 0}
+			<div class="mt-10">
+				{@render trackPath(restNodes, 'rest', WAVE)}
+			</div>
+		{/if}
 	{/if}
 </main>
 
 {#if activeNode}
 	<!-- Keyed so "continue to next lesson" forces a full remount instead of
 	     just handing the same runner instance a new `lesson` prop. -->
-	{#key activeIndex}
+	{#key activeRef?.listId + '-' + activeRef?.index}
 		<LessonRunner
 			lesson={activeNode.lesson}
-			lessonLabel={i18n.dict.lesson.lessonLabel((activeIndex ?? 0) + 1)}
+			lessonLabel={i18n.dict.lesson.lessonLabel((activeRef?.index ?? 0) + 1)}
 			{hasNextLesson}
 			onExit={closeNode}
 			onFinish={finishNode}
