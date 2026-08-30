@@ -7,7 +7,7 @@
   "5": "debug.svelte.ts",
   "6": "$effect Rune",
   "7": "What You Must Do When Invoked",
-  "8": "sectionContent.ts",
+  "8": "LessonRunner.svelte",
   "9": "compilerOptions",
   "10": "Bagrut English Prep App (Mission)",
   "11": "graphify reference: extra exports and benchmark",
@@ -34,7 +34,5 @@
   "32": "extraction-spec.md",
   "33": "sections.ts",
   "34": "types.ts",
-  "35": "ExamSession",
-  "36": "LessonRunner.svelte",
-  "37": "sectionThemes.ts"
+  "35": "ExamSession"
 }
