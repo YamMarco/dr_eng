@@ -21,6 +21,16 @@ export type Lesson = {
 	screens: LessonScreen[];
 	/** Force the path node's size, overriding the automatic message-only sizing. */
 	big?: boolean;
+	/**
+	 * Ids of lessons that must be completed before this one unlocks (from
+	 * anywhere in the module, not just this section) — AND'd together.
+	 * Missing/empty = a root node, unlocked from the start. This is the one
+	 * graph every module's path is built from; see the lessons path page.
+	 */
+	prerequisites?: string[];
+	/** Canvas placement in px, relative to the path's horizontal center. */
+	x?: number;
+	y?: number;
 };
 
 export type SectionIntro = {
@@ -346,86 +356,99 @@ export const archivedMockSection3: SectionContent = {
 // Title-only skeleton, built from docs/lessons frame.csv — no exercises
 // written yet, so every lesson below has an empty `screens` array. A lesson
 // with no content still renders as a (locked, unclickable) node on the path;
-// see isBigNode/hasContent in the lessons path page.
-function titleOnly(id: string, titleHe: string): Lesson {
-	return { id, titleHe, screens: [] };
+// see hasContent in the lessons path page.
+//
+// `prerequisites`/`x`/`y` are the generic canvas graph every module's path
+// is drawn from (see the lessons path page): sections 1 and 2 are two
+// independent chains placed side by side (positive x = section 1, negative
+// x = section 2), converging into section 3's first lesson, which then
+// chains straight through section 6.
+function titleOnly(
+	id: string,
+	titleHe: string,
+	prerequisites: string[],
+	x: number,
+	y: number
+): Lesson {
+	return { id, titleHe, screens: [], prerequisites, x, y };
 }
 
 const vocabFoundationSection: SectionContent = {
 	lessons: [
-		titleOnly('s1-l1', 'מילות ליבה — טכנולוגיה'),
-		titleOnly('s1-l2', 'מילות ליבה — סביבה'),
-		titleOnly('s1-l3', 'מילות קישור ומעבר'),
-		titleOnly('s1-l4', 'מילות ליבה — חינוך'),
-		titleOnly('s1-l5', 'מילות ליבה — בריאות ואורח חיים'),
-		titleOnly('s1-l6', 'אוצר מילים בהקשר'),
-		titleOnly('s1-l7', 'חזרה ומבחן — סט מילים 1'),
-		titleOnly('s1-l8', 'סט מילים 2 — מילים מתקדמות')
+		titleOnly('s1-l1', 'מילות ליבה — טכנולוגיה', [], 70, 0),
+		titleOnly('s1-l2', 'מילות ליבה — סביבה', ['s1-l1'], 90, 110),
+		titleOnly('s1-l3', 'מילות קישור ומעבר', ['s1-l2'], 100, 220),
+		titleOnly('s1-l4', 'מילות ליבה — חינוך', ['s1-l3'], 90, 330),
+		titleOnly('s1-l5', 'מילות ליבה — בריאות ואורח חיים', ['s1-l4'], 70, 440),
+		titleOnly('s1-l6', 'אוצר מילים בהקשר', ['s1-l5'], 50, 550),
+		titleOnly('s1-l7', 'חזרה ומבחן — סט מילים 1', ['s1-l6'], 40, 660),
+		titleOnly('s1-l8', 'סט מילים 2 — מילים מתקדמות', ['s1-l7'], 50, 770)
 	]
 };
 
 const readingBasicsSection: SectionContent = {
 	lessons: [
-		titleOnly('s2-l1', 'סריקה מהירה לרעיון המרכזי'),
-		titleOnly('s2-l2', 'סריקה לפרטים'),
-		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים'),
-		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"'),
-		titleOnly('s2-l5', 'פסילת תשובות שגויות'),
-		titleOnly('s2-l6', 'שאלות הסקה'),
-		titleOnly('s2-l7', 'אוצר מילים בקריאה'),
-		titleOnly('s2-l8', 'תרגול מלא על טקסט')
+		titleOnly('s2-l1', 'סריקה מהירה לרעיון המרכזי', [], -70, 0),
+		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -50, 110),
+		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -40, 220),
+		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -50, 330),
+		titleOnly('s2-l5', 'פסילת תשובות שגויות', ['s2-l4'], -70, 440),
+		titleOnly('s2-l6', 'שאלות הסקה', ['s2-l5'], -90, 550),
+		titleOnly('s2-l7', 'אוצר מילים בקריאה', ['s2-l6'], -100, 660),
+		titleOnly('s2-l8', 'תרגול מלא על טקסט', ['s2-l7'], -90, 770)
 	]
 };
 
 const advancedReadingSection: SectionContent = {
 	lessons: [
-		titleOnly('s3-l1', 'הבנת מבנה הטקסט'),
-		titleOnly('s3-l2', 'מטרת הכותב'),
-		titleOnly('s3-l3', 'טון ועמדה'),
-		titleOnly('s3-l4', 'השוואה בין שני טקסטים'),
-		titleOnly('s3-l5', 'סיכום טקסט'),
-		titleOnly('s3-l6', 'ניהול זמן'),
-		titleOnly('s3-l7', 'התמודדות עם טקסטים קשים'),
-		titleOnly('s3-l8', 'תרגול וסיכום מלא')
+		// Converges both parallel tracks — needs both done, not just one.
+		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8'], 0, 880),
+		titleOnly('s3-l2', 'מטרת הכותב', ['s3-l1'], 64, 990),
+		titleOnly('s3-l3', 'טון ועמדה', ['s3-l2'], 96, 1100),
+		titleOnly('s3-l4', 'השוואה בין שני טקסטים', ['s3-l3'], 64, 1210),
+		titleOnly('s3-l5', 'סיכום טקסט', ['s3-l4'], 0, 1320),
+		titleOnly('s3-l6', 'ניהול זמן', ['s3-l5'], -64, 1430),
+		titleOnly('s3-l7', 'התמודדות עם טקסטים קשים', ['s3-l6'], -96, 1540),
+		titleOnly('s3-l8', 'תרגול וסיכום מלא', ['s3-l7'], -64, 1650)
 	]
 };
 
 const opinionWritingSection: SectionContent = {
 	lessons: [
-		titleOnly('s4-l1', 'מבנה חיבור חוות דעת'),
-		titleOnly('s4-l2', 'כתיבת פתיחה לחיבור חוות דעת'),
-		titleOnly('s4-l3', 'הוספת נימוקים עם מילות קישור'),
-		titleOnly('s4-l4', 'כתיבת סיכום חזק'),
-		titleOnly('s4-l5', 'תיאור — אנשים'),
-		titleOnly('s4-l6', 'תיאור — מקומות וחוויות'),
-		titleOnly('s4-l7', 'שימוש יעיל בשמות תואר'),
-		titleOnly('s4-l8', 'חיבור חוות דעת — תרגול מלא')
+		titleOnly('s4-l1', 'מבנה חיבור חוות דעת', ['s3-l8'], 0, 1760),
+		titleOnly('s4-l2', 'כתיבת פתיחה לחיבור חוות דעת', ['s4-l1'], 64, 1870),
+		titleOnly('s4-l3', 'הוספת נימוקים עם מילות קישור', ['s4-l2'], 96, 1980),
+		titleOnly('s4-l4', 'כתיבת סיכום חזק', ['s4-l3'], 64, 2090),
+		titleOnly('s4-l5', 'תיאור — אנשים', ['s4-l4'], 0, 2200),
+		titleOnly('s4-l6', 'תיאור — מקומות וחוויות', ['s4-l5'], -64, 2310),
+		titleOnly('s4-l7', 'שימוש יעיל בשמות תואר', ['s4-l6'], -96, 2420),
+		titleOnly('s4-l8', 'חיבור חוות דעת — תרגול מלא', ['s4-l7'], -64, 2530)
 	]
 };
 
 const lettersWritingSection: SectionContent = {
 	lessons: [
-		titleOnly('s5-l1', 'פורמט מכתב — רשמי מול לא רשמי'),
-		titleOnly('s5-l2', 'פתיחות וסיומות במכתבים'),
-		titleOnly('s5-l3', 'מכתב תלונה'),
-		titleOnly('s5-l4', 'מכתב בקשה'),
-		titleOnly('s5-l5', 'סיכום — כל סוגי הכתיבה'),
-		titleOnly('s5-l6', 'משוב עמיתים'),
-		titleOnly('s5-l7', 'רשימת עריכה עצמית'),
-		titleOnly('s5-l8', 'כתיבה — תרגול מלא')
+		titleOnly('s5-l1', 'פורמט מכתב — רשמי מול לא רשמי', ['s4-l8'], 0, 2640),
+		titleOnly('s5-l2', 'פתיחות וסיומות במכתבים', ['s5-l1'], 64, 2750),
+		titleOnly('s5-l3', 'מכתב תלונה', ['s5-l2'], 96, 2860),
+		titleOnly('s5-l4', 'מכתב בקשה', ['s5-l3'], 64, 2970),
+		titleOnly('s5-l5', 'סיכום — כל סוגי הכתיבה', ['s5-l4'], 0, 3080),
+		titleOnly('s5-l6', 'משוב עמיתים', ['s5-l5'], -64, 3190),
+		titleOnly('s5-l7', 'רשימת עריכה עצמית', ['s5-l6'], -96, 3300),
+		titleOnly('s5-l8', 'כתיבה — תרגול מלא', ['s5-l7'], -64, 3410)
 	]
 };
 
 const fullIntegrationSection: SectionContent = {
 	lessons: [
-		titleOnly('s6-l1', 'מבחן מלא — קריאה וכתיבה'),
-		titleOnly('s6-l2', 'סיכום מבחן — קריאה'),
-		titleOnly('s6-l3', 'סיכום מבחן — כתיבה'),
-		titleOnly('s6-l4', 'סבב מילים מהיר'),
-		titleOnly('s6-l5', 'סיכום אסטרטגיות — כל הכישורים'),
-		titleOnly('s6-l6', 'מבחן מלא #2'),
-		titleOnly('s6-l7', 'סיכום סופי — נקודות חולשה'),
-		titleOnly('s6-l8', 'ביטחון וגישה מנטלית')
+		titleOnly('s6-l1', 'מבחן מלא — קריאה וכתיבה', ['s5-l8'], 0, 3520),
+		titleOnly('s6-l2', 'סיכום מבחן — קריאה', ['s6-l1'], 64, 3630),
+		titleOnly('s6-l3', 'סיכום מבחן — כתיבה', ['s6-l2'], 96, 3740),
+		titleOnly('s6-l4', 'סבב מילים מהיר', ['s6-l3'], 64, 3850),
+		titleOnly('s6-l5', 'סיכום אסטרטגיות — כל הכישורים', ['s6-l4'], 0, 3960),
+		titleOnly('s6-l6', 'מבחן מלא #2', ['s6-l5'], -64, 4070),
+		titleOnly('s6-l7', 'סיכום סופי — נקודות חולשה', ['s6-l6'], -96, 4180),
+		titleOnly('s6-l8', 'ביטחון וגישה מנטלית', ['s6-l7'], -64, 4290)
 	]
 };
 

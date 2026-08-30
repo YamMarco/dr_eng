@@ -35,7 +35,6 @@ export const he = {
 		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`
 	},
 	lesson: {
-		lessonLabel: (n: number) => `שיעור ${n}`,
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
 		startButton: 'התחלה',
 		exitLabel: 'יציאה מהשיעור',
