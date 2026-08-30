@@ -420,6 +420,36 @@ const vocabFoundationSection: SectionContent = {
 					prompt: 'מה המשמעות של המילה "download"?',
 					options: ['להוריד', 'להעלות', 'למחוק', 'לשתף'],
 					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'My phone is a useful ______ for taking photos.',
+					options: ['device', 'innovate', 'digital', 'access'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'Companies must ______ constantly to stay ahead of competitors.',
+					options: ['download', 'innovate', 'access', 'digital'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'We now use ______ maps instead of paper ones.',
+					options: ['device', 'digital', 'download', 'access'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: "Students need ______ to the library's computers.",
+					options: ['innovate', 'digital', 'access', 'download'],
+					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt: 'You can ______ the app for free.',
+					options: ['device', 'access', 'download', 'innovate'],
+					correctIndex: 2
 				}
 			]
 		},
@@ -436,10 +466,40 @@ const vocabFoundationSection: SectionContent = {
 				},
 				{
 					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "protect"?',
+					options: ['להגן', 'לזהם', 'להתעלם', 'לעזור'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "pollute"?',
+					options: ['לנקות', 'לזהם', 'להגן', 'לתקן'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "ignore"?',
+					options: ['להתעלם', 'להקשיב', 'לענות', 'לעזור'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
 					prompt:
 						'"We need to ______ the environment by using less plastic." — באיזו מילה משלימים את המשפט?',
 					options: ['protect', 'pollute', 'ignore'],
 					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'Factories that ______ rivers must be punished.',
+					options: ['protect', 'pollute', 'ignore'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: "Don't ______ the problem — we must act now.",
+					options: ['protect', 'pollute', 'ignore'],
+					correctIndex: 2
 				}
 			]
 		},
@@ -456,10 +516,64 @@ const vocabFoundationSection: SectionContent = {
 				},
 				{
 					type: 'mcq',
+					prompt: 'מה המשמעות של הביטוי "first of all"?',
+					options: ['קודם כל', 'שנית', 'לדעתי', 'לסיכום'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של הביטוי "second of all"?',
+					options: ['לדוגמה', 'שנית', 'קודם כל', 'לדעתי'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של הביטוי "in my opinion"?',
+					options: ['לסיכום', 'לדוגמה', 'לדעתי', 'קודם כל'],
+					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של הביטוי "for example"?',
+					options: ['קודם כל', 'לדוגמה', 'שנית', 'לסיכום'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של הביטוי "to sum up"?',
+					options: ['שנית', 'לדעתי', 'לדוגמה', 'לסיכום'],
+					correctIndex: 3
+				},
+				{
+					type: 'mcq',
+					prompt: '"______, let\'s discuss the benefits of exercise."',
+					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: '"______, it improves your mood."',
+					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
 					prompt:
 						'"______, I believe childhood is the most important time." — באיזה ביטוי משלימים את המשפט?',
 					options: ['In my opinion', 'However', 'Therefore'],
 					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'Many students enjoy sports — ______, basketball and swimming.',
+					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+					correctIndex: 3
+				},
+				{
+					type: 'mcq',
+					prompt: '"______, exercise benefits both body and mind."',
+					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
+					correctIndex: 4
 				}
 			]
 		},
@@ -473,9 +587,39 @@ const vocabFoundationSection: SectionContent = {
 				{ type: 'preface', text: 'חינוך הוא נושא נפוץ ביחידה C.' },
 				{
 					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "learn"?',
+					options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'להתכונן למבחן', 'לשכוח'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "teach"?',
+					options: ['לרכוש ידע חדש', 'להעביר ידע לאחרים', 'לשחק', 'לנוח'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "study"?',
+					options: ['לשחק', 'לנוח', 'להתעמק וללמוד לעומק', 'להעביר ידע'],
+					correctIndex: 2
+				},
+				{
+					type: 'mcq',
 					prompt: '"We all ______ at home and at school." — באיזו מילה משלימים את המשפט?',
 					options: ['learn', 'teach', 'study'],
 					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'Teachers ______ their students new skills every day.',
+					options: ['learn', 'teach', 'study'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'She likes to ______ for her exams a week in advance.',
+					options: ['learn', 'teach', 'study'],
+					correctIndex: 2
 				}
 			]
 		},
@@ -493,6 +637,13 @@ const vocabFoundationSection: SectionContent = {
 				{
 					type: 'mcq',
 					prompt: 'איזו מילה פירושה "להתמודד עם בעיה" (to deal with a problem)?',
+					options: ['ignore', 'cope with', 'avoid'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						"When things get difficult, it's important to ______ your problems instead of running from them.",
 					options: ['ignore', 'cope with', 'avoid'],
 					correctIndex: 1
 				}
@@ -515,6 +666,12 @@ const vocabFoundationSection: SectionContent = {
 						'"The residents of the small town were worried." — מה המשמעות של המילה "residents" בהקשר הזה?',
 					options: ['תיירים', 'תושבים', 'עובדים', 'ילדים'],
 					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt: 'The ______ of the building complained about the noise.',
+					options: ['residents', 'visitors', 'tourists', 'workers'],
+					correctIndex: 0
 				}
 			]
 		},
