@@ -171,10 +171,19 @@
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
 					{primaryLabel}
 				</Button>
-				{#if debugStore.enabled}
-					<Button variant="ghost" onclick={advance}>דלג על מסך (דיבוג)</Button>
-				{/if}
 			{/if}
 		</div>
 	</div>
+
+	{#if debugStore.enabled && !justFinished}
+		<!-- Floating, absolutely positioned so it never affects the footer's
+		     layout — a dev-only shortcut, not part of the real lesson UI. -->
+		<button
+			type="button"
+			onclick={advance}
+			class="absolute inset-e-4 bottom-24 z-10 rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+		>
+			דלג על מסך (דיבוג)
+		</button>
+	{/if}
 </div>

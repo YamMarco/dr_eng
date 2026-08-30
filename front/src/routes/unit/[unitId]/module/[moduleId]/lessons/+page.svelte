@@ -86,12 +86,16 @@
 	}
 
 	// Tracks A and B unlock independently of each other (race ahead in
-	// either). The "rest" path only starts once both are fully done.
+	// either). The "rest" path only starts once both are fully done. The
+	// debug "unlock all" flag is a full override — it comes before every
+	// other check, content-availability included, so it always does what it
+	// says regardless of what's been authored yet.
 	function isUnlocked(listId: ListId, index: number): boolean {
 		const list = listFor(listId);
 		const node = list[index];
-		if (!node || !hasContent(node.lesson)) return false;
+		if (!node) return false;
 		if (debugStore.unlockAll) return true;
+		if (!hasContent(node.lesson)) return false;
 		if (listId === 'rest' && index === 0) {
 			return (
 				trackA.length > 0 &&
