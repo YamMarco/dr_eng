@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/sectionContent.ts": {
-    "mtime": 1788093197.7459083,
-    "seen": 1788093257.309494,
-    "ast_hash": "89c05b6603e4972edf92608d53eb2c27",
+    "mtime": 1788093635.6750076,
+    "seen": 1788093692.3942766,
+    "ast_hash": "c1daa627187593b5e650d34b705387de",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {
