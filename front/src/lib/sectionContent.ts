@@ -373,16 +373,193 @@ function titleOnly(
 	return { id, titleHe, screens: [], prerequisites, x, y };
 }
 
+// Section 1's real content — preface text is the CSV's "Message (What to
+// Teach)" column (translated to Hebrew); each exercise follows the CSV's
+// "Exercise Type / Snippet" column. "Matching" (no matching screen type
+// exists) is done as one mcq per word; l7's "Quizlet Live" (an external
+// group activity, not a single question) becomes a message-only recap.
 const vocabFoundationSection: SectionContent = {
 	lessons: [
-		titleOnly('s1-l1', 'מילות ליבה — טכנולוגיה', [], 70, 0),
-		titleOnly('s1-l2', 'מילות ליבה — סביבה', ['s1-l1'], 90, 110),
-		titleOnly('s1-l3', 'מילות קישור ומעבר', ['s1-l2'], 100, 220),
-		titleOnly('s1-l4', 'מילות ליבה — חינוך', ['s1-l3'], 90, 330),
-		titleOnly('s1-l5', 'מילות ליבה — בריאות ואורח חיים', ['s1-l4'], 70, 440),
-		titleOnly('s1-l6', 'אוצר מילים בהקשר', ['s1-l5'], 50, 550),
-		titleOnly('s1-l7', 'חזרה ומבחן — סט מילים 1', ['s1-l6'], 40, 660),
-		titleOnly('s1-l8', 'סט מילים 2 — מילים מתקדמות', ['s1-l7'], 50, 770)
+		{
+			id: 's1-l1',
+			titleHe: 'מילות ליבה — טכנולוגיה',
+			prerequisites: [],
+			x: 70,
+			y: 0,
+			screens: [
+				{
+					type: 'preface',
+					text: 'אוצר מילים בתחום הטכנולוגיה חיוני להבנת טקסטים לא מוכרים ביחידה C. הכירו את 5 מילות המפתח הבאות.'
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "device"?',
+					options: ['מכשיר', 'מסלול', 'תהליך', 'רעיון'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "innovate"?',
+					options: ['לחדש', 'להעתיק', 'למחוק', 'להאט'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "digital"?',
+					options: ['דיגיטלי', 'ידני', 'ישן', 'כבד'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "access"?',
+					options: ['גישה', 'איסור', 'תשלום', 'עיכוב'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt: 'מה המשמעות של המילה "download"?',
+					options: ['להוריד', 'להעלות', 'למחוק', 'לשתף'],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's1-l2',
+			titleHe: 'מילות ליבה — סביבה',
+			prerequisites: ['s1-l1'],
+			x: 90,
+			y: 110,
+			screens: [
+				{
+					type: 'preface',
+					text: 'נושאים סביבתיים מופיעים לעיתים קרובות בטקסטים לא מוכרים. נלמד מילים חשובות בנושא: protect, pollute, ignore.'
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"We need to ______ the environment by using less plastic." — באיזו מילה משלימים את המשפט?',
+					options: ['protect', 'pollute', 'ignore'],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's1-l3',
+			titleHe: 'מילות קישור ומעבר',
+			prerequisites: ['s1-l2'],
+			x: 100,
+			y: 220,
+			screens: [
+				{
+					type: 'preface',
+					text: 'מילות קישור עוזרות לכתיבה שלכם לזרום. נלמד: "first of all", "second of all", "in my opinion", "for example", "to sum up".'
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"______, I believe childhood is the most important time." — באיזה ביטוי משלימים את המשפט?',
+					options: ['In my opinion', 'However', 'Therefore'],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's1-l4',
+			titleHe: 'מילות ליבה — חינוך',
+			prerequisites: ['s1-l3'],
+			x: 90,
+			y: 330,
+			screens: [
+				{ type: 'preface', text: 'חינוך הוא נושא נפוץ ביחידה C.' },
+				{
+					type: 'mcq',
+					prompt: '"We all ______ at home and at school." — באיזו מילה משלימים את המשפט?',
+					options: ['learn', 'teach', 'study'],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's1-l5',
+			titleHe: 'מילות ליבה — בריאות ואורח חיים',
+			prerequisites: ['s1-l4'],
+			x: 70,
+			y: 440,
+			screens: [
+				{
+					type: 'preface',
+					text: 'אוצר מילים מתחום הבריאות ואורח החיים מופיע בטקסטים לא מוכרים.'
+				},
+				{
+					type: 'mcq',
+					prompt: 'איזו מילה פירושה "להתמודד עם בעיה" (to deal with a problem)?',
+					options: ['ignore', 'cope with', 'avoid'],
+					correctIndex: 1
+				}
+			]
+		},
+		{
+			id: 's1-l6',
+			titleHe: 'אוצר מילים בהקשר',
+			prerequisites: ['s1-l5'],
+			x: 50,
+			y: 550,
+			screens: [
+				{
+					type: 'preface',
+					text: 'למילים יש משמעויות שונות בהקשרים שונים. נלמד להסיק משמעות מהקשר.'
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"The residents of the small town were worried." — מה המשמעות של המילה "residents" בהקשר הזה?',
+					options: ['תיירים', 'תושבים', 'עובדים', 'ילדים'],
+					correctIndex: 1
+				}
+			]
+		},
+		{
+			id: 's1-l7',
+			titleHe: 'חזרה ומבחן — סט מילים 1',
+			prerequisites: ['s1-l6'],
+			x: 40,
+			y: 660,
+			screens: [
+				{
+					type: 'preface',
+					text: 'חזרה מרווחת מחזקת את הזיכרון. הגיע הזמן לחזור על המילים שלמדנו בשיעורים 1-6.'
+				},
+				{
+					type: 'summary',
+					title: 'מילים לחזרה',
+					lines: [
+						'device, innovate, digital, access, download',
+						'protect, pollute, ignore',
+						'in my opinion, however, therefore',
+						'learn, teach, study',
+						'cope with',
+						'residents'
+					]
+				}
+			]
+		},
+		{
+			id: 's1-l8',
+			titleHe: 'סט מילים 2 — מילים מתקדמות',
+			prerequisites: ['s1-l7'],
+			x: 50,
+			y: 770,
+			screens: [
+				{ type: 'preface', text: 'נרחיב את אוצר המילים שלכם. כתבו משפטים משלכם באנגלית.' },
+				{
+					type: 'writing-task',
+					prompt: 'כתבו 5 משפטים מקוריים באנגלית, כל אחד משתמש באחת מהמילים שלמדנו בסעיף זה.',
+					wordBank: ['device', 'innovate', 'digital', 'access', 'download', 'protect', 'pollute'],
+					minSentences: 5,
+					minWordsUsed: 3
+				}
+			]
+		}
 	]
 };
 
