@@ -450,6 +450,41 @@ const vocabFoundationSection: SectionContent = {
 					prompt: 'You can ______ the app for free.',
 					options: ['device', 'access', 'download', 'innovate'],
 					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"The doctor used a small device to check the patient\'s heart rate." — מה המשמעות של device במשפט הזה?',
+					options: ['מכשיר', 'תרופה', 'ניתוח', 'בדיקה'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"To stay competitive, the company decided to innovate and create new products every year." — מה המשמעות של innovate במשפט הזה?',
+					options: ['לחדש', 'להעתיק', 'לפטר', 'למכור'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"Most schools today use digital textbooks instead of paper ones." — מה המשמעות של digital במשפט הזה?',
+					options: ['דיגיטלי', 'ישן', 'יקר', 'כבד'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"People in remote villages often lack access to good hospitals." — מה המשמעות של access במשפט הזה?',
+					options: ['גישה', 'כסף', 'זמן', 'רישיון'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"He tried to download the movie, but his internet was too slow." — מה המשמעות של download במשפט הזה?',
+					options: ['להוריד', 'למחוק', 'לצפות', 'לשדר'],
+					correctIndex: 0
 				}
 			]
 		},
@@ -500,6 +535,27 @@ const vocabFoundationSection: SectionContent = {
 					prompt: "Don't ______ the problem — we must act now.",
 					options: ['protect', 'pollute', 'ignore'],
 					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"Parents naturally want to protect their children from danger." — מה המשמעות של protect במשפט הזה?',
+					options: ['להגן', 'להעניש', 'להתעלם', 'לשכוח'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"The factory was fined for continuing to pollute the river with chemicals." — מה המשמעות של pollute במשפט הזה?',
+					options: ['לנקות', 'לזהם', 'לתקן', 'להגן'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"She decided to ignore the rude comment and keep smiling." — מה המשמעות של ignore במשפט הזה?',
+					options: ['להתעלם', 'לענות', 'לצעוק', 'לבכות'],
+					correctIndex: 0
 				}
 			]
 		},
@@ -574,6 +630,41 @@ const vocabFoundationSection: SectionContent = {
 					prompt: '"______, exercise benefits both body and mind."',
 					options: ['First of all', 'Second of all', 'In my opinion', 'For example', 'To sum up'],
 					correctIndex: 4
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"First of all, let me thank everyone for coming today." — מה תפקידו של הביטוי "first of all" במשפט?',
+					options: ['לפתוח רשימת נקודות', 'לסכם', 'להביע דעה', 'לתת דוגמה'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"Second of all, the plan will also save us money." — מה תפקידו של הביטוי "second of all" במשפט?',
+					options: ['לתת דוגמה', 'להוסיף נקודה שנייה', 'לסכם', 'לפתוח נאום'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"In my opinion, homework should be shorter." — מה תפקידו של הביטוי "in my opinion" במשפט?',
+					options: ['לצטט מישהו אחר', 'להביע דעה אישית', 'לתת דוגמה', 'לסכם'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"Many fruits are healthy — for example, apples and bananas." — מה תפקידו של הביטוי "for example" במשפט?',
+					options: ['לסכם', 'להביע דעה', 'לתת דוגמה', 'לשאול שאלה'],
+					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"To sum up, exercise is essential for a healthy life." — מה תפקידו של הביטוי "to sum up" במשפט?',
+					options: ['לפתוח נושא', 'לתת דוגמה', 'להביע דעה', 'לסכם'],
+					correctIndex: 3
 				}
 			]
 		},
@@ -620,6 +711,27 @@ const vocabFoundationSection: SectionContent = {
 					prompt: 'She likes to ______ for her exams a week in advance.',
 					options: ['learn', 'teach', 'study'],
 					correctIndex: 2
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"Every day, students learn new facts about the world in science class." — מה המשמעות של learn במשפט הזה?',
+					options: ['לרכוש ידע חדש', 'להעביר ידע', 'לשכוח', 'לנוח'],
+					correctIndex: 0
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"My older sister loves to teach little kids how to read." — מה המשמעות של teach במשפט הזה?',
+					options: ['לרכוש ידע', 'להעביר ידע לאחרים', 'לשחק', 'לישון'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"He stayed up late to study for his history exam." — מה המשמעות של study במשפט הזה?',
+					options: ['לשחק', 'לנוח', 'להתכונן וללמוד לעומק', 'לאכול'],
+					correctIndex: 2
 				}
 			]
 		},
@@ -645,6 +757,13 @@ const vocabFoundationSection: SectionContent = {
 					prompt:
 						"When things get difficult, it's important to ______ your problems instead of running from them.",
 					options: ['ignore', 'cope with', 'avoid'],
+					correctIndex: 1
+				},
+				{
+					type: 'mcq',
+					prompt:
+						'"After losing his job, he found it hard to cope with the stress." — מה המשמעות של cope with במשפט הזה?',
+					options: ['להתעלם מ', 'להתמודד עם', 'להימנע מ'],
 					correctIndex: 1
 				}
 			]
