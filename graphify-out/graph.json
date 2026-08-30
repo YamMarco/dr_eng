@@ -813,7 +813,7 @@
       "file_type": "code",
       "norm_label": "isunlocked()",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
-      "source_location": "L174"
+      "source_location": "L178"
     },
     {
       "id": "front_src_lib_components_navbar_each",
@@ -2821,6 +2821,17 @@
       "norm_label": "wordsused",
       "source_file": "front/src/lib/lesson-screens/WritingTask.svelte",
       "source_location": "L43"
+    },
+    {
+      "id": "svelte",
+      "label": "svelte",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "LessonRunner.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte",
+      "source_file": "svelte"
     },
     {
       "id": "front_src_lib_lesson_screens_lessonrunner",
@@ -7558,17 +7569,6 @@
     },
     {
       "source": "front_src_lib_lesson_screens_lessonrunner",
-      "target": "front_src_lib_lesson_screens_lessonrunner_advance",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte",
-      "source_location": "L68",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_lesson_screens_lessonrunner",
       "target": "front_src_lib_lesson_screens_lessonrunner_retry",
       "relation": "contains",
       "_origin": "ast",
@@ -8367,7 +8367,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
-      "source_location": "L174",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -8784,6 +8784,15 @@
     {
       "source": "front_src_lib_lesson_screens_lessonrunner",
       "target": "front_src_lib_sectioncontent",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte"
+    },
+    {
+      "source": "front_src_lib_lesson_screens_lessonrunner",
+      "target": "svelte",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9489,6 +9498,18 @@
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lessonProgress.svelte.ts",
       "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_lesson_screens_lessonrunner",
+      "target": "front_src_lib_lesson_screens_lessonrunner_advance",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "collection",
+      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -10296,5 +10317,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "94af8eceb8086cca272057d2f6ad2aa90729494f"
+  "built_at_commit": "c23441fc9ba906b984913594295c0fd957d19693"
 }

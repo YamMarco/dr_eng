@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1787994566.2095747,
-    "seen": 1787995305.6416328,
-    "ast_hash": "d68c5fe9f9fc4a26572efaf007ca281b",
+    "mtime": 1788073009.2712562,
+    "seen": 1788073080.8996072,
+    "ast_hash": "3875e80a62cdb72bb4920818d0bde527",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1788072670.6829405,
-    "seen": 1788072793.4281225,
-    "ast_hash": "c38f74f7982fe76bfc5e9882235f4516",
+    "mtime": 1788072997.7537484,
+    "seen": 1788073080.8996582,
+    "ast_hash": "e921d96917abdb6b3c9d1e4e7f0282de",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {

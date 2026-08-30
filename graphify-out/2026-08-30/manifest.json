@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1787995143.1866405,
-    "seen": 1787995305.6418455,
-    "ast_hash": "159a3a043204de1b5d94efde62780b99",
+    "mtime": 1788072670.6829405,
+    "seen": 1788072793.4281225,
+    "ast_hash": "c38f74f7982fe76bfc5e9882235f4516",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/sectionContent.ts": {
-    "mtime": 1787995124.769972,
-    "seen": 1787995305.6417522,
-    "ast_hash": "8b29f8488b0be6dca45f2b4c646748f2",
+    "mtime": 1788072551.2903736,
+    "seen": 1788072793.4281013,
+    "ast_hash": "ed27b8a3c7e4173ae05ea81147b90b51",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {
@@ -516,9 +516,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/sections.ts": {
-    "mtime": 1787988713.7155268,
-    "seen": 1787988824.3945038,
-    "ast_hash": "026531db4eddb9c5957f3b47b5739de9",
+    "mtime": 1788072563.4760513,
+    "seen": 1788072793.428105,
+    "ast_hash": "80929d3f6ec75f4eed1532ad8eac8033",
     "semantic_hash": ""
   },
   "docs/question-schemas.md": {
