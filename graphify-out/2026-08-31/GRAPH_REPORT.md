@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-31)
 
 ## Corpus Check
-- 88 files · ~36,409 words
+- 89 files · ~37,582 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 423 nodes · 503 edges · 38 communities (24 shown, 14 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
+- 426 nodes · 509 edges · 38 communities (23 shown, 15 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e068968d`
+- Built from commit: `610b5352`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - Svelte MCP Server (Project Config)
 - Snippet Blocks ({#snippet})
 - scripts
-- index.svelte.ts
+- curriculum.ts
 - lessonProgress.svelte.ts
 - $effect Rune
 - What You Must Do When Invoked
@@ -48,8 +48,8 @@
 - extraction-spec.md
 - sections.ts
 - types.ts
-- book/+page.svelte
-- curriculum.ts
+- index.svelte.ts
+- sectionThemes.ts
 - ExamSession
 
 ## God Nodes (most connected - your core abstractions)
@@ -79,7 +79,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 14 thin omitted)
+## Communities (38 total, 15 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -97,9 +97,9 @@ Nodes (19): Await Expressions, experimental.async Config Option, fork() API (Pre
 Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
-### Community 4 - "index.svelte.ts"
-Cohesion: 0.08
-Nodes (10): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+2 more)
+### Community 4 - "curriculum.ts"
+Cohesion: 0.11
+Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -115,7 +115,7 @@ Nodes (24): For /graphify add and --watch, For /graphify query, For the commit h
 
 ### Community 8 - "sectionContent.ts"
 Cohesion: 0.11
-Nodes (13): advancedReadingSection, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3, contentBySection, fullIntegrationSection, Lesson, lettersWritingSection (+5 more)
+Nodes (14): advancedReadingSection, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3, contentBySection, fullIntegrationSection, Lesson, lettersWritingSection (+6 more)
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.14
@@ -159,20 +159,16 @@ Nodes (7): archivedMockModuleCSections, archivedModuleCSections, currentModuleCS
 
 ### Community 34 - "types.ts"
 Cohesion: 0.05
-Nodes (30): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkWordScreen (+22 more)
+Nodes (31): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkAllScreen (+23 more)
 
-### Community 35 - "book/+page.svelte"
-Cohesion: 0.15
-Nodes (3): canGoPrev, canSubmit, formattedDate
-
-### Community 36 - "curriculum.ts"
-Cohesion: 0.11
-Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
+### Community 35 - "index.svelte.ts"
+Cohesion: 0.06
+Nodes (11): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+3 more)
 
 ## Knowledge Gaps
-- **206 isolated node(s):** `canGoPrev`, `canSubmit`, `formattedDate`, `gitignorePath`, `name` (+201 more)
+- **208 isolated node(s):** `screenComponents`, `PrefaceScreen`, `StepsScreen`, `SummaryScreen`, `McqScreen` (+203 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -181,8 +177,8 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `canGoPrev`, `canSubmit`, `formattedDate` to the rest of the system?**
-  _206 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `screenComponents`, `PrefaceScreen`, `StepsScreen` to the rest of the system?**
+  _208 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**

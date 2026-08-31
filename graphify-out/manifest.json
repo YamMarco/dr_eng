@@ -420,18 +420,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/sectionContent.ts": {
-    "mtime": 1788172223.1825564,
-    "ast_hash": "6d1d588e1aaddbb8fbfee9f04643c00a",
+    "mtime": 1788173033.2127197,
+    "ast_hash": "000b8097b55b4450490f7a5851135866",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {
-    "mtime": 1788172275.7110472,
-    "ast_hash": "4cfcdde95d1838f0f03218c610f9050d",
+    "mtime": 1788172960.187702,
+    "ast_hash": "67cf72073079c3ed3508bfd9d2b48234",
     "semantic_hash": ""
   },
   "front/src/lib/sections.ts": {
-    "mtime": 1788172043.7413962,
-    "ast_hash": "37ff47e2fa753acc801133551550274c",
+    "mtime": 1788172954.9195743,
+    "ast_hash": "80929d3f6ec75f4eed1532ad8eac8033",
     "semantic_hash": ""
   },
   "docs/question-schemas.md": {

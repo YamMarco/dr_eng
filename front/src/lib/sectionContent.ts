@@ -825,7 +825,7 @@ const vocabFoundationSection: SectionContent = {
 			id: 's1-l6',
 			titleHe: 'אוצר מילים בהקשר',
 			prerequisites: ['s1-l5'],
-			x: 70,
+			x: 50,
 			y: 550,
 			screens: [
 				{
@@ -851,7 +851,7 @@ const vocabFoundationSection: SectionContent = {
 			id: 's1-l7',
 			titleHe: 'חזרה ומבחן — סט מילים 1',
 			prerequisites: ['s1-l6'],
-			x: 70,
+			x: 40,
 			y: 660,
 			screens: [
 				{
@@ -894,30 +894,12 @@ const vocabFoundationSection: SectionContent = {
 
 const readingBasicsSection: SectionContent = {
 	lessons: [
-		titleOnly('s2-l1', 'סריקה מהירה לרעיון המרכזי', [], -70, 0),
-		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -72, 110),
-		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -78, 220),
-		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -76, 330),
-		titleOnly('s2-l5', 'פסילת תשובות שגויות', ['s2-l4'], -70, 440),
-		titleOnly('s2-l6', 'שאלות הסקה', ['s2-l5'], -90, 550),
-		titleOnly('s2-l7', 'אוצר מילים בקריאה', ['s2-l6'], -100, 660),
-		titleOnly('s2-l8', 'תרגול מלא על טקסט', ['s2-l7'], -90, 770)
-	]
-};
-
-// Section 7 — "Strategic Reading". A third real track drawn straight down the
-// center of the lessons path (x ~ 0), between the section-1 and section-2
-// columns, converging into s3-l1 with them. Only three nodes: recognise the
-// exam's instruction words, learn to skim for "eye catchers", then practice
-// marking them in a paragraph.
-const strategicReadingSection: SectionContent = {
-	lessons: [
 		{
-			id: 's7-l1',
+			id: 's2-l0',
 			titleHe: 'מילות הוראה בשאלון',
 			prerequisites: [],
-			x: 0,
-			y: 60,
+			x: -70,
+			y: 0,
 			// These five are exam-instruction phrases, not everyday vocabulary. Of
 			// the "learn a new word" methods, spell-word (copy / dictation) is the
 			// least effective here — typing "according to" or "complete the
@@ -1026,11 +1008,11 @@ const strategicReadingSection: SectionContent = {
 			]
 		},
 		{
-			id: 's7-l2',
-			titleHe: 'סריקה מהירה — מגנטים לעין',
-			prerequisites: ['s7-l1'],
-			x: 0,
-			y: 320,
+			id: 's2-l1',
+			titleHe: 'סריקה מהירה לרעיון המרכזי',
+			prerequisites: ['s2-l0'],
+			x: -70,
+			y: 96,
 			screens: [
 				{
 					type: 'preface',
@@ -1045,16 +1027,7 @@ const strategicReadingSection: SectionContent = {
 						'מילות שלילה (אדום): cannot · never · not',
 						'מילות מפתח (ירוק): most · only'
 					]
-				}
-			]
-		},
-		{
-			id: 's7-l3',
-			titleHe: 'תרגול — סמנו את המגנטים',
-			prerequisites: ['s7-l2'],
-			x: 0,
-			y: 580,
-			screens: [
+				},
 				{
 					type: 'preface',
 					text: 'עכשיו תורכם. לפניכם פסקה קצרה — סרקו אותה וסמנו את כל המגנטים לעין: מספרים וזמנים, שמות פרטיים, מילות שלילה ומילות מפתח.'
@@ -1069,14 +1042,21 @@ const strategicReadingSection: SectionContent = {
 					correctIndices: [0, 1, 2, 6, 7, 12, 14, 19, 21, 22, 23, 24, 25, 30]
 				}
 			]
-		}
+		},
+		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -50, 192),
+		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -40, 288),
+		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -50, 384),
+		titleOnly('s2-l5', 'פסילת תשובות שגויות', ['s2-l4'], -70, 480),
+		titleOnly('s2-l6', 'שאלות הסקה', ['s2-l5'], -90, 576),
+		titleOnly('s2-l7', 'אוצר מילים בקריאה', ['s2-l6'], -100, 672),
+		titleOnly('s2-l8', 'תרגול מלא על טקסט', ['s2-l7'], -90, 770)
 	]
 };
 
 const advancedReadingSection: SectionContent = {
 	lessons: [
-		// Converges all three parallel tracks — needs every one done.
-		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8', 's7-l3'], 0, 880),
+		// Converges both parallel tracks — needs both done, not just one.
+		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8'], 0, 880),
 		titleOnly('s3-l2', 'מטרת הכותב', ['s3-l1'], 64, 990),
 		titleOnly('s3-l3', 'טון ועמדה', ['s3-l2'], 96, 1100),
 		titleOnly('s3-l4', 'השוואה בין שני טקסטים', ['s3-l3'], 64, 1210),
@@ -1132,8 +1112,7 @@ const contentBySection: Record<string, SectionContent> = {
 	'c-3': advancedReadingSection,
 	'c-4': opinionWritingSection,
 	'c-5': lettersWritingSection,
-	'c-6': fullIntegrationSection,
-	'c-7': strategicReadingSection
+	'c-6': fullIntegrationSection
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {

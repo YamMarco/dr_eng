@@ -41,10 +41,7 @@ const currentModuleCSections: Section[] = [
 	{ id: 3, titleEn: 'Advanced Reading Strategies', titleHe: 'אסטרטגיות קריאה מתקדמות' },
 	{ id: 4, titleEn: 'Writing — Opinion & Description', titleHe: 'כתיבה — חוות דעת ותיאור' },
 	{ id: 5, titleEn: 'Writing — Letters & Review', titleHe: 'כתיבה — מכתבים וסיכום' },
-	{ id: 6, titleEn: 'Full Integration & Sprint', titleHe: 'שילוב מלא וספרינט' },
-	// A third parallel track, learned alongside sections 1 and 2 (center column
-	// on the lessons path); converges into section 3 with them.
-	{ id: 7, titleEn: 'Strategic Reading', titleHe: 'קריאה אסטרטגית' }
+	{ id: 6, titleEn: 'Full Integration & Sprint', titleHe: 'שילוב מלא וספרינט' }
 ];
 
 const sectionsByModule: Record<string, Section[]> = {
