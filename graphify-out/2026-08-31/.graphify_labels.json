@@ -32,8 +32,8 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
-  "33": "@lucide/svelte",
+  "33": "book/+page.svelte",
   "34": "types.ts",
   "35": "index.svelte.ts",
-  "36": "svelte"
+  "36": "ExamSession"
 }

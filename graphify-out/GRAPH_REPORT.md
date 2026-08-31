@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `067d1629`
+- Built from commit: `57be61b3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -165,7 +165,7 @@ Cohesion: 0.08
 Nodes (10): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+2 more)
 
 ## Knowledge Gaps
-- **192 isolated node(s):** `SectionIntro`, `archivedEyeCatchersSection`, `archivedMockSection2`, `archivedMockSection3`, `vocabFoundationSection` (+187 more)
+- **192 isolated node(s):** `guide`, `lesson 1`, `lesson 1`, `lesson 1`, `LessonScore` (+187 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -176,7 +176,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `SectionIntro`, `archivedEyeCatchersSection`, `archivedMockSection2` to the rest of the system?**
+- **What connects `guide`, `lesson 1`, `lesson 1` to the rest of the system?**
   _192 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
