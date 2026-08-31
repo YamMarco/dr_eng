@@ -15,7 +15,9 @@ const PALETTE: SectionTheme[] = [
 	{ node: 'bg-violet-500 text-white', nodeDone: 'bg-violet-100 text-violet-700' },
 	{ node: 'bg-amber-500 text-white', nodeDone: 'bg-amber-100 text-amber-700' },
 	{ node: 'bg-rose-500 text-white', nodeDone: 'bg-rose-100 text-rose-700' },
-	{ node: 'bg-sky-500 text-white', nodeDone: 'bg-sky-100 text-sky-700' }
+	{ node: 'bg-sky-500 text-white', nodeDone: 'bg-sky-100 text-sky-700' },
+	{ node: 'bg-emerald-500 text-white', nodeDone: 'bg-emerald-100 text-emerald-700' },
+	{ node: 'bg-fuchsia-500 text-white', nodeDone: 'bg-fuchsia-100 text-fuchsia-700' }
 ];
 
 export function themeForSectionIndex(index: number): SectionTheme {

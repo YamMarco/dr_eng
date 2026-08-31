@@ -9,6 +9,7 @@ import Steps from './Steps.svelte';
 import Summary from './Summary.svelte';
 import Mcq from './Mcq.svelte';
 import MarkWord from './MarkWord.svelte';
+import MarkAll from './MarkAll.svelte';
 import TimedReading from './TimedReading.svelte';
 import QuestionPreview from './QuestionPreview.svelte';
 import TimeResult from './TimeResult.svelte';
@@ -28,6 +29,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	summary: Summary,
 	mcq: Mcq,
 	'mark-word': MarkWord,
+	'mark-all': MarkAll,
 	'timed-reading': TimedReading,
 	'question-preview': QuestionPreview,
 	'time-result': TimeResult,

@@ -120,12 +120,27 @@ export type SpellWordScreen = {
 	mode: 'copy' | 'listen';
 };
 
+/**
+ * Skim a whole paragraph and tap every "eye catcher" (numbers, names,
+ * negatives, key words). The text is split on whitespace into tappable
+ * tokens; `correctIndices` are the token positions that count. Multi-select,
+ * one shared submit. Scored leniently — see MarkAll.svelte.
+ */
+export type MarkAllScreen = {
+	type: 'mark-all';
+	instruction: string;
+	text: string;
+	correctIndices: number[];
+	dir?: 'rtl' | 'ltr';
+};
+
 export type LessonScreen =
 	| PrefaceScreen
 	| StepsScreen
 	| SummaryScreen
 	| McqScreen
 	| MarkWordScreen
+	| MarkAllScreen
 	| TimedReadingScreen
 	| QuestionPreviewScreen
 	| TimeResultScreen
@@ -154,6 +169,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.prompt.trim() || screen.options.length === 0;
 		case 'mark-word':
 			return !screen.sentence.trim();
+		case 'mark-all':
+			return !screen.text.trim() || screen.correctIndices.length === 0;
 		case 'question-preview':
 			return screen.prompts.length === 0;
 		case 'timed-passage':
@@ -175,6 +192,7 @@ export function countQuestions(screen: LessonScreen): number {
 	switch (screen.type) {
 		case 'mcq':
 		case 'mark-word':
+		case 'mark-all':
 			return 1;
 		case 'timed-passage':
 		case 'passage-quiz':

@@ -825,7 +825,7 @@ const vocabFoundationSection: SectionContent = {
 			id: 's1-l6',
 			titleHe: 'אוצר מילים בהקשר',
 			prerequisites: ['s1-l5'],
-			x: 50,
+			x: 70,
 			y: 550,
 			screens: [
 				{
@@ -851,7 +851,7 @@ const vocabFoundationSection: SectionContent = {
 			id: 's1-l7',
 			titleHe: 'חזרה ומבחן — סט מילים 1',
 			prerequisites: ['s1-l6'],
-			x: 40,
+			x: 70,
 			y: 660,
 			screens: [
 				{
@@ -895,9 +895,9 @@ const vocabFoundationSection: SectionContent = {
 const readingBasicsSection: SectionContent = {
 	lessons: [
 		titleOnly('s2-l1', 'סריקה מהירה לרעיון המרכזי', [], -70, 0),
-		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -50, 110),
-		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -40, 220),
-		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -50, 330),
+		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -72, 110),
+		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -78, 220),
+		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -76, 330),
 		titleOnly('s2-l5', 'פסילת תשובות שגויות', ['s2-l4'], -70, 440),
 		titleOnly('s2-l6', 'שאלות הסקה', ['s2-l5'], -90, 550),
 		titleOnly('s2-l7', 'אוצר מילים בקריאה', ['s2-l6'], -100, 660),
@@ -905,10 +905,178 @@ const readingBasicsSection: SectionContent = {
 	]
 };
 
+// Section 7 — "Strategic Reading". A third real track drawn straight down the
+// center of the lessons path (x ~ 0), between the section-1 and section-2
+// columns, converging into s3-l1 with them. Only three nodes: recognise the
+// exam's instruction words, learn to skim for "eye catchers", then practice
+// marking them in a paragraph.
+const strategicReadingSection: SectionContent = {
+	lessons: [
+		{
+			id: 's7-l1',
+			titleHe: 'מילות הוראה בשאלון',
+			prerequisites: [],
+			x: 0,
+			y: 60,
+			// These five are exam-instruction phrases, not everyday vocabulary. Of
+			// the "learn a new word" methods, spell-word (copy / dictation) is the
+			// least effective here — typing "according to" or "complete the
+			// sentence" drills spelling, not meaning (and listen-mode audio isn't
+			// wired). So: word-card to introduce, then recognition (round 1) and
+			// use-in-context (round 2) MCQ.
+			rounds: [
+				[
+					{
+						type: 'preface',
+						text: 'המילים בשאלון לא מופיעות רק בטקסט — הן מופיעות גם בהוראות השאלה. מי שלא מבין את ההוראה מפסיד נקודות גם כשהבין את הטקסט. נכיר חמש מילות הוראה נפוצות.'
+					},
+					{ type: 'word-card', word: 'paragraph', translationHe: 'פסקה' },
+					{ type: 'word-card', word: 'according to', translationHe: 'לפי / על פי' },
+					{ type: 'word-card', word: 'explain / explains', translationHe: 'להסביר / מסביר' },
+					{ type: 'word-card', word: 'give ONE answer', translationHe: 'תנו תשובה אחת בלבד' },
+					{ type: 'word-card', word: 'complete the sentence', translationHe: 'השלימו את המשפט' },
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של "paragraph"?',
+						options: ['פסקה', 'משפט', 'כותרת', 'עמוד'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: 'מה המשמעות של "according to"?',
+						options: ['בניגוד ל־', 'לפי / על פי', 'למרות', 'בזכות'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'ההוראה "explain" מבקשת מכם...',
+						options: [
+							'לסמן תשובה נכונה',
+							'להסביר במילים שלכם',
+							'להעתיק שורה מהטקסט',
+							'לתרגם לעברית'
+						],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'ההוראה "give ONE answer" אומרת...',
+						options: ['לתת כמה תשובות אפשריות', 'לתת תשובה אחת בלבד', 'לתת דוגמה', 'לא חובה לענות'],
+						correctIndex: 1
+					},
+					{
+						type: 'mcq',
+						prompt: 'ההוראה "complete the sentence" מבקשת...',
+						options: [
+							'לכתוב משפט חדש לגמרי',
+							'להשלים את החלק החסר במשפט',
+							'לתקן שגיאה במשפט',
+							'לקצר את המשפט'
+						],
+						correctIndex: 1
+					}
+				],
+				[
+					{
+						type: 'mcq',
+						prompt: '"Answer according to the text." — מה נדרש מכם?',
+						options: [
+							'לענות לפי מה שכתוב בטקסט',
+							'לענות לפי דעתכם האישית',
+							'לנחש',
+							'להעתיק את כל הפסקה'
+						],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: '"Read the third paragraph and give ONE answer." — כמה תשובות לכתוב?',
+						options: ['אחת', 'שתיים', 'שלוש', 'כמה שאפשר'],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: '"Explain why the writer moved to Oslo." — איזו תשובה מתאימה?',
+						options: [
+							'משפט שמסביר את הסיבה',
+							'סימון "נכון / לא נכון"',
+							'מספר השורה בטקסט',
+							'תרגום המשפט'
+						],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: '"Complete the sentence: The study lasted ___." — מה עושים?',
+						options: [
+							'ממלאים את החסר לפי הטקסט',
+							'כותבים משפט חדש לגמרי',
+							'מוחקים את המשפט',
+							'בוחרים תשובה מרשימה'
+						],
+						correctIndex: 0
+					},
+					{
+						type: 'mcq',
+						prompt: '"In paragraph 2, the writer explains that..." — היכן לחפש את התשובה?',
+						options: ['בפסקה השנייה', 'בכותרת', 'במשפט האחרון של הטקסט', 'בשאלה הבאה'],
+						correctIndex: 0
+					}
+				]
+			]
+		},
+		{
+			id: 's7-l2',
+			titleHe: 'סריקה מהירה — מגנטים לעין',
+			prerequisites: ['s7-l1'],
+			x: 0,
+			y: 320,
+			screens: [
+				{
+					type: 'preface',
+					text: 'סריקה (skim) היא מעבר מהיר על הטקסט לפני קריאה לעומק — לא קוראים כל מילה, אלא צדים "מגנטים לעין": פרטים בולטים שנושאים את עיקר המשמעות. ברגע שמזהים אותם כבר יודעים על מה הטקסט ואיפה יושבות התשובות.'
+				},
+				{
+					type: 'summary',
+					title: 'ארבעה סוגי מגנטים לעין',
+					lines: [
+						'מספרים וזמנים (כתום): 30% · once a week · three sessions · two months',
+						'שמות פרטיים (סגול): Dr. Anna Klein · University of Oslo',
+						'מילות שלילה (אדום): cannot · never · not',
+						'מילות מפתח (ירוק): most · only'
+					]
+				}
+			]
+		},
+		{
+			id: 's7-l3',
+			titleHe: 'תרגול — סמנו את המגנטים',
+			prerequisites: ['s7-l2'],
+			x: 0,
+			y: 580,
+			screens: [
+				{
+					type: 'preface',
+					text: 'עכשיו תורכם. לפניכם פסקה קצרה — סרקו אותה וסמנו את כל המגנטים לעין: מספרים וזמנים, שמות פרטיים, מילות שלילה ומילות מפתח.'
+				},
+				{
+					type: 'mark-all',
+					instruction: 'סמנו את כל המגנטים לעין בפסקה',
+					dir: 'ltr',
+					text: 'Dr. Anna Klein studied sleep for two months. According to her report, most teenagers cannot sleep well. She tested 30 students once a week. Only three improved, and the rest never did.',
+					// Dr.(0) Anna(1) Klein(2) | two(6) months.(7) | most(12) | cannot(14) |
+					// 30(19) | once(21) a(22) week.(23) | Only(24) | three(25) | never(30)
+					correctIndices: [0, 1, 2, 6, 7, 12, 14, 19, 21, 22, 23, 24, 25, 30]
+				}
+			]
+		}
+	]
+};
+
 const advancedReadingSection: SectionContent = {
 	lessons: [
-		// Converges both parallel tracks — needs both done, not just one.
-		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8'], 0, 880),
+		// Converges all three parallel tracks — needs every one done.
+		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8', 's7-l3'], 0, 880),
 		titleOnly('s3-l2', 'מטרת הכותב', ['s3-l1'], 64, 990),
 		titleOnly('s3-l3', 'טון ועמדה', ['s3-l2'], 96, 1100),
 		titleOnly('s3-l4', 'השוואה בין שני טקסטים', ['s3-l3'], 64, 1210),
@@ -964,7 +1132,8 @@ const contentBySection: Record<string, SectionContent> = {
 	'c-3': advancedReadingSection,
 	'c-4': opinionWritingSection,
 	'c-5': lettersWritingSection,
-	'c-6': fullIntegrationSection
+	'c-6': fullIntegrationSection,
+	'c-7': strategicReadingSection
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {
