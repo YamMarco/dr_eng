@@ -11,7 +11,7 @@
   "9": "compilerOptions",
   "10": "Bagrut English Prep App (Mission)",
   "11": "graphify reference: extra exports and benchmark",
-  "12": "schema.md",
+  "12": "4.c.3.2",
   "13": "eslint.config.js",
   "14": "Keyed Each Blocks",
   "15": "prettier.config.js",
@@ -35,5 +35,7 @@
   "33": "book/+page.svelte",
   "34": "types.ts",
   "35": "index.svelte.ts",
-  "36": "ExamSession"
+  "36": "ExamSession",
+  "37": "@lucide/svelte",
+  "38": "svelte"
 }
