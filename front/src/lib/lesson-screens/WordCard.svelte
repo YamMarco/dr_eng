@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Image, Volume2 } from 'lucide-svelte';
+	import { Image, Volume2 } from '@lucide/svelte';
 	import type { WordCardScreen } from './types';
 	import { i18n } from '$lib/i18n/index.svelte';
 

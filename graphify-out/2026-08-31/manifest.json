@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "front/package.json": {
-    "mtime": 1788158333.7887707,
-    "seen": 1788159056.4042828,
-    "ast_hash": "627c05542306de0e521f06e59664925c",
+    "mtime": 1787657615.5652928,
+    "seen": 1787837258.2970996,
+    "ast_hash": "98f8fd7a1c8602429f236d0bca98d876",
     "semantic_hash": ""
   },
   "front/prettier.config.js": {
@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1788158524.3519297,
-    "seen": 1788159056.4043732,
-    "ast_hash": "c436342d2a7a352679d8b07194183b34",
+    "mtime": 1788094204.3144038,
+    "seen": 1788094375.1946099,
+    "ast_hash": "1457a49479511a652fa49737025e5561",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/registry.ts": {
-    "mtime": 1788158636.9129176,
-    "seen": 1788159056.4044862,
-    "ast_hash": "ce83400295a6eb58c6806266eeeda65b",
+    "mtime": 1787930910.4411693,
+    "seen": 1787932928.9793184,
+    "ast_hash": "e59b7099c2369f5299afa1b7881f8401",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/session.svelte.ts": {
@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/types.ts": {
-    "mtime": 1788158505.598232,
-    "seen": 1788159056.4045026,
-    "ast_hash": "400c95171fff3cacce10b36158839fe8",
+    "mtime": 1787930861.7497048,
+    "seen": 1787932928.9793234,
+    "ast_hash": "0961d3fcf11f65d542caa61ef0f579e8",
     "semantic_hash": ""
   },
   "front/src/routes/+error.svelte": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1788158799.592483,
-    "seen": 1788159056.4046366,
-    "ast_hash": "520b97ad3707f51a40911c2bdd9e84f5",
+    "mtime": 1788094280.5398326,
+    "seen": 1788094375.1947124,
+    "ast_hash": "fe08f60e4e9c043f14543ff5c82f877b",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -525,18 +525,6 @@
     "mtime": 1787987352.094309,
     "seen": 1787988824.3945434,
     "ast_hash": "859a00658fccc2fa0c91de1babc20f9e",
-    "semantic_hash": ""
-  },
-  "front/src/lib/lesson-screens/SpellWord.svelte": {
-    "mtime": 1788158620.7786689,
-    "seen": 1788159056.404434,
-    "ast_hash": "a0224dfdf684379dc1982a7c0447668e",
-    "semantic_hash": ""
-  },
-  "front/src/lib/lesson-screens/WordCard.svelte": {
-    "mtime": 1788158797.066148,
-    "seen": 1788159056.4044743,
-    "ast_hash": "558e0cefcd07f0aa05cb0e9281a74443",
     "semantic_hash": ""
   }
 }

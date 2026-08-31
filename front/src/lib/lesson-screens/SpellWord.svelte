@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Volume2 } from 'lucide-svelte';
+	import { Volume2 } from '@lucide/svelte';
 	import type { SpellWordScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FlaskConical } from 'lucide-svelte';
+	import { FlaskConical } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
