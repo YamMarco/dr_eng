@@ -11,6 +11,7 @@
 // they're rendered. Cascade: unit → module → section → lesson → screen.
 
 import type { LessonScreen } from './lesson-screens/types';
+import { readingTexts, firstSentence, markTargets } from './readingTexts';
 
 export type { LessonScreen };
 
@@ -892,10 +893,15 @@ const vocabFoundationSection: SectionContent = {
 	]
 };
 
+// Section 2's preview lessons all snip from one text (title -> 1st paragraph
+// -> 1st sentence of each paragraph); the eye-catcher drill uses another.
+const previewText = readingTexts.robots;
+const eyeCatcherText = readingTexts.village.paragraphs.join(' ');
+
 const readingBasicsSection: SectionContent = {
 	lessons: [
 		{
-			id: 's2-l0',
+			id: 's2-l1',
 			titleHe: 'מילות הוראה בשאלון',
 			prerequisites: [],
 			x: -70,
@@ -1008,55 +1014,137 @@ const readingBasicsSection: SectionContent = {
 			]
 		},
 		{
-			id: 's2-l1',
-			titleHe: 'סריקה מהירה לרעיון המרכזי',
-			prerequisites: ['s2-l0'],
-			x: -70,
-			y: 96,
+			id: 's2-l2',
+			titleHe: 'קראו את הכותרת',
+			prerequisites: ['s2-l1'],
+			x: -50,
+			y: 190,
 			screens: [
 				{
 					type: 'preface',
-					text: 'סריקה (skim) היא מעבר מהיר על הטקסט לפני קריאה לעומק — לא קוראים כל מילה, אלא צדים "מגנטים לעין": פרטים בולטים שנושאים את עיקר המשמעות. ברגע שמזהים אותם כבר יודעים על מה הטקסט ואיפה יושבות התשובות.'
+					text: 'הצעד הראשון בסריקה: קראו את הכותרת. במשפט אחד היא מגלה על מה הטקסט — עוד לפני שקראתם משפט אחד מתוכו.'
+				},
+				{
+					type: 'mcq',
+					prompt: `כותרת הטקסט היא "${previewText.title}". על מה הטקסט כנראה?`,
+					options: [
+						'שימוש ברובוטים כדי לעזור ללמד ילדים',
+						'איך לבנות רובוט בבית',
+						'סיפור מדע בדיוני על רובוטים',
+						'רובוטים שמנקים כיתות'
+					],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's2-l3',
+			titleHe: 'קראו את הפסקה הראשונה',
+			prerequisites: ['s2-l2'],
+			x: -70,
+			y: 385,
+			screens: [
+				{
+					type: 'preface',
+					text: 'הרעיון המרכזי של טקסט יושב כמעט תמיד בפסקה הראשונה. קראו אותה עכשיו:'
+				},
+				{ type: 'preface', dir: 'ltr', text: previewText.paragraphs[0] },
+				{
+					type: 'mcq',
+					prompt: 'מהו הרעיון המרכזי של הפסקה הראשונה?',
+					options: [
+						'כמה בתי ספר התחילו להשתמש ברובוטים כדי לעזור ללמד ילדים צעירים',
+						'רובוטים מלמדים טוב יותר מבני אדם',
+						'ילדים מפחדים לדבר עם רובוטים',
+						'כל בתי הספר בעולם משתמשים היום ברובוטים'
+					],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's2-l4',
+			titleHe: 'משפט ראשון בכל פסקה',
+			prerequisites: ['s2-l3'],
+			x: -90,
+			y: 580,
+			screens: [
+				{
+					type: 'preface',
+					text: 'אחרי הפסקה הראשונה, קראו רק את המשפט הראשון של כל פסקה. כל משפט כזה נושא את עיקר הפסקה — וביחד הם נותנים את שלד הטקסט.'
+				},
+				{
+					type: 'preface',
+					dir: 'ltr',
+					text: previewText.paragraphs.map(firstSentence).join('\n')
+				},
+				{
+					type: 'mcq',
+					prompt: 'לפי המשפטים הראשונים בלבד — מה מבנה הטקסט?',
+					options: [
+						'מציג רובוטים בכיתה, ואז תוצאות חיוביות לצד חששות',
+						'עוסק רק בבית ספר אחד בפינלנד',
+						'טוען שרובוטים יחליפו את כל המורים',
+						'מתנגד לכל שימוש בטכנולוגיה'
+					],
+					correctIndex: 0
+				}
+			]
+		},
+		{
+			id: 's2-l5',
+			titleHe: 'סמנו את המגנטים לעין',
+			prerequisites: ['s2-l4'],
+			x: -70,
+			y: 770,
+			screens: [
+				{
+					type: 'preface',
+					text: 'סריקה אחרונה: מגנטים לעין — פרטים בולטים שהעין נתפסת בהם ושמובילים ישר לתשובות.'
 				},
 				{
 					type: 'summary',
 					title: 'ארבעה סוגי מגנטים לעין',
 					lines: [
-						'מספרים וזמנים (כתום): 30% · once a week · three sessions · two months',
-						'שמות פרטיים (סגול): Dr. Anna Klein · University of Oslo',
+						'מספרים וזמנים (כתום): 2019 · 40 percent · six months · twice',
+						'שמות פרטיים (סגול): Giethoorn · University of Groningen',
 						'מילות שלילה (אדום): cannot · never · not',
 						'מילות מפתח (ירוק): most · only'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'עכשיו תורכם. לפניכם פסקה קצרה — סרקו אותה וסמנו את כל המגנטים לעין: מספרים וזמנים, שמות פרטיים, מילות שלילה ומילות מפתח.'
+					text: 'לפניכם שתי פסקאות. סרקו אותן וסמנו את כל המגנטים לעין.'
 				},
 				{
 					type: 'mark-all',
-					instruction: 'סמנו את כל המגנטים לעין בפסקה',
+					instruction: 'סמנו את כל המגנטים לעין בשתי הפסקאות',
 					dir: 'ltr',
-					text: 'Dr. Anna Klein studied sleep for two months. According to her report, most teenagers cannot sleep well. She tested 30 students once a week. Only three improved, and the rest never did.',
-					// Dr.(0) Anna(1) Klein(2) | two(6) months.(7) | most(12) | cannot(14) |
-					// 30(19) | once(21) a(22) week.(23) | Only(24) | three(25) | never(30)
-					correctIndices: [0, 1, 2, 6, 7, 12, 14, 19, 21, 22, 23, 24, 25, 30]
+					text: eyeCatcherText,
+					correctIndices: markTargets(eyeCatcherText, [
+						'2019',
+						'2,600',
+						'six months',
+						'40 percent',
+						'twice',
+						'Giethoorn',
+						'Netherlands',
+						'University of Groningen',
+						'never',
+						'cannot',
+						'Only',
+						'most'
+					])
 				}
 			]
-		},
-		titleOnly('s2-l2', 'סריקה לפרטים', ['s2-l1'], -50, 192),
-		titleOnly('s2-l3', 'הבחנה בין רעיון מרכזי לפרטים תומכים', ['s2-l2'], -40, 288),
-		titleOnly('s2-l4', 'מענה על שאלות "לפי הטקסט"', ['s2-l3'], -50, 384),
-		titleOnly('s2-l5', 'פסילת תשובות שגויות', ['s2-l4'], -70, 480),
-		titleOnly('s2-l6', 'שאלות הסקה', ['s2-l5'], -90, 576),
-		titleOnly('s2-l7', 'אוצר מילים בקריאה', ['s2-l6'], -100, 672),
-		titleOnly('s2-l8', 'תרגול מלא על טקסט', ['s2-l7'], -90, 770)
+		}
 	]
 };
 
 const advancedReadingSection: SectionContent = {
 	lessons: [
 		// Converges both parallel tracks — needs both done, not just one.
-		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l8'], 0, 880),
+		titleOnly('s3-l1', 'הבנת מבנה הטקסט', ['s1-l8', 's2-l5'], 0, 880),
 		titleOnly('s3-l2', 'מטרת הכותב', ['s3-l1'], 64, 990),
 		titleOnly('s3-l3', 'טון ועמדה', ['s3-l2'], 96, 1100),
 		titleOnly('s3-l4', 'השוואה בין שני טקסטים', ['s3-l3'], 64, 1210),

@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-31)
 
 ## Corpus Check
-- 89 files · ~37,582 words
+- 89 files · ~37,129 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 426 nodes · 509 edges · 38 communities (23 shown, 15 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.9)
+- 427 nodes · 517 edges · 39 communities (25 shown, 14 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `610b5352`
+- Built from commit: `d81cfa0f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,7 +27,6 @@
 - compilerOptions
 - Bagrut English Prep App (Mission)
 - graphify reference: extra exports and benchmark
-- Lesson screen / question schemas
 - eslint.config.js
 - Keyed Each Blocks
 - prettier.config.js
@@ -49,20 +48,20 @@
 - sections.ts
 - types.ts
 - index.svelte.ts
-- sectionThemes.ts
+- book/+page.svelte
 - ExamSession
 
 ## God Nodes (most connected - your core abstractions)
-1. `Lesson screen / question schemas` - 14 edges
-2. `What You Must Do When Invoked` - 12 edges
-3. `compilerOptions` - 11 edges
-4. `/graphify` - 10 edges
-5. `scripts` - 9 edges
-6. `graphify reference: extra exports and benchmark` - 8 edges
-7. `Snippet Blocks ({#snippet})` - 8 edges
-8. `ExamSession` - 7 edges
-9. `Svelte MCP Server (Project Config)` - 6 edges
-10. `$effect Rune` - 6 edges
+1. `What You Must Do When Invoked` - 12 edges
+2. `compilerOptions` - 11 edges
+3. `/graphify` - 10 edges
+4. `scripts` - 9 edges
+5. `graphify reference: extra exports and benchmark` - 8 edges
+6. `Snippet Blocks ({#snippet})` - 8 edges
+7. `ExamSession` - 7 edges
+8. `Svelte MCP Server (Project Config)` - 6 edges
+9. `$effect Rune` - 6 edges
+10. `LessonProgressStore` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `RTL Hebrew Document Layout` --semantically_similar_to--> `Bagrut English Prep App (Mission)`  [INFERRED] [semantically similar]
@@ -79,7 +78,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 15 thin omitted)
+## Communities (39 total, 14 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -98,8 +97,8 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.11
-Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
+Cohesion: 0.08
+Nodes (20): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+12 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -114,8 +113,8 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "sectionContent.ts"
-Cohesion: 0.11
-Nodes (14): advancedReadingSection, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3, contentBySection, fullIntegrationSection, Lesson, lettersWritingSection (+6 more)
+Cohesion: 0.09
+Nodes (18): firstSentence(), markTargets(), ReadingText, readingTexts, advancedReadingSection, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3 (+10 more)
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.14
@@ -128,10 +127,6 @@ Nodes (8): Bagrut English Prep App (Mission), Brief Assistant Persona, Commit Af
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
 Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
-
-### Community 12 - "Lesson screen / question schemas"
-Cohesion: 0.13
-Nodes (14): Lesson screen / question schemas, mark-word **(scored, 1 question)**, mcq **(scored, 1 question)**, passage-quiz **(scored, one per item in `questions`)**, preface, question-preview, Section / lesson wrapper shapes, steps (+6 more)
 
 ### Community 18 - "graphify reference: query, path, explain"
 Cohesion: 0.33
@@ -162,23 +157,27 @@ Cohesion: 0.05
 Nodes (31): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkAllScreen (+23 more)
 
 ### Community 35 - "index.svelte.ts"
-Cohesion: 0.06
+Cohesion: 0.08
 Nodes (11): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+3 more)
 
+### Community 36 - "book/+page.svelte"
+Cohesion: 0.15
+Nodes (3): canGoPrev, canSubmit, formattedDate
+
 ## Knowledge Gaps
-- **208 isolated node(s):** `screenComponents`, `PrefaceScreen`, `StepsScreen`, `SummaryScreen`, `McqScreen` (+203 more)
+- **196 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+191 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `screenComponents`, `PrefaceScreen`, `StepsScreen` to the rest of the system?**
-  _208 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
+  _196 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**

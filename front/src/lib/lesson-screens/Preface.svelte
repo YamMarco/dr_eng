@@ -22,4 +22,6 @@
 	}
 </script>
 
-<p class="text-lg leading-relaxed whitespace-pre-line">{screen.text}</p>
+<p class="text-lg leading-relaxed whitespace-pre-line" dir={screen.dir ?? undefined}>
+	{screen.text}
+</p>

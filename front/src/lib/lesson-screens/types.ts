@@ -3,7 +3,7 @@
 // add a new exercise type: add the shape here, write the component, register
 // it. Nothing else in the app needs to change.
 
-export type PrefaceScreen = { type: 'preface'; text: string };
+export type PrefaceScreen = { type: 'preface'; text: string; dir?: 'rtl' | 'ltr' };
 
 export type StepsScreen = { type: 'steps'; steps: string[] };
 
