@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1788073592.3665295,
-    "seen": 1788073707.4264762,
-    "ast_hash": "62a07dc1c4eef2035fa652b2cec63a08",
+    "mtime": 1788094204.3144038,
+    "seen": 1788094375.1946099,
+    "ast_hash": "1457a49479511a652fa49737025e5561",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1788073009.2712562,
-    "seen": 1788073080.8996072,
-    "ast_hash": "3875e80a62cdb72bb4920818d0bde527",
+    "mtime": 1788094023.081066,
+    "seen": 1788094375.194619,
+    "ast_hash": "b50edc3326b3134830ce2fba739a9be0",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1788073640.6431007,
-    "seen": 1788073707.4265304,
-    "ast_hash": "231f4f5634698df757a89b649e7ec584",
+    "mtime": 1788094280.5398326,
+    "seen": 1788094375.1947124,
+    "ast_hash": "fe08f60e4e9c043f14543ff5c82f877b",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lessonProgress.svelte.ts": {
-    "mtime": 1788073502.5268152,
-    "seen": 1788073707.4265099,
-    "ast_hash": "6fd26cb7ca596a5a67ce79b58dc5339c",
+    "mtime": 1788094193.7270012,
+    "seen": 1788094375.1946764,
+    "ast_hash": "71f4376311df243bee8643845f6216a4",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WritingTask.svelte": {
@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/sectionContent.ts": {
-    "mtime": 1788093635.6750076,
-    "seen": 1788093692.3942766,
-    "ast_hash": "c1daa627187593b5e650d34b705387de",
+    "mtime": 1788094181.8604956,
+    "seen": 1788094375.1946795,
+    "ast_hash": "924575dd153c667fd4c7dfbaf4e49b3b",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {

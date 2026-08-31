@@ -933,7 +933,7 @@
       "file_type": "code",
       "norm_label": "getsectioncontent()",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L798"
+      "source_location": "L917"
     },
     {
       "id": "front_src_lib_sectioncontent_mocklesson",
@@ -3706,7 +3706,7 @@
       "file_type": "code",
       "norm_label": "advancedreadingsection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L736"
+      "source_location": "L855"
     },
     {
       "id": "front_src_lib_sectioncontent_archivedeyecatcherssection",
@@ -3750,7 +3750,7 @@
       "file_type": "code",
       "norm_label": "contentbysection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L789"
+      "source_location": "L908"
     },
     {
       "id": "front_src_lib_sectioncontent_fullintegrationsection",
@@ -3761,7 +3761,7 @@
       "file_type": "code",
       "norm_label": "fullintegrationsection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L776"
+      "source_location": "L895"
     },
     {
       "id": "front_src_lib_sectioncontent_letterswritingsection",
@@ -3772,7 +3772,7 @@
       "file_type": "code",
       "norm_label": "letterswritingsection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L763"
+      "source_location": "L882"
     },
     {
       "id": "front_src_lib_sectioncontent_opinionwritingsection",
@@ -3783,7 +3783,7 @@
       "file_type": "code",
       "norm_label": "opinionwritingsection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L750"
+      "source_location": "L869"
     },
     {
       "id": "front_src_lib_sectioncontent_readingbasicssection",
@@ -3794,7 +3794,7 @@
       "file_type": "code",
       "norm_label": "readingbasicssection",
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L723"
+      "source_location": "L842"
     },
     {
       "id": "front_src_lib_sectioncontent_vocabfoundationsection",
@@ -8124,7 +8124,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L723",
+      "source_location": "L842",
       "weight": 1.0
     },
     {
@@ -8135,7 +8135,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L736",
+      "source_location": "L855",
       "weight": 1.0
     },
     {
@@ -8146,7 +8146,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L750",
+      "source_location": "L869",
       "weight": 1.0
     },
     {
@@ -8157,7 +8157,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L763",
+      "source_location": "L882",
       "weight": 1.0
     },
     {
@@ -8168,7 +8168,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L776",
+      "source_location": "L895",
       "weight": 1.0
     },
     {
@@ -8179,7 +8179,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L789",
+      "source_location": "L908",
       "weight": 1.0
     },
     {
@@ -8190,7 +8190,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/sectionContent.ts",
-      "source_location": "L798",
+      "source_location": "L917",
       "weight": 1.0
     },
     {
@@ -10254,5 +10254,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c12655c6c5ec5c4aede6289ab38a394221d81901"
+  "built_at_commit": "042607ad0de72e72163bccca5f97aeb76469064a"
 }
