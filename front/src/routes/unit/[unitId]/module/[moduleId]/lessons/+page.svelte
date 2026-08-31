@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { FlaskConical } from 'lucide-svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { getSections } from '$lib/sections';
 	import { getSectionContent, getRounds, type Lesson } from '$lib/sectionContent';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
-	import { isScreenEmpty, countQuestions } from '$lib/lesson-screens/types';
+	import { isScreenEmpty, countQuestions, type LessonScreen } from '$lib/lesson-screens/types';
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
@@ -135,9 +136,15 @@
 
 	// The debug "unlock all" flag is a full override — it comes before every
 	// other check, content-availability included, so it always does what it
-	// says regardless of what's been authored yet.
+	// says regardless of what's been authored yet. A lesson the student has
+	// already completed always stays open too, even if debug-unlocking was
+	// used earlier to reach it out of order and its formal prerequisites
+	// still aren't otherwise satisfied — turning "unlock all" back off must
+	// never re-lock real progress (its own following nodes then stay open
+	// too, same as any other completed lesson, via the normal chain).
 	function isUnlocked(node: PathNode): boolean {
 		if (debugStore.unlockAll) return true;
+		if (isDone(node.lesson.id)) return true;
 		if (!hasContent(node.lesson)) return false;
 		return (node.lesson.prerequisites ?? []).every((id) => isDone(id));
 	}
@@ -221,6 +228,16 @@
 		const target = event.target as HTMLElement;
 		if (!target.closest('[data-lesson-node]')) openLabelId = null;
 	}
+
+	// Debug-only scratch node to preview every vocabulary screen a new word
+	// gets — not part of any section's real graph/progress, so it's kept
+	// entirely separate from `nodes`/`activeId` above.
+	const vocabTestScreens: LessonScreen[] = [
+		{ type: 'word-card', word: 'butterfly', translationHe: 'פרפר', imageAlt: 'butterfly' },
+		{ type: 'spell-word', word: 'butterfly', mode: 'copy' },
+		{ type: 'spell-word', word: 'butterfly', mode: 'listen' }
+	];
+	let vocabTestOpen = $state(false);
 </script>
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
@@ -355,6 +372,30 @@
 		</div>
 	{/if}
 </main>
+
+{#if debugStore.enabled}
+	<!-- Debug-only: preview every vocabulary screen type on a scratch node,
+	     isolated from any real lesson/section. -->
+	<button
+		type="button"
+		onclick={() => (vocabTestOpen = true)}
+		title="בדיקת מסכי אוצר מילים (דיבוג)"
+		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
+	>
+		<FlaskConical size={22} aria-hidden="true" />
+	</button>
+{/if}
+
+{#if vocabTestOpen}
+	<LessonRunner
+		screens={vocabTestScreens}
+		lessonLabel="בדיקת אוצר מילים (דיבוג)"
+		hasNextLesson={false}
+		onExit={() => (vocabTestOpen = false)}
+		onFinish={() => (vocabTestOpen = false)}
+		onFinishAndContinue={() => (vocabTestOpen = false)}
+	/>
+{/if}
 
 {#if activeNode}
 	<!-- Keyed so "continue to next lesson" forces a full remount instead of

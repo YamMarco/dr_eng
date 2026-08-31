@@ -96,6 +96,30 @@ export type TimeComparisonScreen = {
 	tieMessage: string;
 };
 
+/**
+ * Introduces one word before quizzing on it — reusable across any lesson in
+ * any module. Not scored: pure teaching, like preface/summary. Image and
+ * audio are both placeholders for now (see WordCard.svelte).
+ */
+export type WordCardScreen = {
+	type: 'word-card';
+	word: string;
+	translationHe?: string;
+	/** Alt text for the (placeholder) image — falls back to the word itself. */
+	imageAlt?: string;
+};
+
+/**
+ * Type the word into a text input. `mode: 'copy'` shows the word to
+ * transcribe; `mode: 'listen'` hides it behind a (not yet wired up) audio
+ * button instead — a dictation exercise, ready for real audio later.
+ */
+export type SpellWordScreen = {
+	type: 'spell-word';
+	word: string;
+	mode: 'copy' | 'listen';
+};
+
 export type LessonScreen =
 	| PrefaceScreen
 	| StepsScreen
@@ -108,7 +132,9 @@ export type LessonScreen =
 	| TimeComparisonScreen
 	| TimedPassageScreen
 	| PassageQuizScreen
-	| WritingTaskScreen;
+	| WritingTaskScreen
+	| WordCardScreen
+	| SpellWordScreen;
 
 /**
  * A screen with no real content (e.g. a message left with empty text, or a
@@ -135,6 +161,9 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.text.trim() || screen.questions.length === 0;
 		case 'writing-task':
 			return !screen.prompt.trim();
+		case 'word-card':
+		case 'spell-word':
+			return !screen.word.trim();
 		case 'time-result':
 		case 'time-comparison':
 			return false;
@@ -151,6 +180,7 @@ export function countQuestions(screen: LessonScreen): number {
 		case 'passage-quiz':
 			return screen.questions.length;
 		case 'writing-task':
+		case 'spell-word':
 			return 1;
 		default:
 			return 0;

@@ -39,6 +39,8 @@
 	},
 	"dependencies": {
 		"@capacitor/core": "^8.5.0",
-		"lucide": "^1.34.0"
+		"@lucide/svelte": "^1.37.0",
+		"lucide": "^1.34.0",
+		"lucide-svelte": "^1.0.1"
 	}
 }

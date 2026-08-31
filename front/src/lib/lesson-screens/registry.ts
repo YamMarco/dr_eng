@@ -16,6 +16,8 @@ import TimeComparison from './TimeComparison.svelte';
 import TimedPassage from './TimedPassage.svelte';
 import PassageQuiz from './PassageQuiz.svelte';
 import WritingTask from './WritingTask.svelte';
+import WordCard from './WordCard.svelte';
+import SpellWord from './SpellWord.svelte';
 
 // Prop shapes differ per screen type, so this registry is intentionally
 // loosely typed at the map level; each component fully types its own props.
@@ -32,5 +34,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'time-comparison': TimeComparison,
 	'timed-passage': TimedPassage,
 	'passage-quiz': PassageQuiz,
-	'writing-task': WritingTask
+	'writing-task': WritingTask,
+	'word-card': WordCard,
+	'spell-word': SpellWord
 };

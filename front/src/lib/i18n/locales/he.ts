@@ -61,7 +61,18 @@ export const he = {
 		markWord: 'תרגיל: סמנו מילה',
 		timedReading: 'תרגיל מתוזמן: קריאה',
 		writingTask: 'משימת כתיבה',
+		spellWordCopy: 'תרגיל: איות',
+		spellWordListen: 'תרגיל: הכתבה',
 		submitButton: 'בדיקה'
+	},
+	wordCard: {
+		listenLabel: 'השמעה (בקרוב)',
+		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
+		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
+		spellListenNote: 'ההאזנה עדיין לא פעילה — זהו מסך הדגמה.',
+		inputPlaceholder: 'הקלידו כאן...',
+		correctFeedback: 'נכון!',
+		incorrectFeedback: (word: string) => `כמעט. האיות הנכון: ${word}`
 	},
 	writingTask: {
 		wordBankLabel: 'מילים לשימוש',
