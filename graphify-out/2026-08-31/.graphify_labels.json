@@ -4,7 +4,7 @@
   "2": "Snippet Blocks ({#snippet})",
   "3": "scripts",
   "4": "curriculum.ts",
-  "5": "lessonProgress.svelte.ts",
+  "5": "debug.svelte.ts",
   "6": "$effect Rune",
   "7": "What You Must Do When Invoked",
   "8": "sectionContent.ts",
@@ -32,10 +32,7 @@
   "30": "CLAUDE.md",
   "31": ".claude/CLAUDE.md",
   "32": "extraction-spec.md",
-  "33": "book/+page.svelte",
   "34": "types.ts",
   "35": "index.svelte.ts",
-  "36": "ExamSession",
-  "37": "@lucide/svelte",
-  "38": "svelte"
+  "36": "ExamSession"
 }

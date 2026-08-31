@@ -1781,6 +1781,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "page",
       "norm_label": "schema.md",
       "source_file": "docs/module c/schema.md",
       "source_location": "L1"
@@ -1792,6 +1793,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "4.c.3.2",
       "source_file": "docs/module c/schema.md",
       "source_location": "L5"
@@ -1803,6 +1805,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "4.c.3.3",
       "source_file": "docs/module c/schema.md",
       "source_location": "L15"
@@ -1814,6 +1817,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "guide",
       "source_file": "docs/module c/schema.md",
       "source_location": "L1"
@@ -1825,6 +1829,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "material:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L10"
@@ -1836,6 +1841,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "material:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L29"
@@ -1847,6 +1853,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "message/the point:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L6"
@@ -1858,6 +1865,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "message/the point:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L16"
@@ -1869,6 +1877,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "questions:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L8"
@@ -1880,6 +1889,7 @@
       "community": 12,
       "community_name": "4.c.3.2",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "questions:",
       "source_file": "docs/module c/schema.md",
       "source_location": "L27"
@@ -10830,5 +10840,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2646f66f8bce8b42e2f2537651ae2c92b6c6b4e4"
+  "built_at_commit": "16d540118c0b28ed02cae40f0c61c370ab098be1"
 }
