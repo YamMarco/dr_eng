@@ -11,6 +11,7 @@
 // they're rendered. Cascade: unit → module → section → lesson → screen.
 
 import type { LessonScreen } from './lesson-screens/types';
+import { vocabSectionContent } from './vocabSections';
 
 export type { LessonScreen };
 
@@ -873,7 +874,8 @@ const vocabFoundationSection: SectionContent = {
 };
 
 const contentBySection: Record<string, SectionContent> = {
-	'c-1': vocabFoundationSection
+	'c-1': vocabFoundationSection,
+	...vocabSectionContent
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {

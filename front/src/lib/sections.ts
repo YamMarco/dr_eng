@@ -3,6 +3,8 @@
 // actual clickable path nodes are "lessons" (lib/sectionContent.ts).
 // Cascade: unit → module → section → lesson → screen.
 
+import { vocabSectionMeta } from './vocabSections';
+
 export type Section = {
 	id: number;
 	titleEn: string | null;
@@ -32,10 +34,11 @@ export const archivedMockModuleCSections: Section[] = [
 	{ id: 3, titleEn: null, titleHe: '(מוקאפ) יחידה ג׳' }
 ];
 
-// The live roster, built from docs/lessons frame.csv. Only section 1 is
-// currently served; the rest of the module is set aside for now.
+// The live roster: section 1's hand-authored vocab lessons, then one opener
+// section per program lesson (L1..L24 -> sections 2..25, see vocabSections.ts).
 const currentModuleCSections: Section[] = [
-	{ id: 1, titleEn: 'Vocabulary Foundation', titleHe: 'יסודות אוצר מילים' }
+	{ id: 1, titleEn: 'Vocabulary Foundation', titleHe: 'יסודות אוצר מילים' },
+	...vocabSectionMeta
 ];
 
 const sectionsByModule: Record<string, Section[]> = {

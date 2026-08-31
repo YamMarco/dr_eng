@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 415 nodes · 502 edges · 42 communities (27 shown, 15 thin omitted)
+- 404 nodes · 488 edges · 36 communities (22 shown, 14 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e875ea64`
+- Built from commit: `8af5c81a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,7 +27,6 @@
 - compilerOptions
 - Bagrut English Prep App (Mission)
 - graphify reference: extra exports and benchmark
-- score.svelte.ts
 - eslint.config.js
 - Keyed Each Blocks
 - prettier.config.js
@@ -49,10 +48,7 @@
 - sections.ts
 - types.ts
 - index.svelte.ts
-- registry.ts
 - ExamSession
-- book/+page.svelte
-- WritingTask.svelte
 
 ## God Nodes (most connected - your core abstractions)
 1. `What You Must Do When Invoked` - 12 edges
@@ -81,7 +77,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (42 total, 15 thin omitted)
+## Communities (36 total, 14 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -100,8 +96,8 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.08
-Nodes (20): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+12 more)
+Cohesion: 0.11
+Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -156,38 +152,26 @@ Cohesion: 0.29
 Nodes (7): archivedMockModuleCSections, archivedModuleCSections, currentModuleCSections, getSection(), getSections(), Section, sectionsByModule
 
 ### Community 34 - "types.ts"
-Cohesion: 0.11
-Nodes (16): MarkAllScreen, MarkWordScreen, McqScreen, PassageQuizQuestion, PassageQuizScreen, PrefaceScreen, QuestionPreviewScreen, SpellWordScreen (+8 more)
+Cohesion: 0.05
+Nodes (30): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkAllScreen, MarkWordScreen (+22 more)
 
 ### Community 35 - "index.svelte.ts"
-Cohesion: 0.08
-Nodes (11): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+3 more)
-
-### Community 36 - "registry.ts"
-Cohesion: 0.15
-Nodes (3): screenComponents, KEY, LessonSession
-
-### Community 38 - "book/+page.svelte"
-Cohesion: 0.15
-Nodes (3): canGoPrev, canSubmit, formattedDate
-
-### Community 39 - "WritingTask.svelte"
-Cohesion: 0.20
-Nodes (9): recordAnswer(), allFilled, allOk, checked, combinedText, primaryAction(), punctuationOk, wordBankOk (+1 more)
+Cohesion: 0.05
+Nodes (13): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+5 more)
 
 ## Knowledge Gaps
-- **189 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+184 more)
+- **189 isolated node(s):** `Lesson`, `SectionIntro`, `SectionContent`, `archivedEyeCatchersSection`, `archivedMockSection2` (+184 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
+- **What connects `Lesson`, `SectionIntro`, `SectionContent` to the rest of the system?**
   _189 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._

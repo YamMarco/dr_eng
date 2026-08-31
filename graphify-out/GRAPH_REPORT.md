@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-08-31)
 
 ## Corpus Check
-- 88 files · ~35,178 words
+- 91 files · ~40,116 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 404 nodes · 488 edges · 36 communities (22 shown, 14 thin omitted)
+- 433 nodes · 531 edges · 37 communities (24 shown, 13 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8af5c81a`
+- Built from commit: `f7f3060e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,6 +27,7 @@
 - compilerOptions
 - Bagrut English Prep App (Mission)
 - graphify reference: extra exports and benchmark
+- schema.md
 - eslint.config.js
 - Keyed Each Blocks
 - prettier.config.js
@@ -45,10 +46,8 @@
 - CLAUDE.md
 - .claude/CLAUDE.md
 - extraction-spec.md
-- sections.ts
 - types.ts
 - index.svelte.ts
-- ExamSession
 
 ## God Nodes (most connected - your core abstractions)
 1. `What You Must Do When Invoked` - 12 edges
@@ -77,7 +76,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (36 total, 14 thin omitted)
+## Communities (37 total, 13 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -96,8 +95,8 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.11
-Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
+Cohesion: 0.07
+Nodes (21): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+13 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -112,8 +111,8 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 8 - "sectionContent.ts"
-Cohesion: 0.15
-Nodes (9): LessonScreen, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3, contentBySection, Lesson, SectionContent, SectionIntro (+1 more)
+Cohesion: 0.08
+Nodes (25): LessonScreen, McqScreen, archivedEyeCatchersSection, archivedMockSection2, archivedMockSection3, contentBySection, Lesson, SectionContent (+17 more)
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.14
@@ -126,6 +125,10 @@ Nodes (8): Bagrut English Prep App (Mission), Brief Assistant Persona, Commit Af
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
 Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 12 - "schema.md"
+Cohesion: 0.25
+Nodes (7): guide, lesson 1, lesson 1, lesson 1, section 2, section 3, section 4
 
 ### Community 18 - "graphify reference: query, path, explain"
 Cohesion: 0.33
@@ -147,32 +150,26 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
 
-### Community 33 - "sections.ts"
-Cohesion: 0.29
-Nodes (7): archivedMockModuleCSections, archivedModuleCSections, currentModuleCSections, getSection(), getSections(), Section, sectionsByModule
-
 ### Community 34 - "types.ts"
 Cohesion: 0.05
-Nodes (30): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkAllScreen, MarkWordScreen (+22 more)
+Nodes (29): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkAllScreen, MarkWordScreen (+21 more)
 
 ### Community 35 - "index.svelte.ts"
 Cohesion: 0.05
-Nodes (13): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+5 more)
+Nodes (14): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+6 more)
 
 ## Knowledge Gaps
-- **189 isolated node(s):** `Lesson`, `SectionIntro`, `SectionContent`, `archivedEyeCatchersSection`, `archivedMockSection2` (+184 more)
+- **192 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+187 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `Lesson`, `SectionIntro`, `SectionContent` to the rest of the system?**
-  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
+  _192 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `Svelte MCP Server (Project Config)` be split into smaller, more focused modules?**
@@ -181,3 +178,5 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+- **Should `curriculum.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.07422402159244265 - nodes in this community are weakly interconnected._
