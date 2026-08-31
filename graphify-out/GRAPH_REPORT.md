@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 433 nodes · 514 edges · 38 communities (25 shown, 13 thin omitted)
+- 423 nodes · 503 edges · 38 communities (24 shown, 14 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.91)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6c337bd0`
+- Built from commit: `e068968d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,7 +48,9 @@
 - extraction-spec.md
 - sections.ts
 - types.ts
+- book/+page.svelte
 - curriculum.ts
+- ExamSession
 
 ## God Nodes (most connected - your core abstractions)
 1. `Lesson screen / question schemas` - 14 edges
@@ -77,7 +79,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 13 thin omitted)
+## Communities (38 total, 14 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -96,8 +98,8 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "index.svelte.ts"
-Cohesion: 0.05
-Nodes (14): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+6 more)
+Cohesion: 0.08
+Nodes (10): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+2 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -159,21 +161,27 @@ Nodes (7): archivedMockModuleCSections, archivedModuleCSections, currentModuleCS
 Cohesion: 0.05
 Nodes (30): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkWordScreen (+22 more)
 
+### Community 35 - "book/+page.svelte"
+Cohesion: 0.15
+Nodes (3): canGoPrev, canSubmit, formattedDate
+
 ### Community 36 - "curriculum.ts"
-Cohesion: 0.07
-Nodes (21): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+13 more)
+Cohesion: 0.11
+Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
 
 ## Knowledge Gaps
-- **206 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+201 more)
+- **206 isolated node(s):** `canGoPrev`, `canSubmit`, `formattedDate`, `gitignorePath`, `name` (+201 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `canGoPrev`, `canSubmit`, `formattedDate` to the rest of the system?**
   _206 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
@@ -183,5 +191,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `index.svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05101327742837177 - nodes in this community are weakly interconnected._

@@ -34,7 +34,7 @@
   "32": "extraction-spec.md",
   "33": "sections.ts",
   "34": "types.ts",
-  "35": "svelte",
+  "35": "book/+page.svelte",
   "36": "curriculum.ts",
-  "37": "@lucide/svelte"
+  "37": "ExamSession"
 }
