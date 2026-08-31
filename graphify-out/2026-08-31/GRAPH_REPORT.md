@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 427 nodes · 517 edges · 39 communities (25 shown, 14 thin omitted)
+- 416 nodes · 503 edges · 36 communities (22 shown, 14 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d81cfa0f`
+- Built from commit: `1067daf4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,7 +48,6 @@
 - sections.ts
 - types.ts
 - index.svelte.ts
-- book/+page.svelte
 - ExamSession
 
 ## God Nodes (most connected - your core abstractions)
@@ -78,7 +77,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (39 total, 14 thin omitted)
+## Communities (36 total, 14 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -97,8 +96,8 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.08
-Nodes (20): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+12 more)
+Cohesion: 0.11
+Nodes (16): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+8 more)
 
 ### Community 5 - "lessonProgress.svelte.ts"
 Cohesion: 0.29
@@ -157,15 +156,11 @@ Cohesion: 0.05
 Nodes (31): screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, LessonScreen, MarkAllScreen (+23 more)
 
 ### Community 35 - "index.svelte.ts"
-Cohesion: 0.08
-Nodes (11): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+3 more)
-
-### Community 36 - "book/+page.svelte"
-Cohesion: 0.15
-Nodes (3): canGoPrev, canSubmit, formattedDate
+Cohesion: 0.05
+Nodes (13): DebugStore, dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he (+5 more)
 
 ## Knowledge Gaps
-- **196 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+191 more)
+- **196 isolated node(s):** `PrefaceScreen`, `StepsScreen`, `SummaryScreen`, `McqScreen`, `MarkWordScreen` (+191 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -173,10 +168,10 @@ Nodes (3): canGoPrev, canSubmit, formattedDate
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `scripts`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `ExamSession` connect `ExamSession` to `curriculum.ts`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
+- **What connects `PrefaceScreen`, `StepsScreen`, `SummaryScreen` to the rest of the system?**
   _196 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._

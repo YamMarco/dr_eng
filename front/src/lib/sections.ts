@@ -32,16 +32,10 @@ export const archivedMockModuleCSections: Section[] = [
 	{ id: 3, titleEn: null, titleHe: '(מוקאפ) יחידה ג׳' }
 ];
 
-// The live roster, built from docs/lessons frame.csv. Sections 1 and 2 are
-// learned side by side (two parallel path tracks — see the lessons path
-// page); sections 3-6 follow as one continuous path.
+// The live roster, built from docs/lessons frame.csv. Only section 1 is
+// currently served; the rest of the module is set aside for now.
 const currentModuleCSections: Section[] = [
-	{ id: 1, titleEn: 'Vocabulary Foundation', titleHe: 'יסודות אוצר מילים' },
-	{ id: 2, titleEn: 'Reading Comprehension Basics', titleHe: 'הבנת הנקרא — יסודות' },
-	{ id: 3, titleEn: 'Advanced Reading Strategies', titleHe: 'אסטרטגיות קריאה מתקדמות' },
-	{ id: 4, titleEn: 'Writing — Opinion & Description', titleHe: 'כתיבה — חוות דעת ותיאור' },
-	{ id: 5, titleEn: 'Writing — Letters & Review', titleHe: 'כתיבה — מכתבים וסיכום' },
-	{ id: 6, titleEn: 'Full Integration & Sprint', titleHe: 'שילוב מלא וספרינט' }
+	{ id: 1, titleEn: 'Vocabulary Foundation', titleHe: 'יסודות אוצר מילים' }
 ];
 
 const sectionsByModule: Record<string, Section[]> = {
