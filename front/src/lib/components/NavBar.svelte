@@ -10,6 +10,12 @@
 			icon: 'home'
 		},
 		{
+			href: '/book',
+			label: i18n.dict.nav.book,
+			match: (path: string) => path.startsWith('/book'),
+			icon: 'book'
+		},
+		{
 			href: '/settings',
 			label: i18n.dict.nav.settings,
 			match: (path: string) => path.startsWith('/settings'),
@@ -33,6 +39,24 @@
 	>
 		<path d="m3 11 9-8 9 8" />
 		<path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10" />
+	</svg>
+{/snippet}
+
+{#snippet bookIcon(active: boolean)}
+	<svg
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="h-6 w-6"
+		aria-hidden="true"
+	>
+		<path d="M8 2v4M16 2v4" />
+		<rect x="3" y="4" width="18" height="18" rx="2" />
+		<path d="M3 10h18" />
+		{#if active}<path d="m8.5 15.5 2.5 2.5 4.5-4.5" />{/if}
 	</svg>
 {/snippet}
 
@@ -71,6 +95,8 @@
 			>
 				{#if item.icon === 'home'}
 					{@render homeIcon(active)}
+				{:else if item.icon === 'book'}
+					{@render bookIcon(active)}
 				{:else}
 					{@render settingsIcon(active)}
 				{/if}
