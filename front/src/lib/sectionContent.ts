@@ -11,6 +11,7 @@
 // they're rendered. Cascade: unit → module → section → lesson → screen.
 
 import type { LessonScreen } from './lesson-screens/types';
+import { markTargets } from './markText';
 import { vocabSectionContent } from './vocabSections';
 
 export type { LessonScreen };
@@ -873,9 +874,185 @@ const vocabFoundationSection: SectionContent = {
 	]
 };
 
+// Section 3 (4.c.3) is hand-extended past its generated vocab opener with two
+// more lessons: mark numbers & names in a text, then use them (P2/P3) to
+// navigate to answers. vocabSections.ts leaves the vertical room (s3-l2/l3 at
+// y 1140/1260) and pushes sections 4+ down; s4-l1 is rewired to follow s3-l3.
+const gardenP1 =
+	'Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.';
+const gardenP2 =
+	'The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener in less than ten years," she explains. Her team worked with more than 300 volunteers from the local community. The volunteers spent an average of three hours a week working in the gardens.';
+const gardenP3 =
+	'The results were surprising. According to the charity, 85% of Greenville residents now say the city is a better place to live. Dr. Santos\'s colleague, Professor James Wu, found that stress levels among residents had fallen by 40%. "When people have access to green spaces, they feel calmer and happier," he says. The project now receives visits from city planners from over 50 countries who want to learn from Greenville\'s success.';
+const gardenFull = `${gardenP1}\n\n${gardenP2}\n\n${gardenP3}`;
+const sportText =
+	'A new community sports programme in the city of Portland has helped over 4,000 residents become more active over the past two years. The programme offers free fitness classes three times a week in 12 different neighbourhoods. According to Dr. Laura Kim, who runs the programme, the idea is simple. "We bring the sport to the people, not the people to the sport," she says. "Most people want to be active — they just need the opportunity." Professor Marcus Allen of Portland State University found that participants in the programme were 60% less likely to suffer from stress-related health problems.';
+
+const s3MarkLesson: Lesson = {
+	id: 's3-l2',
+	titleHe: 'מציאה וסימון — מספרים ושמות',
+	prerequisites: ['s3-l1'],
+	x: 70,
+	y: 1140,
+	screens: [
+		{
+			type: 'preface',
+			text: 'בסריקה מהירה, שני סוגי פרטים כמעט תמיד מובילים אל התשובה: מספרים ושמות.\n\nמספר = המספר יחד עם מה שהוא סופר: "2,000 trees", "three hours a week", "40%", "five years".\nשם = אנשים, מקומות וארגונים: "Dr. Maria Santos", "Greenville", "Greenville University".'
+		},
+		{
+			type: 'summary',
+			title: 'מה מסמנים',
+			lines: [
+				'מספרים: המספר + שם העצם שצמוד אליו. לדוגמה: 2,000 trees · three hours · 85% · ten years',
+				'שמות: אות גדולה באמצע משפט — אדם, מקום או מוסד. לדוגמה: Dr. Maria Santos · Greenville University · Professor James Wu'
+			]
+		},
+		{
+			type: 'preface',
+			text: 'לפניכם הטקסט THE CITY GARDEN PROJECT בשלוש פסקאות. בכל פסקה סמנו את כל המספרים והשמות.'
+		},
+		{
+			type: 'mark-all',
+			instruction: 'פסקה I — סמנו את כל המספרים והשמות',
+			dir: 'ltr',
+			text: gardenP1,
+			correctIndices: markTargets(gardenP1, [
+				'Five years',
+				'2,000 trees',
+				'15 community gardens',
+				'Greenville'
+			])
+		},
+		{
+			type: 'mark-all',
+			instruction: 'פסקה II — סמנו את כל המספרים והשמות',
+			dir: 'ltr',
+			text: gardenP2,
+			correctIndices: markTargets(gardenP2, [
+				'Dr. Maria Santos',
+				'Greenville University',
+				'ten years',
+				'300 volunteers',
+				'three hours'
+			])
+		},
+		{
+			type: 'mark-all',
+			instruction: 'פסקה III — סמנו את כל המספרים והשמות',
+			dir: 'ltr',
+			text: gardenP3,
+			correctIndices: markTargets(gardenP3, [
+				'85%',
+				"Dr. Santos's",
+				'Professor James Wu',
+				'40%',
+				'50 countries',
+				'Greenville',
+				"Greenville's"
+			])
+		}
+	]
+};
+
+const s3UseLesson: Lesson = {
+	id: 's3-l3',
+	titleHe: 'שימוש במספרים ושמות לניווט',
+	prerequisites: ['s3-l2'],
+	x: 70,
+	y: 1260,
+	screens: [
+		{
+			type: 'preface',
+			text: 'עד עכשיו סימנתם מספרים ושמות. עכשיו משתמשים בהם כדי לנווט מהר אל התשובה — בלי לקרוא את כל הטקסט.'
+		},
+		{
+			type: 'summary',
+			title: 'P2 · מספרים   |   P3 · שמות',
+			lines: [
+				'P2 (מספר בשאלה): חפשו את המספר בטקסט ← ודאו שהוא צמוד לדבר הנכון ← זו התשובה',
+				'P3 (שם בשאלה): לכו לפסקה של אותו שם ← קראו רק שם ← אל תקראו פסקאות אחרות'
+			]
+		},
+		{
+			type: 'timed-passage',
+			label: 'THE CITY GARDEN PROJECT',
+			timerKey: 's3garden',
+			text: gardenFull,
+			questions: [
+				{
+					prompt: 'How many trees did the charity plant in Greenville? (paragraph I)',
+					options: ['Over 2,000', 'About 200', '15', 'More than 300'],
+					correctIndex: 0
+				},
+				{
+					prompt: 'According to Dr. Maria Santos, what did her team want to show? (paragraph II)',
+					options: [
+						'That any city can become greener in less than ten years',
+						'That Greenville was polluted five years ago',
+						'That 300 volunteers were not enough',
+						'That stress levels fell by 40%'
+					],
+					correctIndex: 0
+				},
+				{
+					prompt: 'How many hours a week did the volunteers spend in the gardens? (paragraph II)',
+					options: ['An average of three hours', 'Ten years', 'Over 50 hours', '85 hours'],
+					correctIndex: 0
+				},
+				{
+					prompt: 'What do we learn from Professor James Wu about the results? (paragraph III)',
+					options: [
+						'Why he decided to study the Greenville project',
+						'How stress levels changed among residents',
+						'How many people visited Greenville from other countries',
+						"Why he disagrees with Dr. Santos's findings"
+					],
+					correctIndex: 1
+				}
+			]
+		},
+		{ type: 'preface', text: 'אתגר מתוזמן: טקסט חדש, שתי שאלות. השתמשו ב-P2 וב-P3.' },
+		{
+			type: 'timed-passage',
+			label: 'SPORT FOR ALL',
+			timerKey: 's3sport',
+			text: sportText,
+			questions: [
+				{
+					prompt:
+						"According to Professor Marcus Allen, how did the programme affect participants' health?",
+					options: [
+						'They were 60% less likely to have stress-related health problems',
+						'They exercised for 60 minutes more each day',
+						'They were twice as likely to join a gym',
+						'They became 40% stronger'
+					],
+					correctIndex: 0
+				},
+				{
+					prompt: 'What does Dr. Laura Kim explain about the programme?',
+					options: [
+						'Why sports equipment is expensive in Portland',
+						'How many people run the programme every year',
+						'Why the programme brings sport to different neighbourhoods',
+						'How participants became healthier than before'
+					],
+					correctIndex: 2
+				}
+			]
+		},
+		{ type: 'time-result', label: 'סיימתם את האתגר!', timerKey: 's3sport' }
+	]
+};
+
+const s3Lessons: Lesson[] = [...vocabSectionContent['c-3'].lessons, s3MarkLesson, s3UseLesson];
+const s4Opener: Lesson = { ...vocabSectionContent['c-4'].lessons[0], prerequisites: ['s3-l3'] };
+
 const contentBySection: Record<string, SectionContent> = {
 	'c-1': vocabFoundationSection,
-	...vocabSectionContent
+	...vocabSectionContent,
+	'c-3': { lessons: s3Lessons },
+	'c-4': { lessons: [s4Opener] }
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {

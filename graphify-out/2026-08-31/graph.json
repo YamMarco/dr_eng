@@ -1769,6 +1769,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "page",
       "norm_label": "schema.md",
       "source_file": "docs/module c/schema.md",
       "source_location": "L1"
@@ -1780,6 +1781,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "guide",
       "source_file": "docs/module c/schema.md",
       "source_location": "L1"
@@ -1791,6 +1793,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "lesson 1",
       "source_file": "docs/module c/schema.md",
       "source_location": "L5"
@@ -1802,6 +1805,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "lesson 1",
       "source_file": "docs/module c/schema.md",
       "source_location": "L10"
@@ -1813,6 +1817,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "lesson 1",
       "source_file": "docs/module c/schema.md",
       "source_location": "L15"
@@ -1824,6 +1829,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "section 2",
       "source_file": "docs/module c/schema.md",
       "source_location": "L4"
@@ -1835,6 +1841,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "section 3",
       "source_file": "docs/module c/schema.md",
       "source_location": "L9"
@@ -1846,6 +1853,7 @@
       "community": 12,
       "community_name": "schema.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "section 4",
       "source_file": "docs/module c/schema.md",
       "source_location": "L14"
@@ -10640,5 +10648,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "067d1629e58db83361b7c059dd18c65a8b2da71c"
+  "built_at_commit": "57be61b301000204733fc77d718d19c8089dc28b"
 }
