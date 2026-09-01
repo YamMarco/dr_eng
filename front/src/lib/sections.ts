@@ -4,6 +4,7 @@
 // Cascade: unit → module → section → lesson → screen.
 
 import { vocabSectionMeta } from './vocabSections';
+import { programSectionMeta } from './program';
 
 export type Section = {
 	id: number;
@@ -34,12 +35,17 @@ export const archivedMockModuleCSections: Section[] = [
 	{ id: 3, titleEn: null, titleHe: '(מוקאפ) יחידה ג׳' }
 ];
 
-// The live roster: section 1's hand-authored vocab lessons, then one opener
-// section per program lesson (L1..L24 -> sections 2..25, see vocabSections.ts).
-const currentModuleCSections: Section[] = [
+// The previous roster: section 1's hand-authored vocab lessons, then one
+// opener section per program lesson (L1..L24 -> sections 2..25). Set aside on
+// this branch while the module is rebuilt around the programme. Do not delete.
+export const archivedVocabModuleCSections: Section[] = [
 	{ id: 1, titleEn: 'Vocabulary Foundation', titleHe: 'יסודות אוצר מילים' },
 	...vocabSectionMeta
 ];
+
+// The live roster: the 26 micro-skill sections of the programme
+// (docs/module c/duolingo-program.md), built in lib/program.
+const currentModuleCSections: Section[] = programSectionMeta;
 
 const sectionsByModule: Record<string, Section[]> = {
 	c: currentModuleCSections

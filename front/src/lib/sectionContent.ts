@@ -13,6 +13,7 @@
 import type { LessonScreen } from './lesson-screens/types';
 import { markTargets } from './markText';
 import { vocabSectionContent } from './vocabSections';
+import { programContent } from './program';
 
 export type { LessonScreen };
 
@@ -1276,7 +1277,10 @@ const s5Opener: Lesson = {
 	prerequisites: ['s4-l3a', 's4-l3b']
 };
 
-const contentBySection: Record<string, SectionContent> = {
+// The pre-programme roster (vocab openers + the hand-built sections 3-5).
+// Kept for reference on this branch; the live module is the programme in
+// lib/program (see docs/module c/duolingo-program.md).
+export const archivedContentBySection: Record<string, SectionContent> = {
 	'c-1': vocabFoundationSection,
 	...vocabSectionContent,
 	'c-3': { lessons: s3Lessons },
@@ -1285,5 +1289,5 @@ const contentBySection: Record<string, SectionContent> = {
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {
-	return contentBySection[`${moduleId.toLowerCase()}-${sectionId}`];
+	return programContent[`${moduleId.toLowerCase()}-${sectionId}`];
 }
