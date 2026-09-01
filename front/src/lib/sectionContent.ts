@@ -36,6 +36,12 @@ export type Lesson = {
 	/** Force the path node's size, overriding the automatic message-only sizing. */
 	big?: boolean;
 	/**
+	 * The lesson part of the material code shown on the node label
+	 * (module.section.lesson). Defaults to the lesson's 1-based position in
+	 * its section — set it for side-by-side nodes, e.g. '2a' / '2b'.
+	 */
+	code?: string;
+	/**
 	 * Ids of lessons that must be completed before this one unlocks (from
 	 * anywhere in the module, not just this section) — AND'd together.
 	 * Missing/empty = a root node, unlocked from the start. This is the one
@@ -1045,14 +1051,237 @@ const s3UseLesson: Lesson = {
 	]
 };
 
+// Section 4 (4.c.4) — negatives & contrast, from docs/module c/schema2.md.
+// Past its generated opener the section splits into two side-by-side tracks
+// (the `a` / `b` nodes): each marks the eye catchers, then applies them to
+// NOT-questions. Both tracks work the same text in a different order, and
+// section 5 waits for both.
+const givingP1 =
+	'Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study from a research institute found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised. They had expected that money and success — not helping others — would be the main reason for happiness among teenagers.';
+const givingP2 =
+	'The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor, a researcher at a European university, studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.';
+const givingP3 =
+	'Results from 12 countries show that the benefits of volunteering are not limited to the volunteers themselves. Schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills of an Australian university argues that helping others teaches young people skills that no classroom can ever replace. "When you help someone," he says, "you also help yourself."';
+const givingFull = `${givingP1}\n\n${givingP2}\n\n${givingP3}`;
+
+/** The negative + contrast bank this section hunts for — also shown in round 1. */
+const NEG_CONTRAST = ['not', 'no', 'never', 'without', 'cannot', 'however', 'although', 'but'];
+
+const markNegContrast = (
+	instruction: string,
+	text: string,
+	extra: { wordBank?: string[]; timerKey?: string } = {}
+): LessonScreen => ({
+	type: 'mark-all',
+	instruction,
+	dir: 'ltr',
+	text,
+	correctIndices: markTargets(text, NEG_CONTRAST),
+	...extra
+});
+
+const negContrastPreface: LessonScreen = {
+	type: 'preface',
+	text: 'מילות שלילה ומילות ניגוד הן מגנטים לעין קטנים — אבל הן הופכות משפט על פיו. מי שמפספס אותן עונה בדיוק הפוך.\n\nשלילה: not · no · never · without · cannot\nניגוד: however · although · but'
+};
+
+const negContrastCard: LessonScreen = {
+	type: 'summary',
+	title: 'שלילה וניגוד',
+	lines: [
+		'שלילה: not · no · never · without · cannot — הופכות את משמעות המשפט',
+		'ניגוד: however · although · but — מסמנות שינוי כיוון; מה שבא אחריהן חשוב',
+		'ראיתם מילה כזו? עצרו וקראו את המשפט שוב, לאט.'
+	]
+};
+
+const s4Mark2a: Lesson = {
+	id: 's4-l2a',
+	titleHe: 'סימון שלילה וניגוד — מסלול א׳',
+	code: '2a',
+	prerequisites: ['s4-l1'],
+	x: -70,
+	y: 1500,
+	rounds: [
+		[
+			negContrastPreface,
+			negContrastCard,
+			markNegContrast(
+				'סמנו את כל מילות השלילה והניגוד',
+				'She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results.',
+				{ wordBank: NEG_CONTRAST }
+			)
+		],
+		[
+			{ type: 'preface', text: 'הפעם בלי בנק מילים — פסקה שלמה. סמנו את כל מילות השלילה והניגוד.' },
+			markNegContrast('פסקה II — סמנו את כל מילות השלילה והניגוד', givingP2)
+		],
+		[
+			{ type: 'preface', text: 'הטקסט המלא, בלי בנק מילים, עם שעון. סרקו — אל תקראו מילה־מילה.' },
+			markNegContrast('GIVING TIME, GAINING HAPPINESS — סמנו הכול', givingFull, {
+				timerKey: 'markFull'
+			}),
+			{ type: 'time-result', label: 'סיימתם את הסריקה!', timerKey: 'markFull' }
+		]
+	]
+};
+
+const s4Mark2b: Lesson = {
+	id: 's4-l2b',
+	titleHe: 'סימון שלילה וניגוד — מסלול ב׳',
+	code: '2b',
+	prerequisites: ['s4-l1'],
+	x: 70,
+	y: 1500,
+	rounds: [
+		[
+			negContrastPreface,
+			negContrastCard,
+			markNegContrast(
+				'סמנו את כל מילות השלילה והניגוד',
+				'Results from 12 countries show that the benefits of volunteering are not limited to the volunteers themselves. Professor David Mills of an Australian university argues that helping others teaches young people skills that no classroom can ever replace.',
+				{ wordBank: NEG_CONTRAST }
+			)
+		],
+		[
+			{
+				type: 'preface',
+				text: 'הפעם בלי בנק מילים — שתי פסקאות. סמנו את כל מילות השלילה והניגוד.'
+			},
+			markNegContrast(
+				'פסקאות I ו-III — סמנו את כל מילות השלילה והניגוד',
+				`${givingP1}\n\n${givingP3}`
+			)
+		],
+		[
+			{ type: 'preface', text: 'הטקסט המלא, בלי בנק מילים, עם שעון. סרקו — אל תקראו מילה־מילה.' },
+			markNegContrast('GIVING TIME, GAINING HAPPINESS — סמנו הכול', givingFull, {
+				timerKey: 'markFull'
+			}),
+			{ type: 'time-result', label: 'סיימתם את הסריקה!', timerKey: 'markFull' }
+		]
+	]
+};
+
+// The P4 warning, repeated on both question tracks so each stands alone.
+const notQuestionIntro: LessonScreen[] = [
+	{
+		type: 'preface',
+		text: 'במודול C הניקוד לא ניתן על קריאת הטקסט — הוא ניתן על השאלות. שאלה אחת שנקראה לא נכון מוחקת פסקה שקראתם מצוין.\n\nוהסוג המסוכן ביותר הוא שאלת NOT.'
+	},
+	{
+		type: 'preface',
+		text: '! STOP — this question has NOT in it.\nYou are looking for the STATEMENT THAT IS FALSE. P4.\n\nזהירות! NOT בשאלה. אתם מחפשים את המשפט השגוי.'
+	},
+	{
+		type: 'summary',
+		title: 'P4 — שאלת NOT',
+		lines: [
+			'NOT / NOT true / EXCEPT בשאלה ← עצרו.',
+			'אתם מחפשים את המשפט השגוי — לא את הנכון.',
+			'בדקו כל אפשרות מול הטקסט: נכון · נכון · נכון — והשגוי הוא התשובה.'
+		]
+	}
+];
+
+const s4Not3a: Lesson = {
+	id: 's4-l3a',
+	titleHe: 'שאלת NOT — P4',
+	code: '3a',
+	prerequisites: ['s4-l2a'],
+	x: -70,
+	y: 1620,
+	screens: [
+		...notQuestionIntro,
+		{
+			type: 'timed-passage',
+			label: 'GIVING TIME, GAINING HAPPINESS',
+			timerKey: 's4not',
+			text: givingFull,
+			questions: [
+				{
+					prompt: 'Which statement is NOT true according to paragraph II?',
+					options: [
+						'Dr. Okafor studied volunteering and mental health for ten years.',
+						'All types of volunteering produce the same results.',
+						'Teenagers who volunteer feel less stressed than those who do not.',
+						'Dr. Okafor found that young volunteers sleep better.'
+					],
+					correctIndex: 1
+				}
+			]
+		},
+		{ type: 'time-result', label: 'סיימתם!', timerKey: 's4not' }
+	]
+};
+
+const s4Not3b: Lesson = {
+	id: 's4-l3b',
+	titleHe: 'שאלות NOT ופרטים — תרגול',
+	code: '3b',
+	prerequisites: ['s4-l2b'],
+	x: 70,
+	y: 1620,
+	screens: [
+		...notQuestionIntro,
+		{
+			type: 'timed-passage',
+			label: 'GIVING TIME, GAINING HAPPINESS',
+			timerKey: 's4not',
+			text: givingFull,
+			questions: [
+				{
+					prompt:
+						'According to Dr. Sarah Okafor, what type of volunteering is most effective? (paragraph II)',
+					options: [
+						'Programmes that bring young people face to face with the people they help',
+						'Online volunteering activities',
+						'Programmes that last at least ten years',
+						'Volunteering that pays a small salary'
+					],
+					correctIndex: 0
+				},
+				{
+					prompt: 'What do we learn from paragraph II about the different types of volunteering?',
+					options: [
+						'All types have the same positive effect on teenagers',
+						'The most popular type is online volunteering',
+						'Face-to-face programmes are more effective than online ones',
+						'Dr. Okafor recommends only one type of volunteering'
+					],
+					correctIndex: 2
+				},
+				{
+					prompt:
+						'According to paragraph III, what is NOT true about the benefits of volunteering?',
+					options: [
+						'Schools with volunteering programmes saw students become more focused',
+						'The benefits are limited to the volunteers themselves',
+						'Professor Mills argues that classrooms cannot replace helping others',
+						'Volunteering teaches young people important skills'
+					],
+					correctIndex: 1
+				}
+			]
+		},
+		{ type: 'time-result', label: 'סיימתם!', timerKey: 's4not' }
+	]
+};
+
 const s3Lessons: Lesson[] = [...vocabSectionContent['c-3'].lessons, s3MarkLesson, s3UseLesson];
 const s4Opener: Lesson = { ...vocabSectionContent['c-4'].lessons[0], prerequisites: ['s3-l3'] };
+// Section 5 waits for both side-by-side tracks to finish.
+const s5Opener: Lesson = {
+	...vocabSectionContent['c-5'].lessons[0],
+	prerequisites: ['s4-l3a', 's4-l3b']
+};
 
 const contentBySection: Record<string, SectionContent> = {
 	'c-1': vocabFoundationSection,
 	...vocabSectionContent,
 	'c-3': { lessons: s3Lessons },
-	'c-4': { lessons: [s4Opener] }
+	'c-4': { lessons: [s4Opener, s4Mark2a, s4Mark2b, s4Not3a, s4Not3b] },
+	'c-5': { lessons: [s5Opener] }
 };
 
 export function getSectionContent(moduleId: string, sectionId: number): SectionContent | undefined {

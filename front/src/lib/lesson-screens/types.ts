@@ -132,6 +132,14 @@ export type MarkAllScreen = {
 	text: string;
 	correctIndices: number[];
 	dir?: 'rtl' | 'ltr';
+	/** Optional scaffold: the words to hunt for, shown as chips above the text. */
+	wordBank?: string[];
+	/**
+	 * Set to run a stopwatch while the student marks, recording the elapsed ms
+	 * into the lesson session under this key — same contract as timed-passage,
+	 * so a later time-result screen can read it back.
+	 */
+	timerKey?: string;
 };
 
 export type LessonScreen =

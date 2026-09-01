@@ -61,6 +61,7 @@ export const he = {
 		mcq: 'שאלה',
 		markWord: 'תרגיל: סמנו מילה',
 		markAll: 'תרגיל: סמנו את כל מגנטי העין',
+		wordBankLabel: 'מילים לחיפוש',
 		timedReading: 'תרגיל מתוזמן: קריאה',
 		writingTask: 'משימת כתיבה',
 		spellWordCopy: 'תרגיל: איות',

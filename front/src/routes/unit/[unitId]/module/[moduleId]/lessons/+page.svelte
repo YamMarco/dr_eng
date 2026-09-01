@@ -33,6 +33,8 @@
 		sectionTitleHe: string;
 		/** 1-based position within its own section — shown on the node. */
 		lessonNumber: number;
+		/** Material code shown on the label: module.section.lesson (e.g. c.4.2a). */
+		code: string;
 		theme: SectionTheme;
 		x: number;
 		y: number;
@@ -67,6 +69,7 @@
 					sectionId: section.id,
 					sectionTitleHe: section.titleHe,
 					lessonNumber: lessonIndexInSection + 1,
+					code: `${mod.id}.${section.id}.${lesson.code ?? lessonIndexInSection + 1}`,
 					theme,
 					x: lesson.x ?? 0,
 					y: lesson.y ?? 0,
@@ -365,6 +368,7 @@
 									? i18n.dict.lesson.startButton
 									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
 							</Button>
+							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.code}</p>
 						</div>
 					{/if}
 				</div>

@@ -1058,10 +1058,18 @@ const specs: VocabSectionSpec[] = [
 const X_CYCLE = [0, 70, 100, 70, 0, -70, -100, -70];
 const FIRST_Y = 900;
 const STEP_Y = 120;
-// Section 3 is hand-extended with two more lessons (s3-l2/l3 at y 1140/1260,
-// in sectionContent.ts); leave that gap and shift sections 4+ down so the
-// chain stays strictly top-to-bottom.
-const SECTION_3_EXTRA = 2 * STEP_Y;
+// Sections hand-extended past their generated opener in sectionContent.ts,
+// and how many extra node rows each adds below it. Later sections shift down
+// by that much so the chain stays strictly top-to-bottom.
+const EXTRA_ROWS: Record<number, number> = { 3: 2, 4: 2 };
+
+function extraOffset(id: number): number {
+	let rows = 0;
+	for (const [sectionId, count] of Object.entries(EXTRA_ROWS)) {
+		if (Number(sectionId) < id) rows += count;
+	}
+	return rows * STEP_Y;
+}
 
 export const vocabSectionMeta: Section[] = specs.map((s) => ({
 	id: s.id,
@@ -1076,7 +1084,7 @@ export const vocabSectionContent: Record<string, SectionContent> = Object.fromEn
 			titleHe: `מילים: ${s.titleHe}`,
 			prerequisites: [index === 0 ? 's1-l8' : `s${s.id - 1}-l1`],
 			x: X_CYCLE[index % X_CYCLE.length],
-			y: FIRST_Y + index * STEP_Y + (s.id >= 4 ? SECTION_3_EXTRA : 0),
+			y: FIRST_Y + index * STEP_Y + extraOffset(s.id),
 			rounds: vocabRounds(s.intro, s.words)
 		};
 		return [`c-${s.id}`, { lessons: [lesson] }];
