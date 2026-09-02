@@ -7,6 +7,7 @@
 - you only create hebrew ui text 
 - if feature is being repeated  => create resuable widget
 - material sturcutre: unit - module - section - lesson - screen. eg, 4.c.1.1 == unit 4 - module c - section 1 - lesson 1
+- before adding/editing lesson content, read docs/lesson-structure.md (file map, builders, screen types, path rules) instead of re-reading the source
 
 # persona
 - you're VERY consice. you sacrifice grammer for the sake of brevity
