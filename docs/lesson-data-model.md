@@ -1,24 +1,53 @@
 # Lesson & content — data model
 
-Scope: Module C's learning path. One-page model for architecture discussion.
-Companion: `docs/lesson-structure.md` (how to author it).
+Scope: Module C's learning path. Companion: `docs/lesson-structure.md` (how to author it).
+
+The model is **flat**: one Lesson = one path node = one self-contained object,
+and (later) one Supabase row. No Module/Section/Track/Round entities — grouping is
+a string, geometry and prerequisites are plain fields on the node.
 
 ## Entities
 
 ```
-Module ──1:N──> Section ──1:N──> Lesson ──1:N──> Round ──1:N──> Screen ──0:N──> Question
-                   │                 │
-                   └─0:N─> Track ────┘  (Track = a parallel strand of Lessons)
+LessonNode ──content──> LessonContent ──rounds──> LessonRound ──screens──> LessonScreen ──0:N──> Question
+LessonNode ──required[]──> LessonNode        (prerequisite DAG, by id)
+LessonNode ──section──> SectionMeta          (grouping only: heading + theme color)
 ```
 
-| Entity | Identity | Key fields (authored) | Derived at build |
-| --- | --- | --- | --- |
-| **Module** | `moduleId` (`"c"`) | — | — |
-| **Section** | `id: number` (1..25), map key `c-{id}` | `titleEn`, `titleHe`, `intro?{greeting,goal?}`, `lessons: Lesson[]`, `tracks?: Lesson[][]` | ordering by `id` |
-| **Lesson** (= path node) | `id: string`, unique per module, convention `s{section}-l{n}` / `…{a,b,c}` | `titleHe`, `code?` (e.g. `"2a"`), and **either** `screens: Screen[]` **or** `rounds: Screen[][]` | `x`, `y` (canvas px), `prerequisites: string[]`, `big: boolean`, `code` default (= position in section) |
-| **Round** | index (0-based) within a Lesson | — (it's just `Screen[]`) | `Round 0` is mandatory-to-progress; `1..n` are optional extra practice |
-| **Screen** | index within a Round | discriminated union on `type` (15 variants) | skipped at runtime if "empty" |
-| **Question** | index within a Screen | `prompt` + answer spec; shape varies by parent screen type | — |
+| Entity | Identity | Fields |
+| --- | --- | --- |
+| **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleHe`, `titleEn?`, `code` (`"c.4.2a"`), `required: string[]`, `position: {x,y}`, `big: boolean`, `image?`, `content` |
+| **LessonContent** | — | `rounds: LessonRound[]` (length ≥ 1) |
+| **LessonRound** | index in `rounds` | `screens: LessonScreen[]`. Round 0 is mandatory-to-progress; 1..n are optional extra practice |
+| **LessonScreen** | index in `screens` | discriminated union on `type` (15 variants) — unchanged, `lib/lesson-screens/types.ts` |
+| **SectionMeta** | `id: string` (`"c-1"`..`"c-25"`) | `titleHe`, `titleEn?`, `intro?{greeting,goal?}` |
+
+Everything is authored directly — nothing is derived at build time anymore.
+
+## Files (`front/src/lib/content/`)
+
+| file | role |
+| --- | --- |
+| `types.ts` | `LessonNode`, `LessonContent`, `LessonRound`, `SectionMeta`; re-exports `LessonScreen` |
+| `c/c-1.ts` … `c/c-25.ts` | one `export const c<N>Lessons: LessonNode[]` per section |
+| `sectionMeta.ts` | ordered `SectionMeta[]` — canvas heading text + theme-color order |
+| `index.ts` | `allLessons` map, `getLesson(id)`, `getLessonsBySection(section)` |
+| `schema.sql` | Supabase `lessons` + `lesson_progress` tables (not wired up) |
+
+Origin: generated once by `front/scripts/snapshot-content.ts` from the old
+derivation pipeline, then frozen. Edit the `c/*.ts` files directly from here on.
+
+## Rules
+
+- **Section order / theme color** = position in `sectionMeta`. Headings render above
+  the first node of each section.
+- **Unlock**: a node is playable once every id in `required` has `roundsCompleted ≥ 1`.
+  Empty `required` = a root, open from the start.
+- **`code`** is the display string `module.section.lesson` shown on the node label.
+- **`big`** = node is drawn larger (no scored screen in any round).
+- A node whose every round is empty renders permanently locked (placeholder).
+- The prerequisite graph is a DAG (parallel strands that converge), not a list —
+  it's just whatever the `required` arrays describe.
 
 ## Screen taxonomy (the `type` discriminator)
 
@@ -29,68 +58,33 @@ Module ──1:N──> Section ──1:N──> Lesson ──1:N──> Round �
 | exercise (1 pt) | `mcq`, `mark-word`, `mark-all`, `spell-word`, `writing-task` | 1 |
 | exercise (n pts) | `timed-passage`, `passage-quiz` | = `questions.length` |
 
-`countQuestions(screen)` gives a Round's fixed score denominator. Pass = ≥80% of a Round's points.
-
-## Relationships & rules
-
-- **Section order** is by `id`. Sections 1/3/4 are hand-authored files; 2 and 5–25 are generated (one vocab-opener Lesson each).
-- **`lessons`** within a Section form a linear chain: node *k*'s prerequisite is node *k-1*.
-- **`tracks`** are ≥2 parallel strands that begin *after* `lessons`: every strand's first node depends on the last pre-track node; each strand chains internally; the **next Section** depends on **all** strand tails. → the prerequisite graph is a DAG, not a pure list.
-- **Unlock**: a Lesson is playable once every id in `prerequisites` has `roundsCompleted ≥ 1`.
-- **`code`** is the display string `module.section.lesson` (`c.4.2a`); defaults to 1-based position, set explicitly on track nodes.
-
-## Content sourcing (composition, not new entities)
-
-| source | shape | produces |
-| --- | --- | --- |
-| `program/texts.ts` | named `string` passages, verbatim, reused across Sections | `text` fields |
-| `VocabWord` `{en, he, heWrong[3], cloze, context}` → `vocabRounds(intro, words[])` | — | a 3-Round Lesson: meaning-MCQ / cloze-MCQ / in-context-MCQ |
-| phrase list → `markTargets(text, phrases[])` | — | `mark-all.correctIndices` (token positions) |
-| `McqItem {prompt, answer, wrong[]}` → `mcqs()` | — | `mcq[]` with the answer slot rotated |
+`countQuestions(screen)` gives a round's fixed score denominator. Pass = ≥80% of a
+round's points. `isScreenEmpty(screen)` → skipped at runtime.
 
 ## Runtime state (separate from content)
 
 | store | shape | lifetime |
 | --- | --- | --- |
-| `lessonProgress` | `Record<moduleId, Record<lessonId, roundsCompleted: number>>` | persisted (localStorage) |
-| `LessonScore` | `{ correct: number, total: number }` | per Round (in-memory) |
-| `LessonSession` | `Record<timerKey: string, elapsedMs: number>` | per Round (in-memory); written by `timed-*` / `mark-all`, read by `time-result` / `time-comparison` |
+| `lessonProgress` (`lessonProgress.svelte.ts`) | `Record<moduleId, Record<lessonId, roundsCompleted>>` | localStorage |
+| `LessonScore` | `{ correct, total }` | per round (in-memory) |
+| `LessonSession` | `Record<timerKey, elapsedMs>` | per round (in-memory); written by `timed-*` / `mark-all`, read by `time-result` / `time-comparison` |
 
-## Type sketch
+## Serving layer
 
 ```ts
-type SectionContent = { intro?: SectionIntro; lessons: Lesson[] };
-
-type Lesson = {
-  id: string;
-  titleHe: string;
-  code?: string;
-  screens?: LessonScreen[];        // single-round shorthand
-  rounds?: LessonScreen[][];       // multi-round
-  prerequisites?: string[];        // derived
-  x?: number; y?: number;          // derived
-  big?: boolean;                   // derived (no scored screen)
-};
-
-type LessonScreen =               // discriminated union, 15 members, e.g.
-  | { type: 'preface'; text: string; dir?: 'rtl' | 'ltr' }
-  | { type: 'mcq'; prompt: string; options: string[]; correctIndex: number }
-  | { type: 'mark-all'; instruction: string; text: string; correctIndices: number[];
-      dir?: 'rtl'|'ltr'; wordBank?: string[]; timerKey?: string }
-  | { type: 'timed-passage'; label: string; text: string; timerKey: string;
-      questions: { prompt: string; options: string[]; correctIndex: number }[] }
-  | { type: 'passage-quiz'; text: string;
-      questions: { prompt: string; keywords: string[]; answerHint: string; points?: number }[] }
-  | ...;
-
-// Serving layer
-getSections(moduleId): Section[]                         // nav metadata
-getSectionContent(moduleId, sectionId): SectionContent   // lessons + geometry
+import { sectionMeta, getLessonsBySection, getLesson, allLessons } from '$lib/content';
 ```
 
-## Notes for the architect
+The canvas page (`routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`)
+iterates `sectionMeta` for order/theme/heading, then `getLessonsBySection(id)` for
+the nodes; each node carries its own `position`, `required`, `code`, `big`.
+`lesson.content.rounds[i].screens` feeds one `LessonRunner`.
 
-- Content is **code-as-data** (TS literals), not a DB — no i18n on teaching text; UI chrome only is i18n'd (Hebrew source, Arabic partial-override).
-- Geometry and the prerequisite DAG are **fully derived** from declaration order + `tracks`; authors never write coordinates.
-- A Lesson with no non-empty screen in any round renders as a permanently-locked node (placeholder).
-- `lessonId` is the join key everywhere: prerequisites, progress store, "continue to next lesson".
+## Notes
+
+- Content is **code-as-data** (TS literals). Teaching text is not i18n'd; only UI
+  chrome is (Hebrew source, Arabic partial-override).
+- `lessonId` is the join key everywhere: `required`, progress store, "continue to
+  next lesson".
+- Supabase migration = copy each `LessonNode` field into a `lessons` row, `content`
+  as JSONB; `required` / `position` as JSONB.

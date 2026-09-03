@@ -1,13 +1,13 @@
 // Persisted record of how many rounds of each lesson the student has
 // completed, keyed by moduleId then lesson id (globally unique within a
-// module — see sectionContent.ts). Lives outside the lessons page so the
-// debug tooltip (in the root layout) can reset it, and so cross-section
-// prerequisite checks (lessons path page) can look up any lesson's status
-// directly.
+// module — see lib/content/types.ts, LessonNode.id). Lives outside the
+// lessons page so the debug tooltip (in the root layout) can reset it, and
+// so cross-section prerequisite checks (lessons path page) can look up any
+// lesson's status directly.
 //
 // A lesson unlocks the rest of the path once its round 1 is done — extra
-// rounds (see getRounds() in sectionContent.ts) are optional further
-// practice and don't affect anything downstream.
+// rounds (LessonContent.rounds[1..]) are optional further practice and
+// don't affect anything downstream.
 
 const STORAGE_KEY = 'lesson-progress';
 

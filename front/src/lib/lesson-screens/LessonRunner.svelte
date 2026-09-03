@@ -8,7 +8,7 @@
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
-	import type { LessonScreen } from '$lib/sectionContent';
+	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
 

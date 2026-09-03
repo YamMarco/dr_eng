@@ -3,10 +3,9 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
-	import { getSections } from '$lib/sections';
-	import { getSectionContent, getRounds, type Lesson } from '$lib/sectionContent';
+	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
-	import { isScreenEmpty, countQuestions, type LessonScreen } from '$lib/lesson-screens/types';
+	import { isScreenEmpty, type LessonScreen } from '$lib/lesson-screens/types';
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
@@ -28,8 +27,8 @@
 	const CANVAS_CENTER = CANVAS_WIDTH / 2;
 
 	type PathNode = {
-		lesson: Lesson;
-		sectionId: number;
+		lesson: LessonNode;
+		sectionId: string;
 		sectionTitleHe: string;
 		/** 1-based position within its own section — shown on the node. */
 		lessonNumber: number;
@@ -38,21 +37,18 @@
 		theme: SectionTheme;
 		x: number;
 		y: number;
-		/** No scored questions at all (or explicitly forced via `lesson.big`). Shown bigger. */
+		/** No scored questions at all. Shown bigger. */
 		isBig: boolean;
 	};
 
-	function isBigNode(lesson: Lesson): boolean {
-		if (lesson.big !== undefined) return lesson.big;
-		return getRounds(lesson)
-			.flat()
-			.filter((screen) => !isScreenEmpty(screen))
-			.every((screen) => countQuestions(screen) === 0);
+	/** A lesson's rounds as flat screen arrays — always at least one. */
+	function roundsOf(lesson: LessonNode): LessonScreen[][] {
+		return lesson.content.rounds.map((round) => round.screens);
 	}
 
 	/** No screens written yet in any round — the node still shows (title only) but never unlocks. */
-	function hasContent(lesson: Lesson): boolean {
-		return getRounds(lesson).some((round) => round.some((screen) => !isScreenEmpty(screen)));
+	function hasContent(lesson: LessonNode): boolean {
+		return roundsOf(lesson).some((round) => round.some((screen) => !isScreenEmpty(screen)));
 	}
 
 	// Every section's lessons, flattened into one graph. Section order only
@@ -60,20 +56,20 @@
 	// driven entirely by each lesson's own `prerequisites`.
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
-		getSections(mod.id).forEach((section, sectionIndex) => {
-			const content = getSectionContent(mod.id, section.id);
+		if (mod.id !== 'c') return result;
+		sectionMeta.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
-			(content?.lessons ?? []).forEach((lesson, lessonIndexInSection) => {
+			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {
 				result.push({
 					lesson,
 					sectionId: section.id,
 					sectionTitleHe: section.titleHe,
 					lessonNumber: lessonIndexInSection + 1,
-					code: `${mod.id}.${section.id}.${lesson.code ?? lessonIndexInSection + 1}`,
+					code: lesson.code,
 					theme,
-					x: lesson.x ?? 0,
-					y: lesson.y ?? 0,
-					isBig: isBigNode(lesson)
+					x: lesson.position.x,
+					y: lesson.position.y,
+					isBig: lesson.big
 				});
 			});
 		});
@@ -84,8 +80,8 @@
 
 	// One heading per section, placed above that section's first node.
 	let sectionHeadings = $derived.by(() => {
-		const seen = new SvelteSet<number>();
-		const result: { sectionId: number; titleHe: string; x: number; y: number }[] = [];
+		const seen = new SvelteSet<string>();
+		const result: { sectionId: string; titleHe: string; x: number; y: number }[] = [];
 		for (const node of nodes) {
 			if (seen.has(node.sectionId)) continue;
 			seen.add(node.sectionId);
@@ -103,7 +99,7 @@
 	let edges = $derived.by(() => {
 		const result: { id: string; x1: number; y1: number; x2: number; y2: number }[] = [];
 		for (const node of nodes) {
-			for (const prereqId of node.lesson.prerequisites ?? []) {
+			for (const prereqId of node.lesson.required) {
 				const from = nodeById.get(prereqId);
 				if (!from) continue;
 				result.push({
@@ -129,7 +125,7 @@
 	}
 
 	function totalRounds(node: PathNode): number {
-		return getRounds(node.lesson).length;
+		return roundsOf(node.lesson).length;
 	}
 
 	/** The round to open next: the first not-yet-completed one, capped at the last. */
@@ -149,7 +145,7 @@
 		if (debugStore.unlockAll) return true;
 		if (isDone(node.lesson.id)) return true;
 		if (!hasContent(node.lesson)) return false;
-		return (node.lesson.prerequisites ?? []).every((id) => isDone(id));
+		return node.lesson.required.every((id) => isDone(id));
 	}
 
 	// Which node's title+start label is showing (click to toggle, not hover).
@@ -166,14 +162,14 @@
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 	let activeRoundScreens = $derived(
-		activeNode ? (getRounds(activeNode.lesson)[activeRoundIndex] ?? []) : []
+		activeNode ? (roundsOf(activeNode.lesson)[activeRoundIndex] ?? []) : []
 	);
 
 	// "Continue to next lesson" only makes sense within the same section's
 	// authored order — a node feeding into another section (e.g. a
 	// convergence point) just returns to the path instead.
 	let sectionLessonIds = $derived.by(() => {
-		const bySection = new SvelteMap<number, string[]>();
+		const bySection = new SvelteMap<string, string[]>();
 		for (const node of nodes) {
 			const list = bySection.get(node.sectionId) ?? [];
 			list.push(node.lesson.id);
@@ -194,9 +190,7 @@
 		const next = nextInSameSection(activeNode);
 		if (!next || !hasContent(next.lesson)) return false;
 		// Predict the unlock state right after this lesson gets marked done.
-		return (next.lesson.prerequisites ?? []).every(
-			(id) => id === activeNode!.lesson.id || isDone(id)
-		);
+		return next.lesson.required.every((id) => id === activeNode!.lesson.id || isDone(id));
 	});
 
 	function openNode(node: PathNode) {
