@@ -48,18 +48,29 @@
 		structureVersion += 1;
 	}
 
-	async function addScreen(bucket: BucketKey) {
+	async function addScreen(bucket: BucketKey, index: number) {
 		const screen = blankScreen('preface');
-		const list = listFor(bucket);
 		try {
-			await api('insert', bucket, list.length, screen);
-			list.push(screen);
+			await api('insert', bucket, index, screen);
+			listFor(bucket).splice(index, 0, screen);
 			structureVersion += 1;
 		} catch (e) {
 			banner = e instanceof Error ? e.message : String(e);
 		}
 	}
 </script>
+
+{#snippet insertRow(bucket: BucketKey, index: number)}
+	<div class="flex justify-center py-1">
+		<button
+			type="button"
+			onclick={() => addScreen(bucket, index)}
+			class="rounded-full border border-dashed border-line px-3 py-0.5 text-xs font-semibold text-muted hover:border-brand hover:text-brand"
+		>
+			+ מסך כאן
+		</button>
+	</div>
+{/snippet}
 
 <div class="fixed inset-0 z-50 flex flex-col bg-canvas">
 	<AppBar title={`עריכת תוכן — ${lesson.titleHe}`} onback={onClose} backLabel="סגור" />
@@ -72,11 +83,9 @@
 
 		{#key structureVersion}
 			{#each buckets as bucket (bucket.key)}
-				<h2 class="mt-6 mb-2 text-sm font-bold text-muted">{bucket.title}</h2>
-				{#if bucket.screens.length === 0}
-					<p class="mb-2 text-sm text-muted">— אין מסכים —</p>
-				{/if}
+				<h2 class="mt-6 mb-1 text-sm font-bold text-muted">{bucket.title}</h2>
 				{#each bucket.screens as screen, i (i)}
+					{@render insertRow(bucket.key, i)}
 					<ScreenForm
 						{screen}
 						bucket={bucket.key}
@@ -85,13 +94,7 @@
 						onDelete={() => deleteScreen(bucket.key, i)}
 					/>
 				{/each}
-				<button
-					type="button"
-					onclick={() => addScreen(bucket.key)}
-					class="mb-2 w-full rounded-xl border-2 border-dashed border-line py-2 text-xs font-semibold text-muted"
-				>
-					+ הוסף מסך
-				</button>
+				{@render insertRow(bucket.key, bucket.screens.length)}
 			{/each}
 		{/key}
 	</main>

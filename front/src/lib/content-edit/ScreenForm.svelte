@@ -31,7 +31,9 @@
 	let status = $state<'idle' | 'saving' | 'saved' | 'error'>('idle');
 	let errorMsg = $state('');
 
-	let hasForm = $derived(draft.type === 'preface' || draft.type === 'mcq');
+	let hasForm = $derived(
+		draft.type === 'preface' || draft.type === 'mcq' || draft.type === 'steps'
+	);
 
 	function changeType(type: LessonScreen['type']) {
 		draft = blankScreen(type);
@@ -153,6 +155,32 @@
 			onclick={() => draft.options.push('')}
 		>
 			+ הוסף אופציה
+		</button>
+	{:else if draft.type === 'steps'}
+		{#each draft.steps as _step, si (si)}
+			<div class="mb-1 flex items-start gap-2">
+				<span class="mt-2 text-xs font-bold text-muted">{si + 1}.</span>
+				<textarea
+					bind:value={draft.steps[si]}
+					rows="2"
+					dir="auto"
+					class="w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
+				></textarea>
+				<button
+					type="button"
+					class="mt-2 px-1 text-xs text-danger"
+					onclick={() => draft.steps.splice(si, 1)}
+				>
+					✕
+				</button>
+			</div>
+		{/each}
+		<button
+			type="button"
+			class="text-xs font-semibold text-brand"
+			onclick={() => draft.steps.push('')}
+		>
+			+ הוסף שלב
 		</button>
 	{:else}
 		<textarea

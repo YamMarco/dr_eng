@@ -5,10 +5,11 @@ popover → **ערוך תוכן**, tweak a screen, **שמור מסך**. The chan
 straight back into `src/lib/content/c/c-<N>.ts`; Vite HMR reloads it.
 
 - Per screen: a **type dropdown** (converts it, resetting to that type's blank
-  shape), **מחק** to remove it, **+ הוסף מסך** at the end of each bucket to add
-  one. Add/delete write through immediately; edits need **שמור מסך**.
-- `preface` and `mcq` get proper little forms; every other screen type gets a
-  raw-JSON textarea (parsed on save).
+  shape) and **מחק** to remove it. A **+ מסך כאן** row sits between every screen
+  (and before the first / after the last) to insert at that spot.
+  Add/delete write through immediately; edits need **שמור מסך**.
+- `preface`, `mcq`, `steps` get proper little forms; every other screen type
+  gets a raw-JSON textarea (parsed on save).
 - The editor keeps its own working copy, so add/delete/edit all show instantly
   even though each save triggers a full HMR reload of `$lib/content`.
 - Files are re-emitted as 2-space JSON (matches the existing snapshot format).
