@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SummaryScreen } from './types';
+	import { mdInline } from './miniMarkdown';
 
 	let {
 		screen,
@@ -24,7 +25,8 @@
 	<h2 class="text-lg font-bold text-brand-dark">{screen.title}</h2>
 	<ul class="mt-3 flex flex-col gap-2 text-sm leading-relaxed">
 		{#each screen.lines as line (line)}
-			<li>• {line}</li>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			<li>• {@html mdInline(line)}</li>
 		{/each}
 	</ul>
 </div>

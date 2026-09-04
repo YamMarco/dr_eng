@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { QuestionPreviewScreen } from './types';
+	import { mdInline } from './miniMarkdown';
 
 	let {
 		screen,
@@ -20,9 +21,11 @@
 	}
 </script>
 
-<p class="font-semibold">{screen.intro}</p>
+<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+<p class="font-semibold whitespace-pre-line">{@html mdInline(screen.intro)}</p>
 <ol class="mt-4 flex flex-col gap-3">
 	{#each screen.prompts as prompt (prompt)}
-		<li class="rounded-2xl bg-surface p-4 ring-1 shadow-ink/5 ring-line/70">{prompt}</li>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<li class="rounded-2xl bg-surface p-4 ring-1 shadow-ink/5 ring-line/70">{@html mdInline(prompt)}</li>
 	{/each}
 </ol>

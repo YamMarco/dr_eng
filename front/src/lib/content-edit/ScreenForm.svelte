@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
-	import { SCREEN_TYPES, blankScreen } from './screenSkeletons';
+	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
@@ -40,6 +40,21 @@
 		raw = JSON.stringify(draft, null, 2);
 		jsonError = '';
 	}
+
+	// --- steps drag-to-reorder ---
+	let dragIndex = $state<number | null>(null);
+	let dropIndex = $state<number | null>(null);
+
+	function moveStep(from: number, to: number) {
+		if (from === to) return;
+		const [item] = draft.steps.splice(from, 1);
+		draft.steps.splice(to, 0, item);
+	}
+
+	// text-styling hint shown under the textarea for prose screen types
+	let mdHint = $derived(
+		draft.type === 'preface' || draft.type === 'steps' || draft.type === 'summary'
+	);
 
 	async function save() {
 		let payload: LessonScreen = draft;
@@ -86,8 +101,12 @@
 			class="rounded-lg border-2 border-line bg-canvas px-2 py-1 text-xs font-bold"
 			dir="ltr"
 		>
-			{#each SCREEN_TYPES as t (t)}
-				<option value={t}>{t}</option>
+			{#each SCREEN_TYPE_GROUPS as g (g.label)}
+				<optgroup label={g.label}>
+					{#each g.types as t (t)}
+						<option value={t}>{t}</option>
+					{/each}
+				</optgroup>
 			{/each}
 		</select>
 		<div class="flex items-center gap-2">
@@ -116,6 +135,7 @@
 				<option value="ltr">ltr</option>
 			</select>
 		</label>
+		<p class="mt-2 text-xs text-muted" dir="ltr">**bold** · *italic* · `code` · [text](url)</p>
 	{:else if draft.type === 'mcq'}
 		<textarea
 			bind:value={draft.prompt}
@@ -158,7 +178,35 @@
 		</button>
 	{:else if draft.type === 'steps'}
 		{#each draft.steps as _step, si (si)}
-			<div class="mb-1 flex items-start gap-2">
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="mb-1 flex items-start gap-2 rounded-lg {dropIndex === si && dragIndex !== si
+					? 'ring-2 ring-brand'
+					: ''} {dragIndex === si ? 'opacity-40' : ''}"
+				ondragover={(e) => {
+					e.preventDefault();
+					dropIndex = si;
+				}}
+				ondrop={(e) => {
+					e.preventDefault();
+					if (dragIndex !== null) moveStep(dragIndex, si);
+					dragIndex = null;
+					dropIndex = null;
+				}}
+			>
+				<button
+					type="button"
+					draggable="true"
+					aria-label="גרור לשינוי סדר"
+					class="mt-1 cursor-grab px-1 text-muted select-none active:cursor-grabbing"
+					ondragstart={() => (dragIndex = si)}
+					ondragend={() => {
+						dragIndex = null;
+						dropIndex = null;
+					}}
+				>
+					⠿
+				</button>
 				<span class="mt-2 text-xs font-bold text-muted">{si + 1}.</span>
 				<textarea
 					bind:value={draft.steps[si]}
@@ -182,6 +230,9 @@
 		>
 			+ הוסף שלב
 		</button>
+		{#if mdHint}
+			<p class="mt-2 text-xs text-muted" dir="ltr">**bold** · *italic* · `code` · [text](url)</p>
+		{/if}
 	{:else}
 		<textarea
 			bind:value={raw}
@@ -192,6 +243,11 @@
 		></textarea>
 		{#if jsonError}
 			<p class="mt-1 text-xs text-danger" dir="ltr">{jsonError}</p>
+		{/if}
+		{#if mdHint}
+			<p class="mt-2 text-xs text-muted" dir="ltr">
+				text fields support **bold** · *italic* · `code` · [text](url)
+			</p>
 		{/if}
 	{/if}
 

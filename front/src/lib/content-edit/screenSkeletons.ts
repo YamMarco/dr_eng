@@ -2,23 +2,22 @@
 // dev content editor. One entry per registry.ts key.
 import type { LessonScreen } from '$lib/lesson-screens/types';
 
-export const SCREEN_TYPES: LessonScreen['type'][] = [
-	'preface',
-	'steps',
-	'summary',
-	'mcq',
-	'mark-word',
-	'mark-all',
-	'timed-reading',
-	'question-preview',
-	'time-result',
-	'time-comparison',
-	'timed-passage',
-	'passage-quiz',
-	'writing-task',
-	'word-card',
-	'spell-word'
+export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] }[] = [
+	{
+		label: 'טקסט והצגה',
+		types: ['preface', 'steps', 'summary', 'question-preview', 'word-card']
+	},
+	{
+		label: 'שאלות',
+		types: ['mcq', 'mark-word', 'mark-all', 'spell-word', 'writing-task', 'timed-passage', 'passage-quiz']
+	},
+	{
+		label: 'תזמון',
+		types: ['timed-reading', 'time-result', 'time-comparison']
+	}
 ];
+
+export const SCREEN_TYPES: LessonScreen['type'][] = SCREEN_TYPE_GROUPS.flatMap((g) => g.types);
 
 export function blankScreen(type: LessonScreen['type']): LessonScreen {
 	switch (type) {
