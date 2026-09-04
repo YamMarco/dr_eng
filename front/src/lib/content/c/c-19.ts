@@ -16,13 +16,15 @@ export const c19Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילות הוראה שצריך לזהות מייד — כדי לא לבזבז זמן במבחן."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילות הוראה שצריך לזהות מייד — כדי לא לבזבז זמן במבחן."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"paragraph\"?",

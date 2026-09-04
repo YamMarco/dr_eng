@@ -16,13 +16,15 @@ export const c14Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "אוצר מילים לנושאים חברתיים — מתנדבים, קהילה והזדמנויות."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "אוצר מילים לנושאים חברתיים — מתנדבים, קהילה והזדמנויות."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"community\"?",

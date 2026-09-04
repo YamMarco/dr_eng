@@ -18,13 +18,15 @@ export const c5Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים שמופיעות סביב מחקרים, סיבה ותוצאה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים שמופיעות סביב מחקרים, סיבה ותוצאה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"according to\"?",

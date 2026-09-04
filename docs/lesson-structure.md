@@ -41,9 +41,10 @@ Add an object to the right section's array:
   position: { x: -70, y: 1560 }, // px offset from the 400px canvas centre; y grows down
   big: false,                  // true = larger node (use for content-free / recap nodes)
   content: {
+    preface: [ { type: 'preface', text: '…' } ],  // teaching intro, shown once before round 0; [] if none
     rounds: [
-      { screens: [ { type: 'preface', text: '…' }, { type: 'mcq', /* … */ } ] },
-      // optional extra practice rounds
+      { screens: [ { type: 'mcq', /* … */ } ] },   // round 0 — practice; unlocks the path
+      // optional extra practice rounds (played without the preface)
     ],
   },
 }
@@ -52,9 +53,13 @@ Add an object to the right section's array:
 - **Positions are manual now.** Inserting a node between two others means nudging
   the `y` of the ones below it. Keep a section's nodes roughly `~120` apart; the
   `x` cycle the old builder used was `[0, 70, 100, 70, 0, -70, -100, -70]`.
+- `preface` plays once, before round 0 only. Put rule cards / steps / summary
+  intro screens there; keep exercises (and any mid- or end-of-round teaching
+  screens) in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
 - Round 0 is mandatory to progress; completing it unlocks dependents. Rounds 1+
   are optional and don't affect anything downstream.
-- A node whose rounds are all empty renders as a permanently-locked placeholder.
+- A node with no non-empty screen in `preface` or any round renders as a
+  permanently-locked placeholder.
 - To add a section: new `c/c-<N>.ts`, import + spread it in `index.ts`, add an
   entry to `sectionMeta.ts`.
 

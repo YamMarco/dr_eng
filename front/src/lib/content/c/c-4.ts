@@ -16,13 +16,15 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים שמסמנות ניגוד או שינוי כיוון בטקסט — ומילות מפתח שכדאי לשים לב אליהן."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים שמסמנות ניגוד או שינוי כיוון בטקסט — ומילות מפתח שכדאי לשים לב אליהן."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"however\"?",
@@ -215,23 +217,25 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "! WARNING — P4 changes everything.\nWhen you see NOT, NEVER, NO or NOT ALL in a question, you are NOT looking for what is true.\nYou are hunting for the statement the text says is FALSE — or never says at all.\n\nכשאתם רואים NOT, NEVER, NO, NOT ALL בשאלה — אתם לא מחפשים מה נכון. אתם מחפשים מה לא נכון."
+        },
+        {
+          "type": "summary",
+          "title": "מילות השלילה",
+          "lines": [
+            "not · no · never — שוללות: הופכות את המשפט למשמעות ההפוכה",
+            "without — בלי / ללא",
+            "cannot — לא יכול",
+            "not all — לא כל, רק חלק. שונה לגמרי מ־\"none\""
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "! WARNING — P4 changes everything.\nWhen you see NOT, NEVER, NO or NOT ALL in a question, you are NOT looking for what is true.\nYou are hunting for the statement the text says is FALSE — or never says at all.\n\nכשאתם רואים NOT, NEVER, NO, NOT ALL בשאלה — אתם לא מחפשים מה נכון. אתם מחפשים מה לא נכון."
-            },
-            {
-              "type": "summary",
-              "title": "מילות השלילה",
-              "lines": [
-                "not · no · never — שוללות: הופכות את המשפט למשמעות ההפוכה",
-                "without — בלי / ללא",
-                "cannot — לא יכול",
-                "not all — לא כל, רק חלק. שונה לגמרי מ־\"none\""
-              ]
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"without\"?",
@@ -362,22 +366,24 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "! WARNING — P4 changes everything.\nWhen you see NOT, NEVER, NO or NOT ALL in a question, you are NOT looking for what is true.\nYou are hunting for the statement the text says is FALSE — or never says at all.\n\nכשאתם רואים NOT, NEVER, NO, NOT ALL בשאלה — אתם לא מחפשים מה נכון. אתם מחפשים מה לא נכון."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "קראתי את השאלה וראיתי NOT / NEVER / NO / NOT ALL ← עצור.",
+            "אני לא מחפש מה נכון — אני צד את המשפט השגוי.",
+            "בודק כל אפשרות מול הטקסט: נכון ✓ · נכון ✓ · נכון ✓",
+            "זו שנשארה — השגויה — היא התשובה."
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "! WARNING — P4 changes everything.\nWhen you see NOT, NEVER, NO or NOT ALL in a question, you are NOT looking for what is true.\nYou are hunting for the statement the text says is FALSE — or never says at all.\n\nכשאתם רואים NOT, NEVER, NO, NOT ALL בשאלה — אתם לא מחפשים מה נכון. אתם מחפשים מה לא נכון."
-            },
-            {
-              "type": "steps",
-              "steps": [
-                "קראתי את השאלה וראיתי NOT / NEVER / NO / NOT ALL ← עצור.",
-                "אני לא מחפש מה נכון — אני צד את המשפט השגוי.",
-                "בודק כל אפשרות מול הטקסט: נכון ✓ · נכון ✓ · נכון ✓",
-                "זו שנשארה — השגויה — היא התשובה."
-              ]
-            },
             {
               "type": "mcq",
               "prompt": "שאלה מכילה את המילה NOT. מה אתם מחפשים?",
@@ -482,23 +488,25 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
+        },
+        {
+          "type": "summary",
+          "title": "מילות ההגבלה",
+          "lines": [
+            "main — עיקרי. יש רק אחד.",
+            "most — הכי. לא \"אחד מהטובים\" — הטוב ביותר.",
+            "only — רק / בלבד.",
+            "first — ראשון. לא \"אחד הראשונים\"."
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
-            },
-            {
-              "type": "summary",
-              "title": "מילות ההגבלה",
-              "lines": [
-                "main — עיקרי. יש רק אחד.",
-                "most — הכי. לא \"אחד מהטובים\" — הטוב ביותר.",
-                "only — רק / בלבד.",
-                "first — ראשון. לא \"אחד הראשונים\"."
-              ]
-            },
             {
               "type": "mcq",
               "prompt": "\"the most effective programmes\" — כמה תשובות מחפשים?",
@@ -624,22 +632,24 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "ראיתי מילת הגבלה בשאלה — main / most / only / first.",
+            "P5: יש תשובה אחת. מפסיק לחפש עוד.",
+            "מאתר את אותה מילה בטקסט — היא כמעט תמיד שם.",
+            "קורא את המשפט סביבה. זו התשובה."
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
-            },
-            {
-              "type": "steps",
-              "steps": [
-                "ראיתי מילת הגבלה בשאלה — main / most / only / first.",
-                "P5: יש תשובה אחת. מפסיק לחפש עוד.",
-                "מאתר את אותה מילה בטקסט — היא כמעט תמיד שם.",
-                "קורא את המשפט סביבה. זו התשובה."
-              ]
-            },
             {
               "type": "mcq",
               "prompt": "שאלה כוללת את המילה \"most\". כמה תשובות נכונות יש?",
@@ -722,22 +732,24 @@ export const c4Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "P6 — Contrast words: however · but · although.\nThey mark a turn. What comes AFTER them is the new, important information — and it is usually where the answer hides.\n\nמילת ניגוד ← מה שבא אחריה הוא המידע החדש."
+        },
+        {
+          "type": "summary",
+          "title": "מילות הניגוד",
+          "lines": [
+            "however · but — אולם / אבל. המידע החדש בא אחריהן.",
+            "although — למרות ש־. הניגוד יושב בתוך משפט אחד.",
+            "ראיתם מילת ניגוד? מה שלפניה הוא הרקע. מה שאחריה הוא העיקר."
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "P6 — Contrast words: however · but · although.\nThey mark a turn. What comes AFTER them is the new, important information — and it is usually where the answer hides.\n\nמילת ניגוד ← מה שבא אחריה הוא המידע החדש."
-            },
-            {
-              "type": "summary",
-              "title": "מילות הניגוד",
-              "lines": [
-                "however · but — אולם / אבל. המידע החדש בא אחריהן.",
-                "although — למרות ש־. הניגוד יושב בתוך משפט אחד.",
-                "ראיתם מילת ניגוד? מה שלפניה הוא הרקע. מה שאחריה הוא העיקר."
-              ]
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"however\"?",

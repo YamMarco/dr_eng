@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 import { programContent, programSectionMeta } from '../src/lib/program/index.ts';
 import { getRounds, type Lesson } from '../src/lib/sectionContent.ts';
-import { isScreenEmpty, countQuestions } from '../src/lib/lesson-screens/types.ts';
+import { isScreenEmpty, countQuestions, type LessonScreen } from '../src/lib/lesson-screens/types.ts';
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '../src/lib/content');
 const MODULE = 'c';
@@ -34,6 +34,19 @@ function jsonLiteral(value: unknown): string {
 	return JSON.stringify(value, null, 2);
 }
 
+// Split a round's leading run of teaching screens off as the lesson preface
+// (shown once, before round 0). See lib/content/types.ts.
+const TEACHING = new Set(['preface', 'steps', 'summary', 'word-card', 'question-preview']);
+function splitContent(rounds: LessonScreen[][]) {
+	const round0 = rounds[0] ?? [];
+	let i = 0;
+	while (i < round0.length && TEACHING.has(round0[i].type)) i++;
+	return {
+		preface: round0.slice(0, i),
+		rounds: [{ screens: round0.slice(i) }, ...rounds.slice(1).map((screens) => ({ screens }))]
+	};
+}
+
 mkdirSync(join(OUT, 'c'), { recursive: true });
 
 const sectionFileNames: string[] = [];
@@ -49,7 +62,7 @@ for (const meta of programSectionMeta) {
 		required: lesson.prerequisites ?? [],
 		position: { x: lesson.x ?? 0, y: lesson.y ?? 0 },
 		big: isBigNode(lesson),
-		content: { rounds: getRounds(lesson).map((screens) => ({ screens })) }
+		content: splitContent(getRounds(lesson))
 	}));
 
 	const varName = `c${meta.id}Lessons`;

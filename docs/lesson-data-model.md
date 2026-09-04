@@ -9,7 +9,8 @@ a string, geometry and prerequisites are plain fields on the node.
 ## Entities
 
 ```
-LessonNode ──content──> LessonContent ──rounds──> LessonRound ──screens──> LessonScreen ──0:N──> Question
+LessonNode ──content──> LessonContent ──preface──> LessonScreen[]   (teaching intro, round 0 only)
+                                     └─rounds──> LessonRound ──screens──> LessonScreen ──0:N──> Question
 LessonNode ──required[]──> LessonNode        (prerequisite DAG, by id)
 LessonNode ──section──> SectionMeta          (grouping only: heading + theme color)
 ```
@@ -17,8 +18,8 @@ LessonNode ──section──> SectionMeta          (grouping only: heading + t
 | Entity | Identity | Fields |
 | --- | --- | --- |
 | **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleHe`, `titleEn?`, `code` (`"c.4.2a"`), `required: string[]`, `position: {x,y}`, `big: boolean`, `image?`, `content` |
-| **LessonContent** | — | `rounds: LessonRound[]` (length ≥ 1) |
-| **LessonRound** | index in `rounds` | `screens: LessonScreen[]`. Round 0 is mandatory-to-progress; 1..n are optional extra practice |
+| **LessonContent** | — | `preface: LessonScreen[]` (teaching intro, played once before round 0), `rounds: LessonRound[]` (length ≥ 1) |
+| **LessonRound** | index in `rounds` | `screens: LessonScreen[]` — practice only. Round 0 is mandatory-to-progress; 1..n are optional extra practice, played without the preface |
 | **LessonScreen** | index in `screens` | discriminated union on `type` (15 variants) — unchanged, `lib/lesson-screens/types.ts` |
 | **SectionMeta** | `id: string` (`"c-1"`..`"c-25"`) | `titleHe`, `titleEn?`, `intro?{greeting,goal?}` |
 
@@ -78,7 +79,8 @@ import { sectionMeta, getLessonsBySection, getLesson, allLessons } from '$lib/co
 The canvas page (`routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`)
 iterates `sectionMeta` for order/theme/heading, then `getLessonsBySection(id)` for
 the nodes; each node carries its own `position`, `required`, `code`, `big`.
-`lesson.content.rounds[i].screens` feeds one `LessonRunner`.
+The screen list for a round feeds one `LessonRunner`: round 0 =
+`[...lesson.content.preface, ...rounds[0].screens]`, round i>0 = `rounds[i].screens`.
 
 ## Notes
 

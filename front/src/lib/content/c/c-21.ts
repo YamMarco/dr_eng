@@ -16,13 +16,15 @@ export const c21Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מבנים לפתיחת עמדה בשאלת כן/לא בחיבור."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מבנים לפתיחת עמדה בשאלת כן/לא בחיבור."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"I think / I believe\"?",

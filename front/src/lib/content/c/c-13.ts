@@ -16,13 +16,15 @@ export const c13Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים שמגלות את עמדת הכותב — דאגה, הקלה וזהירות."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים שמגלות את עמדת הכותב — דאגה, הקלה וזהירות."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"unfortunately\"?",

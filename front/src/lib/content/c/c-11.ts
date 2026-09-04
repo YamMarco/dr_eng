@@ -16,13 +16,15 @@ export const c11Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות הסקה — מה נרמז, ומה חלש במחקר."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות הסקה — מה נרמז, ומה חלש במחקר."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"imply / implies\"?",

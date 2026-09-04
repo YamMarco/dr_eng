@@ -16,13 +16,15 @@ export const c25Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשיחה על טעויות ולמידה מהן — הסיכום של הקורס."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשיחה על טעויות ולמידה מהן — הסיכום של הקורס."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"error\"?",

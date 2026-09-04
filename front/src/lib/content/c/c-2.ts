@@ -16,13 +16,15 @@ export const c2Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "חמש מילים שמופיעות כמעט בכל הוראה בשאלון C. בלעדיהן קשה להבין מה השאלה מבקשת."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "חמש מילים שמופיעות כמעט בכל הוראה בשאלון C. בלעדיהן קשה להבין מה השאלה מבקשת."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"paragraph\"?",

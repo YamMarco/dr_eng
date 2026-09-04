@@ -16,13 +16,15 @@ export const c8Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים להשלמת משפטים — יצירה, צורך והחלפה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים להשלמת משפטים — יצירה, צורך והחלפה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"develop(s)\"?",

@@ -16,13 +16,15 @@ export const c7Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות רב־ברירה — דעה, החלפה והצלחה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות רב־ברירה — דעה, החלפה והצלחה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"argue(s)\"?",

@@ -16,13 +16,15 @@ export const c22Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מבנים לבניית פסקת נימוק מסודרת: נימוק ← הסבר ← דוגמה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מבנים לבניית פסקת נימוק מסודרת: נימוק ← הסבר ← דוגמה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"reason\"?",

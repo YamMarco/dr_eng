@@ -9,8 +9,14 @@ export interface LessonRound {
 	screens: LessonScreen[];
 }
 
-/** At least one round; round 0 is the main one, later rounds are optional practice. */
+/**
+ * `preface` is the teaching intro (rule cards, steps, …) shown once, before
+ * round 0 only. `rounds` is the practice: round 0 is the main one that unlocks
+ * the path, later rounds are optional extra practice and are played without the
+ * preface. At least one round.
+ */
 export interface LessonContent {
+	preface: LessonScreen[];
 	rounds: LessonRound[];
 }
 

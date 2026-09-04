@@ -16,13 +16,15 @@ export const c18Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילות קישור נפוצות — ושגיאות שכדאי להימנע מהן."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילות קישור נפוצות — ושגיאות שכדאי להימנע מהן."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"because\"?",

@@ -16,13 +16,15 @@ export const c24Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "הוראות המבחן שחוזרות בכל סימולציה — לזהות ולפעול בלי היסוס."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "הוראות המבחן שחוזרות בכל סימולציה — לזהות ולפעול בלי היסוס."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"according to\"?",

@@ -16,13 +16,15 @@ export const c10Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות התייחסות — למה מתייחסת מילה, ומה נחקר."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות התייחסות — למה מתייחסת מילה, ומה נחקר."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"refer(s) to\"?",

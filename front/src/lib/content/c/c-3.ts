@@ -16,13 +16,15 @@ export const c3Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים שחוזרות בטקסטים על מחקרים וסקרים — במיוחד סביב מספרים ושמות."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים שחוזרות בטקסטים על מחקרים וסקרים — במיוחד סביב מספרים ושמות."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"result(s)\"?",
@@ -215,25 +217,27 @@ export const c3Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "בסריקה מהירה, שני סוגי פרטים כמעט תמיד מובילים אל התשובה: מספרים ושמות.\n\nמספר = המספר יחד עם מה שהוא סופר: \"2,000 trees\", \"three hours a week\", \"40%\", \"five years\".\nשם = אנשים, מקומות וארגונים: \"Dr. Maria Santos\", \"Greenville\", \"Greenville University\"."
+        },
+        {
+          "type": "summary",
+          "title": "מה מסמנים",
+          "lines": [
+            "מספרים: המספר + שם העצם שצמוד אליו. לדוגמה: 2,000 trees · three hours · 85% · ten years",
+            "שמות: אות גדולה באמצע משפט — אדם, מקום או מוסד. לדוגמה: Dr. Maria Santos · Greenville University · Professor James Wu"
+          ]
+        },
+        {
+          "type": "preface",
+          "text": "לפניכם הטקסט THE CITY GARDEN PROJECT בשלוש פסקאות. בכל פסקה סמנו את כל המספרים והשמות."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "בסריקה מהירה, שני סוגי פרטים כמעט תמיד מובילים אל התשובה: מספרים ושמות.\n\nמספר = המספר יחד עם מה שהוא סופר: \"2,000 trees\", \"three hours a week\", \"40%\", \"five years\".\nשם = אנשים, מקומות וארגונים: \"Dr. Maria Santos\", \"Greenville\", \"Greenville University\"."
-            },
-            {
-              "type": "summary",
-              "title": "מה מסמנים",
-              "lines": [
-                "מספרים: המספר + שם העצם שצמוד אליו. לדוגמה: 2,000 trees · three hours · 85% · ten years",
-                "שמות: אות גדולה באמצע משפט — אדם, מקום או מוסד. לדוגמה: Dr. Maria Santos · Greenville University · Professor James Wu"
-              ]
-            },
-            {
-              "type": "preface",
-              "text": "לפניכם הטקסט THE CITY GARDEN PROJECT בשלוש פסקאות. בכל פסקה סמנו את כל המספרים והשמות."
-            },
             {
               "type": "mark-all",
               "instruction": "פסקה I — סמנו את כל המספרים והשמות",
@@ -308,21 +312,23 @@ export const c3Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "עד עכשיו סימנתם מספרים ושמות. עכשיו משתמשים בהם כדי לנווט מהר אל התשובה — בלי לקרוא את כל הטקסט."
+        },
+        {
+          "type": "summary",
+          "title": "P2 · מספרים   |   P3 · שמות",
+          "lines": [
+            "P2 (מספר בשאלה): חפשו את המספר בטקסט ← ודאו שהוא צמוד לדבר הנכון ← זו התשובה",
+            "P3 (שם בשאלה): לכו לפסקה של אותו שם ← קראו רק שם ← אל תקראו פסקאות אחרות"
+          ]
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "עד עכשיו סימנתם מספרים ושמות. עכשיו משתמשים בהם כדי לנווט מהר אל התשובה — בלי לקרוא את כל הטקסט."
-            },
-            {
-              "type": "summary",
-              "title": "P2 · מספרים   |   P3 · שמות",
-              "lines": [
-                "P2 (מספר בשאלה): חפשו את המספר בטקסט ← ודאו שהוא צמוד לדבר הנכון ← זו התשובה",
-                "P3 (שם בשאלה): לכו לפסקה של אותו שם ← קראו רק שם ← אל תקראו פסקאות אחרות"
-              ]
-            },
             {
               "type": "timed-passage",
               "label": "THE CITY GARDEN PROJECT",

@@ -41,14 +41,17 @@
 		isBig: boolean;
 	};
 
-	/** A lesson's rounds as flat screen arrays — always at least one. */
-	function roundsOf(lesson: LessonNode): LessonScreen[][] {
-		return lesson.content.rounds.map((round) => round.screens);
+	/** The screens actually played for a round: round 0 is prefixed with the
+	    lesson's one-time teaching preface; later rounds are practice-only. */
+	function screensForRound(lesson: LessonNode, roundIndex: number): LessonScreen[] {
+		const round = lesson.content.rounds[roundIndex]?.screens ?? [];
+		return roundIndex === 0 ? [...lesson.content.preface, ...round] : round;
 	}
 
-	/** No screens written yet in any round — the node still shows (title only) but never unlocks. */
+	/** No screens written yet anywhere — the node still shows (title only) but never unlocks. */
 	function hasContent(lesson: LessonNode): boolean {
-		return roundsOf(lesson).some((round) => round.some((screen) => !isScreenEmpty(screen)));
+		const all = [lesson.content.preface, ...lesson.content.rounds.map((r) => r.screens)];
+		return all.some((screens) => screens.some((screen) => !isScreenEmpty(screen)));
 	}
 
 	// Every section's lessons, flattened into one graph. Section order only
@@ -125,7 +128,7 @@
 	}
 
 	function totalRounds(node: PathNode): number {
-		return roundsOf(node.lesson).length;
+		return node.lesson.content.rounds.length;
 	}
 
 	/** The round to open next: the first not-yet-completed one, capped at the last. */
@@ -162,7 +165,7 @@
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 	let activeRoundScreens = $derived(
-		activeNode ? (roundsOf(activeNode.lesson)[activeRoundIndex] ?? []) : []
+		activeNode ? screensForRound(activeNode.lesson, activeRoundIndex) : []
 	);
 
 	// "Continue to next lesson" only makes sense within the same section's

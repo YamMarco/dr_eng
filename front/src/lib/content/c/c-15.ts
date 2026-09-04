@@ -16,13 +16,15 @@ export const c15Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "אוצר מילים לנושאי טכנולוגיה וסביבה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "אוצר מילים לנושאי טכנולוגיה וסביבה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"research\"?",

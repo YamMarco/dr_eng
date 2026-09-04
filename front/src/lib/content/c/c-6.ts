@@ -16,13 +16,15 @@ export const c6Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות פרטים — סיבה, שיפור והתניה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות פרטים — סיבה, שיפור והתניה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"despite\"?",

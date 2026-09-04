@@ -16,13 +16,15 @@ export const c20Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "הוראות מפתח לתרגול מתוזמן — לזהות מהר ולפעול."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "הוראות מפתח לתרגול מתוזמן — לזהות מהר ולפעול."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"according to\"?",

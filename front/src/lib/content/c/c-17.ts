@@ -16,13 +16,15 @@ export const c17Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מבנים שפותחים ומחברים משפטים בחיבור דעה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מבנים שפותחים ומחברים משפטים בחיבור דעה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"I think / I believe\"?",

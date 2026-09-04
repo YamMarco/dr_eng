@@ -16,13 +16,15 @@ export const c12Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות רעיון מרכזי — הרס, אזהרה וחומרה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות רעיון מרכזי — הרס, אזהרה וחומרה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"destroy / destruction\"?",

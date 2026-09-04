@@ -16,13 +16,15 @@ export const c16Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים שימושיות לכתיבת חיבור — לנימוק ולביסוס."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים שימושיות לכתיבת חיבור — לנימוק ולביסוס."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"volunteer\"?",

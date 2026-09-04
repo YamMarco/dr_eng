@@ -16,13 +16,15 @@ export const c9Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מילים לשאלות \"שתי תשובות נכונות\" — נתינה, הגנה וגדילה."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "מילים לשאלות \"שתי תשובות נכונות\" — נתינה, הגנה וגדילה."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"responsible\"?",

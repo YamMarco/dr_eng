@@ -16,13 +16,15 @@ export const c23Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "חמישה משפטי פתיחה שמתאימים כמעט לכל נושא בחיבור."
+        }
+      ],
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "חמישה משפטי פתיחה שמתאימים כמעט לכל נושא בחיבור."
-            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"Many students...\"?",
