@@ -12,7 +12,7 @@ export const c20Lessons: LessonNode[] = [
     ],
     "position": {
       "x": 0,
-      "y": 3000
+      "y": 3240
     },
     "big": false,
     "content": {

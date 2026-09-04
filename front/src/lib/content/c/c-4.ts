@@ -3,16 +3,130 @@ import type { LessonNode } from '../types';
 
 export const c4Lessons: LessonNode[] = [
   {
-    "id": "s4-l1",
+    "id": "neg_lim_con_intro",
     "section": "c-4",
-    "titleHe": "מילות שלילה, הגבלה וניגוד — המילים",
+    "titleHe": "המילים ששוברות את ההיגיון",
     "code": "c.4.1",
     "required": [
       "s3-l3"
     ],
     "position": {
-      "x": -100,
+      "x": 0,
       "y": 840
+    },
+    "big": false,
+    "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "מספרים ושמות אמרו לנו איפה התשובה נמצאת. עכשיו מגיע סוג שני של מגנטים — מילים שגם מסמנות איפה, אבל בעיקר משנות את מה שאנחנו מחפשים.\n\nשלוש משפחות: מילות שלילה, מילות הגבלה, מילות ניגוד. רואים אחת מהן — עוצרים ומשנים אסטרטגיה."
+        },
+        {
+          "type": "preface",
+          "text": "NOT משנה הכל. רוב התלמידים לא רואים אותה ומאבדים את התשובה.\n\nהתלמיד שרואה NOT ראשון חושב: \"אני לא מחפש מה נכון — אני מחפש מה לא נכון.\" זה חיפוש אחר לגמרי."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "השאלה: \"Which statement is NOT true according to the text?\"",
+            "בלי לראות את NOT: מחפשים משפט נכון, בוחרים אותו — ומפסידים את הנקודה.",
+            "עם NOT: עוצרים. עכשיו צדים את המשפט השגוי — זה שהטקסט סותר או בכלל לא מזכיר.",
+            "שלוש אפשרויות יתאימו לטקסט. הרביעית לא תתאים. היא התשובה."
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "השאלה: \"What is the most effective type of volunteering?\"",
+            "most היא מילת הגבלה: יש תשובה אחת. לא שתיים, לא \"כמה טובות\".",
+            "בטקסט: \"the most effective programmes bring young people face to face\" — אותה מילה מופיעה גם שם.",
+            "כותבים תשובה אחת: face-to-face programmes. שתי תשובות לשאלה כזו = תשובה פסולה."
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "המשפט: \"Most people sleep eight hours. However, the quality matters more than the quantity.\"",
+            "עד However זה הרקע — מה שכולם כבר חושבים.",
+            "אחרי However מגיע המידע החדש — וזה מה שהשאלה תבדוק.",
+            "מילת ניגוד היא פנייה בכביש. הכיוון החדש הוא התשובה."
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "screens": [
+            {
+              "type": "mcq",
+              "prompt": "\"Which statement is NOT true according to the text?\" — מה מחפשים?",
+              "options": [
+                "את המשפט שאינו נכון לפי הטקסט",
+                "את המשפט הנכון ביותר",
+                "את המשפט הארוך ביותר",
+                "את המשפט הראשון בפסקה"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"What is the main reason for the change?\" — כמה תשובות נדרשות?",
+              "options": [
+                "כל הסיבות שבטקסט",
+                "תשובה אחת — העיקרית",
+                "שתי סיבות",
+                "תלוי באורך הטקסט"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"The programme is cheap. However, it is very slow.\" — איפה המידע החדש?",
+              "options": [
+                "לפני However",
+                "בשני החלקים במידה שווה",
+                "אחרי However",
+                "אין מידע חדש"
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "ראיתם NOT / most / however בשאלה. מה עושים?",
+              "options": [
+                "ממשיכים לקרוא כרגיל",
+                "מדלגים על השאלה",
+                "מתרגמים את כל הטקסט",
+                "עוצרים ומשנים את סוג החיפוש"
+              ],
+              "correctIndex": 3
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"not all types produce the same results\" — מה זה אומר?",
+              "options": [
+                "חלק מהסוגים שונים מהאחרים",
+                "כל הסוגים זהים",
+                "אף סוג לא עובד",
+                "כל הסוגים שונים זה מזה"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "s4-l1",
+    "section": "c-4",
+    "titleHe": "מילות שלילה, הגבלה וניגוד — המילים",
+    "code": "c.4.2",
+    "required": [
+      "neg_lim_con_intro"
+    ],
+    "position": {
+      "x": 0,
+      "y": 960
     },
     "big": false,
     "content": {
@@ -207,13 +321,13 @@ export const c4Lessons: LessonNode[] = [
     "id": "s4-l2a",
     "section": "c-4",
     "titleHe": "מילות שלילה — זיהוי וסימון",
-    "code": "c.4.2a",
+    "code": "c.4.3a",
     "required": [
       "s4-l1"
     ],
     "position": {
       "x": -100,
-      "y": 960
+      "y": 1080
     },
     "big": false,
     "content": {
@@ -236,6 +350,121 @@ export const c4Lessons: LessonNode[] = [
       "rounds": [
         {
           "screens": [
+            {
+              "type": "preface",
+              "text": "קודם בעברית: לזהות מילת שלילה זה רפלקס, לא תרגום. סמנו כל מילה ששוללת."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה",
+              "text": "המתנדבים עבדו בלי תשלום, והם אף פעם לא ביקשו כסף.",
+              "correctIndices": [
+                2,
+                5,
+                6,
+                7
+              ],
+              "dir": "rtl"
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה",
+              "text": "לא כל התלמידים אהבו את התוכנית, ואף מורה לא התנגד לה.",
+              "correctIndices": [
+                0,
+                1,
+                6,
+                8
+              ],
+              "dir": "rtl"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "אותו תרגיל, באנגלית. שני משפטים — סמנו את המילים."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה",
+              "text": "The museum is open to everyone, but visitors cannot enter without a ticket.",
+              "correctIndices": [
+                8,
+                10
+              ]
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה",
+              "text": "Not all students passed the exam, and no teacher was surprised.",
+              "correctIndices": [
+                0,
+                1,
+                7
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "פסקה שלמה. סמנו כל מילת שלילה — בנק המילים למעלה."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה",
+              "text": "The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.",
+              "correctIndices": [
+                38,
+                40,
+                41,
+                68
+              ],
+              "wordBank": [
+                "not",
+                "no",
+                "never",
+                "without",
+                "cannot",
+                "not all"
+              ]
+            },
+            {
+              "type": "preface",
+              "text": "ועכשיו הטקסט המלא, בלי בנק מילים, עם שעון. סרקו — אל תקראו מילה־מילה."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "GIVING TIME, GAINING HAPPINESS — סמנו כל מילת שלילה",
+              "text": "GIVING TIME, GAINING HAPPINESS\nI  Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study from a research institute found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised. They had expected that money and success — not helping others — would be the main reason for happiness among teenagers.\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor, a researcher at a European university, studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.\nIII  Results from 12 countries show that the benefits of volunteering are not limited to the volunteers themselves. Schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills of an Australian university argues that helping others teaches young people skills that no classroom can ever replace. \"When you help someone,\" he says, \"you also help yourself.\"",
+              "correctIndices": [
+                25,
+                66,
+                124,
+                126,
+                127,
+                154,
+                169,
+                207
+              ],
+              "timerKey": "markNeg"
+            },
+            {
+              "type": "time-result",
+              "label": "סיימתם את הסריקה!",
+              "timerKey": "markNeg"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "תרגול נוסף — המשמעות של מילות השלילה."
+            },
             {
               "type": "mcq",
               "prompt": "מה המשמעות של \"without\"?",
@@ -292,30 +521,91 @@ export const c4Lessons: LessonNode[] = [
               "correctIndex": 0
             }
           ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "s4-l2b",
+    "section": "c-4",
+    "titleHe": "מילות הגבלה — זיהוי וסימון",
+    "code": "c.4.3b",
+    "required": [
+      "s4-l1"
+    ],
+    "position": {
+      "x": 0,
+      "y": 1080
+    },
+    "big": false,
+    "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
+        },
+        {
+          "type": "summary",
+          "title": "מילות ההגבלה",
+          "lines": [
+            "main — עיקרי. יש רק אחד.",
+            "most — הכי. לא \"אחד מהטובים\" — הטוב ביותר.",
+            "only — רק / בלבד.",
+            "first — ראשון. לא \"אחד הראשונים\"."
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "מילות הגבלה נדירות בטקסט — ולכן הן מסגירות את התשובה. קודם בעברית."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות ההגבלה",
+              "text": "הסיבה העיקרית לאיחור הייתה הפקק, והנהג הראשון שהגיע חיכה חצי שעה.",
+              "correctIndices": [
+                1,
+                6
+              ],
+              "dir": "rtl"
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות ההגבלה",
+              "text": "רק שני תלמידים בכיתה קראו את הספר, והמורה הכי מרוצה בבית הספר הייתה שלהם.",
+              "correctIndices": [
+                0,
+                8
+              ],
+              "dir": "rtl"
+            }
+          ]
         },
         {
           "screens": [
             {
               "type": "preface",
-              "text": "עכשיו מוצאים אותן בטקסט. לפניכם פסקה — סמנו כל מילת שלילה. בנק המילים למעלה."
+              "text": "אותו תרגיל, באנגלית. שני משפטים — סמנו את המילים."
             },
             {
               "type": "mark-all",
-              "instruction": "סמנו את כל מילות השלילה",
-              "text": "The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.",
+              "instruction": "סמנו את כל מילות ההגבלה",
+              "text": "The main reason for the delay was the weather, and only two flights left on time.",
               "correctIndices": [
-                38,
-                40,
-                41,
-                68
-              ],
-              "wordBank": [
-                "not",
-                "no",
-                "never",
-                "without",
-                "cannot",
-                "not all"
+                1,
+                10
+              ]
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות ההגבלה",
+              "text": "The first group finished quickly, but the most successful group worked in pairs.",
+              "correctIndices": [
+                1,
+                7
               ]
             }
           ]
@@ -324,28 +614,300 @@ export const c4Lessons: LessonNode[] = [
           "screens": [
             {
               "type": "preface",
-              "text": "הטקסט המלא, בלי בנק מילים, עם שעון. סרקו — אל תקראו מילה־מילה."
+              "text": "פסקה שלמה. סמנו כל מילת הגבלה — בנק המילים למעלה."
             },
             {
               "type": "mark-all",
-              "instruction": "GIVING TIME, GAINING HAPPINESS — סמנו כל מילת שלילה",
-              "text": "GIVING TIME, GAINING HAPPINESS\nI  Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study from a research institute found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised. They had expected that money and success — not helping others — would be the main reason for happiness among teenagers.\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor, a researcher at a European university, studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.\nIII  Results from 12 countries show that the benefits of volunteering are not limited to the volunteers themselves. Schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills of an Australian university argues that helping others teaches young people skills that no classroom can ever replace. \"When you help someone,\" he says, \"you also help yourself.\"",
+              "instruction": "סמנו את כל מילות ההגבלה",
+              "text": "THE BOREDOM STUDY\nResearchers at a British university recently published a surprising study about boredom. The study found that people who spent ten minutes doing a boring task before a creative activity produced twice as many creative ideas as those who did not do a boring task first. Dr. Sandi Mann, who led the research, says: \"Boredom allows the brain to wander freely. This is when most creative ideas appear.\" However, she warns that not all types of boredom have the same effect. Only passive boredom — such as watching a blank screen — produced this result. Active boredom, such as a sport or a walk, did not have the same effect.",
               "correctIndices": [
-                25,
+                47,
                 66,
-                124,
-                126,
-                127,
-                154,
-                169,
-                207
+                83
               ],
-              "timerKey": "markNeg"
+              "wordBank": [
+                "main",
+                "most",
+                "only",
+                "first",
+                "best"
+              ]
+            },
+            {
+              "type": "preface",
+              "text": "טקסט מלא, בלי בנק מילים, עם שעון."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "THE EXERCISE MYTH — סמנו כל מילת הגבלה",
+              "text": "THE EXERCISE MYTH\nI  Most people believe that to get fit, they need to exercise for at least 30 minutes every day. However, new research suggests this idea may be wrong. According to a study published in the Journal of Sports Science, short bursts of intense exercise — as little as seven minutes a day — can be just as effective as longer workouts. This finding challenges everything most fitness experts have said for decades.\nII  Dr. Jennifer Cho, a sports scientist at Yonsei University in South Korea, tested two groups of volunteers for 12 weeks. The first group exercised for 30 minutes every day. The second group did seven minutes of intense exercise three times a day. At the end, Dr. Cho found that both groups had similar improvements. However, the second group reported feeling more energetic and less stressed.\nIII  Not all scientists agree with these findings. Professor Robert Walsh of Oxford University argues that the research has serious limitations. \"The study only looked at healthy young adults,\" he says. \"We cannot apply these results to older people or those with health problems.\" He also points out that most people cannot maintain these routines for more than a few weeks.",
+              "correctIndices": [
+                4,
+                68,
+                97,
+                164,
+                190
+              ],
+              "timerKey": "markLim"
             },
             {
               "type": "time-result",
               "label": "סיימתם את הסריקה!",
-              "timerKey": "markNeg"
+              "timerKey": "markLim"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "תרגול נוסף — המשמעות של מילות ההגבלה."
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"the most effective programmes\" — כמה תשובות מחפשים?",
+              "options": [
+                "אחת בלבד",
+                "שתיים",
+                "שלוש",
+                "כמה שנמצא"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "מה המשמעות של \"main\"?",
+              "options": [
+                "משני",
+                "עיקרי / מרכזי",
+                "אחרון",
+                "נוסף"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "מה המשמעות של \"only\"?",
+              "options": [
+                "גם",
+                "בנוסף",
+                "רק / בלבד",
+                "לפחות"
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"What is the main reason?\" — מה נדרש?",
+              "options": [
+                "כל הסיבות שבטקסט",
+                "שתי סיבות",
+                "הסיבה האחרונה",
+                "סיבה אחת — העיקרית"
+              ],
+              "correctIndex": 3
+            },
+            {
+              "type": "mcq",
+              "prompt": "כתבתם שתי תשובות לשאלה עם \"most\". מה יקרה?",
+              "options": [
+                "התשובה תיפסל — נדרשה אחת",
+                "תקבלו ניקוד על שתיהן",
+                "הבודק יבחר את הטובה",
+                "לא משנה"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "s4-l2c",
+    "section": "c-4",
+    "titleHe": "מילות ניגוד — זיהוי וסימון",
+    "code": "c.4.3c",
+    "required": [
+      "s4-l1"
+    ],
+    "position": {
+      "x": 100,
+      "y": 1080
+    },
+    "big": false,
+    "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "P6 — Contrast words: however · but · although.\nThey mark a turn. What comes AFTER them is the new, important information — and it is usually where the answer hides.\n\nמילת ניגוד ← מה שבא אחריה הוא המידע החדש."
+        },
+        {
+          "type": "summary",
+          "title": "מילות הניגוד",
+          "lines": [
+            "however · but — אולם / אבל. המידע החדש בא אחריהן.",
+            "although — למרות ש־. הניגוד יושב בתוך משפט אחד.",
+            "ראיתם מילת ניגוד? מה שלפניה הוא הרקע. מה שאחריה הוא העיקר."
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "מילת ניגוד היא פנייה בטקסט. קודם מזהים אותה — בעברית."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות הניגוד",
+              "text": "התוכנית הייתה זולה, אבל היא לקחה הרבה יותר זמן.",
+              "correctIndices": [
+                3
+              ],
+              "dir": "rtl"
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות הניגוד",
+              "text": "למרות שירד גשם חזק, המשחק התקיים כרגיל.",
+              "correctIndices": [
+                0
+              ],
+              "dir": "rtl"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "אותו תרגיל, באנגלית. שני משפטים — סמנו את המילים."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות הניגוד",
+              "text": "The app is free. However, it works only on new phones.",
+              "correctIndices": [
+                4
+              ]
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות הניגוד",
+              "text": "Although the course was difficult, nearly all the students passed it.",
+              "correctIndices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "פסקה שלמה. סמנו כל מילת ניגוד — בנק המילים למעלה."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות הניגוד",
+              "text": "THE SLEEP QUESTION\nMost people know that sleep is important for health. However, a new study from the National Sleep Research Centre shows that the quality of sleep matters more than the quantity. Researchers found that people who sleep for six hours of deep, uninterrupted sleep feel more rested than those who sleep for nine hours but wake up several times during the night. Dr. Claire Webb, who led the study, says: \"The most important factor is not the number of hours, but the depth of the sleep.\" She recommends that people avoid screens for at least one hour before going to bed.",
+              "correctIndices": [
+                12,
+                56,
+                82
+              ],
+              "wordBank": [
+                "however",
+                "but",
+                "although",
+                "while",
+                "yet",
+                "despite"
+              ]
+            },
+            {
+              "type": "preface",
+              "text": "טקסט מלא, בלי בנק מילים, עם שעון. כל מילת ניגוד מסמנת פנייה בטקסט."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "THE EXERCISE MYTH — סמנו כל מילת ניגוד",
+              "text": "THE EXERCISE MYTH\nI  Most people believe that to get fit, they need to exercise for at least 30 minutes every day. However, new research suggests this idea may be wrong. According to a study published in the Journal of Sports Science, short bursts of intense exercise — as little as seven minutes a day — can be just as effective as longer workouts. This finding challenges everything most fitness experts have said for decades.\nII  Dr. Jennifer Cho, a sports scientist at Yonsei University in South Korea, tested two groups of volunteers for 12 weeks. The first group exercised for 30 minutes every day. The second group did seven minutes of intense exercise three times a day. At the end, Dr. Cho found that both groups had similar improvements. However, the second group reported feeling more energetic and less stressed.\nIII  Not all scientists agree with these findings. Professor Robert Walsh of Oxford University argues that the research has serious limitations. \"The study only looked at healthy young adults,\" he says. \"We cannot apply these results to older people or those with health problems.\" He also points out that most people cannot maintain these routines for more than a few weeks.",
+              "correctIndices": [
+                22,
+                130
+              ],
+              "timerKey": "markCon"
+            },
+            {
+              "type": "time-result",
+              "label": "סיימתם את הסריקה!",
+              "timerKey": "markCon"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "תרגול נוסף — המשמעות של מילות הניגוד."
+            },
+            {
+              "type": "mcq",
+              "prompt": "מה המשמעות של \"however\"?",
+              "options": [
+                "אולם / אבל",
+                "לכן",
+                "לדוגמה",
+                "בנוסף"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "מה המשמעות של \"although\"?",
+              "options": [
+                "מכיוון ש־",
+                "למרות ש־",
+                "לכן",
+                "כלומר"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"The plan is cheap. However, it is very slow.\" — איפה המידע החדש?",
+              "options": [
+                "לפני However",
+                "בשני המשפטים במידה שווה",
+                "אחרי However",
+                "אין מידע חדש"
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"Although it rained, the event went ahead.\" — מה קרה בפועל?",
+              "options": [
+                "האירוע בוטל",
+                "האירוע נדחה בגלל הגשם",
+                "לא כתוב",
+                "האירוע התקיים"
+              ],
+              "correctIndex": 3
+            },
+            {
+              "type": "mcq",
+              "prompt": "ראיתם \"but\" באמצע משפט. איזה חלק חשוב יותר?",
+              "options": [
+                "מה שבא אחרי but",
+                "מה שבא לפני but",
+                "שני החלקים שווים",
+                "ה-but עצמו"
+              ],
+              "correctIndex": 0
             }
           ]
         }
@@ -356,13 +918,13 @@ export const c4Lessons: LessonNode[] = [
     "id": "s4-l3a",
     "section": "c-4",
     "titleHe": "שאלת NOT — צוד את המשפט השגוי",
-    "code": "c.4.3a",
+    "code": "c.4.4a",
     "required": [
       "s4-l2a"
     ],
     "position": {
       "x": -100,
-      "y": 1080
+      "y": 1200
     },
     "big": false,
     "content": {
@@ -405,6 +967,66 @@ export const c4Lessons: LessonNode[] = [
                 "השאלה תתבטל"
               ],
               "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"מיכל לא הגיעה לאימון, ודני הגיע באיחור. יעל הגיעה בזמן.\" — איזה משפט אינו נכון לפי הקטע?",
+              "options": [
+                "דני הגיע באיחור",
+                "מיכל לא הגיעה לאימון",
+                "יעל הגיעה בזמן",
+                "מיכל הגיעה בזמן"
+              ],
+              "correctIndex": 3
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"בגן החדש נשתלו 30 עצים. לא נשתלו בו פרחים.\" — איזה משפט אינו נכון?",
+              "options": [
+                "בגן נשתלו 30 עצים",
+                "בגן נשתלו פרחים",
+                "הגן חדש",
+                "בגן לא נשתלו פרחים"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "אותו רפלקס, באנגלית. קראו את השאלה, אתרו את NOT, ורק אז את המשפטים."
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"The library is open every day except Sunday. Members can borrow five books at a time.\" — Which statement is NOT true?",
+              "options": [
+                "The library is closed on Sunday.",
+                "Members can borrow five books at a time.",
+                "The library is open on Sunday.",
+                "The library has members."
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"Dr. Lee never worked in Paris. She studied in Rome for two years.\" — Which statement is NOT true?",
+              "options": [
+                "Dr. Lee studied in Rome.",
+                "Dr. Lee worked in Paris.",
+                "Dr. Lee studied for two years.",
+                "Dr. Lee never worked in Paris."
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "הטקסט המלא, ארבע שאלות NOT, עם שעון. שלוש אפשרויות נכונות — אחת לא."
             },
             {
               "type": "timed-passage",
@@ -475,160 +1097,16 @@ export const c4Lessons: LessonNode[] = [
     }
   },
   {
-    "id": "s4-l2b",
-    "section": "c-4",
-    "titleHe": "מילות הגבלה — תשובה אחת בלבד",
-    "code": "c.4.2b",
-    "required": [
-      "s4-l1"
-    ],
-    "position": {
-      "x": 0,
-      "y": 960
-    },
-    "big": false,
-    "content": {
-      "preface": [
-        {
-          "type": "preface",
-          "text": "P5 — Key limiters: main · most · only · first.\nA limiter narrows the question to ONE answer. Not two, not \"the two best\" — one.\n\nמילת הגבלה בשאלה ← תשובה אחת בלבד."
-        },
-        {
-          "type": "summary",
-          "title": "מילות ההגבלה",
-          "lines": [
-            "main — עיקרי. יש רק אחד.",
-            "most — הכי. לא \"אחד מהטובים\" — הטוב ביותר.",
-            "only — רק / בלבד.",
-            "first — ראשון. לא \"אחד הראשונים\"."
-          ]
-        }
-      ],
-      "rounds": [
-        {
-          "screens": [
-            {
-              "type": "mcq",
-              "prompt": "\"the most effective programmes\" — כמה תשובות מחפשים?",
-              "options": [
-                "אחת בלבד",
-                "שתיים",
-                "שלוש",
-                "כמה שנמצא"
-              ],
-              "correctIndex": 0
-            },
-            {
-              "type": "mcq",
-              "prompt": "מה המשמעות של \"main\"?",
-              "options": [
-                "משני",
-                "עיקרי / מרכזי",
-                "אחרון",
-                "נוסף"
-              ],
-              "correctIndex": 1
-            },
-            {
-              "type": "mcq",
-              "prompt": "מה המשמעות של \"only\"?",
-              "options": [
-                "גם",
-                "בנוסף",
-                "רק / בלבד",
-                "לפחות"
-              ],
-              "correctIndex": 2
-            },
-            {
-              "type": "mcq",
-              "prompt": "\"What is the main reason?\" — מה נדרש?",
-              "options": [
-                "כל הסיבות שבטקסט",
-                "שתי סיבות",
-                "הסיבה האחרונה",
-                "סיבה אחת — העיקרית"
-              ],
-              "correctIndex": 3
-            },
-            {
-              "type": "mcq",
-              "prompt": "כתבתם שתי תשובות לשאלה עם \"most\". מה יקרה?",
-              "options": [
-                "התשובה תיפסל — נדרשה אחת",
-                "תקבלו ניקוד על שתיהן",
-                "הבודק יבחר את הטובה",
-                "לא משנה"
-              ],
-              "correctIndex": 0
-            }
-          ]
-        },
-        {
-          "screens": [
-            {
-              "type": "preface",
-              "text": "מוצאים אותן בטקסט. סמנו כל מילת הגבלה. בנק המילים למעלה."
-            },
-            {
-              "type": "mark-all",
-              "instruction": "סמנו את כל מילות ההגבלה",
-              "text": "THE BOREDOM STUDY\nResearchers at a British university recently published a surprising study about boredom. The study found that people who spent ten minutes doing a boring task before a creative activity produced twice as many creative ideas as those who did not do a boring task first. Dr. Sandi Mann, who led the research, says: \"Boredom allows the brain to wander freely. This is when most creative ideas appear.\" However, she warns that not all types of boredom have the same effect. Only passive boredom — such as watching a blank screen — produced this result. Active boredom, such as a sport or a walk, did not have the same effect.",
-              "correctIndices": [
-                47,
-                66,
-                83
-              ],
-              "wordBank": [
-                "main",
-                "most",
-                "only",
-                "first",
-                "best"
-              ]
-            }
-          ]
-        },
-        {
-          "screens": [
-            {
-              "type": "preface",
-              "text": "טקסט מלא, בלי בנק מילים, עם שעון. מילות הגבלה נדירות — לכן הן מסגירות את התשובה."
-            },
-            {
-              "type": "mark-all",
-              "instruction": "THE EXERCISE MYTH — סמנו כל מילת הגבלה",
-              "text": "THE EXERCISE MYTH\nI  Most people believe that to get fit, they need to exercise for at least 30 minutes every day. However, new research suggests this idea may be wrong. According to a study published in the Journal of Sports Science, short bursts of intense exercise — as little as seven minutes a day — can be just as effective as longer workouts. This finding challenges everything most fitness experts have said for decades.\nII  Dr. Jennifer Cho, a sports scientist at Yonsei University in South Korea, tested two groups of volunteers for 12 weeks. The first group exercised for 30 minutes every day. The second group did seven minutes of intense exercise three times a day. At the end, Dr. Cho found that both groups had similar improvements. However, the second group reported feeling more energetic and less stressed.\nIII  Not all scientists agree with these findings. Professor Robert Walsh of Oxford University argues that the research has serious limitations. \"The study only looked at healthy young adults,\" he says. \"We cannot apply these results to older people or those with health problems.\" He also points out that most people cannot maintain these routines for more than a few weeks.",
-              "correctIndices": [
-                4,
-                68,
-                97,
-                164,
-                190
-              ],
-              "timerKey": "markLim"
-            },
-            {
-              "type": "time-result",
-              "label": "סיימתם את הסריקה!",
-              "timerKey": "markLim"
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
     "id": "s4-l3b",
     "section": "c-4",
     "titleHe": "שאלה עם מילת הגבלה",
-    "code": "c.4.3b",
+    "code": "c.4.4b",
     "required": [
       "s4-l2b"
     ],
     "position": {
       "x": 0,
-      "y": 1080
+      "y": 1200
     },
     "big": false,
     "content": {
@@ -660,6 +1138,66 @@ export const c4Lessons: LessonNode[] = [
                 "כמה שתמצאו"
               ],
               "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"הסיבה העיקרית לנשירה מהחוג היא חוסר זמן. סיבות נוספות הן המחיר והמרחק.\" — מהי הסיבה העיקרית?",
+              "options": [
+                "חוסר זמן",
+                "המחיר",
+                "המרחק",
+                "כל השלוש יחד"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"רק תלמיד אחד בכיתה סיים את המבחן מוקדם.\" — כמה תלמידים סיימו מוקדם?",
+              "options": [
+                "כל הכיתה",
+                "תלמיד אחד",
+                "שניים",
+                "לא כתוב"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "באנגלית. אתרו את מילת ההגבלה בשאלה — ואז את אותה מילה בטקסט."
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"The club offers many activities. The most popular one is swimming.\" — What is the most popular activity?",
+              "options": [
+                "All of them equally",
+                "Running",
+                "Swimming",
+                "The text does not say"
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"Only members can use the gym after 8pm.\" — Who can use the gym after 8pm?",
+              "options": [
+                "Everyone",
+                "Visitors with a ticket",
+                "Nobody",
+                "Only members"
+              ],
+              "correctIndex": 3
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "הטקסט המלא, עם שעון. מילת ההגבלה בשאלה מופיעה כמעט תמיד גם בטקסט."
             },
             {
               "type": "timed-passage",
@@ -719,16 +1257,16 @@ export const c4Lessons: LessonNode[] = [
     }
   },
   {
-    "id": "s4-l2c",
+    "id": "s4-l3c",
     "section": "c-4",
-    "titleHe": "מילות ניגוד — מה בא אחרי",
-    "code": "c.4.2c",
+    "titleHe": "שאלה עם מילת ניגוד",
+    "code": "c.4.4c",
     "required": [
-      "s4-l1"
+      "s4-l2c"
     ],
     "position": {
       "x": 100,
-      "y": 960
+      "y": 1200
     },
     "big": false,
     "content": {
@@ -738,12 +1276,12 @@ export const c4Lessons: LessonNode[] = [
           "text": "P6 — Contrast words: however · but · although.\nThey mark a turn. What comes AFTER them is the new, important information — and it is usually where the answer hides.\n\nמילת ניגוד ← מה שבא אחריה הוא המידע החדש."
         },
         {
-          "type": "summary",
-          "title": "מילות הניגוד",
-          "lines": [
-            "however · but — אולם / אבל. המידע החדש בא אחריהן.",
-            "although — למרות ש־. הניגוד יושב בתוך משפט אחד.",
-            "ראיתם מילת ניגוד? מה שלפניה הוא הרקע. מה שאחריה הוא העיקר."
+          "type": "steps",
+          "steps": [
+            "ראיתי מילת ניגוד — however / but / although.",
+            "מה שלפניה: הרקע. מה שכולם כבר חושבים.",
+            "מה שאחריה: המידע החדש — ושם יושבת התשובה.",
+            "שאלה על \"what do we learn\" ← קופצים ישר למה שאחרי מילת הניגוד."
           ]
         }
       ],
@@ -752,58 +1290,36 @@ export const c4Lessons: LessonNode[] = [
           "screens": [
             {
               "type": "mcq",
-              "prompt": "מה המשמעות של \"however\"?",
+              "prompt": "\"האימון היה קצר, אבל הוא היה מתיש מאוד.\" — מה אנחנו לומדים על האימון?",
               "options": [
-                "אולם / אבל",
-                "לכן",
-                "לדוגמה",
-                "בנוסף"
-              ],
-              "correctIndex": 0
-            },
-            {
-              "type": "mcq",
-              "prompt": "מה המשמעות של \"although\"?",
-              "options": [
-                "מכיוון ש־",
-                "למרות ש־",
-                "לכן",
-                "כלומר"
+                "שהוא היה קל",
+                "שהוא היה מתיש למרות שהיה קצר",
+                "שהוא היה ארוך",
+                "שהוא בוטל"
               ],
               "correctIndex": 1
             },
             {
               "type": "mcq",
-              "prompt": "\"The plan is cheap. However, it is very slow.\" — איפה המידע החדש?",
+              "prompt": "\"למרות שהכרטיסים היו יקרים, האולם היה מלא.\" — מה קרה בפועל?",
               "options": [
-                "לפני However",
-                "בשני המשפטים במידה שווה",
-                "אחרי However",
-                "אין מידע חדש"
-              ],
-              "correctIndex": 2
-            },
-            {
-              "type": "mcq",
-              "prompt": "\"Although it rained, the event went ahead.\" — מה קרה בפועל?",
-              "options": [
-                "האירוע בוטל",
-                "האירוע נדחה בגלל הגשם",
-                "לא כתוב",
-                "האירוע התקיים"
-              ],
-              "correctIndex": 3
-            },
-            {
-              "type": "mcq",
-              "prompt": "ראיתם \"but\" באמצע משפט. איזה חלק חשוב יותר?",
-              "options": [
-                "מה שבא אחרי but",
-                "מה שבא לפני but",
-                "שני החלקים שווים",
-                "ה-but עצמו"
+                "האולם היה מלא",
+                "האולם היה ריק",
+                "הכרטיסים היו זולים",
+                "ההופעה בוטלה"
               ],
               "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "במשפט עם but — איזה חלק בדרך כלל נבדק בשאלה?",
+              "options": [
+                "החלק שלפני but",
+                "החלק שאחרי but",
+                "שני החלקים במידה שווה",
+                "אף אחד מהם"
+              ],
+              "correctIndex": 1
             }
           ]
         },
@@ -811,48 +1327,244 @@ export const c4Lessons: LessonNode[] = [
           "screens": [
             {
               "type": "preface",
-              "text": "מוצאים אותן בטקסט. סמנו כל מילת ניגוד. בנק המילים למעלה."
+              "text": "באנגלית. מצאו את מילת הניגוד — וקראו את מה שאחריה."
             },
             {
-              "type": "mark-all",
-              "instruction": "סמנו את כל מילות הניגוד",
-              "text": "THE SLEEP QUESTION\nMost people know that sleep is important for health. However, a new study from the National Sleep Research Centre shows that the quality of sleep matters more than the quantity. Researchers found that people who sleep for six hours of deep, uninterrupted sleep feel more rested than those who sleep for nine hours but wake up several times during the night. Dr. Claire Webb, who led the study, says: \"The most important factor is not the number of hours, but the depth of the sleep.\" She recommends that people avoid screens for at least one hour before going to bed.",
-              "correctIndices": [
-                12,
-                56,
-                82
+              "type": "mcq",
+              "prompt": "\"The new phone is cheap. However, its battery lasts only three hours.\" — What is the problem with the phone?",
+              "options": [
+                "It is too expensive.",
+                "Its battery lasts only three hours.",
+                "It is not new.",
+                "There is no problem."
               ],
-              "wordBank": [
-                "however",
-                "but",
-                "although",
-                "while",
-                "yet",
-                "despite"
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"Although the team lost the game, the coach was pleased with the players.\" — How did the coach feel?",
+              "options": [
+                "Angry",
+                "Disappointed",
+                "Pleased",
+                "The text does not say"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "טקסט שלם, עם שעון. שלוש שאלות — כולן יושבות על מילות ניגוד."
+            },
+            {
+              "type": "timed-passage",
+              "label": "THE SLEEP QUESTION",
+              "text": "THE SLEEP QUESTION\nMost people know that sleep is important for health. However, a new study from the National Sleep Research Centre shows that the quality of sleep matters more than the quantity. Researchers found that people who sleep for six hours of deep, uninterrupted sleep feel more rested than those who sleep for nine hours but wake up several times during the night. Dr. Claire Webb, who led the study, says: \"The most important factor is not the number of hours, but the depth of the sleep.\" She recommends that people avoid screens for at least one hour before going to bed.",
+              "timerKey": "s4ConQuiz",
+              "questions": [
+                {
+                  "prompt": "According to the study, what matters more?",
+                  "options": [
+                    "The number of hours of sleep",
+                    "The quality of the sleep",
+                    "The time you go to bed",
+                    "The size of the bed"
+                  ],
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "How do people who sleep nine hours but wake up several times feel, compared to people who sleep six deep hours?",
+                  "options": [
+                    "More rested",
+                    "Less rested",
+                    "Exactly the same",
+                    "The text does not say"
+                  ],
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "\"The most important factor is not the number of hours, but the depth of the sleep.\" — what is the new information after \"but\"?",
+                  "options": [
+                    "The number of hours",
+                    "The depth of the sleep",
+                    "The name of the researcher",
+                    "The time before bed"
+                  ],
+                  "correctIndex": 1
+                }
+              ]
+            },
+            {
+              "type": "time-result",
+              "label": "סיימתם!",
+              "timerKey": "s4ConQuiz"
+            },
+            {
+              "type": "summary",
+              "title": "P6 — מילת ניגוד",
+              "lines": [
+                "however · but · although ← פנייה בטקסט.",
+                "מה שלפני = רקע. מה שאחרי = המידע החדש.",
+                "השאלה כמעט תמיד נשענת על מה שאחרי מילת הניגוד."
               ]
             }
           ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "s4-l5",
+    "section": "c-4",
+    "titleHe": "מבחן סיום — שלוש המשפחות יחד",
+    "code": "c.4.5",
+    "required": [
+      "s4-l3a",
+      "s4-l3b",
+      "s4-l3c"
+    ],
+    "position": {
+      "x": 0,
+      "y": 1320
+    },
+    "big": true,
+    "content": {
+      "preface": [
+        {
+          "type": "preface",
+          "text": "עד כאן תרגלנו כל משפחה בנפרד. במבחן הן מגיעות מעורבבות — ובלי אזהרה.\n\nזה שיעור הסיום של הפרק: מסמנים הכל, ואז עונים."
+        },
+        {
+          "type": "summary",
+          "title": "שלוש המשפחות",
+          "lines": [
+            "P4 · שלילה — not · no · never · without · not all ← מחפשים את השגוי",
+            "P5 · הגבלה — main · most · only · first ← תשובה אחת בלבד",
+            "P6 · ניגוד — however · but · although ← המידע החדש בא אחריהן"
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "סיבוב ראשון בעברית: סמנו כל מילת שלילה, הגבלה או ניגוד — כולן יחד."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל מילות השלילה, ההגבלה והניגוד",
+              "text": "המועדון החדש פתוח לכולם, אבל רק חברים רשומים יכולים להיכנס אחרי שמונה בערב. לא כל הפעילויות דורשות תשלום. הסיבה העיקרית להצלחה, לדברי המנהלת, היא שהמדריכים לא מוותרים על אף ילד.",
+              "correctIndices": [
+                4,
+                5,
+                13,
+                14,
+                19,
+                25,
+                28
+              ],
+              "dir": "rtl"
+            }
+          ]
         },
         {
           "screens": [
             {
               "type": "preface",
-              "text": "טקסט מלא, בלי בנק מילים, עם שעון. מילות ניגוד נדירות — וכל אחת מסמנת פנייה בטקסט."
+              "text": "עכשיו באנגלית, על טקסט שלם ועם שעון. שלוש המשפחות מעורבבות."
             },
             {
               "type": "mark-all",
-              "instruction": "THE EXERCISE MYTH — סמנו כל מילת ניגוד",
-              "text": "THE EXERCISE MYTH\nI  Most people believe that to get fit, they need to exercise for at least 30 minutes every day. However, new research suggests this idea may be wrong. According to a study published in the Journal of Sports Science, short bursts of intense exercise — as little as seven minutes a day — can be just as effective as longer workouts. This finding challenges everything most fitness experts have said for decades.\nII  Dr. Jennifer Cho, a sports scientist at Yonsei University in South Korea, tested two groups of volunteers for 12 weeks. The first group exercised for 30 minutes every day. The second group did seven minutes of intense exercise three times a day. At the end, Dr. Cho found that both groups had similar improvements. However, the second group reported feeling more energetic and less stressed.\nIII  Not all scientists agree with these findings. Professor Robert Walsh of Oxford University argues that the research has serious limitations. \"The study only looked at healthy young adults,\" he says. \"We cannot apply these results to older people or those with health problems.\" He also points out that most people cannot maintain these routines for more than a few weeks.",
+              "instruction": "THE SLEEP QUESTION — סמנו כל מילת שלילה, הגבלה וניגוד",
+              "text": "THE SLEEP QUESTION\nMost people know that sleep is important for health. However, a new study from the National Sleep Research Centre shows that the quality of sleep matters more than the quantity. Researchers found that people who sleep for six hours of deep, uninterrupted sleep feel more rested than those who sleep for nine hours but wake up several times during the night. Dr. Claire Webb, who led the study, says: \"The most important factor is not the number of hours, but the depth of the sleep.\" She recommends that people avoid screens for at least one hour before going to bed.",
               "correctIndices": [
-                22,
-                130
+                3,
+                12,
+                56,
+                73,
+                77,
+                82
               ],
-              "timerKey": "markCon"
+              "timerKey": "s4MixMark"
             },
             {
               "type": "time-result",
               "label": "סיימתם את הסריקה!",
-              "timerKey": "markCon"
+              "timerKey": "s4MixMark"
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "הסיבוב האחרון: טקסט מלא, ארבע שאלות מעורבבות. עצרו על כל מילה שמשנה את החיפוש."
+            },
+            {
+              "type": "timed-passage",
+              "label": "GIVING TIME, GAINING HAPPINESS",
+              "text": "GIVING TIME, GAINING HAPPINESS\nI  Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study from a research institute found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised. They had expected that money and success — not helping others — would be the main reason for happiness among teenagers.\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor, a researcher at a European university, studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better than those who do not. However, not all types of volunteering produce the same results. According to Okafor, the most effective programmes bring young people face to face with the people they help — not online activities.\nIII  Results from 12 countries show that the benefits of volunteering are not limited to the volunteers themselves. Schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills of an Australian university argues that helping others teaches young people skills that no classroom can ever replace. \"When you help someone,\" he says, \"you also help yourself.\"",
+              "timerKey": "s4Final",
+              "questions": [
+                {
+                  "prompt": "Which statement is NOT true according to paragraph II?",
+                  "options": [
+                    "Dr. Okafor studied volunteering and mental health for ten years.",
+                    "All types of volunteering produce the same results.",
+                    "Teenagers who volunteer feel less stressed than those who do not.",
+                    "Dr. Okafor found that young volunteers sleep better."
+                  ],
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "According to Dr. Sarah Okafor, what type of volunteering is most effective? (paragraph II)",
+                  "options": [
+                    "Online activities",
+                    "Any type — they all work equally well",
+                    "Programmes that bring young people face to face with the people they help",
+                    "Programmes that run for ten years"
+                  ],
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "What do we learn from paragraph II about the different types of volunteering?",
+                  "options": [
+                    "All types have the same positive effect on teenagers",
+                    "The most popular type is online volunteering",
+                    "Face-to-face programmes are more effective than online ones",
+                    "Dr. Okafor recommends only one type of volunteering"
+                  ],
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "According to paragraph III, what is NOT true about the benefits of volunteering?",
+                  "options": [
+                    "Schools with volunteering programmes saw students become more focused.",
+                    "The benefits are limited to the volunteers themselves.",
+                    "Professor Mills argues that classrooms cannot replace helping others.",
+                    "Volunteering teaches young people important skills."
+                  ],
+                  "correctIndex": 1
+                }
+              ]
+            },
+            {
+              "type": "time-result",
+              "label": "סיימתם את הפרק!",
+              "timerKey": "s4Final"
+            },
+            {
+              "type": "summary",
+              "title": "מה לוקחים מהפרק",
+              "lines": [
+                "קוראים את השאלה קודם — ומחפשים בה מילה שמשנה את החיפוש.",
+                "NOT ← צדים את השגוי. most/only/main/first ← תשובה אחת. however/but ← מה שאחרי.",
+                "המילים האלה נדירות בטקסט — ולכן כל אחת מהן היא סימן דרך."
+              ]
             }
           ]
         }

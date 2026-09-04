@@ -12,7 +12,7 @@ export const c19Lessons: LessonNode[] = [
     ],
     "position": {
       "x": -70,
-      "y": 2880
+      "y": 3120
     },
     "big": false,
     "content": {

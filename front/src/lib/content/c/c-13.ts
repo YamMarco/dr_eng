@@ -12,7 +12,7 @@ export const c13Lessons: LessonNode[] = [
     ],
     "position": {
       "x": 70,
-      "y": 2160
+      "y": 2400
     },
     "big": false,
     "content": {

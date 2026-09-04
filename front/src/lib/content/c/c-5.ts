@@ -8,13 +8,11 @@ export const c5Lessons: LessonNode[] = [
     "titleHe": "מילים: שיטת הרמזור",
     "code": "c.5.1",
     "required": [
-      "s4-l3a",
-      "s4-l3b",
-      "s4-l2c"
+      "s4-l5"
     ],
     "position": {
       "x": 70,
-      "y": 1200
+      "y": 1440
     },
     "big": false,
     "content": {
