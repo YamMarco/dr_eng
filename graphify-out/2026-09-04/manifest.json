@@ -733,8 +733,7 @@
   },
   "front/src/lib/content/schema.sql": {
     "mtime": 1788444316.462276,
-    "seen": 1788502390.7279806,
-    "ast_hash": "42891fa3ccbe3bcfe3edca451bdd6889",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "front/src/lib/content/sectionMeta.ts": {
