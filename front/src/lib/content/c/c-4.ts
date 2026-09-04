@@ -23,7 +23,7 @@ export const c4Lessons: LessonNode[] = [
         },
         {
           "type": "preface",
-          "text": "NOT משנה הכל. רוב התלמידים לא רואים אותה ומאבדים את התשובה.\n\nהתלמיד שרואה NOT ראשון חושב: \"אני לא מחפש מה נכון — אני מחפש מה לא נכון.\" זה חיפוש אחר לגמרי."
+          "text": "NOT מילות שלילה:\nמשנה הכל. רוב התלמידים לא רואים אותה ומאבדים את התשובה.\n\nהתלמיד שרואה NOT ראשון חושב: \"אני לא מחפש מה נכון — אני מחפש מה לא נכון.\" זה חיפוש אחר לגמרי."
         },
         {
           "type": "steps",
@@ -35,6 +35,10 @@ export const c4Lessons: LessonNode[] = [
           ]
         },
         {
+          "type": "preface",
+          "text": "משפחת ה-Limiters (מגבילים). בשאלות בהן מופיעה המשפחה הזו כל התשובות הן נכונות. האתגר הוא למצוא את הנכונה ביותר.\n\nניעזר בטקסט עצמו שיגלה לנו מהי התשובה הנכונה ביותר."
+        },
+        {
           "type": "steps",
           "steps": [
             "השאלה: \"What is the most effective type of volunteering?\"",
@@ -42,6 +46,10 @@ export const c4Lessons: LessonNode[] = [
             "בטקסט: \"the most effective programmes bring young people face to face\" — אותה מילה מופיעה גם שם.",
             "כותבים תשובה אחת: face-to-face programmes. שתי תשובות לשאלה כזו = תשובה פסולה."
           ]
+        },
+        {
+          "type": "preface",
+          "text": "מילות ניגוד, \"Contrast\" (לא שלילה). מילים שמשנות את זרם וכיוון המידע בטקסט."
         },
         {
           "type": "steps",
@@ -1450,10 +1458,6 @@ export const c4Lessons: LessonNode[] = [
       "rounds": [
         {
           "screens": [
-            {
-              "type": "preface",
-              "text": "סיבוב ראשון בעברית: סמנו כל מילת שלילה, הגבלה או ניגוד — כולן יחד."
-            },
             {
               "type": "mark-all",
               "instruction": "סמנו את כל מילות השלילה, ההגבלה והניגוד",
