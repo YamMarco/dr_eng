@@ -3,9 +3,9 @@ import type { LessonNode } from '../types';
 
 export const c3Lessons: LessonNode[] = [
   {
-    "id": "s3-l1",
+    "id": "eye_catch_intro",
     "section": "c-3",
-    "titleHe": "מילים: מגנטים לעין — מספרים ושמות",
+    "titleHe": "למה מספרים ושמות",
     "code": "c.3.1",
     "required": [
       "s2-l1"
@@ -19,9 +19,126 @@ export const c3Lessons: LessonNode[] = [
       "preface": [
         {
           "type": "preface",
-          "text": "מילים שחוזרות בטקסטים על מחקרים וסקרים — במיוחד סביב מספרים ושמות."
+          "text": "בפרק הקודם ראינו: המודול הזה הוא לא מבחן בקריאה.\nהוא מבחן ביכולת למצוא מידע בטקסט, לשלוף אותו, ולהשתמש בו כדי לענות על שאלה.\n\nאף אחד לא מצפה שתקראו כל מילה. מצפים שתדעו לאן ללכת."
+        },
+        {
+          "type": "preface",
+          "text": "בשאלה עצמה מסתתרים סימני דרך. שני סוגים בולטים לעין ומובילים כמעט תמיד ישר לתשובה: מספרים ושמות.\n\nאנחנו קוראים להם מגנטים לעין — הם קופצים מהדף עוד לפני שקראנו."
+        },
+        {
+          "type": "summary",
+          "title": "שני המגנטים",
+          "lines": [
+            "מספר = המספר + מה שהוא סופר. לדוגמה: 2,000 trees · three hours a week · 40% · five years",
+            "שם = אדם, מקום או ארגון, תמיד באות גדולה. לדוגמה: Dr. Maria Santos · Greenville · Greenville University"
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "הטקסט: \"פרה שוקלת 400 ק״ג, וכבשה שוקלת 60 ק״ג.\"",
+            "השאלה: \"מה שוקל 400 ק״ג?\" — במקום לקרוא הכל, מסתכלים על השאלה: יש בה מספר, 400.",
+            "סורקים את הטקסט בעיניים ומחפשים 400. מצאנו.",
+            "בודקים מה צמוד למספר: \"פרה שוקלת 400 ק״ג\". התשובה: פרה. שתי שניות, בלי לקרוא משפט שלם."
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "הטקסט: \"They planted over 2,000 trees and created 15 community gardens across the city.\"",
+            "השאלה: \"How many trees did they plant?\" — אין מספר בשאלה, אבל יש מילה שנחפש: trees.",
+            "בטקסט שני מספרים: 2,000 ו-15. בודקים מה צמוד לכל אחד: 2,000 trees · 15 community gardens.",
+            "המספר שצמוד ל-trees הוא 2,000. זו התשובה. לא מספיק למצוא מספר — צריך את המספר שצמוד לדבר הנכון."
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            "השאלה: \"According to Dr. Maria Santos, what did her team want to show?\"",
+            "בשאלה יש שם: Dr. Maria Santos. השם הוא הכתובת שלנו בטקסט.",
+            "סורקים ומחפשים את השם. הוא מופיע רק בפסקה II.",
+            "קוראים רק שם — רק סביב השם. שאר הפסקאות לא מעניינות אותנו עכשיו."
+          ]
         }
       ],
+      "rounds": [
+        {
+          "screens": [
+            {
+              "type": "mcq",
+              "prompt": "בשאלה כתוב: \"How many hours a week did the volunteers work?\" מה עושים קודם?",
+              "options": [
+                "סורקים את הטקסט ומחפשים מספר שצמוד ל-hours",
+                "קוראים את הטקסט מההתחלה עד הסוף",
+                "מתרגמים כל מילה בשאלה",
+                "מנחשים לפי ההיגיון"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "בשאלה מופיע השם \"Professor James Wu\". מה זה אומר לנו?",
+              "options": [
+                "שצריך לדעת מי הוא",
+                "שהתשובה נמצאת בפסקה שבה מופיע השם",
+                "שהשאלה קשה במיוחד",
+                "שאין תשובה בטקסט"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"The programme offers free classes three times a week in 12 neighbourhoods.\" — בכמה שכונות?",
+              "options": [
+                "three",
+                "a week",
+                "12",
+                "לא כתוב"
+              ],
+              "correctIndex": 2
+            },
+            {
+              "type": "mcq",
+              "prompt": "למה \"12\" לבד היא לא תשובה מלאה?",
+              "options": [
+                "כי צריך לכתוב את המספר במילים",
+                "כי 12 מספר קטן מדי",
+                "כי המספר בטקסט תמיד שגוי",
+                "כי מספר בלי מה שהוא סופר לא אומר כלום — צריך 12 neighbourhoods"
+              ],
+              "correctIndex": 3
+            },
+            {
+              "type": "mcq",
+              "prompt": "מה נחשב \"שם\" בטקסט באנגלית?",
+              "options": [
+                "אדם, מקום או ארגון — באות גדולה באמצע המשפט",
+                "כל מילה ארוכה",
+                "המילה הראשונה בפסקה",
+                "כל מילה במרכאות"
+              ],
+              "correctIndex": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "s3-l1",
+    "section": "c-3",
+    "titleHe": "מילים: מגנטים לעין — מספרים ושמות",
+    "code": "c.3.2",
+    "required": [
+      "eye_catch_intro"
+    ],
+    "position": {
+      "x": 100,
+      "y": 570
+    },
+    "big": false,
+    "content": {
+      "preface": [],
       "rounds": [
         {
           "screens": [
@@ -207,32 +324,28 @@ export const c3Lessons: LessonNode[] = [
     "id": "s3-l2",
     "section": "c-3",
     "titleHe": "מציאה וסימון — מספרים ושמות",
-    "code": "c.3.2",
+    "code": "c.3.3",
     "required": [
       "s3-l1"
     ],
     "position": {
-      "x": 0,
-      "y": 600
+      "x": 70,
+      "y": 660
     },
     "big": false,
     "content": {
       "preface": [
         {
           "type": "preface",
-          "text": "בסריקה מהירה, שני סוגי פרטים כמעט תמיד מובילים אל התשובה: מספרים ושמות.\n\nמספר = המספר יחד עם מה שהוא סופר: \"2,000 trees\", \"three hours a week\", \"40%\", \"five years\".\nשם = אנשים, מקומות וארגונים: \"Dr. Maria Santos\", \"Greenville\", \"Greenville University\"."
+          "text": "זוכרים: מספרים ושמות הם המגנטים לעין.\n\nעכשיו רק מתאמנים לזהות אותם מהר — קודם בעברית, אחר כך באנגלית. בלי לענות על שאלות. רק לסמן."
         },
         {
           "type": "summary",
           "title": "מה מסמנים",
           "lines": [
-            "מספרים: המספר + שם העצם שצמוד אליו. לדוגמה: 2,000 trees · three hours · 85% · ten years",
-            "שמות: אות גדולה באמצע משפט — אדם, מקום או מוסד. לדוגמה: Dr. Maria Santos · Greenville University · Professor James Wu"
+            "מספר: המספר + שם העצם שצמוד אליו — 45 תלמידים · 2,000 trees · 85%",
+            "שם: אדם, מקום או ארגון — מיכל ברק · Greenville University · Dr. Maria Santos"
           ]
-        },
-        {
-          "type": "preface",
-          "text": "לפניכם הטקסט THE CITY GARDEN PROJECT בשלוש פסקאות. בכל פסקה סמנו את כל המספרים והשמות."
         }
       ],
       "rounds": [
@@ -240,24 +353,88 @@ export const c3Lessons: LessonNode[] = [
           "screens": [
             {
               "type": "mark-all",
-              "instruction": "פסקה I — סמנו את כל המספרים והשמות",
+              "instruction": "סמנו את כל המספרים — יחד עם מה שהם סופרים",
+              "dir": "rtl",
+              "text": "לפני שלוש שנים נפתח בבית הספר מועדון מדע. נרשמו אליו 45 תלמידים, והם נפגשים פעמיים בשבוע.",
+              "correctIndices": [
+                1,
+                2,
+                10,
+                11,
+                14,
+                15
+              ]
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל השמות — אנשים, מקומות וארגונים",
+              "dir": "rtl",
+              "text": "ד״ר נועה לוי מאוניברסיטת חיפה ביקרה בבית הספר, ויחד עם עיריית חיפה פתחה מעבדה חדשה.",
+              "correctIndices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                10,
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "עכשיו יחד: גם מספרים וגם שמות, באותו טקסט."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל המספרים והשמות",
+              "dir": "rtl",
+              "text": "בשנת 2019 פתחה עיריית תל אביב 12 גינות קהילתיות. המנהלת, שרה כהן, מספרת שכ-800 מתנדבים עבדו שם שעתיים בשבוע.",
+              "correctIndices": [
+                0,
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                10,
+                11,
+                13,
+                14,
+                17,
+                18
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "אותו דבר בדיוק, באנגלית. אל תתרגמו — רק סרקו בעיניים."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "פסקה I — סמנו את כל המספרים בלבד",
               "dir": "ltr",
               "text": "Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.",
               "correctIndices": [
                 0,
                 1,
-                6,
                 40,
                 41,
                 44,
                 45,
-                46,
-                51
+                46
               ]
             },
             {
               "type": "mark-all",
-              "instruction": "פסקה II — סמנו את כל המספרים והשמות",
+              "instruction": "פסקה II — סמנו את כל השמות בלבד",
               "dir": "ltr",
               "text": "The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener in less than ten years,\" she explains. Her team worked with more than 300 volunteers from the local community. The volunteers spent an average of three hours a week working in the gardens.",
               "correctIndices": [
@@ -265,13 +442,33 @@ export const c3Lessons: LessonNode[] = [
                 7,
                 8,
                 12,
+                13
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "השלב האחרון: מספרים ושמות יחד, באנגלית."
+            },
+            {
+              "type": "mark-all",
+              "instruction": "סמנו את כל המספרים והשמות",
+              "dir": "ltr",
+              "text": "A new community sports programme in the city of Portland has helped over 4,000 residents become more active over the past two years. The programme offers free fitness classes three times a week in 12 different neighbourhoods.",
+              "correctIndices": [
+                9,
                 13,
-                27,
-                28,
-                37,
-                38,
-                49,
-                50
+                14,
+                21,
+                22,
+                29,
+                30,
+                34,
+                35,
+                36
               ]
             },
             {
@@ -302,33 +499,78 @@ export const c3Lessons: LessonNode[] = [
     "id": "s3-l3",
     "section": "c-3",
     "titleHe": "שימוש במספרים ושמות לניווט",
-    "code": "c.3.3",
+    "code": "c.3.4",
     "required": [
       "s3-l2"
     ],
     "position": {
-      "x": -70,
-      "y": 720
+      "x": 0,
+      "y": 750
     },
     "big": false,
     "content": {
       "preface": [
         {
           "type": "preface",
-          "text": "עד עכשיו סימנתם מספרים ושמות. עכשיו משתמשים בהם כדי לנווט מהר אל התשובה — בלי לקרוא את כל הטקסט."
+          "text": "סימנתם. עכשיו משתמשים.\n\nמכאן יש טקסט ושאלות, והמטרה היא למצוא פרט אחד קטן בטקסט — מהר, בעזרת המגנט שבשאלה."
         },
         {
           "type": "summary",
           "title": "P2 · מספרים   |   P3 · שמות",
           "lines": [
-            "P2 (מספר בשאלה): חפשו את המספר בטקסט ← ודאו שהוא צמוד לדבר הנכון ← זו התשובה",
-            "P3 (שם בשאלה): לכו לפסקה של אותו שם ← קראו רק שם ← אל תקראו פסקאות אחרות"
+            "P2 — מספר בשאלה: מחפשים אותו בטקסט ← בודקים שהוא צמוד לדבר הנכון ← זו התשובה",
+            "P3 — שם בשאלה: הולכים לפסקה של אותו שם ← קוראים רק שם ← לא נוגעים בשאר"
           ]
         }
       ],
       "rounds": [
         {
           "screens": [
+            {
+              "type": "preface",
+              "text": "מתחילים בעברית, כדי שהטכניקה תהיה ברורה לפני שמוסיפים אנגלית."
+            },
+            {
+              "type": "mcq",
+              "prompt": "\"בשנה שעברה נפתחה בעיר מודיעין ספרייה חדשה. הספרנית הראשית, מיכל ברק, מספרת ש-1,200 תלמידים נרשמו אליה בחודש הראשון. הספרייה פתוחה חמישה ימים בשבוע, ומתנדבים מבית הספר התיכון עוזרים בה שלוש שעות בשבוע.\"\n\nכמה תלמידים נרשמו בחודש הראשון?",
+              "options": [
+                "1,200",
+                "חמישה",
+                "שלוש",
+                "לא כתוב בטקסט"
+              ],
+              "correctIndex": 0
+            },
+            {
+              "type": "mcq",
+              "prompt": "לפי מיכל ברק, מה אנחנו לומדים?",
+              "options": [
+                "כמה ימים בשבוע הספרייה פתוחה",
+                "כמה תלמידים נרשמו לספרייה בחודש הראשון",
+                "כמה עולה מנוי לספרייה",
+                "מי בנה את הספרייה"
+              ],
+              "correctIndex": 1
+            },
+            {
+              "type": "mcq",
+              "prompt": "כמה שעות בשבוע עוזרים המתנדבים בספרייה?",
+              "options": [
+                "חמישה ימים",
+                "1,200 שעות",
+                "שלוש שעות",
+                "שעה אחת"
+              ],
+              "correctIndex": 2
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
+              "type": "preface",
+              "text": "אותה טכניקה, טקסט באנגלית. קראו קודם את השאלה, מצאו את המגנט, ורק אז גשו לטקסט."
+            },
             {
               "type": "timed-passage",
               "label": "THE CITY GARDEN PROJECT",
@@ -378,8 +620,20 @@ export const c3Lessons: LessonNode[] = [
               ]
             },
             {
+              "type": "summary",
+              "title": "מה עשינו כאן",
+              "lines": [
+                "שאלות 1 ו-3: מספר בשאלה ← P2, מחפשים את המספר שצמוד לדבר הנכון",
+                "שאלות 2 ו-4: שם בשאלה ← P3, ישר לפסקה שבה מופיע השם"
+              ]
+            }
+          ]
+        },
+        {
+          "screens": [
+            {
               "type": "preface",
-              "text": "אתגר מתוזמן: טקסט חדש, שתי שאלות. השתמשו ב-P2 וב-P3."
+              "text": "עכשיו על הזמן. טקסט קצר, שתי שאלות. אל תקראו הכל — סרקו."
             },
             {
               "type": "timed-passage",

@@ -41,10 +41,10 @@
   "39": "index.svelte.ts",
   "40": "Section 20 · משפטים שעובדים",
   "41": "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה",
-  "42": "exam.svelte.ts",
+  "42": "book/+page.svelte",
   "43": "Section 17 · בנק מילים · חברה וקהילה",
   "44": "Section 21 · מקשרים ומרפאת שגיאות",
-  "45": "book/+page.svelte",
+  "45": "lessons/+page.svelte",
   "46": "Section 16 · עמדת הכותב",
   "47": "Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations",
   "48": "Section 22 · ניהול זמן",
@@ -62,9 +62,10 @@
   "60": "Section 15 · רעיון מרכזי",
   "61": "Section 19 · מקריאה לכתיבה",
   "62": "Section 26 · סימולציה ותיקון",
-  "63": "lessons/+page.svelte",
+  "63": "exam.svelte.ts",
   "64": "guide.md",
-  "65": "@lucide/svelte",
-  "66": "svelte",
-  "67": "I18n"
+  "65": "1",
+  "66": "sectionThemes.ts",
+  "67": "@lucide/svelte",
+  "68": "svelte"
 }

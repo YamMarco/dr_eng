@@ -1,3 +1,3 @@
-
-
-
+- the text written in messsage section is not be extaclty copied and pasted. its just the summary of core message and the context for user, why he needs this skill and lesson.
+- the material can be shared accros the while lessons thats in the same document. prefer to save on token and thinking by using the same text in various shapes( eg, in 1st lesson and orund use just a sentence if possilbe, then as the user progresses give longer parts of it. in the end can use all of it)
+- give a short and non linear id for lessons, preferably section id + short desc of lesson or number . eg, no to 4.c.3.1 | yes to eye_catcher_num_names_1
