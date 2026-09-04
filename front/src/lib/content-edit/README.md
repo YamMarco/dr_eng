@@ -11,10 +11,12 @@ straight back into `src/lib/content/c/c-<N>.ts`; Vite HMR reloads it.
   immediately; edits need **שמור מסך**.
 - `preface`, `mcq`, `steps` get proper little forms (steps entries are
   drag-to-reorder via the ⠿ handle); every other type gets a raw-JSON textarea.
-- Prose fields (preface / steps / summary text) support basic inline markdown
-  — `**bold**`, `*italic*`, `` `code` ``, `[text](url)` — rendered at runtime by
-  `src/lib/lesson-screens/miniMarkdown.ts` (that file is NOT part of this
-  detachable folder; it stays even if the editor is removed).
+- `preface` text and `steps` entries edit through `MarkdownInput.svelte` — a
+  tiny WYSIWYG field (B / I / `<>` / 🔗 toolbar, formatting shown rendered) that
+  stores plain markdown. Uses `execCommand` to stay dependency-free.
+- Markdown is `**bold**`, `*italic*`, `` `code` ``, `[text](url)`, rendered at
+  runtime by `src/lib/lesson-screens/miniMarkdown.ts` — that file is NOT part
+  of this detachable folder; it stays even if the editor is removed.
 - The editor keeps its own working copy, so add/delete/edit all show instantly
   even though each save triggers a full HMR reload of `$lib/content`.
 - Files are re-emitted as 2-space JSON (matches the existing snapshot format).

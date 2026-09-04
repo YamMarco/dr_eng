@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
+	import MarkdownInput from './MarkdownInput.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
@@ -51,10 +52,8 @@
 		draft.steps.splice(to, 0, item);
 	}
 
-	// text-styling hint shown under the textarea for prose screen types
-	let mdHint = $derived(
-		draft.type === 'preface' || draft.type === 'steps' || draft.type === 'summary'
-	);
+	// styling hint under the raw-JSON editor for prose types that still use it
+	let mdHint = $derived(draft.type === 'summary' || draft.type === 'question-preview');
 
 	async function save() {
 		let payload: LessonScreen = draft;
@@ -121,12 +120,7 @@
 	</div>
 
 	{#if draft.type === 'preface'}
-		<textarea
-			bind:value={draft.text}
-			rows="6"
-			dir="auto"
-			class="w-full rounded-xl border-2 border-line bg-canvas p-3 text-sm leading-relaxed"
-		></textarea>
+		<MarkdownInput bind:value={draft.text} dir={draft.dir ?? 'auto'} minRows={5} />
 		<label class="mt-2 flex items-center gap-2 text-xs text-muted">
 			כיוון
 			<select bind:value={draft.dir} class="rounded-lg border-2 border-line bg-canvas px-2 py-1">
@@ -135,7 +129,6 @@
 				<option value="ltr">ltr</option>
 			</select>
 		</label>
-		<p class="mt-2 text-xs text-muted" dir="ltr">**bold** · *italic* · `code` · [text](url)</p>
 	{:else if draft.type === 'mcq'}
 		<textarea
 			bind:value={draft.prompt}
@@ -208,12 +201,9 @@
 					⠿
 				</button>
 				<span class="mt-2 text-xs font-bold text-muted">{si + 1}.</span>
-				<textarea
-					bind:value={draft.steps[si]}
-					rows="2"
-					dir="auto"
-					class="w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
-				></textarea>
+				<div class="w-full">
+					<MarkdownInput bind:value={draft.steps[si]} minRows={2} />
+				</div>
 				<button
 					type="button"
 					class="mt-2 px-1 text-xs text-danger"
@@ -230,9 +220,6 @@
 		>
 			+ הוסף שלב
 		</button>
-		{#if mdHint}
-			<p class="mt-2 text-xs text-muted" dir="ltr">**bold** · *italic* · `code` · [text](url)</p>
-		{/if}
 	{:else}
 		<textarea
 			bind:value={raw}
