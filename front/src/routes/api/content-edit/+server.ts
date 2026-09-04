@@ -1,4 +1,4 @@
-// Dev-only endpoint: overwrite one screen inside a content file.
+// Dev-only endpoint: set / insert / delete one screen inside a content file.
 // Part of the detachable in-app editor (see src/lib/content-edit/README.md).
 import { dev } from '$app/environment';
 import { error, json } from '@sveltejs/kit';
@@ -17,13 +17,14 @@ type Body = {
 	/** 'preface' or a round index. */
 	bucket: 'preface' | number;
 	index: number;
-	screen: unknown;
+	op?: 'set' | 'insert' | 'delete';
+	screen?: unknown;
 };
 
 export const POST: RequestHandler = async ({ request }) => {
 	if (!dev) throw error(403, 'content-edit is dev-only');
 
-	const { lessonId, bucket, index, screen } = (await request.json()) as Body;
+	const { lessonId, bucket, index, op = 'set', screen } = (await request.json()) as Body;
 
 	const meta = getLesson(lessonId);
 	if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
@@ -44,10 +45,20 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const list =
 		bucket === 'preface' ? lesson.content.preface : lesson.content.rounds?.[bucket]?.screens;
-	if (!Array.isArray(list) || index < 0 || index >= list.length)
-		throw error(400, `no screen at ${String(bucket)}[${index}]`);
+	if (!Array.isArray(list)) throw error(400, `no screen list at ${String(bucket)}`);
 
-	list[index] = screen;
+	if (op === 'delete') {
+		if (index < 0 || index >= list.length) throw error(400, `bad index ${index}`);
+		list.splice(index, 1);
+	} else if (op === 'insert') {
+		if (screen == null) throw error(400, 'insert needs a screen');
+		if (index < 0 || index > list.length) throw error(400, `bad index ${index}`);
+		list.splice(index, 0, screen);
+	} else {
+		if (screen == null) throw error(400, 'set needs a screen');
+		if (index < 0 || index >= list.length) throw error(400, `bad index ${index}`);
+		list[index] = screen;
+	}
 
 	// Rewrite the file, preserving its header verbatim (everything up to the
 	// opening `[` of the array literal). Body is re-emitted as 2-space JSON to

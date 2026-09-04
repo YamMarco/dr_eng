@@ -1,23 +1,26 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
-	import type { LessonNode } from '$lib/content';
+	import { SCREEN_TYPES, blankScreen } from './screenSkeletons';
+	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
-		lesson,
+		screen,
 		bucket,
 		index,
-		screen
+		onSave,
+		onDelete
 	}: {
-		lesson: LessonNode;
-		bucket: 'preface' | number;
-		index: number;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		screen: any;
+		bucket: 'preface' | number;
+		index: number;
+		onSave: (screen: LessonScreen) => Promise<void>;
+		onDelete: () => Promise<void>;
 	} = $props();
 
-	// A plain, mutable clone — never touch the live content module object.
-	// The parent keys each form by (bucket, index), so `screen` is fixed for
+	// A plain, mutable clone — never touch the live content object. The parent
+	// remounts every form on any structural change, so `screen` is fixed for
 	// this instance's lifetime; only its initial value matters here.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let draft = $state<any>(untrack(() => JSON.parse(JSON.stringify(screen))));
@@ -30,8 +33,14 @@
 
 	let hasForm = $derived(draft.type === 'preface' || draft.type === 'mcq');
 
+	function changeType(type: LessonScreen['type']) {
+		draft = blankScreen(type);
+		raw = JSON.stringify(draft, null, 2);
+		jsonError = '';
+	}
+
 	async function save() {
-		let payload: unknown = draft;
+		let payload: LessonScreen = draft;
 		if (!hasForm) {
 			try {
 				payload = JSON.parse(raw);
@@ -45,14 +54,20 @@
 		status = 'saving';
 		errorMsg = '';
 		try {
-			const res = await fetch('/api/content-edit', {
-				method: 'POST',
-				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify({ lessonId: lesson.id, bucket, index, screen: payload })
-			});
-			if (!res.ok) throw new Error(await res.text());
+			await onSave(payload);
 			status = 'saved';
 			setTimeout(() => (status = 'idle'), 2500);
+		} catch (e) {
+			status = 'error';
+			errorMsg = e instanceof Error ? e.message : String(e);
+		}
+	}
+
+	async function remove() {
+		if (!confirm(`למחוק את המסך "${draft.type}" [${index}]?`)) return;
+		status = 'saving';
+		try {
+			await onDelete();
 		} catch (e) {
 			status = 'error';
 			errorMsg = e instanceof Error ? e.message : String(e);
@@ -62,12 +77,26 @@
 
 <div class="mb-3 rounded-2xl bg-surface p-4 ring-1 ring-line/70">
 	<div class="mb-2 flex items-center justify-between gap-2">
-		<span class="text-xs font-bold text-muted" dir="ltr">{draft.type} · [{index}]</span>
-		{#if status === 'saved'}
-			<span class="text-xs font-bold text-brand">נשמר ✓</span>
-		{:else if status === 'error'}
-			<span class="text-xs font-bold text-danger">שגיאה</span>
-		{/if}
+		<select
+			value={draft.type}
+			onchange={(e) => changeType(e.currentTarget.value as LessonScreen['type'])}
+			aria-label="סוג מסך"
+			class="rounded-lg border-2 border-line bg-canvas px-2 py-1 text-xs font-bold"
+			dir="ltr"
+		>
+			{#each SCREEN_TYPES as t (t)}
+				<option value={t}>{t}</option>
+			{/each}
+		</select>
+		<div class="flex items-center gap-2">
+			<span class="text-xs text-muted" dir="ltr">[{index}]</span>
+			{#if status === 'saved'}
+				<span class="text-xs font-bold text-brand">נשמר ✓</span>
+			{:else if status === 'error'}
+				<span class="text-xs font-bold text-danger">שגיאה</span>
+			{/if}
+			<button type="button" onclick={remove} class="px-1 text-xs font-semibold text-danger">מחק</button>
+		</div>
 	</div>
 
 	{#if draft.type === 'preface'}
@@ -118,7 +147,11 @@
 				</button>
 			</div>
 		{/each}
-		<button type="button" class="text-xs font-semibold text-brand" onclick={() => draft.options.push('')}>
+		<button
+			type="button"
+			class="text-xs font-semibold text-brand"
+			onclick={() => draft.options.push('')}
+		>
 			+ הוסף אופציה
 		</button>
 	{:else}
