@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { FlaskConical } from '@lucide/svelte';
+	import { FlaskConical, Pencil } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
+	import LessonEditor from '$lib/content-edit/LessonEditor.svelte';
+	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
@@ -238,6 +240,9 @@
 		{ type: 'spell-word', word: 'butterfly', mode: 'listen' }
 	];
 	let vocabTestOpen = $state(false);
+
+	// Dev-only in-app content editor (src/lib/content-edit/) — detachable.
+	let editingLesson = $state<LessonNode | null>(null);
 </script>
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
@@ -366,6 +371,18 @@
 									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
 							</Button>
 							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.code}</p>
+							{#if editStore.enabled}
+								<button
+									type="button"
+									onclick={() => {
+										editingLesson = node.lesson;
+										openLabelId = null;
+									}}
+									class="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-dashed border-ink/40 px-3 py-1.5 text-xs font-semibold text-ink/70"
+								>
+									<Pencil size={14} aria-hidden="true" /> ערוך תוכן
+								</button>
+							{/if}
 						</div>
 					{/if}
 				</div>
@@ -385,6 +402,25 @@
 	>
 		<FlaskConical size={22} aria-hidden="true" />
 	</button>
+{/if}
+
+{#if editStore.available}
+	<!-- Dev-only: toggle in-app content editing. Detachable — see
+	     src/lib/content-edit/README.md. -->
+	<button
+		type="button"
+		onclick={() => editStore.toggle()}
+		title="עריכת תוכן במקום (דיבוג)"
+		class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed shadow-lg transition active:scale-95 {editStore.enabled
+			? 'border-brand bg-brand text-white'
+			: 'border-ink/40 bg-surface text-ink/60'}"
+	>
+		<Pencil size={22} aria-hidden="true" />
+	</button>
+{/if}
+
+{#if editingLesson}
+	<LessonEditor lesson={editingLesson} onClose={() => (editingLesson = null)} />
 {/if}
 
 {#if vocabTestOpen}
