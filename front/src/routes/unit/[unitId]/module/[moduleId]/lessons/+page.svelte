@@ -3,7 +3,6 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import LessonEditor from '$lib/content-edit/LessonEditor.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
-	import { screenPathsForRound } from '$lib/content-edit/screenPath';
 	import { checkContentEditPassword, rememberContentEditPassword } from '$lib/content-edit/api';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
@@ -44,13 +43,6 @@
 		/** No scored questions at all. Shown bigger. */
 		isBig: boolean;
 	};
-
-	/** The screens actually played for a round: round 0 is prefixed with the
-	    lesson's one-time teaching preface; later rounds are practice-only. */
-	function screensForRound(lesson: LessonNode, roundIndex: number): LessonScreen[] {
-		const round = lesson.content.rounds[roundIndex]?.screens ?? [];
-		return roundIndex === 0 ? [...lesson.content.preface, ...round] : round;
-	}
 
 	/** No screens written yet anywhere — the node still shows (title only) but never unlocks. */
 	function hasContent(lesson: LessonNode): boolean {
@@ -168,20 +160,6 @@
 	let activeRoundIndex = $state(0);
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
-	let activeRoundScreens = $derived(
-		activeNode ? screensForRound(activeNode.lesson, activeRoundIndex) : []
-	);
-	// Lets LessonRunner's dev-only edit button save straight back to the
-	// right (bucket, index) in the lesson's content — see content-edit/.
-	let activeRoundScreenPaths = $derived(
-		activeNode
-			? screenPathsForRound(
-					activeNode.lesson.content.preface.length,
-					activeRoundIndex,
-					activeNode.lesson.content.rounds[activeRoundIndex]?.screens.length ?? 0
-				)
-			: []
-	);
 
 	// "Continue to next lesson" only makes sense within the same section's
 	// authored order — a node feeding into another section (e.g. a
@@ -478,9 +456,8 @@
 	     just handing the same runner instance a new `lesson` prop. -->
 	{#key activeId}
 		<LessonRunner
-			screens={activeRoundScreens}
-			screenPaths={activeRoundScreenPaths}
-			lessonId={activeNode.lesson.id}
+			lesson={activeNode.lesson}
+			roundIndex={activeRoundIndex}
 			lessonLabel={totalRounds(activeNode) > 1
 				? `${activeNode.lesson.titleHe} — ${i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))}`
 				: activeNode.lesson.titleHe}

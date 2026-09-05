@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
-	import { dev } from '$app/environment';
 	import Button from '$lib/components/Button.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
@@ -13,7 +12,7 @@
 		lessonId,
 		bucket,
 		index,
-		onSave,
+		onApply,
 		onDelete
 	}: {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,8 +21,10 @@
 		lessonId?: string;
 		bucket: 'preface' | number;
 		index: number;
-		onSave: (screen: LessonScreen) => Promise<void>;
-		onDelete: () => Promise<void>;
+		/** Writes this screen into the shared lesson-wide draft — purely local,
+		    no network. The big "save the lesson" button is what actually persists. */
+		onApply: (screen: LessonScreen) => void;
+		onDelete: () => void;
 	} = $props();
 
 	let location = $derived(formatScreenLocation(lessonId, { bucket, index }));
@@ -45,8 +46,7 @@
 	let raw = $state(untrack(() => JSON.stringify(screen, null, 2)));
 	let jsonError = $state('');
 
-	let status = $state<'idle' | 'saving' | 'saved' | 'error'>('idle');
-	let errorMsg = $state('');
+	let status = $state<'idle' | 'applied' | 'error'>('idle');
 
 	let hasForm = $derived(
 		draft.type === 'preface' || draft.type === 'mcq' || draft.type === 'steps'
@@ -71,7 +71,7 @@
 	// styling hint under the raw-JSON editor for prose types that still use it
 	let mdHint = $derived(draft.type === 'summary' || draft.type === 'question-preview');
 
-	async function save() {
+	function apply() {
 		let payload: LessonScreen = draft;
 		if (!hasForm) {
 			try {
@@ -79,31 +79,18 @@
 				jsonError = '';
 			} catch (e) {
 				jsonError = e instanceof Error ? e.message : String(e);
+				status = 'error';
 				return;
 			}
 		}
-
-		status = 'saving';
-		errorMsg = '';
-		try {
-			await onSave(payload);
-			status = 'saved';
-			setTimeout(() => (status = 'idle'), 2500);
-		} catch (e) {
-			status = 'error';
-			errorMsg = e instanceof Error ? e.message : String(e);
-		}
+		onApply(payload);
+		status = 'applied';
+		setTimeout(() => (status = 'idle'), 2000);
 	}
 
-	async function remove() {
+	function remove() {
 		if (!confirm(`למחוק את המסך "${draft.type}" [${index}]?`)) return;
-		status = 'saving';
-		try {
-			await onDelete();
-		} catch (e) {
-			status = 'error';
-			errorMsg = e instanceof Error ? e.message : String(e);
-		}
+		onDelete();
 	}
 </script>
 
@@ -136,10 +123,8 @@
 			{/each}
 		</select>
 		<div class="flex items-center gap-2">
-			{#if status === 'saved'}
-				<span class="text-xs font-bold text-brand">{dev ? 'נשמר ✓' : 'נשמר, בפריסה… (כדקה)'}</span>
-			{:else if status === 'error'}
-				<span class="text-xs font-bold text-danger">שגיאה</span>
+			{#if status === 'applied'}
+				<span class="text-xs font-bold text-brand">✓ עודכן</span>
 			{/if}
 			<button type="button" onclick={remove} class="px-1 text-xs font-semibold text-danger">מחק</button>
 		</div>
@@ -265,11 +250,6 @@
 	{/if}
 
 	<div class="mt-3">
-		<Button onclick={save} disabled={status === 'saving'}>
-			{status === 'saving' ? 'שומר…' : 'שמור מסך'}
-		</Button>
+		<Button onclick={apply}>עדכן טיוטה</Button>
 	</div>
-	{#if status === 'error'}
-		<p class="mt-1 text-xs text-danger" dir="ltr">{errorMsg}</p>
-	{/if}
 </div>

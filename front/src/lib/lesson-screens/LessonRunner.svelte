@@ -10,20 +10,22 @@
 	import { debugStore } from '$lib/debug.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import ScreenForm from '$lib/content-edit/ScreenForm.svelte';
-	import { formatScreenLocation, type ScreenPath } from '$lib/content-edit/screenPath';
+	import { formatScreenLocation, screenPathsForRound, screensForRound } from '$lib/content-edit/screenPath';
 	import { copyText } from '$lib/content-edit/clipboard';
-	import { saveContentEdit } from '$lib/content-edit/api';
+	import { saveLessonContent } from '$lib/content-edit/api';
+	import type { LessonNode } from '$lib/content';
 	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
 
 	type Props = {
-		/** One round's worth of screens (see the lessons path page — a lesson can have several rounds). */
-		screens: LessonScreen[];
-		/** Same length/order as `screens` — where each one lives in the lesson's content.
-		    Only given when the caller also passes `lessonId`; powers the live edit button (gated by editStore.available). */
-		screenPaths?: ScreenPath[];
-		lessonId?: string;
+		/** Used as-is when `lesson` isn't given (e.g. the debug vocab-test runner, which has no editable content). */
+		screens?: LessonScreen[];
+		/** When given (with `roundIndex`), the runner derives its own screens from
+		    the lesson's content and enables live editing — add/edit/delete without
+		    leaving this view, one lesson-wide save. */
+		lesson?: LessonNode;
+		roundIndex?: number;
 		lessonLabel: string;
 		hasNextLesson: boolean;
 		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
@@ -35,9 +37,9 @@
 	};
 
 	let {
-		screens: allScreens,
-		screenPaths: allScreenPaths,
-		lessonId,
+		screens: staticScreens,
+		lesson,
+		roundIndex,
 		lessonLabel,
 		hasNextLesson,
 		onExit,
@@ -46,6 +48,29 @@
 	}: Props = $props();
 
 	const session = createLessonSession();
+
+	// Local, mutable working copy of the lesson's content. Nothing here
+	// touches the server until the "save lesson" button is pressed — one save
+	// = one commit, however many screens were edited/added/removed meanwhile.
+	// Editing this instead of re-deriving from `lesson` each time means
+	// add/delete render immediately without leaving this view.
+	let draftContent = $state(
+		untrack(() => (lesson ? structuredClone(lesson.content) : undefined))
+	);
+	let dirty = $state(false);
+
+	let allScreens = $derived(
+		lesson && draftContent ? screensForRound(draftContent, roundIndex ?? 0) : (staticScreens ?? [])
+	);
+	let allScreenPaths = $derived(
+		lesson && draftContent
+			? screenPathsForRound(
+					draftContent.preface.length,
+					roundIndex ?? 0,
+					draftContent.rounds[roundIndex ?? 0]?.screens.length ?? 0
+				)
+			: undefined
+	);
 
 	// A screen left with no real content (empty message, no options, ...) is
 	// skipped entirely rather than shown blank. Kept indices are carried over
@@ -56,7 +81,9 @@
 	let screens = $derived(keptIndices.map((i) => allScreens[i]));
 	let screenPaths = $derived(allScreenPaths ? keptIndices.map((i) => allScreenPaths![i]) : undefined);
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are
-	// answered — never a growing denominator like 1/1, 1/2, 2/3.
+	// answered — never a growing denominator like 1/1, 1/2, 2/3. (Editing the
+	// round's scored screens away mid-preview can make this stale — an
+	// acceptable edge case for an authoring action, not real play.)
 	const totalQuestions = untrack(() =>
 		screens.reduce((sum, screen) => sum + countQuestions(screen), 0)
 	);
@@ -80,9 +107,15 @@
 	// page), so only the initial emptiness matters here.
 	let justFinished = $state(untrack(() => screens.length === 0));
 
+	// Deleting the currently-viewed screen shifts the list under us — stay in
+	// place (clamped) instead of exiting to the node map.
+	$effect(() => {
+		if (screens.length > 0 && screenIndex >= screens.length) screenIndex = screens.length - 1;
+	});
+
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
-	let currentLocation = $derived(currentPath ? formatScreenLocation(lessonId, currentPath) : undefined);
+	let currentLocation = $derived(currentPath ? formatScreenLocation(lesson?.id, currentPath) : undefined);
 	let locationCopied = $state(false);
 
 	async function copyLocation() {
@@ -96,20 +129,64 @@
 	// Edit the screen currently on-screen without leaving the runner (gated
 	// by editStore.available). See src/lib/content-edit/README.md.
 	let editSheetOpen = $state(false);
+	let saveState = $state<'idle' | 'saving' | 'saved' | 'error'>('idle');
+	let saveError = $state('');
 
-	async function saveCurrentScreen(next: LessonScreen) {
-		if (!lessonId || !currentPath) return;
-		await saveContentEdit({ lessonId, ...currentPath, op: 'set', screen: next });
+	function applyCurrentScreen(next: LessonScreen) {
+		if (!draftContent || !currentPath) return;
+		const list =
+			currentPath.bucket === 'preface'
+				? draftContent.preface
+				: draftContent.rounds[currentPath.bucket].screens;
+		list[currentPath.index] = next;
+		dirty = true;
+		saveState = 'idle';
 	}
 
-	async function deleteCurrentScreen() {
-		if (!lessonId || !currentPath) return;
-		await saveContentEdit({ lessonId, ...currentPath, op: 'delete' });
-		// The round's screen list just shifted under us — safest is to leave
-		// rather than keep playing with a stale index.
+	function deleteCurrentScreen() {
+		if (!draftContent || !currentPath) return;
+		const list =
+			currentPath.bucket === 'preface'
+				? draftContent.preface
+				: draftContent.rounds[currentPath.bucket].screens;
+		list.splice(currentPath.index, 1);
+		dirty = true;
+		saveState = 'idle';
 		editSheetOpen = false;
-		onExit();
 	}
+
+	async function saveDraft() {
+		if (!lesson || !draftContent) return;
+		saveState = 'saving';
+		saveError = '';
+		try {
+			await saveLessonContent(lesson.id, draftContent);
+			dirty = false;
+			saveState = 'saved';
+		} catch (e) {
+			saveState = 'error';
+			saveError = e instanceof Error ? e.message : String(e);
+		}
+	}
+
+	function confirmDiscard(): boolean {
+		return !dirty || confirm('יש שינויים שלא נשמרו בשיעור. לצאת בכל זאת?');
+	}
+	function guardedExit() {
+		if (confirmDiscard()) onExit();
+	}
+	function guardedFinish() {
+		if (confirmDiscard()) onFinish();
+	}
+	function guardedFinishAndContinue() {
+		if (confirmDiscard()) onFinishAndContinue();
+	}
+	function handleBeforeUnload(e: BeforeUnloadEvent) {
+		if (!dirty) return;
+		e.preventDefault();
+		e.returnValue = '';
+	}
+
 	let isLastScreen = $derived(screenIndex === screens.length - 1);
 	let ScreenComponent = $derived(currentScreen ? screenComponents[currentScreen.type] : undefined);
 	let primaryLabel = $derived(
@@ -137,8 +214,10 @@
 	}
 </script>
 
+<svelte:window onbeforeunload={handleBeforeUnload} />
+
 <div class="fixed inset-0 z-50 flex flex-col bg-canvas">
-	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel} />
+	<AppBar title={lessonLabel} onback={guardedExit} backLabel={i18n.dict.lesson.exitLabel} />
 
 	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-6 pb-6">
 		{#if justFinished}
@@ -211,14 +290,14 @@
 			{#if justFinished}
 				{#if passed}
 					{#if hasNextLesson}
-						<Button onclick={onFinishAndContinue}>{i18n.dict.lesson.continueNextLesson}</Button>
+						<Button onclick={guardedFinishAndContinue}>{i18n.dict.lesson.continueNextLesson}</Button>
 					{/if}
-					<Button variant={hasNextLesson ? 'secondary' : 'primary'} onclick={onFinish}>
+					<Button variant={hasNextLesson ? 'secondary' : 'primary'} onclick={guardedFinish}>
 						{i18n.dict.lesson.backToPath}
 					</Button>
 				{:else}
 					<Button onclick={retry}>{i18n.dict.lesson.retryButton}</Button>
-					<Button variant="secondary" onclick={onExit}>{i18n.dict.lesson.backToPath}</Button>
+					<Button variant="secondary" onclick={guardedExit}>{i18n.dict.lesson.backToPath}</Button>
 				{/if}
 			{:else}
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
@@ -249,7 +328,33 @@
 			>
 				✏️
 			</button>
+			{#if dirty}
+				<button
+					type="button"
+					onclick={saveDraft}
+					disabled={saveState === 'saving'}
+					title="שמור שינויים בשיעור"
+					class="flex h-9 items-center justify-center rounded-full bg-brand px-3 text-xs font-bold text-white shadow-lg transition active:scale-95 disabled:opacity-60"
+				>
+					{saveState === 'saving' ? '…' : '💾 שמור'}
+				</button>
+			{/if}
 		</div>
+	{/if}
+
+	{#if saveState === 'saved'}
+		<p
+			class="absolute inset-x-4 bottom-40 z-10 rounded-xl bg-brand-soft px-3 py-2 text-center text-xs font-semibold text-brand-dark shadow-lg"
+		>
+			השינויים נשלחו. המתן כדקה ורענן את הדף כדי לראות אותם.
+		</p>
+	{:else if saveState === 'error'}
+		<p
+			class="absolute inset-x-4 bottom-40 z-10 rounded-xl bg-danger-soft px-3 py-2 text-center text-xs font-semibold text-danger"
+			dir="ltr"
+		>
+			{saveError}
+		</p>
 	{/if}
 
 	{#if debugStore.enabled && !justFinished}
@@ -288,10 +393,10 @@
 			{#key screenIndex}
 				<ScreenForm
 					screen={currentScreen}
-					{lessonId}
+					lessonId={lesson?.id}
 					bucket={currentPath.bucket}
 					index={currentPath.index}
-					onSave={saveCurrentScreen}
+					onApply={applyCurrentScreen}
 					onDelete={deleteCurrentScreen}
 				/>
 			{/key}

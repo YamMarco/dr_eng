@@ -1,6 +1,8 @@
 // Thin wrapper around the content-edit endpoints: attaches the unlocked
 // session's password (see editStore.svelte.ts) to every write, since the
 // production backend requires it on each request (dev doesn't check it).
+import type { LessonContent } from '$lib/content';
+
 const KEY_STORAGE = 'content-edit-key';
 
 function storedKey(): string | null {
@@ -29,13 +31,11 @@ export function rememberContentEditPassword(password: string) {
 	}
 }
 
-export async function saveContentEdit(body: {
-	lessonId: string;
-	bucket: 'preface' | number;
-	index: number;
-	op?: 'set' | 'insert' | 'delete';
-	screen?: unknown;
-}): Promise<{ ok: true; committed: boolean }> {
+/** Replaces a lesson's whole content (preface + all rounds) in one write/commit. */
+export async function saveLessonContent(
+	lessonId: string,
+	content: LessonContent
+): Promise<{ ok: true; committed: boolean }> {
 	const key = storedKey();
 	const res = await fetch('/api/content-edit', {
 		method: 'POST',
@@ -43,7 +43,7 @@ export async function saveContentEdit(body: {
 			'content-type': 'application/json',
 			...(key ? { 'x-content-edit-key': key } : {})
 		},
-		body: JSON.stringify(body)
+		body: JSON.stringify({ lessonId, content })
 	});
 	if (!res.ok) throw new Error(await res.text());
 	return res.json();
