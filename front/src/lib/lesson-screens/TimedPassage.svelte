@@ -91,7 +91,7 @@
 		{((now - startedAt) / 1000).toFixed(1)}s
 	</span>
 </div>
-<p class="mt-4 leading-relaxed">{screen.text}</p>
+<p class="mt-4 leading-relaxed whitespace-pre-line">{screen.text}</p>
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}

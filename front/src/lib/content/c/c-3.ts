@@ -52,15 +52,18 @@ export const c3Lessons: LessonNode[] = [
           ]
         },
         {
-          "type": "passage-quiz",
-          "text": "Every year, students take part in a special community project. They help clean parks, visit elderly people, and collect food for families in need. Last year, a student named Daniel suggested collecting books for children as well.\n\nThe idea became very popular. More than 300 books were collected in only two weeks, and they were given to children in several local schools. The teachers decided to repeat the project again this year.",
-          "questions": [
-            {
-              "prompt": "What did Daniel suggest collecting?",
-              "keywords": ["books"],
-              "answerHint": "Books for children"
-            }
-          ]
+          "type": "preface",
+          "text": "בואו נתרגל: קטע קצר, ואז שאלה.\n\nEvery year, students take part in a special community project. They help clean parks, visit elderly people, and collect food for families in need. Last year, a student named Daniel suggested collecting books for children as well.\n\nThe idea became very popular. More than 300 books were collected in only two weeks, and they were given to children in several local schools. The teachers decided to repeat the project again this year."
+        },
+        {
+          "type": "mcq",
+          "prompt": "What did Daniel suggest collecting?",
+          "options": [
+            "Books for children",
+            "Food for families",
+            "Clothes for the elderly"
+          ],
+          "correctIndex": 0
         }
       ],
       "rounds": [
@@ -70,7 +73,7 @@ export const c3Lessons: LessonNode[] = [
               "type": "mcq",
               "prompt": "בשאלה כתוב: \"How many hours a week did the volunteers work?\" מה עושים קודם?",
               "options": [
-                "סורקים את הטקסט ומחפשים מספר שצמוד ל-hours",
+                "מחפשים בטקסט את כל המספרים, ואז בוחרים את זה שצמוד למילה hours",
                 "קוראים את הטקסט מההתחלה עד הסוף",
                 "מתרגמים כל מילה בשאלה",
                 "מנחשים לפי ההיגיון"
@@ -90,7 +93,7 @@ export const c3Lessons: LessonNode[] = [
             },
             {
               "type": "mcq",
-              "prompt": "\"The programme offers free classes three times a week in 12 neighbourhoods.\" — בכמה שכונות?",
+              "prompt": "בטקסט כתוב: \"The programme offers free classes three times a week in 12 neighbourhoods.\" בכמה שכונות?",
               "options": [
                 "three",
                 "a week",
@@ -114,7 +117,7 @@ export const c3Lessons: LessonNode[] = [
               "type": "mcq",
               "prompt": "מה נחשב \"שם\" בטקסט באנגלית?",
               "options": [
-                "אדם, מקום או ארגון — באות גדולה באמצע המשפט",
+                "אדם, מקום או ארגון — מילה או כמה מילים שמתחילות באות גדולה (Dr. Maria Santos, Greenville)",
                 "כל מילה ארוכה",
                 "המילה הראשונה בפסקה",
                 "כל מילה במרכאות"

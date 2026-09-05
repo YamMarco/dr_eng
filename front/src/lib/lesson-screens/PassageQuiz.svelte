@@ -63,7 +63,7 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
-<p class="leading-relaxed" dir="ltr">{screen.text}</p>
+<p class="leading-relaxed whitespace-pre-line" dir="ltr">{screen.text}</p>
 
 <div class="mt-6 flex flex-col gap-5">
 	{#each screen.questions as question, i (i)}

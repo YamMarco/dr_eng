@@ -236,7 +236,7 @@
 				onclick={() => navigator.clipboard?.writeText(currentLocation ?? '')}
 				title="העתק מזהה מסך"
 				dir="ltr"
-				class="max-w-36 truncate rounded-full bg-ink/80 px-2 py-1.5 font-mono text-[10px] text-white shadow-lg"
+				class="max-w-[70vw] truncate rounded-full bg-ink/80 px-3 py-1.5 font-mono text-xs font-semibold text-white shadow-lg"
 			>
 				{currentLocation}
 			</button>

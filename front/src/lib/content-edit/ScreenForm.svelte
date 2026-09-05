@@ -103,7 +103,7 @@
 			type="button"
 			onclick={() => navigator.clipboard?.writeText(location)}
 			title="העתק מזהה מסך"
-			class="truncate text-start font-mono text-[11px] text-muted hover:text-ink"
+			class="truncate text-start font-mono text-sm font-semibold text-muted hover:text-ink"
 			dir="ltr"
 		>
 			{location}

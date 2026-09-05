@@ -290,19 +290,6 @@
       "source_location": "L15"
     },
     {
-      "id": "front_src_lib_i18n_index_svelte_i18n",
-      "label": "I18n",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "index.svelte.ts",
-      "file_type": "code",
-      "norm_label": "i18n",
-      "source_file": "front/src/lib/i18n/index.svelte.ts",
-      "source_location": "L34"
-    },
-    {
       "id": "front_src_lib_i18n_index_svelte_language",
       "label": "Language",
       "_callable": true,
@@ -381,19 +368,6 @@
       "source_location": "L13"
     },
     {
-      "id": "front_src_lib_exam_svelte_examsession",
-      "label": "ExamSession",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "examsession",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L8"
-    },
-    {
       "id": "front_src_lib_lesson_screens_session_svelte_lessonsession",
       "label": "LessonSession",
       "_callable": true,
@@ -413,7 +387,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "editstore",
       "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
@@ -426,50 +400,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "screenpath",
       "source_file": "front/src/lib/content-edit/screenPath.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "front_src_lib_debug_svelte_debugstore",
-      "label": "DebugStore",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "debugstore",
-      "source_file": "front/src/lib/debug.svelte.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore",
-      "label": "LessonProgressStore",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "lessonprogressstore",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_progressmap",
-      "label": "ProgressMap",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "progressmap",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L14"
     },
     {
       "id": "front_src_lib_sectionthemes_sectiontheme",
@@ -478,11 +413,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "sectiontheme",
       "source_file": "front/src/lib/sectionThemes.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_debug_svelte_debugstore",
+      "label": "DebugStore",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "debugstore",
+      "source_file": "front/src/lib/debug.svelte.ts",
+      "source_location": "L14"
     },
     {
       "id": "front_src_lib_lesson_screens_types_lessonscreen",
@@ -496,6 +444,58 @@
       "norm_label": "lessonscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
       "source_location": "L145"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore",
+      "label": "LessonProgressStore",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": "lessonprogressstore",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_progressmap",
+      "label": "ProgressMap",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": "progressmap",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession",
+      "label": "ExamSession",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": "examsession",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_i18n",
+      "label": "I18n",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "I18n",
+      "file_type": "code",
+      "norm_label": "i18n",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L34"
     },
     {
       "id": "front_src_lib_lesson_screens_markall_i",
@@ -570,18 +570,6 @@
       "source_location": "L27"
     },
     {
-      "id": "front_src_lib_lesson_screens_timedpassage_oi",
-      "label": "oi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "score.svelte.ts",
-      "file_type": "code",
-      "norm_label": "oi()",
-      "source_file": "front/src/lib/lesson-screens/TimedPassage.svelte",
-      "source_location": "L104"
-    },
-    {
       "id": "front_src_lib_content_index_getlesson",
       "label": "getLesson()",
       "_callable": true,
@@ -616,30 +604,6 @@
       "norm_label": "post()",
       "source_file": "front/src/routes/api/content-edit/+server.ts",
       "source_location": "L24"
-    },
-    {
-      "id": "front_src_lib_i18n_index_svelte_i18n_dict",
-      "label": ".dict()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "index.svelte.ts",
-      "file_type": "code",
-      "norm_label": ".dict()",
-      "source_file": "front/src/lib/i18n/index.svelte.ts",
-      "source_location": "L37"
-    },
-    {
-      "id": "front_src_lib_i18n_index_svelte_i18n_setlanguage",
-      "label": ".setLanguage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "index.svelte.ts",
-      "file_type": "code",
-      "norm_label": ".setlanguage()",
-      "source_file": "front/src/lib/i18n/index.svelte.ts",
-      "source_location": "L41"
     },
     {
       "id": "front_src_lib_i18n_index_svelte_loadinitiallanguage",
@@ -690,198 +654,6 @@
       "source_location": "L35"
     },
     {
-      "id": "front_src_lib_exam_svelte_examsession_finish",
-      "label": ".finish()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".finish()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_examsession_reset",
-      "label": ".reset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".reset()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_examsession_start",
-      "label": ".start()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".start()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_examsession_stopticking",
-      "label": ".stopTicking()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".stopticking()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L52"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_examsession_tick",
-      "label": ".#tick()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".#tick()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_examsession_warning",
-      "label": ".warning()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": ".warning()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_formattime",
-      "label": "formatTime()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "formattime()",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L60"
-    },
-    {
-      "id": "front_src_routes_book_page_chip",
-      "label": "chip()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "chip()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L77"
-    },
-    {
-      "id": "front_src_routes_book_page_daydisabled",
-      "label": "dayDisabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "daydisabled()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L36"
-    },
-    {
-      "id": "front_src_routes_book_page_i",
-      "label": "i()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "i()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L164"
-    },
-    {
-      "id": "front_src_routes_book_page_pickday",
-      "label": "pickDay()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "pickday()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L47"
-    },
-    {
-      "id": "front_src_routes_book_page_reset",
-      "label": "reset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "reset()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L65"
-    },
-    {
-      "id": "front_src_routes_book_page_sameday",
-      "label": "sameDay()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "sameday()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L39"
-    },
-    {
-      "id": "front_src_routes_book_page_shiftmonth",
-      "label": "shiftMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "shiftmonth()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L42"
-    },
-    {
-      "id": "front_src_routes_book_page_submit",
-      "label": "submit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "submit()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L62"
-    },
-    {
-      "id": "front_src_routes_book_page_toggletopic",
-      "label": "toggleTopic()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "toggletopic()",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L51"
-    },
-    {
       "id": "front_src_routes_unit_unitid_layout_load",
       "label": "load()",
       "_callable": true,
@@ -904,18 +676,6 @@
       "norm_label": "load()",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/+layout.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_minimarkdown_mdinline",
-      "label": "mdInline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "mdinline()",
-      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
-      "source_location": "L16"
     },
     {
       "id": "front_src_lib_lesson_screens_session_svelte_createlessonsession",
@@ -966,48 +726,12 @@
       "source_location": "L53"
     },
     {
-      "id": "front_src_lib_components_navbar_bookicon",
-      "label": "bookIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "bookicon()",
-      "source_file": "front/src/lib/components/NavBar.svelte",
-      "source_location": "L99"
-    },
-    {
-      "id": "front_src_lib_components_navbar_each",
-      "label": "#each()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front/src/lib/components/NavBar.svelte",
-      "source_location": "L87"
-    },
-    {
-      "id": "front_src_lib_components_navbar_homeicon",
-      "label": "homeIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "homeicon()",
-      "source_file": "front/src/lib/components/NavBar.svelte",
-      "source_location": "L97"
-    },
-    {
       "id": "front_src_lib_content_edit_editstore_svelte_editstore_toggle",
       "label": ".toggle()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": ".toggle()",
       "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
@@ -1019,119 +743,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "screenpathsforround()",
       "source_file": "front/src/lib/content-edit/screenPath.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "front_src_lib_debug_svelte_debugstore_setenabled",
-      "label": ".setEnabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".setenabled()",
-      "source_file": "front/src/lib/debug.svelte.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "front_src_lib_debug_svelte_debugstore_setunlockall",
-      "label": ".setUnlockAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".setunlockall()",
-      "source_file": "front/src/lib/debug.svelte.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "front_src_lib_debug_svelte_loadbool",
-      "label": "loadBool()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "loadbool()",
-      "source_file": "front/src/lib/debug.svelte.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_completedrounds",
-      "label": ".completedRounds()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".completedrounds()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_iscompleted",
-      "label": ".isCompleted()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".iscompleted()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_markroundcompleted",
-      "label": ".markRoundCompleted()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".markroundcompleted()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_resetall",
-      "label": ".resetAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": ".resetall()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L52"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_persist",
-      "label": "persist()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "persist()",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L26"
     },
     {
       "id": "front_src_lib_sectionthemes_themeforsectionindex",
@@ -1139,7 +755,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "themeforsectionindex()",
       "source_file": "front/src/lib/sectionThemes.ts",
@@ -1206,6 +822,198 @@
       "source_location": "L167"
     },
     {
+      "id": "front_src_routes_book_page_chip",
+      "label": "chip()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "chip()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L77"
+    },
+    {
+      "id": "front_src_routes_book_page_daydisabled",
+      "label": "dayDisabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "daydisabled()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L36"
+    },
+    {
+      "id": "front_src_routes_book_page_i",
+      "label": "i()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "i()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L164"
+    },
+    {
+      "id": "front_src_routes_book_page_pickday",
+      "label": "pickDay()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "pickday()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L47"
+    },
+    {
+      "id": "front_src_routes_book_page_reset",
+      "label": "reset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "reset()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L65"
+    },
+    {
+      "id": "front_src_routes_book_page_sameday",
+      "label": "sameDay()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "sameday()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L39"
+    },
+    {
+      "id": "front_src_routes_book_page_shiftmonth",
+      "label": "shiftMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "shiftmonth()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L42"
+    },
+    {
+      "id": "front_src_routes_book_page_submit",
+      "label": "submit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "submit()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L62"
+    },
+    {
+      "id": "front_src_routes_book_page_toggletopic",
+      "label": "toggleTopic()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "toggletopic()",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L51"
+    },
+    {
+      "id": "front_src_lib_components_navbar_bookicon",
+      "label": "bookIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "bookicon()",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L99"
+    },
+    {
+      "id": "front_src_lib_components_navbar_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L87"
+    },
+    {
+      "id": "front_src_lib_components_navbar_homeicon",
+      "label": "homeIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "homeicon()",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L97"
+    },
+    {
+      "id": "front_src_lib_debug_svelte_debugstore_setenabled",
+      "label": ".setEnabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".setenabled()",
+      "source_file": "front/src/lib/debug.svelte.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "front_src_lib_debug_svelte_debugstore_setunlockall",
+      "label": ".setUnlockAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".setunlockall()",
+      "source_file": "front/src/lib/debug.svelte.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "front_src_lib_debug_svelte_loadbool",
+      "label": "loadBool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "loadbool()",
+      "source_file": "front/src/lib/debug.svelte.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_formattime",
+      "label": "formatTime()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "formattime()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L60"
+    },
+    {
       "id": "front_src_lib_content_edit_lessoneditor_await",
       "label": "await()",
       "_callable": true,
@@ -1227,7 +1035,7 @@
       "file_type": "code",
       "norm_label": "insertrow()",
       "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L97"
+      "source_location": "L98"
     },
     {
       "id": "front_src_lib_content_edit_screenform_changetype",
@@ -1239,7 +1047,7 @@
       "file_type": "code",
       "norm_label": "changetype()",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L39"
+      "source_location": "L47"
     },
     {
       "id": "front_src_lib_content_edit_screenform_movestep",
@@ -1251,7 +1059,7 @@
       "file_type": "code",
       "norm_label": "movestep()",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L49"
+      "source_location": "L57"
     },
     {
       "id": "front_src_lib_content_edit_screenform_remove",
@@ -1263,7 +1071,7 @@
       "file_type": "code",
       "norm_label": "remove()",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L82"
+      "source_location": "L90"
     },
     {
       "id": "front_src_lib_content_edit_screenform_save",
@@ -1275,7 +1083,7 @@
       "file_type": "code",
       "norm_label": "save()",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L58"
+      "source_location": "L66"
     },
     {
       "id": "front_src_lib_content_edit_screenskeletons_blankscreen",
@@ -1288,6 +1096,198 @@
       "norm_label": "blankscreen()",
       "source_file": "front/src/lib/content-edit/screenSkeletons.ts",
       "source_location": "L22"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_timedpassage_oi",
+      "label": "oi()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 69,
+      "community_name": "ScreenForm.svelte",
+      "file_type": "code",
+      "norm_label": "oi()",
+      "source_file": "front/src/lib/lesson-screens/TimedPassage.svelte",
+      "source_location": "L104"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_completedrounds",
+      "label": ".completedRounds()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".completedrounds()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_iscompleted",
+      "label": ".isCompleted()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".iscompleted()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_markroundcompleted",
+      "label": ".markRoundCompleted()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".markroundcompleted()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore_resetall",
+      "label": ".resetAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".resetall()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_src_lib_lessonprogress_svelte_persist",
+      "label": "persist()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": "persist()",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_minimarkdown_mdinline",
+      "label": "mdInline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "mdinline()",
+      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_finish",
+      "label": ".finish()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".finish()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_reset",
+      "label": ".reset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".reset()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_start",
+      "label": ".start()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".start()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_stopticking",
+      "label": ".stopTicking()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".stopticking()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_tick",
+      "label": ".#tick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".#tick()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "front_src_lib_exam_svelte_examsession_warning",
+      "label": ".warning()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "ExamSession",
+      "file_type": "code",
+      "norm_label": ".warning()",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_i18n_dict",
+      "label": ".dict()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "I18n",
+      "file_type": "code",
+      "norm_label": ".dict()",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "front_src_lib_i18n_index_svelte_i18n_setlanguage",
+      "label": ".setLanguage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "I18n",
+      "file_type": "code",
+      "norm_label": ".setlanguage()",
+      "source_file": "front/src/lib/i18n/index.svelte.ts",
+      "source_location": "L41"
     },
     {
       "id": "front_package_devdependencies",
@@ -2675,6 +2675,61 @@
       "source_location": "L1"
     },
     {
+      "id": "docs_module_c_duolingo_program_4_c_1_1_\u05d7\u05de\u05e9_\u05d4\u05de\u05d9\u05dc\u05d9\u05dd_\u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea_\u05db\u05dc_\u05e9\u05d0\u05dc\u05d4",
+      "label": "4.c.1.1 \u00b7 \u05d7\u05de\u05e9 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea \u05db\u05dc \u05e9\u05d0\u05dc\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.1.1 \u00b7 \u05d7\u05de\u05e9 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea \u05db\u05dc \u05e9\u05d0\u05dc\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L142"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_1_2_\u05db\u05dc_\u05de\u05d9\u05dc\u05d4_\u05dc\u05d0\u05df_\u05d4\u05d9\u05d0_\u05e9\u05d5\u05dc\u05d7\u05ea_\u05d0\u05d5\u05ea\u05d9",
+      "label": "4.c.1.2 \u00b7 \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u2014 \u05dc\u05d0\u05df \u05d4\u05d9\u05d0 \u05e9\u05d5\u05dc\u05d7\u05ea \u05d0\u05d5\u05ea\u05d9",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.1.2 \u00b7 \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u2014 \u05dc\u05d0\u05df \u05d4\u05d9\u05d0 \u05e9\u05d5\u05dc\u05d7\u05ea \u05d0\u05d5\u05ea\u05d9",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L160"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_1_3_\u05ea\u05e9\u05d5\u05d1\u05d4_\u05d0\u05d7\u05ea_\u05d0\u05d9\u05e0\u05d4_\u05e8\u05e9\u05d9\u05de\u05d4",
+      "label": "4.c.1.3 \u00b7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05d0\u05d7\u05ea \u05d0\u05d9\u05e0\u05d4 \u05e8\u05e9\u05d9\u05de\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.1.3 \u00b7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05d0\u05d7\u05ea \u05d0\u05d9\u05e0\u05d4 \u05e8\u05e9\u05d9\u05de\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L182"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_1_4_\u05de\u05d4_\u05de\u05d5\u05ea\u05e8_\u05dc\u05d4\u05d1\u05d9\u05d0_\u05de\u05d4\u05e8\u05d0\u05e9",
+      "label": "4.c.1.4 \u00b7 \u05de\u05d4 \u05de\u05d5\u05ea\u05e8 \u05dc\u05d4\u05d1\u05d9\u05d0 \u05de\u05d4\u05e8\u05d0\u05e9",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.1.4 \u00b7 \u05de\u05d4 \u05de\u05d5\u05ea\u05e8 \u05dc\u05d4\u05d1\u05d9\u05d0 \u05de\u05d4\u05e8\u05d0\u05e9",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L199"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_1_5_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_1",
+      "label": "4.c.1.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 1",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.1.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 1",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L220"
+    },
+    {
       "id": "docs_module_c_duolingo_program_4_c_2_1_\u05db\u05de\u05d4_\u05d1\u05d0\u05de\u05ea_\u05e6\u05e8\u05d9\u05da_\u05dc\u05e7\u05e8\u05d5\u05d0",
       "label": "4.c.2.1 \u00b7 \u05db\u05de\u05d4 \u05d1\u05d0\u05de\u05ea \u05e6\u05e8\u05d9\u05da \u05dc\u05e7\u05e8\u05d5\u05d0",
       "_origin": "ast",
@@ -2763,6 +2818,171 @@
       "source_location": "L334"
     },
     {
+      "id": "docs_module_c_duolingo_program_4_c_3_1_\u05d0\u05e8\u05d1\u05e2_\u05de\u05e9\u05e4\u05d7\u05d5\u05ea_\u05d4_eye_catchers",
+      "label": "4.c.3.1 \u00b7 \u05d0\u05e8\u05d1\u05e2 \u05de\u05e9\u05e4\u05d7\u05d5\u05ea \u05d4-Eye Catchers",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.1 \u00b7 \u05d0\u05e8\u05d1\u05e2 \u05de\u05e9\u05e4\u05d7\u05d5\u05ea \u05d4-eye catchers",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L345"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_2_\u05de\u05e1\u05e4\u05e8_\u05e1\u05e4\u05e8\u05d4_\u05e9\u05dd_\u05e2\u05e6\u05dd",
+      "label": "4.c.3.2 \u00b7 \u05de\u05e1\u05e4\u05e8 = \u05e1\u05e4\u05e8\u05d4 + \u05e9\u05dd \u05e2\u05e6\u05dd",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.2 \u00b7 \u05de\u05e1\u05e4\u05e8 = \u05e1\u05e4\u05e8\u05d4 + \u05e9\u05dd \u05e2\u05e6\u05dd",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L361"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_3_\u05d2\u05dd_\u05de\u05d9\u05dc\u05d9\u05dd_\u05d4\u05df_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "label": "4.c.3.3 \u00b7 \u05d2\u05dd \u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05df \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.3 \u00b7 \u05d2\u05dd \u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05df \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L383"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_4_\u05dc\u05db\u05dc_\u05de\u05e1\u05e4\u05e8_\u05d9\u05e9_\u05d1\u05e2\u05dc\u05d9\u05dd",
+      "label": "4.c.3.4 \u00b7 \u05dc\u05db\u05dc \u05de\u05e1\u05e4\u05e8 \u05d9\u05e9 \u05d1\u05e2\u05dc\u05d9\u05dd",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.4 \u00b7 \u05dc\u05db\u05dc \u05de\u05e1\u05e4\u05e8 \u05d9\u05e9 \u05d1\u05e2\u05dc\u05d9\u05dd",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L395"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_5_p2_\u05de\u05e1\u05e4\u05e8_\u05d1\u05e9\u05d0\u05dc\u05d4",
+      "label": "4.c.3.5 \u00b7 P2 \u2014 \u05de\u05e1\u05e4\u05e8 \u05d1\u05e9\u05d0\u05dc\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.5 \u00b7 p2 \u2014 \u05de\u05e1\u05e4\u05e8 \u05d1\u05e9\u05d0\u05dc\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L415"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_6_\u05de\u05e1\u05e4\u05e8_\u05d0\u05de\u05d9\u05ea\u05d9_\u05d4\u05e7\u05e9\u05e8_\u05e9\u05d2\u05d5\u05d9",
+      "label": "4.c.3.6 \u00b7 \u05de\u05e1\u05e4\u05e8 \u05d0\u05de\u05d9\u05ea\u05d9, \u05d4\u05e7\u05e9\u05e8 \u05e9\u05d2\u05d5\u05d9",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.6 \u00b7 \u05de\u05e1\u05e4\u05e8 \u05d0\u05de\u05d9\u05ea\u05d9, \u05d4\u05e7\u05e9\u05e8 \u05e9\u05d2\u05d5\u05d9",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L431"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_3_7_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_3",
+      "label": "4.c.3.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 3",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.3.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 3",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L447"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_1_\u05de\u05d4_\u05e0\u05d7\u05e9\u05d1_\u05e9\u05dd",
+      "label": "4.c.4.1 \u00b7 \u05de\u05d4 \u05e0\u05d7\u05e9\u05d1 \u05e9\u05dd",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.1 \u00b7 \u05de\u05d4 \u05e0\u05d7\u05e9\u05d1 \u05e9\u05dd",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L459"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_2_\u05e1\u05d9\u05de\u05d5\u05df_\u05e9\u05dd_\u05d1\u05de\u05e9\u05e4\u05d8",
+      "label": "4.c.4.2 \u00b7 \u05e1\u05d9\u05de\u05d5\u05df \u05e9\u05dd \u05d1\u05de\u05e9\u05e4\u05d8",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.2 \u00b7 \u05e1\u05d9\u05de\u05d5\u05df \u05e9\u05dd \u05d1\u05de\u05e9\u05e4\u05d8",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L471"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_3_\u05d8\u05d1\u05dc\u05ea_\u05e9\u05dd_\u05e4\u05e1\u05e7\u05d4",
+      "label": "4.c.4.3 \u00b7 \u05d8\u05d1\u05dc\u05ea \u05e9\u05dd \u2190 \u05e4\u05e1\u05e7\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.3 \u00b7 \u05d8\u05d1\u05dc\u05ea \u05e9\u05dd \u2190 \u05e4\u05e1\u05e7\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L487"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_4_p3_\u05dc\u05e7\u05e8\u05d5\u05d0_\u05e8\u05e7_\u05d0\u05e6\u05dc\u05d5",
+      "label": "4.c.4.4 \u00b7 P3 \u2014 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05e8\u05e7 \u05d0\u05e6\u05dc\u05d5",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.4 \u00b7 p3 \u2014 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05e8\u05e7 \u05d0\u05e6\u05dc\u05d5",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L503"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_5_\u05de\u05d9_\u05d0\u05de\u05e8_\u05de\u05d4",
+      "label": "4.c.4.5 \u00b7 \u05de\u05d9 \u05d0\u05de\u05e8 \u05de\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.5 \u00b7 \u05de\u05d9 \u05d0\u05de\u05e8 \u05de\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L520"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_6_\u05e9\u05dd_\u05d5\u05de\u05e1\u05e4\u05e8_\u05d1\u05d0\u05d5\u05ea\u05d4_\u05e9\u05d0\u05dc\u05d4",
+      "label": "4.c.4.6 \u00b7 \u05e9\u05dd \u05d5\u05de\u05e1\u05e4\u05e8 \u05d1\u05d0\u05d5\u05ea\u05d4 \u05e9\u05d0\u05dc\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.6 \u00b7 \u05e9\u05dd \u05d5\u05de\u05e1\u05e4\u05e8 \u05d1\u05d0\u05d5\u05ea\u05d4 \u05e9\u05d0\u05dc\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L538"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_4_c_4_7_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_4",
+      "label": "4.c.4.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "4.c.4.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L548"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_section_1_\u05dc\u05e4\u05e2\u05e0\u05d7_\u05d0\u05ea_\u05d4\u05e9\u05d0\u05dc\u05d4",
+      "label": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L137"
+    },
+    {
       "id": "docs_module_c_duolingo_program_section_2_p1_\u05dc\u05d0_\u05e7\u05d5\u05e8\u05d0\u05d9\u05dd_\u05d0\u05ea_\u05d4\u05d8\u05e7\u05e1\u05d8",
       "label": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
       "_origin": "ast",
@@ -2772,6 +2992,39 @@
       "norm_label": "section 2 \u00b7 p1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
       "source_file": "docs/module c/duolingo-program.md",
       "source_location": "L226"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_section_3_eye_catchers_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "label": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "section 3 \u00b7 eye catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L340"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_section_4_eye_catchers_\u05e9\u05de\u05d5\u05ea",
+      "label": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "section 4 \u00b7 eye catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L455"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d1_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_1_4_\u05dc\u05e4\u05e2\u05e0\u05d7_\u05d0\u05ea_\u05d4\u05e9\u05d0\u05dc\u05d4_p1_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd_\u05e9\u05de\u05d5\u05ea",
+      "label": "\u05d7\u05dc\u05e7 \u05d1\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 1\u20134: \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4, P1, \u05de\u05e1\u05e4\u05e8\u05d9\u05dd, \u05e9\u05de\u05d5\u05ea",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Section 2 \u00b7 P1 \u2014 \u05dc\u05d0 \u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05d0\u05ea \u05d4\u05d8\u05e7\u05e1\u05d8",
+      "file_type": "document",
+      "norm_label": "\u05d7\u05dc\u05e7 \u05d1\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 1\u20134: \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4, p1, \u05de\u05e1\u05e4\u05e8\u05d9\u05dd, \u05e9\u05de\u05d5\u05ea",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L135"
     },
     {
       "id": "front_src_lib_lesson_screens_exercisekindbadge",
@@ -2870,17 +3123,6 @@
       "file_type": "code",
       "norm_label": "spellword.svelte",
       "source_file": "front/src/lib/lesson-screens/SpellWord.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_timedpassage",
-      "label": "TimedPassage.svelte",
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "score.svelte.ts",
-      "file_type": "code",
-      "norm_label": "timedpassage.svelte",
-      "source_file": "front/src/lib/lesson-screens/TimedPassage.svelte",
       "source_location": "L1"
     },
     {
@@ -3817,14 +4059,14 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_lesson_screens_lessonrunner",
-      "label": "LessonRunner.svelte",
+      "id": "front_src_lib_lesson_screens_wordcard",
+      "label": "WordCard.svelte",
       "_origin": "ast",
       "community": 39,
       "community_name": "index.svelte.ts",
       "file_type": "code",
-      "norm_label": "lessonrunner.svelte",
-      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte",
+      "norm_label": "wordcard.svelte",
+      "source_file": "front/src/lib/lesson-screens/WordCard.svelte",
       "source_location": "L1"
     },
     {
@@ -3861,39 +4103,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_components_button",
-      "label": "Button.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "button.svelte",
-      "source_file": "front/src/lib/components/Button.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_components_sheet",
-      "label": "Sheet.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "sheet.svelte",
-      "source_file": "front/src/lib/components/Sheet.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_components_timer",
-      "label": "Timer.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "timer.svelte",
-      "source_file": "front/src/lib/components/Timer.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_lib_curriculum",
       "label": "curriculum.ts",
       "_origin": "ast",
@@ -3903,17 +4112,6 @@
       "norm_label": "curriculum.ts",
       "source_file": "front/src/lib/curriculum.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_curriculum_exam_minutes",
-      "label": "EXAM_MINUTES",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "exam_minutes",
-      "source_file": "front/src/lib/curriculum.ts",
-      "source_location": "L43"
     },
     {
       "id": "front_src_lib_curriculum_modules",
@@ -3971,105 +4169,6 @@
       "source_location": "L21"
     },
     {
-      "id": "front_src_lib_exam_svelte",
-      "label": "exam.svelte.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "exam.svelte.ts",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_exam",
-      "label": "exam",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "exam",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L58"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_exam_seconds",
-      "label": "EXAM_SECONDS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "exam_seconds",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "front_src_lib_exam_svelte_warning_seconds",
-      "label": "WARNING_SECONDS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "warning_seconds",
-      "source_file": "front/src/lib/exam.svelte.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "front_src_routes_book_page",
-      "label": "book/+page.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "book/+page.svelte",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_book_page_cangoprev",
-      "label": "canGoPrev",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "cangoprev",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L31"
-    },
-    {
-      "id": "front_src_routes_book_page_cansubmit",
-      "label": "canSubmit",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "cansubmit",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L57"
-    },
-    {
-      "id": "front_src_routes_book_page_formatteddate",
-      "label": "formattedDate",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "formatteddate",
-      "source_file": "front/src/routes/book/+page.svelte",
-      "source_location": "L58"
-    },
-    {
-      "id": "front_src_routes_error",
-      "label": "+error.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "+error.svelte",
-      "source_file": "front/src/routes/+error.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_routes_page",
       "label": "routes/+page.svelte",
       "_origin": "ast",
@@ -4089,28 +4188,6 @@
       "file_type": "code",
       "norm_label": "[unitid]/+layout.ts",
       "source_file": "front/src/routes/unit/[unitId]/+layout.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_module_moduleid_exam_page",
-      "label": "exam/+page.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "exam/+page.svelte",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_module_moduleid_exam_run_page",
-      "label": "run/+page.svelte",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "curriculum.ts",
-      "file_type": "code",
-      "norm_label": "run/+page.svelte",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -4239,7 +4316,7 @@
       "label": "duolingo-program.md",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "duolingo-program.md",
       "source_file": "docs/module c/duolingo-program.md",
@@ -4250,7 +4327,7 @@
       "label": "Module C \u2014 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05dc\u05d9\u05de\u05d5\u05d3 \u05de\u05dc\u05d0\u05d4 (v3)",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "module c \u2014 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05dc\u05d9\u05de\u05d5\u05d3 \u05de\u05dc\u05d0\u05d4 (v3)",
       "source_file": "docs/module c/duolingo-program.md",
@@ -4261,7 +4338,7 @@
       "label": "nodes \u05d4\u05d7\u05d6\u05e8\u05d4",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "nodes \u05d4\u05d7\u05d6\u05e8\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
@@ -4272,29 +4349,29 @@
       "label": "\u05d4\u05e2\u05e8\u05d5\u05ea \u05de\u05d9\u05de\u05d5\u05e9",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "\u05d4\u05e2\u05e8\u05d5\u05ea \u05de\u05d9\u05de\u05d5\u05e9",
       "source_file": "docs/module c/duolingo-program.md",
       "source_location": "L2176"
     },
     {
-      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d3_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_10_16_\u05e1\u05d5\u05d2\u05d9_\u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
-      "label": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d4_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_17_26_\u05d0\u05d5\u05e6\u05e8_\u05de\u05d9\u05dc\u05d9\u05dd_\u05db\u05ea\u05d9\u05d1\u05d4_\u05d6\u05de\u05df_\u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "label": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
-      "norm_label": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "norm_label": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L892"
+      "source_location": "L1390"
     },
     {
       "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d5_\u05d7\u05d6\u05e8\u05d4_\u05de\u05e8\u05d5\u05d5\u05d7\u05ea_\u05de\u05d9\u05e4\u05d5\u05d9_\u05d5\u05d4\u05e2\u05e8\u05d5\u05ea_\u05de\u05d9\u05de\u05d5\u05e9",
       "label": "\u05d7\u05dc\u05e7 \u05d5\u05f3 \u2014 \u05d7\u05d6\u05e8\u05d4 \u05de\u05e8\u05d5\u05d5\u05d7\u05ea, \u05de\u05d9\u05e4\u05d5\u05d9, \u05d5\u05d4\u05e2\u05e8\u05d5\u05ea \u05de\u05d9\u05de\u05d5\u05e9",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "\u05d7\u05dc\u05e7 \u05d5\u05f3 \u2014 \u05d7\u05d6\u05e8\u05d4 \u05de\u05e8\u05d5\u05d5\u05d7\u05ea, \u05de\u05d9\u05e4\u05d5\u05d9, \u05d5\u05d4\u05e2\u05e8\u05d5\u05ea \u05de\u05d9\u05de\u05d5\u05e9",
       "source_file": "docs/module c/duolingo-program.md",
@@ -4305,55 +4382,11 @@
       "label": "\u05de\u05d9\u05e4\u05d5\u05d9 \u05dc\u05ea\u05d5\u05db\u05df \u05d4\u05e7\u05d9\u05d9\u05dd \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4",
       "_origin": "ast",
       "community": 41,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
       "file_type": "document",
       "norm_label": "\u05de\u05d9\u05e4\u05d5\u05d9 \u05dc\u05ea\u05d5\u05db\u05df \u05d4\u05e7\u05d9\u05d9\u05dd \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
       "source_location": "L2168"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_minimarkdown",
-      "label": "miniMarkdown.ts",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "minimarkdown.ts",
-      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_minimarkdown_escape",
-      "label": "ESCAPE",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "escape",
-      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_preface",
-      "label": "Preface.svelte",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "preface.svelte",
-      "source_file": "front/src/lib/lesson-screens/Preface.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_questionpreview",
-      "label": "QuestionPreview.svelte",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "questionpreview.svelte",
-      "source_file": "front/src/lib/lesson-screens/QuestionPreview.svelte",
-      "source_location": "L1"
     },
     {
       "id": "front_src_lib_lesson_screens_registry",
@@ -4400,28 +4433,6 @@
       "source_location": "L7"
     },
     {
-      "id": "front_src_lib_lesson_screens_steps",
-      "label": "Steps.svelte",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "steps.svelte",
-      "source_file": "front/src/lib/lesson-screens/Steps.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_summary",
-      "label": "Summary.svelte",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "summary.svelte",
-      "source_file": "front/src/lib/lesson-screens/Summary.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_lib_lesson_screens_timecomparison",
       "label": "TimeComparison.svelte",
       "_origin": "ast",
@@ -4430,6 +4441,17 @@
       "file_type": "code",
       "norm_label": "timecomparison.svelte",
       "source_file": "front/src/lib/lesson-screens/TimeComparison.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_timedpassage",
+      "label": "TimedPassage.svelte",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "timedpassage.svelte",
+      "source_file": "front/src/lib/lesson-screens/TimedPassage.svelte",
       "source_location": "L1"
     },
     {
@@ -4452,17 +4474,6 @@
       "file_type": "code",
       "norm_label": "timeresult.svelte",
       "source_file": "front/src/lib/lesson-screens/TimeResult.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_wordcard",
-      "label": "WordCard.svelte",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "wordcard.svelte",
-      "source_file": "front/src/lib/lesson-screens/WordCard.svelte",
       "source_location": "L1"
     },
     {
@@ -5104,47 +5115,14 @@
       "source_location": "L1901"
     },
     {
-      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_types",
-      "label": "./$types",
+      "id": "front_src_lib_components_button",
+      "label": "Button.svelte",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "confidence": "EXTRACTED",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/$types"
-    },
-    {
-      "id": "reactivity",
-      "label": "svelte/reactivity",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "svelte/reactivity",
-      "source_file": "svelte/reactivity"
-    },
-    {
-      "id": "front_src_lib_components_debugtooltip",
-      "label": "DebugTooltip.svelte",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "debugtooltip.svelte",
-      "source_file": "front/src/lib/components/DebugTooltip.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_components_navbar",
-      "label": "NavBar.svelte",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "navbar.svelte",
-      "source_file": "front/src/lib/components/NavBar.svelte",
+      "norm_label": "button.svelte",
+      "source_file": "front/src/lib/components/Button.svelte",
       "source_location": "L1"
     },
     {
@@ -5152,7 +5130,7 @@
       "label": "editStore.svelte.ts",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "editstore.svelte.ts",
       "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
@@ -5163,51 +5141,29 @@
       "label": "screenPath.ts",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "screenpath.ts",
       "source_file": "front/src/lib/content-edit/screenPath.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_debug_svelte",
-      "label": "debug.svelte.ts",
+      "id": "front_src_lib_lesson_screens_lessonrunner",
+      "label": "LessonRunner.svelte",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": "debug.svelte.ts",
-      "source_file": "front/src/lib/debug.svelte.ts",
+      "norm_label": "lessonrunner.svelte",
+      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte",
       "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte",
-      "label": "lessonProgress.svelte.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "lessonprogress.svelte.ts",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lessonprogress_svelte_lessonprogress",
-      "label": "lessonProgress",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "lessons/+page.svelte",
-      "file_type": "code",
-      "norm_label": "lessonprogress",
-      "source_file": "front/src/lib/lessonProgress.svelte.ts",
-      "source_location": "L58"
     },
     {
       "id": "front_src_lib_sectionthemes",
       "label": "sectionThemes.ts",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "sectionthemes.ts",
       "source_file": "front/src/lib/sectionThemes.ts",
@@ -5218,21 +5174,21 @@
       "label": "PALETTE",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "palette",
       "source_file": "front/src/lib/sectionThemes.ts",
       "source_location": "L13"
     },
     {
-      "id": "front_src_routes_layout",
-      "label": "+layout.svelte",
+      "id": "front_src_routes_error",
+      "label": "+error.svelte",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": "+layout.svelte",
-      "source_file": "front/src/routes/+layout.svelte",
+      "norm_label": "+error.svelte",
+      "source_file": "front/src/routes/+error.svelte",
       "source_location": "L1"
     },
     {
@@ -5240,7 +5196,7 @@
       "label": "lessons/+page.svelte",
       "_origin": "ast",
       "community": 5,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "LessonRunner.svelte",
       "file_type": "code",
       "norm_label": "lessons/+page.svelte",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
@@ -5976,7 +5932,7 @@
       "label": "4.c.12.1 \u00b7 \u05dc\u05d6\u05d4\u05d5\u05ea \u05d0\u05ea \u05d4\u05e4\u05d5\u05e8\u05de\u05d8",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "4.c.12.1 \u00b7 \u05dc\u05d6\u05d4\u05d5\u05ea \u05d0\u05ea \u05d4\u05e4\u05d5\u05e8\u05de\u05d8",
       "source_file": "docs/module c/duolingo-program.md",
@@ -5987,7 +5943,7 @@
       "label": "4.c.12.2 \u00b7 P11 \u2014 \u05de\u05e6\u05d0\u05ea \u05d0\u05d7\u05ea, \u05d4\u05de\u05e9\u05da \u05dc\u05d7\u05e4\u05e9",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "4.c.12.2 \u00b7 p11 \u2014 \u05de\u05e6\u05d0\u05ea \u05d0\u05d7\u05ea, \u05d4\u05de\u05e9\u05da \u05dc\u05d7\u05e4\u05e9",
       "source_file": "docs/module c/duolingo-program.md",
@@ -5998,7 +5954,7 @@
       "label": "4.c.12.3 \u00b7 \u05d4\u05d5\u05db\u05d7\u05d4 \u05e0\u05e4\u05e8\u05d3\u05ea \u05dc\u05db\u05dc \u05d0\u05d7\u05ea",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "4.c.12.3 \u00b7 \u05d4\u05d5\u05db\u05d7\u05d4 \u05e0\u05e4\u05e8\u05d3\u05ea \u05dc\u05db\u05dc \u05d0\u05d7\u05ea",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6009,7 +5965,7 @@
       "label": "4.c.12.4 \u00b7 \u05e9\u05dc\u05d5\u05e9 \u05d4\u05d9\u05d0 \u05d8\u05e2\u05d5\u05ea",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "4.c.12.4 \u00b7 \u05e9\u05dc\u05d5\u05e9 \u05d4\u05d9\u05d0 \u05d8\u05e2\u05d5\u05ea",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6020,7 +5976,7 @@
       "label": "4.c.12.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 12",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "4.c.12.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 12",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6031,11 +5987,22 @@
       "label": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
       "_origin": "ast",
       "community": 57,
-      "community_name": "Section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
       "file_type": "document",
       "norm_label": "section 12 \u00b7 \u05e9\u05ea\u05d9 \u05ea\u05e9\u05d5\u05d1\u05d5\u05ea \u05e0\u05db\u05d5\u05e0\u05d5\u05ea",
       "source_file": "docs/module c/duolingo-program.md",
       "source_location": "L1047"
+    },
+    {
+      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d3_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_10_16_\u05e1\u05d5\u05d2\u05d9_\u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "label": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "_origin": "ast",
+      "community": 57,
+      "community_name": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "file_type": "document",
+      "norm_label": "\u05d7\u05dc\u05e7 \u05d3\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 10\u201316: \u05e1\u05d5\u05d2\u05d9 \u05d4\u05e9\u05d0\u05dc\u05d5\u05ea",
+      "source_file": "docs/module c/duolingo-program.md",
+      "source_location": "L892"
     },
     {
       "id": "docs_module_c_duolingo_program_4_c_13_1_\u05de\u05d9\u05dc\u05d5\u05df_\u05d4\u05d4\u05e4\u05e0\u05d9\u05d4",
@@ -6636,7 +6603,7 @@
       "label": "4.c.19.1 \u00b7 Notice \u2014 \u05de\u05d4 \u05e9\u05d5\u05d5\u05d4 \u05dc\u05e7\u05d7\u05ea",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.1 \u00b7 notice \u2014 \u05de\u05d4 \u05e9\u05d5\u05d5\u05d4 \u05dc\u05e7\u05d7\u05ea",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6647,7 +6614,7 @@
       "label": "4.c.19.2 \u00b7 Understand \u2014 \u05de\u05d4 \u05d6\u05d4 \u05d0\u05d5\u05de\u05e8 \u05db\u05d0\u05df",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.2 \u00b7 understand \u2014 \u05de\u05d4 \u05d6\u05d4 \u05d0\u05d5\u05de\u05e8 \u05db\u05d0\u05df",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6658,7 +6625,7 @@
       "label": "4.c.19.3 \u00b7 Adapt \u2014 \u05dc\u05e7\u05d7\u05ea \u05d0\u05ea \u05d4\u05de\u05d1\u05e0\u05d4",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.3 \u00b7 adapt \u2014 \u05dc\u05e7\u05d7\u05ea \u05d0\u05ea \u05d4\u05de\u05d1\u05e0\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6669,7 +6636,7 @@
       "label": "4.c.19.4 \u00b7 \u05d4\u05e2\u05ea\u05e7\u05d4 \u05d0\u05d9\u05e0\u05d4 \u05d4\u05ea\u05d0\u05de\u05d4",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.4 \u00b7 \u05d4\u05e2\u05ea\u05e7\u05d4 \u05d0\u05d9\u05e0\u05d4 \u05d4\u05ea\u05d0\u05de\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6680,7 +6647,7 @@
       "label": "4.c.19.5 \u00b7 \"according to me\" \u05d0\u05d9\u05e0\u05d5 \u05e7\u05d9\u05d9\u05dd",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.5 \u00b7 \"according to me\" \u05d0\u05d9\u05e0\u05d5 \u05e7\u05d9\u05d9\u05dd",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6691,7 +6658,7 @@
       "label": "4.c.19.6 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 19",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "4.c.19.6 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 19",
       "source_file": "docs/module c/duolingo-program.md",
@@ -6702,22 +6669,11 @@
       "label": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "_origin": "ast",
       "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
+      "community_name": "Section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "file_type": "document",
       "norm_label": "section 19 \u00b7 \u05de\u05e7\u05e8\u05d9\u05d0\u05d4 \u05dc\u05db\u05ea\u05d9\u05d1\u05d4",
       "source_file": "docs/module c/duolingo-program.md",
       "source_location": "L1615"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d4_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_17_26_\u05d0\u05d5\u05e6\u05e8_\u05de\u05d9\u05dc\u05d9\u05dd_\u05db\u05ea\u05d9\u05d1\u05d4_\u05d6\u05de\u05df_\u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
-      "label": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
-      "_origin": "ast",
-      "community": 61,
-      "community_name": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
-      "file_type": "document",
-      "norm_label": "\u05d7\u05dc\u05e7 \u05d4\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 17\u201326: \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd, \u05db\u05ea\u05d9\u05d1\u05d4, \u05d6\u05de\u05df, \u05e1\u05d9\u05de\u05d5\u05dc\u05e6\u05d9\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L1390"
     },
     {
       "id": "docs_module_c_duolingo_program_4_c_26_1_\u05d7\u05e6\u05d9_\u05d1\u05d7\u05d9\u05e0\u05d4_\u05e7\u05e8\u05d9\u05d0\u05d4",
@@ -6797,92 +6753,48 @@
       "source_location": "L2099"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_3_1_\u05d0\u05e8\u05d1\u05e2_\u05de\u05e9\u05e4\u05d7\u05d5\u05ea_\u05d4_eye_catchers",
-      "label": "4.c.3.1 \u00b7 \u05d0\u05e8\u05d1\u05e2 \u05de\u05e9\u05e4\u05d7\u05d5\u05ea \u05d4-Eye Catchers",
+      "id": "front_src_routes_book_page",
+      "label": "book/+page.svelte",
       "_origin": "ast",
       "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.1 \u00b7 \u05d0\u05e8\u05d1\u05e2 \u05de\u05e9\u05e4\u05d7\u05d5\u05ea \u05d4-eye catchers",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L345"
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "book/+page.svelte",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_3_2_\u05de\u05e1\u05e4\u05e8_\u05e1\u05e4\u05e8\u05d4_\u05e9\u05dd_\u05e2\u05e6\u05dd",
-      "label": "4.c.3.2 \u00b7 \u05de\u05e1\u05e4\u05e8 = \u05e1\u05e4\u05e8\u05d4 + \u05e9\u05dd \u05e2\u05e6\u05dd",
+      "id": "front_src_routes_book_page_cangoprev",
+      "label": "canGoPrev",
       "_origin": "ast",
       "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.2 \u00b7 \u05de\u05e1\u05e4\u05e8 = \u05e1\u05e4\u05e8\u05d4 + \u05e9\u05dd \u05e2\u05e6\u05dd",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L361"
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "cangoprev",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L31"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_3_3_\u05d2\u05dd_\u05de\u05d9\u05dc\u05d9\u05dd_\u05d4\u05df_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "label": "4.c.3.3 \u00b7 \u05d2\u05dd \u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05df \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
+      "id": "front_src_routes_book_page_cansubmit",
+      "label": "canSubmit",
       "_origin": "ast",
       "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.3 \u00b7 \u05d2\u05dd \u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05df \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L383"
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "cansubmit",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L57"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_3_4_\u05dc\u05db\u05dc_\u05de\u05e1\u05e4\u05e8_\u05d9\u05e9_\u05d1\u05e2\u05dc\u05d9\u05dd",
-      "label": "4.c.3.4 \u00b7 \u05dc\u05db\u05dc \u05de\u05e1\u05e4\u05e8 \u05d9\u05e9 \u05d1\u05e2\u05dc\u05d9\u05dd",
+      "id": "front_src_routes_book_page_formatteddate",
+      "label": "formattedDate",
       "_origin": "ast",
       "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.4 \u00b7 \u05dc\u05db\u05dc \u05de\u05e1\u05e4\u05e8 \u05d9\u05e9 \u05d1\u05e2\u05dc\u05d9\u05dd",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L395"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_3_5_p2_\u05de\u05e1\u05e4\u05e8_\u05d1\u05e9\u05d0\u05dc\u05d4",
-      "label": "4.c.3.5 \u00b7 P2 \u2014 \u05de\u05e1\u05e4\u05e8 \u05d1\u05e9\u05d0\u05dc\u05d4",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.5 \u00b7 p2 \u2014 \u05de\u05e1\u05e4\u05e8 \u05d1\u05e9\u05d0\u05dc\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L415"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_3_6_\u05de\u05e1\u05e4\u05e8_\u05d0\u05de\u05d9\u05ea\u05d9_\u05d4\u05e7\u05e9\u05e8_\u05e9\u05d2\u05d5\u05d9",
-      "label": "4.c.3.6 \u00b7 \u05de\u05e1\u05e4\u05e8 \u05d0\u05de\u05d9\u05ea\u05d9, \u05d4\u05e7\u05e9\u05e8 \u05e9\u05d2\u05d5\u05d9",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.6 \u00b7 \u05de\u05e1\u05e4\u05e8 \u05d0\u05de\u05d9\u05ea\u05d9, \u05d4\u05e7\u05e9\u05e8 \u05e9\u05d2\u05d5\u05d9",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L431"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_3_7_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_3",
-      "label": "4.c.3.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 3",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "4.c.3.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 3",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L447"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_section_3_eye_catchers_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "label": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "Section 3 \u00b7 Eye Catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "file_type": "document",
-      "norm_label": "section 3 \u00b7 eye catchers \u00b7 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L340"
+      "community_name": "book/+page.svelte",
+      "file_type": "code",
+      "norm_label": "formatteddate",
+      "source_file": "front/src/routes/book/+page.svelte",
+      "source_location": "L58"
     },
     {
       "id": "docs_module_c_myprog_guide",
@@ -7197,169 +7109,158 @@
       "source_location": "L67"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_4_1_\u05de\u05d4_\u05e0\u05d7\u05e9\u05d1_\u05e9\u05dd",
-      "label": "4.c.4.1 \u00b7 \u05de\u05d4 \u05e0\u05d7\u05e9\u05d1 \u05e9\u05dd",
+      "id": "front_src_lib_components_debugtooltip",
+      "label": "DebugTooltip.svelte",
       "_origin": "ast",
       "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.1 \u00b7 \u05de\u05d4 \u05e0\u05d7\u05e9\u05d1 \u05e9\u05dd",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L459"
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "debugtooltip.svelte",
+      "source_file": "front/src/lib/components/DebugTooltip.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_4_2_\u05e1\u05d9\u05de\u05d5\u05df_\u05e9\u05dd_\u05d1\u05de\u05e9\u05e4\u05d8",
-      "label": "4.c.4.2 \u00b7 \u05e1\u05d9\u05de\u05d5\u05df \u05e9\u05dd \u05d1\u05de\u05e9\u05e4\u05d8",
+      "id": "front_src_lib_components_navbar",
+      "label": "NavBar.svelte",
       "_origin": "ast",
       "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.2 \u00b7 \u05e1\u05d9\u05de\u05d5\u05df \u05e9\u05dd \u05d1\u05de\u05e9\u05e4\u05d8",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L471"
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "navbar.svelte",
+      "source_file": "front/src/lib/components/NavBar.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_4_3_\u05d8\u05d1\u05dc\u05ea_\u05e9\u05dd_\u05e4\u05e1\u05e7\u05d4",
-      "label": "4.c.4.3 \u00b7 \u05d8\u05d1\u05dc\u05ea \u05e9\u05dd \u2190 \u05e4\u05e1\u05e7\u05d4",
+      "id": "front_src_lib_debug_svelte",
+      "label": "debug.svelte.ts",
       "_origin": "ast",
       "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.3 \u00b7 \u05d8\u05d1\u05dc\u05ea \u05e9\u05dd \u2190 \u05e4\u05e1\u05e7\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L487"
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "debug.svelte.ts",
+      "source_file": "front/src/lib/debug.svelte.ts",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_4_4_p3_\u05dc\u05e7\u05e8\u05d5\u05d0_\u05e8\u05e7_\u05d0\u05e6\u05dc\u05d5",
-      "label": "4.c.4.4 \u00b7 P3 \u2014 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05e8\u05e7 \u05d0\u05e6\u05dc\u05d5",
+      "id": "front_src_routes_layout",
+      "label": "+layout.svelte",
       "_origin": "ast",
       "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.4 \u00b7 p3 \u2014 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05e8\u05e7 \u05d0\u05e6\u05dc\u05d5",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L503"
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "+layout.svelte",
+      "source_file": "front/src/routes/+layout.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_4_5_\u05de\u05d9_\u05d0\u05de\u05e8_\u05de\u05d4",
-      "label": "4.c.4.5 \u00b7 \u05de\u05d9 \u05d0\u05de\u05e8 \u05de\u05d4",
-      "_origin": "ast",
-      "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.5 \u00b7 \u05de\u05d9 \u05d0\u05de\u05e8 \u05de\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L520"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_4_6_\u05e9\u05dd_\u05d5\u05de\u05e1\u05e4\u05e8_\u05d1\u05d0\u05d5\u05ea\u05d4_\u05e9\u05d0\u05dc\u05d4",
-      "label": "4.c.4.6 \u00b7 \u05e9\u05dd \u05d5\u05de\u05e1\u05e4\u05e8 \u05d1\u05d0\u05d5\u05ea\u05d4 \u05e9\u05d0\u05dc\u05d4",
-      "_origin": "ast",
-      "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.6 \u00b7 \u05e9\u05dd \u05d5\u05de\u05e1\u05e4\u05e8 \u05d1\u05d0\u05d5\u05ea\u05d4 \u05e9\u05d0\u05dc\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L538"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_4_7_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_4",
-      "label": "4.c.4.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 4",
-      "_origin": "ast",
-      "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "4.c.4.7 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L548"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_section_4_eye_catchers_\u05e9\u05de\u05d5\u05ea",
-      "label": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "_origin": "ast",
-      "community": 67,
-      "community_name": "Section 4 \u00b7 Eye Catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "file_type": "document",
-      "norm_label": "section 4 \u00b7 eye catchers \u00b7 \u05e9\u05de\u05d5\u05ea",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L455"
-    },
-    {
-      "id": "docs_module_c_duolingo_program_4_c_1_1_\u05d7\u05de\u05e9_\u05d4\u05de\u05d9\u05dc\u05d9\u05dd_\u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea_\u05db\u05dc_\u05e9\u05d0\u05dc\u05d4",
-      "label": "4.c.1.1 \u00b7 \u05d7\u05de\u05e9 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea \u05db\u05dc \u05e9\u05d0\u05dc\u05d4",
+      "id": "front_src_lib_components_sheet",
+      "label": "Sheet.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "4.c.1.1 \u00b7 \u05d7\u05de\u05e9 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05e4\u05d5\u05ea\u05d7\u05d5\u05ea \u05db\u05dc \u05e9\u05d0\u05dc\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L142"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "sheet.svelte",
+      "source_file": "front/src/lib/components/Sheet.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_1_2_\u05db\u05dc_\u05de\u05d9\u05dc\u05d4_\u05dc\u05d0\u05df_\u05d4\u05d9\u05d0_\u05e9\u05d5\u05dc\u05d7\u05ea_\u05d0\u05d5\u05ea\u05d9",
-      "label": "4.c.1.2 \u00b7 \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u2014 \u05dc\u05d0\u05df \u05d4\u05d9\u05d0 \u05e9\u05d5\u05dc\u05d7\u05ea \u05d0\u05d5\u05ea\u05d9",
+      "id": "front_src_lib_components_timer",
+      "label": "Timer.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "4.c.1.2 \u00b7 \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u2014 \u05dc\u05d0\u05df \u05d4\u05d9\u05d0 \u05e9\u05d5\u05dc\u05d7\u05ea \u05d0\u05d5\u05ea\u05d9",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L160"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "timer.svelte",
+      "source_file": "front/src/lib/components/Timer.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_1_3_\u05ea\u05e9\u05d5\u05d1\u05d4_\u05d0\u05d7\u05ea_\u05d0\u05d9\u05e0\u05d4_\u05e8\u05e9\u05d9\u05de\u05d4",
-      "label": "4.c.1.3 \u00b7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05d0\u05d7\u05ea \u05d0\u05d9\u05e0\u05d4 \u05e8\u05e9\u05d9\u05de\u05d4",
+      "id": "front_src_lib_curriculum_exam_minutes",
+      "label": "EXAM_MINUTES",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "4.c.1.3 \u00b7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05d0\u05d7\u05ea \u05d0\u05d9\u05e0\u05d4 \u05e8\u05e9\u05d9\u05de\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L182"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam_minutes",
+      "source_file": "front/src/lib/curriculum.ts",
+      "source_location": "L43"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_1_4_\u05de\u05d4_\u05de\u05d5\u05ea\u05e8_\u05dc\u05d4\u05d1\u05d9\u05d0_\u05de\u05d4\u05e8\u05d0\u05e9",
-      "label": "4.c.1.4 \u00b7 \u05de\u05d4 \u05de\u05d5\u05ea\u05e8 \u05dc\u05d4\u05d1\u05d9\u05d0 \u05de\u05d4\u05e8\u05d0\u05e9",
+      "id": "front_src_lib_exam_svelte",
+      "label": "exam.svelte.ts",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "4.c.1.4 \u00b7 \u05de\u05d4 \u05de\u05d5\u05ea\u05e8 \u05dc\u05d4\u05d1\u05d9\u05d0 \u05de\u05d4\u05e8\u05d0\u05e9",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L199"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam.svelte.ts",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L1"
     },
     {
-      "id": "docs_module_c_duolingo_program_4_c_1_5_\u05e9\u05e2\u05e8_\u05e1\u05e7\u05e9\u05df_1",
-      "label": "4.c.1.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 1",
+      "id": "front_src_lib_exam_svelte_exam",
+      "label": "exam",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "4.c.1.5 \u00b7 \u05e9\u05e2\u05e8 \u05e1\u05e7\u05e9\u05df 1",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L220"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L58"
     },
     {
-      "id": "docs_module_c_duolingo_program_section_1_\u05dc\u05e4\u05e2\u05e0\u05d7_\u05d0\u05ea_\u05d4\u05e9\u05d0\u05dc\u05d4",
-      "label": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
+      "id": "front_src_lib_exam_svelte_exam_seconds",
+      "label": "EXAM_SECONDS",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L137"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam_seconds",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L3"
     },
     {
-      "id": "docs_module_c_duolingo_program_\u05d7\u05dc\u05e7_\u05d1_\u05e1\u05e7\u05e9\u05e0\u05d9\u05dd_1_4_\u05dc\u05e4\u05e2\u05e0\u05d7_\u05d0\u05ea_\u05d4\u05e9\u05d0\u05dc\u05d4_p1_\u05de\u05e1\u05e4\u05e8\u05d9\u05dd_\u05e9\u05de\u05d5\u05ea",
-      "label": "\u05d7\u05dc\u05e7 \u05d1\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 1\u20134: \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4, P1, \u05de\u05e1\u05e4\u05e8\u05d9\u05dd, \u05e9\u05de\u05d5\u05ea",
+      "id": "front_src_lib_exam_svelte_warning_seconds",
+      "label": "WARNING_SECONDS",
       "_origin": "ast",
       "community": 68,
-      "community_name": "Section 1 \u00b7 \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4",
-      "file_type": "document",
-      "norm_label": "\u05d7\u05dc\u05e7 \u05d1\u05f3 \u2014 \u05e1\u05e7\u05e9\u05e0\u05d9\u05dd 1\u20134: \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d0\u05ea \u05d4\u05e9\u05d0\u05dc\u05d4, p1, \u05de\u05e1\u05e4\u05e8\u05d9\u05dd, \u05e9\u05de\u05d5\u05ea",
-      "source_file": "docs/module c/duolingo-program.md",
-      "source_location": "L135"
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "warning_seconds",
+      "source_file": "front/src/lib/exam.svelte.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_page",
+      "label": "exam/+page.svelte",
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "exam/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_run_page",
+      "label": "run/+page.svelte",
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "exam.svelte.ts",
+      "file_type": "code",
+      "norm_label": "run/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "svelte",
+      "label": "svelte",
+      "_origin": "ast",
+      "community": 69,
+      "community_name": "ScreenForm.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte",
+      "source_file": "svelte"
     },
     {
       "id": "front_src_lib_content_edit_lessoneditor",
@@ -7370,17 +7271,6 @@
       "file_type": "code",
       "norm_label": "lessoneditor.svelte",
       "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_content_edit_markdowninput",
-      "label": "MarkdownInput.svelte",
-      "_origin": "ast",
-      "community": 69,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "markdowninput.svelte",
-      "source_file": "front/src/lib/content-edit/MarkdownInput.svelte",
       "source_location": "L1"
     },
     {
@@ -7403,7 +7293,7 @@
       "file_type": "code",
       "norm_label": "errormsg",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L33"
+      "source_location": "L41"
     },
     {
       "id": "front_src_lib_content_edit_screenform_hasform",
@@ -7414,7 +7304,7 @@
       "file_type": "code",
       "norm_label": "hasform",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L35"
+      "source_location": "L43"
     },
     {
       "id": "front_src_lib_content_edit_screenform_jsonerror",
@@ -7425,7 +7315,7 @@
       "file_type": "code",
       "norm_label": "jsonerror",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L30"
+      "source_location": "L38"
     },
     {
       "id": "front_src_lib_content_edit_screenform_mdhint",
@@ -7436,7 +7326,7 @@
       "file_type": "code",
       "norm_label": "mdhint",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L56"
+      "source_location": "L64"
     },
     {
       "id": "front_src_lib_content_edit_screenform_raw",
@@ -7447,7 +7337,7 @@
       "file_type": "code",
       "norm_label": "raw",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L29"
+      "source_location": "L37"
     },
     {
       "id": "front_src_lib_content_edit_screenskeletons",
@@ -7758,26 +7648,103 @@
       "source_location": "L49"
     },
     {
-      "id": "lucide_svelte_svelte",
-      "label": "@lucide/svelte",
+      "id": "front_src_lib_lessonprogress_svelte",
+      "label": "lessonProgress.svelte.ts",
       "_origin": "ast",
       "community": 70,
-      "community_name": "@lucide/svelte",
-      "confidence": "EXTRACTED",
+      "community_name": "lessonProgress.svelte.ts",
       "file_type": "code",
-      "norm_label": "@lucide/svelte",
-      "source_file": "@lucide/svelte"
+      "norm_label": "lessonprogress.svelte.ts",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L1"
     },
     {
-      "id": "svelte_svelte",
-      "label": "svelte",
+      "id": "front_src_lib_lessonprogress_svelte_lessonprogress",
+      "label": "lessonProgress",
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "lessonProgress.svelte.ts",
+      "file_type": "code",
+      "norm_label": "lessonprogress",
+      "source_file": "front/src/lib/lessonProgress.svelte.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "front_src_lib_content_edit_markdowninput",
+      "label": "MarkdownInput.svelte",
       "_origin": "ast",
       "community": 71,
-      "community_name": "svelte",
-      "confidence": "EXTRACTED",
+      "community_name": "miniMarkdown.ts",
       "file_type": "code",
-      "norm_label": "svelte",
-      "source_file": "svelte"
+      "norm_label": "markdowninput.svelte",
+      "source_file": "front/src/lib/content-edit/MarkdownInput.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_minimarkdown",
+      "label": "miniMarkdown.ts",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "minimarkdown.ts",
+      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_minimarkdown_escape",
+      "label": "ESCAPE",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "escape",
+      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_preface",
+      "label": "Preface.svelte",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "preface.svelte",
+      "source_file": "front/src/lib/lesson-screens/Preface.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_questionpreview",
+      "label": "QuestionPreview.svelte",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "questionpreview.svelte",
+      "source_file": "front/src/lib/lesson-screens/QuestionPreview.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_steps",
+      "label": "Steps.svelte",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "steps.svelte",
+      "source_file": "front/src/lib/lesson-screens/Steps.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_summary",
+      "label": "Summary.svelte",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "miniMarkdown.ts",
+      "file_type": "code",
+      "norm_label": "summary.svelte",
+      "source_file": "front/src/lib/lesson-screens/Summary.svelte",
+      "source_location": "L1"
     },
     {
       "id": "docs_module_c_myprog_eye_catchers_negative_limit_contrast_3a",
@@ -9871,7 +9838,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L40",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -17359,7 +17326,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L97",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -17392,7 +17359,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L29",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -17403,7 +17370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L30",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -17414,7 +17381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L33",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -17425,7 +17392,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L35",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -17436,7 +17403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L39",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -17447,7 +17414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L49",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -17458,7 +17425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L56",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -17469,7 +17436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L58",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -17480,7 +17447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L82",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -18914,6 +18881,15 @@
       "source_file": "front/src/lib/content-edit/LessonEditor.svelte"
     },
     {
+      "source": "front_src_lib_content_edit_lessoneditor",
+      "target": "svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/LessonEditor.svelte"
+    },
+    {
       "source": "front_src_lib_content_edit_markdowninput",
       "target": "front_src_lib_lesson_screens_minimarkdown",
       "relation": "imports_from",
@@ -18952,6 +18928,15 @@
     {
       "source": "front_src_lib_content_edit_screenform",
       "target": "front_src_lib_lesson_screens_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/ScreenForm.svelte"
+    },
+    {
+      "source": "front_src_lib_content_edit_screenform",
+      "target": "svelte",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19051,6 +19036,15 @@
     {
       "source": "front_src_lib_lesson_screens_lessonrunner",
       "target": "front_src_lib_lesson_screens_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte"
+    },
+    {
+      "source": "front_src_lib_lesson_screens_lessonrunner",
+      "target": "svelte",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19904,24 +19898,6 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
     },
     {
-      "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
-      "target": "front_src_routes_unit_unitid_module_moduleid_lessons_types",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
-    },
-    {
-      "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
-      "target": "reactivity",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
-    },
-    {
       "source": "front_src_routes_unit_unitid_module_moduleid_page",
       "target": "front_src_lib_components_appbar",
       "relation": "imports_from",
@@ -20161,7 +20137,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L139",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -20969,5 +20945,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "027537946b36c3658e5dbcaa7616b597e7a471a5"
+  "built_at_commit": "cb19e8629787e71658d86d690e909161d0751652"
 }
