@@ -52,19 +52,15 @@ export const c3Lessons: LessonNode[] = [
           ]
         },
         {
-          "type": "preface",
-          "text": "בואו נתרגל: קטע קצר, ואותה שאלה.\n\nParagraph I: The city planted thousands of trees and built new gardens over the past five years.\n\nParagraph II: The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener in less than ten years,\" she explains.\n\nיש בשאלה שם — Dr. Maria Santos. הוא מופיע רק בפסקה II. סורקים, מוצאים אותו, וקוראים רק סביבו."
-        },
-        {
-          "type": "mcq",
-          "prompt": "According to Dr. Maria Santos, what did her team want to show?",
-          "options": [
-            "That any city can become greener in less than ten years",
-            "That Greenville was polluted five years ago",
-            "That the city needs more volunteers",
-            "That stress levels fell by 40%"
-          ],
-          "correctIndex": 0
+          "type": "passage-quiz",
+          "text": "Every year, students take part in a special community project. They help clean parks, visit elderly people, and collect food for families in need. Last year, a student named Daniel suggested collecting books for children as well.\n\nThe idea became very popular. More than 300 books were collected in only two weeks, and they were given to children in several local schools. The teachers decided to repeat the project again this year.",
+          "questions": [
+            {
+              "prompt": "What did Daniel suggest collecting?",
+              "keywords": ["books"],
+              "answerHint": "Books for children"
+            }
+          ]
         }
       ],
       "rounds": [

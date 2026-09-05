@@ -7,6 +7,7 @@
 
 	let {
 		screen,
+		lessonId,
 		bucket,
 		index,
 		onSave,
@@ -14,11 +15,18 @@
 	}: {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		screen: any;
+		/** Shown as this screen's location; purely informational (copy for authoring notes/URLs). */
+		lessonId?: string;
 		bucket: 'preface' | number;
 		index: number;
 		onSave: (screen: LessonScreen) => Promise<void>;
 		onDelete: () => Promise<void>;
 	} = $props();
+
+	// e.g. "eye_catch_intro · preface[1]" or "eye_catch_intro · round1[0]"
+	let location = $derived(
+		`${lessonId ?? '?'} · ${bucket === 'preface' ? 'preface' : `round${bucket}`}[${index}]`
+	);
 
 	// A plain, mutable clone — never touch the live content object. The parent
 	// remounts every form on any structural change, so `screen` is fixed for
@@ -92,6 +100,17 @@
 </script>
 
 <div class="mb-3 rounded-2xl bg-surface p-4 ring-1 ring-line/70">
+	<div class="mb-1 flex items-center justify-between gap-2">
+		<button
+			type="button"
+			onclick={() => navigator.clipboard?.writeText(location)}
+			title="העתק מזהה מסך"
+			class="truncate text-start font-mono text-[11px] text-muted hover:text-ink"
+			dir="ltr"
+		>
+			{location}
+		</button>
+	</div>
 	<div class="mb-2 flex items-center justify-between gap-2">
 		<select
 			value={draft.type}
@@ -109,7 +128,6 @@
 			{/each}
 		</select>
 		<div class="flex items-center gap-2">
-			<span class="text-xs text-muted" dir="ltr">[{index}]</span>
 			{#if status === 'saved'}
 				<span class="text-xs font-bold text-brand">נשמר ✓</span>
 			{:else if status === 'error'}

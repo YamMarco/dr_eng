@@ -88,6 +88,7 @@
 					{@render insertRow(bucket.key, i)}
 					<ScreenForm
 						{screen}
+						lessonId={lesson.id}
 						bucket={bucket.key}
 						index={i}
 						onSave={(next) => saveScreen(bucket.key, i, next)}

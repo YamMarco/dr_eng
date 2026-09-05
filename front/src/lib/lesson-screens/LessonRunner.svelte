@@ -275,6 +275,7 @@
 			{#key screenIndex}
 				<ScreenForm
 					screen={currentScreen}
+					{lessonId}
 					bucket={currentPath.bucket}
 					index={currentPath.index}
 					onSave={saveCurrentScreen}
