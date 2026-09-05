@@ -253,9 +253,9 @@ export const c3Lessons: LessonNode[] = [
               "type": "mcq",
               "prompt": "The study's ______ showed a clear drop in noise.",
               "options": [
-                "result(s)",
-                "found (past of find)",
-                "volunteer(s)",
+                "results",
+                "found",
+                "volunteers",
                 "residents"
               ],
               "correctIndex": 0
