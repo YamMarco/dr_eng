@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
-    "mtime": 1787930489.2199552,
-    "seen": 1788515082.9206445,
-    "ast_hash": "4d945d2247a1d6e944e8fb56f8071367",
+    "mtime": 1788595692.7202318,
+    "seen": 1788595742.9446428,
+    "ast_hash": "721ac50b7e40004636d4ce70c88a1ed4",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Preface.svelte": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1788595349.28781,
-    "seen": 1788595450.418297,
-    "ast_hash": "b2a8255da4605bcadbcfebe52fb0748c",
+    "mtime": 1788595698.2371292,
+    "seen": 1788595742.9445937,
+    "ast_hash": "c34dfa32d575160814654d28fe4b6017",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-4.ts": {

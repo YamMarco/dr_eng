@@ -49,7 +49,15 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
-<p class="text-lg leading-relaxed font-semibold whitespace-pre-line">{screen.prompt}</p>
+<div class="text-lg leading-relaxed font-semibold">
+	<!-- Each line gets its own bidi direction: a prompt that switches
+	     language line-to-line (an English quote, then a Hebrew question)
+	     would otherwise inherit one block direction and align the "wrong"
+	     language's line to the wrong edge. -->
+	{#each screen.prompt.split('\n') as line, i (i)}
+		<p dir="auto">{line}</p>
+	{/each}
+</div>
 <div class="mt-5 flex flex-col gap-3">
 	{#each screen.options as option, i (i)}
 		{@const isCorrect = i === screen.correctIndex}
