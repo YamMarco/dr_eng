@@ -36,10 +36,10 @@ export const c3Lessons: LessonNode[] = [
         {
           "type": "steps",
           "steps": [
-            "הטקסט: \"They planted over 2,000 trees and created 15 community gardens across the city.\"",
-            "השאלה: \"How many trees did they plant?\" — אין מספר בשאלה, אבל יש מילה שנחפש: trees.",
-            "בטקסט שני מספרים: 2,000 ו-15. בודקים מה צמוד לכל אחד: 2,000 trees · 15 community gardens.",
-            "המספר שצמוד ל-trees הוא 2,000. זו התשובה. לא מספיק למצוא מספר — צריך את המספר שצמוד לדבר הנכון."
+            "למחוק",
+            "למחוק",
+            "למחוק",
+            "למחוק."
           ]
         },
         {
