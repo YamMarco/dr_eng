@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import { dev } from '$app/environment';
 	import Button from '$lib/components/Button.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
@@ -136,7 +137,7 @@
 		</select>
 		<div class="flex items-center gap-2">
 			{#if status === 'saved'}
-				<span class="text-xs font-bold text-brand">נשמר ✓</span>
+				<span class="text-xs font-bold text-brand">{dev ? 'נשמר ✓' : 'נשמר, בפריסה… (כדקה)'}</span>
 			{:else if status === 'error'}
 				<span class="text-xs font-bold text-danger">שגיאה</span>
 			{/if}

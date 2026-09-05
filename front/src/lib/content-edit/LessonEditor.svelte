@@ -3,6 +3,7 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import ScreenForm from './ScreenForm.svelte';
 	import { blankScreen } from './screenSkeletons';
+	import { saveContentEdit } from './api';
 	import type { LessonNode } from '$lib/content';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
@@ -28,22 +29,13 @@
 		return bucket === 'preface' ? content.preface : content.rounds[bucket].screens;
 	}
 
-	async function api(op: 'set' | 'insert' | 'delete', bucket: BucketKey, index: number, screen?: unknown) {
-		const res = await fetch('/api/content-edit', {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ lessonId: lesson.id, bucket, index, op, screen })
-		});
-		if (!res.ok) throw new Error(await res.text());
-	}
-
 	async function saveScreen(bucket: BucketKey, index: number, screen: LessonScreen) {
-		await api('set', bucket, index, screen);
+		await saveContentEdit({ lessonId: lesson.id, bucket, index, op: 'set', screen });
 		listFor(bucket)[index] = screen;
 	}
 
 	async function deleteScreen(bucket: BucketKey, index: number) {
-		await api('delete', bucket, index);
+		await saveContentEdit({ lessonId: lesson.id, bucket, index, op: 'delete' });
 		listFor(bucket).splice(index, 1);
 		structureVersion += 1;
 	}
@@ -51,7 +43,7 @@
 	async function addScreen(bucket: BucketKey, index: number) {
 		const screen = blankScreen('preface');
 		try {
-			await api('insert', bucket, index, screen);
+			await saveContentEdit({ lessonId: lesson.id, bucket, index, op: 'insert', screen });
 			listFor(bucket).splice(index, 0, screen);
 			structureVersion += 1;
 		} catch (e) {

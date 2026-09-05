@@ -1,16 +1,16 @@
-// Dev-only endpoint: set / insert / delete one screen inside a content file.
-// Part of the detachable in-app editor (see src/lib/content-edit/README.md).
+// Set / insert / delete one screen inside a content file.
+// - In dev: writes straight to the local file (fast, no password needed).
+// - Elsewhere (the deployed site): requires the content-edit password and
+//   commits the change through the GitHub API instead — there's no writable
+//   local filesystem in production. See src/lib/content-edit/README.md.
 import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
 import { error, json } from '@sveltejs/kit';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { getLesson } from '$lib/content';
+import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
 import type { RequestHandler } from './$types';
-
-// One loader per content file. Going through Vite (rather than a regex on the
-// raw text) means we read the array with real module semantics — comments,
-// trailing commas, single quotes all fine.
-const contentModules = import.meta.glob('/src/lib/content/c/*.ts');
 
 type Body = {
 	lessonId: string;
@@ -21,27 +21,31 @@ type Body = {
 	screen?: unknown;
 };
 
-export const POST: RequestHandler = async ({ request }) => {
-	if (!dev) throw error(403, 'content-edit is dev-only');
+function checkAuth(request: Request): boolean {
+	if (dev) return true;
+	const key = request.headers.get('x-content-edit-key');
+	return !!key && !!env.CONTENT_EDIT_PASSWORD && key === env.CONTENT_EDIT_PASSWORD;
+}
 
-	const { lessonId, bucket, index, op = 'set', screen } = (await request.json()) as Body;
+/** Everything up to and including the array literal's opening `[`. */
+function splitHead(raw: string): string {
+	const head = raw.match(/^([\s\S]*?=\s*)\[/)?.[1];
+	if (!head) throw error(500, 'could not locate array literal in content file');
+	return head;
+}
 
-	const meta = getLesson(lessonId);
-	if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
-
-	const fileNum = meta.section.replace(/^c-/, ''); // 'c-3' -> '3'
-	const key = `/src/lib/content/c/c-${fileNum}.ts`;
-	const loader = contentModules[key];
-	if (!loader) throw error(404, `no content file for ${key}`);
-
+function applyOp(
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const mod = (await loader()) as Record<string, any>;
-	const lessons = mod[`c${fileNum}Lessons`];
-	if (!Array.isArray(lessons)) throw error(500, `c${fileNum}Lessons export missing`);
-
+	lessons: any[],
+	lessonId: string,
+	bucket: 'preface' | number,
+	index: number,
+	op: 'set' | 'insert' | 'delete',
+	screen: unknown
+) {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const lesson = lessons.find((l: any) => l.id === lessonId);
-	if (!lesson) throw error(404, `lesson ${lessonId} not in ${key}`);
+	if (!lesson) throw error(404, `lesson ${lessonId} not found`);
 
 	const list =
 		bucket === 'preface' ? lesson.content.preface : lesson.content.rounds?.[bucket]?.screens;
@@ -59,16 +63,47 @@ export const POST: RequestHandler = async ({ request }) => {
 		if (index < 0 || index >= list.length) throw error(400, `bad index ${index}`);
 		list[index] = screen;
 	}
+}
 
-	// Rewrite the file, preserving its header verbatim (everything up to the
-	// opening `[` of the array literal). Body is re-emitted as 2-space JSON to
-	// match the existing snapshot formatting.
-	const abs = join(process.cwd(), 'src/lib/content/c', `c-${fileNum}.ts`);
-	const raw = readFileSync(abs, 'utf8');
-	const head = raw.match(/^([\s\S]*?=\s*)\[/)?.[1];
-	if (!head) throw error(500, `could not locate array literal in ${key}`);
+export const POST: RequestHandler = async ({ request }) => {
+	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
 
-	writeFileSync(abs, `${head}${JSON.stringify(lessons, null, 2)};\n`);
+	const { lessonId, bucket, index, op = 'set', screen } = (await request.json()) as Body;
 
-	return json({ ok: true, file: `c-${fileNum}.ts` });
+	const meta = getLesson(lessonId);
+	if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
+
+	const fileNum = meta.section.replace(/^c-/, ''); // 'c-3' -> '3'
+	const relPath = `src/lib/content/c/c-${fileNum}.ts`; // relative to front/
+
+	if (dev) {
+		const abs = join(process.cwd(), relPath);
+		const raw = readFileSync(abs, 'utf8');
+		const head = splitHead(raw);
+		const lessons = JSON.parse(raw.slice(head.length).replace(/;\s*$/, ''));
+		applyOp(lessons, lessonId, bucket, index, op, screen);
+		writeFileSync(abs, `${head}${JSON.stringify(lessons, null, 2)};\n`);
+		return json({ ok: true, file: `c-${fileNum}.ts`, committed: false });
+	}
+
+	// Production: read -> mutate -> commit via the GitHub API. One retry if
+	// another save landed in between and made our sha stale.
+	const githubPath = `front/${relPath}`;
+	let lastError: unknown;
+	for (let attempt = 0; attempt < 2; attempt++) {
+		const { content: raw, sha } = await getGithubFile(githubPath);
+		const head = splitHead(raw);
+		const lessons = JSON.parse(raw.slice(head.length).replace(/;\s*$/, ''));
+		applyOp(lessons, lessonId, bucket, index, op, screen);
+		const next = `${head}${JSON.stringify(lessons, null, 2)};\n`;
+		try {
+			await putGithubFile(githubPath, next, sha, `content-edit: ${lessonId} ${bucket}[${index}] ${op}`);
+			return json({ ok: true, file: `c-${fileNum}.ts`, committed: true });
+		} catch (e) {
+			lastError = e;
+			if (!String(e).includes('409')) break;
+			// else: stale sha, loop and retry once with a fresh fetch
+		}
+	}
+	throw error(502, `GitHub commit failed: ${lastError instanceof Error ? lastError.message : String(lastError)}`);
 };

@@ -12,6 +12,7 @@
 	import ScreenForm from '$lib/content-edit/ScreenForm.svelte';
 	import { formatScreenLocation, type ScreenPath } from '$lib/content-edit/screenPath';
 	import { copyText } from '$lib/content-edit/clipboard';
+	import { saveContentEdit } from '$lib/content-edit/api';
 	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
@@ -20,7 +21,7 @@
 		/** One round's worth of screens (see the lessons path page — a lesson can have several rounds). */
 		screens: LessonScreen[];
 		/** Same length/order as `screens` — where each one lives in the lesson's content.
-		    Only given when the caller also passes `lessonId`; powers the dev-only live edit button. */
+		    Only given when the caller also passes `lessonId`; powers the live edit button (gated by editStore.available). */
 		screenPaths?: ScreenPath[];
 		lessonId?: string;
 		lessonLabel: string;
@@ -92,28 +93,18 @@
 		setTimeout(() => (locationCopied = false), 1200);
 	}
 
-	// Dev-only: edit the screen currently on-screen, without leaving the
-	// runner. See src/lib/content-edit/README.md.
+	// Edit the screen currently on-screen without leaving the runner (gated
+	// by editStore.available). See src/lib/content-edit/README.md.
 	let editSheetOpen = $state(false);
 
 	async function saveCurrentScreen(next: LessonScreen) {
 		if (!lessonId || !currentPath) return;
-		const res = await fetch('/api/content-edit', {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ lessonId, ...currentPath, op: 'set', screen: next })
-		});
-		if (!res.ok) throw new Error(await res.text());
+		await saveContentEdit({ lessonId, ...currentPath, op: 'set', screen: next });
 	}
 
 	async function deleteCurrentScreen() {
 		if (!lessonId || !currentPath) return;
-		const res = await fetch('/api/content-edit', {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ lessonId, ...currentPath, op: 'delete' })
-		});
-		if (!res.ok) throw new Error(await res.text());
+		await saveContentEdit({ lessonId, ...currentPath, op: 'delete' });
 		// The round's screen list just shifted under us — safest is to leave
 		// rather than keep playing with a stale index.
 		editSheetOpen = false;
@@ -238,8 +229,8 @@
 	</div>
 
 	{#if editStore.available && currentLocation && !justFinished}
-		<!-- Dev-only: shows where the on-screen content lives, and opens its
-		     editor. Detachable — see src/lib/content-edit/README.md. -->
+		<!-- Shows where the on-screen content lives, and opens its editor.
+		     Detachable — see src/lib/content-edit/README.md. -->
 		<div class="absolute inset-s-4 bottom-24 z-10 flex items-center gap-1.5">
 			<button
 				type="button"
@@ -253,7 +244,7 @@
 			<button
 				type="button"
 				onclick={() => (editSheetOpen = true)}
-				title="ערוך מסך זה (דיבוג)"
+				title="ערוך מסך זה"
 				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white shadow-lg transition active:scale-95"
 			>
 				✏️
