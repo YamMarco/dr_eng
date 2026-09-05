@@ -290,26 +290,13 @@
       "source_location": "L42"
     },
     {
-      "id": "front_src_routes_api_content_edit_server_body",
-      "label": "Body",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "content/index.ts",
-      "file_type": "code",
-      "norm_label": "body",
-      "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L15"
-    },
-    {
       "id": "front_src_lib_lesson_screens_types_lessonscreen",
       "label": "LessonScreen",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 38,
-      "community_name": "ScreenForm.svelte",
+      "community_name": "screenSkeletons.ts",
       "file_type": "code",
       "norm_label": "lessonscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
@@ -407,19 +394,6 @@
       "source_location": "L13"
     },
     {
-      "id": "front_src_lib_content_edit_editstore_svelte_editstore",
-      "label": "EditStore",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LessonRunner.svelte",
-      "file_type": "code",
-      "norm_label": "editstore",
-      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
-      "source_location": "L8"
-    },
-    {
       "id": "front_src_lib_content_edit_screenpath_screenpath",
       "label": "ScreenPath",
       "_callable": true,
@@ -498,17 +472,43 @@
       "source_location": "L8"
     },
     {
+      "id": "front_src_routes_api_content_edit_server_body",
+      "label": "Body",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "body",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L15"
+    },
+    {
       "id": "front_src_lib_sectionthemes_sectiontheme",
       "label": "SectionTheme",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "sectionThemes.ts",
+      "community_name": "lessons/+page.svelte",
       "file_type": "code",
       "norm_label": "sectiontheme",
       "source_file": "front/src/lib/sectionThemes.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte_editstore",
+      "label": "EditStore",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": "editstore",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L20"
     },
     {
       "id": "front_src_lib_lesson_screens_markall_i",
@@ -607,18 +607,6 @@
       "source_location": "L104"
     },
     {
-      "id": "front_src_lib_content_index_getlesson",
-      "label": "getLesson()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "content/index.ts",
-      "file_type": "code",
-      "norm_label": "getlesson()",
-      "source_file": "front/src/lib/content/index.ts",
-      "source_location": "L65"
-    },
-    {
       "id": "front_src_lib_content_index_getlessonsbysection",
       "label": "getLessonsBySection()",
       "_callable": true,
@@ -631,72 +619,12 @@
       "source_location": "L69"
     },
     {
-      "id": "front_src_routes_api_content_edit_server_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "content/index.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "front_src_lib_content_edit_clipboard_copytext",
-      "label": "copyText()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "copytext()",
-      "source_file": "front/src/lib/content-edit/clipboard.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "front_src_lib_content_edit_lessoneditor_await",
-      "label": "await()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "await()",
-      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L54"
-    },
-    {
-      "id": "front_src_lib_content_edit_lessoneditor_insertrow",
-      "label": "insertRow()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "insertrow()",
-      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L98"
-    },
-    {
-      "id": "front_src_lib_content_edit_screenform_catch",
-      "label": "catch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "catch()",
-      "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L79"
-    },
-    {
       "id": "front_src_lib_content_edit_screenskeletons_blankscreen",
       "label": "blankScreen()",
       "_callable": true,
       "_origin": "ast",
       "community": 38,
-      "community_name": "ScreenForm.svelte",
+      "community_name": "screenSkeletons.ts",
       "file_type": "code",
       "norm_label": "blankscreen()",
       "source_file": "front/src/lib/content-edit/screenSkeletons.ts",
@@ -835,16 +763,28 @@
       "source_location": "L53"
     },
     {
-      "id": "front_src_lib_content_edit_editstore_svelte_editstore_toggle",
-      "label": ".toggle()",
+      "id": "front_src_lib_content_edit_clipboard_copytext",
+      "label": "copyText()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": ".toggle()",
-      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
-      "source_location": "L13"
+      "norm_label": "copytext()",
+      "source_file": "front/src/lib/content-edit/clipboard.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "front_src_lib_content_edit_screenform_catch",
+      "label": "catch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "LessonRunner.svelte",
+      "file_type": "code",
+      "norm_label": "catch()",
+      "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
+      "source_location": "L80"
     },
     {
       "id": "front_src_lib_content_edit_screenpath_formatscreenlocation",
@@ -1116,7 +1056,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "formattime()",
       "source_file": "front/src/lib/exam.svelte.ts",
@@ -1291,16 +1231,244 @@
       "source_location": "L17"
     },
     {
+      "id": "front_src_lib_content_edit_github_getgithubfile",
+      "label": "getGithubFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "getgithubfile()",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "front_src_lib_content_edit_github_ghheaders",
+      "label": "ghHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "ghheaders()",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_src_lib_content_edit_github_putgithubfile",
+      "label": "putGithubFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "putgithubfile()",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "front_src_lib_content_edit_github_repourl",
+      "label": "repoUrl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "repourl()",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_src_lib_content_index_getlesson",
+      "label": "getLesson()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "getlesson()",
+      "source_file": "front/src/lib/content/index.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_server_applyop",
+      "label": "applyOp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "applyop()",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_server_checkauth",
+      "label": "checkAuth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "checkauth()",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_server_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L68"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_server_splithead",
+      "label": "splitHead()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 82,
+      "community_name": "content-edit/+server.ts",
+      "file_type": "code",
+      "norm_label": "splithead()",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "front_src_lib_content_edit_api_checkcontenteditpassword",
+      "label": "checkContentEditPassword()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "checkcontenteditpassword()",
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "front_src_lib_content_edit_api_remembercontenteditpassword",
+      "label": "rememberContentEditPassword()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "remembercontenteditpassword()",
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "front_src_lib_content_edit_api_savecontentedit",
+      "label": "saveContentEdit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "savecontentedit()",
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "front_src_lib_content_edit_api_storedkey",
+      "label": "storedKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "storedkey()",
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_content_edit_lessoneditor_insertrow",
+      "label": "insertRow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "insertrow()",
+      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
+      "source_location": "L90"
+    },
+    {
       "id": "front_src_lib_sectionthemes_themeforsectionindex",
       "label": "themeForSectionIndex()",
       "_callable": true,
       "_origin": "ast",
       "community": 83,
-      "community_name": "sectionThemes.ts",
+      "community_name": "lessons/+page.svelte",
       "file_type": "code",
       "norm_label": "themeforsectionindex()",
       "source_file": "front/src/lib/sectionThemes.ts",
       "source_location": "L21"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte_editstore_available",
+      "label": ".available()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".available()",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte_editstore_setauthed",
+      "label": ".setAuthed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".setauthed()",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte_editstore_toggle",
+      "label": ".toggle()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": ".toggle()",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte_loadauthed",
+      "label": "loadAuthed()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": "loadauthed()",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_login_server_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 85,
+      "community_name": "login/+server.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "front/src/routes/api/content-edit/login/+server.ts",
+      "source_location": "L9"
     },
     {
       "id": "front_package_devdependencies",
@@ -3788,28 +3956,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_routes_api_content_edit_server",
-      "label": "+server.ts",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "content/index.ts",
-      "file_type": "code",
-      "norm_label": "+server.ts",
-      "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_api_content_edit_server_contentmodules",
-      "label": "contentModules",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "content/index.ts",
-      "file_type": "code",
-      "norm_label": "contentmodules",
-      "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "docs_lesson_data_model",
       "label": "lesson-data-model.md",
       "_origin": "ast",
@@ -3918,55 +4064,11 @@
       "source_location": "L73"
     },
     {
-      "id": "front_src_lib_content_edit_clipboard",
-      "label": "clipboard.ts",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "clipboard.ts",
-      "source_file": "front/src/lib/content-edit/clipboard.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_content_edit_lessoneditor",
-      "label": "LessonEditor.svelte",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "lessoneditor.svelte",
-      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_content_edit_markdowninput",
-      "label": "MarkdownInput.svelte",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "markdowninput.svelte",
-      "source_file": "front/src/lib/content-edit/MarkdownInput.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_content_edit_screenform",
-      "label": "ScreenForm.svelte",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "ScreenForm.svelte",
-      "file_type": "code",
-      "norm_label": "screenform.svelte",
-      "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_lib_content_edit_screenskeletons",
       "label": "screenSkeletons.ts",
       "_origin": "ast",
       "community": 38,
-      "community_name": "ScreenForm.svelte",
+      "community_name": "screenSkeletons.ts",
       "file_type": "code",
       "norm_label": "screenskeletons.ts",
       "source_file": "front/src/lib/content-edit/screenSkeletons.ts",
@@ -3977,7 +4079,7 @@
       "label": "SCREEN_TYPE_GROUPS",
       "_origin": "ast",
       "community": 38,
-      "community_name": "ScreenForm.svelte",
+      "community_name": "screenSkeletons.ts",
       "file_type": "code",
       "norm_label": "screen_type_groups",
       "source_file": "front/src/lib/content-edit/screenSkeletons.ts",
@@ -3988,11 +4090,22 @@
       "label": "SCREEN_TYPES",
       "_origin": "ast",
       "community": 38,
-      "community_name": "ScreenForm.svelte",
+      "community_name": "screenSkeletons.ts",
       "file_type": "code",
       "norm_label": "screen_types",
       "source_file": "front/src/lib/content-edit/screenSkeletons.ts",
       "source_location": "L29"
+    },
+    {
+      "id": "front_src_lib_components_sheet",
+      "label": "Sheet.svelte",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "sheet.svelte",
+      "source_file": "front/src/lib/components/Sheet.svelte",
+      "source_location": "L1"
     },
     {
       "id": "front_src_lib_i18n_index_svelte",
@@ -4072,6 +4185,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_src_routes_error",
+      "label": "+error.svelte",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "index.svelte.ts",
+      "file_type": "code",
+      "norm_label": "+error.svelte",
+      "source_file": "front/src/routes/+error.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_src_lib_curriculum",
       "label": "curriculum.ts",
       "_origin": "ast",
@@ -4081,6 +4205,17 @@
       "norm_label": "curriculum.ts",
       "source_file": "front/src/lib/curriculum.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_curriculum_exam_minutes",
+      "label": "EXAM_MINUTES",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "curriculum.ts",
+      "file_type": "code",
+      "norm_label": "exam_minutes",
+      "source_file": "front/src/lib/curriculum.ts",
+      "source_location": "L43"
     },
     {
       "id": "front_src_lib_curriculum_modules",
@@ -5095,25 +5230,47 @@
       "source_location": "L1901"
     },
     {
-      "id": "front_src_lib_components_button",
-      "label": "Button.svelte",
+      "id": "environment",
+      "label": "$app/environment",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "LessonRunner.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/environment",
+      "source_file": "$app/environment"
+    },
+    {
+      "id": "front_src_lib_content_edit_clipboard",
+      "label": "clipboard.ts",
       "_origin": "ast",
       "community": 5,
       "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": "button.svelte",
-      "source_file": "front/src/lib/components/Button.svelte",
+      "norm_label": "clipboard.ts",
+      "source_file": "front/src/lib/content-edit/clipboard.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_content_edit_editstore_svelte",
-      "label": "editStore.svelte.ts",
+      "id": "front_src_lib_content_edit_markdowninput",
+      "label": "MarkdownInput.svelte",
       "_origin": "ast",
       "community": 5,
       "community_name": "LessonRunner.svelte",
       "file_type": "code",
-      "norm_label": "editstore.svelte.ts",
-      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "norm_label": "markdowninput.svelte",
+      "source_file": "front/src/lib/content-edit/MarkdownInput.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_content_edit_screenform",
+      "label": "ScreenForm.svelte",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "LessonRunner.svelte",
+      "file_type": "code",
+      "norm_label": "screenform.svelte",
+      "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
       "source_location": "L1"
     },
     {
@@ -5136,28 +5293,6 @@
       "file_type": "code",
       "norm_label": "lessonrunner.svelte",
       "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_error",
-      "label": "+error.svelte",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LessonRunner.svelte",
-      "file_type": "code",
-      "norm_label": "+error.svelte",
-      "source_file": "front/src/routes/+error.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
-      "label": "lessons/+page.svelte",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LessonRunner.svelte",
-      "file_type": "code",
-      "norm_label": "lessons/+page.svelte",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -7089,6 +7224,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_src_lib_components_toggle",
+      "label": "Toggle.svelte",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "toggle.svelte",
+      "source_file": "front/src/lib/components/Toggle.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_src_lib_debug_svelte",
       "label": "debug.svelte.ts",
       "_origin": "ast",
@@ -7111,14 +7257,36 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_components_sheet",
-      "label": "Sheet.svelte",
+      "id": "front_src_routes_settings_page",
+      "label": "settings/+page.svelte",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "debug.svelte.ts",
+      "file_type": "code",
+      "norm_label": "settings/+page.svelte",
+      "source_file": "front/src/routes/settings/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_components_appbar",
+      "label": "AppBar.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
-      "norm_label": "sheet.svelte",
-      "source_file": "front/src/lib/components/Sheet.svelte",
+      "norm_label": "appbar.svelte",
+      "source_file": "front/src/lib/components/AppBar.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_components_button",
+      "label": "Button.svelte",
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "AppBar.svelte",
+      "file_type": "code",
+      "norm_label": "button.svelte",
+      "source_file": "front/src/lib/components/Button.svelte",
       "source_location": "L1"
     },
     {
@@ -7126,29 +7294,18 @@
       "label": "Timer.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "timer.svelte",
       "source_file": "front/src/lib/components/Timer.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_curriculum_exam_minutes",
-      "label": "EXAM_MINUTES",
-      "_origin": "ast",
-      "community": 68,
-      "community_name": "exam.svelte.ts",
-      "file_type": "code",
-      "norm_label": "exam_minutes",
-      "source_file": "front/src/lib/curriculum.ts",
-      "source_location": "L43"
-    },
-    {
       "id": "front_src_lib_exam_svelte",
       "label": "exam.svelte.ts",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "exam.svelte.ts",
       "source_file": "front/src/lib/exam.svelte.ts",
@@ -7159,7 +7316,7 @@
       "label": "exam",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "exam",
       "source_file": "front/src/lib/exam.svelte.ts",
@@ -7170,7 +7327,7 @@
       "label": "EXAM_SECONDS",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "exam_seconds",
       "source_file": "front/src/lib/exam.svelte.ts",
@@ -7181,7 +7338,7 @@
       "label": "WARNING_SECONDS",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "warning_seconds",
       "source_file": "front/src/lib/exam.svelte.ts",
@@ -7192,7 +7349,7 @@
       "label": "exam/+page.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "exam/+page.svelte",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte",
@@ -7203,10 +7360,32 @@
       "label": "run/+page.svelte",
       "_origin": "ast",
       "community": 68,
-      "community_name": "exam.svelte.ts",
+      "community_name": "AppBar.svelte",
       "file_type": "code",
       "norm_label": "run/+page.svelte",
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_page",
+      "label": "[moduleId]/+page.svelte",
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "AppBar.svelte",
+      "file_type": "code",
+      "norm_label": "[moduleid]/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_page",
+      "label": "[unitId]/+page.svelte",
+      "_origin": "ast",
+      "community": 68,
+      "community_name": "AppBar.svelte",
+      "file_type": "code",
+      "norm_label": "[unitid]/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -8447,58 +8626,69 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_components_appbar",
-      "label": "AppBar.svelte",
+      "id": "front_src_lib_content_edit_github",
+      "label": "github.ts",
       "_origin": "ast",
       "community": 82,
-      "community_name": "AppBar.svelte",
+      "community_name": "content-edit/+server.ts",
       "file_type": "code",
-      "norm_label": "appbar.svelte",
-      "source_file": "front/src/lib/components/AppBar.svelte",
+      "norm_label": "github.ts",
+      "source_file": "front/src/lib/content-edit/github.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_components_toggle",
-      "label": "Toggle.svelte",
+      "id": "front_src_routes_api_content_edit_server",
+      "label": "content-edit/+server.ts",
       "_origin": "ast",
       "community": 82,
-      "community_name": "AppBar.svelte",
+      "community_name": "content-edit/+server.ts",
       "file_type": "code",
-      "norm_label": "toggle.svelte",
-      "source_file": "front/src/lib/components/Toggle.svelte",
+      "norm_label": "content-edit/+server.ts",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_src_routes_settings_page",
-      "label": "settings/+page.svelte",
+      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_types",
+      "label": "./$types",
       "_origin": "ast",
-      "community": 82,
-      "community_name": "AppBar.svelte",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "settings/+page.svelte",
-      "source_file": "front/src/routes/settings/+page.svelte",
+      "norm_label": "./$types",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/$types"
+    },
+    {
+      "id": "reactivity",
+      "label": "svelte/reactivity",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte/reactivity",
+      "source_file": "svelte/reactivity"
+    },
+    {
+      "id": "front_src_lib_content_edit_api",
+      "label": "api.ts",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "api.ts",
+      "source_file": "front/src/lib/content-edit/api.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_src_routes_unit_unitid_module_moduleid_page",
-      "label": "[moduleId]/+page.svelte",
+      "id": "front_src_lib_content_edit_lessoneditor",
+      "label": "LessonEditor.svelte",
       "_origin": "ast",
-      "community": 82,
-      "community_name": "AppBar.svelte",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
       "file_type": "code",
-      "norm_label": "[moduleid]/+page.svelte",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_page",
-      "label": "[unitId]/+page.svelte",
-      "_origin": "ast",
-      "community": 82,
-      "community_name": "AppBar.svelte",
-      "file_type": "code",
-      "norm_label": "[unitid]/+page.svelte",
-      "source_file": "front/src/routes/unit/[unitId]/+page.svelte",
+      "norm_label": "lessoneditor.svelte",
+      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
       "source_location": "L1"
     },
     {
@@ -8506,7 +8696,7 @@
       "label": "sectionThemes.ts",
       "_origin": "ast",
       "community": 83,
-      "community_name": "sectionThemes.ts",
+      "community_name": "lessons/+page.svelte",
       "file_type": "code",
       "norm_label": "sectionthemes.ts",
       "source_file": "front/src/lib/sectionThemes.ts",
@@ -8517,11 +8707,66 @@
       "label": "PALETTE",
       "_origin": "ast",
       "community": 83,
-      "community_name": "sectionThemes.ts",
+      "community_name": "lessons/+page.svelte",
       "file_type": "code",
       "norm_label": "palette",
       "source_file": "front/src/lib/sectionThemes.ts",
       "source_location": "L13"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "label": "lessons/+page.svelte",
+      "_origin": "ast",
+      "community": 83,
+      "community_name": "lessons/+page.svelte",
+      "file_type": "code",
+      "norm_label": "lessons/+page.svelte",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_content_edit_editstore_svelte",
+      "label": "editStore.svelte.ts",
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "editStore.svelte.ts",
+      "file_type": "code",
+      "norm_label": "editstore.svelte.ts",
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_routes_api_content_edit_login_server",
+      "label": "login/+server.ts",
+      "_origin": "ast",
+      "community": 85,
+      "community_name": "login/+server.ts",
+      "file_type": "code",
+      "norm_label": "login/+server.ts",
+      "source_file": "front/src/routes/api/content-edit/login/+server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lucide_svelte_svelte",
+      "label": "@lucide/svelte",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "@lucide/svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "@lucide/svelte",
+      "source_file": "@lucide/svelte"
+    },
+    {
+      "id": "svelte_svelte",
+      "label": "svelte",
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte",
+      "source_file": "svelte"
     },
     {
       "id": "front_tsconfig",
@@ -9799,6 +10044,66 @@
       "weight": 1.0
     },
     {
+      "source": "front_src_lib_content_edit_api_savecontentedit",
+      "target": "front_src_lib_content_edit_api_storedkey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github_getgithubfile",
+      "target": "front_src_lib_content_edit_github_ghheaders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github_getgithubfile",
+      "target": "front_src_lib_content_edit_github_repourl",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github_putgithubfile",
+      "target": "front_src_lib_content_edit_github_repourl",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github_putgithubfile",
+      "target": "front_src_lib_content_edit_github_ghheaders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
       "source": "front_src_lib_exam_svelte_examsession_finish",
       "target": "front_src_lib_exam_svelte_examsession_stopticking",
       "relation": "calls",
@@ -9920,6 +10225,30 @@
     },
     {
       "source": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_lib_content_edit_github_putgithubfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_routes_api_content_edit_server_checkauth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server_post",
       "target": "front_src_lib_content_index_getlesson",
       "relation": "calls",
       "_origin": "ast",
@@ -9927,7 +10256,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L29",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_routes_api_content_edit_server_splithead",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_routes_api_content_edit_server_applyop",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_lib_content_edit_github_getgithubfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -11055,7 +11420,31 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L7",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_lib_content_edit_github_getgithubfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_lib_content_edit_github_putgithubfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -11979,7 +12368,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L7",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_lib_content_edit_github",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -17266,6 +17667,50 @@
       "weight": 1.0
     },
     {
+      "source": "front_src_lib_content_edit_api",
+      "target": "front_src_lib_content_edit_api_checkcontenteditpassword",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_api",
+      "target": "front_src_lib_content_edit_api_remembercontenteditpassword",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_api",
+      "target": "front_src_lib_content_edit_api_savecontentedit",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_api",
+      "target": "front_src_lib_content_edit_api_storedkey",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/api.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "front_src_lib_content_edit_clipboard",
       "target": "front_src_lib_content_edit_clipboard_copytext",
       "relation": "contains",
@@ -17278,24 +17723,68 @@
     },
     {
       "source": "front_src_lib_content_edit_editstore_svelte",
+      "target": "front_src_lib_content_edit_editstore_svelte_loadauthed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_editstore_svelte",
       "target": "front_src_lib_content_edit_editstore_svelte_editstore",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
-      "source_location": "L18",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
-      "source": "front_src_lib_content_edit_lessoneditor",
-      "target": "front_src_lib_content_edit_lessoneditor_await",
+      "source": "front_src_lib_content_edit_github",
+      "target": "front_src_lib_content_edit_github_repourl",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L54",
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github",
+      "target": "front_src_lib_content_edit_github_getgithubfile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github",
+      "target": "front_src_lib_content_edit_github_putgithubfile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_github",
+      "target": "front_src_lib_content_edit_github_ghheaders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/github.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -17306,7 +17795,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/LessonEditor.svelte",
-      "source_location": "L98",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -17339,7 +17828,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -18377,14 +18866,14 @@
       "weight": 1.0
     },
     {
-      "source": "front_src_routes_api_content_edit_server",
-      "target": "front_src_routes_api_content_edit_server_contentmodules",
+      "source": "front_src_routes_api_content_edit_login_server",
+      "target": "front_src_routes_api_content_edit_login_server_post",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "front/src/routes/api/content-edit/+server.ts",
-      "source_location": "L13",
+      "source_file": "front/src/routes/api/content-edit/login/+server.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -18400,13 +18889,46 @@
     },
     {
       "source": "front_src_routes_api_content_edit_server",
-      "target": "front_src_routes_api_content_edit_server_post",
+      "target": "front_src_routes_api_content_edit_server_checkauth",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/routes/api/content-edit/+server.ts",
       "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_routes_api_content_edit_server_splithead",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_routes_api_content_edit_server_applyop",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_routes_api_content_edit_server",
+      "target": "front_src_routes_api_content_edit_server_post",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/api/content-edit/+server.ts",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -18760,6 +19282,15 @@
     },
     {
       "source": "front_src_lib_content_edit_lessoneditor",
+      "target": "front_src_lib_content_edit_api",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/LessonEditor.svelte"
+    },
+    {
+      "source": "front_src_lib_content_edit_lessoneditor",
       "target": "front_src_lib_content_edit_screenform",
       "relation": "imports_from",
       "_origin": "ast",
@@ -18802,6 +19333,15 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/MarkdownInput.svelte"
+    },
+    {
+      "source": "front_src_lib_content_edit_screenform",
+      "target": "environment",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/ScreenForm.svelte"
     },
     {
       "source": "front_src_lib_content_edit_screenform",
@@ -18869,6 +19409,15 @@
     {
       "source": "front_src_lib_lesson_screens_lessonrunner",
       "target": "front_src_lib_components_button",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/LessonRunner.svelte"
+    },
+    {
+      "source": "front_src_lib_lesson_screens_lessonrunner",
+      "target": "front_src_lib_content_edit_api",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19768,6 +20317,15 @@
     },
     {
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "front_src_lib_content_edit_api",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
+    },
+    {
+      "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
       "target": "front_src_lib_content_edit_editstore_svelte",
       "relation": "imports_from",
       "_origin": "ast",
@@ -19857,6 +20415,24 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
     },
     {
+      "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "front_src_routes_unit_unitid_module_moduleid_lessons_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
+    },
+    {
+      "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "reactivity",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte"
+    },
+    {
       "source": "front_src_routes_unit_unitid_module_moduleid_page",
       "target": "front_src_lib_components_appbar",
       "relation": "imports_from",
@@ -19912,13 +20488,35 @@
     },
     {
       "source": "front_src_lib_content_edit_editstore_svelte_editstore",
+      "target": "front_src_lib_content_edit_editstore_svelte_editstore_available",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_editstore_svelte_editstore",
       "target": "front_src_lib_content_edit_editstore_svelte_editstore_toggle",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
-      "source_location": "L13",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_editstore_svelte_editstore",
+      "target": "front_src_lib_content_edit_editstore_svelte_editstore_setauthed",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/editStore.svelte.ts",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -20085,18 +20683,6 @@
       "context": "argument",
       "source_file": "front/src/lib/lesson-screens/MarkAll.svelte",
       "source_location": "L52",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_content_edit_screenform",
-      "target": "front_src_lib_lesson_screens_passagemcq_oi",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "argument",
-      "source_file": "front/src/lib/content-edit/ScreenForm.svelte",
-      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -20916,5 +21502,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5b6d121e0626ca3ccd3d868d36223068e2de5909"
+  "built_at_commit": "e33f03c678cdaa36558d080f4edd8e9bfd8915bf"
 }

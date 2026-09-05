@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
-    "mtime": 1788595692.7202318,
-    "seen": 1788595742.9446428,
-    "ast_hash": "721ac50b7e40004636d4ce70c88a1ed4",
+    "mtime": 1788595933.2098372,
+    "seen": 1788595962.5554366,
+    "ast_hash": "82273443347f4648a876152b24438695",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Preface.svelte": {
@@ -576,153 +576,153 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
-    "mtime": 1788514873.8493407,
-    "seen": 1788515082.9205627,
-    "ast_hash": "e005975ea103fc12668ef95465cac0a9",
+    "mtime": 1788596694.8008971,
+    "seen": 1788596756.849329,
+    "ast_hash": "5a5befc35839047e43f6842a59825b3f",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-10.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309168,
-    "ast_hash": "f06ae11ecbd5cc2878d0ab0264189fb7",
+    "mtime": 1788596694.8118033,
+    "seen": 1788596756.8493347,
+    "ast_hash": "e685b600de9bc4a139a21378f8911a95",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-11.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.430919,
-    "ast_hash": "e981cf2ea6c7077d787c880a20fe0e27",
+    "mtime": 1788596694.8128076,
+    "seen": 1788596756.8493392,
+    "ast_hash": "bbd01f0727880136b4a53cc079cde5da",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-12.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309204,
-    "ast_hash": "b15464a9e539b0588b7caef8c8de4faf",
+    "mtime": 1788596694.8138032,
+    "seen": 1788596756.849343,
+    "ast_hash": "323d5c8c89177710b0fb8e1016a10ff5",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-13.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309218,
-    "ast_hash": "9214452557fe5cb8e1d716855b9d3c15",
+    "mtime": 1788596694.8138032,
+    "seen": 1788596756.8493478,
+    "ast_hash": "d5d29eba34a434556d53eebb3a9e8948",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-14.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309232,
-    "ast_hash": "2421122a2d7de3385ecf7094b7e1b2a8",
+    "mtime": 1788596694.8148048,
+    "seen": 1788596756.8493521,
+    "ast_hash": "cf5f8b542a46dce842639a35502ff55f",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-15.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309247,
-    "ast_hash": "c7cadadde27f56654464c4670cdc87c2",
+    "mtime": 1788596694.8158047,
+    "seen": 1788596756.8493557,
+    "ast_hash": "8fa2fcb44f5f7f7020ffba0f17e8470e",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-16.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309258,
-    "ast_hash": "4cda414a6746881d6ca88d24e2e71646",
+    "mtime": 1788596694.8168023,
+    "seen": 1788596756.8493602,
+    "ast_hash": "57012eebfc4e3cde49b3968a70b3595c",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-17.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.430927,
-    "ast_hash": "d3422e25631b6d7a498d5b8e72c19154",
+    "mtime": 1788596694.8178036,
+    "seen": 1788596756.849364,
+    "ast_hash": "42dbd3a65cc09b6dcb7d85c20a464e21",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-18.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309282,
-    "ast_hash": "b1bf0587392d9c73fad958a38a097762",
+    "mtime": 1788596694.8188038,
+    "seen": 1788596756.8493683,
+    "ast_hash": "a99a568aca8e50a860caa9d98c7e1cc3",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-19.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309297,
-    "ast_hash": "dbeb4393bcbe30fa802288c74320084c",
+    "mtime": 1788596694.8188038,
+    "seen": 1788596756.8493724,
+    "ast_hash": "82b24ebf1516658dedc30c1861c4fa19",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1788514873.8651166,
-    "seen": 1788515082.9205852,
-    "ast_hash": "33e4daa0ababc362301c8dfc865fb304",
+    "mtime": 1788596694.8008971,
+    "seen": 1788596756.8493764,
+    "ast_hash": "02bc1c1603b1929dfcea329b855632c2",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-20.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309325,
-    "ast_hash": "515fa092fa6efdda393b29a4f0d75d00",
+    "mtime": 1788596694.82012,
+    "seen": 1788596756.8493803,
+    "ast_hash": "c2a2b2ecda6e73e47b1654edb12ac965",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-21.ts": {
-    "mtime": 1788523211.77479,
-    "seen": 1788524083.430934,
-    "ast_hash": "e289084505db9012c8ad88dc901ef4ae",
+    "mtime": 1788596694.82012,
+    "seen": 1788596756.8493848,
+    "ast_hash": "bf5cf95a6637527ea89a8ca4f71982a1",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-22.ts": {
-    "mtime": 1788523211.77479,
-    "seen": 1788524083.4309351,
-    "ast_hash": "f001dbcd2e1ce70094c184926dc90dc2",
+    "mtime": 1788596694.8215616,
+    "seen": 1788596756.8493888,
+    "ast_hash": "dbb8568273eb19b43938e0c9539429fd",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-23.ts": {
-    "mtime": 1788523211.77479,
-    "seen": 1788524083.4309363,
-    "ast_hash": "55548c502cd6016019f542593c660b0c",
+    "mtime": 1788596694.8227775,
+    "seen": 1788596756.8493924,
+    "ast_hash": "0b7704404bf7ef2d51972387e683b3e6",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-24.ts": {
-    "mtime": 1788523211.7767994,
-    "seen": 1788524083.4309375,
-    "ast_hash": "29e51d842527d27cfa3fd6cc11654833",
+    "mtime": 1788596694.8227775,
+    "seen": 1788596756.849396,
+    "ast_hash": "6305119e24afc0331cddab24d76d79ee",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-25.ts": {
-    "mtime": 1788523211.7767994,
-    "seen": 1788524083.4309387,
-    "ast_hash": "4b8f1bf44797f7479fdcec65c7dcf9a2",
+    "mtime": 1788596694.823777,
+    "seen": 1788596756.8493998,
+    "ast_hash": "6abbc03b0e492aea1c247f7b7638addd",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1788595698.2371292,
-    "seen": 1788595742.9445937,
-    "ast_hash": "c34dfa32d575160814654d28fe4b6017",
+    "mtime": 1788597636.7106967,
+    "seen": 1788597666.3988452,
+    "ast_hash": "cbeef41c212c374b4272211d430d3480",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-4.ts": {
-    "mtime": 1788525318.885399,
-    "seen": 1788525553.2350993,
-    "ast_hash": "10ca5098be005efad955b6a7d1bba2f0",
+    "mtime": 1788596694.8048108,
+    "seen": 1788596756.8494077,
+    "ast_hash": "e295d5cbfabb76f994bdc7bcd9aa70d8",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-5.ts": {
-    "mtime": 1788523211.761286,
-    "seen": 1788524083.4309428,
-    "ast_hash": "cd87a40830f3d97b0e701edad54efc11",
+    "mtime": 1788596694.8048108,
+    "seen": 1788596756.8494122,
+    "ast_hash": "27ae741a43b93c6b69c2352a6de6d9d1",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-6.ts": {
-    "mtime": 1788523211.761286,
-    "seen": 1788524083.4309437,
-    "ast_hash": "cf626c8772c87cf434dbfc5b4e19ec6d",
+    "mtime": 1788596694.8048108,
+    "seen": 1788596756.8494163,
+    "ast_hash": "0e53228ab26c37f45c99d7c499b2fdc2",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-7.ts": {
-    "mtime": 1788523211.761286,
-    "seen": 1788524083.430945,
-    "ast_hash": "ba143c4f6bbb3d6017bd576f603752a7",
+    "mtime": 1788596694.8093014,
+    "seen": 1788596756.8494203,
+    "ast_hash": "46595870cf03c44ea1f999388a46c589",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-8.ts": {
-    "mtime": 1788523211.761286,
-    "seen": 1788524083.4309464,
-    "ast_hash": "5d51de1f024672d3bf1fd03436ae4e35",
+    "mtime": 1788596694.8093014,
+    "seen": 1788596756.8494246,
+    "ast_hash": "d84a11a4c3df4ee86fa32ae39652ca0b",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-9.ts": {
-    "mtime": 1788523211.7677417,
-    "seen": 1788524083.4309473,
-    "ast_hash": "acfdfb77c414c3997db011af08d25e46",
+    "mtime": 1788596694.8108063,
+    "seen": 1788596756.8494284,
+    "ast_hash": "8b345b08f8029cc39d469f250cc545a1",
     "semantic_hash": ""
   },
   "front/src/lib/content/index.ts": {
