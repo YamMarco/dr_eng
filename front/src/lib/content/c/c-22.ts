@@ -20,6 +20,31 @@ export const c22Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מבנים לבניית פסקת נימוק מסודרת: נימוק ← הסבר ← דוגמה."
+        },
+        {
+          "type": "word-card",
+          "word": "reason",
+          "translationHe": "סיבה / נימוק"
+        },
+        {
+          "type": "word-card",
+          "word": "this means",
+          "translationHe": "כלומר / זאת אומרת"
+        },
+        {
+          "type": "word-card",
+          "word": "for example",
+          "translationHe": "לדוגמה"
+        },
+        {
+          "type": "word-card",
+          "word": "therefore",
+          "translationHe": "לכן / לפיכך"
+        },
+        {
+          "type": "word-card",
+          "word": "another reason",
+          "translationHe": "סיבה נוספת"
         }
       ],
       "rounds": [

@@ -20,6 +20,31 @@ export const c10Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות התייחסות — למה מתייחסת מילה, ומה נחקר."
+        },
+        {
+          "type": "word-card",
+          "word": "refer(s) to",
+          "translationHe": "מתייחס ל־"
+        },
+        {
+          "type": "word-card",
+          "word": "experiment",
+          "translationHe": "ניסוי"
+        },
+        {
+          "type": "word-card",
+          "word": "similar",
+          "translationHe": "דומה"
+        },
+        {
+          "type": "word-card",
+          "word": "intense",
+          "translationHe": "עז / חזק"
+        },
+        {
+          "type": "word-card",
+          "word": "claim(s)",
+          "translationHe": "טוען"
         }
       ],
       "rounds": [

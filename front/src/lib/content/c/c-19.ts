@@ -20,6 +20,31 @@ export const c19Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילות הוראה שצריך לזהות מייד — כדי לא לבזבז זמן במבחן."
+        },
+        {
+          "type": "word-card",
+          "word": "paragraph",
+          "translationHe": "פסקה"
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "complete",
+          "translationHe": "להשלים"
+        },
+        {
+          "type": "word-card",
+          "word": "give ONE answer",
+          "translationHe": "תנו תשובה אחת בלבד"
+        },
+        {
+          "type": "word-card",
+          "word": "put a √ by the TWO",
+          "translationHe": "סמנו √ ליד השתיים"
         }
       ],
       "rounds": [

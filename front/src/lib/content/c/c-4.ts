@@ -142,6 +142,31 @@ export const c4Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים שמסמנות ניגוד או שינוי כיוון בטקסט — ומילות מפתח שכדאי לשים לב אליהן."
+        },
+        {
+          "type": "word-card",
+          "word": "however",
+          "translationHe": "אולם / אבל"
+        },
+        {
+          "type": "word-card",
+          "word": "although",
+          "translationHe": "למרות ש־"
+        },
+        {
+          "type": "word-card",
+          "word": "benefit(s)",
+          "translationHe": "יתרון / תועלת"
+        },
+        {
+          "type": "word-card",
+          "word": "effective",
+          "translationHe": "יעיל"
+        },
+        {
+          "type": "word-card",
+          "word": "responsible",
+          "translationHe": "אחראי"
         }
       ],
       "rounds": [

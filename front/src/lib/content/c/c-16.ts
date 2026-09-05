@@ -20,6 +20,31 @@ export const c16Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים שימושיות לכתיבת חיבור — לנימוק ולביסוס."
+        },
+        {
+          "type": "word-card",
+          "word": "volunteer",
+          "translationHe": "להתנדב / מתנדב"
+        },
+        {
+          "type": "word-card",
+          "word": "benefit",
+          "translationHe": "יתרון / תועלת"
+        },
+        {
+          "type": "word-card",
+          "word": "effective",
+          "translationHe": "יעיל"
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "responsible",
+          "translationHe": "אחראי"
         }
       ],
       "rounds": [

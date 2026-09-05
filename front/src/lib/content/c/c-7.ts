@@ -20,6 +20,31 @@ export const c7Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות רב־ברירה — דעה, החלפה והצלחה."
+        },
+        {
+          "type": "word-card",
+          "word": "argue(s)",
+          "translationHe": "טוען"
+        },
+        {
+          "type": "word-card",
+          "word": "replace",
+          "translationHe": "להחליף"
+        },
+        {
+          "type": "word-card",
+          "word": "successful",
+          "translationHe": "מצליח / מוצלח"
+        },
+        {
+          "type": "word-card",
+          "word": "introduce(d)",
+          "translationHe": "הכניס / הציג לראשונה"
+        },
+        {
+          "type": "word-card",
+          "word": "entire",
+          "translationHe": "כל / שלם"
         }
       ],
       "rounds": [

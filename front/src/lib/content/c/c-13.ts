@@ -20,6 +20,31 @@ export const c13Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים שמגלות את עמדת הכותב — דאגה, הקלה וזהירות."
+        },
+        {
+          "type": "word-card",
+          "word": "unfortunately",
+          "translationHe": "לרוע המזל / למרבה הצער"
+        },
+        {
+          "type": "word-card",
+          "word": "fortunately",
+          "translationHe": "למרבה המזל"
+        },
+        {
+          "type": "word-card",
+          "word": "concerned",
+          "translationHe": "מודאג"
+        },
+        {
+          "type": "word-card",
+          "word": "argue",
+          "translationHe": "לטעון / לצדד"
+        },
+        {
+          "type": "word-card",
+          "word": "cautiously",
+          "translationHe": "בזהירות"
         }
       ],
       "rounds": [

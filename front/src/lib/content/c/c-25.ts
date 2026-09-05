@@ -20,6 +20,31 @@ export const c25Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשיחה על טעויות ולמידה מהן — הסיכום של הקורס."
+        },
+        {
+          "type": "word-card",
+          "word": "error",
+          "translationHe": "שגיאה / טעות"
+        },
+        {
+          "type": "word-card",
+          "word": "pattern",
+          "translationHe": "דפוס / תבנית"
+        },
+        {
+          "type": "word-card",
+          "word": "confident",
+          "translationHe": "בטוח בעצמי"
+        },
+        {
+          "type": "word-card",
+          "word": "ready",
+          "translationHe": "מוכן"
+        },
+        {
+          "type": "word-card",
+          "word": "improve",
+          "translationHe": "להשתפר / לשפר"
         }
       ],
       "rounds": [

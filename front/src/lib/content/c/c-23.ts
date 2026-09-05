@@ -20,6 +20,31 @@ export const c23Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "חמישה משפטי פתיחה שמתאימים כמעט לכל נושא בחיבור."
+        },
+        {
+          "type": "word-card",
+          "word": "Many students...",
+          "translationHe": "\"תלמידים רבים...\""
+        },
+        {
+          "type": "word-card",
+          "word": "For example, a teenager who...",
+          "translationHe": "\"לדוגמה, מתבגר ש...\""
+        },
+        {
+          "type": "word-card",
+          "word": "Studies show...",
+          "translationHe": "\"מחקרים מראים...\""
+        },
+        {
+          "type": "word-card",
+          "word": "In many schools...",
+          "translationHe": "\"בבתי ספר רבים...\""
+        },
+        {
+          "type": "word-card",
+          "word": "According to many experts...",
+          "translationHe": "\"לדעת מומחים רבים...\""
         }
       ],
       "rounds": [

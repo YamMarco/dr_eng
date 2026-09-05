@@ -20,6 +20,31 @@ export const c24Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "הוראות המבחן שחוזרות בכל סימולציה — לזהות ולפעול בלי היסוס."
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "complete the sentence",
+          "translationHe": "השלימו את המשפט"
+        },
+        {
+          "type": "word-card",
+          "word": "what do we learn",
+          "translationHe": "מה אנחנו לומדים"
+        },
+        {
+          "type": "word-card",
+          "word": "put a √",
+          "translationHe": "סמנו √"
+        },
+        {
+          "type": "word-card",
+          "word": "not true",
+          "translationHe": "לא נכון"
         }
       ],
       "rounds": [

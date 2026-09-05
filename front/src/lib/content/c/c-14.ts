@@ -20,6 +20,31 @@ export const c14Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "אוצר מילים לנושאים חברתיים — מתנדבים, קהילה והזדמנויות."
+        },
+        {
+          "type": "word-card",
+          "word": "community",
+          "translationHe": "קהילה"
+        },
+        {
+          "type": "word-card",
+          "word": "volunteer",
+          "translationHe": "מתנדב / להתנדב"
+        },
+        {
+          "type": "word-card",
+          "word": "responsible",
+          "translationHe": "אחראי"
+        },
+        {
+          "type": "word-card",
+          "word": "programme",
+          "translationHe": "תוכנית"
+        },
+        {
+          "type": "word-card",
+          "word": "opportunity",
+          "translationHe": "הזדמנות"
         }
       ],
       "rounds": [

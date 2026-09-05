@@ -20,6 +20,31 @@ export const c6Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות פרטים — סיבה, שיפור והתניה."
+        },
+        {
+          "type": "word-card",
+          "word": "despite",
+          "translationHe": "למרות"
+        },
+        {
+          "type": "word-card",
+          "word": "improve",
+          "translationHe": "לשפר"
+        },
+        {
+          "type": "word-card",
+          "word": "cause(s)",
+          "translationHe": "גורם ל־ / סיבה"
+        },
+        {
+          "type": "word-card",
+          "word": "require(s)",
+          "translationHe": "דורש / זקוק ל־"
+        },
+        {
+          "type": "word-card",
+          "word": "quality",
+          "translationHe": "איכות"
         }
       ],
       "rounds": [

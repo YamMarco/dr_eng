@@ -20,6 +20,31 @@ export const c17Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מבנים שפותחים ומחברים משפטים בחיבור דעה."
+        },
+        {
+          "type": "word-card",
+          "word": "I think / I believe",
+          "translationHe": "אני חושב/ת / אני מאמין/ה"
+        },
+        {
+          "type": "word-card",
+          "word": "because",
+          "translationHe": "כי / מכיוון ש־"
+        },
+        {
+          "type": "word-card",
+          "word": "for example",
+          "translationHe": "לדוגמה"
+        },
+        {
+          "type": "word-card",
+          "word": "in addition / also",
+          "translationHe": "בנוסף / גם"
+        },
+        {
+          "type": "word-card",
+          "word": "in conclusion",
+          "translationHe": "לסיכום"
         }
       ],
       "rounds": [

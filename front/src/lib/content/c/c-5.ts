@@ -20,6 +20,31 @@ export const c5Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים שמופיעות סביב מחקרים, סיבה ותוצאה."
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "suggest(s)",
+          "translationHe": "מרמז / מציע"
+        },
+        {
+          "type": "word-card",
+          "word": "affect / effect",
+          "translationHe": "משפיע / השפעה"
+        },
+        {
+          "type": "word-card",
+          "word": "focus(ed)",
+          "translationHe": "מרוכז / התמקד"
+        },
+        {
+          "type": "word-card",
+          "word": "produce(s)",
+          "translationHe": "מייצר / יוצר"
         }
       ],
       "rounds": [

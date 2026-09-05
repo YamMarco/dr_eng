@@ -18,6 +18,31 @@ export const c1Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "בכל שאלה בשאלון C חוזרות אותן חמש מילים. הן לא קשות — אבל אם אתם עוצרים לחשוב עליהן באמצע הבחינה, איבדתם שניות שאין לכם. המטרה כאן היא לא להבין אותן, אלא לדעת אותן בלי לחשוב."
+        },
+        {
+          "type": "word-card",
+          "word": "paragraph",
+          "translationHe": "פסקה"
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "explain / explains",
+          "translationHe": "להסביר / מסביר"
+        },
+        {
+          "type": "word-card",
+          "word": "give ONE answer",
+          "translationHe": "תנו תשובה אחת בלבד"
+        },
+        {
+          "type": "word-card",
+          "word": "complete the sentence",
+          "translationHe": "השלימו את המשפט"
         }
       ],
       "rounds": [

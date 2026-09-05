@@ -20,6 +20,31 @@ export const c8Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים להשלמת משפטים — יצירה, צורך והחלפה."
+        },
+        {
+          "type": "word-card",
+          "word": "develop(s)",
+          "translationHe": "מפתח"
+        },
+        {
+          "type": "word-card",
+          "word": "require(s)",
+          "translationHe": "דורש"
+        },
+        {
+          "type": "word-card",
+          "word": "replace",
+          "translationHe": "להחליף"
+        },
+        {
+          "type": "word-card",
+          "word": "introduce(d)",
+          "translationHe": "הכניס לראשונה"
+        },
+        {
+          "type": "word-card",
+          "word": "benefit(s)",
+          "translationHe": "תועלת / להפיק תועלת"
         }
       ],
       "rounds": [

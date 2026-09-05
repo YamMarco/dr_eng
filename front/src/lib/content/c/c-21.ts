@@ -20,6 +20,31 @@ export const c21Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מבנים לפתיחת עמדה בשאלת כן/לא בחיבור."
+        },
+        {
+          "type": "word-card",
+          "word": "I think / I believe",
+          "translationHe": "אני חושב/ת / אני מאמין/ה"
+        },
+        {
+          "type": "word-card",
+          "word": "In my opinion",
+          "translationHe": "לדעתי"
+        },
+        {
+          "type": "word-card",
+          "word": "because",
+          "translationHe": "כי / מכיוון ש־"
+        },
+        {
+          "type": "word-card",
+          "word": "important",
+          "translationHe": "חשוב"
+        },
+        {
+          "type": "word-card",
+          "word": "agree / disagree",
+          "translationHe": "מסכים / לא מסכים"
         }
       ],
       "rounds": [

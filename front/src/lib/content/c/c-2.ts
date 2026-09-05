@@ -20,6 +20,31 @@ export const c2Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "חמש מילים שמופיעות כמעט בכל הוראה בשאלון C. בלעדיהן קשה להבין מה השאלה מבקשת."
+        },
+        {
+          "type": "word-card",
+          "word": "paragraph",
+          "translationHe": "פסקה"
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "explain / explains",
+          "translationHe": "להסביר / מסביר"
+        },
+        {
+          "type": "word-card",
+          "word": "give ONE answer",
+          "translationHe": "תנו תשובה אחת בלבד"
+        },
+        {
+          "type": "word-card",
+          "word": "complete the sentence",
+          "translationHe": "השלימו את המשפט"
         }
       ],
       "rounds": [

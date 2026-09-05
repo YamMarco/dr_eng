@@ -20,6 +20,31 @@ export const c11Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות הסקה — מה נרמז, ומה חלש במחקר."
+        },
+        {
+          "type": "word-card",
+          "word": "imply / implies",
+          "translationHe": "רומז"
+        },
+        {
+          "type": "word-card",
+          "word": "conclude",
+          "translationHe": "להסיק"
+        },
+        {
+          "type": "word-card",
+          "word": "limitation(s)",
+          "translationHe": "מגבלה / חיסרון"
+        },
+        {
+          "type": "word-card",
+          "word": "maintain",
+          "translationHe": "לשמור על / להתמיד"
+        },
+        {
+          "type": "word-card",
+          "word": "challenge(s)",
+          "translationHe": "אתגר / לערער על"
         }
       ],
       "rounds": [

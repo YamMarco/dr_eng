@@ -20,6 +20,31 @@ export const c18Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילות קישור נפוצות — ושגיאות שכדאי להימנע מהן."
+        },
+        {
+          "type": "word-card",
+          "word": "because",
+          "translationHe": "כי / מכיוון ש־"
+        },
+        {
+          "type": "word-card",
+          "word": "however",
+          "translationHe": "אולם / אבל"
+        },
+        {
+          "type": "word-card",
+          "word": "for example",
+          "translationHe": "לדוגמה"
+        },
+        {
+          "type": "word-card",
+          "word": "in addition / also",
+          "translationHe": "בנוסף / גם"
+        },
+        {
+          "type": "word-card",
+          "word": "although",
+          "translationHe": "למרות ש־"
         }
       ],
       "rounds": [

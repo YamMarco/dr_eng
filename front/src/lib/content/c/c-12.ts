@@ -20,6 +20,31 @@ export const c12Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות רעיון מרכזי — הרס, אזהרה וחומרה."
+        },
+        {
+          "type": "word-card",
+          "word": "destroy / destruction",
+          "translationHe": "הורס / הרס"
+        },
+        {
+          "type": "word-card",
+          "word": "cause(s)",
+          "translationHe": "גורם / סיבה"
+        },
+        {
+          "type": "word-card",
+          "word": "warn(s)",
+          "translationHe": "מזהיר"
+        },
+        {
+          "type": "word-card",
+          "word": "severe",
+          "translationHe": "חמור / קשה"
+        },
+        {
+          "type": "word-card",
+          "word": "individual",
+          "translationHe": "יחיד / אדם בודד"
         }
       ],
       "rounds": [

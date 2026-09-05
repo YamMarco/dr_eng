@@ -20,6 +20,31 @@ export const c15Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "אוצר מילים לנושאי טכנולוגיה וסביבה."
+        },
+        {
+          "type": "word-card",
+          "word": "research",
+          "translationHe": "מחקר"
+        },
+        {
+          "type": "word-card",
+          "word": "technology",
+          "translationHe": "טכנולוגיה"
+        },
+        {
+          "type": "word-card",
+          "word": "environment",
+          "translationHe": "סביבה"
+        },
+        {
+          "type": "word-card",
+          "word": "affect / effect",
+          "translationHe": "משפיע / השפעה"
+        },
+        {
+          "type": "word-card",
+          "word": "prevent",
+          "translationHe": "למנוע"
         }
       ],
       "rounds": [

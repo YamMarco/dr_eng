@@ -144,15 +144,41 @@ export const c3Lessons: LessonNode[] = [
     },
     "big": false,
     "content": {
-      "preface": [],
+      "preface": [
+        {
+          "type": "word-card",
+          "word": "result",
+          "translationHe": "תוצאה"
+        },
+        {
+          "type": "word-card",
+          "word": "found (past of find)",
+          "translationHe": "מצא / גילה"
+        },
+        {
+          "type": "word-card",
+          "word": "volunteer(s)",
+          "translationHe": "מתנדב / מתנדבים"
+        },
+        {
+          "type": "word-card",
+          "word": "residents",
+          "translationHe": "תושבים"
+        },
+        {
+          "type": "word-card",
+          "word": "stress",
+          "translationHe": "לחץ / מתח"
+        }
+      ],
       "rounds": [
         {
           "screens": [
             {
               "type": "mcq",
-              "prompt": "מה המשמעות של \"result(s)\"?",
+              "prompt": "מה המשמעות של \"result\"?",
               "options": [
-                "תוצאה / תוצאות",
+                "תוצאה",
                 "שאלה",
                 "סיבה",
                 "כותרת"

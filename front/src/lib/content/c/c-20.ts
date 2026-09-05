@@ -20,6 +20,31 @@ export const c20Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "הוראות מפתח לתרגול מתוזמן — לזהות מהר ולפעול."
+        },
+        {
+          "type": "word-card",
+          "word": "according to",
+          "translationHe": "לפי / על פי"
+        },
+        {
+          "type": "word-card",
+          "word": "explain(s)",
+          "translationHe": "מסביר"
+        },
+        {
+          "type": "word-card",
+          "word": "complete",
+          "translationHe": "להשלים"
+        },
+        {
+          "type": "word-card",
+          "word": "two correct",
+          "translationHe": "שתי תשובות נכונות"
+        },
+        {
+          "type": "word-card",
+          "word": "not",
+          "translationHe": "לא / שלילה"
         }
       ],
       "rounds": [

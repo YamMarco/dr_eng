@@ -20,6 +20,31 @@ export const c9Lessons: LessonNode[] = [
         {
           "type": "preface",
           "text": "מילים לשאלות \"שתי תשובות נכונות\" — נתינה, הגנה וגדילה."
+        },
+        {
+          "type": "word-card",
+          "word": "responsible",
+          "translationHe": "אחראי"
+        },
+        {
+          "type": "word-card",
+          "word": "provide(s)",
+          "translationHe": "מספק / נותן"
+        },
+        {
+          "type": "word-card",
+          "word": "community",
+          "translationHe": "קהילה"
+        },
+        {
+          "type": "word-card",
+          "word": "protect(s)",
+          "translationHe": "מגן על"
+        },
+        {
+          "type": "word-card",
+          "word": "increase(d)",
+          "translationHe": "הגדיל / עלה"
         }
       ],
       "rounds": [
