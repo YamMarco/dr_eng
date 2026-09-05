@@ -10,7 +10,7 @@
 	import { debugStore } from '$lib/debug.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import ScreenForm from '$lib/content-edit/ScreenForm.svelte';
-	import type { ScreenPath } from '$lib/content-edit/screenPath';
+	import { formatScreenLocation, type ScreenPath } from '$lib/content-edit/screenPath';
 	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
@@ -80,6 +80,7 @@
 
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
+	let currentLocation = $derived(currentPath ? formatScreenLocation(lessonId, currentPath) : undefined);
 
 	// Dev-only: edit the screen currently on-screen, without leaving the
 	// runner. See src/lib/content-edit/README.md.
@@ -226,17 +227,28 @@
 		</div>
 	</div>
 
-	{#if editStore.available && currentPath && !justFinished}
-		<!-- Dev-only: edit the screen currently showing. Detachable — see
-		     src/lib/content-edit/README.md. -->
-		<button
-			type="button"
-			onclick={() => (editSheetOpen = true)}
-			title="ערוך מסך זה (דיבוג)"
-			class="absolute inset-s-4 bottom-24 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white shadow-lg transition active:scale-95"
-		>
-			✏️
-		</button>
+	{#if editStore.available && currentLocation && !justFinished}
+		<!-- Dev-only: shows where the on-screen content lives, and opens its
+		     editor. Detachable — see src/lib/content-edit/README.md. -->
+		<div class="absolute inset-s-4 bottom-24 z-10 flex items-center gap-1.5">
+			<button
+				type="button"
+				onclick={() => navigator.clipboard?.writeText(currentLocation ?? '')}
+				title="העתק מזהה מסך"
+				dir="ltr"
+				class="max-w-36 truncate rounded-full bg-ink/80 px-2 py-1.5 font-mono text-[10px] text-white shadow-lg"
+			>
+				{currentLocation}
+			</button>
+			<button
+				type="button"
+				onclick={() => (editSheetOpen = true)}
+				title="ערוך מסך זה (דיבוג)"
+				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white shadow-lg transition active:scale-95"
+			>
+				✏️
+			</button>
+		</div>
 	{/if}
 
 	{#if debugStore.enabled && !justFinished}

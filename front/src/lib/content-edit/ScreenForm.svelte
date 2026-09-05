@@ -3,6 +3,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
+	import { formatScreenLocation } from './screenPath';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
@@ -23,10 +24,7 @@
 		onDelete: () => Promise<void>;
 	} = $props();
 
-	// e.g. "eye_catch_intro · preface[1]" or "eye_catch_intro · round1[0]"
-	let location = $derived(
-		`${lessonId ?? '?'} · ${bucket === 'preface' ? 'preface' : `round${bucket}`}[${index}]`
-	);
+	let location = $derived(formatScreenLocation(lessonId, { bucket, index }));
 
 	// A plain, mutable clone — never touch the live content object. The parent
 	// remounts every form on any structural change, so `screen` is fixed for

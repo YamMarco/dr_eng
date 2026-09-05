@@ -3,6 +3,12 @@
 // (the lessons-path popover, or live in the runner).
 export type ScreenPath = { bucket: 'preface' | number; index: number };
 
+/** e.g. "eye_catch_intro · preface[1]" or "eye_catch_intro · round1[0]" */
+export function formatScreenLocation(lessonId: string | undefined, path: ScreenPath): string {
+	const bucket = path.bucket === 'preface' ? 'preface' : `round${path.bucket}`;
+	return `${lessonId ?? '?'} · ${bucket}[${path.index}]`;
+}
+
 /** Same split LessonRunner is fed with: preface + round 0 screens play together. */
 export function screenPathsForRound(
 	prefaceLength: number,
