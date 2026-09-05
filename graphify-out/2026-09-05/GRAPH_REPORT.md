@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-05)
 
 ## Corpus Check
-- 139 files · ~86,873 words
+- 139 files · ~86,944 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 907 nodes · 1117 edges · 86 communities (68 shown, 18 thin omitted)
+- 904 nodes · 1117 edges · 81 communities (66 shown, 15 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9fdca55c`
+- Built from commit: `2de8c1f9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -51,7 +51,7 @@
 - lesson-screens/types.ts
 - content/index.ts
 - Lesson & content — data model
-- screenSkeletons.ts
+- ScreenForm.svelte
 - index.svelte.ts
 - Section 20 · משפטים שעובדים
 - LessonEditor.svelte
@@ -76,14 +76,11 @@
 - Section 15 · רעיון מרכזי
 - חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
 - Section 26 · סימולציה ותיקון
-- book/+page.svelte
+- api.ts
 - 3 · `s3-l2` — מציאה וסימון (c.3.3)
 - 1 (vefore c.4.1, after c.3.4)
 - debug.svelte.ts
-- exam.svelte.ts
-- lessonProgress.svelte.ts
-- session.svelte.ts
-- ExamSession
+- screenPath.ts
 - questions
 - content-edit — in-app screen editor
 - questions
@@ -123,7 +120,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (86 total, 18 thin omitted)
+## Communities (81 total, 15 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -142,12 +139,12 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.16
-Nodes (12): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+4 more)
+Cohesion: 0.06
+Nodes (20): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+12 more)
 
 ### Community 5 - "LessonRunner.svelte"
-Cohesion: 0.05
-Nodes (28): copyText(), EditStore, ScreenPath, allScreenPaths, allScreens, confirmDiscard(), copyLocation(), currentLocation (+20 more)
+Cohesion: 0.07
+Nodes (24): allScreenPaths, allScreens, confirmDiscard(), currentLocation, currentPath, currentScreen, dirty, editSheetOpen (+16 more)
 
 ### Community 6 - "Section 5 · Eye Catchers · מילות שלילה"
 Cohesion: 0.06
@@ -213,12 +210,12 @@ Nodes (32): c10Lessons, c11Lessons, c12Lessons, c13Lessons, c14Lessons, c15Lesso
 Cohesion: 0.22
 Nodes (8): Entities, Files (`front/src/lib/content/`), Lesson & content — data model, Notes, Rules, Runtime state (separate from content), Screen taxonomy (the `type` discriminator), Serving layer
 
-### Community 38 - "screenSkeletons.ts"
-Cohesion: 0.50
-Nodes (3): SCREEN_TYPE_GROUPS, SCREEN_TYPES, LessonScreen
+### Community 38 - "ScreenForm.svelte"
+Cohesion: 0.20
+Nodes (5): copyText(), SCREEN_TYPE_GROUPS, SCREEN_TYPES, copyLocation(), LessonScreen
 
 ### Community 39 - "index.svelte.ts"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (7): dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he
 
 ### Community 40 - "Section 20 · משפטים שעובדים"
@@ -226,8 +223,12 @@ Cohesion: 0.20
 Nodes (10): 4.c.20.1 · בלי פועל אין משפט, 4.c.20.2 · מצא את הפועל, 4.c.20.3 · יחיד ורבים, 4.c.20.4 · זמנים — `I was think`, 4.c.20.5 · בלי `the` בהכללה, 4.c.20.6 · `because` דורש פסוקית שלמה, 4.c.20.7 · מילה, צירוף, משפט, 4.c.20.8 · ארבעה משפטים, ארבעה פעלים (+2 more)
 
 ### Community 41 - "LessonEditor.svelte"
-Cohesion: 0.13
-Nodes (16): saveLessonContent(), storedKey(), addScreen(), applyScreen(), banner, buckets, confirmDiscard(), deleteScreen() (+8 more)
+Cohesion: 0.18
+Nodes (12): addScreen(), applyScreen(), banner, buckets, confirmDiscard(), deleteScreen(), dirty, handleClose() (+4 more)
+
+### Community 42 - "registry.ts"
+Cohesion: 0.15
+Nodes (4): ESCAPE, screenComponents, KEY, LessonSession
 
 ### Community 43 - "Section 17 · בנק מילים · חברה וקהילה"
 Cohesion: 0.22
@@ -309,9 +310,9 @@ Nodes (8): 4.c.19.1 · Notice — מה שווה לקחת, 4.c.19.2 · Understand
 Cohesion: 0.29
 Nodes (7): 4.c.26.1 · חצי בחינה — קריאה, 4.c.26.2 · חצי בחינה — כתיבה, 4.c.26.3 · סימולציה מלאה, 4.c.26.4 · איזה Pattern נכשל, 4.c.26.5 · תיקון ממוקד — דפוס אחד, 4.c.26.6 · ערכת הבחינה האישית, Section 26 · סימולציה ותיקון
 
-### Community 63 - "book/+page.svelte"
-Cohesion: 0.15
-Nodes (3): canGoPrev, canSubmit, formattedDate
+### Community 63 - "api.ts"
+Cohesion: 0.33
+Nodes (4): saveLessonContent(), storedKey(), saveAll(), saveDraft()
 
 ### Community 65 - "3 · `s3-l2` — מציאה וסימון (c.3.3)"
 Cohesion: 0.10
@@ -321,13 +322,9 @@ Nodes (19): 1 · `eye_catch_intro` — למה מספרים ושמות, 2 · `s3-
 Cohesion: 0.40
 Nodes (5): 1 (vefore c.4.1, after c.3.4), examples, message, preface, questions
 
-### Community 68 - "exam.svelte.ts"
-Cohesion: 0.21
-Nodes (4): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS
-
-### Community 69 - "lessonProgress.svelte.ts"
-Cohesion: 0.29
-Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
+### Community 67 - "debug.svelte.ts"
+Cohesion: 0.12
+Nodes (5): DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap
 
 ### Community 72 - "questions"
 Cohesion: 0.33
@@ -370,13 +367,13 @@ Cohesion: 0.33
 Nodes (10): getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), getLesson(), Body, checkAuth(), POST() (+2 more)
 
 ### Community 83 - "lessons/+page.svelte"
-Cohesion: 0.29
-Nodes (3): PALETTE, SectionTheme, ./$types
+Cohesion: 0.15
+Nodes (3): EditStore, PALETTE, SectionTheme
 
 ## Knowledge Gaps
-- **489 isolated node(s):** `structureVersion`, `dirty`, `banner`, `buckets`, `Save model: lesson-wide draft, one big button` (+484 more)
+- **489 isolated node(s):** `structureVersion`, `dirty`, `banner`, `buckets`, `dirty` (+484 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **18 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

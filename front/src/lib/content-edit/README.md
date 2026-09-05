@@ -33,10 +33,25 @@ save:
 Per-screen, `ScreenForm`'s **עדכן טיוטה** button and **מחק** only ever write
 into that shared local draft (`onApply`/`onDelete` props) — never the network
 directly. The type dropdown (grouped: טקסט והצגה / שאלות / תזמון) resets a
-screen to that type's blank shape; `preface`/`mcq`/`steps` get proper little
-forms (steps entries drag-reorder via the ⠿ handle, text fields go through
-`MarkdownInput.svelte` — a tiny WYSIWYG B/I/`<>`/🔗 field, `execCommand`-based,
-no deps); everything else gets a raw-JSON textarea.
+screen to that type's blank shape.
+
+**Every screen type has a real form** — no typing JSON, no `**bold**` syntax
+to remember. Shared building blocks live in `fields/`:
+
+- `StringListEditor` — add/remove list of strings (summary lines,
+  question-preview prompts, word banks, passage-quiz keywords).
+- `OptionsEditor` — mcq-style options + which one's correct.
+- `TokenPicker` — click the actual word(s) in a sentence/text instead of
+  typing an index; splits the text the exact same way the runtime screen
+  does (`mark-word` / `mark-all`), so a tap lines up with the real token.
+- `McqQuestionsEditor` / `KeywordQuestionsEditor` — the sub-question lists
+  inside `timed-passage`/`passage-mcq` and `passage-quiz`.
+
+`steps` entries drag-reorder via the ⠿ handle; prose fields go through
+`MarkdownInput.svelte` (WYSIWYG B/I/`<>`/🔗, `execCommand`-based, no deps).
+**JSON מתקדם** is still there as an escape hatch (e.g. a brand-new screen type
+this editor hasn't caught up to) — toggle into raw JSON, edit, toggle back;
+it re-parses straight into the form.
 
 Markdown is `**bold**`, `*italic*`, `` `code` ``, `[text](url)`, rendered at
 runtime by `src/lib/lesson-screens/miniMarkdown.ts` — that file is NOT part
