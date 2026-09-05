@@ -54,8 +54,11 @@
 	// = one commit, however many screens were edited/added/removed meanwhile.
 	// Editing this instead of re-deriving from `lesson` each time means
 	// add/delete render immediately without leaving this view.
+	// `lesson` flows through a $derived in the lessons page, so it's reactively
+	// proxied — $state.snapshot() unwraps that to a plain, independently
+	// mutable value (structuredClone alone throws on the proxy).
 	let draftContent = $state(
-		untrack(() => (lesson ? structuredClone(lesson.content) : undefined))
+		untrack(() => (lesson ? $state.snapshot(lesson.content) : undefined))
 	);
 	let dirty = $state(false);
 

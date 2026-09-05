@@ -37,7 +37,7 @@
   "35": "lesson-screens/types.ts",
   "36": "content/index.ts",
   "37": "Lesson & content — data model",
-  "38": "ScreenForm.svelte",
+  "38": "screenSkeletons.ts",
   "39": "index.svelte.ts",
   "40": "Section 20 · משפטים שעובדים",
   "41": "חלק א׳ — עקרונות התוכנית",
@@ -67,7 +67,7 @@
   "65": "3 · `s3-l2` — מציאה וסימון (c.3.3)",
   "66": "1 (vefore c.4.1, after c.3.4)",
   "67": "debug.svelte.ts",
-  "68": "exam.svelte.ts",
+  "68": "AppBar.svelte",
   "69": "lessonProgress.svelte.ts",
   "70": "session.svelte.ts",
   "71": "ExamSession",
@@ -81,6 +81,10 @@
   "79": "questions",
   "80": "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה",
   "81": "eye catchers - negative limit contrast.md",
-  "82": "AppBar.svelte",
-  "83": "sectionThemes.ts"
+  "82": "content-edit/+server.ts",
+  "83": "lessons/+page.svelte",
+  "84": "editStore.svelte.ts",
+  "85": "login/+server.ts",
+  "86": "@lucide/svelte",
+  "87": "svelte"
 }

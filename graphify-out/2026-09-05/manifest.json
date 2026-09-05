@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1788595393.715262,
-    "seen": 1788595450.4183338,
-    "ast_hash": "5eeed6163df98d8383bb13500092d292",
+    "mtime": 1788602226.589369,
+    "seen": 1788602502.8786886,
+    "ast_hash": "e23515b9b6e6f893f85c7f0e8be0dafd",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1788593486.7896502,
-    "seen": 1788593675.535779,
-    "ast_hash": "821dc49821d39e9f6cdddd80f8790026",
+    "mtime": 1788602144.159523,
+    "seen": 1788602502.8787465,
+    "ast_hash": "10f94d034aa8174d8c8f38b4ce7da586",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1788597636.7106967,
-    "seen": 1788597666.3988452,
-    "ast_hash": "cbeef41c212c374b4272211d430d3480",
+    "mtime": 1788602379.3034422,
+    "seen": 1788602502.8786595,
+    "ast_hash": "7820e0d61ad171734eace7959102fd26",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-4.ts": {
@@ -768,27 +768,27 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditor.svelte": {
-    "mtime": 1788594237.946596,
-    "seen": 1788594280.3775134,
-    "ast_hash": "91d7273d479bb407159bc609c7f48b83",
+    "mtime": 1788602049.9896853,
+    "seen": 1788602502.878617,
+    "ast_hash": "b3453e98ea1525f82814a4370d342cab",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenForm.svelte": {
-    "mtime": 1788595414.3502517,
-    "seen": 1788595450.4182527,
-    "ast_hash": "f5b2e283e9153a544975a918f94170c5",
+    "mtime": 1788602102.6018882,
+    "seen": 1788602502.878621,
+    "ast_hash": "4eb39ec24b186feb30bb19be8574ccea",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editStore.svelte.ts": {
-    "mtime": 1788521307.4718373,
-    "seen": 1788521448.1163166,
-    "ast_hash": "14dd006ba2d8119b939e586878726c37",
+    "mtime": 1788602027.2408078,
+    "seen": 1788602502.878626,
+    "ast_hash": "3f04213582a2b3e01c7e1156c09f358a",
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/+server.ts": {
-    "mtime": 1788522237.8830693,
-    "seen": 1788522336.114575,
-    "ast_hash": "b596759355d0f96c2ef277b4706c35d4",
+    "mtime": 1788602000.4947722,
+    "seen": 1788602502.878732,
+    "ast_hash": "e9de706ee4876307ab74b8e06bd04164",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
@@ -831,6 +831,24 @@
     "mtime": 1788595307.120656,
     "seen": 1788595450.4183414,
     "ast_hash": "402b7cc85ee82acb5df6591cc60f1671",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/api.ts": {
+    "mtime": 1788602015.6394126,
+    "seen": 1788602502.8786228,
+    "ast_hash": "5ee64ce860d5af87b5ebc32f546182b1",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/github.ts": {
+    "mtime": 1788601982.1012313,
+    "seen": 1788602502.8786275,
+    "ast_hash": "fb19e8f7d0c29e1dccbeb39c44a92f9c",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/content-edit/login/+server.ts": {
+    "mtime": 1788602006.6632965,
+    "seen": 1788602502.8787334,
+    "ast_hash": "aacacce0052149ac63ffcf5b0123bcff",
     "semantic_hash": ""
   }
 }

@@ -13,7 +13,11 @@
 	// Local, mutable working copy. Nothing here touches the server until the
 	// big "שמור שינויים בשיעור" button is pressed — one save = one commit,
 	// however many screens were edited/added/removed/reordered meanwhile.
-	let content = $state<LessonNode['content']>(untrack(() => structuredClone(lesson.content)));
+	// `lesson` flows through a $derived in the lessons page, so it's reactively
+	// proxied — $state.snapshot() unwraps that to a plain, independently
+	// mutable value before we start editing it (structuredClone alone throws
+	// on the proxy: https://svelte.dev/docs/svelte/$state#$state.snapshot).
+	let content = $state<LessonNode['content']>(untrack(() => $state.snapshot(lesson.content)));
 	// Bumped on add/delete to force every ScreenForm to remount at its new index.
 	let structureVersion = $state(0);
 	let dirty = $state(false);
