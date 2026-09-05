@@ -62,8 +62,11 @@ first time one of its lessons is saved — fine for the current all-JSON files.
     (`editStore.authed`; `editStore.available = dev || authed`).
   - Server env vars: `GITHUB_TOKEN` (fine-grained PAT, Contents: Read & write,
     scoped to this repo only), `GITHUB_OWNER`, `GITHUB_REPO`, `GITHUB_BRANCH`,
-    `CONTENT_EDIT_PASSWORD`. Set locally in `front/.env.local` (gitignored)
-    and in the Vercel project's Environment Variables for the deployed site.
+    `CONTENT_EDIT_PASSWORD`, optional `CONTENT_EDIT_AUTHOR` (defaults to
+    `Emil` — prefixes every commit message as `[Emil] content-edit: ...` so
+    saves from the web editor are easy to spot in git history). Set locally
+    in `front/.env.local` (gitignored) and in the Vercel project's
+    Environment Variables for the deployed site.
   - One retry on a stale-sha 409 (another save landed in between).
 
 Server side always requires the password outside dev — it 403s a request
