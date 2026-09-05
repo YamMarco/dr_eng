@@ -49,7 +49,7 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
-<p class="text-lg leading-relaxed font-semibold">{screen.prompt}</p>
+<p class="text-lg leading-relaxed font-semibold whitespace-pre-line">{screen.prompt}</p>
 <div class="mt-5 flex flex-col gap-3">
 	{#each screen.options as option, i (i)}
 		{@const isCorrect = i === screen.correctIndex}

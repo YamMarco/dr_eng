@@ -74,7 +74,7 @@ export const c3Lessons: LessonNode[] = [
               "type": "mcq",
               "prompt": "בשאלה כתוב: \"How many hours a week did the volunteers work?\" מה עושים קודם?",
               "options": [
-                "מחפשים בטקסט את כל המספרים, ואז בוחרים את זה שצמוד למילה hours",
+                "מחפשים בטקסט את המספרים, ואז בוחרים את זה שצמוד למילה hours",
                 "קוראים את הטקסט מההתחלה עד הסוף",
                 "מתרגמים כל מילה בשאלה",
                 "מנחשים לפי ההיגיון"
@@ -94,7 +94,7 @@ export const c3Lessons: LessonNode[] = [
             },
             {
               "type": "mcq",
-              "prompt": "בטקסט כתוב: \"The programme offers free classes three times a week in 12 neighbourhoods.\" בכמה שכונות?",
+              "prompt": "\"The programme offers free classes three times a week in 12 neighbourhoods.\"\nבכמה שכונות?",
               "options": [
                 "three",
                 "a week",
