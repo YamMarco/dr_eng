@@ -11,6 +11,7 @@
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import ScreenForm from '$lib/content-edit/ScreenForm.svelte';
 	import { formatScreenLocation, type ScreenPath } from '$lib/content-edit/screenPath';
+	import { copyText } from '$lib/content-edit/clipboard';
 	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
@@ -81,6 +82,15 @@
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
 	let currentLocation = $derived(currentPath ? formatScreenLocation(lessonId, currentPath) : undefined);
+	let locationCopied = $state(false);
+
+	async function copyLocation() {
+		if (!currentLocation) return;
+		const ok = await copyText(currentLocation);
+		if (!ok) return;
+		locationCopied = true;
+		setTimeout(() => (locationCopied = false), 1200);
+	}
 
 	// Dev-only: edit the screen currently on-screen, without leaving the
 	// runner. See src/lib/content-edit/README.md.
@@ -233,12 +243,12 @@
 		<div class="absolute inset-s-4 bottom-24 z-10 flex items-center gap-1.5">
 			<button
 				type="button"
-				onclick={() => navigator.clipboard?.writeText(currentLocation ?? '')}
+				onclick={copyLocation}
 				title="העתק מזהה מסך"
 				dir="ltr"
 				class="max-w-[70vw] truncate rounded-full bg-ink/80 px-3 py-1.5 font-mono text-xs font-semibold text-white shadow-lg"
 			>
-				{currentLocation}
+				{locationCopied ? 'הועתק ✓' : currentLocation}
 			</button>
 			<button
 				type="button"

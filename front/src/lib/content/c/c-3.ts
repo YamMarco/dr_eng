@@ -52,18 +52,19 @@ export const c3Lessons: LessonNode[] = [
           ]
         },
         {
-          "type": "preface",
-          "text": "בואו נתרגל: קטע קצר, ואז שאלה.\n\nEvery year, students take part in a special community project. They help clean parks, visit elderly people, and collect food for families in need. Last year, a student named Daniel suggested collecting books for children as well.\n\nThe idea became very popular. More than 300 books were collected in only two weeks, and they were given to children in several local schools. The teachers decided to repeat the project again this year."
-        },
-        {
-          "type": "mcq",
-          "prompt": "What did Daniel suggest collecting?",
-          "options": [
-            "Books for children",
-            "Food for families",
-            "Clothes for the elderly"
-          ],
-          "correctIndex": 0
+          "type": "passage-mcq",
+          "text": "Every year, students help clean parks, visit elderly people, and collect food for families in need. Last year, a student named Daniel suggested collecting books for children too. More than 300 books were collected in two weeks and given to local schools.",
+          "questions": [
+            {
+              "prompt": "What did Daniel suggest collecting?",
+              "options": [
+                "Books for children",
+                "Food for families",
+                "Clothes for the elderly"
+              ],
+              "correctIndex": 0
+            }
+          ]
         }
       ],
       "rounds": [

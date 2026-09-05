@@ -16,6 +16,7 @@ import TimeResult from './TimeResult.svelte';
 import TimeComparison from './TimeComparison.svelte';
 import TimedPassage from './TimedPassage.svelte';
 import PassageQuiz from './PassageQuiz.svelte';
+import PassageMcq from './PassageMcq.svelte';
 import WritingTask from './WritingTask.svelte';
 import WordCard from './WordCard.svelte';
 import SpellWord from './SpellWord.svelte';
@@ -36,6 +37,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'time-comparison': TimeComparison,
 	'timed-passage': TimedPassage,
 	'passage-quiz': PassageQuiz,
+	'passage-mcq': PassageMcq,
 	'writing-task': WritingTask,
 	'word-card': WordCard,
 	'spell-word': SpellWord

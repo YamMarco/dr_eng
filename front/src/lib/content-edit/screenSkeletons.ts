@@ -9,7 +9,16 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 	},
 	{
 		label: 'שאלות',
-		types: ['mcq', 'mark-word', 'mark-all', 'spell-word', 'writing-task', 'timed-passage', 'passage-quiz']
+		types: [
+			'mcq',
+			'mark-word',
+			'mark-all',
+			'spell-word',
+			'writing-task',
+			'timed-passage',
+			'passage-quiz',
+			'passage-mcq'
+		]
 	},
 	{
 		label: 'תזמון',
@@ -52,6 +61,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 		case 'timed-passage':
 			return { type, label: '', text: '', timerKey: '', questions: [] };
 		case 'passage-quiz':
+			return { type, text: '', questions: [] };
+		case 'passage-mcq':
 			return { type, text: '', questions: [] };
 		case 'writing-task':
 			return { type, prompt: '', wordBank: [], minSentences: 1, minWordsUsed: 1 };

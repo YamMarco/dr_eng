@@ -71,6 +71,13 @@ export type PassageQuizScreen = {
 	questions: PassageQuizQuestion[];
 };
 
+/** A text and multiple-choice questions about it, no timer — like timed-passage without the clock. */
+export type PassageMcqScreen = {
+	type: 'passage-mcq';
+	text: string;
+	questions: { prompt: string; options: string[]; correctIndex: number }[];
+};
+
 /**
  * Open-ended writing task, lightly auto-checked (not graded for real grammar):
  * enough sentences, each one capitalized and period-terminated, and enough
@@ -155,6 +162,7 @@ export type LessonScreen =
 	| TimeComparisonScreen
 	| TimedPassageScreen
 	| PassageQuizScreen
+	| PassageMcqScreen
 	| WritingTaskScreen
 	| WordCardScreen
 	| SpellWordScreen;
@@ -183,6 +191,7 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return screen.prompts.length === 0;
 		case 'timed-passage':
 		case 'passage-quiz':
+		case 'passage-mcq':
 			return !screen.text.trim() || screen.questions.length === 0;
 		case 'writing-task':
 			return !screen.prompt.trim();
@@ -204,6 +213,7 @@ export function countQuestions(screen: LessonScreen): number {
 			return 1;
 		case 'timed-passage':
 		case 'passage-quiz':
+		case 'passage-mcq':
 			return screen.questions.length;
 		case 'writing-task':
 		case 'spell-word':

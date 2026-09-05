@@ -4,6 +4,7 @@
 	import MarkdownInput from './MarkdownInput.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
 	import { formatScreenLocation } from './screenPath';
+	import { copyText } from './clipboard';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
@@ -25,6 +26,14 @@
 	} = $props();
 
 	let location = $derived(formatScreenLocation(lessonId, { bucket, index }));
+	let locationCopied = $state(false);
+
+	async function copyLocation() {
+		const ok = await copyText(location);
+		if (!ok) return;
+		locationCopied = true;
+		setTimeout(() => (locationCopied = false), 1200);
+	}
 
 	// A plain, mutable clone — never touch the live content object. The parent
 	// remounts every form on any structural change, so `screen` is fixed for
@@ -101,12 +110,12 @@
 	<div class="mb-1 flex items-center justify-between gap-2">
 		<button
 			type="button"
-			onclick={() => navigator.clipboard?.writeText(location)}
+			onclick={copyLocation}
 			title="העתק מזהה מסך"
 			class="truncate text-start font-mono text-sm font-semibold text-muted hover:text-ink"
 			dir="ltr"
 		>
-			{location}
+			{locationCopied ? 'הועתק ✓' : location}
 		</button>
 	</div>
 	<div class="mb-2 flex items-center justify-between gap-2">

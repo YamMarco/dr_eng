@@ -82,11 +82,14 @@ Add an object to the right section's array:
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
 | `timed-passage` | `label`, `text`, `timerKey`, `questions[{prompt, options, correctIndex}]` | n |
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
+| `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]` | n |
 
 `mark-all` is scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
 `mark-all.correctIndices` are token positions — split the text on whitespace and
 count. `passage-quiz` marks correct when every keyword appears in the typed answer
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
+`passage-mcq` is `timed-passage` without the clock/label — pick it for a short
+text + multiple-choice question(s) on one screen with no stopwatch UI.
 
 ## Runner rules
 
