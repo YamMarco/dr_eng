@@ -6,6 +6,7 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
 	import { markAllSwatch } from './markAllColors';
+	import { markAllSegments } from './markAllTokens';
 
 	const score = getLessonScore();
 	const session = getLessonSession();
@@ -26,7 +27,7 @@
 
 	let picked = $state<number[]>([]);
 	let checked = $state(false);
-	let words = $derived(screen.text.split(/\s+/));
+	let segments = $derived(markAllSegments(screen.text));
 
 	// All target token positions — the flat `correctIndices` plus every
 	// category's indices.
@@ -134,33 +135,27 @@
 	</div>
 {/if}
 
-<div class="flex flex-wrap gap-x-2 gap-y-3 leading-loose" dir={screen.dir ?? 'ltr'}>
-	{#each words as word, i (i)}
-		{@const isTarget = targets.has(i)}
-		{@const isPicked = picked.includes(i)}
-		{@const revealSwatch =
-			checked && isTarget && categoryColorByIndex.has(i)
-				? markAllSwatch(categoryColorByIndex.get(i))
-				: null}
-		<button
-			type="button"
-			disabled={checked}
-			style={revealSwatch
-				? `background:${revealSwatch.bg};color:${revealSwatch.fg};border-color:${revealSwatch.bg}`
-				: undefined}
-			class="rounded-lg border-2 px-2 py-1 font-semibold transition {revealSwatch
-				? ''
-				: checked
-					? isTarget
-						? 'border-brand bg-brand-soft text-brand-dark'
+<p
+	class="text-lg leading-loose whitespace-pre-wrap select-none"
+	dir={screen.dir ?? 'ltr'}
+>{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token}{@const isTarget =
+				targets.has(seg.index)}{@const isPicked = picked.includes(seg.index)}{@const revealSwatch =
+				checked && isTarget && categoryColorByIndex.has(seg.index)
+					? markAllSwatch(categoryColorByIndex.get(seg.index))
+					: null}<button
+				type="button"
+				disabled={checked}
+				onclick={() => toggle(seg.index)}
+				style={revealSwatch ? `background:${revealSwatch.bg};color:${revealSwatch.fg}` : undefined}
+				class="rounded-sm px-0.5 font-semibold transition {revealSwatch
+					? ''
+					: checked
+						? isTarget
+							? 'bg-brand-soft text-brand-dark'
+							: isPicked
+								? 'bg-danger-soft text-danger line-through'
+								: 'opacity-60'
 						: isPicked
-							? 'border-danger bg-danger-soft text-danger'
-							: 'border-transparent opacity-60'
-					: isPicked
-						? 'border-brand bg-brand-soft/60'
-						: 'border-transparent hover:border-line'}"
-		>
-			{word}
-		</button>
-	{/each}
-</div>
+							? 'bg-brand-soft ring-1 ring-brand/40'
+							: 'hover:bg-line/50'}"
+			>{seg.text}</button>{:else}{seg.text}{/if}{/each}</p>

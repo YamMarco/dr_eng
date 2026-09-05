@@ -84,7 +84,8 @@ Add an object to the right section's array:
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
 | `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]` | n |
 
-`mark-all` is scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
+`mark-all` renders the passage as flowing text; each word is tap-to-toggle.
+Scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
 `mark-all.correctIndices` are token positions — split the text on whitespace and
 count. Targets = `correctIndices` ∪ every `categories[].indices`. `categories`
 is optional colour-coding (names / negatives / …): shown as a legend, and the

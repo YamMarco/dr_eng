@@ -4,6 +4,7 @@
 	// above/below). Clicking an existing highlight unmarks that word.
 	// Token indices match the runtime's `text.split(/\s+/)`.
 	import type { MarkAllSwatch } from '$lib/lesson-screens/markAllColors';
+	import { markAllSegments, markAllTokenSpans } from '$lib/lesson-screens/markAllTokens';
 
 	let {
 		text,
@@ -22,30 +23,7 @@
 	} = $props();
 
 	let container = $state<HTMLDivElement>();
-
-	// Split keeping whitespace: even parts are tokens (part index / 2 == the
-	// index in text.split(/\s+/)), odd parts are the separators.
-	let segments = $derived.by(() => {
-		const parts = text.split(/(\s+)/);
-		const out: { token: boolean; index: number; text: string }[] = [];
-		for (let p = 0; p < parts.length; p++) {
-			if (parts[p] === '') continue;
-			out.push({ token: p % 2 === 0, index: p / 2, text: parts[p] });
-		}
-		return out;
-	});
-
-	// token index -> [start, end) char offsets in `text`
-	function tokenCharSpans(): Map<number, [number, number]> {
-		const parts = text.split(/(\s+)/);
-		const m = new Map<number, [number, number]>();
-		let offset = 0;
-		for (let p = 0; p < parts.length; p++) {
-			if (p % 2 === 0 && parts[p] !== '') m.set(p / 2, [offset, offset + parts[p].length]);
-			offset += parts[p].length;
-		}
-		return m;
-	}
+	let segments = $derived(markAllSegments(text));
 
 	function charOffset(node: Node | null, nodeOffset: number): number {
 		if (!node || !container) return 0;
@@ -75,7 +53,7 @@
 			return;
 		}
 		const hit: number[] = [];
-		for (const [idx, [ts, te]] of tokenCharSpans()) {
+		for (const [idx, [ts, te]] of markAllTokenSpans(text)) {
 			if (ts < e && te > s) hit.push(idx);
 		}
 		hit.sort((x, y) => x - y);
@@ -97,5 +75,5 @@
 				style="background:{colors[seg.index].bg};color:{colors[
 					seg.index
 				].fg};user-select:text;-webkit-user-select:text"
-				class="rounded-[3px] px-px"
+				class="rounded-sm px-px"
 			>{seg.text}</button>{:else}{seg.text}{/if}{/each}</div>
