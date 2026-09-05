@@ -29,8 +29,8 @@ export const c3Lessons: LessonNode[] = [
           "type": "summary",
           "title": "שני המגנטים",
           "lines": [
-            "מספר = המספר + מה שהוא סופר. לדוגמה: 2,000 trees · three hours a week · 40% · five years",
-            "שם = אדם, מקום או ארגון, תמיד באות גדולה. לדוגמה: Dr. Maria Santos · Greenville · Greenville University"
+            "**🔢 מספר = הספרה + מה שהיא סופרת**\nרק הספרה לבד היא **לא** מגנט שלם.\nהעין שלך — ועיני הבוחנים — מחפשות את **היחידה המלאה:**\n\nהספרה+ מה שהיא סופרתהמגנט השלם2,000trees**2,000 trees**threehours a week**three hours a week**40%**40%**fiveyears**five years**\n\n**למה זה חשוב?**\nכשתחפש בטקסט — אתה מחפש את **שתי המילים ביחד**, לא רק את הספרה.\n\nככה תדע שמצאת את המקום הנכון",
+            "**🔠 שם = אדם, מקום, או ארגון**\nאיך מזהים שם בטקסט אנגלי?\n**אות גדולה באמצע משפט — זה תמיד שם.**\n\nסוגדוגמאותאדם**Dr. Maria Santos · John Miller**מקום**Greenville · Lake Ontario**ארגון**Greenville University · NASA**\n\n**למה האות הגדולה כל כך שימושית?**\nבעברית קשה לזהות שמות — כולם נראים אותו דבר.\n\nבאנגלית? השם **קופץ** מהשורה. העין שלך תופסת אותו אוטומטית, גם בלי לקרוא.\n\n**נסה:**\n\n*\"What did Dr. Maria Santos discover in Greenville?\"*\n\nכמה מגנטים יש כאן — ומה הם?"
           ]
         },
         {
