@@ -544,7 +544,7 @@
       "file_type": "code",
       "norm_label": "i()",
       "source_file": "front/src/lib/lesson-screens/Mcq.svelte",
-      "source_location": "L54"
+      "source_location": "L62"
     },
     {
       "id": "front_src_lib_lesson_screens_passagemcq_oi",
@@ -17816,17 +17816,6 @@
       "weight": 1.0
     },
     {
-      "source": "front_src_lib_lesson_screens_mcq",
-      "target": "front_src_lib_lesson_screens_mcq_i",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/Mcq.svelte",
-      "source_location": "L54",
-      "weight": 1.0
-    },
-    {
       "source": "front_src_lib_lesson_screens_minimarkdown",
       "target": "front_src_lib_lesson_screens_minimarkdown_mdinline",
       "relation": "contains",
@@ -20111,6 +20100,18 @@
       "weight": 1.0
     },
     {
+      "source": "front_src_lib_lesson_screens_mcq",
+      "target": "front_src_lib_lesson_screens_mcq_i",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "front/src/lib/lesson-screens/Mcq.svelte",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
       "source": "agents_bagrut_prep_app",
       "target": "agents_brief_persona",
       "relation": "conceptually_related_to",
@@ -20915,5 +20916,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f33c6b8b44034b4f9085bcbc661fee03f44fe2e7"
+  "built_at_commit": "5b6d121e0626ca3ccd3d868d36223068e2de5909"
 }

@@ -186,6 +186,11 @@ export const c3Lessons: LessonNode[] = [
               "correctIndex": 0
             },
             {
+              "type": "spell-word",
+              "word": "result",
+              "mode": "copy"
+            },
+            {
               "type": "mcq",
               "prompt": "מה המשמעות של \"found (past of find)\"?",
               "options": [
@@ -195,6 +200,11 @@ export const c3Lessons: LessonNode[] = [
                 "שכח"
               ],
               "correctIndex": 1
+            },
+            {
+              "type": "spell-word",
+              "word": "found",
+              "mode": "copy"
             },
             {
               "type": "mcq",
@@ -208,6 +218,11 @@ export const c3Lessons: LessonNode[] = [
               "correctIndex": 2
             },
             {
+              "type": "spell-word",
+              "word": "volunteers",
+              "mode": "copy"
+            },
+            {
               "type": "mcq",
               "prompt": "מה המשמעות של \"residents\"?",
               "options": [
@@ -219,6 +234,11 @@ export const c3Lessons: LessonNode[] = [
               "correctIndex": 3
             },
             {
+              "type": "spell-word",
+              "word": "residents",
+              "mode": "copy"
+            },
+            {
               "type": "mcq",
               "prompt": "מה המשמעות של \"stress\"?",
               "options": [
@@ -228,6 +248,11 @@ export const c3Lessons: LessonNode[] = [
                 "שקט"
               ],
               "correctIndex": 0
+            },
+            {
+              "type": "spell-word",
+              "word": "stress",
+              "mode": "copy"
             }
           ]
         },
