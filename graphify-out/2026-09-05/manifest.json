@@ -786,15 +786,15 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/+server.ts": {
-    "mtime": 1788605299.9829457,
-    "seen": 1788605849.8022149,
-    "ast_hash": "8b4a5f52f731efe9a54af619bda81bea",
+    "mtime": 1788607861.8632095,
+    "seen": 1788607917.510231,
+    "ast_hash": "46647f7e101e42f47eac11f447c0b674",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1788605753.8497372,
-    "seen": 1788605849.802368,
-    "ast_hash": "2003946d1d8ad0ea5d0db197a2c3de9a",
+    "mtime": 1788607900.4442697,
+    "seen": 1788607917.5103533,
+    "ast_hash": "96ae731e3e8ee4b286b6b0d422049f02",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {

@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-05)
 
 ## Corpus Check
-- 139 files · ~86,979 words
+- 144 files · ~88,587 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 903 nodes · 1115 edges · 88 communities (69 shown, 19 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 16 edges (avg confidence: 0.87)
+- 910 nodes · 1126 edges · 84 communities (68 shown, 16 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `00f493df`
+- Built from commit: `77a53847`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -47,18 +47,17 @@
 - .claude/CLAUDE.md
 - extraction-spec.md
 - Section 2 · P1 — לא קוראים את הטקסט
-- score.svelte.ts
 - lesson-screens/types.ts
+- api.ts
 - content/index.ts
 - Lesson & content — data model
-- ScreenForm.svelte
+- clipboard.ts
 - index.svelte.ts
 - Section 20 · משפטים שעובדים
 - LessonEditor.svelte
-- registry.ts
+- I18n
 - Section 17 · בנק מילים · חברה וקהילה
 - Section 21 · מקשרים ומרפאת שגיאות
-- WritingTask.svelte
 - Section 16 · עמדת הכותב
 - Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations
 - Section 22 · ניהול זמן
@@ -80,9 +79,8 @@
 - 3 · `s3-l2` — מציאה וסימון (c.3.3)
 - 1 (vefore c.4.1, after c.3.4)
 - debug.svelte.ts
-- screenPath.ts
+- exam.svelte.ts
 - חלק א׳ — עקרונות התוכנית
-- session.svelte.ts
 - questions
 - content-edit — in-app screen editor
 - questions
@@ -96,7 +94,6 @@
 - content-edit/+server.ts
 - lessons/+page.svelte
 - ExamSession
-- exam.svelte.ts
 - confirmDiscard
 
 ## God Nodes (most connected - your core abstractions)
@@ -126,7 +123,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (88 total, 19 thin omitted)
+## Communities (84 total, 16 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -145,7 +142,7 @@ Cohesion: 0.11
 Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts, build (+10 more)
 
 ### Community 4 - "curriculum.ts"
-Cohesion: 0.16
+Cohesion: 0.17
 Nodes (12): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+4 more)
 
 ### Community 5 - "LessonRunner.svelte"
@@ -204,9 +201,13 @@ Nodes (5): graphify, mission, persona, skills, workflow
 Cohesion: 0.06
 Nodes (32): 4.c.1.1 · חמש המילים שפותחות כל שאלה, 4.c.1.2 · כל מילה — לאן היא שולחת אותי, 4.c.1.3 · תשובה אחת אינה רשימה, 4.c.1.4 · מה מותר להביא מהראש, 4.c.1.5 · שער סקשן 1, 4.c.2.1 · כמה באמת צריך לקרוא, 4.c.2.2 · מילת המפתח היא הנושא, לא ה-what, 4.c.2.3 · ממילת המפתח לפסקה (+24 more)
 
-### Community 35 - "lesson-screens/types.ts"
-Cohesion: 0.11
-Nodes (17): MarkAllScreen, MarkWordScreen, McqScreen, PassageMcqScreen, PassageQuizQuestion, PassageQuizScreen, PrefaceScreen, QuestionPreviewScreen (+9 more)
+### Community 34 - "lesson-screens/types.ts"
+Cohesion: 0.05
+Nodes (32): ESCAPE, screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkAllScreen (+24 more)
+
+### Community 35 - "api.ts"
+Cohesion: 0.33
+Nodes (4): saveLessonContent(), storedKey(), saveAll(), saveDraft()
 
 ### Community 36 - "content/index.ts"
 Cohesion: 0.08
@@ -217,16 +218,16 @@ Cohesion: 0.22
 Nodes (8): Entities, Files (`front/src/lib/content/`), Lesson & content — data model, Notes, Rules, Runtime state (separate from content), Screen taxonomy (the `type` discriminator), Serving layer
 
 ### Community 39 - "index.svelte.ts"
-Cohesion: 0.18
-Nodes (7): dictionaries, I18n, Language, ar, Dictionary, DictionaryOverride, he
+Cohesion: 0.16
+Nodes (6): dictionaries, Language, ar, Dictionary, DictionaryOverride, he
 
 ### Community 40 - "Section 20 · משפטים שעובדים"
 Cohesion: 0.20
 Nodes (10): 4.c.20.1 · בלי פועל אין משפט, 4.c.20.2 · מצא את הפועל, 4.c.20.3 · יחיד ורבים, 4.c.20.4 · זמנים — `I was think`, 4.c.20.5 · בלי `the` בהכללה, 4.c.20.6 · `because` דורש פסוקית שלמה, 4.c.20.7 · מילה, צירוף, משפט, 4.c.20.8 · ארבעה משפטים, ארבעה פעלים (+2 more)
 
 ### Community 41 - "LessonEditor.svelte"
-Cohesion: 0.11
-Nodes (19): saveLessonContent(), storedKey(), addScreen(), applyScreen(), banner, buckets, confirmDiscard(), deleteScreen() (+11 more)
+Cohesion: 0.08
+Nodes (17): i(), addScreen(), applyScreen(), banner, buckets, confirmDiscard(), deleteScreen(), dirty (+9 more)
 
 ### Community 43 - "Section 17 · בנק מילים · חברה וקהילה"
 Cohesion: 0.22
@@ -235,10 +236,6 @@ Nodes (9): 4.c.17.1 · קהילה והתנדבות — 10 מילים, 4.c.17.2 �
 ### Community 44 - "Section 21 · מקשרים ומרפאת שגיאות"
 Cohesion: 0.22
 Nodes (9): 4.c.21.1 · חמשת המקשרים ותפקידם, 4.c.21.2 · `because` לא פותח משפט עצמאי, 4.c.21.3 · לא `however` ולא `but` יחד, 4.c.21.4 · `also` מול `although`, 4.c.21.5 · `for example` בלי `that`, 4.c.21.6 · מרפאת שגיאות — עשרה תיקונים, 4.c.21.7 · פסקה עם כל חמשת המקשרים, 4.c.21.8 · שער סקשן 21 (+1 more)
-
-### Community 45 - "WritingTask.svelte"
-Cohesion: 0.20
-Nodes (9): recordAnswer(), allFilled, allOk, checked, combinedText, primaryAction(), punctuationOk, wordBankOk (+1 more)
 
 ### Community 46 - "Section 16 · עמדת הכותב"
 Cohesion: 0.25
@@ -321,8 +318,12 @@ Cohesion: 0.40
 Nodes (5): 1 (vefore c.4.1, after c.3.4), examples, message, preface, questions
 
 ### Community 67 - "debug.svelte.ts"
-Cohesion: 0.11
+Cohesion: 0.12
 Nodes (5): DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap
+
+### Community 69 - "exam.svelte.ts"
+Cohesion: 0.21
+Nodes (4): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS
 
 ### Community 70 - "חלק א׳ — עקרונות התוכנית"
 Cohesion: 0.25
@@ -376,18 +377,14 @@ Nodes (10): getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), getLesson(
 Cohesion: 0.18
 Nodes (3): EditStore, PALETTE, SectionTheme
 
-### Community 86 - "exam.svelte.ts"
-Cohesion: 0.33
-Nodes (4): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS
-
 ### Community 87 - "confirmDiscard"
 Cohesion: 0.50
 Nodes (4): confirmDiscard(), guardedExit(), guardedFinish(), guardedFinishAndContinue()
 
 ## Knowledge Gaps
-- **489 isolated node(s):** `Save model: lesson-wide draft, one big button`, `Local dev vs. production`, `Detach`, `Body`, `LessonScore` (+484 more)
+- **489 isolated node(s):** `Save model: lesson-wide draft, one big button`, `Local dev vs. production`, `Detach`, `LessonScore`, `MarkAllScreen` (+484 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **19 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
