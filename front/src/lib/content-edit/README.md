@@ -24,11 +24,23 @@ straight back into `src/lib/content/c/c-<N>.ts`; Vite HMR reloads it.
   first time one of its lessons is saved — fine for the current all-JSON files.
 - Server side is guarded by `dev`; it 403s in a build and the FAB never renders.
 
+You don't have to open the path popover either: while actually playing a
+lesson, a small ✏️ FAB (bottom-start, dev only) opens the same form for
+**whatever screen is on screen right now** — see `screenPath.ts` and the
+`editStore.available` block in `LessonRunner.svelte`.
+
 ## Detach
 
 1. `rm -r src/lib/content-edit`
 2. `rm -r src/routes/api/content-edit`
 3. In `src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` remove:
-   the two `$lib/content-edit/*` imports, `Pencil` from the lucide import,
-   `editingLesson` state, the `{#if editStore.enabled}` popover button, the
-   `{#if editStore.available}` FAB, and the `{#if editingLesson}` block.
+   the three `$lib/content-edit/*` imports, `Pencil` from the lucide import,
+   `editingLesson` state, `activeRoundScreenPaths`, the `screenPaths`/`lessonId`
+   props on the real `<LessonRunner>`, the `{#if editStore.enabled}` popover
+   button, the `{#if editStore.available}` FAB, and the `{#if editingLesson}`
+   block.
+4. In `src/lib/lesson-screens/LessonRunner.svelte` remove: the three
+   `$lib/content-edit/*` imports, the `screenPaths`/`lessonId` props,
+   `keptIndices`/`screenPaths`/`currentPath`/`editSheetOpen` and the two save/
+   delete functions, the `{#if editStore.available}` FAB block, and the
+   `{#if editSheetOpen}` sheet at the bottom.

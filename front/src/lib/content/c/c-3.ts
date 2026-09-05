@@ -23,7 +23,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           "type": "preface",
-          "text": "אז איך עושים את זה בעצם?\n\nבשאלה עצמה מסתתרים סימני דרך שכמעט תמיד קיימים. שני סוגי מילים בולטים לעין שמובילים כמעט תמיד ישר לתשובה: מספרים ושמות.\n\nאנחנו נקרא להם עוגני תוכן — הם קופצים מהדף עוד לפני שקראנו את הכל."
+          "text": "אז איך עושים את זה בעצם?\n\nבשאלה עצמה מסתתרים סימני דרך שכמעט תמיד קיימים. שני סוגי מילים בולטים לעין שמובילים כמעט תמיד ישר לתשובה: מספרים ושמות.\n\nאנחנו נקרא להם \"מגנטי עיניים\", כי הם קופצים מהדף עוד לפני שקראנו את הכל."
         },
         {
           "type": "summary",
@@ -52,13 +52,19 @@ export const c3Lessons: LessonNode[] = [
           ]
         },
         {
-          "type": "steps",
-          "steps": [
-            "השאלה: \"According to Dr. Maria Santos, what did her team want to show?\"",
-            "בשאלה יש שם: Dr. Maria Santos. השם הוא הכתובת שלנו בטקסט.",
-            "סורקים ומחפשים את השם. הוא מופיע רק בפסקה II.",
-            "קוראים רק שם — רק סביב השם. שאר הפסקאות לא מעניינות אותנו עכשיו."
-          ]
+          "type": "preface",
+          "text": "בואו נתרגל: קטע קצר, ואותה שאלה.\n\nParagraph I: The city planted thousands of trees and built new gardens over the past five years.\n\nParagraph II: The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener in less than ten years,\" she explains.\n\nיש בשאלה שם — Dr. Maria Santos. הוא מופיע רק בפסקה II. סורקים, מוצאים אותו, וקוראים רק סביבו."
+        },
+        {
+          "type": "mcq",
+          "prompt": "According to Dr. Maria Santos, what did her team want to show?",
+          "options": [
+            "That any city can become greener in less than ten years",
+            "That Greenville was polluted five years ago",
+            "That the city needs more volunteers",
+            "That stress levels fell by 40%"
+          ],
+          "correctIndex": 0
         }
       ],
       "rounds": [

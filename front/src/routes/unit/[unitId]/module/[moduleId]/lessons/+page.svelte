@@ -3,6 +3,7 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import LessonEditor from '$lib/content-edit/LessonEditor.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
+	import { screenPathsForRound } from '$lib/content-edit/screenPath';
 	import Button from '$lib/components/Button.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
@@ -168,6 +169,17 @@
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 	let activeRoundScreens = $derived(
 		activeNode ? screensForRound(activeNode.lesson, activeRoundIndex) : []
+	);
+	// Lets LessonRunner's dev-only edit button save straight back to the
+	// right (bucket, index) in the lesson's content — see content-edit/.
+	let activeRoundScreenPaths = $derived(
+		activeNode
+			? screenPathsForRound(
+					activeNode.lesson.content.preface.length,
+					activeRoundIndex,
+					activeNode.lesson.content.rounds[activeRoundIndex]?.screens.length ?? 0
+				)
+			: []
 	);
 
 	// "Continue to next lesson" only makes sense within the same section's
@@ -440,6 +452,8 @@
 	{#key activeId}
 		<LessonRunner
 			screens={activeRoundScreens}
+			screenPaths={activeRoundScreenPaths}
+			lessonId={activeNode.lesson.id}
 			lessonLabel={totalRounds(activeNode) > 1
 				? `${activeNode.lesson.titleHe} — ${i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))}`
 				: activeNode.lesson.titleHe}

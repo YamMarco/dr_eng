@@ -8,6 +8,9 @@
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
+	import { editStore } from '$lib/content-edit/editStore.svelte';
+	import ScreenForm from '$lib/content-edit/ScreenForm.svelte';
+	import type { ScreenPath } from '$lib/content-edit/screenPath';
 	import type { LessonScreen } from './types';
 
 	const PASS_THRESHOLD = 0.8;
@@ -15,6 +18,10 @@
 	type Props = {
 		/** One round's worth of screens (see the lessons path page — a lesson can have several rounds). */
 		screens: LessonScreen[];
+		/** Same length/order as `screens` — where each one lives in the lesson's content.
+		    Only given when the caller also passes `lessonId`; powers the dev-only live edit button. */
+		screenPaths?: ScreenPath[];
+		lessonId?: string;
 		lessonLabel: string;
 		hasNextLesson: boolean;
 		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
@@ -27,6 +34,8 @@
 
 	let {
 		screens: allScreens,
+		screenPaths: allScreenPaths,
+		lessonId,
 		lessonLabel,
 		hasNextLesson,
 		onExit,
@@ -37,8 +46,13 @@
 	const session = createLessonSession();
 
 	// A screen left with no real content (empty message, no options, ...) is
-	// skipped entirely rather than shown blank.
-	let screens = $derived(allScreens.filter((screen) => !isScreenEmpty(screen)));
+	// skipped entirely rather than shown blank. Kept indices are carried over
+	// to `screenPaths` in lockstep, so the two stay aligned by position.
+	let keptIndices = $derived(
+		allScreens.flatMap((screen, i) => (isScreenEmpty(screen) ? [] : [i]))
+	);
+	let screens = $derived(keptIndices.map((i) => allScreens[i]));
+	let screenPaths = $derived(allScreenPaths ? keptIndices.map((i) => allScreenPaths![i]) : undefined);
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are
 	// answered — never a growing denominator like 1/1, 1/2, 2/3.
 	const totalQuestions = untrack(() =>
@@ -65,6 +79,35 @@
 	let justFinished = $state(untrack(() => screens.length === 0));
 
 	let currentScreen = $derived(screens[screenIndex]);
+	let currentPath = $derived(screenPaths?.[screenIndex]);
+
+	// Dev-only: edit the screen currently on-screen, without leaving the
+	// runner. See src/lib/content-edit/README.md.
+	let editSheetOpen = $state(false);
+
+	async function saveCurrentScreen(next: LessonScreen) {
+		if (!lessonId || !currentPath) return;
+		const res = await fetch('/api/content-edit', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json' },
+			body: JSON.stringify({ lessonId, ...currentPath, op: 'set', screen: next })
+		});
+		if (!res.ok) throw new Error(await res.text());
+	}
+
+	async function deleteCurrentScreen() {
+		if (!lessonId || !currentPath) return;
+		const res = await fetch('/api/content-edit', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json' },
+			body: JSON.stringify({ lessonId, ...currentPath, op: 'delete' })
+		});
+		if (!res.ok) throw new Error(await res.text());
+		// The round's screen list just shifted under us — safest is to leave
+		// rather than keep playing with a stale index.
+		editSheetOpen = false;
+		onExit();
+	}
 	let isLastScreen = $derived(screenIndex === screens.length - 1);
 	let ScreenComponent = $derived(currentScreen ? screenComponents[currentScreen.type] : undefined);
 	let primaryLabel = $derived(
@@ -183,6 +226,19 @@
 		</div>
 	</div>
 
+	{#if editStore.available && currentPath && !justFinished}
+		<!-- Dev-only: edit the screen currently showing. Detachable — see
+		     src/lib/content-edit/README.md. -->
+		<button
+			type="button"
+			onclick={() => (editSheetOpen = true)}
+			title="ערוך מסך זה (דיבוג)"
+			class="absolute inset-s-4 bottom-24 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white shadow-lg transition active:scale-95"
+		>
+			✏️
+		</button>
+	{/if}
+
 	{#if debugStore.enabled && !justFinished}
 		<!-- Floating, absolutely positioned so it never affects the footer's
 		     layout — a dev-only shortcut, not part of the real lesson UI. -->
@@ -195,3 +251,36 @@
 		</button>
 	{/if}
 </div>
+
+{#if editSheetOpen && currentPath && currentScreen}
+	<!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
+	<div
+		class="fixed inset-0 z-60 flex items-end bg-black/40"
+		onclick={() => (editSheetOpen = false)}
+	>
+		<div
+			class="mx-auto max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-canvas p-4"
+			onclick={(e) => e.stopPropagation()}
+		>
+			<div class="mb-2 flex items-center justify-between">
+				<p class="text-sm font-bold">עריכת המסך הנוכחי</p>
+				<button
+					type="button"
+					onclick={() => (editSheetOpen = false)}
+					class="rounded-full px-2 py-1 text-xs font-semibold text-muted hover:bg-line/60"
+				>
+					סגור
+				</button>
+			</div>
+			{#key screenIndex}
+				<ScreenForm
+					screen={currentScreen}
+					bucket={currentPath.bucket}
+					index={currentPath.index}
+					onSave={saveCurrentScreen}
+					onDelete={deleteCurrentScreen}
+				/>
+			{/key}
+		</div>
+	</div>
+{/if}
