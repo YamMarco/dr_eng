@@ -411,7 +411,8 @@ export const c3Lessons: LessonNode[] = [
                 11,
                 14,
                 15
-              ]
+              ],
+              "wordBank": []
             },
             {
               "type": "mark-all",
