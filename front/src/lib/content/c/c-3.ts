@@ -264,7 +264,7 @@ export const c3Lessons: LessonNode[] = [
               "type": "mcq",
               "prompt": "Scientists ______ that short workouts also help.",
               "options": [
-                "volunteerד",
+                "volunteer",
                 "found (past of find)",
                 "residents",
                 "stress"
