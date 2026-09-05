@@ -127,17 +127,30 @@ export type SpellWordScreen = {
 	mode: 'copy' | 'listen';
 };
 
+/** A colour-coded bucket of things to mark (e.g. "names", "negatives"). */
+export type MarkAllCategory = {
+	name: string;
+	/** A key into MARK_ALL_PALETTE (see markAllColors.ts). */
+	color: string;
+	/** Token positions belonging to this category. */
+	indices: number[];
+};
+
 /**
  * Skim a whole paragraph and tap every "eye catcher" (numbers, names,
  * negatives, key words). The text is split on whitespace into tappable
- * tokens; `correctIndices` are the token positions that count. Multi-select,
- * one shared submit. Scored leniently — see MarkAll.svelte.
+ * tokens. `correctIndices` are the uncategorised targets; `categories` adds
+ * optional colour-coded buckets on top (their `indices` also count as
+ * targets). Multi-select, one shared submit. Scored leniently — see
+ * MarkAll.svelte.
  */
 export type MarkAllScreen = {
 	type: 'mark-all';
 	instruction: string;
 	text: string;
 	correctIndices: number[];
+	/** Optional colour-coded buckets — for teaching what kinds of thing to look for. */
+	categories?: MarkAllCategory[];
 	dir?: 'rtl' | 'ltr';
 	/** Optional scaffold: the words to hunt for, shown as chips above the text. */
 	wordBank?: string[];
@@ -186,7 +199,11 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'mark-word':
 			return !screen.sentence.trim();
 		case 'mark-all':
-			return !screen.text.trim() || screen.correctIndices.length === 0;
+			return (
+				!screen.text.trim() ||
+				(screen.correctIndices.length === 0 &&
+					!(screen.categories ?? []).some((c) => c.indices.length > 0))
+			);
 		case 'question-preview':
 			return screen.prompts.length === 0;
 		case 'timed-passage':

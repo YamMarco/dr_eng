@@ -41,9 +41,14 @@ to remember. Shared building blocks live in `fields/`:
 - `StringListEditor` — add/remove list of strings (summary lines,
   question-preview prompts, word banks, passage-quiz keywords).
 - `OptionsEditor` — mcq-style options + which one's correct.
-- `TokenPicker` — click the actual word(s) in a sentence/text instead of
-  typing an index; splits the text the exact same way the runtime screen
-  does (`mark-word` / `mark-all`), so a tap lines up with the real token.
+- `TokenPicker` — click the actual word in a sentence instead of typing an
+  index (`mark-word`); splits the text the exact same way the runtime does.
+- `TextMarker` — `mark-all`'s marker: the passage renders as flowing text,
+  the author drags to select a phrase and picks a category (or "no
+  category") from the bar that appears; a marked word clicks to unmark.
+  `mark-all` `categories` are optional colour buckets (names / negatives /
+  …) — swatches from `lesson-screens/markAllColors.ts`; on the runtime
+  reveal the matching words light up in their colour with a legend.
 - `McqQuestionsEditor` / `KeywordQuestionsEditor` — the sub-question lists
   inside `timed-passage`/`passage-mcq` and `passage-quiz`.
 

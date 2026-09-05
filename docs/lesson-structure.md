@@ -77,7 +77,7 @@ Add an object to the right section's array:
 | `time-comparison` | `aLabel`, `aKey`, `bLabel`, `bKey`, `fasterMessage`, `tieMessage` | — |
 | `mcq` | `prompt`, `options[]`, `correctIndex` | 1 |
 | `mark-word` | `sentence`, `correctWordIndex`, `dir?` | 1 |
-| `mark-all` | `instruction`, `text`, `correctIndices[]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
+| `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
 | `timed-passage` | `label`, `text`, `timerKey`, `questions[{prompt, options, correctIndex}]` | n |
@@ -86,7 +86,10 @@ Add an object to the right section's array:
 
 `mark-all` is scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
 `mark-all.correctIndices` are token positions — split the text on whitespace and
-count. `passage-quiz` marks correct when every keyword appears in the typed answer
+count. Targets = `correctIndices` ∪ every `categories[].indices`. `categories`
+is optional colour-coding (names / negatives / …): shown as a legend, and the
+matching tokens light up in that colour on the reveal (`color` is a key into
+`lesson-screens/markAllColors.ts`). Scoring ignores which category a token is in. `passage-quiz` marks correct when every keyword appears in the typed answer
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
 `passage-mcq` is `timed-passage` without the clock/label — pick it for a short
 text + multiple-choice question(s) on one screen with no stopwatch UI.

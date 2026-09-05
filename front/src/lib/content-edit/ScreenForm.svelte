@@ -5,11 +5,13 @@
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
+	import TextMarker from './fields/TextMarker.svelte';
 	import McqQuestionsEditor from './fields/McqQuestionsEditor.svelte';
 	import KeywordQuestionsEditor from './fields/KeywordQuestionsEditor.svelte';
 	import { SCREEN_TYPE_GROUPS, blankScreen } from './screenSkeletons';
 	import { formatScreenLocation } from './screenPath';
 	import { copyText } from './clipboard';
+	import { MARK_ALL_PALETTE, markAllSwatch, type MarkAllSwatch } from '$lib/lesson-screens/markAllColors';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
@@ -46,7 +48,10 @@
 	// real array to push into.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	function normalize(s: any) {
-		if (s.type === 'mark-all' && s.wordBank === undefined) s.wordBank = [];
+		if (s.type === 'mark-all') {
+			if (s.wordBank === undefined) s.wordBank = [];
+			if (!Array.isArray(s.correctIndices)) s.correctIndices = [];
+		}
 		return s;
 	}
 
@@ -94,6 +99,74 @@
 		if (from === to) return;
 		const [item] = draft.steps.splice(from, 1);
 		draft.steps.splice(to, 0, item);
+	}
+
+	// --- mark-all: category buckets + selection-based marking ---
+	let pendingMark = $state<number[]>([]);
+
+	// token index -> swatch, for every currently-marked token
+	let markColors = $derived.by(() => {
+		const m: Record<number, MarkAllSwatch> = {};
+		if (draft.type !== 'mark-all') return m;
+		for (const i of draft.correctIndices ?? []) m[i] = markAllSwatch(undefined);
+		for (const c of draft.categories ?? []) for (const i of c.indices) m[i] = markAllSwatch(c.color);
+		return m;
+	});
+
+	function markPending(categoryName: string | null) {
+		for (const i of pendingMark) {
+			draft.correctIndices = (draft.correctIndices ?? []).filter((x: number) => x !== i);
+			for (const c of draft.categories ?? []) c.indices = c.indices.filter((x: number) => x !== i);
+			if (categoryName === null) {
+				draft.correctIndices.push(i);
+			} else {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				draft.categories.find((c: any) => c.name === categoryName)?.indices.push(i);
+			}
+		}
+		draft.correctIndices.sort((a: number, b: number) => a - b);
+		for (const c of draft.categories ?? []) c.indices.sort((a: number, b: number) => a - b);
+		pendingMark = [];
+		window.getSelection()?.removeAllRanges();
+	}
+
+	function unmarkToken(i: number) {
+		draft.correctIndices = (draft.correctIndices ?? []).filter((x: number) => x !== i);
+		for (const c of draft.categories ?? []) c.indices = c.indices.filter((x: number) => x !== i);
+	}
+
+	function addCategory() {
+		const name = prompt('שם הקטגוריה (למשל: שמות, שלילה, מספרים)')?.trim();
+		if (!name) return;
+		draft.categories ??= [];
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		if (draft.categories.some((c: any) => c.name === name)) return;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const used = new Set(draft.categories.map((c: any) => c.color));
+		const color = (MARK_ALL_PALETTE.find((p) => !used.has(p.key)) ?? MARK_ALL_PALETTE[0]).key;
+		draft.categories.push({ name, color, indices: [] });
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	function deleteCategory(cat: any) {
+		draft.correctIndices.push(...cat.indices);
+		draft.correctIndices = [...new Set<number>(draft.correctIndices)].sort((a, b) => a - b);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		draft.categories = draft.categories.filter((c: any) => c !== cat);
+		if (draft.categories.length === 0) delete draft.categories;
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	function renameCategory(cat: any) {
+		const next = prompt('שם חדש', cat.name)?.trim();
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		if (next && !draft.categories.some((c: any) => c.name === next)) cat.name = next;
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	function cycleCategoryColor(cat: any) {
+		const idx = MARK_ALL_PALETTE.findIndex((p) => p.key === cat.color);
+		cat.color = MARK_ALL_PALETTE[(idx + 1) % MARK_ALL_PALETTE.length].key;
 	}
 
 	function apply() {
@@ -282,7 +355,7 @@
 			placeholder="הטקסט לסימון"
 			class="mb-2 w-full rounded-xl border-2 border-line bg-canvas p-2 text-sm"
 		></textarea>
-		<label class="mb-2 flex items-center gap-2 text-xs text-muted">
+		<label class="mb-3 flex items-center gap-2 text-xs text-muted">
 			כיוון
 			<select bind:value={draft.dir} class="rounded-lg border-2 border-line bg-canvas px-2 py-1">
 				<option value={undefined}>אוטומטי</option>
@@ -290,18 +363,66 @@
 				<option value="ltr">ltr</option>
 			</select>
 		</label>
-		<p class="mb-1 text-xs font-bold text-muted">אילו מילים נכונות? (אפשר כמה)</p>
-		<TokenPicker
+
+		<div class="mb-2 flex flex-wrap items-center gap-1.5">
+			<span class="text-xs font-bold text-muted">קטגוריות (אופציונלי):</span>
+			{#each draft.categories ?? [] as cat (cat)}
+				{@const sw = markAllSwatch(cat.color)}
+				<span
+					class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold"
+					style="background:{sw.bg};color:{sw.fg}"
+				>
+					<button type="button" title="החלף צבע" onclick={() => cycleCategoryColor(cat)}>🎨</button>
+					<button type="button" onclick={() => renameCategory(cat)}>{cat.name}</button>
+					<button type="button" onclick={() => deleteCategory(cat)}>✕</button>
+				</span>
+			{/each}
+			<button type="button" class="text-xs font-semibold text-brand" onclick={addCategory}>
+				+ קטגוריה
+			</button>
+		</div>
+
+		<p class="mb-1 text-xs font-bold text-muted">
+			סמנו טקסט (בגרירה) ואז בחרו לאיזה סוג הוא שייך. לחיצה על מילה מסומנת מבטלת אותה.
+		</p>
+		<TextMarker
 			text={draft.text}
-			splitPattern={/\s+/}
-			selected={draft.correctIndices}
-			onToggle={(i) => {
-				const set = new Set<number>(draft.correctIndices);
-				if (set.has(i)) set.delete(i);
-				else set.add(i);
-				draft.correctIndices = [...set].sort((a: number, b: number) => a - b);
-			}}
+			dir={draft.dir ?? 'auto'}
+			colors={markColors}
+			onSelect={(t) => (pendingMark = t)}
+			onTokenClick={unmarkToken}
 		/>
+		{#if pendingMark.length}
+			<div class="mt-2 flex flex-wrap items-center gap-1.5 rounded-xl bg-brand-soft/50 p-2">
+				<span class="text-xs font-bold text-muted">סמן כ־</span>
+				{#each draft.categories ?? [] as cat (cat)}
+					{@const sw = markAllSwatch(cat.color)}
+					<button
+						type="button"
+						onclick={() => markPending(cat.name)}
+						class="rounded-full px-2 py-0.5 text-xs font-bold"
+						style="background:{sw.bg};color:{sw.fg}"
+					>
+						{cat.name}
+					</button>
+				{/each}
+				<button
+					type="button"
+					onclick={() => markPending(null)}
+					class="rounded-full bg-surface px-2 py-0.5 text-xs font-bold ring-1 ring-line"
+				>
+					{draft.categories?.length ? 'ללא קטגוריה' : 'סמן'}
+				</button>
+				<button
+					type="button"
+					onclick={() => (pendingMark = [])}
+					class="rounded-full px-2 py-0.5 text-xs font-semibold text-muted"
+				>
+					בטל
+				</button>
+			</div>
+		{/if}
+
 		<p class="mt-3 mb-1 text-xs font-bold text-muted">בנק מילים לרמז (אופציונלי)</p>
 		<StringListEditor bind:items={draft.wordBank} addLabel="+ הוסף מילה" dir="ltr" />
 		<label class="mt-2 flex items-center gap-2 text-xs text-muted">

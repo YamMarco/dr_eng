@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
+	import { markAllSwatch } from './markAllColors';
 
 	const score = getLessonScore();
 	const session = getLessonSession();
@@ -26,7 +27,21 @@
 	let picked = $state<number[]>([]);
 	let checked = $state(false);
 	let words = $derived(screen.text.split(/\s+/));
-	let targets = $derived(new Set(screen.correctIndices));
+
+	// All target token positions — the flat `correctIndices` plus every
+	// category's indices.
+	let targets = $derived(
+		new Set([
+			...screen.correctIndices,
+			...(screen.categories ?? []).flatMap((c) => c.indices)
+		])
+	);
+	// token index -> palette key, for colour-coding the reveal.
+	let categoryColorByIndex = $derived.by(() => {
+		const m = new Map<number, string>();
+		for (const c of screen.categories ?? []) for (const i of c.indices) m.set(i, c.color);
+		return m;
+	});
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -91,6 +106,21 @@
 		</span>
 	{/if}
 </div>
+
+{#if screen.categories?.length}
+	<div class="mb-3 flex flex-wrap gap-2">
+		{#each screen.categories as cat (cat.name)}
+			{@const sw = markAllSwatch(cat.color)}
+			<span
+				class="rounded-full px-2.5 py-0.5 text-xs font-bold"
+				style="background:{sw.bg};color:{sw.fg}"
+			>
+				{cat.name}
+			</span>
+		{/each}
+	</div>
+{/if}
+
 {#if screen.wordBank?.length}
 	<div class="mb-4 rounded-2xl bg-accent-soft p-3">
 		<p class="mb-2 text-xs font-bold text-ink/60">{i18n.dict.exerciseKind.wordBankLabel}</p>
@@ -103,23 +133,32 @@
 		</div>
 	</div>
 {/if}
+
 <div class="flex flex-wrap gap-x-2 gap-y-3 leading-loose" dir={screen.dir ?? 'ltr'}>
 	{#each words as word, i (i)}
 		{@const isTarget = targets.has(i)}
 		{@const isPicked = picked.includes(i)}
+		{@const revealSwatch =
+			checked && isTarget && categoryColorByIndex.has(i)
+				? markAllSwatch(categoryColorByIndex.get(i))
+				: null}
 		<button
 			type="button"
 			disabled={checked}
-			onclick={() => toggle(i)}
-			class="rounded-lg border-2 px-2 py-1 font-semibold transition {checked
-				? isTarget
-					? 'border-brand bg-brand-soft text-brand-dark'
+			style={revealSwatch
+				? `background:${revealSwatch.bg};color:${revealSwatch.fg};border-color:${revealSwatch.bg}`
+				: undefined}
+			class="rounded-lg border-2 px-2 py-1 font-semibold transition {revealSwatch
+				? ''
+				: checked
+					? isTarget
+						? 'border-brand bg-brand-soft text-brand-dark'
+						: isPicked
+							? 'border-danger bg-danger-soft text-danger'
+							: 'border-transparent opacity-60'
 					: isPicked
-						? 'border-danger bg-danger-soft text-danger'
-						: 'border-transparent opacity-60'
-				: isPicked
-					? 'border-brand bg-brand-soft/60'
-					: 'border-transparent hover:border-line'}"
+						? 'border-brand bg-brand-soft/60'
+						: 'border-transparent hover:border-line'}"
 		>
 			{word}
 		</button>
