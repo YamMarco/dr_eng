@@ -528,9 +528,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkAll.svelte": {
-    "mtime": 1788623505.1612034,
-    "seen": 1788623858.1474588,
-    "ast_hash": "4e9a68bfabf37d1ecd0a1f3c45068e2b",
+    "mtime": 1788624273.3412828,
+    "seen": 1788624681.641453,
+    "ast_hash": "5304a636d25e9789d1df02533c9c5351",
     "semantic_hash": ""
   },
   "docs/module c/duolingo-program.md": {
@@ -540,9 +540,9 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1788623810.4383476,
-    "seen": 1788623858.1477063,
-    "ast_hash": "f01f2314e3752d9eeae9cf580b286896",
+    "mtime": 1788624665.1849644,
+    "seen": 1788624681.6416185,
+    "ast_hash": "00e8dead39280f417b969f3ef0973a97",
     "semantic_hash": ""
   },
   "docs/module c/myprog/guide.md": {
@@ -882,15 +882,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/fields/TextMarker.svelte": {
-    "mtime": 1788623605.9629993,
-    "seen": 1788623858.147253,
-    "ast_hash": "8f3cf4c0cc28cbbaa92f3cdd9a9a3b89",
+    "mtime": 1788624287.099095,
+    "seen": 1788624681.6413276,
+    "ast_hash": "965455a8017d0014c84c7d70200bf2c7",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/markAllColors.ts": {
     "mtime": 1788623464.1540418,
     "seen": 1788623858.1475387,
     "ast_hash": "70155f753550b3794cb1e9fc0a3680d8",
+    "semantic_hash": ""
+  },
+  "front/src/lib/lesson-screens/markAllTokens.ts": {
+    "mtime": 1788624251.3525603,
+    "seen": 1788624681.6415079,
+    "ast_hash": "a0a02ef1c015baa21941ebc0804a64ec",
     "semantic_hash": ""
   }
 }

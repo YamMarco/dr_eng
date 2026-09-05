@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/types.ts": {
-    "mtime": 1788595294.791866,
-    "seen": 1788595450.418376,
-    "ast_hash": "c8fa220d4d70008976a33f508cb17313",
+    "mtime": 1788623482.7154865,
+    "seen": 1788623858.1475613,
+    "ast_hash": "21f99284e8d9cdaabc75987216cf6154",
     "semantic_hash": ""
   },
   "front/src/routes/+error.svelte": {
@@ -528,9 +528,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkAll.svelte": {
-    "mtime": 1788278304.7222567,
-    "seen": 1788515082.9206402,
-    "ast_hash": "dae7688c7e6fef6b3de2108864c80019",
+    "mtime": 1788623505.1612034,
+    "seen": 1788623858.1474588,
+    "ast_hash": "4e9a68bfabf37d1ecd0a1f3c45068e2b",
     "semantic_hash": ""
   },
   "docs/module c/duolingo-program.md": {
@@ -540,9 +540,9 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1788595365.4208512,
-    "seen": 1788595450.4184341,
-    "ast_hash": "17543216cf0aae4c5d429355a8dbb36c",
+    "mtime": 1788623810.4383476,
+    "seen": 1788623858.1477063,
+    "ast_hash": "f01f2314e3752d9eeae9cf580b286896",
     "semantic_hash": ""
   },
   "docs/module c/myprog/guide.md": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1788605667.8101597,
-    "seen": 1788605849.8020697,
-    "ast_hash": "7820e0d61ad171734eace7959102fd26",
+    "mtime": 1788623377.268274,
+    "seen": 1788623858.1473594,
+    "ast_hash": "673977a585e54ece6c00cb2da9b1c2e1",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-4.ts": {
@@ -774,9 +774,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenForm.svelte": {
-    "mtime": 1788608331.1131365,
-    "seen": 1788608660.1870806,
-    "ast_hash": "2290a9085e41a1967017b06cbe5b4a02",
+    "mtime": 1788623588.3987868,
+    "seen": 1788623858.1472147,
+    "ast_hash": "a867cde1f760f1c1bc5ddec2e60bd86c",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editStore.svelte.ts": {
@@ -792,9 +792,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1788608619.4283342,
-    "seen": 1788608660.1873982,
-    "ast_hash": "cf341e26950c8b3eb34461735ad5ce47",
+    "mtime": 1788623817.7102118,
+    "seen": 1788623858.147818,
+    "ast_hash": "ec7892d9d0e26c21fd36e90321e5b1d6",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -879,6 +879,18 @@
     "mtime": 1788608177.8653142,
     "seen": 1788608660.1871004,
     "ast_hash": "f1f92008d5197f49b2ab1897f79ac72d",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/fields/TextMarker.svelte": {
+    "mtime": 1788623605.9629993,
+    "seen": 1788623858.147253,
+    "ast_hash": "8f3cf4c0cc28cbbaa92f3cdd9a9a3b89",
+    "semantic_hash": ""
+  },
+  "front/src/lib/lesson-screens/markAllColors.ts": {
+    "mtime": 1788623464.1540418,
+    "seen": 1788623858.1475387,
+    "ast_hash": "70155f753550b3794cb1e9fc0a3680d8",
     "semantic_hash": ""
   }
 }
