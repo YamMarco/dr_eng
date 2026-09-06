@@ -586,4 +586,194 @@ export const c1Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l05',
+		section: 'c-1',
+		titleHe: 'מגנט לעין — שמות',
+		titleEn: 'Eye Catcher: Names',
+		code: 'c.1.6',
+		required: ['l04'],
+		position: { x: -70, y: 720 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'כלל הזהב:\n\nכל שם פרטי בטקסט — Dr. Santos, Prof. Lee — שייך לפסקה מסוימת.\nכשיש שם בשאלה, הולכים ישר לפסקה שלו. לא קוראים את כל הטקסט.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — שם בשאלה',
+					lines: [
+						'1 · ראיתם שם בשאלה.',
+						'2 · חפשו את השם בטקסט — באיזו פסקה הוא יושב?',
+						'3 · קראו רק את מה שאותו אדם אמר.',
+						'⚠️ "According to Dr. Santos" ≠ מה שכולם אומרים. רק מה ש-Santos אמרה.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: According to Professor James Lee, what happened to residents?\n\nהשם: Professor James Lee ← זה המגנט.\nהמיקום: פסקה III.\nהמשפט: "85% of residents now say they are satisfied with their city."\n\nתשובה: 85% of residents say they are satisfied.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars — much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							questions: [
+								{
+									prompt:
+										'השאלה: According to Dr. Maria Santos, what did the project want to show? — באיזו פסקה מופיעה Dr. Santos?',
+									options: ['פסקה I', 'פסקה II', 'פסקה III', 'בכל הפסקאות'],
+									correctIndex: 1
+								},
+								{
+									prompt: 'קראו רק שם. מה התשובה?',
+									options: [
+										'That the project cost 500,000 dollars',
+										'That 85% of residents are satisfied',
+										'That any city can become greener',
+										'That stress levels fell by 40%'
+									],
+									correctIndex: 2
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — טקסט אחר, אותה שיטה.\n\nהשאלה: According to Dr. Amara Diallo, what do most trees die from?'
+						},
+						{
+							type: 'mcq',
+							prompt: 'באיזו פסקה נמצא Dr. Diallo?',
+							options: ['פסקה I', 'פסקה II', 'פסקה III', 'לא מופיע בטקסט'],
+							correctIndex: 1
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt: 'כתבו את התשובה במילים של הטקסט.',
+							modelAnswer: 'Because nobody looks after them.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"שם בשאלה = כתובת. הולך לפסקה שלו."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l06',
+		section: 'c-1',
+		titleHe: 'NOT — המילה הכי מסוכנת',
+		titleEn: 'Eye Catcher: NOT',
+		code: 'c.1.7',
+		required: ['l05'],
+		position: { x: -100, y: 840 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'המילה הכי מסוכנת בבחינה:\n\nNOT\n\n90% מהתלמידים שרואים NOT בשאלה עונים על השאלה ההפוכה. הם מחפשים מה נכון — במקום מה לא נכון.\nNOT משנה את כל השאלה.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — NOT = ציד',
+					lines: [
+						'שאלה רגילה: "What do we learn?" ← מחפשים מה נכון.',
+						'שאלה עם NOT: "Which is NOT true?" ← מחפשים מה לא נכון.',
+						'כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא — היא התשובה.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: Which of the following is NOT mentioned in the text?\n\ni) 30% of adults cannot swim ← מוזכר, פסקה I ✓\nii) Adults become stronger swimmers ← מוזכר, פסקה II ✓\niii) The cost of adult swimming classes ← לא מוזכר בכלל ✗\n\nהתשובה: iii. המחיר לא מוזכר.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which of the following does Dr. Klein NOT say?',
+									options: [
+										'Adults understand explanations',
+										'Adults correct mistakes faster',
+										'Adults prefer group lessons',
+										'Adults are not afraid to ask questions'
+									],
+									correctIndex: 2
+								},
+								{
+									prompt: 'איך ידעתם שזו התשובה?',
+									options: [
+										'כי היא הכי ארוכה',
+										'כי בדקנו את שלוש האחרות מול פסקה II — הן מופיעות שם, והיא לא',
+										'כי היא נשמעת לא הגיונית',
+										'ניחשנו'
+									],
+									correctIndex: 1
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'III  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which is NOT true about adult swimming classes? (paragraph III)',
+									options: [
+										'Classes meet once or three times a week',
+										'Classes are free for adults over 30',
+										'Adults who practice make good progress',
+										'Progress takes less than two months'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt: 'פספסתם את המילה NOT בשאלה. מה יקרה?',
+							options: [
+								'לא יקרה כלום — התשובה זהה',
+								'תבחרו משפט נכון, והתשובה תיפסל',
+								'תקבלו חצי ניקוד',
+								'השאלה תתבטל'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"ראיתי NOT? אני ציד — מחפש מה לא נכון."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
