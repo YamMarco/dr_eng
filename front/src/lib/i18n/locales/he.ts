@@ -67,6 +67,7 @@ export const he = {
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
+		answerKeyLabel: 'מפתח התשובה',
 		submitButton: 'בדיקה'
 	},
 	selfCheck: {

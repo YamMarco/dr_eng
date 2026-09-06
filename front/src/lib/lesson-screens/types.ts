@@ -9,7 +9,17 @@ export type StepsScreen = { type: 'steps'; steps: string[] };
 
 export type SummaryScreen = { type: 'summary'; title: string; lines: string[] };
 
-export type McqScreen = { type: 'mcq'; prompt: string; options: string[]; correctIndex: number };
+/**
+ * `explanation` is the answer key: shown only after the student has checked,
+ * so a practice question can teach why the answer is what it is.
+ */
+export type McqScreen = {
+	type: 'mcq';
+	prompt: string;
+	options: string[];
+	correctIndex: number;
+	explanation?: string;
+};
 
 /** Tap the question word inside a sentence. */
 export type MarkWordScreen = {

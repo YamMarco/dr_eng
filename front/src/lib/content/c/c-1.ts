@@ -120,6 +120,102 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים. בלי לחץ.\n\n📌 זכור: אני מחפש, לא קורא.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'יש לכם קבוצת וואטסאפ עם 200 הודעות. חבר שואל "מתי הבחינה?". מה אתם עושים?',
+							options: ['קוראים מההתחלה', 'מחפשים "בחינה" ב-🔍', 'שואלים את החבר מחדש'],
+							correctIndex: 1,
+							explanation: 'מחפשים מילת מפתח — לא קוראים הכל.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בבחינת Module C צריך להבין כל מילה בטקסט כדי לענות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. מחפשים מילת מפתח בלבד — לא חייבים להבין הכל.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה המטרה בקריאת הטקסט?',
+							options: [
+								'להבין כל מילה',
+								'לתרגם הכל לעברית',
+								'למצוא את המידע שהשאלה מבקשת'
+							],
+							correctIndex: 2,
+							explanation: 'מחפשים — לא קוראים. כמו חיפוש בוואטסאפ.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים. כמו בקורס.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו: הטקסט = קבוצת וואטסאפ. השאלה = ___________. מילת המפתח = ___________.',
+							modelAnswer: 'השאלה = החיפוש. מילת המפתח = מה שכותבים ב-🔍.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'תלמיד מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?',
+							options: ['יענה על כל השאלות נכון', 'יגמור מהר', 'לא יישאר לו זמן לכתיבה'],
+							correctIndex: 2,
+							explanation: 'קריאת הכל = בזבוז זמן. הבחינה נמשכת 1:45 — זמן הכתיבה ייגמר.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"אני מחפש, לא קורא" — זה המשפט שמסכם את כל הקורס.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. זו המנטליות שמשנה את כל הגישה לבחינה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'הסבירו בעברית: מה ההבדל בין "לקרוא טקסט" לבין "לחפש בטקסט"? (שני משפטים)',
+							modelAnswer:
+								'לקרוא = מתחילים מההתחלה ומנסים להבין הכל. לחפש = מוצאים מילת מפתח בשאלה ומחפשים אותה ישירות בטקסט — כמו חיפוש בוואטסאפ.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'תלמיד רואה את המילה "environmentalists" בטקסט ולא מכיר אותה. מה הוא עושה?',
+							options: [
+								'עוצר ומתרגם את כל הפסקה',
+								'ממשיך — מחפש את מה שהשאלה ביקשה',
+								'סוגר את הבחינה'
+							],
+							correctIndex: 1,
+							explanation:
+								'ממשיכים. אם המילה לא בשאלה — אפשר להתעלם ממנה. P1 עובד גם בלי להבין הכל.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו את המשפט שמסכם את השיעור הזה:',
+							modelAnswer: '"אני מחפש, לא קורא."'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -227,6 +323,105 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: 30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'קראו את הכותרת: "THE RETURN OF THE TREES". על מה הטקסט?',
+							options: ['על בניינים בעיר', 'על עצים שחוזרים ונשתלים', 'על בעלי חיים בסכנה'],
+							correctIndex: 1,
+							explanation: 'כותרת = נושא. THE RETURN OF THE TREES = עצים שחוזרים.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה קוראים כדי לבנות את מפת הדרכים?',
+							options: ['את כל הטקסט', 'כותרת + כל הפסקאות', 'כותרת + פסקה 1 בלבד'],
+							correctIndex: 2,
+							explanation: 'כותרת + פסקה 1 = 30 שניות. זה מספיק.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מפת הדרכים נותנת לכם את כל התשובות לשאלות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. המפה נותנת רק את הנושא הכללי — מספיק כדי לא להיות אבודים.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.',
+							questions: [
+								{
+									prompt: 'על מה הטקסט?',
+									options: [
+										'על זיהום אוויר בערים',
+										'על פרויקט נטיעת עצים באפריקה',
+										'על כריתת יערות בעולם'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted 2,000 trees and 15 gardens.',
+							prompt: 'השלימו: הטקסט הזה הוא על ___________ ב-___________.',
+							modelAnswer: 'על נטיעת עצים וגינות (שינוי ירוק) בעיר Greenville.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כדאי לקרוא את פסקה 1 גם אם כבר קראתם את הכותרת.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. כותרת = נושא, פסקה 1 = פרטים. ביחד מפה טובה יותר.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"LEARNING TO SWIM AS AN ADULT — I Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim. II One study found that adults who learned later often became stronger swimmers."\n\nמה נכלל במפת הדרכים?',
+							options: [
+								'הכותרת + פסקה I בלבד',
+								'הכותרת + פסקה II',
+								'כל הפסקאות',
+								'רק המשפט האחרון'
+							],
+							correctIndex: 0,
+							explanation: 'כותרת: LEARNING TO SWIM AS AN ADULT. פסקה I בלבד — שני המשפטים הראשונים.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'על סמך הכותרת ופסקה 1 שלמעלה — על מה הטקסט? ענו במשפט אחד.',
+							modelAnswer: 'הטקסט על מבוגרים שלומדים לשחות.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?',
+							modelAnswer:
+								'30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות "עיוור".'
 						}
 					]
 				}
@@ -374,6 +569,103 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"לא ירוק — מילון 30 שניות. עדיין לא? M ועוברים."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: לא ירוק — לא עונים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"What do we learn from paragraph I?" — מה הצבע שלכם?',
+							options: [
+								'🔴 אדום — לא מבין',
+								'🟡 צהוב — מבין חלקית',
+								'🟢 ירוק — "מה לומדים מפסקה 1?"'
+							],
+							correctIndex: 2,
+							explanation: '🟢 ירוק. "מה לומדים מפסקה 1?" — ברור. עונים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"What does visible mean?" — מה הצבע שלכם?',
+							options: [
+								'🟢 ירוק — ברור',
+								'🟡 צהוב — המילה visible לא ברורה ← מילון',
+								'ממשיכים בלי לבדוק'
+							],
+							correctIndex: 1,
+							explanation: 'visible לא ברור ← מילון, 30 שניות. לא עונים לפני שירוקים.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'צהוב זה בסדר. אפשר לענות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. צהוב = עדיין לא ברור. רק ירוק = עונים.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעכשיו על שאלות אמיתיות.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'איזו שאלה היא 🟡 צהוב — כלומר דורשת מילון?\n\n1. "According to Dr. Diallo, why do trees die?"\n2. "What does contribute mean in paragraph II?"\n3. "Give ONE answer from paragraph III."',
+							options: ['שאלה 1', 'שאלה 2', 'שאלה 3', 'כל השלוש'],
+							correctIndex: 1,
+							explanation:
+								'according to + why = ירוק. "give ONE answer" = ירוק. מילה לא מוכרת בשאלה = צהוב ← מילון.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כמה זמן מותר לבזבז על מילה אחת במילון?',
+							options: ['כמה שצריך', '30 שניות בלבד', '3 דקות'],
+							correctIndex: 1,
+							explanation: 'מקסימום 30 שניות. לא מצאתם? M קטן ועוברים הלאה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"give ONE answer" = ירוק — כי אפשר להסביר את השאלה בעברית במשפט אחד.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. "תנו תשובה אחת מהטקסט" — ברור. ירוק.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'אילו שאלות דורשות מילון?\n\n1. "What do we learn from paragraph I?"\n2. "What does environmentalists mean?"\n3. "According to Dr. Klein, give ONE reason."\n4. "How did the phenomenon affect students?"\n5. "Give TWO answers from paragraph III."',
+							options: ['1 ו-3', '2 ו-4', '3 ו-5', 'כולן'],
+							correctIndex: 1,
+							explanation: 'environmentalists ו-phenomenon אינן ברורות ← מילון. השאר ירוקות.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ — אבל הוא לא.',
+							modelAnswer: 'רק ירוק = עונה. צהוב מרגיש כמו ירוק — אבל הוא לא.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'תלמיד קרא שאלה, "הבין", ענה — וקיבל 0. מה כנראה קרה?',
+							modelAnswer:
+								'הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.'
 						}
 					]
 				}
