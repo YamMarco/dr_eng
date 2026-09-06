@@ -1591,6 +1591,112 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: most / only = תשובה אחת מסוימת. לא יותר.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"What is the MOST effective method?" — כמה תשובות כותבים?',
+							options: [
+								'שתיים — כדי לכסות אפשרויות',
+								'אחת בלבד — הכי יעילה',
+								'שלוש — כדי לא להחמיץ'
+							],
+							correctIndex: 1,
+							explanation: 'MOST = אחת מסוימת. לא כולן — רק הכי יעילה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"The ONLY reason trees die is…" — יכולות להיות שתי סיבות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. ONLY = סיבה אחת בלבד. מצאתם שתיים — טעיתם.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה משותף ל-most, only ו-main?',
+							options: [
+								'כולן מילות ניגוד',
+								'כולן מילות שלילה',
+								'כולן מילות הגבלה — תמיד תשובה אחת ספציפית',
+								'כולן מילות סיבה'
+							],
+							correctIndex: 2,
+							explanation: 'most = הכי / רוב · only = רק · main = עיקרי. כולן מגבילות לתשובה אחת.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
+							questions: [
+								{
+									prompt:
+										'"According to Dr. Okafor, what is the MOST effective type of volunteering?"',
+									options: [
+										'All types of volunteering are effective',
+										'Programmes that bring young people face to face with the people they help',
+										'School programmes and community service'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'III  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							prompt: 'השלימו מהטקסט: "In MOST cities, adult swimming classes are _______."',
+							modelAnswer: 'available — זמינות. (פסקה III)'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'תלמיד ענה על שאלת "most effective" בשתי תשובות, ושתיהן נכונות לפי הטקסט. הוא יקבל ציון מלא.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. "most" = תשובה אחת בלבד. שתי תשובות = 0 נקודות.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'באילו שאלות יש מילת הגבלה?\n\n1. "What is the only country mentioned?"\n2. "What do we learn from paragraph I?"\n3. "According to the text, most trees die because…"\n4. "Give TWO reasons from paragraph III."',
+							options: ['1 ו-3', '2 ו-4', '1 ו-4', 'רק ב-3'],
+							correctIndex: 0,
+							explanation: '"only" בשאלה 1 ו-"most" בשאלה 3 — הגבלה = תשובה אחת מסוימת.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt:
+								'"According to Dr. Diallo, why do MOST trees die? Give ONE answer." — כתבו ANSWER:',
+							modelAnswer: 'ANSWER: Because nobody looks after them.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מה ההבדל בין שאלה עם "most" לשאלה בלי "most"? תנו דוגמה.',
+							modelAnswer:
+								'בלי most: "Why do trees die?" — יכולות להיות כמה סיבות. עם most: "Why do MOST trees die?" — סיבה אחת ספציפית, זו שחלה על רוב המקרים.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -1692,6 +1798,115 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"however / but = פנייה. מה שאחריו = הנקודה."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: however / but = פנייה. מה שאחריו = הנקודה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"Many people cannot swim. However, experts say it is never too late." — מה הנקודה החשובה?',
+							options: [
+								'"Many people cannot swim"',
+								'"it is never too late"',
+								'שתיהן חשובות באותה מידה'
+							],
+							correctIndex: 1,
+							explanation: 'מה שאחרי however = הנקודה. "it is never too late" הוא הסיפור האמיתי.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'however = פנייה, ומה שלפניו הוא הנקודה החשובה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. לפני however = רקע. אחרי however = הנקודה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'השאלה נוגעת למשפט שיש בו however. מה כמעט תמיד התשובה?',
+							options: ['מה שלפני however', 'מה שאחרי however', 'לא משנה'],
+							correctIndex: 1,
+							explanation: 'מה שאחרי however = הנקודה = התשובה. כמעט תמיד.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו את מילת הניגוד ואת מה שבא מיד אחריה',
+							text: 'Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.',
+							correctIndices: [13, 14, 15, 16, 17],
+							wordBank: ['however', 'but', 'although']
+						},
+						{
+							type: 'passage-mcq',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
+							questions: [
+								{
+									prompt:
+										'"What does Dr. Okafor say about different types of volunteering?" — מצאו את however.',
+									options: [
+										'All types are equally effective',
+										'Not all types of volunteering produce the same results',
+										'Only schools benefit from volunteering'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.',
+							modelAnswer: 'פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה — המידע החדש.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.',
+							questions: [
+								{
+									prompt: 'What does paragraph I say about people who cannot swim?',
+									options: [
+										'They feel embarrassed and never try',
+										'It is never too late to learn',
+										'Swimming classes help adults'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
+							prompt:
+								'"What does paragraph II say after the word However?" — כתבו ANSWER:',
+							modelAnswer:
+								'ANSWER: Not all types of volunteering produce the same results — the most effective ones bring young people face to face with the people they help.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." — מה הנקודה החשובה?',
+							modelAnswer: 'שארגון צדקה מקומי החליט לשנות את המצב בעיר.'
 						}
 					]
 				}
