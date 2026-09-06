@@ -374,6 +374,14 @@
 		<div class="absolute inset-e-4 bottom-24 z-10 flex flex-col items-end gap-1.5">
 			<button
 				type="button"
+				onclick={() => (screenIndex = Math.max(0, screenIndex - 1))}
+				disabled={screenIndex === 0}
+				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95 disabled:opacity-40"
+			>
+				חזור מסך (דיבוג)
+			</button>
+			<button
+				type="button"
 				onclick={advance}
 				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
 			>
