@@ -1,109 +1,89 @@
-# content-edit — in-app screen editor
+# content-edit — the `/edit` authoring workspace
 
-Toggle edit mode on the lessons path (pencil FAB), open a lesson's popover →
-**ערוך תוכן**, or edit the currently-visible screen while actually playing a
-lesson (✏️ FAB, bottom-start). Works in local dev (writes straight to the
-content file) and on the deployed site (password-gated, commits through
-GitHub — see "Production" below).
+A dev-flavoured, self-contained workspace for editing Module C content: the
+path graph **and** each lesson's screens, with a live preview. Reached at
+**`/edit`** (dev: open; deployed site: one password prompt per browser
+session). Entry points into it:
 
-## Save model: lesson-wide draft, one big button
+- Lessons path, dev only: the **✎** FAB (top-start) → `/edit`; each node's
+  popover has **✎ ערוך** → `/edit?section=…&lesson=…`.
+- While playing a lesson, dev only: **✏️ ערוך מסך זה** (bottom-start FAB) →
+  `/edit?section=…&lesson=…&round=…&screen=…`, focused on that screen.
 
-Every edit (change a field, add a screen, delete a screen, reorder steps)
-only touches a **local working copy** of that lesson's `content` — nothing
-hits the network per edit. A single **💾 שמור שינויים** button persists the
-whole draft in one write/commit, however many screens changed since the last
-save:
+Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
+`src/routes/api/content-edit/` — see **Detach** at the end.
 
-- `LessonEditor.svelte` (the popover's full-lesson view): sticky footer
-  button, disabled until something's dirty.
-- `LessonRunner.svelte`'s inline sheet (editing the on-screen screen while
-  playing): a green **💾 שמור** button appears next to the location pill once
-  dirty. Add/delete only ever mutate `LessonRunner`'s own `draftContent`
-  (seeded once from the lesson, see `screensForRound`/`screenPathsForRound`
-  in `screenPath.ts`) — so deleting or editing a screen keeps you in the
-  lesson view instead of kicking you back to the node map.
-- Leaving with unsaved changes — the in-app back button, finishing the round,
-  or closing/reloading the browser tab — is guarded by a confirm prompt
-  (`beforeunload` shows the browser's own generic wording; can't be
-  customized, that's a browser restriction, not a bug here).
-- After a successful save, a banner tells the editor to wait ~a minute and
-  refresh — a save on the deployed site is a git commit + Vercel redeploy,
-  not instant.
+## Layout
 
-Per-screen, `ScreenForm`'s **עדכן טיוטה** button and **מחק** only ever write
-into that shared local draft (`onApply`/`onDelete` props) — never the network
-directly. The type dropdown (grouped: טקסט והצגה / שאלות / תזמון) resets a
-screen to that type's blank shape.
+`EditWorkspace.svelte` is the shell (section picker · issue list · one save):
 
-**Every screen type has a real form** — no typing JSON, no `**bold**` syntax
-to remember. Shared building blocks live in `fields/`:
+- **`GraphEditor.svelte`** (left, toggle with **גרף**) — the lessons-path
+  canvas, editable. Drag a node = reposition (snaps to 10px, hold Shift to
+  free-drag). Drag the small circle under a node onto another node = add/flip
+  a prerequisite; click an edge = cut it. Toolbar: add / duplicate / delete /
+  merge (Ctrl-click to multi-select) / split (by round) / rename id. Select a
+  node → the right pane switches to it.
+- **`LessonPane.svelte`** (right) — for the selected node:
+  - **`OutlineTree.svelte`** — preface + every round + every screen. Add /
+    delete / reorder / duplicate rounds; add a screen (type menu); drag a
+    screen row to move it within or across buckets (preface ⇄ any round).
+    Red/orange dot = a validation issue on that screen.
+  - **`ScreenForm.svelte`** — the selected screen's typed form (unchanged;
+    `fields/*` building blocks, `MarkdownInput`, **JSON מתקדם** escape hatch).
+  - **`ScreenPreview.svelte`** — the real runtime component rendered live in a
+    phone frame, re-mounting on every keystroke. **טופס / תצוגה / שניהם**
+    toggles it.
+  - **▶ נגן מכאן** — opens the real `LessonRunner` at this round, starting on
+    the selected screen (`startScreenIndex` prop).
 
-- `StringListEditor` — add/remove list of strings (summary lines,
-  question-preview prompts, word banks, passage-quiz keywords).
-- `OptionsEditor` — mcq-style options + which one's correct.
-- `TokenPicker` — click the actual word in a sentence instead of typing an
-  index (`mark-word`); splits the text the exact same way the runtime does.
-- `TextMarker` — `mark-all`'s marker: the passage renders as flowing text,
-  the author drags to select a phrase and picks a category (or "no
-  category") from the bar that appears; a marked word clicks to unmark.
-  `mark-all` `categories` are optional colour buckets (names / negatives /
-  …) — swatches from `lesson-screens/markAllColors.ts`; on the runtime
-  reveal the matching words light up in their colour with a legend.
-- `McqQuestionsEditor` / `KeywordQuestionsEditor` — the sub-question lists
-  inside `timed-passage`/`passage-mcq` and `passage-quiz`.
+## Model & save
 
-`steps` entries drag-reorder via the ⠿ handle; prose fields go through
-`MarkdownInput.svelte` (WYSIWYG B/I/`<>`/🔗, `execCommand`-based, no deps).
-**JSON מתקדם** is still there as an escape hatch (e.g. a brand-new screen type
-this editor hasn't caught up to) — toggle into raw JSON, edit, toggle back;
-it re-parses straight into the form.
+`editModel.svelte.ts` holds one **section's** whole `LessonNode[]` as a
+mutable `$state` working copy (cloned from `getLessonsBySection`), a `dirty`
+flag, the current selection, and every mutation helper (`setPosition`,
+`togglePrereq`, `mergeNodes`, `splitNode`, `addRound`/`moveRound`/…,
+`moveScreen`, `applyScreen`, …). Nothing hits the network per edit.
 
-Markdown is `**bold**`, `*italic*`, `` `code` ``, `[text](url)`, rendered at
-runtime by `src/lib/lesson-screens/miniMarkdown.ts` — that file is NOT part
-of this detachable folder; it stays even if the editor is removed.
+One **💾 שמור** (or ⌘/Ctrl-S) calls `saveSection(sectionId, nodes)` →
+`POST /api/content-edit` with `{ sectionId, nodes }`, which rewrites the whole
+`c-<N>.ts` array. The endpoint also still accepts the older
+`{ lessonId, content }` shape (single-lesson replace).
 
-Files are re-emitted as 2-space JSON (matches the existing snapshot format).
-Any hand-added comments / trailing commas in a content file are lost the
-first time one of its lessons is saved — fine for the current all-JSON files.
+`validate.ts` runs on every change: empty screens, `mark-all` indices out of
+range, `timerKey` with no producing screen, missing/​self `required`,
+duplicate id/code, scoreless round 0. Results show as the outline dots and the
+header **בעיות** list (click to jump).
+
+The server re-serialises the array in the files' hand-written style
+(`emit()` — tab indent, small primitive-only objects/arrays kept inline) and
+then runs **Prettier** (`prettier.config.js`) over it, so a save produces a
+minimal, lint-clean diff. Hand-added comments / non-JSON-expressible values in
+a content file are still lost on the first save of that file.
 
 ## Local dev vs. production
 
-`POST /api/content-edit` takes `{ lessonId, content }` — the lesson's whole
-`LessonContent` — and replaces it wholesale in the right `c-<N>.ts`:
-
-- **Dev** (`import.meta.env.DEV`): writes straight to the file on disk. No
-  password needed. Vite then HMR-reloads `$lib/content` automatically.
-- **Anywhere else** (the deployed site): there's no writable local
-  filesystem, so it commits through GitHub's Contents API instead
-  (`github.ts`) — one commit per save. Requires:
-  - The password (`POST /api/content-edit/login` checks it server-side; the
-    client never holds/verifies the real secret). Unlocked once per browser
-    session (`sessionStorage`) via the 🔒 FAB on the lessons path
-    (`editStore.authed`; `editStore.available = dev || authed`).
-  - Server env vars: `GITHUB_TOKEN` (fine-grained PAT, Contents: Read & write,
-    scoped to this repo only), `GITHUB_OWNER`, `GITHUB_REPO`, `GITHUB_BRANCH`,
-    `CONTENT_EDIT_PASSWORD`, optional `CONTENT_EDIT_AUTHOR` (defaults to
-    `Emil` — prefixes every commit message as `[Emil] content-edit: ...` so
-    saves from the web editor are easy to spot in git history). Set locally
-    in `front/.env.local` (gitignored) and in the Vercel project's
-    Environment Variables for the deployed site.
-  - One retry on a stale-sha 409 (another save landed in between).
-
-Server side always requires the password outside dev — it 403s a request
-with a missing/wrong `x-content-edit-key` header.
+- **Dev** (`$app/environment` `dev`): `/edit` opens with no password; the
+  endpoint writes straight to disk; Vite HMR-reloads `$lib/content`.
+- **Deployed site**: `/edit` shows a password form
+  (`checkContentEditPassword` → `POST /api/content-edit/login`, verified
+  server-side; unlocked per session in `sessionStorage` via
+  `editStore.authed`). The endpoint has no writable FS, so it commits through
+  GitHub's Contents API (`github.ts`) — one commit per save, one retry on a
+  stale-sha 409. Server env vars: `GITHUB_TOKEN` (fine-grained PAT, Contents:
+  Read & write, this repo only), `GITHUB_OWNER`, `GITHUB_REPO`,
+  `GITHUB_BRANCH`, `CONTENT_EDIT_PASSWORD`, optional `CONTENT_EDIT_AUTHOR`
+  (default `Emil`, prefixes commit messages). Set in `front/.env.local`
+  (gitignored) and in Vercel. Outside dev the endpoint 401s any request
+  without a matching `x-content-edit-key`.
 
 ## Detach
 
-1. `rm -r src/lib/content-edit`
-2. `rm -r src/routes/api/content-edit`
-3. In `src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` remove:
-   the `$lib/content-edit/*` imports, `Pencil`/`Lock` from the lucide import,
-   `editingLesson` state, `unlockEditor`, the popover's edit button, the
-   lock/pencil FABs, the `{#if editingLesson}` block, and the `lesson`/
-   `roundIndex` props on the real `<LessonRunner>` (pass `screens={...}` the
-   old way instead — see git history for `screensForRound`).
-4. In `src/lib/lesson-screens/LessonRunner.svelte` remove: the
-   `$lib/content-edit/*` imports, the `lesson`/`roundIndex` props and
-   everything derived from `draftContent`, the edit/save/guard functions, the
-   location-pill + save FABs, and the `{#if editSheetOpen}` sheet.
-5. Remove the 5 env vars from Vercel and delete the GitHub token.
+1. `rm -r src/lib/content-edit src/routes/edit src/routes/api/content-edit`
+2. `src/routes/+layout.svelte` — drop `/^\/edit/` from `noNavPatterns`.
+3. `src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` — remove
+   the `dev` import + the two `/edit` links (node popover, top-start FAB).
+4. `src/lib/lesson-screens/LessonRunner.svelte` — remove the
+   `$lib/content-edit/screenPath` import (inline `screensForRound` /
+   `screenPathsForRound`, ~15 lines — see git history), the `dev` import, the
+   `startScreenIndex` prop, and the `editHref` FAB.
+5. Remove the GitHub/password env vars from Vercel and delete the token.

@@ -20,15 +20,10 @@ function loadAuthed(): boolean {
 class EditStore {
 	/** Unlocked this browser session (password check passed). Always false in dev — irrelevant there. */
 	authed = $state(dev ? false : loadAuthed());
-	enabled = $state(false);
 
-	/** dev: always on. Elsewhere: only after a successful password unlock. */
+	/** dev: always open. Elsewhere: only after a successful password unlock. */
 	get available() {
 		return dev || this.authed;
-	}
-
-	toggle() {
-		this.enabled = !this.enabled;
 	}
 
 	setAuthed(value: boolean) {

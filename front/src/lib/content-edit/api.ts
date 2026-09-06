@@ -1,7 +1,7 @@
 // Thin wrapper around the content-edit endpoints: attaches the unlocked
 // session's password (see editStore.svelte.ts) to every write, since the
 // production backend requires it on each request (dev doesn't check it).
-import type { LessonContent } from '$lib/content';
+import type { LessonContent, LessonNode } from '$lib/content';
 
 const KEY_STORAGE = 'content-edit-key';
 
@@ -31,11 +31,7 @@ export function rememberContentEditPassword(password: string) {
 	}
 }
 
-/** Replaces a lesson's whole content (preface + all rounds) in one write/commit. */
-export async function saveLessonContent(
-	lessonId: string,
-	content: LessonContent
-): Promise<{ ok: true; committed: boolean }> {
+async function post(body: unknown): Promise<{ ok: true; committed: boolean }> {
 	const key = storedKey();
 	const res = await fetch('/api/content-edit', {
 		method: 'POST',
@@ -43,8 +39,19 @@ export async function saveLessonContent(
 			'content-type': 'application/json',
 			...(key ? { 'x-content-edit-key': key } : {})
 		},
-		body: JSON.stringify({ lessonId, content })
+		body: JSON.stringify(body)
 	});
 	if (!res.ok) throw new Error(await res.text());
 	return res.json();
+}
+
+/** Replaces a lesson's whole content (preface + all rounds) in one write/commit. */
+export function saveLessonContent(lessonId: string, content: LessonContent) {
+	return post({ lessonId, content });
+}
+
+/** Replaces a whole section file's LessonNode[] in one write/commit — the
+ *  /edit workspace's save (graph + content edits together). */
+export function saveSection(sectionId: string, nodes: LessonNode[]) {
+	return post({ sectionId, nodes });
 }

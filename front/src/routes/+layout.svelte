@@ -9,9 +9,9 @@
 
 	let { children } = $props();
 
-	// The exam-run screen has its own fixed bottom action bar,
-	// so the global nav would double up and eat into the content.
-	const noNavPatterns = [/\/exam\/run$/];
+	// The exam-run screen has its own fixed bottom action bar, and the /edit
+	// authoring workspace is full-bleed — neither wants the global nav.
+	const noNavPatterns = [/\/exam\/run$/, /^\/edit/];
 
 	let showNav = $derived(!noNavPatterns.some((re) => re.test(page.url.pathname)));
 
