@@ -150,7 +150,8 @@
 </div>
 
 <style>
-	/* Bare mode: toolbar hidden until the field is focused. */
+	/* Bare mode: toolbar hidden until the field is focused, then floats just
+	   below the field so it never clips under a card header. */
 	.mdi-bare .mdi-tools {
 		display: none;
 	}
@@ -158,12 +159,21 @@
 		display: flex;
 		position: absolute;
 		z-index: 20;
-		margin-top: -1.9rem;
+		top: 100%;
+		inset-inline-start: 0;
+		margin-top: 3px;
+		border: 1px solid var(--color-line, #e5e7eb);
 		border-radius: 0.5rem;
 		background: var(--color-canvas, #fff);
-		box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+		box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
 	}
 	.mdi-bare {
 		position: relative;
+	}
+	/* A faint frame on the focused field so it reads as editable. */
+	.mdi-bare:focus-within {
+		outline: 2px solid var(--color-brand, #6366f1);
+		outline-offset: 2px;
+		border-radius: 0.25rem;
 	}
 </style>

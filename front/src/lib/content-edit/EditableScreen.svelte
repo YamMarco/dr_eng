@@ -38,7 +38,7 @@
 </script>
 
 {#if screen}
-	<div class="mx-auto flex min-h-full w-full max-w-md flex-col gap-3 p-1 text-start">
+	<div class="mx-auto flex min-h-full w-full max-w-md flex-col gap-4 px-3 pt-4 pb-8 text-start">
 		{#if screen.type === 'preface'}
 			<MarkdownInput
 				bare
