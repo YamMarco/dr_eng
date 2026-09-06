@@ -869,7 +869,7 @@ export const c1Lessons: LessonNode[] = [
 		titleEn: 'Eye Catcher: Numbers & Names',
 		code: 'c.1.5',
 		required: ['l03'],
-		position: { x: 0, y: 600 },
+		position: { x: -100, y: 600 },
 		big: false,
 		content: {
 			preface: [
@@ -914,123 +914,76 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'סמנו את המגנטים לעין: כל מספר וכל שם פרטי בפסקה.\nחמש פסקאות בעברית - להרגיש את השיטה לפני שעוברים לאנגלית.'
+							text: 'סמנו כל מספר וכל שם פרטי. שלוש פסקאות בעברית - להרגיש את השיטה.'
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בפסקה.',
-							text: 'ד״ר כהן פתחה מרפאה בעיירה בשנת 1997. במהלך 12 השנים הבאות היא טיפלה ב-4,000 חולים. סקר מצא שהבריאות בעיירה השתפרה ב-35% מאז.',
+							text: 'בשנת 2003 ייסדה ד״ר לוין מרכז מחקר בעיר. תוך 9 שנים עבדו בו 140 חוקרים, ותקציבו גדל פי 3.',
 							dir: 'rtl',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [6, 8, 13, 20] },
-								{ name: 'שמות', color: 'amber', indices: [0, 1] }
+								{ name: 'מספרים', color: 'sky', indices: [1, 9, 13, 18] },
+								{ name: 'שמות', color: 'amber', indices: [3, 4] }
 							]
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בפסקה.',
-							text: 'פרופ׳ לוי מאוניברסיטת חיפה חקר את הנושא במשך 8 שנים. הצוות שלו בדק 250 בתי ספר וגילה שכ-70% מהתלמידים השתפרו.',
+							text: 'המהנדסת רות אבני תכננה גשר חדש שחסך 200 מיליון שקל. עד 2024 חצו אותו כ-50,000 מכוניות ביום.',
 							dir: 'rtl',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [8, 13, 17] },
-								{ name: 'שמות', color: 'amber', indices: [0, 1] }
-							]
-						},
-						{
-							type: 'mark-all',
-							instruction: 'סמנו כל מספר וכל שם פרטי בפסקה.',
-							text: 'המנכ״לית שרה אברהם הודיעה שהחברה תשקיע 2 מיליון שקל בפרויקט. עד 2026 היא מתכננת להעסיק 90 עובדים חדשים בשלושה סניפים.',
-							dir: 'rtl',
-							correctIndices: [],
-							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [6, 11, 15] },
+								{ name: 'מספרים', color: 'sky', indices: [7, 11, 14] },
 								{ name: 'שמות', color: 'amber', indices: [1, 2] }
 							]
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בפסקה.',
-							text: 'בכפר קטן בגליל חיו רק 300 תושבים. בשנת 2015 הגיע המורה יוסי דגן ופתח מועדון מדע. תוך 4 שנים מספר הילדים שלמדו שם עלה ל-120.',
+							text: 'פרופ׳ שגיא בדק 320 תלמידים במשך 6 שנים ומצא ש-72% מהם שיפרו את הציונים לאחר המעבר לשיטה החדשה.',
 							dir: 'rtl',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [5, 8, 17, 24] },
-								{ name: 'שמות', color: 'amber', indices: [11, 12] }
-							]
-						},
-						{
-							type: 'mark-all',
-							instruction: 'סמנו כל מספר וכל שם פרטי בפסקה.',
-							text: 'ד״ר נטע ברק פרסמה מחקר ב-2020 על שינה אצל בני נוער. לפי הנתונים, 65% מהתלמידים ישנים פחות מ-6 שעות, ורק 1 מכל 4 מרגיש ערני בבוקר.',
-							dir: 'rtl',
-							correctIndices: [],
-							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [5, 13, 17, 20, 22] },
-								{ name: 'שמות', color: 'amber', indices: [0, 1, 2] }
+								{ name: 'מספרים', color: 'sky', indices: [3, 6, 9] },
+								{ name: 'שמות', color: 'amber', indices: [0, 1] }
 							]
 						}
 					]
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE 🌟\nעכשיו באנגלית. אותה משימה: כל מספר, כל שם פרטי.'
-						},
+						{ type: 'preface', text: 'עכשיו באנגלית. אותה משימה.' },
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'In 1998, Dr. Laura Bennett opened a small library in the town of Aldgate. Within 15 years, more than 8,000 children had borrowed books, and reading scores rose by 30%.',
+							text: 'In 2007, Dr. Karen Holt opened a clinic in the town. Within 10 years she had treated 6,500 patients, and waiting times fell by 40%.',
 							dir: 'ltr',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [1, 15, 19, 29] },
+								{ name: 'מספרים', color: 'sky', indices: [1, 12, 17, 24] },
 								{ name: 'שמות', color: 'amber', indices: [2, 3, 4] }
 							]
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'Professor Mark Reyes studied the river for 9 years. His team tested 240 samples and found that pollution had dropped by almost 70% since 2011.',
+							text: 'Engineer Paul Grant designed a bridge that saved 150 million dollars. By 2025, about 45,000 cars crossed it every day.',
 							dir: 'ltr',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [7, 12, 22, 24] },
-								{ name: 'שמות', color: 'amber', indices: [0, 1, 2] }
+								{ name: 'מספרים', color: 'sky', indices: [8, 12, 14] },
+								{ name: 'שמות', color: 'amber', indices: [1, 2] }
 							]
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'The company director, Anna Foster, announced a budget of 3 million dollars. By 2027, she plans to hire 85 new workers and open 4 offices across the country.',
+							text: 'Professor Alan Webb tested 280 students over 5 years and found that 68% of them improved after the new method was introduced.',
 							dir: 'ltr',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [9, 13, 18, 23] },
-								{ name: 'שמות', color: 'amber', indices: [3, 4] }
-							]
-						},
-						{
-							type: 'mark-all',
-							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'A small village in the north had only 400 residents. In 2016, a teacher named Daniel Cross arrived and started a science club. Within 3 years, the number of students there grew to 130.',
-							dir: 'ltr',
-							correctIndices: [],
-							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [8, 11, 24, 33] },
-								{ name: 'שמות', color: 'amber', indices: [15, 16] }
-							]
-						},
-						{
-							type: 'mark-all',
-							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'Dr. Nina Park published a study in 2019 about sleep among teenagers. According to the data, 65% of students sleep less than 6 hours, and only 1 in 5 feels awake in the morning.',
-							dir: 'ltr',
-							correctIndices: [],
-							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [7, 16, 22, 26, 28] },
+								{ name: 'מספרים', color: 'sky', indices: [4, 7, 12] },
 								{ name: 'שמות', color: 'amber', indices: [0, 1, 2] }
 							]
 						}
@@ -1038,41 +991,27 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE 💎\nרמת בחינה. טקסטים ארוכים - מספרים ושמות מעורבבים.'
-						},
+						{ type: 'preface', text: 'רמת בחינה. טקסטים ארוכים - מספרים ושמות מעורבבים.' },
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'In 2004, a local charity planted its first trees in the city of Marden. Ten years later, Dr. Helen Ward measured the results. She found that air pollution had fallen by 45% and that 12 new parks had opened.\n\nThe project cost 600,000 dollars. According to Professor Ian Blake, more than 3,000 residents now volunteer in the parks every month.',
+							text: 'In 1995, a small charity in the city planted its first 500 trees. Twenty years later, Dr. Rachel Stone counted the results: bird numbers had risen by 55%, and 8 new parks had opened.\n\nThe project cost 400,000 dollars. According to Professor Neil Barnes, more than 2,500 residents now help in the parks each month.',
 							dir: 'ltr',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [1, 31, 34, 42, 51] },
-								{ name: 'שמות', color: 'amber', indices: [17, 18, 19, 46, 47, 48] }
+								{ name: 'מספרים', color: 'sky', indices: [1, 11, 27, 29, 37, 46] },
+								{ name: 'שמות', color: 'amber', indices: [16, 17, 18, 41, 42, 43] }
 							]
 						},
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'Learning to code as an adult is becoming more common. A survey in 2021 found that 40% of adults in large cities want to change careers. Dr. Omar Haddad, who has taught programming for 11 years, says that most students give up in the first 3 months.\n\nHowever, his school changed its method in 2022. Since then, 75% of students finish the course, and the number of graduates has grown from 60 to 400 a year.',
+							text: 'A study from 2018 found that 35% of adults wish they had learned an instrument. Dr. Sara Lin, who has taught piano for 14 years, says most beginners quit within the first 4 months.\n\nHer school changed its method in 2021. Since then, 80% of students finish the course, and the number of adult players has grown from 90 to 350 a year.',
 							dir: 'ltr',
 							correctIndices: [],
 							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [13, 16, 34, 45, 54, 57, 71, 73] },
-								{ name: 'שמות', color: 'amber', indices: [26, 27, 28] }
-							]
-						},
-						{
-							type: 'mark-all',
-							instruction: 'סמנו כל מספר וכל שם פרטי בטקסט.',
-							text: 'The town of Kelsey had a water problem for years. In 2013, engineer Grace Miller designed a new system that saved 500 million litres a year. The council spent 1.2 million dollars on the project.\n\nProfessor Leon Carter studied the effects. He reported that 88% of homes now have clean water, and that illness among children fell by 25% in just 6 years.',
-							dir: 'ltr',
-							correctIndices: [],
-							categories: [
-								{ name: 'מספרים', color: 'sky', indices: [11, 21, 29, 44, 58, 61] },
-								{ name: 'שמות', color: 'amber', indices: [13, 14, 35, 36, 37] }
+								{ name: 'מספרים', color: 'sky', indices: [3, 6, 23, 32, 40, 43, 58, 60] },
+								{ name: 'שמות', color: 'amber', indices: [15, 16, 17] }
 							]
 						}
 					]
@@ -1081,276 +1020,17 @@ export const c1Lessons: LessonNode[] = [
 		}
 	},
 	{
-		id: 'l06',
+		id: 'numbers-names-q',
 		section: 'c-1',
-		titleHe: 'NOT - המילה הכי מסוכנת',
-		titleEn: 'Eye Catcher: NOT',
-		code: 'c.1.6',
+		titleHe: 'מספרים ושמות - תרגול שאלות',
+		titleEn: 'Numbers & Names: Practice',
+		code: 'c.1.5Q',
 		required: ['l04'],
-		position: { x: -80, y: 720 },
+		position: { x: -100, y: 720 },
 		big: false,
 		content: {
-			preface: [
-				{
-					type: 'preface',
-					text: 'המילה הכי מסוכנת בבחינה:\n\nNOT\n\n90% מהתלמידים שרואים NOT בשאלה עונים על השאלה ההפוכה. הם מחפשים מה נכון - במקום מה לא נכון.\nNOT משנה את כל השאלה.'
-				},
-				{
-					type: 'summary',
-					title: 'THE TOOL - NOT = ציד',
-					lines: [
-						'שאלה רגילה: "What do we learn?" ← מחפשים מה נכון.',
-						'שאלה עם NOT: "Which is NOT true?" ← מחפשים מה לא נכון.',
-						'כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא - היא התשובה.'
-					]
-				},
-				{
-					type: 'preface',
-					text: 'WATCH IT\n\nהשאלה: Which of the following is NOT mentioned in the text?\n\ni) 30% of adults cannot swim ← מוזכר, פסקה I ✓\nii) Adults become stronger swimmers ← מוזכר, פסקה II ✓\niii) The cost of adult swimming classes ← לא מוזכר בכלל ✗\n\nהתשובה: iii. המחיר לא מוזכר.'
-				}
-			],
+			preface: [],
 			rounds: [
-				{
-					screens: [
-						{
-							type: 'preface',
-							text: 'NOT לא מוסיף מידע - הוא הופך את הכיוון.\nרגיל: מצא מה נכון. עם NOT: מצא מה לא נכון.'
-						},
-						{
-							type: 'mcq',
-							prompt: '"Which of the following is NOT true?" - מה המשימה?',
-							options: [
-								'למצוא את המשפט הנכון',
-								'למצוא את המשפט שלא נכון / לא מופיע בטקסט',
-								'למצוא את המשפט הכי חשוב'
-							],
-							correctIndex: 1,
-							explanation: 'NOT הופך את השאלה. מחפשים את היוצאת דופן.'
-						},
-						{
-							type: 'mcq',
-							prompt:
-								'Text: "The park has a lake and a playground. Dogs are not allowed."\n\nWhich IS true about the park?',
-							options: [
-								'It has a swimming pool',
-								'It has a playground',
-								'It has a cafe',
-								'Dogs are allowed'
-							],
-							correctIndex: 1,
-							explanation: 'רק "playground" מגובה בטקסט. השאר לא מופיעים או סותרים אותו.'
-						},
-						{
-							type: 'mcq',
-							prompt: 'אותו טקסט. עכשיו: Which is NOT true about the park?',
-							options: [
-								'It has a lake',
-								'It has a playground',
-								'Dogs are welcome',
-								'It has a lake and a playground'
-							],
-							correctIndex: 2,
-							explanation:
-								'שלוש נכונות ומופיעות בטקסט. "Dogs are welcome" סותר את "Dogs are not allowed" - זו התשובה.'
-						},
-						{
-							type: 'mcq',
-							prompt: 'בשאלת NOT עם 4 אפשרויות: כמה מהן בדרך כלל נכונות?',
-							options: ['אחת', 'שתיים', 'שלוש', 'ארבע'],
-							correctIndex: 2,
-							explanation: 'שלוש מופיעות בטקסט. הרביעית - לא. היא התשובה.'
-						},
-						{
-							type: 'mcq',
-							prompt: 'קראתם מהר ולא שמתם לב ל-NOT. מה תבחרו?',
-							options: [
-								'את התשובה הנכונה במקרה',
-								'משפט נכון מהטקסט - וזו תשובה שגויה',
-								'לא תספיקו לענות'
-							],
-							correctIndex: 1,
-							explanation: 'בלי לראות NOT בוחרים משפט נכון. אבל NOT ביקש בדיוק ההפך - התשובה נפסלת.'
-						}
-					]
-				},
-				{
-					screens: [
-						{
-							type: 'passage-mcq',
-							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
-							questions: [
-								{
-									prompt: 'Which of the following does Dr. Klein NOT say?',
-									options: [
-										'Adults understand explanations',
-										'Adults correct mistakes faster',
-										'Adults prefer group lessons',
-										'Adults are not afraid to ask questions'
-									],
-									correctIndex: 2
-								},
-								{
-									prompt: 'איך ידעתם שזו התשובה?',
-									options: [
-										'כי היא הכי ארוכה',
-										'כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא',
-										'כי היא נשמעת לא הגיונית',
-										'ניחשנו'
-									],
-									correctIndex: 1
-								}
-							]
-						}
-					]
-				},
-				{
-					screens: [
-						{
-							type: 'preface',
-							text: 'YOUR TURN - שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.'
-						},
-						{
-							type: 'passage-mcq',
-							text: 'III  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
-							questions: [
-								{
-									prompt: 'Which is NOT true about adult swimming classes? (paragraph III)',
-									options: [
-										'Classes meet once or three times a week',
-										'Classes are free for adults over 30',
-										'Adults who practice make good progress',
-										'Progress takes less than two months'
-									],
-									correctIndex: 1
-								}
-							]
-						},
-						{
-							type: 'mcq',
-							prompt: 'פספסתם את המילה NOT בשאלה. מה יקרה?',
-							options: [
-								'לא יקרה כלום - התשובה זהה',
-								'תבחרו משפט נכון, והתשובה תיפסל',
-								'תקבלו חצי ניקוד',
-								'השאלה תתבטל'
-							],
-							correctIndex: 1
-						},
-						{
-							type: 'summary',
-							title: 'ONE SENTENCE',
-							lines: ['"ראיתי NOT? אני ציד - מחפש מה לא נכון."']
-						}
-					]
-				},
-				{
-					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד - מחפש מה לא נכון.'
-						},
-						{
-							type: 'mcq',
-							prompt: '"Which of the following is NOT true?" - מה מחפשים?',
-							options: ['מה נכון בטקסט', 'מה שגוי או לא מוזכר', 'את האפשרות שנראית הכי טובה'],
-							correctIndex: 1,
-							explanation: 'NOT = ציד. מחפשים מה שגוי - לא מה שנכון.'
-						},
-						{
-							type: 'mcq',
-							prompt: 'שאלת NOT קשה יותר, כי צריך לבדוק כל אפשרות מול הטקסט.',
-							options: ['✅ נכון', '❌ לא נכון'],
-							correctIndex: 0,
-							explanation: 'נכון. שלוש מהאפשרויות נכונות בטקסט. רק אחת אינה.'
-						},
-						{
-							type: 'mcq',
-							prompt: '"Which is NOT mentioned?" - שלוש אפשרויות נכונות. מה התשובה?',
-							options: [
-								'האפשרות שנראית הכי נכונה',
-								'האפשרות שלא נמצאת בטקסט כלל',
-								'האפשרות הארוכה ביותר'
-							],
-							correctIndex: 1,
-							explanation: 'האפשרות שלא מוזכרת בטקסט היא התשובה. זה הציד.'
-						}
-					]
-				},
-				{
-					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
-						},
-						{
-							type: 'passage-mcq',
-							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
-							questions: [
-								{
-									prompt: 'Which of the following is NOT true about adult learners?',
-									options: [
-										'Adults feel embarrassed about not swimming',
-										'Adults correct their mistakes quickly',
-										'Adults prefer to learn in private',
-										'Adults are not afraid to ask questions'
-									],
-									correctIndex: 2
-								}
-							]
-						},
-						{
-							type: 'mcq',
-							prompt: 'שאלת NOT עם ארבע אפשרויות. מצאתם הוכחה בטקסט ל-i, ל-ii ול-iv. מה התשובה?',
-							options: ['i', 'ii', 'iii', 'iv'],
-							correctIndex: 2,
-							explanation: 'iii - היחידה בלי הוכחה. שלוש האחרות מוזכרות בטקסט.'
-						},
-						{
-							type: 'mcq',
-							prompt: '"Which does NOT appear in paragraph I?" - בודקים רק את פסקה I.',
-							options: ['✅ נכון', '❌ לא נכון'],
-							correctIndex: 0,
-							explanation: 'נכון. כשמצוינת פסקה - בודקים רק אותה, לא את שאר הטקסט.'
-						}
-					]
-				},
-				{
-					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
-						},
-						{
-							type: 'passage-mcq',
-							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
-							questions: [
-								{
-									prompt: 'Which of the following is NOT mentioned in the text?',
-									options: [
-										'Birds returned to areas with trees',
-										'Rivers began to flow again',
-										'The project cost 500 million dollars',
-										'85% of trees survive when local people help'
-									],
-									correctIndex: 2
-								}
-							]
-						},
-						{
-							type: 'self-check',
-							prompt: 'בשתי מילים: מה עושים כשרואים NOT בשאלה?',
-							modelAnswer: 'ציד - מחפשים מה שגוי או מה שלא מוזכר.'
-						},
-						{
-							type: 'self-check',
-							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
-							prompt:
-								'"Which does Dr. Okafor NOT say about volunteering programmes?" - כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
-							modelAnswer:
-								'1-סורק מה בדיוק Dr. Okafor אמרה. 2-בודק כל אפשרות מול הטקסט. 3-האפשרות שאין לה הוכחה = התשובה.'
-						}
-					]
-				},
 				{
 					screens: [
 						{
@@ -1672,13 +1352,386 @@ export const c1Lessons: LessonNode[] = [
 		}
 	},
 	{
+		id: 'l06',
+		section: 'c-1',
+		titleHe: 'NOT - המילה הכי מסוכנת',
+		titleEn: 'Eye Catcher: NOT',
+		code: 'c.1.6',
+		required: ['l03'],
+		position: { x: 0, y: 600 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'המילה הכי מסוכנת בבחינה:\n\nNOT\n\n90% מהתלמידים שרואים NOT בשאלה עונים על השאלה ההפוכה. הם מחפשים מה נכון - במקום מה לא נכון.\nNOT משנה את כל השאלה.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL - NOT = ציד',
+					lines: [
+						'שאלה רגילה: "What do we learn?" ← מחפשים מה נכון.',
+						'שאלה עם NOT: "Which is NOT true?" ← מחפשים מה לא נכון.',
+						'כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא - היא התשובה.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: Which of the following is NOT mentioned in the text?\n\ni) 30% of adults cannot swim ← מוזכר, פסקה I ✓\nii) Adults become stronger swimmers ← מוזכר, פסקה II ✓\niii) The cost of adult swimming classes ← לא מוזכר בכלל ✗\n\nהתשובה: iii. המחיר לא מוזכר.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'סמנו כל מילת שלילה - כל מילה שהופכת משפט לשלילי. שלוש פסקאות בעברית.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת שלילה בפסקה.',
+							text: 'הדוח קבע: אין שום הוכחה שהתוכנית עבדה. אף מומחה לא תמך בה. שום תושב לא הרגיש שינוי.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [2, 3, 7, 9, 12, 14] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת שלילה בפסקה.',
+							text: 'בלי מים נקיים לא היה אפשר להמשיך. הכפר נותר בלי חשמל. מעולם לא הגיעה תמיכה מהמדינה.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [0, 3, 9, 11, 12] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת שלילה בפסקה.',
+							text: 'החוקרים לא הופתעו. שום ניסוי קודם לא הצליח. אף אחד לא ציפה שהפעם יהיה אחרת.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [1, 3, 6, 8, 10] }]
+						}
+					]
+				},
+				{
+					screens: [
+						{ type: 'preface', text: 'עכשיו באנגלית. סמנו כל מילת שלילה.' },
+						{
+							type: 'mark-all',
+							instruction: 'Mark every negative word.',
+							text: 'The report found no evidence that the plan worked. Not one expert supported it, and none of the residents noticed any change.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [3, 9, 15] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every negative word.',
+							text: 'Without clean water, the village could not continue. It had no electricity, and it never received help from the government.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [0, 6, 10, 14] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every negative word.',
+							text: 'The scientists were not surprised. No earlier test had succeeded, and nobody expected this time to be different.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [3, 5, 11] }]
+						}
+					]
+				},
+				{
+					screens: [
+						{ type: 'preface', text: 'רמת בחינה. סמנו כל מילת שלילה בטקסט.' },
+						{
+							type: 'mark-all',
+							instruction: 'Mark every negative word.',
+							text: 'Many people believe that money brings happiness, but the study found no clear link. People with high salaries were not happier than others, and nothing in the data showed that wealth reduced stress.\n\nDr. Ellen Ross said the result was not new. "No serious research has ever proved that money makes people happy," she explained.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'שלילה', color: 'rose', indices: [11, 19, 24, 40, 42] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every negative word.',
+							text: 'The city promised a new park, but nothing was built for years. There was no budget, no plan, and no one in charge. Residents said the council never answered their letters.\n\nIn 2020, a small group decided not to wait any longer. "We could not depend on the city," said one volunteer. "Nobody was going to do it for us."',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [
+								{ name: 'שלילה', color: 'rose', indices: [7, 14, 16, 19, 27, 37, 44, 52] }
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'not-q',
+		section: 'c-1',
+		titleHe: 'NOT - תרגול שאלות',
+		titleEn: 'NOT: Practice',
+		code: 'c.1.6Q',
+		required: ['l06'],
+		position: { x: 0, y: 720 },
+		big: false,
+		content: {
+			preface: [],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'NOT לא מוסיף מידע - הוא הופך את הכיוון.\nרגיל: מצא מה נכון. עם NOT: מצא מה לא נכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which of the following is NOT true?" - מה המשימה?',
+							options: [
+								'למצוא את המשפט הנכון',
+								'למצוא את המשפט שלא נכון / לא מופיע בטקסט',
+								'למצוא את המשפט הכי חשוב'
+							],
+							correctIndex: 1,
+							explanation: 'NOT הופך את השאלה. מחפשים את היוצאת דופן.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'Text: "The park has a lake and a playground. Dogs are not allowed."\n\nWhich IS true about the park?',
+							options: [
+								'It has a swimming pool',
+								'It has a playground',
+								'It has a cafe',
+								'Dogs are allowed'
+							],
+							correctIndex: 1,
+							explanation: 'רק "playground" מגובה בטקסט. השאר לא מופיעים או סותרים אותו.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'אותו טקסט. עכשיו: Which is NOT true about the park?',
+							options: [
+								'It has a lake',
+								'It has a playground',
+								'Dogs are welcome',
+								'It has a lake and a playground'
+							],
+							correctIndex: 2,
+							explanation:
+								'שלוש נכונות ומופיעות בטקסט. "Dogs are welcome" סותר את "Dogs are not allowed" - זו התשובה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בשאלת NOT עם 4 אפשרויות: כמה מהן בדרך כלל נכונות?',
+							options: ['אחת', 'שתיים', 'שלוש', 'ארבע'],
+							correctIndex: 2,
+							explanation: 'שלוש מופיעות בטקסט. הרביעית - לא. היא התשובה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'קראתם מהר ולא שמתם לב ל-NOT. מה תבחרו?',
+							options: [
+								'את התשובה הנכונה במקרה',
+								'משפט נכון מהטקסט - וזו תשובה שגויה',
+								'לא תספיקו לענות'
+							],
+							correctIndex: 1,
+							explanation: 'בלי לראות NOT בוחרים משפט נכון. אבל NOT ביקש בדיוק ההפך - התשובה נפסלת.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which of the following does Dr. Klein NOT say?',
+									options: [
+										'Adults understand explanations',
+										'Adults correct mistakes faster',
+										'Adults prefer group lessons',
+										'Adults are not afraid to ask questions'
+									],
+									correctIndex: 2
+								},
+								{
+									prompt: 'איך ידעתם שזו התשובה?',
+									options: [
+										'כי היא הכי ארוכה',
+										'כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא',
+										'כי היא נשמעת לא הגיונית',
+										'ניחשנו'
+									],
+									correctIndex: 1
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN - שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'III  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which is NOT true about adult swimming classes? (paragraph III)',
+									options: [
+										'Classes meet once or three times a week',
+										'Classes are free for adults over 30',
+										'Adults who practice make good progress',
+										'Progress takes less than two months'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt: 'פספסתם את המילה NOT בשאלה. מה יקרה?',
+							options: [
+								'לא יקרה כלום - התשובה זהה',
+								'תבחרו משפט נכון, והתשובה תיפסל',
+								'תקבלו חצי ניקוד',
+								'השאלה תתבטל'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"ראיתי NOT? אני ציד - מחפש מה לא נכון."']
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד - מחפש מה לא נכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which of the following is NOT true?" - מה מחפשים?',
+							options: ['מה נכון בטקסט', 'מה שגוי או לא מוזכר', 'את האפשרות שנראית הכי טובה'],
+							correctIndex: 1,
+							explanation: 'NOT = ציד. מחפשים מה שגוי - לא מה שנכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'שאלת NOT קשה יותר, כי צריך לבדוק כל אפשרות מול הטקסט.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. שלוש מהאפשרויות נכונות בטקסט. רק אחת אינה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which is NOT mentioned?" - שלוש אפשרויות נכונות. מה התשובה?',
+							options: [
+								'האפשרות שנראית הכי נכונה',
+								'האפשרות שלא נמצאת בטקסט כלל',
+								'האפשרות הארוכה ביותר'
+							],
+							correctIndex: 1,
+							explanation: 'האפשרות שלא מוזכרת בטקסט היא התשובה. זה הציד.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which of the following is NOT true about adult learners?',
+									options: [
+										'Adults feel embarrassed about not swimming',
+										'Adults correct their mistakes quickly',
+										'Adults prefer to learn in private',
+										'Adults are not afraid to ask questions'
+									],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt: 'שאלת NOT עם ארבע אפשרויות. מצאתם הוכחה בטקסט ל-i, ל-ii ול-iv. מה התשובה?',
+							options: ['i', 'ii', 'iii', 'iv'],
+							correctIndex: 2,
+							explanation: 'iii - היחידה בלי הוכחה. שלוש האחרות מוזכרות בטקסט.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which does NOT appear in paragraph I?" - בודקים רק את פסקה I.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. כשמצוינת פסקה - בודקים רק אותה, לא את שאר הטקסט.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							questions: [
+								{
+									prompt: 'Which of the following is NOT mentioned in the text?',
+									options: [
+										'Birds returned to areas with trees',
+										'Rivers began to flow again',
+										'The project cost 500 million dollars',
+										'85% of trees survive when local people help'
+									],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							prompt: 'בשתי מילים: מה עושים כשרואים NOT בשאלה?',
+							modelAnswer: 'ציד - מחפשים מה שגוי או מה שלא מוזכר.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
+							prompt:
+								'"Which does Dr. Okafor NOT say about volunteering programmes?" - כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
+							modelAnswer:
+								'1-סורק מה בדיוק Dr. Okafor אמרה. 2-בודק כל אפשרות מול הטקסט. 3-האפשרות שאין לה הוכחה = התשובה.'
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		id: 'l07',
 		section: 'c-1',
 		titleHe: 'most / only - תשובה אחת',
 		titleEn: 'Key Limiters',
 		code: 'c.1.7',
-		required: ['l04'],
-		position: { x: 80, y: 720 },
+		required: ['l03'],
+		position: { x: 100, y: 600 },
 		big: false,
 		content: {
 			preface: [
@@ -1704,6 +1757,105 @@ export const c1Lessons: LessonNode[] = [
 					text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, what is the most effective type of volunteering programme?\n\nמחפשים "most effective" בטקסט - לא את כל הסוגים.\nפסקה II: "the most effective programmes bring young people face to face with the people they help."\n\nתשובה: Programmes that bring young people face to face with the people they help.\nולא יותר מזה - רק ה-most effective אחד.'
 				}
 			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד. שלוש פסקאות בעברית.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת הגבלה בפסקה.',
+							text: 'רק שני חברים בוועדה תמכו בהצעה. כל השאר התנגדו, וכמעט כולם דרשו דיון נוסף.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [0, 6, 10] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת הגבלה בפסקה.',
+							text: 'הסקר מצא: רוב התלמידים מרוצים, אך רק מעטים משתתפים בשיעורי הבחירה. תמיד אותם ילדים מגיעים.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [2, 6, 7, 11] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל מילת הגבלה בפסקה.',
+							text: 'החוקר הדגיש: רק גורם אחד קובע - המוטיבציה. כל שאר הגורמים, לדבריו, כמעט לא משפיעים.',
+							dir: 'rtl',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [2, 8] }]
+						}
+					]
+				},
+				{
+					screens: [
+						{ type: 'preface', text: 'עכשיו באנגלית. סמנו כל מילת הגבלה.' },
+						{
+							type: 'mark-all',
+							instruction: 'Mark every limiting word (only, all, most, some, few, every, always).',
+							text: 'Only two members of the committee supported the idea. All the others were against it, and almost everyone asked for another meeting.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [0, 9, 17] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every limiting word (only, all, most, some, few, every, always).',
+							text: 'The survey found that most students are satisfied, but only a few join the optional classes. It is always the same children who come.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [4, 9, 11, 18] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every limiting word (only, all, most, some, few, every, always).',
+							text: 'The researcher stressed that only one factor really matters: motivation. All the other factors, he said, have almost no effect.',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [4, 10] }]
+						}
+					]
+				},
+				{
+					screens: [
+						{ type: 'preface', text: 'רמת בחינה. סמנו כל מילת הגבלה בטקסט.' },
+						{
+							type: 'mark-all',
+							instruction: 'Mark every limiting word (only, all, most, some, few, every, always).',
+							text: 'The article claims that only rich countries can solve the problem. However, most of the progress in recent years has come from small nations. Some of the poorest regions have cut pollution more than any wealthy state.\n\nDr. Mia Cohen argues that money is not everything. "Every country has some power to act," she says. "Only political will is truly required."',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [{ name: 'הגבלה', color: 'violet', indices: [4, 12, 24, 46, 49, 55] }]
+						},
+						{
+							type: 'mark-all',
+							instruction: 'Mark every limiting word (only, all, most, some, few, every, always).',
+							text: 'People often say that talent is all that counts in sport. In fact, most top athletes share one habit: they train every single day. Only a few reach the highest level on ability alone.\n\nCoach Ryan Doyle believes that almost anyone can improve. "All you really need is a plan and the patience to follow it," he says. "Talent only opens the door."',
+							dir: 'ltr',
+							correctIndices: [],
+							categories: [
+								{ name: 'הגבלה', color: 'violet', indices: [6, 13, 21, 24, 26, 40, 43, 59] }
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'limiters-q',
+		section: 'c-1',
+		titleHe: 'most / only - תרגול שאלות',
+		titleEn: 'Key Limiters: Practice',
+		code: 'c.1.7Q',
+		required: ['l07'],
+		position: { x: 100, y: 720 },
+		big: false,
+		content: {
+			preface: [],
 			rounds: [
 				{
 					screens: [
@@ -1879,7 +2031,7 @@ export const c1Lessons: LessonNode[] = [
 		titleHe: 'however / but - הפנייה',
 		titleEn: 'Contrast Words',
 		code: 'c.1.8',
-		required: ['l06', 'l07'],
+		required: ['numbers-names-q', 'not-q', 'limiters-q'],
 		position: { x: 0, y: 840 },
 		big: false,
 		content: {
