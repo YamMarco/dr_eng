@@ -17,7 +17,8 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 			'writing-task',
 			'timed-passage',
 			'passage-quiz',
-			'passage-mcq'
+			'passage-mcq',
+			'self-check'
 		]
 	},
 	{
@@ -38,6 +39,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, title: '', lines: [''] };
 		case 'mcq':
 			return { type, prompt: '', options: ['', ''], correctIndex: 0 };
+		case 'self-check':
+			return { type, prompt: '', modelAnswer: '' };
 		case 'mark-word':
 			return { type, sentence: '', correctWordIndex: 0 };
 		case 'mark-all':

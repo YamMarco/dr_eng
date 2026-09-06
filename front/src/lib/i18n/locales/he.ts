@@ -66,7 +66,16 @@ export const he = {
 		writingTask: 'משימת כתיבה',
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
+		selfCheck: 'תרגיל: תשובה חופשית',
 		submitButton: 'בדיקה'
+	},
+	selfCheck: {
+		placeholder: 'כתבו כאן...',
+		revealButton: 'הצגת התשובה',
+		modelAnswerLabel: 'תשובה לדוגמה',
+		compareNote: 'אין ציון על המסך הזה — השוו את מה שכתבתם לתשובה שלמעלה.',
+		wordCount: (n: number) => `${n} מילים`,
+		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
 	},
 	wordCard: {
 		listenLabel: 'השמעה (בקרוב)',

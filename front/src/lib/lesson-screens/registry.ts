@@ -20,6 +20,7 @@ import PassageMcq from './PassageMcq.svelte';
 import WritingTask from './WritingTask.svelte';
 import WordCard from './WordCard.svelte';
 import SpellWord from './SpellWord.svelte';
+import SelfCheck from './SelfCheck.svelte';
 
 // Prop shapes differ per screen type, so this registry is intentionally
 // loosely typed at the map level; each component fully types its own props.
@@ -40,5 +41,6 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'passage-mcq': PassageMcq,
 	'writing-task': WritingTask,
 	'word-card': WordCard,
-	'spell-word': SpellWord
+	'spell-word': SpellWord,
+	'self-check': SelfCheck
 };

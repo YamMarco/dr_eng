@@ -162,6 +162,23 @@ export type MarkAllScreen = {
 	timerKey?: string;
 };
 
+/**
+ * Free written answer with no marking: the student types, taps to reveal the
+ * model answer, and compares. Never scored — the programme's YOUR TURN screens
+ * are for learning, not grading. `minWords`/`maxWords` turn on a live word
+ * counter (green inside the range) for the writing lessons.
+ */
+export type SelfCheckScreen = {
+	type: 'self-check';
+	prompt: string;
+	/** Optional English passage shown above the prompt. */
+	text?: string;
+	modelAnswer: string;
+	placeholder?: string;
+	minWords?: number;
+	maxWords?: number;
+};
+
 export type LessonScreen =
 	| PrefaceScreen
 	| StepsScreen
@@ -178,7 +195,8 @@ export type LessonScreen =
 	| PassageMcqScreen
 	| WritingTaskScreen
 	| WordCardScreen
-	| SpellWordScreen;
+	| SpellWordScreen
+	| SelfCheckScreen;
 
 /**
  * A screen with no real content (e.g. a message left with empty text, or a
@@ -215,6 +233,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'word-card':
 		case 'spell-word':
 			return !screen.word.trim();
+		case 'self-check':
+			return !screen.prompt.trim();
 		case 'time-result':
 		case 'time-comparison':
 			return false;
