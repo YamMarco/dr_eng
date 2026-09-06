@@ -483,4 +483,290 @@ export const c3Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l21',
+		section: 'c-3',
+		titleHe: 'בחינה שלמה — ניהול זמן',
+		titleEn: 'Full Simulation',
+		code: 'c.3.5',
+		required: ['l20'],
+		position: { x: 0, y: 2640 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'summary',
+					title: 'עברתם 20 שיעורים. עכשיו הכל ביחד',
+					lines: [
+						'מפת הדרכים ✅ · Traffic Light ✅ · P1 ✅ · Eye Catchers ✅',
+						'MC ✅ · Short Answer ✅ · Complete ✅ · Two Answers ✅',
+						'אוצר מילים ✅ · P14 ✅ · דקדוק ✅ · 70-90 מילים ✅',
+						'הבחינה: שעה ו-45 דקות · קריאה 70 נקודות · כתיבה 30 נקודות'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'הטעות שגורמת לכישלון:\n\n"תלמיד נתקע בשאלה קשה. מנסה עוד דקה. עוד דקה. עוד דקה."\n10 דקות עברו, הוא עדיין לא ענה — ועכשיו אין זמן לכתיבה.\nתוצאה: 0 נקודות על הכתיבה.'
+				},
+				{
+					type: 'summary',
+					title: 'P15 — Mark → Move → Return',
+					lines: [
+						'Mark ✏️ — כתבו M קטן ליד שאלה קשה.',
+						'Move ➡️ — עברו לשאלה הבאה מיד. לא "עוד שנייה".',
+						'Return 🔄 — חזרו ל-M בדקה 100, אחרי שסיימתם את הכתיבה.',
+						'שאלה שנראית קשה עכשיו לפעמים קלה אחרי שאר השאלות — ואם לא, לפחות ענינו על השאר.'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — חלוקת הזמן',
+					lines: [
+						'0-3 דק׳ — מפת הדרכים: כותרת + פסקה 1',
+						'3-8 דק׳ — קוראים את כל השאלות, רמזור לכל אחת',
+						'8-70 דק׳ — עונים על שאלות 1-8: P1 + Eye Catchers + P15 לקשות',
+						'דקה 70 — ⛔ עוצרים ועוברים לכתיבה, גם אם לא סיימתם',
+						'70-100 דק׳ — כותבים 70-90 מילים לפי P14',
+						'100-105 דק׳ — חוזרים לשאלות עם M'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt:
+								'אתם עונים על שאלה 4. היא קשה ואתם לא מוצאים תשובה. מה עושים?',
+							options: [
+								'ממשיכים לנסות — "אולי אמצא"',
+								'כותבים M ועוברים לשאלה 5',
+								'מדלגים על כל השאלות הבאות',
+								'עונים ניחוש ושוכחים מזה'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'השעון מראה דקה 70 ונשארו שתי שאלות קריאה. מה עושים?',
+							options: [
+								'מסיימים את הקריאה קודם',
+								'מוותרים על הכתיבה',
+								'עוצרים ועוברים לכתיבה — הכתיבה שווה 30 נקודות',
+								'כותבים 30 מילים מהר וחוזרים לקריאה'
+							],
+							correctIndex: 2
+						},
+						{
+							type: 'passage-mcq',
+							text: 'A BIG CHANGE ON THE ISLAND OF REDONDA\n\nI  Redonda is an island near the east coast of America. Eight years ago, it looked like a desert. There were no trees and almost no grass. Today, however, Redonda is a beautiful green island that is home to many different birds.\n\nII  People first came to Redonda 150 years ago. They brought many goats because they wanted meat and milk. The goats ate all the plants. Eventually, the people left.\n\nIII  In 2016, environmentalists removed the goats. Grass and trees began to grow. "It was amazing how quickly the island changed," said Tammy Elliott.',
+							questions: [
+								{
+									prompt: 'What did Redonda look like eight years ago? Give ONE answer.',
+									options: [
+										'A green island full of birds',
+										'A desert with no trees and almost no grass',
+										'A city near the coast',
+										'A farm with many goats and plants'
+									],
+									correctIndex: 1
+								},
+								{
+									prompt: 'Why did the people bring goats? COMPLETE: Because they ___',
+									options: [
+										'Because they wanted to make the island green',
+										'Because environmentalists asked them to',
+										'Because they wanted meat and milk',
+										'Because the goats ate the plants'
+									],
+									correctIndex: 2
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — תנאי בחינה אמיתיים.\n\n⏱ שעה ו-45 דקות.\n📖 חלק א׳: שאלות 1-8 — 70 דקות.\n✏️ חלק ב׳: 70-90 מילים — 30 דקות.\n🔄 P15: חזרה לשאלות M — 5 דקות.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'תרגלו את חלק ב׳ בתנאי זמן: "Do you think all students should volunteer in their community?" — 70-90 מילים, לפי P14.',
+							placeholder: 'Yes, I think that...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'Yes, I think that all students should volunteer in their community. First, volunteering develops important skills. For example, students learn to work in a team and to take responsibility. This means that they are better prepared for adult life. In addition, volunteering improves mental health, because volunteers feel less stressed and sleep better. In conclusion, I believe that schools should encourage every student to volunteer, because it helps both the students and society.'
+						},
+						{
+							type: 'summary',
+							title: 'Checklist — 5 דקות לפני ההגשה',
+							lines: [
+								'□ עניתי על כל השאלות 1-8? כולל השאלות עם M?',
+								'□ ספרתי מילים בכתיבה? בין 70 ל-90?',
+								'□ כתבתי YES או NO בכתיבה?',
+								'□ יש לי 2 סיבות + דוגמאות?',
+								'□ לא העתקתי משפטים שלמים מהטקסט?'
+							]
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE — של כל הקורס',
+							lines: [
+								'"אני מחפש, לא קורא." — ויש לי את כל הכלים לעשות את זה.',
+								'מפת הדרכים · רמזור · P1 · מספרים · שמות · NOT · most/only · however',
+								'P15: Mark → Move → Return   |   P14: כתיבה 70-90 מילים'
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l22',
+		section: 'c-3',
+		titleHe: 'What changes? — שאלת בגרות',
+		titleEn: 'What Changes?',
+		code: 'c.3.6',
+		required: ['l21'],
+		position: { x: -70, y: 2760 },
+		big: true,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'כך נראית מטלת הכתיבה בבגרות האמיתית:\n\nSECTION 3 — PART II: WRITING TASK (30 Points)\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\n• Write 70-90 words in English.\n• Give your OPINION — what should change.\n• Give REASONS — why each change will help.'
+				},
+				{
+					type: 'summary',
+					title: 'שימו לב — זה שונה מ-"Do you think?"',
+					lines: [
+						'"Do you think X?" ← שאלת כן/לא: YES/NO → because → for example',
+						'"What changes?" ← שאלת שינויים: In my opinion → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
+						'אותם ביטויים בדיוק — מבנה מעט שונה.'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — מבנה "What changes?"',
+					lines: [
+						'1️⃣ פתיחה — "In my opinion, there are two important changes…"',
+						'2️⃣ שינוי 1 — "First, I think we should have… This would help because…"',
+						'3️⃣ שינוי 2 — "Also, I believe… For example…"',
+						'4️⃣ סיכום — "In conclusion, I am sure that these changes will help students."'
+					]
+				},
+				{ type: 'word-card', word: 'In my opinion', translationHe: 'לדעתי' },
+				{ type: 'word-card', word: 'First / First of all', translationHe: 'ראשית / קודם כול' },
+				{ type: 'word-card', word: 'This would help because', translationHe: 'זה יעזור כי' },
+				{ type: 'word-card', word: 'Also / Another change is', translationHe: 'בנוסף / שינוי נוסף הוא' },
+				{ type: 'word-card', word: 'In conclusion', translationHe: 'לסיכום' },
+				{
+					type: 'steps',
+					steps: [
+						'פתיחה: "In my opinion, there are two important changes that can make school a better place to learn."',
+						'שינוי 1: "First, I think we should have shorter lessons and more breaks. Students often feel tired after sitting for a long time, so short breaks help them concentrate better."',
+						'שינוי 2: "Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways."',
+						'סיכום: "In conclusion, I am sure that these changes will help all students enjoy school more and learn better." — כ-80 מילים ✓'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'TRY IT — נושא: "What changes can be made to improve your neighborhood?"'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איך פותחים תשובה לשאלת "What changes?"',
+							options: [
+								'In my opinion, there are two important changes that can make my neighborhood better.',
+								'Yes, I think so.',
+								'My neighborhood is very nice.',
+								'In conclusion, we need more parks.'
+							],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'אחרי שכתבתם שינוי ראשון — מה חייב לבוא מיד?',
+							options: [
+								'הסיכום',
+								'סיבה: "This would help because…"',
+								'שינוי שלישי',
+								'ספירת מילים'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזה ביטוי פותח את השינוי השני?',
+							options: [
+								'However,',
+								'Because,',
+								'Also, I believe… / Another change is…',
+								'In conclusion,'
+							],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'ספרתם 65 מילים בטיוטה. מה עושים?',
+							options: [
+								'מגישים — קרוב מספיק',
+								'מוחקים שינוי אחד',
+								'כותבים הכל מחדש',
+								'מוסיפים משפט קצר לאחת הסיבות ומגיעים ל-70+'
+							],
+							correctIndex: 3
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — בפורמט בגרות מלא.\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nארבעה שלבים: פתיחה · שינוי 1 + סיבה · שינוי 2 + סיבה · סיכום.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו את התשובה המלאה — 70-90 מילים.',
+							placeholder: 'In my opinion, there are two important changes...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'In my opinion, there are two important changes that can make my school a better place to learn. First, I think we should have shorter lessons and more breaks. Students often feel tired after sitting for a long time, so short breaks help them concentrate better. Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways. In conclusion, I am sure that these changes will help all students learn better.'
+						},
+						{
+							type: 'summary',
+							title: 'בדיקה אחרונה',
+							lines: [
+								'□ בין 70 ל-90 מילים?',
+								'□ יש שני שינויים?',
+								'□ יש סיבה לכל שינוי?',
+								'□ יש פתיחה וסיכום?'
+							]
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: [
+								'"In my opinion… → שינוי 1 + reason → שינוי 2 + reason → In conclusion…"',
+								'ארבעה שלבים. 70-90 מילים. תמיד.',
+								'🎓 הקורס הושלם. אתם מוכנים לבגרות.'
+							]
+						}
+					]
+				}
+			]
+		}
+	}
 ];
