@@ -380,4 +380,210 @@ export const c1Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l03',
+		section: 'c-1',
+		titleHe: 'P1 — ניווט בטקסט',
+		titleEn: 'P1 Navigation',
+		code: 'c.1.4',
+		required: ['l02'],
+		position: { x: 70, y: 480 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'הרגע הכי קשה בבחינה:\n\n"פתחתי את הדף. 200 מילים באנגלית. לא מכיר מילה אחת. הלב נופל."\n\nמה שרוב התלמידים עושים: מנסים לקרוא ולהבין הכל ← נתקעים ← פאניקה ← שוכחים לכתוב.'
+				},
+				{
+					type: 'preface',
+					text: 'מה שצריך לעשות:\n\nלא קוראים את הטקסט. קוראים רק את השאלה הראשונה. מחפשים מילת מפתח.\n\n"לא מבין את הטקסט" ≠ "לא יכול לענות".\nP1 עובד גם כשהטקסט קשה — כי מחפשים, לא קוראים.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — P1',
+					lines: [
+						'1 · קראו את השאלה עד הסוף — לא את הטקסט.',
+						'2 · מצאו מילת מפתח — המילה שתחפשו בטקסט.',
+						'3 · אתרו אותה בטקסט — כמו חיפוש בוואטסאפ.',
+						'4 · קראו רק את המשפט שמכיל אותה.',
+						'5 · ענו — מהטקסט בלבד, לא מהראש.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'מהי מילת מפתח?\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why — אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project'
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT — P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n"The project is led by Dr. Amara Diallo, a scientist from Senegal. \'We do not just plant trees,\' says Dr. Diallo. \'We teach local people how to care for them.\' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive."\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
+				},
+				{
+					type: 'steps',
+					steps: [
+						'קוראים את השאלה: "לפי ד״ר דיאלו, למה רוב העצים מתים?"',
+						'מילות מפתח: Dr. Diallo + trees die.',
+						'מחפשים את Dr. Diallo בטקסט — הוא בפסקה II.',
+						'קוראים רק שם: "most trees die because nobody looks after them".',
+						'תשובה: Because nobody looks after them.'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
+							questions: [
+								{
+									prompt:
+										'השאלה: What do we learn from paragraph I about the Green Africa project? — מהי מילת המפתח?',
+									options: ['forests', 'Green Africa', 'However', 'scientists say'],
+									correctIndex: 1
+								},
+								{
+									prompt: 'באיזו פסקה מצאתם אותה?',
+									options: ['פסקה I', 'פסקה II', 'פסקה III', 'לא מופיעה בטקסט'],
+									correctIndex: 0
+								},
+								{
+									prompt: 'מה התשובה?',
+									options: [
+										'It teaches local people how to care for trees',
+										'It has already planted over 200 million trees in 15 countries',
+										'It made rivers in Kenya flow again',
+										'It reduced carbon by 15%'
+									],
+									correctIndex: 1
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)'
+						},
+						{
+							type: 'mcq',
+							prompt: 'שלב 2 — מהי מילת המפתח שתחפשו בטקסט?',
+							options: ['trees', 'Ethiopia', 'planted', 'happened'],
+							correctIndex: 1
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
+							prompt: 'שלב 5 — כתבו את התשובה במילים של הטקסט.',
+							modelAnswer: 'The number of birds increased by 60%.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"הטקסט קשה? לא מבין? — P1 עדיין עובד. מחפש, לא קורא."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l04',
+		section: 'c-1',
+		titleHe: 'מגנט לעין — מספרים',
+		titleEn: 'Eye Catcher: Numbers',
+		code: 'c.1.5',
+		required: ['l03'],
+		position: { x: 0, y: 600 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'בלי Eye Catcher:\n"השאלה על 2,000. קורא פסקה 1... 2... 3. מוצא אחרי דקה." — 60 שניות.\n\nעם Eye Catcher:\n"רואה 2,000 בשאלה. סורק את הטקסט ומחפש 2,000. מוצא תוך 3 שניות." — 3 שניות.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — מספר בשאלה',
+					lines: [
+						'רואים מספר בשאלה ← סורקים את הטקסט ומחפשים אותו. לא קוראים מההתחלה.',
+						'שנים: 2019 · 1985   |   אחוזים: 85% · 60%   |   כמויות: 2,000 · 15',
+						'מספר בשאלה = GPS. הולכים ישר לשם.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: According to Professor James Lee, what percentage of residents are satisfied?\nמחפשים 85% ← סורקים ← פסקה III: "85% of residents now say they are satisfied."\nתשובה: 85% of residents.\n\nהשאלה: How much did the project cost?\nמחפשים 500,000 dollars ← פסקה II.\nתשובה: Only 500,000 dollars.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars — much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							questions: [
+								{
+									prompt:
+										'השאלה: How many community gardens were created? — איזה מספר תחפשו בטקסט?',
+									options: ['2,000', '15', '85%', '500,000'],
+									correctIndex: 1
+								},
+								{
+									prompt: 'באיזו פסקה הוא נמצא, ומה התשובה?',
+									options: [
+										'פסקה I — 15 community gardens',
+										'פסקה II — 15 professors',
+										'פסקה III — 15% of residents',
+										'לא כתוב בטקסט'
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — שתי שאלות. מצאו את המספר, ואז ענו.'
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							prompt: 'By how much did stress levels fall?',
+							modelAnswer: 'By 40%.'
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							prompt: 'What percentage of people exercise outdoors now?',
+							modelAnswer: '60%. (It increased from 15% to 60%.)'
+						},
+						{
+							type: 'mcq',
+							prompt: 'למה "60%" לבד היא תשובה מסוכנת בשאלה כזאת?',
+							options: [
+								'כי צריך לכתוב את המספר במילים',
+								'כי בטקסט יש עוד מספרים — 15% ו-85% — וצריך את זה שצמוד ל-exercise outdoors',
+								'כי אחוזים אף פעם לא תשובה',
+								'כי חייבים לצטט משפט שלם'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"מספר בשאלה = GPS. ישר לשם."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
