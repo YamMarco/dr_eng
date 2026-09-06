@@ -2029,6 +2029,123 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: קרא 4 → חצה → הוכחה → ענה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בשאלת MC — מה עושים לפני שחוזרים לטקסט?',
+							options: [
+								'מסמנים את האפשרות הראשונה שנראית טוב',
+								'קוראים את כל 4 האפשרויות',
+								'קוראים שוב את כל הטקסט'
+							],
+							correctIndex: 1,
+							explanation: 'צעד 1: קוראים את כל ארבע האפשרויות. אחר כך חוצים, ורק אז מחפשים הוכחה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'אפשרות שנכונה בטקסט, אבל עונה על שאלה אחרת — היא תשובה נכונה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. זה מסיח מסוג ב׳: נכון + לא קשור לשאלה = שגוי. חוצים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"What do we learn from paragraph I?" — מאיפה מחפשים?',
+							options: ['מכל הטקסט', 'רק מפסקה I', 'מהפסקה שקשורה לנושא'],
+							correctIndex: 1,
+							explanation: 'כלל זהב: paragraph I = רק פסקה I. לא פסקאות אחרות.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer for two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class.',
+							questions: [
+								{
+									prompt: 'What do we learn from paragraph I about young volunteers?',
+									options: [
+										'Young volunteers are 60% more likely to be happy',
+										'Researchers expected volunteering to make people happy',
+										'Volunteers work at least 5 hours a week',
+										'Schools introduce volunteering programmes'
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'למה חצינו את "Schools introduce volunteering programmes"?',
+									options: [
+										'כי הוא סותר את הטקסט',
+										'כי הוא נכון — אבל מפסקה III, והשאלה על פסקה I',
+										'כי הוא לא מוזכר בכלל',
+										'כי הוא ארוך מדי'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt: 'מצאתם הוכחה לשתי אפשרויות. מה עושים?',
+							options: [
+								'מסמנים את הראשונה שמצאנו',
+								'מסמנים את האחרונה שמצאנו',
+								'חוזרים לטקסט — ב-MC תמיד תשובה אחת, אז אחת מהן שגויה'
+							],
+							correctIndex: 2,
+							explanation: 'ב-MC יש תמיד תשובה אחת. שתי "הוכחות" = אחת מהן לא באמת עונה על השאלה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							questions: [
+								{
+									prompt: 'What do we learn from paragraph II about the project?',
+									options: [
+										'The project teaches people to care for trees',
+										'Dr. Diallo plants the trees personally',
+										'Birds increased by 60% in Ethiopia',
+										'Most trees survive without local help'
+									],
+									correctIndex: 0
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: מהם ארבעת הצעדים של MC, ולמה הסדר חשוב?',
+							modelAnswer:
+								'1-קוראים את כל 4 האפשרויות. 2-חוצים סותרים ואפשרויות מהפסקה הלא נכונה. 3-מחפשים הוכחה בפסקה הנכונה. 4-מקיפים. הסדר חשוב כי לא מסמנים לפני שיש הוכחה.'
+						},
+						{
+							type: 'self-check',
+							text: 'III  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor Mills argues that helping others teaches skills no classroom can replace.',
+							prompt:
+								'"What do we learn from paragraph III about students who volunteer?" — כתבו את התשובה ואת ההוכחה מהטקסט.',
+							modelAnswer:
+								'Students become more responsible. הוכחה: "students became more responsible and more focused in class."'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -2136,6 +2253,110 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"תשובה אחת. מהטקסט. Why? ← because. When? ← זמן."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: תשובה אחת. מהטקסט. Why? ← because.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה מחפשים בטקסט לכל מילת שאלה?',
+							options: [
+								'Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום',
+								'Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by',
+								'כל מילות השאלה מחפשות את אותו דבר',
+								'Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because'
+							],
+							correctIndex: 0,
+							explanation: 'כל מילת שאלה שולחת אתכם לסוג מידע אחר בטקסט.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Give ONE answer" — אפשר לכתוב שתי תשובות אם שתיהן נכונות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. ONE = אחת בלבד. שתיים = 0 נקודות.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Why did people leave Redonda?" — מה מחפשים בטקסט?',
+							options: ['שם מקום', 'because / since / so', 'שנה ותאריך'],
+							correctIndex: 1,
+							explanation: 'Why? ← מחפשים מילת סיבה בטקסט.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'self-check',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.',
+							prompt: '"When did scientists start the project? Give ONE answer." — כתבו ANSWER:',
+							modelAnswer: 'ANSWER: In 2019.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
+							prompt:
+								'"According to Dr. Klein, how do adults improve quickly? Give ONE answer." — כתבו ANSWER:',
+							modelAnswer:
+								'ANSWER: By understanding what the teacher explains and correcting their mistakes more quickly.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"Why do most trees die?" — הטקסט אומר "because nobody looks after them". מה כותבים?',
+							options: [
+								'Nobody looks after them',
+								'Trees are difficult to grow',
+								'Because nobody looks after them.'
+							],
+							correctIndex: 2,
+							explanation: 'Why? ← כותבים "Because…" + הסיבה מהטקסט. זה גם משפט שלם.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.',
+							questions: [
+								{
+									prompt: 'According to Dr. Okafor, how do volunteers feel? Give ONE answer.',
+									options: [
+										'Better than non-volunteers',
+										'They feel less stressed and sleep better',
+										'They are happier and more successful'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							prompt: '"Where did rivers begin to flow again? Give ONE answer." — כתבו ANSWER:',
+							modelAnswer: 'ANSWER: In Kenya.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: למה חשוב לכתוב "Because…" כשהשאלה שואלת "Why?"',
+							modelAnswer:
+								'כי זה מראה שהבנתם שהשאלה ביקשה סיבה, וגם עוזר לדקדוק — "Because + סיבה" הוא משפט שלם.'
 						}
 					]
 				}
