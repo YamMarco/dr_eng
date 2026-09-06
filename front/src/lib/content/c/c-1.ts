@@ -2470,6 +2470,106 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: Because ___ = סיבה. In order to ___ = מטרה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"People left Redonda because ___" — מה עושים?',
+							options: [
+								'כותבים YES/NO',
+								'מחפשים סיבה בטקסט ומשלימים',
+								'כותבים תשובה מהראש'
+							],
+							correctIndex: 1,
+							explanation: 'Complete the sentence: מחפשים מילות סיבה בטקסט ← מוצאים ← משלימים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"They brought goats in order to ___" — מה מחפשים בטקסט?',
+							options: ['because / since', 'to / in order to / so that', 'and / also'],
+							correctIndex: 1,
+							explanation: '"In order to" = מטרה. מחפשים to / in order to / so that.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Because" כבר כתוב בשאלה — לא כותבים אותו שוב בתשובה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. "Because they wanted food" — ולא "Because because they wanted".'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.',
+							questions: [
+								{
+									prompt: 'Why do some adults never learn to swim? COMPLETE: Because they ___',
+									options: [
+										'Because they feel embarrassed',
+										'Because they cannot find classes',
+										'Because they are too old'
+									],
+									correctIndex: 0
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'In 2016, environmentalists removed the goats so that the plants could grow back.',
+							prompt: 'השלימו: "People removed the goats in order to ___"',
+							modelAnswer: 'In order to let the plants grow back.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בדיקה: "Because they embarrassed." — האם המשפט תקין?',
+							options: [
+								'כן — יש because',
+								'לא — חסר פועל: "Because they FEEL embarrassed"',
+								'כן — מספיק ברור'
+							],
+							correctIndex: 1,
+							explanation: 'כל משפט חייב subject + verb. "Because they feel embarrassed."'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt: '"Why do most trees in the project survive? COMPLETE: Because ___"',
+							modelAnswer: 'Because local people are involved and learn how to care for them.'
+						},
+						{
+							type: 'self-check',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.',
+							prompt: '"What was the aim of the Green Africa project? COMPLETE: In order to ___"',
+							modelAnswer: 'In order to plant one billion trees in Africa by 2030.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: מה ההבדל בין "because" לבין "in order to" בהשלמת משפט?',
+							modelAnswer:
+								'because = סיבה, מה גרם. in order to = מטרה, מה רצו להשיג. "They left because they had no food" מול "They came in order to find food."'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -2582,6 +2682,109 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"מצאתי AND / IN ADDITION? ← תשובה שנייה מגיעה."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מצאתי אחת? ממשיך. עוצר רק עם שתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Give TWO answers" — כמה תשובות כותבים?',
+							options: [
+								'אחת — אם היא ארוכה ומפורטת',
+								'שתיים בדיוק',
+								'שלוש — כדי לא להחמיץ'
+							],
+							correctIndex: 1,
+							explanation: 'שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מצאתם תשובה ראשונה. מה עושים?',
+							options: [
+								'כותבים אותה ועוברים לשאלה הבאה',
+								'ממשיכים לקרוא — מחפשים שנייה',
+								'מחפשים שנייה רק אם נשאר זמן'
+							],
+							correctIndex: 1,
+							explanation: 'תמיד ממשיכים. עוצרים רק כשיש שתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"In addition" בטקסט = סיגנל שתשובה שנייה מגיעה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. In addition / Also / And — אחריהן מגיעה התשובה השנייה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו את שתי התשובות ואת מילת החיבור שביניהן',
+							text: 'The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							correctIndices: [8, 9, 10, 11, 12, 13, 14, 15, 18, 25, 26, 27, 28],
+							wordBank: ['in addition', 'also', 'and']
+						},
+						{
+							type: 'passage-mcq',
+							text: 'III  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class.',
+							questions: [
+								{
+									prompt: 'Give TWO answers: How do students change? (paragraph III)',
+									options: [
+										'They become more responsible / They become more focused',
+										'They feel less stressed / They sleep better',
+										'They help others / They work in schools'
+									],
+									correctIndex: 0
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							prompt: 'כתבו את שתי התשובות: (1) ו-(2).',
+							modelAnswer:
+								'(1) Stress levels fell by 40%.  (2) The number of people who exercise outdoors increased from 15% to 60%.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							prompt:
+								'"How did the area change after trees were planted? Give TWO answers from paragraph III." — כתבו (1) ו-(2).',
+							modelAnswer:
+								'(1) The number of birds increased by 60% in Ethiopia.  (2) Rivers in Kenya that were dry for 20 years began to flow again.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'תלמיד כתב שלוש תשובות ל-"Give TWO answers". מה הסיכון?',
+							modelAnswer:
+								'הבודק מתייחס לשתי הראשונות בלבד. אם אחת מהן שגויה — מפסידים נקודות, גם אם התשובה השלישית נכונה.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: מה התפקיד של "and / also / in addition" בשאלת TWO answers?',
+							modelAnswer:
+								'הן הסיגנל בטקסט שתשובה שנייה מגיעה. מוצאים אחת מהן — ממשיכים לקרוא, והתשובה השנייה שם.'
 						}
 					]
 				}
