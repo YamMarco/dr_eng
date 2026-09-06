@@ -779,6 +779,113 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: שאלה → מילת מפתח → אתר → קרא → ענה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to Dr. Diallo, why do most trees die?" — מהי מילת המפתח?',
+							options: ['"why"', '"Dr. Diallo" / "trees die"', '"According"'],
+							correctIndex: 1,
+							explanation:
+								'"Dr. Diallo" ו-"trees die" הן מה שמחפשים בטקסט. "why" ו-"according" הן מילות שאלה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מהו הסדר הנכון של חמשת שלבי P1?',
+							options: [
+								'קרא השאלה ← מצא מילת מפתח ← אתר בטקסט ← קרא את המשפט ← ענה',
+								'קרא את הטקסט ← קרא השאלה ← ענה ← בדוק ← סיים',
+								'מצא מילת מפתח ← קרא השאלה ← ענה ← אתר בטקסט ← קרא',
+								'קרא השאלה ← ענה ← אתר בטקסט ← קרא את המשפט ← בדוק'
+							],
+							correctIndex: 0,
+							explanation: '1-קרא השאלה · 2-מילת מפתח · 3-אתר בטקסט · 4-קרא את המשפט · 5-ענה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בשלב 4 של P1 קוראים את כל הפסקה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation:
+								'שקר. קוראים רק את המשפט שמכיל את מילת המפתח, ואולי את זה שלפניו או אחריו.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"What happened to rivers in Kenya? (paragraph III)" — מהי מילת המפתח, ובאיזו פסקה?',
+							options: ['What — פסקה I', 'Kenya — פסקה III', 'rivers — פסקה II'],
+							correctIndex: 1,
+							explanation: '"Kenya" — שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
+							prompt:
+								'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" — מילת מפתח, פסקה, ותשובה.',
+							modelAnswer:
+								'מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'P1 עובד גם כשהטקסט קשה מאוד ולא מבינים אותו.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. P1 הוא חיפוש, לא הבנה — מחפשים מילת מפתח בלי קשר לקושי.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							questions: [
+								{
+									prompt:
+										'"When did scientists start the project?" — באיזה שלב של P1 מוצאים את "2019"?',
+									options: [
+										'שלב 1 — קריאת השאלה',
+										'שלב 3 — איתור בטקסט',
+										'שלב 5 — כתיבת התשובה'
+									],
+									correctIndex: 1
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
+							prompt:
+								'"According to Dr. Diallo, why do most trees die? Give ONE answer." — כתבו את חמשת שלבי P1 ואת התשובה.',
+							modelAnswer:
+								'1-קורא את השאלה. 2-מילת מפתח: Dr. Diallo / trees die. 3-פסקה II. 4-"most trees die because nobody looks after them". 5-תשובה: Because nobody looks after them.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?',
+							modelAnswer:
+								'כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם — רק לבצע חמישה שלבים.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -872,6 +979,103 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"מספר בשאלה = GPS. ישר לשם."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מספר בשאלה = GPS. ישר לשם.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"How many trees were planted?" — מה תחפשו בטקסט?',
+							options: ['את המילה "trees" בלבד', 'מספר שצמוד ל-trees / planted', 'את שם הפרויקט'],
+							correctIndex: 1,
+							explanation: 'מספר = GPS. סורקים את הטקסט ומחפשים מספר שקשור ל-trees.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to the survey, what percentage of adults cannot swim?" — מה ה-Eye Catcher?',
+							options: ['survey', 'adults', 'האחוז — 30%'],
+							correctIndex: 2,
+							explanation: 'אחוז בשאלה = מספר = GPS. מחפשים אותו ישירות בטקסט.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מספר בשאלה אומר: לקרוא את הטקסט מההתחלה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. מספר = GPS. סורקים — לא קוראים מההתחלה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'באילו שאלות יש Eye Catcher של מספר?\n\n1. "How many countries are in the project?"\n2. "What happened after 2019?"\n3. "Give TWO answers from paragraph III."\n4. "What percentage of students improved?"',
+							options: ['רק ב-2', 'ב-1, 2 ו-4', 'בכולן — 1, 2, 3 ו-4', 'רק ב-3 ו-4'],
+							correctIndex: 2,
+							explanation:
+								'"How many" · "2019" · "TWO" · "percentage" — כולם מספרים, כולם Eye Catchers.'
+						},
+						{
+							type: 'self-check',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.',
+							prompt:
+								'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
+							modelAnswer: '200 million trees · 15 countries.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'השאלה: "By how much did stress levels fall?" הטקסט: "Stress levels fell by 40%." — מה התשובה?',
+							options: ['They fell significantly', 'By 40%', 'Stress fell because of the trees'],
+							correctIndex: 1,
+							explanation: 'By 40% — מספר מדויק מהטקסט. זה כל מה שצריך.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to Professor James Lee, what percentage of residents are satisfied?" — מה עושים?',
+							options: [
+								'קוראים את פסקה 1 ומחפשים',
+								'מחפשים "James Lee", ובפסקה שלו מחפשים את האחוז',
+								'קוראים את כל הטקסט'
+							],
+							correctIndex: 1,
+							explanation:
+								'שם + אחוז = שני Eye Catchers. מוצאים את James Lee, ובפסקה שלו סורקים אחר % ← 85%.'
+						},
+						{
+							type: 'self-check',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.',
+							prompt:
+								'"According to the survey, what percentage of adults cannot swim? Give ONE answer." — כתבו ANSWER:',
+							modelAnswer: 'ANSWER: Over 30% of adults cannot swim.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: למה "מספר בשאלה = GPS" עוזר במיוחד לתלמיד חלש?',
+							modelAnswer:
+								'כי מספרים קל לזהות בסריקה מהירה — העין מוצאת אותם בלי לקרוא, וזה חוסך המון זמן חיפוש.'
 						}
 					]
 				}
