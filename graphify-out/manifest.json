@@ -576,9 +576,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
-    "mtime": 1788692532.7177894,
-    "seen": 1788692578.268538,
-    "ast_hash": "99a1d54c87b3800dadd86766f9e7e97a",
+    "mtime": 1788699224.7771983,
+    "seen": 1788699647.7470658,
+    "ast_hash": "f9a80bfea6048e04d7ea5290b3472a17",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
@@ -780,9 +780,9 @@
     "semantic_hash": ""
   },
   "imporve.md": {
-    "mtime": 1788692411.9814365,
-    "seen": 1788692578.2686899,
-    "ast_hash": "20164fb8fb6a020e4440744c8b2a0eeb",
+    "mtime": 1788694291.7265272,
+    "seen": 1788699647.7472255,
+    "ast_hash": "bc3adaacece068ef23ecc01fdf3f04e5",
     "semantic_hash": ""
   }
 }
