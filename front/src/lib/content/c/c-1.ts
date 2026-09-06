@@ -776,4 +776,206 @@ export const c1Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l07',
+		section: 'c-1',
+		titleHe: 'most / only — תשובה אחת',
+		titleEn: 'Key Limiters',
+		code: 'c.1.8',
+		required: ['l06'],
+		position: { x: -70, y: 960 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: '"According to Dr. Okafor, what is the MOST effective type of volunteering?"\n\nתלמיד קרא את הטקסט. מצא שני סוגי התנדבות. כתב את שניהם.\nשניהם נכונים. שניהם מהטקסט.\nציון: 0 נקודות.'
+				},
+				{
+					type: 'preface',
+					text: 'מה קרה?\n\nהמילה MOST ביקשה אחד בלבד — הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nMOST = הכי, אחד. לא שניים.\nONLY = רק אחד. לא שניים.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — מילות הגבלה',
+					lines: [
+						'most — "The MOST effective..." ← לא כולן, רק הכי טובה.',
+						'only — "The ONLY reason..." ← לא סיבות אחרות, רק אחת.',
+						'מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, what is the most effective type of volunteering programme?\n\nמחפשים "most effective" בטקסט — לא את כל הסוגים.\nפסקה II: "the most effective programmes bring young people face to face with the people they help."\n\nתשובה: Programmes that bring young people face to face with the people they help.\nולא יותר מזה — רק ה-most effective אחד.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'III  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'According to the text, in most cities, what is available?',
+									options: [
+										'Free swimming pools',
+										'Adult swimming classes',
+										'Private swimming coaches',
+										'Three sessions every day'
+									],
+									correctIndex: 1
+								},
+								{
+									prompt: 'השאלה כללה את המילה most. כמה תשובות מותר לכתוב?',
+									options: [
+										'תשובה אחת בלבד',
+										'שתיים — ליתר ביטחון',
+										'כל מה שמצאתם בפסקה',
+										'תלוי באורך השאלה'
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt: 'כתבו תשובה אחת בלבד, במילים של הטקסט.',
+							modelAnswer: 'Because nobody looks after them.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כתבתם שתי תשובות לשאלה עם most. מה יקרה?',
+							options: [
+								'תקבלו ניקוד על שתיהן',
+								'הבודק יבחר את הטובה מביניהן',
+								'התשובה תיפסל — נדרשה אחת',
+								'לא משנה, העיקר שהתשובה מהטקסט'
+							],
+							correctIndex: 2
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"most / only = תשובה אחת מסוימת. לא יותר."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l08',
+		section: 'c-1',
+		titleHe: 'however / but — הפנייה',
+		titleEn: 'Contrast Words',
+		code: 'c.1.9',
+		required: ['l07'],
+		position: { x: 0, y: 1080 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'סיטואציה מהבחינה:\n\n"What does paragraph I say about people who cannot swim?"\n\nהתלמיד קרא: "Many people cannot swim. However, experts say it is never too late."\nהוא כתב: "Many people cannot swim."\nציון: 0 נקודות.'
+				},
+				{
+					type: 'preface',
+					text: 'מה קרה?\n\nהוא ענה על החצי השגוי של המשפט.\nhowever = פנייה. מה שאחריו הוא הנקודה האמיתית.\n\nהנקודה כאן: "it is never too late" — לא "many people cannot swim".'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — however / but',
+					lines: [
+						'לפני however: מידע כללי, רקע, בעיה.',
+						'אחרי however: הנקודה החשובה. הסיפור האמיתי.',
+						'שאלה שנוגעת למשפט עם however — התשובה כמעט תמיד מה שאחריו.'
+					]
+				},
+				{
+					type: 'steps',
+					steps: [
+						'WATCH IT — השאלה: What does Dr. Okafor say about different types of volunteering?',
+						'מחפשים however בפסקה II.',
+						'"However, not all types of volunteering produce the same results."',
+						'מה בא אחרי however? זו התשובה: Not all types of volunteering produce the same results.'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.',
+							questions: [
+								{
+									prompt: 'What does paragraph I say about people who cannot swim?',
+									options: [
+										'They feel embarrassed and never try',
+										'Swimming classes are expensive',
+										'It is never too late to learn',
+										'They are over 30 years old'
+									],
+									correctIndex: 2
+								},
+								{
+									prompt: 'למה "They feel embarrassed" היא לא התשובה?',
+									options: [
+										'כי היא לא כתובה בטקסט',
+										'כי היא הרקע — היא לפני however, והנקודה באה אחריו',
+										'כי היא ארוכה מדי',
+										'כי היא לא בפסקה I'
+									],
+									correctIndex: 1
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איפה נמצא however בפסקה I?',
+							options: [
+								'במשפט הראשון, לפני "Every year"',
+								'אחרי המשפט על יערות שנהרסים',
+								'בסוף הפסקה, אחרי "15 countries"',
+								'הוא לא מופיע בפסקה I'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'self-check',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.',
+							prompt: 'כתבו את החדשות הטובות — מה שבא אחרי however.',
+							modelAnswer:
+								'There is good news: in 2019 scientists started a project to plant one billion trees in Africa.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"however / but = פנייה. מה שאחריו = הנקודה."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
