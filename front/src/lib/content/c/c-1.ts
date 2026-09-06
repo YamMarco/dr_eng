@@ -978,4 +978,233 @@ export const c1Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l09',
+		section: 'c-1',
+		titleHe: 'שאלות אמריקאיות',
+		titleEn: 'Multiple Choice',
+		code: 'c.1.10',
+		required: ['l08'],
+		position: { x: 70, y: 1200 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'הטעות הנפוצה:\n"התלמיד קורא אפשרות i. נשמעת טוב. מסמן. אחרי הבחינה מתברר ש-i הייתה שגויה."\n\nהדרך הנכונה:\n"קוראים את כל 4 האפשרויות. חוצים את השגויות. מוצאים הוכחה בפסקה הנכונה. עונים."'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — ארבעה צעדים',
+					lines: [
+						'1 · קראו את כל 4 האפשרויות לפני שחוזרים לטקסט.',
+						'2 · חצו כל אפשרות שסותרת את הטקסט — או שנכונה אבל לא קשורה לשאלה.',
+						'3 · חזרו לטקסט ומצאו הוכחה בפסקה הנכונה.',
+						'4 · ענו — תשובה אחת בלבד.'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'שני סוגי מסיחים',
+					lines: [
+						'סוג א׳ — סותר את הטקסט. הטקסט: "without payment" ← "Volunteers receive payment" ← חצו.',
+						'סוג ב׳ — נכון, אבל עונה על שאלה אחרת. השאלה על פסקה I, האפשרות מפסקה III ← חצו.',
+						'הכלל: נכון + לא קשור לשאלה = שגוי.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'כלל זהב ל-"What do we learn from paragraph X?"\n\nלכו רק לפסקה X. אל תקראו פסקאות אחרות.\nהשאלה מגבילה אתכם לפסקה אחת. כל מידע מפסקה אחרת = שגוי, גם אם הוא נכון בטקסט.\n\n⚠️ אין לכם הוכחה בפסקה הנכונה? אל תענו. חזרו לטקסט.\n🚦 ולפני שעונים — בדקו רמזור. רק ירוק = עונים.'
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: What do we learn from paragraph I about young volunteers?\n\ni) Volunteers receive payment ← סוג א׳: סותר את "without payment".\nii) Young volunteers are happier ← ✓ הוכחה בפסקה I: "60% more likely to be happy".\niii) Researchers expected volunteering to help ← סוג א׳: הטקסט אומר "Researchers were surprised".\niv) Schools that volunteer have better results ← סוג ב׳: נכון, אבל זה מפסקה III.\n\nהתשובה: ii.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.',
+							questions: [
+								{
+									prompt:
+										'What do we learn from paragraph III about schools? (לכו רק לפסקה III)',
+									options: [
+										'Schools stopped volunteering programmes',
+										'Students who volunteer become more responsible',
+										'Professor Mills works at a school',
+										'Young volunteers feel less stressed'
+									],
+									correctIndex: 1
+								},
+								{
+									prompt:
+										'"Young volunteers feel less stressed" נכון לפי הטקסט. למה בכל זאת חצינו אותו?',
+									options: [
+										'כי הוא סותר את הטקסט',
+										'כי הוא מפסקה II, והשאלה על פסקה III — סוג ב׳',
+										'כי הוא לא מוזכר בטקסט',
+										'כי הוא קצר מדי'
+									],
+									correctIndex: 1
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — בפורמט בחינה.\n🚦 רמזור לפני שעונים. רק ירוק = עונים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							questions: [
+								{
+									prompt: 'What do we learn from paragraph II about the project?',
+									options: [
+										'The project teaches people to plant and care for trees',
+										'Dr. Diallo plants the trees personally',
+										'Most trees survive without any help',
+										'In Ethiopia, birds increased by 60%'
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'איזו אפשרות היא מסיח מסוג ב׳ — נכונה, אבל מהפסקה הלא נכונה?',
+									options: [
+										'"Dr. Diallo plants the trees personally"',
+										'"Most trees survive without any help"',
+										'"In Ethiopia, birds increased by 60%"',
+										'אין כאן מסיח כזה'
+									],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"What do we learn from paragraph X? ← לך רק לפסקה X."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l10',
+		section: 'c-1',
+		titleHe: 'תשובה קצרה',
+		titleEn: 'Short Answer',
+		code: 'c.1.11',
+		required: ['l09'],
+		position: { x: 100, y: 1320 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'טעות נפוצה:\n"Give ONE answer." — התלמיד כותב שלושה משפטים מהדעה שלו.\n← שלוש תשובות, ולא מהטקסט.\n\nנכון:\n"Give ONE answer." — משפט אחד מהטקסט.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — שלושה כללים',
+					lines: [
+						'1 · ONE = תשובה אחת בלבד.',
+						'2 · מהטקסט — לא מהדעה שלכם.',
+						'3 · משפט אחד. לא צריך להסביר.'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'מה מחפשים לפי מילת השאלה',
+					lines: [
+						'Why? ← because / since / as a result / therefore ← עונים "Because…"',
+						'When? ← שנה, תאריך, תקופה (in 2019, ago) ← הזמן מהטקסט',
+						'How? ← by / through / using + פעולה ← "By…"',
+						'Where? ← שם מקום, in / at / on ← המקום מהטקסט',
+						'What? ← המשפט שמתאר את הנושא ← מעתיקים את המשפט'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, why do teenagers who volunteer feel less stressed?\n\nWhy? ← מחפשים מילת סיבה.\nפסקה II: "teenagers who volunteer feel less stressed and sleep better".\n\nתשובה: Because they feel less stressed and sleep better than those who do not volunteer.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: '🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							questions: [
+								{
+									prompt:
+										'Why do most trees die, according to Dr. Diallo? Give ONE answer. — איזו מילה בטקסט מסגירה את התשובה?',
+									options: ['survive', 'because', 'local', 'when'],
+									correctIndex: 1
+								},
+								{
+									prompt: 'מה התשובה?',
+									options: [
+										'Rivers became cleaner',
+										'Because scientists did not help',
+										'Because nobody looks after them',
+										'Because only 85% survive'
+									],
+									correctIndex: 2
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳.\n\nמה שחשוב: המידע הנכון מהטקסט. כל עוד התשובה מובנת — מקבלים את הנקודות.\nלמשל "Because the goats ate all plants" מקבל ניקוד מלא, גם בלי "the" לפני plants.'
+						},
+						{
+							type: 'preface',
+							text: 'YOUR TURN — בפורמט בחינה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.',
+							prompt:
+								'According to Dr. Okafor, how do volunteers feel compared to non-volunteers? Give ONE answer.',
+							modelAnswer: 'ANSWER: They feel less stressed and sleep better.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'השאלה מתחילה ב-When? מה מחפשים בטקסט?',
+							options: [
+								'מילת סיבה — because',
+								'שנה, תאריך או תקופה',
+								'שם של מקום',
+								'שם של אדם'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"תשובה אחת. מהטקסט. Why? ← because. When? ← זמן."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
