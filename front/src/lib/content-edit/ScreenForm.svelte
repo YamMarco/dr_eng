@@ -544,6 +544,29 @@
 				הכתבה (לפי שמיעה)
 			</label>
 		</div>
+	{:else if draft.type === 'self-check'}
+		<p class="mb-1 text-xs font-bold text-muted">קטע באנגלית (אופציונלי)</p>
+		<MarkdownInput bind:value={draft.text} dir="ltr" minRows={4} />
+		<p class="mt-3 mb-1 text-xs font-bold text-muted">ההנחיה לתלמיד</p>
+		<MarkdownInput bind:value={draft.prompt} dir="auto" minRows={2} />
+		<p class="mt-3 mb-1 text-xs font-bold text-muted">תשובת מודל (נחשפת בלחיצה)</p>
+		<MarkdownInput bind:value={draft.modelAnswer} dir="auto" minRows={3} />
+		<input
+			bind:value={draft.placeholder}
+			dir="auto"
+			placeholder="טקסט מציין מקום בתיבת הכתיבה (אופציונלי)"
+			class="mt-3 mb-2 w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
+		/>
+		<div class="flex gap-4">
+			<label class="flex items-center gap-2 text-xs text-muted">
+				מינימום מילים
+				<input type="number" min="0" bind:value={draft.minWords} class="w-16 rounded-lg border-2 border-line bg-canvas p-1 text-sm" />
+			</label>
+			<label class="flex items-center gap-2 text-xs text-muted">
+				מקסימום מילים
+				<input type="number" min="0" bind:value={draft.maxWords} class="w-16 rounded-lg border-2 border-line bg-canvas p-1 text-sm" />
+			</label>
+		</div>
 	{/if}
 
 	{#if !rawMode}

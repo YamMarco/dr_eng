@@ -1,4 +1,4 @@
-// Part A — Reading Skills. One node per programme lesson (lesson00…lesson12).
+// Part A - Reading Skills. One node per programme lesson (lesson00…lesson12).
 // Source: docs/module c/insertprogram/lesson##_module_c.docx
 import type { LessonNode } from '../types';
 
@@ -16,7 +16,7 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'קבוצת וואטסאפ. 500 הודעות.\nחבר שואל: "מתי הבחינה?"\n\nאתם גוללים 500 הודעות מההתחלה?\n\nלא. לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה — שם.'
+					text: 'קבוצת וואטסאפ. 500 הודעות.\nחבר שואל: "מתי הבחינה?"\n\nאתם גוללים 500 הודעות מההתחלה?\n\nלא. לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - שם.'
 				},
 				{
 					type: 'preface',
@@ -24,27 +24,27 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'רוב התלמידים עושים את הטעות הזאת:\n\nמתחילים לקרוא מהמילה הראשונה. מנסים להבין הכל. נתקעים. הפאניקה מתחילה.\nאחרי 10 דקות — עדיין בפסקה 1. לכתיבה לא נשאר זמן.'
+					text: 'רוב התלמידים עושים את הטעות הזאת:\n\nמתחילים לקרוא מהמילה הראשונה. מנסים להבין הכל. נתקעים. הפאניקה מתחילה.\nאחרי 10 דקות - עדיין בפסקה 1. לכתיבה לא נשאר זמן.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — שני עקרונות',
+					title: 'THE TOOL - שני עקרונות',
 					lines: [
-						'1 · הטקסט שם — התשובה כתובה בתוכו. לא צריך אנגלית מושלמת.',
-						'2 · לא צריך להבין הכל — רק למצוא את מה שהשאלה מבקשת.'
+						'1 · הטקסט שם - התשובה כתובה בתוכו. לא צריך אנגלית מושלמת.',
+						'2 · לא צריך להבין הכל - רק למצוא את מה שהשאלה מבקשת.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'WATCH IT — ראו איך זה עובד.\n\n"Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. Elephants can live for up to 70 years."\n\nהשאלה: Where do elephants live?'
+					text: 'איך זה עובד\n\n"Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. Elephants can live for up to 70 years."\n\nהשאלה: Where do elephants live?'
 				},
 				{
 					type: 'steps',
 					steps: [
-						'קוראים את השאלה: "Where do elephants live?" — המילה שמחפשים היא live.',
-						'לא קוראים מההתחלה — סורקים ומחפשים live בטקסט.',
+						'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live.',
+						'לא קוראים מההתחלה - סורקים ומחפשים live בטקסט.',
 						'מצאנו: "They live in Africa and Asia".',
-						'כותבים: They live in Africa and Asia. — 8 שניות, בלי לקרוא את כל הפסקה.'
+						'כותבים: They live in Africa and Asia. - 8 שניות, בלי לקרוא את כל הפסקה.'
 					]
 				}
 			],
@@ -56,7 +56,7 @@ export const c1Lessons: LessonNode[] = [
 							text: 'Dogs are one of the most popular pets in the world. They were first tamed from wolves thousands of years ago. Today, there are more than 400 different breeds of dog.',
 							questions: [
 								{
-									prompt: 'השאלה: When were dogs first tamed? — מה המילה שאתם מחפשים בטקסט?',
+									prompt: 'השאלה: When were dogs first tamed? - מה המילה שאתם מחפשים בטקסט?',
 									options: ['popular', 'tamed / first', 'breeds', 'world'],
 									correctIndex: 1
 								},
@@ -78,7 +78,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — עכשיו לבד, בדיוק כמו בבחינה.'
+							text: 'YOUR TURN - עכשיו לבד, בדיוק כמו בבחינה.'
 						},
 						{
 							type: 'passage-mcq',
@@ -99,15 +99,15 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							text: 'The Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.',
-							prompt: 'How long is the Great Wall? — כתבו את התשובה באנגלית, במילים של הטקסט.',
+							prompt: 'How long is the Great Wall? - כתבו את התשובה באנגלית, במילים של הטקסט.',
 							modelAnswer: 'About 21,000 kilometers long.'
 						},
 						{
 							type: 'mcq',
-							prompt: 'אם אתם לא מבינים מילה בטקסט — מה עושים?',
+							prompt: 'אם אתם לא מבינים מילה בטקסט - מה עושים?',
 							options: [
 								'עוצרים ומתרגמים את כל הפסקה',
-								'ממשיכים — מחפשים את מה שהשאלה ביקשה',
+								'ממשיכים - מחפשים את מה שהשאלה ביקשה',
 								'מדלגים על השאלה',
 								'מנחשים תשובה'
 							],
@@ -116,7 +116,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'summary',
 							title: 'ONE SENTENCE',
-							lines: ['"הטקסט שם."', '"אני לא קורא אותו — אני מחפש בו."']
+							lines: ['"הטקסט שם."', '"אני לא קורא אותו - אני מחפש בו."']
 						}
 					]
 				}
@@ -133,14 +133,14 @@ export const c1Lessons: LessonNode[] = [
 								'יש לכם קבוצת וואטסאפ עם 200 הודעות. חבר שואל "מתי הבחינה?". מה אתם עושים?',
 							options: ['קוראים מההתחלה', 'מחפשים "בחינה" ב-🔍', 'שואלים את החבר מחדש'],
 							correctIndex: 1,
-							explanation: 'מחפשים מילת מפתח — לא קוראים הכל.'
+							explanation: 'מחפשים מילת מפתח - לא קוראים הכל.'
 						},
 						{
 							type: 'mcq',
 							prompt: 'בבחינת Module C צריך להבין כל מילה בטקסט כדי לענות.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
-							explanation: 'שקר. מחפשים מילת מפתח בלבד — לא חייבים להבין הכל.'
+							explanation: 'שקר. מחפשים מילת מפתח בלבד - לא חייבים להבין הכל.'
 						},
 						{
 							type: 'mcq',
@@ -151,7 +151,7 @@ export const c1Lessons: LessonNode[] = [
 								'למצוא את המידע שהשאלה מבקשת'
 							],
 							correctIndex: 2,
-							explanation: 'מחפשים — לא קוראים. כמו חיפוש בוואטסאפ.'
+							explanation: 'מחפשים - לא קוראים. כמו חיפוש בוואטסאפ.'
 						}
 					]
 				},
@@ -172,11 +172,11 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'תלמיד מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?',
 							options: ['יענה על כל השאלות נכון', 'יגמור מהר', 'לא יישאר לו זמן לכתיבה'],
 							correctIndex: 2,
-							explanation: 'קריאת הכל = בזבוז זמן. הבחינה נמשכת 1:45 — זמן הכתיבה ייגמר.'
+							explanation: 'קריאת הכל = בזבוז זמן. הבחינה נמשכת 1:45 - זמן הכתיבה ייגמר.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"אני מחפש, לא קורא" — זה המשפט שמסכם את כל הקורס.',
+							prompt: '"אני מחפש, לא קורא" - זה המשפט שמסכם את כל הקורס.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
 							explanation: 'נכון. זו המנטליות שמשנה את כל הגישה לבחינה.'
@@ -194,7 +194,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt:
 								'הסבירו בעברית: מה ההבדל בין "לקרוא טקסט" לבין "לחפש בטקסט"? (שני משפטים)',
 							modelAnswer:
-								'לקרוא = מתחילים מההתחלה ומנסים להבין הכל. לחפש = מוצאים מילת מפתח בשאלה ומחפשים אותה ישירות בטקסט — כמו חיפוש בוואטסאפ.'
+								'לקרוא = מתחילים מההתחלה ומנסים להבין הכל. לחפש = מוצאים מילת מפתח בשאלה ומחפשים אותה ישירות בטקסט - כמו חיפוש בוואטסאפ.'
 						},
 						{
 							type: 'mcq',
@@ -202,12 +202,12 @@ export const c1Lessons: LessonNode[] = [
 								'תלמיד רואה את המילה "environmentalists" בטקסט ולא מכיר אותה. מה הוא עושה?',
 							options: [
 								'עוצר ומתרגם את כל הפסקה',
-								'ממשיך — מחפש את מה שהשאלה ביקשה',
+								'ממשיך - מחפש את מה שהשאלה ביקשה',
 								'סוגר את הבחינה'
 							],
 							correctIndex: 1,
 							explanation:
-								'ממשיכים. אם המילה לא בשאלה — אפשר להתעלם ממנה. P1 עובד גם בלי להבין הכל.'
+								'ממשיכים. אם המילה לא בשאלה - אפשר להתעלם ממנה. P1 עובד גם בלי להבין הכל.'
 						},
 						{
 							type: 'self-check',
@@ -233,15 +233,15 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'בלי מפת הדרכים:\n\n"מקבלים טקסט. 200 מילים. מתחילים לקרוא. לא מכירים. לא מבינים. אחרי 3 שאלות — אבודים."'
+					text: 'בלי מפת הדרכים:\n\n"מקבלים טקסט. 200 מילים. מתחילים לקרוא. לא מכירים. לא מבינים. אחרי 3 שאלות - אבודים."'
 				},
 				{
 					type: 'preface',
-					text: 'עם מפת הדרכים:\n\n"כותרת: THE RETURN OF THE TREES. עצים! פסקה 1: מדענים שותלים מיליארד עצים. 30 שניות — יש מפה."\n\nהמפה לא אומרת לכם הכל — היא אומרת על מה הטקסט. זה מספיק כדי לא להיות אבודים.'
+					text: 'עם מפת הדרכים:\n\n"כותרת: THE RETURN OF THE TREES. עצים! פסקה 1: מדענים שותלים מיליארד עצים. 30 שניות - יש מפה."\n\nהמפה לא אומרת לכם הכל - היא אומרת על מה הטקסט. זה מספיק כדי לא להיות אבודים.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — מפת הדרכים',
+					title: 'THE TOOL - מפת הדרכים',
 					lines: [
 						'כותרת = שם הטקסט. הנושא הראשי.',
 						'פסקה 1 = הרקע הכללי.',
@@ -250,7 +250,7 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'למה זה עוזר דווקא כשהאנגלית לא חזקה:\n\nכשיודעים על מה הטקסט — המילים שלא מכירים פחות מפחידות. ההקשר עושה חצי מהעבודה, בלי מילון.'
+					text: 'למה זה עוזר דווקא כשהאנגלית לא חזקה:\n\nכשיודעים על מה הטקסט - המילים שלא מכירים פחות מפחידות. ההקשר עושה חצי מהעבודה, בלי מילון.'
 				},
 				{
 					type: 'preface',
@@ -259,8 +259,8 @@ export const c1Lessons: LessonNode[] = [
 				{
 					type: 'steps',
 					steps: [
-						'שלב 1 — הכותרת: THE RETURN OF THE TREES. מה מבינים? "זה על עצים שחוזרים."',
-						'שלב 2 — פסקה 1 בלבד: יערות נהרסים, אבל יש חדשות טובות — מדענים שותלים מיליארד עצים.',
+						'שלב 1 - הכותרת: THE RETURN OF THE TREES. מה מבינים? "זה על עצים שחוזרים."',
+						'שלב 2 - פסקה 1 בלבד: יערות נהרסים, אבל יש חדשות טובות - מדענים שותלים מיליארד עצים.',
 						'עכשיו יודעים: סביבה, שימור, פרויקט מדעי.',
 						'30 שניות. יש מפה. מוכנים לשאלות.'
 					]
@@ -291,7 +291,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — 30 שניות. כותרת + פסקה 1. על מה הטקסט?'
+							text: 'YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?'
 						},
 						{
 							type: 'passage-mcq',
@@ -352,7 +352,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'מפת הדרכים נותנת לכם את כל התשובות לשאלות.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
-							explanation: 'שקר. המפה נותנת רק את הנושא הכללי — מספיק כדי לא להיות אבודים.'
+							explanation: 'שקר. המפה נותנת רק את הנושא הכללי - מספיק כדי לא להיות אבודים.'
 						}
 					]
 				},
@@ -401,7 +401,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"LEARNING TO SWIM AS AN ADULT — I Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim. II One study found that adults who learned later often became stronger swimmers."\n\nמה נכלל במפת הדרכים?',
+								'"LEARNING TO SWIM AS AN ADULT - I Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim. II One study found that adults who learned later often became stronger swimmers."\n\nמה נכלל במפת הדרכים?',
 							options: [
 								'הכותרת + פסקה I בלבד',
 								'הכותרת + פסקה II',
@@ -409,12 +409,12 @@ export const c1Lessons: LessonNode[] = [
 								'רק המשפט האחרון'
 							],
 							correctIndex: 0,
-							explanation: 'כותרת: LEARNING TO SWIM AS AN ADULT. פסקה I בלבד — שני המשפטים הראשונים.'
+							explanation: 'כותרת: LEARNING TO SWIM AS AN ADULT. פסקה I בלבד - שני המשפטים הראשונים.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'על סמך הכותרת ופסקה 1 שלמעלה — על מה הטקסט? ענו במשפט אחד.',
+								'על סמך הכותרת ופסקה 1 שלמעלה - על מה הטקסט? ענו במשפט אחד.',
 							modelAnswer: 'הטקסט על מבוגרים שלומדים לשחות.'
 						},
 						{
@@ -446,25 +446,25 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'מה קרה?\n\nהשאלה ביקשה מה היא מצאה במחקר שלה. הוא ענה על מה שאחרים אמרו.\nמילה אחת שלא הבין — "explain" — עלתה לו בכל הנקודות.\n\nהפתרון: רמזור + מילון חכם. לפני שעונים — האם אני יכול להסביר את השאלה בעברית?'
+					text: 'מה קרה?\n\nהשאלה ביקשה מה היא מצאה במחקר שלה. הוא ענה על מה שאחרים אמרו.\nמילה אחת שלא הבין - "explain" - עלתה לו בכל הנקודות.\n\nהפתרון: רמזור + מילון חכם. לפני שעונים - האם אני יכול להסביר את השאלה בעברית?'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — הרמזור',
+					title: 'THE TOOL - הרמזור',
 					lines: [
-						'🔴 אדום — לא מבין את השאלה. עצור. אל תענה.',
-						'🟡 צהוב — מבין חלקית. בדוק שוב. זה הצבע המסוכן — הוא מרגיש כמו ירוק.',
-						'🟢 ירוק — אני יכול להסביר את השאלה בעברית. עונים.'
+						'🔴 אדום - לא מבין את השאלה. עצור. אל תענה.',
+						'🟡 צהוב - מבין חלקית. בדוק שוב. זה הצבע המסוכן - הוא מרגיש כמו ירוק.',
+						'🟢 ירוק - אני יכול להסביר את השאלה בעברית. עונים.'
 					]
 				},
 				{
 					type: 'summary',
-					title: 'המילון — מתי ואיך',
+					title: 'המילון - מתי ואיך',
 					lines: [
 						'✓ מילה בשאלה לא ברורה ← מילון.',
 						'✗ מילים בטקסט שלא מכירים ← בדרך כלל אפשר להתעלם מהן.',
-						'⏱ מקסימום 30 שניות למילה. לא מצאתם? סמנו M ועברו הלאה — חוזרים בסוף.',
-						'❌ אל תחפשו: paragraph · according to · give ONE — את אלה לומדים בעל פה.'
+						'⏱ מקסימום 30 שניות למילה. לא מצאתם? סמנו M ועברו הלאה - חוזרים בסוף.',
+						'❌ אל תחפשו: paragraph · according to · give ONE - את אלה לומדים בעל פה.'
 					]
 				},
 				{
@@ -482,21 +482,21 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'mcq',
-							prompt: '"Give ONE answer from paragraph II." — מה הצבע שלכם?',
+							prompt: '"Give ONE answer from paragraph II." - מה הצבע שלכם?',
 							options: [
-								'🔴 אדום — לא מבין כלום',
-								'🟡 צהוב — מבין חלקית',
-								'🟢 ירוק — "תנו תשובה אחת מפסקה 2". ברור.',
+								'🔴 אדום - לא מבין כלום',
+								'🟡 צהוב - מבין חלקית',
+								'🟢 ירוק - "תנו תשובה אחת מפסקה 2". ברור.',
 								'לא יודע'
 							],
 							correctIndex: 2
 						},
 						{
 							type: 'mcq',
-							prompt: '"What does contribute mean?" — לא מכירים את המילה. מה עושים?',
+							prompt: '"What does contribute mean?" - לא מכירים את המילה. מה עושים?',
 							options: [
 								'🔴 עוצרים ומוותרים על השאלה',
-								'🟢 מילון — 30 שניות — ועונים',
+								'🟢 מילון - 30 שניות - ועונים',
 								'עונים בניחוש מהיר',
 								'מתרגמים את כל הפסקה'
 							],
@@ -519,13 +519,13 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — קבעו צבע ופעולה לכל שאלה.'
+							text: 'YOUR TURN - קבעו צבע ופעולה לכל שאלה.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"According to whom?" — צבע ופעולה?',
+							prompt: '"According to whom?" - צבע ופעולה?',
 							options: [
-								'🟢 עונים — "לפי מי"',
+								'🟢 עונים - "לפי מי"',
 								'🟡 מילון, 30 שניות',
 								'🔴 עוצרים',
 								'M ועוברים הלאה'
@@ -534,7 +534,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Why did this occur in 2019?" — המילה occur לא ברורה. צבע ופעולה?',
+							prompt: '"Why did this occur in 2019?" - המילה occur לא ברורה. צבע ופעולה?',
 							options: [
 								'🟢 עונים מיד',
 								'🟡 מילון, 30 שניות',
@@ -545,12 +545,12 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Give TWO answers from paragraph III." — צבע ופעולה?',
+							prompt: '"Give TWO answers from paragraph III." - צבע ופעולה?',
 							options: [
 								'🟡 מילון',
 								'🔴 עוצרים',
-								'🟢 עונים — שתי תשובות מפסקה 3',
-								'🟢 עונים — תשובה אחת מפסקה 3'
+								'🟢 עונים - שתי תשובות מפסקה 3',
+								'🟢 עונים - תשובה אחת מפסקה 3'
 							],
 							correctIndex: 2
 						},
@@ -558,9 +558,9 @@ export const c1Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'איזה צבע הכי מסוכן?',
 							options: [
-								'🔴 אדום — כי לא מבינים כלום',
-								'🟡 צהוב — כי הוא מרגיש כמו ירוק',
-								'🟢 ירוק — כי עונים מהר',
+								'🔴 אדום - כי לא מבינים כלום',
+								'🟡 צהוב - כי הוא מרגיש כמו ירוק',
+								'🟢 ירוק - כי עונים מהר',
 								'כולם מסוכנים באותה מידה'
 							],
 							correctIndex: 1
@@ -568,7 +568,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'summary',
 							title: 'ONE SENTENCE',
-							lines: ['"לא ירוק — מילון 30 שניות. עדיין לא? M ועוברים."']
+							lines: ['"לא ירוק - מילון 30 שניות. עדיין לא? M ועוברים."']
 						}
 					]
 				}
@@ -577,25 +577,25 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: לא ירוק — לא עונים.'
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: לא ירוק - לא עונים.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"What do we learn from paragraph I?" — מה הצבע שלכם?',
+							prompt: '"What do we learn from paragraph I?" - מה הצבע שלכם?',
 							options: [
-								'🔴 אדום — לא מבין',
-								'🟡 צהוב — מבין חלקית',
-								'🟢 ירוק — "מה לומדים מפסקה 1?"'
+								'🔴 אדום - לא מבין',
+								'🟡 צהוב - מבין חלקית',
+								'🟢 ירוק - "מה לומדים מפסקה 1?"'
 							],
 							correctIndex: 2,
-							explanation: '🟢 ירוק. "מה לומדים מפסקה 1?" — ברור. עונים.'
+							explanation: '🟢 ירוק. "מה לומדים מפסקה 1?" - ברור. עונים.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"What does visible mean?" — מה הצבע שלכם?',
+							prompt: '"What does visible mean?" - מה הצבע שלכם?',
 							options: [
-								'🟢 ירוק — ברור',
-								'🟡 צהוב — המילה visible לא ברורה ← מילון',
+								'🟢 ירוק - ברור',
+								'🟡 צהוב - המילה visible לא ברורה ← מילון',
 								'ממשיכים בלי לבדוק'
 							],
 							correctIndex: 1,
@@ -619,7 +619,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'איזו שאלה היא 🟡 צהוב — כלומר דורשת מילון?\n\n1. "According to Dr. Diallo, why do trees die?"\n2. "What does contribute mean in paragraph II?"\n3. "Give ONE answer from paragraph III."',
+								'איזו שאלה היא 🟡 צהוב - כלומר דורשת מילון?\n\n1. "According to Dr. Diallo, why do trees die?"\n2. "What does contribute mean in paragraph II?"\n3. "Give ONE answer from paragraph III."',
 							options: ['שאלה 1', 'שאלה 2', 'שאלה 3', 'כל השלוש'],
 							correctIndex: 1,
 							explanation:
@@ -635,10 +635,10 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"give ONE answer" = ירוק — כי אפשר להסביר את השאלה בעברית במשפט אחד.',
+								'"give ONE answer" = ירוק - כי אפשר להסביר את השאלה בעברית במשפט אחד.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. "תנו תשובה אחת מהטקסט" — ברור. ירוק.'
+							explanation: 'נכון. "תנו תשובה אחת מהטקסט" - ברור. ירוק.'
 						}
 					]
 				},
@@ -658,12 +658,12 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'self-check',
-							prompt: 'מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ — אבל הוא לא.',
-							modelAnswer: 'רק ירוק = עונה. צהוב מרגיש כמו ירוק — אבל הוא לא.'
+							prompt: 'מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.',
+							modelAnswer: 'רק ירוק = עונה. צהוב מרגיש כמו ירוק - אבל הוא לא.'
 						},
 						{
 							type: 'self-check',
-							prompt: 'תלמיד קרא שאלה, "הבין", ענה — וקיבל 0. מה כנראה קרה?',
+							prompt: 'תלמיד קרא שאלה, "הבין", ענה - וקיבל 0. מה כנראה קרה?',
 							modelAnswer:
 								'הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.'
 						}
@@ -676,7 +676,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l03',
 		section: 'c-1',
-		titleHe: 'P1 — ניווט בטקסט',
+		titleHe: 'P1 - ניווט בטקסט',
 		titleEn: 'P1 Navigation',
 		code: 'c.1.4',
 		required: ['l02'],
@@ -690,33 +690,33 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'מה שצריך לעשות:\n\nלא קוראים את הטקסט. קוראים רק את השאלה הראשונה. מחפשים מילת מפתח.\n\n"לא מבין את הטקסט" ≠ "לא יכול לענות".\nP1 עובד גם כשהטקסט קשה — כי מחפשים, לא קוראים.'
+					text: 'מה שצריך לעשות:\n\nלא קוראים את הטקסט. קוראים רק את השאלה הראשונה. מחפשים מילת מפתח.\n\n"לא מבין את הטקסט" ≠ "לא יכול לענות".\nP1 עובד גם כשהטקסט קשה - כי מחפשים, לא קוראים.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — P1',
+					title: 'THE TOOL - P1',
 					lines: [
-						'1 · קראו את השאלה עד הסוף — לא את הטקסט.',
-						'2 · מצאו מילת מפתח — המילה שתחפשו בטקסט.',
-						'3 · אתרו אותה בטקסט — כמו חיפוש בוואטסאפ.',
+						'1 · קראו את השאלה עד הסוף - לא את הטקסט.',
+						'2 · מצאו מילת מפתח - המילה שתחפשו בטקסט.',
+						'3 · אתרו אותה בטקסט - כמו חיפוש בוואטסאפ.',
 						'4 · קראו רק את המשפט שמכיל אותה.',
-						'5 · ענו — מהטקסט בלבד, לא מהראש.'
+						'5 · ענו - מהטקסט בלבד, לא מהראש.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'מהי מילת מפתח?\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why — אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project'
+					text: 'מהי מילת מפתח?\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project'
 				},
 				{
 					type: 'preface',
-					text: 'WATCH IT — P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n"The project is led by Dr. Amara Diallo, a scientist from Senegal. \'We do not just plant trees,\' says Dr. Diallo. \'We teach local people how to care for them.\' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive."\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
+					text: 'WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n"The project is led by Dr. Amara Diallo, a scientist from Senegal. \'We do not just plant trees,\' says Dr. Diallo. \'We teach local people how to care for them.\' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive."\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
 				},
 				{
 					type: 'steps',
 					steps: [
 						'קוראים את השאלה: "לפי ד״ר דיאלו, למה רוב העצים מתים?"',
 						'מילות מפתח: Dr. Diallo + trees die.',
-						'מחפשים את Dr. Diallo בטקסט — הוא בפסקה II.',
+						'מחפשים את Dr. Diallo בטקסט - הוא בפסקה II.',
 						'קוראים רק שם: "most trees die because nobody looks after them".',
 						'תשובה: Because nobody looks after them.'
 					]
@@ -731,7 +731,7 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'השאלה: What do we learn from paragraph I about the Green Africa project? — מהי מילת המפתח?',
+										'השאלה: What do we learn from paragraph I about the Green Africa project? - מהי מילת המפתח?',
 									options: ['forests', 'Green Africa', 'However', 'scientists say'],
 									correctIndex: 1
 								},
@@ -758,24 +758,24 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)'
+							text: 'YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)'
 						},
 						{
 							type: 'mcq',
-							prompt: 'שלב 2 — מהי מילת המפתח שתחפשו בטקסט?',
+							prompt: 'שלב 2 - מהי מילת המפתח שתחפשו בטקסט?',
 							options: ['trees', 'Ethiopia', 'planted', 'happened'],
 							correctIndex: 1
 						},
 						{
 							type: 'self-check',
 							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
-							prompt: 'שלב 5 — כתבו את התשובה במילים של הטקסט.',
+							prompt: 'שלב 5 - כתבו את התשובה במילים של הטקסט.',
 							modelAnswer: 'The number of birds increased by 60%.'
 						},
 						{
 							type: 'summary',
 							title: 'ONE SENTENCE',
-							lines: ['"הטקסט קשה? לא מבין? — P1 עדיין עובד. מחפש, לא קורא."']
+							lines: ['"הטקסט קשה? לא מבין? - P1 עדיין עובד. מחפש, לא קורא."']
 						}
 					]
 				}
@@ -789,7 +789,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"According to Dr. Diallo, why do most trees die?" — מהי מילת המפתח?',
+								'"According to Dr. Diallo, why do most trees die?" - מהי מילת המפתח?',
 							options: ['"why"', '"Dr. Diallo" / "trees die"', '"According"'],
 							correctIndex: 1,
 							explanation:
@@ -826,16 +826,16 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"What happened to rivers in Kenya? (paragraph III)" — מהי מילת המפתח, ובאיזו פסקה?',
-							options: ['What — פסקה I', 'Kenya — פסקה III', 'rivers — פסקה II'],
+								'"What happened to rivers in Kenya? (paragraph III)" - מהי מילת המפתח, ובאיזו פסקה?',
+							options: ['What - פסקה I', 'Kenya - פסקה III', 'rivers - פסקה II'],
 							correctIndex: 1,
-							explanation: '"Kenya" — שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.'
+							explanation: '"Kenya" - שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.'
 						},
 						{
 							type: 'self-check',
 							text: 'II  "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
 							prompt:
-								'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" — מילת מפתח, פסקה, ותשובה.',
+								'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" - מילת מפתח, פסקה, ותשובה.',
 							modelAnswer:
 								'מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.'
 						},
@@ -844,7 +844,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'P1 עובד גם כשהטקסט קשה מאוד ולא מבינים אותו.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. P1 הוא חיפוש, לא הבנה — מחפשים מילת מפתח בלי קשר לקושי.'
+							explanation: 'נכון. P1 הוא חיפוש, לא הבנה - מחפשים מילת מפתח בלי קשר לקושי.'
 						}
 					]
 				},
@@ -860,11 +860,11 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'"When did scientists start the project?" — באיזה שלב של P1 מוצאים את "2019"?',
+										'"When did scientists start the project?" - באיזה שלב של P1 מוצאים את "2019"?',
 									options: [
-										'שלב 1 — קריאת השאלה',
-										'שלב 3 — איתור בטקסט',
-										'שלב 5 — כתיבת התשובה'
+										'שלב 1 - קריאת השאלה',
+										'שלב 3 - איתור בטקסט',
+										'שלב 5 - כתיבת התשובה'
 									],
 									correctIndex: 1
 								}
@@ -874,7 +874,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
 							prompt:
-								'"According to Dr. Diallo, why do most trees die? Give ONE answer." — כתבו את חמשת שלבי P1 ואת התשובה.',
+								'"According to Dr. Diallo, why do most trees die? Give ONE answer." - כתבו את חמשת שלבי P1 ואת התשובה.',
 							modelAnswer:
 								'1-קורא את השאלה. 2-מילת מפתח: Dr. Diallo / trees die. 3-פסקה II. 4-"most trees die because nobody looks after them". 5-תשובה: Because nobody looks after them.'
 						},
@@ -882,7 +882,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt: 'הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?',
 							modelAnswer:
-								'כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם — רק לבצע חמישה שלבים.'
+								'כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.'
 						}
 					]
 				}
@@ -893,7 +893,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l04',
 		section: 'c-1',
-		titleHe: 'מגנט לעין — מספרים',
+		titleHe: 'מגנט לעין - מספרים',
 		titleEn: 'Eye Catcher: Numbers',
 		code: 'c.1.5',
 		required: ['l03'],
@@ -903,11 +903,11 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'בלי Eye Catcher:\n"השאלה על 2,000. קורא פסקה 1... 2... 3. מוצא אחרי דקה." — 60 שניות.\n\nעם Eye Catcher:\n"רואה 2,000 בשאלה. סורק את הטקסט ומחפש 2,000. מוצא תוך 3 שניות." — 3 שניות.'
+					text: 'בלי Eye Catcher:\n"השאלה על 2,000. קורא פסקה 1... 2... 3. מוצא אחרי דקה." - 60 שניות.\n\nעם Eye Catcher:\n"רואה 2,000 בשאלה. סורק את הטקסט ומחפש 2,000. מוצא תוך 3 שניות." - 3 שניות.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — מספר בשאלה',
+					title: 'THE TOOL - מספר בשאלה',
 					lines: [
 						'רואים מספר בשאלה ← סורקים את הטקסט ומחפשים אותו. לא קוראים מההתחלה.',
 						'שנים: 2019 · 1985   |   אחוזים: 85% · 60%   |   כמויות: 2,000 · 15',
@@ -924,20 +924,20 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'passage-mcq',
-							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars — much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
 							questions: [
 								{
 									prompt:
-										'השאלה: How many community gardens were created? — איזה מספר תחפשו בטקסט?',
+										'השאלה: How many community gardens were created? - איזה מספר תחפשו בטקסט?',
 									options: ['2,000', '15', '85%', '500,000'],
 									correctIndex: 1
 								},
 								{
 									prompt: 'באיזו פסקה הוא נמצא, ומה התשובה?',
 									options: [
-										'פסקה I — 15 community gardens',
-										'פסקה II — 15 professors',
-										'פסקה III — 15% of residents',
+										'פסקה I - 15 community gardens',
+										'פסקה II - 15 professors',
+										'פסקה III - 15% of residents',
 										'לא כתוב בטקסט'
 									],
 									correctIndex: 0
@@ -950,7 +950,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — שתי שאלות. מצאו את המספר, ואז ענו.'
+							text: 'YOUR TURN - שתי שאלות. מצאו את המספר, ואז ענו.'
 						},
 						{
 							type: 'self-check',
@@ -969,7 +969,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'למה "60%" לבד היא תשובה מסוכנת בשאלה כזאת?',
 							options: [
 								'כי צריך לכתוב את המספר במילים',
-								'כי בטקסט יש עוד מספרים — 15% ו-85% — וצריך את זה שצמוד ל-exercise outdoors',
+								'כי בטקסט יש עוד מספרים - 15% ו-85% - וצריך את זה שצמוד ל-exercise outdoors',
 								'כי אחוזים אף פעם לא תשובה',
 								'כי חייבים לצטט משפט שלם'
 							],
@@ -991,7 +991,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"How many trees were planted?" — מה תחפשו בטקסט?',
+							prompt: '"How many trees were planted?" - מה תחפשו בטקסט?',
 							options: ['את המילה "trees" בלבד', 'מספר שצמוד ל-trees / planted', 'את שם הפרויקט'],
 							correctIndex: 1,
 							explanation: 'מספר = GPS. סורקים את הטקסט ומחפשים מספר שקשור ל-trees.'
@@ -999,8 +999,8 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"According to the survey, what percentage of adults cannot swim?" — מה ה-Eye Catcher?',
-							options: ['survey', 'adults', 'האחוז — 30%'],
+								'"According to the survey, what percentage of adults cannot swim?" - מה ה-Eye Catcher?',
+							options: ['survey', 'adults', 'האחוז - 30%'],
 							correctIndex: 2,
 							explanation: 'אחוז בשאלה = מספר = GPS. מחפשים אותו ישירות בטקסט.'
 						},
@@ -1009,7 +1009,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'מספר בשאלה אומר: לקרוא את הטקסט מההתחלה.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
-							explanation: 'שקר. מספר = GPS. סורקים — לא קוראים מההתחלה.'
+							explanation: 'שקר. מספר = GPS. סורקים - לא קוראים מההתחלה.'
 						}
 					]
 				},
@@ -1023,10 +1023,10 @@ export const c1Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt:
 								'באילו שאלות יש Eye Catcher של מספר?\n\n1. "How many countries are in the project?"\n2. "What happened after 2019?"\n3. "Give TWO answers from paragraph III."\n4. "What percentage of students improved?"',
-							options: ['רק ב-2', 'ב-1, 2 ו-4', 'בכולן — 1, 2, 3 ו-4', 'רק ב-3 ו-4'],
+							options: ['רק ב-2', 'ב-1, 2 ו-4', 'בכולן - 1, 2, 3 ו-4', 'רק ב-3 ו-4'],
 							correctIndex: 2,
 							explanation:
-								'"How many" · "2019" · "TWO" · "percentage" — כולם מספרים, כולם Eye Catchers.'
+								'"How many" · "2019" · "TWO" · "percentage" - כולם מספרים, כולם Eye Catchers.'
 						},
 						{
 							type: 'self-check',
@@ -1038,10 +1038,10 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'השאלה: "By how much did stress levels fall?" הטקסט: "Stress levels fell by 40%." — מה התשובה?',
+								'השאלה: "By how much did stress levels fall?" הטקסט: "Stress levels fell by 40%." - מה התשובה?',
 							options: ['They fell significantly', 'By 40%', 'Stress fell because of the trees'],
 							correctIndex: 1,
-							explanation: 'By 40% — מספר מדויק מהטקסט. זה כל מה שצריך.'
+							explanation: 'By 40% - מספר מדויק מהטקסט. זה כל מה שצריך.'
 						}
 					]
 				},
@@ -1054,7 +1054,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"According to Professor James Lee, what percentage of residents are satisfied?" — מה עושים?',
+								'"According to Professor James Lee, what percentage of residents are satisfied?" - מה עושים?',
 							options: [
 								'קוראים את פסקה 1 ומחפשים',
 								'מחפשים "James Lee", ובפסקה שלו מחפשים את האחוז',
@@ -1068,14 +1068,14 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.',
 							prompt:
-								'"According to the survey, what percentage of adults cannot swim? Give ONE answer." — כתבו ANSWER:',
+								'"According to the survey, what percentage of adults cannot swim? Give ONE answer." - כתבו ANSWER:',
 							modelAnswer: 'ANSWER: Over 30% of adults cannot swim.'
 						},
 						{
 							type: 'self-check',
 							prompt: 'הסבירו: למה "מספר בשאלה = GPS" עוזר במיוחד לתלמיד חלש?',
 							modelAnswer:
-								'כי מספרים קל לזהות בסריקה מהירה — העין מוצאת אותם בלי לקרוא, וזה חוסך המון זמן חיפוש.'
+								'כי מספרים קל לזהות בסריקה מהירה - העין מוצאת אותם בלי לקרוא, וזה חוסך המון זמן חיפוש.'
 						}
 					]
 				}
@@ -1086,7 +1086,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l05',
 		section: 'c-1',
-		titleHe: 'מגנט לעין — שמות',
+		titleHe: 'מגנט לעין - שמות',
 		titleEn: 'Eye Catcher: Names',
 		code: 'c.1.6',
 		required: ['l04'],
@@ -1096,14 +1096,14 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'כלל הזהב:\n\nכל שם פרטי בטקסט — Dr. Santos, Prof. Lee — שייך לפסקה מסוימת.\nכשיש שם בשאלה, הולכים ישר לפסקה שלו. לא קוראים את כל הטקסט.'
+					text: 'כלל הזהב:\n\nכל שם פרטי בטקסט - Dr. Santos, Prof. Lee - שייך לפסקה מסוימת.\nכשיש שם בשאלה, הולכים ישר לפסקה שלו. לא קוראים את כל הטקסט.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — שם בשאלה',
+					title: 'THE TOOL - שם בשאלה',
 					lines: [
 						'1 · ראיתם שם בשאלה.',
-						'2 · חפשו את השם בטקסט — באיזו פסקה הוא יושב?',
+						'2 · חפשו את השם בטקסט - באיזו פסקה הוא יושב?',
 						'3 · קראו רק את מה שאותו אדם אמר.',
 						'⚠️ "According to Dr. Santos" ≠ מה שכולם אומרים. רק מה ש-Santos אמרה.'
 					]
@@ -1118,11 +1118,11 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'passage-mcq',
-							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars — much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
 							questions: [
 								{
 									prompt:
-										'השאלה: According to Dr. Maria Santos, what did the project want to show? — באיזו פסקה מופיעה Dr. Santos?',
+										'השאלה: According to Dr. Maria Santos, what did the project want to show? - באיזו פסקה מופיעה Dr. Santos?',
 									options: ['פסקה I', 'פסקה II', 'פסקה III', 'בכל הפסקאות'],
 									correctIndex: 1
 								},
@@ -1144,7 +1144,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — טקסט אחר, אותה שיטה.\n\nהשאלה: According to Dr. Amara Diallo, what do most trees die from?'
+							text: 'YOUR TURN - טקסט אחר, אותה שיטה.\n\nהשאלה: According to Dr. Amara Diallo, what do most trees die from?'
 						},
 						{
 							type: 'mcq',
@@ -1175,18 +1175,18 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"According to Dr. Maria Santos, what did the project show?" — לאיזו פסקה הולכים?',
+								'"According to Dr. Maria Santos, what did the project show?" - לאיזו פסקה הולכים?',
 							options: [
-								'פסקה I — כי היא הראשונה',
-								'פסקה II — כי Dr. Santos נמצאת שם',
-								'פסקה III — כי היא האחרונה'
+								'פסקה I - כי היא הראשונה',
+								'פסקה II - כי Dr. Santos נמצאת שם',
+								'פסקה III - כי היא האחרונה'
 							],
 							correctIndex: 1,
 							explanation: 'Dr. Santos = Eye Catcher = כתובת. הולכים לפסקה שלה.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"According to Dr. Santos" — צריך לקרוא מה שכולם אמרו.',
+							prompt: '"According to Dr. Santos" - צריך לקרוא מה שכולם אמרו.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
 							explanation: 'שקר. "According to Dr. Santos" = רק מה ש-Santos אמרה.'
@@ -1196,11 +1196,11 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'למה שם פרטי בשאלה הוא Eye Catcher?',
 							options: [
 								'כי שמות מעניינים יותר',
-								'כי שם = כתובת לפסקה — הולכים ישר לשם',
+								'כי שם = כתובת לפסקה - הולכים ישר לשם',
 								'כי שמות קל לזכור'
 							],
 							correctIndex: 1,
-							explanation: 'שם = כתובת = פסקה. כמו כתובת בית — הולכים ישר.'
+							explanation: 'שם = כתובת = פסקה. כמו כתובת בית - הולכים ישר.'
 						}
 					]
 				},
@@ -1213,7 +1213,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'בטקסט THE CITY GARDEN PROJECT — מי "גר" בכל פסקה?',
+								'בטקסט THE CITY GARDEN PROJECT - מי "גר" בכל פסקה?',
 							options: [
 								'charity = I · Dr. Santos = II · Professor Lee = III',
 								'Dr. Santos = I · charity = II · Professor Lee = III',
@@ -1229,7 +1229,7 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'"According to Professor David Mills, why is volunteering important?" — באיזו פסקה?',
+										'"According to Professor David Mills, why is volunteering important?" - באיזו פסקה?',
 									options: ['פסקה I', 'פסקה II', 'פסקה III'],
 									correctIndex: 2
 								}
@@ -1238,7 +1238,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							prompt:
-								'"According to Dr. Okafor, what do teenagers who volunteer feel?" — כתבו: השם, הפסקה שלו, ומה היא אמרה.',
+								'"According to Dr. Okafor, what do teenagers who volunteer feel?" - כתבו: השם, הפסקה שלו, ומה היא אמרה.',
 							modelAnswer:
 								'שם: Dr. Okafor. פסקה: II. מה אמרה: teenagers who volunteer feel less stressed and sleep better.'
 						}
@@ -1256,13 +1256,13 @@ export const c1Lessons: LessonNode[] = [
 								'באילו שאלות יש שם כ-Eye Catcher?\n\n1. "What do we learn from paragraph I?"\n2. "According to Dr. Anna Klein, why do adults improve?"\n3. "Give TWO reasons from paragraph II."\n4. "What does Professor David Mills argue about schools?"',
 							options: ['1 ו-3', '2 ו-4', '1 ו-4', 'כולן'],
 							correctIndex: 1,
-							explanation: '"Dr. Anna Klein" ו-"Professor David Mills" — שמות = כתובות.'
+							explanation: '"Dr. Anna Klein" ו-"Professor David Mills" - שמות = כתובות.'
 						},
 						{
 							type: 'self-check',
 							text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
 							prompt:
-								'"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" — כתבו ANSWER:',
+								'"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
 							modelAnswer:
 								'ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.'
 						},
@@ -1271,7 +1271,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt:
 								'הסבירו: מה ההבדל בין "What do we learn from paragraph II?" לבין "According to Dr. Klein in paragraph II?"',
 							modelAnswer:
-								'הראשונה: כל מה שכתוב בפסקה II. השנייה: רק מה ש-Dr. Klein אמרה — לא מה שאחרים אמרו.'
+								'הראשונה: כל מה שכתוב בפסקה II. השנייה: רק מה ש-Dr. Klein אמרה - לא מה שאחרים אמרו.'
 						}
 					]
 				}
@@ -1282,7 +1282,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l06',
 		section: 'c-1',
-		titleHe: 'NOT — המילה הכי מסוכנת',
+		titleHe: 'NOT - המילה הכי מסוכנת',
 		titleEn: 'Eye Catcher: NOT',
 		code: 'c.1.7',
 		required: ['l05'],
@@ -1292,15 +1292,15 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'המילה הכי מסוכנת בבחינה:\n\nNOT\n\n90% מהתלמידים שרואים NOT בשאלה עונים על השאלה ההפוכה. הם מחפשים מה נכון — במקום מה לא נכון.\nNOT משנה את כל השאלה.'
+					text: 'המילה הכי מסוכנת בבחינה:\n\nNOT\n\n90% מהתלמידים שרואים NOT בשאלה עונים על השאלה ההפוכה. הם מחפשים מה נכון - במקום מה לא נכון.\nNOT משנה את כל השאלה.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — NOT = ציד',
+					title: 'THE TOOL - NOT = ציד',
 					lines: [
 						'שאלה רגילה: "What do we learn?" ← מחפשים מה נכון.',
 						'שאלה עם NOT: "Which is NOT true?" ← מחפשים מה לא נכון.',
-						'כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא — היא התשובה.'
+						'כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא - היא התשובה.'
 					]
 				},
 				{
@@ -1329,7 +1329,7 @@ export const c1Lessons: LessonNode[] = [
 									prompt: 'איך ידעתם שזו התשובה?',
 									options: [
 										'כי היא הכי ארוכה',
-										'כי בדקנו את שלוש האחרות מול פסקה II — הן מופיעות שם, והיא לא',
+										'כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא',
 										'כי היא נשמעת לא הגיונית',
 										'ניחשנו'
 									],
@@ -1343,7 +1343,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.'
+							text: 'YOUR TURN - שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1365,7 +1365,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'פספסתם את המילה NOT בשאלה. מה יקרה?',
 							options: [
-								'לא יקרה כלום — התשובה זהה',
+								'לא יקרה כלום - התשובה זהה',
 								'תבחרו משפט נכון, והתשובה תיפסל',
 								'תקבלו חצי ניקוד',
 								'השאלה תתבטל'
@@ -1375,7 +1375,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'summary',
 							title: 'ONE SENTENCE',
-							lines: ['"ראיתי NOT? אני ציד — מחפש מה לא נכון."']
+							lines: ['"ראיתי NOT? אני ציד - מחפש מה לא נכון."']
 						}
 					]
 				}
@@ -1384,18 +1384,18 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד — מחפש מה לא נכון.'
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד - מחפש מה לא נכון.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Which of the following is NOT true?" — מה מחפשים?',
+							prompt: '"Which of the following is NOT true?" - מה מחפשים?',
 							options: [
 								'מה נכון בטקסט',
 								'מה שגוי או לא מוזכר',
 								'את האפשרות שנראית הכי טובה'
 							],
 							correctIndex: 1,
-							explanation: 'NOT = ציד. מחפשים מה שגוי — לא מה שנכון.'
+							explanation: 'NOT = ציד. מחפשים מה שגוי - לא מה שנכון.'
 						},
 						{
 							type: 'mcq',
@@ -1406,7 +1406,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Which is NOT mentioned?" — שלוש אפשרויות נכונות. מה התשובה?',
+							prompt: '"Which is NOT mentioned?" - שלוש אפשרויות נכונות. מה התשובה?',
 							options: [
 								'האפשרות שנראית הכי נכונה',
 								'האפשרות שלא נמצאת בטקסט כלל',
@@ -1445,14 +1445,14 @@ export const c1Lessons: LessonNode[] = [
 								'שאלת NOT עם ארבע אפשרויות. מצאתם הוכחה בטקסט ל-i, ל-ii ול-iv. מה התשובה?',
 							options: ['i', 'ii', 'iii', 'iv'],
 							correctIndex: 2,
-							explanation: 'iii — היחידה בלי הוכחה. שלוש האחרות מוזכרות בטקסט.'
+							explanation: 'iii - היחידה בלי הוכחה. שלוש האחרות מוזכרות בטקסט.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Which does NOT appear in paragraph I?" — בודקים רק את פסקה I.',
+							prompt: '"Which does NOT appear in paragraph I?" - בודקים רק את פסקה I.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. כשמצוינת פסקה — בודקים רק אותה, לא את שאר הטקסט.'
+							explanation: 'נכון. כשמצוינת פסקה - בודקים רק אותה, לא את שאר הטקסט.'
 						}
 					]
 				},
@@ -1481,13 +1481,13 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							prompt: 'בשתי מילים: מה עושים כשרואים NOT בשאלה?',
-							modelAnswer: 'ציד — מחפשים מה שגוי או מה שלא מוזכר.'
+							modelAnswer: 'ציד - מחפשים מה שגוי או מה שלא מוזכר.'
 						},
 						{
 							type: 'self-check',
 							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
 							prompt:
-								'"Which does Dr. Okafor NOT say about volunteering programmes?" — כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
+								'"Which does Dr. Okafor NOT say about volunteering programmes?" - כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
 							modelAnswer:
 								'1-סורק מה בדיוק Dr. Okafor אמרה. 2-בודק כל אפשרות מול הטקסט. 3-האפשרות שאין לה הוכחה = התשובה.'
 						}
@@ -1500,7 +1500,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l07',
 		section: 'c-1',
-		titleHe: 'most / only — תשובה אחת',
+		titleHe: 'most / only - תשובה אחת',
 		titleEn: 'Key Limiters',
 		code: 'c.1.8',
 		required: ['l06'],
@@ -1514,20 +1514,20 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'מה קרה?\n\nהמילה MOST ביקשה אחד בלבד — הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nMOST = הכי, אחד. לא שניים.\nONLY = רק אחד. לא שניים.'
+					text: 'מה קרה?\n\nהמילה MOST ביקשה אחד בלבד - הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nMOST = הכי, אחד. לא שניים.\nONLY = רק אחד. לא שניים.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — מילות הגבלה',
+					title: 'THE TOOL - מילות הגבלה',
 					lines: [
-						'most — "The MOST effective..." ← לא כולן, רק הכי טובה.',
-						'only — "The ONLY reason..." ← לא סיבות אחרות, רק אחת.',
+						'most - "The MOST effective..." ← לא כולן, רק הכי טובה.',
+						'only - "The ONLY reason..." ← לא סיבות אחרות, רק אחת.',
 						'מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, what is the most effective type of volunteering programme?\n\nמחפשים "most effective" בטקסט — לא את כל הסוגים.\nפסקה II: "the most effective programmes bring young people face to face with the people they help."\n\nתשובה: Programmes that bring young people face to face with the people they help.\nולא יותר מזה — רק ה-most effective אחד.'
+					text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, what is the most effective type of volunteering programme?\n\nמחפשים "most effective" בטקסט - לא את כל הסוגים.\nפסקה II: "the most effective programmes bring young people face to face with the people they help."\n\nתשובה: Programmes that bring young people face to face with the people they help.\nולא יותר מזה - רק ה-most effective אחד.'
 				}
 			],
 			rounds: [
@@ -1551,7 +1551,7 @@ export const c1Lessons: LessonNode[] = [
 									prompt: 'השאלה כללה את המילה most. כמה תשובות מותר לכתוב?',
 									options: [
 										'תשובה אחת בלבד',
-										'שתיים — ליתר ביטחון',
+										'שתיים - ליתר ביטחון',
 										'כל מה שמצאתם בפסקה',
 										'תלוי באורך השאלה'
 									],
@@ -1565,7 +1565,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
+							text: 'YOUR TURN - שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to Dr. Diallo, why do most trees die?'
 						},
 						{
 							type: 'self-check',
@@ -1579,7 +1579,7 @@ export const c1Lessons: LessonNode[] = [
 							options: [
 								'תקבלו ניקוד על שתיהן',
 								'הבודק יבחר את הטובה מביניהן',
-								'התשובה תיפסל — נדרשה אחת',
+								'התשובה תיפסל - נדרשה אחת',
 								'לא משנה, העיקר שהתשובה מהטקסט'
 							],
 							correctIndex: 2
@@ -1600,21 +1600,21 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"What is the MOST effective method?" — כמה תשובות כותבים?',
+							prompt: '"What is the MOST effective method?" - כמה תשובות כותבים?',
 							options: [
-								'שתיים — כדי לכסות אפשרויות',
-								'אחת בלבד — הכי יעילה',
-								'שלוש — כדי לא להחמיץ'
+								'שתיים - כדי לכסות אפשרויות',
+								'אחת בלבד - הכי יעילה',
+								'שלוש - כדי לא להחמיץ'
 							],
 							correctIndex: 1,
-							explanation: 'MOST = אחת מסוימת. לא כולן — רק הכי יעילה.'
+							explanation: 'MOST = אחת מסוימת. לא כולן - רק הכי יעילה.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"The ONLY reason trees die is…" — יכולות להיות שתי סיבות.',
+							prompt: '"The ONLY reason trees die is…" - יכולות להיות שתי סיבות.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
-							explanation: 'שקר. ONLY = סיבה אחת בלבד. מצאתם שתיים — טעיתם.'
+							explanation: 'שקר. ONLY = סיבה אחת בלבד. מצאתם שתיים - טעיתם.'
 						},
 						{
 							type: 'mcq',
@@ -1622,7 +1622,7 @@ export const c1Lessons: LessonNode[] = [
 							options: [
 								'כולן מילות ניגוד',
 								'כולן מילות שלילה',
-								'כולן מילות הגבלה — תמיד תשובה אחת ספציפית',
+								'כולן מילות הגבלה - תמיד תשובה אחת ספציפית',
 								'כולן מילות סיבה'
 							],
 							correctIndex: 2,
@@ -1656,7 +1656,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'III  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
 							prompt: 'השלימו מהטקסט: "In MOST cities, adult swimming classes are _______."',
-							modelAnswer: 'available — זמינות. (פסקה III)'
+							modelAnswer: 'available - זמינות. (פסקה III)'
 						},
 						{
 							type: 'mcq',
@@ -1680,20 +1680,20 @@ export const c1Lessons: LessonNode[] = [
 								'באילו שאלות יש מילת הגבלה?\n\n1. "What is the only country mentioned?"\n2. "What do we learn from paragraph I?"\n3. "According to the text, most trees die because…"\n4. "Give TWO reasons from paragraph III."',
 							options: ['1 ו-3', '2 ו-4', '1 ו-4', 'רק ב-3'],
 							correctIndex: 0,
-							explanation: '"only" בשאלה 1 ו-"most" בשאלה 3 — הגבלה = תשובה אחת מסוימת.'
+							explanation: '"only" בשאלה 1 ו-"most" בשאלה 3 - הגבלה = תשובה אחת מסוימת.'
 						},
 						{
 							type: 'self-check',
 							text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
 							prompt:
-								'"According to Dr. Diallo, why do MOST trees die? Give ONE answer." — כתבו ANSWER:',
+								'"According to Dr. Diallo, why do MOST trees die? Give ONE answer." - כתבו ANSWER:',
 							modelAnswer: 'ANSWER: Because nobody looks after them.'
 						},
 						{
 							type: 'self-check',
 							prompt: 'מה ההבדל בין שאלה עם "most" לשאלה בלי "most"? תנו דוגמה.',
 							modelAnswer:
-								'בלי most: "Why do trees die?" — יכולות להיות כמה סיבות. עם most: "Why do MOST trees die?" — סיבה אחת ספציפית, זו שחלה על רוב המקרים.'
+								'בלי most: "Why do trees die?" - יכולות להיות כמה סיבות. עם most: "Why do MOST trees die?" - סיבה אחת ספציפית, זו שחלה על רוב המקרים.'
 						}
 					]
 				}
@@ -1704,7 +1704,7 @@ export const c1Lessons: LessonNode[] = [
 	{
 		id: 'l08',
 		section: 'c-1',
-		titleHe: 'however / but — הפנייה',
+		titleHe: 'however / but - הפנייה',
 		titleEn: 'Contrast Words',
 		code: 'c.1.9',
 		required: ['l07'],
@@ -1718,21 +1718,21 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'מה קרה?\n\nהוא ענה על החצי השגוי של המשפט.\nhowever = פנייה. מה שאחריו הוא הנקודה האמיתית.\n\nהנקודה כאן: "it is never too late" — לא "many people cannot swim".'
+					text: 'מה קרה?\n\nהוא ענה על החצי השגוי של המשפט.\nhowever = פנייה. מה שאחריו הוא הנקודה האמיתית.\n\nהנקודה כאן: "it is never too late" - לא "many people cannot swim".'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — however / but',
+					title: 'THE TOOL - however / but',
 					lines: [
 						'לפני however: מידע כללי, רקע, בעיה.',
 						'אחרי however: הנקודה החשובה. הסיפור האמיתי.',
-						'שאלה שנוגעת למשפט עם however — התשובה כמעט תמיד מה שאחריו.'
+						'שאלה שנוגעת למשפט עם however - התשובה כמעט תמיד מה שאחריו.'
 					]
 				},
 				{
 					type: 'steps',
 					steps: [
-						'WATCH IT — השאלה: What does Dr. Okafor say about different types of volunteering?',
+						'WATCH IT - השאלה: What does Dr. Okafor say about different types of volunteering?',
 						'מחפשים however בפסקה II.',
 						'"However, not all types of volunteering produce the same results."',
 						'מה בא אחרי however? זו התשובה: Not all types of volunteering produce the same results.'
@@ -1760,7 +1760,7 @@ export const c1Lessons: LessonNode[] = [
 									prompt: 'למה "They feel embarrassed" היא לא התשובה?',
 									options: [
 										'כי היא לא כתובה בטקסט',
-										'כי היא הרקע — היא לפני however, והנקודה באה אחריו',
+										'כי היא הרקע - היא לפני however, והנקודה באה אחריו',
 										'כי היא ארוכה מדי',
 										'כי היא לא בפסקה I'
 									],
@@ -1774,7 +1774,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?'
+							text: 'YOUR TURN - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?'
 						},
 						{
 							type: 'mcq',
@@ -1790,7 +1790,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.',
-							prompt: 'כתבו את החדשות הטובות — מה שבא אחרי however.',
+							prompt: 'כתבו את החדשות הטובות - מה שבא אחרי however.',
 							modelAnswer:
 								'There is good news: in 2019 scientists started a project to plant one billion trees in Africa.'
 						},
@@ -1811,7 +1811,7 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"Many people cannot swim. However, experts say it is never too late." — מה הנקודה החשובה?',
+								'"Many people cannot swim. However, experts say it is never too late." - מה הנקודה החשובה?',
 							options: [
 								'"Many people cannot swim"',
 								'"it is never too late"',
@@ -1855,7 +1855,7 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'"What does Dr. Okafor say about different types of volunteering?" — מצאו את however.',
+										'"What does Dr. Okafor say about different types of volunteering?" - מצאו את however.',
 									options: [
 										'All types are equally effective',
 										'Not all types of volunteering produce the same results',
@@ -1869,7 +1869,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt:
 								'השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.',
-							modelAnswer: 'פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה — המידע החדש.'
+							modelAnswer: 'פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.'
 						}
 					]
 				},
@@ -1898,14 +1898,14 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
 							prompt:
-								'"What does paragraph II say after the word However?" — כתבו ANSWER:',
+								'"What does paragraph II say after the word However?" - כתבו ANSWER:',
 							modelAnswer:
-								'ANSWER: Not all types of volunteering produce the same results — the most effective ones bring young people face to face with the people they help.'
+								'ANSWER: Not all types of volunteering produce the same results - the most effective ones bring young people face to face with the people they help.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." — מה הנקודה החשובה?',
+								'"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." - מה הנקודה החשובה?',
 							modelAnswer: 'שארגון צדקה מקומי החליט לשנות את המצב בעיר.'
 						}
 					]
@@ -1931,26 +1931,26 @@ export const c1Lessons: LessonNode[] = [
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — ארבעה צעדים',
+					title: 'THE TOOL - ארבעה צעדים',
 					lines: [
 						'1 · קראו את כל 4 האפשרויות לפני שחוזרים לטקסט.',
-						'2 · חצו כל אפשרות שסותרת את הטקסט — או שנכונה אבל לא קשורה לשאלה.',
+						'2 · חצו כל אפשרות שסותרת את הטקסט - או שנכונה אבל לא קשורה לשאלה.',
 						'3 · חזרו לטקסט ומצאו הוכחה בפסקה הנכונה.',
-						'4 · ענו — תשובה אחת בלבד.'
+						'4 · ענו - תשובה אחת בלבד.'
 					]
 				},
 				{
 					type: 'summary',
 					title: 'שני סוגי מסיחים',
 					lines: [
-						'סוג א׳ — סותר את הטקסט. הטקסט: "without payment" ← "Volunteers receive payment" ← חצו.',
-						'סוג ב׳ — נכון, אבל עונה על שאלה אחרת. השאלה על פסקה I, האפשרות מפסקה III ← חצו.',
+						'סוג א׳ - סותר את הטקסט. הטקסט: "without payment" ← "Volunteers receive payment" ← חצו.',
+						'סוג ב׳ - נכון, אבל עונה על שאלה אחרת. השאלה על פסקה I, האפשרות מפסקה III ← חצו.',
 						'הכלל: נכון + לא קשור לשאלה = שגוי.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'כלל זהב ל-"What do we learn from paragraph X?"\n\nלכו רק לפסקה X. אל תקראו פסקאות אחרות.\nהשאלה מגבילה אתכם לפסקה אחת. כל מידע מפסקה אחרת = שגוי, גם אם הוא נכון בטקסט.\n\n⚠️ אין לכם הוכחה בפסקה הנכונה? אל תענו. חזרו לטקסט.\n🚦 ולפני שעונים — בדקו רמזור. רק ירוק = עונים.'
+					text: 'כלל זהב ל-"What do we learn from paragraph X?"\n\nלכו רק לפסקה X. אל תקראו פסקאות אחרות.\nהשאלה מגבילה אתכם לפסקה אחת. כל מידע מפסקה אחרת = שגוי, גם אם הוא נכון בטקסט.\n\n⚠️ אין לכם הוכחה בפסקה הנכונה? אל תענו. חזרו לטקסט.\n🚦 ולפני שעונים - בדקו רמזור. רק ירוק = עונים.'
 				},
 				{
 					type: 'preface',
@@ -1962,7 +1962,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'passage-mcq',
-							text: 'I  Every year, millions of young people around the world choose to volunteer — to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.',
+							text: 'I  Every year, millions of young people around the world choose to volunteer - to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.',
 							questions: [
 								{
 									prompt:
@@ -1980,7 +1980,7 @@ export const c1Lessons: LessonNode[] = [
 										'"Young volunteers feel less stressed" נכון לפי הטקסט. למה בכל זאת חצינו אותו?',
 									options: [
 										'כי הוא סותר את הטקסט',
-										'כי הוא מפסקה II, והשאלה על פסקה III — סוג ב׳',
+										'כי הוא מפסקה II, והשאלה על פסקה III - סוג ב׳',
 										'כי הוא לא מוזכר בטקסט',
 										'כי הוא קצר מדי'
 									],
@@ -1994,7 +1994,7 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — בפורמט בחינה.\n🚦 רמזור לפני שעונים. רק ירוק = עונים.'
+							text: 'YOUR TURN - בפורמט בחינה.\n🚦 רמזור לפני שעונים. רק ירוק = עונים.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2011,7 +2011,7 @@ export const c1Lessons: LessonNode[] = [
 									correctIndex: 0
 								},
 								{
-									prompt: 'איזו אפשרות היא מסיח מסוג ב׳ — נכונה, אבל מהפסקה הלא נכונה?',
+									prompt: 'איזו אפשרות היא מסיח מסוג ב׳ - נכונה, אבל מהפסקה הלא נכונה?',
 									options: [
 										'"Dr. Diallo plants the trees personally"',
 										'"Most trees survive without any help"',
@@ -2038,7 +2038,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'בשאלת MC — מה עושים לפני שחוזרים לטקסט?',
+							prompt: 'בשאלת MC - מה עושים לפני שחוזרים לטקסט?',
 							options: [
 								'מסמנים את האפשרות הראשונה שנראית טוב',
 								'קוראים את כל 4 האפשרויות',
@@ -2049,14 +2049,14 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'אפשרות שנכונה בטקסט, אבל עונה על שאלה אחרת — היא תשובה נכונה.',
+							prompt: 'אפשרות שנכונה בטקסט, אבל עונה על שאלה אחרת - היא תשובה נכונה.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
 							explanation: 'שקר. זה מסיח מסוג ב׳: נכון + לא קשור לשאלה = שגוי. חוצים.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"What do we learn from paragraph I?" — מאיפה מחפשים?',
+							prompt: '"What do we learn from paragraph I?" - מאיפה מחפשים?',
 							options: ['מכל הטקסט', 'רק מפסקה I', 'מהפסקה שקשורה לנושא'],
 							correctIndex: 1,
 							explanation: 'כלל זהב: paragraph I = רק פסקה I. לא פסקאות אחרות.'
@@ -2087,7 +2087,7 @@ export const c1Lessons: LessonNode[] = [
 									prompt: 'למה חצינו את "Schools introduce volunteering programmes"?',
 									options: [
 										'כי הוא סותר את הטקסט',
-										'כי הוא נכון — אבל מפסקה III, והשאלה על פסקה I',
+										'כי הוא נכון - אבל מפסקה III, והשאלה על פסקה I',
 										'כי הוא לא מוזכר בכלל',
 										'כי הוא ארוך מדי'
 									],
@@ -2101,7 +2101,7 @@ export const c1Lessons: LessonNode[] = [
 							options: [
 								'מסמנים את הראשונה שמצאנו',
 								'מסמנים את האחרונה שמצאנו',
-								'חוזרים לטקסט — ב-MC תמיד תשובה אחת, אז אחת מהן שגויה'
+								'חוזרים לטקסט - ב-MC תמיד תשובה אחת, אז אחת מהן שגויה'
 							],
 							correctIndex: 2,
 							explanation: 'ב-MC יש תמיד תשובה אחת. שתי "הוכחות" = אחת מהן לא באמת עונה על השאלה.'
@@ -2140,7 +2140,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'III  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor Mills argues that helping others teaches skills no classroom can replace.',
 							prompt:
-								'"What do we learn from paragraph III about students who volunteer?" — כתבו את התשובה ואת ההוכחה מהטקסט.',
+								'"What do we learn from paragraph III about students who volunteer?" - כתבו את התשובה ואת ההוכחה מהטקסט.',
 							modelAnswer:
 								'Students become more responsible. הוכחה: "students became more responsible and more focused in class."'
 						}
@@ -2163,14 +2163,14 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'טעות נפוצה:\n"Give ONE answer." — התלמיד כותב שלושה משפטים מהדעה שלו.\n← שלוש תשובות, ולא מהטקסט.\n\nנכון:\n"Give ONE answer." — משפט אחד מהטקסט.'
+					text: 'טעות נפוצה:\n"Give ONE answer." - התלמיד כותב שלושה משפטים מהדעה שלו.\n← שלוש תשובות, ולא מהטקסט.\n\nנכון:\n"Give ONE answer." - משפט אחד מהטקסט.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — שלושה כללים',
+					title: 'THE TOOL - שלושה כללים',
 					lines: [
 						'1 · ONE = תשובה אחת בלבד.',
-						'2 · מהטקסט — לא מהדעה שלכם.',
+						'2 · מהטקסט - לא מהדעה שלכם.',
 						'3 · משפט אחד. לא צריך להסביר.'
 					]
 				},
@@ -2203,7 +2203,7 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'Why do most trees die, according to Dr. Diallo? Give ONE answer. — איזו מילה בטקסט מסגירה את התשובה?',
+										'Why do most trees die, according to Dr. Diallo? Give ONE answer. - איזו מילה בטקסט מסגירה את התשובה?',
 									options: ['survive', 'because', 'local', 'when'],
 									correctIndex: 1
 								},
@@ -2225,11 +2225,11 @@ export const c1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳.\n\nמה שחשוב: המידע הנכון מהטקסט. כל עוד התשובה מובנת — מקבלים את הנקודות.\nלמשל "Because the goats ate all plants" מקבל ניקוד מלא, גם בלי "the" לפני plants.'
+							text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳.\n\nמה שחשוב: המידע הנכון מהטקסט. כל עוד התשובה מובנת - מקבלים את הנקודות.\nלמשל "Because the goats ate all plants" מקבל ניקוד מלא, גם בלי "the" לפני plants.'
 						},
 						{
 							type: 'preface',
-							text: 'YOUR TURN — בפורמט בחינה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+							text: 'YOUR TURN - בפורמט בחינה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
 						},
 						{
 							type: 'self-check',
@@ -2242,7 +2242,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'השאלה מתחילה ב-When? מה מחפשים בטקסט?',
 							options: [
-								'מילת סיבה — because',
+								'מילת סיבה - because',
 								'שנה, תאריך או תקופה',
 								'שם של מקום',
 								'שם של אדם'
@@ -2277,14 +2277,14 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Give ONE answer" — אפשר לכתוב שתי תשובות אם שתיהן נכונות.',
+							prompt: '"Give ONE answer" - אפשר לכתוב שתי תשובות אם שתיהן נכונות.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
 							explanation: 'שקר. ONE = אחת בלבד. שתיים = 0 נקודות.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Why did people leave Redonda?" — מה מחפשים בטקסט?',
+							prompt: '"Why did people leave Redonda?" - מה מחפשים בטקסט?',
 							options: ['שם מקום', 'because / since / so', 'שנה ותאריך'],
 							correctIndex: 1,
 							explanation: 'Why? ← מחפשים מילת סיבה בטקסט.'
@@ -2300,21 +2300,21 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.',
-							prompt: '"When did scientists start the project? Give ONE answer." — כתבו ANSWER:',
+							prompt: '"When did scientists start the project? Give ONE answer." - כתבו ANSWER:',
 							modelAnswer: 'ANSWER: In 2019.'
 						},
 						{
 							type: 'self-check',
 							text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
 							prompt:
-								'"According to Dr. Klein, how do adults improve quickly? Give ONE answer." — כתבו ANSWER:',
+								'"According to Dr. Klein, how do adults improve quickly? Give ONE answer." - כתבו ANSWER:',
 							modelAnswer:
 								'ANSWER: By understanding what the teacher explains and correcting their mistakes more quickly.'
 						},
 						{
 							type: 'mcq',
 							prompt:
-								'"Why do most trees die?" — הטקסט אומר "because nobody looks after them". מה כותבים?',
+								'"Why do most trees die?" - הטקסט אומר "because nobody looks after them". מה כותבים?',
 							options: [
 								'Nobody looks after them',
 								'Trees are difficult to grow',
@@ -2349,14 +2349,14 @@ export const c1Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
-							prompt: '"Where did rivers begin to flow again? Give ONE answer." — כתבו ANSWER:',
+							prompt: '"Where did rivers begin to flow again? Give ONE answer." - כתבו ANSWER:',
 							modelAnswer: 'ANSWER: In Kenya.'
 						},
 						{
 							type: 'self-check',
 							prompt: 'הסבירו: למה חשוב לכתוב "Because…" כשהשאלה שואלת "Why?"',
 							modelAnswer:
-								'כי זה מראה שהבנתם שהשאלה ביקשה סיבה, וגם עוזר לדקדוק — "Because + סיבה" הוא משפט שלם.'
+								'כי זה מראה שהבנתם שהשאלה ביקשה סיבה, וגם עוזר לדקדוק - "Because + סיבה" הוא משפט שלם.'
 						}
 					]
 				}
@@ -2377,16 +2377,16 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'שני פורמטים של Complete the Sentence:\n\nפורמט א׳ — "People left because ___" ← מחפשים because / since.\nפורמט ב׳ — "They brought goats in order to ___" ← מחפשים to / in order to / so that.\n\nההבדל: because = למה זה קרה (סיבה). in order to = מה הם רצו להשיג (מטרה).'
+					text: 'שני פורמטים של Complete the Sentence:\n\nפורמט א׳ - "People left because ___" ← מחפשים because / since.\nפורמט ב׳ - "They brought goats in order to ___" ← מחפשים to / in order to / so that.\n\nההבדל: because = למה זה קרה (סיבה). in order to = מה הם רצו להשיג (מטרה).'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — ארבעה שלבים',
+					title: 'THE TOOL - ארבעה שלבים',
 					lines: [
 						'1 · קראו את ההתחלה: "Because ___" או "In order to ___"?',
 						'2 · חפשו בטקסט את מילות המפתח המתאימות.',
 						'3 · מצאו את החלק שמשלים את המשפט.',
-						'4 · קראו בראש את המשפט השלם — הוא מסתדר?'
+						'4 · קראו בראש את המשפט השלם - הוא מסתדר?'
 					]
 				},
 				{
@@ -2395,12 +2395,12 @@ export const c1Lessons: LessonNode[] = [
 					lines: [
 						'ל-"Because ___": because · since · as a result · therefore · so · due to',
 						'ל-"In order to ___": to · in order to · so that · so they could',
-						'⚠️ ה-because / in order to כבר כתוב בשאלה — אל תכתבו אותו שוב.'
+						'⚠️ ה-because / in order to כבר כתוב בשאלה - אל תכתבו אותו שוב.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'WATCH IT — REDONDA ISLAND\n\n"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n← In order to let the plants grow back.'
+					text: 'WATCH IT - REDONDA ISLAND\n\n"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n← In order to let the plants grow back.'
 				}
 			],
 			rounds: [
@@ -2447,7 +2447,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'preface',
-							text: 'YOUR TURN — בפורמט בחינה. שתי השלמות: אחת של סיבה, אחת של מטרה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+							text: 'YOUR TURN - בפורמט בחינה. שתי השלמות: אחת של סיבה, אחת של מטרה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
 						},
 						{
 							type: 'self-check',
@@ -2479,7 +2479,7 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"People left Redonda because ___" — מה עושים?',
+							prompt: '"People left Redonda because ___" - מה עושים?',
 							options: [
 								'כותבים YES/NO',
 								'מחפשים סיבה בטקסט ומשלימים',
@@ -2490,17 +2490,17 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"They brought goats in order to ___" — מה מחפשים בטקסט?',
+							prompt: '"They brought goats in order to ___" - מה מחפשים בטקסט?',
 							options: ['because / since', 'to / in order to / so that', 'and / also'],
 							correctIndex: 1,
 							explanation: '"In order to" = מטרה. מחפשים to / in order to / so that.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Because" כבר כתוב בשאלה — לא כותבים אותו שוב בתשובה.',
+							prompt: '"Because" כבר כתוב בשאלה - לא כותבים אותו שוב בתשובה.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. "Because they wanted food" — ולא "Because because they wanted".'
+							explanation: 'נכון. "Because they wanted food" - ולא "Because because they wanted".'
 						}
 					]
 				},
@@ -2533,11 +2533,11 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'בדיקה: "Because they embarrassed." — האם המשפט תקין?',
+							prompt: 'בדיקה: "Because they embarrassed." - האם המשפט תקין?',
 							options: [
-								'כן — יש because',
-								'לא — חסר פועל: "Because they FEEL embarrassed"',
-								'כן — מספיק ברור'
+								'כן - יש because',
+								'לא - חסר פועל: "Because they FEEL embarrassed"',
+								'כן - מספיק ברור'
 							],
 							correctIndex: 1,
 							explanation: 'כל משפט חייב subject + verb. "Because they feel embarrassed."'
@@ -2587,16 +2587,16 @@ export const c1Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'הטעות הכי יקרה:\n\n"Give TWO answers." — התלמיד מצא אחת ועבר הלאה.\nTWO = שתיים. תמיד.\n\nבבחינה: "How did Redonda change? Give TWO answers from paragraph IV."\n(1) ______  (2) ______  ← 14 נקודות, 7 לכל תשובה.'
+					text: 'הטעות הכי יקרה:\n\n"Give TWO answers." - התלמיד מצא אחת ועבר הלאה.\nTWO = שתיים. תמיד.\n\nבבחינה: "How did Redonda change? Give TWO answers from paragraph IV."\n(1) ______  (2) ______  ← 14 נקודות, 7 לכל תשובה.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — ארבעה שלבים',
+					title: 'THE TOOL - ארבעה שלבים',
 					lines: [
 						'1 · קראו את הפסקה.',
-						'2 · מצאו תשובה ראשונה — סמנו אותה.',
-						'3 · אל תעצרו — המשיכו לחפש תשובה שנייה.',
-						'4 · רק אחרי שיש שתיים — כותבים (1) ו-(2).'
+						'2 · מצאו תשובה ראשונה - סמנו אותה.',
+						'3 · אל תעצרו - המשיכו לחפש תשובה שנייה.',
+						'4 · רק אחרי שיש שתיים - כותבים (1) ו-(2).'
 					]
 				},
 				{
@@ -2611,8 +2611,8 @@ export const c1Lessons: LessonNode[] = [
 				{
 					type: 'steps',
 					steps: [
-						'WATCH IT — How did the area change after trees were planted? Give TWO answers. (paragraph III)',
-						'תשובה 1: "the number of birds increased by 60%" — סימנו, וממשיכים.',
+						'WATCH IT - How did the area change after trees were planted? Give TWO answers. (paragraph III)',
+						'תשובה 1: "the number of birds increased by 60%" - סימנו, וממשיכים.',
 						'מחפשים סיגנל: "In addition" ← הנה הוא.',
 						'תשובה 2: "in Kenya, rivers that were dry for 20 years began to flow again".'
 					]
@@ -2631,7 +2631,7 @@ export const c1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt:
-										'Give TWO answers: How do volunteer students change? (paragraph III) — איזה זוג נכון?',
+										'Give TWO answers: How do volunteer students change? (paragraph III) - איזה זוג נכון?',
 									options: [
 										'More responsible + better grades',
 										'More responsible + more focused in class',
@@ -2657,13 +2657,13 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'preface',
-							text: 'YOUR TURN — בפורמט בחינה. שתי תשובות, ממוספרות.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+							text: 'YOUR TURN - בפורמט בחינה. שתי תשובות, ממוספרות.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
 						},
 						{
 							type: 'self-check',
 							text: 'III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
 							prompt:
-								'What changed in Greenville after the project? (paragraph III) Give TWO answers — כתבו (1) ו-(2).',
+								'What changed in Greenville after the project? (paragraph III) Give TWO answers - כתבו (1) ו-(2).',
 							modelAnswer:
 								'(1) Stress levels fell by 40%.  (2) The number of people who exercise outdoors increased from 15% to 60%.'
 						},
@@ -2671,8 +2671,8 @@ export const c1Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'כתבתם תשובה אחת בשאלת TWO. כמה נקודות מפסידים?',
 							options: [
-								'לא מפסידים — מספיק אחת נכונה',
-								'חצי מהניקוד — 7 מתוך 14',
+								'לא מפסידים - מספיק אחת נכונה',
+								'חצי מהניקוד - 7 מתוך 14',
 								'את כל הניקוד',
 								'תלוי באורך התשובה'
 							],
@@ -2694,11 +2694,11 @@ export const c1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Give TWO answers" — כמה תשובות כותבים?',
+							prompt: '"Give TWO answers" - כמה תשובות כותבים?',
 							options: [
-								'אחת — אם היא ארוכה ומפורטת',
+								'אחת - אם היא ארוכה ומפורטת',
 								'שתיים בדיוק',
-								'שלוש — כדי לא להחמיץ'
+								'שלוש - כדי לא להחמיץ'
 							],
 							correctIndex: 1,
 							explanation: 'שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.'
@@ -2708,7 +2708,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: 'מצאתם תשובה ראשונה. מה עושים?',
 							options: [
 								'כותבים אותה ועוברים לשאלה הבאה',
-								'ממשיכים לקרוא — מחפשים שנייה',
+								'ממשיכים לקרוא - מחפשים שנייה',
 								'מחפשים שנייה רק אם נשאר זמן'
 							],
 							correctIndex: 1,
@@ -2719,7 +2719,7 @@ export const c1Lessons: LessonNode[] = [
 							prompt: '"In addition" בטקסט = סיגנל שתשובה שנייה מגיעה.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. In addition / Also / And — אחריהן מגיעה התשובה השנייה.'
+							explanation: 'נכון. In addition / Also / And - אחריהן מגיעה התשובה השנייה.'
 						}
 					]
 				},
@@ -2770,7 +2770,7 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							text: 'III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
 							prompt:
-								'"How did the area change after trees were planted? Give TWO answers from paragraph III." — כתבו (1) ו-(2).',
+								'"How did the area change after trees were planted? Give TWO answers from paragraph III." - כתבו (1) ו-(2).',
 							modelAnswer:
 								'(1) The number of birds increased by 60% in Ethiopia.  (2) Rivers in Kenya that were dry for 20 years began to flow again.'
 						},
@@ -2778,13 +2778,13 @@ export const c1Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt: 'תלמיד כתב שלוש תשובות ל-"Give TWO answers". מה הסיכון?',
 							modelAnswer:
-								'הבודק מתייחס לשתי הראשונות בלבד. אם אחת מהן שגויה — מפסידים נקודות, גם אם התשובה השלישית נכונה.'
+								'הבודק מתייחס לשתי הראשונות בלבד. אם אחת מהן שגויה - מפסידים נקודות, גם אם התשובה השלישית נכונה.'
 						},
 						{
 							type: 'self-check',
 							prompt: 'הסבירו: מה התפקיד של "and / also / in addition" בשאלת TWO answers?',
 							modelAnswer:
-								'הן הסיגנל בטקסט שתשובה שנייה מגיעה. מוצאים אחת מהן — ממשיכים לקרוא, והתשובה השנייה שם.'
+								'הן הסיגנל בטקסט שתשובה שנייה מגיעה. מוצאים אחת מהן - ממשיכים לקרוא, והתשובה השנייה שם.'
 						}
 					]
 				}

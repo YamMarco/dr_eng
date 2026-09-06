@@ -1,4 +1,4 @@
-// Part C — Writing. One node per programme lesson (lesson17…lesson22).
+// Part C - Writing. One node per programme lesson (lesson17…lesson22).
 // Source: docs/module c/insertprogram/lesson##_module_c.docx
 import type { LessonNode } from '../types';
 
@@ -22,11 +22,11 @@ export const c3Lessons: LessonNode[] = [
 					type: 'summary',
 					title: 'איך מתחלקות 30 הנקודות',
 					lines: [
-						'📝 תוכן וארגון — 10 נקודות. הכי חשוב.',
-						'📚 אוצר מילים — 8 נקודות.',
-						'🔤 דקדוק — 8 נקודות.',
-						'✏️ כתיב ופיסוק — 4 נקודות.',
-						'גם עם דקדוק חלש — תוכן נכון וברור מביא 22-25 מתוך 30.'
+						'📝 תוכן וארגון - 10 נקודות. הכי חשוב.',
+						'📚 אוצר מילים - 8 נקודות.',
+						'🔤 דקדוק - 8 נקודות.',
+						'✏️ כתיב ופיסוק - 4 נקודות.',
+						'גם עם דקדוק חלש - תוכן נכון וברור מביא 22-25 מתוך 30.'
 					]
 				},
 				{
@@ -43,11 +43,11 @@ export const c3Lessons: LessonNode[] = [
 					type: 'summary',
 					title: 'הנושאים שחוזרים במודול C',
 					lines: [
-						'🌍 סביבה — הגנה על הסביבה, זיהום, עצים, בעלי חיים',
-						'🤝 קהילה — התנדבות, עזרה לאחרים, שינוי חברתי',
-						'🏥 בריאות — ספורט, תזונה, בריאות נפשית',
-						'💻 טכנולוגיה — מסכים, אינטרנט, המצאות',
-						'📚 חינוך — בית ספר, שפות, כישורים לחיים',
+						'🌍 סביבה - הגנה על הסביבה, זיהום, עצים, בעלי חיים',
+						'🤝 קהילה - התנדבות, עזרה לאחרים, שינוי חברתי',
+						'🏥 בריאות - ספורט, תזונה, בריאות נפשית',
+						'💻 טכנולוגיה - מסכים, אינטרנט, המצאות',
+						'📚 חינוך - בית ספר, שפות, כישורים לחיים',
 						'כדאי להכין בבית 2-3 דוגמאות לכל נושא, לפני הבחינה.'
 					]
 				},
@@ -62,7 +62,7 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"Do you think teenagers should have a part-time job? Give reasons." — מה חייב להופיע בתשובה?',
+								'"Do you think teenagers should have a part-time job? Give reasons." - מה חייב להופיע בתשובה?',
 							options: [
 								'YES או NO, לפחות שתי סיבות, ו-70-90 מילים',
 								'תרגום של הנושא לעברית',
@@ -81,10 +81,10 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'כתבתם 45 מילים בלבד. מה קורה?',
 							options: [
-								'לא קורה כלום — העיקר התוכן',
+								'לא קורה כלום - העיקר התוכן',
 								'מקבלים בונוס על קיצור',
 								'הבודק מוסיף מילים',
-								'מאבדים נקודות — פחות מ-60 מילים מוריד ניקוד'
+								'מאבדים נקודות - פחות מ-60 מילים מוריד ניקוד'
 							],
 							correctIndex: 3
 						}
@@ -94,13 +94,13 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — תכנון לפני כתיבה.\n\n"Do you think it is important to protect the environment? Give reasons."'
+							text: 'YOUR TURN - תכנון לפני כתיבה.\n\n"Do you think it is important to protect the environment? Give reasons."'
 						},
 						{
 							type: 'mcq',
 							prompt: 'מה השלב הראשון בתשובה?',
 							options: [
-								'לכתוב YES או NO — הדעה שלי',
+								'לכתוב YES או NO - הדעה שלי',
 								'לתת דוגמה',
 								'לכתוב סיכום',
 								'לספור מילים'
@@ -130,7 +130,7 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Do you think teenagers should volunteer?" — מה עונים?',
+							prompt: '"Do you think teenagers should volunteer?" - מה עונים?',
 							options: [
 								'כותבים על התנדבות בכלל',
 								'YES או NO + סיבות',
@@ -141,15 +141,15 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'כתבתם 65 מילים. זה בסדר — קרוב מספיק ל-70.',
+							prompt: 'כתבתם 65 מילים. זה בסדר - קרוב מספיק ל-70.',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
 							explanation: 'שקר. 60-69 מילים = מינוס נקודה. היעד הוא 70-90.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Give reasons." — כמה סיבות?',
-							options: ['אחת — מספיק', 'לפחות שתיים, עם דוגמה לכל אחת', 'כמה שרוצים'],
+							prompt: '"Give reasons." - כמה סיבות?',
+							options: ['אחת - מספיק', 'לפחות שתיים, עם דוגמה לכל אחת', 'כמה שרוצים'],
 							correctIndex: 1,
 							explanation: '"Give reasons" = לפחות שתי סיבות, ורצוי דוגמה לכל אחת.'
 						}
@@ -173,7 +173,7 @@ export const c3Lessons: LessonNode[] = [
 							prompt: 'מה מוריד הכי הרבה נקודות בכתיבה?',
 							options: [
 								'שגיאות דקדוק',
-								'פחות מ-40 מילים — מינוס 6 נקודות',
+								'פחות מ-40 מילים - מינוס 6 נקודות',
 								'שגיאות כתיב'
 							],
 							correctIndex: 1,
@@ -181,8 +181,8 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'העתקת משפטים שלמים מטקסט הקריאה למטלת הכתיבה — מה קורה?',
-							options: ['✅ מותר, זו אנגלית נכונה', '❌ אסור — כותבים במילים שלנו'],
+							prompt: 'העתקת משפטים שלמים מטקסט הקריאה למטלת הכתיבה - מה קורה?',
+							options: ['✅ מותר, זו אנגלית נכונה', '❌ אסור - כותבים במילים שלנו'],
 							correctIndex: 1,
 							explanation: 'העתקה עלולה לאפס את מטלת הכתיבה. כותבים במילים שלנו.'
 						}
@@ -197,19 +197,19 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"In your opinion, what changes can be made to your school?" — מה המבנה?',
+								'"In your opinion, what changes can be made to your school?" - מה המבנה?',
 							options: [
 								'YES/NO + סיבות',
 								'פתיחה → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
 								'רק דוגמאות מהחיים'
 							],
 							correctIndex: 1,
-							explanation: '"What changes?" שונה מ-"Do you think?" — שני שינויים, כל אחד עם סיבה.'
+							explanation: '"What changes?" שונה מ-"Do you think?" - שני שינויים, כל אחד עם סיבה.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'תכננו: "Do you think it is important to protect the environment?" — YES/NO, סיבה 1, סיבה 2.',
+								'תכננו: "Do you think it is important to protect the environment?" - YES/NO, סיבה 1, סיבה 2.',
 							modelAnswer:
 								'YES. סיבה 1: כדי לשמור על בעלי חיים ויערות. סיבה 2: כדי שהדורות הבאים יחיו בסביבה נקייה ובריאה.'
 						},
@@ -228,7 +228,7 @@ export const c3Lessons: LessonNode[] = [
 	{
 		id: 'l18',
 		section: 'c-3',
-		titleHe: 'P14 — נוסחת הכתיבה',
+		titleHe: 'P14 - נוסחת הכתיבה',
 		titleEn: 'P14 Structure',
 		code: 'c.3.2',
 		required: ['l17'],
@@ -238,7 +238,7 @@ export const c3Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'summary',
-					title: 'P14 — נוסחת הכתיבה שלכם',
+					title: 'P14 - נוסחת הכתיבה שלכם',
 					lines: [
 						'YES / NO',
 						'↓ I think that… because…',
@@ -256,7 +256,7 @@ export const c3Lessons: LessonNode[] = [
 				{ type: 'word-card', word: 'In conclusion', translationHe: 'לסיכום' },
 				{
 					type: 'preface',
-					text: 'על דקדוק בכתיבה — להירגע:\n\nדקדוק שווה 8 נקודות. תוכן שווה 10.\nהרעיון שלכם חשוב יותר מהמשפט המושלם.\n\nמה שחייב להיות בכל משפט: subject + verb. זה הבסיס. השאר בונוס.'
+					text: 'על דקדוק בכתיבה - להירגע:\n\nדקדוק שווה 8 נקודות. תוכן שווה 10.\nהרעיון שלכם חשוב יותר מהמשפט המושלם.\n\nמה שחייב להיות בכל משפט: subject + verb. זה הבסיס. השאר בונוס.'
 				},
 				{
 					type: 'steps',
@@ -274,7 +274,7 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'TRY IT — "Do you think schools should teach students about the environment?"\nנבנה את P14 שלב אחרי שלב.'
+							text: 'TRY IT - "Do you think schools should teach students about the environment?"\nנבנה את P14 שלב אחרי שלב.'
 						},
 						{
 							type: 'mcq',
@@ -289,7 +289,7 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'אחרי הדעה — מה בא?',
+							prompt: 'אחרי הדעה - מה בא?',
 							options: [
 								'סיכום',
 								'עוד דעה',
@@ -321,12 +321,12 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — עכשיו כותבים פסקה שלמה לפי P14.\nשימו לב למונה המילים: היעד הוא 70-90.'
+							text: 'YOUR TURN - עכשיו כותבים פסקה שלמה לפי P14.\nשימו לב למונה המילים: היעד הוא 70-90.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'"Do you think it is important for teenagers to learn a foreign language? Give reasons to explain your opinion." — כתבו תשובה מלאה לפי P14.',
+								'"Do you think it is important for teenagers to learn a foreign language? Give reasons to explain your opinion." - כתבו תשובה מלאה לפי P14.',
 							placeholder: 'I think that...',
 							minWords: 70,
 							maxWords: 90,
@@ -357,7 +357,7 @@ export const c3Lessons: LessonNode[] = [
 								'כל הביטויים מתאימים לכל שלב'
 							],
 							correctIndex: 0,
-							explanation: 'חמשת שלבי P14 — לומדים בעל פה.'
+							explanation: 'חמשת שלבי P14 - לומדים בעל פה.'
 						},
 						{
 							type: 'mcq',
@@ -394,7 +394,7 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"I think that volunteering is important. Also, it is good." — מה חסר?',
+							prompt: '"I think that volunteering is important. Also, it is good." - מה חסר?',
 							options: [
 								'רק משפט סיום',
 								'because + דוגמה לכל סיבה',
@@ -422,7 +422,7 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							prompt:
-								'"Do you think it is important to protect the environment?" — כתבו P14 מלא, 70-90 מילים.',
+								'"Do you think it is important to protect the environment?" - כתבו P14 מלא, 70-90 מילים.',
 							placeholder: 'Yes, I think that...',
 							minWords: 70,
 							maxWords: 90,
@@ -462,20 +462,20 @@ export const c3Lessons: LessonNode[] = [
 					type: 'summary',
 					title: 'כמה נקודות שווה דקדוק?',
 					lines: [
-						'📝 תוכן וארגון — 10',
-						'📚 אוצר מילים — 8',
-						'🔤 דקדוק (Language Use) — 8',
-						'✏️ כתיב ופיסוק (Mechanics) — 4',
-						'גם עם דקדוק חלש — תוכן נכון וברור מביא 22-25 מתוך 30.'
+						'📝 תוכן וארגון - 10',
+						'📚 אוצר מילים - 8',
+						'🔤 דקדוק (Language Use) - 8',
+						'✏️ כתיב ופיסוק (Mechanics) - 4',
+						'גם עם דקדוק חלש - תוכן נכון וברור מביא 22-25 מתוך 30.'
 					]
 				},
 				{
 					type: 'preface',
-					text: 'מה זה אומר לכם?\n\n✓ תוכן טוב + 70-90 מילים = עד 18/30 גם בלי דקדוק מושלם.\n✓ דקדוק "minimally correct" = 5 מתוך 8 — עדיין מקבלים.\n⚠️ ההפסד המקסימלי על כתיב הוא 2 נקודות בלבד.\n❌ פחות מ-60 מילים עולה יותר מכל שגיאת דקדוק.\n\nהמסקנה: כן ללמוד דקדוק — אבל לא לפחד ממנו.'
+					text: 'מה זה אומר לכם?\n\n✓ תוכן טוב + 70-90 מילים = עד 18/30 גם בלי דקדוק מושלם.\n✓ דקדוק "minimally correct" = 5 מתוך 8 - עדיין מקבלים.\n⚠️ ההפסד המקסימלי על כתיב הוא 2 נקודות בלבד.\n❌ פחות מ-60 מילים עולה יותר מכל שגיאת דקדוק.\n\nהמסקנה: כן ללמוד דקדוק - אבל לא לפחד ממנו.'
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — שני כללי ברזל',
+					title: 'THE TOOL - שני כללי ברזל',
 					lines: [
 						'כלל 1: כל משפט = subject + verb. "Students volunteer." ✓ · "Many teenagers jobs." ✗ חסר פועל.',
 						'כלל 2: יחיד ורבים. I / He / She / It + verb+s ← "She volunteers." · We / They / Students + verb ← "They volunteer."'
@@ -483,7 +483,7 @@ export const c3Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'קריאה מול כתיבה:\n\n📖 בקריאה — דקדוק שגוי בתשובה לא מוריד נקודות. מה שחשוב הוא המידע מהטקסט.\n✏️ בכתיבה — דקדוק שווה 8 מתוך 30. subject + verb בכל משפט הוא הבסיס שמגן עליכם.'
+					text: 'קריאה מול כתיבה:\n\n📖 בקריאה - דקדוק שגוי בתשובה לא מוריד נקודות. מה שחשוב הוא המידע מהטקסט.\n✏️ בכתיבה - דקדוק שווה 8 מתוך 30. subject + verb בכל משפט הוא הבסיס שמגן עליכם.'
 				},
 				{
 					type: 'steps',
@@ -534,7 +534,7 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt: 'מה חסר במשפט "Many teenagers jobs"?',
-							options: ['subject', 'נקודה בסוף', 'אות גדולה', 'verb — פועל'],
+							options: ['subject', 'נקודה בסוף', 'אות גדולה', 'verb - פועל'],
 							correctIndex: 3
 						}
 					]
@@ -543,23 +543,23 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — כתבו שלושה משפטים נכונים.\nבדיקה לכל משפט: יש subject? יש verb? יחיד/רבים נכון?'
+							text: 'YOUR TURN - כתבו שלושה משפטים נכונים.\nבדיקה לכל משפט: יש subject? יש verb? יחיד/רבים נכון?'
 						},
 						{
 							type: 'self-check',
-							prompt: 'משפט 1 — על התנדבות. כתבו משפט אחד נכון באנגלית.',
+							prompt: 'משפט 1 - על התנדבות. כתבו משפט אחד נכון באנגלית.',
 							placeholder: 'Students...',
 							modelAnswer: 'Students who volunteer develop important skills.'
 						},
 						{
 							type: 'self-check',
-							prompt: 'משפט 2 — על בריאות. כתבו משפט אחד נכון באנגלית.',
+							prompt: 'משפט 2 - על בריאות. כתבו משפט אחד נכון באנגלית.',
 							placeholder: 'Exercise...',
 							modelAnswer: 'Exercise keeps young people healthy and reduces stress.'
 						},
 						{
 							type: 'self-check',
-							prompt: 'משפט 3 — על הסביבה. כתבו משפט אחד נכון באנגלית.',
+							prompt: 'משפט 3 - על הסביבה. כתבו משפט אחד נכון באנגלית.',
 							placeholder: 'We...',
 							modelAnswer: 'We must protect the environment because pollution destroys nature.'
 						},
@@ -579,23 +579,23 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: '"Students are responsible." — נכון דקדוקית?',
+							prompt: '"Students are responsible." - נכון דקדוקית?',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 0,
-							explanation: 'נכון. Students (רבים) + are — לא is.'
+							explanation: 'נכון. Students (רבים) + are - לא is.'
 						},
 						{
 							type: 'mcq',
-							prompt: '"She volunteer every week." — נכון דקדוקית?',
+							prompt: '"She volunteer every week." - נכון דקדוקית?',
 							options: ['✅ נכון', '❌ לא נכון'],
 							correctIndex: 1,
 							explanation: 'שגוי. She + verb+s ← "She volunteers every week."'
 						},
 						{
 							type: 'mcq',
-							prompt: '"Teenagers need time." — מה הבעיה?',
+							prompt: '"Teenagers need time." - מה הבעיה?',
 							options: [
-								'אין בעיה — Teenagers (רבים) + need',
+								'אין בעיה - Teenagers (רבים) + need',
 								'חסר "the" לפני teenagers',
 								'צריך "needs" עם s'
 							],
@@ -622,7 +622,7 @@ export const c3Lessons: LessonNode[] = [
 							prompt: 'כמה נקודות שווה דקדוק בכתיבה?',
 							options: ['10 מתוך 30', '8 מתוך 30', '4 מתוך 30'],
 							correctIndex: 1,
-							explanation: 'דקדוק = 8. תוכן = 10. הרעיון חשוב יותר — אבל subject+verb הוא הבסיס.'
+							explanation: 'דקדוק = 8. תוכן = 10. הרעיון חשוב יותר - אבל subject+verb הוא הבסיס.'
 						},
 						{
 							type: 'mcq',
@@ -659,7 +659,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt: 'הסבירו: מה זה "subject + verb", ולמה זה הכלל הכי חשוב?',
 							modelAnswer:
-								'Subject = מי עושה (I, She, Students). Verb = מה הוא עושה (think, volunteers, learn). בלי שניהם המשפט שבור — וזה הבסיס שמגן על ציון הדקדוק.'
+								'Subject = מי עושה (I, She, Students). Verb = מה הוא עושה (think, volunteers, learn). בלי שניהם המשפט שבור - וזה הבסיס שמגן על ציון הדקדוק.'
 						}
 					]
 				}
@@ -684,7 +684,7 @@ export const c3Lessons: LessonNode[] = [
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — איך סופרים',
+					title: 'THE TOOL - איך סופרים',
 					lines: [
 						'כל מילה = 1. גם a, the, and נספרות.',
 						'"I(1) think(2) that(3) volunteering(4) is(5) important(6)."',
@@ -706,7 +706,7 @@ export const c3Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'WATCH IT — ספרו:\n\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants to survive. In conclusion, I believe that every person should do something to help the environment."\n\n68 מילים — קצת מתחת ל-70. מוסיפים משפט קצר: "…every single person should try to do something small." ← 75 מילים ✓'
+					text: 'WATCH IT - ספרו:\n\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants to survive. In conclusion, I believe that every person should do something to help the environment."\n\n68 מילים - קצת מתחת ל-70. מוסיפים משפט קצר: "…every single person should try to do something small." ← 75 מילים ✓'
 				}
 			],
 			rounds: [
@@ -733,7 +733,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'ספרתם 68 מילים. מה עושים?',
 							options: [
-								'משאירים — קרוב מספיק',
+								'משאירים - קרוב מספיק',
 								'מוסיפים משפט קצר כדי לעבור את 70',
 								'מוחקים משפט',
 								'כותבים הכל מחדש'
@@ -744,10 +744,10 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'האם "the" ו-"and" נספרות?',
 							options: [
-								'לא — רק מילים "חשובות"',
+								'לא - רק מילים "חשובות"',
 								'רק "and" נספרת',
 								'רק בסוף המשפט',
-								'כן — כל מילה נספרת'
+								'כן - כל מילה נספרת'
 							],
 							correctIndex: 3
 						}
@@ -757,12 +757,12 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — 20 דקות. בחרו נושא אחד:\n\n1. "Do you think all students should volunteer in their community?"\n2. "Do you think it is important to protect the environment?"\n3. "Do you think teenagers should learn a second language?"\n\nהשתמשו ב-P14. המונה למטה סופר בזמן אמת — היעד 70-90.'
+							text: 'YOUR TURN - 20 דקות. בחרו נושא אחד:\n\n1. "Do you think all students should volunteer in their community?"\n2. "Do you think it is important to protect the environment?"\n3. "Do you think teenagers should learn a second language?"\n\nהשתמשו ב-P14. המונה למטה סופר בזמן אמת - היעד 70-90.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'כתבו את התשובה המלאה. עצרו כשהמונה ירוק — בין 70 ל-90 מילים.',
+								'כתבו את התשובה המלאה. עצרו כשהמונה ירוק - בין 70 ל-90 מילים.',
 							placeholder: 'Yes, I think that...',
 							minWords: 70,
 							maxWords: 90,
@@ -824,7 +824,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'התשובה שלכם = 68 מילים. מה עושים?',
 							options: [
-								'מגישים — קרוב מספיק',
+								'מגישים - קרוב מספיק',
 								'מוסיפים משפט קצר ומגיעים ל-70+',
 								'כותבים הכל מחדש'
 							],
@@ -836,7 +836,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'התשובה שלכם = 95 מילים. מה עושים?',
 							options: [
-								'מגישים — קרוב מספיק',
+								'מגישים - קרוב מספיק',
 								'מוחקים את הסיכום',
 								'מקצרים משפט ארוך אחד'
 							],
@@ -857,12 +857,12 @@ export const c3Lessons: LessonNode[] = [
 							prompt:
 								'ספרו את המילים:\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants. In conclusion, every person should try to help."\n\nכמה מילים, ומה עושים?',
 							modelAnswer:
-								'47 מילים — הרבה מתחת ל-70. מוסיפים דוגמה ומשפט הסבר לכל סיבה עד שמגיעים ל-70-90.'
+								'47 מילים - הרבה מתחת ל-70. מוסיפים דוגמה ומשפט הסבר לכל סיבה עד שמגיעים ל-70-90.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'"Do you think it is important to learn a foreign language?" — כתבו תשובה, ועקבו אחרי המונה.',
+								'"Do you think it is important to learn a foreign language?" - כתבו תשובה, ועקבו אחרי המונה.',
 							placeholder: 'Yes, I think that...',
 							minWords: 70,
 							maxWords: 90,
@@ -884,7 +884,7 @@ export const c3Lessons: LessonNode[] = [
 	{
 		id: 'l21',
 		section: 'c-3',
-		titleHe: 'בחינה שלמה — ניהול זמן',
+		titleHe: 'בחינה שלמה - ניהול זמן',
 		titleEn: 'Full Simulation',
 		code: 'c.3.5',
 		required: ['l20'],
@@ -904,28 +904,28 @@ export const c3Lessons: LessonNode[] = [
 				},
 				{
 					type: 'preface',
-					text: 'הטעות שגורמת לכישלון:\n\n"תלמיד נתקע בשאלה קשה. מנסה עוד דקה. עוד דקה. עוד דקה."\n10 דקות עברו, הוא עדיין לא ענה — ועכשיו אין זמן לכתיבה.\nתוצאה: 0 נקודות על הכתיבה.'
+					text: 'הטעות שגורמת לכישלון:\n\n"תלמיד נתקע בשאלה קשה. מנסה עוד דקה. עוד דקה. עוד דקה."\n10 דקות עברו, הוא עדיין לא ענה - ועכשיו אין זמן לכתיבה.\nתוצאה: 0 נקודות על הכתיבה.'
 				},
 				{
 					type: 'summary',
-					title: 'P15 — Mark → Move → Return',
+					title: 'P15 - Mark → Move → Return',
 					lines: [
-						'Mark ✏️ — כתבו M קטן ליד שאלה קשה.',
-						'Move ➡️ — עברו לשאלה הבאה מיד. לא "עוד שנייה".',
-						'Return 🔄 — חזרו ל-M בדקה 100, אחרי שסיימתם את הכתיבה.',
-						'שאלה שנראית קשה עכשיו לפעמים קלה אחרי שאר השאלות — ואם לא, לפחות ענינו על השאר.'
+						'Mark ✏️ - כתבו M קטן ליד שאלה קשה.',
+						'Move ➡️ - עברו לשאלה הבאה מיד. לא "עוד שנייה".',
+						'Return 🔄 - חזרו ל-M בדקה 100, אחרי שסיימתם את הכתיבה.',
+						'שאלה שנראית קשה עכשיו לפעמים קלה אחרי שאר השאלות - ואם לא, לפחות ענינו על השאר.'
 					]
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — חלוקת הזמן',
+					title: 'THE TOOL - חלוקת הזמן',
 					lines: [
-						'0-3 דק׳ — מפת הדרכים: כותרת + פסקה 1',
-						'3-8 דק׳ — קוראים את כל השאלות, רמזור לכל אחת',
-						'8-70 דק׳ — עונים על שאלות 1-8: P1 + Eye Catchers + P15 לקשות',
-						'דקה 70 — ⛔ עוצרים ועוברים לכתיבה, גם אם לא סיימתם',
-						'70-100 דק׳ — כותבים 70-90 מילים לפי P14',
-						'100-105 דק׳ — חוזרים לשאלות עם M'
+						'0-3 דק׳ - מפת הדרכים: כותרת + פסקה 1',
+						'3-8 דק׳ - קוראים את כל השאלות, רמזור לכל אחת',
+						'8-70 דק׳ - עונים על שאלות 1-8: P1 + Eye Catchers + P15 לקשות',
+						'דקה 70 - ⛔ עוצרים ועוברים לכתיבה, גם אם לא סיימתם',
+						'70-100 דק׳ - כותבים 70-90 מילים לפי P14',
+						'100-105 דק׳ - חוזרים לשאלות עם M'
 					]
 				}
 			],
@@ -937,7 +937,7 @@ export const c3Lessons: LessonNode[] = [
 							prompt:
 								'אתם עונים על שאלה 4. היא קשה ואתם לא מוצאים תשובה. מה עושים?',
 							options: [
-								'ממשיכים לנסות — "אולי אמצא"',
+								'ממשיכים לנסות - "אולי אמצא"',
 								'כותבים M ועוברים לשאלה 5',
 								'מדלגים על כל השאלות הבאות',
 								'עונים ניחוש ושוכחים מזה'
@@ -950,7 +950,7 @@ export const c3Lessons: LessonNode[] = [
 							options: [
 								'מסיימים את הקריאה קודם',
 								'מוותרים על הכתיבה',
-								'עוצרים ועוברים לכתיבה — הכתיבה שווה 30 נקודות',
+								'עוצרים ועוברים לכתיבה - הכתיבה שווה 30 נקודות',
 								'כותבים 30 מילים מהר וחוזרים לקריאה'
 							],
 							correctIndex: 2
@@ -987,12 +987,12 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — תנאי בחינה אמיתיים.\n\n⏱ שעה ו-45 דקות.\n📖 חלק א׳: שאלות 1-8 — 70 דקות.\n✏️ חלק ב׳: 70-90 מילים — 30 דקות.\n🔄 P15: חזרה לשאלות M — 5 דקות.'
+							text: 'YOUR TURN - תנאי בחינה אמיתיים.\n\n⏱ שעה ו-45 דקות.\n📖 חלק א׳: שאלות 1-8 - 70 דקות.\n✏️ חלק ב׳: 70-90 מילים - 30 דקות.\n🔄 P15: חזרה לשאלות M - 5 דקות.'
 						},
 						{
 							type: 'self-check',
 							prompt:
-								'תרגלו את חלק ב׳ בתנאי זמן: "Do you think all students should volunteer in their community?" — 70-90 מילים, לפי P14.',
+								'תרגלו את חלק ב׳ בתנאי זמן: "Do you think all students should volunteer in their community?" - 70-90 מילים, לפי P14.',
 							placeholder: 'Yes, I think that...',
 							minWords: 70,
 							maxWords: 90,
@@ -1001,7 +1001,7 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'summary',
-							title: 'Checklist — 5 דקות לפני ההגשה',
+							title: 'Checklist - 5 דקות לפני ההגשה',
 							lines: [
 								'□ עניתי על כל השאלות 1-8? כולל השאלות עם M?',
 								'□ ספרתי מילים בכתיבה? בין 70 ל-90?',
@@ -1012,9 +1012,9 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'summary',
-							title: 'ONE SENTENCE — של כל הקורס',
+							title: 'ONE SENTENCE - של כל הקורס',
 							lines: [
-								'"אני מחפש, לא קורא." — ויש לי את כל הכלים לעשות את זה.',
+								'"אני מחפש, לא קורא." - ויש לי את כל הכלים לעשות את זה.',
 								'מפת הדרכים · רמזור · P1 · מספרים · שמות · NOT · most/only · however',
 								'P15: Mark → Move → Return   |   P14: כתיבה 70-90 מילים'
 							]
@@ -1033,7 +1033,7 @@ export const c3Lessons: LessonNode[] = [
 							prompt: 'מה עושים בשלוש הדקות הראשונות של הבחינה?',
 							options: [
 								'פותחים בשאלה הראשונה',
-								'קוראים מפת דרכים — כותרת + פסקה 1',
+								'קוראים מפת דרכים - כותרת + פסקה 1',
 								'מתחילים בכתיבה'
 							],
 							correctIndex: 1,
@@ -1044,7 +1044,7 @@ export const c3Lessons: LessonNode[] = [
 							prompt: 'דקה 70, ועדיין לא סיימתם את שאלה 7. מה עושים?',
 							options: [
 								'ממשיכים עם שאלה 7',
-								'עוברים לכתיבה — גם בלי לסיים',
+								'עוברים לכתיבה - גם בלי לסיים',
 								'מדלגים על הכתיבה'
 							],
 							correctIndex: 1,
@@ -1079,9 +1079,9 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'ב-Checklist: "ספרתי מילים?" — ולא ספרתם. מה עושים?',
+							prompt: 'ב-Checklist: "ספרתי מילים?" - ולא ספרתם. מה עושים?',
 							options: [
-								'מגישים — בטח בסדר',
+								'מגישים - בטח בסדר',
 								'סופרים עכשיו, לפני ההגשה',
 								'לא חשוב בשלב הזה'
 							],
@@ -1110,7 +1110,7 @@ export const c3Lessons: LessonNode[] = [
 							options: [
 								'שאלה 5 ואז כתיבה',
 								'כתיבה ואז שאלה 5',
-								'שאלה 5, ואם יישאר זמן — כתיבה'
+								'שאלה 5, ואם יישאר זמן - כתיבה'
 							],
 							correctIndex: 1,
 							explanation: 'כתיבה = 30 נקודות. שאלה 5 = 8-10 נקודות. הכתיבה קודמת, תמיד.'
@@ -1119,7 +1119,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt: 'כתבו את חמש שאלות ה-Checklist שבודקים לפני ההגשה:',
 							modelAnswer:
-								'1. עניתי על כל 1-8, כולל שאלות M? 2. ספרתי מילים — 70-90? 3. כתבתי YES/NO או In my opinion? 4. יש שתי סיבות עם דוגמאות? 5. לא העתקתי משפטים שלמים מהטקסט?'
+								'1. עניתי על כל 1-8, כולל שאלות M? 2. ספרתי מילים - 70-90? 3. כתבתי YES/NO או In my opinion? 4. יש שתי סיבות עם דוגמאות? 5. לא העתקתי משפטים שלמים מהטקסט?'
 						},
 						{
 							type: 'self-check',
@@ -1136,7 +1136,7 @@ export const c3Lessons: LessonNode[] = [
 	{
 		id: 'l22',
 		section: 'c-3',
-		titleHe: 'What changes? — שאלת בגרות',
+		titleHe: 'What changes? - שאלת בגרות',
 		titleEn: 'What Changes?',
 		code: 'c.3.6',
 		required: ['l21'],
@@ -1146,25 +1146,25 @@ export const c3Lessons: LessonNode[] = [
 			preface: [
 				{
 					type: 'preface',
-					text: 'כך נראית מטלת הכתיבה בבגרות האמיתית:\n\nSECTION 3 — PART II: WRITING TASK (30 Points)\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\n• Write 70-90 words in English.\n• Give your OPINION — what should change.\n• Give REASONS — why each change will help.'
+					text: 'כך נראית מטלת הכתיבה בבגרות האמיתית:\n\nSECTION 3 - PART II: WRITING TASK (30 Points)\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\n• Write 70-90 words in English.\n• Give your OPINION - what should change.\n• Give REASONS - why each change will help.'
 				},
 				{
 					type: 'summary',
-					title: 'שימו לב — זה שונה מ-"Do you think?"',
+					title: 'שימו לב - זה שונה מ-"Do you think?"',
 					lines: [
 						'"Do you think X?" ← שאלת כן/לא: YES/NO → because → for example',
 						'"What changes?" ← שאלת שינויים: In my opinion → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
-						'אותם ביטויים בדיוק — מבנה מעט שונה.'
+						'אותם ביטויים בדיוק - מבנה מעט שונה.'
 					]
 				},
 				{
 					type: 'summary',
-					title: 'THE TOOL — מבנה "What changes?"',
+					title: 'THE TOOL - מבנה "What changes?"',
 					lines: [
-						'1️⃣ פתיחה — "In my opinion, there are two important changes…"',
-						'2️⃣ שינוי 1 — "First, I think we should have… This would help because…"',
-						'3️⃣ שינוי 2 — "Also, I believe… For example…"',
-						'4️⃣ סיכום — "In conclusion, I am sure that these changes will help students."'
+						'1️⃣ פתיחה - "In my opinion, there are two important changes…"',
+						'2️⃣ שינוי 1 - "First, I think we should have… This would help because…"',
+						'3️⃣ שינוי 2 - "Also, I believe… For example…"',
+						'4️⃣ סיכום - "In conclusion, I am sure that these changes will help students."'
 					]
 				},
 				{ type: 'word-card', word: 'In my opinion', translationHe: 'לדעתי' },
@@ -1178,7 +1178,7 @@ export const c3Lessons: LessonNode[] = [
 						'פתיחה: "In my opinion, there are two important changes that can make school a better place to learn."',
 						'שינוי 1: "First, I think we should have shorter lessons and more breaks. Students often feel tired after sitting for a long time, so short breaks help them concentrate better."',
 						'שינוי 2: "Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways."',
-						'סיכום: "In conclusion, I am sure that these changes will help all students enjoy school more and learn better." — כ-80 מילים ✓'
+						'סיכום: "In conclusion, I am sure that these changes will help all students enjoy school more and learn better." - כ-80 מילים ✓'
 					]
 				}
 			],
@@ -1187,7 +1187,7 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'TRY IT — נושא: "What changes can be made to improve your neighborhood?"'
+							text: 'TRY IT - נושא: "What changes can be made to improve your neighborhood?"'
 						},
 						{
 							type: 'mcq',
@@ -1202,7 +1202,7 @@ export const c3Lessons: LessonNode[] = [
 						},
 						{
 							type: 'mcq',
-							prompt: 'אחרי שכתבתם שינוי ראשון — מה חייב לבוא מיד?',
+							prompt: 'אחרי שכתבתם שינוי ראשון - מה חייב לבוא מיד?',
 							options: [
 								'הסיכום',
 								'סיבה: "This would help because…"',
@@ -1226,7 +1226,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'mcq',
 							prompt: 'ספרתם 65 מילים בטיוטה. מה עושים?',
 							options: [
-								'מגישים — קרוב מספיק',
+								'מגישים - קרוב מספיק',
 								'מוחקים שינוי אחד',
 								'כותבים הכל מחדש',
 								'מוסיפים משפט קצר לאחת הסיבות ומגיעים ל-70+'
@@ -1239,11 +1239,11 @@ export const c3Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'preface',
-							text: 'YOUR TURN — בפורמט בגרות מלא.\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nארבעה שלבים: פתיחה · שינוי 1 + סיבה · שינוי 2 + סיבה · סיכום.'
+							text: 'YOUR TURN - בפורמט בגרות מלא.\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nארבעה שלבים: פתיחה · שינוי 1 + סיבה · שינוי 2 + סיבה · סיכום.'
 						},
 						{
 							type: 'self-check',
-							prompt: 'כתבו את התשובה המלאה — 70-90 מילים.',
+							prompt: 'כתבו את התשובה המלאה - 70-90 מילים.',
 							placeholder: 'In my opinion, there are two important changes...',
 							minWords: 70,
 							maxWords: 90,
@@ -1281,7 +1281,7 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"What changes can be made to improve your neighborhood?" — מה המבנה?',
+								'"What changes can be made to improve your neighborhood?" - מה המבנה?',
 							options: [
 								'YES/NO + סיבות',
 								'שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
@@ -1328,10 +1328,10 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'"In my opinion, schools need computers. Also parks are important." — מה חסר?',
+								'"In my opinion, schools need computers. Also parks are important." - מה חסר?',
 							options: [
 								'רק משפט סיום',
-								'סיבה לכל שינוי — "This would help because…"',
+								'סיבה לכל שינוי - "This would help because…"',
 								'YES או NO'
 							],
 							correctIndex: 1,
@@ -1355,7 +1355,7 @@ export const c3Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							prompt:
-								'"In your opinion, what changes can be made to your school?" — כתבו תשובה מלאה, 70-90 מילים.',
+								'"In your opinion, what changes can be made to your school?" - כתבו תשובה מלאה, 70-90 מילים.',
 							placeholder: 'In my opinion, there are two important changes...',
 							minWords: 70,
 							maxWords: 90,
@@ -1372,7 +1372,7 @@ export const c3Lessons: LessonNode[] = [
 							type: 'self-check',
 							prompt: 'מה ההבדל בין "This would help because…" לבין "because…"?',
 							modelAnswer:
-								'אותו תפקיד — מסבירים למה השינוי יעזור. "This would help because" רשמי יותר ומתאים לפתיחת משפט; "because" ישיר יותר בתוך משפט. שניהם קבילים.'
+								'אותו תפקיד - מסבירים למה השינוי יעזור. "This would help because" רשמי יותר ומתאים לפתיחת משפט; "because" ישיר יותר בתוך משפט. שניהם קבילים.'
 						}
 					]
 				}
