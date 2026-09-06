@@ -576,21 +576,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
-    "mtime": 1788681848.7028987,
-    "seen": 1788681864.7011647,
-    "ast_hash": "557cadedf81d47e5383a8892b06fa6d5",
+    "mtime": 1788692532.7177894,
+    "seen": 1788692578.268538,
+    "ast_hash": "99a1d54c87b3800dadd86766f9e7e97a",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1788682055.468815,
-    "seen": 1788682068.4299452,
-    "ast_hash": "71b7e1a990f53023e1f3c9bc457e50a8",
+    "mtime": 1788692532.7530446,
+    "seen": 1788692578.2685397,
+    "ast_hash": "c45134e9ebbd22c0d49c8b663bf07d36",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1788682347.4207685,
-    "seen": 1788682400.7351239,
-    "ast_hash": "efb9f920c1a06766839c83938018c494",
+    "mtime": 1788692532.7875798,
+    "seen": 1788692578.2685409,
+    "ast_hash": "6bcb4119e48bcb30431c9492799f69e6",
     "semantic_hash": ""
   },
   "front/src/lib/content/index.ts": {
@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenForm.svelte": {
-    "mtime": 1788623588.3987868,
-    "seen": 1788623858.1472147,
-    "ast_hash": "a867cde1f760f1c1bc5ddec2e60bd86c",
+    "mtime": 1788692430.573717,
+    "seen": 1788692578.2685168,
+    "ast_hash": "71aca5c12d6ad1f6d451a7293ac13d19",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editStore.svelte.ts": {
@@ -780,9 +780,9 @@
     "semantic_hash": ""
   },
   "imporve.md": {
-    "mtime": 1788688446.793829,
-    "seen": 1788688508.607901,
-    "ast_hash": "09e4082aa9e4cb95b891d10c929e8111",
+    "mtime": 1788692411.9814365,
+    "seen": 1788692578.2686899,
+    "ast_hash": "20164fb8fb6a020e4440744c8b2a0eeb",
     "semantic_hash": ""
   }
 }
