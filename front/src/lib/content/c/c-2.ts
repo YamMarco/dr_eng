@@ -269,4 +269,230 @@ export const c2Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l15',
+		section: 'c-2',
+		titleHe: 'מילות תוכן א׳',
+		titleEn: 'Content Words I',
+		code: 'c.2.3',
+		required: ['l14'],
+		position: { x: -100, y: 1920 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'מה קורה כשלא מכירים מילת תוכן?\n\n"In 2016, a group of environmentalists decided to make Redonda green again."\n\nהתלמיד עוצר: "environmentalists? מה זה?" מנסה לתרגם. לא מוצא. מדלג. מאבד את ההקשר.\nשאלה 3 מתייחסת בדיוק למשפט הזה — והוא לא יכול לענות. 8 נקודות אבדו בגלל מילה אחת.'
+				},
+				{
+					type: 'preface',
+					text: 'ומה קורה כשמכירים אותה?\n\n"environmentalists" ← environment + ists = אנשים שעוסקים בסביבה.\nזיהה ← הבין ← ענה ← 8 נקודות.\n\nהמילים בשיעור הזה מופיעות ב-90% מהטקסטים. ללמוד אותן = לקרוא בביטחון, בלי לעצור.'
+				},
+				{ type: 'word-card', word: 'environment', translationHe: 'סביבה' },
+				{ type: 'word-card', word: 'volunteer(s)', translationHe: 'מתנדב / מתנדבים' },
+				{ type: 'word-card', word: 'community', translationHe: 'קהילה' },
+				{ type: 'word-card', word: 'discover / found', translationHe: 'גילה / מצא' },
+				{ type: 'word-card', word: 'result(s)', translationHe: 'תוצאה / תוצאות' },
+				{ type: 'word-card', word: 'increase', translationHe: 'לגדול / לעלות' },
+				{ type: 'word-card', word: 'reduce / decrease', translationHe: 'להקטין / לרדת' },
+				{ type: 'word-card', word: 'protect', translationHe: 'להגן' },
+				{ type: 'word-card', word: 'destroy', translationHe: 'להרוס' },
+				{ type: 'word-card', word: 'species', translationHe: 'מין (ביולוגי)' },
+				{ type: 'word-card', word: 'charity', translationHe: 'ארגון צדקה' },
+				{ type: 'word-card', word: 'residents', translationHe: 'תושבים' },
+				{ type: 'word-card', word: 'researchers', translationHe: 'חוקרים' },
+				{ type: 'word-card', word: 'affect', translationHe: 'להשפיע על' },
+				{ type: 'word-card', word: 'effective', translationHe: 'יעיל' },
+				{
+					type: 'preface',
+					text: 'WATCH IT — מצאו את מילות התוכן:\n\n"A local charity decided to change the environment. The results were remarkable. Residents said stress levels fell."\n\ncharity · environment · results · residents — ארבע מילות תוכן במשפט אחד.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt: 'The ______ is under threat. — סביבה',
+							options: ['environment', 'community', 'charity', 'species'],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'Young ______ give their time to help others. — מתנדבים',
+							options: ['residents', 'volunteers', 'researchers', 'results'],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'The ______ of the study were surprising. — תוצאות',
+							options: ['species', 'charity', 'results', 'environment'],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'The local ______ helped with the project. — קהילה',
+							options: ['result', 'charity', 'species', 'community'],
+							correctIndex: 3
+						},
+						{
+							type: 'mcq',
+							prompt: 'The most ______ method was face-to-face work. — יעיל',
+							options: ['effective', 'destroyed', 'increased', 'responsible'],
+							correctIndex: 0
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — השלימו את המילה החסרה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'The scientists wanted to ______ the forests from destruction.',
+							options: ['protect', 'destroy', 'increase', 'affect'],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'The ______ were already visible in Ethiopia.',
+							options: ['charities', 'results', 'species', 'residents'],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: '85% of ______ say they are satisfied with their city.',
+							options: ['researchers', 'volunteers', 'residents', 'results'],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'Young people who ______ feel happier.',
+							options: ['destroy', 'reduce', 'protect', 'volunteer'],
+							correctIndex: 3
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"environment, volunteer, result — אני מזהה ועובר הלאה."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l16',
+		section: 'c-2',
+		titleHe: 'מילות תוכן ב׳',
+		titleEn: 'Content Words II',
+		code: 'c.2.4',
+		required: ['l15'],
+		position: { x: -70, y: 2040 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'מילות שינוי, חינוך ובריאות — הנושאים שחוזרים בטקסטים על חינוך, בריאות ומדע.\n\nללמוד את 15 המילים האלה = לקרוא בביטחון, וגם לכתוב עם אוצר מילים טוב יותר.\nאוצר מילים שווה 8 מתוך 30 נקודות בכתיבה. כל מילה שאתם יודעים עוזרת.'
+				},
+				{ type: 'word-card', word: 'improve', translationHe: 'לשפר' },
+				{ type: 'word-card', word: 'develop', translationHe: 'לפתח' },
+				{ type: 'word-card', word: 'achieve', translationHe: 'להשיג' },
+				{ type: 'word-card', word: 'affect / effect', translationHe: 'להשפיע / השפעה' },
+				{ type: 'word-card', word: 'cause', translationHe: 'לגרום / סיבה' },
+				{ type: 'word-card', word: 'education', translationHe: 'חינוך' },
+				{ type: 'word-card', word: 'health / healthy', translationHe: 'בריאות / בריא' },
+				{ type: 'word-card', word: 'skill(s)', translationHe: 'מיומנות / מיומנויות' },
+				{ type: 'word-card', word: 'opportunity', translationHe: 'הזדמנות' },
+				{ type: 'word-card', word: 'responsible', translationHe: 'אחראי' },
+				{ type: 'word-card', word: 'require', translationHe: 'לדרוש' },
+				{ type: 'word-card', word: 'benefit', translationHe: 'יתרון / להפיק תועלת' },
+				{ type: 'word-card', word: 'encourage', translationHe: 'לעודד' },
+				{ type: 'word-card', word: 'support', translationHe: 'תמיכה / לתמוך' },
+				{ type: 'word-card', word: 'society', translationHe: 'חברה' },
+				{
+					type: 'preface',
+					text: 'WATCH IT\n\n"Volunteering has many benefits. It develops important skills and makes students more responsible. Society benefits too."\n\nארבע מילות תוכן במשפט אחד — בדיוק מה שמעלה את ציון אוצר המילים בכתיבה.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt: 'Volunteering can ______ your skills. — לשפר',
+							options: ['improve', 'require', 'reduce', 'encourage'],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'Stress has a negative ______ on health. — השפעה',
+							options: ['affect', 'effect', 'benefit', 'cause'],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'Students ______ better grades after the programme. — השיגו',
+							options: ['required', 'supported', 'achieved', 'encouraged'],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'This is a great ______ to learn something new. — הזדמנות',
+							options: ['society', 'skill', 'education', 'opportunity'],
+							correctIndex: 3
+						},
+						{
+							type: 'mcq',
+							prompt: 'Schools ______ students to volunteer. — מעודדים',
+							options: ['encourage', 'require', 'affect', 'develop'],
+							correctIndex: 0
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'בכתיבה — השתמשו במילות התוכן שלמדתם.\nכל מילה כזאת במשפטי ה-P14 שלכם = אוצר מילים = ציון גבוה יותר.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'השלימו באנגלית: "Volunteering can improve ..."',
+							placeholder: 'Volunteering can improve...',
+							modelAnswer: 'Volunteering can improve my English and my social skills.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'השלימו באנגלית: "One benefit of exercise is ..."',
+							placeholder: 'One benefit of exercise is...',
+							modelAnswer: 'One benefit of exercise is better health.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'השלימו באנגלית: "Students who volunteer become more ..."',
+							placeholder: 'Students who volunteer become more...',
+							modelAnswer: 'Students who volunteer become more responsible.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'השלימו באנגלית: "This helps society because ..."',
+							placeholder: 'This helps society because...',
+							modelAnswer: 'This helps society because everyone learns to support each other.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"improve, affect, skill — אני מזהה, וגם משתמש בהם בכתיבה."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
