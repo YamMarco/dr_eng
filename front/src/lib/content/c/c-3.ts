@@ -121,6 +121,106 @@ export const c3Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: Do you think? = YES/NO + 2 reasons. 70-90 מילים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Do you think teenagers should volunteer?" — מה עונים?',
+							options: [
+								'כותבים על התנדבות בכלל',
+								'YES או NO + סיבות',
+								'מסבירים מה זו התנדבות'
+							],
+							correctIndex: 1,
+							explanation: '"Do you think?" = דעה (YES/NO) + סיבות. תמיד.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כתבתם 65 מילים. זה בסדר — קרוב מספיק ל-70.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. 60-69 מילים = מינוס נקודה. היעד הוא 70-90.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Give reasons." — כמה סיבות?',
+							options: ['אחת — מספיק', 'לפחות שתיים, עם דוגמה לכל אחת', 'כמה שרוצים'],
+							correctIndex: 1,
+							explanation: '"Give reasons" = לפחות שתי סיבות, ורצוי דוגמה לכל אחת.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעל נושאי המיקוד של הבחינה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'לאיזה נושא מיקוד שייכת השאלה "Do you think we should protect forests?"',
+							options: ['🌍 סביבה', '🤝 קהילה', '💻 טכנולוגיה', '🏥 בריאות'],
+							correctIndex: 0,
+							explanation: 'חמשת נושאי המיקוד: סביבה · קהילה · בריאות · טכנולוגיה · חינוך.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה מוריד הכי הרבה נקודות בכתיבה?',
+							options: [
+								'שגיאות דקדוק',
+								'פחות מ-40 מילים — מינוס 6 נקודות',
+								'שגיאות כתיב'
+							],
+							correctIndex: 1,
+							explanation: 'קנס האורך גדול מכל שגיאת דקדוק. 40-49 מילים = מינוס 6.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'העתקת משפטים שלמים מטקסט הקריאה למטלת הכתיבה — מה קורה?',
+							options: ['✅ מותר, זו אנגלית נכונה', '❌ אסור — כותבים במילים שלנו'],
+							correctIndex: 1,
+							explanation: 'העתקה עלולה לאפס את מטלת הכתיבה. כותבים במילים שלנו.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"In your opinion, what changes can be made to your school?" — מה המבנה?',
+							options: [
+								'YES/NO + סיבות',
+								'פתיחה → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
+								'רק דוגמאות מהחיים'
+							],
+							correctIndex: 1,
+							explanation: '"What changes?" שונה מ-"Do you think?" — שני שינויים, כל אחד עם סיבה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'תכננו: "Do you think it is important to protect the environment?" — YES/NO, סיבה 1, סיבה 2.',
+							modelAnswer:
+								'YES. סיבה 1: כדי לשמור על בעלי חיים ויערות. סיבה 2: כדי שהדורות הבאים יחיו בסביבה נקייה ובריאה.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כמה נקודות שווה כל קריטריון בכתיבה? (ארבעה קריטריונים)',
+							modelAnswer:
+								'תוכן וארגון = 10 · אוצר מילים = 8 · דקדוק = 8 · כתיב ופיסוק = 4. סה״כ 30.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -237,6 +337,109 @@ export const c3Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"I think… because… For example… In addition… 70-90."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: I think… because… For example… In addition…'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'I think that… = דעה · because… = סיבה · For example… = דוגמה · In addition… = סיבה שנייה · In conclusion… = סיכום',
+								'I think that… = סיכום · because… = דוגמה · In conclusion… = דעה',
+								'For example… = דעה · In addition… = סיבה ראשונה · because… = סיכום',
+								'כל הביטויים מתאימים לכל שלב'
+							],
+							correctIndex: 0,
+							explanation: 'חמשת שלבי P14 — לומדים בעל פה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מהו הסדר הנכון של P14?',
+							options: [
+								'because → Yes I think → In conclusion → For example → In addition',
+								'Yes, I think → because → For example → In addition → In conclusion',
+								'For example → In addition → Yes I think → because → In conclusion',
+								'In conclusion → Yes I think → because → For example → In addition'
+							],
+							correctIndex: 1,
+							explanation: 'דעה ← סיבה ← דוגמה ← סיבה שנייה ← סיכום.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'אפשר להתחיל ב-"In conclusion" ואז לתת סיבות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. "In conclusion" תמיד בסוף. פותחים ב-YES/NO + I think.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעל פסקה אמיתית.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו את P14:\n"_______, I think that teenagers should volunteer. First, it _______ important skills. For example, many teenagers learn to work as a team. In _______, it helps mental health. _______, I believe that volunteering has many benefits."',
+							modelAnswer: 'Yes · develops · addition · In conclusion'
+						},
+						{
+							type: 'mcq',
+							prompt: '"I think that volunteering is important. Also, it is good." — מה חסר?',
+							options: [
+								'רק משפט סיום',
+								'because + דוגמה לכל סיבה',
+								'YES/NO בהתחלה'
+							],
+							correctIndex: 1,
+							explanation: '"Also" לא מספיק. צריך סיבה מנומקת ודוגמה לכל אחת.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"Yes, I think that teenagers should volunteer. First, volunteering develops important skills. For example, many teenagers learn to work in a team. In addition, volunteering is good for mental health. In conclusion, I believe that volunteering has many benefits."\n\nמה תפקיד המשפט "For example, many teenagers learn to work in a team"?',
+							options: ['הדעה', 'הדוגמה לסיבה הראשונה', 'הסיבה השנייה', 'הסיכום'],
+							correctIndex: 1,
+							explanation: 'D = דעה · S1 = סיבה · E1 = דוגמה · S2 = סיבה שנייה · C = סיכום.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"Do you think it is important to protect the environment?" — כתבו P14 מלא, 70-90 מילים.',
+							placeholder: 'Yes, I think that...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'Yes, I think that protecting the environment is very important. First, it helps animals and plants survive. For example, many forests have returned because of protection laws. In addition, clean air and water are important for our health. Studies show that people who live in clean cities are healthier and live longer. In conclusion, I believe that protecting the environment is one of the most important things we can do for the next generation.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'ספרו את המילים בתשובה שכתבתם. האם יש 70-90?',
+							modelAnswer:
+								'70-90 = מצוין. פחות מ-70 ← מוסיפים משפט. יותר מ-90 ← מקצרים משפט אחד.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מה ההבדל בין מבנה P14 לבין מבנה "What changes?"',
+							modelAnswer:
+								'P14 (Do you think?): YES/NO + because + for example + in addition + conclusion. What changes?: In my opinion + שינוי 1 + סיבה + שינוי 2 + סיבה + conclusion.'
 						}
 					]
 				}
@@ -364,6 +567,99 @@ export const c3Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"subject + verb בכל משפט. זה מגן על 8 הנקודות."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: כל משפט = subject + verb. בודקים כל פעם.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Students are responsible." — נכון דקדוקית?',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. Students (רבים) + are — לא is.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"She volunteer every week." — נכון דקדוקית?',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שגוי. She + verb+s ← "She volunteers every week."'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Teenagers need time." — מה הבעיה?',
+							options: [
+								'אין בעיה — Teenagers (רבים) + need',
+								'חסר "the" לפני teenagers',
+								'צריך "needs" עם s'
+							],
+							correctIndex: 0,
+							explanation: 'המשפט תקין. רבים + פועל בלי s, ולא צריך "the".'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nתיקון משפטים.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'תקנו:\n1. "Many students jobs after school."\n2. "The environment important."\n3. "He help people every week."',
+							modelAnswer:
+								'1. Many students HAVE jobs after school.  2. The environment IS important.  3. He HELPS people every week.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כמה נקודות שווה דקדוק בכתיבה?',
+							options: ['10 מתוך 30', '8 מתוך 30', '4 מתוך 30'],
+							correctIndex: 1,
+							explanation: 'דקדוק = 8. תוכן = 10. הרעיון חשוב יותר — אבל subject+verb הוא הבסיס.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'דקדוק שגוי בתשובות של חלק הקריאה מוריד נקודות.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. בקריאה מה שנבדק הוא המידע מהטקסט, לא הדקדוק.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'כתבו שלושה משפטים נכונים על התנדבות. בדקו בכל אחד: יש subject? יש verb? יחיד/רבים נכון?',
+							modelAnswer:
+								'Volunteering helps students. They become more responsible. It also improves their mental health.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"I was think that volunteering good for society. Students they learn new skills. She volunteer every day."\n\nכמה שגיאות יש כאן?',
+							options: ['שתיים', 'שלוש', 'ארבע', 'אין שגיאות'],
+							correctIndex: 2,
+							explanation:
+								'"was think" ← think · "volunteering good" ← volunteering IS good · "Students they" ← Students · "She volunteer" ← She volunteers.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: מה זה "subject + verb", ולמה זה הכלל הכי חשוב?',
+							modelAnswer:
+								'Subject = מי עושה (I, She, Students). Verb = מה הוא עושה (think, volunteers, learn). בלי שניהם המשפט שבור — וזה הבסיס שמגן על ציון הדקדוק.'
 						}
 					]
 				}
