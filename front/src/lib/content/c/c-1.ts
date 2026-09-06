@@ -1113,6 +1113,69 @@ export const c1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'preface',
+							text: 'NOT לא מוסיף מידע - הוא הופך את הכיוון.\nרגיל: מצא מה נכון. עם NOT: מצא מה לא נכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which of the following is NOT true?" - מה המשימה?',
+							options: [
+								'למצוא את המשפט הנכון',
+								'למצוא את המשפט שלא נכון / לא מופיע בטקסט',
+								'למצוא את המשפט הכי חשוב'
+							],
+							correctIndex: 1,
+							explanation: 'NOT הופך את השאלה. מחפשים את היוצאת דופן.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'Text: "The park has a lake and a playground. Dogs are not allowed."\n\nWhich IS true about the park?',
+							options: [
+								'It has a swimming pool',
+								'It has a playground',
+								'It has a cafe',
+								'Dogs are allowed'
+							],
+							correctIndex: 1,
+							explanation: 'רק "playground" מגובה בטקסט. השאר לא מופיעים או סותרים אותו.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'אותו טקסט. עכשיו: Which is NOT true about the park?',
+							options: [
+								'It has a lake',
+								'It has a playground',
+								'Dogs are welcome',
+								'It has a lake and a playground'
+							],
+							correctIndex: 2,
+							explanation:
+								'שלוש נכונות ומופיעות בטקסט. "Dogs are welcome" סותר את "Dogs are not allowed" - זו התשובה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'בשאלת NOT עם 4 אפשרויות: כמה מהן בדרך כלל נכונות?',
+							options: ['אחת', 'שתיים', 'שלוש', 'ארבע'],
+							correctIndex: 2,
+							explanation: 'שלוש מופיעות בטקסט. הרביעית - לא. היא התשובה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'קראתם מהר ולא שמתם לב ל-NOT. מה תבחרו?',
+							options: [
+								'את התשובה הנכונה במקרה',
+								'משפט נכון מהטקסט - וזו תשובה שגויה',
+								'לא תספיקו לענות'
+							],
+							correctIndex: 1,
+							explanation: 'בלי לראות NOT בוחרים משפט נכון. אבל NOT ביקש בדיוק ההפך - התשובה נפסלת.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
 							type: 'passage-mcq',
 							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
 							questions: [
