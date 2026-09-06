@@ -153,6 +153,114 @@ export const c2Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: השאלה אומרת לי מה לעשות — אם אני מבין אותה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'paragraph = פסקה · according to = לפי · give ONE answer = תשובה אחת · complete = השלם',
+								'paragraph = עמוד · according to = בניגוד ל־ · give ONE answer = דוגמה · complete = סיים',
+								'paragraph = שאלה · according to = בנוסף · give ONE answer = שתי תשובות · complete = תרגם',
+								'כל המילים האלה אומרות אותו דבר'
+							],
+							correctIndex: 0,
+							explanation: 'חמש מילות השאלה הבסיסיות — לומדים אותן בעל פה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Read paragraph II and give ONE answer." — מה עושים?',
+							options: [
+								'קוראים את כל הטקסט ונותנים תשובה',
+								'הולכים לפסקה II בלבד ונותנים תשובה אחת',
+								'קוראים פסקאות I ו-II ונותנים שתיים'
+							],
+							correctIndex: 1,
+							explanation: 'paragraph II = רק שם. Give ONE = תשובה אחת.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Circle the correct answer" = כמה תשובות שרוצים.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. Circle = מקיפים תשובה אחת. זו שאלת רב-ברירה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעכשיו על שאלות בחינה אמיתיות.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"What do we learn from paragraph III about students?" — אילו מילות שאלה יש כאן?',
+							options: [
+								'"what do we learn" + "paragraph III"',
+								'"according to" + "give ONE"',
+								'"complete" + "because"',
+								'אין כאן מילות שאלה'
+							],
+							correctIndex: 0,
+							explanation: '"what do we learn" = מה לומדים · "paragraph III" = רק פסקה III.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to paragraph II, explain what Dr. Okafor found." — כמה הוראות מסתתרות בשאלה?',
+							options: ['אחת', 'שתיים', 'שלוש — according to · paragraph II · explain', 'אף אחת'],
+							correctIndex: 2,
+							explanation: 'צריך להבין את שלושתן כדי לענות נכון.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו: "Circle the correct answer" = ___ · "Give TWO answers" = ___ · "Complete the sentence" = ___',
+							modelAnswer:
+								'הקיפו תשובה אחת · כתבו שתי תשובות · השלימו — יש התחלה, ממשיכים אותה מהטקסט.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to paragraph I, give ONE reason why adults cannot swim." — מה עושים?',
+							options: [
+								'קוראים את כל הטקסט',
+								'הולכים לפסקה I, מחפשים סיבה, כותבים אחת',
+								'נותנים שתי סיבות כדי לכסות'
+							],
+							correctIndex: 1,
+							explanation: 'according to paragraph I = פסקה I בלבד. give ONE reason = סיבה אחת.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'תלמיד לא הבין "according to" וענה על מה שכולם אמרו — לא רק מה ש-Dr. Klein אמרה. מה קרה לו?',
+							modelAnswer:
+								'הוא קיבל 0. השאלה ביקשה ספציפית מה Dr. Klein אמרה — "according to X" = רק מה ש-X אמר.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו את חמש מילות השאלה שהכי חשוב לדעת בעל פה:',
+							modelAnswer:
+								'paragraph · according to · give ONE answer · give TWO answers · complete the sentence.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -263,6 +371,100 @@ export const c2Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"ראיתי Eye Catcher — הוא מדבר אליי. אני עוצר ומקשיב."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: Eye Catcher מדבר אליי. אני עוצר ומקשיב.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'however = פנייה · NOT = ציד · most/only = הגבלה · in addition = תשובה שנייה · because = סיבה',
+								'however = סיבה · NOT = פנייה · most = תשובה שנייה · in addition = ציד',
+								'כל מילות הניווט מסמנות את אותו דבר',
+								'however = הגבלה · NOT = סיבה · because = ציד'
+							],
+							correctIndex: 0,
+							explanation: 'חמש מילות הניווט הבסיסיות, כל אחת והתפקיד שלה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה עושים כשרואים "however" בטקסט?',
+							options: [
+								'מתעלמים וממשיכים',
+								'עוצרים — מה שאחריו הוא הנקודה החשובה',
+								'חוצים את המשפט שלפניו'
+							],
+							correctIndex: 1,
+							explanation: 'however = פנייה. עוצרים ומקשיבים למה שבא אחריה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"30%" בטקסט הוא Eye Catcher אם "30%" מופיע גם בשאלה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. מספר בשאלה + אותו מספר בטקסט = GPS.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל Eye Catcher — ניגוד, הגבלה, מספרים, שמות, "in addition"',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							correctIndices: [14, 20, 40, 41, 42, 56, 69, 87, 88, 89],
+							wordBank: ['however', 'most', 'in addition', 'מספרים', 'שמות']
+						},
+						{
+							type: 'mcq',
+							prompt: '"In addition, in Kenya, rivers began to flow again." — מה זה מסמן?',
+							options: ['שזה הסיכום', 'שתשובה שנייה מגיעה', 'שזו פנייה בסיפור'],
+							correctIndex: 1,
+							explanation: '"In addition" = עוד מידע. בשאלת TWO answers — כאן יושבת התשובה השנייה.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'השלימו: however = ___ · not = ___ · in addition = ___',
+							modelAnswer: 'however = פנייה · not = ציד, מה שלא נכון · in addition = תשובה שנייה מגיעה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו כל Eye Catcher בטקסט',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.\n\nIII  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							correctIndices: [20, 26, 34, 38, 43, 77, 78, 79, 88],
+							wordBank: ['however', 'never', 'cannot', 'most', 'מספרים', 'שמות']
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"Only ten rivers are responsible for most of the plastic." — כמה Eye Catchers יש כאן? רשמו כל אחד.',
+							modelAnswer:
+								'שניים: "Only" (הגבלה) ו-"most" (הגבלה). ואם "ten" מופיע גם בשאלה — גם הוא GPS.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: למה Eye Catchers עוזרים דווקא לתלמיד עם אנגלית חלשה?',
+							modelAnswer:
+								'הם בולטים לעין — מספרים, שמות, however. אפשר לזהות אותם בלי להבין את כל הטקסט, והם חוסכים זמן חיפוש.'
 						}
 					]
 				}
