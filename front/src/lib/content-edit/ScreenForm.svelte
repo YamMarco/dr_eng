@@ -52,6 +52,10 @@
 			if (s.wordBank === undefined) s.wordBank = [];
 			if (!Array.isArray(s.correctIndices)) s.correctIndices = [];
 		}
+		// MarkdownInput's `value` is a bindable with a '' fallback — binding
+		// `undefined` into it throws props_invalid_value, so optional text
+		// fields must be real strings before the form mounts.
+		if (s.type === 'self-check' && typeof s.text !== 'string') s.text = '';
 		return s;
 	}
 
