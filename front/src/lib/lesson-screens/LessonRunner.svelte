@@ -301,6 +301,14 @@
 				{:else}
 					<Button onclick={retry}>{i18n.dict.lesson.retryButton}</Button>
 					<Button variant="secondary" onclick={guardedExit}>{i18n.dict.lesson.backToPath}</Button>
+					{#if debugStore.enabled}
+						{#if hasNextLesson}
+							<Button variant="ghost" onclick={guardedFinishAndContinue}>
+								השלם והמשך לשיעור הבא (דיבוג)
+							</Button>
+						{/if}
+						<Button variant="ghost" onclick={guardedFinish}>סמן סבב כהושלם (דיבוג)</Button>
+					{/if}
 				{/if}
 			{:else}
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
@@ -363,13 +371,22 @@
 	{#if debugStore.enabled && !justFinished}
 		<!-- Floating, absolutely positioned so it never affects the footer's
 		     layout — a dev-only shortcut, not part of the real lesson UI. -->
-		<button
-			type="button"
-			onclick={advance}
-			class="absolute inset-e-4 bottom-24 z-10 rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
-		>
-			דלג על מסך (דיבוג)
-		</button>
+		<div class="absolute inset-e-4 bottom-24 z-10 flex flex-col items-end gap-1.5">
+			<button
+				type="button"
+				onclick={advance}
+				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+			>
+				דלג על מסך (דיבוג)
+			</button>
+			<button
+				type="button"
+				onclick={hasNextLesson ? guardedFinishAndContinue : guardedFinish}
+				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+			>
+				דלג על סבב (דיבוג)
+			</button>
+		</div>
 	{/if}
 </div>
 
