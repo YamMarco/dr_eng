@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-06)
 
 ## Corpus Check
-- 126 files · ~83,633 words
+- 127 files · ~94,637 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 877 nodes · 1036 edges · 81 communities (65 shown, 16 thin omitted)
+- 879 nodes · 1037 edges · 80 communities (65 shown, 15 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0883b4db`
+- Built from commit: `77baa1b0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -58,14 +58,14 @@
 - ScreenForm.svelte
 - Section 17 · בנק מילים · חברה וקהילה
 - Section 21 · מקשרים ומרפאת שגיאות
-- lessons/+page.svelte
+- חלק א׳ — עקרונות התוכנית
 - Section 16 · עמדת הכותב
 - Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations
 - Section 22 · ניהול זמן
 - Section 23 · YES או NO
 - Section 24 · סיבה, הסבר, דוגמה
 - Section 25 · בנק הדוגמאות ואורך התשובה
-- api.ts
+- חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
 - eye catchers - names and numbers.spec.bak.md
 - c.4.2c
 - Section 10 · רב-ברירה ואלימינציה
@@ -74,14 +74,12 @@
 - Section 13 · שאלות התייחסות
 - Section 14 · שאלות הסקה
 - Section 15 · רעיון מרכזי
-- חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
+- Section 19 · מקריאה לכתיבה
 - Section 26 · סימולציה ותיקון
 - ExamSession
 - 3 · `s3-l2` — מציאה וסימון (c.3.3)
 - 1 (vefore c.4.1, after c.3.4)
-- debug.svelte.ts
-- confirmDiscard
-- clipboard.ts
+- lessons/+page.svelte
 - I18n
 - questions
 - content-edit — in-app screen editor
@@ -120,7 +118,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (81 total, 16 thin omitted)
+## Communities (80 total, 15 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -143,8 +141,8 @@ Cohesion: 0.17
 Nodes (12): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+4 more)
 
 ### Community 5 - "LessonRunner.svelte"
-Cohesion: 0.08
-Nodes (20): allScreenPaths, allScreens, currentLocation, currentPath, currentScreen, dirty, editSheetOpen, footerDisabled (+12 more)
+Cohesion: 0.05
+Nodes (37): imports, isBigNode(), OUT, sectionFileNames, sectionMeta, spread, TEACHING, copyText() (+29 more)
 
 ### Community 6 - "Section 5 · Eye Catchers · מילות שלילה"
 Cohesion: 0.06
@@ -195,8 +193,8 @@ Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
 
 ### Community 33 - "Section 2 · P1 — לא קוראים את הטקסט"
-Cohesion: 0.04
-Nodes (45): 15 ה-Patterns — מקרא מרוכז, 4.c.1.1 · חמש המילים שפותחות כל שאלה, 4.c.1.2 · כל מילה — לאן היא שולחת אותי, 4.c.1.3 · תשובה אחת אינה רשימה, 4.c.1.4 · מה מותר להביא מהראש, 4.c.1.5 · שער סקשן 1, 4.c.2.1 · כמה באמת צריך לקרוא, 4.c.2.2 · מילת המפתח היא הנושא, לא ה-what (+37 more)
+Cohesion: 0.06
+Nodes (32): 4.c.1.1 · חמש המילים שפותחות כל שאלה, 4.c.1.2 · כל מילה — לאן היא שולחת אותי, 4.c.1.3 · תשובה אחת אינה רשימה, 4.c.1.4 · מה מותר להביא מהראש, 4.c.1.5 · שער סקשן 1, 4.c.2.1 · כמה באמת צריך לקרוא, 4.c.2.2 · מילת המפתח היא הנושא, לא ה-what, 4.c.2.3 · ממילת המפתח לפסקה (+24 more)
 
 ### Community 34 - "book/+page.svelte"
 Cohesion: 0.15
@@ -227,8 +225,8 @@ Cohesion: 0.20
 Nodes (10): 4.c.20.1 · בלי פועל אין משפט, 4.c.20.2 · מצא את הפועל, 4.c.20.3 · יחיד ורבים, 4.c.20.4 · זמנים — `I was think`, 4.c.20.5 · בלי `the` בהכללה, 4.c.20.6 · `because` דורש פסוקית שלמה, 4.c.20.7 · מילה, צירוף, משפט, 4.c.20.8 · ארבעה משפטים, ארבעה פעלים (+2 more)
 
 ### Community 41 - "LessonEditor.svelte"
-Cohesion: 0.08
-Nodes (26): imports, isBigNode(), OUT, sectionFileNames, sectionMeta, spread, TEACHING, addScreen() (+18 more)
+Cohesion: 0.11
+Nodes (19): saveLessonContent(), storedKey(), addScreen(), applyScreen(), banner, buckets, confirmDiscard(), deleteScreen() (+11 more)
 
 ### Community 42 - "ScreenForm.svelte"
 Cohesion: 0.11
@@ -242,9 +240,9 @@ Nodes (9): 4.c.17.1 · קהילה והתנדבות — 10 מילים, 4.c.17.2 �
 Cohesion: 0.22
 Nodes (9): 4.c.21.1 · חמשת המקשרים ותפקידם, 4.c.21.2 · `because` לא פותח משפט עצמאי, 4.c.21.3 · לא `however` ולא `but` יחד, 4.c.21.4 · `also` מול `although`, 4.c.21.5 · `for example` בלי `that`, 4.c.21.6 · מרפאת שגיאות — עשרה תיקונים, 4.c.21.7 · פסקה עם כל חמשת המקשרים, 4.c.21.8 · שער סקשן 21 (+1 more)
 
-### Community 45 - "lessons/+page.svelte"
-Cohesion: 0.18
-Nodes (3): EditStore, PALETTE, SectionTheme
+### Community 45 - "חלק א׳ — עקרונות התוכנית"
+Cohesion: 0.25
+Nodes (8): 15 ה-Patterns — מקרא מרוכז, enum סוגי תרגיל, חלק א׳ — עקרונות התוכנית, כללי מעבר גלובליים, למה המבנה הזה, מאגר הטקסטים, מודל הנתונים לאפליקציה, מפת הסקשנים
 
 ### Community 46 - "Section 16 · עמדת הכותב"
 Cohesion: 0.25
@@ -270,9 +268,9 @@ Nodes (8): 4.c.24.1 · התבנית, 4.c.24.2 · סיבה אינה דוגמה, 4
 Cohesion: 0.25
 Nodes (8): 4.c.25.1 · חמש הדוגמאות הכלליות, 4.c.25.2 · התאמת דוגמה לנושא, 4.c.25.3 · דוגמה אחת לכל סיבה, 4.c.25.4 · לספור מילים באמת, 4.c.25.5 · בלי משפטים מעורפלים, 4.c.25.6 · תשובה מלאה בזמן, 4.c.25.7 · שער סקשן 25, Section 25 · בנק הדוגמאות ואורך התשובה
 
-### Community 52 - "api.ts"
-Cohesion: 0.33
-Nodes (4): saveLessonContent(), storedKey(), saveAll(), saveDraft()
+### Community 52 - "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה"
+Cohesion: 0.29
+Nodes (6): Module C — תוכנית לימוד מלאה (v3), nodes החזרה, הערות מימוש, חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה, חלק ו׳ — חזרה מרווחת, מיפוי, והערות מימוש, מיפוי לתוכן הקיים באפליקציה
 
 ### Community 53 - "eye catchers - names and numbers.spec.bak.md"
 Cohesion: 0.10
@@ -306,9 +304,9 @@ Nodes (7): 4.c.14.1 · לזהות שאלת הסקה, 4.c.14.2 · שני נתונ
 Cohesion: 0.29
 Nodes (7): 4.c.15.1 · משפט הנושא, 4.c.15.2 · מוקדם אינו מרכזי, 4.c.15.3 · מבחן הכיסוי, 4.c.15.4 · רחב מדי נפסל גם הוא, 4.c.15.5 · כותרת בארבע מילים, 4.c.15.6 · שער סקשן 15, Section 15 · רעיון מרכזי
 
-### Community 61 - "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה"
-Cohesion: 0.25
-Nodes (8): 4.c.19.1 · Notice — מה שווה לקחת, 4.c.19.2 · Understand — מה זה אומר כאן, 4.c.19.3 · Adapt — לקחת את המבנה, 4.c.19.4 · העתקה אינה התאמה, 4.c.19.5 · "according to me" אינו קיים, 4.c.19.6 · שער סקשן 19, Section 19 · מקריאה לכתיבה, חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
+### Community 61 - "Section 19 · מקריאה לכתיבה"
+Cohesion: 0.29
+Nodes (7): 4.c.19.1 · Notice — מה שווה לקחת, 4.c.19.2 · Understand — מה זה אומר כאן, 4.c.19.3 · Adapt — לקחת את המבנה, 4.c.19.4 · העתקה אינה התאמה, 4.c.19.5 · "according to me" אינו קיים, 4.c.19.6 · שער סקשן 19, Section 19 · מקריאה לכתיבה
 
 ### Community 62 - "Section 26 · סימולציה ותיקון"
 Cohesion: 0.29
@@ -322,13 +320,9 @@ Nodes (19): 1 · `eye_catch_intro` — למה מספרים ושמות, 2 · `s3-
 Cohesion: 0.40
 Nodes (5): 1 (vefore c.4.1, after c.3.4), examples, message, preface, questions
 
-### Community 67 - "debug.svelte.ts"
-Cohesion: 0.12
-Nodes (5): DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap
-
-### Community 68 - "confirmDiscard"
-Cohesion: 0.50
-Nodes (4): confirmDiscard(), guardedExit(), guardedFinish(), guardedFinishAndContinue()
+### Community 67 - "lessons/+page.svelte"
+Cohesion: 0.07
+Nodes (8): EditStore, DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap, PALETTE, SectionTheme
 
 ### Community 72 - "questions"
 Cohesion: 0.33
@@ -367,20 +361,20 @@ Cohesion: 0.50
 Nodes (3): 2 (c.4.1), implemented, material
 
 ## Knowledge Gaps
-- **494 isolated node(s):** `PrefaceScreen`, `StepsScreen`, `SummaryScreen`, `McqScreen`, `MarkWordScreen` (+489 more)
+- **494 isolated node(s):** `dirty`, `allScreens`, `allScreenPaths`, `screens`, `screenPaths` (+489 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 2 · P1 — לא קוראים את הטקסט`, `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 26 · סימולציה ותיקון`?**
+- **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 19 · מקריאה לכתיבה`, `Section 26 · סימולציה ותיקון`?**
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **Why does `חלק ד׳ — סקשנים 10–16: סוגי השאלות` connect `חלק ד׳ — סקשנים 10–16: סוגי השאלות` to `Section 2 · P1 — לא קוראים את הטקסט`, `Section 16 · עמדת הכותב`, `Section 10 · רב-ברירה ואלימינציה`, `Section 11 · השלמת משפט`, `Section 13 · שאלות התייחסות`, `Section 14 · שאלות הסקה`, `Section 15 · רעיון מרכזי`?**
+- **Why does `חלק ד׳ — סקשנים 10–16: סוגי השאלות` connect `חלק ד׳ — סקשנים 10–16: סוגי השאלות` to `Section 16 · עמדת הכותב`, `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`, `Section 10 · רב-ברירה ואלימינציה`, `Section 11 · השלמת משפט`, `Section 13 · שאלות התייחסות`, `Section 14 · שאלות הסקה`, `Section 15 · רעיון מרכזי`?**
   _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `Section 2 · P1 — לא קוראים את הטקסט`?**
+- **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `PrefaceScreen`, `StepsScreen`, `SummaryScreen` to the rest of the system?**
+- **What connects `dirty`, `allScreens`, `allScreenPaths` to the rest of the system?**
   _494 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
