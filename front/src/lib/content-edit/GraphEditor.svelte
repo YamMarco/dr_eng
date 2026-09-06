@@ -4,6 +4,8 @@
 	// Writes the shared editModel. Detachable — src/lib/content-edit/.
 	import { editModel } from './editModel.svelte';
 
+	let { onOpenLesson }: { onOpenLesson: (id: string) => void } = $props();
+
 	const CANVAS_WIDTH = 480;
 	const CENTER = CANVAS_WIDTH / 2;
 	const GRID = 10;
@@ -141,8 +143,14 @@
 		>
 		<button type="button" class="tb" onclick={split} disabled={!selectedId}>פצל</button>
 		<button type="button" class="tb" onclick={rename} disabled={!selectedId}>שנה מזהה</button>
+		<button
+			type="button"
+			class="tb bg-ink text-white"
+			onclick={() => selectedId && onOpenLesson(selectedId)}
+			disabled={!selectedId}>✎ ערוך שיעור</button
+		>
 		<span class="ms-2 text-muted"
-			>גרירה = מיקום · העיגול הקטן = קישור · לחיצה על קו = ניתוק · Ctrl+לחיצה = בחירה מרובה</span
+			>גרירה = מיקום · העיגול הקטן = קישור · לחיצה על קו = ניתוק · דאבל־קליק = ערוך שיעור</span
 		>
 	</div>
 
@@ -203,7 +211,8 @@
 					onpointermove={nodePointerMove}
 					onpointerup={(e) => nodePointerUp(e, n.id)}
 					onpointerenter={() => linkFrom && nodePointerEnterUp(n.id)}
-					onkeydown={(e) => e.key === 'Enter' && editModel.select(n.id)}
+					ondblclick={() => onOpenLesson(n.id)}
+					onkeydown={(e) => e.key === 'Enter' && onOpenLesson(n.id)}
 				>
 					<div class="truncate text-[11px] leading-tight font-bold">{n.titleHe}</div>
 					<div class="truncate font-mono text-[9px] text-muted" dir="ltr">{n.code || n.id}</div>

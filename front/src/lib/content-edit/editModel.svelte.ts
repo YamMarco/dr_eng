@@ -41,6 +41,12 @@ class EditModel {
 		this.dirty = false;
 	}
 
+	/** Flag a mutation done in place on a node/screen object (e.g. an inline
+	 *  prose edit on the screen canvas). */
+	touch() {
+		this.dirty = true;
+	}
+
 	get selectedNode(): LessonNode | undefined {
 		return this.nodes.find((n) => n.id === this.selectedNodeId);
 	}
@@ -254,6 +260,23 @@ class EditModel {
 		const n = this.node(nodeId);
 		if (!n) return;
 		screenList(n, path.bucket)[path.index] = screen;
+		this.dirty = true;
+	}
+
+	/** Swap a screen's type, carrying over any prose fields both shapes share. */
+	setScreenType(nodeId: string, path: ScreenPath, type: LessonScreen['type']) {
+		const n = this.node(nodeId);
+		if (!n) return;
+		const list = screenList(n, path.bucket);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const old = list[path.index] as any;
+		if (old?.type === type) return;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const next = blankScreen(type) as any;
+		for (const k of ['text', 'prompt', 'instruction', 'title', 'label', 'modelAnswer', 'dir']) {
+			if (typeof old?.[k] === 'string' && k in next) next[k] = old[k];
+		}
+		list[path.index] = next;
 		this.dirty = true;
 	}
 

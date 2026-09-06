@@ -15,26 +15,40 @@ Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
 
 ## Layout
 
-`EditWorkspace.svelte` is the shell (section picker · issue list · one save):
+`EditWorkspace.svelte` is the shell (section picker · issue list · one save)
+with a **גרף / שיעור** switch — the graph and the lesson editor are separate
+views, never shown together.
 
-- **`GraphEditor.svelte`** (left, toggle with **גרף**) — the lessons-path
-  canvas, editable. Drag a node = reposition (snaps to 10px, hold Shift to
-  free-drag). Drag the small circle under a node onto another node = add/flip
-  a prerequisite; click an edge = cut it. Toolbar: add / duplicate / delete /
-  merge (Ctrl-click to multi-select) / split (by round) / rename id. Select a
-  node → the right pane switches to it.
-- **`LessonPane.svelte`** (right) — for the selected node:
-  - **`OutlineTree.svelte`** — preface + every round + every screen. Add /
-    delete / reorder / duplicate rounds; add a screen (type menu); drag a
-    screen row to move it within or across buckets (preface ⇄ any round).
-    Red/orange dot = a validation issue on that screen.
-  - **`ScreenForm.svelte`** — the selected screen's typed form (unchanged;
-    `fields/*` building blocks, `MarkdownInput`, **JSON מתקדם** escape hatch).
-  - **`ScreenPreview.svelte`** — the real runtime component rendered live in a
-    phone frame, re-mounting on every keystroke. **טופס / תצוגה / שניהם**
-    toggles it.
-  - **▶ נגן מכאן** — opens the real `LessonRunner` at this round, starting on
-    the selected screen (`startScreenIndex` prop).
+### Graph — `GraphEditor.svelte`
+
+The lessons-path canvas, editable. Drag a node = reposition (snaps to 10px,
+hold Shift to free-drag). Drag the small circle under a node onto another node
+= add/flip a prerequisite; click an edge = cut it. Toolbar: add / duplicate /
+delete / merge (Ctrl-click to multi-select) / split (by round) / rename id /
+**✎ ערוך שיעור**. Double-click a node = open it in the lesson editor.
+
+### Lesson editor — `LessonEditorView.svelte`
+
+- header: **← גרף**, the node's id/title/code, **ערוך פרטים** (title / code /
+  big), **▶ נגן מכאן** (opens the real `LessonRunner` at the selected screen
+  via `startScreenIndex`).
+- **`ScreenCarousel.svelte`** — one horizontal strip: preface, then each
+  round, with vertical divider chips carrying the round controls (move /
+  duplicate / delete). `←`/`→` step between screens. Drag a slide to move it
+  within or across buckets. `+ מסך` (type menu) at each bucket's end,
+  `+ סבב` at the far end.
+- **`EditableScreen.svelte`** — each slide: an editable facsimile of how the
+  screen renders in the player. Prose (text, prompt, options, list items,
+  title, …) is click-to-type via `MarkdownInput` in **bare** mode (chromeless,
+  toolbar on focus). Structural bits are left to the toaster.
+- **`ScreenToaster.svelte`** — a bottom sheet for the selected screen: the
+  **type selector**, the structured fields that can't be typed onto the canvas
+  (correct answer, `mark-*` token marks + categories, question lists, word
+  bank, min-word numbers, mode, timer keys), **מחק מסך**, and a **JSON**
+  escape hatch. Reuses the `fields/*` building blocks.
+
+Prose is stored as markdown, rendered at runtime by
+`src/lib/lesson-screens/miniMarkdown.ts` (not part of this folder).
 
 ## Model & save
 
@@ -51,8 +65,8 @@ One **💾 שמור** (or ⌘/Ctrl-S) calls `saveSection(sectionId, nodes)` →
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,
-duplicate id/code, scoreless round 0. Results show as the outline dots and the
-header **בעיות** list (click to jump).
+duplicate id/code, scoreless round 0. Results show as a dot on the carousel
+slide and in the header **בעיות** list (click to jump).
 
 The server re-serialises the array in the files' hand-written style
 (`emit()` — tab indent, small primitive-only objects/arrays kept inline) and

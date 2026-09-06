@@ -8,8 +8,19 @@
 	let {
 		value = $bindable(''),
 		dir = 'auto',
-		minRows = 3
-	}: { value?: string; dir?: 'rtl' | 'ltr' | 'auto'; minRows?: number } = $props();
+		minRows = 3,
+		/** Chromeless: no border box, toolbar only on focus — for editing prose
+		    straight on a screen canvas. */
+		bare = false,
+		/** Fired after every edit with the new markdown (for dirty tracking). */
+		onInput
+	}: {
+		value?: string;
+		dir?: 'rtl' | 'ltr' | 'auto';
+		minRows?: number;
+		bare?: boolean;
+		onInput?: (value: string) => void;
+	} = $props();
 
 	let el = $state<HTMLDivElement>();
 
@@ -58,11 +69,16 @@
 	}
 
 	function serialize(): string {
-		return el ? htmlToMd(el).replace(/\n{3,}/g, '\n\n').replace(/\n+$/, '') : '';
+		return el
+			? htmlToMd(el)
+					.replace(/\n{3,}/g, '\n\n')
+					.replace(/\n+$/, '')
+			: '';
 	}
 
 	function sync() {
 		value = serialize();
+		onInput?.(value);
 	}
 
 	// Pull an external `value` in only when it doesn't already match the DOM,
@@ -97,12 +113,26 @@
 	}
 </script>
 
-<div class="rounded-xl border-2 border-line bg-canvas">
-	<div class="flex gap-1 border-b border-line px-2 py-1">
-		<button type="button" class="rounded px-2 py-0.5 text-xs font-bold hover:bg-line/60" onclick={() => exec('bold')}>B</button>
-		<button type="button" class="rounded px-2 py-0.5 text-xs italic hover:bg-line/60" onclick={() => exec('italic')}>I</button>
-		<button type="button" class="rounded px-2 py-0.5 font-mono text-xs hover:bg-line/60" onclick={toggleCode}>{'<>'}</button>
-		<button type="button" class="rounded px-2 py-0.5 text-xs hover:bg-line/60" onclick={addLink}>🔗</button>
+<div class="mdi {bare ? 'mdi-bare' : 'rounded-xl border-2 border-line bg-canvas'}">
+	<div class="mdi-tools flex gap-1 px-2 py-1 {bare ? '' : 'border-b border-line'}">
+		<button
+			type="button"
+			class="rounded px-2 py-0.5 text-xs font-bold hover:bg-line/60"
+			onclick={() => exec('bold')}>B</button
+		>
+		<button
+			type="button"
+			class="rounded px-2 py-0.5 text-xs italic hover:bg-line/60"
+			onclick={() => exec('italic')}>I</button
+		>
+		<button
+			type="button"
+			class="rounded px-2 py-0.5 font-mono text-xs hover:bg-line/60"
+			onclick={toggleCode}>{'<>'}</button
+		>
+		<button type="button" class="rounded px-2 py-0.5 text-xs hover:bg-line/60" onclick={addLink}
+			>🔗</button
+		>
 	</div>
 	<div
 		bind:this={el}
@@ -112,7 +142,28 @@
 		tabindex="0"
 		{dir}
 		oninput={sync}
-		class="w-full px-3 py-2 text-sm leading-relaxed outline-none [&_code]:rounded [&_code]:bg-line/60 [&_code]:px-1"
+		class="w-full outline-none [&_code]:rounded [&_code]:bg-line/60 [&_code]:px-1 {bare
+			? ''
+			: 'px-3 py-2 text-sm leading-relaxed'}"
 		style="min-height: {minRows * 1.6}rem"
 	></div>
 </div>
+
+<style>
+	/* Bare mode: toolbar hidden until the field is focused. */
+	.mdi-bare .mdi-tools {
+		display: none;
+	}
+	.mdi-bare:focus-within .mdi-tools {
+		display: flex;
+		position: absolute;
+		z-index: 20;
+		margin-top: -1.9rem;
+		border-radius: 0.5rem;
+		background: var(--color-canvas, #fff);
+		box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+	}
+	.mdi-bare {
+		position: relative;
+	}
+</style>
