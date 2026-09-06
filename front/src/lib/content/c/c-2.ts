@@ -583,6 +583,97 @@ export const c2Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המילים.\n\n📌 זכור: environment, volunteer, result — מזהים בשנייה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'environment = סביבה · volunteer = מתנדב · result = תוצאה · protect = להגן · community = קהילה',
+								'environment = קהילה · volunteer = חוקר · result = סיבה · protect = להרוס',
+								'environment = תוצאה · volunteer = תושב · result = סביבה · community = מחקר',
+								'כל המילים האלה קשורות רק לבריאות'
+							],
+							correctIndex: 0,
+							explanation: 'חמש מילות הבסיס של סביבה וקהילה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"The results were remarkable." — מה זה results?',
+							options: ['בעיות', 'תוצאות', 'פרויקטים'],
+							correctIndex: 1,
+							explanation: 'results = תוצאות. מופיע כמעט בכל טקסט במודול C.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Residents" = מחקרים.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. residents = תושבים · researchers = חוקרים. לא לבלבל.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם משפטים מתוך טקסטים אמיתיים.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו:\n1. The scientists wanted to _______ the forests from destruction.\n2. Over 200 million trees were planted. The _______ are already visible.\n3. 85% of _______ say they are satisfied.\n4. Young people who _______ feel happier.',
+							modelAnswer: '1. protect  2. results  3. residents  4. volunteer'
+						},
+						{
+							type: 'mcq',
+							prompt: '"The project could reduce carbon in the atmosphere." — מה זה reduce?',
+							options: ['להגדיל', 'להפחית / לצמצם', 'לגלות'],
+							correctIndex: 1,
+							explanation: 'reduce = להפחית. ההפך מ-increase = לגדול.'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו את מילות התוכן שאתם מזהים',
+							text: 'Every year, forests around the world are destroyed by fire, farming, and pollution. In 2019, scientists started a project to plant one billion trees. The results are already visible: in Ethiopia, the number of birds increased, and rivers began to flow again.',
+							correctIndices: [7, 12, 15, 18, 25, 35],
+							wordBank: ['destroyed', 'pollution', 'scientists', 'project', 'results', 'increased']
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							text: 'I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.',
+							prompt:
+								'"What do researchers say about volunteering?" — ענו באנגלית, והשתמשו במילות תוכן.',
+							modelAnswer:
+								'Researchers found that young people who volunteer are 60% more likely to describe themselves as happy.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו שני משפטים על הסביבה, עם שלוש מילות תוכן מהשיעור.',
+							modelAnswer:
+								'The environment is under threat because of pollution. Scientists are working to protect endangered species, and the results are already visible.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'למה חשוב ללמוד מילות תוכן גם לכתיבה, ולא רק לקריאה?',
+							modelAnswer:
+								'כי אוצר מילים שווה 8 מתוך 30 נקודות בכתיבה. environment · volunteer · community הן מילים "טובות" שמעלות את הציון.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -691,6 +782,101 @@ export const c2Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"improve, affect, skill — אני מזהה, וגם משתמש בהם בכתיבה."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המילים.\n\n📌 זכור: improve, affect, skill — מזהים ומשתמשים.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'improve = לשפר · benefit = יתרון · skill = מיומנות · responsible = אחראי · society = חברה',
+								'improve = לדרוש · benefit = חיסרון · skill = הזדמנות · society = בריאות',
+								'improve = להשיג · benefit = לעודד · skill = תמיכה · responsible = חינוך',
+								'כל המילים האלה מתארות רגשות'
+							],
+							correctIndex: 0,
+							explanation: 'חמש מילות הבסיס של שינוי וחינוך.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Volunteering develops important skills." — מה זה develops?',
+							options: ['מספר', 'מפתח / מגדל', 'מוכר'],
+							correctIndex: 1,
+							explanation: 'develop = לפתח · skills = מיומנויות.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Affect" ו-"effect" הן אותה מילה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation:
+								'שקר. affect (פועל) = להשפיע על · effect (שם עצם) = השפעה. "Noise AFFECTS sleep. The EFFECT is serious."'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם משפטים אמיתיים.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו:\n1. Volunteering can _______ your skills.\n2. Stress has a negative _______ on health.\n3. Schools _______ students to volunteer.\n4. This helps _______ as a whole.',
+							modelAnswer: '1. improve  2. effect  3. encourage  4. society'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Students became more responsible." — מאיזה טקסט בקורס זה?',
+							options: [
+								'הטקסט על שחייה',
+								'הטקסט על עצים באפריקה',
+								'הטקסט על התנדבות — GIVING TIME, GAINING HAPPINESS'
+							],
+							correctIndex: 2,
+							explanation: 'פסקה III: "students became more responsible and more focused in class."'
+						},
+						{
+							type: 'mark-all',
+							instruction: 'סמנו את כל מילות התוכן',
+							text: 'Volunteering has many benefits. It develops important skills and makes students more responsible. Society benefits too.',
+							correctIndices: [3, 5, 7, 12, 13, 14],
+							wordBank: ['benefits', 'develops', 'skills', 'responsible', 'society']
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו את משפטי P14 במילות תוכן:\n"I think volunteering is important because it _______ important _______. For example, students become more _______ and _______ from new opportunities."',
+							modelAnswer:
+								'…because it improves important skills. For example, students become more responsible and benefit from new opportunities.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו שני משפטים על חינוך, עם מילות תוכן מהשיעור.',
+							modelAnswer:
+								'Education develops important skills for society. It also encourages students to become more responsible adults.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מה ההבדל בין "affect" ל-"effect"? תנו דוגמה לכל אחד.',
+							modelAnswer:
+								'affect הוא פועל: "Stress affects sleep." effect הוא שם עצם: "The effect of stress is bad sleep."'
 						}
 					]
 				}
