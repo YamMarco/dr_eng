@@ -1207,4 +1207,229 @@ export const c1Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l11',
+		section: 'c-1',
+		titleHe: 'השלמת משפט',
+		titleEn: 'Complete the Sentence',
+		code: 'c.1.12',
+		required: ['l10'],
+		position: { x: 70, y: 1440 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'שני פורמטים של Complete the Sentence:\n\nפורמט א׳ — "People left because ___" ← מחפשים because / since.\nפורמט ב׳ — "They brought goats in order to ___" ← מחפשים to / in order to / so that.\n\nההבדל: because = למה זה קרה (סיבה). in order to = מה הם רצו להשיג (מטרה).'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — ארבעה שלבים',
+					lines: [
+						'1 · קראו את ההתחלה: "Because ___" או "In order to ___"?',
+						'2 · חפשו בטקסט את מילות המפתח המתאימות.',
+						'3 · מצאו את החלק שמשלים את המשפט.',
+						'4 · קראו בראש את המשפט השלם — הוא מסתדר?'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'מילות המפתח',
+					lines: [
+						'ל-"Because ___": because · since · as a result · therefore · so · due to',
+						'ל-"In order to ___": to · in order to · so that · so they could',
+						'⚠️ ה-because / in order to כבר כתוב בשאלה — אל תכתבו אותו שוב.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT — REDONDA ISLAND\n\n"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n← In order to let the plants grow back.'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: '🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.',
+							questions: [
+								{
+									prompt:
+										'Why did scientists start the Green Africa project? COMPLETE: Because ___',
+									options: [
+										'Because the birds needed to return',
+										'Because forests around the world are being destroyed',
+										'Because Kenya had dry rivers',
+										'Because local people asked for trees'
+									],
+									correctIndex: 1
+								},
+								{
+									prompt: 'המשפט מתחיל ב-"Because". מה אסור לכתוב בתשובה?',
+									options: [
+										'את המילה because עוד פעם',
+										'שם של מקום',
+										'מספרים מהטקסט',
+										'משפט מהפסקה'
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳. מה שחשוב הוא המידע הנכון מהטקסט.'
+						},
+						{
+							type: 'preface',
+							text: 'YOUR TURN — בפורמט בחינה. שתי השלמות: אחת של סיבה, אחת של מטרה.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt:
+								'Why do most trees survive in the Green Africa project? COMPLETE: Because ___',
+							modelAnswer: 'Because local people are involved and learn how to care for the trees.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+							prompt:
+								'What do scientists do in order to help the trees? COMPLETE: In order to help the trees, they ___',
+							modelAnswer: 'In order to help the trees, they teach local people how to care for them.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"Because ___ = סיבה. In order to ___ = מטרה."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l12',
+		section: 'c-1',
+		titleHe: 'שתי תשובות',
+		titleEn: 'Two Answers',
+		code: 'c.1.13',
+		required: ['l11'],
+		position: { x: 0, y: 1560 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: 'הטעות הכי יקרה:\n\n"Give TWO answers." — התלמיד מצא אחת ועבר הלאה.\nTWO = שתיים. תמיד.\n\nבבחינה: "How did Redonda change? Give TWO answers from paragraph IV."\n(1) ______  (2) ______  ← 14 נקודות, 7 לכל תשובה.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — ארבעה שלבים',
+					lines: [
+						'1 · קראו את הפסקה.',
+						'2 · מצאו תשובה ראשונה — סמנו אותה.',
+						'3 · אל תעצרו — המשיכו לחפש תשובה שנייה.',
+						'4 · רק אחרי שיש שתיים — כותבים (1) ו-(2).'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'הסיגנלים לתשובה השנייה',
+					lines: [
+						'In addition · Also · And · Furthermore · Moreover',
+						'ראיתם אחת מהן? תשובה שנייה מגיעה מיד אחריה.',
+						'❌ תשובה אחת = מאבדים 7 נקודות · ❌ שלוש = עלולים לאבד נקודות · ✅ שתיים מהטקסט = 14 נקודות'
+					]
+				},
+				{
+					type: 'steps',
+					steps: [
+						'WATCH IT — How did the area change after trees were planted? Give TWO answers. (paragraph III)',
+						'תשובה 1: "the number of birds increased by 60%" — סימנו, וממשיכים.',
+						'מחפשים סיגנל: "In addition" ← הנה הוא.',
+						'תשובה 2: "in Kenya, rivers that were dry for 20 years began to flow again".'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: '🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'III  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.',
+							questions: [
+								{
+									prompt:
+										'Give TWO answers: How do volunteer students change? (paragraph III) — איזה זוג נכון?',
+									options: [
+										'More responsible + better grades',
+										'More responsible + more focused in class',
+										'More focused + they stop volunteering',
+										'Better grades + less stressed'
+									],
+									correctIndex: 1
+								},
+								{
+									prompt: 'איזו מילה בפסקה חיברה בין שתי התשובות?',
+									options: ['"however"', '"because"', '"and"', '"argues"'],
+									correctIndex: 2
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳. מה שחשוב הוא המידע הנכון מהטקסט.'
+						},
+						{
+							type: 'preface',
+							text: 'YOUR TURN — בפורמט בחינה. שתי תשובות, ממוספרות.\n🚦 רמזור: ירוק? רק ירוק = עונים.'
+						},
+						{
+							type: 'self-check',
+							text: 'III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+							prompt:
+								'What changed in Greenville after the project? (paragraph III) Give TWO answers — כתבו (1) ו-(2).',
+							modelAnswer:
+								'(1) Stress levels fell by 40%.  (2) The number of people who exercise outdoors increased from 15% to 60%.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כתבתם תשובה אחת בשאלת TWO. כמה נקודות מפסידים?',
+							options: [
+								'לא מפסידים — מספיק אחת נכונה',
+								'חצי מהניקוד — 7 מתוך 14',
+								'את כל הניקוד',
+								'תלוי באורך התשובה'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"מצאתי AND / IN ADDITION? ← תשובה שנייה מגיעה."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
