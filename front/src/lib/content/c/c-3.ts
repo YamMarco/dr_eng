@@ -243,4 +243,244 @@ export const c3Lessons: LessonNode[] = [
 			]
 		}
 	}
+,
+	{
+		id: 'l19',
+		section: 'c-3',
+		titleHe: 'דקדוק בסיסי',
+		titleEn: 'Basic Grammar',
+		code: 'c.3.3',
+		required: ['l18'],
+		position: { x: 100, y: 2400 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'summary',
+					title: 'כמה נקודות שווה דקדוק?',
+					lines: [
+						'📝 תוכן וארגון — 10',
+						'📚 אוצר מילים — 8',
+						'🔤 דקדוק (Language Use) — 8',
+						'✏️ כתיב ופיסוק (Mechanics) — 4',
+						'גם עם דקדוק חלש — תוכן נכון וברור מביא 22-25 מתוך 30.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'מה זה אומר לכם?\n\n✓ תוכן טוב + 70-90 מילים = עד 18/30 גם בלי דקדוק מושלם.\n✓ דקדוק "minimally correct" = 5 מתוך 8 — עדיין מקבלים.\n⚠️ ההפסד המקסימלי על כתיב הוא 2 נקודות בלבד.\n❌ פחות מ-60 מילים עולה יותר מכל שגיאת דקדוק.\n\nהמסקנה: כן ללמוד דקדוק — אבל לא לפחד ממנו.'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — שני כללי ברזל',
+					lines: [
+						'כלל 1: כל משפט = subject + verb. "Students volunteer." ✓ · "Many teenagers jobs." ✗ חסר פועל.',
+						'כלל 2: יחיד ורבים. I / He / She / It + verb+s ← "She volunteers." · We / They / Students + verb ← "They volunteer."'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'קריאה מול כתיבה:\n\n📖 בקריאה — דקדוק שגוי בתשובה לא מוריד נקודות. מה שחשוב הוא המידע מהטקסט.\n✏️ בכתיבה — דקדוק שווה 8 מתוך 30. subject + verb בכל משפט הוא הבסיס שמגן עליכם.'
+				},
+				{
+					type: 'steps',
+					steps: [
+						'✗ Many students jobs. ← ✓ Many students have jobs.',
+						'✗ Students is responsible. ← ✓ Students are responsible.',
+						'✗ I was think it good. ← ✓ I think that it is good.',
+						'✗ Because sport healthy. ← ✓ …because sport is healthy.'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt: 'תקנו: "Teenagers responsible for the environment."',
+							options: [
+								'Teenagers are responsible for the environment.',
+								'Teenagers responsible are for the environment.',
+								'Teenagers is responsible for the environment.',
+								'המשפט תקין'
+							],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'תקנו: "She volunteer at the community centre."',
+							options: [
+								'She are volunteer at the community centre.',
+								'She volunteers at the community centre.',
+								'She volunteering at the community centre.',
+								'המשפט תקין'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'תקנו: "The students they learn new skills."',
+							options: [
+								'The students they learns new skills.',
+								'They the students learn new skills.',
+								'The students learn new skills.',
+								'המשפט תקין'
+							],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה חסר במשפט "Many teenagers jobs"?',
+							options: ['subject', 'נקודה בסוף', 'אות גדולה', 'verb — פועל'],
+							correctIndex: 3
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — כתבו שלושה משפטים נכונים.\nבדיקה לכל משפט: יש subject? יש verb? יחיד/רבים נכון?'
+						},
+						{
+							type: 'self-check',
+							prompt: 'משפט 1 — על התנדבות. כתבו משפט אחד נכון באנגלית.',
+							placeholder: 'Students...',
+							modelAnswer: 'Students who volunteer develop important skills.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'משפט 2 — על בריאות. כתבו משפט אחד נכון באנגלית.',
+							placeholder: 'Exercise...',
+							modelAnswer: 'Exercise keeps young people healthy and reduces stress.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'משפט 3 — על הסביבה. כתבו משפט אחד נכון באנגלית.',
+							placeholder: 'We...',
+							modelAnswer: 'We must protect the environment because pollution destroys nature.'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"subject + verb בכל משפט. זה מגן על 8 הנקודות."']
+						}
+					]
+				}
+			]
+		}
+	}
+,
+	{
+		id: 'l20',
+		section: 'c-3',
+		titleHe: '70-90 מילים',
+		titleEn: 'Word Count',
+		code: 'c.3.4',
+		required: ['l19'],
+		position: { x: 70, y: 2520 },
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: '55 מילים:\n"Yes, I think volunteering is good. It helps health. For example, students feel better. In conclusion, important."\n← חסרות 15 מילים. מאבדים נקודות.\n\n76 מילים:\n"Yes, I think teenagers should volunteer. First, it develops important skills. For example, teenagers learn to work in a team. This means they are ready for the future. In addition, it helps mental health. Volunteers feel less stressed. In conclusion, volunteering is very beneficial."'
+				},
+				{
+					type: 'summary',
+					title: 'THE TOOL — איך סופרים',
+					lines: [
+						'כל מילה = 1. גם a, the, and נספרות.',
+						'"I(1) think(2) that(3) volunteering(4) is(5) important(6)."',
+						'השיטה: כותבים ← סופרים ← רושמים את המספר בסוף ← בודקים שהוא בין 70 ל-90.'
+					]
+				},
+				{
+					type: 'summary',
+					title: '⚠️ טבלת הקנסות הרשמית',
+					lines: [
+						'70-90 מילים ← ללא קנס. היעד.',
+						'60-69 ← מינוס 1 נקודה',
+						'50-59 ← מינוס 3 נקודות',
+						'40-49 ← מינוס 6 נקודות',
+						'30-39 ← מינוס 10 נקודות',
+						'פחות מ-25 ← אפס על כל המטלה',
+						'מינוס 6 על 45 מילים יקר יותר מכל שגיאת דקדוק.'
+					]
+				},
+				{
+					type: 'preface',
+					text: 'WATCH IT — ספרו:\n\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants to survive. In conclusion, I believe that every person should do something to help the environment."\n\n68 מילים — קצת מתחת ל-70. מוסיפים משפט קצר: "…every single person should try to do something small." ← 75 מילים ✓'
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt: 'כתבתם 45 מילים. כמה נקודות מפסידים לפי הטבלה?',
+							options: ['מינוס 1', 'מינוס 3', 'מינוס 6', 'לא מפסידים כלום'],
+							correctIndex: 2
+						},
+						{
+							type: 'mcq',
+							prompt: 'כתבתם 24 מילים. מה קורה?',
+							options: [
+								'אפס על כל מטלת הכתיבה',
+								'מינוס 10',
+								'מינוס 3',
+								'מקבלים ניקוד חלקי על התוכן'
+							],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: 'ספרתם 68 מילים. מה עושים?',
+							options: [
+								'משאירים — קרוב מספיק',
+								'מוסיפים משפט קצר כדי לעבור את 70',
+								'מוחקים משפט',
+								'כותבים הכל מחדש'
+							],
+							correctIndex: 1
+						},
+						{
+							type: 'mcq',
+							prompt: 'האם "the" ו-"and" נספרות?',
+							options: [
+								'לא — רק מילים "חשובות"',
+								'רק "and" נספרת',
+								'רק בסוף המשפט',
+								'כן — כל מילה נספרת'
+							],
+							correctIndex: 3
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'YOUR TURN — 20 דקות. בחרו נושא אחד:\n\n1. "Do you think all students should volunteer in their community?"\n2. "Do you think it is important to protect the environment?"\n3. "Do you think teenagers should learn a second language?"\n\nהשתמשו ב-P14. המונה למטה סופר בזמן אמת — היעד 70-90.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'כתבו את התשובה המלאה. עצרו כשהמונה ירוק — בין 70 ל-90 מילים.',
+							placeholder: 'Yes, I think that...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'Yes, I think that all students should volunteer in their community. First, volunteering develops important skills. For example, students learn to work in a team and to be responsible for other people. This means that they are better prepared for adult life. In addition, volunteering is good for mental health, because volunteers feel less stressed and sleep better. In conclusion, I believe that every school should encourage students to volunteer, because it helps both the students and society. (78 words)'
+						},
+						{
+							type: 'summary',
+							title: 'ONE SENTENCE',
+							lines: ['"70-90 מילים. סופר כל פעם. הטבלה לא סולחת."']
+						}
+					]
+				}
+			]
+		}
+	}
 ];
