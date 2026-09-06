@@ -1165,6 +1165,116 @@ export const c1Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: שם בשאלה = כתובת. הולכים לפסקה שלו.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"According to Dr. Maria Santos, what did the project show?" — לאיזו פסקה הולכים?',
+							options: [
+								'פסקה I — כי היא הראשונה',
+								'פסקה II — כי Dr. Santos נמצאת שם',
+								'פסקה III — כי היא האחרונה'
+							],
+							correctIndex: 1,
+							explanation: 'Dr. Santos = Eye Catcher = כתובת. הולכים לפסקה שלה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"According to Dr. Santos" — צריך לקרוא מה שכולם אמרו.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. "According to Dr. Santos" = רק מה ש-Santos אמרה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'למה שם פרטי בשאלה הוא Eye Catcher?',
+							options: [
+								'כי שמות מעניינים יותר',
+								'כי שם = כתובת לפסקה — הולכים ישר לשם',
+								'כי שמות קל לזכור'
+							],
+							correctIndex: 1,
+							explanation: 'שם = כתובת = פסקה. כמו כתובת בית — הולכים ישר.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'בטקסט THE CITY GARDEN PROJECT — מי "גר" בכל פסקה?',
+							options: [
+								'charity = I · Dr. Santos = II · Professor Lee = III',
+								'Dr. Santos = I · charity = II · Professor Lee = III',
+								'Professor Lee = I · Dr. Santos = II · charity = III',
+								'כולם מופיעים בכל הפסקאות'
+							],
+							correctIndex: 0,
+							explanation: 'כל שם "גר" בפסקה אחת. זו הכתובת שלו.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches skills that no classroom can replace.',
+							questions: [
+								{
+									prompt:
+										'"According to Professor David Mills, why is volunteering important?" — באיזו פסקה?',
+									options: ['פסקה I', 'פסקה II', 'פסקה III'],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"According to Dr. Okafor, what do teenagers who volunteer feel?" — כתבו: השם, הפסקה שלו, ומה היא אמרה.',
+							modelAnswer:
+								'שם: Dr. Okafor. פסקה: II. מה אמרה: teenagers who volunteer feel less stressed and sleep better.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'באילו שאלות יש שם כ-Eye Catcher?\n\n1. "What do we learn from paragraph I?"\n2. "According to Dr. Anna Klein, why do adults improve?"\n3. "Give TWO reasons from paragraph II."\n4. "What does Professor David Mills argue about schools?"',
+							options: ['1 ו-3', '2 ו-4', '1 ו-4', 'כולן'],
+							correctIndex: 1,
+							explanation: '"Dr. Anna Klein" ו-"Professor David Mills" — שמות = כתובות.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
+							prompt:
+								'"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" — כתבו ANSWER:',
+							modelAnswer:
+								'ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'הסבירו: מה ההבדל בין "What do we learn from paragraph II?" לבין "According to Dr. Klein in paragraph II?"',
+							modelAnswer:
+								'הראשונה: כל מה שכתוב בפסקה II. השנייה: רק מה ש-Dr. Klein אמרה — לא מה שאחרים אמרו.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -1266,6 +1376,120 @@ export const c1Lessons: LessonNode[] = [
 							type: 'summary',
 							title: 'ONE SENTENCE',
 							lines: ['"ראיתי NOT? אני ציד — מחפש מה לא נכון."']
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד — מחפש מה לא נכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which of the following is NOT true?" — מה מחפשים?',
+							options: [
+								'מה נכון בטקסט',
+								'מה שגוי או לא מוזכר',
+								'את האפשרות שנראית הכי טובה'
+							],
+							correctIndex: 1,
+							explanation: 'NOT = ציד. מחפשים מה שגוי — לא מה שנכון.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'שאלת NOT קשה יותר, כי צריך לבדוק כל אפשרות מול הטקסט.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. שלוש מהאפשרויות נכונות בטקסט. רק אחת אינה.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which is NOT mentioned?" — שלוש אפשרויות נכונות. מה התשובה?',
+							options: [
+								'האפשרות שנראית הכי נכונה',
+								'האפשרות שלא נמצאת בטקסט כלל',
+								'האפשרות הארוכה ביותר'
+							],
+							correctIndex: 1,
+							explanation: 'האפשרות שלא מוזכרת בטקסט היא התשובה. זה הציד.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+							questions: [
+								{
+									prompt: 'Which of the following is NOT true about adult learners?',
+									options: [
+										'Adults feel embarrassed about not swimming',
+										'Adults correct their mistakes quickly',
+										'Adults prefer to learn in private',
+										'Adults are not afraid to ask questions'
+									],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'שאלת NOT עם ארבע אפשרויות. מצאתם הוכחה בטקסט ל-i, ל-ii ול-iv. מה התשובה?',
+							options: ['i', 'ii', 'iii', 'iv'],
+							correctIndex: 2,
+							explanation: 'iii — היחידה בלי הוכחה. שלוש האחרות מוזכרות בטקסט.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"Which does NOT appear in paragraph I?" — בודקים רק את פסקה I.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. כשמצוינת פסקה — בודקים רק אותה, לא את שאר הטקסט.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+							questions: [
+								{
+									prompt: 'Which of the following is NOT mentioned in the text?',
+									options: [
+										'Birds returned to areas with trees',
+										'Rivers began to flow again',
+										'The project cost 500 million dollars',
+										'85% of trees survive when local people help'
+									],
+									correctIndex: 2
+								}
+							]
+						},
+						{
+							type: 'self-check',
+							prompt: 'בשתי מילים: מה עושים כשרואים NOT בשאלה?',
+							modelAnswer: 'ציד — מחפשים מה שגוי או מה שלא מוזכר.'
+						},
+						{
+							type: 'self-check',
+							text: 'II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.',
+							prompt:
+								'"Which does Dr. Okafor NOT say about volunteering programmes?" — כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
+							modelAnswer:
+								'1-סורק מה בדיוק Dr. Okafor אמרה. 2-בודק כל אפשרות מול הטקסט. 3-האפשרות שאין לה הוכחה = התשובה.'
 						}
 					]
 				}
