@@ -776,6 +776,107 @@ export const c3Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: 70-90 מילים. סופרים כל פעם. לא מנחשים.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כמה מילים חייבים לכתוב?',
+							options: ['בין 60 ל-100', 'בין 70 ל-90 בדיוק', 'לפחות 50'],
+							correctIndex: 1,
+							explanation: '70-90 בדיוק. לא 69, לא 91.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כתבתם 55 מילים. כמה נקודות מפסידים?',
+							options: ['נקודה אחת', 'שלוש נקודות', 'שש נקודות'],
+							correctIndex: 1,
+							explanation: '50-59 מילים = מינוס 3 נקודות.'
+						},
+						{
+							type: 'mcq',
+							prompt: '"a", "the" ו-"and" נספרות כמילים.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 0,
+							explanation: 'נכון. כל מילה = 1, כולל מילות היחס והחיבור.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nספירה על משפטים אמיתיים.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'כמה מילים במשפט הזה?\n"I think that volunteering is important because it helps students develop skills."',
+							options: ['9 מילים', '10 מילים', '12 מילים', '15 מילים'],
+							correctIndex: 2,
+							explanation: 'סופרים אחת-אחת, כולל that · is · it. סה״כ 12 מילים.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'התשובה שלכם = 68 מילים. מה עושים?',
+							options: [
+								'מגישים — קרוב מספיק',
+								'מוסיפים משפט קצר ומגיעים ל-70+',
+								'כותבים הכל מחדש'
+							],
+							correctIndex: 1,
+							explanation:
+								'"For example, many students learn teamwork." = 6 מילים ← 74. מספיק.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'התשובה שלכם = 95 מילים. מה עושים?',
+							options: [
+								'מגישים — קרוב מספיק',
+								'מוחקים את הסיכום',
+								'מקצרים משפט ארוך אחד'
+							],
+							correctIndex: 2,
+							explanation:
+								'"I believe that volunteering has many very important benefits for teenagers" ← "Volunteering has many benefits." חסכנו 5 מילים, והמבנה נשמר.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'ספרו את המילים:\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants. In conclusion, every person should try to help."\n\nכמה מילים, ומה עושים?',
+							modelAnswer:
+								'47 מילים — הרבה מתחת ל-70. מוסיפים דוגמה ומשפט הסבר לכל סיבה עד שמגיעים ל-70-90.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"Do you think it is important to learn a foreign language?" — כתבו תשובה, ועקבו אחרי המונה.',
+							placeholder: 'Yes, I think that...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'Yes, I think that it is very important to learn a foreign language. First, it opens many opportunities for work and study. For example, students who speak English can study at universities in other countries. In addition, a foreign language helps us understand other cultures and meet new people. This means that we become more open and more confident. In conclusion, I believe that every teenager should learn at least one foreign language.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מה יקרה אם תכתבו 38 מילים? ומה אם 95?',
+							modelAnswer:
+								'38 מילים = מינוס 10 נקודות. 95 מילים = אין קנס רשמי, אבל משפטים חזרתיים עלולים לפגוע בציון התוכן.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -920,6 +1021,114 @@ export const c3Lessons: LessonNode[] = [
 						}
 					]
 				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מפת דרכים → שאלות → חיפוש → תשובה → כתיבה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מה עושים בשלוש הדקות הראשונות של הבחינה?',
+							options: [
+								'פותחים בשאלה הראשונה',
+								'קוראים מפת דרכים — כותרת + פסקה 1',
+								'מתחילים בכתיבה'
+							],
+							correctIndex: 1,
+							explanation: 'מפת דרכים = 3 דקות. אחר כך רמזור לכל השאלות, ואז P1.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'דקה 70, ועדיין לא סיימתם את שאלה 7. מה עושים?',
+							options: [
+								'ממשיכים עם שאלה 7',
+								'עוברים לכתיבה — גם בלי לסיים',
+								'מדלגים על הכתיבה'
+							],
+							correctIndex: 1,
+							explanation: 'דקה 70 = עוצרים. הכתיבה שווה 30 נקודות. שאלה 7 מקבלת M.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'P15: M קטן פירושו "מדלג על השאלה לתמיד".',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation: 'שקר. M = Mark → Move → Return. חוזרים אליה בדקה 100.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nניהול הבחינה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'מהו הסדר הנכון של שלבי הבחינה?',
+							options: [
+								'מפת דרכים → רמזור לכל השאלות → שאלות 1-8 עם P1 → כתיבה → Checklist',
+								'שאלות 1-8 → מפת דרכים → כתיבה → רמזור → Checklist',
+								'כתיבה → מפת דרכים → שאלות → רמזור → Checklist',
+								'רמזור → כתיבה → שאלות → מפת דרכים → Checklist'
+							],
+							correctIndex: 0,
+							explanation: '3 דק׳ מפה · 5 דק׳ רמזור · עד דקה 70 שאלות · 30 דק׳ כתיבה · 5 דק׳ בדיקה.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'ב-Checklist: "ספרתי מילים?" — ולא ספרתם. מה עושים?',
+							options: [
+								'מגישים — בטח בסדר',
+								'סופרים עכשיו, לפני ההגשה',
+								'לא חשוב בשלב הזה'
+							],
+							correctIndex: 1,
+							explanation: 'שתי דקות של ספירה עדיפות על מינוס 3 נקודות.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו את ה-Checklist:\n□ עניתי על כל 1-8, כולל ___?\n□ ספרתי מילים? בין ___?\n□ כתבתי ___ בכתיבה?\n□ לא העתקתי ___?',
+							modelAnswer:
+								'כולל שאלות עם M · בין 70 ל-90 · YES/NO (או In my opinion) · לא העתקתי משפטים שלמים מהטקסט.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'נותרו 20 דקות. יש M על שאלה 5, ועדיין לא כתבתם את מטלת הכתיבה. מה הסדר?',
+							options: [
+								'שאלה 5 ואז כתיבה',
+								'כתיבה ואז שאלה 5',
+								'שאלה 5, ואם יישאר זמן — כתיבה'
+							],
+							correctIndex: 1,
+							explanation: 'כתיבה = 30 נקודות. שאלה 5 = 8-10 נקודות. הכתיבה קודמת, תמיד.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'כתבו את חמש שאלות ה-Checklist שבודקים לפני ההגשה:',
+							modelAnswer:
+								'1. עניתי על כל 1-8, כולל שאלות M? 2. ספרתי מילים — 70-90? 3. כתבתי YES/NO או In my opinion? 4. יש שתי סיבות עם דוגמאות? 5. לא העתקתי משפטים שלמים מהטקסט?'
+						},
+						{
+							type: 'self-check',
+							prompt: 'הסבירו: למה P15 חשוב במיוחד לתלמיד עם אנגלית חלשה?',
+							modelAnswer:
+								'כי הוא נוטה להיתקע על שאלה קשה ולבזבז דקות יקרות. P15 מגן עליו: M ← ממשיך ← חוזר. כך הוא מספיק את כל השאלות וגם את הכתיבה.'
+						}
+					]
+				}
 			]
 		}
 	}
@@ -1059,6 +1268,111 @@ export const c3Lessons: LessonNode[] = [
 								'ארבעה שלבים. 70-90 מילים. תמיד.',
 								'🎓 הקורס הושלם. אתם מוכנים לבגרות.'
 							]
+						}
+					]
+				}
+,
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: In my opinion… שינוי 1 + reason → שינוי 2 + reason.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"What changes can be made to improve your neighborhood?" — מה המבנה?',
+							options: [
+								'YES/NO + סיבות',
+								'שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
+								'רק רשימת שינויים'
+							],
+							correctIndex: 1,
+							explanation: 'שאלת "What changes?" = שני שינויים, סיבה לכל אחד. לא YES/NO.'
+						},
+						{
+							type: 'mcq',
+							prompt: 'איזו שורה נכונה?',
+							options: [
+								'In my opinion… = פתיחה · First, I think we should have… = שינוי 1 · Also, I believe… = שינוי 2 · In conclusion… = סיכום',
+								'In my opinion… = סיכום · First… = דוגמה · Also… = פתיחה',
+								'In conclusion… = פתיחה · Also… = סיבה · First… = סיכום',
+								'כל הביטויים מתאימים לכל שלב'
+							],
+							correctIndex: 0,
+							explanation: 'ארבעת שלבי המבנה של "What changes?".'
+						},
+						{
+							type: 'mcq',
+							prompt: '"What changes?" ו-"Do you think?" הן אותו מבנה.',
+							options: ['✅ נכון', '❌ לא נכון'],
+							correctIndex: 1,
+							explanation:
+								'שקר. "Do you think?" = YES/NO + סיבות. "What changes?" = שני שינויים + סיבה לכל אחד.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 2 🌟\nבניית התשובה שלב אחרי שלב.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'השלימו:\n"In my opinion, there are two important _______. First, I think we should have _______. This would help because _______. Also, I believe _______. In conclusion, _______."',
+							modelAnswer:
+								'changes · shorter lessons and more breaks · students concentrate better after a break · schools should have more computers · I am sure that these changes will help all students learn better.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'"In my opinion, schools need computers. Also parks are important." — מה חסר?',
+							options: [
+								'רק משפט סיום',
+								'סיבה לכל שינוי — "This would help because…"',
+								'YES או NO'
+							],
+							correctIndex: 1,
+							explanation: 'כל שינוי חייב סיבה: "First… This would help because… Also… For example…"'
+						},
+						{
+							type: 'mcq',
+							prompt: 'כמה שינויים כותבים?',
+							options: ['אחד ארוך ומפורט', 'שלושה קצרים', 'שניים, עם סיבה לכל אחד'],
+							correctIndex: 2,
+							explanation: 'שניים בדיוק. לא אחד, לא שלושה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'preface',
+							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
+						},
+						{
+							type: 'self-check',
+							prompt:
+								'"In your opinion, what changes can be made to your school?" — כתבו תשובה מלאה, 70-90 מילים.',
+							placeholder: 'In my opinion, there are two important changes...',
+							minWords: 70,
+							maxWords: 90,
+							modelAnswer:
+								'In my opinion, there are two important changes that can make school a better place. First, I think we should have shorter lessons and more breaks. Students often feel tired, so short breaks help them concentrate better. Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways. In conclusion, I am sure that these changes will help all students enjoy school and learn better.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'ספרו את המילים בתשובה שלכם. האם יש 70-90? מה תוסיפו או תקצרו?',
+							modelAnswer:
+								'פחות מ-70 ← מוסיפים דוגמה קצרה לאחד השינויים. יותר מ-90 ← מקצרים את המשפט הארוך ביותר.'
+						},
+						{
+							type: 'self-check',
+							prompt: 'מה ההבדל בין "This would help because…" לבין "because…"?',
+							modelAnswer:
+								'אותו תפקיד — מסבירים למה השינוי יעזור. "This would help because" רשמי יותר ומתאים לפתיחת משפט; "because" ישיר יותר בתוך משפט. שניהם קבילים.'
 						}
 					]
 				}
