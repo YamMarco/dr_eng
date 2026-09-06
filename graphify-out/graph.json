@@ -40,7 +40,7 @@
       "file_type": "code",
       "norm_label": "markallcategory",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L131"
+      "source_location": "L141"
     },
     {
       "id": "front_src_lib_lesson_screens_types_markallscreen",
@@ -53,7 +53,7 @@
       "file_type": "code",
       "norm_label": "markallscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L147"
+      "source_location": "L157"
     },
     {
       "id": "front_src_lib_lesson_screens_types_markwordscreen",
@@ -66,7 +66,7 @@
       "file_type": "code",
       "norm_label": "markwordscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L15"
+      "source_location": "L25"
     },
     {
       "id": "front_src_lib_lesson_screens_types_mcqscreen",
@@ -79,7 +79,7 @@
       "file_type": "code",
       "norm_label": "mcqscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L12"
+      "source_location": "L16"
     },
     {
       "id": "front_src_lib_lesson_screens_types_passagemcqscreen",
@@ -92,7 +92,7 @@
       "file_type": "code",
       "norm_label": "passagemcqscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L75"
+      "source_location": "L85"
     },
     {
       "id": "front_src_lib_lesson_screens_types_passagequizquestion",
@@ -105,7 +105,7 @@
       "file_type": "code",
       "norm_label": "passagequizquestion",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L58"
+      "source_location": "L68"
     },
     {
       "id": "front_src_lib_lesson_screens_types_passagequizscreen",
@@ -118,7 +118,7 @@
       "file_type": "code",
       "norm_label": "passagequizscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L68"
+      "source_location": "L78"
     },
     {
       "id": "front_src_lib_lesson_screens_types_prefacescreen",
@@ -144,7 +144,7 @@
       "file_type": "code",
       "norm_label": "questionpreviewscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L35"
+      "source_location": "L45"
     },
     {
       "id": "front_src_lib_lesson_screens_types_selfcheckscreen",
@@ -157,7 +157,7 @@
       "file_type": "code",
       "norm_label": "selfcheckscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L171"
+      "source_location": "L181"
     },
     {
       "id": "front_src_lib_lesson_screens_types_spellwordscreen",
@@ -170,7 +170,7 @@
       "file_type": "code",
       "norm_label": "spellwordscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L124"
+      "source_location": "L134"
     },
     {
       "id": "front_src_lib_lesson_screens_types_stepsscreen",
@@ -209,7 +209,7 @@
       "file_type": "code",
       "norm_label": "timecomparisonscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L96"
+      "source_location": "L106"
     },
     {
       "id": "front_src_lib_lesson_screens_types_timedpassagescreen",
@@ -222,7 +222,7 @@
       "file_type": "code",
       "norm_label": "timedpassagescreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L42"
+      "source_location": "L52"
     },
     {
       "id": "front_src_lib_lesson_screens_types_timedreadingscreen",
@@ -235,7 +235,7 @@
       "file_type": "code",
       "norm_label": "timedreadingscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L27"
+      "source_location": "L37"
     },
     {
       "id": "front_src_lib_lesson_screens_types_timeresultscreen",
@@ -248,7 +248,7 @@
       "file_type": "code",
       "norm_label": "timeresultscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L51"
+      "source_location": "L61"
     },
     {
       "id": "front_src_lib_lesson_screens_types_wordcardscreen",
@@ -261,7 +261,7 @@
       "file_type": "code",
       "norm_label": "wordcardscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L111"
+      "source_location": "L121"
     },
     {
       "id": "front_src_lib_lesson_screens_types_writingtaskscreen",
@@ -274,7 +274,7 @@
       "file_type": "code",
       "norm_label": "writingtaskscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L87"
+      "source_location": "L97"
     },
     {
       "id": "front_src_lib_content_types_lessoncontent",
@@ -365,7 +365,7 @@
       "file_type": "code",
       "norm_label": "dictionary",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L200"
+      "source_location": "L201"
     },
     {
       "id": "front_src_lib_i18n_locales_he_dictionaryoverride",
@@ -378,7 +378,7 @@
       "file_type": "code",
       "norm_label": "dictionaryoverride",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L203"
+      "source_location": "L204"
     },
     {
       "id": "front_src_lib_curriculum_curriculummodule",
@@ -430,7 +430,7 @@
       "file_type": "code",
       "norm_label": "lessonscreen",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L182"
+      "source_location": "L192"
     },
     {
       "id": "front_src_lib_content_edit_screenpath_screenpath",
@@ -1196,7 +1196,7 @@
       "file_type": "code",
       "norm_label": "countquestions()",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L245"
+      "source_location": "L255"
     },
     {
       "id": "front_src_lib_lesson_screens_types_isscreenempty",
@@ -1208,7 +1208,7 @@
       "file_type": "code",
       "norm_label": "isscreenempty()",
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L206"
+      "source_location": "L216"
     },
     {
       "id": "front_src_lib_content_edit_fields_tokenpicker_i",
@@ -17629,7 +17629,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L200",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -17640,7 +17640,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L203",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -18239,24 +18239,24 @@
     },
     {
       "source": "front_src_lib_lesson_screens_types",
+      "target": "front_src_lib_lesson_screens_types_timecomparisonscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_lesson_screens_types",
       "target": "front_src_lib_lesson_screens_types_wordcardscreen",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L111",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_mcqscreen",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L12",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -18267,7 +18267,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L124",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -18278,7 +18278,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L131",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -18289,18 +18289,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L147",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
       "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_markwordscreen",
+      "target": "front_src_lib_lesson_screens_types_mcqscreen",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -18311,7 +18311,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L171",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -18322,7 +18322,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L182",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -18333,7 +18333,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L206",
+      "source_location": "L216",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_lesson_screens_types",
+      "target": "front_src_lib_lesson_screens_types_markwordscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -18344,7 +18355,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L245",
+      "source_location": "L255",
       "weight": 1.0
     },
     {
@@ -18355,7 +18366,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L27",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -18366,7 +18377,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L35",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -18377,29 +18388,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_timeresultscreen",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_passagequizquestion",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L58",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -18415,7 +18404,18 @@
     },
     {
       "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_passagequizscreen",
+      "target": "front_src_lib_lesson_screens_types_timeresultscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_lesson_screens_types",
+      "target": "front_src_lib_lesson_screens_types_passagequizquestion",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18426,13 +18426,13 @@
     },
     {
       "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_passagemcqscreen",
+      "target": "front_src_lib_lesson_screens_types_passagequizscreen",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L75",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -18448,24 +18448,24 @@
     },
     {
       "source": "front_src_lib_lesson_screens_types",
+      "target": "front_src_lib_lesson_screens_types_passagemcqscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_lesson_screens_types",
       "target": "front_src_lib_lesson_screens_types_writingtaskscreen",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L87",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_lesson_screens_types",
-      "target": "front_src_lib_lesson_screens_types_timecomparisonscreen",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -21477,5 +21477,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1f7e025c13ffda5c1cd5774adbf6faad7e2b957a"
+  "built_at_commit": "0883b4db75dc575f626e9715f65e484d2cf8d346"
 }

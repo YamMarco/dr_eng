@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-09-06)
 
 ## Corpus Check
-- 126 files · ~79,582 words
+- 126 files · ~83,633 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1f7e025c`
+- Built from commit: `0883b4db`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -367,7 +367,7 @@ Cohesion: 0.50
 Nodes (3): 2 (c.4.1), implemented, material
 
 ## Knowledge Gaps
-- **494 isolated node(s):** `LessonScore`, `LessonSession`, `MarkAllCategory`, `MarkAllScreen`, `MarkWordScreen` (+489 more)
+- **494 isolated node(s):** `PrefaceScreen`, `StepsScreen`, `SummaryScreen`, `McqScreen`, `MarkWordScreen` (+489 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -380,7 +380,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `Section 2 · P1 — לא קוראים את הטקסט`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `LessonScore`, `LessonSession`, `MarkAllCategory` to the rest of the system?**
+- **What connects `PrefaceScreen`, `StepsScreen`, `SummaryScreen` to the rest of the system?**
   _494 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
