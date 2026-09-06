@@ -635,12 +635,6 @@
     "ast_hash": "b288c06427a6e904f3db5f1ba38092ed",
     "semantic_hash": ""
   },
-  "front/src/lib/content-edit/ScreenForm.svelte": {
-    "mtime": 1788708194.9483576,
-    "seen": 1788708379.491356,
-    "ast_hash": "bb820622775b246c3fd3bb6a8af88505",
-    "semantic_hash": ""
-  },
   "front/src/lib/content-edit/editStore.svelte.ts": {
     "mtime": 1788705745.0542755,
     "seen": 1788708379.4913623,
@@ -654,9 +648,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1788708255.7496054,
-    "seen": 1788708379.491531,
-    "ast_hash": "9eddec3dc9224ff7a175f891f65612ab",
+    "mtime": 1788711695.4735138,
+    "seen": 1788711732.2359488,
+    "ast_hash": "0ae8fd4674fc75655115be93501cd5fa",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -672,9 +666,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/MarkdownInput.svelte": {
-    "mtime": 1788708180.1490068,
-    "seen": 1788708379.491353,
-    "ast_hash": "9356505de2b02b9d3564364702d01ae4",
+    "mtime": 1788713189.6993282,
+    "seen": 1788713299.2978683,
+    "ast_hash": "df62682c028b26cc606bd6ea98d4f093",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenPath.ts": {
@@ -780,39 +774,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditWorkspace.svelte": {
-    "mtime": 1788705845.0949588,
-    "seen": 1788708379.4913483,
-    "ast_hash": "89b59f61c350c80c8586968d65870202",
+    "mtime": 1788716120.3663852,
+    "seen": 1788716166.3956606,
+    "ast_hash": "334da03839e83d7deed6d9991eef8f80",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
-    "mtime": 1788705845.5578094,
-    "seen": 1788708379.49135,
-    "ast_hash": "922cddd15cfd99269bd4ba0d290cee61",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/LessonPane.svelte": {
-    "mtime": 1788705845.6527832,
-    "seen": 1788708379.4913514,
-    "ast_hash": "f0770e562cc5d37e48abe6a8bf583c12",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/OutlineTree.svelte": {
-    "mtime": 1788705845.8650155,
-    "seen": 1788708379.4913545,
-    "ast_hash": "f184f26264f394a05349ebc9c5a4f5ec",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/ScreenPreview.svelte": {
-    "mtime": 1788705846.231764,
-    "seen": 1788708379.4913568,
-    "ast_hash": "2de92a48215c242f2a82363151555e47",
+    "mtime": 1788709402.3533802,
+    "seen": 1788711732.2357519,
+    "ast_hash": "a3a9ead445ff67186cea89f9c79c0007",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1788705844.8742647,
-    "seen": 1788708379.4913611,
-    "ast_hash": "14cce0a4b4662a91a359e9487adacec5",
+    "mtime": 1788709144.6313884,
+    "seen": 1788711732.2357635,
+    "ast_hash": "7c0eee672b3e30355aa3759989249a8b",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
@@ -831,6 +807,30 @@
     "mtime": 1788705592.527419,
     "seen": 1788708379.491459,
     "ast_hash": "ace0bc09cc3309312ad219816b2265dc",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/EditableScreen.svelte": {
+    "mtime": 1788713195.24503,
+    "seen": 1788713299.2978613,
+    "ast_hash": "3583aac2a60a50289dc53d10602f1f8e",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/LessonEditorView.svelte": {
+    "mtime": 1788711608.099167,
+    "seen": 1788711732.2357535,
+    "ast_hash": "4300df09c22149f19fedf6e85ed6b3fe",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/ScreenCarousel.svelte": {
+    "mtime": 1788716127.4047253,
+    "seen": 1788716166.395677,
+    "ast_hash": "03333e2211ffda84c6227e978683eae7",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/ScreenToaster.svelte": {
+    "mtime": 1788711538.5218577,
+    "seen": 1788711732.2357583,
+    "ast_hash": "3543153cb117532f01cca4e0f56be36b",
     "semantic_hash": ""
   }
 }
