@@ -109,16 +109,6 @@
 />
 
 <div class="flex h-full flex-col">
-	<div class="flex shrink-0 items-center gap-2 px-3 py-1 text-xs text-muted">
-		<button type="button" class="rounded-lg bg-line/50 px-2 py-1 font-bold" onclick={() => step(-1)}
-			>‹</button
-		>
-		<button type="button" class="rounded-lg bg-line/50 px-2 py-1 font-bold" onclick={() => step(1)}
-			>›</button
-		>
-		<span>גלילה אופקית · חיצים למעבר · לחיצה על מסך פותחת עריכה</span>
-	</div>
-
 	<div
 		bind:this={track}
 		class="flex min-h-0 flex-1 snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden px-4 pt-4 pb-2"

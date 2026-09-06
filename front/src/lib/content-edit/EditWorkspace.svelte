@@ -3,6 +3,7 @@
 	// between the graph editor and the lesson editor (never both at once).
 	// Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { sectionMeta } from '$lib/content';
 	import { editModel } from './editModel.svelte';
 	import { saveSection } from './api';
@@ -69,6 +70,11 @@
 		mode = 'lesson';
 	}
 
+	function exit() {
+		if (history.length > 1) history.back();
+		else goto('/');
+	}
+
 	// ---- play-from-here overlay ----
 	let play = $state<{ nodeId: string; round: number; index: number } | null>(null);
 	let playNode = $derived(play ? editModel.node(play.nodeId) : undefined);
@@ -86,6 +92,16 @@
 
 <div class="flex h-dvh flex-col bg-canvas">
 	<header class="flex flex-wrap items-center gap-2 border-b border-line px-3 py-2">
+		{#if !editModel.dirty}
+			<button
+				type="button"
+				class="rounded-lg px-2 py-1 text-sm text-muted hover:bg-line/60"
+				title="יציאה ממצב עריכה"
+				onclick={exit}
+			>
+				✕ יציאה
+			</button>
+		{/if}
 		<div class="flex overflow-hidden rounded-lg border border-line text-xs font-bold">
 			<button
 				type="button"
