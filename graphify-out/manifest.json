@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1788692532.7530446,
-    "seen": 1788692578.2685397,
-    "ast_hash": "c45134e9ebbd22c0d49c8b663bf07d36",
+    "mtime": 1788785174.1649587,
+    "seen": 1788785259.352355,
+    "ast_hash": "75fa77a1f3c0d2c8fec7d6e8b8d5ad04",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1788711695.4735138,
-    "seen": 1788711732.2359488,
-    "ast_hash": "0ae8fd4674fc75655115be93501cd5fa",
+    "mtime": 1788785294.374529,
+    "seen": 1788785306.9720578,
+    "ast_hash": "c7c3f5a499a44ac0f178f18e6d0f8289",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -774,21 +774,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditWorkspace.svelte": {
-    "mtime": 1788716120.3663852,
-    "seen": 1788716166.3956606,
-    "ast_hash": "334da03839e83d7deed6d9991eef8f80",
+    "mtime": 1788784924.051908,
+    "seen": 1788785259.3522718,
+    "ast_hash": "c8524d961480d0d530aa97111ef7c466",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
-    "mtime": 1788709402.3533802,
-    "seen": 1788711732.2357519,
-    "ast_hash": "a3a9ead445ff67186cea89f9c79c0007",
+    "mtime": 1788784924.3853345,
+    "seen": 1788785259.352281,
+    "ast_hash": "e820249b868732065d5f38b75c6545d6",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1788709144.6313884,
-    "seen": 1788711732.2357635,
-    "ast_hash": "7c0eee672b3e30355aa3759989249a8b",
+    "mtime": 1788784545.6481626,
+    "seen": 1788785259.3523064,
+    "ast_hash": "0665cdeb34a03f5013b2f2e00617a3b4",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
@@ -816,21 +816,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditorView.svelte": {
-    "mtime": 1788711608.099167,
-    "seen": 1788711732.2357535,
-    "ast_hash": "4300df09c22149f19fedf6e85ed6b3fe",
+    "mtime": 1788784745.6504118,
+    "seen": 1788785259.352285,
+    "ast_hash": "24c5a27fda18f664ef00ff51df7e828c",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenCarousel.svelte": {
-    "mtime": 1788716127.4047253,
-    "seen": 1788716166.395677,
-    "ast_hash": "03333e2211ffda84c6227e978683eae7",
+    "mtime": 1788784924.9001164,
+    "seen": 1788785259.3522925,
+    "ast_hash": "763565a523b2b2ae838229c3f1769360",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenToaster.svelte": {
-    "mtime": 1788711538.5218577,
-    "seen": 1788711732.2357583,
-    "ast_hash": "3543153cb117532f01cca4e0f56be36b",
+    "mtime": 1788784862.6747992,
+    "seen": 1788785259.3522959,
+    "ast_hash": "3c093e56aac45993c8a10de79866ffb6",
     "semantic_hash": ""
   }
 }

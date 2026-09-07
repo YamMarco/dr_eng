@@ -1,40 +1,39 @@
-# Graph Report - front  (2026-09-07)
+# Graph Report - front  (2026-09-06)
 
 ## Corpus Check
-- 112 files · ~63,562 words
+- 112 files · ~62,737 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 537 nodes · 802 edges · 38 communities (32 shown, 6 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.67)
+- 520 nodes · 776 edges · 32 communities (26 shown, 6 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `700fc14b`
+- Built from commit: `c32d18c2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - devDependencies
 - svelte-core-bestpractices/SKILL.md
-- exam.svelte.ts
+- index.svelte.ts
 - LessonRunner.svelte
 - GraphEditor.svelte
-- EditWorkspace.svelte
+- api.ts
 - EditModel
 - lesson-screens/types.ts
 - scripts
-- validate.ts
-- curriculum.ts
+- score.svelte.ts
+- WritingTask.svelte
 - compilerOptions
 - book/+page.svelte
 - Workflow
-- content/index.ts
+- validate.ts
 - snippet.md
 - content-edit/+server.ts
-- index.svelte.ts
-- lessonProgress.svelte.ts
-- AppBar.svelte
+- registry.ts
+- session.svelte.ts
 - Available Svelte MCP Tools:
 - CLI tools
 - sv
@@ -42,14 +41,10 @@
 - eslint.config.js
 - prettier.config.js
 - app.d.ts
-- lessons/+page.svelte
-- debug.svelte.ts
-- ExamSession
-- I18n
 
 ## God Nodes (most connected - your core abstractions)
-1. `EditModel` - 31 edges
-2. `LessonNode` - 15 edges
+1. `EditModel` - 27 edges
+2. `LessonNode` - 14 edges
 3. `LessonScreen` - 14 edges
 4. `compilerOptions` - 11 edges
 5. `scripts` - 9 edges
@@ -60,21 +55,21 @@
 10. `clone()` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `issuesByNode()` --indirect_call--> `i()`  [INFERRED]
-  src/lib/content-edit/validate.ts → src/lib/content-edit/fields/TokenPicker.svelte
 - `isBigNode()` --calls--> `countQuestions()`  [EXTRACTED]
   scripts/snapshot-content.ts → src/lib/lesson-screens/types.ts
 - `isBigNode()` --calls--> `isScreenEmpty()`  [EXTRACTED]
   scripts/snapshot-content.ts → src/lib/lesson-screens/types.ts
+- `issuesByNode()` --indirect_call--> `i()`  [INFERRED]
+  src/lib/content-edit/validate.ts → src/lib/content-edit/fields/TokenPicker.svelte
 - `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
   src/lib/content/types.ts → src/lib/lesson-screens/types.ts
-- `save()` --calls--> `saveSection()`  [EXTRACTED]
-  src/lib/content-edit/EditWorkspace.svelte → src/lib/content-edit/api.ts
+- `LessonContent` --references--> `LessonScreen`  [EXTRACTED]
+  src/lib/content/types.ts → src/lib/lesson-screens/types.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (38 total, 6 thin omitted)
+## Communities (32 total, 6 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -84,41 +79,37 @@ Nodes (45): @capacitor/cli, eslint, eslint-config-prettier, @eslint/js, eslint-p
 Cohesion: 0.04
 Nodes (36): Attachment factories, Conditional attachments, Controlling when attachments re-run, Converting actions to attachments, Creating attachments programmatically, Inline attachments, Passing attachments to components, Breaking changes (+28 more)
 
-### Community 2 - "exam.svelte.ts"
-Cohesion: 0.18
-Nodes (6): EXAM_MINUTES, exam, EXAM_SECONDS, WARNING_SECONDS, ./$types, ./$types
+### Community 2 - "index.svelte.ts"
+Cohesion: 0.05
+Nodes (28): CurriculumModule, CurriculumSection, EXAM_MINUTES, getModule(), getUnitGroup(), modules, textSection, UnitGroup (+20 more)
 
 ### Community 3 - "LessonRunner.svelte"
-Cohesion: 0.11
-Nodes (15): currentPath, currentScreen, editHref, footerDisabled, footerLabel, isLastScreen, justFinished, passed (+7 more)
+Cohesion: 0.05
+Nodes (23): DebugStore, currentPath, currentScreen, editHref, footerDisabled, footerLabel, isLastScreen, justFinished (+15 more)
 
 ### Community 4 - "GraphEditor.svelte"
-Cohesion: 0.12
-Nodes (7): bands, canvasHeight, nodePointerMove(), nodePointerUp(), pick(), selectedId, wrapPointerMove()
+Cohesion: 0.13
+Nodes (6): canvasHeight, nodePointerMove(), nodePointerUp(), pick(), selectedId, wrapPointerMove()
 
-### Community 5 - "EditWorkspace.svelte"
-Cohesion: 0.09
-Nodes (15): post(), saveLessonContent(), saveSection(), storedKey(), EditStore, errorCount, hint, issues (+7 more)
+### Community 5 - "api.ts"
+Cohesion: 0.15
+Nodes (6): post(), saveLessonContent(), saveSection(), storedKey(), EditStore, ./$types
 
 ### Community 6 - "EditModel"
-Cohesion: 0.12
-Nodes (7): clone(), EditModel, screenList(), SECTION_IDS, ScreenPath, getLessonsBySection(), LessonNode
+Cohesion: 0.09
+Nodes (18): c1Lessons, c2Lessons, c3Lessons, clone(), EditModel, screenList(), ScreenPath, blankScreen() (+10 more)
 
 ### Community 7 - "lesson-screens/types.ts"
-Cohesion: 0.05
-Nodes (34): ESCAPE, screenComponents, KEY, LessonScore, recordAnswer(), KEY, LessonSession, MarkAllCategory (+26 more)
+Cohesion: 0.10
+Nodes (19): MarkAllCategory, MarkAllScreen, MarkWordScreen, McqScreen, PassageMcqScreen, PassageQuizQuestion, PassageQuizScreen, PrefaceScreen (+11 more)
 
 ### Community 8 - "scripts"
 Cohesion: 0.11
 Nodes (18): @capacitor/core, @lucide/svelte, dependencies, @capacitor/core, @lucide/svelte, name, private, scripts (+10 more)
 
-### Community 9 - "validate.ts"
-Cohesion: 0.13
-Nodes (17): imports, isBigNode(), OUT, sectionFileNames, sectionMeta, splitContent(), spread, TEACHING (+9 more)
-
-### Community 11 - "curriculum.ts"
-Cohesion: 0.18
-Nodes (11): CurriculumModule, CurriculumSection, getUnitGroup(), modules, textSection, UnitGroup, unitGroups, wordsSection (+3 more)
+### Community 11 - "WritingTask.svelte"
+Cohesion: 0.20
+Nodes (9): recordAnswer(), allFilled, allOk, checked, combinedText, primaryAction(), punctuationOk, wordBankOk (+1 more)
 
 ### Community 12 - "compilerOptions"
 Cohesion: 0.14
@@ -132,9 +123,9 @@ Nodes (3): canGoPrev, canSubmit, formattedDate
 Cohesion: 0.17
 Nodes (11): 1. Gather context (if needed), 1. list-sections, 2. get-documentation, 2. Read the target file, 3. Make changes, 3. svelte-autofixer, 4. Validate changes, 5. Fix any issues (+3 more)
 
-### Community 15 - "content/index.ts"
-Cohesion: 0.09
-Nodes (18): c1Lessons, c2Lessons, c3Lessons, i(), blankScreen(), SCREEN_TYPE_GROUPS, SCREEN_TYPES, all (+10 more)
+### Community 15 - "validate.ts"
+Cohesion: 0.07
+Nodes (23): imports, isBigNode(), OUT, sectionFileNames, sectionMeta, splitContent(), spread, TEACHING (+15 more)
 
 ### Community 16 - "snippet.md"
 Cohesion: 0.18
@@ -143,18 +134,6 @@ Nodes (10): Explicit props, Exporting snippets, Implicit `children` snippet, Imp
 ### Community 17 - "content-edit/+server.ts"
 Cohesion: 0.32
 Nodes (11): getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), getLesson(), Body, checkAuth(), emit() (+3 more)
-
-### Community 18 - "index.svelte.ts"
-Cohesion: 0.22
-Nodes (6): dictionaries, Language, ar, Dictionary, DictionaryOverride, he
-
-### Community 19 - "lessonProgress.svelte.ts"
-Cohesion: 0.29
-Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
-
-### Community 20 - "AppBar.svelte"
-Cohesion: 0.29
-Nodes (3): getModule(), load(), ./$types
 
 ### Community 21 - "Available Svelte MCP Tools:"
 Cohesion: 0.29
@@ -172,29 +151,25 @@ Nodes (4): Building, Creating a project, Developing, sv
 Cohesion: 0.25
 Nodes (7): content-edit — the `/edit` authoring workspace, Detach, Graph — `GraphEditor.svelte`, Layout, Lesson editor — `LessonEditorView.svelte`, Local dev vs. production, Model & save
 
-### Community 33 - "lessons/+page.svelte"
-Cohesion: 0.29
-Nodes (3): PALETTE, SectionTheme, ./$types
-
 ## Knowledge Gaps
-- **212 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+207 more)
+- **204 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+199 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `EditModel` connect `EditModel` to `content/index.ts`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **Why does `LessonScreen` connect `content/index.ts` to `validate.ts`, `EditModel`, `lesson-screens/types.ts`?**
+- **Why does `LessonScreen` connect `EditModel` to `registry.ts`, `lesson-screens/types.ts`, `validate.ts`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `ExamSession` connect `ExamSession` to `exam.svelte.ts`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `gitignorePath`, `name`, `private` to the rest of the system?**
-  _212 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _204 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
 - **Should `svelte-core-bestpractices/SKILL.md` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
+- **Should `index.svelte.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.05136612021857923 - nodes in this community are weakly interconnected._
 - **Should `LessonRunner.svelte` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04964539007092199 - nodes in this community are weakly interconnected._
+- **Should `GraphEditor.svelte` be split into smaller, more focused modules?**
+  _Cohesion score 0.1323529411764706 - nodes in this community are weakly interconnected._
