@@ -15,17 +15,20 @@ Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
 
 ## Layout
 
-`EditWorkspace.svelte` is the shell (section picker · issue list · one save)
-with a **גרף / שיעור** switch — the graph and the lesson editor are separate
-views, never shown together.
+`EditWorkspace.svelte` is the shell (issue list · one save) with a
+**🗺️ מפת השיעורים / ✏️ עריכת שיעור** switch — the graph and the lesson editor
+are separate views, never shown together. A one-line hint strip explains the
+current view.
 
 ### Graph — `GraphEditor.svelte`
 
-The lessons-path canvas, editable. Drag a node = reposition (snaps to 10px,
-hold Shift to free-drag). Drag the small circle under a node onto another node
-= add/flip a prerequisite; click an edge = cut it. Toolbar: add / duplicate /
-delete / merge (Ctrl-click to multi-select) / split (by round) / rename id /
-**✎ ערוך שיעור**. Double-click a node = open it in the lesson editor.
+The whole module's map (**every section at once**, colour-coded, with a
+section-title band above each). Drag a node = reposition (snaps to 10px, hold
+Shift to free-drag). Drag the **+** circle under a node onto another node =
+add/flip a prerequisite; click an edge = cut it. Toolbar (labeled, colour-
+coded): ➕ שיעור חדש · ⧉ שכפול · 🗑 מחיקה · 🔗 מיזוג (only with 2+ Ctrl-picked) ·
+✂️ פיצול · 🏷 שינוי מזהה · **✏️ פתיחה לעריכת תוכן**. Double-click a node opens
+it in the lesson editor.
 
 ### Lesson editor — `LessonEditorView.svelte`
 
@@ -33,10 +36,11 @@ delete / merge (Ctrl-click to multi-select) / split (by round) / rename id /
   big), **▶ נגן מכאן** (opens the real `LessonRunner` at the selected screen
   via `startScreenIndex`).
 - **`ScreenCarousel.svelte`** — one horizontal strip: preface, then each
-  round, with vertical divider chips carrying the round controls (move /
-  duplicate / delete). `←`/`→` step between screens. Drag a slide to move it
-  within or across buckets. `+ מסך` (type menu) at each bucket's end,
-  `+ סבב` at the far end.
+  round, with a divider chip per bucket whose **⋯** menu holds the round
+  actions (move earlier/later, duplicate, delete). `←`/`→` step between
+  screens. Drag a slide to move it within or across buckets. A green
+  **➕ הוספת מסך** (type menu, plain-language names) at each bucket's end,
+  **➕ הוספת סבב** at the far end. Card headers show a Hebrew type name.
 - **`EditableScreen.svelte`** — each slide: an editable facsimile of how the
   screen renders in the player. Prose (text, prompt, options, list items,
   title, …) is click-to-type via `MarkdownInput` in **bare** mode (chromeless,
@@ -52,16 +56,18 @@ Prose is stored as markdown, rendered at runtime by
 
 ## Model & save
 
-`editModel.svelte.ts` holds one **section's** whole `LessonNode[]` as a
-mutable `$state` working copy (cloned from `getLessonsBySection`), a `dirty`
-flag, the current selection, and every mutation helper (`setPosition`,
+`editModel.svelte.ts` holds the **whole module's** `LessonNode[]` (every
+section, so the graph shows everything) as a mutable `$state` working copy, a
+`dirty` flag, the current selection, and every mutation helper (`setPosition`,
 `togglePrereq`, `mergeNodes`, `splitNode`, `addRound`/`moveRound`/…,
-`moveScreen`, `applyScreen`, …). Nothing hits the network per edit.
+`moveScreen`, `applyScreen`, …). Nothing hits the network per edit. On load it
+snapshots each section's slice; `changedSections` diffs the live slices against
+that.
 
-One **💾 שמור** (or ⌘/Ctrl-S) calls `saveSection(sectionId, nodes)` →
-`POST /api/content-edit` with `{ sectionId, nodes }`, which rewrites the whole
-`c-<N>.ts` array. The endpoint also still accepts the older
-`{ lessonId, content }` shape (single-lesson replace).
+One **💾 שמירת שינויים** (or ⌘/Ctrl-S) calls `saveSection(sectionId, nodes)` →
+`POST /api/content-edit` with `{ sectionId, nodes }` **once per changed
+section**, each rewriting that whole `c-<N>.ts` array. The endpoint also still
+accepts the older `{ lessonId, content }` shape (single-lesson replace).
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,
