@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { FlaskConical } from '@lucide/svelte';
-	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
@@ -357,9 +357,10 @@
 									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
 							</Button>
 							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.code}</p>
-							{#if dev}
-								<!-- Dev-only: open this lesson in the /edit workspace.
-								     Detachable — see src/lib/content-edit/README.md. -->
+							{#if editStore.available}
+								<!-- Open this lesson in the /edit workspace (dev, or once
+								     unlocked on the deployed site). Detachable — see
+								     src/lib/content-edit/README.md. -->
 								<a
 									href="/edit?section={node.lesson.section}&lesson={node.lesson.id}"
 									class="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-dashed border-ink/40 px-3 py-1.5 text-xs font-semibold text-ink/70"
@@ -388,17 +389,15 @@
 	</button>
 {/if}
 
-{#if dev}
-	<!-- Dev-only: open the /edit workspace for this section. Detachable — see
-	     src/lib/content-edit/README.md. -->
-	<a
-		href="/edit"
-		title="עריכת תוכן"
-		class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
-	>
-		✎
-	</a>
-{/if}
+<!-- Open the /edit workspace. Always shown; /edit itself is password-gated
+     on the deployed site. Detachable — see src/lib/content-edit/README.md. -->
+<a
+	href="/edit"
+	title="עריכת תוכן"
+	class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
+>
+	✎
+</a>
 
 {#if vocabTestOpen}
 	<LessonRunner
