@@ -36,30 +36,30 @@
 		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 px-3 py-2 text-sm">
 			<button
 				type="button"
-				class="rounded-lg bg-line/50 px-2 py-1 text-xs font-semibold"
+				class="rounded-lg border border-line bg-canvas px-2.5 py-1.5 text-xs font-bold hover:bg-line/60"
 				onclick={onBack}
 			>
-				← גרף
+				← חזרה למפה
 			</button>
-			<span class="font-mono text-xs text-muted" dir="ltr">{node.id}</span>
-			<strong>{node.titleHe}</strong>
+			<strong class="text-sm">{node.titleHe}</strong>
 			{#if node.code}<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{node.code}</span
 				>{/if}
 			<button
 				type="button"
-				class="text-xs text-brand hover:underline"
+				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
 				onclick={() => (metaOpen = !metaOpen)}
 			>
-				{metaOpen ? 'סגור פרטים' : 'ערוך פרטים'}
+				⚙️ {metaOpen ? 'סגירת פרטים' : 'שם וקוד'}
 			</button>
 			<span class="flex-1"></span>
 			<button
 				type="button"
-				class="rounded-lg bg-ink px-2.5 py-1 text-xs font-bold text-white disabled:opacity-40"
+				class="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 disabled:opacity-40"
 				disabled={!path}
+				title={path ? 'שחק את הסבב הזה מהמסך הנבחר' : 'בחרו קודם מסך'}
 				onclick={playFromHere}
 			>
-				▶ נגן מכאן
+				▶ נסיון מכאן
 			</button>
 		</div>
 

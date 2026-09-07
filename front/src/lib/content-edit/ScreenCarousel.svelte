@@ -18,6 +18,29 @@
 		onSelect
 	}: { nodeId: string; issues?: Issue[]; onSelect: (p: ScreenPath) => void } = $props();
 
+	// Plain-language name for each screen type, so the card doesn't only show
+	// jargon like "passage-mcq".
+	const TYPE_HE: Record<string, string> = {
+		preface: 'טקסט / הסבר',
+		steps: 'שלבים',
+		summary: 'סיכום',
+		'question-preview': 'הצצה לשאלות',
+		'word-card': 'כרטיס מילה',
+		mcq: 'שאלה אמריקאית',
+		'mark-word': 'סימון מילה',
+		'mark-all': 'סימון במלל',
+		'spell-word': 'איות מילה',
+		'writing-task': 'משימת כתיבה',
+		'timed-passage': 'קטע מתוזמן + שאלות',
+		'passage-quiz': 'קטע + שאלות פתוחות',
+		'passage-mcq': 'קטע + שאלות אמריקאיות',
+		'self-check': 'בדיקה עצמית',
+		'timed-reading': 'קריאה מתוזמנת',
+		'time-result': 'תוצאת זמן',
+		'time-comparison': 'השוואת זמנים'
+	};
+	const typeHe = (t: string) => TYPE_HE[t] ?? t;
+
 	let node = $derived(editModel.node(nodeId));
 	let sel = $derived(editModel.selectedPath);
 
@@ -91,6 +114,9 @@
 		over = null;
 	}
 
+	// ---- round actions menu ----
+	let roundMenu = $state<number | null>(null);
+
 	// ---- add-screen menu ----
 	let addFor = $state<string | null>(null);
 	function addScreen(bucket: ScreenPath['bucket'], type: LessonScreen['type']) {
@@ -115,41 +141,79 @@
 	>
 		{#each items as it, ii (ii)}
 			{#if it.kind === 'divider'}
-				<div class="flex w-12 shrink-0 flex-col items-center justify-center gap-1.5 text-center">
-					<div class="rotate-180 text-sm font-extrabold text-muted [writing-mode:vertical-lr]">
-						{it.title}
+				<div
+					class="relative flex w-16 shrink-0 flex-col items-center justify-center gap-2 text-center"
+				>
+					<div
+						class="rounded-lg px-2 py-3 text-sm font-extrabold {it.bucket === 'preface'
+							? 'bg-line/50 text-ink'
+							: it.bucket === 0
+								? 'bg-emerald-100 text-emerald-800'
+								: 'bg-brand-soft text-brand-dark'}"
+					>
+						<div class="rotate-180 [writing-mode:vertical-lr]">{it.title}</div>
 					</div>
-					<div class="text-[10px] text-muted">{it.note}</div>
+					<div class="text-[10px] leading-tight text-muted">{it.note}</div>
 					{#if it.bucket !== 'preface'}
 						{@const ri = it.bucket as number}
 						<button
 							type="button"
-							class="dv"
-							title="הזז את הסבב אחורה בסדר"
-							disabled={ri === 0}
-							onclick={() => editModel.moveRound(nodeId, ri, ri - 1)}>▲</button
+							class="rounded-lg border border-line bg-canvas px-1.5 py-1 text-xs font-bold hover:bg-line/60"
+							title="פעולות על הסבב"
+							onclick={() => (roundMenu = roundMenu === ri ? null : ri)}
 						>
-						<button
-							type="button"
-							class="dv"
-							title="הזז את הסבב קדימה בסדר"
-							disabled={!node || ri === node.content.rounds.length - 1}
-							onclick={() => editModel.moveRound(nodeId, ri, ri + 1)}>▼</button
-						>
-						<button
-							type="button"
-							class="dv"
-							title="שכפל סבב"
-							onclick={() => editModel.duplicateRound(nodeId, ri)}>⎘</button
-						>
-						<button
-							type="button"
-							class="dv text-danger"
-							title="מחק סבב"
-							disabled={!node || node.content.rounds.length <= 1}
-							onclick={() => confirm(`למחוק סבב ${ri + 1}?`) && editModel.deleteRound(nodeId, ri)}
-							>🗑</button
-						>
+							⋯
+						</button>
+						{#if roundMenu === ri}
+							<div
+								class="absolute top-full z-30 mt-1 w-40 rounded-xl border border-line bg-canvas p-1 text-start text-xs shadow-lg"
+							>
+								<button
+									type="button"
+									class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
+									disabled={ri === 0}
+									onclick={() => {
+										editModel.moveRound(nodeId, ri, ri - 1);
+										roundMenu = null;
+									}}
+								>
+									◀ הזזה שמאלה (מוקדם יותר)
+								</button>
+								<button
+									type="button"
+									class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
+									disabled={!node || ri === node.content.rounds.length - 1}
+									onclick={() => {
+										editModel.moveRound(nodeId, ri, ri + 1);
+										roundMenu = null;
+									}}
+								>
+									▶ הזזה ימינה (מאוחר יותר)
+								</button>
+								<button
+									type="button"
+									class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
+									onclick={() => {
+										editModel.duplicateRound(nodeId, ri);
+										roundMenu = null;
+									}}
+								>
+									⧉ שכפול הסבב
+								</button>
+								<button
+									type="button"
+									class="block w-full rounded px-2 py-1.5 font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-40"
+									disabled={!node || node.content.rounds.length <= 1}
+									onclick={() => {
+										if (confirm(`למחוק את ${it.title} על כל המסכים שבו?`))
+											editModel.deleteRound(nodeId, ri);
+										roundMenu = null;
+									}}
+								>
+									🗑 מחיקת הסבב
+								</button>
+							</div>
+						{/if}
 					{/if}
 				</div>
 			{:else if it.kind === 'screen'}
@@ -181,25 +245,30 @@
 						drop(it.bucket, it.index);
 					}}
 				>
-					<div class="flex items-center gap-2 border-b border-line/70 px-3 py-1.5 text-xs">
-						<span class="cursor-grab text-muted">⠿</span>
-						<span class="font-mono" dir="ltr">{it.screen.type}</span>
+					<div
+						class="flex items-center gap-2 border-b border-line/70 bg-surface/50 px-3 py-2 text-xs"
+					>
+						<span class="cursor-grab text-muted" title="גררו כדי לשנות סדר">⠿</span>
+						<span class="font-bold">{typeHe(it.screen.type)}</span>
+						<span class="font-mono text-[10px] text-muted" dir="ltr">{it.screen.type}</span>
 						{#if countQuestions(it.screen) > 0}
-							<span class="rounded bg-brand/15 px-1 font-bold text-brand-dark"
-								>{countQuestions(it.screen)}?</span
+							<span
+								class="rounded bg-brand/15 px-1 font-bold text-brand-dark"
+								title="מספר שאלות מדורגות">{countQuestions(it.screen)} ✔</span
 							>
 						{/if}
-						{#if iss}<span title={iss.message}>{iss.severity === 'error' ? '🔴' : '🟠'}</span>{/if}
+						{#if iss}<span title={iss.message}>{iss.severity === 'error' ? '⛔' : '⚠️'}</span>{/if}
 						<span class="flex-1"></span>
-						<span class="text-muted">#{it.index + 1}</span>
+						<span class="text-muted">מסך {it.index + 1}</span>
 						<button
 							type="button"
-							class="text-danger"
-							title="מחק"
+							class="rounded px-1.5 py-0.5 font-bold text-rose-600 hover:bg-rose-50"
+							title="מחיקת המסך"
 							onclick={(e) => {
 								e.stopPropagation();
-								editModel.deleteScreen(nodeId, { bucket: it.bucket, index: it.index });
-							}}>✕</button
+								if (confirm('למחוק את המסך?'))
+									editModel.deleteScreen(nodeId, { bucket: it.bucket, index: it.index });
+							}}>🗑</button
 						>
 					</div>
 					<div
@@ -211,57 +280,46 @@
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
-				<div class="relative flex w-32 shrink-0 flex-col items-center justify-center">
+				<div class="relative flex w-28 shrink-0 flex-col items-center justify-center">
 					<button
 						type="button"
-						class="rounded-xl border-2 border-dashed border-brand/50 px-3 py-6 text-xs font-bold text-brand"
+						class="rounded-xl border-2 border-dashed border-emerald-500 px-3 py-6 text-xs leading-tight font-bold text-emerald-700 hover:bg-emerald-50"
 						onclick={() => (addFor = addFor === String(it.bucket) ? null : String(it.bucket))}
 					>
-						+ מסך
+						➕<br />הוספת<br />מסך
 					</button>
 					{#if addFor === String(it.bucket)}
 						<div
-							class="absolute top-full z-20 mt-1 max-h-64 w-52 overflow-y-auto rounded-xl border border-line bg-canvas p-1 shadow-lg"
+							class="absolute top-full z-20 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border border-line bg-canvas p-1 shadow-lg"
 						>
 							{#each SCREEN_TYPE_GROUPS as g (g.label)}
-								<p class="px-2 pt-1 text-[10px] font-bold text-muted">{g.label}</p>
+								<p class="px-2 pt-1.5 text-[10px] font-bold text-muted">{g.label}</p>
 								{#each g.types as t (t)}
 									<button
 										type="button"
-										class="block w-full rounded px-2 py-1 text-start font-mono text-xs hover:bg-line/50"
-										dir="ltr"
-										onclick={() => addScreen(it.bucket, t)}>{t}</button
+										class="flex w-full items-baseline gap-2 rounded px-2 py-1.5 text-start text-xs hover:bg-line/50"
+										onclick={() => addScreen(it.bucket, t)}
 									>
+										<span class="font-bold">{typeHe(t)}</span>
+										<span class="font-mono text-[10px] text-muted" dir="ltr">{t}</span>
+									</button>
 								{/each}
 							{/each}
 						</div>
 					{/if}
 				</div>
 			{:else}
-				<div class="flex w-32 shrink-0 items-center justify-center">
+				<div class="flex w-28 shrink-0 items-center justify-center">
 					<button
 						type="button"
-						class="rounded-xl border-2 border-dashed border-line px-3 py-6 text-xs font-bold text-muted hover:border-brand hover:text-brand"
+						class="rounded-xl border-2 border-dashed border-brand/60 px-3 py-6 text-xs leading-tight font-bold text-brand hover:bg-brand-soft/50"
+						title="הוספת סבב תרגול חדש בסוף"
 						onclick={() => editModel.addRound(nodeId)}
 					>
-						+ סבב
+						➕<br />הוספת<br />סבב
 					</button>
 				</div>
 			{/if}
 		{/each}
 	</div>
 </div>
-
-<style>
-	.dv {
-		border-radius: 0.375rem;
-		padding: 0 0.25rem;
-		font-size: 0.7rem;
-	}
-	.dv:hover:not(:disabled) {
-		background: rgb(0 0 0 / 0.06);
-	}
-	.dv:disabled {
-		opacity: 0.3;
-	}
-</style>

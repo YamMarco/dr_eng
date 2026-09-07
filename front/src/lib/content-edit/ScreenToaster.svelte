@@ -118,9 +118,9 @@
 		class="pointer-events-auto max-h-[46vh] overflow-y-auto rounded-t-3xl border-t border-line bg-canvas shadow-[0_-8px_24px_rgb(0_0_0/0.12)]"
 	>
 		<div class="sticky top-0 flex items-center gap-2 border-b border-line/70 bg-canvas px-3 py-2">
+			<span class="text-xs font-bold text-muted">סוג המסך:</span>
 			<select
-				class="rounded-lg border-2 border-line bg-surface px-2 py-1 text-xs font-bold"
-				dir="ltr"
+				class="rounded-lg border-2 border-brand bg-surface px-2 py-1 text-xs font-bold"
 				value={screen.type}
 				onchange={(e) =>
 					editModel.setScreenType(nodeId, path, e.currentTarget.value as LessonScreen['type'])}
@@ -131,12 +131,17 @@
 					</optgroup>
 				{/each}
 			</select>
-			<button type="button" class="text-xs text-muted hover:text-ink" onclick={openRaw}>JSON</button
+			<button
+				type="button"
+				class="rounded border border-line px-1.5 py-0.5 text-[10px] font-bold text-muted hover:bg-line/60"
+				onclick={openRaw}
 			>
+				JSON
+			</button>
 			<span class="flex-1"></span>
 			<button
 				type="button"
-				class="text-xs font-semibold text-danger"
+				class="rounded-lg px-2 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50"
 				onclick={() => {
 					if (confirm('למחוק את המסך?')) {
 						editModel.deleteScreen(nodeId, path);
@@ -144,10 +149,13 @@
 					}
 				}}
 			>
-				מחק מסך
+				🗑 מחיקה
 			</button>
-			<button type="button" class="rounded-full px-2 text-muted hover:bg-line/60" onclick={onClose}
-				>▼</button
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+				title="סגירת החלונית"
+				onclick={onClose}>סגירה ▾</button
 			>
 		</div>
 

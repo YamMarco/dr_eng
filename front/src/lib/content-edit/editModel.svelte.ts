@@ -1,15 +1,16 @@
-// The in-memory working copy for the /edit workspace. One instance holds a
-// whole section's LessonNode[] (not a single lesson) so graph edits and
-// content edits share one dirty flag and one save. Everything here is a plain
-// mutation on `nodes`; nothing touches the network until `saveSection` in
-// api.ts is called with `model.nodes`.
+// The in-memory working copy for the /edit workspace. One instance holds the
+// WHOLE module's LessonNode[] (every section) so the graph shows everything at
+// once. `changedSections` diffs each section's slice against what was loaded,
+// so a save only rewrites the section files that actually changed.
 //
 // Detachable — part of src/lib/content-edit/. See README.md.
 
-import { getLessonsBySection } from '$lib/content';
+import { getLessonsBySection, sectionMeta } from '$lib/content';
 import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
+
+const SECTION_IDS = sectionMeta.map((s) => s.id);
 
 /** Deep, plain clone — content nodes are pure JSON so this is safe and cheap. */
 function clone<T>(v: T): T {
@@ -21,7 +22,6 @@ function screenList(node: LessonNode, bucket: ScreenPath['bucket']): LessonScree
 }
 
 class EditModel {
-	sectionId = $state('');
 	nodes = $state<LessonNode[]>([]);
 	dirty = $state(false);
 	/** Which node the lesson pane is showing. */
@@ -29,15 +29,38 @@ class EditModel {
 	/** Which screen inside that node the form/preview is showing. */
 	selectedPath = $state<ScreenPath | null>(null);
 
-	load(sectionId: string) {
-		this.sectionId = sectionId;
-		this.nodes = clone(getLessonsBySection(sectionId));
+	/** sectionId -> JSON of that section's nodes at load / last save. */
+	#baseline = new Map<string, string>();
+
+	load() {
+		this.nodes = clone(SECTION_IDS.flatMap((id) => getLessonsBySection(id)));
+		this.#snapshotBaseline();
 		this.dirty = false;
 		this.selectedNodeId = this.nodes[0]?.id ?? null;
 		this.selectedPath = null;
 	}
 
+	#snapshotBaseline() {
+		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
+		this.#baseline = new Map(
+			SECTION_IDS.map((id) => [id, JSON.stringify(plain.filter((n) => n.section === id))])
+		);
+	}
+
+	/** Section files whose nodes differ from what was loaded — what save writes. */
+	get changedSections(): string[] {
+		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
+		return SECTION_IDS.filter(
+			(id) => JSON.stringify(plain.filter((n) => n.section === id)) !== this.#baseline.get(id)
+		);
+	}
+
+	nodesForSection(id: string): LessonNode[] {
+		return JSON.parse(JSON.stringify(this.nodes.filter((n) => n.section === id)));
+	}
+
 	markClean() {
+		this.#snapshotBaseline();
 		this.dirty = false;
 	}
 
@@ -45,6 +68,11 @@ class EditModel {
 	 *  prose edit on the screen canvas). */
 	touch() {
 		this.dirty = true;
+	}
+
+	/** The section a new/edited node belongs to (near the selection, else first). */
+	get defaultSection(): string {
+		return this.selectedNode?.section ?? this.nodes[0]?.section ?? SECTION_IDS[0];
 	}
 
 	get selectedNode(): LessonNode | undefined {
@@ -115,7 +143,7 @@ class EditModel {
 	addNode(near?: LessonNode): LessonNode {
 		const node: LessonNode = {
 			id: this.freshId('new-node'),
-			section: this.sectionId,
+			section: near?.section ?? this.defaultSection,
 			titleHe: 'שיעור חדש',
 			code: '',
 			required: [],
@@ -297,5 +325,5 @@ class EditModel {
 	}
 }
 
-/** One shared instance; `load()` reseeds it whenever the section changes. */
+/** One shared instance; `load()` seeds it with the whole module. */
 export const editModel = new EditModel();
