@@ -36,12 +36,12 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'איך זה עובד\n\n"Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. Elephants can live for up to 70 years."\n\nהשאלה: Where do elephants live?',
+          text: "בוא נראה איך זה עובד. תקראו את המשפט הבא\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. Elephants can live for up to 70 years\n\nהשאלה:  Where do elephants live?",
         },
         {
           type: "steps",
           steps: [
-            'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live.',
+            'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live ולא elephant',
             "לא קוראים מההתחלה - סורקים ומחפשים live בטקסט.",
             'מצאנו: "They live in Africa and Asia".',
             "כותבים: They live in Africa and Asia. - 8 שניות, בלי לקרוא את כל הפסקה.",
