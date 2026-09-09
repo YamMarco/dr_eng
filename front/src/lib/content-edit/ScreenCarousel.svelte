@@ -47,7 +47,8 @@
 	type Item =
 		| { kind: 'divider'; bucket: ScreenPath['bucket']; title: string; note: string }
 		| { kind: 'screen'; bucket: ScreenPath['bucket']; index: number; screen: LessonScreen }
-		| { kind: 'add-screen'; bucket: ScreenPath['bucket'] }
+		/** Insert a new screen at `at` in this bucket (0 = make it the first). */
+		| { kind: 'add-screen'; bucket: ScreenPath['bucket']; at: number; big?: boolean }
 		| { kind: 'add-round' };
 
 	let items = $derived.by<Item[]>(() => {
@@ -64,10 +65,17 @@
 				title: b.key === 'preface' ? 'פתיח' : `סבב ${b.key + 1}`,
 				note: b.key === 'preface' ? 'לפני סבב 1' : b.key === 0 ? 'חובה' : 'רשות'
 			});
-			b.screens.forEach((screen, index) =>
-				out.push({ kind: 'screen', bucket: b.key, index, screen })
-			);
-			out.push({ kind: 'add-screen', bucket: b.key });
+			// insert-point before the first screen (unshift) + between every pair
+			out.push({ kind: 'add-screen', bucket: b.key, at: 0, big: b.screens.length === 0 });
+			b.screens.forEach((screen, index) => {
+				out.push({ kind: 'screen', bucket: b.key, index, screen });
+				out.push({
+					kind: 'add-screen',
+					bucket: b.key,
+					at: index + 1,
+					big: index === b.screens.length - 1
+				});
+			});
 		}
 		out.push({ kind: 'add-round' });
 		return out;
@@ -117,12 +125,15 @@
 	// ---- round actions menu ----
 	let roundMenu = $state<number | null>(null);
 
-	// ---- add-screen menu ----
+	// ---- add-screen menu (keyed by `${bucket}:${at}`) ----
 	let addFor = $state<string | null>(null);
-	function addScreen(bucket: ScreenPath['bucket'], type: LessonScreen['type']) {
-		editModel.addScreen(nodeId, bucket, -1, type);
+	function addScreen(bucket: ScreenPath['bucket'], at: number, type: LessonScreen['type']) {
+		editModel.addScreen(nodeId, bucket, at, type);
 		addFor = null;
-		if (editModel.selectedPath) onSelect(editModel.selectedPath);
+		if (editModel.selectedPath) {
+			onSelect(editModel.selectedPath);
+			selectAndScroll(editModel.selectedPath.bucket, editModel.selectedPath.index);
+		}
 	}
 </script>
 
@@ -280,25 +291,44 @@
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
-				<div class="relative flex w-28 shrink-0 flex-col items-center justify-center">
-					<button
-						type="button"
-						class="rounded-xl border-2 border-dashed border-emerald-500 px-3 py-6 text-xs leading-tight font-bold text-emerald-700 hover:bg-emerald-50"
-						onclick={() => (addFor = addFor === String(it.bucket) ? null : String(it.bucket))}
-					>
-						➕<br />הוספת<br />מסך
-					</button>
-					{#if addFor === String(it.bucket)}
-						<div
-							class="absolute top-full z-20 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border border-line bg-canvas p-1 shadow-lg"
+				{@const akey = `${String(it.bucket)}:${it.at}`}
+				<div
+					class="relative flex shrink-0 flex-col items-center justify-center {it.big
+						? 'w-24'
+						: 'w-7'}"
+				>
+					{#if it.big}
+						<button
+							type="button"
+							class="rounded-xl border-2 border-dashed border-emerald-500 px-2 py-6 text-xs leading-tight font-bold text-emerald-700 hover:bg-emerald-50"
+							onclick={() => (addFor = addFor === akey ? null : akey)}
 						>
+							➕<br />הוספת<br />מסך
+						</button>
+					{:else}
+						<button
+							type="button"
+							title={it.at === 0 ? 'הוספת מסך בתחילת הסבב' : 'הוספת מסך כאן'}
+							class="flex h-10 w-6 items-center justify-center rounded-full border border-dashed border-emerald-400 text-sm font-bold text-emerald-600 hover:bg-emerald-50"
+							onclick={() => (addFor = addFor === akey ? null : akey)}
+						>
+							＋
+						</button>
+					{/if}
+					{#if addFor === akey}
+						<div
+							class="absolute top-full z-30 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border border-line bg-canvas p-1 text-start shadow-lg"
+						>
+							<p class="px-2 py-1 text-[10px] font-bold text-emerald-700">
+								{it.at === 0 ? 'המסך יתווסף בתחילת הסבב' : `המסך יתווסף במיקום ${it.at + 1}`}
+							</p>
 							{#each SCREEN_TYPE_GROUPS as g (g.label)}
 								<p class="px-2 pt-1.5 text-[10px] font-bold text-muted">{g.label}</p>
 								{#each g.types as t (t)}
 									<button
 										type="button"
 										class="flex w-full items-baseline gap-2 rounded px-2 py-1.5 text-start text-xs hover:bg-line/50"
-										onclick={() => addScreen(it.bucket, t)}
+										onclick={() => addScreen(it.bucket, it.at, t)}
 									>
 										<span class="font-bold">{typeHe(t)}</span>
 										<span class="font-mono text-[10px] text-muted" dir="ltr">{t}</span>

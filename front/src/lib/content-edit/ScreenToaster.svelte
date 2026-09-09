@@ -114,10 +114,8 @@
 </script>
 
 {#if screen}
-	<div
-		class="pointer-events-auto max-h-[46vh] overflow-y-auto rounded-t-3xl border-t border-line bg-canvas shadow-[0_-8px_24px_rgb(0_0_0/0.12)]"
-	>
-		<div class="sticky top-0 flex items-center gap-2 border-b border-line/70 bg-canvas px-3 py-2">
+	<div class="flex h-full min-h-0 flex-col bg-canvas">
+		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 bg-surface/60 px-3 py-2">
 			<span class="text-xs font-bold text-muted">סוג המסך:</span>
 			<select
 				class="rounded-lg border-2 border-brand bg-surface px-2 py-1 text-xs font-bold"
@@ -141,6 +139,12 @@
 			<span class="flex-1"></span>
 			<button
 				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+				title="סגירת החלונית"
+				onclick={onClose}>סגירה ✕</button
+			>
+			<button
+				type="button"
 				class="rounded-lg px-2 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50"
 				onclick={() => {
 					if (confirm('למחוק את המסך?')) {
@@ -149,17 +153,11 @@
 					}
 				}}
 			>
-				🗑 מחיקה
+				🗑 מחיקת המסך
 			</button>
-			<button
-				type="button"
-				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
-				title="סגירת החלונית"
-				onclick={onClose}>סגירה ▾</button
-			>
 		</div>
 
-		<div class="space-y-3 p-3 text-sm">
+		<div class="min-h-0 flex-1 space-y-3 overflow-y-auto p-3 text-sm">
 			{#if rawOpen}
 				<textarea
 					bind:value={raw}

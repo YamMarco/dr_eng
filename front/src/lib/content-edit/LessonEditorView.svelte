@@ -102,13 +102,17 @@
 			</div>
 		{/if}
 
-		<div class="min-h-0 flex-1 overflow-hidden pt-2">
-			<ScreenCarousel nodeId={node.id} {issues} onSelect={() => (toasterOpen = true)} />
-		</div>
+		<div class="flex min-h-0 flex-1">
+			<div class="min-h-0 flex-1 overflow-hidden pt-2">
+				<ScreenCarousel nodeId={node.id} {issues} onSelect={() => (toasterOpen = true)} />
+			</div>
 
-		{#if toasterOpen && path}
-			<ScreenToaster nodeId={node.id} {path} onClose={() => (toasterOpen = false)} />
-		{/if}
+			{#if toasterOpen && path}
+				<div class="flex w-[min(380px,42vw)] shrink-0 flex-col border-s-2 border-line bg-canvas">
+					<ScreenToaster nodeId={node.id} {path} onClose={() => (toasterOpen = false)} />
+				</div>
+			{/if}
+		</div>
 	</div>
 {:else}
 	<p class="p-6 text-center text-sm text-muted">בחרו צומת מהגרף.</p>
