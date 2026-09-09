@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditorView.svelte": {
-    "mtime": 1788971494.1645892,
-    "seen": 1788971545.745123,
-    "ast_hash": "43a4877f2ca80d22c52884c06e37ea7f",
+    "mtime": 1788972158.0981696,
+    "seen": 1788972173.7778704,
+    "ast_hash": "3cf86ff993916f2819ca7b260051d784",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ScreenCarousel.svelte": {
