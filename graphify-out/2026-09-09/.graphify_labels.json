@@ -56,13 +56,13 @@
   "54": "c.4.2c",
   "55": "Section 10 · רב-ברירה ואלימינציה",
   "56": "Section 11 · השלמת משפט",
-  "57": "חלק ד׳ — סקשנים 10–16: סוגי השאלות",
+  "57": "Section 12 · שתי תשובות נכונות",
   "58": "Section 13 · שאלות התייחסות",
   "59": "Section 14 · שאלות הסקה",
   "60": "Section 15 · רעיון מרכזי",
-  "61": "Section 19 · מקריאה לכתיבה",
+  "61": "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה",
   "62": "Section 26 · סימולציה ותיקון",
-  "63": "חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה",
+  "63": "חלק ד׳ — סקשנים 10–16: סוגי השאלות",
   "64": "guide.md",
   "65": "3 · `s3-l2` — מציאה וסימון (c.3.3)",
   "66": "1 (vefore c.4.1, after c.3.4)",
@@ -70,6 +70,7 @@
   "68": "changes",
   "69": "NavBar.svelte",
   "70": "WritingTask.svelte",
+  "71": "Section 3 · Eye Catchers · מספרים",
   "72": "questions",
   "73": "content-edit — the `/edit` authoring workspace",
   "74": "questions",
@@ -85,5 +86,7 @@
   "84": "MarkAll.svelte",
   "85": "login/+server.ts",
   "86": "lessonProgress.svelte.ts",
-  "87": "lessons/+page.svelte"
+  "87": "lessons/+page.svelte",
+  "88": "Section 4 · Eye Catchers · שמות",
+  "89": "Section 1 · לפענח את השאלה"
 }
