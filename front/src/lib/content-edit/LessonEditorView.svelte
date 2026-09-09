@@ -113,7 +113,7 @@
 
 			{#if toasterOpen && path}
 				<div
-					class="absolute inset-e-0 top-0 bottom-0 z-20 flex flex-col border-s-4 border-black bg-surface shadow-[10px_0_28px_rgb(0_0_0/0.45)]"
+					class="absolute inset-e-0 top-0 bottom-0 z-20 flex flex-col bg-surface shadow-[10px_0_28px_rgb(0_0_0/0.45)]"
 					style="width: var(--tw)"
 				>
 					<ScreenToaster nodeId={node.id} {path} onClose={() => (toasterOpen = false)} />
