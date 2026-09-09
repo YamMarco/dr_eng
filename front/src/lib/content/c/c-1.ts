@@ -16,27 +16,27 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'הנה סיפור מהחיים שלכם בבית ספר. יש  לכם את קבוצת וואטסאפ לאנגלית. 500 הודעות לפחות.\nויש תמיד את החבר ההוא שואל: "מתי הבחינה?"\n\nהאם אתם גוללים 500 הודעות מההתחלה?\n\nבטח שלא. פשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - שם. חסכתם לעצמכם זמן בלי לחשוב על זה. כי הרי זמן זה משאב יקר ועודד נחזור על זה בהמשך.',
+          text: 'הנה סיפור מהחיים שלכם בבית ספר: יש  לכם את קבוצת וואטסאפ לאנגלית. 500 הודעות לפחות.\nוכמובן שיש תמיד את החבר או החברה ההם ששואלים : "מתי הבחינה?"\n\nשאלה: במקרה זה, האם אתם גוללים 500 הודעות מההתחלה?בטח שלא!\n\n פשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - אתם שם ואז אתם מקפיצים להם את התשובה . חסכתם לעצמכם זמן ומאמץ מיותר אפילו בלי לחשוב על זה. הרי זמן זה משאב יקר ועוד נחזור על זה בהמשך.',
         },
         {
           type: "preface",
-          text: "חבר׳ה, זה בדיוק מה שעושים בטקסט האנגלית.\n\nהטקסט = קבוצת הוואטסאפ.\nהשאלה = החיפוש.\nמילת המפתח = מה שמחפשים ב-🔍",
+          text: "אז חבר׳ה, זה בדיוק מה שעושים במבחן הבגרות. פה נלמד הרגלים חדשים ושיטות חשות שיעזרו לכם למצוא את התשובות הנכונות. אני רוצה שתסתכלו על המבחן בצורה הזאת: \nהטקסט = קבוצת הוואטסאפ.\nהשאלה = החיפוש.\nמילת המפתח = מה שמחפשים ב-🔍",
         },
         {
           type: "preface",
-          text: "אבל מסתבר שרוב התלמידים עושים את הטעות הזאת:\n\nמתחילים לקרוא מהמילה הראשונה. מנסים להבין הכל. נתקעים. הפאניקה מתחילה.\nאחרי 30 דקות - עדיין בפסקה 3. לכתיבה לא נשאר זמן.\n\nויש כאלה, מניח שאתם חלק מהם, שלמדו שלא צריך לקרוא את הטקטס. קודם כל שאלות ואחרי זה טקסט.  ופה בדיוק צריך לעשות לכם סדר בראש שתבינו מה לעשות ואיך לעשות. ",
+          text: "אבל מסתבר שרוב התלמידים עושים את הטעות הזאת:\n\nמתחילים לקרוא את הטקסט מהמילה הראשונה. מנסים להבין הכל. נתקעים. הפאניקה מתחילה.\nאחרי 30 דקות - עדיין בפסקה 3. לכתיבה לא נשאר זמן.\n\nויש כאלה, מניח שאתם חלק מהם, שלמדו שלא צריך לקרוא את הטקסט בכלל. קודם כל שאלות ואחרי זה טקסט. לא לא לא! פה בדיוק צריך לעשות לכם סדר שתבינו מה לעשות ואיך לעשות. אבל לאט לאט, בוא נתקדם! ",
         },
         {
           type: "summary",
           title: "THE TOOL -   צריך להפנים שני עקרונות  ",
           lines: [
-            "1 · הטקסט שם - התשובה כתובה בתוכו. ועל מנת לעשות זאת לא צריך אנגלית מושלמת.",
+            "1 · הטקסט שם: התשובה כתובה בתוכו. ועל מנת לעשות זאת לא צריך אנגלית מושלמת.",
             "2 · מה זאת אומרת? פשוט מאוד לא צריך להבין הכל - רק למצוא את מה שהשאלה מבקשת.",
           ],
         },
         {
           type: "preface",
-          text: "בוא נראה איך זה עובד. תקראו את המשפט הבא\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. Elephants can live for up to 70 years\n\nהשאלה:  Where do elephants live?",
+          text: "בוא נראה איך זה עובד בדוגמא פשוטה.תקראו את המשפט הבא:\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. \n\nהשאלה:  Where do elephants live?",
         },
         {
           type: "steps",
@@ -79,12 +79,8 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "YOUR TURN - עכשיו לבד, בדיוק כמו בבחינה.",
-            },
-            {
               type: "passage-mcq",
-              text: "The Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
+              text: "\nבוא ננסה עוד מפשט ביחד:\n\nThe Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
               questions: [
                 {
                   prompt: "Why was the Great Wall of China built?",
@@ -102,7 +98,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               text: "The Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
               prompt:
-                "How long is the Great Wall? - כתבו את התשובה באנגלית, במילים של הטקסט.",
+                "How long is the Great Wall?\n\n  כתבו את התשובה באנגלית, במילים של הטקסט.",
               modelAnswer: "About 21,000 kilometers long.",
             },
             {
