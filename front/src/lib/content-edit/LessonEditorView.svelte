@@ -102,13 +102,20 @@
 			</div>
 		{/if}
 
-		<div class="flex min-h-0 flex-1">
-			<div class="min-h-0 flex-1 overflow-hidden pt-2">
-				<ScreenCarousel nodeId={node.id} {issues} onSelect={() => (toasterOpen = true)} />
-			</div>
+		<!-- `--tw` is the width the open toaster reserves; the carousel keeps its
+		     full box (no reflow) but scroll-pads by it so the centred card
+		     lands clear of the panel. -->
+		<div
+			class="relative min-h-0 flex-1 overflow-hidden pt-2"
+			style="--tw: {toasterOpen && path ? 'min(380px, 44vw)' : '0px'}"
+		>
+			<ScreenCarousel nodeId={node.id} {issues} onSelect={() => (toasterOpen = true)} />
 
 			{#if toasterOpen && path}
-				<div class="flex w-[min(380px,42vw)] shrink-0 flex-col border-s-2 border-line bg-canvas">
+				<div
+					class="absolute inset-e-0 top-0 bottom-0 z-20 flex flex-col border-s-4 border-brand bg-surface shadow-[0_0_30px_rgb(0_0_0/0.22)]"
+					style="width: var(--tw)"
+				>
 					<ScreenToaster nodeId={node.id} {path} onClose={() => (toasterOpen = false)} />
 				</div>
 			{/if}

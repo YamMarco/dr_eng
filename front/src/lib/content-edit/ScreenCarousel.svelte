@@ -148,7 +148,8 @@
 <div class="flex h-full flex-col">
 	<div
 		bind:this={track}
-		class="flex min-h-0 flex-1 snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden px-4 pt-4 pb-2"
+		class="flex min-h-0 flex-1 snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden py-4 ps-4"
+		style="padding-inline-end: calc(var(--tw, 0px) + 1rem); scroll-padding-inline-end: calc(var(--tw, 0px) + 1rem)"
 	>
 		{#each items as it, ii (ii)}
 			{#if it.kind === 'divider'}

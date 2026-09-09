@@ -114,9 +114,12 @@
 </script>
 
 {#if screen}
-	<div class="flex h-full min-h-0 flex-col bg-canvas">
-		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 bg-surface/60 px-3 py-2">
-			<span class="text-xs font-bold text-muted">סוג המסך:</span>
+	<div class="flex h-full min-h-0 flex-col bg-surface">
+		<div
+			class="flex flex-wrap items-center gap-2 border-b-2 border-brand/50 bg-brand-soft px-3 py-2"
+		>
+			<span class="me-1 text-xs font-extrabold text-brand-dark">עריכת המסך ·</span>
+			<span class="text-xs font-bold text-muted">סוג:</span>
 			<select
 				class="rounded-lg border-2 border-brand bg-surface px-2 py-1 text-xs font-bold"
 				value={screen.type}
