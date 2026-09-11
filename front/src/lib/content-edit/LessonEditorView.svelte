@@ -1,10 +1,11 @@
 <script lang="ts">
-	// Lesson-editing view: a screen carousel + a bottom editing toaster for the
-	// selected screen. Shown instead of the graph, not beside it.
-	// Detachable — part of src/lib/content-edit/.
+	// Lesson-editing view, PowerPoint-style: a big central "slide" for the
+	// selected screen (SlideStage) with a smaller vertical filmstrip of every
+	// screen in order on the side (SlideFilmstrip). Shown instead of the
+	// graph, not beside it. Detachable — part of src/lib/content-edit/.
 	import { editModel } from './editModel.svelte';
-	import ScreenCarousel from './ScreenCarousel.svelte';
-	import ScreenToaster from './ScreenToaster.svelte';
+	import SlideFilmstrip from './SlideFilmstrip.svelte';
+	import SlideStage from './SlideStage.svelte';
 	import type { Issue } from './validate';
 
 	let {
@@ -19,8 +20,6 @@
 
 	let node = $derived(editModel.selectedNode);
 	let path = $derived(editModel.selectedPath);
-	// Deep-linked with a screen -> land with the toaster already open.
-	let toasterOpen = $state(!!editModel.selectedPath);
 	let metaOpen = $state(false);
 
 	function playFromHere() {
@@ -102,23 +101,14 @@
 			</div>
 		{/if}
 
-		<!-- `--tw` is the width the open toaster reserves; the carousel keeps its
-		     full box (no reflow) but scroll-pads by it so the centred card
-		     lands clear of the panel. -->
-		<div
-			class="relative min-h-0 flex-1 overflow-hidden pt-2"
-			style="--tw: {toasterOpen && path ? 'min(380px, 44vw)' : '0px'}"
-		>
-			<ScreenCarousel nodeId={node.id} {issues} onSelect={() => (toasterOpen = true)} />
-
-			{#if toasterOpen && path}
-				<div
-					class="absolute inset-e-0 top-0 bottom-0 z-20 flex flex-col bg-surface shadow-[10px_0_28px_rgb(0_0_0/0.45)]"
-					style="width: var(--tw)"
-				>
-					<ScreenToaster nodeId={node.id} {path} onClose={() => (toasterOpen = false)} />
-				</div>
-			{/if}
+		<!-- PowerPoint layout: filmstrip on the side, the big stage fills the rest. -->
+		<div class="flex min-h-0 flex-1">
+			<div class="w-72 shrink-0">
+				<SlideFilmstrip nodeId={node.id} {issues} onSelect={() => {}} />
+			</div>
+			<div class="min-h-0 flex-1">
+				<SlideStage nodeId={node.id} {path} />
+			</div>
 		</div>
 	</div>
 {:else}

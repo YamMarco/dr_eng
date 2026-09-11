@@ -1,9 +1,9 @@
 <script lang="ts">
-	// One carousel slide: an editable facsimile of how a screen renders in the
-	// player. Prose is click-to-type (MarkdownInput, chromeless). Structural
-	// bits (correct answer, token marks, question lists, numbers, modes) are
-	// left to ScreenToaster. Mutates the live editModel node in place.
-	// Detachable — part of src/lib/content-edit/.
+	// The "slide" canvas inside SlideStage: an editable facsimile of how a
+	// screen renders in the player. Prose is click-to-type (MarkdownInput,
+	// chromeless). Structural bits (correct answer, token marks, question
+	// lists, numbers, modes) are left to SlideStage's own fields below it.
+	// Mutates the live editModel node in place. Detachable — content-edit/.
 	import { editModel } from './editModel.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import type { ScreenPath } from './screenPath';

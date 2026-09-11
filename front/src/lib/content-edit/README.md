@@ -30,29 +30,32 @@ coded): ➕ שיעור חדש · ⧉ שכפול · 🗑 מחיקה · 🔗 מי�
 ✂️ פיצול · 🏷 שינוי מזהה · **✏️ פתיחה לעריכת תוכן**. Double-click a node opens
 it in the lesson editor.
 
-### Lesson editor — `LessonEditorView.svelte`
+### Lesson editor — `LessonEditorView.svelte` (PowerPoint-style)
 
-- header: **← גרף**, the node's id/title/code, **ערוך פרטים** (title / code /
-  big), **▶ נגן מכאן** (opens the real `LessonRunner` at the selected screen
+- header: **← חזרה למפה**, the node's id/title/code, **שם וקוד** (title / code /
+  big), **▶ נסיון מכאן** (opens the real `LessonRunner` at the selected screen
   via `startScreenIndex`).
-- **`ScreenCarousel.svelte`** — one horizontal strip: preface, then each
-  round, with a divider chip per bucket whose **⋯** menu holds the round
-  actions (move earlier/later, duplicate, delete). `←`/`→` step between
-  screens. Drag a slide to move it within or across buckets. A green
-  **➕ הוספת מסך** (type menu, plain-language names) at each bucket's end,
-  **➕ הוספת סבב** at the far end. Card headers show a Hebrew type name.
-- **`EditableScreen.svelte`** — each slide: an editable facsimile of how the
-  screen renders in the player. Prose (text, prompt, options, list items,
-  title, …) is click-to-type via `MarkdownInput` in **bare** mode (chromeless,
-  toolbar on focus). Structural bits are left to the toaster.
-- **`ScreenToaster.svelte`** — a bottom sheet for the selected screen: the
-  **type selector**, the structured fields that can't be typed onto the canvas
-  (correct answer, `mark-*` token marks + categories, question lists, word
-  bank, min-word numbers, mode, timer keys), **מחק מסך**, and a **JSON**
-  escape hatch. Reuses the `fields/*` building blocks.
+- **`SlideFilmstrip.svelte`** — a narrow vertical rail on the side: every
+  screen of the lesson, in order, as a small clickable card (type name +
+  one-line text snippet + scored/issue markers). Bucket headers (פתיח / סבב N)
+  carry a **⋯** menu with the round actions (move earlier/later, duplicate,
+  delete). Drag a card to reorder it within or across buckets. Green
+  **➕ הוספת מסך** at each bucket's end and **➕ הוספת סבב** at the bottom insert
+  a blank screen/round directly — no type-choosing step, the type is picked
+  in the stage.
+- **`SlideStage.svelte`** — the big central pane for the *selected* screen:
+  one place with the **type selector**, **EditableScreen** (the editable
+  canvas — prose is click-to-type via `MarkdownInput` in **bare** mode), every
+  structural field that can't be typed onto the canvas (correct answer,
+  `mark-*` token marks + categories, question lists, word bank, min-word
+  numbers, mode, timer keys), **🗑 מחיקת המסך**, and a **JSON** escape hatch —
+  no popup, no separate panel. Reuses the `fields/*` building blocks.
 
 Prose is stored as markdown, rendered at runtime by
 `src/lib/lesson-screens/miniMarkdown.ts` (not part of this folder).
+`screenTypeNames.ts` holds the Hebrew name per screen type (used by both the
+filmstrip and the stage's type selector); `screenSnippet.ts` extracts the
+plain-text preview shown on each filmstrip card.
 
 ## Model & save
 
@@ -71,8 +74,8 @@ accepts the older `{ lessonId, content }` shape (single-lesson replace).
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,
-duplicate id/code, scoreless round 0. Results show as a dot on the carousel
-slide and in the header **בעיות** list (click to jump).
+duplicate id/code, scoreless round 0. Results show as a dot on the filmstrip
+card and in the header **בעיות** list (click to jump).
 
 The server re-serialises the array in the files' hand-written style
 (`emit()` — tab indent, small primitive-only objects/arrays kept inline) and
