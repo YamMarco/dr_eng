@@ -6,7 +6,13 @@
 	import { editModel } from './editModel.svelte';
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
 	import { typeHe } from './screenTypeNames';
-	import { formatBold, formatItalic, formatCode, formatLink } from './activeField.svelte';
+	import {
+		formatBold,
+		formatItalic,
+		formatStrike,
+		formatCode,
+		formatLink
+	} from './activeField.svelte';
 	import EditableScreen from './EditableScreen.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
@@ -150,6 +156,13 @@
 					title="נטוי"
 					onmousedown={(e) => e.preventDefault()}
 					onclick={formatItalic}>I</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs line-through hover:bg-line/60"
+					title="קו חוצה"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatStrike}>S</button
 				>
 				<button
 					type="button"

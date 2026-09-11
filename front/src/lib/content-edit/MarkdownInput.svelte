@@ -1,6 +1,7 @@
 <script lang="ts">
-	// Single-field editor: shows bold / italic / code / links rendered (not as
-	// `**` syntax), stores plain markdown. Formatting is done by the ONE
+	// Single-field editor: shows bold / italic / strikethrough / code / links
+	// rendered (not as `**` syntax), stores plain markdown. Formatting is done
+	// by the ONE
 	// shared toolbar in SlideStage's header, acting on whichever field last had
 	// focus (see activeField.svelte.ts) — no per-field toolbar here. Dev
 	// tooling only — uses the deprecated-but-universal execCommand path to
@@ -58,6 +59,11 @@
 					break;
 				case 'code':
 					out += inner.trim() ? `\`${inner}\`` : inner;
+					break;
+				case 's':
+				case 'strike':
+				case 'del':
+					out += inner.trim() ? `~~${inner}~~` : inner;
 					break;
 				case 'a': {
 					const href = child.getAttribute('href') ?? '';

@@ -39,8 +39,10 @@
 	type Item =
 		| { kind: 'divider'; bucket: ScreenPath['bucket']; title: string; note: string }
 		| { kind: 'screen'; bucket: ScreenPath['bucket']; index: number; screen: LessonScreen }
-		/** Insert a blank screen at `at` in this bucket (0 = make it the first). */
-		| { kind: 'add-screen'; bucket: ScreenPath['bucket']; at: number }
+		/** Insert a blank screen at `at` in this bucket (0 = make it the first).
+		    `big` = the prominent labeled button; the rest are slim "+" rows so
+		    you can add a screen between any two, not just at the end. */
+		| { kind: 'add-screen'; bucket: ScreenPath['bucket']; at: number; big?: boolean }
 		| { kind: 'add-round' };
 
 	let items = $derived.by<Item[]>(() => {
@@ -57,10 +59,16 @@
 				title: b.key === 'preface' ? 'פתיח' : `סבב ${b.key + 1}`,
 				note: b.key === 'preface' ? 'לפני סבב 1' : b.key === 0 ? 'חובה' : 'רשות'
 			});
+			out.push({ kind: 'add-screen', bucket: b.key, at: 0, big: b.screens.length === 0 });
 			b.screens.forEach((screen, index) => {
 				out.push({ kind: 'screen', bucket: b.key, index, screen });
+				out.push({
+					kind: 'add-screen',
+					bucket: b.key,
+					at: index + 1,
+					big: index === b.screens.length - 1
+				});
 			});
-			out.push({ kind: 'add-screen', bucket: b.key, at: b.screens.length });
 		}
 		out.push({ kind: 'add-round' });
 		return out;
@@ -143,9 +151,9 @@
 	<div bind:this={list} onscroll={closeMenu} class="min-h-0 flex-1 space-y-3 overflow-y-auto p-3">
 		{#each items as it, ii (ii)}
 			{#if it.kind === 'divider'}
-				<div class="flex items-center gap-1 pt-1.5 pb-0.5 first:pt-0">
+				<div class="flex items-center gap-2 pt-2 pb-0.5 first:pt-0">
 					<span
-						class="rounded px-1.5 py-0.5 text-[10px] font-extrabold {it.bucket === 'preface'
+						class="rounded-md px-2 py-1 text-sm font-extrabold {it.bucket === 'preface'
 							? 'bg-surface text-ink shadow-sm'
 							: it.bucket === 0
 								? 'bg-emerald-100 text-emerald-800'
@@ -153,13 +161,13 @@
 					>
 						{it.title}
 					</span>
-					<span class="text-[9px] text-muted">{it.note}</span>
+					<span class="text-xs font-semibold text-muted">{it.note}</span>
 					<span class="flex-1"></span>
 					{#if it.bucket !== 'preface'}
 						{@const ri = it.bucket as number}
 						<button
 							type="button"
-							class="rounded px-1 text-[10px] font-bold text-muted hover:bg-line/60"
+							class="rounded px-1.5 text-sm font-bold text-muted hover:bg-line/60"
 							title="פעולות על הסבב"
 							onclick={(e) => toggleRoundMenu(e, ri)}
 						>
@@ -228,13 +236,30 @@
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
-				<button
-					type="button"
-					class="flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-emerald-400 py-1 text-[10px] font-bold text-emerald-700 hover:bg-emerald-50"
-					onclick={() => addScreen(it.bucket, it.at)}
-				>
-					➕ הוספת מסך
-				</button>
+				{#if it.big}
+					<button
+						type="button"
+						class="flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-emerald-400 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-50"
+						onclick={() => addScreen(it.bucket, it.at)}
+					>
+						➕ הוספת מסך
+					</button>
+				{:else}
+					<button
+						type="button"
+						title={it.at === 0 ? 'הוספת מסך בתחילת הסבב' : 'הוספת מסך כאן'}
+						class="group relative flex h-4 w-full items-center justify-center"
+						onclick={() => addScreen(it.bucket, it.at)}
+					>
+						<span class="h-px w-full bg-emerald-300 opacity-0 transition group-hover:opacity-100"
+						></span>
+						<span
+							class="absolute flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-emerald-400 bg-line/45 text-[10px] font-bold text-emerald-600 opacity-70 transition group-hover:scale-125 group-hover:opacity-100"
+						>
+							＋
+						</span>
+					</button>
+				{/if}
 			{:else}
 				<button
 					type="button"

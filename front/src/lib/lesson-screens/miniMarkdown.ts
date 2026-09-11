@@ -3,7 +3,8 @@
 // of inline replacements is applied. No block syntax — newlines are left to
 // the container's `whitespace-pre-line`.
 //
-// Supported: **bold**, *italic* / _italic_, `code`, [text](https://url).
+// Supported: **bold**, *italic* / _italic_, ~~strikethrough~~, `code`,
+// [text](https://url).
 
 const ESCAPE: Record<string, string> = {
 	'&': '&amp;',
@@ -20,6 +21,8 @@ export function mdInline(src: string): string {
 
 	// `code` first, so ** / * inside a span aren't reinterpreted
 	s = s.replace(/`([^`]+)`/g, '<code class="rounded bg-line/60 px-1 text-[0.9em]">$1</code>');
+	// ~~strikethrough~~
+	s = s.replace(/~~([^~\n]+)~~/g, '<s>$1</s>');
 	// [text](url) — http(s)/mailto only
 	s = s.replace(
 		/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g,

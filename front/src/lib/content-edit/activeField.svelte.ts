@@ -1,6 +1,7 @@
 // Tracks which MarkdownInput's contenteditable last had focus, so ONE shared
-// formatting toolbar (bold / italic / code / link — see SlideStage's header)
-// can act on whichever field the author is editing right now, instead of
+// formatting toolbar (bold / italic / strikethrough / code / link — see
+// SlideStage's header) can act on whichever field the author is editing right
+// now, instead of
 // every field carrying its own popup toolbar. Works for every screen type,
 // since it doesn't know or care which screen the field belongs to.
 // Detachable — part of src/lib/content-edit/.
@@ -32,6 +33,13 @@ export function formatItalic() {
 	withActive(() => {
 		document.execCommand('styleWithCSS', false, 'false');
 		document.execCommand('italic');
+	});
+}
+
+export function formatStrike() {
+	withActive(() => {
+		document.execCommand('styleWithCSS', false, 'false');
+		document.execCommand('strikeThrough');
 	});
 }
 
