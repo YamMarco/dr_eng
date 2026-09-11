@@ -21863,6 +21863,15 @@
       "source_file": "front/src/lib/content-edit/MarkdownInput.svelte"
     },
     {
+      "source": "front_src_lib_content_edit_markdowninput",
+      "target": "svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/MarkdownInput.svelte"
+    },
+    {
       "source": "front_src_lib_content_edit_slidefilmstrip",
       "target": "front_src_lib_content_edit_editmodel_svelte",
       "relation": "imports_from",
@@ -23658,7 +23667,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "front/src/lib/content-edit/SlideStage.svelte",
-      "source_location": "L217",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -24598,5 +24607,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2646286fbd79391829a4df97588e25f0eb4d5aa5"
+  "built_at_commit": "ff87be772e6a861458aece011f7bf01d32cb23ae"
 }

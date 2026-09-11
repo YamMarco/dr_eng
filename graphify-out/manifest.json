@@ -666,9 +666,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/MarkdownInput.svelte": {
-    "mtime": 1789128659.2009535,
-    "seen": 1789128918.3240085,
-    "ast_hash": "f938ed7d35a31d9c5b24c7ae03b4e35f",
+    "mtime": 1789129399.8393836,
+    "seen": 1789129606.4875958,
+    "ast_hash": "9ea0bae5111a46a161a939182d330a19",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenPath.ts": {
@@ -864,21 +864,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideFilmstrip.svelte": {
-    "mtime": 1789128698.0423272,
-    "seen": 1789128918.3240116,
-    "ast_hash": "5d59aaacdff884d8732c2a27578095ff",
+    "mtime": 1789129502.8039775,
+    "seen": 1789129606.4875994,
+    "ast_hash": "b940363dd5ce79fa3c203415187ac6cf",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideStage.svelte": {
-    "mtime": 1789128665.8251126,
-    "seen": 1789128918.3240142,
-    "ast_hash": "1a59937a4e029814cc3005a9e0dee0e5",
+    "mtime": 1789129503.0478792,
+    "seen": 1789129606.4876018,
+    "ast_hash": "75e33836a14b464012ac0a212a1938fa",
     "semantic_hash": ""
   },
-  "front/src/lib/content-edit/screenSnippet.ts": {
-    "mtime": 1789128041.2696953,
-    "seen": 1789128220.6129298,
-    "ast_hash": "31e01e61418091b6f98be5d63c979f7e",
+  "front/src/lib/content-edit/activeField.svelte.ts": {
+    "mtime": 1789129384.4939082,
+    "seen": 1789129606.4876041,
+    "ast_hash": "6805e495bcde30cc0958f42bc140d217",
     "semantic_hash": ""
   }
 }
