@@ -53,12 +53,12 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "passage-mcq",
-              text: "עוד תרגיל- תקראו את הפסקה הבאה ותענו על השאלה :\n\nDogs are one of the most popular pets in the world. They were first tamed from wolves thousands of years ago. Today, there are more than 400 different breeds of dog.",
+              text: "Dogs are one of the most popular pets in the world. They were first tamed from wolves thousands of years ago. Today, there are more than 400 different breeds of dog.",
               questions: [
                 {
                   prompt:
-                    "השאלה: When were dogs first tamed?\n\nמה המילה שאתם מחפשים בטקסט?",
-                  options: ["popular", "tamed ", "breeds", "world"],
+                    "השאלה: When were dogs first tamed? - מה המילה שאתם מחפשים בטקסט?",
+                  options: ["popular", "tamed / first", "breeds", "world"],
                   correctIndex: 1,
                 },
                 {
@@ -80,7 +80,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "passage-mcq",
-              text: "\nבוא ננסה עוד מפשט ביחד:\n\nThe Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
+              text: "\nבוא ננסה עוד תרגיל ביחד:\n\nThe Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
               questions: [
                 {
                   prompt: "Why was the Great Wall of China built?",
@@ -142,11 +142,11 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "תלמיד מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?",
+              prompt: "תלמידֿֿֿ מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?",
               options: [
                 "יענה על כל השאלות נכון",
                 "יגמור מהר",
-                "לא יישאר לו זמן לכתיבה",
+                "סביר להניח שלא יישאר לו זמן לכתיבה",
               ],
               correctIndex: 2,
               explanation:
@@ -155,7 +155,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"אני מחפש בכדי להצליח בבחינה, לא קורא" - זה המשפט שמסכם את השיעור שלנו .',
+                '"אני מחפש בכדי להצליח בבחינה, לא קורא במובן באופן סטטי" - זה המשפט שמסכם את השיעור שלנו .',
               options: ["✅ נכון", "❌ לא נכון"],
               correctIndex: 0,
               explanation: "נכון. זו המנטליות שמשנה את כל הגישה לבחינה.",
