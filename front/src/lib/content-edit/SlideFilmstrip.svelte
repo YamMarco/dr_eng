@@ -224,7 +224,7 @@
 					     box every time (content that doesn't fit is clipped, not
 					     squeezed). -->
 					<div
-						class="relative mx-auto overflow-hidden rounded-xl border border-line/60 bg-canvas"
+						class="relative mx-auto overflow-hidden rounded-xl border border-line/60"
 						style="width: {thumbW}px; height: {thumbH}px"
 					>
 						<div
@@ -239,7 +239,7 @@
 				{#if it.big}
 					<button
 						type="button"
-						class="flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-emerald-400 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-50"
+						class="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-emerald-400 py-3 text-sm font-bold text-emerald-700 hover:bg-emerald-50"
 						onclick={() => addScreen(it.bucket, it.at)}
 					>
 						➕ הוספת מסך

@@ -214,244 +214,251 @@
 		</div>
 
 		<div class="min-h-0 flex-1 overflow-y-auto">
-			<div class="mx-auto flex max-w-2xl flex-col items-center gap-6 p-6">
-				<!-- the "slide": a fixed phone-sized frame, same box every time.
-				     Prose is click-to-type, styled like the player. Content that
-				     doesn't fit scrolls inside the frame instead of growing it. -->
-				<div
-					class="w-full max-w-lg shrink-0 overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
-				>
+			<div class="mx-auto max-w-lg p-6">
+				<!-- the "slide": a fixed phone-sized frame that IS the whole editing
+				     surface — prose is click-to-type, and every control for this
+				     screen (correct answer, marks, questions, timer keys, …) lives
+				     right underneath it, inside the same card, not as separate boxes
+				     floating below. Content that doesn't fit scrolls inside the
+				     frame instead of growing it. -->
+				<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
 					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
 						<EditableScreen {nodeId} {path} />
-					</div>
-				</div>
 
-				{#if rawOpen}
-					<div class="rounded-2xl border-2 border-line bg-surface p-4">
-						<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
-						<textarea
-							bind:value={raw}
-							rows="10"
-							dir="ltr"
-							spellcheck="false"
-							class="w-full rounded-xl border-2 border-line bg-canvas p-2 font-mono text-xs"
-						></textarea>
-						{#if rawErr}<p class="mt-1 text-xs text-danger" dir="ltr">{rawErr}</p>{/if}
-						<div class="mt-2 flex gap-2">
-							<button
-								type="button"
-								class="rounded-lg bg-brand px-3 py-1 text-xs font-bold text-white"
-								onclick={applyRaw}
-							>
-								החל
-							</button>
-							<button type="button" class="text-xs text-muted" onclick={() => (rawOpen = false)}
-								>ביטול</button
-							>
-						</div>
-					</div>
-				{:else if screen.type === 'mcq'}
-					<div class="rounded-2xl border-2 border-line bg-surface p-4">
-						<p class="mb-2 text-xs font-bold text-muted">התשובה הנכונה</p>
-						<OptionsEditor
-							bind:options={screen.options}
-							bind:correctIndex={screen.correctIndex}
-							name={`c-${String(path.bucket)}-${path.index}`}
-						/>
-					</div>
-				{:else if screen.type === 'mark-word'}
-					<div class="rounded-2xl border-2 border-line bg-surface p-4">
-						<p class="mb-2 text-xs font-bold text-muted">איזו מילה נכונה?</p>
-						<TokenPicker
-							text={screen.sentence}
-							splitPattern={/ /}
-							selected={[screen.correctWordIndex]}
-							onToggle={(i) => (screen.correctWordIndex = i)}
-						/>
-					</div>
-				{:else if screen.type === 'mark-all'}
-					<div class="space-y-3 rounded-2xl border-2 border-line bg-surface p-4">
-						<div class="flex flex-wrap items-center gap-1.5">
-							<span class="text-xs font-bold text-muted">קטגוריות:</span>
-							{#each screen.categories ?? [] as cat (cat)}
-								{@const sw = markAllSwatch(cat.color)}
-								<span
-									class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold"
-									style="background:{sw.bg};color:{sw.fg}"
-								>
-									<button type="button" onclick={() => cycleColor(cat)}>🎨</button>
-									<span>{cat.name}</span>
-									<button type="button" onclick={() => delCategory(cat)}>✕</button>
-								</span>
-							{/each}
-							<button type="button" class="text-xs font-semibold text-brand" onclick={addCategory}>
-								+ קטגוריה
-							</button>
-						</div>
-						<p class="text-xs text-muted">
-							גררו לבחירת ביטוי, ואז שייכו. לחיצה על מילה מסומנת מבטלת.
-						</p>
-						<TextMarker
-							text={screen.text}
-							dir={screen.dir ?? 'auto'}
-							colors={markColors}
-							onSelect={(t) => (pending = t)}
-							onTokenClick={unmark}
-						/>
-						{#if pending.length}
-							<div class="flex flex-wrap items-center gap-1.5 rounded-xl bg-brand-soft/50 p-2">
-								<span class="text-xs font-bold text-muted">סמן כ־</span>
-								{#each screen.categories ?? [] as cat (cat)}
-									{@const sw = markAllSwatch(cat.color)}
+						{#if rawOpen}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
+								<textarea
+									bind:value={raw}
+									rows="10"
+									dir="ltr"
+									spellcheck="false"
+									class="w-full rounded-xl border-2 border-line bg-surface p-2 font-mono text-xs"
+								></textarea>
+								{#if rawErr}<p class="mt-1 text-xs text-danger" dir="ltr">{rawErr}</p>{/if}
+								<div class="mt-2 flex gap-2">
 									<button
 										type="button"
-										class="rounded-full px-2 py-0.5 text-xs font-bold"
-										style="background:{sw.bg};color:{sw.fg}"
-										onclick={() => markPending(cat.name)}
+										class="rounded-lg bg-brand px-3 py-1 text-xs font-bold text-white"
+										onclick={applyRaw}
 									>
-										{cat.name}
+										החל
 									</button>
-								{/each}
-								<button
-									type="button"
-									class="rounded-full bg-surface px-2 py-0.5 text-xs font-bold ring-1 ring-line"
-									onclick={() => markPending(null)}
-								>
-									{screen.categories?.length ? 'ללא קטגוריה' : 'סמן'}
-								</button>
-								<button type="button" class="px-2 text-xs text-muted" onclick={() => (pending = [])}
-									>בטל</button
-								>
+									<button type="button" class="text-xs text-muted" onclick={() => (rawOpen = false)}
+										>ביטול</button
+									>
+								</div>
 							</div>
+						{:else if screen.type === 'mcq'}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="mb-2 text-xs font-bold text-muted">התשובה הנכונה</p>
+								<OptionsEditor
+									bind:options={screen.options}
+									bind:correctIndex={screen.correctIndex}
+									name={`c-${String(path.bucket)}-${path.index}`}
+								/>
+							</div>
+						{:else if screen.type === 'mark-word'}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="mb-2 text-xs font-bold text-muted">איזו מילה נכונה?</p>
+								<TokenPicker
+									text={screen.sentence}
+									splitPattern={/ /}
+									selected={[screen.correctWordIndex]}
+									onToggle={(i) => (screen.correctWordIndex = i)}
+								/>
+							</div>
+						{:else if screen.type === 'mark-all'}
+							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+								<div class="flex flex-wrap items-center gap-1.5">
+									<span class="text-xs font-bold text-muted">קטגוריות:</span>
+									{#each screen.categories ?? [] as cat (cat)}
+										{@const sw = markAllSwatch(cat.color)}
+										<span
+											class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold"
+											style="background:{sw.bg};color:{sw.fg}"
+										>
+											<button type="button" onclick={() => cycleColor(cat)}>🎨</button>
+											<span>{cat.name}</span>
+											<button type="button" onclick={() => delCategory(cat)}>✕</button>
+										</span>
+									{/each}
+									<button
+										type="button"
+										class="text-xs font-semibold text-brand"
+										onclick={addCategory}
+									>
+										+ קטגוריה
+									</button>
+								</div>
+								<p class="text-xs text-muted">
+									גררו לבחירת ביטוי, ואז שייכו. לחיצה על מילה מסומנת מבטלת.
+								</p>
+								<TextMarker
+									text={screen.text}
+									dir={screen.dir ?? 'auto'}
+									colors={markColors}
+									onSelect={(t) => (pending = t)}
+									onTokenClick={unmark}
+								/>
+								{#if pending.length}
+									<div class="flex flex-wrap items-center gap-1.5 rounded-xl bg-brand-soft/50 p-2">
+										<span class="text-xs font-bold text-muted">סמן כ־</span>
+										{#each screen.categories ?? [] as cat (cat)}
+											{@const sw = markAllSwatch(cat.color)}
+											<button
+												type="button"
+												class="rounded-full px-2 py-0.5 text-xs font-bold"
+												style="background:{sw.bg};color:{sw.fg}"
+												onclick={() => markPending(cat.name)}
+											>
+												{cat.name}
+											</button>
+										{/each}
+										<button
+											type="button"
+											class="rounded-full bg-surface px-2 py-0.5 text-xs font-bold ring-1 ring-line"
+											onclick={() => markPending(null)}
+										>
+											{screen.categories?.length ? 'ללא קטגוריה' : 'סמן'}
+										</button>
+										<button
+											type="button"
+											class="px-2 text-xs text-muted"
+											onclick={() => (pending = [])}>בטל</button
+										>
+									</div>
+								{/if}
+								<label class="flex items-center gap-2 text-xs text-muted">
+									מזהה טיימר (אופציונלי)
+									<input
+										bind:value={screen.timerKey}
+										dir="ltr"
+										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+									/>
+								</label>
+							</div>
+						{:else if screen.type === 'timed-passage'}
+							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+								<label class="flex items-center gap-2 text-xs text-muted">
+									מזהה טיימר
+									<input
+										bind:value={screen.timerKey}
+										dir="ltr"
+										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+									/>
+								</label>
+								<McqQuestionsEditor bind:questions={screen.questions} />
+							</div>
+						{:else if screen.type === 'passage-mcq'}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<McqQuestionsEditor bind:questions={screen.questions} />
+							</div>
+						{:else if screen.type === 'passage-quiz'}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<KeywordQuestionsEditor bind:questions={screen.questions} />
+							</div>
+						{:else if screen.type === 'timed-reading'}
+							<label
+								class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+							>
+								מזהה טיימר
+								<input
+									bind:value={screen.timerKey}
+									dir="ltr"
+									class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+								/>
+							</label>
+						{:else if screen.type === 'time-result'}
+							<label
+								class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+							>
+								מזהה טיימר
+								<input
+									bind:value={screen.timerKey}
+									dir="ltr"
+									class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+								/>
+							</label>
+						{:else if screen.type === 'time-comparison'}
+							<div class="mt-4 flex flex-wrap gap-4 border-t-2 border-dashed border-line/60 pt-4">
+								<label class="flex items-center gap-2 text-xs text-muted">
+									מזהה א׳
+									<input
+										bind:value={screen.aKey}
+										dir="ltr"
+										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+									/>
+								</label>
+								<label class="flex items-center gap-2 text-xs text-muted">
+									מזהה ב׳
+									<input
+										bind:value={screen.bKey}
+										dir="ltr"
+										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+									/>
+								</label>
+							</div>
+						{:else if screen.type === 'writing-task'}
+							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="text-xs font-bold text-muted">בנק מילים</p>
+								<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
+								<div class="flex gap-4">
+									<label class="flex items-center gap-2 text-xs text-muted">
+										מינ׳ משפטים
+										<input
+											type="number"
+											min="1"
+											bind:value={screen.minSentences}
+											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+									<label class="flex items-center gap-2 text-xs text-muted">
+										מינ׳ מילים מהבנק
+										<input
+											type="number"
+											min="0"
+											bind:value={screen.minWordsUsed}
+											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+								</div>
+							</div>
+						{:else if screen.type === 'spell-word'}
+							<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
+								<label class="flex items-center gap-1.5">
+									<input
+										type="radio"
+										name={`m-${String(path.bucket)}-${path.index}`}
+										checked={screen.mode === 'copy'}
+										onchange={() => (screen.mode = 'copy')}
+									/>
+									העתקה (המילה מוצגת)
+								</label>
+								<label class="flex items-center gap-1.5">
+									<input
+										type="radio"
+										name={`m-${String(path.bucket)}-${path.index}`}
+										checked={screen.mode === 'listen'}
+										onchange={() => (screen.mode = 'listen')}
+									/>
+									הכתבה (לפי שמיעה)
+								</label>
+							</div>
+						{:else if screen.type === 'word-card'}
+							<label
+								class="mt-4 flex flex-col gap-1 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+							>
+								תיאור תמונה (אופציונלי)
+								<input
+									bind:value={screen.imageAlt}
+									dir="auto"
+									class="rounded-lg border-2 border-line bg-surface p-1"
+								/>
+							</label>
 						{/if}
-						<label class="flex items-center gap-2 text-xs text-muted">
-							מזהה טיימר (אופציונלי)
-							<input
-								bind:value={screen.timerKey}
-								dir="ltr"
-								class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-							/>
-						</label>
 					</div>
-				{:else if screen.type === 'timed-passage'}
-					<div class="space-y-3 rounded-2xl border-2 border-line bg-surface p-4">
-						<label class="flex items-center gap-2 text-xs text-muted">
-							מזהה טיימר
-							<input
-								bind:value={screen.timerKey}
-								dir="ltr"
-								class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-							/>
-						</label>
-						<McqQuestionsEditor bind:questions={screen.questions} />
-					</div>
-				{:else if screen.type === 'passage-mcq'}
-					<div class="rounded-2xl border-2 border-line bg-surface p-4">
-						<McqQuestionsEditor bind:questions={screen.questions} />
-					</div>
-				{:else if screen.type === 'passage-quiz'}
-					<div class="rounded-2xl border-2 border-line bg-surface p-4">
-						<KeywordQuestionsEditor bind:questions={screen.questions} />
-					</div>
-				{:else if screen.type === 'timed-reading'}
-					<label
-						class="flex items-center gap-2 rounded-2xl border-2 border-line bg-surface p-4 text-xs text-muted"
-					>
-						מזהה טיימר
-						<input
-							bind:value={screen.timerKey}
-							dir="ltr"
-							class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-						/>
-					</label>
-				{:else if screen.type === 'time-result'}
-					<label
-						class="flex items-center gap-2 rounded-2xl border-2 border-line bg-surface p-4 text-xs text-muted"
-					>
-						מזהה טיימר
-						<input
-							bind:value={screen.timerKey}
-							dir="ltr"
-							class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-						/>
-					</label>
-				{:else if screen.type === 'time-comparison'}
-					<div class="flex flex-wrap gap-4 rounded-2xl border-2 border-line bg-surface p-4">
-						<label class="flex items-center gap-2 text-xs text-muted">
-							מזהה א׳
-							<input
-								bind:value={screen.aKey}
-								dir="ltr"
-								class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-							/>
-						</label>
-						<label class="flex items-center gap-2 text-xs text-muted">
-							מזהה ב׳
-							<input
-								bind:value={screen.bKey}
-								dir="ltr"
-								class="w-28 rounded-lg border-2 border-line bg-canvas p-1"
-							/>
-						</label>
-					</div>
-				{:else if screen.type === 'writing-task'}
-					<div class="space-y-3 rounded-2xl border-2 border-line bg-surface p-4">
-						<p class="text-xs font-bold text-muted">בנק מילים</p>
-						<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
-						<div class="flex gap-4">
-							<label class="flex items-center gap-2 text-xs text-muted">
-								מינ׳ משפטים
-								<input
-									type="number"
-									min="1"
-									bind:value={screen.minSentences}
-									class="w-16 rounded-lg border-2 border-line bg-canvas p-1"
-								/>
-							</label>
-							<label class="flex items-center gap-2 text-xs text-muted">
-								מינ׳ מילים מהבנק
-								<input
-									type="number"
-									min="0"
-									bind:value={screen.minWordsUsed}
-									class="w-16 rounded-lg border-2 border-line bg-canvas p-1"
-								/>
-							</label>
-						</div>
-					</div>
-				{:else if screen.type === 'spell-word'}
-					<div class="flex gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-sm">
-						<label class="flex items-center gap-1.5">
-							<input
-								type="radio"
-								name={`m-${String(path.bucket)}-${path.index}`}
-								checked={screen.mode === 'copy'}
-								onchange={() => (screen.mode = 'copy')}
-							/>
-							העתקה (המילה מוצגת)
-						</label>
-						<label class="flex items-center gap-1.5">
-							<input
-								type="radio"
-								name={`m-${String(path.bucket)}-${path.index}`}
-								checked={screen.mode === 'listen'}
-								onchange={() => (screen.mode = 'listen')}
-							/>
-							הכתבה (לפי שמיעה)
-						</label>
-					</div>
-				{:else if screen.type === 'word-card'}
-					<label
-						class="flex flex-col gap-1 rounded-2xl border-2 border-line bg-surface p-4 text-xs text-muted"
-					>
-						תיאור תמונה (אופציונלי)
-						<input
-							bind:value={screen.imageAlt}
-							dir="auto"
-							class="rounded-lg border-2 border-line bg-canvas p-1"
-						/>
-					</label>
-				{/if}
+				</div>
 			</div>
 		</div>
 	</div>
