@@ -6,8 +6,7 @@
 	import { tick, onMount } from 'svelte';
 	import { editModel } from './editModel.svelte';
 	import { countQuestions } from '$lib/lesson-screens/types';
-	import { typeHe } from './screenTypeNames';
-	import { screenSnippet } from './screenSnippet';
+	import EditableScreen from './EditableScreen.svelte';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 	import type { ScreenPath } from './screenPath';
 	import type { Issue } from './validate';
@@ -157,10 +156,7 @@
 					role="button"
 					tabindex="0"
 					draggable="true"
-					class="flex cursor-pointer items-start gap-1.5 rounded-lg border-2 p-1.5 transition {isSel(
-						it.bucket,
-						it.index
-					)
+					class="cursor-pointer rounded-lg border-2 p-1 transition {isSel(it.bucket, it.index)
 						? 'border-brand bg-brand-soft/60 shadow-sm'
 						: 'border-line/70 bg-canvas hover:border-brand/40'} {over ===
 					`${String(it.bucket)}:${it.index}`
@@ -182,21 +178,32 @@
 						drop(it.bucket, it.index);
 					}}
 				>
-					<span
-						class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-line/60 text-[9px] font-bold"
-						>{it.index + 1}</span
-					>
-					<div class="min-w-0 flex-1">
-						<div class="flex items-center gap-1 text-[10px] font-bold">
-							<span class="truncate">{typeHe(it.screen.type)}</span>
-							{#if countQuestions(it.screen) > 0}<span title="שאלה מדורגת">✔</span>{/if}
-							{#if iss}
-								<span title={iss.message}>{iss.severity === 'error' ? '⛔' : '⚠️'}</span>
-							{/if}
-						</div>
-						{#if screenSnippet(it.screen)}
-							<p class="truncate text-[9px] text-muted" dir="auto">{screenSnippet(it.screen)}</p>
+					<div class="mb-1 flex items-center gap-1">
+						<span
+							class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-line/60 text-[9px] font-bold"
+							>{it.index + 1}</span
+						>
+						{#if countQuestions(it.screen) > 0}<span class="text-[10px]" title="שאלה מדורגת">✔</span
+							>{/if}
+						{#if iss}
+							<span class="text-[10px]" title={iss.message}
+								>{iss.severity === 'error' ? '⛔' : '⚠️'}</span
+							>
 						{/if}
+					</div>
+					<!-- true miniature of the actual screen (like a slide-deck thumbnail),
+					     not just a label — same EditableScreen the stage renders, scaled
+					     down and inert (pointer-events-none) so the click selects the
+					     card instead of editing inline. -->
+					<div
+						class="relative h-24 w-full overflow-hidden rounded-md border border-line/60 bg-canvas"
+					>
+						<div
+							class="pointer-events-none absolute top-0 left-1/2 origin-top"
+							style="width: 448px; transform: translateX(-50%) scale(0.38);"
+						>
+							<EditableScreen {nodeId} path={{ bucket: it.bucket, index: it.index }} />
+						</div>
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}

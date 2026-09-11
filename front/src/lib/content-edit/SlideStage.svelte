@@ -6,6 +6,7 @@
 	import { editModel } from './editModel.svelte';
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
 	import { typeHe } from './screenTypeNames';
+	import { formatBold, formatItalic, formatCode, formatLink } from './activeField.svelte';
 	import EditableScreen from './EditableScreen.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
@@ -127,6 +128,45 @@
 {:else}
 	<div class="flex h-full min-h-0 flex-col">
 		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 bg-surface/60 px-4 py-2">
+			<!-- One shared formatting toolbar for every text field on this screen
+			     (whichever field is focused). mousedown preventDefault keeps that
+			     field's focus/selection alive through the click, so execCommand
+			     still lands on it. -->
+			<div
+				class="flex overflow-hidden rounded-lg border border-line"
+				role="toolbar"
+				aria-label="עיצוב טקסט"
+			>
+				<button
+					type="button"
+					class="px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="הדגשה"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatBold}>B</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs italic hover:bg-line/60"
+					title="נטוי"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatItalic}>I</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 font-mono text-xs hover:bg-line/60"
+					title="קוד"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatCode}>{'<>'}</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs hover:bg-line/60"
+					title="קישור"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatLink}>🔗</button
+				>
+			</div>
+			<span class="h-4 w-px bg-line"></span>
 			<span class="text-xs font-bold text-muted">סוג המסך:</span>
 			<select
 				class="rounded-lg border-2 border-brand bg-canvas px-2 py-1 text-xs font-bold"
