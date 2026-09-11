@@ -707,18 +707,6 @@
     "ast_hash": "aacacce0052149ac63ffcf5b0123bcff",
     "semantic_hash": ""
   },
-  "front/src/lib/content-edit/fields/KeywordQuestionsEditor.svelte": {
-    "mtime": 1788708180.1510086,
-    "seen": 1788708379.4913638,
-    "ast_hash": "2cfb9b425d7c2709f0da9aaed1bdddd7",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/fields/McqQuestionsEditor.svelte": {
-    "mtime": 1788708180.1520078,
-    "seen": 1788708379.4913652,
-    "ast_hash": "c6311ec3a1c38c7b0bf3e8fbb06387c2",
-    "semantic_hash": ""
-  },
   "front/src/lib/content-edit/fields/OptionsEditor.svelte": {
     "mtime": 1788608168.4342048,
     "seen": 1788608660.1870964,
@@ -810,9 +798,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditableScreen.svelte": {
-    "mtime": 1789128007.6020172,
-    "seen": 1789128220.6128805,
-    "ast_hash": "037bfec885b55e7013ae937f62ae8c34",
+    "mtime": 1789133754.656418,
+    "seen": 1789133858.745057,
+    "ast_hash": "2b098c0e8c05ae5900ae759540b4fc80",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditorView.svelte": {
@@ -864,15 +852,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideFilmstrip.svelte": {
-    "mtime": 1789132417.9197567,
-    "seen": 1789132582.6047423,
-    "ast_hash": "da5bb82346d69e1a22dcadf0f958a745",
+    "mtime": 1789133209.2598314,
+    "seen": 1789133325.2464957,
+    "ast_hash": "fd9ad2b0218165e20bcbdb365d90fafa",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideStage.svelte": {
-    "mtime": 1789132418.4919796,
-    "seen": 1789132582.6047447,
-    "ast_hash": "2c2362f9081e5cb4312711658ec6b2c9",
+    "mtime": 1789133714.7798893,
+    "seen": 1789133858.7450707,
+    "ast_hash": "58e454ce17bdbb6fa039ca8801622e23",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/activeField.svelte.ts": {
