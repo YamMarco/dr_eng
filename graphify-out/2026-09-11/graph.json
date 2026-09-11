@@ -3586,6 +3586,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "page",
       "norm_label": "claude.md",
       "source_file": "CLAUDE.md",
       "source_location": "L1"
@@ -3597,6 +3598,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "graphify",
       "source_file": "CLAUDE.md",
       "source_location": "L20"
@@ -3608,6 +3610,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "mission",
       "source_file": "CLAUDE.md",
       "source_location": "L1"
@@ -3619,6 +3622,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "persona",
       "source_file": "CLAUDE.md",
       "source_location": "L12"
@@ -3630,6 +3634,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "skills",
       "source_file": "CLAUDE.md",
       "source_location": "L18"
@@ -3641,6 +3646,7 @@
       "community": 30,
       "community_name": "CLAUDE.md",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "workflow",
       "source_file": "CLAUDE.md",
       "source_location": "L4"
@@ -24104,5 +24110,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6c616aff5b3c5a4368fa0518311c84a06bf38ecf"
+  "built_at_commit": "c0971e801418910376a90b0c99a4ffac10381629"
 }

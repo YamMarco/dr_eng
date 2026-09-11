@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-11)
 
 ## Corpus Check
-- 139 files · ~103,979 words
+- 139 files · ~104,144 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 968 nodes · 1173 edges · 89 communities (73 shown, 16 thin omitted)
+- 970 nodes · 1175 edges · 88 communities (72 shown, 16 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c0971e80`
+- Built from commit: `dfa47b53`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - Snippet Blocks ({#snippet})
 - scripts
 - curriculum.ts
-- EditWorkspace.svelte
+- GraphEditor.svelte
 - Section 5 · Eye Catchers · מילות שלילה
 - What You Must Do When Invoked
 - section: eye-catchers-negatives
@@ -64,7 +64,6 @@
 - Section 23 · YES או NO
 - Section 24 · סיבה, הסבר, דוגמה
 - Section 25 · בנק הדוגמאות ואורך התשובה
-- GraphEditor.svelte
 - eye catchers - names and numbers.spec.bak.md
 - c.4.2c
 - Section 10 · רב-ברירה ואלימינציה
@@ -114,19 +113,19 @@
 ## Surprising Connections (you probably didn't know these)
 - `RTL Hebrew Document Layout` --semantically_similar_to--> `Bagrut English Prep App (Mission)`  [INFERRED] [semantically similar]
   front/src/app.html → agents.md
-- `totalQuestions` --calls--> `countQuestions()`  [EXTRACTED]
-  front/src/lib/lesson-screens/LessonRunner.svelte → front/src/lib/lesson-screens/types.ts
 - `get-documentation Tool` --semantically_similar_to--> `get-documentation Tool`  [INFERRED] [semantically similar]
   front/AGENTS.md → front/.github/agents/svelte-file-editor.agent.md
 - `list-sections Tool` --semantically_similar_to--> `list-sections Tool`  [INFERRED] [semantically similar]
   front/AGENTS.md → front/.github/agents/svelte-file-editor.agent.md
 - `svelte-autofixer Tool` --semantically_similar_to--> `svelte-autofixer Tool`  [INFERRED] [semantically similar]
   front/AGENTS.md → front/.github/agents/svelte-file-editor.agent.md
+- `Svelte MCP Server (Project Config)` --semantically_similar_to--> `Svelte MCP Server`  [INFERRED] [semantically similar]
+  front/AGENTS.md → front/.github/agents/svelte-file-editor.agent.md
 
 ## Import Cycles
 - None detected.
 
-## Communities (89 total, 16 thin omitted)
+## Communities (88 total, 16 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -148,9 +147,9 @@ Nodes (18): @capacitor/core, dependencies, @capacitor/core, @lucide/svelte, name
 Cohesion: 0.16
 Nodes (12): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+4 more)
 
-### Community 5 - "EditWorkspace.svelte"
-Cohesion: 0.12
-Nodes (13): post(), saveLessonContent(), saveSection(), storedKey(), errorCount, hint, issues, issuesFor (+5 more)
+### Community 5 - "GraphEditor.svelte"
+Cohesion: 0.06
+Nodes (20): post(), saveLessonContent(), saveSection(), storedKey(), errorCount, hint, issues, issuesFor (+12 more)
 
 ### Community 6 - "Section 5 · Eye Catchers · מילות שלילה"
 Cohesion: 0.06
@@ -233,8 +232,8 @@ Cohesion: 0.20
 Nodes (10): 4.c.20.1 · בלי פועל אין משפט, 4.c.20.2 · מצא את הפועל, 4.c.20.3 · יחיד ורבים, 4.c.20.4 · זמנים — `I was think`, 4.c.20.5 · בלי `the` בהכללה, 4.c.20.6 · `because` דורש פסוקית שלמה, 4.c.20.7 · מילה, צירוף, משפט, 4.c.20.8 · ארבעה משפטים, ארבעה פעלים (+2 more)
 
 ### Community 41 - "EditModel"
-Cohesion: 0.12
-Nodes (4): clone(), EditModel, screenList(), blankScreen()
+Cohesion: 0.11
+Nodes (5): clone(), EditModel, screenList(), blankScreen(), getLessonsBySection()
 
 ### Community 43 - "Section 17 · בנק מילים · חברה וקהילה"
 Cohesion: 0.22
@@ -271,10 +270,6 @@ Nodes (8): 4.c.24.1 · התבנית, 4.c.24.2 · סיבה אינה דוגמה, 4
 ### Community 51 - "Section 25 · בנק הדוגמאות ואורך התשובה"
 Cohesion: 0.25
 Nodes (8): 4.c.25.1 · חמש הדוגמאות הכלליות, 4.c.25.2 · התאמת דוגמה לנושא, 4.c.25.3 · דוגמה אחת לכל סיבה, 4.c.25.4 · לספור מילים באמת, 4.c.25.5 · בלי משפטים מעורפלים, 4.c.25.6 · תשובה מלאה בזמן, 4.c.25.7 · שער סקשן 25, Section 25 · בנק הדוגמאות ואורך התשובה
-
-### Community 52 - "GraphEditor.svelte"
-Cohesion: 0.12
-Nodes (7): bands, canvasHeight, nodePointerMove(), nodePointerUp(), pick(), selectedId, wrapPointerMove()
 
 ### Community 53 - "eye catchers - names and numbers.spec.bak.md"
 Cohesion: 0.10
@@ -329,8 +324,8 @@ Cohesion: 0.40
 Nodes (5): 1 (vefore c.4.1, after c.3.4), examples, message, preface, questions
 
 ### Community 67 - "LessonRunner.svelte"
-Cohesion: 0.11
-Nodes (15): currentPath, currentScreen, editHref, footerDisabled, footerLabel, isLastScreen, justFinished, passed (+7 more)
+Cohesion: 0.12
+Nodes (14): currentPath, currentScreen, editHref, footerDisabled, footerLabel, isLastScreen, justFinished, passed (+6 more)
 
 ### Community 68 - "changes"
 Cohesion: 0.29
@@ -393,11 +388,11 @@ Cohesion: 0.29
 Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
 
 ### Community 87 - "lessons/+page.svelte"
-Cohesion: 0.25
+Cohesion: 0.20
 Nodes (3): EditStore, PALETTE, SectionTheme
 
 ## Knowledge Gaps
-- **525 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `Issue` (+520 more)
+- **525 isolated node(s):** `Issue`, `MarkAllSegment`, `LessonScore`, `LessonSession`, `MarkAllCategory` (+520 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -410,7 +405,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `mission`, `workflow`, `persona` to the rest of the system?**
+- **What connects `Issue`, `MarkAllSegment`, `LessonScore` to the rest of the system?**
   _525 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
