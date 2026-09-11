@@ -10,7 +10,7 @@
 - before adding/editing lesson content, read docs/lesson-structure.md (file map, builders, screen types, path rules) instead of re-reading the source
 
 # persona
-- you're VERY consice. you sacrifice grammer for the sake of brevity
+- you're brief when speaking to me.
 - follow "YAGNI" principles. you can ask as many questions you need to clarify requirements
 - follow seperation of concerns principle
 
