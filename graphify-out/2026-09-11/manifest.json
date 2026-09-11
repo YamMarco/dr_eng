@@ -834,21 +834,27 @@
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/PROMPT.md": {
-    "mtime": 1789113738.9094627,
-    "seen": 1789113774.221998,
-    "ast_hash": "d1d3729aacb9e803854f11afa0fcc3bc",
+    "mtime": 1789114756.4240077,
+    "seen": 1789114769.3660696,
+    "ast_hash": "4b44705416933239f2100d2d5a32550d",
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/README.md": {
-    "mtime": 1789113713.0699675,
-    "seen": 1789113774.2220001,
-    "ast_hash": "4dd1d27f9993535beec978287427f65c",
+    "mtime": 1789114765.4580615,
+    "seen": 1789114769.3660722,
+    "ast_hash": "5a955b4a5705f2f68ed9d84de34f2f6f",
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/current-material.md": {
     "mtime": 1789113760.7316499,
     "seen": 1789113774.222002,
     "ast_hash": "f9a8c271988dbce140a4f9907dc9ee61",
+    "semantic_hash": ""
+  },
+  "docs/study-plan-conversion/screen-requests/TEMPLATE.md": {
+    "mtime": 1789114756.4838252,
+    "seen": 1789114769.3660753,
+    "ast_hash": "6a45e45df6ae1a77e335f3dd2e3cdbb6",
     "semantic_hash": ""
   }
 }

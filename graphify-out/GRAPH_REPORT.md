@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6c616aff`
+- Built from commit: `c0971e80`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -397,7 +397,7 @@ Cohesion: 0.25
 Nodes (3): EditStore, PALETTE, SectionTheme
 
 ## Knowledge Gaps
-- **525 isolated node(s):** `Before you start`, `Input`, `The two rules that shape everything`, `1. Placement`, `2. Lesson list` (+520 more)
+- **525 isolated node(s):** `mission`, `workflow`, `persona`, `graphify`, `Issue` (+520 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -410,7 +410,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `Before you start`, `Input`, `The two rules that shape everything` to the rest of the system?**
+- **What connects `mission`, `workflow`, `persona` to the rest of the system?**
   _525 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
