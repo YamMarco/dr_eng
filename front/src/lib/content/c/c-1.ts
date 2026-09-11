@@ -53,12 +53,12 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "passage-mcq",
-              text: "Dogs are one of the most popular pets in the world. They were first tamed from wolves thousands of years ago. Today, there are more than 400 different breeds of dog.",
+              text: "עוד תרגיל- תקראו את הפסקה הבאה ותענו על השאלה :\n\nDogs are one of the most popular pets in the world. They were first tamed from wolves thousands of years ago. Today, there are more than 400 different breeds of dog.",
               questions: [
                 {
                   prompt:
-                    "השאלה: When were dogs first tamed? - מה המילה שאתם מחפשים בטקסט?",
-                  options: ["popular", "tamed / first", "breeds", "world"],
+                    "השאלה: When were dogs first tamed?\n\nמה המילה שאתם מחפשים בטקסט?",
+                  options: ["popular", "tamed ", "breeds", "world"],
                   correctIndex: 1,
                 },
                 {
