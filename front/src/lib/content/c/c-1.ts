@@ -41,8 +41,8 @@ export const c1Lessons: LessonNode[] = [
         {
           type: "steps",
           steps: [
-            'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live ולא elephant',
-            "לא קוראים מההתחלה - סורקים ומחפשים live בטקסט.",
+            'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live ולא elephant כי הבנו שהפסקה כן מדברת על הפילים.',
+            " קוראים פעם אחת בכדי להבין. אחרי זה הולכים לשאלה ולא קוראים שוב מההתחלה - סורקים ומחפשים live בטקסט.",
             'מצאנו: "They live in Africa and Asia".',
             "כותבים: They live in Africa and Asia. - 8 שניות, בלי לקרוא את כל הפסקה.",
           ],
