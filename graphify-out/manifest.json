@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1788785294.374529,
-    "seen": 1788785306.9720578,
-    "ast_hash": "c7c3f5a499a44ac0f178f18e6d0f8289",
+    "mtime": 1789128182.6415956,
+    "seen": 1789128220.613195,
+    "ast_hash": "ad6e78701242a03920804c95ae71e67a",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -810,27 +810,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditableScreen.svelte": {
-    "mtime": 1788713195.24503,
-    "seen": 1788713299.2978613,
-    "ast_hash": "3583aac2a60a50289dc53d10602f1f8e",
+    "mtime": 1789128007.6020172,
+    "seen": 1789128220.6128805,
+    "ast_hash": "037bfec885b55e7013ae937f62ae8c34",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditorView.svelte": {
-    "mtime": 1788972158.0981696,
-    "seen": 1788972173.7778704,
-    "ast_hash": "3cf86ff993916f2819ca7b260051d784",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/ScreenCarousel.svelte": {
-    "mtime": 1789116057.2085118,
-    "seen": 1789116083.5140078,
-    "ast_hash": "f8133e0aac75bd422c33e5742254f48f",
-    "semantic_hash": ""
-  },
-  "front/src/lib/content-edit/ScreenToaster.svelte": {
-    "mtime": 1789116067.6463187,
-    "seen": 1789116083.5140142,
-    "ast_hash": "b928eca47c31ac45a464bec6bcfda846",
+    "mtime": 1789127994.159981,
+    "seen": 1789128220.6128867,
+    "ast_hash": "a257e0d7c72186a42f6c66c0d2dcbe35",
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/PROMPT.md": {
@@ -873,6 +861,24 @@
     "mtime": 1789115942.1084342,
     "seen": 1789116083.5145345,
     "ast_hash": "81e697fd763ed9689883fad9383698d0",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/SlideFilmstrip.svelte": {
+    "mtime": 1789127910.9189684,
+    "seen": 1789128220.6128926,
+    "ast_hash": "e18fb93387b2e10dc0e0a5fd4deee194",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/SlideStage.svelte": {
+    "mtime": 1789128041.2532048,
+    "seen": 1789128220.6128953,
+    "ast_hash": "273cb942c592905079f5048312a63af6",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/screenSnippet.ts": {
+    "mtime": 1789128041.2696953,
+    "seen": 1789128220.6129298,
+    "ast_hash": "31e01e61418091b6f98be5d63c979f7e",
     "semantic_hash": ""
   }
 }
