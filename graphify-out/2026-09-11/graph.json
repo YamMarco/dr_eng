@@ -1379,7 +1379,7 @@
       "file_type": "code",
       "norm_label": "ii()",
       "source_file": "front/src/lib/content-edit/SlideFilmstrip.svelte",
-      "source_location": "L126"
+      "source_location": "L144"
     },
     {
       "id": "front_src_lib_content_index_getlessonsbysection",
@@ -19972,7 +19972,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/SlideFilmstrip.svelte",
-      "source_location": "L126",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -23893,6 +23893,18 @@
       "weight": 1.0
     },
     {
+      "source": "front_src_lib_content_edit_lessoneditorview",
+      "target": "front_src_lib_content_edit_editmodel_svelte_editmodel_node",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "collection",
+      "source_file": "front/src/lib/content-edit/LessonEditorView.svelte",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
       "source": "front_src_lib_lesson_screens_lessonrunner",
       "target": "front_src_lib_lesson_screens_lessonrunner_advance",
       "relation": "indirect_call",
@@ -24721,5 +24733,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "04461e6f0d6659b32d4244b47ad2dd68caabbd84"
+  "built_at_commit": "ea0f4be4c647a6a9b3db6ac3ce5385389fd1945d"
 }

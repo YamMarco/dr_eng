@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/LessonEditorView.svelte": {
-    "mtime": 1789130117.9505918,
-    "seen": 1789130283.1266477,
-    "ast_hash": "a257e0d7c72186a42f6c66c0d2dcbe35",
+    "mtime": 1789130919.0653288,
+    "seen": 1789131210.3582377,
+    "ast_hash": "b508983f41ceb856348cda9d8c48fced",
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/PROMPT.md": {
@@ -864,9 +864,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideFilmstrip.svelte": {
-    "mtime": 1789130143.182299,
-    "seen": 1789130283.126654,
-    "ast_hash": "ec81fbcd91ffcc2b86a75b708bd89431",
+    "mtime": 1789131481.9397213,
+    "seen": 1789131908.3574862,
+    "ast_hash": "0c930e005d19ea5066123627cd12785d",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideStage.svelte": {

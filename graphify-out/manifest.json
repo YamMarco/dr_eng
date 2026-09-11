@@ -660,15 +660,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/miniMarkdown.ts": {
-    "mtime": 1788525132.4806595,
-    "seen": 1788525264.1781447,
-    "ast_hash": "fbacba03c4205ae523244a4f20c17af1",
+    "mtime": 1789132301.3397987,
+    "seen": 1789132582.6049008,
+    "ast_hash": "7bad7325533cf22a4863294dd0a36145",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/MarkdownInput.svelte": {
-    "mtime": 1789129399.8393836,
-    "seen": 1789129606.4875958,
-    "ast_hash": "9ea0bae5111a46a161a939182d330a19",
+    "mtime": 1789132326.2217247,
+    "seen": 1789132582.6047382,
+    "ast_hash": "fc34152fdb6e866a29110d14cfb4a3d3",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenPath.ts": {
@@ -864,21 +864,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideFilmstrip.svelte": {
-    "mtime": 1789130939.8991516,
-    "seen": 1789131210.3582692,
-    "ast_hash": "2e01301061bc92c6159ed00752456f43",
+    "mtime": 1789132417.9197567,
+    "seen": 1789132582.6047423,
+    "ast_hash": "da5bb82346d69e1a22dcadf0f958a745",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideStage.svelte": {
-    "mtime": 1789129503.0478792,
-    "seen": 1789129606.4876018,
-    "ast_hash": "75e33836a14b464012ac0a212a1938fa",
+    "mtime": 1789132418.4919796,
+    "seen": 1789132582.6047447,
+    "ast_hash": "2c2362f9081e5cb4312711658ec6b2c9",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/activeField.svelte.ts": {
-    "mtime": 1789129384.4939082,
-    "seen": 1789129606.4876041,
-    "ast_hash": "6805e495bcde30cc0958f42bc140d217",
+    "mtime": 1789132338.9777782,
+    "seen": 1789132582.604747,
+    "ast_hash": "7d34087a3a9c077fae09bec011ea578e",
     "semantic_hash": ""
   }
 }
