@@ -5,6 +5,7 @@
 	// the canvas (EditableScreen). Detachable — part of src/lib/content-edit/.
 	import { editModel } from './editModel.svelte';
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
+	import { typeHe } from './screenTypeNames';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
@@ -128,7 +129,7 @@
 			>
 				{#each SCREEN_TYPE_GROUPS as g (g.label)}
 					<optgroup label={g.label}>
-						{#each g.types as t (t)}<option value={t}>{t}</option>{/each}
+						{#each g.types as t (t)}<option value={t}>{typeHe(t)}</option>{/each}
 					</optgroup>
 				{/each}
 			</select>
