@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-11)
 
 ## Corpus Check
-- 143 files · ~104,778 words
+- 143 files · ~105,058 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 992 nodes · 1203 edges · 94 communities (75 shown, 19 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.88)
+- 992 nodes · 1204 edges · 94 communities (75 shown, 19 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 24 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `04461e6f`
+- Built from commit: `1a2edb7a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -410,7 +410,7 @@ Cohesion: 0.50
 Nodes (3): הכללים שיוצאים מזה, הקול והסגנון, ככה זה נשמע - מתוך השיעור הראשון באפליקציה
 
 ## Knowledge Gaps
-- **534 isolated node(s):** `ActiveField`, `Issue`, `MarkAllSegment`, `MarkAllCategory`, `MarkAllScreen` (+529 more)
+- **534 isolated node(s):** `Issue`, `MarkAllSegment`, `MarkAllCategory`, `MarkAllScreen`, `MarkWordScreen` (+529 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **19 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -423,7 +423,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `ActiveField`, `Issue`, `MarkAllSegment` to the rest of the system?**
+- **What connects `Issue`, `MarkAllSegment`, `MarkAllCategory` to the rest of the system?**
   _534 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
