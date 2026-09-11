@@ -1,52 +1,54 @@
-# Screen request - `<type-name>`
+# תבנית לבקשת סוג מסך חדש
 
-Copy this file to `<type-name>.md` and fill it in. One file per requested screen
-type. This is a spec for a human or a later implementation pass - do not write
-the component yourself.
+הקובץ הזה הוא תבנית. Claude ממלא עותק שלה בשם המסך המבוקש, למשל `drag-order.md`,
+ומשאיר אותו כאן בתיקייה.
 
-## Why
+**למורה: אם נוצר פה קובץ חדש - שלח אותו ליַם.** זה אומר שהחומר שלך דרש סוג תרגיל
+שהאפליקציה עדיין לא יודעת להציג. אין מה לעשות עם הקובץ חוץ מלשלוח אותו.
 
-What the study plan asks for, and why no existing type in
-`docs/lesson-structure.md` covers it. Name the closest existing type and what it
-is missing.
+---
 
-## Who needs it
+# בקשת מסך - `<שם-המסך>`
 
-Lessons and rounds that use it, by lesson id.
+## למה
 
-## Fallback shipped meanwhile
+מה החומר דורש, ולמה אף מסך קיים לא מספיק. תגיד מה המסך הקיים הכי קרוב ומה חסר בו.
 
-Which existing type the blueprint uses instead, and what is lost.
+## מי צריך את זה
 
-## Shape
+אילו שיעורים וסיבובים משתמשים בו.
+
+## מה עושים בינתיים
+
+איזה מסך קיים משמש כחלופה בחומר שנמסר, ומה מאבדים בגללה.
+
+## השדות
 
 ```ts
 {
-  type: '<type-name>';
-  // every field, with a comment on what it holds
+  type: '<שם-המסך>';
+  // כל שדה, עם הערה על מה הוא מחזיק
 }
 ```
 
-## Behaviour
+## התנהגות
 
-- what the learner sees
-- what the learner does
-- what advances the screen
+- מה התלמיד רואה
+- מה התלמיד עושה
+- מה מעביר למסך הבא
 
-## Scoring
+## ניקוד
 
-- how many questions it counts for in `countQuestions()`
-- what counts as correct; how lenient
-- what `isScreenEmpty()` should return false on
+- כמה שאלות זה נחשב ב-`countQuestions()`
+- מה נחשב נכון, וכמה מקלים
+- מתי `isScreenEmpty()` מחזיר false
 
-## Implementation checklist
+## צ׳ק ליסט מימוש
 
-Per `docs/lesson-structure.md` "Adding a screen type":
-
-1. shape in `lesson-screens/types.ts` → `LessonScreen` union → `isScreenEmpty()`
-   + `countQuestions()` cases
-2. component in `lesson-screens/<Name>.svelte`: props
-   `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }`, plus
-   `export function primaryAction()`
-3. register in `lesson-screens/registry.ts`
-4. badge string in `i18n/locales/he.ts` under `exerciseKind` - give the Hebrew text here
+1. הוספת הצורה ל-`lib/lesson-screens/types.ts`, לאיחוד `LessonScreen`, ומקרים
+   ב-`isScreenEmpty()` וב-`countQuestions()`
+2. קומפוננטה ב-`lib/lesson-screens/<Name>.svelte` עם
+   `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }`
+   ו-`export function primaryAction()`
+3. רישום ב-`lib/lesson-screens/registry.ts`
+4. תווית בעברית ב-`i18n/locales/he.ts` תחת `exerciseKind` - כתוב פה את הטקסט המוצע

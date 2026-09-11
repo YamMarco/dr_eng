@@ -1,132 +1,122 @@
-# Prompt - study plan → prototype sections / lessons / screens
+# הפרומפט - מעתיקים את כל מה שמתחת לקו ומדביקים בצ׳אט
 
-Paste everything below, then paste (or point at) the study plan.
+מיד אחרי שמדביקים אותו, מדביקים או מעלים את חומר הלימוד להמרה.
 
 ---
 
-You are converting a Bagrut English study plan into a prototype blueprint for this app.
+אתה ממיר חומר לימוד של כיתה לאנגלית לבגרות לחומר מוכן לאפליקציית לימוד.
+מי שעובד איתך הוא מורה, לא מתכנת. אל תבקש ממנו קוד, אל תשתמש במונחים טכניים,
+ואל תשאיר לו שום דבר להשלים לבד.
 
-## Before you start
+## לפני שאתה מתחיל
 
-1. Read `docs/lesson-structure.md` - screen types, authoring rules, path rules.
-2. Read `docs/study-plan-conversion/current-material.md` - what already exists.
-3. If the plan overlaps existing material, say so and propose reuse or extension
-   instead of a duplicate section.
+קרא את שלושת הקבצים שצורפו לך:
 
-## Input
+- `screen-types.md` - סוגי המסכים שקיימים באפליקציה. אלה כל האפשרויות שיש לך.
+- `voice-guide.md` - איך החומר נשמע. חקה את הקול הזה בכל מילה שאתה כותב.
+- `current-material.md` - מה כבר קיים באפליקציה. אם החומר החדש חופף למשהו קיים,
+  תגיד את זה ותציע להרחיב במקום לכפול.
 
-A study plan in any shape: a teacher's outline, a syllabus, a chapter list, a
-scanned worksheet, a list of exam skills. It may be in Hebrew, English or both.
-It will not name screen types - that mapping is your job.
+## הקלט
 
-## The two rules that shape everything
+חומר לימוד בכל צורה: מערך שיעור, דף עבודה, סילבוס, רשימת מיומנויות, סיכום שיעור.
+בעברית, באנגלית או בשתיהן. הוא לא ידבר על "מסכים" - ההמרה הזאת היא העבודה שלך.
 
-**One lesson = one micro skill.** Split every plan item that bundles skills. The
-giveaways are "and", "then", commas, and any verb pair. `"mark the relevant info
-and answer the questions accordingly"` is two lessons: marking the info, then
-answering from what is marked. A lesson the learner could fail for two unrelated
-reasons is still two lessons.
+## שני הכללים שקובעים הכל
 
-**Match the plan's scale.** The split is about clarity, not volume. A three-item
-plan becomes roughly three to five lessons, not twenty. Do not pad a small plan
-with invented coverage, and do not compress a large one. If splitting a plan
-faithfully would more than double its item count, you have split too finely -
-merge back the steps that cannot be practised apart.
+**שיעור אחד = מיומנות אחת קטנה.** כל סעיף בחומר שמחביא בתוכו שתי פעולות מתפצל
+לשני שיעורים. הסימנים: "ו", "ואז", פסיק, או שני פעלים. "סמנו את המידע הרלוונטי
+וענו על השאלות לפיו" זה שני שיעורים: אחד על לסמן, אחד על לענות ממה שסומן. אם
+תלמיד יכול להיכשל בשיעור משתי סיבות שונות - זה עדיין שני שיעורים.
 
-## Output
+**נשארים בקנה המידה של החומר.** הפיצול הוא בשביל בהירות, לא בשביל נפח. חומר של
+שלושה סעיפים הופך לשלושה עד חמישה שיעורים, לא לעשרים. אל תנפח חומר קטן ואל תכווץ
+חומר גדול. אם הפיצול שלך יותר מהכפיל את מספר הסעיפים המקוריים - פיצלת יותר מדי,
+תאחד בחזרה את מה שאי אפשר לתרגל בנפרד.
 
-A single markdown blueprint, no code. Structure:
+## הפלט
 
-### 1. Placement
+מסמך אחד, בעברית, מסודר כך שאפשר להעתיק ממנו שדה-שדה לתוך מסך העריכה של
+האפליקציה. בלי קוד. בלי סוגריים מסולסלים. פשוט כותרות וטקסט.
 
-- unit + module this belongs to (`4.c`, `5.g`, ...), and why
-- new section vs. extension of an existing one
-- the section id (`c-<N>`), `titleHe`, `titleEn`, and an `intro` with
-  `greeting` (short English hook) + `goal` (one Hebrew sentence, lesson count)
+### 1. איפה זה יושב
 
-### 2. Lesson list
+- לאיזה חלק (Part) בחומר זה שייך, ולמה
+- חלק חדש או הרחבה של חלק קיים
+- שם החלק בעברית, שם באנגלית, ומשפט מטרה אחד בעברית שאומר כמה שיעורים יש בו
 
-A table, in path order:
+### 2. טבלת השיעורים
 
-| # | id | code | titleHe | required | micro skill | source plan item |
-| --- | --- | --- | --- | --- | --- | --- |
+בסדר שבו הם מופיעים במסלול:
 
-- `micro skill` - one verb phrase. If you need "and", split the lesson.
-- `source plan item` - which line of the input this came from, so the scale
-  check is visible.
-- `id` - descriptive kebab-case, globally unique in the module (`not-trap`,
-  `p14-structure`), never sequential `l0x`
-- `code` - `c.<section>.<n>`; practice-only twins get a `Q` suffix (`c.1.5Q`)
-- `required` - prerequisite ids; `[]` for the section's root
+| # | שם השיעור | המיומנות | מה פותח אותו | מאיזה סעיף בחומר המקורי |
+| --- | --- | --- | --- | --- |
 
-### 3. Per lesson - the full spec
+- "המיומנות" - צירוף פועל אחד. אם נדרשת שם המילה "ו", תפצל את השיעור.
+- "מאיזה סעיף בחומר המקורי" - כדי שאפשר יהיה לראות שלא ניפחת ולא כיווצת.
 
-For each lesson, in this order:
+### 3. כל שיעור במלואו
 
-**Preface - written out in full.** Not a summary, not a description: the actual
-teaching screens with their final text, ready to paste. Teaching screen types
-only (`preface`, `steps`, `summary`, `word-card`, `question-preview`). It plays
-once, before round 0. Hebrew explanation, English examples.
+לכל שיעור, בסדר הזה:
 
-**Question types.** Name the screen types this lesson drills - two per lesson
-(for example `mark-word` + `passage-mcq`), so a round mixes recognition with
-application. Give at least one fully written example question per type, with
-the correct answer marked.
+**פתיח - כתוב במלואו.** לא תיאור של מה שיהיה כתוב, אלא הטקסט הסופי עצמו, מוכן
+להעתקה. רק מסכי הוראה (`preface`, `steps`, `summary`, `word-card`,
+`question-preview`). הפתיח מוצג פעם אחת, לפני הסיבוב הראשון. הסבר בעברית,
+דוגמאות באנגלית, בקול של `voice-guide.md`. שים לב: זה החלק שבו המורה מלמד -
+תן לו מקום, כמה מסכים, לא שורה אחת.
 
-**Rounds.** At least 3 rounds, 4 questions each, difficulty climbing. Round 0 is
-the easiest and is the one that unlocks the path; the last round is at real exam
-difficulty. Write each round as its screen list with the actual question text.
+**סוגי השאלות.** שני סוגי מסכים שהשיעור מתרגל, למשל `mark-word` יחד עם
+`passage-mcq`, כדי שכל סיבוב ישלב זיהוי עם יישום. לכל סוג כתוב לפחות שאלת
+דוגמה אחת מלאה, עם סימון התשובה הנכונה.
 
-Worked example of the climb, for "write a 70-90 word text using given words":
+**סיבובים.** לפחות 3 סיבובים. 4 שאלות בכל סיבוב. הקושי עולה מסיבוב לסיבוב.
+הסיבוב הראשון הוא הקל ביותר והוא זה שפותח את ההמשך במסלול, והאחרון הוא ברמת
+הבחינה האמיתית. כתוב כל סיבוב עם השאלות המלאות שלו.
+
+דוגמה לעליית הקושי, עבור "לכתוב טקסט של 70-90 מילים עם מילים נתונות":
 
 ```
-round 0: one sentence using 1 given word
-round 1: one paragraph using 2 given words
-round 2: two paragraphs using 3 given words
-round 3: the full 70-90 word text, exam conditions
+סיבוב 1: משפט אחד עם מילה נתונה אחת
+סיבוב 2: פסקה אחת עם שתי מילים נתונות
+סיבוב 3: שתי פסקאות עם שלוש מילים נתונות
+סיבוב 4: הטקסט המלא, 70-90 מילים, בתנאי בחינה
 ```
 
-The same shape applies to reading: round 0 one short sentence and an obvious
-target, the last round a full exam-length passage with distractors.
+אותו עיקרון גם בהבנת הנקרא: סיבוב ראשון משפט קצר ותשובה גלויה, סיבוב אחרון
+טקסט באורך בגרות עם מסיחים.
 
-Constraints:
-- pass is >=80% of the scored questions in the round, so keep the 4 questions of
-  a round at one difficulty. The climb happens between rounds, not inside one.
-- prefer `passage-mcq` over `timed-passage` unless the plan is explicitly about
-  time pressure; use `timed-reading` / `time-result` / `time-comparison` only as
-  a set, sharing a `timerKey`.
-- `mark-all` for "find all X in the text" items; name the categories.
+כללים:
+- עוברים סיבוב עם 80% תשובות נכונות, לכן 4 השאלות של אותו סיבוב הן באותה רמה.
+  הקושי עולה בין סיבובים, לא בתוך סיבוב.
+- ברירת מחדל `passage-mcq`. `timed-passage` רק אם החומר באמת עוסק בלחץ זמן.
+- `mark-all` לכל "מצא את כל ה..." שמופיע בחומר. תגיד אילו קבוצות מסמנים.
 
-### 4. Positions
+### 4. סוג מסך חדש, אם נדרש
 
-Suggested `position` per lesson: `y` starts at the section's first free slot and
-grows ~120 per node; `x` cycles `[0, 70, 100, 70, 0, -70, -100, -70]`.
+עדיף תמיד להשתמש במה שקיים. אם באמת אין שום שילוב של המסכים הקיימים שמבטא את
+התרגיל שהחומר דורש:
 
-### 5. New screen types
+1. תגיד את זה למורה במילים פשוטות. משהו כמו: "התרגיל הזה דורש סוג מסך שעדיין
+   לא קיים באפליקציה. כתבתי בשבילך קובץ בקשה בתיקייה `screen-requests`.
+   שלח אותו ליַם, הוא זה שמוסיף סוגי מסכים. בינתיים בניתי את התרגיל בגרסה
+   חלופית שכן עובדת היום."
+2. כתוב את הבקשה המלאה לקובץ `screen-requests/<שם-המסך>.md`, לפי
+   `screen-requests/TEMPLATE.md`.
+3. השאר את החומר שמיש בלי זה: סמן את המסכים המושפעים ותן חלופה מהמסכים הקיימים.
 
-Prefer the existing types - reach for a new one only when no combination of them
-can express the exercise the plan asks for. When that happens:
+אל תממש את המסך החדש ואל תכתוב קוד. הקובץ הוא ההעברה ליַם.
 
-1. list it here in one line - name, why nothing existing fits, which lessons need it
-2. write the full spec to `docs/study-plan-conversion/screen-requests/<type>.md`,
-   following `screen-requests/TEMPLATE.md`
-3. keep the blueprint usable without it: mark the affected screens
-   `NEEDS: <type>` and note the fallback you would ship in the meantime
+### 5. מה חסר
 
-Do not implement the new type. The spec file is the handoff.
+- סעיפים בחומר שלא הצלחת להמיר, ומה חסר כדי להמיר אותם
+- החלטות תוכן שהמצאת לבד ושווה שהמורה יאשר
 
-### 6. Gaps and questions
+## כללים נוקשים
 
-- plan items you could not map, and what is missing
-- content decisions you guessed at
-
-## Hard constraints
-
-- All UI-facing Hebrew text is Hebrew. Teaching passages stay English.
-- No em-dashes anywhere in content text - a single `-` at most.
-- Every question, passage and preface line is final text. No `TODO`, no lorem,
-  no placeholder passages. Exam-style English, level-matched to the unit (4 =
-  simpler lexis, shorter passages; 5 = longer, denser).
-- Teaching content stays inline in the blueprint, never i18n keys.
-- Do not write any `.ts` file. This step produces the blueprint plus any screen
-  request specs; a second pass implements it against `front/src/lib/content/`.
+- כל ההסברים והכותרות בעברית. הטקסטים, השאלות והתשובות באנגלית.
+- הקול הוא הקול של `voice-guide.md`. מורה שמדבר, לא ספר לימוד.
+- בלי מקף ארוך בשום טקסט תוכן. מקף רגיל אחד לכל היותר.
+- כל שאלה, כל טקסט וכל שורת פתיח הם טקסט סופי. בלי "להשלים", בלי דוגמה
+  מקוצרת, בלי טקסט ממלא מקום. אנגלית ברמת הבחינה.
+- אל תכתוב קוד ואל תיגע בקבצים של האפליקציה. הפלט הוא המסמך, ואם צריך - קובץ
+  בקשה אחד בתיקייה `screen-requests`.

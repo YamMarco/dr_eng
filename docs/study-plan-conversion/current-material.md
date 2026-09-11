@@ -1,59 +1,51 @@
-# Current material - unit → module
+# מה כבר קיים באפליקציה
 
-Snapshot of what the app covers today. Update when a module gains or loses
-content. Source: `front/src/lib/curriculum.ts`, `front/src/lib/content/`.
+כדי לא לכפול חומר שכבר נכתב. אם החומר החדש נוגע במשהו מהרשימה הזאת - עדיף להרחיב
+את השיעור הקיים במקום לפתוח אחד חדש.
 
-Material code reads `unit.module.section.lesson` - `4.c.1.2` = unit 4, module c,
-section 1, lesson 2.
+המבנה באפליקציה: יחידה ← מודול ← חלק ← שיעור. הקוד `c.1.2` אומר: מודול C, חלק 1,
+שיעור 2.
 
-## Units and their modules
+## המודולים
 
-| unit | module | tabs | content |
-| --- | --- | --- | --- |
-| 4 | **C** | טקסט, חיבור | built - 3 sections, 23 lessons |
-| 4 | **E** | טקסט, מילים | empty |
-| 4 | **COBE** | - | empty, no sections defined |
-| 5 | **E** | טקסט, מילים | empty |
-| 5 | **G** | טקסט, חיבור | empty |
-| 5 | **COBE** | - | empty, no sections defined |
+| יחידה | מודול | מה יש בו היום |
+| --- | --- | --- |
+| 4 | **C** | בנוי. 3 חלקים, 23 שיעורים |
+| 4 | **E** | ריק |
+| 4 | **COBE** | ריק |
+| 5 | **E** | ריק |
+| 5 | **G** | ריק |
+| 5 | **COBE** | ריק |
 
-Module E appears in both unit groups; module C is unit 4 only, G is unit 5 only.
+כל מודול שאינו C הוא שטח פתוח לגמרי: חומר שמיועד אליו פותח בו את חלק 1.
 
-## Module C - the only module with content
+## מודול C - המודול היחיד עם תוכן
 
-Three sections, one per Part of the Module C programme.
+| חלק | שם | כמה שיעורים |
+| --- | --- | --- |
+| 1 | חלק א׳ - הבנת הנקרא | 13 |
+| 2 | חלק ב׳ - אוצר מילים | 4 |
+| 3 | חלק ג׳ - כתיבה | 6 |
 
-| section | titleHe | titleEn | lessons | file |
-| --- | --- | --- | --- | --- |
-| `c-1` | חלק א׳ - הבנת הנקרא | Part A - Reading Skills | 13 | `content/c/c-1.ts` |
-| `c-2` | חלק ב׳ - אוצר מילים | Part B - Vocabulary | 4 | `content/c/c-2.ts` |
-| `c-3` | חלק ג׳ - כתיבה | Part C - Writing | 6 | `content/c/c-3.ts` |
+### חלק א׳ - הבנת הנקרא
 
-### c-1 - reading skills (`c.1.1` … `c.1.12`)
+קודם גישה ואסטרטגיה, אחר כך מילות מלכודת, ואז סוגי השאלות. לשלושה משיעורי
+המלכודת יש שיעור תרגול צמוד (הקוד שלו נגמר ב-Q).
 
-Strategy first, then trap words, then question formats. Three of the trap-word
-lessons have a paired practice-only lesson (`Q` suffix).
+אני מחפש, לא קורא · מפת הדרכים · שיטת הרמזור · P1 - ניווט בטקסט ·
+מגנט לעין - מספרים ושמות (+ תרגול) · NOT - המילה הכי מסוכנת (+ תרגול) ·
+most / only - תשובה אחת (+ תרגול) · however / but - הפנייה · שאלות אמריקאיות ·
+תשובה קצרה · השלמת משפט · שתי תשובות
 
-`אני מחפש, לא קורא` · `מפת הדרכים` · `שיטת הרמזור` · `P1 - ניווט בטקסט` ·
-`מגנט לעין - מספרים ושמות` (+ `c.1.5Q` practice) · `NOT - המילה הכי מסוכנת`
-(+ `c.1.6Q`) · `most / only - תשובה אחת` (+ `c.1.7Q`) · `however / but - הפנייה` ·
-`שאלות אמריקאיות` · `תשובה קצרה` · `השלמת משפט` · `שתי תשובות`
+### חלק ב׳ - אוצר מילים
 
-### c-2 - vocabulary (`c.2.1` … `c.2.4`)
+המילים שחוזרות בכל בחינה.
 
-The words that recur on every exam.
+מילות שאלה · מילות ניווט · מילות תוכן א׳ · מילות תוכן ב׳
 
-`מילות שאלה` · `מילות ניווט` · `מילות תוכן א׳` · `מילות תוכן ב׳`
+### חלק ג׳ - כתיבה
 
-### c-3 - writing (`c.3.1` … `c.3.6`)
+בונה את מטלת ה-70-90 מילים מההתחלה ועד בחינה שלמה.
 
-Builds the 70-90 word task end to end.
-
-`מה רוצים ממני?` · `P14 - נוסחת הכתיבה` · `דקדוק בסיסי` · `70-90 מילים` ·
-`בחינה שלמה - ניהול זמן` · `What changes? - שאלת בגרות`
-
-## Open ground
-
-Everything outside module C. A study plan for module E, G or COBE lands on an
-empty module: it defines section 1 onward from scratch, and `curriculum.ts`
-needs its section tabs filled in for COBE.
+מה רוצים ממני? · P14 - נוסחת הכתיבה · דקדוק בסיסי · 70-90 מילים ·
+בחינה שלמה - ניהול זמן · What changes? - שאלת בגרות

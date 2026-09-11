@@ -1,18 +1,35 @@
-# Study plan → prototype
+# התחל כאן
 
-Turn a raw study plan (teacher notes, a syllabus, a PDF outline) into app-ready
-sections / lessons / screens.
+התיקייה הזאת הופכת חומר לימוד של כיתה (מערך שיעור, דף עבודה, סילבוס, סיכום)
+לחומר מוכן לאפליקציה: חלקים, שיעורים ומסכים שאפשר להעתיק ולהדביק פנימה ידנית.
 
-| file | use |
+לא צריך לדעת לתכנת. אתה רק מדביק טקסט ומקבל טקסט.
+
+## איך עובדים עם זה - 3 צעדים
+
+1. פותחים צ׳אט חדש עם Claude ומעלים אליו את כל התיקייה הזאת (או גוררים אותה
+   לתוך הצ׳אט).
+2. מעתיקים את כל התוכן של `PROMPT.md` ומדביקים בצ׳אט.
+3. מיד אחריו מדביקים (או מעלים) את חומר הלימוד שרוצים להמיר. שולחים.
+
+התוצאה: מסמך מסודר, שיעור אחרי שיעור, מסך אחרי מסך, עם כל הטקסט הסופי -
+מוכן להעתקה ידנית לתוך מסך העריכה של האפליקציה.
+
+## מה יש בתיקייה
+
+| קובץ | למה הוא |
 | --- | --- |
-| `PROMPT.md` | the conversion prompt - paste it, then paste the study plan |
-| `current-material.md` | what the app already covers, unit → module level |
-| `screen-requests/TEMPLATE.md` | spec form for a screen type the plan needs and we lack |
-| `screen-requests/<type>.md` | one filled-in request per proposed screen type |
+| `PROMPT.md` | ההוראות ל-Claude. זה מה שמדביקים |
+| `screen-types.md` | סוגי המסכים שקיימים באפליקציה היום |
+| `voice-guide.md` | סגנון הדיבור של החומר. Claude מחקה אותו |
+| `current-material.md` | מה כבר קיים באפליקציה, כדי לא לכפול חומר |
+| `screen-requests/` | פה Claude יכתוב בקשה לסוג מסך חדש, אם יחסר לו כזה |
 
-Shape of the output: one lesson per micro skill, at the plan's own scale, with
-the preface written out in full and at least 3 rounds of 4 questions climbing to
-real exam difficulty.
+## דבר אחד שחשוב לשים לב אליו
 
-Downstream references the prompt assumes: `docs/lesson-structure.md` (builders,
-screen types, path rules) and `docs/lesson-data-model.md` (the model).
+לפעמים חומר הלימוד ידרוש סוג תרגיל שעדיין לא קיים באפליקציה. במקרה כזה Claude
+יגיד לך את זה במילים פשוטות, יכתוב קובץ חדש בתוך `screen-requests/`, וימשיך
+לעבוד עם חלופה זמנית.
+
+**את הקובץ הזה צריך לשלוח ליַם.** הוא זה שמוסיף את סוג התרגיל לאפליקציה.
+בלי זה החומר עדיין עובד, פשוט בגרסה קצת פחות מדויקת.
