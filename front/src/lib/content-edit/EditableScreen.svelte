@@ -6,6 +6,7 @@
 	// Mutates the live editModel node in place. Detachable — content-edit/.
 	import { editModel } from './editModel.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
+	import StringListEditor from './fields/StringListEditor.svelte';
 	import type { ScreenPath } from './screenPath';
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let { nodeId, path }: { nodeId: string; path: ScreenPath } = $props();
@@ -33,6 +34,43 @@
 	}
 	function removeFrom(key: string, i: number) {
 		screen[key] = screen[key].filter((_: unknown, j: number) => j !== i);
+		touch();
+	}
+
+	// timed-passage / passage-mcq: {prompt, options, correctIndex}[] questions,
+	// edited inline in the same radio-button style as a plain mcq screen.
+	function addMcqQuestion() {
+		screen.questions = [
+			...(screen.questions ?? []),
+			{ prompt: '', options: ['', ''], correctIndex: 0 }
+		];
+		touch();
+	}
+	function removeMcqQuestion(qi: number) {
+		screen.questions = screen.questions.filter((_: unknown, j: number) => j !== qi);
+		touch();
+	}
+	function addMcqOption(qi: number) {
+		screen.questions[qi].options = [...screen.questions[qi].options, ''];
+		touch();
+	}
+	function removeMcqOption(qi: number, oi: number) {
+		screen.questions[qi].options = screen.questions[qi].options.filter(
+			(_: unknown, j: number) => j !== oi
+		);
+		touch();
+	}
+
+	// passage-quiz: {prompt, keywords, answerHint, points?}[] questions.
+	function addKeywordQuestion() {
+		screen.questions = [
+			...(screen.questions ?? []),
+			{ prompt: '', keywords: [''], answerHint: '' }
+		];
+		touch();
+	}
+	function removeKeywordQuestion(qi: number) {
+		screen.questions = screen.questions.filter((_: unknown, j: number) => j !== qi);
 		touch();
 	}
 </script>
@@ -257,7 +295,7 @@
 				onInput={(v) => set('word', v)}
 			/>
 			<p class="text-xs text-muted">מצב ({screen.mode}) - בסרגל התחתון</p>
-		{:else if screen.type === 'timed-reading' || screen.type === 'timed-passage'}
+		{:else if screen.type === 'timed-reading'}
 			<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
 			<MarkdownInput
 				bare
@@ -266,10 +304,11 @@
 				value={screen.text}
 				onInput={(v) => set('text', v)}
 			/>
-			<p class="text-xs text-muted">
-				timerKey{screen.type === 'timed-passage' ? ' + שאלות' : ''} - בסרגל התחתון
-			</p>
-		{:else if screen.type === 'passage-quiz' || screen.type === 'passage-mcq'}
+			<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>
+		{:else if screen.type === 'timed-passage' || screen.type === 'passage-mcq'}
+			{#if screen.type === 'timed-passage'}
+				<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
+			{/if}
 			<MarkdownInput
 				bare
 				minRows={6}
@@ -277,7 +316,149 @@
 				value={screen.text}
 				onInput={(v) => set('text', v)}
 			/>
-			<p class="text-xs text-muted">השאלות על הקטע - בסרגל התחתון</p>
+			<div class="mt-2 flex flex-col gap-4 border-t border-dashed border-line/60 pt-4">
+				{#each screen.questions as _q, qi (qi)}
+					<div class="flex flex-col gap-1.5">
+						<div class="flex items-center justify-between">
+							{#if screen.questions.length > 1}
+								<span class="text-xs font-bold text-muted">שאלה {qi + 1}</span>
+							{:else}
+								<span></span>
+							{/if}
+							<button
+								type="button"
+								class="text-xs text-danger"
+								onclick={() => removeMcqQuestion(qi)}>מחק שאלה ✕</button
+							>
+						</div>
+						<MarkdownInput
+							bare
+							minRows={1}
+							value={screen.questions[qi].prompt}
+							onInput={(v) => {
+								screen.questions[qi].prompt = v;
+								touch();
+							}}
+						/>
+						<ul class="space-y-1.5">
+							{#each screen.questions[qi].options as _opt, oi (oi)}
+								<li
+									class="flex items-center gap-2 rounded-xl border p-2 {screen.questions[qi]
+										.correctIndex === oi
+										? 'border-brand bg-brand-soft/50'
+										: 'border-line'}"
+								>
+									<button
+										type="button"
+										title="סמן כנכונה"
+										class="h-4 w-4 shrink-0 rounded-full border-2 {screen.questions[qi]
+											.correctIndex === oi
+											? 'border-brand bg-brand'
+											: 'border-muted'}"
+										onclick={() => {
+											screen.questions[qi].correctIndex = oi;
+											touch();
+										}}
+									></button>
+									<div class="flex-1">
+										<MarkdownInput
+											bare
+											minRows={1}
+											value={screen.questions[qi].options[oi]}
+											onInput={(v) => {
+												screen.questions[qi].options[oi] = v;
+												touch();
+											}}
+										/>
+									</div>
+									<button
+										type="button"
+										class="text-xs text-danger"
+										onclick={() => removeMcqOption(qi, oi)}>✕</button
+									>
+								</li>
+							{/each}
+						</ul>
+						<button
+							type="button"
+							class="self-start text-xs font-semibold text-brand"
+							onclick={() => addMcqOption(qi)}
+						>
+							+ אפשרות
+						</button>
+					</div>
+				{/each}
+				<button
+					type="button"
+					class="self-start text-xs font-semibold text-brand"
+					onclick={addMcqQuestion}
+				>
+					+ הוסף שאלה
+				</button>
+			</div>
+			{#if screen.type === 'timed-passage'}
+				<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>
+			{/if}
+		{:else if screen.type === 'passage-quiz'}
+			<MarkdownInput
+				bare
+				minRows={6}
+				dir="ltr"
+				value={screen.text}
+				onInput={(v) => set('text', v)}
+			/>
+			<div class="mt-2 flex flex-col gap-4 border-t border-dashed border-line/60 pt-4">
+				{#each screen.questions as _q, qi (qi)}
+					<div class="flex flex-col gap-1.5">
+						<div class="flex items-center justify-between">
+							{#if screen.questions.length > 1}
+								<span class="text-xs font-bold text-muted">שאלה {qi + 1}</span>
+							{:else}
+								<span></span>
+							{/if}
+							<button
+								type="button"
+								class="text-xs text-danger"
+								onclick={() => removeKeywordQuestion(qi)}>מחק שאלה ✕</button
+							>
+						</div>
+						<MarkdownInput
+							bare
+							minRows={1}
+							value={screen.questions[qi].prompt}
+							onInput={(v) => {
+								screen.questions[qi].prompt = v;
+								touch();
+							}}
+						/>
+						<p class="text-xs text-muted">מילות מפתח - כולן חייבות להופיע בתשובה</p>
+						<div class="ps-1">
+							<StringListEditor
+								bind:items={screen.questions[qi].keywords}
+								addLabel="+ מילת מפתח"
+								dir="ltr"
+							/>
+						</div>
+						<MarkdownInput
+							bare
+							minRows={1}
+							dir="auto"
+							value={screen.questions[qi].answerHint}
+							onInput={(v) => {
+								screen.questions[qi].answerHint = v;
+								touch();
+							}}
+						/>
+					</div>
+				{/each}
+				<button
+					type="button"
+					class="self-start text-xs font-semibold text-brand"
+					onclick={addKeywordQuestion}
+				>
+					+ הוסף שאלה
+				</button>
+			</div>
 		{:else if screen.type === 'time-result'}
 			<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
 			<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>

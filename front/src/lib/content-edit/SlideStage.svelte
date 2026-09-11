@@ -17,8 +17,6 @@
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
-	import McqQuestionsEditor from './fields/McqQuestionsEditor.svelte';
-	import KeywordQuestionsEditor from './fields/KeywordQuestionsEditor.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import {
 		MARK_ALL_PALETTE,
@@ -339,7 +337,7 @@
 								</label>
 							</div>
 						{:else if screen.type === 'timed-passage'}
-							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
 								<label class="flex items-center gap-2 text-xs text-muted">
 									מזהה טיימר
 									<input
@@ -348,15 +346,6 @@
 										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
 									/>
 								</label>
-								<McqQuestionsEditor bind:questions={screen.questions} />
-							</div>
-						{:else if screen.type === 'passage-mcq'}
-							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-								<McqQuestionsEditor bind:questions={screen.questions} />
-							</div>
-						{:else if screen.type === 'passage-quiz'}
-							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-								<KeywordQuestionsEditor bind:questions={screen.questions} />
 							</div>
 						{:else if screen.type === 'timed-reading'}
 							<label
