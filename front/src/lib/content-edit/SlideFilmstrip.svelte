@@ -122,7 +122,7 @@
 	<div class="shrink-0 border-b border-line/70 px-3 py-1.5 text-[11px] font-bold text-muted">
 		מסכי השיעור, לפי סדר
 	</div>
-	<div bind:this={list} onscroll={closeMenu} class="min-h-0 flex-1 space-y-1 overflow-y-auto p-1.5">
+	<div bind:this={list} onscroll={closeMenu} class="min-h-0 flex-1 space-y-4 overflow-y-auto p-3">
 		{#each items as it, ii (ii)}
 			{#if it.kind === 'divider'}
 				<div class="flex items-center gap-1 pt-1.5 pb-0.5 first:pt-0">
@@ -156,9 +156,9 @@
 					role="button"
 					tabindex="0"
 					draggable="true"
-					class="cursor-pointer rounded-lg border-2 p-1 transition {isSel(it.bucket, it.index)
-						? 'border-brand bg-brand-soft/60 shadow-sm'
-						: 'border-line/70 bg-canvas hover:border-brand/40'} {over ===
+					class="cursor-pointer rounded-xl border-2 p-2.5 transition {isSel(it.bucket, it.index)
+						? 'border-brand bg-brand-soft/60 shadow-md'
+						: 'border-line/70 bg-canvas shadow-sm hover:border-brand/40 hover:shadow-md'} {over ===
 					`${String(it.bucket)}:${it.index}`
 						? 'ring-2 ring-brand/40'
 						: ''}"
@@ -194,13 +194,15 @@
 					<!-- true miniature of the actual screen (like a slide-deck thumbnail),
 					     not just a label — same EditableScreen the stage renders, scaled
 					     down and inert (pointer-events-none) so the click selects the
-					     card instead of editing inline. -->
+					     card instead of editing inline. Phone-shaped: portrait, same
+					     box every time (content that doesn't fit is clipped, not
+					     squeezed). -->
 					<div
-						class="relative h-24 w-full overflow-hidden rounded-md border border-line/60 bg-canvas"
+						class="relative mx-auto h-100 w-56 overflow-hidden rounded-xl border border-line/60 bg-canvas"
 					>
 						<div
 							class="pointer-events-none absolute top-0 left-1/2 origin-top"
-							style="width: 448px; transform: translateX(-50%) scale(0.38);"
+							style="width: 448px; transform: translateX(-50%) scale(0.5);"
 						>
 							<EditableScreen {nodeId} path={{ bucket: it.bucket, index: it.index }} />
 						</div>
