@@ -19,6 +19,20 @@ A study plan in any shape: a teacher's outline, a syllabus, a chapter list, a
 scanned worksheet, a list of exam skills. It may be in Hebrew, English or both.
 It will not name screen types - that mapping is your job.
 
+## The two rules that shape everything
+
+**One lesson = one micro skill.** Split every plan item that bundles skills. The
+giveaways are "and", "then", commas, and any verb pair. `"mark the relevant info
+and answer the questions accordingly"` is two lessons: marking the info, then
+answering from what is marked. A lesson the learner could fail for two unrelated
+reasons is still two lessons.
+
+**Match the plan's scale.** The split is about clarity, not volume. A three-item
+plan becomes roughly three to five lessons, not twenty. Do not pad a small plan
+with invented coverage, and do not compress a large one. If splitting a plan
+faithfully would more than double its item count, you have split too finely -
+merge back the steps that cannot be practised apart.
+
 ## Output
 
 A single markdown blueprint, no code. Structure:
@@ -34,64 +48,85 @@ A single markdown blueprint, no code. Structure:
 
 A table, in path order:
 
-| # | id | code | titleHe | required | teaches | rounds |
+| # | id | code | titleHe | required | micro skill | source plan item |
 | --- | --- | --- | --- | --- | --- | --- |
 
+- `micro skill` - one verb phrase. If you need "and", split the lesson.
+- `source plan item` - which line of the input this came from, so the scale
+  check is visible.
 - `id` - descriptive kebab-case, globally unique in the module (`not-trap`,
   `p14-structure`), never sequential `l0x`
 - `code` - `c.<section>.<n>`; practice-only twins get a `Q` suffix (`c.1.5Q`)
 - `required` - prerequisite ids; `[]` for the section's root
-- one lesson = one skill. If a lesson teaches two things, split it.
-- a skill that needs drilling gets a separate practice lesson right after the
-  teaching one, rather than a longer single lesson
 
-### 3. Screen breakdown per lesson
+### 3. Per lesson - the full spec
 
-For each lesson:
+For each lesson, in this order:
+
+**Preface - written out in full.** Not a summary, not a description: the actual
+teaching screens with their final text, ready to paste. Teaching screen types
+only (`preface`, `steps`, `summary`, `word-card`, `question-preview`). It plays
+once, before round 0. Hebrew explanation, English examples.
+
+**Question types.** Name the screen types this lesson drills - two per lesson
+(for example `mark-word` + `passage-mcq`), so a round mixes recognition with
+application. Give at least one fully written example question per type, with
+the correct answer marked.
+
+**Rounds.** At least 3 rounds, 4 questions each, difficulty climbing. Round 0 is
+the easiest and is the one that unlocks the path; the last round is at real exam
+difficulty. Write each round as its screen list with the actual question text.
+
+Worked example of the climb, for "write a 70-90 word text using given words":
 
 ```
-### <id> - <titleHe> (<code>)
-preface: <screen type> - <one line of what it says>
-round 0: <screen type> - <what it asks> (scored: y/n)
-         ...
-round 1 (optional): ...
+round 0: one sentence using 1 given word
+round 1: one paragraph using 2 given words
+round 2: two paragraphs using 3 given words
+round 3: the full 70-90 word text, exam conditions
 ```
 
-Rules:
-- only use screen types listed in `docs/lesson-structure.md`. If the plan needs
-  something none of them cover, flag it under "Gaps" - do not invent a type.
-- `preface` = teaching only (`preface`, `steps`, `summary`, `word-card`,
-  `question-preview`). It plays once, before round 0.
-- round 0 = the practice that unlocks the path. 3-6 screens, at least 2 scored.
-- pass is >=80%, so do not mix one hard scored screen with one easy one.
+The same shape applies to reading: round 0 one short sentence and an obvious
+target, the last round a full exam-length passage with distractors.
+
+Constraints:
+- pass is >=80% of the scored questions in the round, so keep the 4 questions of
+  a round at one difficulty. The climb happens between rounds, not inside one.
 - prefer `passage-mcq` over `timed-passage` unless the plan is explicitly about
   time pressure; use `timed-reading` / `time-result` / `time-comparison` only as
   a set, sharing a `timerKey`.
-- `mark-all` for "find all X in the text" plan items; note the categories.
+- `mark-all` for "find all X in the text" items; name the categories.
 
-### 4. Draft content
-
-For each screen, the actual text - English teaching passages, prompts, options,
-Hebrew explanation lines. Prototype-grade but real: no `TODO`, no lorem, no
-placeholder passages. Exam-style English, level-matched to the unit (4 = simpler
-lexis, shorter passages; 5 = longer, denser).
-
-### 5. Positions
+### 4. Positions
 
 Suggested `position` per lesson: `y` starts at the section's first free slot and
 grows ~120 per node; `x` cycles `[0, 70, 100, 70, 0, -70, -100, -70]`.
 
+### 5. New screen types
+
+Prefer the existing types - reach for a new one only when no combination of them
+can express the exercise the plan asks for. When that happens:
+
+1. list it here in one line - name, why nothing existing fits, which lessons need it
+2. write the full spec to `docs/study-plan-conversion/screen-requests/<type>.md`,
+   following `screen-requests/TEMPLATE.md`
+3. keep the blueprint usable without it: mark the affected screens
+   `NEEDS: <type>` and note the fallback you would ship in the meantime
+
+Do not implement the new type. The spec file is the handoff.
+
 ### 6. Gaps and questions
 
 - plan items you could not map, and what is missing
-- anything that needs a new screen type (describe the shape, do not build it)
 - content decisions you guessed at
 
 ## Hard constraints
 
 - All UI-facing Hebrew text is Hebrew. Teaching passages stay English.
 - No em-dashes anywhere in content text - a single `-` at most.
+- Every question, passage and preface line is final text. No `TODO`, no lorem,
+  no placeholder passages. Exam-style English, level-matched to the unit (4 =
+  simpler lexis, shorter passages; 5 = longer, denser).
 - Teaching content stays inline in the blueprint, never i18n keys.
-- YAGNI: no extra sections, lessons or rounds beyond what the plan asks for.
-- Do not write any `.ts` file. This step produces the blueprint only; a second
-  pass implements it against `front/src/lib/content/`.
+- Do not write any `.ts` file. This step produces the blueprint plus any screen
+  request specs; a second pass implements it against `front/src/lib/content/`.
