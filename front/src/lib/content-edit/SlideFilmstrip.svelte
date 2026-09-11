@@ -14,8 +14,22 @@
 	let {
 		nodeId,
 		issues = [],
-		onSelect
-	}: { nodeId: string; issues?: Issue[]; onSelect: (p: ScreenPath) => void } = $props();
+		onSelect,
+		/** Current column width (px) — the divider in LessonEditorView is
+		    draggable, and the thumbnails scale to fill whatever width that
+		    leaves instead of staying a fixed size. */
+		width = 288
+	}: {
+		nodeId: string;
+		issues?: Issue[];
+		onSelect: (p: ScreenPath) => void;
+		width?: number;
+	} = $props();
+
+	// Thumbnail frame stays the same 224:400 (portrait) ratio at any width.
+	let thumbW = $derived(Math.max(110, Math.min(340, width - 64)));
+	let thumbH = $derived(Math.round(thumbW * (400 / 224)));
+	let thumbScale = $derived(thumbW / 448);
 
 	let node = $derived(editModel.node(nodeId));
 	let sel = $derived(editModel.selectedPath);
@@ -198,11 +212,12 @@
 					     box every time (content that doesn't fit is clipped, not
 					     squeezed). -->
 					<div
-						class="relative mx-auto h-100 w-56 overflow-hidden rounded-xl border border-line/60 bg-canvas"
+						class="relative mx-auto overflow-hidden rounded-xl border border-line/60 bg-canvas"
+						style="width: {thumbW}px; height: {thumbH}px"
 					>
 						<div
 							class="pointer-events-none absolute top-0 left-1/2 origin-top"
-							style="width: 448px; transform: translateX(-50%) scale(0.5);"
+							style="width: 448px; transform: translateX(-50%) scale({thumbScale});"
 						>
 							<EditableScreen {nodeId} path={{ bucket: it.bucket, index: it.index }} />
 						</div>

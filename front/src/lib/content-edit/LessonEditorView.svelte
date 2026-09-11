@@ -28,6 +28,37 @@
 		const idx = path.bucket === 0 ? node.content.preface.length + path.index : path.index;
 		onPlay(node.id, round, idx);
 	}
+
+	// Draggable divider between the filmstrip and the stage — resizing it
+	// actually resizes both panes' content (the filmstrip's thumbnails scale
+	// with its new width; the stage's slide frame is width-bound so it grows
+	// or shrinks with whatever room is left), not just the split line.
+	let filmstripWidth = $state(288);
+	let splitWrap = $state<HTMLDivElement>();
+	let dragging = $state(false);
+
+	function startDrag(e: PointerEvent) {
+		e.preventDefault();
+		dragging = true;
+		const startX = e.clientX;
+		const startWidth = filmstripWidth;
+		const containerW = splitWrap?.getBoundingClientRect().width ?? 900;
+
+		function onMove(ev: PointerEvent) {
+			// Filmstrip sits at the inline-start (right, RTL) edge, flush to the
+			// container; its resizable boundary is the LEFT edge, so moving the
+			// pointer left widens it and moving right narrows it.
+			const next = startWidth - (ev.clientX - startX);
+			filmstripWidth = Math.max(180, Math.min(next, containerW - 320));
+		}
+		function onUp() {
+			dragging = false;
+			window.removeEventListener('pointermove', onMove);
+			window.removeEventListener('pointerup', onUp);
+		}
+		window.addEventListener('pointermove', onMove);
+		window.addEventListener('pointerup', onUp);
+	}
 </script>
 
 {#if node}
@@ -101,11 +132,23 @@
 			</div>
 		{/if}
 
-		<!-- PowerPoint layout: filmstrip on the side, the big stage fills the rest. -->
-		<div class="flex min-h-0 flex-1">
-			<div class="w-72 shrink-0">
-				<SlideFilmstrip nodeId={node.id} {issues} onSelect={() => {}} />
+		<!-- PowerPoint layout: filmstrip on the side, the big stage fills the rest,
+		     with a draggable divider between them. -->
+		<div class="flex min-h-0 flex-1" bind:this={splitWrap}>
+			<div class="shrink-0 overflow-hidden" style="width: {filmstripWidth}px">
+				<SlideFilmstrip nodeId={node.id} {issues} onSelect={() => {}} width={filmstripWidth} />
 			</div>
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				role="separator"
+				aria-orientation="vertical"
+				aria-label="גרירה לשינוי הרוחב בין רשימת המסכים לעריכה"
+				title="גררו לשינוי הרוחב"
+				class="w-1.5 shrink-0 cursor-col-resize bg-line/50 transition hover:bg-brand/60 {dragging
+					? 'bg-brand'
+					: ''}"
+				onpointerdown={startDrag}
+			></div>
 			<div class="min-h-0 flex-1">
 				<SlideStage nodeId={node.id} {path} />
 			</div>
