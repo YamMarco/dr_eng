@@ -161,10 +161,16 @@
 		</div>
 
 		<div class="min-h-0 flex-1 overflow-y-auto">
-			<div class="mx-auto flex max-w-2xl flex-col gap-6 p-6">
-				<!-- the "slide": prose is click-to-type, styled like the player -->
-				<div class="rounded-2xl border-2 border-line bg-canvas p-6 shadow-md">
-					<EditableScreen {nodeId} {path} />
+			<div class="mx-auto flex max-w-2xl flex-col items-center gap-6 p-6">
+				<!-- the "slide": a fixed phone-sized frame, same box every time.
+				     Prose is click-to-type, styled like the player. Content that
+				     doesn't fit scrolls inside the frame instead of growing it. -->
+				<div
+					class="w-full max-w-lg shrink-0 overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
+				>
+					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
+						<EditableScreen {nodeId} {path} />
+					</div>
 				</div>
 
 				{#if rawOpen}

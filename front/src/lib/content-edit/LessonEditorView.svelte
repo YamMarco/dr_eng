@@ -103,7 +103,7 @@
 
 		<!-- PowerPoint layout: filmstrip on the side, the big stage fills the rest. -->
 		<div class="flex min-h-0 flex-1">
-			<div class="w-72 shrink-0">
+			<div class="w-52 shrink-0">
 				<SlideFilmstrip nodeId={node.id} {issues} onSelect={() => {}} />
 			</div>
 			<div class="min-h-0 flex-1">

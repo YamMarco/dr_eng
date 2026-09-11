@@ -123,12 +123,12 @@
 	<div class="shrink-0 border-b border-line/70 px-3 py-1.5 text-[11px] font-bold text-muted">
 		מסכי השיעור, לפי סדר
 	</div>
-	<div bind:this={list} onscroll={closeMenu} class="min-h-0 flex-1 space-y-1.5 overflow-y-auto p-2">
+	<div bind:this={list} onscroll={closeMenu} class="min-h-0 flex-1 space-y-1 overflow-y-auto p-1.5">
 		{#each items as it, ii (ii)}
 			{#if it.kind === 'divider'}
-				<div class="flex items-center gap-1.5 pt-2 pb-0.5 first:pt-0">
+				<div class="flex items-center gap-1 pt-1.5 pb-0.5 first:pt-0">
 					<span
-						class="rounded px-2 py-0.5 text-[11px] font-extrabold {it.bucket === 'preface'
+						class="rounded px-1.5 py-0.5 text-[10px] font-extrabold {it.bucket === 'preface'
 							? 'bg-line/60 text-ink'
 							: it.bucket === 0
 								? 'bg-emerald-100 text-emerald-800'
@@ -136,13 +136,13 @@
 					>
 						{it.title}
 					</span>
-					<span class="text-[10px] text-muted">{it.note}</span>
+					<span class="text-[9px] text-muted">{it.note}</span>
 					<span class="flex-1"></span>
 					{#if it.bucket !== 'preface'}
 						{@const ri = it.bucket as number}
 						<button
 							type="button"
-							class="rounded px-1 text-xs font-bold text-muted hover:bg-line/60"
+							class="rounded px-1 text-[10px] font-bold text-muted hover:bg-line/60"
 							title="פעולות על הסבב"
 							onclick={(e) => toggleRoundMenu(e, ri)}
 						>
@@ -157,7 +157,7 @@
 					role="button"
 					tabindex="0"
 					draggable="true"
-					class="flex cursor-pointer items-start gap-2 rounded-xl border-2 p-2 transition {isSel(
+					class="flex cursor-pointer items-start gap-1.5 rounded-lg border-2 p-1.5 transition {isSel(
 						it.bucket,
 						it.index
 					)
@@ -183,11 +183,11 @@
 					}}
 				>
 					<span
-						class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-line/60 text-[10px] font-bold"
+						class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-line/60 text-[9px] font-bold"
 						>{it.index + 1}</span
 					>
 					<div class="min-w-0 flex-1">
-						<div class="flex items-center gap-1 text-[11px] font-bold">
+						<div class="flex items-center gap-1 text-[10px] font-bold">
 							<span class="truncate">{typeHe(it.screen.type)}</span>
 							{#if countQuestions(it.screen) > 0}<span title="שאלה מדורגת">✔</span>{/if}
 							{#if iss}
@@ -195,14 +195,14 @@
 							{/if}
 						</div>
 						{#if screenSnippet(it.screen)}
-							<p class="truncate text-[10px] text-muted" dir="auto">{screenSnippet(it.screen)}</p>
+							<p class="truncate text-[9px] text-muted" dir="auto">{screenSnippet(it.screen)}</p>
 						{/if}
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
 				<button
 					type="button"
-					class="flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-emerald-400 py-1.5 text-[11px] font-bold text-emerald-700 hover:bg-emerald-50"
+					class="flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-emerald-400 py-1 text-[10px] font-bold text-emerald-700 hover:bg-emerald-50"
 					onclick={() => addScreen(it.bucket, it.at)}
 				>
 					➕ הוספת מסך
@@ -210,7 +210,7 @@
 			{:else}
 				<button
 					type="button"
-					class="mt-2 flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-brand/60 py-2 text-[11px] font-bold text-brand hover:bg-brand-soft/50"
+					class="mt-1.5 flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-brand/60 py-1.5 text-[10px] font-bold text-brand hover:bg-brand-soft/50"
 					title="הוספת סבב תרגול חדש בסוף"
 					onclick={() => editModel.addRound(nodeId)}
 				>

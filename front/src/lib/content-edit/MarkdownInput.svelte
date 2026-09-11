@@ -134,18 +134,25 @@
 			>🔗</button
 		>
 	</div>
+	<!-- dir="auto" on a contenteditable is flaky in Chrome (caret jumps, empty
+	     fields default to LTR until a strong char is typed). unicode-bidi:
+	     plaintext resolves per-paragraph direction from content the same way,
+	     without the HTML attribute's contenteditable-specific bugs, and falls
+	     back to RTL (this app's base direction) for empty/neutral fields. -->
 	<div
 		bind:this={el}
 		contenteditable="true"
 		role="textbox"
 		aria-multiline="true"
 		tabindex="0"
-		{dir}
+		dir={dir === 'auto' ? undefined : dir}
 		oninput={sync}
 		class="w-full outline-none [&_code]:rounded [&_code]:bg-line/60 [&_code]:px-1 {bare
 			? ''
 			: 'px-3 py-2 text-sm leading-relaxed'}"
-		style="min-height: {minRows * 1.6}rem"
+		style="min-height: {minRows * 1.6}rem{dir === 'auto'
+			? '; direction: rtl; unicode-bidi: plaintext'
+			: ''}"
 	></div>
 </div>
 
