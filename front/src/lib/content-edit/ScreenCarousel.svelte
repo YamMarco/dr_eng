@@ -122,14 +122,37 @@
 		over = null;
 	}
 
-	// ---- round actions menu ----
-	let roundMenu = $state<number | null>(null);
+	// ---- floating menus (round actions / add-screen) ----
+	// Rendered fixed-positioned OUTSIDE the scrolling track: the track clips
+	// overflow (overflow-x-auto forces overflow-y to clip too), which was
+	// swallowing any popup anchored to a button in the middle of the strip —
+	// e.g. every "insert screen between these two" button. A menu anchored via
+	// getBoundingClientRect() + position:fixed can't be clipped by an ancestor.
+	type FloatMenu =
+		{ kind: 'add'; bucket: ScreenPath['bucket']; at: number } | { kind: 'round'; ri: number };
+	let floatMenu = $state<FloatMenu | null>(null);
+	let floatPos = $state({ top: 0, left: 0 });
 
-	// ---- add-screen menu (keyed by `${bucket}:${at}`) ----
-	let addFor = $state<string | null>(null);
+	function toggleMenu(e: MouseEvent, m: FloatMenu) {
+		if (floatMenu && JSON.stringify(floatMenu) === JSON.stringify(m)) {
+			floatMenu = null;
+			return;
+		}
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		const menuWidth = m.kind === 'add' ? 224 : 160;
+		floatPos = {
+			top: rect.bottom + 6,
+			left: Math.min(rect.left, window.innerWidth - menuWidth - 8)
+		};
+		floatMenu = m;
+	}
+	function closeMenu() {
+		floatMenu = null;
+	}
+
 	function addScreen(bucket: ScreenPath['bucket'], at: number, type: LessonScreen['type']) {
 		editModel.addScreen(nodeId, bucket, at, type);
-		addFor = null;
+		closeMenu();
 		if (editModel.selectedPath) {
 			onSelect(editModel.selectedPath);
 			selectAndScroll(editModel.selectedPath.bucket, editModel.selectedPath.index);
@@ -148,6 +171,7 @@
 <div class="flex h-full flex-col">
 	<div
 		bind:this={track}
+		onscroll={closeMenu}
 		class="flex min-h-0 flex-1 snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden py-4 ps-4"
 		style="padding-inline-end: calc(var(--tw, 0px) + 1rem); scroll-padding-inline-end: calc(var(--tw, 0px) + 1rem)"
 	>
@@ -172,60 +196,10 @@
 							type="button"
 							class="rounded-lg border border-line bg-canvas px-1.5 py-1 text-xs font-bold hover:bg-line/60"
 							title="פעולות על הסבב"
-							onclick={() => (roundMenu = roundMenu === ri ? null : ri)}
+							onclick={(e) => toggleMenu(e, { kind: 'round', ri })}
 						>
 							⋯
 						</button>
-						{#if roundMenu === ri}
-							<div
-								class="absolute top-full z-30 mt-1 w-40 rounded-xl border border-line bg-canvas p-1 text-start text-xs shadow-lg"
-							>
-								<button
-									type="button"
-									class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
-									disabled={ri === 0}
-									onclick={() => {
-										editModel.moveRound(nodeId, ri, ri - 1);
-										roundMenu = null;
-									}}
-								>
-									◀ הזזה שמאלה (מוקדם יותר)
-								</button>
-								<button
-									type="button"
-									class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
-									disabled={!node || ri === node.content.rounds.length - 1}
-									onclick={() => {
-										editModel.moveRound(nodeId, ri, ri + 1);
-										roundMenu = null;
-									}}
-								>
-									▶ הזזה ימינה (מאוחר יותר)
-								</button>
-								<button
-									type="button"
-									class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
-									onclick={() => {
-										editModel.duplicateRound(nodeId, ri);
-										roundMenu = null;
-									}}
-								>
-									⧉ שכפול הסבב
-								</button>
-								<button
-									type="button"
-									class="block w-full rounded px-2 py-1.5 font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-40"
-									disabled={!node || node.content.rounds.length <= 1}
-									onclick={() => {
-										if (confirm(`למחוק את ${it.title} על כל המסכים שבו?`))
-											editModel.deleteRound(nodeId, ri);
-										roundMenu = null;
-									}}
-								>
-									🗑 מחיקת הסבב
-								</button>
-							</div>
-						{/if}
 					{/if}
 				</div>
 			{:else if it.kind === 'screen'}
@@ -292,7 +266,6 @@
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
-				{@const akey = `${String(it.bucket)}:${it.at}`}
 				<div
 					class="relative flex shrink-0 flex-col items-center justify-center {it.big
 						? 'w-24'
@@ -302,7 +275,7 @@
 						<button
 							type="button"
 							class="rounded-xl border-2 border-dashed border-emerald-500 px-2 py-6 text-xs leading-tight font-bold text-emerald-700 hover:bg-emerald-50"
-							onclick={() => (addFor = addFor === akey ? null : akey)}
+							onclick={(e) => toggleMenu(e, { kind: 'add', bucket: it.bucket, at: it.at })}
 						>
 							➕<br />הוספת<br />מסך
 						</button>
@@ -311,32 +284,10 @@
 							type="button"
 							title={it.at === 0 ? 'הוספת מסך בתחילת הסבב' : 'הוספת מסך כאן'}
 							class="flex h-10 w-6 items-center justify-center rounded-full border border-dashed border-emerald-400 text-sm font-bold text-emerald-600 hover:bg-emerald-50"
-							onclick={() => (addFor = addFor === akey ? null : akey)}
+							onclick={(e) => toggleMenu(e, { kind: 'add', bucket: it.bucket, at: it.at })}
 						>
 							＋
 						</button>
-					{/if}
-					{#if addFor === akey}
-						<div
-							class="absolute top-full z-30 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border border-line bg-canvas p-1 text-start shadow-lg"
-						>
-							<p class="px-2 py-1 text-[10px] font-bold text-emerald-700">
-								{it.at === 0 ? 'המסך יתווסף בתחילת הסבב' : `המסך יתווסף במיקום ${it.at + 1}`}
-							</p>
-							{#each SCREEN_TYPE_GROUPS as g (g.label)}
-								<p class="px-2 pt-1.5 text-[10px] font-bold text-muted">{g.label}</p>
-								{#each g.types as t (t)}
-									<button
-										type="button"
-										class="flex w-full items-baseline gap-2 rounded px-2 py-1.5 text-start text-xs hover:bg-line/50"
-										onclick={() => addScreen(it.bucket, it.at, t)}
-									>
-										<span class="font-bold">{typeHe(t)}</span>
-										<span class="font-mono text-[10px] text-muted" dir="ltr">{t}</span>
-									</button>
-								{/each}
-							{/each}
-						</div>
 					{/if}
 				</div>
 			{:else}
@@ -354,3 +305,81 @@
 		{/each}
 	</div>
 </div>
+
+{#if floatMenu}
+	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+	<div class="fixed inset-0 z-40" onclick={closeMenu}></div>
+	<div
+		class="fixed z-50 max-h-72 overflow-y-auto rounded-xl border border-line bg-canvas p-1 text-start text-xs shadow-xl {floatMenu.kind ===
+		'add'
+			? 'w-56'
+			: 'w-40'}"
+		style="top:{floatPos.top}px; left:{floatPos.left}px"
+	>
+		{#if floatMenu.kind === 'add'}
+			{@const m = floatMenu}
+			<p class="px-2 py-1 text-[10px] font-bold text-emerald-700">
+				{m.at === 0 ? 'המסך יתווסף בתחילת הסבב' : `המסך יתווסף במיקום ${m.at + 1}`}
+			</p>
+			{#each SCREEN_TYPE_GROUPS as g (g.label)}
+				<p class="px-2 pt-1.5 text-[10px] font-bold text-muted">{g.label}</p>
+				{#each g.types as t (t)}
+					<button
+						type="button"
+						class="flex w-full items-baseline gap-2 rounded px-2 py-1.5 text-start text-xs hover:bg-line/50"
+						onclick={() => addScreen(m.bucket, m.at, t)}
+					>
+						<span class="font-bold">{typeHe(t)}</span>
+						<span class="font-mono text-[10px] text-muted" dir="ltr">{t}</span>
+					</button>
+				{/each}
+			{/each}
+		{:else}
+			{@const m = floatMenu}
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
+				disabled={m.ri === 0}
+				onclick={() => {
+					editModel.moveRound(nodeId, m.ri, m.ri - 1);
+					closeMenu();
+				}}
+			>
+				◀ הזזה שמאלה (מוקדם יותר)
+			</button>
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
+				disabled={!node || m.ri === node.content.rounds.length - 1}
+				onclick={() => {
+					editModel.moveRound(nodeId, m.ri, m.ri + 1);
+					closeMenu();
+				}}
+			>
+				▶ הזזה ימינה (מאוחר יותר)
+			</button>
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
+				onclick={() => {
+					editModel.duplicateRound(nodeId, m.ri);
+					closeMenu();
+				}}
+			>
+				⧉ שכפול הסבב
+			</button>
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-40"
+				disabled={!node || node.content.rounds.length <= 1}
+				onclick={() => {
+					if (confirm(`למחוק את סבב ${m.ri + 1} על כל המסכים שבו?`))
+						editModel.deleteRound(nodeId, m.ri);
+					closeMenu();
+				}}
+			>
+				🗑 מחיקת הסבב
+			</button>
+		{/if}
+	</div>
+{/if}
