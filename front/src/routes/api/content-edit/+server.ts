@@ -57,6 +57,15 @@ function splitHead(raw: string): string {
 	return head;
 }
 
+/** The array literal is plain JS data (strings/numbers/booleans/null/arrays/
+ *  objects) but not valid JSON — the files use single-quoted strings, so
+ *  JSON.parse throws on every one of them. Evaluate it as JS instead. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function parseArrayLiteral(src: string): any[] {
+	// eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
+	return new Function(`'use strict'; return (${src});`)();
+}
+
 /** Merge a patch of changed/new nodes and deleted ids into the section's
  *  current array — nodes the patch doesn't mention pass through untouched,
  *  so a save never reverts anyone else's already-committed changes. New
@@ -127,8 +136,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		fileNum = sectionId.replace(/^c-/, '');
 		transform = (raw) => {
 			const head = splitHead(raw);
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const fresh: any[] = JSON.parse(raw.slice(head.length).replace(/;\s*$/, ''));
+			const fresh = parseArrayLiteral(raw.slice(head.length).replace(/;\s*$/, ''));
 			const merged = mergeSection(fresh, upserts, deletes);
 			return `${head}${emit(merged, 0)};\n`;
 		};
@@ -140,8 +148,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		fileNum = meta.section.replace(/^c-/, ''); // 'c-3' -> '3'
 		transform = (raw) => {
 			const head = splitHead(raw);
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const lessons: any[] = JSON.parse(raw.slice(head.length).replace(/;\s*$/, ''));
+			const lessons = parseArrayLiteral(raw.slice(head.length).replace(/;\s*$/, ''));
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const lesson = lessons.find((l: any) => l.id === lessonId);
 			if (!lesson) throw error(404, `lesson ${lessonId} not found in c-${fileNum}.ts`);
