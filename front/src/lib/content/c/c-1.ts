@@ -9,8 +9,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "אני מחפש, לא קורא",
     titleEn: "Mindset",
     code: "c.1.1",
-    required: ["content-2a", "content-2b", "content-2c"],
-    position: { x: 0, y: 680 },
+    required: ["vocab-test"],
+    position: { x: 0, y: 540 },
     big: false,
     content: {
       preface: [
@@ -173,7 +173,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "The Road Map",
     code: "c.1.2",
     required: ["l00"],
-    position: { x: 70, y: 800 },
+    position: { x: 70, y: 660 },
     big: false,
     content: {
       preface: [
@@ -382,7 +382,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Traffic Light",
     code: "c.1.3",
     required: ["l01"],
-    position: { x: 100, y: 920 },
+    position: { x: 100, y: 780 },
     big: false,
     content: {
       preface: [
@@ -608,7 +608,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "P1 Navigation",
     code: "c.1.4",
     required: ["l02"],
-    position: { x: 70, y: 1040 },
+    position: { x: 70, y: 900 },
     big: false,
     content: {
       preface: [
@@ -835,7 +835,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Eye Catcher: Numbers & Names",
     code: "c.1.5",
     required: ["l03"],
-    position: { x: -100, y: 1160 },
+    position: { x: -100, y: 1020 },
     big: false,
     content: {
       preface: [
@@ -1007,7 +1007,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Numbers & Names: Practice",
     code: "c.1.5Q",
     required: ["l04"],
-    position: { x: -100, y: 1280 },
+    position: { x: -100, y: 1140 },
     big: false,
     content: {
       preface: [],
@@ -1356,7 +1356,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Eye Catcher: NOT",
     code: "c.1.6",
     required: ["l03"],
-    position: { x: 0, y: 1160 },
+    position: { x: 0, y: 1020 },
     big: false,
     content: {
       preface: [
@@ -1491,7 +1491,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "NOT: Practice",
     code: "c.1.6Q",
     required: ["l06"],
-    position: { x: 0, y: 1280 },
+    position: { x: 0, y: 1140 },
     big: false,
     content: {
       preface: [],
@@ -1760,7 +1760,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Key Limiters",
     code: "c.1.7",
     required: ["l03"],
-    position: { x: 100, y: 1160 },
+    position: { x: 100, y: 1020 },
     big: false,
     content: {
       preface: [
@@ -1906,7 +1906,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Key Limiters: Practice",
     code: "c.1.7Q",
     required: ["l07"],
-    position: { x: 100, y: 1280 },
+    position: { x: 100, y: 1140 },
     big: false,
     content: {
       preface: [],
@@ -2094,7 +2094,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     code: "c.1.8",
     required: ["n-221188d1"],
-    position: { x: 0, y: 1520 },
+    position: { x: 0, y: 1380 },
     big: false,
     content: {
       preface: [
@@ -2167,7 +2167,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Multiple Choice",
     code: "c.1.9",
     required: ["n-b46b7e2b"],
-    position: { x: 0, y: 1760 },
+    position: { x: 0, y: 1620 },
     big: false,
     content: {
       preface: [
@@ -2410,7 +2410,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     code: "c.1.10",
     required: ["l09"],
-    position: { x: -70, y: 1880 },
+    position: { x: -70, y: 1740 },
     big: false,
     content: {
       preface: [
@@ -2624,7 +2624,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Complete the Sentence",
     code: "c.1.11",
     required: ["l09"],
-    position: { x: 70, y: 1880 },
+    position: { x: 70, y: 1740 },
     big: false,
     content: {
       preface: [
@@ -2845,7 +2845,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Two Answers",
     code: "c.1.12",
     required: ["l11"],
-    position: { x: 70, y: 2000 },
+    position: { x: 70, y: 1860 },
     big: false,
     content: {
       preface: [
@@ -3063,7 +3063,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות - סיכום",
     code: "",
     required: ["l10", "l12"],
-    position: { x: 0, y: 2120 },
+    position: { x: 0, y: 1980 },
     big: false,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
@@ -3074,7 +3074,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     code: "",
     required: ["l08"],
-    position: { x: 0, y: 1640 },
+    position: { x: 0, y: 1500 },
     big: false,
     content: {
       preface: [],
@@ -3230,7 +3230,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "חלק 1 - סיכום",
     code: "",
     required: ["n-649ed18f"],
-    position: { x: 0, y: 2240 },
+    position: { x: 0, y: 2100 },
     big: false,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
@@ -3240,7 +3240,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות 1 - סיכום",
     code: "",
     required: ["not-q", "limiters-q", "numbers-names-q"],
-    position: { x: 0, y: 1400 },
+    position: { x: 0, y: 1260 },
     big: false,
     content: { preface: [], rounds: [{ screens: [] }] },
   },

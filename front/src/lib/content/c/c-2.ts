@@ -11,7 +11,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Question Words: Where & What",
     code: "c.2.1",
     required: [],
-    position: { x: -40, y: 120 },
+    position: { x: -130, y: 120 },
     big: false,
     content: {
       preface: [
@@ -256,8 +256,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה: איך עונים",
     titleEn: "Question Words: How to Answer",
     code: "c.2.2",
-    required: [],
-    position: { x: 40, y: 120 },
+    required: ["q-words-1"],
+    position: { x: -130, y: 260 },
     big: false,
     content: {
       preface: [
@@ -485,8 +485,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
     code: "c.2.3",
-    required: ["q-words-1", "q-words-2"],
-    position: { x: -40, y: 260 },
+    required: [],
+    position: { x: -65, y: 120 },
     big: false,
     content: {
       preface: [
@@ -674,8 +674,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: דוגמאות וממצאים",
     titleEn: "Navigation Words: Examples & Findings",
     code: "c.2.4",
-    required: ["q-words-1", "q-words-2"],
-    position: { x: 40, y: 260 },
+    required: ["nav-words-1"],
+    position: { x: -65, y: 260 },
     big: false,
     content: {
       preface: [
@@ -869,8 +869,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
     code: "c.2.5",
-    required: ["nav-words-1", "nav-words-2"],
-    position: { x: -90, y: 400 },
+    required: [],
+    position: { x: 0, y: 120 },
     big: false,
     content: {
       preface: [
@@ -1042,8 +1042,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: מחקר וממצאים",
     titleEn: "Content Words: Research & Findings",
     code: "c.2.6",
-    required: ["nav-words-1", "nav-words-2"],
-    position: { x: 0, y: 400 },
+    required: [],
+    position: { x: 65, y: 120 },
     big: false,
     content: {
       preface: [
@@ -1218,8 +1218,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
     code: "c.2.7",
-    required: ["nav-words-1", "nav-words-2"],
-    position: { x: 90, y: 400 },
+    required: [],
+    position: { x: 130, y: 120 },
     big: false,
     content: {
       preface: [
@@ -1386,7 +1386,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Growth & Learning",
     code: "c.llby7",
     required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: -90, y: 540 },
+    position: { x: 0, y: 260 },
     big: false,
     content: {
       preface: [
@@ -1553,7 +1553,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Cause & Value",
     code: "c.q5yrp",
     required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: 0, y: 540 },
+    position: { x: 65, y: 260 },
     big: false,
     content: {
       preface: [
@@ -1723,7 +1723,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Social Responsibility",
     code: "c.q6yby",
     required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: 90, y: 540 },
+    position: { x: 130, y: 260 },
     big: false,
     content: {
       preface: [
@@ -1875,6 +1875,113 @@ export const c2Lessons: LessonNode[] = [
               prompt: "כתבו שני משפטים על אחריות חברתית, עם שלוש מהמילים מהשיעור.",
               modelAnswer:
                 "Volunteering encourages young people to become more responsible. It also supports society and improves public health.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "vocab-test",
+    section: "c-2",
+    titleHe: "מבחן סיכום - אוצר מילים",
+    titleEn: "Vocabulary Review Test",
+    code: "c.x87ov4",
+    required: [
+      "q-words-2",
+      "nav-words-2",
+      "content-2a",
+      "content-2b",
+      "content-2c",
+    ],
+    position: { x: 0, y: 400 },
+    big: true,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "מבחן סיכום - כל המילים מהמסלולים: מילות שאלה, מילות ניווט ומילות תוכן.\n\nעברתם 27 מילים. עכשיו בודקים שהן נשארו.",
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "mcq",
+              prompt: 'מה המשמעות של "paragraph"?',
+              options: ["פסקה", "שאלה", "עמוד", "משפט"],
+              correctIndex: 0,
+            },
+            {
+              type: "mcq",
+              prompt: '"Give TWO answers" - כמה תשובות כותבים?',
+              options: ["אחת", "שתיים בדיוק", "שלוש"],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt: 'מה המשמעות של "complete the sentence"?',
+              options: [
+                "השלימו את המשפט שהתחיל",
+                "כתבו משפט חדש משלכם",
+                "תרגמו את המשפט",
+              ],
+              correctIndex: 0,
+            },
+            {
+              type: "mcq",
+              prompt: '"However…" - מה זה אומר לכם?',
+              options: [
+                "פנייה - מה שאחריו חשוב יותר",
+                "דוגמה",
+                "תוצאה",
+              ],
+              correctIndex: 0,
+            },
+            {
+              type: "mcq",
+              prompt: '"In addition…" - מה זה אומר לכם?',
+              options: [
+                "סתירה למה שנאמר",
+                "מידע נוסף מגיע - אולי תשובה שנייה",
+                "סיבה",
+              ],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt: 'מה המשמעות של "volunteer"?',
+              options: ["תושב", "מתנדב", "חוקר", "ארגון צדקה"],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt: '"Protect" ו-"destroy" הן:',
+              options: ["אותה מילה", "הפכים", "מילים לא קשורות"],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt: 'מה ההבדל בין "improve" ל-"develop"?',
+              options: [
+                "אין הבדל - אותו דבר בדיוק",
+                "improve = לשפר משהו קיים · develop = לפתח משהו חדש",
+                "improve = לפתח · develop = לשפר",
+              ],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt: 'מה המשמעות של "responsible"?',
+              options: ["אחראי", "מועיל", "מעודד", "יעיל"],
+              correctIndex: 0,
+            },
+            {
+              type: "self-check",
+              prompt:
+                "כתבו משפט אחד באנגלית שמשתמש בלפחות שתי מילים מהמסלולים שלמדתם.",
+              modelAnswer:
+                "According to researchers, volunteering can improve mental health and benefit society.",
             },
           ],
         },
