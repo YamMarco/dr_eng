@@ -10,7 +10,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'What the Task Wants',
 		code: 'c.3.1',
 		required: ['n-7c5330b8'],
-		position: { x: 0, y: 2890 },
+		position: { x: 0, y: 2380 },
 		big: false,
 		content: {
 			preface: [
@@ -232,7 +232,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'P14 Structure',
 		code: 'c.3.2',
 		required: ['l17'],
-		position: { x: 70, y: 3010 },
+		position: { x: 70, y: 2500 },
 		big: false,
 		content: {
 			preface: [
@@ -454,7 +454,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Basic Grammar',
 		code: 'c.3.3',
 		required: ['l18'],
-		position: { x: 100, y: 3130 },
+		position: { x: 100, y: 2620 },
 		big: false,
 		content: {
 			preface: [
@@ -674,7 +674,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Word Count',
 		code: 'c.3.4',
 		required: ['l19'],
-		position: { x: 70, y: 3250 },
+		position: { x: 70, y: 2740 },
 		big: false,
 		content: {
 			preface: [
@@ -888,7 +888,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Full Simulation',
 		code: 'c.3.5',
 		required: ['l20'],
-		position: { x: 0, y: 3370 },
+		position: { x: 0, y: 2860 },
 		big: false,
 		content: {
 			preface: [
@@ -1140,7 +1140,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'What Changes?',
 		code: 'c.3.6',
 		required: ['l21'],
-		position: { x: -70, y: 3490 },
+		position: { x: -70, y: 2980 },
 		big: true,
 		content: {
 			preface: [
