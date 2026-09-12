@@ -11,7 +11,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Question Words: Where & What",
     code: "c.2.1",
     required: [],
-    position: { x: -130, y: 120 },
+    position: { x: -210, y: 120 },
     big: false,
     content: {
       preface: [
@@ -218,7 +218,7 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
               prompt:
-                'Give TWO answers: How did the area change? כתבו (1) ו-(2).',
+                "Give TWO answers: How did the area change? כתבו (1) ו-(2).",
               modelAnswer:
                 "(1) The number of birds increased by 60% in Ethiopia. (2) Rivers in Kenya that were dry for 20 years began to flow again.",
             },
@@ -234,7 +234,7 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               text: "II  The project is led by Dr. Amara Diallo. According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.",
               prompt:
-                'According to Dr. Diallo, give ONE reason why trees survive.',
+                "According to Dr. Diallo, give ONE reason why trees survive.",
               modelAnswer:
                 "According to Dr. Diallo, trees survive because local people are involved and care for them.",
             },
@@ -257,7 +257,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Question Words: How to Answer",
     code: "c.2.2",
     required: ["q-words-1"],
-    position: { x: -130, y: 260 },
+    position: { x: -210, y: 260 },
     big: false,
     content: {
       preface: [
@@ -368,14 +368,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt:
-                '"They removed the goats in order to ___" - מה מחפשים?',
-              options: [
-                "סיבה - because",
-                "מטרה - מה רצו להשיג",
-                "מקום",
-                "זמן",
-              ],
+              prompt: '"They removed the goats in order to ___" - מה מחפשים?',
+              options: ["סיבה - because", "מטרה - מה רצו להשיג", "מקום", "זמן"],
               correctIndex: 1,
             },
             {
@@ -414,8 +408,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt:
-                '"Because" כבר כתוב בשאלה - לא כותבים אותו שוב בתשובה.',
+              prompt: '"Because" כבר כתוב בשאלה - לא כותבים אותו שוב בתשובה.',
               options: ["✅ נכון", "❌ לא נכון"],
               correctIndex: 0,
               explanation:
@@ -486,7 +479,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Navigation Words: Contrast & Reason",
     code: "c.2.3",
     required: [],
-    position: { x: -65, y: 120 },
+    position: { x: -100, y: 120 },
     big: false,
     content: {
       preface: [
@@ -570,14 +563,16 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "סמנו: however, although, in addition, as a result",
-              text: 'I  Learning to swim as an adult is more common than many people think. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  Although some adults are afraid of the water, they usually make good progress. As a result, more swimming schools now offer adult-only classes.',
+              text: "I  Learning to swim as an adult is more common than many people think. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  Although some adults are afraid of the water, they usually make good progress. As a result, more swimming schools now offer adult-only classes.",
               correctIndices: [26, 35, 48, 49, 50],
               wordBank: ["however", "although", "as a result", "in addition"],
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"ראיתי however/although - עוצר. ראיתי as a result - קורא תוצאה."'],
+              lines: [
+                '"ראיתי however/although - עוצר. ראיתי as a result - קורא תוצאה."',
+              ],
             },
           ],
         },
@@ -601,15 +596,14 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt:
-                '"Although he trained hard, he did not win." - מה קרה?',
+              prompt: '"Although he trained hard, he did not win." - מה קרה?',
               options: [
                 "הוא התאמן קשה וגם ניצח",
                 "הוא התאמן קשה אבל בכל זאת לא ניצח",
                 "הוא לא התאמן בכלל",
               ],
               correctIndex: 1,
-              explanation: 'although = למרות ש־. יש ניגוד בין שני חלקי המשפט.',
+              explanation: "although = למרות ש־. יש ניגוד בין שני חלקי המשפט.",
             },
           ],
         },
@@ -624,8 +618,7 @@ export const c2Lessons: LessonNode[] = [
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030.",
               questions: [
                 {
-                  prompt:
-                    'מה תפקיד המילה "However" במשפט?',
+                  prompt: 'מה תפקיד המילה "However" במשפט?',
                   options: [
                     "מציינת שהמשפט הבא הוא הרקע",
                     "מציינת פנייה - מה שבא אחריה חשוב יותר",
@@ -637,7 +630,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "השלימו: however = ___ · although = ___ · as a result = ___",
+              prompt:
+                "השלימו: however = ___ · although = ___ · as a result = ___",
               modelAnswer:
                 "however = פנייה, מה שלפני הוא רקע. although = למרות ש־, יש ניגוד. as a result = תוצאה של מה שנאמר קודם.",
             },
@@ -675,7 +669,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Navigation Words: Examples & Findings",
     code: "c.2.4",
     required: ["nav-words-1"],
-    position: { x: -65, y: 260 },
+    position: { x: -100, y: 260 },
     big: false,
     content: {
       preface: [
@@ -758,8 +752,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt:
-                '"Stress levels decreased by 35%." - מה קרה לרמת הלחץ?',
+              prompt: '"Stress levels decreased by 35%." - מה קרה לרמת הלחץ?',
               options: ["עלתה", "ירדה", "נשארה אותו דבר"],
               correctIndex: 1,
             },
@@ -777,7 +770,9 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"increase = עלה. decrease = ירד. for example = דוגמה למה שכבר נאמר."'],
+              lines: [
+                '"increase = עלה. decrease = ירד. for example = דוגמה למה שכבר נאמר."',
+              ],
             },
           ],
         },
@@ -847,7 +842,8 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "self-check",
               text: "Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed.",
-              prompt: 'מה הממצא (finding) של ד"ר אוקאפור, ואיזו מילה בטקסט מסמנת אותו?',
+              prompt:
+                'מה הממצא (finding) של ד"ר אוקאפור, ואיזו מילה בטקסט מסמנת אותו?',
               modelAnswer:
                 'הממצא: מתנדבים מרגישים פחות לחוצים. המילה שמסמנת: "found".',
             },
@@ -870,7 +866,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: People & Community",
     code: "c.2.5",
     required: [],
-    position: { x: 0, y: 120 },
+    position: { x: 10, y: 120 },
     big: false,
     content: {
       preface: [
@@ -915,13 +911,15 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "A local ______ raised money for the school. - ארגון צדקה",
+              prompt:
+                "A local ______ raised money for the school. - ארגון צדקה",
               options: ["charity", "volunteer", "community", "resident"],
               correctIndex: 0,
             },
             {
               type: "mcq",
-              prompt: "85% of ______ say they are satisfied with their city. - תושבים",
+              prompt:
+                "85% of ______ say they are satisfied with their city. - תושבים",
               options: ["charities", "volunteers", "residents", "communities"],
               correctIndex: 2,
             },
@@ -1042,8 +1040,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: מחקר וממצאים",
     titleEn: "Content Words: Research & Findings",
     code: "c.2.6",
-    required: [],
-    position: { x: 65, y: 120 },
+    required: ["content-2c"],
+    position: { x: 120, y: 260 },
     big: false,
     content: {
       preface: [
@@ -1171,7 +1169,8 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 "השלימו:\n1. Over 200 million trees were planted. The _______ are already visible.\n2. _______ studied the effects of volunteering for ten years.\n3. The programme was very _______.\n4. Stress can _______ sleep.",
-              modelAnswer: "1. results  2. Researchers  3. effective  4. affect",
+              modelAnswer:
+                "1. results  2. Researchers  3. effective  4. affect",
             },
             {
               type: "mark-all",
@@ -1197,7 +1196,8 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "self-check",
               text: "Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.",
-              prompt: '"What did the researcher discover about the most effective programmes?" - ענו באנגלית.',
+              prompt:
+                '"What did the researcher discover about the most effective programmes?" - ענו באנגלית.',
               modelAnswer:
                 "She discovered that the most effective programmes bring young people face to face with the people they help.",
             },
@@ -1219,7 +1219,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Change & Environment",
     code: "c.2.7",
     required: [],
-    position: { x: 130, y: 120 },
+    position: { x: 120, y: 120 },
     big: false,
     content: {
       preface: [
@@ -1264,7 +1264,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "Some ______ of birds returned after the trees were planted. - מין",
+              prompt:
+                "Some ______ of birds returned after the trees were planted. - מין",
               options: ["species", "results", "communities", "residents"],
               correctIndex: 0,
             },
@@ -1343,15 +1344,20 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 "השלימו:\n1. The scientists wanted to _______ the forests from destruction.\n2. Fire and farming _______ many habitats.\n3. The project could _______ carbon in the atmosphere.\n4. Some _______ of birds returned to the area.",
-              modelAnswer:
-                "1. protect  2. destroy  3. reduce  4. species",
+              modelAnswer: "1. protect  2. destroy  3. reduce  4. species",
             },
             {
               type: "mark-all",
               instruction: "סמנו את מילות התוכן שאתם מזהים",
               text: "Every year, forests are destroyed by fire and pollution. Projects that protect trees can increase the number of species and reduce damage.",
               correctIndices: [4, 11, 14, 18, 20],
-              wordBank: ["destroyed", "protect", "increase", "species", "reduce"],
+              wordBank: [
+                "destroyed",
+                "protect",
+                "increase",
+                "species",
+                "reduce",
+              ],
             },
           ],
         },
@@ -1364,13 +1370,15 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "self-check",
               text: "Every year, forests around the world are destroyed by fire, farming, and pollution. In 2019, scientists started a project to plant one billion trees in Africa.",
-              prompt: '"Why is the project important?" - ענו באנגלית, והשתמשו במילות תוכן.',
+              prompt:
+                '"Why is the project important?" - ענו באנגלית, והשתמשו במילות תוכן.',
               modelAnswer:
                 "The project is important because it helps protect forests that are being destroyed, and it can increase the number of species that live there.",
             },
             {
               type: "self-check",
-              prompt: "כתבו שני משפטים על שינוי סביבתי, עם שלוש מהמילים מהשיעור.",
+              prompt:
+                "כתבו שני משפטים על שינוי סביבתי, עם שלוש מהמילים מהשיעור.",
               modelAnswer:
                 "Pollution can destroy habitats and reduce biodiversity. Projects that protect forests help increase the population of endangered species.",
             },
@@ -1385,8 +1393,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: התפתחות ולמידה",
     titleEn: "Content Words: Growth & Learning",
     code: "c.llby7",
-    required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: 0, y: 260 },
+    required: ["content-1a"],
+    position: { x: 10, y: 190 },
     big: false,
     content: {
       preface: [
@@ -1494,7 +1502,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: '"Volunteering develops important skills." - מה זה develops?',
+              prompt:
+                '"Volunteering develops important skills." - מה זה develops?',
               options: ["מספר", "מפתח / מגדל", "מוכר"],
               correctIndex: 1,
               explanation: "develop = לפתח · skills = מיומנויות.",
@@ -1518,7 +1527,13 @@ export const c2Lessons: LessonNode[] = [
               instruction: "סמנו את כל מילות התוכן",
               text: "Good education helps students develop important skills, improve their confidence, and achieve their goals.",
               correctIndices: [1, 4, 6, 7, 11],
-              wordBank: ["education", "develop", "skills", "improve", "achieve"],
+              wordBank: [
+                "education",
+                "develop",
+                "skills",
+                "improve",
+                "achieve",
+              ],
             },
           ],
         },
@@ -1552,8 +1567,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: השפעה וערך",
     titleEn: "Content Words: Cause & Value",
     code: "c.q5yrp",
-    required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: 65, y: 260 },
+    required: ["content-2a"],
+    position: { x: 10, y: 260 },
     big: false,
     content: {
       preface: [
@@ -1596,7 +1611,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "The programme ______ two hours of practice a week. - דורש",
+              prompt:
+                "The programme ______ two hours of practice a week. - דורש",
               options: ["benefits", "requires", "achieves", "improves"],
               correctIndex: 1,
             },
@@ -1608,7 +1624,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "This is a great ______ to learn something new. - הזדמנות",
+              prompt:
+                "This is a great ______ to learn something new. - הזדמנות",
               options: ["society", "skill", "education", "opportunity"],
               correctIndex: 3,
             },
@@ -1722,8 +1739,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אחריות חברתית",
     titleEn: "Content Words: Social Responsibility",
     code: "c.q6yby",
-    required: ["content-1a", "content-1b", "content-1c"],
-    position: { x: 130, y: 260 },
+    required: ["content-1c"],
+    position: { x: 120, y: 190 },
     big: false,
     content: {
       preface: [
@@ -1762,7 +1779,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "Family and friends can ______ a person during hard times. - לתמוך ב",
+              prompt:
+                "Family and friends can ______ a person during hard times. - לתמוך ב",
               options: ["support", "encourage", "require", "achieve"],
               correctIndex: 0,
             },
@@ -1788,7 +1806,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: 'השלימו באנגלית: "Students who volunteer become more ..."',
+              prompt:
+                'השלימו באנגלית: "Students who volunteer become more ..."',
               placeholder: "Students who volunteer become more...",
               modelAnswer: "Students who volunteer become more responsible.",
             },
@@ -1872,7 +1891,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "כתבו שני משפטים על אחריות חברתית, עם שלוש מהמילים מהשיעור.",
+              prompt:
+                "כתבו שני משפטים על אחריות חברתית, עם שלוש מהמילים מהשיעור.",
               modelAnswer:
                 "Volunteering encourages young people to become more responsible. It also supports society and improves public health.",
             },
@@ -1887,13 +1907,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מבחן סיכום - אוצר מילים",
     titleEn: "Vocabulary Review Test",
     code: "c.x87ov4",
-    required: [
-      "q-words-2",
-      "nav-words-2",
-      "content-2a",
-      "content-2b",
-      "content-2c",
-    ],
+    required: ["q-words-2", "nav-words-2", "content-1b", "content-2b"],
     position: { x: 0, y: 400 },
     big: true,
     content: {
@@ -1931,11 +1945,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: '"However…" - מה זה אומר לכם?',
-              options: [
-                "פנייה - מה שאחריו חשוב יותר",
-                "דוגמה",
-                "תוצאה",
-              ],
+              options: ["פנייה - מה שאחריו חשוב יותר", "דוגמה", "תוצאה"],
               correctIndex: 0,
             },
             {
