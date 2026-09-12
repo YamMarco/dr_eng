@@ -2084,8 +2084,8 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l08",
     section: "c-1",
-    titleHe: "however / but - הפנייה",
-    titleEn: "Contrast Words",
+    titleHe: "however / but - לאתר בטקסט",
+    titleEn: "Contrast Words: Spotting It",
     code: "c.1.8",
     required: ["numbers-names-q", "not-q", "limiters-q"],
     position: { x: 0, y: 840 },
@@ -2123,37 +2123,6 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "passage-mcq",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
-              questions: [
-                {
-                  prompt:
-                    "What does paragraph I say about people who cannot swim?",
-                  options: [
-                    "They feel embarrassed and never try",
-                    "Swimming classes are expensive",
-                    "It is never too late to learn",
-                    "They are over 30 years old",
-                  ],
-                  correctIndex: 2,
-                },
-                {
-                  prompt: 'למה "They feel embarrassed" היא לא התשובה?',
-                  options: [
-                    "כי היא לא כתובה בטקסט",
-                    "כי היא הרקע - היא לפני however, והנקודה באה אחריו",
-                    "כי היא ארוכה מדי",
-                    "כי היא לא בפסקה I",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
               type: "preface",
               text: "YOUR TURN - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
             },
@@ -2179,6 +2148,90 @@ export const c1Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: ['"however / but = פנייה. מה שאחריו = הנקודה."'],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · Round 1 🌟\nעם טקסטים אמיתיים.",
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו את מילת הניגוד ואת מה שבא מיד אחריה",
+              text: "Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
+              correctIndices: [13, 14, 15, 16, 17],
+              wordBank: ["however", "but", "although"],
+            },
+            {
+              type: "passage-mcq",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              questions: [
+                {
+                  prompt:
+                    '"What does Dr. Okafor say about different types of volunteering?" - מצאו את however.',
+                  options: [
+                    "All types are equally effective",
+                    "Not all types of volunteering produce the same results",
+                    "Only schools benefit from volunteering",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
+            {
+              type: "self-check",
+              prompt:
+                "השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.",
+              modelAnswer:
+                "פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "however-questions",
+    section: "c-1",
+    titleHe: "however / but - עונים נכון",
+    titleEn: "Contrast Words: Answering Questions",
+    code: "c.1.9",
+    required: ["l08"],
+    position: { x: 0, y: 960 },
+    big: false,
+    content: {
+      preface: [],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "passage-mcq",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
+              questions: [
+                {
+                  prompt:
+                    "What does paragraph I say about people who cannot swim?",
+                  options: [
+                    "They feel embarrassed and never try",
+                    "Swimming classes are expensive",
+                    "It is never too late to learn",
+                    "They are over 30 years old",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: 'למה "They feel embarrassed" היא לא התשובה?',
+                  options: [
+                    "כי היא לא כתובה בטקסט",
+                    "כי היא הרקע - היא לפני however, והנקודה באה אחריו",
+                    "כי היא ארוכה מדי",
+                    "כי היא לא בפסקה I",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
             },
           ],
         },
@@ -2221,45 +2274,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו את מילת הניגוד ואת מה שבא מיד אחריה",
-              text: "Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
-              correctIndices: [13, 14, 15, 16, 17],
-              wordBank: ["however", "but", "although"],
-            },
-            {
-              type: "passage-mcq",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
-              questions: [
-                {
-                  prompt:
-                    '"What does Dr. Okafor say about different types of volunteering?" - מצאו את however.',
-                  options: [
-                    "All types are equally effective",
-                    "Not all types of volunteering produce the same results",
-                    "Only schools benefit from volunteering",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
-            },
-            {
-              type: "self-check",
-              prompt:
-                "השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.",
-              modelAnswer:
-                "פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
+              text: "PRACTICE · Round 2 💎\nרמת בחינה. ללא עזרה.",
             },
             {
               type: "passage-mcq",
@@ -2301,9 +2316,9 @@ export const c1Lessons: LessonNode[] = [
     section: "c-1",
     titleHe: "שאלות אמריקאיות",
     titleEn: "Multiple Choice",
-    code: "c.1.9",
-    required: ["l08"],
-    position: { x: 70, y: 960 },
+    code: "c.1.10",
+    required: ["however-questions"],
+    position: { x: 0, y: 1080 },
     big: false,
     content: {
       preface: [
@@ -2544,9 +2559,9 @@ export const c1Lessons: LessonNode[] = [
     section: "c-1",
     titleHe: "תשובה קצרה",
     titleEn: "Short Answer",
-    code: "c.1.10",
+    code: "c.1.11",
     required: ["l09"],
-    position: { x: 100, y: 1080 },
+    position: { x: 70, y: 1200 },
     big: false,
     content: {
       preface: [
@@ -2758,9 +2773,9 @@ export const c1Lessons: LessonNode[] = [
     section: "c-1",
     titleHe: "השלמת משפט",
     titleEn: "Complete the Sentence",
-    code: "c.1.11",
+    code: "c.1.12",
     required: ["l10"],
-    position: { x: 70, y: 1200 },
+    position: { x: 100, y: 1320 },
     big: false,
     content: {
       preface: [
@@ -2979,9 +2994,9 @@ export const c1Lessons: LessonNode[] = [
     section: "c-1",
     titleHe: "שתי תשובות",
     titleEn: "Two Answers",
-    code: "c.1.12",
-    required: ["l11"],
-    position: { x: 0, y: 1320 },
+    code: "c.1.13",
+    required: ["l09"],
+    position: { x: -70, y: 1200 },
     big: false,
     content: {
       preface: [
