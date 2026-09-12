@@ -4,21 +4,21 @@ import type { SectionMeta } from './types';
 
 export const sectionMeta: SectionMeta[] = [
 	{
-		id: 'c-1',
-		titleHe: 'חלק א׳ — הבנת הנקרא',
-		titleEn: 'Part A — Reading Skills',
-		intro: {
-			greeting: 'I search — I do not read',
-			goal: 'שלושה־עשר שיעורים שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
-		}
-	},
-	{
 		id: 'c-2',
-		titleHe: 'חלק ב׳ — אוצר מילים',
-		titleEn: 'Part B — Vocabulary',
+		titleHe: 'חלק א׳ — אוצר מילים',
+		titleEn: 'Part A — Vocabulary',
 		intro: {
 			greeting: 'The words that keep coming back',
 			goal: 'ארבעה שיעורים על המילים שחוזרות בכל בחינה: מילות שאלה, מילות ניווט ומילות תוכן.'
+		}
+	},
+	{
+		id: 'c-1',
+		titleHe: 'חלק ב׳ — הבנת הנקרא',
+		titleEn: 'Part B — Reading Skills',
+		intro: {
+			greeting: 'I search — I do not read',
+			goal: 'שלושה־עשר שיעורים שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
 		}
 	},
 	{

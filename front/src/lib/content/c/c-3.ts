@@ -9,8 +9,8 @@ export const c3Lessons: LessonNode[] = [
 		titleHe: 'מה רוצים ממני?',
 		titleEn: 'What the Task Wants',
 		code: 'c.3.1',
-		required: ['l16'],
-		position: { x: 0, y: 2160 },
+		required: ['n-7c5330b8'],
+		position: { x: 0, y: 2170 },
 		big: false,
 		content: {
 			preface: [
@@ -232,7 +232,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'P14 Structure',
 		code: 'c.3.2',
 		required: ['l17'],
-		position: { x: 70, y: 2280 },
+		position: { x: 70, y: 2290 },
 		big: false,
 		content: {
 			preface: [
@@ -454,7 +454,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Basic Grammar',
 		code: 'c.3.3',
 		required: ['l18'],
-		position: { x: 100, y: 2400 },
+		position: { x: 100, y: 2410 },
 		big: false,
 		content: {
 			preface: [
@@ -674,7 +674,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Word Count',
 		code: 'c.3.4',
 		required: ['l19'],
-		position: { x: 70, y: 2520 },
+		position: { x: 70, y: 2530 },
 		big: false,
 		content: {
 			preface: [
@@ -888,7 +888,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'Full Simulation',
 		code: 'c.3.5',
 		required: ['l20'],
-		position: { x: 0, y: 2640 },
+		position: { x: 0, y: 2650 },
 		big: false,
 		content: {
 			preface: [
@@ -1140,7 +1140,7 @@ export const c3Lessons: LessonNode[] = [
 		titleEn: 'What Changes?',
 		code: 'c.3.6',
 		required: ['l21'],
-		position: { x: -70, y: 2760 },
+		position: { x: -70, y: 2770 },
 		big: true,
 		content: {
 			preface: [

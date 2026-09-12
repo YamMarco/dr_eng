@@ -9,8 +9,8 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה",
     titleEn: "Question Words",
     code: "c.2.1",
-    required: ["new-node-2", "n-7c5330b8"],
-    position: { x: 0, y: 1680 },
+    required: [],
+    position: { x: 0, y: 120 },
     big: false,
     content: {
       preface: [
@@ -307,7 +307,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Navigation Words",
     code: "c.2.2",
     required: ["l13"],
-    position: { x: -70, y: 1800 },
+    position: { x: -70, y: 240 },
     big: false,
     content: {
       preface: [
@@ -545,7 +545,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words I",
     code: "c.2.3",
     required: ["l14"],
-    position: { x: -100, y: 1920 },
+    position: { x: -100, y: 360 },
     big: false,
     content: {
       preface: [
@@ -774,7 +774,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words II",
     code: "c.2.4",
     required: ["l15"],
-    position: { x: -70, y: 2040 },
+    position: { x: -70, y: 480 },
     big: false,
     content: {
       preface: [
