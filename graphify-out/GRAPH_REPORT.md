@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-09-12)
 
 ## Corpus Check
-- 141 files · ~105,911 words
+- 141 files · ~109,369 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d49fae53`
+- Built from commit: `6b033fe1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -115,8 +115,8 @@
 5. `LessonScreen` - 10 edges
 6. `Section 20 · משפטים שעובדים` - 10 edges
 7. `/graphify` - 10 edges
-8. `POST()` - 9 edges
-9. `Lesson structure — quick reference` - 9 edges
+8. `Lesson structure — quick reference` - 9 edges
+9. `POST()` - 9 edges
 10. `scripts` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -433,7 +433,7 @@ Cohesion: 0.43
 Nodes (7): ActiveField, formatBold(), formatCode(), formatItalic(), formatLink(), formatStrike(), withActive()
 
 ## Knowledge Gaps
-- **531 isolated node(s):** `Body`, `LessonSession`, `MarkAllCategory`, `MarkAllScreen`, `MarkWordScreen` (+526 more)
+- **531 isolated node(s):** `Model`, `Where things live (`front/src/`)`, `Authoring a lesson`, `Screen types`, `Runner rules` (+526 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -446,7 +446,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `Body`, `LessonSession`, `MarkAllCategory` to the rest of the system?**
+- **What connects `Model`, `Where things live (`front/src/`)`, `Authoring a lesson` to the rest of the system?**
   _531 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._

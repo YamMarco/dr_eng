@@ -3038,6 +3038,7 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "page",
       "norm_label": "lesson-structure.md",
       "source_file": "docs/lesson-structure.md",
       "source_location": "L1"
@@ -3049,9 +3050,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "adding a screen type",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L115"
+      "source_location": "L122"
     },
     {
       "id": "docs_lesson_structure_authoring_a_lesson",
@@ -3060,9 +3062,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "authoring a lesson",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L30"
+      "source_location": "L37"
     },
     {
       "id": "docs_lesson_structure_conventions",
@@ -3071,9 +3074,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "conventions",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L123"
+      "source_location": "L130"
     },
     {
       "id": "docs_lesson_structure_lesson_structure_quick_reference",
@@ -3082,6 +3086,7 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "lesson structure \u2014 quick reference",
       "source_file": "docs/lesson-structure.md",
       "source_location": "L1"
@@ -3093,6 +3098,7 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "model",
       "source_file": "docs/lesson-structure.md",
       "source_location": "L6"
@@ -3104,9 +3110,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "node / path rules",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L107"
+      "source_location": "L114"
     },
     {
       "id": "docs_lesson_structure_runner_rules",
@@ -3115,9 +3122,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "runner rules",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L98"
+      "source_location": "L105"
     },
     {
       "id": "docs_lesson_structure_screen_types",
@@ -3126,9 +3134,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "screen types",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L66"
+      "source_location": "L73"
     },
     {
       "id": "docs_lesson_structure_where_things_live_front_src",
@@ -3137,9 +3146,10 @@
       "community": 12,
       "community_name": "Lesson structure \u2014 quick reference",
       "file_type": "document",
+      "node_kind": "heading",
       "norm_label": "where things live (`front/src/`)",
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L15"
+      "source_location": "L22"
     },
     {
       "id": "front_eslint_config",
@@ -8507,7 +8517,7 @@
       "file_type": "code",
       "norm_label": "c2lessons",
       "source_file": "front/src/lib/content/c/c-2.ts",
-      "source_location": "L5"
+      "source_location": "L6"
     },
     {
       "id": "front_src_lib_content_c_c_3",
@@ -12875,7 +12885,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front/src/lib/content/c/c-2.ts",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -13283,7 +13293,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front/src/lib/content/c/c-2.ts",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -14530,13 +14540,24 @@
     },
     {
       "source": "docs_lesson_structure_lesson_structure_quick_reference",
+      "target": "docs_lesson_structure_runner_rules",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/lesson-structure.md",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_lesson_structure_lesson_structure_quick_reference",
       "target": "docs_lesson_structure_node_path_rules",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L107",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -14547,7 +14568,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L115",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -14558,7 +14579,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L123",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -14569,7 +14590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L15",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -14580,7 +14601,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L30",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -14602,18 +14623,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/lesson-structure.md",
-      "source_location": "L66",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_lesson_structure_lesson_structure_quick_reference",
-      "target": "docs_lesson_structure_runner_rules",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/lesson-structure.md",
-      "source_location": "L98",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -19211,7 +19221,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content/c/c-2.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -24735,5 +24745,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d49fae53106f2f6b05567f4b5c4771a77514c22e"
+  "built_at_commit": "6b033fe14a1ba84d5149408a3337b67fa9241207"
 }
