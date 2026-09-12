@@ -2093,8 +2093,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "however / but - הפנייה",
     titleEn: "Contrast Words",
     code: "c.1.8",
-    required: ["numbers-names-q", "not-q", "limiters-q"],
-    position: { x: 0, y: 840 },
+    required: ["n-221188d1"],
+    position: { x: 0, y: 880 },
     big: false,
     content: {
       preface: [
@@ -2157,148 +2157,6 @@ export const c1Lessons: LessonNode[] = [
             },
           ],
         },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
-            },
-            {
-              type: "mcq",
-              prompt: "איפה נמצא however בפסקה I?",
-              options: [
-                'במשפט הראשון, לפני "Every year"',
-                "אחרי המשפט על יערות שנהרסים",
-                'בסוף הפסקה, אחרי "15 countries"',
-                "הוא לא מופיע בפסקה I",
-              ],
-              correctIndex: 1,
-            },
-            {
-              type: "self-check",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
-              prompt: "כתבו את החדשות הטובות - מה שבא אחרי however.",
-              modelAnswer:
-                "There is good news: in 2019 scientists started a project to plant one billion trees in Africa.",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"however / but = פנייה. מה שאחריו = הנקודה."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: however / but = פנייה. מה שאחריו = הנקודה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה החשובה?',
-              options: [
-                '"Many people cannot swim"',
-                '"it is never too late"',
-                "שתיהן חשובות באותה מידה",
-              ],
-              correctIndex: 1,
-              explanation:
-                'מה שאחרי however = הנקודה. "it is never too late" הוא הסיפור האמיתי.',
-            },
-            {
-              type: "mcq",
-              prompt: "however = פנייה, ומה שלפניו הוא הנקודה החשובה.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. לפני however = רקע. אחרי however = הנקודה.",
-            },
-            {
-              type: "mcq",
-              prompt: "השאלה נוגעת למשפט שיש בו however. מה כמעט תמיד התשובה?",
-              options: ["מה שלפני however", "מה שאחרי however", "לא משנה"],
-              correctIndex: 1,
-              explanation: "מה שאחרי however = הנקודה = התשובה. כמעט תמיד.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו את מילת הניגוד ואת מה שבא מיד אחריה",
-              text: "Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
-              correctIndices: [13, 14, 15, 16, 17],
-              wordBank: ["however", "but", "although"],
-            },
-            {
-              type: "passage-mcq",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
-              questions: [
-                {
-                  prompt:
-                    '"What does Dr. Okafor say about different types of volunteering?" - מצאו את however.',
-                  options: [
-                    "All types are equally effective",
-                    "Not all types of volunteering produce the same results",
-                    "Only schools benefit from volunteering",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
-            },
-            {
-              type: "self-check",
-              prompt:
-                "השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.",
-              modelAnswer:
-                "פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "passage-mcq",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
-              questions: [
-                {
-                  prompt:
-                    "What does paragraph I say about people who cannot swim?",
-                  options: [
-                    "They feel embarrassed and never try",
-                    "It is never too late to learn",
-                    "Swimming classes help adults",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
-            },
-            {
-              type: "self-check",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
-              prompt:
-                '"What does paragraph II say after the word However?" - כתבו ANSWER:',
-              modelAnswer:
-                "ANSWER: Not all types of volunteering produce the same results - the most effective ones bring young people face to face with the people they help.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                '"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." - מה הנקודה החשובה?',
-              modelAnswer: "שארגון צדקה מקומי החליט לשנות את המצב בעיר.",
-            },
-          ],
-        },
       ],
     },
   },
@@ -2308,8 +2166,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות אמריקאיות",
     titleEn: "Multiple Choice",
     code: "c.1.9",
-    required: ["l08"],
-    position: { x: 70, y: 960 },
+    required: ["n-b46b7e2b"],
+    position: { x: 30, y: 1120 },
     big: false,
     content: {
       preface: [
@@ -2552,7 +2410,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     code: "c.1.10",
     required: ["l09"],
-    position: { x: 100, y: 1080 },
+    position: { x: -80, y: 1210 },
     big: false,
     content: {
       preface: [
@@ -2765,8 +2623,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "השלמת משפט",
     titleEn: "Complete the Sentence",
     code: "c.1.11",
-    required: ["l10"],
-    position: { x: 70, y: 1200 },
+    required: ["l09"],
+    position: { x: 140, y: 1210 },
     big: false,
     content: {
       preface: [
@@ -2987,7 +2845,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Two Answers",
     code: "c.1.12",
     required: ["l11"],
-    position: { x: 0, y: 1320 },
+    position: { x: 130, y: 1300 },
     big: false,
     content: {
       preface: [
@@ -3202,10 +3060,187 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-649ed18f",
     section: "c-1",
-    titleHe: "שיעור חדש",
+    titleHe: "שאלות - סיכום",
     code: "",
-    required: [],
-    position: { x: -20, y: 1440 },
+    required: ["l10", "l12"],
+    position: { x: 10, y: 1400 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
+  },
+  {
+    id: "n-b46b7e2b",
+    section: "c-1",
+    titleHe: "however / but - הפנייה",
+    titleEn: "Contrast Words",
+    code: "",
+    required: ["l08"],
+    position: { x: 0, y: 960 },
+    big: false,
+    content: {
+      preface: [],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "YOUR TURN - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
+            },
+            {
+              type: "mcq",
+              prompt: "איפה נמצא however בפסקה I?",
+              options: [
+                'במשפט הראשון, לפני "Every year"',
+                "אחרי המשפט על יערות שנהרסים",
+                'בסוף הפסקה, אחרי "15 countries"',
+                "הוא לא מופיע בפסקה I",
+              ],
+              correctIndex: 1,
+            },
+            {
+              type: "self-check",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
+              prompt: "כתבו את החדשות הטובות - מה שבא אחרי however.",
+              modelAnswer:
+                "There is good news: in 2019 scientists started a project to plant one billion trees in Africa.",
+            },
+            {
+              type: "summary",
+              title: "ONE SENTENCE",
+              lines: ['"however / but = פנייה. מה שאחריו = הנקודה."'],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: however / but = פנייה. מה שאחריו = הנקודה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה החשובה?',
+              options: [
+                '"Many people cannot swim"',
+                '"it is never too late"',
+                "שתיהן חשובות באותה מידה",
+              ],
+              correctIndex: 1,
+              explanation:
+                'מה שאחרי however = הנקודה. "it is never too late" הוא הסיפור האמיתי.',
+            },
+            {
+              type: "mcq",
+              prompt: "however = פנייה, ומה שלפניו הוא הנקודה החשובה.",
+              options: ["✅ נכון", "❌ לא נכון"],
+              correctIndex: 1,
+              explanation: "שקר. לפני however = רקע. אחרי however = הנקודה.",
+            },
+            {
+              type: "mcq",
+              prompt: "השאלה נוגעת למשפט שיש בו however. מה כמעט תמיד התשובה?",
+              options: ["מה שלפני however", "מה שאחרי however", "לא משנה"],
+              correctIndex: 1,
+              explanation: "מה שאחרי however = הנקודה = התשובה. כמעט תמיד.",
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו את מילת הניגוד ואת מה שבא מיד אחריה",
+              text: "Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
+              correctIndices: [13, 14, 15, 16, 17],
+              wordBank: ["however", "but", "although"],
+            },
+            {
+              type: "passage-mcq",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              questions: [
+                {
+                  prompt:
+                    '"What does Dr. Okafor say about different types of volunteering?" - מצאו את however.',
+                  options: [
+                    "All types are equally effective",
+                    "Not all types of volunteering produce the same results",
+                    "Only schools benefit from volunteering",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
+            {
+              type: "self-check",
+              prompt:
+                "השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.",
+              modelAnswer:
+                "פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.",
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
+            },
+            {
+              type: "passage-mcq",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
+              questions: [
+                {
+                  prompt:
+                    "What does paragraph I say about people who cannot swim?",
+                  options: [
+                    "They feel embarrassed and never try",
+                    "It is never too late to learn",
+                    "Swimming classes help adults",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
+            {
+              type: "self-check",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              prompt:
+                '"What does paragraph II say after the word However?" - כתבו ANSWER:',
+              modelAnswer:
+                "ANSWER: Not all types of volunteering produce the same results - the most effective ones bring young people face to face with the people they help.",
+            },
+            {
+              type: "self-check",
+              prompt:
+                '"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." - מה הנקודה החשובה?',
+              modelAnswer: "שארגון צדקה מקומי החליט לשנות את המצב בעיר.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "n-7c5330b8",
+    section: "c-1",
+    titleHe: "חלק 1 - סיכום",
+    code: "",
+    required: ["n-649ed18f"],
+    position: { x: 30, y: 1570 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
+  },
+  {
+    id: "n-221188d1",
+    section: "c-1",
+    titleHe: "שאלות 1 - סיכום",
+    code: "",
+    required: ["not-q", "limiters-q", "numbers-names-q"],
+    position: { x: 0, y: 800 },
     big: false,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
