@@ -2094,7 +2094,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     code: "c.1.8",
     required: ["n-221188d1"],
-    position: { x: 0, y: 880 },
+    position: { x: 20, y: 910 },
     big: false,
     content: {
       preface: [
@@ -3074,7 +3074,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     code: "",
     required: ["l08"],
-    position: { x: 0, y: 960 },
+    position: { x: 30, y: 1010 },
     big: false,
     content: {
       preface: [],
@@ -3240,7 +3240,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות 1 - סיכום",
     code: "",
     required: ["not-q", "limiters-q", "numbers-names-q"],
-    position: { x: 0, y: 800 },
+    position: { x: 20, y: 830 },
     big: false,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
