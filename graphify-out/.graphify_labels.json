@@ -96,5 +96,6 @@
   "94": "debug.svelte.ts",
   "95": "markAllColors.ts",
   "96": "activeField.svelte.ts",
-  "97": "NavBar.svelte"
+  "97": "NavBar.svelte",
+  "98": "EditWorkspace.svelte"
 }

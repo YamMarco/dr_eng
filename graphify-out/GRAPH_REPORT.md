@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-09-12)
 
 ## Corpus Check
-- 141 files · ~109,369 words
+- 141 files · ~110,092 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 992 nodes · 1217 edges · 98 communities (81 shown, 17 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.83)
+- 994 nodes · 1220 edges · 99 communities (82 shown, 17 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6b033fe1`
+- Built from commit: `cdbf6b0d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -106,6 +106,7 @@
 - debug.svelte.ts
 - markAllColors.ts
 - activeField.svelte.ts
+- EditWorkspace.svelte
 
 ## God Nodes (most connected - your core abstractions)
 1. `EditModel` - 31 edges
@@ -115,8 +116,8 @@
 5. `LessonScreen` - 10 edges
 6. `Section 20 · משפטים שעובדים` - 10 edges
 7. `/graphify` - 10 edges
-8. `Lesson structure — quick reference` - 9 edges
-9. `POST()` - 9 edges
+8. `POST()` - 9 edges
+9. `Lesson structure — quick reference` - 9 edges
 10. `scripts` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -134,7 +135,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (98 total, 17 thin omitted)
+## Communities (99 total, 17 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -273,8 +274,8 @@ Cohesion: 0.25
 Nodes (8): 4.c.25.1 · חמש הדוגמאות הכלליות, 4.c.25.2 · התאמת דוגמה לנושא, 4.c.25.3 · דוגמה אחת לכל סיבה, 4.c.25.4 · לספור מילים באמת, 4.c.25.5 · בלי משפטים מעורפלים, 4.c.25.6 · תשובה מלאה בזמן, 4.c.25.7 · שער סקשן 25, Section 25 · בנק הדוגמאות ואורך התשובה
 
 ### Community 52 - "GraphEditor.svelte"
-Cohesion: 0.06
-Nodes (20): post(), saveLessonContent(), saveSection(), storedKey(), errorCount, hint, issues, issuesFor (+12 more)
+Cohesion: 0.11
+Nodes (9): bands, canvasHeight, nodeHitbox(), nodePointerMove(), nodePointerUp(), pick(), selectedId, wrapPointerMove() (+1 more)
 
 ### Community 53 - "eye catchers - names and numbers.spec.bak.md"
 Cohesion: 0.10
@@ -432,8 +433,12 @@ Nodes (4): cat(), MARK_ALL_DEFAULT, MARK_ALL_PALETTE, markAllSwatch
 Cohesion: 0.43
 Nodes (7): ActiveField, formatBold(), formatCode(), formatItalic(), formatLink(), formatStrike(), withActive()
 
+### Community 98 - "EditWorkspace.svelte"
+Cohesion: 0.13
+Nodes (13): post(), saveLessonContent(), saveSection(), storedKey(), errorCount, hint, issues, issuesFor (+5 more)
+
 ## Knowledge Gaps
-- **531 isolated node(s):** `Model`, `Where things live (`front/src/`)`, `Authoring a lesson`, `Screen types`, `Runner rules` (+526 more)
+- **531 isolated node(s):** `selectedId`, `canvasHeight`, `bands`, `MarkAllCategory`, `MarkAllScreen` (+526 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -445,8 +450,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `חלק ד׳ — סקשנים 10–16: סוגי השאלות` connect `חלק ד׳ — סקשנים 10–16: סוגי השאלות` to `Section 16 · עמדת הכותב`, `Section 10 · רב-ברירה ואלימינציה`, `Section 11 · השלמת משפט`, `Section 13 · שאלות התייחסות`, `Section 14 · שאלות הסקה`, `Section 15 · רעיון מרכזי`, `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `חלק ג׳ — סקשנים 5–9: שלילה, הגבלה, ניגוד, רמזור, שאלות פרט` connect `Section 5 · Eye Catchers · מילות שלילה` to `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `Model`, `Where things live (`front/src/`)`, `Authoring a lesson` to the rest of the system?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `selectedId`, `canvasHeight`, `bands` to the rest of the system?**
   _531 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
