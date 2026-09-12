@@ -9,7 +9,7 @@ export const c2Lessons: LessonNode[] = [
 		titleHe: 'מילות שאלה',
 		titleEn: 'Question Words',
 		code: 'c.2.1',
-		required: ['l12'],
+		required: ['מבחן סופי חלק 1'],
 		position: { x: 0, y: 1680 },
 		big: false,
 		content: {
@@ -24,12 +24,36 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{ type: 'word-card', word: 'paragraph', translationHe: 'פסקה' },
 				{ type: 'word-card', word: 'according to', translationHe: 'לפי / על פי' },
-				{ type: 'word-card', word: 'explain / explains', translationHe: 'להסביר / מסביר' },
-				{ type: 'word-card', word: 'give ONE answer', translationHe: 'תנו תשובה אחת בלבד' },
-				{ type: 'word-card', word: 'give TWO answers', translationHe: 'תנו שתי תשובות' },
-				{ type: 'word-card', word: 'complete the sentence', translationHe: 'השלימו את המשפט' },
-				{ type: 'word-card', word: 'circle the correct answer', translationHe: 'הקיפו את התשובה הנכונה' },
-				{ type: 'word-card', word: 'what do we learn', translationHe: 'מה אנחנו לומדים' },
+				{
+					type: 'word-card',
+					word: 'explain / explains',
+					translationHe: 'להסביר / מסביר'
+				},
+				{
+					type: 'word-card',
+					word: 'give ONE answer',
+					translationHe: 'תנו תשובה אחת בלבד'
+				},
+				{
+					type: 'word-card',
+					word: 'give TWO answers',
+					translationHe: 'תנו שתי תשובות'
+				},
+				{
+					type: 'word-card',
+					word: 'complete the sentence',
+					translationHe: 'השלימו את המשפט'
+				},
+				{
+					type: 'word-card',
+					word: 'circle the correct answer',
+					translationHe: 'הקיפו את התשובה הנכונה'
+				},
+				{
+					type: 'word-card',
+					word: 'what do we learn',
+					translationHe: 'מה אנחנו לומדים'
+				},
 				{ type: 'word-card', word: 'because', translationHe: 'כי / מפני ש־' },
 				{ type: 'word-card', word: 'in order to', translationHe: 'כדי ל־' },
 				{
@@ -93,14 +117,10 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'YOUR TURN - בכל שאלה, מהי ההוראה שמסתתרת בתוכה?'
-						},
+						{ type: 'preface', text: 'YOUR TURN - בכל שאלה, מהי ההוראה שמסתתרת בתוכה?' },
 						{
 							type: 'mcq',
-							prompt:
-								'"What do we learn from paragraph III about the volunteers?" - מה ההוראה?',
+							prompt: '"What do we learn from paragraph III about the volunteers?" - מה ההוראה?',
 							options: [
 								'לקרוא את כל הטקסט',
 								'"what do we learn" + "paragraph III" ← ללכת רק לפסקה III',
@@ -152,8 +172,7 @@ export const c2Lessons: LessonNode[] = [
 							]
 						}
 					]
-				}
-,
+				},
 				{
 					screens: [
 						{
@@ -230,10 +249,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.' },
 						{
 							type: 'mcq',
 							prompt:
@@ -263,8 +279,7 @@ export const c2Lessons: LessonNode[] = [
 				}
 			]
 		}
-	}
-,
+	},
 	{
 		id: 'l14',
 		section: 'c-2',
@@ -290,10 +305,22 @@ export const c2Lessons: LessonNode[] = [
 				{ type: 'word-card', word: 'however', translationHe: 'אולם / אבל' },
 				{ type: 'word-card', word: 'although', translationHe: 'למרות ש־' },
 				{ type: 'word-card', word: 'in addition', translationHe: 'בנוסף' },
-				{ type: 'word-card', word: 'therefore / as a result', translationHe: 'לכן / כתוצאה מכך' },
+				{
+					type: 'word-card',
+					word: 'therefore / as a result',
+					translationHe: 'לכן / כתוצאה מכך'
+				},
 				{ type: 'word-card', word: 'for example', translationHe: 'לדוגמה' },
-				{ type: 'word-card', word: 'increase / decrease', translationHe: 'עלה / ירד' },
-				{ type: 'word-card', word: 'found / discovered', translationHe: 'מצא / גילה' },
+				{
+					type: 'word-card',
+					word: 'increase / decrease',
+					translationHe: 'עלה / ירד'
+				},
+				{
+					type: 'word-card',
+					word: 'found / discovered',
+					translationHe: 'מצא / גילה'
+				},
 				{
 					type: 'preface',
 					text: 'WATCH IT\n\n"Every year, forests are destroyed. However, there is good news. Only ten rivers are responsible for most of the plastic, because they carry it to the sea. Stopping them could reduce plastic by 90%."\n\nhowever = פנייה · only / most = הגבלה · because = סיבה · 90% = GPS'
@@ -373,8 +400,7 @@ export const c2Lessons: LessonNode[] = [
 							lines: ['"ראיתי Eye Catcher - הוא מדבר אליי. אני עוצר ומקשיב."']
 						}
 					]
-				}
-,
+				},
 				{
 					screens: [
 						{
@@ -415,10 +441,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.' },
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל Eye Catcher - ניגוד, הגבלה, מספרים, שמות, "in addition"',
@@ -436,16 +459,14 @@ export const c2Lessons: LessonNode[] = [
 						{
 							type: 'self-check',
 							prompt: 'השלימו: however = ___ · not = ___ · in addition = ___',
-							modelAnswer: 'however = פנייה · not = ציד, מה שלא נכון · in addition = תשובה שנייה מגיעה.'
+							modelAnswer:
+								'however = פנייה · not = ציד, מה שלא נכון · in addition = תשובה שנייה מגיעה.'
 						}
 					]
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.' },
 						{
 							type: 'mark-all',
 							instruction: 'סמנו כל Eye Catcher בטקסט',
@@ -470,8 +491,7 @@ export const c2Lessons: LessonNode[] = [
 				}
 			]
 		}
-	}
-,
+	},
 	{
 		id: 'l15',
 		section: 'c-2',
@@ -492,12 +512,20 @@ export const c2Lessons: LessonNode[] = [
 					text: 'ומה קורה כשמכירים אותה?\n\n"environmentalists" ← environment + ists = אנשים שעוסקים בסביבה.\nזיהה ← הבין ← ענה ← 8 נקודות.\n\nהמילים בשיעור הזה מופיעות ב-90% מהטקסטים. ללמוד אותן = לקרוא בביטחון, בלי לעצור.'
 				},
 				{ type: 'word-card', word: 'environment', translationHe: 'סביבה' },
-				{ type: 'word-card', word: 'volunteer(s)', translationHe: 'מתנדב / מתנדבים' },
+				{
+					type: 'word-card',
+					word: 'volunteer(s)',
+					translationHe: 'מתנדב / מתנדבים'
+				},
 				{ type: 'word-card', word: 'community', translationHe: 'קהילה' },
 				{ type: 'word-card', word: 'discover / found', translationHe: 'גילה / מצא' },
 				{ type: 'word-card', word: 'result(s)', translationHe: 'תוצאה / תוצאות' },
 				{ type: 'word-card', word: 'increase', translationHe: 'לגדול / לעלות' },
-				{ type: 'word-card', word: 'reduce / decrease', translationHe: 'להקטין / לרדת' },
+				{
+					type: 'word-card',
+					word: 'reduce / decrease',
+					translationHe: 'להקטין / לרדת'
+				},
 				{ type: 'word-card', word: 'protect', translationHe: 'להגן' },
 				{ type: 'word-card', word: 'destroy', translationHe: 'להרוס' },
 				{ type: 'word-card', word: 'species', translationHe: 'מין (ביולוגי)' },
@@ -548,10 +576,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'YOUR TURN - השלימו את המילה החסרה.'
-						},
+						{ type: 'preface', text: 'YOUR TURN - השלימו את המילה החסרה.' },
 						{
 							type: 'mcq',
 							prompt: 'The scientists wanted to ______ the forests from destruction.',
@@ -582,8 +607,7 @@ export const c2Lessons: LessonNode[] = [
 							lines: ['"environment, volunteer, result - אני מזהה ועובר הלאה."']
 						}
 					]
-				}
-,
+				},
 				{
 					screens: [
 						{
@@ -648,10 +672,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.' },
 						{
 							type: 'self-check',
 							text: 'I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.',
@@ -676,8 +697,7 @@ export const c2Lessons: LessonNode[] = [
 				}
 			]
 		}
-	}
-,
+	},
 	{
 		id: 'l16',
 		section: 'c-2',
@@ -696,11 +716,23 @@ export const c2Lessons: LessonNode[] = [
 				{ type: 'word-card', word: 'improve', translationHe: 'לשפר' },
 				{ type: 'word-card', word: 'develop', translationHe: 'לפתח' },
 				{ type: 'word-card', word: 'achieve', translationHe: 'להשיג' },
-				{ type: 'word-card', word: 'affect / effect', translationHe: 'להשפיע / השפעה' },
+				{
+					type: 'word-card',
+					word: 'affect / effect',
+					translationHe: 'להשפיע / השפעה'
+				},
 				{ type: 'word-card', word: 'cause', translationHe: 'לגרום / סיבה' },
 				{ type: 'word-card', word: 'education', translationHe: 'חינוך' },
-				{ type: 'word-card', word: 'health / healthy', translationHe: 'בריאות / בריא' },
-				{ type: 'word-card', word: 'skill(s)', translationHe: 'מיומנות / מיומנויות' },
+				{
+					type: 'word-card',
+					word: 'health / healthy',
+					translationHe: 'בריאות / בריא'
+				},
+				{
+					type: 'word-card',
+					word: 'skill(s)',
+					translationHe: 'מיומנות / מיומנויות'
+				},
 				{ type: 'word-card', word: 'opportunity', translationHe: 'הזדמנות' },
 				{ type: 'word-card', word: 'responsible', translationHe: 'אחראי' },
 				{ type: 'word-card', word: 'require', translationHe: 'לדרוש' },
@@ -784,8 +816,7 @@ export const c2Lessons: LessonNode[] = [
 							lines: ['"improve, affect, skill - אני מזהה, וגם משתמש בהם בכתיבה."']
 						}
 					]
-				}
-,
+				},
 				{
 					screens: [
 						{
@@ -823,10 +854,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 2 🌟\nעם משפטים אמיתיים.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 2 🌟\nעם משפטים אמיתיים.' },
 						{
 							type: 'self-check',
 							prompt:
@@ -855,10 +883,7 @@ export const c2Lessons: LessonNode[] = [
 				},
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.'
-						},
+						{ type: 'preface', text: 'PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.' },
 						{
 							type: 'self-check',
 							prompt:
