@@ -12,6 +12,13 @@ No build-time derivation: what you write is what renders.
 Material code `4.c.1.2` = unit 4 · module c · section 1 · lesson 2. The node's
 `code` field is the `c.1.2` part shown on its label.
 
+**New nodes (from c.2.8 onward): use `<module>.<random>` instead**, e.g.
+`c.llby7`, `e.2132fv` — a module letter plus a short random alphanumeric
+string, not a positional `section.lesson` number. This avoids renumbering
+every later code whenever a node is inserted or split. Older codes
+(`c.1.x`, `c.2.1`–`c.2.7`, `c.3.x`) keep their positional scheme as-is —
+don't renumber them to match.
+
 ## Where things live (`front/src/`)
 
 | file | role |
