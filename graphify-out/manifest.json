@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/+server.ts": {
-    "mtime": 1789213570.3096008,
-    "seen": 1789213604.3327055,
-    "ast_hash": "2d44d4c6a2e088f70259af94b9ac1eaf",
+    "mtime": 1789215071.8766298,
+    "seen": 1789215149.4664202,
+    "ast_hash": "c5e82bb8093aab7e59ece08b58ad7ca2",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
