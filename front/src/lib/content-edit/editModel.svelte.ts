@@ -55,8 +55,21 @@ class EditModel {
 		);
 	}
 
-	nodesForSection(id: string): LessonNode[] {
-		return JSON.parse(JSON.stringify(this.nodes.filter((n) => n.section === id)));
+	/** Node-level diff of a section against its last-loaded/saved baseline —
+	 *  what save() actually sends. Untouched nodes never appear here, so two
+	 *  people editing different nodes in the same section never collide: the
+	 *  server merges each patch into whatever's currently on disk/GitHub
+	 *  instead of overwriting the whole section from a possibly-stale copy. */
+	changesForSection(id: string): { upserts: LessonNode[]; deletes: string[] } {
+		const current = this.nodes.filter((n) => n.section === id);
+		const baseline: LessonNode[] = JSON.parse(this.#baseline.get(id) ?? '[]');
+		const baseById = new Map(baseline.map((n) => [n.id, n]));
+		const upserts = current
+			.filter((n) => JSON.stringify(n) !== JSON.stringify(baseById.get(n.id)))
+			.map((n) => JSON.parse(JSON.stringify(n)) as LessonNode);
+		const currentIds = new Set(current.map((n) => n.id));
+		const deletes = baseline.map((n) => n.id).filter((id) => !currentIds.has(id));
+		return { upserts, deletes };
 	}
 
 	markClean() {

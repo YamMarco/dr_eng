@@ -1,8 +1,12 @@
-// Replaces a lesson's `content` ({ lessonId, content }) or a whole section's
-// node array ({ sectionId, nodes }) inside its content file — one save = one
-// write/commit, however many screens/nodes changed since the last save. The
-// result is re-serialised in the files' hand-written style (`emit`) and then
-// run through Prettier so the on-disk diff stays small and lint-clean.
+// Replaces a lesson's `content` ({ lessonId, content }) or merges a patch of
+// changed/removed nodes into a section ({ sectionId, upserts, deletes })
+// inside its content file — one save = one write/commit, however many
+// screens/nodes changed since the last save. Untouched nodes pass through
+// from the file's current content, not from the caller's copy, so a save
+// never reverts someone else's already-committed changes to a different
+// node. The result is re-serialised in the files' hand-written style
+// (`emit`) and then run through Prettier so the on-disk diff stays small
+// and lint-clean.
 // - In dev: writes straight to the local file (fast, no password needed).
 // - Elsewhere (the deployed site): requires the content-edit password and
 //   commits through the GitHub API instead — there's no writable local
@@ -18,11 +22,27 @@ import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
 import type { RequestHandler } from './$types';
 
 // One request either replaces a single lesson's `content` ({ lessonId,
-// content }) or the whole section array ({ sectionId, nodes }) — the /edit
-// workspace uses the latter so one save covers graph + content edits.
+// content }) or merges a patch of changed/removed nodes into a section
+// ({ sectionId, upserts, deletes }) — the /edit workspace uses the latter so
+// one save covers graph + content edits. Merging (rather than replacing the
+// whole array) means a save only ever touches the nodes it actually
+// changed: two people editing different nodes in the same section never
+// stomp on each other, in the file or in git history.
 type Body =
-	| { lessonId: string; content: unknown; sectionId?: undefined; nodes?: undefined }
-	| { sectionId: string; nodes: unknown[]; lessonId?: undefined; content?: undefined };
+	| {
+			lessonId: string;
+			content: unknown;
+			sectionId?: undefined;
+			upserts?: undefined;
+			deletes?: undefined;
+	  }
+	| {
+			sectionId: string;
+			upserts: unknown[];
+			deletes: string[];
+			lessonId?: undefined;
+			content?: undefined;
+	  };
 
 function checkAuth(request: Request): boolean {
 	if (dev) return true;
@@ -35,6 +55,26 @@ function splitHead(raw: string): string {
 	const head = raw.match(/^([\s\S]*?=\s*)\[/)?.[1];
 	if (!head) throw error(500, 'could not locate array literal in content file');
 	return head;
+}
+
+/** Merge a patch of changed/new nodes and deleted ids into the section's
+ *  current array — nodes the patch doesn't mention pass through untouched,
+ *  so a save never reverts anyone else's already-committed changes. New
+ *  ids are appended in the order the patch gives them; existing ids keep
+ *  their position. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mergeSection(fresh: any[], upserts: any[], deletes: string[]): any[] {
+	const deleteSet = new Set(deletes);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const byId = new Map<string, any>(
+		fresh.filter((n) => !deleteSet.has(n.id)).map((n) => [n.id, n])
+	);
+	const order = fresh.map((n) => n.id as string).filter((id) => !deleteSet.has(id));
+	for (const u of upserts) {
+		if (!byId.has(u.id)) order.push(u.id);
+		byId.set(u.id, u);
+	}
+	return order.map((id) => byId.get(id));
 }
 
 const IDENT = /^[A-Za-z_$][\w$]*$/;
@@ -81,10 +121,17 @@ export const POST: RequestHandler = async ({ request }) => {
 	let transform: (raw: string) => string;
 
 	if (body.sectionId) {
-		const { sectionId, nodes } = body;
-		if (!Array.isArray(nodes)) throw error(400, 'missing nodes[]');
+		const { sectionId, upserts, deletes } = body;
+		if (!Array.isArray(upserts) || !Array.isArray(deletes))
+			throw error(400, 'missing upserts[]/deletes[]');
 		fileNum = sectionId.replace(/^c-/, '');
-		transform = (raw) => `${splitHead(raw)}${emit(nodes, 0)};\n`;
+		transform = (raw) => {
+			const head = splitHead(raw);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const fresh: any[] = JSON.parse(raw.slice(head.length).replace(/;\s*$/, ''));
+			const merged = mergeSection(fresh, upserts, deletes);
+			return `${head}${emit(merged, 0)};\n`;
+		};
 	} else {
 		const { lessonId, content } = body;
 		if (!lessonId || !content) throw error(400, 'missing lessonId/content');

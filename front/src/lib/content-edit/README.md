@@ -67,10 +67,15 @@ section, so the graph shows everything) as a mutable `$state` working copy, a
 snapshots each section's slice; `changedSections` diffs the live slices against
 that.
 
-One **💾 שמירת שינויים** (or ⌘/Ctrl-S) calls `saveSection(sectionId, nodes)` →
-`POST /api/content-edit` with `{ sectionId, nodes }` **once per changed
-section**, each rewriting that whole `c-<N>.ts` array. The endpoint also still
-accepts the older `{ lessonId, content }` shape (single-lesson replace).
+One **💾 שמירת שינויים** (or ⌘/Ctrl-S) calls `editModel.changesForSection` to
+diff the live slice against its baseline, then `saveSection(sectionId,
+upserts, deletes)` → `POST /api/content-edit` with `{ sectionId, upserts,
+deletes }` **once per changed section**. The endpoint merges that patch into
+the section's *current* array (nodes nobody in this session touched pass
+through untouched) rather than replacing the whole thing, so two people
+editing different nodes in the same section never clobber each other — in
+the file or in git history. It also still accepts the older
+`{ lessonId, content }` shape (single-lesson replace).
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,

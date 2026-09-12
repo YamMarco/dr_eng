@@ -50,8 +50,11 @@ export function saveLessonContent(lessonId: string, content: LessonContent) {
 	return post({ lessonId, content });
 }
 
-/** Replaces a whole section file's LessonNode[] in one write/commit — the
- *  /edit workspace's save (graph + content edits together). */
-export function saveSection(sectionId: string, nodes: LessonNode[]) {
-	return post({ sectionId, nodes });
+/** Merges only the changed/removed nodes into a section file in one
+ *  write/commit — the /edit workspace's save (graph + content edits
+ *  together). The server merges this patch into the file's current
+ *  content, so nodes nobody in this session touched are left exactly as
+ *  they are on disk/GitHub, not overwritten from this session's copy. */
+export function saveSection(sectionId: string, upserts: LessonNode[], deletes: string[]) {
+	return post({ sectionId, upserts, deletes });
 }

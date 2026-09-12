@@ -45,7 +45,8 @@
 		try {
 			let committed = false;
 			for (const sid of changed) {
-				const res = await saveSection(sid, editModel.nodesForSection(sid));
+				const { upserts, deletes } = editModel.changesForSection(sid);
+				const res = await saveSection(sid, upserts, deletes);
 				committed ||= res.committed;
 			}
 			editModel.markClean();
