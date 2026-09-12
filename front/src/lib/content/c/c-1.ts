@@ -1,6 +1,6 @@
 // Part A - Reading Skills. One node per programme lesson (lesson00…lesson12).
 // Source: docs/module c/insertprogram/lesson##_module_c.docx
-import type { LessonNode } from '../types';
+import type { LessonNode } from "../types";
 
 export const c1Lessons: LessonNode[] = [
   {
@@ -2091,8 +2091,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "however / but - הפנייה",
     titleEn: "Contrast Words",
     code: "c.1.8",
-    required: ["numbers-names-q", "not-q", "limiters-q"],
-    position: { x: 0, y: 840 },
+    required: ["not-q", "limiters-q", "numbers-names-q"],
+    position: { x: -10, y: 810 },
     big: false,
     content: {
       preface: [
@@ -2155,6 +2155,21 @@ export const c1Lessons: LessonNode[] = [
             },
           ],
         },
+      ],
+    },
+  },
+  {
+    id: "l08-b",
+    section: "c-1",
+    titleHe: "however / but - שאלות",
+    titleEn: "Contrast Words",
+    code: "",
+    required: ["l08"],
+    position: { x: -10, y: 890 },
+    big: false,
+    content: {
+      preface: [],
+      rounds: [
         {
           screens: [
             {
@@ -2306,8 +2321,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות אמריקאיות",
     titleEn: "Multiple Choice",
     code: "c.1.9",
-    required: ["l08"],
-    position: { x: -10, y: 970 },
+    required: ["n-2cebc387"],
+    position: { x: 0, y: 1060 },
     big: false,
     content: {
       preface: [
@@ -2550,7 +2565,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     code: "c.1.10",
     required: ["l09"],
-    position: { x: 120, y: 1080 },
+    position: { x: 130, y: 1130 },
     big: false,
     content: {
       preface: [
@@ -2985,7 +3000,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Two Answers",
     code: "c.1.12",
     required: ["l09"],
-    position: { x: -120, y: 1120 },
+    position: { x: -80, y: 1190 },
     big: false,
     content: {
       preface: [
@@ -3204,7 +3219,7 @@ export const c1Lessons: LessonNode[] = [
     code: "questions_close",
     required: ["l11", "l12"],
     position: { x: 10, y: 1290 },
-    big: false,
+    big: true,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
   {
@@ -3214,7 +3229,17 @@ export const c1Lessons: LessonNode[] = [
     code: "section1_close",
     required: ["סיכום שאלות"],
     position: { x: -10, y: 1390 },
-    big: false,
+    big: true,
+    content: { preface: [], rounds: [{ screens: [] }] },
+  },
+  {
+    id: "n-2cebc387",
+    section: "c-1",
+    titleHe: "סיכום - שאלות 1",
+    code: "",
+    required: ["l08-b"],
+    position: { x: 0, y: 970 },
+    big: true,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
 ];
