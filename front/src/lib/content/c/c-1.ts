@@ -2307,7 +2307,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Multiple Choice",
     code: "c.1.9",
     required: ["l08"],
-    position: { x: 70, y: 960 },
+    position: { x: -10, y: 970 },
     big: false,
     content: {
       preface: [
@@ -2550,7 +2550,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     code: "c.1.10",
     required: ["l09"],
-    position: { x: 100, y: 1080 },
+    position: { x: 120, y: 1080 },
     big: false,
     content: {
       preface: [
@@ -2764,7 +2764,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Complete the Sentence",
     code: "c.1.11",
     required: ["l10"],
-    position: { x: 70, y: 1200 },
+    position: { x: 140, y: 1210 },
     big: false,
     content: {
       preface: [
@@ -2984,8 +2984,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שתי תשובות",
     titleEn: "Two Answers",
     code: "c.1.12",
-    required: ["l11"],
-    position: { x: 0, y: 1320 },
+    required: ["l09"],
+    position: { x: -120, y: 1120 },
     big: false,
     content: {
       preface: [
@@ -3196,5 +3196,25 @@ export const c1Lessons: LessonNode[] = [
         },
       ],
     },
+  },
+  {
+    id: "סיכום שאלות",
+    section: "c-1",
+    titleHe: "סיכום שאלות",
+    code: "questions_close",
+    required: ["l11", "l12"],
+    position: { x: 10, y: 1290 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
+  },
+  {
+    id: "new-node-2",
+    section: "c-1",
+    titleHe: "סיכום חלק 1 ",
+    code: "section1_close",
+    required: ["סיכום שאלות"],
+    position: { x: -10, y: 1390 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
   },
 ];
