@@ -140,9 +140,17 @@ class EditModel {
 		return id;
 	}
 
+	/** Short, collision-checked id for a freshly created node — stable from
+	 *  the start so it can be linked/dragged before anyone bothers naming it. */
+	private shortId(): string {
+		let id = `n-${crypto.randomUUID().slice(0, 8)}`;
+		while (this.node(id)) id = `n-${crypto.randomUUID().slice(0, 8)}`;
+		return id;
+	}
+
 	addNode(near?: LessonNode): LessonNode {
 		const node: LessonNode = {
-			id: this.freshId('new-node'),
+			id: this.shortId(),
 			section: near?.section ?? this.defaultSection,
 			titleHe: 'שיעור חדש',
 			code: '',

@@ -389,15 +389,19 @@
 	</button>
 {/if}
 
-<!-- Open the /edit workspace. Always shown; /edit itself is password-gated
-     on the deployed site. Detachable — see src/lib/content-edit/README.md. -->
-<a
-	href="/edit"
-	title="עריכת תוכן"
-	class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
->
-	✎
-</a>
+<!-- Open the /edit workspace. Only for module 'c' — that's the only module
+     the content model / content-edit tooling covers so far (see the same
+     `mod.id !== 'c'` guard above). /edit itself is password-gated on the
+     deployed site. Detachable — see src/lib/content-edit/README.md. -->
+{#if mod.id === 'c'}
+	<a
+		href="/edit"
+		title="עריכת תוכן"
+		class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
+	>
+		✎
+	</a>
+{/if}
 
 {#if vocabTestOpen}
 	<LessonRunner
