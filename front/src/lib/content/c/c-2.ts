@@ -11,7 +11,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Question Words: Where & What",
     code: "c.2.1",
     required: [],
-    position: { x: -210, y: 120 },
+    position: { x: -180, y: 80 },
     big: false,
     content: {
       preface: [
@@ -257,7 +257,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Question Words: How to Answer",
     code: "c.2.2",
     required: ["q-words-1"],
-    position: { x: -210, y: 260 },
+    position: { x: -160, y: 290 },
     big: false,
     content: {
       preface: [
@@ -479,7 +479,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Navigation Words: Contrast & Reason",
     code: "c.2.3",
     required: [],
-    position: { x: -100, y: 120 },
+    position: { x: -70, y: 80 },
     big: false,
     content: {
       preface: [
@@ -669,7 +669,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Navigation Words: Examples & Findings",
     code: "c.2.4",
     required: ["nav-words-1"],
-    position: { x: -100, y: 260 },
+    position: { x: -50, y: 290 },
     big: false,
     content: {
       preface: [
@@ -866,7 +866,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: People & Community",
     code: "c.2.5",
     required: [],
-    position: { x: 10, y: 120 },
+    position: { x: 60, y: 80 },
     big: false,
     content: {
       preface: [
@@ -1041,7 +1041,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Research & Findings",
     code: "c.2.6",
     required: ["content-2c"],
-    position: { x: 120, y: 260 },
+    position: { x: 170, y: 290 },
     big: false,
     content: {
       preface: [
@@ -1219,7 +1219,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Change & Environment",
     code: "c.2.7",
     required: [],
-    position: { x: 120, y: 120 },
+    position: { x: 170, y: 80 },
     big: false,
     content: {
       preface: [
@@ -1394,7 +1394,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Growth & Learning",
     code: "c.llby7",
     required: ["content-1a"],
-    position: { x: 10, y: 190 },
+    position: { x: 60, y: 190 },
     big: false,
     content: {
       preface: [
@@ -1568,7 +1568,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Cause & Value",
     code: "c.q5yrp",
     required: ["content-2a"],
-    position: { x: 10, y: 260 },
+    position: { x: 60, y: 290 },
     big: false,
     content: {
       preface: [
@@ -1740,7 +1740,7 @@ export const c2Lessons: LessonNode[] = [
     titleEn: "Content Words: Social Responsibility",
     code: "c.q6yby",
     required: ["content-1c"],
-    position: { x: 120, y: 190 },
+    position: { x: 170, y: 190 },
     big: false,
     content: {
       preface: [
