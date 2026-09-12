@@ -126,8 +126,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		const { content: raw, sha } = await getGithubFile(githubPath);
 		const next = await rewrite(raw);
 		try {
-			const author = env.CONTENT_EDIT_AUTHOR || 'Emil';
-			await putGithubFile(githubPath, next, sha, `[${author}] content-edit: ${label}`);
+			const author = env.CONTENT_EDIT_AUTHOR;
+			const prefix = author ? `[${author}] ` : '';
+			await putGithubFile(githubPath, next, sha, `${prefix}content-edit: ${label}`);
 			return json({ ok: true, file: `c-${fileNum}.ts`, committed: true });
 		} catch (e) {
 			lastError = e;

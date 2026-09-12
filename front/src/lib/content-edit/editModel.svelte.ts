@@ -133,13 +133,6 @@ class EditModel {
 		this.dirty = true;
 	}
 
-	private freshId(base: string): string {
-		let id = base;
-		let i = 2;
-		while (this.node(id)) id = `${base}-${i++}`;
-		return id;
-	}
-
 	/** Short, collision-checked id for a freshly created node — stable from
 	 *  the start so it can be linked/dragged before anyone bothers naming it. */
 	private shortId(): string {
@@ -168,7 +161,7 @@ class EditModel {
 		const src = this.node(id);
 		if (!src) return;
 		const copy = clone(src);
-		copy.id = this.freshId(`${src.id}-copy`);
+		copy.id = this.shortId();
 		copy.code = '';
 		copy.position = { x: src.position.x + 40, y: src.position.y + 40 };
 		this.nodes.push(copy);
@@ -215,7 +208,7 @@ class EditModel {
 		const moved = src.content.rounds.splice(afterRound + 1);
 		const tail: LessonNode = {
 			...clone(src),
-			id: this.freshId(`${src.id}-b`),
+			id: this.shortId(),
 			code: '',
 			required: [src.id],
 			position: { x: src.position.x, y: src.position.y + 120 },
