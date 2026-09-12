@@ -9,7 +9,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה",
     titleEn: "Question Words",
     code: "c.2.1",
-    required: ["new-node-2"],
+    required: ["new-node-2", "n-7c5330b8"],
     position: { x: 0, y: 1680 },
     big: false,
     content: {
