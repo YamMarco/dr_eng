@@ -1,6 +1,6 @@
 // Part A - Reading Skills. One node per programme lesson (lesson00…lesson12).
 // Source: docs/module c/insertprogram/lesson##_module_c.docx
-import type { LessonNode } from '../types';
+import type { LessonNode } from "../types";
 
 export const c1Lessons: LessonNode[] = [
   {
@@ -183,19 +183,21 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "עם **מפת הדרכים**, אתם לא מתחילים לקרוא בלי כיוון.\n\nלדוגמה. יש לכם את הכותרת הבאה:\n  \n**   THE RETURN OF THE TREES**\n\n הטקסט קשור לעצים.\nפסקה 1: מדענים שותלים **מיליארד עצים**.\nוזהו. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט.\nהיא רק אומרת לכם **על מה הטקסט מדבר ואיפה אתם נמצאים בו**.\nוזה כבר מספיק כדי לא ללכת לאיבוד.",
+          text: "\n  אתם לא מתחילים לקרוא בלי כיוון.\n\n  לפני שקוראים מילה אחת - בונים מפה.\n\n  יש לכם את הכותרת: THE RETURN OF THE TREES\n  הטקסט קשור לעצים. זה כבר מידע.\n\n  עכשיו מסתכלים על הפסקאות - רק על המשפט הראשון של כל אחת:\n  פסקה 1: מדענים שותלים מיליארד עצים.\n  פסקה 2: ההשפעה על האקלים.\n  פסקה 3: הביקורת על הפרויקט.\n\n  וזהו. תוך דקה כבר יש לכם מפה בראש.\n  המפה לא מספרת לכם את כל הטקסט.\n  היא רק אומרת לכם על מה הטקסט מדבר ואיפה אתם נמצאים בו.  וזה כבר מספיק כדי לא ללכת לאיבוד.",
+        },
+        { type: "preface", text: "" },
+        {
+          type: "preface",
+          text: "steps:\n  - קוראים את הכותרת. מה הנושא?\n  - מסתכלים על מספר הפסקאות. כמה יש?\n  - קוראים את המשפט הראשון של כל פסקה בלבד.\n  - כותבים בראש: P1 = ___. P2 = ___. P3 = ___.\n  - עכשיו פותחים שאלה ראשונה - ויודעים ישר לאיזו פסקה ללכת.",
         },
         {
           type: "preface",
           text: "הדבר הכי חשוב: **לא רצים ישר לשאלות.**\nלפני השאלות עושים שני דברים:\n**1. קוראים את הכותרת.**\n**2. קוראים את הפסקה הראשונה.**\nרק אחר כך עוברים לשאלות.\nלמה? כי הכותרת והפסקה הראשונה נותנות לכם את **מפת הדרכים של הטקסט** — על מה הוא מדבר ולאן הוא הולך.\nכשכבר יש לכם כיוון, הרבה יותר קל להבין את השאלות ולמצוא את התשובות.",
         },
+        { type: "preface", text: "" },
         {
           type: "preface",
-          text: "**WATCH IT**THE RETURN OF THE TREES\nלפני שאתם הולכים לשאלות — **עוצרים ובונים מפת דרכים.**שלב 1: הכותרת\n**THE RETURN OF THE TREES**\nמילים חשובות:**RETURN** = חזרה**TREES** = עצים\nכבר מהכותרת אפשר לנחש שהטקסט ידבר על **עצים שחוזרים / נטיעה מחדש / שיקום של יערות**.\nאנחנו עדיין לא יודעים בדיוק מה הסיפור — וזה בסדר.\nהמטרה היא רק לקבל **כיוון**.",
-        },
-        {
-          type: "preface",
-          text: "שלב 2: הפסקה הראשונהEvery year, forests around the world are destroyed by fire, farming, and pollution.\nHowever, there is good news.\nIn 2019, scientists started a project to plant one billion trees in Africa by 2030.\nThe project has already planted over 200 million trees in 15 countries.עכשיו מפרקים את הפסקה:\n1. מה הבעיה?\nforests → destroyed\nהיערות נהרסים.\nלמה?\nfire / farming / pollution\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\nמספיק להבין: יש בעיה עם היערות.\n2. חפשו מילת שינוי\nHowever\nזו מילה חשובה מאוד.\nHowever = אבל / אולם\nהיא אומרת לנו:\nעד עכשיו דיברו על בעיה — עכשיו כנראה יגיע משהו אחר.\nואכן מיד אחריה:\ngood news\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.\n3. מי עושה משהו?\nscientists\nהמדענים.\nמה הם עשו?\nstarted a project\nהתחילו פרויקט.\nמה מטרת הפרויקט?\nplant one billion trees\nלשתול מיליארד עצים.\n4. שימו לב למספרים\nמספרים בטקסט הם כמו שלטים בכביש:\n2019 → מתי הפרויקט התחיל\none billion trees → מה היעד\n2030 → עד מתי\n200 million trees → כמה כבר נשתלו\n15 countries → בכמה מדינות\nלא צריך לזכור את כל המספרים עכשיו.\nצריך רק לזהות שהם כנראה יהיו חשובים בשאלות.\nאז מה מפת הדרכים שלנו?\nבעיה: יערות נהרסים.\n↓\nHowever\n↓\nפתרון: מדענים התחילו פרויקט.\n↓\nמטרה: לשתול מיליארד עצים באפריקה.\nוזה כבר מספיק כדי להבין את הכיוון של הטקסט.זכרו:\nכותרת → פסקה ראשונה → מילות מפתח → שאלות\nלא קוראים כל מילה.\nמחפשים נושא, בעיה, שינוי, פתרון ומספרים חשובים.",
+          text: "שלב 2: הפסקה הראשונה\n\nEvery year, forests around the world are destroyed by fire, farming, and pollution.\nHowever, there is good news.\nIn 2019, scientists started a project to plant one billion trees in Africa by 2030.\nThe project has already planted over 200 million trees in 15 countries.עכשיו מפרקים את הפסקה:\n1. מה הבעיה?\nforests → destroyed\nהיערות נהרסים.\nלמה?\nfire / farming / pollution\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\nמספיק להבין: יש בעיה עם היערות.\n2. חפשו מילת שינוי\nHowever\nזו מילה חשובה מאוד.\nHowever = אבל / אולם\nהיא אומרת לנו:\nעד עכשיו דיברו על בעיה — עכשיו כנראה יגיע משהו אחר.\nואכן מיד אחריה:\ngood news\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.\n3. מי עושה משהו?\nscientists\nהמדענים.\nמה הם עשו?\nstarted a project\nהתחילו פרויקט.\nמה מטרת הפרויקט?\nplant one billion trees\nלשתול מיליארד עצים.\n4. שימו לב למספרים\nמספרים בטקסט הם כמו שלטים בכביש:\n2019 → מתי הפרויקט התחיל\none billion trees → מה היעד\n2030 → עד מתי\n200 million trees → כמה כבר נשתלו\n15 countries → בכמה מדינות\nלא צריך לזכור את כל המספרים עכשיו.\nצריך רק לזהות שהם כנראה יהיו חשובים בשאלות.\nאז מה מפת הדרכים שלנו?\nבעיה: יערות נהרסים.\n↓\nHowever\n↓\nפתרון: מדענים התחילו פרויקט.\n↓\nמטרה: לשתול מיליארד עצים באפריקה.\nוזה כבר מספיק כדי להבין את הכיוון של הטקסט.זכרו:\nכותרת → פסקה ראשונה → מילות מפתח → שאלות\nלא קוראים כל מילה.\nמחפשים נושא, בעיה, שינוי, פתרון ומספרים חשובים.",
         },
         { type: "steps", steps: [""] },
       ],
@@ -2307,7 +2309,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Multiple Choice",
     code: "c.1.9",
     required: ["l08"],
-    position: { x: -10, y: 970 },
+    position: { x: 70, y: 960 },
     big: false,
     content: {
       preface: [
@@ -2550,7 +2552,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     code: "c.1.10",
     required: ["l09"],
-    position: { x: 120, y: 1080 },
+    position: { x: 100, y: 1080 },
     big: false,
     content: {
       preface: [
@@ -2764,7 +2766,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "Complete the Sentence",
     code: "c.1.11",
     required: ["l10"],
-    position: { x: 140, y: 1210 },
+    position: { x: 70, y: 1200 },
     big: false,
     content: {
       preface: [
@@ -2984,8 +2986,8 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שתי תשובות",
     titleEn: "Two Answers",
     code: "c.1.12",
-    required: ["l09"],
-    position: { x: -120, y: 1120 },
+    required: ["l11"],
+    position: { x: 0, y: 1320 },
     big: false,
     content: {
       preface: [
@@ -3196,25 +3198,5 @@ export const c1Lessons: LessonNode[] = [
         },
       ],
     },
-  },
-  {
-    id: "סיכום שאלות",
-    section: "c-1",
-    titleHe: "סיכום שאלות",
-    code: "questions_close",
-    required: ["l11", "l12"],
-    position: { x: 10, y: 1290 },
-    big: false,
-    content: { preface: [], rounds: [{ screens: [] }] },
-  },
-  {
-    id: "new-node-2",
-    section: "c-1",
-    titleHe: "סיכום חלק 1 ",
-    code: "section1_close",
-    required: ["סיכום שאלות"],
-    position: { x: -10, y: 1390 },
-    big: false,
-    content: { preface: [], rounds: [{ screens: [] }] },
   },
 ];
