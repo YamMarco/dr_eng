@@ -52,8 +52,13 @@
 		}
 	}
 
-	// ---- node dragging ----
+	// ---- node dragging (single or, when the pressed node is part of the
+	// current multi-selection, the whole group moves together by the same
+	// delta) ----
 	let dragId = $state<string | null>(null);
+	let dragIds: string[] = [];
+	let dragStartPositions = new Map<string, { x: number; y: number }>();
+	let dragStartPointer: { x: number; y: number } | null = null;
 	let moved = false;
 
 	function nodePointerDown(e: PointerEvent, id: string) {
@@ -62,6 +67,14 @@
 		(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
 		dragId = id;
 		moved = false;
+		dragIds = picked.has(id) && picked.size > 1 ? [...picked] : [id];
+		dragStartPositions = new Map(
+			dragIds.map((nid) => {
+				const n = editModel.node(nid);
+				return [nid, { x: n?.position.x ?? 0, y: n?.position.y ?? 0 }];
+			})
+		);
+		dragStartPointer = null;
 	}
 	function nodePointerMove(e: PointerEvent) {
 		if (!dragId || !wrap) return;
@@ -72,13 +85,42 @@
 			x = Math.round(x / GRID) * GRID;
 			y = Math.round(y / GRID) * GRID;
 		}
-		editModel.setPosition(dragId, x, Math.max(20, y));
-		moved = true;
+		if (!dragStartPointer) dragStartPointer = { x, y };
+		const dx = x - dragStartPointer.x;
+		const dy = y - dragStartPointer.y;
+		for (const nid of dragIds) {
+			const start = dragStartPositions.get(nid);
+			if (!start) continue;
+			editModel.setPosition(nid, start.x + dx, Math.max(20, start.y + dy));
+		}
+		if (dx || dy) moved = true;
 	}
 	function nodePointerUp(e: PointerEvent, id: string) {
 		(e.currentTarget as HTMLElement).releasePointerCapture?.(e.pointerId);
 		if (!moved) pick(id, e.ctrlKey || e.metaKey);
 		dragId = null;
+		dragIds = [];
+		dragStartPointer = null;
+	}
+
+	// ---- marquee (box) select: drag on empty canvas to multi-select, then
+	// drag any selected node to move the whole group ----
+	let marquee = $state<{ x0: number; y0: number; x1: number; y1: number } | null>(null);
+
+	function nodeHitbox(n: { position: { x: number; y: number }; big: boolean }) {
+		const w = n.big ? 104 : 92;
+		const left = cx(n) - w / 2;
+		return { left, right: left + w, top: n.position.y, bottom: n.position.y + 56 };
+	}
+
+	function wrapPointerDown(e: PointerEvent) {
+		if (e.target !== wrap || !wrap || linkFrom) return;
+		const r = wrap.getBoundingClientRect();
+		const x = e.clientX - r.left;
+		const y = e.clientY - r.top;
+		marquee = { x0: x, y0: y, x1: x, y1: y };
+		wrap.setPointerCapture(e.pointerId);
+		if (!(e.ctrlKey || e.metaKey || e.shiftKey)) picked = new Set();
 	}
 
 	// ---- linking ----
@@ -96,15 +138,37 @@
 			const r = wrap.getBoundingClientRect();
 			linkXY = { x: e.clientX - r.left, y: e.clientY - r.top };
 		}
+		if (marquee && wrap) {
+			const r = wrap.getBoundingClientRect();
+			marquee = { ...marquee, x1: e.clientX - r.left, y1: e.clientY - r.top };
+		}
 	}
 	function nodePointerEnterUp(id: string) {
 		if (linkFrom && linkFrom !== id) editModel.togglePrereq(linkFrom, id);
 		linkFrom = null;
 		linkXY = null;
 	}
-	function wrapPointerUp() {
+	function wrapPointerUp(e: PointerEvent) {
 		linkFrom = null;
 		linkXY = null;
+		if (marquee) {
+			const x0 = Math.min(marquee.x0, marquee.x1);
+			const x1 = Math.max(marquee.x0, marquee.x1);
+			const y0 = Math.min(marquee.y0, marquee.y1);
+			const y1 = Math.max(marquee.y0, marquee.y1);
+			const hit = nodes.filter((n) => {
+				const box = nodeHitbox(n);
+				return box.left < x1 && box.right > x0 && box.top < y1 && box.bottom > y0;
+			});
+			if (hit.length) {
+				const next = new Set(picked);
+				for (const n of hit) next.add(n.id);
+				picked = next;
+				editModel.select(hit[hit.length - 1].id, editModel.selectedPath);
+			}
+			wrap?.releasePointerCapture?.(e.pointerId);
+			marquee = null;
+		}
 	}
 
 	const cx = (n: { position: { x: number } }) => CENTER + n.position.x;
@@ -179,8 +243,9 @@
 	</div>
 
 	<div class="border-b border-line/70 bg-surface/60 px-3 py-1 text-[11px] text-muted">
-		גררו עיגול כדי להזיז · דאבל־קליק לפתיחה · מ<b>העיגול הקטן שמתחת</b> לשיעור גררו לשיעור אחר כדי לחבר
-		· לחיצה על קו מחברת מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
+		גררו עיגול כדי להזיז · גררו על שטח ריק לבחירת כמה שיעורים ואז גררו אחד מהם כדי להזיז את כולם ביחד
+		· דאבל־קליק לפתיחה · מ<b>העיגול הקטן שמתחת</b> לשיעור גררו לשיעור אחר כדי לחבר · לחיצה על קו מחברת
+		מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
 	</div>
 
 	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 p-4">
@@ -189,12 +254,13 @@
 			role="presentation"
 			class="relative mx-auto"
 			style="width:{CANVAS_WIDTH}px; height:{canvasHeight}px"
+			onpointerdown={wrapPointerDown}
 			onpointermove={wrapPointerMove}
 			onpointerup={wrapPointerUp}
 		>
 			{#each bands as b (b.id)}
 				<div
-					class="absolute inset-x-0 rounded-md px-2 py-0.5 text-center text-xs font-extrabold {styleFor(
+					class="pointer-events-none absolute inset-x-0 rounded-md px-2 py-0.5 text-center text-xs font-extrabold {styleFor(
 						b.id
 					).band}"
 					style="top:{b.top}px"
@@ -214,7 +280,7 @@
 								y1={cy(from)}
 								x2={cx(n)}
 								y2={cy(n)}
-								class="pointer-events-auto cursor-pointer stroke-line hover:stroke-rose-500"
+								class="pointer-events-auto cursor-pointer stroke-muted hover:stroke-rose-500"
 								stroke-width="3"
 								aria-label="נתק חיבור"
 								onpointerdown={() => editModel.togglePrereq(reqId, n.id)}
@@ -271,6 +337,18 @@
 					</span>
 				</div>
 			{/each}
+
+			{#if marquee}
+				<div
+					class="pointer-events-none absolute rounded border-2 border-dashed border-brand bg-brand/10"
+					style="left:{Math.min(marquee.x0, marquee.x1)}px; top:{Math.min(
+						marquee.y0,
+						marquee.y1
+					)}px; width:{Math.abs(marquee.x1 - marquee.x0)}px; height:{Math.abs(
+						marquee.y1 - marquee.y0
+					)}px"
+				></div>
+			{/if}
 		</div>
 	</div>
 </div>
