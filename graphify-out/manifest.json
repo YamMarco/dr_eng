@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/+server.ts": {
-    "mtime": 1788706175.5129902,
-    "seen": 1789210206.8791091,
-    "ast_hash": "dd15908e89eb9c37ea2460e8baf54517",
+    "mtime": 1789212812.7388825,
+    "seen": 1789212883.537252,
+    "ast_hash": "f45641bc4d9712d89e6ae92070c911b8",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
@@ -774,9 +774,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1789212037.7964127,
-    "seen": 1789212103.7506642,
-    "ast_hash": "e5a80887a80133a188491c66d0a5a5f5",
+    "mtime": 1789212835.5971859,
+    "seen": 1789212883.537159,
+    "ast_hash": "b22ec2930f2279aa55f46792eb7ce6d0",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
