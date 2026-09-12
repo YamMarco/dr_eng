@@ -3199,4 +3199,14 @@ export const c1Lessons: LessonNode[] = [
       ],
     },
   },
+  {
+    id: "n-649ed18f",
+    section: "c-1",
+    titleHe: "שיעור חדש",
+    code: "",
+    required: [],
+    position: { x: -20, y: 1440 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
+  },
 ];
