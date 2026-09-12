@@ -576,9 +576,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
-    "mtime": 1789212316.5052512,
-    "seen": 1789212335.228449,
-    "ast_hash": "e517a1a40bf31f50250dc4fa1118a9f1",
+    "mtime": 1789212978.0232494,
+    "seen": 1789213604.3326354,
+    "ast_hash": "a8cc0c19c9c35044e53044391bb454b4",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
@@ -642,15 +642,15 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/+server.ts": {
-    "mtime": 1789212812.7388825,
-    "seen": 1789212883.537252,
-    "ast_hash": "f45641bc4d9712d89e6ae92070c911b8",
+    "mtime": 1789213570.3096008,
+    "seen": 1789213604.3327055,
+    "ast_hash": "2d44d4c6a2e088f70259af94b9ac1eaf",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1789128182.6415956,
-    "seen": 1789210206.8791885,
-    "ast_hash": "ad6e78701242a03920804c95ae71e67a",
+    "mtime": 1789213526.6321912,
+    "seen": 1789213604.3328047,
+    "ast_hash": "39a397164bba6b0794fd28c58a298a2e",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/api.ts": {
-    "mtime": 1788705356.6666298,
-    "seen": 1789210206.8790329,
-    "ast_hash": "324a343318e7215541b21bf483ba43f9",
+    "mtime": 1789213487.3080392,
+    "seen": 1789213604.332615,
+    "ast_hash": "9bdbe37e1db313c646d9201d357f624f",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/github.ts": {
@@ -762,9 +762,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditWorkspace.svelte": {
-    "mtime": 1788784924.051908,
-    "seen": 1789210206.879022,
-    "ast_hash": "c8524d961480d0d530aa97111ef7c466",
+    "mtime": 1789213515.243737,
+    "seen": 1789213604.3326004,
+    "ast_hash": "7d93152602fd9009adf914ff52e8b619",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
@@ -774,9 +774,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1789212835.5971859,
-    "seen": 1789212883.537159,
-    "ast_hash": "b22ec2930f2279aa55f46792eb7ce6d0",
+    "mtime": 1789213480.5018506,
+    "seen": 1789213604.332618,
+    "ast_hash": "0320c0d7b56c8385a33f9f800503314c",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
