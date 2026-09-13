@@ -4,6 +4,8 @@
 // content-edit toolbar's color buttons.
 
 export const TEXT_COLOR_PALETTE: Record<string, string> = {
+	black: '#000000',
+	white: '#ffffff',
 	red: '#dc2626',
 	blue: '#2563eb',
 	green: '#16a34a',

@@ -15,6 +15,15 @@ class ActiveField {
 
 export const activeField = new ActiveField();
 
+/** The header level of the line the caret is currently in (0 = regular
+ *  text) — kept live via `selectionchange` so the toolbar's header button
+ *  can show the current line's mode without waiting for a click. */
+class ActiveLine {
+	level = $state<0 | 1 | 2 | 3>(0);
+}
+
+export const activeLine = new ActiveLine();
+
 /** Refocus the last-active field (if it's still in the document) and run
  *  `fn` while it holds focus/selection — for toolbar buttons to call
  *  document.execCommand against the right element. */
@@ -39,6 +48,25 @@ function currentBlock(root: HTMLDivElement): HTMLElement | null {
 
 function notifyInput(el: HTMLDivElement) {
 	el.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+/** Refreshes `activeLine.level` from wherever the caret is right now. Call
+ *  after any DOM mutation that might move the caret to a different line
+ *  (header/align/direction changes) — `selectionchange` covers everything
+ *  else (typing, clicking, arrow keys, refocusing another field). */
+export function updateActiveLine() {
+	const el = activeField.el;
+	if (!el || !el.isConnected) {
+		activeLine.level = 0;
+		return;
+	}
+	const block = currentBlock(el);
+	const tag = block?.tagName.toLowerCase();
+	activeLine.level = tag === 'h1' ? 1 : tag === 'h2' ? 2 : tag === 'h3' ? 3 : 0;
+}
+
+if (typeof document !== 'undefined') {
+	document.addEventListener('selectionchange', updateActiveLine);
 }
 
 export function formatBold() {
@@ -92,15 +120,14 @@ export function formatColor(name: TextColorName) {
 	});
 }
 
-/** Sets (or, if already at that level, clears back to a regular line) the
- *  current line's header size. Line-level: acts on the whole line the caret
- *  is in, ignoring selection extent. */
-export function formatHeader(level: 1 | 2 | 3) {
+/** Sets the current line's header size (0 = regular text). Line-level: acts
+ *  on the whole line the caret is in, ignoring selection extent. */
+export function formatHeader(level: 0 | 1 | 2 | 3) {
 	withActive((el) => {
 		const block = currentBlock(el);
 		if (!block) return;
-		const currentTag = block.tagName.toLowerCase();
-		const targetTag = currentTag === `h${level}` ? 'div' : `h${level}`;
+		const targetTag = level ? `h${level}` : 'div';
+		if (block.tagName.toLowerCase() === targetTag) return;
 		const replacement = document.createElement(targetTag);
 		replacement.innerHTML = block.innerHTML;
 		if (block.style.textAlign) replacement.style.textAlign = block.style.textAlign;
@@ -115,6 +142,7 @@ export function formatHeader(level: 1 | 2 | 3) {
 		sel?.addRange(range);
 
 		notifyInput(el);
+		updateActiveLine();
 	});
 }
 

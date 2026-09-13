@@ -7,6 +7,7 @@
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
 	import { typeHe } from './screenTypeNames';
 	import {
+		activeLine,
 		formatBold,
 		formatItalic,
 		formatUnderline,
@@ -19,6 +20,15 @@
 		formatDirection
 	} from './activeField.svelte';
 	import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
+
+	const HEADER_OPTIONS: { level: 0 | 1 | 2 | 3; label: string }[] = [
+		{ level: 0, label: 'רגיל' },
+		{ level: 1, label: 'H1' },
+		{ level: 2, label: 'H2' },
+		{ level: 3, label: 'H3' }
+	];
+	let colorMenuOpen = $state(false);
+	let headerMenuOpen = $state(false);
 	import EditableScreen from './EditableScreen.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
@@ -190,49 +200,85 @@
 					onclick={formatLink}>🔗</button
 				>
 			</div>
-			<div
-				class="flex items-center gap-1 overflow-hidden rounded-lg border border-line px-1.5"
-				role="toolbar"
-				aria-label="צבע טקסט"
-			>
-				{#each Object.entries(TEXT_COLOR_PALETTE) as [name, hex] (name)}
+			<div class="relative">
+				<button
+					type="button"
+					class="rounded-lg border border-line px-2 py-1 text-xs hover:bg-line/60"
+					title="צבע טקסט"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => (colorMenuOpen = !colorMenuOpen)}
+				>
+					🎨
+				</button>
+				{#if colorMenuOpen}
 					<button
 						type="button"
-						class="size-4 rounded-full ring-1 ring-line/70"
-						style="background:{hex}"
-						title={name}
-						onmousedown={(e) => e.preventDefault()}
-						onclick={() => formatColor(name as TextColorName)}
+						class="fixed inset-0 z-10 cursor-default"
+						aria-label="סגירת בחירת הצבע"
+						onclick={() => (colorMenuOpen = false)}
 					></button>
-				{/each}
+					<div
+						class="absolute top-full z-20 mt-1 flex w-28 flex-wrap gap-1.5 rounded-lg border border-line bg-surface p-2 shadow-md"
+						role="menu"
+						aria-label="בחירת צבע טקסט"
+					>
+						{#each Object.entries(TEXT_COLOR_PALETTE) as [name, hex] (name)}
+							<button
+								type="button"
+								class="size-5 shrink-0 rounded-full ring-1 ring-line/70"
+								style="background:{hex}"
+								title={name}
+								onmousedown={(e) => e.preventDefault()}
+								onclick={() => {
+									formatColor(name as TextColorName);
+									colorMenuOpen = false;
+								}}
+							></button>
+						{/each}
+					</div>
+				{/if}
 			</div>
-			<span class="h-4 w-px bg-line"></span>
-			<div
-				class="flex overflow-hidden rounded-lg border border-line"
-				role="toolbar"
-				aria-label="כותרת שורה"
-			>
+			<div class="relative">
 				<button
 					type="button"
-					class="px-2 py-1 text-xs font-bold hover:bg-line/60"
-					title="כותרת ראשית"
+					class="flex items-center gap-1 rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="כותרת שורה"
 					onmousedown={(e) => e.preventDefault()}
-					onclick={() => formatHeader(1)}>H1</button
+					onclick={() => (headerMenuOpen = !headerMenuOpen)}
 				>
-				<button
-					type="button"
-					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
-					title="כותרת משנית"
-					onmousedown={(e) => e.preventDefault()}
-					onclick={() => formatHeader(2)}>H2</button
-				>
-				<button
-					type="button"
-					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
-					title="כותרת שלישית"
-					onmousedown={(e) => e.preventDefault()}
-					onclick={() => formatHeader(3)}>H3</button
-				>
+					{activeLine.level ? `H${activeLine.level}` : '¶'}
+					<span class="text-[8px] text-muted">▾</span>
+				</button>
+				{#if headerMenuOpen}
+					<button
+						type="button"
+						class="fixed inset-0 z-10 cursor-default"
+						aria-label="סגירת בחירת הכותרת"
+						onclick={() => (headerMenuOpen = false)}
+					></button>
+					<div
+						class="absolute top-full z-20 mt-1 flex flex-col overflow-hidden rounded-lg border border-line bg-surface shadow-md"
+						role="menu"
+						aria-label="כותרת שורה"
+					>
+						{#each HEADER_OPTIONS as opt (opt.level)}
+							<button
+								type="button"
+								class="px-3 py-1 text-start text-xs font-bold hover:bg-line/60 {activeLine.level ===
+								opt.level
+									? 'bg-brand-soft text-brand-dark'
+									: ''}"
+								onmousedown={(e) => e.preventDefault()}
+								onclick={() => {
+									formatHeader(opt.level);
+									headerMenuOpen = false;
+								}}
+							>
+								{opt.label}
+							</button>
+						{/each}
+					</div>
+				{/if}
 			</div>
 			<div
 				class="flex overflow-hidden rounded-lg border border-line"
@@ -268,17 +314,17 @@
 			>
 				<button
 					type="button"
-					class="px-2 py-1 text-xs font-bold hover:bg-line/60"
+					class="px-2 py-1 text-sm hover:bg-line/60"
 					title="ימין-לשמאל"
 					onmousedown={(e) => e.preventDefault()}
-					onclick={() => formatDirection('rtl')}>RTL</button
+					onclick={() => formatDirection('rtl')}>⇐א</button
 				>
 				<button
 					type="button"
-					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+					class="border-s border-line px-2 py-1 text-sm hover:bg-line/60"
 					title="שמאל-לימין"
 					onmousedown={(e) => e.preventDefault()}
-					onclick={() => formatDirection('ltr')}>LTR</button
+					onclick={() => formatDirection('ltr')}>A⇒</button
 				>
 			</div>
 			<span class="h-4 w-px bg-line"></span>

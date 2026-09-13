@@ -15,7 +15,7 @@
 	import { untrack } from 'svelte';
 	import { mdBlock } from '$lib/lesson-screens/miniMarkdown';
 	import { colorNameFromHex } from '$lib/lesson-screens/textColors';
-	import { activeField } from './activeField.svelte';
+	import { activeField, updateActiveLine } from './activeField.svelte';
 
 	let {
 		value = $bindable(''),
@@ -157,6 +157,7 @@
 		onfocus={() => {
 			activeField.el = el ?? null;
 			document.execCommand('defaultParagraphSeparator', false, 'div');
+			updateActiveLine();
 		}}
 		class="w-full outline-none [&_code]:rounded [&_code]:bg-line/60 [&_code]:px-1 {bare
 			? ''
