@@ -236,30 +236,20 @@
 					</div>
 				</div>
 			{:else if it.kind === 'add-screen'}
-				{#if it.big}
-					<button
-						type="button"
-						class="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-emerald-400 py-3 text-sm font-bold text-emerald-700 hover:bg-emerald-50"
-						onclick={() => addScreen(it.bucket, it.at)}
+				<button
+					type="button"
+					title={it.at === 0 ? 'הוספת מסך בתחילת הסבב' : 'הוספת מסך כאן'}
+					class="group relative flex h-4 w-full items-center justify-center"
+					onclick={() => addScreen(it.bucket, it.at)}
+				>
+					<span class="h-px w-full bg-emerald-300 opacity-0 transition group-hover:opacity-100"
+					></span>
+					<span
+						class="absolute flex h-6 w-6 items-center justify-center rounded-full border-2 border-dashed border-emerald-400 bg-line/45 text-sm font-bold text-emerald-600 opacity-70 transition group-hover:scale-125 group-hover:opacity-100"
 					>
-						➕ הוספת מסך
-					</button>
-				{:else}
-					<button
-						type="button"
-						title={it.at === 0 ? 'הוספת מסך בתחילת הסבב' : 'הוספת מסך כאן'}
-						class="group relative flex h-4 w-full items-center justify-center"
-						onclick={() => addScreen(it.bucket, it.at)}
-					>
-						<span class="h-px w-full bg-emerald-300 opacity-0 transition group-hover:opacity-100"
-						></span>
-						<span
-							class="absolute flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-emerald-400 bg-line/45 text-[10px] font-bold text-emerald-600 opacity-70 transition group-hover:scale-125 group-hover:opacity-100"
-						>
-							＋
-						</span>
-					</button>
-				{/if}
+						＋
+					</span>
+				</button>
 			{:else}
 				<button
 					type="button"
