@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PrefaceScreen } from './types';
-	import { mdInline } from './miniMarkdown';
+	import { mdBlock } from './miniMarkdown';
 
 	// disabled/label are write-only here (never overridden): the runner reads
 	// them through the bindable props to size and gate its single button.
@@ -24,6 +24,6 @@
 </script>
 
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<p class="text-lg leading-relaxed whitespace-pre-line" dir={screen.dir ?? undefined}>
-	{@html mdInline(screen.text)}
-</p>
+<div class="flex flex-col gap-1 text-lg leading-relaxed" dir={screen.dir ?? undefined}>
+	{@html mdBlock(screen.text)}
+</div>

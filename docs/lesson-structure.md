@@ -102,6 +102,25 @@ matching tokens light up in that colour on the reveal (`color` is a key into
 `passage-mcq` is `timed-passage` without the clock/label — pick it for a short
 text + multiple-choice question(s) on one screen with no stopwatch UI.
 
+## Text formatting syntax
+
+Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-preview.intro`/`prompts[]`)
+go through `mdInline`/`mdBlock` (`lib/lesson-screens/miniMarkdown.ts`), a tiny fixed
+markdown subset — not full markdown. Authored either by hand or via the
+content-edit toolbar (`SlideStage.svelte`), which stores this syntax through
+`MarkdownInput.svelte`.
+
+Inline (works anywhere in a line): `**bold**`, `*italic*`/`_italic_`,
+`++underline++`, `~~strikethrough~~`, `` `code` ``, `[text](https://url)`,
+`{c:name}text{/c}` (name = a key in `lib/lesson-screens/textColors.ts`'s
+fixed palette).
+
+Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores
+them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,
+and a `#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
+Order: alignment/direction tokens first, then the header marker, e.g.
+`{a:center}## כותרת ממורכזת`.
+
 ## Runner rules
 
 - one `LessonRunner` per **round**, remounted each time

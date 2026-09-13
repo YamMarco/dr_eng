@@ -9,10 +9,16 @@
 	import {
 		formatBold,
 		formatItalic,
+		formatUnderline,
 		formatStrike,
 		formatCode,
-		formatLink
+		formatLink,
+		formatColor,
+		formatHeader,
+		formatAlign,
+		formatDirection
 	} from './activeField.svelte';
+	import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
 	import EditableScreen from './EditableScreen.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
@@ -157,6 +163,13 @@
 				>
 				<button
 					type="button"
+					class="border-s border-line px-2 py-1 text-xs underline hover:bg-line/60"
+					title="קו תחתון"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={formatUnderline}>U</button
+				>
+				<button
+					type="button"
 					class="border-s border-line px-2 py-1 text-xs line-through hover:bg-line/60"
 					title="קו חוצה"
 					onmousedown={(e) => e.preventDefault()}
@@ -175,6 +188,97 @@
 					title="קישור"
 					onmousedown={(e) => e.preventDefault()}
 					onclick={formatLink}>🔗</button
+				>
+			</div>
+			<div
+				class="flex items-center gap-1 overflow-hidden rounded-lg border border-line px-1.5"
+				role="toolbar"
+				aria-label="צבע טקסט"
+			>
+				{#each Object.entries(TEXT_COLOR_PALETTE) as [name, hex] (name)}
+					<button
+						type="button"
+						class="size-4 rounded-full ring-1 ring-line/70"
+						style="background:{hex}"
+						title={name}
+						onmousedown={(e) => e.preventDefault()}
+						onclick={() => formatColor(name as TextColorName)}
+					></button>
+				{/each}
+			</div>
+			<span class="h-4 w-px bg-line"></span>
+			<div
+				class="flex overflow-hidden rounded-lg border border-line"
+				role="toolbar"
+				aria-label="כותרת שורה"
+			>
+				<button
+					type="button"
+					class="px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="כותרת ראשית"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatHeader(1)}>H1</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="כותרת משנית"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatHeader(2)}>H2</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="כותרת שלישית"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatHeader(3)}>H3</button
+				>
+			</div>
+			<div
+				class="flex overflow-hidden rounded-lg border border-line"
+				role="toolbar"
+				aria-label="יישור שורה"
+			>
+				<button
+					type="button"
+					class="px-2 py-1 text-xs hover:bg-line/60"
+					title="יישור לימין"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatAlign('right')}>⇥</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs hover:bg-line/60"
+					title="למרכז"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatAlign('center')}>≡</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs hover:bg-line/60"
+					title="יישור לשמאל"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatAlign('left')}>⇤</button
+				>
+			</div>
+			<div
+				class="flex overflow-hidden rounded-lg border border-line"
+				role="toolbar"
+				aria-label="כיוון שורה"
+			>
+				<button
+					type="button"
+					class="px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="ימין-לשמאל"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatDirection('rtl')}>RTL</button
+				>
+				<button
+					type="button"
+					class="border-s border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+					title="שמאל-לימין"
+					onmousedown={(e) => e.preventDefault()}
+					onclick={() => formatDirection('ltr')}>LTR</button
 				>
 			</div>
 			<span class="h-4 w-px bg-line"></span>

@@ -1,13 +1,20 @@
 <script lang="ts">
-	// Single-field editor: shows bold / italic / strikethrough / code / links
-	// rendered (not as `**` syntax), stores plain markdown. Formatting is done
-	// by the ONE
-	// shared toolbar in SlideStage's header, acting on whichever field last had
-	// focus (see activeField.svelte.ts) — no per-field toolbar here. Dev
-	// tooling only — uses the deprecated-but-universal execCommand path to
-	// stay dependency-free.
+	// Single-field editor: shows bold / italic / underline / strikethrough /
+	// code / links / color rendered (not as `**` syntax), plus per-line header
+	// size / alignment / direction, and stores plain markdown. Formatting is
+	// done by the ONE shared toolbar in SlideStage's header, acting on
+	// whichever field last had focus (see activeField.svelte.ts) — no
+	// per-field toolbar here. Dev tooling only — uses the
+	// deprecated-but-universal execCommand path to stay dependency-free.
+	//
+	// Each markdown line renders as its own top-level block element (div, or
+	// h1/h2/h3 for a header line) so line-level toolbar actions can target
+	// "the line the caret is in" by walking up to the root's direct child —
+	// see activeField.svelte.ts's currentBlock(). Inline marks (bold, color,
+	// …) live inside those blocks same as before.
 	import { untrack } from 'svelte';
-	import { mdInline } from '$lib/lesson-screens/miniMarkdown';
+	import { mdBlock } from '$lib/lesson-screens/miniMarkdown';
+	import { colorNameFromHex } from '$lib/lesson-screens/textColors';
 	import { activeField } from './activeField.svelte';
 
 	let {
@@ -29,10 +36,11 @@
 	let el = $state<HTMLDivElement>();
 
 	function mdToHtml(md: string): string {
-		return mdInline(md).replace(/\n/g, '<br>');
+		return mdBlock(md);
 	}
 
-	function htmlToMd(node: Node): string {
+	/** Inline content of one line-block: mirrors mdInline's marks. */
+	function inlineHtmlToMd(node: Node): string {
 		let out = '';
 		node.childNodes.forEach((child) => {
 			if (child.nodeType === Node.TEXT_NODE) {
@@ -40,14 +48,9 @@
 				return;
 			}
 			if (!(child instanceof HTMLElement)) return;
-			const inner = htmlToMd(child);
+			const inner = inlineHtmlToMd(child);
 			switch (child.tagName.toLowerCase()) {
 				case 'br':
-					out += '\n';
-					break;
-				case 'div':
-				case 'p':
-					out += (out && !out.endsWith('\n') ? '\n' : '') + inner;
 					break;
 				case 'b':
 				case 'strong':
@@ -57,6 +60,9 @@
 				case 'em':
 					out += inner.trim() ? `*${inner}*` : inner;
 					break;
+				case 'u':
+					out += inner.trim() ? `++${inner}++` : inner;
+					break;
 				case 'code':
 					out += inner.trim() ? `\`${inner}\`` : inner;
 					break;
@@ -65,6 +71,16 @@
 				case 'del':
 					out += inner.trim() ? `~~${inner}~~` : inner;
 					break;
+				case 'font': {
+					const name = colorNameFromHex(child.getAttribute('color') ?? '');
+					out += name && inner.trim() ? `{c:${name}}${inner}{/c}` : inner;
+					break;
+				}
+				case 'span': {
+					const name = colorNameFromHex(child.style.color ?? '');
+					out += name && inner.trim() ? `{c:${name}}${inner}{/c}` : inner;
+					break;
+				}
 				case 'a': {
 					const href = child.getAttribute('href') ?? '';
 					out += href ? `[${inner}](${href})` : inner;
@@ -77,12 +93,38 @@
 		return out;
 	}
 
+	/** One line-block -> its markdown line, with leading `{a:..}`/`{d:..}`
+	 *  attribute tokens and `#`/`##`/`###` header marker re-added. */
+	function lineToMd(block: HTMLElement): string {
+		const tag = block.tagName.toLowerCase();
+		const level = tag === 'h1' ? 1 : tag === 'h2' ? 2 : tag === 'h3' ? 3 : 0;
+
+		const align = block.style.textAlign;
+		const explicitDir = block.getAttribute('dir');
+
+		let prefix = '';
+		if (align === 'center' || align === 'right' || align === 'left') prefix += `{a:${align}}`;
+		if (explicitDir === 'rtl' || explicitDir === 'ltr') prefix += `{d:${explicitDir}}`;
+		if (level) prefix += `${'#'.repeat(level)} `;
+
+		return prefix + inlineHtmlToMd(block);
+	}
+
+	function htmlToMd(root: HTMLElement): string {
+		const lines: string[] = [];
+		root.childNodes.forEach((child) => {
+			if (child.nodeType === Node.TEXT_NODE) {
+				lines.push(child.textContent ?? '');
+				return;
+			}
+			if (!(child instanceof HTMLElement)) return;
+			lines.push(lineToMd(child));
+		});
+		return lines.join('\n');
+	}
+
 	function serialize(): string {
-		return el
-			? htmlToMd(el)
-					.replace(/\n{3,}/g, '\n\n')
-					.replace(/\n+$/, '')
-			: '';
+		return el ? htmlToMd(el).replace(/\n{3,}/g, '\n\n') : '';
 	}
 
 	function sync() {
@@ -112,7 +154,10 @@
 		tabindex="0"
 		dir={dir === 'auto' ? undefined : dir}
 		oninput={sync}
-		onfocus={() => (activeField.el = el ?? null)}
+		onfocus={() => {
+			activeField.el = el ?? null;
+			document.execCommand('defaultParagraphSeparator', false, 'div');
+		}}
 		class="w-full outline-none [&_code]:rounded [&_code]:bg-line/60 [&_code]:px-1 {bare
 			? ''
 			: 'px-3 py-2 text-sm leading-relaxed'}"
