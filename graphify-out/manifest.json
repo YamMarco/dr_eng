@@ -852,9 +852,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideFilmstrip.svelte": {
-    "mtime": 1789133209.2598314,
-    "seen": 1789301636.153446,
-    "ast_hash": "fd9ad2b0218165e20bcbdb365d90fafa",
+    "mtime": 1789306984.6387532,
+    "seen": 1789308674.6257002,
+    "ast_hash": "2f6146738956159e78ef98dc4d1ff212",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/SlideStage.svelte": {
