@@ -10,7 +10,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה: איפה ומה",
     titleEn: "Question Words: Where & What",
     code: "c.2.1",
-    required: [],
+    required: ["n-5cd02dfa"],
     position: { x: -180, y: 80 },
     big: false,
     content: {
@@ -478,7 +478,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
     code: "c.2.3",
-    required: [],
+    required: ["n-5cd02dfa"],
     position: { x: -70, y: 80 },
     big: false,
     content: {
@@ -865,7 +865,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
     code: "c.2.5",
-    required: [],
+    required: ["n-5cd02dfa"],
     position: { x: 60, y: 80 },
     big: false,
     content: {
@@ -1218,7 +1218,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
     code: "c.2.7",
-    required: [],
+    required: ["n-5cd02dfa"],
     position: { x: 170, y: 80 },
     big: false,
     content: {
@@ -1997,5 +1997,15 @@ export const c2Lessons: LessonNode[] = [
         },
       ],
     },
+  },
+  {
+    id: "n-5cd02dfa",
+    section: "c-2",
+    titleHe: "module c - פתיחה",
+    code: "",
+    required: [],
+    position: { x: 0, y: 20 },
+    big: false,
+    content: { preface: [], rounds: [{ screens: [] }] },
   },
 ];
