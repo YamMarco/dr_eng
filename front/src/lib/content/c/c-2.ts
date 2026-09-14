@@ -872,7 +872,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'מה קורה כשלא מכירים מילת תוכן?\n\n"In 2016, a group of environmentalists decided to make Redonda green again."\n\nהתלמיד עוצר: "environmentalists? מה זה?" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.',
+          text: 'מה קורה כשלא מכירים מילת תוכן? בואו נקרא את המשפט הבא:\n\nIn 2016, a group of environmentalists decided to make Redonda green again\n\nהתלמיד עוצר: "environmentalists? מה זה?" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.',
         },
         { type: "word-card", word: "environment", translationHe: "סביבה" },
         {
