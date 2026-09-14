@@ -1225,7 +1225,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "המילים בשיעור הזה מתארות שינוי - עלייה, ירידה, הגנה או הרס. הן חוזרות בכל טקסט על סביבה, בעלי חיים או אקלים.",
+          text: "המילים בשיעור הזה מתארות שינוי - עלייה, ירידה, הגנה או הרס. הן חוזרות בכל טקסט על סביבה, בעלי חיים או אקלים. על מנת שלא תבזבזו זמן יקר על החיפוש במילונית, הכנו לכם רשימה של מילים שימושיות שמופיעים לא מעט במבחני הבגרות\n",
         },
         { type: "word-card", word: "increase", translationHe: "לגדול / לעלות" },
         {
@@ -1238,7 +1238,7 @@ export const c2Lessons: LessonNode[] = [
         { type: "word-card", word: "species", translationHe: "מין (ביולוגי)" },
         {
           type: "preface",
-          text: 'WATCH IT\n\n"Pollution can destroy habitats and reduce the number of species. Projects that protect forests can increase the population of endangered animals."\n\ndestroy · reduce · species · protect · increase - חמש מילות תוכן במשפט אחד.',
+          text: "בואו נקרא את המשפט הבא שכולל לא מעט, מוכנים?\n\nPollution can destroy habitats and reduce the number of species. Projects that protect forests can increase the population of endangered animals.\n\ndestroy · reduce · species · protect · increase - חמש מילות תוכן במשפט אחד.",
         },
       ],
       rounds: [
@@ -1343,12 +1343,12 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt:
-                "השלימו:\n1. The scientists wanted to _______ the forests from destruction.\n2. Fire and farming _______ many habitats.\n3. The project could _______ carbon in the atmosphere.\n4. Some _______ of birds returned to the area.",
+                "\nבואו נשלים את המשפטים הבאים, היעזרו במילים למטה:\n\n1. The scientists wanted to _______ the forests from destruction.\n2. Fire and farming _______ many habitats.\n3. The project could _______ carbon in the atmosphere.\n4. Some _______ of birds returned to the area.",
               modelAnswer: "1. protect  2. destroy  3. reduce  4. species",
             },
             {
               type: "mark-all",
-              instruction: "סמנו את מילות התוכן שאתם מזהים",
+              instruction: "ופה סמנו את מילות התוכן שאתם מזהים",
               text: "Every year, forests are destroyed by fire and pollution. Projects that protect trees can increase the number of species and reduce damage.",
               correctIndices: [4, 11, 14, 18, 20],
               wordBank: [
