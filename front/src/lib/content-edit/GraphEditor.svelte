@@ -116,6 +116,7 @@
 
 	function wrapPointerDown(e: PointerEvent) {
 		if (e.target !== wrap || !wrap || linkFrom) return;
+		e.preventDefault();
 		const r = wrap.getBoundingClientRect();
 		const x = e.clientX - r.left;
 		const y = e.clientY - r.top;
@@ -265,7 +266,7 @@
 		<div
 			bind:this={wrap}
 			role="presentation"
-			class="relative mx-auto"
+			class="relative mx-auto touch-none select-none"
 			style="width:{CANVAS_WIDTH}px; height:{canvasHeight}px"
 			onpointerdown={wrapPointerDown}
 			onpointermove={wrapPointerMove}
