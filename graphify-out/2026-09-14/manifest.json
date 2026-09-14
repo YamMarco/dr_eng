@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1789219628.5171354,
-    "seen": 1789301636.1537926,
-    "ast_hash": "017c80c243ae91f2c1c0870d06a5f319",
+    "mtime": 1789377980.719143,
+    "seen": 1789380155.8803353,
+    "ast_hash": "dcc321103f694d025ff65087814e308d",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
@@ -768,15 +768,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
-    "mtime": 1789219446.0841422,
-    "seen": 1789301636.1534114,
-    "ast_hash": "3f033058b20cd27125055ee4a41e16dd",
+    "mtime": 1789380069.5968907,
+    "seen": 1789380155.8803012,
+    "ast_hash": "0581b90dd2fad73673f4c4160020298b",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1789213480.5018506,
-    "seen": 1789301636.153496,
-    "ast_hash": "0320c0d7b56c8385a33f9f800503314c",
+    "mtime": 1789380055.0204818,
+    "seen": 1789380155.8803153,
+    "ast_hash": "a1f8462733193c9711ddd783422a9ff0",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
