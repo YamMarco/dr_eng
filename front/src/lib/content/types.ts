@@ -27,8 +27,6 @@ export interface LessonNode {
 	section: string;
 	titleHe: string;
 	titleEn?: string;
-	/** Display code on the node label, e.g. 'c.4.2a'. */
-	code: string;
 	/** Lesson ids that must have round 1 done before this unlocks (AND'd). */
 	required: string[];
 	/** Canvas placement in px, relative to the path's horizontal center. */

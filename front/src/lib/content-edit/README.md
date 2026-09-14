@@ -32,7 +32,7 @@ it in the lesson editor.
 
 ### Lesson editor — `LessonEditorView.svelte` (PowerPoint-style)
 
-- header: **← חזרה למפה**, the node's id/title/code, **שם וקוד** (title / code /
+- header: **← חזרה למפה**, the node's id/title, **שם ומזהה** (title / id /
   big), **▶ נסיון מכאן** (opens the real `LessonRunner` at the selected screen
   via `startScreenIndex`).
 - **`SlideFilmstrip.svelte`** — a narrow vertical rail on the side: every
@@ -79,7 +79,7 @@ the file or in git history. It also still accepts the older
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,
-duplicate id/code, scoreless round 0. Results show as a dot on the filmstrip
+duplicate id, scoreless round 0. Results show as a dot on the filmstrip
 card and in the header **בעיות** list (click to jump).
 
 The server re-serialises the array in the files' hand-written style

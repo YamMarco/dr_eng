@@ -65,23 +65,11 @@ export function validateSection(nodes: LessonNode[]): Issue[] {
 	const out: Issue[] = [];
 	const ids = new Set(nodes.map((n) => n.id));
 	const seenId = new Set<string>();
-	const seenCode = new Map<string, string>();
 
 	for (const node of nodes) {
 		if (seenId.has(node.id))
 			out.push({ nodeId: node.id, severity: 'error', message: `מזהה כפול: ${node.id}` });
 		seenId.add(node.id);
-
-		if (node.code) {
-			const prev = seenCode.get(node.code);
-			if (prev)
-				out.push({
-					nodeId: node.id,
-					severity: 'warn',
-					message: `קוד ${node.code} כבר בשימוש ב-${prev}`
-				});
-			else seenCode.set(node.code, node.id);
-		}
 
 		for (const r of node.required)
 			if (!ids.has(r))

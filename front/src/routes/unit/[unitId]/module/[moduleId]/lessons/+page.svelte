@@ -33,8 +33,6 @@
 		sectionTitleHe: string;
 		/** 1-based position within its own section — shown on the node. */
 		lessonNumber: number;
-		/** Material code shown on the label: module.section.lesson (e.g. c.4.2a). */
-		code: string;
 		theme: SectionTheme;
 		x: number;
 		y: number;
@@ -62,7 +60,6 @@
 					sectionId: section.id,
 					sectionTitleHe: section.titleHe,
 					lessonNumber: lessonIndexInSection + 1,
-					code: lesson.code,
 					theme,
 					x: lesson.position.x,
 					y: lesson.position.y,
@@ -356,7 +353,7 @@
 									? i18n.dict.lesson.startButton
 									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
 							</Button>
-							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.code}</p>
+							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.lesson.id}</p>
 							{#if editStore.available}
 								<!-- Open this lesson in the /edit workspace (dev, or once
 								     unlocked on the deployed site). Detachable — see

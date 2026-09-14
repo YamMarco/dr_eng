@@ -72,14 +72,13 @@
 				← חזרה למפה
 			</button>
 			<strong class="text-sm">{node.titleHe}</strong>
-			{#if node.code}<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{node.code}</span
-				>{/if}
+			<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{node.id}</span>
 			<button
 				type="button"
 				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
 				onclick={() => (metaOpen = !metaOpen)}
 			>
-				⚙️ {metaOpen ? 'סגירת פרטים' : 'שם וקוד'}
+				⚙️ {metaOpen ? 'סגירת פרטים' : 'שם ומזהה'}
 			</button>
 			<span class="flex-1"></span>
 			<button
@@ -113,16 +112,7 @@
 					/>
 				</label>
 				<label class="flex flex-col gap-0.5">
-					<span class="text-xs text-muted">קוד (מוצג לתלמיד/ה, לא קשור למזהה הפנימי)</span>
-					<input
-						class="fld"
-						dir="ltr"
-						value={node.code}
-						oninput={(e) => editModel.setMeta(node.id, { code: e.currentTarget.value })}
-					/>
-				</label>
-				<label class="flex flex-col gap-0.5">
-					<span class="text-xs text-muted">מזהה פנימי (לשינוי: מפת השיעורים ← שינוי מזהה)</span>
+					<span class="text-xs text-muted">מזהה (לשינוי: מפת השיעורים ← שינוי מזהה)</span>
 					<input class="fld opacity-60" dir="ltr" value={node.id} readonly />
 				</label>
 				<label class="flex items-center gap-2 pt-4">

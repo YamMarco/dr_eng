@@ -9,15 +9,10 @@ Flat: one **LessonNode** = one path node = one object in `front/src/lib/content/
 It carries everything — `position`, `required` prerequisites, `content.rounds[].screens[]`.
 No build-time derivation: what you write is what renders.
 
-Material code `4.c.1.2` = unit 4 · module c · section 1 · lesson 2. The node's
-`code` field is the `c.1.2` part shown on its label.
-
-**New nodes (from c.2.8 onward): use `<module>.<random>` instead**, e.g.
-`c.llby7`, `e.2132fv` — a module letter plus a short random alphanumeric
-string, not a positional `section.lesson` number. This avoids renumbering
-every later code whenever a node is inserted or split. Older codes
-(`c.1.x`, `c.2.1`–`c.2.7`, `c.3.x`) keep their positional scheme as-is —
-don't renumber them to match.
+There is no separate display code — `id` is the only identifier, shown on
+the node label and everywhere else. Material position (unit/module/section/
+lesson, e.g. `4.c.1.2`) is conveyed by where the node sits in its section,
+not by a field on the node.
 
 ## Where things live (`front/src/`)
 
@@ -43,7 +38,6 @@ Add an object to the right section's array:
   id: 's7-l2',                 // globally unique in the module; convention s{section}-l{n}
   section: 'c-7',
   titleHe: 'שם השיעור',
-  code: 'c.7.2',               // module.section.lesson shown on the label
   required: ['s7-l1'],         // prerequisite lesson ids, AND'd; [] = a root node
   position: { x: -70, y: 1560 }, // px offset from the 400px canvas centre; y grows down
   big: false,                  // true = larger node (use for content-free / recap nodes)
@@ -136,7 +130,7 @@ Order: alignment/direction tokens first, then the header marker, e.g.
 - a lesson with no content in any round renders as a permanently locked node
 - `big: true` draws an 80px node instead of 64px
 - canvas is 400px wide; `position.x` is an offset from centre, `position.y` grows downward
-- label shows `titleHe`, the start / next-round button, and `code`
+- label shows `titleHe`, the start / next-round button, and `id`
 
 ## Adding a screen type
 

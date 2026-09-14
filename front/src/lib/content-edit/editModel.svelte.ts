@@ -116,7 +116,7 @@ class EditModel {
 		this.dirty = true;
 	}
 
-	setMeta(id: string, patch: Partial<Pick<LessonNode, 'titleHe' | 'titleEn' | 'code' | 'big'>>) {
+	setMeta(id: string, patch: Partial<Pick<LessonNode, 'titleHe' | 'titleEn' | 'big'>>) {
 		const n = this.node(id);
 		if (!n) return;
 		Object.assign(n, patch);
@@ -168,7 +168,6 @@ class EditModel {
 			id: this.shortId(),
 			section: near?.section ?? this.defaultSection,
 			titleHe: 'שיעור חדש',
-			code: '',
 			required: [],
 			position: { x: near ? near.position.x : 0, y: near ? near.position.y + 120 : 120 },
 			big: false,
@@ -184,7 +183,6 @@ class EditModel {
 		if (!src) return;
 		const copy = clone(src);
 		copy.id = this.shortId();
-		copy.code = '';
 		copy.position = { x: src.position.x + 40, y: src.position.y + 40 };
 		this.nodes.push(copy);
 		this.dirty = true;
@@ -231,7 +229,6 @@ class EditModel {
 		const tail: LessonNode = {
 			...clone(src),
 			id: this.shortId(),
-			code: '',
 			required: [src.id],
 			position: { x: src.position.x, y: src.position.y + 120 },
 			content: { preface: [], rounds: moved }

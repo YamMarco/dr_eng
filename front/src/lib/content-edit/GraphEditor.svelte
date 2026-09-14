@@ -336,12 +336,8 @@
 					onkeydown={(e) => e.key === 'Enter' && onOpenLesson(n.id)}
 				>
 					<div class="truncate text-[11px] leading-tight font-bold">{n.titleHe}</div>
-					<div
-						class="truncate font-mono text-[9px] text-ink/50"
-						dir="ltr"
-						title={n.code ? `קוד: ${n.code}\nמזהה: ${n.id}` : `מזהה: ${n.id}`}
-					>
-						{n.code || n.id}
+					<div class="truncate font-mono text-[9px] text-ink/50" dir="ltr" title="מזהה: {n.id}">
+						{n.id}
 					</div>
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<span
