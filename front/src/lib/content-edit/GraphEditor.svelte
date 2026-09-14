@@ -243,7 +243,7 @@
 			onclick={makeModuleStart}
 			disabled={!selectedId || selectedIsRoot}
 		>
-			🏁 קבע כתחילת המודול
+			{selectedIsRoot ? '✅ זו כבר תחילת המודול' : '🏁 קבע כתחילת המודול'}
 		</button>
 		<span class="flex-1"></span>
 		<button
@@ -336,8 +336,8 @@
 					onkeydown={(e) => e.key === 'Enter' && onOpenLesson(n.id)}
 				>
 					<div class="truncate text-[11px] leading-tight font-bold">{n.titleHe}</div>
-					<div class="truncate font-mono text-[9px] text-ink/50" dir="ltr">
-						{n.code ? `${n.code} · ${n.id}` : n.id}
+					<div class="truncate font-mono text-[9px] text-ink/50" dir="ltr" title="מזהה: {n.id}">
+						{n.code ? `${n.code} · #${n.id}` : `#${n.id}`}
 					</div>
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<span
