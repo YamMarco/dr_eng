@@ -1297,7 +1297,7 @@
       "file_type": "code",
       "norm_label": "addnode()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L179"
+      "source_location": "L180"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_del",
@@ -1309,7 +1309,7 @@
       "file_type": "code",
       "norm_label": "del()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L192"
+      "source_location": "L193"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_duplicate",
@@ -1321,7 +1321,7 @@
       "file_type": "code",
       "norm_label": "duplicate()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L184"
+      "source_location": "L185"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_each",
@@ -1333,7 +1333,7 @@
       "file_type": "code",
       "norm_label": "#each()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L286"
+      "source_location": "L287"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_handledown",
@@ -1345,7 +1345,7 @@
       "file_type": "code",
       "norm_label": "handledown()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L131"
+      "source_location": "L132"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_makemodulestart",
@@ -1357,7 +1357,7 @@
       "file_type": "code",
       "norm_label": "makemodulestart()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L214"
+      "source_location": "L215"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_merge",
@@ -1369,7 +1369,7 @@
       "file_type": "code",
       "norm_label": "merge()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L200"
+      "source_location": "L201"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_nodehitbox",
@@ -1405,7 +1405,7 @@
       "file_type": "code",
       "norm_label": "nodepointerenterup()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L147"
+      "source_location": "L148"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_nodepointermove",
@@ -1453,7 +1453,7 @@
       "file_type": "code",
       "norm_label": "rename()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L218"
+      "source_location": "L219"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_split",
@@ -1465,7 +1465,7 @@
       "file_type": "code",
       "norm_label": "split()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L207"
+      "source_location": "L208"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_wrappointerdown",
@@ -1489,7 +1489,7 @@
       "file_type": "code",
       "norm_label": "wrappointermove()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L136"
+      "source_location": "L137"
     },
     {
       "id": "front_src_lib_content_edit_grapheditor_wrappointerup",
@@ -1501,7 +1501,7 @@
       "file_type": "code",
       "norm_label": "wrappointerup()",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L152"
+      "source_location": "L153"
     },
     {
       "id": "front_src_lib_lesson_screens_lessonrunner_advance",
@@ -12575,7 +12575,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L137",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -12587,7 +12587,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L161",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -20334,13 +20334,35 @@
     },
     {
       "source": "front_src_lib_content_edit_grapheditor",
+      "target": "front_src_lib_content_edit_grapheditor_wrappointerdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_grapheditor",
       "target": "front_src_lib_content_edit_grapheditor_handledown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L131",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_grapheditor",
+      "target": "front_src_lib_content_edit_grapheditor_wrappointermove",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -20351,7 +20373,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L147",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "front_src_lib_content_edit_grapheditor",
+      "target": "front_src_lib_content_edit_grapheditor_wrappointerup",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -20362,7 +20395,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L184",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -20373,7 +20406,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L192",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -20384,7 +20417,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L207",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -20395,7 +20428,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L218",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -20428,7 +20461,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L286",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -24751,7 +24784,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L230",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -24763,7 +24796,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L235",
+      "source_location": "L236",
       "weight": 1.0
     },
     {
@@ -24775,43 +24808,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L242",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_content_edit_grapheditor",
-      "target": "front_src_lib_content_edit_grapheditor_wrappointerdown",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "collection",
-      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L270",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_content_edit_grapheditor",
-      "target": "front_src_lib_content_edit_grapheditor_wrappointermove",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "collection",
-      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L271",
-      "weight": 1.0
-    },
-    {
-      "source": "front_src_lib_content_edit_grapheditor",
-      "target": "front_src_lib_content_edit_grapheditor_wrappointerup",
-      "relation": "indirect_call",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "collection",
-      "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L272",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -24823,7 +24820,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "front/src/lib/content-edit/GraphEditor.svelte",
-      "source_location": "L331",
+      "source_location": "L332",
       "weight": 1.0
     },
     {
@@ -25631,5 +25628,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "81d6313fe60e54d99f8422c335511f95043cb535"
+  "built_at_commit": "9871c813350e5203a0ec2ab010df60244109f209"
 }
