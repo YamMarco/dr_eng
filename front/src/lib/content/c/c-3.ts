@@ -1220,6 +1220,7 @@ export const c3Lessons: LessonNode[] = [
               type: "preface",
               text: 'TRY IT - נושא: "What changes can be made to improve your neighborhood?"',
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt: 'איך פותחים תשובה לשאלת "What changes?"',
