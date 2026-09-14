@@ -136,6 +136,15 @@ class EditModel {
 		return true;
 	}
 
+	/** Clears `id`'s prerequisites — empty `required` is what makes a node a
+	 *  root, unlocked from the start (see lessons page `isUnlocked`). */
+	makeModuleStart(id: string) {
+		const n = this.node(id);
+		if (!n || n.required.length === 0) return;
+		n.required = [];
+		this.dirty = true;
+	}
+
 	/** Add or remove `fromId` in `toId`'s prerequisites (a link fromId -> toId). */
 	togglePrereq(fromId: string, toId: string) {
 		const to = this.node(toId);

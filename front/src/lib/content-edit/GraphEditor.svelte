@@ -25,6 +25,7 @@
 	let nodes = $derived(editModel.nodes);
 	let byId = $derived(new Map(nodes.map((n) => [n.id, n])));
 	let selectedId = $derived(editModel.selectedNodeId);
+	let selectedIsRoot = $derived(editModel.selectedNode?.required.length === 0);
 
 	let canvasHeight = $derived(nodes.reduce((m, n) => Math.max(m, n.position.y), 0) + 160);
 
@@ -210,6 +211,10 @@
 		const after = Number(ans) - 1;
 		if (Number.isInteger(after)) editModel.splitNode(n.id, after);
 	}
+	function makeModuleStart() {
+		if (!selectedId) return;
+		editModel.makeModuleStart(selectedId);
+	}
 	function rename() {
 		if (!selectedId) return;
 		const next = prompt(
@@ -231,6 +236,14 @@
 		{/if}
 		<button type="button" class="tb" onclick={split} disabled={!selectedId}>✂️ פיצול</button>
 		<button type="button" class="tb" onclick={rename} disabled={!selectedId}>🏷 שינוי מזהה</button>
+		<button
+			type="button"
+			class="tb"
+			onclick={makeModuleStart}
+			disabled={!selectedId || selectedIsRoot}
+		>
+			🏁 קבע כתחילת המודול
+		</button>
 		<span class="flex-1"></span>
 		<button
 			type="button"
