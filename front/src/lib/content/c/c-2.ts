@@ -1993,7 +1993,51 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "module c - פתיחה",
     required: [],
     position: { x: 0, y: 20 },
-    big: false,
-    content: { preface: [], rounds: [{ screens: [] }] },
+    big: true,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "Vocabulary Mini-Course\nלפני Module C - 80 מילים שחשוב להכיר\n\nלפני שמתחילים - הסבר אחד שיגרום לכל השיעורים הבאים להיות ברורים יותר.",
+        },
+        {
+          type: "preface",
+          text: "💡 הסוד:\n\nבטקסטים של Module C - התשובות לשאלות כמעט תמיד מופיעות ליד מילים מסוימות.\nאם אתה מזהה את המילים האלה - אתה יודע בדיוק איפה לחפש.\nאם אתה לא מכיר אותן - אתה עובר עליהן ומפספס את התשובה.\n\nתראה את זה בפעולה:",
+        },
+        {
+          type: "preface",
+          text: "📖 קרא:\nThe results of the project were already visible - rivers began to flow again.\n\n❓ שאלה: What happened after trees were planted?\n✅ תשובה: Rivers began to flow again.\n\n💡 שים לב: התשובה נמצאת ממש ליד המילה results.",
+          dir: "ltr",
+        },
+        {
+          type: "preface",
+          text: "📖 קרא:\nResearchers found that teenagers who volunteer are 60% more likely to describe themselves as happy.\n\n❓ שאלה: What did researchers discover about volunteers?\n✅ תשובה: They are 60% more likely to be happy.\n\n💡 שים לב: התשובה נמצאת ממש ליד המילה found.",
+          dir: "ltr",
+        },
+        {
+          type: "preface",
+          text: "📖 קרא:\nAccording to a recent survey, over 30% of adults in large cities cannot swim.\n\n❓ שאלה: What percentage of adults cannot swim?\n✅ תשובה: Over 30% of adults.\n\n💡 שים לב: התשובה נמצאת ממש ליד המילה survey.",
+          dir: "ltr",
+        },
+        {
+          type: "preface",
+          text: 'אז מה אנחנו עושים עכשיו?\n\nלומדים 80 מילים - כך שכל פעם שאתה רואה אחת מהן בטקסט, הלב שלך קופץ:\n"אה! את המילה הזאת אני מכיר. התשובה כנראה כאן."\n\n80 המילים מחולקות ל-3 קבוצות:',
+        },
+        {
+          type: "summary",
+          title: "80 המילים מחולקות ל-3 קבוצות",
+          lines: [
+            "📖 Part A - מילות טקסט: כשתראה אותן בטקסט - תדע שהתשובה קרובה.",
+            "❓ Part B - מילות שאלה: כשתראה אותן בשאלה - תדע מה לעשות.",
+            "✏️ Part C - מילות כתיבה: תשתמש בהן כשתכתוב את ה-P14 שלך.",
+          ],
+        },
+        {
+          type: "preface",
+          text: "מוכן?\n\n18 nodes. 80 מילים. כל node = 4 מסכים קצרים. הכל בחירה - לא כותבים מהאוויר.\n\nבוא נתחיל.",
+        },
+      ],
+      rounds: [{ screens: [] }],
+    },
   },
 ];
