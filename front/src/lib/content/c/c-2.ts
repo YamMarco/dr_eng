@@ -10,7 +10,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה: איפה ומה",
     titleEn: "Question Words: Where & What",
     required: ["n-5cd02dfa"],
-    position: { x: -180, y: 80 },
+    position: { x: -180, y: 120 },
     big: false,
     content: {
       preface: [
@@ -476,7 +476,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
     required: ["n-5cd02dfa"],
-    position: { x: -70, y: 80 },
+    position: { x: -70, y: 120 },
     big: false,
     content: {
       preface: [
@@ -861,7 +861,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
     required: ["n-5cd02dfa"],
-    position: { x: 60, y: 80 },
+    position: { x: 60, y: 120 },
     big: false,
     content: {
       preface: [
@@ -1212,7 +1212,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
     required: ["n-5cd02dfa"],
-    position: { x: 170, y: 80 },
+    position: { x: 170, y: 120 },
     big: false,
     content: {
       preface: [
