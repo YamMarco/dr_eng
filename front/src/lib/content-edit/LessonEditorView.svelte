@@ -113,13 +113,17 @@
 					/>
 				</label>
 				<label class="flex flex-col gap-0.5">
-					<span class="text-xs text-muted">קוד</span>
+					<span class="text-xs text-muted">קוד (מוצג לתלמיד/ה, לא קשור למזהה הפנימי)</span>
 					<input
 						class="fld"
 						dir="ltr"
 						value={node.code}
 						oninput={(e) => editModel.setMeta(node.id, { code: e.currentTarget.value })}
 					/>
+				</label>
+				<label class="flex flex-col gap-0.5">
+					<span class="text-xs text-muted">מזהה פנימי (לשינוי: מפת השיעורים ← שינוי מזהה)</span>
+					<input class="fld opacity-60" dir="ltr" value={node.id} readonly />
 				</label>
 				<label class="flex items-center gap-2 pt-4">
 					<input
