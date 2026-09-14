@@ -2002,7 +2002,7 @@ export const c2Lessons: LessonNode[] = [
     id: "n-5cd02dfa",
     section: "c-2",
     titleHe: "module c - פתיחה",
-    code: "",
+    code: "ada2123",
     required: [],
     position: { x: 0, y: 20 },
     big: false,
