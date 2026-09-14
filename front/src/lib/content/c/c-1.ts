@@ -2080,10 +2080,10 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l08",
     section: "c-1",
-    titleHe: "however / but - הפנייה",
+    titleHe: "however / but - סימון בטקסט",
     titleEn: "Contrast Words",
     required: ["n-221188d1"],
-    position: { x: 0, y: 1380 },
+    position: { x: 0, y: 1370 },
     big: false,
     content: {
       preface: [
@@ -3054,7 +3054,7 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-b46b7e2b",
     section: "c-1",
-    titleHe: "however / but - הפנייה",
+    titleHe: "however / but - כמו במבחן",
     titleEn: "Contrast Words",
     required: ["l08"],
     position: { x: 0, y: 1500 },
@@ -3213,7 +3213,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "חלק 1 - סיכום",
     required: ["n-649ed18f"],
     position: { x: 0, y: 2100 },
-    big: false,
+    big: true,
     content: { preface: [], rounds: [{ screens: [] }] },
   },
   {
