@@ -204,5 +204,6 @@
 		onExit={() => (play = null)}
 		onFinish={() => (play = null)}
 		onFinishAndContinue={() => (play = null)}
+		onNextRound={() => (play = null)}
 	/>
 {/if}

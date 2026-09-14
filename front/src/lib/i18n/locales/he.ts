@@ -50,6 +50,7 @@ export const he = {
 		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
 		nextQuestionButton: 'הבא',
 		continueNextLesson: 'המשך לשיעור הבא',
+		continueNextRound: 'המשך לסבב הבא',
 		retryButton: 'נסה שוב',
 		failTitle: 'כמעט!',
 		failDesc: (percent: number) =>

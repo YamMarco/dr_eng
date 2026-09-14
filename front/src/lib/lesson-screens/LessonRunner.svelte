@@ -32,6 +32,8 @@
 		onFinish: () => void;
 		/** Finished with a passing score and there's a next lesson — marks complete and opens it. */
 		onFinishAndContinue: () => void;
+		/** Finished with a passing score and it's not the lesson's last round — marks complete and opens the next round. */
+		onNextRound: () => void;
 	};
 
 	let {
@@ -43,7 +45,8 @@
 		hasNextLesson,
 		onExit,
 		onFinish,
-		onFinishAndContinue
+		onFinishAndContinue,
+		onNextRound
 	}: Props = $props();
 
 	const session = createLessonSession();
@@ -97,6 +100,9 @@
 	);
 	// A lesson with no scored questions (pure teaching content) can't be failed.
 	let passed = $derived(score.total === 0 || score.correct / score.total >= PASS_THRESHOLD);
+	// Static-screen runs (e.g. the debug vocab test) have no rounds of their own —
+	// treat them as always "last round" so they keep the old finish/next-lesson flow.
+	let isLastRound = $derived(!lesson || (roundIndex ?? 0) >= lesson.content.rounds.length - 1);
 
 	function advance() {
 		if (isLastScreen) {
@@ -190,12 +196,19 @@
 		<div class="mx-auto flex max-w-lg flex-col gap-3">
 			{#if justFinished}
 				{#if passed}
-					{#if hasNextLesson}
-						<Button onclick={onFinishAndContinue}>{i18n.dict.lesson.continueNextLesson}</Button>
+					{#if isLastRound}
+						{#if hasNextLesson}
+							<Button onclick={onFinishAndContinue}>{i18n.dict.lesson.continueNextLesson}</Button>
+						{/if}
+						<Button variant={hasNextLesson ? 'secondary' : 'primary'} onclick={onFinish}>
+							{i18n.dict.lesson.backToPath}
+						</Button>
+					{:else}
+						<Button onclick={onNextRound}>{i18n.dict.lesson.continueNextRound}</Button>
+						<Button variant="secondary" onclick={onFinish}>
+							{i18n.dict.lesson.backToPath}
+						</Button>
 					{/if}
-					<Button variant={hasNextLesson ? 'secondary' : 'primary'} onclick={onFinish}>
-						{i18n.dict.lesson.backToPath}
-					</Button>
 				{:else}
 					<Button onclick={retry}>{i18n.dict.lesson.retryButton}</Button>
 					<Button variant="secondary" onclick={onExit}>{i18n.dict.lesson.backToPath}</Button>

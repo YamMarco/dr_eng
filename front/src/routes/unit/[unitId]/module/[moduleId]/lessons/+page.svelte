@@ -199,6 +199,12 @@
 		activeId = null;
 	}
 
+	function nextRound() {
+		if (!activeId) return;
+		lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
+		activeRoundIndex += 1;
+	}
+
 	function finishNodeAndContinue() {
 		if (!activeNode) return;
 		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
@@ -408,13 +414,15 @@
 		onExit={() => (vocabTestOpen = false)}
 		onFinish={() => (vocabTestOpen = false)}
 		onFinishAndContinue={() => (vocabTestOpen = false)}
+		onNextRound={() => (vocabTestOpen = false)}
 	/>
 {/if}
 
 {#if activeNode}
-	<!-- Keyed so "continue to next lesson" forces a full remount instead of
-	     just handing the same runner instance a new `lesson` prop. -->
-	{#key activeId}
+	<!-- Keyed so "continue to next lesson"/"continue to next round" force a
+	     full remount instead of just handing the same runner instance new
+	     `lesson`/`roundIndex` props. -->
+	{#key `${activeId}-${activeRoundIndex}`}
 		<LessonRunner
 			lesson={activeNode.lesson}
 			roundIndex={activeRoundIndex}
@@ -425,6 +433,7 @@
 			onExit={closeNode}
 			onFinish={finishNode}
 			onFinishAndContinue={finishNodeAndContinue}
+			onNextRound={nextRound}
 		/>
 	{/key}
 {/if}
