@@ -7,6 +7,7 @@
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import { isScreenEmpty, type LessonScreen } from '$lib/lesson-screens/types';
+	import { lessonIcon } from '$lib/lessonIcon';
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
@@ -329,7 +330,7 @@
 								<path d="M20 6 9 17l-5-5" />
 							</svg>
 						{:else if unlocked}
-							{node.lessonNumber}
+							{lessonIcon(node.lesson.id)}
 						{:else}
 							<svg
 								viewBox="0 0 24 24"
