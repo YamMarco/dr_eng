@@ -10,7 +10,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה: איפה ומה",
     titleEn: "Question Words: Where & What",
     required: ["n-5cd02dfa"],
-    position: { x: -180, y: 120 },
+    position: { x: -200, y: 130 },
     big: false,
     content: {
       preface: [
@@ -255,7 +255,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות שאלה: איך עונים",
     titleEn: "Question Words: How to Answer",
     required: ["q-words-1"],
-    position: { x: -160, y: 290 },
+    position: { x: -200, y: 310 },
     big: false,
     content: {
       preface: [
@@ -476,7 +476,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
     required: ["n-5cd02dfa"],
-    position: { x: -70, y: 120 },
+    position: { x: -70, y: 130 },
     big: false,
     content: {
       preface: [
@@ -665,7 +665,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות ניווט: דוגמאות וממצאים",
     titleEn: "Navigation Words: Examples & Findings",
     required: ["nav-words-1"],
-    position: { x: -50, y: 290 },
+    position: { x: -70, y: 310 },
     big: false,
     content: {
       preface: [
@@ -861,7 +861,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
     required: ["n-5cd02dfa"],
-    position: { x: 60, y: 120 },
+    position: { x: 60, y: 130 },
     big: false,
     content: {
       preface: [
@@ -1035,7 +1035,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: מחקר וממצאים",
     titleEn: "Content Words: Research & Findings",
     required: ["content-2c"],
-    position: { x: 170, y: 290 },
+    position: { x: 190, y: 310 },
     big: false,
     content: {
       preface: [
@@ -1212,7 +1212,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
     required: ["n-5cd02dfa"],
-    position: { x: 170, y: 120 },
+    position: { x: 190, y: 130 },
     big: false,
     content: {
       preface: [
@@ -1386,7 +1386,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: התפתחות ולמידה",
     titleEn: "Content Words: Growth & Learning",
     required: ["content-1a"],
-    position: { x: 60, y: 190 },
+    position: { x: 60, y: 220 },
     big: false,
     content: {
       preface: [
@@ -1559,7 +1559,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: השפעה וערך",
     titleEn: "Content Words: Cause & Value",
     required: ["content-2a"],
-    position: { x: 60, y: 290 },
+    position: { x: 60, y: 310 },
     big: false,
     content: {
       preface: [
@@ -1730,7 +1730,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מילות תוכן: אחריות חברתית",
     titleEn: "Content Words: Social Responsibility",
     required: ["content-1c"],
-    position: { x: 170, y: 190 },
+    position: { x: 190, y: 220 },
     big: false,
     content: {
       preface: [
@@ -1897,7 +1897,7 @@ export const c2Lessons: LessonNode[] = [
     titleHe: "מבחן סיכום - אוצר מילים",
     titleEn: "Vocabulary Review Test",
     required: ["q-words-2", "nav-words-2", "content-1b", "content-2b"],
-    position: { x: 0, y: 400 },
+    position: { x: 0, y: 430 },
     big: true,
     content: {
       preface: [
