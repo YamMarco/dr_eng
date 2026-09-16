@@ -357,12 +357,14 @@
 						+
 					</span>
 				</div>
-				<div
-					class="absolute"
-					style="left:{cx(n) + (n.big ? 104 : 92) / 2 + 8}px; top:{n.position.y}px"
-				>
-					<ReviewFloat nodeId={n.id} roundCount={n.content.rounds.length} />
-				</div>
+				{#if n.id === selectedId}
+					<div
+						class="absolute z-50"
+						style="left:{cx(n) + (n.big ? 104 : 92) / 2 + 8}px; top:{n.position.y}px"
+					>
+						<ReviewFloat nodeId={n.id} roundCount={n.content.rounds.length} />
+					</div>
+				{/if}
 			{/each}
 
 			{#if marquee}
