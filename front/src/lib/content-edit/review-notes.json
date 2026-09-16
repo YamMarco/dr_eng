@@ -14,5 +14,15 @@
 		"preface": false,
 		"rounds": [],
 		"comment": ""
+	},
+	"l07": {
+		"preface": false,
+		"rounds": [
+			true,
+			true,
+			true,
+			true
+		],
+		"comment": ""
 	}
 }
