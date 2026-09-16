@@ -612,8 +612,6 @@ export const c1Lessons: LessonNode[] = [
     big: false,
     content: {
       preface: [
-        { type: "preface", text: "" },
-        { type: "preface", text: "." },
         {
           type: "summary",
           title: "THE TOOL - P1",
