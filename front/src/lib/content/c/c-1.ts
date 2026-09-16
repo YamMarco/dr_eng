@@ -4254,6 +4254,247 @@ export const c1Lessons: LessonNode[] = [
     required: ["not-q", "limiters-q", "numbers-names-q"],
     position: { x: 0, y: 1260 },
     big: false,
-    content: { preface: [], rounds: [{ screens: [] }] },
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "סיכום - שלושה כלים ביחד: NOT, מילות הגבלה (most / only), מספרים ושמות. בכל משפט ושאלה תזהו איזה כלי צריך.",
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "שלושה טקסטים. סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.",
+            },
+            {
+              type: "mark-all",
+              instruction:
+                "סמנו: מילות שלילה, מילות הגבלה (only/most), ומספרים ושמות.",
+              text: "According to Dr. Elena Cruz, only 20% of the city's rivers are still clean. Most factories were built before 1990, and no new regulations have ever been enforced. Nobody expects this to change soon.",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [21, 28] },
+                { name: "הגבלה", color: "violet", indices: [5, 14] },
+                {
+                  name: "מספרים ושמות",
+                  color: "emerald",
+                  indices: [2, 3, 4, 6, 19],
+                },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction:
+                "סמנו: מילות שלילה, מילות הגבלה (only/most), ומספרים ושמות.",
+              text: "A recent report shows that only three hospitals in the region have modern equipment. According to Dr. Marcus Lee, most patients never receive follow-up care, and no clinic has hired additional staff since 2015. Nobody has measured the real cost of this problem.",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [21, 26, 34] },
+                { name: "הגבלה", color: "violet", indices: [5, 19] },
+                {
+                  name: "מספרים ושמות",
+                  color: "emerald",
+                  indices: [6, 16, 17, 18, 33],
+                },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction:
+                "סמנו: מילות שלילה, מילות הגבלה (only/most), ומספרים ושמות.",
+              text: "The mayor's office confirmed that only one bridge in Millbrook was rebuilt this year. Engineer Sofia Ramirez said most of the funding, about 4 million dollars, came from private donors, and no government grant was ever approved. Nobody from the city council attended the opening ceremony in March 2023.",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [31, 37] },
+                { name: "הגבלה", color: "violet", indices: [5, 18] },
+                {
+                  name: "מספרים ושמות",
+                  color: "emerald",
+                  indices: [9, 14, 15, 16, 23, 24, 47, 48],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב חזרה - שלושה כלים ביחד: NOT, מילות הגבלה, מספרים ושמות.",
+            },
+            {
+              type: "mcq",
+              prompt: "שאלה עם NOT מבקשת:",
+              options: [
+                "את מה שנכון",
+                "את מה שלא נכון / לא מופיע בטקסט",
+                "את המשפט הכי ארוך",
+              ],
+              correctIndex: 1,
+              explanation: "NOT הופך את הכיוון - מחפשים את היוצאת דופן.",
+            },
+            {
+              type: "mcq",
+              prompt: "שאלה עם most / only מבקשת:",
+              options: [
+                "כמה שיותר תשובות",
+                "תשובה אחת ספציפית ומדויקת",
+                "את כל האפשרויות מהטקסט",
+              ],
+              correctIndex: 1,
+              explanation: "מילת הגבלה = תשובה אחת מסוימת. לא יותר.",
+            },
+            {
+              type: "mcq",
+              prompt: "כשיש שם או מספר בשאלה, מה עושים קודם?",
+              options: [
+                "קוראים את כל הטקסט מההתחלה",
+                "מאתרים את השם / המספר בטקסט ועובדים מהמקום שלו",
+                "מנחשים לפי היגיון",
+              ],
+              correctIndex: 1,
+              explanation: "שם או מספר = GPS / כתובת. הולכים ישר למקום שלו.",
+            },
+            {
+              type: "passage-mcq",
+              text: "According to nurse Fiona Grant, only 25% of patients finished the full course of treatment last year. She says most patients stop too early because they feel better after a few days. No patient in the trial received a refund, and nobody was forced to continue.",
+              questions: [
+                {
+                  prompt:
+                    "According to Fiona Grant, what percentage of patients finished the full course?",
+                  options: ["25%", "75%", "100%", "50%"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "Which of the following is NOT true about the trial?",
+                  options: [
+                    "Most patients stop early",
+                    "Patients received a refund if they stopped",
+                    "No patient received a refund",
+                    "Nobody was forced to continue",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to the text, why do most patients stop too early?",
+                  options: [
+                    "Because of the cost",
+                    "Because they feel better after a few days",
+                    "Because the trial ended",
+                    "Because of side effects",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · טקסט מלא 🌟\nשאלות מעורבות - NOT, הגבלה, מספרים ושמות.",
+            },
+            {
+              type: "passage-mcq",
+              text: "I  Three years ago, the town of Rivertown started a recycling programme. According to Mayor Diane Cole, only 15% of households recycled regularly before the programme began. Today, more than 70% of households recycle every week.\n\nII  The programme is run by environmental scientist Dr. Tomas Bell. \"We did not expect such fast progress,\" says Dr. Bell. \"No other town in the region has reached this level in under three years.\" According to Dr. Bell, the most important factor was door-to-door collection, introduced in 2021.\n\nIII  Not everyone supports the programme. Some residents complain that the new bins are too small. However, a recent survey found that 90% of residents want the programme to continue, and only 3% want it to stop.",
+              questions: [
+                {
+                  prompt:
+                    "Which of the following is NOT true about Rivertown's recycling programme?",
+                  options: [
+                    "More than 70% of households recycle every week",
+                    "Door-to-door collection began in 2021",
+                    "All residents are happy with the new bins",
+                    "A survey found that 90% of residents want it to continue",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt:
+                    "According to Dr. Bell, what was the MOST important factor in the programme's success?",
+                  options: [
+                    "Mayor Diane Cole's leadership",
+                    "Door-to-door collection",
+                    "Smaller bins",
+                    "Public surveys",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to the text, what percentage of households recycled regularly before the programme began?",
+                  options: ["15%", "70%", "90%", "3%"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "In which paragraph does Mayor Diane Cole appear, and what does she say?",
+                  options: [
+                    "פסקה I - only 15% recycled before the programme",
+                    "פסקה II - the most important factor was collection",
+                    "פסקה III - most residents want to continue",
+                    "היא לא מוזכרת בטקסט",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "PRACTICE · טקסט מלא 💎\nרמת בחינה. שאלות מעורבות ללא עזרה.",
+            },
+            {
+              type: "passage-mcq",
+              text: "I  Two years ago, Green Valley High School had almost no working computers in its library. According to Principal Laura Kim, only 12 out of 40 computers still worked. Today, the library has 55 new computers and free wifi throughout the building.\n\nII  The renovation was led by IT coordinator Mr. David Osei. \"We did not receive government funding,\" he explains. \"No company offered to help at first.\" According to Mr. Osei, the most useful change was training students as tech helpers, a project that began in September 2022.\n\nIII  Not all teachers were convinced at first. A few worried that students would waste time online. However, a recent survey found that 88% of teachers now say the library is more useful for lessons, and only 2% still have concerns.",
+              questions: [
+                {
+                  prompt:
+                    "Which of the following is NOT true about the library renovation?",
+                  options: [
+                    "The library now has 55 new computers",
+                    "The training project began in September 2022",
+                    "The government paid for the whole renovation",
+                    "88% of teachers say the library is more useful now",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Mr. Osei, what was the MOST useful change?",
+                  options: [
+                    "New computers",
+                    "Free wifi",
+                    "Training students as tech helpers",
+                    "Government funding",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt:
+                    "According to the text, how many computers still worked before the renovation?",
+                  options: ["55", "40", "12", "2%"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "In which paragraph does Principal Laura Kim appear?",
+                  options: ["פסקה I", "פסקה II", "פסקה III", "לא מוזכרת"],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   },
 ];
