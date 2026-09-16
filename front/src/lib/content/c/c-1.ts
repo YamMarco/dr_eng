@@ -1979,6 +1979,15 @@ export const c1Lessons: LessonNode[] = [
           type: "preface",
           text: "עכשיו שהבנו איך איך למצוא את המילים, נבין איך להשתמש בהן לטובתנו",
         },
+        {
+          type: "summary",
+          title: "THE TOOL - NOT = ציד",
+          lines: [
+            'שאלה רגילה: "What do we learn?" ← מחפשים מה נכון.',
+            'שאלה עם NOT: "Which is NOT true?" ← מחפשים מה לא נכון.',
+            "כל שאר האפשרויות נכונות ומופיעות בטקסט. זו שלא - היא התשובה.",
+          ],
+        },
       ],
       rounds: [
         {
