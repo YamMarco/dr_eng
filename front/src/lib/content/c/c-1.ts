@@ -608,7 +608,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "P1 - ניווט בטקסט",
     titleEn: "P1 Navigation",
     required: ["l02"],
-    position: { x: 70, y: 900 },
+    position: { x: 10, y: 900 },
     big: false,
     content: {
       preface: [
@@ -871,14 +871,20 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "עשרה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט." },
+            {
+              type: "preface",
+              text: "עשרה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
               text: "בשנת 2010 פתחה עיריית ירושלים מרכז ספורט חדש לבני נוער.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1] }, { name: "שמות", color: "amber", indices: [3,4] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [1] },
+                { name: "שמות", color: "amber", indices: [3, 4] },
+              ],
             },
             {
               type: "mark-all",
@@ -886,7 +892,10 @@ export const c1Lessons: LessonNode[] = [
               text: "ד״ר יונתן כרמי גילה כי 60% מהתלמידים משתמשים בספרייה מדי שבוע.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [5] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [5] },
+              ],
             },
             {
               type: "mark-all",
@@ -894,7 +903,7 @@ export const c1Lessons: LessonNode[] = [
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1,5] }],
+              categories: [{ name: "מספרים", color: "sky", indices: [1, 5] }],
             },
             {
               type: "mark-all",
@@ -902,7 +911,10 @@ export const c1Lessons: LessonNode[] = [
               text: "המורה שרון גל לימדה באותה כיתה במשך 18 שנה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [1,2] }, { name: "מספרים", color: "sky", indices: [7] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [1, 2] },
+                { name: "מספרים", color: "sky", indices: [7] },
+              ],
             },
             {
               type: "mark-all",
@@ -910,7 +922,10 @@ export const c1Lessons: LessonNode[] = [
               text: "פרופ׳ דוד אשכנזי פרסם 3 מאמרים על הנושא בשנה האחרונה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [4] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [4] },
+              ],
             },
             {
               type: "mark-all",
@@ -918,7 +933,10 @@ export const c1Lessons: LessonNode[] = [
               text: "כ-500 מתנדבים הצטרפו לפרויקט הניקיון בעיר חיפה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [0] }, { name: "שמות", color: "amber", indices: [6] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [0] },
+                { name: "שמות", color: "amber", indices: [6] },
+              ],
             },
             {
               type: "mark-all",
@@ -926,7 +944,10 @@ export const c1Lessons: LessonNode[] = [
               text: "המהנדסת רינת לוי בנתה גשר שחסך לעיר 12 מיליון שקל.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [1,2] }, { name: "מספרים", color: "sky", indices: [7,8,9] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [1, 2] },
+                { name: "מספרים", color: "sky", indices: [7, 8, 9] },
+              ],
             },
             {
               type: "mark-all",
@@ -934,7 +955,10 @@ export const c1Lessons: LessonNode[] = [
               text: "אוניברסיטת תל אביב פתחה תוכנית מחקר בת 6 שנים.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [7] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [7] },
+              ],
             },
             {
               type: "mark-all",
@@ -942,7 +966,10 @@ export const c1Lessons: LessonNode[] = [
               text: "ראש העיר משה כהן הכריז כי 2,000 עצים ייטעו עד סוף השנה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [2,3] }, { name: "מספרים", color: "sky", indices: [6] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [2, 3] },
+                { name: "מספרים", color: "sky", indices: [6] },
+              ],
             },
             {
               type: "mark-all",
@@ -950,20 +977,29 @@ export const c1Lessons: LessonNode[] = [
               text: "הספרנית מירי אבן ניהלה את הספרייה במשך 30 שנה ברציפות.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [1,2] }, { name: "מספרים", color: "sky", indices: [7] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [1, 2] },
+                { name: "מספרים", color: "sky", indices: [7] },
+              ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מספר וכל שם פרטי." },
+            {
+              type: "preface",
+              text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מספר וכל שם פרטי.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
               text: "In 2015, Dr. Susan Park opened a new library in Riverside.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1] }, { name: "שמות", color: "amber", indices: [2,3,4,10] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [1] },
+                { name: "שמות", color: "amber", indices: [2, 3, 4, 10] },
+              ],
             },
             {
               type: "mark-all",
@@ -971,7 +1007,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Professor Mark Ellis found that 72% of students improved their grades.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [5] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [5] },
+              ],
             },
             {
               type: "mark-all",
@@ -979,7 +1018,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The company built 40 new schools across the country in just 5 years.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [3,11,12] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [3, 11, 12] },
+              ],
             },
             {
               type: "mark-all",
@@ -987,7 +1028,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Engineer Laura Kim designed a bridge that saved the city 3 million dollars.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [10,11,12] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [10, 11, 12] },
+              ],
             },
             {
               type: "mark-all",
@@ -995,7 +1039,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Over 800 volunteers joined the clean-up project in Manchester.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1] }, { name: "שמות", color: "amber", indices: [8] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [1] },
+                { name: "שמות", color: "amber", indices: [8] },
+              ],
             },
             {
               type: "mark-all",
@@ -1003,7 +1050,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Dr. Peter Novak has taught at the university for 22 years.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [9,10] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [9, 10] },
+              ],
             },
             {
               type: "mark-all",
@@ -1011,7 +1061,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Greenfield University launched a research programme lasting 8 years.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1] }, { name: "מספרים", color: "sky", indices: [7,8] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1] },
+                { name: "מספרים", color: "sky", indices: [7, 8] },
+              ],
             },
             {
               type: "mark-all",
@@ -1019,7 +1072,10 @@ export const c1Lessons: LessonNode[] = [
               text: "The mayor, James Carter, announced that 1,500 trees will be planted this year.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [2,3] }, { name: "מספרים", color: "sky", indices: [6,7] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [2, 3] },
+                { name: "מספרים", color: "sky", indices: [6, 7] },
+              ],
             },
             {
               type: "mark-all",
@@ -1027,7 +1083,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Nurse Hannah Cole treated more than 9,000 patients during the outbreak.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [6,7] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [6, 7] },
+              ],
             },
             {
               type: "mark-all",
@@ -1035,20 +1094,29 @@ export const c1Lessons: LessonNode[] = [
               text: "The charity raised 250,000 dollars thanks to Coach Daniel Reyes.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [3,4] }, { name: "שמות", color: "amber", indices: [7,8,9] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [3, 4] },
+                { name: "שמות", color: "amber", indices: [7, 8, 9] },
+              ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "שבע פסקאות. סמנו כל מספר וכל שם פרטי בפסקה." },
+            {
+              type: "preface",
+              text: "שבע פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
               text: "A charity based in Boston has helped local schools for over 12 years. Its founder, Dr. Alice Monroe, says that more than 3,000 children have taken part in its programmes.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [4,15,16,17] }, { name: "מספרים", color: "sky", indices: [11,12,22,23] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [4, 15, 16, 17] },
+                { name: "מספרים", color: "sky", indices: [11, 12, 22, 23] },
+              ],
             },
             {
               type: "mark-all",
@@ -1056,7 +1124,10 @@ export const c1Lessons: LessonNode[] = [
               text: "In 2016, the town of Ashford built a new sports centre. According to Mayor Peter Grant, over 6,500 residents now use it every month.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1,17,18] }, { name: "שמות", color: "amber", indices: [5,13,14,15] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [1, 17, 18] },
+                { name: "שמות", color: "amber", indices: [5, 13, 14, 15] },
+              ],
             },
             {
               type: "mark-all",
@@ -1064,7 +1135,10 @@ export const c1Lessons: LessonNode[] = [
               text: "Professor Elena Vasquez studied sleep patterns among teenagers for 9 years. She found that 45% of them sleep less than 7 hours a night.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [9,10,14,20,21] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [9, 10, 14, 20, 21] },
+              ],
             },
             {
               type: "mark-all",
@@ -1072,7 +1146,10 @@ export const c1Lessons: LessonNode[] = [
               text: "The hospital in Clearview treated 14,000 patients last year, a rise of 20% since 2019. Its director, Dr. Omar Rashid, credits the new emergency wing.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [3,17,18,19] }, { name: "מספרים", color: "sky", indices: [5,6,12,14] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [3, 17, 18, 19] },
+                { name: "מספרים", color: "sky", indices: [5, 6, 12, 14] },
+              ],
             },
             {
               type: "mark-all",
@@ -1080,7 +1157,14 @@ export const c1Lessons: LessonNode[] = [
               text: "Since 2012, a small NGO called GreenPath has planted over 1 million trees across 30 countries. Its coordinator, Fiona Walsh, says the number keeps growing every year.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1,10,11,12,14,15] }, { name: "שמות", color: "amber", indices: [6,18,19] }],
+              categories: [
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [1, 10, 11, 12, 14, 15],
+                },
+                { name: "שמות", color: "amber", indices: [6, 18, 19] },
+              ],
             },
             {
               type: "mark-all",
@@ -1088,7 +1172,14 @@ export const c1Lessons: LessonNode[] = [
               text: "Coach Michael Yates has led the school's swimming team for 15 years. Under his guidance, the team has won 8 regional championships since 2014.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [0,1,2] }, { name: "מספרים", color: "sky", indices: [10,11,19,20,21,23] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [10, 11, 19, 20, 21, 23],
+                },
+              ],
             },
             {
               type: "mark-all",
@@ -1096,20 +1187,41 @@ export const c1Lessons: LessonNode[] = [
               text: "A recent study by Dr. Rebecca Shaw found that only 18% of adults exercise for more than 3 hours a week. She surveyed 5,000 people across 40 cities.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שמות", color: "amber", indices: [4,5,6] }, { name: "מספרים", color: "sky", indices: [10,17,18,23,24,26,27] }],
+              categories: [
+                { name: "שמות", color: "amber", indices: [4, 5, 6] },
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [10, 17, 18, 23, 24, 26, 27],
+                },
+              ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "רמת בחינה. ארבעה טקסטים. סמנו כל מספר וכל שם פרטי." },
+            {
+              type: "preface",
+              text: "רמת בחינה. ארבעה טקסטים. סמנו כל מספר וכל שם פרטי.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
               text: "In 2008, a small group of teachers in the city of Denton started an after-school reading programme. Twenty years later, Dr. Karen Ibrahim reviewed the results: reading scores had risen by 35%, and 12 new branches had opened.\n\nThe programme now costs 600,000 dollars a year to run. According to Professor Liam Foster, more than 4,200 children take part in the programme every month.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1,31,33,34,35,42,43,55,56] }, { name: "שמות", color: "amber", indices: [11,20,21,22,50,51,52] }],
+              categories: [
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [1, 31, 33, 34, 35, 42, 43, 55, 56],
+                },
+                {
+                  name: "שמות",
+                  color: "amber",
+                  indices: [11, 20, 21, 22, 50, 51, 52],
+                },
+              ],
             },
             {
               type: "mark-all",
@@ -1117,7 +1229,14 @@ export const c1Lessons: LessonNode[] = [
               text: "A survey from 2017 found that 42% of teenagers wish they had learned to code. Dr. Nadia Petrov, who has taught computer science for 11 years, says most beginners give up within the first 2 months.\n\nHer school changed its approach in 2020. Since then, 75% of students finish the course, and the number of graduates has grown from 60 to 480 a year.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [3,6,24,25,34,35,42,45,59,61] }, { name: "שמות", color: "amber", indices: [15,16,17] }],
+              categories: [
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [3, 6, 24, 25, 34, 35, 42, 45, 59, 61],
+                },
+                { name: "שמות", color: "amber", indices: [15, 16, 17] },
+              ],
             },
             {
               type: "mark-all",
@@ -1125,7 +1244,18 @@ export const c1Lessons: LessonNode[] = [
               text: "For nearly 30 years, the fishing village of Port Ellen struggled with falling numbers of fish. In 2005, marine biologist Dr. Tomas Alvarez introduced new protection zones along 15 kilometres of coastline.\n\nThe results surprised everyone. By 2022, fish numbers had increased by 90%, and local fisherman Robert Doyle reported catching three times more than before.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [2,3,17,28,29,37,43] }, { name: "שמות", color: "amber", indices: [8,9,20,21,22,47,48] }],
+              categories: [
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [2, 3, 17, 28, 29, 37, 43],
+                },
+                {
+                  name: "שמות",
+                  color: "amber",
+                  indices: [8, 9, 20, 21, 22, 47, 48],
+                },
+              ],
             },
             {
               type: "mark-all",
@@ -1133,7 +1263,14 @@ export const c1Lessons: LessonNode[] = [
               text: "Ten years ago, only 200 families in the region of Kellwood had access to clean drinking water. Engineer Priya Nair led a project to build 18 new wells across the area.\n\nToday, according to local official Grace Whitman, over 14,000 people benefit from the new water system, and the project has expanded to 6 neighbouring villages.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [4,5,25,26,27,39,40,53,54,55] }, { name: "שמות", color: "amber", indices: [10,18,19,36,37] }],
+              categories: [
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [4, 5, 25, 26, 27, 39, 40, 53, 54, 55],
+                },
+                { name: "שמות", color: "amber", indices: [10, 18, 19, 36, 37] },
+              ],
             },
           ],
         },
@@ -1519,7 +1656,10 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "עשרה משפטים בעברית. סמנו כל מילת שלילה במשפט." },
+            {
+              type: "preface",
+              text: "עשרה משפטים בעברית. סמנו כל מילת שלילה במשפט.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו כל מילת שלילה במשפט.",
@@ -1534,7 +1674,7 @@ export const c1Lessons: LessonNode[] = [
               text: "אף תלמיד לא הגיע לשיעור בזמן.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,2] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 2] }],
             },
             {
               type: "mark-all",
@@ -1542,7 +1682,7 @@ export const c1Lessons: LessonNode[] = [
               text: "שום מומחה לא תמך בהצעה החדשה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,2] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 2] }],
             },
             {
               type: "mark-all",
@@ -1550,7 +1690,7 @@ export const c1Lessons: LessonNode[] = [
               text: "מעולם לא ראינו תוצאה כזאת בעבר.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,1] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 1] }],
             },
             {
               type: "mark-all",
@@ -1558,7 +1698,7 @@ export const c1Lessons: LessonNode[] = [
               text: "בלי תמיכה מהעירייה, הפרויקט לא היה קם.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,4] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 4] }],
             },
             {
               type: "mark-all",
@@ -1566,7 +1706,9 @@ export const c1Lessons: LessonNode[] = [
               text: "אף אחד לא ציפה לתוצאה הזאת.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,1,2] }],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [0, 1, 2] },
+              ],
             },
             {
               type: "mark-all",
@@ -1582,7 +1724,7 @@ export const c1Lessons: LessonNode[] = [
               text: "שום תושב לא התלונן על הרעש.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,2] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 2] }],
             },
             {
               type: "mark-all",
@@ -1590,7 +1732,7 @@ export const c1Lessons: LessonNode[] = [
               text: "המחקר לא מצא שום קשר בין שני הגורמים.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [1,3] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [1, 3] }],
             },
             {
               type: "mark-all",
@@ -1604,7 +1746,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מילת שלילה." },
+            {
+              type: "preface",
+              text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מילת שלילה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
@@ -1643,7 +1788,7 @@ export const c1Lessons: LessonNode[] = [
               text: "Without clean water, the village could not continue.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,6] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 6] }],
             },
             {
               type: "mark-all",
@@ -1683,7 +1828,7 @@ export const c1Lessons: LessonNode[] = [
               text: "There was no plan and no budget for the project.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [2,5] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [2, 5] }],
             },
           ],
         },
@@ -1696,7 +1841,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The city promised a new park, but nothing was built for years. There was no budget and no clear plan.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [7,14,17] }],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [7, 14, 17] },
+              ],
             },
             {
               type: "mark-all",
@@ -1704,7 +1851,7 @@ export const c1Lessons: LessonNode[] = [
               text: "Many people believe that money brings happiness, but the study found no clear link. People with high salaries were not happier than others.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [11,19] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [11, 19] }],
             },
             {
               type: "mark-all",
@@ -1712,7 +1859,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The scientists were not surprised. No earlier test had succeeded, and nobody expected this time to be different.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [3,5,11] }],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [3, 5, 11] },
+              ],
             },
             {
               type: "mark-all",
@@ -1720,7 +1869,7 @@ export const c1Lessons: LessonNode[] = [
               text: 'Dr. Ellen Ross said the result was not new. "No serious research has ever proved that money makes people happy," she explained.',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [7,9] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [7, 9] }],
             },
             {
               type: "mark-all",
@@ -1728,7 +1877,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The village had no electricity for years, and it never received help from the government. Nobody in the capital seemed to care.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [3,9,15] }],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [3, 9, 15] },
+              ],
             },
             {
               type: "mark-all",
@@ -1736,7 +1887,7 @@ export const c1Lessons: LessonNode[] = [
               text: 'In 2020, a small group decided not to wait any longer. "We could not depend on the city," said one volunteer.',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [6,13] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [6, 13] }],
             },
             {
               type: "mark-all",
@@ -1744,20 +1895,25 @@ export const c1Lessons: LessonNode[] = [
               text: '"Nobody was going to do it for us," she added. No one else seemed willing to try.',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0,10] }],
+              categories: [{ name: "שלילה", color: "rose", indices: [0, 10] }],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת שלילה." },
+            {
+              type: "preface",
+              text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת שלילה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
               text: 'The report found no evidence that the plan worked. Not one expert supported it, and none of the residents noticed any change.\n\nDr. Ellen Ross said the result was not new. "No serious research has ever proved that money makes people happy," she explained.',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [3,9,15,29,31] }],
+              categories: [
+                { name: "שלילה", color: "rose", indices: [3, 9, 15, 29, 31] },
+              ],
             },
             {
               type: "mark-all",
@@ -1765,7 +1921,13 @@ export const c1Lessons: LessonNode[] = [
               text: 'The city promised a new park, but nothing was built for years. There was no budget, no plan, and no one in charge. Residents said the council never answered their letters.\n\nIn 2020, a small group decided not to wait any longer. "We could not depend on the city," said one volunteer. "Nobody was going to do it for us."',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [7,14,16,19,27,37,44,52] }],
+              categories: [
+                {
+                  name: "שלילה",
+                  color: "rose",
+                  indices: [7, 14, 16, 19, 27, 37, 44, 52],
+                },
+              ],
             },
             {
               type: "mark-all",
@@ -1773,7 +1935,13 @@ export const c1Lessons: LessonNode[] = [
               text: 'For years, the school had no science lab, and no teacher ever raised the issue. Nobody on the board seemed to notice the problem.\n\nWhen a new principal arrived, she found that none of the equipment worked. "No student had done a real experiment in years," she said. "That is not acceptable."',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [5,9,15,32,37,50] }],
+              categories: [
+                {
+                  name: "שלילה",
+                  color: "rose",
+                  indices: [5, 9, 15, 32, 37, 50],
+                },
+              ],
             },
             {
               type: "mark-all",
@@ -1781,7 +1949,13 @@ export const c1Lessons: LessonNode[] = [
               text: 'The factory closed in 2015, and no new jobs came to replace it. Nobody expected the town to recover so quickly.\n\n"We had no money and no outside help," said Mayor Clara Diaz. "But we were not willing to give up, and none of us regret that choice."',
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [6,13,23,26,36,42] }],
+              categories: [
+                {
+                  name: "שלילה",
+                  color: "rose",
+                  indices: [6, 13, 23, 26, 36, 42],
+                },
+              ],
             },
           ],
         },
@@ -2091,7 +2265,10 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "עשרה משפטים בעברית. סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד." },
+            {
+              type: "preface",
+              text: "עשרה משפטים בעברית. סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו כל מילת הגבלה במשפט.",
@@ -2154,7 +2331,9 @@ export const c1Lessons: LessonNode[] = [
               text: "רוב התלמידים מרוצים, אך רק מעטים משתתפים בשיעור הבחירה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,4,5] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [0, 4, 5] },
+              ],
             },
             {
               type: "mark-all",
@@ -2170,16 +2349,20 @@ export const c1Lessons: LessonNode[] = [
               text: "רק מעטים מהתלמידים נבחנו בשיטה החדשה.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,1] }],
+              categories: [{ name: "הגבלה", color: "violet", indices: [0, 1] }],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מילת הגבלה." },
+            {
+              type: "preface",
+              text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מילת הגבלה.",
+            },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only two members of the committee supported the idea.",
               dir: "ltr",
               correctIndices: [],
@@ -2187,7 +2370,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "All the others were against the new proposal.",
               dir: "ltr",
               correctIndices: [],
@@ -2195,7 +2379,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Most students are satisfied with the new schedule.",
               dir: "ltr",
               correctIndices: [],
@@ -2203,15 +2388,17 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only a few students join the optional classes.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,2] }],
+              categories: [{ name: "הגבלה", color: "violet", indices: [0, 2] }],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "It is always the same children who come.",
               dir: "ltr",
               correctIndices: [],
@@ -2219,7 +2406,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "The researcher stressed that only one factor really matters.",
               dir: "ltr",
               correctIndices: [],
@@ -2227,15 +2415,17 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "All the other factors have some effect on results.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,5] }],
+              categories: [{ name: "הגבלה", color: "violet", indices: [0, 5] }],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Some of the poorest regions cut pollution more than wealthy ones.",
               dir: "ltr",
               correctIndices: [],
@@ -2243,15 +2433,17 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Every country has some power to act, she says.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,3] }],
+              categories: [{ name: "הגבלה", color: "violet", indices: [0, 3] }],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only political will is truly required, he argued.",
               dir: "ltr",
               correctIndices: [],
@@ -2264,96 +2456,148 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "שבע פסקאות. סמנו כל מילת הגבלה בפסקה." },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only two members of the committee supported the idea at first. All the others were against it, and most of them asked for another meeting.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,11,18] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [0, 11, 18] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "The survey found that most students are satisfied, but only a few join the optional classes. It is always the same children who come.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [4,9,11,18] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [4, 9, 11, 18] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "The researcher stressed that only one factor really matters: motivation. All the other factors, he said, have some effect on the outcome.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [4,10,17] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [4, 10, 17] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "The article claims that only rich countries can solve the problem. However, most of the progress has come from small nations.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [4,12] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [4, 12] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Some of the poorest regions have cut pollution more than any wealthy state. Every country has some power to act, she says.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,13,16] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [0, 13, 16] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "People often say that talent is all that counts in sport. In fact, most top athletes share one habit: they train every single day.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [6,13,21] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [6, 13, 21] },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only a few reach the highest level on ability alone. Most people just need practice, not natural talent.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,2,10] }],
+              categories: [
+                { name: "הגבלה", color: "violet", indices: [0, 2, 10] },
+              ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת הגבלה." },
+            {
+              type: "preface",
+              text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת הגבלה.",
+            },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Only two members of the committee supported the idea at first. All the others were against it, and most of them asked for another meeting before deciding.\n\nThe survey found that most students are satisfied with the new schedule, but only a few join the optional classes. It is always the same children who come every week.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0,11,18,31,40,42,49,55] }],
+              categories: [
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [0, 11, 18, 31, 40, 42, 49, 55],
+                },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "The article claims that only rich countries can solve the problem, but most of the progress in recent years has come from small nations. Some of the poorest regions have cut pollution more than any wealthy state.\n\nDr. Mia Cohen argues that money is not everything. Every country has some power to act, she says, and only political will is truly required.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [4,12,24,46,49,56] }],
+              categories: [
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [4, 12, 24, 46, 49, 56],
+                },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "People often say that talent is all that counts in sport. In fact, most top athletes share one habit: they train every single day without fail.\n\nOnly a few reach the highest level on ability alone. All you really need, says coach Ryan Doyle, is a clear plan and some patience.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [6,13,21,26,28,36,49] }],
+              categories: [
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [6, 13, 21, 26, 28, 36, 49],
+                },
+              ],
             },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "A recent report claims that only large cities can fund good public transport, but some small towns have built excellent networks with only a small budget.\n\nMost people assume every project needs a huge budget, said transport planner Nina Cole. Every town has some way to improve, and only a clear plan is really needed.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [5,14,22,26,29,40,43,48] }],
+              categories: [
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [5, 14, 22, 26, 29, 40, 43, 48],
+                },
+              ],
             },
           ],
         },
@@ -2587,7 +2831,10 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "עשרה משפטים בעברית. סמנו את מילת הניגוד במשפט." },
+            {
+              type: "preface",
+              text: "עשרה משפטים בעברית. סמנו את מילת הניגוד במשפט.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו את מילת הניגוד במשפט.",
@@ -2610,7 +2857,9 @@ export const c1Lessons: LessonNode[] = [
               text: "רבים חששו מהפרויקט. עם זאת, התושבים תמכו בו.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [3,4] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [3, 4] },
+              ],
             },
             {
               type: "mark-all",
@@ -2626,7 +2875,9 @@ export const c1Lessons: LessonNode[] = [
               text: "המורה ציפתה לכישלון. לעומת זאת, כל התלמידים עברו.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [3,4] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [3, 4] },
+              ],
             },
             {
               type: "mark-all",
@@ -2642,7 +2893,9 @@ export const c1Lessons: LessonNode[] = [
               text: "הוא ידע שזה יהיה קשה. למרות זאת, הוא התחיל בפרויקט.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [5,6] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [5, 6] },
+              ],
             },
             {
               type: "mark-all",
@@ -2658,7 +2911,9 @@ export const c1Lessons: LessonNode[] = [
               text: "רוב המומחים התנגדו לרעיון. מצד שני, כמה חוקרים תמכו בו.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [4,5] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [4, 5] },
+              ],
             },
             {
               type: "mark-all",
@@ -2672,7 +2927,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "עכשיו באנגלית. עשרה משפטים. סמנו את מילת הניגוד." },
+            {
+              type: "preface",
+              text: "עכשיו באנגלית. עשרה משפטים. סמנו את מילת הניגוד.",
+            },
             {
               type: "mark-all",
               instruction: "Mark the contrast word in the sentence.",
@@ -2818,14 +3076,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת ניגוד בטקסט." },
+            {
+              type: "preface",
+              text: "רמת בחינה. ארבעה טקסטים. סמנו כל מילת ניגוד בטקסט.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every contrast word in the text.",
               text: "Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nDr. Amir Cohen, who teaches adult swimming classes, says that although beginners feel nervous at first, most improve within a few weeks.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [39,57] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [39, 57] },
+              ],
             },
             {
               type: "mark-all",
@@ -2833,7 +3096,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The report warned that costs would rise sharply due to rising fuel prices. Yet the final budget stayed almost the same as planned, thanks to careful management.\n\nMany volunteers worked without any payment at all. Despite this, researchers found that they were far happier than people in paid jobs.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [13,35] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [13, 35] },
+              ],
             },
             {
               type: "mark-all",
@@ -2841,7 +3106,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The city promised a new park, but nothing was built for years. Although residents complained often, the council took no real action.\n\nIn 2020, a small group decided to act on its own. However, they lacked both money and official permission to begin building.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [12,33] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [12, 33] },
+              ],
             },
             {
               type: "mark-all",
@@ -2849,7 +3116,9 @@ export const c1Lessons: LessonNode[] = [
               text: "Many predicted the small bookshop would close within a year of opening. However, it became one of the most popular shops in town.\n\nThe owner, Grace Bell, had almost no experience running a business. Nevertheless, she built a loyal community of regular customers within months.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [12,34] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [12, 34] },
+              ],
             },
           ],
         },
