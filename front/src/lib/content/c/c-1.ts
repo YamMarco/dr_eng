@@ -609,7 +609,7 @@ export const c1Lessons: LessonNode[] = [
     titleEn: "P1 Navigation",
     required: ["l02"],
     position: { x: 10, y: 900 },
-    big: false,
+    big: true,
     content: {
       preface: [
         {
