@@ -27,7 +27,7 @@ export const sectionMeta: SectionMeta[] = [
 		titleEn: 'Part C — Writing',
 		intro: {
 			greeting: '70-90 words, every time',
-			goal: 'שישה שיעורים שבונים את מטלת הכתיבה: מה רוצים ממני, מבנה P14, דקדוק, ספירת מילים ובחינה שלמה.'
+			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
 		}
 	}
 ];

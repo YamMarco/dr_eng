@@ -1,13 +1,13 @@
-// Part C - Writing. One node per programme lesson (lesson17…lesson22).
-// Source: docs/module c/insertprogram/lesson##_module_c.docx
+// Part C - Writing. Micro-skills (yes-no…word-count) + topic lessons (topic-*).
+// Source: writing_map_c3.docx, writing_course_c3_7to17.docx
 import type { LessonNode } from "../types";
 
 export const c3Lessons: LessonNode[] = [
   {
-    id: "l17",
+    id: "yes-no",
     section: "c-3",
-    titleHe: "מה רוצים ממני?",
-    titleEn: "What the Task Wants",
+    titleHe: "YES or NO - לומר עמדה",
+    titleEn: "YES or NO",
     required: ["n-7c5330b8"],
     position: { x: 0, y: 2240 },
     big: false,
@@ -15,220 +15,91 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'טעות נפוצה:\n\n"Do you think teenagers should volunteer?"\nתלמיד: "Volunteering is good. Many people volunteer."\n← אין דעה. אין סיבות.\n\nנכון:\n"Yes, I think… First… For example… In addition…"\n← דעה + שתי סיבות + דוגמה.',
-        },
-        {
-          type: "summary",
-          title: "איך מתחלקות 30 הנקודות",
-          lines: [
-            "📝 תוכן וארגון - 10 נקודות. הכי חשוב.",
-            "📚 אוצר מילים - 8 נקודות.",
-            "🔤 דקדוק - 8 נקודות.",
-            "✏️ כתיב ופיסוק - 4 נקודות.",
-            "גם עם דקדוק חלש - תוכן נכון וברור מביא 22-25 מתוך 30.",
-          ],
-        },
-        {
-          type: "summary",
-          title: "מה תמיד נדרש",
-          lines: [
-            "מטלת הכתיבה = 30% מהציון.",
-            "70-90 מילים. חובה. פחות מ-60 מוריד נקודות.",
-            '"Do you think?" ← תמיד דעה + הסבר.',
-            '"Give reasons" ← לפחות שתי סיבות + דוגמה.',
-          ],
-        },
-        {
-          type: "summary",
-          title: "הנושאים שחוזרים במודול C",
-          lines: [
-            "🌍 סביבה - הגנה על הסביבה, זיהום, עצים, בעלי חיים",
-            "🤝 קהילה - התנדבות, עזרה לאחרים, שינוי חברתי",
-            "🏥 בריאות - ספורט, תזונה, בריאות נפשית",
-            "💻 טכנולוגיה - מסכים, אינטרנט, המצאות",
-            "📚 חינוך - בית ספר, שפות, כישורים לחיים",
-            "מומלץ להכין בבית 2-3 דוגמאות לכל נושא, לפני הבחינה.",
-          ],
+          text: 'חבר׳ה, הטעות הכי נפוצה בכתיבה?\n\nלא כתיב. לא דקדוק.\n\nלא לומר YES או NO.\n\nתלמיד שכותב "volunteering is good and important" לא ענה על השאלה. הוא תיאר. לא הביע דעה.\n\nהמורה רוצה לשמוע: אני חושב YES. או: אני חושב NO.\nורק אחרי זה - למה.',
         },
         {
           type: "preface",
-          text: 'WATCH IT\n\n"Do you think all teenagers should volunteer? Give reasons to explain your opinion."\nמה נדרש: **דעה (YES/NO) + סיבות + 70-90 מילים.**\n\n"Do you think it is important for schools to teach about the environment? Give reasons."\nאותו מבנה בדיוק. תמיד.',
+          text: 'המשפט הזה הוא הכי חשוב בכל הפסקה:\n\n✅ "I think teenagers should volunteer."\n✅ "I do not think teenagers should volunteer."\n\nשימו לב - המשפט קצר. חד. ברור.\nלא מסבירים עדיין למה. רק אומרים מה.\nאת הלמה נוסיף בשיעור הבא.',
+        },
+        {
+          type: "summary",
+          title: "איך אומרים עמדה",
+          lines: [
+            '"I think... [the thing you agree with]."',
+            '"I do not think... [the thing you disagree with]."',
+            '"I agree that... / I disagree that..."',
+            '"In my opinion,..."',
+            'לא "it depends" - תמיד לבחור צד אחד',
+          ],
         },
       ],
       rounds: [
         {
           screens: [
             {
+              type: "preface",
+              text: "סיבוב 1 | מזהים עמדה ברורה",
+            },
+            {
               type: "mcq",
               prompt:
-                '"Do you think teenagers should have a part-time job? Give reasons." - מה חייב להופיע בתשובה?',
+                '"Do you think teenagers should have part-time jobs?" - איזה פתיח מבטא עמדה ברורה?',
               options: [
-                "YES או NO, לפחות שתי סיבות, ו-70-90 מילים",
-                "תרגום של הנושא לעברית",
-                "רשימת מילים באנגלית",
-                "סיכום של טקסט הקריאה",
+                "Part-time jobs can be good or bad depending on the teenager.",
+                "I think teenagers should have part-time jobs.",
+                "Many teenagers in Israel have jobs after school.",
+                "Part-time jobs are a common thing in many countries.",
               ],
-              correctIndex: 0,
+              correctIndex: 1,
+              explanation:
+                "רק אפשרות 2 אומרת YES ברורות. שאר האפשרויות מתארות, לא מחליטות.",
             },
             {
               type: "mcq",
-              prompt: "איזה קריטריון שווה הכי הרבה נקודות בכתיבה?",
-              options: ["דקדוק", "כתיב ופיסוק", "תוכן וארגון", "אורך התשובה"],
-              correctIndex: 2,
+              prompt:
+                '"Do you think schools should start later?" - מה נכתב כשחושבים NO?',
+              options: [
+                "School hours have advantages and disadvantages.",
+                "I do not think schools should start later.",
+                "Some students prefer to start early.",
+                "Starting school later is an interesting idea.",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"I do not think" = NO ברור. YES ו-NO שניהם מקבלים אותו ציון - חשוב רק שזה ברור.',
             },
             {
-              type: "mcq",
-              prompt: "כתבתם 45 מילים בלבד. מה קורה?",
-              options: [
-                "לא קורה כלום - העיקר התוכן",
-                "מקבלים בונוס על קיצור",
-                "הבודק מוסיף מילים",
-                "מאבדים נקודות - פחות מ-60 מילים מוריד ניקוד",
-              ],
-              correctIndex: 3,
+              type: "preface",
+              text: "לחצו על המילה שמבטאת YES.",
+            },
+            {
+              type: "mark-word",
+              sentence:
+                "I think all students should do volunteer work in their community.",
+              correctWordIndex: 1,
             },
           ],
         },
         {
           screens: [
             {
-              type: "preface",
-              text: 'YOUR TURN - תכנון לפני כתיבה.\n\n"Do you think it is important to protect the environment? Give reasons."',
-            },
-            {
-              type: "mcq",
-              prompt: "מה השלב הראשון בתשובה?",
-              options: [
-                "לכתוב YES או NO - הדעה שלי",
-                "לתת דוגמה",
-                "לכתוב סיכום",
-                "לספור מילים",
-              ],
-              correctIndex: 0,
-            },
-            {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                "תכננו: YES או NO, סיבה 1, סיבה 2, ומילת תוכן אחת שתשתמשו בה. כתבו את התכנון (אפשר בעברית).",
-              modelAnswer:
-                "YES. סיבה 1: pollution destroys nature and affects our health. סיבה 2: small actions can protect the environment for the next generation. מילת תוכן: environment / protect / benefit.",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"Do you think? = YES/NO + 2 reasons. 70-90 מילים."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: Do you think? = YES/NO + 2 reasons. 70-90 מילים.",
-            },
-            {
-              type: "mcq",
-              prompt: '"Do you think teenagers should volunteer?" - מה עונים?',
-              options: [
-                "כותבים על התנדבות בכלל",
-                "YES או NO + סיבות",
-                "מסבירים מה זו התנדבות",
+                '"Do you think schools should be open 5 days instead of 6?"\n\nרק YES או NO. לא למה. לא דוגמה. משפט אחד.\nהשתמשו ב-"I think" או "I do not think".',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "schools",
+                "students",
               ],
-              correctIndex: 1,
-              explanation: '"Do you think?" = דעה (YES/NO) + סיבות. תמיד.',
-            },
-            {
-              type: "mcq",
-              prompt: "כתבתם 65 מילים. זה בסדר - קרוב מספיק ל-70.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. 60-69 מילים = מינוס נקודה. היעד הוא 70-90.",
-            },
-            {
-              type: "mcq",
-              prompt: '"Give reasons." - כמה סיבות?',
-              options: [
-                "אחת - מספיק",
-                "לפחות שתיים, עם דוגמה לכל אחת",
-                "כמה שרוצים",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"Give reasons" = לפחות שתי סיבות, ורצוי דוגמה לכל אחת.',
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעל נושאי המיקוד של הבחינה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'לאיזה נושא מיקוד שייכת השאלה "Do you think we should protect forests?"',
-              options: ["🌍 סביבה", "🤝 קהילה", "💻 טכנולוגיה", "🏥 בריאות"],
-              correctIndex: 0,
-              explanation:
-                "חמשת נושאי המיקוד: סביבה · קהילה · בריאות · טכנולוגיה · חינוך.",
-            },
-            {
-              type: "mcq",
-              prompt: "מה מוריד הכי הרבה נקודות בכתיבה?",
-              options: [
-                "שגיאות דקדוק",
-                "פחות מ-40 מילים - מינוס 6 נקודות",
-                "שגיאות כתיב",
-              ],
-              correctIndex: 1,
-              explanation:
-                "קנס האורך גדול מכל שגיאת דקדוק. 40-49 מילים = מינוס 6.",
-            },
-            {
-              type: "mcq",
-              prompt: "העתקת משפטים שלמים מטקסט הקריאה למטלת הכתיבה - מה קורה?",
-              options: [
-                "✅ מותר, זו אנגלית נכונה",
-                "❌ אסור - כותבים במילים שלנו",
-              ],
-              correctIndex: 1,
-              explanation:
-                "העתקה עלולה לאפס את מטלת הכתיבה. כותבים במילים שלנו.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"In your opinion, what changes can be made to your school?" - מה המבנה?',
-              options: [
-                "YES/NO + סיבות",
-                "פתיחה → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום",
-                "רק דוגמאות מהחיים",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"What changes?" שונה מ-"Do you think?" - שני שינויים, כל אחד עם סיבה.',
-            },
-            {
-              type: "self-check",
-              prompt:
-                'תכננו: "Do you think it is important to protect the environment?" - YES/NO, סיבה 1, סיבה 2.',
-              modelAnswer:
-                "YES. סיבה 1: כדי לשמור על בעלי חיים ויערות. סיבה 2: כדי שהדורות הבאים יחיו בסביבה נקייה ובריאה.",
-            },
-            {
-              type: "self-check",
-              prompt: "כמה נקודות שווה כל קריטריון בכתיבה? (ארבעה קריטריונים)",
-              modelAnswer:
-                "תוכן וארגון = 10 · אוצר מילים = 8 · דקדוק = 8 · כתיב ופיסוק = 4. סה״כ 30.",
+              minSentences: 1,
+              minWordsUsed: 1,
             },
           ],
         },
@@ -236,57 +107,31 @@ export const c3Lessons: LessonNode[] = [
     },
   },
   {
-    id: "l18",
+    id: "because",
     section: "c-3",
-    titleHe: "P14 - נוסחת הכתיבה",
-    titleEn: "P14 Structure",
-    required: ["l17"],
+    titleHe: "because - לחבר לסיבה",
+    titleEn: "because",
+    required: ["yes-no"],
     position: { x: 70, y: 2360 },
     big: false,
     content: {
       preface: [
         {
-          type: "summary",
-          title: "P14 - נוסחת הכתיבה שלכם",
-          lines: [
-            "YES / NO",
-            "↓ I think that… because…",
-            "↓ This means… / For example…",
-            "↓ In addition,…",
-            "↓ In conclusion, I believe that…",
-          ],
+          type: "preface",
+          text: 'יש לכם עמדה. מצוין.\n\nאבל המורה רוצה גם לדעת למה.\n\nהמילה שמחברת את הדעה לסיבה היא: because.\n\n"I think students should volunteer because it teaches responsibility."\n\nעמדה + because + סיבה = משפט שמרוויח נקודות.',
         },
-        {
-          type: "word-card",
-          word: "I think / I believe that",
-          translationHe: "אני חושב/ת ש־",
-        },
-        { type: "word-card", word: "because", translationHe: "כי" },
-        {
-          type: "word-card",
-          word: "This means that",
-          translationHe: "זאת אומרת ש־",
-        },
-        { type: "word-card", word: "For example", translationHe: "לדוגמה" },
-        { type: "word-card", word: "In addition", translationHe: "בנוסף" },
-        {
-          type: "word-card",
-          word: "Another reason is",
-          translationHe: "סיבה נוספת היא",
-        },
-        { type: "word-card", word: "In conclusion", translationHe: "לסיכום" },
         {
           type: "preface",
-          text: "על דקדוק בכתיבה - להירגע:\n\nדקדוק שווה 8 נקודות. תוכן שווה 10.\nהרעיון שלכם חשוב יותר מהמשפט המושלם.\n\nמה שחייב להיות בכל משפט: subject + verb. זה הבסיס. השאר בונוס.",
+          text: 'הסיבה צריכה לענות על שאלה אחת: למה?\n\n❌ "I think students should volunteer because volunteering is good."\nלמה זה לא עובד? כי "good" לא מסביר כלום.\n\n✅ "I think students should volunteer because they learn to care about others."\nזו סיבה אמיתית.',
         },
         {
-          type: "steps",
-          steps: [
-            '"Yes, I think that teenagers should volunteer in their community." ← הדעה.',
-            '"First, volunteering develops important skills." ← סיבה 1.',
-            '"For example, many teenagers learn to work in a team and become more responsible." ← דוגמה.',
-            '"In addition, volunteering is good for mental health. Studies show that young volunteers feel less stressed." ← סיבה 2 + דוגמה.',
-            '"In conclusion, I believe that volunteering has many benefits for teenagers and for society." ← סיכום. סה״כ 79 מילים.',
+          type: "summary",
+          title: "נוסחת because",
+          lines: [
+            '"I think [עמדה] because [סיבה ספציפית]."',
+            "הסיבה עונה על: למה זה נכון? מה קורה בגלל זה?",
+            'לא: "because it is good / important / nice"',
+            'כן: "because students learn... / it helps... / it gives..."',
           ],
         },
       ],
@@ -295,176 +140,65 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: 'TRY IT - "Do you think schools should teach students about the environment?"\nנבנה את P14 שלב אחרי שלב.',
+              text: "סיבוב 1 | מזהים סיבה חזקה",
             },
             {
               type: "mcq",
-              prompt: "איזה משפט פותח נכון לפי P14?",
+              prompt: "איזו סיבה אחרי because היא הכי חזקה?",
               options: [
-                "The environment is a big problem in the world today.",
-                "I think that schools should teach students about the environment.",
-                "For example, we can recycle plastic.",
-                "In conclusion, the environment is important.",
-              ],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: "אחרי הדעה - מה בא?",
-              options: [
-                "סיכום",
-                "עוד דעה",
-                'סיבה ראשונה: "First, it is important because…"',
-                "שאלה חדשה",
-              ],
-              correctIndex: 2,
-            },
-            {
-              type: "mcq",
-              prompt: "איזו מילה פותחת את הסיבה השנייה?",
-              options: ["However", "Because", "For example", "In addition"],
-              correctIndex: 3,
-            },
-            {
-              type: "mcq",
-              prompt: "איך מסיימים?",
-              options: [
-                "In conclusion, I believe that…",
-                "Thank you for reading.",
-                "This is my opinion, bye.",
-                "לא צריך משפט סיום",
-              ],
-              correctIndex: 0,
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - עכשיו כותבים פסקה שלמה לפי P14.\nשימו לב למונה המילים: היעד הוא 70-90.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                '"Do you think it is important for teenagers to learn a foreign language? Give reasons to explain your opinion." - כתבו תשובה מלאה לפי P14.',
-              placeholder: "I think that...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "Yes, I think that it is important for teenagers to learn a foreign language. First, a foreign language opens many opportunities. For example, students who speak English can study abroad and find better jobs. This means that they are better prepared for the future. In addition, learning a language helps us understand other cultures and meet new people. In conclusion, I believe that every teenager should learn at least one foreign language, because it improves both education and society.",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"I think… because… For example… In addition… 70-90."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: I think… because… For example… In addition…",
-            },
-            {
-              type: "mcq",
-              prompt: "איזו שורה נכונה?",
-              options: [
-                "I think that… = דעה · because… = סיבה · For example… = דוגמה · In addition… = סיבה שנייה · In conclusion… = סיכום",
-                "I think that… = סיכום · because… = דוגמה · In conclusion… = דעה",
-                "For example… = דעה · In addition… = סיבה ראשונה · because… = סיכום",
-                "כל הביטויים מתאימים לכל שלב",
-              ],
-              correctIndex: 0,
-              explanation: "חמשת שלבי P14 - לומדים בעל פה.",
-            },
-            {
-              type: "mcq",
-              prompt: "מהו הסדר הנכון של P14?",
-              options: [
-                "because → Yes I think → In conclusion → For example → In addition",
-                "Yes, I think → because → For example → In addition → In conclusion",
-                "For example → In addition → Yes I think → because → In conclusion",
-                "In conclusion → Yes I think → because → For example → In addition",
-              ],
-              correctIndex: 1,
-              explanation: "דעה ← סיבה ← דוגמה ← סיבה שנייה ← סיכום.",
-            },
-            {
-              type: "mcq",
-              prompt: 'אפשר להתחיל ב-"In conclusion" ואז לתת סיבות.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                'שקר. "In conclusion" תמיד בסוף. פותחים ב-YES/NO + I think.',
-            },
-          ],
-        },
-        {
-          screens: [
-            { type: "preface", text: "PRACTICE · Round 2 🌟\nעל פסקה אמיתית." },
-            {
-              type: "self-check",
-              prompt:
-                'השלימו את P14:\n"_______, I think that teenagers should volunteer. First, it _______ important skills. For example, many teenagers learn to work as a team. In _______, it helps mental health. _______, I believe that volunteering has many benefits."',
-              modelAnswer: "Yes · develops · addition · In conclusion",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"I think that volunteering is important. Also, it is good." - מה חסר?',
-              options: [
-                "רק משפט סיום",
-                "because + דוגמה לכל סיבה",
-                "YES/NO בהתחלה",
-              ],
-              correctIndex: 1,
-              explanation: '"Also" לא מספיק. צריך סיבה מנומקת ודוגמה לכל אחת.',
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"Yes, I think that teenagers should volunteer. First, volunteering develops important skills. For example, many teenagers learn to work in a team. In addition, volunteering is good for mental health. In conclusion, I believe that volunteering has many benefits."\n\nמה תפקיד המשפט "For example, many teenagers learn to work in a team"?',
-              options: [
-                "הדעה",
-                "הדוגמה לסיבה הראשונה",
-                "הסיבה השנייה",
-                "הסיכום",
+                '"I think students should volunteer because it is a nice thing to do."',
+                '"I think students should volunteer because they develop skills they cannot learn in a classroom."',
+                '"I think students should volunteer because volunteering is important."',
+                '"I think students should volunteer because many students volunteer."',
               ],
               correctIndex: 1,
               explanation:
-                "D = דעה · S1 = סיבה · E1 = דוגמה · S2 = סיבה שנייה · C = סיכום.",
+                '"develop skills they cannot learn in a classroom" = ספציפי. מסביר בדיוק מה קורה ולמה זה שווה.',
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"I think the school day should start later _______ teenagers need more sleep." - מה חסר?',
+              options: ["also", "because", "in addition", "in conclusion"],
+              correctIndex: 1,
+              explanation:
+                "because = המילה שמחברת עמדה לסיבה. תמיד מגיעה ישר אחרי הדעה.",
+            },
+            {
+              type: "preface",
+              text: "לחצו על המילה שמחברת את הדעה לסיבה.",
+            },
+            {
+              type: "mark-word",
+              sentence:
+                "I think children should get a phone at age 13 because they start travelling to school alone.",
+              correctWordIndex: 10,
             },
           ],
         },
         {
           screens: [
             {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                '"Do you think it is important to protect the environment?" - כתבו P14 מלא, 70-90 מילים.',
-              placeholder: "Yes, I think that...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "Yes, I think that protecting the environment is very important. First, it helps animals and plants survive. For example, many forests have returned because of protection laws. In addition, clean air and water are important for our health. Studies show that people who live in clean cities are healthier and live longer. In conclusion, I believe that protecting the environment is one of the most important things we can do for the next generation.",
-            },
-            {
-              type: "self-check",
-              prompt: "ספרו את המילים בתשובה שכתבתם. האם יש 70-90?",
-              modelAnswer:
-                "70-90 = מצוין. פחות מ-70 ← מוסיפים משפט. יותר מ-90 ← מקצרים משפט אחד.",
-            },
-            {
-              type: "self-check",
-              prompt: 'מה ההבדל בין מבנה P14 לבין מבנה "What changes?"',
-              modelAnswer:
-                "P14 (Do you think?): YES/NO + because + for example + in addition + conclusion. What changes?: In my opinion + שינוי 1 + סיבה + שינוי 2 + סיבה + conclusion.",
+                '"Do you think all students should do volunteer work?"\n\nנסו לסיים את המשפט הזה:\n"I think students should / should not volunteer because..."\n\nהסיבה צריכה לענות: מה הם לומדים? מה זה נותן להם?',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+              ],
+              minSentences: 1,
+              minWordsUsed: 2,
             },
           ],
         },
@@ -472,49 +206,31 @@ export const c3Lessons: LessonNode[] = [
     },
   },
   {
-    id: "l19",
+    id: "in-addition",
     section: "c-3",
-    titleHe: "דקדוק בסיסי",
-    titleEn: "Basic Grammar",
-    required: ["l18"],
+    titleHe: "In addition - סיבה שנייה",
+    titleEn: "In addition",
+    required: ["because"],
     position: { x: 100, y: 2480 },
     big: false,
     content: {
       preface: [
         {
-          type: "summary",
-          title: "כמה נקודות שווה דקדוק?",
-          lines: [
-            "📝 תוכן וארגון - 10",
-            "📚 אוצר מילים - 8",
-            "🔤 דקדוק (Language Use) - 8",
-            "✏️ כתיב ופיסוק (Mechanics) - 4",
-            "גם עם דקדוק חלש - תוכן נכון וברור מביא 22-25 מתוך 30.",
-          ],
+          type: "preface",
+          text: 'יש לכם סיבה אחת. טוב.\n\nאבל אחת לא תמיד מספיקה.\n\nהמורה רוצה לראות שיש לכם יותר מטיעון אחד.\nבשביל זה יש: In addition.\n\n"In addition, volunteering looks good on a resume."\n\nשימו לב - זו סיבה שנייה. שונה מהראשונה.\nלא אותה מחשבה עם מילים אחרות.',
         },
         {
           type: "preface",
-          text: 'מה זה אומר לכם?\n\n✓ תוכן טוב + 70-90 מילים = עד 18/30 גם בלי דקדוק מושלם.\n✓ דקדוק "minimally correct" = 5 מתוך 8 - עדיין מקבלים.\n⚠️ ההפסד המקסימלי על כתיב הוא 2 נקודות בלבד.\n❌ פחות מ-60 מילים עולה יותר מכל שגיאת דקדוק.\n\nהמסקנה: כן ללמוד דקדוק - אבל לא לפחד ממנו.',
+          text: '❌ "I think students should volunteer because it teaches responsibility.\nIn addition, it teaches them to be responsible."\n\nזו אותה סיבה פעמיים. המורה מוריד נקודות על זה.\n\n✅ "I think students should volunteer because it teaches responsibility.\nIn addition, it gives them experience that helps them find jobs later."\n\nשתי סיבות שונות = ציון תוכן גבוה.',
         },
         {
           type: "summary",
-          title: "THE TOOL - שני כללי ברזל",
+          title: "In addition - איך משתמשים",
           lines: [
-            'כלל 1: כל משפט = subject + verb. "Students volunteer." ✓ · "Many teenagers jobs." ✗ חסר פועל.',
-            'כלל 2: יחיד ורבים. I / He / She / It + verb+s ← "She volunteers." · We / They / Students + verb ← "They volunteer."',
-          ],
-        },
-        {
-          type: "preface",
-          text: "קריאה מול כתיבה:\n\n📖 בקריאה - דקדוק שגוי בתשובה לא מוריד נקודות. מה שחשוב הוא המידע מהטקסט.\n✏️ בכתיבה - דקדוק שווה 8 מתוך 30. subject + verb בכל משפט הוא הבסיס שמגן עליכם.",
-        },
-        {
-          type: "steps",
-          steps: [
-            "✗ Many students jobs. ← ✓ Many students have jobs.",
-            "✗ Students is responsible. ← ✓ Students are responsible.",
-            "✗ I was think it good. ← ✓ I think that it is good.",
-            "✗ Because sport healthy. ← ✓ …because sport is healthy.",
+            "תמיד בתחילת משפט חדש",
+            '"In addition, [משפט שלם]."',
+            "הסיבה חייבת להיות שונה מהראשונה",
+            'אפשר גם: "Also," - אבל "In addition" נשמע יותר מקצועי',
           ],
         },
       ],
@@ -522,166 +238,72 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "mcq",
-              prompt: 'תקנו: "Teenagers responsible for the environment."',
-              options: [
-                "Teenagers are responsible for the environment.",
-                "Teenagers responsible are for the environment.",
-                "Teenagers is responsible for the environment.",
-                "המשפט תקין",
-              ],
-              correctIndex: 0,
+              type: "preface",
+              text: "סיבוב 1 | מזהים סיבה שנייה אמיתית",
             },
             {
               type: "mcq",
-              prompt: 'תקנו: "She volunteer at the community centre."',
+              prompt:
+                'איזו סיבה שנייה שונה מ-"volunteering teaches responsibility"?',
               options: [
-                "She are volunteer at the community centre.",
-                "She volunteers at the community centre.",
-                "She volunteering at the community centre.",
-                "המשפט תקין",
-              ],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: 'תקנו: "The students they learn new skills."',
-              options: [
-                "The students they learns new skills.",
-                "They the students learn new skills.",
-                "The students learn new skills.",
-                "המשפט תקין",
+                "In addition, volunteering teaches students to be more responsible.",
+                "In addition, volunteering is a good way to learn responsibility.",
+                "In addition, volunteering connects students to their community and helps them understand real problems.",
+                "In addition, responsibility is an important value in volunteering.",
               ],
               correctIndex: 2,
-            },
-            {
-              type: "mcq",
-              prompt: 'מה חסר במשפט "Many teenagers jobs"?',
-              options: ["subject", "נקודה בסוף", "אות גדולה", "verb - פועל"],
-              correctIndex: 3,
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - כתבו שלושה משפטים נכונים.\nבדיקה לכל משפט: יש subject? יש verb? יחיד/רבים נכון?",
-            },
-            {
-              type: "self-check",
-              prompt: "משפט 1 - על התנדבות. כתבו משפט אחד נכון באנגלית.",
-              placeholder: "Students...",
-              modelAnswer: "Students who volunteer develop important skills.",
-            },
-            {
-              type: "self-check",
-              prompt: "משפט 2 - על בריאות. כתבו משפט אחד נכון באנגלית.",
-              placeholder: "Exercise...",
-              modelAnswer:
-                "Exercise keeps young people healthy and reduces stress.",
-            },
-            {
-              type: "self-check",
-              prompt: "משפט 3 - על הסביבה. כתבו משפט אחד נכון באנגלית.",
-              placeholder: "We...",
-              modelAnswer:
-                "We must protect the environment because pollution destroys nature.",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"subject + verb בכל משפט. זה מגן על 8 הנקודות."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: כל משפט = subject + verb. בודקים כל פעם.",
-            },
-            {
-              type: "mcq",
-              prompt: '"Students are responsible." - נכון דקדוקית?',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation: "נכון. Students (רבים) + are - לא is.",
-            },
-            {
-              type: "mcq",
-              prompt: '"She volunteer every week." - נכון דקדוקית?',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: 'שגוי. She + verb+s ← "She volunteers every week."',
-            },
-            {
-              type: "mcq",
-              prompt: '"Teenagers need time." - מה הבעיה?',
-              options: [
-                "אין בעיה - Teenagers (רבים) + need",
-                'חסר "the" לפני teenagers',
-                'צריך "needs" עם s',
-              ],
-              correctIndex: 0,
-              explanation: 'המשפט תקין. רבים + פועל בלי s, ולא צריך "the".',
-            },
-          ],
-        },
-        {
-          screens: [
-            { type: "preface", text: "PRACTICE · Round 2 🌟\nתיקון משפטים." },
-            {
-              type: "self-check",
-              prompt:
-                'תקנו:\n1. "Many students jobs after school."\n2. "The environment important."\n3. "He help people every week."',
-              modelAnswer:
-                "1. Many students HAVE jobs after school.  2. The environment IS important.  3. He HELPS people every week.",
-            },
-            {
-              type: "mcq",
-              prompt: "כמה נקודות שווה דקדוק בכתיבה?",
-              options: ["10 מתוך 30", "8 מתוך 30", "4 מתוך 30"],
-              correctIndex: 1,
               explanation:
-                "דקדוק = 8. תוכן = 10. הרעיון חשוב יותר - אבל subject+verb הוא הבסיס.",
-            },
-            {
-              type: "mcq",
-              prompt: "דקדוק שגוי בתשובות של חלק הקריאה מוריד נקודות.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. בקריאה מה שנבדק הוא המידע מהטקסט, לא הדקדוק.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                "כתבו שלושה משפטים נכונים על התנדבות. בדקו בכל אחד: יש subject? יש verb? יחיד/רבים נכון?",
-              modelAnswer:
-                "Volunteering helps students. They become more responsible. It also improves their mental health.",
+                'רק אפשרות 3 מביאה רעיון חדש. שאר האפשרויות חוזרות על "responsibility".',
             },
             {
               type: "mcq",
               prompt:
-                '"I was think that volunteering good for society. Students they learn new skills. She volunteer every day."\n\nכמה שגיאות יש כאן?',
-              options: ["שתיים", "שלוש", "ארבע", "אין שגיאות"],
+                '"I think the school day should start later because students need sleep. _______ studies show that tired students cannot focus."',
+              options: ["Because", "In conclusion", "In addition", "For example"],
               correctIndex: 2,
               explanation:
-                '"was think" ← think · "volunteering good" ← volunteering IS good · "Students they" ← Students · "She volunteer" ← She volunteers.',
+                '"In addition" = סיבה שנייה. "For example" מגיע כשמוסיפים פרט לסיבה קיימת, לא סיבה חדשה.',
             },
             {
-              type: "self-check",
-              prompt: 'הסבירו: מה זה "subject + verb", ולמה זה הכלל הכי חשוב?',
-              modelAnswer:
-                "Subject = מי עושה (I, She, Students). Verb = מה הוא עושה (think, volunteers, learn). בלי שניהם המשפט שבור - וזה הבסיס שמגן על ציון הדקדוק.",
+              type: "mcq",
+              prompt:
+                "תלמיד כתב שתי סיבות שנראות שונות אבל הן בעצם אותו רעיון. המורה:",
+              options: [
+                "נותן ציון מלא - יש שני משפטים",
+                "מוריד נקודות - חזרה על אותו רעיון",
+                "נותן ציון מלא - In addition נכתב נכון",
+                "לא שם לב לזה",
+              ],
+              correctIndex: 1,
+              explanation:
+                'הרובריקה אומרת במפורש: מורידים נקודות כשרעיונות שלמים חוזרים על עצמם.',
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "writing-task",
+              prompt:
+                '"Do you think all students should volunteer?"\n\n✏️ "I think students should / should not volunteer because..."\n✏️ "In addition,..."\n\nחשוב: הסיבה השנייה חייבת להיות שונה מהראשונה.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+                "develop / לפתח",
+              ],
+              minSentences: 2,
+              minWordsUsed: 3,
             },
           ],
         },
@@ -689,211 +311,103 @@ export const c3Lessons: LessonNode[] = [
     },
   },
   {
-    id: "l20",
+    id: "for-example",
     section: "c-3",
-    titleHe: "70-90 מילים",
-    titleEn: "Word Count",
-    required: ["l19"],
+    titleHe: "For example - לפרט",
+    titleEn: "For example",
+    required: ["in-addition"],
     position: { x: 70, y: 2600 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: '55 מילים:\n"Yes, I think volunteering is good. It helps health. For example, students feel better. In conclusion, important."\n← חסרות 15 מילים. מאבדים נקודות.\n\n76 מילים:\n"Yes, I think teenagers should volunteer. First, it develops important skills. For example, teenagers learn to work in a team. This means they are ready for the future. In addition, it helps mental health. Volunteers feel less stressed. In conclusion, volunteering is very beneficial."',
-        },
-        {
-          type: "summary",
-          title: "THE TOOL - איך סופרים",
-          lines: [
-            "כל מילה = 1. גם a, the, and נספרות.",
-            '"I(1) think(2) that(3) volunteering(4) is(5) important(6)."',
-            "השיטה: כותבים ← סופרים ← רושמים את המספר בסוף ← בודקים שהוא בין 70 ל-90.",
-          ],
-        },
-        {
-          type: "summary",
-          title: "⚠️ טבלת הקנסות הרשמית",
-          lines: [
-            "70-90 מילים ← ללא קנס. היעד.",
-            "60-69 ← מינוס 1 נקודה",
-            "50-59 ← מינוס 3 נקודות",
-            "40-49 ← מינוס 6 נקודות",
-            "30-39 ← מינוס 10 נקודות",
-            "פחות מ-25 ← אפס על כל המטלה",
-            "מינוס 6 על 45 מילים יקר יותר מכל שגיאת דקדוק.",
-          ],
+          text: 'יש לכם עמדה. יש לכם שתי סיבות. מצוין.\n\nאבל סיבה בלי פרט - נשמעת ריקה.\n\n"Volunteering teaches skills." - בסדר.\n"For example, students learn to work in a team and communicate with adults." - הרבה יותר טוב.\n\nFor example = הוכחה שאתם יודעים על מה אתם מדברים.',
         },
         {
           type: "preface",
-          text: 'WATCH IT - ספרו:\n\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants to survive. In conclusion, I believe that every person should do something to help the environment."\n\n68 מילים - קצת מתחת ל-70. מוסיפים משפט קצר: "…every single person should try to do something small." ← 75 מילים ✓',
+          text: 'For example מגיע ישר אחרי הסיבה.\n\n"I think students should volunteer because they develop important skills.\nFor example, they learn to communicate with adults and solve real problems."\n\nלא חייבים להשתמש בו פעמיים. פעם אחת ב-70-90 מילים - מספיק.\nזה כבר מעלה את ציון ה-Vocabulary וה-Content.',
+        },
+        {
+          type: "summary",
+          title: "For example - המיקום",
+          lines: [
+            '"סיבה. For example, [פרט ספציפי]."',
+            "For example תמיד אחרי הסיבה שהוא מסביר",
+            "לא בתחילת הפסקה - לא בסיום",
+            "פרט טוב = ספציפי, לא כללי",
+          ],
         },
       ],
       rounds: [
         {
           screens: [
             {
-              type: "mcq",
-              prompt: "כתבתם 45 מילים. כמה נקודות מפסידים לפי הטבלה?",
-              options: ["מינוס 1", "מינוס 3", "מינוס 6", "לא מפסידים כלום"],
-              correctIndex: 2,
-            },
-            {
-              type: "mcq",
-              prompt: "כתבתם 24 מילים. מה קורה?",
-              options: [
-                "אפס על כל מטלת הכתיבה",
-                "מינוס 10",
-                "מינוס 3",
-                "מקבלים ניקוד חלקי על התוכן",
-              ],
-              correctIndex: 0,
-            },
-            {
-              type: "mcq",
-              prompt: "ספרתם 68 מילים. מה עושים?",
-              options: [
-                "משאירים - קרוב מספיק",
-                "מוסיפים משפט קצר כדי לעבור את 70",
-                "מוחקים משפט",
-                "כותבים הכל מחדש",
-              ],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: 'האם "the" ו-"and" נספרות?',
-              options: [
-                'לא - רק מילים "חשובות"',
-                'רק "and" נספרת',
-                "רק בסוף המשפט",
-                "כן - כל מילה נספרת",
-              ],
-              correctIndex: 3,
-            },
-          ],
-        },
-        {
-          screens: [
-            {
               type: "preface",
-              text: 'YOUR TURN - 20 דקות. בחרו נושא אחד:\n\n1. "Do you think all students should volunteer in their community?"\n2. "Do you think it is important to protect the environment?"\n3. "Do you think teenagers should learn a second language?"\n\nהשתמשו ב-P14. המונה למטה סופר בזמן אמת - היעד 70-90.',
-            },
-            {
-              type: "self-check",
-              prompt:
-                "כתבו את התשובה המלאה. עצרו כשהמונה ירוק - בין 70 ל-90 מילים.",
-              placeholder: "Yes, I think that...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "Yes, I think that all students should volunteer in their community. First, volunteering develops important skills. For example, students learn to work in a team and to be responsible for other people. This means that they are better prepared for adult life. In addition, volunteering is good for mental health, because volunteers feel less stressed and sleep better. In conclusion, I believe that every school should encourage students to volunteer, because it helps both the students and society. (78 words)",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"70-90 מילים. סופר כל פעם. הטבלה לא סולחת."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: 70-90 מילים. סופרים כל פעם. לא מנחשים.",
+              text: "סיבוב 1 | מזהים For example נכון",
             },
             {
               type: "mcq",
-              prompt: "כמה מילים חייבים לכתוב?",
-              options: ["בין 60 ל-100", "בין 70 ל-90 בדיוק", "לפחות 50"],
-              correctIndex: 1,
-              explanation: "70-90 בדיוק. לא 69, לא 91.",
-            },
-            {
-              type: "mcq",
-              prompt: "כתבתם 55 מילים. כמה נקודות מפסידים?",
-              options: ["נקודה אחת", "שלוש נקודות", "שש נקודות"],
-              correctIndex: 1,
-              explanation: "50-59 מילים = מינוס 3 נקודות.",
-            },
-            {
-              type: "mcq",
-              prompt: '"a", "the" ו-"and" נספרות כמילים.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation: "נכון. כל מילה = 1, כולל מילות היחס והחיבור.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nספירה על משפטים אמיתיים.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'כמה מילים במשפט הזה?\n"I think that volunteering is important because it helps students develop skills."',
-              options: ["9 מילים", "10 מילים", "12 מילים", "15 מילים"],
-              correctIndex: 2,
-              explanation:
-                "סופרים אחת-אחת, כולל that · is · it. סה״כ 12 מילים.",
-            },
-            {
-              type: "mcq",
-              prompt: "התשובה שלכם = 68 מילים. מה עושים?",
+              prompt: 'היכן "For example" ממוקם בצורה הנכונה?',
               options: [
-                "מגישים - קרוב מספיק",
-                "מוסיפים משפט קצר ומגיעים ל-70+",
-                "כותבים הכל מחדש",
+                "For example, volunteering is good. I think students should volunteer because it teaches skills.",
+                "I think students should volunteer because it teaches skills. For example, they learn teamwork and communication.",
+                "I think students should volunteer. In conclusion, for example, it teaches skills.",
+                "For example, in addition, students learn responsibility through volunteering.",
               ],
               correctIndex: 1,
               explanation:
-                '"For example, many students learn teamwork." = 6 מילים ← 74. מספיק.',
+                "For example מגיע ישר אחרי הסיבה שהוא מסביר. לא בפתיחה, לא בסיכום.",
             },
             {
               type: "mcq",
-              prompt: "התשובה שלכם = 95 מילים. מה עושים?",
+              prompt: "איזו דוגמה היא הכי ספציפית וחזקה?",
               options: [
-                "מגישים - קרוב מספיק",
-                "מוחקים את הסיכום",
-                "מקצרים משפט ארוך אחד",
+                '"For example, it is a good experience."',
+                '"For example, volunteering is helpful in many ways."',
+                '"For example, students who help in hospitals learn how to stay calm under pressure."',
+                '"For example, many students volunteer."',
               ],
               correctIndex: 2,
               explanation:
-                '"I believe that volunteering has many very important benefits for teenagers" ← "Volunteering has many benefits." חסכנו 5 מילים, והמבנה נשמר.',
+                '"students who help in hospitals learn to stay calm under pressure" = מקום + מה לומדים שם. זה פרט אמיתי.',
+            },
+            {
+              type: "preface",
+              text: "לחצו על המילה שמסמנת שמגיע פרט ספציפי.",
+            },
+            {
+              type: "mark-word",
+              sentence:
+                "Traveling teaches you new things. For example, you discover different food and music.",
+              correctWordIndex: 5,
             },
           ],
         },
         {
           screens: [
             {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                'ספרו את המילים:\n"Yes, I think that protecting the environment is very important. First, we need clean air and water to stay healthy. For example, in many cities, pollution causes serious health problems. In addition, protecting the environment helps animals and plants. In conclusion, every person should try to help."\n\nכמה מילים, ומה עושים?',
-              modelAnswer:
-                "47 מילים - הרבה מתחת ל-70. מוסיפים דוגמה ומשפט הסבר לכל סיבה עד שמגיעים ל-70-90.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                '"Do you think it is important to learn a foreign language?" - כתבו תשובה, ועקבו אחרי המונה.',
-              placeholder: "Yes, I think that...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "Yes, I think that it is very important to learn a foreign language. First, it opens many opportunities for work and study. For example, students who speak English can study at universities in other countries. In addition, a foreign language helps us understand other cultures and meet new people. This means that we become more open and more confident. In conclusion, I believe that every teenager should learn at least one foreign language.",
-            },
-            {
-              type: "self-check",
-              prompt: "מה יקרה אם תכתבו 38 מילים? ומה אם 95?",
-              modelAnswer:
-                "38 מילים = מינוס 10 נקודות. 95 מילים = אין קנס רשמי, אבל משפטים חזרתיים עלולים לפגוע בציון התוכן.",
+                '"What do you think is the best way to spend a vacation?"\n\n✏️ "I think [עמדה] because [סיבה]."\n✏️ "For example, [פרט ספציפי]."\n\nהדוגמה צריכה להיות ספציפית - מה בדיוק קורה? איפה? למי?',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "travel / לטייל",
+                "culture / תרבות",
+                "explore / לחקור",
+                "memories / זיכרונות",
+                "relax / להירגע",
+                "discover / לגלות",
+              ],
+              minSentences: 2,
+              minWordsUsed: 3,
             },
           ],
         },
@@ -901,49 +415,31 @@ export const c3Lessons: LessonNode[] = [
     },
   },
   {
-    id: "l21",
+    id: "in-conclusion",
     section: "c-3",
-    titleHe: "בחינה שלמה - ניהול זמן",
-    titleEn: "Full Simulation",
-    required: ["l20"],
+    titleHe: "In conclusion - לסגור",
+    titleEn: "In conclusion",
+    required: ["for-example"],
     position: { x: 0, y: 2720 },
     big: false,
     content: {
       preface: [
         {
-          type: "summary",
-          title: "עברתם 20 שיעורים. עכשיו הכל ביחד",
-          lines: [
-            "מפת הדרכים ✅ · Traffic Light ✅ · P1 ✅ · Eye Catchers ✅",
-            "MC ✅ · Short Answer ✅ · Complete ✅ · Two Answers ✅",
-            "אוצר מילים ✅ · P14 ✅ · דקדוק ✅ · 70-90 מילים ✅",
-            "הבחינה: שעה ו-45 דקות · קריאה 70 נקודות · כתיבה 30 נקודות",
-          ],
+          type: "preface",
+          text: 'הפסקה צריכה סיום.\n\nלא תשובה חדשה. לא סיבה חדשה.\nפשוט משפט אחד שאומר: הנה מה שחשבתי לאורך כל הפסקה.\n\n"In conclusion, I believe that volunteering should be part of every student\'s life."\n\nקצר. ברור. סוגר.',
         },
         {
           type: "preface",
-          text: 'הטעות שגורמת לכישלון:\n\n"תלמיד נתקע בשאלה קשה. מנסה עוד דקה. עוד דקה. עוד דקה."\n10 דקות עברו, הוא עדיין לא ענה - ועכשיו אין זמן לכתיבה.\nתוצאה: 0 נקודות על הכתיבה.',
+          text: '❌ "In conclusion, volunteering is good and teaches skills and also helps society and is important for the future."\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ "In conclusion, I believe that volunteering makes teenagers better people and better citizens."\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.',
         },
         {
           type: "summary",
-          title: "P15 - Mark → Move → Return",
+          title: "In conclusion - הנוסחה",
           lines: [
-            "Mark ✏️ - כתבו M קטן ליד שאלה קשה.",
-            'Move ➡️ - עברו לשאלה הבאה מיד. לא "עוד שנייה".',
-            "Return 🔄 - חזרו ל-M בדקה 100, אחרי שסיימתם את הכתיבה.",
-            "שאלה שנראית קשה עכשיו לפעמים קלה אחרי שאר השאלות - ואם לא, לפחות ענינו על השאר.",
-          ],
-        },
-        {
-          type: "summary",
-          title: "THE TOOL - חלוקת הזמן",
-          lines: [
-            "0-3 דק׳ - מפת הדרכים: כותרת + פסקה 1",
-            "3-8 דק׳ - קוראים את כל השאלות, רמזור לכל אחת",
-            "8-70 דק׳ - עונים על שאלות 1-8: P1 + Eye Catchers + P15 לקשות",
-            "דקה 70 - ⛔ עוצרים ועוברים לכתיבה, גם אם לא סיימתם",
-            "70-100 דק׳ - כותבים 70-90 מילים לפי P14",
-            "100-105 דק׳ - חוזרים לשאלות עם M",
+            '"In conclusion, I believe / I think that..."',
+            "משפט אחד בלבד",
+            "לא מידע חדש - רק סיכום של מה שנאמר",
+            "תמיד בסוף - לא באמצע",
           ],
         },
       ],
@@ -951,202 +447,67 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "preface",
+              text: "סיבוב 1 | מזהים סיום טוב",
+            },
+            {
               type: "mcq",
-              prompt:
-                "אתם עונים על שאלה 4. היא קשה ואתם לא מוצאים תשובה. מה עושים?",
+              prompt: "איזה משפט סיום הוא הכי טוב?",
               options: [
-                'ממשיכים לנסות - "אולי אמצא"',
-                "כותבים M ועוברים לשאלה 5",
-                "מדלגים על כל השאלות הבאות",
-                "עונים ניחוש ושוכחים מזה",
+                "In conclusion, volunteering is good because it teaches skills and also because it helps the community and in addition it is meaningful.",
+                "In conclusion, I believe that volunteering is one of the most valuable experiences a teenager can have.",
+                "In conclusion, for example, students who volunteer are happier.",
+                "In conclusion, do you think students should volunteer?",
               ],
               correctIndex: 1,
+              explanation:
+                "משפט אחד, רעיון אחד, סוגר בצורה נקייה. אפשרות 1 ארוכה ומחזירה כל מה שנאמר.",
             },
             {
               type: "mcq",
-              prompt: "השעון מראה דקה 70 ונשארו שתי שאלות קריאה. מה עושים?",
-              options: [
-                "מסיימים את הקריאה קודם",
-                "מוותרים על הכתיבה",
-                "עוצרים ועוברים לכתיבה - הכתיבה שווה 30 נקודות",
-                "כותבים 30 מילים מהר וחוזרים לקריאה",
-              ],
-              correctIndex: 2,
+              prompt:
+                '"_______, I believe that starting school later would help students learn better." - מה חסר?',
+              options: ["For example", "Because", "In addition", "In conclusion"],
+              correctIndex: 3,
+              explanation:
+                '"In conclusion" פותח את משפט הסיום. הוא תמיד מגיע אחרון.',
             },
-            {
-              type: "passage-mcq",
-              text: 'A BIG CHANGE ON THE ISLAND OF REDONDA\n\nI  Redonda is an island near the east coast of America. Eight years ago, it looked like a desert. There were no trees and almost no grass. Today, however, Redonda is a beautiful green island that is home to many different birds.\n\nII  People first came to Redonda 150 years ago. They brought many goats because they wanted meat and milk. The goats ate all the plants. Eventually, the people left.\n\nIII  In 2016, environmentalists removed the goats. Grass and trees began to grow. "It was amazing how quickly the island changed," said Tammy Elliott.',
-              questions: [
-                {
-                  prompt:
-                    "What did Redonda look like eight years ago? Give ONE answer.",
-                  options: [
-                    "A green island full of birds",
-                    "A desert with no trees and almost no grass",
-                    "A city near the coast",
-                    "A farm with many goats and plants",
-                  ],
-                  correctIndex: 1,
-                },
-                {
-                  prompt:
-                    "Why did the people bring goats? COMPLETE: Because they ___",
-                  options: [
-                    "Because they wanted to make the island green",
-                    "Because environmentalists asked them to",
-                    "Because they wanted meat and milk",
-                    "Because the goats ate the plants",
-                  ],
-                  correctIndex: 2,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
             {
               type: "preface",
-              text: "YOUR TURN - תנאי בחינה אמיתיים.\n\n⏱ שעה ו-45 דקות.\n📖 חלק א׳: שאלות 1-8 - 70 דקות.\n✏️ חלק ב׳: 70-90 מילים - 30 דקות.\n🔄 P15: חזרה לשאלות M - 5 דקות.",
+              text: "לחצו על המילה שפותחת את משפט הסיום.",
             },
             {
-              type: "self-check",
-              prompt:
-                'תרגלו את חלק ב׳ בתנאי זמן: "Do you think all students should volunteer in their community?" - 70-90 מילים, לפי P14.',
-              placeholder: "Yes, I think that...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "Yes, I think that all students should volunteer in their community. First, volunteering develops important skills. For example, students learn to work in a team and to take responsibility. This means that they are better prepared for adult life. In addition, volunteering improves mental health, because volunteers feel less stressed and sleep better. In conclusion, I believe that schools should encourage every student to volunteer, because it helps both the students and society.",
-            },
-            {
-              type: "summary",
-              title: "Checklist - 5 דקות לפני ההגשה",
-              lines: [
-                "□ עניתי על כל השאלות 1-8? כולל השאלות עם M?",
-                "□ ספרתי מילים בכתיבה? בין 70 ל-90?",
-                "□ כתבתי YES או NO בכתיבה?",
-                "□ יש לי 2 סיבות + דוגמאות?",
-                "□ לא העתקתי משפטים שלמים מהטקסט?",
-              ],
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE - של כל הקורס",
-              lines: [
-                '"אני מחפש, לא קורא." - ויש לי את כל הכלים לעשות את זה.',
-                "מפת הדרכים · רמזור · P1 · מספרים · שמות · NOT · most/only · however",
-                "P15: Mark → Move → Return   |   P14: כתיבה 70-90 מילים",
-              ],
+              type: "mark-word",
+              sentence:
+                "In conclusion, I think that age 13 is the right age for a first cellphone.",
+              correctWordIndex: 0,
             },
           ],
         },
         {
           screens: [
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מפת דרכים → שאלות → חיפוש → תשובה → כתיבה.",
-            },
-            {
-              type: "mcq",
-              prompt: "מה עושים בשלוש הדקות הראשונות של הבחינה?",
-              options: [
-                "פותחים בשאלה הראשונה",
-                "קוראים מפת דרכים - כותרת + פסקה 1",
-                "מתחילים בכתיבה",
-              ],
-              correctIndex: 1,
-              explanation:
-                "מפת דרכים = 3 דקות. אחר כך רמזור לכל השאלות, ואז P1.",
-            },
-            {
-              type: "mcq",
-              prompt: "דקה 70, ועדיין לא סיימתם את שאלה 7. מה עושים?",
-              options: [
-                "ממשיכים עם שאלה 7",
-                "עוברים לכתיבה - גם בלי לסיים",
-                "מדלגים על הכתיבה",
-              ],
-              correctIndex: 1,
-              explanation:
-                "דקה 70 = עוצרים. הכתיבה שווה 30 נקודות. שאלה 7 מקבלת M.",
-            },
-            {
-              type: "mcq",
-              prompt: 'P15: M קטן פירושו "מדלג על השאלה לתמיד".',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                "שקר. M = Mark → Move → Return. חוזרים אליה בדקה 100.",
-            },
-          ],
-        },
-        {
-          screens: [
-            { type: "preface", text: "PRACTICE · Round 2 🌟\nניהול הבחינה." },
-            {
-              type: "mcq",
-              prompt: "מהו הסדר הנכון של שלבי הבחינה?",
-              options: [
-                "מפת דרכים → רמזור לכל השאלות → שאלות 1-8 עם P1 → כתיבה → Checklist",
-                "שאלות 1-8 → מפת דרכים → כתיבה → רמזור → Checklist",
-                "כתיבה → מפת דרכים → שאלות → רמזור → Checklist",
-                "רמזור → כתיבה → שאלות → מפת דרכים → Checklist",
-              ],
-              correctIndex: 0,
-              explanation:
-                "3 דק׳ מפה · 5 דק׳ רמזור · עד דקה 70 שאלות · 30 דק׳ כתיבה · 5 דק׳ בדיקה.",
-            },
-            {
-              type: "mcq",
-              prompt: 'ב-Checklist: "ספרתי מילים?" - ולא ספרתם. מה עושים?',
-              options: [
-                "מגישים - בטח בסדר",
-                "סופרים עכשיו, לפני ההגשה",
-                "לא חשוב בשלב הזה",
-              ],
-              correctIndex: 1,
-              explanation: "שתי דקות של ספירה עדיפות על מינוס 3 נקודות.",
-            },
-            {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                "השלימו את ה-Checklist:\n□ עניתי על כל 1-8, כולל ___?\n□ ספרתי מילים? בין ___?\n□ כתבתי ___ בכתיבה?\n□ לא העתקתי ___?",
-              modelAnswer:
-                "כולל שאלות עם M · בין 70 ל-90 · YES/NO (או In my opinion) · לא העתקתי משפטים שלמים מהטקסט.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                "נותרו 20 דקות. יש M על שאלה 5, ועדיין לא כתבתם את מטלת הכתיבה. מה הסדר?",
-              options: [
-                "שאלה 5 ואז כתיבה",
-                "כתיבה ואז שאלה 5",
-                "שאלה 5, ואם יישאר זמן - כתיבה",
+                "בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ \"In conclusion, I believe / I think that...\"\n\nמשפט אחד. לא יותר.",
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "important / חשוב",
+                "valuable / בעל ערך",
+                "essential / הכרחי",
+                "every student / כל תלמיד",
+                "teenagers / בני נוער",
+                "experience / חוויה",
               ],
-              correctIndex: 1,
-              explanation:
-                "כתיבה = 30 נקודות. שאלה 5 = 8-10 נקודות. הכתיבה קודמת, תמיד.",
-            },
-            {
-              type: "self-check",
-              prompt: "כתבו את חמש שאלות ה-Checklist שבודקים לפני ההגשה:",
-              modelAnswer:
-                "1. עניתי על כל 1-8, כולל שאלות M? 2. ספרתי מילים - 70-90? 3. כתבתי YES/NO או In my opinion? 4. יש שתי סיבות עם דוגמאות? 5. לא העתקתי משפטים שלמים מהטקסט?",
-            },
-            {
-              type: "self-check",
-              prompt: "הסבירו: למה P15 חשוב במיוחד לתלמיד עם אנגלית חלשה?",
-              modelAnswer:
-                "כי הוא נוטה להיתקע על שאלה קשה ולבזבז דקות יקרות. P15 מגן עליו: M ← ממשיך ← חוזר. כך הוא מספיק את כל השאלות וגם את הכתיבה.",
+              minSentences: 1,
+              minWordsUsed: 2,
             },
           ],
         },
@@ -1154,62 +515,31 @@ export const c3Lessons: LessonNode[] = [
     },
   },
   {
-    id: "l22",
+    id: "subject-verb",
     section: "c-3",
-    titleHe: "What changes? - שאלת בגרות",
-    titleEn: "What Changes?",
-    required: ["l21"],
+    titleHe: "Subject + Verb - משפט שלם",
+    titleEn: "Subject + Verb",
+    required: ["in-conclusion"],
     position: { x: -70, y: 2840 },
-    big: true,
+    big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: 'כך נראית מטלת הכתיבה בבגרות האמיתית:\n\nSECTION 3 - PART II: WRITING TASK (30 Points)\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\n• Write 70-90 words in English.\n• Give your OPINION - what should change.\n• Give REASONS - why each change will help.',
+          text: "בגרות C = 8 נקודות על Language Use.\n\nהכלל הבסיסי שמגן על הנקודות האלה:\nכל משפט חייב subject + verb.\n\nSubject = מי עושה את הפעולה.\nVerb = מה הם עושים.\n\n\"Students learn.\" - subject: students. verb: learn. ✅\n\"Students responsible.\" - subject: students. verb: אין. ❌",
+        },
+        {
+          type: "preface",
+          text: '❌ "Volunteering very important for teenagers."\nחסר: is. → "Volunteering is very important for teenagers." ✅\n\n❌ "Students they learn new things."\nעודף: they. → "Students learn new things." ✅\n\n❌ "Because schools need change."\nזה לא משפט - זה רק חלק ממשפט.\n→ "I think this because schools need to change." ✅',
         },
         {
           type: "summary",
-          title: 'שימו לב - זה שונה מ-"Do you think?"',
+          title: "בדיקת משפט",
           lines: [
-            '"Do you think X?" ← שאלת כן/לא: YES/NO → because → for example',
-            '"What changes?" ← שאלת שינויים: In my opinion → שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום',
-            "אותם ביטויים בדיוק - מבנה מעט שונה.",
-          ],
-        },
-        {
-          type: "summary",
-          title: 'THE TOOL - מבנה "What changes?"',
-          lines: [
-            '1️⃣ פתיחה - "In my opinion, there are two important changes…"',
-            '2️⃣ שינוי 1 - "First, I think we should have… This would help because…"',
-            '3️⃣ שינוי 2 - "Also, I believe… For example…"',
-            '4️⃣ סיכום - "In conclusion, I am sure that these changes will help students."',
-          ],
-        },
-        { type: "word-card", word: "In my opinion", translationHe: "לדעתי" },
-        {
-          type: "word-card",
-          word: "First / First of all",
-          translationHe: "ראשית / קודם כול",
-        },
-        {
-          type: "word-card",
-          word: "This would help because",
-          translationHe: "זה יעזור כי",
-        },
-        {
-          type: "word-card",
-          word: "Also / Another change is",
-          translationHe: "בנוסף / שינוי נוסף הוא",
-        },
-        { type: "word-card", word: "In conclusion", translationHe: "לסיכום" },
-        {
-          type: "steps",
-          steps: [
-            'פתיחה: "In my opinion, there are two important changes that can make school a better place to learn."',
-            'שינוי 1: "First, I think we should have shorter lessons and more breaks. Students often feel tired after sitting for a long time, so short breaks help them concentrate better."',
-            'שינוי 2: "Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways."',
-            'סיכום: "In conclusion, I am sure that these changes will help all students enjoy school more and learn better." - כ-80 מילים ✓',
+            "שאלו: מי עושה? (subject)",
+            "שאלו: מה הם עושים? (verb)",
+            "חסר אחד מהם? המשפט שבור.",
+            '"is / are / has / have / learn / think" - כולם verbs',
           ],
         },
       ],
@@ -1218,168 +548,280 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: 'TRY IT - נושא: "What changes can be made to improve your neighborhood?"',
-            },
-            { type: "preface", text: "" },
-            {
-              type: "mcq",
-              prompt: 'איך פותחים תשובה לשאלת "What changes?"',
-              options: [
-                "In my opinion, there are two important changes that can make my neighborhood better.",
-                "Yes, I think so.",
-                "My neighborhood is very nice.",
-                "In conclusion, we need more parks.",
-              ],
-              correctIndex: 0,
+              text: "סיבוב 1 | מזהים משפט שלם ונכון",
             },
             {
               type: "mcq",
-              prompt: "אחרי שכתבתם שינוי ראשון - מה חייב לבוא מיד?",
+              prompt: "איזה משפט שלם ונכון?",
               options: [
-                "הסיכום",
-                'סיבה: "This would help because…"',
-                "שינוי שלישי",
-                "ספירת מילים",
-              ],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: "איזה ביטוי פותח את השינוי השני?",
-              options: [
-                "However,",
-                "Because,",
-                "Also, I believe… / Another change is…",
-                "In conclusion,",
+                "Volunteering very important for students.",
+                "Because it helps the community.",
+                "Students learn responsibility when they volunteer.",
+                "Students they develop new skills.",
               ],
               correctIndex: 2,
-            },
-            {
-              type: "mcq",
-              prompt: "ספרתם 65 מילים בטיוטה. מה עושים?",
-              options: [
-                "מגישים - קרוב מספיק",
-                "מוחקים שינוי אחד",
-                "כותבים הכל מחדש",
-                "מוסיפים משפט קצר לאחת הסיבות ומגיעים ל-70+",
-              ],
-              correctIndex: 3,
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: 'YOUR TURN - בפורמט בגרות מלא.\n\n"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nארבעה שלבים: פתיחה · שינוי 1 + סיבה · שינוי 2 + סיבה · סיכום.',
-            },
-            {
-              type: "self-check",
-              prompt: "כתבו את התשובה המלאה - 70-90 מילים.",
-              placeholder: "In my opinion, there are two important changes...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "In my opinion, there are two important changes that can make my school a better place to learn. First, I think we should have shorter lessons and more breaks. Students often feel tired after sitting for a long time, so short breaks help them concentrate better. Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways. In conclusion, I am sure that these changes will help all students learn better.",
-            },
-            {
-              type: "summary",
-              title: "בדיקה אחרונה",
-              lines: [
-                "□ בין 70 ל-90 מילים?",
-                "□ יש שני שינויים?",
-                "□ יש סיבה לכל שינוי?",
-                "□ יש פתיחה וסיכום?",
-              ],
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: [
-                '"In my opinion… → שינוי 1 + reason → שינוי 2 + reason → In conclusion…"',
-                "ארבעה שלבים. 70-90 מילים. תמיד.",
-                "🎓 הקורס הושלם. אתם מוכנים לבגרות.",
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: In my opinion… שינוי 1 + reason → שינוי 2 + reason.",
+              explanation:
+                '"Students (subject) learn (verb) responsibility" = משפט שלם. אפשרות 1 חסרה "is". אפשרות 2 היא רק חלק ממשפט. אפשרות 4 יש שניים במקום subject אחד.',
             },
             {
               type: "mcq",
               prompt:
-                '"What changes can be made to improve your neighborhood?" - מה המבנה?',
-              options: [
-                "YES/NO + סיבות",
-                "שינוי 1 + סיבה → שינוי 2 + סיבה → סיכום",
-                "רק רשימת שינויים",
-              ],
+                'מה חסר במשפט? "Traveling good for your mind and your health."',
+              options: ["subject", "verb - חסר \"is\"", "object", "כלום - המשפט נכון"],
               correctIndex: 1,
               explanation:
-                'שאלת "What changes?" = שני שינויים, סיבה לכל אחד. לא YES/NO.',
+                '"Traveling is good..." - חסר is. כל משפט עם תיאור (adjective) צריך את הפועל to be: is / are / was.',
             },
             {
               type: "mcq",
-              prompt: "איזו שורה נכונה?",
+              prompt: "איזה מהמשפטים האלה שבור?",
               options: [
-                "In my opinion… = פתיחה · First, I think we should have… = שינוי 1 · Also, I believe… = שינוי 2 · In conclusion… = סיכום",
-                "In my opinion… = סיכום · First… = דוגמה · Also… = פתיחה",
-                "In conclusion… = פתיחה · Also… = סיבה · First… = סיכום",
-                "כל הביטויים מתאימים לכל שלב",
-              ],
-              correctIndex: 0,
-              explanation: 'ארבעת שלבי המבנה של "What changes?".',
-            },
-            {
-              type: "mcq",
-              prompt: '"What changes?" ו-"Do you think?" הן אותו מבנה.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                'שקר. "Do you think?" = YES/NO + סיבות. "What changes?" = שני שינויים + סיבה לכל אחד.',
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nבניית התשובה שלב אחרי שלב.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                'השלימו:\n"In my opinion, there are two important _______. First, I think we should have _______. This would help because _______. Also, I believe _______. In conclusion, _______."',
-              modelAnswer:
-                "changes · shorter lessons and more breaks · students concentrate better after a break · schools should have more computers · I am sure that these changes will help all students learn better.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"In my opinion, schools need computers. Also parks are important." - מה חסר?',
-              options: [
-                "רק משפט סיום",
-                'סיבה לכל שינוי - "This would help because…"',
-                "YES או NO",
-              ],
-              correctIndex: 1,
-              explanation:
-                'כל שינוי חייב סיבה: "First… This would help because… Also… For example…"',
-            },
-            {
-              type: "mcq",
-              prompt: "כמה שינויים כותבים?",
-              options: [
-                "אחד ארוך ומפורט",
-                "שלושה קצרים",
-                "שניים, עם סיבה לכל אחד",
+                "Students develop important skills when they volunteer.",
+                "Volunteering is a valuable experience for teenagers.",
+                "Because many students in Israel participate in community service.",
+                "In addition, schools can encourage students to help others.",
               ],
               correctIndex: 2,
-              explanation: "שניים בדיוק. לא אחד, לא שלושה.",
+              explanation:
+                'Because לא יכול להתחיל משפט עצמאי - הוא מחבר שני חלקים. "Because many students..." = רק חלק ממשפט.',
+            },
+            {
+              type: "preface",
+              text: "לחצו על ה-verb - מה הסטודנטים עושים?",
+            },
+            {
+              type: "mark-word",
+              sentence:
+                "Students learn important skills when they volunteer in their community.",
+              correctWordIndex: 1,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "writing-task",
+              prompt:
+                "כתבו 3 משפטים על נושא שתבחרו.\n\nלפני שלחצו שלח - בדקו כל משפט:\n✅ יש subject?\n✅ יש verb?\n\n3 משפטים. כל אחד שלם.",
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "students / תלמידים",
+                "teenagers / בני נוער",
+                "learn / לומדים",
+                "develop / מפתחים",
+                "is / הוא-היא",
+                "are / הם",
+                "can / יכולים",
+                "help / עוזרים",
+              ],
+              minSentences: 3,
+              minWordsUsed: 3,
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "word-count",
+    section: "c-3",
+    titleHe: "70-90 מילים - לספור",
+    titleEn: "70-90 Words",
+    required: ["subject-verb"],
+    position: { x: -100, y: 2960 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "70-90 מילים. לא 69. לא 91.\n\nלמה זה חשוב?\n\nכי המורה מוריד נקודות אם הפסקה קצרה מדי.\nו-10 הנקודות החשובות ביותר - תוכן - הן הראשונות שנפגעות.\n\n60-69 מילים = מינוס 1.\n50-59 מילים = מינוס 3.\n40-49 מילים = מינוס 6.\n\nשווה לספור.",
+        },
+        {
+          type: "preface",
+          text: 'איך סופרים מהר?\n\na / the / and / I / is - כולן מילים.\nכל מילה = 1. גם מילות קישור.\n\n"I think (1) students (2) should (3) volunteer (4) because (5) it (6) teaches (7) responsibility (8)."\n\nזה 8 מילים.\n\nכתבתם פחות מ-70? הוסיפו For example עם פרט.\nכתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.',
+        },
+        {
+          type: "summary",
+          title: "ספירה מהירה",
+          lines: [
+            "כל מילה = 1, גם a, the, and",
+            'פחות מ-70? הוסיפו "For example,..." עם פרט',
+            "יותר מ-90? הורידו משפט שלם",
+            "ספרו תמיד לפני שמגישים",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 1 | ספירה ותיקון",
+            },
+            {
+              type: "mcq",
+              prompt: "תלמיד כתב 65 מילים. מה הכי חכם לעשות?",
+              options: [
+                "להגיש - קרוב מספיק",
+                'להוסיף "For example,..." עם פרט ספציפי',
+                "למחוק משפט ולכתוב מחדש",
+                'להוסיף "very" ו-"really" לפני כל שם תואר',
+              ],
+              correctIndex: 1,
+              explanation:
+                '"For example,..." עם פרט קצר מוסיף בקלות 5-8 מילים. זו הדרך הנקייה ביותר להגיע ל-70.',
+            },
+            {
+              type: "mcq",
+              prompt: "תלמיד כתב 95 מילים. מה הכי חכם לעשות?",
+              options: [
+                "להגיש - 90 זה רק המלצה",
+                "למחוק מילה אחת מכל משפט",
+                "לזהות את המשפט הכי פחות חשוב ולהוריד אותו כולו",
+                "לקצר כל מילה לראשי תיבות",
+              ],
+              correctIndex: 2,
+              explanation:
+                "להוריד משפט שלם = הורדת 8-12 מילים בבת אחת. לקצר מילים בודדות לוקח זמן ועלול לשבור משפטים.",
+            },
+            {
+              type: "mcq",
+              prompt: "מה ההפסד בציון על 55 מילים?",
+              options: [
+                "מינוס 1 נקודה",
+                "מינוס 3 נקודות",
+                "מינוס 6 נקודות",
+                "אפס על כל המטלה",
+              ],
+              correctIndex: 1,
+              explanation:
+                "50-59 מילים = מינוס 3 נקודות מהתוכן. זה יקר. שווה את 3 הדקות של ספירה.",
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "self-check",
+              prompt:
+                "כתבו 5 משפטים על כל נושא שתרצו.\nאחר כך ספרו את המילים וכתבו את המספר.\n70-90? ✅ פחות? כתבו מה תוסיפו. יותר? כתבו מה תורידו.",
+              modelAnswer:
+                '70-90 - מצוין, אפשר להגיש.\nפחות מ-70 - הוסיפו: "For example, [פרט ספציפי אחד]."\nיותר מ-90 - הורידו משפט אחד שלם.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "topic-volunteer",
+    section: "c-3",
+    titleHe: "Do you think? - התנדבות",
+    titleEn: "Do you think? - Volunteer Work",
+    required: ["word-count"],
+    position: { x: -70, y: 3080 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'חבר׳ה, שאלה שמתחילה ב-"Do you think" היא הכי נפוצה בבגרות.\n\nהיא מבקשת ממכם שני דברים בלבד:\n1. להגיד YES או NO\n2. להסביר למה\n\nזהו. לא סיפור חיים. לא הסבר על העולם.\nYES/NO + סיבות.',
+        },
+        {
+          type: "preface",
+          text: 'הנוסחה שעובדת תמיד:\n\n"I think... because..."\n"In addition,..."\n"In conclusion, I believe..."\n\nשלושה משפטי פתיחה. שלושה.\nומעבר לזה? מה שבא לכם.',
+        },
+        {
+          type: "preface",
+          text: 'טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ "Volunteer work is very important in the world today."\n✅ "I think all students should do volunteer work because it teaches responsibility."\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.',
+        },
+        {
+          type: "summary",
+          title: "YES/NO Question - המבנה",
+          lines: [
+            '"I think / I do not think... because..."',
+            '"In addition,..."',
+            '"In conclusion, I believe..."',
+            "70-90 מילים. לא פחות, לא יותר.",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 1 | להבין מה מבקשים",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"Do you think all high school students should do volunteer work?" - מה חייב להיות במשפט הראשון?',
+              options: [
+                "Volunteer work is an important part of modern society.",
+                "I think all students should / should not do volunteer work.",
+                "Many students around the world volunteer every year.",
+                "In conclusion, volunteering is a valuable experience.",
+              ],
+              correctIndex: 1,
+              explanation:
+                'תמיד מתחילים עם "I think... YES" או "I do not think... NO". בלי הדעה שלכם - אין תוכן, ותוכן שווה 10 נקודות.',
+            },
+            {
+              type: "mcq",
+              prompt: "איזו מילה מחברת בין הדעה לסיבה?",
+              options: ["also", "because", "in conclusion", "however"],
+              correctIndex: 1,
+              explanation:
+                '"because" = הסיבה שלכם. "I think X because Y." זה הבסיס של כל פסקת דעה.',
+            },
+            {
+              type: "mcq",
+              prompt:
+                "תלמיד כתב 85 מילים מושלמות על נושא שונה מהשאלה. מה קורה?",
+              options: [
+                "מקבל ציון מלא - האנגלית מצוינת",
+                "מאבד רק כמה נקודות",
+                "מקבל 0 על כל המטלה",
+                "מאבד רק נקודות על תוכן",
+              ],
+              correctIndex: 2,
+              explanation:
+                "off topic = 0 על כל המטלה. לפני הכל - ודאו שאתם עונים על השאלה שנשאלה.",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"Do you think all high school students should do volunteer work? Give reasons."\nWrite 70-90 words. Use at least 4 words from the word bank.\n\n✏️ I think... because...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+                "develop / לפתח",
+                "society / חברה",
+                "benefit / יתרון",
+                "meaningful / משמעותי",
+                "opportunity / הזדמנות",
+              ],
+              minSentences: 4,
+              minWordsUsed: 4,
             },
           ],
         },
@@ -1387,31 +829,605 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
+              text: "סיבוב 2 | בניית פסקה מלאה",
             },
             {
-              type: "self-check",
-              prompt:
-                '"In your opinion, what changes can be made to your school?" - כתבו תשובה מלאה, 70-90 מילים.',
-              placeholder: "In my opinion, there are two important changes...",
-              minWords: 70,
-              maxWords: 90,
-              modelAnswer:
-                "In my opinion, there are two important changes that can make school a better place. First, I think we should have shorter lessons and more breaks. Students often feel tired, so short breaks help them concentrate better. Also, I believe schools should have more computers in classrooms. This would make lessons more interesting and help students learn in new ways. In conclusion, I am sure that these changes will help all students enjoy school and learn better.",
+              type: "mcq",
+              prompt: "איזה פתיח מבטא עמדה ברורה עם סיבה?",
+              options: [
+                "Volunteering is when people help others without getting paid.",
+                "I think all students should volunteer because it teaches them to care about others.",
+                "There are many types of volunteer work in Israel and around the world.",
+                "In conclusion, volunteer work is good for teenagers.",
+              ],
+              correctIndex: 1,
+              explanation:
+                "אפשרות 2 - דעה ברורה + סיבה מיד. זה מה שהמורה רוצה לראות בשורה הראשונה.",
             },
             {
-              type: "self-check",
-              prompt:
-                "ספרו את המילים בתשובה שלכם. האם יש 70-90? מה תוסיפו או תקצרו?",
-              modelAnswer:
-                "פחות מ-70 ← מוסיפים דוגמה קצרה לאחד השינויים. יותר מ-90 ← מקצרים את המשפט הארוך ביותר.",
+              type: "mcq",
+              prompt: "איזה משפט מוסיף סיבה שנייה בצורה הכי נכונה?",
+              options: [
+                "Because volunteering is important.",
+                "I think volunteering is good.",
+                "In addition, volunteering helps students develop useful skills for the future.",
+                "In conclusion, I believe volunteering is valuable.",
+              ],
+              correctIndex: 2,
+              explanation:
+                '"In addition" פותח סיבה שנייה. שימו לב - לא "also because". פשוט "In addition, [משפט שלם]."',
             },
             {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                'מה ההבדל בין "This would help because…" לבין "because…"?',
-              modelAnswer:
-                'אותו תפקיד - מסבירים למה השינוי יעזור. "This would help because" רשמי יותר ומתאים לפתיחת משפט; "because" ישיר יותר בתוך משפט. שניהם קבילים.',
+                '"Do you think all high school students should do volunteer work?"\nכתבו פסקה מלאה - 70-90 מילים. לפחות 5 מילים מהבנק.\n\n✏️ משפט 1 - I think... YES או NO... because...\n✏️ משפט 2-3 - הסבר ודוגמה. אפשר לכתוב "For example,..."\n✏️ משפט 4 - In addition,...\n✏️ משפט 5 - In conclusion, I believe...',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+                "develop / לפתח",
+                "society / חברה",
+                "benefit / יתרון",
+                "meaningful / משמעותי",
+                "opportunity / הזדמנות",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | תנאי בחינה אמיתיים",
+            },
+            {
+              type: "mcq",
+              prompt:
+                'Read this answer. What is missing?\n"Volunteer work is very good. It helps people. Many students volunteer. It is important for society."',
+              options: [
+                "הסיום חסר",
+                "אין דעה ברורה (YES/NO) ואין סיבה ספציפית עם \"because\"",
+                "האנגלית לא נכונה",
+                "יש יותר מדי מילים",
+              ],
+              correctIndex: 1,
+              explanation:
+                'אין "I think" ואין "because". כל המשפטים הם הצהרות כלליות. זו לא תשובה לשאלה.',
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"Do you think all high school students should do volunteer work?\nGive reasons to explain your opinion."\n\nזה תנאי בחינה אמיתיים. 70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+                "develop / לפתח",
+                "society / חברה",
+                "benefit / יתרון",
+                "meaningful / משמעותי",
+                "opportunity / הזדמנות",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "topic-vacation",
+    section: "c-3",
+    titleHe: "What do you think? - חופשה",
+    titleEn: "What do you think? - Vacation",
+    required: ["topic-volunteer"],
+    position: { x: 0, y: 3200 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'שאלה שמתחילה ב-"What do you think" - קצת שונה.\n\nהיא לא מבקשת YES או NO.\nהיא מבקשת: בחרו משהו ספציפי, ואמרו למה.\n\n"In my opinion, the best way is X because..."\nX = הבחירה שלכם. חד משמעית. לא "יש הרבה אפשרויות".',
+        },
+        {
+          type: "preface",
+          text: 'הטעות הנפוצה ביותר בסוג הזה:\n\n❌ "There are many ways to spend a vacation. Some people travel. Others rest."\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ "In my opinion, the best way to spend a vacation is to travel because you discover new cultures."\n\nהבדל קטן בפתיחה, הבדל גדול בציון.',
+        },
+        {
+          type: "summary",
+          title: "What do you think? - המבנה",
+          lines: [
+            '"In my opinion, the best... is X because..."',
+            '"In addition,..."',
+            '"In conclusion, I believe..."',
+            "הבחירה צריכה להיות ברורה מהמשפט הראשון",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 1 | להבין מה מבקשים",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"What do you think is the best way to spend a vacation?" - מה חייב להיות במשפט הראשון?',
+              options: [
+                "תיאור של כל האפשרויות שקיימות",
+                "הבחירה שלכם + סיבה אחת",
+                "משפט סיכום",
+                "שאלה חוזרת",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"What do you think?" = בחרו ספציפית. "In my opinion, the best way is traveling because..." - בחירה + because = פתיח מנצח.',
+            },
+            {
+              type: "mcq",
+              prompt:
+                "תלמיד כותב על שתי אפשרויות שווה בשווה ולא בוחר. הציון לתוכן יהיה:",
+              options: [
+                "מלא - הוא כיסה הרבה נושאים",
+                "חלקי - המטלה לא הושלמה, אין דעה ברורה",
+                "0 - off topic",
+                "מלא - אין חובה לבחור",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"What do you think?" מבקש את הדעה שלכם. לדון בשני צדדים בלי לבחור = partially on topic = ציון חלקי.',
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What do you think is the best way to spend a vacation?"\n\nכתבו 3 משפטים בלבד:\n✏️ In my opinion, the best way is... because...\n✏️ In addition,...\n✏️ In conclusion, I believe...\n\nבחרו בחירה אחת ברורה. לא "it depends". לפחות 3 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "travel / לטייל",
+                "culture / תרבות",
+                "explore / לחקור",
+                "memories / זיכרונות",
+                "relax / להירגע",
+                "discover / לגלות",
+                "adventure / הרפתקה",
+                "unforgettable / בלתי נשכח",
+                "rest / מנוחה",
+                "experience / חוויה",
+              ],
+              minSentences: 3,
+              minWordsUsed: 3,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | הרחבה לפסקה שלמה",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What do you think is the best way to spend a vacation?"\n\nלקחו את 3 המשפטים מסיבוב 1 ועכשיו מרחיבים:\n✏️ אחרי כל סיבה - הוסיפו "For example,..." עם פרט קטן\n✏️ שמרו על אותה בחירה שבחרתם\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "travel / לטייל",
+                "culture / תרבות",
+                "explore / לחקור",
+                "memories / זיכרונות",
+                "relax / להירגע",
+                "discover / לגלות",
+                "adventure / הרפתקה",
+                "unforgettable / בלתי נשכח",
+                "rest / מנוחה",
+                "experience / חוויה",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | בחירה שונה - תנאי בחינה",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What do you think is the best way to spend a vacation?"\n\nהפעם - בחרו בחירה שונה לגמרי מסיבוב 2.\nלדוגמה: לנוח בבית, להתנדב, ללמוד משהו חדש, לבקר משפחה.\n\n70-90 מילים. אותו מבנה. לפחות 5 מילים מהבנק.\nטיפ: אם הבחירה שונה - גם הסיבות צריכות להיות שונות.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "travel / לטייל",
+                "culture / תרבות",
+                "explore / לחקור",
+                "memories / זיכרונות",
+                "relax / להירגע",
+                "discover / לגלות",
+                "adventure / הרפתקה",
+                "unforgettable / בלתי נשכח",
+                "rest / מנוחה",
+                "experience / חוויה",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "topic-school",
+    section: "c-3",
+    titleHe: "What changes? - בית ספר",
+    titleEn: "What changes? - School",
+    required: ["topic-vacation"],
+    position: { x: 70, y: 3320 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'יש סוג שלישי של שאלה - "In your opinion, what changes / what should...?"\n\nזו לא שאלת YES/NO.\nזו לא שאלת העדפה.\n\nהיא מבקשת: תציעו משהו ספציפי ותסבירו למה זה יעזור.',
+        },
+        {
+          type: "preface",
+          text: '❌ "Schools have many problems. Students are tired. Teachers are stressed."\n\nזה תיאור הבעיה. לא הצעה.\n\n✅ "I think schools should have shorter lessons because students cannot focus for more than 45 minutes."\n\nראיתם את ההבדל? "should have" = הצעה. "because" = ההסבר.',
+        },
+        {
+          type: "summary",
+          title: "What changes? - המבנה",
+          lines: [
+            '"I think schools should... because..."',
+            '"In addition, schools could... This would help because..."',
+            '"In conclusion, I believe these changes would..."',
+            "שתי הצעות ספציפיות = ציון תוכן מלא",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 1 | מזהים הצעה ספציפית",
+            },
+            {
+              type: "mcq",
+              prompt: "מה מבדיל הצעה טובה מתיאור בעיה?",
+              options: [
+                'הצעה = "should / could + פעולה ספציפית". תיאור = "is / are + מצב קיים"',
+                "הצעה חייבת להיות ארוכה יותר",
+                "אין הבדל, שתיהם מקבלים ציון מלא",
+                "תיאור עדיף כי הוא מסביר את הרקע",
+              ],
+              correctIndex: 0,
+              explanation:
+                '"Schools are noisy" = תיאור. "Schools should have quiet zones" = הצעה. המילים should / could הן הסימן.',
+            },
+            {
+              type: "mcq",
+              prompt: "איזו מהן הצעה ספציפית שראויה לציון תוכן מלא?",
+              options: [
+                "Schools should be better and more interesting for students.",
+                "Schools should have a 20-minute break after every two lessons because students lose focus without rest.",
+                "There are many problems in schools today that need to be solved.",
+                "In conclusion, schools need to change.",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"a 20-minute break after every two lessons because..." = ספציפי + סיבה. "better and more interesting" = כללי מדי.',
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What changes can be made to your school?"\n\nרק שתי הצעות - לא פסקה מלאה:\n✏️ "I think schools should... because..."\n✏️ "In addition, schools could... This would help because..."\n\nספציפיות. לא "be better" - אלא מה בדיוק לשנות. לפחות 3 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "improve / לשפר",
+                "focus / להתרכז",
+                "creative / יצירתי",
+                "environment / סביבה",
+                "comfortable / נוח",
+                "effective / יעיל",
+                "project / פרויקט",
+                "break / הפסקה",
+                "technology / טכנולוגיה",
+                "encourage / לעודד",
+              ],
+              minSentences: 2,
+              minWordsUsed: 3,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | עוטפים ב-70-90 מילים",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What changes can be made to your school to make it a better place to learn?"\n\nלקחו את שתי ההצעות מסיבוב 1 ועכשיו עוטפים:\n✏️ בהתחלה - משפט פתיחה שמציג את הרעיון הכללי\n✏️ בסוף - "In conclusion, I believe these changes would..."\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "improve / לשפר",
+                "focus / להתרכז",
+                "creative / יצירתי",
+                "environment / סביבה",
+                "comfortable / נוח",
+                "effective / יעיל",
+                "project / פרויקט",
+                "break / הפסקה",
+                "technology / טכנולוגיה",
+                "encourage / לעודד",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | תנאי בחינה אמיתיים",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"In your opinion, what changes can be made to your school\nso that it can become a better place to learn?\nGive reasons to explain your opinion."\n\nשתי הצעות ספציפיות. כל אחת עם because.\n70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "improve / לשפר",
+                "focus / להתרכז",
+                "creative / יצירתי",
+                "environment / סביבה",
+                "comfortable / נוח",
+                "effective / יעיל",
+                "project / פרויקט",
+                "break / הפסקה",
+                "technology / טכנולוגיה",
+                "encourage / לעודד",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "topic-cellphone",
+    section: "c-3",
+    titleHe: "At what age? - פלאפונים",
+    titleEn: "At what age? - Cellphones",
+    required: ["topic-school"],
+    position: { x: 100, y: 3440 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'יש שאלות שמבקשות מכם לבחור מספר, גיל, או כמות ספציפית.\n\n"At what age...?" = בחרו גיל אחד. לא "it depends". לא "some say 10, others say 15".\n\nבחרו גיל. הסבירו למה זה נכון.',
+        },
+        {
+          type: "preface",
+          text: 'שימו לב למשהו:\n\nהשאלה לא שואלת "Do you think children SHOULD have phones?"\nהיא מניחה שזה יקרה - ושואלת רק מתי.\n\nאל תתחילו עם: "I think phones are dangerous for children."\nהתחילו עם: "I think children should get their own phone at age 13 because..."',
+        },
+        {
+          type: "summary",
+          title: "At what age? - המבנה",
+          lines: [
+            '"I think children should... at age X because..."',
+            '"In addition,..."',
+            '"In conclusion, I believe that age X is right because..."',
+            "הגיל צריך להופיע במשפט הראשון",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 1 | גיל ספציפי במשפט הראשון",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"At what age should children be allowed to have their own cellphones?" - מה חייב להיות במשפט הראשון?',
+              options: [
+                "תיאור של הבעיות עם סלולריים",
+                "גיל ספציפי + because",
+                '"It depends on the child"',
+                "הצגת שני הצדדים",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"At what age?" = תנו מספר. "I think children should get a phone at age 12 because..." - גיל + סיבה = פתיח מנצח.',
+            },
+            {
+              type: "mcq",
+              prompt:
+                'איזה פתיח עונה ישירות על "At what age should children have phones?"',
+              options: [
+                "Cellphones are very popular among young people today.",
+                "I think children should receive their first cellphone at age 13 because they are mature enough to use it responsibly.",
+                "There are advantages and disadvantages to children having phones.",
+                "In conclusion, 13 is the right age for a cellphone.",
+              ],
+              correctIndex: 1,
+              explanation:
+                "גיל ספציפי (13) + because + סיבה. ישיר, ברור, עונה על השאלה.",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"At what age should children be allowed to have their own cellphones?"\n\nכתבו 3 משפטים בלבד:\n✏️ I think children should get a phone at age... because...\n✏️ In addition,...\n✏️ In conclusion, I believe that age... is right because...\n\nחשוב: הגיל צריך להופיע כבר במשפט הראשון. לפחות 3 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "responsible / אחראי",
+                "mature / בוגר",
+                "safe / בטוח",
+                "social media / רשתות חברתיות",
+                "screen time / זמן מסך",
+                "communicate / לתקשר",
+                "independent / עצמאי",
+                "dangerous / מסוכן",
+                "privacy / פרטיות",
+                "contact / ליצור קשר",
+              ],
+              minSentences: 3,
+              minWordsUsed: 3,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | מרחיבים ל-70-90 מילים",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"At what age should children be allowed to have their own cellphones?"\n\nמרחיבים לפסקה מלאה:\n✏️ הסבירו למה דווקא הגיל הזה - מה קורה בגיל הזה שלא קורה לפניו?\n✏️ הוסיפו "For example,..." עם פרט ספציפי\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "responsible / אחראי",
+                "mature / בוגר",
+                "safe / בטוח",
+                "social media / רשתות חברתיות",
+                "screen time / זמן מסך",
+                "communicate / לתקשר",
+                "independent / עצמאי",
+                "dangerous / מסוכן",
+                "privacy / פרטיות",
+                "contact / ליצור קשר",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | גיל שונה - תנאי בחינה",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"At what age should children be allowed to have their own cellphones?"\n\nהפעם - בחרו גיל שונה מסיבוב 2 ובנו טיעון חדש לגמרי.\n\nאם בחרתם גיל גבוה יותר - הסבירו מה הסכנות בגיל מוקדם.\nאם בחרתם גיל נמוך יותר - הסבירו למה הילד כבר מוכן.\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "responsible / אחראי",
+                "mature / בוגר",
+                "safe / בטוח",
+                "social media / רשתות חברתיות",
+                "screen time / זמן מסך",
+                "communicate / לתקשר",
+                "independent / עצמאי",
+                "dangerous / מסוכן",
+                "privacy / פרטיות",
+                "contact / ליצור קשר",
+              ],
+              minSentences: 5,
+              minWordsUsed: 5,
             },
           ],
         },
