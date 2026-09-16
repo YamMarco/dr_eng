@@ -9,6 +9,7 @@
 
 	let note = $derived(reviewNotes.notes[nodeId] ?? { preface: false, rounds: [], comment: '' });
 	let allDone = $derived(reviewNotes.allRoundsDone(nodeId, roundCount));
+	let expanded = $state(false);
 
 	// Keeps clicks/drags inside the float from reaching the canvas (node
 	// drag, marquee select).
@@ -31,15 +32,27 @@
 		/>
 		תקציר
 	</label>
-	<label class="flex cursor-pointer items-center gap-1 font-bold">
-		<input
-			type="checkbox"
-			checked={allDone}
-			onchange={() => reviewNotes.toggleAllRounds(nodeId, roundCount)}
-		/>
-		כל השאלות
-	</label>
-	{#if roundCount > 1}
+	<div class="flex items-center gap-1">
+		<label class="flex flex-1 cursor-pointer items-center gap-1 font-bold">
+			<input
+				type="checkbox"
+				checked={allDone}
+				onchange={() => reviewNotes.toggleAllRounds(nodeId, roundCount)}
+			/>
+			כל השאלות
+		</label>
+		{#if roundCount > 1}
+			<button
+				type="button"
+				class="px-0.5 text-muted"
+				title={expanded ? 'כווץ סבבים' : 'הרחב סבבים'}
+				onclick={() => (expanded = !expanded)}
+			>
+				{expanded ? '▾' : '▸'}
+			</button>
+		{/if}
+	</div>
+	{#if roundCount > 1 && expanded}
 		<div class="ms-3 flex flex-col gap-0.5">
 			{#each Array.from({ length: roundCount }) as _, i (i)}
 				<label class="flex cursor-pointer items-center gap-1 text-muted">

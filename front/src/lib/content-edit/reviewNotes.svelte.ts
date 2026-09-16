@@ -75,6 +75,12 @@ class ReviewNotesStore {
 		return true;
 	}
 
+	/** True once preface + every one of `count` rounds is ticked — the state
+	 *  that swaps the float for the green "done" badge on the map. */
+	isFullyDone(id: string, count: number): boolean {
+		return this.#entry(id).preface && this.allRoundsDone(id, count);
+	}
+
 	/** Ticks every one of `count` rounds at once (or clears them all if they
 	 *  were already all ticked) — the "done all questions" master box. */
 	toggleAllRounds(id: string, count: number) {

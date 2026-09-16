@@ -49,7 +49,19 @@
 	// multi-select for merge (Ctrl/Cmd-click accumulates)
 	let picked = $state<Set<string>>(new Set());
 
+	// A fully-reviewed node's float is replaced by the green ✓ badge; clicking
+	// that badge force-opens it for this one id. Any ordinary node click
+	// clears the override, so leaving and reselecting the node hides it again.
+	let forceOpenId = $state<string | null>(null);
+
+	function openReviewFloat(e: PointerEvent, id: string) {
+		e.stopPropagation();
+		editModel.select(id);
+		forceOpenId = id;
+	}
+
 	function pick(id: string, additive: boolean) {
+		forceOpenId = null;
 		editModel.select(id);
 		if (additive) {
 			const next = new Set(picked);
@@ -325,6 +337,8 @@
 
 			{#each nodes as n (n.id)}
 				{@const sel = n.id === selectedId}
+				{@const reviewDone = reviewNotes.isFullyDone(n.id, n.content.rounds.length)}
+				{@const hasComment = !!reviewNotes.notes[n.id]?.comment?.trim()}
 				<div
 					role="button"
 					tabindex="0"
@@ -357,7 +371,34 @@
 						+
 					</span>
 				</div>
-				{#if n.id === selectedId}
+
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div
+					class="absolute z-20 flex gap-0.5"
+					style="left:{cx(n) + (n.big ? 104 : 92) / 2 - 14}px; top:{n.position.y - 6}px"
+					onpointerdown={(e) => e.stopPropagation()}
+				>
+					{#if hasComment}
+						<span
+							class="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-amber-400 text-[8px] leading-none text-white shadow"
+							title="יש הערה"
+						>
+							💬
+						</span>
+					{/if}
+					{#if reviewDone}
+						<button
+							type="button"
+							class="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500 text-[9px] leading-none font-bold text-white shadow"
+							title="נבדק במלואו - לחצו לפתיחה"
+							onpointerdown={(e) => openReviewFloat(e, n.id)}
+						>
+							✓
+						</button>
+					{/if}
+				</div>
+
+				{#if sel && (!reviewDone || forceOpenId === n.id)}
 					<div
 						class="absolute z-50"
 						style="left:{cx(n) + (n.big ? 104 : 92) / 2 + 8}px; top:{n.position.y}px"
