@@ -28,7 +28,14 @@ Shift to free-drag). Drag the **+** circle under a node onto another node =
 add/flip a prerequisite; click an edge = cut it. Toolbar (labeled, colour-
 coded): ➕ שיעור חדש · ⧉ שכפול · 🗑 מחיקה · 🔗 מיזוג (only with 2+ Ctrl-picked) ·
 ✂️ פיצול · 🏷 שינוי מזהה · **✏️ פתיחה לעריכת תוכן**. Double-click a node opens
-it in the lesson editor.
+it in the lesson editor. A small QA float sits beside every node
+(**`ReviewFloat.svelte`**): tick "תקציר" (preface reviewed), one tick per
+round, and a "כל השאלות" master box that ticks/clears every round at once —
+plus a one-line comment. State lives in `reviewNotes.svelte.ts`, autosaved
+(debounced) to `review-notes.json` via `/api/content-edit/review` — same
+disk/GitHub split as the main save, but kept out of the `LessonNode` schema:
+it's QA scratch state, not curriculum content, so it never touches
+`c-*.ts`.
 
 ### Lesson editor — `LessonEditorView.svelte` (PowerPoint-style)
 

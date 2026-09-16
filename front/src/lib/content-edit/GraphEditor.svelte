@@ -2,10 +2,17 @@
 	// The whole module's lesson map, editable: drag to move, link/unlink
 	// prerequisites, add / duplicate / delete / merge / split nodes. Every
 	// section is shown at once, colour-coded. Detachable — src/lib/content-edit/.
+	import { onMount } from 'svelte';
 	import { editModel } from './editModel.svelte';
+	import { reviewNotes } from './reviewNotes.svelte';
+	import ReviewFloat from './ReviewFloat.svelte';
 	import { sectionMeta } from '$lib/content';
 
 	let { onOpenLesson }: { onOpenLesson: (id: string) => void } = $props();
+
+	onMount(() => {
+		reviewNotes.load();
+	});
 
 	const CANVAS_WIDTH = 480;
 	const CENTER = CANVAS_WIDTH / 2;
@@ -257,9 +264,9 @@
 	</div>
 
 	<div class="border-b border-line/70 bg-surface/60 px-3 py-1 text-[11px] text-muted">
-		גררו עיגול כדי להזיז · גררו על שטח ריק לבחירת כמה שיעורים ואז גררו אחד מהם כדי להזיז את כולם ביחד
-		· דאבל־קליק לפתיחה · מ<b>העיגול הקטן שמתחת</b> לשיעור גררו לשיעור אחר כדי לחבר · לחיצה על קו מחברת
-		מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
+		גררו עיגול כדי להזיז · גררו על שטח ריק לבחירת כמה שיעורים ואז גררו אחד מהם כדי להזיז את כולם
+		ביחד · דאבל־קליק לפתיחה · מ<b>העיגול הקטן שמתחת</b> לשיעור גררו לשיעור אחר כדי לחבר · לחיצה על קו
+		מחברת מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
 	</div>
 
 	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 p-4">
@@ -349,6 +356,12 @@
 					>
 						+
 					</span>
+				</div>
+				<div
+					class="absolute"
+					style="left:{cx(n) + (n.big ? 104 : 92) / 2 + 8}px; top:{n.position.y}px"
+				>
+					<ReviewFloat nodeId={n.id} roundCount={n.content.rounds.length} />
 				</div>
 			{/each}
 
