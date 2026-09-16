@@ -4361,6 +4361,36 @@ export const c1Lessons: LessonNode[] = [
               explanation: "שם או מספר = GPS / כתובת. הולכים ישר למקום שלו.",
             },
             {
+              type: "mcq",
+              prompt: "בשאלת NOT עם 4 אפשרויות, כמה מהן בדרך כלל נכונות?",
+              options: ["אחת", "שתיים", "שלוש", "כולן"],
+              correctIndex: 2,
+              explanation: "שלוש מופיעות בטקסט. הרביעית - זו שלא - היא התשובה.",
+            },
+            {
+              type: "mcq",
+              prompt: "'the MAIN reason' ו-'the MOST important factor' הן:",
+              options: [
+                "מילות ניגוד",
+                "מילות הגבלה - תמיד תשובה אחת ספציפית",
+                "מילות שלילה",
+                "לא קשורות זו לזו",
+              ],
+              correctIndex: 1,
+              explanation: "main / most / only - כולן מגבילות לתשובה אחת בלבד.",
+            },
+            {
+              type: "mcq",
+              prompt: "ראיתם תאריך או אחוז בשאלה. מה זה?",
+              options: [
+                "Eye Catcher - GPS ישר לפסקה עם המספר הזה",
+                "פרט לא חשוב שאפשר לדלג עליו",
+                "רמז לכך שהשאלה תהיה ארוכה",
+              ],
+              correctIndex: 0,
+              explanation: "מספר = GPS. סורקים את הטקסט ומוצאים אותו ישירות.",
+            },
+            {
               type: "passage-mcq",
               text: "According to nurse Fiona Grant, only 25% of patients finished the full course of treatment last year. She says most patients stop too early because they feel better after a few days. No patient in the trial received a refund, and nobody was forced to continue.",
               questions: [
@@ -4444,6 +4474,12 @@ export const c1Lessons: LessonNode[] = [
                   ],
                   correctIndex: 0,
                 },
+                {
+                  prompt:
+                    "According to the text, in which year did door-to-door collection begin?",
+                  options: ["2015", "2021", "1990", "2023"],
+                  correctIndex: 1,
+                },
               ],
             },
           ],
@@ -4489,6 +4525,12 @@ export const c1Lessons: LessonNode[] = [
                   prompt: "In which paragraph does Principal Laura Kim appear?",
                   options: ["פסקה I", "פסקה II", "פסקה III", "לא מוזכרת"],
                   correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "According to the survey, what percentage of teachers still have concerns?",
+                  options: ["88%", "2%", "55", "40"],
+                  correctIndex: 1,
                 },
               ],
             },
