@@ -1969,7 +1969,12 @@ export const c1Lessons: LessonNode[] = [
     position: { x: 0, y: 1140 },
     big: false,
     content: {
-      preface: [],
+      preface: [
+        {
+          type: "preface",
+          text: "עכשיו שהבנו איך איך למצוא את המילים, נבין איך להשתמש בהן לטובתנו",
+        },
+      ],
       rounds: [
         {
           screens: [
