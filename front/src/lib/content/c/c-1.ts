@@ -4077,7 +4077,21 @@ export const c1Lessons: LessonNode[] = [
     position: { x: 0, y: 1500 },
     big: false,
     content: {
-      preface: [],
+      preface: [
+        {
+          type: "preface",
+          text: "אז נלמד איך מפצחים כל שאלה שיש בה But/However",
+        },
+        {
+          type: "summary",
+          title: "THE TOOL - however / but",
+          lines: [
+            "לפני however: מידע כללי, רקע, בעיה.",
+            "אחרי however: הנקודה החשובה. הסיפור האמיתי.",
+            "שאלה שנוגעת למשפט עם however - התשובה כמעט תמיד מה שאחריו.",
+          ],
+        },
+      ],
       rounds: [
         {
           screens: [
