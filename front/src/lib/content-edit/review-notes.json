@@ -24,5 +24,15 @@
 			true
 		],
 		"comment": ""
+	},
+	"l06": {
+		"preface": false,
+		"rounds": [
+			true,
+			true,
+			true,
+			true
+		],
+		"comment": ""
 	}
 }
