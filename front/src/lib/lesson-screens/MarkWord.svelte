@@ -52,11 +52,17 @@
 	{#each words as word, i (i)}
 		{@const isCorrect = i === screen.correctWordIndex}
 		{@const isSelected = selected === i}
+		{@const feedback =
+			checked && isSelected
+				? isCorrect
+					? 'motion-safe:animate-pop-correct'
+					: 'motion-safe:animate-shake-wrong'
+				: ''}
 		<button
 			type="button"
 			disabled={checked}
 			onclick={() => pick(i)}
-			class="rounded-xl border-2 px-3 py-2 text-lg font-semibold transition {checked
+			class="rounded-xl border-2 px-3 py-2 text-lg font-semibold transition active:scale-[0.97] {feedback} {checked
 				? isCorrect
 					? 'border-brand bg-brand-soft text-brand-dark'
 					: isSelected

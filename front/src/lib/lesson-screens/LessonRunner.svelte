@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import { Tween } from 'svelte/motion';
+	import { fly } from 'svelte/transition';
+	import { cubicOut, backOut } from 'svelte/easing';
 	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import Confetti from '$lib/components/Confetti.svelte';
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screenComponents } from './registry';
@@ -100,6 +104,17 @@
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screenInstance = $state<any>(null);
 	let justFinished = $state(untrack(() => screens.length === 0));
+	// 1 = advancing (next screen slides in from the leading edge), -1 = the
+	// dev-only back shortcut (slides in from the trailing edge instead).
+	let direction = $state(1);
+
+	// Counts up from 0 to the final score once the finish screen appears,
+	// instead of the number just appearing — reset instantly on retry so the
+	// next finish animates fresh rather than from wherever it last landed.
+	const scoreTween = new Tween(0, { duration: 650, easing: cubicOut });
+	$effect(() => {
+		if (justFinished) scoreTween.set(score.correct);
+	});
 
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
@@ -121,6 +136,7 @@
 	let isLastRound = $derived(!lesson || (roundIndex ?? 0) >= lesson.content.rounds.length - 1);
 
 	function advance() {
+		direction = 1;
 		if (isLastScreen) {
 			justFinished = true;
 		} else {
@@ -129,12 +145,14 @@
 	}
 
 	function retry() {
+		direction = 1;
 		screenIndex = 0;
 		footerDisabled = false;
 		footerLabel = '';
 		justFinished = false;
 		score.correct = 0;
 		score.total = totalQuestions;
+		scoreTween.set(0, { duration: 0 });
 		for (const key of Object.keys(session)) delete session[key];
 	}
 </script>
@@ -147,8 +165,12 @@
 
 	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-6 pb-6">
 		{#if justFinished}
-			<div class="flex flex-col items-center pt-10 text-center">
+			<div class="relative flex flex-col items-center pt-10 text-center">
+				{#if passed}
+					<Confetti />
+				{/if}
 				<span
+					in:fly={{ y: -12, duration: 420, delay: 80, easing: backOut }}
 					class="flex h-16 w-16 items-center justify-center rounded-2xl {passed
 						? 'bg-brand-soft text-brand'
 						: 'bg-danger-soft text-danger'}"
@@ -191,7 +213,7 @@
 				</p>
 				{#if score.total > 0}
 					<p class="mt-4 text-lg font-bold text-brand-dark tabular" dir="ltr">
-						{score.correct}/{score.total}
+						{Math.round(scoreTween.current)}/{score.total}
 					</p>
 					<p class="mt-1 text-sm text-muted">{i18n.dict.lesson.scoreLabel}</p>
 				{/if}
@@ -200,13 +222,15 @@
 			<!-- Force a full remount per screen so each component's own local
 			     state (selected answer, timers, ...) starts fresh every time. -->
 			{#key screenIndex}
-				<ScreenComponent
-					screen={currentScreen}
-					onAdvance={advance}
-					bind:disabled={footerDisabled}
-					bind:label={footerLabel}
-					bind:this={screenInstance}
-				/>
+				<div in:fly={{ x: direction * 16, duration: 220, easing: cubicOut }}>
+					<ScreenComponent
+						screen={currentScreen}
+						onAdvance={advance}
+						bind:disabled={footerDisabled}
+						bind:label={footerLabel}
+						bind:this={screenInstance}
+					/>
+				</div>
 			{/key}
 		{/if}
 	</main>
@@ -254,7 +278,7 @@
 		<a
 			href={editHref}
 			title="ערוך מסך זה"
-			class="absolute inset-s-4 bottom-24 z-10 rounded-full bg-ink/85 px-3 py-1.5 text-xs font-semibold text-white shadow-lg"
+			class="absolute inset-s-4 bottom-24 z-10 rounded-full bg-overlay/85 px-3 py-1.5 text-xs font-semibold text-white shadow-lg"
 		>
 			✏️ ערוך מסך זה
 		</a>
@@ -266,23 +290,26 @@
 		<div class="absolute inset-e-4 bottom-24 z-10 flex flex-col items-end gap-1.5">
 			<button
 				type="button"
-				onclick={() => (screenIndex = Math.max(0, screenIndex - 1))}
+				onclick={() => {
+					direction = -1;
+					screenIndex = Math.max(0, screenIndex - 1);
+				}}
 				disabled={screenIndex === 0}
-				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95 disabled:opacity-40"
+				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95 disabled:opacity-40"
 			>
 				חזור מסך (דיבוג)
 			</button>
 			<button
 				type="button"
 				onclick={advance}
-				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
 			>
 				דלג על מסך (דיבוג)
 			</button>
 			<button
 				type="button"
 				onclick={hasNextLesson ? onFinishAndContinue : onFinish}
-				class="rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
 			>
 				דלג על סבב (דיבוג)
 			</button>

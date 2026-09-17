@@ -9,7 +9,7 @@
 	<button
 		type="button"
 		aria-label="כלי דיבוג"
-		class="flex h-11 w-11 items-center justify-center rounded-full bg-ink text-lg text-white shadow-lg transition active:scale-95"
+		class="flex h-11 w-11 items-center justify-center rounded-full bg-overlay text-lg text-white shadow-lg transition active:scale-95"
 	>
 		🐞
 	</button>

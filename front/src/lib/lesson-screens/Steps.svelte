@@ -24,7 +24,7 @@
 <ol class="flex flex-col gap-4">
 	{#each screen.steps as step, i (i)}
 		<li
-			class="rounded-2xl bg-surface p-4 leading-relaxed shadow-sm ring-1 shadow-ink/5 ring-line/70"
+			class="rounded-2xl bg-surface p-4 leading-relaxed shadow-sm ring-1 shadow-overlay/5 ring-line/70"
 		>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html mdBlock(step)}

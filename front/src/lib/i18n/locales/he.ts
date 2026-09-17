@@ -69,7 +69,9 @@ export const he = {
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
 		answerKeyLabel: 'מפתח התשובה',
-		submitButton: 'בדיקה'
+		submitButton: 'בדיקה',
+		passedFeedback: 'יפה מאוד!',
+		notPassedFeedback: 'כמעט — הצבע מראה מה פספסתם'
 	},
 	selfCheck: {
 		placeholder: 'כתבו כאן...',
@@ -129,6 +131,11 @@ export const he = {
 		languageSection: 'שפה',
 		interfaceLanguage: 'שפת הממשק',
 		interfaceLanguageEn: 'Interface language',
+		appearanceSection: 'מראה',
+		theme: 'ערכת נושא',
+		themeSystem: 'אוטומטי',
+		themeLight: 'בהיר',
+		themeDark: 'כהה',
 		practiceSection: 'חוויית תרגול',
 		soundEffects: 'אפקטי קול',
 		soundEffectsDesc: 'צליל בתשובה נכונה או שגויה',

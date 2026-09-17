@@ -80,7 +80,7 @@
 
 <nav
 	aria-label={i18n.dict.nav.mainNav}
-	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/85"
+	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-backdrop-filter:bg-surface/85"
 	style="padding-bottom: env(safe-area-inset-bottom)"
 >
 	<div class="mx-auto flex max-w-lg items-stretch justify-around px-2">
@@ -89,7 +89,7 @@
 			<a
 				href={item.href}
 				aria-current={active ? 'page' : undefined}
-				class="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 py-2 text-xs font-semibold transition {active
+				class="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 py-2 text-xs font-semibold transition active:scale-95 {active
 					? 'text-brand-dark'
 					: 'text-muted hover:text-ink'}"
 			>

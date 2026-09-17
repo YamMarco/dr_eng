@@ -94,14 +94,5 @@
   "92": "סוגי המסכים שקיימים באפליקציה",
   "93": "הקול והסגנון",
   "94": "book/+page.svelte",
-  "95": "editModel.svelte.ts",
-  "96": "activeField.svelte.ts",
-  "97": "content/index.ts",
-  "98": "moduleLocation.svelte.ts",
-  "99": "LessonScreen",
-  "100": "MarkAll.svelte",
-  "101": "NavBar.svelte",
-  "102": "lessonIcon.ts",
-  "103": "screenTypeNames.ts",
-  "104": "I18n"
+  "96": "activeField.svelte.ts"
 }

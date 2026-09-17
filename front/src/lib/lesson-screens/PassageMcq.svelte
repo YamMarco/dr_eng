@@ -73,11 +73,17 @@
 		{#each question.options as option, oi (oi)}
 			{@const isCorrect = oi === question.correctIndex}
 			{@const isSelected = picked === oi}
+			{@const feedback =
+				checked && isSelected
+					? isCorrect
+						? 'motion-safe:animate-pop-correct'
+						: 'motion-safe:animate-shake-wrong'
+					: ''}
 			<button
 				type="button"
 				disabled={checked}
 				onclick={() => pick(oi)}
-				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition {checked
+				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'
 						: isSelected

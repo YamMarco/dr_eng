@@ -2,6 +2,16 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+/* Ties Tailwind's `dark:` variant to our own [data-theme] attribute (set by
+   the root layout + the pre-paint script in app.html) instead of its default
+   prefers-color-scheme media query — needed because theme is user-selectable
+   (system/light/dark in Settings), not just OS-driven. Most of the app never
+   needs this: canvas/surface/ink/etc. are CSS custom properties that already
+   swap under [data-theme='dark'] in the block below. `dark:` is only for
+   one-off cases like sectionThemes.ts that use Tailwind's fixed palette
+   colors (bg-teal-100, ...) rather than those tokens. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
 	--font-sans: 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
 
@@ -21,6 +31,36 @@
 
 	--color-danger: #e76f51;
 	--color-danger-soft: #fdeae4;
+
+	/* Fixed dark neutral — deliberately NOT redefined under [data-theme='dark']
+	   below. For things that mean "always dark" regardless of theme (modal
+	   scrims, card shadow tints, floating debug chips): `ink` flips to a light
+	   color in dark mode, so anything using it for that purpose must use this
+	   instead or it inverts into a pale smudge/invisible chip. */
+	--color-overlay: #1f2937;
+}
+
+/* Dark mode: same token names, redefined under the attribute the root layout
+   (and the blocking pre-paint script in app.html) sets on <html>. Every
+   `bg-canvas`/`text-ink`/etc. utility already resolves through these custom
+   properties, so no component classes need a `dark:` variant. */
+:root[data-theme='dark'] {
+	--color-canvas: #14181b;
+	--color-surface: #1c2226;
+
+	--color-brand: #35b3a3;
+	--color-brand-dark: #7fd8c8;
+	--color-brand-soft: #1c332f;
+
+	--color-accent: #e9c46a;
+	--color-accent-soft: #3a331d;
+
+	--color-ink: #f3f1ec;
+	--color-muted: #98a1a8;
+	--color-line: #2b3236;
+
+	--color-danger: #ee8267;
+	--color-danger-soft: #3a2019;
 }
 
 @layer base {
@@ -34,6 +74,9 @@
 		font-family: var(--font-sans);
 		line-height: 1.6;
 		-webkit-tap-highlight-color: transparent;
+		transition:
+			background-color 150ms ease-out,
+			color 150ms ease-out;
 	}
 
 	:focus-visible {
@@ -44,4 +87,63 @@
 
 @utility tabular {
 	font-variant-numeric: tabular-nums;
+}
+
+/* Answer feedback: applied to the option/input the student actually picked,
+   right when it's checked. `motion-safe:` at the call site keeps these off
+   for prefers-reduced-motion instead of guarding in every component. */
+@keyframes pop-correct {
+	0% {
+		transform: scale(1);
+	}
+	45% {
+		transform: scale(1.06);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes shake-wrong {
+	10%,
+	90% {
+		transform: translateX(-1px);
+	}
+	20%,
+	80% {
+		transform: translateX(2px);
+	}
+	30%,
+	50%,
+	70% {
+		transform: translateX(-4px);
+	}
+	40%,
+	60% {
+		transform: translateX(4px);
+	}
+}
+
+@utility animate-pop-correct {
+	animation: pop-correct 320ms ease-out;
+}
+
+@utility animate-shake-wrong {
+	animation: shake-wrong 380ms ease-in-out;
+}
+
+/* One confetti piece falling + tumbling — see Confetti.svelte. */
+@keyframes confetti-fall {
+	0% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(var(--confetti-fall-distance, 220px)) rotate(var(--confetti-spin, 540deg));
+		opacity: 0;
+	}
+}
+
+@utility animate-confetti-fall {
+	animation: confetti-fall var(--confetti-duration, 900ms) ease-in forwards;
 }

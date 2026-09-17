@@ -71,7 +71,7 @@
 		note = '';
 	}
 
-	const card = 'rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70';
+	const card = 'rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 	const chipBase =
 		'min-h-11 rounded-full border-2 px-4 py-2 text-sm font-semibold transition active:scale-[0.97]';
 	function chip(selected: boolean) {

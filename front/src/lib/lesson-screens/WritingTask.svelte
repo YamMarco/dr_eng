@@ -88,8 +88,8 @@
 			placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
 			class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
 				? allOk
-					? 'border-brand bg-brand-soft/40'
-					: 'border-danger bg-danger-soft/40'
+					? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
+					: 'border-danger bg-danger-soft/40 motion-safe:animate-shake-wrong'
 				: 'border-line bg-surface focus:border-brand'}"
 		/>
 	{/each}

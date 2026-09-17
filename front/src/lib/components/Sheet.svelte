@@ -30,7 +30,7 @@
 		<button
 			type="button"
 			aria-label={i18n.dict.common.close}
-			class="absolute inset-0 bg-ink/40"
+			class="absolute inset-0 bg-overlay/40"
 			onclick={close}
 			transition:fade={{ duration: 150 }}
 		></button>

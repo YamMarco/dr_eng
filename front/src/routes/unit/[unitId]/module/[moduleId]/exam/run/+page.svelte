@@ -130,7 +130,7 @@
 </Sheet>
 
 {#if exam.finished}
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 p-4">
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-overlay/50 p-4">
 		<div class="w-full max-w-sm rounded-3xl bg-surface p-6 text-center shadow-xl">
 			<span
 				class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl {exam.remaining === 0

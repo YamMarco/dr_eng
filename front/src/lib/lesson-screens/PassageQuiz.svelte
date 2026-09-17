@@ -82,8 +82,8 @@
 				bind:value={answers[i]}
 				class="mt-2 w-full rounded-xl border-2 px-3 py-2 font-semibold transition {checked
 					? correct
-						? 'border-brand bg-brand-soft text-brand-dark'
-						: 'border-danger bg-danger-soft text-danger'
+						? 'border-brand bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'
+						: 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
 					: 'border-line bg-surface focus:border-brand'}"
 			/>
 			{#if checked && !correct}

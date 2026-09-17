@@ -26,6 +26,8 @@
 <ol class="mt-4 flex flex-col gap-3">
 	{#each screen.prompts as prompt (prompt)}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<li class="rounded-2xl bg-surface p-4 ring-1 shadow-ink/5 ring-line/70">{@html mdBlock(prompt)}</li>
+		<li class="rounded-2xl bg-surface p-4 ring-1 shadow-overlay/5 ring-line/70">
+			{@html mdBlock(prompt)}
+		</li>
 	{/each}
 </ol>

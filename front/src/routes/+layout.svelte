@@ -6,8 +6,11 @@
 	import { page } from '$app/state';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
+	import { themeStore } from '$lib/theme.svelte';
 
 	let { children } = $props();
+
+	const THEME_COLOR = { light: '#f9f7f4', dark: '#14181b' };
 
 	// The exam-run screen has its own fixed bottom action bar, and the /edit
 	// authoring workspace is full-bleed — neither wants the global nav.
@@ -17,6 +20,13 @@
 
 	$effect(() => {
 		document.documentElement.lang = i18n.language;
+	});
+
+	$effect(() => {
+		document.documentElement.dataset.theme = themeStore.resolved;
+		document
+			.querySelector('meta[name="theme-color"]')
+			?.setAttribute('content', THEME_COLOR[themeStore.resolved]);
 	});
 </script>
 

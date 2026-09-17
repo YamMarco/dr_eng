@@ -22,7 +22,7 @@
 <AppBar title="{i18n.dict.examStart.titlePrefix} {mod.letter}" back={base} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	<div class="rounded-3xl bg-surface p-6 text-center shadow-md ring-1 shadow-ink/5 ring-line/70">
+	<div class="rounded-3xl bg-surface p-6 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70">
 		<p class="text-sm font-semibold text-muted">{i18n.dict.examStart.durationLabel}</p>
 		<div class="mt-3 flex justify-center">
 			<Timer seconds={EXAM_SECONDS} size="lg" />
@@ -33,7 +33,7 @@
 	</div>
 
 	{#if mod.sections.length}
-		<div class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-ink/5 ring-line/70">
+		<div class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.examStart.structureTitle}</h2>
 			<ul class="flex flex-col divide-y divide-line/70">
 				{#each mod.sections as section, i (section.id)}

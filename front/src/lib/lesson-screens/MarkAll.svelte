@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { scale } from 'svelte/transition';
+	import { backOut } from 'svelte/easing';
 	import type { MarkAllScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
@@ -32,10 +34,7 @@
 	// All target token positions — the flat `correctIndices` plus every
 	// category's indices.
 	let targets = $derived(
-		new Set([
-			...screen.correctIndices,
-			...(screen.categories ?? []).flatMap((c) => c.indices)
-		])
+		new Set([...screen.correctIndices, ...(screen.categories ?? []).flatMap((c) => c.indices)])
 	);
 	// token index -> palette key, for colour-coding the reveal.
 	let categoryColorByIndex = $derived.by(() => {
@@ -80,6 +79,8 @@
 		}
 		return wrong <= 1 && hits >= Math.ceil(targets.size * 0.7);
 	}
+
+	let passed = $derived(checked ? isPass() : false);
 
 	export function primaryAction() {
 		if (!checked) {
@@ -135,10 +136,8 @@
 	</div>
 {/if}
 
-<p
-	class="text-lg leading-loose whitespace-pre-wrap select-none"
-	dir={screen.dir ?? 'ltr'}
->{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token}{@const isTarget =
+<p class="text-lg leading-loose whitespace-pre-wrap select-none" dir={screen.dir ?? 'ltr'}>
+	{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token}{@const isTarget =
 				targets.has(seg.index)}{@const isPicked = picked.includes(seg.index)}{@const revealSwatch =
 				checked && isTarget && categoryColorByIndex.has(seg.index)
 					? markAllSwatch(categoryColorByIndex.get(seg.index))
@@ -147,7 +146,7 @@
 				disabled={checked}
 				onclick={() => toggle(seg.index)}
 				style={revealSwatch ? `background:${revealSwatch.bg};color:${revealSwatch.fg}` : undefined}
-				class="rounded-sm px-0.5 font-semibold transition {revealSwatch
+				class="rounded-sm px-0.5 font-semibold transition active:scale-95 {revealSwatch
 					? ''
 					: checked
 						? isTarget
@@ -157,5 +156,18 @@
 								: 'opacity-60'
 						: isPicked
 							? 'bg-brand-soft ring-1 ring-brand/40'
-							: 'hover:bg-line/50'}"
-			>{seg.text}</button>{:else}{seg.text}{/if}{/each}</p>
+							: 'hover:bg-line/50'}">{seg.text}</button
+			>{:else}{seg.text}{/if}{/each}
+</p>
+
+{#if checked}
+	<p
+		in:scale={{ start: 0.7, duration: 320, easing: backOut }}
+		class="mt-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold {passed
+			? 'bg-brand-soft text-brand-dark'
+			: 'bg-danger-soft text-danger'}"
+	>
+		{passed ? '✓' : '✗'}
+		{passed ? i18n.dict.exerciseKind.passedFeedback : i18n.dict.exerciseKind.notPassedFeedback}
+	</p>
+{/if}

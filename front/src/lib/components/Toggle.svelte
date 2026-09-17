@@ -19,7 +19,7 @@
 	aria-checked={checked}
 	aria-label={label}
 	onclick={toggle}
-	class="relative inline-flex h-8 w-14 shrink-0 items-center rounded-full transition-colors duration-150 {checked
+	class="relative inline-flex h-8 w-14 shrink-0 items-center rounded-full transition-colors duration-150 active:scale-95 {checked
 		? 'bg-brand'
 		: 'bg-line'}"
 >
