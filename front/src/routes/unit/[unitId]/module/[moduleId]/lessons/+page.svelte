@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { FlaskConical } from '@lucide/svelte';
+	import { draw, fade, scale } from 'svelte/transition';
+	import { backOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
@@ -11,6 +14,7 @@
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
+	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import type { PageProps } from './$types';
 
@@ -92,7 +96,8 @@
 
 	// Straight connector lines from each prerequisite to its dependent node.
 	let edges = $derived.by(() => {
-		const result: { id: string; x1: number; y1: number; x2: number; y2: number }[] = [];
+		const result: { id: string; x1: number; y1: number; x2: number; y2: number; targetY: number }[] =
+			[];
 		for (const node of nodes) {
 			for (const prereqId of node.lesson.required) {
 				const from = nodeById.get(prereqId);
@@ -102,7 +107,8 @@
 					x1: CANVAS_CENTER + from.x,
 					y1: from.y + (from.isBig ? 40 : 32),
 					x2: CANVAS_CENTER + node.x,
-					y2: node.y + (node.isBig ? 40 : 32)
+					y2: node.y + (node.isBig ? 40 : 32),
+					targetY: node.y
 				});
 			}
 		}
@@ -110,6 +116,45 @@
 	});
 
 	let canvasHeight = $derived(nodes.reduce((max, node) => Math.max(max, node.y), 0) + 200);
+
+	// Load-up animation for the path: every node sharing a y (parallel-track
+	// rows converge on the same value) pops in together, row by row, starting
+	// at whichever row will land at the top of the screen — the student's
+	// last-known position on a return visit (see moduleLocation below), or
+	// literally the first row on a first visit. Rows above that point just
+	// appear without a wait since scrolling put them off-screen anyway.
+	const reducedMotion =
+		typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const ROW_STAGGER_MS = 90;
+	const ROW_STAGGER_CAP_MS = 650;
+	let lastLessonId = $derived(moduleLocation.get(mod.id));
+	let rowOrder = $derived.by(() => {
+		const ys = [...new Set(nodes.map((node) => node.y))].sort((a, b) => a - b);
+		return new Map(ys.map((y, row) => [y, row]));
+	});
+	let anchorRow = $derived.by(() => {
+		const anchorNode = lastLessonId ? nodeById.get(lastLessonId) : undefined;
+		return rowOrder.get(anchorNode?.y ?? 0) ?? 0;
+	});
+	function delayForY(y: number): number {
+		if (reducedMotion) return 0;
+		const rowsBelowAnchor = Math.max(0, (rowOrder.get(y) ?? 0) - anchorRow);
+		return 80 + Math.min(rowsBelowAnchor * ROW_STAGGER_MS, ROW_STAGGER_CAP_MS);
+	}
+	function edgeDelay(targetY: number): number {
+		return reducedMotion ? 0 : Math.max(0, delayForY(targetY) - 60);
+	}
+
+	// Jump straight to wherever the student left off, with that row at the
+	// top of the screen, instead of the top of a possibly long path. Instant
+	// (no smooth scroll) so it doesn't fight with the pop-in animation
+	// starting at the same time.
+	onMount(() => {
+		if (!lastLessonId) return;
+		document
+			.querySelector(`[data-lesson-node-id="${CSS.escape(lastLessonId)}"]`)
+			?.scrollIntoView({ block: 'start' });
+	});
 
 	function isDone(lessonId: string): boolean {
 		return lessonProgress.isCompleted(mod.id, lessonId);
@@ -189,6 +234,7 @@
 		openLabelId = null;
 		activeId = node.lesson.id;
 		activeRoundIndex = nextRoundIndex(node);
+		moduleLocation.set(mod.id, node.lesson.id);
 	}
 
 	function closeNode() {
@@ -216,6 +262,7 @@
 		}
 		activeId = next.lesson.id;
 		activeRoundIndex = nextRoundIndex(next);
+		moduleLocation.set(mod.id, next.lesson.id);
 	}
 
 	function dismissLabelOnOutsideClick(event: MouseEvent) {
@@ -281,6 +328,7 @@
 						class="stroke-line"
 						stroke-width="3"
 						stroke-linecap="round"
+						in:draw={{ duration: 320, delay: edgeDelay(edge.targetY) }}
 					/>
 				{/each}
 			</svg>
@@ -289,6 +337,7 @@
 				<p
 					class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
 					style="left: {CANVAS_CENTER + heading.x}px; top: {heading.y - 32}px; width: 8rem"
+					in:fade={{ duration: 250, delay: reducedMotion ? 0 : 60 }}
 				>
 					{heading.titleHe}
 				</p>
@@ -300,10 +349,12 @@
 				{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 				<div
 					data-lesson-node
-					class="absolute -translate-x-1/2 transition-opacity {unlocked || done
+					data-lesson-node-id={node.lesson.id}
+					class="absolute -translate-x-1/2 scroll-mt-24 transition-opacity {unlocked || done
 						? ''
 						: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
 					style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px"
+					in:scale={{ start: 0.35, duration: 420, delay: delayForY(node.y), easing: backOut }}
 				>
 					<button
 						type="button"

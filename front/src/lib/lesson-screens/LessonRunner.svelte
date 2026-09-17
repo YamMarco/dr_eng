@@ -3,6 +3,7 @@
 	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screenComponents } from './registry';
 	import { createLessonSession } from './session.svelte';
@@ -70,6 +71,21 @@
 	let screenPaths = $derived(
 		allScreenPaths ? keptIndices.map((i) => allScreenPaths![i]) : undefined
 	);
+	// Groups consecutive screens sharing a bucket (preface, round N) into one bar
+	// each, so the progress row visibly separates preface from the round itself.
+	let progressSegments = $derived.by(() => {
+		if (!screenPaths || screenPaths.length === 0) return [screens.length];
+		const lengths: number[] = [];
+		let bucket: NonNullable<typeof screenPaths>[number]['bucket'] | undefined;
+		for (const path of screenPaths) {
+			if (path.bucket !== bucket) {
+				lengths.push(0);
+				bucket = path.bucket;
+			}
+			lengths[lengths.length - 1] += 1;
+		}
+		return lengths;
+	});
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are answered.
 	const totalQuestions = untrack(() =>
 		screens.reduce((sum, screen) => sum + countQuestions(screen), 0)
@@ -125,6 +141,9 @@
 
 <div class="fixed inset-0 z-50 flex flex-col bg-canvas">
 	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel} />
+	{#if !justFinished}
+		<LessonProgressBar segments={progressSegments} current={screenIndex} />
+	{/if}
 
 	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-6 pb-6">
 		{#if justFinished}

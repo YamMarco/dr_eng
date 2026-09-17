@@ -1,0 +1,44 @@
+<script lang="ts">
+	/** Segmented, animated progress bar for a lesson run. Each entry in `segments`
+	 *  is the screen count of one bucket (preface, round N, ...) played in order;
+	 *  a visible gap between bars marks the boundary between them. */
+	type Props = {
+		segments: number[];
+		/** 0-based index of the screen currently on screen; pass segments-total to show full. */
+		current: number;
+	};
+
+	let { segments, current }: Props = $props();
+
+	let total = $derived(segments.reduce((sum, n) => sum + n, 0));
+
+	let fractions = $derived.by(() => {
+		let start = 0;
+		return segments.map((length) => {
+			const fraction = length === 0 ? 1 : Math.min(1, Math.max(0, (current - start) / length));
+			start += length;
+			return fraction;
+		});
+	});
+</script>
+
+<div
+	class="mx-auto flex w-full max-w-lg items-center gap-1.5 px-4 py-3"
+	role="progressbar"
+	aria-label="התקדמות בשיעור"
+	aria-valuenow={Math.min(current, total)}
+	aria-valuemin={0}
+	aria-valuemax={total}
+>
+	{#each segments as length, i (i)}
+		<div
+			class="h-2.5 overflow-hidden rounded-full bg-line"
+			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
+		>
+			<div
+				class="h-full rounded-full bg-brand transition-[width] duration-500 ease-out"
+				style="width: {fractions[i] * 100}%"
+			></div>
+		</div>
+	{/each}
+</div>
