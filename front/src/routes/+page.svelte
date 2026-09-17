@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import { modules, unitGroups } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 
 	function letters(moduleIds: string[]) {
 		return moduleIds.map((id) => modules[id].letter.toUpperCase()).join(' · ');
@@ -34,8 +37,8 @@
 	</div>
 
 	<ul class="flex flex-col gap-4">
-		{#each unitGroups as group (group.id)}
-			<li>
+		{#each unitGroups as group, i (group.id)}
+			<li in:fly={{ y: 12, duration: 300, delay: staggerDelay(i), easing: cubicOut }}>
 				<a
 					href="/unit/{group.id}"
 					class="group flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"

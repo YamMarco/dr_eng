@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1789402674.0521421,
-    "seen": 1789580433.721573,
-    "ast_hash": "adc8ae4eb3f1e7edd595d845bf8ff18b",
+    "mtime": 1789646834.2499433,
+    "seen": 1789648196.478015,
+    "ast_hash": "2619790481a78a4791d9c5b65b5e87bf",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1789490884.834685,
-    "seen": 1789580433.7216628,
-    "ast_hash": "c37656281c26dd116d1a2ecf56a19e52",
+    "mtime": 1789648081.22199,
+    "seen": 1789648196.4780962,
+    "ast_hash": "e37aeb55e7c4ae7208540efb701731c9",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -888,9 +888,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/review-notes.json": {
-    "mtime": 1789579809.68944,
-    "seen": 1789580433.7215328,
-    "ast_hash": "6a96efb2660b7f5e6c3440863a398726",
+    "mtime": 1789580441.058464,
+    "seen": 1789648196.4779782,
+    "ast_hash": "cc0c59c0388479e776f878342cdff836",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/reviewNotes.svelte.ts": {
@@ -903,6 +903,18 @@
     "mtime": 1789541004.2297182,
     "seen": 1789580433.7216415,
     "ast_hash": "4674040c9053d2e584efb721770da35b",
+    "semantic_hash": ""
+  },
+  "front/src/lib/components/LessonProgressBar.svelte": {
+    "mtime": 1789646810.8491786,
+    "seen": 1789648196.4779308,
+    "ast_hash": "e20aa30b19e88d1edad384fe21538f32",
+    "semantic_hash": ""
+  },
+  "front/src/lib/moduleLocation.svelte.ts": {
+    "mtime": 1789647553.9562297,
+    "seen": 1789648196.4780662,
+    "ast_hash": "b55df303a3a9d7ebaf71f0af6aa790ec",
     "semantic_hash": ""
   }
 }

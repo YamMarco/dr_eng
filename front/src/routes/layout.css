@@ -89,6 +89,24 @@
 	font-variant-numeric: tabular-nums;
 }
 
+/* Cross-fade between routes, driven by onNavigate() in +layout.svelte.
+   Slightly faster than the browser default (~250ms) and disabled entirely
+   for reduced-motion, since the View Transitions API doesn't honor that
+   media query on its own. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 180ms;
+	animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}
+
 /* Answer feedback: applied to the option/input the student actually picked,
    right when it's checked. `motion-safe:` at the call site keeps these off
    for prefers-reduced-motion instead of guarding in every component. */

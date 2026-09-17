@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { EXAM_MINUTES } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -20,6 +23,7 @@
 	<div class="flex flex-col gap-4">
 		<a
 			href="{base}/lessons"
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
 			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
 			<span
@@ -49,6 +53,7 @@
 
 		<a
 			href="{base}/exam"
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class="flex w-full items-start gap-4 rounded-3xl bg-brand p-5 text-right text-white shadow-md shadow-brand/25 transition duration-150 hover:bg-brand-dark active:scale-[0.99]"
 		>
 			<span

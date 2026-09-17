@@ -24,6 +24,12 @@
 	] as const);
 
 	let path = $derived(page.url.pathname);
+	let activeIndex = $derived(
+		Math.max(
+			0,
+			items.findIndex((item) => item.match(path))
+		)
+	);
 </script>
 
 {#snippet homeIcon(active: boolean)}
@@ -83,7 +89,15 @@
 	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-backdrop-filter:bg-surface/85"
 	style="padding-bottom: env(safe-area-inset-bottom)"
 >
-	<div class="mx-auto flex max-w-lg items-stretch justify-around px-2">
+	<div class="relative mx-auto flex max-w-lg items-stretch justify-around px-2">
+		<!-- Slides to whichever tab is active — inset-inline-start (not left)
+		     so it lands under the right tab regardless of the RTL flex order. -->
+		<span
+			class="absolute top-0 h-0.5 rounded-full bg-brand-dark transition-[inset-inline-start] duration-300 ease-out"
+			style="width: {100 / items.length}%; inset-inline-start: {(activeIndex / items.length) *
+				100}%"
+		></span>
+
 		{#each items as item (item.href)}
 			{@const active = item.match(path)}
 			<a
@@ -93,13 +107,15 @@
 					? 'text-brand-dark'
 					: 'text-muted hover:text-ink'}"
 			>
-				{#if item.icon === 'home'}
-					{@render homeIcon(active)}
-				{:else if item.icon === 'book'}
-					{@render bookIcon(active)}
-				{:else}
-					{@render settingsIcon(active)}
-				{/if}
+				<span class="inline-flex transition-transform duration-200 {active ? 'scale-110' : ''}">
+					{#if item.icon === 'home'}
+						{@render homeIcon(active)}
+					{:else if item.icon === 'book'}
+						{@render bookIcon(active)}
+					{:else}
+						{@render settingsIcon(active)}
+					{/if}
+				</span>
 				{item.label}
 			</a>
 		{/each}

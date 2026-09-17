@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { fly, scale } from 'svelte/transition';
+	import { cubicOut, backOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 
 	// Mock availability — same slots every workday.
 	const TIME_SLOTS = ['16:00', '16:45', '17:30', '18:15', '19:00'];
@@ -89,6 +92,7 @@
 	{#if submitted}
 		<div class="{card} flex flex-col items-center gap-4 text-center">
 			<span
+				in:scale={{ start: 0.4, duration: 400, delay: 80, easing: backOut }}
 				class="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-soft text-brand-dark"
 			>
 				<svg
@@ -115,11 +119,14 @@
 
 		<div class="flex flex-col gap-6">
 			<!-- Calendar -->
-			<section class={card}>
+			<section
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
+				class={card}
+			>
 				<div class="flex items-center justify-between">
 					<button
 						type="button"
-						class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-line/70 disabled:opacity-30"
+						class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-line/70 active:scale-90 disabled:opacity-30"
 						disabled={!canGoPrev}
 						aria-label={b.prevMonth}
 						onclick={() => shiftMonth(-1)}
@@ -138,7 +145,7 @@
 					<span class="text-sm font-bold">{b.monthNames[viewMonth]} {viewYear}</span>
 					<button
 						type="button"
-						class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-line/70"
+						class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-line/70 active:scale-90"
 						aria-label={b.nextMonth}
 						onclick={() => shiftMonth(1)}
 					>
@@ -171,7 +178,7 @@
 								type="button"
 								{disabled}
 								onclick={() => pickDay(cell)}
-								class="flex aspect-square items-center justify-center rounded-xl text-sm font-semibold transition {selected
+								class="flex aspect-square items-center justify-center rounded-xl text-sm font-semibold transition active:scale-90 {selected
 									? 'bg-brand text-white'
 									: disabled
 										? 'text-muted/30'
@@ -185,7 +192,10 @@
 			</section>
 
 			<!-- Time -->
-			<section class={card}>
+			<section
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+				class={card}
+			>
 				<h2 class="text-sm font-bold text-muted">{b.timeSection}</h2>
 				{#if !selectedDate}
 					<p class="mt-3 text-sm text-muted">{b.pickDateFirst}</p>
@@ -206,7 +216,10 @@
 			</section>
 
 			<!-- Topics -->
-			<section class={card}>
+			<section
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+				class={card}
+			>
 				<h2 class="text-sm font-bold text-muted">{b.topicSection}</h2>
 				<p class="mt-1 text-xs text-muted">{b.topicHint}</p>
 				<div class="mt-3 flex flex-wrap gap-2">
@@ -223,13 +236,16 @@
 			</section>
 
 			<!-- Level -->
-			<section class={card}>
+			<section
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
+				class={card}
+			>
 				<h2 class="text-sm font-bold text-muted">{b.levelSection}</h2>
 				<div class="mt-3 flex flex-col gap-2">
 					{#each b.levels as level (level)}
 						<button
 							type="button"
-							class="flex min-h-11 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-start text-sm font-semibold transition {selectedLevel ===
+							class="flex min-h-11 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-start text-sm font-semibold transition active:scale-[0.98] {selectedLevel ===
 							level
 								? 'border-brand bg-brand-soft text-brand-dark'
 								: 'border-line text-muted hover:border-brand/50'}"
@@ -252,7 +268,10 @@
 			</section>
 
 			<!-- Note -->
-			<section class={card}>
+			<section
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(4), easing: cubicOut }}
+				class={card}
+			>
 				<h2 class="text-sm font-bold text-muted">
 					{b.noteSection}
 					<span class="font-normal">· {b.noteOptional}</span>
@@ -265,7 +284,7 @@
 				></textarea>
 			</section>
 
-			<div>
+			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(5), easing: cubicOut }}>
 				{#if !canSubmit}
 					<p class="mb-2 text-center text-xs text-muted">{b.missing}</p>
 				{/if}

@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -43,9 +46,9 @@
 		</div>
 	{:else}
 		<ul class="flex flex-col gap-4">
-			{#each moduleList as mod (mod.id)}
+			{#each moduleList as mod, i (mod.id)}
 				{@const placeholder = mod.sections.length === 0}
-				<li>
+				<li in:fly={{ y: 12, duration: 300, delay: staggerDelay(i), easing: cubicOut }}>
 					{#if placeholder}
 						<div
 							class="flex items-center gap-4 rounded-3xl bg-surface p-5 opacity-60 ring-1 ring-line/70"
