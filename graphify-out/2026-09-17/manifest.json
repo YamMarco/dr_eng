@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/NavBar.svelte": {
-    "mtime": 1789649295.6357107,
-    "seen": 1789649696.9146194,
-    "ast_hash": "f190ac519ab2109853b1819489af5149",
+    "mtime": 1789649976.4354897,
+    "seen": 1789650059.1511686,
+    "ast_hash": "b07cc8bab47b3220120e7336bce073c8",
     "semantic_hash": ""
   },
   "front/src/lib/components/Sheet.svelte": {
@@ -222,21 +222,21 @@
     "semantic_hash": ""
   },
   "front/src/routes/+layout.svelte": {
-    "mtime": 1789649018.4535637,
-    "seen": 1789649696.9149349,
-    "ast_hash": "dded34388096762d938512c0a255e409",
+    "mtime": 1789649976.1576257,
+    "seen": 1789650059.151296,
+    "ast_hash": "ac8987cde58c858e35576050a5257db6",
     "semantic_hash": ""
   },
   "front/src/routes/+page.svelte": {
-    "mtime": 1789649509.8703735,
-    "seen": 1789649696.9149387,
-    "ast_hash": "cd4baa02bb941702385fd81b7025cf7a",
+    "mtime": 1789649829.2384315,
+    "seen": 1789650059.1512973,
+    "ast_hash": "f10f818295856ad174dd25ee0544f3b1",
     "semantic_hash": ""
   },
   "front/src/routes/settings/+page.svelte": {
-    "mtime": 1789649509.988739,
-    "seen": 1789649696.914968,
-    "ast_hash": "5684648e8ffb560c652f939a6fee4f71",
+    "mtime": 1789649885.735222,
+    "seen": 1789650059.151308,
+    "ast_hash": "62e54977998b98708929811b96c8c15b",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/+layout.ts": {
@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/+page.svelte": {
-    "mtime": 1789649510.0390074,
-    "seen": 1789649696.9149764,
-    "ast_hash": "293e5d3ac657b3a9a1337fa1b78a9c50",
+    "mtime": 1789649837.9980898,
+    "seen": 1789650059.1513112,
+    "ast_hash": "5084ff411a9f526410775e088497b135",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/+layout.ts": {
@@ -258,15 +258,15 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/+page.svelte": {
-    "mtime": 1789649510.0878239,
-    "seen": 1789649696.9149847,
-    "ast_hash": "1d3074e54fdbac654fc3cd44a2cef073",
+    "mtime": 1789649855.43591,
+    "seen": 1789650059.1513143,
+    "ast_hash": "5ad168030c6616d1ac2cedb7363529ed",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
-    "mtime": 1789649510.139672,
-    "seen": 1789649696.9149885,
-    "ast_hash": "6f69685598c16fd28770dfd4279ce0b0",
+    "mtime": 1789649903.8098779,
+    "seen": 1789650059.1513155,
+    "ast_hash": "cb179a8c309ffc706d547c1751f1555c",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/run/+page.svelte": {
@@ -522,9 +522,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/book/+page.svelte": {
-    "mtime": 1789649509.9263382,
-    "seen": 1789649696.9149556,
-    "ast_hash": "feb976e92b59e869b24f03861306d833",
+    "mtime": 1789649976.103227,
+    "seen": 1789650059.1513038,
+    "ast_hash": "4599d004786effb3ec7a3a6157acb7ba",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkAll.svelte": {
@@ -927,6 +927,12 @@
     "mtime": 1789648443.9463077,
     "seen": 1789649696.9149258,
     "ast_hash": "9063f5342bebb99da411d197c5fbde21",
+    "semantic_hash": ""
+  },
+  "front/src/lib/motion.ts": {
+    "mtime": 1789649765.9781966,
+    "seen": 1789650059.1512895,
+    "ast_hash": "7c17d8e9d9b26c10bb6f950b1573164d",
     "semantic_hash": ""
   }
 }

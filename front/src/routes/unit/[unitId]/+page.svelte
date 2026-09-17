@@ -5,6 +5,7 @@
 	import { modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import { themeForSectionIndex } from '$lib/sectionThemes';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -48,6 +49,7 @@
 		<ul class="flex flex-col gap-4">
 			{#each moduleList as mod, i (mod.id)}
 				{@const placeholder = mod.sections.length === 0}
+				{@const theme = themeForSectionIndex(i)}
 				<li in:fly={{ y: 12, duration: 300, delay: staggerDelay(i), easing: cubicOut }}>
 					{#if placeholder}
 						<div
@@ -72,7 +74,7 @@
 							class="flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 						>
 							<span
-								class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-lg font-extrabold text-brand-dark"
+								class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-extrabold {theme.soft}"
 								dir="ltr"
 							>
 								{mod.letter}

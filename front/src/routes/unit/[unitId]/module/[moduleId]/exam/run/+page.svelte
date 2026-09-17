@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { fade, scale } from 'svelte/transition';
+	import { backOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Sheet from '$lib/components/Sheet.svelte';
@@ -130,8 +132,14 @@
 </Sheet>
 
 {#if exam.finished}
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-overlay/50 p-4">
-		<div class="w-full max-w-sm rounded-3xl bg-surface p-6 text-center shadow-xl">
+	<div
+		transition:fade={{ duration: 150 }}
+		class="fixed inset-0 z-50 flex items-center justify-center bg-overlay/50 p-4"
+	>
+		<div
+			in:scale={{ start: 0.9, duration: 220, delay: 60, easing: backOut }}
+			class="w-full max-w-sm rounded-3xl bg-surface p-6 text-center shadow-xl"
+		>
 			<span
 				class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl {exam.remaining === 0
 					? 'bg-danger-soft text-danger'

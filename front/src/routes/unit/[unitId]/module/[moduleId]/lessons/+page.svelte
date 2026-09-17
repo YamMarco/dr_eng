@@ -96,8 +96,14 @@
 
 	// Straight connector lines from each prerequisite to its dependent node.
 	let edges = $derived.by(() => {
-		const result: { id: string; x1: number; y1: number; x2: number; y2: number; targetY: number }[] =
-			[];
+		const result: {
+			id: string;
+			x1: number;
+			y1: number;
+			x2: number;
+			y2: number;
+			targetY: number;
+		}[] = [];
 		for (const node of nodes) {
 			for (const prereqId of node.lesson.required) {
 				const from = nodeById.get(prereqId);
@@ -241,8 +247,24 @@
 		activeId = null;
 	}
 
+	// The node that just flipped to "done" and is due a celebratory pop the
+	// moment the path is visible again — cleared once the animation's played.
+	let justCompletedId = $state<string | null>(null);
+
+	function celebrateIfNewlyDone(lessonId: string, wasDone: boolean) {
+		if (wasDone || !isDone(lessonId)) return;
+		justCompletedId = lessonId;
+		setTimeout(() => {
+			if (justCompletedId === lessonId) justCompletedId = null;
+		}, 900);
+	}
+
 	function finishNode() {
-		if (activeId) lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
+		if (activeId) {
+			const wasDone = isDone(activeId);
+			lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
+			celebrateIfNewlyDone(activeId, wasDone);
+		}
 		activeId = null;
 	}
 
@@ -254,7 +276,9 @@
 
 	function finishNodeAndContinue() {
 		if (!activeNode) return;
+		const wasDone = isDone(activeNode.lesson.id);
 		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
+		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
 		const next = nextInSameSection(activeNode);
 		if (!next) {
 			activeId = null;
@@ -353,57 +377,72 @@
 					class="absolute -translate-x-1/2 scroll-mt-24 transition-opacity {unlocked || done
 						? ''
 						: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
-					style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px"
+					style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px; --puck-border: {node.theme
+						.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
 					in:scale={{ start: 0.35, duration: 420, delay: delayForY(node.y), easing: backOut }}
 				>
+					<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
+					     element) stays put, the inner .node-face recedes on tap (see
+					     layout.css) — done/locked stay flat (badge, not a pressable CTA). -->
 					<button
 						type="button"
 						disabled={!unlocked}
 						title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
 						onclick={() => toggleLabel(node.lesson.id)}
-						class="flex shrink-0 items-center justify-center rounded-full font-extrabold shadow-md transition {size} {unlocked
+						class="flex shrink-0 items-center justify-center rounded-full font-extrabold transition-colors {size} {node
+							.lesson.id === justCompletedId
+							? 'motion-safe:animate-pop-correct'
+							: ''} {unlocked
 							? done
-								? node.theme.nodeDone
-								: `${node.theme.node} active:scale-95`
-							: 'cursor-not-allowed bg-line/60 text-muted shadow-none'}"
+								? node.theme.soft
+								: 'node-socket'
+							: 'cursor-not-allowed bg-line/60 text-muted'}"
 					>
-						{#if done}
-							<svg
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2.5"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="h-7 w-7"
-								aria-hidden="true"
-							>
-								<path d="M20 6 9 17l-5-5" />
-							</svg>
-						{:else if unlocked}
-							{lessonIcon(node.lesson.id)}
-						{:else}
-							<svg
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="h-6 w-6"
-								aria-hidden="true"
-							>
-								<rect x="4" y="10" width="16" height="10" rx="2" />
-								<path d="M8 10V7a4 4 0 0 1 8 0v3" />
-							</svg>
-						{/if}
+						<span
+							class="flex items-center justify-center rounded-full {unlocked && !done
+								? 'node-face'
+								: ''}"
+						>
+							{#if done}
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="h-7 w-7"
+									aria-hidden="true"
+								>
+									<path d="M20 6 9 17l-5-5" />
+								</svg>
+							{:else if unlocked}
+								{lessonIcon(node.lesson.id)}
+							{:else}
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="h-6 w-6"
+									aria-hidden="true"
+								>
+									<rect x="4" y="10" width="16" height="10" rx="2" />
+									<path d="M8 10V7a4 4 0 0 1 8 0v3" />
+								</svg>
+							{/if}
+						</span>
 					</button>
 
 					{#if unlocked && openLabelId === node.lesson.id}
 						<!-- Click-triggered label instead of a full-screen modal: title + start
 						     (or, once round 1 is done, the next round to play). -->
 						<div
-							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
+							in:scale={{ start: 0.55, duration: 240, easing: backOut }}
+							out:scale={{ start: 0.55, duration: 130 }}
+							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
 						>
 							<p class="text-sm font-bold">{node.lesson.titleHe}</p>
 							<Button onclick={() => openNode(node)}>

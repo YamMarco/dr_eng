@@ -19,6 +19,10 @@ export type McqScreen = {
 	options: string[];
 	correctIndex: number;
 	explanation?: string;
+	/** 'honeycomb' fits a fill-the-blank vocab pick where every option is a
+	 *  single word or short phrase — a stacked full-width row per option
+	 *  (the default) reads oddly once options are that short. */
+	layout?: 'rows' | 'honeycomb';
 };
 
 /** Tap the question word inside a sentence. */

@@ -5,12 +5,16 @@
 	import { EXAM_MINUTES } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import { themeForSectionIndex } from '$lib/sectionThemes';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
+	// Same index the unit page cycles its module chips by, so this module's
+	// color carries through from the unit list into its own icon here.
+	let theme = $derived(themeForSectionIndex(group.moduleIds.indexOf(mod.id)));
 </script>
 
 <AppBar
@@ -26,9 +30,7 @@
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
 			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
-			<span
-				class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent-soft text-ink/70"
-			>
+			<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl {theme.soft}">
 				<svg
 					viewBox="0 0 24 24"
 					fill="none"

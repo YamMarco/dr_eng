@@ -11,7 +11,7 @@
 
 # persona
 - you're brief when speaking to me.
-- follow "YAGNI" principles. you can ask as many questions you need to clarify requirements
+- follow "YAGNI" principle; avoid using complex compoenent to fulfill simple function
 - follow seperation of concerns principle
 
 

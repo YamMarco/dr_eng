@@ -89,6 +89,94 @@
 	font-variant-numeric: tabular-nums;
 }
 
+/* Shared "pressable puck" — the layered ::before button (ring outline + a
+   bottom lip that shrinks away on press), used for both the primary CTA
+   button and lesson-path nodes. Needs real transform compositing
+   (translate3d + preserve-3d) to paint the layers correctly, not just
+   Tailwind's transition utilities. Colors come from --puck-border/--puck-lip;
+   --puck-offset (how tall the puck stands at rest) defaults to the button's
+   depth but nodes set a shallower one inline — same recipe, lower profile. */
+.puck-3d {
+	--puck-offset: 0.28em;
+	position: relative;
+	touch-action: manipulation;
+	border: 2px solid var(--puck-border);
+	transform-style: preserve-3d;
+	transition:
+		transform 150ms cubic-bezier(0, 0, 0.58, 1),
+		background-color 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+.puck-3d::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: var(--puck-border);
+	/* The lip's spread must match the ring's (2px = the parent's own border
+	   width) — inset:0 sizes this pseudo-element to the parent's *padding*
+	   box (inside its border), so without that compensation the lip reads
+	   as a visibly narrower base than the ring/front above it. */
+	box-shadow:
+		0 0 0 2px var(--puck-border),
+		0 var(--puck-offset) 0 2px var(--puck-lip);
+	transform: translate3d(0, var(--puck-offset), -1em);
+	transition:
+		transform 150ms cubic-bezier(0, 0, 0.58, 1),
+		box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+.puck-3d:hover {
+	transform: translate(0, calc(var(--puck-offset) * 0.43));
+}
+.puck-3d:hover::before {
+	box-shadow:
+		0 0 0 2px var(--puck-border),
+		0 calc(var(--puck-offset) * 0.57) 0 2px var(--puck-lip);
+	transform: translate3d(0, calc(var(--puck-offset) * 0.57), -1em);
+}
+.puck-3d:active {
+	transform: translate(0, var(--puck-offset));
+}
+.puck-3d:active::before {
+	box-shadow:
+		0 0 0 2px var(--puck-border),
+		0 0 2px var(--puck-lip);
+	transform: translate3d(0, 0, -1em);
+}
+.puck-3d:disabled {
+	transform: none;
+}
+
+/* Round lesson-path nodes: a physical push-button cap instead of .puck-3d's
+   platform-press — the outer rim (this element's own background) stays
+   still, and only the inner .node-face recedes on press. Avoids the "fat"
+   look .puck-3d's box-shadow ring gets on a small circle, and matches a real
+   push-button better than a block sliding down to meet a floor. Colors
+   reuse the same --puck-border/--puck-lip set inline per section theme. */
+.node-socket {
+	position: relative;
+	touch-action: manipulation;
+	background: var(--puck-border);
+}
+.node-face {
+	position: absolute;
+	inset: 5px;
+	border-radius: 9999px;
+	background: var(--puck-lip);
+	box-shadow: 0 4px 0 0 rgb(0 0 0 / 0.22);
+	transform: translateY(-3px);
+	transition:
+		transform 130ms cubic-bezier(0, 0, 0.58, 1),
+		box-shadow 130ms cubic-bezier(0, 0, 0.58, 1);
+}
+.node-socket:hover .node-face {
+	transform: translateY(-1.5px);
+	box-shadow: 0 2.5px 0 0 rgb(0 0 0 / 0.22);
+}
+.node-socket:active .node-face {
+	transform: translateY(4px);
+	box-shadow: 0 0 0 0 rgb(0 0 0 / 0.22);
+}
+
 /* Cross-fade between routes, driven by onNavigate() in +layout.svelte.
    Slightly faster than the browser default (~250ms) and disabled entirely
    for reduced-motion, since the View Transitions API doesn't honor that

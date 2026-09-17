@@ -76,7 +76,7 @@ Add an object to the right section's array:
 | `timed-reading` | `label`, `text`, `timerKey` | — |
 | `time-result` | `label`, `timerKey` | — |
 | `time-comparison` | `aLabel`, `aKey`, `bLabel`, `bKey`, `fasterMessage`, `tieMessage` | — |
-| `mcq` | `prompt`, `options[]`, `correctIndex` | 1 |
+| `mcq` | `prompt`, `options[]`, `correctIndex`, `explanation?`, `layout?: 'rows'\|'honeycomb'` | 1 |
 | `mark-word` | `sentence`, `correctWordIndex`, `dir?` | 1 |
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
@@ -95,6 +95,10 @@ matching tokens light up in that colour on the reveal (`color` is a key into
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
 `passage-mcq` is `timed-passage` without the clock/label — pick it for a short
 text + multiple-choice question(s) on one screen with no stopwatch UI.
+`mcq.layout: 'honeycomb'` fits a fill-the-blank vocab pick where every option
+is a single word or short phrase (a stacked full-width row per option reads
+oddly once options are that short) — omit `layout` (or set `'rows'`) for the
+regular stacked-options look.
 
 ## Text formatting syntax
 
