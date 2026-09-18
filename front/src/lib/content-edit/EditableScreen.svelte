@@ -196,6 +196,11 @@
 				value={screen.sentence}
 				onInput={(v) => set('sentence', v)}
 			/>
+		{:else if screen.type === 'cloze-pick'}
+			<p class="text-xs text-muted">
+				המשפט הקבוע (אחרי הפתיח שנבחר) - האפשרויות והתשובה הנכונה בסרגל התחתון
+			</p>
+			<MarkdownInput bare minRows={2} value={screen.clause} onInput={(v) => set('clause', v)} />
 		{:else if screen.type === 'mark-all'}
 			<MarkdownInput
 				bare

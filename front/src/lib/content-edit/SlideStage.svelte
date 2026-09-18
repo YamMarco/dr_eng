@@ -416,6 +416,57 @@
 									onToggle={(i) => (screen.correctWordIndex = i)}
 								/>
 							</div>
+						{:else if screen.type === 'cloze-pick'}
+							<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="mb-2 text-xs font-bold text-muted">
+									אפשרויות - סמנו את כל התשובות הנכונות (אפשר יותר מאחת)
+								</p>
+								{#each screen.options as _opt, i (i)}
+									<div
+										class="flex items-center gap-2 rounded-xl border p-2 {(
+											screen.correctIndices ?? []
+										).includes(i)
+											? 'border-brand bg-brand-soft/50'
+											: 'border-line'}"
+									>
+										<input
+											type="checkbox"
+											checked={(screen.correctIndices ?? []).includes(i)}
+											onchange={() => {
+												screen.correctIndices ??= [];
+												screen.correctIndices = screen.correctIndices.includes(i)
+													? screen.correctIndices.filter((x: number) => x !== i)
+													: [...screen.correctIndices, i].sort((a: number, b: number) => a - b);
+											}}
+											aria-label="תשובה נכונה"
+										/>
+										<input
+											bind:value={screen.options[i]}
+											dir="auto"
+											class="w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
+										/>
+										<button
+											type="button"
+											class="text-xs text-danger"
+											onclick={() => {
+												screen.options.splice(i, 1);
+												screen.correctIndices = (screen.correctIndices ?? [])
+													.filter((x: number) => x !== i)
+													.map((x: number) => (x > i ? x - 1 : x));
+											}}
+										>
+											✕
+										</button>
+									</div>
+								{/each}
+								<button
+									type="button"
+									class="text-xs font-semibold text-brand"
+									onclick={() => (screen.options = [...screen.options, ''])}
+								>
+									+ אפשרות
+								</button>
+							</div>
 						{:else if screen.type === 'mark-all'}
 							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
 								<div class="flex flex-wrap items-center gap-1.5">
