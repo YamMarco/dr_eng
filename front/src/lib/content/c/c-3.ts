@@ -123,48 +123,23 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | בנו משפט עמדה\n\nבחרו את הפתיח שהופך את המשפט לעמדה ברורה - YES או NO, לא משנה איזה.",
-            },
-            {
-              type: "cloze-pick",
-              clause: "schools should be open 5 days instead of six.",
-              options: ["I think", "It depends", "I do not think", "Maybe"],
-              correctIndices: [0, 2],
-              explanation:
-                '"I think" ו-"I do not think" הן שתי עמדות ברורות (YES ו-NO). "It depends" ו-"Maybe" לא בוחרות צד.',
-            },
-            {
-              type: "cloze-pick",
-              clause: "teenagers should have part-time jobs.",
-              options: ["I believe", "In some cases", "I do not believe", "Well"],
-              correctIndices: [0, 2],
-              explanation:
-                '"I believe" ו-"I do not believe" מבטאות החלטה ברורה. השאר מתחמקות מהכרעה.',
-            },
-            {
-              type: "cloze-pick",
-              clause: "students should wear school uniforms.",
-              options: ["It depends", "I agree that", "Maybe", "I disagree that"],
-              correctIndices: [1, 3],
-              explanation:
-                '"I agree that" ו-"I disagree that" הן עמדות ברורות. "It depends" ו-"Maybe" לא.',
-            },
-            {
-              type: "cloze-pick",
-              clause: "homework should be given every weekend.",
-              options: ["I think", "Sometimes", "I do not think", "It depends"],
-              correctIndices: [0, 2],
-              explanation:
-                '"I think" / "I do not think" נותנות תשובה ברורה. "Sometimes" ו-"It depends" לא.',
-            },
-            {
-              type: "cloze-pick",
-              clause: "schools should start later in the morning.",
-              options: ["Maybe", "I believe", "In some cases", "I do not believe"],
-              correctIndices: [1, 3],
-              explanation:
-                'רק "I believe" ו-"I do not believe" הן עמדות ברורות. השאר מתחמקות.',
+              type: "writing-task",
+              prompt:
+                '"Do you think schools should be open 5 days instead of 6?"\n\nרק YES או NO. לא למה. לא דוגמה. משפט אחד.\nהשתמשו ב-"I think" או "I do not think".',
+              wordBank: [
+                "I think",
+                "I believe",
+                "in my opinion",
+                "because",
+                "in addition",
+                "for example",
+                "in conclusion",
+                "should",
+                "schools",
+                "students",
+              ],
+              minSentences: 1,
+              minWordsUsed: 1,
             },
           ],
         },
