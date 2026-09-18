@@ -33,12 +33,23 @@
 	label = i18n.dict.exerciseKind.submitButton;
 
 	let allFilled = $derived(lines.every((line) => line.trim().length > 0));
-	let punctuationOk = $derived(
-		lines.every((line) => {
+
+	// Capitalization/punctuation are graded as a running tally of small slips,
+	// not a per-sentence pass/fail: one missing capital or period on its own
+	// is forgiven (kids shouldn't fail over a single case slip), but they add
+	// up — two or more across the answer trips the threshold and fails it.
+	const MAX_MINOR_ISSUES = 1;
+	let minorIssues = $derived(
+		lines.reduce((count, line) => {
 			const trimmed = line.trim();
-			return trimmed.length > 0 && /^[A-Z]/.test(trimmed) && /[.!?]$/.test(trimmed);
-		})
+			if (!trimmed) return count;
+			let issues = 0;
+			if (!/^[A-Z]/.test(trimmed)) issues++;
+			if (!/[.!?]$/.test(trimmed)) issues++;
+			return count + issues;
+		}, 0)
 	);
+	let punctuationOk = $derived(minorIssues <= MAX_MINOR_ISSUES);
 	let combinedText = $derived(lines.join(' ').toLowerCase());
 	let wordsUsed = $derived(
 		screen.wordBank.filter((word) => combinedText.includes(word.toLowerCase())).length

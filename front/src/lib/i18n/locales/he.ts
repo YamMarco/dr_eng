@@ -95,7 +95,7 @@ export const he = {
 		wordBankLabel: 'מילים לשימוש',
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
-		checkPunctuation: 'אות גדולה בהתחלה ונקודה בסוף בכל משפט',
+		checkPunctuation: 'אות גדולה ונקודה בסוף - טעות קטנה אחת מותרת',
 		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
 	},
 	examStart: {
