@@ -59,7 +59,11 @@
 	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="ltr">{screen.text}</p>
 {/if}
 
-<p class="leading-relaxed font-semibold">{screen.prompt}</p>
+<div class="leading-relaxed font-semibold">
+	{#each screen.prompt.split('\n') as line, i (i)}
+		<p dir="auto">{line}</p>
+	{/each}
+</div>
 
 <textarea
 	dir="auto"

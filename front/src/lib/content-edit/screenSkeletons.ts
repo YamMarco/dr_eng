@@ -12,6 +12,7 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 		types: [
 			'mcq',
 			'mark-word',
+			'cloze-pick',
 			'mark-all',
 			'spell-word',
 			'writing-task',
@@ -43,6 +44,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, prompt: '', modelAnswer: '' };
 		case 'mark-word':
 			return { type, sentence: '', correctWordIndex: 0 };
+		case 'cloze-pick':
+			return { type, clause: '', options: ['', ''], correctIndices: [] };
 		case 'mark-all':
 			return { type, instruction: '', text: '', correctIndices: [] };
 		case 'timed-reading':

@@ -106,6 +106,26 @@ export type WritingTaskScreen = {
 	minWordsUsed: number;
 };
 
+/**
+ * Fill-in-the-blank by picking a tile instead of typing: `clause` is the
+ * fixed part of a sentence/phrase, `options` is a small fixed set of
+ * candidates for the blank (some right, some decoys), and any option in
+ * `correctIndices` counts. Scoring is a plain lookup, never fuzzy text
+ * matching, which is the point — use this wherever the "free" part of an
+ * answer is really a small closed set (e.g. a stance opener, a verb form, a
+ * connector word), in any lesson, not just writing ones.
+ */
+export type ClozePickScreen = {
+	type: 'cloze-pick';
+	/** The fixed part of the sentence, appended after the picked tile, e.g. "schools should be open 5 days instead of six." */
+	clause: string;
+	/** Candidate tiles for the blank: correct answers mixed with decoys. */
+	options: string[];
+	/** Indices into `options` that count as correct — any one passes. */
+	correctIndices: number[];
+	explanation?: string;
+};
+
 /** Compares two previously-recorded timer values. */
 export type TimeComparisonScreen = {
 	type: 'time-comparison';
@@ -199,6 +219,7 @@ export type LessonScreen =
 	| SummaryScreen
 	| McqScreen
 	| MarkWordScreen
+	| ClozePickScreen
 	| MarkAllScreen
 	| TimedReadingScreen
 	| QuestionPreviewScreen
@@ -230,6 +251,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.prompt.trim() || screen.options.length === 0;
 		case 'mark-word':
 			return !screen.sentence.trim();
+		case 'cloze-pick':
+			return !screen.clause.trim() || screen.options.length === 0;
 		case 'mark-all':
 			return (
 				!screen.text.trim() ||
@@ -260,6 +283,7 @@ export function countQuestions(screen: LessonScreen): number {
 	switch (screen.type) {
 		case 'mcq':
 		case 'mark-word':
+		case 'cloze-pick':
 		case 'mark-all':
 			return 1;
 		case 'timed-passage':

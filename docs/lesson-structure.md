@@ -78,6 +78,7 @@ Add an object to the right section's array:
 | `time-comparison` | `aLabel`, `aKey`, `bLabel`, `bKey`, `fasterMessage`, `tieMessage` | — |
 | `mcq` | `prompt`, `options[]`, `correctIndex`, `explanation?`, `layout?: 'rows'\|'honeycomb'` | 1 |
 | `mark-word` | `sentence`, `correctWordIndex`, `dir?` | 1 |
+| `cloze-pick` | `clause`, `options[]`, `correctIndices[]`, `explanation?` | 1 |
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
@@ -95,6 +96,11 @@ matching tokens light up in that colour on the reveal (`color` is a key into
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
 `passage-mcq` is `timed-passage` without the clock/label — pick it for a short
 text + multiple-choice question(s) on one screen with no stopwatch UI.
+`cloze-pick` shows `options` as tiles; picking one previews the assembled
+sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
+this instead of `writing-task` when the "free" part of an answer is really a
+small closed set (a stance opener, a verb form, a connector word, …), in any
+lesson, so scoring stays a lookup instead of fuzzy-matching typed text.
 `mcq.layout: 'honeycomb'` fits a fill-the-blank vocab pick where every option
 is a single word or short phrase (a stacked full-width row per option reads
 oddly once options are that short) — omit `layout` (or set `'rows'`) for the

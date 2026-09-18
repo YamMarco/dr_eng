@@ -64,7 +64,11 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
 <ScoreBadge {score} />
-<p class="leading-relaxed font-semibold">{screen.prompt}</p>
+<div class="leading-relaxed font-semibold">
+	{#each screen.prompt.split('\n') as line, i (i)}
+		<p dir="auto">{line}</p>
+	{/each}
+</div>
 
 <div class="mt-3">
 	<p class="mb-1 text-xs font-semibold text-muted">{i18n.dict.writingTask.wordBankLabel}</p>
