@@ -36,10 +36,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים עמדה ברורה",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים עמדה ברורה" },
             {
               type: "mcq",
               prompt:
@@ -68,10 +65,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. YES ו-NO שניהם מקבלים אותו ציון - חשוב רק שזה ברור.',
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שמבטאת YES.",
-            },
+            { type: "preface", text: "לחצו על המילה שמבטאת הסכמה." },
             {
               type: "mark-word",
               sentence:
@@ -138,10 +132,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים סיבה חזקה",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים סיבה חזקה" },
             {
               type: "mcq",
               prompt: "איזו סיבה אחרי because היא הכי חזקה?",
@@ -164,10 +155,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 "because = המילה שמחברת עמדה לסיבה. תמיד מגיעה ישר אחרי הדעה.",
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שמחברת את הדעה לסיבה.",
-            },
+            { type: "preface", text: "לחצו על המילה שמחברת את הדעה לסיבה." },
             {
               type: "mark-word",
               sentence:
@@ -237,10 +225,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים סיבה שנייה אמיתית",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים סיבה שנייה אמיתית" },
             {
               type: "mcq",
               prompt:
@@ -259,7 +244,12 @@ export const c3Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 '"I think the school day should start later because students need sleep. _______ studies show that tired students cannot focus."',
-              options: ["Because", "In conclusion", "In addition", "For example"],
+              options: [
+                "Because",
+                "In conclusion",
+                "In addition",
+                "For example",
+              ],
               correctIndex: 2,
               explanation:
                 '"In addition" = סיבה שנייה. "For example" מגיע כשמוסיפים פרט לסיבה קיימת, לא סיבה חדשה.',
@@ -276,7 +266,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               explanation:
-                'הרובריקה אומרת במפורש: מורידים נקודות כשרעיונות שלמים חוזרים על עצמם.',
+                "הרובריקה אומרת במפורש: מורידים נקודות כשרעיונות שלמים חוזרים על עצמם.",
             },
           ],
         },
@@ -342,10 +332,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים For example נכון",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים For example נכון" },
             {
               type: "mcq",
               prompt: 'היכן "For example" ממוקם בצורה הנכונה?',
@@ -372,10 +359,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"students who help in hospitals learn to stay calm under pressure" = מקום + מה לומדים שם. זה פרט אמיתי.',
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שמסמנת שמגיע פרט ספציפי.",
-            },
+            { type: "preface", text: "לחצו על המילה שמסמנת שמגיע פרט ספציפי." },
             {
               type: "mark-word",
               sentence:
@@ -446,10 +430,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים סיום טוב",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים סיום טוב" },
             {
               type: "mcq",
               prompt: "איזה משפט סיום הוא הכי טוב?",
@@ -467,15 +448,17 @@ export const c3Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 '"_______, I believe that starting school later would help students learn better." - מה חסר?',
-              options: ["For example", "Because", "In addition", "In conclusion"],
+              options: [
+                "For example",
+                "Because",
+                "In addition",
+                "In conclusion",
+              ],
               correctIndex: 3,
               explanation:
                 '"In conclusion" פותח את משפט הסיום. הוא תמיד מגיע אחרון.',
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שפותחת את משפט הסיום.",
-            },
+            { type: "preface", text: "לחצו על המילה שפותחת את משפט הסיום." },
             {
               type: "mark-word",
               sentence:
@@ -489,7 +472,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                "בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ \"In conclusion, I believe / I think that...\"\n\nמשפט אחד. לא יותר.",
+                'בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ "In conclusion, I believe / I think that..."\n\nמשפט אחד. לא יותר.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -526,7 +509,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "בגרות C = 8 נקודות על Language Use.\n\nהכלל הבסיסי שמגן על הנקודות האלה:\nכל משפט חייב subject + verb.\n\nSubject = מי עושה את הפעולה.\nVerb = מה הם עושים.\n\n\"Students learn.\" - subject: students. verb: learn. ✅\n\"Students responsible.\" - subject: students. verb: אין. ❌",
+          text: 'בגרות C = 8 נקודות על Language Use.\n\nהכלל הבסיסי שמגן על הנקודות האלה:\nכל משפט חייב subject + verb.\n\nSubject = מי עושה את הפעולה.\nVerb = מה הם עושים.\n\n"Students learn." - subject: students. verb: learn. ✅\n"Students responsible." - subject: students. verb: אין. ❌',
         },
         {
           type: "preface",
@@ -546,10 +529,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים משפט שלם ונכון",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים משפט שלם ונכון" },
             {
               type: "mcq",
               prompt: "איזה משפט שלם ונכון?",
@@ -567,7 +547,12 @@ export const c3Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 'מה חסר במשפט? "Traveling good for your mind and your health."',
-              options: ["subject", "verb - חסר \"is\"", "object", "כלום - המשפט נכון"],
+              options: [
+                "subject",
+                'verb - חסר "is"',
+                "object",
+                "כלום - המשפט נכון",
+              ],
               correctIndex: 1,
               explanation:
                 '"Traveling is good..." - חסר is. כל משפט עם תיאור (adjective) צריך את הפועל to be: is / are / was.',
@@ -585,10 +570,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 'Because לא יכול להתחיל משפט עצמאי - הוא מחבר שני חלקים. "Because many students..." = רק חלק ממשפט.',
             },
-            {
-              type: "preface",
-              text: "לחצו על ה-verb - מה הסטודנטים עושים?",
-            },
+            { type: "preface", text: "לחצו על ה-verb - מה הסטודנטים עושים?" },
             {
               type: "mark-word",
               sentence:
@@ -661,10 +643,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | ספירה ותיקון",
-            },
+            { type: "preface", text: "סיבוב 1 | ספירה ותיקון" },
             {
               type: "mcq",
               prompt: "תלמיד כתב 65 מילים. מה הכי חכם לעשות?",
@@ -756,10 +735,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | להבין מה מבקשים",
-            },
+            { type: "preface", text: "סיבוב 1 | להבין מה מבקשים" },
             {
               type: "mcq",
               prompt:
@@ -827,10 +803,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | בניית פסקה מלאה",
-            },
+            { type: "preface", text: "סיבוב 2 | בניית פסקה מלאה" },
             {
               type: "mcq",
               prompt: "איזה פתיח מבטא עמדה ברורה עם סיבה?",
@@ -888,17 +861,14 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 3 | תנאי בחינה אמיתיים",
-            },
+            { type: "preface", text: "סיבוב 3 | תנאי בחינה אמיתיים" },
             {
               type: "mcq",
               prompt:
                 'Read this answer. What is missing?\n"Volunteer work is very good. It helps people. Many students volunteer. It is important for society."',
               options: [
                 "הסיום חסר",
-                "אין דעה ברורה (YES/NO) ואין סיבה ספציפית עם \"because\"",
+                'אין דעה ברורה (YES/NO) ואין סיבה ספציפית עם "because"',
                 "האנגלית לא נכונה",
                 "יש יותר מדי מילים",
               ],
@@ -970,10 +940,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | להבין מה מבקשים",
-            },
+            { type: "preface", text: "סיבוב 1 | להבין מה מבקשים" },
             {
               type: "mcq",
               prompt:
@@ -1033,10 +1000,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | הרחבה לפסקה שלמה",
-            },
+            { type: "preface", text: "סיבוב 2 | הרחבה לפסקה שלמה" },
             {
               type: "writing-task",
               prompt:
@@ -1068,10 +1032,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 3 | בחירה שונה - תנאי בחינה",
-            },
+            { type: "preface", text: "סיבוב 3 | בחירה שונה - תנאי בחינה" },
             {
               type: "writing-task",
               prompt:
@@ -1136,10 +1097,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | מזהים הצעה ספציפית",
-            },
+            { type: "preface", text: "סיבוב 1 | מזהים הצעה ספציפית" },
             {
               type: "mcq",
               prompt: "מה מבדיל הצעה טובה מתיאור בעיה?",
@@ -1197,10 +1155,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | עוטפים ב-70-90 מילים",
-            },
+            { type: "preface", text: "סיבוב 2 | עוטפים ב-70-90 מילים" },
             {
               type: "writing-task",
               prompt:
@@ -1232,10 +1187,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 3 | תנאי בחינה אמיתיים",
-            },
+            { type: "preface", text: "סיבוב 3 | תנאי בחינה אמיתיים" },
             {
               type: "writing-task",
               prompt:
@@ -1300,10 +1252,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 1 | גיל ספציפי במשפט הראשון",
-            },
+            { type: "preface", text: "סיבוב 1 | גיל ספציפי במשפט הראשון" },
             {
               type: "mcq",
               prompt:
@@ -1363,10 +1312,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | מרחיבים ל-70-90 מילים",
-            },
+            { type: "preface", text: "סיבוב 2 | מרחיבים ל-70-90 מילים" },
             {
               type: "writing-task",
               prompt:
@@ -1398,10 +1344,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 3 | גיל שונה - תנאי בחינה",
-            },
+            { type: "preface", text: "סיבוב 3 | גיל שונה - תנאי בחינה" },
             {
               type: "writing-task",
               prompt:
