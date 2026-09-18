@@ -54,5 +54,14 @@
 			true
 		],
 		"comment": ""
+	},
+	"yes-no": {
+		"preface": false,
+		"rounds": [
+			null,
+			null,
+			true
+		],
+		"comment": ""
 	}
 }
