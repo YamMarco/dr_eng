@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1789738419.7965753,
-    "ast_hash": "86c2f6b85cc27ff84110b17d1e8c8b4f",
+    "mtime": 1789738732.3407042,
+    "ast_hash": "d43a2e314ed6755821226ee87f5aa07e",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/registry.ts": {
-    "mtime": 1789738414.5063145,
-    "ast_hash": "7cfdf57c44e9c039c8c5f1b69e02f715",
+    "mtime": 1789738710.882353,
+    "ast_hash": "96bf3ebb3a7f1c99d1c09f46595ba64c",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/session.svelte.ts": {
@@ -175,8 +175,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/types.ts": {
-    "mtime": 1789738389.7338533,
-    "ast_hash": "cb8b55219f01386912f31b8be6db8ff6",
+    "mtime": 1789738693.452906,
+    "ast_hash": "a346247d834a1a047c6a93a7a913e01a",
     "semantic_hash": ""
   },
   "front/src/routes/+error.svelte": {
@@ -450,8 +450,8 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1789738431.9843216,
-    "ast_hash": "dae3bb02c88c6ec87379497d9758cd30",
+    "mtime": 1789738759.567622,
+    "ast_hash": "c4103939794a7121557334f84c01917c",
     "semantic_hash": ""
   },
   "docs/module c/myprog/guide.md": {
@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
-    "mtime": 1789738445.6605704,
-    "ast_hash": "f86000ca43632b785b9a5c6663e3b35f",
+    "mtime": 1789738743.2879877,
+    "ast_hash": "4b2503c1643db245c34a1b88dae557c2",
     "semantic_hash": ""
   },
   "front/src/lib/content/index.ts": {
@@ -545,8 +545,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
-    "mtime": 1789738496.4474964,
-    "ast_hash": "8d8be167542c82bcbd34051eed5cfa32",
+    "mtime": 1789738721.2112134,
+    "ast_hash": "ecb16defdc8b64bf965b615c50c8da44",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/miniMarkdown.ts": {
@@ -695,8 +695,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenTypeNames.ts": {
-    "mtime": 1789738479.1421812,
-    "ast_hash": "ce18ed07e3f71cda836fca5d0b5fe672",
+    "mtime": 1789738726.592976,
+    "ast_hash": "2d4cd573b8a48ee9fd93e1b2e8965170",
     "semantic_hash": ""
   },
   "docs/study-plan-conversion/screen-types.md": {
@@ -1134,9 +1134,9 @@
     "ast_hash": "2fa5e49f99af28edbb223db035674f65",
     "semantic_hash": ""
   },
-  "front/src/lib/lesson-screens/SentenceOpener.svelte": {
-    "mtime": 1789738401.7295837,
-    "ast_hash": "55eab84bc79d6035c9f3eb9c61c6cfdc",
+  "front/src/lib/lesson-screens/ClozePick.svelte": {
+    "mtime": 1789738667.0792193,
+    "ast_hash": "4b3de28684243a90aa4f4d76810a836c",
     "semantic_hash": ""
   }
 }
