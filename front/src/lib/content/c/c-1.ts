@@ -4665,6 +4665,116 @@ export const c1Lessons: LessonNode[] = [
             },
           ],
         },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב מסכם - כל השיטה ביחד\n\nמפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.",
+            },
+            {
+              type: "passage-mcq",
+              text: "THE ROOFTOP BEES OF MILLBROOK\n\nI  Ten years ago, bees were disappearing from cities around the world. However, one small town found a simple solution. In 2019, the Millbrook library began keeping beehives on its roof.\n\nII  The project was started by librarian Rachel Stone. According to Ms. Stone, only two people knew how to care for bees at the beginning, but today twenty volunteers help. The hives produce about 300 jars of honey a year, and most of the honey is sold to fund children's books.\n\nIII  Not everyone was happy. According to Councillor David Green, the hives are dangerous, and no one asked the neighbours before they were built. Nevertheless, no visitor has ever been stung, and the library now receives 40% more visitors than before.",
+              questions: [
+                {
+                  prompt: "מפה: קראו רק את הכותרת ופסקה I. על מה הטקסט?",
+                  options: [
+                    "ספרייה בעיר שמחזיקה כוורות",
+                    "בעיית היעלמות הדבורים בעולם",
+                    "מכירת דבש לילדים",
+                    "ביקורת על מועצת העיר",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    'השאלה: "According to Councillor David Green, what is one drawback of the hives?" - מה הצבע לפני שמחפשים?',
+                  options: [
+                    "🟢 ירוק - הכל ברור",
+                    "🟡 צהוב - המילה drawback לא ברורה",
+                    "🔴 אדום - מוותרים",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "מפענחים: מה זה drawback?",
+                  options: ["חיסרון", "יתרון", "הצלחה"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מה מילת המפתח שמכוונת אתכם, ובאיזו פסקה היא נמצאת?",
+                  options: [
+                    "David Green - פסקה III",
+                    "hives - פסקה I",
+                    "Rachel Stone - פסקה II",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מה התשובה?",
+                  options: [
+                    "The hives are dangerous",
+                    "The library gets more visitors",
+                    "Only two people knew how to care for bees",
+                    "Honey is sold for children's books",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    'השאלה: "According to Ms. Stone, what happens to MOST of the honey?" - איזה כלי מילת ההגבלה מפעילה?',
+                  options: [
+                    "כמה תשובות מהטקסט",
+                    "תשובה אחת ספציפית",
+                    "את כל האפשרויות",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "מה התשובה?",
+                  options: [
+                    "It is sold to fund children's books",
+                    "Twenty volunteers help",
+                    "The hives produce 300 jars a year",
+                    "Two people care for the bees",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "Which of the following is NOT mentioned in paragraph III?",
+                  options: [
+                    "The hives are dangerous",
+                    "No visitor has ever been stung",
+                    "The library has more visitors now",
+                    "The honey tastes bad",
+                  ],
+                  correctIndex: 3,
+                },
+                {
+                  prompt:
+                    'השאלה: "By how much did the number of visitors increase?" - מה מחפשים בטקסט?',
+                  options: [
+                    "40% - סורקים את הטקסט, בלי לקרוא מההתחלה",
+                    "2019",
+                    "300 jars",
+                    "twenty",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מה התשובה?",
+                  options: [
+                    "By 40%",
+                    "By 300 jars",
+                    "By twenty people",
+                    "By two people",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   },
