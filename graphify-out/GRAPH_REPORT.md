@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1106 nodes · 1424 edges · 97 communities (80 shown, 17 thin omitted)
+- 1106 nodes · 1424 edges · 97 communities (81 shown, 16 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 31 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0cd815e3`
+- Built from commit: `0cb041f5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -90,10 +90,12 @@
 - questions
 - questions
 - questions
+- lessons/+page.svelte
 - eye catchers - negative limit contrast.md
-- lessonProgress.svelte.ts
+- debug.svelte.ts
 - בקשת מסך - `<שם-המסך>`
 - Module C roadmap: from 7.5 to 9
+- api.ts
 - registry.ts
 - התחל כאן
 - moduleLocation.svelte.ts
@@ -103,21 +105,19 @@
 - Mcq.svelte
 - validate.ts
 - activeField.svelte.ts
-- lessons/+page.svelte
-- debug.svelte.ts
-- theme.svelte.ts
+- lessonIcon.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `EditModel` - 32 edges
 2. `LessonNode` - 15 edges
 3. `LessonScreen` - 15 edges
 4. `What You Must Do When Invoked` - 12 edges
-5. `withActive()` - 11 edges
+5. `Module C roadmap: from 7.5 to 9` - 11 edges
 6. `ReviewNotesStore` - 11 edges
-7. `compilerOptions` - 11 edges
+7. `withActive()` - 11 edges
 8. `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` - 11 edges
-9. `Module C roadmap: from 7.5 to 9` - 11 edges
-10. `Path to 10` - 10 edges
+9. `compilerOptions` - 11 edges
+10. `Phases` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `issuesByNode()` --indirect_call--> `i()`  [INFERRED]
@@ -134,7 +134,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (97 total, 17 thin omitted)
+## Communities (97 total, 16 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.04
@@ -205,8 +205,8 @@ Cohesion: 0.06
 Nodes (32): 4.c.1.1 · חמש המילים שפותחות כל שאלה, 4.c.1.2 · כל מילה — לאן היא שולחת אותי, 4.c.1.3 · תשובה אחת אינה רשימה, 4.c.1.4 · מה מותר להביא מהראש, 4.c.1.5 · שער סקשן 1, 4.c.2.1 · כמה באמת צריך לקרוא, 4.c.2.2 · מילת המפתח היא הנושא, לא ה-what, 4.c.2.3 · ממילת המפתח לפסקה (+24 more)
 
 ### Community 34 - "EditWorkspace.svelte"
-Cohesion: 0.10
-Nodes (15): post(), saveLessonContent(), saveSection(), storedKey(), EditStore, errorCount, hint, issues (+7 more)
+Cohesion: 0.18
+Nodes (9): errorCount, hint, issues, issuesFor, onKey(), playNode, save(), saveMsg (+1 more)
 
 ### Community 35 - "lesson-screens/types.ts"
 Cohesion: 0.10
@@ -384,9 +384,9 @@ Nodes (6): 5 (require 4c,a,b), preface, questions, round 1, round 2, round 3
 Cohesion: 0.50
 Nodes (3): 2 (c.4.1), implemented, material
 
-### Community 82 - "lessonProgress.svelte.ts"
-Cohesion: 0.29
-Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
+### Community 82 - "debug.svelte.ts"
+Cohesion: 0.10
+Nodes (7): DebugStore, lessonProgress, LessonProgressStore, persist(), ProgressMap, ThemeMode, ThemeStore
 
 ### Community 83 - "בקשת מסך - `<שם-המסך>`"
 Cohesion: 0.20
@@ -395,6 +395,10 @@ Nodes (9): בקשת מסך - `<שם-המסך>`, השדות, התנהגות, למ
 ### Community 84 - "Module C roadmap: from 7.5 to 9"
 Cohesion: 0.05
 Nodes (36): 1. Replace placeholder/template content (biggest lift), 2. Fix gating and order, 3. Spiral, don't repeat, 4. Connect reading and writing, 5. Fix facts, 6. Verify with play, 7. Tooling (last), Fixed on 2026-09-19 (+28 more)
+
+### Community 86 - "api.ts"
+Cohesion: 0.36
+Nodes (5): post(), saveLessonContent(), saveSection(), storedKey(), LessonContent
 
 ### Community 87 - "registry.ts"
 Cohesion: 0.21
@@ -428,23 +432,23 @@ Nodes (28): imports, isBigNode(), OUT, sectionFileNames, sectionMeta, splitConte
 Cohesion: 0.18
 Nodes (19): ActiveField, ActiveLine, currentBlock(), formatAlign(), formatBold(), formatCode(), formatColor(), formatDirection() (+11 more)
 
-### Community 98 - "lessons/+page.svelte"
-Cohesion: 0.33
+### Community 98 - "lessonIcon.ts"
+Cohesion: 0.67
 Nodes (3): hashString(), ICONS, lessonIcon()
 
 ## Knowledge Gaps
-- **592 isolated node(s):** `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)`, `Fixed on 2026-09-19`, `Still open` (+587 more)
+- **592 isolated node(s):** `Where we are`, `What "9" means (definition of done)`, `Decisions needed before building`, `Phase 0: Truth pass (hours, no design)`, `Phase 1: Baseline (play and read, no building)` (+587 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 19 · מקריאה לכתיבה`, `Section 26 · סימולציה ותיקון`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `חלק ד׳ — סקשנים 10–16: סוגי השאלות` connect `חלק ד׳ — סקשנים 10–16: סוגי השאלות` to `Section 16 · עמדת הכותב`, `Section 10 · רב-ברירה ואלימינציה`, `Section 11 · השלמת משפט`, `Section 13 · שאלות התייחסות`, `Section 14 · שאלות הסקה`, `Section 15 · רעיון מרכזי`, `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **What connects `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)` to the rest of the system?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **What connects `Where we are`, `What "9" means (definition of done)`, `Decisions needed before building` to the rest of the system?**
   _592 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
