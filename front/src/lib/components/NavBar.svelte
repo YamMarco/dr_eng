@@ -93,7 +93,7 @@
 		<!-- Slides to whichever tab is active — inset-inline-start (not left)
 		     so it lands under the right tab regardless of the RTL flex order. -->
 		<span
-			class="absolute top-0 h-0.5 rounded-full bg-brand-dark transition-[inset-inline-start] duration-300 ease-out"
+			class="absolute top-0 h-0.5 rounded-full bg-brand-dark transition-[inset-inline-start] duration-200 ease-out"
 			style="width: {100 / items.length}%; inset-inline-start: {(activeIndex / items.length) *
 				100}%"
 		></span>
@@ -107,7 +107,7 @@
 					? 'text-brand-dark'
 					: 'text-muted hover:text-ink'}"
 			>
-				<span class="inline-flex transition-transform duration-200 {active ? 'scale-110' : ''}">
+				<span class="inline-flex transition-transform duration-150 {active ? 'scale-110' : ''}">
 					{#if item.icon === 'home'}
 						{@render homeIcon(active)}
 					{:else if item.icon === 'book'}

@@ -113,7 +113,7 @@
 	// Counts up from 0 to the final score once the finish screen appears,
 	// instead of the number just appearing — reset instantly on retry so the
 	// next finish animates fresh rather than from wherever it last landed.
-	const scoreTween = new Tween(0, { duration: 650, easing: cubicOut });
+	const scoreTween = new Tween(0, { duration: 400, easing: cubicOut });
 	$effect(() => {
 		if (justFinished) scoreTween.set(score.correct);
 	});
@@ -198,7 +198,7 @@
 					<Confetti />
 				{/if}
 				<span
-					in:fly={{ y: -12, duration: 420, delay: 80, easing: backOut }}
+					in:fly={{ y: -12, duration: 280, delay: 0, easing: backOut }}
 					class="flex h-16 w-16 items-center justify-center rounded-2xl {passed
 						? 'bg-brand-soft text-brand'
 						: 'bg-danger-soft text-danger'}"
@@ -250,7 +250,7 @@
 			<!-- Force a full remount per screen so each component's own local
 			     state (selected answer, timers, ...) starts fresh every time. -->
 			{#key screenIndex}
-				<div in:fly={{ x: direction * 16, duration: 220, easing: cubicOut }}>
+				<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
 					<ScreenComponent
 						screen={currentScreen}
 						onAdvance={advance}

@@ -109,8 +109,8 @@
 				onclick={() => pick(i)}
 				in:scale={{
 					start: 0.4,
-					duration: 320,
-					delay: staggerDelay(i, 0, 30, 280),
+					duration: 220,
+					delay: staggerDelay(i, 0, 20, 160),
 					easing: backOut
 				}}
 				style="left: {pos.x}px; top: {pos.y}px; width: {HEX_W}px; height: {HEX_H}px; clip-path: {HEX_CLIP}"

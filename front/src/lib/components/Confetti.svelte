@@ -15,7 +15,7 @@
 				id: i,
 				left: Math.random() * 100,
 				delay: Math.random() * 150,
-				duration: 700 + Math.random() * 500,
+				duration: 500 + Math.random() * 350,
 				distance: 160 + Math.random() * 120,
 				spin: (Math.random() < 0.5 ? -1 : 1) * (360 + Math.random() * 360),
 				size: 6 + Math.random() * 5,

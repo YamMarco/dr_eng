@@ -38,10 +38,10 @@
 			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
 		>
 			<div
-				class="h-full rounded-full bg-brand transition-[width] duration-500 ease-out {compact
+				class="h-full rounded-full bg-brand transition-[width] duration-300 ease-out {compact
 					? 'motion-safe:animate-bar-fill'
 					: ''}"
-				style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 70}ms` : ''}"
+				style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 45}ms` : ''}"
 			></div>
 		</div>
 	{/each}

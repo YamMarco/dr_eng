@@ -162,7 +162,7 @@
 
 {#if checked}
 	<p
-		in:scale={{ start: 0.7, duration: 320, easing: backOut }}
+		in:scale={{ start: 0.7, duration: 220, easing: backOut }}
 		class="mt-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold {passed
 			? 'bg-brand-soft text-brand-dark'
 			: 'bg-danger-soft text-danger'}"

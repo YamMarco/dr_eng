@@ -22,7 +22,7 @@
 	}: Props = $props();
 
 	const base =
-		'inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-2xl px-6 py-3 text-lg font-semibold transition duration-150 disabled:pointer-events-none disabled:opacity-50';
+		'inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-2xl px-6 py-3 text-lg font-semibold transition duration-100 disabled:pointer-events-none disabled:opacity-50';
 
 	// Primary gets the full layered "puck" treatment (see .puck-3d in
 	// layout.css, shared with lesson-path nodes) — a ring + bottom lip the

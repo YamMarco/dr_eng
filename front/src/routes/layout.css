@@ -75,8 +75,8 @@
 		line-height: 1.6;
 		-webkit-tap-highlight-color: transparent;
 		transition:
-			background-color 150ms ease-out,
-			color 150ms ease-out;
+			background-color 100ms ease-out,
+			color 100ms ease-out;
 	}
 
 	:focus-visible {
@@ -103,8 +103,8 @@
 	border: 2px solid var(--puck-border);
 	transform-style: preserve-3d;
 	transition:
-		transform 150ms cubic-bezier(0, 0, 0.58, 1),
-		background-color 150ms cubic-bezier(0, 0, 0.58, 1);
+		transform 100ms cubic-bezier(0, 0, 0.58, 1),
+		background-color 100ms cubic-bezier(0, 0, 0.58, 1);
 }
 .puck-3d::before {
 	content: '';
@@ -121,8 +121,8 @@
 		0 var(--puck-offset) 0 2px var(--puck-lip);
 	transform: translate3d(0, var(--puck-offset), -1em);
 	transition:
-		transform 150ms cubic-bezier(0, 0, 0.58, 1),
-		box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+		transform 100ms cubic-bezier(0, 0, 0.58, 1),
+		box-shadow 100ms cubic-bezier(0, 0, 0.58, 1);
 }
 .puck-3d:hover {
 	transform: translate(0, calc(var(--puck-offset) * 0.43));
@@ -165,8 +165,8 @@
 	box-shadow: 0 4px 0 0 rgb(0 0 0 / 0.22);
 	transform: translateY(-3px);
 	transition:
-		transform 130ms cubic-bezier(0, 0, 0.58, 1),
-		box-shadow 130ms cubic-bezier(0, 0, 0.58, 1);
+		transform 90ms cubic-bezier(0, 0, 0.58, 1),
+		box-shadow 90ms cubic-bezier(0, 0, 0.58, 1);
 }
 .node-socket:hover .node-face {
 	transform: translateY(-1.5px);
@@ -183,7 +183,7 @@
    media query on its own. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-	animation-duration: 180ms;
+	animation-duration: 120ms;
 	animation-timing-function: ease-out;
 }
 
@@ -231,11 +231,11 @@
 }
 
 @utility animate-pop-correct {
-	animation: pop-correct 320ms ease-out;
+	animation: pop-correct 220ms ease-out;
 }
 
 @utility animate-shake-wrong {
-	animation: shake-wrong 380ms ease-in-out;
+	animation: shake-wrong 280ms ease-in-out;
 }
 
 /* A progress-bar fill growing from empty to its own width — see
@@ -248,7 +248,7 @@
 }
 
 @utility animate-bar-fill {
-	animation: bar-fill 450ms ease-out backwards;
+	animation: bar-fill 300ms ease-out backwards;
 }
 
 /* One confetti piece falling + tumbling — see Confetti.svelte. */

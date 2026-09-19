@@ -132,8 +132,8 @@
 	// appear without a wait since scrolling put them off-screen anyway.
 	const reducedMotion =
 		typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	const ROW_STAGGER_MS = 90;
-	const ROW_STAGGER_CAP_MS = 650;
+	const ROW_STAGGER_MS = 55;
+	const ROW_STAGGER_CAP_MS = 400;
 	let lastLessonId = $derived(moduleLocation.get(mod.id));
 	let rowOrder = $derived.by(() => {
 		const ys = [...new Set(nodes.map((node) => node.y))].sort((a, b) => a - b);
@@ -146,7 +146,7 @@
 	function delayForY(y: number): number {
 		if (reducedMotion) return 0;
 		const rowsBelowAnchor = Math.max(0, (rowOrder.get(y) ?? 0) - anchorRow);
-		return 80 + Math.min(rowsBelowAnchor * ROW_STAGGER_MS, ROW_STAGGER_CAP_MS);
+		return 40 + Math.min(rowsBelowAnchor * ROW_STAGGER_MS, ROW_STAGGER_CAP_MS);
 	}
 	function edgeDelay(targetY: number): number {
 		return reducedMotion ? 0 : Math.max(0, delayForY(targetY) - 60);
@@ -353,7 +353,7 @@
 						class="stroke-line"
 						stroke-width="3"
 						stroke-linecap="round"
-						in:draw={{ duration: 320, delay: edgeDelay(edge.targetY) }}
+						in:draw={{ duration: 220, delay: edgeDelay(edge.targetY) }}
 					/>
 				{/each}
 			</svg>
@@ -362,7 +362,7 @@
 				<p
 					class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
 					style="left: {CANVAS_CENTER + heading.x}px; top: {heading.y - 32}px; width: 8rem"
-					in:fade={{ duration: 250, delay: reducedMotion ? 0 : 60 }}
+					in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 				>
 					{heading.titleHe}
 				</p>
@@ -380,7 +380,7 @@
 						: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
 					style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px; --puck-border: {node.theme
 						.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
-					in:scale={{ start: 0.35, duration: 420, delay: delayForY(node.y), easing: backOut }}
+					in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
 				>
 					<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
 					     element) stays put, the inner .node-face recedes on tap (see
@@ -441,8 +441,8 @@
 						<!-- Click-triggered label instead of a full-screen modal: title + start
 						     (or, once round 1 is done, the next round to play). -->
 						<div
-							in:scale={{ start: 0.55, duration: 240, easing: backOut }}
-							out:scale={{ start: 0.55, duration: 130 }}
+							in:scale={{ start: 0.55, duration: 160, easing: backOut }}
+							out:scale={{ start: 0.55, duration: 90 }}
 							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
 						>
 							<div class="flex flex-col gap-2">
