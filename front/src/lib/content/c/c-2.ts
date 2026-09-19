@@ -896,6 +896,11 @@ export const c2Lessons: LessonNode[] = [
               explanation: "אוויר ונהרות = הסביבה.",
             },
             {
+              type: "spell-word",
+              word: "environment",
+              mode: "copy",
+            },
+            {
               type: "word-card",
               word: "volunteer(s)",
               translationHe: "מתנדב / מתנדבים",
@@ -912,6 +917,11 @@ export const c2Lessons: LessonNode[] = [
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "מרצון ובלי שכר = מתנדבת.",
+            },
+            {
+              type: "spell-word",
+              word: "volunteers",
+              mode: "copy",
             },
             {
               type: "word-card",
@@ -932,6 +942,11 @@ export const c2Lessons: LessonNode[] = [
               explanation: "משפחות, מורים ובעלי חנויות ביחד = קהילה.",
             },
             {
+              type: "spell-word",
+              word: "community",
+              mode: "copy",
+            },
+            {
               type: "word-card",
               word: "charity",
               translationHe: "ארגון צדקה",
@@ -950,6 +965,11 @@ export const c2Lessons: LessonNode[] = [
               explanation: "אוסף כסף כדי לעזור ולא כדי להרוויח = ארגון צדקה.",
             },
             {
+              type: "spell-word",
+              word: "charity",
+              mode: "copy",
+            },
+            {
               type: "word-card",
               word: "residents",
               translationHe: "תושבים",
@@ -965,6 +985,11 @@ export const c2Lessons: LessonNode[] = [
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "מי שגר במקום = תושב.",
+            },
+            {
+              type: "spell-word",
+              word: "residents",
+              mode: "copy",
             },
             {
               type: "match-pairs",
