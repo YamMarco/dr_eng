@@ -24,7 +24,6 @@
 | `writing-task` | מטלת כתיבה עם בנק מילים. נבדק אוטומטית: מספר משפטים וכמה מילים מהבנק שולבו | `prompt`, `wordBank`, `minSentences`, `minWordsUsed` |
 | `passage-mcq` | טקסט + שאלות אמריקאיות עליו, בלי שעון | `text`, `questions` |
 | `passage-quiz` | טקסט + שאלות בתשובה קצרה בכתב. נכון אם מילות המפתח מופיעות | `text`, `questions` (כל שאלה: `prompt`, `keywords`, `answerHint`) |
-| `timed-passage` | כמו `passage-mcq` אבל עם סטופר שרץ | `label`, `text`, `timerKey`, `questions` |
 
 ## מסכי זמן (שלישייה שעובדת ביחד)
 
@@ -38,7 +37,7 @@
 
 ## כללי עבודה
 
-- ברירת מחדל לטקסט עם שאלות: `passage-mcq`. `timed-passage` רק כשהנושא הוא זמן.
+- ברירת מחדל לטקסט עם שאלות: `passage-mcq`. `timerKey` רק כשהנושא הוא זמן.
 - `mark-all` הוא התשובה לכל "מצא את כל ה..." בחומר.
 - `self-check` לכתיבה שלא רוצים לתת עליה ציון. `writing-task` לכתיבה שכן נספרת.
 - ב-`correctIndex` הספירה מתחילה מאפס: התשובה הראשונה היא 0.

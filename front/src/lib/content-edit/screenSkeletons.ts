@@ -16,7 +16,6 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 			'mark-all',
 			'spell-word',
 			'writing-task',
-			'timed-passage',
 			'passage-quiz',
 			'passage-mcq',
 			'self-check'
@@ -64,8 +63,6 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 				fasterMessage: '',
 				tieMessage: ''
 			};
-		case 'timed-passage':
-			return { type, label: '', text: '', timerKey: '', questions: [] };
 		case 'passage-quiz':
 			return { type, text: '', questions: [] };
 		case 'passage-mcq':

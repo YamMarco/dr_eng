@@ -16,7 +16,6 @@ export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	'mark-all': 'סימון במלל',
 	'spell-word': 'איות מילה',
 	'writing-task': 'משימת כתיבה',
-	'timed-passage': 'קטע מתוזמן + שאלות',
 	'passage-quiz': 'קטע + שאלות פתוחות',
 	'passage-mcq': 'קטע + שאלות אמריקאיות',
 	'self-check': 'בדיקה עצמית',

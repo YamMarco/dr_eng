@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Multiple-choice options + which one is correct — the shared shape behind
-	// mcq, and each question inside timed-passage / passage-mcq.
+	// mcq, and each question inside passage-mcq.
 	let {
 		options = $bindable([]),
 		correctIndex = $bindable(0),

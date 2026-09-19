@@ -48,7 +48,7 @@
 
 	// Optional stopwatch (screen.timerKey) — ticks until the answer is checked,
 	// then freezes and leaves the elapsed ms in the session for a later
-	// time-result screen. Same contract as TimedPassage.
+	// time-result screen. Same contract as PassageMcq.
 	const startedAt = performance.now();
 	let now = $state(startedAt);
 

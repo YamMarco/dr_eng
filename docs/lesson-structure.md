@@ -69,7 +69,7 @@ Add an object to the right section's array:
 | type | fields | scored |
 | --- | --- | --- |
 | `preface` | `text`, `dir?` | — |
-| `steps` | `steps[]` | — |
+| `steps` | `steps[]`, `ordered?` (true = numbered) | — |
 | `summary` | `title`, `lines[]` | — |
 | `word-card` | `word`, `translationHe?`, `imageAlt?` | — |
 | `question-preview` | `intro`, `prompts[]` | — |
@@ -82,9 +82,8 @@ Add an object to the right section's array:
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
-| `timed-passage` | `label`, `text`, `timerKey`, `questions[{prompt, options, correctIndex}]` | n |
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
-| `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]` | n |
+| `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]`, `timerKey?`, `label?` | n |
 
 `mark-all` renders the passage as flowing text; each word is tap-to-toggle.
 Scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
@@ -94,8 +93,8 @@ is optional colour-coding (names / negatives / …): shown as a legend, and the
 matching tokens light up in that colour on the reveal (`color` is a key into
 `lesson-screens/markAllColors.ts`). Scoring ignores which category a token is in. `passage-quiz` marks correct when every keyword appears in the typed answer
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
-`passage-mcq` is `timed-passage` without the clock/label — pick it for a short
-text + multiple-choice question(s) on one screen with no stopwatch UI.
+`passage-mcq` is a short text + multiple-choice question(s) on one screen. Set
+`timerKey` (+ `label`) to add a stopwatch that stops on the last check.
 `cloze-pick` shows `options` as tiles; picking one previews the assembled
 sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
 this instead of `writing-task` when the "free" part of an answer is really a

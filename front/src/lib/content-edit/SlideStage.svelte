@@ -537,10 +537,17 @@
 									/>
 								</label>
 							</div>
-						{:else if screen.type === 'timed-passage'}
+						{:else if screen.type === 'steps'}
+							<label
+								class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+							>
+								<input type="checkbox" bind:checked={screen.ordered} />
+								רשימה ממוספרת
+							</label>
+						{:else if screen.type === 'passage-mcq'}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
 								<label class="flex items-center gap-2 text-xs text-muted">
-									מזהה טיימר
+									מזהה טיימר (אופציונלי - ריק = בלי טיימר)
 									<input
 										bind:value={screen.timerKey}
 										dir="ltr"

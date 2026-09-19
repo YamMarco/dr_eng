@@ -44,7 +44,7 @@ function screenIssues(node: LessonNode, path: ScreenPath, screen: LessonScreen):
 		for (const r of node.content.rounds)
 			for (const s of r.screens)
 				if (
-					(s.type === 'timed-reading' || s.type === 'timed-passage' || s.type === 'mark-all') &&
+					(s.type === 'timed-reading' || s.type === 'passage-mcq' || s.type === 'mark-all') &&
 					s.timerKey
 				)
 					produced.add(s.timerKey);

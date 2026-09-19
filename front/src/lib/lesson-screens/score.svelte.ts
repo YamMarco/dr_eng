@@ -1,6 +1,6 @@
 // Tracks how many of the questions the student answered correctly out of the
 // part's total question count — shared via context so any question-type
-// screen (mcq, mark-word, timed-passage, ...) can record onto it.
+// screen (mcq, mark-word, passage-mcq, ...) can record onto it.
 //
 // `total` is fixed upfront by the runner (see countQuestions in types.ts), so
 // the badge reads e.g. 1/3, 1/3, 2/3 as questions are answered — never a

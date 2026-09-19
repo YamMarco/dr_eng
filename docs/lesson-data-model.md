@@ -57,7 +57,7 @@ derivation pipeline, then frozen. Edit the `c/*.ts` files directly from here on.
 | teaching | `preface`, `steps`, `summary`, `word-card`, `question-preview` | no |
 | timing/meta | `timed-reading`, `time-result`, `time-comparison` | no |
 | exercise (1 pt) | `mcq`, `mark-word`, `mark-all`, `spell-word`, `writing-task` | 1 |
-| exercise (n pts) | `timed-passage`, `passage-quiz` | = `questions.length` |
+| exercise (n pts) | `passage-mcq`, `passage-quiz` | = `questions.length` |
 
 `countQuestions(screen)` gives a round's fixed score denominator. Pass = ≥80% of a
 round's points. `isScreenEmpty(screen)` → skipped at runtime.

@@ -4,6 +4,7 @@
 	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
+	import { getLessonSession } from './session.svelte';
 
 	const score = getLessonScore();
 
@@ -21,9 +22,14 @@
 		label?: string;
 	} = $props();
 
+	const session = getLessonSession();
+	const startedAt = performance.now();
+	let now = $state(startedAt);
+	let finished = $state(false);
+
 	// One question at a time: pick -> check (reveals right/wrong) -> next,
-	// regardless of whether the answer was correct. Same flow as
-	// timed-passage, minus the stopwatch.
+	// regardless of whether the answer was correct. With `timerKey` set, a
+	// stopwatch runs until the last question is checked.
 	let qi = $state(0);
 	let picked = $state<number | null>(null);
 	let checked = $state(false);
@@ -33,6 +39,18 @@
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+
+	// Ticks (and keeps the session's running total updated) until the last
+	// question is checked.
+	$effect(() => {
+		const key = screen.timerKey;
+		if (!key || finished) return;
+		const interval = setInterval(() => {
+			now = performance.now();
+			session[key] = now - startedAt;
+		}, 100);
+		return () => clearInterval(interval);
+	});
 
 	function pick(optionIndex: number) {
 		if (checked) return;
@@ -45,7 +63,13 @@
 			if (picked === null) return;
 			checked = true;
 			recordAnswer(score, picked === question.correctIndex);
-			label = isLastQuestion ? '' : i18n.dict.lesson.nextQuestionButton;
+			if (isLastQuestion) {
+				finished = true;
+				if (screen.timerKey) session[screen.timerKey] = performance.now() - startedAt;
+				label = '';
+			} else {
+				label = i18n.dict.lesson.nextQuestionButton;
+			}
 		} else if (!isLastQuestion) {
 			qi += 1;
 			picked = null;
@@ -58,8 +82,21 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
+<ExerciseKindBadge
+	label={screen.timerKey ? i18n.dict.exerciseKind.timedReading : i18n.dict.exerciseKind.mcq}
+/>
 <ScoreBadge {score} />
+{#if screen.timerKey}
+	<div class="flex items-center justify-between">
+		<span class="font-semibold text-muted">{screen.label ?? ''}</span>
+		<span
+			class="rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"
+			dir="ltr"
+		>
+			{((now - startedAt) / 1000).toFixed(1)}s
+		</span>
+	</div>
+{/if}
 <p class="leading-relaxed whitespace-pre-line" dir="ltr">{screen.text}</p>
 
 <div class="mt-6">

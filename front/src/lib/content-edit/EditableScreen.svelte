@@ -37,7 +37,7 @@
 		touch();
 	}
 
-	// timed-passage / passage-mcq: {prompt, options, correctIndex}[] questions,
+	// passage-mcq: {prompt, options, correctIndex}[] questions,
 	// edited inline in the same radio-button style as a plain mcq screen.
 	function addMcqQuestion() {
 		screen.questions = [
@@ -119,7 +119,7 @@
 			<ol class="space-y-1">
 				{#each screen.steps as _step, i (i)}
 					<li class="flex items-start gap-2 rounded-lg bg-surface/70 p-1.5">
-						<span class="pt-1 text-xs font-bold text-muted">{i + 1}.</span>
+						{#if screen.ordered}<span class="pt-1 text-xs font-bold text-muted">{i + 1}.</span>{/if}
 						<div class="flex-1">
 							<MarkdownInput
 								bare
@@ -310,8 +310,8 @@
 				onInput={(v) => set('text', v)}
 			/>
 			<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>
-		{:else if screen.type === 'timed-passage' || screen.type === 'passage-mcq'}
-			{#if screen.type === 'timed-passage'}
+		{:else if screen.type === 'passage-mcq'}
+			{#if screen.timerKey}
 				<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
 			{/if}
 			<MarkdownInput
@@ -401,9 +401,7 @@
 					+ הוסף שאלה
 				</button>
 			</div>
-			{#if screen.type === 'timed-passage'}
-				<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>
-			{/if}
+			<p class="text-xs text-muted">טיימר (אופציונלי) - בסרגל התחתון</p>
 		{:else if screen.type === 'passage-quiz'}
 			<MarkdownInput
 				bare

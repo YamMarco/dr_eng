@@ -5,7 +5,8 @@
 
 export type PrefaceScreen = { type: 'preface'; text: string; dir?: 'rtl' | 'ltr' };
 
-export type StepsScreen = { type: 'steps'; steps: string[] };
+/** `ordered` numbers the steps; omitted/false keeps the plain card look. */
+export type StepsScreen = { type: 'steps'; steps: string[]; ordered?: boolean };
 
 export type SummaryScreen = { type: 'summary'; title: string; lines: string[] };
 
@@ -48,19 +49,6 @@ export type TimedReadingScreen = {
 /** A list of question prompts to read (no options yet) — priming before a text. */
 export type QuestionPreviewScreen = { type: 'question-preview'; intro: string; prompts: string[] };
 
-/**
- * A text and its questions together on one screen, with a stopwatch running
- * while it's unanswered. One shared "submit" checks every question at once
- * and freezes the timer, recording the elapsed ms under `timerKey`.
- */
-export type TimedPassageScreen = {
-	type: 'timed-passage';
-	label: string;
-	text: string;
-	timerKey: string;
-	questions: { prompt: string; options: string[]; correctIndex: number }[];
-};
-
 /** Shows the elapsed time recorded under `timerKey` by an earlier timed-reading screen. */
 export type TimeResultScreen = { type: 'time-result'; label: string; timerKey: string };
 
@@ -85,10 +73,16 @@ export type PassageQuizScreen = {
 	questions: PassageQuizQuestion[];
 };
 
-/** A text and multiple-choice questions about it, no timer — like timed-passage without the clock. */
+/**
+ * A text and multiple-choice questions about it. Set `timerKey` to run a
+ * stopwatch until the last question is checked, recording the elapsed ms into
+ * the lesson session under that key (and showing `label` beside the clock).
+ */
 export type PassageMcqScreen = {
 	type: 'passage-mcq';
 	text: string;
+	label?: string;
+	timerKey?: string;
 	questions: { prompt: string; options: string[]; correctIndex: number }[];
 };
 
@@ -190,7 +184,7 @@ export type MarkAllScreen = {
 	wordBank?: string[];
 	/**
 	 * Set to run a stopwatch while the student marks, recording the elapsed ms
-	 * into the lesson session under this key — same contract as timed-passage,
+	 * into the lesson session under this key — same contract as passage-mcq's timerKey,
 	 * so a later time-result screen can read it back.
 	 */
 	timerKey?: string;
@@ -225,7 +219,6 @@ export type LessonScreen =
 	| QuestionPreviewScreen
 	| TimeResultScreen
 	| TimeComparisonScreen
-	| TimedPassageScreen
 	| PassageQuizScreen
 	| PassageMcqScreen
 	| WritingTaskScreen
@@ -261,7 +254,6 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			);
 		case 'question-preview':
 			return screen.prompts.length === 0;
-		case 'timed-passage':
 		case 'passage-quiz':
 		case 'passage-mcq':
 			return !screen.text.trim() || screen.questions.length === 0;
@@ -286,7 +278,6 @@ export function countQuestions(screen: LessonScreen): number {
 		case 'cloze-pick':
 		case 'mark-all':
 			return 1;
-		case 'timed-passage':
 		case 'passage-quiz':
 		case 'passage-mcq':
 			return screen.questions.length;
