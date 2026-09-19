@@ -9,7 +9,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "אני מחפש, לא קורא",
     titleEn: "Mindset",
     required: ["vocab-test"],
-    position: { x: 0, y: 540 },
+    position: { x: 0, y: 570 },
     big: false,
     content: {
       preface: [
@@ -4433,7 +4433,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Three years ago, the town of Rivertown started a recycling programme. According to Mayor Diane Cole, only 15% of households recycled regularly before the programme began. Today, more than 70% of households recycle every week.\n\nII  The programme is run by environmental scientist Dr. Tomas Bell. \"We did not expect such fast progress,\" says Dr. Bell. \"No other town in the region has reached this level in under three years.\" According to Dr. Bell, the most important factor was door-to-door collection, introduced in 2021.\n\nIII  Not everyone supports the programme. Some residents complain that the new bins are too small. However, a recent survey found that 90% of residents want the programme to continue, and only 3% want it to stop.",
+              text: 'I  Three years ago, the town of Rivertown started a recycling programme. According to Mayor Diane Cole, only 15% of households recycled regularly before the programme began. Today, more than 70% of households recycle every week.\n\nII  The programme is run by environmental scientist Dr. Tomas Bell. "We did not expect such fast progress," says Dr. Bell. "No other town in the region has reached this level in under three years." According to Dr. Bell, the most important factor was door-to-door collection, introduced in 2021.\n\nIII  Not everyone supports the programme. Some residents complain that the new bins are too small. However, a recent survey found that 90% of residents want the programme to continue, and only 3% want it to stop.',
               questions: [
                 {
                   prompt:
@@ -4492,7 +4492,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Two years ago, Green Valley High School had almost no working computers in its library. According to Principal Laura Kim, only 12 out of 40 computers still worked. Today, the library has 55 new computers and free wifi throughout the building.\n\nII  The renovation was led by IT coordinator Mr. David Osei. \"We did not receive government funding,\" he explains. \"No company offered to help at first.\" According to Mr. Osei, the most useful change was training students as tech helpers, a project that began in September 2022.\n\nIII  Not all teachers were convinced at first. A few worried that students would waste time online. However, a recent survey found that 88% of teachers now say the library is more useful for lessons, and only 2% still have concerns.",
+              text: 'I  Two years ago, Green Valley High School had almost no working computers in its library. According to Principal Laura Kim, only 12 out of 40 computers still worked. Today, the library has 55 new computers and free wifi throughout the building.\n\nII  The renovation was led by IT coordinator Mr. David Osei. "We did not receive government funding," he explains. "No company offered to help at first." According to Mr. Osei, the most useful change was training students as tech helpers, a project that began in September 2022.\n\nIII  Not all teachers were convinced at first. A few worried that students would waste time online. However, a recent survey found that 88% of teachers now say the library is more useful for lessons, and only 2% still have concerns.',
               questions: [
                 {
                   prompt:
@@ -4506,7 +4506,8 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Mr. Osei, what was the MOST useful change?",
+                  prompt:
+                    "According to Mr. Osei, what was the MOST useful change?",
                   options: [
                     "New computers",
                     "Free wifi",
