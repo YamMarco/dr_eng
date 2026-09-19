@@ -238,6 +238,19 @@
 	animation: shake-wrong 380ms ease-in-out;
 }
 
+/* A progress-bar fill growing from empty to its own width — see
+   LessonProgressBar.svelte (compact). `backwards` holds it empty during any
+   animation-delay so staggered segments don't flash full first. */
+@keyframes bar-fill {
+	from {
+		width: 0;
+	}
+}
+
+@utility animate-bar-fill {
+	animation: bar-fill 450ms ease-out backwards;
+}
+
 /* One confetti piece falling + tumbling — see Confetti.svelte. */
 @keyframes confetti-fall {
 	0% {

@@ -6,7 +6,7 @@
 		segments: number[];
 		/** 0-based index of the screen currently on screen; pass segments-total to show full. */
 		current: number;
-		/** Slim, padding-free variant for embedding inside a card. */
+		/** Slim, padding-free variant for embedding inside a card; fills up from empty each time it mounts. */
 		compact?: boolean;
 	};
 
@@ -38,8 +38,10 @@
 			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
 		>
 			<div
-				class="h-full rounded-full bg-brand transition-[width] duration-500 ease-out"
-				style="width: {fractions[i] * 100}%"
+				class="h-full rounded-full bg-brand transition-[width] duration-500 ease-out {compact
+					? 'motion-safe:animate-bar-fill'
+					: ''}"
+				style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 70}ms` : ''}"
 			></div>
 		</div>
 	{/each}
