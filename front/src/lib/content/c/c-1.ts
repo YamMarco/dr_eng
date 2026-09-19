@@ -945,6 +945,74 @@ export const c1Lessons: LessonNode[] = [
             },
           ],
         },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "המרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה."
+            },
+            {
+              type: "preface",
+              text: "דרך א׳: קוראים הכל\n\nקראו את כל הטקסט מהמילה הראשונה ועד האחרונה, ורק אחר כך ענו על השאלה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח."
+            },
+            {
+              type: "passage-mcq",
+              label: "דרך א׳ - קריאה מלאה",
+              timerKey: "raceRead",
+              text: "THE OLD LIGHTHOUSE\n\nThe lighthouse at Cape Marlow was built in 1881 to warn ships about the rocks near the coast. For almost a hundred years, a keeper lived inside it and lit the lamp every evening. In 1974, the lamp became automatic, and the last keeper, Thomas Reed, moved to a nearby village. The building was empty for many years. Then, in 2015, a local group raised 300,000 dollars to repair it. Today, the lighthouse is a small museum, and about 20,000 visitors climb its 120 steps every year.",
+              questions: [
+                {
+                  prompt: "How much money did the local group raise to repair the lighthouse?",
+                  options: [
+                    "20,000 dollars",
+                    "120 dollars",
+                    "300,000 dollars",
+                    "It is not written in the text"
+                  ],
+                  correctIndex: 2
+                }
+              ]
+            },
+            {
+              type: "preface",
+              text: "דרך ב׳: P1\n\nאל תקראו את הכל. קודם את השאלה, אחר כך: מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח."
+            },
+            {
+              type: "passage-mcq",
+              label: "דרך ב׳ - P1",
+              timerKey: "raceP1",
+              text: "THE MOUNTAIN BAKERY\n\nThe bakery in Alta Valley opened in 1952 and sold only bread at first. For many years, the owner, Maria Costa, baked everything by hand before sunrise. In 1988, her son Luca joined her and added cakes and cookies to the menu. Because the village was small, most customers were neighbours who came every morning. In 2019, a food magazine wrote about the bakery, and tourists began to arrive from other cities. Today, the bakery employs twelve people and sells about 500 loaves every day, but Luca says the recipe for the bread has never changed.",
+              questions: [
+                {
+                  prompt: "According to Luca, what has never changed?",
+                  options: [
+                    "The recipe for the bread",
+                    "The number of workers",
+                    "The number of customers",
+                    "The opening hours"
+                  ],
+                  correctIndex: 0
+                }
+              ]
+            },
+            {
+              type: "time-comparison",
+              aLabel: "דרך א׳ - קריאה מלאה",
+              aKey: "raceRead",
+              bLabel: "דרך ב׳ - P1",
+              bKey: "raceP1",
+              fasterMessage: "P1 היה מהיר יותר. בבחינה ההפרש הזה חוזר בכל שאלה - וזה בדיוק הזמן שנשאר לכם לכתיבה.",
+              tieMessage: "הפעם P1 לא היה מהיר יותר. נסו שוב, ובדרך ב׳ הקפידו לחפש רק את מילת המפתח בלי לקרוא הכל."
+            },
+            {
+              type: "summary",
+              title: "ONE SENTENCE",
+              lines: [
+                "\"לא קוראים הכל - מחפשים. וכל שנייה שחסכתי היא זמן לכתיבה.\""
+              ]
+            }
+          ]
+        },
       ],
     },
   },
@@ -4194,7 +4262,93 @@ export const c1Lessons: LessonNode[] = [
     required: ["l10", "l12"],
     position: { x: 0, y: 1980 },
     big: false,
-    content: { preface: [], rounds: [{ screens: [] }] },
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "סיכום שאלות: ארבעה סוגי שאלות בטקסט אחד, והשעון רץ.\n\nלפני כל שאלה: רמזור. אחר כך מילת מפתח ← איתור ← קריאת המשפט ← תשובה.\nהשעון לא משפיע על הציון - הוא מראה לכם כמה מהר אתם עובדים."
+        }
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "passage-mcq",
+              label: "סיכום שאלות",
+              timerKey: "qsTime",
+              text: "THE LAKESIDE BIKE PROJECT\n\nI  Five years ago, the town of Lakeside had heavy traffic and very few places to park. However, in 2020, the town council started a bike-sharing project in order to reduce the number of cars in the centre. The project began with 50 bikes and three stations.\n\nII  The project was designed by transport engineer Dr. Hannah Weiss. According to Dr. Weiss, people use the bikes for two main reasons: they are cheaper than the bus, and they are faster in the crowded centre. In addition, residents say the bikes make the town feel friendlier.\n\nIII  Not everyone agrees. Councillor Paul Ortiz says that some bikes are left on the pavement, and no clear rules exist for parking them. Nevertheless, the project has grown to 400 bikes, and the number of cars in the centre has fallen by 25%.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph II about the bikes?",
+                  options: [
+                    "Some of them are left on the pavement",
+                    "The project began with 50 of them",
+                    "They reduced the number of cars by 25%",
+                    "They are cheaper than the bus and faster in the centre"
+                  ],
+                  correctIndex: 3
+                },
+                {
+                  prompt: "According to Dr. Weiss, why do people use the bikes? Give ONE answer.",
+                  options: [
+                    "Because the town council started the project",
+                    "Because they are cheaper than the bus",
+                    "Because some bikes are left on the pavement",
+                    "Because there are 400 bikes"
+                  ],
+                  correctIndex: 1
+                },
+                {
+                  prompt: "Complete the sentence: The town council started the project in order to ___",
+                  options: [
+                    "make the town feel friendlier",
+                    "save money on buses",
+                    "reduce the number of cars in the centre",
+                    "build three new stations"
+                  ],
+                  correctIndex: 2
+                },
+                {
+                  prompt: "Give TWO answers: What are the results of the project, according to paragraph III?",
+                  options: [
+                    "It grew to 400 bikes, and the number of cars fell by 25%",
+                    "It began with 50 bikes and three stations",
+                    "The bikes are cheaper and faster than the bus",
+                    "Some bikes are left on the pavement, and there are no clear rules"
+                  ],
+                  correctIndex: 0
+                },
+                {
+                  prompt: "Which of the following is NOT mentioned in the text?",
+                  options: [
+                    "Bikes are faster in the crowded centre",
+                    "Some bikes are left on the pavement",
+                    "The project started in 2020",
+                    "The bikes are free for residents"
+                  ],
+                  correctIndex: 3
+                }
+              ]
+            },
+            {
+              type: "time-result",
+              label: "הזמן שלכם",
+              timerKey: "qsTime"
+            },
+            {
+              type: "summary",
+              title: "ארבעה סוגי שאלות",
+              lines: [
+                "בחירה מרובה: קוראים את כל 4 האפשרויות, חוצים, מוצאים הוכחה.",
+                "תשובה קצרה: תשובה אחת, מהטקסט.",
+                "השלמת משפט: ממשיכים את המשפט - because = סיבה, in order to = מטרה.",
+                "שתי תשובות: TWO = שתיים, תמיד."
+              ]
+            }
+          ]
+        }
+      ]
+    },
   },
   {
     id: "n-b46b7e2b",
@@ -4373,7 +4527,84 @@ export const c1Lessons: LessonNode[] = [
     required: ["n-649ed18f"],
     position: { x: 0, y: 2100 },
     big: true,
-    content: { preface: [], rounds: [{ screens: [] }] },
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "סיכום חלק 1: מבחן קטן על כל מה שלמדתם. טקסט אחד, שעון רץ.\n\nהשיטה: מפה ← רמזור ← מילת מפתח ← תשובה. ובדרך: מספרים ושמות, NOT, most / only, however / but."
+        }
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "passage-mcq",
+              label: "חלק 1",
+              timerKey: "partOneTime",
+              text: "THE ELM STREET LIBRARY\n\nI  In 2010, the Elm Street library was almost closed because only 30 people visited it each week. However, a group of parents decided to save it. They asked local businesses for help and collected 12,000 dollars in one summer.\n\nII  The project was led by teacher Sarah Boyd. According to Ms. Boyd, the most important change was a new children's corner, which now attracts more than 200 families every week. Volunteers also organise reading evenings on Fridays.\n\nIII  Not all residents were happy about the change. Mr. Daniel Ross argues that the library is now too noisy. Nevertheless, most visitors say they enjoy the lively atmosphere, and the library now has 1,500 members.",
+              questions: [
+                {
+                  prompt: "What is the main point of paragraph I?",
+                  options: [
+                    "Only 30 people visited the library each week",
+                    "A group of parents decided to save the library",
+                    "The library was almost closed",
+                    "Local businesses are rich"
+                  ],
+                  correctIndex: 1
+                },
+                {
+                  prompt: "How much money was collected in one summer?",
+                  options: [
+                    "1,500 dollars",
+                    "200 dollars",
+                    "12,000 dollars",
+                    "30 dollars"
+                  ],
+                  correctIndex: 2
+                },
+                {
+                  prompt: "According to Ms. Boyd, what was the MOST important change?",
+                  options: [
+                    "A new children's corner",
+                    "Reading evenings on Fridays",
+                    "Asking local businesses for help",
+                    "A quieter atmosphere"
+                  ],
+                  correctIndex: 0
+                },
+                {
+                  prompt: "Which of the following is NOT mentioned in paragraph III?",
+                  options: [
+                    "Mr. Ross thinks the library is too noisy",
+                    "Most visitors enjoy the lively atmosphere",
+                    "The library has 1,500 members",
+                    "The library will move to a new building"
+                  ],
+                  correctIndex: 3
+                }
+              ]
+            },
+            {
+              type: "time-result",
+              label: "הזמן שלכם",
+              timerKey: "partOneTime"
+            },
+            {
+              type: "summary",
+              title: "סיכום חלק 1: כל השיטה",
+              lines: [
+                "מפה · כותרת + פסקה ראשונה: על מה הטקסט?",
+                "רמזור · מבינים את השאלה? רק ירוק עונה.",
+                "P1 · מילת מפתח ← איתור ← קריאת המשפט ← תשובה.",
+                "כלים · מספרים ושמות, NOT, most / only, however / but.",
+                "בחלק הבא: אותן מילים (because, in addition, for example) - הפעם אתם הכותבים."
+              ]
+            }
+          ]
+        }
+      ]
+    },
   },
   {
     id: "n-221188d1",
