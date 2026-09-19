@@ -9,14 +9,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות שאלה: איפה ומה",
     titleEn: "Question Words: Where & What",
-    required: [
-      "n-5cd02dfa",
-    ],
+    required: ["n-5cd02dfa"],
     requiredRounds: 3,
-    position: {
-      x: -200,
-      y: 130,
-    },
+    position: { x: -200, y: 130 },
     big: false,
     content: {
       preface: [
@@ -39,17 +34,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "פסקה",
               exampleEn: "What do we learn from **paragraph** II?",
               exampleHe: "מה אנחנו לומדים מפסקה II?",
-              hookHe: "paragraph = פסקה. נשמע כמו \"פרגרף\". בטקסט הפסקאות ממוספרות I, II, III, וההוראה שולחת אתכם לאחת מהן בלבד.",
+              hookHe:
+                'paragraph = פסקה. נשמע כמו "פרגרף". בטקסט הפסקאות ממוספרות I, II, III, וההוראה שולחת אתכם לאחת מהן בלבד.',
             },
             {
               type: "mcq",
-              prompt: "\"What do we learn from paragraph II?\" - איפה מחפשים?",
-              options: [
-                "בכותרת",
-                "רק בפסקה II",
-                "בכל הטקסט",
-                "בפסקה הראשונה",
-              ],
+              prompt: '"What do we learn from paragraph II?" - איפה מחפשים?',
+              options: ["בכותרת", "רק בפסקה II", "בכל הטקסט", "בפסקה הראשונה"],
               correctIndex: 1,
               layout: "rows",
               explanation: "paragraph II = רק שם.",
@@ -60,22 +51,20 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Answer using paragraph III only.",
               correctWordIndex: 2,
             },
-            {
-              type: "spell-word",
-              word: "paragraph",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "paragraph", mode: "copy" },
             {
               type: "word-card",
               word: "according to",
               translationHe: "לפי / על פי",
-              exampleEn: "**According to** Dr. Diallo, most trees die when nobody cares for them.",
-              exampleHe: "לפי ד\"ר דיאלו, רוב העצים מתים כשאף אחד לא דואג להם.",
-              hookHe: "according to = לפי. אחריה בא שם, וזה הרמז: עונים רק מה שהאדם הזה אמר.",
+              exampleEn:
+                "**According to** Dr. Diallo, most trees die when nobody cares for them.",
+              exampleHe: 'לפי ד"ר דיאלו, רוב העצים מתים כשאף אחד לא דואג להם.',
+              hookHe:
+                "according to = לפי. אחריה בא שם, וזה הרמז: עונים רק מה שהאדם הזה אמר.",
             },
             {
               type: "mcq",
-              prompt: "\"According to Professor Mills, ...\" - מה מחפשים בטקסט?",
+              prompt: '"According to Professor Mills, ..." - מה מחפשים בטקסט?',
               options: [
                 "מה שפרופסור Mills אמר",
                 "את הפסקה הראשונה",
@@ -89,33 +78,16 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "cloze-pick",
               clause: "Dr. Diallo, most trees die when nobody cares for them.",
-              options: [
-                "Without",
-                "According to",
-                "Before",
-                "Except for",
-              ],
-              correctIndices: [
-                1,
-              ],
+              options: ["Without", "According to", "Before", "Except for"],
+              correctIndices: [1],
               explanation: "According to = לפי.",
             },
-            {
-              type: "spell-word",
-              word: "according to",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "according to", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "paragraph",
-                  he: "פסקה",
-                },
-                {
-                  en: "according to",
-                  he: "לפי / על פי",
-                },
+                { en: "paragraph", he: "פסקה" },
+                { en: "according to", he: "לפי / על פי" },
               ],
             },
           ],
@@ -129,11 +101,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "מה אנחנו לומדים",
               exampleEn: "**What do we learn** from paragraph I about Redonda?",
               exampleHe: "מה אנחנו לומדים מפסקה I על Redonda?",
-              hookHe: "what do we learn = מה אנחנו לומדים. זו שאלה שמבקשת מידע שכתוב בפסקה, לא דעה שלכם.",
+              hookHe:
+                "what do we learn = מה אנחנו לומדים. זו שאלה שמבקשת מידע שכתוב בפסקה, לא דעה שלכם.",
             },
             {
               type: "mcq",
-              prompt: "\"What do we learn from paragraph I about Redonda?\" - מה מבקשים ממכם?",
+              prompt:
+                '"What do we learn from paragraph I about Redonda?" - מה מבקשים ממכם?',
               options: [
                 "לתרגם את פסקה I",
                 "מה אני חושב על Redonda",
@@ -153,27 +127,22 @@ export const c2Lessons: LessonNode[] = [
                 "When do we sleep",
                 "Who do we ask",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "What do we learn - מה אנחנו לומדים.",
             },
-            {
-              type: "spell-word",
-              word: "what do we learn",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "what do we learn", mode: "copy" },
             {
               type: "word-card",
               word: "give ONE answer",
               translationHe: "תנו תשובה אחת בלבד",
               exampleEn: "**Give ONE answer** from paragraph II.",
               exampleHe: "תנו תשובה אחת מפסקה II.",
-              hookHe: "ONE באותיות גדולות אינו מקרי: כותבים תשובה אחת בלבד. תשובה נוספת לא מוסיפה נקודות, ועלולה לעלות בהן.",
+              hookHe:
+                "ONE באותיות גדולות אינו מקרי: כותבים תשובה אחת בלבד. תשובה נוספת לא מוסיפה נקודות, ועלולה לעלות בהן.",
             },
             {
               type: "mcq",
-              prompt: "\"Give ONE answer from paragraph II.\" - כמה כותבים?",
+              prompt: '"Give ONE answer from paragraph II." - כמה כותבים?',
               options: [
                 "כמה שמצליחים",
                 "שתי תשובות",
@@ -190,30 +159,14 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Please give ONE reason from the text.",
               correctWordIndex: 2,
             },
-            {
-              type: "spell-word",
-              word: "give ONE answer",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "give ONE answer", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "paragraph",
-                  he: "פסקה",
-                },
-                {
-                  en: "according to",
-                  he: "לפי / על פי",
-                },
-                {
-                  en: "what do we learn",
-                  he: "מה אנחנו לומדים",
-                },
-                {
-                  en: "give ONE answer",
-                  he: "תנו תשובה אחת בלבד",
-                },
+                { en: "paragraph", he: "פסקה" },
+                { en: "according to", he: "לפי / על פי" },
+                { en: "what do we learn", he: "מה אנחנו לומדים" },
+                { en: "give ONE answer", he: "תנו תשובה אחת בלבד" },
               ],
             },
           ],
@@ -227,11 +180,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "תנו שתי תשובות",
               exampleEn: "**Give TWO answers**: how did the students change?",
               exampleHe: "תנו שתי תשובות: איך התלמידים השתנו?",
-              hookHe: "TWO = שתי תשובות נפרדות וממוספרות, (1) ו-(2). לא משפט ארוך אחד עם \"and\".",
+              hookHe:
+                'TWO = שתי תשובות נפרדות וממוספרות, (1) ו-(2). לא משפט ארוך אחד עם "and".',
             },
             {
               type: "mcq",
-              prompt: "\"Give TWO answers: How did the students change?\" - מה כותבים?",
+              prompt:
+                '"Give TWO answers: How did the students change?" - מה כותבים?',
               options: [
                 "משפט אחד ארוך",
                 "(1) ... (2) ... שתי נקודות נפרדות",
@@ -244,7 +199,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "תלמיד כתב \"They became responsible and focused.\" (משפט אחד) על \"Give TWO answers\". מה חסר?",
+              prompt:
+                'תלמיד כתב "They became responsible and focused." (משפט אחד) על "Give TWO answers". מה חסר?',
               options: [
                 "הפרדה לשתי תשובות ממוספרות (1) ו-(2)",
                 "כלום, זה בסדר",
@@ -255,41 +211,22 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "הבודק מחפש שתי נקודות נפרדות.",
             },
-            {
-              type: "spell-word",
-              word: "give TWO answers",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "give TWO answers", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "paragraph",
-                  he: "פסקה",
-                },
-                {
-                  en: "according to",
-                  he: "לפי / על פי",
-                },
-                {
-                  en: "what do we learn",
-                  he: "מה אנחנו לומדים",
-                },
-                {
-                  en: "give ONE answer",
-                  he: "תנו תשובה אחת בלבד",
-                },
-                {
-                  en: "give TWO answers",
-                  he: "תנו שתי תשובות",
-                },
+                { en: "paragraph", he: "פסקה" },
+                { en: "according to", he: "לפי / על פי" },
+                { en: "what do we learn", he: "מה אנחנו לומדים" },
+                { en: "give ONE answer", he: "תנו תשובה אחת בלבד" },
+                { en: "give TWO answers", he: "תנו שתי תשובות" },
               ],
             },
             {
               type: "steps",
               steps: [
-                "\"What do we learn from paragraph I about Redonda?\" ← \"what do we learn\" = מה לומדים · \"paragraph I\" = רק פסקה I.",
-                "\"According to Dr. Diallo, give ONE reason why trees survive.\" ← \"according to\" = לפי הדובר הזה בדיוק · \"give ONE\" = תשובה אחת.",
+                '"What do we learn from paragraph I about Redonda?" ← "what do we learn" = מה לומדים · "paragraph I" = רק פסקה I.',
+                '"According to Dr. Diallo, give ONE reason why trees survive." ← "according to" = לפי הדובר הזה בדיוק · "give ONE" = תשובה אחת.',
                 "אם ההוראה אומרת TWO - סופרים עד שתיים. לא עוצרים אחרי הראשונה.",
               ],
             },
@@ -312,7 +249,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 3,
                 },
                 {
-                  prompt: "According to Dr. Diallo, why do most trees die? (Give ONE answer)",
+                  prompt:
+                    "According to Dr. Diallo, why do most trees die? (Give ONE answer)",
                   options: [
                     "Birds left",
                     "Nobody looks after them",
@@ -322,7 +260,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 1,
                 },
                 {
-                  prompt: "Give TWO answers: how did the area change? Which pair fits?",
+                  prompt:
+                    "Give TWO answers: how did the area change? Which pair fits?",
                   options: [
                     "(1) 85% of trees die. (2) Rivers are dry.",
                     "(1) Trees survive when locals help. (2) Dr. Diallo leads the project.",
@@ -337,7 +276,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"paragraph + according to = לאן הולכים. what do we learn / give ONE / give TWO = כמה כותבים.\"",
+                '"paragraph + according to = לאן הולכים. what do we learn / give ONE / give TWO = כמה כותבים."',
               ],
             },
           ],
@@ -345,13 +284,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
-              prompt: "\"What do we learn from paragraph III about schools?\" - לאן הולכים?",
+              prompt:
+                '"What do we learn from paragraph III about schools?" - לאן הולכים?',
               options: [
                 "לפסקה הראשונה",
                 "לכל הטקסט",
@@ -364,7 +301,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"According to Professor Mills, give ONE reason.\" - מה כותבים?",
+              prompt:
+                '"According to Professor Mills, give ONE reason." - מה כותבים?',
               options: [
                 "סיבה אחת, לפי מה ש-Mills אמר",
                 "שתי סיבות",
@@ -377,11 +315,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"Give TWO answers\" - אפשר לכתוב תשובה אחת ארוכה.",
-              options: [
-                "❌ לא נכון",
-                "✅ נכון",
-              ],
+              prompt: '"Give TWO answers" - אפשר לכתוב תשובה אחת ארוכה.',
+              options: ["❌ לא נכון", "✅ נכון"],
               correctIndex: 0,
               layout: "rows",
               explanation: "TWO = שתי תשובות נפרדות, לא אחת ארוכה.",
@@ -398,55 +333,29 @@ export const c2Lessons: LessonNode[] = [
               text: "According to Dr. Santos, give TWO answers from paragraph II.",
               correctIndices: [],
               categories: [
-                {
-                  name: "איפה",
-                  color: "amber",
-                  indices: [
-                    0,
-                    1,
-                    8,
-                  ],
-                },
-                {
-                  name: "כמה",
-                  color: "sky",
-                  indices: [
-                    4,
-                    5,
-                    6,
-                  ],
-                },
+                { name: "איפה", color: "amber", indices: [0, 1, 8] },
+                { name: "כמה", color: "sky", indices: [4, 5, 6] },
               ],
-              wordBank: [
-                "according to",
-                "give TWO answers",
-                "paragraph",
-              ],
+              wordBank: ["according to", "give TWO answers", "paragraph"],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim.\n\nII  One study found that adults who learn to swim later in life often become stronger swimmers. According to Dr. Anna Klein, adults understand what the teacher explains and correct their mistakes quickly. They are also not afraid to ask questions.",
               questions: [
                 {
-                  prompt: "According to the survey, what percentage of adults cannot swim?",
-                  options: [
-                    "Over 3%",
-                    "Over 30%",
-                    "Over 13%",
-                    "Over 60%",
-                  ],
+                  prompt:
+                    "According to the survey, what percentage of adults cannot swim?",
+                  options: ["Over 3%", "Over 30%", "Over 13%", "Over 60%"],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "What do we learn from paragraph II about adult swimmers?",
+                  prompt:
+                    "What do we learn from paragraph II about adult swimmers?",
                   options: [
                     "They often become stronger swimmers",
                     "They are afraid of teachers",
@@ -456,7 +365,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "Give TWO answers: why do adults improve, according to Dr. Klein? Which pair fits?",
+                  prompt:
+                    "Give TWO answers: why do adults improve, according to Dr. Klein? Which pair fits?",
                   options: [
                     "(1) They understand the teacher. (2) They correct mistakes quickly.",
                     "(1) They are afraid. (2) They stay silent.",
@@ -469,8 +379,10 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "תלמיד קיבל את ההוראה \"Give TWO answers\" וכתב תשובה אחת ארוכה עם \"and\" באמצע. מה הבעיה?",
-              modelAnswer: "זו עדיין תשובה אחת: הבודק מחפש שתי נקודות נפרדות וממוספרות, לא משפט אחד ארוך.",
+              prompt:
+                'תלמיד קיבל את ההוראה "Give TWO answers" וכתב תשובה אחת ארוכה עם "and" באמצע. מה הבעיה?',
+              modelAnswer:
+                "זו עדיין תשובה אחת: הבודק מחפש שתי נקודות נפרדות וממוספרות, לא משפט אחד ארוך.",
             },
           ],
         },
@@ -482,14 +394,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות שאלה: איך עונים",
     titleEn: "Question Words: How to Answer",
-    required: [
-      "q-words-1",
-    ],
+    required: ["q-words-1"],
     requiredRounds: 3,
-    position: {
-      x: -200,
-      y: 310,
-    },
+    position: { x: -200, y: 310 },
     big: false,
     content: {
       preface: [
@@ -512,11 +419,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "השלימו את המשפט",
               exampleEn: "**Complete the sentence**: People left because…",
               exampleHe: "השלימו את המשפט: אנשים עזבו כי…",
-              hookHe: "complete = להשלים: ממשיכים את מה שכבר כתוב. לא כותבים משפט חדש, ולא כותבים שוב את מה שכבר שם.",
+              hookHe:
+                "complete = להשלים: ממשיכים את מה שכבר כתוב. לא כותבים משפט חדש, ולא כותבים שוב את מה שכבר שם.",
             },
             {
               type: "mcq",
-              prompt: "\"Complete the sentence: Students volunteer because…\" - מה עושים?",
+              prompt:
+                '"Complete the sentence: Students volunteer because…" - מה עושים?',
               options: [
                 "ממשיכים את המשפט מהמקום שבו הוא נעצר",
                 "כותבים משפט חדש לגמרי",
@@ -529,26 +438,23 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שאומרת \"להשלים\":",
+              prompt: 'סמנו את המילה שאומרת "להשלים":',
               sentence: "Please complete the sentence below.",
               correctWordIndex: 1,
             },
-            {
-              type: "spell-word",
-              word: "complete the sentence",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "complete the sentence", mode: "copy" },
             {
               type: "word-card",
               word: "circle the correct answer",
               translationHe: "הקיפו את התשובה הנכונה",
               exampleEn: "**Circle the correct answer**.",
               exampleHe: "הקיפו את התשובה הנכונה.",
-              hookHe: "circle = להקיף. זו שאלת רב-ברירה: בוחרים אחת מהאפשרויות ומקיפים אותה. לא כותבים תשובה משלכם.",
+              hookHe:
+                "circle = להקיף. זו שאלת רב-ברירה: בוחרים אחת מהאפשרויות ומקיפים אותה. לא כותבים תשובה משלכם.",
             },
             {
               type: "mcq",
-              prompt: "\"Circle the correct answer\" - מה עושים?",
+              prompt: '"Circle the correct answer" - מה עושים?',
               options: [
                 "כותבים תשובה חדשה",
                 "מקיפים אפשרות אחת מהרשומות",
@@ -561,7 +467,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "תלמיד כתב תשובה משלו במקום להקיף אחת מהאפשרויות. מה קרה?",
+              prompt:
+                "תלמיד כתב תשובה משלו במקום להקיף אחת מהאפשרויות. מה קרה?",
               options: [
                 "הוא קיבל נקודה נוספת",
                 "ההוראה דורשת בחירה מהאפשרויות, אז הוא הפסיד את הנקודה",
@@ -572,18 +479,11 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "ההוראה דורשת הקפה של אפשרות קיימת.",
             },
-            {
-              type: "spell-word",
-              word: "circle",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "circle", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "complete the sentence",
-                  he: "השלימו את המשפט",
-                },
+                { en: "complete the sentence", he: "השלימו את המשפט" },
                 {
                   en: "circle the correct answer",
                   he: "הקיפו את התשובה הנכונה",
@@ -601,11 +501,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "להסביר",
               exampleEn: "**Explain** why the trees grew back.",
               exampleHe: "הסבירו למה העצים חזרו לגדול.",
-              hookHe: "explain = להסביר: לתת סיבה או תיאור במילים שלכם, לפי הטקסט. לא רק להעתיק משפט.",
+              hookHe:
+                "explain = להסביר: לתת סיבה או תיאור במילים שלכם, לפי הטקסט. לא רק להעתיק משפט.",
             },
             {
               type: "mcq",
-              prompt: "\"Explain why the number of trees increased.\" - מה נותנים?",
+              prompt:
+                '"Explain why the number of trees increased." - מה נותנים?',
               options: [
                 "רק את המספר",
                 "שתי תשובות",
@@ -618,73 +520,48 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"הסבירו\":",
+              prompt: 'סמנו את המילה שפירושה "הסבירו":',
               sentence: "Explain your answer in one sentence.",
               correctWordIndex: 0,
             },
-            {
-              type: "spell-word",
-              word: "explain",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "explain", mode: "copy" },
             {
               type: "word-card",
               word: "because",
               translationHe: "כי / מפני ש־",
               exampleEn: "People left **because** the water was dirty.",
               exampleHe: "אנשים עזבו כי המים היו מלוכלכים.",
-              hookHe: "because = כי. אחריה בא הסבר. כשהיא בשאלה, מחפשים סיבה. וכשהיא כבר כתובה בשאלה, לא כותבים אותה שוב בתשובה.",
+              hookHe:
+                "because = כי. אחריה בא הסבר. כשהיא בשאלה, מחפשים סיבה. וכשהיא כבר כתובה בשאלה, לא כותבים אותה שוב בתשובה.",
             },
             {
               type: "mcq",
               prompt: "The match was cancelled ______ it rained all day.",
-              options: [
-                "so",
-                "and",
-                "but",
-                "because",
-              ],
+              options: ["so", "and", "but", "because"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "הגשם הוא הסיבה = because.",
             },
             {
               type: "mcq",
-              prompt: "\"Complete the sentence: Students volunteer because...\" - מה כותבים אחרי because?",
-              options: [
-                "סיבה",
-                "מטרה",
-                "זמן",
-                "מקום",
-              ],
+              prompt:
+                '"Complete the sentence: Students volunteer because..." - מה כותבים אחרי because?',
+              options: ["סיבה", "מטרה", "זמן", "מקום"],
               correctIndex: 0,
               layout: "rows",
               explanation: "because = סיבה.",
             },
-            {
-              type: "spell-word",
-              word: "because",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "because", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "complete the sentence",
-                  he: "השלימו את המשפט",
-                },
+                { en: "complete the sentence", he: "השלימו את המשפט" },
                 {
                   en: "circle the correct answer",
                   he: "הקיפו את התשובה הנכונה",
                 },
-                {
-                  en: "explain",
-                  he: "להסביר",
-                },
-                {
-                  en: "because",
-                  he: "כי / מפני ש־",
-                },
+                { en: "explain", he: "להסביר" },
+                { en: "because", he: "כי / מפני ש־" },
               ],
             },
           ],
@@ -696,72 +573,49 @@ export const c2Lessons: LessonNode[] = [
               type: "word-card",
               word: "in order to",
               translationHe: "כדי ל־",
-              exampleEn: "The goats were removed **in order to** let the plants grow back.",
+              exampleEn:
+                "The goats were removed **in order to** let the plants grow back.",
               exampleHe: "העזים הוסרו כדי לתת לצמחים לגדול מחדש.",
-              hookHe: "in order to = כדי ל. מה שבא אחריה הוא מטרה: מה רצו להשיג. because = סיבה מאחור · in order to = מטרה קדימה.",
+              hookHe:
+                "in order to = כדי ל. מה שבא אחריה הוא מטרה: מה רצו להשיג. because = סיבה מאחור · in order to = מטרה קדימה.",
             },
             {
               type: "mcq",
               prompt: "She saved money ______ buy a bicycle.",
-              options: [
-                "in order to",
-                "explain",
-                "because",
-                "circle",
-              ],
+              options: ["in order to", "explain", "because", "circle"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "חסכה כדי לקנות = in order to.",
             },
             {
               type: "mcq",
-              prompt: "\"They removed the goats in order to ___\" - מה מחפשים בטקסט?",
-              options: [
-                "סיבה - מה גרם",
-                "מקום",
-                "מטרה - מה רצו להשיג",
-                "זמן",
-              ],
+              prompt:
+                '"They removed the goats in order to ___" - מה מחפשים בטקסט?',
+              options: ["סיבה - מה גרם", "מקום", "מטרה - מה רצו להשיג", "זמן"],
               correctIndex: 2,
               layout: "rows",
               explanation: "in order to = מטרה.",
             },
-            {
-              type: "spell-word",
-              word: "in order to",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "in order to", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "complete the sentence",
-                  he: "השלימו את המשפט",
-                },
+                { en: "complete the sentence", he: "השלימו את המשפט" },
                 {
                   en: "circle the correct answer",
                   he: "הקיפו את התשובה הנכונה",
                 },
-                {
-                  en: "explain",
-                  he: "להסביר",
-                },
-                {
-                  en: "because",
-                  he: "כי / מפני ש־",
-                },
-                {
-                  en: "in order to",
-                  he: "כדי ל־",
-                },
+                { en: "explain", he: "להסביר" },
+                { en: "because", he: "כי / מפני ש־" },
+                { en: "in order to", he: "כדי ל־" },
               ],
             },
             {
               type: "steps",
               steps: [
-                "\"Complete the sentence: People left because…\" ← ממשיכים את המשפט, לא כותבים חדש.",
-                "\"Explain why the goats were removed.\" ← נותנים סיבה מהטקסט, לא רק מעתיקים משפט.",
-                "\"Because\" בשאלה ← מחפשים סיבה. \"In order to\" בשאלה ← מחפשים מטרה.",
+                '"Complete the sentence: People left because…" ← ממשיכים את המשפט, לא כותבים חדש.',
+                '"Explain why the goats were removed." ← נותנים סיבה מהטקסט, לא רק מעתיקים משפט.',
+                '"Because" בשאלה ← מחפשים סיבה. "In order to" בשאלה ← מחפשים מטרה.',
               ],
             },
             {
@@ -773,7 +627,8 @@ export const c2Lessons: LessonNode[] = [
               text: "I  Redonda is a small island. In 2016, environmentalists removed the goats from the island. The goats had eaten all the plants, so the island was brown and empty.\n\nII  The goats were removed in order to let the plants grow back. Two years later, the trees began to grow again because nothing was eating the young plants.",
               questions: [
                 {
-                  prompt: "Complete the sentence: People removed the goats because ...",
+                  prompt:
+                    "Complete the sentence: People removed the goats because ...",
                   options: [
                     "the goats ate all the plants",
                     "nobody lived there",
@@ -783,7 +638,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "Circle the correct answer: Why did the scientists remove the goats?",
+                  prompt:
+                    "Circle the correct answer: Why did the scientists remove the goats?",
                   options: [
                     "To make the island brown",
                     "To build houses",
@@ -808,7 +664,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"complete = ממשיכים, לא מתחילים. because = סיבה. in order to = מטרה.\"",
+                '"complete = ממשיכים, לא מתחילים. because = סיבה. in order to = מטרה."',
               ],
             },
           ],
@@ -816,13 +672,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
-              prompt: "\"Complete the sentence: The trees grew back because…\" - מה כותבים?",
+              prompt:
+                '"Complete the sentence: The trees grew back because…" - מה כותבים?',
               options: [
                 "שתי תשובות",
                 "משפט חדש שלא קשור",
@@ -835,25 +689,21 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"Circle the correct answer\" = אפשר לכתוב כמה תשובות שרוצים.",
-              options: [
-                "✅ נכון",
-                "❌ לא נכון",
-              ],
+              prompt:
+                '"Circle the correct answer" = אפשר לכתוב כמה תשובות שרוצים.',
+              options: ["✅ נכון", "❌ לא נכון"],
               correctIndex: 1,
               layout: "rows",
               explanation: "circle = מקיפים תשובה אחת.",
             },
             {
               type: "mcq",
-              prompt: "\"Explain\" ו-\"complete\" מבקשים את אותו דבר.",
-              options: [
-                "❌ לא נכון",
-                "✅ נכון",
-              ],
+              prompt: '"Explain" ו-"complete" מבקשים את אותו דבר.',
+              options: ["❌ לא נכון", "✅ נכון"],
               correctIndex: 0,
               layout: "rows",
-              explanation: "complete = ממשיכים משפט. explain = נותנים סיבה בהבנה שלי.",
+              explanation:
+                "complete = ממשיכים משפט. explain = נותנים סיבה בהבנה שלי.",
             },
             {
               type: "mark-word",
@@ -867,30 +717,9 @@ export const c2Lessons: LessonNode[] = [
               text: "Complete the sentence. Explain why people left because the water was dirty. They moved in order to find food.",
               correctIndices: [],
               categories: [
-                {
-                  name: "הוראה",
-                  color: "amber",
-                  indices: [
-                    0,
-                    3,
-                  ],
-                },
-                {
-                  name: "סיבה",
-                  color: "rose",
-                  indices: [
-                    7,
-                  ],
-                },
-                {
-                  name: "מטרה",
-                  color: "emerald",
-                  indices: [
-                    14,
-                    15,
-                    16,
-                  ],
-                },
+                { name: "הוראה", color: "amber", indices: [0, 3] },
+                { name: "סיבה", color: "rose", indices: [7] },
+                { name: "מטרה", color: "emerald", indices: [14, 15, 16] },
               ],
               wordBank: [
                 "complete the sentence",
@@ -903,16 +732,14 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees. They did it in order to protect wildlife. The project is led by Dr. Diallo, who teaches local people how to care for trees because most trees die when nobody looks after them.",
               questions: [
                 {
-                  prompt: "Circle the correct answer: Why did scientists start the project?",
+                  prompt:
+                    "Circle the correct answer: Why did scientists start the project?",
                   options: [
                     "In order to stop rain",
                     "In order to protect wildlife",
@@ -945,8 +772,10 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "תלמיד ענה על \"Circle the correct answer\" בכך שכתב תשובה משלו במקום להקיף אחת מהאפשרויות. מה קרה לו?",
-              modelAnswer: "הוא קיבל 0: ההוראה דורשת הקפה של אפשרות קיימת, לא כתיבת תשובה חדשה.",
+              prompt:
+                'תלמיד ענה על "Circle the correct answer" בכך שכתב תשובה משלו במקום להקיף אחת מהאפשרויות. מה קרה לו?',
+              modelAnswer:
+                "הוא קיבל 0: ההוראה דורשת הקפה של אפשרות קיימת, לא כתיבת תשובה חדשה.",
             },
           ],
         },
@@ -958,24 +787,19 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
-    required: [
-      "n-5cd02dfa",
-    ],
+    required: ["n-5cd02dfa"],
     requiredRounds: 2,
-    position: {
-      x: -70,
-      y: 130,
-    },
+    position: { x: -70, y: 130 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "בכל טקסט יש מילים קטנות שאומרות לאן הטקסט הולך. המילים המודגשות הן מילות ניווט.\n\n{d:ltr}Every year, forests are destroyed. **However**, there is good news. **Although** the project is expensive, it is working. **In addition**, local people learn new jobs. **As a result**, the forest is coming back.\n\nכמה מהן אתם יודעים להסביר מה הן מסמנות?",
+          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה. **אלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n*The city wanted to plant more trees. ****However****, there was not enough money. ****In addition****, there was not enough space. ****As a result****, the project was delayed.*\n\nשימו לב למילים המודגשות. גם אם לא הבנתם כל מילה, הן כבר נותנות לכם רמז:\n**However** → עכשיו מגיעה בעיה או ניגוד.**In addition** → עכשיו מוסיפים עוד דבר.**As a result** → עכשיו מגיעה התוצאה.\n\nמילות ניווט הן כמו שלטים בדרך: הן אומרות לנו **מה עומד להגיע עכשיו בטקסט**.",
         },
         {
           type: "preface",
-          text: "ארבע מילות ניווט: פנייה, ניגוד, עוד מידע ותוצאה.\n\nהן אומרות לכם איפה יושב הרעיון החשוב, ולפעמים הן מסמנות את התשובה עצמה. כל מילה מגיעה עם תרגילים מיד אחריה.",
+          text: "מה שראינו זה ארבע מילות ניווט: פנייה, ניגוד, עוד מידע ותוצאה.\n\nהן אומרות לכם איפה יושב הרעיון החשוב, ולפעמים הן מסמנות את התשובה עצמה.\n\n כל מילה מגיעה עם תרגילים מיד אחריה.",
         },
       ],
       rounds: [
@@ -988,24 +812,22 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "אולם / אבל",
               exampleEn: "**However**, there is good news.",
               exampleHe: "אולם, יש חדשות טובות.",
-              hookHe: "however = אולם. פנייה חדה: מה שלפניה הוא הרקע, ומה שאחריה הוא הנקודה.",
+              hookHe:
+                "however = אולם. פנייה חדה: מה שלפניה הוא הרקע, ומה שאחריה הוא הנקודה.",
             },
             {
               type: "mcq",
-              prompt: "Every year forests are destroyed. ______, there is good news.",
-              options: [
-                "However",
-                "Yesterday",
-                "Sometimes",
-                "Usually",
-              ],
+              prompt:
+                "Every year forests are destroyed. ______, there is good news.",
+              options: ["However", "Yesterday", "Sometimes", "Usually"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "רקע רע ואז פנייה = However.",
             },
             {
               type: "mcq",
-              prompt: "\"The city is very old. However, it is very modern.\" - מה חשוב יותר?",
+              prompt:
+                '"The city is very old. However, it is very modern." - מה חשוב יותר?',
               options: [
                 "המשפט לפני however",
                 "שניהם אותו דבר",
@@ -1016,22 +838,19 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "מה שאחרי however הוא הנקודה.",
             },
-            {
-              type: "spell-word",
-              word: "however",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "however", mode: "copy" },
             {
               type: "word-card",
               word: "although",
               translationHe: "למרות ש־",
               exampleEn: "**Although** it was raining, we went to the park.",
               exampleHe: "למרות שירד גשם, הלכנו לפארק.",
-              hookHe: "although = למרות ש. בתוך משפט אחד יש שני חלקים שמנוגדים זה לזה.",
+              hookHe:
+                "although = למרות ש. בתוך משפט אחד יש שני חלקים שמנוגדים זה לזה.",
             },
             {
               type: "mcq",
-              prompt: "\"Although he trained hard, he did not win.\" - מה קרה?",
+              prompt: '"Although he trained hard, he did not win." - מה קרה?',
               options: [
                 "התאמן קשה ובכל זאת לא ניצח",
                 "התאמן קשה ולכן ניצח",
@@ -1055,22 +874,12 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "although = הניגוד: למדה ובכל זאת נכשלה.",
             },
-            {
-              type: "spell-word",
-              word: "although",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "although", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "however",
-                  he: "אולם / אבל",
-                },
-                {
-                  en: "although",
-                  he: "למרות ש־",
-                },
+                { en: "however", he: "אולם / אבל" },
+                { en: "although", he: "למרות ש־" },
               ],
             },
           ],
@@ -1082,58 +891,49 @@ export const c2Lessons: LessonNode[] = [
               type: "word-card",
               word: "in addition",
               translationHe: "בנוסף",
-              exampleEn: "The project saves water. **In addition**, it creates jobs.",
+              exampleEn:
+                "The project saves water. **In addition**, it creates jobs.",
               exampleHe: "הפרויקט חוסך מים. בנוסף, הוא יוצר מקומות עבודה.",
-              hookHe: "in addition = בנוסף. עוד נקודה באותו כיוון, ולפעמים זו התשובה השנייה בשאלה של \"give TWO\".",
+              hookHe:
+                'in addition = בנוסף. עוד נקודה באותו כיוון, ולפעמים זו התשובה השנייה בשאלה של "give TWO".',
             },
             {
               type: "mcq",
               prompt: "The library is quiet. ______, it is free.",
-              options: [
-                "Yesterday",
-                "Although",
-                "In addition",
-                "However",
-              ],
+              options: ["Yesterday", "Although", "In addition", "However"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "עוד יתרון באותו כיוון = In addition.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שמסמנת \"עוד מידע\":",
+              prompt: 'סמנו את המילה שמסמנת "עוד מידע":',
               sentence: "The park is clean. In addition, it is free.",
               correctWordIndex: 5,
             },
-            {
-              type: "spell-word",
-              word: "in addition",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "in addition", mode: "copy" },
             {
               type: "word-card",
               word: "therefore / as a result",
               translationHe: "לכן / כתוצאה מכך",
-              exampleEn: "It rained all day. **As a result**, the match was cancelled.",
+              exampleEn:
+                "It rained all day. **As a result**, the match was cancelled.",
               exampleHe: "ירד גשם כל היום. כתוצאה מכך המשחק בוטל.",
-              hookHe: "as a result = כתוצאה. מה שאחריה קרה בגלל מה שלפניה. החץ: סיבה ← תוצאה. therefore = לכן, אותה משמעות.",
+              hookHe:
+                "as a result = כתוצאה. מה שאחריה קרה בגלל מה שלפניה. החץ: סיבה ← תוצאה. therefore = לכן, אותה משמעות.",
             },
             {
               type: "mcq",
               prompt: "He forgot his umbrella. ______, he got wet.",
-              options: [
-                "As a result",
-                "However",
-                "In addition",
-                "Although",
-              ],
+              options: ["As a result", "However", "In addition", "Although"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "סיבה ואז תוצאה = As a result.",
             },
             {
               type: "mcq",
-              prompt: "\"Stress increased. As a result, sleep got worse.\" - מה קרה בגלל מה?",
+              prompt:
+                '"Stress increased. As a result, sleep got worse." - מה קרה בגלל מה?',
               options: [
                 "אין קשר ביניהם",
                 "השינה החמירה בגלל הלחץ",
@@ -1144,30 +944,14 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "as a result = מה שאחרי נגרם ממה שלפני.",
             },
-            {
-              type: "spell-word",
-              word: "therefore",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "therefore", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "however",
-                  he: "אולם / אבל",
-                },
-                {
-                  en: "although",
-                  he: "למרות ש־",
-                },
-                {
-                  en: "in addition",
-                  he: "בנוסף",
-                },
-                {
-                  en: "therefore / as a result",
-                  he: "לכן / כתוצאה מכך",
-                },
+                { en: "however", he: "אולם / אבל" },
+                { en: "although", he: "למרות ש־" },
+                { en: "in addition", he: "בנוסף" },
+                { en: "therefore / as a result", he: "לכן / כתוצאה מכך" },
               ],
             },
             {
@@ -1188,7 +972,7 @@ export const c2Lessons: LessonNode[] = [
               text: "Every year, forests are destroyed. However, there is good news. Although the project is expensive, it is working. In addition, local people learn new jobs. As a result, the forest is coming back.",
               questions: [
                 {
-                  prompt: "What is the main point after \"however\"?",
+                  prompt: 'What is the main point after "however"?',
                   options: [
                     "There is good news",
                     "Nobody cares",
@@ -1198,7 +982,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What is the second good thing about the project (after \"in addition\")?",
+                  prompt:
+                    'What is the second good thing about the project (after "in addition")?',
                   options: [
                     "It is expensive",
                     "It is old",
@@ -1223,7 +1008,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"ראיתי however/although - עוצר. ראיתי in addition - עוד נקודה. ראיתי as a result - קורא תוצאה.\"",
+                '"ראיתי however/although - עוצר. ראיתי in addition - עוד נקודה. ראיתי as a result - קורא תוצאה."',
               ],
             },
           ],
@@ -1231,19 +1016,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
               prompt: "The exam was difficult. ______, most students passed.",
-              options: [
-                "As a result",
-                "However",
-                "Although",
-                "In addition",
-              ],
+              options: ["As a result", "However", "Although", "In addition"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "ניגוד: קשה אבל עברו = However.",
@@ -1251,12 +1028,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "She studied all week. ______, she got a high grade.",
-              options: [
-                "However",
-                "As a result",
-                "Although",
-                "In addition",
-              ],
+              options: ["However", "As a result", "Although", "In addition"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "למדה ולכן ציון גבוה = As a result.",
@@ -1264,69 +1036,35 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "______ the weather was bad, the trip was great.",
-              options: [
-                "Although",
-                "As a result",
-                "However",
-                "In addition",
-              ],
+              options: ["Although", "As a result", "However", "In addition"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "Although פותחת חלק מנוגד בתוך משפט אחד.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שמסמנת \"לכן\":",
+              prompt: 'סמנו את המילה שמסמנת "לכן":',
               sentence: "It was late, therefore we went home.",
               correctWordIndex: 3,
             },
             {
               type: "mark-all",
-              instruction: "סמנו את מילות הניווט. הצבעים: ניגוד, עוד מידע ותוצאה.",
+              instruction:
+                "סמנו את מילות הניווט. הצבעים: ניגוד, עוד מידע ותוצאה.",
               text: "Many adults cannot swim. However, experts say it is never too late. Although some adults are afraid of water, they make good progress. In addition, lessons are cheap. As a result, more adults are learning.",
               correctIndices: [],
               categories: [
-                {
-                  name: "ניגוד",
-                  color: "rose",
-                  indices: [
-                    4,
-                    12,
-                  ],
-                },
-                {
-                  name: "עוד מידע",
-                  color: "sky",
-                  indices: [
-                    23,
-                    24,
-                  ],
-                },
-                {
-                  name: "תוצאה",
-                  color: "emerald",
-                  indices: [
-                    28,
-                    29,
-                    30,
-                  ],
-                },
+                { name: "ניגוד", color: "rose", indices: [4, 12] },
+                { name: "עוד מידע", color: "sky", indices: [23, 24] },
+                { name: "תוצאה", color: "emerald", indices: [28, 29, 30] },
               ],
-              wordBank: [
-                "however",
-                "although",
-                "in addition",
-                "as a result",
-              ],
+              wordBank: ["however", "although", "in addition", "as a result"],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Learning to swim as an adult is more common than many people think.\n\nII  Many adults feel embarrassed and never try to learn. However, experts say it is never too late. Although some adults are afraid of the water, they usually make good progress.\n\nIII  Lessons for adults are now cheap. In addition, many pools offer evening classes. As a result, more adults are learning to swim every year.",
@@ -1342,7 +1080,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 2,
                 },
                 {
-                  prompt: "What do adults usually do although they are afraid of the water?",
+                  prompt:
+                    "What do adults usually do although they are afraid of the water?",
                   options: [
                     "Move away",
                     "Buy a pool",
@@ -1352,7 +1091,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 3,
                 },
                 {
-                  prompt: "What is the result of cheap lessons and evening classes?",
+                  prompt:
+                    "What is the result of cheap lessons and evening classes?",
                   options: [
                     "More children",
                     "Higher prices",
@@ -1365,8 +1105,10 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "כתבו משפט אחד עם however ומשפט אחד עם as a result, על נושא מהמודול.",
-              modelAnswer: "Many forests are destroyed. However, some projects protect them. The project worked well. As a result, the forest is coming back.",
+              prompt:
+                "כתבו משפט אחד עם however ומשפט אחד עם as a result, על נושא מהמודול.",
+              modelAnswer:
+                "Many forests are destroyed. However, some projects protect them. The project worked well. As a result, the forest is coming back.",
             },
           ],
         },
@@ -1378,14 +1120,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות ניווט: דוגמאות וממצאים",
     titleEn: "Navigation Words: Examples & Findings",
-    required: [
-      "nav-words-1",
-    ],
+    required: ["nav-words-1"],
     requiredRounds: 2,
-    position: {
-      x: -70,
-      y: 310,
-    },
+    position: { x: -70, y: 310 },
     big: false,
     content: {
       preface: [
@@ -1406,26 +1143,25 @@ export const c2Lessons: LessonNode[] = [
               type: "word-card",
               word: "for example",
               translationHe: "לדוגמה",
-              exampleEn: "Many animals live here. **For example**, there are foxes and owls.",
+              exampleEn:
+                "Many animals live here. **For example**, there are foxes and owls.",
               exampleHe: "הרבה חיות חיות כאן. לדוגמה, יש שועלים וינשופים.",
-              hookHe: "for example = לדוגמה. אחריה מגיע משהו קונקרטי: שם, מספר או מקום. זה לא רעיון חדש, זו הדגמה של מה שנאמר קודם.",
+              hookHe:
+                "for example = לדוגמה. אחריה מגיע משהו קונקרטי: שם, מספר או מקום. זה לא רעיון חדש, זו הדגמה של מה שנאמר קודם.",
             },
             {
               type: "mcq",
-              prompt: "Many sports are popular. ______, football and basketball.",
-              options: [
-                "Although",
-                "However",
-                "For example",
-                "In addition",
-              ],
+              prompt:
+                "Many sports are popular. ______, football and basketball.",
+              options: ["Although", "However", "For example", "In addition"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "אחריה שמות של ספורט = For example.",
             },
             {
               type: "mcq",
-              prompt: "\"Scientists found that handwriting helps memory. For example, students who wrote by hand remembered more.\" - מה תפקיד המשפט השני?",
+              prompt:
+                '"Scientists found that handwriting helps memory. For example, students who wrote by hand remembered more." - מה תפקיד המשפט השני?',
               options: [
                 "דוגמה קונקרטית לממצא",
                 "תוצאה",
@@ -1436,28 +1172,22 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "for example = הדגמה של מה שנאמר.",
             },
-            {
-              type: "spell-word",
-              word: "for example",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "for example", mode: "copy" },
             {
               type: "word-card",
               word: "increase / decrease",
               translationHe: "לעלות / לרדת",
-              exampleEn: "The number of birds **increased** by 60%, but noise **decreased**.",
+              exampleEn:
+                "The number of birds **increased** by 60%, but noise **decreased**.",
               exampleHe: "מספר הציפורים עלה ב-60%, אבל הרעש ירד.",
-              hookHe: "increase ↑ = עלה. decrease ↓ = ירד. תמיד לבדוק את הכיוון לפני שעונים, לפעמים זה ההבדל בין נכון לשגוי.",
+              hookHe:
+                "increase ↑ = עלה. decrease ↓ = ירד. תמיד לבדוק את הכיוון לפני שעונים, לפעמים זה ההבדל בין נכון לשגוי.",
             },
             {
               type: "mcq",
-              prompt: "\"The number of birds increased by 60%.\" - מה קרה למספר הציפורים?",
-              options: [
-                "נעלם",
-                "נשאר אותו דבר",
-                "עלה",
-                "ירד",
-              ],
+              prompt:
+                '"The number of birds increased by 60%." - מה קרה למספר הציפורים?',
+              options: ["נעלם", "נשאר אותו דבר", "עלה", "ירד"],
               correctIndex: 2,
               layout: "rows",
               explanation: "increase = עלה.",
@@ -1468,22 +1198,12 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Stress levels decreased by 35%.",
               correctWordIndex: 2,
             },
-            {
-              type: "spell-word",
-              word: "increase",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "increase", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "for example",
-                  he: "לדוגמה",
-                },
-                {
-                  en: "increase / decrease",
-                  he: "לעלות / לרדת",
-                },
+                { en: "for example", he: "לדוגמה" },
+                { en: "increase / decrease", he: "לעלות / לרדת" },
               ],
             },
           ],
@@ -1497,54 +1217,33 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "מצא / גילה",
               exampleEn: "Researchers **found** that walking improves memory.",
               exampleHe: "חוקרים מצאו שהליכה משפרת את הזיכרון.",
-              hookHe: "found (מצא) ו-discovered (גילה) בטקסט מסמנות ממצא, בדרך כלל של מחקר. אחריהן בא מה שנמצא.",
+              hookHe:
+                "found (מצא) ו-discovered (גילה) בטקסט מסמנות ממצא, בדרך כלל של מחקר. אחריהן בא מה שנמצא.",
             },
             {
               type: "mcq",
               prompt: "Scientists ______ that the drug helps people sleep.",
-              options: [
-                "sang",
-                "ate",
-                "painted",
-                "found",
-              ],
+              options: ["sang", "ate", "painted", "found"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "ממצא של מדענים = found.",
             },
             {
               type: "mcq",
-              prompt: "\"Scientists found that stress decreased. For example, one group felt calmer.\" - איזו מילה מסמנת את הממצא?",
-              options: [
-                "found",
-                "calmer",
-                "group",
-                "example",
-              ],
+              prompt:
+                '"Scientists found that stress decreased. For example, one group felt calmer." - איזו מילה מסמנת את הממצא?',
+              options: ["found", "calmer", "group", "example"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "found = מסמנת ממצא.",
             },
-            {
-              type: "spell-word",
-              word: "discovered",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "discovered", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "for example",
-                  he: "לדוגמה",
-                },
-                {
-                  en: "increase / decrease",
-                  he: "לעלות / לרדת",
-                },
-                {
-                  en: "found / discovered",
-                  he: "מצא / גילה",
-                },
+                { en: "for example", he: "לדוגמה" },
+                { en: "increase / decrease", he: "לעלות / לרדת" },
+                { en: "found / discovered", he: "מצא / גילה" },
               ],
             },
             {
@@ -1600,7 +1299,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"for example = דוגמה. increase = עלה, decrease = ירד. found = ממצא.\"",
+                '"for example = דוגמה. increase = עלה, decrease = ירד. found = ממצא."',
               ],
             },
           ],
@@ -1608,19 +1307,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
               prompt: "Many fruits are healthy. ______, apples and oranges.",
-              options: [
-                "However",
-                "For example",
-                "In addition",
-                "Although",
-              ],
+              options: ["However", "For example", "In addition", "Although"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "שמות של פירות = For example.",
@@ -1628,25 +1319,16 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The number of visitors ______ from 500 to 800.",
-              options: [
-                "increased",
-                "example",
-                "decreased",
-                "found",
-              ],
+              options: ["increased", "example", "decreased", "found"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "מ-500 ל-800 = עלה.",
             },
             {
               type: "mcq",
-              prompt: "The number of accidents ______ after the new law: there were fewer.",
-              options: [
-                "discovered",
-                "increased",
-                "decreased",
-                "example",
-              ],
+              prompt:
+                "The number of accidents ______ after the new law: there were fewer.",
+              options: ["discovered", "increased", "decreased", "example"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "פחות תאונות = ירד.",
@@ -1659,56 +1341,23 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "סמנו את מילות הניווט. הצבעים: ממצא, ירידה, עלייה ודוגמה.",
+              instruction:
+                "סמנו את מילות הניווט. הצבעים: ממצא, ירידה, עלייה ודוגמה.",
               text: "Scientists found that stress decreased in quiet rooms. For example, in one class it decreased by 35%, while calm students increased by 20%.",
               correctIndices: [],
               categories: [
-                {
-                  name: "ממצא",
-                  color: "sky",
-                  indices: [
-                    1,
-                  ],
-                },
-                {
-                  name: "ירידה",
-                  color: "rose",
-                  indices: [
-                    4,
-                    14,
-                  ],
-                },
-                {
-                  name: "דוגמה",
-                  color: "amber",
-                  indices: [
-                    8,
-                    9,
-                  ],
-                },
-                {
-                  name: "עלייה",
-                  color: "emerald",
-                  indices: [
-                    20,
-                  ],
-                },
+                { name: "ממצא", color: "sky", indices: [1] },
+                { name: "ירידה", color: "rose", indices: [4, 14] },
+                { name: "דוגמה", color: "amber", indices: [8, 9] },
+                { name: "עלייה", color: "emerald", indices: [20] },
               ],
-              wordBank: [
-                "found",
-                "decreased",
-                "increased",
-                "for example",
-              ],
+              wordBank: ["found", "decreased", "increased", "for example"],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Sleep is important for teenagers.\n\nII  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\nIII  At the same time, the number of students who felt tired decreased by 30%.",
@@ -1747,8 +1396,10 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "כתבו משפט אחד עם increase ומשפט אחד עם decrease, על נושא מהמודול (סביבה, בריאות או קהילה).",
-              modelAnswer: "The number of trees increased after the project started. Stress levels decreased among volunteers.",
+              prompt:
+                "כתבו משפט אחד עם increase ומשפט אחד עם decrease, על נושא מהמודול (סביבה, בריאות או קהילה).",
+              modelAnswer:
+                "The number of trees increased after the project started. Stress levels decreased among volunteers.",
             },
           ],
         },
@@ -1760,14 +1411,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
-    required: [
-      "n-5cd02dfa",
-    ],
+    required: ["n-5cd02dfa"],
     requiredRounds: 3,
-    position: {
-      x: 60,
-      y: 130,
-    },
+    position: { x: 60, y: 130 },
     big: false,
     content: {
       preface: [
@@ -1790,17 +1436,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "סביבה",
               exampleEn: "The **environment** is under threat.",
               exampleHe: "הסביבה נמצאת בסכנה.",
-              hookHe: "נשמע כמו \"אנווירונמנט\". ומילה ארוכה כמו environmentalists היא environment + ist: מי שאכפת לו מהסביבה. נחזור אליה בסוף.",
+              hookHe:
+                'נשמע כמו "אנווירונמנט". ומילה ארוכה כמו environmentalists היא environment + ist: מי שאכפת לו מהסביבה. נחזור אליה בסוף.',
             },
             {
               type: "mcq",
-              prompt: "Factories pollute the air and the rivers. They harm the ______.",
-              options: [
-                "holiday",
-                "environment",
-                "teacher",
-                "homework",
-              ],
+              prompt:
+                "Factories pollute the air and the rivers. They harm the ______.",
+              options: ["holiday", "environment", "teacher", "homework"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "אוויר ונהרות = הסביבה.",
@@ -1814,33 +1457,24 @@ export const c2Lessons: LessonNode[] = [
                 "The homework",
                 "The bicycle",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "זיהום וכריתת עצים = The environment.",
             },
-            {
-              type: "spell-word",
-              word: "environment",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "environment", mode: "copy" },
             {
               type: "word-card",
               word: "volunteer(s)",
               translationHe: "מתנדב / מתנדבים",
               exampleEn: "Young **volunteers** planted 200 trees.",
               exampleHe: "מתנדבים צעירים נטעו 200 עצים.",
-              hookHe: "נשמע כמו \"וולונטרי\" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.",
+              hookHe:
+                'נשמע כמו "וולונטרי" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.',
             },
             {
               type: "mcq",
-              prompt: "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
-              options: [
-                "volunteer",
-                "bicycle",
-                "teacher",
-                "environment",
-              ],
+              prompt:
+                "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
+              options: ["volunteer", "bicycle", "teacher", "environment"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "מרצון ובלי שכר = מתנדבת.",
@@ -1848,33 +1482,16 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "cloze-pick",
               clause: "give their time to help others. They do not get paid.",
-              options: [
-                "The environment",
-                "Bicycles",
-                "Doctors",
-                "Volunteers",
-              ],
-              correctIndices: [
-                3,
-              ],
+              options: ["The environment", "Bicycles", "Doctors", "Volunteers"],
+              correctIndices: [3],
               explanation: "Volunteers - נותנים מזמנם, בלי שכר.",
             },
-            {
-              type: "spell-word",
-              word: "volunteers",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "volunteers", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "environment",
-                  he: "סביבה",
-                },
-                {
-                  en: "volunteers",
-                  he: "מתנדב / מתנדבים",
-                },
+                { en: "environment", he: "סביבה" },
+                { en: "volunteers", he: "מתנדב / מתנדבים" },
               ],
             },
           ],
@@ -1888,99 +1505,72 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "קהילה",
               exampleEn: "The whole **community** came to the meeting.",
               exampleHe: "כל הקהילה הגיעה לאסיפה.",
-              hookHe: "נשמע כמו \"קומיוניטי\", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.",
+              hookHe:
+                'נשמע כמו "קומיוניטי", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.',
             },
             {
               type: "mcq",
-              prompt: "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
-              options: [
-                "environment",
-                "community",
-                "volunteers",
-                "holiday",
-              ],
+              prompt:
+                "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
+              options: ["environment", "community", "volunteers", "holiday"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "משפחות, מורים ובעלי חנויות ביחד = קהילה.",
             },
             {
               type: "cloze-pick",
-              clause: "helped each other after the storm. Neighbours, shops and schools all worked together.",
+              clause:
+                "helped each other after the storm. Neighbours, shops and schools all worked together.",
               options: [
                 "A bicycle",
                 "The environment",
                 "The community",
                 "A volunteer",
               ],
-              correctIndices: [
-                2,
-              ],
-              explanation: "שכנים, חנויות ובתי ספר שעובדים יחד = The community.",
+              correctIndices: [2],
+              explanation:
+                "שכנים, חנויות ובתי ספר שעובדים יחד = The community.",
             },
-            {
-              type: "spell-word",
-              word: "community",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "community", mode: "copy" },
             {
               type: "word-card",
               word: "charity",
               translationHe: "ארגון צדקה",
               exampleEn: "A local **charity** raised money for the school.",
               exampleHe: "ארגון צדקה מקומי גייס כסף לבית הספר.",
-              hookHe: "נשמע כמו \"צ'ריטי\". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.",
+              hookHe:
+                'נשמע כמו "צ\'ריטי". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.',
             },
             {
               type: "mcq",
-              prompt: "The organisation collects money for sick children. It does not make a profit. It is a ______.",
-              options: [
-                "environment",
-                "community",
-                "charity",
-                "volunteers",
-              ],
+              prompt:
+                "The organisation collects money for sick children. It does not make a profit. It is a ______.",
+              options: ["environment", "community", "charity", "volunteers"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "אוסף כסף כדי לעזור ולא כדי להרוויח = ארגון צדקה.",
             },
             {
               type: "cloze-pick",
-              clause: "is an organisation that raises money to help people, not to make a profit.",
+              clause:
+                "is an organisation that raises money to help people, not to make a profit.",
               options: [
                 "A volunteer",
                 "A charity",
                 "The environment",
                 "A holiday",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "ארגון שאוסף כסף כדי לעזור = A charity.",
             },
-            {
-              type: "spell-word",
-              word: "charity",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "charity", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "environment",
-                  he: "סביבה",
-                },
-                {
-                  en: "volunteers",
-                  he: "מתנדב / מתנדבים",
-                },
-                {
-                  en: "community",
-                  he: "קהילה",
-                },
-                {
-                  en: "charity",
-                  he: "ארגון צדקה",
-                },
+                { en: "environment", he: "סביבה" },
+                { en: "volunteers", he: "מתנדב / מתנדבים" },
+                { en: "community", he: "קהילה" },
+                { en: "charity", he: "ארגון צדקה" },
               ],
             },
           ],
@@ -1994,63 +1584,40 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "תושבים",
               exampleEn: "Most **residents** said the air was cleaner.",
               exampleHe: "רוב התושבים אמרו שהאוויר נקי יותר.",
-              hookHe: "נשמע כמו \"רזידנס\" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.",
+              hookHe:
+                'נשמע כמו "רזידנס" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.',
             },
             {
               type: "mcq",
-              prompt: "People who live in a city, and not just visit it, are its ______.",
-              options: [
-                "charity",
-                "residents",
-                "volunteers",
-                "community",
-              ],
+              prompt:
+                "People who live in a city, and not just visit it, are its ______.",
+              options: ["charity", "residents", "volunteers", "community"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מי שגר במקום = תושב.",
             },
             {
               type: "cloze-pick",
-              clause: "of the city all agreed that the new park made it a better place to live.",
+              clause:
+                "of the city all agreed that the new park made it a better place to live.",
               options: [
                 "Volunteers",
                 "Residents",
                 "A charity",
                 "The environment",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "מי שגר בעיר = Residents.",
             },
-            {
-              type: "spell-word",
-              word: "residents",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "residents", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "environment",
-                  he: "סביבה",
-                },
-                {
-                  en: "volunteers",
-                  he: "מתנדב / מתנדבים",
-                },
-                {
-                  en: "community",
-                  he: "קהילה",
-                },
-                {
-                  en: "charity",
-                  he: "ארגון צדקה",
-                },
-                {
-                  en: "residents",
-                  he: "תושבים",
-                },
+                { en: "environment", he: "סביבה" },
+                { en: "volunteers", he: "מתנדב / מתנדבים" },
+                { en: "community", he: "קהילה" },
+                { en: "charity", he: "ארגון צדקה" },
+                { en: "residents", he: "תושבים" },
               ],
             },
             {
@@ -2085,7 +1652,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "In 2016, a group of environmentalists decided to make the island of Redonda green again.\n\nפרקו את המילה: environment + -ist + -s. מי החליט להפוך את האי לירוק?",
+              prompt:
+                "In 2016, a group of environmentalists decided to make the island of Redonda green again.\n\nפרקו את המילה: environment + -ist + -s. מי החליט להפוך את האי לירוק?",
               options: [
                 "People who care about the environment",
                 "People who sell trees",
@@ -2093,13 +1661,14 @@ export const c2Lessons: LessonNode[] = [
                 "People who work in a factory",
               ],
               correctIndex: 0,
-              explanation: "environment + ist = מי שאכפת לו מהסביבה. כך מפרקים מילה ארוכה שלא הכרתם.",
+              explanation:
+                "environment + ist = מי שאכפת לו מהסביבה. כך מפרקים מילה ארוכה שלא הכרתם.",
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"environment, volunteer, community, charity, residents - אני מזהה ועובר הלאה.\"",
+                '"environment, volunteer, community, charity, residents - אני מזהה ועובר הלאה."',
               ],
             },
           ],
@@ -2107,19 +1676,12 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
-              prompt: "Many ______ in the city offered to plant trees. They did it for free.",
-              options: [
-                "residents",
-                "environments",
-                "charities",
-                "volunteers",
-              ],
+              prompt:
+                "Many ______ in the city offered to plant trees. They did it for free.",
+              options: ["residents", "environments", "charities", "volunteers"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מרצון ובחינם = מתנדבים.",
@@ -2127,64 +1689,36 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The ______ worked together to clean the river.",
-              options: [
-                "environment",
-                "charity",
-                "resident",
-                "community",
-              ],
+              options: ["environment", "charity", "resident", "community"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "worked together = אנשים רבים שפועלים יחד. charity הוא ארגון אחד, ו-environment הוא הנהר עצמו.",
+              explanation:
+                "worked together = אנשים רבים שפועלים יחד. charity הוא ארגון אחד, ו-environment הוא הנהר עצמו.",
             },
             {
               type: "mcq",
               prompt: "Local ______ said the air was cleaner than before.",
-              options: [
-                "communities",
-                "charities",
-                "volunteers",
-                "residents",
-              ],
+              options: ["communities", "charities", "volunteers", "residents"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "אלה שגרים במקום ומרגישים את האוויר = תושבים.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"תושבים\":",
+              prompt: 'סמנו את המילה שפירושה "תושבים":',
               sentence: "Most residents said the change was remarkable.",
               correctWordIndex: 1,
             },
             {
               type: "mark-all",
-              instruction: "סרקו את הטקסט וסמנו את חמש המילים. הצבעים מראים איזה סוג מילה זו: אנשים, ארגון וקבוצה, או טבע.",
+              instruction:
+                "סרקו את הטקסט וסמנו את חמש המילים. הצבעים מראים איזה סוג מילה זו: אנשים, ארגון וקבוצה, או טבע.",
               text: "A local charity decided to change the environment. Volunteers from the community joined, and residents said the results were remarkable.",
               correctIndices: [],
               categories: [
-                {
-                  name: "ארגון / קבוצה",
-                  color: "sky",
-                  indices: [
-                    2,
-                    11,
-                  ],
-                },
-                {
-                  name: "טבע",
-                  color: "emerald",
-                  indices: [
-                    7,
-                  ],
-                },
-                {
-                  name: "אנשים",
-                  color: "amber",
-                  indices: [
-                    8,
-                    14,
-                  ],
-                },
+                { name: "ארגון / קבוצה", color: "sky", indices: [2, 11] },
+                { name: "טבע", color: "emerald", indices: [7] },
+                { name: "אנשים", color: "amber", indices: [8, 14] },
               ],
               wordBank: [
                 "charity",
@@ -2198,10 +1732,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  The city of Greenfield had a problem. The parks were dirty, and many residents stopped using them.\n\nII  A local charity started a project. It asked young people to volunteer for two hours a week. However, the charity could not do it alone. The whole community had to take part.\n\nIII  After a year, the parks were clean again. Residents said they felt safer, and the environment in the city was healthier.",
@@ -2227,7 +1758,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "According to paragraph II, why did the whole community have to take part?",
+                  prompt:
+                    "According to paragraph II, why did the whole community have to take part?",
                   options: [
                     "The residents felt safer",
                     "The charity could not do it alone",
@@ -2240,7 +1772,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "writing-task",
-              prompt: "כתבו שני משפטים באנגלית על איך אפשר לעזור לקהילה שלכם.\nהשתמשו בלפחות שתיים מהמילים מהשיעור.",
+              prompt:
+                "כתבו שני משפטים באנגלית על איך אפשר לעזור לקהילה שלכם.\nהשתמשו בלפחות שתיים מהמילים מהשיעור.",
               wordBank: [
                 "environment",
                 "volunteers",
@@ -2261,20 +1794,15 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: מחקר וממצאים",
     titleEn: "Content Words: Research & Findings",
-    required: [
-      "content-2c",
-    ],
+    required: ["content-2c"],
     requiredRounds: 3,
-    position: {
-      x: 190,
-      y: 310,
-    },
+    position: { x: 190, y: 310 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\nהן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל. **אלה **מילות תוכן**.\n\nקראו את הפסקה הבאה\n\n*A team of ****researchers**** studied 500 students for a year. They ****discovered**** that noise can ****affect**** how well students learn. The ****results**** were clear: the most ****effective**** solution was a quiet room.*\nשימו לב למילים המודגשות.\nאם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n**researchers** → חוקרים**discovered** → גילו**affect** → להשפיע**results** → תוצאות**effective** → יעיל\nאלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.\nכמה מהן אתם כבר מכירים בלי לחשוב?\nאם פחות מחמש — השיעור הזה בדיוק בשבילכם.",
         },
         {
           type: "preface",
@@ -2291,17 +1819,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "לגלות / מצא",
               exampleEn: "Scientists **discovered** a new way to plant trees.",
               exampleHe: "מדענים גילו דרך חדשה לשתול עצים.",
-              hookHe: "discover = לגלות משהו שלא היה ידוע. וגם \"found that…\" בטקסט אומר \"מצאו ש…\": בדרך כלל זה ממצא של מחקר, והתשובה קרובה.",
+              hookHe:
+                'discover = לגלות משהו שלא היה ידוע. וגם "found that…" בטקסט אומר "מצאו ש…": בדרך כלל זה ממצא של מחקר, והתשובה קרובה.',
             },
             {
               type: "mcq",
-              prompt: "Scientists ______ a new medicine last year, and now doctors can use it.",
-              options: [
-                "cooked",
-                "discovered",
-                "painted",
-                "borrowed",
-              ],
+              prompt:
+                "Scientists ______ a new medicine last year, and now doctors can use it.",
+              options: ["cooked", "discovered", "painted", "borrowed"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "גילו תרופה חדשה = discovered.",
@@ -2315,33 +1840,24 @@ export const c2Lessons: LessonNode[] = [
                 "Scientists painted",
                 "Scientists found",
               ],
-              correctIndices: [
-                3,
-              ],
+              correctIndices: [3],
               explanation: "found that = מצאו ש - הממצא.",
             },
-            {
-              type: "spell-word",
-              word: "discover",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "discover", mode: "copy" },
             {
               type: "word-card",
               word: "result(s)",
               translationHe: "תוצאה / תוצאות",
               exampleEn: "The **results** of the study were surprising.",
               exampleHe: "תוצאות המחקר היו מפתיעות.",
-              hookHe: "result = מה שיוצא בסוף. results במחקר = התשובה שהמחקר נתן, ולכן המילה מצביעה על ממצא.",
+              hookHe:
+                "result = מה שיוצא בסוף. results במחקר = התשובה שהמחקר נתן, ולכן המילה מצביעה על ממצא.",
             },
             {
               type: "mcq",
-              prompt: "We tested the new method for a month. The ______ were very good.",
-              options: [
-                "homework",
-                "discover",
-                "results",
-                "holiday",
-              ],
+              prompt:
+                "We tested the new method for a month. The ______ were very good.",
+              options: ["homework", "discover", "results", "holiday"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "The ... were (רבים) = results.",
@@ -2355,27 +1871,15 @@ export const c2Lessons: LessonNode[] = [
                 "The breakfast",
                 "The window",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "תוצאות של סקר = The results.",
             },
-            {
-              type: "spell-word",
-              word: "results",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "results", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "discover / found",
-                  he: "לגלות / מצא",
-                },
-                {
-                  en: "results",
-                  he: "תוצאה / תוצאות",
-                },
+                { en: "discover / found", he: "לגלות / מצא" },
+                { en: "results", he: "תוצאה / תוצאות" },
               ],
             },
           ],
@@ -2389,17 +1893,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "חוקרים",
               exampleEn: "**Researchers** studied 500 students for a year.",
               exampleHe: "חוקרים חקרו 500 תלמידים במשך שנה.",
-              hookHe: "research = מחקר. researchers = מי שעושה מחקר: research + er. כשרואים researchers בטקסט, מגיע ממצא.",
+              hookHe:
+                "research = מחקר. researchers = מי שעושה מחקר: research + er. כשרואים researchers בטקסט, מגיע ממצא.",
             },
             {
               type: "mcq",
-              prompt: "People who study a subject carefully to learn new things are ______.",
-              options: [
-                "holidays",
-                "results",
-                "shoes",
-                "researchers",
-              ],
+              prompt:
+                "People who study a subject carefully to learn new things are ______.",
+              options: ["holidays", "results", "shoes", "researchers"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "חוקרים = researchers.",
@@ -2407,73 +1908,43 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "cloze-pick",
               clause: "studied the sleep of 300 teenagers for two years.",
-              options: [
-                "Results",
-                "Holidays",
-                "Sandwiches",
-                "Researchers",
-              ],
-              correctIndices: [
-                3,
-              ],
+              options: ["Results", "Holidays", "Sandwiches", "Researchers"],
+              correctIndices: [3],
               explanation: "מי שחוקר = Researchers.",
             },
-            {
-              type: "spell-word",
-              word: "researchers",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "researchers", mode: "copy" },
             {
               type: "word-card",
               word: "affect",
               translationHe: "להשפיע על",
               exampleEn: "Noise can **affect** how well you sleep.",
               exampleHe: "רעש יכול להשפיע על איכות השינה.",
-              hookHe: "affect = להשפיע. X affects Y: הראשון משפיע על השני. (השם effect מגיע בשיעור אחר.)",
+              hookHe:
+                "affect = להשפיע. X affects Y: הראשון משפיע על השני. (השם effect מגיע בשיעור אחר.)",
             },
             {
               type: "mcq",
-              prompt: "Bad weather can ______ how many people come to the park.",
-              options: [
-                "paint",
-                "discover",
-                "cook",
-                "affect",
-              ],
+              prompt:
+                "Bad weather can ______ how many people come to the park.",
+              options: ["paint", "discover", "cook", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "משפיע על כמה אנשים באים = affect.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את הפועל שפירושו \"להשפיע\":",
+              prompt: 'סמנו את הפועל שפירושו "להשפיע":',
               sentence: "Stress can affect your sleep.",
               correctWordIndex: 2,
             },
-            {
-              type: "spell-word",
-              word: "affect",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "affect", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "discover / found",
-                  he: "לגלות / מצא",
-                },
-                {
-                  en: "results",
-                  he: "תוצאה / תוצאות",
-                },
-                {
-                  en: "researchers",
-                  he: "חוקרים",
-                },
-                {
-                  en: "affect",
-                  he: "להשפיע על",
-                },
+                { en: "discover / found", he: "לגלות / מצא" },
+                { en: "results", he: "תוצאה / תוצאות" },
+                { en: "researchers", he: "חוקרים" },
+                { en: "affect", he: "להשפיע על" },
               ],
             },
           ],
@@ -2487,17 +1958,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "יעיל",
               exampleEn: "The most **effective** method was working in pairs.",
               exampleHe: "השיטה היעילה ביותר הייתה עבודה בזוגות.",
-              hookHe: "effective = עובד באמת, נותן תוצאה. effective בא מ-effect (השפעה): מה שיש לו השפעה הוא יעיל.",
+              hookHe:
+                "effective = עובד באמת, נותן תוצאה. effective בא מ-effect (השפעה): מה שיש לו השפעה הוא יעיל.",
             },
             {
               type: "mcq",
               prompt: "This medicine really works. It is very ______.",
-              options: [
-                "researchers",
-                "discover",
-                "effective",
-                "holiday",
-              ],
+              options: ["researchers", "discover", "effective", "holiday"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "עובד באמת = effective.",
@@ -2513,36 +1980,17 @@ export const c2Lessons: LessonNode[] = [
               ],
               correctIndex: 0,
               layout: "rows",
-              explanation: "effective הוא תואר: \"an effective way\".",
+              explanation: 'effective הוא תואר: "an effective way".',
             },
-            {
-              type: "spell-word",
-              word: "effective",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "effective", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "discover / found",
-                  he: "לגלות / מצא",
-                },
-                {
-                  en: "results",
-                  he: "תוצאה / תוצאות",
-                },
-                {
-                  en: "researchers",
-                  he: "חוקרים",
-                },
-                {
-                  en: "affect",
-                  he: "להשפיע על",
-                },
-                {
-                  en: "effective",
-                  he: "יעיל",
-                },
+                { en: "discover / found", he: "לגלות / מצא" },
+                { en: "results", he: "תוצאה / תוצאות" },
+                { en: "researchers", he: "חוקרים" },
+                { en: "affect", he: "להשפיע על" },
+                { en: "effective", he: "יעיל" },
               ],
             },
             {
@@ -2577,13 +2025,9 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "The programme was \"ineffective\".\n\nפרקו את המילה: in- (לא) + effective (יעיל). מה זה אומר?",
-              options: [
-                "יעילה מאוד",
-                "לא יעילה",
-                "מסוכנת",
-                "חדשה",
-              ],
+              prompt:
+                'The programme was "ineffective".\n\nפרקו את המילה: in- (לא) + effective (יעיל). מה זה אומר?',
+              options: ["יעילה מאוד", "לא יעילה", "מסוכנת", "חדשה"],
               correctIndex: 1,
               explanation: "in- = לא. כך מפרקים מילה חדשה.",
             },
@@ -2591,7 +2035,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"discover, result, researcher, affect, effective - אני מזהה ועובר הלאה.\"",
+                '"discover, result, researcher, affect, effective - אני מזהה ועובר הלאה."',
               ],
             },
           ],
@@ -2599,19 +2043,12 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
-              prompt: "The scientists were surprised by the ______ of the experiment.",
-              options: [
-                "affect",
-                "results",
-                "effective",
-                "researchers",
-              ],
+              prompt:
+                "The scientists were surprised by the ______ of the experiment.",
+              options: ["affect", "results", "effective", "researchers"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "תוצאות הניסוי = results.",
@@ -2619,12 +2056,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "______ from the university tested 200 students.",
-              options: [
-                "Results",
-                "Effective",
-                "Discovered",
-                "Researchers",
-              ],
+              options: ["Results", "Effective", "Discovered", "Researchers"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מי שבודק = Researchers.",
@@ -2632,51 +2064,27 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A bad night can ______ your mood the next day.",
-              options: [
-                "result",
-                "researchers",
-                "effective",
-                "affect",
-              ],
+              options: ["result", "researchers", "effective", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "משפיע על מצב הרוח = affect.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"יעיל\":",
+              prompt: 'סמנו את המילה שפירושה "יעיל":',
               sentence: "Group work was the most effective method.",
               correctWordIndex: 5,
             },
             {
               type: "mark-all",
-              instruction: "סמנו את חמש המילים. הצבעים: מי עושה, מה עושים, ומה יוצא.",
+              instruction:
+                "סמנו את חמש המילים. הצבעים: מי עושה, מה עושים, ומה יוצא.",
               text: "Researchers discovered that noise can affect learning. The results showed that the most effective solution was silence.",
               correctIndices: [],
               categories: [
-                {
-                  name: "מי",
-                  color: "amber",
-                  indices: [
-                    0,
-                  ],
-                },
-                {
-                  name: "פעולה",
-                  color: "sky",
-                  indices: [
-                    1,
-                    5,
-                  ],
-                },
-                {
-                  name: "תוצאה",
-                  color: "emerald",
-                  indices: [
-                    8,
-                    13,
-                  ],
-                },
+                { name: "מי", color: "amber", indices: [0] },
+                { name: "פעולה", color: "sky", indices: [1, 5] },
+                { name: "תוצאה", color: "emerald", indices: [8, 13] },
               ],
               wordBank: [
                 "researchers",
@@ -2690,10 +2098,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\nII  According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
@@ -2719,7 +2124,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 3,
                 },
                 {
-                  prompt: "According to paragraph II, what can volunteering affect?",
+                  prompt:
+                    "According to paragraph II, what can volunteering affect?",
                   options: [
                     "The weather",
                     "Sports results",
@@ -2753,14 +2159,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
-    required: [
-      "n-5cd02dfa",
-    ],
+    required: ["n-5cd02dfa"],
     requiredRounds: 3,
-    position: {
-      x: 190,
-      y: 130,
-    },
+    position: { x: 190, y: 130 },
     big: false,
     content: {
       preface: [
@@ -2783,17 +2184,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "לגדול / לעלות",
               exampleEn: "The number of trees will **increase** every year.",
               exampleHe: "מספר העצים יעלה בכל שנה.",
-              hookHe: "increase = לעלות. אפשר גם כשם עצם: an increase of 60% = עלייה של 60%. כשרואים אותה, תמיד לבדוק: עלייה או ירידה?",
+              hookHe:
+                "increase = לעלות. אפשר גם כשם עצם: an increase of 60% = עלייה של 60%. כשרואים אותה, תמיד לבדוק: עלייה או ירידה?",
             },
             {
               type: "mcq",
-              prompt: "The number of visitors will ______ next year: there will be more of them.",
-              options: [
-                "paint",
-                "sing",
-                "increase",
-                "cook",
-              ],
+              prompt:
+                "The number of visitors will ______ next year: there will be more of them.",
+              options: ["paint", "sing", "increase", "cook"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "יהיו יותר = increase.",
@@ -2801,39 +2199,25 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "cloze-pick",
               clause: "in the number of birds was 60%.",
-              options: [
-                "A sandwich",
-                "A window",
-                "A birthday",
-                "An increase",
-              ],
-              correctIndices: [
-                3,
-              ],
+              options: ["A sandwich", "A window", "A birthday", "An increase"],
+              correctIndices: [3],
               explanation: "עלייה של 60% = An increase.",
             },
-            {
-              type: "spell-word",
-              word: "increase",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "increase", mode: "copy" },
             {
               type: "word-card",
               word: "reduce / decrease",
               translationHe: "להקטין / לרדת",
               exampleEn: "The project could **reduce** carbon in the air.",
               exampleHe: "הפרויקט יכול להפחית פחמן באוויר.",
-              hookHe: "reduce = להקטין (בכוונה). decrease = לרדת. שתיהן ההפך מ-increase: החץ כלפי מטה.",
+              hookHe:
+                "reduce = להקטין (בכוונה). decrease = לרדת. שתיהן ההפך מ-increase: החץ כלפי מטה.",
             },
             {
               type: "mcq",
-              prompt: "We turned off the lights to ______ the electricity we use.",
-              options: [
-                "paint",
-                "increase",
-                "sing",
-                "reduce",
-              ],
+              prompt:
+                "We turned off the lights to ______ the electricity we use.",
+              options: ["paint", "increase", "sing", "reduce"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "להשתמש בפחות = reduce.",
@@ -2844,22 +2228,12 @@ export const c2Lessons: LessonNode[] = [
               sentence: "The number of cars decreased by 20%.",
               correctWordIndex: 4,
             },
-            {
-              type: "spell-word",
-              word: "reduce",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "reduce", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "increase",
-                  he: "לעלות",
-                },
-                {
-                  en: "reduce / decrease",
-                  he: "להקטין / לרדת",
-                },
+                { en: "increase", he: "לעלות" },
+                { en: "reduce / decrease", he: "להקטין / לרדת" },
               ],
             },
           ],
@@ -2873,17 +2247,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "להגן",
               exampleEn: "Rangers **protect** the forest from fire.",
               exampleHe: "שומרי היער מגינים על היער מפני שריפה.",
-              hookHe: "protect = להגן. נשמע כמו \"פרוטקט\". protect from = להגן מפני.",
+              hookHe:
+                'protect = להגן. נשמע כמו "פרוטקט". protect from = להגן מפני.',
             },
             {
               type: "mcq",
               prompt: "A helmet can ______ your head when you ride a bicycle.",
-              options: [
-                "sing",
-                "increase",
-                "cook",
-                "protect",
-              ],
+              options: ["sing", "increase", "cook", "protect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "קסדה מגינה = protect.",
@@ -2891,39 +2261,24 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "cloze-pick",
               clause: "the forests from fire is the rangers job.",
-              options: [
-                "Singing",
-                "Painting",
-                "Increasing",
-                "Protecting",
-              ],
-              correctIndices: [
-                3,
-              ],
+              options: ["Singing", "Painting", "Increasing", "Protecting"],
+              correctIndices: [3],
               explanation: "להגן על היער = Protecting.",
             },
-            {
-              type: "spell-word",
-              word: "protect",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "protect", mode: "copy" },
             {
               type: "word-card",
               word: "destroy",
               translationHe: "להרוס",
               exampleEn: "Fire can **destroy** a whole forest in one day.",
               exampleHe: "שריפה יכולה להרוס יער שלם ביום אחד.",
-              hookHe: "destroy = להרוס. הפוך מ-protect. destroy אומר שאין דרך חזרה.",
+              hookHe:
+                "destroy = להרוס. הפוך מ-protect. destroy אומר שאין דרך חזרה.",
             },
             {
               type: "mcq",
               prompt: "The storm ______ many houses. Nothing was left.",
-              options: [
-                "destroyed",
-                "increased",
-                "cooked",
-                "protected",
-              ],
+              options: ["destroyed", "increased", "cooked", "protected"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "לא נשאר כלום = destroyed.",
@@ -2941,30 +2296,14 @@ export const c2Lessons: LessonNode[] = [
               layout: "rows",
               explanation: "protect = להגן, והיער נשאר. בשאר המשפטים הוא נהרס.",
             },
-            {
-              type: "spell-word",
-              word: "destroy",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "destroy", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "increase",
-                  he: "לעלות",
-                },
-                {
-                  en: "reduce / decrease",
-                  he: "להקטין / לרדת",
-                },
-                {
-                  en: "protect",
-                  he: "להגן",
-                },
-                {
-                  en: "destroy",
-                  he: "להרוס",
-                },
+                { en: "increase", he: "לעלות" },
+                { en: "reduce / decrease", he: "להקטין / לרדת" },
+                { en: "protect", he: "להגן" },
+                { en: "destroy", he: "להרוס" },
               ],
             },
           ],
@@ -2978,17 +2317,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "מין (ביולוגי)",
               exampleEn: "Many **species** of birds live in this forest.",
               exampleHe: "הרבה מינים של ציפורים חיים ביער הזה.",
-              hookHe: "species = מין של חיה או צמח. שימו לב: אותה צורה ביחיד וברבים - one species, two species.",
+              hookHe:
+                "species = מין של חיה או צמח. שימו לב: אותה צורה ביחיד וברבים - one species, two species.",
             },
             {
               type: "mcq",
-              prompt: "There are more than 10,000 ______ of birds in the world.",
-              options: [
-                "increase",
-                "species",
-                "protect",
-                "destroy",
-              ],
+              prompt:
+                "There are more than 10,000 ______ of birds in the world.",
+              options: ["increase", "species", "protect", "destroy"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מינים של ציפורים = species.",
@@ -3002,39 +2338,18 @@ export const c2Lessons: LessonNode[] = [
                 "Many windows",
                 "Many bicycles",
               ],
-              correctIndices: [
-                0,
-              ],
+              correctIndices: [0],
               explanation: "מינים של חיות = Many species.",
             },
-            {
-              type: "spell-word",
-              word: "species",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "species", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "increase",
-                  he: "לעלות",
-                },
-                {
-                  en: "reduce / decrease",
-                  he: "להקטין / לרדת",
-                },
-                {
-                  en: "protect",
-                  he: "להגן",
-                },
-                {
-                  en: "destroy",
-                  he: "להרוס",
-                },
-                {
-                  en: "species",
-                  he: "מין (ביולוגי)",
-                },
+                { en: "increase", he: "לעלות" },
+                { en: "reduce / decrease", he: "להקטין / לרדת" },
+                { en: "protect", he: "להגן" },
+                { en: "destroy", he: "להרוס" },
+                { en: "species", he: "מין (ביולוגי)" },
               ],
             },
             {
@@ -3069,13 +2384,9 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "The text says \"endangered animals\".\n\nפרקו את המילה: en- (להכניס ל) + danger (סכנה) + -ed. מה זה?",
-              options: [
-                "גדולים",
-                "בסכנה",
-                "חדשים",
-                "מוגנים",
-              ],
+              prompt:
+                'The text says "endangered animals".\n\nפרקו את המילה: en- (להכניס ל) + danger (סכנה) + -ed. מה זה?',
+              options: ["גדולים", "בסכנה", "חדשים", "מוגנים"],
               correctIndex: 1,
               explanation: "en + danger + ed = הוכנסו לסכנה = בסכנת הכחדה.",
             },
@@ -3083,7 +2394,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"increase = עלה. reduce/decrease = ירד. protect ≠ destroy. species = מין.\"",
+                '"increase = עלה. reduce/decrease = ירד. protect ≠ destroy. species = מין."',
               ],
             },
           ],
@@ -3091,32 +2402,21 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
-              prompt: "Cutting down trees can ______ the number of birds in the area.",
-              options: [
-                "reduce",
-                "increase",
-                "species",
-                "protect",
-              ],
+              prompt:
+                "Cutting down trees can ______ the number of birds in the area.",
+              options: ["reduce", "increase", "species", "protect"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "פחות עצים = פחות ציפורים = reduce.",
             },
             {
               type: "mcq",
-              prompt: "The new park will ______ wild animals from cars and noise.",
-              options: [
-                "increase",
-                "protect",
-                "species",
-                "destroy",
-              ],
+              prompt:
+                "The new park will ______ wild animals from cars and noise.",
+              options: ["increase", "protect", "species", "destroy"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "הפארק מגן = protect.",
@@ -3124,74 +2424,36 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A rare ______ of frog lives only in this river.",
-              options: [
-                "destroy",
-                "species",
-                "increase",
-                "reduce",
-              ],
+              options: ["destroy", "species", "increase", "reduce"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מין של צפרדע = species.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"להרוס\":",
+              prompt: 'סמנו את המילה שפירושה "להרוס":',
               sentence: "Floods can destroy roads and bridges.",
               correctWordIndex: 2,
             },
             {
               type: "mark-all",
-              instruction: "סרקו את הטקסט וסמנו את חמש המילים. הצבעים: הרס, הגנה, עלייה/ירידה וחיים.",
+              instruction:
+                "סרקו את הטקסט וסמנו את חמש המילים. הצבעים: הרס, הגנה, עלייה/ירידה וחיים.",
               text: "Pollution can destroy habitats and reduce the number of species. Projects that protect forests can increase the population.",
               correctIndices: [],
               categories: [
-                {
-                  name: "הרס",
-                  color: "rose",
-                  indices: [
-                    2,
-                  ],
-                },
-                {
-                  name: "שינוי בכמות",
-                  color: "sky",
-                  indices: [
-                    5,
-                    15,
-                  ],
-                },
-                {
-                  name: "חיים",
-                  color: "violet",
-                  indices: [
-                    9,
-                  ],
-                },
-                {
-                  name: "הגנה",
-                  color: "emerald",
-                  indices: [
-                    12,
-                  ],
-                },
+                { name: "הרס", color: "rose", indices: [2] },
+                { name: "שינוי בכמות", color: "sky", indices: [5, 15] },
+                { name: "חיים", color: "violet", indices: [9] },
+                { name: "הגנה", color: "emerald", indices: [12] },
               ],
-              wordBank: [
-                "destroy",
-                "reduce",
-                "species",
-                "protect",
-                "increase",
-              ],
+              wordBank: ["destroy", "reduce", "species", "protect", "increase"],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\nIII  After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
@@ -3230,14 +2492,9 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "writing-task",
-              prompt: "כתבו שני משפטים על שינוי סביבתי, עם שלוש מהמילים מהשיעור.",
-              wordBank: [
-                "increase",
-                "reduce",
-                "protect",
-                "destroy",
-                "species",
-              ],
+              prompt:
+                "כתבו שני משפטים על שינוי סביבתי, עם שלוש מהמילים מהשיעור.",
+              wordBank: ["increase", "reduce", "protect", "destroy", "species"],
               minSentences: 2,
               minWordsUsed: 3,
             },
@@ -3251,14 +2508,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: התפתחות ולמידה",
     titleEn: "Content Words: Growth & Learning",
-    required: [
-      "content-1a",
-    ],
+    required: ["content-1a"],
     requiredRounds: 3,
-    position: {
-      x: 60,
-      y: 220,
-    },
+    position: { x: 60, y: 220 },
     big: false,
     content: {
       preface: [
@@ -3285,53 +2537,41 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "If you practise every day, your handwriting will ______.",
-              options: [
-                "improve",
-                "sing",
-                "paint",
-                "cook",
-              ],
+              prompt:
+                "If you practise every day, your handwriting will ______.",
+              options: ["improve", "sing", "paint", "cook"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "ייטב = improve.",
             },
             {
               type: "cloze-pick",
-              clause: "their grades after the programme.",
+              clause: "their grades after the program.",
               options: [
                 "Students improved",
                 "Students painted",
                 "Students cooked",
                 "Students sang",
               ],
-              correctIndices: [
-                0,
-              ],
+              correctIndices: [0],
               explanation: "שיפרו את הציונים = improved.",
             },
-            {
-              type: "spell-word",
-              word: "improve",
-              mode: "copy",
-            },
+            { type: "preface", text: "" },
+            { type: "spell-word", word: "improve", mode: "copy" },
             {
               type: "word-card",
               word: "develop",
               translationHe: "לפתח",
-              exampleEn: "The programme helps teenagers **develop** new skills.",
+              exampleEn:
+                "The programme helps teenagers **develop** new skills.",
               exampleHe: "התוכנית עוזרת לבני נוער לפתח מיומנויות חדשות.",
-              hookHe: "develop = לפתח: לבנות משהו בהדרגה. improve = לשפר משהו קיים · develop = לבנות או להצמיח משהו.",
+              hookHe:
+                "develop = לפתח: לבנות משהו בהדרגה. improve = לשפר משהו קיים · develop = לבנות או להצמיח משהו.",
             },
             {
               type: "mcq",
               prompt: "The company will ______ a new phone next year.",
-              options: [
-                "improve",
-                "sing",
-                "develop",
-                "paint",
-              ],
+              options: ["improve", "sing", "develop", "paint"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "לבנות משהו חדש = develop.",
@@ -3347,24 +2587,15 @@ export const c2Lessons: LessonNode[] = [
               ],
               correctIndex: 2,
               layout: "rows",
-              explanation: "improve = משהו שכבר יש והופך טוב יותר. בשאר: בונים משהו חדש.",
+              explanation:
+                "improve = משהו שכבר יש והופך טוב יותר. בשאר: בונים משהו חדש.",
             },
-            {
-              type: "spell-word",
-              word: "develop",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "develop", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "improve",
-                  he: "לשפר",
-                },
-                {
-                  en: "develop",
-                  he: "לפתח",
-                },
+                { en: "improve", he: "לשפר" },
+                { en: "develop", he: "לפתח" },
               ],
             },
           ],
@@ -3382,13 +2613,9 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "After years of practice, he ______ his dream and became a doctor.",
-              options: [
-                "achieved",
-                "developed",
-                "improved",
-                "painted",
-              ],
+              prompt:
+                "After years of practice, he ______ his dream and became a doctor.",
+              options: ["achieved", "developed", "improved", "painted"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "השיג את החלום = achieved.",
@@ -3402,67 +2629,42 @@ export const c2Lessons: LessonNode[] = [
                 "Students can achieve",
                 "Students can sing",
               ],
-              correctIndices: [
-                2,
-              ],
+              correctIndices: [2],
               explanation: "להשיג מטרות = achieve.",
             },
-            {
-              type: "spell-word",
-              word: "achieve",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "achieve", mode: "copy" },
             {
               type: "word-card",
               word: "skill(s)",
               translationHe: "מיומנות / מיומנויות",
               exampleEn: "This programme teaches important **skills**.",
               exampleHe: "התוכנית הזאת מלמדת מיומנויות חשובות.",
-              hookHe: "skill = יכולת שלומדים ומתאמנים בה: לנגן, לכתוב, לעבוד בצוות.",
+              hookHe:
+                "skill = יכולת שלומדים ומתאמנים בה: לנגן, לכתוב, לעבוד בצוות.",
             },
             {
               type: "mcq",
-              prompt: "Playing football together teaches teamwork and other ______.",
-              options: [
-                "windows",
-                "skills",
-                "holidays",
-                "shoes",
-              ],
+              prompt:
+                "Playing football together teaches teamwork and other ______.",
+              options: ["windows", "skills", "holidays", "shoes"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "עבודת צוות ועוד = skills.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"מיומנויות\":",
+              prompt: 'סמנו את המילה שפירושה "מיומנויות":',
               sentence: "Volunteers learn useful skills at work.",
               correctWordIndex: 3,
             },
-            {
-              type: "spell-word",
-              word: "skills",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "skills", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "improve",
-                  he: "לשפר",
-                },
-                {
-                  en: "develop",
-                  he: "לפתח",
-                },
-                {
-                  en: "achieve",
-                  he: "להשיג",
-                },
-                {
-                  en: "skills",
-                  he: "מיומנות / מיומנויות",
-                },
+                { en: "improve", he: "לשפר" },
+                { en: "develop", he: "לפתח" },
+                { en: "achieve", he: "להשיג" },
+                { en: "skills", he: "מיומנות / מיומנויות" },
               ],
             },
           ],
@@ -3476,17 +2678,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "חינוך",
               exampleEn: "Good **education** opens many doors.",
               exampleHe: "חינוך טוב פותח הרבה דלתות.",
-              hookHe: "education = חינוך והשכלה: הלימודים והידע שמקבלים. בא מהפועל educate = לחנך.",
+              hookHe:
+                "education = חינוך והשכלה: הלימודים והידע שמקבלים. בא מהפועל educate = לחנך.",
             },
             {
               type: "mcq",
               prompt: "Schools and universities are part of the ______ system.",
-              options: [
-                "holiday",
-                "education",
-                "kitchen",
-                "bicycle",
-              ],
+              options: ["holiday", "education", "kitchen", "bicycle"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מערכת החינוך = education.",
@@ -3500,39 +2698,18 @@ export const c2Lessons: LessonNode[] = [
                 "Good bicycle",
                 "Good breakfast",
               ],
-              correctIndices: [
-                1,
-              ],
+              correctIndices: [1],
               explanation: "Good education - חינוך טוב.",
             },
-            {
-              type: "spell-word",
-              word: "education",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "education", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "improve",
-                  he: "לשפר",
-                },
-                {
-                  en: "develop",
-                  he: "לפתח",
-                },
-                {
-                  en: "achieve",
-                  he: "להשיג",
-                },
-                {
-                  en: "skills",
-                  he: "מיומנות / מיומנויות",
-                },
-                {
-                  en: "education",
-                  he: "חינוך",
-                },
+                { en: "improve", he: "לשפר" },
+                { en: "develop", he: "לפתח" },
+                { en: "achieve", he: "להשיג" },
+                { en: "skills", he: "מיומנות / מיומנויות" },
+                { en: "education", he: "חינוך" },
               ],
             },
             {
@@ -3567,7 +2744,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "The text says education comes from the verb \"educate\".\n\nמה עושה an educator?",
+              prompt:
+                'The text says education comes from the verb "educate".\n\nמה עושה an educator?',
               options: [
                 "מחנך ומלמד",
                 "לומד בבית ספר",
@@ -3581,7 +2759,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"improve, develop, achieve, skill, education - אני מזהה, וגם משתמש בהם בכתיבה.\"",
+                '"improve, develop, achieve, skill, education - אני מזהה, וגם משתמש בהם בכתיבה."',
               ],
             },
           ],
@@ -3589,19 +2767,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
               prompt: "Reading every day can ______ your vocabulary.",
-              options: [
-                "skills",
-                "improve",
-                "achieve",
-                "education",
-              ],
+              options: ["skills", "improve", "achieve", "education"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מרחיב ומשפר = improve.",
@@ -3609,12 +2779,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "He practised for years and finally ______ his goal.",
-              options: [
-                "developed",
-                "achieved",
-                "skills",
-                "improved",
-              ],
+              options: ["developed", "achieved", "skills", "improved"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "השיג את המטרה = achieved.",
@@ -3622,19 +2787,14 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Cooking, writing and drawing are all useful ______.",
-              options: [
-                "education",
-                "improve",
-                "achieve",
-                "skills",
-              ],
+              options: ["education", "improve", "achieve", "skills"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מיומנויות שימושיות = skills.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"לפתח\":",
+              prompt: 'סמנו את המילה שפירושה "לפתח":',
               sentence: "Schools develop creative thinking in children.",
               correctWordIndex: 1,
             },
@@ -3644,23 +2804,8 @@ export const c2Lessons: LessonNode[] = [
               text: "Good education helps students develop important skills, improve their confidence and achieve their goals.",
               correctIndices: [],
               categories: [
-                {
-                  name: "מה (שם עצם)",
-                  color: "amber",
-                  indices: [
-                    1,
-                    6,
-                  ],
-                },
-                {
-                  name: "מה עושים (פועל)",
-                  color: "sky",
-                  indices: [
-                    4,
-                    7,
-                    11,
-                  ],
-                },
+                { name: "מה (שם עצם)", color: "amber", indices: [1, 6] },
+                { name: "מה עושים (פועל)", color: "sky", indices: [4, 7, 11] },
               ],
               wordBank: [
                 "education",
@@ -3674,16 +2819,14 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Many students think that grades are the only thing that matters at school.\n\nII  However, education is also about learning how to think. A good teacher helps students develop skills such as teamwork and creativity.\n\nIII  A study of 1,000 students found that those who joined after-school clubs improved their grades and achieved more of their goals.",
               questions: [
                 {
-                  prompt: "According to paragraph II, what does a good teacher help students develop?",
+                  prompt:
+                    "According to paragraph II, what does a good teacher help students develop?",
                   options: [
                     "Skills such as teamwork and creativity",
                     "A love of football",
@@ -3693,7 +2836,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What did the study find about students in after-school clubs?",
+                  prompt:
+                    "What did the study find about students in after-school clubs?",
                   options: [
                     "They did not change",
                     "They improved their grades",
@@ -3737,14 +2881,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: השפעה וערך",
     titleEn: "Content Words: Cause & Value",
-    required: [
-      "content-2a",
-    ],
+    required: ["content-2a"],
     requiredRounds: 3,
-    position: {
-      x: 60,
-      y: 310,
-    },
+    position: { x: 60, y: 310 },
     big: false,
     content: {
       preface: [
@@ -3767,17 +2906,13 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "לגרום / סיבה",
               exampleEn: "Pollution can **cause** serious health problems.",
               exampleHe: "זיהום יכול לגרום לבעיות בריאות חמורות.",
-              hookHe: "cause = לגרום ל, וגם שם עצם: the cause = הסיבה. החץ: סיבה ← תוצאה.",
+              hookHe:
+                "cause = לגרום ל, וגם שם עצם: the cause = הסיבה. החץ: סיבה ← תוצאה.",
             },
             {
               type: "mcq",
               prompt: "Too much sugar can ______ health problems.",
-              options: [
-                "cook",
-                "sing",
-                "cause",
-                "paint",
-              ],
+              options: ["cook", "sing", "cause", "paint"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "גורם לבעיות = cause.",
@@ -3791,33 +2926,24 @@ export const c2Lessons: LessonNode[] = [
                 "The shoes",
                 "The cause",
               ],
-              correctIndices: [
-                3,
-              ],
+              correctIndices: [3],
               explanation: "הסיבה לשריפה = The cause.",
             },
-            {
-              type: "spell-word",
-              word: "cause",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "cause", mode: "copy" },
             {
               type: "word-card",
               word: "affect / effect",
               translationHe: "להשפיע / השפעה",
-              exampleEn: "Noise can **affect** sleep. The **effect** is serious.",
+              exampleEn:
+                "Noise can **affect** sleep. The **effect** is serious.",
               exampleHe: "רעש יכול להשפיע על השינה. ההשפעה חמורה.",
-              hookHe: "affect = פועל, מה עושים: \"noise affects sleep\". effect = שם עצם, מה יש: \"the effect of noise\". a = action · e = end result.",
+              hookHe:
+                'affect = פועל, מה עושים: "noise affects sleep". effect = שם עצם, מה יש: "the effect of noise". a = action · e = end result.',
             },
             {
               type: "mcq",
               prompt: "Noise can ______ how well you sleep.",
-              options: [
-                "holiday",
-                "effect",
-                "cause",
-                "affect",
-              ],
+              options: ["holiday", "effect", "cause", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "פועל = affect. effect הוא שם עצם.",
@@ -3825,32 +2951,17 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Stress has a bad ______ on health.",
-              options: [
-                "affect",
-                "cause",
-                "effect",
-                "skill",
-              ],
+              options: ["affect", "cause", "effect", "skill"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "a bad ___ = שם עצם = effect.",
             },
-            {
-              type: "spell-word",
-              word: "affect",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "affect", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "cause",
-                  he: "לגרום / סיבה",
-                },
-                {
-                  en: "affect / effect",
-                  he: "להשפיע / השפעה",
-                },
+                { en: "cause", he: "לגרום / סיבה" },
+                { en: "affect / effect", he: "להשפיע / השפעה" },
               ],
             },
           ],
@@ -3869,44 +2980,31 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "To join the club, you ______ a parent signature.",
-              options: [
-                "cause",
-                "sing",
-                "require",
-                "affect",
-              ],
+              options: ["cause", "sing", "require", "affect"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "צריכים חתימה = require.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"דורש\":",
+              prompt: 'סמנו את המילה שפירושה "דורש":',
               sentence: "This job requires good English.",
               correctWordIndex: 2,
             },
-            {
-              type: "spell-word",
-              word: "require",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "require", mode: "copy" },
             {
               type: "word-card",
               word: "benefit",
               translationHe: "יתרון / להפיק תועלת",
               exampleEn: "One **benefit** of exercise is better sleep.",
               exampleHe: "יתרון אחד של פעילות גופנית הוא שינה טובה יותר.",
-              hookHe: "benefit = יתרון, הטוב שמקבלים. גם פועל: to benefit = להרוויח מזה.",
+              hookHe:
+                "benefit = יתרון, הטוב שמקבלים. גם פועל: to benefit = להרוויח מזה.",
             },
             {
               type: "mcq",
               prompt: "One ______ of reading is a bigger vocabulary.",
-              options: [
-                "cause",
-                "effect",
-                "benefit",
-                "holiday",
-              ],
+              options: ["cause", "effect", "benefit", "holiday"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "יתרון = benefit.",
@@ -3920,35 +3018,17 @@ export const c2Lessons: LessonNode[] = [
                 "Everyone can paint",
                 "Everyone can sing",
               ],
-              correctIndices: [
-                0,
-              ],
+              correctIndices: [0],
               explanation: "להרוויח = benefit.",
             },
-            {
-              type: "spell-word",
-              word: "benefit",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "benefit", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "cause",
-                  he: "לגרום / סיבה",
-                },
-                {
-                  en: "affect / effect",
-                  he: "להשפיע / השפעה",
-                },
-                {
-                  en: "require",
-                  he: "לדרוש",
-                },
-                {
-                  en: "benefit",
-                  he: "יתרון / להפיק תועלת",
-                },
+                { en: "cause", he: "לגרום / סיבה" },
+                { en: "affect / effect", he: "להשפיע / השפעה" },
+                { en: "require", he: "לדרוש" },
+                { en: "benefit", he: "יתרון / להפיק תועלת" },
               ],
             },
           ],
@@ -3960,22 +3040,19 @@ export const c2Lessons: LessonNode[] = [
               type: "word-card",
               word: "opportunity",
               translationHe: "הזדמנות",
-              exampleEn: "This is a great **opportunity** to learn something new.",
+              exampleEn:
+                "This is a great **opportunity** to learn something new.",
               exampleHe: "זאת הזדמנות מצוינת ללמוד משהו חדש.",
-              hookHe: "opportunity = הזדמנות: רגע שאפשר לנצל. נשמע כמו \"אופורטוניטי\".",
+              hookHe:
+                'opportunity = הזדמנות: רגע שאפשר לנצל. נשמע כמו "אופורטוניטי".',
             },
             {
               type: "mcq",
               prompt: "I was offered a job abroad. It is a great ______.",
-              options: [
-                "benefit",
-                "opportunity",
-                "window",
-                "cause",
-              ],
+              options: ["benefit", "opportunity", "window", "cause"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "הצעה לעבוד בחו\"ל = הזדמנות.",
+              explanation: 'הצעה לעבוד בחו"ל = הזדמנות.',
             },
             {
               type: "cloze-pick",
@@ -3986,39 +3063,18 @@ export const c2Lessons: LessonNode[] = [
                 "The bicycle",
                 "The opportunity",
               ],
-              correctIndices: [
-                3,
-              ],
+              correctIndices: [3],
               explanation: "ההזדמנות לטייל = The opportunity.",
             },
-            {
-              type: "spell-word",
-              word: "opportunity",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "opportunity", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "cause",
-                  he: "לגרום / סיבה",
-                },
-                {
-                  en: "affect / effect",
-                  he: "להשפיע / השפעה",
-                },
-                {
-                  en: "require",
-                  he: "לדרוש",
-                },
-                {
-                  en: "benefit",
-                  he: "יתרון / להפיק תועלת",
-                },
-                {
-                  en: "opportunity",
-                  he: "הזדמנות",
-                },
+                { en: "cause", he: "לגרום / סיבה" },
+                { en: "affect / effect", he: "להשפיע / השפעה" },
+                { en: "require", he: "לדרוש" },
+                { en: "benefit", he: "יתרון / להפיק תועלת" },
+                { en: "opportunity", he: "הזדמנות" },
               ],
             },
             {
@@ -4062,13 +3118,14 @@ export const c2Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               layout: "rows",
-              explanation: "affect = פועל (Stress can affect). effect = שם עצם (The effect is).",
+              explanation:
+                "affect = פועל (Stress can affect). effect = שם עצם (The effect is).",
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"cause = גורם ל. affect/effect = משפיע/השפעה. require = דורש. benefit/opportunity = יתרון/הזדמנות.\"",
+                '"cause = גורם ל. affect/effect = משפיע/השפעה. require = דורש. benefit/opportunity = יתרון/הזדמנות."',
               ],
             },
           ],
@@ -4076,19 +3133,11 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
               prompt: "What ______ the fire? Nobody knows.",
-              options: [
-                "benefited",
-                "affected",
-                "required",
-                "caused",
-              ],
+              options: ["benefited", "affected", "required", "caused"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מה גרם לשריפה = caused.",
@@ -4096,12 +3145,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The new law will ______ every driver in the country.",
-              options: [
-                "effect",
-                "affect",
-                "opportunity",
-                "benefit",
-              ],
+              options: ["effect", "affect", "opportunity", "benefit"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "פועל: affect.",
@@ -4109,51 +3153,27 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Studying abroad is a great ______ to meet new people.",
-              options: [
-                "opportunity",
-                "cause",
-                "effect",
-                "require",
-              ],
+              options: ["opportunity", "cause", "effect", "require"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "הזדמנות = opportunity.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"יתרון\":",
+              prompt: 'סמנו את המילה שפירושה "יתרון":',
               sentence: "A big benefit of walking is that it is free.",
               correctWordIndex: 2,
             },
             {
               type: "mark-all",
-              instruction: "סמנו את חמש המילים. הצבעים: סיבה והשפעה, דרישה וערך.",
+              instruction:
+                "סמנו את חמש המילים. הצבעים: סיבה והשפעה, דרישה וערך.",
               text: "Stress can cause health problems and affect sleep. Programmes that require little time can still benefit everyone, and it is a real opportunity.",
               correctIndices: [],
               categories: [
-                {
-                  name: "סיבה והשפעה",
-                  color: "rose",
-                  indices: [
-                    2,
-                    6,
-                  ],
-                },
-                {
-                  name: "דרישה",
-                  color: "amber",
-                  indices: [
-                    10,
-                  ],
-                },
-                {
-                  name: "ערך",
-                  color: "emerald",
-                  indices: [
-                    15,
-                    22,
-                  ],
-                },
+                { name: "סיבה והשפעה", color: "rose", indices: [2, 6] },
+                { name: "דרישה", color: "amber", indices: [10] },
+                { name: "ערך", color: "emerald", indices: [15, 22] },
               ],
               wordBank: [
                 "cause",
@@ -4167,10 +3187,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  Many people think that exercise takes too much time.\n\nII  However, a recent study found that programmes that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\nIII  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
@@ -4230,14 +3247,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: אחריות חברתית",
     titleEn: "Content Words: Social Responsibility",
-    required: [
-      "content-1c",
-    ],
+    required: ["content-1c"],
     requiredRounds: 3,
-    position: {
-      x: 190,
-      y: 220,
-    },
+    position: { x: 190, y: 220 },
     big: false,
     content: {
       preface: [
@@ -4258,22 +3270,20 @@ export const c2Lessons: LessonNode[] = [
               type: "word-card",
               word: "responsible",
               translationHe: "אחראי",
-              exampleEn: "A **responsible** student does homework without being asked.",
+              exampleEn:
+                "A **responsible** student does homework without being asked.",
               exampleHe: "תלמיד אחראי עושה שיעורי בית בלי שמבקשים ממנו.",
-              hookHe: "responsible = אחראי: מי שאפשר לסמוך עליו. גם: responsible for = אחראי על.",
+              hookHe:
+                "responsible = אחראי: מי שאפשר לסמוך עליו. גם: responsible for = אחראי על.",
             },
             {
               type: "mcq",
               prompt: "He always keeps his promises. He is very ______.",
-              options: [
-                "polite",
-                "responsible",
-                "lazy",
-                "brave",
-              ],
+              options: ["polite", "responsible", "lazy", "brave"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "עומד בהבטחות = אחראי. מנומס, עצלן ואמיץ הן תכונות אחרות, ואף אחת מהן לא מתארת מי שאפשר לסמוך עליו.",
+              explanation:
+                "עומד בהבטחות = אחראי. מנומס, עצלן ואמיץ הן תכונות אחרות, ואף אחת מהן לא מתארת מי שאפשר לסמוך עליו.",
             },
             {
               type: "cloze-pick",
@@ -4284,67 +3294,49 @@ export const c2Lessons: LessonNode[] = [
                 "Dana is responsible",
                 "Dana is angry",
               ],
-              correctIndices: [
-                2,
-              ],
-              explanation: "אחראית על הניקיון = responsible for. proud ו-afraid באות עם of, ו-angry עם at, לא עם for.",
+              correctIndices: [2],
+              explanation:
+                "אחראית על הניקיון = responsible for. proud ו-afraid באות עם of, ו-angry עם at, לא עם for.",
             },
-            {
-              type: "spell-word",
-              word: "responsible",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "responsible", mode: "copy" },
             {
               type: "word-card",
               word: "encourage",
               translationHe: "לעודד",
               exampleEn: "Teachers **encourage** students to try again.",
               exampleHe: "מורים מעודדים תלמידים לנסות שוב.",
-              hookHe: "encourage = לעודד: לתת אומץ ודחיפה. (courage = אומץ: en + courage.)",
+              hookHe:
+                "encourage = לעודד: לתת אומץ ודחיפה. (courage = אומץ: en + courage.)",
             },
             {
               type: "mcq",
               prompt: "A good teacher ______ students who are afraid to speak.",
-              options: [
-                "ignores",
-                "punishes",
-                "interrupts",
-                "encourages",
-              ],
+              options: ["ignores", "punishes", "interrupts", "encourages"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "מורה טוב שנותן אומץ לתלמיד ששותק = encourages. מי שמתעלם, מעניש או קוטע לא נותן אומץ.",
+              explanation:
+                "מורה טוב שנותן אומץ לתלמיד ששותק = encourages. מי שמתעלם, מעניש או קוטע לא נותן אומץ.",
             },
             {
               type: "cloze-pick",
-              clause: "students to volunteer, and they praise every student who helps.",
+              clause:
+                "students to volunteer, and they praise every student who helps.",
               options: [
                 "Schools forbid",
                 "Schools encourage",
                 "Schools refuse",
                 "Schools warn",
               ],
-              correctIndices: [
-                1,
-              ],
-              explanation: "בתי ספר שמשבחים כל תלמיד שעוזר = מעודדים (encourage). forbid = אוסרים, ולכן לא היו משבחים.",
+              correctIndices: [1],
+              explanation:
+                "בתי ספר שמשבחים כל תלמיד שעוזר = מעודדים (encourage). forbid = אוסרים, ולכן לא היו משבחים.",
             },
-            {
-              type: "spell-word",
-              word: "encourage",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "encourage", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "responsible",
-                  he: "אחראי",
-                },
-                {
-                  en: "encourage",
-                  he: "לעודד",
-                },
+                { en: "responsible", he: "אחראי" },
+                { en: "encourage", he: "לעודד" },
               ],
             },
           ],
@@ -4358,91 +3350,61 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "תמיכה / לתמוך",
               exampleEn: "Friends can **support** you in hard times.",
               exampleHe: "חברים יכולים לתמוך בך בזמנים קשים.",
-              hookHe: "support = לתמוך ותמיכה: לעמוד לצד מישהו, ברגש, בכסף או בעזרה.",
+              hookHe:
+                "support = לתמוך ותמיכה: לעמוד לצד מישהו, ברגש, בכסף או בעזרה.",
             },
             {
               type: "mcq",
-              prompt: "Dan lost his job, but his family stood by him with money and love. They ______ him.",
-              options: [
-                "blamed",
-                "ignored",
-                "left",
-                "supported",
-              ],
+              prompt:
+                "Dan lost his job, but his family stood by him with money and love. They ______ him.",
+              options: ["blamed", "ignored", "left", "supported"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "עמדו לצדו עם כסף ואהבה = supported. blamed, ignored ו-left הן ההפך.",
+              explanation:
+                "עמדו לצדו עם כסף ואהבה = supported. blamed, ignored ו-left הן ההפך.",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"תמיכה\":",
+              prompt: 'סמנו את המילה שפירושה "תמיכה":',
               sentence: "Parents give their children love and support.",
               correctWordIndex: 6,
             },
-            {
-              type: "spell-word",
-              word: "support",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "support", mode: "copy" },
             {
               type: "word-card",
               word: "society",
               translationHe: "חברה",
               exampleEn: "Volunteering benefits **society** as a whole.",
               exampleHe: "התנדבות מועילה לחברה כולה.",
-              hookHe: "society = חברה: כל האנשים שחיים יחד, לא בית ספר או קבוצה קטנה.",
+              hookHe:
+                "society = חברה: כל האנשים שחיים יחד, לא בית ספר או קבוצה קטנה.",
             },
             {
               type: "mcq",
               prompt: "Every member of ______ should follow the law.",
-              options: [
-                "social",
-                "society",
-                "societies",
-                "socially",
-              ],
+              options: ["social", "society", "societies", "socially"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "אחרי of בא שם עצם ביחיד: society. social הוא תואר, socially תואר פועל, ו-societies הוא רבים.",
+              explanation:
+                "אחרי of בא שם עצם ביחיד: society. social הוא תואר, socially תואר פועל, ו-societies הוא רבים.",
             },
             {
               type: "cloze-pick",
-              clause: "is made of millions of people, and it needs people who are responsible.",
-              options: [
-                "A team",
-                "Society",
-                "A family",
-                "A class",
-              ],
-              correctIndices: [
-                1,
-              ],
-              explanation: "מיליוני אנשים = חברה (society). צוות, משפחה וכיתה קטנים מדי.",
+              clause:
+                "is made of millions of people, and it needs people who are responsible.",
+              options: ["A team", "Society", "A family", "A class"],
+              correctIndices: [1],
+              explanation:
+                "מיליוני אנשים = חברה (society). צוות, משפחה וכיתה קטנים מדי.",
             },
-            {
-              type: "spell-word",
-              word: "society",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "society", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "responsible",
-                  he: "אחראי",
-                },
-                {
-                  en: "encourage",
-                  he: "לעודד",
-                },
-                {
-                  en: "support",
-                  he: "תמיכה / לתמוך",
-                },
-                {
-                  en: "society",
-                  he: "חברה",
-                },
+                { en: "responsible", he: "אחראי" },
+                { en: "encourage", he: "לעודד" },
+                { en: "support", he: "תמיכה / לתמוך" },
+                { en: "society", he: "חברה" },
               ],
             },
           ],
@@ -4456,17 +3418,14 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "בריאות / בריא",
               exampleEn: "Regular exercise improves your **health**.",
               exampleHe: "פעילות גופנית סדירה משפרת את הבריאות שלך.",
-              hookHe: "health = בריאות. healthy = בריא. אותו שורש: health ← healthy.",
+              hookHe:
+                "health = בריאות. healthy = בריא. אותו שורש: health ← healthy.",
             },
             {
               type: "mcq",
-              prompt: "Fruit and vegetables keep your body strong and free from illness. They are good for your ______.",
-              options: [
-                "society",
-                "health",
-                "support",
-                "school",
-              ],
+              prompt:
+                "Fruit and vegetables keep your body strong and free from illness. They are good for your ______.",
+              options: ["society", "health", "support", "school"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "גוף חזק ובלי מחלות = בריאות (health).",
@@ -4474,44 +3433,21 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Fruit is ______ food.",
-              options: [
-                "health",
-                "healthily",
-                "heal",
-                "healthy",
-              ],
+              options: ["health", "healthily", "heal", "healthy"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "לפני food צריך תואר: healthy. health הוא שם עצם, healthily תואר פועל, ו-heal פועל.",
+              explanation:
+                "לפני food צריך תואר: healthy. health הוא שם עצם, healthily תואר פועל, ו-heal פועל.",
             },
-            {
-              type: "spell-word",
-              word: "health",
-              mode: "copy",
-            },
+            { type: "spell-word", word: "health", mode: "copy" },
             {
               type: "match-pairs",
               pairs: [
-                {
-                  en: "responsible",
-                  he: "אחראי",
-                },
-                {
-                  en: "encourage",
-                  he: "לעודד",
-                },
-                {
-                  en: "support",
-                  he: "תמיכה / לתמוך",
-                },
-                {
-                  en: "society",
-                  he: "חברה",
-                },
-                {
-                  en: "health / healthy",
-                  he: "בריאות / בריא",
-                },
+                { en: "responsible", he: "אחראי" },
+                { en: "encourage", he: "לעודד" },
+                { en: "support", he: "תמיכה / לתמוך" },
+                { en: "society", he: "חברה" },
+                { en: "health / healthy", he: "בריאות / בריא" },
               ],
             },
             {
@@ -4546,13 +3482,9 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "The text may say \"irresponsible\".\n\nפרקו את המילה: ir- (לא) + responsible. מה זה אומר?",
-              options: [
-                "לא אחראי",
-                "אחראי מאוד",
-                "אחראי יותר",
-                "לא בריא",
-              ],
+              prompt:
+                'The text may say "irresponsible".\n\nפרקו את המילה: ir- (לא) + responsible. מה זה אומר?',
+              options: ["לא אחראי", "אחראי מאוד", "אחראי יותר", "לא בריא"],
               correctIndex: 0,
               explanation: "ir- = לא. כך מפרקים מילה חדשה: לא + אחראי.",
             },
@@ -4560,7 +3492,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"responsible, encourage, support, society, health - אני מזהה, וגם משתמש בהם בכתיבה.\"",
+                '"responsible, encourage, support, society, health - אני מזהה, וגם משתמש בהם בכתיבה."',
               ],
             },
           ],
@@ -4568,52 +3500,37 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב חזרה: אותן מילים, משפטים חדשים.",
-            },
+            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
             {
               type: "mcq",
               prompt: "A ______ person does not forget to feed the dog.",
-              options: [
-                "responsible",
-                "healthy",
-                "famous",
-                "lazy",
-              ],
+              options: ["responsible", "healthy", "famous", "lazy"],
               correctIndex: 0,
               layout: "honeycomb",
-              explanation: "לא שוכח להאכיל = אחראי. עצלן היה שוכח, ובריא או מפורסם לא קשור לזה.",
+              explanation:
+                "לא שוכח להאכיל = אחראי. עצלן היה שוכח, ובריא או מפורסם לא קשור לזה.",
             },
             {
               type: "mcq",
               prompt: "Good teachers ______ students to believe in themselves.",
-              options: [
-                "encourage",
-                "forbid",
-                "blame",
-                "warn",
-              ],
+              options: ["encourage", "forbid", "blame", "warn"],
               correctIndex: 0,
               layout: "honeycomb",
-              explanation: "מורים טובים נותנים אומץ להאמין בעצמך = encourage. forbid, blame ו-warn לא מתאימות למשפט חיובי.",
+              explanation:
+                "מורים טובים נותנים אומץ להאמין בעצמך = encourage. forbid, blame ו-warn לא מתאימות למשפט חיובי.",
             },
             {
               type: "mcq",
-              prompt: "Sleeping well and eating fruit are good for your ______.",
-              options: [
-                "health",
-                "society",
-                "support",
-                "school",
-              ],
+              prompt:
+                "Sleeping well and eating fruit are good for your ______.",
+              options: ["health", "society", "support", "school"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "שינה טובה ופירות = טוב לבריאות (health).",
             },
             {
               type: "mark-word",
-              prompt: "סמנו את המילה שפירושה \"חברה\":",
+              prompt: 'סמנו את המילה שפירושה "חברה":',
               sentence: "Every society has rules.",
               correctWordIndex: 1,
             },
@@ -4623,29 +3540,9 @@ export const c2Lessons: LessonNode[] = [
               text: "Volunteering makes students more responsible. Schools encourage it, and society benefits. It also supports better health.",
               correctIndices: [],
               categories: [
-                {
-                  name: "תכונה",
-                  color: "amber",
-                  indices: [
-                    4,
-                  ],
-                },
-                {
-                  name: "פעולה",
-                  color: "sky",
-                  indices: [
-                    6,
-                    13,
-                  ],
-                },
-                {
-                  name: "שם עצם",
-                  color: "emerald",
-                  indices: [
-                    9,
-                    15,
-                  ],
-                },
+                { name: "תכונה", color: "amber", indices: [4] },
+                { name: "פעולה", color: "sky", indices: [6, 13] },
+                { name: "שם עצם", color: "emerald", indices: [9, 15] },
               ],
               wordBank: [
                 "responsible",
@@ -4659,10 +3556,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה.",
-            },
+            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
               text: "I  In many countries, schools ask students to do volunteer work.\n\nII  Teachers say this encourages students to be more responsible. According to one teacher, students who volunteer support their classmates more.\n\nIII  A study found that volunteering is also good for health, and that society benefits when young people take part.",
@@ -4678,7 +3572,8 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 3,
                 },
                 {
-                  prompt: "According to one teacher, who do volunteers support?",
+                  prompt:
+                    "According to one teacher, who do volunteers support?",
                   options: [
                     "Their classmates",
                     "Their parents",
@@ -4689,19 +3584,15 @@ export const c2Lessons: LessonNode[] = [
                 },
                 {
                   prompt: "What else is volunteering good for?",
-                  options: [
-                    "Grades",
-                    "Friendships",
-                    "Sleep",
-                    "Health",
-                  ],
+                  options: ["Grades", "Friendships", "Sleep", "Health"],
                   correctIndex: 3,
                 },
               ],
             },
             {
               type: "writing-task",
-              prompt: "כתבו שני משפטים על אחריות חברתית, עם שלוש מהמילים מהשיעור.",
+              prompt:
+                "כתבו שני משפטים על אחריות חברתית, עם שלוש מהמילים מהשיעור.",
               wordBank: [
                 "responsible",
                 "encourage",
@@ -4722,17 +3613,9 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מבחן סיכום - אוצר מילים",
     titleEn: "Vocabulary Review Test",
-    required: [
-      "q-words-2",
-      "nav-words-2",
-      "content-1b",
-      "content-2b",
-    ],
+    required: ["q-words-2", "nav-words-2", "content-1b", "content-2b"],
     requiredRounds: 5,
-    position: {
-      x: 0,
-      y: 430,
-    },
+    position: { x: 0, y: 430 },
     big: true,
     content: {
       preface: [
@@ -4749,32 +3632,19 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            {
-              type: "preface",
-              text: "סבב 1: חימום. מילים קלות מכל הקבוצות.",
-            },
+            { type: "preface", text: "סבב 1: חימום. מילים קלות מכל הקבוצות." },
             {
               type: "mcq",
               prompt: "Read paragraph III only. איפה מחפשים?",
-              options: [
-                "בכל הטקסט",
-                "בכותרת",
-                "בפסקה III בלבד",
-                "בפסקה I",
-              ],
+              options: ["בכל הטקסט", "בכותרת", "בפסקה III בלבד", "בפסקה I"],
               correctIndex: 2,
               layout: "rows",
               explanation: "paragraph III = רק שם.",
             },
             {
               type: "mcq",
-              prompt: "\"Give ONE reason.\" - כמה סיבות כותבים?",
-              options: [
-                "שלוש",
-                "שתיים",
-                "אחת",
-                "כמה שאפשר",
-              ],
+              prompt: '"Give ONE reason." - כמה סיבות כותבים?',
+              options: ["שלוש", "שתיים", "אחת", "כמה שאפשר"],
               correctIndex: 2,
               layout: "rows",
               explanation: "ONE = אחת בלבד.",
@@ -4782,12 +3652,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Prices ______ every year, so we pay more.",
-              options: [
-                "reduce",
-                "destroy",
-                "increase",
-                "protect",
-              ],
+              options: ["reduce", "destroy", "increase", "protect"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "משלמים יותר = increase.",
@@ -4795,12 +3660,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Cutting down forests harms the ______.",
-              options: [
-                "teacher",
-                "holiday",
-                "homework",
-                "environment",
-              ],
+              options: ["teacher", "holiday", "homework", "environment"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "הסביבה = environment.",
@@ -4808,12 +3668,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Fifty ______ helped clean the beach for free.",
-              options: [
-                "residents",
-                "charities",
-                "environments",
-                "volunteers",
-              ],
+              options: ["residents", "charities", "environments", "volunteers"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "בחינם = מתנדבים.",
@@ -4821,12 +3676,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Sunscreen can ______ your skin from the sun.",
-              options: [
-                "improve",
-                "increase",
-                "protect",
-                "destroy",
-              ],
+              options: ["improve", "increase", "protect", "destroy"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "מגן = protect.",
@@ -4834,12 +3684,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Doctors say sugar is bad for your ______.",
-              options: [
-                "effect",
-                "society",
-                "health",
-                "opportunity",
-              ],
+              options: ["effect", "society", "health", "opportunity"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "בריאות = health.",
@@ -4847,12 +3692,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A fire can ______ a whole forest.",
-              options: [
-                "destroy",
-                "develop",
-                "improve",
-                "protect",
-              ],
+              options: ["destroy", "develop", "improve", "protect"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "הורס = destroy.",
@@ -4860,12 +3700,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Many birds live here. ______, owls and eagles.",
-              options: [
-                "As a result",
-                "However",
-                "Although",
-                "For example",
-              ],
+              options: ["As a result", "However", "Although", "For example"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "דוגמאות = For example.",
@@ -4881,7 +3716,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"Circle the correct answer\" - מה עושים?",
+              prompt: '"Circle the correct answer" - מה עושים?',
               options: [
                 "כותבים תשובה חדשה",
                 "מוחקים אפשרות",
@@ -4894,7 +3729,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"Give TWO answers\" - איך נראית תשובה נכונה?",
+              prompt: '"Give TWO answers" - איך נראית תשובה נכונה?',
               options: [
                 "תשובה אחת",
                 "(1) ... (2) ...",
@@ -4908,12 +3743,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "We can ______ waste if we recycle.",
-              options: [
-                "reduce",
-                "increase",
-                "develop",
-                "achieve",
-              ],
+              options: ["reduce", "increase", "develop", "achieve"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "פחות פסולת = reduce.",
@@ -4921,12 +3751,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Free ______ is important for every child.",
-              options: [
-                "education",
-                "skills",
-                "species",
-                "society",
-              ],
+              options: ["education", "skills", "species", "society"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "חינוך = education.",
@@ -4934,12 +3759,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A ______ collected money for the hospital.",
-              options: [
-                "community",
-                "volunteers",
-                "charity",
-                "residents",
-              ],
+              options: ["community", "volunteers", "charity", "residents"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "אוסף כסף כדי לעזור = charity.",
@@ -4947,12 +3767,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The whole ______ met to talk about the new school.",
-              options: [
-                "environment",
-                "community",
-                "volunteers",
-                "charity",
-              ],
+              options: ["environment", "community", "volunteers", "charity"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "כל הקהילה = community.",
@@ -4960,12 +3775,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Scientists found a new ______ of frog.",
-              options: [
-                "increase",
-                "education",
-                "skills",
-                "species",
-              ],
+              options: ["increase", "education", "skills", "species"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מין = species.",
@@ -4973,12 +3783,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "______ interviewed 400 teachers.",
-              options: [
-                "Charities",
-                "Results",
-                "Skills",
-                "Researchers",
-              ],
+              options: ["Charities", "Results", "Skills", "Researchers"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מי שמראיין במחקר = Researchers.",
@@ -4986,12 +3791,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The number of cars fell from 900 to 700. It ______.",
-              options: [
-                "increased",
-                "example",
-                "decreased",
-                "discovered",
-              ],
+              options: ["increased", "example", "decreased", "discovered"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "ירד = decreased.",
@@ -4999,12 +3799,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Doctors ______ that the new medicine helps.",
-              options: [
-                "ate",
-                "painted",
-                "sang",
-                "found",
-              ],
+              options: ["ate", "painted", "sang", "found"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "ממצא = found.",
@@ -5020,7 +3815,8 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"Explain why the number of birds increased.\" - מה נותנים?",
+              prompt:
+                '"Explain why the number of birds increased." - מה נותנים?',
               options: [
                 "תרגום",
                 "רק מספר",
@@ -5040,20 +3836,13 @@ export const c2Lessons: LessonNode[] = [
                 "What do we learn",
                 "When do we eat",
               ],
-              correctIndices: [
-                2,
-              ],
+              correctIndices: [2],
               explanation: "What do we learn = מה אנחנו לומדים.",
             },
             {
               type: "mcq",
               prompt: "The team trained hard. ______, they lost the game.",
-              options: [
-                "As a result",
-                "In addition",
-                "For example",
-                "However",
-              ],
+              options: ["As a result", "In addition", "For example", "However"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "ניגוד = However.",
@@ -5061,12 +3850,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Most ______ of the building are students.",
-              options: [
-                "volunteers",
-                "charities",
-                "residents",
-                "communities",
-              ],
+              options: ["volunteers", "charities", "residents", "communities"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "מי שגר בבניין = residents.",
@@ -5074,12 +3858,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The ______ of the test will arrive on Monday.",
-              options: [
-                "results",
-                "benefits",
-                "skills",
-                "researchers",
-              ],
+              options: ["results", "benefits", "skills", "researchers"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "תוצאות המבחן = results.",
@@ -5087,12 +3866,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Explorers ______ a new island in 1600.",
-              options: [
-                "discovered",
-                "required",
-                "achieved",
-                "protected",
-              ],
+              options: ["discovered", "required", "achieved", "protected"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "גילו = discovered.",
@@ -5100,12 +3874,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Daily reading will ______ your English.",
-              options: [
-                "reduce",
-                "destroy",
-                "improve",
-                "species",
-              ],
+              options: ["reduce", "destroy", "improve", "species"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "משפר = improve.",
@@ -5113,12 +3882,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The school will ______ a new science programme.",
-              options: [
-                "protect",
-                "skills",
-                "improve",
-                "develop",
-              ],
+              options: ["protect", "skills", "improve", "develop"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "לפתח משהו חדש = develop.",
@@ -5126,12 +3890,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Teamwork and communication are important ______.",
-              options: [
-                "education",
-                "results",
-                "species",
-                "skills",
-              ],
+              options: ["education", "results", "species", "skills"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "מיומנויות = skills.",
@@ -5148,12 +3907,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The road was closed ______ there was a flood.",
-              options: [
-                "although",
-                "in order to",
-                "because",
-                "however",
-              ],
+              options: ["although", "in order to", "because", "however"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "הסיבה לסגירה = because.",
@@ -5161,12 +3915,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "They built a wall ______ protect the town.",
-              options: [
-                "in order to",
-                "however",
-                "example",
-                "because",
-              ],
+              options: ["in order to", "however", "example", "because"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "מטרה = in order to.",
@@ -5174,12 +3923,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "You can ______ your goals if you work hard.",
-              options: [
-                "affect",
-                "destroy",
-                "achieve",
-                "reduce",
-              ],
+              options: ["affect", "destroy", "achieve", "reduce"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "להשיג מטרות = achieve.",
@@ -5187,12 +3931,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "People in a ______ share the same laws.",
-              options: [
-                "health",
-                "society",
-                "education",
-                "benefit",
-              ],
+              options: ["health", "society", "education", "benefit"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "חברה = society.",
@@ -5200,12 +3939,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Good coaches ______ players who feel afraid.",
-              options: [
-                "affect",
-                "require",
-                "encourage",
-                "cause",
-              ],
+              options: ["affect", "require", "encourage", "cause"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "מעודדים = encourage.",
@@ -5213,12 +3947,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Neighbours can ______ each other after a storm.",
-              options: [
-                "require",
-                "cause",
-                "support",
-                "destroy",
-              ],
+              options: ["require", "cause", "support", "destroy"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "לתמוך = support.",
@@ -5226,12 +3955,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "What ______ the accident? The police are asking.",
-              options: [
-                "encouraged",
-                "required",
-                "caused",
-                "supported",
-              ],
+              options: ["encouraged", "required", "caused", "supported"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "מה גרם = caused.",
@@ -5239,12 +3963,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The captain is ______ for everyone on the ship.",
-              options: [
-                "supported",
-                "required",
-                "responsible",
-                "healthy",
-              ],
+              options: ["supported", "required", "responsible", "healthy"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "אחראי על = responsible.",
@@ -5252,12 +3971,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "There was a storm. ______, the flight was cancelled.",
-              options: [
-                "As a result",
-                "In addition",
-                "However",
-                "For example",
-              ],
+              options: ["As a result", "In addition", "However", "For example"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "תוצאה = As a result.",
@@ -5265,12 +3979,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The app is free. ______, it works offline.",
-              options: [
-                "However",
-                "In addition",
-                "As a result",
-                "Although",
-              ],
+              options: ["However", "In addition", "As a result", "Although"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "עוד יתרון = In addition.",
@@ -5286,20 +3995,17 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"According to Dr. Lee, why did the trees die?\" - את מי מצטטים?",
-              options: [
-                "את הכותב",
-                "אף אחד",
-                "את Dr. Lee",
-                "את כל החוקרים",
-              ],
+              prompt:
+                '"According to Dr. Lee, why did the trees die?" - את מי מצטטים?',
+              options: ["את הכותב", "אף אחד", "את Dr. Lee", "את כל החוקרים"],
               correctIndex: 2,
               layout: "rows",
               explanation: "according to = רק מה שהדובר אמר.",
             },
             {
               type: "mcq",
-              prompt: "\"Complete the sentence: The river was dirty because…\" - מה כותבים?",
+              prompt:
+                '"Complete the sentence: The river was dirty because…" - מה כותבים?',
               options: [
                 "כותבים משפט חדש",
                 "ממשיכים ישר: the factory threw waste into it",
@@ -5313,12 +4019,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "______ it was expensive, many people bought it.",
-              options: [
-                "As a result",
-                "Although",
-                "However",
-                "In addition",
-              ],
+              options: ["As a result", "Although", "However", "In addition"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "Although פותחת חלק מנוגד בתוך משפט.",
@@ -5326,12 +4027,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A late night can ______ your grades.",
-              options: [
-                "effect",
-                "protect",
-                "reduce",
-                "affect",
-              ],
+              options: ["effect", "protect", "reduce", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "פועל = affect.",
@@ -5339,12 +4035,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "This is the most ______ way to learn words.",
-              options: [
-                "effect",
-                "affect",
-                "education",
-                "effective",
-              ],
+              options: ["effect", "affect", "education", "effective"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "יעיל = effective.",
@@ -5352,12 +4043,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The medicine had a strong ______ on her.",
-              options: [
-                "affect",
-                "cause",
-                "effect",
-                "benefit",
-              ],
+              options: ["affect", "cause", "effect", "benefit"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "שם עצם = effect.",
@@ -5365,12 +4051,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "This course ______ two hours of study each day.",
-              options: [
-                "causes",
-                "supports",
-                "encourages",
-                "requires",
-              ],
+              options: ["causes", "supports", "encourages", "requires"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "דורש = requires.",
@@ -5378,12 +4059,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "One ______ of the bicycle is that it costs nothing.",
-              options: [
-                "society",
-                "benefit",
-                "effect",
-                "opportunity",
-              ],
+              options: ["society", "benefit", "effect", "opportunity"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "יתרון = benefit.",
@@ -5391,19 +4067,15 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "She got an ______ to study abroad.",
-              options: [
-                "opportunity",
-                "effect",
-                "cause",
-                "benefit",
-              ],
+              options: ["opportunity", "effect", "cause", "benefit"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "הזדמנות = opportunity.",
             },
             {
               type: "writing-task",
-              prompt: "כתבו משפט אחד באנגלית שמשתמש בלפחות שתי מילים מהמסלולים שלמדתם.",
+              prompt:
+                "כתבו משפט אחד באנגלית שמשתמש בלפחות שתי מילים מהמסלולים שלמדתם.",
               wordBank: [
                 "however",
                 "as a result",
@@ -5427,10 +4099,7 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "module c - פתיחה",
     required: [],
-    position: {
-      x: 0,
-      y: 20,
-    },
+    position: { x: 0, y: 20 },
     big: true,
     content: {
       preface: [
@@ -5484,11 +4153,7 @@ export const c2Lessons: LessonNode[] = [
           text: "ומה תרוויחו?\n\nטקסט חדש שנראה מפחיד יהפוך למקום שבו כל מילת מפתח היא חברה ותיקה.\n\nמוכנים לגלות כמה מהר זה קורה?",
         },
       ],
-      rounds: [
-        {
-          screens: [],
-        },
-      ],
+      rounds: [{ screens: [] }],
     },
   },
 ];
