@@ -48,6 +48,9 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
 <ScoreBadge {score} />
+{#if screen.prompt}
+	<p class="mb-4 text-lg leading-relaxed font-semibold">{screen.prompt}</p>
+{/if}
 <div class="flex flex-wrap gap-2" dir={screen.dir ?? 'ltr'}>
 	{#each words as word, i (i)}
 		{@const isCorrect = i === screen.correctWordIndex}

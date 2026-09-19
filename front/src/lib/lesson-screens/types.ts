@@ -29,6 +29,8 @@ export type McqScreen = {
 /** Tap the question word inside a sentence. */
 export type MarkWordScreen = {
 	type: 'mark-word';
+	/** Optional instruction shown above the sentence (what to tap). */
+	prompt?: string;
 	sentence: string;
 	correctWordIndex: number;
 	dir?: 'rtl' | 'ltr';

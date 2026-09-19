@@ -188,6 +188,13 @@
 				+ אפשרות
 			</button>
 		{:else if screen.type === 'mark-word'}
+			<p class="text-xs text-muted">הוראה (אופציונלי)</p>
+			<MarkdownInput
+				bare
+				minRows={1}
+				value={screen.prompt ?? ''}
+				onInput={(v) => set('prompt', v)}
+			/>
 			<p class="text-xs text-muted">המשפט - הסימון נעשה בסרגל התחתון</p>
 			<MarkdownInput
 				bare

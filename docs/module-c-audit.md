@@ -24,7 +24,14 @@ Grades are 1-10 per node. `~` = judged from structure and a skim of sibling less
 | content-1b ~ | Same | Recall research/findings words | 6.5 | Requires content-2c, numbering out of order |
 | vocab-test | No check that the words stuck | Retrieve words across all three groups | 6.5 | One question per concept; gates l00 |
 
-The six content-word lessons are not prerequisites for the reading method, yet they gate it through vocab-test.
+**2026-09-19 rework (all Part A nodes, unplayed):** every vocab node now follows the content-1a pattern.
+- **Preface:** a real passage or question block with the node's words in bold plus a self-check, then a short node-specific plan. The shared "dictionary vs clock / the minimum" screen lives once in the intro n-5cd02dfa, which was rewritten (no exercises, encouraging rhetorical questions, "about 50 words" instead of the wrong "80").
+- **Rounds:** words are taught 2 at a time (card with example and memory hook, meaning question, sentence step, copy-spelling), then match-pairs of everything seen. The last required round adds the tool summary, the opening passage again, and a word-decoding question. `requiredRounds` = number of teaching rounds (2 or 3); then a review round and an exam-level round (both optional).
+- **Rule:** a word is never an answer or a decoy before its card.
+- **vocab-test:** five short rounds (question words 10, navigation 7, content A/B/C 10 each, plus one written sentence), one fresh in-context item per word, missed items replayed; all five required. A failed round names its group.
+- **Still open:** the coverage audit (are these words really the minimum Module C needs?), playing every node, and timing the rounds. The vocab gate stays: vocab-test gates l00 on purpose.
+
+Original note: the six content-word lessons are not prerequisites for the reading method, yet they gate it through vocab-test (kept on purpose, see "Section 1 purpose").
 
 ## Part B: reading (c-1)
 
