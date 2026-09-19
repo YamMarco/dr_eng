@@ -8,6 +8,7 @@
 - if feature is being repeated  => create resuable widget
 - material sturcutre: unit - module - section - lesson - screen
 - before adding/editing lesson content, read docs/lesson-structure.md (file map, builders, screen types, path rules) instead of re-reading the source
+- vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-word, mark-all, passage-mcq)
 - after changing Module C content, update docs/module-c-audit.md (snapshot date, grades, fixed/open lists)
 
 # persona
