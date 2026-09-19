@@ -84,6 +84,8 @@
 	disabled={checked}
 	value={input}
 	oninput={(e) => (input = e.currentTarget.value)}
+	onpaste={(e) => e.preventDefault()}
+	ondrop={(e) => e.preventDefault()}
 	placeholder={i18n.dict.wordCard.inputPlaceholder}
 	class="w-full rounded-xl border-2 px-3 py-2 text-lg leading-relaxed transition {checked
 		? correct
