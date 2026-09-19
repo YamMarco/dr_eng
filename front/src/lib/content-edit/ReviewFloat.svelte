@@ -20,7 +20,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	class="w-28 space-y-0.5 rounded-lg border border-line/70 bg-white p-1.5 text-[10px] shadow-md"
+	class="w-60 space-y-1 rounded-lg border-2 border-brand/40 bg-white p-2 text-xs shadow-lg"
 	onpointerdown={stop}
 	ondblclick={stop}
 >
@@ -66,11 +66,11 @@
 			{/each}
 		</div>
 	{/if}
-	<input
-		type="text"
+	<textarea
+		rows="3"
 		placeholder="הערה…"
 		value={note.comment}
-		oninput={(e) => reviewNotes.setComment(nodeId, (e.currentTarget as HTMLInputElement).value)}
-		class="w-full rounded border border-line/70 bg-white px-1 py-0.5 text-[10px]"
-	/>
+		oninput={(e) => reviewNotes.setComment(nodeId, (e.currentTarget as HTMLTextAreaElement).value)}
+		class="w-full resize-y rounded border border-line bg-white px-1.5 py-1 text-sm"
+	></textarea>
 </div>
