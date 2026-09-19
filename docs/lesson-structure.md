@@ -157,6 +157,29 @@ Order: alignment/direction tokens first, then the header marker, e.g.
 3. register in `registry.ts`
 4. badge string in `i18n/locales/he.ts` under `exerciseKind`
 
+## Writing distractors (wrong options)
+
+Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-word`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.
+
+Rules:
+1. **Every wrong option must be tempting to someone who is unsure.** Same part of speech, grammatically fits the blank, and belongs to the same topic as the sentence. Never fill slots with unrelated concrete nouns (bicycle, window, sandwich, kitchen, holiday).
+2. **Wrong on one clear point.** Each distractor fails for a reason you can state in the `explanation` (wrong meaning, wrong form, wrong preposition, opposite meaning). Keep exactly one defensible answer: read the sentence with each distractor in place before you ship it.
+3. **Give the sentence a decisive clue.** A vague sentence ("good for your ___") lets several options fit. Add the detail that only the target satisfies ("keep your body strong and free from illness").
+4. **Good sources of distractors, in order of preference:**
+   - a word from the same node that is already carded (never before its card) and fits grammatically
+   - another form of the target word (health / healthy / healthily / heal, society / social / societies)
+   - a near meaning that fails on one detail (encourage vs forbid in a sentence that praises)
+   - a collocation trap (responsible for, but proud of / afraid of)
+   - for passage questions: a real detail from the same text that answers a different question, or a plausible topic word that the text never mentions. Not an absurd one (prices, traffic, weather).
+5. **Use the `explanation` to say why the others fail**, not only why the answer is right. That is where the learning is.
+6. Vary the position of the correct option.
+
+Before / after (content-2c):
+- Before: "Fruit and vegetables are good for your ___" support / health / window / society.
+- After: "Fruit and vegetables keep your body strong and free from illness. They are good for your ___" society / health / support / school.
+- Before: "Every member of ___ should follow the law" holiday / society / kitchen / bicycle.
+- After: same sentence, options social / society / societies / socially (forces a choice of form, not just meaning).
+
 ## Conventions
 
 - all UI chrome is Hebrew, in `i18n/locales/he.ts`; `ar.ts` is a partial override
