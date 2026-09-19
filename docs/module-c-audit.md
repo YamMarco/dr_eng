@@ -16,7 +16,7 @@ Grades are 1-10 per node. `~` = judged from structure and a skim of sibling less
 | q-words-2 | Rewriting instead of completing; misreading circle / explain | Decode task verbs and the connectors because / in order to | 7 | Overlaps l11 |
 | nav-words-1 | Missing the text's turns and direction | Recognize contrast, addition and result signals | 7 | however returns in l08 |
 | nav-words-2 | Not telling an example from a finding or a direction | Read example, finding and increase/decrease signals | 7 | Same template |
-| content-1a | Unknown topic words cause panic and skipped context | Recall people/community words in context | 8 (prototype, unplayed) | Reworked 2026-09-19 into 5 rounds (rounds 1-3 required via `requiredRounds: 3`, about 2-3 min each: 2 + 2 + 1 words, each with card, question, sentence pick, spell; round 4-5 optional: use in sentences, exam-level passage + writing), with hooks, match-pairs and retry of misses. Play it, then copy the pattern to the other five |
+| content-1a | Unknown topic words cause panic and skipped context | Recall people/community words in context | 8 (prototype, unplayed) | Preface prototype (3 screens: real passage + self-check of the 5 words, dictionary-vs-clock and the minimum, map + plan; the same passage returns in round 3). Reworked 2026-09-19 into 5 rounds (rounds 1-3 required via `requiredRounds: 3`, about 2-3 min each: 2 + 2 + 1 words, each with card, question, sentence pick, spell; round 4-5 optional: use in sentences, exam-level passage + writing), with hooks, match-pairs and retry of misses. Play it, then copy the pattern to the other five |
 | content-2a ~ | Same | Recall growth/learning words | 6.5 | Template |
 | content-2b ~ | Same | Recall impact/value words | 6.5 | Template |
 | content-1c ~ | Same | Recall change/environment words | 6.5 | Template |
@@ -192,3 +192,7 @@ Recommendation: do 1 and 2 first; they cover most of the gap at a fraction of th
 ### Vocab question types
 
 Vocab nodes (Part A) are not limited to 4 question types. They currently lean on `mcq` + `self-check`; use `spell-word`, `cloze-pick`, `mark-word`, `mark-all` (with categories), `passage-mcq` and `word-card` wherever they fit, as in Example A above. See docs/lesson-structure.md for what each type scores.
+
+### Section 1 purpose
+
+Part A gives the minimum vocabulary needed to solve Module C; without it students are close to doomed. There is a dictionary in the exam, but the clock runs, so the words must be known. Every vocab preface should say this truthfully (no invented time numbers until measured), and the word list should be checked against the real module texts (coverage audit) so "minimum" is true. That is also why vocab-test gates l00: keep the gate, and make the test check the words that matter.

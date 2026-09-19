@@ -873,11 +873,15 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "מה קורה כשלא מכירים מילת תוכן? בואו נקרא את המשפט הבא:\n\nIn 2016, a group of environmentalists decided to make Redonda green again\n\nהתלמיד עוצר: \"environmentalists? מה זה?\" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.",
+          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Five years ago the river in Millbrook was full of rubbish. A local **charity** asked **residents** to help, and more than 200 **volunteers** joined the clean-up. The whole **community** worked together for three weekends. Today the **environment** around the river is healthy again.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",
-          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים, בשלושה סבבים קצרים. כל מילה מגיעה עם כמה תרגילים מיד אחרי, כדי שהיא באמת תיתפס.",
+          text: "יש מילון בבחינה, אבל יש גם שעון.\n\nמילון עוזר עם מילה נדירה אחת. הוא לא יציל טקסט שבו חמש מילים לא מוכרות: הזמן ייגמר לפני שתגיעו לשאלות. וגם, מילון נותן כמה משמעויות, ורק מי שמכיר את המילה יודע איזו מהן מתאימה.\n\nלכן אוספים את **המינימום**: רשימה קצרה של מילים שחוזרות במודול, שמכירים בלי מילון. זו לא אנגלית מההתחלה.",
+        },
+        {
+          type: "preface",
+          text: "המילים מחולקות לשלוש קבוצות: מילות שאלה, מילות ניווט ומילות תוכן. אתם עכשיו בקבוצה השלישית, **אנשים וקהילה**.\n\nהיום: 3 סבבים קצרים, 2-3 דקות כל אחד. בכל מילה: רואים, עונים, משלימים משפט ומקלידים.\n\nבסוף תחזרו לקטע מההתחלה, ותפרקו גם מילה ארוכה שלא הכרתם: **environmentalists**.",
         },
       ],
       rounds: [
@@ -890,7 +894,7 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "סביבה",
               exampleEn: "The **environment** is under threat.",
               exampleHe: "הסביבה נמצאת בסכנה.",
-              hookHe: "נשמע כמו \"אנווירונמנט\". והמילה מהפתיחה, environmentalists, היא environment + ist: מי שאכפת לו מהסביבה.",
+              hookHe: "נשמע כמו \"אנווירונמנט\". ומילה ארוכה כמו environmentalists היא environment + ist: מי שאכפת לו מהסביבה. נחזור אליה בסוף.",
             },
             {
               type: "mcq",
@@ -1154,6 +1158,10 @@ export const c2Lessons: LessonNode[] = [
               ],
             },
             {
+              type: "preface",
+              text: "זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\nקראו אותו שוב וענו.",
+            },
+            {
               type: "passage-mcq",
               text: "Five years ago the river in Millbrook was full of rubbish. A local charity asked residents to help, and more than 200 volunteers joined the clean-up. The whole community worked together for three weekends. Today the environment around the river is healthy again.",
               questions: [
@@ -1178,6 +1186,18 @@ export const c2Lessons: LessonNode[] = [
                   correctIndex: 3,
                 },
               ],
+            },
+            {
+              type: "mcq",
+              prompt: "In 2016, a group of environmentalists decided to make the island of Redonda green again.\n\nפרקו את המילה: environment + -ist + -s. מי החליט להפוך את האי לירוק?",
+              options: [
+                "People who sell trees",
+                "People who care about the environment",
+                "People who visit the island",
+                "People who work in a factory",
+              ],
+              correctIndex: 1,
+              explanation: "environment + ist = מי שאכפת לו מהסביבה. כך מפרקים מילה ארוכה שלא הכרתם.",
             },
             {
               type: "summary",
