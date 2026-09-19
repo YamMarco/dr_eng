@@ -900,9 +900,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LessonProgressBar.svelte": {
-    "mtime": 1789799252.9476721,
-    "seen": 1789799363.203882,
-    "ast_hash": "12147fc2a75af0ca1310654b6219526a",
+    "mtime": 1789799538.4983473,
+    "seen": 1789799575.593846,
+    "ast_hash": "59c1659f17b747fdf2495ecf5fb73f81",
     "semantic_hash": ""
   },
   "front/src/lib/moduleLocation.svelte.ts": {

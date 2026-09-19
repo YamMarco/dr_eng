@@ -89,10 +89,11 @@
   "87": "registry.ts",
   "88": "התחל כאן",
   "89": "moduleLocation.svelte.ts",
+  "90": "lessonProgress.svelte.ts",
   "91": "session.svelte.ts",
   "92": "סוגי המסכים שקיימים באפליקציה",
   "93": "הקול והסגנון",
-  "95": "SlideStage.svelte",
+  "95": "validate.ts",
   "96": "activeField.svelte.ts",
   "98": "lessons/+page.svelte"
 }
