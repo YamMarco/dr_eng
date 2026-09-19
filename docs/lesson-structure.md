@@ -58,7 +58,9 @@ Add an object to the right section's array:
   intro screens there; keep exercises (and any mid- or end-of-round teaching
   screens) in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
 - Round 0 is mandatory to progress; completing it unlocks dependents. Rounds 1+
-  are optional and don't affect anything downstream.
+  are optional and don't affect anything downstream. To make the first N rounds
+  mandatory (a node that teaches its content across several short rounds, e.g. the
+  vocab nodes), set `requiredRounds: N` on the node; dependents unlock after N rounds.
 - A node with no non-empty screen in `preface` or any round renders as a
   permanently-locked placeholder.
 - To add a section: new `c/c-<N>.ts`, import + spread it in `index.ts`, add an

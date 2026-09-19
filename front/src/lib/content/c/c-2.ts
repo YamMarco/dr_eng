@@ -863,6 +863,7 @@ export const c2Lessons: LessonNode[] = [
     required: [
       "n-5cd02dfa",
     ],
+    requiredRounds: 3,
     position: {
       x: 60,
       y: 130,
@@ -876,7 +877,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים. כל מילה מגיעה עם כמה תרגילים קצרים מיד אחרי, כדי שהיא באמת תיתפס.",
+          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים, בשלושה סבבים קצרים. כל מילה מגיעה עם כמה תרגילים מיד אחרי, כדי שהיא באמת תיתפס.",
         },
       ],
       rounds: [
@@ -964,6 +965,24 @@ export const c2Lessons: LessonNode[] = [
               mode: "copy",
             },
             {
+              type: "match-pairs",
+              pairs: [
+                {
+                  en: "environment",
+                  he: "סביבה",
+                },
+                {
+                  en: "volunteers",
+                  he: "מתנדבים",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          retryMissed: true,
+          screens: [
+            {
               type: "word-card",
               word: "community",
               translationHe: "קהילה",
@@ -1043,6 +1062,32 @@ export const c2Lessons: LessonNode[] = [
               word: "charity",
               mode: "copy",
             },
+            {
+              type: "match-pairs",
+              pairs: [
+                {
+                  en: "environment",
+                  he: "סביבה",
+                },
+                {
+                  en: "volunteers",
+                  he: "מתנדבים",
+                },
+                {
+                  en: "community",
+                  he: "קהילה",
+                },
+                {
+                  en: "charity",
+                  he: "ארגון צדקה",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          retryMissed: true,
+          screens: [
             {
               type: "word-card",
               word: "residents",
@@ -1148,7 +1193,7 @@ export const c2Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סבב חזרה: אותן חמש מילים, משפטים חדשים.",
+              text: "סבב אופציונלי: אותן חמש מילים, משפטים חדשים.",
             },
             {
               type: "mcq",
@@ -1246,7 +1291,7 @@ export const c2Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "רמת בחינה. טקסט חדש, בלי עזרה.",
+              text: "סבב אופציונלי, ברמת בחינה: טקסט חדש, בלי עזרה.",
             },
             {
               type: "passage-mcq",

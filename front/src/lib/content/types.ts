@@ -29,10 +29,12 @@ export interface LessonNode {
 	section: string;
 	titleHe: string;
 	titleEn?: string;
-	/** Lesson ids that must have round 1 done before this unlocks (AND'd). */
+	/** Lesson ids that must be done (see `requiredRounds`) before this unlocks (AND'd). */
 	required: string[];
 	/** Canvas placement in px, relative to the path's horizontal center. */
 	position: { x: number; y: number };
+	/** How many rounds count as "done" and unlock dependents. Default 1; a vocab node that teaches its words across several rounds sets it to that count. */
+	requiredRounds?: number;
 	/** Bigger node — no scored screen in any round. */
 	big: boolean;
 	image?: string;

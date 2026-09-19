@@ -164,7 +164,11 @@
 	});
 
 	function isDone(lessonId: string): boolean {
-		return lessonProgress.isCompleted(mod.id, lessonId);
+		return lessonProgress.isCompleted(
+			mod.id,
+			lessonId,
+			nodeById.get(lessonId)?.lesson.requiredRounds
+		);
 	}
 
 	function roundsCompleted(lessonId: string): number {

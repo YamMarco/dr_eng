@@ -5,9 +5,9 @@
 // so cross-section prerequisite checks (lessons path page) can look up any
 // lesson's status directly.
 //
-// A lesson unlocks the rest of the path once its round 1 is done — extra
-// rounds (LessonContent.rounds[1..]) are optional further practice and
-// don't affect anything downstream.
+// A lesson unlocks the rest of the path once its first `requiredRounds`
+// rounds (default 1) are done — later rounds are optional further practice
+// and don't affect anything downstream.
 
 const STORAGE_KEY = 'lesson-progress';
 
@@ -35,9 +35,9 @@ class LessonProgressStore {
 		return this.map[moduleId]?.[lessonId] ?? 0;
 	}
 
-	/** Round 1 (or later) done — this is what unlocks the rest of the path. */
-	isCompleted(moduleId: string, lessonId: string): boolean {
-		return this.completedRounds(moduleId, lessonId) >= 1;
+	/** Enough rounds done (default: the first) — this is what unlocks the rest of the path. */
+	isCompleted(moduleId: string, lessonId: string, requiredRounds = 1): boolean {
+		return this.completedRounds(moduleId, lessonId) >= requiredRounds;
 	}
 
 	/** Marks `roundIndex` (0-based) done; only ever moves the count forward. */
