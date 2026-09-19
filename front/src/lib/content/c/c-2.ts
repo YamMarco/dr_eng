@@ -3255,7 +3255,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Schools **encourage** students to volunteer, which makes them more **responsible**. **Society** benefits too, and studies show that volunteering also **supports** better **health**.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "בקטע הבא יש חמש מילים חשובות.אם אתם מכירים אותן, יהיה לכם הרבה יותר קל להבין את הרעיון של הקטע.\nקראו:\n*Schools ****encourage**** students to volunteer, which makes them more ****responsible****. ****Society**** benefits too, and studies show that volunteering also ****supports**** better ****health****.*\nעכשיו בדקו את עצמכם:\nהאם אתם יודעים מיד מה פירוש המילים המודגשות?\nלא צריך לתרגם את כל הקטע.המטרה היא לזהות את המילים שמחזיקות את המשמעות שלו.\nאם חלק מהמילים עדיין לא מוכרות לכם — מצוין.בדיוק בשביל זה אנחנו מתרגלים אותן עכשיו.",
         },
         {
           type: "preface",
