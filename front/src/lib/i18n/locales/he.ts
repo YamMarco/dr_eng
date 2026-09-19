@@ -37,10 +37,14 @@ export const he = {
 	},
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
-		startButton: 'התחלה',
-		/** Shown on the node's start button once round 1 is done — offers the next round. */
+		/** The node label's start button: always names the round about to be played. */
+		startRound: (round: number) => `התחל סבב ${round}`,
 		roundLabel: (current: number, total: number) => `סבב ${current} מתוך ${total}`,
 		exitLabel: 'יציאה מהשיעור',
+		prefaceButton: 'הסבר',
+		prefaceTitle: 'תזכורת: הסבר השיעור',
+		prefaceHint: 'זו רק הצצה - ההתקדמות שלך נשמרת והתרגיל ממשיך מאותו מקום.',
+		prefaceBack: 'חזרה לתרגיל',
 		continueButton: 'המשך',
 		doneButton: 'סיום',
 		completeTitle: 'כל הכבוד!',

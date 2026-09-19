@@ -5,6 +5,7 @@
 	import { backOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
@@ -444,11 +445,16 @@
 							out:scale={{ start: 0.55, duration: 130 }}
 							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
 						>
-							<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+							<div class="flex flex-col gap-2">
+								<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+								<LessonProgressBar
+									compact
+									segments={node.lesson.content.rounds.map(() => 1)}
+									current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
+								/>
+							</div>
 							<Button onclick={() => openNode(node)}>
-								{roundsCompleted(node.lesson.id) === 0
-									? i18n.dict.lesson.startButton
-									: i18n.dict.lesson.roundLabel(nextRoundIndex(node) + 1, totalRounds(node))}
+								{i18n.dict.lesson.startRound(nextRoundIndex(node) + 1)}
 							</Button>
 							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.lesson.id}</p>
 							{#if editStore.available}

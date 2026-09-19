@@ -6,9 +6,11 @@
 		segments: number[];
 		/** 0-based index of the screen currently on screen; pass segments-total to show full. */
 		current: number;
+		/** Slim, padding-free variant for embedding inside a card. */
+		compact?: boolean;
 	};
 
-	let { segments, current }: Props = $props();
+	let { segments, current, compact = false }: Props = $props();
 
 	let total = $derived(segments.reduce((sum, n) => sum + n, 0));
 
@@ -23,7 +25,7 @@
 </script>
 
 <div
-	class="mx-auto flex w-full max-w-lg items-center gap-1.5 px-4 py-3"
+	class="flex w-full items-center gap-1.5 {compact ? '' : 'mx-auto max-w-lg px-4 py-3'}"
 	role="progressbar"
 	aria-label="התקדמות בשיעור"
 	aria-valuenow={Math.min(current, total)}
@@ -32,7 +34,7 @@
 >
 	{#each segments as length, i (i)}
 		<div
-			class="h-2.5 overflow-hidden rounded-full bg-line"
+			class="overflow-hidden rounded-full bg-line {compact ? 'h-1.5' : 'h-2.5'}"
 			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
 		>
 			<div

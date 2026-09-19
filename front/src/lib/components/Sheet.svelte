@@ -39,7 +39,7 @@
 			role="dialog"
 			aria-modal="true"
 			aria-label={title}
-			class="relative w-full max-w-lg rounded-t-3xl bg-surface p-6 pb-8 shadow-xl sm:rounded-3xl sm:pb-6"
+			class="relative max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-surface p-6 pb-8 shadow-xl sm:rounded-3xl sm:pb-6"
 			transition:fly={{ y: 240, duration: 220 }}
 		>
 			<div class="mx-auto mb-5 h-1.5 w-10 rounded-full bg-line sm:hidden"></div>

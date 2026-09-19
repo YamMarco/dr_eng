@@ -3,11 +3,13 @@
 	import { Tween } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
+	import { BookOpen } from '@lucide/svelte';
 	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
+	import Sheet from '$lib/components/Sheet.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screenComponents } from './registry';
 	import { createLessonSession } from './session.svelte';
@@ -124,6 +126,19 @@
 		return `/edit?section=${lesson.section}&lesson=${lesson.id}&round=${round}&screen=${currentPath.index}`;
 	});
 
+	// "Glance back" sheet: the lesson's teaching preface, viewable over any
+	// exercise without leaving it (the runner's state — screen, score, timers'
+	// bags — is untouched while it's open). Scored screens are left out: the
+	// sheet is read-only.
+	let prefaceOpen = $state(false);
+	let prefaceScreens = $derived(
+		(lesson?.content.preface ?? []).filter((s) => !isScreenEmpty(s) && countQuestions(s) === 0)
+	);
+	// Redundant while the preface itself is what's on screen.
+	let canRecapPreface = $derived(
+		prefaceScreens.length > 0 && !justFinished && currentPath?.bucket !== 'preface'
+	);
+
 	let isLastScreen = $derived(screenIndex === screens.length - 1);
 	let ScreenComponent = $derived(currentScreen ? screenComponents[currentScreen.type] : undefined);
 	let primaryLabel = $derived(
@@ -158,7 +173,20 @@
 </script>
 
 <div class="fixed inset-0 z-50 flex flex-col bg-canvas">
-	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel} />
+	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel}>
+		{#snippet trailing()}
+			{#if canRecapPreface}
+				<button
+					type="button"
+					onclick={() => (prefaceOpen = true)}
+					class="inline-flex h-9 items-center gap-1.5 rounded-full bg-brand-soft px-3 text-sm font-semibold text-brand-dark transition active:scale-95"
+				>
+					<BookOpen size={16} aria-hidden="true" />
+					{i18n.dict.lesson.prefaceButton}
+				</button>
+			{/if}
+		{/snippet}
+	</AppBar>
 	{#if !justFinished}
 		<LessonProgressBar segments={progressSegments} current={screenIndex} />
 	{/if}
@@ -271,6 +299,20 @@
 			{/if}
 		</div>
 	</div>
+
+	<Sheet
+		bind:open={prefaceOpen}
+		title={i18n.dict.lesson.prefaceTitle}
+		description={i18n.dict.lesson.prefaceHint}
+	>
+		{#each prefaceScreens as prefaceScreen, i (i)}
+			{@const PrefaceComponent = screenComponents[prefaceScreen.type]}
+			<div class="border-b border-line/60 pb-4 last:border-b-0">
+				<PrefaceComponent screen={prefaceScreen} onAdvance={() => {}} />
+			</div>
+		{/each}
+		<Button onclick={() => (prefaceOpen = false)}>{i18n.dict.lesson.prefaceBack}</Button>
+	</Sheet>
 
 	{#if editHref && !justFinished}
 		<!-- Dev-only deep link into the /edit workspace, focused on this screen.
