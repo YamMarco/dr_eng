@@ -8,14 +8,14 @@ export const c1Lessons: LessonNode[] = [
     section: "c-1",
     titleHe: "אני מחפש, לא קורא",
     titleEn: "Mindset",
-    required: ["vocab-test"],
+    required: [],
     position: { x: 0, y: 540 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "הנה סיפור שמתרחש לפחות 3 פעמים בכל מחצית: יש לכם את קבוצת הוואטסאפ לאנגלית שיש בה 500 הודעות לפחות. וכמובן שיש תמיד את החבר ההוא ששואל: \"נו, מתי הבחינה? מה החומר?\"\n\nבמקרה זה, האם אתם גוללים 500 הודעות מההתחלה כדי למצוא את התשובה? בטח שלא!\n\nפשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - אתם שם, ואז אתם מקפיצים לו את התשובה. חסכתם לעצמכם זמן ומאמץ מיותר, בלי אפילו לחשוב על זה.",
+          text: 'הנה סיפור שמתרחש לפחות 3 פעמים בכל מחצית: יש לכם את קבוצת הוואטסאפ לאנגלית שיש בה 500 הודעות לפחות. וכמובן שיש תמיד את החבר ההוא ששואל: "נו, מתי הבחינה? מה החומר?"\n\nבמקרה זה, האם אתם גוללים 500 הודעות מההתחלה כדי למצוא את התשובה? בטח שלא!\n\nפשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - אתם שם, ואז אתם מקפיצים לו את התשובה. חסכתם לעצמכם זמן ומאמץ מיותר, בלי אפילו לחשוב על זה.',
         },
         {
           type: "preface",
@@ -41,20 +41,20 @@ export const c1Lessons: LessonNode[] = [
           type: "steps",
           steps: [
             'קוראים את השאלה: "Where do elephants live?" - המילה שמחפשים היא live ולא elephant כי הבנו שהפסקה כן מדברת על הפילים.',
-          "מציצים בטקסט רק כדי להבין על מה הוא (פילים). אחרי זה חוזרים לשאלה ולא קוראים שוב מההתחלה - סורקים ומחפשים live בטקסט.",
+            "מציצים בטקסט רק כדי להבין על מה הוא (פילים). אחרי זה חוזרים לשאלה ולא קוראים שוב מההתחלה - סורקים ומחפשים live בטקסט.",
             'מצאנו: "They live in Africa and Asia".',
             "כותבים: They live in Africa and Asia. - 8 שניות, בלי לקרוא את כל הפסקה.",
           ],
         },
-          {
-            type: "summary",
-            title: "מילת מפתח",
-            lines: [
-              "המילה מהשאלה שמחפשים בטקסט - כמו המילה שמקלידים ב-🔍.",
-              "בדוגמה: live. לא Where - זו רק מילת שאלה.",
-              "בשיעור P1 נלמד לבחור אותה בדיוק."
-            ]
-          },
+        {
+          type: "summary",
+          title: "מילת מפתח",
+          lines: [
+            "המילה מהשאלה שמחפשים בטקסט - כמו המילה שמקלידים ב-🔍.",
+            "בדוגמה: live. לא Where - זו רק מילת שאלה.",
+            "בשיעור P1 נלמד לבחור אותה בדיוק.",
+          ],
+        },
       ],
       rounds: [
         {
@@ -86,10 +86,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "בואו ננסה עוד תרגיל ביחד:",
-            },
+            { type: "preface", text: "בואו ננסה עוד תרגיל ביחד:" },
             {
               type: "passage-mcq",
               text: "The Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
@@ -206,8 +203,8 @@ export const c1Lessons: LessonNode[] = [
             "קוראים את הכותרת. מה הנושא?",
             "קוראים את הפסקה הראשונה בלבד.",
             "שואלים: על מה הטקסט? מה הבעיה או הכיוון?",
-            "עכשיו פותחים את השאלה הראשונה - ויש לכם כיוון."
-          ]
+            "עכשיו פותחים את השאלה הראשונה - ויש לכם כיוון.",
+          ],
         },
         {
           type: "preface",
@@ -436,7 +433,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "הסיטואציה שכולנו מכירים\n\nתלמיד קורא שאלה מספר 3 ומרים יד.\nאני שואל: \"מה הבעיה?\"\nוהוא אומר: \"אני לא מוצא את התשובה.\"\nאני שואל: \"אתה מבין את השאלה?\"\nוהוא אומר: \"כן... נראה לי.\"\nאני אומר: \"תסביר לי בעברית מה השאלה רוצה.\"\nופתאום... הוא לא באמת יודע להסביר.\n\n**אם אתם לא יודעים להסביר מה השאלה רוצה - עדיין לא מתחילים לענות.**",
+          text: 'הסיטואציה שכולנו מכירים\n\nתלמיד קורא שאלה מספר 3 ומרים יד.\nאני שואל: "מה הבעיה?"\nוהוא אומר: "אני לא מוצא את התשובה."\nאני שואל: "אתה מבין את השאלה?"\nוהוא אומר: "כן... נראה לי."\nאני אומר: "תסביר לי בעברית מה השאלה רוצה."\nופתאום... הוא לא באמת יודע להסביר.\n\n**אם אתם לא יודעים להסביר מה השאלה רוצה - עדיין לא מתחילים לענות.**',
         },
         {
           type: "preface",
@@ -465,15 +462,13 @@ export const c1Lessons: LessonNode[] = [
             "**Read the title** - מה הנושא?",
             "**Read the first paragraph** - מה הכיוון של הטקסט?",
             "עוברים לשאלה ובודקים רמזור: 🟢 מבין - ממשיך. 🟡 מבין חלקית - מפרק את השאלה. 🔴 לא מבין - עוצר ומפרק.",
-            "רק אחרי שהרמזור ירוק - מחפשים את התשובה בטקסט."
-          ]
+            "רק אחרי שהרמזור ירוק - מחפשים את התשובה בטקסט.",
+          ],
         },
         {
           type: "summary",
           title: "כל השיטה עד עכשיו",
-          lines: [
-            "כותרת ← פסקה ראשונה ← שאלה ← רמזור ← תשובה"
-          ]
+          lines: ["כותרת ← פסקה ראשונה ← שאלה ← רמזור ← תשובה"],
         },
         {
           type: "summary",
@@ -528,24 +523,26 @@ export const c1Lessons: LessonNode[] = [
               text: "The project, called Green Africa, has already planted over 200 million trees in 15 countries. Scientists say that if it continues, it could reduce carbon in the atmosphere by 15%.",
               questions: [
                 {
-                  prompt: "השאלה: \"What has the project achieved so far?\" - מה הצבע שלכם, לפני שמחפשים בטקסט?",
+                  prompt:
+                    'השאלה: "What has the project achieved so far?" - מה הצבע שלכם, לפני שמחפשים בטקסט?',
                   options: [
                     "🟢 ירוק - עונים מיד",
                     "🟡 צהוב - achieved ו-so far לא ברורות, מפענחים קודם",
-                    "🔴 אדום - מוותרים על השאלה"
+                    "🔴 אדום - מוותרים על השאלה",
                   ],
-                  correctIndex: 1
+                  correctIndex: 1,
                 },
                 {
-                  prompt: "מפענחים: achieved = השיג, so far = עד עכשיו. מה התשובה?",
+                  prompt:
+                    "מפענחים: achieved = השיג, so far = עד עכשיו. מה התשובה?",
                   options: [
                     "It has planted over 200 million trees in 15 countries",
                     "It could reduce carbon by 15%",
-                    "It is called Green Africa"
+                    "It is called Green Africa",
                   ],
-                  correctIndex: 0
-                }
-              ]
+                  correctIndex: 0,
+                },
+              ],
             },
           ],
         },
@@ -599,14 +596,15 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "\"According to the text, what is one drawback of the reforestation initiative?\" - כמעט שום דבר לא ברור. צבע ופעולה?",
+              prompt:
+                '"According to the text, what is one drawback of the reforestation initiative?" - כמעט שום דבר לא ברור. צבע ופעולה?',
               options: [
                 "🟢 עונים - זו שאלה על הטקסט",
                 "🟡 מילון למילה אחת ועונים",
                 "🔴 עוצרים, מפרקים את השאלה לחלקים, ורק אז ממשיכים",
-                "M ועוברים הלאה בלי לנסות"
+                "M ועוברים הלאה בלי לנסות",
               ],
-              correctIndex: 2
+              correctIndex: 2,
             },
             {
               type: "summary",
@@ -737,8 +735,8 @@ export const c1Lessons: LessonNode[] = [
           lines: [
             "מפה · כותרת + פסקה ראשונה: על מה הטקסט?",
             "רמזור · מבינים את השאלה? רק ירוק ממשיך.",
-            "P1 · מילת מפתח ← איתור ← קריאת המשפט ← תשובה"
-          ]
+            "P1 · מילת מפתח ← איתור ← קריאת המשפט ← תשובה",
+          ],
         },
         {
           type: "summary",
@@ -753,7 +751,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "מהי מילת מפתח? (הכרנו בשיעור הראשון - עכשיו מדייקים)\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n\"Why did the scientists start the project?\" ← מילת מפתח = scientists / project",
+          text: 'מהי מילת מפתח? (הכרנו בשיעור הראשון - עכשיו מדייקים)\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project',
         },
         {
           type: "preface",
@@ -949,11 +947,11 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "המרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה."
+              text: "המרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.",
             },
             {
               type: "preface",
-              text: "דרך א׳: קוראים הכל\n\nקראו את כל הטקסט מהמילה הראשונה ועד האחרונה, ורק אחר כך ענו על השאלה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח."
+              text: "דרך א׳: קוראים הכל\n\nקראו את כל הטקסט מהמילה הראשונה ועד האחרונה, ורק אחר כך ענו על השאלה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח.",
             },
             {
               type: "passage-mcq",
@@ -962,20 +960,21 @@ export const c1Lessons: LessonNode[] = [
               text: "THE OLD LIGHTHOUSE\n\nThe lighthouse at Cape Marlow was built in 1881 to warn ships about the rocks near the coast. For almost a hundred years, a keeper lived inside it and lit the lamp every evening. In 1974, the lamp became automatic, and the last keeper, Thomas Reed, moved to a nearby village. The building was empty for many years. Then, in 2015, a local group raised 300,000 dollars to repair it. Today, the lighthouse is a small museum, and about 20,000 visitors climb its 120 steps every year.",
               questions: [
                 {
-                  prompt: "How much money did the local group raise to repair the lighthouse?",
+                  prompt:
+                    "How much money did the local group raise to repair the lighthouse?",
                   options: [
                     "20,000 dollars",
                     "120 dollars",
                     "300,000 dollars",
-                    "It is not written in the text"
+                    "It is not written in the text",
                   ],
-                  correctIndex: 2
-                }
-              ]
+                  correctIndex: 2,
+                },
+              ],
             },
             {
               type: "preface",
-              text: "דרך ב׳: P1\n\nאל תקראו את הכל. קודם את השאלה, אחר כך: מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח."
+              text: "דרך ב׳: P1\n\nאל תקראו את הכל. קודם את השאלה, אחר כך: מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח.",
             },
             {
               type: "passage-mcq",
@@ -989,11 +988,11 @@ export const c1Lessons: LessonNode[] = [
                     "The recipe for the bread",
                     "The number of workers",
                     "The number of customers",
-                    "The opening hours"
+                    "The opening hours",
                   ],
-                  correctIndex: 0
-                }
-              ]
+                  correctIndex: 0,
+                },
+              ],
             },
             {
               type: "time-comparison",
@@ -1001,17 +1000,19 @@ export const c1Lessons: LessonNode[] = [
               aKey: "raceRead",
               bLabel: "דרך ב׳ - P1",
               bKey: "raceP1",
-              fasterMessage: "P1 היה מהיר יותר. בבחינה ההפרש הזה חוזר בכל שאלה - וזה בדיוק הזמן שנשאר לכם לכתיבה.",
-              tieMessage: "הפעם P1 לא היה מהיר יותר. נסו שוב, ובדרך ב׳ הקפידו לחפש רק את מילת המפתח בלי לקרוא הכל."
+              fasterMessage:
+                "P1 היה מהיר יותר. בבחינה ההפרש הזה חוזר בכל שאלה - וזה בדיוק הזמן שנשאר לכם לכתיבה.",
+              tieMessage:
+                "הפעם P1 לא היה מהיר יותר. נסו שוב, ובדרך ב׳ הקפידו לחפש רק את מילת המפתח בלי לקרוא הכל.",
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                "\"לא קוראים הכל - מחפשים. וכל שנייה שחסכתי היא זמן לכתיבה.\""
-              ]
-            }
-          ]
+                '"לא קוראים הכל - מחפשים. וכל שנייה שחסכתי היא זמן לכתיבה."',
+              ],
+            },
+          ],
         },
       ],
     },
@@ -4266,8 +4267,8 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "סיכום שאלות: ארבעה סוגי שאלות בטקסט אחד, והשעון רץ.\n\nלפני כל שאלה: רמזור. אחר כך מילת מפתח ← איתור ← קריאת המשפט ← תשובה.\nהשעון לא משפיע על הציון - הוא מראה לכם כמה מהר אתם עובדים."
-        }
+          text: "סיכום שאלות: ארבעה סוגי שאלות בטקסט אחד, והשעון רץ.\n\nלפני כל שאלה: רמזור. אחר כך מילת מפתח ← איתור ← קריאת המשפט ← תשובה.\nהשעון לא משפיע על הציון - הוא מראה לכם כמה מהר אתם עובדים.",
+        },
       ],
       rounds: [
         {
@@ -4284,57 +4285,57 @@ export const c1Lessons: LessonNode[] = [
                     "Some of them are left on the pavement",
                     "The project began with 50 of them",
                     "They reduced the number of cars by 25%",
-                    "They are cheaper than the bus and faster in the centre"
+                    "They are cheaper than the bus and faster in the centre",
                   ],
-                  correctIndex: 3
+                  correctIndex: 3,
                 },
                 {
-                  prompt: "According to Dr. Weiss, why do people use the bikes? Give ONE answer.",
+                  prompt:
+                    "According to Dr. Weiss, why do people use the bikes? Give ONE answer.",
                   options: [
                     "Because the town council started the project",
                     "Because they are cheaper than the bus",
                     "Because some bikes are left on the pavement",
-                    "Because there are 400 bikes"
+                    "Because there are 400 bikes",
                   ],
-                  correctIndex: 1
+                  correctIndex: 1,
                 },
                 {
-                  prompt: "Complete the sentence: The town council started the project in order to ___",
+                  prompt:
+                    "Complete the sentence: The town council started the project in order to ___",
                   options: [
                     "make the town feel friendlier",
                     "save money on buses",
                     "reduce the number of cars in the centre",
-                    "build three new stations"
+                    "build three new stations",
                   ],
-                  correctIndex: 2
+                  correctIndex: 2,
                 },
                 {
-                  prompt: "Give TWO answers: What are the results of the project, according to paragraph III?",
+                  prompt:
+                    "Give TWO answers: What are the results of the project, according to paragraph III?",
                   options: [
                     "It grew to 400 bikes, and the number of cars fell by 25%",
                     "It began with 50 bikes and three stations",
                     "The bikes are cheaper and faster than the bus",
-                    "Some bikes are left on the pavement, and there are no clear rules"
+                    "Some bikes are left on the pavement, and there are no clear rules",
                   ],
-                  correctIndex: 0
+                  correctIndex: 0,
                 },
                 {
-                  prompt: "Which of the following is NOT mentioned in the text?",
+                  prompt:
+                    "Which of the following is NOT mentioned in the text?",
                   options: [
                     "Bikes are faster in the crowded centre",
                     "Some bikes are left on the pavement",
                     "The project started in 2020",
-                    "The bikes are free for residents"
+                    "The bikes are free for residents",
                   ],
-                  correctIndex: 3
-                }
-              ]
+                  correctIndex: 3,
+                },
+              ],
             },
-            {
-              type: "time-result",
-              label: "הזמן שלכם",
-              timerKey: "qsTime"
-            },
+            { type: "time-result", label: "הזמן שלכם", timerKey: "qsTime" },
             {
               type: "summary",
               title: "ארבעה סוגי שאלות",
@@ -4342,12 +4343,12 @@ export const c1Lessons: LessonNode[] = [
                 "בחירה מרובה: קוראים את כל 4 האפשרויות, חוצים, מוצאים הוכחה.",
                 "תשובה קצרה: תשובה אחת, מהטקסט.",
                 "השלמת משפט: ממשיכים את המשפט - because = סיבה, in order to = מטרה.",
-                "שתי תשובות: TWO = שתיים, תמיד."
-              ]
-            }
-          ]
-        }
-      ]
+                "שתי תשובות: TWO = שתיים, תמיד.",
+              ],
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -4531,8 +4532,8 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "סיכום חלק 1: מבחן קטן על כל מה שלמדתם. טקסט אחד, שעון רץ.\n\nהשיטה: מפה ← רמזור ← מילת מפתח ← תשובה. ובדרך: מספרים ושמות, NOT, most / only, however / but."
-        }
+          text: "סיכום חלק 1: מבחן קטן על כל מה שלמדתם. טקסט אחד, שעון רץ.\n\nהשיטה: מפה ← רמזור ← מילת מפתח ← תשובה. ובדרך: מספרים ושמות, NOT, most / only, however / but.",
+        },
       ],
       rounds: [
         {
@@ -4549,9 +4550,9 @@ export const c1Lessons: LessonNode[] = [
                     "Only 30 people visited the library each week",
                     "A group of parents decided to save the library",
                     "The library was almost closed",
-                    "Local businesses are rich"
+                    "Local businesses are rich",
                   ],
-                  correctIndex: 1
+                  correctIndex: 1,
                 },
                 {
                   prompt: "How much money was collected in one summer?",
@@ -4559,36 +4560,38 @@ export const c1Lessons: LessonNode[] = [
                     "1,500 dollars",
                     "200 dollars",
                     "12,000 dollars",
-                    "30 dollars"
+                    "30 dollars",
                   ],
-                  correctIndex: 2
+                  correctIndex: 2,
                 },
                 {
-                  prompt: "According to Ms. Boyd, what was the MOST important change?",
+                  prompt:
+                    "According to Ms. Boyd, what was the MOST important change?",
                   options: [
                     "A new children's corner",
                     "Reading evenings on Fridays",
                     "Asking local businesses for help",
-                    "A quieter atmosphere"
+                    "A quieter atmosphere",
                   ],
-                  correctIndex: 0
+                  correctIndex: 0,
                 },
                 {
-                  prompt: "Which of the following is NOT mentioned in paragraph III?",
+                  prompt:
+                    "Which of the following is NOT mentioned in paragraph III?",
                   options: [
                     "Mr. Ross thinks the library is too noisy",
                     "Most visitors enjoy the lively atmosphere",
                     "The library has 1,500 members",
-                    "The library will move to a new building"
+                    "The library will move to a new building",
                   ],
-                  correctIndex: 3
-                }
-              ]
+                  correctIndex: 3,
+                },
+              ],
             },
             {
               type: "time-result",
               label: "הזמן שלכם",
-              timerKey: "partOneTime"
+              timerKey: "partOneTime",
             },
             {
               type: "summary",
@@ -4598,12 +4601,12 @@ export const c1Lessons: LessonNode[] = [
                 "רמזור · מבינים את השאלה? רק ירוק עונה.",
                 "P1 · מילת מפתח ← איתור ← קריאת המשפט ← תשובה.",
                 "כלים · מספרים ושמות, NOT, most / only, however / but.",
-                "בחלק הבא: אותן מילים (because, in addition, for example) - הפעם אתם הכותבים."
-              ]
-            }
-          ]
-        }
-      ]
+                "בחלק הבא: אותן מילים (because, in addition, for example) - הפעם אתם הכותבים.",
+              ],
+            },
+          ],
+        },
+      ],
     },
   },
   {
