@@ -63,5 +63,25 @@
 			true
 		],
 		"comment": ""
+	},
+	"n-5cd02dfa": {
+		"preface": false,
+		"rounds": [],
+		"comment": "מחקתי כרטיסיות ושיניתי מלל- צריל למחוק כרטיסיות ריקות"
+	},
+	"vocab-test": {
+		"preface": false,
+		"rounds": [],
+		"comment": "יש כרטיסיות ריקות שצריך למחוק"
+	},
+	"content-2a": {
+		"preface": false,
+		"rounds": [],
+		"comment": "המסך הראשון חוזר על עצמו"
+	},
+	"nav-words-1": {
+		"preface": false,
+		"rounds": [],
+		"comment": "ערכתי"
 	}
 }
