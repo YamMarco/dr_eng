@@ -73,7 +73,13 @@
 
 	// A screen left with no real content is skipped rather than shown blank.
 	let keptIndices = $derived(allScreens.flatMap((screen, i) => (isScreenEmpty(screen) ? [] : [i])));
-	let screens = $derived(keptIndices.map((i) => allScreens[i]));
+	let baseScreens = $derived(keptIndices.map((i) => allScreens[i]));
+	// Rounds with `retryMissed` replay each wrongly-answered scored screen once,
+	// at the end. The replay is practice only — it never changes the score.
+	let retryMissed = $derived(!!lesson?.content.rounds[roundIndex ?? 0]?.retryMissed);
+	let retryQueue = $state<LessonScreen[]>([]);
+	let screens = $derived([...baseScreens, ...retryQueue]);
+	let correctAtScreenStart = 0;
 	let screenPaths = $derived(
 		allScreenPaths ? keptIndices.map((i) => allScreenPaths![i]) : undefined
 	);
@@ -90,11 +96,12 @@
 			}
 			lengths[lengths.length - 1] += 1;
 		}
+		if (retryQueue.length > 0) lengths.push(retryQueue.length);
 		return lengths;
 	});
 	// Fixed upfront so the badge reads 1/3, 1/3, 2/3 as questions are answered.
 	const totalQuestions = untrack(() =>
-		screens.reduce((sum, screen) => sum + countQuestions(screen), 0)
+		baseScreens.reduce((sum, screen) => sum + countQuestions(screen), 0)
 	);
 	let score = createLessonScore(totalQuestions);
 
@@ -152,6 +159,14 @@
 
 	function advance() {
 		direction = 1;
+		if (retryMissed && currentScreen) {
+			if (screenIndex >= baseScreens.length) {
+				score.correct = correctAtScreenStart;
+			} else if (score.correct - correctAtScreenStart < countQuestions(currentScreen)) {
+				retryQueue.push(currentScreen);
+			}
+		}
+		correctAtScreenStart = score.correct;
 		if (isLastScreen) {
 			justFinished = true;
 		} else {
@@ -165,6 +180,8 @@
 		footerDisabled = false;
 		footerLabel = '';
 		justFinished = false;
+		retryQueue = [];
+		correctAtScreenStart = 0;
 		score.correct = 0;
 		score.total = totalQuestions;
 		scoreTween.set(0, { duration: 0 });

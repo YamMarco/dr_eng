@@ -16,7 +16,7 @@ Grades are 1-10 per node. `~` = judged from structure and a skim of sibling less
 | q-words-2 | Rewriting instead of completing; misreading circle / explain | Decode task verbs and the connectors because / in order to | 7 | Overlaps l11 |
 | nav-words-1 | Missing the text's turns and direction | Recognize contrast, addition and result signals | 7 | however returns in l08 |
 | nav-words-2 | Not telling an example from a finding or a direction | Read example, finding and increase/decrease signals | 7 | Same template |
-| content-1a | Unknown topic words cause panic and skipped context | Recall people/community words in context | 7 | Template |
+| content-1a | Unknown topic words cause panic and skipped context | Recall people/community words in context | 8 (prototype, unplayed) | Reworked 2026-09-19: teach-one-test-one, hooks, match-pairs, cloze, mark-word, passage, writing, retry of misses. Play it, then copy the pattern to the other five |
 | content-2a ~ | Same | Recall growth/learning words | 6.5 | Template |
 | content-2b ~ | Same | Recall impact/value words | 6.5 | Template |
 | content-1c ~ | Same | Recall change/environment words | 6.5 | Template |

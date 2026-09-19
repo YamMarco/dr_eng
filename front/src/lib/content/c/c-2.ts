@@ -869,77 +869,154 @@ export const c2Lessons: LessonNode[] = [
           type: "preface",
           text: 'מה קורה כשלא מכירים מילת תוכן? בואו נקרא את המשפט הבא:\n\nIn 2016, a group of environmentalists decided to make Redonda green again\n\nהתלמיד עוצר: "environmentalists? מה זה?" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.',
         },
-        { type: "word-card", word: "environment", translationHe: "סביבה" },
-        {
-          type: "word-card",
-          word: "volunteer(s)",
-          translationHe: "מתנדב / מתנדבים",
-        },
-        { type: "word-card", word: "community", translationHe: "קהילה" },
-        { type: "word-card", word: "charity", translationHe: "ארגון צדקה" },
-        { type: "word-card", word: "residents", translationHe: "תושבים" },
         {
           type: "preface",
-          text: 'WATCH IT - מצאו את מילות התוכן:\n\n"A local charity decided to help the environment. Young volunteers from the community joined, and residents said the change was remarkable."\n\ncharity · environment · volunteers · community · residents - חמש מילות תוכן במשפט אחד.',
+          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים. אחרי כל אחת - שאלה קצרה, כדי שהיא באמת תיתפס.",
         },
       ],
       rounds: [
         {
+          retryMissed: true,
           screens: [
             {
+              type: "word-card",
+              word: "environment",
+              translationHe: "סביבה",
+              exampleEn: "The **environment** is under threat.",
+              exampleHe: "הסביבה נמצאת בסכנה.",
+              hookHe:
+                "נשמע כמו \"אנווירונמנט\". והמילה מהפתיחה, environmentalists, היא environment + ist: מי שאכפת לו מהסביבה.",
+            },
+            {
               type: "mcq",
-              prompt: "The ______ is under threat. - סביבה",
-              options: ["environment", "community", "charity", "residents"],
+              prompt: "Factories pollute the air and the rivers. They harm the ______.",
+              options: ["environment", "charity", "residents", "volunteers"],
               correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "אוויר ונהרות = הסביבה.",
             },
             {
-              type: "mcq",
-              prompt: "Young ______ give their time to help others. - מתנדבים",
-              options: ["residents", "volunteers", "charities", "communities"],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: "The local ______ helped with the project. - קהילה",
-              options: ["result", "charity", "residents", "community"],
-              correctIndex: 3,
+              type: "word-card",
+              word: "volunteer(s)",
+              translationHe: "מתנדב / מתנדבים",
+              exampleEn: "Young **volunteers** planted 200 trees.",
+              exampleHe: "מתנדבים צעירים נטעו 200 עצים.",
+              hookHe:
+                "נשמע כמו \"וולונטרי\" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.",
             },
             {
               type: "mcq",
               prompt:
-                "A local ______ raised money for the school. - ארגון צדקה",
-              options: ["charity", "volunteer", "community", "resident"],
+                "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
+              options: ["volunteer", "resident", "charity", "environment"],
               correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "מרצון ובלי שכר = מתנדבת.",
+            },
+            {
+              type: "word-card",
+              word: "community",
+              translationHe: "קהילה",
+              exampleEn: "The whole **community** came to the meeting.",
+              exampleHe: "כל הקהילה הגיעה לאסיפה.",
+              hookHe:
+                "נשמע כמו \"קומיוניטי\", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.",
             },
             {
               type: "mcq",
               prompt:
-                "85% of ______ say they are satisfied with their city. - תושבים",
-              options: ["charities", "volunteers", "residents", "communities"],
-              correctIndex: 2,
-            },
-          ],
-        },
-        {
-          screens: [
-            { type: "preface", text: "YOUR TURN - השלימו את המילה החסרה." },
-            {
-              type: "mcq",
-              prompt: "Many ______ in the city offered to plant trees.",
-              options: ["charities", "volunteers", "environments", "results"],
-              correctIndex: 1,
-            },
-            {
-              type: "mcq",
-              prompt: "The ______ worked together to clean the river.",
-              options: ["community", "charity", "environment", "result"],
+                "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
+              options: ["community", "charity", "environment", "volunteers"],
               correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "משפחות, מורים ובעלי חנויות ביחד = קהילה.",
+            },
+            {
+              type: "word-card",
+              word: "charity",
+              translationHe: "ארגון צדקה",
+              exampleEn: "A local **charity** raised money for the school.",
+              exampleHe: "ארגון צדקה מקומי גייס כסף לבית הספר.",
+              hookHe:
+                "נשמע כמו \"צ'ריטי\". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.",
             },
             {
               type: "mcq",
-              prompt: "Local ______ said the air was cleaner than before.",
-              options: ["charities", "volunteers", "residents", "communities"],
-              correctIndex: 2,
+              prompt:
+                "The organisation collects money for sick children. It does not make a profit. It is a ______.",
+              options: ["charity", "residents", "environment", "volunteers"],
+              correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "אוסף כסף כדי לעזור ולא כדי להרוויח = ארגון צדקה.",
+            },
+            {
+              type: "word-card",
+              word: "residents",
+              translationHe: "תושבים",
+              exampleEn: "Most **residents** said the air was cleaner.",
+              exampleHe: "רוב התושבים אמרו שהאוויר נקי יותר.",
+              hookHe:
+                "נשמע כמו \"רזידנס\" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.",
+            },
+            {
+              type: "mcq",
+              prompt: "People who live in a city, and not just visit it, are its ______.",
+              options: ["residents", "charities", "volunteers", "environments"],
+              correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "מי שגר במקום = תושב.",
+            },
+            {
+              type: "match-pairs",
+              pairs: [
+                { en: "environment", he: "סביבה" },
+                { en: "volunteers", he: "מתנדבים" },
+                { en: "community", he: "קהילה" },
+                { en: "charity", he: "ארגון צדקה" },
+                { en: "residents", he: "תושבים" },
+              ],
+            },
+            {
+              type: "cloze-pick",
+              clause: "give their time to help others. They do not get paid.",
+              options: ["Volunteers", "The environment", "A charity", "A resident"],
+              correctIndices: [0],
+              explanation: "Volunteers - נותנים מזמנם, בלי שכר.",
+            },
+            {
+              type: "preface",
+              text: "עכשיו במשפט שלם: סמנו את המילה שפירושה **תושבים**.",
+            },
+            {
+              type: "mark-word",
+              sentence: "Most residents said the change was remarkable.",
+              correctWordIndex: 1,
+            },
+            {
+              type: "passage-mcq",
+              text: "Five years ago the river in Millbrook was full of rubbish. A local charity asked residents to help, and more than 200 volunteers joined the clean-up. The whole community worked together for three weekends. Today the environment around the river is healthy again.",
+              questions: [
+                {
+                  prompt: "Who asked the residents to help?",
+                  options: [
+                    "A local charity",
+                    "The volunteers",
+                    "The community",
+                    "The environment",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What happened to the environment around the river?",
+                  options: [
+                    "It became healthy again",
+                    "It was full of rubbish",
+                    "The volunteers left it",
+                    "The charity closed it",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
             },
             {
               type: "summary",
@@ -951,50 +1028,58 @@ export const c2Lessons: LessonNode[] = [
           ],
         },
         {
+          retryMissed: true,
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המילים.\n\n📌 זכור: environment, volunteer, community, charity, residents.",
+              text: "סבב חזרה: אותן חמש מילים, משפטים חדשים.",
             },
             {
               type: "mcq",
-              prompt: "איזו שורה נכונה?",
-              options: [
-                "environment = סביבה · volunteer = מתנדב · community = קהילה · charity = ארגון צדקה · residents = תושבים",
-                "environment = קהילה · volunteer = חוקר · community = תוצאה · charity = תושב",
-                "environment = תוצאה · volunteer = תושב · community = סביבה",
-                "כל המילים האלה קשורות רק לבריאות",
-              ],
+              prompt: "Many ______ in the city offered to plant trees. They did it for free.",
+              options: ["volunteers", "charities", "environments", "residents"],
               correctIndex: 0,
-              explanation: "חמש מילות הבסיס של אנשים וקהילה.",
+              layout: "honeycomb",
+              explanation: "מרצון ובחינם = מתנדבים.",
             },
             {
               type: "mcq",
-              prompt: '"Residents" = מחקרים.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. residents = תושבים, לא חוקרים.",
+              prompt: "The ______ worked together to clean the river.",
+              options: ["community", "charity", "environment", "resident"],
+              correctIndex: 0,
+              layout: "honeycomb",
+              explanation:
+                "worked together = אנשים רבים שפועלים יחד. charity הוא ארגון אחד, ו-environment הוא הנהר עצמו.",
             },
-          ],
-        },
-        {
-          screens: [
+            {
+              type: "mcq",
+              prompt: "Local ______ said the air was cleaner than before.",
+              options: ["residents", "charities", "volunteers", "communities"],
+              correctIndex: 0,
+              layout: "honeycomb",
+              explanation: "אלה שגרים במקום ומרגישים את האוויר = תושבים.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "raised money and asked people to give their time.",
+              options: ["A charity", "The environment", "Residents", "A community"],
+              correctIndices: [0],
+              explanation: "A charity - ארגון שאוסף כסף ומגייס אנשים.",
+            },
             {
               type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם משפטים מתוך טקסטים אמיתיים.",
-            },
-            {
-              type: "self-check",
-              prompt:
-                "השלימו:\n1. A local _______ decided to help the environment.\n2. Young people who _______ feel happier.\n3. The _______ worked together on the project.\n4. Most _______ said the change was remarkable.",
-              modelAnswer:
-                "1. charity  2. volunteer  3. community  4. residents",
+              text: "סרקו את הטקסט וסמנו את חמש המילים. הצבעים מראים איזה סוג מילה זו: אנשים, ארגון וקבוצה, או טבע.",
             },
             {
               type: "mark-all",
-              instruction: "סמנו את מילות התוכן שאתם מזהים",
+              instruction: "סמנו את חמש מילות התוכן",
               text: "A local charity decided to change the environment. Volunteers from the community joined, and residents said the results were remarkable.",
-              correctIndices: [2, 7, 8, 11, 14],
+              correctIndices: [],
+              categories: [
+                { name: "אנשים", color: "amber", indices: [8, 14] },
+                { name: "ארגון / קבוצה", color: "sky", indices: [2, 11] },
+                { name: "טבע", color: "emerald", indices: [7] },
+              ],
               wordBank: [
                 "charity",
                 "environment",
@@ -1009,20 +1094,58 @@ export const c2Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
+              text: "רמת בחינה. טקסט חדש, בלי עזרה.",
             },
             {
-              type: "self-check",
-              text: "The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this.",
-              prompt: '"What did the charity decide to do?" - ענו באנגלית.',
-              modelAnswer:
-                "The charity decided to change the polluted city that most residents found unpleasant.",
+              type: "passage-mcq",
+              text: "I  The city of Greenfield had a problem. The parks were dirty, and many residents stopped using them.\n\nII  A local charity started a project. It asked young people to volunteer for two hours a week. However, the charity could not do it alone. The whole community had to take part.\n\nIII  After a year, the parks were clean again. Residents said they felt safer, and the environment in the city was healthier.",
+              questions: [
+                {
+                  prompt: "Why did many residents stop using the parks?",
+                  options: [
+                    "The parks were dirty",
+                    "The charity closed them",
+                    "The volunteers were too young",
+                    "The community did not care",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What did the charity ask young people to do?",
+                  options: [
+                    "To volunteer for two hours a week",
+                    "To move to another city",
+                    "To pay for the project",
+                    "To close the parks",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "According to paragraph II, why did the whole community have to take part?",
+                  options: [
+                    "The charity could not do it alone",
+                    "The residents felt safer",
+                    "The environment was healthy",
+                    "The parks were clean again",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
             },
             {
-              type: "self-check",
-              prompt: "כתבו שני משפטים על הסביבה, עם שלוש מהמילים מהשיעור.",
-              modelAnswer:
-                "The environment is under threat because of pollution. A local charity and its volunteers worked with the community to protect it.",
+              type: "writing-task",
+              prompt:
+                "כתבו שני משפטים באנגלית על איך אפשר לעזור לקהילה שלכם.\nהשתמשו בלפחות שתיים מהמילים מהשיעור.",
+              wordBank: [
+                "environment",
+                "volunteers",
+                "community",
+                "charity",
+                "residents",
+              ],
+              minSentences: 2,
+              minWordsUsed: 2,
             },
           ],
         },

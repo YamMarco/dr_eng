@@ -73,6 +73,7 @@ export const he = {
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
+		matchPairs: 'תרגיל: התאימו זוגות',
 		answerKeyLabel: 'מפתח התשובה',
 		submitButton: 'בדיקה',
 		passedFeedback: 'יפה מאוד!',
@@ -88,6 +89,8 @@ export const he = {
 	},
 	wordCard: {
 		listenLabel: 'השמעה (בקרוב)',
+		hookLabel: 'טיפ לזיכרון',
+		exampleLabel: 'בטקסט',
 		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
 		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
 		spellListenNote: 'ההאזנה עדיין לא פעילה — זהו מסך הדגמה.',

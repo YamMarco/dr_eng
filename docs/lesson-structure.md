@@ -71,7 +71,7 @@ Add an object to the right section's array:
 | `preface` | `text`, `dir?` | — |
 | `steps` | `steps[]`, `ordered?` (true = numbered) | — |
 | `summary` | `title`, `lines[]` | — |
-| `word-card` | `word`, `translationHe?`, `imageAlt?` | — |
+| `word-card` | `word`, `translationHe?`, `imageAlt?`, `exampleEn?` (`**word**` bolds), `exampleHe?`, `hookHe?` (memory hook) | — |
 | `question-preview` | `intro`, `prompts[]` | — |
 | `timed-reading` | `label`, `text`, `timerKey` | — |
 | `time-result` | `label`, `timerKey` | — |
@@ -81,6 +81,7 @@ Add an object to the right section's array:
 | `cloze-pick` | `clause`, `options[]`, `correctIndices[]`, `explanation?` | 1 |
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
+| `match-pairs` | `pairs[{en, he}]` | 1 |
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
 | `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]`, `timerKey?`, `label?` | n |
@@ -100,6 +101,11 @@ sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
 this instead of `writing-task` when the "free" part of an answer is really a
 small closed set (a stance opener, a verb form, a connector word, …), in any
 lesson, so scoring stays a lookup instead of fuzzy-matching typed text.
+`match-pairs`: tap an English word, then its Hebrew meaning; the Hebrew column is
+shuffled per mount. One scored question, passes with at most 1 wrong tap; the
+button opens once every pair is matched.
+A round with `retryMissed: true` replays each wrongly-answered scored screen once
+at the end (practice only, the score is unchanged). Used by the vocab nodes.
 `mcq.layout: 'honeycomb'` fits a fill-the-blank vocab pick where every option
 is a single word or short phrase (a stacked full-width row per option reads
 oddly once options are that short) — omit `layout` (or set `'rows'`) for the

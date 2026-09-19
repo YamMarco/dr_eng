@@ -15,6 +15,7 @@ export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	'cloze-pick': 'השלמת משפט מרשימה',
 	'mark-all': 'סימון במלל',
 	'spell-word': 'איות מילה',
+	'match-pairs': 'התאמת זוגות',
 	'writing-task': 'משימת כתיבה',
 	'passage-quiz': 'קטע + שאלות פתוחות',
 	'passage-mcq': 'קטע + שאלות אמריקאיות',

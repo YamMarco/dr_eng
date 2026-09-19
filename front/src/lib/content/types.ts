@@ -7,6 +7,8 @@ export type { LessonScreen };
 
 export interface LessonRound {
 	screens: LessonScreen[];
+	/** A scored screen answered wrong is replayed once at the end of the round (the replay doesn't change the score). */
+	retryMissed?: boolean;
 }
 
 /**

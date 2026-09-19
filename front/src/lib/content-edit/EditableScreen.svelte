@@ -290,6 +290,66 @@
 						onInput={(v) => set('translationHe', v)}
 					/>
 				</div>
+				<div class="mt-3 border-t border-dashed border-line/60 pt-3 text-start">
+					<p class="text-xs font-bold text-muted">משפט לדוגמה (**מילה** להדגשה)</p>
+					<MarkdownInput
+						bare
+						minRows={1}
+						dir="ltr"
+						value={screen.exampleEn ?? ''}
+						onInput={(v) => set('exampleEn', v)}
+					/>
+					<MarkdownInput
+						bare
+						minRows={1}
+						dir="rtl"
+						value={screen.exampleHe ?? ''}
+						onInput={(v) => set('exampleHe', v)}
+					/>
+					<p class="mt-2 text-xs font-bold text-muted">טיפ לזיכרון</p>
+					<MarkdownInput
+						bare
+						minRows={1}
+						dir="rtl"
+						value={screen.hookHe ?? ''}
+						onInput={(v) => set('hookHe', v)}
+					/>
+				</div>
+			</div>
+		{:else if screen.type === 'match-pairs'}
+			<div class="flex flex-col gap-2">
+				{#each screen.pairs as _pair, i (i)}
+					<div class="flex items-center gap-2">
+						<input
+							bind:value={screen.pairs[i].en}
+							oninput={touch}
+							dir="ltr"
+							placeholder="English"
+							class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+						/>
+						<input
+							bind:value={screen.pairs[i].he}
+							oninput={touch}
+							dir="rtl"
+							placeholder="עברית"
+							class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+						/>
+						<button
+							type="button"
+							class="text-xs font-semibold text-danger"
+							onclick={() => removeFrom('pairs', i)}
+						>
+							✕
+						</button>
+					</div>
+				{/each}
+				<button
+					type="button"
+					class="self-start text-xs font-semibold text-brand"
+					onclick={() => pushInto('pairs', { en: '', he: '' })}
+				>
+					+ זוג
+				</button>
 			</div>
 		{:else if screen.type === 'spell-word'}
 			<MarkdownInput

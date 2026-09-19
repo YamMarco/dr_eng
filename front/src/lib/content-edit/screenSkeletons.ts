@@ -15,6 +15,7 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 			'cloze-pick',
 			'mark-all',
 			'spell-word',
+			'match-pairs',
 			'writing-task',
 			'passage-quiz',
 			'passage-mcq',
@@ -73,5 +74,13 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, word: '' };
 		case 'spell-word':
 			return { type, word: '', mode: 'copy' };
+		case 'match-pairs':
+			return {
+				type,
+				pairs: [
+					{ en: '', he: '' },
+					{ en: '', he: '' }
+				]
+			};
 	}
 }

@@ -142,6 +142,21 @@ export type WordCardScreen = {
 	translationHe?: string;
 	/** Alt text for the (placeholder) image — falls back to the word itself. */
 	imageAlt?: string;
+	/** One memory hook (cognate, word family, sound-alike...), shown under the translation. */
+	hookHe?: string;
+	/** An exam-style sentence using the word. `**word**` bolds it (mini-markdown). */
+	exampleEn?: string;
+	exampleHe?: string;
+};
+
+/**
+ * Match every English word to its Hebrew meaning by tapping one from each
+ * column. Scored as one question: passes with at most one wrong tap (same
+ * leniency spirit as mark-all). The right column is shuffled on each mount.
+ */
+export type MatchPairsScreen = {
+	type: 'match-pairs';
+	pairs: { en: string; he: string }[];
 };
 
 /**
@@ -224,6 +239,7 @@ export type LessonScreen =
 	| WritingTaskScreen
 	| WordCardScreen
 	| SpellWordScreen
+	| MatchPairsScreen
 	| SelfCheckScreen;
 
 /**
@@ -264,6 +280,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.word.trim();
 		case 'self-check':
 			return !screen.prompt.trim();
+		case 'match-pairs':
+			return screen.pairs.length < 2;
 		case 'time-result':
 		case 'time-comparison':
 			return false;
@@ -277,6 +295,7 @@ export function countQuestions(screen: LessonScreen): number {
 		case 'mark-word':
 		case 'cloze-pick':
 		case 'mark-all':
+		case 'match-pairs':
 			return 1;
 		case 'passage-quiz':
 		case 'passage-mcq':
