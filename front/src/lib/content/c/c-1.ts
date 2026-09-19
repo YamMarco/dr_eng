@@ -15,15 +15,15 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'הנה סיפור שמתרחש לפחות 3 פעמים בכל מחצית: יש לכם את קבוצת הוואטסאפ לאנגלית שיש בה 500 הודעות לפחות. וכמובן שיש תמיד את החבר ההוא ששואל : "נו, מתי הבחינה? מה החומר?"\n\n במקרה זה, האם אתם גוללים 500 הודעות מההתחלה בכדי למצוא את התשובה ???בטח שלא!\n\nפשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - אתם שם ואז אתם מקפיצים לו את התשובה . בכך חסכתם לעצמכם זמן ומאמץ מיותר אפילו בלי לחשוב על זה. \n\n ',
+          text: "הנה סיפור שמתרחש לפחות 3 פעמים בכל מחצית: יש לכם את קבוצת הוואטסאפ לאנגלית שיש בה 500 הודעות לפחות. וכמובן שיש תמיד את החבר ההוא ששואל: \"נו, מתי הבחינה? מה החומר?\"\n\nבמקרה זה, האם אתם גוללים 500 הודעות מההתחלה כדי למצוא את התשובה? בטח שלא!\n\nפשוט לוחצים על 🔍 ומחפשים מילה אחת. תוך שנייה - אתם שם, ואז אתם מקפיצים לו את התשובה. חסכתם לעצמכם זמן ומאמץ מיותר, בלי אפילו לחשוב על זה.",
         },
         {
           type: "preface",
-          text: "אז חבר׳ה, זה בדיוק מה שעושים במבחן הבגרות באנגלית. בקורס זה נלמד הרגלים חדשים ושיטות יעילות שיעזרו לכם למצוא את התשובות הנכונות ב Module C ולכן אני רוצה שתסתכלו על המבחן בצורה הזאת: \nהטקסט = קבוצת הוואטסאפ.\nהשאלה = החיפוש.\nמילת המפתח = מה שמחפשים ב-🔍",
+          text: "אז חבר׳ה, זה בדיוק מה שעושים במבחן הבגרות באנגלית. בקורס הזה נלמד הרגלים חדשים ושיטות יעילות שיעזרו לכם למצוא את התשובות הנכונות ב-Module C.\n\nאני רוצה שתסתכלו על המבחן בצורה הזאת:\n\n**הטקסט** = קבוצת הוואטסאפ.\n**השאלה** = החיפוש.\n**מילת המפתח** = מה שמחפשים ב-🔍",
         },
         {
           type: "preface",
-          text: "אבל מסתבר שרוב התלמידים עושים את זה הפוך\n\nמתחילים לקרוא את הטקסט מהמילה הראשונה. מנסים להכניס הכל לראש, בלאקאוט. הפאניקה מתחילה.\nאחרי 30 דקות הם עדיין בפסקה 3 ולכתיבה לא נשאר זמן.\n\nקבוצה שניה  ומקווה שאתם לא חלק מהם, עושה הפוך. לא קוראים את הטקסט בכלל, מתחילים רק בשאלות. חושבים שמה שעובד בפסיכומטרי יעבוד בבגרות.\n\nלֹא לא לֹא! פה בדיוק צריך לעשות לכם סדר שתבינו מה לעשות ואיך לעשות. אבל לאט לאט, בוא נתקדם! ",
+          text: "אבל מסתבר שרוב התלמידים עושים את זה הפוך.\n\n**הקבוצה הראשונה** מתחילה לקרוא את הטקסט מהמילה הראשונה ומנסה להכניס הכל לראש. בלאקאוט. הפאניקה מתחילה. אחרי 30 דקות הם עדיין בפסקה 3 ולכתיבה לא נשאר זמן.\n\n**הקבוצה השנייה** (ומקווה שאתם לא חלק ממנה) לא קוראת את הטקסט בכלל ומתחילה רק בשאלות. הם חושבים שמה שעובד בפסיכומטרי יעבוד בבגרות.\n\nלא, לא, לא! פה בדיוק צריך לעשות לכם סדר, שתבינו מה לעשות ואיך. אבל לאט לאט, בואו נתקדם!",
         },
         {
           type: "summary",
@@ -35,7 +35,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "בוא נראה איך זה עובד בדוגמא פשוטה.תקראו את המשפט הבא:\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants. \n\nהשאלה:  Where do elephants live?",
+          text: "בואו נראה איך זה עובד בדוגמה פשוטה. קראו את הטקסט:\n\n{d:ltr}Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants.\n\nהשאלה:\n{d:ltr}**Where do elephants live?**",
         },
         {
           type: "steps",
@@ -87,8 +87,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "preface",
+              text: "בואו ננסה עוד תרגיל ביחד:",
+            },
+            {
               type: "passage-mcq",
-              text: "\nבוא ננסה עוד תרגיל ביחד:\n\nThe Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
+              text: "The Great Wall of China is one of the most famous structures in the world. It was built over many centuries to protect China from its enemies. The wall is about 21,000 kilometers long. Today, millions of tourists visit the wall every year.",
               questions: [
                 {
                   prompt: "Why was the Great Wall of China built?",
@@ -150,7 +154,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "תלמידֿֿֿ מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?",
+              prompt: "תלמיד מנסה לקרוא ולהבין את כל הטקסט. מה יקרה?",
               options: [
                 "יענה על כל השאלות נכון",
                 "יגמור מהר",
@@ -163,7 +167,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"אני מחפש בכדי להצליח בבחינה, לא קורא במובן באופן סטטי" - זה המשפט שמסכם את השיעור שלנו .',
+                '"אני מחפש כדי להצליח בבחינה, לא קורא" - זה המשפט שמסכם את השיעור שלנו.',
               options: ["✅ נכון", "❌ לא נכון"],
               correctIndex: 0,
               explanation: "נכון. זו המנטליות שמשנה את כל הגישה לבחינה.",
@@ -189,7 +193,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת: THE RETURN OF THE TREES\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
+          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת:\n{d:ltr}**THE RETURN OF THE TREES**\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
         },
         {
           type: "preface",
@@ -207,7 +211,35 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "שלב 2: הפסקה הראשונה\n\nEvery year, forests around the world are destroyed by fire, farming, and pollution.\nHowever, there is good news.\nIn 2019, scientists started a project to plant one billion trees in Africa by 2030.\nThe project has already planted over 200 million trees in 15 countries.עכשיו מפרקים את הפסקה:\n1. מה הבעיה?\nforests → destroyed\nהיערות נהרסים.\nלמה?\nfire / farming / pollution\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\nמספיק להבין: יש בעיה עם היערות.\n2. חפשו מילת שינוי\nHowever\nזו מילה חשובה מאוד.\nHowever = אבל / אולם\nהיא אומרת לנו:\nעד עכשיו דיברו על בעיה - עכשיו כנראה יגיע משהו אחר.\nואכן מיד אחריה:\ngood news\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.\n3. מי עושה משהו?\nscientists\nהמדענים.\nמה הם עשו?\nstarted a project\nהתחילו פרויקט.\nמה מטרת הפרויקט?\nplant one billion trees\nלשתול מיליארד עצים.\n4. שימו לב למספרים\nמספרים בטקסט הם כמו שלטים בכביש:\n2019 → מתי הפרויקט התחיל\none billion trees → מה היעד\n2030 → עד מתי\n200 million trees → כמה כבר נשתלו\n15 countries → בכמה מדינות\nלא צריך לזכור את כל המספרים עכשיו.\nצריך רק לזהות שהם כנראה יהיו חשובים בשאלות.\nאז מה מפת הדרכים שלנו?\nבעיה: יערות נהרסים.\n↓\nHowever\n↓\nפתרון: מדענים התחילו פרויקט.\n↓\nמטרה: לשתול מיליארד עצים באפריקה.\nוזה כבר מספיק כדי להבין את הכיוון של הטקסט.זכרו:\nכותרת → פסקה ראשונה → מילות מפתח → שאלות\nלא קוראים כל מילה.\nמחפשים נושא, בעיה, שינוי, פתרון ומספרים חשובים.",
+          text: "## דוגמה: מפרקים את הפסקה הראשונה\n\n{d:ltr}Every year, forests around the world are destroyed by fire, farming, and pollution.\n{d:ltr}However, there is good news.\n{d:ltr}In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n{d:ltr}The project has already planted over 200 million trees in 15 countries.\n\nעכשיו מפרקים אותה בארבע שאלות קצרות.",
+        },
+        {
+          type: "preface",
+          text: "### 1. מה הבעיה?\n\n{d:ltr}forests → destroyed\nהיערות נהרסים.\n\nולמה?\n{d:ltr}fire / farming / pollution\n\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\n**מספיק להבין: יש בעיה עם היערות.**",
+        },
+        {
+          type: "preface",
+          text: "### 2. חפשו מילת שינוי\n\n{d:ltr}**However**\n**However** = אבל / אולם\n\nזו מילה חשובה מאוד. היא אומרת לנו: עד עכשיו דיברו על בעיה, ועכשיו כנראה יגיע משהו אחר.\n\nואכן, מיד אחריה:\n{d:ltr}**good news**\n\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.",
+        },
+        {
+          type: "preface",
+          text: "### 3. מי עושה משהו?\n\n{d:ltr}scientists\nהמדענים.\n\nמה הם עשו?\n{d:ltr}started a project\nהתחילו פרויקט.\n\nומה מטרת הפרויקט?\n{d:ltr}plant one billion trees\nלשתול מיליארד עצים.",
+        },
+        {
+          type: "preface",
+          text: "### 4. שימו לב למספרים\n\nמספרים בטקסט הם כמו שלטים בכביש:\n\n**2019** ← מתי הפרויקט התחיל\n**one billion trees** ← מה היעד\n**2030** ← עד מתי\n**200 million trees** ← כמה כבר נשתלו\n**15 countries** ← בכמה מדינות\n\nלא צריך לזכור את כל המספרים עכשיו. צריך רק לזהות שהם כנראה יהיו חשובים בשאלות.",
+        },
+        {
+          type: "preface",
+          text: "## אז מה מפת הדרכים שלנו?\n\n{a:center}🌲 **בעיה:** יערות נהרסים\n{a:center}↓\n{a:center}**However**\n{a:center}↓\n{a:center}💡 **פתרון:** מדענים התחילו פרויקט\n{a:center}↓\n{a:center}🎯 **מטרה:** לשתול מיליארד עצים באפריקה\n\nוזה כבר מספיק כדי להבין את הכיוון של הטקסט.",
+        },
+        {
+          type: "summary",
+          title: "זכרו",
+          lines: [
+            "כותרת ← פסקה ראשונה ← מילות מפתח ← שאלות",
+            "לא קוראים כל מילה - מחפשים נושא, בעיה, שינוי, פתרון ומספרים חשובים.",
+          ],
         },
       ],
       rounds: [
@@ -396,7 +428,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "\nבשיעור הקודם למדנו:\n**שלב 1: כותרת**\n**שלב 2: פסקה ראשונה**\nלמה?\nכי לפני שאתם הולכים לשאלות, אתם צריכים לדעת: \n**על מה הטקסט מדבר?**\nעצים?\nטכנולוגיה?\nחיות?\nבית ספר?\nבריאות?\nגם אם הבנתם רק חלק - כבר יש לכם כיוון.\n**לא הולכים לשאלות בלי לדעת על מה הטקסט.**",
+          text: "בשיעור הקודם למדנו לבנות מפה:\n**שלב 1: כותרת**\n**שלב 2: פסקה ראשונה**\n\nלמה? כי לפני שאתם הולכים לשאלות, אתם צריכים לדעת **על מה הטקסט מדבר**: עצים? טכנולוגיה? חיות? בית ספר? בריאות?\n\nגם אם הבנתם רק חלק - כבר יש לכם כיוון.\n**לא הולכים לשאלות בלי לדעת על מה הטקסט.**",
         },
         {
           type: "preface",
@@ -412,15 +444,15 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור ירוק\n\nהשאלה: **Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
+          text: "דוגמה: רמזור ירוק\n\nהשאלה:\n{d:ltr}**Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור צהוב\n\nהשאלה: **What has the project achieved so far?**\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים:\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
+          text: "דוגמה: רמזור צהוב\n\nהשאלה:\n{d:ltr}**What has the project achieved so far?**\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים:\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור אדום\n\nהשאלה: **According to the text, what is one drawback of the reforestation initiative?**\nאני מסתכל על השאלה ולא מצליח להסביר מה רוצים ממני. כמעט שום דבר לא ברור.\n🔴 אדום - לא מחפשים תשובה עדיין. מפרקים:\n**According to the text** = לפי הטקסט\n**one drawback** = חיסרון אחד\n**reforestation initiative** = יוזמה להחזרת יערות\nעכשיו השאלה ברורה: *לפי הטקסט, מהו חיסרון אחד של היוזמה להחזרת יערות?*\n🟢 ירוק - עכשיו אפשר לענות.",
+          text: "דוגמה: רמזור אדום\n\nהשאלה:\n{d:ltr}**According to the text, what is one drawback of the reforestation initiative?**\nאני מסתכל על השאלה ולא מצליח להסביר מה רוצים ממני. כמעט שום דבר לא ברור.\n🔴 אדום - לא מחפשים תשובה עדיין. מפרקים:\n**According to the text** = לפי הטקסט\n**one drawback** = חיסרון אחד\n**reforestation initiative** = יוזמה להחזרת יערות\nעכשיו השאלה ברורה: *לפי הטקסט, מהו חיסרון אחד של היוזמה להחזרת יערות?*\n🟢 ירוק - עכשיו אפשר לענות.",
         },
         {
           type: "preface",
@@ -725,7 +757,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה: According to Dr. Diallo, why do most trees die?",
+          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{d:ltr}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
         },
         {
           type: "steps",
