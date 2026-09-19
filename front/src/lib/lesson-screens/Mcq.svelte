@@ -50,28 +50,28 @@
 	}
 
 	// Honeycomb layout (screen.layout === 'honeycomb', for short vocab-pick
-	// options): options keep their authored order — still readable left to
-	// right, row by row — but every other row is offset half a cell so the
-	// hexagons interlock instead of sitting in stacked rows.
-	const HEX_W = 100;
+	// options): options keep their authored order, read left to right, and are
+	// spread evenly across the width in at most two rows, with a gap between
+	// cells. Hexagon width follows the column pitch, clamped so a long word
+	// still fits and short ones don't balloon.
 	const HEX_H = 68;
-	const COL_STEP = HEX_W * 0.82;
-	const ROW_STEP = HEX_H * 0.72;
+	const GAP = 14;
 	const HEX_CLIP = 'polygon(14% 0%, 86% 0%, 100% 50%, 86% 100%, 14% 100%, 0% 50%)';
 
 	let containerWidth = $state(320);
-	let cols = $derived(Math.max(1, Math.floor((containerWidth - COL_STEP / 2) / COL_STEP)));
+	let cols = $derived(
+		screen.options.length <= 2 ? screen.options.length : Math.ceil(screen.options.length / 2)
+	);
+	let pitch = $derived(containerWidth / Math.max(1, cols));
+	let hexW = $derived(Math.min(150, Math.max(100, pitch - GAP)));
+	let rows = $derived(Math.ceil(screen.options.length / Math.max(1, cols)));
 	let positions = $derived(
-		screen.options.map((_, i) => {
-			const row = Math.floor(i / cols);
-			const col = i % cols;
-			const offset = row % 2 === 1 ? COL_STEP / 2 : 0;
-			return { x: col * COL_STEP + offset, y: row * ROW_STEP };
-		})
+		screen.options.map((_, i) => ({
+			x: (i % cols) * pitch + (pitch - hexW) / 2,
+			y: Math.floor(i / cols) * (HEX_H + GAP)
+		}))
 	);
-	let containerHeight = $derived(
-		positions.length ? Math.max(...positions.map((p) => p.y)) + HEX_H : HEX_H
-	);
+	let containerHeight = $derived(rows * HEX_H + (rows - 1) * GAP);
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
@@ -113,7 +113,7 @@
 					delay: staggerDelay(i, 0, 20, 160),
 					easing: backOut
 				}}
-				style="left: {pos.x}px; top: {pos.y}px; width: {HEX_W}px; height: {HEX_H}px; clip-path: {HEX_CLIP}"
+				style="left: {pos.x}px; top: {pos.y}px; width: {hexW}px; height: {HEX_H}px; clip-path: {HEX_CLIP}"
 				class="absolute flex items-center justify-center px-2 text-center text-sm font-semibold whitespace-nowrap transition active:scale-90 {feedback} {checked
 					? isCorrect
 						? 'bg-brand-soft text-brand-dark'

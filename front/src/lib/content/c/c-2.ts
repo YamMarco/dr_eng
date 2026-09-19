@@ -860,18 +860,23 @@ export const c2Lessons: LessonNode[] = [
     section: "c-2",
     titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
-    required: ["n-5cd02dfa"],
-    position: { x: 60, y: 130 },
+    required: [
+      "n-5cd02dfa",
+    ],
+    position: {
+      x: 60,
+      y: 130,
+    },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: 'מה קורה כשלא מכירים מילת תוכן? בואו נקרא את המשפט הבא:\n\nIn 2016, a group of environmentalists decided to make Redonda green again\n\nהתלמיד עוצר: "environmentalists? מה זה?" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.',
+          text: "מה קורה כשלא מכירים מילת תוכן? בואו נקרא את המשפט הבא:\n\nIn 2016, a group of environmentalists decided to make Redonda green again\n\nהתלמיד עוצר: \"environmentalists? מה זה?\" מדלג. מאבד את ההקשר. שאלה 3 מתייחסת בדיוק למשפט הזה - והוא לא יכול לענות.",
         },
         {
           type: "preface",
-          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים. אחרי כל אחת - שאלה קצרה, כדי שהיא באמת תיתפס.",
+          text: "אבל מילה ארוכה אפשר לפרק:\n\n**environment** + **-ist** + **-s**\nסביבה + מי שאכפת לו מזה + רבים\n= אנשים שאכפת להם מהסביבה.\n\nעכשיו נכיר חמש מילים. כל מילה מגיעה עם כמה תרגילים קצרים מיד אחרי, כדי שהיא באמת תיתפס.",
         },
       ],
       rounds: [
@@ -884,16 +889,34 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "סביבה",
               exampleEn: "The **environment** is under threat.",
               exampleHe: "הסביבה נמצאת בסכנה.",
-              hookHe:
-                "נשמע כמו \"אנווירונמנט\". והמילה מהפתיחה, environmentalists, היא environment + ist: מי שאכפת לו מהסביבה.",
+              hookHe: "נשמע כמו \"אנווירונמנט\". והמילה מהפתיחה, environmentalists, היא environment + ist: מי שאכפת לו מהסביבה.",
             },
             {
               type: "mcq",
               prompt: "Factories pollute the air and the rivers. They harm the ______.",
-              options: ["environment", "charity", "residents", "volunteers"],
-              correctIndex: 0,
+              options: [
+                "teacher",
+                "holiday",
+                "environment",
+                "homework",
+              ],
+              correctIndex: 2,
               layout: "honeycomb",
               explanation: "אוויר ונהרות = הסביבה.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "is polluted, and many trees are being cut down.",
+              options: [
+                "The weather",
+                "The homework",
+                "The bicycle",
+                "The environment",
+              ],
+              correctIndices: [
+                3,
+              ],
+              explanation: "זיהום וכריתת עצים = The environment.",
             },
             {
               type: "spell-word",
@@ -906,17 +929,34 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "מתנדב / מתנדבים",
               exampleEn: "Young **volunteers** planted 200 trees.",
               exampleHe: "מתנדבים צעירים נטעו 200 עצים.",
-              hookHe:
-                "נשמע כמו \"וולונטרי\" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.",
+              hookHe: "נשמע כמו \"וולונטרי\" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.",
             },
             {
               type: "mcq",
-              prompt:
-                "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
-              options: ["volunteer", "resident", "charity", "environment"],
-              correctIndex: 0,
+              prompt: "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
+              options: [
+                "teacher",
+                "volunteer",
+                "bicycle",
+                "environment",
+              ],
+              correctIndex: 1,
               layout: "honeycomb",
               explanation: "מרצון ובלי שכר = מתנדבת.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "give their time to help others. They do not get paid.",
+              options: [
+                "Bicycles",
+                "Doctors",
+                "Volunteers",
+                "The environment",
+              ],
+              correctIndices: [
+                2,
+              ],
+              explanation: "Volunteers - נותנים מזמנם, בלי שכר.",
             },
             {
               type: "spell-word",
@@ -929,17 +969,34 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "קהילה",
               exampleEn: "The whole **community** came to the meeting.",
               exampleHe: "כל הקהילה הגיעה לאסיפה.",
-              hookHe:
-                "נשמע כמו \"קומיוניטי\", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.",
+              hookHe: "נשמע כמו \"קומיוניטי\", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.",
             },
             {
               type: "mcq",
-              prompt:
-                "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
-              options: ["community", "charity", "environment", "volunteers"],
-              correctIndex: 0,
+              prompt: "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
+              options: [
+                "environment",
+                "community",
+                "volunteers",
+                "holiday",
+              ],
+              correctIndex: 1,
               layout: "honeycomb",
               explanation: "משפחות, מורים ובעלי חנויות ביחד = קהילה.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "helped each other after the storm. Neighbours, shops and schools all worked together.",
+              options: [
+                "A volunteer",
+                "A bicycle",
+                "The community",
+                "The environment",
+              ],
+              correctIndices: [
+                2,
+              ],
+              explanation: "שכנים, חנויות ובתי ספר שעובדים יחד = The community.",
             },
             {
               type: "spell-word",
@@ -952,17 +1009,34 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "ארגון צדקה",
               exampleEn: "A local **charity** raised money for the school.",
               exampleHe: "ארגון צדקה מקומי גייס כסף לבית הספר.",
-              hookHe:
-                "נשמע כמו \"צ'ריטי\". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.",
+              hookHe: "נשמע כמו \"צ'ריטי\". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.",
             },
             {
               type: "mcq",
-              prompt:
-                "The organisation collects money for sick children. It does not make a profit. It is a ______.",
-              options: ["charity", "residents", "environment", "volunteers"],
-              correctIndex: 0,
+              prompt: "The organisation collects money for sick children. It does not make a profit. It is a ______.",
+              options: [
+                "community",
+                "environment",
+                "volunteers",
+                "charity",
+              ],
+              correctIndex: 3,
               layout: "honeycomb",
               explanation: "אוסף כסף כדי לעזור ולא כדי להרוויח = ארגון צדקה.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "is an organisation that raises money to help people, not to make a profit.",
+              options: [
+                "A holiday",
+                "A charity",
+                "The environment",
+                "A volunteer",
+              ],
+              correctIndices: [
+                1,
+              ],
+              explanation: "ארגון שאוסף כסף כדי לעזור = A charity.",
             },
             {
               type: "spell-word",
@@ -975,16 +1049,34 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "תושבים",
               exampleEn: "Most **residents** said the air was cleaner.",
               exampleHe: "רוב התושבים אמרו שהאוויר נקי יותר.",
-              hookHe:
-                "נשמע כמו \"רזידנס\" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.",
+              hookHe: "נשמע כמו \"רזידנס\" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.",
             },
             {
               type: "mcq",
               prompt: "People who live in a city, and not just visit it, are its ______.",
-              options: ["residents", "charities", "volunteers", "environments"],
-              correctIndex: 0,
+              options: [
+                "charity",
+                "community",
+                "residents",
+                "volunteers",
+              ],
+              correctIndex: 2,
               layout: "honeycomb",
               explanation: "מי שגר במקום = תושב.",
+            },
+            {
+              type: "cloze-pick",
+              clause: "of the city all agreed that the new park made it a better place to live.",
+              options: [
+                "The environment",
+                "Volunteers",
+                "A charity",
+                "Residents",
+              ],
+              correctIndices: [
+                3,
+              ],
+              explanation: "מי שגר בעיר = Residents.",
             },
             {
               type: "spell-word",
@@ -994,28 +1086,27 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "match-pairs",
               pairs: [
-                { en: "environment", he: "סביבה" },
-                { en: "volunteers", he: "מתנדבים" },
-                { en: "community", he: "קהילה" },
-                { en: "charity", he: "ארגון צדקה" },
-                { en: "residents", he: "תושבים" },
+                {
+                  en: "environment",
+                  he: "סביבה",
+                },
+                {
+                  en: "volunteers",
+                  he: "מתנדבים",
+                },
+                {
+                  en: "community",
+                  he: "קהילה",
+                },
+                {
+                  en: "charity",
+                  he: "ארגון צדקה",
+                },
+                {
+                  en: "residents",
+                  he: "תושבים",
+                },
               ],
-            },
-            {
-              type: "cloze-pick",
-              clause: "give their time to help others. They do not get paid.",
-              options: ["Volunteers", "The environment", "A charity", "A resident"],
-              correctIndices: [0],
-              explanation: "Volunteers - נותנים מזמנם, בלי שכר.",
-            },
-            {
-              type: "preface",
-              text: "עכשיו במשפט שלם: סמנו את המילה שפירושה **תושבים**.",
-            },
-            {
-              type: "mark-word",
-              sentence: "Most residents said the change was remarkable.",
-              correctWordIndex: 1,
             },
             {
               type: "passage-mcq",
@@ -1024,22 +1115,22 @@ export const c2Lessons: LessonNode[] = [
                 {
                   prompt: "Who asked the residents to help?",
                   options: [
-                    "A local charity",
                     "The volunteers",
-                    "The community",
                     "The environment",
+                    "A local charity",
+                    "The community",
                   ],
-                  correctIndex: 0,
+                  correctIndex: 2,
                 },
                 {
                   prompt: "What happened to the environment around the river?",
                   options: [
-                    "It became healthy again",
                     "It was full of rubbish",
-                    "The volunteers left it",
                     "The charity closed it",
+                    "The volunteers left it",
+                    "It became healthy again",
                   ],
-                  correctIndex: 0,
+                  correctIndex: 3,
                 },
               ],
             },
@@ -1047,7 +1138,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                '"environment, volunteer, community, charity, residents - אני מזהה ועובר הלאה."',
+                "\"environment, volunteer, community, charity, residents - אני מזהה ועובר הלאה.\"",
               ],
             },
           ],
@@ -1062,34 +1153,50 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Many ______ in the city offered to plant trees. They did it for free.",
-              options: ["volunteers", "charities", "environments", "residents"],
-              correctIndex: 0,
+              options: [
+                "residents",
+                "volunteers",
+                "charities",
+                "environments",
+              ],
+              correctIndex: 1,
               layout: "honeycomb",
               explanation: "מרצון ובחינם = מתנדבים.",
             },
             {
               type: "mcq",
               prompt: "The ______ worked together to clean the river.",
-              options: ["community", "charity", "environment", "resident"],
-              correctIndex: 0,
+              options: [
+                "resident",
+                "charity",
+                "environment",
+                "community",
+              ],
+              correctIndex: 3,
               layout: "honeycomb",
-              explanation:
-                "worked together = אנשים רבים שפועלים יחד. charity הוא ארגון אחד, ו-environment הוא הנהר עצמו.",
+              explanation: "worked together = אנשים רבים שפועלים יחד. charity הוא ארגון אחד, ו-environment הוא הנהר עצמו.",
             },
             {
               type: "mcq",
               prompt: "Local ______ said the air was cleaner than before.",
-              options: ["residents", "charities", "volunteers", "communities"],
-              correctIndex: 0,
+              options: [
+                "communities",
+                "volunteers",
+                "residents",
+                "charities",
+              ],
+              correctIndex: 2,
               layout: "honeycomb",
               explanation: "אלה שגרים במקום ומרגישים את האוויר = תושבים.",
             },
             {
-              type: "cloze-pick",
-              clause: "raised money and asked people to give their time.",
-              options: ["A charity", "The environment", "Residents", "A community"],
-              correctIndices: [0],
-              explanation: "A charity - ארגון שאוסף כסף ומגייס אנשים.",
+              type: "preface",
+              text: "עכשיו במשפט שלם: סמנו את המילה שפירושה **תושבים**.",
+            },
+            {
+              type: "mark-word",
+              sentence: "Most residents said the change was remarkable.",
+              correctWordIndex: 1,
             },
             {
               type: "preface",
@@ -1101,9 +1208,29 @@ export const c2Lessons: LessonNode[] = [
               text: "A local charity decided to change the environment. Volunteers from the community joined, and residents said the results were remarkable.",
               correctIndices: [],
               categories: [
-                { name: "אנשים", color: "amber", indices: [8, 14] },
-                { name: "ארגון / קבוצה", color: "sky", indices: [2, 11] },
-                { name: "טבע", color: "emerald", indices: [7] },
+                {
+                  name: "אנשים",
+                  color: "amber",
+                  indices: [
+                    8,
+                    14,
+                  ],
+                },
+                {
+                  name: "ארגון / קבוצה",
+                  color: "sky",
+                  indices: [
+                    2,
+                    11,
+                  ],
+                },
+                {
+                  name: "טבע",
+                  color: "emerald",
+                  indices: [
+                    7,
+                  ],
+                },
               ],
               wordBank: [
                 "charity",
@@ -1139,29 +1266,27 @@ export const c2Lessons: LessonNode[] = [
                   prompt: "What did the charity ask young people to do?",
                   options: [
                     "To volunteer for two hours a week",
+                    "To close the parks",
                     "To move to another city",
                     "To pay for the project",
-                    "To close the parks",
                   ],
                   correctIndex: 0,
                 },
                 {
-                  prompt:
-                    "According to paragraph II, why did the whole community have to take part?",
+                  prompt: "According to paragraph II, why did the whole community have to take part?",
                   options: [
+                    "The parks were clean again",
                     "The charity could not do it alone",
                     "The residents felt safer",
                     "The environment was healthy",
-                    "The parks were clean again",
                   ],
-                  correctIndex: 0,
+                  correctIndex: 1,
                 },
               ],
             },
             {
               type: "writing-task",
-              prompt:
-                "כתבו שני משפטים באנגלית על איך אפשר לעזור לקהילה שלכם.\nהשתמשו בלפחות שתיים מהמילים מהשיעור.",
+              prompt: "כתבו שני משפטים באנגלית על איך אפשר לעזור לקהילה שלכם.\nהשתמשו בלפחות שתיים מהמילים מהשיעור.",
               wordBank: [
                 "environment",
                 "volunteers",

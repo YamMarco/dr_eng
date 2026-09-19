@@ -54,7 +54,15 @@
 
 {#if screen.mode === 'copy'}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellCopyPrompt}</p>
-	<p class="mb-4 text-3xl font-extrabold" dir="ltr">{screen.word}</p>
+	<!-- Not selectable, so the word has to be typed out rather than copy-pasted. -->
+	<p
+		class="mb-4 text-3xl font-extrabold select-none"
+		dir="ltr"
+		oncopy={(e) => e.preventDefault()}
+		ondragstart={(e) => e.preventDefault()}
+	>
+		{screen.word}
+	</p>
 {:else}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellListenPrompt}</p>
 	<button
