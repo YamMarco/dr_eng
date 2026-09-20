@@ -2895,11 +2895,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Stress can **cause** health problems and **affect** sleep. Exercise programmes **require** only a little time, but they can **benefit** everyone. It is an **opportunity** worth taking.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: '**אתגר של 10 שניות**\nקראו את הקטע:\n\nStress can **cause** health problems and **affect** sleep.\n Exercise programmes **require** only a little time, but they can **benefit** everyone. It is an **opportunity** worth taking.\n\nעכשיו בלי מילון ובלי לעצור יותר מדי:\n\nעל כמה מהמילים המודגשות אתם יכולים להגיד מיד מה הן אומרות?\n\n**cause · affect · require · benefit · opportunity**\n\nאם באחת מהן עצרתם ואמרתם לעצמכם "רגע... אני מכיר את זה, אבל לא בטוח" — בדיוק בשביל זה אנחנו כאן.\nהמטרה היא לא רק **לזהות** את המילה.\n\nהמטרה היא לראות אותה בטקסט ושהמשמעות **תקפוץ לכם מיד לראש**.',
         },
         {
           type: "preface",
-          text: "חמש מילים על **סיבה, השפעה וערך**: מה גורם למה, מה נדרש ומה מרוויחים.\n\nהן חוזרות בטקסטים על בריאות, כלכלה וחברה. שימו לב במיוחד לצמד affect / effect: הוא מבלבל הרבה תלמידים, ואנחנו נפרק אותו ביחד.",
+          text: "חמש מילים חשובות בנושא **סיבה, השפעה וערך**:\n\nמה **גורם** למה, מה **משפיע**, מה **נדרש**, ומה אנחנו יכולים **להרוויח** מזה.\n\nהמילים האלה חוזרות שוב ושוב בטקסטים על בריאות, כלכלה וחברה.\n\nשימו לב במיוחד ל־**affect / effect**.\n\nהן נראות כמעט אותו דבר, ולכן הרבה תלמידים מתבלבלים ביניהן.\n\nאל תדאגו — מיד נפרק את ההבדל בצורה פשוטה, עם דוגמאות ותרגול.",
         },
       ],
       rounds: [
