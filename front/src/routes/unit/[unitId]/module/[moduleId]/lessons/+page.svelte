@@ -32,6 +32,20 @@
 	// branching, parallel tracks that converge, ...) is just data.
 	const CANVAS_WIDTH = 400;
 	const CANVAS_CENTER = CANVAS_WIDTH / 2;
+	const LABEL_HALF_WIDTH = 88; // the node label popup is w-44
+
+	// Fit-to-width: on narrow phones the fixed-width canvas is shrunk (never
+	// enlarged) so it can't push the page wider than the screen.
+	let viewWidth = $state(0);
+	let fitScale = $derived(viewWidth ? Math.min(1, viewWidth / CANVAS_WIDTH) : 1);
+
+	/** Nudge (px) that keeps a node's label popup inside the canvas. */
+	function labelShift(nodeX: number): number {
+		const center = CANVAS_CENTER + nodeX;
+		return (
+			Math.max(0, LABEL_HALF_WIDTH - center) + Math.min(0, CANVAS_WIDTH - center - LABEL_HALF_WIDTH)
+		);
+	}
 
 	type PathNode = {
 		lesson: LessonNode;
@@ -315,7 +329,7 @@
 
 <AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-36 pb-12">
+<main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-36 pb-12">
 	{#if nodes.length === 0}
 		<div
 			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
@@ -340,142 +354,153 @@
 			<p class="mt-4 font-semibold">{i18n.dict.lessons.emptyTitle(mod.letter)}</p>
 		</div>
 	{:else}
-		<div class="relative mx-auto" style="width: {CANVAS_WIDTH}px; height: {canvasHeight}px">
-			<svg
-				class="pointer-events-none absolute inset-0"
-				width={CANVAS_WIDTH}
-				height={canvasHeight}
-				viewBox="0 0 {CANVAS_WIDTH} {canvasHeight}"
-				aria-hidden="true"
+		<div bind:clientWidth={viewWidth} class="w-full">
+			<div
+				class="mx-auto"
+				style="width: {CANVAS_WIDTH * fitScale}px; height: {canvasHeight * fitScale}px"
 			>
-				{#each edges as edge (edge.id)}
-					<line
-						x1={edge.x1}
-						y1={edge.y1}
-						x2={edge.x2}
-						y2={edge.y2}
-						class="stroke-line"
-						stroke-width="3"
-						stroke-linecap="round"
-						in:draw={{ duration: 220, delay: edgeDelay(edge.targetY) }}
-					/>
-				{/each}
-			</svg>
-
-			{#each sectionHeadings as heading (heading.sectionId)}
-				<p
-					class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
-					style="left: {CANVAS_CENTER + heading.x}px; top: {heading.y - 32}px; width: 8rem"
-					in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
-				>
-					{heading.titleHe}
-				</p>
-			{/each}
-
-			{#each nodes as node (node.lesson.id)}
-				{@const unlocked = isUnlocked(node)}
-				{@const done = isDone(node.lesson.id)}
-				{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 				<div
-					data-lesson-node
-					data-lesson-node-id={node.lesson.id}
-					class="absolute -translate-x-1/2 scroll-mt-24 transition-opacity {unlocked || done
-						? ''
-						: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
-					style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px; --puck-border: {node.theme
-						.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
-					in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
+					class="relative origin-top-left"
+					style="width: {CANVAS_WIDTH}px; height: {canvasHeight}px; transform: scale({fitScale})"
 				>
-					<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
+					<svg
+						class="pointer-events-none absolute inset-0"
+						width={CANVAS_WIDTH}
+						height={canvasHeight}
+						viewBox="0 0 {CANVAS_WIDTH} {canvasHeight}"
+						aria-hidden="true"
+					>
+						{#each edges as edge (edge.id)}
+							<line
+								x1={edge.x1}
+								y1={edge.y1}
+								x2={edge.x2}
+								y2={edge.y2}
+								class="stroke-line"
+								stroke-width="3"
+								stroke-linecap="round"
+								in:draw={{ duration: 220, delay: edgeDelay(edge.targetY) }}
+							/>
+						{/each}
+					</svg>
+
+					{#each sectionHeadings as heading (heading.sectionId)}
+						<p
+							class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
+							style="left: {CANVAS_CENTER + heading.x}px; top: {heading.y - 32}px; width: 8rem"
+							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
+						>
+							{heading.titleHe}
+						</p>
+					{/each}
+
+					{#each nodes as node (node.lesson.id)}
+						{@const unlocked = isUnlocked(node)}
+						{@const done = isDone(node.lesson.id)}
+						{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
+						<div
+							data-lesson-node
+							data-lesson-node-id={node.lesson.id}
+							class="absolute -translate-x-1/2 scroll-mt-24 transition-opacity {unlocked || done
+								? ''
+								: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
+							style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px; --puck-border: {node.theme
+								.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
+							in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
+						>
+							<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
 					     element) stays put, the inner .node-face recedes on tap (see
 					     layout.css) — done/locked stay flat (badge, not a pressable CTA). -->
-					<button
-						type="button"
-						disabled={!unlocked}
-						title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
-						onclick={() => toggleLabel(node.lesson.id)}
-						class="flex shrink-0 items-center justify-center rounded-full font-extrabold transition-colors {size} {node
-							.lesson.id === justCompletedId
-							? 'motion-safe:animate-pop-correct'
-							: ''} {unlocked
-							? done
-								? node.theme.soft
-								: 'node-socket'
-							: 'cursor-not-allowed bg-line/60 text-muted'}"
-					>
-						<span
-							class="flex items-center justify-center rounded-full {unlocked && !done
-								? 'node-face'
-								: ''}"
-						>
-							{#if done}
-								<svg
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2.5"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="h-7 w-7"
-									aria-hidden="true"
+							<button
+								type="button"
+								disabled={!unlocked}
+								title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
+								onclick={() => toggleLabel(node.lesson.id)}
+								class="flex shrink-0 items-center justify-center rounded-full font-extrabold transition-colors {size} {node
+									.lesson.id === justCompletedId
+									? 'motion-safe:animate-pop-correct'
+									: ''} {unlocked
+									? done
+										? node.theme.soft
+										: 'node-socket'
+									: 'cursor-not-allowed bg-line/60 text-muted'}"
+							>
+								<span
+									class="flex items-center justify-center rounded-full {unlocked && !done
+										? 'node-face'
+										: ''}"
 								>
-									<path d="M20 6 9 17l-5-5" />
-								</svg>
-							{:else if unlocked}
-								{lessonIcon(node.lesson.id)}
-							{:else}
-								<svg
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="h-6 w-6"
-									aria-hidden="true"
-								>
-									<rect x="4" y="10" width="16" height="10" rx="2" />
-									<path d="M8 10V7a4 4 0 0 1 8 0v3" />
-								</svg>
-							{/if}
-						</span>
-					</button>
+									{#if done}
+										<svg
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="h-7 w-7"
+											aria-hidden="true"
+										>
+											<path d="M20 6 9 17l-5-5" />
+										</svg>
+									{:else if unlocked}
+										{lessonIcon(node.lesson.id)}
+									{:else}
+										<svg
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="h-6 w-6"
+											aria-hidden="true"
+										>
+											<rect x="4" y="10" width="16" height="10" rx="2" />
+											<path d="M8 10V7a4 4 0 0 1 8 0v3" />
+										</svg>
+									{/if}
+								</span>
+							</button>
 
-					{#if unlocked && openLabelId === node.lesson.id}
-						<!-- Click-triggered label instead of a full-screen modal: title + start
+							{#if unlocked && openLabelId === node.lesson.id}
+								<!-- Click-triggered label instead of a full-screen modal: title + start
 						     (or, once round 1 is done, the next round to play). -->
-						<div
-							in:scale={{ start: 0.55, duration: 160, easing: backOut }}
-							out:scale={{ start: 0.55, duration: 90 }}
-							class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom -translate-x-1/2 flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
-						>
-							<div class="flex flex-col gap-2">
-								<p class="text-sm font-bold">{node.lesson.titleHe}</p>
-								<LessonProgressBar
-									compact
-									segments={node.lesson.content.rounds.map(() => 1)}
-									current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
-								/>
-							</div>
-							<Button onclick={() => openNode(node)}>
-								{i18n.dict.lesson.startRound(nextRoundIndex(node) + 1)}
-							</Button>
-							<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.lesson.id}</p>
-							{#if editStore.available}
-								<!-- Open this lesson in the /edit workspace (dev, or once
+								<div
+									in:scale={{ start: 0.55, duration: 160, easing: backOut }}
+									out:scale={{ start: 0.55, duration: 90 }}
+									class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
+									style="translate: calc(-50% + {labelShift(node.x)}px)"
+								>
+									<div class="flex flex-col gap-2">
+										<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+										<LessonProgressBar
+											compact
+											segments={node.lesson.content.rounds.map(() => 1)}
+											current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
+										/>
+									</div>
+									<Button onclick={() => openNode(node)}>
+										{i18n.dict.lesson.startRound(nextRoundIndex(node) + 1)}
+									</Button>
+									<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.lesson.id}</p>
+									{#if editStore.available}
+										<!-- Open this lesson in the /edit workspace (dev, or once
 								     unlocked on the deployed site). Detachable — see
 								     src/lib/content-edit/README.md. -->
-								<a
-									href="/edit?section={node.lesson.section}&lesson={node.lesson.id}"
-									class="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-dashed border-ink/40 px-3 py-1.5 text-xs font-semibold text-ink/70"
-								>
-									✎ ערוך
-								</a>
+										<a
+											href="/edit?section={node.lesson.section}&lesson={node.lesson.id}"
+											class="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-dashed border-ink/40 px-3 py-1.5 text-xs font-semibold text-ink/70"
+										>
+											✎ ערוך
+										</a>
+									{/if}
+								</div>
 							{/if}
 						</div>
-					{/if}
+					{/each}
 				</div>
-			{/each}
+			</div>
 		</div>
 	{/if}
 </main>
