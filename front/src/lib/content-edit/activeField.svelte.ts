@@ -47,6 +47,28 @@ function currentBlock(root: HTMLDivElement): HTMLElement | null {
 	return node instanceof HTMLElement ? node : null;
 }
 
+/** Every line the selection touches (just the caret's line when collapsed) —
+ *  so line-level formatting can act on a whole selected paragraph range, not
+ *  only the line the caret ends in. Blank spacer lines and a line the
+ *  selection merely ends at the very start of are left out. */
+function selectedBlocks(root: HTMLDivElement): HTMLElement[] {
+	const sel = window.getSelection();
+	if (!sel || sel.rangeCount === 0) return [];
+	const range = sel.getRangeAt(0);
+	let blocks = [...root.children].filter(
+		(c): c is HTMLElement => c instanceof HTMLElement && range.intersectsNode(c)
+	);
+	if (blocks.length > 1) {
+		const last = blocks[blocks.length - 1];
+		const head = document.createRange();
+		head.setStart(last, 0);
+		head.setEnd(range.endContainer, range.endOffset);
+		if (head.toString() === '') blocks = blocks.slice(0, -1);
+		blocks = blocks.filter((b) => (b.textContent ?? '').trim() !== '');
+	}
+	return blocks;
+}
+
 function notifyInput(el: HTMLDivElement) {
 	el.dispatchEvent(new Event('input', { bubbles: true }));
 }
@@ -149,13 +171,14 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 	});
 }
 
-/** Line-level text alignment. Toggles off (back to default) when the line
- *  already has this alignment. */
+/** Line-level text alignment, on every selected line. Toggles off (back to
+ *  default) when all of them already have this alignment. */
 export function formatAlign(align: 'left' | 'center' | 'right') {
 	withActive((el) => {
-		const block = currentBlock(el);
-		if (!block) return;
-		block.style.textAlign = block.style.textAlign === align ? '' : align;
+		const blocks = selectedBlocks(el);
+		if (!blocks.length) return;
+		const on = !blocks.every((b) => b.style.textAlign === align);
+		for (const b of blocks) b.style.textAlign = on ? align : '';
 		notifyInput(el);
 	});
 }
@@ -173,25 +196,30 @@ function applyTextBlock(block: HTMLElement, on: boolean) {
 	}
 }
 
-/** Toggles the current line between an app instruction (default) and English
+/** Toggles the selected lines (or the caret line) between an app instruction (default) and English
  *  study text (`{p:text}`: set apart visually, left-to-right). */
 export function formatTextBlock() {
 	withActive((el) => {
-		const block = currentBlock(el);
-		if (!block) return;
-		applyTextBlock(block, block.dataset.p !== 'text');
+		const blocks = selectedBlocks(el);
+		if (!blocks.length) return;
+		// All already study text -> turn off; otherwise turn every selected line on.
+		const on = !blocks.every((b) => b.dataset.p === 'text');
+		for (const b of blocks) applyTextBlock(b, on);
 		notifyInput(el);
 	});
 }
 
-/** Line-level direction override. Toggles off (back to the field's default
- *  direction) when the line already has this direction. */
+/** Line-level direction override, on every selected line. Toggles off (back
+ *  to the field's default direction) when all of them already have it. */
 export function formatDirection(dir: 'ltr' | 'rtl') {
 	withActive((el) => {
-		const block = currentBlock(el);
-		if (!block) return;
-		if (block.getAttribute('dir') === dir) block.removeAttribute('dir');
-		else block.setAttribute('dir', dir);
+		const blocks = selectedBlocks(el);
+		if (!blocks.length) return;
+		const on = !blocks.every((b) => b.getAttribute('dir') === dir);
+		for (const b of blocks) {
+			if (on) b.setAttribute('dir', dir);
+			else b.removeAttribute('dir');
+		}
 		notifyInput(el);
 	});
 }
