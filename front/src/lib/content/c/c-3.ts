@@ -8,8 +8,8 @@ export const c3Lessons: LessonNode[] = [
     section: "c-3",
     titleHe: "YES or NO - לומר עמדה",
     titleEn: "YES or NO",
-    required: ["n-7c5330b8"],
-    position: { x: 20, y: 2280 },
+    required: ["c-a45c17de"],
+    position: { x: 60, y: 2310 },
     big: false,
     content: {
       preface: [
@@ -222,7 +222,7 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "because - לחבר לסיבה",
     titleEn: "because",
     required: ["yes-no"],
-    position: { x: 70, y: 2360 },
+    position: { x: 100, y: 2410 },
     big: false,
     content: {
       preface: [
@@ -315,7 +315,7 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "In addition - סיבה שנייה",
     titleEn: "In addition",
     required: ["because"],
-    position: { x: 100, y: 2480 },
+    position: { x: 100, y: 2510 },
     big: false,
     content: {
       preface: [
@@ -1496,9 +1496,9 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "c-a45c17de",
     section: "c-3",
-    titleHe: "שיעור חדש",
-    required: [],
-    position: { x: 30, y: 2210 },
+    titleHe: "כתיבה - הקדמה",
+    required: ["n-7c5330b8"],
+    position: { x: 10, y: 2220 },
     big: false,
     content: {
       preface: [
@@ -1506,7 +1506,6 @@ export const c3Lessons: LessonNode[] = [
           type: "preface",
           text: 'ועכשיו עוברים לחלק שהרבה תלמידים קצת נלחצים ממנו:\n**הכתיבה.**\n\nאבל לפני שמתחילים, חשוב לדעת דבר אחד:\nלא צריך לכתוב אנגלית "מושלמת".\nצריך לדעת **לבנות תשובה נכונה, ברורה ומסודרת**.\nבחלק הזה נלמד את זה שלב אחרי שלב:\n\nאיך מתחילים,איך בונים משפטים,איך מחברים בין רעיונות,ואיך בודקים שלא שכחנו משהו חשוב.\n\n**המטרה שלנו: להפוך את הכתיבה ממשהו מלחיץ — למשהו שיש לו שיטה.**',
         },
-        { type: "preface", text: "" },
       ],
       rounds: [{ screens: [] }],
     },
