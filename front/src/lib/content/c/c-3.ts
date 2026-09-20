@@ -325,7 +325,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "❌ **I think students should volunteer because it teaches responsibility.**\n**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר.\nהמעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
+          text: "{d:ltr}❌ **I think students should volunteer because it teaches responsibility.**\n{d:ltr}**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
         },
         {
           type: "summary",
