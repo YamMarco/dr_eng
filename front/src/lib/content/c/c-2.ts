@@ -1137,7 +1137,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד מילות ניווט. המילים המודגשות אומרות מה נמצא, לאן זה זז ואיזו דוגמה מגיעה.\n\n{d:ltr}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nכמה מהן אתם יודעים להסביר מה הן מסמנות?",
+          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n\nScientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n\n**found** → יש כאן ממצא**decreased** → משהו ירד**for example** → עכשיו מגיעה דוגמה**increased** → משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
@@ -1369,7 +1369,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Sleep is important for teenagers.\n\nII  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\nIII  At the same time, the number of students who felt tired decreased by 30%.",
+              text: "**I**  Sleep is important for teenagers.\n\n**II**  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\n**III**  At the same time, the number of students who felt tired decreased by 30%.",
               questions: [
                 {
                   prompt: "What did researchers find?",
@@ -2522,7 +2522,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Good **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "**עוד אתגר מהיר **קראו את המשפט:\nGood **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו נסו בלי מילון:\n\nאיזו מילה קשורה ל־**חינוך**?איזו ל־**פיתוח**?איזו ל־**מיומנויות**?איזו ל־**שיפור**?ואיזו ל־**השגת מטרה**?\n\nהמילים האלה חוזרות הרבה בטקסטים על לימודים, עבודה והצלחה.\n\nהמטרה שלנו היא שתראו אותן — ותבינו אותן **מיד**.",
         },
         {
           type: "preface",
