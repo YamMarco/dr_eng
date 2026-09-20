@@ -2176,11 +2176,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "קראו את הקטע הבא:  \n\nPollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nהמילים המודגשות הן מילות תוכן. כמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.\n\n",
         },
         {
           type: "preface",
-          text: "חמש מילים על **שינוי וסביבה**: מה עולה, מה יורד, מה מוגן ומה נהרס.\n\nהן חוזרות בכל טקסט על סביבה, בעלי חיים ואקלים, ולכיוון של המילה יש משמעות: עלייה או ירידה. כל מילה מגיעה עם תרגילים מיד אחריה.",
+          text: "חמש מילים חשובות בנושא **שינוי וסביבה**: המילים האלה חוזרות הרבה בטקסטים על סביבה, בעלי חיים ואקלים.\n\nכאן חשוב להבין לא רק את משמעות המילה, אלא גם את \n\n**הכיוון שלה**:\n\n**עלייה או ירידה? שיפור או פגיעה? שמירה או הרס?**\n\nאחרי כל מילה יחכה לכם תרגול קצר, כדי לוודא שלא רק קראתם אותה — אלא באמת למדתם לזהות אותה בתוך טקסט.",
         },
       ],
       rounds: [
