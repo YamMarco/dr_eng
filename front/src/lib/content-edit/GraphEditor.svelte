@@ -19,7 +19,7 @@
 	const GRID = 10;
 	const FLOAT_WIDTH = 240; // ReviewFloat's w-60
 	const NODE_HEIGHT = 56;
-	const PAD = 16; // the scroll area's p-4
+	const PAD = 24; // the scroll area's horizontal padding (px-6)
 
 	// Fit-to-width: on a phone the fixed-width canvas is shrunk so the whole map
 	// fits without horizontal scroll (never enlarged past 1:1).
@@ -304,7 +304,7 @@
 		מחברת מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
 	</div>
 
-	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 p-4" bind:clientWidth={viewWidth}>
+	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 px-6 py-4" bind:clientWidth={viewWidth}>
 		<!-- Sized to the scaled canvas so the scroll area matches what's drawn. -->
 		<div class="mx-auto" style="width:{CANVAS_WIDTH * scale}px; height:{canvasHeight * scale}px">
 			<div
