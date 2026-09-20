@@ -15,11 +15,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'חבר׳ה, הטעות הכי נפוצה בכתיבה?\n\nלא כתיב. לא דקדוק.\n\nלא לומר YES או NO.\n\nתלמיד שכותב "volunteering is good and important" לא ענה על השאלה. הוא תיאר. לא הביע דעה.\n\nהמורה רוצה לשמוע: אני חושב YES. או: אני חושב NO.\nורק אחרי זה - למה.',
+          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\nלא כתיב.לא דקדוק.\n**לא לענות על השאלה.**\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n**YES — אני בעד.**או**NO — אני נגד.**\nתלמיד שכותב:\n**“Volunteering is good and important.”**\nעדיין לא באמת הביע דעה. הוא רק תיאר את הנושא.\nהמורה רוצה להבין מיד:\n**מה אתם חושבים?**\nורק אחרי זה מגיע השלב הבא:\n**למה אתם חושבים כך?**\nהסדר הוא פשוט:\n**דעה → סיבה → הסבר**",
         },
         {
           type: "preface",
-          text: 'המשפט הזה הוא הכי חשוב בכל הפסקה:\n\n✅ "I think teenagers should volunteer."\n✅ "I do not think teenagers should volunteer."\n\nשימו לב - המשפט קצר. חד. ברור.\nלא מסבירים עדיין למה. רק אומרים מה.\nאת הלמה נוסיף בשיעור הבא.',
+          text: "זה המשפט הכי חשוב בתחילת הפסקה:\n✅ **I think teenagers should volunteer.**\n✅ **I do not think teenagers should volunteer.**\nשימו לב:\nהמשפט **קצר**.הוא **חד**.והעמדה שלכם ברורה מיד.\nבבחינת הבגרות מי שקורא את הכתיבה שלכם הוא **מעריך שנותן עליה ציון**.\nלכן אל תגרמו לו לנחש מה אתם חושבים.\nכתבו את הדעה בצורה ברורה ומסודרת, כך שכל מי שקורא את התשובה יבין מיד:\n**מה העמדה שלי?**\nבשלב הזה עדיין לא מסבירים למה.\nקודם אומרים **מה אני חושב**.\nבשיעור הבא נוסיף את השלב השני:\n**למה אני חושב כך?**",
         },
         {
           type: "summary",
@@ -40,7 +40,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"Do you think teenagers should have part-time jobs?" - איזה פתיח מבטא עמדה ברורה?',
+                '"Do you think teenagers should have part-time jobs?" \n- איזה פתיח מבטא עמדה ברורה?',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
