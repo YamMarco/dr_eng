@@ -1137,7 +1137,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד מילות ניווט. המילים המודגשות אומרות מה נמצא, לאן זה זז ואיזו דוגמה מגיעה.\n\n{d:ltr}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nכמה מהן אתם יודעים להסביר מה הן מסמנות?",
+          text: "**עצרו רגע — לא צריך לתרגם הכול.**\nקראו את הקטע:\nScientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\nעכשיו נסו לזהות רק את התפקיד של המילים המודגשות:\n**found** → מציג ממצא**decreased** → מסמן ירידה**for example** → מכניס דוגמה**increased** → מסמן עלייה\nהמילים האלה הן כמו **שלטי דרך בתוך הטקסט**.\nהן אומרות לנו מה קרה, לאיזה כיוון המידע זז, ומה מגיע עכשיו.",
         },
         {
           type: "preface",
