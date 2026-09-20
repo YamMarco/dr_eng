@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1789890559.638258,
-    "seen": 1789890625.6498437,
-    "ast_hash": "85f9778a91284a06944f5305c3e780fc",
+    "mtime": 1789932715.3028712,
+    "seen": 1789932810.9314585,
+    "ast_hash": "ec31cc7b7da376609ed894b5f7869e57",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -498,15 +498,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/SpellWord.svelte": {
-    "mtime": 1789893474.5310006,
-    "seen": 1789894385.1872246,
-    "ast_hash": "c07335e451cb27f8fa37d6c5d4c8c17d",
+    "mtime": 1789932715.2062347,
+    "seen": 1789932810.9314945,
+    "ast_hash": "1b2849454ac9df91c3f724b21690bed7",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WordCard.svelte": {
-    "mtime": 1789931698.3679066,
-    "seen": 1789931891.1042552,
-    "ast_hash": "aeac2c96218823bba5f4cf525d58e63d",
+    "mtime": 1789932715.1459124,
+    "seen": 1789932810.9315066,
+    "ast_hash": "3095c822104b9279b18212cafc786b44",
     "semantic_hash": ""
   },
   "front/src/routes/book/+page.svelte": {
@@ -1167,6 +1167,24 @@
     "mtime": 1789931685.977882,
     "seen": 1789931891.1042898,
     "ast_hash": "d7ab8d566eb791b3d72b9b44e46e873d",
+    "semantic_hash": ""
+  },
+  "front/src/lib/lesson-screens/SpeakButtons.svelte": {
+    "mtime": 1789932679.5270443,
+    "seen": 1789932810.931492,
+    "ast_hash": "ea578c49ed920cdb514007fe21a06303",
+    "semantic_hash": ""
+  },
+  "front/src/lib/speech.ts": {
+    "mtime": 1789932675.2423244,
+    "seen": 1789932810.9315414,
+    "ast_hash": "9a36e710c4832c61ed95b671122c2486",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-6abff5e0f2.jpg": {
+    "mtime": 1789932654.7604692,
+    "seen": 1789932810.931729,
+    "ast_hash": "079836bb46c458ad3c438338f38580a3",
     "semantic_hash": ""
   }
 }
