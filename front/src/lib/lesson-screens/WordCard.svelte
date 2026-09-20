@@ -2,7 +2,7 @@
 	import { Image, Volume2 } from '@lucide/svelte';
 	import type { WordCardScreen } from './types';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { mdInline } from './miniMarkdown';
+	import { mdBlock, mdInline } from './miniMarkdown';
 
 	// Not scored — pure teaching, like preface/summary — so disabled/label
 	// are write-only here (never overridden): the runner reads them through
@@ -46,7 +46,8 @@
 	</div>
 
 	{#if screen.translationHe}
-		<p class="mt-2 text-lg text-muted">{screen.translationHe}</p>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<p class="mt-2 text-lg text-muted">{@html mdInline(screen.translationHe)}</p>
 	{/if}
 
 	{#if screen.exampleEn}
@@ -55,7 +56,8 @@
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<p class="leading-relaxed" dir="ltr">{@html mdInline(screen.exampleEn)}</p>
 			{#if screen.exampleHe}
-				<p class="mt-1 text-sm text-muted">{screen.exampleHe}</p>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				<p class="mt-1 text-sm text-muted">{@html mdInline(screen.exampleHe)}</p>
 			{/if}
 		</div>
 	{/if}
@@ -63,7 +65,8 @@
 	{#if screen.hookHe}
 		<div class="mt-3 w-full rounded-2xl border-2 border-dashed border-brand/40 p-3 text-start">
 			<p class="mb-1 text-xs font-bold text-brand-dark">💡 {i18n.dict.wordCard.hookLabel}</p>
-			<p class="leading-relaxed">{screen.hookHe}</p>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			<div class="leading-relaxed">{@html mdBlock(screen.hookHe)}</div>
 		</div>
 	{/if}
 </div>
