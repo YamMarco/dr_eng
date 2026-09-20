@@ -40,7 +40,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"Do you think teenagers should have part-time jobs?" \n- איזה פתיח מבטא עמדה ברורה?',
+                "קראו את השאלה:\n**Do you think teenagers should have part-time jobs?**\nלפני שכותבים — שיטת הרמזור.\nצריך להבין את **כל השאלה**, לא רק לזהות את המילים **teenagers** ו־**jobs**.\nשימו לב במיוחד ל־**part-time jobs**.\nהשאלה לא שואלת אם בני נוער צריכים לעבוד באופן כללי.והיא גם לא שואלת על **full-time jobs**.\nהיא שואלת דבר מאוד מסוים:\n**האם לדעתכם בני נוער צריכים לעבוד בעבודה במשרה חלקית?**\nעכשיו אפשר לבחור פתיח שמבטא עמדה ברורה:\n✅ **I think teenagers should have part-time jobs.**\n✅ **I do not think teenagers should have part-time jobs.**\nהכלל שלנו:\n**קודם מבינים בדיוק על מה שאלו — ורק אז אומרים YES או NO.**",
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
