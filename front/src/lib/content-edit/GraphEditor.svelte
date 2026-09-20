@@ -14,7 +14,7 @@
 		reviewNotes.load();
 	});
 
-	const CANVAS_WIDTH = 480;
+	const CANVAS_WIDTH = 520;
 	const CENTER = CANVAS_WIDTH / 2;
 	const GRID = 10;
 	const FLOAT_WIDTH = 240; // ReviewFloat's w-60
@@ -306,11 +306,11 @@
 
 	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 px-6 py-4" bind:clientWidth={viewWidth}>
 		<!-- Sized to the scaled canvas so the scroll area matches what's drawn. -->
-		<div class="mx-auto" style="width:{CANVAS_WIDTH * scale}px; height:{canvasHeight * scale}px">
+		<div class="relative mx-auto" style="width:{CANVAS_WIDTH * scale}px; height:{canvasHeight * scale}px">
 			<div
 				bind:this={wrap}
 				role="presentation"
-				class="relative origin-top-left touch-pan-y select-none"
+				class="absolute top-0 left-0 origin-top-left touch-pan-y select-none"
 				style="width:{CANVAS_WIDTH}px; height:{canvasHeight}px; transform:scale({scale})"
 				onpointerdown={wrapPointerDown}
 				onpointermove={wrapPointerMove}

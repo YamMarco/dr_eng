@@ -30,20 +30,16 @@
 	// only contribute grouping (theme color, heading) — all layout and
 	// locking flows from this graph, so a module's structure (linear,
 	// branching, parallel tracks that converge, ...) is just data.
-	const CANVAS_WIDTH = 400;
-	const CANVAS_CENTER = CANVAS_WIDTH / 2;
+	const MIN_CANVAS_WIDTH = 400;
+	const NODE_HALF_WIDTH = 40; // the big node is h-20 w-20
+	const HEADING_HALF_WIDTH = 64; // section headings are w-32
 	const LABEL_HALF_WIDTH = 88; // the node label popup is w-44
-
-	// Fit-to-width: on narrow phones the fixed-width canvas is shrunk (never
-	// enlarged) so it can't push the page wider than the screen.
-	let viewWidth = $state(0);
-	let fitScale = $derived(viewWidth ? Math.min(1, viewWidth / CANVAS_WIDTH) : 1);
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
-		const center = CANVAS_CENTER + nodeX;
+		const center = canvasCenter + nodeX;
 		return (
-			Math.max(0, LABEL_HALF_WIDTH - center) + Math.min(0, CANVAS_WIDTH - center - LABEL_HALF_WIDTH)
+			Math.max(0, LABEL_HALF_WIDTH - center) + Math.min(0, canvasWidth - center - LABEL_HALF_WIDTH)
 		);
 	}
 
@@ -109,6 +105,26 @@
 		return result;
 	});
 
+	// Sized to the real node extents (nodes sit at +-x from the centre, so their
+	// circles poke out past the nominal width) — symmetric so x stays centre-relative.
+	let canvasWidth = $derived(
+		Math.max(
+			MIN_CANVAS_WIDTH,
+			2 * nodes.reduce((max, node) => Math.max(max, Math.abs(node.x) + NODE_HALF_WIDTH), 0),
+			2 *
+				sectionHeadings.reduce(
+					(max, heading) => Math.max(max, Math.abs(heading.x) + HEADING_HALF_WIDTH),
+					0
+				)
+		)
+	);
+	let canvasCenter = $derived(canvasWidth / 2);
+
+	// Fit-to-width: on narrow phones the fixed-width canvas is shrunk (never
+	// enlarged) so it can't push the page wider than the screen.
+	let viewWidth = $state(0);
+	let fitScale = $derived(viewWidth ? Math.min(1, viewWidth / canvasWidth) : 1);
+
 	// Straight connector lines from each prerequisite to its dependent node.
 	let edges = $derived.by(() => {
 		const result: {
@@ -125,9 +141,9 @@
 				if (!from) continue;
 				result.push({
 					id: `${prereqId}->${node.lesson.id}`,
-					x1: CANVAS_CENTER + from.x,
+					x1: canvasCenter + from.x,
 					y1: from.y + (from.isBig ? 40 : 32),
-					x2: CANVAS_CENTER + node.x,
+					x2: canvasCenter + node.x,
 					y2: node.y + (node.isBig ? 40 : 32),
 					targetY: node.y
 				});
@@ -356,18 +372,18 @@
 	{:else}
 		<div bind:clientWidth={viewWidth} class="w-full">
 			<div
-				class="mx-auto"
-				style="width: {CANVAS_WIDTH * fitScale}px; height: {canvasHeight * fitScale}px"
+				class="relative mx-auto"
+				style="width: {canvasWidth * fitScale}px; height: {canvasHeight * fitScale}px"
 			>
 				<div
-					class="relative origin-top-left"
-					style="width: {CANVAS_WIDTH}px; height: {canvasHeight}px; transform: scale({fitScale})"
+					class="absolute top-0 left-0 origin-top-left"
+					style="width: {canvasWidth}px; height: {canvasHeight}px; transform: scale({fitScale})"
 				>
 					<svg
 						class="pointer-events-none absolute inset-0"
-						width={CANVAS_WIDTH}
+						width={canvasWidth}
 						height={canvasHeight}
-						viewBox="0 0 {CANVAS_WIDTH} {canvasHeight}"
+						viewBox="0 0 {canvasWidth} {canvasHeight}"
 						aria-hidden="true"
 					>
 						{#each edges as edge (edge.id)}
@@ -387,7 +403,7 @@
 					{#each sectionHeadings as heading (heading.sectionId)}
 						<p
 							class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
-							style="left: {CANVAS_CENTER + heading.x}px; top: {heading.y - 32}px; width: 8rem"
+							style="left: {canvasCenter + heading.x}px; top: {heading.y - 32}px; width: 8rem"
 							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 						>
 							{heading.titleHe}
@@ -404,7 +420,7 @@
 							class="absolute -translate-x-1/2 scroll-mt-24 transition-opacity {unlocked || done
 								? ''
 								: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
-							style="left: {CANVAS_CENTER + node.x}px; top: {node.y}px; --puck-border: {node.theme
+							style="left: {canvasCenter + node.x}px; top: {node.y}px; --puck-border: {node.theme
 								.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
 							in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
 						>
