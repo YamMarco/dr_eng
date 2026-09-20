@@ -1428,7 +1428,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Five years ago the river in Millbrook was full of rubbish. A local **charity** asked **residents** to help, and more than 200 **volunteers** joined the clean-up. The whole **community** worked together for three weekends. Today the **environment** around the river is healthy again.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{p:text}Five years ago the river in Millbrook was full of rubbish. A local **charity** asked **residents** to help, and more than 200 **volunteers** joined the clean-up. The whole **community** worked together for three weekends. Today the **environment** around the river is healthy again.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",

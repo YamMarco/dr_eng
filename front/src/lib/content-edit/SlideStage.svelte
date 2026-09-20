@@ -17,7 +17,8 @@
 		formatColor,
 		formatHeader,
 		formatAlign,
-		formatDirection
+		formatDirection,
+		formatTextBlock
 	} from './activeField.svelte';
 	import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
 
@@ -327,6 +328,13 @@
 					onclick={() => formatDirection('ltr')}>A⇒</button
 				>
 			</div>
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
+				title="סימון השורה כטקסט באנגלית ללימוד (מודגש, שמאל-לימין) - לחיצה נוספת מבטלת"
+				onmousedown={(e) => e.preventDefault()}
+				onclick={formatTextBlock}>📖 טקסט לימוד</button
+			>
 			<span class="h-4 w-px bg-line"></span>
 			<span class="text-xs font-bold text-muted">סוג המסך:</span>
 			<select

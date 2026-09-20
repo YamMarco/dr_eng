@@ -1,7 +1,8 @@
 // Tiny inline-markdown -> safe HTML for teaching text (preface / steps /
 // summary / question-preview). HTML is escaped first, then a small fixed set
 // of inline replacements is applied. No block syntax here — see `mdBlock`
-// below for the line-level layer (headers / align / direction).
+// below for the line-level layer (headers / align / direction / `{p:text}`
+// paragraph type).
 //
 // Inline: **bold**, *italic* / _italic_, ++underline++, ~~strikethrough~~,
 // `code`, [text](https://url), {c:name}colored text{/c} (name = a key in
@@ -51,28 +52,44 @@ export function mdInline(src: string): string {
 	return s;
 }
 
+/** `{p:text}` lines: English study text, visibly set apart from the app's
+ *  Hebrew instructions (tinted card with an accent edge, left-to-right).
+ *  Also applied by the editor's toolbar toggle, hence exported. */
+export const TEXT_BLOCK_CLASS =
+	'my-1 rounded-xl border-s-4 border-brand/60 bg-brand-soft/60 px-3 py-2 font-medium';
+
 const HEADER_CLASS: Record<number, string> = {
 	1: 'text-2xl font-bold',
 	2: 'text-xl font-bold',
 	3: 'text-lg font-semibold'
 };
 
-/** One line's leading `{a:center}` / `{d:rtl}` attribute tokens + optional
+/** One line's leading `{a:center}` / `{d:rtl}` / `{p:text}` attribute tokens + optional
  *  `#`/`##`/`###` header marker, stripped off before the rest is run through
  *  `mdInline`. Attribute tokens can appear in any order, before the header
  *  marker (if any). */
-function parseLine(raw: string): { tag: string; classes: string; style: string; rest: string } {
+function parseLine(raw: string): {
+	tag: string;
+	classes: string;
+	style: string;
+	attrs: string;
+	rest: string;
+} {
 	let rest = raw;
 	let align = '';
 	let dir = '';
+	let paragraph = '';
 
-	const attrRe = /^\{(a|d):(\w+)\}/;
+	const attrRe = /^\{(a|d|p):(\w+)\}/;
 	let m: RegExpMatchArray | null;
 	while ((m = rest.match(attrRe))) {
 		if (m[1] === 'a') align = m[2];
-		else dir = m[2];
+		else if (m[1] === 'd') dir = m[2];
+		else paragraph = m[2];
 		rest = rest.slice(m[0].length);
 	}
+	const isText = paragraph === 'text';
+	if (isText && !dir) dir = 'ltr';
 
 	let level = 0;
 	const headerMatch = rest.match(/^(#{1,3})\s+(.*)$/);
@@ -88,8 +105,11 @@ function parseLine(raw: string): { tag: string; classes: string; style: string; 
 
 	return {
 		tag: level ? `h${level}` : 'div',
-		classes: level ? HEADER_CLASS[level] : '',
+		classes: [level ? HEADER_CLASS[level] : '', isText ? TEXT_BLOCK_CLASS : '']
+			.filter(Boolean)
+			.join(' '),
 		style: styles.join(';'),
+		attrs: isText ? ' data-p="text"' : '',
 		rest
 	};
 }
@@ -104,11 +124,11 @@ export function mdBlock(src: string): string {
 	return src
 		.split('\n')
 		.map((raw) => {
-			const { tag, classes, style, rest } = parseLine(raw);
+			const { tag, classes, style, attrs, rest } = parseLine(raw);
 			const classAttr = classes ? ` class="${classes}"` : '';
 			const styleAttr = style ? ` style="${style}"` : '';
 			const inner = mdInline(rest) || '<br>';
-			return `<${tag}${classAttr}${styleAttr}>${inner}</${tag}>`;
+			return `<${tag}${classAttr}${styleAttr}${attrs}>${inner}</${tag}>`;
 		})
 		.join('');
 }

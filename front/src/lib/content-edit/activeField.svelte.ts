@@ -8,6 +8,7 @@
 // Detachable — part of src/lib/content-edit/.
 
 import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
+import { TEXT_BLOCK_CLASS } from '$lib/lesson-screens/miniMarkdown';
 
 class ActiveField {
 	el = $state<HTMLDivElement | null>(null);
@@ -132,6 +133,8 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 		replacement.innerHTML = block.innerHTML;
 		if (block.style.textAlign) replacement.style.textAlign = block.style.textAlign;
 		if (block.hasAttribute('dir')) replacement.setAttribute('dir', block.getAttribute('dir')!);
+		if (block.dataset.p === 'text') applyTextBlock(replacement, true);
+		else if (block.style.direction) replacement.style.direction = block.style.direction;
 		block.replaceWith(replacement);
 
 		const range = document.createRange();
@@ -153,6 +156,30 @@ export function formatAlign(align: 'left' | 'center' | 'right') {
 		const block = currentBlock(el);
 		if (!block) return;
 		block.style.textAlign = block.style.textAlign === align ? '' : align;
+		notifyInput(el);
+	});
+}
+
+function applyTextBlock(block: HTMLElement, on: boolean) {
+	const classes = TEXT_BLOCK_CLASS.split(' ');
+	if (on) {
+		block.dataset.p = 'text';
+		block.style.direction = 'ltr';
+		block.classList.add(...classes);
+	} else {
+		delete block.dataset.p;
+		block.style.direction = '';
+		block.classList.remove(...classes);
+	}
+}
+
+/** Toggles the current line between an app instruction (default) and English
+ *  study text (`{p:text}`: set apart visually, left-to-right). */
+export function formatTextBlock() {
+	withActive((el) => {
+		const block = currentBlock(el);
+		if (!block) return;
+		applyTextBlock(block, block.dataset.p !== 'text');
 		notifyInput(el);
 	});
 }

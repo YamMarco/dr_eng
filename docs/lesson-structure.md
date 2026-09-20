@@ -128,8 +128,10 @@ fixed palette).
 
 Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores
 them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,
-and a `#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
-Order: alignment/direction tokens first, then the header marker, e.g.
+`{p:text}` marks the line as English study text (tinted card with an accent edge,
+left-to-right; implies `{d:ltr}`) so it stands out from the app's Hebrew
+instructions, and a `#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
+Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 `{a:center}## כותרת ממורכזת`.
 
 ## Runner rules
