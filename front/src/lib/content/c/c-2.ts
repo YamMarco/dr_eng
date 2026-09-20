@@ -1137,7 +1137,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "**עצרו רגע — לא צריך לתרגם הכול.**\nקראו את הקטע:\nScientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\nעכשיו נסו לזהות רק את התפקיד של המילים המודגשות:\n**found** → מציג ממצא**decreased** → מסמן ירידה**for example** → מכניס דוגמה**increased** → מסמן עלייה\nהמילים האלה הן כמו **שלטי דרך בתוך הטקסט**.\nהן אומרות לנו מה קרה, לאיזה כיוון המידע זז, ומה מגיע עכשיו.",
+          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n\nScientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n\n**found** → יש כאן ממצא**decreased** → משהו ירד**for example** → עכשיו מגיעה דוגמה**increased** → משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
