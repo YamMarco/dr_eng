@@ -84,7 +84,7 @@ Add an object to the right section's array:
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
 | `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
 | `match-pairs` | `pairs[{en, he}]` | 1 |
-| `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed` | 1 |
+| `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed`, `maxTypos?` (default 1), `capitalIsError?` (default true) | 1 |
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
 | `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]`, `timerKey?`, `label?` | n |
 

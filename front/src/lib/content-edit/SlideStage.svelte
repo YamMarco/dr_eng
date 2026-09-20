@@ -620,6 +620,26 @@
 										/>
 									</label>
 								</div>
+								<div class="flex flex-wrap items-center gap-4">
+									<label class="flex items-center gap-2 text-xs text-muted">
+										טעויות קטנות מותרות
+										<input
+											type="number"
+											min="0"
+											value={screen.maxTypos ?? 1}
+											oninput={(e) => (screen.maxTypos = e.currentTarget.valueAsNumber)}
+											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+									<label class="flex items-center gap-2 text-xs text-muted">
+										<input
+											type="checkbox"
+											checked={screen.capitalIsError ?? true}
+											onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
+										/>
+										אות ראשונה קטנה = טעות
+									</label>
+								</div>
 							</div>
 						{:else if screen.type === 'spell-word'}
 							<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">

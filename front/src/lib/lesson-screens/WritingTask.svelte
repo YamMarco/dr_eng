@@ -35,21 +35,28 @@
 	let allFilled = $derived(lines.every((line) => line.trim().length > 0));
 
 	// Capitalization/punctuation are graded as a running tally of small slips,
-	// not a per-sentence pass/fail: one missing capital or period on its own
-	// is forgiven (kids shouldn't fail over a single case slip), but they add
-	// up — two or more across the answer trips the threshold and fails it.
-	const MAX_MINOR_ISSUES = 1;
+	// not a per-sentence pass/fail: by default one missing capital or period
+	// on its own is forgiven (kids shouldn't fail over a single case slip),
+	// but they add up — past `maxTypos` across the answer fails it.
+	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
+	let capitalIsError = $derived(screen.capitalIsError ?? true);
+	// `{sentences}` / `{words}` in the prompt follow the rule numbers.
+	let prompt = $derived(
+		screen.prompt
+			.replaceAll('{sentences}', i18n.dict.writingTask.sentencesPhrase(screen.minSentences))
+			.replaceAll('{words}', i18n.dict.writingTask.wordsPhrase(screen.minWordsUsed))
+	);
 	let minorIssues = $derived(
 		lines.reduce((count, line) => {
 			const trimmed = line.trim();
 			if (!trimmed) return count;
 			let issues = 0;
-			if (!/^[A-Z]/.test(trimmed)) issues++;
+			if (capitalIsError && !/^[A-Z]/.test(trimmed)) issues++;
 			if (!/[.!?]$/.test(trimmed)) issues++;
 			return count + issues;
 		}, 0)
 	);
-	let punctuationOk = $derived(minorIssues <= MAX_MINOR_ISSUES);
+	let punctuationOk = $derived(minorIssues <= maxTypos);
 	let combinedText = $derived(lines.join(' ').toLowerCase());
 	let wordsUsed = $derived(
 		screen.wordBank.filter((word) => combinedText.includes(word.toLowerCase())).length
@@ -76,7 +83,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
 <ScoreBadge {score} />
 <div class="leading-relaxed font-semibold">
-	{#each screen.prompt.split('\n') as line, i (i)}
+	{#each prompt.split('\n') as line, i (i)}
 		<p dir="auto">{line}</p>
 	{/each}
 </div>
@@ -118,7 +125,7 @@
 		</li>
 		<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
 			<span>{punctuationOk ? '✓' : '✗'}</span>
-			{i18n.dict.writingTask.checkPunctuation}
+			{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
 		</li>
 		<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
 			<span>{wordBankOk ? '✓' : '✗'}</span>

@@ -104,7 +104,16 @@ export const he = {
 		wordBankLabel: 'מילים לשימוש',
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
-		checkPunctuation: 'אות גדולה ונקודה בסוף - טעות קטנה אחת מותרת',
+		sentencesPhrase: (n: number) => (n === 1 ? 'משפט אחד' : n === 2 ? 'שני משפטים' : `${n} משפטים`),
+		wordsPhrase: (n: number) => (n === 1 ? 'מילה אחת' : n === 2 ? 'שתי מילים' : `${n} מילים`),
+		checkPunctuation: (capitalIsError: boolean, maxTypos: number) =>
+			`${capitalIsError ? 'אות גדולה ונקודה בסוף' : 'נקודה בסוף'} - ${
+				maxTypos === 0
+					? 'ללא טעויות'
+					: maxTypos === 1
+						? 'טעות קטנה אחת מותרת'
+						: `עד ${maxTypos} טעויות קטנות מותרות`
+			}`,
 		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
 	},
 	examStart: {

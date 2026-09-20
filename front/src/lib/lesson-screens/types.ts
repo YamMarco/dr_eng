@@ -93,6 +93,10 @@ export type PassageMcqScreen = {
  * enough sentences, each one capitalized and period-terminated, and enough
  * of the given word bank actually used. One overall right/wrong, no per-word
  * grading.
+ *
+ * `prompt` may contain `{sentences}` / `{words}`, replaced with the Hebrew
+ * phrase for `minSentences` / `minWordsUsed` (e.g. "שני משפטים"), so the
+ * question text never drifts from the actual rules.
  */
 export type WritingTaskScreen = {
 	type: 'writing-task';
@@ -100,6 +104,10 @@ export type WritingTaskScreen = {
 	wordBank: string[];
 	minSentences: number;
 	minWordsUsed: number;
+	/** Small slips (missing initial capital / final punctuation) forgiven across the whole answer. Default 1. */
+	maxTypos?: number;
+	/** A sentence not starting with a capital letter counts as a slip. Default true. */
+	capitalIsError?: boolean;
 };
 
 /**

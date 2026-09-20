@@ -246,7 +246,10 @@
 			</div>
 		{:else if screen.type === 'writing-task'}
 			<MarkdownInput bare minRows={3} value={screen.prompt} onInput={(v) => set('prompt', v)} />
-			<p class="text-xs text-muted">בנק מילים ומספרי מינימום - בסרגל התחתון</p>
+			<p class="text-xs text-muted">
+				בנק מילים וחוקים - בסרגל התחתון. בטקסט אפשר לכתוב <code dir="ltr">{'{sentences}'}</code>
+				ו-<code dir="ltr">{'{words}'}</code> - יוחלפו במספר המשפטים / המילים.
+			</p>
 		{:else if screen.type === 'question-preview'}
 			<MarkdownInput bare minRows={2} value={screen.intro} onInput={(v) => set('intro', v)} />
 			<ul class="space-y-1">
