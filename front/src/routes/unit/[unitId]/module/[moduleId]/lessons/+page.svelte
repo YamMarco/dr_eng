@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { pushState } from '$app/navigation';
+	import { page } from '$app/state';
 	import { FlaskConical } from '@lucide/svelte';
 	import { draw, fade, scale } from 'svelte/transition';
 	import { backOut } from 'svelte/easing';
@@ -273,6 +275,7 @@
 
 	function openNode(node: PathNode) {
 		openLabelId = null;
+		enterRunner();
 		activeId = node.lesson.id;
 		activeRoundIndex = nextRoundIndex(node);
 		moduleLocation.set(mod.id, node.lesson.id);
@@ -280,6 +283,7 @@
 
 	function closeNode() {
 		activeId = null;
+		exitRunner();
 	}
 
 	// The node that just flipped to "done" and is due a celebratory pop the
@@ -301,6 +305,7 @@
 			celebrateIfNewlyDone(activeId, wasDone);
 		}
 		activeId = null;
+		exitRunner();
 	}
 
 	function nextRound() {
@@ -317,6 +322,7 @@
 		const next = nextInSameSection(activeNode);
 		if (!next) {
 			activeId = null;
+			exitRunner();
 			return;
 		}
 		activeId = next.lesson.id;
@@ -339,6 +345,25 @@
 		{ type: 'spell-word', word: 'butterfly', mode: 'listen' }
 	];
 	let vocabTestOpen = $state(false);
+
+	// The runner is an overlay, not a route: it gets its own history entry so the
+	// phone's Back closes it (returning to this path) instead of leaving the page.
+	function enterRunner() {
+		pushState('', { runner: true });
+	}
+	function exitRunner() {
+		if (page.state.runner) history.back();
+	}
+	function closeVocabTest() {
+		vocabTestOpen = false;
+		exitRunner();
+	}
+	$effect(() => {
+		if (!page.state.runner) {
+			activeId = null;
+			vocabTestOpen = false;
+		}
+	});
 </script>
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
@@ -526,7 +551,10 @@
 	     isolated from any real lesson/section. -->
 	<button
 		type="button"
-		onclick={() => (vocabTestOpen = true)}
+		onclick={() => {
+			enterRunner();
+			vocabTestOpen = true;
+		}}
 		title="בדיקת מסכי אוצר מילים (דיבוג)"
 		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
 	>
@@ -553,10 +581,10 @@
 		screens={vocabTestScreens}
 		lessonLabel="בדיקת אוצר מילים (דיבוג)"
 		hasNextLesson={false}
-		onExit={() => (vocabTestOpen = false)}
-		onFinish={() => (vocabTestOpen = false)}
-		onFinishAndContinue={() => (vocabTestOpen = false)}
-		onNextRound={() => (vocabTestOpen = false)}
+		onExit={closeVocabTest}
+		onFinish={closeVocabTest}
+		onFinishAndContinue={closeVocabTest}
+		onNextRound={closeVocabTest}
 	/>
 {/if}
 

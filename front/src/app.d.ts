@@ -5,7 +5,10 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-		// interface PageState {}
+		interface PageState {
+			/** A lesson runner is open on the module's path page (its own history entry, so Back closes it). */
+			runner?: boolean;
+		}
 		// interface Platform {}
 	}
 }

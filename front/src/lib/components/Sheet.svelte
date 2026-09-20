@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { lockScroll } from '$lib/scrollLock';
 
 	type Props = {
 		open: boolean;
@@ -12,6 +13,10 @@
 	};
 
 	let { open = $bindable(), title, description = '', onclose, children }: Props = $props();
+
+	$effect(() => {
+		if (open) return lockScroll();
+	});
 
 	function close() {
 		open = false;

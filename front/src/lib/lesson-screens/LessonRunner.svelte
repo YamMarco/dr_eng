@@ -17,6 +17,7 @@
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
+	import { lockScroll } from '$lib/scrollLock';
 	import { screenPathsForRound, screensForRound } from '$lib/content-edit/screenPath';
 	import type { LessonNode } from '$lib/content';
 	import type { LessonScreen } from './types';
@@ -58,6 +59,8 @@
 	}: Props = $props();
 
 	const session = createLessonSession();
+
+	$effect(() => lockScroll());
 
 	let allScreens = $derived(
 		lesson ? screensForRound(lesson.content, roundIndex ?? 0) : (staticScreens ?? [])
@@ -191,7 +194,7 @@
 	}
 </script>
 
-<div class="fixed inset-0 z-50 flex flex-col bg-canvas">
+<div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
 	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel}>
 		{#snippet trailing()}
 			{#if canRecapPreface}
@@ -210,7 +213,7 @@
 		<LessonProgressBar segments={progressSegments} current={screenIndex} />
 	{/if}
 
-	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-6 pb-6">
+	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-6 pb-6">
 		{#if justFinished}
 			<div class="relative flex flex-col items-center pt-10 text-center">
 				{#if passed}
