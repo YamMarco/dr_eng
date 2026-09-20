@@ -4109,32 +4109,14 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "💡 הסוד של מודול C:\n\nהתשובה כמעט תמיד יושבת **ליד מילה מסוימת**: מילה שחוזרת שוב ושוב בטקסטים ובשאלות.\n\nמי שמזהה את המילה יודע איפה לחפש. מי שלא, עובר על התשובה בלי לשים לב.\n\nרוצים לראות איך זה נראה?",
+          text: "**יש מילון בבחינה — אבל יש גם שעון.**\nהמילון יכול לעזור כשנתקלים במילה אחת שלא מכירים.אבל אם כמעט בכל שורה צריך לעצור ולחפש מילה, מאבדים זמן — וגם את הרצף של הטקסט.\nויש עוד בעיה: למילה אחת במילון יכולות להיות כמה משמעויות. מי שכבר מכיר את המילה, אפילו חלקית, יזהה הרבה יותר מהר איזו משמעות מתאימה לטקסט.\nלכן לא צריך ללמוד את כל האנגלית מחדש.\nצריך לבנות **מינימום חכם**:רשימה קצרה של מילים שחוזרות שוב ושוב ב־Module C, ושכדאי לזהות מיד — בלי לפתוח מילון.\n**פחות חיפושים. יותר זמן להבין ולענות.**",
         },
-        {
-          type: "preface",
-          text: "קראו את המשפט:\n{d:ltr}The results of the project were already visible - rivers began to flow again.\n\n❓ השאלה:\n{d:ltr}What happened after trees were planted?\n\n✅ התשובה:\n{d:ltr}Rivers began to flow again.\n\n💡 העוגן: **results**. התשובה יושבת ממש לידו.",
-        },
-        {
-          type: "preface",
-          text: "קראו את המשפט:\n{d:ltr}Researchers found that teenagers who volunteer are 60% more likely to describe themselves as happy.\n\n❓ השאלה:\n{d:ltr}What did researchers discover about volunteers?\n\n✅ התשובה:\n{d:ltr}They are 60% more likely to be happy.\n\n💡 העוגן: **found**. התשובה יושבת ממש לידו.",
-        },
-        {
-          type: "preface",
-          text: "קראו את המשפט:\n{d:ltr}According to a recent survey, over 30% of adults in large cities cannot swim.\n\n❓ השאלה:\n{d:ltr}What percentage of adults cannot swim?\n\n✅ התשובה:\n{d:ltr}Over 30% of adults.\n\n💡 העוגן: **survey**. התשובה יושבת ממש לידו.",
-        },
-        {
-          type: "preface",
-          text: "שלוש שאלות, שלוש תשובות, ובכל אחת מילה קטנה שהראתה את הדרך.\n\nכמה מילים כאלה צריך להכיר כדי שזה יעבוד בכל טקסט? פחות ממה שאתם חושבים.",
-        },
-        {
-          type: "preface",
-          text: "יש מילון בבחינה, אבל יש גם שעון.\n\nמילון עוזר עם מילה נדירה אחת. הוא לא יציל טקסט שבו חמש מילים לא מוכרות: הזמן ייגמר לפני שתגיעו לשאלות. וגם, מילון נותן כמה משמעויות, ורק מי שמכיר את המילה יודע איזו מהן מתאימה.\n\nלכן אוספים את **המינימום**: רשימה קצרה של מילים שחוזרות במודול, שמכירים בלי מילון. זו לא אנגלית מההתחלה.",
-        },
-        {
-          type: "preface",
-          text: "הרשימה הקצרה הזאת היא כ-50 מילים וביטויים, בשלוש קבוצות:",
-        },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
         {
           type: "summary",
           title: "שלוש קבוצות מילים",
@@ -4144,14 +4126,8 @@ export const c2Lessons: LessonNode[] = [
             "📖 **מילות תוכן** - מילות הנושאים של המודול: קהילה, מחקר, סביבה, חינוך, בריאות.",
           ],
         },
-        {
-          type: "preface",
-          text: "איך לומדים כל מילה?\n\nכרטיס עם דוגמה וטיפ לזיכרון, שאלה מיד אחריו, השלמת משפט והקלדה. מילה שטעיתם בה חוזרת בסוף הסבב, בלי לחץ.\n\nכל שיעור מתחיל בקטע קצר, ובסוף תחזרו אליו ותראו כמה מילים כבר ברורות לכם.",
-        },
-        {
-          type: "preface",
-          text: "ומה תרוויחו?\n\nטקסט חדש שנראה מפחיד יהפוך למקום שבו כל מילת מפתח היא חברה ותיקה.\n\nמוכנים לגלות כמה מהר זה קורה?",
-        },
+        { type: "preface", text: "" },
+        { type: "preface", text: "" },
       ],
       rounds: [{ screens: [] }],
     },
