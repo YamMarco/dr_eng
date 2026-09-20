@@ -9,17 +9,17 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "YES or NO - לומר עמדה",
     titleEn: "YES or NO",
     required: ["n-7c5330b8"],
-    position: { x: 0, y: 2240 },
+    position: { x: 20, y: 2280 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: 'חבר׳ה, הטעות הכי נפוצה בכתיבה?\n\nלא כתיב. לא דקדוק.\n\nלא לומר YES או NO.\n\nתלמיד שכותב "volunteering is good and important" לא ענה על השאלה. הוא תיאר. לא הביע דעה.\n\nהמורה רוצה לשמוע: אני חושב YES. או: אני חושב NO.\nורק אחרי זה - למה.',
+          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\nלא כתיב.לא דקדוק.\n**לא לענות על השאלה.**\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n**YES — אני בעד.**או**NO — אני נגד.**\nתלמיד שכותב:\n**“Volunteering is good and important.”**\nעדיין לא באמת הביע דעה. הוא רק תיאר את הנושא.\nהמורה רוצה להבין מיד:\n**מה אתם חושבים?**\nורק אחרי זה מגיע השלב הבא:\n**למה אתם חושבים כך?**\nהסדר הוא פשוט:\n**דעה → סיבה → הסבר**",
         },
         {
           type: "preface",
-          text: 'המשפט הזה הוא הכי חשוב בכל הפסקה:\n\n✅ "I think teenagers should volunteer."\n✅ "I do not think teenagers should volunteer."\n\nשימו לב - המשפט קצר. חד. ברור.\nלא מסבירים עדיין למה. רק אומרים מה.\nאת הלמה נוסיף בשיעור הבא.',
+          text: "זה המשפט הכי חשוב בתחילת הפסקה:\n✅ **I think teenagers should volunteer.**\n✅ **I do not think teenagers should volunteer.**\nשימו לב:\nהמשפט **קצר**.הוא **חד**.והעמדה שלכם ברורה מיד.\nבבחינת הבגרות מי שקורא את הכתיבה שלכם הוא **מעריך שנותן עליה ציון**.\nלכן אל תגרמו לו לנחש מה אתם חושבים.\nכתבו את הדעה בצורה ברורה ומסודרת, כך שכל מי שקורא את התשובה יבין מיד:\n**מה העמדה שלי?**\nבשלב הזה עדיין לא מסבירים למה.\nקודם אומרים **מה אני חושב**.\nבשיעור הבא נוסיף את השלב השני:\n**למה אני חושב כך?**",
         },
         {
           type: "summary",
@@ -40,7 +40,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"Do you think teenagers should have part-time jobs?" - איזה פתיח מבטא עמדה ברורה?',
+                "קראו את השאלה:\n**Do you think teenagers should have part-time jobs?**\nלפני שכותבים — שיטת הרמזור.\nצריך להבין את **כל השאלה**, לא רק לזהות את המילים **teenagers** ו־**jobs**.\nשימו לב במיוחד ל־**part-time jobs**.\nהשאלה לא שואלת אם בני נוער צריכים לעבוד באופן כללי.והיא גם לא שואלת על **full-time jobs**.\nהיא שואלת דבר מאוד מסוים:\n**האם לדעתכם בני נוער צריכים לעבוד בעבודה במשרה חלקית?**\nעכשיו אפשר לבחור פתיח שמבטא עמדה ברורה:\n✅ **I think teenagers should have part-time jobs.**\n✅ **I do not think teenagers should have part-time jobs.**\nהכלל שלנו:\n**קודם מבינים בדיוק על מה שאלו — ורק אז אומרים YES או NO.**",
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
@@ -76,10 +76,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | עוד תרגול בזיהוי עמדה ברורה",
-            },
+            { type: "preface", text: "סיבוב 2 | עוד תרגול בזיהוי עמדה ברורה" },
             {
               type: "mcq",
               prompt:
@@ -108,10 +105,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. שאר האפשרויות מתארות או נמנעות מהכרעה.',
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שהופכת את המשפט ל-NO.",
-            },
+            { type: "preface", text: "לחצו על המילה שהופכת את המשפט ל-NO." },
             {
               type: "mark-word",
               sentence:
@@ -1497,6 +1491,24 @@ export const c3Lessons: LessonNode[] = [
           ],
         },
       ],
+    },
+  },
+  {
+    id: "c-a45c17de",
+    section: "c-3",
+    titleHe: "שיעור חדש",
+    required: [],
+    position: { x: 30, y: 2210 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'ועכשיו עוברים לחלק שהרבה תלמידים קצת נלחצים ממנו:\n**הכתיבה.**\n\nאבל לפני שמתחילים, חשוב לדעת דבר אחד:\nלא צריך לכתוב אנגלית "מושלמת".\nצריך לדעת **לבנות תשובה נכונה, ברורה ומסודרת**.\nבחלק הזה נלמד את זה שלב אחרי שלב:\n\nאיך מתחילים,איך בונים משפטים,איך מחברים בין רעיונות,ואיך בודקים שלא שכחנו משהו חשוב.\n\n**המטרה שלנו: להפוך את הכתיבה ממשהו מלחיץ — למשהו שיש לו שיטה.**',
+        },
+        { type: "preface", text: "" },
+      ],
+      rounds: [{ screens: [] }],
     },
   },
 ];
