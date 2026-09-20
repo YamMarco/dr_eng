@@ -3196,10 +3196,10 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Many people think that exercise takes too much time.\n\nII  However, a recent study found that programmes that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\nIII  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
+              text: "**I ** Many people think that exercise takes too much time.\n\n**II**  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\n**III**  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
               questions: [
                 {
-                  prompt: "How much time do the programmes require?",
+                  prompt: "How much time do the programs require?",
                   options: [
                     "A whole weekend",
                     "One week",
