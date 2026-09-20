@@ -441,15 +441,15 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור ירוק\n\nהשאלה:\n{d:ltr}**Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
+          text: "דוגמה: רמזור ירוק\n\nהשאלה:\n{d:ltr}**Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\n\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור צהוב\n\nהשאלה:\n{d:ltr}**What has the project achieved so far?**\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים:\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
+          text: "דוגמה: רמזור צהוב\n\nהשאלה:\n{d:ltr}**What has the project achieved so far?**\n\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים בעזרת המילון:\n\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\n\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\n\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור אדום\n\nהשאלה:\n{d:ltr}**According to the text, what is one drawback of the reforestation initiative?**\nאני מסתכל על השאלה ולא מצליח להסביר מה רוצים ממני. כמעט שום דבר לא ברור.\n🔴 אדום - לא מחפשים תשובה עדיין. מפרקים:\n**According to the text** = לפי הטקסט\n**one drawback** = חיסרון אחד\n**reforestation initiative** = יוזמה להחזרת יערות\nעכשיו השאלה ברורה: *לפי הטקסט, מהו חיסרון אחד של היוזמה להחזרת יערות?*\n🟢 ירוק - עכשיו אפשר לענות.",
+          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום — עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4**מה לחפש?** → סיבה**למה?** → לירידה במספר בעלי החיים**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק — עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
         },
         {
           type: "preface",
