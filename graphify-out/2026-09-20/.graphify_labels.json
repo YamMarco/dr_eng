@@ -3,7 +3,7 @@
   "1": "Svelte MCP Server (Project Config)",
   "2": "Snippet Blocks ({#snippet})",
   "3": "scripts",
-  "4": "content/index.ts",
+  "4": "editModel.svelte.ts",
   "5": "score.svelte.ts",
   "6": "חלק א׳ — עקרונות התוכנית",
   "7": "What You Must Do When Invoked",
@@ -85,6 +85,8 @@
   "83": "בקשת מסך - `<שם-המסך>`",
   "84": "Module C roadmap: from 7.5 to 9",
   "85": "login/+server.ts",
+  "86": "content/index.ts",
+  "87": "validate.ts",
   "88": "התחל כאן",
   "89": "moduleLocation.svelte.ts",
   "90": "motion.ts",
@@ -94,8 +96,13 @@
   "94": "debug.svelte.ts",
   "95": "exam.svelte.ts",
   "96": "activeField.svelte.ts",
+  "97": "Sheet.svelte",
   "98": "lessons/+page.svelte",
+  "99": ".load",
   "100": "Md.svelte",
-  "101": "MarkAll.svelte",
-  "102": "ExamSession"
+  "101": "markAllColors.ts",
+  "102": "ExamSession",
+  "103": "screenTypeNames.ts",
+  "104": "@lucide/svelte",
+  "105": "svelte"
 }

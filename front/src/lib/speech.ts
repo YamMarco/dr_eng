@@ -1,7 +1,7 @@
 // Text-to-speech through the browser's built-in speechSynthesis (British
 // English). Phones use the OS voices, so there is nothing to host or pay for.
 
-export const RATE = { normal: 1, slow: 0.6 } as const;
+export const RATE = { normal: 1, slow: 0.4 } as const;
 
 // Ordered rewrite rules applied before speaking. Add a line to teach the
 // reader a new quirk.
