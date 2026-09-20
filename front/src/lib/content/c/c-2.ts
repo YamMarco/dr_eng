@@ -1369,7 +1369,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Sleep is important for teenagers.\n\nII  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\nIII  At the same time, the number of students who felt tired decreased by 30%.",
+              text: "**I**  Sleep is important for teenagers.\n\n**II**  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\n**III**  At the same time, the number of students who felt tired decreased by 30%.",
               questions: [
                 {
                   prompt: "What did researchers find?",
