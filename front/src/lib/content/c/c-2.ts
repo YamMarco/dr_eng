@@ -17,7 +17,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\n\nקראו את שלוש השאלות:\n**What do we learn** from **paragraph III** about Ethiopia?\n**According to** Dr. Diallo, why do most trees die? \n\n**Give ONE answer.****Give TWO answers**: how did the area change?המילים המודגשות הן לא סתם חלק מהשאלה\n.הן **הוראות ניווט**.הן אומרות לנו:**איפה לחפש** את התשובה,**של מי המידע** שצריך למצוא,ו־**כמה תשובות** צריך לכתוב.\n\nאם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט — ועדיין לענות לא נכון.לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים:**איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
+          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\n\nקראו את שלוש השאלות:\n\n**What do we learn** from **paragraph III** about Ethiopia?\n\n**According to** Dr. Diallo, why do most trees die? \n\n**Give ONE answer.****Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן לא סתם חלק מהשאלה\n.הן **הוראות ניווט**.הן אומרות לנו:**איפה לחפש** את התשובה, **של מי המידע** שצריך למצוא, ו־**כמה תשובות** צריך לכתוב.\n\nאם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט — ועדיין לענות לא נכון.לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים:**איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
         },
         {
           type: "preface",
@@ -43,8 +43,13 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: '"What do we learn from paragraph II?" - איפה מחפשים?',
-              options: ["בכותרת", "רק בפסקה II", "בכל הטקסט", "בפסקה הראשונה"],
+              prompt: "What do we learn from paragraph II? -\n\n איפה מחפשים?",
+              options: [
+                "בכותרת",
+                "רק בפסקה II",
+                "בכל הטקסט",
+                "בפסקה הראשונה והשניה כי הראשונה כוללת את הרעיון המרכזי\n",
+              ],
               correctIndex: 1,
               layout: "rows",
               explanation: "paragraph II = רק שם.",

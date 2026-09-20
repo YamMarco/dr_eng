@@ -9,7 +9,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "אני מחפש, לא קורא",
     titleEn: "Mindset",
     required: [],
-    position: { x: 0, y: 540 },
+    position: { x: 0, y: 550 },
     big: false,
     content: {
       preface: [
