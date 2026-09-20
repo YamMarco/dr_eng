@@ -1447,6 +1447,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הסביבה נמצאת בסכנה.",
               hookHe:
                 'נשמע כמו "אנווירונמנט". ומילה ארוכה כמו environmentalists היא environment + ist: מי שאכפת לו מהסביבה. נחזור אליה בסוף.',
+              image: "/vocab-images/word-6abff5e0f2.jpg",
             },
             {
               type: "mcq",
