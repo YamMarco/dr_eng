@@ -597,7 +597,9 @@
 								</label>
 							</div>
 						{:else if screen.type === 'writing-task'}
-							<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+							<div
+								class="sticky bottom-0 z-10 -mx-6 mt-4 space-y-3 border-t-2 border-line bg-canvas px-6 py-3 shadow-[0_-6px_12px_-8px_rgb(0_0_0/0.15)]"
+							>
 								<div class="flex gap-4">
 									<label class="flex items-center gap-2 text-xs text-muted">
 										מינ׳ משפטים
@@ -638,6 +640,8 @@
 										אות ראשונה קטנה = טעות
 									</label>
 								</div>
+							</div>
+							<div class="space-y-3 pt-3">
 								<p class="text-xs font-bold text-muted">בנק מילים</p>
 								<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
 							</div>
