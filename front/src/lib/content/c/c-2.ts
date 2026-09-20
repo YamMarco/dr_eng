@@ -43,8 +43,13 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: '"What do we learn from paragraph II?" - איפה מחפשים?',
-              options: ["בכותרת", "רק בפסקה II", "בכל הטקסט", "בפסקה הראשונה"],
+              prompt: "What do we learn from paragraph II? -\n\n איפה מחפשים?",
+              options: [
+                "בכותרת",
+                "רק בפסקה II",
+                "בכל הטקסט",
+                "בפסקה הראשונה והשניה כי הראשונה כוללת את הרעיון המרכזי\n",
+              ],
               correctIndex: 1,
               layout: "rows",
               explanation: "paragraph II = רק שם.",
