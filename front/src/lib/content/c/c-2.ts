@@ -2501,12 +2501,8 @@ export const c2Lessons: LessonNode[] = [
               ],
             },
             {
-              type: "writing-task",
-              prompt:
-                "כתבו שני משפטים על שינוי סביבתי, עם שלוש מהמילים מהשיעור.",
-              wordBank: ["increase", "reduce", "protect", "destroy", "species"],
-              minSentences: 2,
-              minWordsUsed: 3,
+              type: "preface",
+              text: "**תרגול מסכם** **0/5**\nבחרו את המילה המתאימה ביותר לכל משפט.\n**1.** The government wants to ______ the number of plastic bags used every year.\nA. increaseB. reduceC. destroy\n**2.** National parks help ______ wild animals and their natural habitats.\nA. protectB. increaseC. reduce\n**3.** A large fire can ______ thousands of trees in only a few hours.\nA. protectB. destroyC. increase\n**4.** After the area became cleaner, the number of birds began to ______.\nA. reduceB. destroyC. increase\n**5.** Some animal ______ may disappear if their habitat is damaged.\nA. speciesB. protectC. reduce\n**שימו לב:**אל תתרגמו רק מילה אחת. קראו את כל המשפט ושאלו:\n**מה קורה כאן — עלייה, ירידה, הגנה או הרס?**",
             },
           ],
         },
