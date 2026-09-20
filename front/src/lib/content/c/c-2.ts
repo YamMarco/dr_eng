@@ -2522,7 +2522,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Good **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "**עוד אתגר מהיר **קראו את המשפט:\nGood **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו נסו בלי מילון:\n\nאיזו מילה קשורה ל־**חינוך**?איזו ל־**פיתוח**?איזו ל־**מיומנויות**?איזו ל־**שיפור**?ואיזו ל־**השגת מטרה**?\n\nהמילים האלה חוזרות הרבה בטקסטים על לימודים, עבודה והצלחה.\n\nהמטרה שלנו היא שתראו אותן — ותבינו אותן **מיד**.",
         },
         {
           type: "preface",
