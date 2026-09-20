@@ -10,7 +10,6 @@ import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 
-const COURSE_ID = '4';
 const MODULE_ID = 'c';
 const SECTION_IDS = sectionMeta.map((s) => s.id);
 
@@ -157,19 +156,12 @@ class EditModel {
 		this.dirty = true;
 	}
 
-	/** Collision-checked id for a freshly created node, `<course>-<module>-<6 random
-	 *  chars>` (e.g. `4-c-a3f9k2`) — stable from the start so it can be
-	 *  linked/dragged before anyone bothers naming it. The editor only covers
-	 *  course (unit group) 4, module C for now. */
+	/** Short, collision-checked id for a freshly created node (`c-` + 8 random
+	 *  chars) — stable from the start so it can be linked/dragged before anyone
+	 *  bothers naming it. The editor only covers module C for now. */
 	private shortId(): string {
-		const make = () => {
-			const chars = Array.from(crypto.getRandomValues(new Uint8Array(6)), (b) =>
-				(b % 36).toString(36)
-			);
-			return `${COURSE_ID}-${MODULE_ID}-${chars.join('')}`;
-		};
-		let id = make();
-		while (this.node(id)) id = make();
+		let id = `${MODULE_ID}-${crypto.randomUUID().slice(0, 8)}`;
+		while (this.node(id)) id = `${MODULE_ID}-${crypto.randomUUID().slice(0, 8)}`;
 		return id;
 	}
 
