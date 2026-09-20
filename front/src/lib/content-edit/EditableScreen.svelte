@@ -247,7 +247,9 @@
 		{:else if screen.type === 'writing-task'}
 			<MarkdownInput bare minRows={3} value={screen.prompt} onInput={(v) => set('prompt', v)} />
 			<p class="text-xs text-muted">
-				בנק מילים וחוקים - בסרגל התחתון. בטקסט אפשר לכתוב <code dir="ltr">{'{sentences}'}</code>
+				החוקים ובנק המילים - מתחת לכרטיס (גללו בתוכו). בטקסט אפשר לכתוב <code dir="ltr"
+					>{'{sentences}'}</code
+				>
 				ו-<code dir="ltr">{'{words}'}</code> - יוחלפו במספר המשפטים / המילים.
 			</p>
 		{:else if screen.type === 'question-preview'}
