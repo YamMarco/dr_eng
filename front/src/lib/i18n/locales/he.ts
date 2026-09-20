@@ -45,6 +45,8 @@ export const he = {
 		prefaceTitle: 'תזכורת: הסבר השיעור',
 		prefaceHint: 'זו רק הצצה - ההתקדמות שלך נשמרת והתרגיל ממשיך מאותו מקום.',
 		prefaceBack: 'חזרה לתרגיל',
+		prefacePrev: 'הקודם',
+		prefaceNext: 'הבא',
 		continueButton: 'המשך',
 		doneButton: 'סיום',
 		completeTitle: 'כל הכבוד!',

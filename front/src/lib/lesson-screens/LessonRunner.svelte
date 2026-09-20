@@ -12,6 +12,7 @@
 	import Sheet from '$lib/components/Sheet.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screenComponents } from './registry';
+	import PrefaceRecap from './PrefaceRecap.svelte';
 	import { createLessonSession } from './session.svelte';
 	import { createLessonScore } from './score.svelte';
 	import { isScreenEmpty, countQuestions } from './types';
@@ -138,6 +139,7 @@
 	// bags — is untouched while it's open). Scored screens are left out: the
 	// sheet is read-only.
 	let prefaceOpen = $state(false);
+	let debugOpen = $state(false);
 	let prefaceScreens = $derived(
 		(lesson?.content.preface ?? []).filter((s) => !isScreenEmpty(s) && countQuestions(s) === 0)
 	);
@@ -322,13 +324,7 @@
 		title={i18n.dict.lesson.prefaceTitle}
 		description={i18n.dict.lesson.prefaceHint}
 	>
-		{#each prefaceScreens as prefaceScreen, i (i)}
-			{@const PrefaceComponent = screenComponents[prefaceScreen.type]}
-			<div class="border-b border-line/60 pb-4 last:border-b-0">
-				<PrefaceComponent screen={prefaceScreen} onAdvance={() => {}} />
-			</div>
-		{/each}
-		<Button onclick={() => (prefaceOpen = false)}>{i18n.dict.lesson.prefaceBack}</Button>
+		<PrefaceRecap screens={prefaceScreens} onclose={() => (prefaceOpen = false)} />
 	</Sheet>
 
 	{#if editHref && !justFinished}
@@ -349,29 +345,40 @@
 		<div class="absolute inset-e-4 bottom-24 z-10 flex flex-col items-end gap-1.5">
 			<button
 				type="button"
-				onclick={() => {
-					direction = -1;
-					screenIndex = Math.max(0, screenIndex - 1);
-				}}
-				disabled={screenIndex === 0}
-				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95 disabled:opacity-40"
+				aria-label="כלי דיבוג"
+				aria-expanded={debugOpen}
+				onclick={() => (debugOpen = !debugOpen)}
+				class="flex h-9 w-9 items-center justify-center rounded-full bg-overlay text-base text-white shadow-lg transition active:scale-95"
 			>
-				חזור מסך (דיבוג)
+				🐞
 			</button>
-			<button
-				type="button"
-				onclick={advance}
-				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
-			>
-				דלג על מסך (דיבוג)
-			</button>
-			<button
-				type="button"
-				onclick={hasNextLesson ? onFinishAndContinue : onFinish}
-				class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
-			>
-				דלג על סבב (דיבוג)
-			</button>
+			{#if debugOpen}
+				<button
+					type="button"
+					onclick={() => {
+						direction = -1;
+						screenIndex = Math.max(0, screenIndex - 1);
+					}}
+					disabled={screenIndex === 0}
+					class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95 disabled:opacity-40"
+				>
+					חזור מסך (דיבוג)
+				</button>
+				<button
+					type="button"
+					onclick={advance}
+					class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+				>
+					דלג על מסך (דיבוג)
+				</button>
+				<button
+					type="button"
+					onclick={hasNextLesson ? onFinishAndContinue : onFinish}
+					class="rounded-full bg-overlay px-3 py-1.5 text-xs font-semibold text-white shadow-lg transition active:scale-95"
+				>
+					דלג על סבב (דיבוג)
+				</button>
+			{/if}
 		</div>
 	{/if}
 </div>

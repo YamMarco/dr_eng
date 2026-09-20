@@ -10,6 +10,7 @@
 	let note = $derived(reviewNotes.notes[nodeId] ?? { preface: false, rounds: [], comment: '' });
 	let allDone = $derived(reviewNotes.allRoundsDone(nodeId, roundCount));
 	let expanded = $state(false);
+	let minimized = $state(false);
 
 	// Keeps clicks/drags inside the float from reaching the canvas (node
 	// drag, marquee select).
@@ -24,53 +25,67 @@
 	onpointerdown={stop}
 	ondblclick={stop}
 >
-	<label class="flex cursor-pointer items-center gap-1">
-		<input
-			type="checkbox"
-			checked={note.preface}
-			onchange={() => reviewNotes.togglePreface(nodeId)}
-		/>
-		תקציר
-	</label>
-	<div class="flex items-center gap-1">
-		<label class="flex flex-1 cursor-pointer items-center gap-1 font-bold">
+	<div class="flex items-center justify-between gap-1">
+		<span class="font-bold text-muted">בדיקה</span>
+		<button
+			type="button"
+			class="px-1 text-muted"
+			title={minimized ? 'הרחב' : 'מזער'}
+			aria-expanded={!minimized}
+			onclick={() => (minimized = !minimized)}
+		>
+			{minimized ? '▢' : '—'}
+		</button>
+	</div>
+	{#if !minimized}
+		<label class="flex cursor-pointer items-center gap-1">
 			<input
 				type="checkbox"
-				checked={allDone}
-				onchange={() => reviewNotes.toggleAllRounds(nodeId, roundCount)}
+				checked={note.preface}
+				onchange={() => reviewNotes.togglePreface(nodeId)}
 			/>
-			כל השאלות
+			תקציר
 		</label>
-		{#if roundCount > 1}
-			<button
-				type="button"
-				class="px-0.5 text-muted"
-				title={expanded ? 'כווץ סבבים' : 'הרחב סבבים'}
-				onclick={() => (expanded = !expanded)}
-			>
-				{expanded ? '▾' : '▸'}
-			</button>
-		{/if}
-	</div>
-	{#if roundCount > 1 && expanded}
-		<div class="ms-3 flex flex-col gap-0.5">
-			{#each Array.from({ length: roundCount }) as _, i (i)}
-				<label class="flex cursor-pointer items-center gap-1 text-muted">
-					<input
-						type="checkbox"
-						checked={note.rounds[i] ?? false}
-						onchange={() => reviewNotes.toggleRound(nodeId, i)}
-					/>
-					סבב {i + 1}
-				</label>
-			{/each}
+		<div class="flex items-center gap-1">
+			<label class="flex flex-1 cursor-pointer items-center gap-1 font-bold">
+				<input
+					type="checkbox"
+					checked={allDone}
+					onchange={() => reviewNotes.toggleAllRounds(nodeId, roundCount)}
+				/>
+				כל השאלות
+			</label>
+			{#if roundCount > 1}
+				<button
+					type="button"
+					class="px-0.5 text-muted"
+					title={expanded ? 'כווץ סבבים' : 'הרחב סבבים'}
+					onclick={() => (expanded = !expanded)}
+				>
+					{expanded ? '▾' : '▸'}
+				</button>
+			{/if}
 		</div>
+		{#if roundCount > 1 && expanded}
+			<div class="ms-3 flex flex-col gap-0.5">
+				{#each Array.from({ length: roundCount }) as _, i (i)}
+					<label class="flex cursor-pointer items-center gap-1 text-muted">
+						<input
+							type="checkbox"
+							checked={note.rounds[i] ?? false}
+							onchange={() => reviewNotes.toggleRound(nodeId, i)}
+						/>
+						סבב {i + 1}
+					</label>
+				{/each}
+			</div>
+		{/if}
+		<textarea
+			rows="3"
+			placeholder="הערה…"
+			value={note.comment}
+			oninput={(e) =>
+				reviewNotes.setComment(nodeId, (e.currentTarget as HTMLTextAreaElement).value)}
+			class="w-full resize-y rounded border border-line bg-white px-1.5 py-1 text-sm"></textarea>
 	{/if}
-	<textarea
-		rows="3"
-		placeholder="הערה…"
-		value={note.comment}
-		oninput={(e) => reviewNotes.setComment(nodeId, (e.currentTarget as HTMLTextAreaElement).value)}
-		class="w-full resize-y rounded border border-line bg-white px-1.5 py-1 text-sm"
-	></textarea>
 </div>
