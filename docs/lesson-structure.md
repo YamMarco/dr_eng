@@ -73,7 +73,7 @@ Add an object to the right section's array:
 | `preface` | `text`, `dir?` | — |
 | `steps` | `steps[]`, `ordered?` (true = numbered) | — |
 | `summary` | `title`, `lines[]` | — |
-| `word-card` | `word`, `translationHe?`, `imageAlt?`, `exampleEn?` (`**word**` bolds), `exampleHe?`, `hookHe?` (memory hook) | — |
+| `word-card` | `word`, `translationHe?`, `image?` (site path, 16:9 - set via the editor's crop dialog), `imageAlt?`, `exampleEn?` (`**word**` bolds), `exampleHe?`, `hookHe?` (memory hook) | — |
 | `question-preview` | `intro`, `prompts[]` | — |
 | `timed-reading` | `label`, `text`, `timerKey` | — |
 | `time-result` | `label`, `timerKey` | — |
@@ -103,7 +103,7 @@ sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
 this instead of `writing-task` when the "free" part of an answer is really a
 small closed set (a stance opener, a verb form, a connector word, …), in any
 lesson, so scoring stays a lookup instead of fuzzy-matching typed text.
-`match-pairs`: tap an English word, then its Hebrew meaning; the Hebrew column is
+`match-pairs`: tap an English word and its Hebrew meaning, in either order; the Hebrew column is
 shuffled per mount. One scored question, passes with at most 1 wrong tap; the
 button opens once every pair is matched.
 A round with `retryMissed: true` replays each wrongly-answered scored screen once

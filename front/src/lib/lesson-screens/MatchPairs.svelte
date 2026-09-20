@@ -29,7 +29,8 @@
 
 	// Right column shows the same pairs in a shuffled order (indices into `pairs`).
 	const rightOrder = untrack(() => shuffle(screen.pairs.map((_, i) => i)));
-	let left = $state<number | null>(null);
+	type Side = 'left' | 'right';
+	let selected = $state<{ side: Side; i: number } | null>(null);
 	let matched = $state<number[]>([]);
 	let wrong = $state<{ left: number; right: number } | null>(null);
 	let mistakes = $state(0);
@@ -44,17 +45,19 @@
 		return a.length > 1 && a.every((v, i) => v === i) ? [...a.slice(1), a[0]] : a;
 	}
 
-	function pickLeft(i: number) {
+	// A pair can be started from either column: the first tap selects, a tap on
+	// the other column resolves it, a tap on the same column just moves the pick.
+	function pick(side: Side, i: number) {
 		if (matched.includes(i)) return;
-		left = i;
-		wrong = null;
-	}
-
-	function pickRight(i: number) {
-		if (left === null || matched.includes(i)) return;
-		if (left === i) {
+		if (!selected || selected.side === side) {
+			selected = { side, i };
+			wrong = null;
+			return;
+		}
+		const pair = side === 'left' ? { left: i, right: selected.i } : { left: selected.i, right: i };
+		selected = null;
+		if (pair.left === pair.right) {
 			matched = [...matched, i];
-			left = null;
 			wrong = null;
 			if (matched.length === screen.pairs.length) {
 				recordAnswer(score, mistakes <= MAX_MISTAKES);
@@ -62,8 +65,7 @@
 			}
 		} else {
 			mistakes += 1;
-			wrong = { left, right: i };
-			left = null;
+			wrong = pair;
 		}
 	}
 
@@ -83,12 +85,12 @@
 			<button
 				type="button"
 				disabled={done}
-				onclick={() => pickLeft(i)}
+				onclick={() => pick('left', i)}
 				class="rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
 					? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
 					: done
 						? 'border-brand bg-brand-soft text-brand-dark opacity-60'
-						: left === i
+						: selected?.side === 'left' && selected.i === i
 							? 'border-brand bg-brand-soft/60'
 							: 'border-line bg-surface hover:border-brand'}"
 			>
@@ -103,12 +105,14 @@
 			<button
 				type="button"
 				disabled={done}
-				onclick={() => pickRight(i)}
+				onclick={() => pick('right', i)}
 				class="rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
 					? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
 					: done
 						? 'border-brand bg-brand-soft text-brand-dark opacity-60'
-						: 'border-line bg-surface hover:border-brand'}"
+						: selected?.side === 'right' && selected.i === i
+							? 'border-brand bg-brand-soft/60'
+							: 'border-line bg-surface hover:border-brand'}"
 			>
 				{screen.pairs[i].he}
 			</button>

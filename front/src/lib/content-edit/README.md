@@ -58,6 +58,14 @@ it's QA scratch state, not curriculum content, so it never touches
   numbers, mode, timer keys), **🗑 מחיקת המסך**, and a **JSON** escape hatch —
   no popup, no separate panel. Reuses the `fields/*` building blocks.
 
+**Word-card image** — `WordImageField.svelte` sits on the word-card canvas with
+add / replace / delete controls (top-right). Picking a file opens
+`ImageCropper.svelte` (drag / zoom / rotate under a 16:9 frame, same shape as
+the player's `WordImage`); accepting POSTs the cropped JPEG to
+`/api/content-edit/image`, which stores it as `static/vocab-images/word-<hash>.jpg`
+(disk in dev, a GitHub commit in production - live after the next deploy) and
+the screen keeps its path in `image`. Delete only clears the field.
+
 Prose is stored as markdown, rendered at runtime by
 `src/lib/lesson-screens/miniMarkdown.ts` (not part of this folder).
 `screenTypeNames.ts` holds the Hebrew name per screen type (used by both the

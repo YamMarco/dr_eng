@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Image, Volume2 } from '@lucide/svelte';
+	import { Volume2 } from '@lucide/svelte';
 	import type { WordCardScreen } from './types';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { mdBlock, mdInline } from './miniMarkdown';
+	import WordImage from './WordImage.svelte';
 
 	// Not scored — pure teaching, like preface/summary — so disabled/label
 	// are write-only here (never overridden): the runner reads them through
@@ -27,10 +28,7 @@
 </script>
 
 <div class="flex flex-col items-center text-center">
-	<div class="flex h-40 w-full items-center justify-center rounded-3xl bg-accent-soft text-ink/40">
-		<!-- Placeholder — a real image per word comes later. -->
-		<Image size={48} aria-hidden="true" />
-	</div>
+	<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
 
 	<div class="mt-5 flex items-center gap-2" dir="ltr">
 		<p class="text-3xl font-extrabold">{screen.word}</p>

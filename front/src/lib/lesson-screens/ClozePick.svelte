@@ -50,7 +50,9 @@
 <ScoreBadge {score} />
 
 <p class="leading-relaxed font-semibold" dir="ltr">
-	{#if selected !== null}<Md text={screen.options[selected]} />{:else}___{/if}
+	{#if selected !== null}<span class="rounded-md bg-brand-soft px-1 text-brand-dark"
+			><Md text={screen.options[selected]} /></span
+		>{:else}___{/if}
 	<Md text={screen.clause} />
 </p>
 

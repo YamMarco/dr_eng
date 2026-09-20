@@ -31,6 +31,18 @@ export function rememberContentEditPassword(password: string) {
 	}
 }
 
+/** Stores a cropped JPEG and returns the site path to reference from a screen. */
+export async function uploadImage(jpeg: Blob): Promise<string> {
+	const key = storedKey();
+	const res = await fetch('/api/content-edit/image', {
+		method: 'POST',
+		headers: { 'content-type': 'image/jpeg', ...(key ? { 'x-content-edit-key': key } : {}) },
+		body: jpeg
+	});
+	if (!res.ok) throw new Error(await res.text());
+	return (await res.json()).url;
+}
+
 async function post(body: unknown): Promise<{ ok: true; committed: boolean }> {
 	const key = storedKey();
 	const res = await fetch('/api/content-edit', {

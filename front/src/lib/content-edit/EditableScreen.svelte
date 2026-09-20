@@ -8,6 +8,7 @@
 	import MarkdownInput from './MarkdownInput.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import type { ScreenPath } from './screenPath';
+	import WordImageField from './WordImageField.svelte';
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let { nodeId, path }: { nodeId: string; path: ScreenPath } = $props();
 
@@ -285,6 +286,11 @@
 				+ שאלה
 			</button>
 		{:else if screen.type === 'word-card'}
+			<WordImageField
+				src={screen.image}
+				alt={screen.imageAlt || screen.word}
+				onChange={(url) => set('image', url)}
+			/>
 			<div class="rounded-2xl border border-line bg-surface/70 p-4 text-center">
 				<MarkdownInput
 					bare

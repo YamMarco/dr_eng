@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import prettier from 'prettier';
 import { getLesson } from '$lib/content';
+import { checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
 import type { RequestHandler } from './$types';
 
@@ -43,12 +44,6 @@ type Body =
 			lessonId?: undefined;
 			content?: undefined;
 	  };
-
-function checkAuth(request: Request): boolean {
-	if (dev) return true;
-	const key = request.headers.get('x-content-edit-key');
-	return !!key && !!env.CONTENT_EDIT_PASSWORD && key === env.CONTENT_EDIT_PASSWORD;
-}
 
 /** Everything up to and including the array literal's opening `[`. */
 function splitHead(raw: string): string {

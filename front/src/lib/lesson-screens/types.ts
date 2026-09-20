@@ -150,7 +150,9 @@ export type WordCardScreen = {
 	type: 'word-card';
 	word: string;
 	translationHe?: string;
-	/** Alt text for the (placeholder) image — falls back to the word itself. */
+	/** Site path of the picture (e.g. `/vocab-images/word-ab12.jpg`), 16:9. Placeholder when absent. */
+	image?: string;
+	/** Alt text for the image — falls back to the word itself. */
 	imageAlt?: string;
 	/** One memory hook (cognate, word family, sound-alike...), shown under the translation. */
 	hookHe?: string;

@@ -9,6 +9,7 @@ import { env } from '$env/dynamic/private';
 import { error, json } from '@sveltejs/kit';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
 import type { RequestHandler } from './$types';
 
@@ -17,12 +18,6 @@ const GITHUB_PATH = `front/${REL_PATH}`;
 
 type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 type ReviewNotes = Record<string, ReviewNote>;
-
-function checkAuth(request: Request): boolean {
-	if (dev) return true;
-	const key = request.headers.get('x-content-edit-key');
-	return !!key && !!env.CONTENT_EDIT_PASSWORD && key === env.CONTENT_EDIT_PASSWORD;
-}
 
 export const GET: RequestHandler = async ({ request }) => {
 	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');

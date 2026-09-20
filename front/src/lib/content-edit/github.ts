@@ -27,11 +27,12 @@ export async function getGithubFile(path: string): Promise<{ content: string; sh
 }
 
 /** Commits `content` as the new version of `path`; throws (with "409" in the
- *  message) if `sha` is stale — the caller decides whether to retry. */
+ *  message) if `sha` is stale — the caller decides whether to retry. Omit `sha`
+ *  to create a new file (throws with "422" if it already exists). */
 export async function putGithubFile(
 	path: string,
-	content: string,
-	sha: string,
+	content: string | Buffer,
+	sha: string | undefined,
 	message: string
 ): Promise<void> {
 	const branch = env.GITHUB_BRANCH || 'main';
@@ -40,7 +41,9 @@ export async function putGithubFile(
 		headers: { ...ghHeaders(), 'content-type': 'application/json' },
 		body: JSON.stringify({
 			message,
-			content: Buffer.from(content, 'utf8').toString('base64'),
+			content: (typeof content === 'string' ? Buffer.from(content, 'utf8') : content).toString(
+				'base64'
+			),
 			sha,
 			branch
 		})
