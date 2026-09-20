@@ -9,7 +9,8 @@ export const he = {
 		mainNav: 'ניווט ראשי',
 		home: 'בית',
 		book: 'תיאום שיעור',
-		settings: 'הגדרות'
+		settings: 'הגדרות',
+		anotherUnit: 'יחידה נוספת'
 	},
 	appTitle: 'בגרות באנגלית — תרגול',
 	home: {

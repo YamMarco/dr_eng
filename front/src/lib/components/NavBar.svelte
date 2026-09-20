@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { Images } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	let items = $derived([
@@ -7,19 +8,31 @@
 			href: '/',
 			label: i18n.dict.nav.home,
 			match: (path: string) => path === '/' || path.startsWith('/unit'),
-			icon: 'home'
+			icon: 'home',
+			external: false
 		},
 		{
 			href: '/book',
 			label: i18n.dict.nav.book,
 			match: (path: string) => path.startsWith('/book'),
-			icon: 'book'
+			icon: 'book',
+			external: false
 		},
 		{
 			href: '/settings',
 			label: i18n.dict.nav.settings,
 			match: (path: string) => path.startsWith('/settings'),
-			icon: 'settings'
+			icon: 'settings',
+			external: false
+		},
+		{
+			// A static page outside the SvelteKit router (see scripts/vocab-images.mjs),
+			// so it needs a full page load.
+			href: '/vocab-images/index.html',
+			label: i18n.dict.nav.anotherUnit,
+			match: () => false,
+			icon: 'images',
+			external: true
 		}
 	] as const);
 
@@ -102,6 +115,7 @@
 			{@const active = item.match(path)}
 			<a
 				href={item.href}
+				data-sveltekit-reload={item.external ? '' : undefined}
 				aria-current={active ? 'page' : undefined}
 				class="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 py-2 text-xs font-semibold transition active:scale-95 {active
 					? 'text-brand-dark'
@@ -112,6 +126,8 @@
 						{@render homeIcon(active)}
 					{:else if item.icon === 'book'}
 						{@render bookIcon(active)}
+					{:else if item.icon === 'images'}
+						<Images size={24} aria-hidden="true" />
 					{:else}
 						{@render settingsIcon(active)}
 					{/if}
