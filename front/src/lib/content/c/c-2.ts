@@ -17,7 +17,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n**What do we learn** from **paragraph III** about Ethiopia?\n**According to** Dr. Diallo, why do most trees die? **Give ONE answer.**\n**Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן ההוראות שלנו.\nהן אומרות לנו:**איפה לחפש** את התשובה,**של מי המידע**,ו-**כמה תשובות** צריך לכתוב.\n",
+          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.קראו את שלוש השאלות:**What do we learn** from **paragraph III** about Ethiopia?**According to** Dr. Diallo, why do most trees die? **Give ONE answer.****Give TWO answers**: how did the area change?המילים המודגשות הן לא סתם חלק מהשאלה.הן **הוראות ניווט**.הן אומרות לנו:**איפה לחפש** את התשובה,**של מי המידע** שצריך למצוא,ו־**כמה תשובות** צריך לכתוב.אם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט — ועדיין לענות לא נכון.לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים:**איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
         },
         {
           type: "preface",
