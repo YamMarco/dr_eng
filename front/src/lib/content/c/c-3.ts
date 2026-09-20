@@ -15,7 +15,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\nלא כתיב.לא דקדוק.\n**לא לענות על השאלה.**\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n**YES — אני בעד.**או**NO — אני נגד.**\nתלמיד שכותב:\n**“Volunteering is good and important.”**\nעדיין לא באמת הביע דעה. הוא רק תיאר את הנושא.\nהמורה רוצה להבין מיד:\n**מה אתם חושבים?**\nורק אחרי זה מגיע השלב הבא:\n**למה אתם חושבים כך?**\nהסדר הוא פשוט:\n**דעה → סיבה → הסבר**",
+          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\nלא כתיב.לא דקדוק. **אלא לא לענות על השאלה.**\n\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n\n**YES — אני בעד.**או **NO — אני נגד.**\n\nתלמיד שכותב:\n**“Volunteering is good”**\n\nעדיין לא באמת הביע דעה. הוא רק תיאר את הנושא.\nהמעריך בבחינת הבגרות רוצה לקרוא: \n\n**מה אתם חושבים?**\n\n**למה אתם חושבים כך?**\n",
         },
         {
           type: "preface",
@@ -325,7 +325,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ "I think students should volunteer because it teaches responsibility.\nIn addition, it teaches them to be responsible."\n\nזו אותה סיבה פעמיים. המורה מוריד נקודות על זה.\n\n✅ "I think students should volunteer because it teaches responsibility.\nIn addition, it gives them experience that helps them find jobs later."\n\nשתי סיבות שונות = ציון תוכן גבוה.',
+          text: "{d:ltr}❌ **I think students should volunteer because it teaches responsibility.**\n{d:ltr}**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
         },
         {
           type: "summary",
