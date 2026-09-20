@@ -2176,11 +2176,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע הבא:  \n\nPollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nהמילים המודגשות הן מילות תוכן. כמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.\n\n",
+          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",
-          text: "חמש מילים חשובות בנושא **שינוי וסביבה**: המילים האלה חוזרות הרבה בטקסטים על סביבה, בעלי חיים ואקלים.\n\nכאן חשוב להבין לא רק את משמעות המילה, אלא גם את \n\n**הכיוון שלה**:\n\n**עלייה או ירידה? שיפור או פגיעה? שמירה או הרס?**\n\nאחרי כל מילה יחכה לכם תרגול קצר, כדי לוודא שלא רק קראתם אותה — אלא באמת למדתם לזהות אותה בתוך טקסט.",
+          text: "חמש מילים על **שינוי וסביבה**: מה עולה, מה יורד, מה מוגן ומה נהרס.\n\nהן חוזרות בכל טקסט על סביבה, בעלי חיים ואקלים, ולכיוון של המילה יש משמעות: עלייה או ירידה. כל מילה מגיעה עם תרגילים מיד אחריה.",
         },
       ],
       rounds: [
@@ -2465,20 +2465,21 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\nIII  After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
+              text: "**I**  Every year, forests around the world are destroyed by fire, farming and pollution.\n\n**II ** In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\n**III ** After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
               questions: [
                 {
                   prompt: "What destroys forests every year?",
                   options: [
                     "Fire, farming and pollution",
                     "Only rain",
-                    "Tourists",
+                    "Pollution\n",
                     "Old trees",
                   ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What does the project aim to do?",
+                  prompt:
+                    "What does the project aim to do?\nTo___________________________",
                   options: [
                     "Protect forests and increase the number of animals",
                     "Stop scientists",
