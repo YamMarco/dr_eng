@@ -9,7 +9,7 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "YES or NO - לומר עמדה",
     titleEn: "YES or NO",
     required: ["n-7c5330b8"],
-    position: { x: 0, y: 2240 },
+    position: { x: 20, y: 2280 },
     big: false,
     content: {
       preface: [
@@ -76,10 +76,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "סיבוב 2 | עוד תרגול בזיהוי עמדה ברורה",
-            },
+            { type: "preface", text: "סיבוב 2 | עוד תרגול בזיהוי עמדה ברורה" },
             {
               type: "mcq",
               prompt:
@@ -108,10 +105,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. שאר האפשרויות מתארות או נמנעות מהכרעה.',
             },
-            {
-              type: "preface",
-              text: "לחצו על המילה שהופכת את המשפט ל-NO.",
-            },
+            { type: "preface", text: "לחצו על המילה שהופכת את המשפט ל-NO." },
             {
               type: "mark-word",
               sentence:
@@ -1497,6 +1491,24 @@ export const c3Lessons: LessonNode[] = [
           ],
         },
       ],
+    },
+  },
+  {
+    id: "c-a45c17de",
+    section: "c-3",
+    titleHe: "שיעור חדש",
+    required: [],
+    position: { x: 30, y: 2210 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: 'ועכשיו עוברים לחלק שהרבה תלמידים קצת נלחצים ממנו:\n**הכתיבה.**\n\nאבל לפני שמתחילים, חשוב לדעת דבר אחד:\nלא צריך לכתוב אנגלית "מושלמת".\nצריך לדעת **לבנות תשובה נכונה, ברורה ומסודרת**.\nבחלק הזה נלמד את זה שלב אחרי שלב:\n\nאיך מתחילים,איך בונים משפטים,איך מחברים בין רעיונות,ואיך בודקים שלא שכחנו משהו חשוב.\n\n**המטרה שלנו: להפוך את הכתיבה ממשהו מלחיץ — למשהו שיש לו שיטה.**',
+        },
+        { type: "preface", text: "" },
+      ],
+      rounds: [{ screens: [] }],
     },
   },
 ];
