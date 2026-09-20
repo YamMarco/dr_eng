@@ -2465,20 +2465,21 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\nIII  After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
+              text: "**I**  Every year, forests around the world are destroyed by fire, farming and pollution.\n\n**II ** In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\n**III ** After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
               questions: [
                 {
                   prompt: "What destroys forests every year?",
                   options: [
                     "Fire, farming and pollution",
                     "Only rain",
-                    "Tourists",
+                    "Pollution\n",
                     "Old trees",
                   ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What does the project aim to do?",
+                  prompt:
+                    "What does the project aim to do?\nTo___________________________",
                   options: [
                     "Protect forests and increase the number of animals",
                     "Stop scientists",
@@ -4114,35 +4115,16 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "שאלה אחת לפני שמתחילים:\n**מה יכול להפיל תשובה נכונה, גם כשכבר הבנתם על מה הטקסט מדבר?**\nלפעמים זאת פשוט **מילה אחת שלא הכרתם או כזאת שחשבתם שאתם מבינים.**\n\nב־Module C, אוצר מילים הוא לא תוספת — הוא חלק מהדרך להבין את הטקסט ולמצוא את התשובה.\n\nאז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n**לומדים את המילים שצריך להכיר.**\n\nאל תדאגו — לא צריך ללמוד הכול ביום אחד.קצת בכל יום, והמילים מתחילות להישאר.",
+          text: "שאלה אחת לפני שמתחילים:\n\n**מה יכול להפיל תשובה נכונה, גם כשכבר הבנתם על מה הטקסט מדבר?**\n\nלפעמים זאת פשוט **מילה אחת שלא הכרתם או כזאת שחשבתם שאתם מבינים.**\n\nחשוב מאוד שתבינו ש ב־Module C, אוצר מילים הוא לא תוספת — הוא חלק מהדרך להבין את הטקסט ולמצוא את התשובה.\n\nאז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n**לומדים את המילים שצריך להכיר.**\n",
         },
         {
           type: "preface",
-          text: "**יש מילון בבחינה — אבל יש גם שעון.**\nהמילון יכול לעזור כשנתקלים במילה אחת שלא מכירים.אבל אם כמעט בכל שורה צריך לעצור ולחפש מילה, מאבדים זמן — וגם את הרצף של הטקסט.\nויש עוד בעיה: למילה אחת במילון יכולות להיות כמה משמעויות. מי שכבר מכיר את המילה, אפילו חלקית, יזהה הרבה יותר מהר איזו משמעות מתאימה לטקסט.\nלכן לא צריך ללמוד את כל האנגלית מחדש.\nצריך לבנות **מינימום חכם**:רשימה קצרה של מילים שחוזרות שוב ושוב ב־Module C, ושכדאי לזהות מיד — בלי לפתוח מילון.\n**פחות חיפושים. יותר זמן להבין ולענות.**",
+          text: "**אבל רגע, למה צריך את זה בכלל? הרי יש מילון בבחינה **\n\n**נכון מאוד אבל יש גם שעון שמתקתק!**\n\nהמילון יכול לעזור כשנתקלים במילה אחת שלא מכירים. אבל אם כמעט בכל שורה צריך לעצור ולחפש מילה,** מאבדים זמן** — וגם** את הרצף** של הטקסט.\n\nויש עוד **בעיה**: למילה אחת במילון יכולות להיות כמה **משמעויות**. \n\nאז מי שכבר מכיר את המילה, אפילו חלקית, יזהה הרבה יותר מהר איזו משמעות מתאימה לטקסט.\n\nלכן לא צריך ללמוד את כל האנגלית מחדש.\n\nצריך לבנות **מינימום חכם בזיכרון שלנו**:רשימה קצרה של מילים שחוזרות שוב ושוב ב־Module C, ושכדאי לזהות מיד — בלי לפתוח מילון.\n\n**אז בקיצור: פחות חיפושים. יותר זמן להבין ולענות ולהרוויח נקודות! **",
         },
         {
           type: "preface",
-          text: "ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n**1. מילות תוכן**מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n**2. מילות ניווט**מילים שעוזרות לעקוב אחרי הכיוון של הטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n**3. מילות שאלה**מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n",
+          text: "ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n**1. מילות תוכן: **מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n**2. מילות ניווט: **מילים שעוזרות לעקוב אחרי הכיוון של הטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n**3. מילות שאלה: **מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n\nבואו נתחיל",
         },
-        {
-          type: "preface",
-          text: "לא צריך לדעת כל מילה באנגלית.\n\nצריך לדעת לזהות את המילים שעושות את העבודה.\n\nבואו נתחיל",
-        },
-        { type: "preface", text: "" },
-        { type: "preface", text: "" },
-        { type: "preface", text: "" },
-        { type: "preface", text: "" },
-        {
-          type: "summary",
-          title: "שלוש קבוצות מילים",
-          lines: [
-            "❓ **מילות שאלה** - ההוראות שבשאלה: לאן ללכת, כמה לענות ואיך.",
-            "🧭 **מילות ניווט** - however, in addition, for example: הן מראות לאן הטקסט הולך, ולפעמים איפה התשובה.",
-            "📖 **מילות תוכן** - מילות הנושאים של המודול: קהילה, מחקר, סביבה, חינוך, בריאות.",
-          ],
-        },
-        { type: "preface", text: "" },
-        { type: "preface", text: "" },
       ],
       rounds: [{ screens: [] }],
     },
