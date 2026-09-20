@@ -143,10 +143,10 @@
  },
  {
   "word": "researchers",
-  "url": "https://images.rawpixel.com/image_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkNThiYXRjaDEtMjA2MzYtY2hpbS5qcGc.jpg",
-  "page": "https://www.rawpixel.com/image/2282498/free-photo-image-science-laboratory-hospital",
-  "license": "CC0",
-  "creator": "Centers for Disease Control and Prevention"
+  "page": "https://pixabay.com/images/id-2141259/",
+  "license": "Pixabay License",
+  "manual": true,
+  "download": "https://pixabay.com/images/download/x-2141259_1920.jpg"
  },
  {
   "word": "affect",
@@ -178,10 +178,10 @@
  },
  {
   "word": "protect",
-  "url": "https://cdn.stocksnap.io/img-thumbs/960w/MIFDXUR2VY.jpg",
-  "page": "https://stocksnap.io/photo/umbrellas-sky-MIFDXUR2VY",
-  "license": "CC0",
-  "creator": "Adrianna Calvo"
+  "page": "https://pixabay.com/images/id-10156021/",
+  "license": "Pixabay License",
+  "manual": true,
+  "download": "https://pixabay.com/images/download/x-10156021_1920.jpg"
  },
  {
   "word": "destroy",
@@ -192,10 +192,10 @@
  },
  {
   "word": "species",
-  "url": "https://live.staticflickr.com/5179/5425719548_eab7d6951b_b.jpg",
-  "page": "https://www.flickr.com/photos/49208525@N08/5425719548",
-  "license": "Public Domain",
-  "creator": "U.S. Fish and Wildlife Service - Midwest Region"
+  "page": "https://pixabay.com/images/id-3715734/",
+  "license": "Pixabay License",
+  "manual": true,
+  "download": "https://pixabay.com/images/download/x-3715734_1920.jpg"
  },
  {
   "word": "improve",
@@ -274,8 +274,10 @@
  },
  {
   "word": "encourage",
-  "url": null,
-  "note": "no good match found"
+  "manual": true,
+  "page": "https://pixabay.com/images/id-7437534/",
+  "license": "Pixabay License",
+  "download": "https://pixabay.com/images/download/x-7437534_1920.jpg"
  },
  {
   "word": "support",
@@ -286,16 +288,16 @@
  },
  {
   "word": "society",
-  "url": "https://live.staticflickr.com/6005/6199719210_3dba9a7aff_b.jpg",
-  "page": "https://www.flickr.com/photos/27865228@N06/6199719210",
-  "license": "Public Domain",
-  "creator": "david_shankbone"
+  "page": "https://pixabay.com/images/id-400811/",
+  "license": "Pixabay License",
+  "manual": true,
+  "download": "https://pixabay.com/images/download/x-400811_1920.jpg"
  },
  {
   "word": "health / healthy",
-  "url": "https://live.staticflickr.com/8020/7189883839_df70166882_b.jpg",
-  "page": "https://www.flickr.com/photos/61021753@N02/7189883839",
-  "license": "Public Domain",
-  "creator": "BioDivLibrary"
+  "page": "https://pixabay.com/images/id-2604149/",
+  "license": "Pixabay License",
+  "manual": true,
+  "download": "https://pixabay.com/images/download/x-2604149_1920.jpg"
  }
 ]

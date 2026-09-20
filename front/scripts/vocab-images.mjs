@@ -33,8 +33,8 @@ const esc = (s) =>
 const fileByUrl = new Map();
 let failed = 0;
 for (const e of entries) {
-	if (!e.url) continue;
-	if (fileByUrl.has(e.url)) {
+	if (!e.url && !e.manual) continue;
+	if (e.url && fileByUrl.has(e.url)) {
 		e.file = fileByUrl.get(e.url);
 		continue;
 	}
@@ -42,7 +42,9 @@ for (const e of entries) {
 	const known = ['jpg', 'png', 'webp', 'gif'].map((x) => `${base}.${x}`);
 	let file;
 	for (const k of known) if (await exists(path.join(outDir, k))) file = k;
-	if (!file) {
+	// `manual` entries (Pixabay: its download links reject scripts) are never
+	// fetched - save the file by hand as static/vocab-images/<slug>.jpg.
+	if (!file && e.url) {
 		try {
 			const res = await fetch(e.url, { headers: { 'User-Agent': UA } });
 			if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -56,7 +58,7 @@ for (const e of entries) {
 		}
 	}
 	e.file = file;
-	if (file) fileByUrl.set(e.url, file);
+	if (file && e.url) fileByUrl.set(e.url, file);
 }
 
 const cards = entries
@@ -64,8 +66,8 @@ const cards = entries
 		e.file
 			? `<figure><a href="${esc(e.file)}" download><img src="${esc(e.file)}" alt="${esc(e.word)}" loading="lazy"></a>
 <figcaption><b>${esc(e.word)}</b><span>${esc(e.license)} · <a href="${esc(e.page)}" target="_blank" rel="noopener">source</a></span></figcaption></figure>`
-			: `<figure class="none"><div>${e.url ? 'download failed' : 'no image'}</div>
-<figcaption><b>${esc(e.word)}</b><span>${esc(e.note ?? '')}</span></figcaption></figure>`
+			: `<figure class="none"><div>${e.manual ? `save as ${slug(e.word)}.jpg` : e.url ? 'download failed' : 'no image'}</div>
+<figcaption><b>${esc(e.word)}</b><span>${e.manual ? `<a href="${esc(e.download)}" target="_blank" rel="noopener">download</a> · ` : ''}${esc(e.note ?? '')}</span></figcaption></figure>`
 	)
 	.join('\n');
 
