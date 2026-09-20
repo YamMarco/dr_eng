@@ -2522,7 +2522,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "**עוד אתגר מהיר **קראו את המשפט:\nGood **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו נסו בלי מילון:\n\nאיזו מילה קשורה ל־**חינוך**?איזו ל־**פיתוח**?איזו ל־**מיומנויות**?איזו ל־**שיפור**?ואיזו ל־**השגת מטרה**?\n\nהמילים האלה חוזרות הרבה בטקסטים על לימודים, עבודה והצלחה.\n\nהמטרה שלנו היא שתראו אותן — ותבינו אותן **מיד**.",
+          text: "קראו את הקטע:\n\nGood **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו בדקו את עצמכם:\n\nהאם אתם מבינים מיד את כל חמש המילים המודגשות — בלי מילון ובלי לעצור?\n\nאם יש אפילו מילה אחת שגרמה לכם להסס, זה בדיוק המקום לחזק אותה.\n\nבסוף החלק הזה, המטרה היא שכל חמש המילים יהיו לכם **אוטומטיות**.",
         },
         {
           type: "preface",
