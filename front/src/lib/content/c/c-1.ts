@@ -563,7 +563,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"Why did this occur in 2019?" - המילה occur לא ברורה. צבע ופעולה?',
+                '"Why did this occur in 2019?" - \n\nהמילה occur לא ברורה. צבע ופעולה?',
               options: [
                 "🟢 עונים מיד",
                 "🟡 מילון, 30 שניות",
@@ -708,7 +708,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt: 'תלמיד קרא שאלה, "הבין", ענה - וקיבל 0. מה כנראה קרה?',
               modelAnswer:
-                "הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.",
+                "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
             },
           ],
         },
