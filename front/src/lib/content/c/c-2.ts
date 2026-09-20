@@ -17,7 +17,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'לפני שמחפשים תשובה בטקסט, צריך להבין **מה השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n**What do we learn** from **paragraph III** about Ethiopia?**According to** Dr. Diallo, why do most trees die? **Give ONE answer.****Give TWO answers**: how did the area change?\nהמילים המודגשות הן ההוראות שלנו.\nהן אומרות לנו:**איפה לחפש** את התשובה,**של מי המידע**,ו-**כמה תשובות** צריך לכתוב.\nלמשל:\n**paragraph III** → חפשו בפסקה 3**According to Dr. Diallo** → חפשו מה ד"ר דיאלו אומר**Give ONE answer** → כתבו תשובה אחת בלבד**Give TWO answers** → כתבו שתי תשובות\nאז לפני שאתם רצים לטקסט, עצרו לשנייה ושאלו:\n**איפה אני צריך לחפש, וכמה אני צריך לענות?**',
+          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n**What do we learn** from **paragraph III** about Ethiopia?\n**According to** Dr. Diallo, why do most trees die? **Give ONE answer.**\n**Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן ההוראות שלנו.\nהן אומרות לנו:**איפה לחפש** את התשובה,**של מי המידע**,ו-**כמה תשובות** צריך לכתוב.\n",
+        },
+        {
+          type: "preface",
+          text: 'למשל:\nparagraph III → חפשו בפסקה 3According to Dr. Diallo → חפשו מה ד"ר דיאלו אומרGive ONE answer → כתבו תשובה אחת בלבדGive TWO answers → כתבו שתי תשובות\nאז לפני שאתם רצים לטקסט, עצרו לשנייה ושאלו:\nאיפה אני צריך לחפש, וכמה אני צריך לענות?',
         },
         {
           type: "preface",
