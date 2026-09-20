@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SummaryScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import { mdBlock } from './miniMarkdown';
 
 	let {
@@ -22,7 +23,7 @@
 </script>
 
 <div class="rounded-3xl bg-brand-soft p-5 ring-1 ring-brand/20">
-	<h2 class="text-lg font-bold text-brand-dark">{screen.title}</h2>
+	<h2 class="text-lg font-bold text-brand-dark"><Md text={screen.title} /></h2>
 	<ul class="mt-3 flex flex-col gap-2 text-sm leading-relaxed">
 		{#each screen.lines as line (line)}
 			<li class="flex gap-1.5">

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { TimeResultScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import { getLessonSession } from './session.svelte';
 
 	let {
@@ -25,6 +26,6 @@
 </script>
 
 <div class="flex flex-col items-center pt-6 text-center">
-	<p class="text-lg font-semibold">{screen.label}</p>
+	<p class="text-lg font-semibold"><Md text={screen.label} /></p>
 	<p class="mt-2 text-3xl font-extrabold text-brand-dark tabular" dir="ltr">{seconds}s</p>
 </div>

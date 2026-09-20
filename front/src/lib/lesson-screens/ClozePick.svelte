@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ClozePickScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -49,8 +50,8 @@
 <ScoreBadge {score} />
 
 <p class="leading-relaxed font-semibold" dir="ltr">
-	{selected !== null ? screen.options[selected] : '___'}
-	{screen.clause}
+	{#if selected !== null}<Md text={screen.options[selected]} />{:else}___{/if}
+	<Md text={screen.clause} />
 </p>
 
 <div class="mt-5 flex flex-wrap gap-2" dir="ltr">
@@ -77,7 +78,7 @@
 					? 'border-brand bg-brand-soft/60'
 					: 'border-line bg-surface hover:border-brand'}"
 		>
-			{option}
+			<Md text={option} />
 		</button>
 	{/each}
 </div>
@@ -85,6 +86,6 @@
 {#if checked && screen.explanation}
 	<div class="mt-4 rounded-2xl bg-accent-soft p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.exerciseKind.answerKeyLabel}</p>
-		<p class="leading-relaxed" dir="auto">{screen.explanation}</p>
+		<p class="leading-relaxed" dir="auto"><Md text={screen.explanation} /></p>
 	</div>
 {/if}

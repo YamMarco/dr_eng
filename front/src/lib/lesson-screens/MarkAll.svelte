@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
+	import Md from '$lib/components/Md.svelte';
 	import { backOut } from 'svelte/easing';
 	import type { MarkAllScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
@@ -98,7 +99,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markAll} />
 <ScoreBadge {score} />
 <div class="mb-3 flex items-center justify-between gap-3">
-	<p class="font-semibold">{screen.instruction}</p>
+	<p class="font-semibold"><Md text={screen.instruction} /></p>
 	{#if screen.timerKey}
 		<span
 			class="shrink-0 rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"

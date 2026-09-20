@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import Md from '$lib/components/Md.svelte';
 	import type { WritingTaskScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
@@ -84,7 +85,7 @@
 <ScoreBadge {score} />
 <div class="leading-relaxed font-semibold">
 	{#each prompt.split('\n') as line, i (i)}
-		<p dir="auto">{line}</p>
+		<p dir="auto"><Md text={line} /></p>
 	{/each}
 </div>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { TimedReadingScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import { getLessonSession } from './session.svelte';
 
 	let {
@@ -40,7 +41,7 @@
 </script>
 
 <div class="flex items-center justify-between">
-	<span class="font-semibold text-muted">{screen.label}</span>
+	<span class="font-semibold text-muted"><Md text={screen.label} /></span>
 	<span
 		class="rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"
 		dir="ltr"
@@ -48,4 +49,4 @@
 		{((now - startedAt) / 1000).toFixed(1)}s
 	</span>
 </div>
-<p class="mt-4 leading-relaxed whitespace-pre-line">{screen.text}</p>
+<p class="mt-4 leading-relaxed whitespace-pre-line"><Md text={screen.text} /></p>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import Md from '$lib/components/Md.svelte';
 	import type { PassageQuizScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
@@ -63,14 +64,14 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
-<p class="leading-relaxed whitespace-pre-line" dir="ltr">{screen.text}</p>
+<p class="leading-relaxed whitespace-pre-line" dir="ltr"><Md text={screen.text} /></p>
 
 <div class="mt-6 flex flex-col gap-5">
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
 			<p class="leading-relaxed font-semibold">
-				{question.prompt}
+				<Md text={question.prompt} />
 				{#if question.points}
 					<span class="text-sm font-normal text-muted">({question.points} נק')</span>
 				{/if}
@@ -87,7 +88,7 @@
 					: 'border-line bg-surface focus:border-brand'}"
 			/>
 			{#if checked && !correct}
-				<p class="mt-1 text-sm text-muted">התשובה: {question.answerHint}</p>
+				<p class="mt-1 text-sm text-muted">התשובה: <Md text={question.answerHint} /></p>
 			{/if}
 		</div>
 	{/each}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
+	import Md from '$lib/components/Md.svelte';
 	import { backOut } from 'svelte/easing';
 	import type { McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
@@ -82,7 +83,7 @@
 	     would otherwise inherit one block direction and align the "wrong"
 	     language's line to the wrong edge. -->
 	{#each screen.prompt.split('\n') as line, i (i)}
-		<p dir="auto">{line}</p>
+		<p dir="auto"><Md text={line} /></p>
 	{/each}
 </div>
 
@@ -124,7 +125,7 @@
 						? 'bg-brand-soft text-brand-dark'
 						: 'bg-surface text-ink drop-shadow-[0_1px_2px_rgba(0,0,0,0.12)] hover:bg-brand-soft/50'}"
 			>
-				{option}
+				<Md text={option} />
 			</button>
 		{/each}
 	</div>
@@ -153,7 +154,7 @@
 						? 'border-brand bg-brand-soft/60'
 						: 'border-line bg-surface hover:border-brand'}"
 			>
-				{option}
+				<Md text={option} />
 			</button>
 		{/each}
 	</div>
@@ -162,6 +163,6 @@
 {#if checked && screen.explanation}
 	<div class="mt-4 rounded-2xl bg-accent-soft p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.exerciseKind.answerKeyLabel}</p>
-		<p class="leading-relaxed" dir="auto">{screen.explanation}</p>
+		<p class="leading-relaxed" dir="auto"><Md text={screen.explanation} /></p>
 	</div>
 {/if}

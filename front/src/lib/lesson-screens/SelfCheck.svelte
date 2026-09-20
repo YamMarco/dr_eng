@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SelfCheckScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
@@ -56,12 +57,14 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
 
 {#if screen.text}
-	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="ltr">{screen.text}</p>
+	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="ltr">
+		<Md text={screen.text} />
+	</p>
 {/if}
 
 <div class="leading-relaxed font-semibold">
 	{#each screen.prompt.split('\n') as line, i (i)}
-		<p dir="auto">{line}</p>
+		<p dir="auto"><Md text={line} /></p>
 	{/each}
 </div>
 
@@ -88,7 +91,7 @@
 {#if revealed}
 	<div class="mt-4 rounded-2xl bg-brand-soft/50 p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.selfCheck.modelAnswerLabel}</p>
-		<p class="leading-relaxed" dir="auto">{screen.modelAnswer}</p>
+		<p class="leading-relaxed" dir="auto"><Md text={screen.modelAnswer} /></p>
 	</div>
 	<p class="mt-2 text-sm text-muted">{i18n.dict.selfCheck.compareNote}</p>
 {/if}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { MarkWordScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -49,7 +50,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
 <ScoreBadge {score} />
 {#if screen.prompt}
-	<p class="mb-4 text-lg leading-relaxed font-semibold">{screen.prompt}</p>
+	<p class="mb-4 text-lg leading-relaxed font-semibold"><Md text={screen.prompt} /></p>
 {/if}
 <div class="flex flex-wrap gap-2" dir={screen.dir ?? 'ltr'}>
 	{#each words as word, i (i)}

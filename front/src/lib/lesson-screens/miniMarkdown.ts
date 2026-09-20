@@ -22,6 +22,9 @@ export function mdInline(src: string): string {
 
 	let s = src.replace(/[&<>"']/g, (c) => ESCAPE[c]);
 
+	// ****word**** (bold typed inside an italic run gets serialized this way) -> **word**
+	s = s.replace(/\*{4}([^*\n]+)\*{4}/g, '**$1**');
+
 	// `code` first, so ** / * inside a span aren't reinterpreted
 	s = s.replace(/`([^`]+)`/g, '<code class="rounded bg-line/60 px-1 text-[0.9em]">$1</code>');
 	// {c:name}...{/c}
@@ -79,7 +82,8 @@ function parseLine(raw: string): { tag: string; classes: string; style: string; 
 	}
 
 	const styles: string[] = [];
-	if (align === 'center' || align === 'right' || align === 'left') styles.push(`text-align:${align}`);
+	if (align === 'center' || align === 'right' || align === 'left')
+		styles.push(`text-align:${align}`);
 	if (dir === 'rtl' || dir === 'ltr') styles.push(`direction:${dir}`);
 
 	return {

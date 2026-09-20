@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { TimeComparisonScreen } from './types';
+	import Md from '$lib/components/Md.svelte';
 	import { getLessonSession } from './session.svelte';
 
 	let {
@@ -29,16 +30,16 @@
 	<div
 		class="flex items-center justify-between rounded-2xl bg-surface p-4 ring-1 shadow-overlay/5 ring-line/70"
 	>
-		<span>{screen.aLabel}</span>
+		<span><Md text={screen.aLabel} /></span>
 		<span class="font-bold tabular" dir="ltr">{(aMs / 1000).toFixed(1)}s</span>
 	</div>
 	<div
 		class="flex items-center justify-between rounded-2xl bg-surface p-4 ring-1 shadow-overlay/5 ring-line/70"
 	>
-		<span>{screen.bLabel}</span>
+		<span><Md text={screen.bLabel} /></span>
 		<span class="font-bold tabular" dir="ltr">{(bMs / 1000).toFixed(1)}s</span>
 	</div>
 	<p class="mt-2 leading-relaxed text-muted">
-		{aMs > 0 && bMs > 0 && bMs < aMs ? screen.fasterMessage : screen.tieMessage}
+		<Md text={aMs > 0 && bMs > 0 && bMs < aMs ? screen.fasterMessage : screen.tieMessage} />
 	</p>
 </div>
