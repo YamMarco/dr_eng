@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Volume2 } from '@lucide/svelte';
 	import type { WordCardScreen } from './types';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { mdBlock, mdInline } from './miniMarkdown';
+	import SpeakButtons from './SpeakButtons.svelte';
 	import WordImage from './WordImage.svelte';
 
 	// Not scored — pure teaching, like preface/summary — so disabled/label
@@ -32,15 +32,7 @@
 
 	<div class="mt-5 flex items-center gap-2" dir="ltr">
 		<p class="text-3xl font-extrabold">{screen.word}</p>
-		<button
-			type="button"
-			title={i18n.dict.wordCard.listenLabel}
-			aria-label={i18n.dict.wordCard.listenLabel}
-			class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-ink/60 transition active:scale-95"
-		>
-			<!-- Placeholder — no audio wired up yet. -->
-			<Volume2 size={18} aria-hidden="true" />
-		</button>
+		<SpeakButtons text={screen.word} />
 	</div>
 
 	{#if screen.translationHe}

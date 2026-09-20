@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Volume2 } from '@lucide/svelte';
 	import type { SpellWordScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import ScoreBadge from './ScoreBadge.svelte';
+	import SpeakButtons from './SpeakButtons.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -65,17 +65,7 @@
 	</p>
 {:else}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellListenPrompt}</p>
-	<button
-		type="button"
-		disabled={checked}
-		title={i18n.dict.wordCard.listenLabel}
-		aria-label={i18n.dict.wordCard.listenLabel}
-		class="mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-ink/60 transition active:scale-95"
-	>
-		<!-- Placeholder — no audio wired up yet. -->
-		<Volume2 size={22} aria-hidden="true" />
-	</button>
-	<p class="mb-4 text-xs text-muted">{i18n.dict.wordCard.spellListenNote}</p>
+	<div class="mb-4"><SpeakButtons text={screen.word} size="lg" disabled={checked} /></div>
 {/if}
 
 <input

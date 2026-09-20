@@ -91,12 +91,12 @@ export const he = {
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
 	},
 	wordCard: {
-		listenLabel: 'השמעה (בקרוב)',
+		listenLabel: 'השמעה',
+		listenSlowLabel: 'השמעה לאט',
 		hookLabel: 'טיפ לזיכרון',
 		exampleLabel: 'בטקסט',
 		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
 		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
-		spellListenNote: 'ההאזנה עדיין לא פעילה — זהו מסך הדגמה.',
 		inputPlaceholder: 'הקלידו כאן...',
 		correctFeedback: 'נכון!',
 		incorrectFeedback: (word: string) => `כמעט. האיות הנכון: ${word}`
