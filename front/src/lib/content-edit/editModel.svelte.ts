@@ -10,6 +10,8 @@ import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 
+const COURSE_ID = '4';
+const MODULE_ID = 'c';
 const SECTION_IDS = sectionMeta.map((s) => s.id);
 
 /** Deep, plain clone — content nodes are pure JSON so this is safe and cheap. */
@@ -155,11 +157,19 @@ class EditModel {
 		this.dirty = true;
 	}
 
-	/** Short, collision-checked id for a freshly created node — stable from
-	 *  the start so it can be linked/dragged before anyone bothers naming it. */
+	/** Collision-checked id for a freshly created node, `<course>-<module>-<6 random
+	 *  chars>` (e.g. `4-c-a3f9k2`) — stable from the start so it can be
+	 *  linked/dragged before anyone bothers naming it. The editor only covers
+	 *  course (unit group) 4, module C for now. */
 	private shortId(): string {
-		let id = `n-${crypto.randomUUID().slice(0, 8)}`;
-		while (this.node(id)) id = `n-${crypto.randomUUID().slice(0, 8)}`;
+		const make = () => {
+			const chars = Array.from(crypto.getRandomValues(new Uint8Array(6)), (b) =>
+				(b % 36).toString(36)
+			);
+			return `${COURSE_ID}-${MODULE_ID}-${chars.join('')}`;
+		};
+		let id = make();
+		while (this.node(id)) id = make();
 		return id;
 	}
 
