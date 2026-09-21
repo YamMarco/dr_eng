@@ -33,7 +33,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '### 🟢 שלב 1 — מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 — לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת — לכו על **YES**.\n### 🟢 שלב 3 — כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
+                '### \n### בואו נעבו על עוד דוגמה:\n\n### 🟢 שלב 1 — מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 — לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת — לכו על **YES**.\n### 🟢 שלב 3 — כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
