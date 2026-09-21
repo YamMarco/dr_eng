@@ -960,9 +960,9 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              label: "דרך ב׳ - P1",
+              label: "דרך ב׳ ",
               timerKey: "raceP1",
-              text: "THE MOUNTAIN BAKERY\n\nThe bakery in Alta Valley opened in 1952 and sold only bread at first. For many years, the owner, Maria Costa, baked everything by hand before sunrise. In 1988, her son Luca joined her and added cakes and cookies to the menu. Because the village was small, most customers were neighbours who came every morning. In 2019, a food magazine wrote about the bakery, and tourists began to arrive from other cities. Today, the bakery employs twelve people and sells about 500 loaves every day, but Luca says the recipe for the bread has never changed.",
+              text: "{a:center}**THE MOUNTAIN BAKERY**\n\nThe bakery in Alta Valley opened in 1952 and sold only bread at first. For many years, the owner, Maria Costa, baked everything by hand before sunrise. In 1988, her son Luca joined her and added cakes and cookies to the menu. Because the village was small, most customers were neighbours who came every morning. In 2019, a food magazine wrote about the bakery, and tourists began to arrive from other cities. Today, the bakery employs twelve people and sells about 500 loaves every day, but Luca says the recipe for the bread has never changed.",
               questions: [
                 {
                   prompt: "According to Luca, what has never changed?",
