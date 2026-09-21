@@ -523,7 +523,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.',
+          text: "❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.",
         },
         {
           type: "summary",
@@ -581,7 +581,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                'בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.',
+                "בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.",
               wordBank: [
                 "I think",
                 "I believe",
@@ -828,7 +828,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.',
+          text: "טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.",
         },
         {
           type: "summary",
@@ -1033,7 +1033,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.',
+          text: "הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.",
         },
         {
           type: "summary",
@@ -1341,7 +1341,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש שאלות שמבקשות מכם לבחור מספר, גיל, או כמות ספציפית.\n\n"At what age...?" = בחרו גיל אחד. לא "it depends". לא "some say 10, others say 15".\n\nבחרו גיל. הסבירו למה זה נכון.',
+          text: "יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**. למשל:**At what age...?**= **באיזה גיל?**🟢 במקרה כזה בוחרים **גיל אחד ברור**.לא כותבים:❌ **It depends.**❌ **Some say 10, others say 15.**בוחרים תשובה אחת:✅ **I think teenagers should start working at the age of 16.**ואז מסבירים **למה** בחרתם דווקא בגיל הזה.⭐ הכלל: **מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
         },
         {
           type: "preface",
