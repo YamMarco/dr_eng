@@ -1084,17 +1084,6 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "ד״ר יונתן כרמי גילה כי 60% מהתלמידים משתמשים בספרייה מדי שבוע.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [5] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
@@ -1109,61 +1098,6 @@ export const c1Lessons: LessonNode[] = [
               categories: [
                 { name: "שמות", color: "amber", indices: [1, 2] },
                 { name: "מספרים", color: "sky", indices: [7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "פרופ׳ דוד אשכנזי פרסם 3 מאמרים על הנושא בשנה האחרונה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [4] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "כ-500 מתנדבים הצטרפו לפרויקט הניקיון בעיר חיפה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [0] },
-                { name: "שמות", color: "amber", indices: [6] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "המהנדסת רינת לוי בנתה גשר שחסך לעיר 12 מיליון שקל.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [1, 2] },
-                { name: "מספרים", color: "sky", indices: [7, 8, 9] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "אוניברסיטת תל אביב פתחה תוכנית מחקר בת 6 שנים.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "ראש העיר משה כהן הכריז כי 2,000 עצים ייטעו עד סוף השנה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [2, 3] },
-                { name: "מספרים", color: "sky", indices: [6] },
               ],
             },
             {
