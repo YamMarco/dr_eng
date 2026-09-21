@@ -730,34 +730,16 @@ export const c1Lessons: LessonNode[] = [
           text: "עד עכשיו למדנו מה עושים **לפני שמחפשים תשובה**:קודם מבינים על מה הטקסט מדבר, ואז בודקים שאנחנו מבינים את השאלה.\n\nעכשיו עוברים לשלב הבא: **איך מחפשים את התשובה בתוך הטקסט.**",
         },
         {
-          type: "summary",
-          title: "THE TOOL - P1",
-          lines: [
-            "1 · קראו את השאלה עד הסוף - לא את הטקסט.",
-            "2 · מצאו מילת מפתח - המילה שתחפשו בטקסט.",
-            "3 · אתרו אותה בטקסט - כמו חיפוש בוואטסאפ.",
-            "4 · קראו רק את המשפט שמכיל אותה.",
-            "5 · ענו - מהטקסט בלבד, לא מהראש.",
-          ],
-        },
-        {
           type: "preface",
           text: "**מהי מילת מפתח?**\nמילת מפתח היא מילה שעוזרת לנו לדעת **מה לחפש בטקסט**.\n\nבדרך כלל זו מילה חשובה מתוך השאלה — למשל:\nאדםמקוםדבררעיוןפעולה מרכזית\n\nמילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\nלמשל:\n**Why did the scientists start the project?**\n**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists****project**\nאלה המילים שנחפש בטקסט, או מילים דומות להן.\n\nהמטרה של מילת המפתח היא פשוטה:\nבמקום לקרוא שוב את כל הטקסט, אנחנו מחפשים את המילה החשובה — וכך מגיעים מהר יותר לאזור שבו נמצאת התשובה.",
         },
         {
           type: "preface",
-          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{d:ltr}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
+          text: '### דוגמה: רמזור ירוק\n**GREEN AFRICA — Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**According to Dr. Diallo, why do most trees die?**\nקודם בודקים: האם אני מבין מה רוצים ממני?\n**According to Dr. Diallo** = לפי ד"ר דיאלו**why** = למה / מה הסיבה**most trees die** = רוב העצים מתים\nעכשיו אני יכול להסביר את השאלה בעברית:\n**לפי ד"ר דיאלו, למה רוב העצים מתים?**\n🟢 **ירוק — השאלה ברורה.**\nעכשיו יודעים בדיוק מה לעשות:\n**איפה לחפש?** → בפסקה II**אצל מי?** → אצל ד"ר דיאלו**מה לחפש?** → סיבה**למה?** → למה רוב העצים מתים\nהמשפט שעונה על השאלה הוא:\n**“Most trees die because nobody looks after them.”**\nלכן התשובה:\n**Because nobody looks after them.**\n**הכלל:**קודם מבינים את השאלה, אחר כך יודעים **איפה לחפש**, ורק אז עונים.',
         },
         {
-          type: "steps",
-          steps: [
-            'קוראים את השאלה: "לפי ד״ר דיאלו, למה רוב העצים מתים?"',
-            "מילות מפתח: Dr. Diallo + trees die.",
-            "מחפשים את Dr. Diallo בטקסט - הוא בפסקה II.",
-            'קוראים רק שם: "most trees die because nobody looks after them".',
-            "תשובה: Because nobody looks after them.",
-          ],
-          ordered: false,
+          type: "preface",
+          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA — Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב — לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה**local people** = אנשים מקומיים**are involved** = משתתפים / מעורבים**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n🟢 **עכשיו ירוק — אפשר לחפש תשובה.**\n**איפה לחפש?** → בפסקה II**מה לחפש?** → מה קורה כאשר המקומיים מעורבים**מילת מפתח חשובה** → **involved**\nבטקסט מופיע:\n**“When local people are involved, 85% of trees survive.”**\nלכן התשובה:\n**85% of the trees survive.**\n**שימו לב:**בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו — ואז ממשיכים.",
         },
       ],
       rounds: [
@@ -826,7 +808,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: שאלה → מילת מפתח → אתר → קרא → ענה.",
+              text: "**PRACTICE · Round 1 🌱**\n\nמתחילים בקל.\n\n📌 **מה עושים?**\n\n**קוראים את השאלה → מסמנים מילת מפתח → מוצאים אותה בטקסט → קוראים את המשפטים לידה → עונים.**",
             },
             {
               type: "mcq",
@@ -837,6 +819,7 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 '"Dr. Diallo" ו-"trees die" הן מה שמחפשים בטקסט. "why" ו-"according" הן מילות שאלה.',
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt: "מהו הסדר הנכון של חמשת שלבי P1?",
