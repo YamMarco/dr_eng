@@ -485,15 +485,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "mcq",
-              prompt: '"Give ONE answer from paragraph II." - מה הצבע שלכם?',
-              options: [
-                "🔴 אדום - לא מבין כלום",
-                "🟡 צהוב - מבין חלקית",
-                '🟢 ירוק - "תנו תשובה אחת מפסקה 2". ברור.',
-                "לא יודע",
-              ],
-              correctIndex: 2,
+              type: "self-check",
+              prompt:
+                'קראו: "Give ONE answer from paragraph II."\n\nלפני שממשיכים: נסו לכתוב בעברית מה בדיוק השאלה מבקשת מכם. הצליחו במשפט אחד ברור?',
+              modelAnswer:
+                'תנו תשובה אחת מפסקה 2. אם כתבתם את זה (או קרוב לזה) - אתם בירוק, אפשר לחפש את התשובה. אם לא הצלחתם לנסח - זה סימן שאתם לא באמת בירוק, גם אם זה "הרגיש" ברור.',
             },
             {
               type: "mcq",
@@ -550,15 +546,11 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             { type: "preface", text: "YOUR TURN - קבעו צבע ופעולה לכל שאלה." },
             {
-              type: "mcq",
-              prompt: '"According to whom?" - צבע ופעולה?',
-              options: [
-                '🟢 עונים - "לפי מי"',
-                "🟡 מילון, 30 שניות",
-                "🔴 עוצרים",
-                "M ועוברים הלאה",
-              ],
-              correctIndex: 0,
+              type: "self-check",
+              prompt:
+                'קראו: "According to whom?"\n\nנסו לנסח בעברית: מה השאלה הזאת שואלת? אתם בירוק?',
+              modelAnswer:
+                "לפי מי? שאלה קצרה וברורה - ירוק. עונים מיד, בלי מילון.",
             },
             {
               type: "mcq",
@@ -573,15 +565,11 @@ export const c1Lessons: LessonNode[] = [
               correctIndex: 1,
             },
             {
-              type: "mcq",
-              prompt: '"Give TWO answers from paragraph III." - צבע ופעולה?',
-              options: [
-                "🟡 מילון",
-                "🔴 עוצרים",
-                "🟢 עונים - שתי תשובות מפסקה 3",
-                "🟢 עונים - תשובה אחת מפסקה 3",
-              ],
-              correctIndex: 2,
+              type: "self-check",
+              prompt:
+                'קראו: "Give TWO answers from paragraph III."\n\nנסו לנסח בעברית מה מבקשים ממכם - כולל כמה תשובות.',
+              modelAnswer:
+                "תנו שתי תשובות מפסקה 3. שימו לב למספר - TWO, לא ONE. אם כתבתם \"תשובה אחת\" - לא קראתם עד הסוף, וזה בדיוק המקום שבו מאבדים נקודות.",
             },
             {
               type: "mcq",

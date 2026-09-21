@@ -39,7 +39,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 |---|---|---|---|---|
 | l00 | Reading everything (or nothing) and running out of time | Search with the question's keyword instead of reading | 8 | None big |
 | l01 | Reading blind and getting lost | Build a map from title + paragraph 1 (topic, problem, direction) | 8 | Never reused after l03 |
-| l02 | Answering a question you don't understand | Rate the question (traffic light); decode an unknown word in 30 seconds | 7.5 | Mostly isolated questions |
+| l02 | Answering a question you don't understand | Rate the question (traffic light); decode an unknown word in 30 seconds | 8 | Colour-guess MCQs had the paraphrase inside the correct option (recognition, not self-monitoring); 3 replaced with `self-check` (write the Hebrew paraphrase, then compare). Unplayed |
 | l03 | No fixed way to find an answer | P1: question -> keyword -> locate -> read that sentence -> answer | 8.5 | None big |
 | l04 | Slow search on number/name questions | Use numbers and names as anchors to jump to a paragraph | 6.5 | Hebrew-first mark drill |
 | numbers-names-q | Applying anchors in real questions | Pick the number/name keyword, find the paragraph, answer | 5.5 | 10 rounds; typo; repeated card |
