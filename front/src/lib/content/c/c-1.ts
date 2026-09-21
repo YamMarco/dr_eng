@@ -747,7 +747,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "🟢 עכשיו ירוק — אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה IIמה לחפש? → מה קורה כאשר המקומיים מעורביםמילת מפתח חשובה → involved\nבטקסט מופיע:\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n85% of the trees survive.\nשימו לב:בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו — ואז ממשיכים.",
+          text: "\n🟢 עכשיו ירוק — אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורביםמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n85% of the trees survive.\n\nשימו לב:בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו — ואז ממשיכים.",
         },
       ],
       rounds: [
