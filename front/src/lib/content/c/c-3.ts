@@ -1029,7 +1029,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'שאלה שמתחילה ב-"What do you think" - קצת שונה.\n\nהיא לא מבקשת YES או NO.\nהיא מבקשת: בחרו משהו ספציפי, ואמרו למה.\n\n"In my opinion, the best way is X because..."\nX = הבחירה שלכם. חד משמעית. לא "יש הרבה אפשרויות".',
+          text: "🟦 שאלה שמתחילה ב־**What do you think...?**זו שאלה קצת שונה.היא לא שואלת:**YES או NO?**היא שואלת:**מה אתם חושבים שהאפשרות הטובה ביותר?**כלומר, צריך לעשות שני דברים:🟢 **1. לבחור דבר אחד ברור**🟢 **2. להסביר למה בחרתם בו**למשל:**What do you think is the best way to help teenagers study better?**אל תכתבו:❌ **There are many ways to help teenagers study.**זה לא נותן תשובה ברורה.במקום זה:✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**שימו לב:**the best way is...** = הבחירה שלי**because...** = הסיבה שלי⭐ הכלל:**What do you think...? → בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
         },
         {
           type: "preface",
@@ -1064,6 +1064,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"What do you think?" = בחרו ספציפית. "In my opinion, the best way is traveling because..." - בחירה + because = פתיח מנצח.',
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt:
