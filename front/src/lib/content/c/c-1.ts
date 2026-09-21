@@ -743,7 +743,11 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA — Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב — לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה**local people** = אנשים מקומיים**are involved** = משתתפים / מעורבים**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n🟢 **עכשיו ירוק — אפשר לחפש תשובה.**\n**איפה לחפש?** → בפסקה II**מה לחפש?** → מה קורה כאשר המקומיים מעורבים**מילת מפתח חשובה** → **involved**\nבטקסט מופיע:\n**“When local people are involved, 85% of trees survive.”**\nלכן התשובה:\n**85% of the trees survive.**\n**שימו לב:**בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו — ואז ממשיכים.",
+          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA — Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב — לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה**local people** = אנשים מקומיים**are involved** = משתתפים / מעורבים**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n",
+        },
+        {
+          type: "preface",
+          text: "🟢 עכשיו ירוק — אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה IIמה לחפש? → מה קורה כאשר המקומיים מעורביםמילת מפתח חשובה → involved\nבטקסט מופיע:\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n85% of the trees survive.\nשימו לב:בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו — ואז ממשיכים.",
         },
       ],
       rounds: [
