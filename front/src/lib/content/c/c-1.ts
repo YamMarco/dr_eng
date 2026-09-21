@@ -739,7 +739,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'כשיו יודעים בדיוק מה לעשות:\nאיפה לחפש? → בפסקה IIאצל מי? → אצל ד"ר דיאלומה לחפש? → סיבהלמה? → למה רוב העצים מתים\nהמשפט שעונה על השאלה הוא:\n“Most trees die because nobody looks after them.”\nלכן התשובה:\nBecause nobody looks after them.\nהכלל:קודם מבינים את השאלה, אחר כך יודעים איפה לחפש, ורק אז עונים.',
+          text: "עכשיו זה פשוט:\n🔵 **איפה מחפשים?**בפסקה II.\n🟢 **מי מופיע בשאלה?**ד״ר דיאלו.\n🟡 **מה השאלה מבקשת?**סיבה — למה רוב העצים מתים?\n🔴 **עכשיו מחפשים את המשפט המתאים:****“Most trees die because nobody looks after them.”**\n✅ **התשובה:****Because nobody looks after them.**\n📌 **זכרו:****מבינים את השאלה → יודעים איפה לחפש → מוצאים את המשפט → עונים.**",
         },
         {
           type: "preface",
