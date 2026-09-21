@@ -801,7 +801,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              text: "**III ** The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
               prompt: "שלב 5 - כתבו את התשובה במילים של הטקסט.",
               modelAnswer: "The number of birds increased by 60%.",
             },
@@ -872,7 +872,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: 'II  "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
+              text: '**II ** "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
               prompt:
                 'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" - מילת מפתח, פסקה, ותשובה.',
               modelAnswer:
@@ -896,7 +896,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+              text: '**I**  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\n**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\n**III**  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
               questions: [
                 {
                   prompt:
@@ -912,11 +912,10 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
+              text: '**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
               prompt:
-                '"According to Dr. Diallo, why do most trees die? Give ONE answer." - כתבו את חמשת שלבי P1 ואת התשובה.',
-              modelAnswer:
-                '1-קורא את השאלה. 2-מילת מפתח: Dr. Diallo / trees die. 3-פסקה II. 4-"most trees die because nobody looks after them". 5-תשובה: Because nobody looks after them.',
+                '.**השאלה:**\n**According to Dr. Klein, how did adults improve?**\n### חמשת השלבים לפני שעונים\n**1. מה השאלה רוצה?**לפי ד"ר קליין, איך המבוגרים השתפרו?\n**2. מילת השאלה:****how** → מחפשים איך / באיזו דרך\n**3. מילת המפתח:****improve**\n**4. איפה מחפשים?**בפסקה **II**\n**5. מה צריך למצוא?**מה המבוגרים עשו טוב יותר.\n### תשובה\n**They understood what the teacher explained and corrected their mistakes more quickly.**',
+              modelAnswer: "1",
             },
             {
               type: "self-check",
