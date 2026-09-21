@@ -1345,7 +1345,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'שימו לב למשהו:\n\nהשאלה לא שואלת "Do you think children SHOULD have phones?"\nהיא מניחה שזה יקרה - ושואלת רק מתי.\n\nאל תתחילו עם: "I think phones are dangerous for children."\nהתחילו עם: "I think children should get their own phone at age 13 because..."',
+          text: "שימו לב:השאלה **לא** שואלת:❌ **Do you think children should have phones?**היא כבר מניחה שלילדים יהיה טלפון.היא שואלת רק:🟢 **מתי? באיזה גיל?**לכן אל תתחילו לכתוב:❌ **I think phones are dangerous for children.**זה לא עונה על השאלה.במקום זה:✅ **I think children should get their own phone at age 13 because...**⭐ הכלל: **השאלה שואלת מתי? → עונים בגיל.**לא משנים את השאלה לנושא אחר.",
         },
         {
           type: "summary",
