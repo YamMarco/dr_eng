@@ -57,15 +57,13 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
 
 {#if screen.text}
-	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="auto">
-		<Md text={screen.text} />
-	</p>
+	<div class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed">
+		<Md block text={screen.text} />
+	</div>
 {/if}
 
 <div class="leading-relaxed font-semibold">
-	{#each screen.prompt.split('\n') as line, i (i)}
-		<p dir="auto"><Md text={line} /></p>
-	{/each}
+	<Md block text={screen.prompt} />
 </div>
 
 <textarea

@@ -33,6 +33,7 @@
 	let colorMenuOpen = $state(false);
 	let headerMenuOpen = $state(false);
 	import EditableScreen from './EditableScreen.svelte';
+	import MarkdownInput from './MarkdownInput.svelte';
 	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
@@ -464,11 +465,7 @@
 											}}
 											aria-label="תשובה נכונה"
 										/>
-										<input
-											bind:value={screen.options[i]}
-											dir="auto"
-											class="w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
-										/>
+										<div class="w-full"><MarkdownInput bind:value={screen.options[i]} minRows={1} /></div>
 										<button
 											type="button"
 											class="text-xs text-danger"

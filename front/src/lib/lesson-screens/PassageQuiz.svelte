@@ -64,18 +64,18 @@
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
-<p class="leading-relaxed whitespace-pre-line" dir="auto"><Md text={screen.text} /></p>
+<div class="leading-relaxed"><Md block text={screen.text} /></div>
 
 <div class="mt-6 flex flex-col gap-5">
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
-			<p class="leading-relaxed font-semibold" dir="auto">
-				<Md text={question.prompt} />
+			<div class="leading-relaxed font-semibold">
+				<Md block text={question.prompt} />
 				{#if question.points}
-					<span class="text-sm font-normal text-muted">({question.points} נק')</span>
+					<span class="text-sm font-normal text-muted" dir="auto">({question.points} נק')</span>
 				{/if}
-			</p>
+			</div>
 			<input
 				type="text"
 				dir="ltr"

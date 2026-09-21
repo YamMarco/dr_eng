@@ -98,7 +98,7 @@
 		</span>
 	</div>
 {/if}
-<p class="leading-relaxed whitespace-pre-line" dir="auto"><Md text={screen.text} /></p>
+<div class="leading-relaxed"><Md block text={screen.text} /></div>
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}
@@ -107,9 +107,7 @@
 		</p>
 	{/if}
 	<div class="text-lg leading-relaxed font-semibold">
-		{#each question.prompt.split('\n') as line, li (li)}
-			<p dir="auto"><Md text={line} /></p>
-		{/each}
+		<Md block text={question.prompt} />
 	</div>
 	<div class="mt-3 flex flex-col gap-3">
 		{#each question.options as option, oi (oi)}

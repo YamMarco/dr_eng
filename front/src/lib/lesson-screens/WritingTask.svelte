@@ -84,9 +84,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
 <ScoreBadge {score} />
 <div class="leading-relaxed font-semibold">
-	{#each prompt.split('\n') as line, i (i)}
-		<p dir="auto"><Md text={line} /></p>
-	{/each}
+	<Md block text={prompt} />
 </div>
 
 <div class="mt-3">

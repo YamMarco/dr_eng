@@ -78,13 +78,9 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 <ScoreBadge {score} />
 <div class="text-lg leading-relaxed font-semibold">
-	<!-- Each line gets its own bidi direction: a prompt that switches
-	     language line-to-line (an English quote, then a Hebrew question)
-	     would otherwise inherit one block direction and align the "wrong"
-	     language's line to the wrong edge. -->
-	{#each screen.prompt.split('\n') as line, i (i)}
-		<p dir="auto"><Md text={line} /></p>
-	{/each}
+	<!-- Block mode: each line gets its own direction (first letter) and may use
+	     line-level syntax (headers, center, callout, divider). -->
+	<Md block text={screen.prompt} />
 </div>
 
 {#if screen.layout === 'honeycomb'}

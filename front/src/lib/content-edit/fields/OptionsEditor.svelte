@@ -1,6 +1,7 @@
 <script lang="ts">
 	// Multiple-choice options + which one is correct — the shared shape behind
 	// mcq, and each question inside passage-mcq.
+	import MarkdownInput from '../MarkdownInput.svelte';
 	let {
 		options = $bindable([]),
 		correctIndex = $bindable(0),
@@ -17,11 +18,7 @@
 			onchange={() => (correctIndex = oi)}
 			aria-label="תשובה נכונה"
 		/>
-		<input
-			bind:value={options[oi]}
-			dir="auto"
-			class="w-full rounded-lg border-2 border-line bg-canvas p-2 text-sm"
-		/>
+		<div class="w-full"><MarkdownInput bind:value={options[oi]} minRows={1} /></div>
 		<button
 			type="button"
 			class="px-1 text-xs text-danger"
