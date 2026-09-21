@@ -437,15 +437,15 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "## שיטת הרמזור\nמהיום, לפני שעונים על כל שאלה, בודקים באיזה צבע אנחנו:\n\n🟢 **ירוק — הבנתי את השאלה.**אני יכול להסביר בעברית מה רוצים ממני.**מתקדמים לטקסט ומחפשים את התשובה.**\n\n🟡 **צהוב — הבנתי כמעט הכול.**יש מילה או שתיים שחסרות לי.**לא מנחשים.** בודקים במילון מהר, משלימים את המשמעות — ורק אז מתחילים לחפש.\n\n🔴 **אדום — אני לא באמת מבין מה רוצים ממני.**עוצרים.\nלא רצים שוב לטקסט.לא מנחשים.\nקודם מפרקים את השאלה:\n\n**על מי או על מה מדברים?****מה מבקשים ממני למצוא?****איפה צריך לחפש?****כמה תשובות צריך לתת?**\n\nרק למה שעדיין לא ברור — משתמשים במילון.\n**הכלל:****אם אתם לא בירוק, עדיין לא מתחילים לענות.**",
+          text: "## שיטת הרמזור\nמהיום, לפני שעונים על כל שאלה, בודקים באיזה צבע אנחנו:\n\n🟢 **ירוק — הבנתי את השאלה.**אני יכול להסביר בעברית מה רוצים ממני.**מתקדמים לטקסט ומחפשים את התשובה.**\n\n🟡 **צהוב — הבנתי כמעט הכול.**יש מילה או שתיים שחסרות לי.**לא מנחשים.** בודקים במילון מהר, משלימים את המשמעות — ורק אז מתחילים לחפש.\n\n🔴 **אדום — אני לא באמת מבין מה רוצים ממני.**עוצרים.\nלא רצים שוב לטקסט.לא מנחשים.\nקודם מפרקים את השאלה:\n\nעל מי או על מה מדברים? מה מבקשים ממני למצוא?איפה צריך לחפש? כמה תשובות צריך לתת?\n\nרק למה שעדיין לא ברור — משתמשים במילון.\n++הכלל:++ **אם אתם לא בירוק, עדיין לא מתחילים לענות.**",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור ירוק\n\nהשאלה:\n{d:ltr}**Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\n\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
+          text: "דוגמה: רמזור ירוק\n\nהשאלה:\n{p:text}**Why did the scientists start the project?**\n**Why** = למה\n**scientists** = מדענים\n**start the project** = התחילו את הפרויקט\n\nאני יכול להסביר בעברית: *למה המדענים התחילו את הפרויקט?*\n\n🟢 ירוק - עכשיו אפשר לחפש בטקסט את הסיבה.",
         },
         {
           type: "preface",
-          text: "דוגמה: רמזור צהוב\n\nהשאלה:\n{d:ltr}**What has the project achieved so far?**\n\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים בעזרת המילון:\n\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\n\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\n\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
+          text: "דוגמה: רמזור צהוב\n\nהשאלה:\n{p:text}**What has the project achieved so far?**\n\nאני מבין: **project** = פרויקט.\nאבל מה זה **achieved**? ומה זה **so far**? אני עדיין לא בטוח מה השאלה רוצה.\n\n🟡 צהוב - לא רצים לטקסט. קודם מפענחים בעזרת המילון:\n\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\n\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\n\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
         },
         {
           type: "preface",
@@ -461,7 +461,7 @@ export const c1Lessons: LessonNode[] = [
           steps: [
             "**Read the title** - מה הנושא?",
             "**Read the first paragraph** - מה הכיוון של הטקסט?",
-            "עוברים לשאלה ובודקים רמזור: 🟢 מבין - ממשיך. 🟡 מבין חלקית - מפרק את השאלה. 🔴 לא מבין - עוצר ומפרק.",
+            "עוברים לשאלה ובודקים רמזור: \n🔴 לא מבין - עוצר ומפרק.\n🟡 מבין חלקית - מפרק את השאלה.\n🟢 מבין - ממשיך.",
             "רק אחרי שהרמזור ירוק - מחפשים את התשובה בטקסט.",
           ],
         },
@@ -485,11 +485,15 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "self-check",
-              prompt:
-                'קראו: "Give ONE answer from paragraph II."\n\nלפני שממשיכים: נסו לכתוב בעברית מה בדיוק השאלה מבקשת מכם. הצליחו במשפט אחד ברור?',
-              modelAnswer:
-                'תנו תשובה אחת מפסקה 2. אם כתבתם את זה (או קרוב לזה) - אתם בירוק, אפשר לחפש את התשובה. אם לא הצלחתם לנסח - זה סימן שאתם לא באמת בירוק, גם אם זה "הרגיש" ברור.',
+              type: "mcq",
+              prompt: '"Give ONE answer from paragraph II." - מה הצבע שלכם?',
+              options: [
+                "🔴 אדום - לא מבין כלום",
+                "🟡 צהוב - מבין חלקית",
+                '🟢 ירוק - "תנו תשובה אחת מפסקה 2". ברור.',
+                "לא יודע",
+              ],
+              correctIndex: 2,
             },
             {
               type: "mcq",
@@ -546,11 +550,15 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             { type: "preface", text: "YOUR TURN - קבעו צבע ופעולה לכל שאלה." },
             {
-              type: "self-check",
-              prompt:
-                'קראו: "According to whom?"\n\nנסו לנסח בעברית: מה השאלה הזאת שואלת? אתם בירוק?',
-              modelAnswer:
-                "לפי מי? שאלה קצרה וברורה - ירוק. עונים מיד, בלי מילון.",
+              type: "mcq",
+              prompt: '"According to whom?" - צבע ופעולה?',
+              options: [
+                '🟢 עונים - "לפי מי"',
+                "🟡 מילון, 30 שניות",
+                "🔴 עוצרים",
+                "M ועוברים הלאה",
+              ],
+              correctIndex: 0,
             },
             {
               type: "mcq",
@@ -565,11 +573,15 @@ export const c1Lessons: LessonNode[] = [
               correctIndex: 1,
             },
             {
-              type: "self-check",
-              prompt:
-                'קראו: "Give TWO answers from paragraph III."\n\nנסו לנסח בעברית מה מבקשים ממכם - כולל כמה תשובות.',
-              modelAnswer:
-                "תנו שתי תשובות מפסקה 3. שימו לב למספר - TWO, לא ONE. אם כתבתם \"תשובה אחת\" - לא קראתם עד הסוף, וזה בדיוק המקום שבו מאבדים נקודות.",
+              type: "mcq",
+              prompt: '"Give TWO answers from paragraph III." - צבע ופעולה?',
+              options: [
+                "🟡 מילון",
+                "🔴 עוצרים",
+                "🟢 עונים - שתי תשובות מפסקה 3",
+                "🟢 עונים - תשובה אחת מפסקה 3",
+              ],
+              correctIndex: 2,
             },
             {
               type: "mcq",
@@ -715,7 +727,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עד עכשיו למדנו מה עושים **לפני** החיפוש: מפת דרכים ורמזור. P1 הוא החיפוש עצמו - וככה הכל מתחבר:",
+          text: "עד עכשיו למדנו מה עושים **לפני** החיפוש: מפת דרכים ורמזור. \n\nעכשיו נראה איך החיפוש עצמו עובד והכל מתחבר",
         },
         {
           type: "summary",
@@ -739,21 +751,22 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'מהי מילת מפתח? (הכרנו בשיעור הראשון - עכשיו מדייקים)\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project',
+          text: 'מהי מילת מפתח?\n(הכרנו בשיעור הראשון - עכשיו מדייקים)\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project',
         },
         {
           type: "preface",
-          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{d:ltr}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
+          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{p:text}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
         },
         {
           type: "steps",
           steps: [
             'קוראים את השאלה: "לפי ד״ר דיאלו, למה רוב העצים מתים?"',
-            "מילות מפתח: Dr. Diallo + trees die.",
+            "מילות מפתח: **Dr. Diallo** + **trees die**.",
             "מחפשים את Dr. Diallo בטקסט - הוא בפסקה II.",
-            'קוראים רק שם: "most trees die because nobody looks after them".',
+            'קוראים רק שם:\n "most trees die because nobody looks after them".',
             "תשובה: Because nobody looks after them.",
           ],
+          ordered: false,
         },
       ],
       rounds: [
