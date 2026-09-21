@@ -411,7 +411,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n{d:ltr}1. **Complete the sentence**: People left the island **because** ...\n{d:ltr}2. **Circle the correct answer**: Why did the scientists remove the goats?\n{d:ltr}3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -2176,7 +2176,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{d:ltr}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\nPollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",

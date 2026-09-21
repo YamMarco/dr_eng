@@ -50,7 +50,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
 <ScoreBadge {score} />
 {#if screen.prompt}
-	<p class="mb-4 text-lg leading-relaxed font-semibold"><Md text={screen.prompt} /></p>
+	<div class="mb-4 text-lg leading-relaxed font-semibold"><Md block text={screen.prompt} /></div>
 {/if}
 <div class="flex flex-wrap gap-2" dir={screen.dir ?? 'ltr'}>
 	{#each words as word, i (i)}

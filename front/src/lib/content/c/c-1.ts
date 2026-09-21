@@ -35,7 +35,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "בואו נראה איך זה עובד בדוגמה פשוטה. קראו את הטקסט:\n\n{d:ltr}Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants.\n\nהשאלה:\n{d:ltr}**Where do elephants live?**",
+          text: "בואו נראה איך זה עובד בדוגמה פשוטה. קראו את הטקסט:\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants.\n\nהשאלה:\n**Where do elephants live?**",
         },
         {
           type: "steps",
@@ -190,7 +190,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת:\n{d:ltr}**THE RETURN OF THE TREES**\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
+          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת:\n**THE RETURN OF THE TREES**\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
         },
         {
           type: "preface",
@@ -208,19 +208,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "## דוגמה: מפרקים את הפסקה הראשונה\n\n{d:ltr}Every year, forests around the world are destroyed by fire, farming, and pollution.\n{d:ltr}However, there is good news.\n{d:ltr}In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n{d:ltr}The project has already planted over 200 million trees in 15 countries.\n\nעכשיו מפרקים אותה בארבע שאלות קצרות.",
+          text: "## דוגמה: מפרקים את הפסקה הראשונה\n\nEvery year, forests around the world are destroyed by fire, farming, and pollution.\nHowever, there is good news.\nIn 2019, scientists started a project to plant one billion trees in Africa by 2030.\nThe project has already planted over 200 million trees in 15 countries.\n\nעכשיו מפרקים אותה בארבע שאלות קצרות.",
         },
         {
           type: "preface",
-          text: "### 1. מה הבעיה?\n\n{d:ltr}forests → destroyed\nהיערות נהרסים.\n\nולמה?\n{d:ltr}fire / farming / pollution\n\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\n**מספיק להבין: יש בעיה עם היערות.**",
+          text: "### 1. מה הבעיה?\n\nforests → destroyed\nהיערות נהרסים.\n\nולמה?\nfire / farming / pollution\n\nלא חייבים לדעת לתרגם כל מילה בצורה מושלמת.\n**מספיק להבין: יש בעיה עם היערות.**",
         },
         {
           type: "preface",
-          text: "### 2. חפשו מילת שינוי\n\n{d:ltr}**However**\n**However** = אבל / אולם\n\nזו מילה חשובה מאוד. היא אומרת לנו: עד עכשיו דיברו על בעיה, ועכשיו כנראה יגיע משהו אחר.\n\nואכן, מיד אחריה:\n{d:ltr}**good news**\n\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.",
+          text: "### 2. חפשו מילת שינוי\n\n**However**\n**However** = אבל / אולם\n\nזו מילה חשובה מאוד. היא אומרת לנו: עד עכשיו דיברו על בעיה, ועכשיו כנראה יגיע משהו אחר.\n\nואכן, מיד אחריה:\n**good news**\n\nכלומר: יש בעיה, אבל יש גם פתרון או שינוי חיובי.",
         },
         {
           type: "preface",
-          text: "### 3. מי עושה משהו?\n\n{d:ltr}scientists\nהמדענים.\n\nמה הם עשו?\n{d:ltr}started a project\nהתחילו פרויקט.\n\nומה מטרת הפרויקט?\n{d:ltr}plant one billion trees\nלשתול מיליארד עצים.",
+          text: "### 3. מי עושה משהו?\n\nscientists\nהמדענים.\n\nמה הם עשו?\nstarted a project\nהתחילו פרויקט.\n\nומה מטרת הפרויקט?\nplant one billion trees\nלשתול מיליארד עצים.",
         },
         {
           type: "preface",

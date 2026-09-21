@@ -86,7 +86,7 @@ export function mdInline(src: string): string {
 }
 
 /** `{p:text}` lines: English study text, visibly set apart from the app's
- *  Hebrew instructions (tinted card with an accent edge, left-to-right).
+ *  Hebrew instructions (tinted card with an accent edge; direction follows its first letter).
  *  Also applied by the editor's toolbar toggle, hence exported. */
 export const TEXT_BLOCK_CLASS =
 	'my-1 rounded-xl border-s-4 border-brand/60 bg-brand-soft/60 px-3 py-2 font-medium';
@@ -122,7 +122,6 @@ function parseLine(raw: string): {
 		rest = rest.slice(m[0].length);
 	}
 	const isText = paragraph === 'text';
-	if (isText && !dir) dir = 'ltr';
 
 	let level = 0;
 	const headerMatch = rest.match(/^(#{1,3})\s+(.*)$/);

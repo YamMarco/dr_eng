@@ -99,7 +99,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markAll} />
 <ScoreBadge {score} />
 <div class="mb-3 flex items-center justify-between gap-3">
-	<p class="font-semibold"><Md text={screen.instruction} /></p>
+	<div class="font-semibold"><Md block text={screen.instruction} /></div>
 	{#if screen.timerKey}
 		<span
 			class="shrink-0 rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"

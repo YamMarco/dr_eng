@@ -37,17 +37,17 @@
 
 	{#if screen.translationHe}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<p class="mt-2 text-lg text-muted">{@html mdInline(screen.translationHe)}</p>
+		<p class="mt-2 text-lg text-muted" dir="auto">{@html mdInline(screen.translationHe)}</p>
 	{/if}
 
 	{#if screen.exampleEn}
 		<div class="mt-5 w-full rounded-2xl bg-accent-soft p-3 text-start">
 			<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.wordCard.exampleLabel}</p>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<p class="leading-relaxed" dir="ltr">{@html mdInline(screen.exampleEn)}</p>
+			<p class="leading-relaxed" dir="auto">{@html mdInline(screen.exampleEn)}</p>
 			{#if screen.exampleHe}
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<p class="mt-1 text-sm text-muted">{@html mdInline(screen.exampleHe)}</p>
+				<p class="mt-1 text-sm text-muted" dir="auto">{@html mdInline(screen.exampleHe)}</p>
 			{/if}
 		</div>
 	{/if}

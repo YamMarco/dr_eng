@@ -70,7 +70,7 @@
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
-			<p class="leading-relaxed font-semibold">
+			<p class="leading-relaxed font-semibold" dir="auto">
 				<Md text={question.prompt} />
 				{#if question.points}
 					<span class="text-sm font-normal text-muted">({question.points} נק')</span>

@@ -225,7 +225,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'הסיבה צריכה לענות על שאלה אחת: למה?\n\n❌ "I think students should volunteer because volunteering is good."\nלמה זה לא עובד? כי "good" לא מסביר כלום.\n\n✅ "I think students should volunteer because they learn to care about others."\nזו סיבה אמיתית.',
+          text: 'הסיבה צריכה לענות על שאלה אחת: למה?\n\n❌ I think students should volunteer because volunteering is good.\nלמה זה לא עובד? כי "good" לא מסביר כלום.\n\n✅ I think students should volunteer because they learn to care about others.\nזו סיבה אמיתית.',
         },
         {
           type: "summary",
@@ -318,7 +318,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:ltr}❌ **I think students should volunteer because it teaches responsibility.**\n{d:ltr}**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
+          text: "❌ **I think students should volunteer because it teaches responsibility.**\n**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
         },
         {
           type: "summary",
@@ -384,7 +384,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"Do you think all students should volunteer?"\n\n✏️ "I think students should / should not volunteer because..."\n✏️ "In addition,..."\n\nחשוב: הסיבה השנייה חייבת להיות שונה מהראשונה.',
+                '"Do you think all students should volunteer?"\n\n✏️ I think students should / should not volunteer because...\n✏️ In addition,...\n\nחשוב: הסיבה השנייה חייבת להיות שונה מהראשונה.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -482,7 +482,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation?"\n\n✏️ "I think [עמדה] because [סיבה]."\n✏️ "For example, [פרט ספציפי]."\n\nהדוגמה צריכה להיות ספציפית - מה בדיוק קורה? איפה? למי?',
+                '"What do you think is the best way to spend a vacation?"\n\n✏️ I think [עמדה] because [סיבה].\n✏️ For example, [פרט ספציפי].\n\nהדוגמה צריכה להיות ספציפית - מה בדיוק קורה? איפה? למי?',
               wordBank: [
                 "I think",
                 "I believe",
@@ -523,7 +523,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ "In conclusion, volunteering is good and teaches skills and also helps society and is important for the future."\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ "In conclusion, I believe that volunteering makes teenagers better people and better citizens."\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.',
+          text: '❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.',
         },
         {
           type: "summary",
@@ -581,7 +581,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                'בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ "In conclusion, I believe / I think that..."\n\nמשפט אחד. לא יותר.',
+                'בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -622,7 +622,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ "Volunteering very important for teenagers."\nחסר: is. → "Volunteering is very important for teenagers." ✅\n\n❌ "Students they learn new things."\nעודף: they. → "Students learn new things." ✅\n\n❌ "Because schools need change."\nזה לא משפט - זה רק חלק ממשפט.\n→ "I think this because schools need to change." ✅',
+          text: '❌ Volunteering very important for teenagers.\nחסר: is. → "Volunteering is very important for teenagers." ✅\n\n❌ Students they learn new things.\nעודף: they. → "Students learn new things." ✅\n\n❌ Because schools need change.\nזה לא משפט - זה רק חלק ממשפט.\n→ "I think this because schools need to change." ✅',
         },
         {
           type: "summary",
@@ -828,7 +828,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ "Volunteer work is very important in the world today."\n✅ "I think all students should do volunteer work because it teaches responsibility."\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.',
+          text: 'טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.',
         },
         {
           type: "summary",
@@ -1033,7 +1033,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'הטעות הנפוצה ביותר בסוג הזה:\n\n❌ "There are many ways to spend a vacation. Some people travel. Others rest."\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ "In my opinion, the best way to spend a vacation is to travel because you discover new cultures."\n\nהבדל קטן בפתיחה, הבדל גדול בציון.',
+          text: 'הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.',
         },
         {
           type: "summary",
@@ -1190,7 +1190,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ "Schools have many problems. Students are tired. Teachers are stressed."\n\nזה תיאור הבעיה. לא הצעה.\n\n✅ "I think schools should have shorter lessons because students cannot focus for more than 45 minutes."\n\nראיתם את ההבדל? "should have" = הצעה. "because" = ההסבר.',
+          text: '❌ Schools have many problems. Students are tired. Teachers are stressed.\n\nזה תיאור הבעיה. לא הצעה.\n\n✅ I think schools should have shorter lessons because students cannot focus for more than 45 minutes.\n\nראיתם את ההבדל? "should have" = הצעה. "because" = ההסבר.',
         },
         {
           type: "summary",
@@ -1236,7 +1236,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What changes can be made to your school?"\n\nרק שתי הצעות - לא פסקה מלאה:\n✏️ "I think schools should... because..."\n✏️ "In addition, schools could... This would help because..."\n\nספציפיות. לא "be better" - אלא מה בדיוק לשנות. לפחות 3 מילים מהבנק.',
+                '"What changes can be made to your school?"\n\nרק שתי הצעות - לא פסקה מלאה:\n✏️ I think schools should... because...\n✏️ In addition, schools could... This would help because...\n\nספציפיות. לא "be better" - אלא מה בדיוק לשנות. לפחות 3 מילים מהבנק.',
               wordBank: [
                 "I think",
                 "I believe",
