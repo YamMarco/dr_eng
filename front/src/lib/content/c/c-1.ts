@@ -2086,60 +2086,10 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "כל השאר בוועדה התנגדו להצעה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "רוב התלמידים הצליחו לעבור את המבחן.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "מעטים מהתושבים הגיעו לישיבה החשובה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "תמיד אותם ילדים מתנדבים לפעילות הזאת.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
               text: "החוקר טען כי רק גורם אחד קובע.",
               dir: "rtl",
               correctIndices: [],
               categories: [{ name: "הגבלה", color: "violet", indices: [3] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "כל השאר, לדבריו, לא משפיעים כלל.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "רוב התלמידים מרוצים, אך רק מעטים משתתפים בשיעור הבחירה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "הגבלה", color: "violet", indices: [0, 4, 5] },
-              ],
             },
             {
               type: "mark-all",
@@ -2149,14 +2099,6 @@ export const c1Lessons: LessonNode[] = [
               correctIndices: [],
               categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
             },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מילת הגבלה במשפט.",
-              text: "רק מעטים מהתלמידים נבחנו בשיטה החדשה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0, 1] }],
-            },
           ],
         },
         {
@@ -2164,15 +2106,6 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "preface",
               text: "עכשיו באנגלית. עשרה משפטים. סמנו כל מילת הגבלה.",
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only two members of the committee supported the idea.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
             },
             {
               type: "mark-all",
@@ -2196,37 +2129,10 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only a few students join the optional classes.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0, 2] }],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "It is always the same children who come.",
               dir: "ltr",
               correctIndices: [],
               categories: [{ name: "הגבלה", color: "violet", indices: [2] }],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "The researcher stressed that only one factor really matters.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [4] }],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "All the other factors have some effect on results.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0, 5] }],
             },
             {
               type: "mark-all",
@@ -2237,51 +2143,11 @@ export const c1Lessons: LessonNode[] = [
               correctIndices: [],
               categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
             },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Every country has some power to act, she says.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0, 3] }],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only political will is truly required, he argued.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "הגבלה", color: "violet", indices: [0] }],
-            },
           ],
         },
         {
           screens: [
             { type: "preface", text: "שבע פסקאות. סמנו כל מילת הגבלה בפסקה." },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only two members of the committee supported the idea at first. All the others were against it, and most of them asked for another meeting.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "הגבלה", color: "violet", indices: [0, 11, 18] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "The survey found that most students are satisfied, but only a few join the optional classes. It is always the same children who come.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "הגבלה", color: "violet", indices: [4, 9, 11, 18] },
-              ],
-            },
             {
               type: "mark-all",
               instruction:
@@ -2297,33 +2163,11 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "The article claims that only rich countries can solve the problem. However, most of the progress has come from small nations.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "הגבלה", color: "violet", indices: [4, 12] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Some of the poorest regions have cut pollution more than any wealthy state. Every country has some power to act, she says.",
               dir: "ltr",
               correctIndices: [],
               categories: [
                 { name: "הגבלה", color: "violet", indices: [0, 13, 16] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "People often say that talent is all that counts in sport. In fact, most top athletes share one habit: they train every single day.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "הגבלה", color: "violet", indices: [6, 13, 21] },
               ],
             },
             {
@@ -2372,36 +2216,6 @@ export const c1Lessons: LessonNode[] = [
                   name: "הגבלה",
                   color: "violet",
                   indices: [4, 12, 24, 46, 49, 56],
-                },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "People often say that talent is all that counts in sport. In fact, most top athletes share one habit: they train every single day without fail.\n\nOnly a few reach the highest level on ability alone. All you really need, says coach Ryan Doyle, is a clear plan and some patience.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                {
-                  name: "הגבלה",
-                  color: "violet",
-                  indices: [6, 13, 21, 26, 28, 36, 49],
-                },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "A recent report claims that only large cities can fund good public transport, but some small towns have built excellent networks with only a small budget.\n\nMost people assume every project needs a huge budget, said transport planner Nina Cole. Every town has some way to improve, and only a clear plan is really needed.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                {
-                  name: "הגבלה",
-                  color: "violet",
-                  indices: [5, 14, 22, 26, 29, 40, 43, 48],
                 },
               ],
             },
