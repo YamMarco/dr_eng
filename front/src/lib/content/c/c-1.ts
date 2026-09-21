@@ -727,16 +727,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עד עכשיו למדנו מה עושים **לפני** החיפוש: מפת דרכים ורמזור. \n\nעכשיו נראה איך החיפוש עצמו עובד והכל מתחבר",
-        },
-        {
-          type: "summary",
-          title: "איך הכל מתחבר",
-          lines: [
-            "מפה · כותרת + פסקה ראשונה: על מה הטקסט?",
-            "רמזור · מבינים את השאלה? רק ירוק ממשיך.",
-            "P1 · מילת מפתח ← איתור ← קריאת המשפט ← תשובה",
-          ],
+          text: "עד עכשיו למדנו מה עושים **לפני שמחפשים תשובה**:קודם מבינים על מה הטקסט מדבר, ואז בודקים שאנחנו מבינים את השאלה.\n\nעכשיו עוברים לשלב הבא: **איך מחפשים את התשובה בתוך הטקסט.**",
         },
         {
           type: "summary",
@@ -751,19 +742,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'מהי מילת מפתח?\n(הכרנו בשיעור הראשון - עכשיו מדייקים)\n\nבדרך כלל השם החשוב בשאלה. לא what, how או why - אלה מילות שאלה.\n\n"Why did the scientists start the project?" ← מילת מפתח = scientists / project',
+          text: "**מהי מילת מפתח?**\nמילת מפתח היא מילה שעוזרת לנו לדעת **מה לחפש בטקסט**.\n\nבדרך כלל זו מילה חשובה מתוך השאלה — למשל:\nאדםמקוםדבררעיוןפעולה מרכזית\n\nמילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\nלמשל:\n**Why did the scientists start the project?**\n**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists****project**\nאלה המילים שנחפש בטקסט, או מילים דומות להן.\n\nהמטרה של מילת המפתח היא פשוטה:\nבמקום לקרוא שוב את כל הטקסט, אנחנו מחפשים את המילה החשובה — וכך מגיעים מהר יותר לאזור שבו נמצאת התשובה.",
         },
         {
           type: "preface",
-          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{p:text}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
+          text: "WATCH IT - P1 בפעולה\n\nGREEN AFRICA (פסקה II)\n\n{d:ltr}\"The project is led by Dr. Amara Diallo, a scientist from Senegal. 'We do not just plant trees,' says Dr. Diallo. 'We teach local people how to care for them.' According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\"\n\nהשאלה:\n{d:ltr}According to Dr. Diallo, why do most trees die?",
         },
         {
           type: "steps",
           steps: [
             'קוראים את השאלה: "לפי ד״ר דיאלו, למה רוב העצים מתים?"',
-            "מילות מפתח: **Dr. Diallo** + **trees die**.",
+            "מילות מפתח: Dr. Diallo + trees die.",
             "מחפשים את Dr. Diallo בטקסט - הוא בפסקה II.",
-            'קוראים רק שם:\n "most trees die because nobody looks after them".',
+            'קוראים רק שם: "most trees die because nobody looks after them".',
             "תשובה: Because nobody looks after them.",
           ],
           ordered: false,
