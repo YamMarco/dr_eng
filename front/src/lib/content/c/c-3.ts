@@ -1382,7 +1382,7 @@ export const c3Lessons: LessonNode[] = [
                 'איזה פתיח עונה ישירות על "At what age should children have phones?"',
               options: [
                 "Cellphones are very popular among young people today.",
-                "I think children should receive their first cellphone at age 13 because they are mature enough to use it responsibly.",
+                "I think children should get their first phone at age 13 because they are old enough to use it.",
                 "There are advantages and disadvantages to children having phones.",
                 "In conclusion, 13 is the right age for a cellphone.",
               ],
