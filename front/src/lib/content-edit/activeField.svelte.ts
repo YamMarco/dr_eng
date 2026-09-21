@@ -8,7 +8,7 @@
 // Detachable — part of src/lib/content-edit/.
 
 import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
-import { TEXT_BLOCK_CLASS } from '$lib/lesson-screens/miniMarkdown';
+import { TEXT_BLOCK_CLASS, CALLOUT_BLOCK_CLASS } from '$lib/lesson-screens/miniMarkdown';
 
 class ActiveField {
 	el = $state<HTMLDivElement | null>(null);
@@ -56,7 +56,8 @@ function selectedBlocks(root: HTMLDivElement): HTMLElement[] {
 	if (!sel || sel.rangeCount === 0) return [];
 	const range = sel.getRangeAt(0);
 	let blocks = [...root.children].filter(
-		(c): c is HTMLElement => c instanceof HTMLElement && range.intersectsNode(c)
+		(c): c is HTMLElement =>
+			c instanceof HTMLElement && c.tagName !== 'HR' && range.intersectsNode(c)
 	);
 	if (blocks.length > 1) {
 		const last = blocks[blocks.length - 1];
@@ -155,8 +156,9 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 		replacement.innerHTML = block.innerHTML;
 		if (block.style.textAlign) replacement.style.textAlign = block.style.textAlign;
 		if (block.hasAttribute('dir')) replacement.setAttribute('dir', block.getAttribute('dir')!);
-		if (block.dataset.p === 'text') applyTextBlock(replacement, true);
-		else if (block.style.direction) replacement.style.direction = block.style.direction;
+		if (block.dataset.p === 'text' || block.dataset.p === 'callout')
+			applyBlockKind(replacement, block.dataset.p);
+		if (block.style.direction) replacement.style.direction = block.style.direction;
 		block.replaceWith(replacement);
 
 		const range = document.createRange();
@@ -183,29 +185,65 @@ export function formatAlign(align: 'left' | 'center' | 'right') {
 	});
 }
 
-function applyTextBlock(block: HTMLElement, on: boolean) {
-	const classes = TEXT_BLOCK_CLASS.split(' ');
-	if (on) {
-		block.dataset.p = 'text';
-		block.style.direction = 'ltr';
-		block.classList.add(...classes);
-	} else {
-		delete block.dataset.p;
-		block.style.direction = '';
-		block.classList.remove(...classes);
+type BlockKind = 'text' | 'callout';
+const BLOCK_KIND_CLASS: Record<BlockKind, string> = {
+	text: TEXT_BLOCK_CLASS,
+	callout: CALLOUT_BLOCK_CLASS
+};
+
+/** Sets a line's paragraph kind (study text / callout), or clears it (null). */
+function applyBlockKind(block: HTMLElement, kind: BlockKind | null) {
+	for (const cls of Object.values(BLOCK_KIND_CLASS)) block.classList.remove(...cls.split(' '));
+	delete block.dataset.p;
+	if (kind) {
+		block.dataset.p = kind;
+		block.classList.add(...BLOCK_KIND_CLASS[kind].split(' '));
 	}
 }
 
-/** Toggles the selected lines (or the caret line) between an app instruction (default) and English
- *  study text (`{p:text}`: set apart visually, left-to-right). */
-export function formatTextBlock() {
+/** Toggles the selected lines (or the caret line) to `kind`; when all of them
+ *  already have it, turns it off. Switching kind replaces the old one. */
+function toggleBlockKind(kind: BlockKind) {
 	withActive((el) => {
 		const blocks = selectedBlocks(el);
 		if (!blocks.length) return;
-		// All already study text -> turn off; otherwise turn every selected line on.
-		const on = !blocks.every((b) => b.dataset.p === 'text');
-		for (const b of blocks) applyTextBlock(b, on);
+		const on = !blocks.every((b) => b.dataset.p === kind);
+		for (const b of blocks) applyBlockKind(b, on ? kind : null);
 		notifyInput(el);
+	});
+}
+
+/** English study text (`{p:text}`): set apart visually from the Hebrew instructions. */
+export function formatTextBlock() {
+	toggleBlockKind('text');
+}
+
+/** A tip / note line (`{p:callout}`): lightbulb icon on a soft highlight. */
+export function formatCallout() {
+	toggleBlockKind('callout');
+}
+
+/** Inserts a divider (`---`) after the caret line, with an empty line below it
+ *  to keep typing in. */
+export function formatDivider() {
+	withActive((el) => {
+		const block = currentBlock(el);
+		const hr = document.createElement('hr');
+		hr.className = 'my-3 border-line';
+		const next = document.createElement('div');
+		next.innerHTML = '<br>';
+		if (block) block.after(hr, next);
+		else el.append(hr, next);
+
+		const range = document.createRange();
+		range.setStart(next, 0);
+		range.collapse(true);
+		const sel = window.getSelection();
+		sel?.removeAllRanges();
+		sel?.addRange(range);
+
+		notifyInput(el);
+		updateActiveLine();
 	});
 }
 

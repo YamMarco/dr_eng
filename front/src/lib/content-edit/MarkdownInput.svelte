@@ -93,23 +93,22 @@
 		return out;
 	}
 
-	/** One line-block -> its markdown line, with leading `{a:..}`/`{d:..}`/`{p:text}`
+	/** One line-block -> its markdown line, with leading `{a:..}`/`{d:..}`/`{p:text|callout}`
 	 *  attribute tokens and `#`/`##`/`###` header marker re-added. */
 	function lineToMd(block: HTMLElement): string {
 		const tag = block.tagName.toLowerCase();
+		if (tag === 'hr') return '---';
 		const level = tag === 'h1' ? 1 : tag === 'h2' ? 2 : tag === 'h3' ? 3 : 0;
 
 		const align = block.style.textAlign;
 		// `dir` set by the toolbar, or the inline `direction` mdBlock renders for `{d:..}`.
 		const explicitDir = block.getAttribute('dir') || block.style.direction;
-		const isText = block.dataset.p === 'text';
+		const kind = block.dataset.p;
 
 		let prefix = '';
-		if (isText) prefix += '{p:text}';
+		if (kind === 'text' || kind === 'callout') prefix += `{p:${kind}}`;
 		if (align === 'center' || align === 'right' || align === 'left') prefix += `{a:${align}}`;
-		// `{p:text}` already implies ltr.
-		if ((explicitDir === 'rtl' || explicitDir === 'ltr') && !(isText && explicitDir === 'ltr'))
-			prefix += `{d:${explicitDir}}`;
+		if (explicitDir === 'rtl' || explicitDir === 'ltr') prefix += `{d:${explicitDir}}`;
 		if (level) prefix += `${'#'.repeat(level)} `;
 
 		return prefix + inlineHtmlToMd(block);

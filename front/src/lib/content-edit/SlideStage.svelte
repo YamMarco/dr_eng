@@ -18,7 +18,9 @@
 		formatHeader,
 		formatAlign,
 		formatDirection,
-		formatTextBlock
+		formatTextBlock,
+		formatCallout,
+		formatDivider
 	} from './activeField.svelte';
 	import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
 
@@ -334,6 +336,20 @@
 				title="סימון השורה כטקסט באנגלית ללימוד (מודגש, שמאל-לימין) - לחיצה נוספת מבטלת"
 				onmousedown={(e) => e.preventDefault()}
 				onclick={formatTextBlock}>📖 טקסט לימוד</button
+			>
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
+				title="סימון השורה כהערה / טיפ עם נורה - לחיצה נוספת מבטלת"
+				onmousedown={(e) => e.preventDefault()}
+				onclick={formatCallout}>💡 הערה</button
+			>
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
+				title="הוספת קו מפריד מתחת לשורה"
+				onmousedown={(e) => e.preventDefault()}
+				onclick={formatDivider}>― מפריד</button
 			>
 			<span class="h-4 w-px bg-line"></span>
 			<span class="text-xs font-bold text-muted">סוג המסך:</span>

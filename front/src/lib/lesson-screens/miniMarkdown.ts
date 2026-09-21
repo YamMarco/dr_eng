@@ -1,8 +1,8 @@
 // Tiny inline-markdown -> safe HTML for teaching text (preface / steps /
 // summary / question-preview). HTML is escaped first, then a small fixed set
 // of inline replacements is applied. No block syntax here — see `mdBlock`
-// below for the line-level layer (headers / align / direction / `{p:text}`
-// paragraph type).
+// below for the line-level layer (headers / align / direction / `{p:text}` and
+// `{p:callout}` paragraph types, and a lone `---` line as a divider).
 //
 // Inline: **bold**, *italic* / _italic_, ++underline++, ~~strikethrough~~,
 // `code`, [text](https://url), {c:name}colored text{/c} (name = a key in
@@ -91,6 +91,11 @@ export function mdInline(src: string): string {
 export const TEXT_BLOCK_CLASS =
 	'my-1 rounded-xl border-s-4 border-brand/60 bg-brand-soft/60 px-3 py-2 font-medium';
 
+/** `{p:callout}` lines: a tip / note, set apart with a lightbulb icon (a CSS
+ *  pseudo-element, so it never ends up in the editable text). */
+export const CALLOUT_BLOCK_CLASS =
+	"my-1 rounded-xl border-s-4 border-accent bg-accent-soft px-3 py-2 before:me-2 before:content-['💡']";
+
 const HEADER_CLASS: Record<number, string> = {
 	1: 'text-2xl font-bold',
 	2: 'text-xl font-bold',
@@ -122,6 +127,7 @@ function parseLine(raw: string): {
 		rest = rest.slice(m[0].length);
 	}
 	const isText = paragraph === 'text';
+	const isCallout = paragraph === 'callout';
 
 	let level = 0;
 	const headerMatch = rest.match(/^(#{1,3})\s+(.*)$/);
@@ -138,12 +144,16 @@ function parseLine(raw: string): {
 
 	return {
 		tag: level ? `h${level}` : 'div',
-		classes: [level ? HEADER_CLASS[level] : '', isText ? TEXT_BLOCK_CLASS : '']
+		classes: [
+			level ? HEADER_CLASS[level] : '',
+			isText ? TEXT_BLOCK_CLASS : '',
+			isCallout ? CALLOUT_BLOCK_CLASS : ''
+		]
 			.filter(Boolean)
 			.join(' '),
 		style: styles.join(';'),
 		// No explicit {d:..}: each line takes its direction from its first strong character.
-		attrs: `${isText ? ' data-p="text"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
+		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
 		rest
 	};
 }
@@ -158,6 +168,7 @@ export function mdBlock(src: string): string {
 	return src
 		.split('\n')
 		.map((raw) => {
+			if (raw.trim() === '---') return '<hr class="my-3 border-line">';
 			const { tag, classes, style, attrs, rest } = parseLine(raw);
 			const classAttr = classes ? ` class="${classes}"` : '';
 			const styleAttr = style ? ` style="${style}"` : '';

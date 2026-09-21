@@ -126,11 +126,15 @@ Inline (works anywhere in a line): `**bold**`, `*italic*`/`_italic_`,
 `{c:name}text{/c}` (name = a key in `lib/lesson-screens/textColors.ts`'s
 fixed palette).
 
+Direction: every line and every sentence follows its own first letter (`dir="auto"`;
+emoji, digits and punctuation don't count). `{d:..}` is only a manual override.
+
 Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores
 them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,
-`{p:text}` marks the line as English study text (tinted card with an accent edge,
-left-to-right; implies `{d:ltr}`) so it stands out from the app's Hebrew
-instructions, and a `#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
+`{p:text}` marks the line as English study text (tinted card with an accent edge)
+so it stands out from the app's Hebrew instructions, `{p:callout}` marks a tip / note
+(lightbulb icon on a soft highlight), a line that is only `---` is a divider, and a
+`#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
 Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 `{a:center}## כותרת ממורכזת`.
 
