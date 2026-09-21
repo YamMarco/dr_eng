@@ -18,6 +18,39 @@ const ESCAPE: Record<string, string> = {
 	"'": '&#39;'
 };
 
+/** Wraps each sentence in its own `dir="auto"` isolate, so a sentence in a
+ *  different language than its neighbours takes its own direction from its
+ *  first strong character (word order + punctuation) while the text keeps
+ *  flowing inline. Splits only outside inline tags, only on plain spaces, and
+ *  leaves single-sentence text untouched. Runs on already-escaped HTML. */
+function isolateSentences(html: string): string {
+	const sentences: string[] = [];
+	let start = 0;
+	let depth = 0;
+	for (let i = 0; i < html.length; i++) {
+		const ch = html[i];
+		if (ch === '<') {
+			const end = html.indexOf('>', i);
+			if (end < 0) break;
+			const tag = html.slice(i, end + 1);
+			if (tag.startsWith('</')) depth--;
+			else if (!tag.endsWith('/>') && !/^<br/i.test(tag)) depth++;
+			i = end;
+		} else if (
+			ch === ' ' &&
+			depth === 0 &&
+			i + 1 < html.length &&
+			/[.!?…](?:&quot;|&#39;|\))*$/.test(html.slice(start, i))
+		) {
+			sentences.push(html.slice(start, i));
+			start = i + 1;
+		}
+	}
+	if (sentences.length === 0) return html;
+	sentences.push(html.slice(start));
+	return sentences.map((s) => `<span dir="auto">${s}</span>`).join(' ');
+}
+
 export function mdInline(src: string): string {
 	if (!src) return '';
 
@@ -49,7 +82,7 @@ export function mdInline(src: string): string {
 	// _italic_ (only when not glued to word chars, so file_names survive)
 	s = s.replace(/(^|[^_\w])_([^_\n]+)_(?=$|[^_\w])/g, '$1<em>$2</em>');
 
-	return s;
+	return isolateSentences(s);
 }
 
 /** `{p:text}` lines: English study text, visibly set apart from the app's
@@ -101,7 +134,8 @@ function parseLine(raw: string): {
 	const styles: string[] = [];
 	if (align === 'center' || align === 'right' || align === 'left')
 		styles.push(`text-align:${align}`);
-	if (dir === 'rtl' || dir === 'ltr') styles.push(`direction:${dir}`);
+	const explicitDir = dir === 'rtl' || dir === 'ltr';
+	if (explicitDir) styles.push(`direction:${dir}`);
 
 	return {
 		tag: level ? `h${level}` : 'div',
@@ -109,7 +143,8 @@ function parseLine(raw: string): {
 			.filter(Boolean)
 			.join(' '),
 		style: styles.join(';'),
-		attrs: isText ? ' data-p="text"' : '',
+		// No explicit {d:..}: each line takes its direction from its first strong character.
+		attrs: `${isText ? ' data-p="text"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
 		rest
 	};
 }

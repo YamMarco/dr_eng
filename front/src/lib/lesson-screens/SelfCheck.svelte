@@ -57,7 +57,7 @@
 <ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
 
 {#if screen.text}
-	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="ltr">
+	<p class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed" dir="auto">
 		<Md text={screen.text} />
 	</p>
 {/if}

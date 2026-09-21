@@ -98,7 +98,7 @@
 		</span>
 	</div>
 {/if}
-<p class="leading-relaxed whitespace-pre-line" dir="ltr"><Md text={screen.text} /></p>
+<p class="leading-relaxed whitespace-pre-line" dir="auto"><Md text={screen.text} /></p>
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}

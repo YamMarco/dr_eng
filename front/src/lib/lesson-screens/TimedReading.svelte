@@ -49,4 +49,4 @@
 		{((now - startedAt) / 1000).toFixed(1)}s
 	</span>
 </div>
-<p class="mt-4 leading-relaxed whitespace-pre-line"><Md text={screen.text} /></p>
+<p class="mt-4 leading-relaxed whitespace-pre-line" dir="auto"><Md text={screen.text} /></p>
