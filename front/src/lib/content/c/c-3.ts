@@ -25,17 +25,6 @@ export const c3Lessons: LessonNode[] = [
           type: "preface",
           text: "טיפ מאוד חשוב: \n\nהמטרה בבחינה היא לא לנחש איזו דעה המעריך רוצה לשמוע.\nהמטרה היא להביע את הדעה שלכם בצורה ברורה ולתת לה סיבות טובות.\n\nאז לתלמיד שמסתבך:\n\n🟢 אין סיבה מיוחדת להתנגד? בחרו YES והתקדמו.\nאל תבזבזו שתי דקות על החלטה שאפשר לקבל בעשר שניות.\n\nבשלב הזה אומרים רק:\nמה אני חושב?\n\nובשלב הבא נלמד:\nלמה אני חושב כך?",
         },
-        {
-          type: "summary",
-          title: "איך אומרים עמדה",
-          lines: [
-            '"I think... [the thing you agree with]."',
-            '"I do not think... [the thing you disagree with]."',
-            '"I agree that... / I disagree that..."',
-            '"In my opinion,..."',
-            'לא "it depends" - תמיד לבחור צד אחד',
-          ],
-        },
       ],
       rounds: [
         {
@@ -44,7 +33,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                "קראו את השאלה:\n\n**Do you think teenagers should have part-time jobs?**\nלפני שכותבים — שיטת הרמזור.\n\nצריך להבין את **כל השאלה**, לא רק לזהות את המילים **teenagers** ו־**jobs**.\n\nשימו לב במיוחד ל־**part-time jobs**.\n\nהשאלה לא שואלת אם בני נוער צריכים לעבוד באופן כללי.והיא גם לא שואלת על **full-time jobs**.\nהיא שואלת דבר מאוד מסוים:\n**האם לדעתכם בני נוער צריכים לעבוד בעבודה במשרה חלקית?**\n\nעכשיו אפשר לבחור פתיח שמבטא עמדה ברורה:\n\n✅ **I think teenagers should have part-time jobs.**\n✅ **I do not think teenagers should have part-time jobs.**\nהכלל שלנו:\n**קודם מבינים בדיוק על מה שאלו —**\n** ורק אז אומרים YES או NO. , תבחרו את הפתיח המתאים: **",
+                '### 🟢 שלב 1 — מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 — לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת — לכו על **YES**.\n### 🟢 שלב 3 — כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
