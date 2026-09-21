@@ -2035,7 +2035,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, what is the most effective type of volunteering programme?\n\nמחפשים "most effective" בטקסט - לא את כל הסוגים.\nפסקה II: "the most effective programmes bring young people face to face with the people they help."\n\nתשובה: Programmes that bring young people face to face with the people they help.\nולא יותר מזה - רק ה-most effective אחד.',
+          text: "\nהשאלה:**According to Dr. Okafor, what is the most effective type of volunteering programme?**🟢 קודם מבינים מה מחפשים:**most effective** = הכי יעיללא צריך לחפש את כל סוגי ההתנדבות.צריך למצוא **רק את הסוג הכי יעיל**.📍 בפסקה II כתוב:**“The most effective programmes bring young people face to face with the people they help.”**✅ לכן התשובה:**Programmes that bring young people face to face with the people they help.**וזהו.לא מוסיפים עוד סוגים.לא כותבים מידע שלא ביקשו.⭐ הכלל:**השאלה ביקשה ONE BEST / MOST EFFECTIVE → נותנים תשובה אחת מדויקת.**",
         },
       ],
       rounds: [
