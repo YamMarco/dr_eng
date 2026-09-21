@@ -144,6 +144,7 @@
 				type="button"
 				disabled={checked}
 				onclick={() => pick(i)}
+				dir="auto"
 				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'

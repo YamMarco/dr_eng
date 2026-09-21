@@ -106,7 +106,11 @@
 			{i18n.dict.lesson.questionProgress(qi + 1, screen.questions.length)}
 		</p>
 	{/if}
-	<p class="text-lg leading-relaxed font-semibold"><Md text={question.prompt} /></p>
+	<div class="text-lg leading-relaxed font-semibold">
+		{#each question.prompt.split('\n') as line, li (li)}
+			<p dir="auto"><Md text={line} /></p>
+		{/each}
+	</div>
 	<div class="mt-3 flex flex-col gap-3">
 		{#each question.options as option, oi (oi)}
 			{@const isCorrect = oi === question.correctIndex}
@@ -121,6 +125,7 @@
 				type="button"
 				disabled={checked}
 				onclick={() => pick(oi)}
+				dir="auto"
 				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'
