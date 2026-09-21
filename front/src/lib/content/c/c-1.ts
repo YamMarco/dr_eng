@@ -1084,98 +1084,10 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "ד״ר יונתן כרמי גילה כי 60% מהתלמידים משתמשים בספרייה מדי שבוע.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [5] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
               categories: [{ name: "מספרים", color: "sky", indices: [1, 5] }],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "המורה שרון גל לימדה באותה כיתה במשך 18 שנה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [1, 2] },
-                { name: "מספרים", color: "sky", indices: [7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "פרופ׳ דוד אשכנזי פרסם 3 מאמרים על הנושא בשנה האחרונה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [4] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "כ-500 מתנדבים הצטרפו לפרויקט הניקיון בעיר חיפה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [0] },
-                { name: "שמות", color: "amber", indices: [6] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "המהנדסת רינת לוי בנתה גשר שחסך לעיר 12 מיליון שקל.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [1, 2] },
-                { name: "מספרים", color: "sky", indices: [7, 8, 9] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "אוניברסיטת תל אביב פתחה תוכנית מחקר בת 6 שנים.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "ראש העיר משה כהן הכריז כי 2,000 עצים ייטעו עד סוף השנה.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [2, 3] },
-                { name: "מספרים", color: "sky", indices: [6] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "הספרנית מירי אבן ניהלה את הספרייה במשך 30 שנה ברציפות.",
-              dir: "rtl",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [1, 2] },
-                { name: "מספרים", color: "sky", indices: [7] },
-              ],
             },
           ],
         },
@@ -1188,33 +1100,12 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "In 2015, Dr. Susan Park opened a new library in Riverside.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [1] },
-                { name: "שמות", color: "amber", indices: [2, 3, 4, 10] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
               text: "Professor Mark Ellis found that 72% of students improved their grades.",
               dir: "ltr",
               correctIndices: [],
               categories: [
                 { name: "שמות", color: "amber", indices: [0, 1, 2] },
                 { name: "מספרים", color: "sky", indices: [5] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "The company built 40 new schools across the country in just 5 years.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [3, 11, 12] },
               ],
             },
             {
@@ -1237,17 +1128,6 @@ export const c1Lessons: LessonNode[] = [
               categories: [
                 { name: "שמות", color: "amber", indices: [0, 1] },
                 { name: "מספרים", color: "sky", indices: [7, 8] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "Nurse Hannah Cole treated more than 9,000 patients during the outbreak.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [6, 7] },
               ],
             },
           ],
@@ -1291,17 +1171,6 @@ export const c1Lessons: LessonNode[] = [
                 { name: "מספרים", color: "sky", indices: [9, 10, 14, 20, 21] },
               ],
             },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "The hospital in Clearview treated 14,000 patients last year, a rise of 20% since 2019. Its director, Dr. Omar Rashid, credits the new emergency wing.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [3, 17, 18, 19] },
-                { name: "מספרים", color: "sky", indices: [5, 6, 12, 14] },
-              ],
-            },
           ],
         },
         {
@@ -1309,25 +1178,6 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "preface",
               text: "רמת בחינה. ארבעה טקסטים. סמנו כל מספר וכל שם פרטי.",
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "In 2008, a small group of teachers in the city of Denton started an after-school reading programme. Twenty years later, Dr. Karen Ibrahim reviewed the results: reading scores had risen by 35%, and 12 new branches had opened.\n\nThe programme now costs 600,000 dollars a year to run. According to Professor Liam Foster, more than 4,200 children take part in the programme every month.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [1, 31, 33, 34, 35, 42, 43, 55, 56],
-                },
-                {
-                  name: "שמות",
-                  color: "amber",
-                  indices: [11, 20, 21, 22, 50, 51, 52],
-                },
-              ],
             },
             {
               type: "mark-all",
