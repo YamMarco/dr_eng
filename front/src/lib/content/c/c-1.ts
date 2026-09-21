@@ -1084,6 +1084,17 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "ד״ר יונתן כרמי גילה כי 60% מהתלמידים משתמשים בספרייה מדי שבוע.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [5] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
@@ -1098,6 +1109,61 @@ export const c1Lessons: LessonNode[] = [
               categories: [
                 { name: "שמות", color: "amber", indices: [1, 2] },
                 { name: "מספרים", color: "sky", indices: [7] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "פרופ׳ דוד אשכנזי פרסם 3 מאמרים על הנושא בשנה האחרונה.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [4] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "כ-500 מתנדבים הצטרפו לפרויקט הניקיון בעיר חיפה.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [0] },
+                { name: "שמות", color: "amber", indices: [6] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "המהנדסת רינת לוי בנתה גשר שחסך לעיר 12 מיליון שקל.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "שמות", color: "amber", indices: [1, 2] },
+                { name: "מספרים", color: "sky", indices: [7, 8, 9] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "אוניברסיטת תל אביב פתחה תוכנית מחקר בת 6 שנים.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [7] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "ראש העיר משה כהן הכריז כי 2,000 עצים ייטעו עד סוף השנה.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "שמות", color: "amber", indices: [2, 3] },
+                { name: "מספרים", color: "sky", indices: [6] },
               ],
             },
             {
@@ -1154,28 +1220,6 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "Engineer Laura Kim designed a bridge that saved the city 3 million dollars.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [10, 11, 12] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "Over 800 volunteers joined the clean-up project in Manchester.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [1] },
-                { name: "שמות", color: "amber", indices: [8] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
               text: "Dr. Peter Novak has taught at the university for 22 years.",
               dir: "ltr",
               correctIndices: [],
@@ -1198,34 +1242,12 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "The mayor, James Carter, announced that 1,500 trees will be planted this year.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [2, 3] },
-                { name: "מספרים", color: "sky", indices: [6, 7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
               text: "Nurse Hannah Cole treated more than 9,000 patients during the outbreak.",
               dir: "ltr",
               correctIndices: [],
               categories: [
                 { name: "שמות", color: "amber", indices: [0, 1, 2] },
                 { name: "מספרים", color: "sky", indices: [6, 7] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "The charity raised 250,000 dollars thanks to Coach Daniel Reyes.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [3, 4] },
-                { name: "שמות", color: "amber", indices: [7, 8, 9] },
               ],
             },
           ],
@@ -1280,51 +1302,6 @@ export const c1Lessons: LessonNode[] = [
                 { name: "מספרים", color: "sky", indices: [5, 6, 12, 14] },
               ],
             },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "Since 2012, a small NGO called GreenPath has planted over 1 million trees across 30 countries. Its coordinator, Fiona Walsh, says the number keeps growing every year.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [1, 10, 11, 12, 14, 15],
-                },
-                { name: "שמות", color: "amber", indices: [6, 18, 19] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "Coach Michael Yates has led the school's swimming team for 15 years. Under his guidance, the team has won 8 regional championships since 2014.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [10, 11, 19, 20, 21, 23],
-                },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "A recent study by Dr. Rebecca Shaw found that only 18% of adults exercise for more than 3 hours a week. She surveyed 5,000 people across 40 cities.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שמות", color: "amber", indices: [4, 5, 6] },
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [10, 17, 18, 23, 24, 26, 27],
-                },
-              ],
-            },
           ],
         },
         {
@@ -1365,25 +1342,6 @@ export const c1Lessons: LessonNode[] = [
                   indices: [3, 6, 24, 25, 34, 35, 42, 45, 59, 61],
                 },
                 { name: "שמות", color: "amber", indices: [15, 16, 17] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "For nearly 30 years, the fishing village of Port Ellen struggled with falling numbers of fish. In 2005, marine biologist Dr. Tomas Alvarez introduced new protection zones along 15 kilometres of coastline.\n\nThe results surprised everyone. By 2022, fish numbers had increased by 90%, and local fisherman Robert Doyle reported catching three times more than before.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [2, 3, 17, 28, 29, 37, 43],
-                },
-                {
-                  name: "שמות",
-                  color: "amber",
-                  indices: [8, 9, 20, 21, 22, 47, 48],
-                },
               ],
             },
             {
