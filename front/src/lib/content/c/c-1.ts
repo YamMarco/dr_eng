@@ -939,7 +939,7 @@ export const c1Lessons: LessonNode[] = [
               type: "passage-mcq",
               label: "דרך א׳ - קריאה מלאה",
               timerKey: "raceRead",
-              text: "THE OLD LIGHTHOUSE\n\nThe lighthouse at Cape Marlow was built in 1881 to warn ships about the rocks near the coast. For almost a hundred years, a keeper lived inside it and lit the lamp every evening. In 1974, the lamp became automatic, and the last keeper, Thomas Reed, moved to a nearby village. The building was empty for many years. Then, in 2015, a local group raised 300,000 dollars to repair it. Today, the lighthouse is a small museum, and about 20,000 visitors climb its 120 steps every year.",
+              text: "{a:center}**++THE OLD LIGHTHOUSE++**\n\nThe lighthouse at Cape Marlow was built in 1881 to warn ships about the rocks near the coast. For almost a hundred years, a keeper lived inside it and lit the lamp every evening. In 1974, the lamp became automatic, and the last keeper, Thomas Reed, moved to a nearby village. The building was empty for many years. Then, in 2015, a local group raised 300,000 dollars to repair it. Today, the lighthouse is a small museum, and about 20,000 visitors climb its 120 steps every year.",
               questions: [
                 {
                   prompt:
@@ -956,7 +956,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "דרך ב׳: P1\n\nאל תקראו את הכל. קודם את השאלה, אחר כך: מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה.\n\nמוכנים? השעון מתחיל ברגע שהמסך הבא נפתח.",
+              text: "## **🔍 דרך ב׳: מחפשים חכם**\n\nאל תקראו את כל הטקסט מההתחלה. מתחילים ב־**שאלה**.\nואז עובדים לפי המסלול:\n\n🟦 **מילת מפתח**↓🟨 **איתור בטקסט**↓🟩 **קריאת המשפט הרלוונטי**↓✅ **תשובה**\nהמטרה היא לא לקרוא יותר.\n\nהמטרה היא **למצוא מהר יותר את מה שבאמת צריך**.\n\n⏱️ **מוכנים? **השעון מתחיל ברגע שהמסך הבא נפתח.",
             },
             {
               type: "passage-mcq",
