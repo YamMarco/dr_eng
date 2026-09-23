@@ -44,7 +44,8 @@ export const he = {
 		resumePromptDesc: 'יש ניסיון פתוח למבחן הזה.',
 		resumeConfirm: 'המשך מאיפה שהפסקתי',
 		resumeRestart: 'התחלה מהתחלה',
-		lastAttemptLabel: 'ניסיון אחרון'
+		lastAttemptLabel: 'ניסיון אחרון',
+		backToPassage: 'חזרה לקטע'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',

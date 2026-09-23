@@ -17,6 +17,8 @@
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
+	import PassageOverlay from './PassageOverlay.svelte';
+	import type { PassageScreen } from '$lib/lesson-screens/types';
 	import type { QuizNode } from './types';
 
 	let { quiz, onExit }: { quiz: QuizNode; onExit: () => void } = $props();
@@ -59,6 +61,11 @@
 	let ScreenComponent = $derived(
 		currentEntry ? screenComponents[currentEntry.screen.type] : undefined
 	);
+
+	let passageInPart = $derived(
+		currentPart.screens.find((s): s is PassageScreen => s.type === 'passage')
+	);
+	let showPassage = $state(false);
 
 	let showNavigator = $derived(quiz.options.showNavigator ?? true);
 	let answeredIndices = $derived(
@@ -220,6 +227,28 @@
 					/>
 				</div>
 			{/if}
+			{#if passageInPart}
+				<button
+					type="button"
+					onclick={() => (showPassage = true)}
+					class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/70 transition active:scale-95"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-4 w-4"
+						aria-hidden="true"
+					>
+						<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+						<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+					</svg>
+					{i18n.dict.quiz.backToPassage}
+				</button>
+			{/if}
 		</div>
 
 		<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-6">
@@ -268,5 +297,13 @@
 			<Button onclick={resume}>{i18n.dict.quiz.resumeConfirm}</Button>
 			<Button variant="ghost" onclick={startOver}>{i18n.dict.quiz.resumeRestart}</Button>
 		</Sheet>
+
+		{#if passageInPart}
+			<PassageOverlay
+				passage={passageInPart}
+				open={showPassage}
+				onClose={() => (showPassage = false)}
+			/>
+		{/if}
 	{/if}
 </div>
