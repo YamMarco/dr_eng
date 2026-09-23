@@ -23,7 +23,20 @@ export const he = {
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',
 		ministryTitle: 'מבחני משרד החינוך',
-		yearPrefix: 'מבחן בגרות'
+		yearPrefix: 'מבחן בגרות',
+		avgTimeLabel: 'זמן ממוצע',
+		avgGradeLabel: 'ציון ממוצע',
+		rulesTitle: 'חוקי המבחן',
+		questionsRule: (n: number) => `${n} שאלות`,
+		timeRule: (minutes: number) => `${minutes} דקות`,
+		passRule: (percent: number) => `עובר מ-${percent}%`,
+		controlsTitle: 'הגדרות למבחן',
+		showTimerLabel: 'הצג טיימר',
+		shuffleLabel: 'ערבוב שאלות',
+		scoreboardTitle: 'לוח התוצאות שלך',
+		bestScoreLabel: 'השיא שלך',
+		lastScoreLabel: 'ניסיון אחרון',
+		avgScoreLabel: 'ממוצע'
 	},
 	unit: {
 		backLabel: 'חזרה לבחירת יחידות',
