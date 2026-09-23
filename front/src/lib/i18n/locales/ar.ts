@@ -32,41 +32,12 @@ export const ar: DictionaryOverride = {
 		backLabel: 'رجوع لقائمة الوحدات',
 		lessonsTitle: 'دروس',
 		lessonsDesc: 'مسار تعلّم تدريجي حسب المواضيع',
-		examTitle: 'فهم للامتحان',
-		examSubtitle: (minutes: number) => `تدريب بظروف الامتحان · ${minutes} دقيقة`
+		examTitle: 'اختبارات',
+		examSubtitle: 'مجموعة اختبارات للتدريب، وأيضًا اختبارات بجروت رسمية بحسب السنة'
 	},
 	lessons: {
 		titlePrefix: 'دروس — وحدة',
 		emptyTitle: (letter: string) => `ستُضاف دروس وحدة ${letter} قريبًا`
-	},
-	examStart: {
-		titlePrefix: 'فهم للامتحان — وحدة',
-		durationLabel: 'مدة التدريب',
-		description: (minutes: number) =>
-			`يستمر التدريب ${minutes} دقيقة. يبدأ العداد بمجرد الضغط على "بدء" ويتوقف تلقائيًا عند انتهاء الوقت.`,
-		structureTitle: 'هيكل التدريب',
-		startButton: 'بدء',
-		backButton: 'رجوع'
-	},
-	examRun: {
-		exitLabel: 'الخروج من التدريب',
-		tabsAriaLabel: 'أقسام التدريب',
-		generalTab: 'تدريب',
-		placeholderTitle: (label: string) => `ستُحمَّل هنا أسئلة ${label}`,
-		placeholderDesc: 'هذه نسخة تجريبية — سيُضاف المحتوى لاحقًا. العداد يعمل كالمعتاد.',
-		continueButton: 'متابعة',
-		restartButton: 'العودة للبداية',
-		finishButton: 'إنهاء التدريب',
-		exitPromptTitle: 'الخروج من التدريب؟',
-		exitPromptDesc: 'الخروج سيوقف العداد ولن يُحفظ التقدّم.',
-		exitConfirm: 'الخروج من التدريب',
-		exitCancel: 'متابعة التدريب',
-		timeUpTitle: 'انتهى الوقت',
-		finishedTitle: 'انتهى التدريب',
-		timeUpDesc: (minutes: number) => `أُغلق التدريب تلقائيًا بعد ${minutes} دقيقة.`,
-		finishedDescBefore: 'أنهيتم التدريب وتبقّى',
-		finishedDescAfter: 'دقيقة.',
-		backToModule: 'رجوع للوحدة'
 	},
 	settings: {
 		title: 'الإعدادات',

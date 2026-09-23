@@ -2,7 +2,6 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
-	import { EXAM_MINUTES } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { themeForSectionIndex } from '$lib/sectionThemes';
@@ -79,10 +78,7 @@
 			<span class="min-w-0 flex-1">
 				<span class="block text-xl font-bold">{i18n.dict.module.examTitle}</span>
 				<span class="mt-1 block text-sm leading-relaxed text-white/85">
-					{i18n.dict.module.examSubtitle(EXAM_MINUTES)}
-					{#if mod.sections.length}
-						· <span dir="ltr">{mod.sections.map((s) => s.label).join(' · ')}</span>
-					{/if}
+					{i18n.dict.module.examSubtitle}
 				</span>
 			</span>
 		</a>

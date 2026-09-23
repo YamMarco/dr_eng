@@ -21,12 +21,9 @@ export const he = {
 		unitsSuffix: 'יח"ל'
 	},
 	quizzes: {
-		title: 'מבחנים',
-		subtitle: 'תרגול קצר, בלי לעבור דרך המסלול המלא.',
 		assortedTitle: 'מגוון מבחנים',
 		ministryTitle: 'מבחני משרד החינוך',
-		yearPrefix: 'מבחן בגרות',
-		backLabel: 'חזרה לרשימת המבחנים'
+		yearPrefix: 'מבחן בגרות'
 	},
 	unit: {
 		backLabel: 'חזרה לבחירת יחידות',
@@ -38,8 +35,8 @@ export const he = {
 		backLabel: 'חזרה לרשימת המודולים',
 		lessonsTitle: 'שיעורים',
 		lessonsDesc: 'מסע לימוד שלב אחר שלב לפי נושאים',
-		examTitle: 'הבנה למבחן',
-		examSubtitle: (minutes: number) => `תרגול בתנאי בחינה · ${minutes} דקות`
+		examTitle: 'מבחנים',
+		examSubtitle: 'מגוון מבחנים לתרגול, וגם מבחני בגרות רשמיים לפי שנה'
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
@@ -125,35 +122,6 @@ export const he = {
 						: `עד ${maxTypos} טעויות קטנות מותרות`
 			}`,
 		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
-	},
-	examStart: {
-		titlePrefix: 'הבנה למבחן — מודול',
-		durationLabel: 'משך התרגול',
-		description: (minutes: number) =>
-			`התרגול נמשך ${minutes} דקות. הטיימר מתחיל לרוץ ברגע הלחיצה על "התחלה" ונעצר אוטומטית בסיום הזמן.`,
-		structureTitle: 'מבנה התרגול',
-		startButton: 'התחלה',
-		backButton: 'חזרה'
-	},
-	examRun: {
-		exitLabel: 'יציאה מהתרגול',
-		tabsAriaLabel: 'חלקי התרגול',
-		generalTab: 'תרגול',
-		placeholderTitle: (label: string) => `השאלות של ${label} ייטענו כאן`,
-		placeholderDesc: 'זוהי גרסת הדגמה — התוכן יתווסף בשלב הבא. הטיימר פועל כרגיל.',
-		continueButton: 'המשך',
-		restartButton: 'חזרה להתחלה',
-		finishButton: 'סיום התרגול',
-		exitPromptTitle: 'לצאת מהתרגול?',
-		exitPromptDesc: 'היציאה תעצור את הטיימר וההתקדמות לא תישמר.',
-		exitConfirm: 'יציאה מהתרגול',
-		exitCancel: 'המשך בתרגול',
-		timeUpTitle: 'הזמן נגמר',
-		finishedTitle: 'התרגול הסתיים',
-		timeUpDesc: (minutes: number) => `התרגול נסגר אוטומטית בתום ${minutes} הדקות.`,
-		finishedDescBefore: 'סיימתם את התרגול עם',
-		finishedDescAfter: 'דקות שנותרו.',
-		backToModule: 'חזרה למודול'
 	},
 	settings: {
 		title: 'הגדרות',

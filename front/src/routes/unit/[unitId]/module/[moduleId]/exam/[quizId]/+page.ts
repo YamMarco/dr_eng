@@ -4,6 +4,6 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {
 	const quiz = getQuiz(params.quizId);
-	if (!quiz) error(404, 'המבחן המבוקש לא נמצא');
+	if (!quiz || quiz.moduleId !== params.moduleId) error(404, 'המבחן המבוקש לא נמצא');
 	return { quiz };
 };

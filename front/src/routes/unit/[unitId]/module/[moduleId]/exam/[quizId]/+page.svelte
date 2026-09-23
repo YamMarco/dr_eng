@@ -9,9 +9,10 @@
 
 	let { data }: PageProps = $props();
 	let quiz = $derived(data.quiz);
+	let examBase = $derived(`/unit/${data.group.id}/module/${data.mod.id}/exam`);
 </script>
 
-<AppBar title={quiz.titleHe} back="/quizzes" backLabel={i18n.dict.quizzes.backLabel} />
+<AppBar title={quiz.titleHe} back={examBase} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<div
@@ -40,6 +41,6 @@
 		class="mt-8 flex flex-col gap-3"
 	>
 		<Button disabled>{i18n.dict.common.comingSoon}</Button>
-		<Button variant="secondary" href="/quizzes">{i18n.dict.common.back}</Button>
+		<Button variant="secondary" href={examBase}>{i18n.dict.common.back}</Button>
 	</div>
 </main>

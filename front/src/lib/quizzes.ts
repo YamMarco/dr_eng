@@ -2,6 +2,7 @@ export type QuizKind = 'assorted' | 'ministry';
 
 type QuizBase = {
 	id: string;
+	moduleId: string;
 	titleHe: string;
 	descriptionHe: string;
 };
@@ -19,11 +20,12 @@ export type MinistryQuiz = QuizBase & {
 
 export type Quiz = AssortedQuiz | MinistryQuiz;
 
-// Placeholder entries for the quizzes list shell — replace with real content
-// once a quiz's screens are authored.
+// Placeholder entries for the quizzes list shell - replace with real content
+// once a quiz's screens are authored. Module C only for now.
 export const assortedQuizzes: AssortedQuiz[] = [
 	{
 		id: 'rotating-subject',
+		moduleId: 'c',
 		kind: 'assorted',
 		titleHe: 'נושא מתחלף',
 		descriptionHe: 'כל סבב עובר לנושא אחר - קריאה, מילים, כתיבה.',
@@ -31,6 +33,7 @@ export const assortedQuizzes: AssortedQuiz[] = [
 	},
 	{
 		id: 'against-the-clock',
+		moduleId: 'c',
 		kind: 'assorted',
 		titleHe: 'מרוץ נגד הזמן',
 		descriptionHe: 'שאלות מכל המודול תחת טיימר יורד.',
@@ -41,6 +44,7 @@ export const assortedQuizzes: AssortedQuiz[] = [
 export const ministryQuizzes: MinistryQuiz[] = [
 	{
 		id: 'moe-2024',
+		moduleId: 'c',
 		kind: 'ministry',
 		year: 2024,
 		titleHe: 'מבחן בגרות 2024',
@@ -48,6 +52,7 @@ export const ministryQuizzes: MinistryQuiz[] = [
 	},
 	{
 		id: 'moe-2023',
+		moduleId: 'c',
 		kind: 'ministry',
 		year: 2023,
 		titleHe: 'מבחן בגרות 2023',
@@ -59,4 +64,11 @@ export const allQuizzes: Quiz[] = [...assortedQuizzes, ...ministryQuizzes];
 
 export function getQuiz(id: string): Quiz | undefined {
 	return allQuizzes.find((quiz) => quiz.id === id);
+}
+
+export function getQuizzesForModule(moduleId: string) {
+	return {
+		assorted: assortedQuizzes.filter((quiz) => quiz.moduleId === moduleId),
+		ministry: ministryQuizzes.filter((quiz) => quiz.moduleId === moduleId)
+	};
 }
