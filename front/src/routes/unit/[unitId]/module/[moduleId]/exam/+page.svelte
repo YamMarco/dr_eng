@@ -51,7 +51,7 @@
 		<div
 			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
 		>
-			<p class="text-2xl font-extrabold tabular">78%</p>
+			<p class="text-2xl font-extrabold tabular">78</p>
 			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgGradeLabel}</p>
 		</div>
 	</section>

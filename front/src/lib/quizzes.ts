@@ -4,7 +4,6 @@ type QuizBase = {
 	id: string;
 	moduleId: string;
 	titleHe: string;
-	descriptionHe: string;
 };
 
 export type AssortedQuiz = QuizBase & {
@@ -28,7 +27,6 @@ export const assortedQuizzes: AssortedQuiz[] = [
 		moduleId: 'c',
 		kind: 'assorted',
 		titleHe: 'נושא מתחלף',
-		descriptionHe: 'כל סבב עובר לנושא אחר - קריאה, מילים, כתיבה.',
 		twistHe: 'נושא מתחלף בכל סבב'
 	},
 	{
@@ -36,7 +34,6 @@ export const assortedQuizzes: AssortedQuiz[] = [
 		moduleId: 'c',
 		kind: 'assorted',
 		titleHe: 'מרוץ נגד הזמן',
-		descriptionHe: 'שאלות מכל המודול תחת טיימר יורד.',
 		twistHe: 'טיימר יורד לכל שאלה'
 	}
 ];
@@ -47,16 +44,14 @@ export const ministryQuizzes: MinistryQuiz[] = [
 		moduleId: 'c',
 		kind: 'ministry',
 		year: 2024,
-		titleHe: 'מבחן בגרות 2024',
-		descriptionHe: 'מבחן רשמי של משרד החינוך משנת 2024.'
+		titleHe: 'מבחן בגרות 2024'
 	},
 	{
 		id: 'moe-2023',
 		moduleId: 'c',
 		kind: 'ministry',
 		year: 2023,
-		titleHe: 'מבחן בגרות 2023',
-		descriptionHe: 'מבחן רשמי של משרד החינוך משנת 2023.'
+		titleHe: 'מבחן בגרות 2023'
 	}
 ];
 
