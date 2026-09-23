@@ -29,11 +29,15 @@
 		label?: string;
 	} = $props();
 
-	let selected = $state<number | null>(null);
+	// Revisiting via the quiz navigator restores whatever was picked before.
+	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number | undefined) : undefined;
+	let selected = $state<number | null>(restoredAnswer ?? null);
 	let checked = $state(false);
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// eslint-disable-next-line no-useless-assignment
+	if (mode === 'quiz') disabled = restoredAnswer === undefined;
 
 	function pick(i: number) {
 		if (checked) return;

@@ -71,7 +71,8 @@
 	// --- Quiz mode: a single free-text essay, no auto-check. Word count is
 	// just a live counter against minWords/maxWords, not a hard gate beyond
 	// minWords (report shows the raw text for manual review). ---
-	let essayText = $state('');
+	// Revisiting via the quiz navigator restores whatever was typed before.
+	let essayText = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
 	let essayWords = $derived(essayText.trim() ? essayText.trim().split(/\s+/).length : 0);
 	let essayOk = $derived(essayWords >= (screen.minWords ?? 1));
 

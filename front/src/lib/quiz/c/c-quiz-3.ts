@@ -9,7 +9,9 @@ export const cQuiz3: QuizNode = {
 	titleHe: 'נושא מתחלף',
 	descriptionHe: 'כל סבב עובר לנושא אחר - קריאה, מילים, כתיבה.',
 	options: {
-		passThreshold: 0.6
+		passThreshold: 0.6,
+		durationMinutes: 10,
+		warnAtMinutes: 3
 	},
 	parts: [
 		{

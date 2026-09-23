@@ -26,7 +26,8 @@
 		label?: string;
 	} = $props();
 
-	let answer = $state('');
+	// Revisiting via the quiz navigator restores whatever was typed before.
+	let answer = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
 	let checked = $state(false);
 
 	// eslint-disable-next-line no-useless-assignment

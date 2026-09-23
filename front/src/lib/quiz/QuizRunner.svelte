@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
@@ -13,6 +14,8 @@
 	import { screensWithIds } from './screenIds';
 	import { scoreQuiz, type QuizScore } from './scoring';
 	import QuizReport from './QuizReport.svelte';
+	import QuizTimer from './QuizTimer.svelte';
+	import QuestionNavigator from './QuestionNavigator.svelte';
 	import type { QuizNode } from './types';
 
 	let { quiz, onExit }: { quiz: QuizNode; onExit: () => void } = $props();
@@ -51,6 +54,16 @@
 		currentEntry ? screenComponents[currentEntry.screen.type] : undefined
 	);
 
+	let showNavigator = $derived(quiz.options.showNavigator ?? true);
+	let answeredIndices = $derived(
+		new Set(playedScreens.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
+	);
+
+	let showTimer = $derived(quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined);
+	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
+	let remainingSeconds = $state(untrack(() => (quiz.options.durationMinutes ?? 0) * 60));
+	let timerWarning = $derived(remainingSeconds <= (quiz.options.warnAtMinutes ?? 5) * 60);
+
 	let footerLabel = $derived(
 		!isLastScreenInPart
 			? i18n.dict.quiz.nextButton
@@ -72,6 +85,12 @@
 	};
 	provideQuizAnswerSlot(slot);
 
+	function submit() {
+		if (submitted) return;
+		score = scoreQuiz(quiz, answers);
+		submitted = true;
+	}
+
 	function advance() {
 		direction = 1;
 		if (!isLastScreenInPart) {
@@ -80,10 +99,40 @@
 			partIndex += 1;
 			screenIndex = 0;
 		} else {
-			score = scoreQuiz(quiz, answers);
-			submitted = true;
+			submit();
 		}
 	}
+
+	function jump(index: number) {
+		if (index === screenIndex) return;
+		if (index > screenIndex && quiz.options.allowSkip === false) return;
+		if (index < screenIndex && quiz.options.allowBackWithinPart === false) return;
+		direction = index > screenIndex ? 1 : -1;
+		screenIndex = index;
+	}
+
+	// Runs once on mount (durationMinutes is a fixed prop, so this effect has
+	// no reactive dependency that would restart the countdown). The interval
+	// checks `submitted` itself each tick rather than the effect depending on
+	// it, so a manual submit just lets the next tick notice and stop.
+	$effect(() => {
+		const minutes = quiz.options.durationMinutes;
+		if (!minutes) return;
+		const endsAt = Date.now() + minutes * 60 * 1000;
+		const interval = setInterval(() => {
+			if (submitted) {
+				clearInterval(interval);
+				return;
+			}
+			const left = Math.max(0, Math.round((endsAt - Date.now()) / 1000));
+			remainingSeconds = left;
+			if (left === 0) {
+				clearInterval(interval);
+				submit();
+			}
+		}, 250);
+		return () => clearInterval(interval);
+	});
 
 	function requestExit() {
 		if (Object.keys(answers).length > 0) {
@@ -98,7 +147,13 @@
 	{#if submitted && score}
 		<QuizReport {quiz} {score} onBack={onExit} />
 	{:else}
-		<AppBar title={currentPart.titleHe} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel} />
+		<AppBar title={currentPart.titleHe} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
+			{#snippet trailing()}
+				{#if showTimer}
+					<QuizTimer seconds={remainingSeconds} warning={timerWarning} />
+				{/if}
+			{/snippet}
+		</AppBar>
 
 		<div class="mx-auto w-full max-w-lg px-4 pt-3">
 			<p class="text-xs font-semibold text-muted">
@@ -107,6 +162,17 @@
 					· {i18n.dict.quiz.questionProgress(screenIndex + 1, playedScreens.length)}
 				{/if}
 			</p>
+			{#if showNavigator && playedScreens.length > 1}
+				<div class="mt-3">
+					<QuestionNavigator
+						total={playedScreens.length}
+						currentIndex={screenIndex}
+						answered={answeredIndices}
+						onJump={jump}
+						style={quiz.options.navigatorStyle ?? 'numbers'}
+					/>
+				</div>
+			{/if}
 		</div>
 
 		<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-6">
