@@ -1,4 +1,4 @@
-import { cQuiz3 } from './c-quiz-3';
+import { cExam3Animals } from './c-exam-3-animals';
 import type { QuizNode } from '../types';
 
-export const cQuizzes: QuizNode[] = [cQuiz3];
+export const cQuizzes: QuizNode[] = [cExam3Animals];

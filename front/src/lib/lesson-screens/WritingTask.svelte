@@ -99,19 +99,9 @@
 	}
 </script>
 
-{#if mode === 'lesson' || screen.paragraphRef}
+{#if mode === 'lesson'}
 	<div class="flex flex-wrap items-center gap-2">
-		{#if mode === 'lesson'}
-			<ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
-		{/if}
-		{#if screen.paragraphRef}
-			<span
-				class="mb-3 inline-flex items-center rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-ink/70"
-				dir="ltr"
-			>
-				{screen.paragraphRef}
-			</span>
-		{/if}
+		<ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
 	</div>
 {/if}
 {#if score}

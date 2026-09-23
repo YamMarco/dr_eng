@@ -2,14 +2,14 @@ export type QuizKind = 'assorted' | 'ministry';
 
 type QuizBase = {
 	id: string;
+	/** Same exam, different format - short id shaped `<module letter>-t-xxxx`, alongside the readable `id` slug. */
+	uuid: string;
 	moduleId: string;
 	titleHe: string;
 };
 
 export type AssortedQuiz = QuizBase & {
 	kind: 'assorted';
-	/** Short line naming this quiz's twist, e.g. a rotating subject per round. */
-	twistHe: string;
 };
 
 export type MinistryQuiz = QuizBase & {
@@ -19,41 +19,17 @@ export type MinistryQuiz = QuizBase & {
 
 export type Quiz = AssortedQuiz | MinistryQuiz;
 
-// Placeholder entries for the quizzes list shell - replace with real content
-// once a quiz's screens are authored. Module C only for now.
 export const assortedQuizzes: AssortedQuiz[] = [
 	{
-		id: 'rotating-subject',
+		id: 'module-c-exam-3',
+		uuid: 'c-t-7192',
 		moduleId: 'c',
 		kind: 'assorted',
-		titleHe: 'נושא מתחלף',
-		twistHe: 'נושא מתחלף בכל סבב'
-	},
-	{
-		id: 'against-the-clock',
-		moduleId: 'c',
-		kind: 'assorted',
-		titleHe: 'מרוץ נגד הזמן',
-		twistHe: 'טיימר יורד לכל שאלה'
+		titleHe: 'ידידויות יוצאות דופן בין בעלי חיים'
 	}
 ];
 
-export const ministryQuizzes: MinistryQuiz[] = [
-	{
-		id: 'moe-2024',
-		moduleId: 'c',
-		kind: 'ministry',
-		year: 2024,
-		titleHe: 'מבחן בגרות 2024'
-	},
-	{
-		id: 'moe-2023',
-		moduleId: 'c',
-		kind: 'ministry',
-		year: 2023,
-		titleHe: 'מבחן בגרות 2023'
-	}
-];
+export const ministryQuizzes: MinistryQuiz[] = [];
 
 export const allQuizzes: Quiz[] = [...assortedQuizzes, ...ministryQuizzes];
 

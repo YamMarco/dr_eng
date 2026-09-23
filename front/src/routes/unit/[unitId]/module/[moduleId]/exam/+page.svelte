@@ -14,7 +14,7 @@
 	let quizzes = $derived(getQuizzesForModule(mod.id));
 
 	function subtitle(quiz: Quiz) {
-		return quiz.kind === 'assorted' ? quiz.twistHe : `${i18n.dict.quizzes.yearPrefix} ${quiz.year}`;
+		return quiz.kind === 'ministry' ? `${i18n.dict.quizzes.yearPrefix} ${quiz.year}` : undefined;
 	}
 </script>
 
@@ -27,7 +27,9 @@
 					class="group flex flex-col gap-1 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 				>
 					<span class="text-sm font-bold">{quiz.titleHe}</span>
-					<span class="text-xs leading-snug text-muted">{subtitle(quiz)}</span>
+					{#if subtitle(quiz)}
+						<span class="text-xs leading-snug text-muted">{subtitle(quiz)}</span>
+					{/if}
 				</a>
 			</li>
 		{/each}

@@ -17,15 +17,9 @@
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
-	import PassageOverlay from './PassageOverlay.svelte';
-	import type { PassageScreen } from '$lib/lesson-screens/types';
 	import type { QuizNode } from './types';
 
-	let {
-		quiz,
-		onExit,
-		showTimer: showTimerOverride
-	}: { quiz: QuizNode; onExit: () => void; showTimer?: boolean } = $props();
+	let { quiz, onExit }: { quiz: QuizNode; onExit: () => void } = $props();
 
 	// Screens read `mode` via context to skip the check/feedback step and
 	// record straight into the answers bag instead of the lesson score.
@@ -66,18 +60,13 @@
 		currentEntry ? screenComponents[currentEntry.screen.type] : undefined
 	);
 
-	let passageInPart = $derived(
-		currentPart.screens.find((s): s is PassageScreen => s.type === 'passage')
-	);
-	let showPassage = $state(false);
-
 	let showNavigator = $derived(quiz.options.showNavigator ?? true);
 	let answeredIndices = $derived(
 		new Set(playedScreens.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
 	);
 
 	let showTimer = $derived(
-		showTimerOverride ?? quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined
+		quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined
 	);
 	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
 	let remainingSeconds = $state(untrack(() => (quiz.options.durationMinutes ?? 0) * 60));
@@ -220,8 +209,8 @@
 			{/snippet}
 		</AppBar>
 
-		<div class="mx-auto w-full max-w-lg px-4 pt-2">
-			<div class="flex flex-wrap items-center gap-2">
+		<div class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2">
+			<div class="flex flex-wrap items-center gap-1.5">
 				{#if showNavigator && playedScreens.length > 1}
 					<QuestionNavigator
 						total={playedScreens.length}
@@ -234,28 +223,6 @@
 					<p class="text-xs font-semibold text-muted tabular">
 						{i18n.dict.quiz.questionProgress(screenIndex + 1, playedScreens.length)}
 					</p>
-				{/if}
-				{#if passageInPart}
-					<button
-						type="button"
-						onclick={() => (showPassage = true)}
-						class="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-ink/70 transition active:scale-95"
-					>
-						<svg
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="h-3.5 w-3.5"
-							aria-hidden="true"
-						>
-							<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-							<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
-						</svg>
-						{i18n.dict.quiz.backToPassage}
-					</button>
 				{/if}
 			</div>
 		</div>
@@ -306,13 +273,5 @@
 			<Button onclick={resume}>{i18n.dict.quiz.resumeConfirm}</Button>
 			<Button variant="ghost" onclick={startOver}>{i18n.dict.quiz.resumeRestart}</Button>
 		</Sheet>
-
-		{#if passageInPart}
-			<PassageOverlay
-				passage={passageInPart}
-				open={showPassage}
-				onClose={() => (showPassage = false)}
-			/>
-		{/if}
 	{/if}
 </div>

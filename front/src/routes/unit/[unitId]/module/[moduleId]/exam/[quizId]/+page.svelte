@@ -3,12 +3,13 @@
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import Toggle from '$lib/components/Toggle.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
 	import { getLastAttempt } from '$lib/quiz/progress';
+	import { screensWithIds } from '$lib/quiz/screenIds';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
+	import QuizSolution from '$lib/quiz/QuizSolution.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -16,19 +17,34 @@
 	let examBase = $derived(`/unit/${data.group.id}/module/${data.mod.id}/exam`);
 	let quizNode = $derived(getQuizNode(quiz.id));
 	let running = $state(false);
+	let viewingSolution = $state(false);
 	// Re-reads on return from the runner (running flips back to false), so a
 	// just-finished attempt shows up without needing a full page reload.
 	let lastAttempt = $derived(quizNode && !running ? getLastAttempt(quizNode.id) : null);
 
+	// Real content, when it exists, is the source of truth for both numbers -
+	// content not yet written falls back to a rough estimate by quiz kind.
 	// Ministry quizzes run to the real exam length; assorted ones stay short.
-	let questionCount = $derived(quiz.kind === 'ministry' ? 25 : 12);
-	let minutes = $derived(quiz.kind === 'ministry' ? 90 : 20);
-
-	let showTimer = $state(true);
+	let questionCount = $derived(
+		quizNode
+			? quizNode.parts.reduce(
+					(sum, part) =>
+						sum + screensWithIds(part).filter((e) => e.screen.type !== 'passage').length,
+					0
+				)
+			: quiz.kind === 'ministry'
+				? 25
+				: 12
+	);
+	let minutes = $derived(
+		quizNode?.options.durationMinutes ?? (quiz.kind === 'ministry' ? 90 : 20)
+	);
 </script>
 
 {#if running && quizNode}
-	<QuizRunner quiz={quizNode} onExit={() => (running = false)} {showTimer} />
+	<QuizRunner quiz={quizNode} onExit={() => (running = false)} />
+{:else if viewingSolution && quizNode}
+	<QuizSolution quiz={quizNode} onBack={() => (viewingSolution = false)} />
 {:else}
 	<AppBar title={quiz.titleHe} back={examBase} />
 
@@ -46,20 +62,9 @@
 			</ul>
 		</section>
 
-		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-			class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
-		>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.controlsTitle}</h2>
-			<div class="flex items-center justify-between">
-				<span class="text-sm font-semibold">{i18n.dict.quizzes.showTimerLabel}</span>
-				<Toggle bind:checked={showTimer} label={i18n.dict.quizzes.showTimerLabel} />
-			</div>
-		</section>
-
 		<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
 		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class="mt-6"
 		>
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.scoreboardTitle}</h2>
@@ -90,11 +95,18 @@
 		</section>
 
 		<div
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 			class="mt-8 flex flex-col gap-3"
 		>
 			{#if quizNode}
 				<Button onclick={() => (running = true)}>{i18n.dict.quiz.startButton}</Button>
+				<Button
+					variant="secondary"
+					disabled={!lastAttempt}
+					onclick={() => (viewingSolution = true)}
+				>
+					{i18n.dict.quiz.viewSolutionButton}
+				</Button>
 			{:else}
 				<Button disabled>{i18n.dict.common.comingSoon}</Button>
 			{/if}

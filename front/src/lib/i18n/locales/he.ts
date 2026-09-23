@@ -45,8 +45,11 @@ export const he = {
 		resumeConfirm: 'המשך מאיפה שהפסקתי',
 		resumeRestart: 'התחלה מהתחלה',
 		lastAttemptLabel: 'ניסיון אחרון',
-		backToPassage: 'חזרה לקטע',
-		timeLeftLabel: 'זמן שנותר'
+		timeLeftLabel: 'זמן שנותר',
+		viewSolutionButton: 'צפייה בפתרונות',
+		viewSolutionLocked: 'פתרו את המבחן פעם אחת כדי לפתוח',
+		solutionTitle: 'פתרון',
+		correctAnswerLabel: 'תשובה נכונה'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',
@@ -54,11 +57,9 @@ export const he = {
 		yearPrefix: 'מבחן בגרות',
 		avgTimeLabel: 'זמן ממוצע',
 		avgGradeLabel: 'ציון ממוצע',
-		rulesTitle: 'חוקי המבחן',
+		rulesTitle: 'מבנה המבחן',
 		questionsRule: (n: number) => `${n} שאלות`,
 		timeRule: (minutes: number) => `${minutes} דקות`,
-		controlsTitle: 'הגדרות למבחן',
-		showTimerLabel: 'הצג טיימר',
 		scoreboardTitle: 'לוח התוצאות שלך',
 		bestScoreLabel: 'השיא שלך',
 		lastScoreLabel: 'ניסיון אחרון',
