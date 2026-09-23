@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1790154520.8711035,
-    "seen": 1790154900.042139,
-    "ast_hash": "50c2e427bc2aee6bc9d38b4d01a8b231",
+    "mtime": 1790156412.2013001,
+    "seen": 1790157317.8922262,
+    "ast_hash": "34faf6248600cbb3425306bc169df702",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
-    "mtime": 1790153914.0160959,
-    "seen": 1790154115.4364822,
-    "ast_hash": "02bce92965f3ba747f0add11d54c15b4",
+    "mtime": 1790156271.8836844,
+    "seen": 1790157317.8922527,
+    "ast_hash": "cf4c96e1affa5fbdcb1d465d818bdefb",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Preface.svelte": {
@@ -468,9 +468,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WritingTask.svelte": {
-    "mtime": 1790153863.3957467,
-    "seen": 1790154115.436519,
-    "ast_hash": "4f559789a209141290316980175ecac3",
+    "mtime": 1790156282.8338263,
+    "seen": 1790157317.8923304,
+    "ast_hash": "30739f85f06cf508a163e3457f29c0c9",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {
@@ -714,9 +714,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/SelfCheck.svelte": {
-    "mtime": 1790153669.1108878,
-    "seen": 1790154115.4364982,
-    "ast_hash": "b61ccc4fae5caa2cec024aa54de14413",
+    "mtime": 1790156301.8594182,
+    "seen": 1790157317.892282,
+    "ast_hash": "c4fc9d76cf85e1058b5d86a243770280",
     "semantic_hash": ""
   },
   "docs/module c/insertprogram/module_c_dev_guide.pdf": {
@@ -1176,9 +1176,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.svelte": {
-    "mtime": 1790154307.437116,
-    "seen": 1790154451.1244216,
-    "ast_hash": "7436cbf0034471d3d6e4c372947664c9",
+    "mtime": 1790156420.1613293,
+    "seen": 1790157317.8924913,
+    "ast_hash": "520fe9c29daa54dea092a2b3c61b4469",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.ts": {
@@ -1194,9 +1194,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/SentenceCompletion.svelte": {
-    "mtime": 1790153658.180577,
-    "seen": 1790154115.4364996,
-    "ast_hash": "7fe287cc30086ee51efe864c60d03aa6",
+    "mtime": 1790156293.1557715,
+    "seen": 1790157317.892285,
+    "ast_hash": "dc91de487ae648a9d2610ab4093a61bb",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/mode.svelte.ts": {
@@ -1212,9 +1212,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuizRunner.svelte": {
-    "mtime": 1790154561.5312545,
-    "seen": 1790154900.0423357,
-    "ast_hash": "40213b55a553471390c9d557c67e3c03",
+    "mtime": 1790156383.3153899,
+    "seen": 1790157317.8923876,
+    "ast_hash": "ae7d9972c83a71c8e02a79910efc1f7c",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/answers.svelte.ts": {
@@ -1224,9 +1224,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/c/c-quiz-3.ts": {
-    "mtime": 1790153850.107881,
-    "seen": 1790154115.436555,
-    "ast_hash": "79e96ace04ff9021b61763f43d222e21",
+    "mtime": 1790156345.327643,
+    "seen": 1790157317.8923962,
+    "ast_hash": "1bbb48e1315f8ca445a490604eb3969d",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/c/index.ts": {
@@ -1254,21 +1254,21 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/types.ts": {
-    "mtime": 1790152690.7044773,
-    "seen": 1790153205.809946,
-    "ast_hash": "e1c6ca692bb72cffb388d321cd6e8319",
+    "mtime": 1790156407.0488355,
+    "seen": 1790157317.8924196,
+    "ast_hash": "3f650c44cf0becbc87894b2d1b4adaf7",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuestionNavigator.svelte": {
-    "mtime": 1790153960.7430277,
-    "seen": 1790154115.4365463,
-    "ast_hash": "b0ceeb71b1d580ff616691fbc574ad17",
+    "mtime": 1790156392.752463,
+    "seen": 1790157317.8923817,
+    "ast_hash": "22a08fb8f5e6cc3417b879b0209e1a85",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuizTimer.svelte": {
-    "mtime": 1790153615.8079128,
-    "seen": 1790154115.4365516,
-    "ast_hash": "31a30404842a60d1f7c6cae4aec06148",
+    "mtime": 1790156401.7712648,
+    "seen": 1790157317.8923905,
+    "ast_hash": "5890cbffaf26ea983d5f33f33b8bfc52",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/time.ts": {
@@ -1284,15 +1284,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageBody.svelte": {
-    "mtime": 1790154473.9206302,
-    "seen": 1790154900.0421836,
-    "ast_hash": "b36ebfddd53878caf3aeb62832ded01b",
+    "mtime": 1790156452.459583,
+    "seen": 1790157317.8922598,
+    "ast_hash": "c93b1cf75cf30f60afdbcb349e4bc0c5",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/PassageOverlay.svelte": {
-    "mtime": 1790154512.9702175,
-    "seen": 1790154900.0423229,
-    "ast_hash": "2d748f0f95833904006055344c65cbca",
+    "mtime": 1790156351.4385998,
+    "seen": 1790157317.8923783,
+    "ast_hash": "af52112a666f0b792e57403c6541237b",
     "semantic_hash": ""
   }
 }
