@@ -21,7 +21,11 @@
 	import type { PassageScreen } from '$lib/lesson-screens/types';
 	import type { QuizNode } from './types';
 
-	let { quiz, onExit }: { quiz: QuizNode; onExit: () => void } = $props();
+	let {
+		quiz,
+		onExit,
+		showTimer: showTimerOverride
+	}: { quiz: QuizNode; onExit: () => void; showTimer?: boolean } = $props();
 
 	// Screens read `mode` via context to skip the check/feedback step and
 	// record straight into the answers bag instead of the lesson score.
@@ -72,10 +76,13 @@
 		new Set(playedScreens.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
 	);
 
-	let showTimer = $derived(quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined);
+	let showTimer = $derived(
+		showTimerOverride ?? quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined
+	);
 	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
 	let remainingSeconds = $state(untrack(() => (quiz.options.durationMinutes ?? 0) * 60));
 	let timerWarning = $derived(remainingSeconds <= (quiz.options.warnAtMinutes ?? 5) * 60);
+	let timerLabel = $derived(quiz.options.showTimerLabel ? i18n.dict.quiz.timeLeftLabel : undefined);
 
 	let footerLabel = $derived(
 		!isLastScreenInPart
@@ -201,23 +208,21 @@
 	{#if submitted && score}
 		<QuizReport {quiz} {score} onBack={onExit} />
 	{:else}
-		<AppBar title={currentPart.titleHe} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
+		<AppBar
+			title="{partIndex + 1} - {currentPart.titleHe}"
+			onback={requestExit}
+			backLabel={i18n.dict.quiz.exitLabel}
+		>
 			{#snippet trailing()}
 				{#if showTimer}
-					<QuizTimer seconds={remainingSeconds} warning={timerWarning} />
+					<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
 				{/if}
 			{/snippet}
 		</AppBar>
 
-		<div class="mx-auto w-full max-w-lg px-4 pt-3">
-			<p class="text-xs font-semibold text-muted">
-				{i18n.dict.quiz.partProgress(partIndex + 1, quiz.parts.length)}
-				{#if playedScreens.length > 1}
-					· {i18n.dict.quiz.questionProgress(screenIndex + 1, playedScreens.length)}
-				{/if}
-			</p>
-			{#if showNavigator && playedScreens.length > 1}
-				<div class="mt-3">
+		<div class="mx-auto w-full max-w-lg px-4 pt-2">
+			<div class="flex flex-wrap items-center gap-2">
+				{#if showNavigator && playedScreens.length > 1}
 					<QuestionNavigator
 						total={playedScreens.length}
 						currentIndex={screenIndex}
@@ -225,30 +230,34 @@
 						onJump={jump}
 						style={quiz.options.navigatorStyle ?? 'numbers'}
 					/>
-				</div>
-			{/if}
-			{#if passageInPart}
-				<button
-					type="button"
-					onclick={() => (showPassage = true)}
-					class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/70 transition active:scale-95"
-				>
-					<svg
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="h-4 w-4"
-						aria-hidden="true"
+				{:else if playedScreens.length > 1}
+					<p class="text-xs font-semibold text-muted tabular">
+						{i18n.dict.quiz.questionProgress(screenIndex + 1, playedScreens.length)}
+					</p>
+				{/if}
+				{#if passageInPart}
+					<button
+						type="button"
+						onclick={() => (showPassage = true)}
+						class="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-ink/70 transition active:scale-95"
 					>
-						<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-						<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
-					</svg>
-					{i18n.dict.quiz.backToPassage}
-				</button>
-			{/if}
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-3.5 w-3.5"
+							aria-hidden="true"
+						>
+							<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+							<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+						</svg>
+						{i18n.dict.quiz.backToPassage}
+					</button>
+				{/if}
+			</div>
 		</div>
 
 		<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-6">

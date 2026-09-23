@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { formatTime } from './time';
 
-	let { seconds, warning = false }: { seconds: number; warning?: boolean } = $props();
+	let {
+		seconds,
+		warning = false,
+		label
+	}: { seconds: number; warning?: boolean; label?: string } = $props();
 </script>
 
 <div
@@ -24,5 +28,8 @@
 		<circle cx="12" cy="12" r="9" />
 		<path d="M12 7v5l3 2" />
 	</svg>
+	{#if label}
+		<span class="font-semibold">{label}</span>
+	{/if}
 	<span dir="ltr">{formatTime(seconds)}</span>
 </div>

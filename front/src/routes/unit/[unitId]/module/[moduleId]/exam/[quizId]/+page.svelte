@@ -28,7 +28,7 @@
 </script>
 
 {#if running && quizNode}
-	<QuizRunner quiz={quizNode} onExit={() => (running = false)} />
+	<QuizRunner quiz={quizNode} onExit={() => (running = false)} {showTimer} />
 {:else}
 	<AppBar title={quiz.titleHe} back={examBase} />
 

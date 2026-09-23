@@ -66,7 +66,9 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
+{/if}
 
 {#if screen.text}
 	<div class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed">

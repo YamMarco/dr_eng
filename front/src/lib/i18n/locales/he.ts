@@ -45,7 +45,8 @@ export const he = {
 		resumeConfirm: 'המשך מאיפה שהפסקתי',
 		resumeRestart: 'התחלה מהתחלה',
 		lastAttemptLabel: 'ניסיון אחרון',
-		backToPassage: 'חזרה לקטע'
+		backToPassage: 'חזרה לקטע',
+		timeLeftLabel: 'זמן שנותר'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',

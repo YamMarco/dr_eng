@@ -7,6 +7,8 @@ export interface QuizOptions {
 	showTimer?: boolean;
 	/** Minutes remaining at which the timer switches to its warning color. Default 5. */
 	warnAtMinutes?: number;
+	/** Shows a "זמן שנותר" text label next to the timer's digits. Default false (numbers only, more compact). */
+	showTimerLabel?: boolean;
 	/** Default false. */
 	shuffleParts?: boolean;
 	/** Default false. */
