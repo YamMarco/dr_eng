@@ -1,0 +1,10 @@
+import { cQuizzes } from './c';
+import type { QuizNode } from './types';
+
+export type { QuizNode, QuizPart, QuizOptions } from './types';
+
+export const allQuizNodes: QuizNode[] = [...cQuizzes];
+
+export function getQuizNode(id: string): QuizNode | undefined {
+	return allQuizNodes.find((quiz) => quiz.id === id);
+}

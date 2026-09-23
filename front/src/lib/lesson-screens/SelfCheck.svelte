@@ -3,6 +3,11 @@
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+
+	const mode = getScreenMode();
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	// Not scored — the student compares their own answer to the model one — so
 	// disabled/label are write-only, like the teaching screens.
@@ -44,6 +49,12 @@
 	});
 
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (!answer.trim()) return;
+			answerSlot!.set(answer);
+			onAdvance();
+			return;
+		}
 		if (!revealed) {
 			if (!answer.trim()) return;
 			revealed = true;
