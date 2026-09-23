@@ -9,6 +9,7 @@ export const he = {
 		mainNav: 'ניווט ראשי',
 		home: 'בית',
 		book: 'תיאום שיעור',
+		quizzes: 'מבחנים',
 		settings: 'הגדרות',
 		anotherUnit: 'יחידה נוספת'
 	},
@@ -18,6 +19,14 @@ export const he = {
 		title: 'בחרו יחידות לימוד',
 		subtitle: 'כל רמת יחידות כוללת מספר מודולים לתרגול.',
 		unitsSuffix: 'יח"ל'
+	},
+	quizzes: {
+		title: 'מבחנים',
+		subtitle: 'תרגול קצר, בלי לעבור דרך המסלול המלא.',
+		assortedTitle: 'מגוון מבחנים',
+		ministryTitle: 'מבחני משרד החינוך',
+		yearPrefix: 'מבחן בגרות',
+		backLabel: 'חזרה לרשימת המבחנים'
 	},
 	unit: {
 		backLabel: 'חזרה לבחירת יחידות',
