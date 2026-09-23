@@ -39,7 +39,12 @@ export const he = {
 		manualTitle: 'ממתין לבדיקה',
 		manualDesc: 'המשימות האלה נבדקות ע"י מורה ולא נכללות בציון האוטומטי.',
 		manualItem: (points: number) => `${points} נק'`,
-		backToQuizzes: 'חזרה למבחנים'
+		backToQuizzes: 'חזרה למבחנים',
+		resumePromptTitle: 'להמשיך מאיפה שהפסקתם?',
+		resumePromptDesc: 'יש ניסיון פתוח למבחן הזה.',
+		resumeConfirm: 'המשך מאיפה שהפסקתי',
+		resumeRestart: 'התחלה מהתחלה',
+		lastAttemptLabel: 'ניסיון אחרון'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',

@@ -13,6 +13,7 @@
 	import { provideQuizAnswerSlot, type QuizAnswerSlot } from './answers.svelte';
 	import { screensWithIds } from './screenIds';
 	import { scoreQuiz, type QuizScore } from './scoring';
+	import { saveAttempt, saveInProgress, getInProgress, clearInProgress } from './progress';
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
@@ -30,12 +31,17 @@
 	createLessonScore(0);
 	createLessonSession();
 
+	// One-time read at mount: is there an unfinished attempt to offer resuming?
+	const savedProgress = untrack(() => getInProgress(quiz.id));
+	const startedAt = savedProgress?.startedAt ?? Date.now();
+
 	const answers = $state<Record<string, unknown>>({});
 	let partIndex = $state(0);
 	let screenIndex = $state(0);
 	let submitted = $state(false);
 	let score = $state<QuizScore | null>(null);
 	let showExitPrompt = $state(false);
+	let showResumePrompt = $state(savedProgress !== null);
 	let footerDisabled = $state(false);
 	// Screens still write to this (their own two-phase label), but the quiz
 	// footer's visible text is computed below instead - a screen doesn't know
@@ -89,6 +95,27 @@
 		if (submitted) return;
 		score = scoreQuiz(quiz, answers);
 		submitted = true;
+		saveAttempt({
+			quizId: quiz.id,
+			startedAt,
+			submittedAt: Date.now(),
+			answers: { ...answers },
+			score
+		});
+	}
+
+	function resume() {
+		if (!savedProgress) return;
+		partIndex = savedProgress.partIndex;
+		screenIndex = savedProgress.screenIndex;
+		Object.assign(answers, savedProgress.answers);
+		remainingSeconds = savedProgress.remainingSeconds;
+		showResumePrompt = false;
+	}
+
+	function startOver() {
+		clearInProgress(quiz.id);
+		showResumePrompt = false;
 	}
 
 	function advance() {
@@ -111,14 +138,18 @@
 		screenIndex = index;
 	}
 
-	// Runs once on mount (durationMinutes is a fixed prop, so this effect has
-	// no reactive dependency that would restart the countdown). The interval
-	// checks `submitted` itself each tick rather than the effect depending on
-	// it, so a manual submit just lets the next tick notice and stop.
+	// Waits out the resume prompt (depends on showResumePrompt so it re-runs
+	// exactly once when that closes) and otherwise runs once, since
+	// durationMinutes is a fixed prop. Starts from the current
+	// remainingSeconds (read via untrack so the effect itself doesn't
+	// depend on it - resume() may have already set it to a mid-quiz value).
+	// The interval checks `submitted` itself each tick rather than the effect
+	// depending on it, so a manual submit just lets the next tick stop it.
 	$effect(() => {
 		const minutes = quiz.options.durationMinutes;
-		if (!minutes) return;
-		const endsAt = Date.now() + minutes * 60 * 1000;
+		if (!minutes || showResumePrompt) return;
+		const startSeconds = untrack(() => remainingSeconds);
+		const endsAt = Date.now() + startSeconds * 1000;
 		const interval = setInterval(() => {
 			if (submitted) {
 				clearInterval(interval);
@@ -132,6 +163,22 @@
 			}
 		}, 250);
 		return () => clearInterval(interval);
+	});
+
+	// Persists on every screen move and timer tick so a refresh mid-quiz can
+	// offer to resume. Skipped while the resume decision hasn't been made yet
+	// (nothing has actually started), and once submitted (saveAttempt already
+	// clears the in-progress record).
+	$effect(() => {
+		if (submitted || showResumePrompt) return;
+		saveInProgress({
+			quizId: quiz.id,
+			startedAt,
+			partIndex,
+			screenIndex,
+			answers: { ...answers },
+			remainingSeconds
+		});
 	});
 
 	function requestExit() {
@@ -211,6 +258,15 @@
 			<Button variant="ghost" onclick={() => (showExitPrompt = false)}>
 				{i18n.dict.quiz.exitCancel}
 			</Button>
+		</Sheet>
+
+		<Sheet
+			bind:open={showResumePrompt}
+			title={i18n.dict.quiz.resumePromptTitle}
+			description={i18n.dict.quiz.resumePromptDesc}
+		>
+			<Button onclick={resume}>{i18n.dict.quiz.resumeConfirm}</Button>
+			<Button variant="ghost" onclick={startOver}>{i18n.dict.quiz.resumeRestart}</Button>
 		</Sheet>
 	{/if}
 </div>

@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
+	import { getLastAttempt } from '$lib/quiz/progress';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
 	import type { PageProps } from './$types';
 
@@ -15,6 +16,9 @@
 	let examBase = $derived(`/unit/${data.group.id}/module/${data.mod.id}/exam`);
 	let quizNode = $derived(getQuizNode(quiz.id));
 	let running = $state(false);
+	// Re-reads on return from the runner (running flips back to false), so a
+	// just-finished attempt shows up without needing a full page reload.
+	let lastAttempt = $derived(quizNode && !running ? getLastAttempt(quizNode.id) : null);
 
 	// Ministry quizzes run to the real exam length; assorted ones stay short.
 	let questionCount = $derived(quiz.kind === 'ministry' ? 25 : 12);
@@ -69,7 +73,11 @@
 				<div
 					class="rounded-2xl bg-surface p-3 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
 				>
-					<p class="text-xl font-extrabold tabular">81</p>
+					<p class="text-xl font-extrabold tabular">
+						{lastAttempt && lastAttempt.score.auto.max > 0
+							? `${lastAttempt.score.auto.earned}/${lastAttempt.score.auto.max}`
+							: '81'}
+					</p>
 					<p class="mt-1 text-xs text-muted">{i18n.dict.quizzes.lastScoreLabel}</p>
 				</div>
 				<div
