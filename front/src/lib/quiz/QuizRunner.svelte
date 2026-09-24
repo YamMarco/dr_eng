@@ -64,6 +64,9 @@
 	let answeredIndices = $derived(
 		new Set(playedScreens.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
 	);
+	let passageIndices = $derived(
+		new Set(playedScreens.flatMap((entry, i) => (entry.screen.type === 'passage' ? [i] : [])))
+	);
 
 	let showTimer = $derived(
 		quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined
@@ -218,6 +221,7 @@
 						answered={answeredIndices}
 						onJump={jump}
 						style={quiz.options.navigatorStyle ?? 'numbers'}
+						{passageIndices}
 					/>
 				{:else if playedScreens.length > 1}
 					<p class="text-xs font-semibold text-muted tabular">

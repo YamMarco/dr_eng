@@ -53,7 +53,7 @@ export const he = {
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',
-		ministryTitle: 'מבחני משרד החינוך',
+		ministryTitle: 'בגרויות',
 		yearPrefix: 'מבחן בגרות',
 		avgTimeLabel: 'זמן ממוצע',
 		avgGradeLabel: 'ציון ממוצע',
