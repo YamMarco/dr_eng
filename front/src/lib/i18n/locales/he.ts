@@ -24,7 +24,6 @@ export const he = {
 		startButton: 'התחלת מבחן',
 		exitLabel: 'יציאה מהמבחן',
 		nextButton: 'הבא',
-		nextPartButton: (partTitle: string) => `המשך לחלק: ${partTitle}`,
 		submitButton: 'הגש מבחן',
 		partProgress: (current: number, total: number) => `חלק ${current} מתוך ${total}`,
 		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,

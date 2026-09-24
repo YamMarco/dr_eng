@@ -15,10 +15,10 @@ export interface QuizOptions {
 	shuffleWithinPart?: boolean;
 	/** Default 0.6. Applied to the auto-graded score only (see scoring.ts). */
 	passThreshold?: number;
-	/** Can the student move to a previous screen within the current part? Default true. */
+	/** Can the student move to a previous screen? Default true. */
 	allowBackWithinPart?: boolean;
 
-	// Navigator (question-jump grid at the top of each part)
+	// Navigator (question-jump grid covering every screen in the quiz)
 	/** Default true. */
 	showNavigator?: boolean;
 	/** Default 'numbers'. */

@@ -14,8 +14,9 @@ export interface QuizAttempt {
 export interface QuizInProgress {
 	quizId: string;
 	startedAt: number;
-	partIndex: number;
-	screenIndex: number;
+	/** Index into the quiz's screens flattened across every part (parts are a
+	 *  cosmetic grouping, not a separate navigation phase). */
+	entryIndex: number;
 	answers: Record<string, unknown>;
 	remainingSeconds: number;
 }
