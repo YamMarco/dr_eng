@@ -32,12 +32,23 @@
 	--color-danger: #e76f51;
 	--color-danger-soft: #fdeae4;
 
+	/* Passage-highlighter marks (PassageBody). Always light-toned so a fixed
+	   dark ink stays readable on top in both themes — see --color-mark-ink. */
+	--color-mark-yellow: #fde047;
+	--color-mark-green: #86efac;
+	--color-mark-pink: #f9a8d4;
+	--color-mark-blue: #93c5fd;
+
 	/* Fixed dark neutral — deliberately NOT redefined under [data-theme='dark']
 	   below. For things that mean "always dark" regardless of theme (modal
 	   scrims, card shadow tints, floating debug chips): `ink` flips to a light
 	   color in dark mode, so anything using it for that purpose must use this
 	   instead or it inverts into a pale smudge/invisible chip. */
 	--color-overlay: #1f2937;
+
+	/* Also fixed, same reason: highlighter marks stay light-toned in both
+	   themes, so their text must stay dark rather than flipping to `ink`. */
+	--color-mark-ink: #1f2937;
 }
 
 /* Dark mode: same token names, redefined under the attribute the root layout
@@ -61,6 +72,13 @@
 
 	--color-danger: #ee8267;
 	--color-danger-soft: #3a2019;
+
+	/* Dimmer than the light-mode marks so they don't glare against the dark
+	   canvas, but kept light enough that --color-mark-ink text still reads. */
+	--color-mark-yellow: #ca9a04;
+	--color-mark-green: #4ade80;
+	--color-mark-pink: #f472b6;
+	--color-mark-blue: #60a5fa;
 }
 
 @layer base {

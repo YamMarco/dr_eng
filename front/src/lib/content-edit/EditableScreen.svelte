@@ -3,25 +3,21 @@
 	// screen renders in the player. Prose is click-to-type (MarkdownInput,
 	// chromeless). Structural bits (correct answer, token marks, question
 	// lists, numbers, modes) are left to SlideStage's own fields below it.
-	// Mutates the live editModel node in place. Detachable — content-edit/.
-	import { editModel } from './editModel.svelte';
+	// Mutates the live model's node in place. Works against any EditModelLike
+	// (lessons' editModel or exams' examEditModel). Detachable — content-edit/.
 	import MarkdownInput from './MarkdownInput.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import type { ScreenPath } from './screenPath';
+	import type { EditModelLike } from './editModelTypes';
 	import WordImageField from './WordImageField.svelte';
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let { nodeId, path }: { nodeId: string; path: ScreenPath } = $props();
+	let { model, nodeId, path }: { model: EditModelLike; nodeId: string; path: ScreenPath } =
+		$props();
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let screen = $derived.by<any>(() => {
-		const n = editModel.node(nodeId);
-		if (!n) return null;
-		const list =
-			path.bucket === 'preface' ? n.content.preface : n.content.rounds[path.bucket]?.screens;
-		return list?.[path.index] ?? null;
-	});
+	let screen = $derived.by<any>(() => model.screenAt(nodeId, path) ?? null);
 
-	const touch = () => editModel.touch();
+	const touch = () => model.touch();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	function set(key: string, v: any) {
 		if (screen) {
@@ -72,6 +68,18 @@
 	}
 	function removeKeywordQuestion(qi: number) {
 		screen.questions = screen.questions.filter((_: unknown, j: number) => j !== qi);
+		touch();
+	}
+
+	// passage: {id, text}[] paragraphs, roman-numeral order is positional (I,
+	// II, III, ... - see PassageBody.svelte), not tied to `id`.
+	function addParagraph() {
+		const n = (screen.paragraphs?.length ?? 0) + 1;
+		screen.paragraphs = [...(screen.paragraphs ?? []), { id: `p${n}`, text: '' }];
+		touch();
+	}
+	function removeParagraph(i: number) {
+		screen.paragraphs = screen.paragraphs.filter((_: unknown, j: number) => j !== i);
 		touch();
 	}
 </script>
@@ -408,6 +416,19 @@
 							{:else}
 								<span></span>
 							{/if}
+							<label class="flex items-center gap-1 text-xs font-bold text-muted">
+								ניקוד
+								<input
+									type="number"
+									min="0"
+									value={screen.questions[qi].points ?? 1}
+									oninput={(e) => {
+										screen.questions[qi].points = e.currentTarget.valueAsNumber;
+										touch();
+									}}
+									class="w-14 rounded-lg border-2 border-line bg-surface p-1 font-normal"
+								/>
+							</label>
 							<button
 								type="button"
 								class="text-xs text-danger"
@@ -497,6 +518,19 @@
 							{:else}
 								<span></span>
 							{/if}
+							<label class="flex items-center gap-1 text-xs font-bold text-muted">
+								ניקוד
+								<input
+									type="number"
+									min="0"
+									value={screen.questions[qi].points ?? 1}
+									oninput={(e) => {
+										screen.questions[qi].points = e.currentTarget.valueAsNumber;
+										touch();
+									}}
+									class="w-14 rounded-lg border-2 border-line bg-surface p-1 font-normal"
+								/>
+							</label>
 							<button
 								type="button"
 								class="text-xs text-danger"
@@ -543,6 +577,50 @@
 		{:else if screen.type === 'time-result'}
 			<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
 			<p class="text-xs text-muted">timerKey - בסרגל התחתון</p>
+		{:else if screen.type === 'passage'}
+			<MarkdownInput
+				bare
+				minRows={1}
+				dir="ltr"
+				value={screen.title ?? ''}
+				onInput={(v) => set('title', v)}
+			/>
+			<div class="flex flex-col gap-3">
+				{#each screen.paragraphs as _para, i (i)}
+					<div class="rounded-xl border border-line bg-surface/70 p-2">
+						<div class="mb-1 flex items-center justify-between">
+							<span class="text-xs font-bold text-muted">פסקה {i + 1}</span>
+							<button type="button" class="text-xs text-danger" onclick={() => removeParagraph(i)}
+								>✕</button
+							>
+						</div>
+						<MarkdownInput
+							bare
+							minRows={3}
+							dir="ltr"
+							value={screen.paragraphs[i].text}
+							onInput={(v) => {
+								screen.paragraphs[i].text = v;
+								touch();
+							}}
+						/>
+					</div>
+				{/each}
+			</div>
+			<button
+				type="button"
+				class="self-start text-xs font-semibold text-brand"
+				onclick={addParagraph}
+			>
+				+ פסקה
+			</button>
+		{:else if screen.type === 'sentence-completion'}
+			<p class="text-xs text-muted">לפני החלק שהתלמיד/ה ישלימו</p>
+			<MarkdownInput bare minRows={1} value={screen.before} onInput={(v) => set('before', v)} />
+			<p class="text-xs text-muted">אחרי (למשל נקודה)</p>
+			<MarkdownInput bare minRows={1} value={screen.after} onInput={(v) => set('after', v)} />
+			<p class="text-xs text-muted">תשובות מקובלות (כל אחת מספיקה)</p>
+			<StringListEditor bind:items={screen.modelAnswers} addLabel="+ תשובה" dir="auto" />
 		{:else if screen.type === 'time-comparison'}
 			<MarkdownInput bare minRows={1} value={screen.aLabel} onInput={(v) => set('aLabel', v)} />
 			<MarkdownInput bare minRows={1} value={screen.bLabel} onInput={(v) => set('bLabel', v)} />

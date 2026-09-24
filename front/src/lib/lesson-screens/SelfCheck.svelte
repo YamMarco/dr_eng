@@ -3,6 +3,11 @@
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+
+	const mode = getScreenMode();
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	// Not scored — the student compares their own answer to the model one — so
 	// disabled/label are write-only, like the teaching screens.
@@ -20,7 +25,8 @@
 		label?: string;
 	} = $props();
 
-	let answer = $state('');
+	// Revisiting via the quiz navigator restores whatever was typed before.
+	let answer = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
 	let revealed = $state(false);
 
 	// eslint-disable-next-line no-useless-assignment
@@ -44,6 +50,12 @@
 	});
 
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (!answer.trim()) return;
+			answerSlot!.set(answer);
+			onAdvance();
+			return;
+		}
 		if (!revealed) {
 			if (!answer.trim()) return;
 			revealed = true;
@@ -54,7 +66,9 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.selfCheck} />
+{/if}
 
 {#if screen.text}
 	<div class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed">

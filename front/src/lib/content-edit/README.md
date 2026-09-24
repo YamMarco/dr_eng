@@ -1,17 +1,25 @@
-# content-edit — the `/edit` authoring workspace
+# content-edit — the `/edit` and `/edit-exam` authoring workspaces
 
-A dev-flavoured, self-contained workspace for editing Module C content: the
-path graph **and** each lesson's screens, with a live preview. Reached at
-**`/edit`** (dev: open; deployed site: one password prompt per browser
-session). Entry points into it:
+A dev-flavoured, self-contained pair of workspaces: **`/edit`** for Module C
+lesson content (the path graph **and** each lesson's screens, with a live
+preview) and **`/edit-exam`** for one module's exams (parts + screens, no
+graph — exams aren't a DAG). Both are dev: open, deployed site: one password
+prompt per browser session (the two share the same unlock — `editStore`).
+Entry points into `/edit`:
 
 - Lessons path, dev only: the **✎** FAB (top-start) → `/edit`; each node's
   popover has **✎ ערוך** → `/edit?section=…&lesson=…`.
 - While playing a lesson, dev only: **✏️ ערוך מסך זה** (bottom-start FAB) →
   `/edit?section=…&lesson=…&round=…&screen=…`, focused on that screen.
 
+Entry point into `/edit-exam`: the module's exam list page always shows an
+**✎ ערוך** link → `/edit-exam?module=<id>` (never gated by `editStore` itself —
+that link *is* the only way to reach the password screen on the deployed
+site, so gating it would make it unreachable there).
+
 Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
-`src/routes/api/content-edit/` — see **Detach** at the end.
+`src/routes/edit-exam/` + `src/routes/api/content-edit/` — see **Detach** at
+the end.
 
 ## Layout
 
@@ -69,28 +77,68 @@ the screen keeps its path in `image`. Delete only clears the field.
 Prose is stored as markdown, rendered at runtime by
 `src/lib/lesson-screens/miniMarkdown.ts` (not part of this folder).
 `screenTypeNames.ts` holds the Hebrew name per screen type (used by both the
-filmstrip and the stage's type selector); `screenSnippet.ts` extracts the
-plain-text preview shown on each filmstrip card.
+filmstrip and the stage's type selector). Each filmstrip card's preview isn't
+a text snippet — it's the same `EditableScreen` the stage renders, scaled
+down and inert.
+
+## Exam editor — `ExamEditWorkspace.svelte` / `ExamEditorView.svelte`
+
+Mirrors the lesson editor's shell/PowerPoint-view split, scoped to one
+module's exams (`examEditModel.load(moduleId)` loads only that module's
+`QuizNode[]`, from `getQuizNodesByModule`). No graph — the workspace is just
+an exam picker list (+ **➕ מבחן חדש**) that opens straight into the
+PowerPoint-style editor.
+
+**`SlideFilmstrip.svelte`, `SlideStage.svelte`, and `EditableScreen.svelte`
+are shared with the lesson editor**, not duplicated: they take a `model:
+EditModelLike` prop (`editModelTypes.ts`) instead of importing a singleton,
+so `editModel.svelte.ts` (lessons) and `examEditModel.svelte.ts` (exams) are
+two interchangeable implementations of the same interface.
+`bucketsOf(nodeId)` is the key abstraction — a lesson's buckets are preface +
+rounds, an exam's are its `QuizPart`s (no preface). A `QuizPart` plays the
+role a lesson node plays for `editModel`: the level above a screen. Bucket
+mutation methods are generically named (`addBucket`/`moveBucket`/
+`duplicateBucket`/`deleteBucket`), not round-specific — `editModel` exposes
+`addRound`/`moveRound`/… as the lesson-only concrete methods and wraps them
+under the generic names for `EditModelLike` conformance.
+
+An exam's routing/list metadata (`uuid`, `kind`, `year`) lives directly on
+its `QuizNode` (see `$lib/quiz/types.ts`) — `$lib/quizzes.ts`'s
+`assortedQuizzes`/`ministryQuizzes` are a *derived* view over
+`allQuizNodes`, not a second hand-authored registry, so there's nothing else
+to keep in sync when an exam is renamed, retyped, or deleted.
+
+**▶ נסיון מכאן** opens the real `QuizRunner` at the selected part/screen via
+`startPartIndex`/`startScreenIndex`, with `preview` set — that flag skips the
+resume prompt and all progress/attempt persistence, so testing an unsaved
+edit can never touch or get confused by a real student's saved progress
+under the same quiz id.
 
 ## Model & save
 
 `editModel.svelte.ts` holds the **whole module's** `LessonNode[]` (every
 section, so the graph shows everything) as a mutable `$state` working copy, a
 `dirty` flag, the current selection, and every mutation helper (`setPosition`,
-`togglePrereq`, `mergeNodes`, `splitNode`, `addRound`/`moveRound`/…,
-`moveScreen`, `applyScreen`, …). Nothing hits the network per edit. On load it
-snapshots each section's slice; `changedSections` diffs the live slices against
-that.
+`togglePrereq`, `mergeNodes`, `splitNode`, `moveScreen`, `applyScreen`, the
+generic `EditModelLike` bucket ops, …). `examEditModel.svelte.ts` is the same
+shape for one module's `QuizNode[]`, without the graph-only pieces
+(position/required/big) or a preface bucket. Nothing hits the network per
+edit. On load, each snapshots its baseline; `changedSections`
+(`editModel`) / `changes()` (`examEditModel`) diff the live state against it.
 
-One **💾 שמירת שינויים** (or ⌘/Ctrl-S) calls `editModel.changesForSection` to
-diff the live slice against its baseline, then `saveSection(sectionId,
-upserts, deletes)` → `POST /api/content-edit` with `{ sectionId, upserts,
-deletes }` **once per changed section**. The endpoint merges that patch into
-the section's *current* array (nodes nobody in this session touched pass
-through untouched) rather than replacing the whole thing, so two people
-editing different nodes in the same section never clobber each other — in
-the file or in git history. It also still accepts the older
-`{ lessonId, content }` shape (single-lesson replace).
+One **💾 שמירת שינויים** (or ⌘/Ctrl-S) diffs the live state against its
+baseline and calls `saveSection(sectionId, upserts, deletes)` or
+`saveExamChanges(moduleId, upserts, deletes)` → both hit the same
+**`POST /api/content-edit`**, with `{ sectionId, ... }` for a lesson section
+or `{ examModuleId, ... }` for a module's exams — one call per changed
+lesson-section or per changed module's-exams file. The endpoint (via the
+shared helpers in `fileEmit.ts`: `splitArrayHead`/`extractArrayLiteral`/
+`mergeById`/`emit`) merges that patch into the target array-literal file's
+*current* content (nodes/exams nobody in this session touched pass through
+untouched) rather than replacing the whole thing, so two people editing
+different entries in the same file never clobber each other — in the file or
+in git history. It also still accepts the older `{ lessonId, content }` shape
+(single-lesson replace).
 
 `validate.ts` runs on every change: empty screens, `mark-all` indices out of
 range, `timerKey` with no producing screen, missing/​self `required`,
@@ -121,12 +169,16 @@ a content file are still lost on the first save of that file.
 
 ## Detach
 
-1. `rm -r src/lib/content-edit src/routes/edit src/routes/api/content-edit`
+1. `rm -r src/lib/content-edit src/routes/edit src/routes/edit-exam src/routes/api/content-edit`
 2. `src/routes/+layout.svelte` — drop `/^\/edit/` from `noNavPatterns`.
 3. `src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` — remove
    the `dev` import + the two `/edit` links (node popover, top-start FAB).
-4. `src/lib/lesson-screens/LessonRunner.svelte` — remove the
+4. `src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte` — remove
+   the `editStore` import (if re-added) and the **✎ ערוך** `/edit-exam` link.
+5. `src/lib/lesson-screens/LessonRunner.svelte` — remove the
    `$lib/content-edit/screenPath` import (inline `screensForRound` /
    `screenPathsForRound`, ~15 lines — see git history), the `dev` import, the
    `startScreenIndex` prop, and the `editHref` FAB.
-5. Remove the GitHub/password env vars from Vercel and delete the token.
+6. `src/lib/quiz/QuizRunner.svelte` — remove the `preview`/`startPartIndex`/
+   `startScreenIndex` props (content-edit's "play from here" only).
+7. Remove the GitHub/password env vars from Vercel and delete the token.

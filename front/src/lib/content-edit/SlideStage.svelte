@@ -3,7 +3,7 @@
 	// screen rendered large and directly editable, with every control for it —
 	// type, structural fields, delete — in this one place. No popup, no
 	// separate panel. Detachable — part of src/lib/content-edit/.
-	import { editModel } from './editModel.svelte';
+	import type { EditModelLike } from './editModelTypes';
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
 	import { typeHe } from './screenTypeNames';
 	import {
@@ -34,7 +34,6 @@
 	let headerMenuOpen = $state(false);
 	import EditableScreen from './EditableScreen.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
-	import OptionsEditor from './fields/OptionsEditor.svelte';
 	import TokenPicker from './fields/TokenPicker.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
@@ -47,29 +46,24 @@
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
+		model,
 		nodeId,
 		path
 	}: {
+		model: EditModelLike;
 		nodeId: string;
 		path: ScreenPath | null;
 	} = $props();
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let screen = $derived.by<any>(() => {
-		if (!path) return null;
-		const n = editModel.node(nodeId);
-		if (!n) return null;
-		const list =
-			path.bucket === 'preface' ? n.content.preface : n.content.rounds[path.bucket]?.screens;
-		return list?.[path.index] ?? null;
-	});
+	let screen = $derived.by<any>(() => (path ? (model.screenAt(nodeId, path) ?? null) : null));
 
 	// Any in-place field mutation flips dirty (skip the initial run per screen).
 	let sig = $derived(screen ? JSON.stringify(screen) : '');
 	let lastSig = '';
 	$effect(() => {
 		if (sig && sig !== lastSig) {
-			if (lastSig !== '') editModel.touch();
+			if (lastSig !== '') model.touch();
 			lastSig = sig;
 		}
 	});
@@ -85,7 +79,7 @@
 	function applyRaw() {
 		if (!path) return;
 		try {
-			editModel.applyScreen(nodeId, path, JSON.parse(raw) as LessonScreen);
+			model.applyScreen(nodeId, path, JSON.parse(raw) as LessonScreen);
 			rawOpen = false;
 		} catch (e) {
 			rawErr = e instanceof Error ? e.message : String(e);
@@ -143,6 +137,20 @@
 		const idx = MARK_ALL_PALETTE.findIndex((p) => p.key === cat.color);
 		cat.color = MARK_ALL_PALETTE[(idx + 1) % MARK_ALL_PALETTE.length].key;
 	}
+
+	// Screen types with a single top-level `points` field (quiz mode only,
+	// ignored in lesson mode) - passage-mcq/passage-quiz have per-question
+	// points instead, edited inline in EditableScreen's question loop.
+	const POINTS_TYPES = new Set([
+		'mcq',
+		'mark-word',
+		'cloze-pick',
+		'mark-all',
+		'spell-word',
+		'match-pairs',
+		'sentence-completion',
+		'writing-task'
+	]);
 </script>
 
 {#if !path || !screen}
@@ -358,8 +366,7 @@
 				class="rounded-lg border-2 border-brand bg-canvas px-2 py-1 text-xs font-bold"
 				value={screen.type}
 				onchange={(e) =>
-					path &&
-					editModel.setScreenType(nodeId, path, e.currentTarget.value as LessonScreen['type'])}
+					path && model.setScreenType(nodeId, path, e.currentTarget.value as LessonScreen['type'])}
 			>
 				{#each SCREEN_TYPE_GROUPS as g (g.label)}
 					<optgroup label={g.label}>
@@ -379,7 +386,7 @@
 				type="button"
 				class="rounded-lg px-2 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50"
 				onclick={() => {
-					if (path && confirm('למחוק את המסך?')) editModel.deleteScreen(nodeId, path);
+					if (path && confirm('למחוק את המסך?')) model.deleteScreen(nodeId, path);
 				}}
 			>
 				🗑 מחיקת המסך
@@ -396,7 +403,21 @@
 				     frame instead of growing it. -->
 				<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
 					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
-						<EditableScreen {nodeId} {path} />
+						{#if !rawOpen && POINTS_TYPES.has(screen.type)}
+							<div class="mb-4 border-b-2 border-dashed border-line/60 pb-4">
+								<label class="flex items-center gap-2 text-xs font-bold text-muted">
+									ניקוד (למבחן בלבד, לא משפיע על שיעור)
+									<input
+										type="number"
+										min="0"
+										value={screen.points ?? 1}
+										oninput={(e) => (screen.points = e.currentTarget.valueAsNumber)}
+										class="w-16 rounded-lg border-2 border-line bg-surface p-1 font-normal"
+									/>
+								</label>
+							</div>
+						{/if}
+						<EditableScreen {model} {nodeId} {path} />
 
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
@@ -421,15 +442,6 @@
 										>ביטול</button
 									>
 								</div>
-							</div>
-						{:else if screen.type === 'mcq'}
-							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-								<p class="mb-2 text-xs font-bold text-muted">התשובה הנכונה</p>
-								<OptionsEditor
-									bind:options={screen.options}
-									bind:correctIndex={screen.correctIndex}
-									name={`c-${String(path.bucket)}-${path.index}`}
-								/>
 							</div>
 						{:else if screen.type === 'mark-word'}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
@@ -465,7 +477,9 @@
 											}}
 											aria-label="תשובה נכונה"
 										/>
-										<div class="w-full"><MarkdownInput bind:value={screen.options[i]} minRows={1} /></div>
+										<div class="w-full">
+											<MarkdownInput bind:value={screen.options[i]} minRows={1} />
+										</div>
 										<button
 											type="button"
 											class="text-xs text-danger"
@@ -618,16 +632,53 @@
 								</label>
 							</div>
 						{:else if screen.type === 'writing-task'}
+							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+								<p class="mb-2 text-xs font-bold text-muted">חיבור חופשי (מבחן) - טווח מילים</p>
+								<div class="flex flex-wrap items-center gap-4">
+									<label class="flex items-center gap-2 text-xs text-muted">
+										מס׳ מילים - מינ׳
+										<input
+											type="number"
+											min="0"
+											value={screen.minWords ?? ''}
+											oninput={(e) =>
+												(screen.minWords = e.currentTarget.value
+													? e.currentTarget.valueAsNumber
+													: undefined)}
+											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+									<label class="flex items-center gap-2 text-xs text-muted">
+										מס׳ מילים - מקס׳
+										<input
+											type="number"
+											min="0"
+											value={screen.maxWords ?? ''}
+											oninput={(e) =>
+												(screen.maxWords = e.currentTarget.value
+													? e.currentTarget.valueAsNumber
+													: undefined)}
+											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+								</div>
+							</div>
+
 							<div
 								class="sticky bottom-0 z-10 -mx-6 mt-4 space-y-3 border-t-2 border-line bg-canvas px-6 py-3 shadow-[0_-6px_12px_-8px_rgb(0_0_0/0.15)]"
 							>
+								<p class="text-xs font-bold text-muted">כתיבה מודרכת (שיעור) - אופציונלי</p>
 								<div class="flex gap-4">
 									<label class="flex items-center gap-2 text-xs text-muted">
 										מינ׳ משפטים
 										<input
 											type="number"
 											min="1"
-											bind:value={screen.minSentences}
+											value={screen.minSentences ?? ''}
+											oninput={(e) =>
+												(screen.minSentences = e.currentTarget.value
+													? e.currentTarget.valueAsNumber
+													: undefined)}
 											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
 										/>
 									</label>
@@ -636,7 +687,11 @@
 										<input
 											type="number"
 											min="0"
-											bind:value={screen.minWordsUsed}
+											value={screen.minWordsUsed ?? ''}
+											oninput={(e) =>
+												(screen.minWordsUsed = e.currentTarget.value
+													? e.currentTarget.valueAsNumber
+													: undefined)}
 											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
 										/>
 									</label>
@@ -663,8 +718,18 @@
 								</div>
 							</div>
 							<div class="space-y-3 pt-3">
-								<p class="text-xs font-bold text-muted">בנק מילים</p>
-								<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
+								<p class="text-xs font-bold text-muted">בנק מילים (לכתיבה מודרכת)</p>
+								{#if screen.wordBank}
+									<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
+								{:else}
+									<button
+										type="button"
+										class="text-xs font-semibold text-brand"
+										onclick={() => (screen.wordBank = [])}
+									>
+										+ הוספת בנק מילים
+									</button>
+								{/if}
 							</div>
 						{:else if screen.type === 'spell-word'}
 							<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">

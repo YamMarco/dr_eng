@@ -3,14 +3,20 @@
 	import Md from '$lib/components/Md.svelte';
 	import { backOut } from 'svelte/easing';
 	import type { MarkAllScreen } from './types';
+	import { isMarkAllPass } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { markAllSwatch } from './markAllColors';
 	import { markAllSegments } from './markAllTokens';
 
-	const score = getLessonScore();
+	const mode = getScreenMode();
+	const score = mode === 'lesson' ? getLessonScore() : undefined;
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 	const session = getLessonSession();
 
 	let {
@@ -27,7 +33,9 @@
 		label?: string;
 	} = $props();
 
-	let picked = $state<number[]>([]);
+	// Revisiting via the quiz navigator restores whatever was picked before.
+	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number[] | undefined) : undefined;
+	let picked = $state<number[]>(restoredAnswer ?? []);
 	let checked = $state(false);
 	let segments = $derived(markAllSegments(screen.text));
 
@@ -45,6 +53,8 @@
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// eslint-disable-next-line no-useless-assignment
+	if (mode === 'quiz') disabled = !restoredAnswer?.length;
 
 	// Optional stopwatch (screen.timerKey) — ticks until the answer is checked,
 	// then freezes and leaves the elapsed ms in the session for a later
@@ -68,26 +78,21 @@
 		disabled = picked.length === 0;
 	}
 
-	// Lenient: skimming is about spotting most eye catchers fast, not a perfect
-	// sweep — pass on 70%+ of them found with at most one stray tap.
-	function isPass(): boolean {
-		let hits = 0;
-		let wrong = 0;
-		for (const i of picked) {
-			if (targets.has(i)) hits += 1;
-			else wrong += 1;
-		}
-		return wrong <= 1 && hits >= Math.ceil(targets.size * 0.7);
-	}
-
-	let passed = $derived(checked ? isPass() : false);
+	let passed = $derived(checked ? isMarkAllPass(screen, picked) : false);
 
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (picked.length === 0) return;
+			if (screen.timerKey) session[screen.timerKey] = performance.now() - startedAt;
+			answerSlot!.set(picked);
+			onAdvance();
+			return;
+		}
 		if (!checked) {
 			if (picked.length === 0) return;
 			checked = true;
 			if (screen.timerKey) session[screen.timerKey] = performance.now() - startedAt;
-			recordAnswer(score, isPass());
+			recordAnswer(score!, isMarkAllPass(screen, picked));
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -95,7 +100,12 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.markAll} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.markAll} />
+{/if}
+{#if score}
+	<ScoreBadge {score} />
+{/if}
 <div class="mb-3 flex items-center justify-between gap-3">
 	<div class="font-semibold"><Md block text={screen.instruction} /></div>
 	{#if screen.timerKey}

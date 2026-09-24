@@ -4,11 +4,16 @@
 	import { backOut } from 'svelte/easing';
 	import type { McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { staggerDelay } from '$lib/motion';
 
-	const score = getLessonScore();
+	const mode = getScreenMode();
+	const score = mode === 'lesson' ? getLessonScore() : undefined;
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	let {
 		screen,
@@ -24,11 +29,15 @@
 		label?: string;
 	} = $props();
 
-	let selected = $state<number | null>(null);
+	// Revisiting via the quiz navigator restores whatever was picked before.
+	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number | undefined) : undefined;
+	let selected = $state<number | null>(restoredAnswer ?? null);
 	let checked = $state(false);
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// eslint-disable-next-line no-useless-assignment
+	if (mode === 'quiz') disabled = restoredAnswer === undefined;
 
 	function pick(i: number) {
 		if (checked) return;
@@ -38,11 +47,19 @@
 
 	// The runner's single button drives both steps: first click checks the
 	// answer (right or wrong, doesn't matter which), second click leaves.
+	// Quiz mode skips the check/feedback step entirely: the button just
+	// records the pick and advances.
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (selected === null) return;
+			answerSlot!.set(selected);
+			onAdvance();
+			return;
+		}
 		if (!checked) {
 			if (selected === null) return;
 			checked = true;
-			recordAnswer(score, selected === screen.correctIndex);
+			recordAnswer(score!, selected === screen.correctIndex);
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -74,7 +91,14 @@
 	let containerHeight = $derived(rows * HEX_H + (rows - 1) * GAP);
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
+{#if mode === 'lesson'}
+	<div class="flex flex-wrap items-center gap-2">
+		<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
+	</div>
+{/if}
+{#if score}
+	<ScoreBadge {score} />
+{/if}
 <div class="text-lg leading-relaxed font-semibold">
 	<!-- Block mode: each line gets its own direction (first letter) and may use
 	     line-level syntax (headers, center, callout, divider). -->

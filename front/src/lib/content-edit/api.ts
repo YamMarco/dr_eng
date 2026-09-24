@@ -2,6 +2,7 @@
 // session's password (see editStore.svelte.ts) to every write, since the
 // production backend requires it on each request (dev doesn't check it).
 import type { LessonContent, LessonNode } from '$lib/content';
+import type { QuizNode } from '$lib/quiz';
 
 const KEY_STORAGE = 'content-edit-key';
 
@@ -69,4 +70,10 @@ export function saveLessonContent(lessonId: string, content: LessonContent) {
  *  they are on disk/GitHub, not overwritten from this session's copy. */
 export function saveSection(sectionId: string, upserts: LessonNode[], deletes: string[]) {
 	return post({ sectionId, upserts, deletes });
+}
+
+/** Merges only the changed/removed exams into a module's quiz-content file in
+ *  one write/commit - the exam-editor's equivalent of saveSection. */
+export function saveExamChanges(moduleId: string, upserts: QuizNode[], deletes: string[]) {
+	return post({ examModuleId: moduleId, upserts, deletes });
 }

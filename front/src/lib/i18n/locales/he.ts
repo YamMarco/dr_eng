@@ -9,6 +9,7 @@ export const he = {
 		mainNav: 'ניווט ראשי',
 		home: 'בית',
 		book: 'תיאום שיעור',
+		quizzes: 'מבחנים',
 		settings: 'הגדרות',
 		anotherUnit: 'יחידה נוספת'
 	},
@@ -18,6 +19,51 @@ export const he = {
 		title: 'בחרו יחידות לימוד',
 		subtitle: 'כל רמת יחידות כוללת מספר מודולים לתרגול.',
 		unitsSuffix: 'יח"ל'
+	},
+	quiz: {
+		startButton: 'התחלת מבחן',
+		exitLabel: 'יציאה מהמבחן',
+		nextButton: 'הבא',
+		nextPartButton: (partTitle: string) => `המשך לחלק: ${partTitle}`,
+		submitButton: 'הגש מבחן',
+		partProgress: (current: number, total: number) => `חלק ${current} מתוך ${total}`,
+		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
+		exitPromptTitle: 'לצאת מהמבחן?',
+		exitPromptDesc: 'היציאה תבטל את ההתקדמות בניסיון הנוכחי.',
+		exitConfirm: 'יציאה מהמבחן',
+		exitCancel: 'המשך במבחן',
+		passedTitle: 'עברתם בהצלחה!',
+		failedTitle: 'לא עברתם הפעם',
+		autoScoreLabel: 'ציון אוטומטי',
+		byPartTitle: 'פירוט לפי חלק',
+		manualTitle: 'ממתין לבדיקה',
+		manualDesc: 'המשימות האלה נבדקות ע"י מורה ולא נכללות בציון האוטומטי.',
+		manualItem: (points: number) => `${points} נק'`,
+		backToQuizzes: 'חזרה למבחנים',
+		resumePromptTitle: 'להמשיך מאיפה שהפסקתם?',
+		resumePromptDesc: 'יש ניסיון פתוח למבחן הזה.',
+		resumeConfirm: 'המשך מאיפה שהפסקתי',
+		resumeRestart: 'התחלה מהתחלה',
+		lastAttemptLabel: 'ניסיון אחרון',
+		timeLeftLabel: 'זמן שנותר',
+		viewSolutionButton: 'צפייה בפתרונות',
+		viewSolutionLocked: 'פתרו את המבחן פעם אחת כדי לפתוח',
+		solutionTitle: 'פתרון',
+		correctAnswerLabel: 'תשובה נכונה'
+	},
+	quizzes: {
+		assortedTitle: 'מגוון מבחנים',
+		ministryTitle: 'בגרויות',
+		yearPrefix: 'מבחן בגרות',
+		avgTimeLabel: 'זמן ממוצע',
+		avgGradeLabel: 'ציון ממוצע',
+		rulesTitle: 'מבנה המבחן',
+		questionsRule: (n: number) => `${n} שאלות`,
+		timeRule: (minutes: number) => `${minutes} דקות`,
+		scoreboardTitle: 'לוח התוצאות שלך',
+		bestScoreLabel: 'השיא שלך',
+		lastScoreLabel: 'ניסיון אחרון',
+		avgScoreLabel: 'ממוצע'
 	},
 	unit: {
 		backLabel: 'חזרה לבחירת יחידות',
@@ -29,8 +75,8 @@ export const he = {
 		backLabel: 'חזרה לרשימת המודולים',
 		lessonsTitle: 'שיעורים',
 		lessonsDesc: 'מסע לימוד שלב אחר שלב לפי נושאים',
-		examTitle: 'הבנה למבחן',
-		examSubtitle: (minutes: number) => `תרגול בתנאי בחינה · ${minutes} דקות`
+		examTitle: 'מבחנים',
+		examSubtitle: 'מגוון מבחנים לתרגול, וגם מבחני בגרות רשמיים לפי שנה'
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
@@ -76,6 +122,7 @@ export const he = {
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
+		sentenceCompletion: 'תרגיל: השלמת משפט',
 		matchPairs: 'תרגיל: התאימו זוגות',
 		answerKeyLabel: 'מפתח התשובה',
 		submitButton: 'בדיקה',
@@ -116,33 +163,6 @@ export const he = {
 						: `עד ${maxTypos} טעויות קטנות מותרות`
 			}`,
 		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
-	},
-	examStart: {
-		titlePrefix: 'הבנה למבחן — מודול',
-		durationLabel: 'משך התרגול',
-		description: (minutes: number) =>
-			`התרגול נמשך ${minutes} דקות. הטיימר מתחיל לרוץ ברגע הלחיצה על "התחלה" ונעצר אוטומטית בסיום הזמן.`,
-		structureTitle: 'מבנה התרגול',
-		startButton: 'התחלה',
-		backButton: 'חזרה'
-	},
-	examRun: {
-		exitLabel: 'יציאה מהתרגול',
-		tabsAriaLabel: 'חלקי התרגול',
-		generalTab: 'תרגול',
-		placeholderTitle: (label: string) => `השאלות של ${label} ייטענו כאן`,
-		placeholderDesc: 'זוהי גרסת הדגמה — התוכן יתווסף בשלב הבא. הטיימר פועל כרגיל.',
-		finishButton: 'סיום התרגול',
-		exitPromptTitle: 'לצאת מהתרגול?',
-		exitPromptDesc: 'היציאה תעצור את הטיימר וההתקדמות לא תישמר.',
-		exitConfirm: 'יציאה מהתרגול',
-		exitCancel: 'המשך בתרגול',
-		timeUpTitle: 'הזמן נגמר',
-		finishedTitle: 'התרגול הסתיים',
-		timeUpDesc: (minutes: number) => `התרגול נסגר אוטומטית בתום ${minutes} הדקות.`,
-		finishedDescBefore: 'סיימתם את התרגול עם',
-		finishedDescAfter: 'דקות שנותרו.',
-		backToModule: 'חזרה למודול'
 	},
 	settings: {
 		title: 'הגדרות',

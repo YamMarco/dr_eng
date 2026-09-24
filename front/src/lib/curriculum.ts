@@ -39,5 +39,3 @@ export function getUnitGroup(id: string): UnitGroup | undefined {
 export function getModule(id: string): CurriculumModule | undefined {
 	return modules[id.toLowerCase()];
 }
-
-export const EXAM_MINUTES = 30;

@@ -9,6 +9,7 @@ import { getLessonsBySection, sectionMeta } from '$lib/content';
 import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
+import type { Bucket, EditModelLike } from './editModelTypes';
 
 const MODULE_ID = 'c';
 const SECTION_IDS = sectionMeta.map((s) => s.id);
@@ -18,11 +19,16 @@ function clone<T>(v: T): T {
 	return JSON.parse(JSON.stringify(v)) as T;
 }
 
-function screenList(node: LessonNode, bucket: ScreenPath['bucket']): LessonScreen[] {
+/** Lessons only ever use 'preface' or a round index as a bucket key - the
+ *  wider `ScreenPath['bucket']` type exists for exam parts (a different
+ *  model), so callers narrow at the boundary. */
+type LessonBucket = 'preface' | number;
+
+function screenList(node: LessonNode, bucket: LessonBucket): LessonScreen[] {
 	return bucket === 'preface' ? node.content.preface : node.content.rounds[bucket].screens;
 }
 
-class EditModel {
+class EditModel implements EditModelLike {
 	nodes = $state<LessonNode[]>([]);
 	dirty = $state(false);
 	/** Which node the lesson pane is showing. */
@@ -97,7 +103,7 @@ class EditModel {
 		const n = this.selectedNode;
 		const p = this.selectedPath;
 		if (!n || !p) return undefined;
-		return screenList(n, p.bucket)?.[p.index];
+		return screenList(n, p.bucket as LessonBucket)?.[p.index];
 	}
 
 	node(id: string): LessonNode | undefined {
@@ -107,6 +113,45 @@ class EditModel {
 	select(nodeId: string, path: ScreenPath | null = null) {
 		this.selectedNodeId = nodeId;
 		this.selectedPath = path;
+	}
+
+	// --------------------------------------------------- EditModelLike (generic) --
+	bucketsOf(nodeId: string): Bucket[] {
+		const n = this.node(nodeId);
+		if (!n) return [];
+		return [
+			{ key: 'preface', label: 'פתיח', note: 'לפני סבב 1', screens: n.content.preface },
+			...n.content.rounds.map((r, i) => ({
+				key: i,
+				label: `סבב ${i + 1}`,
+				note: i === 0 ? 'חובה' : 'רשות',
+				screens: r.screens
+			}))
+		];
+	}
+
+	screenAt(nodeId: string, path: ScreenPath): LessonScreen | undefined {
+		const n = this.node(nodeId);
+		if (!n) return undefined;
+		return screenList(n, path.bucket as LessonBucket)?.[path.index];
+	}
+
+	readonly addBucketLabel = '➕ הוספת סבב';
+
+	addBucket(nodeId: string, at = -1) {
+		this.addRound(nodeId, at);
+	}
+
+	duplicateBucket(nodeId: string, bucketIndex: number) {
+		this.duplicateRound(nodeId, bucketIndex);
+	}
+
+	deleteBucket(nodeId: string, bucketIndex: number) {
+		this.deleteRound(nodeId, bucketIndex);
+	}
+
+	moveBucket(nodeId: string, from: number, to: number) {
+		this.moveRound(nodeId, from, to);
 	}
 
 	// ---------------------------------------------------------------- graph --
@@ -286,7 +331,7 @@ class EditModel {
 	) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		const list = screenList(n, bucket);
+		const list = screenList(n, bucket as LessonBucket);
 		const idx = at < 0 ? list.length : at;
 		list.splice(idx, 0, blankScreen(type));
 		this.dirty = true;
@@ -296,7 +341,7 @@ class EditModel {
 	deleteScreen(nodeId: string, path: ScreenPath) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		screenList(n, path.bucket).splice(path.index, 1);
+		screenList(n, path.bucket as LessonBucket).splice(path.index, 1);
 		this.dirty = true;
 		if (
 			this.selectedPath &&
@@ -309,7 +354,7 @@ class EditModel {
 	applyScreen(nodeId: string, path: ScreenPath, screen: LessonScreen) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		screenList(n, path.bucket)[path.index] = screen;
+		screenList(n, path.bucket as LessonBucket)[path.index] = screen;
 		this.dirty = true;
 	}
 
@@ -317,7 +362,7 @@ class EditModel {
 	setScreenType(nodeId: string, path: ScreenPath, type: LessonScreen['type']) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		const list = screenList(n, path.bucket);
+		const list = screenList(n, path.bucket as LessonBucket);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const old = list[path.index] as any;
 		if (old?.type === type) return;
@@ -334,10 +379,10 @@ class EditModel {
 	moveScreen(nodeId: string, from: ScreenPath, to: ScreenPath) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		const src = screenList(n, from.bucket);
+		const src = screenList(n, from.bucket as LessonBucket);
 		const [screen] = src.splice(from.index, 1);
 		if (!screen) return;
-		const dst = screenList(n, to.bucket);
+		const dst = screenList(n, to.bucket as LessonBucket);
 		let idx = to.index;
 		if (from.bucket === to.bucket && from.index < to.index) idx -= 1;
 		idx = Math.max(0, Math.min(idx, dst.length));

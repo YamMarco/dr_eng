@@ -24,6 +24,10 @@ export type McqScreen = {
 	 *  single word or short phrase — a stacked full-width row per option
 	 *  (the default) reads oddly once options are that short. */
 	layout?: 'rows' | 'honeycomb';
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
+	/** Quiz mode only: shows a small "פסקה X" chip above the prompt, e.g. "II". */
+	paragraphRef?: string;
 };
 
 /** Tap the question word inside a sentence. */
@@ -34,6 +38,8 @@ export type MarkWordScreen = {
 	sentence: string;
 	correctWordIndex: number;
 	dir?: 'rtl' | 'ltr';
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /**
@@ -85,7 +91,15 @@ export type PassageMcqScreen = {
 	text: string;
 	label?: string;
 	timerKey?: string;
-	questions: { prompt: string; options: string[]; correctIndex: number }[];
+	questions: {
+		prompt: string;
+		options: string[];
+		correctIndex: number;
+		/** Quiz mode only: weight for scoring. Default 1. Not yet wired into a quiz-mode UI (TODO). */
+		points?: number;
+		/** Quiz mode only: shows a small "פסקה X" chip above the question. Not yet wired into a quiz-mode UI (TODO). */
+		paragraphRef?: string;
+	}[];
 };
 
 /**
@@ -101,13 +115,21 @@ export type PassageMcqScreen = {
 export type WritingTaskScreen = {
 	type: 'writing-task';
 	prompt: string;
-	wordBank: string[];
-	minSentences: number;
-	minWordsUsed: number;
+	/** Required in lesson mode (the auto-check needs it). Quiz mode may omit it for a free essay task. */
+	wordBank?: string[];
+	minSentences?: number;
+	minWordsUsed?: number;
 	/** Small slips (missing initial capital / final punctuation) forgiven across the whole answer. Default 1. */
 	maxTypos?: number;
 	/** A sentence not starting with a capital letter counts as a slip. Default true. */
 	capitalIsError?: boolean;
+	/** Quiz mode only: live word-count target for a free essay task (no per-sentence gating). */
+	minWords?: number;
+	maxWords?: number;
+	/** Quiz mode only: manual-marked weight shown in the report. Default 0 (not auto-graded). */
+	points?: number;
+	/** Quiz mode only: shows a small "פסקה X" chip above the prompt, e.g. "II". */
+	paragraphRef?: string;
 };
 
 /**
@@ -128,6 +150,8 @@ export type ClozePickScreen = {
 	/** Indices into `options` that count as correct — any one passes. */
 	correctIndices: number[];
 	explanation?: string;
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /** Compares two previously-recorded timer values. */
@@ -169,7 +193,13 @@ export type WordCardScreen = {
 export type MatchPairsScreen = {
 	type: 'match-pairs';
 	pairs: { en: string; he: string }[];
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
+
+/** A match-pairs attempt passes with at most this many wrong taps — shared by
+ *  the live component (lesson mode) and the quiz scorer so both agree. */
+export const MATCH_PAIRS_MAX_MISTAKES = 1;
 
 /**
  * Type the word into a text input. `mode: 'copy'` shows the word to
@@ -180,6 +210,8 @@ export type SpellWordScreen = {
 	type: 'spell-word';
 	word: string;
 	mode: 'copy' | 'listen';
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /** A colour-coded bucket of things to mark (e.g. "names", "negatives"). */
@@ -215,7 +247,26 @@ export type MarkAllScreen = {
 	 * so a later time-result screen can read it back.
 	 */
 	timerKey?: string;
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
+
+/** Lenient pass rule shared by the live component (lesson mode) and the quiz
+ *  scorer: skimming is about spotting most eye catchers fast, not a perfect
+ *  sweep — pass on 70%+ of targets found with at most one stray tap. */
+export function isMarkAllPass(screen: MarkAllScreen, picked: number[]): boolean {
+	const targets = new Set([
+		...screen.correctIndices,
+		...(screen.categories ?? []).flatMap((c) => c.indices)
+	]);
+	let hits = 0;
+	let wrong = 0;
+	for (const i of picked) {
+		if (targets.has(i)) hits += 1;
+		else wrong += 1;
+	}
+	return wrong <= 1 && hits >= Math.ceil(targets.size * 0.7);
+}
 
 /**
  * Free written answer with no marking: the student types, taps to reveal the
@@ -232,6 +283,36 @@ export type SelfCheckScreen = {
 	placeholder?: string;
 	minWords?: number;
 	maxWords?: number;
+};
+
+/**
+ * A titled, scrollable reading passage, split into paragraphs with a Roman
+ * numeral margin label (I, II, III, …). Quiz-only for now: teaching content,
+ * never scored. `paragraphs[].id` is display order only — nothing else
+ * references it (question screens point at a paragraph via their own
+ * `paragraphRef` string, e.g. "II", not this id).
+ */
+export type PassageScreen = {
+	type: 'passage';
+	title?: string;
+	paragraphs: { id: string; text: string }[];
+};
+
+/**
+ * Complete-the-sentence: `before` — a blank the student fills with a typed
+ * answer — `after`. Quiz mode only collects the raw text (no feedback);
+ * lesson mode checks it immediately against `modelAnswers` (normalized
+ * string match, first match wins) and reveals the correct completion.
+ */
+export type SentenceCompletionScreen = {
+	type: 'sentence-completion';
+	before: string;
+	after: string;
+	modelAnswers: string[];
+	/** Quiz mode only: weight for scoring. Default 1. */
+	points?: number;
+	/** Quiz mode only: shows a small "פסקה X" chip above the sentence, e.g. "II". */
+	paragraphRef?: string;
 };
 
 export type LessonScreen =
@@ -252,7 +333,9 @@ export type LessonScreen =
 	| WordCardScreen
 	| SpellWordScreen
 	| MatchPairsScreen
-	| SelfCheckScreen;
+	| SelfCheckScreen
+	| PassageScreen
+	| SentenceCompletionScreen;
 
 /**
  * A screen with no real content (e.g. a message left with empty text, or a
@@ -294,6 +377,10 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.prompt.trim();
 		case 'match-pairs':
 			return screen.pairs.length < 2;
+		case 'passage':
+			return screen.paragraphs.length === 0;
+		case 'sentence-completion':
+			return !screen.before.trim() && !screen.after.trim();
 		case 'time-result':
 		case 'time-comparison':
 			return false;
@@ -314,7 +401,10 @@ export function countQuestions(screen: LessonScreen): number {
 			return screen.questions.length;
 		case 'writing-task':
 		case 'spell-word':
+		case 'sentence-completion':
 			return 1;
+		case 'passage':
+			return 0;
 		default:
 			return 0;
 	}

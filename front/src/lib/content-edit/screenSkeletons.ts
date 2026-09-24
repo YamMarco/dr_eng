@@ -19,12 +19,17 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 			'writing-task',
 			'passage-quiz',
 			'passage-mcq',
-			'self-check'
+			'self-check',
+			'sentence-completion'
 		]
 	},
 	{
 		label: 'תזמון',
 		types: ['timed-reading', 'time-result', 'time-comparison']
+	},
+	{
+		label: 'מבחן',
+		types: ['passage']
 	}
 ];
 
@@ -82,5 +87,9 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 					{ en: '', he: '' }
 				]
 			};
+		case 'passage':
+			return { type, paragraphs: [] };
+		case 'sentence-completion':
+			return { type, before: '', after: '', modelAnswers: [''] };
 	}
 }

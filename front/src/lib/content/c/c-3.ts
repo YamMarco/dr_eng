@@ -523,7 +523,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.',
+          text: "❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.",
         },
         {
           type: "summary",
@@ -581,7 +581,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                'בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.',
+                "בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.",
               wordBank: [
                 "I think",
                 "I believe",
@@ -828,7 +828,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.',
+          text: "טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.",
         },
         {
           type: "summary",
@@ -1029,11 +1029,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'שאלה שמתחילה ב-"What do you think" - קצת שונה.\n\nהיא לא מבקשת YES או NO.\nהיא מבקשת: בחרו משהו ספציפי, ואמרו למה.\n\n"In my opinion, the best way is X because..."\nX = הבחירה שלכם. חד משמעית. לא "יש הרבה אפשרויות".',
+          text: "🟦 שאלה שמתחילה ב־**What do you think...?**זו שאלה קצת שונה.היא לא שואלת:**YES או NO?**היא שואלת:**מה אתם חושבים שהאפשרות הטובה ביותר?**כלומר, צריך לעשות שני דברים:🟢 **1. לבחור דבר אחד ברור**🟢 **2. להסביר למה בחרתם בו**למשל:**What do you think is the best way to help teenagers study better?**אל תכתבו:❌ **There are many ways to help teenagers study.**זה לא נותן תשובה ברורה.במקום זה:✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**שימו לב:**the best way is...** = הבחירה שלי**because...** = הסיבה שלי⭐ הכלל:**What do you think...? → בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
         },
         {
           type: "preface",
-          text: 'הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.',
+          text: "הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.",
         },
         {
           type: "summary",
@@ -1064,6 +1064,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"What do you think?" = בחרו ספציפית. "In my opinion, the best way is traveling because..." - בחירה + because = פתיח מנצח.',
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt:
@@ -1341,11 +1342,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש שאלות שמבקשות מכם לבחור מספר, גיל, או כמות ספציפית.\n\n"At what age...?" = בחרו גיל אחד. לא "it depends". לא "some say 10, others say 15".\n\nבחרו גיל. הסבירו למה זה נכון.',
+          text: "יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.למשל:**At what age...?**= **באיזה גיל?**🟢 במקרה כזה בוחרים **גיל אחד ברור**.לא כותבים:❌ **It depends.**❌ **Some say 10, others say 15.**בוחרים תשובה אחת:✅ **I think teenagers should start working at the age of 16.**ואז מסבירים **למה** בחרתם דווקא בגיל הזה.⭐ הכלל:**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
         },
         {
           type: "preface",
-          text: 'שימו לב למשהו:\n\nהשאלה לא שואלת "Do you think children SHOULD have phones?"\nהיא מניחה שזה יקרה - ושואלת רק מתי.\n\nאל תתחילו עם: "I think phones are dangerous for children."\nהתחילו עם: "I think children should get their own phone at age 13 because..."',
+          text: "שימו לב:השאלה **לא** שואלת:❌ **Do you think children should have phones?**היא כבר מניחה שלילדים יהיה טלפון.היא שואלת רק:🟢 **מתי? באיזה גיל?**לכן אל תתחילו לכתוב:❌ **I think phones are dangerous for children.**זה לא עונה על השאלה.במקום זה:✅ **I think children should get their own phone at age 13 because...**⭐ הכלל: **השאלה שואלת מתי? → עונים בגיל.**לא משנים את השאלה לנושא אחר.",
         },
         {
           type: "summary",
@@ -1382,7 +1383,7 @@ export const c3Lessons: LessonNode[] = [
                 'איזה פתיח עונה ישירות על "At what age should children have phones?"',
               options: [
                 "Cellphones are very popular among young people today.",
-                "I think children should receive their first cellphone at age 13 because they are mature enough to use it responsibly.",
+                "I think children should get their first phone at age 13 because they are old enough to use it.",
                 "There are advantages and disadvantages to children having phones.",
                 "In conclusion, 13 is the right age for a cellphone.",
               ],

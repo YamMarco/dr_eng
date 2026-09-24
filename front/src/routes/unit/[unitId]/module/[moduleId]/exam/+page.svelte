@@ -1,12 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
-	import Button from '$lib/components/Button.svelte';
-	import Timer from '$lib/components/Timer.svelte';
-	import { EXAM_SECONDS, exam } from '$lib/exam.svelte';
-	import { EXAM_MINUTES } from '$lib/curriculum';
+	import { getQuizzesForModule, type Quiz } from '$lib/quizzes';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import type { PageProps } from './$types';
@@ -15,60 +11,88 @@
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
+	let quizzes = $derived(getQuizzesForModule(mod.id));
 
-	function startExam() {
-		exam.start(mod.id);
-		goto(`${base}/exam/run`);
+	function subtitle(quiz: Quiz) {
+		return quiz.kind === 'ministry' ? `${i18n.dict.quizzes.yearPrefix} ${quiz.year}` : undefined;
 	}
 </script>
 
-<AppBar title="{i18n.dict.examStart.titlePrefix} {mod.letter}" back={base} />
+{#snippet quizList(list: Quiz[])}
+	<ul class="flex flex-col gap-3">
+		{#each list as quiz (quiz.id)}
+			<li>
+				<a
+					href="{base}/exam/{quiz.id}"
+					class="group flex flex-col gap-1 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
+				>
+					<span class="text-sm font-bold">{quiz.titleHe}</span>
+					{#if subtitle(quiz)}
+						<span class="text-xs leading-snug text-muted">{subtitle(quiz)}</span>
+					{/if}
+				</a>
+			</li>
+		{/each}
+	</ul>
+{/snippet}
+
+<!-- Always visible, not gated by editStore.available — /edit-exam itself is
+     password-gated on the deployed site, and that gate is the only way to
+     ever unlock it there (see the equivalent bootstrap link on the lessons
+     page). Gating this link too would mean nothing on the deployed site
+     could ever reach the password screen. -->
+<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
+	{#snippet trailing()}
+		<a
+			href="/edit-exam?module={mod.id}"
+			title="עריכת מבחנים"
+			class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+		>
+			✎ ערוך
+		</a>
+	{/snippet}
+</AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	<div
+	<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
+	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
-		class="rounded-3xl bg-surface p-6 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		class="mb-6 grid grid-cols-2 gap-3"
 	>
-		<p class="text-sm font-semibold text-muted">{i18n.dict.examStart.durationLabel}</p>
-		<div class="mt-3 flex justify-center">
-			<Timer seconds={EXAM_SECONDS} size="lg" />
-		</div>
-		<p class="mt-4 leading-relaxed text-muted">
-			{i18n.dict.examStart.description(EXAM_MINUTES)}
-		</p>
-	</div>
-
-	{#if mod.sections.length}
 		<div
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-			class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
+			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
 		>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.examStart.structureTitle}</h2>
-			<ul class="flex flex-col divide-y divide-line/70">
-				{#each mod.sections as section, i (section.id)}
-					<li class="py-3 first:pt-0 last:pb-0">
-						<button
-							type="button"
-							class="flex w-full items-center gap-3 rounded-2xl text-start transition active:scale-[0.98]"
-						>
-							<span
-								class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-sm font-bold text-brand-dark"
-							>
-								{i + 1}
-							</span>
-							<span class="block font-semibold" dir="ltr">{section.label}</span>
-						</button>
-					</li>
-				{/each}
-			</ul>
+			<p class="text-2xl font-extrabold tabular" dir="ltr">18:42</p>
+			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgTimeLabel}</p>
 		</div>
-	{/if}
+		<div
+			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		>
+			<p class="text-2xl font-extrabold tabular">78</p>
+			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgGradeLabel}</p>
+		</div>
+	</section>
 
 	<div
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-		class="mt-8 flex flex-col gap-3"
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+		class="grid grid-cols-2 gap-3"
 	>
-		<Button onclick={startExam}>{i18n.dict.examStart.startButton}</Button>
-		<Button variant="secondary" href={base}>{i18n.dict.examStart.backButton}</Button>
+		<section>
+			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.assortedTitle}</h2>
+			{#if quizzes.assorted.length}
+				{@render quizList(quizzes.assorted)}
+			{:else}
+				<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
+			{/if}
+		</section>
+
+		<section>
+			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.ministryTitle}</h2>
+			{#if quizzes.ministry.length}
+				{@render quizList(quizzes.ministry)}
+			{:else}
+				<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
+			{/if}
+		</section>
 	</div>
 </main>
