@@ -94,6 +94,9 @@
 	let passageIndices = $derived(
 		new Set(allEntries.flatMap((entry, i) => (entry.screen.type === 'passage' ? [i] : [])))
 	);
+	let partBreaks = $derived(
+		new Set(allEntries.flatMap((entry, i) => (entry.isFirstOfPart ? [i] : [])))
+	);
 
 	let showTimer = $derived(quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined);
 	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
@@ -233,6 +236,7 @@
 						onJump={jump}
 						style={quiz.options.navigatorStyle ?? 'numbers'}
 						{passageIndices}
+						{partBreaks}
 					/>
 				{:else if allEntries.length > 1}
 					<p class="text-xs font-semibold text-muted tabular">

@@ -7,7 +7,8 @@
 		answered,
 		onJump,
 		style = 'numbers',
-		passageIndices
+		passageIndices,
+		partBreaks
 	}: {
 		total: number;
 		currentIndex: number;
@@ -15,15 +16,20 @@
 		onJump: (index: number) => void;
 		style?: 'dots' | 'numbers';
 		passageIndices?: Set<number>;
+		/** Indices where a new part starts (a small divider is drawn just before them). */
+		partBreaks?: Set<number>;
 	} = $props();
 </script>
 
-<div class="flex flex-wrap gap-1.5" dir="rtl">
+<div class="flex flex-wrap items-center gap-1.5" dir="rtl">
 	<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 	{#each Array.from({ length: total }) as _, i (i)}
 		{@const isAnswered = answered.has(i)}
 		{@const isCurrent = i === currentIndex}
 		{@const isPassage = passageIndices?.has(i)}
+		{#if i > 0 && partBreaks?.has(i)}
+			<span class="mx-0.5 h-5 w-px shrink-0 bg-line" aria-hidden="true"></span>
+		{/if}
 		<button
 			type="button"
 			aria-current={isCurrent ? 'step' : undefined}
