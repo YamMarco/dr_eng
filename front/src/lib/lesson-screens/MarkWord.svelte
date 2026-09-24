@@ -5,8 +5,12 @@
 	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 
-	const score = getLessonScore();
+	const mode = getScreenMode();
+	const score = mode === 'lesson' ? getLessonScore() : undefined;
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	let {
 		screen,
@@ -22,12 +26,16 @@
 		label?: string;
 	} = $props();
 
-	let selected = $state<number | null>(null);
+	// Revisiting via the quiz navigator restores whatever was picked before.
+	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number | undefined) : undefined;
+	let selected = $state<number | null>(restoredAnswer ?? null);
 	let checked = $state(false);
 	let words = $derived(screen.sentence.split(' '));
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// eslint-disable-next-line no-useless-assignment
+	if (mode === 'quiz') disabled = restoredAnswer === undefined;
 
 	function pick(i: number) {
 		if (checked) return;
@@ -36,10 +44,16 @@
 	}
 
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (selected === null) return;
+			answerSlot!.set(selected);
+			onAdvance();
+			return;
+		}
 		if (!checked) {
 			if (selected === null) return;
 			checked = true;
-			recordAnswer(score, selected === screen.correctWordIndex);
+			recordAnswer(score!, selected === screen.correctWordIndex);
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -47,8 +61,12 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
-<ScoreBadge {score} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
+{/if}
+{#if score}
+	<ScoreBadge {score} />
+{/if}
 {#if screen.prompt}
 	<div class="mb-4 text-lg leading-relaxed font-semibold"><Md block text={screen.prompt} /></div>
 {/if}

@@ -8,3 +8,7 @@ export const allQuizNodes: QuizNode[] = [...cQuizzes];
 export function getQuizNode(id: string): QuizNode | undefined {
 	return allQuizNodes.find((quiz) => quiz.id === id);
 }
+
+export function getQuizNodesByModule(moduleId: string): QuizNode[] {
+	return allQuizNodes.filter((quiz) => quiz.module === moduleId);
+}

@@ -24,7 +24,7 @@
 
 	function playFromHere() {
 		if (!node || !path) return;
-		const round = path.bucket === 'preface' ? 0 : path.bucket;
+		const round = path.bucket === 'preface' ? 0 : (path.bucket as number);
 		const idx = path.bucket === 0 ? node.content.preface.length + path.index : path.index;
 		onPlay(node.id, round, idx);
 	}
@@ -130,7 +130,13 @@
 		     with a draggable divider between them. -->
 		<div class="flex min-h-0 flex-1" bind:this={splitWrap}>
 			<div class="shrink-0 overflow-hidden" style="width: {filmstripWidth}px">
-				<SlideFilmstrip nodeId={node.id} {issues} onSelect={() => {}} width={filmstripWidth} />
+				<SlideFilmstrip
+					model={editModel}
+					nodeId={node.id}
+					{issues}
+					onSelect={() => {}}
+					width={filmstripWidth}
+				/>
 			</div>
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
@@ -144,7 +150,7 @@
 				onpointerdown={startDrag}
 			></div>
 			<div class="min-h-0 flex-1">
-				<SlideStage nodeId={node.id} {path} />
+				<SlideStage model={editModel} nodeId={node.id} {path} />
 			</div>
 		</div>
 	</div>

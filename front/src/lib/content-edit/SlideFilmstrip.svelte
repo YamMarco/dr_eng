@@ -4,14 +4,15 @@
 	// (SlideStage). Drag to reorder, within or across round buckets.
 	// Detachable — part of src/lib/content-edit/.
 	import { tick, onMount } from 'svelte';
-	import { editModel } from './editModel.svelte';
 	import { countQuestions } from '$lib/lesson-screens/types';
 	import EditableScreen from './EditableScreen.svelte';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 	import type { ScreenPath } from './screenPath';
+	import type { EditModelLike } from './editModelTypes';
 	import type { Issue } from './validate';
 
 	let {
+		model,
 		nodeId,
 		issues = [],
 		onSelect,
@@ -20,6 +21,7 @@
 		    leaves instead of staying a fixed size. */
 		width = 288
 	}: {
+		model: EditModelLike;
 		nodeId: string;
 		issues?: Issue[];
 		onSelect: (p: ScreenPath) => void;
@@ -33,32 +35,34 @@
 	let thumbH = $derived(Math.round(thumbW * THUMB_RATIO));
 	let thumbScale = $derived(thumbW / 448);
 
-	let node = $derived(editModel.node(nodeId));
-	let sel = $derived(editModel.selectedPath);
+	let buckets = $derived(model.bucketsOf(nodeId));
+	let sel = $derived(model.selectedPath);
 
 	type Item =
-		| { kind: 'divider'; bucket: ScreenPath['bucket']; title: string; note: string }
+		| {
+				kind: 'divider';
+				bucket: ScreenPath['bucket'];
+				/** Position among non-preface buckets - what addBucket/moveBucket/etc
+				    address (a round index for lessons, a part index for exams). */
+				bucketIndex: number;
+				title: string;
+				note?: string;
+		  }
 		| { kind: 'screen'; bucket: ScreenPath['bucket']; index: number; screen: LessonScreen }
 		/** Insert a blank screen at `at` in this bucket (0 = make it the first).
 		    `big` = the prominent labeled button; the rest are slim "+" rows so
 		    you can add a screen between any two, not just at the end. */
 		| { kind: 'add-screen'; bucket: ScreenPath['bucket']; at: number; big?: boolean }
-		| { kind: 'add-round' };
+		| { kind: 'add-bucket' };
+
+	let bucketCount = $derived(buckets.filter((b) => b.key !== 'preface').length);
 
 	let items = $derived.by<Item[]>(() => {
-		if (!node) return [];
 		const out: Item[] = [];
-		const buckets: { key: ScreenPath['bucket']; screens: LessonScreen[] }[] = [
-			{ key: 'preface', screens: node.content.preface },
-			...node.content.rounds.map((r, i) => ({ key: i as ScreenPath['bucket'], screens: r.screens }))
-		];
+		let bucketIndex = -1;
 		for (const b of buckets) {
-			out.push({
-				kind: 'divider',
-				bucket: b.key,
-				title: b.key === 'preface' ? 'פתיח' : `סבב ${b.key + 1}`,
-				note: b.key === 'preface' ? 'לפני סבב 1' : b.key === 0 ? 'חובה' : 'רשות'
-			});
+			if (b.key !== 'preface') bucketIndex += 1;
+			out.push({ kind: 'divider', bucket: b.key, bucketIndex, title: b.label, note: b.note });
 			out.push({ kind: 'add-screen', bucket: b.key, at: 0, big: b.screens.length === 0 });
 			b.screens.forEach((screen, index) => {
 				out.push({ kind: 'screen', bucket: b.key, index, screen });
@@ -70,7 +74,7 @@
 				});
 			});
 		}
-		out.push({ kind: 'add-round' });
+		out.push({ kind: 'add-bucket' });
 		return out;
 	});
 
@@ -81,7 +85,7 @@
 
 	let list = $state<HTMLDivElement>();
 	async function selectAndScroll(b: ScreenPath['bucket'], i: number) {
-		editModel.select(nodeId, { bucket: b, index: i });
+		model.select(nodeId, { bucket: b, index: i });
 		onSelect({ bucket: b, index: i });
 		await tick();
 		list?.querySelector<HTMLElement>(`[data-slide="${String(b)}:${i}"]`)?.scrollIntoView({
@@ -109,7 +113,7 @@
 	let drag = $state<ScreenPath | null>(null);
 	let over = $state<string | null>(null);
 	function drop(bucket: ScreenPath['bucket'], index: number) {
-		if (drag) editModel.moveScreen(nodeId, drag, { bucket, index });
+		if (drag) model.moveScreen(nodeId, drag, { bucket, index });
 		drag = null;
 		over = null;
 	}
@@ -117,28 +121,29 @@
 	// A blank card lands with no content and its type picked in the stage —
 	// no "choose a type first" step.
 	function addScreen(bucket: ScreenPath['bucket'], at: number) {
-		editModel.addScreen(nodeId, bucket, at, 'preface');
-		if (editModel.selectedPath) {
-			onSelect(editModel.selectedPath);
-			selectAndScroll(editModel.selectedPath.bucket, editModel.selectedPath.index);
+		model.addScreen(nodeId, bucket, at, 'preface');
+		if (model.selectedPath) {
+			onSelect(model.selectedPath);
+			selectAndScroll(model.selectedPath.bucket, model.selectedPath.index);
 		}
 	}
 
-	// ---- round actions menu — fixed-positioned so the list's overflow-y-auto
-	// (which clips absolutely-positioned descendants) can't swallow it. ----
-	let roundMenu = $state<number | null>(null);
+	// ---- bucket ("round"/"part") actions menu — fixed-positioned so the
+	// list's overflow-y-auto (which clips absolutely-positioned descendants)
+	// can't swallow it. ----
+	let bucketMenu = $state<number | null>(null);
 	let menuPos = $state({ top: 0, left: 0 });
-	function toggleRoundMenu(e: MouseEvent, ri: number) {
-		if (roundMenu === ri) {
-			roundMenu = null;
+	function toggleBucketMenu(e: MouseEvent, bi: number) {
+		if (bucketMenu === bi) {
+			bucketMenu = null;
 			return;
 		}
 		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
 		menuPos = { top: rect.bottom + 4, left: Math.min(rect.left, window.innerWidth - 176) };
-		roundMenu = ri;
+		bucketMenu = bi;
 	}
 	function closeMenu() {
-		roundMenu = null;
+		bucketMenu = null;
 	}
 </script>
 
@@ -155,21 +160,20 @@
 					<span
 						class="rounded-md px-2 py-1 text-sm font-extrabold {it.bucket === 'preface'
 							? 'bg-surface text-ink shadow-sm'
-							: it.bucket === 0
+							: it.bucketIndex === 0
 								? 'bg-emerald-100 text-emerald-800'
 								: 'bg-brand-soft text-brand-dark'}"
 					>
 						{it.title}
 					</span>
-					<span class="text-xs font-semibold text-muted">{it.note}</span>
+					{#if it.note}<span class="text-xs font-semibold text-muted">{it.note}</span>{/if}
 					<span class="flex-1"></span>
 					{#if it.bucket !== 'preface'}
-						{@const ri = it.bucket as number}
 						<button
 							type="button"
 							class="rounded px-1.5 text-sm font-bold text-muted hover:bg-line/60"
-							title="פעולות על הסבב"
-							onclick={(e) => toggleRoundMenu(e, ri)}
+							title="פעולות"
+							onclick={(e) => toggleBucketMenu(e, it.bucketIndex)}
 						>
 							⋯
 						</button>
@@ -231,7 +235,7 @@
 							class="pointer-events-none absolute top-0 left-1/2 origin-top"
 							style="width: 448px; transform: translateX(-50%) scale({thumbScale});"
 						>
-							<EditableScreen {nodeId} path={{ bucket: it.bucket, index: it.index }} />
+							<EditableScreen {model} {nodeId} path={{ bucket: it.bucket, index: it.index }} />
 						</div>
 					</div>
 				</div>
@@ -254,18 +258,18 @@
 				<button
 					type="button"
 					class="mt-1.5 flex w-full items-center justify-center gap-1 rounded-lg border-2 border-dashed border-brand/60 py-1.5 text-[10px] font-bold text-brand hover:bg-brand-soft/50"
-					title="הוספת סבב תרגול חדש בסוף"
-					onclick={() => editModel.addRound(nodeId)}
+					title="הוספה בסוף"
+					onclick={() => model.addBucket(nodeId)}
 				>
-					➕ הוספת סבב
+					{model.addBucketLabel}
 				</button>
 			{/if}
 		{/each}
 	</div>
 </div>
 
-{#if roundMenu !== null}
-	{@const ri = roundMenu}
+{#if bucketMenu !== null}
+	{@const bi = bucketMenu}
 	<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 	<div class="fixed inset-0 z-40" onclick={closeMenu}></div>
 	<div
@@ -275,9 +279,9 @@
 		<button
 			type="button"
 			class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
-			disabled={ri === 0}
+			disabled={bi === 0}
 			onclick={() => {
-				editModel.moveRound(nodeId, ri, ri - 1);
+				model.moveBucket(nodeId, bi, bi - 1);
 				closeMenu();
 			}}
 		>
@@ -286,34 +290,47 @@
 		<button
 			type="button"
 			class="block w-full rounded px-2 py-1.5 hover:bg-line/50 disabled:opacity-40"
-			disabled={!node || ri === node.content.rounds.length - 1}
+			disabled={bi === bucketCount - 1}
 			onclick={() => {
-				editModel.moveRound(nodeId, ri, ri + 1);
+				model.moveBucket(nodeId, bi, bi + 1);
 				closeMenu();
 			}}
 		>
 			▼ הזזה למטה (מאוחר יותר)
 		</button>
+		{#if model.setBucketLabel}
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
+				onclick={() => {
+					const name = prompt('כותרת חדשה')?.trim();
+					if (name) model.setBucketLabel?.(nodeId, bi, name);
+					closeMenu();
+				}}
+			>
+				✏️ שינוי כותרת
+			</button>
+		{/if}
 		<button
 			type="button"
 			class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
 			onclick={() => {
-				editModel.duplicateRound(nodeId, ri);
+				model.duplicateBucket(nodeId, bi);
 				closeMenu();
 			}}
 		>
-			⧉ שכפול הסבב
+			⧉ שכפול
 		</button>
 		<button
 			type="button"
 			class="block w-full rounded px-2 py-1.5 font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-40"
-			disabled={!node || node.content.rounds.length <= 1}
+			disabled={bucketCount <= 1}
 			onclick={() => {
-				if (confirm(`למחוק את סבב ${ri + 1} על כל המסכים שבו?`)) editModel.deleteRound(nodeId, ri);
+				if (confirm('למחוק לצמיתות?')) model.deleteBucket(nodeId, bi);
 				closeMenu();
 			}}
 		>
-			🗑 מחיקת הסבב
+			🗑 מחיקה
 		</button>
 	</div>
 {/if}

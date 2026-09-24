@@ -2,6 +2,8 @@
 // session's password (see editStore.svelte.ts) to every write, since the
 // production backend requires it on each request (dev doesn't check it).
 import type { LessonContent, LessonNode } from '$lib/content';
+import type { QuizNode } from '$lib/quiz';
+import type { Quiz } from '$lib/quizzes';
 
 const KEY_STORAGE = 'content-edit-key';
 
@@ -69,4 +71,30 @@ export function saveLessonContent(lessonId: string, content: LessonContent) {
  *  they are on disk/GitHub, not overwritten from this session's copy. */
 export function saveSection(sectionId: string, upserts: LessonNode[], deletes: string[]) {
 	return post({ sectionId, upserts, deletes });
+}
+
+/** Merges exam-editor changes into the module's quiz-content file and
+ *  quizzes.ts's metadata arrays in one write/commit - the exam-editor's
+ *  equivalent of saveSection. */
+async function postExam(body: unknown): Promise<{ ok: true; committed: boolean }> {
+	const key = storedKey();
+	const res = await fetch('/api/content-edit/exam', {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json',
+			...(key ? { 'x-content-edit-key': key } : {})
+		},
+		body: JSON.stringify(body)
+	});
+	if (!res.ok) throw new Error(await res.text());
+	return res.json();
+}
+
+export function saveExamChanges(
+	moduleId: string,
+	content: { upserts: QuizNode[]; deletes: string[] },
+	metaAssorted: { upserts: Quiz[]; deletes: string[] },
+	metaMinistry: { upserts: Quiz[]; deletes: string[] }
+) {
+	return postExam({ moduleId, content, metaAssorted, metaMinistry });
 }

@@ -38,6 +38,8 @@ export type MarkWordScreen = {
 	sentence: string;
 	correctWordIndex: number;
 	dir?: 'rtl' | 'ltr';
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /**
@@ -148,6 +150,8 @@ export type ClozePickScreen = {
 	/** Indices into `options` that count as correct — any one passes. */
 	correctIndices: number[];
 	explanation?: string;
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /** Compares two previously-recorded timer values. */
@@ -189,7 +193,13 @@ export type WordCardScreen = {
 export type MatchPairsScreen = {
 	type: 'match-pairs';
 	pairs: { en: string; he: string }[];
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
+
+/** A match-pairs attempt passes with at most this many wrong taps — shared by
+ *  the live component (lesson mode) and the quiz scorer so both agree. */
+export const MATCH_PAIRS_MAX_MISTAKES = 1;
 
 /**
  * Type the word into a text input. `mode: 'copy'` shows the word to
@@ -200,6 +210,8 @@ export type SpellWordScreen = {
 	type: 'spell-word';
 	word: string;
 	mode: 'copy' | 'listen';
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
 
 /** A colour-coded bucket of things to mark (e.g. "names", "negatives"). */
@@ -235,7 +247,26 @@ export type MarkAllScreen = {
 	 * so a later time-result screen can read it back.
 	 */
 	timerKey?: string;
+	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
+	points?: number;
 };
+
+/** Lenient pass rule shared by the live component (lesson mode) and the quiz
+ *  scorer: skimming is about spotting most eye catchers fast, not a perfect
+ *  sweep — pass on 70%+ of targets found with at most one stray tap. */
+export function isMarkAllPass(screen: MarkAllScreen, picked: number[]): boolean {
+	const targets = new Set([
+		...screen.correctIndices,
+		...(screen.categories ?? []).flatMap((c) => c.indices)
+	]);
+	let hits = 0;
+	let wrong = 0;
+	for (const i of picked) {
+		if (targets.has(i)) hits += 1;
+		else wrong += 1;
+	}
+	return wrong <= 1 && hits >= Math.ceil(targets.size * 0.7);
+}
 
 /**
  * Free written answer with no marking: the student types, taps to reveal the
