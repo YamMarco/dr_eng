@@ -432,6 +432,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "השלימו את המשפט: אנשים עזבו כי…",
               hookHe:
                 "complete = להשלים: ממשיכים את מה שכבר כתוב. לא כותבים משפט חדש, ולא כותבים שוב את מה שכבר שם.",
+              image: "/vocab-images/word-d2be697d7c.jpg",
             },
             {
               type: "mcq",
@@ -462,6 +463,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הקיפו את התשובה הנכונה.",
               hookHe:
                 "circle = להקיף. זו שאלת רב-ברירה: בוחרים אחת מהאפשרויות ומקיפים אותה. לא כותבים תשובה משלכם.",
+              image: "/vocab-images/word-2e68b7d260.jpg",
             },
             {
               type: "mcq",
@@ -514,6 +516,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הסבירו למה העצים חזרו לגדול.",
               hookHe:
                 "explain = להסביר: לתת סיבה או תיאור במילים שלכם, לפי הטקסט. לא רק להעתיק משפט.",
+              image: "/vocab-images/word-e366dfea6d.jpg",
             },
             {
               type: "mcq",
@@ -544,6 +547,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "אנשים עזבו כי המים היו מלוכלכים.",
               hookHe:
                 "because = כי. אחריה בא הסבר. כשהיא בשאלה, מחפשים סיבה. וכשהיא כבר כתובה בשאלה, לא כותבים אותה שוב בתשובה.",
+              image: "/vocab-images/word-8560e2f35c.jpg",
             },
             {
               type: "mcq",
