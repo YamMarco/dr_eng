@@ -5,7 +5,6 @@
 	import { getQuizzesForModule, type Quiz } from '$lib/quizzes';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -37,16 +36,20 @@
 	</ul>
 {/snippet}
 
+<!-- Always visible, not gated by editStore.available — /edit-exam itself is
+     password-gated on the deployed site, and that gate is the only way to
+     ever unlock it there (see the equivalent bootstrap link on the lessons
+     page). Gating this link too would mean nothing on the deployed site
+     could ever reach the password screen. -->
 <AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
 	{#snippet trailing()}
-		{#if editStore.available}
-			<a
-				href="/edit-exam?module={mod.id}"
-				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
-			>
-				✎ ערוך
-			</a>
-		{/if}
+		<a
+			href="/edit-exam?module={mod.id}"
+			title="עריכת מבחנים"
+			class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+		>
+			✎ ערוך
+		</a>
 	{/snippet}
 </AppBar>
 
