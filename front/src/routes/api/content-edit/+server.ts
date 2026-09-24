@@ -20,6 +20,13 @@ import prettier from 'prettier';
 import { getLesson } from '$lib/content';
 import { checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
+import {
+	splitArrayHead,
+	extractArrayLiteral,
+	parseArrayLiteral,
+	mergeById,
+	emit
+} from '$lib/content-edit/fileEmit';
 import type { RequestHandler } from './$types';
 
 // One request either replaces a single lesson's `content` ({ lessonId,
@@ -45,76 +52,6 @@ type Body =
 			content?: undefined;
 	  };
 
-/** Everything up to and including the array literal's opening `[`. */
-function splitHead(raw: string): string {
-	const head = raw.match(/^([\s\S]*?=\s*)\[/)?.[1];
-	if (!head) throw error(500, 'could not locate array literal in content file');
-	return head;
-}
-
-/** The array literal is plain JS data (strings/numbers/booleans/null/arrays/
- *  objects) but not valid JSON — the files use single-quoted strings, so
- *  JSON.parse throws on every one of them. Evaluate it as JS instead. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function parseArrayLiteral(src: string): any[] {
-	// eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
-	return new Function(`'use strict'; return (${src});`)();
-}
-
-/** Merge a patch of changed/new nodes and deleted ids into the section's
- *  current array — nodes the patch doesn't mention pass through untouched,
- *  so a save never reverts anyone else's already-committed changes. New
- *  ids are appended in the order the patch gives them; existing ids keep
- *  their position. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mergeSection(fresh: any[], upserts: any[], deletes: string[]): any[] {
-	const deleteSet = new Set(deletes);
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const byId = new Map<string, any>(
-		fresh.filter((n) => !deleteSet.has(n.id)).map((n) => [n.id, n])
-	);
-	const order = fresh.map((n) => n.id as string).filter((id) => !deleteSet.has(id));
-	for (const u of upserts) {
-		if (!byId.has(u.id)) order.push(u.id);
-		byId.set(u.id, u);
-	}
-	return order.map((id) => byId.get(id));
-}
-
-const IDENT = /^[A-Za-z_$][\w$]*$/;
-
-/** A single-quoted JS string literal, keeping JSON's escapes (\n, \uXXXX, …). */
-function sq(s: string): string {
-	return `'${JSON.stringify(s).slice(1, -1).replace(/\\"/g, '"').replace(/'/g, "\\'")}'`;
-}
-
-/** Emit the content array the way the files are hand-written: tab-indented,
- *  small primitive-only objects/arrays kept on one line. Keeps `git diff`
- *  after a save small instead of exploding every `position` / `indices`. */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function emit(v: any, depth: number): string {
-	const pad = '\t'.repeat(depth);
-	const pad1 = '\t'.repeat(depth + 1);
-	if (v === null || v === undefined) return 'null';
-	if (typeof v === 'string') return sq(v);
-	if (typeof v !== 'object') return String(v);
-
-	if (Array.isArray(v)) {
-		if (v.length === 0) return '[]';
-		const parts = v.map((x) => emit(x, depth + 1));
-		const inline = `[${parts.join(', ')}]`;
-		if (!inline.includes('\n') && inline.length <= 76) return inline;
-		return `[\n${parts.map((p) => pad1 + p).join(',\n')}\n${pad}]`;
-	}
-
-	const keys = Object.keys(v).filter((k) => v[k] !== undefined);
-	if (keys.length === 0) return '{}';
-	const parts = keys.map((k) => `${IDENT.test(k) ? k : sq(k)}: ${emit(v[k], depth + 1)}`);
-	const inline = `{ ${parts.join(', ')} }`;
-	if (!inline.includes('\n') && inline.length <= 76) return inline;
-	return `{\n${parts.map((p) => pad1 + p).join(',\n')}\n${pad}}`;
-}
-
 export const POST: RequestHandler = async ({ request }) => {
 	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
 
@@ -130,10 +67,11 @@ export const POST: RequestHandler = async ({ request }) => {
 			throw error(400, 'missing upserts[]/deletes[]');
 		fileNum = sectionId.replace(/^c-/, '');
 		transform = (raw) => {
-			const head = splitHead(raw);
-			const fresh = parseArrayLiteral(raw.slice(head.length).replace(/;\s*$/, ''));
-			const merged = mergeSection(fresh, upserts, deletes);
-			return `${head}${emit(merged, 0)};\n`;
+			const head = splitArrayHead(raw, `c${fileNum}Lessons`);
+			const { arrayText, tail } = extractArrayLiteral(raw, head);
+			const fresh = parseArrayLiteral(arrayText);
+			const merged = mergeById(fresh, upserts, deletes);
+			return `${head}${emit(merged, 0)}${tail}`;
 		};
 	} else {
 		const { lessonId, content } = body;
@@ -142,13 +80,14 @@ export const POST: RequestHandler = async ({ request }) => {
 		if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
 		fileNum = meta.section.replace(/^c-/, ''); // 'c-3' -> '3'
 		transform = (raw) => {
-			const head = splitHead(raw);
-			const lessons = parseArrayLiteral(raw.slice(head.length).replace(/;\s*$/, ''));
+			const head = splitArrayHead(raw, `c${fileNum}Lessons`);
+			const { arrayText, tail } = extractArrayLiteral(raw, head);
+			const lessons = parseArrayLiteral(arrayText);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const lesson = lessons.find((l: any) => l.id === lessonId);
 			if (!lesson) throw error(404, `lesson ${lessonId} not found in c-${fileNum}.ts`);
 			lesson.content = content;
-			return `${head}${emit(lessons, 0)};\n`;
+			return `${head}${emit(lessons, 0)}${tail}`;
 		};
 	}
 

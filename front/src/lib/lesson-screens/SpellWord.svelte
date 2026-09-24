@@ -5,8 +5,12 @@
 	import SpeakButtons from './SpeakButtons.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 
-	const score = getLessonScore();
+	const mode = getScreenMode();
+	const score = mode === 'lesson' ? getLessonScore() : undefined;
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	let {
 		screen,
@@ -22,7 +26,9 @@
 		label?: string;
 	} = $props();
 
-	let input = $state('');
+	// Revisiting via the quiz navigator restores whatever was typed before.
+	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as string | undefined) : undefined;
+	let input = $state(restoredAnswer ?? '');
 	let checked = $state(false);
 	let correct = $derived(input.trim().toLowerCase() === screen.word.trim().toLowerCase());
 
@@ -34,10 +40,16 @@
 	});
 
 	export function primaryAction() {
+		if (mode === 'quiz') {
+			if (!input.trim()) return;
+			answerSlot!.set(input);
+			onAdvance();
+			return;
+		}
 		if (!checked) {
 			if (!input.trim()) return;
 			checked = true;
-			recordAnswer(score, correct);
+			recordAnswer(score!, correct);
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -45,12 +57,16 @@
 	}
 </script>
 
-<ExerciseKindBadge
-	label={screen.mode === 'copy'
-		? i18n.dict.exerciseKind.spellWordCopy
-		: i18n.dict.exerciseKind.spellWordListen}
-/>
-<ScoreBadge {score} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge
+		label={screen.mode === 'copy'
+			? i18n.dict.exerciseKind.spellWordCopy
+			: i18n.dict.exerciseKind.spellWordListen}
+	/>
+{/if}
+{#if score}
+	<ScoreBadge {score} />
+{/if}
 
 {#if screen.mode === 'copy'}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellCopyPrompt}</p>

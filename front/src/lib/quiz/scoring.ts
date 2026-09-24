@@ -2,6 +2,7 @@
 // once at submit time with the answers it collected.
 
 import type { LessonScreen } from '$lib/lesson-screens/types';
+import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES } from '$lib/lesson-screens/types';
 import type { QuizNode } from './types';
 import { screensWithIds } from './screenIds';
 
@@ -28,9 +29,11 @@ function normalize(value: string) {
 		.trim();
 }
 
-/** Score one screen's answer. Screen types not listed here (teaching screens,
- *  and any question type not yet wired into quiz mode) score as 0/0/auto -
- *  they contribute nothing and are excluded from the report entirely. */
+/** Score one screen's answer. `points` is currently the only scoring mode
+ *  (absolute, per-screen weight) - this switch is the extension point for
+ *  rule-based/gradient scoring later. Screen types not listed here (teaching
+ *  screens) score as 0/0/auto - they contribute nothing and are excluded from
+ *  the report entirely. */
 export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 	switch (screen.type) {
 		case 'mcq': {
@@ -43,6 +46,65 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 			const given = typeof userAnswer === 'string' ? normalize(userAnswer) : '';
 			const correct = given.length > 0 && screen.modelAnswers.some((m) => normalize(m) === given);
 			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'mark-word': {
+			const points = screen.points ?? 1;
+			const correct = userAnswer === screen.correctWordIndex;
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'cloze-pick': {
+			const points = screen.points ?? 1;
+			const correct = typeof userAnswer === 'number' && screen.correctIndices.includes(userAnswer);
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'spell-word': {
+			const points = screen.points ?? 1;
+			const given = typeof userAnswer === 'string' ? normalize(userAnswer) : '';
+			const correct = given.length > 0 && given === normalize(screen.word);
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'mark-all': {
+			const points = screen.points ?? 1;
+			const picked = Array.isArray(userAnswer) ? (userAnswer as number[]) : [];
+			const correct = picked.length > 0 && isMarkAllPass(screen, picked);
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'match-pairs': {
+			const points = screen.points ?? 1;
+			const correct = typeof userAnswer === 'number' && userAnswer <= MATCH_PAIRS_MAX_MISTAKES;
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		// passage-mcq/passage-quiz: scoring is wired here, but PassageMcq.svelte/
+		// PassageQuiz.svelte don't write a per-question answer into the quiz
+		// answer slot yet (they're still lesson-style self-contained multi-
+		// question screens) - authors should stick to plain `mcq`/
+		// `sentence-completion` screens per paragraph in exams until that's done.
+		case 'passage-mcq': {
+			const answers =
+				userAnswer && typeof userAnswer === 'object' ? (userAnswer as Record<number, number>) : {};
+			let earned = 0;
+			let max = 0;
+			screen.questions.forEach((q, qi) => {
+				const points = q.points ?? 1;
+				max += points;
+				if (answers[qi] === q.correctIndex) earned += points;
+			});
+			return { earned, max, auto: true };
+		}
+		case 'passage-quiz': {
+			const answers =
+				userAnswer && typeof userAnswer === 'object' ? (userAnswer as Record<number, string>) : {};
+			let earned = 0;
+			let max = 0;
+			screen.questions.forEach((q, qi) => {
+				const points = q.points ?? 1;
+				max += points;
+				const given = typeof answers[qi] === 'string' ? normalize(answers[qi]) : '';
+				if (given.length > 0 && q.keywords.every((k) => given.includes(k.toLowerCase()))) {
+					earned += points;
+				}
+			});
+			return { earned, max, auto: true };
 		}
 		case 'writing-task':
 			return { earned: 0, max: screen.points ?? 0, auto: false };

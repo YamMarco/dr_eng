@@ -5,6 +5,7 @@
 	import { getQuizzesForModule, type Quiz } from '$lib/quizzes';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -36,7 +37,18 @@
 	</ul>
 {/snippet}
 
-<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base} />
+<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
+	{#snippet trailing()}
+		{#if editStore.available}
+			<a
+				href="/edit-exam?module={mod.id}"
+				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
+			>
+				✎ ערוך
+			</a>
+		{/if}
+	{/snippet}
+</AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->

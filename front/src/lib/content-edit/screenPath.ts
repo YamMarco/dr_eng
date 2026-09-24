@@ -3,7 +3,10 @@
 // (the lessons-path popover, or live in the runner).
 import type { LessonContent, LessonScreen } from '$lib/content';
 
-export type ScreenPath = { bucket: 'preface' | number; index: number };
+// `bucket` is a lesson round index or 'preface' for lessons, and a QuizPart id
+// (string) for exams - the shared editor components (SlideFilmstrip/SlideStage/
+// EditableScreen) don't care which, they just address a screen list by key.
+export type ScreenPath = { bucket: 'preface' | string | number; index: number };
 
 /** The screens actually played for a round: round 0 plays preface + its own
  *  round; later rounds play alone. Shared by the lessons path page and
@@ -32,6 +35,9 @@ export function screenPathsForRound(
 		bucket: 'preface',
 		index: i
 	}));
-	const round: ScreenPath[] = Array.from({ length: roundLength }, (_, i) => ({ bucket: 0, index: i }));
+	const round: ScreenPath[] = Array.from({ length: roundLength }, (_, i) => ({
+		bucket: 0,
+		index: i
+	}));
 	return [...preface, ...round];
 }

@@ -19,7 +19,23 @@
 	import QuestionNavigator from './QuestionNavigator.svelte';
 	import type { QuizNode } from './types';
 
-	let { quiz, onExit }: { quiz: QuizNode; onExit: () => void } = $props();
+	let {
+		quiz,
+		onExit,
+		// Content-edit "play from here": jumps straight to a screen and skips
+		// resume/progress/attempt persistence entirely, so testing an in-progress
+		// edit never touches (or gets confused by) a real student's saved
+		// progress for the same quiz id.
+		preview = false,
+		startPartIndex = 0,
+		startScreenIndex = 0
+	}: {
+		quiz: QuizNode;
+		onExit: () => void;
+		preview?: boolean;
+		startPartIndex?: number;
+		startScreenIndex?: number;
+	} = $props();
 
 	// Screens read `mode` via context to skip the check/feedback step and
 	// record straight into the answers bag instead of the lesson score.
@@ -32,12 +48,12 @@
 	createLessonSession();
 
 	// One-time read at mount: is there an unfinished attempt to offer resuming?
-	const savedProgress = untrack(() => getInProgress(quiz.id));
+	const savedProgress = untrack(() => (preview ? null : getInProgress(quiz.id)));
 	const startedAt = savedProgress?.startedAt ?? Date.now();
 
 	const answers = $state<Record<string, unknown>>({});
-	let partIndex = $state(0);
-	let screenIndex = $state(0);
+	let partIndex = $state(untrack(() => startPartIndex));
+	let screenIndex = $state(untrack(() => startScreenIndex));
 	let submitted = $state(false);
 	let score = $state<QuizScore | null>(null);
 	let showExitPrompt = $state(false);
@@ -65,9 +81,7 @@
 		new Set(playedScreens.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
 	);
 
-	let showTimer = $derived(
-		quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined
-	);
+	let showTimer = $derived(quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined);
 	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
 	let remainingSeconds = $state(untrack(() => (quiz.options.durationMinutes ?? 0) * 60));
 	let timerWarning = $derived(remainingSeconds <= (quiz.options.warnAtMinutes ?? 5) * 60);
@@ -98,6 +112,7 @@
 		if (submitted) return;
 		score = scoreQuiz(quiz, answers);
 		submitted = true;
+		if (preview) return;
 		saveAttempt({
 			quizId: quiz.id,
 			startedAt,
@@ -173,7 +188,7 @@
 	// (nothing has actually started), and once submitted (saveAttempt already
 	// clears the in-progress record).
 	$effect(() => {
-		if (submitted || showResumePrompt) return;
+		if (preview || submitted || showResumePrompt) return;
 		saveInProgress({
 			quizId: quiz.id,
 			startedAt,
