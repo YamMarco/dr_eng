@@ -36,10 +36,19 @@ export interface QuizPart {
 	screens: LessonScreen[];
 }
 
+export type QuizKind = 'assorted' | 'ministry';
+
 export interface QuizNode {
 	/** Unique across the app, e.g. "c-quiz-3". */
 	id: string;
 	module: string;
+	/** Same exam, different format - short id shaped `<module letter>-t-xxxx`,
+	 *  alongside the readable `id` slug. Used by the exam list/routing layer
+	 *  (see $lib/quizzes), not by anything content-related. */
+	uuid: string;
+	kind: QuizKind;
+	/** Required when kind is 'ministry'. */
+	year?: number;
 	titleHe: string;
 	titleEn?: string;
 	descriptionHe?: string;

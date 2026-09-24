@@ -20,7 +20,6 @@
 
 	let quiz = $derived(examEditModel.selectedQuiz);
 	let path = $derived(examEditModel.selectedPath);
-	let meta = $derived(quiz ? examEditModel.meta[quiz.id] : undefined);
 	let metaOpen = $state(false);
 
 	function playFromHere() {
@@ -113,7 +112,7 @@
 					<span class="text-xs text-muted">סוג</span>
 					<select
 						class="fld"
-						value={meta?.kind ?? 'assorted'}
+						value={quiz.kind}
 						onchange={(e) =>
 							examEditModel.setExamKind(quiz.id, e.currentTarget.value as 'assorted' | 'ministry')}
 					>
@@ -121,13 +120,13 @@
 						<option value="ministry">מבחן משרד החינוך</option>
 					</select>
 				</label>
-				{#if meta?.kind === 'ministry'}
+				{#if quiz.kind === 'ministry'}
 					<label class="flex flex-col gap-0.5">
 						<span class="text-xs text-muted">שנה</span>
 						<input
 							type="number"
 							class="fld"
-							value={meta.year ?? new Date().getFullYear()}
+							value={quiz.year ?? new Date().getFullYear()}
 							oninput={(e) =>
 								examEditModel.setExamKind(quiz.id, 'ministry', e.currentTarget.valueAsNumber)}
 						/>

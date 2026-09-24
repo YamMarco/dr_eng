@@ -35,8 +35,8 @@
 		saveState = 'saving';
 		saveMsg = '';
 		try {
-			const { content, metaAssorted, metaMinistry } = examEditModel.changes();
-			const res = await saveExamChanges(moduleId, content, metaAssorted, metaMinistry);
+			const { upserts, deletes } = examEditModel.changes();
+			const res = await saveExamChanges(moduleId, upserts, deletes);
 			examEditModel.markClean();
 			saveState = 'saved';
 			saveMsg = res.committed ? 'נשלח. המתן כדקה ורענן את הדף.' : 'נשמר. הדף ייטען מחדש.';

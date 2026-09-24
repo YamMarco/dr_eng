@@ -3,54 +3,35 @@
 // QuizNode[] instead of LessonNode[]; a QuizPart plays the role a lesson node
 // plays for editModel (one screen-bucket picker level up from a screen), so
 // there's no preface/graph concept here, just a flat list of exams and each
-// exam's parts.
+// exam's parts. Unlike lessons, an exam's routing/list metadata (uuid, kind,
+// year) lives directly on the QuizNode itself (see $lib/quiz/types.ts) - the
+// $lib/quizzes registry is a derived view, not a second file to save.
 //
 // Detachable — part of src/lib/content-edit/. See README.md.
 
 import { getQuizNodesByModule } from '$lib/quiz';
-import type { QuizNode, QuizOptions, QuizPart } from '$lib/quiz';
-import { getQuizzesForModule, type Quiz, type QuizKind } from '$lib/quizzes';
+import type { QuizNode, QuizOptions, QuizPart, QuizKind } from '$lib/quiz';
 import type { LessonScreen } from '$lib/lesson-screens/types';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
 
-/** Metadata that lives in quizzes.ts (the routing/list registry), not on the
- *  QuizNode content itself. */
-export type ExamMeta = { uuid: string; kind: QuizKind; year?: number };
-
 function clone<T>(v: T): T {
 	return JSON.parse(JSON.stringify(v)) as T;
-}
-
-function metaFromQuizzes(list: Quiz[]): Record<string, ExamMeta> {
-	const out: Record<string, ExamMeta> = {};
-	for (const q of list) {
-		out[q.id] =
-			q.kind === 'ministry'
-				? { uuid: q.uuid, kind: 'ministry', year: q.year }
-				: { uuid: q.uuid, kind: 'assorted' };
-	}
-	return out;
 }
 
 class ExamEditModel implements EditModelLike {
 	moduleId = $state('');
 	quizzes = $state<QuizNode[]>([]);
-	/** quiz id -> its quizzes.ts metadata (uuid/kind/year). */
-	meta = $state<Record<string, ExamMeta>>({});
 	dirty = $state(false);
 	selectedQuizId = $state<string | null>(null);
 	selectedPath = $state<ScreenPath | null>(null);
 
-	#baselineQuizzes = '';
-	#baselineMeta = '';
+	#baseline = '';
 
 	load(moduleId: string) {
 		this.moduleId = moduleId;
 		this.quizzes = clone(getQuizNodesByModule(moduleId));
-		const { assorted, ministry } = getQuizzesForModule(moduleId);
-		this.meta = clone(metaFromQuizzes([...assorted, ...ministry]));
 		this.#snapshotBaseline();
 		this.dirty = false;
 		this.selectedQuizId = this.quizzes[0]?.id ?? null;
@@ -58,8 +39,7 @@ class ExamEditModel implements EditModelLike {
 	}
 
 	#snapshotBaseline() {
-		this.#baselineQuizzes = JSON.stringify(this.quizzes);
-		this.#baselineMeta = JSON.stringify(this.meta);
+		this.#baseline = JSON.stringify(this.quizzes);
 	}
 
 	markClean() {
@@ -71,56 +51,18 @@ class ExamEditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
-	/** Node-level diff against the last-loaded/saved baseline, split into the
-	 *  module's quiz-content array and quizzes.ts's two kind-specific arrays -
-	 *  same "untouched entries pass through" merge contract editModel uses for
+	/** Node-level diff against the last-loaded/saved baseline - same
+	 *  "untouched entries pass through" merge contract editModel uses for
 	 *  lesson sections. */
-	changes(): {
-		content: { upserts: QuizNode[]; deletes: string[] };
-		metaAssorted: { upserts: Quiz[]; deletes: string[] };
-		metaMinistry: { upserts: Quiz[]; deletes: string[] };
-	} {
-		const baselineQuizzes: QuizNode[] = JSON.parse(this.#baselineQuizzes || '[]');
-		const baseById = new Map(baselineQuizzes.map((q) => [q.id, q]));
-		const contentUpserts = this.quizzes
+	changes(): { upserts: QuizNode[]; deletes: string[] } {
+		const baseline: QuizNode[] = JSON.parse(this.#baseline || '[]');
+		const baseById = new Map(baseline.map((q) => [q.id, q]));
+		const upserts = this.quizzes
 			.filter((q) => JSON.stringify(q) !== JSON.stringify(baseById.get(q.id)))
 			.map((q) => clone(q));
 		const currentIds = new Set(this.quizzes.map((q) => q.id));
-		const contentDeletes = baselineQuizzes.map((q) => q.id).filter((id) => !currentIds.has(id));
-
-		const baselineMeta: Record<string, ExamMeta> = JSON.parse(this.#baselineMeta || '{}');
-		const metaAssortedUpserts: Quiz[] = [];
-		const metaMinistryUpserts: Quiz[] = [];
-		const metaAssortedDeletes: string[] = [];
-		const metaMinistryDeletes: string[] = [];
-
-		for (const id of currentIds) {
-			const m = this.meta[id];
-			if (!m || JSON.stringify(m) === JSON.stringify(baselineMeta[id])) continue;
-			const quiz = this.node(id)!;
-			const entry: Quiz =
-				m.kind === 'ministry'
-					? {
-							id,
-							uuid: m.uuid,
-							moduleId: this.moduleId,
-							kind: 'ministry',
-							titleHe: quiz.titleHe,
-							year: m.year ?? new Date().getFullYear()
-						}
-					: { id, uuid: m.uuid, moduleId: this.moduleId, kind: 'assorted', titleHe: quiz.titleHe };
-			(m.kind === 'ministry' ? metaMinistryUpserts : metaAssortedUpserts).push(entry);
-		}
-		for (const id of Object.keys(baselineMeta)) {
-			if (currentIds.has(id)) continue;
-			(baselineMeta[id].kind === 'ministry' ? metaMinistryDeletes : metaAssortedDeletes).push(id);
-		}
-
-		return {
-			content: { upserts: contentUpserts, deletes: contentDeletes },
-			metaAssorted: { upserts: metaAssortedUpserts, deletes: metaAssortedDeletes },
-			metaMinistry: { upserts: metaMinistryUpserts, deletes: metaMinistryDeletes }
-		};
+		const deletes = baseline.map((q) => q.id).filter((id) => !currentIds.has(id));
+		return { upserts, deletes };
 	}
 
 	node(id: string): QuizNode | undefined {
@@ -154,15 +96,13 @@ class ExamEditModel implements EditModelLike {
 		const node: QuizNode = {
 			id,
 			module: this.moduleId,
+			uuid: `${this.moduleId}-t-${crypto.randomUUID().slice(0, 4)}`,
+			kind: 'assorted',
 			titleHe: 'מבחן חדש',
 			options: {},
 			parts: [{ id: 'part-1', titleHe: 'חלק 1', screens: [] }]
 		};
 		this.quizzes.push(node);
-		this.meta[id] = {
-			uuid: `${this.moduleId}-t-${crypto.randomUUID().slice(0, 4)}`,
-			kind: 'assorted'
-		};
 		this.dirty = true;
 		this.selectedQuizId = id;
 		this.selectedPath = null;
@@ -171,7 +111,6 @@ class ExamEditModel implements EditModelLike {
 
 	deleteExam(id: string) {
 		this.quizzes = this.quizzes.filter((q) => q.id !== id);
-		delete this.meta[id];
 		if (this.selectedQuizId === id) {
 			this.selectedQuizId = this.quizzes[0]?.id ?? null;
 			this.selectedPath = null;
@@ -194,12 +133,10 @@ class ExamEditModel implements EditModelLike {
 	}
 
 	setExamKind(id: string, kind: QuizKind, year?: number) {
-		const m = this.meta[id];
-		if (!m) return;
-		this.meta[id] =
-			kind === 'ministry'
-				? { ...m, kind, year: year ?? new Date().getFullYear() }
-				: { uuid: m.uuid, kind };
+		const q = this.node(id);
+		if (!q) return;
+		q.kind = kind;
+		q.year = kind === 'ministry' ? (year ?? q.year ?? new Date().getFullYear()) : undefined;
 		this.dirty = true;
 	}
 

@@ -7,6 +7,8 @@ export const cQuizzes: QuizNode[] = [
 	{
 		id: 'module-c-exam-3',
 		module: 'c',
+		uuid: 'c-t-7192',
+		kind: 'assorted',
 		titleHe: 'ידידויות יוצאות דופן בין בעלי חיים',
 		descriptionHe: 'מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.',
 		options: { passThreshold: 0.6, durationMinutes: 90, warnAtMinutes: 10 },

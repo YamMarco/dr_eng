@@ -3,7 +3,6 @@
 // production backend requires it on each request (dev doesn't check it).
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
-import type { Quiz } from '$lib/quizzes';
 
 const KEY_STORAGE = 'content-edit-key';
 
@@ -73,28 +72,8 @@ export function saveSection(sectionId: string, upserts: LessonNode[], deletes: s
 	return post({ sectionId, upserts, deletes });
 }
 
-/** Merges exam-editor changes into the module's quiz-content file and
- *  quizzes.ts's metadata arrays in one write/commit - the exam-editor's
- *  equivalent of saveSection. */
-async function postExam(body: unknown): Promise<{ ok: true; committed: boolean }> {
-	const key = storedKey();
-	const res = await fetch('/api/content-edit/exam', {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json',
-			...(key ? { 'x-content-edit-key': key } : {})
-		},
-		body: JSON.stringify(body)
-	});
-	if (!res.ok) throw new Error(await res.text());
-	return res.json();
-}
-
-export function saveExamChanges(
-	moduleId: string,
-	content: { upserts: QuizNode[]; deletes: string[] },
-	metaAssorted: { upserts: Quiz[]; deletes: string[] },
-	metaMinistry: { upserts: Quiz[]; deletes: string[] }
-) {
-	return postExam({ moduleId, content, metaAssorted, metaMinistry });
+/** Merges only the changed/removed exams into a module's quiz-content file in
+ *  one write/commit - the exam-editor's equivalent of saveSection. */
+export function saveExamChanges(moduleId: string, upserts: QuizNode[], deletes: string[]) {
+	return post({ examModuleId: moduleId, upserts, deletes });
 }
