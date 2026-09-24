@@ -40,6 +40,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מה אנחנו לומדים מפסקה II?",
               hookHe:
                 'paragraph = פסקה. נשמע כמו "פרגרף". בטקסט הפסקאות ממוספרות I, II, III, וההוראה שולחת אתכם לאחת מהן בלבד.',
+              image: "/vocab-images/word-b3f820576c.jpg",
             },
             {
               type: "mcq",
@@ -70,6 +71,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: 'לפי ד"ר דיאלו, רוב העצים מתים כשאף אחד לא דואג להם.',
               hookHe:
                 "according to = לפי. אחריה בא שם, וזה הרמז: עונים רק מה שהאדם הזה אמר.",
+              image: "/vocab-images/word-d4bc2dbeed.jpg",
             },
             {
               type: "mcq",
