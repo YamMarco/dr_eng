@@ -13,8 +13,8 @@
   },
   "front/.vscode/mcp.json": {
     "mtime": 1787655107.725987,
-    "seen": 1790224478.0968041,
-    "ast_hash": "afbe58d41216bef6dd35782feabea224",
+    "seen": 1789886622.9532726,
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "front/.vscode/settings.json": {
@@ -571,8 +571,8 @@
   },
   "front/src/lib/content/schema.sql": {
     "mtime": 1788444316.462276,
-    "seen": 1790224478.0968924,
-    "ast_hash": "42891fa3ccbe3bcfe3edca451bdd6889",
+    "seen": 1789886622.9533434,
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "front/src/lib/content/sectionMeta.ts": {
