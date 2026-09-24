@@ -114,6 +114,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מה אנחנו לומדים מפסקה I על Redonda?",
               hookHe:
                 "what do we learn = מה אנחנו לומדים. זו שאלה שמבקשת מידע שכתוב בפסקה, לא דעה שלכם.",
+              image: "/vocab-images/word-e37af2ae72.jpg",
             },
             {
               type: "mcq",
