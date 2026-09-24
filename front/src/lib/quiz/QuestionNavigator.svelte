@@ -21,7 +21,7 @@
 	} = $props();
 </script>
 
-<div class="flex flex-wrap items-center gap-1.5" dir="rtl">
+<div class="flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto" dir="rtl">
 	<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 	{#each Array.from({ length: total }) as _, i (i)}
 		{@const isAnswered = answered.has(i)}

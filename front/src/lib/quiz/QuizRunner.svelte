@@ -227,7 +227,7 @@
 		</AppBar>
 
 		<div class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2">
-			<div class="flex flex-wrap items-center gap-1.5">
+			<div class="flex min-w-0 items-center gap-1.5">
 				{#if showNavigator && allEntries.length > 1}
 					<QuestionNavigator
 						total={allEntries.length}
