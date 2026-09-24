@@ -284,3 +284,14 @@
 @utility animate-confetti-fall {
 	animation: confetti-fall var(--confetti-duration, 900ms) ease-in forwards;
 }
+
+/* Keeps a horizontally-scrollable row usable without the scrollbar taking up
+   visual space — see QuestionNavigator.svelte. */
+@utility scrollbar-none {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

@@ -19,9 +19,21 @@
 		/** Indices where a new part starts (a small divider is drawn just before them). */
 		partBreaks?: Set<number>;
 	} = $props();
+
+	let buttonEls: (HTMLButtonElement | undefined)[] = [];
+
+	// Keeps the current question in view as the student advances (or jumps)
+	// past the edge of the scrollable row.
+	$effect(() => {
+		buttonEls[currentIndex]?.scrollIntoView({
+			behavior: 'smooth',
+			inline: 'nearest',
+			block: 'nearest'
+		});
+	});
 </script>
 
-<div class="flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto" dir="rtl">
+<div class="scrollbar-none flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto" dir="rtl">
 	<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 	{#each Array.from({ length: total }) as _, i (i)}
 		{@const isAnswered = answered.has(i)}
@@ -31,6 +43,7 @@
 			<span class="mx-0.5 h-5 w-px shrink-0 bg-line" aria-hidden="true"></span>
 		{/if}
 		<button
+			bind:this={buttonEls[i]}
 			type="button"
 			aria-current={isCurrent ? 'step' : undefined}
 			aria-label={isPassage ? `קטע קריאה, שאלה ${i + 1}` : `שאלה ${i + 1}`}
