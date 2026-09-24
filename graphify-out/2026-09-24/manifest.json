@@ -13,8 +13,8 @@
   },
   "front/.vscode/mcp.json": {
     "mtime": 1787655107.725987,
-    "seen": 1790224478.0968041,
-    "ast_hash": "",
+    "seen": 1790237304.6684608,
+    "ast_hash": "afbe58d41216bef6dd35782feabea224",
     "semantic_hash": ""
   },
   "front/.vscode/settings.json": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
-    "mtime": 1790237257.8062472,
-    "seen": 1790237292.1168551,
-    "ast_hash": "5e345a7853ed380fee832e01df102af6",
+    "mtime": 1790238002.4509344,
+    "seen": 1790238039.6009731,
+    "ast_hash": "ba4642608064730a5574c2070822f3ca",
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
@@ -571,8 +571,8 @@
   },
   "front/src/lib/content/schema.sql": {
     "mtime": 1788444316.462276,
-    "seen": 1790224478.0968924,
-    "ast_hash": "",
+    "seen": 1790237304.6686947,
+    "ast_hash": "42891fa3ccbe3bcfe3edca451bdd6889",
     "semantic_hash": ""
   },
   "front/src/lib/content/sectionMeta.ts": {
@@ -1281,6 +1281,54 @@
     "mtime": 1790176624.6065297,
     "seen": 1790224470.8915472,
     "ast_hash": "6b84f10b07945a5c531d43c3bc023810",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/ExamEditWorkspace.svelte": {
+    "mtime": 1790237257.2458475,
+    "seen": 1790237304.6685512,
+    "ast_hash": "ffcab4c9800769b71771561fb1008b27",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/ExamEditorView.svelte": {
+    "mtime": 1790237257.2514102,
+    "seen": 1790237304.668555,
+    "ast_hash": "73a4c98c68eb3d2f0d6338d7345e6dc0",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/editModelTypes.ts": {
+    "mtime": 1790237257.3157349,
+    "seen": 1790237304.668618,
+    "ast_hash": "b31d263781346d5158800dea53c4119f",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/examEditModel.svelte.ts": {
+    "mtime": 1790237257.3234668,
+    "seen": 1790237304.6686273,
+    "ast_hash": "39cf105d058b69cdb6dfa8b6df224e66",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content-edit/fileEmit.ts": {
+    "mtime": 1790237257.3264682,
+    "seen": 1790237304.6686432,
+    "ast_hash": "14409a3ca1d274fad04477451690ee2a",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/content-edit/exam/+server.ts": {
+    "mtime": 1790237257.7809346,
+    "seen": 1790237304.669005,
+    "ast_hash": "d75c18b453f88f1f1b835b92e67d6fa7",
+    "semantic_hash": ""
+  },
+  "front/src/routes/edit-exam/+page.svelte": {
+    "mtime": 1790237257.790148,
+    "seen": 1790237304.6690261,
+    "ast_hash": "5fd42235a6aa549a76469be6880708fb",
+    "semantic_hash": ""
+  },
+  "front/src/routes/edit-exam/+page.ts": {
+    "mtime": 1790237257.795741,
+    "seen": 1790237304.66903,
+    "ast_hash": "4adb31790d3a240b8430668f8b10e77c",
     "semantic_hash": ""
   }
 }
