@@ -4,7 +4,6 @@
 	import { backOut } from 'svelte/easing';
 	import type { MarkAllScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
@@ -97,7 +96,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markAll} />
-<ScoreBadge {score} />
 <div class="mb-3 flex items-center justify-between gap-3">
 	<div class="font-semibold"><Md block text={screen.instruction} /></div>
 	{#if screen.timerKey}

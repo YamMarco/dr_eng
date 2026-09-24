@@ -2,7 +2,6 @@
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
@@ -86,7 +85,6 @@
 <ExerciseKindBadge
 	label={screen.timerKey ? i18n.dict.exerciseKind.timedReading : i18n.dict.exerciseKind.mcq}
 />
-<ScoreBadge {score} />
 {#if screen.timerKey}
 	<div class="flex items-center justify-between">
 		<span class="font-semibold text-muted"><Md text={screen.label ?? ''} /></span>

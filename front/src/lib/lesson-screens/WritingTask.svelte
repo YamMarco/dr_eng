@@ -3,7 +3,6 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { WritingTaskScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -82,7 +81,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.writingTask} />
-<ScoreBadge {score} />
 <div class="leading-relaxed font-semibold">
 	<Md block text={prompt} />
 </div>

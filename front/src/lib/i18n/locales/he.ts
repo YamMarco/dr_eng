@@ -132,8 +132,6 @@ export const he = {
 		generalTab: 'תרגול',
 		placeholderTitle: (label: string) => `השאלות של ${label} ייטענו כאן`,
 		placeholderDesc: 'זוהי גרסת הדגמה — התוכן יתווסף בשלב הבא. הטיימר פועל כרגיל.',
-		continueButton: 'המשך',
-		restartButton: 'חזרה להתחלה',
 		finishButton: 'סיום התרגול',
 		exitPromptTitle: 'לצאת מהתרגול?',
 		exitPromptDesc: 'היציאה תעצור את הטיימר וההתקדמות לא תישמר.',

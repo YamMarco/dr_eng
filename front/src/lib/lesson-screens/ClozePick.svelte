@@ -2,7 +2,6 @@
 	import type { ClozePickScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -47,7 +46,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.clozePick} />
-<ScoreBadge {score} />
 
 <p class="leading-relaxed font-semibold" dir="ltr">
 	{#if selected !== null}<span class="rounded-md bg-brand-soft px-1 text-brand-dark"

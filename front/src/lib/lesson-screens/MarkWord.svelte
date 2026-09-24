@@ -2,7 +2,6 @@
 	import type { MarkWordScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -48,7 +47,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.markWord} />
-<ScoreBadge {score} />
 {#if screen.prompt}
 	<div class="mb-4 text-lg leading-relaxed font-semibold"><Md block text={screen.prompt} /></div>
 {/if}

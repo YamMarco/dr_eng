@@ -272,7 +272,7 @@
 			<!-- Force a full remount per screen so each component's own local
 			     state (selected answer, timers, ...) starts fresh every time. -->
 			{#key screenIndex}
-				<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
+				<div in:fly={{ x: direction * 12, duration: 100, easing: cubicOut }}>
 					<ScreenComponent
 						screen={currentScreen}
 						onAdvance={advance}

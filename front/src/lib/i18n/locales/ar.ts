@@ -54,8 +54,6 @@ export const ar: DictionaryOverride = {
 		generalTab: 'تدريب',
 		placeholderTitle: (label: string) => `ستُحمَّل هنا أسئلة ${label}`,
 		placeholderDesc: 'هذه نسخة تجريبية — سيُضاف المحتوى لاحقًا. العداد يعمل كالمعتاد.',
-		continueButton: 'متابعة',
-		restartButton: 'العودة للبداية',
 		finishButton: 'إنهاء التدريب',
 		exitPromptTitle: 'الخروج من التدريب؟',
 		exitPromptDesc: 'الخروج سيوقف العداد ولن يُحفظ التقدّم.',

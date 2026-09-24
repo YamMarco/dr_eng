@@ -3,7 +3,6 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { PassageQuizScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -63,7 +62,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
-<ScoreBadge {score} />
 <div class="leading-relaxed"><Md block text={screen.text} /></div>
 
 <div class="mt-6 flex flex-col gap-5">

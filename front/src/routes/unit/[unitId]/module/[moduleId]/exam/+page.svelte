@@ -46,13 +46,18 @@
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.examStart.structureTitle}</h2>
 			<ul class="flex flex-col divide-y divide-line/70">
 				{#each mod.sections as section, i (section.id)}
-					<li class="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-						<span
-							class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-sm font-bold text-brand-dark"
+					<li class="py-3 first:pt-0 last:pb-0">
+						<button
+							type="button"
+							class="flex w-full items-center gap-3 rounded-2xl text-start transition active:scale-[0.98]"
 						>
-							{i + 1}
-						</span>
-						<span class="block font-semibold" dir="ltr">{section.label}</span>
+							<span
+								class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-sm font-bold text-brand-dark"
+							>
+								{i + 1}
+							</span>
+							<span class="block font-semibold" dir="ltr">{section.label}</span>
+						</button>
 					</li>
 				{/each}
 			</ul>

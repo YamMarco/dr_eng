@@ -4,7 +4,6 @@
 	import { backOut } from 'svelte/easing';
 	import type { McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -76,7 +75,6 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
-<ScoreBadge {score} />
 <div class="text-lg leading-relaxed font-semibold">
 	<!-- Block mode: each line gets its own direction (first letter) and may use
 	     line-level syntax (headers, center, callout, divider). -->

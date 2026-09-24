@@ -2,7 +2,6 @@
 	import { untrack } from 'svelte';
 	import type { MatchPairsScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -75,47 +74,43 @@
 </script>
 
 <ExerciseKindBadge label={i18n.dict.exerciseKind.matchPairs} />
-<ScoreBadge {score} />
 
-<div class="mt-3 grid grid-cols-2 gap-3" dir="ltr">
-	<div class="flex flex-col gap-3">
-		{#each screen.pairs as pair, i (i)}
-			{@const done = matched.includes(i)}
-			{@const isWrong = wrong?.left === i}
-			<button
-				type="button"
-				disabled={done}
-				onclick={() => pick('left', i)}
-				class="rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
-					? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
-					: done
-						? 'border-brand bg-brand-soft text-brand-dark opacity-60'
-						: selected?.side === 'left' && selected.i === i
-							? 'border-brand bg-brand-soft/60'
-							: 'border-line bg-surface hover:border-brand'}"
-			>
-				{pair.en}
-			</button>
-		{/each}
-	</div>
-	<div class="flex flex-col gap-3" dir="rtl">
-		{#each rightOrder as i (i)}
-			{@const done = matched.includes(i)}
-			{@const isWrong = wrong?.right === i}
-			<button
-				type="button"
-				disabled={done}
-				onclick={() => pick('right', i)}
-				class="rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
-					? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
-					: done
-						? 'border-brand bg-brand-soft text-brand-dark opacity-60'
-						: selected?.side === 'right' && selected.i === i
-							? 'border-brand bg-brand-soft/60'
-							: 'border-line bg-surface hover:border-brand'}"
-			>
-				{screen.pairs[i].he}
-			</button>
-		{/each}
-	</div>
+<div class="mt-3 grid grid-cols-2 gap-3" dir="ltr" style="grid-auto-rows: 1fr;">
+	{#each screen.pairs as pair, row (row)}
+		{@const i = row}
+		{@const j = rightOrder[row]}
+		{@const done = matched.includes(i)}
+		{@const isWrong = wrong?.left === i}
+		<button
+			type="button"
+			disabled={done}
+			onclick={() => pick('left', i)}
+			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
+				? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
+				: done
+					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
+					: selected?.side === 'left' && selected.i === i
+						? 'border-brand bg-brand-soft/60'
+						: 'border-line bg-surface hover:border-brand'}"
+		>
+			{pair.en}
+		</button>
+		{@const doneR = matched.includes(j)}
+		{@const isWrongR = wrong?.right === j}
+		<button
+			type="button"
+			dir="rtl"
+			disabled={doneR}
+			onclick={() => pick('right', j)}
+			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrongR
+				? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
+				: doneR
+					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
+					: selected?.side === 'right' && selected.i === j
+						? 'border-brand bg-brand-soft/60'
+						: 'border-line bg-surface hover:border-brand'}"
+		>
+			{screen.pairs[j].he}
+		</button>
+	{/each}
 </div>

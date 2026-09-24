@@ -20,11 +20,7 @@
 		mod.sections.length ? mod.sections : [{ id: 'general', label: i18n.dict.examRun.generalTab }]
 	);
 
-	let activeTab = $state(0);
 	let showExitPrompt = $state(false);
-
-	let current = $derived(tabs[activeTab] ?? tabs[0]);
-	let isLast = $derived(activeTab === tabs.length - 1);
 
 	// Someone landing here without starting the exam goes back to the start screen.
 	$effect(() => {
@@ -36,10 +32,16 @@
 		await goto(base);
 		exam.reset();
 	}
+
+	// Parts are a cosmetic grouping only — the whole exam is on one scrollable
+	// page, and a tap here just scrolls that part into view.
+	function jumpTo(id: string) {
+		document.getElementById(`exam-part-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
 </script>
 
 <AppBar
-	title={current.label}
+	title="{i18n.dict.examStart.titlePrefix} {mod.letter}"
 	onback={() => (showExitPrompt = true)}
 	backLabel={i18n.dict.examRun.exitLabel}
 >
@@ -53,17 +55,13 @@
 		<div
 			role="tablist"
 			aria-label={i18n.dict.examRun.tabsAriaLabel}
-			class="flex gap-1 rounded-2xl bg-line/50 p-1"
+			class="sticky top-16 z-10 flex gap-1 rounded-2xl bg-line/50 p-1 backdrop-blur"
 		>
-			{#each tabs as tab, i (tab.id)}
+			{#each tabs as tab (tab.id)}
 				<button
 					type="button"
-					role="tab"
-					aria-selected={activeTab === i}
-					onclick={() => (activeTab = i)}
-					class="min-h-11 flex-1 rounded-xl px-3 text-base font-semibold transition {activeTab === i
-						? 'bg-surface text-brand-dark shadow-sm'
-						: 'text-muted hover:text-ink'}"
+					onclick={() => jumpTo(tab.id)}
+					class="min-h-11 flex-1 rounded-xl px-3 text-base font-semibold text-muted transition hover:text-ink"
 					dir="ltr"
 				>
 					{tab.label}
@@ -72,51 +70,44 @@
 		</div>
 	{/if}
 
-	<section class="mt-5">
-		<h2 class="text-2xl font-extrabold" dir="ltr">{current.label}</h2>
+	{#each tabs as tab (tab.id)}
+		<section id="exam-part-{tab.id}" class="mt-5 scroll-mt-32">
+			<h2 class="text-2xl font-extrabold" dir="ltr">{tab.label}</h2>
 
-		<div
-			class="mt-5 flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
-		>
-			<span
-				class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-ink/60"
+			<div
+				class="mt-5 flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"
 			>
-				<svg
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="h-7 w-7"
-					aria-hidden="true"
+				<span
+					class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-ink/60"
 				>
-					<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-					<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
-				</svg>
-			</span>
-			<p class="mt-4 font-semibold" dir="ltr">
-				{i18n.dict.examRun.placeholderTitle(current.label)}
-			</p>
-			<p class="mt-1 text-sm leading-relaxed text-muted">
-				{i18n.dict.examRun.placeholderDesc}
-			</p>
-		</div>
-	</section>
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-7 w-7"
+						aria-hidden="true"
+					>
+						<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+						<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+					</svg>
+				</span>
+				<p class="mt-4 font-semibold" dir="ltr">
+					{i18n.dict.examRun.placeholderTitle(tab.label)}
+				</p>
+				<p class="mt-1 text-sm leading-relaxed text-muted">
+					{i18n.dict.examRun.placeholderDesc}
+				</p>
+			</div>
+		</section>
+	{/each}
 </main>
 
 <div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">
 	<div class="mx-auto flex max-w-lg gap-3">
-		{#if !isLast}
-			<Button onclick={() => (activeTab += 1)}>{i18n.dict.examRun.continueButton}</Button>
-		{:else}
-			{#if tabs.length > 1}
-				<Button variant="secondary" onclick={() => (activeTab = 0)}
-					>{i18n.dict.examRun.restartButton}</Button
-				>
-			{/if}
-			<Button onclick={() => exam.finish()}>{i18n.dict.examRun.finishButton}</Button>
-		{/if}
+		<Button onclick={() => exam.finish()}>{i18n.dict.examRun.finishButton}</Button>
 	</div>
 </div>
 

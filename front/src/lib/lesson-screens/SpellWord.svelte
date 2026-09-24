@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { SpellWordScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import SpeakButtons from './SpeakButtons.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -50,7 +49,6 @@
 		? i18n.dict.exerciseKind.spellWordCopy
 		: i18n.dict.exerciseKind.spellWordListen}
 />
-<ScoreBadge {score} />
 
 {#if screen.mode === 'copy'}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellCopyPrompt}</p>
