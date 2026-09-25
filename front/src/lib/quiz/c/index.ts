@@ -5,6 +5,152 @@ import type { QuizNode } from "../types";
 // this array by id, the same way it merges lesson nodes into a section.
 export const cQuizzes: QuizNode[] = [
   {
+    id: "module-c-exam-2",
+    module: "c",
+    uuid: "c-t-4815",
+    kind: "assorted",
+    titleHe: "משקפיים חכמות שעוזרות לעיוורים לראות",
+    descriptionHe: "מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.",
+    options: { passThreshold: 0.6, durationMinutes: 90, warnAtMinutes: 10 },
+    parts: [
+      {
+        id: "reading",
+        titleHe: "קריאה",
+        instructionsHe: "קראו את הקטע וענו על השאלות שאחריו.",
+        points: 70,
+        screens: [
+          {
+            type: "passage",
+            title: "Smart Glasses That Help Blind People See",
+            paragraphs: [
+              {
+                id: "p1",
+                text: "Many people around the world cannot see well or are blind. For them, simple tasks like walking to a bus stop or reading a menu can be very hard. A new kind of smart glasses is now helping these people. The glasses talk to the user through a small speaker and tell them about the world around them.",
+              },
+              {
+                id: "p2",
+                text: "The glasses have a small camera at the front. The camera looks at what is in front of the user, and a computer program tells them what it sees. For example, it can say \"there is a step in front of you\" or \"the door is on your right.\" The glasses can also read words from books, signs, and screens out loud.",
+              },
+              {
+                id: "p3",
+                text: "But the glasses are not always perfect. They can make mistakes when it is dark or when things move fast. The battery runs out after a few hours, so users need to charge them often. The glasses are also very expensive, and many families cannot afford to buy them.",
+              },
+              {
+                id: "p4",
+                text: "Many blind people are already using smart glasses every day. Students use them in class to read the board, and workers use them to find their way around buildings. One man said the glasses helped him see his daughter's face for the first time. In the future, companies hope to make the glasses smaller, cheaper, and better so that more people can use them.",
+              },
+            ],
+          },
+          {
+            type: "mcq",
+            paragraphRef: "I",
+            prompt: "What do we learn from paragraph I?",
+            options: [
+              "Why blind people find it hard to use technology.",
+              "How smart glasses are helping blind people.",
+              "Why so many people in the world cannot see well.",
+              "How glasses are made for blind people.",
+            ],
+            correctIndex: 1,
+            points: 8,
+          },
+          {
+            type: "mcq",
+            paragraphRef: "II",
+            prompt: "According to paragraph II, what else can the glasses do?",
+            options: [
+              "They can take photos and save them.",
+              "They can read words from books and signs out loud.",
+              "They can connect to a phone.",
+              "They can help the user walk faster.",
+            ],
+            correctIndex: 1,
+            points: 8,
+          },
+          {
+            type: "sentence-completion",
+            paragraphRef: "II",
+            before: "The glasses can also read words from",
+            after: "out loud.",
+            modelAnswers: ["books, signs, and screens"],
+            points: 7,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "III",
+            prompt:
+              "According to paragraph III, why can the glasses make mistakes? Give one reason.",
+            points: 8,
+          },
+          {
+            type: "mcq",
+            paragraphRef: "III",
+            prompt:
+              "According to paragraph III, what problem do users have with the battery?",
+            options: [
+              "The battery is too big and heavy.",
+              "The battery runs out after a few hours.",
+              "The battery is very expensive to change.",
+              "The battery only works indoors.",
+            ],
+            correctIndex: 1,
+            points: 8,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "III",
+            prompt:
+              "According to paragraph III, why can many families not buy the smart glasses?",
+            points: 7,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "IV",
+            prompt:
+              "According to paragraph IV, how do smart glasses help students in class?",
+            points: 8,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "IV",
+            prompt: "According to paragraph IV, how did the glasses help one man?",
+            points: 8,
+          },
+          {
+            type: "mcq",
+            paragraphRef: "IV",
+            prompt:
+              "According to paragraph IV, what do companies hope to do in the future?",
+            options: [
+              "Make the glasses free for everyone.",
+              "Make the glasses only for students.",
+              "Make the glasses smaller, cheaper, and better.",
+              "Make glasses that can drive cars.",
+            ],
+            correctIndex: 2,
+            points: 8,
+          },
+        ],
+      },
+      {
+        id: "writing",
+        titleHe: "כתיבה",
+        instructionsHe: "כתבו תשובה מלאה לשאלה הבאה.",
+        points: 30,
+        screens: [
+          {
+            type: "writing-task",
+            prompt:
+              "Which famous person would you like to give a talk at your school? Give reasons to explain your choice.",
+            minWords: 70,
+            maxWords: 90,
+            points: 30,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "module-c-exam-3",
     module: "c",
     uuid: "c-t-7192",
