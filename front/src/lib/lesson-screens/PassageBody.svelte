@@ -47,15 +47,15 @@
 
 <PassageMark {lines}>
 	{#snippet leading(line)}
-		<span class="w-5 shrink-0 text-start text-xs text-muted tabular">
-			{line.lineNumber % 5 === 0 ? line.lineNumber : ''}
-		</span>
 		<span
 			class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
 				? 'bg-accent-soft text-ink/70'
 				: ''}"
 		>
 			{line.roman ?? ''}
+		</span>
+		<span class="w-5 shrink-0 text-start text-xs text-muted tabular">
+			{line.lineNumber % 5 === 0 ? line.lineNumber : ''}
 		</span>
 	{/snippet}
 </PassageMark>

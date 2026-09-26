@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Images, ListChecks } from '@lucide/svelte';
+	import { Images } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	let items = $derived([
@@ -16,13 +16,6 @@
 			label: i18n.dict.nav.book,
 			match: (path: string) => path.startsWith('/book'),
 			icon: 'book',
-			external: false
-		},
-		{
-			href: '/quizzes',
-			label: i18n.dict.nav.quizzes,
-			match: (path: string) => path.startsWith('/quizzes'),
-			icon: 'quizzes',
 			external: false
 		},
 		{
@@ -134,8 +127,6 @@
 						{@render bookIcon(active)}
 					{:else if item.icon === 'images'}
 						<Images size={24} aria-hidden="true" />
-					{:else if item.icon === 'quizzes'}
-						<ListChecks size={24} aria-hidden="true" />
 					{:else}
 						{@render settingsIcon(active)}
 					{/if}

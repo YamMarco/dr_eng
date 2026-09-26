@@ -9,7 +9,6 @@ export const he = {
 		mainNav: 'ניווט ראשי',
 		home: 'בית',
 		book: 'תיאום שיעור',
-		quizzes: 'מבחנים',
 		settings: 'הגדרות',
 		vocabImages: 'תמונות מילים'
 	},
@@ -18,7 +17,9 @@ export const he = {
 		badge: 'בגרות באנגלית',
 		title: 'בחרו יחידות לימוד',
 		subtitle: 'כל רמת יחידות כוללת מספר מודולים לתרגול.',
-		unitsSuffix: 'יח"ל'
+		unitsSuffix: 'יח"ל',
+		continueTitle: 'המשך מהמקום שהפסקת',
+		continueButton: 'המשך'
 	},
 	quiz: {
 		startButton: 'התחלת מבחן',

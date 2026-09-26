@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/NavBar.svelte": {
-    "mtime": 1790414249.6840029,
-    "ast_hash": "7c502fcde00ddb8acc1c3b150df409dc",
+    "mtime": 1790427971.1338456,
+    "ast_hash": "4e4422d1cfa23315415a41e3786c0d38",
     "semantic_hash": ""
   },
   "front/src/lib/components/Sheet.svelte": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1790414249.6870046,
-    "ast_hash": "c5eab8d264902f87529a37bbb6dc4610",
+    "mtime": 1790427970.8880064,
+    "ast_hash": "3addfcf521a92f8ad03b2f059beb2c78",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -180,8 +180,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/+page.svelte": {
-    "mtime": 1789649829.2384315,
-    "ast_hash": "f10f818295856ad174dd25ee0544f3b1",
+    "mtime": 1790427970.1523385,
+    "ast_hash": "24f86dae3f9a8db3a3ac46e8b5609c66",
     "semantic_hash": ""
   },
   "front/src/routes/settings/+page.svelte": {
@@ -215,8 +215,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1789894745.5343218,
-    "ast_hash": "3f845e58e51c884637e034650650304f",
+    "mtime": 1790427970.7759902,
+    "ast_hash": "bfd1f63d960a19b15857ad1365916302",
     "semantic_hash": ""
   },
   "front/tsconfig.json": {
@@ -720,8 +720,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/moduleLocation.svelte.ts": {
-    "mtime": 1789647553.9562297,
-    "ast_hash": "b55df303a3a9d7ebaf71f0af6aa790ec",
+    "mtime": 1790427970.2115982,
+    "ast_hash": "0cb18d2177b0405c1fceb928381a8a28",
     "semantic_hash": ""
   },
   "front/src/lib/components/Confetti.svelte": {
@@ -1035,8 +1035,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageBody.svelte": {
-    "mtime": 1790427121.8197856,
-    "ast_hash": "e93b94631882073a230625bc21e7542e",
+    "mtime": 1790427971.2320876,
+    "ast_hash": "14bce2c141622427766b744c45c411d0",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuizSolution.svelte": {
@@ -1140,7 +1140,7 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1790426821.3819795,
+    "mtime": 1790427895.8593867,
     "ast_hash": "32efb7921217d089fbc77b0d0a3a2be9",
     "semantic_hash": ""
   },

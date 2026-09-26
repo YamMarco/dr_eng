@@ -189,6 +189,14 @@
 	// (no smooth scroll) so it doesn't fight with the pop-in animation
 	// starting at the same time.
 	onMount(() => {
+		// A `?lesson=` param (from the home page's "continue" card) opens that
+		// lesson straight into the runner instead of just scrolling to it.
+		const requestedId = page.url.searchParams.get('lesson');
+		const requestedNode = requestedId ? nodeById.get(requestedId) : undefined;
+		if (requestedNode && isUnlocked(requestedNode)) {
+			openNode(requestedNode);
+			return;
+		}
 		if (!lastLessonId) return;
 		document
 			.querySelector(`[data-lesson-node-id="${CSS.escape(lastLessonId)}"]`)
