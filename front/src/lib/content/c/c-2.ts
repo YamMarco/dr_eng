@@ -3366,6 +3366,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חברים יכולים לתמוך בך בזמנים קשים.",
               hookHe:
                 "support = לתמוך ותמיכה: לעמוד לצד מישהו, ברגש, בכסף או בעזרה.",
+              image: "/vocab-images/word-c18a17b0fa.jpg",
             },
             {
               type: "mcq",
@@ -3392,7 +3393,6 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "התנדבות מועילה לחברה כולה.",
               hookHe:
                 "society = חברה: כל האנשים שחיים יחד, לא בית ספר או קבוצה קטנה.",
-              image: "/vocab-images/word-851e3f8596.jpg",
             },
             {
               type: "mcq",
