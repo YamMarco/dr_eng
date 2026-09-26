@@ -1523,6 +1523,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "כל הקהילה הגיעה לאסיפה.",
               hookHe:
                 'נשמע כמו "קומיוניטי", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.',
+              image: "/vocab-images/word-f6c6c57ab1.jpg",
             },
             {
               type: "mcq",
