@@ -11,7 +11,7 @@ export const he = {
 		book: 'תיאום שיעור',
 		quizzes: 'מבחנים',
 		settings: 'הגדרות',
-		anotherUnit: 'יחידה נוספת'
+		vocabImages: 'תמונות מילים'
 	},
 	appTitle: 'בגרות באנגלית — תרגול',
 	home: {

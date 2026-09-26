@@ -865,119 +865,6 @@
       "norm_label": "spread"
     },
     {
-      "label": "vocab-images.mjs",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "vocab-images.mjs"
-    },
-    {
-      "label": "root",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_root",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "root"
-    },
-    {
-      "label": "entries",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_entries",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "entries"
-    },
-    {
-      "label": "outDir",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_outdir",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "outdir"
-    },
-    {
-      "label": "EXT",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_ext",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "ext"
-    },
-    {
-      "label": "slug()",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_slug",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "slug()"
-    },
-    {
-      "label": "exists()",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L21",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_exists",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "exists()"
-    },
-    {
-      "label": "esc()",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L26",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_esc",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "esc()"
-    },
-    {
-      "label": "fileByUrl",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_filebyurl",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "filebyurl"
-    },
-    {
-      "label": "cards",
-      "file_type": "code",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L64",
-      "_origin": "ast",
-      "id": "front_scripts_vocab_images_cards",
-      "community": 91,
-      "community_name": "vocab-images.mjs",
-      "norm_label": "cards"
-    },
-    {
       "label": "app.d.ts",
       "file_type": "code",
       "source_file": "front/src/app.d.ts",
@@ -1020,7 +907,7 @@
       "_origin": "ast",
       "id": "front_src_lib_components_appbar",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "appbar.svelte"
     },
     {
@@ -1030,7 +917,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 198,
+      "community": 203,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -1041,8 +928,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_button",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "button.svelte"
     },
     {
@@ -1064,7 +951,7 @@
       "_origin": "ast",
       "id": "front_src_lib_components_debugtooltip",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "debugtooltip.svelte"
     },
     {
@@ -1074,8 +961,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_lessonprogressbar",
-      "community": 67,
-      "community_name": "LessonRunner.svelte",
+      "community": 90,
+      "community_name": "lessons/+page.svelte",
       "norm_label": "lessonprogressbar.svelte"
     },
     {
@@ -1109,7 +996,7 @@
       "_origin": "ast",
       "id": "front_src_lib_components_navbar",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "navbar.svelte"
     },
     {
@@ -1120,7 +1007,7 @@
       "_origin": "ast",
       "id": "state",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "$app/state"
     },
     {
@@ -1130,7 +1017,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 197,
+      "community": 202,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -1141,8 +1028,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_sheet",
-      "community": 106,
-      "community_name": "QuizRunner.svelte",
+      "community": 130,
+      "community_name": "Sheet.svelte",
       "norm_label": "sheet.svelte"
     },
     {
@@ -1153,7 +1040,7 @@
       "_origin": "ast",
       "id": "transition",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "svelte/transition"
     },
     {
@@ -1164,7 +1051,7 @@
       "_origin": "ast",
       "id": "front_src_lib_components_toggle",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "toggle.svelte"
     },
     {
@@ -1174,7 +1061,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "editworkspace.svelte"
     },
@@ -1185,7 +1072,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_issues",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "issues"
     },
@@ -1196,7 +1083,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_issuesfor",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "issuesfor"
     },
@@ -1207,7 +1094,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_showissues",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "showissues"
     },
@@ -1218,7 +1105,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_errorcount",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "errorcount"
     },
@@ -1229,7 +1116,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_savemsg",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "savemsg"
     },
@@ -1241,7 +1128,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_save",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "save()"
     },
@@ -1253,7 +1140,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_onkey",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "onkey()"
     },
@@ -1265,7 +1152,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_openlesson",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "openlesson()"
     },
@@ -1277,7 +1164,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_exit",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "exit()"
     },
@@ -1288,7 +1175,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_playnode",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "playnode"
     },
@@ -1299,7 +1186,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editworkspace_hint",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "hint"
     },
@@ -1311,7 +1198,7 @@
       "_origin": "ast",
       "id": "navigation",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "$app/navigation"
     },
     {
@@ -1321,8 +1208,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editablescreen",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 96,
+      "community_name": "SlideStage.svelte",
       "norm_label": "editablescreen.svelte"
     },
     {
@@ -1332,7 +1219,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "exameditworkspace.svelte"
     },
@@ -1343,7 +1230,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_issues",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "issues"
     },
@@ -1354,7 +1241,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_issuesfor",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "issuesfor"
     },
@@ -1365,7 +1252,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_showissues",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "showissues"
     },
@@ -1376,7 +1263,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_errorcount",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "errorcount"
     },
@@ -1387,7 +1274,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_savemsg",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "savemsg"
     },
@@ -1399,7 +1286,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_save",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "save()"
     },
@@ -1411,7 +1298,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_onkey",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "onkey()"
     },
@@ -1423,7 +1310,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_openexam",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "openexam()"
     },
@@ -1435,7 +1322,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_addexam",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "addexam()"
     },
@@ -1447,7 +1334,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_exit",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "exit()"
     },
@@ -1458,7 +1345,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditworkspace_playquiz",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "playquiz"
     },
@@ -1469,8 +1356,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditorview",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "exameditorview.svelte"
     },
     {
@@ -1481,8 +1368,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditorview_onmove",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "onmove()"
     },
     {
@@ -1493,8 +1380,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditorview_onup",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "onup()"
     },
     {
@@ -1799,7 +1686,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_imagecropper",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "imagecropper.svelte"
     },
@@ -1810,8 +1697,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_lessoneditorview",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "lessoneditorview.svelte"
     },
     {
@@ -1879,8 +1766,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_slidefilmstrip",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "slidefilmstrip.svelte"
     },
     {
@@ -1891,8 +1778,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_slidefilmstrip_ii",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 41,
+      "community_name": "validate.ts",
       "norm_label": "ii()"
     },
     {
@@ -2017,8 +1904,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_slidestage_addcategory",
-      "community": 52,
-      "community_name": "GraphEditor.svelte",
+      "community": 96,
+      "community_name": "SlideStage.svelte",
       "norm_label": "addcategory()"
     },
     {
@@ -2063,7 +1950,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_wordimagefield",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "wordimagefield.svelte"
     },
@@ -2075,7 +1962,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_wordimagefield_onpick",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "onpick()"
     },
@@ -2087,7 +1974,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_wordimagefield_accept",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "accept()"
     },
@@ -2399,7 +2286,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "api.ts"
     },
@@ -2411,7 +2298,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_storedkey",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "storedkey()"
     },
@@ -2423,7 +2310,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_checkcontenteditpassword",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "checkcontenteditpassword()"
     },
@@ -2435,7 +2322,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_remembercontenteditpassword",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "remembercontenteditpassword()"
     },
@@ -2447,7 +2334,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_uploadimage",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "uploadimage()"
     },
@@ -2459,7 +2346,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_post",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "post()"
     },
@@ -2471,7 +2358,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_savelessoncontent",
-      "community": 98,
+      "community": 123,
       "community_name": "api.ts",
       "norm_label": "savelessoncontent()"
     },
@@ -2483,7 +2370,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_savesection",
-      "community": 42,
+      "community": 118,
       "community_name": "EditWorkspace.svelte",
       "norm_label": "savesection()"
     },
@@ -2495,7 +2382,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_api_saveexamchanges",
-      "community": 63,
+      "community": 42,
       "community_name": "ExamEditWorkspace.svelte",
       "norm_label": "saveexamchanges()"
     },
@@ -2529,7 +2416,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "editmodel.svelte.ts"
     },
@@ -2540,8 +2427,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_section_ids",
-      "community": 4,
-      "community_name": "EditModel",
+      "community": 91,
+      "community_name": "editModel.svelte.ts",
       "norm_label": "section_ids"
     },
     {
@@ -2565,7 +2452,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_lessonbucket",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "lessonbucket"
     },
@@ -2577,8 +2464,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_screenlist",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": "screenlist()"
     },
     {
@@ -2602,8 +2489,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_load",
-      "community": 4,
-      "community_name": "EditModel",
+      "community": 91,
+      "community_name": "editModel.svelte.ts",
       "norm_label": ".load()"
     },
     {
@@ -2698,8 +2585,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_selectedscreen",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": ".selectedscreen()"
     },
     {
@@ -2746,8 +2633,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_screenat",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": ".screenat()"
     },
     {
@@ -2998,8 +2885,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_deletescreen",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": ".deletescreen()"
     },
     {
@@ -3010,8 +2897,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_applyscreen",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": ".applyscreen()"
     },
     {
@@ -3034,8 +2921,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodel_svelte_editmodel_movescreen",
-      "community": 86,
-      "community_name": "LessonScreen",
+      "community": 4,
+      "community_name": "EditModel",
       "norm_label": ".movescreen()"
     },
     {
@@ -3045,7 +2932,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodeltypes",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "editmodeltypes.ts"
     },
@@ -3058,7 +2945,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editmodeltypes_bucket",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "bucket"
     },
@@ -3310,7 +3197,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditmodel_svelte",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "exameditmodel.svelte.ts"
     },
@@ -3671,8 +3558,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_exameditmodel_svelte_exameditmodel_setpartmeta",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": ".setpartmeta()"
     },
     {
@@ -4084,7 +3971,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenpath",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screenpath.ts"
     },
@@ -4109,7 +3996,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenpath_screensforround",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screensforround()"
     },
@@ -4121,7 +4008,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenpath_formatscreenlocation",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "formatscreenlocation()"
     },
@@ -4133,7 +4020,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenpath_screenpathsforround",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screenpathsforround()"
     },
@@ -4144,7 +4031,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenskeletons",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screenskeletons.ts"
     },
@@ -4155,7 +4042,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenskeletons_screen_type_groups",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screen_type_groups"
     },
@@ -4166,7 +4053,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenskeletons_screen_types",
-      "community": 99,
+      "community": 91,
       "community_name": "editModel.svelte.ts",
       "norm_label": "screen_types"
     },
@@ -4178,8 +4065,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_screenskeletons_blankscreen",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 86,
+      "community_name": "LessonScreen",
       "norm_label": "blankscreen()"
     },
     {
@@ -4419,8 +4306,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_index_getlessonsbysection",
-      "community": 4,
-      "community_name": "EditModel",
+      "community": 91,
+      "community_name": "editModel.svelte.ts",
       "norm_label": "getlessonsbysection()"
     },
     {
@@ -4478,8 +4365,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_types_lessoncontent",
-      "community": 87,
-      "community_name": "content/index.ts",
+      "community": 91,
+      "community_name": "editModel.svelte.ts",
       "norm_label": "lessoncontent"
     },
     {
@@ -4645,7 +4532,7 @@
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "debug.svelte.ts"
     },
     {
@@ -4657,7 +4544,7 @@
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_loadbool",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "loadbool()"
     },
     {
@@ -4670,7 +4557,7 @@
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "debugstore"
     },
     {
@@ -4682,7 +4569,7 @@
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setenabled",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": ".setenabled()"
     },
     {
@@ -4694,7 +4581,7 @@
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setunlockall",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": ".setunlockall()"
     },
     {
@@ -4881,8 +4768,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_clozepick",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "clozepick.svelte"
     },
     {
@@ -4893,8 +4780,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_clozepick_i",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "i()"
     },
     {
@@ -4904,8 +4791,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_exercisekindbadge",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "exercisekindbadge.svelte"
     },
     {
@@ -5270,7 +5157,7 @@
       "_origin": "ast",
       "id": "easing",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "svelte/easing"
     },
     {
@@ -5280,8 +5167,8 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "environment",
-      "community": 67,
-      "community_name": "LessonRunner.svelte",
+      "community": 102,
+      "community_name": "svelte/transition",
       "norm_label": "$app/environment"
     },
     {
@@ -5314,8 +5201,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_markword",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "markword.svelte"
     },
     {
@@ -5326,8 +5213,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_markword_i",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "i()"
     },
     {
@@ -5338,7 +5225,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "matchpairs.svelte"
     },
     {
@@ -5349,7 +5236,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_mistakes",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "mistakes"
     },
     {
@@ -5361,7 +5248,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_shuffle",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "shuffle()"
     },
     {
@@ -5372,8 +5259,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_pick",
-      "community": 36,
-      "community_name": "WritingTask.svelte",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "pick()"
     },
     {
@@ -5385,7 +5272,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_primaryaction",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "primaryaction()"
     },
     {
@@ -5397,7 +5284,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_row",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "row()"
     },
     {
@@ -5408,7 +5295,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchpairs_doner",
       "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community_name": "score.svelte.ts",
       "norm_label": "doner"
     },
     {
@@ -5418,8 +5305,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "mcq.svelte"
     },
     {
@@ -5430,8 +5317,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_i",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "i()"
     },
     {
@@ -5441,8 +5328,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passage",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
+      "community": 45,
+      "community_name": "registry.ts",
       "norm_label": "passage.svelte"
     },
     {
@@ -5452,8 +5339,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagebody",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
+      "community": 45,
+      "community_name": "registry.ts",
       "norm_label": "passagebody.svelte"
     },
     {
@@ -5463,8 +5350,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagemark",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
+      "community": 45,
+      "community_name": "registry.ts",
       "norm_label": "passagemark.svelte"
     },
     {
@@ -5475,8 +5362,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagemark_if",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
+      "community": 45,
+      "community_name": "registry.ts",
       "norm_label": "if()"
     },
     {
@@ -5487,8 +5374,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagemark_leading",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
+      "community": 45,
+      "community_name": "registry.ts",
       "norm_label": "leading()"
     },
     {
@@ -5510,8 +5397,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagemcq_oi",
-      "community": 99,
-      "community_name": "editModel.svelte.ts",
+      "community": 96,
+      "community_name": "SlideStage.svelte",
       "norm_label": "oi()"
     },
     {
@@ -5544,8 +5431,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_preface",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "preface.svelte"
     },
     {
@@ -5556,7 +5443,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_prefacerecap",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "prefacerecap.svelte"
     },
     {
@@ -5566,8 +5453,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_questionpreview",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "questionpreview.svelte"
     },
     {
@@ -5577,8 +5464,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_scorebadge",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "scorebadge.svelte"
     },
     {
@@ -5588,8 +5475,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_selfcheck",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "selfcheck.svelte"
     },
     {
@@ -5599,8 +5486,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_sentencecompletion",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "sentencecompletion.svelte"
     },
     {
@@ -5610,8 +5497,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_speakbuttons",
-      "community": 39,
-      "community_name": "index.svelte.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "speakbuttons.svelte"
     },
     {
@@ -5621,8 +5508,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_spellword",
-      "community": 39,
-      "community_name": "index.svelte.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "spellword.svelte"
     },
     {
@@ -5632,8 +5519,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_steps",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "steps.svelte"
     },
     {
@@ -5687,8 +5574,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_wordcard",
-      "community": 39,
-      "community_name": "index.svelte.ts",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "wordcard.svelte"
     },
     {
@@ -5698,7 +5585,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_wordimage_svelte_front_src_lib_lesson_screens_wordimage",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "wordimage.svelte"
     },
@@ -5875,8 +5762,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_primaryaction",
-      "community": 36,
-      "community_name": "WritingTask.svelte",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "primaryaction()"
     },
     {
@@ -5980,8 +5867,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "minimarkdown.ts"
     },
     {
@@ -5991,8 +5878,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_escape",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "escape"
     },
     {
@@ -6003,8 +5890,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_isolatesentences",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "isolatesentences()"
     },
     {
@@ -6015,8 +5902,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_mdinline",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "mdinline()"
     },
     {
@@ -6026,8 +5913,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_text_block_class",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "text_block_class"
     },
     {
@@ -6037,8 +5924,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_callout_block_class",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "callout_block_class"
     },
     {
@@ -6048,8 +5935,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_header_class",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "header_class"
     },
     {
@@ -6060,8 +5947,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_parseline",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "parseline()"
     },
     {
@@ -6072,8 +5959,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_mdblock",
-      "community": 96,
-      "community_name": "SlideStage.svelte",
+      "community": 63,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "mdblock()"
     },
     {
@@ -6083,8 +5970,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mode_svelte",
-      "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "mode.svelte.ts"
     },
     {
@@ -6094,8 +5981,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mode_svelte_key",
-      "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "key"
     },
     {
@@ -6107,8 +5994,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mode_svelte_screenmode",
-      "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "screenmode"
     },
     {
@@ -6119,8 +6006,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mode_svelte_createscreenmode",
-      "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "createscreenmode()"
     },
     {
@@ -6131,8 +6018,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mode_svelte_getscreenmode",
-      "community": 5,
-      "community_name": "MatchPairs.svelte",
+      "community": 125,
+      "community_name": "mode.svelte.ts",
       "norm_label": "getscreenmode()"
     },
     {
@@ -6164,8 +6051,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "score.svelte.ts"
     },
     {
@@ -6175,8 +6062,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte_key",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "key"
     },
     {
@@ -6188,8 +6075,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte_lessonscore",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "lessonscore"
     },
     {
@@ -6200,8 +6087,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte_createlessonscore",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "createlessonscore()"
     },
     {
@@ -6212,8 +6099,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte_getlessonscore",
-      "community": 45,
-      "community_name": "registry.ts",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "getlessonscore()"
     },
     {
@@ -6224,8 +6111,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_score_svelte_recordanswer",
-      "community": 36,
-      "community_name": "WritingTask.svelte",
+      "community": 5,
+      "community_name": "score.svelte.ts",
       "norm_label": "recordanswer()"
     },
     {
@@ -6571,7 +6458,7 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_types_match_pairs_max_mistakes",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "match_pairs_max_mistakes"
     },
@@ -6622,7 +6509,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_types_ismarkallpass",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "ismarkallpass()"
     },
@@ -6709,7 +6596,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_wordimage_ts_front_src_lib_lesson_screens_wordimage",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "wordimage.ts"
     },
@@ -6720,7 +6607,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_wordimage_word_image",
-      "community": 100,
+      "community": 127,
       "community_name": "WordImageField.svelte",
       "norm_label": "word_image"
     },
@@ -6732,7 +6619,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lessonicon",
       "community": 82,
-      "community_name": "lessonIcon.ts",
+      "community_name": "sectionThemes.ts",
       "norm_label": "lessonicon.ts"
     },
     {
@@ -6743,7 +6630,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_icons",
       "community": 82,
-      "community_name": "lessonIcon.ts",
+      "community_name": "sectionThemes.ts",
       "norm_label": "icons"
     },
     {
@@ -6755,7 +6642,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_hashstring",
       "community": 82,
-      "community_name": "lessonIcon.ts",
+      "community_name": "sectionThemes.ts",
       "norm_label": "hashstring()"
     },
     {
@@ -6767,7 +6654,7 @@
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_lessonicon",
       "community": 82,
-      "community_name": "lessonIcon.ts",
+      "community_name": "sectionThemes.ts",
       "norm_label": "lessonicon()"
     },
     {
@@ -6994,7 +6881,7 @@
       "_origin": "ast",
       "id": "front_src_lib_motion",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "motion.ts"
     },
     {
@@ -7005,7 +6892,7 @@
       "_origin": "ast",
       "id": "front_src_lib_motion_reducedmotion",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "reducedmotion"
     },
     {
@@ -7017,7 +6904,7 @@
       "_origin": "ast",
       "id": "front_src_lib_motion_staggerdelay",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "staggerdelay()"
     },
     {
@@ -7050,8 +6937,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizreport",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "quizreport.svelte"
     },
     {
@@ -7062,8 +6949,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizreport_each",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "#each()"
     },
     {
@@ -7173,8 +7060,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizrunner_submit",
-      "community": 97,
-      "community_name": "scoring.ts",
+      "community": 106,
+      "community_name": "QuizRunner.svelte",
       "norm_label": "submit()"
     },
     {
@@ -7197,8 +7084,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizrunner_startover",
-      "community": 97,
-      "community_name": "scoring.ts",
+      "community": 106,
+      "community_name": "QuizRunner.svelte",
       "norm_label": "startover()"
     },
     {
@@ -7209,8 +7096,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizrunner_advance",
-      "community": 97,
-      "community_name": "scoring.ts",
+      "community": 106,
+      "community_name": "QuizRunner.svelte",
       "norm_label": "advance()"
     },
     {
@@ -7244,8 +7131,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizsolution",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "quizsolution.svelte"
     },
     {
@@ -7256,8 +7143,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_quizsolution_screenswithids",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "screenswithids()"
     },
     {
@@ -7279,7 +7166,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte",
       "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community_name": "mode.svelte.ts",
       "norm_label": "answers.svelte.ts"
     },
     {
@@ -7290,7 +7177,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_key",
       "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community_name": "mode.svelte.ts",
       "norm_label": "key"
     },
     {
@@ -7302,8 +7189,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_quizanswerslot",
-      "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community": 105,
+      "community_name": "QuizAnswerSlot",
       "norm_label": "quizanswerslot"
     },
     {
@@ -7314,8 +7201,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_quizanswerslot_get",
-      "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community": 105,
+      "community_name": "QuizAnswerSlot",
       "norm_label": ".get()"
     },
     {
@@ -7326,8 +7213,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_quizanswerslot_set",
-      "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community": 105,
+      "community_name": "QuizAnswerSlot",
       "norm_label": ".set()"
     },
     {
@@ -7339,7 +7226,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_providequizanswerslot",
       "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community_name": "mode.svelte.ts",
       "norm_label": "providequizanswerslot()"
     },
     {
@@ -7351,7 +7238,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_answers_svelte_getquizanswerslot",
       "community": 125,
-      "community_name": "answers.svelte.ts",
+      "community_name": "mode.svelte.ts",
       "norm_label": "getquizanswerslot()"
     },
     {
@@ -7361,8 +7248,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_c_index",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "c/index.ts"
     },
     {
@@ -7372,8 +7259,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_quiz_c_index_cquizzes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "cquizzes"
     },
     {
@@ -7383,8 +7270,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_index",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "quiz/index.ts"
     },
     {
@@ -7394,8 +7281,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_quiz_index_allquiznodes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "allquiznodes"
     },
     {
@@ -7406,8 +7293,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_index_getquiznode",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "getquiznode()"
     },
     {
@@ -7430,7 +7317,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "progress.ts"
     },
     {
@@ -7443,7 +7330,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_quizattempt",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "quizattempt"
     },
     {
@@ -7456,7 +7343,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_quizinprogress",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "quizinprogress"
     },
     {
@@ -7468,7 +7355,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_attemptkey",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "attemptkey()"
     },
     {
@@ -7480,7 +7367,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_progresskey",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "progresskey()"
     },
     {
@@ -7492,7 +7379,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_safeparse",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "safeparse()"
     },
     {
@@ -7504,7 +7391,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_hasstorage",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "hasstorage()"
     },
     {
@@ -7516,7 +7403,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_saveattempt",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "saveattempt()"
     },
     {
@@ -7528,7 +7415,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_getlastattempt",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "getlastattempt()"
     },
     {
@@ -7540,7 +7427,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_saveinprogress",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "saveinprogress()"
     },
     {
@@ -7552,7 +7439,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_getinprogress",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "getinprogress()"
     },
     {
@@ -7564,7 +7451,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_progress_clearinprogress",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "clearinprogress()"
     },
     {
@@ -7574,7 +7461,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "scoring.ts"
     },
@@ -7587,7 +7474,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scored",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "scored"
     },
@@ -7601,7 +7488,7 @@
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_quizscore",
       "community": 97,
-      "community_name": "scoring.ts",
+      "community_name": "progress.ts",
       "norm_label": "quizscore"
     },
     {
@@ -7612,7 +7499,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_normalize",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "normalize()"
     },
@@ -7624,7 +7511,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scorescreen",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "scorescreen()"
     },
@@ -7636,7 +7523,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scorequiz",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "scorequiz()"
     },
@@ -7647,8 +7534,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 122,
+      "community_name": "scoring.ts",
       "norm_label": "screenids.ts"
     },
     {
@@ -7660,8 +7547,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids_identifiedscreen",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 122,
+      "community_name": "scoring.ts",
       "norm_label": "identifiedscreen"
     },
     {
@@ -7672,7 +7559,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids_screenswithids",
-      "community": 97,
+      "community": 122,
       "community_name": "scoring.ts",
       "norm_label": "screenswithids()"
     },
@@ -7706,8 +7593,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_types",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "quiz/types.ts"
     },
     {
@@ -7719,8 +7606,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_types_quizoptions",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "quizoptions"
     },
     {
@@ -7732,8 +7619,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_types_quizpart",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "quizpart"
     },
     {
@@ -7745,8 +7632,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_types_quizkind",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 99,
+      "community_name": "quiz/index.ts",
       "norm_label": "quizkind"
     },
     {
@@ -7769,8 +7656,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quizzes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "quizzes.ts"
     },
     {
@@ -7782,8 +7669,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_quizbase",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "quizbase"
     },
     {
@@ -7795,8 +7682,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_assortedquiz",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "assortedquiz"
     },
     {
@@ -7808,8 +7695,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_ministryquiz",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "ministryquiz"
     },
     {
@@ -7821,8 +7708,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_quiz",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "quiz"
     },
     {
@@ -7832,8 +7719,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_src_lib_quizzes_allquizzes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "allquizzes"
     },
     {
@@ -7843,8 +7730,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "front_src_lib_quizzes_assortedquizzes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "assortedquizzes"
     },
     {
@@ -7854,8 +7741,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "front_src_lib_quizzes_ministryquizzes",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "ministryquizzes"
     },
     {
@@ -7866,8 +7753,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_getquiz",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "getquiz()"
     },
     {
@@ -7878,8 +7765,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quizzes_getquizzesformodule",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "getquizzesformodule()"
     },
     {
@@ -7890,7 +7777,7 @@
       "_origin": "ast",
       "id": "front_src_lib_scrolllock",
       "community": 130,
-      "community_name": "scrollLock.ts",
+      "community_name": "Sheet.svelte",
       "norm_label": "scrolllock.ts"
     },
     {
@@ -7901,7 +7788,7 @@
       "_origin": "ast",
       "id": "front_src_lib_scrolllock_previous",
       "community": 130,
-      "community_name": "scrollLock.ts",
+      "community_name": "Sheet.svelte",
       "norm_label": "previous"
     },
     {
@@ -7913,7 +7800,7 @@
       "_origin": "ast",
       "id": "front_src_lib_scrolllock_lockscroll",
       "community": 130,
-      "community_name": "scrollLock.ts",
+      "community_name": "Sheet.svelte",
       "norm_label": "lockscroll()"
     },
     {
@@ -7923,8 +7810,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 82,
+      "community_name": "sectionThemes.ts",
       "norm_label": "sectionthemes.ts"
     },
     {
@@ -7936,8 +7823,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_sectiontheme",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 82,
+      "community_name": "sectionThemes.ts",
       "norm_label": "sectiontheme"
     },
     {
@@ -7947,8 +7834,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_palette",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 82,
+      "community_name": "sectionThemes.ts",
       "norm_label": "palette"
     },
     {
@@ -7959,8 +7846,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_themeforsectionindex",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 82,
+      "community_name": "sectionThemes.ts",
       "norm_label": "themeforsectionindex()"
     },
     {
@@ -8039,7 +7926,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": "theme.svelte.ts"
     },
@@ -8052,7 +7939,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte_thememode",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": "thememode"
     },
@@ -8064,7 +7951,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte_loadmode",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": "loadmode()"
     },
@@ -8077,7 +7964,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte_themestore",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": "themestore"
     },
@@ -8089,7 +7976,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte_themestore_constructor",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": ".constructor()"
     },
@@ -8101,7 +7988,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_theme_svelte_themestore_setmode",
-      "community": 105,
+      "community": 128,
       "community_name": "theme.svelte.ts",
       "norm_label": ".setmode()"
     },
@@ -8112,7 +7999,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_error",
-      "community": 102,
+      "community": 90,
       "community_name": "lessons/+page.svelte",
       "norm_label": "+error.svelte"
     },
@@ -8124,7 +8011,7 @@
       "_origin": "ast",
       "id": "front_src_routes_layout",
       "community": 90,
-      "community_name": "debug.svelte.ts",
+      "community_name": "lessons/+page.svelte",
       "norm_label": "+layout.svelte"
     },
     {
@@ -8135,7 +8022,7 @@
       "_origin": "ast",
       "id": "front_src_routes_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "routes/+page.svelte"
     },
     {
@@ -8289,7 +8176,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "book/+page.svelte"
     },
     {
@@ -8300,7 +8187,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page_formatteddate",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "formatteddate"
     },
     {
@@ -8312,7 +8199,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page_submit",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "submit()"
     },
     {
@@ -8324,7 +8211,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page_reset",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "reset()"
     },
     {
@@ -8336,7 +8223,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page_chip",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "chip()"
     },
     {
@@ -8348,7 +8235,7 @@
       "_origin": "ast",
       "id": "front_src_routes_book_page_i",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "i()"
     },
     {
@@ -8449,7 +8336,7 @@
       "_origin": "ast",
       "id": "front_src_routes_settings_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "settings/+page.svelte"
     },
     {
@@ -8483,7 +8370,7 @@
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "[unitid]/+page.svelte"
     },
     {
@@ -8528,7 +8415,7 @@
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "[moduleid]/+page.svelte"
     },
     {
@@ -8550,7 +8437,7 @@
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_page",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "exam/+page.svelte"
     },
     {
@@ -8562,7 +8449,7 @@
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_page_quizlist",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "quizlist()"
     },
     {
@@ -8573,7 +8460,7 @@
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_types",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "./$types"
     },
     {
@@ -8583,8 +8470,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_svelte_front_src_routes_unit_unitid_module_moduleid_exam_quizid_page",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "[quizid]/+page.svelte"
     },
     {
@@ -8594,8 +8481,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_questioncount",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "questioncount"
     },
     {
@@ -8605,8 +8492,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_minutes",
-      "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community": 100,
+      "community_name": "[quizId]/+page.svelte",
       "norm_label": "minutes"
     },
     {
@@ -8616,8 +8503,8 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_types",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "./$types"
     },
     {
@@ -8627,8 +8514,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_ts_front_src_routes_unit_unitid_module_moduleid_exam_quizid_page",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "[quizid]/+page.ts"
     },
     {
@@ -8639,8 +8526,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_load",
-      "community": 34,
-      "community_name": "ExamEditModel",
+      "community": 98,
+      "community_name": "quizzes.ts",
       "norm_label": "load()"
     },
     {
@@ -8650,7 +8537,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
-      "community": 102,
+      "community": 90,
       "community_name": "lessons/+page.svelte",
       "norm_label": "lessons/+page.svelte"
     },
@@ -8662,7 +8549,7 @@
       "_origin": "ast",
       "id": "reactivity",
       "community": 102,
-      "community_name": "lessons/+page.svelte",
+      "community_name": "svelte/transition",
       "norm_label": "svelte/reactivity"
     },
     {
@@ -8672,9 +8559,20 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "front_src_routes_unit_unitid_module_moduleid_lessons_types",
-      "community": 102,
+      "community": 90,
       "community_name": "lessons/+page.svelte",
       "norm_label": "./$types"
+    },
+    {
+      "label": "vocab-images/+page.svelte",
+      "file_type": "code",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "front_src_routes_vocab_images_page",
+      "community": 102,
+      "community_name": "svelte/transition",
+      "norm_label": "vocab-images/+page.svelte"
     },
     {
       "label": "tsconfig.json",
@@ -14469,7 +14367,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l01_strategic_reading_2ddc80da",
-      "community": 122,
+      "community": 131,
       "community_name": "L01-strategic-reading_2ddc80da.md",
       "norm_label": "l01-strategic-reading_2ddc80da.md"
     },
@@ -14480,7 +14378,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l02_eye_catchers_numbers_names_d90a5c66",
-      "community": 123,
+      "community": 132,
       "community_name": "L02-eye-catchers-numbers-names_d90a5c66.md",
       "norm_label": "l02-eye-catchers-numbers-names_d90a5c66.md"
     },
@@ -14491,7 +14389,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l03_eye_catchers_negatives_contrast_757d6d5d",
-      "community": 127,
+      "community": 133,
       "community_name": "L03-eye-catchers-negatives-contrast_757d6d5d.md",
       "norm_label": "l03-eye-catchers-negatives-contrast_757d6d5d.md"
     },
@@ -14502,7 +14400,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l04_traffic_light_9792a15d",
-      "community": 128,
+      "community": 134,
       "community_name": "L04-traffic-light_9792a15d.md",
       "norm_label": "l04-traffic-light_9792a15d.md"
     },
@@ -14513,7 +14411,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l05_detail_questions_e89e9d60",
-      "community": 129,
+      "community": 135,
       "community_name": "L05-detail-questions_e89e9d60.md",
       "norm_label": "l05-detail-questions_e89e9d60.md"
     },
@@ -14524,7 +14422,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l06_multiple_choice_c41b3641",
-      "community": 131,
+      "community": 136,
       "community_name": "L06-multiple-choice_c41b3641.md",
       "norm_label": "l06-multiple-choice_c41b3641.md"
     },
@@ -14535,7 +14433,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l07_complete_sentence_1f6cc6b0",
-      "community": 132,
+      "community": 137,
       "community_name": "L07-complete-sentence_1f6cc6b0.md",
       "norm_label": "l07-complete-sentence_1f6cc6b0.md"
     },
@@ -14546,7 +14444,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l08_two_correct_answers_b81ca0d8",
-      "community": 133,
+      "community": 138,
       "community_name": "L08-two-correct-answers_b81ca0d8.md",
       "norm_label": "l08-two-correct-answers_b81ca0d8.md"
     },
@@ -14557,7 +14455,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l09_reference_questions_e969e54a",
-      "community": 134,
+      "community": 139,
       "community_name": "L09-reference-questions_e969e54a.md",
       "norm_label": "l09-reference-questions_e969e54a.md"
     },
@@ -14568,7 +14466,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l10_inference_questions_2bcbf0e2",
-      "community": 135,
+      "community": 140,
       "community_name": "L10-inference-questions_2bcbf0e2.md",
       "norm_label": "l10-inference-questions_2bcbf0e2.md"
     },
@@ -14579,7 +14477,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l11_main_idea_cef3d3ff",
-      "community": 136,
+      "community": 141,
       "community_name": "L11-main-idea_cef3d3ff.md",
       "norm_label": "l11-main-idea_cef3d3ff.md"
     },
@@ -14590,7 +14488,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l12_authors_attitude_0efc8cb9",
-      "community": 137,
+      "community": 142,
       "community_name": "L12-authors-attitude_0efc8cb9.md",
       "norm_label": "l12-authors-attitude_0efc8cb9.md"
     },
@@ -14601,7 +14499,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l13_vocabulary_social_6e4f6fdb",
-      "community": 138,
+      "community": 143,
       "community_name": "L13-vocabulary-social_6e4f6fdb.md",
       "norm_label": "l13-vocabulary-social_6e4f6fdb.md"
     },
@@ -14612,7 +14510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l14_vocabulary_tech_d755e4b8",
-      "community": 139,
+      "community": 144,
       "community_name": "L14-vocabulary-tech_d755e4b8.md",
       "norm_label": "l14-vocabulary-tech_d755e4b8.md"
     },
@@ -14623,7 +14521,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l15_words_for_writing_2d4b5c3a",
-      "community": 140,
+      "community": 145,
       "community_name": "L15-words-for-writing_2d4b5c3a.md",
       "norm_label": "l15-words-for-writing_2d4b5c3a.md"
     },
@@ -14634,7 +14532,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l16_sentences_that_work_de9121b6",
-      "community": 141,
+      "community": 146,
       "community_name": "L16-sentences-that-work_de9121b6.md",
       "norm_label": "l16-sentences-that-work_de9121b6.md"
     },
@@ -14645,7 +14543,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l17_connectors_error_clinic_dce0bfa2",
-      "community": 142,
+      "community": 147,
       "community_name": "L17-connectors-error-clinic_dce0bfa2.md",
       "norm_label": "l17-connectors-error-clinic_dce0bfa2.md"
     },
@@ -14656,7 +14554,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l18_time_management_12b8e39f",
-      "community": 143,
+      "community": 148,
       "community_name": "L18-time-management_12b8e39f.md",
       "norm_label": "l18-time-management_12b8e39f.md"
     },
@@ -14667,7 +14565,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l19_timed_challenge_e4606728",
-      "community": 144,
+      "community": 149,
       "community_name": "L19-timed-challenge_e4606728.md",
       "norm_label": "l19-timed-challenge_e4606728.md"
     },
@@ -14678,7 +14576,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l20_yes_no_binary_acb272ca",
-      "community": 145,
+      "community": 150,
       "community_name": "L20-yes-no-binary_acb272ca.md",
       "norm_label": "l20-yes-no-binary_acb272ca.md"
     },
@@ -14689,7 +14587,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l21_reason_explanation_example_907a6213",
-      "community": 146,
+      "community": 151,
       "community_name": "L21-reason-explanation-example_907a6213.md",
       "norm_label": "l21-reason-explanation-example_907a6213.md"
     },
@@ -14700,7 +14598,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l22_example_bank_exam_c9b2a35d",
-      "community": 147,
+      "community": 152,
       "community_name": "L22-example-bank-exam_c9b2a35d.md",
       "norm_label": "l22-example-bank-exam_c9b2a35d.md"
     },
@@ -14711,7 +14609,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l23_full_simulation_dbd47bd3",
-      "community": 148,
+      "community": 153,
       "community_name": "L23-full-simulation_dbd47bd3.md",
       "norm_label": "l23-full-simulation_dbd47bd3.md"
     },
@@ -14722,7 +14620,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_l24_error_analysis_final_ec3453fd",
-      "community": 149,
+      "community": 154,
       "community_name": "L24-error-analysis-final_ec3453fd.md",
       "norm_label": "l24-error-analysis-final_ec3453fd.md"
     },
@@ -14733,7 +14631,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson00_module_c_22f46db4",
-      "community": 150,
+      "community": 155,
       "community_name": "lesson00_module_c_22f46db4.md",
       "norm_label": "lesson00_module_c_22f46db4.md"
     },
@@ -14744,7 +14642,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson01_module_c_5278c2fa",
-      "community": 151,
+      "community": 156,
       "community_name": "lesson01_module_c_5278c2fa.md",
       "norm_label": "lesson01_module_c_5278c2fa.md"
     },
@@ -14755,7 +14653,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson02_module_c_0c0059da",
-      "community": 152,
+      "community": 157,
       "community_name": "lesson02_module_c_0c0059da.md",
       "norm_label": "lesson02_module_c_0c0059da.md"
     },
@@ -14766,7 +14664,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson03_module_c_dd616286",
-      "community": 153,
+      "community": 158,
       "community_name": "lesson03_module_c_dd616286.md",
       "norm_label": "lesson03_module_c_dd616286.md"
     },
@@ -14777,7 +14675,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson04_module_c_3d6549f6",
-      "community": 154,
+      "community": 159,
       "community_name": "lesson04_module_c_3d6549f6.md",
       "norm_label": "lesson04_module_c_3d6549f6.md"
     },
@@ -14788,7 +14686,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson05_module_c_373be747",
-      "community": 155,
+      "community": 160,
       "community_name": "lesson05_module_c_373be747.md",
       "norm_label": "lesson05_module_c_373be747.md"
     },
@@ -14799,7 +14697,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson06_module_c_7fe813a3",
-      "community": 156,
+      "community": 161,
       "community_name": "lesson06_module_c_7fe813a3.md",
       "norm_label": "lesson06_module_c_7fe813a3.md"
     },
@@ -14810,7 +14708,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson07_module_c_05604825",
-      "community": 157,
+      "community": 162,
       "community_name": "lesson07_module_c_05604825.md",
       "norm_label": "lesson07_module_c_05604825.md"
     },
@@ -14821,7 +14719,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson08_module_c_e77dbbb7",
-      "community": 158,
+      "community": 163,
       "community_name": "lesson08_module_c_e77dbbb7.md",
       "norm_label": "lesson08_module_c_e77dbbb7.md"
     },
@@ -14832,7 +14730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson09_module_c_165618b9",
-      "community": 159,
+      "community": 164,
       "community_name": "lesson09_module_c_165618b9.md",
       "norm_label": "lesson09_module_c_165618b9.md"
     },
@@ -14843,7 +14741,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson10_module_c_4cc87014",
-      "community": 160,
+      "community": 165,
       "community_name": "lesson10_module_c_4cc87014.md",
       "norm_label": "lesson10_module_c_4cc87014.md"
     },
@@ -14854,7 +14752,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson11_module_c_a92913a5",
-      "community": 161,
+      "community": 166,
       "community_name": "lesson11_module_c_a92913a5.md",
       "norm_label": "lesson11_module_c_a92913a5.md"
     },
@@ -14865,7 +14763,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson12_module_c_d82ef743",
-      "community": 162,
+      "community": 167,
       "community_name": "lesson12_module_c_d82ef743.md",
       "norm_label": "lesson12_module_c_d82ef743.md"
     },
@@ -14876,7 +14774,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson13_module_c_534247dc",
-      "community": 163,
+      "community": 168,
       "community_name": "lesson13_module_c_534247dc.md",
       "norm_label": "lesson13_module_c_534247dc.md"
     },
@@ -14887,7 +14785,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson14_module_c_81c45097",
-      "community": 164,
+      "community": 169,
       "community_name": "lesson14_module_c_81c45097.md",
       "norm_label": "lesson14_module_c_81c45097.md"
     },
@@ -14898,7 +14796,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson15_module_c_8fc89297",
-      "community": 165,
+      "community": 170,
       "community_name": "lesson15_module_c_8fc89297.md",
       "norm_label": "lesson15_module_c_8fc89297.md"
     },
@@ -14909,7 +14807,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson16_module_c_72e5368a",
-      "community": 166,
+      "community": 171,
       "community_name": "lesson16_module_c_72e5368a.md",
       "norm_label": "lesson16_module_c_72e5368a.md"
     },
@@ -14920,7 +14818,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson17_module_c_79b3c48c",
-      "community": 167,
+      "community": 172,
       "community_name": "lesson17_module_c_79b3c48c.md",
       "norm_label": "lesson17_module_c_79b3c48c.md"
     },
@@ -14931,7 +14829,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson18_module_c_d543286c",
-      "community": 168,
+      "community": 173,
       "community_name": "lesson18_module_c_d543286c.md",
       "norm_label": "lesson18_module_c_d543286c.md"
     },
@@ -14942,7 +14840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson19_module_c_d9212825",
-      "community": 169,
+      "community": 174,
       "community_name": "lesson19_module_c_d9212825.md",
       "norm_label": "lesson19_module_c_d9212825.md"
     },
@@ -14953,7 +14851,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson20_module_c_502ac11d",
-      "community": 170,
+      "community": 175,
       "community_name": "lesson20_module_c_502ac11d.md",
       "norm_label": "lesson20_module_c_502ac11d.md"
     },
@@ -14964,7 +14862,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson21_module_c_2552e0b4",
-      "community": 171,
+      "community": 176,
       "community_name": "lesson21_module_c_2552e0b4.md",
       "norm_label": "lesson21_module_c_2552e0b4.md"
     },
@@ -14975,7 +14873,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson22_module_c_9f52171f",
-      "community": 172,
+      "community": 177,
       "community_name": "lesson22_module_c_9f52171f.md",
       "norm_label": "lesson22_module_c_9f52171f.md"
     },
@@ -14986,7 +14884,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_lesson_map_module_c_f3f06dd7",
-      "community": 173,
+      "community": 178,
       "community_name": "lesson_map_module_c_f3f06dd7.md",
       "norm_label": "lesson_map_module_c_f3f06dd7.md"
     },
@@ -14997,7 +14895,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "module-c-audit_23c616f8.md"
     },
@@ -15008,7 +14906,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8_part_a_vocabulary_c_2",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "part a: vocabulary (c-2)"
     },
@@ -15019,7 +14917,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8_part_b_reading_c_1",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "part b: reading (c-1)"
     },
@@ -15030,7 +14928,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8_part_c_writing_c_3",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "part c: writing (c-3)"
     },
@@ -15041,7 +14939,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8_fixed_on_2026_09_19",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "fixed on 2026-09-19"
     },
@@ -15052,7 +14950,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_audit_23c616f8_still_open",
-      "community": 118,
+      "community": 129,
       "community_name": "module-c-audit_23c616f8.md",
       "norm_label": "still open"
     },
@@ -15063,7 +14961,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_module_c_dev_spec_39034aab",
-      "community": 174,
+      "community": 179,
       "community_name": "module_c_dev_spec_39034aab.md",
       "norm_label": "module_c_dev_spec_39034aab.md"
     },
@@ -15074,7 +14972,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice00_module_c_39a9c93f",
-      "community": 175,
+      "community": 180,
       "community_name": "practice00_module_c_39a9c93f.md",
       "norm_label": "practice00_module_c_39a9c93f.md"
     },
@@ -15085,7 +14983,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice01_module_c_19f562d0",
-      "community": 176,
+      "community": 181,
       "community_name": "practice01_module_c_19f562d0.md",
       "norm_label": "practice01_module_c_19f562d0.md"
     },
@@ -15096,7 +14994,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice02_module_c_8e6d7fd4",
-      "community": 177,
+      "community": 182,
       "community_name": "practice02_module_c_8e6d7fd4.md",
       "norm_label": "practice02_module_c_8e6d7fd4.md"
     },
@@ -15107,7 +15005,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice03_module_c_3bb9e9b3",
-      "community": 178,
+      "community": 183,
       "community_name": "practice03_module_c_3bb9e9b3.md",
       "norm_label": "practice03_module_c_3bb9e9b3.md"
     },
@@ -15118,7 +15016,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice04_module_c_b797eaeb",
-      "community": 179,
+      "community": 184,
       "community_name": "practice04_module_c_b797eaeb.md",
       "norm_label": "practice04_module_c_b797eaeb.md"
     },
@@ -15129,7 +15027,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice05_module_c_3a0e0a62",
-      "community": 180,
+      "community": 185,
       "community_name": "practice05_module_c_3a0e0a62.md",
       "norm_label": "practice05_module_c_3a0e0a62.md"
     },
@@ -15140,7 +15038,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice06_module_c_c367cbfe",
-      "community": 181,
+      "community": 186,
       "community_name": "practice06_module_c_c367cbfe.md",
       "norm_label": "practice06_module_c_c367cbfe.md"
     },
@@ -15151,7 +15049,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice07_module_c_7239cfd2",
-      "community": 182,
+      "community": 187,
       "community_name": "practice07_module_c_7239cfd2.md",
       "norm_label": "practice07_module_c_7239cfd2.md"
     },
@@ -15162,7 +15060,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice08_module_c_acff604d",
-      "community": 183,
+      "community": 188,
       "community_name": "practice08_module_c_acff604d.md",
       "norm_label": "practice08_module_c_acff604d.md"
     },
@@ -15173,7 +15071,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice10_module_c_7dcacf87",
-      "community": 184,
+      "community": 189,
       "community_name": "practice10_module_c_7dcacf87.md",
       "norm_label": "practice10_module_c_7dcacf87.md"
     },
@@ -15184,7 +15082,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice11_module_c_67de4f04",
-      "community": 185,
+      "community": 190,
       "community_name": "practice11_module_c_67de4f04.md",
       "norm_label": "practice11_module_c_67de4f04.md"
     },
@@ -15195,7 +15093,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice12_module_c_9ef0a4e9",
-      "community": 186,
+      "community": 191,
       "community_name": "practice12_module_c_9ef0a4e9.md",
       "norm_label": "practice12_module_c_9ef0a4e9.md"
     },
@@ -15206,7 +15104,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice13_module_c_1c466970",
-      "community": 187,
+      "community": 192,
       "community_name": "practice13_module_c_1c466970.md",
       "norm_label": "practice13_module_c_1c466970.md"
     },
@@ -15217,7 +15115,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice14_module_c_943ed665",
-      "community": 188,
+      "community": 193,
       "community_name": "practice14_module_c_943ed665.md",
       "norm_label": "practice14_module_c_943ed665.md"
     },
@@ -15228,7 +15126,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice15_module_c_1af6c024",
-      "community": 189,
+      "community": 194,
       "community_name": "practice15_module_c_1af6c024.md",
       "norm_label": "practice15_module_c_1af6c024.md"
     },
@@ -15239,7 +15137,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice16_module_c_f6ea3a15",
-      "community": 190,
+      "community": 195,
       "community_name": "practice16_module_c_f6ea3a15.md",
       "norm_label": "practice16_module_c_f6ea3a15.md"
     },
@@ -15250,7 +15148,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice17_module_c_b521cf4e",
-      "community": 191,
+      "community": 196,
       "community_name": "practice17_module_c_b521cf4e.md",
       "norm_label": "practice17_module_c_b521cf4e.md"
     },
@@ -15261,7 +15159,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice18_module_c_8aeee152",
-      "community": 192,
+      "community": 197,
       "community_name": "practice18_module_c_8aeee152.md",
       "norm_label": "practice18_module_c_8aeee152.md"
     },
@@ -15272,7 +15170,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice19_module_c_2c8e758e",
-      "community": 193,
+      "community": 198,
       "community_name": "practice19_module_c_2c8e758e.md",
       "norm_label": "practice19_module_c_2c8e758e.md"
     },
@@ -15283,7 +15181,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice20_module_c_15c12401",
-      "community": 194,
+      "community": 199,
       "community_name": "practice20_module_c_15c12401.md",
       "norm_label": "practice20_module_c_15c12401.md"
     },
@@ -15294,7 +15192,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice21_module_c_1321685f",
-      "community": 195,
+      "community": 200,
       "community_name": "practice21_module_c_1321685f.md",
       "norm_label": "practice21_module_c_1321685f.md"
     },
@@ -15305,7 +15203,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "graphify_out_converted_practice22_module_c_76b8dd28",
-      "community": 196,
+      "community": 201,
       "community_name": "practice22_module_c_76b8dd28.md",
       "norm_label": "practice22_module_c_76b8dd28.md"
     },
@@ -17333,105 +17231,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L64",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_cards",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_entries",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_esc",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L21",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_exists",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L15",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_ext",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L33",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_filebyurl",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_outdir",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_root",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "front/scripts/vocab-images.mjs",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "front_scripts_vocab_images",
-      "target": "front_scripts_vocab_images_slug",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "front/src/app.d.ts",
       "source_location": "L4",
       "weight": 1.0,
@@ -17547,6 +17346,15 @@
       "source_file": "front/src/routes/unit/[unitId]/+page.svelte",
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_page",
+      "target": "front_src_lib_components_appbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
       "target": "front_src_lib_components_appbar",
       "confidence_score": 1.0
     },
@@ -20629,6 +20437,15 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
+      "target": "front_src_lib_content_edit_api",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22691,6 +22508,15 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "front_src_lib_content_edit_editstore_svelte",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
       "target": "front_src_lib_content_edit_editstore_svelte",
       "confidence_score": 1.0
     },
@@ -24818,6 +24644,15 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
+      "target": "front_src_lib_content_edit_screenpath",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -25498,6 +25333,15 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "front_src_lib_content_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
       "target": "front_src_lib_content_index",
       "confidence_score": 1.0
     },
@@ -27104,6 +26948,15 @@
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_page",
       "target": "easing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
+      "target": "environment",
       "confidence_score": 1.0
     },
     {
@@ -29177,6 +29030,15 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "front_src_lib_lesson_screens_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
       "target": "front_src_lib_lesson_screens_types",
       "confidence_score": 1.0
     },
@@ -31696,6 +31558,15 @@
       "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte",
       "_origin": "ast",
       "source": "front_src_routes_unit_unitid_module_moduleid_lessons_page",
+      "target": "reactivity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "front/src/routes/vocab-images/+page.svelte",
+      "_origin": "ast",
+      "source": "front_src_routes_vocab_images_page",
       "target": "reactivity",
       "confidence_score": 1.0
     },
@@ -38027,5 +37898,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6674034a1ef1998b55fe33b370b3a55d850a2e2d"
+  "built_at_commit": "f2b13962d877f0a857eab451a85fa52ea0237f26"
 }

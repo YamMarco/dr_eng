@@ -33,13 +33,12 @@
 			external: false
 		},
 		{
-			// A static page outside the SvelteKit router (see scripts/vocab-images.mjs),
-			// so it needs a full page load.
-			href: '/vocab-images/index.html',
-			label: i18n.dict.nav.anotherUnit,
-			match: () => false,
+			// Content-authoring tool (password-gated in production, same as /edit).
+			href: '/vocab-images',
+			label: i18n.dict.nav.vocabImages,
+			match: (path: string) => path.startsWith('/vocab-images'),
 			icon: 'images',
-			external: true
+			external: false
 		}
 	] as const);
 
