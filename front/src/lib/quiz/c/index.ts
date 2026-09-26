@@ -21,23 +21,23 @@ export const cQuizzes: QuizNode[] = [
         screens: [
           {
             type: "passage",
-            title: "Smart Glasses That Help Blind People See",
+            title: "{a:center}**Smart Glasses That Help Blind People See**",
             paragraphs: [
               {
                 id: "p1",
-                text: "Many people around the world cannot see well or are blind. For them, simple tasks like walking to a bus stop or reading a menu can be very hard. A new kind of smart glasses is now helping these people. The glasses talk to the user through a small speaker and tell them about the world around them.",
+                text: "**I **Many people around the world cannot see well or are blind. For them, simple tasks like walking to a bus stop or reading a menu can be very hard. A new kind of smart glasses is now helping these people. The glasses talk to the user through a small speaker and tell them about the world around them.",
               },
               {
                 id: "p2",
-                text: "The glasses have a small camera at the front. The camera looks at what is in front of the user, and a computer program tells them what it sees. For example, it can say \"there is a step in front of you\" or \"the door is on your right.\" The glasses can also read words from books, signs, and screens out loud.",
+                text: '**II** The glasses have a small camera at the front. The camera looks at what is in front of the user, and a computer program tells them what it sees. For example, it can say "there is a step in front of you" or "the door is on your right." The glasses can also read words from books, signs, and screens out loud.',
               },
               {
                 id: "p3",
-                text: "But the glasses are not always perfect. They can make mistakes when it is dark or when things move fast. The battery runs out after a few hours, so users need to charge them often. The glasses are also very expensive, and many families cannot afford to buy them.",
+                text: "**III **But the glasses are not always perfect. They can make mistakes when it is dark or when things move fast. The battery runs out after a few hours, so users need to charge them often. The glasses are also very expensive, and many families cannot afford to buy them.",
               },
               {
                 id: "p4",
-                text: "Many blind people are already using smart glasses every day. Students use them in class to read the board, and workers use them to find their way around buildings. One man said the glasses helped him see his daughter's face for the first time. In the future, companies hope to make the glasses smaller, cheaper, and better so that more people can use them.",
+                text: "**IV** Many blind people are already using smart glasses every day. Students use them in class to read the board, and workers use them to find their way around buildings. One man said the glasses helped him see his daughter's face for the first time. In the future, companies hope to make the glasses smaller, cheaper, and better so that more people can use them.",
               },
             ],
           },
@@ -113,7 +113,8 @@ export const cQuizzes: QuizNode[] = [
           {
             type: "writing-task",
             paragraphRef: "IV",
-            prompt: "According to paragraph IV, how did the glasses help one man?",
+            prompt:
+              "According to paragraph IV, how did the glasses help one man?",
             points: 8,
           },
           {
