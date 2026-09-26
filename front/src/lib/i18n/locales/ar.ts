@@ -49,8 +49,6 @@ export const ar: DictionaryOverride = {
 		soundEffectsDesc: 'صوت عند الإجابة الصحيحة أو الخاطئة',
 		dailyReminders: 'تذكيرات يومية',
 		dailyRemindersDesc: 'إشعار للتدريب اليومي',
-		showHints: 'تلميحات في التمارين',
-		showHintsDesc: 'عرض تلميح قبل التحقق من الإجابة',
 		aboutSection: 'حول التطبيق',
 		version: 'الإصدار',
 		versionValue: '0.1.0 (نسخة تجريبية محلية)',

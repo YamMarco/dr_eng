@@ -10,7 +10,6 @@
 
 	let soundEffects = $state(true);
 	let dailyReminders = $state(true);
-	let showHints = $state(false);
 
 	const languages: { value: Language; label: string }[] = [
 		{ value: 'he', label: 'עברית' },
@@ -103,13 +102,6 @@
 					<span class="block text-sm text-muted">{i18n.dict.settings.dailyRemindersDesc}</span>
 				</span>
 				<Toggle bind:checked={dailyReminders} label={i18n.dict.settings.dailyReminders} />
-			</li>
-			<li class="flex items-center justify-between gap-4 px-5 py-4">
-				<span>
-					<span class="block font-semibold">{i18n.dict.settings.showHints}</span>
-					<span class="block text-sm text-muted">{i18n.dict.settings.showHintsDesc}</span>
-				</span>
-				<Toggle bind:checked={showHints} label={i18n.dict.settings.showHints} />
 			</li>
 		</ul>
 	</section>

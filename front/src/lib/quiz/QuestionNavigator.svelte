@@ -48,14 +48,16 @@
 			aria-current={isCurrent ? 'step' : undefined}
 			aria-label={isPassage ? `קטע קריאה, שאלה ${i + 1}` : `שאלה ${i + 1}`}
 			onclick={() => onJump(i)}
-			class="flex h-6 shrink-0 items-center justify-center gap-1 rounded-full px-2 text-xs font-bold transition active:scale-90 {isCurrent
+			class="flex h-8 shrink-0 items-center justify-center gap-1 rounded-full px-2 text-sm font-bold transition active:scale-90 {isCurrent
 				? 'ring-2 ring-brand ring-offset-1 ring-offset-canvas'
 				: ''} {isAnswered
 				? 'bg-brand-soft text-brand-dark'
-				: 'border-2 border-line bg-surface text-muted'}"
+				: isCurrent
+					? 'bg-surface text-muted'
+					: 'border-2 border-line bg-surface text-muted'}"
 		>
 			{#if style === 'dots'}
-				<span class="h-1.5 w-1.5 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
+				<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
 			{:else}
 				{i + 1}
 			{/if}

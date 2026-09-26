@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
+	import PassageMark from './PassageMark.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -36,6 +37,22 @@
 
 	let question = $derived(screen.questions[qi]);
 	let isLastQuestion = $derived(qi === screen.questions.length - 1);
+
+	// Passage text as markable lines (split on paragraph/line breaks) so
+	// students can select-and-highlight it, same tool as the standalone
+	// Passage screen - see PassageMark.
+	let passageLines = $derived.by(() => {
+		const result: { key: number; text: string; rowClass?: string }[] = [];
+		let n = 0;
+		screen.text.split('\n\n').forEach((paragraph) => {
+			paragraph.split('\n').forEach((text, li) => {
+				if (!text.trim()) return;
+				n += 1;
+				result.push({ key: n, text, rowClass: li === 0 ? 'mt-3' : '' });
+			});
+		});
+		return result;
+	});
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -96,7 +113,7 @@
 		</span>
 	</div>
 {/if}
-<div class="leading-relaxed"><Md block text={screen.text} /></div>
+<PassageMark lines={passageLines} />
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}

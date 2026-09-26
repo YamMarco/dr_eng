@@ -178,8 +178,6 @@ export const he = {
 		soundEffectsDesc: 'צליל בתשובה נכונה או שגויה',
 		dailyReminders: 'תזכורות יומיות',
 		dailyRemindersDesc: 'התראה לתרגול יומי',
-		showHints: 'רמזים בתרגילים',
-		showHintsDesc: 'הצגת רמז לפני בדיקת תשובה',
 		developerSection: 'מפתחים',
 		debugTools: 'כלי דיבוג',
 		debugToolsDesc: 'הצגת כפתור דיבוג צף בכל האפליקציה',
