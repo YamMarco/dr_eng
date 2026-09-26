@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WordCard.svelte": {
-    "mtime": 1790442732.1985595,
-    "seen": 1790442749.9121287,
-    "ast_hash": "12fdf35aecc395ebe5cbb95be6fffc4a",
+    "mtime": 1790443174.850262,
+    "seen": 1790443184.7771223,
+    "ast_hash": "1ddaccdd919eab6da6a96dd169cdd89d",
     "semantic_hash": ""
   },
   "front/src/routes/book/+page.svelte": {
