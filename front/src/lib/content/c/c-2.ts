@@ -1523,6 +1523,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "כל הקהילה הגיעה לאסיפה.",
               hookHe:
                 'נשמע כמו "קומיוניטי", ודומה ל-common = משותף. קהילה היא אנשים שיש להם משהו משותף: שכונה, בית ספר, עיירה.',
+              image: "/vocab-images/word-f6c6c57ab1.jpg",
             },
             {
               type: "mcq",
@@ -1911,6 +1912,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חוקרים חקרו 500 תלמידים במשך שנה.",
               hookHe:
                 "research = מחקר. researchers = מי שעושה מחקר: research + er. כשרואים researchers בטקסט, מגיע ממצא.",
+              image: "/vocab-images/word-bfaa56d222.jpg",
             },
             {
               type: "mcq",
@@ -2654,6 +2656,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "התוכנית הזאת מלמדת מיומנויות חשובות.",
               hookHe:
                 "skill = יכולת שלומדים ומתאמנים בה: לנגן, לכתוב, לעבוד בצוות.",
+              image: "/vocab-images/word-f2dcb9542b.jpg",
             },
             {
               type: "mcq",
@@ -3365,6 +3368,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חברים יכולים לתמוך בך בזמנים קשים.",
               hookHe:
                 "support = לתמוך ותמיכה: לעמוד לצד מישהו, ברגש, בכסף או בעזרה.",
+              image: "/vocab-images/word-c18a17b0fa.jpg",
             },
             {
               type: "mcq",
