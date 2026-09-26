@@ -3395,6 +3395,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "התנדבות מועילה לחברה כולה.",
               hookHe:
                 "society = חברה: כל האנשים שחיים יחד, לא בית ספר או קבוצה קטנה.",
+              image: "/vocab-images/word-ff48f04778.jpg",
             },
             {
               type: "mcq",
