@@ -1912,6 +1912,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חוקרים חקרו 500 תלמידים במשך שנה.",
               hookHe:
                 "research = מחקר. researchers = מי שעושה מחקר: research + er. כשרואים researchers בטקסט, מגיע ממצא.",
+              image: "/vocab-images/word-bfaa56d222.jpg",
             },
             {
               type: "mcq",
