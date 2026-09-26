@@ -2549,7 +2549,6 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "Practice can **improve** your English.",
               exampleHe: "אימון יכול לשפר את האנגלית שלך.",
               hookHe: "improve = לשפר משהו שכבר קיים: להפוך אותו לטוב יותר.",
-              image: "/vocab-images/word-047034e4cb.jpg",
             },
             {
               type: "mcq",
@@ -2657,6 +2656,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "התוכנית הזאת מלמדת מיומנויות חשובות.",
               hookHe:
                 "skill = יכולת שלומדים ומתאמנים בה: לנגן, לכתוב, לעבוד בצוות.",
+              image: "/vocab-images/word-f2dcb9542b.jpg",
             },
             {
               type: "mcq",
