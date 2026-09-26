@@ -102,6 +102,14 @@ const HEADER_CLASS: Record<number, string> = {
 	3: 'text-lg font-semibold'
 };
 
+/** Strips a line's leading `{a:center}` / `{d:rtl}` / `{p:text}` attribute
+ *  tokens without applying their styling - for contexts (like exam reading
+ *  passages) that render each line with plain `mdInline`, so an authored
+ *  attribute token doesn't leak into the text as literal `{a:center}`. */
+export function stripLineAttrs(raw: string): string {
+	return raw.replace(/^(\{(?:a|d|p):\w+\})+/, '');
+}
+
 /** One line's leading `{a:center}` / `{d:rtl}` / `{p:text}` attribute tokens + optional
  *  `#`/`##`/`###` header marker, stripped off before the rest is run through
  *  `mdInline`. Attribute tokens can appear in any order, before the header

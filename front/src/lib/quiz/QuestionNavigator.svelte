@@ -33,7 +33,13 @@
 	});
 </script>
 
-<div class="scrollbar-none flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto" dir="rtl">
+<!-- Edge fade, not a hard cutoff - hints there are more questions to scroll to
+     without needing to know which side actually overflows (numbers vs. the
+     wider "קטע קריאה" pill make that vary). -->
+<div
+	class="scrollbar-none flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto mask-[linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]"
+	dir="rtl"
+>
 	<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 	{#each Array.from({ length: total }) as _, i (i)}
 		{@const isAnswered = answered.has(i)}
@@ -48,13 +54,11 @@
 			aria-current={isCurrent ? 'step' : undefined}
 			aria-label={isPassage ? `קטע קריאה, שאלה ${i + 1}` : `שאלה ${i + 1}`}
 			onclick={() => onJump(i)}
-			class="flex h-8 shrink-0 items-center justify-center gap-1 rounded-full px-2 text-sm font-bold transition active:scale-90 {isCurrent
-				? 'ring-2 ring-brand ring-offset-1 ring-offset-canvas'
-				: ''} {isAnswered
-				? 'bg-brand-soft text-brand-dark'
-				: isCurrent
-					? 'bg-surface text-muted'
-					: 'border-2 border-line bg-surface text-muted'}"
+			class="flex h-8 shrink-0 items-center justify-center gap-1 rounded-full border-2 px-2 text-sm font-bold transition active:scale-90 {isCurrent
+				? 'border-brand'
+				: isAnswered
+					? 'border-transparent'
+					: 'border-line'} {isAnswered ? 'bg-brand-soft text-brand-dark' : 'bg-surface text-muted'}"
 		>
 			{#if style === 'dots'}
 				<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>

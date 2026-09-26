@@ -86,20 +86,20 @@
 {#if unlocked}
 	<AppBar title="תמונות אוצר מילים" back="/" />
 
-	<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-28">
+	<main class="mx-auto w-full max-w-4xl flex-1 px-4 pt-6 pb-28">
 		<p class="mb-4 text-sm text-muted">
 			{entries.length} כרטיסי מילים · {missingCount} חסרות תמונה
 		</p>
 
-		<ul class="flex flex-col gap-3">
+		<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
 			{#each sortedEntries as entry (entryKey(entry))}
 				{@const key = entryKey(entry)}
 				{@const missing = !entry.image || brokenImages.has(key)}
 				<li
-					class="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70"
+					class="flex flex-col overflow-hidden rounded-2xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 				>
 					<div
-						class="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-canvas text-xs text-muted"
+						class="flex aspect-square w-full items-center justify-center overflow-hidden bg-canvas text-sm text-muted"
 					>
 						{#if entry.image && !brokenImages.has(key)}
 							<img
@@ -112,24 +112,24 @@
 							אין תמונה
 						{/if}
 					</div>
-					<div class="min-w-0 flex-1">
+					<div class="flex flex-1 flex-col gap-1 p-3">
 						<p class="truncate font-bold" dir="ltr">{entry.word}</p>
 						{#if entry.translationHe}
 							<p class="truncate text-sm text-muted">{entry.translationHe}</p>
 						{/if}
 						<p class="truncate text-xs text-muted">{entry.lessonTitle}</p>
+						<!-- editHref is a runtime-built query string into /edit, not a typed route -->
+						<!-- eslint-disable svelte/no-navigation-without-resolve -->
+						<a
+							href={entry.editHref}
+							class="mt-auto w-full rounded-full px-3 py-1.5 text-center text-sm font-bold transition active:scale-95 {missing
+								? 'bg-danger-soft text-danger'
+								: 'bg-brand-soft text-brand-dark'}"
+						>
+							ערוך
+						</a>
+						<!-- eslint-enable svelte/no-navigation-without-resolve -->
 					</div>
-					<!-- editHref is a runtime-built query string into /edit, not a typed route -->
-					<!-- eslint-disable svelte/no-navigation-without-resolve -->
-					<a
-						href={entry.editHref}
-						class="shrink-0 rounded-full px-3 py-1.5 text-sm font-bold transition active:scale-95 {missing
-							? 'bg-danger-soft text-danger'
-							: 'bg-brand-soft text-brand-dark'}"
-					>
-						ערוך
-					</a>
-					<!-- eslint-enable svelte/no-navigation-without-resolve -->
 				</li>
 			{/each}
 		</ul>

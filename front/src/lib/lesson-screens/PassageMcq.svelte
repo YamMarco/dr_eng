@@ -2,6 +2,7 @@
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import PassageMark from './PassageMark.svelte';
+	import { stripLineAttrs } from './miniMarkdown';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -40,15 +41,18 @@
 
 	// Passage text as markable lines (split on paragraph/line breaks) so
 	// students can select-and-highlight it, same tool as the standalone
-	// Passage screen - see PassageMark.
+	// Passage screen - see PassageMark. `stripLineAttrs` drops any authored
+	// `{a:center}`-style block token, since these lines only run through
+	// inline markdown (PassageMark renders each line's plain text).
 	let passageLines = $derived.by(() => {
-		const result: { key: number; text: string; rowClass?: string }[] = [];
+		const result: { key: number; text: string; lineNumber: number; rowClass?: string }[] = [];
 		let n = 0;
 		screen.text.split('\n\n').forEach((paragraph) => {
-			paragraph.split('\n').forEach((text, li) => {
+			paragraph.split('\n').forEach((raw, li) => {
+				const text = stripLineAttrs(raw);
 				if (!text.trim()) return;
 				n += 1;
-				result.push({ key: n, text, rowClass: li === 0 ? 'mt-3' : '' });
+				result.push({ key: n, text, lineNumber: n, rowClass: li === 0 ? 'mt-3' : '' });
 			});
 		});
 		return result;
@@ -113,7 +117,13 @@
 		</span>
 	</div>
 {/if}
-<PassageMark lines={passageLines} />
+<PassageMark lines={passageLines}>
+	{#snippet leading(line)}
+		<span class="w-5 shrink-0 text-start text-xs text-muted tabular">
+			{line.lineNumber % 5 === 0 ? line.lineNumber : ''}
+		</span>
+	{/snippet}
+</PassageMark>
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}
