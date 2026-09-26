@@ -2553,6 +2553,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "Practice can **improve** your English.",
               exampleHe: "אימון יכול לשפר את האנגלית שלך.",
               hookHe: "improve = לשפר משהו שכבר קיים: להפוך אותו לטוב יותר.",
+              image: "/vocab-images/word-8dd2aa3891.jpg",
             },
             {
               type: "mcq",
@@ -2629,6 +2630,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "She worked hard and finally **achieved** her goal.",
               exampleHe: "היא עבדה קשה ובסוף השיגה את המטרה שלה.",
               hookHe: "achieve = להשיג (מטרה, ציון, הצלחה) אחרי מאמץ.",
+              image: "/vocab-images/word-321f92452b.jpg",
             },
             {
               type: "mcq",
