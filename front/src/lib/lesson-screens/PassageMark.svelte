@@ -122,7 +122,7 @@
 
 <div class="flex flex-col" dir="ltr" role="presentation" onmouseup={onMouseUp}>
 	{#each lines as line (line.key)}
-		<div class="flex items-start gap-2 {line.rowClass ?? ''}">
+		<div class="flex items-center gap-2 {line.rowClass ?? ''}">
 			{#if leading}{@render leading(line)}{/if}
 			<p data-line-key={line.key} class="flex-1 leading-relaxed [-webkit-touch-callout:none]">
 				{#each segmentsFor(line) as seg, i (i)}
