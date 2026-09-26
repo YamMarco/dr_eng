@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Md from '$lib/components/Md.svelte';
 	import PassageMark from './PassageMark.svelte';
+	import { stripLineAttrs } from './miniMarkdown';
 	import type { PassageScreen } from './types';
 
 	// Pure display, shared by the `passage` screen and QuizRunner's
@@ -25,11 +26,11 @@
 		const result: Line[] = [];
 		let n = 0;
 		passage.paragraphs.forEach((paragraph, pi) => {
-			paragraph.text.split('\n').forEach((text, li) => {
+			paragraph.text.split('\n').forEach((raw, li) => {
 				n += 1;
 				result.push({
 					key: n,
-					text,
+					text: stripLineAttrs(raw),
 					roman: li === 0 ? (ROMAN[pi] ?? String(pi + 1)) : null,
 					lineNumber: n,
 					rowClass: li === 0 ? 'mt-3' : ''
@@ -41,7 +42,7 @@
 </script>
 
 {#if passage.title}
-	<h2 class="mb-3 text-lg font-bold" dir="ltr"><Md text={passage.title} /></h2>
+	<h2 class="mb-3 text-lg font-bold" dir="ltr"><Md text={stripLineAttrs(passage.title)} /></h2>
 {/if}
 
 <PassageMark {lines}>
