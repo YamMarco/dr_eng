@@ -213,7 +213,9 @@
 		<LessonProgressBar segments={progressSegments} current={screenIndex} />
 	{/if}
 
-	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-6 pb-6">
+	<main
+		class="mx-auto flex w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-6 pb-6"
+	>
 		{#if justFinished}
 			<div class="relative flex flex-col items-center pt-10 text-center">
 				{#if passed}
@@ -272,7 +274,11 @@
 			<!-- Force a full remount per screen so each component's own local
 			     state (selected answer, timers, ...) starts fresh every time. -->
 			{#key screenIndex}
-				<div in:fly={{ x: direction * 12, duration: 100, easing: cubicOut }}>
+				<!-- flex-1: lets a screen fill (and fit) the viewport height. -->
+				<div
+					class="flex min-h-0 flex-1 flex-col"
+					in:fly={{ x: direction * 12, duration: 100, easing: cubicOut }}
+				>
 					<ScreenComponent
 						screen={currentScreen}
 						onAdvance={advance}

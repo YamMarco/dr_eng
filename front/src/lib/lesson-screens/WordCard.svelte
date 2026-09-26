@@ -5,7 +5,7 @@
 	import SpeakButtons from './SpeakButtons.svelte';
 	import WordImage from './WordImage.svelte';
 
-	// Not scored — pure teaching, like preface/summary — so disabled/label
+	// Not scored ג€” pure teaching, like preface/summary ג€” so disabled/label
 	// are write-only here (never overridden): the runner reads them through
 	// the bindable props to size and gate its single button.
 	let {
@@ -27,9 +27,19 @@
 	}
 </script>
 
-<div class="flex flex-col items-center text-center">
+<div
+	class="flex min-h-0 flex-1 flex-col items-center text-center {screen.image
+		? ''
+		: 'justify-center'}"
+>
 	{#if screen.image}
-		<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
+		<!-- Natural 16:9 height, but shrinks (keeping 16:9) so the card fits the
+		     screen without scrolling on short phones. -->
+		<div class="[container-type:size] flex aspect-video min-h-20 w-full shrink justify-center">
+			<div class="w-[min(100%,calc(100cqh*16/9))]">
+				<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
+			</div>
+		</div>
 	{/if}
 
 	<div class="flex items-center gap-2 {screen.image ? 'mt-5' : ''}" dir="ltr">
@@ -56,7 +66,7 @@
 
 	{#if screen.hookHe}
 		<div class="mt-3 w-full rounded-2xl border-2 border-dashed border-brand/40 p-3 text-start">
-			<p class="mb-1 text-xs font-bold text-brand-dark">💡 {i18n.dict.wordCard.hookLabel}</p>
+			<p class="mb-1 text-xs font-bold text-brand-dark">נ’¡ {i18n.dict.wordCard.hookLabel}</p>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="leading-relaxed">{@html mdBlock(screen.hookHe)}</div>
 		</div>
