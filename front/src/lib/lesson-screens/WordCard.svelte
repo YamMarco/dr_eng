@@ -28,9 +28,11 @@
 </script>
 
 <div class="flex flex-col items-center text-center">
-	<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
+	{#if screen.image}
+		<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
+	{/if}
 
-	<div class="mt-5 flex items-center gap-2" dir="ltr">
+	<div class="flex items-center gap-2 {screen.image ? 'mt-5' : ''}" dir="ltr">
 		<p class="text-3xl font-extrabold">{screen.word}</p>
 		<SpeakButtons text={screen.word} />
 	</div>
