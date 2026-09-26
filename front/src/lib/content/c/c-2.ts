@@ -1454,6 +1454,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הסביבה נמצאת בסכנה.",
               hookHe:
                 'נשמע כמו "אנווירונמנט". ומילה ארוכה כמו environmentalists היא environment + ist: מי שאכפת לו מהסביבה. נחזור אליה בסוף.',
+              image: "/vocab-images/word-661f68613c.jpg",
             },
             {
               type: "mcq",
@@ -1485,6 +1486,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מתנדבים צעירים נטעו 200 עצים.",
               hookHe:
                 'נשמע כמו "וולונטרי" - מרצון. מתנדב עושה משהו מרצונו, בלי שכר. אפשר גם כפועל: to volunteer = להתנדב.',
+              image: "/vocab-images/word-e4ddb677d5.jpg",
             },
             {
               type: "mcq",
@@ -1557,6 +1559,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "ארגון צדקה מקומי גייס כסף לבית הספר.",
               hookHe:
                 'נשמע כמו "צ\'ריטי". זה ארגון שאוסף כסף וזמן כדי לעזור, לא כדי להרוויח. שימו לב: זה הארגון, לא האדם.',
+              image: "/vocab-images/word-9f2fa20fa2.jpg",
             },
             {
               type: "mcq",
@@ -1603,6 +1606,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "רוב התושבים אמרו שהאוויר נקי יותר.",
               hookHe:
                 'נשמע כמו "רזידנס" - מגורים. resident הוא מי שגר במקום, לא אורח ולא תייר.',
+              image: "/vocab-images/word-8e52c55334.jpg",
             },
             {
               type: "mcq",
