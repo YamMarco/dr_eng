@@ -2694,6 +2694,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חינוך טוב פותח הרבה דלתות.",
               hookHe:
                 "education = חינוך והשכלה: הלימודים והידע שמקבלים. בא מהפועל educate = לחנך.",
+              image: "/vocab-images/word-6ccfae2585.jpg",
             },
             {
               type: "mcq",
