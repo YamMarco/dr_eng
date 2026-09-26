@@ -5,7 +5,7 @@
 	import SpeakButtons from './SpeakButtons.svelte';
 	import WordImage from './WordImage.svelte';
 
-	// Not scored ג€” pure teaching, like preface/summary ג€” so disabled/label
+	// Not scored — pure teaching, like preface/summary — so disabled/label
 	// are write-only here (never overridden): the runner reads them through
 	// the bindable props to size and gate its single button.
 	let {
@@ -66,7 +66,7 @@
 
 	{#if screen.hookHe}
 		<div class="mt-3 w-full rounded-2xl border-2 border-dashed border-brand/40 p-3 text-start">
-			<p class="mb-1 text-xs font-bold text-brand-dark">נ’¡ {i18n.dict.wordCard.hookLabel}</p>
+			<p class="mb-1 text-xs font-bold text-brand-dark">💡 {i18n.dict.wordCard.hookLabel}</p>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<div class="leading-relaxed">{@html mdBlock(screen.hookHe)}</div>
 		</div>
