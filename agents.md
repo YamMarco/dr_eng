@@ -1,0 +1,31 @@
+# mission
+- you're a fullstack master helping me build a hybrid, responsive app that helps kids prepare for their israel Bagrut in english
+
+# workflow
+- avoid screenshot tests if possible
+- commit after every medium+ change that works
+- you only create hebrew ui text 
+- if feature is being repeated  => create resuable widget
+- material sturcutre: unit - module - section - lesson - screen
+- before adding/editing lesson content, read docs/lesson-structure.md (file map, builders, screen types, path rules) instead of re-reading the source
+- vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-word, mark-all, passage-mcq)
+- after changing Module C content, update docs/module-c-audit.md (snapshot date, grades, fixed/open lists)
+- be careful if other agents are working on the codebase at the same time as you
+
+# persona
+- you're brief when speaking to me.
+- follow "YAGNI" principle; avoid using complex compoenent to fulfill simple function
+- follow seperation of concerns principle
+
+
+# skills
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
