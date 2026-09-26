@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1790262220.182893,
-    "ast_hash": "5eae1dbaa9ace9a1a964f0523098ea5b",
+    "mtime": 1790442094.240316,
+    "ast_hash": "acfc61333d2697f34c4e8dd8211fc9a0",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MarkWord.svelte": {
@@ -400,8 +400,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WordCard.svelte": {
-    "mtime": 1790152606.3709846,
-    "ast_hash": "a9f8a500232e97de256755eed571ac88",
+    "mtime": 1790442459.6734629,
+    "ast_hash": "bee8312f01ffd01e2afe8c677eb9ccd7",
     "semantic_hash": ""
   },
   "front/src/routes/book/+page.svelte": {
@@ -455,8 +455,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1790247994.116004,
-    "ast_hash": "8b3f4803382a5c5c57690c5846510aa2",
+    "mtime": 1790441801.1851416,
+    "ast_hash": "bccd12442b75a6ffd235af79a97980da",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
@@ -1142,6 +1142,81 @@
   "CLAUDE.md": {
     "mtime": 1790427895.8593867,
     "ast_hash": "32efb7921217d089fbc77b0d0a3a2be9",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-047034e4cb.jpg": {
+    "mtime": 1790432575.6739256,
+    "ast_hash": "583fd68a0cee0e6341ad4c7a3debfb99",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-321f92452b.jpg": {
+    "mtime": 1790441801.1861465,
+    "ast_hash": "a64a27a15a5a9bef2edc14330bd7013e",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-661f68613c.jpg": {
+    "mtime": 1790441801.1871479,
+    "ast_hash": "a2338abda7f5f10162a4bfd5484df8ae",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-6ccfae2585.jpg": {
+    "mtime": 1790432575.6739256,
+    "ast_hash": "128de18edc10eb7f6067ef229535e8d4",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-851e3f8596.jpg": {
+    "mtime": 1790432575.6739256,
+    "ast_hash": "f1ef1aac25c25d8dc45516fd9bd849cb",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-8dd2aa3891.jpg": {
+    "mtime": 1790441801.1891415,
+    "ast_hash": "768195a63dfd9b9a33425993578dee87",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-8e52c55334.jpg": {
+    "mtime": 1790441801.1891415,
+    "ast_hash": "48b094e1d558a6a1f2aa738d65e7d915",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-9f2fa20fa2.jpg": {
+    "mtime": 1790441801.1902306,
+    "ast_hash": "0b8d57f13a61c7e43661470208b4cfc5",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-bfaa56d222.jpg": {
+    "mtime": 1790432575.678625,
+    "ast_hash": "3588996357ece0ffd84a05a889bab57a",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-c18a17b0fa.jpg": {
+    "mtime": 1790432575.679981,
+    "ast_hash": "ab6995d00f9258d2081b593e020af950",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-c3f1424e60.jpg": {
+    "mtime": 1790441801.1922884,
+    "ast_hash": "cd1eb7707e5df8f495e386e646930a82",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-e4ddb677d5.jpg": {
+    "mtime": 1790441801.1932886,
+    "ast_hash": "d18e99c8ee4bf4296ac0eb8303d91774",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-f2dcb9542b.jpg": {
+    "mtime": 1790432575.6826403,
+    "ast_hash": "7eb08f86bea6c6334890c7b9348b79fe",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-f6c6c57ab1.jpg": {
+    "mtime": 1790432575.6846821,
+    "ast_hash": "cd9384e3d09b64114ee170abdd5cc06b",
+    "semantic_hash": ""
+  },
+  "front/static/vocab-images/word-ff48f04778.jpg": {
+    "mtime": 1790441801.1947372,
+    "ast_hash": "dacd87857c42df65d05aa8a4d5f2def9",
     "semantic_hash": ""
   },
   "graphify-out/converted/L01-strategic-reading_2ddc80da.md": {

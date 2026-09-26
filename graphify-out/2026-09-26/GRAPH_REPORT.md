@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-09-26)
 
 ## Corpus Check
-- 263 files · ~496,552 words
+- 263 files · ~524,355 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `97c81374`
+- Built from commit: `63364a4c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -75,7 +75,7 @@
 - Section 15 · רעיון מרכזי
 - Section 19 · מקריאה לכתיבה
 - חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
-- MatchPairs.svelte
+- answers.svelte.ts
 - 3 · `s3-l2` — מציאה וסימון (c.3.3)
 - 1 (vefore c.4.1, after c.3.4)
 - LessonRunner.svelte
@@ -93,10 +93,10 @@
 - questions
 - edit/+page.svelte
 - eye catchers - negative limit contrast.md
-- lessonIcon.ts
+- lessons/+page.svelte
 - בקשת מסך - `<שם-המסך>`
 - Module C roadmap: from 7.5 to 9
-- lessons/+page.svelte
+- MatchPairs.svelte
 - eslint-plugin-svelte
 - התחל כאן
 - moduleLocation.svelte.ts
@@ -108,32 +108,32 @@
 - curriculum.ts
 - SlideStage.svelte
 - QuizRunner.svelte
-- api.ts
-- WordImageField.svelte
-- module-c-audit_23c616f8.md
-- speech.ts
-- index.svelte.ts
 - lessonProgress.svelte.ts
+- scrollLock.ts
+- api.ts
+- speech.ts
+- WordImageField.svelte
+- theme.svelte.ts
 - scripts
 - agents.md
-- I18n
-- scrollLock.ts
+- index.svelte.ts
+- module-c-audit_23c616f8.md
 - eslint-config-prettier
 - @eslint/js
-- @tailwindcss/forms
+- lessonIcon.ts
 - prettier
 - prettier-plugin-tailwindcss
 - svelte
 - svelte-check
 - @sveltejs/kit
-- @sveltejs/vite-plugin-svelte
+- I18n
 - tailwindcss
+- eslint
 - @tailwindcss/vite
 - typescript
 - typescript-eslint
-- answers.svelte.ts
+- @tailwindcss/forms
 - editStore.svelte.ts
-- theme.svelte.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `EditModel` - 39 edges
@@ -166,7 +166,7 @@
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.13
-Nodes (15): @capacitor/cli, eslint, devDependencies, @capacitor/cli, eslint, globals, prettier-plugin-svelte, @sveltejs/adapter-auto (+7 more)
+Nodes (15): @capacitor/cli, devDependencies, @capacitor/cli, globals, prettier-plugin-svelte, @sveltejs/adapter-auto, @sveltejs/vite-plugin-svelte, @types/node (+7 more)
 
 ### Community 1 - "Svelte MCP Server (Project Config)"
 Cohesion: 0.14
@@ -352,10 +352,6 @@ Nodes (7): 4.c.19.1 · Notice — מה שווה לקחת, 4.c.19.2 · Understand
 Cohesion: 0.25
 Nodes (8): 4.c.26.1 · חצי בחינה — קריאה, 4.c.26.2 · חצי בחינה — כתיבה, 4.c.26.3 · סימולציה מלאה, 4.c.26.4 · איזה Pattern נכשל, 4.c.26.5 · תיקון ממוקד — דפוס אחד, 4.c.26.6 · ערכת הבחינה האישית, Section 26 · סימולציה ותיקון, חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה
 
-### Community 63 - "MatchPairs.svelte"
-Cohesion: 0.14
-Nodes (7): doneR, mistakes, pick(), KEY, ScreenMode, recordAnswer(), primaryAction()
-
 ### Community 65 - "3 · `s3-l2` — מציאה וסימון (c.3.3)"
 Cohesion: 0.10
 Nodes (19): 1 · `eye_catch_intro` — למה מספרים ושמות, 2 · `s3-l1` — מילים: מגנטים לעין (c.3.2), 3 · `s3-l2` — מציאה וסימון (c.3.3), 4 · `s3-l3` — שימוש לניווט (c.3.4), Eye catchers — מספרים ושמות (section c.3), Implementation checklist — done (front/src/lib/content/c/c-3.ts), Plan of the section, preface (+11 more)
@@ -420,9 +416,9 @@ Nodes (6): 5 (require 4c,a,b), preface, questions, round 1, round 2, round 3
 Cohesion: 0.50
 Nodes (3): 2 (c.4.1), implemented, material
 
-### Community 82 - "lessonIcon.ts"
-Cohesion: 0.67
-Nodes (3): hashString(), ICONS, lessonIcon()
+### Community 82 - "lessons/+page.svelte"
+Cohesion: 0.20
+Nodes (3): PALETTE, SectionTheme, ./$types
 
 ### Community 83 - "בקשת מסך - `<שם-המסך>`"
 Cohesion: 0.20
@@ -432,9 +428,9 @@ Nodes (9): בקשת מסך - `<שם-המסך>`, השדות, התנהגות, למ
 Cohesion: 0.05
 Nodes (36): 1. Replace placeholder/template content (biggest lift), 2. Fix gating and order, 3. Spiral, don't repeat, 4. Connect reading and writing, 5. Fix facts, 6. Verify with play, 7. Tooling (last), Fixed on 2026-09-19 (+28 more)
 
-### Community 86 - "lessons/+page.svelte"
-Cohesion: 0.20
-Nodes (3): PALETTE, SectionTheme, ./$types
+### Community 86 - "MatchPairs.svelte"
+Cohesion: 0.14
+Nodes (7): doneR, mistakes, pick(), KEY, ScreenMode, recordAnswer(), primaryAction()
 
 ### Community 88 - "התחל כאן"
 Cohesion: 0.40
@@ -468,25 +464,17 @@ Nodes (47): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKi
 Cohesion: 0.08
 Nodes (32): isMarkAllPass(), MATCH_PAIRS_MAX_MISTAKES, attemptKey(), clearInProgress(), getInProgress(), getLastAttempt(), hasStorage(), progressKey() (+24 more)
 
-### Community 98 - "api.ts"
+### Community 98 - "lessonProgress.svelte.ts"
+Cohesion: 0.29
+Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
+
+### Community 100 - "api.ts"
 Cohesion: 0.36
 Nodes (5): post(), saveLessonContent(), storedKey(), uploadImage(), accept()
-
-### Community 100 - "module-c-audit_23c616f8.md"
-Cohesion: 0.33
-Nodes (5): Fixed on 2026-09-19, Part A: vocabulary (c-2), Part B: reading (c-1), Part C: writing (c-3), Still open
 
 ### Community 101 - "speech.ts"
 Cohesion: 0.53
 Nodes (5): RATE, RULES, speak(), speechSupported(), speechText()
-
-### Community 102 - "index.svelte.ts"
-Cohesion: 0.09
-Nodes (12): dictionaries, Language, ar, Dictionary, DictionaryOverride, he, reducedMotion, formattedDate (+4 more)
-
-### Community 103 - "lessonProgress.svelte.ts"
-Cohesion: 0.29
-Nodes (4): lessonProgress, LessonProgressStore, persist(), ProgressMap
 
 ### Community 104 - "scripts"
 Cohesion: 0.22
@@ -495,6 +483,18 @@ Nodes (9): scripts, build, check, check:watch, dev, format, lint, prepare (+1 mo
 ### Community 105 - "agents.md"
 Cohesion: 0.33
 Nodes (5): graphify, mission, persona, skills, workflow
+
+### Community 106 - "index.svelte.ts"
+Cohesion: 0.09
+Nodes (12): dictionaries, Language, ar, Dictionary, DictionaryOverride, he, reducedMotion, formattedDate (+4 more)
+
+### Community 107 - "module-c-audit_23c616f8.md"
+Cohesion: 0.33
+Nodes (5): Fixed on 2026-09-19, Part A: vocabulary (c-2), Part B: reading (c-1), Part C: writing (c-3), Still open
+
+### Community 110 - "lessonIcon.ts"
+Cohesion: 0.67
+Nodes (3): hashString(), ICONS, lessonIcon()
 
 ## Knowledge Gaps
 - **646 isolated node(s):** `gitignorePath`, `name`, `private`, `version`, `type` (+641 more)

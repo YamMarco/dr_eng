@@ -35,7 +35,7 @@
 	{#if screen.image}
 		<!-- Natural 16:9 height, but shrinks (keeping 16:9) so the card fits the
 		     screen without scrolling on short phones. -->
-		<div class="[container-type:size] flex aspect-video min-h-20 w-full shrink justify-center">
+		<div class="@container-size flex aspect-video min-h-20 w-full shrink justify-center">
 			<div class="w-[min(100%,calc(100cqh*16/9))]">
 				<WordImage src={screen.image} alt={screen.imageAlt || screen.word} />
 			</div>
