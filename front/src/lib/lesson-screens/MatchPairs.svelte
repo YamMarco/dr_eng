@@ -86,7 +86,12 @@
 	<ExerciseKindBadge label={i18n.dict.exerciseKind.matchPairs} />
 {/if}
 
-<div class="mt-3 grid grid-cols-2 gap-3" dir="ltr" style="grid-auto-rows: 1fr;">
+<!-- No `grid-auto-rows: 1fr` here on purpose: that would size EVERY row to
+     the tallest cell in the whole grid, so one two-line phrase (English or
+     Hebrew) would inflate all rows and push a 5-pair screen into an
+     unnecessary scroll on a phone. Grid's default `auto` row-sizing already
+     matches each row's own left/right cells to each other, no more. -->
+<div class="mt-3 grid grid-cols-2 gap-3" dir="ltr">
 	{#each screen.pairs as pair, row (row)}
 		{@const i = row}
 		{@const j = rightOrder[row]}
