@@ -8,7 +8,12 @@
 // Detachable — part of src/lib/content-edit/.
 
 import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
-import { TEXT_BLOCK_CLASS, CALLOUT_BLOCK_CLASS } from '$lib/lesson-screens/miniMarkdown';
+import {
+	TEXT_BLOCK_CLASS,
+	CALLOUT_BLOCK_CLASS,
+	UL_BLOCK_CLASS,
+	OL_BLOCK_CLASS
+} from '$lib/lesson-screens/miniMarkdown';
 
 class ActiveField {
 	el = $state<HTMLDivElement | null>(null);
@@ -156,7 +161,12 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 		replacement.innerHTML = block.innerHTML;
 		if (block.style.textAlign) replacement.style.textAlign = block.style.textAlign;
 		if (block.hasAttribute('dir')) replacement.setAttribute('dir', block.getAttribute('dir')!);
-		if (block.dataset.p === 'text' || block.dataset.p === 'callout')
+		if (
+			block.dataset.p === 'text' ||
+			block.dataset.p === 'callout' ||
+			block.dataset.p === 'ul' ||
+			block.dataset.p === 'ol'
+		)
 			applyBlockKind(replacement, block.dataset.p);
 		if (block.style.direction) replacement.style.direction = block.style.direction;
 		block.replaceWith(replacement);
@@ -185,10 +195,12 @@ export function formatAlign(align: 'left' | 'center' | 'right') {
 	});
 }
 
-type BlockKind = 'text' | 'callout';
+type BlockKind = 'text' | 'callout' | 'ul' | 'ol';
 const BLOCK_KIND_CLASS: Record<BlockKind, string> = {
 	text: TEXT_BLOCK_CLASS,
-	callout: CALLOUT_BLOCK_CLASS
+	callout: CALLOUT_BLOCK_CLASS,
+	ul: UL_BLOCK_CLASS,
+	ol: OL_BLOCK_CLASS
 };
 
 /** Sets a line's paragraph kind (study text / callout), or clears it (null). */
@@ -221,6 +233,16 @@ export function formatTextBlock() {
 /** A tip / note line (`{p:callout}`): lightbulb icon on a soft highlight. */
 export function formatCallout() {
 	toggleBlockKind('callout');
+}
+
+/** A bullet-list line (`{p:ul}`). */
+export function formatBulletList() {
+	toggleBlockKind('ul');
+}
+
+/** A numbered-list line (`{p:ol}`). */
+export function formatNumberList() {
+	toggleBlockKind('ol');
 }
 
 /** Inserts a divider (`---`) after the caret line, with an empty line below it

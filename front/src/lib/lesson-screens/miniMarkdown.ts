@@ -96,6 +96,15 @@ export const TEXT_BLOCK_CLASS =
 export const CALLOUT_BLOCK_CLASS =
 	"my-1 rounded-xl border-s-4 border-accent bg-accent-soft px-3 py-2 before:me-2 before:content-['💡']";
 
+/** `{p:ul}` / `{p:ol}` lines: bullet / numbered list items. Each line stays
+ *  its own top-level block (no wrapping `<ul>`/`<ol>`, matching every other
+ *  paragraph kind here) - `list-item` + Tailwind's list utilities render a
+ *  native browser marker without one. Numbering resets at the first item of
+ *  each consecutive run (see `mdBlock`), so it starts fresh after any
+ *  non-list line breaks the run. */
+export const UL_BLOCK_CLASS = 'list-item list-disc list-inside my-0.5';
+export const OL_BLOCK_CLASS = 'list-item list-decimal list-inside my-0.5';
+
 const HEADER_CLASS: Record<number, string> = {
 	1: 'text-2xl font-bold',
 	2: 'text-xl font-bold',
@@ -120,6 +129,8 @@ function parseLine(raw: string): {
 	style: string;
 	attrs: string;
 	rest: string;
+	/** The `{p:..}` token, if any - so `mdBlock` can spot where a list run starts. */
+	kind: string;
 } {
 	let rest = raw;
 	let align = '';
@@ -136,6 +147,8 @@ function parseLine(raw: string): {
 	}
 	const isText = paragraph === 'text';
 	const isCallout = paragraph === 'callout';
+	const isUl = paragraph === 'ul';
+	const isOl = paragraph === 'ol';
 
 	let level = 0;
 	const headerMatch = rest.match(/^(#{1,3})\s+(.*)$/);
@@ -155,14 +168,17 @@ function parseLine(raw: string): {
 		classes: [
 			level ? HEADER_CLASS[level] : '',
 			isText ? TEXT_BLOCK_CLASS : '',
-			isCallout ? CALLOUT_BLOCK_CLASS : ''
+			isCallout ? CALLOUT_BLOCK_CLASS : '',
+			isUl ? UL_BLOCK_CLASS : '',
+			isOl ? OL_BLOCK_CLASS : ''
 		]
 			.filter(Boolean)
 			.join(' '),
 		style: styles.join(';'),
 		// No explicit {d:..}: each line takes its direction from its first strong character.
-		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
-		rest
+		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
+		rest,
+		kind: paragraph
 	};
 }
 
@@ -173,13 +189,24 @@ function parseLine(raw: string): {
  *  formatting. */
 export function mdBlock(src: string): string {
 	if (!src) return '';
+	let prevKind = '';
 	return src
 		.split('\n')
 		.map((raw) => {
-			if (raw.trim() === '---') return '<hr class="my-3 border-line">';
-			const { tag, classes, style, attrs, rest } = parseLine(raw);
+			if (raw.trim() === '---') {
+				prevKind = '';
+				return '<hr class="my-3 border-line">';
+			}
+			const { tag, classes, style, attrs, rest, kind } = parseLine(raw);
+			// A fresh `{p:ul}`/`{p:ol}` run gets its own list-item counter scope,
+			// so numbering restarts after any line that isn't part of the run.
+			const startsListRun = (kind === 'ul' || kind === 'ol') && kind !== prevKind;
+			prevKind = kind;
+			const styleParts = [style, startsListRun ? 'counter-reset:list-item' : '']
+				.filter(Boolean)
+				.join(';');
 			const classAttr = classes ? ` class="${classes}"` : '';
-			const styleAttr = style ? ` style="${style}"` : '';
+			const styleAttr = styleParts ? ` style="${styleParts}"` : '';
 			const inner = mdInline(rest) || '<br>';
 			return `<${tag}${classAttr}${styleAttr}${attrs}>${inner}</${tag}>`;
 		})

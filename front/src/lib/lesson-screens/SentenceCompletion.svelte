@@ -2,7 +2,6 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { SentenceCompletionScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -71,9 +70,6 @@
 	<div class="flex flex-wrap items-center gap-2">
 		<ExerciseKindBadge label={i18n.dict.exerciseKind.sentenceCompletion} />
 	</div>
-{/if}
-{#if mode === 'lesson'}
-	<ScoreBadge score={score!} />
 {/if}
 
 <div class="text-lg leading-relaxed font-semibold" dir="ltr">

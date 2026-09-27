@@ -20,7 +20,9 @@
 		formatDirection,
 		formatTextBlock,
 		formatCallout,
-		formatDivider
+		formatDivider,
+		formatBulletList,
+		formatNumberList
 	} from './activeField.svelte';
 	import { TEXT_COLOR_PALETTE, type TextColorName } from '$lib/lesson-screens/textColors';
 
@@ -48,11 +50,14 @@
 	let {
 		model,
 		nodeId,
-		path
+		path,
+		isExam = false
 	}: {
 		model: EditModelLike;
 		nodeId: string;
 		path: ScreenPath | null;
+		/** Points only mean anything in an exam - hide the points field in a lesson. */
+		isExam?: boolean;
 	} = $props();
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -344,21 +349,35 @@
 				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
 				title="סימון השורה כטקסט באנגלית ללימוד (מודגש, שמאל-לימין) - לחיצה נוספת מבטלת"
 				onmousedown={(e) => e.preventDefault()}
-				onclick={formatTextBlock}>📖 טקסט לימוד</button
+				onclick={formatTextBlock}>📖</button
 			>
 			<button
 				type="button"
 				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
 				title="סימון השורה כהערה / טיפ עם נורה - לחיצה נוספת מבטלת"
 				onmousedown={(e) => e.preventDefault()}
-				onclick={formatCallout}>💡 הערה</button
+				onclick={formatCallout}>💡</button
 			>
 			<button
 				type="button"
 				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
 				title="הוספת קו מפריד מתחת לשורה"
 				onmousedown={(e) => e.preventDefault()}
-				onclick={formatDivider}>― מפריד</button
+				onclick={formatDivider}>―</button
+			>
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
+				title="רשימה עם תבליטים - לחיצה נוספת מבטלת"
+				onmousedown={(e) => e.preventDefault()}
+				onclick={formatBulletList}>•</button
+			>
+			<button
+				type="button"
+				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
+				title="רשימה ממוספרת - לחיצה נוספת מבטלת"
+				onmousedown={(e) => e.preventDefault()}
+				onclick={formatNumberList}>1.</button
 			>
 			<span class="h-4 w-px bg-line"></span>
 			<span class="text-xs font-bold text-muted">סוג המסך:</span>
@@ -403,10 +422,10 @@
 				     frame instead of growing it. -->
 				<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
 					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
-						{#if !rawOpen && POINTS_TYPES.has(screen.type)}
+						{#if !rawOpen && isExam && POINTS_TYPES.has(screen.type)}
 							<div class="mb-4 border-b-2 border-dashed border-line/60 pb-4">
 								<label class="flex items-center gap-2 text-xs font-bold text-muted">
-									ניקוד (למבחן בלבד, לא משפיע על שיעור)
+									ניקוד
 									<input
 										type="number"
 										min="0"

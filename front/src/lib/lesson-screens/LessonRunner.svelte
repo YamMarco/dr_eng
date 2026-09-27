@@ -194,7 +194,10 @@
 	}
 </script>
 
-<div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
+<div
+	class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas"
+	in:fly={{ y: 16, duration: 220, delay: 120, easing: cubicOut }}
+>
 	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel}>
 		{#snippet trailing()}
 			{#if canRecapPreface}

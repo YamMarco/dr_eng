@@ -106,7 +106,8 @@
 		const kind = block.dataset.p;
 
 		let prefix = '';
-		if (kind === 'text' || kind === 'callout') prefix += `{p:${kind}}`;
+		if (kind === 'text' || kind === 'callout' || kind === 'ul' || kind === 'ol')
+			prefix += `{p:${kind}}`;
 		if (align === 'center' || align === 'right' || align === 'left') prefix += `{a:${align}}`;
 		if (explicitDir === 'rtl' || explicitDir === 'ltr') prefix += `{d:${explicitDir}}`;
 		if (level) prefix += `${'#'.repeat(level)} `;

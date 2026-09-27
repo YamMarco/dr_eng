@@ -4,7 +4,6 @@
 	import { backOut } from 'svelte/easing';
 	import type { McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -95,9 +94,6 @@
 	<div class="flex flex-wrap items-center gap-2">
 		<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
 	</div>
-{/if}
-{#if score}
-	<ScoreBadge {score} />
 {/if}
 <div class="text-lg leading-relaxed font-semibold">
 	<!-- Block mode: each line gets its own direction (first letter) and may use

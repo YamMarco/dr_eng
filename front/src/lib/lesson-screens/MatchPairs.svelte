@@ -3,7 +3,6 @@
 	import type { MatchPairsScreen } from './types';
 	import { MATCH_PAIRS_MAX_MISTAKES } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import ScoreBadge from './ScoreBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -85,9 +84,6 @@
 
 {#if mode === 'lesson'}
 	<ExerciseKindBadge label={i18n.dict.exerciseKind.matchPairs} />
-{/if}
-{#if score}
-	<ScoreBadge {score} />
 {/if}
 
 <div class="mt-3 grid grid-cols-2 gap-3" dir="ltr" style="grid-auto-rows: 1fr;">

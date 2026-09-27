@@ -194,7 +194,7 @@
 				onpointerdown={startDrag}
 			></div>
 			<div class="min-h-0 flex-1">
-				<SlideStage model={examEditModel} nodeId={quiz.id} {path} />
+				<SlideStage model={examEditModel} nodeId={quiz.id} {path} isExam />
 			</div>
 		</div>
 	</div>
