@@ -65,6 +65,7 @@ export const he = {
 		avgTimeLabel: 'זמן ממוצע',
 		avgGradeLabel: 'ציון ממוצע',
 		rulesTitle: 'מבנה המבחן',
+		readingTextsRule: (n: number) => (n === 1 ? 'טקסט קריאה אחד' : `${n} טקסטי קריאה`),
 		questionsRule: (n: number) => `${n} שאלות`,
 		timeRule: (minutes: number) => `${minutes} דקות`,
 		scoreboardTitle: 'לוח התוצאות שלך',

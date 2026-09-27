@@ -7,7 +7,6 @@
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
 	import { getLastAttempt } from '$lib/quiz/progress';
-	import { screensWithIds } from '$lib/quiz/screenIds';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
 	import QuizSolution from '$lib/quiz/QuizSolution.svelte';
 	import type { PageProps } from './$types';
@@ -21,24 +20,6 @@
 	// Re-reads on return from the runner (running flips back to false), so a
 	// just-finished attempt shows up without needing a full page reload.
 	let lastAttempt = $derived(quizNode && !running ? getLastAttempt(quizNode.id) : null);
-
-	// Real content, when it exists, is the source of truth for both numbers -
-	// content not yet written falls back to a rough estimate by quiz kind.
-	// Ministry quizzes run to the real exam length; assorted ones stay short.
-	let questionCount = $derived(
-		quizNode
-			? quizNode.parts.reduce(
-					(sum, part) =>
-						sum + screensWithIds(part).filter((e) => e.screen.type !== 'passage').length,
-					0
-				)
-			: quiz.kind === 'ministry'
-				? 25
-				: 12
-	);
-	let minutes = $derived(
-		quizNode?.options.durationMinutes ?? (quiz.kind === 'ministry' ? 90 : 20)
-	);
 </script>
 
 {#if running && quizNode}
@@ -49,24 +30,8 @@
 	<AppBar title={quiz.titleHe} back={examBase} />
 
 	<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
-			class="rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
-		>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.rulesTitle}</h2>
-			<ul class="flex flex-col divide-y divide-line/70">
-				<li class="py-2 text-sm first:pt-0 last:pb-0">
-					{i18n.dict.quizzes.questionsRule(questionCount)}
-				</li>
-				<li class="py-2 text-sm first:pt-0 last:pb-0">{i18n.dict.quizzes.timeRule(minutes)}</li>
-			</ul>
-		</section>
-
 		<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
-		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-			class="mt-6"
-		>
+		<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}>
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.scoreboardTitle}</h2>
 			<div class="grid grid-cols-3 gap-3">
 				<div
@@ -95,7 +60,7 @@
 		</section>
 
 		<div
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class="mt-8 flex flex-col gap-3"
 		>
 			{#if quizNode}

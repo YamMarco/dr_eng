@@ -13,6 +13,13 @@
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 	let quizzes = $derived(getQuizzesForModule(mod.id));
 
+	// The Bagrut module exam's fixed structure - same for every quiz here.
+	const rules = [
+		i18n.dict.quizzes.readingTextsRule(1),
+		i18n.dict.quizzes.questionsRule(10),
+		i18n.dict.quizzes.timeRule(90)
+	];
+
 	function subtitle(quiz: Quiz) {
 		return quiz.kind === 'ministry' ? `${i18n.dict.quizzes.yearPrefix} ${quiz.year}` : undefined;
 	}
@@ -73,8 +80,20 @@
 		</div>
 	</section>
 
-	<div
+	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+		class="mb-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
+	>
+		<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.rulesTitle}</h2>
+		<ul class="flex flex-col divide-y divide-line/70">
+			{#each rules as rule (rule)}
+				<li class="py-2 text-sm first:pt-0 last:pb-0">{rule}</li>
+			{/each}
+		</ul>
+	</section>
+
+	<div
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 		class="grid grid-cols-2 gap-3"
 	>
 		<section>
