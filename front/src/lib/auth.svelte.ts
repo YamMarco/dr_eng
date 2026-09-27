@@ -1,16 +1,16 @@
 // Mock auth: no real credentials yet - the login screen's button just flips
-// this flag. Session-scoped so a fresh visit shows the login screen again.
+// this flag. Persisted so a returning user skips the login screen.
 
 const STORAGE_KEY = 'logged-in';
 
 class AuthStore {
 	loggedIn = $state(
-		typeof sessionStorage !== 'undefined' && sessionStorage.getItem(STORAGE_KEY) === '1'
+		typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY) === '1'
 	);
 
 	login() {
 		this.loggedIn = true;
-		sessionStorage.setItem(STORAGE_KEY, '1');
+		localStorage.setItem(STORAGE_KEY, '1');
 	}
 }
 

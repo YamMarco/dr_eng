@@ -446,6 +446,7 @@
 					{#each nodes as node (node.lesson.id)}
 						{@const unlocked = isUnlocked(node)}
 						{@const done = isDone(node.lesson.id)}
+						{@const allRounds = roundsCompleted(node.lesson.id) >= totalRounds(node)}
 						{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 						<div
 							data-lesson-node
@@ -470,7 +471,9 @@
 									? 'motion-safe:animate-pop-correct'
 									: ''} {unlocked
 									? done
-										? node.theme.soft
+										? allRounds
+											? 'bg-accent text-ink shadow-md shadow-accent/40'
+											: node.theme.soft
 										: 'node-socket'
 									: 'cursor-not-allowed bg-line/60 text-muted'}"
 							>
@@ -519,7 +522,7 @@
 								<div
 									in:scale={{ start: 0.55, duration: 160, easing: backOut }}
 									out:scale={{ start: 0.55, duration: 90 }}
-									class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom flex-col gap-3 rounded-2xl bg-surface p-4 text-center shadow-xl ring-1 ring-line/70"
+									class="absolute bottom-full left-1/2 z-10 mb-3 flex w-44 origin-bottom flex-col gap-3 rounded-2xl bg-surface p-4 pb-6 text-center shadow-xl ring-1 ring-line/70"
 									style="translate: calc(-50% + {labelShift(node.x)}px)"
 								>
 									<div class="flex flex-col gap-2">

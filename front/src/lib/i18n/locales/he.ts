@@ -18,7 +18,8 @@ export const he = {
 		subtitle: 'היכנסו כדי להמשיך לתרגל',
 		phoneLabel: 'מספר טלפון',
 		passwordLabel: 'סיסמה',
-		submit: 'כניסה'
+		submit: 'כניסה',
+		mockup: 'הדגמה בלבד - אין צורך למלא'
 	},
 	home: {
 		title: 'בחרו יחידות לימוד',
