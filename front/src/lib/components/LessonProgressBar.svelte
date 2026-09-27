@@ -8,9 +8,13 @@
 		current: number;
 		/** Slim, padding-free variant for embedding inside a card; fills up from empty each time it mounts. */
 		compact?: boolean;
+		/** For a brand-colored card (e.g. the home page's "continue" card): the
+		 *  default track/fill (bg-line / bg-brand) has no contrast against a
+		 *  bg-brand card, so this swaps in a white-based pair instead. */
+		inverted?: boolean;
 	};
 
-	let { segments, current, compact = false }: Props = $props();
+	let { segments, current, compact = false, inverted = false }: Props = $props();
 
 	let total = $derived(segments.reduce((sum, n) => sum + n, 0));
 
@@ -34,11 +38,15 @@
 >
 	{#each segments as length, i (i)}
 		<div
-			class="overflow-hidden rounded-full bg-line {compact ? 'h-1.5' : 'h-2.5'}"
+			class="overflow-hidden rounded-full {inverted ? 'bg-white/25' : 'bg-line'} {compact
+				? 'h-1.5'
+				: 'h-2.5'}"
 			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
 		>
 			<div
-				class="h-full rounded-full bg-brand transition-[width] duration-300 ease-out {compact
+				class="h-full rounded-full {inverted
+					? 'bg-white'
+					: 'bg-brand'} transition-[width] duration-300 ease-out {compact
 					? 'motion-safe:animate-bar-fill'
 					: ''}"
 				style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 45}ms` : ''}"

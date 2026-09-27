@@ -51,6 +51,23 @@ function isolateSentences(html: string): string {
 	return sentences.map((s) => `<span dir="auto">${s}</span>`).join(' ');
 }
 
+/** Wraps each `"quoted phrase"` in its own `dir="auto"` isolate. A quote is
+ *  very often the OTHER language from its surrounding sentence (an English
+ *  term inside a Hebrew instruction, or vice versa) - lots of older content
+ *  was authored before this existed, with the quote sitting bare in the
+ *  sentence, which flips the *whole* sentence's `dir="auto"` guess to
+ *  whichever language the quote happens to start with. Isolating the quote
+ *  removes its characters from the surrounding text's own first-strong-char
+ *  scan (that's what a nested `dir` attribute does per the HTML auto-
+ *  directionality algorithm), so the sentence around it resolves from its
+ *  OWN first strong character again, and the quote resolves independently
+ *  from its own. Only `"..."` is treated as a quote (not `'...'`, which is
+ *  also an apostrophe in English contractions like "don't"). Never crosses a
+ *  tag boundary, so it can't reach across an `isolateSentences` split. */
+function isolateQuotes(html: string): string {
+	return html.replace(/&quot;([^<]*?)&quot;/g, '<span dir="auto">&quot;$1&quot;</span>');
+}
+
 export function mdInline(src: string): string {
 	if (!src) return '';
 
@@ -82,7 +99,7 @@ export function mdInline(src: string): string {
 	// _italic_ (only when not glued to word chars, so file_names survive)
 	s = s.replace(/(^|[^_\w])_([^_\n]+)_(?=$|[^_\w])/g, '$1<em>$2</em>');
 
-	return isolateSentences(s);
+	return isolateQuotes(isolateSentences(s));
 }
 
 /** `{p:text}` lines: English study text, visibly set apart from the app's

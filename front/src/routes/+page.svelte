@@ -64,6 +64,7 @@
 			</span>
 			<LessonProgressBar
 				compact
+				inverted
 				segments={Array.from({ length: continueInfo.totalRounds }, () => 1)}
 				current={continueInfo.roundsCompleted}
 			/>
