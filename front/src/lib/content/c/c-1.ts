@@ -827,7 +827,6 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 '"Dr. Diallo" ו-"trees die" הן מה שמחפשים בטקסט. "why" ו-"according" הן מילות שאלה.',
             },
-            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt: "מהו הסדר הנכון של חמשת שלבי P1?",
