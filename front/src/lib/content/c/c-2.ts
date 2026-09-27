@@ -2214,7 +2214,7 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "The number of visitors will ______ next year: there will be more of them.",
-              options: ["paint", "sing", "increase", "cook"],
+              options: ["balloon", "will be bigger", "increase", "boil"],
               correctIndex: 2,
               layout: "honeycomb",
               explanation: "יהיו יותר = increase.",
@@ -2240,7 +2240,7 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "We turned off the lights to ______ the electricity we use.",
-              options: ["paint", "increase", "sing", "reduce"],
+              options: ["kill down", "turn off", "grow", "reduce"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "להשתמש בפחות = reduce.",
@@ -2276,7 +2276,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A helmet can ______ your head when you ride a bicycle.",
-              options: ["sing", "increase", "cook", "protect"],
+              options: ["break", "increase", "cover", "protect"],
               correctIndex: 3,
               layout: "honeycomb",
               explanation: "קסדה מגינה = protect.",
@@ -2301,7 +2301,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The storm ______ many houses. Nothing was left.",
-              options: ["destroyed", "increased", "cooked", "protected"],
+              options: ["destroyed", "ruined", "moves", "cut through"],
               correctIndex: 0,
               layout: "honeycomb",
               explanation: "לא נשאר כלום = destroyed.",
@@ -2347,7 +2347,7 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "There are more than 10,000 ______ of birds in the world.",
-              options: ["increase", "species", "protect", "destroy"],
+              options: ["increase", "species", "protect", "animals"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מינים של ציפורים = species.",
@@ -2377,7 +2377,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\nקראו אותו שוב וענו.",
+              text: "{d:rtl}זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\n{d:rtl}קראו אותו שוב וענו.",
             },
             {
               type: "passage-mcq",
@@ -2408,7 +2408,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                'The text says "endangered animals".\n\nפרקו את המילה: en- (להכניס ל) + danger (סכנה) + -ed. מה זה?',
+                'The text says "endangered animals".\n\n{d:rtl}פרקו את המילה: en- (להכניס ל) + danger (סכנה) + -ed. מה זה?',
               options: ["גדולים", "בסכנה", "חדשים", "מוגנים"],
               correctIndex: 1,
               explanation: "en + danger + ed = הוכנסו לסכנה = בסכנת הכחדה.",
@@ -2417,7 +2417,7 @@ export const c2Lessons: LessonNode[] = [
               type: "summary",
               title: "ONE SENTENCE",
               lines: [
-                '"increase = עלה. reduce/decrease = ירד. protect ≠ destroy. species = מין."',
+                "{d:ltr}increase = עלה\n{d:ltr}reduce/decrease = ירד\n{d:ltr}protect ≠ destroy. species = מין",
               ],
             },
           ],
@@ -2439,7 +2439,7 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "The new park will ______ wild animals from cars and noise.",
-              options: ["increase", "protect", "species", "destroy"],
+              options: ["make more", "protect", "species", "help"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "הפארק מגן = protect.",
@@ -2447,7 +2447,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A rare ______ of frog lives only in this river.",
-              options: ["destroy", "species", "increase", "reduce"],
+              options: ["type", "species", "increase", "gender"],
               correctIndex: 1,
               layout: "honeycomb",
               explanation: "מין של צפרדע = species.",
@@ -2461,7 +2461,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction:
-                "סרקו את הטקסט וסמנו את חמש המילים. הצבעים: הרס, הגנה, עלייה/ירידה וחיים.",
+                "{d:rtl}סרקו את הטקסט וסמנו את חמש המילים. הצבעים: הרס, הגנה, עלייה/ירידה וחיים.",
               text: "Pollution can destroy habitats and reduce the number of species. Projects that protect forests can increase the population.",
               correctIndices: [],
               categories: [
@@ -2516,7 +2516,42 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "**תרגול מסכם** **0/5**\nבחרו את המילה המתאימה ביותר לכל משפט.\n**1.** The government wants to ______ the number of plastic bags used every year.\nA. increaseB. reduceC. destroy\n**2.** National parks help ______ wild animals and their natural habitats.\nA. protectB. increaseC. reduce\n**3.** A large fire can ______ thousands of trees in only a few hours.\nA. protectB. destroyC. increase\n**4.** After the area became cleaner, the number of birds began to ______.\nA. reduceB. destroyC. increase\n**5.** Some animal ______ may disappear if their habitat is damaged.\nA. speciesB. protectC. reduce\n**שימו לב:**אל תתרגמו רק מילה אחת. קראו את כל המשפט ושאלו:\n**מה קורה כאן — עלייה, ירידה, הגנה או הרס?**",
+              text: "שימו לב: אל תתרגמו רק מילה אחת. קראו את כל המשפט ושאלו:\nמה קורה כאן — עלייה, ירידה, הגנה או הרס?",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "The government wants to ______ the number of plastic bags used every year.",
+              options: ["increase", "reduce", "destroy", "inflate"],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt:
+                "Some animal ______ may disappear if their habitat is damaged",
+              options: ["species", "protect", "reduce", "types"],
+              correctIndex: 0,
+            },
+            {
+              type: "mcq",
+              prompt:
+                "After the area became cleaner, the number of birds began to ______\n",
+              options: ["reduce", "destroy", "increase", "grow"],
+              correctIndex: 2,
+            },
+            {
+              type: "mcq",
+              prompt:
+                "A large fire can ______ thousands of trees in only a few hours.",
+              options: ["increase", "destroy", "protect", "ruin"],
+              correctIndex: 1,
+            },
+            {
+              type: "mcq",
+              prompt:
+                "National parks help ______ wild animals and their natural habitats.",
+              options: ["protect", "increase", "reduce", "guard"],
+              correctIndex: 0,
             },
           ],
         },
