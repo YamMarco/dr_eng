@@ -55,11 +55,9 @@
 		<a
 			href="{base}/exam"
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-			class="flex w-full items-start gap-4 rounded-3xl bg-brand p-5 text-right text-white shadow-md shadow-brand/25 transition duration-150 hover:bg-brand-dark active:scale-[0.99]"
+			class="flex w-full items-start gap-4 rounded-3xl bg-surface p-5 text-right shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 		>
-			<span
-				class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white"
-			>
+			<span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl {theme.soft}">
 				<svg
 					viewBox="0 0 24 24"
 					fill="none"
@@ -77,7 +75,7 @@
 			</span>
 			<span class="min-w-0 flex-1">
 				<span class="block text-xl font-bold">{i18n.dict.module.examTitle}</span>
-				<span class="mt-1 block text-sm leading-relaxed text-white/85">
+				<span class="mt-1 block text-sm leading-relaxed text-muted">
 					{i18n.dict.module.examSubtitle}
 				</span>
 			</span>

@@ -513,6 +513,7 @@
 							</button>
 
 							{#if unlocked && openLabelId === node.lesson.id}
+								{@const started = roundsCompleted(node.lesson.id) > 0}
 								<!-- Click-triggered label instead of a full-screen modal: title + start
 						     (or, once round 1 is done, the next round to play). -->
 								<div
@@ -523,16 +524,19 @@
 								>
 									<div class="flex flex-col gap-2">
 										<p class="text-sm font-bold">{node.lesson.titleHe}</p>
-										<LessonProgressBar
-											compact
-											segments={node.lesson.content.rounds.map(() => 1)}
-											current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
-										/>
+										{#if started}
+											<LessonProgressBar
+												compact
+												segments={node.lesson.content.rounds.map(() => 1)}
+												current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
+											/>
+										{/if}
 									</div>
-									<Button onclick={() => openNode(node)}>
-										{i18n.dict.lesson.startRound(nextRoundIndex(node) + 1)}
+									<Button class="px-3! whitespace-nowrap" onclick={() => openNode(node)}>
+										{started
+											? i18n.dict.lesson.startRound(nextRoundIndex(node) + 1)
+											: i18n.dict.lesson.start}
 									</Button>
-									<p class="text-xs font-semibold text-muted tabular" dir="ltr">{node.lesson.id}</p>
 									{#if editStore.available}
 										<!-- Open this lesson in the /edit workspace (dev, or once
 								     unlocked on the deployed site). Detachable — see

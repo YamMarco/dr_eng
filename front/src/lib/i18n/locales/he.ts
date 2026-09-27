@@ -13,8 +13,14 @@ export const he = {
 		vocabImages: 'תמונות מילים'
 	},
 	appTitle: 'בגרות באנגלית — תרגול',
+	login: {
+		title: 'התחברות',
+		subtitle: 'היכנסו כדי להמשיך לתרגל',
+		phoneLabel: 'מספר טלפון',
+		passwordLabel: 'סיסמה',
+		submit: 'כניסה'
+	},
 	home: {
-		badge: 'בגרות באנגלית',
 		title: 'בחרו יחידות לימוד',
 		subtitle: 'כל רמת יחידות כוללת מספר מודולים לתרגול.',
 		unitsSuffix: 'יח"ל',
@@ -85,6 +91,7 @@ export const he = {
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
 		/** The node label's start button: always names the round about to be played. */
+		start: 'התחל',
 		startRound: (round: number) => `התחל סבב ${round}`,
 		roundLabel: (current: number, total: number) => `סבב ${current} מתוך ${total}`,
 		exitLabel: 'יציאה מהשיעור',
