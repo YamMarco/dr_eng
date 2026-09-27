@@ -16,10 +16,18 @@ export function screensForRound(content: LessonContent, roundIndex: number): Les
 	return roundIndex === 0 ? [...content.preface, ...round] : round;
 }
 
-/** e.g. "eye_catch_intro · preface[1]" or "eye_catch_intro · round1[0]" */
+/** 1-based, human-facing location string for pointing someone at one exact
+ *  screen - e.g. "q-words-1 · round 3 · screen 6". `bucket` is 0-based
+ *  internally (a round index, or a QuizPart id for exams); shown as typed
+ *  when it isn't a plain round number. */
 export function formatScreenLocation(lessonId: string | undefined, path: ScreenPath): string {
-	const bucket = path.bucket === 'preface' ? 'preface' : `round${path.bucket}`;
-	return `${lessonId ?? '?'} · ${bucket}[${path.index}]`;
+	const bucket =
+		path.bucket === 'preface'
+			? 'preface'
+			: typeof path.bucket === 'number'
+				? `round ${path.bucket + 1}`
+				: path.bucket;
+	return `${lessonId ?? '?'} · ${bucket} · screen ${path.index + 1}`;
 }
 
 /** Same split LessonRunner is fed with: preface + round 0 screens play together. */

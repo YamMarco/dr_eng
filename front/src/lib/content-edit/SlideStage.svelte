@@ -44,7 +44,7 @@
 		markAllSwatch,
 		type MarkAllSwatch
 	} from '$lib/lesson-screens/markAllColors';
-	import type { ScreenPath } from './screenPath';
+	import { formatScreenLocation, type ScreenPath } from './screenPath';
 	import type { LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
@@ -62,6 +62,23 @@
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screen = $derived.by<any>(() => (path ? (model.screenAt(nodeId, path) ?? null) : null));
+
+	// Copy-pasteable pointer to this exact screen (e.g. "q-words-1 · round 3 ·
+	// screen 6"), so a bug report can name a screen precisely instead of
+	// "the fourth one in that round".
+	let location = $derived(path ? formatScreenLocation(nodeId, path) : '');
+	let locationCopied = $state(false);
+	let copyTimer: ReturnType<typeof setTimeout> | undefined;
+	async function copyLocation() {
+		try {
+			await navigator.clipboard.writeText(location);
+		} catch {
+			return;
+		}
+		locationCopied = true;
+		clearTimeout(copyTimer);
+		copyTimer = setTimeout(() => (locationCopied = false), 1200);
+	}
 
 	// Any in-place field mutation flips dirty (skip the initial run per screen).
 	let sig = $derived(screen ? JSON.stringify(screen) : '');
@@ -165,6 +182,16 @@
 {:else}
 	<div class="flex h-full min-h-0 flex-col">
 		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 bg-surface/60 px-4 py-2">
+			<button
+				type="button"
+				title="העתקת מיקום המסך"
+				onclick={copyLocation}
+				class="rounded-lg border border-dashed border-line px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
+				dir="ltr"
+			>
+				{locationCopied ? '✓ הועתק' : location}
+			</button>
+			<span class="h-4 w-px bg-line"></span>
 			<!-- One shared formatting toolbar for every text field on this screen
 			     (whichever field is focused). mousedown preventDefault keeps that
 			     field's focus/selection alive through the click, so execCommand

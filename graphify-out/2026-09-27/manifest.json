@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1790506997.5333529,
-    "seen": 1790507012.1841707,
-    "ast_hash": "85815f74638dcec8cc108c631aaf10ba",
+    "mtime": 1790508673.308455,
+    "seen": 1790508684.1318579,
+    "ast_hash": "173196162d3c79e1eae12a7a90296a8c",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageMcq.svelte": {
-    "mtime": 1790426554.406745,
-    "seen": 1790507012.1842713,
-    "ast_hash": "336bd77212bea66239b892bb2885f2bd",
+    "mtime": 1790508582.8651333,
+    "seen": 1790508684.131953,
+    "ast_hash": "b7128afd96f8290f7b2847d521fce324",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/api.ts": {
@@ -894,9 +894,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchPairs.svelte": {
-    "mtime": 1790506998.4201558,
-    "seen": 1790507012.1842473,
-    "ast_hash": "9a32b271fc413d71ef1ce41acdc0d62a",
+    "mtime": 1790508672.8973663,
+    "seen": 1790508684.13193,
+    "ast_hash": "3bef3e66bc4014d217ca271a981552e8",
     "semantic_hash": ""
   },
   "docs/module-c-audit.md": {
