@@ -119,12 +119,12 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"What do we learn from paragraph I about Redonda?" - מה מבקשים ממכם?',
+                '{d:ltr}"What do we learn from paragraph I about Redonda?" \n{d:rtl} מה מבקשים?',
               options: [
                 "לתרגם את פסקה I",
                 "מה אני חושב על Redonda",
                 "לכתוב סיפור על Redonda",
-                "מה כתוב בפסקה I על Redonda",
+                "מה כתוב בפסקה 1 על Redonda",
               ],
               correctIndex: 3,
               layout: "rows",
@@ -193,7 +193,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "**Give TWO answers**: how did the students change?",
               exampleHe: "תנו שתי תשובות: איך התלמידים השתנו?",
               hookHe:
-                'TWO = שתי תשובות נפרדות וממוספרות, (1) ו-(2). לא משפט ארוך אחד עם "and".',
+                '{d:rtl}TWO = שתי תשובות נפרדות וממוספרות, (1) ו-(2). לא משפט ארוך אחד עם "and".',
             },
             {
               type: "mcq",
@@ -201,7 +201,7 @@ export const c2Lessons: LessonNode[] = [
                 '"Give TWO answers: How did the students change?" - מה כותבים?',
               options: [
                 "משפט אחד ארוך",
-                "(1) ... (2) ... שתי נקודות נפרדות",
+                "{d:rtl}(1) ... (2) ... שתי נקודות נפרדות",
                 "שלוש נקודות",
                 "תשובה אחת מפורטת",
               ],
@@ -212,7 +212,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                'תלמיד כתב "They became responsible and focused." (משפט אחד) על "Give TWO answers". מה חסר?',
+                '{d:rtl}תלמיד כתב **"They became responsible and focused."** ,עבור** "Give TWO answers"**. מה חסר?',
               options: [
                 "הפרדה לשתי תשובות ממוספרות (1) ו-(2)",
                 "כלום, זה בסדר",
@@ -237,14 +237,15 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "steps",
               steps: [
-                '"What do we learn from paragraph I about Redonda?" ← "what do we learn" = מה לומדים · "paragraph I" = רק פסקה I.',
+                '"What do we learn from paragraph I about Redonda?" ← "what do we learn" = מה לומדים\n\n"paragraph I" = רק פסקה I.',
                 '"According to Dr. Diallo, give ONE reason why trees survive." ← "according to" = לפי הדובר הזה בדיוק · "give ONE" = תשובה אחת.',
                 "אם ההוראה אומרת TWO - סופרים עד שתיים. לא עוצרים אחרי הראשונה.",
               ],
+              ordered: false,
             },
             {
               type: "preface",
-              text: "זוכרים את שלוש השאלות מההתחלה? עכשיו יש לכם את הפסקאות. ענו עליהן, והפעם אתם יודעים מה כל הוראה מבקשת.",
+              text: "{d:rtl}זוכרים את שלוש השאלות מההתחלה?\n{d:rtl}\n{d:rtl} עכשיו יש לכם את הפסקאות. ענו עליהן, והפעם אתם יודעים מה כל הוראה מבקשת.",
             },
             {
               type: "passage-mcq",
