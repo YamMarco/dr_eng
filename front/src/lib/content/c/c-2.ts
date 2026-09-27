@@ -2234,7 +2234,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "The project could **reduce** carbon in the air.",
               exampleHe: "הפרויקט יכול להפחית פחמן באוויר.",
               hookHe:
-                "reduce = להקטין (בכוונה). decrease = לרדת. שתיהן ההפך מ-increase: החץ כלפי מטה.",
+                "{d:rtl}reduce = להקטין (בכוונה). decrease = לרדת. שתיהן ההפך מ-increase: החץ כלפי מטה.",
             },
             {
               type: "mcq",
