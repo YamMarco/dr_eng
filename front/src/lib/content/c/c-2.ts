@@ -17,11 +17,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\n\nקראו את שלוש השאלות:\n\n**What do we learn** from **paragraph III** about Ethiopia?\n\n**According to** Dr. Diallo, why do most trees die? \n\n**Give ONE answer.****Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן לא סתם חלק מהשאלה\n.הן **הוראות ניווט**.הן אומרות לנו:**איפה לחפש** את התשובה, **של מי המידע** שצריך למצוא, ו־**כמה תשובות** צריך לכתוב.\n\nאם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט — ועדיין לענות לא נכון.לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים:**איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
+          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n\n{p:text}**What do we learn** from **paragraph III** about Ethiopia?\n\n{p:text}**According to** Dr. Diallo, why do most trees die? \n\n{p:text}**Give ONE answer. ****Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן לא סתם חלק מהשאלה\n.הן **הוראות ניווט**. הן אומרות לנו: **איפה לחפש** את התשובה, **של מי המידע** שצריך למצוא, ו־**כמה תשובות** צריך לכתוב.\n\nאם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט — ועדיין לענות לא נכון. לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים: **איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
         },
         {
           type: "preface",
-          text: 'לכאורה, ההוראות האלה נראות פשוטות:\n\n{d:ltr}**paragraph III** → חפשו בפסקה\n{d:ltr}**According to Dr. Diallo** → חפשו מה ד"ר דיאלו אומר\n{d:ltr}**Give ONE answer** → כתבו תשובה אחת בלבד\n{d:ltr}**Give TWO answers** → כתבו שתי תשובות\n\nאז למה בכל זאת כל כך הרבה תלמידים טועים?\nכי במבחן יש** לחץ וזמן מוגבל**.\n\nתלמיד יכול להבין את הטקסט מצוין — ועדיין לאבד נקודות רק מפני שלא שם לב להוראה.\n\nלפעמים הוא כותב **תשובה אחת במקום שתיים**. לפעמים הוא נותן **שתי תשובות כשביקשו אחת**. ולפעמים הוא מוצא מידע נכון — אבל **בפסקה הלא נכונה** או לא לפי האדם שהשאלה ביקשה.\nֿ\nאלה טעויות קטנות, אבל הן עולות בנקודות.\n\nלכן לפני שאתם רצים לחפש תשובה בטקסט, עצרו לשנייה ושאלו את עצמכם שתי שאלות:\n\n**איפה אני צריך לחפש? ****כמה אני צריך לענות?**\nֿהבסיס הזה אולי נראה פשוט — אבל במבחן הוא עושה הבדל גדול.',
+          text: 'לכאורה, ההוראות האלה נראות פשוטות:\n\n{d:ltr}**paragraph III** → חפשו בפסקה\n{d:ltr}**According to Dr. Diallo** → חפשו מה ד"ר דיאלו אומר\n{d:ltr}**Give ONE answer** → כתבו תשובה אחת בלבד\n{d:ltr}**Give TWO answers** → כתבו שתי תשובות\n\nאז למה בכל זאת כל כך הרבה תלמידים טועים?\nכי במבחן יש** לחץ וזמן מוגבל**.\n\nתלמיד יכול להבין את הטקסט מצוין — ועדיין לאבד נקודות רק מפני שלא שם לב להוראה.\n\n{p:ul}{d:rtl}לפעמים הוא כותב **תשובה אחת במקום שתיים**.\n{p:ul}{d:rtl}לפעמים הוא נותן **שתי תשובות כשביקשו אחת**.\n{p:ul}{d:rtl}לפעמים הוא מוצא מידע נכון — אבל **בפסקה הלא נכונה** או לא לפי האדם שהשאלה ביקשה.\nֿ\nאלה טעויות קטנות, אבל הן עולות בנקודות.\n\nלכן לפני שאתם רצים לחפש תשובה בטקסט, עצרו לשנייה ושאלו את עצמכם שתי שאלות:\n\n**איפה אני צריך לחפש? ****כמה אני צריך לענות?**\nֿהבסיס הזה אולי נראה פשוט — אבל במבחן הוא עושה הבדל גדול.',
         },
         {
           type: "preface",
@@ -419,7 +419,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "חמש מילים שקובעות איך התשובה נראית: להשלים, להקיף, להסביר, וגם סיבה ומטרה.\n\nתלמידים מפסידים כאן נקודות בלי לדעת: הם יודעים את התשובה, אבל עונים בצורה הלא נכונה. כל מילה מגיעה עם תרגילים מיד אחריה.",
+          text: "{d:rtl}חמש מילים שקובעות איך התשובה נראית: להשלים, להקיף, להסביר, וגם סיבה ומטרה.\n\n{d:rtl}תלמידים מפסידים כאן נקודות בלי לדעת: הם יודעים את התשובה, אבל עונים בצורה הלא נכונה. כל מילה מגיעה עם תרגילים מיד אחריה.",
         },
       ],
       rounds: [
@@ -812,7 +812,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה. **אלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n*The city wanted to plant more trees. ****However****, there was not enough money. ****In addition****, there was not enough space. ****As a result****, the project was delayed.*\n\nשימו לב למילים המודגשות. גם אם לא הבנתם כל מילה, הן כבר נותנות לכם רמז:\n**However** → עכשיו מגיעה בעיה או ניגוד.**In addition** → עכשיו מוסיפים עוד דבר.**As a result** → עכשיו מגיעה התוצאה.\n\nמילות ניווט הן כמו שלטים בדרך: הן אומרות לנו **מה עומד להגיע עכשיו בטקסט**.",
+          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה. **אלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n{p:text}*The city wanted to plant more trees. **However**, there was not enough money. **In addition**, there was not enough space. **As a result**, the project was delayed.*\n\n{p:text}שימו לב למילים המודגשות. גם אם לא הבנתם כל מילה, הן כבר נותנות לכם רמז:\n{p:text}**However** → עכשיו מגיעה בעיה או ניגוד.**In addition** → עכשיו מוסיפים עוד דבר.**As a result** → עכשיו מגיעה התוצאה.\n\nמילות ניווט הן כמו שלטים בדרך: הן אומרות לנו **מה עומד להגיע עכשיו בטקסט**.",
         },
         {
           type: "preface",
@@ -1145,11 +1145,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n\nScientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n\n**found** → יש כאן ממצא**decreased** → משהו ירד**for example** → עכשיו מגיעה דוגמה**increased** → משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
+          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}**found** → יש כאן ממצא\n{p:ul}**decreased** → משהו ירד\n{p:ul}**for example** → עכשיו מגיעה דוגמה\n{p:ul}**increased** → משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
-          text: "שלוש מילות ניווט: דוגמה, כיוון וממצא.\n\nהכיוון חשוב במיוחד: עלייה או ירידה. טעות בכיוון הופכת תשובה נכונה לשגויה. כל מילה מגיעה עם תרגילים מיד אחריה.",
+          text: "{d:rtl}שלוש מילות ניווט: דוגמה, כיוון וממצא.\n\n{d:rtl}הכיוון חשוב במיוחד: עלייה או ירידה. טעות בכיוון הופכת תשובה נכונה לשגויה. כל מילה מגיעה עם תרגילים מיד אחריה.",
         },
       ],
       rounds: [
@@ -1824,11 +1824,15 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\nהן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל. **אלה **מילות תוכן**.\n\nקראו את הפסקה הבאה\n\n*A team of ****researchers**** studied 500 students for a year. They ****discovered**** that noise can ****affect**** how well students learn. The ****results**** were clear: the most ****effective**** solution was a quiet room.*\nשימו לב למילים המודגשות.\nאם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n**researchers** → חוקרים**discovered** → גילו**affect** → להשפיע**results** → תוצאות**effective** → יעיל\nאלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.\nכמה מהן אתם כבר מכירים בלי לחשוב?\nאם פחות מחמש — השיעור הזה בדיוק בשבילכם.",
+          text: "יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\nהן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל. **אלה **מילות תוכן**.\n\nקראו את הפסקה הבאה\n{p:text}*A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.*\nשימו לב למילים המודגשות.\nאם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n{p:ul}**researchers** → חוקרים\n{p:ul}**discovered** → גילו\n{p:ul}**affect** → להשפיע\n{p:ul}**results** → תוצאות\n{p:ul}**effective** → יעיל\nאלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.",
         },
         {
           type: "preface",
-          text: "חמש מילים על **מחקר וממצאים**: מי חוקר, מה הוא מגלה, ומה עובד באמת.\n\nהן מופיעות כמעט בכל טקסט מדעי, ובדרך כלל התשובה יושבת לידן. כל מילה מגיעה עם תרגילים מיד אחריה, ובסוף תחזרו לקטע שקראתם.",
+          text: "כמה מהן אתם כבר מכירים בלי לחשוב?\nאם פחות מחמש — השיעור הזה בדיוק בשבילכם.",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}חמש מילים על **מחקר וממצאים**: מי חוקר, מה הוא מגלה, ומה עובד באמת.\n\n{d:rtl}הן מופיעות כמעט בכל טקסט מדעי, ובדרך כלל התשובה יושבת לידן. כל מילה מגיעה עם תרגילים מיד אחריה, ובסוף תחזרו לקטע שקראתם.",
         },
       ],
       rounds: [
@@ -2190,7 +2194,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{p:text}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\nכמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "{d:rtl}קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{p:text}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\n{d:rtl}כמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",
@@ -2612,7 +2616,6 @@ export const c2Lessons: LessonNode[] = [
               correctIndices: [0],
               explanation: "שיפרו את הציונים = improved.",
             },
-            { type: "preface", text: "" },
             { type: "spell-word", word: "improve", mode: "copy" },
             {
               type: "word-card",
@@ -2948,7 +2951,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: '**אתגר של 10 שניות**\nקראו את הקטע:\n\nStress can **cause** health problems and **affect** sleep.\n Exercise programmes **require** only a little time, but they can **benefit** everyone. It is an **opportunity** worth taking.\n\nעכשיו בלי מילון ובלי לעצור יותר מדי:\n\nעל כמה מהמילים המודגשות אתם יכולים להגיד מיד מה הן אומרות?\n\n**cause · affect · require · benefit · opportunity**\n\nאם באחת מהן עצרתם ואמרתם לעצמכם "רגע... אני מכיר את זה, אבל לא בטוח" — בדיוק בשביל זה אנחנו כאן.\nהמטרה היא לא רק **לזהות** את המילה.\n\nהמטרה היא לראות אותה בטקסט ושהמשמעות **תקפוץ לכם מיד לראש**.',
+          text: '**אתגר של 10 שניות**\nקראו את הקטע:\n\n{p:text}Stress can **cause** health problems and **affect** sleep. Exercise programs **require** only a little time, but they can **benefit** everyone. It is an **opportunity** worth taking.\n\nעכשיו בלי מילון ובלי לעצור יותר מדי:\n\nעל כמה מהמילים המודגשות אתם יכולים להגיד מיד מה הן אומרות?\n\n**cause · affect · require · benefit · opportunity**\n\nאם באחת מהן עצרתם ואמרתם לעצמכם "רגע... אני מכיר את זה, אבל לא בטוח" — בדיוק בשביל זה אנחנו כאן.\nהמטרה היא לא רק **לזהות** את המילה.\n\nהמטרה היא לראות אותה בטקסט ושהמשמעות **תקפוץ לכם מיד לראש**.',
         },
         {
           type: "preface",
