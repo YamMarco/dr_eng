@@ -3,7 +3,7 @@
 </script>
 
 <span
-	class="mb-3 inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-ink/70"
+	class="mb-2 inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-ink/70"
 >
 	{label}
 </span>

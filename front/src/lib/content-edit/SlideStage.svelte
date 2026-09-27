@@ -181,17 +181,25 @@
 	</div>
 {:else}
 	<div class="flex h-full min-h-0 flex-col">
-		<div class="flex flex-wrap items-center gap-2 border-b border-line/70 bg-surface/60 px-4 py-2">
+		<div
+			class="flex flex-nowrap items-center gap-2 overflow-x-auto border-b border-line/70 bg-surface/60 px-4 py-2 *:shrink-0"
+		>
+			<!-- relative+invisible-span sizes the button to the (always-longer)
+			     location text, so switching to "✓ הועתק" never changes its width
+			     and shifts every button after it in the row. -->
 			<button
 				type="button"
 				title="העתקת מיקום המסך"
 				onclick={copyLocation}
-				class="rounded-lg border border-dashed border-line px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
+				class="relative shrink-0 rounded-lg border border-dashed border-line px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
 				dir="ltr"
 			>
-				{locationCopied ? '✓ הועתק' : location}
+				<span class="invisible">{location}</span>
+				<span class="absolute inset-0 flex items-center justify-center">
+					{locationCopied ? '✓ הועתק' : location}
+				</span>
 			</button>
-			<span class="h-4 w-px bg-line"></span>
+			<span class="h-4 w-px shrink-0 bg-line"></span>
 			<!-- One shared formatting toolbar for every text field on this screen
 			     (whichever field is focused). mousedown preventDefault keeps that
 			     field's focus/selection alive through the click, so execCommand

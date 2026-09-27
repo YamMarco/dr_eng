@@ -96,6 +96,9 @@ export const he = {
 		start: 'התחל',
 		startRound: (round: number) => `התחל סבב ${round}`,
 		roundLabel: (current: number, total: number) => `סבב ${current} מתוך ${total}`,
+		/** Shown on a not-yet-fully-passed node whose requiredRounds > 1, so it's
+		 *  clear before starting that one pass isn't enough to open what's next. */
+		roundsRequiredHint: (n: number) => `צריך לעבור ${n} סבבים כדי לפתוח את השלב הבא`,
 		exitLabel: 'יציאה מהשיעור',
 		prefaceButton: 'הסבר',
 		prefaceTitle: 'תזכורת: הסבר השיעור',
@@ -121,7 +124,7 @@ export const he = {
 	// Shown as a small badge before each exercise screen, so the student
 	// knows what they're about to do before it starts.
 	exerciseKind: {
-		mcq: 'שאלה',
+		mcq: 'תרגיל: שאלה אמריקאית',
 		markWord: 'תרגיל: סמנו מילה',
 		markAll: 'תרגיל: סמנו את כל מגנטי העין',
 		clozePick: 'תרגיל: השלימו את המשפט',

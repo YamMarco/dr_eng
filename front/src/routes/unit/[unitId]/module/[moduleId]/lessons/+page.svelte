@@ -516,9 +516,14 @@
 							</button>
 
 							{#if unlocked && openLabelId === node.lesson.id}
-								{@const started = roundsCompleted(node.lesson.id) > 0}
+								{@const completed = roundsCompleted(node.lesson.id)}
+								{@const started = completed > 0}
+								{@const required = node.lesson.requiredRounds ?? 1}
 								<!-- Click-triggered label instead of a full-screen modal: title + start
-						     (or, once round 1 is done, the next round to play). -->
+						     (or, once round 1 is done, the next round to play). A node that
+						     needs more than one passed round shows that up front — before
+						     the first attempt, not just once one's already underway — so
+						     it reads as "3 rounds to open the next step", not a surprise. -->
 								<div
 									in:scale={{ start: 0.55, duration: 160, easing: backOut }}
 									out:scale={{ start: 0.55, duration: 90 }}
@@ -527,11 +532,16 @@
 								>
 									<div class="flex flex-col gap-2">
 										<p class="text-sm font-bold">{node.lesson.titleHe}</p>
-										{#if started}
+										{#if required > 1 && completed < required}
+											<p class="text-[11px] font-semibold text-muted">
+												{i18n.dict.lesson.roundsRequiredHint(required)}
+											</p>
+										{/if}
+										{#if started || required > 1}
 											<LessonProgressBar
 												compact
 												segments={node.lesson.content.rounds.map(() => 1)}
-												current={Math.min(roundsCompleted(node.lesson.id), totalRounds(node))}
+												current={Math.min(completed, totalRounds(node))}
 											/>
 										{/if}
 									</div>
