@@ -26,10 +26,9 @@
 	<h2 class="text-lg font-bold text-brand-dark" dir="auto"><Md text={screen.title} /></h2>
 	<ul class="mt-3 flex flex-col gap-2 text-sm leading-relaxed">
 		{#each screen.lines as line (line)}
-			<li class="flex gap-1.5">
-				<span>•</span>
+			<li>
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<div class="flex-1">{@html mdBlock(line)}</div>
+				{@html mdBlock(line)}
 			</li>
 		{/each}
 	</ul>
