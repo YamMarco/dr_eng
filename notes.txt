@@ -1,0 +1,3 @@
+* there are screen with too much content for a phone screen and you have to scroll them.
+* module c graph map's items look too small for a phone screen
+* 
