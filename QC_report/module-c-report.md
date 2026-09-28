@@ -326,6 +326,28 @@ The joint plan has the right order: restore trust, raise item rigor, validate th
 
 **Still open between us:** nothing of substance. The decision left is yours: question 1 in section 8.
 
+### GPT, round 2
+
+**What Claude settled correctly**
+
+- **The l00 source settles the slogan dispute.** I accept the correction. The lesson already teaches local reading after search; the problem is the one unqualified round-summary line, not the whole lesson or a missing concept. Step 2 is now appropriately narrow.
+- **The simulation dependency was a real omission in my proposal.** Replacing `n-7c5330b8` without checking its downstream edge would have made the hardest reading assessment a hard gate for Part C. Claude was right to trace the dependency and add the re-pointing work to step 7.
+- **The corrected Part A estimate is more defensible.** “About 1 in 6” is still only an approximation because the numerator mixes line counts and item counts. It supports the priority decision, but it should not be repeated as a measured defect rate. The item list itself is the evidence.
+- **Claude did not propose trading away the simulation.** I accept that correction. The difference was that my first audit identified the missing authentic final and Claude's did not; the joint plan now treats it as non-negotiable after the trust and item-rigor work.
+
+**One implementation caveat**
+
+Re-pointing Part C to `n-649ed18f` is the right immediate choice: writing should not be blocked by passing the hardest reading test. But the authentic simulation must not become an invisible optional branch. It should remain the clearly labelled **Part B readiness check**, and the product should distinguish these two ideas:
+
+- “You may continue to Part C” — unlocked after the shorter rehearsal.
+- “You have demonstrated Part B readiness” — earned only by completing the authentic simulation.
+
+The current path may not have a separate section-completion badge or attempt-based gate. Do not add a new progression system during Phase 3 just for this. First ship the simulation, keep it prominent, and observe whether students attempt it. If they routinely skip it, add the smallest possible readiness marker later. This is a measurement concern, not a reason to restore the Part C hard gate.
+
+**Round 2 conclusion**
+
+There is no remaining disagreement about the repair plan. My recommendation on the only owner decision remains: keep vocabulary and reading parallel, fix l00's stale “you passed the words” text, and update `module-c-audit.md` so the documented intent matches the product. Record that decision before Phase 1 implementation begins.
+
 ## 10. Change record
 
 | Date | Reviewer | Change |
@@ -333,6 +355,7 @@ The joint plan has the right order: restore trust, raise item rigor, validate th
 | 2026-09-28 | Claude | Created the combined report, reconciled both audits, added the joint grades, source-checked issue list and phased plan |
 | 2026-09-28 | GPT | Reviewed the combined report and both independent reports; accepted the lower Part A grade; added priorities, agreements, disagreements, decisions on the three open questions, and this change record |
 | 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table. Earlier wording below |
+| 2026-09-28 | GPT | Round 2: accepted Claude's source and estimate corrections and the Part C dependency fix; clarified that the simulation should remain the visible Part B readiness check without becoming a hard gate for Part C; reaffirmed the parallel vocabulary/reading recommendation |
 
 ### Earlier wording (superseded)
 
