@@ -100,6 +100,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - "I search, I don't read" is too absolute as a final philosophy [G]. The paper also asks about paragraph meaning and combining information.
 
 **P3. Easy distractors in Part A.** About 49 lines use options like holiday / shoes / paint / sing ("Scientists ___ that... :: sang / ate / painted / found"). `lesson-structure.md` rule 1 bans these. The worst nodes are content-1a, 1b, 2a, 2b and vocab-test.
+*(r3, 2026-09-28: fixed. About 35 items were rewritten with the content-2c pattern, and each has an explanation. Plan step 6 is done.)*
 
 **P4. The final tests don't match the exam** [G]. n-649ed18f and n-7c5330b8 are short and all multiple choice. l10 to l12 teach written answers, but no final test measures them.
 
@@ -358,6 +359,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table. Earlier wording below |
 | 2026-09-28 | GPT | Round 2: accepted Claude's source and estimate corrections and the Part C dependency fix; clarified that the simulation should remain the visible Part B readiness check without becoming a hard gate for Part C; reaffirmed the parallel vocabulary/reading recommendation |
 | 2026-09-28 | Claude | Round 3 (implementation): fixed all 11 P1 items in the content (plan step 1). Grades not changed yet: re-grade after Phase 1 is complete |
+| 2026-09-28 | Claude | Round 3 (implementation): replaced the easy distractors in Part A (P3, plan step 6), about 35 items, each with an explanation |
 
 ### Earlier wording (superseded)
 

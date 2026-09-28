@@ -85,6 +85,12 @@ The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
 - **limiters-q:** the second question teaches that quantifier *most* does not limit the answer.
 - **numbers-names-q:** "Give TWO" is no longer keyed as a number anchor.
 
+P3, easy distractors (same day):
+- **Nodes changed:** about 35 items in nav-words-2, content-1a, 1b, 1c, 2a, 2b and vocab-test. There are no more holiday / bicycle / window / shoes / paint / sing / cook / ate options.
+- **New distractors:** word forms (improve / improvement, result / results, cause / causes), same-node words that were already carded, and opposites.
+- **Explanations:** every changed item now says why each wrong option fails.
+- **Other fixes made while there:** a helmet item where *cover* also fit, a reduce item where *turn off* also fit, and passage questions in content-2a and q-words-2 that had joke options.
+
 ## Fixed on 2026-09-19
 
 - n-649ed18f and n-7c5330b8 were empty placeholders that kept Part C locked; both now have timed content.

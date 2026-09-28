@@ -669,7 +669,7 @@ export const c2Lessons: LessonNode[] = [
                   prompt: "Explain why the trees grew back.",
                   options: [
                     "Nothing was eating the young plants",
-                    "People painted them",
+                    "People planted new trees",
                     "The goats planted them",
                     "It rained less",
                   ],
@@ -1239,11 +1239,13 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "Scientists ______ that the drug helps people sleep.",
-              options: ["sang", "ate", "painted", "found"],
+              prompt:
+                "The study is over, and now we know: scientists ______ that the drug helps people sleep.",
+              options: ["hoped", "increased", "decreased", "found"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "ממצא של מדענים = found.",
+              explanation:
+                "now we know = ממצא = found. hoped = קיוו, כלומר עוד לא ידעו. increased ו-decreased = עלה וירד, והן לא באות לפני that.",
             },
             {
               type: "mcq",
@@ -1461,10 +1463,11 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "Factories pollute the air and the rivers. They harm the ______.",
-              options: ["holiday", "environment", "teacher", "homework"],
+              options: ["weather", "environment", "environmental", "economy"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "אוויר ונהרות = הסביבה.",
+              explanation:
+                "אוויר ונהרות = הסביבה (environment). environmental הוא תואר (סביבתי) ולא בא לבד אחרי the. weather = מזג אוויר, ו-economy = כלכלה.",
             },
             {
               type: "cloze-pick",
@@ -1472,11 +1475,12 @@ export const c2Lessons: LessonNode[] = [
               options: [
                 "The weather",
                 "The environment",
-                "The homework",
-                "The bicycle",
+                "Environmental",
+                "The economy",
               ],
               correctIndices: [1],
-              explanation: "זיהום וכריתת עצים = The environment.",
+              explanation:
+                "זיהום וכריתת עצים = The environment. Environmental הוא תואר ולא יכול לפתוח משפט לבד. במזג אוויר ובכלכלה לא כורתים עצים.",
             },
             { type: "spell-word", word: "environment", mode: "copy" },
             {
@@ -1493,17 +1497,19 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "Dana helps at the animal shelter every Friday. She does it of her own choice and gets no money. She is a ______.",
-              options: ["volunteer", "bicycle", "teacher", "environment"],
+              options: ["volunteer", "voluntary", "worker", "environment"],
               correctIndex: 0,
               layout: "honeycomb",
-              explanation: "מרצון ובלי שכר = מתנדבת.",
+              explanation:
+                "מרצון ובלי שכר = מתנדבת (volunteer). voluntary הוא תואר (התנדבותי), worker מקבל משכורת, ו-environment היא הסביבה.",
             },
             {
               type: "cloze-pick",
               clause: "give their time to help others. They do not get paid.",
-              options: ["The environment", "Bicycles", "Doctors", "Volunteers"],
+              options: ["The environment", "Workers", "Doctors", "Volunteers"],
               correctIndices: [3],
-              explanation: "Volunteers - נותנים מזמנם, בלי שכר.",
+              explanation:
+                "בלי שכר = Volunteers. עובדים ורופאים מקבלים משכורת, והסביבה לא נותנת זמן.",
             },
             { type: "spell-word", word: "volunteers", mode: "copy" },
             {
@@ -1532,24 +1538,25 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "Families, teachers and shop owners all came to the meeting. The whole ______ wanted to help.",
-              options: ["environment", "community", "volunteers", "holiday"],
+              options: ["environment", "community", "volunteers", "communities"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "משפחות, מורים ובעלי חנויות ביחד = קהילה.",
+              explanation:
+                "משפחות, מורים ובעלי חנויות ביחד = קהילה אחת (community). communities ברבים לא מתאים ל-The whole ... wanted, ו-volunteers הם רק מי שמתנדב.",
             },
             {
               type: "cloze-pick",
               clause:
                 "helped each other after the storm. Neighbours, shops and schools all worked together.",
               options: [
-                "A bicycle",
+                "The weather",
                 "The environment",
                 "The community",
                 "A volunteer",
               ],
               correctIndices: [2],
               explanation:
-                "שכנים, חנויות ובתי ספר שעובדים יחד = The community.",
+                "שכנים, חנויות ובתי ספר שעובדים יחד = The community. מתנדב אחד לא יכול לעזור ל-each other, ומזג אוויר וסביבה לא עוזרים.",
             },
             { type: "spell-word", word: "community", mode: "copy" },
             {
@@ -1579,10 +1586,11 @@ export const c2Lessons: LessonNode[] = [
                 "A volunteer",
                 "A charity",
                 "The environment",
-                "A holiday",
+                "A community",
               ],
               correctIndices: [1],
-              explanation: "ארגון שאוסף כסף כדי לעזור = A charity.",
+              explanation:
+                "ארגון שאוסף כסף כדי לעזור = A charity. volunteer הוא אדם, community היא קבוצת אנשים ולא ארגון, ו-environment היא הסביבה.",
             },
             { type: "spell-word", word: "charity", mode: "copy" },
             {
@@ -1851,23 +1859,26 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                "Scientists ______ a new medicine last year, and now doctors can use it.",
-              options: ["cooked", "discovered", "painted", "borrowed"],
+                "Scientists ______ a new kind of frog in the forest. Nobody knew it was there.",
+              options: ["invented", "discovered", "built", "planted"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "גילו תרופה חדשה = discovered.",
+              explanation:
+                "משהו שהיה קיים ואף אחד לא ידע עליו = discovered. invented = להמציא משהו חדש, ואת built ו-planted עושים לבניין ולעץ, לא לצפרדע.",
             },
             {
               type: "cloze-pick",
-              clause: "that noise makes it harder to learn.",
+              clause:
+                "that noise makes it harder to learn. The study showed it clearly.",
               options: [
-                "Scientists borrowed",
+                "Scientists hoped",
                 "Scientists forgot",
-                "Scientists painted",
+                "Scientists asked",
                 "Scientists found",
               ],
               correctIndices: [3],
-              explanation: "found that = מצאו ש - הממצא.",
+              explanation:
+                "המחקר הראה = ממצא = found that. hoped = קיוו (עוד לא יודעים), ו-asked ו-forgot לא מתאימים למחקר שהוכיח משהו.",
             },
             { type: "spell-word", word: "discover", mode: "copy" },
             {
@@ -1883,22 +1894,19 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "We tested the new method for a month. The ______ were very good.",
-              options: ["homework", "discover", "results", "holiday"],
+              options: ["result", "discover", "results", "discovered"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "The ... were (רבים) = results.",
+              explanation:
+                "The ... were = רבים, ולכן results. result הוא יחיד (was), ו-discover ו-discovered הם פעלים.",
             },
             {
               type: "cloze-pick",
               clause: "of the survey were published yesterday.",
-              options: [
-                "The shoes",
-                "The results",
-                "The breakfast",
-                "The window",
-              ],
+              options: ["The result", "The results", "The discover", "Discovered"],
               correctIndices: [1],
-              explanation: "תוצאות של סקר = The results.",
+              explanation:
+                "תוצאות של סקר + were (רבים) = The results. The result הוא יחיד, ו-discover ו-discovered הם פעלים, לא שם עצם.",
             },
             { type: "spell-word", word: "results", mode: "copy" },
             {
@@ -1927,17 +1935,19 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "People who study a subject carefully to learn new things are ______.",
-              options: ["holidays", "results", "shoes", "researchers"],
+              options: ["research", "results", "discover", "researchers"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "חוקרים = researchers.",
+              explanation:
+                "אנשים שחוקרים = researchers. research הוא המחקר עצמו, לא האנשים. results הן התוצאות, ו-discover הוא פועל.",
             },
             {
               type: "cloze-pick",
               clause: "studied the sleep of 300 teenagers for two years.",
-              options: ["Results", "Holidays", "Sandwiches", "Researchers"],
+              options: ["Results", "Research", "Discovered", "Researchers"],
               correctIndices: [3],
-              explanation: "מי שחוקר = Researchers.",
+              explanation:
+                "רק אנשים יכולים לחקור (studied) = Researchers. Research ו-Results הם דברים, לא אנשים, ו-Discovered הוא פועל.",
             },
             { type: "spell-word", word: "researchers", mode: "copy" },
             {
@@ -1953,10 +1963,11 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "Bad weather can ______ how many people come to the park.",
-              options: ["paint", "discover", "cook", "affect"],
+              options: ["effective", "discover", "results", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "משפיע על כמה אנשים באים = affect.",
+              explanation:
+                "משפיע על כמה אנשים באים = affect. מזג אוויר לא מגלה (discover) כלום, results הוא שם עצם, ו-effective הוא תואר.",
             },
             {
               type: "mark-word",
@@ -1991,10 +2002,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "This medicine really works. It is very ______.",
-              options: ["researchers", "discover", "effective", "holiday"],
+              options: ["affect", "results", "effective", "researchers"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "עובד באמת = effective.",
+              explanation:
+                "אחרי very בא תואר: effective (יעיל). affect הוא פועל, ו-results ו-researchers הם שמות עצם.",
             },
             {
               type: "mcq",
@@ -2154,7 +2166,7 @@ export const c2Lessons: LessonNode[] = [
                   prompt:
                     "According to paragraph II, what can volunteering affect?",
                   options: [
-                    "The weather",
+                    "Friendships",
                     "Sports results",
                     "School grades",
                     "Family income",
@@ -2218,17 +2230,19 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "The number of visitors will ______ next year: there will be more of them.",
-              options: ["balloon", "will be bigger", "increase", "boil"],
+              options: ["increased", "an increase", "increase", "increasing"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "יהיו יותר = increase.",
+              explanation:
+                "אחרי will בא פועל בצורת הבסיס: will increase. increased ו-increasing הן צורות אחרות, ו-an increase הוא שם עצם.",
             },
             {
               type: "cloze-pick",
               clause: "in the number of birds was 60%.",
-              options: ["A sandwich", "A window", "A birthday", "An increase"],
+              options: ["Increase", "Increased", "To increase", "An increase"],
               correctIndices: [3],
-              explanation: "עלייה של 60% = An increase.",
+              explanation:
+                "עלייה של 60% = שם עצם עם a/an: An increase. Increased ו-To increase הן צורות של פועל, ו-Increase בלי an חסר.",
             },
             { type: "spell-word", word: "increase", mode: "copy" },
             {
@@ -2244,10 +2258,11 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "We turned off the lights to ______ the electricity we use.",
-              options: ["kill down", "turn off", "grow", "reduce"],
+              options: ["increase", "reduced", "reducing", "reduce"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "להשתמש בפחות = reduce.",
+              explanation:
+                "כיבינו אורות כדי להשתמש בפחות = reduce. increase הפוך (יותר). אחרי to בא פועל בצורת הבסיס, ולכן לא reduced ולא reducing.",
             },
             {
               type: "mark-word",
@@ -2280,17 +2295,19 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A helmet can ______ your head when you ride a bicycle.",
-              options: ["break", "increase", "cover", "protect"],
+              options: ["reduce", "increase", "protected", "protect"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "קסדה מגינה = protect.",
+              explanation:
+                "קסדה מגינה = protect. אחרי can בא פועל בצורת הבסיס, ולכן לא protected. reduce ו-increase מדברים על כמות.",
             },
             {
               type: "cloze-pick",
-              clause: "the forests from fire is the rangers job.",
-              options: ["Singing", "Painting", "Increasing", "Protecting"],
+              clause: "the forests from fire is the rangers' job.",
+              options: ["Protect", "Reducing", "Increasing", "Protecting"],
               correctIndices: [3],
-              explanation: "להגן על היער = Protecting.",
+              explanation:
+                "פועל שפותח משפט מקבל ing: Protecting. Protect בלי ing לא יכול להיות נושא המשפט. protect from = להגן מפני, ו-reduce או increase לא באים עם from.",
             },
             { type: "spell-word", word: "protect", mode: "copy" },
             {
@@ -2362,12 +2379,13 @@ export const c2Lessons: LessonNode[] = [
               clause: "of animals disappear when their forests are destroyed.",
               options: [
                 "Many species",
-                "Many breakfasts",
-                "Many windows",
-                "Many bicycles",
+                "A species",
+                "Many protects",
+                "Many increases",
               ],
               correctIndices: [0],
-              explanation: "מינים של חיות = Many species.",
+              explanation:
+                "disappear (ברבים) + מינים של חיות = Many species. A species הוא יחיד (disappears), protect הוא פועל, ו-increases הן עליות, לא חיות.",
             },
             { type: "spell-word", word: "species", mode: "copy" },
             {
@@ -2611,22 +2629,24 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "If you practise every day, your handwriting will ______.",
-              options: ["improve", "sing", "paint", "cook"],
-              correctIndex: 0,
+              options: ["improvement", "improve", "improving", "good"],
+              correctIndex: 1,
               layout: "honeycomb",
-              explanation: "ייטב = improve.",
+              explanation:
+                "אחרי will בא פועל בצורת הבסיס: will improve. improvement הוא שם עצם, improving צורה אחרת, ו-good הוא תואר.",
             },
             {
               type: "cloze-pick",
               clause: "their grades after the program.",
               options: [
+                "Students improvement",
+                "Students improving",
                 "Students improved",
-                "Students painted",
-                "Students cooked",
-                "Students sang",
+                "Students good",
               ],
-              correctIndices: [0],
-              explanation: "שיפרו את הציונים = improved.",
+              correctIndices: [2],
+              explanation:
+                "צריך פועל בעבר: Students improved (שיפרו). improvement הוא שם עצם, improving בלי were לא משפט, ו-good הוא תואר.",
             },
             { type: "spell-word", word: "improve", mode: "copy" },
             {
@@ -2642,10 +2662,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The company will ______ a new phone next year.",
-              options: ["improve", "sing", "develop", "paint"],
+              options: ["improve", "development", "develop", "developed"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "לבנות משהו חדש = develop.",
+              explanation:
+                "טלפון חדש שעוד לא קיים = develop. improve משפר משהו שכבר קיים. development הוא שם עצם, ואחרי will לא בא developed.",
             },
             {
               type: "mcq",
@@ -2687,22 +2708,24 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "After years of practice, he ______ his dream and became a doctor.",
-              options: ["achieved", "developed", "improved", "painted"],
+              options: ["achieved", "developed", "improved", "achievement"],
               correctIndex: 0,
               layout: "honeycomb",
-              explanation: "השיג את החלום = achieved.",
+              explanation:
+                "השיג את החלום = achieved. developed ו-improved לא מתאימים לחלום שהתגשם, ו-achievement הוא שם עצם.",
             },
             {
               type: "cloze-pick",
               clause: "their goals if they work hard.",
               options: [
-                "Students can paint",
-                "Students can cook",
+                "Students can improve",
+                "Students can achieved",
                 "Students can achieve",
-                "Students can sing",
+                "Students can achievement",
               ],
               correctIndices: [2],
-              explanation: "להשיג מטרות = achieve.",
+              explanation:
+                "להשיג מטרות = achieve. אחרי can בא פועל בצורת הבסיס, ולכן לא achieved ולא achievement. improve their goals = לשפר את המטרות, לא להגיע אליהן.",
             },
             { type: "spell-word", word: "achieve", mode: "copy" },
             {
@@ -2719,10 +2742,11 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "Playing football together teaches teamwork and other ______.",
-              options: ["windows", "skills", "holidays", "shoes"],
+              options: ["skill", "skills", "improve", "achieve"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "עבודת צוות ועוד = skills.",
+              explanation:
+                "other + רבים = skills. skill הוא יחיד, ו-improve ו-achieve הם פעלים.",
             },
             {
               type: "mark-word",
@@ -2758,22 +2782,24 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Schools and universities are part of the ______ system.",
-              options: ["holiday", "education", "kitchen", "bicycle"],
+              options: ["educate", "education", "skills", "improve"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "מערכת החינוך = education.",
+              explanation:
+                "מערכת החינוך = the education system. educate ו-improve הם פעלים, ו-skills הן מיומנויות, לא מערכת.",
             },
             {
               type: "cloze-pick",
               clause: "helps students develop important skills.",
               options: [
-                "Good window",
+                "Good educate",
                 "Good education",
-                "Good bicycle",
-                "Good breakfast",
+                "Good skills",
+                "Good improve",
               ],
               correctIndices: [1],
-              explanation: "Good education - חינוך טוב.",
+              explanation:
+                "אחרי Good בא שם עצם: Good education. educate ו-improve הם פעלים, ו-Good skills ברבים לא מתאים ל-helps.",
             },
             { type: "spell-word", word: "education", mode: "copy" },
             {
@@ -2797,20 +2823,20 @@ export const c2Lessons: LessonNode[] = [
                 {
                   prompt: "What does good education help students do?",
                   options: [
-                    "Sleep more",
-                    "Stop studying",
+                    "Improve their grades",
+                    "Find new friends",
                     "Develop new skills",
-                    "Buy new phones",
+                    "Choose a job",
                   ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "What can students achieve?",
                   options: [
-                    "A bigger window",
-                    "New shoes",
+                    "Their confidence",
+                    "New skills",
                     "Their goals",
-                    "A longer holiday",
+                    "A better education",
                   ],
                   correctIndex: 2,
                 },
@@ -2986,22 +3012,19 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Too much sugar can ______ health problems.",
-              options: ["cook", "sing", "cause", "paint"],
+              options: ["because", "causes", "cause", "reason"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "גורם לבעיות = cause.",
+              explanation:
+                "אחרי can בא פועל בצורת הבסיס: cause (לגרום). causes לא בא אחרי can, because היא מילת קישור, ו-reason הוא שם עצם (סיבה).",
             },
             {
               type: "cloze-pick",
               clause: "of the fire was an old cable.",
-              options: [
-                "The window",
-                "The breakfast",
-                "The shoes",
-                "The cause",
-              ],
+              options: ["Because", "The causes", "To cause", "The cause"],
               correctIndices: [3],
-              explanation: "הסיבה לשריפה = The cause.",
+              explanation:
+                "הסיבה לשריפה + was (יחיד) = The cause. The causes ברבים לא מתאים ל-was, To cause הוא פועל, ו-Because לא יכולה לפתוח ככה משפט.",
             },
             { type: "spell-word", word: "cause", mode: "copy" },
             {
@@ -3017,10 +3040,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Noise can ______ how well you sleep.",
-              options: ["holiday", "effect", "cause", "affect"],
+              options: ["effects", "effect", "cause", "affect"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "פועל = affect. effect הוא שם עצם.",
+              explanation:
+                "צריך פועל = affect. effect ו-effects הם שמות עצם. cause (גורם ל) לא מתאים לפני how well.",
             },
             {
               type: "mcq",
@@ -3054,10 +3078,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "To join the club, you ______ a parent signature.",
-              options: ["cause", "sing", "require", "affect"],
+              options: ["cause", "requirement", "require", "affect"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "צריכים חתימה = require.",
+              explanation:
+                "צריכים חתימה = require (פועל). requirement הוא שם עצם (דרישה). cause ו-affect לא אומרים שחייבים משהו.",
             },
             {
               type: "mark-word",
@@ -3078,22 +3103,24 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "One ______ of reading is a bigger vocabulary.",
-              options: ["cause", "effect", "benefit", "holiday"],
+              options: ["cause", "effect", "benefit", "benefits"],
               correctIndex: 2,
               layout: "honeycomb",
-              explanation: "יתרון = benefit.",
+              explanation:
+                "יתרון אחד = One benefit (יחיד). benefits ברבים לא מתאים ל-One. cause (סיבה) ו-effect (השפעה) לא אומרים שזה משהו טוב.",
             },
             {
               type: "cloze-pick",
               clause: "from exercise, not just athletes.",
               options: [
                 "Everyone can benefit",
-                "Everyone can cook",
-                "Everyone can paint",
-                "Everyone can sing",
+                "Everyone can require",
+                "Everyone can cause",
+                "Everyone can benefits",
               ],
               correctIndices: [0],
-              explanation: "להרוויח = benefit.",
+              explanation:
+                "להרוויח מ = benefit from. require ו-cause לא באים עם from, ואחרי can לא בא benefits.",
             },
             { type: "spell-word", word: "benefit", mode: "copy" },
             {
@@ -3123,22 +3150,19 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "I was offered a job abroad. It is a great ______.",
-              options: ["benefit", "opportunity", "window", "cause"],
+              options: ["benefit", "opportunity", "effect", "cause"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: 'הצעה לעבוד בחו"ל = הזדמנות.',
+              explanation:
+                'הצעה לעבוד בחו"ל שאפשר לנצל = opportunity. benefit הוא יתרון שכבר מקבלים, ו-effect ו-cause הם השפעה וסיבה.',
             },
             {
               type: "cloze-pick",
               clause: "to travel is a great chance for young people.",
-              options: [
-                "The breakfast",
-                "The kitchen",
-                "The bicycle",
-                "The opportunity",
-              ],
+              options: ["The cause", "The effect", "The require", "The opportunity"],
               correctIndices: [3],
-              explanation: "ההזדמנות לטייל = The opportunity.",
+              explanation:
+                "chance = הזדמנות = The opportunity. require הוא פועל, ו-cause ו-effect לא באים עם to travel.",
             },
             { type: "spell-word", word: "opportunity", mode: "copy" },
             {
@@ -3164,7 +3188,7 @@ export const c2Lessons: LessonNode[] = [
                   options: [
                     "More time",
                     "Good sleep",
-                    "A holiday",
+                    "Less exercise",
                     "Health problems",
                   ],
                   correctIndex: 3,
@@ -3736,10 +3760,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Cutting down forests harms the ______.",
-              options: ["teacher", "holiday", "homework", "environment"],
+              options: ["community", "environmental", "charity", "environment"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "הסביבה = environment.",
+              explanation:
+                "יערות הם חלק מהסביבה = environment. environmental הוא תואר ולא בא לבד אחרי the. community ו-charity הן קבוצת אנשים וארגון.",
             },
             {
               type: "mcq",
@@ -3875,10 +3900,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "Doctors ______ that the new medicine helps.",
-              options: ["ate", "painted", "sang", "found"],
+              options: ["results", "increased", "effective", "found"],
               correctIndex: 3,
               layout: "honeycomb",
-              explanation: "ממצא = found.",
+              explanation:
+                "ממצא = found that. results הוא שם עצם, effective הוא תואר, ו-increased (עלה) לא בא לפני that.",
             },
           ],
         },
