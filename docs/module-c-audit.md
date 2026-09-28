@@ -29,7 +29,7 @@ Grades are 1-10 per node. `~` = judged from structure and a skim of sibling less
 - **Rounds:** words are taught 2 at a time (card with example and memory hook, meaning question, sentence step, copy-spelling), then match-pairs of everything seen. The last required round adds the tool summary, the opening passage again, and a word-decoding question. `requiredRounds` = number of teaching rounds (2 or 3); then a review round and an exam-level round (both optional).
 - **Rule:** a word is never an answer or a decoy before its card.
 - **vocab-test:** five short rounds (9-10 items each, plus one written sentence at the end), every round mixes question, navigation and content words and gets harder round by round (clear distractors, then close ones, then confusable pairs like affect/effect), one fresh in-context item per word, missed items replayed; all five required. Rounds no longer map to a word group, so a failed round cannot name its group.
-- **Still open:** the coverage audit (are these words really the minimum Module C needs?), playing every node, and timing the rounds. The vocab gate stays: vocab-test gates l00 on purpose.
+- **Still open:** the coverage audit (are these words really the minimum Module C needs?), playing every node, and timing the rounds. ~~The vocab gate stays: vocab-test gates l00 on purpose.~~ *(2026-09-28: gate removed, see "Section 1 purpose".)*
 
 Original note: the six content-word lessons are not prerequisites for the reading method, yet they gate it through vocab-test (kept on purpose, see "Section 1 purpose").
 
@@ -84,6 +84,14 @@ The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
 - **n-b46b7e2b:** swim item asks what experts say.
 - **limiters-q:** the second question teaches that quantifier *most* does not limit the answer.
 - **numbers-names-q:** "Give TWO" is no longer keyed as a number anchor.
+
+P8 and P9, same day:
+- **P8, vocab gate:** reading stays open (no gate). l00's opening now says "if you already did the vocabulary, well done; if not, come back to it any time".
+- **P9, typos and characters:** fixed איך איך, הטקטסט / טקטס and תמי. Removed stray ֿ characters and repaired broken bold markers.
+- **P9, run-together lines:** restored the line breaks the editor had removed in l02 (traffic light), l03 (keyword and "now it's simple" screens) and the l07 opening. Also the q-words-1 opening, where "Give ONE answer" now sits on question 2, as intended.
+- **P9, broken l03 exercise:** the round 5 self-check asked about Dr. Klein on a Dr. Diallo paragraph, showed the answer in the prompt, and had the model answer "1". It's rewritten.
+- **P9, counts:** drill intros no longer promise "ten sentences / seven paragraphs / four texts". Section intros now give the real lesson counts (Part A: 10 lessons and a test; Part B: 18 lessons and a test).
+- **P9, dashes:** em-dashes replaced with "-" throughout c-1, c-2 and sectionMeta.
 
 P5, spelling from memory (same day):
 - **New screens:** 48 listen-mode `spell-word` screens (spelling by ear). Every vocab node's review round gets one per single word. vocab-test gets 2 per round, 10 in total, and because vocab-test is required, every student does them.
@@ -227,4 +235,4 @@ Vocab nodes (Part A) are not limited to 4 question types. They currently lean on
 
 ### Section 1 purpose
 
-Part A gives the minimum vocabulary needed to solve Module C; without it students are close to doomed. There is a dictionary in the exam, but the clock runs, so the words must be known. Every vocab preface should say this truthfully (no invented time numbers until measured), and the word list should be checked against the real module texts (coverage audit) so "minimum" is true. That is also why vocab-test gates l00: keep the gate, and make the test check the words that matter.
+Part A gives the minimum vocabulary needed to solve Module C; without it students are close to doomed. There is a dictionary in the exam, but the clock runs, so the words must be known. Every vocab preface should say this truthfully (no invented time numbers until measured), and the word list should be checked against the real module texts (coverage audit) so "minimum" is true. ~~That is also why vocab-test gates l00: keep the gate, and make the test check the words that matter.~~ *(Changed 2026-09-28: the gate was removed. Vocabulary runs in parallel with reading. l00 is open from the start and its opening no longer assumes Part A was done. The vocab section stays recommended, and its value is unchanged. Restore with `required: ['vocab-test']` on l00 if the gate is wanted again.)*

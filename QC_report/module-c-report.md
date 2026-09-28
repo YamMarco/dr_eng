@@ -117,8 +117,10 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - l10 and limiters-q say "two answers to ONE = 0". l12 says one missing answer loses half the points and that the checker reads the first two answers.
 - "90% of students" (l06) and "14 points, 7 per answer" (l12) are unverified.
 - "1:45" is correct [G].
+*(r4, 2026-09-28, owner ruling: not an issue. These claims come from a real English teacher who wrote the content, so they count as sourced. Plan step 3 is closed without changes. The two reviewers' "unverified" label is kept above as the record.)*
 
 **P8. The vocab gate is gone and the text wasn't updated** [C]. `l00.required` is `[]` since ce2e759, but l00 says "if you're here, you passed the words". The audit says to keep the gate.
+*(r4, 2026-09-28: fixed as a parallel track, as both reviewers recommended. l00 stays open, its opening text is rewritten, and the audit's stated intent is updated. Plan step 5 and section 8 question 1 are done.)*
 
 **P9. Polish.**
 - Typos: "איך איך", "הטקטסט", "טקטס", "תמי".
@@ -126,6 +128,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - Drill prefaces promise "ten sentences / seven paragraphs / four texts" but show 2 to 4 items [C].
 - Part A's intro says "four lessons" (there are 12 nodes); Part B's says "thirteen" (there are 19).
 - Nothing tells the student how long the route is [G].
+*(r4, 2026-09-28: fixed. Typos, stray characters and broken bold are gone. Line breaks the editor had lost are restored in l02, l03, l07 and q-words-1. Drill counts are honest, and section intros give real lesson counts. Em-dashes are replaced. Also found and fixed: the l03 round 5 self-check asked about Dr. Klein on a Dr. Diallo text, with the answer in the prompt. Plan step 4 is done.)*
 
 ## 5. Student's view
 
@@ -362,6 +365,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | Claude | Round 3 (implementation): fixed all 11 P1 items in the content (plan step 1). Grades not changed yet: re-grade after Phase 1 is complete |
 | 2026-09-28 | Claude | Round 3 (implementation): replaced the easy distractors in Part A (P3, plan step 6), about 35 items, each with an explanation |
 | 2026-09-28 | Claude | Round 3 (implementation): P5 spelling. Added 48 listen-mode spelling screens with a Hebrew hint (a new optional `hintHe` field). Listen falls back to copy mode without browser speech. Copy mode is kept. Covers the spelling half of plan step 11 |
+| 2026-09-28 | Claude | Round 4 (implementation): owner ruled P7 not an issue (teacher-sourced claims, step 3 closed). P8 fixed as a parallel track (step 5). P9 polish (step 4), plus the broken l03 self-check. Also scored *but* in l08's exam round (a second copy of a P1 bug) |
 
 ### Earlier wording (superseded)
 

@@ -5,26 +5,26 @@ import type { SectionMeta } from './types';
 export const sectionMeta: SectionMeta[] = [
 	{
 		id: 'c-2',
-		titleHe: 'חלק א׳ — אוצר מילים',
-		titleEn: 'Part A — Vocabulary',
+		titleHe: 'חלק א׳ - אוצר מילים',
+		titleEn: 'Part A - Vocabulary',
 		intro: {
 			greeting: 'The words that keep coming back',
-			goal: 'ארבעה שיעורים על המילים שחוזרות בכל בחינה: מילות שאלה, מילות ניווט ומילות תוכן.'
+			goal: 'עשרה שיעורים קצרים ומבחן סיכום על המילים שחוזרות בכל בחינה: מילות שאלה, מילות ניווט ומילות תוכן.'
 		}
 	},
 	{
 		id: 'c-1',
-		titleHe: 'חלק ב׳ — הבנת הנקרא',
-		titleEn: 'Part B — Reading Skills',
+		titleHe: 'חלק ב׳ - הבנת הנקרא',
+		titleEn: 'Part B - Reading Skills',
 		intro: {
-			greeting: 'I search — I do not read',
-			goal: 'שלושה־עשר שיעורים שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
+			greeting: 'I search - I do not read',
+			goal: 'שמונה־עשר שיעורים ומבחן סיכום שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
 		}
 	},
 	{
 		id: 'c-3',
-		titleHe: 'חלק ג׳ — כתיבה',
-		titleEn: 'Part C — Writing',
+		titleHe: 'חלק ג׳ - כתיבה',
+		titleEn: 'Part C - Writing',
 		intro: {
 			greeting: '70-90 words, every time',
 			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
