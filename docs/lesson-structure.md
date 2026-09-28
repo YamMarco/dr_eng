@@ -168,6 +168,28 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 3. register in `registry.ts`
 4. badge string in `i18n/locales/he.ts` under `exerciseKind`
 
+## Reading round pattern (Part B)
+
+Reference implementation: `l06` + `not-q`. Rule: every round up to and including
+the exam-level round is required (`requiredRounds`). Rounds after it are optional
+and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the
+method itself (the old "PRACTICE · Round 1 🌱").
+
+**Marking lesson** (a drill: l04, l06, l07, l08). All rounds required.
+1. Hebrew sentences to mark.
+2. English sentences, with 1 rules MCQ (from the paired -q lesson) mixed in.
+3. Paragraphs, with 1 rules MCQ mixed in.
+4. Exam level: 2 short texts to mark.
+5. Its own round: one long text of about 240 words (3/4 of the exam's 337) to mark.
+
+**Question lesson** (the paired -q lesson). `requiredRounds` = 3.
+1. Rules MCQs, then a short text with one real question.
+2. Your turn: one paragraph question.
+3. Exam level: a familiar full passage with about 4 questions, then a **new text**
+   (a topic not used elsewhere) with 3 questions. One of those is not a
+   target-word question, so students read each question instead of answering by reflex.
+4. and on: optional extra practice.
+
 ## Writing distractors (wrong options)
 
 Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-word`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.

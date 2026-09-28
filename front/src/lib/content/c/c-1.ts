@@ -1553,7 +1553,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - המילה הכי מסוכנת",
     titleEn: "Eye Catcher: NOT",
     required: ["l03"],
-    requiredRounds: 4,
+    requiredRounds: 5,
     position: { x: 0, y: 1020 },
     big: false,
     content: {
@@ -1719,7 +1719,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "רמת בחינה. שלושה טקסטים, והאחרון באורך של כמעט מבחן. סמנו כל מילת שלילה.",
+              text: "רמת בחינה. שני טקסטים. סמנו כל מילת שלילה.",
             },
             {
               type: "mark-all",
@@ -1745,9 +1745,13 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
+          ],
+        },
+        {
+          screens: [
             {
               type: "preface",
-              text: "טקסט אחרון, באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת שלילה - בדיוק כמו שתעשו לפני שאלת NOT בבחינה.",
+              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת שלילה - בדיוק כמו שתעשו לפני שאלת NOT בבחינה.",
             },
             {
               type: "mark-all",
@@ -1777,7 +1781,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - תרגול שאלות",
     titleEn: "NOT: Practice",
     required: ["l06"],
-    requiredRounds: 4,
+    requiredRounds: 3,
     position: { x: 0, y: 1140 },
     big: false,
     content: {
