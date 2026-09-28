@@ -192,6 +192,10 @@ These start from GPT's grades [G]. Nodes marked * were lowered for items Claude 
 
 Ordered by value per effort. Each step says when it counts as done. After any content change, update `docs/module-c-audit.md` and this file's grades.
 
+Rule for this document: never overwrite silently. When a step, grade or position changes, mark it *(rN)* with the round it changed in, and record the old wording in section 10.
+
+Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
+
 ### Phase 1: trust fixes (about 1 day)
 
 | # | Fix | Done when |
@@ -232,6 +236,8 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 
 ## 8. Open questions for you
 
+*(r2: turned from a question list into a decision table. The original questions are in section 10.)*
+
 | # | Question | Reviewers' position | Needs you? |
 |---|---|---|---|
 | 1 | Vocab gate: lock reading behind vocab-test, or run vocabulary as a parallel track? | Both: parallel track, fix l00's text, add placement later | **Yes.** It reverses the audit's stated intent. The last change (ce2e759) already removed the gate, so confirm that was on purpose |
@@ -255,7 +261,7 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 - **content-2c is the standard, and n-221188d1 is the best synthesis node.**
 
 **Where I disagree with GPT**
-- **Part A at 7.4 is too high.** It rewards structure that's there on paper while a large share of the items can be guessed or are keyed wrong (roughly 1 in 6 scored Part A items; see my round 2 correction). The structure is good; the items aren't there yet.
+- **Part A at 7.4 is too high.** It rewards structure that's there on paper while about a quarter of the items can be guessed or are keyed wrong. *[Corrected in round 2: about 1 in 6, not a quarter.]* The structure is good; the items aren't there yet.
 - **"I search, I don't read" is not the problem GPT says it is.** For the target student (weak and translating every word), it is the right correction. I'd keep the slogan and add one line in l01 ("then read the paragraph that holds the answer") rather than soften it.
 - **The value-by-use numbers (8.3 / 7.3 / 5.8) are guesses.** I kept them as useful framing but marked them as estimates. Nothing measured them.
 - **Order of work.** GPT puts the simulation first. I'd fix items first: it's a day of work, it stops harm now, and a new simulation built alongside broken items would inherit the same problems.
@@ -316,7 +322,7 @@ The joint plan has the right order: restore trust, raise item rigor, validate th
 - **The simulation would become a hard gate.** GPT argues against the vocab gate because a long required block causes dropout. But `c-a45c17de` (the Part C intro) requires `n-7c5330b8`. Turn that node into a 9-question timed simulation and writing is locked behind the hardest test in the module: the same dropout risk, in a worse place. Step 7 now re-points Part C to `n-649ed18f`.
 
 **Correcting myself**
-- **"About a quarter" was wrong.** In round 1 I wrote that about a quarter of Part A's items can be guessed or are keyed wrong. The numbers I have: about 49 dump lines with joke options and 11 broken items, against roughly 300 scored Part A items. That's about 1 in 6, and the 49 is a line count, not an exact item count. The direction holds (Part A's 7.4 was too high); the figure didn't. I've corrected it above.
+- **"About a quarter" was wrong.** In round 1 I wrote that about a quarter of Part A's items can be guessed or are keyed wrong. The numbers I have: about 49 dump lines with joke options and 11 broken items, against roughly 300 scored Part A items. That's about 1 in 6, and the 49 is a line count, not an exact item count. The direction holds (Part A's 7.4 was too high); the figure didn't. My round 1 text is left as written, with a correction note.
 
 **Still open between us:** nothing of substance. The decision left is yours: question 1 in section 8.
 
@@ -326,4 +332,53 @@ The joint plan has the right order: restore trust, raise item rigor, validate th
 |---|---|---|
 | 2026-09-28 | Claude | Created the combined report, reconciled both audits, added the joint grades, source-checked issue list and phased plan |
 | 2026-09-28 | GPT | Reviewed the combined report and both independent reports; accepted the lower Part A grade; added priorities, agreements, disagreements, decisions on the three open questions, and this change record |
-| 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table |
+| 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table. Earlier wording below |
+
+### Earlier wording (superseded)
+
+**Round 1, plan step 2, fix:**
+> Rewrite the tips as clues to check: "*however* often signals the writer's point, so check what the question asks"; only *the most / the only / the main* limit to one answer. Remove TWO from the anchor item.
+
+**Round 1, plan step 2, done when:**
+> No screen states either tip as always true; limiters-q r0 and the swim item are rewritten.
+
+**Round 2 change:** added the l00 round 1 summary line to the fix.
+
+---
+
+**Round 1, plan step 3, fix:**
+> Use one consistent message about extra and missing answers, checked against official marking guidance. Verify or remove "90%" and "14/7".
+
+**Round 1, plan step 3, done when:**
+> l10, l12 and limiters-q agree; every number is either sourced or removed.
+
+**Round 2 change:** adopted GPT's position to remove exact penalties and teach the safe behaviour.
+
+---
+
+**Round 1, plan step 5, fix:**
+> Decide the vocab gate: restore `required: ['vocab-test']` on l00, or reword l00's preface and the audit.
+
+**Round 1, plan step 5, done when:**
+> l00's code and text agree.
+
+**Round 2 change:** both reviewers now recommend leaving reading open; your sign-off is needed.
+
+---
+
+**Round 1, plan step 7, fix (ending):**
+> ...timed as one run. Build it from n-221188d1's mix.
+
+**Round 1, plan step 7, done when:**
+> Its length and question mix match section 2.
+
+**Round 2 change:** keep the id, and re-point `c-a45c17de` to `n-649ed18f`.
+
+---
+
+**Round 1, section 8 (original questions):**
+1. **The vocab gate:** keep reading locked until vocab-test is done, or leave vocabulary as a parallel track?
+2. **The simulation:** replace n-7c5330b8, or add a new node after it?
+3. **Scoring advice:** do you have the official marking guidance for extra and missing answers? Step 3 depends on it.
+
+**Round 2 change:** turned into a decision table with each reviewer's position.
