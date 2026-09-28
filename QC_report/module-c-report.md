@@ -112,6 +112,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - Four texts (Green Africa, adult swimming, Greenville, volunteering) recur in about 15 nodes, so late rounds test memory [C].
 - numbers-names-q has 10 rounds. The l04/l06/l07/l08 drills only mark words and never ask a question.
 - Many "PRACTICE Round 1" rounds are true/false items about the method itself.
+*(r4, 2026-09-28: prototyped on l06 + not-q only, for owner review. Roll out to the other reading nodes if approved. Claude's advice, in order: cut the 🌱 filler rounds and require a fresh-text exam round; write about 6 new texts on new topics; split numbers-names-q; end each marking drill with one real question.)*
 
 **P7. Inconsistent or unverified claims.**
 - l10 and limiters-q say "two answers to ONE = 0". l12 says one missing answer loses half the points and that the checker reads the first two answers.
@@ -366,6 +367,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | Claude | Round 3 (implementation): replaced the easy distractors in Part A (P3, plan step 6), about 35 items, each with an explanation |
 | 2026-09-28 | Claude | Round 3 (implementation): P5 spelling. Added 48 listen-mode spelling screens with a Hebrew hint (a new optional `hintHe` field). Listen falls back to copy mode without browser speech. Copy mode is kept. Covers the spelling half of plan step 11 |
 | 2026-09-28 | Claude | Round 4 (implementation): owner ruled P7 not an issue (teacher-sourced claims, step 3 closed). P8 fixed as a parallel track (step 5). P9 polish (step 4), plus the broken l03 self-check. Also scored *but* in l08's exam round (a second copy of a P1 bug) |
+| 2026-09-28 | Claude | Round 4: P6 prototype on l06 + not-q (filler round cut, required fresh-text exam round, real NOT question at the end of the l06 drill) |
 
 ### Earlier wording (superseded)
 

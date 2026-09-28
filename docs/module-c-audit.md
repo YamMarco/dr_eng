@@ -85,6 +85,10 @@ The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
 - **limiters-q:** the second question teaches that quantifier *most* does not limit the answer.
 - **numbers-names-q:** "Give TWO" is no longer keyed as a number anchor.
 
+P6 prototype on the NOT pair (same day, to review before rolling out):
+- **not-q:** deleted the 🌱 true/false round. Added a required exam-level round on a new text ("PHONES IN THE LOCKER"): two NOT questions and one normal question, so students don't flip by reflex. `requiredRounds: 4` means teach, worked example, your turn, then the new text. The old 🌟/💎 rounds stay as optional extra practice.
+- **l06:** the English marking round ends with one real NOT question on a fresh text (a bridge). `requiredRounds: 2`.
+
 P8 and P9, same day:
 - **P8, vocab gate:** reading stays open (no gate). l00's opening now says "if you already did the vocabulary, well done; if not, come back to it any time".
 - **P9, typos and characters:** fixed איך איך, הטקטסט / טקטס and תמי. Removed stray ֿ characters and repaired broken bold markers.

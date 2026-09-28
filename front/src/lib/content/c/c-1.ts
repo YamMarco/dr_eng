@@ -1553,6 +1553,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - המילה הכי מסוכנת",
     titleEn: "Eye Catcher: NOT",
     required: ["l03"],
+    requiredRounds: 2,
     position: { x: 0, y: 1020 },
     big: false,
     content: {
@@ -1646,6 +1647,26 @@ export const c1Lessons: LessonNode[] = [
               correctIndices: [],
               categories: [{ name: "שלילה", color: "rose", indices: [2, 5] }],
             },
+            {
+              type: "preface",
+              text: "ועכשיו שאלה אמיתית: אותה מילה, הפעם בתוך השאלה.",
+            },
+            {
+              type: "passage-mcq",
+              text: "The new bridge in Oakton opened in May. It was not finished on time, and no cars were allowed on it for the first week. Cyclists, however, could use it from the first day.",
+              questions: [
+                {
+                  prompt: "Which of the following is NOT true about the bridge?",
+                  options: [
+                    "It opened in May",
+                    "It was finished on time",
+                    "Cars could not use it in the first week",
+                    "Cyclists could use it from the first day",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
           ],
         },
         {
@@ -1730,6 +1751,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - תרגול שאלות",
     titleEn: "NOT: Practice",
     required: ["l06"],
+    requiredRounds: 4,
     position: { x: 0, y: 1140 },
     big: false,
     content: {
@@ -1889,37 +1911,46 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: ראיתי NOT? אני ציד - מחפש מה לא נכון.",
+              text: "רמת בחינה 💎\nטקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.",
             },
             {
-              type: "mcq",
-              prompt: '"Which of the following is NOT true?" - מה מחפשים?',
-              options: [
-                "מה נכון בטקסט",
-                "מה שגוי או לא מוזכר",
-                "את האפשרות שנראית הכי טובה",
+              type: "passage-mcq",
+              text: "**PHONES IN THE LOCKER**\n\nI  In 2023, Hillview High School decided to ban mobile phones during the school day. Students had to leave their phones in lockers from 8:00 until 3:00. At first, many parents were worried because they could not call their children.\n\nII  According to the head teacher, Ms. Laura Chen, the results surprised everyone. Students talked to each other more during breaks, and fewer students were late to class. However, Ms. Chen says the ban did not solve every problem: some students still used their phones in the toilets.\n\nIII  A survey at the end of the year found that 70% of students felt calmer without their phones. Not all students agreed, though. Some said they missed listening to music on the bus.",
+              questions: [
+                {
+                  prompt:
+                    "Which of the following is NOT true about the phone ban?",
+                  options: [
+                    "Phones were kept in lockers during the day",
+                    "Parents were worried at first",
+                    "Students could use their phones during breaks",
+                    "Some students still used phones in the toilets",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt:
+                    "According to Ms. Chen, what happened after the ban? (paragraph II)",
+                  options: [
+                    "Students got higher grades",
+                    "Fewer students were late to class",
+                    "Parents called the school more often",
+                    "All problems were solved",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "Which of the following is NOT mentioned in paragraph III?",
+                  options: [
+                    "70% of students felt calmer",
+                    "Not all students agreed with the ban",
+                    "Teachers also felt calmer",
+                    "Some students missed music on the bus",
+                  ],
+                  correctIndex: 2,
+                },
               ],
-              correctIndex: 1,
-              explanation: "NOT = ציד. מחפשים מה שגוי - לא מה שנכון.",
-            },
-            {
-              type: "mcq",
-              prompt: "שאלת NOT קשה יותר, כי צריך לבדוק כל אפשרות מול הטקסט.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation: "נכון. שלוש מהאפשרויות נכונות בטקסט. רק אחת אינה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"Which is NOT mentioned?" - שלוש אפשרויות נכונות. מה התשובה?',
-              options: [
-                "האפשרות שנראית הכי נכונה",
-                "האפשרות שלא נמצאת בטקסט כלל",
-                "האפשרות הארוכה ביותר",
-              ],
-              correctIndex: 1,
-              explanation: "האפשרות שלא מוזכרת בטקסט היא התשובה. זה הציד.",
             },
           ],
         },
@@ -1927,7 +1958,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
+              text: "תרגול נוסף 🌟 (רשות)\nעוד שאלת NOT על טקסט מוכר.",
             },
             {
               type: "passage-mcq",
@@ -1969,7 +2000,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
+              text: "תרגול נוסף 💎 (רשות)\nשאלת NOT על טקסט Green Africa.",
             },
             {
               type: "passage-mcq",
