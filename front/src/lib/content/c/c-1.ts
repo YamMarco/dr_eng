@@ -913,7 +913,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               text: '**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
               prompt:
-                'השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.',
+                "השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.",
               modelAnswer:
                 'מילת השאלה: why = מחפשים סיבה.\nמילות מפתח: Dr. Diallo, die.\nאיפה: פסקה II.\nהמשפט: "most trees die because nobody looks after them".\nתשובה: Because nobody looks after them.',
             },
@@ -1656,7 +1656,8 @@ export const c1Lessons: LessonNode[] = [
               text: "The new bridge in Oakton opened in May. It was not finished on time, and no cars were allowed on it for the first week. Cyclists, however, could use it from the first day.",
               questions: [
                 {
-                  prompt: "Which of the following is NOT true about the bridge?",
+                  prompt:
+                    "Which of the following is NOT true about the bridge?",
                   options: [
                     "It opened in May",
                     "It was finished on time",
@@ -1911,7 +1912,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "רמת בחינה 💎\nטקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.",
             },
             {
               type: "passage-mcq",
@@ -2564,7 +2565,9 @@ export const c1Lessons: LessonNode[] = [
               text: "The city promised a new park, but nothing was built for years. Although residents complained often, the council took no action.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [6, 12] }],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [6, 12] },
+              ],
             },
             {
               type: "mark-all",
