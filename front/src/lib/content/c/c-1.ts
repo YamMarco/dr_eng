@@ -1641,7 +1641,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: 'ראיתם בשאלה "Which of the following is NOT true?". מה מחפשים?',
+              prompt:
+                'ראיתם בשאלה "Which of the following is NOT true?". מה מחפשים?',
               options: [
                 "את המשפט שנכון לפי הטקסט",
                 "את המשפט שלא נכון או לא מופיע בטקסט",
@@ -1758,7 +1759,10 @@ export const c1Lessons: LessonNode[] = [
                 {
                   name: "שלילה",
                   color: "rose",
-                  indices: [13, 22, 29, 39, 50, 77, 83, 113, 141, 154, 169, 180, 193, 219, 232],
+                  indices: [
+                    13, 22, 29, 39, 50, 77, 83, 113, 141, 154, 169, 180, 193,
+                    219, 232,
+                  ],
                 },
               ],
             },
@@ -1856,10 +1860,7 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "בלי לראות NOT בוחרים משפט נכון. אבל NOT ביקש בדיוק ההפך - התשובה נפסלת.",
             },
-            {
-              type: "preface",
-              text: "ועכשיו טקסט קצר ושאלה אמיתית.",
-            },
+            { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: "The new bridge in Oakton opened in May. It was not finished on time, and no cars were allowed on it for the first week. Cyclists, however, could use it from the first day.",
@@ -1882,58 +1883,8 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "passage-mcq",
-              text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
-              questions: [
-                {
-                  prompt: "Which of the following does Dr. Klein NOT say?",
-                  options: [
-                    "Adults understand explanations",
-                    "Adults correct mistakes faster",
-                    "Adults prefer group lessons",
-                    "Adults are not afraid to ask questions",
-                  ],
-                  correctIndex: 2,
-                },
-                {
-                  prompt: "איך ידעתם שזו התשובה?",
-                  options: [
-                    "כי היא הכי ארוכה",
-                    "כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא",
-                    "כי היא נשמעת לא הגיונית",
-                    "ניחשנו",
-                  ],
-                  correctIndex: 1,
-                },
-                {
-                  prompt: "According to paragraph I, which of the following is NOT true?",
-                  options: [
-                    "Over 30% of adults in large cities cannot swim",
-                    "Many adults who cannot swim feel embarrassed",
-                    "Experts say adults are too old to learn",
-                    "Learning to swim as an adult is more common than people think",
-                  ],
-                  correctIndex: 2,
-                },
-                {
-                  prompt: "Which of the following is NOT mentioned in paragraph III?",
-                  options: [
-                    "Classes are available in most cities",
-                    "Some programs meet only once a week",
-                    "Adult classes are cheaper than private lessons",
-                    "Adults who practice usually progress in under two months",
-                  ],
-                  correctIndex: 2,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
               type: "preface",
-              text: "YOUR TURN - שאלת NOT על פסקה III. בדקו כל אפשרות מול הטקסט.",
+              text: "{d:rtl}אתם - שאלת NOT על פיסקה. בהצלחה!",
             },
             {
               type: "passage-mcq",
@@ -1975,6 +1926,54 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "preface",
               text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.",
+            },
+            {
+              type: "passage-mcq",
+              text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+              questions: [
+                {
+                  prompt: "Which of the following does Dr. Klein NOT say?",
+                  options: [
+                    "Adults understand explanations",
+                    "Adults correct mistakes faster",
+                    "Adults prefer group lessons",
+                    "Adults are not afraid to ask questions",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "איך ידעתם שזו התשובה?",
+                  options: [
+                    "כי היא הכי ארוכה",
+                    "כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא",
+                    "כי היא נשמעת לא הגיונית",
+                    "ניחשנו",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to paragraph I, which of the following is NOT true?",
+                  options: [
+                    "Over 30% of adults in large cities cannot swim",
+                    "Many adults who cannot swim feel embarrassed",
+                    "Experts say adults are too old to learn",
+                    "Learning to swim as an adult is more common than people think",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt:
+                    "Which of the following is NOT mentioned in paragraph III?",
+                  options: [
+                    "Classes are available in most cities",
+                    "Some programs meet only once a week",
+                    "Adult classes are cheaper than private lessons",
+                    "Adults who practice usually progress in under two months",
+                  ],
+                  correctIndex: 2,
+                },
+              ],
             },
             {
               type: "passage-mcq",
