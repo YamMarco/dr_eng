@@ -208,6 +208,8 @@ Rule for this document: never overwrite silently. When a step, grade or position
 
 Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 
+*(r5: progress per step, and where to resume, are in section 11.)*
+
 ### Phase 1: trust fixes (about 1 day)
 
 | # | Fix | Done when |
@@ -374,6 +376,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | Claude | Round 4 (implementation): owner ruled P7 not an issue (teacher-sourced claims, step 3 closed). P8 fixed as a parallel track (step 5). P9 polish (step 4), plus the broken l03 self-check. Also scored *but* in l08's exam round (a second copy of a P1 bug) |
 | 2026-09-28 | Claude | Round 4: P6 prototype on l06 + not-q (filler round cut, required fresh-text exam round, real NOT question at the end of the l06 drill) |
 | 2026-09-28 | Claude | Round 5: P6 pattern fixed after owner review (not-q requiredRounds 3; the l06 long text in its own last round) and written into lesson-structure.md. Rollout pair 1: l08 + n-b46b7e2b. Also fixes P2 for however (the rule is now a clue, with questions answered before however/but) |
+| 2026-09-28 | Claude | Added section 11 (implementation status): step-by-step progress with commits, the owner decisions made during implementation, where to resume, and known side effects |
 
 ### Earlier wording (superseded)
 
@@ -423,3 +426,63 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 3. **Scoring advice:** do you have the official marking guidance for extra and missing answers? Step 3 depends on it.
 
 **Round 2 change:** turned into a decision table with each reviewer's position.
+
+## 11. Implementation status
+
+Snapshot: 2026-09-28, commit 585865e. Scope: Parts A and B. Every content change is also logged in `docs/module-c-audit.md`.
+**Grades in sections 1, 3 and 6 are still the pre-fix audit grades.** Re-grade after Phase 1-2 are closed and the changed lessons have been played.
+
+### Plan steps
+
+| Step | Issue | Status | Commits |
+|---|---|---|---|
+| 1 | P1 wrong / ambiguous items | **Done.** All 11 fixed. Found while mapping screens: a second unscored *but* in l08's exam round (fixed), and the l03 round 5 self-check about Dr. Klein on a Dr. Diallo text (rewritten) | b0974fe, cc5f92d, 4127989 |
+| 2 | P2 tips taught as laws | **Partly done.** *however / but* fixed in l08 + n-b46b7e2b. *most / only* is still open and gets fixed with pair 2. The "I search, I don't read" summary line in l00 is still open | 585865e |
+| 3 | P7 exact penalty numbers | **Closed, no change.** Owner ruling: the claims come from a real English teacher | - |
+| 4 | P9 polish | **Done:** typos, stray characters, lost line breaks, broken bold, honest drill and section counts, em-dashes | 4127989 |
+| 5 | P8 vocab gate | **Done:** parallel track. l00's text and the audit's stated intent are updated | 4127989 |
+| 6 | P3 easy distractors (Part A) | **Done:** about 35 items rewritten, each with an explanation | 48fabb0 |
+| 7 | Real final simulation | Not started | - |
+| 8 | Scored written answers | Not started. Spelling from memory (the spelling half of P5) is done, see step 11 | - |
+| 9 | Required fresh-text rounds (P6) | **In progress.** The pattern is agreed and written in `docs/lesson-structure.md` ("Reading round pattern"). Done: l06 + not-q (reference implementation) and l08 + n-b46b7e2b | 12587ad, 99303c2, e2cad79, 585865e |
+| 10 | Runner-level timer | Not started. Needed by step 7 | - |
+| 11 | Part A placement + listen spelling | **Half done:** 48 listen-mode spelling screens with a Hebrew hint, and a fallback to copy mode. Placement check not started | 7d98015 |
+| 12 | Split numbers-names-q; drills | Replaced by the P6 pattern. numbers-names-q is handled in P6 pair 3 | - |
+| 13 | Play-test with students | Not started | - |
+
+### Owner decisions made during implementation
+
+- **Rounds:** everything up to and including the exam-level round is required. Later rounds are optional and labelled "תרגול נוסף (רשות)".
+- **Marking lessons (drills) stay about marking.** They get 2 rules questions from the paired question lesson, and the ~240-word marking text is their own last round.
+- **Question lessons:**
+  - Round 1: rules questions plus a short text with one question.
+  - Round 2: your turn.
+  - Round 3: exam level, a familiar passage (about 4 questions) plus a new text (3 questions).
+  - The owner merged the worked-example round into the exam round.
+- **Spelling:** copy mode stays for weak students, and listen mode is added later in each lesson.
+- **Vocabulary:** runs in parallel with reading, with no gate.
+
+### Resume here (P6 rollout)
+
+1. **Pair 2: l07 + limiters-q.** Apply the pattern and fix P2's *most*: *the most / the only / the main* limit to one answer, but *most* + noun means a majority. Write a new ~240-word marking text and a new exam text.
+2. **Pair 3: l04 + numbers-names-q.** Keep it one lesson:
+   - Round 1: rules for numbers and names, plus a short text.
+   - Round 2: your turn with numbers.
+   - Round 3: your turn with names.
+   - Round 4: exam level (mixed questions plus a new text).
+   - Optional rounds after that. Delete both 🌱 rounds.
+3. **Single lessons l01-l03, l09-l12:** delete the 🌱 rounds, make sure the exam round has a new text, and set `requiredRounds` to the exam round. For l00, delete only the filler, and fix its "I search, I don't read" summary line (step 2).
+4. **Then Phase 3:** the final simulation (step 7, needs step 10) and scored written answers (step 8). They can reuse the new texts written during P6.
+
+New texts written so far (each used in only one lesson):
+- PHONES IN THE LOCKER (not-q)
+- Oakton bridge (not-q)
+- Brookfield car-free street (l06, marking)
+- Clearwater four-day week (l08, marking)
+- museum trip (n-b46b7e2b)
+- THE NIGHT MARKET (n-b46b7e2b)
+
+### Known side effects
+
+- **Relocked lessons:** students partway through a changed lesson may find the next lesson locked again, because more rounds are now required.
+- **Nothing played yet:** the changed screens pass the type check, and the marking positions are verified by script, but none have been played on a device. Locations are in the chat log and `docs/module-c-audit.md`.
