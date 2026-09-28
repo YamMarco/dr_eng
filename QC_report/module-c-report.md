@@ -197,10 +197,10 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 | # | Fix | Done when |
 |---|---|---|
 | 1 | Fix the 11 items in P1. Add explanations to content-1c r4 | Every MCQ has exactly one defensible answer; the q-words-2 key is `because` |
-| 2 | Rewrite the tips as clues to check: "*however* often signals the writer's point, so check what the question asks"; only *the most / the only / the main* limit to one answer. Remove TWO from the anchor item | No screen states either tip as always true; limiters-q r0 and the swim item are rewritten |
-| 3 | Use one consistent message about extra and missing answers, checked against official marking guidance. Verify or remove "90%" and "14/7" | l10, l12 and limiters-q agree; every number is either sourced or removed |
+| 2 | Rewrite the tips as clues to check: "*however* often signals the writer's point, so check what the question asks"; only *the most / the only / the main* limit to one answer. Remove TWO from the anchor item. Change l00's round 1 summary line "אני לא קורא אותו - אני מחפש בו" so it carries the boundary l00's third preface already states (search first, then read that sentence) | No screen states a tip as always true; limiters-q r0, the swim item and the l00 summary line are rewritten |
+| 3 | Remove every exact penalty ("= 0", "7 of 14") and teach the safe behaviour instead ("follow ONE/TWO exactly; extra or missing answers can cost points"). Remove "90%". Bring numbers back only with an official source | l10, l12 and limiters-q say the same thing, and no penalty number appears without a source |
 | 4 | Polish pass (P9), including a route-length line in each section intro | Searching for the typos returns nothing; the counts match the rounds |
-| 5 | Decide the vocab gate: restore `required: ['vocab-test']` on l00, or reword l00's preface and the audit | l00's code and text agree |
+| 5 | Vocab gate: both reviewers recommend leaving reading open and rewriting l00's first preface ("אם אתם פה אז עברתם"). This reverses the intent written in `module-c-audit.md` ("Section 1 purpose"), so it needs your sign-off (section 8) | l00's code, its text and the audit agree |
 
 ### Phase 2: item rigor (about half a day)
 
@@ -212,7 +212,7 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 
 | # | Fix | Done when |
 |---|---|---|
-| 7 | **Real final simulation.** Replace n-7c5330b8 with a 280-350-word, 4-paragraph text and about 9 questions in the exam mix (4 MCQ, short written answers, completion), timed as one run. Build it from n-221188d1's mix | Its length and question mix match section 2 |
+| 7 | **Real final simulation.** Replace n-7c5330b8 with a 280-350-word, 4-paragraph text and about 9 questions in the exam mix (4 MCQ, short written answers, completion), timed as one run. Build it from n-221188d1's mix. Keep the id `n-7c5330b8` so existing edges still work, and change the Part C intro (`c-a45c17de`, which requires it today) to require `n-649ed18f` instead, so writing doesn't sit behind a 9-question timed test | Its length and question mix match section 2; Part C unlocks without it |
 | 8 | **Scored written answers** in l10, l11, l12 and the simulation: a `passage-quiz` with keyword scoring (no numbers in keywords), then the model answer and a 3-point checklist (answers the exact question, uses evidence, doesn't repeat the stem word) | At least one scored typed answer per node |
 | 9 | **Require a fresh-text round** in each reading node with `requiredRounds`; keep extra repetition optional. Swap the recycled texts in the last rounds of l09 to l12 for new ones | Unlocking the next node means the student applied the skill to an unseen text |
 | 10 | The simulation needs a whole-run timer. Build the runner-level `timerKey` on `LessonRound` (design in `module-c-audit.md` §7a) | One stopwatch across mixed screen types |
@@ -232,9 +232,11 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 
 ## 8. Open questions for you
 
-1. **The vocab gate:** keep reading locked until vocab-test is done, or leave vocabulary as a parallel track?
-2. **The simulation:** replace n-7c5330b8, or add a new node after it?
-3. **Scoring advice:** do you have the official marking guidance for extra and missing answers? Step 3 depends on it.
+| # | Question | Reviewers' position | Needs you? |
+|---|---|---|---|
+| 1 | Vocab gate: lock reading behind vocab-test, or run vocabulary as a parallel track? | Both: parallel track, fix l00's text, add placement later | **Yes.** It reverses the audit's stated intent. The last change (ce2e759) already removed the gate, so confirm that was on purpose |
+| 2 | Simulation: replace n-7c5330b8 or add a node after it? | Both: replace, keep n-649ed18f as the rehearsal. Claude adds: re-point Part C's prerequisite | No, unless you object |
+| 3 | Scoring advice for extra and missing answers | Both: remove exact penalties until there's an official source | Only if you have the marking guidance |
 
 ## 9. Reviewers' views
 
@@ -253,7 +255,7 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 - **content-2c is the standard, and n-221188d1 is the best synthesis node.**
 
 **Where I disagree with GPT**
-- **Part A at 7.4 is too high.** It rewards structure that's there on paper while about a quarter of the items can be guessed or are keyed wrong. The structure is good; the items aren't there yet.
+- **Part A at 7.4 is too high.** It rewards structure that's there on paper while a large share of the items can be guessed or are keyed wrong (roughly 1 in 6 scored Part A items; see my round 2 correction). The structure is good; the items aren't there yet.
 - **"I search, I don't read" is not the problem GPT says it is.** For the target student (weak and translating every word), it is the right correction. I'd keep the slogan and add one line in l01 ("then read the paragraph that holds the answer") rather than soften it.
 - **The value-by-use numbers (8.3 / 7.3 / 5.8) are guesses.** I kept them as useful framing but marked them as estimates. Nothing measured them.
 - **Order of work.** GPT puts the simulation first. I'd fix items first: it's a day of work, it stops harm now, and a new simulation built alongside broken items would inherit the same problems.
@@ -299,9 +301,29 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 
 The joint plan has the right order: restore trust, raise item rigor, validate the claimed outcome, then optimize speed and personalization. I would not add more vocabulary or more micro-lessons before those four phases are complete. The module already has enough content; what it needs now is fewer invalid successes and one convincing proof that learning transfers to the real task.
 
+### Claude, round 2
+
+**Where GPT changed my mind**
+- **No exact penalties.** GPT's wording ("follow ONE/TWO exactly; extra or missing answers can cost points") is better than my "verify or remove". It's safe whatever the official answer turns out to be. Step 3 now uses it.
+- **Replace n-7c5330b8, don't add a node after it.** Agreed. Adding a node would leave a test that overstates readiness in the path.
+- **The vocab gate.** I had left this open. On the merits I agree with GPT: vocab-test requires every Part A node, so a hard gate puts about 430 screens in front of the best lessons in the module. My own student voice complained about exactly that. The reason it stays with you is that it reverses what `module-c-audit.md` says on purpose, not because either of us is unsure.
+
+**Where I hold my position**
+- **The slogan is already qualified in l00.** GPT asks for the boundary to go into l00 itself. It's already there. The third preface says "לא קוראים הכול. ולא מדלגים ישר לשאלות... צריך לדעת מה לקרוא קודם", and the step list ends with "read that sentence". The only unqualified line is the round 1 summary: "אני לא קורא אותו - אני מחפש בו". So the fix is one line, not a new screen. It's now part of step 2. We agree on the goal; the disagreement was about where the problem is, and the source settles it.
+- **I never proposed trading the simulation away.** GPT reads my original list as putting fresh texts ahead of the simulation. My original list had no simulation at all (I missed the gap, and I said so). Now that it's in the plan, I agree it's non-negotiable after Phase 1-2.
+
+**Where GPT's plan is inconsistent**
+- **The simulation would become a hard gate.** GPT argues against the vocab gate because a long required block causes dropout. But `c-a45c17de` (the Part C intro) requires `n-7c5330b8`. Turn that node into a 9-question timed simulation and writing is locked behind the hardest test in the module: the same dropout risk, in a worse place. Step 7 now re-points Part C to `n-649ed18f`.
+
+**Correcting myself**
+- **"About a quarter" was wrong.** In round 1 I wrote that about a quarter of Part A's items can be guessed or are keyed wrong. The numbers I have: about 49 dump lines with joke options and 11 broken items, against roughly 300 scored Part A items. That's about 1 in 6, and the 49 is a line count, not an exact item count. The direction holds (Part A's 7.4 was too high); the figure didn't. I've corrected it above.
+
+**Still open between us:** nothing of substance. The decision left is yours: question 1 in section 8.
+
 ## 10. Change record
 
 | Date | Reviewer | Change |
 |---|---|---|
 | 2026-09-28 | Claude | Created the combined report, reconciled both audits, added the joint grades, source-checked issue list and phased plan |
 | 2026-09-28 | GPT | Reviewed the combined report and both independent reports; accepted the lower Part A grade; added priorities, agreements, disagreements, decisions on the three open questions, and this change record |
+| 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table |
