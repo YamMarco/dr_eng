@@ -501,7 +501,7 @@ export const c1Lessons: LessonNode[] = [
                 '"What does contribute mean?" - לא מכירים את המילה. מה עושים?',
               options: [
                 "🔴 עוצרים ומוותרים על השאלה",
-                "🟢 מילון - 30 שניות - ועונים",
+                "🟡 מילון - 30 שניות - ועונים",
                 "עונים בניחוש מהיר",
                 "מתרגמים את כל הפסקה",
               ],
@@ -1322,9 +1322,9 @@ export const c1Lessons: LessonNode[] = [
                 "בכולן - 1, 2, 3 ו-4",
                 "רק ב-3 ו-4",
               ],
-              correctIndex: 2,
+              correctIndex: 1,
               explanation:
-                '"How many" · "2019" · "TWO" · "percentage" - כולם מספרים, כולם Eye Catchers.',
+                '"How many" · "2019" · "percentage" = מספרים שמחפשים בטקסט. "Give TWO answers" היא הוראה שאומרת כמה לכתוב, לא מספר שמחפשים.',
             },
             {
               type: "self-check",
@@ -2236,11 +2236,12 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 1,
                 },
                 {
-                  prompt: "השאלה כללה את המילה most. כמה תשובות מותר לכתוב?",
+                  prompt:
+                    'בשאלה כתוב "in most cities". האם most כאן מגביל לתשובה אחת?',
                   options: [
-                    "תשובה אחת בלבד",
-                    "שתיים - ליתר ביטחון",
-                    "כל מה שמצאתם בפסקה",
+                    'לא - כאן most = "רוב". מגבילות רק the most / the only / the main',
+                    "כן - כל most בשאלה = תשובה אחת",
+                    "כן - כי כתוב cities ברבים",
                     "תלוי באורך השאלה",
                   ],
                   correctIndex: 0,
@@ -2406,7 +2407,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'סיטואציה מהבחינה:\n\n"What does paragraph I say about people who cannot swim?"\n\nהתלמיד קרא: "Many people cannot swim. However, experts say it is never too late."\nהוא כתב: "Many people cannot swim."\nציון: 0 נקודות.',
+          text: 'סיטואציה מהבחינה:\n\n"What do experts say about people who cannot swim?"\n\nהתלמיד קרא: "Many people cannot swim. However, experts say it is never too late."\nהוא כתב: "Many people cannot swim."\nציון: 0 נקודות.',
         },
         {
           type: "preface",
@@ -2527,11 +2528,11 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mark-all",
-              instruction: "Mark the contrast word in the paragraph.",
+              instruction: "Mark every contrast word in the paragraph.",
               text: "The city promised a new park, but nothing was built for years. Although residents complained often, the council took no action.",
               dir: "ltr",
               correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [12] }],
+              categories: [{ name: "ניגוד", color: "emerald", indices: [6, 12] }],
             },
             {
               type: "mark-all",
@@ -2852,7 +2853,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT\n\nהשאלה: According to Dr. Okafor, why do teenagers who volunteer feel less stressed?\n\nWhy? ← מחפשים מילת סיבה.\nפסקה II: "teenagers who volunteer feel less stressed and sleep better".\n\nתשובה: Because they feel less stressed and sleep better than those who do not volunteer.',
+          text: 'WATCH IT\n\nהשאלה: Why were the researchers surprised?\n\nWhy? ← מחפשים מילת סיבה.\nפסקה I: "Researchers were surprised because they expected that money and success would be the main reason for happiness."\n\nתשובה: Because they expected that money and success would be the main reason for happiness.',
         },
       ],
       rounds: [
@@ -3703,7 +3704,7 @@ export const c1Lessons: LessonNode[] = [
               questions: [
                 {
                   prompt:
-                    "What does paragraph I say about people who cannot swim?",
+                    "According to paragraph I, what do experts say about adults who cannot swim?",
                   options: [
                     "They feel embarrassed and never try",
                     "It is never too late to learn",

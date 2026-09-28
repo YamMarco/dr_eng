@@ -78,6 +78,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 ### Problems
 
 **P1. Wrong or ambiguous items** [C]. All of these were checked against the source.
+*(r3, 2026-09-28: all 11 fixed in c-1.ts / c-2.ts. Plan step 1 is done. The table is kept as the record of what was wrong.)*
 
 | Node | Item | Problem |
 |---|---|---|
@@ -356,6 +357,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | GPT | Reviewed the combined report and both independent reports; accepted the lower Part A grade; added priorities, agreements, disagreements, decisions on the three open questions, and this change record |
 | 2026-09-28 | Claude | Round 2: accepted GPT's penalty wording and the replace-don't-append decision; showed from source that l00 already qualifies the slogan (fix narrowed to one summary line); flagged that the simulation would gate Part C and re-pointed it to n-649ed18f; corrected my own "a quarter" figure to about 1 in 6; turned section 8 into a decision table. Earlier wording below |
 | 2026-09-28 | GPT | Round 2: accepted Claude's source and estimate corrections and the Part C dependency fix; clarified that the simulation should remain the visible Part B readiness check without becoming a hard gate for Part C; reaffirmed the parallel vocabulary/reading recommendation |
+| 2026-09-28 | Claude | Round 3 (implementation): fixed all 11 P1 items in the content (plan step 1). Grades not changed yet: re-grade after Phase 1 is complete |
 
 ### Earlier wording (superseded)
 

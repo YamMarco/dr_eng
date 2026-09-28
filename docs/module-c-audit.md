@@ -73,6 +73,18 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
 
+## Fixed on 2026-09-28
+
+The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
+- **q-words-2:** mark-word key is now `because`.
+- **content-1c:** the storm, frog and forests items, and the 5 closing MCQs, each have one defensible answer. The closing MCQs now have explanations.
+- **l02:** the dictionary option is labelled 🟡.
+- **l08:** *but* is now scored as a contrast word. The preface question asks what experts say.
+- **l10:** WATCH IT uses a non-circular "why" example.
+- **n-b46b7e2b:** swim item asks what experts say.
+- **limiters-q:** the second question teaches that quantifier *most* does not limit the answer.
+- **numbers-names-q:** "Give TWO" is no longer keyed as a number anchor.
+
 ## Fixed on 2026-09-19
 
 - n-649ed18f and n-7c5330b8 were empty placeholders that kept Part C locked; both now have timed content.

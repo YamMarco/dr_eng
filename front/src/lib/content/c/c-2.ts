@@ -726,7 +726,7 @@ export const c2Lessons: LessonNode[] = [
               type: "mark-word",
               prompt: "סמנו את המילה שמסמנת סיבה:",
               sentence: "The road was closed because of the storm.",
-              correctWordIndex: 3,
+              correctWordIndex: 4,
             },
             {
               type: "mark-all",
@@ -2305,10 +2305,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "The storm ______ many houses. Nothing was left.",
-              options: ["destroyed", "ruined", "moves", "cut through"],
+              options: ["destroyed", "protected", "increased", "built"],
               correctIndex: 0,
               layout: "honeycomb",
-              explanation: "לא נשאר כלום = destroyed.",
+              explanation:
+                "לא נשאר כלום = destroyed. protected הפוך (הגן), increased לא מתאים לבתים, ו-built הפוך (בנה).",
             },
             {
               type: "mcq",
@@ -2451,10 +2452,11 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt: "A rare ______ of frog lives only in this river.",
-              options: ["type", "species", "increase", "gender"],
+              options: ["habitat", "species", "increase", "pollution"],
               correctIndex: 1,
               layout: "honeycomb",
-              explanation: "מין של צפרדע = species.",
+              explanation:
+                "מין של צפרדע = species. habitat הוא המקום שבו היא חיה, increase היא עלייה, ו-pollution הוא זיהום.",
             },
             {
               type: "mark-word",
@@ -2490,7 +2492,7 @@ export const c2Lessons: LessonNode[] = [
                   options: [
                     "Fire, farming and pollution",
                     "Only rain",
-                    "Pollution\n",
+                    "Scientists and wild animals",
                     "Old trees",
                   ],
                   correctIndex: 0,
@@ -2526,36 +2528,46 @@ export const c2Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "The government wants to ______ the number of plastic bags used every year.",
-              options: ["increase", "reduce", "destroy", "inflate"],
+              options: ["increase", "reduce", "destroy", "protect"],
               correctIndex: 1,
+              explanation:
+                "רוצים פחות שקיות = reduce. increase הפוך (יותר), ו-destroy ו-protect לא מתאימים למספר.",
             },
             {
               type: "mcq",
               prompt:
-                "Some animal ______ may disappear if their habitat is damaged",
-              options: ["species", "protect", "reduce", "types"],
+                "Some animal ______ may disappear if their habitat is damaged.",
+              options: ["species", "protect", "reduce", "increase"],
               correctIndex: 0,
+              explanation:
+                "אחרי animal צריך שם עצם: species (מינים). protect, reduce ו-increase הם פעלים.",
             },
             {
               type: "mcq",
               prompt:
-                "After the area became cleaner, the number of birds began to ______\n",
-              options: ["reduce", "destroy", "increase", "grow"],
+                "After the area became cleaner, the number of birds began to ______.",
+              options: ["reduce", "destroy", "increase", "protect"],
               correctIndex: 2,
+              explanation:
+                "אזור נקי יותר = יותר ציפורים = increase. reduce הפוך, ו-destroy ו-protect לא מתארים שינוי במספר.",
             },
             {
               type: "mcq",
               prompt:
                 "A large fire can ______ thousands of trees in only a few hours.",
-              options: ["increase", "destroy", "protect", "ruin"],
+              options: ["increase", "destroy", "protect", "reduce"],
               correctIndex: 1,
+              explanation:
+                "שריפה הורסת עצים = destroy. protect הפוך, increase הפוך, ו-reduce אומר להקטין מספר, לא לשרוף.",
             },
             {
               type: "mcq",
               prompt:
                 "National parks help ______ wild animals and their natural habitats.",
-              options: ["protect", "increase", "reduce", "guard"],
+              options: ["protect", "increase", "reduce", "destroy"],
               correctIndex: 0,
+              explanation:
+                "פארק לאומי שומר על בעלי חיים = protect. destroy הפוך, ו-increase ו-reduce מדברים על כמות.",
             },
           ],
         },
