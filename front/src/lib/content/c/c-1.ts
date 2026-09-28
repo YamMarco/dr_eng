@@ -2567,7 +2567,7 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "ניגוד", color: "emerald", indices: [12, 33] },
+                { name: "ניגוד", color: "emerald", indices: [6, 12, 33] },
               ],
             },
           ],
