@@ -265,4 +265,43 @@ Ordered by value per effort. Each step says when it counts as done. After any co
 
 ### GPT
 
-*To be written by GPT.*
+**What I care about most**
+
+1. **The claimed outcome must be measured.** If the product says a student is ready for Module C, the final check must require the same core performance as Module C: sustain attention across a full-length text, switch between question types, retrieve evidence, and produce English answers without options. Activity volume is not the same as readiness.
+2. **Student confidence must be earned, not manufactured.** The module's supportive voice is a major asset, but easy distractors, wrong keys and an easy final can turn confidence into false confidence. Honest difficulty is kinder than a high score that collapses on exam day.
+3. **Keep the accessibility while raising validity.** I do not want this turned into a conventional prep book. The Hebrew scaffolding, short screens, memory hooks and explicit routines are exactly why it can reach a weak or anxious student. The goal is to make the evidence of learning stronger, not make the teaching colder or more complicated.
+4. **Prioritize transfer.** A student has learned a strategy only when it works on an unseen text. Repeated passages can build fluency early, but late practice and final assessment must be fresh.
+
+**Where I agree with Claude**
+
+- **The combined 6.8 grade is fairer than my original 7.1.** My structural audit saw the strong lesson architecture but did not inspect every key closely enough. The wrong and ambiguous items, copy-only spelling and fake distractors justify lowering Part A from my original 7.4 teacher grade to 6.5.
+- **Trust fixes come first.** I originally ranked the authentic simulation as the first improvement because it is the largest structural gap. After Claude's source-level item check, I agree that Phase 1 must fix wrong keys and unsafe rules before new assessment content is built. A polished simulation should not sit on top of unreliable teaching items.
+- **The reading chain is the product's core value.** l00-l03 should be protected. The traffic light and P1 routine are memorable, actionable and appropriately designed for the target student.
+- **content-2c is the quality bar for vocabulary.** Its word-form and collocation distractors test knowledge rather than elimination skill.
+- **Typed answers need constrained, transparent scoring.** Keyword scoring is useful only with short, carefully tested keyword sets. It should be paired with the model-answer checklist and should not pretend to judge full language quality.
+- **The estimates are not evidence.** My 8.3 / 7.3 / 5.8 value-by-use scores are useful hypotheses, not measured outcomes. They should be replaced after student observation.
+
+**Where I disagree with Claude or add a qualification**
+
+- **Keep the slogan, but qualify it immediately.** Claude would keep “I search, I don't read” and add the correction in l01. I would keep it as the hook but add its boundary in l00 itself: “I search first; when I find the location, I read that sentence and its context for evidence.” A weak student may remember the slogan and skip the later qualification.
+- **The simulation is the next non-negotiable step after trust fixes.** Claude's original priority list places fresh texts before a full authentic final. Fresh texts help instruction, but without a real final we still cannot tell whether the whole sequence works. Phase 3 should stay intact and should not be traded for more small practice additions.
+- **Do not restore a hard vocabulary gate.** My recommendation is to keep reading available in parallel and rewrite l00's stale preface. Requiring the five-round vocab test before the strongest reading lessons creates a large dropout point and blocks a student who already knows much of the vocabulary. A placement check plus a recommended path is a better gate than forced completion.
+- **Replace, rather than append after, n-7c5330b8.** The path is already long. Turn the node called “Part 1 summary” into the authentic final simulation and keep n-649ed18f as its shorter rehearsal. Adding another node would preserve an assessment that currently overstates readiness.
+- **Do not state exact marking penalties without a primary source.** Until official marking guidance is available, teach the safest behavior (“follow ONE/TWO exactly; extra or missing answers can cost points”) without promising a specific zero or seven-point loss.
+
+**My answers to the three open questions**
+
+1. **Vocab gate:** leave reading open; correct l00's text; later add a placement check and a recommended vocabulary route.
+2. **Simulation:** replace n-7c5330b8 with the full simulation; keep n-649ed18f as the guided rehearsal.
+3. **Scoring advice:** remove exact penalties now. Reintroduce numbers only when they are tied to current official marking guidance.
+
+**Final position**
+
+The joint plan has the right order: restore trust, raise item rigor, validate the claimed outcome, then optimize speed and personalization. I would not add more vocabulary or more micro-lessons before those four phases are complete. The module already has enough content; what it needs now is fewer invalid successes and one convincing proof that learning transfers to the real task.
+
+## 10. Change record
+
+| Date | Reviewer | Change |
+|---|---|---|
+| 2026-09-28 | Claude | Created the combined report, reconciled both audits, added the joint grades, source-checked issue list and phased plan |
+| 2026-09-28 | GPT | Reviewed the combined report and both independent reports; accepted the lower Part A grade; added priorities, agreements, disagreements, decisions on the three open questions, and this change record |
