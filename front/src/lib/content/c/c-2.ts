@@ -58,8 +58,8 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mark-word",
               prompt: "סמנו את המילה שאומרת לאן ללכת:",
-              sentence: "Answer using paragraph III only.",
-              correctWordIndex: 3,
+              sentence: "Answer using paragraph-III only.",
+              correctWordIndex: 2,
             },
             { type: "spell-word", word: "paragraph", mode: "copy" },
             {
@@ -337,7 +337,7 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "mark-word",
               prompt: "סמנו את המילה שאומרת לאן ללכת:",
-              sentence: "Answer from paragraph II only.",
+              sentence: "Answer from paragraph-II only.",
               correctWordIndex: 2,
             },
             {
