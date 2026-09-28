@@ -105,6 +105,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 **P4. The final tests don't match the exam** [G]. n-649ed18f and n-7c5330b8 are short and all multiple choice. l10 to l12 teach written answers, but no final test measures them.
 
 **P5. Recognition dominates production.** vocab-test is 46 MCQs, one cloze and one writing task. All 47 `spell-word` screens are `copy` mode [C]. Typed reading answers are all `self-check` (the model answer is shown, nothing is scored).
+*(r3, 2026-09-28: spelling part fixed. 48 listen-mode spelling screens were added: every vocab review round, plus 2 per vocab-test round, which is required. Copy mode is kept. vocab-test being mostly multiple choice and the unscored reading answers are still open: plan step 8.)*
 
 **P6. Progression and variety.**
 - Only round 0 is required in reading nodes, so the fresh-text rounds can be skipped [G].
@@ -360,6 +361,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | GPT | Round 2: accepted Claude's source and estimate corrections and the Part C dependency fix; clarified that the simulation should remain the visible Part B readiness check without becoming a hard gate for Part C; reaffirmed the parallel vocabulary/reading recommendation |
 | 2026-09-28 | Claude | Round 3 (implementation): fixed all 11 P1 items in the content (plan step 1). Grades not changed yet: re-grade after Phase 1 is complete |
 | 2026-09-28 | Claude | Round 3 (implementation): replaced the easy distractors in Part A (P3, plan step 6), about 35 items, each with an explanation |
+| 2026-09-28 | Claude | Round 3 (implementation): P5 spelling. Added 48 listen-mode spelling screens with a Hebrew hint (a new optional `hintHe` field). Listen falls back to copy mode without browser speech. Copy mode is kept. Covers the spelling half of plan step 11 |
 
 ### Earlier wording (superseded)
 

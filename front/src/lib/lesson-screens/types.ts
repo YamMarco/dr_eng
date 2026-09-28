@@ -203,13 +203,16 @@ export const MATCH_PAIRS_MAX_MISTAKES = 1;
 
 /**
  * Type the word into a text input. `mode: 'copy'` shows the word to
- * transcribe; `mode: 'listen'` hides it behind a (not yet wired up) audio
- * button instead — a dictation exercise, ready for real audio later.
+ * transcribe; `mode: 'listen'` hides it behind speak buttons (browser
+ * speech) - a dictation exercise. Where the browser can't speak, listen
+ * falls back to copy so the student is never stuck.
  */
 export type SpellWordScreen = {
 	type: 'spell-word';
 	word: string;
 	mode: 'copy' | 'listen';
+	/** Listen mode only: Hebrew meaning under the speak buttons, for words that sound alike. */
+	hintHe?: string;
 	/** Quiz mode only: weight for scoring. Ignored in lesson mode. Default 1. */
 	points?: number;
 };

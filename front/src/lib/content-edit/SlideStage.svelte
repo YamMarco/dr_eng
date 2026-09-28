@@ -806,6 +806,16 @@
 									הכתבה (לפי שמיעה)
 								</label>
 							</div>
+							{#if screen.mode === 'listen'}
+								<label class="mt-2 flex flex-col gap-1 text-xs text-muted">
+									רמז בעברית (אופציונלי)
+									<input
+										bind:value={screen.hintHe}
+										dir="rtl"
+										class="rounded-lg border-2 border-line bg-surface p-1"
+									/>
+								</label>
+							{/if}
 						{:else if screen.type === 'word-card'}
 							<label
 								class="mt-4 flex flex-col gap-1 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"

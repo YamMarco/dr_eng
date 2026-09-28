@@ -82,7 +82,7 @@ Add an object to the right section's array:
 | `mark-word` | `sentence`, `correctWordIndex`, `dir?` | 1 |
 | `cloze-pick` | `clause`, `options[]`, `correctIndices[]`, `explanation?` | 1 |
 | `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
-| `spell-word` | `word`, `mode: 'copy' \| 'listen'` | 1 |
+| `spell-word` | `word`, `mode: 'copy' \| 'listen'`, `hintHe?` (listen only: Hebrew meaning under the speak buttons, for sound-alike words) | 1 |
 | `match-pairs` | `pairs[{en, he}]` | 1 |
 | `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed`, `maxTypos?` (default 1), `capitalIsError?` (default true) | 1 |
 | `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
@@ -103,6 +103,11 @@ sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
 this instead of `writing-task` when the "free" part of an answer is really a
 small closed set (a stance opener, a verb form, a connector word, …), in any
 lesson, so scoring stays a lookup instead of fuzzy-matching typed text.
+`spell-word` listen mode speaks the word once on arrival (browser speech,
+en-GB) and the buttons replay it, at normal or slow speed. Where the browser
+can't speak, it falls back to copy mode, so the screen never dead-ends. Keep
+copy right after a word's card (weak students need it), and put listen later,
+in the review round or a test. Don't dictate homophones (affect / effect).
 `match-pairs`: tap an English word and its Hebrew meaning, in either order; the Hebrew column is
 shuffled per mount. One scored question, passes with at most 1 wrong tap; the
 button opens once every pair is matched.

@@ -6,6 +6,8 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import { onMount } from 'svelte';
+	import { RATE, speak, speechSupported } from '$lib/speech';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -30,6 +32,15 @@
 	let input = $state(restoredAnswer ?? '');
 	let checked = $state(false);
 	let correct = $derived(input.trim().toLowerCase() === screen.word.trim().toLowerCase());
+
+	// Listen needs browser speech; without it, fall back to showing the word.
+	let canSpeak = $state(false);
+	let listen = $derived(screen.mode === 'listen' && canSpeak);
+	onMount(() => {
+		canSpeak = speechSupported();
+		// Play once on arrival; the buttons replay it.
+		if (screen.mode === 'listen' && canSpeak) speak(screen.word, RATE.normal);
+	});
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -58,13 +69,11 @@
 
 {#if mode === 'lesson'}
 	<ExerciseKindBadge
-		label={screen.mode === 'copy'
-			? i18n.dict.exerciseKind.spellWordCopy
-			: i18n.dict.exerciseKind.spellWordListen}
+		label={listen ? i18n.dict.exerciseKind.spellWordListen : i18n.dict.exerciseKind.spellWordCopy}
 	/>
 {/if}
 
-{#if screen.mode === 'copy'}
+{#if !listen}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellCopyPrompt}</p>
 	<!-- Not selectable, so the word has to be typed out rather than copy-pasted. -->
 	<p
@@ -78,6 +87,9 @@
 {:else}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellListenPrompt}</p>
 	<div class="mb-4"><SpeakButtons text={screen.word} size="lg" disabled={checked} /></div>
+	{#if screen.hintHe}
+		<p class="-mt-2 mb-4 text-sm text-muted" dir="rtl">{screen.hintHe}</p>
+	{/if}
 {/if}
 
 <input

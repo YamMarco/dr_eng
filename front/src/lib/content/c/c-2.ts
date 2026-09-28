@@ -351,6 +351,7 @@ export const c2Lessons: LessonNode[] = [
               ],
               wordBank: ["according to", "give TWO answers", "paragraph"],
             },
+            { type: "spell-word", word: "paragraph", mode: "listen", hintHe: "פסקה" },
           ],
         },
         {
@@ -745,6 +746,9 @@ export const c2Lessons: LessonNode[] = [
                 "in order to",
               ],
             },
+            { type: "spell-word", word: "circle", mode: "listen", hintHe: "להקיף" },
+            { type: "spell-word", word: "explain", mode: "listen", hintHe: "להסביר" },
+            { type: "spell-word", word: "because", mode: "listen", hintHe: "כי" },
           ],
         },
         {
@@ -1077,6 +1081,9 @@ export const c2Lessons: LessonNode[] = [
               ],
               wordBank: ["however", "although", "in addition", "as a result"],
             },
+            { type: "spell-word", word: "however", mode: "listen", hintHe: "אולם" },
+            { type: "spell-word", word: "although", mode: "listen", hintHe: "למרות ש" },
+            { type: "spell-word", word: "therefore", mode: "listen", hintHe: "לכן" },
           ],
         },
         {
@@ -1372,6 +1379,9 @@ export const c2Lessons: LessonNode[] = [
               ],
               wordBank: ["found", "decreased", "increased", "for example"],
             },
+            { type: "spell-word", word: "increase", mode: "listen", hintHe: "לעלות" },
+            { type: "spell-word", word: "decrease", mode: "listen", hintHe: "לרדת" },
+            { type: "spell-word", word: "discovered", mode: "listen", hintHe: "גילה" },
           ],
         },
         {
@@ -1758,6 +1768,11 @@ export const c2Lessons: LessonNode[] = [
                 "residents",
               ],
             },
+            { type: "spell-word", word: "environment", mode: "listen", hintHe: "סביבה" },
+            { type: "spell-word", word: "volunteers", mode: "listen", hintHe: "מתנדבים" },
+            { type: "spell-word", word: "community", mode: "listen", hintHe: "קהילה" },
+            { type: "spell-word", word: "charity", mode: "listen", hintHe: "ארגון צדקה" },
+            { type: "spell-word", word: "residents", mode: "listen", hintHe: "תושבים" },
           ],
         },
         {
@@ -2133,6 +2148,10 @@ export const c2Lessons: LessonNode[] = [
                 "effective",
               ],
             },
+            { type: "spell-word", word: "discover", mode: "listen", hintHe: "לגלות" },
+            { type: "spell-word", word: "results", mode: "listen", hintHe: "תוצאות" },
+            { type: "spell-word", word: "researchers", mode: "listen", hintHe: "חוקרים" },
+            { type: "spell-word", word: "effective", mode: "listen", hintHe: "יעיל" },
           ],
         },
         {
@@ -2496,6 +2515,11 @@ export const c2Lessons: LessonNode[] = [
               ],
               wordBank: ["destroy", "reduce", "species", "protect", "increase"],
             },
+            { type: "spell-word", word: "increase", mode: "listen", hintHe: "לעלות" },
+            { type: "spell-word", word: "reduce", mode: "listen", hintHe: "להקטין" },
+            { type: "spell-word", word: "protect", mode: "listen", hintHe: "להגן" },
+            { type: "spell-word", word: "destroy", mode: "listen", hintHe: "להרוס" },
+            { type: "spell-word", word: "species", mode: "listen", hintHe: "מין (ביולוגי)" },
           ],
         },
         {
@@ -2915,6 +2939,11 @@ export const c2Lessons: LessonNode[] = [
                 "achieve",
               ],
             },
+            { type: "spell-word", word: "improve", mode: "listen", hintHe: "לשפר" },
+            { type: "spell-word", word: "develop", mode: "listen", hintHe: "לפתח" },
+            { type: "spell-word", word: "achieve", mode: "listen", hintHe: "להשיג" },
+            { type: "spell-word", word: "skills", mode: "listen", hintHe: "מיומנויות" },
+            { type: "spell-word", word: "education", mode: "listen", hintHe: "חינוך" },
           ],
         },
         {
@@ -3281,6 +3310,10 @@ export const c2Lessons: LessonNode[] = [
                 "opportunity",
               ],
             },
+            { type: "spell-word", word: "cause", mode: "listen", hintHe: "לגרום" },
+            { type: "spell-word", word: "require", mode: "listen", hintHe: "לדרוש" },
+            { type: "spell-word", word: "benefit", mode: "listen", hintHe: "יתרון" },
+            { type: "spell-word", word: "opportunity", mode: "listen", hintHe: "הזדמנות" },
           ],
         },
         {
@@ -3652,6 +3685,11 @@ export const c2Lessons: LessonNode[] = [
                 "health",
               ],
             },
+            { type: "spell-word", word: "responsible", mode: "listen", hintHe: "אחראי" },
+            { type: "spell-word", word: "encourage", mode: "listen", hintHe: "לעודד" },
+            { type: "spell-word", word: "support", mode: "listen", hintHe: "לתמוך" },
+            { type: "spell-word", word: "society", mode: "listen", hintHe: "חברה" },
+            { type: "spell-word", word: "health", mode: "listen", hintHe: "בריאות" },
           ],
         },
         {
@@ -3806,6 +3844,8 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "דוגמאות = For example.",
             },
+            { type: "spell-word", word: "environment", mode: "listen", hintHe: "סביבה" },
+            { type: "spell-word", word: "protect", mode: "listen", hintHe: "להגן" },
           ],
         },
         {
@@ -3906,6 +3946,8 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "ממצא = found that. results הוא שם עצם, effective הוא תואר, ו-increased (עלה) לא בא לפני that.",
             },
+            { type: "spell-word", word: "species", mode: "listen", hintHe: "מין (ביולוגי)" },
+            { type: "spell-word", word: "education", mode: "listen", hintHe: "חינוך" },
           ],
         },
         {
@@ -3997,6 +4039,8 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "מיומנויות = skills.",
             },
+            { type: "spell-word", word: "researchers", mode: "listen", hintHe: "חוקרים" },
+            { type: "spell-word", word: "results", mode: "listen", hintHe: "תוצאות" },
           ],
         },
         {
@@ -4086,6 +4130,8 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "עוד יתרון = In addition.",
             },
+            { type: "spell-word", word: "responsible", mode: "listen", hintHe: "אחראי" },
+            { type: "spell-word", word: "encourage", mode: "listen", hintHe: "לעודד" },
           ],
         },
         {
@@ -4174,6 +4220,8 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "הזדמנות = opportunity.",
             },
+            { type: "spell-word", word: "opportunity", mode: "listen", hintHe: "הזדמנות" },
+            { type: "spell-word", word: "although", mode: "listen", hintHe: "למרות ש" },
             {
               type: "writing-task",
               prompt:

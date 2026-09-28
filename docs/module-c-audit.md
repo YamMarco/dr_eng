@@ -85,6 +85,13 @@ The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
 - **limiters-q:** the second question teaches that quantifier *most* does not limit the answer.
 - **numbers-names-q:** "Give TWO" is no longer keyed as a number anchor.
 
+P5, spelling from memory (same day):
+- **New screens:** 48 listen-mode `spell-word` screens (spelling by ear). Every vocab node's review round gets one per single word. vocab-test gets 2 per round, 10 in total, and because vocab-test is required, every student does them.
+- **Copy mode:** the screens right after each card are unchanged.
+- **Hebrew hint:** listen now has an optional `hintHe` (the word's meaning, shown under the play buttons).
+- **Fallback and auto-play:** where the browser can't speak, the screen falls back to copy mode. The word plays once when the screen opens.
+- **affect is left out of dictation:** it sounds the same as effect.
+
 P3, easy distractors (same day):
 - **Nodes changed:** about 35 items in nav-words-2, content-1a, 1b, 1c, 2a, 2b and vocab-test. There are no more holiday / bicycle / window / shoes / paint / sing / cook / ate options.
 - **New distractors:** word forms (improve / improvement, result / results, cause / causes), same-node words that were already carded, and opposites.
