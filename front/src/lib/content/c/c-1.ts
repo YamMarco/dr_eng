@@ -2499,6 +2499,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "however / but - סימון בטקסט",
     titleEn: "Contrast Words",
     required: ["n-221188d1"],
+    requiredRounds: 5,
     position: { x: 0, y: 1370 },
     big: false,
     content: {
@@ -2517,7 +2518,7 @@ export const c1Lessons: LessonNode[] = [
           lines: [
             "לפני however: מידע כללי, רקע, בעיה.",
             "אחרי however: הנקודה החשובה. הסיפור האמיתי.",
-            "שאלה שנוגעת למשפט עם however - התשובה כמעט תמיד מה שאחריו.",
+            "however מסמן את הנקודה של הכותב, אבל עונים על מה שהשאלה שואלת: לפעמים התשובה דווקא לפניו.",
           ],
         },
         {
@@ -2604,6 +2605,19 @@ export const c1Lessons: LessonNode[] = [
               categories: [{ name: "ניגוד", color: "emerald", indices: [8] }],
             },
             {
+              type: "mcq",
+              prompt:
+                '"The test was hard. However, most students passed." - מה הנקודה של הכותב?',
+              options: [
+                '"The test was hard"',
+                '"most students passed"',
+                "שתיהן חשובות באותה מידה",
+              ],
+              correctIndex: 1,
+              explanation:
+                "however מסמן פנייה: לפניו הרקע (המבחן היה קשה), ואחריו הנקודה של הכותב (רוב התלמידים עברו).",
+            },
+            {
               type: "mark-all",
               instruction: "Mark the contrast word in the sentence.",
               text: "Although the city is small, it has a famous university.",
@@ -2633,6 +2647,19 @@ export const c1Lessons: LessonNode[] = [
               categories: [
                 { name: "ניגוד", color: "emerald", indices: [6, 12] },
               ],
+            },
+            {
+              type: "mcq",
+              prompt:
+                'השאלה: "What did the city promise?"\nהטקסט: "The city promised a new park, but nothing was built for years."\nאיפה התשובה?',
+              options: [
+                "לפני but - שם כתוב מה העירייה הבטיחה",
+                "אחרי but - התשובה תמיד שם",
+                "התשובה לא מופיעה בטקסט",
+              ],
+              correctIndex: 0,
+              explanation:
+                "but מסמן את הנקודה של הכותב, אבל השאלה שואלת מה הבטיחו - וזה כתוב לפני but. תמיד עונים על מה שהשאלה שואלת.",
             },
             {
               type: "mark-all",
@@ -2668,6 +2695,28 @@ export const c1Lessons: LessonNode[] = [
               correctIndices: [],
               categories: [
                 { name: "ניגוד", color: "emerald", indices: [6, 12, 33] },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת ניגוד - בדיוק כמו שתעשו לפני שאלה על however בבחינה.",
+            },
+            {
+              type: "mark-all",
+              instruction: "Mark every contrast word in the text.",
+              text: "In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nAccording to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nYet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nToday, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                {
+                  name: "ניגוד",
+                  color: "emerald",
+                  indices: [25,  55,  87,  114,  128,  138,  167,  184,  200,  226],
+                },
               ],
             },
           ],
@@ -3669,6 +3718,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "however / but - כמו במבחן",
     titleEn: "Contrast Words",
     required: ["l08"],
+    requiredRounds: 3,
     position: { x: 0, y: 1500 },
     big: false,
     content: {
@@ -3683,7 +3733,7 @@ export const c1Lessons: LessonNode[] = [
           lines: [
             "לפני however: מידע כללי, רקע, בעיה.",
             "אחרי however: הנקודה החשובה. הסיפור האמיתי.",
-            "שאלה שנוגעת למשפט עם however - התשובה כמעט תמיד מה שאחריו.",
+            "however מסמן את הנקודה של הכותב, אבל עונים על מה שהשאלה שואלת: לפעמים התשובה דווקא לפניו.",
           ],
         },
       ],
@@ -3692,7 +3742,66 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "YOUR TURN - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
+              text: "{d:rtl}however / but מסמנים פנייה בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל תמיד עונים על מה שהשאלה שואלת.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה של הכותב?',
+              options: [
+                '"Many people cannot swim"',
+                '"it is never too late"',
+                "שתיהן חשובות באותה מידה",
+              ],
+              correctIndex: 1,
+              explanation:
+                'however מסמן פנייה: קודם רקע, ואז הנקודה של הכותב - "it is never too late".',
+            },
+            {
+              type: "mcq",
+              prompt: "however = פנייה. מה בדרך כלל מגיע אחריו?",
+              options: ["הרקע או הבעיה", "הנקודה של הכותב", "דוגמה"],
+              correctIndex: 1,
+              explanation:
+                "לפני however בדרך כלל רקע או בעיה, ואחריו הנקודה של הכותב.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                'השאלה: "What problem do many adults have?"\nהטקסט: "Many adults cannot swim. However, experts say it is never too late."\nאיפה התשובה?',
+              options: [
+                "לפני however - שם כתובה הבעיה",
+                "אחרי however - התשובה תמיד שם",
+                "התשובה לא מופיעה בטקסט",
+              ],
+              correctIndex: 0,
+              explanation:
+                "however מסמן את הנקודה של הכותב, אבל השאלה שואלת על הבעיה - והבעיה כתובה לפני however. קודם מבינים מה השאלה שואלת.",
+            },
+            { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
+            {
+              type: "passage-mcq",
+              text: "The school trip to the museum was cancelled because of the storm. However, the students did not stay at home: their teacher took them to the science centre instead.",
+              questions: [
+                {
+                  prompt: "According to the text, where did the students go?",
+                  options: [
+                    "They stayed at home",
+                    "They went to the museum",
+                    "They went to the science centre",
+                    "They went to see the storm",
+                  ],
+                  correctIndex: 2,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "{d:rtl}אתם - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
             },
             {
               type: "mcq",
@@ -3723,34 +3832,95 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: however / but = פנייה. מה שאחריו = הנקודה.",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף: לא כל תשובה נמצאת אחרי however.",
             },
             {
-              type: "mcq",
-              prompt:
-                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה החשובה?',
-              options: [
-                '"Many people cannot swim"',
-                '"it is never too late"',
-                "שתיהן חשובות באותה מידה",
+              type: "passage-mcq",
+              text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+              questions: [
+                {
+                  prompt:
+                    "According to paragraph I, what do experts say about adults who cannot swim?",
+                  options: [
+                    "They feel embarrassed and never try",
+                    "It is never too late to learn",
+                    "Swimming classes help adults",
+                    "Most adults learn as children",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to paragraph I, what problem do many adults in large cities have?",
+                  options: [
+                    "It is never too late for them",
+                    "Over 30% of them cannot swim",
+                    "Classes are too expensive",
+                    "Teachers do not explain well",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to Dr. Klein, why do adults often become stronger swimmers?",
+                  options: [
+                    "It is never too late to learn",
+                    "They understand the teacher and correct mistakes quickly",
+                    "Classes meet three times a week",
+                    "They feel embarrassed",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "In paragraph III, some programs meet only once a week. What do other programs offer?",
+                  options: [
+                    "Private lessons",
+                    "Free classes for adults",
+                    "Three sessions a week",
+                    "Evening classes only",
+                  ],
+                  correctIndex: 2,
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                'מה שאחרי however = הנקודה. "it is never too late" הוא הסיפור האמיתי.',
             },
             {
-              type: "mcq",
-              prompt: "however = פנייה, ומה שלפניו הוא הנקודה החשובה.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. לפני however = רקע. אחרי however = הנקודה.",
-            },
-            {
-              type: "mcq",
-              prompt: "השאלה נוגעת למשפט שיש בו however. מה כמעט תמיד התשובה?",
-              options: ["מה שלפני however", "מה שאחרי however", "לא משנה"],
-              correctIndex: 1,
-              explanation: "מה שאחרי however = הנקודה = התשובה. כמעט תמיד.",
+              type: "passage-mcq",
+              text: "**THE NIGHT MARKET**\n\nI  For years, the old bus station in Porto Verde stood empty after 6 p.m. Local shops closed early, and young people had nowhere to go in the evening.\n\nII  In 2022, the city opened a night market in the station. At first, some residents complained about the noise. However, the market soon became the most popular place in town. Today, more than 3,000 people visit it every Friday.\n\nIII  Although the market is a success, not everyone is happy. Some shop owners in the centre say they lose customers to the market, but others say the crowds help their business too.",
+              questions: [
+                {
+                  prompt:
+                    "According to paragraph II, what happened after the first complaints?",
+                  options: [
+                    "Residents complained about the noise",
+                    "The market soon became the most popular place in town",
+                    "The station stood empty after 6 p.m.",
+                    "Local shops closed early",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "How many people visit the market every Friday?",
+                  options: [
+                    "More than 300",
+                    "More than 3,000",
+                    "About 2,022",
+                    "Six",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt:
+                    "According to paragraph III, what do some shop owners in the centre say?",
+                  options: [
+                    "They lose customers to the market",
+                    "The crowds help their business",
+                    "The market is too noisy",
+                    "The market should close",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
             },
           ],
         },
@@ -3758,7 +3928,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
+              text: "תרגול נוסף 🌟 (רשות)\nסימון ושאלה על however בטקסט מוכר.",
             },
             {
               type: "mark-all",
@@ -3796,23 +3966,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "passage-mcq",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
-              questions: [
-                {
-                  prompt:
-                    "According to paragraph I, what do experts say about adults who cannot swim?",
-                  options: [
-                    "They feel embarrassed and never try",
-                    "It is never too late to learn",
-                    "Swimming classes help adults",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
+              text: "תרגול נוסף 💎 (רשות)\nכתבו את התשובה בעצמכם.",
             },
             {
               type: "self-check",

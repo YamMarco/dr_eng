@@ -100,6 +100,21 @@ Owner review of the prototype (same day):
   - Round 2 (swim passage) got 2 more NOT questions at the same level.
   - Still `requiredRounds: 4`.
 
+P6 rollout, pair 1: l08 + n-b46b7e2b (however / but), same day. Follows the reading round pattern in lesson-structure.md.
+- **l08:**
+  - A rules question mixed into round 2 (the writer's point).
+  - A rules question in round 3 where the answer comes *before* but.
+  - A new round 5 with a 238-word marking text (four-day school week, 10 contrast words).
+  - `requiredRounds: 5`.
+- **n-b46b7e2b:**
+  - Round 1: rules questions, then a short new text (a museum trip) with one question.
+  - Round 2: your turn (Green Africa).
+  - Round 3: exam level.
+    - The familiar swim passage with 4 questions, one answered before however.
+    - A new text, THE NIGHT MARKET, with 3 questions: one after however, one number question, one answered before *but*.
+  - Rounds 4-5 optional. The 🌱 round is deleted. `requiredRounds: 3`.
+- **P2 fixed for however:** the rule line in both summaries now reads "however marks the writer's point, but answer what the question asks: sometimes the answer comes before it".
+
 P8 and P9, same day:
 - **P8, vocab gate:** reading stays open (no gate). l00's opening now says "if you already did the vocabulary, well done; if not, come back to it any time".
 - **P9, typos and characters:** fixed איך איך, הטקטסט / טקטס and תמי. Removed stray ֿ characters and repaired broken bold markers.
