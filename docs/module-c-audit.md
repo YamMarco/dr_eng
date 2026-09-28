@@ -87,7 +87,18 @@ The 11 wrong or ambiguous items from `QC_report/module-c-report.md` P1:
 
 P6 prototype on the NOT pair (same day, to review before rolling out):
 - **not-q:** deleted the 🌱 true/false round. Added a required exam-level round on a new text ("PHONES IN THE LOCKER"): two NOT questions and one normal question, so students don't flip by reflex. `requiredRounds: 4` means teach, worked example, your turn, then the new text. The old 🌟/💎 rounds stay as optional extra practice.
-- **l06:** the English marking round ends with one real NOT question on a fresh text (a bridge). `requiredRounds: 2`.
+- ~~**l06:** the English marking round ends with one real NOT question on a fresh text (a bridge). `requiredRounds: 2`.~~ Superseded after owner review, below.
+
+Owner review of the prototype (same day):
+- **Rule:** rounds are optional only after the round with exam-level questions. Everything up to and including that round is required.
+- **l06 stays about marking.**
+  - Two rules questions from not-q (NOT reverses the question; missing NOT = choosing a true sentence) are now mixed into its English rounds.
+  - Its exam-level round (the last one) ends with a 240-word text, about 3/4 of exam length, for marking NOT words.
+  - `requiredRounds: 4`, all rounds.
+- **not-q:**
+  - The bridge text and its NOT question moved here, to the end of round 1.
+  - Round 2 (swim passage) got 2 more NOT questions at the same level.
+  - Still `requiredRounds: 4`.
 
 P8 and P9, same day:
 - **P8, vocab gate:** reading stays open (no gate). l00's opening now says "if you already did the vocabulary, well done; if not, come back to it any time".

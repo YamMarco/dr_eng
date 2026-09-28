@@ -1553,7 +1553,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - המילה הכי מסוכנת",
     titleEn: "Eye Catcher: NOT",
     required: ["l03"],
-    requiredRounds: 2,
+    requiredRounds: 4,
     position: { x: 0, y: 1020 },
     big: false,
     content: {
@@ -1640,32 +1640,24 @@ export const c1Lessons: LessonNode[] = [
               categories: [{ name: "שלילה", color: "rose", indices: [0] }],
             },
             {
+              type: "mcq",
+              prompt: 'ראיתם בשאלה "Which of the following is NOT true?". מה מחפשים?',
+              options: [
+                "את המשפט שנכון לפי הטקסט",
+                "את המשפט שלא נכון או לא מופיע בטקסט",
+                "את המשפט הכי חשוב בטקסט",
+              ],
+              correctIndex: 1,
+              explanation:
+                "NOT הופך את השאלה: שלוש אפשרויות נכונות, ומחפשים את היוצאת דופן.",
+            },
+            {
               type: "mark-all",
               instruction: "Mark every negative word.",
               text: "There was no plan and no budget for the project.",
               dir: "ltr",
               correctIndices: [],
               categories: [{ name: "שלילה", color: "rose", indices: [2, 5] }],
-            },
-            {
-              type: "preface",
-              text: "ועכשיו שאלה אמיתית: אותה מילה, הפעם בתוך השאלה.",
-            },
-            {
-              type: "passage-mcq",
-              text: "The new bridge in Oakton opened in May. It was not finished on time, and no cars were allowed on it for the first week. Cyclists, however, could use it from the first day.",
-              questions: [
-                {
-                  prompt: "Which of the following is NOT true about the bridge?",
-                  options: [
-                    "It opened in May",
-                    "It was finished on time",
-                    "Cars could not use it in the first week",
-                    "Cyclists could use it from the first day",
-                  ],
-                  correctIndex: 1,
-                },
-              ],
             },
           ],
         },
@@ -1691,6 +1683,18 @@ export const c1Lessons: LessonNode[] = [
               categories: [{ name: "שלילה", color: "rose", indices: [11, 19] }],
             },
             {
+              type: "mcq",
+              prompt: "קראתם שאלה מהר ולא שמתם לב ל-NOT. מה כנראה תבחרו?",
+              options: [
+                "את התשובה הנכונה, במקרה",
+                "משפט נכון מהטקסט - וזו תשובה שגויה",
+                "לא תספיקו לענות",
+              ],
+              correctIndex: 1,
+              explanation:
+                "בלי לראות NOT בוחרים משפט שנכון בטקסט, אבל השאלה ביקשה את ההפך. לכן מסמנים NOT לפני שעונים.",
+            },
+            {
               type: "mark-all",
               instruction: "Mark every negative word.",
               text: "The scientists were not surprised. No earlier test had succeeded, and nobody expected this time to be different.",
@@ -1714,7 +1718,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "רמת בחינה. שני טקסטים. סמנו כל מילת שלילה.",
+              text: "רמת בחינה. שלושה טקסטים, והאחרון באורך של כמעט מבחן. סמנו כל מילת שלילה.",
             },
             {
               type: "mark-all",
@@ -1737,6 +1741,24 @@ export const c1Lessons: LessonNode[] = [
                   name: "שלילה",
                   color: "rose",
                   indices: [6, 13, 23, 26, 36, 42],
+                },
+              ],
+            },
+            {
+              type: "preface",
+              text: "טקסט אחרון, באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת שלילה - בדיוק כמו שתעשו לפני שאלת NOT בבחינה.",
+            },
+            {
+              type: "mark-all",
+              instruction: "Mark every negative word.",
+              text: 'When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nThe town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. "We did not want fewer visitors," he said. "We wanted a centre where people could walk in quiet, clean air."\n\nA year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nStill, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.',
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                {
+                  name: "שלילה",
+                  color: "rose",
+                  indices: [13, 22, 29, 39, 50, 77, 83, 113, 141, 154, 169, 180, 193, 219, 232],
                 },
               ],
             },
@@ -1834,6 +1856,26 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "בלי לראות NOT בוחרים משפט נכון. אבל NOT ביקש בדיוק ההפך - התשובה נפסלת.",
             },
+            {
+              type: "preface",
+              text: "ועכשיו טקסט קצר ושאלה אמיתית.",
+            },
+            {
+              type: "passage-mcq",
+              text: "The new bridge in Oakton opened in May. It was not finished on time, and no cars were allowed on it for the first week. Cyclists, however, could use it from the first day.",
+              questions: [
+                {
+                  prompt: "Which of the following is NOT true about the bridge?",
+                  options: [
+                    "It opened in May",
+                    "It was finished on time",
+                    "Cars could not use it in the first week",
+                    "Cyclists could use it from the first day",
+                  ],
+                  correctIndex: 1,
+                },
+              ],
+            },
           ],
         },
         {
@@ -1861,6 +1903,26 @@ export const c1Lessons: LessonNode[] = [
                     "ניחשנו",
                   ],
                   correctIndex: 1,
+                },
+                {
+                  prompt: "According to paragraph I, which of the following is NOT true?",
+                  options: [
+                    "Over 30% of adults in large cities cannot swim",
+                    "Many adults who cannot swim feel embarrassed",
+                    "Experts say adults are too old to learn",
+                    "Learning to swim as an adult is more common than people think",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "Which of the following is NOT mentioned in paragraph III?",
+                  options: [
+                    "Classes are available in most cities",
+                    "Some programs meet only once a week",
+                    "Adult classes are cheaper than private lessons",
+                    "Adults who practice usually progress in under two months",
+                  ],
+                  correctIndex: 2,
                 },
               ],
             },

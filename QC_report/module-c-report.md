@@ -113,6 +113,11 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - numbers-names-q has 10 rounds. The l04/l06/l07/l08 drills only mark words and never ask a question.
 - Many "PRACTICE Round 1" rounds are true/false items about the method itself.
 *(r4, 2026-09-28: prototyped on l06 + not-q only, for owner review. Roll out to the other reading nodes if approved. Claude's advice, in order: cut the 🌱 filler rounds and require a fresh-text exam round; write about 6 new texts on new topics; split numbers-names-q; end each marking drill with one real question.)*
+*(r5, 2026-09-28, owner review of the prototype:*
+*- **Rounds:** optional rounds come only after the exam-level round.*
+*- **Drills stay about marking:** l06 now mixes in not-q's rules questions and ends with a 240-word marking text.*
+*- **Questions live in the -q node:** the short-text question moved to not-q, and not-q round 2 got 2 more NOT questions.*
+*The earlier advice to "end each marking drill with one real question" is replaced by these rules.)*
 
 **P7. Inconsistent or unverified claims.**
 - l10 and limiters-q say "two answers to ONE = 0". l12 says one missing answer loses half the points and that the checker reads the first two answers.
