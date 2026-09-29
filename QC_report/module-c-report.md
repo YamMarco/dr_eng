@@ -1,7 +1,8 @@
 # Module C: quality report and plan
 
-**Status as of 2026-09-29** (repo at commit d11097c). Reviewers: Claude and GPT, both reading the source. Owner: Yam Marco.
-**Scope:** Part A vocabulary (`c-2`), Part B reading (`c-1`), Part C writing (`c-3`), and the two Module C exam quizzes (`quiz/c`).
+**Version 2.1 · status as of 2026-09-29** (repo at commit fce8ffd). Reviewers: Claude and GPT, both reading the source. Owner: Yam Marco.
+**Scope:** Part A (חלק א׳ - אוצר מילים), Part B (חלק ב׳ - הבנת הנקרא), Part C (חלק ג׳ - כתיבה), and the two practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
+**Locations** are given the way they appear in the app: section → lesson (Hebrew title, then its id) → round, or exam → question. Rounds are counted from 1.
 
 **How to read this document**
 - **The upper part (Part 1) is the present.** It says where Module C stands today. It is rewritten whenever the situation changes.
@@ -33,7 +34,7 @@ The real exam is the official 2026 summer B paper.
 |---|---|---|
 | Length and time | 1 hour 45 minutes, 70 reading + 30 writing | Exam quizzes: 90 minutes, 70 + 30 |
 | Reading text | 1 text, 4 paragraphs, 337 words | Exam quizzes: 4 paragraphs, 233 and 276 words. Lessons: short texts, longest question text about 165 words; marking-only texts about 240 |
-| Questions | 9 per text: 4 MCQ, 5 written | Exam quizzes: 9 in the same mix. Lesson capstone (n-7c5330b8): 113 words, MCQ only |
+| Questions | 9 per text: 4 MCQ, 5 written | Exam quizzes: 9 in the same mix. Lesson capstone, **חלק 1 - סיכום** (n-7c5330b8): 113 words, MCQ only |
 | Written answers | Graded | Lessons: never scored (self-check). Exam quizzes: collected but not graded (61 of 100 points) |
 | Writing task | 70-90 words, 30 points | Lessons: sentence-by-sentence boxes, no word count. Exam quizzes: paragraph box with word counter, not graded |
 
@@ -51,16 +52,16 @@ The real exam is the official 2026 summer B paper.
 
 | # | Issue | Where |
 |---|---|---|
-| 1 | **Quiz results mislead.** "Passed" is computed on the 39 auto-graded points only. Ungraded parts show as "0/30" (writing) and for example "32/70" (reading). The saved attempt later shows a bare "X/39" | `quiz/scoring.ts`, `QuizReport.svelte`, exam page |
-| 2 | **Item errors:** the Night Market question has two defensible answers; exam-2's question 2 gives away question 3; sentence completion rejects correct answers ("books, signs, screens"); yes-no keys *think* as the "agreement" word; one in-addition key is arguable | `c-1.ts`, `quiz/c`, `c-3.ts` |
-| 3 | **Rules still taught as laws:** n-b46b7e2b round 2 summary (however); limiters-q and n-221188d1 (*most* = one answer); the l00 summary line "I search, I don't read" | `c-1.ts` |
-| 4 | **The writing checker rewards connectors only:** bilingual bank entries ("travel / לטייל") can never match, and there's no word count, relevance or grammar check in lessons | `WritingTask.svelte`, `c-3.ts` |
-| 5 | **Writing practice lacks the real task:** one box per sentence, no counter, no model paragraph; the micro-skill writing rounds are optional | `c-3.ts` |
-| 6 | **Part C presentation:** run-together lines and broken bold in the yes-no, topic-vacation and topic-cellphone openings | `c-3.ts` |
-| 7 | **Reading progression half-rebuilt:** l04 + numbers-names-q, l07 + limiters-q and the single lessons still use the old rounds (🌱 filler, skippable new-text practice) | `c-1.ts` |
-| 8 | **The lesson capstone isn't exam-like:** n-7c5330b8 is 113 words, MCQ only; no scored written answers in l10-l12 | `c-1.ts` |
-| 9 | **Part A efficiency:** no placement check, and vocab-test is still mostly MCQ | `c-2.ts` |
-| 10 | **Nothing has been played** by students or on devices | - |
+| 1 | **Quiz results mislead.** "Passed" is computed on the 39 auto-graded points only. Ungraded parts show as "0/30" (writing) and for example "32/70" (reading). The saved attempt later shows a bare "X/39" | Both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**: the results screen after submitting, and the exam's start page (last attempt) |
+| 2 | **Item errors:** the Night Market question has two defensible answers; exam-2's question 2 gives away question 3; sentence completion rejects correct answers ("books, signs, screens"); yes-no keys *think* as the "agreement" word; one in-addition key is arguable | Night Market: Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 3, second text, question 3 · Giveaway and completion: exam **משקפיים חכמות שעוזרות לעיוורים לראות** → reading, questions 2-3 (completion also in **ידידות יוצאות דופן בין בעלי חיים**, question 3) · *think*: Part C (חלק ג׳ - כתיבה) → **YES or NO - לומר עמדה** (yes-no) → round 1, last screen · in-addition key: Part C (חלק ג׳ - כתיבה) → **In addition - סיבה שנייה** (in-addition) → round 1, question 2 |
+| 3 | **Rules still taught as laws:** n-b46b7e2b round 2 summary (however); limiters-q and n-221188d1 (*most* = one answer); the l00 summary line "I search, I don't read" | Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 2, summary · **most / only - תרגול שאלות** (limiters-q) → rounds 2-3 · **שאלות 1 - סיכום** (n-221188d1) → round 2 · **אני מחפש, לא קורא** (l00) → round 2, summary |
+| 4 | **The writing checker rewards connectors only:** bilingual bank entries ("travel / לטייל") can never match, and there's no word count, relevance or grammar check in lessons | Part C (חלק ג׳ - כתיבה) → every writing screen in the lessons, for example **What do you think? - חופשה** (topic-vacation) → round 1. The practice exams are not affected |
+| 5 | **Writing practice lacks the real task:** one box per sentence, no counter, no model paragraph; the micro-skill writing rounds are optional | Part C (חלק ג׳ - כתיבה) → the four topic lessons: **Do you think? - התנדבות**, **What do you think? - חופשה**, **What changes? - בית ספר**, **At what age? - פלאפונים** · the writing rounds of the seven skill lessons, from **YES or NO - לומר עמדה** to **70-90 מילים - לספור** |
+| 6 | **Part C presentation:** run-together lines and broken bold in the yes-no, topic-vacation and topic-cellphone openings | Part C (חלק ג׳ - כתיבה) → opening screens of **YES or NO - לומר עמדה** (yes-no), **What do you think? - חופשה** (topic-vacation), **At what age? - פלאפונים** (topic-cellphone) |
+| 7 | **Reading progression half-rebuilt:** l04 + numbers-names-q, l07 + limiters-q and the single lessons still use the old rounds (🌱 filler, skippable new-text practice) | Part B (חלק ב׳ - הבנת הנקרא) → **מגנט לעין - מספרים ושמות** + **מספרים ושמות - תרגול שאלות** (l04 + numbers-names-q) · **most / only - תשובה אחת** + **most / only - תרגול שאלות** (l07 + limiters-q) · the single lessons l00-l03 and l09-l12 |
+| 8 | **The lesson capstone isn't exam-like:** n-7c5330b8 is 113 words, MCQ only; no scored written answers in l10-l12 | Part B (חלק ב׳ - הבנת הנקרא) → **חלק 1 - סיכום** (n-7c5330b8) · **תשובה קצרה**, **השלמת משפט**, **שתי תשובות** (l10-l12) |
+| 9 | **Part A efficiency:** no placement check, and vocab-test is still mostly MCQ | Part A (חלק א׳ - אוצר מילים) → the six content-word lessons and **מבחן סיכום - אוצר מילים** (vocab-test) |
+| 10 | **Nothing has been played** by students or on devices | The whole module |
 
 ## 5. Fixed so far
 
@@ -785,3 +786,27 @@ GPT's clarifications remove the remaining disagreements:
 | 6 | **Finish P6:** pair 2 (l07 + limiters-q, fixes P2 *most*), pair 3 (numbers-names-q), then the single lessons | Large (new texts) | No |
 | 7 | **Phase 3:** the lesson capstone becomes a simulation; scored written answers in l10-l12 | Large | No |
 | 8 | **Play-test:** changed lessons, the quiz result screen, and the self-check hypothesis above | 2-3 sessions | Owner arranges |
+
+### Version 2 → 2.1 (2026-09-29): Part 1 locations
+
+Owner request: give locations as lesson, exam and section, not file names. Changed in Part 1:
+- **Header:** "Status as of 2026-09-29 (repo at commit d11097c)" became "Version 2.1"; the scope line used file names (`c-2`, `c-1`, `c-3`, `quiz/c`) and now names the sections and exams; a line explaining the location format was added.
+- **Section 2:** "Lesson capstone (n-7c5330b8)" gained its title, 'חלק 1 - סיכום'.
+- **Section 4, "Where" column, version 2 wording:**
+
+| # | Version 2 "Where" |
+|---|---|
+| 1 | `quiz/scoring.ts`, `QuizReport.svelte`, exam page |
+| 2 | `c-1.ts`, `quiz/c`, `c-3.ts` |
+| 3 | `c-1.ts` |
+| 4 | `WritingTask.svelte`, `c-3.ts` |
+| 5 | `c-3.ts` |
+| 6 | `c-3.ts` |
+| 7 | `c-1.ts` |
+| 8 | `c-1.ts` |
+| 9 | `c-2.ts` |
+| 10 | - |
+
+- **Formatting:** Hebrew lesson and exam titles in Part 1 are shown in **bold** instead of 'quotes', so they read correctly next to English text in Word.
+
+No findings, grades or decisions changed.
