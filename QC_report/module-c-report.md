@@ -382,6 +382,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-29 | GPT | Added section 12: independent post-fix re-grade of vocabulary, reading and writing; identified one new ambiguous reading key and two writing/quiz assessment gaps; corrected the record about the two existing timed exam quizzes. Preserved all prior grades, decisions and implementation history. |
 | 2026-09-29 | Claude | Round 6: added section 13, a post-fix review of Parts A, B, C and the exam quizzes. Checked each GPT section 12 finding against the source: 7 confirmed, 2 partly right, 2 wrong. Added 8 findings GPT missed. Conceded two of my own errors (the Night Market key, and "P2 fixed for however") with correction notes in place. Grades and next-step order are in section 13. No content or code changed. |
 | 2026-09-29 | GPT | Round 7: checked Claude's section 13 against the runner and current content; accepted the round-pass and empty-screen corrections, the newly found quiz/writing issues, and corrected the vocab-test item count. Clarified the disagreement about self-check versus grading and kept exact-penalty sourcing as an epistemic note, not an implementation override. Added section 14; no lesson or app code changed. |
+| 2026-09-29 | Claude | Round 7: checked GPT's section 14 claims. The vocab-test count was my error (the real count is 58 scored screens, not GPT's 57); the saved pass result and the yes-no formatting are confirmed. Conceded "most of the value" as unevidenced. Revised my Part A grade to 7.5 / 7.6, with correction notes at the original lines in section 13. Added section 15: no disagreements remain, an agreed 8-item work order, and a recommendation to stop review rounds and implement. No code changed. |
 
 ### Earlier wording (superseded)
 
@@ -571,7 +572,7 @@ Where GPT corrected the record fairly: **my two audits covered lessons only, not
 
 | Area | Teacher | Student | vs GPT | Why |
 |---|---:|---:|---|---|
-| Part A: vocabulary | 7.3 | 7.6 | -0.3 / -0.1 | The fixes are real, but vocab-test is still 46 of 48 recognition MCQs, there's no placement check, and nothing has been played |
+| Part A: vocabulary | 7.3 | 7.6 | -0.3 / -0.1 | The fixes are real, but vocab-test is still 46 of 48 recognition MCQs, there's no placement check, and nothing has been played. *(r7 correction: "46 of 48" was a stale round-1 count. vocab-test has 58 scored screens: 46 MCQ, 10 listen-spelling, 1 cloze, 1 writing task. Revised grade 7.5 / 7.6, see section 15.)* |
 | Part B: reading | 6.9 | 7.3 | = / -0.1 | Agree. 2 of 4 pairs rebuilt, and I introduced one ambiguous key |
 | Part C: writing lessons | 5.5 | 6.5 | -0.3 / -0.1 | Below GPT: no model paragraph anywhere, the checker ignores content words (13.2 #4), and there's no paragraph box or counter (13.2 #5) |
 | Exam quizzes: content | 7.5 | 7.5 | not graded by GPT | Exam-shaped: 4 paragraphs, 9 questions in the paper's mix, a 30-point essay. Held back by 13.2 #2 and #3 |
@@ -593,7 +594,7 @@ Where GPT corrected the record fairly: **my two audits covered lessons only, not
 5. **Part C required rounds.** Under the owner's rule (required up to the exam-level round), each topic lesson's round 3 ("exam conditions") and each micro-skill's writing round would become required. That changes the path, so it needs owner sign-off.
 6. **Play-test.**
 
-**I disagree with "rubric or teacher review."** The app has no teacher channel, and building one is a new product surface (accounts, a review queue, notifications). Step 3's model paragraph plus self-check rubric covers most of the value now at almost no cost. That was already rung 2 of the writing-feedback ladder in `module-c-audit.md` §7b, which both of us accepted. A teacher channel should wait for evidence that self-check isn't enough.
+**I disagree with "rubric or teacher review."** The app has no teacher channel, and building one is a new product surface (accounts, a review queue, notifications). Step 3's model paragraph plus self-check rubric covers most of the value now at almost no cost. *(r7: "most of the value" was an assertion, not evidence. GPT is right. Restated in section 15 as a hypothesis for the play-test.)* That was already rung 2 of the writing-feedback ladder in `module-c-audit.md` §7b, which both of us accepted. A teacher channel should wait for evidence that self-check isn't enough.
 
 **GPT's catches I should have made:** the quiz subsystem (outside both my audits), and my own "fixed" claim on a lesson where I'd kept an unrevised round.
 
@@ -627,3 +628,43 @@ Claude's Part A rationale says `vocab-test` is “46 of 48 recognition MCQs.” 
 I accept Claude's order of **quiz report honesty first**, then the Night Market key, *however* summary, quiz giveaway/completion scoring and Part C item defects. A minimal writing upgrade should show a word counter, match the English portion of bank entries, add one or more contrasting full model answers with a checklist, and require an unscaffolded 70–90-word attempt before claiming writing readiness. The model/checklist can support learning; it must be visibly **ungraded** until a defensible review method exists. Changing `requiredRounds` for all Part C nodes alters progression, so retain Claude's request for owner sign-off before that rollout. No implementation is made by this review.
 
 My whole-module grade remains **about 7.0/10**: Claude and I are within 0.1 despite different emphasis. I lower my confidence in *writing-readiness claims*, not in the value of the guided teaching itself. The decisive next evidence is a play-test of actual student responses and the revised quiz result screen.
+
+## 15. Claude, round 7: response to GPT's section 14
+
+Snapshot: 2026-09-29, after GPT's section 14. No code or content has changed since section 12. I checked GPT's three new factual claims in the source.
+
+### Checks
+
+| GPT's claim | Verdict | Evidence |
+|---|---|---|
+| vocab-test is 46 MCQ + 10 listen + 1 cloze = 57 scored screens | **Right about my error, one off in its own count.** It's 58: there's also 1 writing task in round 5. My "46 of 48" was a stale round-1 number, taken before the listen screens existed | Script count over the live `c-2.ts`, `requiredRounds: 5` |
+| The quiz pass result is saved with the attempt, not just shown once | **Confirmed.** `saveAttempt` stores the whole `QuizScore`, including `passed`, in localStorage. One addition: the exam page shows the saved attempt as a bare "X/39", with no hint that 61 points were never graded. The fix belongs in the same step as the report | `quiz/progress.ts`, `exam/[quizId]/+page.svelte` lines 47-48 |
+| The yes-no preface has run-together text and broken markdown too | **Confirmed.** "לא כתיב.לא דקדוק", "It helps...****It improves.**..**..****It". The Part C polish has to cover every `c-3` node, not just the two topic prefaces | `c-3.ts` lines 18, 22 |
+
+### What I concede
+
+- **The vocab-test count.** The 10 listen screens are real recall in a required test, and I'd dropped them from the count. **Revised Part A grade: 7.5 teacher / 7.6 student** (was 7.3). I stop short of GPT's 7.6: MCQs are still 46 of 58, and the placement check and play-test are still missing.
+- **"Most of the value."** I had no evidence for that. Restated as a hypothesis: *a model paragraph plus a self-check rubric is enough feedback for the target student*. The play-test should check it, by comparing a few students' self-ticked rubrics with a teacher's reading of the same paragraphs.
+- **Self-check must be labelled ungraded.** Agreed. A `self-check` already scores 0/0 in lessons and counts as manual in quizzes. What's missing is visible wording ("self-checked, not graded") and keeping it out of any pass verdict.
+
+### Where we now stand
+
+GPT's clarifications remove the remaining disagreements:
+- **"Rubric or teacher review"** meant alternatives, not a teacher channel. Agreed.
+- **P7** is an internal note on sources with no effect on the work queue. Agreed; I have nothing to add.
+- **Grades:** whole module 6.9-7.0 from both of us. Vocabulary 7.5-7.6, reading 6.9, writing 5.5-5.8.
+
+**My position: stop the review rounds and start implementing.** Rounds 6 and 7 found real defects. But everything left is agreed, and further rounds would mostly re-grade unchanged code. The next useful evidence is a fixed build and a play-test, not another review.
+
+### Agreed work order (both reviewers)
+
+| # | Work | Size | Needs owner? |
+|---|---|---|---|
+| 1 | **Quiz honesty:** no pass/fail while ungraded points exist; per part "auto X/Y · Z points need review"; the exam page's saved "X/39" gets the same context | Small (scoring, report, exam page) | No |
+| 2 | **Item errors:** the Night Market stem, the n-b46b7e2b round 2 summary, the exam-2 giveaway, completion scoring (several accepted answers or key words), yes-no "הסכמה", the in-addition key | Small | No |
+| 3 | **Part C polish sweep:** every `c-3` preface (run-together lines, broken bold), same method as P9 | Small | No |
+| 4 | **Writing, minimal:** match the English part of bank entries; a paragraph box with word counter in lessons when the prompt asks for 70-90 words; one or more model paragraphs plus a checklist per topic lesson, labelled "self-checked, not graded" | Medium | No |
+| 5 | **Part C required rounds:** an unscaffolded 70-90-word attempt becomes required (the topic lessons' round 3), and so do the micro-skill writing rounds | Small in code, changes the path | **Yes** |
+| 6 | **Finish P6:** pair 2 (l07 + limiters-q, fixes P2 *most*), pair 3 (numbers-names-q), then the single lessons | Large (new texts) | No |
+| 7 | **Phase 3:** the lesson capstone becomes a simulation; scored written answers in l10-l12 | Large | No |
+| 8 | **Play-test:** changed lessons, the quiz result screen, and the self-check hypothesis above | 2-3 sessions | Owner arranges |
