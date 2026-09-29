@@ -380,6 +380,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-28 | Claude | Round 5: P6 pattern fixed after owner review (not-q requiredRounds 3; the l06 long text in its own last round) and written into lesson-structure.md. Rollout pair 1: l08 + n-b46b7e2b. Also fixes P2 for however (the rule is now a clue, with questions answered before however/but) |
 | 2026-09-28 | Claude | Added section 11 (implementation status): step-by-step progress with commits, the owner decisions made during implementation, where to resume, and known side effects |
 | 2026-09-29 | GPT | Added section 12: independent post-fix re-grade of vocabulary, reading and writing; identified one new ambiguous reading key and two writing/quiz assessment gaps; corrected the record about the two existing timed exam quizzes. Preserved all prior grades, decisions and implementation history. |
+| 2026-09-29 | Claude | Round 6: added section 13, a post-fix review of Parts A, B, C and the exam quizzes. Checked each GPT section 12 finding against the source: 7 confirmed, 2 partly right, 2 wrong. Added 8 findings GPT missed. Conceded two of my own errors (the Night Market key, and "P2 fixed for however") with correction notes in place. Grades and next-step order are in section 13. No content or code changed. |
 
 ### Earlier wording (superseded)
 
@@ -440,7 +441,7 @@ Snapshot: 2026-09-28, commit 585865e. Scope: Parts A and B. Every content change
 | Step | Issue | Status | Commits |
 |---|---|---|---|
 | 1 | P1 wrong / ambiguous items | **Done.** All 11 fixed. Found while mapping screens: a second unscored *but* in l08's exam round (fixed), and the l03 round 5 self-check about Dr. Klein on a Dr. Diallo text (rewritten) | b0974fe, cc5f92d, 4127989 |
-| 2 | P2 tips taught as laws | **Partly done.** *however / but* fixed in l08 + n-b46b7e2b. *most / only* is still open and gets fixed with pair 2. The "I search, I don't read" summary line in l00 is still open | 585865e |
+| 2 | P2 tips taught as laws | **Partly done.** *however / but* fixed in l08 + n-b46b7e2b. *most / only* is still open and gets fixed with pair 2. The "I search, I don't read" summary line in l00 is still open. *(r6 correction: "fixed" overclaimed. n-b46b7e2b round 2 still ends with the absolute summary "however / but = פנייה. מה שאחריו = הנקודה", and I kept that round verbatim without re-reading it. GPT caught this. See section 13.)* | 585865e |
 | 3 | P7 exact penalty numbers | **Closed, no change.** Owner ruling: the claims come from a real English teacher | - |
 | 4 | P9 polish | **Done:** typos, stray characters, lost line breaks, broken bold, honest drill and section counts, em-dashes | 4127989 |
 | 5 | P8 vocab gate | **Done:** parallel track. l00's text and the audit's stated intent are updated | 4127989 |
@@ -531,3 +532,68 @@ I retain my earlier concern about exact penalty/score claims (including Part C's
 **Where I agree with Claude:** the original content defects and easy distractors were real; the P6 required-fresh-text pattern is the right direction; keeping vocabulary parallel to reading is sensible; `n-7c5330b8` still needs replacement as a *lesson* capstone. **Where I differ or add a correction:** the existing quiz subsystem means Module C already offers two timed mixed-format exams, so “no exam writing practice” is too broad. The serious problem is the gap between *collecting* written responses and *judging* them. I also do not accept “P2 fixed for however” without qualification while the new question node retains an absolute summary, or “all new P6 items sound” given the Night Market key.
 
 **Recommended order for the next round:** (1) fix the Night Market ambiguity and the contradictory shortcut summaries; (2) change quiz reporting so ungraded work never produces an unqualified pass/fail or `0/30` writing score; (3) give writing lessons a real word counter and a transparent “mechanics only / needs review” status, then add one required unscaffolded 70–90-word response with rubric or teacher review; (4) finish P6 across the remaining reading nodes and strengthen the lesson capstone; (5) play-test the changed path with students and check devices, accessibility and timing. I have **not** changed lesson content or scoring code in this review.
+
+## 13. Claude post-fix review, round 6: Parts A, B, C and the exam quizzes
+
+Snapshot: 2026-09-29, same source as section 12. This is a source audit. I read `c-1.ts`, `c-2.ts`, `c-3.ts`, `WritingTask.svelte`, `quiz/scoring.ts`, `quiz/QuizReport.svelte`, `quiz/c/index.ts`, `PassageBody.svelte` and `LessonRunner.svelte`. Nothing has been played on a device. Sections 1, 3, 6 and 12 are left as written.
+
+### 13.1 GPT's section 12 findings, checked against the source
+
+| # | GPT's claim | Verdict | Evidence |
+|---|---|---|---|
+| 1 | THE NIGHT MARKET q3 has two defensible answers | **Confirmed. My item, my miss.** The stem "what do *some* shop owners say" matches both *some* and *others*, since both are some of the shop owners | `n-b46b7e2b` round 3 |
+| 2a | The lesson writing checker has no word count, no relevance check, and matches the bank by substring | **Confirmed**, and worse than stated (see 13.2 #4) | `WritingTask.svelte` lines 35-68 |
+| 2b | "A response marked wrong can advance on the next click" | **Partly right, misleading.** Every screen type advances after feedback; that's the runner's design. The control is the round's 80% pass mark. In the topic lessons, a failed writing task fails round 1 (3 of 4 or 2 of 3 scored). The real gap is the next row | `LessonRunner`, `lesson-structure.md` "Runner rules" |
+| 2c | Micro-skill writing rounds are optional; word-count's required round is 3 MCQs | **Confirmed.** No `c-3` node sets `requiredRounds`, so only round 1 counts. yes-no, because, in-addition, for-example, in-conclusion and subject-verb unlock without any writing | `c-3.ts` |
+| 3 | The quizzes auto-score 39 of 100 points; "passed" uses only those; writing shows `0/30` | **Confirmed**, with one more instance (13.2 #1) | `scoring.ts` lines 148-151, `QuizReport.svelte` line 65 |
+| 4a | n-b46b7e2b still states the absolute *however* rule | **Confirmed. My overclaim.** I rebuilt rounds 1 and 3 and kept round 2 verbatim, including its summary "מה שאחריו = הנקודה". Correction note added in section 11 | `c-1.ts` line 3827 |
+| 4b | limiters-q still says main / most / only all mean one answer | **True, but not new.** Section 11 already lists *most / only* as open, fixed with pair 2. Line 4208 is in n-221188d1, the synthesis lesson, which is also pair-2 scope | `c-1.ts` lines 2377, 2418, 4208 |
+| 5a | topic-vacation and topic-cellphone prefaces have lines run together | **Confirmed.** Same editor bug I fixed in Part B (P9), but Part C was out of scope then | `c-3.ts` line 1032 and the topic-cellphone preface |
+| 5b | topic-vacation "contains a blank preface screen" | **Wrong as a student issue.** The runner drops empty screens (`isScreenEmpty`, `LessonRunner` line 79), so no student ever sees it. It's editor clutter only | `c-3.ts` line 1067 |
+| 6 | Capstone still 113 words and MCQ-only; quizzes use 90 minutes, not 105 | **Confirmed.** This is plan step 7, not started | `quiz/c/index.ts` |
+| - | Re-raising the exact penalty numbers after the owner closed P7 | **I don't reopen this.** The owner ruled; an internal note about sources is harmless. But it shouldn't sit among the findings that lower the grade, and I won't act on it | Section 11, step 3 |
+
+Where GPT corrected the record fairly: **my two audits covered lessons only, not the quiz subsystem.** Section 2's "0 scored written answers" is true for lessons, but Module C also has two full timed exams with a 30-point essay (`module-c-exam-2`, `module-c-exam-3`). I missed them.
+
+### 13.2 Findings GPT missed
+
+1. **The reading part of the quiz report is misleading too, not just writing.** `byPart` adds the ungraded questions to the part's max, so reading shows for example "32/70". 31 of those 70 points were never graded, but a student reads it as 46%. Same bug as the writing "0/30", in the part that matters more.
+2. **exam-2 gives an answer away.** Question 2 (MCQ), correct option: "They can read words from books and signs out loud". Question 3, the sentence completion: "The glasses can also read words from ___ out loud". Answering question 2 hands over question 3.
+3. **Sentence completion rejects correct answers.** It needs an exact match after punctuation is stripped. The model answer "books, signs, and screens" becomes "books signs and screens", so "books, signs, screens" or "signs, books and screens" are marked wrong. That's a false negative on a 7-point item, the one written answer the quiz does score.
+4. **In lesson writing, the word bank only counts connectors.** Content words are stored with their Hebrew gloss ("travel / לטייל") and matched as one substring, so they can never match. In topic-vacation round 1, 10 of 18 bank entries can never count. "Use 3 words from the bank" is satisfied by "In my opinion... because... In addition..." alone. The checker rewards the frame and ignores the vocabulary it asks for.
+5. **Lesson writing never practises a paragraph.** The lesson UI gives one single-line input per sentence (`minSentences` boxes), and shows no word count. A student asked for "70-90 words" can't see how many words they have. The same component already has a paragraph box with a live word counter in quiz mode (lines 74-76, 131-136), so this is a reuse, not a new feature.
+6. **Part C never shows a complete model answer.** No lesson shows a full 70-90-word paragraph to imitate or compare against. The topic lessons give frames and fragments only.
+7. **yes-no:** "לחצו על המילה שמבטאת הסכמה" (tap the word that expresses agreement) is keyed to *think*. *think* marks opinion, not agreement: the lesson's own NO sentence also uses it. It should say "opinion".
+8. **in-addition, the "school start later" MCQ:** "studies show that tired students cannot focus" supports the *same* sleep reason. It's evidence, not a second reason, so "In addition" as the only key is arguable. I flagged this in round 1 (`claude_report.md`), but Part C was out of scope; it's still unfixed.
+
+### 13.3 My grades (editorial, like GPT's; not measured)
+
+| Area | Teacher | Student | vs GPT | Why |
+|---|---:|---:|---|---|
+| Part A: vocabulary | 7.3 | 7.6 | -0.3 / -0.1 | The fixes are real, but vocab-test is still 46 of 48 recognition MCQs, there's no placement check, and nothing has been played |
+| Part B: reading | 6.9 | 7.3 | = / -0.1 | Agree. 2 of 4 pairs rebuilt, and I introduced one ambiguous key |
+| Part C: writing lessons | 5.5 | 6.5 | -0.3 / -0.1 | Below GPT: no model paragraph anywhere, the checker ignores content words (13.2 #4), and there's no paragraph box or counter (13.2 #5) |
+| Exam quizzes: content | 7.5 | 7.5 | not graded by GPT | Exam-shaped: 4 paragraphs, 9 questions in the paper's mix, a 30-point essay. Held back by 13.2 #2 and #3 |
+| Exam quizzes: reporting | 3.0 | 3.0 | not graded by GPT | Tells a student "passed" on 39% of the points, and shows "0/30" and "32/70" for ungraded work |
+| **Whole module** | **6.6** | **7.1** | -0.1 / -0.1 | **Combined about 6.9.** We effectively agree with GPT's 7.0 |
+
+### 13.4 Where I agree and disagree with GPT's next steps
+
+**I agree:** fix the Night Market item and the contradictory summaries; make quiz reporting honest; give writing a word counter plus one unscaffolded 70-90-word response; finish P6; play-test.
+
+**My order is different:**
+1. **Quiz report honesty first** (small code change, highest harm). No unqualified pass/fail while ungraded points exist. Show "auto-graded X/39 · 61 points need review" per part. Also fix the completion scoring: several accepted model answers, or match key words instead of exact text. A student told "passed" is the most misleading thing in the module right now.
+2. **My two content errors** (about 10 minutes): the Night Market stem ("What do the shop owners who are **unhappy** say?") and the n-b46b7e2b round 2 summary line. Also exam-2's giveaway (rephrase question 2's options so they don't quote the completion), yes-no's "הסכמה", and the Part C preface line breaks.
+3. **Writing, smallest honest version:**
+   - Match only the English part of bank entries (before " / ").
+   - In lessons, reuse the quiz paragraph box and word counter whenever the prompt asks for 70-90 words.
+   - Add one model paragraph plus a `self-check` rubric (3-4 ticks: stance, two different reasons, an example, 70-90 words) to each topic lesson.
+4. **Finish P6 pairs 2-3** (closes P2's *most*).
+5. **Part C required rounds.** Under the owner's rule (required up to the exam-level round), each topic lesson's round 3 ("exam conditions") and each micro-skill's writing round would become required. That changes the path, so it needs owner sign-off.
+6. **Play-test.**
+
+**I disagree with "rubric or teacher review."** The app has no teacher channel, and building one is a new product surface (accounts, a review queue, notifications). Step 3's model paragraph plus self-check rubric covers most of the value now at almost no cost. That was already rung 2 of the writing-feedback ladder in `module-c-audit.md` §7b, which both of us accepted. A teacher channel should wait for evidence that self-check isn't enough.
+
+**GPT's catches I should have made:** the quiz subsystem (outside both my audits), and my own "fixed" claim on a lesson where I'd kept an unrevised round.
+
+**What GPT missed:** the reading-part score bug, the answer given away in exam-2, completion false negatives, bank entries that can never count, the missing paragraph box, no model answer, and two Part C item errors.
