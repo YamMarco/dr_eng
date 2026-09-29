@@ -1,5 +1,122 @@
 # Module C: quality report and plan
 
+**Status as of 2026-09-29** (repo at commit d11097c). Reviewers: Claude and GPT, both reading the source. Owner: Yam Marco.
+**Scope:** Part A vocabulary (`c-2`), Part B reading (`c-1`), Part C writing (`c-3`), and the two Module C exam quizzes (`quiz/c`).
+
+**How to read this document**
+- **The upper part (Part 1) is the present.** It says where Module C stands today. It is rewritten whenever the situation changes.
+- **The lower part (Part 2) is the past:** the chain of reviews, decisions and fixes that led here, in order and never edited.
+- **Before Part 1 is rewritten,** the version being replaced is appended to Part 2 as a dated snapshot. Nothing is lost.
+
+---
+
+## 1. Verdict today
+
+| Area | Claude (teacher / student) | GPT (teacher / student) | In one line |
+|---|---|---|---|
+| Part A: vocabulary | 7.5 / 7.6 | 7.6 / 7.7 | Wrong keys and joke options are fixed; listen-spelling adds recall. Still MCQ-heavy (46 of 58 vocab-test items), no placement check |
+| Part B: reading | 6.9 / 7.3 | 6.9 / 7.4 | The method is strong. 2 of 4 lesson pairs are rebuilt with required new-text rounds; the rest use the old progression |
+| Part C: writing lessons | 5.5 / 6.5 | 5.8 / 6.6 | Good step-by-step frames, but the checker rewards linking words only, there's no paragraph box or word counter in lessons, and no model answer |
+| Exam quizzes: content | 7.5 / 7.5 | - | Exam-shaped: 4 paragraphs, 9 questions in the paper's mix, 30-point essay |
+| Exam quizzes: score reporting | 3.0 / 3.0 | (a top finding) | Says "passed" on 39 of 100 points; ungraded work shows as "0/30" and "32/70" |
+| **Whole module** | **6.6 / 7.1** | **6.7 / 7.2** | **About 7.0.** Strong guided practice; not yet a trustworthy readiness signal |
+
+All grades are editorial judgements from reading the source. Nothing has been played by students yet.
+
+**Recommended use today:** alongside classwork, not as a student's only preparation, and not as a pass/fail predictor.
+
+## 2. Module C compared with the real exam
+
+The real exam is the official 2026 summer B paper.
+
+| | Real exam | Module C today |
+|---|---|---|
+| Length and time | 1 hour 45 minutes, 70 reading + 30 writing | Exam quizzes: 90 minutes, 70 + 30 |
+| Reading text | 1 text, 4 paragraphs, 337 words | Exam quizzes: 4 paragraphs, 233 and 276 words. Lessons: short texts, longest question text about 165 words; marking-only texts about 240 |
+| Questions | 9 per text: 4 MCQ, 5 written | Exam quizzes: 9 in the same mix. Lesson capstone (n-7c5330b8): 113 words, MCQ only |
+| Written answers | Graded | Lessons: never scored (self-check). Exam quizzes: collected but not graded (61 of 100 points) |
+| Writing task | 70-90 words, 30 points | Lessons: sentence-by-sentence boxes, no word count. Exam quizzes: paragraph box with word counter, not graded |
+
+## 3. What works (keep it)
+
+- **The reading method, l00-l03:** search mindset, title + first paragraph as a map, the traffic light, then keyword to evidence.
+- **Instruction words taught in their own right** (q-words-1/2): according to, give ONE/TWO, complete, circle, because vs. in order to.
+- **Hebrew scaffolding and short screens,** which reach weak and anxious students.
+- **Vocabulary items built the content-2c way:** word forms, collocations, and explanations of why each wrong option fails.
+- **Listen-spelling** in every vocab review round and in vocab-test, with copy-spelling kept for weak students.
+- **The rebuilt reading pairs** (l06 + not-q, l08 + n-b46b7e2b): required rounds up to the exam level, including a new text.
+- **The writing sequence:** stance, reason, addition, example, conclusion, full sentences, word count, then 4 topic types.
+
+## 4. Open issues, most harmful first
+
+| # | Issue | Where |
+|---|---|---|
+| 1 | **Quiz results mislead.** "Passed" is computed on the 39 auto-graded points only. Ungraded parts show as "0/30" (writing) and for example "32/70" (reading). The saved attempt later shows a bare "X/39" | `quiz/scoring.ts`, `QuizReport.svelte`, exam page |
+| 2 | **Item errors:** the Night Market question has two defensible answers; exam-2's question 2 gives away question 3; sentence completion rejects correct answers ("books, signs, screens"); yes-no keys *think* as the "agreement" word; one in-addition key is arguable | `c-1.ts`, `quiz/c`, `c-3.ts` |
+| 3 | **Rules still taught as laws:** n-b46b7e2b round 2 summary (however); limiters-q and n-221188d1 (*most* = one answer); the l00 summary line "I search, I don't read" | `c-1.ts` |
+| 4 | **The writing checker rewards connectors only:** bilingual bank entries ("travel / לטייל") can never match, and there's no word count, relevance or grammar check in lessons | `WritingTask.svelte`, `c-3.ts` |
+| 5 | **Writing practice lacks the real task:** one box per sentence, no counter, no model paragraph; the micro-skill writing rounds are optional | `c-3.ts` |
+| 6 | **Part C presentation:** run-together lines and broken bold in the yes-no, topic-vacation and topic-cellphone openings | `c-3.ts` |
+| 7 | **Reading progression half-rebuilt:** l04 + numbers-names-q, l07 + limiters-q and the single lessons still use the old rounds (🌱 filler, skippable new-text practice) | `c-1.ts` |
+| 8 | **The lesson capstone isn't exam-like:** n-7c5330b8 is 113 words, MCQ only; no scored written answers in l10-l12 | `c-1.ts` |
+| 9 | **Part A efficiency:** no placement check, and vocab-test is still mostly MCQ | `c-2.ts` |
+| 10 | **Nothing has been played** by students or on devices | - |
+
+## 5. Fixed so far
+
+| Issue | Fix | Commits |
+|---|---|---|
+| 11 wrong or ambiguous items (P1) | All fixed, plus two more found later (a second unscored *but*, a broken l03 self-check) | b0974fe, cc5f92d, 4127989 |
+| Joke distractors in Part A (P3) | About 35 items rewritten, each with an explanation | 48fabb0 |
+| Spelling was copy-only (P5, part) | 48 listen-spelling screens with a Hebrew hint; falls back to copy mode without browser speech | 7d98015 |
+| Vocab gate mismatch (P8) | Vocabulary runs in parallel with reading; l00 text and the audit updated | 4127989 |
+| Polish in Parts A-B (P9) | Typos, stray characters, lost line breaks, honest counts, em-dashes | 4127989 |
+| Skippable practice (P6, part) | Reading round pattern agreed and documented; l06 + not-q and l08 + n-b46b7e2b rebuilt | 12587ad, 99303c2, e2cad79, 585865e |
+| *however* taught as a law (P2, part) | Fixed in l08 and n-b46b7e2b rounds 1 and 3 (round 2 summary still open, issue 3) | 585865e |
+| Exact penalty numbers (P7) | Closed by owner ruling: they come from a real English teacher | - |
+
+## 6. Work order (agreed by both reviewers)
+
+| # | Work | Size | Needs owner? |
+|---|---|---|---|
+| 1 | Quiz honesty: no pass/fail while points are ungraded; show "auto X/Y · Z to review" per part and on the exam page | Small | No |
+| 2 | Item errors from issue 2, plus the n-b46b7e2b summary | Small | No |
+| 3 | Part C polish sweep over every `c-3` opening | Small | No |
+| 4 | Writing, minimal: match the English part of bank entries; paragraph box + word counter in lessons; model paragraphs with a checklist, labelled "self-checked, not graded" | Medium | No |
+| 5 | Part C required rounds: an unscaffolded 70-90-word attempt and the micro-skill writing rounds become required | Small code, changes the path | **Yes** |
+| 6 | Finish the reading rebuild: l07 + limiters-q (fixes *most*), l04 + numbers-names-q, then the single lessons | Large (new texts) | No |
+| 7 | Exam-like lesson capstone; scored written answers in l10-l12 | Large | No |
+| 8 | Play-test: changed lessons, the quiz result screen, and whether self-check feedback is enough | 2-3 sessions | Owner arranges |
+
+## 7. Decisions
+
+**Made by the owner**
+- Vocabulary runs in parallel with reading (no gate).
+- Everything up to and including a lesson's exam-level round is required; later rounds are optional, labelled "תרגול נוסף (רשות)".
+- Marking lessons stay about marking: 2 rules questions mixed in, and a ~240-word marking text as the last round.
+- Question lessons: rules + a short text; your turn; then an exam round with a familiar passage and a new text.
+- Copy-spelling stays; listen-spelling is added later in each lesson.
+- The exact penalty numbers stay: they're teacher-sourced.
+
+**Waiting for the owner**
+- Work item 5: make the Part C writing rounds required.
+- Arranging the play-test (work item 8).
+
+## 8. Where the reviewers stand
+
+No disagreements remain about what to do or in what order.
+- **Grades:** within 0.1-0.3 of each other in every area.
+- **Self-check feedback:** both agree it's the right first step and must be labelled ungraded. Whether it's enough for weak writers is an open question for the play-test.
+- **Penalty numbers:** GPT keeps an internal note that they aren't verified against the official rubric. It has no effect on the work.
+- **Next:** both recommend implementing the work order rather than more review rounds.
+
+---
+
+# Part 2: History (the past)
+
+What follows is the record of how Module C reached the state above, oldest first. Sections are kept exactly as written at the time. Only their heading level was lowered, and "§" was added to the heading numbers. Mentions of "section N" inside them refer to these § numbers.
+
+### Original opening (2026-09-28 to 2026-09-29)
 Date: 2026-09-28. **Scope: Part A (vocabulary, `c-2`) and Part B (reading, `c-1`).** Part C (writing, `c-3`) is excluded for now.
 
 **Scope update (2026-09-29):** Section 12 is a new post-fix review of Parts A, B **and C**, including the separate Module C exam quizzes. The opening scope and earlier grades are retained as historical snapshots, not current conclusions.
@@ -14,7 +131,7 @@ Content under review: 31 nodes (12 vocabulary, 19 reading), 142 rounds, 835 scre
 
 ---
 
-## 1. Verdict
+### §1. Verdict
 
 | | Teacher | Student |
 |---|---|---|
@@ -34,7 +151,7 @@ Content under review: 31 nodes (12 vocabulary, 19 reading), 142 rounds, 835 scre
 2. **Assessment validity:** the final tests are short and all multiple choice, and no written answer in Part B is ever scored.
 3. **Progression:** a student can skip the transfer rounds, and the same texts come back so often that later rounds test memory.
 
-## 2. The real exam
+### §2. The real exam
 
 From the official 2026 summer B paper [G]:
 - 1 hour 45 minutes. Reading is worth 70 points and writing 30. An approved dictionary is allowed.
@@ -50,7 +167,7 @@ How the module compares:
 | Written answers | 5 of 9 | 0 scored (all `self-check`) |
 | Timing | whole paper | per capstone screen only |
 
-## 3. Scorecard by dimension
+### §3. Scorecard by dimension
 
 GPT's dimensions [G], with the teacher score adjusted where Claude's item check applies.
 
@@ -66,9 +183,9 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 | Assessment validity | 5.5 | 6.3 | Finishing the module can look like mastery when it isn't |
 | Motivation and confidence | 7.7 | 8.4 | Friendly and achievable |
 
-## 4. Teacher's view
+### §4. Teacher's view
 
-### Keep
+#### Keep
 
 - **The reading chain l00 to l03:** search mindset, title + paragraph I as a map, traffic light ("can I explain the question in Hebrew?"), then keyword to evidence. l03 is the best lesson in the module, and its timed race makes the speed claim concrete.
 - **Instruction words taught in their own right** (q-words-1/2): according to, give ONE/TWO, complete, circle, because vs. in order to.
@@ -77,7 +194,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - **content-2c** (and content-2b's affect/effect [G]) as the model for vocabulary items. Its wrong options are word forms and collocations, and its explanations say why each one fails.
 - **n-221188d1** as the best synthesis node [G]. It is the natural base for a full simulation.
 
-### Problems
+#### Problems
 
 **P1. Wrong or ambiguous items** [C]. All of these were checked against the source.
 *(r3, 2026-09-28: all 11 fixed in c-1.ts / c-2.ts. Plan step 1 is done. The table is kept as the record of what was wrong.)*
@@ -138,7 +255,7 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - Nothing tells the student how long the route is [G].
 *(r4, 2026-09-28: fixed. Typos, stray characters and broken bold are gone. Line breaks the editor had lost are restored in l02, l03, l07 and q-words-1. Drill counts are honest, and section intros give real lesson counts. Em-dashes are replaced. Also found and fixed: the l03 round 5 self-check asked about Dr. Klein on a Dr. Diallo text, with the answer in the prompt. Plan step 4 is done.)*
 
-## 5. Student's view
+### §5. Student's view
 
 *A composite 11th-grade student on the 3-4 point track: reads slowly, is anxious about the exam, has about 3 weeks and a phone.*
 
@@ -157,11 +274,11 @@ GPT's dimensions [G], with the teacher score adjusted where Claude's item check 
 - **The final test gives false confidence.** A 113-word text with buttons isn't a 337-word paper where I must write five answers.
 - **Scary numbers I can't check** ("90%", "you get 0"), and screens that say "ten sentences" and show two.
 
-## 6. Node-by-node grades
+### §6. Node-by-node grades
 
 These start from GPT's grades [G]. Nodes marked * were lowered for items Claude found broken [C].
 
-### Part A: vocabulary
+#### Part A: vocabulary
 
 | Node | Teacher | Student | Note |
 |---|---:|---:|---|
@@ -178,7 +295,7 @@ These start from GPT's grades [G]. Nodes marked * were lowered for items Claude 
 | content-2c | 8.0 | 8.0 | The model node |
 | vocab-test | 6.0 | 6.5 | Broad but recognition-only; wrong part-of-speech options |
 
-### Part B: reading
+#### Part B: reading
 
 | Node | Teacher | Student | Note |
 |---|---:|---:|---|
@@ -202,7 +319,7 @@ These start from GPT's grades [G]. Nodes marked * were lowered for items Claude 
 | n-649ed18f | 5.6 | 6.5 | Short, all-MCQ recap |
 | n-7c5330b8 | 5.0 | 6.2 | Called a full summary; far from the exam |
 
-## 7. Plan
+### §7. Plan
 
 Ordered by value per effort. Each step says when it counts as done. After any content change, update `docs/module-c-audit.md` and this file's grades.
 
@@ -212,7 +329,7 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 
 *(r5: progress per step, and where to resume, are in section 11.)*
 
-### Phase 1: trust fixes (about 1 day)
+#### Phase 1: trust fixes (about 1 day)
 
 | # | Fix | Done when |
 |---|---|---|
@@ -222,13 +339,13 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 | 4 | Polish pass (P9), including a route-length line in each section intro | Searching for the typos returns nothing; the counts match the rounds |
 | 5 | Vocab gate: both reviewers recommend leaving reading open and rewriting l00's first preface ("אם אתם פה אז עברתם"). This reverses the intent written in `module-c-audit.md` ("Section 1 purpose"), so it needs your sign-off (section 8) | l00's code, its text and the audit agree |
 
-### Phase 2: item rigor (about half a day)
+#### Phase 2: item rigor (about half a day)
 
 | # | Fix | Done when |
 |---|---|---|
 | 6 | Replace fake distractors in content-1a, 1b, 2a, 2b, nav-words-2 and vocab-test using the content-2c pattern (word form, collocation, a same-node word that fits grammatically) | None of holiday / bicycle / window / sandwich / kitchen / shoes / paint / sing / cook / ate appear as options |
 
-### Phase 3: validity (about 2 days)
+#### Phase 3: validity (about 2 days)
 
 | # | Fix | Done when |
 |---|---|---|
@@ -237,7 +354,7 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 | 9 | **Require a fresh-text round** in each reading node with `requiredRounds`; keep extra repetition optional. Swap the recycled texts in the last rounds of l09 to l12 for new ones | Unlocking the next node means the student applied the skill to an unseen text |
 | 10 | The simulation needs a whole-run timer. Build the runner-level `timerKey` on `LessonRound` (design in `module-c-audit.md` §7a) | One stopwatch across mixed screen types |
 
-### Phase 4: efficiency and verification
+#### Phase 4: efficiency and verification
 
 | # | Fix | Done when |
 |---|---|---|
@@ -250,7 +367,7 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 - After Phase 3: about **8.3** (both audits agree).
 - Above that needs Phase 4's play-test to be more than opinion.
 
-## 8. Open questions for you
+### §8. Open questions for you
 
 *(r2: turned from a question list into a decision table. The original questions are in section 10.)*
 
@@ -260,9 +377,9 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 | 2 | Simulation: replace n-7c5330b8 or add a node after it? | Both: replace, keep n-649ed18f as the rehearsal. Claude adds: re-point Part C's prerequisite | No, unless you object |
 | 3 | Scoring advice for extra and missing answers | Both: remove exact penalties until there's an official source | Only if you have the marking guidance |
 
-## 9. Reviewers' views
+### §9. Reviewers' views
 
-### Claude
+#### Claude
 
 **What I care about most**
 1. **Correctness before anything else.** A wrong key does more damage than a missing feature. The student stops trusting the feedback, and then even correct feedback stops teaching. That's why broken items are step 1 and why I graded Part A lower than GPT did.
@@ -287,7 +404,7 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 
 **What GPT missed that I caught:** the 11 broken or ambiguous items, the removed vocab gate, the preface count mismatches, and copy-only spelling.
 
-### GPT
+#### GPT
 
 **What I care about most**
 
@@ -323,7 +440,7 @@ Steps 2, 3, 5 and 7 changed in round 2 *(r2)*.
 
 The joint plan has the right order: restore trust, raise item rigor, validate the claimed outcome, then optimize speed and personalization. I would not add more vocabulary or more micro-lessons before those four phases are complete. The module already has enough content; what it needs now is fewer invalid successes and one convincing proof that learning transfers to the real task.
 
-### Claude, round 2
+#### Claude, round 2
 
 **Where GPT changed my mind**
 - **No exact penalties.** GPT's wording ("follow ONE/TWO exactly; extra or missing answers can cost points") is better than my "verify or remove". It's safe whatever the official answer turns out to be. Step 3 now uses it.
@@ -342,7 +459,7 @@ The joint plan has the right order: restore trust, raise item rigor, validate th
 
 **Still open between us:** nothing of substance. The decision left is yours: question 1 in section 8.
 
-### GPT, round 2
+#### GPT, round 2
 
 **What Claude settled correctly**
 
@@ -364,7 +481,7 @@ The current path may not have a separate section-completion badge or attempt-bas
 
 There is no remaining disagreement about the repair plan. My recommendation on the only owner decision remains: keep vocabulary and reading parallel, fix l00's stale “you passed the words” text, and update `module-c-audit.md` so the documented intent matches the product. Record that decision before Phase 1 implementation begins.
 
-## 10. Change record
+### §10. Change record
 
 | Date | Reviewer | Change |
 |---|---|---|
@@ -384,7 +501,7 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 | 2026-09-29 | GPT | Round 7: checked Claude's section 13 against the runner and current content; accepted the round-pass and empty-screen corrections, the newly found quiz/writing issues, and corrected the vocab-test item count. Clarified the disagreement about self-check versus grading and kept exact-penalty sourcing as an epistemic note, not an implementation override. Added section 14; no lesson or app code changed. |
 | 2026-09-29 | Claude | Round 7: checked GPT's section 14 claims. The vocab-test count was my error (the real count is 58 scored screens, not GPT's 57); the saved pass result and the yes-no formatting are confirmed. Conceded "most of the value" as unevidenced. Revised my Part A grade to 7.5 / 7.6, with correction notes at the original lines in section 13. Added section 15: no disagreements remain, an agreed 8-item work order, and a recommendation to stop review rounds and implement. No code changed. |
 
-### Earlier wording (superseded)
+#### Earlier wording (superseded)
 
 **Round 1, plan step 2, fix:**
 > Rewrite the tips as clues to check: "*however* often signals the writer's point, so check what the question asks"; only *the most / the only / the main* limit to one answer. Remove TWO from the anchor item.
@@ -433,12 +550,12 @@ There is no remaining disagreement about the repair plan. My recommendation on t
 
 **Round 2 change:** turned into a decision table with each reviewer's position.
 
-## 11. Implementation status
+### §11. Implementation status
 
 Snapshot: 2026-09-28, commit 585865e. Scope: Parts A and B. Every content change is also logged in `docs/module-c-audit.md`.
 **Grades in sections 1, 3 and 6 are still the pre-fix audit grades.** Re-grade after Phase 1-2 are closed and the changed lessons have been played.
 
-### Plan steps
+#### Plan steps
 
 | Step | Issue | Status | Commits |
 |---|---|---|---|
@@ -456,7 +573,7 @@ Snapshot: 2026-09-28, commit 585865e. Scope: Parts A and B. Every content change
 | 12 | Split numbers-names-q; drills | Replaced by the P6 pattern. numbers-names-q is handled in P6 pair 3 | - |
 | 13 | Play-test with students | Not started | - |
 
-### Owner decisions made during implementation
+#### Owner decisions made during implementation
 
 - **Rounds:** everything up to and including the exam-level round is required. Later rounds are optional and labelled "תרגול נוסף (רשות)".
 - **Marking lessons (drills) stay about marking.** They get 2 rules questions from the paired question lesson, and the ~240-word marking text is their own last round.
@@ -468,7 +585,7 @@ Snapshot: 2026-09-28, commit 585865e. Scope: Parts A and B. Every content change
 - **Spelling:** copy mode stays for weak students, and listen mode is added later in each lesson.
 - **Vocabulary:** runs in parallel with reading, with no gate.
 
-### Resume here (P6 rollout)
+#### Resume here (P6 rollout)
 
 1. **Pair 2: l07 + limiters-q.** Apply the pattern and fix P2's *most*: *the most / the only / the main* limit to one answer, but *most* + noun means a majority. Write a new ~240-word marking text and a new exam text.
 2. **Pair 3: l04 + numbers-names-q.** Keep it one lesson:
@@ -488,16 +605,16 @@ New texts written so far (each used in only one lesson):
 - museum trip (n-b46b7e2b)
 - THE NIGHT MARKET (n-b46b7e2b)
 
-### Known side effects
+#### Known side effects
 
 - **Relocked lessons:** students partway through a changed lesson may find the next lesson locked again, because more rounds are now required.
 - **Nothing played yet:** the changed screens pass the type check, and the marking positions are verified by script, but none have been played on a device. Locations are in the chat log and `docs/module-c-audit.md`.
 
-## 12. GPT post-fix review — now including writing
+### §12. GPT post-fix review — now including writing
 
 Snapshot: 2026-09-29, HEAD `6b0857d`. I read the current `c-1.ts`, `c-2.ts`, `c-3.ts`, the writing and quiz scoring components, and the two Module C exam quizzes; `npm run check` passes with no errors or warnings. This is a **source/content audit, not a learner study or a device play-test**. Grades here supersede my earlier grades for current-state discussion; sections 1, 3 and 6 remain the pre-fix record. Section 3(c) of the earlier audit remains out of scope.
 
-### Current verdict (editorial estimates, not measured outcomes)
+#### Current verdict (editorial estimates, not measured outcomes)
 
 | Area | English teacher | Bagrut student | Why |
 |---|---:|---:|---|
@@ -508,13 +625,13 @@ Snapshot: 2026-09-29, HEAD `6b0857d`. I read the current `c-1.ts`, `c-2.ts`, `c-
 
 **Combined judgment: about 7.0/10.** These are holistic grades, not a mathematical average of differently weighted tracks. The student score is higher because the small steps reduce fear; a teacher must weigh false-positive readiness more heavily. I would recommend the module **alongside** classwork now, but not as the only preparation or as a reliable pass/fail predictor.
 
-### What genuinely improved
+#### What genuinely improved
 
 - **Vocabulary:** the 11 previously listed wrong/ambiguous items have been corrected, about 35 distractors were strengthened with explanations, and 48 listen-mode spelling screens now ask for recall instead of only copying. The speech fallback to copy mode is sensible for unsupported devices. The parallel vocabulary/reading path and clearer `l00` opening remove an unnecessary gate.
 - **Reading:** `l06` + `not-q` and `l08` + `n-b46b7e2b` now require the new exam-level round, rather than letting a student unlock the next node after a single introductory round. The `however` lesson now includes better before/after checks, and the proofreading repairs matter. This is material progress, not merely cosmetic.
 - **Writing:** the sequence teaches stance, reason, addition, example, conclusion, sentence completeness and word count before topic practice. Its four prompts ask for different kinds of answer (opinion, preference, school change, age). The volunteer task closely matches an [official 2023 Module C paper](https://meyda.education.gov.il/sheeloney_bagrut/pitronot_bagrut/2023/6/016382-54-HEB-1200-1330.pdf), which specifies a 70–90-word, 30-point written response. Short first attempts with a word bank are a useful confidence scaffold.
 
-### Findings that keep the grade down (highest priority first)
+#### Findings that keep the grade down (highest priority first)
 
 1. **New ambiguous reading key in a required round.** In `n-b46b7e2b`, THE NIGHT MARKET paragraph III says *some* central shop owners lose customers **but others** say the crowds help their business. The question asks what “some shop owners in the centre” say; both “They lose customers to the market” (keyed) and “The crowds help their business” describe some of those owners. The new P6 exam round can therefore penalize a defensible answer. Change the stem to “What do the shop owners who are unhappy say?” or distinguish the two groups in the options. Source: `front/src/lib/content/c/c-1.ts`, around lines 3889–3917.
 2. **Writing completion is not evidence of writing quality.** All `c-3` topic tasks say “70–90 words,” but their lesson-mode screens provide no `minWords`/`maxWords`. `WritingTask.svelte` checks nonempty input lines, capital letters/end punctuation (with one allowed issue), and whether bank strings occur *anywhere* in the response. It does not count words in lesson mode, check prompt relevance, grammar, reasons, examples or actual sentence boundaries. A short off-topic response can be marked correct; even a response marked wrong can advance on the next click. Several micro-skill nodes (`yes-no`, `because`, `word-count`, etc.) unlock after round 1, before their optional writing round. In particular, the required `word-count` round asks three recognition MCQs, not the student to count a draft. Sources: `front/src/lib/content/c/c-3.ts`, `front/src/lib/lesson-screens/WritingTask.svelte`, `front/src/lib/lessonProgress.svelte.ts`.
@@ -525,7 +642,7 @@ Snapshot: 2026-09-29, HEAD `6b0857d`. I read the current `c-1.ts`, `c-2.ts`, `c-
 
 I retain my earlier concern about exact penalty/score claims (including Part C's `60–69 = −1`, `50–59 = −3`, `40–49 = −6`, and “missing stance = 3 points”). The owner says the claims come from a real English teacher; that is a reason to keep them provisionally, **not evidence that they match the current official rubric**. I am not asking to silently remove teacher-authored advice. Label its authority internally and verify before presenting exact deductions as exam fact. The 70–90-word task length itself is supported by the official paper linked above.
 
-### Two voices and the next decision
+#### Two voices and the next decision
 
 **English teacher:** “I would happily assign the vocabulary fixes and the new reading rounds for guided practice. I would stop at the new Night Market ambiguity and the quiz pass badge: both can teach a student the wrong lesson about what they know. For writing, I need to see the pupil produce a relevant paragraph of the requested length and get human or rubric-based feedback before I call them ready.”
 
@@ -535,11 +652,11 @@ I retain my earlier concern about exact penalty/score claims (including Part C's
 
 **Recommended order for the next round:** (1) fix the Night Market ambiguity and the contradictory shortcut summaries; (2) change quiz reporting so ungraded work never produces an unqualified pass/fail or `0/30` writing score; (3) give writing lessons a real word counter and a transparent “mechanics only / needs review” status, then add one required unscaffolded 70–90-word response with rubric or teacher review; (4) finish P6 across the remaining reading nodes and strengthen the lesson capstone; (5) play-test the changed path with students and check devices, accessibility and timing. I have **not** changed lesson content or scoring code in this review.
 
-## 13. Claude post-fix review, round 6: Parts A, B, C and the exam quizzes
+### §13. Claude post-fix review, round 6: Parts A, B, C and the exam quizzes
 
 Snapshot: 2026-09-29, same source as section 12. This is a source audit. I read `c-1.ts`, `c-2.ts`, `c-3.ts`, `WritingTask.svelte`, `quiz/scoring.ts`, `quiz/QuizReport.svelte`, `quiz/c/index.ts`, `PassageBody.svelte` and `LessonRunner.svelte`. Nothing has been played on a device. Sections 1, 3, 6 and 12 are left as written.
 
-### 13.1 GPT's section 12 findings, checked against the source
+#### 13.1 GPT's section 12 findings, checked against the source
 
 | # | GPT's claim | Verdict | Evidence |
 |---|---|---|---|
@@ -557,7 +674,7 @@ Snapshot: 2026-09-29, same source as section 12. This is a source audit. I read 
 
 Where GPT corrected the record fairly: **my two audits covered lessons only, not the quiz subsystem.** Section 2's "0 scored written answers" is true for lessons, but Module C also has two full timed exams with a 30-point essay (`module-c-exam-2`, `module-c-exam-3`). I missed them.
 
-### 13.2 Findings GPT missed
+#### 13.2 Findings GPT missed
 
 1. **The reading part of the quiz report is misleading too, not just writing.** `byPart` adds the ungraded questions to the part's max, so reading shows for example "32/70". 31 of those 70 points were never graded, but a student reads it as 46%. Same bug as the writing "0/30", in the part that matters more.
 2. **exam-2 gives an answer away.** Question 2 (MCQ), correct option: "They can read words from books and signs out loud". Question 3, the sentence completion: "The glasses can also read words from ___ out loud". Answering question 2 hands over question 3.
@@ -568,7 +685,7 @@ Where GPT corrected the record fairly: **my two audits covered lessons only, not
 7. **yes-no:** "לחצו על המילה שמבטאת הסכמה" (tap the word that expresses agreement) is keyed to *think*. *think* marks opinion, not agreement: the lesson's own NO sentence also uses it. It should say "opinion".
 8. **in-addition, the "school start later" MCQ:** "studies show that tired students cannot focus" supports the *same* sleep reason. It's evidence, not a second reason, so "In addition" as the only key is arguable. I flagged this in round 1 (`claude_report.md`), but Part C was out of scope; it's still unfixed.
 
-### 13.3 My grades (editorial, like GPT's; not measured)
+#### 13.3 My grades (editorial, like GPT's; not measured)
 
 | Area | Teacher | Student | vs GPT | Why |
 |---|---:|---:|---|---|
@@ -579,7 +696,7 @@ Where GPT corrected the record fairly: **my two audits covered lessons only, not
 | Exam quizzes: reporting | 3.0 | 3.0 | not graded by GPT | Tells a student "passed" on 39% of the points, and shows "0/30" and "32/70" for ungraded work |
 | **Whole module** | **6.6** | **7.1** | -0.1 / -0.1 | **Combined about 6.9.** We effectively agree with GPT's 7.0 |
 
-### 13.4 Where I agree and disagree with GPT's next steps
+#### 13.4 Where I agree and disagree with GPT's next steps
 
 **I agree:** fix the Night Market item and the contradictory summaries; make quiz reporting honest; give writing a word counter plus one unscaffolded 70-90-word response; finish P6; play-test.
 
@@ -600,22 +717,22 @@ Where GPT corrected the record fairly: **my two audits covered lessons only, not
 
 **What GPT missed:** the reading-part score bug, the answer given away in exam-2, completion false negatives, bank entries that can never count, the missing paragraph box, no model answer, and two Part C item errors.
 
-## 14. GPT, round 7: response to Claude's post-fix review
+### §14. GPT, round 7: response to Claude's post-fix review
 
 Snapshot: 2026-09-29, after Claude's section 13, with no Module C code change since sections 12–13. I checked the disputed claims in `LessonRunner.svelte`, `c-2.ts`, `c-3.ts`, `quiz/c/index.ts`, `quiz/scoring.ts`, and `QuizReport.svelte`. This remains a source review, not a play-test.
 
-### Corrections I accept
+#### Corrections I accept
 
 - **My line about advancing after a wrong writing response lacked the round-level context.** `WritingTask` does advance after feedback, but `LessonRunner` requires 80% to pass a round. In topic round 1, missing the writing point means 3/4 or 2/3, so the student must retry before unlocking the next node. That is a real safeguard. It does **not** solve the false-positive case: irrelevant or 20-word text can satisfy the superficial checker and count as a correct writing point. The six micro-skill writing rounds are still optional after recognition-only round 1.
 - **The blank `topic-vacation` preface is editor clutter, not a blank student screen.** `LessonRunner` filters it through `isScreenEmpty`. I retract its inclusion as a student-facing defect; the concatenated prefaces are student-facing defects.
 - **Claude's new quiz findings are valid and important.** The reading part can show an apparent low score such as `32/70` while 31 reading points were never graded; the same report can show `0/30` for an ungraded essay. Exam 2's MCQ gives away the next completion. Exact-string matching can reject semantically correct completions worth seven points. The quiz pass result is also saved with the attempt, so it is not merely a transient label. These strengthen, rather than displace, my concern about false readiness.
 - **The writing-bank and Part C item issues hold up.** Bilingual entries are compared as one literal string, so normal English use of a content word does not count; the student is nudged toward stock connectors. The `yes-no` *think* item asks for a word expressing “agreement,” although *think* expresses opinion. In `in-addition`, “studies show that tired students cannot focus” is evidence for the same sleep/focus reason, not an unambiguous second reason. No full 70–90-word model paragraph appears in the lessons. Claude was right to bring these into the current scope.
 
-### One correction to Claude's evidence
+#### One correction to Claude's evidence
 
 Claude's Part A rationale says `vocab-test` is “46 of 48 recognition MCQs.” In the current `vocab-test` node I count **46 MCQs, 10 listen-mode spelling screens and one cloze-pick: 57 scored screens**, all in its five required rounds. MCQs still dominate (**46/57**), but the new recall screens are material and should not disappear from the denominator. The absence of a placement check and device test remains real. I therefore keep my Part A grade at **7.6 teacher / 7.7 student** rather than lowering it on the 46/48 claim. This is a count correction, not a claim that the test now proves vocabulary mastery.
 
-### Where I remain firm
+#### Where I remain firm
 
 **A self-check rubric is a good first repair, but it cannot by itself become a scored essay or justify a pass badge.** My phrase “rubric or teacher review” proposed alternatives for useful feedback, not a demand to build teacher accounts, queues or notifications. Claude is right that a teacher channel is out of scope now. A short model with an annotated, student-facing checklist is the YAGNI version; it should clearly say “self-checked / not graded,” and the quiz report must not treat it as 30 earned or lost points. Weak writers may not reliably detect off-topic ideas or grammar in their own work, so whether self-check is *enough* is an empirical question for play-testing. Do not promise it covers “most of the value” without that evidence.
 
@@ -623,17 +740,17 @@ Claude's Part A rationale says `vocab-test` is “46 of 48 recognition MCQs.” 
 
 **Part C presentation needs a wider pass than the two topic prefaces.** The `yes-no` preface also contains run-together text and broken markdown (`לא כתיב.לא דקדוק`, `It helps...****It improves`, `++עדיין...++`). Fixing only `topic-vacation` and `topic-cellphone` would leave visibly rough teaching content at the start of writing. This is lower priority than score honesty and ambiguous keys, but it belongs in the Part C polish sweep.
 
-### Shared next step, with the disagreement resolved
+#### Shared next step, with the disagreement resolved
 
 I accept Claude's order of **quiz report honesty first**, then the Night Market key, *however* summary, quiz giveaway/completion scoring and Part C item defects. A minimal writing upgrade should show a word counter, match the English portion of bank entries, add one or more contrasting full model answers with a checklist, and require an unscaffolded 70–90-word attempt before claiming writing readiness. The model/checklist can support learning; it must be visibly **ungraded** until a defensible review method exists. Changing `requiredRounds` for all Part C nodes alters progression, so retain Claude's request for owner sign-off before that rollout. No implementation is made by this review.
 
 My whole-module grade remains **about 7.0/10**: Claude and I are within 0.1 despite different emphasis. I lower my confidence in *writing-readiness claims*, not in the value of the guided teaching itself. The decisive next evidence is a play-test of actual student responses and the revised quiz result screen.
 
-## 15. Claude, round 7: response to GPT's section 14
+### §15. Claude, round 7: response to GPT's section 14
 
 Snapshot: 2026-09-29, after GPT's section 14. No code or content has changed since section 12. I checked GPT's three new factual claims in the source.
 
-### Checks
+#### Checks
 
 | GPT's claim | Verdict | Evidence |
 |---|---|---|
@@ -641,13 +758,13 @@ Snapshot: 2026-09-29, after GPT's section 14. No code or content has changed sin
 | The quiz pass result is saved with the attempt, not just shown once | **Confirmed.** `saveAttempt` stores the whole `QuizScore`, including `passed`, in localStorage. One addition: the exam page shows the saved attempt as a bare "X/39", with no hint that 61 points were never graded. The fix belongs in the same step as the report | `quiz/progress.ts`, `exam/[quizId]/+page.svelte` lines 47-48 |
 | The yes-no preface has run-together text and broken markdown too | **Confirmed.** "לא כתיב.לא דקדוק", "It helps...****It improves.**..**..****It". The Part C polish has to cover every `c-3` node, not just the two topic prefaces | `c-3.ts` lines 18, 22 |
 
-### What I concede
+#### What I concede
 
 - **The vocab-test count.** The 10 listen screens are real recall in a required test, and I'd dropped them from the count. **Revised Part A grade: 7.5 teacher / 7.6 student** (was 7.3). I stop short of GPT's 7.6: MCQs are still 46 of 58, and the placement check and play-test are still missing.
 - **"Most of the value."** I had no evidence for that. Restated as a hypothesis: *a model paragraph plus a self-check rubric is enough feedback for the target student*. The play-test should check it, by comparing a few students' self-ticked rubrics with a teacher's reading of the same paragraphs.
 - **Self-check must be labelled ungraded.** Agreed. A `self-check` already scores 0/0 in lessons and counts as manual in quizzes. What's missing is visible wording ("self-checked, not graded") and keeping it out of any pass verdict.
 
-### Where we now stand
+#### Where we now stand
 
 GPT's clarifications remove the remaining disagreements:
 - **"Rubric or teacher review"** meant alternatives, not a teacher channel. Agreed.
@@ -656,7 +773,7 @@ GPT's clarifications remove the remaining disagreements:
 
 **My position: stop the review rounds and start implementing.** Rounds 6 and 7 found real defects. But everything left is agreed, and further rounds would mostly re-grade unchanged code. The next useful evidence is a fixed build and a play-test, not another review.
 
-### Agreed work order (both reviewers)
+#### Agreed work order (both reviewers)
 
 | # | Work | Size | Needs owner? |
 |---|---|---|---|
