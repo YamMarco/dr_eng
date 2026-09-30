@@ -3,9 +3,9 @@
 	import RubricFeedback from './RubricFeedback.svelte';
 	import { analyzeWriting, type WritingAnalysis } from './analysis';
 
-	type Step = 'plan' | 'draft' | 'feedback';
+	type Step = 'intro' | 'plan' | 'draft' | 'feedback';
 
-	let step = $state<Step>('plan');
+	let step = $state<Step>('intro');
 	let stance = $state<'yes' | 'no' | null>(null);
 	let reason = $state('');
 	let example = $state('');
@@ -36,13 +36,75 @@
 			<h2 class="text-xl font-extrabold">מאמן כתיבה בשלבים</h2>
 		</div>
 		<span class="rounded-full bg-brand-soft px-3 py-1 text-xs font-bold text-brand-dark">
-			{step === 'plan' ? '1 · תכנון' : step === 'draft' ? '2 · כתיבה' : '3 · תיקון'}
+			{step === 'intro'
+				? 'איך זה עובד'
+				: step === 'plan'
+					? '1 · תכנון'
+					: step === 'draft'
+						? '2 · כתיבה'
+						: '3 · תיקון'}
 		</span>
 	</div>
 
-	<p class="font-semibold" dir="ltr">
-		Should students get homework every day? Give reasons to explain your opinion.
-	</p>
+	{#if step === 'intro'}
+		<div class="space-y-4">
+			<div class="rounded-2xl bg-brand-soft/60 p-4">
+				<h3 class="font-extrabold">כאן לא כותבים הכול בבת אחת</h3>
+				<p class="mt-2 text-sm leading-relaxed text-ink/75">
+					המאמן יעזור לכם לבנות תשובה לבגרות בשלושה צעדים קצרים, ואז לבחור תיקון אחד שישפר אותה הכי
+					הרבה.
+				</p>
+			</div>
+
+			<ol class="space-y-3">
+				<li class="flex gap-3 rounded-2xl border border-line p-3">
+					<span
+						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
+						>1</span
+					>
+					<div>
+						<p class="font-bold">מתכננים</p>
+						<p class="mt-0.5 text-sm text-muted">בוחרים עמדה וכותבים סיבה ודוגמה לפני הטיוטה.</p>
+					</div>
+				</li>
+				<li class="flex gap-3 rounded-2xl border border-line p-3">
+					<span
+						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
+						>2</span
+					>
+					<div>
+						<p class="font-bold">כותבים</p>
+						<p class="mt-0.5 text-sm text-muted">הופכים את התכנון לתשובה מלאה של 70–90 מילים.</p>
+					</div>
+				</li>
+				<li class="flex gap-3 rounded-2xl border border-line p-3">
+					<span
+						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
+						>3</span
+					>
+					<div>
+						<p class="font-bold">מתקנים</p>
+						<p class="mt-0.5 text-sm text-muted">
+							מקבלים אומדן לפי המחוון ותיקון אחד ממוקד, ומשפרים את הטיוטה.
+						</p>
+					</div>
+				</li>
+			</ol>
+
+			<p
+				class="rounded-2xl border border-dashed border-line p-3 text-xs leading-relaxed text-muted"
+			>
+				האומדן מיועד לתרגול ואינו ציון רשמי. בגרסה הזאת הבדיקה מקומית והטקסט אינו נשלח לשירות
+				חיצוני.
+			</p>
+
+			<Button onclick={() => (step = 'plan')}>בואו נתחיל</Button>
+		</div>
+	{:else}
+		<p class="font-semibold" dir="ltr">
+			Should students get homework every day? Give reasons to explain your opinion.
+		</p>
+	{/if}
 
 	{#if step === 'plan'}
 		<div class="mt-5 space-y-4">
