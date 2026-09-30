@@ -174,7 +174,13 @@ export const he = {
 						? 'טעות קטנה אחת מותרת'
 						: `עד ${maxTypos} טעויות קטנות מותרות`
 			}`,
-		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`
+		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`,
+		checkContent: 'תוכן: סיבות ספציפיות, בלי חזרות',
+		lintVague: (n: number, word: string) =>
+			`משפט ${n}: "${word}" כללי מדי - מה בדיוק? הוסיפו פרט או הסבר.`,
+		lintRepeat: (n: number, of: number) => `משפט ${n} חוזר על משפט ${of} - הוסיפו רעיון חדש.`,
+		lintShort: (n: number) => `משפט ${n} קצר מדי - כתבו משפט מלא עם סיבה או פרט.`,
+		lintNoDetail: (n: number) => `משפט ${n}: בדוגמה חסר פרט - מספר, שם, מקום או מקרה אמיתי.`
 	},
 	settings: {
 		title: 'הגדרות',

@@ -7,6 +7,7 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import { lintWriting, usesWord, type LintIssue } from './writingLint';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -60,12 +61,27 @@
 		}, 0)
 	);
 	let punctuationOk = $derived(minorIssues <= maxTypos);
-	let combinedText = $derived(lines.join(' ').toLowerCase());
-	let wordsUsed = $derived(
-		wordBank.filter((word) => combinedText.includes(word.toLowerCase())).length
-	);
+	let combinedText = $derived(lines.join(' '));
+	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
-	let allOk = $derived(allFilled && punctuationOk && wordBankOk);
+	let lintIssues = $derived(lintWriting(lines, wordBank));
+	let contentOk = $derived(lintIssues.length === 0);
+	let allOk = $derived(allFilled && punctuationOk && wordBankOk && contentOk);
+
+	function lintMessage(issue: LintIssue): string {
+		const t = i18n.dict.writingTask;
+		const n = issue.line + 1;
+		switch (issue.kind) {
+			case 'vague':
+				return t.lintVague(n, issue.word);
+			case 'repeat':
+				return t.lintRepeat(n, issue.of + 1);
+			case 'short':
+				return t.lintShort(n);
+			case 'no-detail':
+				return t.lintNoDetail(n);
+		}
+	}
 
 	// --- Quiz mode: a single free-text essay, no auto-check. Word count is
 	// just a live counter against minWords/maxWords, not a hard gate beyond
@@ -167,6 +183,13 @@
 				<span>{wordBankOk ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
 			</li>
+			<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-danger'}">
+				<span>{contentOk ? '✓' : '✗'}</span>
+				{i18n.dict.writingTask.checkContent}
+			</li>
+			{#each lintIssues as issue (issue.line)}
+				<li class="ms-6 text-xs font-semibold text-danger">{lintMessage(issue)}</li>
+			{/each}
 		</ul>
 	{/if}
 {/if}

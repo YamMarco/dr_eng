@@ -344,15 +344,28 @@
 		if (!target.closest('[data-lesson-node]')) openLabelId = null;
 	}
 
-	// Debug-only scratch node to preview every vocabulary screen a new word
-	// gets — not part of any section's real graph/progress, so it's kept
-	// entirely separate from `nodes`/`activeId` above.
-	const vocabTestScreens: LessonScreen[] = [
-		{ type: 'word-card', word: 'butterfly', translationHe: 'פרפר', imageAlt: 'butterfly' },
-		{ type: 'spell-word', word: 'butterfly', mode: 'copy' },
-		{ type: 'spell-word', word: 'butterfly', mode: 'listen' }
+	// Debug-only scratch node to try the writing-task content lint
+	// (writingLint.ts) — not part of any section's real graph/progress, so
+	// it's kept entirely separate from `nodes`/`activeId` above.
+	const writingTestScreens: LessonScreen[] = [
+		{
+			type: 'writing-task',
+			prompt:
+				'Should students get homework every day? כתבו {sentences}: דעה, סיבה ודוגמה. השתמשו ב{words} מבנק המילים.',
+			wordBank: ['I think', 'because', 'for example'],
+			minSentences: 3,
+			minWordsUsed: 3
+		},
+		{
+			type: 'writing-task',
+			prompt:
+				'Should phones be allowed in class? כתבו {sentences}: דעה, סיבה, סיבה נוספת וסיכום. השתמשו ב{words} מבנק המילים.',
+			wordBank: ['because', 'in addition', 'in conclusion'],
+			minSentences: 4,
+			minWordsUsed: 3
+		}
 	];
-	let vocabTestOpen = $state(false);
+	let writingTestOpen = $state(false);
 
 	// The runner is an overlay, not a route: it gets its own history entry so the
 	// phone's Back closes it (returning to this path) instead of leaving the page.
@@ -362,14 +375,14 @@
 	function exitRunner() {
 		if (page.state.runner) history.back();
 	}
-	function closeVocabTest() {
-		vocabTestOpen = false;
+	function closeWritingTest() {
+		writingTestOpen = false;
 		exitRunner();
 	}
 	$effect(() => {
 		if (!page.state.runner) {
 			activeId = null;
-			vocabTestOpen = false;
+			writingTestOpen = false;
 		}
 	});
 </script>
@@ -572,15 +585,15 @@
 </main>
 
 {#if debugStore.enabled}
-	<!-- Debug-only: preview every vocabulary screen type on a scratch node,
+	<!-- Debug-only: try the writing-task content lint on a scratch node,
 	     isolated from any real lesson/section. -->
 	<button
 		type="button"
 		onclick={() => {
 			enterRunner();
-			vocabTestOpen = true;
+			writingTestOpen = true;
 		}}
-		title="בדיקת מסכי אוצר מילים (דיבוג)"
+		title="בדיקת משימת כתיבה (דיבוג)"
 		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
 	>
 		<FlaskConical size={22} aria-hidden="true" />
@@ -601,15 +614,15 @@
 	</a>
 {/if}
 
-{#if vocabTestOpen}
+{#if writingTestOpen}
 	<LessonRunner
-		screens={vocabTestScreens}
-		lessonLabel="בדיקת אוצר מילים (דיבוג)"
+		screens={writingTestScreens}
+		lessonLabel="בדיקת משימת כתיבה (דיבוג)"
 		hasNextLesson={false}
-		onExit={closeVocabTest}
-		onFinish={closeVocabTest}
-		onFinishAndContinue={closeVocabTest}
-		onNextRound={closeVocabTest}
+		onExit={closeWritingTest}
+		onFinish={closeWritingTest}
+		onFinishAndContinue={closeWritingTest}
+		onNextRound={closeWritingTest}
 	/>
 {/if}
 
