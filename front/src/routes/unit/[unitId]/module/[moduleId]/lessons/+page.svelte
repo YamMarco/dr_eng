@@ -12,13 +12,14 @@
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
-	import { isScreenEmpty, type LessonScreen } from '$lib/lesson-screens/types';
+	import { isScreenEmpty } from '$lib/lesson-screens/types';
 	import { lessonIcon } from '$lib/lessonIcon';
 	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -344,28 +345,9 @@
 		if (!target.closest('[data-lesson-node]')) openLabelId = null;
 	}
 
-	// Debug-only scratch node to try the writing-task content lint
-	// (writingLint.ts) — not part of any section's real graph/progress, so
-	// it's kept entirely separate from `nodes`/`activeId` above.
-	const writingTestScreens: LessonScreen[] = [
-		{
-			type: 'writing-task',
-			prompt:
-				'Should students get homework every day? כתבו {sentences}: דעה, סיבה ודוגמה. השתמשו ב{words} מבנק המילים.',
-			wordBank: ['I think', 'because', 'for example'],
-			minSentences: 3,
-			minWordsUsed: 3
-		},
-		{
-			type: 'writing-task',
-			prompt:
-				'Should phones be allowed in class? כתבו {sentences}: דעה, סיבה, סיבה נוספת וסיכום. השתמשו ב{words} מבנק המילים.',
-			wordBank: ['because', 'in addition', 'in conclusion'],
-			minSentences: 4,
-			minWordsUsed: 3
-		}
-	];
-	let writingTestOpen = $state(false);
+	// Debug-only writing lab. It stays outside the real lesson graph and never
+	// changes progress or scores while the two prototype flows are evaluated.
+	let writingLabOpen = $state(false);
 
 	// The runner is an overlay, not a route: it gets its own history entry so the
 	// phone's Back closes it (returning to this path) instead of leaving the page.
@@ -375,14 +357,14 @@
 	function exitRunner() {
 		if (page.state.runner) history.back();
 	}
-	function closeWritingTest() {
-		writingTestOpen = false;
+	function closeWritingLab() {
+		writingLabOpen = false;
 		exitRunner();
 	}
 	$effect(() => {
 		if (!page.state.runner) {
 			activeId = null;
-			writingTestOpen = false;
+			writingLabOpen = false;
 		}
 	});
 </script>
@@ -585,15 +567,15 @@
 </main>
 
 {#if debugStore.enabled}
-	<!-- Debug-only: try the writing-task content lint on a scratch node,
-	     isolated from any real lesson/section. -->
+	<!-- Debug-only: compare experimental writing flows without touching progress. -->
 	<button
 		type="button"
 		onclick={() => {
 			enterRunner();
-			writingTestOpen = true;
+			writingLabOpen = true;
 		}}
-		title="בדיקת משימת כתיבה (דיבוג)"
+		aria-label="פתיחת מעבדת הכתיבה"
+		title="מעבדת כתיבה: Claude מול GPT"
 		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
 	>
 		<FlaskConical size={22} aria-hidden="true" />
@@ -614,16 +596,8 @@
 	</a>
 {/if}
 
-{#if writingTestOpen}
-	<LessonRunner
-		screens={writingTestScreens}
-		lessonLabel="בדיקת משימת כתיבה (דיבוג)"
-		hasNextLesson={false}
-		onExit={closeWritingTest}
-		onFinish={closeWritingTest}
-		onFinishAndContinue={closeWritingTest}
-		onNextRound={closeWritingTest}
-	/>
+{#if writingLabOpen}
+	<WritingLab onclose={closeWritingLab} />
 {/if}
 
 {#if activeNode}
