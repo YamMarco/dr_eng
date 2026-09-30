@@ -182,24 +182,24 @@
 {:else}
 	<div class="flex h-full min-h-0 flex-col">
 		<div
-			class="flex flex-nowrap items-center gap-2 overflow-x-auto border-b border-line/70 bg-surface/60 px-4 py-2 *:shrink-0"
+			class="flex flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-line/70 bg-surface/60 px-4 py-2"
 		>
-			<!-- relative+invisible-span sizes the button to the (always-longer)
-			     location text, so switching to "✓ הועתק" never changes its width
-			     and shifts every button after it in the row. -->
-			<button
-				type="button"
-				title="העתקת מיקום המסך"
-				onclick={copyLocation}
-				class="relative shrink-0 rounded-lg border border-dashed border-line px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
-				dir="ltr"
+			<!-- Toolbar order: screen type | text style | paragraph | blocks | JSON, delete -->
+			<select
+				class="rounded-lg border-2 border-brand bg-canvas px-2 py-1 text-xs font-bold"
+				title="סוג המסך"
+				aria-label="סוג המסך"
+				value={screen.type}
+				onchange={(e) =>
+					path && model.setScreenType(nodeId, path, e.currentTarget.value as LessonScreen['type'])}
 			>
-				<span class="invisible">{location}</span>
-				<span class="absolute inset-0 flex items-center justify-center">
-					{locationCopied ? '✓ הועתק' : location}
-				</span>
-			</button>
-			<span class="h-4 w-px shrink-0 bg-line"></span>
+				{#each SCREEN_TYPE_GROUPS as g (g.label)}
+					<optgroup label={g.label}>
+						{#each g.types as t (t)}<option value={t}>{typeHe(t)}</option>{/each}
+					</optgroup>
+				{/each}
+			</select>
+			<span class="mx-1 h-4 w-px bg-line"></span>
 			<!-- One shared formatting toolbar for every text field on this screen
 			     (whichever field is focused). mousedown preventDefault keeps that
 			     field's focus/selection alive through the click, so execCommand
@@ -290,6 +290,7 @@
 					</div>
 				{/if}
 			</div>
+			<span class="mx-1 h-4 w-px bg-line"></span>
 			<div class="relative">
 				<button
 					type="button"
@@ -379,6 +380,7 @@
 					onclick={() => formatDirection('ltr')}>A⇒</button
 				>
 			</div>
+			<span class="mx-1 h-4 w-px bg-line"></span>
 			<button
 				type="button"
 				class="rounded-lg border border-line px-2 py-1 text-sm hover:bg-line/60"
@@ -414,20 +416,7 @@
 				onmousedown={(e) => e.preventDefault()}
 				onclick={formatNumberList}>1.</button
 			>
-			<span class="h-4 w-px bg-line"></span>
-			<span class="text-xs font-bold text-muted">סוג המסך:</span>
-			<select
-				class="rounded-lg border-2 border-brand bg-canvas px-2 py-1 text-xs font-bold"
-				value={screen.type}
-				onchange={(e) =>
-					path && model.setScreenType(nodeId, path, e.currentTarget.value as LessonScreen['type'])}
-			>
-				{#each SCREEN_TYPE_GROUPS as g (g.label)}
-					<optgroup label={g.label}>
-						{#each g.types as t (t)}<option value={t}>{typeHe(t)}</option>{/each}
-					</optgroup>
-				{/each}
-			</select>
+			<span class="flex-1"></span>
 			<button
 				type="button"
 				class="rounded border border-line px-1.5 py-0.5 text-[10px] font-bold text-muted hover:bg-line/60"
@@ -435,7 +424,6 @@
 			>
 				JSON
 			</button>
-			<span class="flex-1"></span>
 			<button
 				type="button"
 				class="rounded-lg px-2 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50"
@@ -447,7 +435,21 @@
 			</button>
 		</div>
 
-		<div class="min-h-0 flex-1 overflow-y-auto">
+		<div class="relative min-h-0 flex-1 overflow-y-auto">
+			<!-- relative+invisible-span sizes the button to the (always-longer)
+			     location text, so switching to "✓ הועתק" never changes its width. -->
+			<button
+				type="button"
+				title="העתקת מיקום המסך"
+				onclick={copyLocation}
+				class="absolute right-2 top-2 z-10 rounded-lg border border-dashed border-line bg-surface/90 px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
+				dir="ltr"
+			>
+				<span class="invisible">{location}</span>
+				<span class="absolute inset-0 flex items-center justify-center">
+					{locationCopied ? '✓ הועתק' : location}
+				</span>
+			</button>
 			<div class="mx-auto max-w-lg p-6">
 				<!-- the "slide": a fixed phone-sized frame that IS the whole editing
 				     surface — prose is click-to-type, and every control for this
