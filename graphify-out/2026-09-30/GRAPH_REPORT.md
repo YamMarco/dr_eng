@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-09-30)
 
 ## Corpus Check
-- 196 files · ~465,713 words
+- 196 files · ~465,839 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `22ab295e`
+- Built from commit: `904eef51`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -158,7 +158,7 @@
 2. `ExamEditModel` - 31 edges
 3. `LessonScreen` - 30 edges
 4. `ScreenPath` - 28 edges
-5. `Part 2: History (the past)` - 22 edges
+5. `Part 2: History (the past)` - 21 edges
 6. `EditModelLike` - 20 edges
 7. `LessonNode` - 15 edges
 8. `QuizNode` - 13 edges
@@ -166,10 +166,10 @@
 10. `Lesson structure — quick reference` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
-  front/src/lib/content/types.ts → front/src/lib/lesson-screens/types.ts
 - `IdentifiedScreen` --references--> `LessonScreen`  [EXTRACTED]
   front/src/lib/quiz/screenIds.ts → front/src/lib/lesson-screens/types.ts
+- `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
+  front/src/lib/content/types.ts → front/src/lib/lesson-screens/types.ts
 - `issuesByNode()` --indirect_call--> `i()`  [INFERRED]
   front/src/lib/content-edit/validate.ts → front/src/lib/content-edit/fields/TokenPicker.svelte
 - `get-documentation Tool` --semantically_similar_to--> `get-documentation Tool`  [INFERRED] [semantically similar]
@@ -271,8 +271,8 @@ Cohesion: 0.17
 Nodes (11): 1. איפה זה יושב, 2. טבלת השיעורים, 3. כל שיעור במלואו, 4. סוג מסך חדש, אם נדרש, 5. מה חסר, הפלט, הפרומפט - מעתיקים את כל מה שמתחת לקו ומדביקים בצ׳אט, הקלט (+3 more)
 
 ### Community 39 - "Module C: what's good, what's bad, and what to do"
-Cohesion: 0.25
-Nodes (7): 1. In short, 2. What's good, 3. What's bad (most serious first), 4. The plan, in order, 5. Already fixed, 6. For reference: scores and decisions, Module C: what's good, what's bad, and what to do
+Cohesion: 0.22
+Nodes (8): 1. In short, 2. What's good, 3. What's bad (most serious first), 4. The plan, in order, 5. Already fixed, 6. For reference: scores and decisions, 7. Where to find things, Module C: what's good, what's bad, and what to do
 
 ### Community 40 - "Section 20 · משפטים שעובדים"
 Cohesion: 0.20
@@ -543,8 +543,8 @@ Cohesion: 0.40
 Nodes (5): §7. Plan, Phase 1: trust fixes (about 1 day), Phase 2: item rigor (about half a day), Phase 3: validity (about 2 days), Phase 4: efficiency and verification
 
 ### Community 128 - "Part 2: History (the past)"
-Cohesion: 0.17
-Nodes (12): §10. Change record, §1. Verdict, §2. The real exam, §3. Scorecard by dimension, §5. Student's view, §8. Open questions for you, Earlier wording (superseded), Original opening (2026-09-28 to 2026-09-29) (+4 more)
+Cohesion: 0.18
+Nodes (11): §10. Change record, §1. Verdict, §2. The real exam, §3. Scorecard by dimension, §5. Student's view, §8. Open questions for you, Earlier wording (superseded), Original opening (2026-09-28 to 2026-09-29) (+3 more)
 
 ### Community 129 - "9. Reviewers' views"
 Cohesion: 0.40
@@ -598,10 +598,12 @@ Nodes (7): 1. In short, 2. What's good, 3. What's bad (most serious first), 4. T
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `LessonScreen` connect `LessonScreen` to `ExamEditModel`, `lesson-screens/types.ts`, `editModel.svelte.ts`, `api.ts`, `screenPath.ts`, `snapshot-content.ts`, `validate.ts`, `content/index.ts`, `registry.ts`, `screenTypeNames.ts`, `QuizRunner.svelte`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `ExamEditModel` connect `ExamEditModel` to `LessonScreen`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 19 · מקריאה לכתיבה`, `Section 26 · סימולציה ותיקון`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **Why does `QuizNode` connect `ExamEditModel` to `validate.ts`, `QuizRunner.svelte`, `api.ts`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `1. In short`, `2. What's good`, `3. What's bad (most serious first)` to the rest of the system?**
   _715 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
@@ -610,5 +612,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.1368421052631579 - nodes in this community are weakly interconnected._
 - **Should `Snippet Blocks ({#snippet})` be split into smaller, more focused modules?**
   _Cohesion score 0.057057057057057055 - nodes in this community are weakly interconnected._
-- **Should `EditModel` be split into smaller, more focused modules?**
-  _Cohesion score 0.1396011396011396 - nodes in this community are weakly interconnected._
