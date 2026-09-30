@@ -1,115 +1,145 @@
-# Module C: quality report and plan
+# Module C: what's good, what's bad, and what to do
 
-**Version 2.1 · status as of 2026-09-29** (repo at commit fce8ffd). Reviewers: Claude and GPT, both reading the source. Owner: Yam Marco.
-**Scope:** Part A (חלק א׳ - אוצר מילים), Part B (חלק ב׳ - הבנת הנקרא), Part C (חלק ג׳ - כתיבה), and the two practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
-**Locations** are given the way they appear in the app: section → lesson (Hebrew title, then its id) → round, or exam → question. Rounds are counted from 1.
+**Version 2.2 · 30 September 2026**
+Reviewed by two AI reviewers, Claude and GPT, for Yam.
 
-**How to read this document**
-- **The upper part (Part 1) is the present.** It says where Module C stands today. It is rewritten whenever the situation changes.
-- **The lower part (Part 2) is the past:** the chain of reviews, decisions and fixes that led here, in order and never edited.
-- **Before Part 1 is rewritten,** the version being replaced is appended to Part 2 as a dated snapshot. Nothing is lost.
+**What this report is for:** to show what works in Module C and what doesn't, with real examples from the app, and what should be done to make it better.
+
+**How to read it**
+- **The top part is today:** the good, the bad and the plan.
+- **The bottom part is the history** of how we got here. You don't need to read it; it's kept as a record.
+
+The app's sections are **Vocabulary** (חלק א׳ - אוצר מילים), **Reading** (חלק ב׳ - הבנת הנקרא) and **Writing** (חלק ג׳ - כתיבה), plus two **practice exams**.
 
 ---
 
-## 1. Verdict today
+## 1. In short
 
-| Area | Claude (teacher / student) | GPT (teacher / student) | In one line |
+Module C is a **good practice tool, about 7 out of 10.** It explains clearly, in Hebrew and in small steps, and gives students a real method for the reading part of the Bagrut.
+
+It is **not yet a reliable sign that a student is ready.** The practice exams can say "passed" when most of the exam wasn't checked, and the writing lessons can't tell a good paragraph from a weak one.
+
+**Best use today:** next to classroom lessons, not instead of them.
+
+## 2. What's good
+
+**1. A clear method for the reading test.**
+*Example:* the first reading lesson (**אני מחפש, לא קורא**) compares the exam to a WhatsApp group with 500 messages: to find the exam date you search for "exam", you don't read from the top. Then it teaches how to do the same with a text.
+
+**2. The traffic light: first make sure you understand the question.**
+*Example:* "What has the project achieved so far?" is 🟡 yellow: check *achieved* and *so far* in the dictionary, and only then look for the answer.
+
+**3. The words that tell you what to write are taught on their own.**
+*Example:* "Give TWO answers" means (1) and (2), not one long sentence with "and". Students often lose points on exactly this.
+
+**4. Vocabulary questions that make you really know the word.**
+*Example:* "Every member of ___ should follow the law": *social / society / societies / socially*. You can't guess; you need to know which form fits. Each explanation says why the other choices are wrong.
+
+**5. Spelling by ear.**
+*Example:* the app says "residents", the student types it, and the Hebrew meaning (תושבים) is shown as a hint. Copying the word from the screen is still there for weaker students.
+
+**6. Reading lessons that end with a new text.**
+*Example:* the NOT lessons now end with a text the student hasn't seen, about a school that banned phones, and the student must finish it before moving on.
+
+**7. Writing built step by step.**
+*Example:* students learn why "I think students should volunteer **because it is good**" is weak, and "...**because they learn to care about others**" is strong.
+
+## 3. What's bad, with an example and the fix (most serious first)
+
+**1. The practice exam results can mislead.**
+- *Example:* a student who answers only the multiple-choice questions, leaves every written answer and the essay empty, and gets 24 of the 39 checked points, sees **"passed"**. The essay shows as "0/30", as if it had been marked.
+- *Why:* the app checks only 39 of the 100 points. The written answers and the essay (61 points) aren't checked at all.
+- *Where:* both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
+- *Fix:* no "passed / failed". Show "Checked: 24 of 39 points. Not checked: the written answers and the essay (61 points)."
+
+**2. A few questions have mistakes.**
+- *Example (two right answers):* the text says "Some shop owners say they lose customers to the market, but others say the crowds help their business." The question asks "What do some shop owners say?", and both answers fit. *Where:* Reading → **however / but - כמו במבחן** → round 3. *Fix:* ask "What do the **unhappy** shop owners say?".
+- *Example (giveaway):* question 2's right answer is "They can read words from books and signs out loud". Question 3 then asks to complete "The glasses can also read words from ___ out loud." *Where:* practice exam **משקפיים חכמות...**. *Fix:* reword question 2's choices.
+- *Example (a right answer marked wrong):* the fill-in expects "books, signs, and screens". A student who writes "books, signs, screens" is marked wrong. *Fix:* accept small differences.
+- *Also:* one writing question calls "think" a word of agreement (it shows an opinion); one writing answer (Writing → **In addition - סיבה שנייה**) can be argued either way.
+
+**3. Some tips are still taught as rules that are always true.**
+- *Example:* a summary screen says "however / but = a turn; what comes after it = the point". But for "What problem do many adults have?" the answer comes *before* however. Another lesson says "*most* always means one answer", but "*most* trees" means the majority.
+- *Where:* Reading → **however / but - כמו במבחן** (round 2), **most / only - תרגול שאלות**, **שאלות 1 - סיכום**, and the summary in **אני מחפש, לא קורא**.
+- *Fix:* say it as a hint: "usually the point comes after however, but always answer what the question asks".
+
+**4. The writing check doesn't look at what the student wrote.**
+- *Example:* "In my opinion it is good because it is good. In addition it is good. In conclusion it is good." passes, because it has the linking words.
+- *And:* topic words from the word list (like "travel") never count, because the app looks for "travel / לטייל" as one word.
+- *Where:* every writing screen in the Writing lessons.
+- *Fix:* count the English word alone; add a word counter; show an example of a good paragraph with a short checklist, clearly marked "check yourself, not graded".
+
+**5. Students never practise writing a full paragraph.**
+- *Example:* a topic lesson asks for "70-90 words", but gives five separate one-line boxes and no word count. Students never see a model answer.
+- *Also:* the writing practice in the seven short skill lessons can be skipped.
+- *Where:* Writing → the four topic lessons (volunteering, vacation, school, cellphones) and the skill lessons.
+- *Fix:* one paragraph box with a word counter (the practice exams already have one), an example paragraph, and make one full paragraph per topic lesson required (needs your OK).
+
+**6. Some writing screens have lines stuck together.**
+- *Example:* "לא כתיב.לא דקדוק" and "It helps...It improves...It teaches" run together on one line.
+- *Where:* Writing → opening screens of **YES or NO - לומר עמדה**, **What do you think? - חופשה**, **At what age? - פלאפונים**.
+- *Fix:* tidy them, the way it was done for Vocabulary and Reading.
+
+**7. Half of the reading lessons haven't been updated yet.**
+- *Example:* the most/only lesson still has an easy true/false round ("true or false: MOST means one answer"), and students can move on without ever trying a new text.
+- *Where:* Reading → the numbers-and-names lessons, the most/only lessons, and the other single lessons.
+- *Fix:* the same pattern as the NOT and however lessons: rules, practice, then a required new text. Needs new texts.
+
+**8. The last reading lesson doesn't look like the exam.**
+- *Example:* **חלק 1 - סיכום** has a 113-word text and only multiple-choice questions. The real exam has about 340 words and 9 questions, 5 of them written.
+- *Also:* written answers in the answer-type lessons (**תשובה קצרה**, **השלמת משפט**, **שתי תשובות**) are never checked.
+- *Fix:* turn it into a small real exam, and check short written answers by key words.
+
+**9. Vocabulary is long for a strong student.**
+- *Example:* a student who already knows "environment" and "community" still goes through every screen, about 430 in total.
+- *Also:* the final vocabulary test is mostly multiple choice (46 of 58 questions).
+- *Fix:* a short check at the start of each lesson that lets strong students skip it.
+
+**10. No real student has used it yet.**
+- Everything here comes from reading the material, not from watching students.
+- *Fix:* let 2-3 students (weak, average, strong) use it for 20-30 minutes each, and note where they get stuck.
+
+## 4. The plan, in order
+
+| # | What to do | Solves | Size |
 |---|---|---|---|
-| Part A: vocabulary | 7.5 / 7.6 | 7.6 / 7.7 | Wrong keys and joke options are fixed; listen-spelling adds recall. Still MCQ-heavy (46 of 58 vocab-test items), no placement check |
-| Part B: reading | 6.9 / 7.3 | 6.9 / 7.4 | The method is strong. 2 of 4 lesson pairs are rebuilt with required new-text rounds; the rest use the old progression |
-| Part C: writing lessons | 5.5 / 6.5 | 5.8 / 6.6 | Good step-by-step frames, but the checker rewards linking words only, there's no paragraph box or word counter in lessons, and no model answer |
-| Exam quizzes: content | 7.5 / 7.5 | - | Exam-shaped: 4 paragraphs, 9 questions in the paper's mix, 30-point essay |
-| Exam quizzes: score reporting | 3.0 / 3.0 | (a top finding) | Says "passed" on 39 of 100 points; ungraded work shows as "0/30" and "32/70" |
-| **Whole module** | **6.6 / 7.1** | **6.7 / 7.2** | **About 7.0.** Strong guided practice; not yet a trustworthy readiness signal |
+| 1 | Honest practice exam results | Problem 1 | Small |
+| 2 | Fix the question mistakes and the "always true" tips | Problems 2, 3 | Small |
+| 3 | Tidy the writing screens | Problem 6 | Small |
+| 4 | Better writing practice: count the English word, word counter, paragraph box, example paragraph with a checklist | Problems 4, 5 | Medium |
+| 5 | Make one full paragraph per topic lesson required | Problem 5 | Small, **needs your OK** |
+| 6 | Finish updating the reading lessons | Problem 7 | Large (new texts) |
+| 7 | A last reading lesson that looks like the exam; check written answers | Problem 8 | Large |
+| 8 | A skip check for Vocabulary | Problem 9 | Medium |
+| 9 | Try it with 2-3 real students | Problem 10 | You arrange it |
 
-All grades are editorial judgements from reading the source. Nothing has been played by students yet.
+## 5. Already fixed
 
-**Recommended use today:** alongside classwork, not as a student's only preparation, and not as a pass/fail predictor.
+- **Wrong answers:** 11 questions that had the wrong answer marked as right, or two right answers, plus 2 more found later.
+- **Silly wrong choices in Vocabulary:** about 35 questions with obviously silly wrong options (like "sang / painted / cooked") now have believable ones, each explained.
+- **Spelling by ear:** 48 new exercises.
+- **Vocabulary before Reading:** students can start Reading without finishing Vocabulary first.
+- **Typos and layout** in Vocabulary and Reading, and wrong counts like "ten sentences" when there were two.
+- **The NOT and however/but lessons** rebuilt to end with a required new text.
 
-## 2. Module C compared with the real exam
+## 6. For reference: scores and decisions
 
-The real exam is the official 2026 summer B paper.
+**Scores** (out of 10, as an English teacher would judge / as a student would feel):
 
-| | Real exam | Module C today |
+| Part | Teacher | Student |
 |---|---|---|
-| Length and time | 1 hour 45 minutes, 70 reading + 30 writing | Exam quizzes: 90 minutes, 70 + 30 |
-| Reading text | 1 text, 4 paragraphs, 337 words | Exam quizzes: 4 paragraphs, 233 and 276 words. Lessons: short texts, longest question text about 165 words; marking-only texts about 240 |
-| Questions | 9 per text: 4 MCQ, 5 written | Exam quizzes: 9 in the same mix. Lesson capstone, **חלק 1 - סיכום** (n-7c5330b8): 113 words, MCQ only |
-| Written answers | Graded | Lessons: never scored (self-check). Exam quizzes: collected but not graded (61 of 100 points) |
-| Writing task | 70-90 words, 30 points | Lessons: sentence-by-sentence boxes, no word count. Exam quizzes: paragraph box with word counter, not graded |
+| Vocabulary | 7.5 | 7.6 |
+| Reading | 6.9 | 7.3 |
+| Writing | 5.5 | 6.5 |
+| Practice exams: the questions | 7.5 | 7.5 |
+| Practice exams: the results screen | 3 | 3 |
+| **Whole module** | **about 7** | **about 7** |
 
-## 3. What works (keep it)
+GPT's scores are within a few tenths of these, and both reviewers agree on the problems and the plan.
 
-- **The reading method, l00-l03:** search mindset, title + first paragraph as a map, the traffic light, then keyword to evidence.
-- **Instruction words taught in their own right** (q-words-1/2): according to, give ONE/TWO, complete, circle, because vs. in order to.
-- **Hebrew scaffolding and short screens,** which reach weak and anxious students.
-- **Vocabulary items built the content-2c way:** word forms, collocations, and explanations of why each wrong option fails.
-- **Listen-spelling** in every vocab review round and in vocab-test, with copy-spelling kept for weak students.
-- **The rebuilt reading pairs** (l06 + not-q, l08 + n-b46b7e2b): required rounds up to the exam level, including a new text.
-- **The writing sequence:** stance, reason, addition, example, conclusion, full sentences, word count, then 4 topic types.
+**You've decided:** Vocabulary and Reading can be done in parallel; in each lesson everything up to the exam-level round must be finished; copy-the-word spelling stays; the teacher's scoring advice stays.
 
-## 4. Open issues, most harmful first
-
-| # | Issue | Where |
-|---|---|---|
-| 1 | **Quiz results mislead.** "Passed" is computed on the 39 auto-graded points only. Ungraded parts show as "0/30" (writing) and for example "32/70" (reading). The saved attempt later shows a bare "X/39" | Both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**: the results screen after submitting, and the exam's start page (last attempt) |
-| 2 | **Item errors:** the Night Market question has two defensible answers; exam-2's question 2 gives away question 3; sentence completion rejects correct answers ("books, signs, screens"); yes-no keys *think* as the "agreement" word; one in-addition key is arguable | Night Market: Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 3, second text, question 3 · Giveaway and completion: exam **משקפיים חכמות שעוזרות לעיוורים לראות** → reading, questions 2-3 (completion also in **ידידות יוצאות דופן בין בעלי חיים**, question 3) · *think*: Part C (חלק ג׳ - כתיבה) → **YES or NO - לומר עמדה** (yes-no) → round 1, last screen · in-addition key: Part C (חלק ג׳ - כתיבה) → **In addition - סיבה שנייה** (in-addition) → round 1, question 2 |
-| 3 | **Rules still taught as laws:** n-b46b7e2b round 2 summary (however); limiters-q and n-221188d1 (*most* = one answer); the l00 summary line "I search, I don't read" | Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 2, summary · **most / only - תרגול שאלות** (limiters-q) → rounds 2-3 · **שאלות 1 - סיכום** (n-221188d1) → round 2 · **אני מחפש, לא קורא** (l00) → round 2, summary |
-| 4 | **The writing checker rewards connectors only:** bilingual bank entries ("travel / לטייל") can never match, and there's no word count, relevance or grammar check in lessons | Part C (חלק ג׳ - כתיבה) → every writing screen in the lessons, for example **What do you think? - חופשה** (topic-vacation) → round 1. The practice exams are not affected |
-| 5 | **Writing practice lacks the real task:** one box per sentence, no counter, no model paragraph; the micro-skill writing rounds are optional | Part C (חלק ג׳ - כתיבה) → the four topic lessons: **Do you think? - התנדבות**, **What do you think? - חופשה**, **What changes? - בית ספר**, **At what age? - פלאפונים** · the writing rounds of the seven skill lessons, from **YES or NO - לומר עמדה** to **70-90 מילים - לספור** |
-| 6 | **Part C presentation:** run-together lines and broken bold in the yes-no, topic-vacation and topic-cellphone openings | Part C (חלק ג׳ - כתיבה) → opening screens of **YES or NO - לומר עמדה** (yes-no), **What do you think? - חופשה** (topic-vacation), **At what age? - פלאפונים** (topic-cellphone) |
-| 7 | **Reading progression half-rebuilt:** l04 + numbers-names-q, l07 + limiters-q and the single lessons still use the old rounds (🌱 filler, skippable new-text practice) | Part B (חלק ב׳ - הבנת הנקרא) → **מגנט לעין - מספרים ושמות** + **מספרים ושמות - תרגול שאלות** (l04 + numbers-names-q) · **most / only - תשובה אחת** + **most / only - תרגול שאלות** (l07 + limiters-q) · the single lessons l00-l03 and l09-l12 |
-| 8 | **The lesson capstone isn't exam-like:** n-7c5330b8 is 113 words, MCQ only; no scored written answers in l10-l12 | Part B (חלק ב׳ - הבנת הנקרא) → **חלק 1 - סיכום** (n-7c5330b8) · **תשובה קצרה**, **השלמת משפט**, **שתי תשובות** (l10-l12) |
-| 9 | **Part A efficiency:** no placement check, and vocab-test is still mostly MCQ | Part A (חלק א׳ - אוצר מילים) → the six content-word lessons and **מבחן סיכום - אוצר מילים** (vocab-test) |
-| 10 | **Nothing has been played** by students or on devices | The whole module |
-
-## 5. Fixed so far
-
-| Issue | Fix | Commits |
-|---|---|---|
-| 11 wrong or ambiguous items (P1) | All fixed, plus two more found later (a second unscored *but*, a broken l03 self-check) | b0974fe, cc5f92d, 4127989 |
-| Joke distractors in Part A (P3) | About 35 items rewritten, each with an explanation | 48fabb0 |
-| Spelling was copy-only (P5, part) | 48 listen-spelling screens with a Hebrew hint; falls back to copy mode without browser speech | 7d98015 |
-| Vocab gate mismatch (P8) | Vocabulary runs in parallel with reading; l00 text and the audit updated | 4127989 |
-| Polish in Parts A-B (P9) | Typos, stray characters, lost line breaks, honest counts, em-dashes | 4127989 |
-| Skippable practice (P6, part) | Reading round pattern agreed and documented; l06 + not-q and l08 + n-b46b7e2b rebuilt | 12587ad, 99303c2, e2cad79, 585865e |
-| *however* taught as a law (P2, part) | Fixed in l08 and n-b46b7e2b rounds 1 and 3 (round 2 summary still open, issue 3) | 585865e |
-| Exact penalty numbers (P7) | Closed by owner ruling: they come from a real English teacher | - |
-
-## 6. Work order (agreed by both reviewers)
-
-| # | Work | Size | Needs owner? |
-|---|---|---|---|
-| 1 | Quiz honesty: no pass/fail while points are ungraded; show "auto X/Y · Z to review" per part and on the exam page | Small | No |
-| 2 | Item errors from issue 2, plus the n-b46b7e2b summary | Small | No |
-| 3 | Part C polish sweep over every `c-3` opening | Small | No |
-| 4 | Writing, minimal: match the English part of bank entries; paragraph box + word counter in lessons; model paragraphs with a checklist, labelled "self-checked, not graded" | Medium | No |
-| 5 | Part C required rounds: an unscaffolded 70-90-word attempt and the micro-skill writing rounds become required | Small code, changes the path | **Yes** |
-| 6 | Finish the reading rebuild: l07 + limiters-q (fixes *most*), l04 + numbers-names-q, then the single lessons | Large (new texts) | No |
-| 7 | Exam-like lesson capstone; scored written answers in l10-l12 | Large | No |
-| 8 | Play-test: changed lessons, the quiz result screen, and whether self-check feedback is enough | 2-3 sessions | Owner arranges |
-
-## 7. Decisions
-
-**Made by the owner**
-- Vocabulary runs in parallel with reading (no gate).
-- Everything up to and including a lesson's exam-level round is required; later rounds are optional, labelled "תרגול נוסף (רשות)".
-- Marking lessons stay about marking: 2 rules questions mixed in, and a ~240-word marking text as the last round.
-- Question lessons: rules + a short text; your turn; then an exam round with a familiar passage and a new text.
-- Copy-spelling stays; listen-spelling is added later in each lesson.
-- The exact penalty numbers stay: they're teacher-sourced.
-
-**Waiting for the owner**
-- Work item 5: make the Part C writing rounds required.
-- Arranging the play-test (work item 8).
-
-## 8. Where the reviewers stand
-
-No disagreements remain about what to do or in what order.
-- **Grades:** within 0.1-0.3 of each other in every area.
-- **Self-check feedback:** both agree it's the right first step and must be labelled ungraded. Whether it's enough for weak writers is an open question for the play-test.
-- **Penalty numbers:** GPT keeps an internal note that they aren't verified against the official rubric. It has no effect on the work.
-- **Next:** both recommend implementing the work order rather than more review rounds.
+**Waiting for you:** plan step 5 (make a full paragraph required) and step 9 (arrange a try-out with students).
 
 ---
 
@@ -810,3 +840,117 @@ Owner request: give locations as lesson, exam and section, not file names. Chang
 - **Formatting:** Hebrew lesson and exam titles in Part 1 are shown in **bold** instead of 'quotes', so they read correctly next to English text in Word.
 
 No findings, grades or decisions changed.
+
+### Snapshot: Part 1 as it was in version 2.1 (replaced on 2026-09-30)
+
+Replaced by the plain-language version 2.2 at the owner's request ("the report reads too complex"). No findings, scores or decisions changed; only the wording. Kept here word for word.
+**Version 2.1 · status as of 2026-09-29** (repo at commit fce8ffd). Reviewers: Claude and GPT, both reading the source. Owner: Yam Marco.
+**Scope:** Part A (חלק א׳ - אוצר מילים), Part B (חלק ב׳ - הבנת הנקרא), Part C (חלק ג׳ - כתיבה), and the two practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
+**Locations** are given the way they appear in the app: section → lesson (Hebrew title, then its id) → round, or exam → question. Rounds are counted from 1.
+
+**How to read this document**
+- **The upper part (Part 1) is the present.** It says where Module C stands today. It is rewritten whenever the situation changes.
+- **The lower part (Part 2) is the past:** the chain of reviews, decisions and fixes that led here, in order and never edited.
+- **Before Part 1 is rewritten,** the version being replaced is appended to Part 2 as a dated snapshot. Nothing is lost.
+
+---
+
+#### 1. Verdict today
+
+| Area | Claude (teacher / student) | GPT (teacher / student) | In one line |
+|---|---|---|---|
+| Part A: vocabulary | 7.5 / 7.6 | 7.6 / 7.7 | Wrong keys and joke options are fixed; listen-spelling adds recall. Still MCQ-heavy (46 of 58 vocab-test items), no placement check |
+| Part B: reading | 6.9 / 7.3 | 6.9 / 7.4 | The method is strong. 2 of 4 lesson pairs are rebuilt with required new-text rounds; the rest use the old progression |
+| Part C: writing lessons | 5.5 / 6.5 | 5.8 / 6.6 | Good step-by-step frames, but the checker rewards linking words only, there's no paragraph box or word counter in lessons, and no model answer |
+| Exam quizzes: content | 7.5 / 7.5 | - | Exam-shaped: 4 paragraphs, 9 questions in the paper's mix, 30-point essay |
+| Exam quizzes: score reporting | 3.0 / 3.0 | (a top finding) | Says "passed" on 39 of 100 points; ungraded work shows as "0/30" and "32/70" |
+| **Whole module** | **6.6 / 7.1** | **6.7 / 7.2** | **About 7.0.** Strong guided practice; not yet a trustworthy readiness signal |
+
+All grades are editorial judgements from reading the source. Nothing has been played by students yet.
+
+**Recommended use today:** alongside classwork, not as a student's only preparation, and not as a pass/fail predictor.
+
+#### 2. Module C compared with the real exam
+
+The real exam is the official 2026 summer B paper.
+
+| | Real exam | Module C today |
+|---|---|---|
+| Length and time | 1 hour 45 minutes, 70 reading + 30 writing | Exam quizzes: 90 minutes, 70 + 30 |
+| Reading text | 1 text, 4 paragraphs, 337 words | Exam quizzes: 4 paragraphs, 233 and 276 words. Lessons: short texts, longest question text about 165 words; marking-only texts about 240 |
+| Questions | 9 per text: 4 MCQ, 5 written | Exam quizzes: 9 in the same mix. Lesson capstone, **חלק 1 - סיכום** (n-7c5330b8): 113 words, MCQ only |
+| Written answers | Graded | Lessons: never scored (self-check). Exam quizzes: collected but not graded (61 of 100 points) |
+| Writing task | 70-90 words, 30 points | Lessons: sentence-by-sentence boxes, no word count. Exam quizzes: paragraph box with word counter, not graded |
+
+#### 3. What works (keep it)
+
+- **The reading method, l00-l03:** search mindset, title + first paragraph as a map, the traffic light, then keyword to evidence.
+- **Instruction words taught in their own right** (q-words-1/2): according to, give ONE/TWO, complete, circle, because vs. in order to.
+- **Hebrew scaffolding and short screens,** which reach weak and anxious students.
+- **Vocabulary items built the content-2c way:** word forms, collocations, and explanations of why each wrong option fails.
+- **Listen-spelling** in every vocab review round and in vocab-test, with copy-spelling kept for weak students.
+- **The rebuilt reading pairs** (l06 + not-q, l08 + n-b46b7e2b): required rounds up to the exam level, including a new text.
+- **The writing sequence:** stance, reason, addition, example, conclusion, full sentences, word count, then 4 topic types.
+
+#### 4. Open issues, most harmful first
+
+| # | Issue | Where |
+|---|---|---|
+| 1 | **Quiz results mislead.** "Passed" is computed on the 39 auto-graded points only. Ungraded parts show as "0/30" (writing) and for example "32/70" (reading). The saved attempt later shows a bare "X/39" | Both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**: the results screen after submitting, and the exam's start page (last attempt) |
+| 2 | **Item errors:** the Night Market question has two defensible answers; exam-2's question 2 gives away question 3; sentence completion rejects correct answers ("books, signs, screens"); yes-no keys *think* as the "agreement" word; one in-addition key is arguable | Night Market: Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 3, second text, question 3 · Giveaway and completion: exam **משקפיים חכמות שעוזרות לעיוורים לראות** → reading, questions 2-3 (completion also in **ידידות יוצאות דופן בין בעלי חיים**, question 3) · *think*: Part C (חלק ג׳ - כתיבה) → **YES or NO - לומר עמדה** (yes-no) → round 1, last screen · in-addition key: Part C (חלק ג׳ - כתיבה) → **In addition - סיבה שנייה** (in-addition) → round 1, question 2 |
+| 3 | **Rules still taught as laws:** n-b46b7e2b round 2 summary (however); limiters-q and n-221188d1 (*most* = one answer); the l00 summary line "I search, I don't read" | Part B (חלק ב׳ - הבנת הנקרא) → **however / but - כמו במבחן** (n-b46b7e2b) → round 2, summary · **most / only - תרגול שאלות** (limiters-q) → rounds 2-3 · **שאלות 1 - סיכום** (n-221188d1) → round 2 · **אני מחפש, לא קורא** (l00) → round 2, summary |
+| 4 | **The writing checker rewards connectors only:** bilingual bank entries ("travel / לטייל") can never match, and there's no word count, relevance or grammar check in lessons | Part C (חלק ג׳ - כתיבה) → every writing screen in the lessons, for example **What do you think? - חופשה** (topic-vacation) → round 1. The practice exams are not affected |
+| 5 | **Writing practice lacks the real task:** one box per sentence, no counter, no model paragraph; the micro-skill writing rounds are optional | Part C (חלק ג׳ - כתיבה) → the four topic lessons: **Do you think? - התנדבות**, **What do you think? - חופשה**, **What changes? - בית ספר**, **At what age? - פלאפונים** · the writing rounds of the seven skill lessons, from **YES or NO - לומר עמדה** to **70-90 מילים - לספור** |
+| 6 | **Part C presentation:** run-together lines and broken bold in the yes-no, topic-vacation and topic-cellphone openings | Part C (חלק ג׳ - כתיבה) → opening screens of **YES or NO - לומר עמדה** (yes-no), **What do you think? - חופשה** (topic-vacation), **At what age? - פלאפונים** (topic-cellphone) |
+| 7 | **Reading progression half-rebuilt:** l04 + numbers-names-q, l07 + limiters-q and the single lessons still use the old rounds (🌱 filler, skippable new-text practice) | Part B (חלק ב׳ - הבנת הנקרא) → **מגנט לעין - מספרים ושמות** + **מספרים ושמות - תרגול שאלות** (l04 + numbers-names-q) · **most / only - תשובה אחת** + **most / only - תרגול שאלות** (l07 + limiters-q) · the single lessons l00-l03 and l09-l12 |
+| 8 | **The lesson capstone isn't exam-like:** n-7c5330b8 is 113 words, MCQ only; no scored written answers in l10-l12 | Part B (חלק ב׳ - הבנת הנקרא) → **חלק 1 - סיכום** (n-7c5330b8) · **תשובה קצרה**, **השלמת משפט**, **שתי תשובות** (l10-l12) |
+| 9 | **Part A efficiency:** no placement check, and vocab-test is still mostly MCQ | Part A (חלק א׳ - אוצר מילים) → the six content-word lessons and **מבחן סיכום - אוצר מילים** (vocab-test) |
+| 10 | **Nothing has been played** by students or on devices | The whole module |
+
+#### 5. Fixed so far
+
+| Issue | Fix | Commits |
+|---|---|---|
+| 11 wrong or ambiguous items (P1) | All fixed, plus two more found later (a second unscored *but*, a broken l03 self-check) | b0974fe, cc5f92d, 4127989 |
+| Joke distractors in Part A (P3) | About 35 items rewritten, each with an explanation | 48fabb0 |
+| Spelling was copy-only (P5, part) | 48 listen-spelling screens with a Hebrew hint; falls back to copy mode without browser speech | 7d98015 |
+| Vocab gate mismatch (P8) | Vocabulary runs in parallel with reading; l00 text and the audit updated | 4127989 |
+| Polish in Parts A-B (P9) | Typos, stray characters, lost line breaks, honest counts, em-dashes | 4127989 |
+| Skippable practice (P6, part) | Reading round pattern agreed and documented; l06 + not-q and l08 + n-b46b7e2b rebuilt | 12587ad, 99303c2, e2cad79, 585865e |
+| *however* taught as a law (P2, part) | Fixed in l08 and n-b46b7e2b rounds 1 and 3 (round 2 summary still open, issue 3) | 585865e |
+| Exact penalty numbers (P7) | Closed by owner ruling: they come from a real English teacher | - |
+
+#### 6. Work order (agreed by both reviewers)
+
+| # | Work | Size | Needs owner? |
+|---|---|---|---|
+| 1 | Quiz honesty: no pass/fail while points are ungraded; show "auto X/Y · Z to review" per part and on the exam page | Small | No |
+| 2 | Item errors from issue 2, plus the n-b46b7e2b summary | Small | No |
+| 3 | Part C polish sweep over every `c-3` opening | Small | No |
+| 4 | Writing, minimal: match the English part of bank entries; paragraph box + word counter in lessons; model paragraphs with a checklist, labelled "self-checked, not graded" | Medium | No |
+| 5 | Part C required rounds: an unscaffolded 70-90-word attempt and the micro-skill writing rounds become required | Small code, changes the path | **Yes** |
+| 6 | Finish the reading rebuild: l07 + limiters-q (fixes *most*), l04 + numbers-names-q, then the single lessons | Large (new texts) | No |
+| 7 | Exam-like lesson capstone; scored written answers in l10-l12 | Large | No |
+| 8 | Play-test: changed lessons, the quiz result screen, and whether self-check feedback is enough | 2-3 sessions | Owner arranges |
+
+#### 7. Decisions
+
+**Made by the owner**
+- Vocabulary runs in parallel with reading (no gate).
+- Everything up to and including a lesson's exam-level round is required; later rounds are optional, labelled "תרגול נוסף (רשות)".
+- Marking lessons stay about marking: 2 rules questions mixed in, and a ~240-word marking text as the last round.
+- Question lessons: rules + a short text; your turn; then an exam round with a familiar passage and a new text.
+- Copy-spelling stays; listen-spelling is added later in each lesson.
+- The exact penalty numbers stay: they're teacher-sourced.
+
+**Waiting for the owner**
+- Work item 5: make the Part C writing rounds required.
+- Arranging the play-test (work item 8).
+
+#### 8. Where the reviewers stand
+
+No disagreements remain about what to do or in what order.
+- **Grades:** within 0.1-0.3 of each other in every area.
+- **Self-check feedback:** both agree it's the right first step and must be labelled ungraded. Whether it's enough for weak writers is an open question for the play-test.
+- **Penalty numbers:** GPT keeps an internal note that they aren't verified against the official rubric. It has no effect on the work.
+- **Next:** both recommend implementing the work order rather than more review rounds.
