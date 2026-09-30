@@ -1,6 +1,6 @@
 # Module C: what's good, what's bad, and what to do
 
-**Version 2.2 · 30 September 2026**
+**Version 2.3 · 30 September 2026**
 Reviewed by two AI reviewers, Claude and GPT, for Yam.
 
 **What this report is for:** what's good and what's bad in Module C, where each thing is in the app today, an example of it, and what to do about it.
@@ -9,7 +9,7 @@ Reviewed by two AI reviewers, Claude and GPT, for Yam.
 - **The top part is today:** the good, the bad and the plan.
 - **The bottom part is the history** of how we got here. You don't need to read it; it's kept as a record.
 
-The app's sections are **Vocabulary** (חלק א׳ - אוצר מילים), **Reading** (חלק ב׳ - הבנת הנקרא) and **Writing** (חלק ג׳ - כתיבה), plus two **practice exams**.
+The app has three sections, **Vocabulary**, **Reading** and **Writing**, plus two **practice exams**. Lessons are called by short English names; section 7 shows each one's name in the app.
 
 ---
 
@@ -26,42 +26,42 @@ It is **not yet a reliable sign that a student is ready.** The practice exams ca
 Each point: **where it is in the app today · an example · what to do with it.**
 
 **1. A clear method for the reading test.**
-- *Where:* Reading → the first four lessons: **אני מחפש, לא קורא**, **מפת הדרכים**, **שיטת הרמזור**, **P1 - ניווט בטקסט**.
+- *Where:* Reading → the first four lessons: **Search, don't read**, **The road map**, **The traffic light**, **P1: finding the answer**.
 - *Example:* the first lesson compares the exam to a WhatsApp group with 500 messages: to find the exam date you search for "exam", you don't read from the top. Then it teaches how to do the same with a text.
 - *What to do:* keep it. Only fix one summary line that makes it sound like you never read (see bad point 3).
 
 **2. The traffic light: first make sure you understand the question.**
-- *Where:* Reading → **שיטת הרמזור**, and it comes back in the later reading lessons before each question.
+- *Where:* Reading → **The traffic light**, and it comes back in the later reading lessons before each question.
 - *Example:* "What has the project achieved so far?" is 🟡 yellow: check *achieved* and *so far* in the dictionary, and only then look for the answer.
 - *What to do:* keep it.
 
 **3. The words that tell you what to write are taught on their own.**
-- *Where:* Vocabulary → **מילות שאלה: איפה ומה** and **מילות שאלה: איך עונים**.
+- *Where:* Vocabulary → **Question words 1** and **Question words 2**.
 - *Example:* "Give TWO answers" means (1) and (2), not one long sentence with "and". Students often lose points on exactly this.
 - *What to do:* keep it.
 
 **4. Vocabulary questions that make you really know the word.**
-- *Where:* Vocabulary → the six content-word lessons (the best one is **מילות תוכן: אחריות חברתית**).
+- *Where:* Vocabulary → the six content-word lessons (the best one is **Content words: social responsibility**).
 - *Example:* "Every member of ___ should follow the law": *social / society / societies / socially*. You can't guess; you need to know which form fits. Each explanation says why the other choices are wrong.
 - *What to do:* use the same style in the final vocabulary test, which is still mostly simple multiple choice (see bad point 9).
 
 **5. Spelling by ear.**
-- *Where:* Vocabulary → the review round at the end of every lesson, and **מבחן סיכום - אוצר מילים**.
-- *Example:* the app says "residents", the student types it, and the Hebrew meaning (תושבים) is shown as a hint. Copying the word from the screen is still there for weaker students.
+- *Where:* Vocabulary → the review round at the end of every lesson, and **Vocabulary final test**.
+- *Example:* the app says "residents", the student types it, and its Hebrew meaning is shown as a hint. Copying the word from the screen is still there for weaker students.
 - *What to do:* check on an iPhone and an Android phone that the voice plays and is clear.
 
 **6. Reading lessons that end with a new text.**
-- *Where:* Reading → **NOT - המילה הכי מסוכנת** + **NOT - תרגול שאלות**, and **however / but - סימון בטקסט** + **however / but - כמו במבחן**.
+- *Where:* Reading → **NOT (marking)** + **NOT (questions)**, and **However / but (marking)** + **However / but (questions)**.
 - *Example:* the NOT lessons end with a text the student hasn't seen, about a school that banned phones, and the student must finish it before moving on.
 - *What to do:* do the same in the reading lessons that haven't been updated yet (see bad point 7).
 
 **7. Writing built step by step.**
-- *Where:* Writing → the seven skill lessons, from **YES or NO - לומר עמדה** to **70-90 מילים - לספור**.
+- *Where:* Writing → the seven skill lessons, from **Yes or no** to **70-90 words**.
 - *Example:* students learn why "I think students should volunteer **because it is good**" is weak, and "...**because they learn to care about others**" is strong.
 - *What to do:* add a full example paragraph and real paragraph practice (see bad points 4 and 5).
 
 **8. Practice exams that look like the real Bagrut.**
-- *Where:* the two practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
+- *Where:* the two practice exams, the **Smart Glasses exam** and the **Animal Friendships exam**.
 - *Example:* one text in 4 paragraphs, 9 questions of the same kinds as the Bagrut, and an essay such as "Which famous person would you like to give a talk at your school?".
 - *What to do:* fix the results screen (bad point 1), and make the texts a little longer (they're 230-280 words; the Bagrut's is about 340).
 
@@ -70,51 +70,51 @@ Each point: **where it is in the app today · an example · what to do with it.*
 Each point: **where it is in the app today · an example · what to do.**
 
 **1. The practice exam results can mislead.**
-- *Where:* both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**: the results screen, and the exam's opening page.
+- *Where:* both practice exams, the **Smart Glasses exam** and the **Animal Friendships exam**: the results screen, and the exam's opening page.
 - *Example:* a student who answers only the multiple-choice questions, leaves every written answer and the essay empty, and gets 24 of the 39 checked points, sees **"passed"**. The essay shows as "0/30", as if it had been marked. The app checks only 39 of the 100 points.
 - *What to do:* no "passed / failed". Show "Checked: 24 of 39 points. Not checked: the written answers and the essay (61 points)."
 
 **2. A few questions have mistakes.**
 - *Where and example:*
-  - Reading → **however / but - כמו במבחן** → round 3: the text says "Some shop owners say they lose customers to the market, but others say the crowds help their business." The question asks "What do some shop owners say?", and both answers fit.
-  - Practice exam **משקפיים חכמות שעוזרות לעיוורים לראות** → questions 2-3: question 2's right answer is "They can read words from books and signs out loud", and question 3 then asks to complete "The glasses can also read words from ___ out loud."
+  - Reading → **However / but (questions)** → round 3: the text says "Some shop owners say they lose customers to the market, but others say the crowds help their business." The question asks "What do some shop owners say?", and both answers fit.
+  - The **Smart Glasses exam** → questions 2-3: question 2's right answer is "They can read words from books and signs out loud", and question 3 then asks to complete "The glasses can also read words from ___ out loud."
   - The same exam → question 3: the fill-in expects "books, signs, and screens"; a student who writes "books, signs, screens" is marked wrong.
-  - Writing → **YES or NO - לומר עמדה** → round 1: calls "think" a word of agreement, but it shows an opinion.
-  - Writing → **In addition - סיבה שנייה** → round 1: one answer can be argued either way.
+  - Writing → **Yes or no** → round 1: calls "think" a word of agreement, but it shows an opinion.
+  - Writing → **In addition** → round 1: one answer can be argued either way.
 - *What to do:* ask "What do the **unhappy** shop owners say?"; reword question 2's choices; accept small differences in the fill-in; say "opinion" instead of "agreement"; rewrite the debatable question.
 
 **3. Some tips are still taught as rules that are always true.**
-- *Where:* Reading → **however / but - כמו במבחן** (round 2), **most / only - תרגול שאלות**, **שאלות 1 - סיכום**, and the summary in **אני מחפש, לא קורא**.
+- *Where:* Reading → **However / but (questions)** (round 2), **Most / only (questions)**, **Questions review**, and the summary in **Search, don't read**.
 - *Example:* a summary screen says "however / but = a turn; what comes after it = the point". But for "What problem do many adults have?" the answer comes *before* however. Another lesson says "*most* always means one answer", but "*most* trees" means the majority.
 - *What to do:* say it as a hint: "usually the point comes after however, but always answer what the question asks".
 
 **4. The writing check doesn't look at what the student wrote.**
 - *Where:* every writing screen in the Writing lessons.
-- *Example:* "In my opinion it is good because it is good. In addition it is good. In conclusion it is good." passes, because it has the linking words. Topic words from the word list (like "travel") never count, because the app looks for "travel / לטייל" as one word.
+- *Example:* "In my opinion it is good because it is good. In addition it is good. In conclusion it is good." passes, because it has the linking words. Topic words from the word list (like "travel") never count, because the word list stores "travel" together with its Hebrew translation, and the app looks for both as one word.
 - *What to do:* count the English word alone; add a word counter; show an example of a good paragraph with a short checklist, clearly marked "check yourself, not graded".
 
 **5. Students never practise writing a full paragraph.**
-- *Where:* Writing → the four topic lessons (**Do you think? - התנדבות**, **What do you think? - חופשה**, **What changes? - בית ספר**, **At what age? - פלאפונים**) and the seven skill lessons.
+- *Where:* Writing → the four topic lessons (**Volunteering**, **Vacation**, **School**, **Cellphones**) and the seven skill lessons.
 - *Example:* a topic lesson asks for "70-90 words", but gives five separate one-line boxes and no word count. Students never see a model answer. The writing practice in the skill lessons can be skipped.
 - *What to do:* one paragraph box with a word counter (the practice exams already have one), an example paragraph, and one required full paragraph per topic lesson (needs your OK).
 
 **6. Some writing screens have lines stuck together.**
-- *Where:* Writing → opening screens of **YES or NO - לומר עמדה**, **What do you think? - חופשה**, **At what age? - פלאפונים**.
-- *Example:* "לא כתיב.לא דקדוק" and "It helps...It improves...It teaches" run together on one line.
+- *Where:* Writing → opening screens of **Yes or no**, **Vacation**, **Cellphones**.
+- *Example:* Hebrew sentences are joined with no space after the full stop, and "It helps...It improves...It teaches" runs together on one line.
 - *What to do:* tidy them, the way it was done for Vocabulary and Reading.
 
 **7. Half of the reading lessons haven't been updated yet.**
-- *Where:* Reading → **מגנט לעין - מספרים ושמות** + **מספרים ושמות - תרגול שאלות**, **most / only - תשובה אחת** + **most / only - תרגול שאלות**, and the other single lessons (**מפת הדרכים**, **שיטת הרמזור**, **P1 - ניווט בטקסט**, **שאלות אמריקאיות**, **תשובה קצרה**, **השלמת משפט**, **שתי תשובות**).
+- *Where:* Reading → **Numbers and names (marking)** + **Numbers and names (questions)**, **Most / only (marking)** + **Most / only (questions)**, and the other single lessons (**The road map**, **The traffic light**, **P1: finding the answer**, **Multiple choice**, **Short answer**, **Complete the sentence**, **Two answers**).
 - *Example:* the most/only lesson still has an easy true/false round ("true or false: MOST means one answer"), and students can move on without ever trying a new text.
 - *What to do:* the same pattern as the NOT and however lessons: rules, practice, then a required new text. Needs new texts.
 
 **8. The last reading lesson doesn't look like the exam.**
-- *Where:* Reading → **חלק 1 - סיכום**, and the answer-type lessons **תשובה קצרה**, **השלמת משפט**, **שתי תשובות**.
-- *Example:* **חלק 1 - סיכום** has a 113-word text and only multiple-choice questions; the real exam has about 340 words and 9 questions, 5 of them written. In the answer-type lessons, written answers are never checked.
+- *Where:* Reading → **Reading final lesson**, and the answer-type lessons **Short answer**, **Complete the sentence**, **Two answers**.
+- *Example:* **Reading final lesson** has a 113-word text and only multiple-choice questions; the real exam has about 340 words and 9 questions, 5 of them written. In the answer-type lessons, written answers are never checked.
 - *What to do:* turn it into a small real exam, and check short written answers by key words.
 
 **9. Vocabulary is long for a strong student.**
-- *Where:* Vocabulary → the six content-word lessons and **מבחן סיכום - אוצר מילים**.
+- *Where:* Vocabulary → the six content-word lessons and **Vocabulary final test**.
 - *Example:* a student who already knows "environment" and "community" still goes through every screen, about 430 in total. The final test is still mostly multiple choice (46 of 58 questions).
 - *What to do:* a short check at the start of each lesson that lets strong students skip it.
 
@@ -164,6 +164,47 @@ GPT's scores are within a few tenths of these, and both reviewers agree on the p
 **You've decided:** Vocabulary and Reading can be done in parallel; in each lesson everything up to the exam-level round must be finished; copy-the-word spelling stays; the teacher's scoring advice stays.
 
 **Waiting for you:** plan step 5 (make a full paragraph required) and step 9 (arrange a try-out with students).
+
+## 7. Where to find things
+
+The report uses short English names. This is each one's name in the app.
+
+| Section | Name in this report | Name in the app |
+|---|---|---|
+| Sections | Vocabulary | חלק א׳ - אוצר מילים |
+| Sections | Reading | חלק ב׳ - הבנת הנקרא |
+| Sections | Writing | חלק ג׳ - כתיבה |
+| Reading | Search, don't read | אני מחפש, לא קורא |
+| Reading | The road map | מפת הדרכים |
+| Reading | The traffic light | שיטת הרמזור |
+| Reading | P1: finding the answer | P1 - ניווט בטקסט |
+| Reading | Numbers and names (marking) | מגנט לעין - מספרים ושמות |
+| Reading | Numbers and names (questions) | מספרים ושמות - תרגול שאלות |
+| Reading | NOT (marking) | NOT - המילה הכי מסוכנת |
+| Reading | NOT (questions) | NOT - תרגול שאלות |
+| Reading | Most / only (marking) | most / only - תשובה אחת |
+| Reading | Most / only (questions) | most / only - תרגול שאלות |
+| Reading | Questions review | שאלות 1 - סיכום |
+| Reading | However / but (marking) | however / but - סימון בטקסט |
+| Reading | However / but (questions) | however / but - כמו במבחן |
+| Reading | Multiple choice | שאלות אמריקאיות |
+| Reading | Short answer | תשובה קצרה |
+| Reading | Complete the sentence | השלמת משפט |
+| Reading | Two answers | שתי תשובות |
+| Reading | Reading final lesson | חלק 1 - סיכום |
+| Vocabulary | Question words 1 | מילות שאלה: איפה ומה |
+| Vocabulary | Question words 2 | מילות שאלה: איך עונים |
+| Vocabulary | Content words: social responsibility | מילות תוכן: אחריות חברתית |
+| Vocabulary | Vocabulary final test | מבחן סיכום - אוצר מילים |
+| Writing | Yes or no | YES or NO - לומר עמדה |
+| Writing | In addition | In addition - סיבה שנייה |
+| Writing | 70-90 words | 70-90 מילים - לספור |
+| Writing | Volunteering | Do you think? - התנדבות |
+| Writing | Vacation | What do you think? - חופשה |
+| Writing | School | What changes? - בית ספר |
+| Writing | Cellphones | At what age? - פלאפונים |
+| Practice exams | Smart Glasses exam | משקפיים חכמות שעוזרות לעיוורים לראות |
+| Practice exams | Animal Friendships exam | ידידות יוצאות דופן בין בעלי חיים |
 
 ---
 
@@ -982,3 +1023,172 @@ No disagreements remain about what to do or in what order.
 ### Version 2.2, revised the same day (2026-09-30)
 
 Owner request: "what's good and bad, where it exists today, examples, what to do". In the top part, every good and bad point now has the same four parts: what it is, where it is in the app, an example, and what to do. The good points gained a "where" and a "what to do" each, plus one new good point (the practice exams look like the real Bagrut). The bad points kept their content, reordered to the same four parts. No findings, scores or decisions changed. The version before this revision is in git (commit 4b78e94).
+
+### Snapshot: Part 1 as it was in version 2.2 (replaced on 2026-09-30)
+
+Replaced by version 2.3 at the owner's request ("the English and Hebrew in the same sentence is annoying"). Lesson and exam titles in the text became short English names, with a table matching them to their Hebrew names in the app. No findings, scores or decisions changed. Kept here word for word.
+
+**Version 2.2 · 30 September 2026**
+Reviewed by two AI reviewers, Claude and GPT, for Yam.
+
+**What this report is for:** what's good and what's bad in Module C, where each thing is in the app today, an example of it, and what to do about it.
+
+**How to read it**
+- **The top part is today:** the good, the bad and the plan.
+- **The bottom part is the history** of how we got here. You don't need to read it; it's kept as a record.
+
+The app's sections are **Vocabulary** (חלק א׳ - אוצר מילים), **Reading** (חלק ב׳ - הבנת הנקרא) and **Writing** (חלק ג׳ - כתיבה), plus two **practice exams**.
+
+---
+
+#### 1. In short
+
+Module C is a **good practice tool, about 7 out of 10.** It explains clearly, in Hebrew and in small steps, and gives students a real method for the reading part of the Bagrut.
+
+It is **not yet a reliable sign that a student is ready.** The practice exams can say "passed" when most of the exam wasn't checked, and the writing lessons can't tell a good paragraph from a weak one.
+
+**Best use today:** next to classroom lessons, not instead of them.
+
+#### 2. What's good
+
+Each point: **where it is in the app today · an example · what to do with it.**
+
+**1. A clear method for the reading test.**
+- *Where:* Reading → the first four lessons: **אני מחפש, לא קורא**, **מפת הדרכים**, **שיטת הרמזור**, **P1 - ניווט בטקסט**.
+- *Example:* the first lesson compares the exam to a WhatsApp group with 500 messages: to find the exam date you search for "exam", you don't read from the top. Then it teaches how to do the same with a text.
+- *What to do:* keep it. Only fix one summary line that makes it sound like you never read (see bad point 3).
+
+**2. The traffic light: first make sure you understand the question.**
+- *Where:* Reading → **שיטת הרמזור**, and it comes back in the later reading lessons before each question.
+- *Example:* "What has the project achieved so far?" is 🟡 yellow: check *achieved* and *so far* in the dictionary, and only then look for the answer.
+- *What to do:* keep it.
+
+**3. The words that tell you what to write are taught on their own.**
+- *Where:* Vocabulary → **מילות שאלה: איפה ומה** and **מילות שאלה: איך עונים**.
+- *Example:* "Give TWO answers" means (1) and (2), not one long sentence with "and". Students often lose points on exactly this.
+- *What to do:* keep it.
+
+**4. Vocabulary questions that make you really know the word.**
+- *Where:* Vocabulary → the six content-word lessons (the best one is **מילות תוכן: אחריות חברתית**).
+- *Example:* "Every member of ___ should follow the law": *social / society / societies / socially*. You can't guess; you need to know which form fits. Each explanation says why the other choices are wrong.
+- *What to do:* use the same style in the final vocabulary test, which is still mostly simple multiple choice (see bad point 9).
+
+**5. Spelling by ear.**
+- *Where:* Vocabulary → the review round at the end of every lesson, and **מבחן סיכום - אוצר מילים**.
+- *Example:* the app says "residents", the student types it, and the Hebrew meaning (תושבים) is shown as a hint. Copying the word from the screen is still there for weaker students.
+- *What to do:* check on an iPhone and an Android phone that the voice plays and is clear.
+
+**6. Reading lessons that end with a new text.**
+- *Where:* Reading → **NOT - המילה הכי מסוכנת** + **NOT - תרגול שאלות**, and **however / but - סימון בטקסט** + **however / but - כמו במבחן**.
+- *Example:* the NOT lessons end with a text the student hasn't seen, about a school that banned phones, and the student must finish it before moving on.
+- *What to do:* do the same in the reading lessons that haven't been updated yet (see bad point 7).
+
+**7. Writing built step by step.**
+- *Where:* Writing → the seven skill lessons, from **YES or NO - לומר עמדה** to **70-90 מילים - לספור**.
+- *Example:* students learn why "I think students should volunteer **because it is good**" is weak, and "...**because they learn to care about others**" is strong.
+- *What to do:* add a full example paragraph and real paragraph practice (see bad points 4 and 5).
+
+**8. Practice exams that look like the real Bagrut.**
+- *Where:* the two practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**.
+- *Example:* one text in 4 paragraphs, 9 questions of the same kinds as the Bagrut, and an essay such as "Which famous person would you like to give a talk at your school?".
+- *What to do:* fix the results screen (bad point 1), and make the texts a little longer (they're 230-280 words; the Bagrut's is about 340).
+
+#### 3. What's bad (most serious first)
+
+Each point: **where it is in the app today · an example · what to do.**
+
+**1. The practice exam results can mislead.**
+- *Where:* both practice exams, **משקפיים חכמות שעוזרות לעיוורים לראות** and **ידידות יוצאות דופן בין בעלי חיים**: the results screen, and the exam's opening page.
+- *Example:* a student who answers only the multiple-choice questions, leaves every written answer and the essay empty, and gets 24 of the 39 checked points, sees **"passed"**. The essay shows as "0/30", as if it had been marked. The app checks only 39 of the 100 points.
+- *What to do:* no "passed / failed". Show "Checked: 24 of 39 points. Not checked: the written answers and the essay (61 points)."
+
+**2. A few questions have mistakes.**
+- *Where and example:*
+  - Reading → **however / but - כמו במבחן** → round 3: the text says "Some shop owners say they lose customers to the market, but others say the crowds help their business." The question asks "What do some shop owners say?", and both answers fit.
+  - Practice exam **משקפיים חכמות שעוזרות לעיוורים לראות** → questions 2-3: question 2's right answer is "They can read words from books and signs out loud", and question 3 then asks to complete "The glasses can also read words from ___ out loud."
+  - The same exam → question 3: the fill-in expects "books, signs, and screens"; a student who writes "books, signs, screens" is marked wrong.
+  - Writing → **YES or NO - לומר עמדה** → round 1: calls "think" a word of agreement, but it shows an opinion.
+  - Writing → **In addition - סיבה שנייה** → round 1: one answer can be argued either way.
+- *What to do:* ask "What do the **unhappy** shop owners say?"; reword question 2's choices; accept small differences in the fill-in; say "opinion" instead of "agreement"; rewrite the debatable question.
+
+**3. Some tips are still taught as rules that are always true.**
+- *Where:* Reading → **however / but - כמו במבחן** (round 2), **most / only - תרגול שאלות**, **שאלות 1 - סיכום**, and the summary in **אני מחפש, לא קורא**.
+- *Example:* a summary screen says "however / but = a turn; what comes after it = the point". But for "What problem do many adults have?" the answer comes *before* however. Another lesson says "*most* always means one answer", but "*most* trees" means the majority.
+- *What to do:* say it as a hint: "usually the point comes after however, but always answer what the question asks".
+
+**4. The writing check doesn't look at what the student wrote.**
+- *Where:* every writing screen in the Writing lessons.
+- *Example:* "In my opinion it is good because it is good. In addition it is good. In conclusion it is good." passes, because it has the linking words. Topic words from the word list (like "travel") never count, because the app looks for "travel / לטייל" as one word.
+- *What to do:* count the English word alone; add a word counter; show an example of a good paragraph with a short checklist, clearly marked "check yourself, not graded".
+
+**5. Students never practise writing a full paragraph.**
+- *Where:* Writing → the four topic lessons (**Do you think? - התנדבות**, **What do you think? - חופשה**, **What changes? - בית ספר**, **At what age? - פלאפונים**) and the seven skill lessons.
+- *Example:* a topic lesson asks for "70-90 words", but gives five separate one-line boxes and no word count. Students never see a model answer. The writing practice in the skill lessons can be skipped.
+- *What to do:* one paragraph box with a word counter (the practice exams already have one), an example paragraph, and one required full paragraph per topic lesson (needs your OK).
+
+**6. Some writing screens have lines stuck together.**
+- *Where:* Writing → opening screens of **YES or NO - לומר עמדה**, **What do you think? - חופשה**, **At what age? - פלאפונים**.
+- *Example:* "לא כתיב.לא דקדוק" and "It helps...It improves...It teaches" run together on one line.
+- *What to do:* tidy them, the way it was done for Vocabulary and Reading.
+
+**7. Half of the reading lessons haven't been updated yet.**
+- *Where:* Reading → **מגנט לעין - מספרים ושמות** + **מספרים ושמות - תרגול שאלות**, **most / only - תשובה אחת** + **most / only - תרגול שאלות**, and the other single lessons (**מפת הדרכים**, **שיטת הרמזור**, **P1 - ניווט בטקסט**, **שאלות אמריקאיות**, **תשובה קצרה**, **השלמת משפט**, **שתי תשובות**).
+- *Example:* the most/only lesson still has an easy true/false round ("true or false: MOST means one answer"), and students can move on without ever trying a new text.
+- *What to do:* the same pattern as the NOT and however lessons: rules, practice, then a required new text. Needs new texts.
+
+**8. The last reading lesson doesn't look like the exam.**
+- *Where:* Reading → **חלק 1 - סיכום**, and the answer-type lessons **תשובה קצרה**, **השלמת משפט**, **שתי תשובות**.
+- *Example:* **חלק 1 - סיכום** has a 113-word text and only multiple-choice questions; the real exam has about 340 words and 9 questions, 5 of them written. In the answer-type lessons, written answers are never checked.
+- *What to do:* turn it into a small real exam, and check short written answers by key words.
+
+**9. Vocabulary is long for a strong student.**
+- *Where:* Vocabulary → the six content-word lessons and **מבחן סיכום - אוצר מילים**.
+- *Example:* a student who already knows "environment" and "community" still goes through every screen, about 430 in total. The final test is still mostly multiple choice (46 of 58 questions).
+- *What to do:* a short check at the start of each lesson that lets strong students skip it.
+
+**10. No real student has used it yet.**
+- *Where:* the whole module.
+- *Example:* everything in this report comes from reading the material, not from watching students use it.
+- *What to do:* let 2-3 students (weak, average, strong) use it for 20-30 minutes each, and note where they get stuck.
+
+#### 4. The plan, in order
+
+| # | What to do | Solves | Size |
+|---|---|---|---|
+| 1 | Honest practice exam results | Problem 1 | Small |
+| 2 | Fix the question mistakes and the "always true" tips | Problems 2, 3 | Small |
+| 3 | Tidy the writing screens | Problem 6 | Small |
+| 4 | Better writing practice: count the English word, word counter, paragraph box, example paragraph with a checklist | Problems 4, 5 | Medium |
+| 5 | Make one full paragraph per topic lesson required | Problem 5 | Small, **needs your OK** |
+| 6 | Finish updating the reading lessons | Problem 7 | Large (new texts) |
+| 7 | A last reading lesson that looks like the exam; check written answers | Problem 8 | Large |
+| 8 | A skip check for Vocabulary | Problem 9 | Medium |
+| 9 | Try it with 2-3 real students | Problem 10 | You arrange it |
+
+#### 5. Already fixed
+
+- **Wrong answers:** 11 questions that had the wrong answer marked as right, or two right answers, plus 2 more found later.
+- **Silly wrong choices in Vocabulary:** about 35 questions with obviously silly wrong options (like "sang / painted / cooked") now have believable ones, each explained.
+- **Spelling by ear:** 48 new exercises.
+- **Vocabulary before Reading:** students can start Reading without finishing Vocabulary first.
+- **Typos and layout** in Vocabulary and Reading, and wrong counts like "ten sentences" when there were two.
+- **The NOT and however/but lessons** rebuilt to end with a required new text.
+
+#### 6. For reference: scores and decisions
+
+**Scores** (out of 10, as an English teacher would judge / as a student would feel):
+
+| Part | Teacher | Student |
+|---|---|---|
+| Vocabulary | 7.5 | 7.6 |
+| Reading | 6.9 | 7.3 |
+| Writing | 5.5 | 6.5 |
+| Practice exams: the questions | 7.5 | 7.5 |
+| Practice exams: the results screen | 3 | 3 |
+| **Whole module** | **about 7** | **about 7** |
+
+GPT's scores are within a few tenths of these, and both reviewers agree on the problems and the plan.
+
+**You've decided:** Vocabulary and Reading can be done in parallel; in each lesson everything up to the exam-level round must be finished; copy-the-word spelling stays; the teacher's scoring advice stays.
+
+**Waiting for you:** plan step 5 (make a full paragraph required) and step 9 (arrange a try-out with students).
