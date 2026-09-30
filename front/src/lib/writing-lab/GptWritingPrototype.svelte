@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import RubricFeedback from './RubricFeedback.svelte';
+	import WritingIntro from './WritingIntro.svelte';
 	import { analyzeWriting, type WritingAnalysis } from './analysis';
 
 	type Step = 'intro' | 'plan' | 'draft' | 'feedback';
@@ -47,59 +48,22 @@
 	</div>
 
 	{#if step === 'intro'}
-		<div class="space-y-4">
-			<div class="rounded-2xl bg-brand-soft/60 p-4">
-				<h3 class="font-extrabold">כאן לא כותבים הכול בבת אחת</h3>
-				<p class="mt-2 text-sm leading-relaxed text-ink/75">
-					המאמן יעזור לכם לבנות תשובה לבגרות בשלושה צעדים קצרים, ואז לבחור תיקון אחד שישפר אותה הכי
-					הרבה.
-				</p>
-			</div>
-
-			<ol class="space-y-3">
-				<li class="flex gap-3 rounded-2xl border border-line p-3">
-					<span
-						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
-						>1</span
-					>
-					<div>
-						<p class="font-bold">מתכננים</p>
-						<p class="mt-0.5 text-sm text-muted">בוחרים עמדה וכותבים סיבה ודוגמה לפני הטיוטה.</p>
-					</div>
-				</li>
-				<li class="flex gap-3 rounded-2xl border border-line p-3">
-					<span
-						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
-						>2</span
-					>
-					<div>
-						<p class="font-bold">כותבים</p>
-						<p class="mt-0.5 text-sm text-muted">הופכים את התכנון לתשובה מלאה של 70–90 מילים.</p>
-					</div>
-				</li>
-				<li class="flex gap-3 rounded-2xl border border-line p-3">
-					<span
-						class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-extrabold text-white"
-						>3</span
-					>
-					<div>
-						<p class="font-bold">מתקנים</p>
-						<p class="mt-0.5 text-sm text-muted">
-							מקבלים אומדן לפי המחוון ותיקון אחד ממוקד, ומשפרים את הטיוטה.
-						</p>
-					</div>
-				</li>
-			</ol>
-
-			<p
-				class="rounded-2xl border border-dashed border-line p-3 text-xs leading-relaxed text-muted"
-			>
-				האומדן מיועד לתרגול ואינו ציון רשמי. בגרסה הזאת הבדיקה מקומית והטקסט אינו נשלח לשירות
-				חיצוני.
-			</p>
-
-			<Button onclick={() => (step = 'plan')}>בואו נתחיל</Button>
-		</div>
+		<WritingIntro
+			title="כאן לא כותבים הכול בבת אחת"
+			body="המאמן יעזור לכם לבנות תשובה לבגרות בשלושה צעדים קצרים, ואז לבחור תיקון אחד שישפר אותה הכי הרבה."
+			steps={[
+				{ marker: '1', title: 'מתכננים', detail: 'בוחרים עמדה וכותבים סיבה ודוגמה לפני הטיוטה.' },
+				{ marker: '2', title: 'כותבים', detail: 'הופכים את התכנון לתשובה מלאה של 70–90 מילים.' },
+				{
+					marker: '3',
+					title: 'מתקנים',
+					detail: 'מקבלים אומדן לפי המחוון ותיקון אחד ממוקד, ומשפרים את הטיוטה.'
+				}
+			]}
+			note="האומדן מיועד לתרגול ואינו ציון רשמי. בגרסה הזאת הבדיקה מקומית והטקסט אינו נשלח לשירות חיצוני."
+			startLabel="בואו נתחיל"
+			onstart={() => (step = 'plan')}
+		/>
 	{:else}
 		<p class="font-semibold" dir="ltr">
 			Should students get homework every day? Give reasons to explain your opinion.
