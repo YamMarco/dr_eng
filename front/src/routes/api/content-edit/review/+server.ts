@@ -27,8 +27,14 @@ export const GET: RequestHandler = async ({ request }) => {
 		const notes: ReviewNotes = existsSync(abs) ? JSON.parse(readFileSync(abs, 'utf8') || '{}') : {};
 		return json(notes);
 	}
-	const { content } = await getGithubFile(GITHUB_PATH);
-	return json(JSON.parse(content || '{}') as ReviewNotes);
+	try {
+		const { content } = await getGithubFile(GITHUB_PATH);
+		return json(JSON.parse(content || '{}') as ReviewNotes);
+	} catch (e) {
+		// Surface GitHub's reason (e.g. 401 Bad credentials = expired GITHUB_TOKEN)
+		// instead of an opaque 500.
+		throw error(502, `GitHub read failed: ${e instanceof Error ? e.message : String(e)}`);
+	}
 };
 
 export const POST: RequestHandler = async ({ request }) => {
