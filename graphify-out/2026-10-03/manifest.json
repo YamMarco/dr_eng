@@ -540,9 +540,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
-    "mtime": 1791022672.8427832,
-    "seen": 1791022697.6427853,
-    "ast_hash": "f8e17c2d5958a9aa1eddb4c160383076",
+    "mtime": 1791031846.9739735,
+    "seen": 1791031858.7663498,
+    "ast_hash": "96e744a77e46a53b5db8420a9c71a87a",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
@@ -726,9 +726,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1791020252.0143988,
-    "seen": 1791020337.8182552,
-    "ast_hash": "30ffc09373acce80100ecc14150c3218",
+    "mtime": 1791030972.0270722,
+    "seen": 1791031002.4028103,
+    "ast_hash": "60612e1aee2d4d6c7c97dc40bb00035a",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
@@ -900,9 +900,9 @@
     "semantic_hash": ""
   },
   "docs/module-c-audit.md": {
-    "mtime": 1791022693.4189427,
-    "seen": 1791022697.6432133,
-    "ast_hash": "64bd02fe8492f0ed60bfd3213b4fc122",
+    "mtime": 1791022763.9151073,
+    "seen": 1791022767.7009194,
+    "ast_hash": "ed53fed65c4fab6a6592642a6d4f8533",
     "semantic_hash": ""
   },
   "docs/module-c-roadmap.md": {

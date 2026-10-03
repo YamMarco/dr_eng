@@ -14384,7 +14384,7 @@
       "node_kind": "heading",
       "norm_label": "fixed on 2026-09-19",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L148"
+      "source_location": "L149"
     },
     {
       "id": "docs_module_c_audit_fixed_on_2026_09_28",
@@ -14396,7 +14396,7 @@
       "node_kind": "heading",
       "norm_label": "fixed on 2026-09-28",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L85"
+      "source_location": "L86"
     },
     {
       "id": "docs_module_c_audit_fixed_on_2026_10_03_qc_report_2_3_bad_points_2_6_7",
@@ -14492,7 +14492,7 @@
       "node_kind": "heading",
       "norm_label": "still open",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L154"
+      "source_location": "L155"
     },
     {
       "id": "docs_module_c_audit_vocab_question_types",
@@ -23834,7 +23834,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -23845,7 +23845,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L154",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -23900,7 +23900,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -40420,5 +40420,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d46035e32c383404804c3c95fa068ef61a0d05c9"
+  "built_at_commit": "08285ef1caeb594c8cc9c7bdaef90c52e051abff"
 }
