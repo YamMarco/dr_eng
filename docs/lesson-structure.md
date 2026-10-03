@@ -176,22 +176,37 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 Reference implementation: `l06` + `not-q`. Rule: every round up to and including
 the exam-level round is required (`requiredRounds`). Rounds after it are optional
 and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the
-method itself (the old "PRACTICE · Round 1 🌱").
+method itself (the old "PRACTICE · Round 1 🌱"). Only the exam-level round is
+called "רמת בחינה".
 
-**Marking lesson** (a drill: l04, l06, l07, l08). All rounds required.
-1. Hebrew sentences to mark.
-2. English sentences, with 1 rules MCQ (from the paired -q lesson) mixed in.
-3. Paragraphs, with 1 rules MCQ mixed in.
-4. Exam level: 2 short texts to mark.
-5. Its own round: one long text of about 240 words (3/4 of the exam's 337) to mark.
+Load rule (avoid burn-out): exhaustive marking ("mark every X") only on short
+material. On an exam-size text the student hunts **by question** - the exam asks
+for one word at a time, not every occurrence. Per lesson: about 10-14 scored
+questions, at most one required exam-size text, about 6-8 minutes of required rounds.
 
-**Question lesson** (the paired -q lesson). `requiredRounds` = 3.
+**Marking lesson** (l04, l06, l07, l08). `requiredRounds` = 4.
+Each round raises one thing.
+1. Recognise: Hebrew sentences to mark.
+2. Switch language: English sentences, with 1 rules MCQ mixed in.
+3. Context + precision: 2 short paragraphs, 1 rules MCQ, then a paragraph with
+   look-alikes that are not targets (another/noted/know for NOT, almost/everyone
+   for limiters, butter/because for contrast, capitalised sentence starters for names).
+4. Exam level: one exam-shaped text (title, I-IV, ~200-250 words), `passage-mcq`
+   with `timerKey`, 3 questions that each need one hunt.
+5. Optional challenge: mark every target in the same text, `mark-all` with `timerKey`.
+
+**Question lesson** (the paired -q lesson, and l01-l03, l09-l12). `requiredRounds` = 3.
 1. Rules MCQs, then a short text with one real question.
 2. Your turn: one paragraph question.
-3. Exam level: a familiar full passage with about 4 questions, then a **new text**
-   (a topic not used elsewhere) with 3 questions. One of those is not a
-   target-word question, so students read each question instead of answering by reflex.
+3. Exam level: a familiar passage (for a -q lesson: the long text from its
+   marking lesson) with 3-4 questions, then a **new text** (a topic not used
+   elsewhere) with 3 questions. One of those is not a target-word question, so
+   students read each question instead of answering by reflex. Answer-type
+   lessons (l10-l12) use typed answers (`passage-quiz`).
 4. and on: optional extra practice.
+
+New-text length grows through Part B: ~120-150 words in l01-l04, ~180-250 from
+NOT to l12, full exam (~340 words, 9 questions) only in the last lesson (n-7c5330b8).
 
 ## Writing distractors (wrong options)
 

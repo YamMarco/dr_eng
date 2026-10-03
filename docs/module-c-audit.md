@@ -75,6 +75,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 ## Fixed on 2026-10-03 (QC report 2.3, bad points 2, 6, 7)
 
+- **Progressive overload (marking lessons l04, l06, l07, l08):** 4 required rounds instead of 5. Old rounds 3 and 4 were the same difficulty and round 4 was wrongly called exam level; now round 3 = paragraphs + look-alikes, round 4 = the only exam-level round (exam-size text, hunt by question, stopwatch), round 5 = optional timed full sweep. Each -q lesson's exam round reuses its marking lesson's long text. l07's long text is new (BIKES FOR EVERYONE) because THE FOUR-DAY WEEK duplicated l08's topic. Middle-section new texts extended to ~175-205 words.
 - **Question mistakes (2):** n-b46b7e2b round 3 now asks about the *unhappy* shop owners; practice exam 1 Q2 no longer gives away Q3; sentence completion ignores punctuation and and/or/the/a (shared `isSentenceCompletionMatch`), so "books, signs, screens" passes; yes-no mark-word says "opinion", not "agreement"; in-addition round 1 Q2 rewritten so only "In addition" fits.
 - **Run-together writing lines (6):** yes-no, topic-vacation and topic-cellphone openings split into lines; em-dashes removed there; in-addition "סיבה 1 / סיבה 2" split.
 - **Reading rollout (7), answer-type lessons l09-l12:** question pattern; exam rounds of l10-l12 are typed answers (`passage-quiz`, keyword-checked), which also starts on bad point 8 (written answers never checked). Point 7 is done: every reading lesson now follows the round pattern.
