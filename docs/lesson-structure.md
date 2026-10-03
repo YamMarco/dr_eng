@@ -96,7 +96,7 @@ is optional colour-coding (names / negatives / …): shown as a legend, and the
 matching tokens light up in that colour on the reveal (`color` is a key into
 `lesson-screens/markAllColors.ts`). Scoring ignores which category a token is in. `passage-quiz` marks correct when every keyword appears in the typed answer
 — keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
-Paragraph markers: in `passage-mcq.text` and `self-check.text`, start a paragraph with a roman numeral and **two** spaces (`"I  For years...
+Paragraph markers: in `passage-mcq.text`, `passage-quiz.text` and `self-check.text`, start a paragraph with a roman numeral and **two** spaces (`"I  For years...
 
 II  In 2022..."`); `PassageText` renders it as a gutter marker beside the paragraph's first line.
 `passage-mcq` is a short text + multiple-choice question(s) on one screen. Set

@@ -3,6 +3,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { PassageQuizScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import PassageText, { hasParagraphMarkers } from './PassageText.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 
@@ -61,8 +62,12 @@
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
-<div class="leading-relaxed"><Md block text={screen.text} /></div>
+<ExerciseKindBadge label={i18n.dict.exerciseKind.passageQuiz} />
+{#if hasParagraphMarkers(screen.text)}
+	<PassageText text={screen.text} />
+{:else}
+	<div class="leading-relaxed"><Md block text={screen.text} /></div>
+{/if}
 
 <div class="mt-6 flex flex-col gap-5">
 	{#each screen.questions as question, i (i)}

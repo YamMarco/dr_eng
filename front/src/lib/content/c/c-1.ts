@@ -2926,6 +2926,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "תשובה קצרה",
     titleEn: "Short Answer",
     required: ["l09"],
+    requiredRounds: 3,
     position: { x: -70, y: 1740 },
     big: false,
     content: {
@@ -2962,7 +2963,29 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "🚦 רמזור: ירוק? רק ירוק = עונים." },
+            { type: "preface", text: "תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש." },
+            {
+              type: "mcq",
+              prompt: "מה מחפשים בטקסט לכל מילת שאלה?",
+              options: ["Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום", "Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by", "כל מילות השאלה מחפשות את אותו דבר", "Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because"],
+              correctIndex: 0,
+              explanation: "כל מילת שאלה שולחת אתכם לסוג מידע אחר בטקסט.",
+            },
+            {
+              type: "mcq",
+              prompt: "\"Why did people leave Redonda?\" - מה מחפשים בטקסט?",
+              options: ["שם מקום", "because / since / so", "שנה ותאריך"],
+              correctIndex: 1,
+              explanation: "Why? ← מחפשים מילת סיבה בטקסט.",
+            },
+            {
+              type: "mcq",
+              prompt: "השאלה: \"Give ONE answer\". מצאתם בטקסט שתי תשובות נכונות. מה כותבים?",
+              options: ["את שתיהן - ליתר ביטחון", "אחת בלבד - זו שהכי ברורה בטקסט", "אף אחת - השאלה לא ברורה"],
+              correctIndex: 1,
+              explanation: "ONE = אחת. תשובה נוספת לא מוסיפה נקודות, ואם היא שגויה - מאבדים.",
+            },
+            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
@@ -3024,45 +3047,59 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: תשובה אחת. מהטקסט. Why? ← because.",
-            },
-            {
-              type: "mcq",
-              prompt: "מה מחפשים בטקסט לכל מילת שאלה?",
-              options: [
-                "Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום",
-                "Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by",
-                "כל מילות השאלה מחפשות את אותו דבר",
-                "Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because",
+              type: "passage-quiz",
+              text: "I  Every year, millions of young people around the world choose to volunteer - to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.",
+              questions: [
+                {
+                  prompt: "Why were the researchers surprised? Give ONE answer.",
+                  keywords: ["money"],
+                  answerHint: "Because they expected that money and success would be the main reason for happiness.",
+                },
+                {
+                  prompt: "According to Dr. Okafor, how do teenagers who volunteer feel?",
+                  keywords: ["stress"],
+                  answerHint: "They feel less stressed.",
+                },
+                {
+                  prompt: "Where do the results about schools come from?",
+                  keywords: ["countr"],
+                  answerHint: "From 12 countries.",
+                },
+                {
+                  prompt: "According to Professor Mills, what does helping others teach young people?",
+                  keywords: ["skill"],
+                  answerHint: "Skills that no classroom can ever replace.",
+                },
               ],
-              correctIndex: 0,
-              explanation: "כל מילת שאלה שולחת אתכם לסוג מידע אחר בטקסט.",
             },
             {
-              type: "mcq",
-              prompt:
-                '"Give ONE answer" - אפשר לכתוב שתי תשובות אם שתיהן נכונות.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. ONE = אחת בלבד. שתיים = 0 נקודות.",
-            },
-            {
-              type: "mcq",
-              prompt: '"Why did people leave Redonda?" - מה מחפשים בטקסט?',
-              options: ["שם מקום", "because / since / so", "שנה ותאריך"],
-              correctIndex: 1,
-              explanation: "Why? ← מחפשים מילת סיבה בטקסט.",
+              type: "passage-quiz",
+              text: "**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\nI  For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\nII  The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\nIII  The change has also brought visitors. Because the night sky is so dark, people come from far away to watch the stars. Local guide Anna Brooks takes small groups to a hill outside the town every weekend.",
+              questions: [
+                {
+                  prompt: "When did the town council decide to change the street lights?",
+                  keywords: ["2018"],
+                  answerHint: "In 2018.",
+                },
+                {
+                  prompt: "Why do people come from far away to Fulda Creek?",
+                  keywords: ["star"],
+                  answerHint: "Because the night sky is so dark, they come to watch the stars.",
+                },
+                {
+                  prompt: "Where does Anna Brooks take her groups?",
+                  keywords: ["hill"],
+                  answerHint: "To a hill outside the town.",
+                },
+              ],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nתשובה אחת, מהטקסט." },
             {
               type: "self-check",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
@@ -3095,10 +3132,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "passage-mcq",
               text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.",

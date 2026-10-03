@@ -134,6 +134,7 @@ export const he = {
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
+		passageQuiz: 'תרגיל: תשובה קצרה',
 		sentenceCompletion: 'תרגיל: השלמת משפט',
 		matchPairs: 'תרגיל: התאימו זוגות',
 		answerKeyLabel: 'מפתח התשובה',
