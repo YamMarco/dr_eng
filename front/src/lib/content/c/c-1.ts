@@ -1384,7 +1384,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "NOT - המילה הכי מסוכנת",
     titleEn: "Eye Catcher: NOT",
     required: ["l03"],
-    requiredRounds: 5,
+    requiredRounds: 4,
     position: { x: 0, y: 1020 },
     big: false,
     content: {
@@ -1526,53 +1526,42 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "בלי לראות NOT בוחרים משפט שנכון בטקסט, אבל השאלה ביקשה את ההפך. לכן מסמנים NOT לפני שעונים.",
             },
+            { type: "preface", text: "זהירות ממילים שנראות כמו שלילה: another, noted, know הן לא שלילה. ושימו לב ל-n't (didn't) - זו כן שלילה." },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
-              text: "The scientists were not surprised. No earlier test had succeeded, and nobody expected this time to be different.",
+              text: "The team didn't win, but nobody was upset. Nothing could stop their fans, who never stopped singing. Another game is planned for next month, and the coach noted that the players know what went wrong.",
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "שלילה", color: "rose", indices: [3, 5, 11] },
+                { name: "שלילה", color: "rose", indices: [2, 5, 8, 14] },
               ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every negative word.",
-              text: '"Nobody was going to do it for us," she added. No one else seemed willing to try.',
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "שלילה", color: "rose", indices: [0, 10] }],
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
             {
-              type: "preface",
-              text: "רמת בחינה. שני טקסטים. סמנו כל מילת שלילה.",
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every negative word.",
-              text: 'The report found no evidence that the plan worked. Not one expert supported it, and none of the residents noticed any change.\n\nDr. Ellen Ross said the result was not new. "No serious research has ever proved that money makes people happy," she explained.',
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "שלילה", color: "rose", indices: [3, 9, 15, 29, 31] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every negative word.",
-              text: 'The factory closed in 2015, and no new jobs came to replace it. Nobody expected the town to recover so quickly.\n\n"We had no money and no outside help," said Mayor Clara Diaz. "But we were not willing to give up, and none of us regret that choice."',
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
+              type: "passage-mcq",
+              label: "רמת בחינה",
+              timerKey: "hunt",
+              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
+              questions: [
                 {
-                  name: "שלילה",
-                  color: "rose",
-                  indices: [6, 13, 23, 26, 36, 42],
+                  prompt: "Which of the following is NOT true about the results after one year?",
+                  options: ["The number of visitors rose by 15%", "Air pollution in the centre dropped", "There were many serious accidents", "Cafes put tables in the street"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Mayor Tom Hughes, what was NOT the goal of the plan?",
+                  options: ["To punish drivers", "To make the centre quiet", "To have clean air", "To let people walk"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What problem did some older residents have?",
+                  options: ["The buses were not always on time", "They could not find the shops", "The street was too noisy", "They had to pay for parking"],
+                  correctIndex: 0,
                 },
               ],
             },
@@ -1580,25 +1569,16 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת שלילה - בדיוק כמו שתעשו לפני שאלת NOT בבחינה.",
-            },
+            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת שלילה. השעון רץ - נסו לנצח את עצמכם." },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
-              text: 'When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nThe town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. "We did not want fewer visitors," he said. "We wanted a centre where people could walk in quiet, clean air."\n\nA year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nStill, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.',
+              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
               dir: "ltr",
+              timerKey: "sweep",
               correctIndices: [],
               categories: [
-                {
-                  name: "שלילה",
-                  color: "rose",
-                  indices: [
-                    13, 22, 29, 39, 50, 77, 83, 113, 141, 154, 169, 180, 193,
-                    219, 232,
-                  ],
-                },
+                { name: "שלילה", color: "rose", indices: [18, 27, 34, 44, 56, 83, 89, 120, 148, 161, 177, 188, 201, 227, 240] },
               ],
             },
           ],
@@ -1764,55 +1744,28 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
               questions: [
                 {
-                  prompt: "Which of the following does Dr. Klein NOT say?",
-                  options: [
-                    "Adults understand explanations",
-                    "Adults correct mistakes faster",
-                    "Adults prefer group lessons",
-                    "Adults are not afraid to ask questions",
-                  ],
+                  prompt: "Which of the following did the town council NOT do?",
+                  options: ["Built two new car parks", "Added free buses", "Reopened the street to cars", "Started testing a second bus line"],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "איך ידעתם שזו התשובה?",
-                  options: [
-                    "כי היא הכי ארוכה",
-                    "כי בדקנו את שלוש האחרות מול פסקה II - הן מופיעות שם, והיא לא",
-                    "כי היא נשמעת לא הגיונית",
-                    "ניחשנו",
-                  ],
+                  prompt: "Which of the following is NOT mentioned as a problem?",
+                  options: ["The buses were not always on time", "Some shops outside the centre lost customers", "Parking in the centre became more expensive", "Shop owners were worried at first"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "By how much did the number of visitors rise?",
+                  options: ["5%", "15%", "50%", "It did not rise"],
                   correctIndex: 1,
-                },
-                {
-                  prompt:
-                    "According to paragraph I, which of the following is NOT true?",
-                  options: [
-                    "Over 30% of adults in large cities cannot swim",
-                    "Many adults who cannot swim feel embarrassed",
-                    "Experts say adults are too old to learn",
-                    "Learning to swim as an adult is more common than people think",
-                  ],
-                  correctIndex: 2,
-                },
-                {
-                  prompt:
-                    "Which of the following is NOT mentioned in paragraph III?",
-                  options: [
-                    "Classes are available in most cities",
-                    "Some programs meet only once a week",
-                    "Adult classes are cheaper than private lessons",
-                    "Adults who practice usually progress in under two months",
-                  ],
-                  correctIndex: 2,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**PHONES IN THE LOCKER**\n\nI  In 2023, Hillview High School decided to ban mobile phones during the school day. Students had to leave their phones in lockers from 8:00 until 3:00. At first, many parents were worried because they could not call their children.\n\nII  According to the head teacher, Ms. Laura Chen, the results surprised everyone. Students talked to each other more during breaks, and fewer students were late to class. However, Ms. Chen says the ban did not solve every problem: some students still used their phones in the toilets.\n\nIII  A survey at the end of the year found that 70% of students felt calmer without their phones. Not all students agreed, though. Some said they missed listening to music on the bus.",
+              text: "**PHONES IN THE LOCKER**\n\nI  In 2023, Hillview High School decided to ban mobile phones during the school day. Students had to leave their phones in lockers from 8:00 until 3:00. At first, many parents were worried because they could not call their children.\n\nII  According to the head teacher, Ms. Laura Chen, the results surprised everyone. Students talked to each other more during breaks, and fewer students were late to class. However, Ms. Chen says the ban did not solve every problem: some students still used their phones in the toilets.\n\nIII  A survey at the end of the year found that 70% of students felt calmer without their phones. Not all students agreed, though. Some said they missed listening to music on the bus.\n\nIV  Other schools in the area are now watching Hillview closely. Two of them plan to try a similar ban next year, with one change: students will keep their phones in their bags, switched off. \"We trust our students,\" says one head teacher. \"We just want them to look up from their screens.\" Ms. Chen says she will share her results with any school that asks.",
               questions: [
                 {
                   prompt:
