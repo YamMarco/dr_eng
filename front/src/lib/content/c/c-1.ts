@@ -993,6 +993,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "מגנט לעין - מספרים ושמות",
     titleEn: "Eye Catcher: Numbers & Names",
     required: ["l03"],
+    requiredRounds: 5,
     position: { x: -100, y: 1020 },
     big: false,
     content: {
@@ -1036,10 +1037,7 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.",
-            },
+            { type: "preface", text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט." },
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
@@ -1057,16 +1055,26 @@ export const c1Lessons: LessonNode[] = [
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
-              categories: [{ name: "מספרים", color: "sky", indices: [1, 5] }],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [1, 5] },
+              ],
+            },
+            {
+              type: "mark-all",
+              instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
+              text: "לפי ד\"ר רונית כהן, 30% מהתלמידים בחיפה ישנים פחות מ-7 שעות.",
+              dir: "rtl",
+              correctIndices: [],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [4, 9] },
+                { name: "שמות", color: "amber", indices: [1, 2, 3, 6] },
+              ],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי.",
-            },
+            { type: "preface", text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו." },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1074,8 +1082,8 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
                 { name: "מספרים", color: "sky", indices: [5] },
+                { name: "שמות", color: "amber", indices: [0, 1, 2] },
               ],
             },
             {
@@ -1085,9 +1093,16 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
+                { name: "מספרים", color: "sky", indices: [9] },
                 { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [9, 10] },
               ],
+            },
+            {
+              type: "mcq",
+              prompt: "השאלה: \"How many trees were planted?\" - מה מחפשים בטקסט?",
+              options: ["את המילה trees בלבד", "מספר שצמוד ל-trees / planted", "את שם הפרויקט"],
+              correctIndex: 1,
+              explanation: "מספר בשאלה (How many) = GPS. סורקים ומחפשים מספר ליד trees - לא קוראים מההתחלה.",
             },
             {
               type: "mark-all",
@@ -1096,18 +1111,15 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
+                { name: "מספרים", color: "sky", indices: [7] },
                 { name: "שמות", color: "amber", indices: [0, 1] },
-                { name: "מספרים", color: "sky", indices: [7, 8] },
               ],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.",
-            },
+            { type: "preface", text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה." },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1115,8 +1127,8 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
+                { name: "מספרים", color: "sky", indices: [11, 22] },
                 { name: "שמות", color: "amber", indices: [4, 15, 16, 17] },
-                { name: "מספרים", color: "sky", indices: [11, 12, 22, 23] },
               ],
             },
             {
@@ -1126,9 +1138,16 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "מספרים", color: "sky", indices: [1, 17, 18] },
+                { name: "מספרים", color: "sky", indices: [1, 17] },
                 { name: "שמות", color: "amber", indices: [5, 13, 14, 15] },
               ],
+            },
+            {
+              type: "mcq",
+              prompt: "השאלה: \"According to Dr. Santos, what did the project cost?\" - מה קוראים?",
+              options: ["את כל הטקסט, מההתחלה", "רק את מה ש-Dr. Santos אמרה, בפסקה שלה", "את הפסקה האחרונה"],
+              correctIndex: 1,
+              explanation: "שם בשאלה = כתובת. מוצאים את Dr. Santos, וקוראים רק את מה שהיא אמרה.",
             },
             {
               type: "mark-all",
@@ -1137,18 +1156,15 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
+                { name: "מספרים", color: "sky", indices: [9, 14, 20] },
                 { name: "שמות", color: "amber", indices: [0, 1, 2] },
-                { name: "מספרים", color: "sky", indices: [9, 10, 14, 20, 21] },
               ],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "רמת בחינה. שני טקסטים. סמנו כל מספר וכל שם פרטי.",
-            },
+            { type: "preface", text: "רמת בחינה. שני טקסטים. סמנו כל מספר וכל שם פרטי." },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1156,27 +1172,35 @@ export const c1Lessons: LessonNode[] = [
               dir: "ltr",
               correctIndices: [],
               categories: [
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [3, 6, 24, 25, 34, 35, 42, 45, 59, 61],
-                },
+                { name: "מספרים", color: "sky", indices: [3, 6, 24, 34, 42, 45, 59, 61] },
                 { name: "שמות", color: "amber", indices: [15, 16, 17] },
               ],
             },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "Ten years ago, only 200 families in the region of Kellwood had access to clean drinking water. Engineer Priya Nair led a project to build 18 new wells across the area.\n\nToday, according to local official Grace Whitman, over 14,000 people benefit from the new water system, and the project has expanded to 6 neighbouring villages.",
+              text: "In 2014, only 200 families in the region of Kellwood had access to clean drinking water. An engineer, Priya Nair, led a project to build 18 new wells across the area.\n\nToday, according to local official Grace Whitman, over 14,000 people benefit from the new water system, and the project has expanded to 6 neighbouring villages.",
               dir: "ltr",
               correctIndices: [],
               categories: [
-                {
-                  name: "מספרים",
-                  color: "sky",
-                  indices: [4, 5, 25, 26, 27, 39, 40, 53, 54, 55],
-                },
-                { name: "שמות", color: "amber", indices: [10, 18, 19, 36, 37] },
+                { name: "מספרים", color: "sky", indices: [1, 3, 25, 39, 53] },
+                { name: "שמות", color: "amber", indices: [9, 18, 19, 36, 37] },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מספר וכל שם פרטי - בדיוק כמו שתעשו לפני שאלה עם מספר או שם בבחינה." },
+            {
+              type: "mark-all",
+              instruction: "Mark every number and every proper name.",
+              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                { name: "מספרים", color: "sky", indices: [6, 17, 37, 43, 47, 55, 63, 67, 130, 132, 141, 162, 178, 197, 200] },
+                { name: "שמות", color: "amber", indices: [10, 11, 31, 74, 75, 112, 113, 114, 117, 119, 182, 192, 193] },
               ],
             },
           ],
@@ -1190,6 +1214,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "מספרים ושמות - תרגול שאלות",
     titleEn: "Numbers & Names: Practice",
     required: ["l04"],
+    requiredRounds: 3,
     position: { x: -100, y: 1140 },
     big: false,
     content: {
@@ -1200,11 +1225,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "summary",
-          title: "THE TOOL - שם בשאלה",
+          title: "THE TOOL - מספר או שם בשאלה",
           lines: [
-            "1 · ראיתם שם בשאלה.",
-            "2 · חפשו את השם בטקסט - באיזו פסקה הוא יושב?",
-            "3 · קראו רק את מה שאותו אדם אמר.",
+            "מספר בשאלה = GPS. סורקים את הטקסט ומחפשים אותו - לא קוראים מההתחלה.",
+            "שם בשאלה = כתובת. מוצאים את הפסקה שלו, וקוראים רק את מה שהוא אמר.",
             '⚠️ "According to Dr. Santos" ≠ מה שכולם אומרים. רק מה ש-Santos אמרה.',
           ],
         },
@@ -1212,25 +1236,37 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
+            { type: "preface", text: "מספר או שם בשאלה הם Eye Catchers: הם אומרים לכם לאן ללכת בטקסט." },
+            {
+              type: "mcq",
+              prompt: "\"According to the survey, what percentage of adults cannot swim?\" - מה תחפשו בטקסט?",
+              options: ["את המילה survey", "מספר עם % ליד adults / cannot swim", "את הפסקה הראשונה"],
+              correctIndex: 1,
+              explanation: "percentage = מספר. סורקים ומחפשים % ליד adults - שם התשובה.",
+            },
+            {
+              type: "mcq",
+              prompt: "\"According to Dr. Maria Santos, what did the project show?\" - לאיזו פסקה הולכים?",
+              options: ["פסקה I - כי היא הראשונה", "הפסקה שבה מופיעה Dr. Santos", "הפסקה האחרונה - שם המסקנה"],
+              correctIndex: 1,
+              explanation: "Dr. Santos = כתובת. הולכים לפסקה שלה וקוראים רק את מה שהיא אמרה.",
+            },
+            {
+              type: "mcq",
+              prompt: "באילו שאלות יש מספר שמחפשים בטקסט?\n\n1. \"How many countries are in the project?\"\n2. \"What happened after 2019?\"\n3. \"Give TWO answers from paragraph III.\"\n4. \"What percentage of students improved?\"",
+              options: ["רק ב-2", "ב-1, 2 ו-4", "בכולן", "רק ב-3 ו-4"],
+              correctIndex: 1,
+              explanation: "\"How many\" · \"2019\" · \"percentage\" = מספרים שמחפשים. \"Give TWO answers\" אומר כמה לכתוב - זה לא מספר שמחפשים בטקסט.",
+            },
+            { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
             {
               type: "passage-mcq",
-              text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+              text: "The city of Lakeport opened a new public pool in 2019. According to manager Helen Park, about 1,200 people swim there every week, and 300 children take lessons in the summer.",
               questions: [
                 {
-                  prompt:
-                    "השאלה: How many community gardens were created? - איזה מספר תחפשו בטקסט?",
-                  options: ["2,000", "15", "85%", "500,000"],
+                  prompt: "According to Helen Park, how many people swim in the pool every week?",
+                  options: ["300", "About 1,200", "2019", "About 120"],
                   correctIndex: 1,
-                },
-                {
-                  prompt: "באיזו פסקה הוא נמצא, ומה התשובה?",
-                  options: [
-                    "פסקה I - 15 community gardens",
-                    "פסקה II - 15 professors",
-                    "פסקה III - 15% of residents",
-                    "לא כתוב בטקסט",
-                  ],
-                  correctIndex: 0,
                 },
               ],
             },
@@ -1238,170 +1274,72 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - שתי שאלות. מצאו את המספר, ואז ענו.",
-            },
-            {
-              type: "self-check",
-              text: "III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
-              prompt: "By how much did stress levels fall?",
-              modelAnswer: "By 40%.",
-            },
+            { type: "preface", text: "{d:rtl}אתם - שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו." },
             {
               type: "self-check",
               text: "III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
               prompt: "What percentage of people exercise outdoors now?",
-              modelAnswer: "60%. (It increased from 15% to 60%.)",
+              modelAnswer: "60%. (It increased from 15% to 60% - the number next to exercise outdoors, not 85% or 40%.)",
             },
             {
-              type: "mcq",
-              prompt: 'למה "60%" לבד היא תשובה מסוכנת בשאלה כזאת?',
-              options: [
-                "כי צריך לכתוב את המספר במילים",
-                "כי בטקסט יש עוד מספרים - 15% ו-85% - וצריך את זה שצמוד ל-exercise outdoors",
-                "כי אחוזים אף פעם לא תשובה",
-                "כי חייבים לצטט משפט שלם",
-              ],
-              correctIndex: 1,
+              type: "self-check",
+              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              prompt: "According to Dr. Diallo, what does the project teach local people?",
+              modelAnswer: "How to care for the trees.",
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"מספר בשאלה = GPS. ישר לשם."'],
+              lines: ['"מספר בשאלה = GPS. שם בשאלה = כתובת."'],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מספר בשאלה = GPS. ישר לשם.",
-            },
-            {
-              type: "mcq",
-              prompt: '"How many trees were planted?" - מה תחפשו בטקסט?',
-              options: [
-                'את המילה "trees" בלבד',
-                "מספר שצמוד ל-trees / planted",
-                "את שם הפרויקט",
-              ],
-              correctIndex: 1,
-              explanation:
-                "מספר = GPS. סורקים את הטקסט ומחפשים מספר שקשור ל-trees.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"According to the survey, what percentage of adults cannot swim?" - מה ה-Eye Catcher?',
-              options: ["survey", "adults", "האחוז - 30%"],
-              correctIndex: 2,
-              explanation: "אחוז בשאלה = מספר = GPS. מחפשים אותו ישירות בטקסט.",
-            },
-            {
-              type: "mcq",
-              prompt: "מספר בשאלה אומר: לקרוא את הטקסט מההתחלה.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. מספר = GPS. סורקים - לא קוראים מההתחלה.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'באילו שאלות יש Eye Catcher של מספר?\n\n1. "How many countries are in the project?"\n2. "What happened after 2019?"\n3. "Give TWO answers from paragraph III."\n4. "What percentage of students improved?"',
-              options: [
-                "רק ב-2",
-                "ב-1, 2 ו-4",
-                "בכולן - 1, 2, 3 ו-4",
-                "רק ב-3 ו-4",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"How many" · "2019" · "percentage" = מספרים שמחפשים בטקסט. "Give TWO answers" היא הוראה שאומרת כמה לכתוב, לא מספר שמחפשים.',
-            },
-            {
-              type: "self-check",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
-              prompt:
-                'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
-              modelAnswer: "200 million trees · 15 countries.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'השאלה: "By how much did stress levels fall?" הטקסט: "Stress levels fell by 40%." - מה התשובה?',
-              options: [
-                "They fell significantly",
-                "By 40%",
-                "Stress fell because of the trees",
-              ],
-              correctIndex: 1,
-              explanation: "By 40% - מספר מדויק מהטקסט. זה כל מה שצריך.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"According to Professor James Lee, what percentage of residents are satisfied?" - מה עושים?',
-              options: [
-                "קוראים את פסקה 1 ומחפשים",
-                'מחפשים "James Lee", ובפסקה שלו מחפשים את האחוז',
-                "קוראים את כל הטקסט",
-              ],
-              correctIndex: 1,
-              explanation:
-                "שם + אחוז = שני Eye Catchers. מוצאים את James Lee, ובפסקה שלו סורקים אחר % ← 85%.",
-            },
-            {
-              type: "self-check",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
-              prompt:
-                '"According to the survey, what percentage of adults cannot swim? Give ONE answer." - כתבו ANSWER:',
-              modelAnswer: "ANSWER: Over 30% of adults cannot swim.",
-            },
-            {
-              type: "self-check",
-              prompt: 'הסבירו: למה "מספר בשאלה = GPS" עוזר במיוחד לתלמיד חלש?',
-              modelAnswer:
-                "כי מספרים קל לזהות בסריקה מהירה - העין מוצאת אותם בלי לקרוא, וזה חוסך המון זמן חיפוש.",
-            },
-          ],
-        },
-        {
-          screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף." },
             {
               type: "passage-mcq",
-              text: 'I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
+              text: "I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\\n\\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener,\" she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\\n\\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
               questions: [
                 {
-                  prompt:
-                    "השאלה: According to Dr. Maria Santos, what did the project want to show? - באיזו פסקה מופיעה Dr. Santos?",
-                  options: ["פסקה I", "פסקה II", "פסקה III", "בכל הפסקאות"],
+                  prompt: "How many trees did the charity plant?",
+                  options: ["15", "Over 2,000", "500,000", "85%"],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "קראו רק שם. מה התשובה?",
-                  options: [
-                    "That the project cost 500,000 dollars",
-                    "That 85% of residents are satisfied",
-                    "That any city can become greener",
-                    "That stress levels fell by 40%",
-                  ],
+                  prompt: "According to Dr. Santos, how much did the project cost?",
+                  options: ["Only 500,000 dollars", "Over 2,000 dollars", "More than similar projects", "It is not mentioned"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "According to Professor James Lee, what percentage of residents are satisfied with their city?",
+                  options: ["40%", "60%", "15%", "85%"],
+                  correctIndex: 3,
+                },
+                {
+                  prompt: "What did Greenville look like five years ago?",
+                  options: ["It had many parks", "It had almost no plants or trees", "It had 15 community gardens", "It was the greenest city in the area"],
+                  correctIndex: 1,
+                },
+              ],
+            },
+            {
+              type: "passage-mcq",
+              text: "**SCHOOLS ON THE WATER**\n\nI  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\nII  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\nIII  The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. \"Before, many parents kept their daughters at home,\" she explains. \"Now they see that school is safe.\"",
+              questions: [
+                {
+                  prompt: "How many boat schools sail along the rivers today?",
+                  options: ["3", "4", "22", "2,500"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "Why can't children walk to school in some months?",
+                  options: ["Because the school is too far away", "Because heavy rain floods their villages", "Because their parents keep them at home", "Because there are no roads"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "According to Nadia Akter, what has changed?",
+                  options: ["Students can use laptops on the boats", "Each boat stops at 3 villages a day", "Parents now see that school is safe", "More than 2,500 children study on the boats"],
                   correctIndex: 2,
                 },
               ],
@@ -1410,137 +1348,46 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - טקסט אחר, אותה שיטה.\n\nהשאלה: According to Dr. Amara Diallo, what do most trees die from?",
-            },
-            {
-              type: "mcq",
-              prompt: "באיזו פסקה נמצא Dr. Diallo?",
-              options: ["פסקה I", "פסקה II", "פסקה III", "לא מופיע בטקסט"],
-              correctIndex: 1,
-            },
-            {
-              type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
-              prompt: "כתבו את התשובה במילים של הטקסט.",
-              modelAnswer: "Because nobody looks after them.",
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"שם בשאלה = כתובת. הולך לפסקה שלו."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: שם בשאלה = כתובת. הולכים לפסקה שלו.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"According to Dr. Maria Santos, what did the project show?" - לאיזו פסקה הולכים?',
-              options: [
-                "פסקה I - כי היא הראשונה",
-                "פסקה II - כי Dr. Santos נמצאת שם",
-                "פסקה III - כי היא האחרונה",
-              ],
-              correctIndex: 1,
-              explanation:
-                "Dr. Santos = Eye Catcher = כתובת. הולכים לפסקה שלה.",
-            },
-            {
-              type: "mcq",
-              prompt: '"According to Dr. Santos" - צריך לקרוא מה שכולם אמרו.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                'שקר. "According to Dr. Santos" = רק מה ש-Santos אמרה.',
-            },
-            {
-              type: "mcq",
-              prompt: "למה שם פרטי בשאלה הוא Eye Catcher?",
-              options: [
-                "כי שמות מעניינים יותר",
-                "כי שם = כתובת לפסקה - הולכים ישר לשם",
-                "כי שמות קל לזכור",
-              ],
-              correctIndex: 1,
-              explanation: "שם = כתובת = פסקה. כמו כתובת בית - הולכים ישר.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
-            {
-              type: "mcq",
-              prompt: 'בטקסט THE CITY GARDEN PROJECT - מי "גר" בכל פסקה?',
-              options: [
-                "charity = I · Dr. Santos = II · Professor Lee = III",
-                "Dr. Santos = I · charity = II · Professor Lee = III",
-                "Professor Lee = I · Dr. Santos = II · charity = III",
-                "כולם מופיעים בכל הפסקאות",
-              ],
-              correctIndex: 0,
-              explanation: 'כל שם "גר" בפסקה אחת. זו הכתובת שלו.',
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nשם בשאלה = כתובת - על טקסט מוכר." },
             {
               type: "passage-mcq",
               text: "I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches skills that no classroom can replace.",
               questions: [
                 {
-                  prompt:
-                    '"According to Professor David Mills, why is volunteering important?" - באיזו פסקה?',
-                  options: ["פסקה I", "פסקה II", "פסקה III"],
-                  correctIndex: 2,
+                  prompt: "According to Professor David Mills, what does helping others teach?",
+                  options: ["How to feel less stressed", "Skills that no classroom can replace", "How to be happy", "How to work in 12 countries"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "According to Dr. Okafor, how do teenagers who volunteer feel?",
+                  options: ["Less stressed", "60% happier", "More focused in class", "More responsible"],
+                  correctIndex: 0,
                 },
               ],
             },
             {
-              type: "self-check",
-              prompt:
-                '"According to Dr. Okafor, what do teenagers who volunteer feel?" - כתבו: השם, הפסקה שלו, ומה היא אמרה.',
-              modelAnswer:
-                "שם: Dr. Okafor. פסקה: II. מה אמרה: teenagers who volunteer feel less stressed and sleep better.",
+              type: "mcq",
+              prompt: "באילו שאלות יש שם שאומר לאן ללכת?\n\n1. \"What do we learn from paragraph I?\"\n2. \"According to Dr. Anna Klein, why do adults improve?\"\n3. \"Give TWO reasons from paragraph II.\"\n4. \"What does Professor David Mills argue about schools?\"",
+              options: ["1 ו-3", "2 ו-4", "1 ו-4", "כולן"],
+              correctIndex: 1,
+              explanation: "\"Dr. Anna Klein\" ו-\"Professor David Mills\" - שמות = כתובות.",
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'באילו שאלות יש שם כ-Eye Catcher?\n\n1. "What do we learn from paragraph I?"\n2. "According to Dr. Anna Klein, why do adults improve?"\n3. "Give TWO reasons from paragraph II."\n4. "What does Professor David Mills argue about schools?"',
-              options: ["1 ו-3", "2 ו-4", "1 ו-4", "כולן"],
-              correctIndex: 1,
-              explanation:
-                '"Dr. Anna Klein" ו-"Professor David Mills" - שמות = כתובות.',
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nתשובה פתוחה: שם ומספר." },
             {
               type: "self-check",
               text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
-              prompt:
-                '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
-              modelAnswer:
-                "ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.",
+              prompt: '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
+              modelAnswer: "ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.",
             },
             {
               type: "self-check",
-              prompt:
-                'הסבירו: מה ההבדל בין "What do we learn from paragraph II?" לבין "According to Dr. Klein in paragraph II?"',
-              modelAnswer:
-                "הראשונה: כל מה שכתוב בפסקה II. השנייה: רק מה ש-Dr. Klein אמרה - לא מה שאחרים אמרו.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
+              prompt: 'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
+              modelAnswer: "200 million trees · 15 countries.",
             },
           ],
         },
