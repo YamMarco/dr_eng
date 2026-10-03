@@ -2109,6 +2109,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "most / only - תשובה אחת",
     titleEn: "Key Limiters",
     required: ["l03"],
+    requiredRounds: 5,
     position: { x: 100, y: 1020 },
     big: false,
     content: {
@@ -2119,14 +2120,15 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "מה קרה?\n\nהמילה MOST ביקשה אחד בלבד - הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nMOST = הכי, אחד. לא שניים.\nONLY = רק אחד. לא שניים.",
+          text: "מה קרה?\n\nהמילה MOST ביקשה אחד בלבד - הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nTHE MOST = הכי, אחד. לא שניים.\nTHE ONLY = רק אחד. לא שניים.\n\nשימו לב: most בלי the (\"most students\") = רוב. זה לא מגביל לתשובה אחת.",
         },
         {
           type: "summary",
           title: "THE TOOL - מילות הגבלה",
           lines: [
-            'most - "The MOST effective..." ← לא כולן, רק הכי טובה.',
-            'only - "The ONLY reason..." ← לא סיבות אחרות, רק אחת.',
+            'the most - "The MOST effective..." ← לא כולן, רק הכי טובה.',
+            'the only / the main - "The ONLY reason..." ← סיבה אחת, לא סיבות אחרות.',
+            'most בלי the - "most students" ← רוב התלמידים. לא מגביל לתשובה אחת.',
             "מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.",
           ],
         },
@@ -2202,6 +2204,18 @@ export const c1Lessons: LessonNode[] = [
               categories: [{ name: "הגבלה", color: "violet", indices: [2] }],
             },
             {
+              type: "mcq",
+              prompt: 'ראיתם בשאלה "What is the ONLY reason...?". כמה תשובות כותבים?',
+              options: [
+                "אחת - הסיבה שהטקסט מציין",
+                "שתיים - ליתר ביטחון",
+                "כמה שיותר - כל סיבה מהטקסט",
+              ],
+              correctIndex: 0,
+              explanation:
+                "the only = רק אחת. סיבה נוספת לא עונה על השאלה, ואם היא שגויה - מאבדים נקודות.",
+            },
+            {
               type: "mark-all",
               instruction:
                 "Mark every limiting word (only, all, most, some, few, every, always).",
@@ -2236,6 +2250,19 @@ export const c1Lessons: LessonNode[] = [
               categories: [
                 { name: "הגבלה", color: "violet", indices: [0, 13, 16] },
               ],
+            },
+            {
+              type: "mcq",
+              prompt: '"Most students walk to school." - מה פירוש most כאן?',
+              options: [
+                "רוב התלמידים",
+                "התלמיד הכי טוב",
+                "תלמיד אחד בלבד",
+                "כל התלמידים",
+              ],
+              correctIndex: 0,
+              explanation:
+                'most + שם עצם = רוב. רק "the most" (הכי) מבקש דבר אחד. "all" = כולם, וזה כבר יותר מרוב.',
             },
             {
               type: "mark-all",
@@ -2288,6 +2315,29 @@ export const c1Lessons: LessonNode[] = [
             },
           ],
         },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת הגבלה - בדיוק כמו שתעשו לפני שאלה עם the most / the only בבחינה.",
+            },
+            {
+              type: "mark-all",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
+              text: "**THE FOUR-DAY WEEK**\n\nI  In 2022, the town of Westford tried a four-day school week. Students went to school from Monday to Thursday, and every Friday was free. Only three schools took part in the first year, but all of them reported good results.\n\nII  Most teachers liked the change. They said students came to class less tired and paid more attention. Some parents, however, were worried. Families with young children had to find someone to look after them on Fridays, and a few parents said they had to take a day off work every week.\n\nIII  The results surprised the researchers. Attendance went up in all three schools, and most students said they enjoyed school more. However, test scores did not always improve. In maths, only one school saw better results, while the other two stayed the same.\n\nIV  Dr. Hannah Webb, who studied the project, says the lesson is simple. \"A shorter week is not always better,\" she explains. \"It works only when schools plan the extra day carefully.\" In some schools, Friday became a day for clubs, sport and extra help, and these schools had the strongest results.\n\nV  Next year, five more schools will join the project. Few people in Westford want to go back to the old system, but the town says it will check the results again in 2027.",
+              dir: "ltr",
+              correctIndices: [],
+              categories: [
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [24, 28, 38, 45, 62, 83, 94, 106, 110, 122, 126, 157, 163, 172, 201],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   },
@@ -2297,6 +2347,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "most / only - תרגול שאלות",
     titleEn: "Key Limiters: Practice",
     required: ["l07"],
+    requiredRounds: 3,
     position: { x: 100, y: 1140 },
     big: false,
     content: {
@@ -2309,8 +2360,9 @@ export const c1Lessons: LessonNode[] = [
           type: "summary",
           title: "THE TOOL - מילות הגבלה",
           lines: [
-            'most - "The MOST effective..." ← לא כולן, רק הכי טובה.',
-            'only - "The ONLY reason..." ← לא סיבות אחרות, רק אחת.',
+            'the most - "The MOST effective..." ← לא כולן, רק הכי טובה.',
+            'the only / the main - "The ONLY reason..." ← סיבה אחת, לא סיבות אחרות.',
+            'most בלי the - "most students" ← רוב התלמידים. לא מגביל לתשובה אחת.',
             "מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.",
           ],
         },
@@ -2319,103 +2371,62 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "passage-mcq",
-              text: "III  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
-              questions: [
-                {
-                  prompt:
-                    "According to the text, in most cities, what is available?",
-                  options: [
-                    "Free swimming pools",
-                    "Adult swimming classes",
-                    "Private swimming coaches",
-                    "Three sessions every day",
-                  ],
-                  correctIndex: 1,
-                },
-                {
-                  prompt:
-                    'בשאלה כתוב "in most cities". האם most כאן מגביל לתשובה אחת?',
-                  options: [
-                    'לא - כאן most = "רוב". מגבילות רק the most / the only / the main',
-                    "כן - כל most בשאלה = תשובה אחת",
-                    "כן - כי כתוב cities ברבים",
-                    "תלוי באורך השאלה",
-                  ],
-                  correctIndex: 0,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
               type: "preface",
-              text: "YOUR TURN - שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to Dr. Diallo, why do most trees die?",
-            },
-            {
-              type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
-              prompt: "כתבו תשובה אחת בלבד, במילים של הטקסט.",
-              modelAnswer: "Because nobody looks after them.",
+              text: "the most / the only / the main בשאלה = מחפשים דבר אחד מסוים.\nmost לבד = רוב. קוראים את השאלה עד הסוף.",
             },
             {
               type: "mcq",
-              prompt: "כתבתם שתי תשובות לשאלה עם most. מה יקרה?",
-              options: [
-                "תקבלו ניקוד על שתיהן",
-                "הבודק יבחר את הטובה מביניהן",
-                "התשובה תיפסל - נדרשה אחת",
-                "לא משנה, העיקר שהתשובה מהטקסט",
-              ],
-              correctIndex: 2,
-            },
-            {
-              type: "summary",
-              title: "ONE SENTENCE",
-              lines: ['"most / only = תשובה אחת מסוימת. לא יותר."'],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: most / only = תשובה אחת מסוימת. לא יותר.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"What is the MOST effective method?" - כמה תשובות כותבים?',
+              prompt: '"What is THE MOST effective method?" - כמה תשובות כותבים?',
               options: [
                 "שתיים - כדי לכסות אפשרויות",
                 "אחת בלבד - הכי יעילה",
                 "שלוש - כדי לא להחמיץ",
               ],
               correctIndex: 1,
-              explanation: "MOST = אחת מסוימת. לא כולן - רק הכי יעילה.",
+              explanation: "the most = אחת מסוימת. לא כולן - רק הכי יעילה.",
             },
             {
               type: "mcq",
-              prompt:
-                '"The ONLY reason trees die is…" - יכולות להיות שתי סיבות.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. ONLY = סיבה אחת בלבד. מצאתם שתיים - טעיתם.",
+              prompt: '"Most students walk to school." - האם most כאן מגביל לתשובה אחת?',
+              options: [
+                'לא - most + שם עצם = רוב. מגבילות רק the most / the only / the main',
+                "כן - כל most בשאלה = תשובה אחת",
+                "כן - כי כתוב students ברבים",
+                "תלוי באורך המשפט",
+              ],
+              correctIndex: 0,
+              explanation:
+                '"most students" = רוב התלמידים. זה מידע על כמות, לא בקשה לתשובה אחת.',
             },
             {
               type: "mcq",
-              prompt: "מה משותף ל-most, only ו-main?",
+              prompt: "מה משותף ל-the most, ל-the only ול-the main?",
               options: [
                 "כולן מילות ניגוד",
                 "כולן מילות שלילה",
-                "כולן מילות הגבלה - תמיד תשובה אחת ספציפית",
+                "כולן מבקשות דבר אחד מסוים מהטקסט",
                 "כולן מילות סיבה",
               ],
               correctIndex: 2,
               explanation:
-                "most = הכי / רוב · only = רק · main = עיקרי. כולן מגבילות לתשובה אחת.",
+                "the most = הכי · the only = רק · the main = עיקרי. כולן מבקשות תשובה אחת.",
+            },
+            { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
+            {
+              type: "passage-mcq",
+              text: "The school library is open every day from 8:00 to 4:00. Most students use it during lunch, but only the computer room stays open after 4:00.",
+              questions: [
+                {
+                  prompt: "What is the only part of the library that is open after 4:00?",
+                  options: [
+                    "The whole library",
+                    "The reading room",
+                    "The computer room",
+                    "The lunch room",
+                  ],
+                  correctIndex: 2,
+                },
+              ],
             },
           ],
         },
@@ -2423,39 +2434,153 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
+              text: "{d:rtl}אתם - שאלה עם the main על פסקה. שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to the survey, what is the main reason teenagers stop reading?",
+            },
+            {
+              type: "self-check",
+              text: "II  Many teenagers say they do not have time to read. However, a survey of 2,000 students found that the main reason they stop reading is not time but phones. Most of them spend over three hours a day on social media, and only a few read more than one book a month.",
+              prompt: "כתבו תשובה אחת בלבד, במילים של הטקסט.",
+              modelAnswer: "Phones. (לא time - הטקסט אומר not time but phones)",
+            },
+            {
+              type: "mcq",
+              prompt: "כתבתם שתי סיבות לשאלה עם the main reason. מה עלול לקרות?",
+              options: [
+                "תקבלו ניקוד על שתיהן",
+                "הבודק יבחר את הטובה מביניהן",
+                "אם אחת מהן שגויה - תאבדו נקודות. נדרשה סיבה אחת",
+                "לא משנה, העיקר שהתשובה מהטקסט",
+              ],
+              correctIndex: 2,
+              explanation:
+                "the main = סיבה אחת. כאן time היא בדיוק הסיבה שהטקסט שולל - מי שכותב גם אותה טועה.",
+            },
+            {
+              type: "summary",
+              title: "ONE SENTENCE",
+              lines: ['"the most / the only / the main = תשובה אחת. most לבד = רוב."'],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת הגבלה: קראו כל שאלה עד הסוף.",
+            },
+            {
+              type: "passage-mcq",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\\n\\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\\n\\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              questions: [
+                {
+                  prompt: "According to paragraph III, where are adult swimming classes available today?",
+                  options: [
+                    "In all cities",
+                    "Only in large cities",
+                    "In most cities",
+                    "In a few cities",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to paragraph III, how often do some programs meet?",
+                  options: [
+                    "Three times a week",
+                    "Only once a week",
+                    "Every day",
+                    "Twice a month",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "According to the instructors, which adults usually make good progress in less than two months?",
+                  options: [
+                    "All adults",
+                    "Adults in large cities",
+                    "Adults who learned as children",
+                    "Adults who practice regularly",
+                  ],
+                  correctIndex: 3,
+                },
+                {
+                  prompt: "According to paragraph I, how do many adults who cannot swim feel?",
+                  options: [
+                    "Embarrassed",
+                    "Afraid of the water",
+                    "Too old to learn",
+                    "Angry with their parents",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+            {
+              type: "passage-mcq",
+              text: "**THE TOOL LIBRARY**\n\nI  In 2020, a small group of neighbours in Lindale opened a library with no books. Instead, it lends tools: drills, ladders, garden tools and even sewing machines. Members pay only ten dollars a year, and they can borrow up to three tools every week.\n\nII  Most members are young families who cannot afford to buy expensive tools. According to the manager, Tom Reyes, the most popular item is the electric drill. \"Some people borrow a drill, use it for ten minutes, and bring it back the same day,\" he says.\n\nIII  The library is run by volunteers, and only two of them are paid. Mr. Reyes says the main problem is space: the library has more tools than shelves. Next year, it plans to move to a bigger building near the train station.",
+              questions: [
+                {
+                  prompt: "According to paragraph II, what is the most popular item in the library?",
+                  options: [
+                    "Ladders",
+                    "Sewing machines",
+                    "The electric drill",
+                    "Garden tools",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to paragraph I, how much does it cost to be a member?",
+                  options: [
+                    "Ten dollars a week",
+                    "Ten dollars a year",
+                    "Three dollars a week",
+                    "Nothing - it is free",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "According to Mr. Reyes, what is the main problem of the library?",
+                  options: [
+                    "It does not have enough volunteers",
+                    "Members do not bring the tools back",
+                    "It does not have enough space for its tools",
+                    "It is far from the train station",
+                  ],
+                  correctIndex: 2,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nעוד שאלת the most על טקסט מוכר.",
             },
             {
               type: "passage-mcq",
               text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               questions: [
                 {
-                  prompt:
-                    '"According to Dr. Okafor, what is the MOST effective type of volunteering?"',
+                  prompt: "According to Dr. Okafor, what is the most effective type of volunteering?",
                   options: [
                     "All types of volunteering are effective",
                     "Programmes that bring young people face to face with the people they help",
-                    "School programmes and community service",
+                    "Programmes that help teenagers feel less stressed",
                   ],
                   correctIndex: 1,
                 },
               ],
             },
             {
-              type: "self-check",
-              text: "III  Adult swimming classes are now available in most cities. According to instructors, adults who practice regularly usually make good progress in less than two months.",
-              prompt:
-                'השלימו מהטקסט: "In MOST cities, adult swimming classes are _______."',
-              modelAnswer: "available - זמינות. (פסקה III)",
-            },
-            {
               type: "mcq",
               prompt:
-                'תלמיד ענה על שאלת "most effective" בשתי תשובות, ושתיהן נכונות לפי הטקסט. הוא יקבל ציון מלא.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
+                'באילו שאלות יש מילת הגבלה שמבקשת תשובה אחת?\n\n1. "What is the only country mentioned?"\n2. "What do we learn from paragraph I?"\n3. "What is the main reason most trees die?"\n4. "Give TWO reasons from paragraph III."',
+              options: ["1 ו-3", "2 ו-4", "1 ו-4", "רק ב-3"],
+              correctIndex: 0,
               explanation:
-                'שקר. "most" = תשובה אחת בלבד. שתי תשובות = 0 נקודות.',
+                '"the only" בשאלה 1 ו-"the main" בשאלה 3. שימו לב: "most trees" בשאלה 3 = רוב העצים - זה לא מה שמגביל אותה.',
             },
           ],
         },
@@ -2463,30 +2588,21 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'באילו שאלות יש מילת הגבלה?\n\n1. "What is the only country mentioned?"\n2. "What do we learn from paragraph I?"\n3. "According to the text, most trees die because…"\n4. "Give TWO reasons from paragraph III."',
-              options: ["1 ו-3", "2 ו-4", "1 ו-4", "רק ב-3"],
-              correctIndex: 0,
-              explanation:
-                '"only" בשאלה 1 ו-"most" בשאלה 3 - הגבלה = תשובה אחת מסוימת.',
+              text: "תרגול נוסף 💎 (רשות)\nשאלה פתוחה על טקסט Green Africa.",
             },
             {
               type: "self-check",
               text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
-                '"According to Dr. Diallo, why do MOST trees die? Give ONE answer." - כתבו ANSWER:',
+                '"According to Dr. Diallo, why do most trees die?" - כתבו ANSWER:',
               modelAnswer: "ANSWER: Because nobody looks after them.",
             },
             {
               type: "self-check",
               prompt:
-                'מה ההבדל בין שאלה עם "most" לשאלה בלי "most"? תנו דוגמה.',
+                'מה ההבדל בין "the most" לבין "most" בשאלה? תנו דוגמה.',
               modelAnswer:
-                'בלי most: "Why do trees die?" - יכולות להיות כמה סיבות. עם most: "Why do MOST trees die?" - סיבה אחת ספציפית, זו שחלה על רוב המקרים.',
+                '"What is the most common reason?" - the most = סיבה אחת, הכי נפוצה. "Why do most trees die?" - most = רוב העצים; השאלה שואלת מה קורה לרובם.',
             },
           ],
         },

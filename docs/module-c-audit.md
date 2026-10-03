@@ -1,7 +1,7 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
-Snapshot: 2026-09-19. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-03. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
@@ -45,8 +45,8 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | numbers-names-q | Applying anchors in real questions | Pick the number/name keyword, find the paragraph, answer | 5.5 | 10 rounds; typo; repeated card |
 | l06 | Answering the opposite on NOT questions | Spot negation words and flip the task | 6.5 | Same drill template |
 | not-q | Applying the flip in real questions | Eliminate the 3 true options to find the 1 false | 6.5 | Typo; repeated card |
-| l07 | Listing many answers when MOST / ONLY wants one | Spot limiter words and give one specific answer | 6.5 | Same drill template |
-| limiters-q | Applying limiters in real questions | Choose the single best-fit answer | 6.5 | Repeated opener |
+| l07 | Listing many answers when THE MOST / THE ONLY wants one | Spot limiter words and give one specific answer | 7 | Rebuilt 2026-10-03 to the marking pattern (5 required rounds, rules MCQs, 222-word long text). Unplayed |
+| limiters-q | Applying limiters in real questions | Choose the single best-fit answer; tell the most (one) from most (majority) | 7.5 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, new text THE TOOL LIBRARY, no true/false rounds). Unplayed |
 | n-221188d1 | Not knowing which tool a question needs | Pick the tool, then chain the full method | 8 | however/but missing from it |
 | l08 | Answering the wrong half of a "however" sentence | Mark contrast words; the point comes after them | 6.5 | After the summary, no framing |
 | n-b46b7e2b | Applying contrast in exam questions | Read what follows however/but as the answer | 6 | One-line teaching screen |
@@ -72,6 +72,12 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8 | One task per round |
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
+
+## Fixed on 2026-10-03 (QC report 2.3, bad points 2, 6, 7)
+
+- **Question mistakes (2):** n-b46b7e2b round 3 now asks about the *unhappy* shop owners; practice exam 1 Q2 no longer gives away Q3; sentence completion ignores punctuation and and/or/the/a (shared `isSentenceCompletionMatch`), so "books, signs, screens" passes; yes-no mark-word says "opinion", not "agreement"; in-addition round 1 Q2 rewritten so only "In addition" fits.
+- **Run-together writing lines (6):** yes-no, topic-vacation and topic-cellphone openings split into lines; em-dashes removed there; in-addition "סיבה 1 / סיבה 2" split.
+- **Reading rollout (7), pair 1 of 5 - most/only:** l07 and limiters-q follow the reading round pattern. The rule now separates "the most / the only / the main" (one answer) from "most + noun" (majority), which also closes bad point 3 for limiters-q.
 
 ## Fixed on 2026-09-28
 
@@ -144,7 +150,8 @@ P3, easy distractors (same day):
 
 ## Still open
 
-- Rework the openers of numbers-names-q, not-q, limiters-q (typo, repeated card) and shorten numbers-names-q (10 rounds = two 5-round sets).
+- QC 2.3 point 7, remaining pairs: l04 + numbers-names-q, then l01-l03, then l09-l12.
+- Rework the openers of numbers-names-q, not-q (typo, repeated card) and shorten numbers-names-q (10 rounds = two 5-round sets).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
 - Link reading and writing: one screen in each Part C connector lesson.
 - l08: open with "question-side tools" vs. "text-side signals"; give n-b46b7e2b a real teaching screen.
