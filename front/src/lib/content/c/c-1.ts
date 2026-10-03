@@ -2357,7 +2357,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "however / but - סימון בטקסט",
     titleEn: "Contrast Words",
     required: ["n-221188d1"],
-    requiredRounds: 5,
+    requiredRounds: 4,
     position: { x: 0, y: 1370 },
     big: false,
     content: {
@@ -2519,62 +2519,59 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "but מסמן את הנקודה של הכותב, אבל השאלה שואלת מה הבטיחו - וזה כתוב לפני but. תמיד עונים על מה שהשאלה שואלת.",
             },
-            {
-              type: "mark-all",
-              instruction: "Mark the contrast word in the paragraph.",
-              text: "Most studies focus on young athletes. However, Dr. Elena Cruz studied older runners instead, and found surprising results.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [{ name: "ניגוד", color: "emerald", indices: [6] }],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "רמת בחינה. שני טקסטים. סמנו כל מילת ניגוד בטקסט.",
-            },
+            { type: "preface", text: "זהירות ממילים שנראות כמו ניגוד: butter היא לא but, ו-because היא סיבה - לא ניגוד." },
             {
               type: "mark-all",
               instruction: "Mark every contrast word in the text.",
-              text: "Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nDr. Amir Cohen, who teaches adult swimming classes, says that although beginners feel nervous at first, most improve within a few weeks.",
+              text: "The cafe sells fresh bread and butter. Although it is small, it is always full. Some customers wait for an hour, yet they never complain. However, the owner will not open a second cafe, because she wants to know every customer by name.",
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "ניגוד", color: "emerald", indices: [39, 57] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every contrast word in the text.",
-              text: "The city promised a new park, but nothing was built for years. Although residents complained often, the council took no real action.\n\nIn 2020, a small group decided to act on its own. However, they lacked both money and official permission to begin building.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "ניגוד", color: "emerald", indices: [6, 12, 33] },
+                { name: "ניגוד", color: "emerald", indices: [7, 21, 25] },
               ],
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
             {
-              type: "preface",
-              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת ניגוד - בדיוק כמו שתעשו לפני שאלה על however בבחינה.",
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every contrast word in the text.",
-              text: "In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nAccording to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nYet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nToday, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
+              type: "passage-mcq",
+              label: "רמת בחינה",
+              timerKey: "hunt",
+              text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
+              questions: [
                 {
-                  name: "ניגוד",
-                  color: "emerald",
-                  indices: [25,  55,  87,  114,  128,  138,  167,  184,  200,  226],
+                  prompt: "According to paragraph I, what did many parents think at first?",
+                  options: ["That the results would be better than expected", "That their children would fall behind", "That the buses would be cheaper", "That teachers would leave"],
+                  correctIndex: 1,
                 },
+                {
+                  prompt: "According to paragraph II, how did most students feel about the free Fridays?",
+                  options: ["They found them tiring", "They enjoyed them", "They used them for school work", "They wanted to stay in school"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "What did the district do to help families?",
+                  options: ["It paid for day camps", "It opened school libraries on Fridays", "It made the school days shorter", "It gave parents Fridays off"],
+                  correctIndex: 1,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת ניגוד. השעון רץ - נסו לנצח את עצמכם." },
+            {
+              type: "mark-all",
+              instruction: "Mark every contrast word in the text.",
+              text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
+              dir: "ltr",
+              timerKey: "sweep",
+              correctIndices: [],
+              categories: [
+                { name: "ניגוד", color: "emerald", indices: [30, 60, 93, 120, 134, 145, 174, 191, 208, 234] },
               ],
             },
           ],
@@ -3776,57 +3773,28 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: 'I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+              text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
               questions: [
                 {
-                  prompt:
-                    "According to paragraph I, what do experts say about adults who cannot swim?",
-                  options: [
-                    "They feel embarrassed and never try",
-                    "It is never too late to learn",
-                    "Swimming classes help adults",
-                    "Most adults learn as children",
-                  ],
+                  prompt: "According to paragraph I, what were the first results like?",
+                  options: ["Worse than expected", "Better than expected", "The same as before", "Not known yet"],
                   correctIndex: 1,
                 },
                 {
-                  prompt:
-                    "According to paragraph I, what problem do many adults in large cities have?",
-                  options: [
-                    "It is never too late for them",
-                    "Over 30% of them cannot swim",
-                    "Classes are too expensive",
-                    "Teachers do not explain well",
-                  ],
-                  correctIndex: 1,
-                },
-                {
-                  prompt:
-                    "According to Dr. Klein, why do adults often become stronger swimmers?",
-                  options: [
-                    "It is never too late to learn",
-                    "They understand the teacher and correct mistakes quickly",
-                    "Classes meet three times a week",
-                    "They feel embarrassed",
-                  ],
-                  correctIndex: 1,
-                },
-                {
-                  prompt:
-                    "In paragraph III, some programs meet only once a week. What do other programs offer?",
-                  options: [
-                    "Private lessons",
-                    "Free classes for adults",
-                    "Three sessions a week",
-                    "Evening classes only",
-                  ],
+                  prompt: "Test scores stayed about the same. What did teachers notice?",
+                  options: ["Students were more tired", "Test scores went up", "Students were more focused on Mondays", "Attendance fell"],
                   correctIndex: 2,
+                },
+                {
+                  prompt: "How many students used the school libraries on Fridays?",
+                  options: ["Most of them", "All of them", "None", "Only a few"],
+                  correctIndex: 3,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**THE NIGHT MARKET**\n\nI  For years, the old bus station in Porto Verde stood empty after 6 p.m. Local shops closed early, and young people had nowhere to go in the evening.\n\nII  In 2022, the city opened a night market in the station. At first, some residents complained about the noise. However, the market soon became the most popular place in town. Today, more than 3,000 people visit it every Friday.\n\nIII  Although the market is a success, not everyone is happy. Some shop owners in the centre say they lose customers to the market, but others say the crowds help their business too.",
+              text: "**THE NIGHT MARKET**\n\nI  For years, the old bus station in Porto Verde stood empty after 6 p.m. Local shops closed early, and young people had nowhere to go in the evening.\n\nII  In 2022, the city opened a night market in the station. At first, some residents complained about the noise. However, the market soon became the most popular place in town. Today, more than 3,000 people visit it every Friday.\n\nIII  Although the market is a success, not everyone is happy. Some shop owners in the centre say they lose customers to the market, but others say the crowds help their business too.\n\nIV  The city now plans to open the market on Saturdays as well. However, people who live near the station have asked the council to close it at 11 p.m., not midnight. The council has not decided yet. Meanwhile, the market has created more than 80 jobs, most of them for young people from the area. Many of them say that, for the first time, they have a reason to stay in Porto Verde.",
               questions: [
                 {
                   prompt:
