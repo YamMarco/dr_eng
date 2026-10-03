@@ -92,7 +92,7 @@
       "file_type": "code",
       "norm_label": "dictionary",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L263"
+      "source_location": "L264"
     },
     {
       "id": "front_src_lib_i18n_locales_he_dictionaryoverride",
@@ -105,59 +105,7 @@
       "file_type": "code",
       "norm_label": "dictionaryoverride",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L266"
-    },
-    {
-      "id": "front_src_lib_quizzes_assortedquiz",
-      "label": "AssortedQuiz",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "assortedquiz",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "front_src_lib_quizzes_ministryquiz",
-      "label": "MinistryQuiz",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "ministryquiz",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L22"
-    },
-    {
-      "id": "front_src_lib_quizzes_quiz",
-      "label": "Quiz",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "quiz",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "front_src_lib_quizzes_quizbase",
-      "label": "QuizBase",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "quizbase",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L10"
+      "source_location": "L267"
     },
     {
       "id": "front_src_lib_writing_lab_analysis_rubricresult",
@@ -680,45 +628,6 @@
       "source_location": "L42"
     },
     {
-      "id": "front_src_lib_quiz_progress_quizattempt",
-      "label": "QuizAttempt",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "quizattempt",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_quizinprogress",
-      "label": "QuizInProgress",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "quizinprogress",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "front_src_lib_quiz_scoring_quizscore",
-      "label": "QuizScore",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "quizscore",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L17"
-    },
-    {
       "id": "front_src_lib_lessonprogress_svelte_lessonprogressstore",
       "label": "LessonProgressStore",
       "_callable": true,
@@ -808,6 +717,71 @@
       "norm_label": "debugstore",
       "source_file": "front/src/lib/debug.svelte.ts",
       "source_location": "L14"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_quizattempt",
+      "label": "QuizAttempt",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "quizattempt",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_quizinprogress",
+      "label": "QuizInProgress",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "quizinprogress",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring_quizscore",
+      "label": "QuizScore",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "quizscore",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring_scored",
+      "label": "Scored",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "scored",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_src_lib_quiz_screenids_identifiedscreen",
+      "label": "IdentifiedScreen",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "identifiedscreen",
+      "source_file": "front/src/lib/quiz/screenIds.ts",
+      "source_location": "L9"
     },
     {
       "id": "front_src_lib_curriculum_curriculummodule",
@@ -1005,32 +979,6 @@
       "source_location": "L321"
     },
     {
-      "id": "front_src_lib_quiz_scoring_scored",
-      "label": "Scored",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "scored",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "front_src_lib_quiz_screenids_identifiedscreen",
-      "label": "IdentifiedScreen",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "identifiedscreen",
-      "source_file": "front/src/lib/quiz/screenIds.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "front_src_lib_quiz_types_quizkind",
       "label": "QuizKind",
       "_callable": true,
@@ -1081,6 +1029,58 @@
       "norm_label": "quizpart",
       "source_file": "front/src/lib/quiz/types.ts",
       "source_location": "L30"
+    },
+    {
+      "id": "front_src_lib_quizzes_assortedquiz",
+      "label": "AssortedQuiz",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "assortedquiz",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "front_src_lib_quizzes_ministryquiz",
+      "label": "MinistryQuiz",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "ministryquiz",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "front_src_lib_quizzes_quiz",
+      "label": "Quiz",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "quiz",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "front_src_lib_quizzes_quizbase",
+      "label": "QuizBase",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "quizbase",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L10"
     },
     {
       "id": "front_src_lib_lesson_screens_score_svelte_lessonscore",
@@ -1396,42 +1396,6 @@
       "source_location": "L143"
     },
     {
-      "id": "front_src_lib_quizzes_getquiz",
-      "label": "getQuiz()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "getquiz()",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L50"
-    },
-    {
-      "id": "front_src_lib_quizzes_getquizzesformodule",
-      "label": "getQuizzesForModule()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "getquizzesformodule()",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L54"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "front_src_lib_content_edit_api_savesection",
       "label": "saveSection()",
       "_callable": true,
@@ -1706,30 +1670,6 @@
       "norm_label": "speechtext()",
       "source_file": "front/src/lib/speech.ts",
       "source_location": "L13"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_passagemark_if",
-      "label": "if()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
-      "file_type": "code",
-      "norm_label": "if()",
-      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
-      "source_location": "L92"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_passagemark_leading",
-      "label": "leading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
-      "file_type": "code",
-      "norm_label": "leading()",
-      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
-      "source_location": "L126"
     },
     {
       "id": "front_src_lib_lesson_screens_writingtask_lintmessage",
@@ -2428,18 +2368,6 @@
       "source_location": "L11"
     },
     {
-      "id": "front_src_lib_lesson_screens_passagequiz_i",
-      "label": "i()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "registry.ts",
-      "file_type": "code",
-      "norm_label": "i()",
-      "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte",
-      "source_location": "L68"
-    },
-    {
       "id": "front_src_lib_lesson_screens_session_svelte_createlessonsession",
       "label": "createLessonSession()",
       "_callable": true,
@@ -2968,18 +2896,6 @@
       "source_location": "L111"
     },
     {
-      "id": "front_src_lib_lesson_screens_minimarkdown_striplineattrs",
-      "label": "stripLineAttrs()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "striplineattrs()",
-      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
-      "source_location": "L135"
-    },
-    {
       "id": "front_src_lib_lesson_screens_mode_svelte_createscreenmode",
       "label": "createScreenMode()",
       "_callable": true,
@@ -3280,124 +3196,52 @@
       "source_location": "L68"
     },
     {
-      "id": "front_src_lib_quiz_progress_attemptkey",
-      "label": "attemptKey()",
+      "id": "front_src_lib_lesson_screens_minimarkdown_striplineattrs",
+      "label": "stripLineAttrs()",
       "_callable": true,
       "_origin": "ast",
       "community": 80,
-      "community_name": "progress.ts",
+      "community_name": "PassageQuiz.svelte",
       "file_type": "code",
-      "norm_label": "attemptkey()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L24"
+      "norm_label": "striplineattrs()",
+      "source_file": "front/src/lib/lesson-screens/miniMarkdown.ts",
+      "source_location": "L135"
     },
     {
-      "id": "front_src_lib_quiz_progress_clearinprogress",
-      "label": "clearInProgress()",
+      "id": "front_src_lib_lesson_screens_passagemark_if",
+      "label": "if()",
       "_callable": true,
       "_origin": "ast",
       "community": 80,
-      "community_name": "progress.ts",
+      "community_name": "PassageQuiz.svelte",
       "file_type": "code",
-      "norm_label": "clearinprogress()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L61"
+      "norm_label": "if()",
+      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
+      "source_location": "L92"
     },
     {
-      "id": "front_src_lib_quiz_progress_getinprogress",
-      "label": "getInProgress()",
+      "id": "front_src_lib_lesson_screens_passagemark_leading",
+      "label": "leading()",
       "_callable": true,
       "_origin": "ast",
       "community": 80,
-      "community_name": "progress.ts",
+      "community_name": "PassageQuiz.svelte",
       "file_type": "code",
-      "norm_label": "getinprogress()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L56"
+      "norm_label": "leading()",
+      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
+      "source_location": "L126"
     },
     {
-      "id": "front_src_lib_quiz_progress_getlastattempt",
-      "label": "getLastAttempt()",
+      "id": "front_src_lib_lesson_screens_passagequiz_i",
+      "label": "i()",
       "_callable": true,
       "_origin": "ast",
       "community": 80,
-      "community_name": "progress.ts",
+      "community_name": "PassageQuiz.svelte",
       "file_type": "code",
-      "norm_label": "getlastattempt()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L46"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_hasstorage",
-      "label": "hasStorage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "hasstorage()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L36"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_progresskey",
-      "label": "progressKey()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "progresskey()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_safeparse",
-      "label": "safeParse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "safeparse()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_saveattempt",
-      "label": "saveAttempt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "saveattempt()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L40"
-    },
-    {
-      "id": "front_src_lib_quiz_progress_saveinprogress",
-      "label": "saveInProgress()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "saveinprogress()",
-      "source_file": "front/src/lib/quiz/progress.ts",
-      "source_location": "L51"
-    },
-    {
-      "id": "front_src_lib_quiz_quizrunner_startover",
-      "label": "startOver()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "progress.ts",
-      "file_type": "code",
-      "norm_label": "startover()",
-      "source_file": "front/src/lib/quiz/QuizRunner.svelte",
-      "source_location": "L144"
+      "norm_label": "i()",
+      "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte",
+      "source_location": "L73"
     },
     {
       "id": "front_src_routes_api_content_edit_login_server_post",
@@ -3592,6 +3436,150 @@
       "source_location": "L8"
     },
     {
+      "id": "front_src_lib_lesson_screens_sentencecompletion_issentencecompletionmatch",
+      "label": "isSentenceCompletionMatch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "issentencecompletionmatch()",
+      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_sentencecompletion_normalize",
+      "label": "normalize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "normalize()",
+      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_types_ismarkallpass",
+      "label": "isMarkAllPass()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "ismarkallpass()",
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L260"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_attemptkey",
+      "label": "attemptKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "attemptkey()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_clearinprogress",
+      "label": "clearInProgress()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "clearinprogress()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L61"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_getinprogress",
+      "label": "getInProgress()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "getinprogress()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_getlastattempt",
+      "label": "getLastAttempt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "getlastattempt()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_hasstorage",
+      "label": "hasStorage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "hasstorage()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_progresskey",
+      "label": "progressKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "progresskey()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_safeparse",
+      "label": "safeParse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "safeparse()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_saveattempt",
+      "label": "saveAttempt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "saveattempt()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L40"
+    },
+    {
+      "id": "front_src_lib_quiz_progress_saveinprogress",
+      "label": "saveInProgress()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "saveinprogress()",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L51"
+    },
+    {
       "id": "front_src_lib_quiz_questionnavigator_i",
       "label": "i()",
       "_callable": true,
@@ -3664,6 +3652,18 @@
       "source_location": "L136"
     },
     {
+      "id": "front_src_lib_quiz_quizrunner_startover",
+      "label": "startOver()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "startover()",
+      "source_file": "front/src/lib/quiz/QuizRunner.svelte",
+      "source_location": "L144"
+    },
+    {
       "id": "front_src_lib_quiz_quizrunner_submit",
       "label": "submit()",
       "_callable": true,
@@ -3674,6 +3674,54 @@
       "norm_label": "submit()",
       "source_file": "front/src/lib/quiz/QuizRunner.svelte",
       "source_location": "L122"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring_normalize",
+      "label": "normalize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "normalize()",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring_scorequiz",
+      "label": "scoreQuiz()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "scorequiz()",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L119"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring_scorescreen",
+      "label": "scoreScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "scorescreen()",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "front_src_lib_quiz_screenids_screenswithids",
+      "label": "screensWithIds()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "screenswithids()",
+      "source_file": "front/src/lib/quiz/screenIds.ts",
+      "source_location": "L14"
     },
     {
       "id": "front_src_lib_quiz_time_formattime",
@@ -4756,42 +4804,6 @@
       "source_location": "L38"
     },
     {
-      "id": "front_src_lib_lesson_screens_sentencecompletion_issentencecompletionmatch",
-      "label": "isSentenceCompletionMatch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "issentencecompletionmatch()",
-      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_sentencecompletion_normalize",
-      "label": "normalize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "normalize()",
-      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_types_ismarkallpass",
-      "label": "isMarkAllPass()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "ismarkallpass()",
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L260"
-    },
-    {
       "id": "front_src_lib_quiz_index_getquiznode",
       "label": "getQuizNode()",
       "_callable": true,
@@ -4816,52 +4828,40 @@
       "source_location": "L12"
     },
     {
-      "id": "front_src_lib_quiz_scoring_normalize",
-      "label": "normalize()",
+      "id": "front_src_lib_quizzes_getquiz",
+      "label": "getQuiz()",
       "_callable": true,
       "_origin": "ast",
       "community": 97,
       "community_name": "ExamEditModel",
       "file_type": "code",
-      "norm_label": "normalize()",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L25"
+      "norm_label": "getquiz()",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L50"
     },
     {
-      "id": "front_src_lib_quiz_scoring_scorequiz",
-      "label": "scoreQuiz()",
+      "id": "front_src_lib_quizzes_getquizzesformodule",
+      "label": "getQuizzesForModule()",
       "_callable": true,
       "_origin": "ast",
       "community": 97,
       "community_name": "ExamEditModel",
       "file_type": "code",
-      "norm_label": "scorequiz()",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L119"
+      "norm_label": "getquizzesformodule()",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L54"
     },
     {
-      "id": "front_src_lib_quiz_scoring_scorescreen",
-      "label": "scoreScreen()",
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_load",
+      "label": "load()",
       "_callable": true,
       "_origin": "ast",
       "community": 97,
       "community_name": "ExamEditModel",
       "file_type": "code",
-      "norm_label": "scorescreen()",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "front_src_lib_quiz_screenids_screenswithids",
-      "label": "screensWithIds()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "screenswithids()",
-      "source_file": "front/src/lib/quiz/screenIds.ts",
-      "source_location": "L14"
+      "norm_label": "load()",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.ts",
+      "source_location": "L5"
     },
     {
       "id": "front_src_lib_lesson_screens_matchpairs_pick",
@@ -7173,72 +7173,6 @@
       "source_location": "L927"
     },
     {
-      "id": "front_src_lib_quiz_index_allquiznodes",
-      "label": "allQuizNodes",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "allquiznodes",
-      "source_file": "front/src/lib/quiz/index.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "front_src_lib_quizzes",
-      "label": "quizzes.ts",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "quizzes.ts",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_quizzes_allquizzes",
-      "label": "allQuizzes",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "allquizzes",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "front_src_lib_quizzes_assortedquizzes",
-      "label": "assortedQuizzes",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "assortedquizzes",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L42"
-    },
-    {
-      "id": "front_src_lib_quizzes_ministryquizzes",
-      "label": "ministryQuizzes",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "ministryquizzes",
-      "source_file": "front/src/lib/quizzes.ts",
-      "source_location": "L46"
-    },
-    {
-      "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_ts_front_src_routes_unit_unitid_module_moduleid_exam_quizid_page",
-      "label": "[quizId]/+page.ts",
-      "_origin": "ast",
-      "community": 131,
-      "community_name": "quizzes.ts",
-      "file_type": "code",
-      "norm_label": "[quizid]/+page.ts",
-      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "qc_report_module_c_report_4_teacher_s_view",
       "label": "\u00a74. Teacher's view",
       "_origin": "ast",
@@ -8845,17 +8779,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_lesson_screens_passagemark",
-      "label": "PassageMark.svelte",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lesson-screens/types.ts",
-      "file_type": "code",
-      "norm_label": "passagemark.svelte",
-      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_lib_lesson_screens_types",
       "label": "lesson-screens/types.ts",
       "_origin": "ast",
@@ -9901,14 +9824,25 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_lesson_screens_passagequiz",
-      "label": "PassageQuiz.svelte",
+      "id": "front_src_lib_lesson_screens_markall",
+      "label": "MarkAll.svelte",
       "_origin": "ast",
       "community": 45,
       "community_name": "registry.ts",
       "file_type": "code",
-      "norm_label": "passagequiz.svelte",
-      "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte",
+      "norm_label": "markall.svelte",
+      "source_file": "front/src/lib/lesson-screens/MarkAll.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_passagemcq",
+      "label": "PassageMcq.svelte",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "registry.ts",
+      "file_type": "code",
+      "norm_label": "passagemcq.svelte",
+      "source_file": "front/src/lib/lesson-screens/PassageMcq.svelte",
       "source_location": "L1"
     },
     {
@@ -12024,17 +11958,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_lesson_screens_markall",
-      "label": "MarkAll.svelte",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "markall.svelte",
-      "source_file": "front/src/lib/lesson-screens/MarkAll.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_src_lib_lesson_screens_markword",
       "label": "MarkWord.svelte",
       "_origin": "ast",
@@ -12077,50 +12000,6 @@
       "norm_label": "key",
       "source_file": "front/src/lib/lesson-screens/mode.svelte.ts",
       "source_location": "L9"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_passagemcq",
-      "label": "PassageMcq.svelte",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "passagemcq.svelte",
-      "source_file": "front/src/lib/lesson-screens/PassageMcq.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_passagetext",
-      "label": "PassageText.svelte",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "passagetext.svelte",
-      "source_file": "front/src/lib/lesson-screens/PassageText.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_passagetext_lines",
-      "label": "lines",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "lines",
-      "source_file": "front/src/lib/lesson-screens/PassageText.svelte",
-      "source_location": "L24"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_selfcheck",
-      "label": "SelfCheck.svelte",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "mode.svelte.ts",
-      "file_type": "code",
-      "norm_label": "selfcheck.svelte",
-      "source_file": "front/src/lib/lesson-screens/SelfCheck.svelte",
-      "source_location": "L1"
     },
     {
       "id": "front_src_lib_lesson_screens_sentencecompletion_svelte_front_src_lib_lesson_screens_sentencecompletion",
@@ -14169,14 +14048,58 @@
       "source_location": "L26"
     },
     {
-      "id": "front_src_lib_quiz_progress",
-      "label": "progress.ts",
+      "id": "front_src_lib_lesson_screens_passagemark",
+      "label": "PassageMark.svelte",
       "_origin": "ast",
       "community": 80,
-      "community_name": "progress.ts",
+      "community_name": "PassageQuiz.svelte",
       "file_type": "code",
-      "norm_label": "progress.ts",
-      "source_file": "front/src/lib/quiz/progress.ts",
+      "norm_label": "passagemark.svelte",
+      "source_file": "front/src/lib/lesson-screens/PassageMark.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_passagequiz",
+      "label": "PassageQuiz.svelte",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "PassageQuiz.svelte",
+      "file_type": "code",
+      "norm_label": "passagequiz.svelte",
+      "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_passagetext",
+      "label": "PassageText.svelte",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "PassageQuiz.svelte",
+      "file_type": "code",
+      "norm_label": "passagetext.svelte",
+      "source_file": "front/src/lib/lesson-screens/PassageText.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_passagetext_lines",
+      "label": "lines",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "PassageQuiz.svelte",
+      "file_type": "code",
+      "norm_label": "lines",
+      "source_file": "front/src/lib/lesson-screens/PassageText.svelte",
+      "source_location": "L24"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_selfcheck",
+      "label": "SelfCheck.svelte",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "PassageQuiz.svelte",
+      "file_type": "code",
+      "norm_label": "selfcheck.svelte",
+      "source_file": "front/src/lib/lesson-screens/SelfCheck.svelte",
       "source_location": "L1"
     },
     {
@@ -14377,7 +14300,7 @@
       "node_kind": "heading",
       "norm_label": "1. replace placeholder/template content (biggest lift)",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L168"
+      "source_location": "L169"
     },
     {
       "id": "docs_module_c_audit_2_fix_gating_and_order",
@@ -14389,7 +14312,7 @@
       "node_kind": "heading",
       "norm_label": "2. fix gating and order",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L198"
+      "source_location": "L199"
     },
     {
       "id": "docs_module_c_audit_3_spiral_don_t_repeat",
@@ -14401,7 +14324,7 @@
       "node_kind": "heading",
       "norm_label": "3. spiral, don't repeat",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L202"
+      "source_location": "L203"
     },
     {
       "id": "docs_module_c_audit_4_connect_reading_and_writing",
@@ -14413,7 +14336,7 @@
       "node_kind": "heading",
       "norm_label": "4. connect reading and writing",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L206"
+      "source_location": "L207"
     },
     {
       "id": "docs_module_c_audit_5_fix_facts",
@@ -14425,7 +14348,7 @@
       "node_kind": "heading",
       "norm_label": "5. fix facts",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L210"
+      "source_location": "L211"
     },
     {
       "id": "docs_module_c_audit_6_verify_with_play",
@@ -14437,7 +14360,7 @@
       "node_kind": "heading",
       "norm_label": "6. verify with play",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L214"
+      "source_location": "L215"
     },
     {
       "id": "docs_module_c_audit_7_tooling_last",
@@ -14449,7 +14372,7 @@
       "node_kind": "heading",
       "norm_label": "7. tooling (last)",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L251"
+      "source_location": "L252"
     },
     {
       "id": "docs_module_c_audit_fixed_on_2026_09_19",
@@ -14461,7 +14384,7 @@
       "node_kind": "heading",
       "norm_label": "fixed on 2026-09-19",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L147"
+      "source_location": "L149"
     },
     {
       "id": "docs_module_c_audit_fixed_on_2026_09_28",
@@ -14473,7 +14396,7 @@
       "node_kind": "heading",
       "norm_label": "fixed on 2026-09-28",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L84"
+      "source_location": "L86"
     },
     {
       "id": "docs_module_c_audit_fixed_on_2026_10_03_qc_report_2_3_bad_points_2_6_7",
@@ -14545,7 +14468,7 @@
       "node_kind": "heading",
       "norm_label": "path to 10",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L164"
+      "source_location": "L165"
     },
     {
       "id": "docs_module_c_audit_section_1_purpose",
@@ -14557,7 +14480,7 @@
       "node_kind": "heading",
       "norm_label": "section 1 purpose",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L275"
+      "source_location": "L276"
     },
     {
       "id": "docs_module_c_audit_still_open",
@@ -14569,7 +14492,7 @@
       "node_kind": "heading",
       "norm_label": "still open",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L153"
+      "source_location": "L155"
     },
     {
       "id": "docs_module_c_audit_vocab_question_types",
@@ -14581,7 +14504,7 @@
       "node_kind": "heading",
       "norm_label": "vocab question types",
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L271"
+      "source_location": "L272"
     },
     {
       "id": "docs_module_c_roadmap",
@@ -15420,6 +15343,50 @@
       "source_location": "L1"
     },
     {
+      "id": "front_src_lib_lesson_screens_sentencecompletion_filler",
+      "label": "FILLER",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "filler",
+      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_sentencecompletion_ts_front_src_lib_lesson_screens_sentencecompletion",
+      "label": "sentenceCompletion.ts",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "sentencecompletion.ts",
+      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_lesson_screens_types_match_pairs_max_mistakes",
+      "label": "MATCH_PAIRS_MAX_MISTAKES",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "match_pairs_max_mistakes",
+      "source_file": "front/src/lib/lesson-screens/types.ts",
+      "source_location": "L202"
+    },
+    {
+      "id": "front_src_lib_quiz_progress",
+      "label": "progress.ts",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "progress.ts",
+      "source_file": "front/src/lib/quiz/progress.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "front_src_lib_quiz_questionnavigator",
       "label": "QuestionNavigator.svelte",
       "_origin": "ast",
@@ -15549,6 +15516,28 @@
       "file_type": "code",
       "norm_label": "quiztimer.svelte",
       "source_file": "front/src/lib/quiz/QuizTimer.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_quiz_scoring",
+      "label": "scoring.ts",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "scoring.ts",
+      "source_file": "front/src/lib/quiz/scoring.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_quiz_screenids",
+      "label": "screenIds.ts",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "QuizRunner.svelte",
+      "file_type": "code",
+      "norm_label": "screenids.ts",
+      "source_file": "front/src/lib/quiz/screenIds.ts",
       "source_location": "L1"
     },
     {
@@ -16168,39 +16157,6 @@
       "source_location": "L36"
     },
     {
-      "id": "front_src_lib_lesson_screens_sentencecompletion_filler",
-      "label": "FILLER",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "filler",
-      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_sentencecompletion_ts_front_src_lib_lesson_screens_sentencecompletion",
-      "label": "sentenceCompletion.ts",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "sentencecompletion.ts",
-      "source_file": "front/src/lib/lesson-screens/sentenceCompletion.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_lesson_screens_types_match_pairs_max_mistakes",
-      "label": "MATCH_PAIRS_MAX_MISTAKES",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "match_pairs_max_mistakes",
-      "source_file": "front/src/lib/lesson-screens/types.ts",
-      "source_location": "L202"
-    },
-    {
       "id": "front_src_lib_quiz_c_index",
       "label": "c/index.ts",
       "_origin": "ast",
@@ -16234,26 +16190,15 @@
       "source_location": "L1"
     },
     {
-      "id": "front_src_lib_quiz_scoring",
-      "label": "scoring.ts",
+      "id": "front_src_lib_quiz_index_allquiznodes",
+      "label": "allQuizNodes",
       "_origin": "ast",
       "community": 97,
       "community_name": "ExamEditModel",
       "file_type": "code",
-      "norm_label": "scoring.ts",
-      "source_file": "front/src/lib/quiz/scoring.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_src_lib_quiz_screenids",
-      "label": "screenIds.ts",
-      "_origin": "ast",
-      "community": 97,
-      "community_name": "ExamEditModel",
-      "file_type": "code",
-      "norm_label": "screenids.ts",
-      "source_file": "front/src/lib/quiz/screenIds.ts",
-      "source_location": "L1"
+      "norm_label": "allquiznodes",
+      "source_file": "front/src/lib/quiz/index.ts",
+      "source_location": "L6"
     },
     {
       "id": "front_src_lib_quiz_types",
@@ -16264,6 +16209,61 @@
       "file_type": "code",
       "norm_label": "quiz/types.ts",
       "source_file": "front/src/lib/quiz/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_quizzes",
+      "label": "quizzes.ts",
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "quizzes.ts",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_src_lib_quizzes_allquizzes",
+      "label": "allQuizzes",
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "allquizzes",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "front_src_lib_quizzes_assortedquizzes",
+      "label": "assortedQuizzes",
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "assortedquizzes",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "front_src_lib_quizzes_ministryquizzes",
+      "label": "ministryQuizzes",
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "ministryquizzes",
+      "source_file": "front/src/lib/quizzes.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "front_src_routes_unit_unitid_module_moduleid_exam_quizid_page_ts_front_src_routes_unit_unitid_module_moduleid_exam_quizid_page",
+      "label": "[quizId]/+page.ts",
+      "_origin": "ast",
+      "community": 97,
+      "community_name": "ExamEditModel",
+      "file_type": "code",
+      "norm_label": "[quizid]/+page.ts",
+      "source_file": "front/src/routes/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.ts",
       "source_location": "L1"
     },
     {
@@ -23834,7 +23834,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L147",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -23845,7 +23845,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L153",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -23856,7 +23856,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L164",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -23900,7 +23900,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L84",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -23911,7 +23911,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L168",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -23922,7 +23922,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L198",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -23933,7 +23933,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L202",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -23944,7 +23944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L206",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -23955,7 +23955,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L210",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -23966,7 +23966,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L214",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -23977,7 +23977,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L251",
+      "source_location": "L252",
       "weight": 1.0
     },
     {
@@ -23988,7 +23988,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L271",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -23999,7 +23999,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/module-c-audit.md",
-      "source_location": "L275",
+      "source_location": "L276",
       "weight": 1.0
     },
     {
@@ -30984,7 +30984,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L263",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -30995,7 +30995,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L266",
+      "source_location": "L267",
       "weight": 1.0
     },
     {
@@ -31688,7 +31688,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte",
-      "source_location": "L68",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -36358,6 +36358,15 @@
     },
     {
       "source": "front_src_lib_lesson_screens_passagequiz",
+      "target": "front_src_lib_lesson_screens_passagetext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front/src/lib/lesson-screens/PassageQuiz.svelte"
+    },
+    {
+      "source": "front_src_lib_lesson_screens_passagequiz",
       "target": "front_src_lib_lesson_screens_score_svelte",
       "relation": "imports_from",
       "_origin": "ast",
@@ -40411,5 +40420,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2d52c57ab5cf31a6414b249740669fa224300990"
+  "built_at_commit": "08285ef1caeb594c8cc9c7bdaef90c52e051abff"
 }

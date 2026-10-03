@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-10-03)
 
 ## Corpus Check
-- 206 files · ~470,978 words
+- 206 files · ~474,250 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1506 nodes · 2106 edges · 144 communities (113 shown, 31 thin omitted)
+- 1506 nodes · 2107 edges · 143 communities (111 shown, 32 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.74)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2d52c57a`
+- Built from commit: `08285ef1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -90,7 +90,7 @@
 - questions
 - questions
 - questions
-- progress.ts
+- PassageQuiz.svelte
 - eye catchers - negative limit contrast.md
 - @sveltejs/vite-plugin-svelte
 - בקשת מסך - `<שם-המסך>`
@@ -139,7 +139,6 @@
 - Part 2: History (the past)
 - 9. Reviewers' views
 - Snapshot: Part 1 as it was in version 2.1 (replaced on 2026-09-30)
-- quizzes.ts
 - 4. Teacher's view
 - 6. Node-by-node grades
 - EditWorkspace.svelte
@@ -169,17 +168,17 @@
   front/src/lib/content-edit/validate.ts → front/src/lib/content-edit/fields/TokenPicker.svelte
 - `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
   front/src/lib/content/types.ts → front/src/lib/lesson-screens/types.ts
+- `IdentifiedScreen` --references--> `LessonScreen`  [EXTRACTED]
+  front/src/lib/quiz/screenIds.ts → front/src/lib/lesson-screens/types.ts
 - `markPending()` --indirect_call--> `i()`  [INFERRED]
   front/src/lib/content-edit/SlideStage.svelte → front/src/lib/content-edit/fields/TokenPicker.svelte
 - `addCategory()` --calls--> `prompt`  [INFERRED]
   front/src/lib/content-edit/SlideStage.svelte → front/src/lib/lesson-screens/WritingTask.svelte
-- `get-documentation Tool` --semantically_similar_to--> `get-documentation Tool`  [INFERRED] [semantically similar]
-  front/AGENTS.md → front/.github/agents/svelte-file-editor.agent.md
 
 ## Import Cycles
 - None detected.
 
-## Communities (144 total, 31 thin omitted)
+## Communities (143 total, 32 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.13
@@ -258,7 +257,7 @@ Cohesion: 0.08
 Nodes (23): cloze-pick - pick a tile to start a sentence (any tile in correctIndices passes), mark-all - tap every target word in a text (passes at 70% found, max 1 stray tap), mark-word - tap one word in a sentence, match-pairs - match English words to Hebrew (2+ pairs, ideally 4-6), mcq - multiple choice (one correct), passage-mcq - a text with multiple-choice questions on one screen, passage-quiz - a text with typed short answers (correct when ALL keywords appear in the answer), preface - a paragraph of teaching (+15 more)
 
 ### Community 35 - "lesson-screens/types.ts"
-Cohesion: 0.07
+Cohesion: 0.08
 Nodes (22): ClozePickScreen, MarkAllCategory, MarkAllScreen, MarkWordScreen, MatchPairsScreen, McqScreen, PassageMcqScreen, PassageQuizQuestion (+14 more)
 
 ### Community 36 - "WritingTask.svelte"
@@ -294,7 +293,7 @@ Cohesion: 0.22
 Nodes (9): 4.c.21.1 · חמשת המקשרים ותפקידם, 4.c.21.2 · `because` לא פותח משפט עצמאי, 4.c.21.3 · לא `however` ולא `but` יחד, 4.c.21.4 · `also` מול `although`, 4.c.21.5 · `for example` בלי `that`, 4.c.21.6 · מרפאת שגיאות — עשרה תיקונים, 4.c.21.7 · פסקה עם כל חמשת המקשרים, 4.c.21.8 · שער סקשן 21 (+1 more)
 
 ### Community 45 - "registry.ts"
-Cohesion: 0.15
+Cohesion: 0.17
 Nodes (3): screenComponents, KEY, LessonSession
 
 ### Community 46 - "Section 16 · עמדת הכותב"
@@ -366,8 +365,8 @@ Cohesion: 0.29
 Nodes (7): 4.c.26.1 · חצי בחינה — קריאה, 4.c.26.2 · חצי בחינה — כתיבה, 4.c.26.3 · סימולציה מלאה, 4.c.26.4 · איזה Pattern נכשל, 4.c.26.5 · תיקון ממוקד — דפוס אחד, 4.c.26.6 · ערכת הבחינה האישית, Section 26 · סימולציה ותיקון
 
 ### Community 63 - "mode.svelte.ts"
-Cohesion: 0.11
-Nodes (6): stripLineAttrs(), KEY, ScreenMode, lines, KEY, QuizAnswerSlot
+Cohesion: 0.13
+Nodes (4): KEY, ScreenMode, KEY, QuizAnswerSlot
 
 ### Community 65 - "3 · `s3-l2` — מציאה וסימון (c.3.3)"
 Cohesion: 0.10
@@ -429,10 +428,6 @@ Nodes (6): 4c (require 3c), preface, questions, round 1, round 2, round 3
 Cohesion: 0.33
 Nodes (6): 5 (require 4c,a,b), preface, questions, round 1, round 2, round 3
 
-### Community 80 - "progress.ts"
-Cohesion: 0.30
-Nodes (13): attemptKey(), clearInProgress(), getInProgress(), getLastAttempt(), hasStorage(), progressKey(), QuizAttempt, QuizInProgress (+5 more)
-
 ### Community 81 - "eye catchers - negative limit contrast.md"
 Cohesion: 0.50
 Nodes (3): 2 (c.4.1), implemented, material
@@ -466,8 +461,8 @@ Cohesion: 0.18
 Nodes (3): auth, AuthStore, DebugStore
 
 ### Community 91 - "QuizRunner.svelte"
-Cohesion: 0.10
-Nodes (11): i(), advance(), footerLabel, partBreaks, passageIndices, QuizAnswerSlot, remainingSeconds, showTimer (+3 more)
+Cohesion: 0.07
+Nodes (35): FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), MATCH_PAIRS_MAX_MISTAKES, attemptKey(), clearInProgress(), getInProgress() (+27 more)
 
 ### Community 92 - "סוגי המסכים שקיימים באפליקציה"
 Cohesion: 0.33
@@ -491,7 +486,7 @@ Nodes (48): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKi
 
 ### Community 97 - "ExamEditModel"
 Cohesion: 0.05
-Nodes (29): LessonBucket, SECTION_IDS, Bucket, EditModelLike, clone(), ExamEditModel, ScreenPath, blankScreen() (+21 more)
+Nodes (28): LessonBucket, SECTION_IDS, Bucket, EditModelLike, clone(), ExamEditModel, ScreenPath, blankScreen() (+20 more)
 
 ### Community 99 - "score.svelte.ts"
 Cohesion: 0.15
@@ -569,10 +564,6 @@ Nodes (5): §9. Reviewers' views, Claude, Claude, round 2, GPT, GPT, round 2
 Cohesion: 0.22
 Nodes (9): 1. Verdict today, 2. Module C compared with the real exam, 3. What works (keep it), 4. Open issues, most harmful first, 5. Fixed so far, 6. Work order (agreed by both reviewers), 7. Decisions, 8. Where the reviewers stand (+1 more)
 
-### Community 131 - "quizzes.ts"
-Cohesion: 0.18
-Nodes (10): allQuizNodes, allQuizzes, AssortedQuiz, assortedQuizzes, getQuiz(), MinistryQuiz, ministryQuizzes, Quiz (+2 more)
-
 ### Community 132 - "4. Teacher's view"
 Cohesion: 0.67
 Nodes (3): §4. Teacher's view, Keep, Problems
@@ -604,13 +595,13 @@ Nodes (5): RATE, RULES, speak(), speechSupported(), speechText()
 ## Knowledge Gaps
 - **761 isolated node(s):** `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)`, `Fixed on 2026-10-03 (QC report 2.3, bad points 2, 6, 7)`, `Fixed on 2026-09-28` (+756 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `EditModel` connect `EditModel` to `ExamEditModel`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 19 · מקריאה לכתיבה`, `Section 26 · סימולציה ותיקון`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **What connects `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)` to the rest of the system?**
