@@ -1,8 +1,7 @@
 <script lang="ts">
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
-	import PassageMark from './PassageMark.svelte';
-	import { stripLineAttrs } from './miniMarkdown';
+	import PassageText from './PassageText.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -38,45 +37,6 @@
 
 	let question = $derived(screen.questions[qi]);
 	let isLastQuestion = $derived(qi === screen.questions.length - 1);
-
-	// A paragraph authored as "I  Every year, ..." (exam-printout style, same
-	// convention as the standalone Passage screen's `paragraphs`) - matched
-	// here so the roman numeral renders as its own gutter marker instead of
-	// running into the paragraph's first word as plain text.
-	const ROMAN_PREFIX = /^(VIII|VII|VI|IV|IX|III|II|I|V|X)  +/;
-
-	// Passage text as markable lines (split on paragraph/line breaks) so
-	// students can select-and-highlight it, same tool as the standalone
-	// Passage screen - see PassageMark. `stripLineAttrs` drops any authored
-	// `{a:center}`-style block token, since these lines only run through
-	// inline markdown (PassageMark renders each line's plain text).
-	let passageLines = $derived.by(() => {
-		const result: {
-			key: number;
-			text: string;
-			roman: string | null;
-			lineNumber: number;
-			rowClass?: string;
-		}[] = [];
-		let n = 0;
-		screen.text.split('\n\n').forEach((paragraph) => {
-			paragraph.split('\n').forEach((raw, li) => {
-				let text = stripLineAttrs(raw);
-				if (!text.trim()) return;
-				let roman: string | null = null;
-				if (li === 0) {
-					const m = text.match(ROMAN_PREFIX);
-					if (m) {
-						roman = m[1];
-						text = text.slice(m[0].length);
-					}
-				}
-				n += 1;
-				result.push({ key: n, text, roman, lineNumber: n, rowClass: li === 0 ? 'mt-3' : '' });
-			});
-		});
-		return result;
-	});
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -137,20 +97,7 @@
 		</span>
 	</div>
 {/if}
-<PassageMark lines={passageLines}>
-	{#snippet leading(line)}
-		<span
-			class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
-				? 'bg-accent-soft text-ink/70'
-				: ''}"
-		>
-			{line.roman ?? ''}
-		</span>
-		<span class="w-5 shrink-0 text-start text-xs text-muted tabular">
-			{line.lineNumber % 5 === 0 ? line.lineNumber : ''}
-		</span>
-	{/snippet}
-</PassageMark>
+<PassageText text={screen.text} />
 
 <div class="mt-6">
 	{#if screen.questions.length > 1}

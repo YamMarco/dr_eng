@@ -162,7 +162,10 @@ class EditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
-	setMeta(id: string, patch: Partial<Pick<LessonNode, 'titleHe' | 'titleEn' | 'big'>>) {
+	setMeta(
+		id: string,
+		patch: Partial<Pick<LessonNode, 'titleHe' | 'titleEn' | 'big' | 'requiredRounds'>>
+	) {
 		const n = this.node(id);
 		if (!n) return;
 		Object.assign(n, patch);

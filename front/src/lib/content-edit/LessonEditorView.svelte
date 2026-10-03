@@ -73,6 +73,12 @@
 			</button>
 			<strong class="text-sm">{node.titleHe}</strong>
 			<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{node.id}</span>
+			<span
+				class="rounded bg-amber-100 px-1.5 text-xs font-bold text-amber-900"
+				title="מספר הסבבים שחובה לסיים כדי לפתוח את השיעורים הבאים"
+			>
+				סבבי חובה: {node.requiredRounds ?? 1} / {node.content.rounds.length}
+			</span>
 			<button
 				type="button"
 				class="rounded-lg border border-line px-2 py-1 text-xs font-bold hover:bg-line/60"
@@ -114,6 +120,21 @@
 				<label class="flex flex-col gap-0.5">
 					<span class="text-xs text-muted">מזהה (לשינוי: מפת השיעורים ← שינוי מזהה)</span>
 					<input class="fld opacity-60" dir="ltr" value={node.id} readonly />
+				</label>
+				<label class="flex flex-col gap-0.5">
+					<span class="text-xs text-muted">סבבי חובה (מתוך {node.content.rounds.length})</span>
+					<input
+						class="fld"
+						type="number"
+						min="1"
+						max={node.content.rounds.length}
+						value={node.requiredRounds ?? 1}
+						oninput={(e) => {
+							const n = Math.round(Number(e.currentTarget.value));
+							if (n >= 1 && n <= node.content.rounds.length)
+								editModel.setMeta(node.id, { requiredRounds: n === 1 ? undefined : n });
+						}}
+					/>
 				</label>
 				<label class="flex items-center gap-2 pt-4">
 					<input

@@ -2,6 +2,7 @@
 	import type { SelfCheckScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import PassageText, { hasParagraphMarkers } from './PassageText.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
@@ -72,7 +73,11 @@
 
 {#if screen.text}
 	<div class="mb-3 rounded-2xl bg-accent-soft p-3 leading-relaxed">
-		<Md block text={screen.text} />
+		{#if hasParagraphMarkers(screen.text)}
+			<PassageText text={screen.text} />
+		{:else}
+			<Md block text={screen.text} />
+		{/if}
 	</div>
 {/if}
 
