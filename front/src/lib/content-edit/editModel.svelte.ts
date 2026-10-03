@@ -124,7 +124,7 @@ class EditModel implements EditModelLike {
 			...n.content.rounds.map((r, i) => ({
 				key: i,
 				label: `סבב ${i + 1}`,
-				note: i === 0 ? 'חובה' : 'רשות',
+				note: i < (n.requiredRounds ?? 1) ? 'חובה' : 'רשות',
 				screens: r.screens
 			}))
 		];
