@@ -52,7 +52,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | n-b46b7e2b | Applying contrast in exam questions | Read what follows however/but as the answer | 6 | One-line teaching screen |
 | l09 | Picking a plausible but wrong option | Multiple choice: read all 4, cross out, find proof in the right paragraph | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, every exam question has type A/B distractors, new text THE NO-HOMEWORK EXPERIMENT). Unplayed |
 | l10 | Writing three opinions instead of one text answer | One answer from the text; question word -> signal (why -> because) | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds); exam round is typed short answers (`passage-quiz`, keyword-checked) on the volunteering text + new text THE TOWN THAT SWITCHED OFF ITS LIGHTS. Unplayed |
-| l11 ~ | Rewriting, or completing with the wrong kind of answer | Continue the sentence; because = reason, in order to = purpose | 7 | Overlaps q-words-2 |
+| l11 | Rewriting, or completing with the wrong kind of answer | Continue the sentence; because = reason, in order to = purpose | 7.5 | Rebuilt 2026-10-03 to the question pattern (3 required rounds); exam round is typed completions (`passage-quiz`) on REDONDA ISLAND + new text A ZOO WITHOUT CAGES. Overlaps q-words-2. Unplayed |
 | l12 ~ | Losing half the points with one answer | Find two answers using addition signals and number them | 7.5 | Overlaps q-words-1 |
 | n-649ed18f | Switching question types under time pressure | Apply the four formats quickly | 7.5 | New, unplayed |
 | n-7c5330b8 | Not combining everything | Run the full method against a clock | 7.5 | New, unplayed |
@@ -153,7 +153,7 @@ P3, easy distractors (same day):
 
 ## Still open
 
-- QC 2.3 point 7, remaining: l11-l12 (answer-type lessons).
+- QC 2.3 point 7, remaining: l12 (two answers).
 - Rework the opener of not-q (typo, repeated card).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
 - Link reading and writing: one screen in each Part C connector lesson.

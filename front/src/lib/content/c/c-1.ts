@@ -3173,6 +3173,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "השלמת משפט",
     titleEn: "Complete the Sentence",
     required: ["l09"],
+    requiredRounds: 3,
     position: { x: 70, y: 1740 },
     big: false,
     content: {
@@ -3208,7 +3209,29 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "🚦 רמזור: ירוק? רק ירוק = עונים." },
+            { type: "preface", text: "השלמת משפט: קוראים את ההתחלה. Because ___ = מחפשים סיבה. In order to ___ = מחפשים מטרה." },
+            {
+              type: "mcq",
+              prompt: "\"People left Redonda because ___\" - מה עושים?",
+              options: ["כותבים YES/NO", "מחפשים סיבה בטקסט ומשלימים", "כותבים תשובה מהראש"],
+              correctIndex: 1,
+              explanation: "Complete the sentence: מחפשים מילות סיבה בטקסט ← מוצאים ← משלימים.",
+            },
+            {
+              type: "mcq",
+              prompt: "\"They brought goats in order to ___\" - מה מחפשים בטקסט?",
+              options: ["because / since", "to / in order to / so that", "and / also"],
+              correctIndex: 1,
+              explanation: "\"In order to\" = מטרה. מחפשים to / in order to / so that.",
+            },
+            {
+              type: "mcq",
+              prompt: "\"They brought goats because ___\" - איזו השלמה נכונה?",
+              options: ["because they wanted meat and milk", "they wanted meat and milk", "meat and milk because"],
+              correctIndex: 1,
+              explanation: "\"because\" כבר כתוב בשאלה. משלימים רק את ההמשך: they wanted meat and milk.",
+            },
+            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
@@ -3273,50 +3296,59 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: Because ___ = סיבה. In order to ___ = מטרה.",
-            },
-            {
-              type: "mcq",
-              prompt: '"People left Redonda because ___" - מה עושים?',
-              options: [
-                "כותבים YES/NO",
-                "מחפשים סיבה בטקסט ומשלימים",
-                "כותבים תשובה מהראש",
+              type: "passage-quiz",
+              text: "**REDONDA ISLAND**\n\nI  People first came to Redonda Island 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants, and the people could not find enough food, so they left the island.\n\nII  In 2016, environmentalists removed the goats so that the plants could grow back. Only a few years later, grass covered the island again, and birds returned to build their nests.",
+              questions: [
+                {
+                  prompt: "People brought goats to the island because ___",
+                  keywords: ["meat"],
+                  answerHint: "they wanted meat and milk.",
+                },
+                {
+                  prompt: "The people left the island because ___",
+                  keywords: ["food"],
+                  answerHint: "they could not find enough food.",
+                },
+                {
+                  prompt: "Environmentalists removed the goats in order to ___",
+                  keywords: ["plant"],
+                  answerHint: "let the plants grow back.",
+                },
+                {
+                  prompt: "A few years after the goats were removed, birds ___",
+                  keywords: ["return"],
+                  answerHint: "returned to build their nests.",
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                "Complete the sentence: מחפשים מילות סיבה בטקסט ← מוצאים ← משלימים.",
             },
             {
-              type: "mcq",
-              prompt: '"They brought goats in order to ___" - מה מחפשים בטקסט?',
-              options: [
-                "because / since",
-                "to / in order to / so that",
-                "and / also",
+              type: "passage-quiz",
+              text: "**A ZOO WITHOUT CAGES**\n\nI  When the city zoo in Valmora opened in 1950, most animals lived in small cages. Visitors complained that the animals looked sad and bored, and fewer people came every year.\n\nII  In 2010, the zoo removed most of its cages in order to give the animals more space. Large open areas with trees, rocks and water were built instead, and the animals can now move freely.\n\nIII  The change worked. The number of visitors doubled in five years, and baby animals were born in the zoo for the first time in decades. Today, schools from all over the country visit Valmora to learn about wildlife.",
+              questions: [
+                {
+                  prompt: "The zoo removed most of its cages in order to ___",
+                  keywords: ["space"],
+                  answerHint: "give the animals more space.",
+                },
+                {
+                  prompt: "Visitors complained because ___",
+                  keywords: ["sad"],
+                  answerHint: "the animals looked sad and bored.",
+                },
+                {
+                  prompt: "In five years, the number of visitors ___",
+                  keywords: ["double"],
+                  answerHint: "doubled.",
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                '"In order to" = מטרה. מחפשים to / in order to / so that.',
-            },
-            {
-              type: "mcq",
-              prompt: '"Because" כבר כתוב בשאלה - לא כותבים אותו שוב בתשובה.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation:
-                'נכון. "Because they wanted food" - ולא "Because because they wanted".',
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nסיבה או מטרה?" },
             {
               type: "passage-mcq",
               text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
@@ -3355,10 +3387,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
               text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
