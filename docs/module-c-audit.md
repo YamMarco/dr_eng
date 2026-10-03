@@ -50,7 +50,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | n-221188d1 | Not knowing which tool a question needs | Pick the tool, then chain the full method | 8 | however/but missing from it |
 | l08 | Answering the wrong half of a "however" sentence | Mark contrast words; the point comes after them | 6.5 | After the summary, no framing |
 | n-b46b7e2b | Applying contrast in exam questions | Read what follows however/but as the answer | 6 | One-line teaching screen |
-| l09 ~ | Picking a plausible but wrong option | Multiple choice: read all 4, cross out, find proof in the right paragraph | 7.5 | None big |
+| l09 | Picking a plausible but wrong option | Multiple choice: read all 4, cross out, find proof in the right paragraph | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, every exam question has type A/B distractors, new text THE NO-HOMEWORK EXPERIMENT). Unplayed |
 | l10 ~ | Writing three opinions instead of one text answer | One answer from the text; question word -> signal (why -> because) | 7.5 | None big |
 | l11 ~ | Rewriting, or completing with the wrong kind of answer | Continue the sentence; because = reason, in order to = purpose | 7 | Overlaps q-words-2 |
 | l12 ~ | Losing half the points with one answer | Find two answers using addition signals and number them | 7.5 | Overlaps q-words-1 |
@@ -153,7 +153,7 @@ P3, easy distractors (same day):
 
 ## Still open
 
-- QC 2.3 point 7, remaining: l09-l12 (answer-type lessons).
+- QC 2.3 point 7, remaining: l10-l12 (answer-type lessons).
 - Rework the opener of not-q (typo, repeated card).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
 - Link reading and writing: one screen in each Part C connector lesson.

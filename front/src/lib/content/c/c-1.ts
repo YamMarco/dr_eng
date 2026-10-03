@@ -2679,6 +2679,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שאלות אמריקאיות",
     titleEn: "Multiple Choice",
     required: ["n-b46b7e2b"],
+    requiredRounds: 3,
     position: { x: 0, y: 1620 },
     big: false,
     content: {
@@ -2718,6 +2719,29 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
+            { type: "preface", text: "ארבעה צעדים: קוראים את כל 4 האפשרויות ← חוצים ← מוצאים הוכחה בפסקה הנכונה ← עונים." },
+            {
+              type: "mcq",
+              prompt: "בשאלה אמריקאית - מה עושים לפני שחוזרים לטקסט?",
+              options: ["מסמנים את האפשרות הראשונה שנראית טוב", "קוראים את כל 4 האפשרויות", "קוראים שוב את כל הטקסט"],
+              correctIndex: 1,
+              explanation: "צעד 1: קוראים את כל ארבע האפשרויות. אחר כך חוצים, ורק אז מחפשים הוכחה.",
+            },
+            {
+              type: "mcq",
+              prompt: "אפשרות נכונה לפי הטקסט, אבל מפסקה אחרת מזו שבשאלה. מה עושים איתה?",
+              options: ["בוחרים בה - היא נכונה", "חוצים - נכון + לא קשור לשאלה = שגוי (מסיח סוג ב׳)", "משאירים אותה לסוף"],
+              correctIndex: 1,
+              explanation: "זה מסיח מסוג ב׳: נכון בטקסט, אבל לא עונה על השאלה. חוצים.",
+            },
+            {
+              type: "mcq",
+              prompt: "מצאתם הוכחה לשתי אפשרויות. מה עושים?",
+              options: ["מסמנים את הראשונה שמצאנו", "מסמנים את האחרונה שמצאנו", "חוזרים לטקסט - יש תשובה אחת, אז אחת מהן לא באמת עונה על השאלה"],
+              correctIndex: 2,
+              explanation: "בשאלה אמריקאית יש תמיד תשובה אחת. שתי \"הוכחות\" = אחת מהן לא עונה בדיוק על מה ששאלו.",
+            },
+            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: "I  Every year, millions of young people around the world choose to volunteer - to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.",
@@ -2791,46 +2815,59 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: קרא 4 → חצה → הוכחה → ענה.",
-            },
-            {
-              type: "mcq",
-              prompt: "בשאלת MC - מה עושים לפני שחוזרים לטקסט?",
-              options: [
-                "מסמנים את האפשרות הראשונה שנראית טוב",
-                "קוראים את כל 4 האפשרויות",
-                "קוראים שוב את כל הטקסט",
+              type: "passage-mcq",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph I about adults who cannot swim?",
+                  options: ["They are too old to learn", "They became stronger swimmers", "Many feel embarrassed and never try to learn", "Most of them live in small towns"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "What do we learn from paragraph II?",
+                  options: ["Adults who learn later can become stronger swimmers than people who learned as children", "Adults are afraid to ask questions", "Swimming classes are available in most cities", "Children learn to swim faster than adults"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "According to paragraph III, which is true about adult swimming classes?",
+                  options: ["All classes meet every day", "Some meet once a week, and others three times a week", "Over 30% of adults cannot swim", "They are only for beginners"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "According to Dr. Klein, why do adults learn well?",
+                  options: ["They have more free time", "They practice in most cities", "They learned the basics as children", "They understand explanations and correct their mistakes quickly"],
+                  correctIndex: 3,
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                "צעד 1: קוראים את כל ארבע האפשרויות. אחר כך חוצים, ורק אז מחפשים הוכחה.",
             },
             {
-              type: "mcq",
-              prompt:
-                "אפשרות שנכונה בטקסט, אבל עונה על שאלה אחרת - היא תשובה נכונה.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                "שקר. זה מסיח מסוג ב׳: נכון + לא קשור לשאלה = שגוי. חוצים.",
-            },
-            {
-              type: "mcq",
-              prompt: '"What do we learn from paragraph I?" - מאיפה מחפשים?',
-              options: ["מכל הטקסט", "רק מפסקה I", "מהפסקה שקשורה לנושא"],
-              correctIndex: 1,
-              explanation: "כלל זהב: paragraph I = רק פסקה I. לא פסקאות אחרות.",
+              type: "passage-mcq",
+              text: "**THE NO-HOMEWORK EXPERIMENT**\n\nI  In 2021, Riverside Middle School in Canada decided to stop giving homework to students in grades 6 to 8. Many parents were against the idea. They were afraid their children would fall behind and spend all evening on their phones.\n\nII  A year later, the results surprised everyone. Test scores did not go down, and in reading they even went up a little. Teachers said students came to class more rested and more ready to learn. Instead of homework, students were asked to read for 20 minutes every evening.\n\nIII  Not everyone is convinced. Some teachers at other schools say homework teaches students to work on their own. Principal Mark Owens says the school will continue the experiment, but it will check the results again every year.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph II?",
+                  options: ["Many parents were against the idea", "Students did homework for 20 minutes a day", "Test scores did not go down without homework", "Reading scores went down"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to paragraph I, why were parents worried?",
+                  options: ["They thought their children would fall behind", "They thought teachers would leave the school", "They wanted more homework", "Test scores went up"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "According to Mark Owens, what will the school do?",
+                  options: ["Bring homework back next year", "Continue the experiment and check the results every year", "Stop the experiment", "Teach students to work on their own"],
+                  correctIndex: 1,
+                },
+              ],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nעוד שאלת \"What do we learn from paragraph X?\"." },
             {
               type: "passage-mcq",
               text: "I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer for two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class.",
@@ -2859,43 +2896,11 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
-            {
-              type: "mcq",
-              prompt: "מצאתם הוכחה לשתי אפשרויות. מה עושים?",
-              options: [
-                "מסמנים את הראשונה שמצאנו",
-                "מסמנים את האחרונה שמצאנו",
-                "חוזרים לטקסט - ב-MC תמיד תשובה אחת, אז אחת מהן שגויה",
-              ],
-              correctIndex: 2,
-              explanation:
-                'ב-MC יש תמיד תשובה אחת. שתי "הוכחות" = אחת מהן לא באמת עונה על השאלה.',
-            },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "passage-mcq",
-              text: 'I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\nII  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
-              questions: [
-                {
-                  prompt:
-                    "What do we learn from paragraph II about the project?",
-                  options: [
-                    "The project teaches people to care for trees",
-                    "Dr. Diallo plants the trees personally",
-                    "Birds increased by 60% in Ethiopia",
-                    "Most trees survive without local help",
-                  ],
-                  correctIndex: 0,
-                },
-              ],
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
               prompt: "הסבירו: מהם ארבעת הצעדים של MC, ולמה הסדר חשוב?",
