@@ -53,7 +53,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | l09 | Picking a plausible but wrong option | Multiple choice: read all 4, cross out, find proof in the right paragraph | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, every exam question has type A/B distractors, new text THE NO-HOMEWORK EXPERIMENT). Unplayed |
 | l10 | Writing three opinions instead of one text answer | One answer from the text; question word -> signal (why -> because) | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds); exam round is typed short answers (`passage-quiz`, keyword-checked) on the volunteering text + new text THE TOWN THAT SWITCHED OFF ITS LIGHTS. Unplayed |
 | l11 | Rewriting, or completing with the wrong kind of answer | Continue the sentence; because = reason, in order to = purpose | 7.5 | Rebuilt 2026-10-03 to the question pattern (3 required rounds); exam round is typed completions (`passage-quiz`) on REDONDA ISLAND + new text A ZOO WITHOUT CAGES. Overlaps q-words-2. Unplayed |
-| l12 ~ | Losing half the points with one answer | Find two answers using addition signals and number them | 7.5 | Overlaps q-words-1 |
+| l12 | Losing half the points with one answer | Find two answers using addition signals and number them | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds); exam round is typed answers where a TWO question needs both answers, on Green Africa + new text THE SCHOOL THAT GROWS ITS OWN LUNCH. Overlaps q-words-1. Unplayed |
 | n-649ed18f | Switching question types under time pressure | Apply the four formats quickly | 7.5 | New, unplayed |
 | n-7c5330b8 | Not combining everything | Run the full method against a clock | 7.5 | New, unplayed |
 
@@ -77,6 +77,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 - **Question mistakes (2):** n-b46b7e2b round 3 now asks about the *unhappy* shop owners; practice exam 1 Q2 no longer gives away Q3; sentence completion ignores punctuation and and/or/the/a (shared `isSentenceCompletionMatch`), so "books, signs, screens" passes; yes-no mark-word says "opinion", not "agreement"; in-addition round 1 Q2 rewritten so only "In addition" fits.
 - **Run-together writing lines (6):** yes-no, topic-vacation and topic-cellphone openings split into lines; em-dashes removed there; in-addition "סיבה 1 / סיבה 2" split.
+- **Reading rollout (7), answer-type lessons l09-l12:** question pattern; exam rounds of l10-l12 are typed answers (`passage-quiz`, keyword-checked), which also starts on bad point 8 (written answers never checked). Point 7 is done: every reading lesson now follows the round pattern.
 - **Reading rollout (7), method lessons l01-l03:** question pattern, true/false rounds removed; l03's bold `**I **` markers fixed, and run-together preface lines fixed in l02 and l03.
 - **Reading rollout (7), pair 2 of 5 - numbers/names:** l04 and numbers-names-q follow the reading round pattern.
 - **Dropped: QC 2.3 point 9 (vocab skip check).** Vocabulary is optional - students can go straight to reading - so a skip check adds nothing.
@@ -153,7 +154,6 @@ P3, easy distractors (same day):
 
 ## Still open
 
-- QC 2.3 point 7, remaining: l12 (two answers).
 - Rework the opener of not-q (typo, repeated card).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
 - Link reading and writing: one screen in each Part C connector lesson.

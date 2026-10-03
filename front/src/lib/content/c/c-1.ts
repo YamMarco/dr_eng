@@ -3422,6 +3422,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שתי תשובות",
     titleEn: "Two Answers",
     required: ["l11"],
+    requiredRounds: 3,
     position: { x: 70, y: 1860 },
     big: false,
     content: {
@@ -3462,7 +3463,29 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "🚦 רמזור: ירוק? רק ירוק = עונים." },
+            { type: "preface", text: "Give TWO answers = שתי תשובות, ממוספרות (1) ו-(2). מצאתם אחת? ממשיכים לחפש." },
+            {
+              type: "mcq",
+              prompt: "\"Give TWO answers\" - כמה תשובות כותבים?",
+              options: ["אחת - אם היא ארוכה ומפורטת", "שתיים בדיוק", "שלוש - כדי לא להחמיץ"],
+              correctIndex: 1,
+              explanation: "שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.",
+            },
+            {
+              type: "mcq",
+              prompt: "מצאתם תשובה ראשונה. מה עושים?",
+              options: ["כותבים אותה ועוברים לשאלה הבאה", "ממשיכים לקרוא - מחפשים שנייה", "מחפשים שנייה רק אם נשאר זמן"],
+              correctIndex: 1,
+              explanation: "תמיד ממשיכים. עוצרים רק כשיש שתיים.",
+            },
+            {
+              type: "mcq",
+              prompt: "ראיתם בטקסט \"In addition\" מיד אחרי התשובה הראשונה. מה זה אומר?",
+              options: ["שהטקסט עובר לנושא אחר", "שהתשובה השנייה מגיעה עכשיו", "שהתשובה הראשונה הייתה שגויה"],
+              correctIndex: 1,
+              explanation: "In addition / Also / And = סיגנל שתשובה שנייה מגיעה.",
+            },
+            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: "III  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.",
@@ -3525,49 +3548,59 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו באנגלית, מהטקסט. בשאלת TWO - כתבו (1) ו-(2) באותה תיבה. טקסט מוכר, ואחריו טקסט חדש. לא כל שאלה מבקשת שתי תשובות." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: מצאתי אחת? ממשיך. עוצר רק עם שתיים.",
-            },
-            {
-              type: "mcq",
-              prompt: '"Give TWO answers" - כמה תשובות כותבים?',
-              options: [
-                "אחת - אם היא ארוכה ומפורטת",
-                "שתיים בדיוק",
-                "שלוש - כדי לא להחמיץ",
+              type: "passage-quiz",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              questions: [
+                {
+                  prompt: "How did the area change after trees were planted? Give TWO answers. (paragraph III)",
+                  keywords: ["bird", "river"],
+                  answerHint: "(1) The number of birds increased by 60%. (2) Rivers in Kenya began to flow again.",
+                },
+                {
+                  prompt: "According to Dr. Diallo, what does the project do? Give TWO answers. (paragraph II)",
+                  keywords: ["plant", "teach"],
+                  answerHint: "(1) It plants trees. (2) It teaches local people how to care for them.",
+                },
+                {
+                  prompt: "According to Dr. Diallo, why do most trees die?",
+                  keywords: ["nobody"],
+                  answerHint: "Because nobody looks after them.",
+                },
+                {
+                  prompt: "When did the project start?",
+                  keywords: ["2019"],
+                  answerHint: "In 2019.",
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                "שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.",
             },
             {
-              type: "mcq",
-              prompt: "מצאתם תשובה ראשונה. מה עושים?",
-              options: [
-                "כותבים אותה ועוברים לשאלה הבאה",
-                "ממשיכים לקרוא - מחפשים שנייה",
-                "מחפשים שנייה רק אם נשאר זמן",
+              type: "passage-quiz",
+              text: "**THE SCHOOL THAT GROWS ITS OWN LUNCH**\n\nI  At Hillcrest Primary School, students do not only eat lunch - they grow it. In 2020, the school turned an empty field into a vegetable garden. Every class looks after its own part of the garden.\n\nII  The garden has changed school life in two ways. First, students now eat more vegetables, because they want to taste what they grew. In addition, teachers use the garden in science lessons to teach about plants, soil and weather.\n\nIII  The project also helps families. Every Friday, students take home a box of fresh vegetables, and parents can join a cooking class at the school once a month.",
+              questions: [
+                {
+                  prompt: "How has the garden changed school life? Give TWO answers. (paragraph II)",
+                  keywords: ["vegetable", "science"],
+                  answerHint: "(1) Students eat more vegetables. (2) Teachers use the garden in science lessons.",
+                },
+                {
+                  prompt: "How does the project help families? Give TWO answers. (paragraph III)",
+                  keywords: ["box", "cook"],
+                  answerHint: "(1) Students take home a box of fresh vegetables. (2) Parents can join a cooking class.",
+                },
+                {
+                  prompt: "When did the school turn the field into a garden?",
+                  keywords: ["2020"],
+                  answerHint: "In 2020.",
+                },
               ],
-              correctIndex: 1,
-              explanation: "תמיד ממשיכים. עוצרים רק כשיש שתיים.",
-            },
-            {
-              type: "mcq",
-              prompt: '"In addition" בטקסט = סיגנל שתשובה שנייה מגיעה.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation:
-                "נכון. In addition / Also / And - אחריהן מגיעה התשובה השנייה.",
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nמסמנים שתי תשובות." },
             {
               type: "mark-all",
               instruction: "סמנו את שתי התשובות ואת מילת החיבור שביניהן",
@@ -3576,22 +3609,6 @@ export const c1Lessons: LessonNode[] = [
                 8, 9, 10, 11, 12, 13, 14, 15, 18, 25, 26, 27, 28,
               ],
               wordBank: ["in addition", "also", "and"],
-            },
-            {
-              type: "passage-mcq",
-              text: "III  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class.",
-              questions: [
-                {
-                  prompt:
-                    "Give TWO answers: How do students change? (paragraph III)",
-                  options: [
-                    "They become more responsible / They become more focused",
-                    "They feel less stressed / They sleep better",
-                    "They help others / They work in schools",
-                  ],
-                  correctIndex: 0,
-                },
-              ],
             },
             {
               type: "self-check",
@@ -3604,10 +3621,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
               text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
