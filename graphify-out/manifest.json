@@ -726,9 +726,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1791020252.0143988,
-    "seen": 1791020337.8182552,
-    "ast_hash": "30ffc09373acce80100ecc14150c3218",
+    "mtime": 1791030972.0270722,
+    "seen": 1791031002.4028103,
+    "ast_hash": "60612e1aee2d4d6c7c97dc40bb00035a",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
