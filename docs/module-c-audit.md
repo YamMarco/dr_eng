@@ -38,9 +38,9 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | Node | Solves | Micro-skill | Grade | Main issue |
 |---|---|---|---|---|
 | l00 | Reading everything (or nothing) and running out of time | Search with the question's keyword instead of reading | 8 | None big |
-| l01 | Reading blind and getting lost | Build a map from title + paragraph 1 (topic, problem, direction) | 8 | Never reused after l03 |
-| l02 | Answering a question you don't understand | Rate the question (traffic light); decode an unknown word in 30 seconds | 8 | Colour-guess MCQs had the paraphrase inside the correct option (recognition, not self-monitoring); 3 replaced with `self-check` (write the Hebrew paraphrase, then compare). Unplayed |
-| l03 | No fixed way to find an answer | P1: question -> keyword -> locate -> read that sentence -> answer | 8.5 | None big |
+| l01 | Reading blind and getting lost | Build a map from title + paragraph 1 (topic, problem, direction) | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, new text THE COMEBACK OF BOARD GAMES). Never reused after l03. Unplayed |
+| l02 | Answering a question you don't understand | Rate the question (traffic light); decode an unknown word in 30 seconds | 8 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, new text SLEEPING IN SPACE). Earlier: colour-guess MCQs had the paraphrase inside the correct option; 3 replaced with `self-check`. Unplayed |
+| l03 | No fixed way to find an answer | P1: question -> keyword -> locate -> read that sentence -> answer | 8.5 | Rebuilt 2026-10-03 to the question pattern (3 required rounds, new text BEES IN THE CITY with one paraphrased keyword); the race is the first optional round. Unplayed |
 | l04 | Slow search on number/name questions | Use numbers and names as anchors to jump to a paragraph | 7 | Rebuilt 2026-10-03 to the marking pattern (5 required rounds, rules MCQs, 209-word long text); numbers marked as the number token only, everywhere. Unplayed |
 | numbers-names-q | Applying anchors in real questions | Pick the number/name keyword, find the paragraph, answer | 7.5 | Rebuilt 2026-10-03: 10 rounds -> 5 (3 required), new text SCHOOLS ON THE WATER, no true/false rounds. Unplayed |
 | l06 | Answering the opposite on NOT questions | Spot negation words and flip the task | 6.5 | Same drill template |
@@ -77,6 +77,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 - **Question mistakes (2):** n-b46b7e2b round 3 now asks about the *unhappy* shop owners; practice exam 1 Q2 no longer gives away Q3; sentence completion ignores punctuation and and/or/the/a (shared `isSentenceCompletionMatch`), so "books, signs, screens" passes; yes-no mark-word says "opinion", not "agreement"; in-addition round 1 Q2 rewritten so only "In addition" fits.
 - **Run-together writing lines (6):** yes-no, topic-vacation and topic-cellphone openings split into lines; em-dashes removed there; in-addition "סיבה 1 / סיבה 2" split.
+- **Reading rollout (7), method lessons l01-l03:** question pattern, true/false rounds removed; l03's bold `**I **` markers fixed, and run-together preface lines fixed in l02 and l03.
 - **Reading rollout (7), pair 2 of 5 - numbers/names:** l04 and numbers-names-q follow the reading round pattern.
 - **Dropped: QC 2.3 point 9 (vocab skip check).** Vocabulary is optional - students can go straight to reading - so a skip check adds nothing.
 - **Reading rollout (7), pair 1 of 5 - most/only:** l07 and limiters-q follow the reading round pattern. The rule now separates "the most / the only / the main" (one answer) from "most + noun" (majority), which also closes bad point 3 for limiters-q.
@@ -152,7 +153,7 @@ P3, easy distractors (same day):
 
 ## Still open
 
-- QC 2.3 point 7, remaining: l01-l03 (method lessons), then l09-l12 (answer-type lessons).
+- QC 2.3 point 7, remaining: l09-l12 (answer-type lessons).
 - Rework the opener of not-q (typo, repeated card).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
 - Link reading and writing: one screen in each Part C connector lesson.

@@ -180,6 +180,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "מפת הדרכים",
     titleEn: "The Road Map",
     required: ["l00"],
+    requiredRounds: 3,
     position: { x: 70, y: 660 },
     big: false,
     content: {
@@ -242,18 +243,36 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
+            { type: "preface", text: "מפת הדרכים = כותרת + פסקה 1. היא אומרת לכם על מה הטקסט ולאן הוא הולך - לפני שנוגעים בשאלות." },
+            {
+              type: "mcq",
+              prompt: "מה קוראים כדי לבנות את מפת הדרכים?",
+              options: ["את כל הטקסט", "כותרת + כל הפסקאות", "כותרת + פסקה 1 בלבד"],
+              correctIndex: 2,
+              explanation: "כותרת + פסקה 1 = 30 שניות. זה מספיק כדי לדעת את הנושא.",
+            },
+            {
+              type: "mcq",
+              prompt: "מה מפת הדרכים נותנת לכם?",
+              options: ["את כל התשובות לשאלות", "את הנושא והכיוון של הטקסט - כדי לא ללכת לאיבוד", "את התרגום של כל המילים הקשות"],
+              correctIndex: 1,
+              explanation: "המפה לא עונה על השאלות. היא נותנת נושא וכיוון - ואז יודעים איפה אנחנו.",
+            },
+            {
+              type: "mcq",
+              prompt: "קראו את הכותרת: \"THE RETURN OF THE TREES\". על מה הטקסט?",
+              options: ["על בניינים בעיר", "על עצים שחוזרים ונשתלים", "על בעלי חיים בסכנה"],
+              correctIndex: 1,
+              explanation: "כותרת = נושא. THE RETURN OF THE TREES = עצים שחוזרים.",
+            },
+            { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
             {
               type: "passage-mcq",
               text: "THE CITY GARDEN PROJECT\n\nFive years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city.",
               questions: [
                 {
                   prompt: "קראו כותרת + פסקה 1 בלבד. על מה הטקסט?",
-                  options: [
-                    "על מחקר בבריאות",
-                    "על גינות בעיר ועל שינוי סביבתי",
-                    "על חינוך בבתי ספר",
-                    "על תחבורה ציבורית",
-                  ],
+                  options: ["על מחקר בבריאות", "על גינות בעיר ועל שינוי סביבתי", "על חינוך בבתי ספר", "על תחבורה ציבורית"],
                   correctIndex: 1,
                 },
               ],
@@ -262,32 +281,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?",
-            },
+            { type: "preface", text: "YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?" },
             {
               type: "passage-mcq",
               text: "LEARNING TO SWIM AS AN ADULT\n\nLearning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
               questions: [
                 {
                   prompt: "על מה הטקסט?",
-                  options: [
-                    "ילדים שלומדים לשחות",
-                    "בריכות שחייה בערים גדולות",
-                    "מבוגרים שלומדים לשחות",
-                    "סקר על ערים גדולות",
-                  ],
+                  options: ["ילדים שלומדים לשחות", "בריכות שחייה בערים גדולות", "מבוגרים שלומדים לשחות", "סקר על ערים גדולות"],
                   correctIndex: 2,
                 },
                 {
                   prompt: "אילו מילים בפסקה נתנו לכם את התשובה?",
-                  options: [
-                    '"adults" ו-"cannot swim"',
-                    '"survey" ו-"cities"',
-                    '"experts" ו-"late"',
-                    '"many people" ו-"think"',
-                  ],
+                  options: ["\"adults\" ו-\"cannot swim\"", "\"survey\" ו-\"cities\"", "\"experts\" ו-\"late\"", "\"many people\" ו-\"think\""],
                   correctIndex: 0,
                 },
               ],
@@ -295,66 +301,72 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה."'],
+              lines: ["\"30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה.\""],
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: 30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה.",
-            },
-            {
-              type: "mcq",
-              prompt: 'קראו את הכותרת: "THE RETURN OF THE TREES". על מה הטקסט?',
-              options: [
-                "על בניינים בעיר",
-                "על עצים שחוזרים ונשתלים",
-                "על בעלי חיים בסכנה",
+              type: "passage-mcq",
+              text: "**THE CITY GARDEN PROJECT**\n\nI  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener,\" she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph I?",
+                  options: ["Greenville was always a green city", "Greenville University planted the trees", "A charity made Greenville greener", "The air in Greenville is still polluted"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "What problem did Greenville have five years ago?",
+                  options: ["It had too many tourists", "It had almost no plants or trees, and the air was polluted", "It had no university", "Its gardens were too expensive"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "Who is the person behind the change?",
+                  options: ["Professor James Lee", "A local charity worker", "The mayor of Greenville", "Dr. Maria Santos"],
+                  correctIndex: 3,
+                },
+                {
+                  prompt: "What is the text mainly about?",
+                  options: ["How a city became greener, and what changed", "Why trees are expensive", "How to build a park", "Stress in big cities"],
+                  correctIndex: 0,
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                "כותרת = נושא. THE RETURN OF THE TREES = עצים שחוזרים.",
             },
             {
-              type: "mcq",
-              prompt: "מה קוראים כדי לבנות את מפת הדרכים?",
-              options: [
-                "את כל הטקסט",
-                "כותרת + כל הפסקאות",
-                "כותרת + פסקה 1 בלבד",
+              type: "passage-mcq",
+              text: "**THE COMEBACK OF BOARD GAMES**\n\nI  Twenty years ago, many people thought board games would disappear. Children spent their free time on computers and phones, and toy shops had fewer games on their shelves every year. Today, however, board games are more popular than ever.\n\nII  According to a report from 2023, sales of board games have grown by 25% in five years. Board game cafes, where people pay to play with friends, have opened in many cities. \"People are tired of screens,\" says cafe owner Daniel Ortiz. \"They want to sit around a table and laugh together.\"\n\nIII  Teachers have noticed the change too. Some schools now use board games in maths and language lessons. Research shows that students who play strategy games learn to plan ahead and make better decisions.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph I?",
+                  options: ["Children prefer computers to board games", "Board games did not disappear - they are popular again", "Toy shops are closing", "Board games were invented twenty years ago"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "What is the text mainly about?",
+                  options: ["Board game cafes in big cities", "Why people are tired of screens", "Board games becoming popular again", "Using games in maths lessons"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Daniel Ortiz, why do people come to play board games?",
+                  options: ["Because games are cheap", "Because schools use them", "Because sales grew by 25%", "Because they are tired of screens"],
+                  correctIndex: 3,
+                },
               ],
-              correctIndex: 2,
-              explanation: "כותרת + פסקה 1 = 30 שניות. זה מספיק.",
-            },
-            {
-              type: "mcq",
-              prompt: "מפת הדרכים נותנת לכם את כל התשובות לשאלות.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                "שקר. המפה נותנת רק את הנושא הכללי - מספיק כדי לא להיות אבודים.",
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nעוד מפה על טקסט מוכר." },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
               questions: [
                 {
                   prompt: "על מה הטקסט?",
-                  options: [
-                    "על זיהום אוויר בערים",
-                    "על פרויקט נטיעת עצים באפריקה",
-                    "על כריתת יערות בעולם",
-                  ],
+                  options: ["על זיהום אוויר בערים", "על פרויקט נטיעת עצים באפריקה", "על כריתת יערות בעולם"],
                   correctIndex: 1,
                 },
               ],
@@ -365,48 +377,21 @@ export const c1Lessons: LessonNode[] = [
               prompt: "השלימו: הטקסט הזה הוא על ___________ ב-___________.",
               modelAnswer: "על נטיעת עצים וגינות (שינוי ירוק) בעיר Greenville.",
             },
-            {
-              type: "mcq",
-              prompt: "כדאי לקרוא את פסקה 1 גם אם כבר קראתם את הכותרת.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation:
-                "נכון. כותרת = נושא, פסקה 1 = פרטים. ביחד מפה טובה יותר.",
-            },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"LEARNING TO SWIM AS AN ADULT - I Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim. II One study found that adults who learned later often became stronger swimmers."\n\nמה נכלל במפת הדרכים?',
-              options: [
-                "הכותרת + פסקה I בלבד",
-                "הכותרת + פסקה II",
-                "כל הפסקאות",
-                "רק המשפט האחרון",
-              ],
-              correctIndex: 0,
-              explanation:
-                "כותרת: LEARNING TO SWIM AS AN ADULT. פסקה I בלבד - שני המשפטים הראשונים.",
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
-              prompt:
-                "על סמך הכותרת ופסקה 1 שלמעלה - על מה הטקסט? ענו במשפט אחד.",
+              text: "LEARNING TO SWIM AS AN ADULT\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim.",
+              prompt: "על סמך הכותרת ופסקה I - על מה הטקסט? ענו במשפט אחד.",
               modelAnswer: "הטקסט על מבוגרים שלומדים לשחות.",
             },
             {
               type: "self-check",
-              prompt:
-                "כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?",
-              modelAnswer:
-                '30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות "עיוור".',
+              prompt: "כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?",
+              modelAnswer: "30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות \"עיוור\".",
             },
           ],
         },
@@ -419,6 +404,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "שיטת הרמזור",
     titleEn: "Traffic Light",
     required: ["l01"],
+    requiredRounds: 3,
     position: { x: 100, y: 780 },
     big: false,
     content: {
@@ -433,7 +419,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'הסיטואציה הזאת קורית כמעט בכל מבחן:\n\nתלמיד מגיע לשאלה 3 ומרים יד.\nאני, המורה, שואל:**"מה הבעיה?"**\nוהוא אומר:**"אני לא מוצא את התשובה."**\nאני שואל:**"אתה מבין מה השאלה מבקשת?"**\nוהתשובה היא:**"כן... נראה לי."**\nאז אני תמיד עונה:\n**"תסביר לי בעברית מה אתה צריך למצוא."**\nהוא לא יודע להסביר ומתברר שהבעיה היא בכלל לא בטקסט.\nהוא עדיין לא הבין את השאלה.\nלכן הכלל שלנו פשוט:\n**אם אתם לא יודעים להסביר בעברית מה השאלה רוצה - עדיין לא מתחילים לחפש את התשובה.**',
+          text: 'הסיטואציה הזאת קורית כמעט בכל מבחן:\n\nתלמיד מגיע לשאלה 3 ומרים יד.\nאני, המורה, שואל: **"מה הבעיה?"**\nוהוא אומר: **"אני לא מוצא את התשובה."**\nאני שואל: **"אתה מבין מה השאלה מבקשת?"**\nוהתשובה היא:**"כן... נראה לי."**\nאז אני תמיד עונה:\n**"תסביר לי בעברית מה אתה צריך למצוא."**\nהוא לא יודע להסביר ומתברר שהבעיה היא בכלל לא בטקסט.\nהוא עדיין לא הבין את השאלה.\nלכן הכלל שלנו פשוט:\n**אם אתם לא יודעים להסביר בעברית מה השאלה רוצה - עדיין לא מתחילים לחפש את התשובה.**',
         },
         {
           type: "preface",
@@ -449,7 +435,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4**מה לחפש?** → סיבה**למה?** → לירידה במספר בעלי החיים**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
+          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4\n**מה לחפש?** → סיבה\n**למה?** → לירידה במספר בעלי החיים\n**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
         },
         {
           type: "preface",
@@ -607,6 +593,22 @@ export const c1Lessons: LessonNode[] = [
               correctIndex: 2,
             },
             {
+              type: "passage-mcq",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              questions: [
+                {
+                  prompt: "השאלה: \"According to Dr. Okafor, what is one benefit of volunteering for teenagers?\" - המילה benefit לא מוכרת לכם. מה הצבע?",
+                  options: ["🟢 ירוק - עונים מיד", "🟡 צהוב - בודקים benefit במילון, ורק אז מחפשים", "🔴 אדום - מדלגים על השאלה"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "benefit = יתרון. מה התשובה?",
+                  options: ["All types of volunteering produce the same results", "They meet the people they help", "They feel less stressed", "They study for ten years"],
+                  correctIndex: 2,
+                },
+              ],
+            },
+            {
               type: "summary",
               title: "ONE SENTENCE",
               lines: ['"לא ירוק - מילון 30 שניות. עדיין לא? M ועוברים."'],
@@ -615,56 +617,72 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 1 🌱\nקל. חזרה על המושגים.\n\n📌 זכור: לא ירוק - לא עונים.",
-            },
-            {
-              type: "mcq",
-              prompt: '"What do we learn from paragraph I?" - מה הצבע שלכם?',
-              options: [
-                "🔴 אדום - לא מבין",
-                "🟡 צהוב - מבין חלקית",
-                '🟢 ירוק - "מה לומדים מפסקה 1?"',
+              type: "passage-mcq",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              questions: [
+                {
+                  prompt: "השאלה: \"According to the survey, what proportion of adults in large cities cannot swim?\" - המילה proportion לא ברורה. מה הצבע?",
+                  options: ["🟢 ירוק - עונים מיד", "🟡 צהוב - בודקים proportion במילון, ורק אז מחפשים", "🔴 אדום - מדלגים"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "proportion = חלק / שיעור. מה התשובה?",
+                  options: ["Over 30%", "Most of them", "Three sessions a week", "Less than two months"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "According to Dr. Klein, what are adults not afraid of?",
+                  options: ["Deep water", "Making mistakes", "Asking questions", "Swimming with children"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to instructors, how long does it usually take adults who practice regularly to make good progress?",
+                  options: ["More than a year", "Less than two months", "One week", "Three sessions"],
+                  correctIndex: 1,
+                },
               ],
-              correctIndex: 2,
-              explanation: '🟢 ירוק. "מה לומדים מפסקה 1?" - ברור. עונים.',
             },
             {
-              type: "mcq",
-              prompt: '"What does visible mean?" - מה הצבע שלכם?',
-              options: [
-                "🟢 ירוק - ברור",
-                "🟡 צהוב - המילה visible לא ברורה ← מילון",
-                "ממשיכים בלי לבדוק",
+              type: "passage-mcq",
+              text: "**SLEEPING IN SPACE**\n\nI  Astronauts on the International Space Station see the sun rise and set 16 times every day. Because of this, their bodies often lose track of time, and many of them find it hard to fall asleep.\n\nII  To deal with this problem, the station uses special lights. In the evening, the lights become warmer and softer, which helps the astronauts feel tired. According to Dr. Laura Kim, a sleep researcher, astronauts who use the new lights sleep about 40 minutes longer each night.\n\nIII  Sleeping without gravity is also strange. Astronauts sleep in small bags attached to the wall, so they do not float around and hit anything. Many say that after a few weeks, it feels surprisingly comfortable.",
+              questions: [
+                {
+                  prompt: "השאלה: \"What do astronauts do to avoid floating around while they sleep?\" - המילה avoid לא ברורה. מה עושים?",
+                  options: ["מנחשים לפי המילה sleep", "avoid = להימנע. בודקים, ורק אז מחפשים", "מוותרים על השאלה"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "What do astronauts do to avoid floating around while they sleep?",
+                  options: ["They take sleeping pills", "They turn off the lights", "They sleep in small bags attached to the wall", "They sleep for 40 minutes"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Dr. Laura Kim, how much longer do astronauts sleep with the new lights?",
+                  options: ["About 16 minutes", "About 40 minutes", "A few weeks", "Twice as long"],
+                  correctIndex: 1,
+                },
               ],
-              correctIndex: 1,
-              explanation:
-                "visible לא ברור ← מילון, 30 שניות. לא עונים לפני שירוקים.",
-            },
-            {
-              type: "mcq",
-              prompt: "צהוב זה בסדר. אפשר לענות.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation: "שקר. צהוב = עדיין לא ברור. רק ירוק = עונים.",
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nצבע לכל שאלה." },
             {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעכשיו על שאלות אמיתיות.",
+              type: "mcq",
+              prompt: "\"What do we learn from paragraph I?\" - מה הצבע שלכם?",
+              options: ["🔴 אדום - לא מבין", "🟡 צהוב - מבין חלקית", "🟢 ירוק - \"מה לומדים מפסקה 1?\""],
+              correctIndex: 2,
+              explanation: "🟢 ירוק. \"מה לומדים מפסקה 1?\" - ברור. עונים.",
             },
             {
               type: "mcq",
-              prompt:
-                'איזו שאלה היא 🟡 צהוב - כלומר דורשת מילון?\n\n1. "According to Dr. Diallo, why do trees die?"\n2. "What does contribute mean in paragraph II?"\n3. "Give ONE answer from paragraph III."',
+              prompt: "איזו שאלה היא 🟡 צהוב - כלומר דורשת מילון?\n\n1. \"According to Dr. Diallo, why do trees die?\"\n2. \"What does contribute mean in paragraph II?\"\n3. \"Give ONE answer from paragraph III.\"",
               options: ["שאלה 1", "שאלה 2", "שאלה 3", "כל השלוש"],
               correctIndex: 1,
-              explanation:
-                'according to + why = ירוק. "give ONE answer" = ירוק. מילה לא מוכרת בשאלה = צהוב ← מילון.',
+              explanation: "according to + why = ירוק. \"give ONE answer\" = ירוק. מילה לא מוכרת בשאלה = צהוב ← מילון.",
             },
             {
               type: "mcq",
@@ -673,42 +691,27 @@ export const c1Lessons: LessonNode[] = [
               correctIndex: 1,
               explanation: "מקסימום 30 שניות. לא מצאתם? M קטן ועוברים הלאה.",
             },
-            {
-              type: "mcq",
-              prompt:
-                '"give ONE answer" = ירוק - כי אפשר להסביר את השאלה בעברית במשפט אחד.',
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation: 'נכון. "תנו תשובה אחת מהטקסט" - ברור. ירוק.',
-            },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "mcq",
-              prompt:
-                'אילו שאלות דורשות מילון?\n\n1. "What do we learn from paragraph I?"\n2. "What does environmentalists mean?"\n3. "According to Dr. Klein, give ONE reason."\n4. "How did the phenomenon affect students?"\n5. "Give TWO answers from paragraph III."',
+              prompt: "אילו שאלות דורשות מילון?\n\n1. \"What do we learn from paragraph I?\"\n2. \"What does environmentalists mean?\"\n3. \"According to Dr. Klein, give ONE reason.\"\n4. \"How did the phenomenon affect students?\"\n5. \"Give TWO answers from paragraph III.\"",
               options: ["1 ו-3", "2 ו-4", "3 ו-5", "כולן"],
               correctIndex: 1,
-              explanation:
-                "environmentalists ו-phenomenon אינן ברורות ← מילון. השאר ירוקות.",
+              explanation: "environmentalists ו-phenomenon אינן ברורות ← מילון. השאר ירוקות.",
             },
             {
               type: "self-check",
-              prompt:
-                "מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.",
+              prompt: "מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.",
               modelAnswer: "רק ירוק = עונה. צהוב מרגיש כמו ירוק - אבל הוא לא.",
             },
             {
               type: "self-check",
-              prompt: 'תלמיד קרא שאלה, "הבין", ענה - וקיבל 0. מה כנראה קרה?',
-              modelAnswer:
-                "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
+              prompt: "תלמיד קרא שאלה, \"הבין\", ענה - וקיבל 0. מה כנראה קרה?",
+              modelAnswer: "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
             },
           ],
         },
@@ -721,6 +724,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "P1 - ניווט בטקסט",
     titleEn: "P1 Navigation",
     required: ["l02"],
+    requiredRounds: 3,
     position: { x: 10, y: 900 },
     big: true,
     content: {
@@ -743,29 +747,46 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA - Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב - לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה**local people** = אנשים מקומיים**are involved** = משתתפים / מעורבים**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n",
+          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA - Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב - לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה\n**local people** = אנשים מקומיים\n**are involved** = משתתפים / מעורבים\n**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n",
         },
         {
           type: "preface",
-          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורביםמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n85% of the trees survive.\n\nשימו לב:בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
+          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורבים\nמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n85% of the trees survive.\n\nשימו לב: בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
         },
       ],
       rounds: [
         {
           screens: [
+            { type: "preface", text: "P1 = שאלה ← מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה. לא קוראים את כל הטקסט." },
+            {
+              type: "mcq",
+              prompt: "\"According to Dr. Diallo, why do most trees die?\" - מהי מילת המפתח?",
+              options: ["\"why\"", "\"Dr. Diallo\" / \"trees die\"", "\"According\""],
+              correctIndex: 1,
+              explanation: "\"Dr. Diallo\" ו-\"trees die\" הן מה שמחפשים בטקסט. \"why\" ו-\"according\" הן מילות שאלה.",
+            },
+            {
+              type: "mcq",
+              prompt: "מהו הסדר הנכון של חמשת שלבי P1?",
+              options: ["קרא השאלה ← מצא מילת מפתח ← אתר בטקסט ← קרא את המשפט ← ענה", "קרא את הטקסט ← קרא השאלה ← ענה ← בדוק ← סיים", "מצא מילת מפתח ← קרא השאלה ← ענה ← אתר בטקסט ← קרא", "קרא השאלה ← ענה ← אתר בטקסט ← קרא את המשפט ← בדוק"],
+              correctIndex: 0,
+              explanation: "1-קרא השאלה · 2-מילת מפתח · 3-אתר בטקסט · 4-קרא את המשפט · 5-ענה.",
+            },
+            {
+              type: "mcq",
+              prompt: "בשלב 4 של P1 - מה קוראים?",
+              options: ["את כל הפסקה", "את המשפט עם מילת המפתח, ואולי את זה שלפניו או אחריו", "את כל הטקסט מההתחלה"],
+              correctIndex: 1,
+              explanation: "קוראים רק את האזור של מילת המפתח. שם נמצאת התשובה.",
+            },
+            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית - שלב אחרי שלב." },
             {
               type: "passage-mcq",
-              text: '**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\n**II**  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\n**III**  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
               questions: [
                 {
-                  prompt:
-                    "השאלה: What do we learn from paragraph I about the Green Africa project? - מהי מילת המפתח?",
-                  options: [
-                    "forests",
-                    "Green Africa",
-                    "However",
-                    "scientists say",
-                  ],
+                  prompt: "השאלה: What do we learn from paragraph I about the Green Africa project? - מהי מילת המפתח?",
+                  options: ["forests", "Green Africa", "However", "scientists say"],
                   correctIndex: 1,
                 },
                 {
@@ -775,12 +796,7 @@ export const c1Lessons: LessonNode[] = [
                 },
                 {
                   prompt: "מה התשובה?",
-                  options: [
-                    "It teaches local people how to care for trees",
-                    "It has already planted over 200 million trees in 15 countries",
-                    "It made rivers in Kenya flow again",
-                    "It reduced carbon by 15%",
-                  ],
+                  options: ["It teaches local people how to care for trees", "It has already planted over 200 million trees in 15 countries", "It made rivers in Kenya flow again", "It reduced carbon by 15%"],
                   correctIndex: 1,
                 },
               ],
@@ -789,10 +805,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)",
-            },
+            { type: "preface", text: "YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)" },
             {
               type: "mcq",
               prompt: "שלב 2 - מהי מילת המפתח שתחפשו בטקסט?",
@@ -801,127 +814,66 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**III ** The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
               prompt: "שלב 5 - כתבו את התשובה במילים של הטקסט.",
               modelAnswer: "The number of birds increased by 60%.",
             },
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"הטקסט קשה? לא מבין? - P1 עדיין עובד. מחפש, לא קורא."'],
+              lines: ["\"הטקסט קשה? לא מבין? - P1 עדיין עובד. מחפש, לא קורא.\""],
             },
           ],
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "**PRACTICE · Round 1 🌱**\n\nמתחילים בקל.\n\n📌 **מה עושים?**\n\n**קוראים את השאלה → מסמנים מילת מפתח → מוצאים אותה בטקסט → קוראים את המשפטים לידה → עונים.**",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"According to Dr. Diallo, why do most trees die?" - מהי מילת המפתח?',
-              options: ['"why"', '"Dr. Diallo" / "trees die"', '"According"'],
-              correctIndex: 1,
-              explanation:
-                '"Dr. Diallo" ו-"trees die" הן מה שמחפשים בטקסט. "why" ו-"according" הן מילות שאלה.',
-            },
-            {
-              type: "mcq",
-              prompt: "מהו הסדר הנכון של חמשת שלבי P1?",
-              options: [
-                "קרא השאלה ← מצא מילת מפתח ← אתר בטקסט ← קרא את המשפט ← ענה",
-                "קרא את הטקסט ← קרא השאלה ← ענה ← בדוק ← סיים",
-                "מצא מילת מפתח ← קרא השאלה ← ענה ← אתר בטקסט ← קרא",
-                "קרא השאלה ← ענה ← אתר בטקסט ← קרא את המשפט ← בדוק",
-              ],
-              correctIndex: 0,
-              explanation:
-                "1-קרא השאלה · 2-מילת מפתח · 3-אתר בטקסט · 4-קרא את המשפט · 5-ענה.",
-            },
-            {
-              type: "mcq",
-              prompt: "בשלב 4 של P1 קוראים את כל הפסקה.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 1,
-              explanation:
-                "שקר. קוראים רק את המשפט שמכיל את מילת המפתח, ואולי את זה שלפניו או אחריו.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                '"What happened to rivers in Kenya? (paragraph III)" - מהי מילת המפתח, ובאיזו פסקה?',
-              options: [
-                "What - פסקה I",
-                "Kenya - פסקה III",
-                "rivers - פסקה II",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"Kenya" - שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.',
-            },
-            {
-              type: "self-check",
-              text: '**II ** "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
-              prompt:
-                'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" - מילת מפתח, פסקה, ותשובה.',
-              modelAnswer:
-                "מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.",
-            },
-            {
-              type: "mcq",
-              prompt: "P1 עובד גם כשהטקסט קשה מאוד ולא מבינים אותו.",
-              options: ["✅ נכון", "❌ לא נכון"],
-              correctIndex: 0,
-              explanation:
-                "נכון. P1 הוא חיפוש, לא הבנה - מחפשים מילת מפתח בלי קשר לקושי.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "PRACTICE · Round 3 💎\nרמת בחינה. ללא עזרה.",
-            },
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. שימו לב: לפעמים בטקסט כתובה מילה אחרת מזו שבשאלה, עם אותה משמעות." },
             {
               type: "passage-mcq",
-              text: '**I**  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n\n**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\n**III**  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.',
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
               questions: [
                 {
-                  prompt:
-                    '"When did scientists start the project?" - באיזה שלב של P1 מוצאים את "2019"?',
-                  options: [
-                    "שלב 1 - קריאת השאלה",
-                    "שלב 3 - איתור בטקסט",
-                    "שלב 5 - כתיבת התשובה",
-                  ],
+                  prompt: "According to Dr. Diallo, why do most trees die?",
+                  options: ["Because of fire and farming", "Because nobody looks after them", "Because it does not rain", "Because they are planted too late"],
                   correctIndex: 1,
+                },
+                {
+                  prompt: "What happened to the rivers in Kenya?",
+                  options: ["They dried up", "They flooded villages", "They began to flow again", "They became cleaner"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "How many trees has the project planted so far?",
+                  options: ["One billion", "85%", "15", "Over 200 million"],
+                  correctIndex: 3,
+                },
+                {
+                  prompt: "What happens when local people are involved?",
+                  options: ["85% of trees survive", "The number of birds increases by 60%", "Trees grow faster", "Carbon goes down by 15%"],
+                  correctIndex: 0,
                 },
               ],
             },
             {
-              type: "self-check",
-              text: '**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
-              prompt:
-                "השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.",
-              modelAnswer:
-                'מילת השאלה: why = מחפשים סיבה.\nמילות מפתח: Dr. Diallo, die.\nאיפה: פסקה II.\nהמשפט: "most trees die because nobody looks after them".\nתשובה: Because nobody looks after them.',
-            },
-            {
-              type: "self-check",
-              prompt: "הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?",
-              modelAnswer:
-                "כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.",
+              type: "passage-mcq",
+              text: "**BEES IN THE CITY**\n\nI  Bees are disappearing from many parts of the world. Farmers need them, because bees carry pollen from flower to flower and help fruit and vegetables grow. Without bees, many foods would become rare and expensive.\n\nII  In 2019, the city of Utrecht in the Netherlands found a simple way to help. It turned the roofs of more than 300 bus stops into small gardens full of flowers. \"The bees love them,\" says city gardener Lotte Visser. \"And the plants also keep the bus stops cooler in summer.\"\n\nIII  Other cities have copied the idea. London and Toronto are now testing green roofs on their own bus stops. Scientists believe that cities, with their parks and gardens, could become safe homes for bees in the future.",
+              questions: [
+                {
+                  prompt: "According to Lotte Visser, what else do the plants do?",
+                  options: ["They make honey", "They bring tourists", "They keep the bus stops cooler in summer", "They help fruit grow"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "Why do farmers need bees?",
+                  options: ["Because bees make food cheaper", "Because bees help fruit and vegetables grow", "Because bees keep other insects away", "Because bees live on bus stops"],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "Which cities are trying the same idea?",
+                  options: ["London and Toronto", "Utrecht and London", "Toronto and Utrecht", "All cities in the Netherlands"],
+                  correctIndex: 0,
+                },
+              ],
             },
           ],
         },
@@ -929,7 +881,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "המרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.",
+              text: "תרגול נוסף ⏱️ (רשות)\nהמרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.",
             },
             {
               type: "preface",
@@ -956,7 +908,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "## **🔍 דרך ב׳: מחפשים חכם**\n\nאל תקראו את כל הטקסט מההתחלה. מתחילים ב־**שאלה**.\nואז עובדים לפי המסלול:\n\n🟦 **מילת מפתח**↓🟨 **איתור בטקסט**↓🟩 **קריאת המשפט הרלוונטי**↓✅ **תשובה**\nהמטרה היא לא לקרוא יותר.\n\nהמטרה היא **למצוא מהר יותר את מה שבאמת צריך**.\n\n⏱️ **מוכנים? **השעון מתחיל ברגע שהמסך הבא נפתח.",
+              text: "## **🔍 דרך ב׳: מחפשים חכם**\n\nאל תקראו את כל הטקסט מההתחלה. מתחילים ב־**שאלה**.\nואז עובדים לפי המסלול:\n\n🟦 **מילת מפתח**\n↓\n🟨 **איתור בטקסט**\n↓\n🟩 **קריאת המשפט הרלוונטי**\n↓\n✅ **תשובה**\nהמטרה היא לא לקרוא יותר.\n\nהמטרה היא **למצוא מהר יותר את מה שבאמת צריך**.\n\n⏱️ **מוכנים? **השעון מתחיל ברגע שהמסך הבא נפתח.",
             },
             {
               type: "passage-mcq",
@@ -981,6 +933,40 @@ export const c1Lessons: LessonNode[] = [
               title:
                 "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.\n\nקודם מבינים **מה השאלה מבקשת**.\nאחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.\nמוצאים את המקום המתאים בטקסט, קוראים את המשפטים סביבו ורק אז עונים.\n📌 זכרו:\n**שאלה → מילת מפתח → חיפוש בטקסט → קריאה → תשובה**",
               lines: [],
+            },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nP1 על טקסטים מוכרים." },
+            {
+              type: "mcq",
+              prompt: "\"What happened to rivers in Kenya? (paragraph III)\" - מהי מילת המפתח, ובאיזו פסקה?",
+              options: ["What - פסקה I", "Kenya - פסקה III", "rivers - פסקה II"],
+              correctIndex: 1,
+              explanation: "\"Kenya\" - שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.",
+            },
+            {
+              type: "self-check",
+              text: "II  \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein.",
+              prompt: "מלאו את P1 לשאלה \"According to Dr. Klein, how did adults improve?\" - מילת מפתח, פסקה, ותשובה.",
+              modelAnswer: "מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.",
+            },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nכל חמשת השלבים, במילים שלכם." },
+            {
+              type: "self-check",
+              text: "II  The project is led by Dr. Amara Diallo. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them.",
+              prompt: "השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.",
+              modelAnswer: "מילת השאלה: why = מחפשים סיבה.\nמילות מפתח: Dr. Diallo, die.\nאיפה: פסקה II.\nהמשפט: \"most trees die because nobody looks after them\".\nתשובה: Because nobody looks after them.",
+            },
+            {
+              type: "self-check",
+              prompt: "הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?",
+              modelAnswer: "כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.",
             },
           ],
         },
