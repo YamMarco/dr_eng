@@ -1893,7 +1893,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "most / only - תשובה אחת",
     titleEn: "Key Limiters",
     required: ["l03"],
-    requiredRounds: 5,
+    requiredRounds: 4,
     position: { x: 100, y: 1020 },
     big: false,
     content: {
@@ -2048,52 +2048,42 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 'most + שם עצם = רוב. רק "the most" (הכי) מבקש דבר אחד. "all" = כולם, וזה כבר יותר מרוב.',
             },
+            { type: "preface", text: "זהירות ממילים שנראות כמו הגבלה: almost ו-everyone הן לא מילות הגבלה מהרשימה." },
             {
               type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only a few reach the highest level on ability alone. Most people just need practice, not natural talent.",
+              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              text: "Almost everyone in the class passed. Only a few students failed, and most of them took the test again. All of them passed the second time, says the teacher, who always gives extra help.",
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "הגבלה", color: "violet", indices: [0, 2, 10] },
+                { name: "הגבלה", color: "violet", indices: [6, 8, 12, 19, 30] },
               ],
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
             {
-              type: "preface",
-              text: "רמת בחינה. שני טקסטים. סמנו כל מילת הגבלה.",
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "Only two members of the committee supported the idea at first. All the others were against it, and most of them asked for another meeting before deciding.\n\nThe survey found that most students are satisfied with the new schedule, but only a few join the optional classes. It is always the same children who come every week.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
+              type: "passage-mcq",
+              label: "רמת בחינה",
+              timerKey: "hunt",
+              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
+              questions: [
                 {
-                  name: "הגבלה",
-                  color: "violet",
-                  indices: [0, 11, 18, 31, 40, 42, 49, 55],
+                  prompt: "According to Elena Russo, what is the main problem?",
+                  options: ["Moving bikes back to the right stations", "There are too few bikes", "The bikes are not safe", "Students do not use the bikes"],
+                  correctIndex: 0,
                 },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "The article claims that only rich countries can solve the problem, but most of the progress in recent years has come from small nations. Some of the poorest regions have cut pollution more than any wealthy state.\n\nDr. Mia Cohen argues that money is not everything. Every country has some power to act, she says, and only political will is truly required.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
                 {
-                  name: "הגבלה",
-                  color: "violet",
-                  indices: [4, 12, 24, 46, 49, 56],
+                  prompt: "Who is the biggest group of users?",
+                  options: ["Older people", "Shop owners", "Students", "Tourists"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "How much does it cost to use a bike?",
+                  options: ["Nothing", "Only one euro a day", "Six euros a week", "One euro an hour"],
+                  correctIndex: 1,
                 },
               ],
             },
@@ -2101,23 +2091,16 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מילת הגבלה - בדיוק כמו שתעשו לפני שאלה עם the most / the only בבחינה.",
-            },
+            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת הגבלה. השעון רץ - נסו לנצח את עצמכם." },
             {
               type: "mark-all",
-              instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "**THE FOUR-DAY WEEK**\n\nI  In 2022, the town of Westford tried a four-day school week. Students went to school from Monday to Thursday, and every Friday was free. Only three schools took part in the first year, but all of them reported good results.\n\nII  Most teachers liked the change. They said students came to class less tired and paid more attention. Some parents, however, were worried. Families with young children had to find someone to look after them on Fridays, and a few parents said they had to take a day off work every week.\n\nIII  The results surprised the researchers. Attendance went up in all three schools, and most students said they enjoyed school more. However, test scores did not always improve. In maths, only one school saw better results, while the other two stayed the same.\n\nIV  Dr. Hannah Webb, who studied the project, says the lesson is simple. \"A shorter week is not always better,\" she explains. \"It works only when schools plan the extra day carefully.\" In some schools, Friday became a day for clubs, sport and extra help, and these schools had the strongest results.\n\nV  Next year, five more schools will join the project. Few people in Westford want to go back to the old system, but the town says it will check the results again in 2027.",
+              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
               dir: "ltr",
+              timerKey: "sweep",
               correctIndices: [],
               categories: [
-                {
-                  name: "הגבלה",
-                  color: "violet",
-                  indices: [24, 28, 38, 45, 62, 83, 94, 106, 110, 122, 126, 157, 163, 172, 201],
-                },
+                { name: "הגבלה", color: "violet", indices: [15, 39, 45, 61, 65, 85, 95, 100, 105, 139, 154, 157, 189] },
               ],
             },
           ],
@@ -2254,53 +2237,28 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\\n\\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\\n\\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
               questions: [
                 {
-                  prompt: "According to paragraph III, where are adult swimming classes available today?",
-                  options: [
-                    "In all cities",
-                    "Only in large cities",
-                    "In most cities",
-                    "In a few cities",
-                  ],
-                  correctIndex: 2,
-                },
-                {
-                  prompt: "According to paragraph III, how often do some programs meet?",
-                  options: [
-                    "Three times a week",
-                    "Only once a week",
-                    "Every day",
-                    "Twice a month",
-                  ],
+                  prompt: "According to the city, how often are all the bikes checked?",
+                  options: ["Every day", "Every week", "Only once a year", "Every morning"],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to the instructors, which adults usually make good progress in less than two months?",
-                  options: [
-                    "All adults",
-                    "Adults in large cities",
-                    "Adults who learned as children",
-                    "Adults who practice regularly",
-                  ],
-                  correctIndex: 3,
+                  prompt: "What do most shop owners now say?",
+                  options: ["All of their customers come by car", "Most of their customers arrive by bike or on foot", "Only a few customers come by bike", "They are still worried"],
+                  correctIndex: 1,
                 },
                 {
-                  prompt: "According to paragraph I, how do many adults who cannot swim feel?",
-                  options: [
-                    "Embarrassed",
-                    "Afraid of the water",
-                    "Too old to learn",
-                    "Angry with their parents",
-                  ],
-                  correctIndex: 0,
+                  prompt: "How many trucks does Elena Russo say the city needs?",
+                  options: ["Two", "At least five", "Forty", "Six"],
+                  correctIndex: 1,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**THE TOOL LIBRARY**\n\nI  In 2020, a small group of neighbours in Lindale opened a library with no books. Instead, it lends tools: drills, ladders, garden tools and even sewing machines. Members pay only ten dollars a year, and they can borrow up to three tools every week.\n\nII  Most members are young families who cannot afford to buy expensive tools. According to the manager, Tom Reyes, the most popular item is the electric drill. \"Some people borrow a drill, use it for ten minutes, and bring it back the same day,\" he says.\n\nIII  The library is run by volunteers, and only two of them are paid. Mr. Reyes says the main problem is space: the library has more tools than shelves. Next year, it plans to move to a bigger building near the train station.",
+              text: "**THE TOOL LIBRARY**\n\nI  In 2020, a small group of neighbours in Lindale opened a library with no books. Instead, it lends tools: drills, ladders, garden tools and even sewing machines. Members pay only ten dollars a year, and they can borrow up to three tools every week.\n\nII  Most members are young families who cannot afford to buy expensive tools. According to the manager, Tom Reyes, the most popular item is the electric drill. \"Some people borrow a drill, use it for ten minutes, and bring it back the same day,\" he says.\n\nIII  The library is run by volunteers, and only two of them are paid. Mr. Reyes says the main problem is space: the library has more tools than shelves. Next year, it plans to move to a bigger building near the train station.\n\nIV  The idea is spreading. Since 2022, three more tool libraries have opened in nearby towns, and all of them use the same rules as Lindale. Mr. Reyes visits each new library to help the volunteers get started. \"Most people only need a ladder twice a year,\" he says. \"Why should every family buy one?\" He hopes that one day every town in the country will have a library like his.",
               questions: [
                 {
                   prompt: "According to paragraph II, what is the most popular item in the library?",
