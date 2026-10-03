@@ -979,7 +979,7 @@ export const c1Lessons: LessonNode[] = [
     titleHe: "מגנט לעין - מספרים ושמות",
     titleEn: "Eye Catcher: Numbers & Names",
     required: ["l03"],
-    requiredRounds: 5,
+    requiredRounds: 4,
     position: { x: -100, y: 1020 },
     big: false,
     content: {
@@ -1135,54 +1135,57 @@ export const c1Lessons: LessonNode[] = [
               correctIndex: 1,
               explanation: "שם בשאלה = כתובת. מוצאים את Dr. Santos, וקוראים רק את מה שהיא אמרה.",
             },
+            { type: "preface", text: "זהירות ממילים שנראות כמו שם: מילה עם אות גדולה בתחילת משפט (Last, Today, Most) היא לא שם." },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "Professor Elena Vasquez studied sleep patterns among teenagers for 9 years. She found that 45% of them sleep less than 7 hours a night.",
+              text: "Last year, a small club in Leeds had only 40 members. Today it has 140, says its manager, Sara Cohen. Most new members heard about it online.",
               dir: "ltr",
               correctIndices: [],
               categories: [
-                { name: "מספרים", color: "sky", indices: [9, 14, 20] },
-                { name: "שמות", color: "amber", indices: [0, 1, 2] },
+                { name: "מספרים", color: "sky", indices: [9, 14] },
+                { name: "שמות", color: "amber", indices: [6, 18, 19] },
               ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "רמת בחינה. שני טקסטים. סמנו כל מספר וכל שם פרטי." },
+            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
             {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "A survey from 2017 found that 42% of teenagers wish they had learned to code. Dr. Nadia Petrov, who has taught computer science for 11 years, says most beginners give up within the first 2 months.\n\nHer school changed its approach in 2020. Since then, 75% of students finish the course, and the number of graduates has grown from 60 to 480 a year.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [3, 6, 24, 34, 42, 45, 59, 61] },
-                { name: "שמות", color: "amber", indices: [15, 16, 17] },
-              ],
-            },
-            {
-              type: "mark-all",
-              instruction: "Mark every number and every proper name.",
-              text: "In 2014, only 200 families in the region of Kellwood had access to clean drinking water. An engineer, Priya Nair, led a project to build 18 new wells across the area.\n\nToday, according to local official Grace Whitman, over 14,000 people benefit from the new water system, and the project has expanded to 6 neighbouring villages.",
-              dir: "ltr",
-              correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [1, 3, 25, 39, 53] },
-                { name: "שמות", color: "amber", indices: [9, 18, 19, 36, 37] },
+              type: "passage-mcq",
+              label: "רמת בחינה",
+              timerKey: "hunt",
+              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
+              questions: [
+                {
+                  prompt: "How many villages does the bus visit every month?",
+                  options: ["50", "15", "26", "900"],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Dr. Pablo Ruiz's study, what happened to reading scores?",
+                  options: ["They went up by 18% in 2 years", "They went down by 18%", "They stayed the same", "They went up by 2% in 18 years"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What happened in 2023?",
+                  options: ["The bus added a section for adults", "The city of Granada gave the project a new bus", "Sofia Marin bought the bus", "Reading scores went up"],
+                  correctIndex: 1,
+                },
               ],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "טקסט באורך של כמעט מבחן. סורקים את כולו ומסמנים כל מספר וכל שם פרטי - בדיוק כמו שתעשו לפני שאלה עם מספר או שם בבחינה." },
+            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מספר וכל שם פרטי. השעון רץ - נסו לנצח את עצמכם." },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
               text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
               dir: "ltr",
+              timerKey: "sweep",
               correctIndices: [],
               categories: [
                 { name: "מספרים", color: "sky", indices: [6, 17, 37, 43, 47, 55, 63, 67, 130, 132, 141, 162, 178, 197, 200] },
@@ -1285,26 +1288,21 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף." },
             {
               type: "passage-mcq",
-              text: "I  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\\n\\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener,\" she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\\n\\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
+              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
               questions: [
                 {
-                  prompt: "How many trees did the charity plant?",
-                  options: ["15", "Over 2,000", "500,000", "85%"],
+                  prompt: "How much did Sofia Marin pay for the bus?",
+                  options: ["9,000 dollars", "12,000 dollars", "4,000 dollars", "40 dollars"],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to Dr. Santos, how much did the project cost?",
-                  options: ["Only 500,000 dollars", "Over 2,000 dollars", "More than similar projects", "It is not mentioned"],
+                  prompt: "According to Ms. Marin, what are the most popular books?",
+                  options: ["Comics and stories about animals", "Books for adults", "Science books", "Books about Granada"],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "According to Professor James Lee, what percentage of residents are satisfied with their city?",
-                  options: ["40%", "60%", "15%", "85%"],
-                  correctIndex: 3,
-                },
-                {
-                  prompt: "What did Greenville look like five years ago?",
-                  options: ["It had many parks", "It had almost no plants or trees", "It had 15 community gardens", "It was the greenest city in the area"],
+                  prompt: "Where does most of the money for fuel and repairs come from?",
+                  options: ["The city of Granada", "Local shops and families", "The University of Seville", "The children"],
                   correctIndex: 1,
                 },
               ],
