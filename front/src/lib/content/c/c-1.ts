@@ -3911,7 +3911,7 @@ export const c1Lessons: LessonNode[] = [
                 },
                 {
                   prompt:
-                    "According to paragraph III, what do some shop owners in the centre say?",
+                    "According to paragraph III, what do the unhappy shop owners in the centre say?",
                   options: [
                     "They lose customers to the market",
                     "The crowds help their business",

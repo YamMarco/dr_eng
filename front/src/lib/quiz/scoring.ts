@@ -5,6 +5,7 @@ import type { LessonScreen } from '$lib/lesson-screens/types';
 import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES } from '$lib/lesson-screens/types';
 import type { QuizNode } from './types';
 import { screensWithIds } from './screenIds';
+import { isSentenceCompletionMatch } from '$lib/lesson-screens/sentenceCompletion';
 
 export type Scored = {
 	earned: number;
@@ -43,8 +44,8 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 		}
 		case 'sentence-completion': {
 			const points = screen.points ?? 1;
-			const given = typeof userAnswer === 'string' ? normalize(userAnswer) : '';
-			const correct = given.length > 0 && screen.modelAnswers.some((m) => normalize(m) === given);
+			const correct =
+				typeof userAnswer === 'string' && isSentenceCompletionMatch(userAnswer, screen.modelAnswers);
 			return { earned: correct ? points : 0, max: points, auto: true };
 		}
 		case 'mark-word': {

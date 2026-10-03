@@ -6,6 +6,7 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import { isSentenceCompletionMatch } from './sentenceCompletion';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -32,14 +33,6 @@
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
 
-	function normalize(value: string) {
-		return value
-			.toLowerCase()
-			.replace(/[^a-z0-9\s]/g, ' ')
-			.replace(/\s+/g, ' ')
-			.trim();
-	}
-
 	let correct = $state(false);
 
 	$effect(() => {
@@ -55,8 +48,7 @@
 		}
 		if (!checked) {
 			if (!answer.trim()) return;
-			const given = normalize(answer);
-			correct = screen.modelAnswers.some((model) => normalize(model) === given);
+			correct = isSentenceCompletionMatch(answer, screen.modelAnswers);
 			recordAnswer(score!, correct);
 			checked = true;
 			label = i18n.dict.lesson.nextQuestionButton;

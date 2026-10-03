@@ -15,11 +15,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\n\nלא כתיב.לא דקדוק. **אלא לא לענות על השאלה.**\n\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n\n**YES — אני בעד.**או **NO — אני נגד.**\n\nתלמיד שכותב:\n**“Volunteering is good”**\n\n++עדיין לא באמת הביע דעה.++ הוא רק תיאר את הנושא.\nהמעריך בבחינת הבגרות רוצה לקרוא: \n\n**מה אתם חושבים?**\n\n**למה אתם חושבים כך?**\n",
+          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\n\nלא כתיב. לא דקדוק. **אלא לא לענות על השאלה.**\n\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n\n**YES - אני בעד.**\nאו\n**NO - אני נגד.**\n\nתלמיד שכותב:\n**“Volunteering is good”**\n\n++עדיין לא באמת הביע דעה.++ הוא רק תיאר את הנושא.\nהמעריך בבחינת הבגרות רוצה לקרוא: \n\n**מה אתם חושבים?**\n\n**למה אתם חושבים כך?**\n",
         },
         {
           type: "preface",
-          text: "זה המשפט הכי חשוב בתחילת הפסקה:\n\n✅ **I think teenagers should volunteer.**\nהמשפט **קצר**, **ברור**, והעמדה שלכם מובנת מיד.\nועכשיו טיפ חשוב מאוד:\n\n**במשימת דעה, אל תבזבזו זמן על:**\n**“רגע... אני בעד או נגד?”**\n\nאם אין לכם סיבה טובה לבחור אחרת — לכו על **דעה חיובית**.\nלמה?\n\nכי בדרך כלל הרבה יותר קל לחשוב על סיבות חיוביות:\n**It helps...****It improves.**..**..****It teaches...**\nלדוגמה:\n**I think teenagers should volunteer.**\nוזהו.\nבחרתם עמדה. ממשיכים.\n\n",
+          text: "זה המשפט הכי חשוב בתחילת הפסקה:\n\n✅ **I think teenagers should volunteer.**\nהמשפט **קצר**, **ברור**, והעמדה שלכם מובנת מיד.\n\nועכשיו טיפ חשוב מאוד:\n\n**במשימת דעה, אל תבזבזו זמן על:**\n**“רגע... אני בעד או נגד?”**\n\nאם אין לכם סיבה טובה לבחור אחרת - לכו על **דעה חיובית**.\nלמה?\n\nכי בדרך כלל הרבה יותר קל לחשוב על סיבות חיוביות:\n**It helps...**\n**It improves...**\n**It teaches...**\nלדוגמה:\n**I think teenagers should volunteer.**\nוזהו.\nבחרתם עמדה. ממשיכים.\n\n",
         },
         {
           type: "preface",
@@ -33,7 +33,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '### \n### בואו נעבו על עוד דוגמה:\n\n### 🟢 שלב 1 — מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 — לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת — לכו על **YES**.\n### 🟢 שלב 3 — כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
+                '### \n### בואו נעבור על עוד דוגמה:\n\n### 🟢 שלב 1 - מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער\n**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 - לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n### 🟢 שלב 3 - כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
@@ -58,7 +58,7 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. YES ו-NO שניהם מקבלים אותו ציון - חשוב רק שזה ברור.',
             },
-            { type: "preface", text: "לחצו על המילה שמבטאת הסכמה." },
+            { type: "preface", text: "לחצו על המילה שמבטאת דעה." },
             {
               type: "mark-word",
               sentence:
@@ -318,7 +318,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "❌ **I think students should volunteer because it teaches responsibility.**\n**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות — אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
+          text: "❌ **I think students should volunteer because it teaches responsibility.**\n**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות - אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות\n**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
         },
         {
           type: "summary",
@@ -352,7 +352,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '"I think the school day should start later because students need sleep. _______ studies show that tired students cannot focus."',
+                '"I think the school day should start later because students need more sleep. _______ there is less traffic on the roads later in the morning."',
               options: [
                 "Because",
                 "In conclusion",
@@ -361,7 +361,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 2,
               explanation:
-                '"In addition" = סיבה שנייה. "For example" מגיע כשמוסיפים פרט לסיבה קיימת, לא סיבה חדשה.',
+                'פחות פקקים זה רעיון חדש, לא קשור לשינה - לכן "In addition" (סיבה שנייה). "For example" מגיע כשמוסיפים פרט לסיבה קיימת, לא סיבה חדשה.',
             },
             {
               type: "mcq",
@@ -1029,7 +1029,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "🟦 שאלה שמתחילה ב־**What do you think...?**זו שאלה קצת שונה.היא לא שואלת:**YES או NO?**היא שואלת:**מה אתם חושבים שהאפשרות הטובה ביותר?**כלומר, צריך לעשות שני דברים:🟢 **1. לבחור דבר אחד ברור**🟢 **2. להסביר למה בחרתם בו**למשל:**What do you think is the best way to help teenagers study better?**אל תכתבו:❌ **There are many ways to help teenagers study.**זה לא נותן תשובה ברורה.במקום זה:✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**שימו לב:**the best way is...** = הבחירה שלי**because...** = הסיבה שלי⭐ הכלל:**What do you think...? → בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
+          text: "🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\nהיא לא שואלת: **YES או NO?**\nהיא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\nכלומר, צריך לעשות שני דברים:\n🟢 **1. לבחור דבר אחד ברור**\n🟢 **2. להסביר למה בחרתם בו**\n\nלמשל:\n**What do you think is the best way to help teenagers study better?**\n\nאל תכתבו:\n❌ **There are many ways to help teenagers study.**\nזה לא נותן תשובה ברורה.\n\nבמקום זה:\n✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\nשימו לב:\n**the best way is...** = הבחירה שלי\n**because...** = הסיבה שלי\n\n⭐ הכלל:\n**What do you think...? → בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
         },
         {
           type: "preface",
@@ -1342,11 +1342,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.למשל:**At what age...?**= **באיזה גיל?**🟢 במקרה כזה בוחרים **גיל אחד ברור**.לא כותבים:❌ **It depends.**❌ **Some say 10, others say 15.**בוחרים תשובה אחת:✅ **I think teenagers should start working at the age of 16.**ואז מסבירים **למה** בחרתם דווקא בגיל הזה.⭐ הכלל:**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
+          text: "יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.\n\nלמשל:\n**At what age...?** = **באיזה גיל?**\n\n🟢 במקרה כזה בוחרים **גיל אחד ברור**.\n\nלא כותבים:\n❌ **It depends.**\n❌ **Some say 10, others say 15.**\n\nבוחרים תשובה אחת:\n✅ **I think teenagers should start working at the age of 16.**\nואז מסבירים **למה** בחרתם דווקא בגיל הזה.\n\n⭐ הכלל:\n**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
         },
         {
           type: "preface",
-          text: "שימו לב:השאלה **לא** שואלת:❌ **Do you think children should have phones?**היא כבר מניחה שלילדים יהיה טלפון.היא שואלת רק:🟢 **מתי? באיזה גיל?**לכן אל תתחילו לכתוב:❌ **I think phones are dangerous for children.**זה לא עונה על השאלה.במקום זה:✅ **I think children should get their own phone at age 13 because...**⭐ הכלל: **השאלה שואלת מתי? → עונים בגיל.**לא משנים את השאלה לנושא אחר.",
+          text: "שימו לב: השאלה **לא** שואלת:\n❌ **Do you think children should have phones?**\nהיא כבר מניחה שלילדים יהיה טלפון.\n\nהיא שואלת רק:\n🟢 **מתי? באיזה גיל?**\n\nלכן אל תתחילו לכתוב:\n❌ **I think phones are dangerous for children.**\nזה לא עונה על השאלה.\n\nבמקום זה:\n✅ **I think children should get their own phone at age 13 because...**\n\n⭐ הכלל: **השאלה שואלת מתי? → עונים בגיל.**\nלא משנים את השאלה לנושא אחר.",
         },
         {
           type: "summary",

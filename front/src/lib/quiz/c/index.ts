@@ -57,12 +57,12 @@ export const cQuizzes: QuizNode[] = [
           {
             type: "mcq",
             paragraphRef: "II",
-            prompt: "According to paragraph II, what else can the glasses do?",
+            prompt: "According to paragraph II, how do the glasses help the user?",
             options: [
-              "They can take photos and save them.",
-              "They can read words from books and signs out loud.",
-              "They can connect to a phone.",
-              "They can help the user walk faster.",
+              "They take photos and save them.",
+              "They tell the user what the camera sees.",
+              "They connect the user to a phone.",
+              "They help the user walk faster.",
             ],
             correctIndex: 1,
             points: 8,
