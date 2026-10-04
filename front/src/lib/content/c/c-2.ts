@@ -856,6 +856,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "אולם, יש חדשות טובות.",
               hookHe:
                 "however = אולם. פנייה חדה: מה שלפניה הוא הרקע, ומה שאחריה הוא הנקודה.",
+              image: "/vocab-images/word-9711336f50.jpg",
             },
             {
               type: "mcq",
@@ -889,6 +890,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "למרות שירד גשם, הלכנו לפארק.",
               hookHe:
                 "although = למרות ש. בתוך משפט אחד יש שני חלקים שמנוגדים זה לזה.",
+              image: "/vocab-images/word-74688d5d1c.jpg",
             },
             {
               type: "mcq",
@@ -938,6 +940,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הפרויקט חוסך מים. בנוסף, הוא יוצר מקומות עבודה.",
               hookHe:
                 'in addition = בנוסף. עוד נקודה באותו כיוון, ולפעמים זו התשובה השנייה בשאלה של "give TWO".',
+              image: "/vocab-images/word-74688d5d1c.jpg",
             },
             {
               type: "mcq",
