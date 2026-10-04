@@ -882,6 +882,7 @@ export const c2Lessons: LessonNode[] = [
               explanation: "מה שאחרי however הוא הנקודה.",
             },
             { type: "spell-word", word: "however", mode: "copy" },
+            { type: "preface", text: "" },
             {
               type: "word-card",
               word: "although",
@@ -940,7 +941,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הפרויקט חוסך מים. בנוסף, הוא יוצר מקומות עבודה.",
               hookHe:
                 'in addition = בנוסף. עוד נקודה באותו כיוון, ולפעמים זו התשובה השנייה בשאלה של "give TWO".',
-              image: "/vocab-images/word-74688d5d1c.jpg",
+              image: "/vocab-images/word-e9c6f9c364.jpg",
             },
             {
               type: "mcq",
@@ -966,6 +967,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "ירד גשם כל היום. כתוצאה מכך המשחק בוטל.",
               hookHe:
                 "as a result = כתוצאה. מה שאחריה קרה בגלל מה שלפניה. החץ: סיבה ← תוצאה. therefore = לכן, אותה משמעות.",
+              image: "/vocab-images/word-fc9878c274.jpg",
             },
             {
               type: "mcq",
