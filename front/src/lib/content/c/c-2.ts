@@ -648,7 +648,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**I** Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.**II** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
+              text: "**I** Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\n**II** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
               questions: [
                 {
                   prompt:
