@@ -1956,6 +1956,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מדענים גילו דרך חדשה לשתול עצים.",
               hookHe:
                 'discover = לגלות משהו שלא היה ידוע. וגם "found that…" בטקסט אומר "מצאו ש…": בדרך כלל זה ממצא של מחקר, והתשובה קרובה.',
+              image: "/vocab-images/word-90d6e44e24.jpg",
             },
             {
               type: "mcq",
@@ -1990,6 +1991,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "תוצאות המחקר היו מפתיעות.",
               hookHe:
                 "result = מה שיוצא בסוף. results במחקר = התשובה שהמחקר נתן, ולכן המילה מצביעה על ממצא.",
+              image: "/vocab-images/word-23fcaf5e68.jpg",
             },
             {
               type: "mcq",
@@ -2064,6 +2066,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "רעש יכול להשפיע על איכות השינה.",
               hookHe:
                 "affect = להשפיע. X affects Y: הראשון משפיע על השני. (השם effect מגיע בשיעור אחר.)",
+              image: "/vocab-images/word-42520705b1.jpg",
             },
             {
               type: "mcq",
@@ -2104,6 +2107,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "השיטה היעילה ביותר הייתה עבודה בזוגות.",
               hookHe:
                 "effective = עובד באמת, נותן תוצאה. effective בא מ-effect (השפעה): מה שיש לו השפעה הוא יעיל.",
+              image: "/vocab-images/word-e1741c61d9.jpg",
             },
             {
               type: "mcq",
@@ -2140,7 +2144,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\nקראו אותו שוב וענו.",
+              text: "{d:rtl}זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\n{d:rtl}קראו אותו שוב וענו.",
             },
             {
               type: "passage-mcq",
@@ -2270,7 +2274,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\nII  According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
+              text: "**I**  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\n**II ** According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
               questions: [
                 {
                   prompt: "What did Dr. Okafor find?",
