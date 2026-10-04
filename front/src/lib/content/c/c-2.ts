@@ -421,7 +421,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -462,6 +462,7 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Please complete the sentence below.",
               correctWordIndex: 1,
             },
+            { type: "preface", text: "" },
             { type: "spell-word", word: "complete the sentence", mode: "copy" },
             {
               type: "word-card",
@@ -522,8 +523,7 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "להסביר",
               exampleEn: "**Explain** why the trees grew back.",
               exampleHe: "הסבירו למה העצים חזרו לגדול.",
-              hookHe:
-                "explain = להסביר: לתת סיבה או תיאור במילים שלכם, לפי הטקסט. לא רק להעתיק משפט.",
+              hookHe: "explain = להסביר: לתת סיבה או תיאור  מהטקסט, ",
               image: "/vocab-images/word-e366dfea6d.jpg",
             },
             {
