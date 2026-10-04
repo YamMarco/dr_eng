@@ -601,6 +601,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "העזים הוסרו כדי לתת לצמחים לגדול מחדש.",
               hookHe:
                 "in order to = כדי ל. מה שבא אחריה הוא מטרה: מה רצו להשיג. because = סיבה מאחור · in order to = מטרה קדימה.",
+              image: "/vocab-images/word-87aaba69ac.jpg",
             },
             {
               type: "mcq",
@@ -647,13 +648,13 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Redonda is a small island. In 2016, environmentalists removed the goats from the island. The goats had eaten all the plants, so the island was brown and empty.\n\nII  The goats were removed in order to let the plants grow back. Two years later, the trees began to grow again because nothing was eating the young plants.",
+              text: "**I** Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.**II** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
               questions: [
                 {
                   prompt:
-                    "Complete the sentence: People removed the goats because ...",
+                    "**Complete the sentence:** People removed the goats because ...",
                   options: [
-                    "the goats ate all the plants",
+                    "the goats ate the plants",
                     "nobody lived there",
                     "the island was too small",
                     "the trees were too tall",
@@ -662,7 +663,7 @@ export const c2Lessons: LessonNode[] = [
                 },
                 {
                   prompt:
-                    "Circle the correct answer: Why did the scientists remove the goats?",
+                    "**Circle the correct answer:** Why did the people of the island remove the goats?",
                   options: [
                     "To make the island brown",
                     "To build houses",
