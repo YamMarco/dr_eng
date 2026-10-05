@@ -9,7 +9,7 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "YES or NO - לומר עמדה",
     titleEn: "YES or NO",
     required: ["c-a45c17de"],
-    position: { x: 60, y: 2310 },
+    position: { x: 60, y: 2320 },
     big: false,
     content: {
       preface: [
@@ -215,7 +215,7 @@ export const c3Lessons: LessonNode[] = [
     titleHe: "because - לחבר לסיבה",
     titleEn: "because",
     required: ["yes-no"],
-    position: { x: 100, y: 2410 },
+    position: { x: 100, y: 2420 },
     big: false,
     content: {
       preface: [
@@ -1492,7 +1492,7 @@ export const c3Lessons: LessonNode[] = [
     section: "c-3",
     titleHe: "כתיבה - הקדמה",
     required: ["n-7c5330b8"],
-    position: { x: 10, y: 2220 },
+    position: { x: 0, y: 2230 },
     big: false,
     content: {
       preface: [
