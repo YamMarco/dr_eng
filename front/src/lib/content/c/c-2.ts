@@ -17,7 +17,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n\n{p:text}**What do we learn** from **paragraph III** about Ethiopia?\n\n{p:text}**According to** Dr. Diallo, why do most trees die? **Give ONE answer.**\n\n{p:text}**Give TWO answers**: how did the area change?\n\nהמילים המודגשות הן לא סתם חלק מהשאלה.\nהן **הוראות ניווט**. הן אומרות לנו: **איפה לחפש** את התשובה, **של מי המידע** שצריך למצוא, ו־**כמה תשובות** צריך לכתוב.\n\nאם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט - ועדיין לענות לא נכון. לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים: **איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
+          text: "לפני שמחפשים תשובה בטקסט, צריך להבין **מה בדיוק השאלה מבקשת מאיתנו לעשות**.\nקראו את שלוש השאלות:\n\n{p:text}**What do we learn** from **paragraph III** about Ethiopia?\n\n{p:text}**According to** Dr. Diallo, why do most trees die? **Give ONE answer.**\n\n{p:text}**Give TWO answers**: how did the area change?\n\n{d:rtl}המילים המודגשות הן לא סתם חלק מהשאלה.\n{d:rtl}הן **הוראות ניווט**. הן אומרות לנו: **איפה לחפש** איפה  התשובה, **של מי המידע** שצריך למצוא, ו־**כמה תשובות** צריך לכתוב.\n\n{d:rtl}אם מפספסים מילה אחת בהוראה, אפשר להבין את הטקסט - ועדיין לענות לא נכון. לכן לפני שמתחילים לחפש בטקסט, עוצרים לשנייה ושואלים: **איפה אני מחפש? ממי המידע? וכמה אני צריך לענות?**",
         },
         {
           type: "preface",
@@ -399,9 +399,9 @@ export const c2Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt:
-                'תלמיד קיבל את ההוראה "Give TWO answers" וכתב תשובה אחת ארוכה עם "and" באמצע. מה הבעיה?',
+                'תלמיד קיבל את ההוראה "Give TWO answers" וכתב. מה הבעיה? תשובה אחת ארוכה עם "and" באמצע',
               modelAnswer:
-                "זו עדיין תשובה אחת: הבודק מחפש שתי נקודות נפרדות וממוספרות, לא משפט אחד ארוך.",
+                "זו עדיין תשובה אחת: הבודק של בחינת הבגרות מחפש שתי נקודות נפרדות וממוספרות, לא משפט אחד ארוך שיש בתוכו שתי תשובות.",
             },
           ],
         },
@@ -421,7 +421,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -462,6 +462,7 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Please complete the sentence below.",
               correctWordIndex: 1,
             },
+            { type: "preface", text: "" },
             { type: "spell-word", word: "complete the sentence", mode: "copy" },
             {
               type: "word-card",
@@ -522,8 +523,7 @@ export const c2Lessons: LessonNode[] = [
               translationHe: "להסביר",
               exampleEn: "**Explain** why the trees grew back.",
               exampleHe: "הסבירו למה העצים חזרו לגדול.",
-              hookHe:
-                "explain = להסביר: לתת סיבה או תיאור במילים שלכם, לפי הטקסט. לא רק להעתיק משפט.",
+              hookHe: "explain = להסביר: לתת סיבה או תיאור  מהטקסט, ",
               image: "/vocab-images/word-e366dfea6d.jpg",
             },
             {
@@ -601,6 +601,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "העזים הוסרו כדי לתת לצמחים לגדול מחדש.",
               hookHe:
                 "in order to = כדי ל. מה שבא אחריה הוא מטרה: מה רצו להשיג. because = סיבה מאחור · in order to = מטרה קדימה.",
+              image: "/vocab-images/word-87aaba69ac.jpg",
             },
             {
               type: "mcq",
@@ -647,13 +648,13 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Redonda is a small island. In 2016, environmentalists removed the goats from the island. The goats had eaten all the plants, so the island was brown and empty.\n\nII  The goats were removed in order to let the plants grow back. Two years later, the trees began to grow again because nothing was eating the young plants.",
+              text: "**I** Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\n**II** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
               questions: [
                 {
                   prompt:
-                    "Complete the sentence: People removed the goats because ...",
+                    "**Complete the sentence:** People removed the goats because ...",
                   options: [
-                    "the goats ate all the plants",
+                    "the goats ate the plants",
                     "nobody lived there",
                     "the island was too small",
                     "the trees were too tall",
@@ -662,7 +663,7 @@ export const c2Lessons: LessonNode[] = [
                 },
                 {
                   prompt:
-                    "Circle the correct answer: Why did the scientists remove the goats?",
+                    "**Circle the correct answer:** Why did the people of the island remove the goats?",
                   options: [
                     "To make the island brown",
                     "To build houses",
@@ -855,6 +856,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "אולם, יש חדשות טובות.",
               hookHe:
                 "however = אולם. פנייה חדה: מה שלפניה הוא הרקע, ומה שאחריה הוא הנקודה.",
+              image: "/vocab-images/word-9711336f50.jpg",
             },
             {
               type: "mcq",
@@ -880,6 +882,7 @@ export const c2Lessons: LessonNode[] = [
               explanation: "מה שאחרי however הוא הנקודה.",
             },
             { type: "spell-word", word: "however", mode: "copy" },
+            { type: "preface", text: "" },
             {
               type: "word-card",
               word: "although",
@@ -888,6 +891,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "למרות שירד גשם, הלכנו לפארק.",
               hookHe:
                 "although = למרות ש. בתוך משפט אחד יש שני חלקים שמנוגדים זה לזה.",
+              image: "/vocab-images/word-74688d5d1c.jpg",
             },
             {
               type: "mcq",
@@ -937,6 +941,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הפרויקט חוסך מים. בנוסף, הוא יוצר מקומות עבודה.",
               hookHe:
                 'in addition = בנוסף. עוד נקודה באותו כיוון, ולפעמים זו התשובה השנייה בשאלה של "give TWO".',
+              image: "/vocab-images/word-e9c6f9c364.jpg",
             },
             {
               type: "mcq",
@@ -962,6 +967,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "ירד גשם כל היום. כתוצאה מכך המשחק בוטל.",
               hookHe:
                 "as a result = כתוצאה. מה שאחריה קרה בגלל מה שלפניה. החץ: סיבה ← תוצאה. therefore = לכן, אותה משמעות.",
+              image: "/vocab-images/word-fc9878c274.jpg",
             },
             {
               type: "mcq",
@@ -1950,6 +1956,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מדענים גילו דרך חדשה לשתול עצים.",
               hookHe:
                 'discover = לגלות משהו שלא היה ידוע. וגם "found that…" בטקסט אומר "מצאו ש…": בדרך כלל זה ממצא של מחקר, והתשובה קרובה.',
+              image: "/vocab-images/word-90d6e44e24.jpg",
             },
             {
               type: "mcq",
@@ -1984,6 +1991,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "תוצאות המחקר היו מפתיעות.",
               hookHe:
                 "result = מה שיוצא בסוף. results במחקר = התשובה שהמחקר נתן, ולכן המילה מצביעה על ממצא.",
+              image: "/vocab-images/word-23fcaf5e68.jpg",
             },
             {
               type: "mcq",
@@ -2058,6 +2066,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "רעש יכול להשפיע על איכות השינה.",
               hookHe:
                 "affect = להשפיע. X affects Y: הראשון משפיע על השני. (השם effect מגיע בשיעור אחר.)",
+              image: "/vocab-images/word-42520705b1.jpg",
             },
             {
               type: "mcq",
@@ -2098,6 +2107,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "השיטה היעילה ביותר הייתה עבודה בזוגות.",
               hookHe:
                 "effective = עובד באמת, נותן תוצאה. effective בא מ-effect (השפעה): מה שיש לו השפעה הוא יעיל.",
+              image: "/vocab-images/word-e1741c61d9.jpg",
             },
             {
               type: "mcq",
@@ -2134,7 +2144,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\nקראו אותו שוב וענו.",
+              text: "{d:rtl}זוכרים את הקטע מההתחלה? אותו קטע, ועכשיו אתם מכירים את כל המילים המודגשות.\n\n{d:rtl}קראו אותו שוב וענו.",
             },
             {
               type: "passage-mcq",
@@ -2264,7 +2274,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\nII  According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
+              text: "**I**  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\n**II ** According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
               questions: [
                 {
                   prompt: "What did Dr. Okafor find?",
@@ -4510,23 +4520,23 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "# 🚀 מתחילים Module C\nכאן נלמד איך להתמודד עם הבחינה**בצורה פשוטה, ברורה ובלי לחץ.**\n\nלא צריך לדעת הכול מההתחלה.מתקדמים **שלב אחרי שלב** ובקצב שלכם.\n### \n### 🎯 איך זה עובד?\n✅ מסיימים שיעור אחד⬇️✅ עוברים לשיעור הבא⬇️✅ בונים בסיס טוב⬇️✅ מגיעים מוכנים יותר לבחינה\n**אל תדלגו על שיעורים.**כל שיעור מלמד משהו שתצטרכו בהמשך.\n### \n### 🙋 נתקעתם?\nאנחנו כאן בשבילכם.\nבכל שבוע מתקיימים שיעורים שבהם אפשר:\nלשאול שאלותלקבל הסבר נוסףלתרגל יחדלהבין דברים שלא היו ברורים\n\n🔗 **הלינק להרשמה לשיעורים נמצא למטה.**\n\n### ⭐ זכרו\n**לאט ובטוח. שיעור אחרי שיעור.**\nמוכנים?\n## ▶️ מתחילים!",
+          text: "# 🚀 מתחילים Module C\n\nכאן נלמד איך להתמודד עם הבחינה **בצורה פשוטה, ברורה ובלי לחץ.**\n\nלא צריך לדעת הכול מההתחלה.מתקדמים **שלב אחרי שלב** ובקצב שלכם.\n### \n### 🎯 איך זה עובד?\n\n✅ מסיימים שיעור אחד⬇️✅\n\n עוברים לשיעור הבא⬇️✅ \n\nבונים בסיס טוב⬇️✅ \n\nמתרגלים ומגיעים מוכנים יותר לבחינ\n\nתזכרו שכל שיעור מלמד משהו שתצטרכו בהמשך.\n### \n### 🙋 נתקעתם? אנחנו כאן בשבילכם.\nבכל שבוע מתקיימים שיעורים שבהם אפשר:\nלשאול שאלות, לקבל הסבר נוסף, לתרגל יחד ובכך להבין דברים שלא היו ברורים\n\n🔗 **הלינק להרשמה לשיעורים נמצא למטה.**\n\n## ▶️ מתחילים!",
         },
         {
           type: "preface",
-          text: "📘 מתחילים מהטקסטב־**Module C** יש שני חלקים עיקריים:**חלק 1 – הבנת הנקרא: 70 נקודות****חלק 2 – כתיבה: 30 נקודות**אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה:**הטקסט – 70 נקודות**רק אחרי שנלמד איך להתמודד עם הטקסט,נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה.**👀 אבל לפני שמתחילים...",
+          text: "📘 מתחילים מהטקסט \n\nב־**Module C** יש שני חלקים עיקריים:\n\n**חלק 1 – הבנת הנקרא: 70 נקודות**\n\n**חלק 2 – כתיבה: 30 נקודות**\nאנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה:**הטקסט – 70 נקודות**\n\nרק אחרי שנלמד איך להתמודד עם הטקסט,נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה**👀 \n",
         },
         {
           type: "preface",
-          text: "שאלה אחת:\nמה יכול לגרום לכם לאבד נקודות, גם אם הבנתם בערך על מה הטקסט מדבר?\nלפעמים זאת פשוט מילה אחת.\nמילה שלא הכרתם.או מילה שחשבתם שאתם יודעים, אבל הבנתם אותה לא נכון.\n### 💡 מילה אחת יכולה לשנות את כל התשובה.\nלכן ב־Module C, אוצר מילים הוא לא תוספת.\nהוא חלק מהדרך:\nלהבין את השאלה → למצוא את המקום בטקסט → להבין את המשפט → לענות נכון\nאז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n# 📚 לומדים את המילים שצריך להכיר\nלא צריך לדעת כל מילה באנגלית.\nצריך לדעת לזהות את המילים החשובות שיעזרו לכם להגיע לתשובה.\nשלב אחרי שלב. מילה אחרי מילה.",
+          text: "שאלה: מה יכול לגרום לכם לאבד נקודות, גם אם הבנתם בערך את השאלה? לפעמים זאת פשוט מילה אחת.\nמילה שלא הכרתם. או מילה שחשבתם שאתם יודעים, אבל הבנתם אותה לא נכון.\n### \n### 💡 מילה אחת יכולה לשנות את כל התשובה.\nלכן ב־Module C, אוצר מילים הוא לא תוספת. הוא חלק מהדרך.\n\nאז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n# 📚 לומדים את המילים שצריך להכיר\n\nלא צריך לדעת כל מילה באנגלית.\n\nצריך לדעת לזהות את המילים החשובות שיעזרו לכם להגיע לתשובה.",
         },
         {
           type: "preface",
-          text: "***אבל רגע, למה צריך ללמוד מילים בכלל? הרי יש מילון בבחינה ***\n\n**++אכן מותר להשתמש במילון אבל יש גם שעון שמתקתק!++**\n\nהמילון יכול לעזור כשנתקלים במילה אחת בפסקה שמכירים. אבל אם כמעט בכל שורה צריך לעצור ולחפש מילה,** מאבדים זמן** - וגם** את הרצף** של הטקסט.\n\nויש עוד **בעיה**: למילה אחת במילון יכולות להיות כמה **משמעויות**. \n\nאז מי שכבר מכיר את המילה, אפילו חלקית, יזהה הרבה יותר מהר איזו משמעות מתאימה לטקסט.\n\nלכן לא צריך ללמוד את כל האנגלית מחדש.\n\nצריך לבנות **מינימום חכם בזיכרון שלנו**: רשימה קצרה של מילים שחוזרות שוב ושוב ב־Module C, ושכדאי לזהות מיד - בלי לפתוח מילון.\n\n**אז בקיצור: פחות חיפושים. יותר זמן להבין ולענות ולהרוויח נקודות! **",
+          text: "***אבל רגע, למה צריך ללמוד מילים בכלל? הרי יש מילון בבחינה.  *****++אכן מותר להשתמש במילון אבל יש גם שעון שמתקתק!++**\n\nהמילון יכול לעזור כשנתקלים במילה אחת בפסקה שמכירים. אבל אם כמעט בכל שורה צריך לעצור ולחפש מילה,** מאבדים זמן** - וגם** את הרצף** של הטקסט.\n\nויש עוד **בעיה**: למילה אחת במילון יכולות להיות כמה **משמעויות**. \n\nאז מי שכבר מכיר את המילה, אפילו חלקית, יזהה הרבה יותר מהר איזו משמעות מתאימה לטקסט.\n\nלכן לא צריך ללמוד את כל האנגלית מחדש.\n\nצריך לבנות **מינימום חכם בזיכרון שלנו**: רשימה קצרה של מילים שחוזרות שוב ושוב ב־Module C, ושכדאי לזהות מיד - בלי לפתוח מילון.\n\n**אז בקיצור: פחות חיפושים. יותר זמן להבין ולענות ולהרוויח נקודות! **",
         },
         {
           type: "preface",
-          text: "ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n**1. מילות תוכן: **מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n**2. מילות ניווט: **מילים שעוזרות לעקוב אחרי הכיוון של הטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n**3. מילות שאלה: **מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n\nאז בואו נתחיל",
+          text: "ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n**1. מילות תוכן: **מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n**2. מילות ניווט: **מילים שעוזרות לעקוב אחרי הכיוון של הדיון בטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n**3. מילות שאלה: **מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n\nאז בואו נתחיל",
         },
       ],
       rounds: [{ screens: [] }],
