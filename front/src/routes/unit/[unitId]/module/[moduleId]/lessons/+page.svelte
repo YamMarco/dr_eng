@@ -14,7 +14,7 @@
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import { isScreenEmpty } from '$lib/lesson-screens/types';
 	import { lessonIcon } from '$lib/lessonIcon';
-	import { SvelteSet, SvelteMap } from 'svelte/reactivity';
+	import { SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
@@ -91,21 +91,21 @@
 
 	let nodeById = $derived(new SvelteMap(nodes.map((node) => [node.lesson.id, node])));
 
-	// One heading per section, placed above that section's first node.
+	// One heading per section, placed above that section's topmost node
+	// (not array order — an intro node may be authored last in the file).
 	let sectionHeadings = $derived.by(() => {
-		const seen = new SvelteSet<string>();
-		const result: { sectionId: string; titleHe: string; x: number; y: number }[] = [];
+		const top = new SvelteMap<string, { sectionId: string; titleHe: string; x: number; y: number }>();
 		for (const node of nodes) {
-			if (seen.has(node.sectionId)) continue;
-			seen.add(node.sectionId);
-			result.push({
+			const cur = top.get(node.sectionId);
+			if (cur && cur.y <= node.y) continue;
+			top.set(node.sectionId, {
 				sectionId: node.sectionId,
 				titleHe: node.sectionTitleHe,
 				x: node.x,
 				y: node.y
 			});
 		}
-		return result;
+		return [...top.values()];
 	});
 
 	// Sized to the real node extents (nodes sit at +-x from the centre, so their
