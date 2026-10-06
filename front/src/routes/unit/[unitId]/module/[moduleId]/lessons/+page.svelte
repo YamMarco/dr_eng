@@ -35,11 +35,13 @@
 	// branching, parallel tracks that converge, ...) is just data.
 	const MIN_CANVAS_WIDTH = 400;
 	const NODE_HALF_WIDTH = 40; // the big node is h-20 w-20
-	const HEADING_HALF_WIDTH = 96; // section headings are 12rem wide
 	const LABEL_HALF_WIDTH = 88; // the node label popup is w-44
 	// Authored y positions are stretched at render time so the titles under
 	// nodes have room; positions in content stay as authored.
 	const Y_SPREAD = 1.4;
+	// Extra room added at each section boundary, so a section break reads as
+	// bigger than a row break and its divider clears the title above it.
+	const SECTION_GAP = 72;
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
@@ -74,8 +76,16 @@
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
 		if (mod.id !== 'c') return result;
+		// Sections ordered top to bottom by their topmost node; each one is
+		// pushed down by one SECTION_GAP per section above it.
+		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
+		const verticalOrder = sectionMeta
+			.filter((section) => getLessonsBySection(section.id).length > 0)
+			.map((section) => section.id)
+			.sort((a, b) => topY(a) - topY(b));
 		sectionMeta.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
+			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
 			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {
 				result.push({
 					lesson,
@@ -84,7 +94,7 @@
 					lessonNumber: lessonIndexInSection + 1,
 					theme,
 					x: lesson.position.x,
-					y: lesson.position.y * Y_SPREAD,
+					y: lesson.position.y * Y_SPREAD + sectionOffset,
 					isBig: lesson.big
 				});
 			});
@@ -94,12 +104,13 @@
 
 	let nodeById = $derived(new SvelteMap(nodes.map((node) => [node.lesson.id, node])));
 
-	// One heading per section, placed above that section's topmost node
-	// (not array order — an intro node may be authored last in the file).
+	// One divider per section, above that section's topmost node (not array
+	// order — an intro node may be authored last in the file). Centred on the
+	// canvas, in the section's color, so it never reads as a node title.
 	let sectionHeadings = $derived.by(() => {
 		const top = new SvelteMap<
 			string,
-			{ sectionId: string; titleHe: string; x: number; y: number }
+			{ sectionId: string; titleHe: string; theme: SectionTheme; y: number }
 		>();
 		for (const node of nodes) {
 			const cur = top.get(node.sectionId);
@@ -107,7 +118,7 @@
 			top.set(node.sectionId, {
 				sectionId: node.sectionId,
 				titleHe: node.sectionTitleHe,
-				x: node.x,
+				theme: node.theme,
 				y: node.y
 			});
 		}
@@ -119,12 +130,7 @@
 	let canvasWidth = $derived(
 		Math.max(
 			MIN_CANVAS_WIDTH,
-			2 * nodes.reduce((max, node) => Math.max(max, Math.abs(node.x) + NODE_HALF_WIDTH), 0),
-			2 *
-				sectionHeadings.reduce(
-					(max, heading) => Math.max(max, Math.abs(heading.x) + HEADING_HALF_WIDTH),
-					0
-				)
+			2 * nodes.reduce((max, node) => Math.max(max, Math.abs(node.x) + NODE_HALF_WIDTH), 0)
 		)
 	);
 	let canvasCenter = $derived(canvasWidth / 2);
@@ -469,13 +475,21 @@
 					</svg>
 
 					{#each sectionHeadings as heading (heading.sectionId)}
-						<p
-							class="absolute -translate-x-1/2 text-center text-sm font-extrabold tracking-wide text-ink"
-							style="left: {canvasCenter + heading.x}px; top: {heading.y - 40}px; width: 12rem"
+						<!-- Section divider: a hairline across the canvas with the section's
+						     name in a pill of its own color - unlike node titles (small, plain). -->
+						<div
+							class="absolute inset-x-0 flex items-center justify-center"
+							style="top: {heading.y - 56}px"
 							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 						>
-							{heading.titleHe}
-						</p>
+							<span class="absolute inset-x-6 h-px bg-line" aria-hidden="true"></span>
+							<p
+								class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
+									.theme.soft}"
+							>
+								{heading.titleHe}
+							</p>
+						</div>
 					{/each}
 
 					{#each nodes as node, nodeIndex (node.lesson.id)}
