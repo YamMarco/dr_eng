@@ -1,3 +1,6 @@
 # local content backups / archives (recoverable from git history anyway)
 *.zip
 .~lock.module-c-report-v2.3.docx#
+# graphify: daily snapshots and build cache are local only
+graphify-out/20??-??-??/
+graphify-out/cache/
