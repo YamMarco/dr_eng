@@ -75,7 +75,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 ## Fixed on 2026-10-06 (RTL/LTR + text formatting audit)
 
-- **Direction:** `textDir` (miniMarkdown.ts) now picks a line's / sentence's / quote's direction by dominant language when it disagrees with the first letter (about 150 lines such as "however = פנייה..." or "השאלה: What do we learn...?" rendered the wrong way). MCQ options, explanations (mcq, cloze-pick) and self-check model answers use it too.
+- **Direction:** `textDir` (miniMarkdown.ts): a line / sentence / quote is RTL when its first or last letter is Hebrew, or it is mostly Hebrew (about 150 lines such as "however = פנייה..." or "השאלה: What do we learn...?" rendered the wrong way). MCQ options, explanations (mcq, cloze-pick) and self-check model answers use it too.
 - **Missing passage titles:** 13 full-size texts (100+ words) had no title: swim (LEARNING TO SWIM AS AN ADULT), forests (THE GREEN AFRICA PROJECT), volunteers (WHY YOUNG PEOPLE VOLUNTEER), n-221188d1 (RECYCLING IN RIVERTOWN, A LIBRARY BACK TO LIFE). Shorter untitled texts are excerpts and stay untitled.
 - **Paragraph markers:** `**I**` / `**II**` in c-2 (q-words-2, nav-words-2, content-1b, 1c, 2b) rendered as literal bold text instead of the gutter marker; now `I  `.
 - **Missing instruction:** 6 c-3 `mark-word` screens had their instruction on a separate preface page; moved into `prompt`.

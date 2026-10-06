@@ -133,10 +133,9 @@ Inline (works anywhere in a line): `**bold**`, `*italic*`/`_italic_`,
 `++underline++`, `~~strikethrough~~`, `` `code` ``, `[text](https://url)`,
 `{c:name}text{/c}` (name = a key in `lib/lesson-screens/textColors.ts`'s
 fixed palette).
-
-Direction: every line and every sentence follows its own first letter, unless its
-dominant language disagrees (`textDir` in `miniMarkdown.ts`: a mostly-Hebrew line
-that opens with an English term stays RTL, and the reverse). Emoji, digits and
+Direction (`textDir` in `miniMarkdown.ts`): every line, sentence and quote is RTL when its first or last letter is Hebrew,
+or when it is mostly Hebrew; otherwise it follows `dir="auto"`.
+that opens and ends in English stays RTL too). Emoji, digits and
 punctuation don't count. `{d:..}` is only a manual override.
 
 Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores

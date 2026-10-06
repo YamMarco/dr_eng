@@ -21,22 +21,23 @@ const ESCAPE: Record<string, string> = {
 /** Direction for a piece of text. Plain `dir="auto"` follows the first strong
  *  letter, which flips a mostly-Hebrew line that opens with an English term
  *  ("however = פנייה...") or a mostly-English line that opens with a Hebrew
- *  label ("השאלה: What do we learn...?") the wrong way. Returns "auto" when the
- *  first letter and the dominant language agree (or there are no letters),
- *  else the dominant language's direction. Tags, entities and `{..}` tokens
- *  are ignored. */
+ *  label ("השאלה: What do we learn...?") the wrong way. Rule: RTL when the first
+ *  or last letter is Hebrew, or the text is mostly Hebrew; otherwise "auto".
+ *  Tags, entities, punctuation and `{..}` tokens are ignored. */
 export function textDir(text: string): 'auto' | 'rtl' | 'ltr' {
 	const t = text
 		.replace(/<[^>]*>/g, '')
 		.replace(/&[#\w]+;/g, ' ')
 		.replace(/\{[a-z]:[^}]*\}|\{\/c\}/g, '');
-	const first = t.match(/[A-Za-z֐-׿]/);
-	if (!first) return 'auto';
+	const letters = t.match(/[A-Za-z֐-׿]/g);
+	if (!letters) return 'auto';
+	// Starts or ends in Hebrew (punctuation / marks ignored) -> RTL.
+	if (/[֐-׿]/.test(letters[0]) || /[֐-׿]/.test(letters[letters.length - 1]))
+		return 'rtl';
+	// English at both ends: RTL only if the line is mostly Hebrew.
 	const he = (t.match(/[֐-׿]/g) ?? []).length;
-	const en = (t.match(/[A-Za-z]/g) ?? []).length;
-	const dominant = he >= en ? 'rtl' : 'ltr';
-	const firstDir = /[֐-׿]/.test(first[0]) ? 'rtl' : 'ltr';
-	return firstDir === dominant ? 'auto' : dominant;
+	const en = letters.length - he;
+	return he > en ? 'rtl' : 'auto';
 }
 
 /** Wraps each sentence in its own direction isolate (see `textDir`), so a sentence in a
