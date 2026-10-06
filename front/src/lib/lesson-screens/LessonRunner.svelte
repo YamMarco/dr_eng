@@ -164,6 +164,9 @@
 	// Static-screen runs (e.g. the debug vocab test) have no rounds of their own —
 	// treat them as always "last round" so they keep the old finish/next-lesson flow.
 	let isLastRound = $derived(!lesson || (roundIndex ?? 0) >= lesson.content.rounds.length - 1);
+	// Passing this round leaves the node complete (its required rounds are done),
+	// even if optional practice rounds remain.
+	let completesNode = $derived(!lesson || (roundIndex ?? 0) + 1 >= (lesson.requiredRounds ?? 1));
 
 	function advance() {
 		direction = 1;
@@ -310,6 +313,11 @@
 						</Button>
 					{:else}
 						<Button onclick={onNextRound}>{i18n.dict.lesson.continueNextRound}</Button>
+						{#if completesNode && hasNextLesson}
+							<Button variant="secondary" onclick={onFinishAndContinue}>
+								{i18n.dict.lesson.continueNextLesson}
+							</Button>
+						{/if}
 						<Button variant="secondary" onclick={onFinish}>
 							{i18n.dict.lesson.backToPath}
 						</Button>

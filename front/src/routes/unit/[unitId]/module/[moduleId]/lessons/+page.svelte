@@ -257,29 +257,17 @@
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 
-	// "Continue to next lesson" only makes sense within the same section's
-	// authored order — a node feeding into another section (e.g. a
-	// convergence point) just returns to the path instead.
-	let sectionLessonIds = $derived.by(() => {
-		const bySection = new SvelteMap<string, string[]>();
-		for (const node of nodes) {
-			const list = bySection.get(node.sectionId) ?? [];
-			list.push(node.lesson.id);
-			bySection.set(node.sectionId, list);
-		}
-		return bySection;
-	});
-
-	function nextInSameSection(node: PathNode): PathNode | undefined {
-		const ids = sectionLessonIds.get(node.sectionId) ?? [];
-		const index = ids.indexOf(node.lesson.id);
-		const nextId = index >= 0 ? ids[index + 1] : undefined;
-		return nextId ? nodeById.get(nextId) : undefined;
+	// "Continue to next lesson" is offered only when the path doesn't branch
+	// here: exactly one node lists this one as a prerequisite. A fork leaves
+	// the choice to the student, back on the path.
+	function onlyNextNode(node: PathNode): PathNode | undefined {
+		const dependents = nodes.filter((n) => n.lesson.required.includes(node.lesson.id));
+		return dependents.length === 1 ? dependents[0] : undefined;
 	}
 
 	let hasNextLesson = $derived.by(() => {
 		if (!activeNode) return false;
-		const next = nextInSameSection(activeNode);
+		const next = onlyNextNode(activeNode);
 		if (!next || !hasContent(next.lesson)) return false;
 		// Predict the unlock state right after this lesson gets marked done.
 		return next.lesson.required.every((id) => id === activeNode!.lesson.id || isDone(id));
@@ -331,7 +319,7 @@
 		const wasDone = isDone(activeNode.lesson.id);
 		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
 		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
-		const next = nextInSameSection(activeNode);
+		const next = onlyNextNode(activeNode);
 		if (!next) {
 			activeId = null;
 			exitRunner();
