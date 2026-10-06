@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
 	import Md from '$lib/components/Md.svelte';
+	import { textDir } from './miniMarkdown';
 	import { backOut } from 'svelte/easing';
 	import type { McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
@@ -158,7 +159,7 @@
 				type="button"
 				disabled={checked}
 				onclick={() => pick(i)}
-				dir="auto"
+				dir={textDir(option)}
 				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'
@@ -178,6 +179,6 @@
 {#if checked && screen.explanation}
 	<div class="mt-4 rounded-2xl bg-accent-soft p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.exerciseKind.answerKeyLabel}</p>
-		<p class="leading-relaxed" dir="auto"><Md text={screen.explanation} /></p>
+		<div class="leading-relaxed"><Md block text={screen.explanation} /></div>
 	</div>
 {/if}

@@ -134,8 +134,10 @@ Inline (works anywhere in a line): `**bold**`, `*italic*`/`_italic_`,
 `{c:name}text{/c}` (name = a key in `lib/lesson-screens/textColors.ts`'s
 fixed palette).
 
-Direction: every line and every sentence follows its own first letter (`dir="auto"`;
-emoji, digits and punctuation don't count). `{d:..}` is only a manual override.
+Direction: every line and every sentence follows its own first letter, unless its
+dominant language disagrees (`textDir` in `miniMarkdown.ts`: a mostly-Hebrew line
+that opens with an English term stays RTL, and the reverse). Emoji, digits and
+punctuation don't count. `{d:..}` is only a manual override.
 
 Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores
 them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,

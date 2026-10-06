@@ -108,7 +108,7 @@
 {#if revealed}
 	<div class="mt-4 rounded-2xl bg-brand-soft/50 p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.selfCheck.modelAnswerLabel}</p>
-		<p class="leading-relaxed" dir="auto"><Md text={screen.modelAnswer} /></p>
+		<div class="leading-relaxed"><Md block text={screen.modelAnswer} /></div>
 	</div>
 	<p class="mt-2 text-sm text-muted">{i18n.dict.selfCheck.compareNote}</p>
 {/if}

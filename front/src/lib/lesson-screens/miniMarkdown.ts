@@ -18,7 +18,28 @@ const ESCAPE: Record<string, string> = {
 	"'": '&#39;'
 };
 
-/** Wraps each sentence in its own `dir="auto"` isolate, so a sentence in a
+/** Direction for a piece of text. Plain `dir="auto"` follows the first strong
+ *  letter, which flips a mostly-Hebrew line that opens with an English term
+ *  ("however = פנייה...") or a mostly-English line that opens with a Hebrew
+ *  label ("השאלה: What do we learn...?") the wrong way. Returns "auto" when the
+ *  first letter and the dominant language agree (or there are no letters),
+ *  else the dominant language's direction. Tags, entities and `{..}` tokens
+ *  are ignored. */
+export function textDir(text: string): 'auto' | 'rtl' | 'ltr' {
+	const t = text
+		.replace(/<[^>]*>/g, '')
+		.replace(/&[#\w]+;/g, ' ')
+		.replace(/\{[a-z]:[^}]*\}|\{\/c\}/g, '');
+	const first = t.match(/[A-Za-z֐-׿]/);
+	if (!first) return 'auto';
+	const he = (t.match(/[֐-׿]/g) ?? []).length;
+	const en = (t.match(/[A-Za-z]/g) ?? []).length;
+	const dominant = he >= en ? 'rtl' : 'ltr';
+	const firstDir = /[֐-׿]/.test(first[0]) ? 'rtl' : 'ltr';
+	return firstDir === dominant ? 'auto' : dominant;
+}
+
+/** Wraps each sentence in its own direction isolate (see `textDir`), so a sentence in a
  *  different language than its neighbours takes its own direction from its
  *  first strong character (word order + punctuation) while the text keeps
  *  flowing inline. Splits only outside inline tags, only on plain spaces, and
@@ -48,7 +69,7 @@ function isolateSentences(html: string): string {
 	}
 	if (sentences.length === 0) return html;
 	sentences.push(html.slice(start));
-	return sentences.map((s) => `<span dir="auto">${s}</span>`).join(' ');
+	return sentences.map((s) => `<span dir="${textDir(s)}">${s}</span>`).join(' ');
 }
 
 /** Wraps each `"quoted phrase"` in its own `dir="auto"` isolate. A quote is
@@ -65,7 +86,10 @@ function isolateSentences(html: string): string {
  *  also an apostrophe in English contractions like "don't"). Never crosses a
  *  tag boundary, so it can't reach across an `isolateSentences` split. */
 function isolateQuotes(html: string): string {
-	return html.replace(/&quot;([^<]*?)&quot;/g, '<span dir="auto">&quot;$1&quot;</span>');
+	return html.replace(
+		/&quot;([^<]*?)&quot;/g,
+		(_, inner) => `<span dir="${textDir(inner)}">&quot;${inner}&quot;</span>`
+	);
 }
 
 export function mdInline(src: string): string {
@@ -192,8 +216,9 @@ function parseLine(raw: string): {
 			.filter(Boolean)
 			.join(' '),
 		style: styles.join(';'),
-		// No explicit {d:..}: each line takes its direction from its first strong character.
-		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${explicitDir ? '' : ' dir="auto"'}`,
+		// No explicit {d:..}: each line takes its direction from its first strong
+		// character, unless the line's dominant language disagrees (see textDir).
+		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${explicitDir ? '' : ` dir="${textDir(rest)}"`}`,
 		rest,
 		kind: paragraph
 	};

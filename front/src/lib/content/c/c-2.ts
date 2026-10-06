@@ -648,7 +648,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**I** Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\n**II** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
+              text: "I  Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\nII  The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
               questions: [
                 {
                   prompt:
@@ -1445,7 +1445,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "**I**  Sleep is important for teenagers.\n\n**II**  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\n**III**  At the same time, the number of students who felt tired decreased by 30%.",
+              text: "I  Sleep is important for teenagers.\n\nII  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\nIII  At the same time, the number of students who felt tired decreased by 30%.",
               questions: [
                 {
                   prompt: "What did researchers find?",
@@ -2274,7 +2274,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "**I**  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\n**II ** According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
+              text: "I  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\nII  According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
               questions: [
                 {
                   prompt: "What did Dr. Okafor find?",
@@ -2667,7 +2667,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "**I**  Every year, forests around the world are destroyed by fire, farming and pollution.\n\n**II ** In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\n**III ** After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\nIII  After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
               questions: [
                 {
                   prompt: "What destroys forests every year?",
@@ -3511,7 +3511,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "**I ** Many people think that exercise takes too much time.\n\n**II**  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\n**III**  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
+              text: "I  Many people think that exercise takes too much time.\n\nII  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\nIII  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
               questions: [
                 {
                   prompt: "How much time do the programs require?",

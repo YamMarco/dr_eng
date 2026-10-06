@@ -102,6 +102,6 @@
 {#if checked && screen.explanation}
 	<div class="mt-4 rounded-2xl bg-accent-soft p-3">
 		<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.exerciseKind.answerKeyLabel}</p>
-		<p class="leading-relaxed" dir="auto"><Md text={screen.explanation} /></p>
+		<div class="leading-relaxed"><Md block text={screen.explanation} /></div>
 	</div>
 {/if}

@@ -1,7 +1,7 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
-Snapshot: 2026-10-03. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-06. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
@@ -72,6 +72,13 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8 | One task per round |
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
+
+## Fixed on 2026-10-06 (RTL/LTR + text formatting audit)
+
+- **Direction:** `textDir` (miniMarkdown.ts) now picks a line's / sentence's / quote's direction by dominant language when it disagrees with the first letter (about 150 lines such as "however = פנייה..." or "השאלה: What do we learn...?" rendered the wrong way). MCQ options, explanations (mcq, cloze-pick) and self-check model answers use it too.
+- **Missing passage titles:** 13 full-size texts (100+ words) had no title: swim (LEARNING TO SWIM AS AN ADULT), forests (THE GREEN AFRICA PROJECT), volunteers (WHY YOUNG PEOPLE VOLUNTEER), n-221188d1 (RECYCLING IN RIVERTOWN, A LIBRARY BACK TO LIFE). Shorter untitled texts are excerpts and stay untitled.
+- **Paragraph markers:** `**I**` / `**II**` in c-2 (q-words-2, nav-words-2, content-1b, 1c, 2b) rendered as literal bold text instead of the gutter marker; now `I  `.
+- **Missing instruction:** 6 c-3 `mark-word` screens had their instruction on a separate preface page; moved into `prompt`.
 
 ## Fixed on 2026-10-03 (QC report 2.3, bad points 2, 6, 7)
 

@@ -58,9 +58,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. YES ו-NO שניהם מקבלים אותו ציון - חשוב רק שזה ברור.',
             },
-            { type: "preface", text: "לחצו על המילה שמבטאת דעה." },
             {
               type: "mark-word",
+              prompt: "לחצו על המילה שמבטאת דעה.",
               sentence:
                 "I think all students should do volunteer work in their community.",
               correctWordIndex: 1,
@@ -98,9 +98,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"I do not think" = NO ברור. שאר האפשרויות מתארות או נמנעות מהכרעה.',
             },
-            { type: "preface", text: "לחצו על המילה שהופכת את המשפט ל-NO." },
             {
               type: "mark-word",
+              prompt: "לחצו על המילה שהופכת את המשפט ל-NO.",
               sentence:
                 "I do not think homework should be given every weekend.",
               correctWordIndex: 2,
@@ -264,9 +264,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 "because = המילה שמחברת עמדה לסיבה. תמיד מגיעה ישר אחרי הדעה.",
             },
-            { type: "preface", text: "לחצו על המילה שמחברת את הדעה לסיבה." },
             {
               type: "mark-word",
+              prompt: "לחצו על המילה שמחברת את הדעה לסיבה.",
               sentence:
                 "I think children should get a phone at age 13 because they start travelling to school alone.",
               correctWordIndex: 10,
@@ -468,9 +468,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"students who help in hospitals learn to stay calm under pressure" = מקום + מה לומדים שם. זה פרט אמיתי.',
             },
-            { type: "preface", text: "לחצו על המילה שמסמנת שמגיע פרט ספציפי." },
             {
               type: "mark-word",
+              prompt: "לחצו על המילה שמסמנת שמגיע פרט ספציפי.",
               sentence:
                 "Traveling teaches you new things. For example, you discover different food and music.",
               correctWordIndex: 5,
@@ -567,9 +567,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"In conclusion" פותח את משפט הסיום. הוא תמיד מגיע אחרון.',
             },
-            { type: "preface", text: "לחצו על המילה שפותחת את משפט הסיום." },
             {
               type: "mark-word",
+              prompt: "לחצו על המילה שפותחת את משפט הסיום.",
               sentence:
                 "In conclusion, I think that age 13 is the right age for a first cellphone.",
               correctWordIndex: 0,
@@ -679,9 +679,9 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 'Because לא יכול להתחיל משפט עצמאי - הוא מחבר שני חלקים. "Because many students..." = רק חלק ממשפט.',
             },
-            { type: "preface", text: "לחצו על ה-verb - מה הסטודנטים עושים?" },
             {
               type: "mark-word",
+              prompt: "לחצו על ה-verb - מה הסטודנטים עושים?",
               sentence:
                 "Students learn important skills when they volunteer in their community.",
               correctWordIndex: 1,

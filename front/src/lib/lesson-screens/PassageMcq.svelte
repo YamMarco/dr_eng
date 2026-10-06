@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
+	import { textDir } from './miniMarkdown';
 	import PassageText from './PassageText.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -122,7 +123,7 @@
 				type="button"
 				disabled={checked}
 				onclick={() => pick(oi)}
-				dir="auto"
+				dir={textDir(option)}
 				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'
