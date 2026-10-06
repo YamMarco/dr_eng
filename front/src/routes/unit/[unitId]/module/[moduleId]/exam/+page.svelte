@@ -94,7 +94,7 @@
 
 	<div
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-		class="grid grid-cols-2 gap-3"
+		class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-3"
 	>
 		<section>
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.assortedTitle}</h2>
