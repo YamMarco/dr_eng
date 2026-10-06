@@ -32,8 +32,9 @@
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// Disabled until a pick in both modes - the runner's footer starts enabled.
 	// eslint-disable-next-line no-useless-assignment
-	if (mode === 'quiz') disabled = restoredAnswer === undefined;
+	disabled = restoredAnswer === undefined;
 
 	function pick(i: number) {
 		if (checked) return;
