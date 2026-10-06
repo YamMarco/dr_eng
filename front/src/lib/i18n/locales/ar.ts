@@ -56,7 +56,8 @@ export const ar: DictionaryOverride = {
 	},
 	error: {
 		defaultMessage: 'حدث خطأ ما',
-		subtitle: 'يمكنكم العودة واختيار وحدة من جديد.',
-		backButton: 'رجوع لاختيار وحدة'
+		notFound: 'الصفحة المطلوبة غير موجودة',
+		subtitle: 'يمكنكم العودة إلى الصفحة الرئيسية والمتابعة من هناك.',
+		backButton: 'العودة إلى الصفحة الرئيسية'
 	}
 };
