@@ -100,7 +100,7 @@
 		rawOpen = true;
 	}
 	// Pasted JSON (often edited by an AI) goes through the same checks as the
-	// /mcp validate_screen tool; it's only applied when there are no errors.
+	// /mcp validate_screens tool; it's only applied when there are no errors.
 	function applyRaw() {
 		if (!path) return;
 		const result = checkScreen(raw);

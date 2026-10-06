@@ -1,10 +1,12 @@
-// The /mcp endpoint: lets an AI (e.g. Claude on the web, added as a custom
-// connector) edit lesson-screen JSON by the project's own rules.
+// The /mcp endpoint: a live rule book for third-party editors (e.g. Claude on
+// the web, added as a custom connector) creating or editing lesson-screen JSON
+// without breaking the screen schema.
 // - Rules are read LIVE from GitHub main on every call: docs/ai-editing.md and
-//   every file it links. Edit those files to change what the AI follows.
+//   every file it links. Edit those files to change what editors follow.
 // - Validation runs this deployment's code (schema.ts + screenChecks.ts), so it
 //   is as fresh as the last deploy (Vercel redeploys on every push to main).
 // Read-only: nothing here writes anywhere.
+import { posix } from 'node:path';
 import { createMcpHandler, McpServer } from '@modelcontextprotocol/server';
 import * as z from 'zod';
 import { env } from '$env/dynamic/private';
@@ -13,26 +15,31 @@ import { checkScreen } from '$lib/lesson-screens/screenChecks';
 import { isReadable, readRepoFile } from './repoFiles';
 
 const ENTRY = 'docs/ai-editing.md';
+const FENCE = '```';
 
-const INSTRUCTIONS = `This server holds the editing rules for the dr-eng app (Hebrew-speaking students preparing for the English Bagrut).
-When asked to edit or create a lesson screen (JSON):
+const INSTRUCTIONS = `This server is the rule book for the dr-eng app (Hebrew-speaking students preparing for the English Bagrut).
+When asked to create or edit lesson screens (JSON) - one or several:
 1. Call get_editing_guide first - it returns the current rules and the screen schema, live from the repo.
-2. Apply the user's instruction to the screen, following those rules.
-3. Call validate_screen on your result and fix every error until it passes.
-4. Reply with the final screen as one \`\`\`json block, plus one short Hebrew line saying what changed.`;
+2. Write or change the screens following those rules.
+3. Call validate_screens on your result and fix every error until it passes.
+4. Reply with each final screen as its own ${FENCE}json block (one screen object each, ready to paste into the editor's JSON panel), plus one short Hebrew line per screen saying what it is or what changed.`;
 
 const text = (t: string) => ({ content: [{ type: 'text' as const, text: t }] });
 
-/** Every repo-path link in a markdown file (`[label](path)`), readable ones only. */
-function linkedPaths(markdown: string): string[] {
-	const paths = [...markdown.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]);
+/** Every file link in a markdown file (`[label](path)`), resolved relative to
+ *  that file (as VS Code and GitHub do) to a repo-root path; readable ones only. */
+function linkedPaths(markdown: string, from: string): string[] {
+	const paths = [...markdown.matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)]
+		.map((m) => m[1])
+		.filter((link) => !/^[a-z]+:/i.test(link))
+		.map((link) => posix.normalize(posix.join(posix.dirname(from), link)));
 	return [...new Set(paths.filter(isReadable))];
 }
 
 async function editingGuide(): Promise<string> {
 	const entry = await readRepoFile(ENTRY);
 	const files = await Promise.all(
-		linkedPaths(entry).map(async (path) => {
+		linkedPaths(entry, ENTRY).map(async (path) => {
 			try {
 				return `=== ${path} ===\n${await readRepoFile(path)}`;
 			} catch (e) {
@@ -47,9 +54,31 @@ async function editingGuide(): Promise<string> {
 	].join('\n\n');
 }
 
+function validationReport(json: string): string {
+	let parsed: unknown;
+	try {
+		parsed = JSON.parse(json);
+	} catch (e) {
+		return `INVALID - not valid JSON: ${(e as Error).message}`;
+	}
+	const screens = Array.isArray(parsed) ? parsed : [parsed];
+	const results = screens.map((screen) => checkScreen(screen));
+	const report = results.map((r, i) => {
+		const of = screens.length > 1 ? ` of ${screens.length}` : '';
+		const head = `Screen ${i + 1}${of}: ${r.ok ? 'OK' : 'INVALID'}`;
+		return [head, ...r.problems.map((p) => `  - [${p.severity}] ${p.message}`)].join('\n');
+	});
+	const deploy = env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local';
+	return [
+		results.every((r) => r.ok) ? 'ALL OK - the editor will accept these.' : 'Fix the errors below:',
+		...report,
+		`(validator from deploy ${deploy})`
+	].join('\n');
+}
+
 function buildServer(): McpServer {
 	const server = new McpServer(
-		{ name: 'dr-eng-content', version: '1.0.0' },
+		{ name: 'dr-eng-content', version: '1.1.0' },
 		{ instructions: INSTRUCTIONS }
 	);
 	const readOnly = { readOnlyHint: true, openWorldHint: false };
@@ -57,8 +86,8 @@ function buildServer(): McpServer {
 	server.registerTool(
 		'get_editing_guide',
 		{
-			title: 'Get the editing rules',
-			description: `Returns the current editing rules: ${ENTRY} and every file it links (screen schema, writing rules, voice guide...), read live from the repo. Call this before editing any screen.`,
+			title: 'Get the rule book',
+			description: `Returns the current rules for creating and editing screens: ${ENTRY} and every file it links (screen schema, writing rules, voice guide...), read live from the repo. Call this before writing any screen.`,
 			annotations: readOnly
 		},
 		async () => text(await editingGuide())
@@ -109,45 +138,45 @@ function buildServer(): McpServer {
 	);
 
 	server.registerTool(
-		'validate_screen',
+		'validate_screens',
 		{
-			title: 'Validate a screen',
+			title: 'Validate screens',
 			description:
-				'Checks one lesson screen (JSON text) exactly like the app editor does: schema (fields/types), index ranges, duplicate options, the dash rule. Returns ok or the list of problems (Hebrew). Run before returning any screen.',
-			inputSchema: z.object({ screen_json: z.string().describe('The screen as JSON text') }),
+				'Checks lesson screens exactly like the app editor does: schema (types, fields), index ranges, duplicate options, the dash rule. Pass one screen object or an array of screens, as JSON text. Returns OK or the problems (Hebrew) per screen. Run before handing over any screen.',
+			inputSchema: z.object({
+				json: z.string().describe('One screen object, or an array of screen objects, as JSON text')
+			}),
 			annotations: readOnly
 		},
-		async ({ screen_json }) => {
-			const result = checkScreen(screen_json);
-			const deploy = env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local';
-			const lines = result.problems.map((p) => `- [${p.severity}] ${p.message}`);
-			return text(
-				[
-					result.ok ? 'OK - valid, the editor will accept it.' : 'INVALID - fix these errors:',
-					...lines,
-					`(validator from deploy ${deploy})`
-				].join('\n')
-			);
-		}
+		async ({ json }) => text(validationReport(json))
 	);
 
 	server.registerPrompt(
-		'edit_screen',
+		'edit_screens',
 		{
-			title: 'ערוך מסך',
-			description: 'Edit one lesson screen by the project rules',
+			title: 'יצירה ועריכה של מסכים',
+			description: 'Create or edit lesson screens by the project rules',
 			argsSchema: z.object({
-				instruction: z.string().describe('What to change (Hebrew or English)'),
-				screen_json: z.string().describe('The screen JSON copied from the editor')
+				instruction: z.string().describe('What to create or change (Hebrew or English)'),
+				screens_json: z
+					.string()
+					.optional()
+					.describe('Existing screen JSON copied from the editor (one or several), if editing')
 			})
 		},
-		async ({ instruction, screen_json }) => ({
+		async ({ instruction, screens_json }) => ({
 			messages: [
 				{
 					role: 'user',
 					content: {
 						type: 'text',
-						text: `${INSTRUCTIONS}\n\nInstruction: ${instruction}\n\nScreen:\n\`\`\`json\n${screen_json}\n\`\`\``
+						text: [
+							INSTRUCTIONS,
+							`Instruction: ${instruction}`,
+							screens_json ? `Screens:\n${FENCE}json\n${screens_json}\n${FENCE}` : ''
+						]
+							.filter(Boolean)
+							.join('\n\n')
 					}
 				}
 			]

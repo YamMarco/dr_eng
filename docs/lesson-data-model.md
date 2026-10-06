@@ -17,10 +17,10 @@ LessonNode ──section──> SectionMeta          (grouping only: heading + t
 
 | Entity | Identity | Fields |
 | --- | --- | --- |
-| **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleHe`, `titleEn?`, `required: string[]`, `position: {x,y}`, `big: boolean`, `image?`, `content` |
+| **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleHe`, `titleEn?`, `required: string[]`, `requiredRounds?` (default 1), `position: {x,y}`, `big: boolean`, `image?`, `content` |
 | **LessonContent** | — | `preface: LessonScreen[]` (teaching intro, played once before round 0), `rounds: LessonRound[]` (length ≥ 1) |
 | **LessonRound** | index in `rounds` | `screens: LessonScreen[]` — practice only. Round 0 is mandatory-to-progress; 1..n are optional extra practice, played without the preface |
-| **LessonScreen** | index in `screens` | discriminated union on `type` (15 variants) — unchanged, `lib/lesson-screens/types.ts` |
+| **LessonScreen** | index in `screens` | discriminated union on `type`, defined in `lib/lesson-screens/schema.ts` (zod; TS types derived in `types.ts`) |
 | **SectionMeta** | `id: string` (`"c-1"`..`"c-25"`) | `titleHe`, `titleEn?`, `intro?{greeting,goal?}` |
 
 Everything is authored directly — nothing is derived at build time anymore.
@@ -33,7 +33,7 @@ Everything is authored directly — nothing is derived at build time anymore.
 | `c/c-1.ts` … `c/c-25.ts` | one `export const c<N>Lessons: LessonNode[]` per section |
 | `sectionMeta.ts` | ordered `SectionMeta[]` — canvas heading text + theme-color order |
 | `index.ts` | `allLessons` map, `getLesson(id)`, `getLessonsBySection(section)` |
-| `schema.sql` | Supabase `lessons` + `lesson_progress` tables (not wired up) |
+| `schema.sql` | planned Supabase `lessons` + `lesson_progress` tables (not wired up; DB access will go through Drizzle in `front/src/lib/server/db/`) |
 
 Origin: generated once by `front/scripts/snapshot-content.ts` from the old
 derivation pipeline, then frozen. Edit the `c/*.ts` files directly from here on.
@@ -42,7 +42,7 @@ derivation pipeline, then frozen. Edit the `c/*.ts` files directly from here on.
 
 - **Section order / theme color** = position in `sectionMeta`. Headings render above
   the first node of each section.
-- **Unlock**: a node is playable once every id in `required` has `roundsCompleted ≥ 1`.
+- **Unlock**: a node is playable once every id in `required` has `roundsCompleted ≥ requiredRounds` (default 1).
   Empty `required` = a root, open from the start.
 - **`id`** is the only identifier — shown on the node label, no separate display code.
 - **`big`** = node is drawn larger (no scored screen in any round).
@@ -52,15 +52,11 @@ derivation pipeline, then frozen. Edit the `c/*.ts` files directly from here on.
 
 ## Screen taxonomy (the `type` discriminator)
 
-| bucket | types | scored? |
-| --- | --- | --- |
-| teaching | `preface`, `steps`, `summary`, `word-card`, `question-preview` | no |
-| timing/meta | `timed-reading`, `time-result`, `time-comparison` | no |
-| exercise (1 pt) | `mcq`, `mark-word`, `mark-all`, `spell-word`, `writing-task` | 1 |
-| exercise (n pts) | `passage-mcq`, `passage-quiz` | = `questions.length` |
-
-`countQuestions(screen)` gives a round's fixed score denominator. Pass = ≥80% of a
-round's points. `isScreenEmpty(screen)` → skipped at runtime.
+Every screen type, its fields and whether it is scored are in
+`front/src/lib/lesson-screens/schema.ts` (each schema's `.describe()` says it).
+`countQuestions(screen)` (`types.ts`) gives a round's fixed score denominator:
+exercises count 1, `passage-mcq` / `passage-quiz` count `questions.length`.
+Pass = ≥80% of a round's points. `isScreenEmpty(screen)` → skipped at runtime.
 
 ## Runtime state (separate from content)
 
