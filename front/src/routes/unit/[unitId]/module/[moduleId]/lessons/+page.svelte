@@ -35,8 +35,11 @@
 	// branching, parallel tracks that converge, ...) is just data.
 	const MIN_CANVAS_WIDTH = 400;
 	const NODE_HALF_WIDTH = 40; // the big node is h-20 w-20
-	const HEADING_HALF_WIDTH = 64; // section headings are w-32
+	const HEADING_HALF_WIDTH = 96; // section headings are 12rem wide
 	const LABEL_HALF_WIDTH = 88; // the node label popup is w-44
+	// Authored y positions are stretched at render time so the titles under
+	// nodes have room; positions in content stay as authored.
+	const Y_SPREAD = 1.4;
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
@@ -81,7 +84,7 @@
 					lessonNumber: lessonIndexInSection + 1,
 					theme,
 					x: lesson.position.x,
-					y: lesson.position.y,
+					y: lesson.position.y * Y_SPREAD,
 					isBig: lesson.big
 				});
 			});
@@ -257,20 +260,21 @@
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 
-	// "Continue to next lesson" is offered only when the path doesn't branch
-	// here: exactly one node lists this one as a prerequisite. A fork leaves
-	// the choice to the student, back on the path.
-	// The node to point a student at: the topmost one that's open and not done.
+	// "Start here" points a brand-new student at the topmost open node; once
+	// anything is done the path speaks for itself.
 	let startNodeId = $derived.by(() => {
+		if (nodes.some((node) => isDone(node.lesson.id))) return undefined;
 		let best: PathNode | undefined;
 		for (const node of nodes) {
-			if (!isUnlocked(node) || isDone(node.lesson.id)) continue;
+			if (!isUnlocked(node)) continue;
 			if (!best || node.y < best.y) best = node;
 		}
 		return best?.lesson.id;
 	});
-	let hasProgress = $derived(nodes.some((node) => isDone(node.lesson.id)));
 
+	// "Continue to next lesson" is offered only when the path doesn't branch
+	// here: exactly one node lists this one as a prerequisite. A fork leaves
+	// the choice to the student, back on the path.
 	function onlyNextNode(node: PathNode): PathNode | undefined {
 		const dependents = nodes.filter((n) => n.lesson.required.includes(node.lesson.id));
 		return dependents.length === 1 ? dependents[0] : undefined;
@@ -466,15 +470,15 @@
 
 					{#each sectionHeadings as heading (heading.sectionId)}
 						<p
-							class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
-							style="left: {canvasCenter + heading.x}px; top: {heading.y - 32}px; width: 8rem"
+							class="absolute -translate-x-1/2 text-center text-sm font-extrabold tracking-wide text-ink"
+							style="left: {canvasCenter + heading.x}px; top: {heading.y - 40}px; width: 12rem"
 							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 						>
 							{heading.titleHe}
 						</p>
 					{/each}
 
-					{#each nodes as node (node.lesson.id)}
+					{#each nodes as node, nodeIndex (node.lesson.id)}
 						{@const unlocked = isUnlocked(node)}
 						{@const done = isDone(node.lesson.id)}
 						{@const allRounds = roundsCompleted(node.lesson.id) >= totalRounds(node)}
@@ -486,7 +490,8 @@
 								? ''
 								: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
 							style="left: {canvasCenter + node.x}px; top: {node.y}px; --puck-border: {node.theme
-								.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
+								.nodeShadow}; --puck-lip: {node.theme.nodeFace}; --shine-delay: {(nodeIndex % 6) *
+								1.2}s"
 							in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
 						>
 							<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
@@ -503,7 +508,7 @@
 									: ''} {unlocked
 									? done
 										? allRounds
-											? 'bg-accent text-ink shadow-md shadow-accent/40'
+											? 'node-gold text-ink'
 											: node.theme.soft
 										: 'node-socket'
 									: 'cursor-not-allowed bg-line/60 text-muted'}"
@@ -556,7 +561,7 @@
 										<span
 											class="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-bold text-white"
 										>
-											{hasProgress ? i18n.dict.lessons.continueHere : i18n.dict.lessons.startHere}
+											{i18n.dict.lessons.startHere}
 										</span>
 									{/if}
 									<span

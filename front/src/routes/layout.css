@@ -195,6 +195,58 @@
 	box-shadow: 0 0 0 0 rgb(0 0 0 / 0.22);
 }
 
+/* Fully finished ("gold") path node: a coin-like face - soft top-left
+   highlight, fine radial ridges, a light-to-deep gold gradient - plus a
+   diagonal shine that sweeps across now and then. --shine-delay is set per
+   node so the path doesn't flash all at once. */
+.node-gold {
+	position: relative;
+	overflow: hidden;
+	background:
+		radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.55), transparent 42%),
+		repeating-conic-gradient(rgb(255 255 255 / 0.08) 0deg 6deg, rgb(0 0 0 / 0.035) 6deg 12deg),
+		linear-gradient(
+			145deg,
+			color-mix(in oklab, var(--color-accent), white 35%),
+			var(--color-accent) 50%,
+			color-mix(in oklab, var(--color-accent), black 25%)
+		);
+	box-shadow:
+		inset 0 0 0 3px rgb(255 255 255 / 0.35),
+		inset 0 -4px 0 rgb(0 0 0 / 0.12),
+		0 4px 12px -2px color-mix(in oklab, var(--color-accent), transparent 40%);
+}
+.node-gold::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	background: linear-gradient(
+		115deg,
+		transparent 35%,
+		rgb(255 255 255 / 0.75) 50%,
+		transparent 65%
+	);
+	transform: translateX(-130%);
+	animation: gold-shine 7s ease-in-out infinite;
+	animation-delay: var(--shine-delay, 0s);
+}
+@keyframes gold-shine {
+	0%,
+	85% {
+		transform: translateX(-130%);
+	}
+	100% {
+		transform: translateX(130%);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.node-gold::after {
+		display: none;
+	}
+}
+
 /* Cross-fade between routes, driven by onNavigate() in +layout.svelte.
    Slightly faster than the browser default (~250ms) and disabled entirely
    for reduced-motion, since the View Transitions API doesn't honor that

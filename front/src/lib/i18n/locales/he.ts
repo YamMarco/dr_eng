@@ -89,8 +89,7 @@ export const he = {
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
 		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`,
-		startHere: 'התחילו כאן',
-		continueHere: 'המשיכו כאן'
+		startHere: 'התחילו כאן'
 	},
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
