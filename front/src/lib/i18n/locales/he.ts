@@ -88,7 +88,8 @@ export const he = {
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
-		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`
+		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`,
+		startHere: 'התחילו כאן'
 	},
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
@@ -256,8 +257,9 @@ export const he = {
 	},
 	error: {
 		defaultMessage: 'משהו השתבש',
-		subtitle: 'אפשר לחזור ולבחור מודול מחדש.',
-		backButton: 'חזרה לבחירת מודול'
+		notFound: 'העמוד המבוקש לא נמצא',
+		subtitle: 'אפשר לחזור לדף הבית ולהמשיך משם.',
+		backButton: 'חזרה לדף הבית'
 	}
 };
 

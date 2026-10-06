@@ -73,6 +73,11 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
 
+## Fixed on 2026-10-06 (UX audit, branch ux-fixes)
+
+- **n-5cd02dfa (intro) title:** "module c - פתיחה" -> "פתיחה - Module C".
+- **n-5cd02dfa (intro) text:** missing space in "מההתחלה. מתקדמים"; "לבחינ" -> "לבחינה".
+
 ## Fixed on 2026-10-06 (RTL/LTR + text formatting audit)
 
 - **Direction:** `textDir` (miniMarkdown.ts): a line / sentence / quote is RTL when its first or last letter is Hebrew, or it is mostly Hebrew (about 150 lines such as "however = פנייה..." or "השאלה: What do we learn...?" rendered the wrong way). MCQ options, explanations (mcq, cloze-pick) and self-check model answers use it too.

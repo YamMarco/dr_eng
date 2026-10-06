@@ -35,8 +35,13 @@
 	// branching, parallel tracks that converge, ...) is just data.
 	const MIN_CANVAS_WIDTH = 400;
 	const NODE_HALF_WIDTH = 40; // the big node is h-20 w-20
-	const HEADING_HALF_WIDTH = 64; // section headings are w-32
 	const LABEL_HALF_WIDTH = 88; // the node label popup is w-44
+	// Authored y positions are stretched at render time so the titles under
+	// nodes have room; positions in content stay as authored.
+	const Y_SPREAD = 1.4;
+	// Extra room added at each section boundary, so a section break reads as
+	// bigger than a row break and its divider clears the title above it.
+	const SECTION_GAP = 72;
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
@@ -71,8 +76,16 @@
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
 		if (mod.id !== 'c') return result;
+		// Sections ordered top to bottom by their topmost node; each one is
+		// pushed down by one SECTION_GAP per section above it.
+		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
+		const verticalOrder = sectionMeta
+			.filter((section) => getLessonsBySection(section.id).length > 0)
+			.map((section) => section.id)
+			.sort((a, b) => topY(a) - topY(b));
 		sectionMeta.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
+			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
 			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {
 				result.push({
 					lesson,
@@ -81,7 +94,7 @@
 					lessonNumber: lessonIndexInSection + 1,
 					theme,
 					x: lesson.position.x,
-					y: lesson.position.y,
+					y: lesson.position.y * Y_SPREAD + sectionOffset,
 					isBig: lesson.big
 				});
 			});
@@ -91,17 +104,21 @@
 
 	let nodeById = $derived(new SvelteMap(nodes.map((node) => [node.lesson.id, node])));
 
-	// One heading per section, placed above that section's topmost node
-	// (not array order — an intro node may be authored last in the file).
+	// One divider per section, above that section's topmost node (not array
+	// order — an intro node may be authored last in the file). Centred on the
+	// canvas, in the section's color, so it never reads as a node title.
 	let sectionHeadings = $derived.by(() => {
-		const top = new SvelteMap<string, { sectionId: string; titleHe: string; x: number; y: number }>();
+		const top = new SvelteMap<
+			string,
+			{ sectionId: string; titleHe: string; theme: SectionTheme; y: number }
+		>();
 		for (const node of nodes) {
 			const cur = top.get(node.sectionId);
 			if (cur && cur.y <= node.y) continue;
 			top.set(node.sectionId, {
 				sectionId: node.sectionId,
 				titleHe: node.sectionTitleHe,
-				x: node.x,
+				theme: node.theme,
 				y: node.y
 			});
 		}
@@ -113,12 +130,7 @@
 	let canvasWidth = $derived(
 		Math.max(
 			MIN_CANVAS_WIDTH,
-			2 * nodes.reduce((max, node) => Math.max(max, Math.abs(node.x) + NODE_HALF_WIDTH), 0),
-			2 *
-				sectionHeadings.reduce(
-					(max, heading) => Math.max(max, Math.abs(heading.x) + HEADING_HALF_WIDTH),
-					0
-				)
+			2 * nodes.reduce((max, node) => Math.max(max, Math.abs(node.x) + NODE_HALF_WIDTH), 0)
 		)
 	);
 	let canvasCenter = $derived(canvasWidth / 2);
@@ -254,29 +266,29 @@
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
 
-	// "Continue to next lesson" only makes sense within the same section's
-	// authored order — a node feeding into another section (e.g. a
-	// convergence point) just returns to the path instead.
-	let sectionLessonIds = $derived.by(() => {
-		const bySection = new SvelteMap<string, string[]>();
+	// "Start here" points a brand-new student at the topmost open node; once
+	// anything is done the path speaks for itself.
+	let startNodeId = $derived.by(() => {
+		if (nodes.some((node) => isDone(node.lesson.id))) return undefined;
+		let best: PathNode | undefined;
 		for (const node of nodes) {
-			const list = bySection.get(node.sectionId) ?? [];
-			list.push(node.lesson.id);
-			bySection.set(node.sectionId, list);
+			if (!isUnlocked(node)) continue;
+			if (!best || node.y < best.y) best = node;
 		}
-		return bySection;
+		return best?.lesson.id;
 	});
 
-	function nextInSameSection(node: PathNode): PathNode | undefined {
-		const ids = sectionLessonIds.get(node.sectionId) ?? [];
-		const index = ids.indexOf(node.lesson.id);
-		const nextId = index >= 0 ? ids[index + 1] : undefined;
-		return nextId ? nodeById.get(nextId) : undefined;
+	// "Continue to next lesson" is offered only when the path doesn't branch
+	// here: exactly one node lists this one as a prerequisite. A fork leaves
+	// the choice to the student, back on the path.
+	function onlyNextNode(node: PathNode): PathNode | undefined {
+		const dependents = nodes.filter((n) => n.lesson.required.includes(node.lesson.id));
+		return dependents.length === 1 ? dependents[0] : undefined;
 	}
 
 	let hasNextLesson = $derived.by(() => {
 		if (!activeNode) return false;
-		const next = nextInSameSection(activeNode);
+		const next = onlyNextNode(activeNode);
 		if (!next || !hasContent(next.lesson)) return false;
 		// Predict the unlock state right after this lesson gets marked done.
 		return next.lesson.required.every((id) => id === activeNode!.lesson.id || isDone(id));
@@ -328,7 +340,7 @@
 		const wasDone = isDone(activeNode.lesson.id);
 		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
 		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
-		const next = nextInSameSection(activeNode);
+		const next = onlyNextNode(activeNode);
 		if (!next) {
 			activeId = null;
 			exitRunner();
@@ -371,7 +383,41 @@
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
 
-<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
+<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base}>
+	{#snippet trailing()}
+		<!-- In the bar rather than floating, so they never cover path nodes. -->
+		<div class="flex items-center gap-2">
+			{#if debugStore.enabled}
+				<!-- Debug-only: compare experimental writing flows without touching progress. -->
+				<button
+					type="button"
+					onclick={() => {
+						enterRunner();
+						writingLabOpen = true;
+					}}
+					aria-label="פתיחת מעבדת הכתיבה"
+					title="מעבדת כתיבה: Claude מול GPT"
+					class="flex h-11 w-11 items-center justify-center rounded-lg border border-dashed border-ink/40 text-ink/60 active:scale-95"
+				>
+					<FlaskConical size={18} aria-hidden="true" />
+				</button>
+			{/if}
+			<!-- Open the /edit workspace. Only for module 'c' — that's the only module
+			     the content model / content-edit tooling covers so far (see the same
+			     `mod.id !== 'c'` guard below). /edit itself is password-gated on the
+			     deployed site. Detachable — see src/lib/content-edit/README.md. -->
+			{#if mod.id === 'c'}
+				<a
+					href="/edit"
+					title="עריכת תוכן"
+					class="inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-xs font-bold hover:bg-line/60"
+				>
+					✎ ערוך
+				</a>
+			{/if}
+		</div>
+	{/snippet}
+</AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-36 pb-12">
 	{#if nodes.length === 0}
@@ -429,16 +475,24 @@
 					</svg>
 
 					{#each sectionHeadings as heading (heading.sectionId)}
-						<p
-							class="absolute -translate-x-1/2 text-center text-xs font-bold text-muted"
-							style="left: {canvasCenter + heading.x}px; top: {heading.y - 32}px; width: 8rem"
+						<!-- Section divider: a hairline across the canvas with the section's
+						     name in a pill of its own color - unlike node titles (small, plain). -->
+						<div
+							class="absolute inset-x-0 flex items-center justify-center"
+							style="top: {heading.y - 56}px"
 							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 						>
-							{heading.titleHe}
-						</p>
+							<span class="absolute inset-x-6 h-px bg-line" aria-hidden="true"></span>
+							<p
+								class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
+									.theme.soft}"
+							>
+								{heading.titleHe}
+							</p>
+						</div>
 					{/each}
 
-					{#each nodes as node (node.lesson.id)}
+					{#each nodes as node, nodeIndex (node.lesson.id)}
 						{@const unlocked = isUnlocked(node)}
 						{@const done = isDone(node.lesson.id)}
 						{@const allRounds = roundsCompleted(node.lesson.id) >= totalRounds(node)}
@@ -450,7 +504,8 @@
 								? ''
 								: 'opacity-40'} {openLabelId === node.lesson.id ? 'z-10' : ''}"
 							style="left: {canvasCenter + node.x}px; top: {node.y}px; --puck-border: {node.theme
-								.nodeShadow}; --puck-lip: {node.theme.nodeFace}"
+								.nodeShadow}; --puck-lip: {node.theme.nodeFace}; --shine-delay: {(nodeIndex % 6) *
+								1.2}s"
 							in:scale={{ start: 0.35, duration: 300, delay: delayForY(node.y), easing: backOut }}
 						>
 							<!-- Unlocked-and-playable nodes get a push-button cap: the rim (this
@@ -467,7 +522,7 @@
 									: ''} {unlocked
 									? done
 										? allRounds
-											? 'bg-accent text-ink shadow-md shadow-accent/40'
+											? 'node-gold text-ink'
 											: node.theme.soft
 										: 'node-socket'
 									: 'cursor-not-allowed bg-line/60 text-muted'}"
@@ -509,6 +564,29 @@
 									{/if}
 								</span>
 							</button>
+
+							{#if unlocked || done}
+								<!-- Title under open/finished nodes so the path reads without tapping;
+								     locked nodes stay icon-only to keep focus on what's playable. -->
+								<div
+									class="pointer-events-none absolute top-full left-1/2 mt-1.5 flex w-28 -translate-x-1/2 flex-col items-center gap-1 text-center"
+								>
+									{#if node.lesson.id === startNodeId}
+										<span
+											class="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-bold text-white"
+										>
+											{i18n.dict.lessons.startHere}
+										</span>
+									{/if}
+									<span
+										class="line-clamp-2 rounded bg-canvas/90 px-1 text-[11px] leading-tight font-semibold {done
+											? 'text-muted'
+											: 'text-ink'}"
+									>
+										{node.lesson.titleHe}
+									</span>
+								</div>
+							{/if}
 
 							{#if unlocked && openLabelId === node.lesson.id}
 								{@const completed = roundsCompleted(node.lesson.id)}
@@ -566,36 +644,6 @@
 	{/if}
 </main>
 
-{#if debugStore.enabled}
-	<!-- Debug-only: compare experimental writing flows without touching progress. -->
-	<button
-		type="button"
-		onclick={() => {
-			enterRunner();
-			writingLabOpen = true;
-		}}
-		aria-label="פתיחת מעבדת הכתיבה"
-		title="מעבדת כתיבה: Claude מול GPT"
-		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
-	>
-		<FlaskConical size={22} aria-hidden="true" />
-	</button>
-{/if}
-
-<!-- Open the /edit workspace. Only for module 'c' — that's the only module
-     the content model / content-edit tooling covers so far (see the same
-     `mod.id !== 'c'` guard above). /edit itself is password-gated on the
-     deployed site. Detachable — see src/lib/content-edit/README.md. -->
-{#if mod.id === 'c'}
-	<a
-		href="/edit"
-		title="עריכת תוכן"
-		class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
-	>
-		✎
-	</a>
-{/if}
-
 {#if writingLabOpen}
 	<WritingLab onclose={closeWritingLab} />
 {/if}
@@ -608,9 +656,10 @@
 		<LessonRunner
 			lesson={activeNode.lesson}
 			roundIndex={activeRoundIndex}
-			lessonLabel={totalRounds(activeNode) > 1
-				? `${activeNode.lesson.titleHe} — ${i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))}`
-				: activeNode.lesson.titleHe}
+			lessonLabel={activeNode.lesson.titleHe}
+			roundLabel={totalRounds(activeNode) > 1
+				? i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))
+				: undefined}
 			{hasNextLesson}
 			onExit={closeNode}
 			onFinish={finishNode}

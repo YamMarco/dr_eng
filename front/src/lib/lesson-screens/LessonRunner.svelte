@@ -34,6 +34,8 @@
 		/** Start the round on this index into the played list (used by /edit's "play from here"). */
 		startScreenIndex?: number;
 		lessonLabel: string;
+		/** Shown beside the progress bar (e.g. "סבב 1 מתוך 4"), not in the header where it truncates. */
+		roundLabel?: string;
 		hasNextLesson: boolean;
 		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
 		onExit: () => void;
@@ -51,6 +53,7 @@
 		roundIndex,
 		startScreenIndex = 0,
 		lessonLabel,
+		roundLabel,
 		hasNextLesson,
 		onExit,
 		onFinish,
@@ -161,6 +164,9 @@
 	// Static-screen runs (e.g. the debug vocab test) have no rounds of their own —
 	// treat them as always "last round" so they keep the old finish/next-lesson flow.
 	let isLastRound = $derived(!lesson || (roundIndex ?? 0) >= lesson.content.rounds.length - 1);
+	// Passing this round leaves the node complete (its required rounds are done),
+	// even if optional practice rounds remain.
+	let completesNode = $derived(!lesson || (roundIndex ?? 0) + 1 >= (lesson.requiredRounds ?? 1));
 
 	function advance() {
 		direction = 1;
@@ -213,7 +219,7 @@
 		{/snippet}
 	</AppBar>
 	{#if !justFinished}
-		<LessonProgressBar segments={progressSegments} current={screenIndex} />
+		<LessonProgressBar segments={progressSegments} current={screenIndex} label={roundLabel} />
 	{/if}
 
 	<main
@@ -307,6 +313,11 @@
 						</Button>
 					{:else}
 						<Button onclick={onNextRound}>{i18n.dict.lesson.continueNextRound}</Button>
+						{#if completesNode && hasNextLesson}
+							<Button variant="secondary" onclick={onFinishAndContinue}>
+								{i18n.dict.lesson.continueNextLesson}
+							</Button>
+						{/if}
 						<Button variant="secondary" onclick={onFinish}>
 							{i18n.dict.lesson.backToPath}
 						</Button>

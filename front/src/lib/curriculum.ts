@@ -39,3 +39,8 @@ export function getUnitGroup(id: string): UnitGroup | undefined {
 export function getModule(id: string): CurriculumModule | undefined {
 	return modules[id.toLowerCase()];
 }
+
+/** Short Hebrew description, e.g. "טקסט · חיבור"; empty while the module has no content. */
+export function moduleSummary(mod: CurriculumModule): string {
+	return mod.sections.map((s) => s.label).join(' · ');
+}

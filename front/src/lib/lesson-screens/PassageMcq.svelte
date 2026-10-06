@@ -41,6 +41,9 @@
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// Disabled until a pick - the runner's footer starts enabled.
+	// eslint-disable-next-line no-useless-assignment
+	disabled = true;
 
 	// Ticks (and keeps the session's running total updated) until the last
 	// question is checked.

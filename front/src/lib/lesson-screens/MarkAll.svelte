@@ -52,8 +52,9 @@
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
+	// Disabled until a pick in both modes - the runner's footer starts enabled.
 	// eslint-disable-next-line no-useless-assignment
-	if (mode === 'quiz') disabled = !restoredAnswer?.length;
+	disabled = !restoredAnswer?.length;
 
 	// Optional stopwatch (screen.timerKey) — ticks until the answer is checked,
 	// then freezes and leaves the elapsed ms in the session for a later
