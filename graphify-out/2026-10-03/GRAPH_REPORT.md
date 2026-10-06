@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-10-03)
 
 ## Corpus Check
-- 206 files · ~474,250 words
+- 206 files · ~475,939 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `08285ef1`
+- Built from commit: `03679907`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -593,7 +593,7 @@ Cohesion: 0.53
 Nodes (5): RATE, RULES, speak(), speechSupported(), speechText()
 
 ## Knowledge Gaps
-- **761 isolated node(s):** `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)`, `Fixed on 2026-10-03 (QC report 2.3, bad points 2, 6, 7)`, `Fixed on 2026-09-28` (+756 more)
+- **761 isolated node(s):** `ReviewNote`, `ReviewNotes`, `SectionTheme`, `Language`, `RubricResult` (+756 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -601,10 +601,10 @@ Nodes (5): RATE, RULES, speak(), speechSupported(), speechText()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `EditModel` connect `EditModel` to `ExamEditModel`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` connect `חלק ה׳ — סקשנים 17–26: אוצר מילים, כתיבה, זמן, סימולציה` to `Section 20 · משפטים שעובדים`, `Section 17 · בנק מילים · חברה וקהילה`, `Section 21 · מקשרים ומרפאת שגיאות`, `Section 18 · בנק מילים · טכנולוגיה, סביבה ו-collocations`, `Section 22 · ניהול זמן`, `Section 23 · YES או NO`, `Section 24 · סיבה, הסבר, דוגמה`, `Section 25 · בנק הדוגמאות ואורך התשובה`, `Section 19 · מקריאה לכתיבה`, `Section 26 · סימולציה ותיקון`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **What connects `Part A: vocabulary (c-2)`, `Part B: reading (c-1)`, `Part C: writing (c-3)` to the rest of the system?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `LessonScreen` connect `ExamEditModel` to `SlideStage.svelte`, `lesson-screens/types.ts`, `content/index.ts`, `validate.ts`, `registry.ts`, `QuizRunner.svelte`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **What connects `ReviewNote`, `ReviewNotes`, `SectionTheme` to the rest of the system?**
   _761 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._

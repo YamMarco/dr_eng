@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1791022633.5748906,
-    "seen": 1791022637.8653586,
-    "ast_hash": "9aaa2703938a7bbc673ddce55b74f984",
+    "mtime": 1791031893.4476151,
+    "seen": 1791031903.0368552,
+    "ast_hash": "956370819a46e00f7c0425f0d5ab856d",
     "semantic_hash": ""
   },
   "docs/module c/myprog/guide.md": {
@@ -852,9 +852,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/review/+server.ts": {
-    "mtime": 1789931669.624903,
-    "seen": 1791018207.284447,
-    "ast_hash": "7d359be2c3976515533c3057358c7973",
+    "mtime": 1791032442.6075177,
+    "seen": 1791032479.5234873,
+    "ast_hash": "e04c477225e22cfb48b85502ca842c34",
     "semantic_hash": ""
   },
   "front/src/lib/components/LessonProgressBar.svelte": {
@@ -900,9 +900,9 @@
     "semantic_hash": ""
   },
   "docs/module-c-audit.md": {
-    "mtime": 1791022763.9151073,
-    "seen": 1791022767.7009194,
-    "ast_hash": "ed53fed65c4fab6a6592642a6d4f8533",
+    "mtime": 1791031893.4506097,
+    "seen": 1791031903.0368721,
+    "ast_hash": "3ad28ea2dec617e2dadb416f1e5ececf",
     "semantic_hash": ""
   },
   "docs/module-c-roadmap.md": {
