@@ -260,6 +260,17 @@
 	// "Continue to next lesson" is offered only when the path doesn't branch
 	// here: exactly one node lists this one as a prerequisite. A fork leaves
 	// the choice to the student, back on the path.
+	// The node to point a student at: the topmost one that's open and not done.
+	let startNodeId = $derived.by(() => {
+		let best: PathNode | undefined;
+		for (const node of nodes) {
+			if (!isUnlocked(node) || isDone(node.lesson.id)) continue;
+			if (!best || node.y < best.y) best = node;
+		}
+		return best?.lesson.id;
+	});
+	let hasProgress = $derived(nodes.some((node) => isDone(node.lesson.id)));
+
 	function onlyNextNode(node: PathNode): PathNode | undefined {
 		const dependents = nodes.filter((n) => n.lesson.required.includes(node.lesson.id));
 		return dependents.length === 1 ? dependents[0] : undefined;
@@ -362,7 +373,41 @@
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
 
-<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base} />
+<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base}>
+	{#snippet trailing()}
+		<!-- In the bar rather than floating, so they never cover path nodes. -->
+		<div class="flex items-center gap-2">
+			{#if debugStore.enabled}
+				<!-- Debug-only: compare experimental writing flows without touching progress. -->
+				<button
+					type="button"
+					onclick={() => {
+						enterRunner();
+						writingLabOpen = true;
+					}}
+					aria-label="פתיחת מעבדת הכתיבה"
+					title="מעבדת כתיבה: Claude מול GPT"
+					class="flex h-11 w-11 items-center justify-center rounded-lg border border-dashed border-ink/40 text-ink/60 active:scale-95"
+				>
+					<FlaskConical size={18} aria-hidden="true" />
+				</button>
+			{/if}
+			<!-- Open the /edit workspace. Only for module 'c' — that's the only module
+			     the content model / content-edit tooling covers so far (see the same
+			     `mod.id !== 'c'` guard below). /edit itself is password-gated on the
+			     deployed site. Detachable — see src/lib/content-edit/README.md. -->
+			{#if mod.id === 'c'}
+				<a
+					href="/edit"
+					title="עריכת תוכן"
+					class="inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-xs font-bold hover:bg-line/60"
+				>
+					✎ ערוך
+				</a>
+			{/if}
+		</div>
+	{/snippet}
+</AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-36 pb-12">
 	{#if nodes.length === 0}
@@ -501,6 +546,29 @@
 								</span>
 							</button>
 
+							{#if unlocked || done}
+								<!-- Title under open/finished nodes so the path reads without tapping;
+								     locked nodes stay icon-only to keep focus on what's playable. -->
+								<div
+									class="pointer-events-none absolute top-full left-1/2 mt-1.5 flex w-28 -translate-x-1/2 flex-col items-center gap-1 text-center"
+								>
+									{#if node.lesson.id === startNodeId}
+										<span
+											class="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-bold text-white"
+										>
+											{hasProgress ? i18n.dict.lessons.continueHere : i18n.dict.lessons.startHere}
+										</span>
+									{/if}
+									<span
+										class="line-clamp-2 rounded bg-canvas/90 px-1 text-[11px] leading-tight font-semibold {done
+											? 'text-muted'
+											: 'text-ink'}"
+									>
+										{node.lesson.titleHe}
+									</span>
+								</div>
+							{/if}
+
 							{#if unlocked && openLabelId === node.lesson.id}
 								{@const completed = roundsCompleted(node.lesson.id)}
 								{@const started = completed > 0}
@@ -556,36 +624,6 @@
 		</div>
 	{/if}
 </main>
-
-{#if debugStore.enabled}
-	<!-- Debug-only: compare experimental writing flows without touching progress. -->
-	<button
-		type="button"
-		onclick={() => {
-			enterRunner();
-			writingLabOpen = true;
-		}}
-		aria-label="פתיחת מעבדת הכתיבה"
-		title="מעבדת כתיבה: Claude מול GPT"
-		class="fixed inset-s-4 top-40 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-ink/60 shadow-lg transition active:scale-95"
-	>
-		<FlaskConical size={22} aria-hidden="true" />
-	</button>
-{/if}
-
-<!-- Open the /edit workspace. Only for module 'c' — that's the only module
-     the content model / content-edit tooling covers so far (see the same
-     `mod.id !== 'c'` guard above). /edit itself is password-gated on the
-     deployed site. Detachable — see src/lib/content-edit/README.md. -->
-{#if mod.id === 'c'}
-	<a
-		href="/edit"
-		title="עריכת תוכן"
-		class="fixed inset-s-4 top-56 z-30 flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-ink/40 bg-surface text-lg text-ink/60 shadow-lg transition active:scale-95"
-	>
-		✎
-	</a>
-{/if}
 
 {#if writingLabOpen}
 	<WritingLab onclose={closeWritingLab} />
