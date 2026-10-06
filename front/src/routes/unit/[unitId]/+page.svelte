@@ -2,7 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
-	import { modules } from '$lib/curriculum';
+	import { moduleSummary, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { themeForSectionIndex } from '$lib/sectionThemes';
@@ -84,7 +84,7 @@
 									>{i18n.dict.unit.modulePrefix} {mod.letter}</span
 								>
 								<span class="mt-1 block text-sm text-muted" dir="ltr">
-									{mod.sections.map((s) => s.label).join(' · ')}
+									{moduleSummary(mod)}
 								</span>
 							</span>
 							<svg

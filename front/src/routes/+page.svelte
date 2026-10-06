@@ -1,17 +1,13 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { modules, unitGroups } from '$lib/curriculum';
+	import { moduleSummary, modules, unitGroups } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { getLesson } from '$lib/content';
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
-
-	function letters(moduleIds: string[]) {
-		return moduleIds.map((id) => modules[id].letter.toUpperCase()).join(' · ');
-	}
 
 	// The single most recently opened lesson, across every module - lets a
 	// returning student resume in one tap instead of re-choosing unit/module.
@@ -79,22 +75,21 @@
 					href="/unit/{group.id}"
 					class="group flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 				>
-					<span
-						class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-2xl font-extrabold text-brand-dark"
-						dir="ltr"
-					>
-						{group.units}
-					</span>
-
 					<span class="min-w-0 flex-1">
 						<span class="text-xl font-bold">{group.units} {i18n.dict.home.unitsSuffix}</span>
-						<span class="mt-1 block text-sm leading-relaxed text-muted" dir="ltr">
-							{#if group.moduleIds.length}
-								{letters(group.moduleIds)}
-							{:else}
-								{i18n.dict.common.comingSoon}
-							{/if}
-						</span>
+						{#if group.moduleIds.length}
+							<span class="mt-2 flex flex-col gap-0.5 text-sm leading-relaxed text-muted">
+								{#each group.moduleIds as id (id)}
+									{@const mod = modules[id]}
+									<span>
+										<span class="font-bold text-ink" dir="ltr">{mod.letter}</span>
+										- {moduleSummary(mod) || i18n.dict.common.comingSoon}
+									</span>
+								{/each}
+							</span>
+						{:else}
+							<span class="mt-1 block text-sm text-muted">{i18n.dict.common.comingSoon}</span>
+						{/if}
 					</span>
 
 					<svg
