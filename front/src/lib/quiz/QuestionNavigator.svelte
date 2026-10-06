@@ -37,7 +37,7 @@
      without needing to know which side actually overflows (numbers vs. the
      wider "קטע קריאה" pill make that vary). -->
 <div
-	class="scrollbar-none flex min-w-0 flex-nowrap items-center gap-1.5 overflow-x-auto mask-[linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]"
+	class="scrollbar-none flex min-w-0 flex-nowrap items-center overflow-x-auto mask-[linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]"
 	dir="rtl"
 >
 	<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
@@ -54,20 +54,27 @@
 			aria-current={isCurrent ? 'step' : undefined}
 			aria-label={isPassage ? `קטע קריאה, שאלה ${i + 1}` : `שאלה ${i + 1}`}
 			onclick={() => onJump(i)}
-			class="flex h-8 shrink-0 items-center justify-center gap-1 rounded-full border-2 px-2 text-sm font-bold transition active:scale-90 {isCurrent
-				? 'border-brand'
-				: isAnswered
-					? 'border-transparent'
-					: 'border-line'} {isAnswered ? 'bg-brand-soft text-brand-dark' : 'bg-surface text-muted'}"
+			class="flex h-11 min-w-11 shrink-0 items-center justify-center transition active:scale-90"
 		>
-			{#if style === 'dots'}
-				<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
-			{:else}
-				{i + 1}
-			{/if}
-			{#if isPassage}
-				<span class="font-semibold">קטע קריאה</span>
-			{/if}
+			<!-- The button is the 44px tap target; the chip keeps its compact look. -->
+			<span
+				class="flex h-8 min-w-8 items-center justify-center gap-1 rounded-full border-2 px-2 text-sm font-bold {isCurrent
+					? 'border-brand'
+					: isAnswered
+						? 'border-transparent'
+						: 'border-line'} {isAnswered
+					? 'bg-brand-soft text-brand-dark'
+					: 'bg-surface text-muted'}"
+			>
+				{#if style === 'dots'}
+					<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
+				{:else}
+					{i + 1}
+				{/if}
+				{#if isPassage}
+					<span class="font-semibold">קטע קריאה</span>
+				{/if}
+			</span>
 		</button>
 	{/each}
 </div>

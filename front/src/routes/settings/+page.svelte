@@ -70,7 +70,7 @@
 							role="radio"
 							aria-checked={themeStore.mode === option.value}
 							onclick={() => themeStore.setMode(option.value)}
-							class="rounded-lg px-3 py-1.5 text-sm font-semibold transition active:scale-95 {themeStore.mode ===
+							class="min-h-11 rounded-lg px-3 text-sm font-semibold transition active:scale-95 {themeStore.mode ===
 							option.value
 								? 'bg-brand text-white shadow'
 								: 'text-muted hover:text-ink'}"
