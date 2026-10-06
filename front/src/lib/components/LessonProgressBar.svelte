@@ -12,9 +12,11 @@
 		 *  default track/fill (bg-line / bg-brand) has no contrast against a
 		 *  bg-brand card, so this swaps in a white-based pair instead. */
 		inverted?: boolean;
+		/** Short text at the bar's end (e.g. the round counter). */
+		label?: string;
 	};
 
-	let { segments, current, compact = false, inverted = false }: Props = $props();
+	let { segments, current, compact = false, inverted = false, label }: Props = $props();
 
 	let total = $derived(segments.reduce((sum, n) => sum + n, 0));
 
@@ -28,29 +30,34 @@
 	});
 </script>
 
-<div
-	class="flex w-full items-center gap-1.5 {compact ? '' : 'mx-auto max-w-lg px-4 py-3'}"
-	role="progressbar"
-	aria-label="התקדמות בשיעור"
-	aria-valuenow={Math.min(current, total)}
-	aria-valuemin={0}
-	aria-valuemax={total}
->
-	{#each segments as length, i (i)}
-		<div
-			class="overflow-hidden rounded-full {inverted ? 'bg-white/25' : 'bg-line'} {compact
-				? 'h-1.5'
-				: 'h-2.5'}"
-			style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
-		>
+<div class="flex w-full items-center gap-3 {compact ? '' : 'mx-auto max-w-lg px-4 py-3'}">
+	<div
+		class="flex min-w-0 flex-1 items-center gap-1.5"
+		role="progressbar"
+		aria-label="התקדמות בשיעור"
+		aria-valuenow={Math.min(current, total)}
+		aria-valuemin={0}
+		aria-valuemax={total}
+	>
+		{#each segments as length, i (i)}
 			<div
-				class="h-full rounded-full {inverted
-					? 'bg-white'
-					: 'bg-brand'} transition-[width] duration-300 ease-out {compact
-					? 'motion-safe:animate-bar-fill'
-					: ''}"
-				style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 45}ms` : ''}"
-			></div>
-		</div>
-	{/each}
+				class="overflow-hidden rounded-full {inverted ? 'bg-white/25' : 'bg-line'} {compact
+					? 'h-1.5'
+					: 'h-2.5'}"
+				style="flex-grow: {Math.max(length, 1)}; flex-basis: 0;"
+			>
+				<div
+					class="h-full rounded-full {inverted
+						? 'bg-white'
+						: 'bg-brand'} transition-[width] duration-300 ease-out {compact
+						? 'motion-safe:animate-bar-fill'
+						: ''}"
+					style="width: {fractions[i] * 100}%{compact ? `; animation-delay: ${i * 45}ms` : ''}"
+				></div>
+			</div>
+		{/each}
+	</div>
+	{#if label}
+		<span class="shrink-0 text-xs font-semibold text-muted">{label}</span>
+	{/if}
 </div>

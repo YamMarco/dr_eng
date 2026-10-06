@@ -94,7 +94,10 @@
 	// One heading per section, placed above that section's topmost node
 	// (not array order — an intro node may be authored last in the file).
 	let sectionHeadings = $derived.by(() => {
-		const top = new SvelteMap<string, { sectionId: string; titleHe: string; x: number; y: number }>();
+		const top = new SvelteMap<
+			string,
+			{ sectionId: string; titleHe: string; x: number; y: number }
+		>();
 		for (const node of nodes) {
 			const cur = top.get(node.sectionId);
 			if (cur && cur.y <= node.y) continue;
@@ -608,9 +611,10 @@
 		<LessonRunner
 			lesson={activeNode.lesson}
 			roundIndex={activeRoundIndex}
-			lessonLabel={totalRounds(activeNode) > 1
-				? `${activeNode.lesson.titleHe} — ${i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))}`
-				: activeNode.lesson.titleHe}
+			lessonLabel={activeNode.lesson.titleHe}
+			roundLabel={totalRounds(activeNode) > 1
+				? i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))
+				: undefined}
 			{hasNextLesson}
 			onExit={closeNode}
 			onFinish={finishNode}

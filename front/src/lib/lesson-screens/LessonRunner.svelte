@@ -34,6 +34,8 @@
 		/** Start the round on this index into the played list (used by /edit's "play from here"). */
 		startScreenIndex?: number;
 		lessonLabel: string;
+		/** Shown beside the progress bar (e.g. "סבב 1 מתוך 4"), not in the header where it truncates. */
+		roundLabel?: string;
 		hasNextLesson: boolean;
 		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
 		onExit: () => void;
@@ -51,6 +53,7 @@
 		roundIndex,
 		startScreenIndex = 0,
 		lessonLabel,
+		roundLabel,
 		hasNextLesson,
 		onExit,
 		onFinish,
@@ -213,7 +216,7 @@
 		{/snippet}
 	</AppBar>
 	{#if !justFinished}
-		<LessonProgressBar segments={progressSegments} current={screenIndex} />
+		<LessonProgressBar segments={progressSegments} current={screenIndex} label={roundLabel} />
 	{/if}
 
 	<main

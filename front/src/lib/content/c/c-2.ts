@@ -4512,7 +4512,7 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "n-5cd02dfa",
     section: "c-2",
-    titleHe: "module c - פתיחה",
+    titleHe: "פתיחה - Module C",
     required: [],
     position: { x: 0, y: 20 },
     big: true,
