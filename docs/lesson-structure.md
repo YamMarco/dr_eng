@@ -22,7 +22,9 @@ not by a field on the node.
 | `lib/content/sectionMeta.ts` | section headings + theme-color order |
 | `lib/content/index.ts` | `allLessons`, `getLesson`, `getLessonsBySection` |
 | `lib/content/types.ts` | `LessonNode` / `LessonContent` / `LessonRound` / `SectionMeta` |
-| `lib/lesson-screens/types.ts` | `LessonScreen` union + `isScreenEmpty()` + `countQuestions()` |
+| `lib/lesson-screens/schema.ts` | every screen type's shape + field docs (zod) - source of truth |
+| `lib/lesson-screens/types.ts` | `LessonScreen` types derived from the schema + `isScreenEmpty()` + `countQuestions()` |
+| `lib/lesson-screens/screenChecks.ts` | per-screen validation (schema + index ranges, duplicates, dash rule) |
 | `lib/lesson-screens/registry.ts` | screen type → component |
 | `lib/lesson-screens/LessonRunner.svelte` | plays one round |
 | `lib/lessonProgress.svelte.ts` | localStorage progress (rounds done per lesson) |
@@ -68,25 +70,10 @@ Add an object to the right section's array:
 
 ## Screen types
 
-| type | fields | scored |
-| --- | --- | --- |
-| `preface` | `text`, `dir?` | — |
-| `steps` | `steps[]`, `ordered?` (true = numbered) | — |
-| `summary` | `title`, `lines[]` | — |
-| `word-card` | `word`, `translationHe?`, `image?` (site path, 16:9 - set via the editor's crop dialog), `imageAlt?`, `exampleEn?` (`**word**` bolds), `exampleHe?`, `hookHe?` (memory hook) | — |
-| `question-preview` | `intro`, `prompts[]` | — |
-| `timed-reading` | `label`, `text`, `timerKey` | — |
-| `time-result` | `label`, `timerKey` | — |
-| `time-comparison` | `aLabel`, `aKey`, `bLabel`, `bKey`, `fasterMessage`, `tieMessage` | — |
-| `mcq` | `prompt`, `options[]`, `correctIndex`, `explanation?`, `layout?: 'rows'\|'honeycomb'` | 1 |
-| `mark-word` | `sentence`, `correctWordIndex`, `dir?` | 1 |
-| `cloze-pick` | `clause`, `options[]`, `correctIndices[]`, `explanation?` | 1 |
-| `mark-all` | `instruction`, `text`, `correctIndices[]`, `categories?[{name,color,indices[]}]`, `dir?`, `wordBank?`, `timerKey?` | 1 |
-| `spell-word` | `word`, `mode: 'copy' \| 'listen'`, `hintHe?` (listen only: Hebrew meaning under the speak buttons, for sound-alike words) | 1 |
-| `match-pairs` | `pairs[{en, he}]` | 1 |
-| `writing-task` | `prompt`, `wordBank[]`, `minSentences`, `minWordsUsed`, `maxTypos?` (default 1), `capitalIsError?` (default true) | 1 |
-| `passage-quiz` | `text`, `questions[{prompt, keywords[], answerHint, points?}]` | n |
-| `passage-mcq` | `text`, `questions[{prompt, options, correctIndex}]`, `timerKey?`, `label?` | n |
+Every screen type, its fields and what each field means are defined in code:
+`front/src/lib/lesson-screens/schema.ts` (zod; field docs in `.describe()`). That file is
+the source of truth - this doc only adds usage notes. Scored: exercises count 1 point,
+`passage-mcq` / `passage-quiz` 1 per question (`countQuestions()` in `types.ts`).
 
 `mark-all` renders the passage as flowing text; each word is tap-to-toggle.
 Scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
@@ -165,8 +152,9 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 
 ## Adding a screen type
 
-1. shape in `lesson-screens/types.ts` → add to the `LessonScreen` union → add cases
-   to `isScreenEmpty()` and `countQuestions()`
+1. schema in `lesson-screens/schema.ts` (with `.describe()` docs) → add it to `lessonScreenSchema`
+   → add a type alias in `types.ts` → add cases to `isScreenEmpty()` and `countQuestions()`.
+   The /edit paste check and the /mcp endpoint pick it up from there.
 2. component in `lesson-screens/`: props `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }`, and `export function primaryAction()`
 3. register in `registry.ts`
 4. badge string in `i18n/locales/he.ts` under `exerciseKind`

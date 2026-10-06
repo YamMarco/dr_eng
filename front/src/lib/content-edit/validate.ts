@@ -1,10 +1,11 @@
-// Pure structural checks over a section's LessonNode[], surfaced in the /edit
+// Structural checks over a section's LessonNode[] (per-screen rules come from
+// lesson-screens/screenChecks.ts), surfaced in the /edit
 // workspace (red dots in the outline + a "בעיות" list in the header).
 // Detachable — part of src/lib/content-edit/.
 
 import type { LessonNode, LessonScreen } from '$lib/content';
-import { isScreenEmpty, countQuestions } from '$lib/lesson-screens/types';
-import { markAllSegments } from '$lib/lesson-screens/markAllTokens';
+import { countQuestions } from '$lib/lesson-screens/types';
+import { screenProblems } from '$lib/lesson-screens/screenChecks';
 import type { QuizNode } from '$lib/quiz';
 import type { ScreenPath } from './screenPath';
 
@@ -23,22 +24,8 @@ function screenIssues(node: LessonNode, path: ScreenPath, screen: LessonScreen):
 	const out: Issue[] = [];
 	const at = `${bucketLabel(path.bucket)}[${path.index}]`;
 
-	if (isScreenEmpty(screen)) {
-		out.push({ nodeId: node.id, path, severity: 'warn', message: `${at}: מסך ריק (ידולג בנגן)` });
-	}
-
-	if (screen.type === 'mark-all') {
-		const n = markAllSegments(screen.text).filter((s) => s.token).length;
-		const ids = [...screen.correctIndices, ...(screen.categories ?? []).flatMap((c) => c.indices)];
-		const bad = ids.filter((i) => !Number.isInteger(i) || i < 0 || i >= n);
-		if (bad.length)
-			out.push({
-				nodeId: node.id,
-				path,
-				severity: 'error',
-				message: `${at}: mark-all - אינדקסים מחוץ לטווח (0..${n - 1}): ${[...new Set(bad)].join(', ')}`
-			});
-	}
+	for (const p of screenProblems(screen))
+		out.push({ nodeId: node.id, path, severity: p.severity, message: `${at}: ${p.message}` });
 
 	if (screen.type === 'time-result' || screen.type === 'time-comparison') {
 		const keys = screen.type === 'time-result' ? [screen.timerKey] : [screen.aKey, screen.bKey];
@@ -122,25 +109,13 @@ export function validateExam(quizzes: QuizNode[]): Issue[] {
 		quiz.parts.forEach((part) => {
 			part.screens.forEach((s, index) => {
 				const at = `${part.titleHe}[${index}]`;
-				if (isScreenEmpty(s))
+				for (const p of screenProblems(s))
 					out.push({
 						nodeId: quiz.id,
 						path: { bucket: part.id, index },
-						severity: 'warn',
-						message: `${at}: מסך ריק (ידולג בנגן)`
+						severity: p.severity,
+						message: `${at}: ${p.message}`
 					});
-				if (s.type === 'mark-all') {
-					const n = markAllSegments(s.text).filter((seg) => seg.token).length;
-					const ids = [...s.correctIndices, ...(s.categories ?? []).flatMap((c) => c.indices)];
-					const bad = ids.filter((i) => !Number.isInteger(i) || i < 0 || i >= n);
-					if (bad.length)
-						out.push({
-							nodeId: quiz.id,
-							path: { bucket: part.id, index },
-							severity: 'error',
-							message: `${at}: mark-all - אינדקסים מחוץ לטווח (0..${n - 1}): ${[...new Set(bad)].join(', ')}`
-						});
-				}
 			});
 		});
 	}

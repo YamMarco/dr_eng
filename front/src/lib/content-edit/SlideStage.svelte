@@ -6,6 +6,7 @@
 	import type { EditModelLike } from './editModelTypes';
 	import { SCREEN_TYPE_GROUPS } from './screenSkeletons';
 	import { typeHe } from './screenTypeNames';
+	import { checkScreen, type ScreenProblem } from '$lib/lesson-screens/screenChecks';
 	import {
 		activeLine,
 		formatBold,
@@ -92,20 +93,21 @@
 
 	let raw = $state('');
 	let rawOpen = $state(false);
-	let rawErr = $state('');
+	let rawProblems = $state<ScreenProblem[]>([]);
 	function openRaw() {
 		raw = JSON.stringify(screen, null, 2);
-		rawErr = '';
+		rawProblems = [];
 		rawOpen = true;
 	}
+	// Pasted JSON (often edited by an AI) goes through the same checks as the
+	// /mcp validate_screen tool; it's only applied when there are no errors.
 	function applyRaw() {
 		if (!path) return;
-		try {
-			model.applyScreen(nodeId, path, JSON.parse(raw) as LessonScreen);
-			rawOpen = false;
-		} catch (e) {
-			rawErr = e instanceof Error ? e.message : String(e);
-		}
+		const result = checkScreen(raw);
+		rawProblems = result.problems.filter((p) => p.severity === 'error');
+		if (!result.ok) return;
+		model.applyScreen(nodeId, path, result.screen);
+		rawOpen = false;
 	}
 
 	// ---- mark-all category marking ----
@@ -442,7 +444,7 @@
 				type="button"
 				title="העתקת מיקום המסך"
 				onclick={copyLocation}
-				class="absolute right-2 top-2 z-10 rounded-lg border border-dashed border-line bg-surface/90 px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
+				class="absolute top-2 right-2 z-10 rounded-lg border border-dashed border-line bg-surface/90 px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
 				dir="ltr"
 			>
 				<span class="invisible">{location}</span>
@@ -485,7 +487,13 @@
 									spellcheck="false"
 									class="w-full rounded-xl border-2 border-line bg-surface p-2 font-mono text-xs"
 								></textarea>
-								{#if rawErr}<p class="mt-1 text-xs text-danger" dir="ltr">{rawErr}</p>{/if}
+								{#if rawProblems.length}
+									<ul class="mt-1 list-disc ps-4 text-xs text-danger" dir="rtl">
+										{#each rawProblems as problem, i (i)}
+											<li>{problem.message}</li>
+										{/each}
+									</ul>
+								{/if}
 								<div class="mt-2 flex gap-2">
 									<button
 										type="button"
