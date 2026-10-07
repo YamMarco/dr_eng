@@ -38,7 +38,10 @@ export const stepsSchema = z
 	.strictObject({
 		type: z.literal('steps'),
 		steps: z.array(z.string()).describe('One string per step. Mini-markdown.'),
-		ordered: z.boolean().optional().describe('true numbers the steps; omit for the plain card look.')
+		ordered: z
+			.boolean()
+			.optional()
+			.describe('true numbers the steps; omit for the plain card look.')
 	})
 	.describe('A list of steps. Not scored.');
 
@@ -152,7 +155,9 @@ export const mcqSchema = z
 		layout: z
 			.enum(['rows', 'honeycomb'])
 			.optional()
-			.describe("'honeycomb' for a fill-the-blank vocab pick where every option is one short word or phrase."),
+			.describe(
+				"'honeycomb' for a fill-the-blank vocab pick where every option is one short word or phrase."
+			),
 		points: points.optional(),
 		paragraphRef: paragraphRef.optional()
 	})
@@ -176,9 +181,17 @@ export const clozePickSchema = z
 		type: z.literal('cloze-pick'),
 		clause: z
 			.string()
-			.describe('The fixed part, appended after the picked tile, e.g. "schools should be open 5 days instead of six."'),
-		options: z.array(z.string()).min(2).describe('Tiles for the blank: right answers mixed with decoys.'),
-		correctIndices: z.array(index).min(1).describe('Indices into options that count - any one passes.'),
+			.describe(
+				'The fixed part, appended after the picked tile, e.g. "schools should be open 5 days instead of six."'
+			),
+		options: z
+			.array(z.string())
+			.min(2)
+			.describe('Tiles for the blank: right answers mixed with decoys.'),
+		correctIndices: z
+			.array(index)
+			.min(1)
+			.describe('Indices into options that count - any one passes.'),
 		explanation: z.string().optional(),
 		points: points.optional()
 	})
@@ -205,7 +218,10 @@ export const markAllSchema = z
 			.optional()
 			.describe('Optional colour-coded buckets; their indices also count as targets.'),
 		dir: dir.optional(),
-		wordBank: z.array(z.string()).optional().describe('Optional scaffold: words to hunt, as chips.'),
+		wordBank: z
+			.array(z.string())
+			.optional()
+			.describe('Optional scaffold: words to hunt, as chips.'),
 		timerKey: timerKey.optional(),
 		points: points.optional()
 	})
@@ -219,8 +235,13 @@ export const spellWordSchema = z
 		word: z.string(),
 		mode: z
 			.enum(['copy', 'listen'])
-			.describe("'copy' shows the word (right after its card); 'listen' is dictation (later, in review/tests). Don't dictate homophones."),
-		hintHe: z.string().optional().describe('Listen mode only: Hebrew meaning, for sound-alike words.'),
+			.describe(
+				"'copy' shows the word (right after its card); 'listen' is dictation (later, in review/tests). Don't dictate homophones."
+			),
+		hintHe: z
+			.string()
+			.optional()
+			.describe('Listen mode only: Hebrew meaning, for sound-alike words.'),
 		points: points.optional()
 	})
 	.describe('Type the word. Scored: 1 point.');
@@ -231,28 +252,46 @@ export const matchPairsSchema = z
 		pairs: z.array(z.strictObject({ en: z.string(), he: z.string() })).min(2),
 		points: points.optional()
 	})
-	.describe('Match English words to Hebrew meanings. Passes with at most 1 wrong tap. Scored: 1 point.');
+	.describe(
+		'Match English words to Hebrew meanings. Passes with at most 1 wrong tap. Scored: 1 point.'
+	);
 
 export const writingTaskSchema = z
 	.strictObject({
 		type: z.literal('writing-task'),
 		prompt: z
 			.string()
-			.describe('May contain {sentences} / {words}, replaced with the Hebrew phrase for the minimums.'),
+			.describe(
+				'May contain {sentences} / {words}, replaced with the Hebrew phrase for the minimums.'
+			),
 		wordBank: z
 			.array(z.string())
 			.optional()
 			.describe('Required in lesson mode (the auto-check needs it).'),
 		minSentences: z.number().int().min(0).optional(),
 		minWordsUsed: z.number().int().min(0).optional(),
-		maxTypos: z.number().int().min(0).optional().describe('Forgiven small slips. Default 1.'),
+		maxTypos: z
+			.number()
+			.int()
+			.min(0)
+			.optional()
+			.describe(
+				'Forgiven slips (spelling, capitals, end marks; detected by lib/checks). Default 1.'
+			),
 		capitalIsError: z.boolean().optional().describe('Default true.'),
-		minWords: z.number().int().min(0).optional().describe('Quiz mode only: live word-count target.'),
+		minWords: z
+			.number()
+			.int()
+			.min(0)
+			.optional()
+			.describe('Quiz mode only: live word-count target.'),
 		maxWords: z.number().int().min(0).optional(),
 		points: points.optional(),
 		paragraphRef: paragraphRef.optional()
 	})
-	.describe('Open writing, lightly auto-checked (sentence count, capitals, word bank use). Scored: 1 point.');
+	.describe(
+		'Open writing, lightly auto-checked (sentence count, capitals, word bank use). Scored: 1 point.'
+	);
 
 export const sentenceCompletionSchema = z
 	.strictObject({
@@ -336,4 +375,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 /** Every screen type with its schema, in the order above. */
 export const screenSchemas = Object.fromEntries(
 	lessonScreenSchema.options.map((s) => [s.shape.type.value, s])
-) as Record<z.infer<typeof lessonScreenSchema>['type'], (typeof lessonScreenSchema.options)[number]>;
+) as Record<
+	z.infer<typeof lessonScreenSchema>['type'],
+	(typeof lessonScreenSchema.options)[number]
+>;

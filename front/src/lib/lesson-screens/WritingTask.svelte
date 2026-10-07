@@ -9,6 +9,8 @@
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { lintWriting, usesWord, type LintIssue } from './writingLint';
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
+	import { checkWriting, slipCheck } from '$lib/checks';
+	import { browserDictionaries } from '$lib/checks/dictionaries';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -43,25 +45,17 @@
 
 	let allFilled = $derived(lines.every((line) => line.trim().length > 0));
 
-	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
-	let capitalIsError = $derived(screen.capitalIsError ?? true);
 	// `{sentences}` / `{words}` in the prompt follow the rule numbers.
 	let prompt = $derived(
 		screen.prompt
 			.replaceAll('{sentences}', i18n.dict.writingTask.sentencesPhrase(minSentences))
 			.replaceAll('{words}', i18n.dict.writingTask.wordsPhrase(minWordsUsedReq))
 	);
-	let minorIssues = $derived(
-		lines.reduce((count, line) => {
-			const trimmed = line.trim();
-			if (!trimmed) return count;
-			let issues = 0;
-			if (capitalIsError && !/^[A-Z]/.test(trimmed)) issues++;
-			if (!/[.!?]$/.test(trimmed)) issues++;
-			return count + issues;
-		}, 0)
-	);
-	let punctuationOk = $derived(minorIssues <= maxTypos);
+	// Spelling / capitals / end marks: detected and limited by the shared check
+	// engine (one line = one sentence), with this screen's maxTypos settings.
+	let checkOptions = $derived({ prompt, extraWords: wordBank });
+	let slipResult = $state<ReturnType<typeof slipCheck> | null>(null);
+	let punctuationOk = $derived(slipResult?.ok ?? false);
 	let combinedText = $derived(lines.join(' '));
 	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
@@ -97,7 +91,9 @@
 		disabled = mode === 'quiz' ? !essayOk : !allFilled;
 	});
 
-	export function primaryAction() {
+	let checking = false;
+
+	export async function primaryAction() {
 		if (mode === 'quiz') {
 			if (!essayOk) return;
 			answerSlot!.set(essayText);
@@ -105,7 +101,11 @@
 			return;
 		}
 		if (!checked) {
-			if (!allFilled) return;
+			if (!allFilled || checking) return;
+			checking = true;
+			const report = await checkWriting(lines.join('\n'), browserDictionaries, checkOptions);
+			slipResult = slipCheck(report, screen);
+			checking = false;
 			checked = true;
 			recordAnswer(score!, allOk);
 			label = i18n.dict.lesson.nextQuestionButton;
@@ -175,11 +175,7 @@
 		{/each}
 	</div>
 
-	<WritingCheck
-		text={lines.join('\n')}
-		options={{ prompt, extraWords: wordBank }}
-		showLength={false}
-	/>
+	<WritingCheck text={lines.join('\n')} options={checkOptions} showLength={false} />
 
 	{#if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
@@ -189,7 +185,7 @@
 			</li>
 			<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
 				<span>{punctuationOk ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
+				{i18n.dict.writingTask.checkPunctuation(slipResult?.capitals ?? true, slipResult?.max ?? 1)}
 			</li>
 			<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
 				<span>{wordBankOk ? '✓' : '✗'}</span>

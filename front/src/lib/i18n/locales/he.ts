@@ -169,7 +169,7 @@ export const he = {
 		sentencesPhrase: (n: number) => (n === 1 ? 'משפט אחד' : n === 2 ? 'שני משפטים' : `${n} משפטים`),
 		wordsPhrase: (n: number) => (n === 1 ? 'מילה אחת' : n === 2 ? 'שתי מילים' : `${n} מילים`),
 		checkPunctuation: (capitalIsError: boolean, maxTypos: number) =>
-			`${capitalIsError ? 'אות גדולה ונקודה בסוף' : 'נקודה בסוף'} - ${
+			`${capitalIsError ? 'כתיב, אות גדולה ונקודה בסוף' : 'כתיב ונקודה בסוף'} - ${
 				maxTypos === 0
 					? 'ללא טעויות'
 					: maxTypos === 1
