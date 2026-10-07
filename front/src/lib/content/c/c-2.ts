@@ -421,7 +421,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n{p:text}1. **Complete the sentence**: People left the island **because** ...\n{p:text}2. **Circle the correct answer**: Why did the scientists remove the goats?\n{p:text}3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -2769,7 +2769,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "קראו את הקטע:\n\nGood **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו בדקו את עצמכם:\n\nהאם אתם מבינים מיד את כל חמש המילים המודגשות - בלי מילון ובלי לעצור?\n\nאם יש אפילו מילה אחת שגרמה לכם להסס, זה בדיוק המקום לחזק אותה.\n\nבסוף החלק הזה, המטרה היא שכל חמש המילים יהיו לכם **אוטומטיות**.",
+          text: "קראו את הקטע:\n\n{p:text}Good **education** helps students **develop** new **skills**, **improve** their confidence and **achieve** their goals.\n\nעכשיו בדקו את עצמכם:\n\nהאם אתם מבינים מיד את כל חמש המילים המודגשות - בלי מילון ובלי לעצור?\n\nאם יש אפילו מילה אחת שגרמה לכם להסס, זה בדיוק המקום לחזק אותה.\n\nבסוף החלק הזה, המטרה היא שכל חמש המילים יהיו לכם **אוטומטיות**.",
         },
         {
           type: "preface",

@@ -35,7 +35,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "בואו נראה איך זה עובד בדוגמה פשוטה. קראו את הטקסט:\n\nElephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants.\n\nהשאלה:\n**Where do elephants live?**",
+          text: "בואו נראה איך זה עובד בדוגמה פשוטה. קראו את הטקסט:\n\n{p:text}Elephants are the largest land animals on Earth. They live in Africa and Asia. African elephants are bigger than Asian elephants.\n\nהשאלה:\n{p:text}**Where do elephants live?**",
         },
         {
           type: "steps",
@@ -191,7 +191,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת:\n**THE RETURN OF THE TREES**\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
+          text: "אתם לא מתחילים לקרוא בלי כיוון.\n\nלפני שקוראים מילה אחת - בונים מפה.\n\nיש לכם את הכותרת:\n{p:text}**THE RETURN OF THE TREES**\nהטקסט קשור לעצים. זה כבר מידע.\n\nעכשיו קוראים את הפסקה הראשונה - רק אותה. תוך 30 שניות כבר יש לכם מפה בראש.\nהמפה לא מספרת לכם את כל הטקסט. היא רק אומרת על מה הטקסט מדבר ולאן הוא הולך. וזה כבר מספיק כדי לא ללכת לאיבוד.",
         },
         {
           type: "preface",
@@ -209,7 +209,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "## דוגמה: מפרקים את הפסקה הראשונה\n\nEvery year, forests around the world are destroyed by fire, farming, and pollution.\nHowever, there is good news.\nIn 2019, scientists started a project to plant one billion trees in Africa by 2030.\nThe project has already planted over 200 million trees in 15 countries.\n\nעכשיו מפרקים אותה בארבע שאלות קצרות.",
+          text: "## דוגמה: מפרקים את הפסקה הראשונה\n\n{p:text}Every year, forests around the world are destroyed by fire, farming, and pollution.\n{p:text}However, there is good news.\n{p:text}In 2019, scientists started a project to plant one billion trees in Africa by 2030.\n{p:text}The project has already planted over 200 million trees in 15 countries.\n\nעכשיו מפרקים אותה בארבע שאלות קצרות.",
         },
         {
           type: "preface",
@@ -435,11 +435,11 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4\n**מה לחפש?** → סיבה\n**למה?** → לירידה במספר בעלי החיים\n**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
+          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n{p:text}**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4\n**מה לחפש?** → סיבה\n**למה?** → לירידה במספר בעלי החיים\n**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
         },
         {
           type: "preface",
-          text: "חוק הזהב\n\nלפני כל שאלה, שואלים: **\"האם אני יכול להסביר בעברית מה השאלה רוצה ממני?\"**\n\n🟢 כן - GO\n🟡 בערך - STOP AND CHECK\n🔴 לא - STOP\n\n**Don't answer a question you don't understand.**\nאל תחפשו תשובה לשאלה שאתם עדיין לא מבינים.",
+          text: "חוק הזהב\n\nלפני כל שאלה, שואלים: **\"האם אני יכול להסביר בעברית מה השאלה רוצה ממני?\"**\n\n🟢 כן - GO\n🟡 בערך - STOP AND CHECK\n🔴 לא - STOP\n\n{p:text}**Don't answer a question you don't understand.**\nאל תחפשו תשובה לשאלה שאתם עדיין לא מבינים.",
         },
         {
           type: "steps",
@@ -735,23 +735,23 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "**מהי מילת מפתח?**\nמילת מפתח היא מילה שעוזרת לנו לדעת **מה לחפש בטקסט**.\n\nבדרך כלל זו מילה חשובה מתוך השאלה - למשל:\nאדם, מקום, דבר, רעיון או פעולה מרכזית\n\nמילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\nלמשל:\n**Why did the scientists start the project?**\n**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists**, **project**\nאלה המילים שנחפש בטקסט, או מילים דומות להן.\n\nהמטרה של מילת המפתח היא פשוטה:\nבמקום לקרוא שוב את כל הטקסט, אנחנו מחפשים את המילה החשובה - וכך מגיעים מהר יותר לאזור שבו נמצאת התשובה.",
+          text: "**מהי מילת מפתח?**\nמילת מפתח היא מילה שעוזרת לנו לדעת **מה לחפש בטקסט**.\n\nבדרך כלל זו מילה חשובה מתוך השאלה - למשל:\nאדם, מקום, דבר, רעיון או פעולה מרכזית\n\nמילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\nלמשל:\n{p:text}**Why did the scientists start the project?**\n**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists**, **project**\nאלה המילים שנחפש בטקסט, או מילים דומות להן.\n\nהמטרה של מילת המפתח היא פשוטה:\nבמקום לקרוא שוב את כל הטקסט, אנחנו מחפשים את המילה החשובה - וכך מגיעים מהר יותר לאזור שבו נמצאת התשובה.",
         },
         {
           type: "preface",
-          text: '### דוגמה: רמזור ירוק\n\n{a:left}**GREEN AFRICA - Paragraph II**\n\n{a:left}The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nהשאלה:\n**According to Dr. Diallo, why do most trees die?**\nקודם בודקים: האם אני מבין מה רוצים ממני?\n**According to Dr. Diallo** = לפי ד"ר דיאלו\n**why** = למה / מה הסיבה\n**most trees die** = רוב העצים מתים\nעכשיו אני יכול להסביר את השאלה בעברית:\n**לפי ד"ר דיאלו, למה רוב העצים מתים?**\n🟢 **ירוק - השאלה ברורה.**',
+          text: '### דוגמה: רמזור ירוק\n\n{a:left}{p:text}**GREEN AFRICA - Paragraph II**\n\n{a:left}{p:text}The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nהשאלה:\n{p:text}**According to Dr. Diallo, why do most trees die?**\nקודם בודקים: האם אני מבין מה רוצים ממני?\n**According to Dr. Diallo** = לפי ד"ר דיאלו\n**why** = למה / מה הסיבה\n**most trees die** = רוב העצים מתים\nעכשיו אני יכול להסביר את השאלה בעברית:\n**לפי ד"ר דיאלו, למה רוב העצים מתים?**\n🟢 **ירוק - השאלה ברורה.**',
         },
         {
           type: "preface",
-          text: "עכשיו זה פשוט:\n🔵 **איפה מחפשים?** בפסקה II.\n🟢 **מי מופיע בשאלה?** ד״ר דיאלו.\n🟡 **מה השאלה מבקשת?** סיבה - למה רוב העצים מתים?\n🔴 **עכשיו מחפשים את המשפט המתאים:**\n**“Most trees die because nobody looks after them.”**\n✅ **התשובה:** **Because nobody looks after them.**\n📌 **זכרו:** **מבינים את השאלה → יודעים איפה לחפש → מוצאים את המשפט → עונים.**",
+          text: "עכשיו זה פשוט:\n🔵 **איפה מחפשים?** בפסקה II.\n🟢 **מי מופיע בשאלה?** ד״ר דיאלו.\n🟡 **מה השאלה מבקשת?** סיבה - למה רוב העצים מתים?\n🔴 **עכשיו מחפשים את המשפט המתאים:**\n{p:text}**“Most trees die because nobody looks after them.”**\n✅ **התשובה:** **Because nobody looks after them.**\n📌 **זכרו:** **מבינים את השאלה → יודעים איפה לחפש → מוצאים את המשפט → עונים.**",
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור צהוב\n**GREEN AFRICA - Paragraph II**\n“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב - לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה\n**local people** = אנשים מקומיים\n**are involved** = משתתפים / מעורבים\n**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n",
+          text: "### דוגמה: רמזור צהוב\n{p:text}**GREEN AFRICA - Paragraph II**\n{p:text}“The project is led by Dr. Amara Diallo, a scientist from Senegal. ‘We do not just plant trees,’ says Dr. Diallo. ‘We teach local people how to care for them.’ According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.”\nהשאלה:\n{p:text}**What happens when local people are involved in the project?**\nאני מבין כמעט את כל השאלה, אבל המילה **involved** לא לגמרי ברורה לי.\n🟡 **צהוב - לא מנחשים.**\nמפרקים:\n**What happens** = מה קורה\n**local people** = אנשים מקומיים\n**are involved** = משתתפים / מעורבים\n**in the project** = בפרויקט\nעכשיו השאלה ברורה:\n**מה קורה כאשר האנשים המקומיים משתתפים בפרויקט?**\n",
         },
         {
           type: "preface",
-          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורבים\nמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n85% of the trees survive.\n\nשימו לב: בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
+          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורבים\nמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n{p:text}“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n{p:text}85% of the trees survive.\n\nשימו לב: בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
         },
       ],
       rounds: [
@@ -1900,7 +1900,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: '"According to Dr. Okafor, what is the MOST effective type of volunteering?"\n\nתלמיד קרא את הטקסט. מצא שני סוגי התנדבות. כתב את שניהם.\nשניהם נכונים. שניהם מהטקסט.\nציון: 0 נקודות.',
+          text: '{p:text}"According to Dr. Okafor, what is the MOST effective type of volunteering?"\n\nתלמיד קרא את הטקסט. מצא שני סוגי התנדבות. כתב את שניהם.\nשניהם נכונים. שניהם מהטקסט.\nציון: 0 נקודות.',
         },
         {
           type: "preface",
@@ -1918,7 +1918,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\nלא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n📍 בפסקה II כתוב:\n**“The most effective programmes bring young people face to face with the people they help.”**\n\n✅ לכן התשובה:\n**Programmes that bring young people face to face with the people they help.**\n\nוזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n⭐ הכלל: **השאלה ביקשה ONE BEST / MOST EFFECTIVE → נותנים תשובה אחת מדויקת.**",
+          text: "השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\nלא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n\n✅ לכן התשובה:\n{p:text}**Programmes that bring young people face to face with the people they help.**\n\nוזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n⭐ הכלל: **השאלה ביקשה ONE BEST / MOST EFFECTIVE → נותנים תשובה אחת מדויקת.**",
         },
       ],
       rounds: [
@@ -2364,7 +2364,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'סיטואציה מהבחינה:\n\n"What do experts say about people who cannot swim?"\n\nהתלמיד קרא: "Many people cannot swim. However, experts say it is never too late."\nהוא כתב: "Many people cannot swim."\nציון: 0 נקודות.',
+          text: 'סיטואציה מהבחינה:\n\n{p:text}"What do experts say about people who cannot swim?"\n\nהתלמיד קרא: "Many people cannot swim. However, experts say it is never too late."\nהוא כתב: "Many people cannot swim."\nציון: 0 נקודות.',
         },
         {
           type: "preface",
@@ -2384,7 +2384,7 @@ export const c1Lessons: LessonNode[] = [
           steps: [
             "WATCH IT - השאלה: What does Dr. Okafor say about different types of volunteering?",
             "מחפשים however בפסקה II.",
-            '"However, not all types of volunteering produce the same results."',
+            '{p:text}"However, not all types of volunteering produce the same results."',
             "מה בא אחרי however? זו התשובה: Not all types of volunteering produce the same results.",
           ],
         },
@@ -3109,7 +3109,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT - REDONDA ISLAND\n\n"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n← In order to let the plants grow back.',
+          text: 'WATCH IT - REDONDA ISLAND\n\n{p:text}"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n{p:text}← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n{p:text}← In order to let the plants grow back.',
         },
       ],
       rounds: [
