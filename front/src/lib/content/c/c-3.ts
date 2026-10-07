@@ -622,7 +622,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '{p:text}❌ Volunteering very important for teenagers.\nחסר: is. → "Volunteering is very important for teenagers." ✅\n\n{p:text}❌ Students they learn new things.\nעודף: they. → "Students learn new things." ✅\n\n{p:text}❌ Because schools need change.\nזה לא משפט - זה רק חלק ממשפט.\n→ "I think this because schools need to change." ✅',
+          text: '{p:text}❌ Volunteering very important for teenagers.\nחסר: is. → "Volunteering is very important for teenagers." ✅\n\n{p:text}❌ Students they learn new things.\nעודף: they. → "Students learn new things." ✅\n\n{p:text}❌ Because schools need change.\nזה לא משפט - זה רק חלק ממשפט.\n{p:text}→ "I think this because schools need to change." ✅',
         },
         {
           type: "summary",
