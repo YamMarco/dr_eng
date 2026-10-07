@@ -243,27 +243,45 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "מפת הדרכים = כותרת + פסקה 1. היא אומרת לכם על מה הטקסט ולאן הוא הולך - לפני שנוגעים בשאלות." },
+            {
+              type: "preface",
+              text: "מפת הדרכים = כותרת + פסקה 1. היא אומרת לכם על מה הטקסט ולאן הוא הולך - לפני שנוגעים בשאלות.",
+            },
             {
               type: "mcq",
               prompt: "מה קוראים כדי לבנות את מפת הדרכים?",
-              options: ["את כל הטקסט", "כותרת + כל הפסקאות", "כותרת + פסקה 1 בלבד"],
+              options: [
+                "את כל הטקסט",
+                "כותרת + כל הפסקאות",
+                "כותרת + פסקה 1 בלבד",
+              ],
               correctIndex: 2,
-              explanation: "כותרת + פסקה 1 = 30 שניות. זה מספיק כדי לדעת את הנושא.",
+              explanation:
+                "כותרת + פסקה 1 = 30 שניות. זה מספיק כדי לדעת את הנושא.",
             },
             {
               type: "mcq",
               prompt: "מה מפת הדרכים נותנת לכם?",
-              options: ["את כל התשובות לשאלות", "את הנושא והכיוון של הטקסט - כדי לא ללכת לאיבוד", "את התרגום של כל המילים הקשות"],
+              options: [
+                "את כל התשובות לשאלות",
+                "את הנושא והכיוון של הטקסט - כדי לא ללכת לאיבוד",
+                "את התרגום של כל המילים הקשות",
+              ],
               correctIndex: 1,
-              explanation: "המפה לא עונה על השאלות. היא נותנת נושא וכיוון - ואז יודעים איפה אנחנו.",
+              explanation:
+                "המפה לא עונה על השאלות. היא נותנת נושא וכיוון - ואז יודעים איפה אנחנו.",
             },
             {
               type: "mcq",
-              prompt: "קראו את הכותרת: \"THE RETURN OF THE TREES\". על מה הטקסט?",
-              options: ["על בניינים בעיר", "על עצים שחוזרים ונשתלים", "על בעלי חיים בסכנה"],
+              prompt: 'קראו את הכותרת: "THE RETURN OF THE TREES". על מה הטקסט?',
+              options: [
+                "על בניינים בעיר",
+                "על עצים שחוזרים ונשתלים",
+                "על בעלי חיים בסכנה",
+              ],
               correctIndex: 1,
-              explanation: "כותרת = נושא. THE RETURN OF THE TREES = עצים שחוזרים.",
+              explanation:
+                "כותרת = נושא. THE RETURN OF THE TREES = עצים שחוזרים.",
             },
             { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
             {
@@ -272,7 +290,12 @@ export const c1Lessons: LessonNode[] = [
               questions: [
                 {
                   prompt: "קראו כותרת + פסקה 1 בלבד. על מה הטקסט?",
-                  options: ["על מחקר בבריאות", "על גינות בעיר ועל שינוי סביבתי", "על חינוך בבתי ספר", "על תחבורה ציבורית"],
+                  options: [
+                    "על מחקר בבריאות",
+                    "על גינות בעיר ועל שינוי סביבתי",
+                    "על חינוך בבתי ספר",
+                    "על תחבורה ציבורית",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -281,19 +304,32 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?" },
+            {
+              type: "preface",
+              text: "YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?",
+            },
             {
               type: "passage-mcq",
               text: "LEARNING TO SWIM AS AN ADULT\n\nLearning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed and never try to learn. However, experts say it is never too late.",
               questions: [
                 {
                   prompt: "על מה הטקסט?",
-                  options: ["ילדים שלומדים לשחות", "בריכות שחייה בערים גדולות", "מבוגרים שלומדים לשחות", "סקר על ערים גדולות"],
+                  options: [
+                    "ילדים שלומדים לשחות",
+                    "בריכות שחייה בערים גדולות",
+                    "מבוגרים שלומדים לשחות",
+                    "סקר על ערים גדולות",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "אילו מילים בפסקה נתנו לכם את התשובה?",
-                  options: ["\"adults\" ו-\"cannot swim\"", "\"survey\" ו-\"cities\"", "\"experts\" ו-\"late\"", "\"many people\" ו-\"think\""],
+                  options: [
+                    '"adults" ו-"cannot swim"',
+                    '"survey" ו-"cities"',
+                    '"experts" ו-"late"',
+                    '"many people" ו-"think"',
+                  ],
                   correctIndex: 0,
                 },
               ],
@@ -301,56 +337,95 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ["\"30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה.\""],
+              lines: ['"30 שניות. כותרת + פסקה 1. עכשיו יש לי מפה."'],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.",
+            },
             {
               type: "passage-mcq",
-              text: "**THE CITY GARDEN PROJECT**\n\nI  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. \"We wanted to show that any city can become greener,\" she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
+              text: '**THE CITY GARDEN PROJECT**\n\nI  Five years ago, the streets of Greenville had almost no plants or trees. The air was polluted, and most residents felt that the city was an unpleasant place to live. A local charity decided to change this. They planted over 2,000 trees and created 15 community gardens across the city. Today, Greenville looks very different.\n\nII  The person behind this change is Dr. Maria Santos, a professor at Greenville University. "We wanted to show that any city can become greener," she says. According to Dr. Santos, the project cost only 500,000 dollars - much less than similar projects in other cities.\n\nIII  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.',
               questions: [
                 {
                   prompt: "What do we learn from paragraph I?",
-                  options: ["Greenville was always a green city", "Greenville University planted the trees", "A charity made Greenville greener", "The air in Greenville is still polluted"],
+                  options: [
+                    "Greenville was always a green city",
+                    "Greenville University planted the trees",
+                    "A charity made Greenville greener",
+                    "The air in Greenville is still polluted",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "What problem did Greenville have five years ago?",
-                  options: ["It had too many tourists", "It had almost no plants or trees, and the air was polluted", "It had no university", "Its gardens were too expensive"],
+                  options: [
+                    "It had too many tourists",
+                    "It had almost no plants or trees, and the air was polluted",
+                    "It had no university",
+                    "Its gardens were too expensive",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "Who is the person behind the change?",
-                  options: ["Professor James Lee", "A local charity worker", "The mayor of Greenville", "Dr. Maria Santos"],
+                  options: [
+                    "Professor James Lee",
+                    "A local charity worker",
+                    "The mayor of Greenville",
+                    "Dr. Maria Santos",
+                  ],
                   correctIndex: 3,
                 },
                 {
                   prompt: "What is the text mainly about?",
-                  options: ["How a city became greener, and what changed", "Why trees are expensive", "How to build a park", "Stress in big cities"],
+                  options: [
+                    "How a city became greener, and what changed",
+                    "Why trees are expensive",
+                    "How to build a park",
+                    "Stress in big cities",
+                  ],
                   correctIndex: 0,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**THE COMEBACK OF BOARD GAMES**\n\nI  Twenty years ago, many people thought board games would disappear. Children spent their free time on computers and phones, and toy shops had fewer games on their shelves every year. Today, however, board games are more popular than ever.\n\nII  According to a report from 2023, sales of board games have grown by 25% in five years. Board game cafes, where people pay to play with friends, have opened in many cities. \"People are tired of screens,\" says cafe owner Daniel Ortiz. \"They want to sit around a table and laugh together.\"\n\nIII  Teachers have noticed the change too. Some schools now use board games in maths and language lessons. Research shows that students who play strategy games learn to plan ahead and make better decisions.",
+              text: '**THE COMEBACK OF BOARD GAMES**\n\nI  Twenty years ago, many people thought board games would disappear. Children spent their free time on computers and phones, and toy shops had fewer games on their shelves every year. Today, however, board games are more popular than ever.\n\nII  According to a report from 2023, sales of board games have grown by 25% in five years. Board game cafes, where people pay to play with friends, have opened in many cities. "People are tired of screens," says cafe owner Daniel Ortiz. "They want to sit around a table and laugh together."\n\nIII  Teachers have noticed the change too. Some schools now use board games in maths and language lessons. Research shows that students who play strategy games learn to plan ahead and make better decisions.',
               questions: [
                 {
                   prompt: "What do we learn from paragraph I?",
-                  options: ["Children prefer computers to board games", "Board games did not disappear - they are popular again", "Toy shops are closing", "Board games were invented twenty years ago"],
+                  options: [
+                    "Children prefer computers to board games",
+                    "Board games did not disappear - they are popular again",
+                    "Toy shops are closing",
+                    "Board games were invented twenty years ago",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "What is the text mainly about?",
-                  options: ["Board game cafes in big cities", "Why people are tired of screens", "Board games becoming popular again", "Using games in maths lessons"],
+                  options: [
+                    "Board game cafes in big cities",
+                    "Why people are tired of screens",
+                    "Board games becoming popular again",
+                    "Using games in maths lessons",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Daniel Ortiz, why do people come to play board games?",
-                  options: ["Because games are cheap", "Because schools use them", "Because sales grew by 25%", "Because they are tired of screens"],
+                  prompt:
+                    "According to Daniel Ortiz, why do people come to play board games?",
+                  options: [
+                    "Because games are cheap",
+                    "Because schools use them",
+                    "Because sales grew by 25%",
+                    "Because they are tired of screens",
+                  ],
                   correctIndex: 3,
                 },
               ],
@@ -359,14 +434,21 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nעוד מפה על טקסט מוכר." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nעוד מפה על טקסט מוכר.",
+            },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
               questions: [
                 {
                   prompt: "על מה הטקסט?",
-                  options: ["על זיהום אוויר בערים", "על פרויקט נטיעת עצים באפריקה", "על כריתת יערות בעולם"],
+                  options: [
+                    "על זיהום אוויר בערים",
+                    "על פרויקט נטיעת עצים באפריקה",
+                    "על כריתת יערות בעולם",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -390,8 +472,10 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt: "כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?",
-              modelAnswer: "30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות \"עיוור\".",
+              prompt:
+                "כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?",
+              modelAnswer:
+                '30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות "עיוור".',
             },
           ],
         },
@@ -597,13 +681,23 @@ export const c1Lessons: LessonNode[] = [
               text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               questions: [
                 {
-                  prompt: "השאלה: \"According to Dr. Okafor, what is one benefit of volunteering for teenagers?\" - המילה benefit לא מוכרת לכם. מה הצבע?",
-                  options: ["🟢 ירוק - עונים מיד", "🟡 צהוב - בודקים benefit במילון, ורק אז מחפשים", "🔴 אדום - מדלגים על השאלה"],
+                  prompt:
+                    'השאלה: "According to Dr. Okafor, what is one benefit of volunteering for teenagers?" - המילה benefit לא מוכרת לכם. מה הצבע?',
+                  options: [
+                    "🟢 ירוק - עונים מיד",
+                    "🟡 צהוב - בודקים benefit במילון, ורק אז מחפשים",
+                    "🔴 אדום - מדלגים על השאלה",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "benefit = יתרון. מה התשובה?",
-                  options: ["All types of volunteering produce the same results", "They meet the people they help", "They feel less stressed", "They study for ten years"],
+                  options: [
+                    "All types of volunteering produce the same results",
+                    "They meet the people they help",
+                    "They feel less stressed",
+                    "They study for ten years",
+                  ],
                   correctIndex: 2,
                 },
               ],
@@ -617,29 +711,54 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.",
+            },
             {
               type: "passage-mcq",
-              text: "**LEARNING TO SWIM AS AN ADULT**\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              text: '**LEARNING TO SWIM AS AN ADULT**\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
               questions: [
                 {
-                  prompt: "השאלה: \"According to the survey, what proportion of adults in large cities cannot swim?\" - המילה proportion לא ברורה. מה הצבע?",
-                  options: ["🟢 ירוק - עונים מיד", "🟡 צהוב - בודקים proportion במילון, ורק אז מחפשים", "🔴 אדום - מדלגים"],
+                  prompt:
+                    'השאלה: "According to the survey, what proportion of adults in large cities cannot swim?" - המילה proportion לא ברורה. מה הצבע?',
+                  options: [
+                    "🟢 ירוק - עונים מיד",
+                    "🟡 צהוב - בודקים proportion במילון, ורק אז מחפשים",
+                    "🔴 אדום - מדלגים",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "proportion = חלק / שיעור. מה התשובה?",
-                  options: ["Over 30%", "Most of them", "Three sessions a week", "Less than two months"],
+                  options: [
+                    "Over 30%",
+                    "Most of them",
+                    "Three sessions a week",
+                    "Less than two months",
+                  ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "According to Dr. Klein, what are adults not afraid of?",
-                  options: ["Deep water", "Making mistakes", "Asking questions", "Swimming with children"],
+                  prompt:
+                    "According to Dr. Klein, what are adults not afraid of?",
+                  options: [
+                    "Deep water",
+                    "Making mistakes",
+                    "Asking questions",
+                    "Swimming with children",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to instructors, how long does it usually take adults who practice regularly to make good progress?",
-                  options: ["More than a year", "Less than two months", "One week", "Three sessions"],
+                  prompt:
+                    "According to instructors, how long does it usually take adults who practice regularly to make good progress?",
+                  options: [
+                    "More than a year",
+                    "Less than two months",
+                    "One week",
+                    "Three sessions",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -649,18 +768,35 @@ export const c1Lessons: LessonNode[] = [
               text: "**SLEEPING IN SPACE**\n\nI  Astronauts on the International Space Station see the sun rise and set 16 times every day. Because of this, their bodies often lose track of time, and many of them find it hard to fall asleep.\n\nII  To deal with this problem, the station uses special lights. In the evening, the lights become warmer and softer, which helps the astronauts feel tired. According to Dr. Laura Kim, a sleep researcher, astronauts who use the new lights sleep about 40 minutes longer each night.\n\nIII  Sleeping without gravity is also strange. Astronauts sleep in small bags attached to the wall, so they do not float around and hit anything. Many say that after a few weeks, it feels surprisingly comfortable.",
               questions: [
                 {
-                  prompt: "השאלה: \"What do astronauts do to avoid floating around while they sleep?\" - המילה avoid לא ברורה. מה עושים?",
-                  options: ["מנחשים לפי המילה sleep", "avoid = להימנע. בודקים, ורק אז מחפשים", "מוותרים על השאלה"],
+                  prompt:
+                    'השאלה: "What do astronauts do to avoid floating around while they sleep?" - המילה avoid לא ברורה. מה עושים?',
+                  options: [
+                    "מנחשים לפי המילה sleep",
+                    "avoid = להימנע. בודקים, ורק אז מחפשים",
+                    "מוותרים על השאלה",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "What do astronauts do to avoid floating around while they sleep?",
-                  options: ["They take sleeping pills", "They turn off the lights", "They sleep in small bags attached to the wall", "They sleep for 40 minutes"],
+                  prompt:
+                    "What do astronauts do to avoid floating around while they sleep?",
+                  options: [
+                    "They take sleeping pills",
+                    "They turn off the lights",
+                    "They sleep in small bags attached to the wall",
+                    "They sleep for 40 minutes",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Dr. Laura Kim, how much longer do astronauts sleep with the new lights?",
-                  options: ["About 16 minutes", "About 40 minutes", "A few weeks", "Twice as long"],
+                  prompt:
+                    "According to Dr. Laura Kim, how much longer do astronauts sleep with the new lights?",
+                  options: [
+                    "About 16 minutes",
+                    "About 40 minutes",
+                    "A few weeks",
+                    "Twice as long",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -672,17 +808,23 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nצבע לכל שאלה." },
             {
               type: "mcq",
-              prompt: "\"What do we learn from paragraph I?\" - מה הצבע שלכם?",
-              options: ["🔴 אדום - לא מבין", "🟡 צהוב - מבין חלקית", "🟢 ירוק - \"מה לומדים מפסקה 1?\""],
+              prompt: '"What do we learn from paragraph I?" - מה הצבע שלכם?',
+              options: [
+                "🔴 אדום - לא מבין",
+                "🟡 צהוב - מבין חלקית",
+                '🟢 ירוק - "מה לומדים מפסקה 1?"',
+              ],
               correctIndex: 2,
-              explanation: "🟢 ירוק. \"מה לומדים מפסקה 1?\" - ברור. עונים.",
+              explanation: '🟢 ירוק. "מה לומדים מפסקה 1?" - ברור. עונים.',
             },
             {
               type: "mcq",
-              prompt: "איזו שאלה היא 🟡 צהוב - כלומר דורשת מילון?\n\n1. \"According to Dr. Diallo, why do trees die?\"\n2. \"What does contribute mean in paragraph II?\"\n3. \"Give ONE answer from paragraph III.\"",
+              prompt:
+                'איזו שאלה היא 🟡 צהוב - כלומר דורשת מילון?\n\n1. "According to Dr. Diallo, why do trees die?"\n2. "What does contribute mean in paragraph II?"\n3. "Give ONE answer from paragraph III."',
               options: ["שאלה 1", "שאלה 2", "שאלה 3", "כל השלוש"],
               correctIndex: 1,
-              explanation: "according to + why = ירוק. \"give ONE answer\" = ירוק. מילה לא מוכרת בשאלה = צהוב ← מילון.",
+              explanation:
+                'according to + why = ירוק. "give ONE answer" = ירוק. מילה לא מוכרת בשאלה = צהוב ← מילון.',
             },
             {
               type: "mcq",
@@ -698,20 +840,24 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "mcq",
-              prompt: "אילו שאלות דורשות מילון?\n\n1. \"What do we learn from paragraph I?\"\n2. \"What does environmentalists mean?\"\n3. \"According to Dr. Klein, give ONE reason.\"\n4. \"How did the phenomenon affect students?\"\n5. \"Give TWO answers from paragraph III.\"",
+              prompt:
+                'אילו שאלות דורשות מילון?\n\n1. "What do we learn from paragraph I?"\n2. "What does environmentalists mean?"\n3. "According to Dr. Klein, give ONE reason."\n4. "How did the phenomenon affect students?"\n5. "Give TWO answers from paragraph III."',
               options: ["1 ו-3", "2 ו-4", "3 ו-5", "כולן"],
               correctIndex: 1,
-              explanation: "environmentalists ו-phenomenon אינן ברורות ← מילון. השאר ירוקות.",
+              explanation:
+                "environmentalists ו-phenomenon אינן ברורות ← מילון. השאר ירוקות.",
             },
             {
               type: "self-check",
-              prompt: "מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.",
+              prompt:
+                "מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.",
               modelAnswer: "רק ירוק = עונה. צהוב מרגיש כמו ירוק - אבל הוא לא.",
             },
             {
               type: "self-check",
-              prompt: "תלמיד קרא שאלה, \"הבין\", ענה - וקיבל 0. מה כנראה קרה?",
-              modelAnswer: "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
+              prompt: 'תלמיד קרא שאלה, "הבין", ענה - וקיבל 0. מה כנראה קרה?',
+              modelAnswer:
+                "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
             },
           ],
         },
@@ -757,36 +903,60 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "P1 = שאלה ← מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה. לא קוראים את כל הטקסט." },
+            {
+              type: "preface",
+              text: "P1 = שאלה ← מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה. לא קוראים את כל הטקסט.",
+            },
             {
               type: "mcq",
-              prompt: "\"According to Dr. Diallo, why do most trees die?\" - מהי מילת המפתח?",
-              options: ["\"why\"", "\"Dr. Diallo\" / \"trees die\"", "\"According\""],
+              prompt:
+                '"According to Dr. Diallo, why do most trees die?" - מהי מילת המפתח?',
+              options: ['"why"', '"Dr. Diallo" / "trees die"', '"According"'],
               correctIndex: 1,
-              explanation: "\"Dr. Diallo\" ו-\"trees die\" הן מה שמחפשים בטקסט. \"why\" ו-\"according\" הן מילות שאלה.",
+              explanation:
+                '"Dr. Diallo" ו-"trees die" הן מה שמחפשים בטקסט. "why" ו-"according" הן מילות שאלה.',
             },
             {
               type: "mcq",
               prompt: "מהו הסדר הנכון של חמשת שלבי P1?",
-              options: ["קרא השאלה ← מצא מילת מפתח ← אתר בטקסט ← קרא את המשפט ← ענה", "קרא את הטקסט ← קרא השאלה ← ענה ← בדוק ← סיים", "מצא מילת מפתח ← קרא השאלה ← ענה ← אתר בטקסט ← קרא", "קרא השאלה ← ענה ← אתר בטקסט ← קרא את המשפט ← בדוק"],
+              options: [
+                "קרא השאלה ← מצא מילת מפתח ← אתר בטקסט ← קרא את המשפט ← ענה",
+                "קרא את הטקסט ← קרא השאלה ← ענה ← בדוק ← סיים",
+                "מצא מילת מפתח ← קרא השאלה ← ענה ← אתר בטקסט ← קרא",
+                "קרא השאלה ← ענה ← אתר בטקסט ← קרא את המשפט ← בדוק",
+              ],
               correctIndex: 0,
-              explanation: "1-קרא השאלה · 2-מילת מפתח · 3-אתר בטקסט · 4-קרא את המשפט · 5-ענה.",
+              explanation:
+                "1-קרא השאלה · 2-מילת מפתח · 3-אתר בטקסט · 4-קרא את המשפט · 5-ענה.",
             },
             {
               type: "mcq",
               prompt: "בשלב 4 של P1 - מה קוראים?",
-              options: ["את כל הפסקה", "את המשפט עם מילת המפתח, ואולי את זה שלפניו או אחריו", "את כל הטקסט מההתחלה"],
+              options: [
+                "את כל הפסקה",
+                "את המשפט עם מילת המפתח, ואולי את זה שלפניו או אחריו",
+                "את כל הטקסט מההתחלה",
+              ],
               correctIndex: 1,
               explanation: "קוראים רק את האזור של מילת המפתח. שם נמצאת התשובה.",
             },
-            { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית - שלב אחרי שלב." },
+            {
+              type: "preface",
+              text: "ועכשיו טקסט ושאלה אמיתית - שלב אחרי שלב.",
+            },
             {
               type: "passage-mcq",
-              text: "**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              text: '**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
               questions: [
                 {
-                  prompt: "השאלה: What do we learn from paragraph I about the Green Africa project? - מהי מילת המפתח?",
-                  options: ["forests", "Green Africa", "However", "scientists say"],
+                  prompt:
+                    "השאלה: What do we learn from paragraph I about the Green Africa project? - מהי מילת המפתח?",
+                  options: [
+                    "forests",
+                    "Green Africa",
+                    "However",
+                    "scientists say",
+                  ],
                   correctIndex: 1,
                 },
                 {
@@ -796,7 +966,12 @@ export const c1Lessons: LessonNode[] = [
                 },
                 {
                   prompt: "מה התשובה?",
-                  options: ["It teaches local people how to care for trees", "It has already planted over 200 million trees in 15 countries", "It made rivers in Kenya flow again", "It reduced carbon by 15%"],
+                  options: [
+                    "It teaches local people how to care for trees",
+                    "It has already planted over 200 million trees in 15 countries",
+                    "It made rivers in Kenya flow again",
+                    "It reduced carbon by 15%",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -805,7 +980,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)" },
+            {
+              type: "preface",
+              text: "YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)",
+            },
             {
               type: "mcq",
               prompt: "שלב 2 - מהי מילת המפתח שתחפשו בטקסט?",
@@ -821,25 +999,38 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ["\"הטקסט קשה? לא מבין? - P1 עדיין עובד. מחפש, לא קורא.\""],
+              lines: ['"הטקסט קשה? לא מבין? - P1 עדיין עובד. מחפש, לא קורא."'],
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. שימו לב: לפעמים בטקסט כתובה מילה אחרת מזו שבשאלה, עם אותה משמעות." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. שימו לב: לפעמים בטקסט כתובה מילה אחרת מזו שבשאלה, עם אותה משמעות.",
+            },
             {
               type: "passage-mcq",
-              text: "**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              text: '**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
               questions: [
                 {
                   prompt: "According to Dr. Diallo, why do most trees die?",
-                  options: ["Because of fire and farming", "Because nobody looks after them", "Because it does not rain", "Because they are planted too late"],
+                  options: [
+                    "Because of fire and farming",
+                    "Because nobody looks after them",
+                    "Because it does not rain",
+                    "Because they are planted too late",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "What happened to the rivers in Kenya?",
-                  options: ["They dried up", "They flooded villages", "They began to flow again", "They became cleaner"],
+                  options: [
+                    "They dried up",
+                    "They flooded villages",
+                    "They began to flow again",
+                    "They became cleaner",
+                  ],
                   correctIndex: 2,
                 },
                 {
@@ -849,28 +1040,49 @@ export const c1Lessons: LessonNode[] = [
                 },
                 {
                   prompt: "What happens when local people are involved?",
-                  options: ["85% of trees survive", "The number of birds increases by 60%", "Trees grow faster", "Carbon goes down by 15%"],
+                  options: [
+                    "85% of trees survive",
+                    "The number of birds increases by 60%",
+                    "Trees grow faster",
+                    "Carbon goes down by 15%",
+                  ],
                   correctIndex: 0,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**BEES IN THE CITY**\n\nI  Bees are disappearing from many parts of the world. Farmers need them, because bees carry pollen from flower to flower and help fruit and vegetables grow. Without bees, many foods would become rare and expensive.\n\nII  In 2019, the city of Utrecht in the Netherlands found a simple way to help. It turned the roofs of more than 300 bus stops into small gardens full of flowers. \"The bees love them,\" says city gardener Lotte Visser. \"And the plants also keep the bus stops cooler in summer.\"\n\nIII  Other cities have copied the idea. London and Toronto are now testing green roofs on their own bus stops. Scientists believe that cities, with their parks and gardens, could become safe homes for bees in the future.",
+              text: '**BEES IN THE CITY**\n\nI  Bees are disappearing from many parts of the world. Farmers need them, because bees carry pollen from flower to flower and help fruit and vegetables grow. Without bees, many foods would become rare and expensive.\n\nII  In 2019, the city of Utrecht in the Netherlands found a simple way to help. It turned the roofs of more than 300 bus stops into small gardens full of flowers. "The bees love them," says city gardener Lotte Visser. "And the plants also keep the bus stops cooler in summer."\n\nIII  Other cities have copied the idea. London and Toronto are now testing green roofs on their own bus stops. Scientists believe that cities, with their parks and gardens, could become safe homes for bees in the future.',
               questions: [
                 {
-                  prompt: "According to Lotte Visser, what else do the plants do?",
-                  options: ["They make honey", "They bring tourists", "They keep the bus stops cooler in summer", "They help fruit grow"],
+                  prompt:
+                    "According to Lotte Visser, what else do the plants do?",
+                  options: [
+                    "They make honey",
+                    "They bring tourists",
+                    "They keep the bus stops cooler in summer",
+                    "They help fruit grow",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "Why do farmers need bees?",
-                  options: ["Because bees make food cheaper", "Because bees help fruit and vegetables grow", "Because bees keep other insects away", "Because bees live on bus stops"],
+                  options: [
+                    "Because bees make food cheaper",
+                    "Because bees help fruit and vegetables grow",
+                    "Because bees keep other insects away",
+                    "Because bees live on bus stops",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "Which cities are trying the same idea?",
-                  options: ["London and Toronto", "Utrecht and London", "Toronto and Utrecht", "All cities in the Netherlands"],
+                  options: [
+                    "London and Toronto",
+                    "Utrecht and London",
+                    "Toronto and Utrecht",
+                    "All cities in the Netherlands",
+                  ],
                   correctIndex: 0,
                 },
               ],
@@ -938,35 +1150,52 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nP1 על טקסטים מוכרים." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nP1 על טקסטים מוכרים.",
+            },
             {
               type: "mcq",
-              prompt: "\"What happened to rivers in Kenya? (paragraph III)\" - מהי מילת המפתח, ובאיזו פסקה?",
-              options: ["What - פסקה I", "Kenya - פסקה III", "rivers - פסקה II"],
+              prompt:
+                '"What happened to rivers in Kenya? (paragraph III)" - מהי מילת המפתח, ובאיזו פסקה?',
+              options: [
+                "What - פסקה I",
+                "Kenya - פסקה III",
+                "rivers - פסקה II",
+              ],
               correctIndex: 1,
-              explanation: "\"Kenya\" - שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.",
+              explanation:
+                '"Kenya" - שם מקום ספציפי. הפסקה כבר מצוינת בשאלה: III.',
             },
             {
               type: "self-check",
-              text: "II  \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein.",
-              prompt: "מלאו את P1 לשאלה \"According to Dr. Klein, how did adults improve?\" - מילת מפתח, פסקה, ותשובה.",
-              modelAnswer: "מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.",
+              text: 'II  "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein.',
+              prompt:
+                'מלאו את P1 לשאלה "According to Dr. Klein, how did adults improve?" - מילת מפתח, פסקה, ותשובה.',
+              modelAnswer:
+                "מילת מפתח: Dr. Klein / improve. פסקה: II. תשובה: By understanding explanations and correcting their mistakes more quickly.",
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nכל חמשת השלבים, במילים שלכם." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 💎 (רשות)\nכל חמשת השלבים, במילים שלכם.",
+            },
             {
               type: "self-check",
-              text: "II  The project is led by Dr. Amara Diallo. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them.",
-              prompt: "השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.",
-              modelAnswer: "מילת השאלה: why = מחפשים סיבה.\nמילות מפתח: Dr. Diallo, die.\nאיפה: פסקה II.\nהמשפט: \"most trees die because nobody looks after them\".\nתשובה: Because nobody looks after them.",
+              text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them.',
+              prompt:
+                "השאלה: **According to Dr. Diallo, why do most trees die?**\n\nעברו על חמשת השלבים של P1, ואז כתבו את התשובה באנגלית.",
+              modelAnswer:
+                'מילת השאלה: why = מחפשים סיבה.\nמילות מפתח: Dr. Diallo, die.\nאיפה: פסקה II.\nהמשפט: "most trees die because nobody looks after them".\nתשובה: Because nobody looks after them.',
             },
             {
               type: "self-check",
               prompt: "הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?",
-              modelAnswer: "כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.",
+              modelAnswer:
+                "כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.",
             },
           ],
         },
@@ -1023,7 +1252,10 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט." },
+            {
+              type: "preface",
+              text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
@@ -1041,14 +1273,12 @@ export const c1Lessons: LessonNode[] = [
               text: "תוך 4 שנים הקימה החברה 25 סניפים חדשים ברחבי הארץ.",
               dir: "rtl",
               correctIndices: [],
-              categories: [
-                { name: "מספרים", color: "sky", indices: [1, 5] },
-              ],
+              categories: [{ name: "מספרים", color: "sky", indices: [1, 5] }],
             },
             {
               type: "mark-all",
               instruction: "סמנו כל מספר וכל שם פרטי במשפט.",
-              text: "לפי ד\"ר רונית כהן, 30% מהתלמידים בחיפה ישנים פחות מ-7 שעות.",
+              text: 'לפי ד"ר רונית כהן, 30% מהתלמידים בחיפה ישנים פחות מ-7 שעות.',
               dir: "rtl",
               correctIndices: [],
               categories: [
@@ -1060,7 +1290,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו." },
+            {
+              type: "preface",
+              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1085,10 +1318,16 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "השאלה: \"How many trees were planted?\" - מה מחפשים בטקסט?",
-              options: ["את המילה trees בלבד", "מספר שצמוד ל-trees / planted", "את שם הפרויקט"],
+              prompt:
+                'השאלה: "How many trees were planted?" - מה מחפשים בטקסט?',
+              options: [
+                "את המילה trees בלבד",
+                "מספר שצמוד ל-trees / planted",
+                "את שם הפרויקט",
+              ],
               correctIndex: 1,
-              explanation: "מספר בשאלה (How many) = GPS. סורקים ומחפשים מספר ליד trees - לא קוראים מההתחלה.",
+              explanation:
+                "מספר בשאלה (How many) = GPS. סורקים ומחפשים מספר ליד trees - לא קוראים מההתחלה.",
             },
             {
               type: "mark-all",
@@ -1105,7 +1344,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה." },
+            {
+              type: "preface",
+              text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1130,12 +1372,21 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "השאלה: \"According to Dr. Santos, what did the project cost?\" - מה קוראים?",
-              options: ["את כל הטקסט, מההתחלה", "רק את מה ש-Dr. Santos אמרה, בפסקה שלה", "את הפסקה האחרונה"],
+              prompt:
+                'השאלה: "According to Dr. Santos, what did the project cost?" - מה קוראים?',
+              options: [
+                "את כל הטקסט, מההתחלה",
+                "רק את מה ש-Dr. Santos אמרה, בפסקה שלה",
+                "את הפסקה האחרונה",
+              ],
               correctIndex: 1,
-              explanation: "שם בשאלה = כתובת. מוצאים את Dr. Santos, וקוראים רק את מה שהיא אמרה.",
+              explanation:
+                "שם בשאלה = כתובת. מוצאים את Dr. Santos, וקוראים רק את מה שהיא אמרה.",
             },
-            { type: "preface", text: "זהירות ממילים שנראות כמו שם: מילה עם אות גדולה בתחילת משפט (Last, Today, Most) היא לא שם." },
+            {
+              type: "preface",
+              text: "זהירות ממילים שנראות כמו שם: מילה עם אות גדולה בתחילת משפט (Last, Today, Most) היא לא שם.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
@@ -1151,12 +1402,15 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.",
+            },
             {
               type: "passage-mcq",
               label: "רמת בחינה",
               timerKey: "hunt",
-              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
+              text: '**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. "Children who never held a book now ask me for the next book," she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. "Every village deserves a library," she says, "even if it has wheels."',
               questions: [
                 {
                   prompt: "How many villages does the bus visit every month?",
@@ -1164,13 +1418,24 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Dr. Pablo Ruiz's study, what happened to reading scores?",
-                  options: ["They went up by 18% in 2 years", "They went down by 18%", "They stayed the same", "They went up by 2% in 18 years"],
+                  prompt:
+                    "According to Dr. Pablo Ruiz's study, what happened to reading scores?",
+                  options: [
+                    "They went up by 18% in 2 years",
+                    "They went down by 18%",
+                    "They stayed the same",
+                    "They went up by 2% in 18 years",
+                  ],
                   correctIndex: 0,
                 },
                 {
                   prompt: "What happened in 2023?",
-                  options: ["The bus added a section for adults", "The city of Granada gave the project a new bus", "Sofia Marin bought the bus", "Reading scores went up"],
+                  options: [
+                    "The bus added a section for adults",
+                    "The city of Granada gave the project a new bus",
+                    "Sofia Marin bought the bus",
+                    "Reading scores went up",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -1179,17 +1444,33 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מספר וכל שם פרטי. השעון רץ - נסו לנצח את עצמכם." },
+            {
+              type: "preface",
+              text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מספר וכל שם פרטי. השעון רץ - נסו לנצח את עצמכם.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every number and every proper name.",
-              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
+              text: '**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. "Children who never held a book now ask me for the next book," she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. "Every village deserves a library," she says, "even if it has wheels."',
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
               categories: [
-                { name: "מספרים", color: "sky", indices: [6, 17, 37, 43, 47, 55, 63, 67, 130, 132, 141, 162, 178, 197, 200] },
-                { name: "שמות", color: "amber", indices: [10, 11, 31, 74, 75, 112, 113, 114, 117, 119, 182, 192, 193] },
+                {
+                  name: "מספרים",
+                  color: "sky",
+                  indices: [
+                    6, 17, 37, 43, 47, 55, 63, 67, 130, 132, 141, 162, 178, 197,
+                    200,
+                  ],
+                },
+                {
+                  name: "שמות",
+                  color: "amber",
+                  indices: [
+                    10, 11, 31, 74, 75, 112, 113, 114, 117, 119, 182, 192, 193,
+                  ],
+                },
               ],
             },
           ],
@@ -1225,27 +1506,44 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "מספר או שם בשאלה הם Eye Catchers: הם אומרים לכם לאן ללכת בטקסט." },
             {
-              type: "mcq",
-              prompt: "\"According to the survey, what percentage of adults cannot swim?\" - מה תחפשו בטקסט?",
-              options: ["את המילה survey", "מספר עם % ליד adults / cannot swim", "את הפסקה הראשונה"],
-              correctIndex: 1,
-              explanation: "percentage = מספר. סורקים ומחפשים % ליד adults - שם התשובה.",
+              type: "preface",
+              text: "מספר או שם בשאלה הם Eye Catchers: הם אומרים לכם לאן ללכת בטקסט.",
             },
             {
               type: "mcq",
-              prompt: "\"According to Dr. Maria Santos, what did the project show?\" - לאיזו פסקה הולכים?",
-              options: ["פסקה I - כי היא הראשונה", "הפסקה שבה מופיעה Dr. Santos", "הפסקה האחרונה - שם המסקנה"],
+              prompt:
+                '"According to the survey, what percentage of adults cannot swim?" - מה תחפשו בטקסט?',
+              options: [
+                "את המילה survey",
+                "מספר עם % ליד adults / cannot swim",
+                "את הפסקה הראשונה",
+              ],
               correctIndex: 1,
-              explanation: "Dr. Santos = כתובת. הולכים לפסקה שלה וקוראים רק את מה שהיא אמרה.",
+              explanation:
+                "percentage = מספר. סורקים ומחפשים % ליד adults - שם התשובה.",
             },
             {
               type: "mcq",
-              prompt: "באילו שאלות יש מספר שמחפשים בטקסט?\n\n1. \"How many countries are in the project?\"\n2. \"What happened after 2019?\"\n3. \"Give TWO answers from paragraph III.\"\n4. \"What percentage of students improved?\"",
+              prompt:
+                '"According to Dr. Maria Santos, what did the project show?" - לאיזו פסקה הולכים?',
+              options: [
+                "פסקה I - כי היא הראשונה",
+                "הפסקה שבה מופיעה Dr. Santos",
+                "הפסקה האחרונה - שם המסקנה",
+              ],
+              correctIndex: 1,
+              explanation:
+                "Dr. Santos = כתובת. הולכים לפסקה שלה וקוראים רק את מה שהיא אמרה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                'באילו שאלות יש מספר שמחפשים בטקסט?\n\n1. "How many countries are in the project?"\n2. "What happened after 2019?"\n3. "Give TWO answers from paragraph III."\n4. "What percentage of students improved?"',
               options: ["רק ב-2", "ב-1, 2 ו-4", "בכולן", "רק ב-3 ו-4"],
               correctIndex: 1,
-              explanation: "\"How many\" · \"2019\" · \"percentage\" = מספרים שמחפשים. \"Give TWO answers\" אומר כמה לכתוב - זה לא מספר שמחפשים בטקסט.",
+              explanation:
+                '"How many" · "2019" · "percentage" = מספרים שמחפשים. "Give TWO answers" אומר כמה לכתוב - זה לא מספר שמחפשים בטקסט.',
             },
             { type: "preface", text: "ועכשיו טקסט קצר ושאלה אמיתית." },
             {
@@ -1253,7 +1551,8 @@ export const c1Lessons: LessonNode[] = [
               text: "The city of Lakeport opened a new public pool in 2019. According to manager Helen Park, about 1,200 people swim there every week, and 300 children take lessons in the summer.",
               questions: [
                 {
-                  prompt: "According to Helen Park, how many people swim in the pool every week?",
+                  prompt:
+                    "According to Helen Park, how many people swim in the pool every week?",
                   options: ["300", "About 1,200", "2019", "About 120"],
                   correctIndex: 1,
                 },
@@ -1263,17 +1562,22 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}אתם - שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו." },
+            {
+              type: "preface",
+              text: "{d:rtl}אתם - שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו.",
+            },
             {
               type: "self-check",
               text: "III  The results have been remarkable. According to a survey by Professor James Lee, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
               prompt: "What percentage of people exercise outdoors now?",
-              modelAnswer: "60%. (It increased from 15% to 60% - the number next to exercise outdoors, not 85% or 40%.)",
+              modelAnswer:
+                "60%. (It increased from 15% to 60% - the number next to exercise outdoors, not 85% or 40%.)",
             },
             {
               type: "self-check",
               text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
-              prompt: "According to Dr. Diallo, what does the project teach local people?",
+              prompt:
+                "According to Dr. Diallo, what does the project teach local people?",
               modelAnswer: "How to care for the trees.",
             },
             {
@@ -1285,31 +1589,51 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף.",
+            },
             {
               type: "passage-mcq",
-              text: "**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. \"Children who never held a book now ask me for the next book,\" she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. \"Every village deserves a library,\" she says, \"even if it has wheels.\"",
+              text: '**THE LIBRARY ON WHEELS**\n\nI  In 2018, a teacher named Sofia Marin bought an old bus for 12,000 dollars. She wanted to bring books to small villages in the hills near Granada, where the nearest library was 40 kilometres away. The trip took 3 hours, and only 15 children came.\n\nII  Today, the bus visits 26 villages every month. It carries more than 4,000 books, and about 900 children use it regularly. According to Ms. Marin, the most popular books are comics and stories about animals. "Children who never held a book now ask me for the next book," she says.\n\nIII  The project has also changed the villages. A study by Dr. Pablo Ruiz from the University of Seville found that reading scores in these schools went up by 18% in 2 years. Parents started borrowing books too, and in 2021 the bus added a section for adults.\n\nIV  The bus is not cheap to run. Fuel and repairs cost about 9,000 dollars a year, and most of the money comes from local shops and families. In 2023, the city of Granada gave the project official support: a new bus.\n\nV  Ms. Marin hopes to reach 50 villages by 2027. "Every village deserves a library," she says, "even if it has wheels."',
               questions: [
                 {
                   prompt: "How much did Sofia Marin pay for the bus?",
-                  options: ["9,000 dollars", "12,000 dollars", "4,000 dollars", "40 dollars"],
+                  options: [
+                    "9,000 dollars",
+                    "12,000 dollars",
+                    "4,000 dollars",
+                    "40 dollars",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to Ms. Marin, what are the most popular books?",
-                  options: ["Comics and stories about animals", "Books for adults", "Science books", "Books about Granada"],
+                  prompt:
+                    "According to Ms. Marin, what are the most popular books?",
+                  options: [
+                    "Comics and stories about animals",
+                    "Books for adults",
+                    "Science books",
+                    "Books about Granada",
+                  ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "Where does most of the money for fuel and repairs come from?",
-                  options: ["The city of Granada", "Local shops and families", "The University of Seville", "The children"],
+                  prompt:
+                    "Where does most of the money for fuel and repairs come from?",
+                  options: [
+                    "The city of Granada",
+                    "Local shops and families",
+                    "The University of Seville",
+                    "The children",
+                  ],
                   correctIndex: 1,
                 },
               ],
             },
             {
               type: "passage-mcq",
-              text: "**SCHOOLS ON THE WATER**\n\nI  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\nII  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\nIII  The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. \"Before, many parents kept their daughters at home,\" she explains. \"Now they see that school is safe.\"",
+              text: '**SCHOOLS ON THE WATER**\n\nI  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\nII  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\nIII  The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. "Before, many parents kept their daughters at home," she explains. "Now they see that school is safe."',
               questions: [
                 {
                   prompt: "How many boat schools sail along the rivers today?",
@@ -1318,12 +1642,22 @@ export const c1Lessons: LessonNode[] = [
                 },
                 {
                   prompt: "Why can't children walk to school in some months?",
-                  options: ["Because the school is too far away", "Because heavy rain floods their villages", "Because their parents keep them at home", "Because there are no roads"],
+                  options: [
+                    "Because the school is too far away",
+                    "Because heavy rain floods their villages",
+                    "Because their parents keep them at home",
+                    "Because there are no roads",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "According to Nadia Akter, what has changed?",
-                  options: ["Students can use laptops on the boats", "Each boat stops at 3 villages a day", "Parents now see that school is safe", "More than 2,500 children study on the boats"],
+                  options: [
+                    "Students can use laptops on the boats",
+                    "Each boat stops at 3 villages a day",
+                    "Parents now see that school is safe",
+                    "More than 2,500 children study on the boats",
+                  ],
                   correctIndex: 2,
                 },
               ],
@@ -1332,45 +1666,68 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nשם בשאלה = כתובת - על טקסט מוכר." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nשם בשאלה = כתובת - על טקסט מוכר.",
+            },
             {
               type: "passage-mcq",
               text: "**WHY YOUNG PEOPLE VOLUNTEER**\n\nI  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches skills that no classroom can replace.",
               questions: [
                 {
-                  prompt: "According to Professor David Mills, what does helping others teach?",
-                  options: ["How to feel less stressed", "Skills that no classroom can replace", "How to be happy", "How to work in 12 countries"],
+                  prompt:
+                    "According to Professor David Mills, what does helping others teach?",
+                  options: [
+                    "How to feel less stressed",
+                    "Skills that no classroom can replace",
+                    "How to be happy",
+                    "How to work in 12 countries",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to Dr. Okafor, how do teenagers who volunteer feel?",
-                  options: ["Less stressed", "60% happier", "More focused in class", "More responsible"],
+                  prompt:
+                    "According to Dr. Okafor, how do teenagers who volunteer feel?",
+                  options: [
+                    "Less stressed",
+                    "60% happier",
+                    "More focused in class",
+                    "More responsible",
+                  ],
                   correctIndex: 0,
                 },
               ],
             },
             {
               type: "mcq",
-              prompt: "באילו שאלות יש שם שאומר לאן ללכת?\n\n1. \"What do we learn from paragraph I?\"\n2. \"According to Dr. Anna Klein, why do adults improve?\"\n3. \"Give TWO reasons from paragraph II.\"\n4. \"What does Professor David Mills argue about schools?\"",
+              prompt:
+                'באילו שאלות יש שם שאומר לאן ללכת?\n\n1. "What do we learn from paragraph I?"\n2. "According to Dr. Anna Klein, why do adults improve?"\n3. "Give TWO reasons from paragraph II."\n4. "What does Professor David Mills argue about schools?"',
               options: ["1 ו-3", "2 ו-4", "1 ו-4", "כולן"],
               correctIndex: 1,
-              explanation: "\"Dr. Anna Klein\" ו-\"Professor David Mills\" - שמות = כתובות.",
+              explanation:
+                '"Dr. Anna Klein" ו-"Professor David Mills" - שמות = כתובות.',
             },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 💎 (רשות)\nתשובה פתוחה: שם ומספר." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 💎 (רשות)\nתשובה פתוחה: שם ומספר.",
+            },
             {
               type: "self-check",
               text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
-              prompt: '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
-              modelAnswer: "ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.",
+              prompt:
+                '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
+              modelAnswer:
+                "ANSWER: Because adults understand what the teacher explains and can correct their mistakes more quickly.",
             },
             {
               type: "self-check",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
-              prompt: 'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
+              prompt:
+                'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
               modelAnswer: "200 million trees · 15 countries.",
             },
           ],
@@ -1526,7 +1883,10 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "בלי לראות NOT בוחרים משפט שנכון בטקסט, אבל השאלה ביקשה את ההפך. לכן מסמנים NOT לפני שעונים.",
             },
-            { type: "preface", text: "זהירות ממילים שנראות כמו שלילה: another, noted, know הן לא שלילה. ושימו לב ל-n't (didn't) - זו כן שלילה." },
+            {
+              type: "preface",
+              text: "זהירות ממילים שנראות כמו שלילה: another, noted, know הן לא שלילה. ושימו לב ל-n't (didn't) - זו כן שלילה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
@@ -1541,26 +1901,46 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.",
+            },
             {
               type: "passage-mcq",
               label: "רמת בחינה",
               timerKey: "hunt",
-              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
+              text: '**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. "We did not want fewer visitors," he said. "We wanted a centre where people could walk in quiet, clean air."\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.',
               questions: [
                 {
-                  prompt: "Which of the following is NOT true about the results after one year?",
-                  options: ["The number of visitors rose by 15%", "Air pollution in the centre dropped", "There were many serious accidents", "Cafes put tables in the street"],
+                  prompt:
+                    "Which of the following is NOT true about the results after one year?",
+                  options: [
+                    "The number of visitors rose by 15%",
+                    "Air pollution in the centre dropped",
+                    "There were many serious accidents",
+                    "Cafes put tables in the street",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Mayor Tom Hughes, what was NOT the goal of the plan?",
-                  options: ["To punish drivers", "To make the centre quiet", "To have clean air", "To let people walk"],
+                  prompt:
+                    "According to Mayor Tom Hughes, what was NOT the goal of the plan?",
+                  options: [
+                    "To punish drivers",
+                    "To make the centre quiet",
+                    "To have clean air",
+                    "To let people walk",
+                  ],
                   correctIndex: 0,
                 },
                 {
                   prompt: "What problem did some older residents have?",
-                  options: ["The buses were not always on time", "They could not find the shops", "The street was too noisy", "They had to pay for parking"],
+                  options: [
+                    "The buses were not always on time",
+                    "They could not find the shops",
+                    "The street was too noisy",
+                    "They had to pay for parking",
+                  ],
                   correctIndex: 0,
                 },
               ],
@@ -1569,16 +1949,26 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת שלילה. השעון רץ - נסו לנצח את עצמכם." },
+            {
+              type: "preface",
+              text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת שלילה. השעון רץ - נסו לנצח את עצמכם.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
-              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
+              text: '**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. "We did not want fewer visitors," he said. "We wanted a centre where people could walk in quiet, clean air."\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.',
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
               categories: [
-                { name: "שלילה", color: "rose", indices: [18, 27, 34, 44, 56, 83, 89, 120, 148, 161, 177, 188, 201, 227, 240] },
+                {
+                  name: "שלילה",
+                  color: "rose",
+                  indices: [
+                    18, 27, 34, 44, 56, 83, 89, 120, 148, 161, 177, 188, 201,
+                    227, 240,
+                  ],
+                },
               ],
             },
           ],
@@ -1744,16 +2134,27 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. \"We did not want fewer visitors,\" he said. \"We wanted a centre where people could walk in quiet, clean air.\"\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.",
+              text: '**THE STREET WITHOUT CARS**\n\nI  When the town of Brookfield closed its main street to cars in 2021, not everyone was happy. Shop owners were worried that no customers would come if they could not park near the shops. For the first few months, nobody was sure the plan would work.\n\nII  The town council did not give up. It built two new car parks outside the centre and added free buses every ten minutes. According to Mayor Tom Hughes, the goal was never to punish drivers. "We did not want fewer visitors," he said. "We wanted a centre where people could walk in quiet, clean air."\n\nIII  A year later, the results were surprising. The number of visitors did not fall. In fact, it rose by 15%. Cafes put tables in the street, and families came at weekends. Air pollution in the centre dropped, and there were no serious accidents on the main street all year. Local newspapers, which had not supported the plan at first, now called it a success.\n\nIV  Still, the change was not perfect for everyone. Some older residents said the buses were not always on time, and a few shops outside the centre lost customers. None of the council members expected these problems at the start. Today, the town is testing a second bus line, and the council says it will never reopen the street to cars. For now, the people of Brookfield do not seem to miss the traffic at all.',
               questions: [
                 {
                   prompt: "Which of the following did the town council NOT do?",
-                  options: ["Built two new car parks", "Added free buses", "Reopened the street to cars", "Started testing a second bus line"],
+                  options: [
+                    "Built two new car parks",
+                    "Added free buses",
+                    "Reopened the street to cars",
+                    "Started testing a second bus line",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "Which of the following is NOT mentioned as a problem?",
-                  options: ["The buses were not always on time", "Some shops outside the centre lost customers", "Parking in the centre became more expensive", "Shop owners were worried at first"],
+                  prompt:
+                    "Which of the following is NOT mentioned as a problem?",
+                  options: [
+                    "The buses were not always on time",
+                    "Some shops outside the centre lost customers",
+                    "Parking in the centre became more expensive",
+                    "Shop owners were worried at first",
+                  ],
                   correctIndex: 2,
                 },
                 {
@@ -1765,7 +2166,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**PHONES IN THE LOCKER**\n\nI  In 2023, Hillview High School decided to ban mobile phones during the school day. Students had to leave their phones in lockers from 8:00 until 3:00. At first, many parents were worried because they could not call their children.\n\nII  According to the head teacher, Ms. Laura Chen, the results surprised everyone. Students talked to each other more during breaks, and fewer students were late to class. However, Ms. Chen says the ban did not solve every problem: some students still used their phones in the toilets.\n\nIII  A survey at the end of the year found that 70% of students felt calmer without their phones. Not all students agreed, though. Some said they missed listening to music on the bus.\n\nIV  Other schools in the area are now watching Hillview closely. Two of them plan to try a similar ban next year, with one change: students will keep their phones in their bags, switched off. \"We trust our students,\" says one head teacher. \"We just want them to look up from their screens.\" Ms. Chen says she will share her results with any school that asks.",
+              text: '**PHONES IN THE LOCKER**\n\nI  In 2023, Hillview High School decided to ban mobile phones during the school day. Students had to leave their phones in lockers from 8:00 until 3:00. At first, many parents were worried because they could not call their children.\n\nII  According to the head teacher, Ms. Laura Chen, the results surprised everyone. Students talked to each other more during breaks, and fewer students were late to class. However, Ms. Chen says the ban did not solve every problem: some students still used their phones in the toilets.\n\nIII  A survey at the end of the year found that 70% of students felt calmer without their phones. Not all students agreed, though. Some said they missed listening to music on the bus.\n\nIV  Other schools in the area are now watching Hillview closely. Two of them plan to try a similar ban next year, with one change: students will keep their phones in their bags, switched off. "We trust our students," says one head teacher. "We just want them to look up from their screens." Ms. Chen says she will share her results with any school that asks.',
               questions: [
                 {
                   prompt:
@@ -1904,7 +2305,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "מה קרה?\n\nהמילה MOST ביקשה אחד בלבד - הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nTHE MOST = הכי, אחד. לא שניים.\nTHE ONLY = רק אחד. לא שניים.\n\nשימו לב: most בלי the (\"most students\") = רוב. זה לא מגביל לתשובה אחת.",
+          text: 'מה קרה?\n\nהמילה MOST ביקשה אחד בלבד - הכי יעיל. הוא כתב שניים, ולכן לא ענה על ה-MOST.\n\nTHE MOST = הכי, אחד. לא שניים.\nTHE ONLY = רק אחד. לא שניים.\n\nשימו לב: most בלי the ("most students") = רוב. זה לא מגביל לתשובה אחת.',
         },
         {
           type: "summary",
@@ -1989,7 +2390,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: 'ראיתם בשאלה "What is the ONLY reason...?". כמה תשובות כותבים?',
+              prompt:
+                'ראיתם בשאלה "What is the ONLY reason...?". כמה תשובות כותבים?',
               options: [
                 "אחת - הסיבה שהטקסט מציין",
                 "שתיים - ליתר ביטחון",
@@ -2048,10 +2450,14 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 'most + שם עצם = רוב. רק "the most" (הכי) מבקש דבר אחד. "all" = כולם, וזה כבר יותר מרוב.',
             },
-            { type: "preface", text: "זהירות ממילים שנראות כמו הגבלה: almost ו-everyone הן לא מילות הגבלה מהרשימה." },
+            {
+              type: "preface",
+              text: "זהירות ממילים שנראות כמו הגבלה: almost ו-everyone הן לא מילות הגבלה מהרשימה.",
+            },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
               text: "Almost everyone in the class passed. Only a few students failed, and most of them took the test again. All of them passed the second time, says the teacher, who always gives extra help.",
               dir: "ltr",
               correctIndices: [],
@@ -2063,26 +2469,44 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.",
+            },
             {
               type: "passage-mcq",
               label: "רמת בחינה",
               timerKey: "hunt",
-              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
+              text: '**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
               questions: [
                 {
                   prompt: "According to Elena Russo, what is the main problem?",
-                  options: ["Moving bikes back to the right stations", "There are too few bikes", "The bikes are not safe", "Students do not use the bikes"],
+                  options: [
+                    "Moving bikes back to the right stations",
+                    "There are too few bikes",
+                    "The bikes are not safe",
+                    "Students do not use the bikes",
+                  ],
                   correctIndex: 0,
                 },
                 {
                   prompt: "Who is the biggest group of users?",
-                  options: ["Older people", "Shop owners", "Students", "Tourists"],
+                  options: [
+                    "Older people",
+                    "Shop owners",
+                    "Students",
+                    "Tourists",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "How much does it cost to use a bike?",
-                  options: ["Nothing", "Only one euro a day", "Six euros a week", "One euro an hour"],
+                  options: [
+                    "Nothing",
+                    "Only one euro a day",
+                    "Six euros a week",
+                    "One euro an hour",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -2091,16 +2515,26 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת הגבלה. השעון רץ - נסו לנצח את עצמכם." },
+            {
+              type: "preface",
+              text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת הגבלה. השעון רץ - נסו לנצח את עצמכם.",
+            },
             {
               type: "mark-all",
-              instruction: "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
+              instruction:
+                "Mark every limiting word (only, all, most, some, few, every, always).",
+              text: '**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
               categories: [
-                { name: "הגבלה", color: "violet", indices: [15, 39, 45, 61, 65, 85, 95, 100, 105, 139, 154, 157, 189] },
+                {
+                  name: "הגבלה",
+                  color: "violet",
+                  indices: [
+                    15, 39, 45, 61, 65, 85, 95, 100, 105, 139, 154, 157, 189,
+                  ],
+                },
               ],
             },
           ],
@@ -2143,7 +2577,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: '"What is THE MOST effective method?" - כמה תשובות כותבים?',
+              prompt:
+                '"What is THE MOST effective method?" - כמה תשובות כותבים?',
               options: [
                 "שתיים - כדי לכסות אפשרויות",
                 "אחת בלבד - הכי יעילה",
@@ -2154,9 +2589,10 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: '"Most students walk to school." - האם most כאן מגביל לתשובה אחת?',
+              prompt:
+                '"Most students walk to school." - האם most כאן מגביל לתשובה אחת?',
               options: [
-                'לא - most + שם עצם = רוב. מגבילות רק the most / the only / the main',
+                "לא - most + שם עצם = רוב. מגבילות רק the most / the only / the main",
                 "כן - כל most בשאלה = תשובה אחת",
                 "כן - כי כתוב students ברבים",
                 "תלוי באורך המשפט",
@@ -2184,7 +2620,8 @@ export const c1Lessons: LessonNode[] = [
               text: "The school library is open every day from 8:00 to 4:00. Most students use it during lunch, but only the computer room stays open after 4:00.",
               questions: [
                 {
-                  prompt: "What is the only part of the library that is open after 4:00?",
+                  prompt:
+                    "What is the only part of the library that is open after 4:00?",
                   options: [
                     "The whole library",
                     "The reading room",
@@ -2211,7 +2648,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "כתבתם שתי סיבות לשאלה עם the main reason. מה עלול לקרות?",
+              prompt:
+                "כתבתם שתי סיבות לשאלה עם the main reason. מה עלול לקרות?",
               options: [
                 "תקבלו ניקוד על שתיהן",
                 "הבודק יבחר את הטובה מביניהן",
@@ -2225,7 +2663,9 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"the most / the only / the main = תשובה אחת. most לבד = רוב."'],
+              lines: [
+                '"the most / the only / the main = תשובה אחת. most לבד = רוב."',
+              ],
             },
           ],
         },
@@ -2237,20 +2677,32 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"",
+              text: '**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
               questions: [
                 {
-                  prompt: "According to the city, how often are all the bikes checked?",
-                  options: ["Every day", "Every week", "Only once a year", "Every morning"],
+                  prompt:
+                    "According to the city, how often are all the bikes checked?",
+                  options: [
+                    "Every day",
+                    "Every week",
+                    "Only once a year",
+                    "Every morning",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "What do most shop owners now say?",
-                  options: ["All of their customers come by car", "Most of their customers arrive by bike or on foot", "Only a few customers come by bike", "They are still worried"],
+                  options: [
+                    "All of their customers come by car",
+                    "Most of their customers arrive by bike or on foot",
+                    "Only a few customers come by bike",
+                    "They are still worried",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "How many trucks does Elena Russo say the city needs?",
+                  prompt:
+                    "How many trucks does Elena Russo say the city needs?",
                   options: ["Two", "At least five", "Forty", "Six"],
                   correctIndex: 1,
                 },
@@ -2258,10 +2710,11 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**THE TOOL LIBRARY**\n\nI  In 2020, a small group of neighbours in Lindale opened a library with no books. Instead, it lends tools: drills, ladders, garden tools and even sewing machines. Members pay only ten dollars a year, and they can borrow up to three tools every week.\n\nII  Most members are young families who cannot afford to buy expensive tools. According to the manager, Tom Reyes, the most popular item is the electric drill. \"Some people borrow a drill, use it for ten minutes, and bring it back the same day,\" he says.\n\nIII  The library is run by volunteers, and only two of them are paid. Mr. Reyes says the main problem is space: the library has more tools than shelves. Next year, it plans to move to a bigger building near the train station.\n\nIV  The idea is spreading. Since 2022, three more tool libraries have opened in nearby towns, and all of them use the same rules as Lindale. Mr. Reyes visits each new library to help the volunteers get started. \"Most people only need a ladder twice a year,\" he says. \"Why should every family buy one?\" He hopes that one day every town in the country will have a library like his.",
+              text: '**THE TOOL LIBRARY**\n\nI  In 2020, a small group of neighbours in Lindale opened a library with no books. Instead, it lends tools: drills, ladders, garden tools and even sewing machines. Members pay only ten dollars a year, and they can borrow up to three tools every week.\n\nII  Most members are young families who cannot afford to buy expensive tools. According to the manager, Tom Reyes, the most popular item is the electric drill. "Some people borrow a drill, use it for ten minutes, and bring it back the same day," he says.\n\nIII  The library is run by volunteers, and only two of them are paid. Mr. Reyes says the main problem is space: the library has more tools than shelves. Next year, it plans to move to a bigger building near the train station.\n\nIV  The idea is spreading. Since 2022, three more tool libraries have opened in nearby towns, and all of them use the same rules as Lindale. Mr. Reyes visits each new library to help the volunteers get started. "Most people only need a ladder twice a year," he says. "Why should every family buy one?" He hopes that one day every town in the country will have a library like his.',
               questions: [
                 {
-                  prompt: "According to paragraph II, what is the most popular item in the library?",
+                  prompt:
+                    "According to paragraph II, what is the most popular item in the library?",
                   options: [
                     "Ladders",
                     "Sewing machines",
@@ -2271,7 +2724,8 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to paragraph I, how much does it cost to be a member?",
+                  prompt:
+                    "According to paragraph I, how much does it cost to be a member?",
                   options: [
                     "Ten dollars a week",
                     "Ten dollars a year",
@@ -2281,7 +2735,8 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to Mr. Reyes, what is the main problem of the library?",
+                  prompt:
+                    "According to Mr. Reyes, what is the main problem of the library?",
                   options: [
                     "It does not have enough volunteers",
                     "Members do not bring the tools back",
@@ -2305,7 +2760,8 @@ export const c1Lessons: LessonNode[] = [
               text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               questions: [
                 {
-                  prompt: "According to Dr. Okafor, what is the most effective type of volunteering?",
+                  prompt:
+                    "According to Dr. Okafor, what is the most effective type of volunteering?",
                   options: [
                     "All types of volunteering are effective",
                     "Programmes that bring young people face to face with the people they help",
@@ -2341,8 +2797,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              prompt:
-                'מה ההבדל בין "the most" לבין "most" בשאלה? תנו דוגמה.',
+              prompt: 'מה ההבדל בין "the most" לבין "most" בשאלה? תנו דוגמה.',
               modelAnswer:
                 '"What is the most common reason?" - the most = סיבה אחת, הכי נפוצה. "Why do most trees die?" - most = רוב העצים; השאלה שואלת מה קורה לרובם.',
             },
@@ -2519,7 +2974,10 @@ export const c1Lessons: LessonNode[] = [
               explanation:
                 "but מסמן את הנקודה של הכותב, אבל השאלה שואלת מה הבטיחו - וזה כתוב לפני but. תמיד עונים על מה שהשאלה שואלת.",
             },
-            { type: "preface", text: "זהירות ממילים שנראות כמו ניגוד: butter היא לא but, ו-because היא סיבה - לא ניגוד." },
+            {
+              type: "preface",
+              text: "זהירות ממילים שנראות כמו ניגוד: butter היא לא but, ו-because היא סיבה - לא ניגוד.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every contrast word in the text.",
@@ -2534,7 +2992,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.",
+            },
             {
               type: "passage-mcq",
               label: "רמת בחינה",
@@ -2542,18 +3003,35 @@ export const c1Lessons: LessonNode[] = [
               text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
               questions: [
                 {
-                  prompt: "According to paragraph I, what did many parents think at first?",
-                  options: ["That the results would be better than expected", "That their children would fall behind", "That the buses would be cheaper", "That teachers would leave"],
+                  prompt:
+                    "According to paragraph I, what did many parents think at first?",
+                  options: [
+                    "That the results would be better than expected",
+                    "That their children would fall behind",
+                    "That the buses would be cheaper",
+                    "That teachers would leave",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "According to paragraph II, how did most students feel about the free Fridays?",
-                  options: ["They found them tiring", "They enjoyed them", "They used them for school work", "They wanted to stay in school"],
+                  prompt:
+                    "According to paragraph II, how did most students feel about the free Fridays?",
+                  options: [
+                    "They found them tiring",
+                    "They enjoyed them",
+                    "They used them for school work",
+                    "They wanted to stay in school",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "What did the district do to help families?",
-                  options: ["It paid for day camps", "It opened school libraries on Fridays", "It made the school days shorter", "It gave parents Fridays off"],
+                  options: [
+                    "It paid for day camps",
+                    "It opened school libraries on Fridays",
+                    "It made the school days shorter",
+                    "It gave parents Fridays off",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -2562,7 +3040,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת ניגוד. השעון רץ - נסו לנצח את עצמכם." },
+            {
+              type: "preface",
+              text: "תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת ניגוד. השעון רץ - נסו לנצח את עצמכם.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every contrast word in the text.",
@@ -2571,7 +3052,11 @@ export const c1Lessons: LessonNode[] = [
               timerKey: "sweep",
               correctIndices: [],
               categories: [
-                { name: "ניגוד", color: "emerald", indices: [30, 60, 93, 120, 134, 145, 174, 191, 208, 234] },
+                {
+                  name: "ניגוד",
+                  color: "emerald",
+                  indices: [30, 60, 93, 120, 134, 145, 174, 191, 208, 234],
+                },
               ],
             },
           ],
@@ -2592,14 +3077,14 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'הטעות הנפוצה:\n"התלמיד קורא אפשרות i. נשמעת טוב. מסמן. אחרי הבחינה מתברר ש-i הייתה שגויה."\n\nהדרך הנכונה:\n"קוראים את כל 4 האפשרויות. חוצים את השגויות. מוצאים הוכחה בפסקה הנכונה. עונים."',
+          text: "{d:rtl}הטעות הנפוצה:\n{d:rtl}התלמיד קורא את אפשרות **i**. נשמעת טוב. מסמן. אחרי הבחינה מתברר ש-**i** הייתה שגויה.\n\n{p:callout}{d:rtl}הדרך הנכונה: קוראים את **כל 4 האפשרויות**. חוצים את השגויות. מוצאים הוכחה בפסקה הנכונה. עונים.",
         },
         {
           type: "summary",
-          title: "THE TOOL - ארבעה צעדים",
+          title: '{d:rtl}יש לנו 4 צעדים בסה"כ',
           lines: [
             "1 · קראו את כל 4 האפשרויות לפני שחוזרים לטקסט.",
-            "2 · חצו כל אפשרות שסותרת את הטקסט - או שנכונה אבל לא קשורה לשאלה.",
+            "{d:rtl}2 · חצו  או סמנו ב-X כל אפשרות שסותרת את הטקסט/ נכונה אבל לא קשורה לשאלה.",
             "3 · חזרו לטקסט ומצאו הוכחה בפסקה הנכונה.",
             "4 · ענו - תשובה אחת בלבד.",
           ],
@@ -2615,37 +3100,64 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'כלל זהב ל-"What do we learn from paragraph X?"\n\nלכו רק לפסקה X. אל תקראו פסקאות אחרות.\nהשאלה מגבילה אתכם לפסקה אחת. כל מידע מפסקה אחרת = שגוי, גם אם הוא נכון בטקסט.\n\n⚠️ אין לכם הוכחה בפסקה הנכונה? אל תענו. חזרו לטקסט.\n🚦 ולפני שעונים - בדקו רמזור. רק ירוק = עונים.',
+          text: '{d:rtl}כלל זהב ל-"What do we learn from paragraph X?"\n\n{d:rtl}לכו רק לפסקה X. אל תקראו פסקאות אחרות.\n{d:rtl}השאלה מגבילה אתכם לפסקה אחת. כל מידע מפסקה אחרת = שגוי, גם אם הוא נכון בטקסט.\n\n{d:rtl}⚠️ אין לכם הוכחה בפסקה הנכונה? אל תענו. חזרו לטקסט.\n{d:rtl}🚦 ולפני שעונים - בדקו רמזור. רק ירוק = עונים.',
         },
         {
-          type: "preface",
-          text: 'WATCH IT\n\nהשאלה: What do we learn from paragraph I about young volunteers?\n\ni) Volunteers receive payment ← סוג א׳: סותר את "without payment".\nii) Young volunteers are happier ← ✓ הוכחה בפסקה I: "60% more likely to be happy".\niii) Researchers expected volunteering to help ← סוג א׳: הטקסט אומר "Researchers were surprised".\niv) Schools that volunteer have better results ← סוג ב׳: נכון, אבל זה מפסקה III.\n\nהתשובה: ii.',
+          type: "summary",
+          title: "",
+          lines: [
+            "✅ **קיבלו עיצוב:** משפטים באנגלית, ציטוטים, דוגמאות ❌/✅, פתיחי משפט, כותרות קטעים",
+            "⏭️ **דולגו - תוויות ממשק:** PRACTICE · Round 1, WATCH IT",
+            "⏭️ **דולגו - רשימות מילים:** cause · affect · require",
+            "⏭️ **דולגו - ביטויים קצרים:** started a project, plant one billion trees",
+            "⏭️ **דולגו - תווית ושאלה באותה שורה:** WATCH IT - How did the area change…",
+            '❓ **להחלטה:** שורות בעברית עם ציטוט באנגלית באמצע, למשל: התלמיד קרא "Many people cannot swim."',
+          ],
         },
       ],
       rounds: [
         {
           screens: [
-            { type: "preface", text: "ארבעה צעדים: קוראים את כל 4 האפשרויות ← חוצים ← מוצאים הוכחה בפסקה הנכונה ← עונים." },
             {
-              type: "mcq",
-              prompt: "בשאלה אמריקאית - מה עושים לפני שחוזרים לטקסט?",
-              options: ["מסמנים את האפשרות הראשונה שנראית טוב", "קוראים את כל 4 האפשרויות", "קוראים שוב את כל הטקסט"],
-              correctIndex: 1,
-              explanation: "צעד 1: קוראים את כל ארבע האפשרויות. אחר כך חוצים, ורק אז מחפשים הוכחה.",
+              type: "preface",
+              text: "ארבעה צעדים: קוראים את כל 4 האפשרויות ← חוצים ← מוצאים הוכחה בפסקה הנכונה ← עונים.",
             },
             {
               type: "mcq",
-              prompt: "אפשרות נכונה לפי הטקסט, אבל מפסקה אחרת מזו שבשאלה. מה עושים איתה?",
-              options: ["בוחרים בה - היא נכונה", "חוצים - נכון + לא קשור לשאלה = שגוי (מסיח סוג ב׳)", "משאירים אותה לסוף"],
+              prompt: "בשאלה אמריקאית - מה עושים לפני שחוזרים לטקסט?",
+              options: [
+                "מסמנים את האפשרות הראשונה שנראית טוב",
+                "קוראים את כל 4 האפשרויות",
+                "קוראים שוב את כל הטקסט",
+              ],
               correctIndex: 1,
-              explanation: "זה מסיח מסוג ב׳: נכון בטקסט, אבל לא עונה על השאלה. חוצים.",
+              explanation:
+                "צעד 1: קוראים את כל ארבע האפשרויות. אחר כך חוצים, ורק אז מחפשים הוכחה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "אפשרות נכונה לפי הטקסט, אבל מפסקה אחרת מזו שבשאלה. מה עושים איתה?",
+              options: [
+                "בוחרים בה - היא נכונה",
+                "חוצים - נכון + לא קשור לשאלה = שגוי (מסיח סוג ב׳)",
+                "משאירים אותה לסוף",
+              ],
+              correctIndex: 1,
+              explanation:
+                "זה מסיח מסוג ב׳: נכון בטקסט, אבל לא עונה על השאלה. חוצים.",
             },
             {
               type: "mcq",
               prompt: "מצאתם הוכחה לשתי אפשרויות. מה עושים?",
-              options: ["מסמנים את הראשונה שמצאנו", "מסמנים את האחרונה שמצאנו", "חוזרים לטקסט - יש תשובה אחת, אז אחת מהן לא באמת עונה על השאלה"],
+              options: [
+                "מסמנים את הראשונה שמצאנו",
+                "מסמנים את האחרונה שמצאנו",
+                "חוזרים לטקסט - יש תשובה אחת, אז אחת מהן לא באמת עונה על השאלה",
+              ],
               correctIndex: 2,
-              explanation: "בשאלה אמריקאית יש תמיד תשובה אחת. שתי \"הוכחות\" = אחת מהן לא עונה בדיוק על מה ששאלו.",
+              explanation:
+                'בשאלה אמריקאית יש תמיד תשובה אחת. שתי "הוכחות" = אחת מהן לא עונה בדיוק על מה ששאלו.',
             },
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
@@ -2682,7 +3194,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "YOUR TURN - בפורמט בחינה.\n🚦 רמזור לפני שעונים. רק ירוק = עונים.",
+              text: "{d:rtl}עכשיו פורמט בחינה.\n{d:rtl}\n{d:rtl}🚦 רמזור לפני שעונים. **רק ירוק = עונים.**",
             },
             {
               type: "passage-mcq",
@@ -2721,29 +3233,54 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.",
+            },
             {
               type: "passage-mcq",
-              text: "**LEARNING TO SWIM AS AN ADULT**\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. \"Adults understand what the teacher explains and can correct their mistakes more quickly,\" says Dr. Anna Klein. \"They are also not afraid to ask questions.\"\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.",
+              text: '**LEARNING TO SWIM AS AN ADULT**\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
               questions: [
                 {
-                  prompt: "What do we learn from paragraph I about adults who cannot swim?",
-                  options: ["They are too old to learn", "They became stronger swimmers", "Many feel embarrassed and never try to learn", "Most of them live in small towns"],
+                  prompt:
+                    "What do we learn from paragraph I about adults who cannot swim?",
+                  options: [
+                    "They are too old to learn",
+                    "They became stronger swimmers",
+                    "Many feel embarrassed and never try to learn",
+                    "Most of them live in small towns",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "What do we learn from paragraph II?",
-                  options: ["Adults who learn later can become stronger swimmers than people who learned as children", "Adults are afraid to ask questions", "Swimming classes are available in most cities", "Children learn to swim faster than adults"],
+                  options: [
+                    "Adults who learn later can become stronger swimmers than people who learned as children",
+                    "Adults are afraid to ask questions",
+                    "Swimming classes are available in most cities",
+                    "Children learn to swim faster than adults",
+                  ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "According to paragraph III, which is true about adult swimming classes?",
-                  options: ["All classes meet every day", "Some meet once a week, and others three times a week", "Over 30% of adults cannot swim", "They are only for beginners"],
+                  prompt:
+                    "According to paragraph III, which is true about adult swimming classes?",
+                  options: [
+                    "All classes meet every day",
+                    "Some meet once a week, and others three times a week",
+                    "Over 30% of adults cannot swim",
+                    "They are only for beginners",
+                  ],
                   correctIndex: 1,
                 },
                 {
                   prompt: "According to Dr. Klein, why do adults learn well?",
-                  options: ["They have more free time", "They practice in most cities", "They learned the basics as children", "They understand explanations and correct their mistakes quickly"],
+                  options: [
+                    "They have more free time",
+                    "They practice in most cities",
+                    "They learned the basics as children",
+                    "They understand explanations and correct their mistakes quickly",
+                  ],
                   correctIndex: 3,
                 },
               ],
@@ -2754,17 +3291,32 @@ export const c1Lessons: LessonNode[] = [
               questions: [
                 {
                   prompt: "What do we learn from paragraph II?",
-                  options: ["Many parents were against the idea", "Students did homework for 20 minutes a day", "Test scores did not go down without homework", "Reading scores went down"],
+                  options: [
+                    "Many parents were against the idea",
+                    "Students did homework for 20 minutes a day",
+                    "Test scores did not go down without homework",
+                    "Reading scores went down",
+                  ],
                   correctIndex: 2,
                 },
                 {
                   prompt: "According to paragraph I, why were parents worried?",
-                  options: ["They thought their children would fall behind", "They thought teachers would leave the school", "They wanted more homework", "Test scores went up"],
+                  options: [
+                    "They thought their children would fall behind",
+                    "They thought teachers would leave the school",
+                    "They wanted more homework",
+                    "Test scores went up",
+                  ],
                   correctIndex: 0,
                 },
                 {
                   prompt: "According to Mark Owens, what will the school do?",
-                  options: ["Bring homework back next year", "Continue the experiment and check the results every year", "Stop the experiment", "Teach students to work on their own"],
+                  options: [
+                    "Bring homework back next year",
+                    "Continue the experiment and check the results every year",
+                    "Stop the experiment",
+                    "Teach students to work on their own",
+                  ],
                   correctIndex: 1,
                 },
               ],
@@ -2773,7 +3325,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nעוד שאלת \"What do we learn from paragraph X?\"." },
+            {
+              type: "preface",
+              text: 'תרגול נוסף 🌟 (רשות)\nעוד שאלת "What do we learn from paragraph X?".',
+            },
             {
               type: "passage-mcq",
               text: "I  Every year, millions of young people choose to volunteer. A study found that young people who volunteer for two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class.",
@@ -2869,27 +3424,41 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש." },
+            {
+              type: "preface",
+              text: "תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש.",
+            },
             {
               type: "mcq",
               prompt: "מה מחפשים בטקסט לכל מילת שאלה?",
-              options: ["Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום", "Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by", "כל מילות השאלה מחפשות את אותו דבר", "Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because"],
+              options: [
+                "Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום",
+                "Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by",
+                "כל מילות השאלה מחפשות את אותו דבר",
+                "Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because",
+              ],
               correctIndex: 0,
               explanation: "כל מילת שאלה שולחת אתכם לסוג מידע אחר בטקסט.",
             },
             {
               type: "mcq",
-              prompt: "\"Why did people leave Redonda?\" - מה מחפשים בטקסט?",
+              prompt: '"Why did people leave Redonda?" - מה מחפשים בטקסט?',
               options: ["שם מקום", "because / since / so", "שנה ותאריך"],
               correctIndex: 1,
               explanation: "Why? ← מחפשים מילת סיבה בטקסט.",
             },
             {
               type: "mcq",
-              prompt: "השאלה: \"Give ONE answer\". מצאתם בטקסט שתי תשובות נכונות. מה כותבים?",
-              options: ["את שתיהן - ליתר ביטחון", "אחת בלבד - זו שהכי ברורה בטקסט", "אף אחת - השאלה לא ברורה"],
+              prompt:
+                'השאלה: "Give ONE answer". מצאתם בטקסט שתי תשובות נכונות. מה כותבים?',
+              options: [
+                "את שתיהן - ליתר ביטחון",
+                "אחת בלבד - זו שהכי ברורה בטקסט",
+                "אף אחת - השאלה לא ברורה",
+              ],
               correctIndex: 1,
-              explanation: "ONE = אחת. תשובה נוספת לא מוסיפה נקודות, ואם היא שגויה - מאבדים.",
+              explanation:
+                "ONE = אחת. תשובה נוספת לא מוסיפה נקודות, ואם היא שגויה - מאבדים.",
             },
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
@@ -2953,18 +3522,24 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק.",
+            },
             {
               type: "passage-quiz",
               text: "**WHY YOUNG PEOPLE VOLUNTEER**\n\nI  Every year, millions of young people around the world choose to volunteer - to give their time to help others without payment. A study found that young people who volunteer for at least two hours a week are 60% more likely to describe themselves as happy. Researchers were surprised because they expected that money and success would be the main reason for happiness.\n\nII  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools that introduced volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches young people skills that no classroom can ever replace.",
               questions: [
                 {
-                  prompt: "Why were the researchers surprised? Give ONE answer.",
+                  prompt:
+                    "Why were the researchers surprised? Give ONE answer.",
                   keywords: ["money"],
-                  answerHint: "Because they expected that money and success would be the main reason for happiness.",
+                  answerHint:
+                    "Because they expected that money and success would be the main reason for happiness.",
                 },
                 {
-                  prompt: "According to Dr. Okafor, how do teenagers who volunteer feel?",
+                  prompt:
+                    "According to Dr. Okafor, how do teenagers who volunteer feel?",
                   keywords: ["stress"],
                   answerHint: "They feel less stressed.",
                 },
@@ -2974,7 +3549,8 @@ export const c1Lessons: LessonNode[] = [
                   answerHint: "From 12 countries.",
                 },
                 {
-                  prompt: "According to Professor Mills, what does helping others teach young people?",
+                  prompt:
+                    "According to Professor Mills, what does helping others teach young people?",
                   keywords: ["skill"],
                   answerHint: "Skills that no classroom can ever replace.",
                 },
@@ -2985,14 +3561,16 @@ export const c1Lessons: LessonNode[] = [
               text: "**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\nI  For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\nII  The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\nIII  The change has also brought visitors. Because the night sky is so dark, people come from far away to watch the stars. Local guide Anna Brooks takes small groups to a hill outside the town every weekend.\n\nIV  Not everyone liked the change at first. Some residents said the streets felt less safe after midnight, and a few shop owners were worried about thieves. The council answered by putting small lights at the main crossings, which switch on when someone walks past. Two years later, the police say crime has not gone up, and the birds are back over Fulda Creek.",
               questions: [
                 {
-                  prompt: "When did the town council decide to change the street lights?",
+                  prompt:
+                    "When did the town council decide to change the street lights?",
                   keywords: ["2018"],
                   answerHint: "In 2018.",
                 },
                 {
                   prompt: "Why do people come from far away to Fulda Creek?",
                   keywords: ["star"],
-                  answerHint: "Because the night sky is so dark, they come to watch the stars.",
+                  answerHint:
+                    "Because the night sky is so dark, they come to watch the stars.",
                 },
                 {
                   prompt: "Where does Anna Brooks take her groups?",
@@ -3005,7 +3583,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nתשובה אחת, מהטקסט." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nתשובה אחת, מהטקסט.",
+            },
             {
               type: "self-check",
               text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
@@ -3115,27 +3696,45 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "השלמת משפט: קוראים את ההתחלה. Because ___ = מחפשים סיבה. In order to ___ = מחפשים מטרה." },
             {
-              type: "mcq",
-              prompt: "\"People left Redonda because ___\" - מה עושים?",
-              options: ["כותבים YES/NO", "מחפשים סיבה בטקסט ומשלימים", "כותבים תשובה מהראש"],
-              correctIndex: 1,
-              explanation: "Complete the sentence: מחפשים מילות סיבה בטקסט ← מוצאים ← משלימים.",
+              type: "preface",
+              text: "השלמת משפט: קוראים את ההתחלה. Because ___ = מחפשים סיבה. In order to ___ = מחפשים מטרה.",
             },
             {
               type: "mcq",
-              prompt: "\"They brought goats in order to ___\" - מה מחפשים בטקסט?",
-              options: ["because / since", "to / in order to / so that", "and / also"],
+              prompt: '"People left Redonda because ___" - מה עושים?',
+              options: [
+                "כותבים YES/NO",
+                "מחפשים סיבה בטקסט ומשלימים",
+                "כותבים תשובה מהראש",
+              ],
               correctIndex: 1,
-              explanation: "\"In order to\" = מטרה. מחפשים to / in order to / so that.",
+              explanation:
+                "Complete the sentence: מחפשים מילות סיבה בטקסט ← מוצאים ← משלימים.",
             },
             {
               type: "mcq",
-              prompt: "\"They brought goats because ___\" - איזו השלמה נכונה?",
-              options: ["because they wanted meat and milk", "they wanted meat and milk", "meat and milk because"],
+              prompt: '"They brought goats in order to ___" - מה מחפשים בטקסט?',
+              options: [
+                "because / since",
+                "to / in order to / so that",
+                "and / also",
+              ],
               correctIndex: 1,
-              explanation: "\"because\" כבר כתוב בשאלה. משלימים רק את ההמשך: they wanted meat and milk.",
+              explanation:
+                '"In order to" = מטרה. מחפשים to / in order to / so that.',
+            },
+            {
+              type: "mcq",
+              prompt: '"They brought goats because ___" - איזו השלמה נכונה?',
+              options: [
+                "because they wanted meat and milk",
+                "they wanted meat and milk",
+                "meat and milk because",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"because" כבר כתוב בשאלה. משלימים רק את ההמשך: they wanted meat and milk.',
             },
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
@@ -3202,7 +3801,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.",
+            },
             {
               type: "passage-quiz",
               text: "**REDONDA ISLAND**\n\nI  People first came to Redonda Island 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants, and the people could not find enough food, so they left the island.\n\nII  In 2016, environmentalists removed the goats so that the plants could grow back. Only a few years later, grass covered the island again, and birds returned to build their nests.",
@@ -3369,27 +3971,45 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "Give TWO answers = שתי תשובות, ממוספרות (1) ו-(2). מצאתם אחת? ממשיכים לחפש." },
+            {
+              type: "preface",
+              text: "Give TWO answers = שתי תשובות, ממוספרות (1) ו-(2). מצאתם אחת? ממשיכים לחפש.",
+            },
             {
               type: "mcq",
-              prompt: "\"Give TWO answers\" - כמה תשובות כותבים?",
-              options: ["אחת - אם היא ארוכה ומפורטת", "שתיים בדיוק", "שלוש - כדי לא להחמיץ"],
+              prompt: '"Give TWO answers" - כמה תשובות כותבים?',
+              options: [
+                "אחת - אם היא ארוכה ומפורטת",
+                "שתיים בדיוק",
+                "שלוש - כדי לא להחמיץ",
+              ],
               correctIndex: 1,
-              explanation: "שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.",
+              explanation:
+                "שתיים בדיוק. אחת = חצי ניקוד. שלוש = עלולים לאבד נקודות.",
             },
             {
               type: "mcq",
               prompt: "מצאתם תשובה ראשונה. מה עושים?",
-              options: ["כותבים אותה ועוברים לשאלה הבאה", "ממשיכים לקרוא - מחפשים שנייה", "מחפשים שנייה רק אם נשאר זמן"],
+              options: [
+                "כותבים אותה ועוברים לשאלה הבאה",
+                "ממשיכים לקרוא - מחפשים שנייה",
+                "מחפשים שנייה רק אם נשאר זמן",
+              ],
               correctIndex: 1,
               explanation: "תמיד ממשיכים. עוצרים רק כשיש שתיים.",
             },
             {
               type: "mcq",
-              prompt: "ראיתם בטקסט \"In addition\" מיד אחרי התשובה הראשונה. מה זה אומר?",
-              options: ["שהטקסט עובר לנושא אחר", "שהתשובה השנייה מגיעה עכשיו", "שהתשובה הראשונה הייתה שגויה"],
+              prompt:
+                'ראיתם בטקסט "In addition" מיד אחרי התשובה הראשונה. מה זה אומר?',
+              options: [
+                "שהטקסט עובר לנושא אחר",
+                "שהתשובה השנייה מגיעה עכשיו",
+                "שהתשובה הראשונה הייתה שגויה",
+              ],
               correctIndex: 1,
-              explanation: "In addition / Also / And = סיגנל שתשובה שנייה מגיעה.",
+              explanation:
+                "In addition / Also / And = סיגנל שתשובה שנייה מגיעה.",
             },
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
@@ -3454,20 +4074,27 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו באנגלית, מהטקסט. בשאלת TWO - כתבו (1) ו-(2) באותה תיבה. טקסט מוכר, ואחריו טקסט חדש. לא כל שאלה מבקשת שתי תשובות." },
+            {
+              type: "preface",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו באנגלית, מהטקסט. בשאלת TWO - כתבו (1) ו-(2) באותה תיבה. טקסט מוכר, ואחריו טקסט חדש. לא כל שאלה מבקשת שתי תשובות.",
+            },
             {
               type: "passage-quiz",
-              text: "**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. \"We do not just plant trees,\" says Dr. Diallo. \"We teach local people how to care for them.\" According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.",
+              text: '**THE GREEN AFRICA PROJECT**\n\nI  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.\n\nII  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.\n\nIII  The results are already visible. In Ethiopia, the number of birds increased by 60% in areas where trees were planted. In addition, in Kenya, rivers that were dry for 20 years began to flow again. Scientists say that if the project continues, it could reduce carbon in the atmosphere by 15%.',
               questions: [
                 {
-                  prompt: "How did the area change after trees were planted? Give TWO answers. (paragraph III)",
+                  prompt:
+                    "How did the area change after trees were planted? Give TWO answers. (paragraph III)",
                   keywords: ["bird", "river"],
-                  answerHint: "(1) The number of birds increased by 60%. (2) Rivers in Kenya began to flow again.",
+                  answerHint:
+                    "(1) The number of birds increased by 60%. (2) Rivers in Kenya began to flow again.",
                 },
                 {
-                  prompt: "According to Dr. Diallo, what does the project do? Give TWO answers. (paragraph II)",
+                  prompt:
+                    "According to Dr. Diallo, what does the project do? Give TWO answers. (paragraph II)",
                   keywords: ["plant", "teach"],
-                  answerHint: "(1) It plants trees. (2) It teaches local people how to care for them.",
+                  answerHint:
+                    "(1) It plants trees. (2) It teaches local people how to care for them.",
                 },
                 {
                   prompt: "According to Dr. Diallo, why do most trees die?",
@@ -3483,17 +4110,21 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "**THE SCHOOL THAT GROWS ITS OWN LUNCH**\n\nI  At Hillcrest Primary School, students do not only eat lunch - they grow it. In 2020, the school turned an empty field into a vegetable garden. Every class looks after its own part of the garden.\n\nII  The garden has changed school life in two ways. First, students now eat more vegetables, because they want to taste what they grew. In addition, teachers use the garden in science lessons to teach about plants, soil and weather.\n\nIII  The project also helps families. Every Friday, students take home a box of fresh vegetables, and parents can join a cooking class at the school once a month.\n\nIV  Other schools want to copy the idea, but it is not always easy. A garden needs land, water and someone to look after it during the long summer holiday. At Hillcrest, parents and older students take turns watering the plants in July and August. Head teacher Ruth Allen says the garden is the best thing the school has done in years. \"Children learn by doing,\" she says, \"and here they can see and taste what they learned.\"",
+              text: '**THE SCHOOL THAT GROWS ITS OWN LUNCH**\n\nI  At Hillcrest Primary School, students do not only eat lunch - they grow it. In 2020, the school turned an empty field into a vegetable garden. Every class looks after its own part of the garden.\n\nII  The garden has changed school life in two ways. First, students now eat more vegetables, because they want to taste what they grew. In addition, teachers use the garden in science lessons to teach about plants, soil and weather.\n\nIII  The project also helps families. Every Friday, students take home a box of fresh vegetables, and parents can join a cooking class at the school once a month.\n\nIV  Other schools want to copy the idea, but it is not always easy. A garden needs land, water and someone to look after it during the long summer holiday. At Hillcrest, parents and older students take turns watering the plants in July and August. Head teacher Ruth Allen says the garden is the best thing the school has done in years. "Children learn by doing," she says, "and here they can see and taste what they learned."',
               questions: [
                 {
-                  prompt: "How has the garden changed school life? Give TWO answers. (paragraph II)",
+                  prompt:
+                    "How has the garden changed school life? Give TWO answers. (paragraph II)",
                   keywords: ["vegetable", "science"],
-                  answerHint: "(1) Students eat more vegetables. (2) Teachers use the garden in science lessons.",
+                  answerHint:
+                    "(1) Students eat more vegetables. (2) Teachers use the garden in science lessons.",
                 },
                 {
-                  prompt: "How does the project help families? Give TWO answers. (paragraph III)",
+                  prompt:
+                    "How does the project help families? Give TWO answers. (paragraph III)",
                   keywords: ["box", "cook"],
-                  answerHint: "(1) Students take home a box of fresh vegetables. (2) Parents can join a cooking class.",
+                  answerHint:
+                    "(1) Students take home a box of fresh vegetables. (2) Parents can join a cooking class.",
                 },
                 {
                   prompt: "When did the school turn the field into a garden?",
@@ -3506,7 +4137,10 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nמסמנים שתי תשובות." },
+            {
+              type: "preface",
+              text: "תרגול נוסף 🌟 (רשות)\nמסמנים שתי תשובות.",
+            },
             {
               type: "mark-all",
               instruction: "סמנו את שתי התשובות ואת מילת החיבור שביניהן",
@@ -3776,18 +4410,36 @@ export const c1Lessons: LessonNode[] = [
               text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
               questions: [
                 {
-                  prompt: "According to paragraph I, what were the first results like?",
-                  options: ["Worse than expected", "Better than expected", "The same as before", "Not known yet"],
+                  prompt:
+                    "According to paragraph I, what were the first results like?",
+                  options: [
+                    "Worse than expected",
+                    "Better than expected",
+                    "The same as before",
+                    "Not known yet",
+                  ],
                   correctIndex: 1,
                 },
                 {
-                  prompt: "Test scores stayed about the same. What did teachers notice?",
-                  options: ["Students were more tired", "Test scores went up", "Students were more focused on Mondays", "Attendance fell"],
+                  prompt:
+                    "Test scores stayed about the same. What did teachers notice?",
+                  options: [
+                    "Students were more tired",
+                    "Test scores went up",
+                    "Students were more focused on Mondays",
+                    "Attendance fell",
+                  ],
                   correctIndex: 2,
                 },
                 {
-                  prompt: "How many students used the school libraries on Fridays?",
-                  options: ["Most of them", "All of them", "None", "Only a few"],
+                  prompt:
+                    "How many students used the school libraries on Fridays?",
+                  options: [
+                    "Most of them",
+                    "All of them",
+                    "None",
+                    "Only a few",
+                  ],
                   correctIndex: 3,
                 },
               ],
