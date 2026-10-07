@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { pushState } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, pushState } from '$app/navigation';
 	import { page } from '$app/state';
 	import { FlaskConical } from '@lucide/svelte';
 	import { draw, fade, scale } from 'svelte/transition';
@@ -214,6 +214,26 @@
 		document
 			.querySelector(`[data-lesson-node-id="${CSS.escape(lastLessonId)}"]`)
 			?.scrollIntoView({ block: 'start' });
+	});
+
+	// Entering /edit and coming back (a fresh navigation, so the browser's own
+	// scroll restore doesn't apply) must land on the same spot of the path.
+	const scrollKey = () => `lessons-scroll:${mod.id}`;
+	beforeNavigate(() => {
+		try {
+			sessionStorage.setItem(scrollKey(), String(window.scrollY));
+		} catch {
+			// storage unavailable: fall back to the usual last-lesson jump
+		}
+	});
+	afterNavigate(({ from }) => {
+		if (!from?.url.pathname.startsWith('/edit')) return;
+		try {
+			const y = Number(sessionStorage.getItem(scrollKey()));
+			if (y > 0) window.scrollTo({ top: y, behavior: 'instant' });
+		} catch {
+			// ignore
+		}
 	});
 
 	function isDone(lessonId: string): boolean {
