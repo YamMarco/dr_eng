@@ -15,11 +15,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\n\nלא כתיב. לא דקדוק. **אלא לא לענות על השאלה.**\n\nאם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n\n**YES - אני בעד.**\nאו\n**NO - אני נגד.**\n\nתלמיד שכותב:\n**“Volunteering is good”**\n\n++עדיין לא באמת הביע דעה.++ הוא רק תיאר את הנושא.\nהמעריך בבחינת הבגרות רוצה לקרוא: \n\n**מה אתם חושבים?**\n\n**למה אתם חושבים כך?**\n",
+          text: "{d:rtl}חבר׳ה, מה הטעות הכי נפוצה בכתיבה?\n\n{d:rtl}לא כתיב. לא דקדוק. **אלא לא לענות על השאלה.**\n\n{d:rtl}אם השאלה מבקשת מכם להביע דעה, אתם חייבים קודם להגיד בצורה ברורה:\n\n{d:rtl}**YES - אני בעד.**\n{d:rtl}או\n{d:rtl}**NO - אני נגד.**\n\n{d:rtl}תלמיד שכותב:\n{p:text}**Volunteering is good**\n\n{d:rtl}++עדיין לא באמת הביע דעה.++ הוא רק תיאר את הנושא.\n{d:rtl}המעריך בבחינת הבגרות רוצה לקרוא: \n\n{d:rtl}**מה אתם חושבים?**\n\n{d:rtl}**למה אתם חושבים כך?**\n",
         },
         {
           type: "preface",
-          text: "זה המשפט הכי חשוב בתחילת הפסקה:\n\n✅ **I think teenagers should volunteer.**\nהמשפט **קצר**, **ברור**, והעמדה שלכם מובנת מיד.\n\nועכשיו טיפ חשוב מאוד:\n\n**במשימת דעה, אל תבזבזו זמן על:**\n**“רגע... אני בעד או נגד?”**\n\nאם אין לכם סיבה טובה לבחור אחרת - לכו על **דעה חיובית**.\nלמה?\n\nכי בדרך כלל הרבה יותר קל לחשוב על סיבות חיוביות:\n**It helps...**\n**It improves...**\n**It teaches...**\nלדוגמה:\n**I think teenagers should volunteer.**\nוזהו.\nבחרתם עמדה. ממשיכים.\n\n",
+          text: "{d:rtl}זה המשפט הכי חשוב בתחילת הפסקה:\n\n{p:text}**I think teenagers should volunteer.**\n{d:rtl}המשפט **קצר**, **ברור**, והעמדה שלכם מובנת מיד.\n\n{d:rtl}ועכשיו טיפ חשוב מאוד:\n\n{d:rtl}**במשימת דעה, אל תבזבזו זמן על:**\n{d:rtl}**“רגע... אני בעד או נגד?”**\n\n{d:rtl}אם אין לכם סיבה טובה לבחור אחרת - לכו על **דעה חיובית**.\n{d:rtl}למה?\n\n{d:rtl}כי בדרך כלל הרבה יותר קל לחשוב על סיבות חיוביות:\n{p:text}**It helps...**\n{p:text}**It improves...**\n{p:text}**It teaches...**\n{d:rtl}לדוגמה:\n{p:text}**I think teenagers should volunteer.**\n{d:rtl}וזהו.\n{d:rtl}בחרתם עמדה. ממשיכים.\n\n",
         },
         {
           type: "preface",
@@ -33,7 +33,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '### \n### בואו נעבור על עוד דוגמה:\n\n### 🟢 שלב 1 - מבינים את השאלה\n**Do you think teenagers should have part-time jobs?**\nלא מספיק להבין רק:\n**teenagers** = בני נוער\n**jobs** = עבודות\nצריך להבין גם:\n**part-time jobs** = עבודות במשרה חלקית\nכלומר, השאלה היא:\n**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n### 🟡 שלב 2 - לא מסתבכים\nאל תבזבזו זמן על:\n**"אני בעד או נגד?"**\nאם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n### 🟢 שלב 3 - כותבים פתיח ברור\n✅ **I think teenagers should have part-time jobs.**\nקצר. ברור. נכון.\n### ⭐ הכלל שלנו\n**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
+                '### \n{d:rtl}### בואו נעבור על עוד דוגמה:\n\n{d:rtl}### 🟢 שלב 1 - מבינים את השאלה\n{p:text}**Do you think teenagers should have part-time jobs?**\n{d:rtl}לא מספיק להבין רק:\n{d:rtl}**teenagers** = בני נוער\n{d:rtl}**jobs** = עבודות\n{d:rtl}צריך להבין גם:\n{d:rtl}**part-time jobs** = עבודות במשרה חלקית\n{d:rtl}כלומר, השאלה היא:\n{d:rtl}**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n{d:rtl}### 🟡 שלב 2 - לא מסתבכים\n{d:rtl}אל תבזבזו זמן על:\n{d:rtl}**"אני בעד או נגד?"**\n{d:rtl}אם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n{d:rtl}### 🟢 שלב 3 - כותבים פתיח ברור\n{p:text}✅ **I think teenagers should have part-time jobs.**\n{d:rtl}קצר. ברור. נכון.\n{d:rtl}### ⭐ הכלל שלנו\n{d:rtl}**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
@@ -221,15 +221,15 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש לכם עמדה. מצוין.\n\nאבל המורה רוצה גם לדעת למה.\n\nהמילה שמחברת את הדעה לסיבה היא: because.\n\n"I think students should volunteer because it teaches responsibility."\n\nעמדה + because + סיבה = משפט שמרוויח נקודות.',
+          text: "{d:rtl}יש לכם עמדה. מצוין.\n\n{d:rtl}אבל המורה רוצה גם לדעת למה.\n\n{d:rtl}המילה שמחברת את הדעה לסיבה היא: because.\n{p:text}I think students should volunteer because it teaches responsibility.\n\n{d:rtl}עמדה + because + סיבה = משפט שמרוויח נקודות.",
         },
         {
           type: "preface",
-          text: 'הסיבה צריכה לענות על שאלה אחת: למה?\n\n❌ I think students should volunteer because volunteering is good.\nלמה זה לא עובד? כי "good" לא מסביר כלום.\n\n✅ I think students should volunteer because they learn to care about others.\nזו סיבה אמיתית.',
+          text: '{d:rtl}הסיבה צריכה לענות על שאלה אחת: למה?\n{p:text}❌ I think students should volunteer because volunteering is good.\n{d:rtl}\n{d:rtl}למה זה לא עובד? כי "good" לא מסביר כלום.\n{p:text}✅ I think students should volunteer because they learn to care about others.\n{d:rtl}\n{d:rtl}זו סיבה אמיתית.',
         },
         {
           type: "summary",
-          title: "נוסחת because",
+          title: "{d:rtl}נוסחת *Because*",
           lines: [
             '"I think [עמדה] because [סיבה ספציפית]."',
             "הסיבה עונה על: למה זה נכון? מה קורה בגלל זה?",
@@ -314,11 +314,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש לכם סיבה אחת. טוב.\n\nאבל אחת לא תמיד מספיקה.\n\nהמורה רוצה לראות שיש לכם יותר מטיעון אחד.\nבשביל זה יש: In addition.\n\n"In addition, volunteering looks good on a resume."\n\nשימו לב - זו סיבה שנייה. שונה מהראשונה.\nלא אותה מחשבה עם מילים אחרות.',
+          text: "{d:rtl}יש לכם סיבה אחת. טוב.\n\n{d:rtl}אבל אחת לא תמיד מספיקה.\n\n{d:rtl}המורה רוצה לראות שיש לכם יותר מטיעון אחד.\n{d:rtl}בשביל זה יש: In addition.\n\n{p:text}In addition, volunteering looks good on a resume.\n\n{d:rtl}שימו לב - זו סיבה שנייה. שונה מהראשונה.\n{d:rtl}לא אותה מחשבה עם מילים אחרות.",
         },
         {
           type: "preface",
-          text: "❌ **I think students should volunteer because it teaches responsibility.**\n**In addition, it teaches them to be responsible.**\nזה נשמע כמו שתי סיבות - אבל בעצם זו **אותה סיבה פעמיים**.\n**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n✅ **I think students should volunteer because it teaches responsibility.**\n**In addition, it gives them experience that can help them find jobs later.**\nעכשיו יש לנו שתי סיבות שונות:\n**סיבה 1:** אחריות\n**סיבה 2:** ניסיון לעתיד\nהכלל:\n**שתי סיבות = שני רעיונות שונים.**\nלא חוזרים על אותה סיבה במילים אחרות.",
+          text: "{p:text}❌ I think students should volunteer because it teaches responsibility. **++In addition, it teaches them to be responsible.++**\n{d:rtl}זה נשמע כמו שתי סיבות - אבל בעצם זו **אותה סיבה פעמיים**.\n{d:rtl}**responsibility** ו־**be responsible** אומרים כאן כמעט אותו דבר. המעריך מחפש **רעיון נוסף**, לא את אותו רעיון במילים אחרות.\n{p:text}✅ I think students should volunteer because it teaches responsibility. **++In addition, it gives them experience that can help them find jobs later.++**\n{d:rtl}עכשיו יש לנו שתי סיבות שונות:\n{d:rtl}**סיבה 1:** אחריות\n{d:rtl}**סיבה 2:** ניסיון לעתיד\n{d:rtl}הכלל:\n{d:rtl}**שתי סיבות = שני רעיונות שונים.**\n{d:rtl}לא חוזרים על אותה סיבה במילים אחרות.",
         },
         {
           type: "summary",
@@ -421,11 +421,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש לכם עמדה. יש לכם שתי סיבות. מצוין.\n\nאבל סיבה בלי פרט - נשמעת ריקה.\n\n"Volunteering teaches skills." - בסדר.\n"For example, students learn to work in a team and communicate with adults." - הרבה יותר טוב.\n\nFor example = הוכחה שאתם יודעים על מה אתם מדברים.',
+          text: '{d:rtl}יש לכם עמדה. יש לכם שתי סיבות. מצוין.\n\n{d:rtl}אבל סיבה בלי פרט - נשמעת ריקה.\n\n{p:ul}{d:ltr}**"Volunteering teaches skills."** - בסדר.\n{p:ul}{d:ltr}**"For example, students learn to work in a team and ****communicate with adults." **-  הרבה יותר טוב\n\n{p:callout}{d:rtl}**For example** = הוכחה שאתם יודעים על מה אתם מדברים.',
         },
         {
           type: "preface",
-          text: 'For example מגיע ישר אחרי הסיבה.\n\n"I think students should volunteer because they develop important skills.\nFor example, they learn to communicate with adults and solve real problems."\n\nלא חייבים להשתמש בו פעמיים. פעם אחת ב-70-90 מילים - מספיק.\nזה כבר מעלה את ציון ה-Vocabulary וה-Content.',
+          text: '{d:rtl}For example מגיע ישר אחרי הסיבה.\n\n{p:text}"I think students should volunteer because they develop important skills.\n{p:text}For example, they learn to communicate with adults and solve real problems."\n\n{d:rtl}לא חייבים להשתמש בו פעמיים. פעם אחת ב-70-90 מילים - מספיק.\n{d:rtl}זה כבר מעלה את ציון ה-Vocabulary וה-Content.',
         },
         {
           type: "summary",
@@ -519,11 +519,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'הפסקה צריכה סיום.\n\nלא תשובה חדשה. לא סיבה חדשה.\nפשוט משפט אחד שאומר: הנה מה שחשבתי לאורך כל הפסקה.\n\n"In conclusion, I believe that volunteering should be part of every student\'s life."\n\nקצר. ברור. סוגר.',
+          text: "{d:rtl}הפסקה שלנו צריכה סיום.\n\n{d:rtl}לא תשובה חדשה. לא סיבה חדשה.\n{d:rtl}פשוט משפט אחד שאומר: הנה מה שחשבתי לאורך כל הפסקה.\n\n{p:text}In conclusion, I believe that volunteering should be part of every student's life.\n\n{d:rtl}קצר. ברור. סוגר.",
         },
         {
           type: "preface",
-          text: "❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\nמשפט אחד ארוך עם הכל שוב - לא זה.\n\n✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\nמשפט אחד. רעיון אחד. נשמע כמו סיום.",
+          text: "{p:text}❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\n{d:rtl}משפט אחד ארוך עם הכל שוב - לא זה.\n\n{p:text}✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\n{d:rtl}משפט אחד. רעיון אחד. נשמע כמו סיום.",
         },
         {
           type: "summary",
@@ -732,11 +732,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "70-90 מילים. לא 69. לא 91.\n\nלמה זה חשוב?\n\nכי המורה מוריד נקודות אם הפסקה קצרה מדי.\nו-10 הנקודות החשובות ביותר - תוכן - הן הראשונות שנפגעות.\n\n60-69 מילים = מינוס 1.\n50-59 מילים = מינוס 3.\n40-49 מילים = מינוס 6.\n\nשווה לספור.",
+          text: "{d:rtl}70-90 מילים. לא 69. לא 91.\n\n{d:rtl}למה זה חשוב?\n\n{d:rtl}כי המורה מוריד נקודות אם הפסקה קצרה מדי.\n{d:rtl}ו-10 הנקודות החשובות ביותר - תוכן - הן הראשונות שנפגעות.\n\n{d:rtl}60-69 מילים = **מינוס 1**\n{d:rtl}50-59 מילים = **מינוס 3**\n{d:rtl}40-49 מילים = **מינוס 6**",
         },
         {
           type: "preface",
-          text: 'איך סופרים מהר?\n\na / the / and / I / is - כולן מילים.\nכל מילה = 1. גם מילות קישור.\n\n"I think (1) students (2) should (3) volunteer (4) because (5) it (6) teaches (7) responsibility (8)."\n\nזה 8 מילים.\n\nכתבתם פחות מ-70? הוסיפו For example עם פרט.\nכתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.',
+          text: "{d:rtl}איך סופרים מהר?\n\n{d:rtl}a / the / and / I / is - כולן מילים.\n{d:rtl}כל מילה = 1. גם מילות קישור.\n\n{p:text}I think *(1)* students *(2)* should *(3)* volunteer *(4)* because *(5)* it* (6)* teaches *(7) *responsibility *(8)*.\n{d:rtl}אלו כבר **8 מילים**.\n\n{p:callout}{d:rtl}כתבתם פחות מ-70? הוסיפו For example עם פרט.\n{p:callout}{d:rtl}כתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.",
         },
         {
           type: "summary",
@@ -755,7 +755,7 @@ export const c3Lessons: LessonNode[] = [
             { type: "preface", text: "סיבוב 1 | ספירה ותיקון" },
             {
               type: "mcq",
-              prompt: "תלמיד כתב 65 מילים. מה הכי חכם לעשות?",
+              prompt: "{d:rtl}תלמיד כתב **65 מילים**. מה הכי חכם לעשות?",
               options: [
                 "להגיש - קרוב מספיק",
                 'להוסיף "For example,..." עם פרט ספציפי',
@@ -768,7 +768,7 @@ export const c3Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "תלמיד כתב 95 מילים. מה הכי חכם לעשות?",
+              prompt: "{d:rtl}תלמיד כתב **95 מילים**. מה הכי חכם לעשות?",
               options: [
                 "להגיש - 90 זה רק המלצה",
                 "למחוק מילה אחת מכל משפט",
@@ -781,7 +781,7 @@ export const c3Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "מה ההפסד בציון על 55 מילים?",
+              prompt: "{d:rtl}מה ההפסד בציון על **55 מילים**?",
               options: [
                 "מינוס 1 נקודה",
                 "מינוס 3 נקודות",
@@ -820,15 +820,15 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'חבר׳ה, שאלה שמתחילה ב-"Do you think" היא הכי נפוצה בבגרות.\n\nהיא מבקשת ממכם שני דברים בלבד:\n1. להגיד YES או NO\n2. להסביר למה\n\nזהו. לא סיפור חיים. לא הסבר על העולם.\nYES/NO + סיבות.',
+          text: '{d:rtl}חבר׳ה, שאלה שמתחילה ב-**"Do you think"** היא הכי נפוצה בבגרות.\n\n{d:rtl}היא מבקשת ממכם שני דברים בלבד:\n{d:rtl}1. להגיד YES או NO\n{d:rtl}2. להסביר למה\n\n{d:rtl}זהו. לא סיפור חיים. לא הסבר על העולם.\n{d:rtl}YES/NO + סיבות.',
         },
         {
           type: "preface",
-          text: 'הנוסחה שעובדת תמיד:\n\n"I think... because..."\n"In addition,..."\n"In conclusion, I believe..."\n\nשלושה משפטי פתיחה. שלושה.\nומעבר לזה? מה שבא לכם.',
+          text: '{d:rtl}הנוסחה שעובדת תמיד:\n\n{p:text}"I think... because..."\n{p:text}"In addition,..."\n{p:text}"In conclusion, I believe..."\n\n{d:rtl}שלושה משפטי פתיחה. שלושה.\n{d:rtl}ומעבר לזה? מה שבא לכם.',
         },
         {
           type: "preface",
-          text: "טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n❌ Volunteer work is very important in the world today.\n✅ I think all students should do volunteer work because it teaches responsibility.\n\nהבדל של 3 נקודות בתוכן. פשוט להימנע ממנה.",
+          text: "{d:rtl}טעות שתלמידים עושים: מתחילים לכתוב בלי להגיד YES או NO.\n\n{p:text}❌ Volunteer work is very important in the world today.\n{p:text}✅ I think all students should do volunteer work because it teaches responsibility.\n\n{d:rtl}הבדל של **++3 נקודות++** בתוכן. פשוט להימנע ממנה.",
         },
         {
           type: "summary",
@@ -1029,11 +1029,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\nהיא לא שואלת: **YES או NO?**\nהיא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\nכלומר, צריך לעשות שני דברים:\n🟢 **1. לבחור דבר אחד ברור**\n🟢 **2. להסביר למה בחרתם בו**\n\nלמשל:\n**What do you think is the best way to help teenagers study better?**\n\nאל תכתבו:\n❌ **There are many ways to help teenagers study.**\nזה לא נותן תשובה ברורה.\n\nבמקום זה:\n✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\nשימו לב:\n**the best way is...** = הבחירה שלי\n**because...** = הסיבה שלי\n\n⭐ הכלל:\n**What do you think...? → בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
+          text: "{d:rtl}🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\n{d:rtl}היא לא שואלת: **YES או NO?**\n{d:rtl}היא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\n{d:rtl}כלומר, צריך לעשות שני דברים:\n{d:rtl}🟢 **1. לבחור דבר אחד ברור**\n{d:rtl}🟢 **2. להסביר למה בחרתם בו**\n\n{d:rtl}למשל:\n{p:text}**What do you think is the best way to help teenagers study better?**\n\n{d:rtl}אל תכתבו:\n{p:text}❌ **There are many ways to help teenagers study.**\n{d:rtl}זה לא נותן תשובה ברורה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\n{d:rtl}שימו לב:\n{d:rtl}**the best way is...** = הבחירה שלי\n{d:rtl}**because...** = הסיבה שלי\n\n{p:callout}{d:rtl}**What do you think...? => בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
         },
         {
           type: "preface",
-          text: "הטעות הנפוצה ביותר בסוג הזה:\n\n❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\nזה לא בחירה. זה תיאור של העולם.\n\n✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\nהבדל קטן בפתיחה, הבדל גדול בציון.",
+          text: "{d:rtl}הטעות הנפוצה ביותר בסוג הזה:\n\n{p:text}❌ There are many ways to spend a vacation. Some people travel. Others rest.\n\n{d:rtl}זה לא בחירה. זה תיאור של העולם.\n\n{p:text}{d:ltr}✅ In my opinion, the best way to spend a vacation is to travel because you discover new cultures.\n\n{d:rtl}הבדל קטן בפתיחה, הבדל גדול בציון.",
         },
         {
           type: "summary",
@@ -1064,7 +1064,6 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"What do you think?" = בחרו ספציפית. "In my opinion, the best way is traveling because..." - בחירה + because = פתיח מנצח.',
             },
-            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt:
@@ -1187,11 +1186,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'יש סוג שלישי של שאלה - "In your opinion, what changes / what should...?"\n\nזו לא שאלת YES/NO.\nזו לא שאלת העדפה.\n\nהיא מבקשת: תציעו משהו ספציפי ותסבירו למה זה יעזור.',
+          text: '{d:rtl}יש סוג שלישי של שאלה - "In your opinion, what changes / what should...?"\n\n{d:rtl}זו לא שאלת YES/NO.\n{d:rtl}זו לא שאלת העדפה.\n\n{d:rtl}היא מבקשת: תציעו **משהו ספציפי **ותסבירו למה זה יעזור.',
         },
         {
           type: "preface",
-          text: '❌ Schools have many problems. Students are tired. Teachers are stressed.\n\nזה תיאור הבעיה. לא הצעה.\n\n✅ I think schools should have shorter lessons because students cannot focus for more than 45 minutes.\n\nראיתם את ההבדל? "should have" = הצעה. "because" = ההסבר.',
+          text: '{p:text}❌ Schools have many problems. Students are tired. Teachers are stressed.\n\n{d:rtl}זה תיאור הבעיה. לא הצעה.\n\n{p:text}✅ I think schools should have shorter lessons because students cannot focus for more than 45 minutes.\n\n{p:callout}{d:rtl}ראיתם את ההבדל? **"should have"** = הצעה. **"because"** = ההסבר.',
         },
         {
           type: "summary",
@@ -1342,11 +1341,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.\n\nלמשל:\n**At what age...?** = **באיזה גיל?**\n\n🟢 במקרה כזה בוחרים **גיל אחד ברור**.\n\nלא כותבים:\n❌ **It depends.**\n❌ **Some say 10, others say 15.**\n\nבוחרים תשובה אחת:\n✅ **I think teenagers should start working at the age of 16.**\nואז מסבירים **למה** בחרתם דווקא בגיל הזה.\n\n⭐ הכלל:\n**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
+          text: "{d:rtl}יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.\n\n{d:rtl}למשל:\n{p:text}{d:ltr}**At what age...?** = **באיזה גיל?**\n\n{d:rtl}🟢 במקרה כזה בוחרים **גיל אחד ברור**.\n\n{d:rtl}לא כותבים:\n{p:text}❌ **It depends.**\n{p:text}❌ **Some say 10, others say 15.**\n\n{d:rtl}בוחרים תשובה אחת:\n{p:text}✅ **I think teenagers should start working at the age of 16.**\n{d:rtl}ואז מסבירים **למה** בחרתם דווקא בגיל הזה.\n{d:rtl}\n{p:callout}{d:rtl}**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
         },
         {
           type: "preface",
-          text: "שימו לב: השאלה **לא** שואלת:\n❌ **Do you think children should have phones?**\nהיא כבר מניחה שלילדים יהיה טלפון.\n\nהיא שואלת רק:\n🟢 **מתי? באיזה גיל?**\n\nלכן אל תתחילו לכתוב:\n❌ **I think phones are dangerous for children.**\nזה לא עונה על השאלה.\n\nבמקום זה:\n✅ **I think children should get their own phone at age 13 because...**\n\n⭐ הכלל: **השאלה שואלת מתי? → עונים בגיל.**\nלא משנים את השאלה לנושא אחר.",
+          text: "{d:rtl}שימו לב: השאלה **לא** שואלת:\n{p:text}❌ **Do you think children should have phones?**\n{d:rtl}היא כבר מניחה שלילדים יהיה טלפון.\n\n{d:rtl}היא שואלת רק:\n{p:text}{d:rtl}🟢 **מתי? באיזה גיל?**\n\n{d:rtl}לכן אל תתחילו לכתוב:\n{p:text}❌ **I think phones are dangerous for children.**\n{d:rtl}זה לא עונה על השאלה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **I think children should get their own phone at age 13 because...**\n\n{p:callout}{d:rtl}**השאלה שואלת מתי? → עונים בגיל. **לא משנים את השאלה לנושא אחר.",
         },
         {
           type: "summary",
