@@ -421,7 +421,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n{p:text}1. **Complete the sentence**: People left the island **because** ...\n{p:text}2. **Circle the correct answer**: Why did the scientists remove the goats?\n{p:text}3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -462,7 +462,6 @@ export const c2Lessons: LessonNode[] = [
               sentence: "Please complete the sentence below.",
               correctWordIndex: 1,
             },
-            { type: "preface", text: "" },
             { type: "spell-word", word: "complete the sentence", mode: "copy" },
             {
               type: "word-card",
@@ -882,7 +881,6 @@ export const c2Lessons: LessonNode[] = [
               explanation: "מה שאחרי however הוא הנקודה.",
             },
             { type: "spell-word", word: "however", mode: "copy" },
-            { type: "preface", text: "" },
             {
               type: "word-card",
               word: "although",
@@ -4524,7 +4522,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "📘 מתחילים מהטקסט \n\nב־**Module C** יש שני חלקים עיקריים:\n\n**חלק 1 – הבנת הנקרא: 70 נקודות**\n\n**חלק 2 – כתיבה: 30 נקודות**\nאנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה:**הטקסט – 70 נקודות**\n\nרק אחרי שנלמד איך להתמודד עם הטקסט,נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה**👀 \n",
+          text: "{d:rtl}📘 מתחילים מהטקסט \n\n{d:rtl}ב־**Module C** יש שני חלקים עיקריים:\n\n{d:rtl}**חלק 1 – הבנת הנקרא: 70 נקודות**\n\n{d:rtl}**חלק 2 – כתיבה: 30 נקודות**\n{d:rtl}אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה: **הטקסט – 70 נקודות**\n\n{d:rtl}רק אחרי שנלמד איך להתמודד עם הטקסט, נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה**👀 \n",
         },
         {
           type: "preface",
