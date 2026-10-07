@@ -169,6 +169,8 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 		)
 			applyBlockKind(replacement, block.dataset.p);
 		if (block.style.direction) replacement.style.direction = block.style.direction;
+		const icon = block.style.getPropertyValue('--callout-icon');
+		if (icon) replacement.style.setProperty('--callout-icon', icon);
 		block.replaceWith(replacement);
 
 		const range = document.createRange();

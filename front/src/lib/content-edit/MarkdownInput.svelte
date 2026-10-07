@@ -14,6 +14,11 @@
 	// …) live inside those blocks same as before.
 	import { untrack } from 'svelte';
 	import { mdBlock } from '$lib/lesson-screens/miniMarkdown';
+	import {
+		CALLOUT_ICONS,
+		DEFAULT_CALLOUT_ICON,
+		calloutIconName
+	} from '$lib/lesson-screens/calloutIcons';
 	import { colorNameFromHex } from '$lib/lesson-screens/textColors';
 	import { activeField, updateActiveLine } from './activeField.svelte';
 
@@ -108,6 +113,12 @@
 		let prefix = '';
 		if (kind === 'text' || kind === 'callout' || kind === 'ul' || kind === 'ol')
 			prefix += `{p:${kind}}`;
+		if (kind === 'callout') {
+			const icon = calloutIconName(
+				block.style.getPropertyValue('--callout-icon').replace(/['"]/g, '').trim()
+			);
+			if (icon !== DEFAULT_CALLOUT_ICON) prefix += `{i:${icon}}`;
+		}
 		if (align === 'center' || align === 'right' || align === 'left') prefix += `{a:${align}}`;
 		if (explicitDir === 'rtl' || explicitDir === 'ltr') prefix += `{d:${explicitDir}}`;
 		if (level) prefix += `${'#'.repeat(level)} `;
@@ -132,6 +143,27 @@
 		return el ? htmlToMd(el).replace(/\n{3,}/g, '\n\n') : '';
 	}
 
+	/** Clicking a callout's icon (a CSS pseudo-element, so we test the click
+	 *  position against the line's start edge) opens the icon picker. */
+	let picker = $state<{ block: HTMLElement; x: number; y: number } | null>(null);
+
+	function onIconClick(e: MouseEvent) {
+		const block = (e.target as HTMLElement).closest<HTMLElement>('[data-p="callout"]');
+		if (!block || block.parentElement !== el) return (picker = null);
+		const r = block.getBoundingClientRect();
+		const fromStart =
+			getComputedStyle(block).direction === 'rtl' ? r.right - e.clientX : e.clientX - r.left;
+		picker = fromStart > 0 && fromStart < 44 ? { block, x: r.left, y: r.bottom } : null;
+	}
+
+	function pickIcon(name: string) {
+		if (!picker) return;
+		if (name === DEFAULT_CALLOUT_ICON) picker.block.style.removeProperty('--callout-icon');
+		else picker.block.style.setProperty('--callout-icon', `'${CALLOUT_ICONS[name]}'`);
+		picker = null;
+		sync();
+	}
+
 	function sync() {
 		value = serialize();
 		onInput?.(value);
@@ -151,6 +183,7 @@
 	     plaintext resolves per-paragraph direction from content the same way,
 	     without the HTML attribute's contenteditable-specific bugs, and falls
 	     back to RTL (this app's base direction) for empty/neutral fields. -->
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div
 		bind:this={el}
 		contenteditable="true"
@@ -159,6 +192,7 @@
 		tabindex="0"
 		dir={dir === 'auto' ? undefined : dir}
 		oninput={sync}
+		onclick={onIconClick}
 		onfocus={() => {
 			activeField.el = el ?? null;
 			document.execCommand('defaultParagraphSeparator', false, 'div');

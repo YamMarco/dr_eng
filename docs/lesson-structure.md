@@ -128,7 +128,7 @@ Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignore
 them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,
 `{p:text}` marks the line as English study text (tinted card with an accent edge)
 so it stands out from the app's Hebrew instructions, `{p:callout}` marks a tip / note
-(lightbulb icon on a soft highlight), a line that is only `---` is a divider, and a
+(lightbulb icon on a soft highlight; `{i:warn|check|cross|star|fire|pin|ask}` swaps the icon, see `calloutIcons.ts`, picked in the editor by clicking the icon), a line that is only `---` is a divider, and a
 `#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
 Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 `{a:center}## כותרת ממורכזת`.

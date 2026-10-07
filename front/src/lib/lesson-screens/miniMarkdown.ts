@@ -9,6 +9,7 @@
 // TEXT_COLOR_PALETTE).
 
 import { TEXT_COLOR_PALETTE } from './textColors';
+import { CALLOUT_ICONS } from './calloutIcons';
 
 const ESCAPE: Record<string, string> = {
 	'&': '&amp;',
@@ -136,7 +137,7 @@ export const TEXT_BLOCK_CLASS =
 /** `{p:callout}` lines: a tip / note, set apart with a lightbulb icon (a CSS
  *  pseudo-element, so it never ends up in the editable text). */
 export const CALLOUT_BLOCK_CLASS =
-	"my-1 rounded-xl border-s-4 border-accent bg-accent-soft px-3 py-2 before:me-2 before:content-['💡']";
+	"my-1 rounded-xl border-s-4 border-accent bg-accent-soft px-3 py-2 before:me-2 before:content-[var(--callout-icon,'💡')]";
 
 /** `{p:ul}` / `{p:ol}` lines: bullet / numbered list items. Each line stays
  *  its own top-level block (no wrapping `<ul>`/`<ol>`, matching every other
@@ -158,7 +159,7 @@ const HEADER_CLASS: Record<number, string> = {
  *  passages) that render each line with plain `mdInline`, so an authored
  *  attribute token doesn't leak into the text as literal `{a:center}`. */
 export function stripLineAttrs(raw: string): string {
-	return raw.replace(/^(\{(?:a|d|p):\w+\})+/, '');
+	return raw.replace(/^(\{(?:a|d|p|i):\w+\})+/, '');
 }
 
 /** One line's leading `{a:center}` / `{d:rtl}` / `{p:text}` attribute tokens + optional
@@ -178,12 +179,14 @@ function parseLine(raw: string): {
 	let align = '';
 	let dir = '';
 	let paragraph = '';
+	let icon = '';
 
-	const attrRe = /^\{(a|d|p):(\w+)\}/;
+	const attrRe = /^\{(a|d|p|i):(\w+)\}/;
 	let m: RegExpMatchArray | null;
 	while ((m = rest.match(attrRe))) {
 		if (m[1] === 'a') align = m[2];
 		else if (m[1] === 'd') dir = m[2];
+		else if (m[1] === 'i') icon = m[2];
 		else paragraph = m[2];
 		rest = rest.slice(m[0].length);
 	}
@@ -204,6 +207,7 @@ function parseLine(raw: string): {
 		styles.push(`text-align:${align}`);
 	const explicitDir = dir === 'rtl' || dir === 'ltr';
 	if (explicitDir) styles.push(`direction:${dir}`);
+	if (isCallout && CALLOUT_ICONS[icon]) styles.push(`--callout-icon:'${CALLOUT_ICONS[icon]}'`);
 
 	return {
 		tag: level ? `h${level}` : 'div',
