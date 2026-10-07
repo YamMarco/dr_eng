@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import RubricFeedback from './RubricFeedback.svelte';
 	import WritingIntro from './WritingIntro.svelte';
 	import { analyzeWriting, type WritingAnalysis } from './analysis';
@@ -10,6 +11,7 @@
 	let stance = $state<'yes' | 'no' | null>(null);
 	let reason = $state('');
 	let example = $state('');
+	const PROMPT = 'Should students get homework every day? Give reasons to explain your opinion.';
 	let text = $state('');
 	let firstDraft = $state('');
 	let result = $state<WritingAnalysis | null>(null);
@@ -130,6 +132,7 @@
 			<span>{wordCount} מילים</span>
 			<span class={wordCount >= 70 && wordCount <= 90 ? 'text-brand-dark' : ''}>יעד: 70–90</span>
 		</div>
+		<WritingCheck {text} options={{ prompt: PROMPT }} />
 		<Button onclick={checkDraft} disabled={wordCount < 10}>
 			{firstDraft ? 'בדקו את התיקון' : 'קבלו משוב'}
 		</Button>

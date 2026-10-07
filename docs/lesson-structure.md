@@ -225,3 +225,14 @@ Before / after (content-2c):
 - teaching content (passages, prompts, options) stays inline in the `c/*.ts` files — never i18n
 - lesson ids are globally unique within the module; convention `s{section}-l{n}`
 - after changes: `npm run check` in `front/`, then `graphify update .` at the repo root
+
+## Writing checks (`front/src/lib/checks/`)
+
+Deterministic, free checks for student writing; run them before (and instead of) asking the LLM.
+`checkWriting(text, loader, {prompt, extraWords, source})` returns the Ministry length report
+(70-90 words, deduction table, under 25 valid words = 0, copied prompt/passage sentences not counted)
+and issues by rubric area: spelling (nspell, en-US + en-GB, dictionaries in `static/dict/`, lazy-loaded),
+mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.ts`).
+`confidence: 'maybe'` issues are worded as questions. `worthGrading(report)` gates the LLM call.
+UI: `<WritingCheck text options />` under the textarea (writing-task, self-check, writing lab).
+Rule explanations (Hebrew): `writingCheck.rule` in `i18n/locales/he.ts`.

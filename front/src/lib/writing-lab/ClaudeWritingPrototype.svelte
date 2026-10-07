@@ -1,10 +1,12 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import RubricFeedback from './RubricFeedback.svelte';
 	import WritingIntro from './WritingIntro.svelte';
 	import { analyzeWriting, type WritingAnalysis } from './analysis';
 
 	let started = $state(false);
+	const PROMPT = 'Should students get homework every day? Give reasons to explain your opinion.';
 	let text = $state('');
 	let result = $state<WritingAnalysis | null>(null);
 	let wordCount = $derived(text.trim() ? text.trim().split(/\s+/).length : 0);
@@ -80,6 +82,7 @@
 			<span>{wordCount} מילים</span>
 			<span class={wordCount >= 70 && wordCount <= 90 ? 'text-brand-dark' : ''}>יעד: 70–90</span>
 		</div>
+		<WritingCheck {text} options={{ prompt: PROMPT }} />
 
 		<Button onclick={check} disabled={wordCount < 10}>בדקו לפי המחוון</Button>
 		{#if result}

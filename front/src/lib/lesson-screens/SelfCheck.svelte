@@ -2,6 +2,7 @@
 	import type { SelfCheckScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import PassageText, { hasParagraphMarkers } from './PassageText.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -104,6 +105,12 @@
 		</span>
 	</div>
 {/if}
+
+<WritingCheck
+	text={answer}
+	options={{ prompt: screen.prompt, source: screen.text }}
+	showLength={hasCounter}
+/>
 
 {#if revealed}
 	<div class="mt-4 rounded-2xl bg-brand-soft/50 p-3">

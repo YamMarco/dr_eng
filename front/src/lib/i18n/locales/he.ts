@@ -184,6 +184,50 @@ export const he = {
 		lintShort: (n: number) => `משפט ${n} קצר מדי - כתבו משפט מלא עם סיבה או פרט.`,
 		lintNoDetail: (n: number) => `משפט ${n}: בדוגמה חסר פרט - מספר, שם, מקום או מקרה אמיתי.`
 	},
+	writingCheck: {
+		title: 'בדיקה אוטומטית',
+		loading: 'בודקים...',
+		allClear: 'לא נמצאו טעויות כתיב או פיסוק.',
+		notEnglish: 'הטקסט צריך להיות באנגלית.',
+		lengthOk: 'אורך תקין (70-90 מילים)',
+		lengthShort: (valid: number, deduction: number) =>
+			deduction > 0
+				? `קצר מדי: ${valid} מילים. בבחינה יורדות ${deduction} נקודות מהתוכן.`
+				: `קצר מדי: ${valid} מילים. היעד הוא 70-90.`,
+		lengthZero: 'מתחת ל-25 מילים - בבחינה המטלה כולה מקבלת 0.',
+		lengthLong: (valid: number) =>
+			`${valid} מילים - יותר מהיעד (90). אין הורדת נקודות, אבל קצרו אם אפשר.`,
+		maybe: 'אולי',
+		more: (n: number) => `ועוד ${n}...`,
+
+		area: {
+			mechanics: 'כתיב ופיסוק',
+			language: 'שימוש בשפה',
+			vocabulary: 'אוצר מילים'
+		},
+		rule: {
+			typo: 'שגיאת כתיב',
+			'capital-start': 'משפט מתחיל באות גדולה',
+			'capital-i': 'האות I תמיד גדולה',
+			'capital-name': 'ימים, חודשים, שפות ומקומות נכתבים באות גדולה',
+			'end-mark': 'חסר סימן פיסוק בסוף המשפט',
+			'space-before-mark': 'אין רווח לפני סימן פיסוק',
+			'space-after-mark': 'צריך רווח אחרי סימן פיסוק',
+			'repeat-word': 'מילה כפולה',
+			'run-on': 'שני משפטים מחוברים בפסיק - עדיף לסיים משפט בנקודה',
+			agreement: 'התאמה בין הנושא לפועל (he/she/it + s)',
+			'be-agreement': 'התאמה בין הנושא ל-is/are',
+			'verb-form': 'צורת הפועל אחרי מודאלי/to',
+			'past-tense': 'מדובר בעבר - צריך זמן עבר',
+			plural: 'צורת הרבים/ספירות של המילה',
+			article: 'a או an - לפי הצליל הראשון של המילה הבאה',
+			preposition: 'מילת יחס',
+			'word-order': 'סדר המילים',
+			'double-comparative': 'לא משתמשים ב-more/most יחד עם צורת השוואה',
+			'hebrew-ism': 'תרגום מילולי מעברית - באנגלית אומרים אחרת',
+			'pronoun-repeat': 'הנושא מופיע פעמיים - מספיק אחד'
+		} as Record<string, string>
+	},
 	settings: {
 		title: 'הגדרות',
 		languageSection: 'שפה',

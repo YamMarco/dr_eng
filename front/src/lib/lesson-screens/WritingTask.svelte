@@ -8,6 +8,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { lintWriting, usesWord, type LintIssue } from './writingLint';
+	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -150,6 +151,11 @@
 			· {i18n.dict.selfCheck.wordTarget(screen.minWords ?? 0, screen.maxWords ?? 0)}
 		</p>
 	{/if}
+	<WritingCheck
+		text={essayText}
+		options={{ prompt: screen.prompt, extraWords: wordBank }}
+		showLength={screen.minWords !== undefined}
+	/>
 {:else}
 	<div class="mt-4 flex flex-col gap-3">
 		{#each lines as line, i (i)}
@@ -168,6 +174,12 @@
 			/>
 		{/each}
 	</div>
+
+	<WritingCheck
+		text={lines.join('\n')}
+		options={{ prompt, extraWords: wordBank }}
+		showLength={false}
+	/>
 
 	{#if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
