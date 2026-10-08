@@ -9,6 +9,8 @@
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { lintWriting, usesWord, type LintIssue } from './writingLint';
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
+	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
+	import { splitSentences } from '$lib/ocr/scan';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -61,13 +63,28 @@
 			return count + issues;
 		}, 0)
 	);
-	let punctuationOk = $derived(minorIssues <= maxTypos);
+	// Per-screen switch for the capital/period check and the advice panel.
+	// Quiz mode (exams) never auto-checks, so it doesn't read this.
+	let autoCheck = $derived(screen.autoCheck ?? true);
+	let punctuationOk = $derived(!autoCheck || minorIssues <= maxTypos);
 	let combinedText = $derived(lines.join(' '));
 	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
 	let lintIssues = $derived(lintWriting(lines, wordBank));
 	let contentOk = $derived(lintIssues.length === 0);
 	let allOk = $derived(allFilled && punctuationOk && wordBankOk && contentOk);
+
+	// A scanned page fills the inputs in order; extra sentences go on the last one.
+	function fillFromScan(text: string) {
+		const sentences = splitSentences(text);
+		lines = lines.map((_, i) =>
+			i < lines.length - 1 ? (sentences[i] ?? '') : sentences.slice(i).join(' ')
+		);
+	}
+
+	function appendScan(text: string) {
+		essayText = essayText.trim() ? `${essayText.trimEnd()}\n${text}` : text;
+	}
 
 	function lintMessage(issue: LintIssue): string {
 		const t = i18n.dict.writingTask;
@@ -145,17 +162,13 @@
 		placeholder={i18n.dict.selfCheck.placeholder}
 		class="mt-4 w-full rounded-xl border-2 border-line bg-surface p-3 leading-relaxed focus:border-brand"
 	></textarea>
+	<HandwritingScanButton onText={appendScan} />
 	{#if screen.minWords !== undefined || screen.maxWords !== undefined}
 		<p class="mt-2 text-xs font-semibold text-muted tabular" dir="ltr">
 			{i18n.dict.selfCheck.wordCount(essayWords)}
 			· {i18n.dict.selfCheck.wordTarget(screen.minWords ?? 0, screen.maxWords ?? 0)}
 		</p>
 	{/if}
-	<WritingCheck
-		text={essayText}
-		options={{ prompt: screen.prompt, extraWords: wordBank }}
-		showLength={screen.minWords !== undefined}
-	/>
 {:else}
 	<div class="mt-4 flex flex-col gap-3">
 		{#each lines as line, i (i)}
@@ -174,12 +187,17 @@
 			/>
 		{/each}
 	</div>
+	{#if !checked}
+		<HandwritingScanButton onText={fillFromScan} />
+	{/if}
 
-	<WritingCheck
-		text={lines.join('\n')}
-		options={{ prompt, extraWords: wordBank }}
-		showLength={false}
-	/>
+	{#if autoCheck}
+		<WritingCheck
+			text={lines.join('\n')}
+			options={{ prompt, extraWords: wordBank }}
+			showLength={false}
+		/>
+	{/if}
 
 	{#if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
@@ -187,10 +205,12 @@
 				<span>{allFilled ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkSentences(minSentences)}
 			</li>
-			<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
-				<span>{punctuationOk ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
-			</li>
+			{#if autoCheck}
+				<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{punctuationOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
+				</li>
+			{/if}
 			<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
 				<span>{wordBankOk ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}

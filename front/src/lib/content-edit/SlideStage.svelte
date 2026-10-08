@@ -175,6 +175,9 @@
 		'sentence-completion',
 		'writing-task'
 	]);
+	// Writing screens with a per-screen auto-check switch (lessons only:
+	// exams never auto-check).
+	const AUTO_CHECK_TYPES = new Set(['writing-task', 'self-check']);
 </script>
 
 {#if !path || !screen}
@@ -472,6 +475,19 @@
 										oninput={(e) => (screen.points = e.currentTarget.valueAsNumber)}
 										class="w-16 rounded-lg border-2 border-line bg-surface p-1 font-normal"
 									/>
+								</label>
+							</div>
+						{/if}
+						{#if !rawOpen && !isExam && AUTO_CHECK_TYPES.has(screen.type)}
+							<div class="mb-4 border-b-2 border-dashed border-line/60 pb-4">
+								<label class="flex items-center gap-2 text-xs font-bold text-muted">
+									<input
+										type="checkbox"
+										checked={screen.autoCheck ?? true}
+										onchange={(e) =>
+											(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
+									/>
+									בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
 								</label>
 							</div>
 						{/if}

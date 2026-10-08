@@ -235,4 +235,5 @@ and issues by rubric area: spelling (nspell, en-US + en-GB, dictionaries in `sta
 mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.ts`).
 `confidence: 'maybe'` issues are worded as questions. `worthGrading(report)` gates the LLM call.
 UI: `<WritingCheck text options />` under the textarea (writing-task, self-check, writing lab).
+Lessons only: per-screen `autoCheck: false` hides it (and skips writing-task's capital/period check). Exams never auto-check.
 Rule explanations (Hebrew): `writingCheck.rule` in `i18n/locales/he.ts`.
