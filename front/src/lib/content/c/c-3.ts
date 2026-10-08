@@ -314,7 +314,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}יש לכם סיבה אחת. טוב.\n\n{d:rtl}אבל אחת לא תמיד מספיקה.\n\n{d:rtl}המורה רוצה לראות שיש לכם יותר מטיעון אחד.\n{d:rtl}בשביל זה יש: In addition.\n\n{p:text}In addition, volunteering looks good on a resume.\n\n{d:rtl}שימו לב - זו סיבה שנייה. שונה מהראשונה.\n{d:rtl}לא אותה מחשבה עם מילים אחרות.",
+          text: "{d:rtl}יש לכם סיבה אחת בכדי להסביר את הדעה שלכם או את הרעיון המרכזי שבחרתם.\n\n{d:rtl}אבל סיבה אחת לא תמיד מספיקה.\n\n{d:rtl}המורה רוצה לראות שיש לכם יותר מטיעון אחד.\n{d:rtl}בשביל זה יש: In addition.\n\n{p:text}In addition, volunteering looks good on a resume.\n\n{d:rtl}שימו לב - זו סיבה שנייה. שונה מהראשונה.\n{d:rtl}לא אותה מחשבה עם מילים אחרות.",
         },
         {
           type: "preface",
