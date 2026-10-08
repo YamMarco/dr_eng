@@ -36,7 +36,8 @@ export const POST: RequestHandler = async ({ request }) => {
 			maxTokens: 2000
 		});
 		text = JSON.parse(result.text).text;
-	} catch {
+	} catch (e) {
+		console.error('OCR failed:', e);
 		throw error(502, 'OCR failed');
 	}
 	if (typeof text !== 'string') throw error(502, 'OCR returned no text');
