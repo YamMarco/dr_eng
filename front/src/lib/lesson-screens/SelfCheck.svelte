@@ -106,11 +106,14 @@
 	</div>
 {/if}
 
-<WritingCheck
-	text={answer}
-	options={{ prompt: screen.prompt, source: screen.text }}
-	showLength={hasCounter}
-/>
+<!-- Exams never auto-check; in lessons it's a per-screen switch. -->
+{#if mode === 'lesson' && (screen.autoCheck ?? true)}
+	<WritingCheck
+		text={answer}
+		options={{ prompt: screen.prompt, source: screen.text }}
+		showLength={hasCounter}
+	/>
+{/if}
 
 {#if revealed}
 	<div class="mt-4 rounded-2xl bg-brand-soft/50 p-3">

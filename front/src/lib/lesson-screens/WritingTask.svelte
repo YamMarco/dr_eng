@@ -63,7 +63,10 @@
 			return count + issues;
 		}, 0)
 	);
-	let punctuationOk = $derived(minorIssues <= maxTypos);
+	// Per-screen switch for the capital/period check and the advice panel.
+	// Quiz mode (exams) never auto-checks, so it doesn't read this.
+	let autoCheck = $derived(screen.autoCheck ?? true);
+	let punctuationOk = $derived(!autoCheck || minorIssues <= maxTypos);
 	let combinedText = $derived(lines.join(' '));
 	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
@@ -166,11 +169,6 @@
 			· {i18n.dict.selfCheck.wordTarget(screen.minWords ?? 0, screen.maxWords ?? 0)}
 		</p>
 	{/if}
-	<WritingCheck
-		text={essayText}
-		options={{ prompt: screen.prompt, extraWords: wordBank }}
-		showLength={screen.minWords !== undefined}
-	/>
 {:else}
 	<div class="mt-4 flex flex-col gap-3">
 		{#each lines as line, i (i)}
@@ -193,11 +191,13 @@
 		<HandwritingScanButton onText={fillFromScan} />
 	{/if}
 
-	<WritingCheck
-		text={lines.join('\n')}
-		options={{ prompt, extraWords: wordBank }}
-		showLength={false}
-	/>
+	{#if autoCheck}
+		<WritingCheck
+			text={lines.join('\n')}
+			options={{ prompt, extraWords: wordBank }}
+			showLength={false}
+		/>
+	{/if}
 
 	{#if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
@@ -205,10 +205,12 @@
 				<span>{allFilled ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkSentences(minSentences)}
 			</li>
-			<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
-				<span>{punctuationOk ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
-			</li>
+			{#if autoCheck}
+				<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{punctuationOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
+				</li>
+			{/if}
 			<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
 				<span>{wordBankOk ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
