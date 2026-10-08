@@ -732,11 +732,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}70-90 מילים. לא 69. לא 91.\n\n{d:rtl}למה זה חשוב?\n\n{d:rtl}כי המורה מוריד נקודות אם הפסקה קצרה מדי.\n{d:rtl}ו-10 הנקודות החשובות ביותר - תוכן - הן הראשונות שנפגעות.\n\n{d:rtl}60-69 מילים = **מינוס 1**\n{d:rtl}50-59 מילים = **מינוס 3**\n{d:rtl}40-49 מילים = **מינוס 6**",
+          text: "{d:rtl}כמה מילים צריך לכתוב?**70–90 מילים.**לא 69. לא 91.למה זה חשוב?כי כשכותבים פחות מ־70 מילים, מתחילים לאבד נקודות  💡 **הכלל שלנו:**אל תכוונו ל־70 בדיוק. עדיף לכתוב בערך **75–85 מילים**, כדי להיות בטוחים שאתם בתוך הטווח.",
         },
         {
           type: "preface",
-          text: "{d:rtl}איך סופרים מהר?\n\n{d:rtl}a / the / and / I / is - כולן מילים.\n{d:rtl}כל מילה = 1. גם מילות קישור.\n\n{p:text}I think *(1)* students *(2)* should *(3)* volunteer *(4)* because *(5)* it* (6)* teaches *(7) *responsibility *(8)*.\n{d:rtl}אלו כבר **8 מילים**.\n\n{p:callout}{d:rtl}כתבתם פחות מ-70? הוסיפו For example עם פרט.\n{p:callout}{d:rtl}כתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.",
+          text: "{d:rtl}איך סופרים מהר?\n\n{d:rtl}a / the / and / I / is - כולן מילים.\n{d:rtl}\n\n{p:text}I think *(1)* students *(2)* should *(3)* volunteer *(4)* because *(5)* it* (6)* teaches *(7) *responsibility *(8)*.\n{d:rtl}אלו כבר **8 מילים**.\n\n{p:callout}{d:rtl}כתבתם פחות מ-70? הוסיפו For example עם פרט.\n{p:callout}{d:rtl}כתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.",
         },
         {
           type: "summary",
@@ -778,19 +778,6 @@ export const c3Lessons: LessonNode[] = [
               correctIndex: 2,
               explanation:
                 "להוריד משפט שלם = הורדת 8-12 מילים בבת אחת. לקצר מילים בודדות לוקח זמן ועלול לשבור משפטים.",
-            },
-            {
-              type: "mcq",
-              prompt: "{d:rtl}מה ההפסד בציון על **55 מילים**?",
-              options: [
-                "מינוס 1 נקודה",
-                "מינוס 3 נקודות",
-                "מינוס 6 נקודות",
-                "אפס על כל המטלה",
-              ],
-              correctIndex: 1,
-              explanation:
-                "50-59 מילים = מינוס 3 נקודות מהתוכן. זה יקר. שווה את 3 הדקות של ספירה.",
             },
           ],
         },
