@@ -1931,7 +1931,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\nהן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל.**\nאלה **מילות תוכן**.\n\nקראו את הפסקה הבאה\n{p:text}*A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.*\nשימו לב למילים המודגשות.\nאם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n{p:ul}**researchers** → חוקרים\n{p:ul}**discovered** → גילו\n{p:ul}**affect** → להשפיע\n{p:ul}**results** → תוצאות\n{p:ul}**effective** → יעיל\nאלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.",
+          text: "{d:rtl}יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\n{d:rtl}הן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל.**\n{d:rtl}אלה **מילות תוכן**.\n\n{d:rtl}קראו את הפסקה הבאה\n{p:text}*A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.*\n{d:rtl}שימו לב למילים המודגשות.\n{d:rtl}אם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n{p:ul}{a:right}{d:ltr}**researchers** → חוקרים\n{p:ul}{a:right}{d:ltr}**discovered** → גילו\n{p:ul}{d:rtl}**affect** → להשפיע\n{p:ul}{d:rtl}**results** → תוצאות\n{p:ul}{d:rtl}**effective** → יעיל\n{d:rtl}אלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.",
         },
         {
           type: "preface",
