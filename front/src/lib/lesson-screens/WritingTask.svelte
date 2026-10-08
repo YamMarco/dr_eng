@@ -9,6 +9,8 @@
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { lintWriting, usesWord, type LintIssue } from './writingLint';
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
+	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
+	import { splitSentences } from '$lib/ocr/scan';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -68,6 +70,18 @@
 	let lintIssues = $derived(lintWriting(lines, wordBank));
 	let contentOk = $derived(lintIssues.length === 0);
 	let allOk = $derived(allFilled && punctuationOk && wordBankOk && contentOk);
+
+	// A scanned page fills the inputs in order; extra sentences go on the last one.
+	function fillFromScan(text: string) {
+		const sentences = splitSentences(text);
+		lines = lines.map((_, i) =>
+			i < lines.length - 1 ? (sentences[i] ?? '') : sentences.slice(i).join(' ')
+		);
+	}
+
+	function appendScan(text: string) {
+		essayText = essayText.trim() ? `${essayText.trimEnd()}\n${text}` : text;
+	}
 
 	function lintMessage(issue: LintIssue): string {
 		const t = i18n.dict.writingTask;
@@ -145,6 +159,7 @@
 		placeholder={i18n.dict.selfCheck.placeholder}
 		class="mt-4 w-full rounded-xl border-2 border-line bg-surface p-3 leading-relaxed focus:border-brand"
 	></textarea>
+	<HandwritingScanButton onText={appendScan} />
 	{#if screen.minWords !== undefined || screen.maxWords !== undefined}
 		<p class="mt-2 text-xs font-semibold text-muted tabular" dir="ltr">
 			{i18n.dict.selfCheck.wordCount(essayWords)}
@@ -174,6 +189,9 @@
 			/>
 		{/each}
 	</div>
+	{#if !checked}
+		<HandwritingScanButton onText={fillFromScan} />
+	{/if}
 
 	<WritingCheck
 		text={lines.join('\n')}

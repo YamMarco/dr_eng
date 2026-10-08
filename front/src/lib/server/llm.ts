@@ -2,7 +2,7 @@
 // Callers pick a role from config.yaml, not a vendor.
 import { env } from '$env/dynamic/private';
 
-export type LlmRole = 'grade-short' | 'grade-essay';
+export type LlmRole = 'grade-short' | 'grade-essay' | 'ocr';
 
 export interface LlmResult {
 	text: string;
@@ -16,11 +16,15 @@ export function llmConfigured(): boolean {
 	return Boolean(env.LLM_GATEWAY_URL && env.LLM_GATEWAY_KEY);
 }
 
-/** One system + user turn. `json` asks for a JSON object back (the caller parses and validates it). */
+/**
+ * One system + user turn. `json` asks for a JSON object back (the caller parses and validates it).
+ * `image` (a data: URL) is sent alongside `user` for vision roles.
+ */
 export async function chat(opts: {
 	role: LlmRole;
 	system: string;
 	user: string;
+	image?: string;
 	json?: boolean;
 	maxTokens?: number;
 }): Promise<LlmResult> {
@@ -32,7 +36,15 @@ export async function chat(opts: {
 			model: opts.role,
 			messages: [
 				{ role: 'system', content: opts.system },
-				{ role: 'user', content: opts.user }
+				{
+					role: 'user',
+					content: opts.image
+						? [
+								{ type: 'text', text: opts.user },
+								{ type: 'image_url', image_url: { url: opts.image } }
+							]
+						: opts.user
+				}
 			],
 			max_tokens: opts.maxTokens ?? 1500,
 			...(opts.json && { response_format: { type: 'json_object' } })

@@ -23,12 +23,23 @@ model_list:
       model: anthropic/claude-sonnet-5-5
       api_key: os.environ/ANTHROPIC_API_KEY
 
+  # Handwriting photo -> text (vision). Must transcribe, never correct.
+  - model_name: ocr
+    litellm_params:
+      model: gemini/gemini-3.8-flash
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: ocr-fallback
+    litellm_params:
+      model: anthropic/claude-sonnet-5-5
+      api_key: os.environ/ANTHROPIC_API_KEY
+
 router_settings:
   num_retries: 1
   timeout: 45
   fallbacks:
     - grade-short: [grade-short-fallback]
     - grade-essay: [grade-essay-fallback]
+    - ocr: [ocr-fallback]
 
 litellm_settings:
   drop_params: true # a param one vendor lacks is dropped, not a 400
