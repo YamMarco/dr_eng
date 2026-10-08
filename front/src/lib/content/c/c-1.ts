@@ -4530,7 +4530,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              text: "**II**  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               prompt:
                 '"What does paragraph II say after the word However?" - כתבו ANSWER:',
               modelAnswer:
@@ -4539,7 +4539,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt:
-                '"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." - מה הנקודה החשובה?',
+                '{a:left}{d:rtl}"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." -\n{d:rtl}\n{d:rtl} מה הנקודה החשובה במשפט זה?',
               modelAnswer: "שארגון צדקה מקומי החליט לשנות את המצב בעיר.",
             },
           ],
