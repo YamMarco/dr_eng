@@ -581,7 +581,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                "בחרו נושא אחד: volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\nמשפט אחד. לא יותר.",
+                "{d:rtl}בחרו נושא אחד:\n{d:rtl} volunteer / vacation / school / cellphone.\n\n✏️ In conclusion, I believe / I think that...\n\n{d:rtl}משפט אחד. לא יותר.",
               wordBank: [
                 "I think",
                 "I believe",
