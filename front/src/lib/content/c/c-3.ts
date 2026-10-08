@@ -523,7 +523,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{p:text}❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\n{d:rtl}משפט אחד ארוך עם הכל שוב - לא זה.\n\n{p:text}✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\n{d:rtl}משפט אחד. רעיון אחד. נשמע כמו סיום.",
+          text: "{p:text}❌ In conclusion, volunteering is good and teaches skills and also helps society and is important for the future.\n\n{d:rtl}משפט אחד ארוך עם הכל  הוא פחות מתאים בשלב זה.\n\n{p:text}✅ In conclusion, I believe that volunteering makes teenagers better people and better citizens.\n\n{d:rtl}המשפט הזה לעומת זאת כולל רעיון אחד וזה באמת נשמע כמו סיום.",
         },
         {
           type: "summary",
