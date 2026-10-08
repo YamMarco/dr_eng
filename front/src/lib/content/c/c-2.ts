@@ -1951,9 +1951,9 @@ export const c2Lessons: LessonNode[] = [
               word: "discover / found",
               translationHe: "לגלות / מצא",
               exampleEn: "Scientists **discovered** a new way to plant trees.",
-              exampleHe: "מדענים גילו דרך חדשה לשתול עצים.",
+              exampleHe: "{d:rtl}\n{d:rtl}מדענים גילו דרך חדשה לשתול עצים.",
               hookHe:
-                'discover = לגלות משהו שלא היה ידוע. וגם "found that…" בטקסט אומר "מצאו ש…": בדרך כלל זה ממצא של מחקר, והתשובה קרובה.',
+                '{d:rtl}discover = לגלות משהו שלא היה ידוע. וגם "found that…" בטקסט אומר "מצאו ש…": בדרך כלל זה ממצא של מחקר',
               image: "/vocab-images/word-90d6e44e24.jpg",
             },
             {
