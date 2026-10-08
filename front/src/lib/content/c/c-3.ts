@@ -519,7 +519,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}הפסקה שלנו צריכה סיום.\n\n{d:rtl}לא תשובה חדשה. לא סיבה חדשה.\n{d:rtl}פשוט משפט אחד שאומר: הנה מה שחשבתי לאורך כל הפסקה.\n\n{p:text}In conclusion, I believe that volunteering should be part of every student's life.\n\n{d:rtl}קצר. ברור. סוגר.",
+          text: "{d:rtl}החיבור שלנו צריכה סיום.\n\n{d:rtl}לא תשובה חדשה. לא סיבה חדשה.\n{d:rtl}פשוט משפט אחד שאומר: הנה מה שחשבתי לאורך כל החיבור.\n\n{p:text}In conclusion, I believe that volunteering should be part of every student's life.\n\n{d:rtl}קצר. ברור. סוגר.",
         },
         {
           type: "preface",
