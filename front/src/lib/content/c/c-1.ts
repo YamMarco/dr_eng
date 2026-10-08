@@ -4372,7 +4372,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "{d:rtl}אתם - מצאו את however, וקראו מה בא אחריו.\n\nהשאלה: What good news does paragraph I mention?",
+              text: "{d:rtl} מצאו את however, וקראו מה בא אחריו.\n\n{d:rtl}השאלה: What good news does paragraph I mention?",
             },
             {
               type: "mcq",
@@ -4387,8 +4387,8 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
-              prompt: "כתבו את החדשות הטובות - מה שבא אחרי however.",
+              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
+              prompt: "{d:rtl}כתבו מה הם החדשות הטובות - מה שבא אחרי however.",
               modelAnswer:
                 "There is good news: in 2019 scientists started a project to plant one billion trees in Africa.",
             },
@@ -4407,7 +4407,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
+              text: "{a:center}**THE FOUR-DAY SCHOOL WEEK**\n\n**I**  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\n**II ** According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\n**III**  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\n**IV ** Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
               questions: [
                 {
                   prompt:
@@ -4530,7 +4530,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              text: "**II**  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               prompt:
                 '"What does paragraph II say after the word However?" - כתבו ANSWER:',
               modelAnswer:
@@ -4539,7 +4539,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt:
-                '"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." - מה הנקודה החשובה?',
+                '{a:left}{d:rtl}"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." -\n{d:rtl}\n{d:rtl} מה הנקודה החשובה במשפט זה?',
               modelAnswer: "שארגון צדקה מקומי החליט לשנות את המצב בעיר.",
             },
           ],
