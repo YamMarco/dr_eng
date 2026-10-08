@@ -2185,6 +2185,7 @@ export const c2Lessons: LessonNode[] = [
                 '"discover, result, researcher, affect, effective - אני מזהה ועובר הלאה."',
               ],
             },
+            { type: "preface", text: "" },
           ],
         },
         {
