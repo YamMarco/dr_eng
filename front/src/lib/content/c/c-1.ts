@@ -23,7 +23,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אבל בפועל,** הרבה תלמידים** נופלים לאחת משתי טעויות.\n\n**הקבוצה הראשונה** מתחילה לקרוא את הטקסט מהמילה הראשונה ומנסה להבין ולזכור הכול.\n\nמה קורה? עומס. לחץ. בלאקאוט.\n\nאחרי הרבה זמן הם עדיין בתוך הטקסט, והזמן לשאלות ולכתיבה מתחיל להיגמר.\n\n**הקבוצה השנייה** עושה בדיוק ההפך:לא קוראת את הטקסט בכלל ומיד עוברת לשאלות.\n\nאולי זה מזכיר שיטות שעובדות במבחנים אחרים - אבל ב־Module C זה עלול לבלבל אתכם, כי עדיין אין לכם מושג ברור על מה הטקסט מדבר.\n\nאז מה כן עושים?\n\nלא קוראים הכול.\nולא מדלגים ישר לשאלות.\n\n צריך לדעת **מה לקרוא קודם, מה לחפש, ומתי לעבור לשאלות**.\nכי זאת בעצם המטרה של השאלון:\nלא לבדוק אם אתם יודעים לתרגם כל מילה,אלא אם אתם יודעים **לאתר מידע**, להבין **מה חשוב**, ולזהות את **הקשר בין הרעיונות השונים בטקסט**.\nכלומר:\n**למצוא → להבין → לקשר → לענות.**\nוזה בדיוק מה שנלמד עכשיו - שלב אחרי שלב",
+          text: "אבל בפועל,** הרבה תלמידים** נופלים לאחת משתי טעויות.\n\n**הקבוצה הראשונה** מתחילה לקרוא את הטקסט מהמילה הראשונה ומנסה להבין ולזכור הכול.\n\nמה קורה? עומס. לחץ. בלאקאוט.\n\nאחרי הרבה זמן הם עדיין בתוך הטקסט, והזמן לשאלות ולכתיבה מתחיל להיגמר.\n\n**הקבוצה השנייה** עושה בדיוק ההפך:לא קוראת את הטקסט בכלל ומיד עוברת לשאלות.\n\nאולי זה מזכיר שיטות שעובדות במבחנים אחרים - אבל ב־Module C זה עלול לבלבל אתכם, כי עדיין אין לכם מושג ברור על מה הטקסט מדבר.\n\nאז מה כן עושים?\n\nלא קוראים הכול.\nולא מדלגים ישר לשאלות.\n\n צריך לדעת **מה לקרוא קודם, מה לחפש, ומתי לעבור לשאלות**.\nכי זאת בעצם המטרה של השאלון:\nלא לבדוק אם אתם יודעים לתרגם כל מילה,אלא אם אתם יודעים **לאתר מידע**, להבין **מה חשוב**, ולזהות את **הקשר בין הרעיונות השונים בטקסט**.\nכלומר:\n**למצוא ← להבין ← לקשר ← לענות.**\nוזה בדיוק מה שנלמד עכשיו - שלב אחרי שלב",
         },
         {
           type: "summary",
@@ -40,7 +40,7 @@ export const c1Lessons: LessonNode[] = [
         {
           type: "steps",
           steps: [
-            "\nכבר הבנו שהפסקה מדברת על **elephants**, לכן אין צורך לחפש שוב רק את המילה הזאת.\n\nעכשיו מסתכלים על שתי מילים חשובות:\n**where** = איזה מידע צריך למצוא? → **מקום**\n**live** = מה צריך למצוא על הפילים? → **איפה הם חיים**\nכלומר:\n**elephants = על מי מדברים**\n**where = איזה סוג תשובה מחפשים**\n**live = איזה מידע צריך למצוא**\n\nלכן בטקסט נחפש מקום שבו מוסבר **איפה הפילים חיים**.",
+            "\nכבר הבנו שהפסקה מדברת על **elephants**, לכן אין צורך לחפש שוב רק את המילה הזאת.\n\nעכשיו מסתכלים על שתי מילים חשובות:\n**where** = איזה מידע צריך למצוא? ← **מקום**\n**live** = מה צריך למצוא על הפילים? ← **איפה הם חיים**\nכלומר:\n**elephants = על מי מדברים**\n**where = איזה סוג תשובה מחפשים**\n**live = איזה מידע צריך למצוא**\n\nלכן בטקסט נחפש מקום שבו מוסבר **איפה הפילים חיים**.",
             'מצאנו: "They live in Africa and Asia".',
             "כותבים: They live in Africa and Asia. - 8 שניות, בלי לקרוא את כל הפסקה.",
           ],
@@ -519,7 +519,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n{p:text}**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** → פסקה 4\n**מה לחפש?** → סיבה\n**למה?** → לירידה במספר בעלי החיים\n**כמה לענות?** → סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
+          text: "### דוגמה: רמזור אדום\n\nהשאלה:\n{p:text}**According to paragraph IV, what was one reason for the decrease in the number of animals in the area?**\n\nאני קורא את השאלה ולא מצליח להסביר בדיוק מה רוצים ממני.\n\n🔴 **אדום - עדיין לא מחפשים תשובה.**\nמפרקים:\n\n**According to paragraph IV** = לפי פסקה 4\n**one reason** = סיבה אחת\n**the decrease** = הירידה\n**the number of animals** = מספר בעלי החיים\n**in the area** = באזור\n\nעכשיו מחברים הכול:\n\n**לפי פסקה 4, מה הייתה סיבה אחת לירידה במספר בעלי החיים באזור?**\nעכשיו אני כבר יודע:\n**איפה לחפש?** ← פסקה 4\n**מה לחפש?** ← סיבה\n**למה?** ← לירידה במספר בעלי החיים\n**כמה לענות?** ← סיבה אחת\n\n🟢 **ירוק - עכשיו אפשר לעבור לטקסט ולחפש את התשובה.**",
         },
         {
           type: "preface",
@@ -889,7 +889,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "עכשיו זה פשוט:\n🔵 **איפה מחפשים?** בפסקה II.\n🟢 **מי מופיע בשאלה?** ד״ר דיאלו.\n🟡 **מה השאלה מבקשת?** סיבה - למה רוב העצים מתים?\n🔴 **עכשיו מחפשים את המשפט המתאים:**\n{p:text}**“Most trees die because nobody looks after them.”**\n✅ **התשובה:** **Because nobody looks after them.**\n📌 **זכרו:** **מבינים את השאלה → יודעים איפה לחפש → מוצאים את המשפט → עונים.**",
+          text: "עכשיו זה פשוט:\n🔵 **איפה מחפשים?** בפסקה II.\n🟢 **מי מופיע בשאלה?** ד״ר דיאלו.\n🟡 **מה השאלה מבקשת?** סיבה - למה רוב העצים מתים?\n🔴 **עכשיו מחפשים את המשפט המתאים:**\n{p:text}**“Most trees die because nobody looks after them.”**\n✅ **התשובה:** **Because nobody looks after them.**\n📌 **זכרו:** **מבינים את השאלה ← יודעים איפה לחפש ← מוצאים את המשפט ← עונים.**",
         },
         {
           type: "preface",
@@ -897,7 +897,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? → בפסקה II\n\nמה לחפש? → מה קורה כאשר המקומיים מעורבים\nמילת מפתח חשובה → involved\nבטקסט מופיע:\n\n{p:text}“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n{p:text}85% of the trees survive.\n\nשימו לב: בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
+          text: "\n🟢 עכשיו ירוק - אפשר לחפש תשובה.\nאיפה לחפש? ← בפסקה II\n\nמה לחפש? ← מה קורה כאשר המקומיים מעורבים\nמילת מפתח חשובה ← involved\nבטקסט מופיע:\n\n{p:text}“When local people are involved, 85% of trees survive.”\nלכן התשובה:\n\n{p:text}85% of the trees survive.\n\nשימו לב: בצהוב לא צריך לפתוח מילון על כל השאלה.\nבודקים רק את המילה שעוצרת אותנו - ואז ממשיכים.",
         },
       ],
       rounds: [
@@ -1143,7 +1143,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title:
-                "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.\n\nקודם מבינים **מה השאלה מבקשת**.\nאחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.\nמוצאים את המקום המתאים בטקסט, קוראים את המשפטים סביבו ורק אז עונים.\n📌 זכרו:\n**שאלה → מילת מפתח → חיפוש בטקסט → קריאה → תשובה**",
+                "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.\n\nקודם מבינים **מה השאלה מבקשת**.\nאחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.\nמוצאים את המקום המתאים בטקסט, קוראים את המשפטים סביבו ורק אז עונים.\n📌 זכרו:\n**שאלה ← מילת מפתח ← חיפוש בטקסט ← קריאה ← תשובה**",
               lines: [],
             },
           ],
@@ -1761,7 +1761,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "WATCH IT\n\nהשאלה: Which of the following is NOT mentioned in the text?\n\ni) 30% of adults cannot swim ← מוזכר, פסקה I ✓\nii) Adults become stronger swimmers ← מוזכר, פסקה II ✓\niii) The cost of adult swimming classes ← לא מוזכר בכלל ✗\n\nהתשובה: iii. המחיר לא מוזכר.",
+          text: "WATCH IT\n\nהשאלה: Which of the following is NOT mentioned in the text?\n\ni) 30% of adults cannot swim → מוזכר, פסקה I ✓\nii) Adults become stronger swimmers → מוזכר, פסקה II ✓\niii) The cost of adult swimming classes ← לא מוזכר בכלל ✗\n\nהתשובה: iii. המחיר לא מוזכר.",
         },
       ],
       rounds: [
@@ -2319,7 +2319,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\nלא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n\n✅ לכן התשובה:\n{p:text}**Programmes that bring young people face to face with the people they help.**\n\nוזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n⭐ הכלל: **השאלה ביקשה ONE BEST / MOST EFFECTIVE → נותנים תשובה אחת מדויקת.**",
+          text: "השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\nלא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n\n✅ לכן התשובה:\n{p:text}**Programmes that bring young people face to face with the people they help.**\n\nוזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n⭐ הכלל: **השאלה ביקשה ONE BEST / MOST EFFECTIVE ← נותנים תשובה אחת מדויקת.**",
         },
       ],
       rounds: [
@@ -3409,9 +3409,9 @@ export const c1Lessons: LessonNode[] = [
           type: "summary",
           title: "מה מחפשים לפי מילת השאלה",
           lines: [
-            'Why? ← because / since / as a result / therefore ← עונים "Because…"',
+            'Why? → because / since / as a result / therefore → עונים "Because…"',
             "When? ← שנה, תאריך, תקופה (in 2019, ago) ← הזמן מהטקסט",
-            'How? ← by / through / using + פעולה ← "By…"',
+            'How? → by / through / using + פעולה → "By…"',
             "Where? ← שם מקום, in / at / on ← המקום מהטקסט",
             "What? ← המשפט שמתאר את הנושא ← מעתיקים את המשפט",
           ],
@@ -3432,10 +3432,10 @@ export const c1Lessons: LessonNode[] = [
               type: "mcq",
               prompt: "מה מחפשים בטקסט לכל מילת שאלה?",
               options: [
-                "Why? ← because · When? ← שנה · How? ← by · Where? ← שם מקום",
-                "Why? ← שם מקום · When? ← because · How? ← שנה · Where? ← by",
+                "Why? → because · When? → a year · How? → by · Where? → a place",
+                "Why? → a place · When? → because · How? → a year · Where? → by",
                 "כל מילות השאלה מחפשות את אותו דבר",
-                "Why? ← שנה · When? ← by · How? ← שם מקום · Where? ← because",
+                "Why? → a year · When? → by · How? → a place · Where? → because",
               ],
               correctIndex: 0,
               explanation: "כל מילת שאלה שולחת אתכם לסוג מידע אחר בטקסט.",
@@ -3516,7 +3516,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title: "ONE SENTENCE",
-              lines: ['"תשובה אחת. מהטקסט. Why? ← because. When? ← זמן."'],
+              lines: ['"תשובה אחת. מהטקסט. ל-Why עונים עם because, ל-When עונים עם זמן."'],
             },
           ],
         },
@@ -3690,7 +3690,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT - REDONDA ISLAND\n\n{p:text}"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ ← מחפשים because/so ← "could not find food, so they left"\n{p:text}← Because they could not find enough food.\n\nIn order to ___ ← מחפשים so that/to ← "removed the goats so that the plants could grow"\n{p:text}← In order to let the plants grow back.',
+          text: 'WATCH IT - REDONDA ISLAND\n\n{p:text}"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ → מחפשים because/so → "could not find food, so they left"\n{p:text}→ Because they could not find enough food.\n\nIn order to ___ → מחפשים so that/to → "removed the goats so that the plants could grow"\n{p:text}→ In order to let the plants grow back.',
         },
       ],
       rounds: [

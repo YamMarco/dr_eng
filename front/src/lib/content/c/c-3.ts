@@ -33,7 +33,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                '### \n{d:rtl}### בואו נעבור על עוד דוגמה:\n\n{d:rtl}### 🟢 שלב 1 - מבינים את השאלה\n{p:text}**Do you think teenagers should have part-time jobs?**\n{d:rtl}לא מספיק להבין רק:\n{d:rtl}**teenagers** = בני נוער\n{d:rtl}**jobs** = עבודות\n{d:rtl}צריך להבין גם:\n{d:rtl}**part-time jobs** = עבודות במשרה חלקית\n{d:rtl}כלומר, השאלה היא:\n{d:rtl}**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n{d:rtl}### 🟡 שלב 2 - לא מסתבכים\n{d:rtl}אל תבזבזו זמן על:\n{d:rtl}**"אני בעד או נגד?"**\n{d:rtl}אם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n{d:rtl}### 🟢 שלב 3 - כותבים פתיח ברור\n{p:text}✅ **I think teenagers should have part-time jobs.**\n{d:rtl}קצר. ברור. נכון.\n{d:rtl}### ⭐ הכלל שלנו\n{d:rtl}**מבינים את כל השאלה → בוחרים YES → כותבים פתיח → ממשיכים.**',
+                '### \n{d:rtl}### בואו נעבור על עוד דוגמה:\n\n{d:rtl}### 🟢 שלב 1 - מבינים את השאלה\n{p:text}**Do you think teenagers should have part-time jobs?**\n{d:rtl}לא מספיק להבין רק:\n{d:rtl}**teenagers** = בני נוער\n{d:rtl}**jobs** = עבודות\n{d:rtl}צריך להבין גם:\n{d:rtl}**part-time jobs** = עבודות במשרה חלקית\n{d:rtl}כלומר, השאלה היא:\n{d:rtl}**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n{d:rtl}### 🟡 שלב 2 - לא מסתבכים\n{d:rtl}אל תבזבזו זמן על:\n{d:rtl}**"אני בעד או נגד?"**\n{d:rtl}אם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n{d:rtl}### 🟢 שלב 3 - כותבים פתיח ברור\n{p:text}✅ **I think teenagers should have part-time jobs.**\n{d:rtl}קצר. ברור. נכון.\n{d:rtl}### ⭐ הכלל שלנו\n{d:rtl}**מבינים את כל השאלה ← בוחרים YES ← כותבים פתיח ← ממשיכים.**',
               options: [
                 "Part-time jobs can be good or bad depending on the teenager.",
                 "I think teenagers should have part-time jobs.",
@@ -1016,7 +1016,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\n{d:rtl}היא לא שואלת: **YES או NO?**\n{d:rtl}היא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\n{d:rtl}כלומר, צריך לעשות שני דברים:\n{d:rtl}🟢 **1. לבחור דבר אחד ברור**\n{d:rtl}🟢 **2. להסביר למה בחרתם בו**\n\n{d:rtl}למשל:\n{p:text}**What do you think is the best way to help teenagers study better?**\n\n{d:rtl}אל תכתבו:\n{p:text}❌ **There are many ways to help teenagers study.**\n{d:rtl}זה לא נותן תשובה ברורה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\n{d:rtl}שימו לב:\n{d:rtl}**the best way is...** = הבחירה שלי\n{d:rtl}**because...** = הסיבה שלי\n\n{p:callout}{d:rtl}**What do you think...? => בוחרים תשובה אחת ברורה → ואז מסבירים למה.**",
+          text: "{d:rtl}🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\n{d:rtl}היא לא שואלת: **YES או NO?**\n{d:rtl}היא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\n{d:rtl}כלומר, צריך לעשות שני דברים:\n{d:rtl}🟢 **1. לבחור דבר אחד ברור**\n{d:rtl}🟢 **2. להסביר למה בחרתם בו**\n\n{d:rtl}למשל:\n{p:text}**What do you think is the best way to help teenagers study better?**\n\n{d:rtl}אל תכתבו:\n{p:text}❌ **There are many ways to help teenagers study.**\n{d:rtl}זה לא נותן תשובה ברורה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\n{d:rtl}שימו לב:\n{d:rtl}**the best way is...** = הבחירה שלי\n{d:rtl}**because...** = הסיבה שלי\n\n{p:callout}{d:rtl}**What do you think...? ← בוחרים תשובה אחת ברורה ← ואז מסבירים למה.**",
         },
         {
           type: "preface",
@@ -1328,11 +1328,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.\n\n{d:rtl}למשל:\n{p:text}{d:ltr}**At what age...?** = **באיזה גיל?**\n\n{d:rtl}🟢 במקרה כזה בוחרים **גיל אחד ברור**.\n\n{d:rtl}לא כותבים:\n{p:text}❌ **It depends.**\n{p:text}❌ **Some say 10, others say 15.**\n\n{d:rtl}בוחרים תשובה אחת:\n{p:text}✅ **I think teenagers should start working at the age of 16.**\n{d:rtl}ואז מסבירים **למה** בחרתם דווקא בגיל הזה.\n{d:rtl}\n{p:callout}{d:rtl}**מבקשים מספר אחד → נותנים מספר אחד → ואז מסבירים.**",
+          text: "{d:rtl}יש שאלות שמבקשות מכם לבחור **מספר, גיל או כמות אחת**.\n\n{d:rtl}למשל:\n{p:text}{d:ltr}**At what age...?** = **באיזה גיל?**\n\n{d:rtl}🟢 במקרה כזה בוחרים **גיל אחד ברור**.\n\n{d:rtl}לא כותבים:\n{p:text}❌ **It depends.**\n{p:text}❌ **Some say 10, others say 15.**\n\n{d:rtl}בוחרים תשובה אחת:\n{p:text}✅ **I think teenagers should start working at the age of 16.**\n{d:rtl}ואז מסבירים **למה** בחרתם דווקא בגיל הזה.\n{d:rtl}\n{p:callout}{d:rtl}**מבקשים מספר אחד ← נותנים מספר אחד ← ואז מסבירים.**",
         },
         {
           type: "preface",
-          text: "{d:rtl}שימו לב: השאלה **לא** שואלת:\n{p:text}❌ **Do you think children should have phones?**\n{d:rtl}היא כבר מניחה שלילדים יהיה טלפון.\n\n{d:rtl}היא שואלת רק:\n{p:text}{d:rtl}🟢 **מתי? באיזה גיל?**\n\n{d:rtl}לכן אל תתחילו לכתוב:\n{p:text}❌ **I think phones are dangerous for children.**\n{d:rtl}זה לא עונה על השאלה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **I think children should get their own phone at age 13 because...**\n\n{p:callout}{d:rtl}**השאלה שואלת מתי? → עונים בגיל. **לא משנים את השאלה לנושא אחר.",
+          text: "{d:rtl}שימו לב: השאלה **לא** שואלת:\n{p:text}❌ **Do you think children should have phones?**\n{d:rtl}היא כבר מניחה שלילדים יהיה טלפון.\n\n{d:rtl}היא שואלת רק:\n{p:text}{d:rtl}🟢 **מתי? באיזה גיל?**\n\n{d:rtl}לכן אל תתחילו לכתוב:\n{p:text}❌ **I think phones are dangerous for children.**\n{d:rtl}זה לא עונה על השאלה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **I think children should get their own phone at age 13 because...**\n\n{p:callout}{d:rtl}**השאלה שואלת מתי? ← עונים בגיל. **לא משנים את השאלה לנושא אחר.",
         },
         {
           type: "summary",

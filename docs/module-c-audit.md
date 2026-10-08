@@ -1,7 +1,7 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
-Snapshot: 2026-10-06. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-08. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
@@ -72,6 +72,13 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8 | One task per round |
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
+
+## Fixed on 2026-10-08 (flow arrows)
+
+- **Inverted arrows:** browsers never mirror `→` / `←`, so 57 of 176 arrows pointed backwards (checked by rendering every line through `mdBlock` / `mdInline` in headless Chrome). Rule: `←` in a line that renders RTL (first or last letter Hebrew), `→` in an English line or between two English words. Fixed in l00, l02, l03, l06, l07, l10, l11, nav-words-1, nav-words-2, content-1b, content-2c, yes-no, topic-vacation, topic-cellphone.
+- **l10 question-word MCQ:** options rewritten in English (`Why? → because · When? → a year ...`) so each pair reads left to right; the summary line now says it in Hebrew without arrows.
+- **nav-words-1:** the 3 navigation-word lines ran together on one line; now one line each.
+- **content-1b:** the 5 word -> meaning lines mixed LTR and RTL; now all RTL.
 
 ## Fixed on 2026-10-06 (UX audit, branch ux-fixes)
 

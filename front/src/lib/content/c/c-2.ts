@@ -836,7 +836,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה.**\nאלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n{p:text}*The city wanted to plant more trees. **However**, there was not enough money. **In addition**, there was not enough space. **As a result**, the project was delayed.*\n\n{p:text}שימו לב למילים המודגשות. גם אם לא הבנתם כל מילה, הן כבר נותנות לכם רמז:\n{p:text}**However** → עכשיו מגיעה בעיה או ניגוד.**In addition** → עכשיו מוסיפים עוד דבר.**As a result** → עכשיו מגיעה התוצאה.\n\nמילות ניווט הן כמו שלטים בדרך: הן אומרות לנו **מה עומד להגיע עכשיו בטקסט**.",
+          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה.**\nאלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n{p:text}*The city wanted to plant more trees. **However**, there was not enough money. **In addition**, there was not enough space. **As a result**, the project was delayed.*\n\n{p:text}שימו לב למילים המודגשות. גם אם לא הבנתם כל מילה, הן כבר נותנות לכם רמז:\n{p:text}**However** ← עכשיו מגיעה בעיה או ניגוד.\n{p:text}**In addition** ← עכשיו מוסיפים עוד דבר.\n{p:text}**As a result** ← עכשיו מגיעה התוצאה.\n\nמילות ניווט הן כמו שלטים בדרך: הן אומרות לנו **מה עומד להגיע עכשיו בטקסט**.",
         },
         {
           type: "preface",
@@ -1191,7 +1191,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}**found** → יש כאן ממצא\n{p:ul}**decreased** → משהו ירד\n{p:ul}**for example** → עכשיו מגיעה דוגמה\n{p:ul}**increased** → משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
+          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.\n\nעכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}**found** ← יש כאן ממצא\n{p:ul}**decreased** ← משהו ירד\n{p:ul}**for example** ← עכשיו מגיעה דוגמה\n{p:ul}**increased** ← משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
@@ -1931,7 +1931,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\n{d:rtl}הן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל.**\n{d:rtl}אלה **מילות תוכן**.\n\n{d:rtl}קראו את הפסקה הבאה\n{p:text}*A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.*\n{d:rtl}שימו לב למילים המודגשות.\n{d:rtl}אם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n{p:ul}{a:right}{d:ltr}**researchers** → חוקרים\n{p:ul}{a:right}{d:ltr}**discovered** → גילו\n{p:ul}{d:rtl}**affect** → להשפיע\n{p:ul}{d:rtl}**results** → תוצאות\n{p:ul}{d:rtl}**effective** → יעיל\n{d:rtl}אלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.",
+          text: "{d:rtl}יש מילים בטקסט שנותנות לנו את **המידע החשוב באמת**.\n{d:rtl}הן אומרות לנו: **מי עשה משהו, מה קרה, מה הייתה התוצאה, ומה היה יעיל.**\n{d:rtl}אלה **מילות תוכן**.\n\n{d:rtl}קראו את הפסקה הבאה\n{p:text}*A team of **researchers** studied 500 students for a year. They **discovered** that noise can **affect** how well students learn. The **results** were clear: the most **effective** solution was a quiet room.*\n{d:rtl}שימו לב למילים המודגשות.\n{d:rtl}אם אתם יודעים אותן, כבר הרבה יותר קל להבין את הקטע:\n{p:ul}{d:rtl}**researchers** ← חוקרים\n{p:ul}{d:rtl}**discovered** ← גילו\n{p:ul}{d:rtl}**affect** ← להשפיע\n{p:ul}{d:rtl}**results** ← תוצאות\n{p:ul}{d:rtl}**effective** ← יעיל\n{d:rtl}אלה מילים שכדאי לזהות מיד, בלי לפתוח מילון בכל פעם.",
         },
         {
           type: "preface",
@@ -3742,7 +3742,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "Regular exercise improves your **health**.",
               exampleHe: "פעילות גופנית סדירה משפרת את הבריאות שלך.",
               hookHe:
-                "health = בריאות. healthy = בריא. אותו שורש: health ← healthy.",
+                "health = בריאות. healthy = בריא. אותו שורש: health → healthy.",
             },
             {
               type: "mcq",
