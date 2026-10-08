@@ -2047,6 +2047,7 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "אנשים שחוקרים = researchers. research הוא המחקר עצמו, לא האנשים. results הן התוצאות, ו-discover הוא פועל.",
             },
+            { type: "preface", text: "" },
             {
               type: "cloze-pick",
               clause: "studied the sleep of 300 teenagers for two years.",
