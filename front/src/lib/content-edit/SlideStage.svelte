@@ -485,13 +485,15 @@
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
 				<div class="grid gap-4 xl:h-full xl:grid-cols-[36.95rem_minmax(0,1fr)] xl:items-start">
-					<div
-						class="mx-auto w-full xl:mx-0 xl:ms-[2.4rem] {device === 'phone'
-							? 'max-w-[390px]'
-							: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:h-full"
-					>
-						<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6 xl:h-full">
-							<EditableScreen {model} {nodeId} {path} />
+					<div class="xl:h-full xl:ps-[2.4rem] xl:pe-[2.55rem]">
+						<div
+							class="mx-auto w-full {device === 'phone'
+								? 'max-w-[390px]'
+								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:h-full"
+						>
+							<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6 xl:h-full">
+								<EditableScreen {model} {nodeId} {path} />
+							</div>
 						</div>
 					</div>
 					<div
