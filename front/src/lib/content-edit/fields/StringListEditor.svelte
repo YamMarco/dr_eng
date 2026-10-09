@@ -35,7 +35,7 @@
 					bind:value={items[i]}
 					{dir}
 					{placeholder}
-					rows="3"
+					rows="4"
 					class="w-full resize-none rounded-lg border-2 border-line bg-canvas p-2 text-sm"
 				></textarea>
 			{:else}

@@ -467,7 +467,7 @@
 						</div>
 					</div>
 					<div
-						class="hidden grid-cols-1 content-start items-start gap-x-8 gap-y-5 has-[*]:grid xl:grid-cols-[repeat(auto-fit,minmax(17rem,1fr))] [&>*]:mt-0! [&>*]:border-t-0! [&>*]:pt-0!"
+						class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-8 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
 					>
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
