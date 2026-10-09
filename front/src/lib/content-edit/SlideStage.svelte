@@ -38,6 +38,7 @@
 	import EditableScreen from './EditableScreen.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
+	import { expandAccepted } from '$lib/lesson-screens/acceptedAnswers';
 	import SettingsGroup from './fields/SettingsGroup.svelte';
 	import NumberField from './fields/NumberField.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
@@ -455,17 +456,19 @@
 					{locationCopied ? '✓ הועתק' : location}
 				</span>
 			</button>
-			<div class="mx-auto max-w-lg p-6">
-				<!-- the "slide": a fixed phone-sized frame that IS the whole editing
-				     surface — prose is click-to-type, and every control for this
-				     screen (correct answer, marks, questions, timer keys, …) lives
-				     right underneath it, inside the same card, not as separate boxes
-				     floating below. Content that doesn't fit scrolls inside the
-				     frame instead of growing it. -->
-				<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
-					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
-						<EditableScreen {model} {nodeId} {path} />
-
+			<div class="mx-auto max-w-lg p-6 xl:max-w-6xl">
+				<!-- Wide screens: the slide on the start side (right in RTL), its settings
+				     beside it. Narrow: settings stack under the slide. Settings are plain
+				     flow groups, never sticky, so they cannot cover one another. -->
+				<div class="grid gap-4 xl:grid-cols-[28rem_minmax(0,1fr)] xl:items-start">
+					<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
+						<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
+							<EditableScreen {model} {nodeId} {path} />
+						</div>
+					</div>
+					<div
+						class="hidden rounded-2xl border-2 border-line bg-canvas p-6 shadow-md has-[*]:block xl:h-[min(68vh,700px)] xl:overflow-y-auto [&>:first-child]:mt-0 [&>:first-child]:border-t-0 [&>:first-child]:pt-0"
+					>
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
 								<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
@@ -736,7 +739,7 @@
 							{#if !isExam}
 								<SettingsGroup
 									title="תשובות מתקבלות"
-									hint="משפט שלם בכל שורה. (a|b) = אחת מהאפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
+									hint="משפט שלם בכל שורה. הסימן | בתוך סוגריים = ״או״: (I think|I believe) = אחת משתי האפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
 								>
 									{#if screen.acceptedAnswers}
 										<StringListEditor
@@ -745,6 +748,16 @@
 											dir="ltr"
 											multiline
 										/>
+										<details class="text-xs text-muted">
+											<summary class="cursor-pointer font-semibold">
+												מה יתקבל בפועל ({expandAccepted(screen.acceptedAnswers).length} משפטים)
+											</summary>
+											<ul class="mt-1 list-disc space-y-0.5 ps-5" dir="ltr">
+												{#each expandAccepted(screen.acceptedAnswers) as sentence (sentence)}
+													<li>{sentence}</li>
+												{/each}
+											</ul>
+										</details>
 									{:else}
 										<button
 											type="button"
