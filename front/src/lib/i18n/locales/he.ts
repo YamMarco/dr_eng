@@ -126,8 +126,7 @@ export const he = {
 	// knows what they're about to do before it starts.
 	exerciseKind: {
 		mcq: 'תרגיל: שאלה אמריקאית',
-		markWord: 'תרגיל: סמנו מילה',
-		markAll: 'תרגיל: סמנו את כל מגנטי העין',
+		markAll: 'תרגיל: סימון בטקסט',
 		clozePick: 'תרגיל: השלימו את המשפט',
 		wordBankLabel: 'מילים לחיפוש',
 		timedReading: 'תרגיל מתוזמן: קריאה',

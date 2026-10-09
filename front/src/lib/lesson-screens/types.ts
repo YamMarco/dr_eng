@@ -9,7 +9,6 @@ export type PrefaceScreen = z.infer<typeof s.prefaceSchema>;
 export type StepsScreen = z.infer<typeof s.stepsSchema>;
 export type SummaryScreen = z.infer<typeof s.summarySchema>;
 export type McqScreen = z.infer<typeof s.mcqSchema>;
-export type MarkWordScreen = z.infer<typeof s.markWordSchema>;
 export type TimedReadingScreen = z.infer<typeof s.timedReadingSchema>;
 export type QuestionPreviewScreen = z.infer<typeof s.questionPreviewSchema>;
 export type TimeResultScreen = z.infer<typeof s.timeResultSchema>;
@@ -35,7 +34,8 @@ export const MATCH_PAIRS_MAX_MISTAKES = 1;
 
 /** Lenient pass rule shared by the live component (lesson mode) and the quiz
  *  scorer: skimming is about spotting most eye catchers fast, not a perfect
- *  sweep — pass on 70%+ of targets found with at most one stray tap. */
+ *  sweep: pass on 70%+ of targets found with at most one stray tap. A single target
+ *  is exact (no stray tap), so it works as the old tap-one-word screen. */
 export function isMarkAllPass(screen: MarkAllScreen, picked: number[]): boolean {
 	const targets = new Set([
 		...screen.correctIndices,
@@ -47,7 +47,7 @@ export function isMarkAllPass(screen: MarkAllScreen, picked: number[]): boolean 
 		if (targets.has(i)) hits += 1;
 		else wrong += 1;
 	}
-	return wrong <= 1 && hits >= Math.ceil(targets.size * 0.7);
+	return wrong <= (targets.size === 1 ? 0 : 1) && hits >= Math.ceil(targets.size * 0.7);
 }
 
 
@@ -67,8 +67,6 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return screen.lines.length === 0;
 		case 'mcq':
 			return !screen.prompt.trim() || screen.options.length === 0;
-		case 'mark-word':
-			return !screen.sentence.trim();
 		case 'cloze-pick':
 			return !screen.clause.trim() || screen.options.length === 0;
 		case 'mark-all':
@@ -105,7 +103,6 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 export function countQuestions(screen: LessonScreen): number {
 	switch (screen.type) {
 		case 'mcq':
-		case 'mark-word':
 		case 'cloze-pick':
 		case 'mark-all':
 		case 'match-pairs':

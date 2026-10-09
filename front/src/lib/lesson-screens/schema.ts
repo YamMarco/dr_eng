@@ -169,19 +169,6 @@ export const mcqSchema = z
 	})
 	.describe('Multiple choice. Scored: 1 point.');
 
-export const markWordSchema = z
-	.strictObject({
-		type: z.literal('mark-word'),
-		prompt: z.string().optional().describe('Instruction above the sentence (what to tap).'),
-		sentence: z.string(),
-		correctWordIndex: index.describe(
-			'0-based token index: split the sentence on spaces and count ("Answer using paragraph-III only." -> Answer=0, using=1, paragraph-III=2).'
-		),
-		dir: dir.optional(),
-		points: points.optional()
-	})
-	.describe('Tap the one right word in a sentence. Scored: 1 point.');
-
 export const clozePickSchema = z
 	.strictObject({
 		type: z.literal('cloze-pick'),
@@ -232,7 +219,7 @@ export const markAllSchema = z
 		points: points.optional()
 	})
 	.describe(
-		'Tap every target in a text. Passes on >=70% of targets found with <=1 stray tap. Exhaustive marking only on short material. Scored: 1 point.'
+		'Tap every target in a text (one target = tap the one right word). Passes on >=70% of targets found with <=1 stray tap; a single target allows none. Exhaustive marking only on short material. Scored: 1 point.'
 	);
 
 export const spellWordSchema = z
@@ -354,7 +341,6 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	stepsSchema,
 	summarySchema,
 	mcqSchema,
-	markWordSchema,
 	clozePickSchema,
 	markAllSchema,
 	timedReadingSchema,

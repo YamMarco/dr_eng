@@ -56,10 +56,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "paragraph II = רק שם.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שאומרת לאן ללכת:",
-              sentence: "Answer using paragraph-III only.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: "סמנו את המילה שאומרת לאן ללכת:",
+              text: "Answer using paragraph-III only.",
+              correctIndices: [2],
             },
             { type: "spell-word", word: "paragraph", mode: "copy" },
             {
@@ -166,10 +166,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "ONE = אחת בלבד.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שאומרת כמה תשובות לכתוב:",
-              sentence: "Please give ONE reason from the text.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: "סמנו את המילה שאומרת כמה תשובות לכתוב:",
+              text: "Please give ONE reason from the text.",
+              correctIndices: [2],
             },
             { type: "spell-word", word: "give ONE answer", mode: "copy" },
             {
@@ -335,10 +335,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "TWO = שתי תשובות נפרדות, לא אחת ארוכה.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שאומרת לאן ללכת:",
-              sentence: "Answer from paragraph-II only.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: "סמנו את המילה שאומרת לאן ללכת:",
+              text: "Answer from paragraph-II only.",
+              correctIndices: [2],
             },
             {
               type: "mark-all",
@@ -457,10 +457,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "complete = ממשיכים.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שאומרת "להשלים":',
-              sentence: "Please complete the sentence below.",
-              correctWordIndex: 1,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שאומרת "להשלים":',
+              text: "Please complete the sentence below.",
+              correctIndices: [1],
             },
             { type: "spell-word", word: "complete the sentence", mode: "copy" },
             {
@@ -540,10 +540,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "explain = סיבה בהבנה שלי.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "הסבירו":',
-              sentence: "Explain your answer in one sentence.",
-              correctWordIndex: 0,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "הסבירו":',
+              text: "Explain your answer in one sentence.",
+              correctIndices: [0],
             },
             { type: "spell-word", word: "explain", mode: "copy" },
             {
@@ -729,10 +729,10 @@ export const c2Lessons: LessonNode[] = [
                 "complete = ממשיכים משפט. explain = נותנים סיבה בהבנה שלי.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שמסמנת סיבה:",
-              sentence: "The road was closed because of the storm.",
-              correctWordIndex: 4,
+              type: "mark-all",
+              instruction: "סמנו את המילה שמסמנת סיבה:",
+              text: "The road was closed because of the storm.",
+              correctIndices: [4],
             },
             {
               type: "mark-all",
@@ -950,10 +950,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "עוד יתרון באותו כיוון = In addition.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שמסמנת "עוד מידע":',
-              sentence: "The park is clean. In addition, it is free.",
-              correctWordIndex: 5,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שמסמנת "עוד מידע":',
+              text: "The park is clean. In addition, it is free.",
+              correctIndices: [5],
             },
             { type: "spell-word", word: "in addition", mode: "copy" },
             {
@@ -1087,10 +1087,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "Although פותחת חלק מנוגד בתוך משפט אחד.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שמסמנת "לכן":',
-              sentence: "It was late, therefore we went home.",
-              correctWordIndex: 3,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שמסמנת "לכן":',
+              text: "It was late, therefore we went home.",
+              correctIndices: [3],
             },
             {
               type: "mark-all",
@@ -1256,10 +1256,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "increase = עלה.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שמראה שהמספר ירד:",
-              sentence: "Stress levels decreased by 35%.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: "סמנו את המילה שמראה שהמספר ירד:",
+              text: "Stress levels decreased by 35%.",
+              correctIndices: [2],
             },
             { type: "spell-word", word: "increase", mode: "copy" },
             {
@@ -1399,10 +1399,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "פחות תאונות = ירד.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שמסמנת ממצא:",
-              sentence: "Doctors discovered that sleep helps memory.",
-              correctWordIndex: 1,
+              type: "mark-all",
+              instruction: "סמנו את המילה שמסמנת ממצא:",
+              text: "Doctors discovered that sleep helps memory.",
+              correctIndices: [1],
             },
             {
               type: "mark-all",
@@ -1803,10 +1803,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "אלה שגרים במקום ומרגישים את האוויר = תושבים.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "תושבים":',
-              sentence: "Most residents said the change was remarkable.",
-              correctWordIndex: 1,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "תושבים":',
+              text: "Most residents said the change was remarkable.",
+              correctIndices: [1],
             },
             {
               type: "mark-all",
@@ -2078,10 +2078,10 @@ export const c2Lessons: LessonNode[] = [
                 "משפיע על כמה אנשים באים = affect. מזג אוויר לא מגלה (discover) כלום, results הוא שם עצם, ו-effective הוא תואר.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את הפועל שפירושו "להשפיע":',
-              sentence: "Stress can affect your sleep.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: 'סמנו את הפועל שפירושו "להשפיע":',
+              text: "Stress can affect your sleep.",
+              correctIndices: [2],
             },
             { type: "spell-word", word: "affect", mode: "copy" },
             {
@@ -2219,10 +2219,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "משפיע על מצב הרוח = affect.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "יעיל":',
-              sentence: "Group work was the most effective method.",
-              correctWordIndex: 5,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "יעיל":',
+              text: "Group work was the most effective method.",
+              correctIndices: [5],
             },
             {
               type: "mark-all",
@@ -2399,10 +2399,10 @@ export const c2Lessons: LessonNode[] = [
                 "כיבינו אורות כדי להשתמש בפחות = reduce. increase הפוך (יותר). אחרי to בא פועל בצורת הבסיס, ולכן לא reduced ולא reducing.",
             },
             {
-              type: "mark-word",
-              prompt: "סמנו את המילה שמראה שהמספר ירד:",
-              sentence: "The number of cars decreased by 20%.",
-              correctWordIndex: 4,
+              type: "mark-all",
+              instruction: "סמנו את המילה שמראה שהמספר ירד:",
+              text: "The number of cars decreased by 20%.",
+              correctIndices: [4],
             },
             { type: "spell-word", word: "reduce", mode: "copy" },
             {
@@ -2611,10 +2611,10 @@ export const c2Lessons: LessonNode[] = [
                 "מין של צפרדע = species. habitat הוא המקום שבו היא חיה, increase היא עלייה, ו-pollution הוא זיהום.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "להרוס":',
-              sentence: "Floods can destroy roads and bridges.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "להרוס":',
+              text: "Floods can destroy roads and bridges.",
+              correctIndices: [2],
             },
             {
               type: "mark-all",
@@ -2913,10 +2913,10 @@ export const c2Lessons: LessonNode[] = [
                 "other + רבים = skills. skill הוא יחיד, ו-improve ו-achieve הם פעלים.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "מיומנויות":',
-              sentence: "Volunteers learn useful skills at work.",
-              correctWordIndex: 3,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "מיומנויות":',
+              text: "Volunteers learn useful skills at work.",
+              correctIndices: [3],
             },
             { type: "spell-word", word: "skills", mode: "copy" },
             {
@@ -3057,10 +3057,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "מיומנויות שימושיות = skills.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "לפתח":',
-              sentence: "Schools develop creative thinking in children.",
-              correctWordIndex: 1,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "לפתח":',
+              text: "Schools develop creative thinking in children.",
+              correctIndices: [1],
             },
             {
               type: "mark-all",
@@ -3279,10 +3279,10 @@ export const c2Lessons: LessonNode[] = [
                 "צריכים חתימה = require (פועל). requirement הוא שם עצם (דרישה). cause ו-affect לא אומרים שחייבים משהו.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "דורש":',
-              sentence: "This job requires good English.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "דורש":',
+              text: "This job requires good English.",
+              correctIndices: [2],
             },
             { type: "spell-word", word: "require", mode: "copy" },
             {
@@ -3456,10 +3456,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "הזדמנות = opportunity.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "יתרון":',
-              sentence: "A big benefit of walking is that it is free.",
-              correctWordIndex: 2,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "יתרון":',
+              text: "A big benefit of walking is that it is free.",
+              correctIndices: [2],
             },
             {
               type: "mark-all",
@@ -3686,10 +3686,10 @@ export const c2Lessons: LessonNode[] = [
                 "עמדו לצדו עם כסף ואהבה = supported. blamed, ignored ו-left הן ההפך.",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "תמיכה":',
-              sentence: "Parents give their children love and support.",
-              correctWordIndex: 6,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "תמיכה":',
+              text: "Parents give their children love and support.",
+              correctIndices: [6],
             },
             { type: "spell-word", word: "support", mode: "copy" },
             {
@@ -3852,10 +3852,10 @@ export const c2Lessons: LessonNode[] = [
               explanation: "שינה טובה ופירות = טוב לבריאות (health).",
             },
             {
-              type: "mark-word",
-              prompt: 'סמנו את המילה שפירושה "חברה":',
-              sentence: "Every society has rules.",
-              correctWordIndex: 1,
+              type: "mark-all",
+              instruction: 'סמנו את המילה שפירושה "חברה":',
+              text: "Every society has rules.",
+              correctIndices: [1],
             },
             {
               type: "mark-all",

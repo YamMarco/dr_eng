@@ -48,11 +48,6 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 				typeof userAnswer === 'string' && isSentenceCompletionMatch(userAnswer, screen.modelAnswers);
 			return { earned: correct ? points : 0, max: points, auto: true };
 		}
-		case 'mark-word': {
-			const points = screen.points ?? 1;
-			const correct = userAnswer === screen.correctWordIndex;
-			return { earned: correct ? points : 0, max: points, auto: true };
-		}
 		case 'cloze-pick': {
 			const points = screen.points ?? 1;
 			const correct = typeof userAnswer === 'number' && screen.correctIndices.includes(userAnswer);

@@ -18,7 +18,6 @@
 | סוג | מה זה | מה צריך לכתוב |
 | --- | --- | --- |
 | `mcq` | שאלה אמריקאית אחת | `prompt`, `options`, `correctIndex` (מתחיל מ-0), `explanation` |
-| `mark-word` | לוחצים על המילה הנכונה בתוך משפט | `sentence`, `correctWordIndex` |
 | `mark-all` | מסמנים את כל המילים מסוג מסוים בתוך פסקה | `instruction`, `text`, `correctIndices`, אפשר `categories` (קבוצות בצבעים) ו-`wordBank` |
 | `spell-word` | מקלידים מילה, בהעתקה או בהכתבה | `word`, `mode: copy / listen` |
 | `writing-task` | מטלת כתיבה עם בנק מילים. נבדק אוטומטית: מספר משפטים וכמה מילים מהבנק שולבו | `prompt`, `wordBank`, `minSentences`, `minWordsUsed` |

@@ -37,7 +37,6 @@
 	let headerMenuOpen = $state(false);
 	import EditableScreen from './EditableScreen.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
-	import TokenPicker from './fields/TokenPicker.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import {
@@ -167,7 +166,6 @@
 	// points instead, edited inline in EditableScreen's question loop.
 	const POINTS_TYPES = new Set([
 		'mcq',
-		'mark-word',
 		'cloze-pick',
 		'mark-all',
 		'spell-word',
@@ -522,16 +520,6 @@
 										>ביטול</button
 									>
 								</div>
-							</div>
-						{:else if screen.type === 'mark-word'}
-							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-								<p class="mb-2 text-xs font-bold text-muted">איזו מילה נכונה?</p>
-								<TokenPicker
-									text={screen.sentence}
-									splitPattern={/ /}
-									selected={[screen.correctWordIndex]}
-									onToggle={(i) => (screen.correctWordIndex = i)}
-								/>
 							</div>
 						{:else if screen.type === 'cloze-pick'}
 							<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">

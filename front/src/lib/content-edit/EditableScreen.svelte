@@ -196,22 +196,6 @@
 			>
 				+ אפשרות
 			</button>
-		{:else if screen.type === 'mark-word'}
-			<p class="text-xs text-muted">הוראה (אופציונלי)</p>
-			<MarkdownInput
-				bare
-				minRows={1}
-				value={screen.prompt ?? ''}
-				onInput={(v) => set('prompt', v)}
-			/>
-			<p class="text-xs text-muted">המשפט - הסימון נעשה בסרגל התחתון</p>
-			<MarkdownInput
-				bare
-				minRows={2}
-				dir={screen.dir ?? 'auto'}
-				value={screen.sentence}
-				onInput={(v) => set('sentence', v)}
-			/>
 		{:else if screen.type === 'cloze-pick'}
 			<p class="text-xs text-muted">
 				המשפט הקבוע (אחרי הפתיח שנבחר) - האפשרויות והתשובה הנכונה בסרגל התחתון

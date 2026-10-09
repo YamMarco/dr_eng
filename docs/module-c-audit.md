@@ -1,7 +1,7 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
-Snapshot: 2026-10-08. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-09. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
@@ -72,6 +72,11 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8 | One task per round |
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
+
+## Fixed on 2026-10-09 (one marking screen)
+
+- **mark-word merged into mark-all:** the two types did the same job with different looks (mark-word showed big word chips, mark-all shows flowing text). All 27 mark-word screens (21 in c-2, 6 in c-3) are now `mark-all` with one target in `correctIndices` and no `categories`, so no legend chips. The `mark-word` type, component, editor picker and scorer case are gone. A mark-all with exactly one target is strict (no stray tap); with more targets the old rule stays (70% found, at most 1 stray tap). The badge now reads "תרגיל: סימון בטקסט" instead of the eye-magnets wording.
+- **yes-no round 3:** the 5 writing tasks say "only YES or NO, no reason" but their word banks offered because / in addition / for example / in conclusion. Removed those; added "should not" for NO answers. Checked every other c-3 writing task: the rest ask for the connectors they list.
 
 ## Fixed on 2026-10-08 (flow arrows)
 
@@ -200,7 +205,7 @@ What a 10 looks like, using different screens for different skills:
 | Recall in context, no Hebrew hint | `mcq` honeycomb | "Young ______ give their time to help others." volunteers / residents / charities / communities |
 | Hear and spell | `spell-word` (listen) | plays "volunteer", student types it |
 | Closed choice inside a sentence | `cloze-pick` | "A local ___ raised money for the school": charity / community |
-| Find it in text | `mark-word` | "Which word means תושבים?" in "Most residents said the change was remarkable." |
+| Find it in text | `mark-all` (one target) | "Which word means תושבים?" in "Most residents said the change was remarkable." |
 | Colour-coded scan | `mark-all` with `categories` | people words in one colour, place/idea words in another |
 | Exam-like use | `passage-mcq` | 3 sentences, question "Who said the change was remarkable?" -> residents |
 
@@ -291,7 +296,7 @@ Recommendation: do 1 and 2 first; they cover most of the gap at a fraction of th
 
 ### Vocab question types
 
-Vocab nodes (Part A) are not limited to 4 question types. They currently lean on `mcq` + `self-check`; use `spell-word`, `cloze-pick`, `mark-word`, `mark-all` (with categories), `passage-mcq` and `word-card` wherever they fit, as in Example A above. See docs/lesson-structure.md for what each type scores.
+Vocab nodes (Part A) are not limited to 4 question types. They currently lean on `mcq` + `self-check`; use `spell-word`, `cloze-pick`, `mark-all` (with categories), `passage-mcq` and `word-card` wherever they fit, as in Example A above. See docs/lesson-structure.md for what each type scores.
 
 ### Section 1 purpose
 

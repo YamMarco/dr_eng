@@ -65,15 +65,6 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 				out.push(...duplicates(`questions[${i}].options`, q.options));
 			});
 			break;
-		case 'mark-word':
-			out.push(
-				...outOfRange(
-					'correctWordIndex',
-					[screen.correctWordIndex],
-					screen.sentence.split(' ').length
-				)
-			);
-			break;
 		case 'mark-all': {
 			const count = markAllSegments(screen.text).filter((s) => s.token).length;
 			const ids = [

@@ -24,7 +24,7 @@ must point inside `docs/`, `QC_report/` or `front/src/lib/`.
 - Never invent screen types, fields or image paths. Leave out optional fields you don't need.
 - Student-facing explanation text is Hebrew; English only where it is the material itself (words, sentences, passages, questions, answers).
 - No long dashes (`—` or `--`) in content. A single `-` at most.
-- Indexes are 0-based; for `mark-word` / `mark-all`, split the text on spaces and count tokens.
+- Indexes are 0-based; for `mark-all`, split the text on spaces and count tokens.
 - Wrong options must be tempting: same part of speech, same topic, exactly one defensible answer.
 - A word is never an answer or a decoy before its `word-card`.
 - Validate every screen (`validate_screens`) before handing it over, and fix every error.

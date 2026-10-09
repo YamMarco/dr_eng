@@ -76,7 +76,7 @@ the source of truth - this doc only adds usage notes. Scored: exercises count 1 
 `passage-mcq` / `passage-quiz` 1 per question (`countQuestions()` in `types.ts`).
 
 `mark-all` renders the passage as flowing text; each word is tap-to-toggle.
-Scored leniently: pass on ≥70% of targets found with ≤1 stray tap.
+Scored leniently: pass on ≥70% of targets found with ≤1 stray tap. With exactly one target it is strict (no stray tap): this is how to author the old tap-one-word screen (a single sentence, `correctIndices: [n]`, no `categories`, so no legend). There is no separate `mark-word` type.
 `mark-all.correctIndices` are token positions — split the text on whitespace and
 count. Targets = `correctIndices` ∪ every `categories[].indices`. `categories`
 is optional colour-coding (names / negatives / …): shown as a legend, and the
@@ -198,7 +198,7 @@ NOT to l12, full exam (~340 words, 9 questions) only in the last lesson (n-7c533
 
 ## Writing distractors (wrong options)
 
-Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-word`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.
+Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-all`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.
 
 Rules:
 1. **Every wrong option must be tempting to someone who is unsure.** Same part of speech, grammatically fits the blank, and belongs to the same topic as the sentence. Never fill slots with unrelated concrete nouns (bicycle, window, sandwich, kitchen, holiday).
