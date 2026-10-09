@@ -2047,7 +2047,6 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "אנשים שחוקרים = researchers. research הוא המחקר עצמו, לא האנשים. results הן התוצאות, ו-discover הוא פועל.",
             },
-            { type: "preface", text: "" },
             {
               type: "cloze-pick",
               clause: "studied the sleep of 300 teenagers for two years.",
@@ -2186,7 +2185,6 @@ export const c2Lessons: LessonNode[] = [
                 '"discover, result, researcher, affect, effective - אני מזהה ועובר הלאה."',
               ],
             },
-            { type: "preface", text: "" },
           ],
         },
         {
@@ -4524,7 +4522,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}📘 מתחילים מהטקסט \n\n{d:rtl}ב־**Module C** יש שני חלקים עיקריים:\n\n{d:rtl}**חלק 1 – הבנת הנקרא: 70 נקודות**\n\n{d:rtl}**חלק 2 – כתיבה: 30 נקודות**\n{d:rtl}אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה: **הטקסט – 70 נקודות**\n\n{d:rtl}רק אחרי שנלמד איך להתמודד עם הטקסט, נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה**👀 \n",
+          text: "{d:rtl}📘 מתחילים מהטקסט \n\n{d:rtl}ב־**Module C** יש שני חלקים עיקריים:\n\n{d:rtl}**חלק 1 - הבנת הנקרא: 70 נקודות**\n\n{d:rtl}**חלק 2 – כתיבה: 30 נקודות**\n{d:rtl}אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה: **הטקסט – 70 נקודות**\n\n{d:rtl}רק אחרי שנלמד איך להתמודד עם הטקסט, נעבור לחלק השני ונלמד **איך לכתוב חיבור בצורה פשוטה וברורה**👀 \n",
         },
         {
           type: "preface",
