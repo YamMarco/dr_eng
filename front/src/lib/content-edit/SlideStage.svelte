@@ -38,6 +38,8 @@
 	import EditableScreen from './EditableScreen.svelte';
 	import MarkdownInput from './MarkdownInput.svelte';
 	import TextMarker from './fields/TextMarker.svelte';
+	import SettingsGroup from './fields/SettingsGroup.svelte';
+	import NumberField from './fields/NumberField.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import {
 		MARK_ALL_PALETTE,
@@ -462,33 +464,6 @@
 				     frame instead of growing it. -->
 				<div class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md">
 					<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
-						{#if !rawOpen && isExam && POINTS_TYPES.has(screen.type)}
-							<div class="mb-4 border-b-2 border-dashed border-line/60 pb-4">
-								<label class="flex items-center gap-2 text-xs font-bold text-muted">
-									ניקוד
-									<input
-										type="number"
-										min="0"
-										value={screen.points ?? 1}
-										oninput={(e) => (screen.points = e.currentTarget.valueAsNumber)}
-										class="w-16 rounded-lg border-2 border-line bg-surface p-1 font-normal"
-									/>
-								</label>
-							</div>
-						{/if}
-						{#if !rawOpen && !isExam && AUTO_CHECK_TYPES.has(screen.type)}
-							<div class="mb-4 border-b-2 border-dashed border-line/60 pb-4">
-								<label class="flex items-center gap-2 text-xs font-bold text-muted">
-									<input
-										type="checkbox"
-										checked={screen.autoCheck ?? true}
-										onchange={(e) =>
-											(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
-									/>
-									בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
-								</label>
-							</div>
-						{/if}
 						<EditableScreen {model} {nodeId} {path} />
 
 						{#if rawOpen}
@@ -700,81 +675,41 @@
 								</label>
 							</div>
 						{:else if screen.type === 'writing-task'}
-							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-								<p class="mb-2 text-xs font-bold text-muted">חיבור חופשי (מבחן) - טווח מילים</p>
-								<div class="flex flex-wrap items-center gap-4">
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מס׳ מילים - מינ׳
-										<input
-											type="number"
-											min="0"
-											value={screen.minWords ?? ''}
-											oninput={(e) =>
-												(screen.minWords = e.currentTarget.value
-													? e.currentTarget.valueAsNumber
-													: undefined)}
-											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+							{#if isExam}
+								<SettingsGroup title="חיבור חופשי - טווח מילים">
+									<div class="flex flex-wrap gap-x-4 gap-y-2">
+										<NumberField
+											label="מינ׳ מילים"
+											value={screen.minWords}
+											onChange={(v) => (screen.minWords = v)}
 										/>
-									</label>
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מס׳ מילים - מקס׳
-										<input
-											type="number"
-											min="0"
-											value={screen.maxWords ?? ''}
-											oninput={(e) =>
-												(screen.maxWords = e.currentTarget.value
-													? e.currentTarget.valueAsNumber
-													: undefined)}
-											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										<NumberField
+											label="מקס׳ מילים"
+											value={screen.maxWords}
+											onChange={(v) => (screen.maxWords = v)}
 										/>
-									</label>
-								</div>
-							</div>
-
-							<div
-								class="sticky bottom-0 z-10 -mx-6 mt-4 space-y-3 border-t-2 border-line bg-canvas px-6 py-3 shadow-[0_-6px_12px_-8px_rgb(0_0_0/0.15)]"
-							>
-								<p class="text-xs font-bold text-muted">כתיבה מודרכת (שיעור) - אופציונלי</p>
-								<div class="flex gap-4">
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מינ׳ משפטים
-										<input
-											type="number"
-											min="1"
-											value={screen.minSentences ?? ''}
-											oninput={(e) =>
-												(screen.minSentences = e.currentTarget.value
-													? e.currentTarget.valueAsNumber
-													: undefined)}
-											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+									</div>
+								</SettingsGroup>
+							{:else}
+								<SettingsGroup title="תנאי מעבר">
+									<div class="flex flex-wrap gap-x-4 gap-y-2">
+										<NumberField
+											label="מינ׳ משפטים"
+											min={1}
+											value={screen.minSentences}
+											onChange={(v) => (screen.minSentences = v)}
 										/>
-									</label>
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מינ׳ מילים מהבנק
-										<input
-											type="number"
-											min="0"
-											value={screen.minWordsUsed ?? ''}
-											oninput={(e) =>
-												(screen.minWordsUsed = e.currentTarget.value
-													? e.currentTarget.valueAsNumber
-													: undefined)}
-											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+										<NumberField
+											label="מינ׳ מילים מהבנק"
+											value={screen.minWordsUsed}
+											onChange={(v) => (screen.minWordsUsed = v)}
 										/>
-									</label>
-								</div>
-								<div class="flex flex-wrap items-center gap-4">
-									<label class="flex items-center gap-2 text-xs text-muted">
-										טעויות קטנות מותרות
-										<input
-											type="number"
-											min="0"
+										<NumberField
+											label="טעויות קטנות מותרות"
 											value={screen.maxTypos ?? 1}
-											oninput={(e) => (screen.maxTypos = e.currentTarget.valueAsNumber)}
-											class="w-16 rounded-lg border-2 border-line bg-surface p-1"
+											onChange={(v) => (screen.maxTypos = v)}
 										/>
-									</label>
+									</div>
 									<label class="flex items-center gap-2 text-xs text-muted">
 										<input
 											type="checkbox"
@@ -783,22 +718,44 @@
 										/>
 										אות ראשונה קטנה = טעות
 									</label>
-								</div>
-							</div>
-							<div class="space-y-3 pt-3">
-								<p class="text-xs font-bold text-muted">בנק מילים (לכתיבה מודרכת)</p>
+								</SettingsGroup>
+							{/if}
+							<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
 								{#if screen.wordBank}
 									<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
 								{:else}
 									<button
 										type="button"
-										class="text-xs font-semibold text-brand"
+										class="self-start text-xs font-semibold text-brand"
 										onclick={() => (screen.wordBank = [])}
 									>
 										+ הוספת בנק מילים
 									</button>
 								{/if}
-							</div>
+							</SettingsGroup>
+							{#if !isExam}
+								<SettingsGroup
+									title="תשובות מתקבלות"
+									hint="משפט שלם בכל שורה. (a|b) = אחת מהאפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
+								>
+									{#if screen.acceptedAnswers}
+										<StringListEditor
+											bind:items={screen.acceptedAnswers}
+											addLabel="+ תשובה"
+											dir="ltr"
+											multiline
+										/>
+									{:else}
+										<button
+											type="button"
+											class="self-start text-xs font-semibold text-brand"
+											onclick={() => (screen.acceptedAnswers = [])}
+										>
+											+ הוספת תשובות מתקבלות
+										</button>
+									{/if}
+								</SettingsGroup>
+							{/if}
 						{:else if screen.type === 'spell-word'}
 							<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
 								<label class="flex items-center gap-1.5">
@@ -841,6 +798,27 @@
 									class="rounded-lg border-2 border-line bg-surface p-1"
 								/>
 							</label>
+						{/if}
+						{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
+							<SettingsGroup title="הגדרות כלליות">
+								{#if isExam}
+									<NumberField
+										label="ניקוד"
+										value={screen.points ?? 1}
+										onChange={(v) => (screen.points = v)}
+									/>
+								{:else}
+									<label class="flex items-center gap-2 text-xs text-muted">
+										<input
+											type="checkbox"
+											checked={screen.autoCheck ?? true}
+											onchange={(e) =>
+												(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
+										/>
+										בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
+									</label>
+								{/if}
+							</SettingsGroup>
 						{/if}
 					</div>
 				</div>

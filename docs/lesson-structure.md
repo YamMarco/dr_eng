@@ -236,4 +236,8 @@ mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.t
 `confidence: 'maybe'` issues are worded as questions. `worthGrading(report)` gates the LLM call.
 UI: `<WritingCheck text options />` under the textarea (writing-task, self-check, writing lab).
 Lessons only: per-screen `autoCheck: false` hides it (and skips writing-task's capital/period check). Exams never auto-check.
+
+`writing-task.acceptedAnswers` (lessons only): for fixed-shape tasks such as the one-sentence YES/NO stance. Whole sentences, `(a|b)` = a or b, groups multiply out (`acceptedAnswers.ts`). When set, each line must equal one of them (case, punctuation and apostrophes ignored) and the word-bank / punctuation / lint checks are skipped; a wrong answer shows up to 3 examples. Write the opener variants and the should / should not variants once per row, the subject stays fixed.
+
+Editor settings layout (SlideStage): everything below the screen content, in plain flow (nothing sticky), as `SettingsGroup` blocks: type-specific groups first, then "הגדרות כלליות" (score in exams, auto-check in lessons). Use `SettingsGroup` + `NumberField` for any new setting.
 Rule explanations (Hebrew): `writingCheck.rule` in `i18n/locales/he.ts`.

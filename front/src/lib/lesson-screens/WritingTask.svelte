@@ -8,6 +8,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { lintWriting, usesWord, type LintIssue } from './writingLint';
+	import { expandAccepted, matchesAccepted } from './acceptedAnswers';
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
 	import { splitSentences } from '$lib/ocr/scan';
@@ -72,7 +73,14 @@
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
 	let lintIssues = $derived(lintWriting(lines, wordBank));
 	let contentOk = $derived(lintIssues.length === 0);
-	let allOk = $derived(allFilled && punctuationOk && wordBankOk && contentOk);
+	// Fixed-shape task: the line must be one of the author's accepted sentences,
+	// which replaces the punctuation / word-bank / content checks.
+	let accepted = $derived(screen.acceptedAnswers ?? []);
+	let hasAccepted = $derived(accepted.length > 0);
+	let acceptedOk = $derived(lines.every((line) => matchesAccepted(line, accepted)));
+	let allOk = $derived(
+		hasAccepted ? allFilled && acceptedOk : allFilled && punctuationOk && wordBankOk && contentOk
+	);
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
 	function fillFromScan(text: string) {
@@ -205,23 +213,36 @@
 				<span>{allFilled ? '✓' : '✗'}</span>
 				{i18n.dict.writingTask.checkSentences(minSentences)}
 			</li>
-			{#if autoCheck}
-				<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
-					<span>{punctuationOk ? '✓' : '✗'}</span>
-					{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
+			{#if hasAccepted}
+				<li class="flex items-center gap-2 {acceptedOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{acceptedOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkAccepted}
 				</li>
+				{#if !acceptedOk}
+					<li class="ms-6 text-xs font-semibold text-muted" dir="ltr">
+						{i18n.dict.writingTask.acceptedExamples}
+						{expandAccepted(accepted).slice(0, 3).join(' / ')}
+					</li>
+				{/if}
+			{:else}
+				{#if autoCheck}
+					<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
+						<span>{punctuationOk ? '✓' : '✗'}</span>
+						{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
+					</li>
+				{/if}
+				<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{wordBankOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
+				</li>
+				<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{contentOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkContent}
+				</li>
+				{#each lintIssues as issue (issue.line)}
+					<li class="ms-6 text-xs font-semibold text-danger">{lintMessage(issue)}</li>
+				{/each}
 			{/if}
-			<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
-				<span>{wordBankOk ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
-			</li>
-			<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-danger'}">
-				<span>{contentOk ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkContent}
-			</li>
-			{#each lintIssues as issue (issue.line)}
-				<li class="ms-6 text-xs font-semibold text-danger">{lintMessage(issue)}</li>
-			{/each}
 		</ul>
 	{/if}
 {/if}

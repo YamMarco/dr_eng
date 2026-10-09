@@ -177,6 +177,8 @@ export const he = {
 			}`,
 		checkWordBank: (n: number) => `שימוש בלפחות ${n} מהמילים`,
 		checkContent: 'תוכן: סיבות ספציפיות, בלי חזרות',
+		checkAccepted: 'המשפט מתאים לאחת התשובות המתקבלות',
+		acceptedExamples: 'למשל:',
 		lintVague: (n: number, word: string) =>
 			`משפט ${n}: "${word}" כללי מדי - מה בדיוק? הוסיפו פרט או הסבר.`,
 		lintRepeat: (n: number, of: number) => `משפט ${n} חוזר על משפט ${of} - הוסיפו רעיון חדש.`,

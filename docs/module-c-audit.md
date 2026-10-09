@@ -77,6 +77,8 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 - **mark-word merged into mark-all:** the two types did the same job with different looks (mark-word showed big word chips, mark-all shows flowing text). All 27 mark-word screens (21 in c-2, 6 in c-3) are now `mark-all` with one target in `correctIndices` and no `categories`, so no legend chips. The `mark-word` type, component, editor picker and scorer case are gone. A mark-all with exactly one target is strict (no stray tap); with more targets the old rule stays (70% found, at most 1 stray tap). The badge now reads "תרגיל: סימון בטקסט" instead of the eye-magnets wording.
 - **yes-no round 3:** the 5 writing tasks say "only YES or NO, no reason" but their word banks offered because / in addition / for example / in conclusion. Removed those; added "should not" for NO answers. Checked every other c-3 writing task: the rest ask for the connectors they list.
+- **yes-no round 3 accepted answers:** the 5 writing tasks now carry `acceptedAnswers` (opener x should / should not x fixed subject, 21 sentences each) and are checked against them instead of word bank + lint. Bank of task 1 was missing "I do not think".
+- **Editor settings (SlideStage):** the writing-task settings were spread over four places and a sticky block covered the rest when scrolling. Now plain stacked `SettingsGroup`s: pass conditions (lesson) or word range (exam), word bank, accepted answers, general.
 
 ## Fixed on 2026-10-08 (flow arrows)
 

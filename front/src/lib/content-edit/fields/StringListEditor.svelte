@@ -7,6 +7,7 @@
 		items = $bindable([]),
 		addLabel = '+ הוסף',
 		markdown = false,
+		multiline = false,
 		placeholder = '',
 		dir = 'auto'
 	}: {
@@ -14,6 +15,8 @@
 		addLabel?: string;
 		/** Use the rich MarkdownInput field instead of a plain input (prose lines). */
 		markdown?: boolean;
+		/** Plain wrapping textarea, for long entries that don't fit one line. */
+		multiline?: boolean;
 		placeholder?: string;
 		dir?: 'rtl' | 'ltr' | 'auto';
 	} = $props();
@@ -23,6 +26,14 @@
 	<div class="mb-1 flex items-start gap-2">
 		{#if markdown}
 			<div class="w-full"><MarkdownInput bind:value={items[i]} {dir} minRows={2} /></div>
+		{:else if multiline}
+			<textarea
+				bind:value={items[i]}
+				{dir}
+				{placeholder}
+				rows=2
+				class="w-full resize-none rounded-lg border-2 border-line bg-canvas p-2 text-sm"
+			></textarea>
 		{:else}
 			<input
 				bind:value={items[i]}
