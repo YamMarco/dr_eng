@@ -456,15 +456,15 @@
 					{locationCopied ? '✓ הועתק' : location}
 				</span>
 			</button>
-			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:max-w-none xl:p-8">
+			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:h-full xl:max-w-none xl:p-6">
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:grid-cols-[1fr_2fr] xl:items-start">
+				<div class="grid gap-4 xl:h-full xl:grid-cols-[1fr_2fr] xl:items-start">
 					<div
-						class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:mx-8 xl:w-auto"
+						class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:h-full"
 					>
-						<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
+						<div class="h-[min(68vh,700px)] overflow-y-auto p-6 xl:h-full">
 							<EditableScreen {model} {nodeId} {path} />
 						</div>
 					</div>
