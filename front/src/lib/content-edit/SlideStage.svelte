@@ -70,6 +70,8 @@
 	// screen 6"), so a bug report can name a screen precisely instead of
 	// "the fourth one in that round".
 	let location = $derived(path ? formatScreenLocation(nodeId, path) : '');
+	// Preview width of the slide: desktop = the lesson runner's max width, phone = a typical handset.
+	let device = $state<'desk' | 'phone'>('desk');
 	let locationCopied = $state(false);
 	let copyTimer: ReturnType<typeof setTimeout> | undefined;
 	async function copyLocation() {
@@ -444,27 +446,51 @@
 		<div class="relative min-h-0 flex-1 overflow-y-auto">
 			<!-- relative+invisible-span sizes the button to the (always-longer)
 			     location text, so switching to "✓ הועתק" never changes its width. -->
-			<button
-				type="button"
-				title="העתקת מיקום המסך"
-				onclick={copyLocation}
-				class="absolute top-2 right-2 z-10 rounded-lg border border-dashed border-line bg-surface/90 px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
-				dir="ltr"
-			>
-				<span class="invisible">{location}</span>
-				<span class="absolute inset-0 flex items-center justify-center">
-					{locationCopied ? '✓ הועתק' : location}
-				</span>
-			</button>
-			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:max-w-none">
+			<div class="absolute top-2 right-2 z-10 flex items-center gap-2">
+				<button
+					type="button"
+					title="העתקת מיקום המסך"
+					onclick={copyLocation}
+					class="relative rounded-lg border border-dashed border-line bg-surface/90 px-2 py-1 font-mono text-[11px] font-semibold text-muted hover:bg-line/60"
+					dir="ltr"
+				>
+					<span class="invisible">{location}</span>
+					<span class="absolute inset-0 flex items-center justify-center">
+						{locationCopied ? '✓ הועתק' : location}
+					</span>
+				</button>
+				<div
+					class="flex overflow-hidden rounded-lg border border-line bg-surface/90 text-[11px] font-semibold"
+					role="group"
+					aria-label="רוחב התצוגה"
+				>
+					<button
+						type="button"
+						class="px-2 py-1 {device === 'desk'
+							? 'bg-brand text-white'
+							: 'text-muted hover:bg-line/60'}"
+						onclick={() => (device = 'desk')}>מחשב</button
+					>
+					<button
+						type="button"
+						class="px-2 py-1 {device === 'phone'
+							? 'bg-brand text-white'
+							: 'text-muted hover:bg-line/60'}"
+						onclick={() => (device = 'phone')}>טלפון</button
+					>
+				</div>
+			</div>
+			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:h-full xl:max-w-none">
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:grid-cols-[49rem_minmax(0,1fr)] xl:items-start">
+				<div class="grid gap-4 xl:h-full xl:grid-cols-[49rem_minmax(0,1fr)] xl:items-start">
 					<div
-						class="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
+						class="mx-auto w-full {device === 'phone'
+							? 'max-w-[390px]'
+							: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:h-full"
 					>
-						<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
+						<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6 xl:h-full">
 							<EditableScreen {model} {nodeId} {path} />
 						</div>
 					</div>
