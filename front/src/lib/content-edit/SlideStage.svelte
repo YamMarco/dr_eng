@@ -484,7 +484,7 @@
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:h-full xl:grid-cols-[40.5rem_minmax(0,1fr)] xl:items-start">
+				<div class="grid gap-4 xl:h-full xl:grid-cols-[38rem_minmax(0,1fr)] xl:items-start">
 					<div
 						class="mx-auto w-full {device === 'phone'
 							? 'max-w-[390px]'
