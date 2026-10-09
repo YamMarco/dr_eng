@@ -462,7 +462,7 @@
 				     flow groups, never sticky, so they cannot cover one another. -->
 				<div class="grid gap-4 xl:h-full xl:grid-cols-[1fr_2fr] xl:items-start">
 					<div
-						class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:h-full"
+						class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:ms-16 xl:me-6 xl:h-full xl:w-auto"
 					>
 						<div class="h-[min(68vh,700px)] overflow-y-auto p-6 xl:h-full">
 							<EditableScreen {model} {nodeId} {path} />
