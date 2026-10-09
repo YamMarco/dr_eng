@@ -460,7 +460,7 @@
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:grid-cols-[2fr_3fr] xl:items-start">
+				<div class="grid gap-4 xl:grid-cols-[49rem_minmax(0,1fr)] xl:items-start">
 					<div
 						class="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
 					>
