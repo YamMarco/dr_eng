@@ -456,7 +456,7 @@
 					{locationCopied ? '✓ הועתק' : location}
 				</span>
 			</button>
-			<div class="mx-auto max-w-lg p-6 xl:max-w-6xl">
+			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:max-w-none">
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
@@ -467,7 +467,7 @@
 						</div>
 					</div>
 					<div
-						class="hidden rounded-2xl border-2 border-line bg-canvas p-6 shadow-md has-[*]:block xl:h-[min(68vh,700px)] xl:overflow-y-auto [&>:first-child]:mt-0 [&>:first-child]:border-t-0 [&>:first-child]:pt-0"
+						class="hidden grid-cols-1 content-start items-start gap-x-8 gap-y-5 has-[*]:grid xl:grid-cols-[repeat(auto-fit,minmax(17rem,1fr))] [&>*]:mt-0! [&>*]:border-t-0! [&>*]:pt-0!"
 					>
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
@@ -725,7 +725,12 @@
 							{/if}
 							<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
 								{#if screen.wordBank}
-									<StringListEditor bind:items={screen.wordBank} addLabel="+ מילה" dir="ltr" />
+									<StringListEditor
+										bind:items={screen.wordBank}
+										addLabel="+ מילה"
+										dir="ltr"
+										compact
+									/>
 								{:else}
 									<button
 										type="button"
