@@ -456,20 +456,20 @@
 					{locationCopied ? '✓ הועתק' : location}
 				</span>
 			</button>
-			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:h-full xl:max-w-none xl:p-6">
+			<div class="mx-auto max-w-lg p-6 xl:mx-0 xl:max-w-none">
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:h-full xl:grid-cols-[1fr_2fr] xl:items-start">
+				<div class="grid gap-4 xl:grid-cols-[2fr_3fr] xl:items-start">
 					<div
-						class="w-full overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md xl:ms-16 xl:me-6 xl:h-full xl:w-auto"
+						class="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
 					>
-						<div class="h-[min(68vh,700px)] overflow-y-auto p-6 xl:h-full">
+						<div class="h-[min(68vh,700px)] overflow-y-auto p-6">
 							<EditableScreen {model} {nodeId} {path} />
 						</div>
 					</div>
 					<div
-						class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-12 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
+						class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
 					>
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
