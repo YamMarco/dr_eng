@@ -166,6 +166,8 @@ export const he = {
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
 		checkMinSentences: (n: number) => `לפחות ${n} משפטים`,
+		checklistTitle: 'השוו לתשובה לדוגמה, וסמנו רק מה שבאמת יש אצלכם:',
+		checklistDone: 'מעולה - זה בדיוק מה שהבודק מחפש.',
 		checkLength: (min: number, words: number) =>
 			`לפחות ${min} מילים (נספרו ${words}; שאלה שהועתקה לא נספרת)`,
 		sentencesPhrase: (n: number) => (n === 1 ? 'משפט אחד' : n === 2 ? 'שני משפטים' : `${n} משפטים`),

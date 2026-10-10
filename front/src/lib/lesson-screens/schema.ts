@@ -267,6 +267,16 @@ export const writingTaskSchema = z
 			.describe(
 				'Lesson mode, fixed-shape tasks only: whole sentences the student may write; (a|b) = a or b. When set, each line must match one of them (case/punctuation ignored) and the word-bank and lint checks are skipped.'
 			),
+		modelAnswer: z
+			.string()
+			.optional()
+			.describe('Lesson mode: shown after the check, to compare with. Not scored.'),
+		checklist: z
+			.array(z.string())
+			.optional()
+			.describe(
+				'Lesson mode: items the student ticks about their own text after the check (self-review). Not scored.'
+			),
 		minSentences: z.number().int().min(0).optional(),
 		minWordsUsed: z.number().int().min(0).optional(),
 		maxTypos: z.number().int().min(0).optional().describe('Forgiven small slips. Default 1.'),

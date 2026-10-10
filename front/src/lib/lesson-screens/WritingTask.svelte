@@ -3,6 +3,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { WritingTaskScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import SelfReview from './SelfReview.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -276,5 +277,6 @@
 				{/each}
 			{/if}
 		</ul>
+		<SelfReview modelAnswer={screen.modelAnswer} checklist={screen.checklist} />
 	{/if}
 {/if}

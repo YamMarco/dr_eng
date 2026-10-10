@@ -853,6 +853,30 @@
 												</button>
 											{/if}
 										</SettingsGroup>
+										<SettingsGroup
+											title="בדיקה עצמית"
+											hint="מוצג אחרי הבדיקה, בלי ציון: תשובה לדוגמה ורשימה שהתלמיד מסמן על הטקסט שלו."
+										>
+											<textarea
+												dir="ltr"
+												rows="3"
+												placeholder="תשובה לדוגמה"
+												value={screen.modelAnswer ?? ''}
+												oninput={(e) => (screen.modelAnswer = e.currentTarget.value || undefined)}
+												class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
+											></textarea>
+											{#if screen.checklist}
+												<StringListEditor bind:items={screen.checklist} addLabel="+ סעיף" compact />
+											{:else}
+												<button
+													type="button"
+													class="self-start text-xs font-semibold text-brand"
+													onclick={() => (screen.checklist = [])}
+												>
+													+ הוספת רשימת בדיקה
+												</button>
+											{/if}
+										</SettingsGroup>
 									{/if}
 								{:else if screen.type === 'spell-word'}
 									<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">

@@ -62,8 +62,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על המילה שמבטאת דעה.",
-              text:
-                "I think all students should do volunteer work in their community.",
+              text: "I think all students should do volunteer work in their community.",
               correctIndices: [1],
             },
           ],
@@ -102,8 +101,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על המילה שהופכת את המשפט ל-NO.",
-              text:
-                "I do not think homework should be given every weekend.",
+              text: "I do not think homework should be given every weekend.",
               correctIndices: [2],
             },
           ],
@@ -285,8 +283,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על המילה שמחברת את הדעה לסיבה.",
-              text:
-                "I think children should get a phone at age 13 because they start travelling to school alone.",
+              text: "I think children should get a phone at age 13 because they start travelling to school alone.",
               correctIndices: [10],
             },
           ],
@@ -491,8 +488,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על המילה שמסמנת שמגיע פרט ספציפי.",
-              text:
-                "Traveling teaches you new things. For example, you discover different food and music.",
+              text: "Traveling teaches you new things. For example, you discover different food and music.",
               correctIndices: [5],
             },
           ],
@@ -591,8 +587,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על המילה שפותחת את משפט הסיום.",
-              text:
-                "In conclusion, I think that age 13 is the right age for a first cellphone.",
+              text: "In conclusion, I think that age 13 is the right age for a first cellphone.",
               correctIndices: [0],
             },
           ],
@@ -704,8 +699,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction: "לחצו על ה-verb - מה הסטודנטים עושים?",
-              text:
-                "Students learn important skills when they volunteer in their community.",
+              text: "Students learn important skills when they volunteer in their community.",
               correctIndices: [1],
             },
           ],
@@ -918,6 +912,14 @@ export const c3Lessons: LessonNode[] = [
               ],
               minSentences: 4,
               minWordsUsed: 4,
+              modelAnswer:
+                "I think all high school students should do volunteer work because it teaches them responsibility. For example, a student who helps in an old people's home every week must come on time. In addition, volunteering gives teenagers real work experience for the future. In conclusion, I believe volunteering prepares students for life.",
+              checklist: [
+                "משפט 1 עונה ישירות: I think / I do not think",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+              ],
             },
           ],
         },
@@ -978,6 +980,16 @@ export const c3Lessons: LessonNode[] = [
               minWords: 70,
               maxWords: 90,
               minWordsUsed: 5,
+              modelAnswer:
+                "I think all high school students should do volunteer work because it teaches them responsibility. For example, a student who helps in an old people's home every week must come on time and keep promises. In addition, volunteering gives teenagers real work experience. For instance, they learn to work in a team and talk to adults. As a result, it is easier for them to find a job later. In conclusion, I believe volunteering prepares students for life.",
+              checklist: [
+                "משפט 1 עונה ישירות: I think / I do not think",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+                "70-90 מילים, ולא העתקתי את השאלה עצמה",
+              ],
             },
           ],
         },
@@ -1120,6 +1132,14 @@ export const c3Lessons: LessonNode[] = [
               ],
               minSentences: 3,
               minWordsUsed: 3,
+              modelAnswer:
+                "In my opinion, the best way to spend a vacation is to travel abroad because you discover new cultures. In addition, a trip with friends or family creates memories that last for years. In conclusion, I believe traveling is the most meaningful way to spend a vacation.",
+              checklist: [
+                "משפט 1 בוחר דבר אחד: the best way is...",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+              ],
             },
           ],
         },
@@ -1154,6 +1174,16 @@ export const c3Lessons: LessonNode[] = [
               minWords: 70,
               maxWords: 90,
               minWordsUsed: 5,
+              modelAnswer:
+                "In my opinion, the best way to spend a vacation is to travel abroad because you discover new cultures. For example, in Italy you can taste real pizza and see how people live. In addition, a trip creates memories that last for years. For instance, my family still laughs about the day we got lost in Rome. As a result, travel brings people closer. In conclusion, I believe traveling is the best way to spend a vacation.",
+              checklist: [
+                "משפט 1 בוחר דבר אחד: the best way is...",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+                "70-90 מילים, ולא העתקתי את השאלה עצמה",
+              ],
             },
           ],
         },
@@ -1280,6 +1310,13 @@ export const c3Lessons: LessonNode[] = [
               ],
               minSentences: 2,
               minWordsUsed: 3,
+              modelAnswer:
+                "I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. In addition, schools could let students choose one subject they love. This would help because they would come to school with more motivation.",
+              checklist: [
+                "משפט 1 מציע שינוי ספציפי: schools should...",
+                "כל הצעה עם because וסיבה ספציפית",
+                "ההצעה השנייה שונה מהראשונה",
+              ],
             },
           ],
         },
@@ -1314,6 +1351,16 @@ export const c3Lessons: LessonNode[] = [
               minWords: 70,
               maxWords: 90,
               minWordsUsed: 5,
+              modelAnswer:
+                "In my opinion, a few changes can make my school a better place to learn. First, I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. For example, after a short walk outside, it is easier to understand a hard math lesson. In addition, schools could let students choose one subject they love. This would help because students learn better when they are interested. In conclusion, I believe these changes would make students happier and more successful.",
+              checklist: [
+                "משפט 1 מציע שינוי ספציפי: schools should...",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+                "70-90 מילים, ולא העתקתי את השאלה עצמה",
+              ],
             },
           ],
         },
@@ -1442,6 +1489,14 @@ export const c3Lessons: LessonNode[] = [
               ],
               minSentences: 3,
               minWordsUsed: 3,
+              modelAnswer:
+                "I think children should get their own phone at age 13 because they start going to places alone at this age. In addition, at 13 they are mature enough to understand the dangers of social media. In conclusion, I believe that 13 is the right age because children are ready for the responsibility.",
+              checklist: [
+                "משפט 1 נותן גיל אחד: at age...",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+              ],
             },
           ],
         },
@@ -1476,6 +1531,16 @@ export const c3Lessons: LessonNode[] = [
               minWords: 70,
               maxWords: 90,
               minWordsUsed: 5,
+              modelAnswer:
+                "I think children should get their own phone at age 13 because they start going to places alone at this age. For example, many children take a bus to school or to a friend's house, and their parents need to contact them. In addition, at 13 children are mature enough to understand the dangers of social media. Younger children may talk to strangers online. In conclusion, I believe that 13 is the right age for a first phone.",
+              checklist: [
+                "משפט 1 נותן גיל אחד: at age...",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
+                "70-90 מילים, ולא העתקתי את השאלה עצמה",
+              ],
             },
           ],
         },
