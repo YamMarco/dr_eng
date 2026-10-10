@@ -497,7 +497,7 @@
 						<div
 							class="mx-auto w-full {device === 'phone'
 								? 'max-w-[390px]'
-								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md transition-[max-width] duration-500 ease-in-out motion-reduce:transition-none"
+								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md transition-[max-width] duration-300 ease-in-out motion-reduce:transition-none"
 						>
 							<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6">
 								<EditableScreen {model} {nodeId} {path} />
@@ -507,13 +507,13 @@
 					<!-- Settings and their lip are one unit: they slide out together, and the lip stays
 					     docked on the canvas's left edge when collapsed. -->
 					<div
-						class="relative min-h-0 motion-reduce:transition-none xl:h-full xl:transition-transform xl:duration-300 xl:ease-out {settingsCollapsed
+						class="relative min-h-0 motion-reduce:transition-none xl:h-full xl:border-s-2 xl:border-line xl:transition-transform xl:duration-300 xl:ease-out {settingsCollapsed
 							? 'xl:-translate-x-full'
 							: ''}"
 					>
 						<button
 							type="button"
-							class="absolute top-1/2 right-0 z-10 hidden h-24 w-6 translate-x-full -translate-y-1/2 items-center justify-center rounded-r-xl bg-brand text-xl leading-none font-bold text-white shadow-md transition-colors hover:bg-brand-dark xl:flex"
+							class="absolute top-1/2 right-0 z-10 hidden h-14 w-5 translate-x-full -translate-y-1/2 items-center justify-center rounded-r-xl border-2 border-s-0 border-line bg-surface text-lg leading-none text-muted transition-colors hover:text-brand xl:flex"
 							aria-label={settingsCollapsed ? 'הצג הגדרות' : 'הסתר הגדרות'}
 							onclick={() => (settingsCollapsed = !settingsCollapsed)}
 						>
@@ -521,7 +521,7 @@
 						</button>
 						<div
 							inert={settingsCollapsed}
-							class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:transition-opacity xl:duration-300 xl:ease-out {settingsCollapsed
+							class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:ps-5 xl:transition-opacity xl:duration-300 xl:ease-out {settingsCollapsed
 								? 'xl:opacity-0'
 								: ''}"
 						>
