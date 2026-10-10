@@ -24,6 +24,7 @@ Status key: **live** = runs for students today · **partial** = runs but somewhe
 | 13 | passage-quiz keyword matcher | `PassageQuiz.svelte`, `front/src/lib/quiz/scoring.ts` | lessons; exams | yes | partial (exam side not wired) |
 | 14 | Exam writing-task scoring | `quiz/scoring.ts` | exams | - | none by design (manual, `auto: false`) |
 | 15 | LLM roles `grade-short`, `grade-essay` | `front/src/lib/server/llm.ts` | nowhere (only `ocr` is called) | - | dead |
+| 17 | Required moves (snowball) | `front/src/lib/lesson-screens/writingMoves.ts` | lesson writing-task | yes | live (added after the snapshot) |
 | 16 | Sentence splitter | `front/src/lib/ocr/scan.ts` `splitSentences` | OCR fill + paragraph mode | indirectly | live |
 
 ## 1. Lesson writing-task gate (`WritingTask.svelte`)
@@ -144,9 +145,25 @@ Pass = every keyword appears as a substring of the lowercased answer. Lessons: l
 
 `server/llm.ts` defines `grade-short` (Gemini flash-lite models) and `grade-essay` (Gemini flash models) next to `ocr`, through `LLM_GATEWAY_URL/KEY` or `GEMINI_API_KEY`. Only `routes/api/ocr/+server.ts` calls the LLM. No grading route exists yet.
 
+## 17. Required moves (`writingMoves.ts`)
+
+`requiredMoves` on a lesson writing-task. Each move passes if its marker appears anywhere in the text (case-insensitive):
+
+| Move | Markers |
+|---|---|
+| stance | I think / I do not think / I don't think / I believe / I agree / I feel / I would like / I'd prefer / I prefer / In my opinion |
+| because | because |
+| in-addition | In addition / Also / Moreover / Furthermore / Another reason / Secondly / Second, |
+| for-example | For example / For instance / such as |
+| for-instance | For instance (only) |
+| as-a-result | As a result / Therefore / Because of this / This means / That is why / so that |
+| in-conclusion | In conclusion / To sum up / To conclude / In summary / All in all |
+
+A missing move fails the task; the results list names it. Set on 28 c-3 tasks (2026-10-10). Checks presence only, not position or quality.
+
 ## Notes for the LLM switch
 
 - Keep as cheap pre-checks (no judgement, near-zero false flags): rule 9 (not English), rule 5's valid-word count and zero rule, rule 4 (fixed-shape answers).
 - Good LLM prompt material: the length table and "not counted" list (rule 5), the lint's definitions of vague / repeat / no detail (rule 2), and the language-use rule names (rule 8), so LLM feedback uses the same names students saw.
-- What the LLM must take over: meaning (is the reason specific, is the second reason new, does the example support the reason), and whether a snowball task contains every required move (today nothing checks that a task asking for "because + In addition" actually has `because`).
+- What the LLM must take over: meaning (is the reason specific, is the second reason new, does the example support the reason), and whether each required move is used well (rule 17 only checks that its marker word is there). Pass `requiredMoves` to the grader prompt.
 - Decide per task whether the LLM verdict gates the pass (today rules 1-4 gate it).

@@ -41,6 +41,7 @@
 	import { expandAccepted } from '$lib/lesson-screens/acceptedAnswers';
 	import SettingsGroup from './fields/SettingsGroup.svelte';
 	import NumberField from './fields/NumberField.svelte';
+	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import {
 		MARK_ALL_PALETTE,
@@ -817,6 +818,25 @@
 													מונה מילים מתחת לשורות
 												</label>
 											{/if}
+											<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted" dir="ltr">
+												<span dir="rtl">מהלכים חובה:</span>
+												{#each MOVE_IDS as move (move)}
+													<label class="flex items-center gap-1">
+														<input
+															type="checkbox"
+															checked={screen.requiredMoves?.includes(move) ?? false}
+															onchange={(e) => {
+																const on = e.currentTarget.checked;
+																const next = MOVE_IDS.filter((m) =>
+																	m === move ? on : (screen.requiredMoves ?? []).includes(m)
+																);
+																screen.requiredMoves = next.length ? next : undefined;
+															}}
+														/>
+														{move}
+													</label>
+												{/each}
+											</div>
 										</SettingsGroup>
 									{/if}
 									<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">

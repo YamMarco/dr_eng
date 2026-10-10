@@ -166,6 +166,18 @@ export const he = {
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
 		checkMinSentences: (n: number) => `לפחות ${n} משפטים`,
+		checkMoves: (list: string) => `כל המהלכים שהמשימה ביקשה: ${list}`,
+		movesMissing: (list: string) =>
+			`חסר: ${list}. המשימה בונה על מה שלמדתם קודם - כל מהלך צריך להופיע.`,
+		move: {
+			stance: 'עמדה (I think...)',
+			because: 'because',
+			'in-addition': 'In addition',
+			'for-example': 'For example',
+			'for-instance': 'For instance',
+			'as-a-result': 'As a result',
+			'in-conclusion': 'In conclusion'
+		} as Record<string, string>,
 		timeUp: 'הזמן נגמר. בבחינה הייתם מגישים עכשיו - סיימו את המשפט ובדקו.',
 		timeTaken: (time: string, limit: number) => `זמן כתיבה: ${time} (יעד: עד ${limit} דקות)`,
 		checklistTitle: 'השוו לתשובה לדוגמה, וסמנו רק מה שבאמת יש אצלכם:',

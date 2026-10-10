@@ -8,6 +8,7 @@
 // Objects are strict: an unknown field is an error, so a misspelled or
 // invented field never slips through.
 import * as z from 'zod';
+import { MOVE_IDS } from './writingMoves';
 
 const dir = z.enum(['rtl', 'ltr']).describe('Text direction override. Omit to auto-detect.');
 const index = z.number().int().min(0).describe('0-based index');
@@ -276,6 +277,12 @@ export const writingTaskSchema = z
 			.optional()
 			.describe(
 				'Lesson mode: items the student ticks about their own text after the check (self-review). Not scored.'
+			),
+		requiredMoves: z
+			.array(z.enum(MOVE_IDS))
+			.optional()
+			.describe(
+				'Lesson mode: paragraph moves the text must show (stance, because, in-addition, for-example, for-instance, as-a-result, in-conclusion); synonyms count. A missing move fails the task. Also input for LLM grading.'
 			),
 		wordCounter: z
 			.boolean()

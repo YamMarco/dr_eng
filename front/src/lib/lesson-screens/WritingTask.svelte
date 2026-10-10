@@ -14,6 +14,7 @@
 	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
 	import { splitSentences } from '$lib/ocr/scan';
 	import { countValidWords } from '$lib/checks/length';
+	import { missingMoves } from './writingMoves';
 	import QuizTimer from '$lib/quiz/QuizTimer.svelte';
 	import { formatTime } from '$lib/quiz/time';
 
@@ -98,6 +99,9 @@
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
 	let lintIssues = $derived(lintWriting(lines, wordBank, screen.prompt));
 	let contentOk = $derived(lintIssues.length === 0);
+	// The paragraph moves the task asks for (stance, because, In addition...).
+	let missing = $derived(missingMoves(combinedText, screen.requiredMoves));
+	let movesOk = $derived(missing.length === 0);
 	// Fixed-shape task: the line must be one of the author's accepted sentences,
 	// which replaces the punctuation / word-bank / content checks.
 	let accepted = $derived(screen.acceptedAnswers ?? []);
@@ -106,7 +110,7 @@
 	let allOk = $derived(
 		hasAccepted
 			? allFilled && acceptedOk
-			: allFilled && lengthOk && punctuationOk && wordBankOk && contentOk
+			: allFilled && lengthOk && movesOk && punctuationOk && wordBankOk && contentOk
 	);
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
@@ -313,6 +317,21 @@
 						<span>{punctuationOk ? '✓' : '✗'}</span>
 						{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
 					</li>
+				{/if}
+				{#if screen.requiredMoves?.length}
+					<li class="flex items-center gap-2 {movesOk ? 'text-brand-dark' : 'text-danger'}">
+						<span>{movesOk ? '✓' : '✗'}</span>
+						{i18n.dict.writingTask.checkMoves(
+							screen.requiredMoves.map((m) => i18n.dict.writingTask.move[m]).join(' · ')
+						)}
+					</li>
+					{#if !movesOk}
+						<li class="ms-6 text-xs font-semibold text-danger">
+							{i18n.dict.writingTask.movesMissing(
+								missing.map((m) => i18n.dict.writingTask.move[m]).join(', ')
+							)}
+						</li>
+					{/if}
 				{/if}
 				{#if minWordsUsedReq > 0}
 					<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
