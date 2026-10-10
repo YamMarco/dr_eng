@@ -267,10 +267,12 @@
 						{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
 					</li>
 				{/if}
-				<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
-					<span>{wordBankOk ? '✓' : '✗'}</span>
-					{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
-				</li>
+				{#if minWordsUsedReq > 0}
+					<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
+						<span>{wordBankOk ? '✓' : '✗'}</span>
+						{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
+					</li>
+				{/if}
 				<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-danger'}">
 					<span>{contentOk ? '✓' : '✗'}</span>
 					{i18n.dict.writingTask.checkContent}
