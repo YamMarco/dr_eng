@@ -40,9 +40,11 @@ function contentWords(line: string, bank: Set<string>): string[] {
 	return words(line).filter((w) => w.length > 2 && !STOP.has(w) && !VAGUE.has(w) && !bank.has(w));
 }
 
-/** Whole-word (or whole-phrase) match, so "fun" doesn't count inside "function". */
+/** Whole-word (or whole-phrase) match, so "fun" doesn't count inside "function".
+ *  A bank entry may carry a translation ("travel / לטייל"): only the English part counts. */
 export function usesWord(text: string, word: string): boolean {
 	const escaped = word
+		.split(' / ')[0]
 		.trim()
 		.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 		.replace(/\s+/g, '\\s+');
