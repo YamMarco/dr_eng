@@ -1,18 +1,105 @@
 # Writing audit (Part C, c-3)
 
-Living doc: top = what's still open, bottom = history (fixed items, decisions).
-Snapshot: 2026-10-07. Source: a read-through of all 12 c-3 nodes in `front/src/lib/content/c/c-3.ts`, as a private tutor / Bagrut English teacher / micro-skill coach. Questions asked: is the overload progressive enough, and do students get enough reps to absorb each move?
+Living doc: top = what's still open, bottom = history (fixed items, decisions, the original audit).
+Snapshot: 2026-10-10, branch `writing-loop`. Every item of the 2026-10-07 audit is done (see History). Content was checked against the official sources below. Nothing has been played by a student yet.
 Companion: `docs/module-c-audit.md` (per-node grades), `QC_report/module-c-report.md` (whole-module report).
 
 Difficulty: S = under an hour, M = half a day, L = more than a day.
 
+## Official facts (verified 2026-10-10)
+
+Sources: 3-point Bagrut handbook (Feb 2025), Module C writing rubric `RubricsCD2020.pdf`, MIKUD 2026 (`portal_talmidim/mikud/2026/english.pdf`).
+
+- **Task:** 1 composition, 70-90 words, 30% of the exam. MIKUD 2026: **opinion only** (stories and informal letters are excluded), on one of **19 listed topics**.
+- **Rubric (30 points):** Content & Organization 10 (10/7/3/0), Vocabulary 8 (8/5/2/0), Language Use 8 (8/5/2/0), Mechanics 4 (4/2/1/0).
+- **Length deductions (under only):** 60-69 = -1, 50-59 = -3, 40-49 = -6, 30-39 = -10, 25-29 = -15, under 25 = 0 for the whole task. **No deduction above 90.** These match `front/src/lib/checks/length.ts`.
+- **Not counted:** the instruction sentence copied word for word, a title, a letter frame, and substantial parts copied from the reading passage. Using the question inside your own sentence does count.
+- **Other deductions:** repeated whole ideas -1 to -3 (Content); repeated words such as *very* or slang, up to -3 (Vocabulary); list form or an irrelevant "Hi, my name is..." opener, -1 to -2 (organization). No penalty for not using paragraphs. Off topic or incomprehensible = 0.
+- **Exam:** 1 hour 30 minutes; reading text up to 300 words, 8-10 questions.
+
 ## Verdict
 
-The order of skills is right (stance -> because -> In addition -> For example -> In conclusion -> subject+verb -> 70-90 -> four question types). The dose is not. Students mostly recognize good writing; they rarely produce it, so the moves won't become automatic. There is also a cliff between the micro-skills (at most 2 sentences) and the first topic lesson (70-90 words in round 1).
+The order of the moves was always right. The dose and the bridge are fixed now: writing is required, each connector gets 3 reps, every task repeats the earlier moves, the student writes the 4-sentence skeleton before the first topic lesson, and topic lessons move from skeleton to a 70-90 word paragraph box to an unseen exam topic with no word bank. After each task the student compares their text with a model answer and ticks a checklist built from the rubric. The weak point is what was always the weak point: no student has played it.
 
 ## Open
 
-### Critical
+### High
+
+**#1 Not played by a student** - all of c-3 - people time
+- Impact: every grade is a judgement from reading the material.
+- Fix: 2-3 students (weak, average, strong), 20-30 minutes each, starting at yes-no. Watch for: time per micro-skill node (it now has 3-4 writing tasks), whether the checklist gets ticked honestly, and whether the paragraph box's length line confuses anyone.
+
+**#2 The module report's exam facts disagree with the handbook** - `QC_report/module-c-report.md` bad point 8, roadmap D1 - S
+- Impact: the report says the Bagrut text is about 340 words and the exam lasts 1 hour 45 minutes, and plans to lengthen the practice exams to that. For the 3-point Module C the handbook says up to 300 words and 1 hour 30 minutes, so the practice exams' 90 minutes are already right.
+- Fix: correct bad point 8 and plan step 8 before anyone lengthens the exams. (Not changed here: outside Part C.)
+
+### Medium
+
+**#3 No timer on writing** - topic round 3 - S-M
+- Impact: "20 minutes, as in the exam" is only a sentence; `writing-task` has no stopwatch.
+- Fix: the round-level timer from roadmap phase 3, when it gets built. Don't build a writing-only timer.
+
+**#4 Organization deductions are not taught** - topic lessons - S
+- Impact: the rubric takes 1-2 points for list form and for an irrelevant "Hi, my name is... I am 17" opener. Students write these.
+- Fix: one MCQ in topic-volunteer round 1 ("which opening costs points?").
+
+**#5 Reading-to-writing only in for-example** - because, in-addition, in-conclusion - S
+- Fix: one screen each that reuses a Part B passage, like the Greenville task in for-example.
+
+### Low
+
+**#6 Six of the 19 MIKUD question shapes have no lesson** - What do you prefer / Do you agree / Which... - M
+- Impact: they appear in micro-skill drills and topic round 3, but no topic lesson teaches their opening line.
+- Fix: only if students stumble on the opening line. The stance-plus-reasons frame is the same.
+
+**#7 subject-verb free task is "any topic"** - subject-verb round 2 - S
+- Fix: give it a MIKUD topic like the other tasks.
+
+## Suggested order
+
+1. #2 (S, protects the exams from a wrong fix)
+2. #1 play-test, then regrade
+3. #4, #5, #7 in one pass
+4. #3 with the roadmap timer
+
+## History
+
+### Fixed on 2026-10-10 (branch `writing-loop`)
+
+All 10 items of the original audit, plus related QC report and roadmap items. One commit per point:
+
+| Item | What changed | Commit |
+|---|---|---|
+| #1 writing can be skipped | every round of every c-3 node is required (`requiredRounds`) | 21c40aa |
+| QC v3 bad 6 | word-bank entries "travel / לטייל" count when the English word is used | 7b3962c |
+| #6 answers mostly option 2 | `mcq` options shuffle on every mount in lessons (exams keep their order); explanations quote options instead of "option 2" | 1f1a744 |
+| QC v3 bad 7 | paragraph mode: a lesson `writing-task` with `minWords` is one box with a word counter and the official length line; the 8 topic paragraph tasks use it | ed50e28 |
+| (found while building) | word count dropped any stance sentence that reused the question; now only a question copied whole is dropped (rubric comment 4) | 02d1e72 |
+| #10 no self-review | `modelAnswer` + `checklist` on writing tasks, shown after the check (SelfReview), editable in the editor | e99d82d |
+| (found while building) | lint flagged "a good idea" / "most important time" when they came from the question | e41ac0b |
+| #2 + #3 dose and snowball | because / in-addition / for-example: 3 reps each on MIKUD topics, each repeating the earlier moves; in-conclusion writes the full 4-sentence skeleton twice; yes-no 5 reps down to 3 | 5056b45 |
+| #8 missing exercise types | upgrade the weak sentence (because, for-example), find the error (because, subject-verb), connector cloze (in-conclusion, subject-verb), sentence order (in-conclusion), fix 3 broken sentences (subject-verb) | 802fd11 |
+| #4 + #5 word math, word-count | verified penalty table; no penalty above 90 (the old "95 words" item taught the opposite); what is not counted; 6 sentences × 13 words ≈ 80; extend a 49-word draft in a paragraph box; one 6-sentence frame in every topic lesson; topic round 1 = the 4-sentence skeleton, not 70-90 | 107691a |
+| #9 exam rounds weren't exam conditions | topic round 3 = an unseen MIKUD topic of the same type, no word bank, 70-90 words | c85d9e1 |
+| #7 easy distractors | 11 MCQs in yes-no, in-conclusion and topic round 1; each wrong option fails on one point | 6d18cb7 |
+| roadmap 6.5 | reading-to-writing in for-example: Greenville facts as the example, in your own words | 0dd264a |
+
+Every model answer passes the app's own checks (lint, word bank, sentence count, length).
+
+### Decisions
+
+- 2026-10-10: writing is required (owner). This answers the module report's open question on plan step 6.
+- Penalty numbers are kept and now cited: they match the official rubric.
+
+### Original audit (snapshot 2026-10-07)
+
+Source: a read-through of all 12 c-3 nodes in `front/src/lib/content/c/c-3.ts`, as a private tutor / Bagrut English teacher / micro-skill coach. Questions asked: is the overload progressive enough, and do students get enough reps to absorb each move?
+
+#### Verdict
+
+The order of skills is right (stance -> because -> In addition -> For example -> In conclusion -> subject+verb -> 70-90 -> four question types). The dose is not. Students mostly recognize good writing; they rarely produce it, so the moves won't become automatic. There is also a cliff between the micro-skills (at most 2 sentences) and the first topic lesson (70-90 words in round 1).
+
+#### Critical
 
 **#1 Students can skip almost all writing** - because, in-addition, for-example, in-conclusion, subject-verb, word-count - S
 - Impact: a student can unlock all of Part C without writing a single sentence until `topic-volunteer`.
@@ -42,7 +129,7 @@ The order of skills is right (stance -> because -> In addition -> For example ->
   - in-conclusion: the full skeleton, about 5 sentences
 - Result: students have written the skeleton about 4 times before the first topic lesson.
 
-### High
+#### High
 
 **#4 The 70-90 word math is never taught** - word-count, topic templates - M
 - Impact: the given template (I think...because / In addition / In conclusion) comes to about 45-55 words. Students hit the length penalty without knowing why.
@@ -63,7 +150,7 @@ The order of skills is right (stance -> because -> In addition -> For example ->
 - Impact: most wrong options are obviously wrong (no "I think" at all, or a question as a conclusion), so a correct answer proves little.
 - Fix: make wrong options close to the right one: vague vs. specific reason, the same idea reworded vs. a new idea, an example that doesn't support the reason. `because` and `in-addition` round 1 already do this; make it the norm.
 
-### Medium
+#### Medium
 
 **#8 Missing exercise types** - all micro-skills - M
 All can be built with existing screen types:
@@ -81,7 +168,7 @@ All can be built with existing screen types:
 - Impact: automatic checks only judge structure (sentence count, word bank, mechanics, length), so "because it is good" passes. Students never compare their text with a good one.
 - Fix: after each writing task, show a model answer + a 5-item checklist (stance? specific reason? a different 2nd reason? example? 70-90?) that the student ticks.
 
-## Suggested order
+#### Suggested order (2026-10-07)
 
 1. #1 `requiredRounds` (S, biggest impact)
 2. #3 + #2 snowball and extra reps
@@ -89,7 +176,3 @@ All can be built with existing screen types:
 4. #8 upgrade-the-sentence + connector cloze
 5. #4 + #5 rebuild word-count around the sentence math
 6. #9, #10, #7
-
-## History
-
-(none yet)

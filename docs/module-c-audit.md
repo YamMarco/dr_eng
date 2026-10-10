@@ -1,11 +1,11 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
-Snapshot: 2026-10-09. Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-10 (Part C rebuilt, branch writing-loop). Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
-**Overall: about 7.5/10** (Part A 7, Part B 7.5, Part C 8).
+**Overall: about 7.6/10** (Part A 7, Part B 7.5, Part C 8.5).
 
 ## Part A: vocabulary (c-2)
 
@@ -61,17 +61,30 @@ Original note: the six content-word lessons are not prerequisites for the readin
 
 | Node | Solves | Micro-skill | Grade | Main issue |
 |---|---|---|---|---|
-| yes-no | Describing instead of answering | Write a stance sentence ("I think / I do not think") | 8 | None big |
-| because | Vague reasons | Connect the stance to a concrete reason with because | 7.5 | Thin practice; no link to reading |
-| in-addition | Repeating the same reason | Add a second, different reason | 7.5 | Thin practice |
-| for-example | Claims with no detail | Add a specific example | 7.5 | Thin practice |
-| in-conclusion | No ending, or new ideas in it | Close with one sentence restating the stance | 7.5 | Thin practice |
-| subject-verb | Language Use points lost to fragments | Check every sentence for subject + verb | 7.5 | None big |
-| word-count | Penalties for too short or too long | Count and adjust to 70-90 words | 6.5 | Penalty numbers unverified |
-| topic-volunteer | Not answering the question type | Build a full paragraph for a "Do you think" question | 8.5 | None big |
-| topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8 | One task per round |
-| topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8 | One task per round |
-| topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8 | One task per round |
+| yes-no | Describing instead of answering | Write a stance sentence ("I think / I do not think") | 8 | 3 stance reps on MIKUD topics (was 5 near-identical); distractors now "I think" without a stance. Unplayed |
+| because | Vague reasons | Connect the stance to a concrete reason with because | 8.5 | 3 reps (MIKUD topics) + upgrade-the-weak-sentence + find-the-vague-word. Unplayed |
+| in-addition | Repeating the same reason | Add a second, different reason | 8.5 | 3 reps, each repeats stance + because (snowball). Unplayed |
+| for-example | Claims with no detail | Add a specific example | 8.5 | 3 reps + upgrade-the-example + reading-to-writing (Greenville facts). Unplayed |
+| in-conclusion | No ending, or new ideas in it | Close with one sentence restating the stance | 8.5 | Writes the full 4-sentence skeleton twice; connector cloze + sentence order. Unplayed |
+| subject-verb | Language Use points lost to fragments | Check every sentence for subject + verb | 8 | Fixes 3 broken sentences before free writing; find-the-error + connector review. Unplayed |
+| word-count | Penalties for too short or too long | Count and adjust to 70-90 words | 8.5 | Penalty table verified (RubricsCD2020); no penalty above 90; 6 x 13 = 80 frame; extend a 49-word draft in a paragraph box. Unplayed |
+| topic-volunteer | Not answering the question type | Build a full paragraph for a "Do you think" question | 8.5 | Skeleton -> 6-sentence paragraph (one box, counter) -> unseen MIKUD topic, no bank. Unplayed |
+| topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8.5 | Same 3-step shape; round 3 "which language". Unplayed |
+| topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8.5 | Same 3-step shape; round 3 "prevent cheating". Unplayed |
+| topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8.5 | Same 3-step shape; round 3 driver's license age. Unplayed |
+
+## Fixed on 2026-10-10 (Part C rebuild, branch writing-loop)
+
+Source: QC_report/writing-audit.md (all items), QC report v3 bad points 6-7, roadmap phase 6, checked against the official 3-point handbook (Feb 2025), RubricsCD2020 and MIKUD 2026.
+- **Writing is required:** every round of every c-3 node counts (`requiredRounds`).
+- **Snowball + reps:** micro-skill writing rounds repeat every earlier move and add one, 3 reps each on MIKUD topics; in-conclusion writes the 4-sentence skeleton.
+- **Paragraph mode:** a lesson `writing-task` with `minWords` is one box with a counter and the official length line; topic lessons use it.
+- **Self-review:** `modelAnswer` + `checklist` on every writing task (SelfReview).
+- **word-count:** verified penalty table, no penalty above 90, what is not counted, 6 x 13 = 80, extend-a-draft task.
+- **Topic round 3:** unseen MIKUD topic, no word bank.
+- **New drills:** upgrade the weak sentence, find the error, connector cloze, sentence order, fix broken sentences, reading-to-writing.
+- **MCQ options shuffle** in lessons; c-3 distractors rewritten to be close.
+- **Checks:** word bank counts "travel / לטייל"; a stance sentence that reuses the question is counted (only a question copied whole is dropped); a vague word inside a phrase from the question is not flagged.
 
 ## Fixed on 2026-10-09 (one marking screen)
 
@@ -183,9 +196,9 @@ P3, easy distractors (same day):
 
 - Rework the opener of not-q (typo, repeated card).
 - Bridge line at the top of lessons that revisit earlier material (Give TWO, however/but, because).
-- Link reading and writing: one screen in each Part C connector lesson.
+- Link reading and writing: done in for-example (Greenville, 2026-10-10); because / in-addition / in-conclusion have none yet.
 - l08: open with "question-side tools" vs. "text-side signals"; give n-b46b7e2b a real teaching screen.
-- Writing feedback is structural only (sentence count, capitalization, word bank); it cannot judge quality.
+- Writing feedback: tiers 1 (lint: vague words, repeats, empty examples) and 2 (model answer + self-review checklist) are in; nothing judges quality beyond that. Tier 3 (model-graded) only if students show these fall short.
 - A single stopwatch across mixed formats (typed answers) needs a runner-level timer.
 - Read the `~` nodes in full and firm up their grades.
 
