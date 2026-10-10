@@ -51,9 +51,14 @@ export function usesWord(text: string, word: string): boolean {
 	return new RegExp(`\\b${escaped}\\b`, 'i').test(text);
 }
 
-/** At most one issue per line (the most useful one), lines are 0-based. */
-export function lintWriting(lines: string[], wordBank: string[] = []): LintIssue[] {
+/** At most one issue per line (the most useful one), lines are 0-based.
+ *  A vague word inside a phrase taken from the question ("this is a good idea",
+ *  "the most important time") is the question, not a vague reason. */
+export function lintWriting(lines: string[], wordBank: string[] = [], prompt = ''): LintIssue[] {
 	const bank = new Set(wordBank.flatMap((w) => words(w)));
+	const promptText = ' ' + words(prompt).join(' ') + ' ';
+	const fromPrompt = (all: string[], i: number) =>
+		i > 0 && i + 1 < all.length && promptText.includes(` ${all[i - 1]} ${all[i]} ${all[i + 1]} `);
 	const issues: LintIssue[] = [];
 	const earlier: Set<string>[] = [];
 
@@ -70,7 +75,8 @@ export function lintWriting(lines: string[], wordBank: string[] = []): LintIssue
 		}
 
 		const vagueAt = all.findIndex(
-			(w, i) => VAGUE.has(w) && !bank.has(w) && !EXPLAINERS.has(all[i + 1] ?? '')
+			(w, i) =>
+				VAGUE.has(w) && !bank.has(w) && !EXPLAINERS.has(all[i + 1] ?? '') && !fromPrompt(all, i)
 		);
 		if (vagueAt >= 0) {
 			issues.push({ kind: 'vague', line, word: all[vagueAt] });

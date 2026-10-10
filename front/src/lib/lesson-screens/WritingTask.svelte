@@ -88,7 +88,7 @@
 	let combinedText = $derived(lines.join(' '));
 	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
 	let wordBankOk = $derived(wordsUsed >= minWordsUsedReq);
-	let lintIssues = $derived(lintWriting(lines, wordBank));
+	let lintIssues = $derived(lintWriting(lines, wordBank, screen.prompt));
 	let contentOk = $derived(lintIssues.length === 0);
 	// Fixed-shape task: the line must be one of the author's accepted sentences,
 	// which replaces the punctuation / word-bank / content checks.
