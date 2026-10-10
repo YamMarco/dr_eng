@@ -2,6 +2,7 @@
 	import { untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { MediaQuery } from 'svelte/reactivity';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Sheet from '$lib/components/Sheet.svelte';
@@ -96,13 +97,9 @@
 	// it in the same part. Shown beside the question (pinned on wide screens,
 	// collapsible on phones) so the student never has to navigate away from
 	// the text to answer. Its index keys the panel, so highlights survive
-	// moving between that passage's questions. On the passage screen itself it
-	// points at that screen, so lg+ is already split and the passage stays put
-	// while question 1 slides in beside it.
-	let onPassageScreen = $derived(currentEntry?.screen.type === 'passage');
+	// moving between that passage's questions.
 	let passageEntryIndex = $derived.by(() => {
-		if (!currentEntry) return -1;
-		if (onPassageScreen) return entryIndex;
+		if (!currentEntry || currentEntry.screen.type === 'passage') return -1;
 		for (let i = entryIndex - 1; i >= 0; i--) {
 			const entry = allEntries[i];
 			if (entry.partIndex !== currentEntry.partIndex) return -1;
@@ -123,6 +120,21 @@
 	let passageIndices = $derived(
 		new Set(allEntries.flatMap((entry, i) => (entry.screen.type === 'passage' ? [i] : [])))
 	);
+	// lg+ pins the passage beside its questions, so the standalone passage
+	// screen is redundant there: it's skipped in navigation and hidden from the
+	// navigator. Phones keep it as the first, full-width read.
+	const wide = new MediaQuery('min-width: 1024px');
+	let hiddenIndices = $derived(wide.current ? passageIndices : undefined);
+	let quizHasPassage = $derived(passageIndices.size > 0);
+	// Runs before the DOM updates, so a skipped passage never flashes.
+	$effect.pre(() => {
+		if (!hiddenIndices?.has(entryIndex)) return;
+		const forward = untrack(() => direction) > 0 || entryIndex === 0;
+		let i = entryIndex;
+		while (hiddenIndices.has(i)) i += forward ? 1 : -1;
+		if (i < 0) i = entryIndex + 1;
+		if (i < allEntries.length) entryIndex = i;
+	});
 	let partBreaks = $derived(
 		new Set(allEntries.flatMap((entry, i) => (entry.isFirstOfPart ? [i] : [])))
 	);
@@ -258,7 +270,7 @@
 		</AppBar>
 
 		<div
-			class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2 {activePassage
+			class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
 				? 'lg:max-w-5xl'
 				: ''}"
 		>
@@ -271,6 +283,7 @@
 						onJump={jump}
 						style={quiz.options.navigatorStyle ?? 'numbers'}
 						{passageIndices}
+						{hiddenIndices}
 						{partBreaks}
 					/>
 				{:else if allEntries.length > 1}
@@ -283,10 +296,15 @@
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
 		     lg+ splits into two independently scrolling columns - question on the
-		     start (right) side, passage pinned on the end (left) side. -->
+		     start (right) side, passage pinned on the end (left) side. A quiz with
+		     any passage keeps the lg frame at 5xl on every screen, so moving to a
+		     passage-less one (e.g. writing) only widens the column from the same
+		     start edge instead of re-centering everything. -->
 		<main
-			class="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {activePassage
-				? 'lg:grid lg:max-w-5xl lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:pb-0'
+			class="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {quizHasPassage
+				? 'lg:max-w-5xl'
+				: ''} {activePassage
+				? 'lg:grid lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:pb-0'
 				: ''}"
 		>
 			{#if activePassage}
@@ -294,17 +312,14 @@
 					type="button"
 					aria-expanded={passageOpen}
 					onclick={() => (passageOpen = !passageOpen)}
-					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden {onPassageScreen
-						? 'hidden'
-						: ''}"
+					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
 				>
 					{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
 				</button>
 				{#key passageEntryIndex}
 					<aside
 						dir="ltr"
-						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen &&
-						!onPassageScreen
+						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen
 							? ''
 							: 'hidden'} lg:col-start-2 lg:row-start-1 lg:mb-6 lg:block lg:max-h-none lg:min-h-0"
 					>
@@ -326,21 +341,9 @@
 						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 					{/if}
 				{/if}
-				{#if onPassageScreen}
-					<p
-						class="hidden rounded-2xl bg-accent-soft p-4 text-sm leading-relaxed font-semibold text-ink/80 lg:block"
-					>
-						{i18n.dict.quiz.passageReadHint}
-					</p>
-				{/if}
 				{#if currentEntry && ScreenComponent}
 					{#key entryIndex}
-						<!-- The passage screen's own text is the pinned panel on lg+, so only
-						     phones render it here (kept mounted for primaryAction). -->
-						<div
-							class={onPassageScreen ? 'lg:hidden' : ''}
-							in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}
-						>
+						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
 							<ScreenComponent
 								screen={currentEntry.screen}
 								onAdvance={advance}
@@ -355,7 +358,8 @@
 		</main>
 
 		<div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">
-			<div class="mx-auto max-w-lg">
+			<!-- Lines up under the question column, wherever the passage is. -->
+			<div class="mx-auto max-w-lg {quizHasPassage ? 'lg:max-w-5xl lg:*:w-[calc(50%-1rem)]' : ''}">
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
 					{footerLabel}
 				</Button>

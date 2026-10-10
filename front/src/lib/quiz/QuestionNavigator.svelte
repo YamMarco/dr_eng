@@ -8,6 +8,7 @@
 		onJump,
 		style = 'numbers',
 		passageIndices,
+		hiddenIndices,
 		partBreaks
 	}: {
 		total: number;
@@ -16,9 +17,16 @@
 		onJump: (index: number) => void;
 		style?: 'dots' | 'numbers';
 		passageIndices?: Set<number>;
+		/** Indices left out of the row; the rest are renumbered from 1. */
+		hiddenIndices?: Set<number>;
 		/** Indices where a new part starts (a small divider is drawn just before them). */
 		partBreaks?: Set<number>;
 	} = $props();
+
+	let labels = $derived.by(() => {
+		let n = 0;
+		return Array.from({ length: total }, (_, i) => (hiddenIndices?.has(i) ? 0 : ++n));
+	});
 
 	let buttonEls: (HTMLButtonElement | undefined)[] = [];
 
@@ -45,36 +53,38 @@
 		{@const isAnswered = answered.has(i)}
 		{@const isCurrent = i === currentIndex}
 		{@const isPassage = passageIndices?.has(i)}
-		{#if i > 0 && partBreaks?.has(i)}
-			<span class="mx-0.5 h-5 w-px shrink-0 bg-line" aria-hidden="true"></span>
-		{/if}
-		<button
-			bind:this={buttonEls[i]}
-			type="button"
-			aria-current={isCurrent ? 'step' : undefined}
-			aria-label={isPassage ? `קטע קריאה, שאלה ${i + 1}` : `שאלה ${i + 1}`}
-			onclick={() => onJump(i)}
-			class="flex h-11 min-w-11 shrink-0 items-center justify-center transition active:scale-90"
-		>
-			<!-- The button is the 44px tap target; the chip keeps its compact look. -->
-			<span
-				class="flex h-8 min-w-8 items-center justify-center gap-1 rounded-full border-2 px-2 text-sm font-bold {isCurrent
-					? 'border-brand'
-					: isAnswered
-						? 'border-transparent'
-						: 'border-line'} {isAnswered
-					? 'bg-brand-soft text-brand-dark'
-					: 'bg-surface text-muted'}"
+		{#if !hiddenIndices?.has(i)}
+			{#if labels[i] > 1 && (partBreaks?.has(i) || (hiddenIndices?.has(i - 1) && partBreaks?.has(i - 1)))}
+				<span class="mx-0.5 h-5 w-px shrink-0 bg-line" aria-hidden="true"></span>
+			{/if}
+			<button
+				bind:this={buttonEls[i]}
+				type="button"
+				aria-current={isCurrent ? 'step' : undefined}
+				aria-label={isPassage ? `קטע קריאה, שאלה ${labels[i]}` : `שאלה ${labels[i]}`}
+				onclick={() => onJump(i)}
+				class="flex h-11 min-w-11 shrink-0 items-center justify-center transition active:scale-90"
 			>
-				{#if style === 'dots'}
-					<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
-				{:else}
-					{i + 1}
-				{/if}
-				{#if isPassage}
-					<span class="font-semibold">קטע קריאה</span>
-				{/if}
-			</span>
-		</button>
+				<!-- The button is the 44px tap target; the chip keeps its compact look. -->
+				<span
+					class="flex h-8 min-w-8 items-center justify-center gap-1 rounded-full border-2 px-2 text-sm font-bold {isCurrent
+						? 'border-brand'
+						: isAnswered
+							? 'border-transparent'
+							: 'border-line'} {isAnswered
+						? 'bg-brand-soft text-brand-dark'
+						: 'bg-surface text-muted'}"
+				>
+					{#if style === 'dots'}
+						<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>
+					{:else}
+						{labels[i]}
+					{/if}
+					{#if isPassage}
+						<span class="font-semibold">קטע קריאה</span>
+					{/if}
+				</span>
+			</button>
+		{/if}
 	{/each}
 </div>

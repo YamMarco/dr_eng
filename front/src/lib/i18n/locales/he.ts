@@ -59,7 +59,6 @@ export const he = {
 		correctAnswerLabel: 'תשובה נכונה',
 		showPassage: 'הצגת הקטע',
 		hidePassage: 'הסתרת הקטע',
-		passageReadHint: 'קראו את הקטע. הוא יישאר כאן לצד השאלות, כך שתוכלו לחזור אליו בכל רגע.',
 		examModeNote: 'מצב מבחן: אין משוב והסברים עד ההגשה, בדיוק כמו בבגרות.'
 	},
 	quizzes: {
