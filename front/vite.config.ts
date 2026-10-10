@@ -10,6 +10,9 @@ import { defineConfig } from 'vite';
 process.env.EDITOR ??= 'code';
 
 export default defineConfig({
+	// Pre-bundle up front: deps discovered mid-load trigger a re-optimize that leaves open tabs
+	// holding stale hashes (504 Outdated Optimize Dep -> 500 page).
+	optimizeDeps: { include: ['@lucide/svelte', 'zod', 'nspell'] },
 	plugins: [
 		tailwindcss(),
 		sveltekit({
