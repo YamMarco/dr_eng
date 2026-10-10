@@ -36,28 +36,28 @@ export const c3Lessons: LessonNode[] = [
               prompt:
                 '### \n{d:rtl}### בואו נעבור על עוד דוגמה:\n\n{d:rtl}### 🟢 שלב 1 - מבינים את השאלה\n{p:text}**Do you think teenagers should have part-time jobs?**\n{d:rtl}לא מספיק להבין רק:\n{d:rtl}**teenagers** = בני נוער\n{d:rtl}**jobs** = עבודות\n{d:rtl}צריך להבין גם:\n{d:rtl}**part-time jobs** = עבודות במשרה חלקית\n{d:rtl}כלומר, השאלה היא:\n{d:rtl}**האם לדעתכם בני נוער צריכים לעבוד במשרה חלקית?**\n{d:rtl}### 🟡 שלב 2 - לא מסתבכים\n{d:rtl}אל תבזבזו זמן על:\n{d:rtl}**"אני בעד או נגד?"**\n{d:rtl}אם אין לכם סיבה מיוחדת לבחור אחרת - לכו על **YES**.\n{d:rtl}### 🟢 שלב 3 - כותבים פתיח ברור\n{p:text}✅ **I think teenagers should have part-time jobs.**\n{d:rtl}קצר. ברור. נכון.\n{d:rtl}### ⭐ הכלל שלנו\n{d:rtl}**מבינים את כל השאלה ← בוחרים YES ← כותבים פתיח ← ממשיכים.**',
               options: [
-                "Part-time jobs can be good or bad depending on the teenager.",
+                "I think part-time jobs are an interesting topic for teenagers.",
                 "I think teenagers should have part-time jobs.",
-                "Many teenagers in Israel have jobs after school.",
-                "Part-time jobs are a common thing in many countries.",
+                "Some teenagers should have part-time jobs and some should not.",
+                "Teenagers with part-time jobs learn a lot about money.",
               ],
               correctIndex: 1,
               explanation:
-                'רק "I think teenagers should..." אומר YES ברור. שאר האפשרויות מתארות, לא מחליטות.',
+                'רק "I think teenagers should have part-time jobs." אומר YES ברור. "an interesting topic" מתחיל ב-I think אבל לא אומר בעד או נגד. "some should and some should not" לא מכריע. "learn about money" זו סיבה - בלי עמדה לפניה.',
             },
             {
               type: "mcq",
               prompt:
                 '"Do you think schools should start later?" - מה נכתב כשחושבים NO?',
               options: [
-                "School hours have advantages and disadvantages.",
+                "I think schools should start later.",
                 "I do not think schools should start later.",
-                "Some students prefer to start early.",
-                "Starting school later is an interesting idea.",
+                "I do not know if schools should start later.",
+                "I think starting later is not so bad.",
               ],
               correctIndex: 1,
               explanation:
-                '"I do not think" = NO ברור. YES ו-NO שניהם מקבלים אותו ציון - חשוב רק שזה ברור.',
+                '"I do not think... should" = NO ברור. "I think schools should start later" זה YES. "I do not know" ו-"not so bad" לא מכריעים. YES ו-NO מקבלים אותו ציון - חשוב רק שזה ברור.',
             },
             {
               type: "mark-all",
@@ -75,28 +75,28 @@ export const c3Lessons: LessonNode[] = [
               prompt:
                 '"Do you think students should wear school uniforms?" - איזה פתיח מבטא עמדה ברורה?',
               options: [
-                "School uniforms are common in many countries.",
+                "I think about school uniforms every morning.",
                 "I think students should wear school uniforms.",
-                "Uniforms can be comfortable or uncomfortable depending on the fabric.",
-                "Some schools already require uniforms.",
+                "Uniforms are good for some students but not for others.",
+                "I think school uniforms are a common idea.",
               ],
               correctIndex: 1,
               explanation:
-                'רק "I think students should..." היא עמדה ברורה. שאר האפשרויות מתארות עובדות או תלויות בגורם חיצוני.',
+                '"I think about uniforms" ו-"I think uniforms are a common idea" מתחילים ב-I think, אבל לא עונים על should. עמדה = I think + should / should not.',
             },
             {
               type: "mcq",
               prompt:
                 '"Do you think homework should be given every weekend?" - מה נכתב כשחושבים NO?',
               options: [
-                "Homework has both advantages and disadvantages.",
+                "I think homework should be given every weekend.",
                 "I do not think homework should be given every weekend.",
-                "Some teachers give homework on weekends.",
-                "Giving homework every weekend is a common policy.",
+                "I do not think about homework on weekends.",
+                "Homework on weekends is not so popular.",
               ],
               correctIndex: 1,
               explanation:
-                '"I do not think" = NO ברור. שאר האפשרויות מתארות או נמנעות מהכרעה.',
+                '"I do not think about homework" נשמע כמו NO, אבל הוא מספר מה אתם עושים בסופ"ש - לא עונה על השאלה. הראשון הוא YES.',
             },
             {
               type: "mark-all",
@@ -769,12 +769,12 @@ export const c3Lessons: LessonNode[] = [
               options: [
                 "In conclusion, volunteering is good because it teaches skills and also because it helps the community and in addition it is meaningful.",
                 "In conclusion, I believe that volunteering is one of the most valuable experiences a teenager can have.",
-                "In conclusion, for example, students who volunteer are happier.",
-                "In conclusion, do you think students should volunteer?",
+                "In conclusion, volunteering also helps to protect the environment.",
+                "In conclusion, volunteering is important.",
               ],
               correctIndex: 1,
               explanation:
-                'משפט אחד, רעיון אחד, סוגר בצורה נקייה. המשפט הארוך עם "and also... and in addition" מחזיר כל מה שנאמר.',
+                'משפט אחד שחוזר על העמדה וסוגר. "protect the environment" זה רעיון חדש - אסור בסיום. "volunteering is important" כללי מדי. המשפט הארוך מחזיר את כל מה שנאמר.',
             },
             {
               type: "mcq",
@@ -1312,14 +1312,14 @@ export const c3Lessons: LessonNode[] = [
               prompt:
                 '"Do you think all high school students should do volunteer work?" - מה חייב להיות במשפט הראשון?',
               options: [
-                "Volunteer work is an important part of modern society.",
+                "Volunteer work teaches students many useful things.",
                 "I think all students should / should not do volunteer work.",
-                "Many students around the world volunteer every year.",
-                "In conclusion, volunteering is a valuable experience.",
+                "I think volunteer work is a very interesting topic.",
+                "In my opinion, many students like to volunteer.",
               ],
               correctIndex: 1,
               explanation:
-                'תמיד מתחילים עם "I think... YES" או "I do not think... NO". בלי הדעה שלכם - אין תוכן, ותוכן שווה 10 נקודות.',
+                'שני משפטים פותחים ב-I think / In my opinion, אבל רק אחד עונה על should. "interesting topic" ו-"many students like" הם דעה על משהו אחר. בלי עמדה על השאלה - התוכן לא שלם.',
             },
             {
               type: "mcq",
@@ -1537,14 +1537,14 @@ export const c3Lessons: LessonNode[] = [
               prompt:
                 '"What do you think is the best way to spend a vacation?" - מה חייב להיות במשפט הראשון?',
               options: [
-                "תיאור של כל האפשרויות שקיימות",
+                "שתי אפשרויות שאתם אוהבים, עם סיבה לכל אחת",
                 "הבחירה שלכם + סיבה אחת",
-                "משפט סיכום",
-                "שאלה חוזרת",
+                "הבחירה שלכם בלבד - את הסיבה שומרים לסוף",
+                "הסבר למה חופשה חשובה לכולם",
               ],
               correctIndex: 1,
               explanation:
-                '"What do you think?" = בחרו ספציפית. "In my opinion, the best way is traveling because..." - בחירה + because = פתיח מנצח.',
+                'What do you think is the best...? = דבר אחד. שתי אפשרויות = לא בחרתם. סיבה בסוף = הבודק מחכה לה. חשיבות החופשה לא עונה על "הדרך הכי טובה".',
             },
             {
               type: "mcq",
@@ -1714,13 +1714,13 @@ export const c3Lessons: LessonNode[] = [
               prompt: "מה מבדיל הצעה טובה מתיאור בעיה?",
               options: [
                 'הצעה = "should / could + פעולה ספציפית". תיאור = "is / are + מצב קיים"',
-                "הצעה חייבת להיות ארוכה יותר",
-                "אין הבדל, שתיהם מקבלים ציון מלא",
-                "תיאור עדיף כי הוא מסביר את הרקע",
+                "הצעה = משפט שמתחיל ב-I think. תיאור = משפט בלי I think",
+                "הצעה = משפט עם because. תיאור = משפט בלי because",
+                "הצעה = משפט עם מספר. תיאור = משפט בלי מספר",
               ],
               correctIndex: 0,
               explanation:
-                '"Schools are noisy" = תיאור. "Schools should have quiet zones" = הצעה. המילים should / could הן הסימן.',
+                '"I think schools are noisy" מתחיל ב-I think - ועדיין תיאור. "Students are tired because lessons are long" יש because - ועדיין תיאור. מה שהופך משפט להצעה: should / could + מה לעשות.',
             },
             {
               type: "mcq",
@@ -1728,12 +1728,12 @@ export const c3Lessons: LessonNode[] = [
               options: [
                 "Schools should be better and more interesting for students.",
                 "Schools should have a 20-minute break after every two lessons because students lose focus without rest.",
-                "There are many problems in schools today that need to be solved.",
-                "In conclusion, schools need to change.",
+                "Schools should have more breaks.",
+                "Students are tired because the lessons are too long.",
               ],
               correctIndex: 1,
               explanation:
-                '"a 20-minute break after every two lessons because..." = ספציפי + סיבה. "better and more interesting" = כללי מדי.',
+                '"better and more interesting" כללי מדי. "more breaks" הצעה - אבל בלי פרט ובלי סיבה. "Students are tired" זו הבעיה, לא ההצעה. רק אחת: should + פרט + because.',
             },
             {
               type: "writing-task",
@@ -1889,28 +1889,28 @@ export const c3Lessons: LessonNode[] = [
               prompt:
                 '"At what age should children be allowed to have their own cellphones?" - מה חייב להיות במשפט הראשון?',
               options: [
-                "תיאור של הבעיות עם סלולריים",
+                "טווח גילים: between 10 and 14",
                 "גיל ספציפי + because",
                 '"It depends on the child"',
-                "הצגת שני הצדדים",
+                "דעה על טלפונים: phones are dangerous for children",
               ],
               correctIndex: 1,
               explanation:
-                '"At what age?" = תנו מספר. "I think children should get a phone at age 12 because..." - גיל + סיבה = פתיח מנצח.',
+                'At what age? = מספר אחד. טווח ו-"It depends" לא בוחרים. דעה על טלפונים לא עונה על "באיזה גיל".',
             },
             {
               type: "mcq",
               prompt:
                 'איזה פתיח עונה ישירות על "At what age should children have phones?"',
               options: [
-                "Cellphones are very popular among young people today.",
+                "I think phones are dangerous for young children.",
                 "I think children should get their first phone at age 13 because they are old enough to use it.",
-                "There are advantages and disadvantages to children having phones.",
+                "I think children should get their first phone between age 10 and 14.",
                 "In conclusion, 13 is the right age for a cellphone.",
               ],
               correctIndex: 1,
               explanation:
-                "גיל ספציפי (13) + because + סיבה. ישיר, ברור, עונה על השאלה.",
+                'גיל אחד (13) + because. "dangerous" לא נותן גיל. "between 10 and 14" לא בוחר. In conclusion בא בסוף, לא בפתיחה.',
             },
             {
               type: "writing-task",
