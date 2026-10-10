@@ -56,9 +56,6 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 - Impact: they appear in micro-skill drills and topic exam rounds, but no topic lesson teaches their opening line.
 - Fix: only if students stumble on the opening line. The stance-plus-reasons frame is the same.
 
-**#7 subject-verb free task is "any topic"** - subject-verb optional round - S
-- Fix: give it a MIKUD topic like the other tasks.
-
 ## Ideas for later (TBD, owner's notes)
 
 **A. Submit, then fix together - don't rewrite** (owner, 2026-10-10)
@@ -90,7 +87,7 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 3. #9, #11 (both S)
 4. C.1 + C.3 (two new nodes)
 5. A, B, D after the play-test shows where students stall
-6. #4, #5, #7
+6. #4, #5
 
 ## History
 
@@ -117,6 +114,8 @@ All 10 items of the original audit, plus related QC report and roadmap items. On
 | round size | rounds of about 5 minutes for a weak student, optional practice rounds at the end, supports fade across the topic lessons | 9ae27cf |
 | #8 For instance / As a result untaught | preface card + summary line in for-example, an As a result fill-in (round 1), a For instance choice (round 2) | e2b2ac2 |
 | word counter | `wordCounter` on line-mode tasks of 3+ sentences (10 tasks); paragraph mode already had one | 2b2ca5c |
+| #3 follow-up: snowball enforced | `requiredMoves` on 28 tasks: a task fails if an earlier move (stance, because, In addition...) is missing; synonyms count | 84dbdbf |
+| #3 follow-up: frame kept warm (and #7) | subject-verb round 3 = required 4-sentence frame on MIKUD topic 18, checked for subject + verb; frame written 3 times before the first paragraph | see git log |
 
 Every model answer passes the app's own checks (lint, word bank, sentence count, length).
 

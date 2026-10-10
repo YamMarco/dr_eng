@@ -1096,7 +1096,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["in-conclusion"],
     position: { x: -70, y: 2840 },
     big: false,
-    requiredRounds: 2,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -1260,40 +1260,43 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "תרגול נוסף (רשות) | כותבים 3 משפטים\n\nתיקנתם את שלושת המשפטים? כנראה זה כבר יושב. רוצים לבדוק את עצמכם בכתיבה חופשית - הסיבוב הזה בשבילכם.",
+              text: 'סיבוב 3 | השלד, והפעם בודקים subject + verb בכל משפט\n\nכותבים את 4 המשפטים של השלד, כמו בשיעור In conclusion. לפני שלוחצים "בדיקה" - עוברים משפט-משפט: מי עושה? מה עושים?',
             },
             {
               type: "writing-task",
               prompt:
-                "כתבו 3 משפטים על נושא שתבחרו.\n\nלפני שלחצו שלח - בדקו כל משפט:\n✅ יש subject?\n✅ יש verb?\n\n3 משפטים. כל אחד שלם.",
+                '"Today there are cameras in most public places. What do you think about this? Give reasons to explain your opinion."\n\n✏️ I think... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...\n\nבכל משפט: subject + verb. ו-Because לא פותח משפט לבד.',
               wordBank: [
                 "I think",
-                "I believe",
-                "in my opinion",
+                "I do not think",
                 "because",
-                "in addition",
                 "for example",
+                "in addition",
                 "in conclusion",
-                "should",
-                "students / תלמידים",
-                "teenagers / בני נוער",
-                "learn / לומדים",
-                "develop / מפתחים",
-                "is / הוא-היא",
-                "are / הם",
-                "can / יכולים",
-                "help / עוזרים",
+                "cameras / מצלמות",
+                "safe / בטוח",
+                "police / משטרה",
+                "privacy / פרטיות",
+                "criminals / פושעים",
               ],
-              minSentences: 3,
-              minWordsUsed: 3,
-              modelAnswer:
-                "I think students should learn to cook. Cooking is a useful skill for life. Many teenagers can make a simple meal at home.",
-              checklist: [
-                "בכל משפט יש subject - מי עושה?",
-                "בכל משפט יש verb - מה עושים? (is / are / learn / help...)",
-                "אין משפט שמתחיל ב-Because בלי חלק ראשון",
-              ],
+              minSentences: 4,
+              minWordsUsed: 4,
               wordCounter: true,
+              requiredMoves: [
+                "stance",
+                "because",
+                "for-example",
+                "in-addition",
+                "in-conclusion",
+              ],
+              modelAnswer:
+                "I think cameras in public places are useful because they help the police catch criminals. For example, a camera at a bus station can show who stole a bag. In addition, people feel safer when they walk home at night. In conclusion, I believe cameras make our cities safer.",
+              checklist: [
+                "בכל אחד מ-4 המשפטים יש subject (מי?) ו-verb (מה עושים?)",
+                "אין משפט שמתחיל ב-Because ונגמר בלי חלק ראשון",
+                "יש עמדה, because, For example, In addition ו-In conclusion",
+                "הסיבה השנייה שונה מהראשונה",
+              ],
             },
           ],
         },

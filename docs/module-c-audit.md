@@ -66,7 +66,7 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | in-addition | Repeating the same reason | Add a second, different reason | 8.5 | 3 reps, each repeats stance + because (snowball). Unplayed |
 | for-example | Claims with no detail | Add a specific example | 8.5 | 3 reps + upgrade-the-example + reading-to-writing (Greenville facts). Unplayed |
 | in-conclusion | No ending, or new ideas in it | Close with one sentence restating the stance | 8.5 | Writes the full 4-sentence skeleton twice; connector cloze + sentence order. Unplayed |
-| subject-verb | Language Use points lost to fragments | Check every sentence for subject + verb | 8 | Fixes 3 broken sentences before free writing; find-the-error + connector review. Unplayed |
+| subject-verb | Language Use points lost to fragments | Check every sentence for subject + verb | 8.5 | Fixes 3 broken sentences, then a required 4-sentence frame (MIKUD cameras topic) checked for subject + verb. Unplayed |
 | word-count | Penalties for too short or too long | Count and adjust to 70-90 words | 8.5 | Penalty table verified (RubricsCD2020); no penalty above 90; 6 x 13 = 80 frame; extend a 49-word draft in a paragraph box. Unplayed |
 | topic-volunteer | Not answering the question type | Build a full paragraph for a "Do you think" question | 8.5 | Skeleton -> 6-sentence paragraph (one box, counter) -> unseen MIKUD topic, no bank. Unplayed |
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8.5 | Same 3-step shape; round 3 "which language". Unplayed |
