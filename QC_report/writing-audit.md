@@ -27,17 +27,13 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 
 **#1 Not played by a student** - all of c-3 - people time
 - Impact: every grade is a judgement from reading the material.
-- Fix: 2-3 students (weak, average, strong), 20-30 minutes each, starting at yes-no. Watch for: time per micro-skill node (it now has 3-4 writing tasks), whether the checklist gets ticked honestly, and whether the paragraph box's length line confuses anyone.
+- Fix: 2-3 students (weak, average, strong), 20-30 minutes each, starting at yes-no. Watch for: time per micro-skill node (rounds are sized for about 5 minutes; check that against real students), whether the checklist gets ticked honestly, and whether the paragraph box's length line confuses anyone.
 
 **#2 The module report's exam facts disagree with the handbook** - `QC_report/module-c-report.md` bad point 8, roadmap D1 - S
 - Impact: the report says the Bagrut text is about 340 words and the exam lasts 1 hour 45 minutes, and plans to lengthen the practice exams to that. For the 3-point Module C the handbook says up to 300 words and 1 hour 30 minutes, so the practice exams' 90 minutes are already right.
 - Fix: correct bad point 8 and plan step 8 before anyone lengthens the exams. (Not changed here: outside Part C.)
 
 ### Medium
-
-**#3 No timer on writing** - FIXED 2026-10-10: `timeLimitMinutes` countdown on topic round 3 (20 min) - S-M
-- Impact: "20 minutes, as in the exam" is only a sentence; `writing-task` has no stopwatch.
-- Fix: the round-level timer from roadmap phase 3, when it gets built. Don't build a writing-only timer.
 
 **#4 Organization deductions are not taught** - topic lessons - S
 - Impact: the rubric takes 1-2 points for list form and for an irrelevant "Hi, my name is... I am 17" opener. Students write these.
@@ -46,21 +42,59 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 **#5 Reading-to-writing only in for-example** - because, in-addition, in-conclusion - S
 - Fix: one screen each that reuses a Part B passage, like the Greenville task in for-example.
 
+**#8 For instance / As a result are used but never taught** - for-example, word-count - S
+- Impact: the 6-sentence frame (word-count, topic lessons) asks for "For instance" and "As a result". A weak student meets both for the first time inside a template and either copies them blindly or freezes.
+- Fix: in for-example, one preface line + one fill-in: "For instance = another For example (use it for the second reason, so you don't repeat For example). As a result = what happens because of this." Example item: *Teenagers who work learn the value of money. ___, they stop asking their parents for money for small things.* (As a result / For instance / In addition).
+
+**#9 word-count teaches the rules but never counting** - word-count - S
+- Impact: the student learns that 55 words = -3 but never counts a real text, so in the exam they don't know whether they are at 62 or 78.
+- Fix: one MCQ with a short paragraph: "How many words? 58 / 68 / 78", then "This text has 62 words. Which sentence would you add?" (a For instance detail vs. "It is very very important." vs. copying the question).
+
+**#10 Fragments are only caught in subject-verb** - lint, all writing tasks - S
+- Impact: "Because it helps people." (no main clause) appears from the because lesson onward; the automatic check doesn't flag it, so the habit forms before subject-verb.
+- Fix: the lint flags a sentence that starts with "Because" and has no comma-separated main clause, or has no verb from a short list (is / are / was / have / can / should / any word ending in -s / -ed). Message: "משפט N: Because לבד הוא חצי משפט. חברו אותו למשפט הקודם: I think X because..."
+
+**#11 Self-review depends on honesty** - checklist after every writing task - S
+- Impact: a weak student ticks every box. The checklist teaches only if the student can see a gap.
+- Fix: "fix the friend" in each topic lesson's round 1: a student paragraph with one planted fault (vague reason, a repeated second reason, an example with no detail, a new idea in the conclusion). MCQ "What is the one problem?" then, optionally, rewrite that sentence. Example: *I think every pupil must go on the school trip because it is fun. For example, we see nature. In addition, the trip is enjoyable. In conclusion, trips are good.* -> the second reason repeats the first (fun = enjoyable).
+
 ### Low
 
 **#6 Six of the 19 MIKUD question shapes have no lesson** - What do you prefer / Do you agree / Which... - M
-- Impact: they appear in micro-skill drills and topic round 3, but no topic lesson teaches their opening line.
+- Impact: they appear in micro-skill drills and topic exam rounds, but no topic lesson teaches their opening line.
 - Fix: only if students stumble on the opening line. The stance-plus-reasons frame is the same.
 
-**#7 subject-verb free task is "any topic"** - subject-verb round 2 - S
+**#7 subject-verb free task is "any topic"** - subject-verb optional round - S
 - Fix: give it a MIKUD topic like the other tasks.
+
+## Ideas for later (TBD, owner's notes)
+
+**A. Submit, then fix together - don't rewrite** (owner, 2026-10-10)
+- Today a failed writing task means replaying the round and writing everything again. Instead: after the check, the student keeps their text and fixes only the flagged sentences in place (e.g. sentence 2 is vague: edit just that line), then checks again. The second check is what counts.
+- Why: revising is the real exam skill, and it removes the main burn-out risk (a 15-minute paragraph failing on one lint flag).
+- Open questions: does a revised pass count as fully correct? How many revisions? Do the model answer and checklist show before or after the revision?
+
+**B. Planning step before the paragraph** (owner, 2026-10-10)
+- One unscored screen before each 70-90 paragraph: write the stance + reason 1 + reason 2 as keywords (Hebrew allowed), 1 minute. Then write.
+- Why: weak students start writing without a second reason and stall in the middle. In the exam, 1-2 minutes of planning saves time.
+- Build: a `self-check` with three short boxes, or a `writing-task` in line mode with `autoCheck: false`.
+
+**C. Vocabulary and Language Use (16 of 30 points)**
+- Today only the vague-word lint and subject-verb cover them. Proposed, cheapest first:
+  1. **Upgrade words** (Vocabulary, 8 points): the rubric rewards correct chunks and collocations and deducts up to 3 for repeating words like *very*. Drill: replace the weak word: *good -> useful / healthy / helpful*, *very important -> essential*, *do a mistake -> make a mistake*. MCQ + one rewrite per item. Reuse Part A words (responsibility, community, experience) so vocabulary from Part A shows up in writing.
+  2. **Collocation pairs** the exam loves: make a decision, spend time, take part in, have fun, pay attention. `match-pairs` + `cloze-pick`.
+  3. **Error clinic** (Language Use, 8 points; roadmap 6.6): the top Israeli-student errors, each as find-the-error + fix: *people is* -> *people are*; *more better* -> *better*; *I am agree* -> *I agree*; *he go* -> *he goes*; *in the next year* -> *next year*; *a informations* -> *information*. The `checks/language.ts` rules already detect some of these, so the drill and the automatic feedback would use the same names.
+  4. **Lint additions**: flag *very* used more than twice, and the slang the rubric names (*gonna, wanna, u, 4U, BTW*).
+- Where: one node "words that score" after in-conclusion, and one "error clinic" node after subject-verb, each 3 rounds of about 5 minutes, with the last round optional.
 
 ## Suggested order
 
 1. #2 (S, protects the exams from a wrong fix)
 2. #1 play-test, then regrade
-3. #4, #5, #7 in one pass
-4. #3 with the roadmap timer
+3. #8, #9, #10, #11 (all S)
+4. C.1 + C.3 (two new nodes)
+5. A and B after the play-test shows where students stall
+6. #4, #5, #7
 
 ## History
 
@@ -83,6 +117,8 @@ All 10 items of the original audit, plus related QC report and roadmap items. On
 | #9 exam rounds weren't exam conditions | topic round 3 = an unseen MIKUD topic of the same type, no word bank, 70-90 words | c85d9e1 |
 | #7 easy distractors | 11 MCQs in yes-no, in-conclusion and topic round 1; each wrong option fails on one point | 6d18cb7 |
 | roadmap 6.5 | reading-to-writing in for-example: Greenville facts as the example, in your own words | 0dd264a |
+| #3 no timer on writing | `timeLimitMinutes` countdown (exam timer pill) on topic exam rounds, 20 min; never fails the task | 0c7c1ab |
+| round size | rounds of about 5 minutes for a weak student, optional practice rounds at the end, supports fade across the topic lessons | 9ae27cf |
 
 Every model answer passes the app's own checks (lint, word bank, sentence count, length).
 
