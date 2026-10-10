@@ -39,16 +39,25 @@ function sharesRun(sentence: string, reference: string[]): boolean {
 	return false;
 }
 
-/** Word count the way the Ministry counts it: a copied instruction sentence
- *  and substantial copied passage sentences do not count. (A title or letter
- *  frame cannot be told apart from the essay here, so they are not removed.) */
+/** The whole sentence appears word for word in the reference (a copied question). */
+function isCopiedWhole(sentence: string, reference: string[]): boolean {
+	const words = normWords(sentence);
+	return (
+		words.length >= COPY_RUN && (' ' + reference.join(' ') + ' ').includes(' ' + words.join(' ') + ' ')
+	);
+}
+
+/** Word count the way the Ministry counts it: an instruction sentence copied
+ *  word for word and substantial copied passage sentences do not count. Using
+ *  the question inside your own sentence ("I think all pupils should...
+ *  because...") does count. (A title or letter frame cannot be told apart from
+ *  the essay here, so they are not removed.) */
 export function countValidWords(text: string, opts: CheckOptions = {}): number {
-	const reference: string[] = [];
-	if (opts.prompt) reference.push(...normWords(opts.prompt));
-	if (opts.source) reference.push(...normWords(opts.source));
-	if (!reference.length) return tokens(text).length;
+	const prompt = opts.prompt ? normWords(opts.prompt) : [];
+	const source = opts.source ? normWords(opts.source) : [];
+	if (!prompt.length && !source.length) return tokens(text).length;
 	return sentencesOf(text)
-		.filter((s) => !sharesRun(s, reference))
+		.filter((s) => !isCopiedWhole(s, prompt) && !sharesRun(s, source))
 		.reduce((sum, s) => sum + tokens(s).length, 0);
 }
 
