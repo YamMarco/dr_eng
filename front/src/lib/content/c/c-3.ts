@@ -243,6 +243,35 @@ export const c3Lessons: LessonNode[] = [
               text: "I think children should get a phone at age 13 because they start travelling to school alone.",
               correctIndices: [10],
             },
+            {
+              type: "mark-all",
+              instruction: "לחצו על המילה שהופכת את הסיבה לריקה.",
+              text: "I think teenagers should have a job because it is good.",
+              correctIndices: [10],
+            },
+            {
+              type: "writing-task",
+              prompt:
+                'משדרגים משפט חלש:\n\n{p:text}❌ I think students should study English because it is important.\n\n"important" לא מסביר כלום. כתבו את המשפט מחדש עם סיבה ספציפית: מה אנגלית נותנת? איפה משתמשים בה?',
+              wordBank: [
+                "I think",
+                "because",
+                "should",
+                "English",
+                "internet / אינטרנט",
+                "travel / לטייל",
+                "job / עבודה",
+              ],
+              minSentences: 1,
+              minWordsUsed: 2,
+              modelAnswer:
+                "I think students should study English because they need it to understand most of the internet.",
+              checklist: [
+                "המשפט עדיין פותח ב-I think",
+                "אין important / good / nice אחרי because",
+                'הסיבה עונה על "למה?" - אפשר לדמיין אותה',
+              ],
+            },
           ],
         },
         {
@@ -576,6 +605,27 @@ export const c3Lessons: LessonNode[] = [
               text: "Traveling teaches you new things. For example, you discover different food and music.",
               correctIndices: [5],
             },
+            {
+              type: "writing-task",
+              prompt:
+                "משדרגים דוגמה חלשה:\n\n{p:text}I think students should volunteer because they learn new skills.\n{p:text}❌ For example, it is a good experience.\n\nכתבו רק את משפט ה-For example מחדש, עם פרט אמיתי: איפה? מה בדיוק הם עושים? מה לומדים?",
+              wordBank: [
+                "for example",
+                "hospital / בית חולים",
+                "food bank / בנק מזון",
+                "team / צוות",
+                "children / ילדים",
+              ],
+              minSentences: 1,
+              minWordsUsed: 1,
+              modelAnswer:
+                "For example, students who help at a food bank learn to organize boxes and work as a team.",
+              checklist: [
+                "המשפט מתחיל ב-For example",
+                "יש מקום או מקרה אמיתי (בית חולים, בנק מזון, גן ילדים...)",
+                'הדוגמה מוכיחה את הסיבה - "new skills"',
+              ],
+            },
           ],
         },
         {
@@ -746,6 +796,66 @@ export const c3Lessons: LessonNode[] = [
               text: "In conclusion, I think that age 13 is the right age for a first cellphone.",
               correctIndices: [0],
             },
+            {
+              type: "passage-mcq",
+              text: "I think every pupil should learn to swim (1) ___ it can save lives. (2) ___, a child who falls into a pool knows how to reach the edge. (3) ___, swimming keeps the body strong and healthy. (4) ___, I believe swimming lessons should be part of every school.",
+              questions: [
+                {
+                  prompt: "השלימו את המחברים - מה נכנס ברווח (1)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מה נכנס ברווח (2)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "מה נכנס ברווח (3)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "מה נכנס ברווח (4)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 3,
+                },
+              ],
+            },
+            {
+              type: "mcq",
+              prompt:
+                "באיזה סדר המשפטים יוצרים חיבור נכון?\n\n{p:text}A. In addition, a dog makes you go outside every day.\n{p:text}B. I think every family should have a dog because it teaches children responsibility.\n{p:text}C. In conclusion, I believe a dog makes the whole family more active.\n{p:text}D. For example, a child who feeds the dog every morning learns to keep a routine.",
+              options: [
+                "B - D - A - C",
+                "B - A - D - C",
+                "D - B - A - C",
+                "B - D - C - A",
+              ],
+              correctIndex: 0,
+              explanation:
+                "עמדה + because (B), הדוגמה לסיבה הזו (D), סיבה שנייה (A), סיום (C). For example בא מיד אחרי הסיבה שהוא מוכיח, ו-In conclusion תמיד אחרון.",
+            },
           ],
         },
         {
@@ -903,10 +1013,95 @@ export const c3Lessons: LessonNode[] = [
               text: "Students learn important skills when they volunteer in their community.",
               correctIndices: [1],
             },
+            {
+              type: "mark-all",
+              instruction: "מצאו את הטעות: לחצו על המילה המיותרת.",
+              text: "Students they learn new skills when they volunteer.",
+              correctIndices: [1],
+            },
+            {
+              type: "passage-mcq",
+              text: "I think teenagers should have a job after school (1) ___ they learn the value of money. (2) ___, a boy who works in a shop sees how long it takes to earn 100 shekels. (3) ___, a job teaches them to be on time. (4) ___, I believe a part-time job helps teenagers grow up.",
+              questions: [
+                {
+                  prompt: "חזרה על המחברים - מה נכנס ברווח (1)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מה נכנס ברווח (2)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "מה נכנס ברווח (3)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "מה נכנס ברווח (4)?",
+                  options: [
+                    "because",
+                    "For example",
+                    "In addition",
+                    "In conclusion",
+                  ],
+                  correctIndex: 3,
+                },
+              ],
+            },
           ],
         },
         {
           screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | מתקנים משפטים שבורים, ואז כותבים",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Volunteering very important for teenagers.\n\nרמז: חסר verb. מה חסר בין Volunteering ל-very?",
+              acceptedAnswers: [
+                "Volunteering is very important for teenagers.",
+              ],
+              minSentences: 1,
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Students they learn new skills at work.\n\nרמז: יש שני subjects. מחקו אחד.",
+              acceptedAnswers: [
+                "Students learn new skills at work.",
+                "They learn new skills at work.",
+              ],
+              minSentences: 1,
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ My brother work in a shop after school.\n\nרמז: he / my brother = verb עם s.",
+              acceptedAnswers: [
+                "My brother works in a shop after school.",
+                "My brother (worked|is working) in a shop after school.",
+              ],
+              minSentences: 1,
+            },
             {
               type: "writing-task",
               prompt:
@@ -931,6 +1126,13 @@ export const c3Lessons: LessonNode[] = [
               ],
               minSentences: 3,
               minWordsUsed: 3,
+              modelAnswer:
+                "I think students should learn to cook. Cooking is a useful skill for life. Many teenagers can make a simple meal at home.",
+              checklist: [
+                "בכל משפט יש subject - מי עושה?",
+                "בכל משפט יש verb - מה עושים? (is / are / learn / help...)",
+                "אין משפט שמתחיל ב-Because בלי חלק ראשון",
+              ],
             },
           ],
         },
