@@ -487,19 +487,24 @@
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
 				<div
-					class="relative grid gap-4 xl:h-full xl:items-start {settingsCollapsed
-						? 'xl:grid-cols-1'
-						: 'xl:grid-cols-[36.95rem_minmax(0,1fr)]'}"
+					class="@container relative grid gap-4 xl:h-full xl:grid-cols-[36.95rem_minmax(0,1fr)] xl:items-start xl:overflow-x-clip"
 				>
+					<!-- The lip rides the settings' start edge; collapsed, it docks to the canvas's left edge. -->
 					<button
 						type="button"
-						class="absolute top-1/2 -left-6 z-10 hidden h-16 w-5 -translate-y-1/2 items-center justify-center rounded-s-lg border-2 border-e-0 border-line bg-surface text-muted shadow-sm hover:bg-line/60 xl:flex"
+						class="absolute top-1/2 z-10 hidden h-16 w-4 -translate-y-1/2 items-center justify-center rounded-lg border-2 border-line bg-surface text-muted shadow-sm transition-[right] duration-300 ease-out hover:bg-line/60 motion-reduce:transition-none xl:flex {settingsCollapsed
+							? 'xl:right-[calc(100%-1rem)]'
+							: 'xl:right-[36.95rem]'}"
 						aria-label={settingsCollapsed ? 'הצג הגדרות' : 'הסתר הגדרות'}
 						onclick={() => (settingsCollapsed = !settingsCollapsed)}
 					>
 						{settingsCollapsed ? '›' : '‹'}
 					</button>
-					<div class="min-h-0 xl:h-full xl:overflow-y-auto xl:ps-[2.4rem] xl:pe-[2.55rem]">
+					<div
+						class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:ps-[2.4rem] xl:pe-[2.55rem] xl:transition-transform xl:duration-300 xl:ease-out {settingsCollapsed
+							? 'xl:translate-x-[calc(18.475rem-50cqw)]'
+							: ''}"
+					>
 						<div
 							class="mx-auto w-full {device === 'phone'
 								? 'max-w-[390px]'
@@ -510,7 +515,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="{settingsCollapsed ? 'xl:hidden' : ''} min-h-0 xl:h-full xl:overflow-y-auto">
+					<div
+						inert={settingsCollapsed}
+						class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:transition-[transform,opacity] xl:duration-300 xl:ease-out {settingsCollapsed
+							? 'xl:-translate-x-full xl:opacity-0'
+							: ''}"
+					>
 						<div
 							class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
 						>
