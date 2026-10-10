@@ -277,6 +277,12 @@ export const writingTaskSchema = z
 			.describe(
 				'Lesson mode: items the student ticks about their own text after the check (self-review). Not scored.'
 			),
+		wordCounter: z
+			.boolean()
+			.optional()
+			.describe(
+				'Lesson line mode: a live word count under the inputs, for longer tasks (paragraph mode always shows one).'
+			),
 		timeLimitMinutes: z
 			.number()
 			.int()

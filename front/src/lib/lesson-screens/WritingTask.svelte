@@ -66,6 +66,9 @@
 	// is material the student may reuse.
 	const question = untrack(() => screen.prompt.match(/"([^"]+)"/)?.[1] ?? screen.prompt);
 	let paragraphWords = $derived(paragraph ? countValidWords(essayText, { prompt: question }) : 0);
+	let lineWords = $derived(
+		inputLines.reduce((n, line) => n + (line.trim() ? line.trim().split(/\s+/).length : 0), 0)
+	);
 	let lengthOk = $derived(!paragraph || paragraphWords >= (screen.minWords ?? 0));
 
 	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
@@ -250,6 +253,11 @@
 			/>
 		{/each}
 	</div>
+	{#if screen.wordCounter}
+		<p class="mt-2 text-xs font-semibold text-muted tabular" dir="ltr">
+			{i18n.dict.selfCheck.wordCount(lineWords)}
+		</p>
+	{/if}
 	{#if !checked}
 		<HandwritingScanButton onText={fillFromScan} />
 	{/if}

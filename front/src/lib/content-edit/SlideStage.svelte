@@ -807,6 +807,16 @@
 												/>
 												אות ראשונה קטנה = טעות
 											</label>
+											{#if screen.minWords === undefined}
+												<label class="flex items-center gap-2 text-xs text-muted">
+													<input
+														type="checkbox"
+														checked={screen.wordCounter ?? false}
+														onchange={(e) => (screen.wordCounter = e.currentTarget.checked || undefined)}
+													/>
+													מונה מילים מתחת לשורות
+												</label>
+											{/if}
 										</SettingsGroup>
 									{/if}
 									<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
