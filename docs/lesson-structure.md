@@ -211,7 +211,7 @@ Rules:
    - a collocation trap (responsible for, but proud of / afraid of)
    - for passage questions: a real detail from the same text that answers a different question, or a plausible topic word that the text never mentions. Not an absurd one (prices, traffic, weather).
 5. **Use the `explanation` to say why the others fail**, not only why the answer is right. That is where the learning is.
-6. Vary the position of the correct option.
+6. Lessons shuffle `mcq` options on every mount (`Mcq.svelte`; exams keep the authored order). Never refer to an option by its number ("אפשרות 2") in an `explanation`: quote its words.
 
 Before / after (content-2c):
 - Before: "Fruit and vegetables are good for your ___" support / health / window / society.

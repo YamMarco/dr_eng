@@ -43,7 +43,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               explanation:
-                "רק אפשרות 2 אומרת YES ברורות. שאר האפשרויות מתארות, לא מחליטות.",
+                'רק "I think teenagers should..." אומר YES ברור. שאר האפשרויות מתארות, לא מחליטות.',
             },
             {
               type: "mcq",
@@ -83,7 +83,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               explanation:
-                "רק אפשרות 2 פותחת ב-'I think' - זו עמדה ברורה. שאר האפשרויות מתארות עובדות או תלויות בגורם חיצוני.",
+                'רק "I think students should..." היא עמדה ברורה. שאר האפשרויות מתארות עובדות או תלויות בגורם חיצוני.',
             },
             {
               type: "mcq",
@@ -366,7 +366,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 2,
               explanation:
-                'רק אפשרות 3 מביאה רעיון חדש. שאר האפשרויות חוזרות על "responsibility".',
+                'רק "connects students to their community" מביא רעיון חדש. שאר האפשרויות חוזרות על "responsibility".',
             },
             {
               type: "mcq",
@@ -572,7 +572,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               explanation:
-                "משפט אחד, רעיון אחד, סוגר בצורה נקייה. אפשרות 1 ארוכה ומחזירה כל מה שנאמר.",
+                'משפט אחד, רעיון אחד, סוגר בצורה נקייה. המשפט הארוך עם "and also... and in addition" מחזיר כל מה שנאמר.',
             },
             {
               type: "mcq",
@@ -672,7 +672,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 2,
               explanation:
-                '"Students (subject) learn (verb) responsibility" = משפט שלם. אפשרות 1 חסרה "is". אפשרות 2 היא רק חלק ממשפט. אפשרות 4 יש שניים במקום subject אחד.',
+                '"Students (subject) learn (verb) responsibility" = משפט שלם. ב-"Volunteering very important" חסר "is". "Because it helps..." הוא רק חלק ממשפט. ב-"Students they" יש שני subjects במקום אחד.',
             },
             {
               type: "mcq",
@@ -935,7 +935,7 @@ export const c3Lessons: LessonNode[] = [
               ],
               correctIndex: 1,
               explanation:
-                "אפשרות 2 - דעה ברורה + סיבה מיד. זה מה שהמורה רוצה לראות בשורה הראשונה.",
+                '"I think... because it teaches them to care about others" - דעה ברורה + סיבה מיד. זה מה שהמורה רוצה לראות בשורה הראשונה.',
             },
             {
               type: "mcq",

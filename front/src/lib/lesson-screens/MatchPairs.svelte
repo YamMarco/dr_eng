@@ -7,6 +7,7 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import { shuffle } from './shuffle';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -27,7 +28,7 @@
 	} = $props();
 
 	// Right column shows the same pairs in a shuffled order (indices into `pairs`).
-	const rightOrder = untrack(() => shuffle(screen.pairs.map((_, i) => i)));
+	const rightOrder = untrack(() => shuffleNotIdentity(screen.pairs.map((_, i) => i)));
 	type Side = 'left' | 'right';
 	// Revisiting via the quiz navigator can't replay the matching game, so it
 	// just restores the completed state (every pair shown matched) with the
@@ -42,12 +43,8 @@
 	// eslint-disable-next-line no-useless-assignment
 	if (mode === 'quiz') disabled = restoredMistakes === undefined;
 
-	function shuffle(items: number[]): number[] {
-		const a = [...items];
-		for (let i = a.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[a[i], a[j]] = [a[j], a[i]];
-		}
+	function shuffleNotIdentity(items: number[]): number[] {
+		const a = shuffle(items);
 		// Never hand back the authored order — it would be a free answer key.
 		return a.length > 1 && a.every((v, i) => v === i) ? [...a.slice(1), a[0]] : a;
 	}

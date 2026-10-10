@@ -10,6 +10,8 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import { shuffle } from './shuffle';
+	import { untrack } from 'svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -33,6 +35,19 @@
 	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number | undefined) : undefined;
 	let selected = $state<number | null>(restoredAnswer ?? null);
 	let checked = $state(false);
+
+	// Lesson mode shows the options in a fresh order each time, so "the answer
+	// is always the second one" can't be learned. `order[slot]` = the authored
+	// index shown in that slot; `selected` / `correctIndex` stay authored indices.
+	// Quiz mode keeps the authored order (an exam paper is fixed).
+	const identity = (n: number) => Array.from({ length: n }, (_, i) => i);
+	const shuffled = untrack(() =>
+		mode === 'lesson' ? shuffle(identity(screen.options.length)) : identity(screen.options.length)
+	);
+	// The editor's live preview can add or remove options under a mounted screen.
+	let order = $derived(
+		shuffled.length === screen.options.length ? shuffled : identity(screen.options.length)
+	);
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -68,7 +83,7 @@
 	}
 
 	// Honeycomb layout (screen.layout === 'honeycomb', for short vocab-pick
-	// options): options keep their authored order, read left to right, and are
+	// options): options read left to right in display order, and are
 	// spread evenly across the width in at most two rows, with a gap between
 	// cells. Hexagon width follows the column pitch, clamped so a long word
 	// still fits and short ones don't balloon.
@@ -110,7 +125,8 @@
 		style="height: {containerHeight}px"
 		dir="ltr"
 	>
-		{#each screen.options as option, i (i)}
+		{#each order as i, slot (i)}
+			{@const option = screen.options[i]}
 			{@const isCorrect = i === screen.correctIndex}
 			{@const isSelected = selected === i}
 			{@const feedback =
@@ -119,7 +135,7 @@
 						? 'motion-safe:animate-pop-correct'
 						: 'motion-safe:animate-shake-wrong'
 					: ''}
-			{@const pos = positions[i]}
+			{@const pos = positions[slot]}
 			<button
 				type="button"
 				disabled={checked}
@@ -127,7 +143,7 @@
 				in:scale={{
 					start: 0.4,
 					duration: 220,
-					delay: staggerDelay(i, 0, 20, 160),
+					delay: staggerDelay(slot, 0, 20, 160),
 					easing: backOut
 				}}
 				style="left: {pos.x}px; top: {pos.y}px; width: {hexW}px; height: {HEX_H}px; clip-path: {HEX_CLIP}"
@@ -147,7 +163,8 @@
 	</div>
 {:else}
 	<div class="mt-5 flex flex-col gap-3">
-		{#each screen.options as option, i (i)}
+		{#each order as i (i)}
+			{@const option = screen.options[i]}
 			{@const isCorrect = i === screen.correctIndex}
 			{@const isSelected = selected === i}
 			{@const feedback =
