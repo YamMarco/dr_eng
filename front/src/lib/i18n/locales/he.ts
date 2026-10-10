@@ -65,16 +65,10 @@ export const he = {
 		assortedTitle: 'מגוון מבחנים',
 		ministryTitle: 'בגרויות',
 		yearPrefix: 'מבחן בגרות',
-		avgTimeLabel: 'זמן ממוצע',
-		avgGradeLabel: 'ציון ממוצע',
 		rulesTitle: 'מבנה המבחן',
 		readingTextsRule: (n: number) => (n === 1 ? 'טקסט קריאה אחד' : `${n} טקסטי קריאה`),
 		questionsRule: (n: number) => `${n} שאלות`,
-		timeRule: (minutes: number) => `${minutes} דקות`,
-		scoreboardTitle: 'לוח התוצאות שלך',
-		bestScoreLabel: 'השיא שלך',
-		lastScoreLabel: 'ניסיון אחרון',
-		avgScoreLabel: 'ממוצע'
+		timeRule: (minutes: number) => `${minutes} דקות`
 	},
 	unit: {
 		backLabel: 'חזרה לבחירת יחידות',

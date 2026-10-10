@@ -30,38 +30,21 @@
 	<AppBar title={quiz.titleHe} back={examBase} />
 
 	<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-		<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
-		<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.scoreboardTitle}</h2>
-			<div class="grid grid-cols-3 gap-3">
-				<div
-					class="rounded-2xl bg-surface p-3 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
-				>
-					<p class="text-xl font-extrabold tabular">92</p>
-					<p class="mt-1 text-xs text-muted">{i18n.dict.quizzes.bestScoreLabel}</p>
-				</div>
-				<div
-					class="rounded-2xl bg-surface p-3 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
-				>
-					<p class="text-xl font-extrabold tabular">
-						{lastAttempt && lastAttempt.score.auto.max > 0
-							? `${lastAttempt.score.auto.earned}/${lastAttempt.score.auto.max}`
-							: '81'}
-					</p>
-					<p class="mt-1 text-xs text-muted">{i18n.dict.quizzes.lastScoreLabel}</p>
-				</div>
-				<div
-					class="rounded-2xl bg-surface p-3 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
-				>
-					<p class="text-xl font-extrabold tabular">85</p>
-					<p class="mt-1 text-xs text-muted">{i18n.dict.quizzes.avgScoreLabel}</p>
-				</div>
-			</div>
-		</section>
+		{#if lastAttempt && lastAttempt.score.auto.max > 0}
+			<p
+				in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
+				class="text-sm text-muted"
+			>
+				{i18n.dict.quiz.lastAttemptLabel}:
+				<span class="font-bold text-ink tabular" dir="ltr">
+					{lastAttempt.score.auto.earned}/{lastAttempt.score.auto.max}
+				</span>
+			</p>
+		{/if}
 
 		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-			class="mt-8 flex flex-col gap-3"
+			class="mt-6 flex flex-col gap-3"
 		>
 			{#if quizNode}
 				<Button onclick={() => (running = true)}>{i18n.dict.quiz.startButton}</Button>
