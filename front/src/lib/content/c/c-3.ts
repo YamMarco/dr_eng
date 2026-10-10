@@ -11,6 +11,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["c-a45c17de"],
     position: { x: 60, y: 2320 },
     big: false,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -233,6 +234,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["yes-no"],
     position: { x: 100, y: 2420 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -326,6 +328,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["because"],
     position: { x: 100, y: 2510 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -433,6 +436,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["in-addition"],
     position: { x: 70, y: 2600 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -531,6 +535,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["for-example"],
     position: { x: 0, y: 2720 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -630,6 +635,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["in-conclusion"],
     position: { x: -70, y: 2840 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -744,6 +750,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["subject-verb"],
     position: { x: -100, y: 2960 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -819,6 +826,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["word-count"],
     position: { x: -70, y: 3080 },
     big: false,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -1028,6 +1036,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["topic-volunteer"],
     position: { x: 0, y: 3200 },
     big: false,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -1185,6 +1194,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["topic-vacation"],
     position: { x: 70, y: 3320 },
     big: false,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -1340,6 +1350,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["topic-school"],
     position: { x: 100, y: 3440 },
     big: false,
+    requiredRounds: 3,
     content: {
       preface: [
         {
