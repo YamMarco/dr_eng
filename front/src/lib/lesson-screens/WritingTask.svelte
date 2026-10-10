@@ -59,8 +59,11 @@
 			? lines.length >= minSentences
 			: inputLines.every((line) => line.trim().length > 0)
 	);
-	// A copied question doesn't count, as in the exam's word count.
-	let paragraphWords = $derived(paragraph ? countValidWords(essayText, { prompt: screen.prompt }) : 0);
+	// A copied question doesn't count, as in the exam's word count. The question
+	// is the first quoted part of the prompt; the rest (a draft to extend, hints)
+	// is material the student may reuse.
+	const question = untrack(() => screen.prompt.match(/"([^"]+)"/)?.[1] ?? screen.prompt);
+	let paragraphWords = $derived(paragraph ? countValidWords(essayText, { prompt: question }) : 0);
 	let lengthOk = $derived(!paragraph || paragraphWords >= (screen.minWords ?? 0));
 
 	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
@@ -227,7 +230,7 @@
 	{#if autoCheck}
 		<WritingCheck
 			text={paragraph ? essayText : lines.join('\n')}
-			options={{ prompt, extraWords: wordBank }}
+			options={{ prompt: paragraph ? question : prompt, extraWords: wordBank }}
 			showLength={paragraph}
 		/>
 	{/if}

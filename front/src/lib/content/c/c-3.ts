@@ -1152,63 +1152,117 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}כמה מילים צריך לכתוב?**70–90 מילים.**לא 69. לא 91.למה זה חשוב?כי כשכותבים פחות מ־70 מילים, מתחילים לאבד נקודות  💡 **הכלל שלנו:**אל תכוונו ל־70 בדיוק. עדיף לכתוב בערך **75–85 מילים**, כדי להיות בטוחים שאתם בתוך הטווח.",
+          text: "{d:rtl}כמה מילים צריך לכתוב? **70-90 מילים.**\n\n{d:rtl}ומה קורה אם כותבים פחות? זו הטבלה הרשמית של משרד החינוך - יורדות נקודות מתוך 30:\n\n{p:text}60-69 words → -1\n{p:text}50-59 words → -3\n{p:text}40-49 words → -6\n{p:text}30-39 words → -10\n{p:text}25-29 words → -15\n{p:text}under 25 words → 0 for the whole task\n\n{p:callout}{d:rtl}ויותר מ-90? **בטבלה אין הורדה על אורך.** אבל כל משפט מיותר = עוד הזדמנות לטעות בדקדוק ובכתיב. כשסיימתם את השלד - עוצרים.",
         },
         {
           type: "preface",
-          text: "{d:rtl}איך סופרים מהר?\n\n{d:rtl}a / the / and / I / is - כולן מילים.\n{d:rtl}\n\n{p:text}I think *(1)* students *(2)* should *(3)* volunteer *(4)* because *(5)* it* (6)* teaches *(7) *responsibility *(8)*.\n{d:rtl}אלו כבר **8 מילים**.\n\n{p:callout}{d:rtl}כתבתם פחות מ-70? הוסיפו For example עם פרט.\n{p:callout}{d:rtl}כתבתם יותר מ-90? הורידו משפט שלם - לא מילה אחת.",
+          text: "{d:rtl}**מה לא נספר?**\n\n{d:rtl}❌ השאלה, אם העתקתם אותה מילה במילה\n{d:rtl}❌ כותרת\n\n{d:rtl}אבל להשתמש במילים של השאלה בתוך משפט שלכם - זה בסדר ונספר:\n{p:text}✅ I think all high school pupils should do volunteer work because...",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}**החשבון שמביא אתכם ל-80:**\n\n{d:rtl}משפט רגיל בחיבור = בערך 13 מילים.\n{d:rtl}**6 משפטים × 13 = בערך 80 מילים.**\n\n{d:rtl}ואיך מגיעים ל-6 משפטים? **כל סיבה מקבלת משפט פרט:**\n\n{p:text}1. I think... because [reason 1].\n{p:text}2. For example, [detail for reason 1].\n{p:text}3. In addition, [reason 2].\n{p:text}4. For instance, [detail for reason 2].\n{p:text}5. As a result, [what happens because of this].\n{p:text}6. In conclusion, I believe...\n\n{p:callout}{d:rtl}זה השלד של כל שיעורי הנושא מעכשיו. כתבתם פחות מ-70? כנראה לאחת הסיבות חסר משפט פרט.",
         },
         {
           type: "summary",
-          title: "ספירה מהירה",
+          title: "70-90 - החשבון",
           lines: [
-            "כל מילה = 1, גם a, the, and",
-            'פחות מ-70? הוסיפו "For example,..." עם פרט',
-            "יותר מ-90? הורידו משפט שלם",
-            "ספרו תמיד לפני שמגישים",
+            "6 משפטים × 13 מילים ≈ 80",
+            "כל סיבה + משפט פרט (For example / For instance)",
+            "פחות מ-70: מורידים נקודות לפי הטבלה. מתחת ל-25: אפס על כל המטלה",
+            "יותר מ-90: אין הורדה, אבל עוצרים - יותר משפטים, יותר טעויות",
+            "שאלה שהועתקה מילה במילה לא נספרת",
           ],
         },
       ],
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | ספירה ותיקון" },
+            { type: "preface", text: "סיבוב 1 | החשבון והכללים" },
+            {
+              type: "mcq",
+              prompt:
+                "{d:rtl}תלמיד כתב **55 מילים**. כמה נקודות יורדות לו בבחינה?",
+              options: ["1", "3", "6", "אפס על כל המטלה"],
+              correctIndex: 1,
+              explanation:
+                "50-59 מילים = מינוס 3. מתחת ל-25 מילים - אפס על הכול. 60-69 = מינוס 1.",
+            },
             {
               type: "mcq",
               prompt: "{d:rtl}תלמיד כתב **65 מילים**. מה הכי חכם לעשות?",
               options: [
-                "להגיש - קרוב מספיק",
-                'להוסיף "For example,..." עם פרט ספציפי',
-                "למחוק משפט ולכתוב מחדש",
+                "להוסיף משפט For instance עם פרט לסיבה השנייה",
+                "להעתיק את השאלה בתחילת החיבור כדי להוסיף מילים",
                 'להוסיף "very" ו-"really" לפני כל שם תואר',
+                "להגיש - זה רק מינוס נקודה אחת",
               ],
-              correctIndex: 1,
+              correctIndex: 0,
               explanation:
-                '"For example,..." עם פרט קצר מוסיף בקלות 5-8 מילים. זו הדרך הנקייה ביותר להגיע ל-70.',
+                "משפט פרט מוסיף בערך 13 מילים וגם מחזק את התוכן. שאלה מועתקת לא נספרת בכלל, ו-very / really שוב ושוב עלולים להוריד עד 3 נקודות באוצר מילים.",
             },
             {
               type: "mcq",
-              prompt: "{d:rtl}תלמיד כתב **95 מילים**. מה הכי חכם לעשות?",
+              prompt: "{d:rtl}תלמיד כתב **95 מילים** והחיבור מסודר. מה עושים?",
               options: [
-                "להגיש - 90 זה רק המלצה",
-                "למחוק מילה אחת מכל משפט",
-                "לזהות את המשפט הכי פחות חשוב ולהוריד אותו כולו",
-                "לקצר כל מילה לראשי תיבות",
+                "משאירים - אין הורדה על יותר מ-90. מנצלים את הזמן לבדוק טעויות",
+                "מוחקים מילה אחת מכל משפט",
+                "מוחקים את משפט ה-In conclusion",
+                "כותבים הכול מחדש עד 90 בדיוק",
               ],
+              correctIndex: 0,
+              explanation:
+                "בטבלה הרשמית יש הורדה רק על קצר מדי. מחיקת מילים שוברת משפטים, ובלי In conclusion החיבור פחות מסודר.",
+            },
+            {
+              type: "mcq",
+              prompt: "כמה משפטים של בערך 13 מילים מביאים אתכם לבערך 80 מילים?",
+              options: ["3", "4", "6", "10"],
               correctIndex: 2,
               explanation:
-                "להוריד משפט שלם = הורדת 8-12 מילים בבת אחת. לקצר מילים בודדות לוקח זמן ועלול לשבור משפטים.",
+                "6 × 13 = 78. לכן השלד שלנו הוא 6 משפטים: כל סיבה מקבלת משפט פרט.",
+            },
+            {
+              type: "mcq",
+              prompt: "מה מהבאים **לא** נספר בספירת המילים בבחינה?",
+              options: [
+                "השאלה, כשהעתקתם אותה מילה במילה",
+                "המילים a / the / and",
+                "In conclusion",
+                'משפט שמשתמש במילים של השאלה: "I think all pupils should..."',
+              ],
+              correctIndex: 0,
+              explanation:
+                "כל מילה נספרת, גם a ו-the. רק שאלה שהועתקה כמו שהיא (וכותרת) לא נספרות. להשתמש במילים של השאלה בתוך משפט שלכם - נספר.",
             },
           ],
         },
         {
           screens: [
+            { type: "preface", text: "סיבוב 2 | מ-49 מילים ל-70-90" },
             {
-              type: "self-check",
+              type: "writing-task",
               prompt:
-                "כתבו 5 משפטים על כל נושא שתרצו.\nאחר כך ספרו את המילים וכתבו את המספר.\n70-90? ✅ פחות? כתבו מה תוסיפו. יותר? כתבו מה תורידו.",
+                '"Do you think it is important to study English? Give reasons to explain your opinion."\n\nתלמיד כתב את הטיוטה הזו - 49 מילים (בבחינה: מינוס 6):\n\n{p:text}I think it is important to study English because most of the information on the internet is in English. In addition, English helps people find better jobs in Israel and abroad. As a result, they can earn more money. In conclusion, I believe every student should take English seriously.\n\nכתבו את החיבור המלא: העתיקו את הטיוטה והוסיפו משפט For example אחרי הסיבה הראשונה ומשפט For instance אחרי השנייה. המטרה: 70-90 מילים.',
+              wordBank: [
+                "for example",
+                "for instance",
+                "YouTube",
+                "video / סרטון",
+                "company / חברה",
+                "meetings / פגישות",
+              ],
+              minSentences: 6,
+              minWordsUsed: 2,
+              minWords: 70,
+              maxWords: 90,
               modelAnswer:
-                '70-90 - מצוין, אפשר להגיש.\nפחות מ-70 - הוסיפו: "For example, [פרט ספציפי אחד]."\nיותר מ-90 - הורידו משפט אחד שלם.',
+                "I think it is important to study English because most of the information on the internet is in English. For example, many video lessons for math and science on YouTube are only in English. In addition, English helps people find better jobs in Israel and abroad. For instance, high-tech companies hold meetings in English every day. As a result, they can earn more money. In conclusion, I believe every student should take English seriously.",
+              checklist: [
+                "הוספתי For example עם פרט לסיבה הראשונה (האינטרנט)",
+                "הוספתי For instance עם פרט לסיבה השנייה (עבודה)",
+                "הדוגמאות ספציפיות: שם, מקום או מקרה",
+                "עכשיו יש 70-90 מילים",
+              ],
             },
           ],
         },
@@ -1232,7 +1286,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: '{d:rtl}הנוסחה שעובדת תמיד:\n\n{p:text}"I think... because..."\n{p:text}"In addition,..."\n{p:text}"In conclusion, I believe..."\n\n{d:rtl}שלושה משפטי פתיחה. שלושה.\n{d:rtl}ומעבר לזה? מה שבא לכם.',
+          text: "{d:rtl}הנוסחה שעובדת תמיד - השלד מהשיעורים הקודמים, ועוד משפט פרט לכל סיבה:\n\n{p:text}1. I think... because [reason 1].\n{p:text}2. For example, [detail].\n{p:text}3. In addition, [reason 2].\n{p:text}4. For instance, [detail].\n{p:text}5. As a result, [what happens].\n{p:text}6. In conclusion, I believe...\n\n{d:rtl}6 משפטים × בערך 13 מילים = בערך 80. בדיוק בטווח.",
         },
         {
           type: "preface",
@@ -1245,7 +1299,7 @@ export const c3Lessons: LessonNode[] = [
             '{p:text}"I think / I do not think... because..."',
             '{p:text}"In addition,..."',
             '{p:text}"In conclusion, I believe..."',
-            "70-90 מילים. לא פחות, לא יותר.",
+            "שלד של 6 משפטים: because / For example / In addition / For instance / As a result / In conclusion = בערך 80 מילים",
           ],
         },
       ],
@@ -1292,7 +1346,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"Do you think all high school students should do volunteer work? Give reasons."\nWrite 70-90 words. Use at least 4 words from the word bank.\n\n✏️ I think... because...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
+                '"Do you think all high school pupils should do volunteer work? Give reasons to explain your opinion."\n\nשלב 1 - השלד: 4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ I think / I do not think... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1314,12 +1368,13 @@ export const c3Lessons: LessonNode[] = [
                 "opportunity / הזדמנות",
               ],
               minSentences: 4,
-              minWordsUsed: 4,
+              minWordsUsed: 3,
               modelAnswer:
                 "I think all high school students should do volunteer work because it teaches them responsibility. For example, a student who helps in an old people's home every week must come on time. In addition, volunteering gives teenagers real work experience for the future. In conclusion, I believe volunteering prepares students for life.",
               checklist: [
                 "משפט 1 עונה ישירות: I think / I do not think",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
                 "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
               ],
@@ -1358,7 +1413,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"Do you think all high school students should do volunteer work?"\nכתבו פסקה מלאה - 70-90 מילים. לפחות 5 מילים מהבנק.\n\n✏️ משפט 1 - I think... YES או NO... because...\n✏️ משפט 2-3 - הסבר ודוגמה. אפשר לכתוב "For example,..."\n✏️ משפט 4 - In addition,...\n✏️ משפט 5 - In conclusion, I believe...',
+                '"Do you think all high school pupils should do volunteer work? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think / I do not think... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1388,8 +1443,9 @@ export const c3Lessons: LessonNode[] = [
               checklist: [
                 "משפט 1 עונה ישירות: I think / I do not think",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
-                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "גם לסיבה השנייה יש פרט (For instance)",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, ולא העתקתי את השאלה עצמה",
               ],
@@ -1474,6 +1530,7 @@ export const c3Lessons: LessonNode[] = [
             '{p:text}"In addition,..."',
             '{p:text}"In conclusion, I believe..."',
             "הבחירה צריכה להיות ברורה מהמשפט הראשון",
+            "שלד של 6 משפטים: because / For example / In addition / For instance / As a result / In conclusion = בערך 80 מילים",
           ],
         },
       ],
@@ -1512,7 +1569,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation?"\n\nכתבו 3 משפטים בלבד:\n✏️ In my opinion, the best way is... because...\n✏️ In addition,...\n✏️ In conclusion, I believe...\n\nבחרו בחירה אחת ברורה. לא "it depends". לפחות 3 מילים מהבנק.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nשלב 1 - השלד: 4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ In my opinion, the best way to spend a vacation is... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1533,13 +1590,14 @@ export const c3Lessons: LessonNode[] = [
                 "rest / מנוחה",
                 "experience / חוויה",
               ],
-              minSentences: 3,
+              minSentences: 4,
               minWordsUsed: 3,
               modelAnswer:
-                "In my opinion, the best way to spend a vacation is to travel abroad because you discover new cultures. In addition, a trip with friends or family creates memories that last for years. In conclusion, I believe traveling is the most meaningful way to spend a vacation.",
+                "In my opinion, the best way to spend a vacation is to travel abroad because you discover new cultures. For example, in Italy you can taste real pizza and see how people live. In addition, a trip with friends or family creates memories that last for years. In conclusion, I believe traveling is the most meaningful way to spend a vacation.",
               checklist: [
                 "משפט 1 בוחר דבר אחד: the best way is...",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
                 "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
               ],
@@ -1552,7 +1610,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation?"\n\nלקחו את 3 המשפטים מסיבוב 1 ועכשיו מרחיבים:\n✏️ אחרי כל סיבה - הוסיפו "For example,..." עם פרט קטן\n✏️ שמרו על אותה בחירה שבחרתם\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. In my opinion, the best way to spend a vacation is... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1582,8 +1640,9 @@ export const c3Lessons: LessonNode[] = [
               checklist: [
                 "משפט 1 בוחר דבר אחד: the best way is...",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
-                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "גם לסיבה השנייה יש פרט (For instance)",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, ולא העתקתי את השאלה עצמה",
               ],
@@ -1654,6 +1713,7 @@ export const c3Lessons: LessonNode[] = [
             '{p:text}"In addition, schools could... This would help because..."',
             '{p:text}"In conclusion, I believe these changes would..."',
             "שתי הצעות ספציפיות = ציון תוכן מלא",
+            "שלד של 6 משפטים: because / For example / In addition / For instance / As a result / In conclusion = בערך 80 מילים",
           ],
         },
       ],
@@ -1690,7 +1750,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What changes can be made to your school?"\n\nרק שתי הצעות - לא פסקה מלאה:\n✏️ I think schools should... because...\n✏️ In addition, schools could... This would help because...\n\nספציפיות. לא "be better" - אלא מה בדיוק לשנות. לפחות 3 מילים מהבנק.',
+                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nשלב 1 - השלד: 4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ I think schools should... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1711,14 +1771,16 @@ export const c3Lessons: LessonNode[] = [
                 "technology / טכנולוגיה",
                 "encourage / לעודד",
               ],
-              minSentences: 2,
+              minSentences: 4,
               minWordsUsed: 3,
               modelAnswer:
-                "I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. In addition, schools could let students choose one subject they love. This would help because they would come to school with more motivation.",
+                "I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. For example, after a short walk outside, it is easier to understand a hard math lesson. In addition, schools could let students choose one subject they love because students learn better when they are interested. In conclusion, I believe these changes would make students happier and more successful.",
               checklist: [
                 "משפט 1 מציע שינוי ספציפי: schools should...",
-                "כל הצעה עם because וסיבה ספציפית",
-                "ההצעה השנייה שונה מהראשונה",
+                "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "In conclusion חוזר על העמדה, בלי סיבה חדשה",
               ],
             },
           ],
@@ -1729,7 +1791,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What changes can be made to your school to make it a better place to learn?"\n\nלקחו את שתי ההצעות מסיבוב 1 ועכשיו עוטפים:\n✏️ בהתחלה - משפט פתיחה שמציג את הרעיון הכללי\n✏️ בסוף - "In conclusion, I believe these changes would..."\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think schools should... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1755,12 +1817,13 @@ export const c3Lessons: LessonNode[] = [
               maxWords: 90,
               minWordsUsed: 5,
               modelAnswer:
-                "In my opinion, a few changes can make my school a better place to learn. First, I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. For example, after a short walk outside, it is easier to understand a hard math lesson. In addition, schools could let students choose one subject they love. This would help because students learn better when they are interested. In conclusion, I believe these changes would make students happier and more successful.",
+                "I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. For example, after a short walk outside, it is easier to understand a hard math lesson. In addition, schools could let students choose one subject they love. For instance, a student who loves art could take an extra art class. As a result, students would come to school with more motivation. In conclusion, I believe these changes would make school a better place to learn.",
               checklist: [
                 "משפט 1 מציע שינוי ספציפי: schools should...",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
-                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "גם לסיבה השנייה יש פרט (For instance)",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, ולא העתקתי את השאלה עצמה",
               ],
@@ -1831,6 +1894,7 @@ export const c3Lessons: LessonNode[] = [
             '{p:text}"In addition,..."',
             '{p:text}"In conclusion, I believe that age X is right because..."',
             "הגיל צריך להופיע במשפט הראשון",
+            "שלד של 6 משפטים: because / For example / In addition / For instance / As a result / In conclusion = בערך 80 מילים",
           ],
         },
       ],
@@ -1869,7 +1933,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"At what age should children be allowed to have their own cellphones?"\n\nכתבו 3 משפטים בלבד:\n✏️ I think children should get a phone at age... because...\n✏️ In addition,...\n✏️ In conclusion, I believe that age... is right because...\n\nחשוב: הגיל צריך להופיע כבר במשפט הראשון. לפחות 3 מילים מהבנק.',
+                '"At what age should children be allowed to have their own cellphone? Give reasons to explain your opinion."\n\nשלב 1 - השלד: 4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ I think children should get their own phone at age... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1890,13 +1954,14 @@ export const c3Lessons: LessonNode[] = [
                 "privacy / פרטיות",
                 "contact / ליצור קשר",
               ],
-              minSentences: 3,
+              minSentences: 4,
               minWordsUsed: 3,
               modelAnswer:
-                "I think children should get their own phone at age 13 because they start going to places alone at this age. In addition, at 13 they are mature enough to understand the dangers of social media. In conclusion, I believe that 13 is the right age because children are ready for the responsibility.",
+                "I think children should get their own phone at age 13 because they start going to places alone at this age. For example, many children take a bus to school and their parents need to contact them. In addition, at 13 they are mature enough to understand the dangers of social media. In conclusion, I believe that 13 is the right age for a first phone.",
               checklist: [
                 "משפט 1 נותן גיל אחד: at age...",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
+                "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
                 "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
               ],
@@ -1909,7 +1974,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"At what age should children be allowed to have their own cellphones?"\n\nמרחיבים לפסקה מלאה:\n✏️ הסבירו למה דווקא הגיל הזה - מה קורה בגיל הזה שלא קורה לפניו?\n✏️ הוסיפו "For example,..." עם פרט ספציפי\n\n70-90 מילים. לפחות 5 מילים מהבנק.',
+                '"At what age should children be allowed to have their own cellphone? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think children should get their own phone at age... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1935,12 +2000,13 @@ export const c3Lessons: LessonNode[] = [
               maxWords: 90,
               minWordsUsed: 5,
               modelAnswer:
-                "I think children should get their own phone at age 13 because they start going to places alone at this age. For example, many children take a bus to school or to a friend's house, and their parents need to contact them. In addition, at 13 children are mature enough to understand the dangers of social media. Younger children may talk to strangers online. In conclusion, I believe that 13 is the right age for a first phone.",
+                "I think children should get their own phone at age 13 because they start going to places alone at this age. For example, many children take a bus to school, and their parents need to contact them. In addition, at 13 children are mature enough to understand the dangers of social media. For instance, they know not to send photos to strangers. As a result, parents can trust them with a phone. In conclusion, I believe that 13 is the right age for a first phone.",
               checklist: [
                 "משפט 1 נותן גיל אחד: at age...",
                 "הסיבה אחרי because ספציפית - לא good / nice / important",
-                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
                 "יש For example עם פרט אמיתי: מקום, מספר או מקרה",
+                "In addition מביא רעיון חדש, לא את אותה סיבה במילים אחרות",
+                "גם לסיבה השנייה יש פרט (For instance)",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, ולא העתקתי את השאלה עצמה",
               ],
