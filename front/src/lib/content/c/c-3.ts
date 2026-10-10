@@ -1359,7 +1359,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["word-count"],
     position: { x: -70, y: 3080 },
     big: false,
-    requiredRounds: 4,
+    requiredRounds: 5,
     content: {
       preface: [
         {
@@ -1504,12 +1504,48 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nשלד מלא על המסך + בנק מילים.",
+              text: "סיבוב 3 | שני המשפטים שחסרים לשלד\n\nהשלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
             },
             {
               type: "writing-task",
               prompt:
-                '"Do you think all high school pupils should do volunteer work? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think / I do not think... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
+                '"Do you think all high school pupils should do volunteer work? Give reasons to explain your opinion."\n\nחזרו לשלד שכתבתם בסיבוב הקודם. אחרי הסיבה השנייה (In addition) הוסיפו:\n✏️ For instance,... (פרט שמוכיח את הסיבה השנייה)\n✏️ As a result,... (מה יוצא מזה)\n\nלדוגמה, אחרי:\n{p:text}In addition, volunteering gives teenagers real work experience for the future.',
+              wordBank: [
+                "for instance",
+                "as a result",
+                "volunteer / להתנדב",
+                "responsibility / אחריות",
+                "community / קהילה",
+                "skills / מיומנויות",
+                "experience / ניסיון",
+                "develop / לפתח",
+                "society / חברה",
+                "benefit / יתרון",
+                "meaningful / משמעותי",
+                "opportunity / הזדמנות",
+              ],
+              minSentences: 2,
+              minWordsUsed: 2,
+              modelAnswer:
+                "For instance, they learn to work in a team and talk to adults.\nAs a result, it is easier for them to find a job later.",
+              checklist: [
+                "משפט 1 מתחיל ב-For instance ונותן פרט אמיתי לסיבה השנייה",
+                "משפט 2 מתחיל ב-As a result ואומר מה יוצא מזה",
+                "שני המשפטים על אותה סיבה - לא סיבה שלישית חדשה",
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 4 | חיבור מלא, 70-90 מילים\n\nשלד מלא על המסך + בנק מילים.",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"Do you think all high school pupils should do volunteer work? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think / I do not think... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.\n\nיש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1552,7 +1588,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 4 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              text: "סיבוב 5 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -1588,7 +1624,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["topic-volunteer"],
     position: { x: 0, y: 3200 },
     big: false,
-    requiredRounds: 4,
+    requiredRounds: 5,
     content: {
       preface: [
         {
@@ -1690,12 +1726,48 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם רק רשימת המחברים, בלי תבנית שורה-שורה.",
+              text: "סיבוב 3 | שני המשפטים שחסרים לשלד\n\nהשלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
             },
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\nbecause / For example / In addition / For instance / As a result / In conclusion',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחזרו לשלד שכתבתם בסיבוב הקודם. אחרי הסיבה השנייה (In addition) הוסיפו:\n✏️ For instance,... (פרט שמוכיח את הסיבה השנייה)\n✏️ As a result,... (מה יוצא מזה)\n\nלדוגמה, אחרי:\n{p:text}In addition, a trip with friends or family creates memories that last for years.',
+              wordBank: [
+                "for instance",
+                "as a result",
+                "travel / לטייל",
+                "culture / תרבות",
+                "explore / לחקור",
+                "memories / זיכרונות",
+                "relax / להירגע",
+                "discover / לגלות",
+                "adventure / הרפתקה",
+                "unforgettable / בלתי נשכח",
+                "rest / מנוחה",
+                "experience / חוויה",
+              ],
+              minSentences: 2,
+              minWordsUsed: 2,
+              modelAnswer:
+                "For instance, my family still laughs about the day we got lost in Rome.\nAs a result, travel brings people closer.",
+              checklist: [
+                "משפט 1 מתחיל ב-For instance ונותן פרט אמיתי לסיבה השנייה",
+                "משפט 2 מתחיל ב-As a result ואומר מה יוצא מזה",
+                "שני המשפטים על אותה סיבה - לא סיבה שלישית חדשה",
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 4 | חיבור מלא, 70-90 מילים\n\nהפעם רק רשימת המחברים, בלי תבנית שורה-שורה.",
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\nbecause / For example / In addition / For instance / As a result / In conclusion\n\nיש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1738,7 +1810,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 4 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              text: "סיבוב 5 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
