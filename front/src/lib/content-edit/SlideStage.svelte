@@ -72,6 +72,8 @@
 	let location = $derived(path ? formatScreenLocation(nodeId, path) : '');
 	// Preview width of the slide: desktop = the lesson runner's max width, phone = a typical handset.
 	let device = $state<'desk' | 'phone'>('desk');
+	// Wide screens only: fold the settings away so the slide centers on the canvas.
+	let settingsCollapsed = $state(false);
 	let locationCopied = $state(false);
 	let copyTimer: ReturnType<typeof setTimeout> | undefined;
 	async function copyLocation() {
@@ -484,7 +486,19 @@
 				<!-- Wide screens: the slide on the start side (right in RTL), its settings
 				     beside it. Narrow: settings stack under the slide. Settings are plain
 				     flow groups, never sticky, so they cannot cover one another. -->
-				<div class="grid gap-4 xl:h-full xl:grid-cols-[36.95rem_minmax(0,1fr)] xl:items-start">
+				<div
+						class="relative grid gap-4 xl:h-full xl:items-start {settingsCollapsed
+							? 'xl:grid-cols-1'
+							: 'xl:grid-cols-[36.95rem_minmax(0,1fr)]'}"
+					>
+						<button
+							type="button"
+							class="absolute top-1/2 -left-6 z-10 hidden h-16 w-5 -translate-y-1/2 items-center justify-center rounded-s-lg border-2 border-e-0 border-line bg-surface text-muted shadow-sm hover:bg-line/60 xl:flex"
+							aria-label={settingsCollapsed ? 'הצג הגדרות' : 'הסתר הגדרות'}
+							onclick={() => (settingsCollapsed = !settingsCollapsed)}
+						>
+							{settingsCollapsed ? '›' : '‹'}
+						</button>
 					<div class="xl:h-full xl:ps-[2.4rem] xl:pe-[2.55rem]">
 						<div
 							class="mx-auto w-full {device === 'phone'
@@ -497,7 +511,7 @@
 						</div>
 					</div>
 					<div
-						class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
+						class="{settingsCollapsed ? 'xl:hidden!' : ''} hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
 					>
 						{#if rawOpen}
 							<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
