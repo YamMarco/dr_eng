@@ -42,17 +42,9 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 **#5 Reading-to-writing only in for-example** - because, in-addition, in-conclusion - S
 - Fix: one screen each that reuses a Part B passage, like the Greenville task in for-example.
 
-**#8 For instance / As a result are used but never taught** - for-example, word-count - S
-- Impact: the 6-sentence frame (word-count, topic lessons) asks for "For instance" and "As a result". A weak student meets both for the first time inside a template and either copies them blindly or freezes.
-- Fix: in for-example, one preface line + one fill-in: "For instance = another For example (use it for the second reason, so you don't repeat For example). As a result = what happens because of this." Example item: *Teenagers who work learn the value of money. ___, they stop asking their parents for money for small things.* (As a result / For instance / In addition).
-
 **#9 word-count teaches the rules but never counting** - word-count - S
 - Impact: the student learns that 55 words = -3 but never counts a real text, so in the exam they don't know whether they are at 62 or 78.
 - Fix: one MCQ with a short paragraph: "How many words? 58 / 68 / 78", then "This text has 62 words. Which sentence would you add?" (a For instance detail vs. "It is very very important." vs. copying the question).
-
-**#10 Fragments are only caught in subject-verb** - lint, all writing tasks - S
-- Impact: "Because it helps people." (no main clause) appears from the because lesson onward; the automatic check doesn't flag it, so the habit forms before subject-verb.
-- Fix: the lint flags a sentence that starts with "Because" and has no comma-separated main clause, or has no verb from a short list (is / are / was / have / can / should / any word ending in -s / -ed). Message: "משפט N: Because לבד הוא חצי משפט. חברו אותו למשפט הקודם: I think X because..."
 
 **#11 Self-review depends on honesty** - checklist after every writing task - S
 - Impact: a weak student ticks every box. The checklist teaches only if the student can see a gap.
@@ -87,13 +79,17 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
   4. **Lint additions**: flag *very* used more than twice, and the slang the rubric names (*gonna, wanna, u, 4U, BTW*).
 - Where: one node "words that score" after in-conclusion, and one "error clinic" node after subject-verb, each 3 rounds of about 5 minutes, with the last round optional.
 
+**D. Fragment check in the lint** (owner: TBD, 2026-10-10) - S
+- Impact: "Because it helps people." (no main clause) appears from the because lesson onward; the automatic check doesn't flag it, so the habit forms before subject-verb.
+- Fix: the lint flags a sentence that starts with "Because" and has no comma-separated main clause, or has no verb from a short list (is / are / was / have / can / should / any word ending in -s / -ed). Message: "משפט N: Because לבד הוא חצי משפט. חברו אותו למשפט הקודם: I think X because..."
+
 ## Suggested order
 
 1. #2 (S, protects the exams from a wrong fix)
 2. #1 play-test, then regrade
-3. #8, #9, #10, #11 (all S)
+3. #9, #11 (both S)
 4. C.1 + C.3 (two new nodes)
-5. A and B after the play-test shows where students stall
+5. A, B, D after the play-test shows where students stall
 6. #4, #5, #7
 
 ## History
@@ -119,6 +115,8 @@ All 10 items of the original audit, plus related QC report and roadmap items. On
 | roadmap 6.5 | reading-to-writing in for-example: Greenville facts as the example, in your own words | 0dd264a |
 | #3 no timer on writing | `timeLimitMinutes` countdown (exam timer pill) on topic exam rounds, 20 min; never fails the task | 0c7c1ab |
 | round size | rounds of about 5 minutes for a weak student, optional practice rounds at the end, supports fade across the topic lessons | 9ae27cf |
+| #8 For instance / As a result untaught | preface card + summary line in for-example, an As a result fill-in (round 1), a For instance choice (round 2) | e2b2ac2 |
+| word counter | `wordCounter` on line-mode tasks of 3+ sentences (10 tasks); paragraph mode already had one | 2b2ca5c |
 
 Every model answer passes the app's own checks (lint, word bank, sentence count, length).
 
