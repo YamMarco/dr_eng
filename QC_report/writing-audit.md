@@ -35,7 +35,7 @@ The order of the moves was always right. The dose and the bridge are fixed now: 
 
 ### Medium
 
-**#3 No timer on writing** - topic round 3 - S-M
+**#3 No timer on writing** - FIXED 2026-10-10: `timeLimitMinutes` countdown on topic round 3 (20 min) - S-M
 - Impact: "20 minutes, as in the exam" is only a sentence; `writing-task` has no stopwatch.
 - Fix: the round-level timer from roadmap phase 3, when it gets built. Don't build a writing-only timer.
 

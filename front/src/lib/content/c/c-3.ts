@@ -1498,7 +1498,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. תנו לעצמכם 20 דקות, כמו בבחינה.",
+              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "mcq",
@@ -1517,7 +1517,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, is there too much emphasis on tests and grades in our education system? Give reasons to explain your opinion."\n\n(emphasis = דגש)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים.',
+                '"In your opinion, is there too much emphasis on tests and grades in our education system? Give reasons to explain your opinion."\n\n(emphasis = דגש)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.',
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
@@ -1533,6 +1533,7 @@ export const c3Lessons: LessonNode[] = [
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, בלי בנק מילים, ולא העתקתי את השאלה",
               ],
+              timeLimitMinutes: 20,
             },
           ],
         },
@@ -1689,12 +1690,12 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. תנו לעצמכם 20 דקות, כמו בבחינה.",
+              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
               prompt:
-                '"Many people in Israel study English. In addition to English, which language would you like to know? Give reasons to explain your opinion."\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים.',
+                '"Many people in Israel study English. In addition to English, which language would you like to know? Give reasons to explain your opinion."\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.',
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
@@ -1710,6 +1711,7 @@ export const c3Lessons: LessonNode[] = [
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, בלי בנק מילים, ולא העתקתי את השאלה",
               ],
+              timeLimitMinutes: 20,
             },
           ],
         },
@@ -1864,12 +1866,12 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What should schools do), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. תנו לעצמכם 20 דקות, כמו בבחינה.",
+              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What should schools do), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, what should schools do to prevent cheating on tests? Give reasons to explain your opinion."\n\n(prevent = למנוע, cheating = העתקה)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים.',
+                '"In your opinion, what should schools do to prevent cheating on tests? Give reasons to explain your opinion."\n\n(prevent = למנוע, cheating = העתקה)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.',
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
@@ -1885,6 +1887,7 @@ export const c3Lessons: LessonNode[] = [
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, בלי בנק מילים, ולא העתקתי את השאלה",
               ],
+              timeLimitMinutes: 20,
             },
           ],
         },
@@ -2041,12 +2044,12 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (At what age), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. תנו לעצמכם 20 דקות, כמו בבחינה.",
+              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (At what age), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
               prompt:
-                "\"The government wants to raise the age for a driver's license to 19. Do you think this is a good idea? Give reasons to explain your opinion.\"\n\n(driver's license = רישיון נהיגה)\n\nכמו בשאלת הגיל: תגידו YES או NO, ותנו את הגיל שאתם חושבים שנכון.\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים.",
+                "\"The government wants to raise the age for a driver's license to 19. Do you think this is a good idea? Give reasons to explain your opinion.\"\n\n(driver's license = רישיון נהיגה)\n\nכמו בשאלת הגיל: תגידו YES או NO, ותנו את הגיל שאתם חושבים שנכון.\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.",
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
@@ -2062,6 +2065,7 @@ export const c3Lessons: LessonNode[] = [
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
                 "70-90 מילים, בלי בנק מילים, ולא העתקתי את השאלה",
               ],
+              timeLimitMinutes: 20,
             },
           ],
         },

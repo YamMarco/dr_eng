@@ -166,6 +166,8 @@ export const he = {
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
 		checkMinSentences: (n: number) => `לפחות ${n} משפטים`,
+		timeUp: 'הזמן נגמר. בבחינה הייתם מגישים עכשיו - סיימו את המשפט ובדקו.',
+		timeTaken: (time: string, limit: number) => `זמן כתיבה: ${time} (יעד: עד ${limit} דקות)`,
 		checklistTitle: 'השוו לתשובה לדוגמה, וסמנו רק מה שבאמת יש אצלכם:',
 		checklistDone: 'מעולה - זה בדיוק מה שהבודק מחפש.',
 		checkLength: (min: number, words: number) =>

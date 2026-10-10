@@ -14,6 +14,8 @@
 	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
 	import { splitSentences } from '$lib/ocr/scan';
 	import { countValidWords } from '$lib/checks/length';
+	import QuizTimer from '$lib/quiz/QuizTimer.svelte';
+	import { formatTime } from '$lib/quiz/time';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -136,6 +138,23 @@
 	// minWords (report shows the raw text for manual review). ---
 	let essayOk = $derived(essayWords >= (screen.minWords ?? 1));
 
+	// --- Lesson countdown (timeLimitMinutes): runs from mount until the check.
+	// Running out only shows a note - it is practice, not a gate. ---
+	const limitSec = untrack(() =>
+		mode === 'lesson' && screen.timeLimitMinutes ? screen.timeLimitMinutes * 60 : 0
+	);
+	const startedAt = performance.now();
+	let elapsedSec = $state(0);
+	$effect(() => {
+		if (!limitSec || checked) return;
+		const tick = setInterval(
+			() => (elapsedSec = Math.floor((performance.now() - startedAt) / 1000)),
+			1000
+		);
+		return () => clearInterval(tick);
+	});
+	let leftSec = $derived(Math.max(0, limitSec - elapsedSec));
+
 	$effect(() => {
 		if (checked) return;
 		disabled = mode === 'quiz' ? !essayOk : paragraph ? essayWords === 0 : !allFilled;
@@ -150,6 +169,7 @@
 		}
 		if (!checked) {
 			if (paragraph ? essayWords === 0 : !allFilled) return;
+			if (limitSec) elapsedSec = Math.floor((performance.now() - startedAt) / 1000);
 			checked = true;
 			recordAnswer(score!, allOk);
 			label = i18n.dict.lesson.nextQuestionButton;
@@ -178,6 +198,15 @@
 				</span>
 			{/each}
 		</div>
+	</div>
+{/if}
+
+{#if limitSec && !checked}
+	<div class="mt-3 flex flex-wrap items-center gap-2">
+		<QuizTimer seconds={leftSec} warning={leftSec <= 120} />
+		{#if leftSec === 0}
+			<span class="text-sm font-semibold text-danger">{i18n.dict.writingTask.timeUp}</span>
+		{/if}
 	</div>
 {/if}
 
@@ -243,6 +272,16 @@
 					? i18n.dict.writingTask.checkMinSentences(minSentences)
 					: i18n.dict.writingTask.checkSentences(minSentences)}
 			</li>
+			{#if limitSec}
+				<li
+					class="flex items-center gap-2 {elapsedSec <= limitSec
+						? 'text-brand-dark'
+						: 'text-muted'}"
+				>
+					<span>{elapsedSec <= limitSec ? '✓' : '⏱'}</span>
+					{i18n.dict.writingTask.timeTaken(formatTime(elapsedSec), limitSec / 60)}
+				</li>
+			{/if}
 			{#if paragraph}
 				<li class="flex items-center gap-2 {lengthOk ? 'text-brand-dark' : 'text-danger'}">
 					<span>{lengthOk ? '✓' : '✗'}</span>

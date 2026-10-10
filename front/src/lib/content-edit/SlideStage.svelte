@@ -789,6 +789,12 @@
 														onChange={(v) => (screen.maxWords = v)}
 													/>
 												{/if}
+												<NumberField
+													label="שעון (דקות)"
+													min={1}
+													value={screen.timeLimitMinutes}
+													onChange={(v) => (screen.timeLimitMinutes = v)}
+												/>
 											</div>
 											<p class="text-xs text-muted">
 												מינ׳ מילים = תיבת פסקה אחת (כמו בבחינה) במקום שורה לכל משפט.

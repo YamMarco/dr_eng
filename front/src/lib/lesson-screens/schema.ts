@@ -277,6 +277,14 @@ export const writingTaskSchema = z
 			.describe(
 				'Lesson mode: items the student ticks about their own text after the check (self-review). Not scored.'
 			),
+		timeLimitMinutes: z
+			.number()
+			.int()
+			.min(1)
+			.optional()
+			.describe(
+				'Lesson mode: a countdown from this many minutes, stopped by the check. Running out only shows a note; it does not fail the task.'
+			),
 		minSentences: z.number().int().min(0).optional(),
 		minWordsUsed: z.number().int().min(0).optional(),
 		maxTypos: z.number().int().min(0).optional().describe('Forgiven small slips. Default 1.'),
