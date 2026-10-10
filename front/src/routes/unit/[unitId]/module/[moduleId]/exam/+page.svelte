@@ -61,8 +61,27 @@
 </AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
+	<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
 	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
+		class="mb-6 grid grid-cols-2 gap-3"
+	>
+		<div
+			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		>
+			<p class="text-2xl font-extrabold tabular" dir="ltr">18:42</p>
+			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgTimeLabel}</p>
+		</div>
+		<div
+			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		>
+			<p class="text-2xl font-extrabold tabular">78</p>
+			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgGradeLabel}</p>
+		</div>
+	</section>
+
+	<section
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 		class="mb-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
 	>
 		<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.rulesTitle}</h2>
@@ -74,7 +93,7 @@
 	</section>
 
 	<div
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 		class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-3"
 	>
 		<section>
