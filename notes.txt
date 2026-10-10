@@ -1,3 +1,4 @@
 * there are screen with too much content for a phone screen and you have to scroll them.
 * module c graph map's items look too small for a phone screen
-* 
+* writing task: 60-69 words = -1, 50-59 = -3, 40-49 = -6, 30-39 = -10, 25-29 = -15, under 25 = 0
+* the idea of submitting a text and then we work on fixing together it rather than improving it all over again is nice
