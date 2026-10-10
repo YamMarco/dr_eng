@@ -587,6 +587,10 @@ export const c3Lessons: LessonNode[] = [
           text: '{d:rtl}For example מגיע ישר אחרי הסיבה.\n\n{p:text}"I think students should volunteer because they develop important skills.\n{p:text}For example, they learn to communicate with adults and solve real problems."\n\n{d:rtl}לא חייבים להשתמש בו פעמיים. פעם אחת ב-70-90 מילים - מספיק.\n{d:rtl}זה כבר מעלה את ציון ה-Vocabulary וה-Content.',
         },
         {
+          type: "preface",
+          text: "{d:rtl}**עוד שני מחברים שתצטרכו בחיבור המלא:**\n\n{p:text}**For instance** = בדיוק כמו For example.\n{d:rtl}משתמשים בו בדוגמה לסיבה השנייה, כדי לא לכתוב For example פעמיים.\n\n{p:text}**As a result** = כתוצאה מזה - מה קורה בגלל מה שאמרתם.\n{p:text}Students sleep more. **As a result**, they focus better in class.",
+        },
+        {
           type: "summary",
           title: "For example - המיקום",
           lines: [
@@ -594,6 +598,7 @@ export const c3Lessons: LessonNode[] = [
             "For example תמיד אחרי הסיבה שהוא מסביר",
             "לא בתחילת הפסקה - לא בסיום",
             "פרט טוב = ספציפי, לא כללי",
+            "For instance = עוד For example (לסיבה השנייה). As a result = מה יוצא מזה",
           ],
         },
       ],
@@ -633,6 +638,20 @@ export const c3Lessons: LessonNode[] = [
               text: "Traveling teaches you new things. For example, you discover different food and music.",
               correctIndices: [5],
             },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}Teenagers who work learn the value of money. ___, they stop asking their parents for money for small things.\n\nמה נכנס ברווח?",
+              options: [
+                "As a result",
+                "For instance",
+                "In addition",
+                "Because",
+              ],
+              correctIndex: 0,
+              explanation:
+                'המשפט השני הוא מה שקורה בגלל הראשון = As a result. For instance מתאים כשהמשפט השני הוא דוגמה ("For instance, a boy who works in a shop..."). In addition פותח סיבה חדשה. Because לא פותח משפט עצמאי.',
+            },
           ],
         },
         {
@@ -640,6 +659,20 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "preface",
               text: "סיבוב 2 | משדרגים דוגמה, ולוקחים דוגמה מהטקסט",
+            },
+            {
+              type: "mcq",
+              prompt:
+                'בחיבור כבר כתבתם "For example" אחרי הסיבה הראשונה. עכשיו באה דוגמה לסיבה השנייה. איך הכי טוב לפתוח אותה?',
+              options: [
+                "For instance,",
+                "For example,",
+                "As a result,",
+                "In conclusion,",
+              ],
+              correctIndex: 0,
+              explanation:
+                "For instance = For example במילים אחרות. For example פעם שנייה לא שגוי, אבל חזרה על אותן מילים שוב ושוב מורידה באוצר מילים. As a result = תוצאה, לא דוגמה. In conclusion רק בסוף.",
             },
             {
               type: "writing-task",
