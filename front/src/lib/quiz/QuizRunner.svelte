@@ -17,6 +17,7 @@
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
+	import PassageBody from '$lib/lesson-screens/PassageBody.svelte';
 	import type { QuizNode } from './types';
 
 	let {
@@ -56,7 +57,11 @@
 	// sequence, and can jump to any of them from the navigator.
 	let allEntries = $derived(
 		quiz.parts.flatMap((part, pi) =>
-			screensWithIds(part).map((entry, ei) => ({ ...entry, partIndex: pi, isFirstOfPart: ei === 0 }))
+			screensWithIds(part).map((entry, ei) => ({
+				...entry,
+				partIndex: pi,
+				isFirstOfPart: ei === 0
+			}))
 		)
 	);
 	function entryIndexFor(partIdx: number, screenIdx: number): number {
@@ -87,6 +92,26 @@
 		currentEntry ? screenComponents[currentEntry.screen.type] : undefined
 	);
 
+	// The passage a question belongs to: the nearest `passage` screen before
+	// it in the same part. Shown beside the question (pinned on wide screens,
+	// collapsible on phones) so the student never has to navigate away from
+	// the text to answer. Its index keys the panel, so highlights survive
+	// moving between that passage's questions.
+	let passageEntryIndex = $derived.by(() => {
+		if (!currentEntry || currentEntry.screen.type === 'passage') return -1;
+		for (let i = entryIndex - 1; i >= 0; i--) {
+			const entry = allEntries[i];
+			if (entry.partIndex !== currentEntry.partIndex) return -1;
+			if (entry.screen.type === 'passage') return i;
+		}
+		return -1;
+	});
+	let activePassage = $derived.by(() => {
+		const screen = allEntries[passageEntryIndex]?.screen;
+		return screen?.type === 'passage' ? screen : undefined;
+	});
+	let passageOpen = $state(false);
+
 	let showNavigator = $derived(quiz.options.showNavigator ?? true);
 	let answeredIndices = $derived(
 		new Set(allEntries.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
@@ -104,7 +129,9 @@
 	let timerWarning = $derived(remainingSeconds <= (quiz.options.warnAtMinutes ?? 5) * 60);
 	let timerLabel = $derived(quiz.options.showTimerLabel ? i18n.dict.quiz.timeLeftLabel : undefined);
 
-	let footerLabel = $derived(isLastScreen ? i18n.dict.quiz.submitButton : i18n.dict.quiz.nextButton);
+	let footerLabel = $derived(
+		isLastScreen ? i18n.dict.quiz.submitButton : i18n.dict.quiz.nextButton
+	);
 
 	const slot: QuizAnswerSlot = {
 		get id() {
@@ -226,7 +253,11 @@
 			{/snippet}
 		</AppBar>
 
-		<div class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2">
+		<div
+			class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2 {activePassage
+				? 'lg:max-w-5xl'
+				: ''}"
+		>
 			<div class="flex min-w-0 items-center gap-1.5">
 				{#if showNavigator && allEntries.length > 1}
 					<QuestionNavigator
@@ -246,26 +277,62 @@
 			</div>
 		</div>
 
-		<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-3 pb-6">
-			{#if currentEntry?.isFirstOfPart}
-				<h3 class="mb-1 text-sm font-bold text-muted">{currentPart.titleHe}</h3>
-				{#if currentPart.instructionsHe}
-					<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
-				{/if}
-			{/if}
-			{#if currentEntry && ScreenComponent}
-				{#key entryIndex}
-					<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
-						<ScreenComponent
-							screen={currentEntry.screen}
-							onAdvance={advance}
-							bind:disabled={footerDisabled}
-							bind:label={screenLabel}
-							bind:this={screenInstance}
-						/>
-					</div>
+		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
+		     lg+ splits into two independently scrolling columns - question on the
+		     start (right) side, passage pinned on the end (left) side. -->
+		<main
+			class="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {activePassage
+				? 'lg:grid lg:max-w-5xl lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:pb-0'
+				: ''}"
+		>
+			{#if activePassage}
+				<button
+					type="button"
+					aria-expanded={passageOpen}
+					onclick={() => (passageOpen = !passageOpen)}
+					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
+				>
+					{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
+				</button>
+				{#key passageEntryIndex}
+					<aside
+						dir="ltr"
+						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen
+							? ''
+							: 'hidden'} lg:col-start-2 lg:row-start-1 lg:mb-6 lg:block lg:max-h-none lg:min-h-0"
+					>
+						<PassageBody passage={activePassage} />
+					</aside>
 				{/key}
 			{/if}
+			<div
+				class={activePassage
+					? 'lg:col-start-1 lg:row-start-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-6'
+					: ''}
+			>
+				{#if entryIndex === 0}
+					<p class="mb-3 text-xs text-muted">{i18n.dict.quiz.examModeNote}</p>
+				{/if}
+				{#if currentEntry?.isFirstOfPart}
+					<h3 class="mb-1 text-sm font-bold text-muted">{currentPart.titleHe}</h3>
+					{#if currentPart.instructionsHe}
+						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
+					{/if}
+				{/if}
+				{#if currentEntry && ScreenComponent}
+					{#key entryIndex}
+						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
+							<ScreenComponent
+								screen={currentEntry.screen}
+								onAdvance={advance}
+								bind:disabled={footerDisabled}
+								bind:label={screenLabel}
+								bind:this={screenInstance}
+							/>
+						</div>
+					{/key}
+				{/if}
+			</div>
 		</main>
 
 		<div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">

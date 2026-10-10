@@ -89,7 +89,7 @@
 				? isCorrect
 					? 'border-brand bg-brand-soft text-brand-dark'
 					: isSelected
-						? 'border-danger bg-danger-soft text-danger'
+						? 'border-miss bg-miss-soft text-miss'
 						: 'border-line bg-surface opacity-50'
 				: isSelected
 					? 'border-brand bg-brand-soft/60'

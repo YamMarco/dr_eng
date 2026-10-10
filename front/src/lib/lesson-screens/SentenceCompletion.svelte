@@ -74,7 +74,7 @@
 		class="mx-1 inline-block w-40 rounded-lg border-2 px-2 py-1 align-middle text-base font-semibold transition {checked
 			? correct
 				? 'border-brand bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'
-				: 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
+				: 'border-miss bg-miss-soft text-miss motion-safe:animate-shake-wrong'
 			: 'border-line bg-surface focus:border-brand'}"
 	/>
 	<Md text={screen.after} />

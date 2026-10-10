@@ -99,7 +99,7 @@
 			disabled={done}
 			onclick={() => pick('left', i)}
 			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
-				? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
+				? 'border-miss bg-miss-soft text-miss motion-safe:animate-shake-wrong'
 				: done
 					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
 					: selected?.side === 'left' && selected.i === i
@@ -116,7 +116,7 @@
 			disabled={doneR}
 			onclick={() => pick('right', j)}
 			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrongR
-				? 'border-danger bg-danger-soft text-danger motion-safe:animate-shake-wrong'
+				? 'border-miss bg-miss-soft text-miss motion-safe:animate-shake-wrong'
 				: doneR
 					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
 					: selected?.side === 'right' && selected.i === j

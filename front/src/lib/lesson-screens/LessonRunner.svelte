@@ -234,7 +234,7 @@
 					in:fly={{ y: -12, duration: 280, delay: 0, easing: backOut }}
 					class="flex h-16 w-16 items-center justify-center rounded-2xl {passed
 						? 'bg-brand-soft text-brand'
-						: 'bg-danger-soft text-danger'}"
+						: 'bg-miss-soft text-miss'}"
 				>
 					{#if passed}
 						<svg

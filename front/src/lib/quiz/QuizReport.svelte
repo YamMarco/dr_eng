@@ -12,7 +12,7 @@
 		<span
 			class="flex h-16 w-16 items-center justify-center rounded-2xl {score.passed
 				? 'bg-brand-soft text-brand'
-				: 'bg-danger-soft text-danger'}"
+				: 'bg-miss-soft text-miss'}"
 		>
 			{#if score.passed}
 				<svg

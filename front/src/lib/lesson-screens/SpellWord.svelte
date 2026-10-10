@@ -104,12 +104,12 @@
 	class="w-full rounded-xl border-2 px-3 py-2 text-lg leading-relaxed transition {checked
 		? correct
 			? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
-			: 'border-danger bg-danger-soft/40 motion-safe:animate-shake-wrong'
+			: 'border-miss bg-miss-soft/40 motion-safe:animate-shake-wrong'
 		: 'border-line bg-surface focus:border-brand'}"
 />
 
 {#if checked}
-	<p class="mt-3 text-sm font-semibold {correct ? 'text-brand-dark' : 'text-danger'}">
+	<p class="mt-3 text-sm font-semibold {correct ? 'text-brand-dark' : 'text-miss'}">
 		{correct
 			? i18n.dict.wordCard.correctFeedback
 			: i18n.dict.wordCard.incorrectFeedback(screen.word)}

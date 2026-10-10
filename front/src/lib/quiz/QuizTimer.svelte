@@ -8,6 +8,8 @@
 		label
 	}: { seconds: number; warning?: boolean; label?: string } = $props();
 
+	// Ambient by design: a quiet outline until `warning` (the final minutes),
+	// then the only red on the screen - present, never a countdown bomb.
 	// Keeps counting in the background either way - this only hides the
 	// digits from view, e.g. so a passer-by can't read how much time is left.
 	let hidden = $state(false);
@@ -20,7 +22,7 @@
 	onclick={() => (hidden = !hidden)}
 	class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold tabular transition-colors active:scale-95 {warning
 		? 'bg-danger-soft text-danger'
-		: 'bg-brand-soft text-brand-dark'}"
+		: 'text-muted ring-1 ring-line'}"
 >
 	<svg
 		viewBox="0 0 24 24"

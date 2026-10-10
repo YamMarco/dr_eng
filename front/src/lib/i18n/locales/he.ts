@@ -56,7 +56,10 @@ export const he = {
 		viewSolutionButton: 'צפייה בפתרונות',
 		viewSolutionLocked: 'פתרו את המבחן פעם אחת כדי לפתוח',
 		solutionTitle: 'פתרון',
-		correctAnswerLabel: 'תשובה נכונה'
+		correctAnswerLabel: 'תשובה נכונה',
+		showPassage: 'הצגת הקטע',
+		hidePassage: 'הסתרת הקטע',
+		examModeNote: 'מצב מבחן: אין משוב והסברים עד ההגשה, בדיוק כמו בבגרות.'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',

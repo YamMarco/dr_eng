@@ -58,9 +58,7 @@
 	let lines = $derived(paragraph ? splitSentences(essayText) : inputLines);
 
 	let allFilled = $derived(
-		paragraph
-			? lines.length >= minSentences
-			: inputLines.every((line) => line.trim().length > 0)
+		paragraph ? lines.length >= minSentences : inputLines.every((line) => line.trim().length > 0)
 	);
 	// A copied question doesn't count, as in the exam's word count. The question
 	// is the first quoted part of the prompt; the rest (a draft to extend, hints)
@@ -227,9 +225,8 @@
 		class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
 			? allOk
 				? 'border-brand bg-brand-soft/40'
-				: 'border-danger bg-danger-soft/40'
-			: 'border-line bg-surface focus:border-brand'}"
-	></textarea>
+				: 'border-miss bg-miss-soft/40'
+			: 'border-line bg-surface focus:border-brand'}"></textarea>
 	{#if !checked}
 		<HandwritingScanButton onText={appendScan} />
 	{/if}
@@ -252,7 +249,7 @@
 				class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
 					? allOk
 						? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
-						: 'border-danger bg-danger-soft/40 motion-safe:animate-shake-wrong'
+						: 'border-miss bg-miss-soft/40 motion-safe:animate-shake-wrong'
 					: 'border-line bg-surface focus:border-brand'}"
 			/>
 		{/each}
@@ -278,7 +275,7 @@
 
 	{#if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
-			<li class="flex items-center gap-2 {allFilled ? 'text-brand-dark' : 'text-danger'}">
+			<li class="flex items-center gap-2 {allFilled ? 'text-brand-dark' : 'text-miss'}">
 				<span>{allFilled ? '✓' : '✗'}</span>
 				{paragraph
 					? i18n.dict.writingTask.checkMinSentences(minSentences)
@@ -295,13 +292,13 @@
 				</li>
 			{/if}
 			{#if paragraph}
-				<li class="flex items-center gap-2 {lengthOk ? 'text-brand-dark' : 'text-danger'}">
+				<li class="flex items-center gap-2 {lengthOk ? 'text-brand-dark' : 'text-miss'}">
 					<span>{lengthOk ? '✓' : '✗'}</span>
 					{i18n.dict.writingTask.checkLength(screen.minWords ?? 0, paragraphWords)}
 				</li>
 			{/if}
 			{#if hasAccepted}
-				<li class="flex items-center gap-2 {acceptedOk ? 'text-brand-dark' : 'text-danger'}">
+				<li class="flex items-center gap-2 {acceptedOk ? 'text-brand-dark' : 'text-miss'}">
 					<span>{acceptedOk ? '✓' : '✗'}</span>
 					{i18n.dict.writingTask.checkAccepted}
 				</li>
@@ -313,20 +310,20 @@
 				{/if}
 			{:else}
 				{#if autoCheck}
-					<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-danger'}">
+					<li class="flex items-center gap-2 {punctuationOk ? 'text-brand-dark' : 'text-miss'}">
 						<span>{punctuationOk ? '✓' : '✗'}</span>
 						{i18n.dict.writingTask.checkPunctuation(capitalIsError, maxTypos)}
 					</li>
 				{/if}
 				{#if screen.requiredMoves?.length}
-					<li class="flex items-center gap-2 {movesOk ? 'text-brand-dark' : 'text-danger'}">
+					<li class="flex items-center gap-2 {movesOk ? 'text-brand-dark' : 'text-miss'}">
 						<span>{movesOk ? '✓' : '✗'}</span>
 						{i18n.dict.writingTask.checkMoves(
 							screen.requiredMoves.map((m) => i18n.dict.writingTask.move[m]).join(' · ')
 						)}
 					</li>
 					{#if !movesOk}
-						<li class="ms-6 text-xs font-semibold text-danger">
+						<li class="ms-6 text-xs font-semibold text-miss">
 							{i18n.dict.writingTask.movesMissing(
 								missing.map((m) => i18n.dict.writingTask.move[m]).join(', ')
 							)}
@@ -334,17 +331,17 @@
 					{/if}
 				{/if}
 				{#if minWordsUsedReq > 0}
-					<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-danger'}">
+					<li class="flex items-center gap-2 {wordBankOk ? 'text-brand-dark' : 'text-miss'}">
 						<span>{wordBankOk ? '✓' : '✗'}</span>
 						{i18n.dict.writingTask.checkWordBank(minWordsUsedReq)}
 					</li>
 				{/if}
-				<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-danger'}">
+				<li class="flex items-center gap-2 {contentOk ? 'text-brand-dark' : 'text-miss'}">
 					<span>{contentOk ? '✓' : '✗'}</span>
 					{i18n.dict.writingTask.checkContent}
 				</li>
 				{#each lintIssues as issue (issue.line)}
-					<li class="ms-6 text-xs font-semibold text-danger">{lintMessage(issue)}</li>
+					<li class="ms-6 text-xs font-semibold text-miss">{lintMessage(issue)}</li>
 				{/each}
 			{/if}
 		</ul>

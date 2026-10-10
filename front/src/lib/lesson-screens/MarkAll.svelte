@@ -158,7 +158,7 @@
 						? isTarget
 							? 'bg-brand-soft text-brand-dark'
 							: isPicked
-								? 'bg-danger-soft text-danger line-through'
+								? 'bg-miss-soft text-miss line-through'
 								: 'opacity-60'
 						: isPicked
 							? 'bg-brand-soft ring-1 ring-brand/40'
@@ -171,7 +171,7 @@
 		in:scale={{ start: 0.7, duration: 220, easing: backOut }}
 		class="mt-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold {passed
 			? 'bg-brand-soft text-brand-dark'
-			: 'bg-danger-soft text-danger'}"
+			: 'bg-miss-soft text-miss'}"
 	>
 		{passed ? '✓' : '✗'}
 		{passed ? i18n.dict.exerciseKind.passedFeedback : i18n.dict.exerciseKind.notPassedFeedback}
