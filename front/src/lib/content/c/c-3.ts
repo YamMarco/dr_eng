@@ -626,6 +626,20 @@ export const c3Lessons: LessonNode[] = [
                 'הדוגמה מוכיחה את הסיבה - "new skills"',
               ],
             },
+            {
+              type: "mcq",
+              prompt:
+                "מקריאה לכתיבה: הטקסט שקראתם בחלק ב׳ הוא מקור מצוין לדוגמאות.\n\n{p:text}THE CITY GARDEN PROJECT\n{p:text}Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted over 2,000 trees and created 15 community gardens. According to a survey, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.\n\nאיזה משפט For example משתמש בטקסט הכי נכון?",
+              options: [
+                "For example, in Greenville, the number of people who exercise outdoors went up from 15% to 60%.",
+                "For example, stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.",
+                "For example, Greenville became a much better place.",
+                "For example, in Greenville, everyone started to exercise every day.",
+              ],
+              correctIndex: 0,
+              explanation:
+                'עובדה מהטקסט, במילים שלכם. משפט שהועתק מהטקסט מילה במילה לא נספר בבחינה. "a much better place" כללי מדי. "everyone... every day" לא כתוב בטקסט.',
+            },
           ],
         },
         {
@@ -722,6 +736,34 @@ export const c3Lessons: LessonNode[] = [
                 "יש because, ואחריו סיבה ספציפית - לא good / nice / important",
                 "For example נותן פרט אמיתי: מקום, מספר, שם או מקרה",
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
+              ],
+            },
+            {
+              type: "writing-task",
+              prompt:
+                '"Do you think every city should have a project like the City Garden Project?"\n\n{p:text}THE CITY GARDEN PROJECT\n{p:text}Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted over 2,000 trees and created 15 community gardens. According to a survey, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.\n\n✏️ I think... because...\n✏️ For example, [עובדה מהטקסט, במילים שלכם],...\n✏️ In addition,...',
+              wordBank: [
+                "I think",
+                "I do not think",
+                "should",
+                "because",
+                "for example",
+                "in addition",
+                "trees / עצים",
+                "gardens / גינות",
+                "residents / תושבים",
+                "stress / לחץ",
+                "healthy / בריא",
+              ],
+              minSentences: 3,
+              minWordsUsed: 3,
+              modelAnswer:
+                "I think every city should have a project like the City Garden Project because green streets make people calmer. For example, in Greenville, stress went down by 40% after the charity planted the trees. In addition, gardens bring neighbors together and give children a safe place to play.",
+              checklist: [
+                "משפט 1 פותח בעמדה: I think / I do not think",
+                "ה-For example משתמש בעובדה מהטקסט (מספר!), במילים שלכם",
+                "לא העתקתי משפט שלם מהטקסט",
+                "In addition מביא סיבה חדשה",
               ],
             },
           ],
