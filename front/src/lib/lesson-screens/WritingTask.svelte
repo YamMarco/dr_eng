@@ -12,6 +12,7 @@
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import HandwritingScanButton from '$lib/ocr/HandwritingScanButton.svelte';
 	import { splitSentences } from '$lib/ocr/scan';
+	import { countValidWords } from '$lib/checks/length';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -35,16 +36,31 @@
 	label = i18n.dict.exerciseKind.submitButton;
 
 	// --- Lesson mode: one input per required sentence, gated on wordBank use
-	// and light punctuation checking. Unchanged from before quiz mode existed;
-	// lesson content always supplies minSentences/minWordsUsed/wordBank. ---
+	// and light punctuation checking; lesson content always supplies
+	// minSentences/minWordsUsed/wordBank. With `minWords` it is one paragraph
+	// box instead (the exam's shape): the same checks run on its sentences,
+	// plus the length rule. ---
 	let minSentences = $derived(screen.minSentences ?? 1);
 	let minWordsUsedReq = $derived(screen.minWordsUsed ?? 0);
 	let wordBank = $derived(screen.wordBank ?? []);
+	const paragraph = mode === 'lesson' && untrack(() => screen.minWords !== undefined);
+	// The text of the single box (quiz essay or lesson paragraph). Revisiting
+	// via the quiz navigator restores whatever was typed before.
+	let essayText = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
+	let essayWords = $derived(essayText.trim() ? essayText.trim().split(/\s+/).length : 0);
 
-	let lines = $state<string[]>(untrack(() => Array.from({ length: minSentences }, () => '')));
+	let inputLines = $state<string[]>(untrack(() => Array.from({ length: minSentences }, () => '')));
 	let checked = $state(false);
+	let lines = $derived(paragraph ? splitSentences(essayText) : inputLines);
 
-	let allFilled = $derived(lines.every((line) => line.trim().length > 0));
+	let allFilled = $derived(
+		paragraph
+			? lines.length >= minSentences
+			: inputLines.every((line) => line.trim().length > 0)
+	);
+	// A copied question doesn't count, as in the exam's word count.
+	let paragraphWords = $derived(paragraph ? countValidWords(essayText, { prompt: screen.prompt }) : 0);
+	let lengthOk = $derived(!paragraph || paragraphWords >= (screen.minWords ?? 0));
 
 	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
 	let capitalIsError = $derived(screen.capitalIsError ?? true);
@@ -79,14 +95,16 @@
 	let hasAccepted = $derived(accepted.length > 0);
 	let acceptedOk = $derived(lines.every((line) => matchesAccepted(line, accepted)));
 	let allOk = $derived(
-		hasAccepted ? allFilled && acceptedOk : allFilled && punctuationOk && wordBankOk && contentOk
+		hasAccepted
+			? allFilled && acceptedOk
+			: allFilled && lengthOk && punctuationOk && wordBankOk && contentOk
 	);
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
 	function fillFromScan(text: string) {
 		const sentences = splitSentences(text);
-		lines = lines.map((_, i) =>
-			i < lines.length - 1 ? (sentences[i] ?? '') : sentences.slice(i).join(' ')
+		inputLines = inputLines.map((_, i) =>
+			i < inputLines.length - 1 ? (sentences[i] ?? '') : sentences.slice(i).join(' ')
 		);
 	}
 
@@ -112,14 +130,11 @@
 	// --- Quiz mode: a single free-text essay, no auto-check. Word count is
 	// just a live counter against minWords/maxWords, not a hard gate beyond
 	// minWords (report shows the raw text for manual review). ---
-	// Revisiting via the quiz navigator restores whatever was typed before.
-	let essayText = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
-	let essayWords = $derived(essayText.trim() ? essayText.trim().split(/\s+/).length : 0);
 	let essayOk = $derived(essayWords >= (screen.minWords ?? 1));
 
 	$effect(() => {
 		if (checked) return;
-		disabled = mode === 'quiz' ? !essayOk : !allFilled;
+		disabled = mode === 'quiz' ? !essayOk : paragraph ? essayWords === 0 : !allFilled;
 	});
 
 	export function primaryAction() {
@@ -130,7 +145,7 @@
 			return;
 		}
 		if (!checked) {
-			if (!allFilled) return;
+			if (paragraph ? essayWords === 0 : !allFilled) return;
 			checked = true;
 			recordAnswer(score!, allOk);
 			label = i18n.dict.lesson.nextQuestionButton;
@@ -162,15 +177,22 @@
 	</div>
 {/if}
 
-{#if mode === 'quiz'}
+{#if mode === 'quiz' || paragraph}
 	<textarea
 		dir="ltr"
-		rows="6"
+		rows="7"
+		disabled={checked}
 		bind:value={essayText}
 		placeholder={i18n.dict.selfCheck.placeholder}
-		class="mt-4 w-full rounded-xl border-2 border-line bg-surface p-3 leading-relaxed focus:border-brand"
+		class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
+			? allOk
+				? 'border-brand bg-brand-soft/40'
+				: 'border-danger bg-danger-soft/40'
+			: 'border-line bg-surface focus:border-brand'}"
 	></textarea>
-	<HandwritingScanButton onText={appendScan} />
+	{#if !checked}
+		<HandwritingScanButton onText={appendScan} />
+	{/if}
 	{#if screen.minWords !== undefined || screen.maxWords !== undefined}
 		<p class="mt-2 text-xs font-semibold text-muted tabular" dir="ltr">
 			{i18n.dict.selfCheck.wordCount(essayWords)}
@@ -179,13 +201,13 @@
 	{/if}
 {:else}
 	<div class="mt-4 flex flex-col gap-3">
-		{#each lines as line, i (i)}
+		{#each inputLines as line, i (i)}
 			<input
 				type="text"
 				dir="ltr"
 				disabled={checked}
 				value={line}
-				oninput={(e) => (lines[i] = e.currentTarget.value)}
+				oninput={(e) => (inputLines[i] = e.currentTarget.value)}
 				placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
 				class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
 					? allOk
@@ -198,12 +220,14 @@
 	{#if !checked}
 		<HandwritingScanButton onText={fillFromScan} />
 	{/if}
+{/if}
 
+{#if mode === 'lesson'}
 	{#if autoCheck}
 		<WritingCheck
-			text={lines.join('\n')}
+			text={paragraph ? essayText : lines.join('\n')}
 			options={{ prompt, extraWords: wordBank }}
-			showLength={false}
+			showLength={paragraph}
 		/>
 	{/if}
 
@@ -211,8 +235,16 @@
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
 			<li class="flex items-center gap-2 {allFilled ? 'text-brand-dark' : 'text-danger'}">
 				<span>{allFilled ? '✓' : '✗'}</span>
-				{i18n.dict.writingTask.checkSentences(minSentences)}
+				{paragraph
+					? i18n.dict.writingTask.checkMinSentences(minSentences)
+					: i18n.dict.writingTask.checkSentences(minSentences)}
 			</li>
+			{#if paragraph}
+				<li class="flex items-center gap-2 {lengthOk ? 'text-brand-dark' : 'text-danger'}">
+					<span>{lengthOk ? '✓' : '✗'}</span>
+					{i18n.dict.writingTask.checkLength(screen.minWords ?? 0, paragraphWords)}
+				</li>
+			{/if}
 			{#if hasAccepted}
 				<li class="flex items-center gap-2 {acceptedOk ? 'text-brand-dark' : 'text-danger'}">
 					<span>{acceptedOk ? '✓' : '✗'}</span>

@@ -777,7 +777,22 @@
 													value={screen.maxTypos ?? 1}
 													onChange={(v) => (screen.maxTypos = v)}
 												/>
+												<NumberField
+													label="מינ׳ מילים (פסקה)"
+													value={screen.minWords}
+													onChange={(v) => (screen.minWords = v)}
+												/>
+												{#if screen.minWords !== undefined}
+													<NumberField
+														label="מקס׳ מילים"
+														value={screen.maxWords}
+														onChange={(v) => (screen.maxWords = v)}
+													/>
+												{/if}
 											</div>
+											<p class="text-xs text-muted">
+												מינ׳ מילים = תיבת פסקה אחת (כמו בבחינה) במקום שורה לכל משפט.
+											</p>
 											<label class="flex items-center gap-2 text-xs text-muted">
 												<input
 													type="checkbox"

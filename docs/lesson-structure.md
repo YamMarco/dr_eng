@@ -237,6 +237,8 @@ mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.t
 UI: `<WritingCheck text options />` under the textarea (writing-task, self-check, writing lab).
 Lessons only: per-screen `autoCheck: false` hides it (and skips writing-task's capital/period check). Exams never auto-check.
 
+`writing-task.minWords` in a lesson = paragraph mode: one textarea with a live word counter and the length line (the exam's shape), instead of one input per sentence. The text is split into sentences for the punctuation / word-bank / lint checks, `minSentences` becomes a minimum, and valid words (copied prompt sentences not counted) must reach `minWords`. Use it for every 70-90 word task; keep line mode for 1-3 sentence drills.
+
 `writing-task.acceptedAnswers` (lessons only): for fixed-shape tasks such as the one-sentence YES/NO stance. Whole sentences, `(a|b)` = a or b, groups multiply out (`acceptedAnswers.ts`). When set, each line must equal one of them (case, punctuation and apostrophes ignored) and the word-bank / punctuation / lint checks are skipped; a wrong answer shows up to 3 examples. Write the opener variants and the should / should not variants once per row, the subject stays fixed.
 
 Editor settings layout (SlideStage): on wide screens (xl) the slide is the start column (right in RTL) and the settings card sits beside it; on narrow screens the settings stack under the slide. Settings are in plain flow (nothing sticky), as `SettingsGroup` blocks: type-specific groups first, then "הגדרות כלליות" (score in exams, auto-check in lessons). Use `SettingsGroup` + `NumberField` for any new setting.

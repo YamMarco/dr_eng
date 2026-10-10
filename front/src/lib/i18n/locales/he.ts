@@ -165,6 +165,9 @@ export const he = {
 		wordBankLabel: 'מילים לשימוש',
 		linePlaceholder: (n: number) => `משפט ${n}...`,
 		checkSentences: (n: number) => `כל ${n} המשפטים מולאו`,
+		checkMinSentences: (n: number) => `לפחות ${n} משפטים`,
+		checkLength: (min: number, words: number) =>
+			`לפחות ${min} מילים (נספרו ${words}; שאלה שהועתקה לא נספרת)`,
 		sentencesPhrase: (n: number) => (n === 1 ? 'משפט אחד' : n === 2 ? 'שני משפטים' : `${n} משפטים`),
 		wordsPhrase: (n: number) => (n === 1 ? 'מילה אחת' : n === 2 ? 'שתי מילים' : `${n} מילים`),
 		checkPunctuation: (capitalIsError: boolean, maxTypos: number) =>

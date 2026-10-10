@@ -277,7 +277,7 @@ export const writingTaskSchema = z
 			.int()
 			.min(0)
 			.optional()
-			.describe('Quiz mode only: live word-count target.'),
+			.describe('Live word-count target. Lesson mode: setting it turns the task into one paragraph box (the exam shape); valid words (a copied prompt does not count) must reach it, and minSentences is a minimum.'),
 		maxWords: z.number().int().min(0).optional(),
 		points: points.optional(),
 		paragraphRef: paragraphRef.optional()
