@@ -489,17 +489,6 @@
 				<div
 					class="@container relative grid gap-4 xl:h-full xl:grid-cols-[36.95rem_minmax(0,1fr)] xl:items-start xl:overflow-x-clip"
 				>
-					<!-- The lip rides the settings' start edge; collapsed, it docks to the canvas's left edge. -->
-					<button
-						type="button"
-						class="absolute top-1/2 z-10 hidden h-16 w-4 -translate-y-1/2 items-center justify-center rounded-lg border-2 border-line bg-surface text-muted shadow-sm transition-[right] duration-300 ease-out hover:bg-line/60 motion-reduce:transition-none xl:flex {settingsCollapsed
-							? 'xl:right-[calc(100%-1rem)]'
-							: 'xl:right-[36.95rem]'}"
-						aria-label={settingsCollapsed ? 'הצג הגדרות' : 'הסתר הגדרות'}
-						onclick={() => (settingsCollapsed = !settingsCollapsed)}
-					>
-						{settingsCollapsed ? '›' : '‹'}
-					</button>
 					<div
 						class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:ps-[2.4rem] xl:pe-[2.55rem] xl:transition-transform xl:duration-300 xl:ease-out {settingsCollapsed
 							? 'xl:translate-x-[calc(18.475rem-50cqw)]'
@@ -508,395 +497,413 @@
 						<div
 							class="mx-auto w-full {device === 'phone'
 								? 'max-w-[390px]'
-								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md"
+								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md transition-[max-width] duration-500 ease-in-out motion-reduce:transition-none"
 						>
 							<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6">
 								<EditableScreen {model} {nodeId} {path} />
 							</div>
 						</div>
 					</div>
+					<!-- Settings and their lip are one unit: they slide out together, and the lip stays
+					     docked on the canvas's left edge when collapsed. -->
 					<div
-						inert={settingsCollapsed}
-						class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:transition-[transform,opacity] xl:duration-300 xl:ease-out {settingsCollapsed
-							? 'xl:-translate-x-full xl:opacity-0'
+						class="relative min-h-0 motion-reduce:transition-none xl:h-full xl:transition-transform xl:duration-300 xl:ease-out {settingsCollapsed
+							? 'xl:-translate-x-full'
 							: ''}"
 					>
-						<div
-							class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
+						<button
+							type="button"
+							class="absolute top-1/2 right-0 z-10 hidden h-24 w-6 translate-x-full -translate-y-1/2 items-center justify-center rounded-r-xl bg-brand text-xl leading-none font-bold text-white shadow-md transition-colors hover:bg-brand-dark xl:flex"
+							aria-label={settingsCollapsed ? 'הצג הגדרות' : 'הסתר הגדרות'}
+							onclick={() => (settingsCollapsed = !settingsCollapsed)}
 						>
-							{#if rawOpen}
-								<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-									<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
-									<textarea
-										bind:value={raw}
-										rows="10"
-										dir="ltr"
-										spellcheck="false"
-										class="w-full rounded-xl border-2 border-line bg-surface p-2 font-mono text-xs"
-									></textarea>
-									{#if rawProblems.length}
-										<ul class="mt-1 list-disc ps-4 text-xs text-danger" dir="rtl">
-											{#each rawProblems as problem, i (i)}
-												<li>{problem.message}</li>
-											{/each}
-										</ul>
-									{/if}
-									<div class="mt-2 flex gap-2">
-										<button
-											type="button"
-											class="rounded-lg bg-brand px-3 py-1 text-xs font-bold text-white"
-											onclick={applyRaw}
-										>
-											החל
-										</button>
-										<button
-											type="button"
-											class="text-xs text-muted"
-											onclick={() => (rawOpen = false)}>ביטול</button
-										>
-									</div>
-								</div>
-							{:else if screen.type === 'cloze-pick'}
-								<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">
-									<p class="mb-2 text-xs font-bold text-muted">
-										אפשרויות - סמנו את כל התשובות הנכונות (אפשר יותר מאחת)
-									</p>
-									{#each screen.options as _opt, i (i)}
-										<div
-											class="flex items-center gap-2 rounded-xl border p-2 {(
-												screen.correctIndices ?? []
-											).includes(i)
-												? 'border-brand bg-brand-soft/50'
-												: 'border-line'}"
-										>
-											<input
-												type="checkbox"
-												checked={(screen.correctIndices ?? []).includes(i)}
-												onchange={() => {
-													screen.correctIndices ??= [];
-													screen.correctIndices = screen.correctIndices.includes(i)
-														? screen.correctIndices.filter((x: number) => x !== i)
-														: [...screen.correctIndices, i].sort((a: number, b: number) => a - b);
-												}}
-												aria-label="תשובה נכונה"
-											/>
-											<div class="w-full">
-												<MarkdownInput bind:value={screen.options[i]} minRows={1} />
-											</div>
+							{settingsCollapsed ? '›' : '‹'}
+						</button>
+						<div
+							inert={settingsCollapsed}
+							class="min-h-0 motion-reduce:transition-none xl:h-full xl:overflow-y-auto xl:transition-opacity xl:duration-300 xl:ease-out {settingsCollapsed
+								? 'xl:opacity-0'
+								: ''}"
+						>
+							<div
+								class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
+							>
+								{#if rawOpen}
+									<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+										<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
+										<textarea
+											bind:value={raw}
+											rows="10"
+											dir="ltr"
+											spellcheck="false"
+											class="w-full rounded-xl border-2 border-line bg-surface p-2 font-mono text-xs"
+										></textarea>
+										{#if rawProblems.length}
+											<ul class="mt-1 list-disc ps-4 text-xs text-danger" dir="rtl">
+												{#each rawProblems as problem, i (i)}
+													<li>{problem.message}</li>
+												{/each}
+											</ul>
+										{/if}
+										<div class="mt-2 flex gap-2">
 											<button
 												type="button"
-												class="text-xs text-danger"
-												onclick={() => {
-													screen.options.splice(i, 1);
-													screen.correctIndices = (screen.correctIndices ?? [])
-														.filter((x: number) => x !== i)
-														.map((x: number) => (x > i ? x - 1 : x));
-												}}
+												class="rounded-lg bg-brand px-3 py-1 text-xs font-bold text-white"
+												onclick={applyRaw}
 											>
-												✕
+												החל
 											</button>
-										</div>
-									{/each}
-									<button
-										type="button"
-										class="text-xs font-semibold text-brand"
-										onclick={() => (screen.options = [...screen.options, ''])}
-									>
-										+ אפשרות
-									</button>
-								</div>
-							{:else if screen.type === 'mark-all'}
-								<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
-									<div class="flex flex-wrap items-center gap-1.5">
-										<span class="text-xs font-bold text-muted">קטגוריות:</span>
-										{#each screen.categories ?? [] as cat (cat)}
-											{@const sw = markAllSwatch(cat.color)}
-											<span
-												class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold"
-												style="background:{sw.bg};color:{sw.fg}"
+											<button
+												type="button"
+												class="text-xs text-muted"
+												onclick={() => (rawOpen = false)}>ביטול</button
 											>
-												<button type="button" onclick={() => cycleColor(cat)}>🎨</button>
-												<span>{cat.name}</span>
-												<button type="button" onclick={() => delCategory(cat)}>✕</button>
-											</span>
+										</div>
+									</div>
+								{:else if screen.type === 'cloze-pick'}
+									<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">
+										<p class="mb-2 text-xs font-bold text-muted">
+											אפשרויות - סמנו את כל התשובות הנכונות (אפשר יותר מאחת)
+										</p>
+										{#each screen.options as _opt, i (i)}
+											<div
+												class="flex items-center gap-2 rounded-xl border p-2 {(
+													screen.correctIndices ?? []
+												).includes(i)
+													? 'border-brand bg-brand-soft/50'
+													: 'border-line'}"
+											>
+												<input
+													type="checkbox"
+													checked={(screen.correctIndices ?? []).includes(i)}
+													onchange={() => {
+														screen.correctIndices ??= [];
+														screen.correctIndices = screen.correctIndices.includes(i)
+															? screen.correctIndices.filter((x: number) => x !== i)
+															: [...screen.correctIndices, i].sort((a: number, b: number) => a - b);
+													}}
+													aria-label="תשובה נכונה"
+												/>
+												<div class="w-full">
+													<MarkdownInput bind:value={screen.options[i]} minRows={1} />
+												</div>
+												<button
+													type="button"
+													class="text-xs text-danger"
+													onclick={() => {
+														screen.options.splice(i, 1);
+														screen.correctIndices = (screen.correctIndices ?? [])
+															.filter((x: number) => x !== i)
+															.map((x: number) => (x > i ? x - 1 : x));
+													}}
+												>
+													✕
+												</button>
+											</div>
 										{/each}
 										<button
 											type="button"
 											class="text-xs font-semibold text-brand"
-											onclick={addCategory}
+											onclick={() => (screen.options = [...screen.options, ''])}
 										>
-											+ קטגוריה
+											+ אפשרות
 										</button>
 									</div>
-									<p class="text-xs text-muted">
-										גררו לבחירת ביטוי, ואז שייכו. לחיצה על מילה מסומנת מבטלת.
-									</p>
-									<TextMarker
-										text={screen.text}
-										dir={screen.dir ?? 'auto'}
-										colors={markColors}
-										onSelect={(t) => (pending = t)}
-										onTokenClick={unmark}
-									/>
-									{#if pending.length}
-										<div
-											class="flex flex-wrap items-center gap-1.5 rounded-xl bg-brand-soft/50 p-2"
-										>
-											<span class="text-xs font-bold text-muted">סמן כ־</span>
+								{:else if screen.type === 'mark-all'}
+									<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
+										<div class="flex flex-wrap items-center gap-1.5">
+											<span class="text-xs font-bold text-muted">קטגוריות:</span>
 											{#each screen.categories ?? [] as cat (cat)}
 												{@const sw = markAllSwatch(cat.color)}
-												<button
-													type="button"
-													class="rounded-full px-2 py-0.5 text-xs font-bold"
+												<span
+													class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold"
 													style="background:{sw.bg};color:{sw.fg}"
-													onclick={() => markPending(cat.name)}
 												>
-													{cat.name}
-												</button>
+													<button type="button" onclick={() => cycleColor(cat)}>🎨</button>
+													<span>{cat.name}</span>
+													<button type="button" onclick={() => delCategory(cat)}>✕</button>
+												</span>
 											{/each}
 											<button
 												type="button"
-												class="rounded-full bg-surface px-2 py-0.5 text-xs font-bold ring-1 ring-line"
-												onclick={() => markPending(null)}
+												class="text-xs font-semibold text-brand"
+												onclick={addCategory}
 											>
-												{screen.categories?.length ? 'ללא קטגוריה' : 'סמן'}
+												+ קטגוריה
 											</button>
-											<button
-												type="button"
-												class="px-2 text-xs text-muted"
-												onclick={() => (pending = [])}>בטל</button
+										</div>
+										<p class="text-xs text-muted">
+											גררו לבחירת ביטוי, ואז שייכו. לחיצה על מילה מסומנת מבטלת.
+										</p>
+										<TextMarker
+											text={screen.text}
+											dir={screen.dir ?? 'auto'}
+											colors={markColors}
+											onSelect={(t) => (pending = t)}
+											onTokenClick={unmark}
+										/>
+										{#if pending.length}
+											<div
+												class="flex flex-wrap items-center gap-1.5 rounded-xl bg-brand-soft/50 p-2"
 											>
-										</div>
-									{/if}
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מזהה טיימר (אופציונלי)
-										<input
-											bind:value={screen.timerKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-								</div>
-							{:else if screen.type === 'steps'}
-								<label
-									class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-								>
-									<input type="checkbox" bind:checked={screen.ordered} />
-									רשימה ממוספרת
-								</label>
-							{:else if screen.type === 'passage-mcq'}
-								<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מזהה טיימר (אופציונלי - ריק = בלי טיימר)
-										<input
-											bind:value={screen.timerKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-								</div>
-							{:else if screen.type === 'timed-reading'}
-								<label
-									class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-								>
-									מזהה טיימר
-									<input
-										bind:value={screen.timerKey}
-										dir="ltr"
-										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-									/>
-								</label>
-							{:else if screen.type === 'time-result'}
-								<label
-									class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-								>
-									מזהה טיימר
-									<input
-										bind:value={screen.timerKey}
-										dir="ltr"
-										class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-									/>
-								</label>
-							{:else if screen.type === 'time-comparison'}
-								<div class="mt-4 flex flex-wrap gap-4 border-t-2 border-dashed border-line/60 pt-4">
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מזהה א׳
-										<input
-											bind:value={screen.aKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-									<label class="flex items-center gap-2 text-xs text-muted">
-										מזהה ב׳
-										<input
-											bind:value={screen.bKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-								</div>
-							{:else if screen.type === 'writing-task'}
-								{#if isExam}
-									<SettingsGroup title="חיבור חופשי - טווח מילים">
-										<div class="flex flex-wrap gap-x-4 gap-y-2">
-											<NumberField
-												label="מינ׳ מילים"
-												value={screen.minWords}
-												onChange={(v) => (screen.minWords = v)}
-											/>
-											<NumberField
-												label="מקס׳ מילים"
-												value={screen.maxWords}
-												onChange={(v) => (screen.maxWords = v)}
-											/>
-										</div>
-									</SettingsGroup>
-								{:else}
-									<SettingsGroup title="תנאי מעבר">
-										<div class="flex flex-wrap gap-x-4 gap-y-2">
-											<NumberField
-												label="מינ׳ משפטים"
-												min={1}
-												value={screen.minSentences}
-												onChange={(v) => (screen.minSentences = v)}
-											/>
-											<NumberField
-												label="מינ׳ מילים מהבנק"
-												value={screen.minWordsUsed}
-												onChange={(v) => (screen.minWordsUsed = v)}
-											/>
-											<NumberField
-												label="טעויות קטנות מותרות"
-												value={screen.maxTypos ?? 1}
-												onChange={(v) => (screen.maxTypos = v)}
-											/>
-										</div>
+												<span class="text-xs font-bold text-muted">סמן כ־</span>
+												{#each screen.categories ?? [] as cat (cat)}
+													{@const sw = markAllSwatch(cat.color)}
+													<button
+														type="button"
+														class="rounded-full px-2 py-0.5 text-xs font-bold"
+														style="background:{sw.bg};color:{sw.fg}"
+														onclick={() => markPending(cat.name)}
+													>
+														{cat.name}
+													</button>
+												{/each}
+												<button
+													type="button"
+													class="rounded-full bg-surface px-2 py-0.5 text-xs font-bold ring-1 ring-line"
+													onclick={() => markPending(null)}
+												>
+													{screen.categories?.length ? 'ללא קטגוריה' : 'סמן'}
+												</button>
+												<button
+													type="button"
+													class="px-2 text-xs text-muted"
+													onclick={() => (pending = [])}>בטל</button
+												>
+											</div>
+										{/if}
 										<label class="flex items-center gap-2 text-xs text-muted">
+											מזהה טיימר (אופציונלי)
 											<input
-												type="checkbox"
-												checked={screen.capitalIsError ?? true}
-												onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
-											/>
-											אות ראשונה קטנה = טעות
-										</label>
-									</SettingsGroup>
-								{/if}
-								<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
-									{#if screen.wordBank}
-										<StringListEditor
-											bind:items={screen.wordBank}
-											addLabel="+ מילה"
-											dir="ltr"
-											compact
-										/>
-									{:else}
-										<button
-											type="button"
-											class="self-start text-xs font-semibold text-brand"
-											onclick={() => (screen.wordBank = [])}
-										>
-											+ הוספת בנק מילים
-										</button>
-									{/if}
-								</SettingsGroup>
-								{#if !isExam}
-									<SettingsGroup
-										title="תשובות מתקבלות"
-										hint="משפט שלם בכל שורה. הסימן | בתוך סוגריים = ״או״: (I think|I believe) = אחת משתי האפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
-									>
-										{#if screen.acceptedAnswers}
-											<StringListEditor
-												bind:items={screen.acceptedAnswers}
-												addLabel="+ תשובה"
+												bind:value={screen.timerKey}
 												dir="ltr"
-												multiline
+												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
 											/>
-											<details class="text-xs text-muted">
-												<summary class="cursor-pointer font-semibold">
-													מה יתקבל בפועל ({expandAccepted(screen.acceptedAnswers).length} משפטים)
-												</summary>
-												<ul class="mt-1 list-disc space-y-0.5 ps-5" dir="ltr">
-													{#each expandAccepted(screen.acceptedAnswers) as sentence (sentence)}
-														<li>{sentence}</li>
-													{/each}
-												</ul>
-											</details>
+										</label>
+									</div>
+								{:else if screen.type === 'steps'}
+									<label
+										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+									>
+										<input type="checkbox" bind:checked={screen.ordered} />
+										רשימה ממוספרת
+									</label>
+								{:else if screen.type === 'passage-mcq'}
+									<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+										<label class="flex items-center gap-2 text-xs text-muted">
+											מזהה טיימר (אופציונלי - ריק = בלי טיימר)
+											<input
+												bind:value={screen.timerKey}
+												dir="ltr"
+												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+											/>
+										</label>
+									</div>
+								{:else if screen.type === 'timed-reading'}
+									<label
+										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+									>
+										מזהה טיימר
+										<input
+											bind:value={screen.timerKey}
+											dir="ltr"
+											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+								{:else if screen.type === 'time-result'}
+									<label
+										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+									>
+										מזהה טיימר
+										<input
+											bind:value={screen.timerKey}
+											dir="ltr"
+											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+										/>
+									</label>
+								{:else if screen.type === 'time-comparison'}
+									<div
+										class="mt-4 flex flex-wrap gap-4 border-t-2 border-dashed border-line/60 pt-4"
+									>
+										<label class="flex items-center gap-2 text-xs text-muted">
+											מזהה א׳
+											<input
+												bind:value={screen.aKey}
+												dir="ltr"
+												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+											/>
+										</label>
+										<label class="flex items-center gap-2 text-xs text-muted">
+											מזהה ב׳
+											<input
+												bind:value={screen.bKey}
+												dir="ltr"
+												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
+											/>
+										</label>
+									</div>
+								{:else if screen.type === 'writing-task'}
+									{#if isExam}
+										<SettingsGroup title="חיבור חופשי - טווח מילים">
+											<div class="flex flex-wrap gap-x-4 gap-y-2">
+												<NumberField
+													label="מינ׳ מילים"
+													value={screen.minWords}
+													onChange={(v) => (screen.minWords = v)}
+												/>
+												<NumberField
+													label="מקס׳ מילים"
+													value={screen.maxWords}
+													onChange={(v) => (screen.maxWords = v)}
+												/>
+											</div>
+										</SettingsGroup>
+									{:else}
+										<SettingsGroup title="תנאי מעבר">
+											<div class="flex flex-wrap gap-x-4 gap-y-2">
+												<NumberField
+													label="מינ׳ משפטים"
+													min={1}
+													value={screen.minSentences}
+													onChange={(v) => (screen.minSentences = v)}
+												/>
+												<NumberField
+													label="מינ׳ מילים מהבנק"
+													value={screen.minWordsUsed}
+													onChange={(v) => (screen.minWordsUsed = v)}
+												/>
+												<NumberField
+													label="טעויות קטנות מותרות"
+													value={screen.maxTypos ?? 1}
+													onChange={(v) => (screen.maxTypos = v)}
+												/>
+											</div>
+											<label class="flex items-center gap-2 text-xs text-muted">
+												<input
+													type="checkbox"
+													checked={screen.capitalIsError ?? true}
+													onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
+												/>
+												אות ראשונה קטנה = טעות
+											</label>
+										</SettingsGroup>
+									{/if}
+									<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
+										{#if screen.wordBank}
+											<StringListEditor
+												bind:items={screen.wordBank}
+												addLabel="+ מילה"
+												dir="ltr"
+												compact
+											/>
 										{:else}
 											<button
 												type="button"
 												class="self-start text-xs font-semibold text-brand"
-												onclick={() => (screen.acceptedAnswers = [])}
+												onclick={() => (screen.wordBank = [])}
 											>
-												+ הוספת תשובות מתקבלות
+												+ הוספת בנק מילים
 											</button>
 										{/if}
 									</SettingsGroup>
-								{/if}
-							{:else if screen.type === 'spell-word'}
-								<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
-									<label class="flex items-center gap-1.5">
+									{#if !isExam}
+										<SettingsGroup
+											title="תשובות מתקבלות"
+											hint="משפט שלם בכל שורה. הסימן | בתוך סוגריים = ״או״: (I think|I believe) = אחת משתי האפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
+										>
+											{#if screen.acceptedAnswers}
+												<StringListEditor
+													bind:items={screen.acceptedAnswers}
+													addLabel="+ תשובה"
+													dir="ltr"
+													multiline
+												/>
+												<details class="text-xs text-muted">
+													<summary class="cursor-pointer font-semibold">
+														מה יתקבל בפועל ({expandAccepted(screen.acceptedAnswers).length} משפטים)
+													</summary>
+													<ul class="mt-1 list-disc space-y-0.5 ps-5" dir="ltr">
+														{#each expandAccepted(screen.acceptedAnswers) as sentence (sentence)}
+															<li>{sentence}</li>
+														{/each}
+													</ul>
+												</details>
+											{:else}
+												<button
+													type="button"
+													class="self-start text-xs font-semibold text-brand"
+													onclick={() => (screen.acceptedAnswers = [])}
+												>
+													+ הוספת תשובות מתקבלות
+												</button>
+											{/if}
+										</SettingsGroup>
+									{/if}
+								{:else if screen.type === 'spell-word'}
+									<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
+										<label class="flex items-center gap-1.5">
+											<input
+												type="radio"
+												name={`m-${String(path.bucket)}-${path.index}`}
+												checked={screen.mode === 'copy'}
+												onchange={() => (screen.mode = 'copy')}
+											/>
+											העתקה (המילה מוצגת)
+										</label>
+										<label class="flex items-center gap-1.5">
+											<input
+												type="radio"
+												name={`m-${String(path.bucket)}-${path.index}`}
+												checked={screen.mode === 'listen'}
+												onchange={() => (screen.mode = 'listen')}
+											/>
+											הכתבה (לפי שמיעה)
+										</label>
+									</div>
+									{#if screen.mode === 'listen'}
+										<label class="mt-2 flex flex-col gap-1 text-xs text-muted">
+											רמז בעברית (אופציונלי)
+											<input
+												bind:value={screen.hintHe}
+												dir="rtl"
+												class="rounded-lg border-2 border-line bg-surface p-1"
+											/>
+										</label>
+									{/if}
+								{:else if screen.type === 'word-card'}
+									<label
+										class="mt-4 flex flex-col gap-1 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+									>
+										תיאור תמונה (אופציונלי)
 										<input
-											type="radio"
-											name={`m-${String(path.bucket)}-${path.index}`}
-											checked={screen.mode === 'copy'}
-											onchange={() => (screen.mode = 'copy')}
-										/>
-										העתקה (המילה מוצגת)
-									</label>
-									<label class="flex items-center gap-1.5">
-										<input
-											type="radio"
-											name={`m-${String(path.bucket)}-${path.index}`}
-											checked={screen.mode === 'listen'}
-											onchange={() => (screen.mode = 'listen')}
-										/>
-										הכתבה (לפי שמיעה)
-									</label>
-								</div>
-								{#if screen.mode === 'listen'}
-									<label class="mt-2 flex flex-col gap-1 text-xs text-muted">
-										רמז בעברית (אופציונלי)
-										<input
-											bind:value={screen.hintHe}
-											dir="rtl"
+											bind:value={screen.imageAlt}
+											dir="auto"
 											class="rounded-lg border-2 border-line bg-surface p-1"
 										/>
 									</label>
 								{/if}
-							{:else if screen.type === 'word-card'}
-								<label
-									class="mt-4 flex flex-col gap-1 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-								>
-									תיאור תמונה (אופציונלי)
-									<input
-										bind:value={screen.imageAlt}
-										dir="auto"
-										class="rounded-lg border-2 border-line bg-surface p-1"
-									/>
-								</label>
-							{/if}
-							{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
-								<SettingsGroup title="הגדרות כלליות">
-									{#if isExam}
-										<NumberField
-											label="ניקוד"
-											value={screen.points ?? 1}
-											onChange={(v) => (screen.points = v)}
-										/>
-									{:else}
-										<label class="flex items-center gap-2 text-xs text-muted">
-											<input
-												type="checkbox"
-												checked={screen.autoCheck ?? true}
-												onchange={(e) =>
-													(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
+								{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
+									<SettingsGroup title="הגדרות כלליות">
+										{#if isExam}
+											<NumberField
+												label="ניקוד"
+												value={screen.points ?? 1}
+												onChange={(v) => (screen.points = v)}
 											/>
-											בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
-										</label>
-									{/if}
-								</SettingsGroup>
-							{/if}
+										{:else}
+											<label class="flex items-center gap-2 text-xs text-muted">
+												<input
+													type="checkbox"
+													checked={screen.autoCheck ?? true}
+													onchange={(e) =>
+														(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
+												/>
+												בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
+											</label>
+										{/if}
+									</SettingsGroup>
+								{/if}
+							</div>
 						</div>
 					</div>
 				</div>
