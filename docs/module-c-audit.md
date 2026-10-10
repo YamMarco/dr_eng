@@ -84,6 +84,7 @@ Source: QC_report/writing-audit.md (all items), QC report v3 bad points 6-7, roa
 - **Topic round 3:** unseen MIKUD topic, no word bank.
 - **New drills:** upgrade the weak sentence, find the error, connector cloze, sentence order, fix broken sentences, reading-to-writing.
 - **MCQ options shuffle** in lessons; c-3 distractors rewritten to be close.
+- **Round size:** rounds of about 5 minutes for a weak student (more rounds per node), optional practice rounds at the end, topic-lesson supports fade (template + bank -> connectors -> nothing); 20-minute countdown on topic exam rounds.
 - **Checks:** word bank counts "travel / לטייל"; a stance sentence that reuses the question is counted (only a question copied whole is dropped); a vague word inside a phrase from the question is not flagged.
 
 ## Fixed on 2026-10-09 (one marking screen)

@@ -196,6 +196,15 @@ Each round raises one thing.
 New-text length grows through Part B: ~120-150 words in l01-l04, ~180-250 from
 NOT to l12, full exam (~340 words, 9 questions) only in the last lesson (n-7c5330b8).
 
+## Writing round pattern (Part C)
+
+Rule: a round takes a weak student about 5 minutes. Exceptions: the 4-sentence skeleton (~7) and a 70-90 paragraph (~10-15, the exam unit; don't split a paragraph). More rounds are fine.
+Budget per round: a few MCQs / taps + at most one short writing task, or 1-2 one-sentence tasks, or one 2-4 sentence task.
+- **Micro-skill node:** recognise (MCQ, tap) -> fix a weak example (upgrade task) -> one writing task per round, 3 reps of the new move on MIKUD topics, each repeating the earlier moves (snowball).
+- **Topic node:** understand (MCQs) -> 4-sentence skeleton -> [the 2 added sentences: For instance + As a result] -> 70-90 paragraph -> unseen MIKUD topic, no bank, `timeLimitMinutes: 20`. Supports fade across topic lessons: template + bank, then connector list + bank, then nothing.
+- **Optional rounds:** `requiredRounds` stops before them; their preface starts with "תרגול נוסף (רשות)" and says who it is for ("still not sure? this one is for you"). Put a round there only when a strong student has the skill by then: a repeat of recognition, a second skeleton, free writing after the fix drills, a second timed paragraph once the student already writes without support.
+- Every writing task has `modelAnswer` + `checklist`; every model answer must pass the task's own checks.
+
 ## Writing distractors (wrong options)
 
 Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-all`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.
