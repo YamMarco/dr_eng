@@ -96,9 +96,13 @@
 	// it in the same part. Shown beside the question (pinned on wide screens,
 	// collapsible on phones) so the student never has to navigate away from
 	// the text to answer. Its index keys the panel, so highlights survive
-	// moving between that passage's questions.
+	// moving between that passage's questions. On the passage screen itself it
+	// points at that screen, so lg+ is already split and the passage stays put
+	// while question 1 slides in beside it.
+	let onPassageScreen = $derived(currentEntry?.screen.type === 'passage');
 	let passageEntryIndex = $derived.by(() => {
-		if (!currentEntry || currentEntry.screen.type === 'passage') return -1;
+		if (!currentEntry) return -1;
+		if (onPassageScreen) return entryIndex;
 		for (let i = entryIndex - 1; i >= 0; i--) {
 			const entry = allEntries[i];
 			if (entry.partIndex !== currentEntry.partIndex) return -1;
@@ -290,14 +294,17 @@
 					type="button"
 					aria-expanded={passageOpen}
 					onclick={() => (passageOpen = !passageOpen)}
-					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
+					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden {onPassageScreen
+						? 'hidden'
+						: ''}"
 				>
 					{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
 				</button>
 				{#key passageEntryIndex}
 					<aside
 						dir="ltr"
-						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen
+						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen &&
+						!onPassageScreen
 							? ''
 							: 'hidden'} lg:col-start-2 lg:row-start-1 lg:mb-6 lg:block lg:max-h-none lg:min-h-0"
 					>
@@ -319,9 +326,21 @@
 						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 					{/if}
 				{/if}
+				{#if onPassageScreen}
+					<p
+						class="hidden rounded-2xl bg-accent-soft p-4 text-sm leading-relaxed font-semibold text-ink/80 lg:block"
+					>
+						{i18n.dict.quiz.passageReadHint}
+					</p>
+				{/if}
 				{#if currentEntry && ScreenComponent}
 					{#key entryIndex}
-						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
+						<!-- The passage screen's own text is the pinned panel on lg+, so only
+						     phones render it here (kept mounted for primaryAction). -->
+						<div
+							class={onPassageScreen ? 'lg:hidden' : ''}
+							in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}
+						>
 							<ScreenComponent
 								screen={currentEntry.screen}
 								onAdvance={advance}
