@@ -11,7 +11,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["c-a45c17de"],
     position: { x: 60, y: 2320 },
     big: false,
-    requiredRounds: 3,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -69,45 +69,10 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | עוד תרגול בזיהוי עמדה ברורה" },
             {
-              type: "mcq",
-              prompt:
-                '"Do you think students should wear school uniforms?" - איזה פתיח מבטא עמדה ברורה?',
-              options: [
-                "I think about school uniforms every morning.",
-                "I think students should wear school uniforms.",
-                "Uniforms are good for some students but not for others.",
-                "I think school uniforms are a common idea.",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"I think about uniforms" ו-"I think uniforms are a common idea" מתחילים ב-I think, אבל לא עונים על should. עמדה = I think + should / should not.',
+              type: "preface",
+              text: "סיבוב 2 | כותבים עמדה - משפט אחד לכל שאלה",
             },
-            {
-              type: "mcq",
-              prompt:
-                '"Do you think homework should be given every weekend?" - מה נכתב כשחושבים NO?',
-              options: [
-                "I think homework should be given every weekend.",
-                "I do not think homework should be given every weekend.",
-                "I do not think about homework on weekends.",
-                "Homework on weekends is not so popular.",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"I do not think about homework" נשמע כמו NO, אבל הוא מספר מה אתם עושים בסופ"ש - לא עונה על השאלה. הראשון הוא YES.',
-            },
-            {
-              type: "mark-all",
-              instruction: "לחצו על המילה שהופכת את המשפט ל-NO.",
-              text: "I do not think homework should be given every weekend.",
-              correctIndices: [2],
-            },
-          ],
-        },
-        {
-          screens: [
             {
               type: "writing-task",
               prompt:
@@ -178,6 +143,48 @@ export const c3Lessons: LessonNode[] = [
             },
           ],
         },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "תרגול נוסף (רשות) | עוד זיהוי של עמדה\n\nהבנתם? אפשר להמשיך. עוד לא בטוחים מה ההבדל בין עמדה לתיאור? הסיבוב הזה בשבילכם.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"Do you think students should wear school uniforms?" - איזה פתיח מבטא עמדה ברורה?',
+              options: [
+                "I think about school uniforms every morning.",
+                "I think students should wear school uniforms.",
+                "Uniforms are good for some students but not for others.",
+                "I think school uniforms are a common idea.",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"I think about uniforms" ו-"I think uniforms are a common idea" מתחילים ב-I think, אבל לא עונים על should. עמדה = I think + should / should not.',
+            },
+            {
+              type: "mcq",
+              prompt:
+                '"Do you think homework should be given every weekend?" - מה נכתב כשחושבים NO?',
+              options: [
+                "I think homework should be given every weekend.",
+                "I do not think homework should be given every weekend.",
+                "I do not think about homework on weekends.",
+                "Homework on weekends is not so popular.",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"I do not think about homework" נשמע כמו NO, אבל הוא מספר מה אתם עושים בסופ"ש - לא עונה על השאלה. הראשון הוא YES.',
+            },
+            {
+              type: "mark-all",
+              instruction: "לחצו על המילה שהופכת את המשפט ל-NO.",
+              text: "I do not think homework should be given every weekend.",
+              correctIndices: [2],
+            },
+          ],
+        },
       ],
     },
   },
@@ -189,7 +196,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["yes-no"],
     position: { x: 100, y: 2420 },
     big: false,
-    requiredRounds: 2,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -249,6 +256,11 @@ export const c3Lessons: LessonNode[] = [
               text: "I think teenagers should have a job because it is good.",
               correctIndices: [10],
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | מתקנים סיבה חלשה, ואז כותבים" },
             {
               type: "writing-task",
               prompt:
@@ -271,14 +283,6 @@ export const c3Lessons: LessonNode[] = [
                 "אין important / good / nice אחרי because",
                 'הסיבה עונה על "למה?" - אפשר לדמיין אותה',
               ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: 'סיבוב 2 | כותבים: עמדה + because\n\nשלוש שאלות מהבגרות. בכל אחת - משפט אחד: דעה, because, וסיבה שעונה על "למה?".',
             },
             {
               type: "writing-task",
@@ -306,6 +310,14 @@ export const c3Lessons: LessonNode[] = [
                 "יש because, ואחריו סיבה ספציפית - לא good / nice / important",
                 'אם שואלים "למה?" על הסיבה - היא עונה. אם לא, היא כללית מדי',
               ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | עוד שתי שאלות מהבגרות - עמדה + because",
             },
             {
               type: "writing-task",
@@ -374,7 +386,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["because"],
     position: { x: 100, y: 2510 },
     big: false,
-    requiredRounds: 2,
+    requiredRounds: 4,
     content: {
       preface: [
         {
@@ -448,7 +460,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 2 | כותבים: עמדה + because + In addition\n\nמה שלמדתם בשיעור הקודם, ועוד משפט: סיבה שנייה, שונה מהראשונה.",
+              text: "סיבוב 2 | כותבים: עמדה + because + In addition",
             },
             {
               type: "writing-task",
@@ -478,6 +490,14 @@ export const c3Lessons: LessonNode[] = [
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
               ],
             },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 3 | עוד אחת - נושא אחר, אותו מבנה",
+            },
             {
               type: "writing-task",
               prompt:
@@ -505,6 +525,14 @@ export const c3Lessons: LessonNode[] = [
                 "יש because, ואחריו סיבה ספציפית - לא good / nice / important",
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
               ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 4 | עוד אחת - והפעם שימו לב שהסיבה השנייה באמת חדשה",
             },
             {
               type: "writing-task",
@@ -547,7 +575,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["in-addition"],
     position: { x: 70, y: 2600 },
     big: false,
-    requiredRounds: 2,
+    requiredRounds: 5,
     content: {
       preface: [
         {
@@ -605,6 +633,14 @@ export const c3Lessons: LessonNode[] = [
               text: "Traveling teaches you new things. For example, you discover different food and music.",
               correctIndices: [5],
             },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | משדרגים דוגמה, ולוקחים דוגמה מהטקסט",
+            },
             {
               type: "writing-task",
               prompt:
@@ -646,37 +682,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 2 | כותבים: עמדה + because + For example + In addition\n\nשלושה משפטים. הדוגמה באה מיד אחרי הסיבה שהיא מוכיחה.",
-            },
-            {
-              type: "writing-task",
-              prompt:
-                '"What do you think is the best way to spend a vacation?"\n\n✏️ In my opinion, the best way... is... because...\n✏️ For example,...\n✏️ In addition,...',
-              wordBank: [
-                "I think",
-                "I do not think",
-                "in my opinion",
-                "should",
-                "should not",
-                "because",
-                "for example",
-                "in addition",
-                "travel / לטייל",
-                "camping / קמפינג",
-                "nature / טבע",
-                "memories / זיכרונות",
-                "relax / להירגע",
-              ],
-              minSentences: 3,
-              minWordsUsed: 3,
-              modelAnswer:
-                "In my opinion, the best way to spend a vacation is to go camping because you disconnect from screens. For example, last summer I spent three days in the Galilee without my phone. In addition, camping with friends teaches you to cook and work as a team.",
-              checklist: [
-                "משפט 1 פותח בעמדה ברורה: I think / I do not think",
-                "יש because, ואחריו סיבה ספציפית - לא good / nice / important",
-                "For example נותן פרט אמיתי: מקום, מספר, שם או מקרה",
-                "In addition מביא סיבה שנייה, שונה מהראשונה",
-              ],
+              text: "סיבוב 3 | כותבים: עמדה + because + For example + In addition",
             },
             {
               type: "writing-task",
@@ -708,6 +714,14 @@ export const c3Lessons: LessonNode[] = [
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
               ],
             },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 4 | עוד אחת - הפעם על אדם אחד ספציפי",
+            },
             {
               type: "writing-task",
               prompt:
@@ -737,6 +751,14 @@ export const c3Lessons: LessonNode[] = [
                 "For example נותן פרט אמיתי: מקום, מספר, שם או מקרה",
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
               ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 5 | מקריאה לכתיבה - דוגמה מהטקסט, במילים שלכם",
             },
             {
               type: "writing-task",
@@ -779,7 +801,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["for-example"],
     position: { x: 0, y: 2720 },
     big: false,
-    requiredRounds: 2,
+    requiredRounds: 3,
     content: {
       preface: [
         {
@@ -838,6 +860,11 @@ export const c3Lessons: LessonNode[] = [
               text: "In conclusion, I think that age 13 is the right age for a first cellphone.",
               correctIndices: [0],
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | כל המחברים בפסקה אחת" },
             {
               type: "passage-mcq",
               text: "I think every pupil should learn to swim (1) ___ it can save lives. (2) ___, a child who falls into a pool knows how to reach the edge. (3) ___, swimming keeps the body strong and healthy. (4) ___, I believe swimming lessons should be part of every school.",
@@ -904,7 +931,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 2 | כותבים את כל השלד\n\nעכשיו מחברים את כל מה שלמדתם, בפעם הראשונה:\n\n{p:text}I think... because...\n{p:text}For example,...\n{p:text}In addition,...\n{p:text}In conclusion,...\n\nזה השלד של כל חיבור בבגרות. בשיעורי הנושא נרחיב אותו ל-70-90 מילים.",
+              text: "סיבוב 3 | כותבים את כל השלד\n\nעכשיו מחברים את כל מה שלמדתם, בפעם הראשונה:\n\n{p:text}I think... because...\n{p:text}For example,...\n{p:text}In addition,...\n{p:text}In conclusion,...\n\nזה השלד של כל חיבור בבגרות. בשיעורי הנושא נרחיב אותו ל-70-90 מילים.",
             },
             {
               type: "writing-task",
@@ -937,6 +964,14 @@ export const c3Lessons: LessonNode[] = [
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
                 "In conclusion חוזר על העמדה, בלי סיבה חדשה",
               ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "תרגול נוסף (רשות) | עוד שלד אחד\n\nכתבתם שלד שלם? מצוין, אפשר להמשיך. רוצים עוד חזרה לפני שיעורי הנושא - הנה עוד אחד.",
             },
             {
               type: "writing-task",
@@ -1055,11 +1090,45 @@ export const c3Lessons: LessonNode[] = [
               text: "Students learn important skills when they volunteer in their community.",
               correctIndices: [1],
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | מוצאים ומתקנים משפטים שבורים" },
             {
               type: "mark-all",
               instruction: "מצאו את הטעות: לחצו על המילה המיותרת.",
               text: "Students they learn new skills when they volunteer.",
               correctIndices: [1],
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Volunteering very important for teenagers.\n\nרמז: חסר verb. מה חסר בין Volunteering ל-very?",
+              acceptedAnswers: [
+                "Volunteering is very important for teenagers.",
+              ],
+              minSentences: 1,
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Students they learn new skills at work.\n\nרמז: יש שני subjects. מחקו אחד.",
+              acceptedAnswers: [
+                "Students learn new skills at work.",
+                "They learn new skills at work.",
+              ],
+              minSentences: 1,
+            },
+            {
+              type: "writing-task",
+              prompt:
+                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ My brother work in a shop after school.\n\nרמז: he / my brother = verb עם s.",
+              acceptedAnswers: [
+                "My brother works in a shop after school.",
+                "My brother (worked|is working) in a shop after school.",
+              ],
+              minSentences: 1,
             },
             {
               type: "passage-mcq",
@@ -1113,36 +1182,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 2 | מתקנים משפטים שבורים, ואז כותבים",
-            },
-            {
-              type: "writing-task",
-              prompt:
-                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Volunteering very important for teenagers.\n\nרמז: חסר verb. מה חסר בין Volunteering ל-very?",
-              acceptedAnswers: [
-                "Volunteering is very important for teenagers.",
-              ],
-              minSentences: 1,
-            },
-            {
-              type: "writing-task",
-              prompt:
-                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ Students they learn new skills at work.\n\nרמז: יש שני subjects. מחקו אחד.",
-              acceptedAnswers: [
-                "Students learn new skills at work.",
-                "They learn new skills at work.",
-              ],
-              minSentences: 1,
-            },
-            {
-              type: "writing-task",
-              prompt:
-                "תקנו את המשפט השבור וכתבו אותו מחדש:\n\n{p:text}❌ My brother work in a shop after school.\n\nרמז: he / my brother = verb עם s.",
-              acceptedAnswers: [
-                "My brother works in a shop after school.",
-                "My brother (worked|is working) in a shop after school.",
-              ],
-              minSentences: 1,
+              text: "תרגול נוסף (רשות) | כותבים 3 משפטים\n\nתיקנתם את שלושת המשפטים? כנראה זה כבר יושב. רוצים לבדוק את עצמכם בכתיבה חופשית - הסיבוב הזה בשבילכם.",
             },
             {
               type: "writing-task",
@@ -1255,6 +1295,14 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 "בטבלה הרשמית יש הורדה רק על קצר מדי. מחיקת מילים שוברת משפטים, ובלי In conclusion החיבור פחות מסודר.",
             },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "סיבוב 2 | החשבון בפועל: מ-49 מילים ל-75",
+            },
             {
               type: "mcq",
               prompt: "כמה משפטים של בערך 13 מילים מביאים אתכם לבערך 80 מילים?",
@@ -1276,15 +1324,10 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 "כל מילה נספרת, גם a ו-the. רק שאלה שהועתקה כמו שהיא (וכותרת) לא נספרות. להשתמש במילים של השאלה בתוך משפט שלכם - נספר.",
             },
-          ],
-        },
-        {
-          screens: [
-            { type: "preface", text: "סיבוב 2 | מ-49 מילים ל-70-90" },
             {
               type: "writing-task",
               prompt:
-                '"Do you think it is important to study English? Give reasons to explain your opinion."\n\nתלמיד כתב את הטיוטה הזו - 49 מילים (בבחינה: מינוס 6):\n\n{p:text}I think it is important to study English because most of the information on the internet is in English. In addition, English helps people find better jobs in Israel and abroad. As a result, they can earn more money. In conclusion, I believe every student should take English seriously.\n\nכתבו את החיבור המלא: העתיקו את הטיוטה והוסיפו משפט For example אחרי הסיבה הראשונה ומשפט For instance אחרי השנייה. המטרה: 70-90 מילים.',
+                '"Do you think it is important to study English? Give reasons to explain your opinion."\n\nתלמיד כתב את הטיוטה הזו - 49 מילים (בבחינה: מינוס 6):\n\n{p:text}I think it is important to study English because most of the information on the internet is in English. In addition, English helps people find better jobs in Israel and abroad. As a result, they can earn more money. In conclusion, I believe every student should take English seriously.\n\nכתבו רק את 2 המשפטים החסרים:\n✏️ For example,... (פרט לסיבה הראשונה - האינטרנט)\n✏️ For instance,... (פרט לסיבה השנייה - עבודה)\n\nכל משפט בערך 13 מילים: 49 + 26 = 75. בטווח.',
               wordBank: [
                 "for example",
                 "for instance",
@@ -1293,17 +1336,14 @@ export const c3Lessons: LessonNode[] = [
                 "company / חברה",
                 "meetings / פגישות",
               ],
-              minSentences: 6,
+              minSentences: 2,
               minWordsUsed: 2,
-              minWords: 70,
-              maxWords: 90,
               modelAnswer:
-                "I think it is important to study English because most of the information on the internet is in English. For example, many video lessons for math and science on YouTube are only in English. In addition, English helps people find better jobs in Israel and abroad. For instance, high-tech companies hold meetings in English every day. As a result, they can earn more money. In conclusion, I believe every student should take English seriously.",
+                "For example, many video lessons for math and science on YouTube are only in English.\nFor instance, high-tech companies hold meetings in English every day.",
               checklist: [
-                "הוספתי For example עם פרט לסיבה הראשונה (האינטרנט)",
-                "הוספתי For instance עם פרט לסיבה השנייה (עבודה)",
-                "הדוגמאות ספציפיות: שם, מקום או מקרה",
-                "עכשיו יש 70-90 מילים",
+                "משפט 1 מתחיל ב-For example ומוכיח את הסיבה הראשונה",
+                "משפט 2 מתחיל ב-For instance ומוכיח את הסיבה השנייה",
+                "כל משפט בערך 10-15 מילים, עם פרט אמיתי",
               ],
             },
           ],
@@ -1319,7 +1359,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["word-count"],
     position: { x: -70, y: 3080 },
     big: false,
-    requiredRounds: 3,
+    requiredRounds: 4,
     content: {
       preface: [
         {
@@ -1365,14 +1405,6 @@ export const c3Lessons: LessonNode[] = [
             },
             {
               type: "mcq",
-              prompt: "איזו מילה מחברת בין הדעה לסיבה?",
-              options: ["also", "because", "in conclusion", "however"],
-              correctIndex: 1,
-              explanation:
-                '"because" = הסיבה שלכם. "I think X because Y." זה הבסיס של כל פסקת דעה.',
-            },
-            {
-              type: "mcq",
               prompt:
                 "תלמיד כתב 85 מילים מושלמות על נושא שונה מהשאלה. מה קורה?",
               options: [
@@ -1385,6 +1417,51 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 "off topic = 0 על כל המטלה. לפני הכל - ודאו שאתם עונים על השאלה שנשאלה.",
             },
+            {
+              type: "mcq",
+              prompt: "איזה פתיח מבטא עמדה ברורה עם סיבה?",
+              options: [
+                "Volunteering is when people help others without getting paid.",
+                "I think all students should volunteer because it teaches them to care about others.",
+                "There are many types of volunteer work in Israel and around the world.",
+                "In conclusion, volunteer work is good for teenagers.",
+              ],
+              correctIndex: 1,
+              explanation:
+                '"I think... because it teaches them to care about others" - דעה ברורה + סיבה מיד. זה מה שהמורה רוצה לראות בשורה הראשונה.',
+            },
+            {
+              type: "mcq",
+              prompt: "איזה משפט מוסיף סיבה שנייה בצורה הכי נכונה?",
+              options: [
+                "Because volunteering is important.",
+                "I think volunteering is good.",
+                "In addition, volunteering helps students develop useful skills for the future.",
+                "In conclusion, I believe volunteering is valuable.",
+              ],
+              correctIndex: 2,
+              explanation:
+                '"In addition" פותח סיבה שנייה. שימו לב - לא "also because". פשוט "In addition, [משפט שלם]."',
+            },
+            {
+              type: "mcq",
+              prompt:
+                'Read this answer. What is missing?\n"Volunteer work is very good. It helps people. Many students volunteer. It is important for society."',
+              options: [
+                "הסיום חסר",
+                'אין דעה ברורה (YES/NO) ואין סיבה ספציפית עם "because"',
+                "האנגלית לא נכונה",
+                "יש יותר מדי מילים",
+              ],
+              correctIndex: 1,
+              explanation:
+                'אין "I think" ואין "because". כל המשפטים הם הצהרות כלליות. זו לא תשובה לשאלה.',
+            },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1425,32 +1502,9 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | בניית פסקה מלאה" },
             {
-              type: "mcq",
-              prompt: "איזה פתיח מבטא עמדה ברורה עם סיבה?",
-              options: [
-                "Volunteering is when people help others without getting paid.",
-                "I think all students should volunteer because it teaches them to care about others.",
-                "There are many types of volunteer work in Israel and around the world.",
-                "In conclusion, volunteer work is good for teenagers.",
-              ],
-              correctIndex: 1,
-              explanation:
-                '"I think... because it teaches them to care about others" - דעה ברורה + סיבה מיד. זה מה שהמורה רוצה לראות בשורה הראשונה.',
-            },
-            {
-              type: "mcq",
-              prompt: "איזה משפט מוסיף סיבה שנייה בצורה הכי נכונה?",
-              options: [
-                "Because volunteering is important.",
-                "I think volunteering is good.",
-                "In addition, volunteering helps students develop useful skills for the future.",
-                "In conclusion, I believe volunteering is valuable.",
-              ],
-              correctIndex: 2,
-              explanation:
-                '"In addition" פותח סיבה שנייה. שימו לב - לא "also because". פשוט "In addition, [משפט שלם]."',
+              type: "preface",
+              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nשלד מלא על המסך + בנק מילים.",
             },
             {
               type: "writing-task",
@@ -1498,26 +1552,12 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
-            },
-            {
-              type: "mcq",
-              prompt:
-                'Read this answer. What is missing?\n"Volunteer work is very good. It helps people. Many students volunteer. It is important for society."',
-              options: [
-                "הסיום חסר",
-                'אין דעה ברורה (YES/NO) ואין סיבה ספציפית עם "because"',
-                "האנגלית לא נכונה",
-                "יש יותר מדי מילים",
-              ],
-              correctIndex: 1,
-              explanation:
-                'אין "I think" ואין "because". כל המשפטים הם הצהרות כלליות. זו לא תשובה לשאלה.',
+              text: "סיבוב 4 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, is there too much emphasis on tests and grades in our education system? Give reasons to explain your opinion."\n\n(emphasis = דגש)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.',
+                '"In your opinion, is there too much emphasis on tests and grades in our education system? Give reasons to explain your opinion."\n\n(emphasis = דגש)\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.\n\nהפעם הראשונה בלי בנק מילים, אז השלד עוד כאן:\nbecause / For example / In addition / For instance / As a result / In conclusion',
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
@@ -1548,7 +1588,7 @@ export const c3Lessons: LessonNode[] = [
     required: ["topic-volunteer"],
     position: { x: 0, y: 3200 },
     big: false,
-    requiredRounds: 3,
+    requiredRounds: 4,
     content: {
       preface: [
         {
@@ -1603,6 +1643,11 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"What do you think?" מבקש את הדעה שלכם. לדון בשני צדדים בלי לבחור = partially on topic = ציון חלקי.',
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1643,11 +1688,14 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | הרחבה לפסקה שלמה" },
+            {
+              type: "preface",
+              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם רק רשימת המחברים, בלי תבנית שורה-שורה.",
+            },
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. In my opinion, the best way to spend a vacation is... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\nbecause / For example / In addition / For instance / As a result / In conclusion',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1690,7 +1738,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              text: "סיבוב 4 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -1779,6 +1827,11 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"better and more interesting" כללי מדי. "more breaks" הצעה - אבל בלי פרט ובלי סיבה. "Students are tired" זו הבעיה, לא ההצעה. רק אחת: should + פרט + because.',
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1819,35 +1872,19 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | עוטפים ב-70-90 מילים" },
+            {
+              type: "preface",
+              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
+            },
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think schools should... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
-              wordBank: [
-                "I think",
-                "I believe",
-                "in my opinion",
-                "because",
-                "in addition",
-                "for example",
-                "in conclusion",
-                "should",
-                "improve / לשפר",
-                "focus / להתרכז",
-                "creative / יצירתי",
-                "environment / סביבה",
-                "comfortable / נוח",
-                "effective / יעיל",
-                "project / פרויקט",
-                "break / הפסקה",
-                "technology / טכנולוגיה",
-                "encourage / לעודד",
-              ],
+                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים, כמו בבחינה: בלי תבנית ובלי בנק מילים. (עוד בלי שעון.)',
+              wordBank: [],
               minSentences: 5,
               minWords: 70,
               maxWords: 90,
-              minWordsUsed: 5,
+              minWordsUsed: 0,
               modelAnswer:
                 "I think schools should have a 20-minute break after every two lessons because students cannot focus for a long time without rest. For example, after a short walk outside, it is easier to understand a hard math lesson. In addition, schools could let students choose one subject they love. For instance, a student who loves art could take an extra art class. As a result, students would come to school with more motivation. In conclusion, I believe these changes would make school a better place to learn.",
               checklist: [
@@ -1866,7 +1903,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What should schools do), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              text: "תרגול נוסף (רשות) | תנאי בחינה עם שעון - שאלה חדשה\n\nכתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
             },
             {
               type: "writing-task",
@@ -1957,6 +1994,11 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 'גיל אחד (13) + because. "dangerous" לא נותן גיל. "between 10 and 14" לא בוחר. In conclusion בא בסוף, לא בפתיחה.',
             },
+          ],
+        },
+        {
+          screens: [
+            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1997,35 +2039,19 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | מרחיבים ל-70-90 מילים" },
+            {
+              type: "preface",
+              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
+            },
             {
               type: "writing-task",
               prompt:
-                '"At what age should children be allowed to have their own cellphone? Give reasons to explain your opinion."\n\nשלב 2 - חיבור מלא, 70-90 מילים. אותו שלד, ועוד משפט פרט לכל סיבה:\n✏️ 1. I think children should get their own phone at age... because [סיבה 1].\n✏️ 2. For example, [פרט לסיבה 1].\n✏️ 3. In addition, [סיבה 2].\n✏️ 4. For instance, [פרט לסיבה 2].\n✏️ 5. As a result, [מה יוצא מזה].\n✏️ 6. In conclusion, I believe...\n\n6 משפטים × בערך 13 מילים = בערך 80 מילים.',
-              wordBank: [
-                "I think",
-                "I believe",
-                "in my opinion",
-                "because",
-                "in addition",
-                "for example",
-                "in conclusion",
-                "should",
-                "responsible / אחראי",
-                "mature / בוגר",
-                "safe / בטוח",
-                "social media / רשתות חברתיות",
-                "screen time / זמן מסך",
-                "communicate / לתקשר",
-                "independent / עצמאי",
-                "dangerous / מסוכן",
-                "privacy / פרטיות",
-                "contact / ליצור קשר",
-              ],
+                '"At what age should children be allowed to have their own cellphone? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים, כמו בבחינה: בלי תבנית ובלי בנק מילים. (עוד בלי שעון.)',
+              wordBank: [],
               minSentences: 5,
               minWords: 70,
               maxWords: 90,
-              minWordsUsed: 5,
+              minWordsUsed: 0,
               modelAnswer:
                 "I think children should get their own phone at age 13 because they start going to places alone at this age. For example, many children take a bus to school, and their parents need to contact them. In addition, at 13 children are mature enough to understand the dangers of social media. For instance, they know not to send photos to strangers. As a result, parents can trust them with a phone. In conclusion, I believe that 13 is the right age for a first phone.",
               checklist: [
@@ -2044,7 +2070,7 @@ export const c3Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב 3 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (At what age), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              text: "תרגול נוסף (רשות) | תנאי בחינה עם שעון - שאלה חדשה\n\nכתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
             },
             {
               type: "writing-task",
