@@ -1507,7 +1507,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "מספר או שם בשאלה הם Eye Catchers: הם אומרים לכם לאן ללכת בטקסט.",
+              text: "{d:rtl}מספר או שם בשאלה הם** Eye Catchers**: הם אומרים לכם לאן ללכת בטקסט.",
             },
             {
               type: "mcq",
@@ -1574,7 +1574,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: '**II**  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 "According to Dr. Diallo, what does the project teach local people?",
               modelAnswer: "How to care for the trees.",
@@ -1632,7 +1632,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: '**SCHOOLS ON THE WATER**\n\nI  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\nII  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\nIII  The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. "Before, many parents kept their daughters at home," she explains. "Now they see that school is safe."',
+              text: '{a:center}**SCHOOLS ON THE WATER**\n\n**I**  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\n**II**  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\n**III ** The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. "Before, many parents kept their daughters at home," she explains. "Now they see that school is safe."',
               questions: [
                 {
                   prompt: "How many boat schools sail along the rivers today?",
@@ -1671,7 +1671,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "**WHY YOUNG PEOPLE VOLUNTEER**\n\nI  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches skills that no classroom can replace.",
+              text: "{a:center}**WHY YOUNG PEOPLE VOLUNTEER**\n\nI  Every year, millions of young people choose to volunteer. A study found that young people who volunteer are 60% more likely to describe themselves as happy.\n\nII  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.\n\nIII  Results from 12 countries show that schools with volunteering programmes found that students became more responsible and more focused in class. Professor David Mills argues that helping others teaches skills that no classroom can replace.",
               questions: [
                 {
                   prompt:
@@ -1716,7 +1716,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
+              text: '**II ** One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
               prompt:
                 '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
               modelAnswer:
@@ -1724,7 +1724,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
+              text: "**I**  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
               prompt:
                 'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
               modelAnswer: "200 million trees · 15 countries.",
@@ -4294,7 +4294,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "אז נלמד איך מפצחים כל שאלה שיש בה But/However",
+          text: "{d:rtl}אז נלמד איך מפצחים כל שאלה שיש בה **But /However**",
         },
         {
           type: "summary",
@@ -4311,20 +4311,24 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "{d:rtl}however / but מסמנים פנייה בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל תמיד עונים על מה שהשאלה שואלת.",
+              text: "{d:rtl}however / but מסמנים** פנייה** בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל לזכור שתמיד עונים על מה שהשאלה שואלת.",
             },
             {
               type: "mcq",
               prompt:
-                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה של הכותב?',
+                "{a:left}{d:rtl}Many people cannot swim. However, experts say it is never too late- \n{d:rtl}מה הנקודה של הכותב?",
               options: [
-                '"Many people cannot swim"',
-                '"it is never too late"',
+                "Many people cannot swim",
+                "it is never too late for people to swim",
                 "שתיהן חשובות באותה מידה",
               ],
               correctIndex: 1,
               explanation:
                 'however מסמן פנייה: קודם רקע, ואז הנקודה של הכותב - "it is never too late".',
+            },
+            {
+              type: "preface",
+              text: "הנקודה של הכותב: **אף פעם לא מאוחר מדי ללמוד לשחות.** גם מי שלא יודע לשחות היום, ואפילו מבוגר, עדיין יכול ללמוד.\n\n**איך יודעים?** המילה **However** מסמנת ניגוד. מה שבא אחריה הוא בדרך כלל המסר החשוב:\n\n**לפני However:** הבעיה, הרבה אנשים לא יודעים לשחות.\n**אחרי However:** המסר, זה לא סוף פלוגה, אפשר ללמוד בכל גיל.\n\n**טיפ:** כשרואים *However / But / Although*, כדאי לשים לב במיוחד למה שבא אחרי המילה.",
             },
             {
               type: "mcq",
