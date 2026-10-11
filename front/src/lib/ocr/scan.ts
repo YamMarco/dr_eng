@@ -26,6 +26,11 @@ async function toJpeg(file: File, rotation: number): Promise<Blob> {
 	);
 }
 
+/** Object URL of the photo as OCR will see it (rotated, downscaled). Caller revokes it. */
+export async function previewUrl(file: File, rotation: number): Promise<string> {
+	return URL.createObjectURL(await toJpeg(file, rotation));
+}
+
 /** `rotation` (0/90/180/270, clockwise) is the student's fix for a sideways photo. */
 export async function scanHandwriting(file: File, rotation = 0): Promise<string> {
 	const res = await fetch('/api/ocr', {

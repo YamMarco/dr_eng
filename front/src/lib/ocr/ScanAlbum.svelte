@@ -13,6 +13,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { previewUrl } from './scan';
 
 	// Bottom sheet for a scan: build the set of page photos (camera or gallery),
 	// then view, reorder, rotate, retake or drop single pages (or clear all),
@@ -65,8 +66,17 @@
 		[pages[i], pages[j]] = [pages[j], pages[i]];
 	}
 
-	function rotate(i: number) {
-		pages[i].rotation = (pages[i].rotation + 90) % 360;
+	// The preview is re-drawn rotated (same code path as the upload), so the
+	// photo, the card and the full view always show what OCR will get.
+	async function rotate(i: number) {
+		const page = pages[i];
+		const rotation = (page.rotation + 90) % 360;
+		const url = await previewUrl(page.file, rotation);
+		const now = pages.find((p) => p.id === page.id);
+		if (!now) return URL.revokeObjectURL(url); // deleted meanwhile
+		URL.revokeObjectURL(now.url);
+		now.rotation = rotation;
+		now.url = url;
 	}
 
 	function toggle(id: number) {
@@ -89,7 +99,7 @@
 	const sourceBtn =
 		'flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-line bg-surface px-3 py-4 text-sm font-semibold text-ink/80 transition hover:border-brand active:scale-[0.98]';
 	const tileBtn =
-		'flex size-8 items-center justify-center rounded-full bg-black/55 text-white transition active:scale-90';
+		'flex size-7 items-center justify-center rounded-full bg-surface text-ink/80 shadow-sm transition active:scale-90';
 	const viewBtn =
 		'flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-white';
 </script>
@@ -158,56 +168,56 @@
 		</div>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 grid-cols-2 gap-3 overflow-y-auto">
+			<ol class="mt-3 flex min-h-0 flex-col gap-3 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li
-						class="relative aspect-square overflow-hidden rounded-xl border-2 bg-line/40 {selected.includes(page.id)
+						class="shrink-0 overflow-hidden rounded-xl border-2 {selected.includes(page.id)
 							? 'border-danger'
 							: 'border-line'}"
 					>
+						<!-- Controls sit in their own strip above the photo, never over it. -->
+						<div class="flex items-center gap-2 bg-line/40 px-2 py-1.5">
+							<span
+								class="flex size-7 items-center justify-center rounded-full bg-brand text-sm font-bold text-white tabular"
+								>{i + 1}</span
+							>
+							<span class="ms-auto flex gap-1.5">
+								{#if selecting}
+									<span
+										class="flex size-7 items-center justify-center rounded-full border-2 {selected.includes(
+											page.id
+										)
+											? 'border-danger bg-danger text-white'
+											: 'border-line bg-surface'}"
+									>
+										{#if selected.includes(page.id)}<Check class="size-4" />{/if}
+									</span>
+								{:else}
+									<button
+										type="button"
+										class="{tileBtn} disabled:opacity-30"
+										disabled={i === 0}
+										aria-label={i18n.dict.ocr.moveEarlier}
+										onclick={() => move(i, -1)}><ChevronUp class="size-4" /></button
+									>
+									<button
+										type="button"
+										class="{tileBtn} disabled:opacity-30"
+										disabled={i === pages.length - 1}
+										aria-label={i18n.dict.ocr.moveLater}
+										onclick={() => move(i, 1)}><ChevronDown class="size-4" /></button
+									>
+								{/if}
+							</span>
+						</div>
 						<button
 							type="button"
-							class="size-full"
+							class="block w-full bg-line/40"
 							aria-label={i18n.dict.ocr.view}
 							onclick={() => (selecting ? toggle(page.id) : (viewing = page.id))}
 						>
-							<img
-								src={page.url}
-								alt=""
-								style:transform="rotate({page.rotation}deg)"
-								class="size-full object-cover transition-transform"
-							/>
+							<img src={page.url} alt="" class="max-h-[55dvh] w-full object-contain" />
 						</button>
-						<span
-							class="absolute start-2 top-2 flex size-7 items-center justify-center rounded-full bg-brand text-xs font-bold text-white shadow tabular"
-							>{i + 1}</span
-						>
-						{#if selecting}
-							<span
-								class="absolute end-2 top-2 flex size-7 items-center justify-center rounded-full border-2 border-white shadow {selected.includes(page.id)
-									? 'bg-danger text-white'
-									: 'bg-black/30'}"
-							>
-								{#if selected.includes(page.id)}<Check class="size-3.5" />{/if}
-							</span>
-						{:else}
-							<span class="absolute end-2 bottom-2 flex gap-1.5">
-								<button
-									type="button"
-									class="{tileBtn} disabled:opacity-0"
-									disabled={i === 0}
-									aria-label={i18n.dict.ocr.moveEarlier}
-									onclick={() => move(i, -1)}><ChevronUp class="size-4" /></button
-								>
-								<button
-									type="button"
-									class="{tileBtn} disabled:opacity-0"
-									disabled={i === pages.length - 1}
-									aria-label={i18n.dict.ocr.moveLater}
-									onclick={() => move(i, 1)}><ChevronDown class="size-4" /></button
-								>
-							</span>
-						{/if}
 					</li>
 				{/each}
 			</ol>
@@ -242,8 +252,7 @@
 		<img
 			src={viewed.url}
 			alt={i18n.dict.ocr.pageLabel(pages.indexOf(viewed) + 1)}
-			style:transform="rotate({viewed.rotation}deg)"
-			class="max-h-[80dvh] max-w-full object-contain transition-transform"
+			class="max-h-[80dvh] max-w-full object-contain"
 		/>
 		<div class="absolute inset-x-0 bottom-6 flex justify-center gap-3">
 			<button
