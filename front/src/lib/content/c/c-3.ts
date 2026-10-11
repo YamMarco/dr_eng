@@ -2092,7 +2092,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים, כמו בבחינה: בלי תבנית ובלי בנק מילים. (עוד בלי שעון.)',
+                "**In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion.**\n\n{d:rtl}חיבור מלא, 70-90 מילים, כמו בבחינה: בלי תבנית ובלי בנק מילים (עוד בלי שעון בשלב זה)",
               wordBank: [],
               minSentences: 5,
               minWords: 70,
