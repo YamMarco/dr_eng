@@ -2,44 +2,47 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { CalendarClock, Flame } from '@lucide/svelte';
-	import { resolve } from '$app/paths';
-	import { getUnitGroup } from '$lib/curriculum';
+	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
-	import { lastExamPercent, moduleRoute, todayLesson } from '$lib/dashboard/data';
+	import { examStats, moduleRoute, todayLesson } from '$lib/dashboard/data';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import TodayCard from '$lib/dashboard/TodayCard.svelte';
-	import RouteMap from '$lib/dashboard/RouteMap.svelte';
-	import ExamCard from '$lib/dashboard/ExamCard.svelte';
+	import ModuleCard from '$lib/dashboard/ModuleCard.svelte';
+	import ExamsCard from '$lib/dashboard/ExamsCard.svelte';
 
 	let t = $derived(i18n.dict.home);
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
 
-	// The group's first module that has a lesson path - only Module C today.
+	// Every module of the chosen unit level, with its track and exam stats.
+	let moduleRows = $derived(
+		group.moduleIds.map((id) => ({
+			mod: modules[id],
+			sections: moduleRoute(id),
+			exams: examStats(id)
+		}))
+	);
+
+	// Today's lesson comes from the first module that has a lesson path.
 	let main = $derived.by(() => {
-		for (const moduleId of group.moduleIds) {
-			const sections = moduleRoute(moduleId);
-			if (sections.length === 0) continue;
-			const base = `/unit/${group.id}/module/${moduleId}`;
-			const lesson = todayLesson(moduleId);
-			const done = sections.reduce((sum, s) => sum + s.done, 0);
-			const total = sections.reduce((sum, s) => sum + s.total, 0);
-			const lastPercent = lastExamPercent(moduleId);
-			return {
-				base,
-				sections,
-				lesson,
-				roundsCompleted: lesson ? lessonProgress.completedRounds(moduleId, lesson.id) : 0,
-				todayHref: lesson ? `${base}/lessons?lesson=${lesson.id}` : `${base}/exam`,
-				progress: total ? done / total : 0,
-				lastPercent
-			};
-		}
-		return undefined;
+		const row = moduleRows.find((r) => r.sections.length > 0);
+		if (!row) return undefined;
+		const base = `/unit/${group.id}/module/${row.mod.id}`;
+		const lesson = todayLesson(row.mod.id);
+		return {
+			moduleId: row.mod.id,
+			lesson,
+			roundsCompleted: lesson ? lessonProgress.completedRounds(row.mod.id, lesson.id) : 0,
+			href: lesson ? `${base}/lessons?lesson=${lesson.id}` : `${base}/exam`
+		};
 	});
+
+	let examRows = $derived(
+		moduleRows.filter((r) => r.exams.total > 0).map((r) => ({ mod: r.mod, stats: r.exams }))
+	);
 
 	let goalLine = $derived(
 		profile.value?.units === 'undecided' ? t.goalUndecided : t.goalLine(group.id)
@@ -80,49 +83,35 @@
 		</header>
 
 		{#if main}
-			<TodayCard
-				lesson={main.lesson}
-				roundsCompleted={main.roundsCompleted}
-				href={main.todayHref}
-			/>
-			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}>
-				<RouteMap
-					sections={main.sections}
-					examDone={main.lastPercent !== undefined}
-					href="{main.base}/lessons"
-				/>
-			</div>
-			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}>
-				<ExamCard
-					href="{main.base}/exam"
-					routeProgress={main.progress}
-					lastPercent={main.lastPercent}
-				/>
-			</div>
-		{:else}
-			<div class="rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
-				<p class="font-bold">{t.noRouteTitle}</p>
-				<p class="mt-1 text-sm text-muted">{t.noRouteDesc}</p>
-			</div>
+			<TodayCard lesson={main.lesson} roundsCompleted={main.roundsCompleted} href={main.href} />
 		{/if}
 
-		<a
-			href={resolve('/unit/[unitId]', { unitId: group.id })}
-			class="group mt-2 flex min-h-11 items-center justify-between gap-3 rounded-2xl px-2 font-semibold text-muted transition hover:text-ink"
-		>
-			{t.allModules(group.units)}
-			<svg
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="h-5 w-5 shrink-0 transition group-hover:text-brand rtl:rotate-180"
-				aria-hidden="true"
+		<section class="flex flex-col gap-3">
+			<h2 class="px-1 font-bold">{t.modulesTitle}</h2>
+			{#each moduleRows as row, i (row.mod.id)}
+				<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+					<ModuleCard
+						mod={row.mod}
+						groupId={group.id}
+						sections={row.sections}
+						examDone={row.exams.taken > 0}
+						defaultOpen={row.mod.id === main?.moduleId}
+					/>
+				</div>
+			{/each}
+		</section>
+
+		{#if examRows.length}
+			<div
+				in:fly={{
+					y: 12,
+					duration: 300,
+					delay: staggerDelay(moduleRows.length + 1),
+					easing: cubicOut
+				}}
 			>
-				<path d="m9 18 6-6-6-6" />
-			</svg>
-		</a>
+				<ExamsCard groupId={group.id} rows={examRows} />
+			</div>
+		{/if}
 	</main>
 {/if}

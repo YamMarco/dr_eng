@@ -12,7 +12,7 @@
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
-	import { hasContent, isLessonDone, isLessonUnlocked } from '$lib/lessonPath';
+	import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/lessonPath';
 	import { lessonIcon } from '$lib/lessonIcon';
 	import { SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
@@ -488,7 +488,7 @@
 					{#each nodes as node, nodeIndex (node.lesson.id)}
 						{@const unlocked = isUnlocked(node)}
 						{@const done = isDone(node.lesson.id)}
-						{@const allRounds = roundsCompleted(node.lesson.id) >= totalRounds(node)}
+						{@const allRounds = isLessonGold(mod.id, node.lesson)}
 						{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 						<div
 							data-lesson-node

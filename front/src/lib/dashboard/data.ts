@@ -2,12 +2,13 @@
 // study order, with progress), today's lesson, and the latest exam score.
 // Pure reads of the progress stores - call from $derived for reactivity.
 import { getLesson, getLessonsBySection, sectionMeta, type LessonNode } from '$lib/content';
-import { hasContent, isLessonDone, isLessonUnlocked } from '$lib/lessonPath';
+import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/lessonPath';
 import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getQuizzesForModule } from '$lib/quizzes';
 import { getLastAttempt } from '$lib/quiz/progress';
 
-export type RouteSection = { id: string; done: number; total: number };
+/** `total` counts only lessons with content written ("ready" to play). */
+export type RouteSection = { id: string; done: number; gold: number; total: number };
 
 /** Section ids are `<moduleId>-<n>`; sectionMeta order is the study order. */
 function moduleSections(moduleId: string): string[] {
@@ -27,6 +28,7 @@ export function moduleRoute(moduleId: string): RouteSection[] {
 		return {
 			id,
 			done: lessons.filter((l) => isLessonDone(moduleId, l.id)).length,
+			gold: lessons.filter((l) => isLessonGold(moduleId, l)).length,
 			total: lessons.length
 		};
 	});
@@ -47,18 +49,24 @@ export function todayLesson(moduleId: string): LessonNode | undefined {
 	return undefined;
 }
 
-/** Auto-graded percent of the most recently submitted exam in this module. */
-export function lastExamPercent(moduleId: string): number | undefined {
+export type ExamStats = { taken: number; total: number; lastPercent: number | undefined };
+
+/** How many of the module's exams were submitted at least once, and the
+ *  auto-graded percent of the most recent submission. */
+export function examStats(moduleId: string): ExamStats {
 	const { assorted, ministry } = getQuizzesForModule(moduleId);
+	const quizzes = [...assorted, ...ministry];
+	let taken = 0;
 	let latest: { at: number; percent: number } | undefined;
-	for (const quiz of [...assorted, ...ministry]) {
+	for (const quiz of quizzes) {
 		const attempt = getLastAttempt(quiz.id);
-		if (!attempt || attempt.score.auto.max === 0) continue;
-		if (latest && attempt.submittedAt <= latest.at) continue;
+		if (!attempt) continue;
+		taken++;
+		if (attempt.score.auto.max === 0 || (latest && attempt.submittedAt <= latest.at)) continue;
 		latest = {
 			at: attempt.submittedAt,
 			percent: Math.round((attempt.score.auto.earned / attempt.score.auto.max) * 100)
 		};
 	}
-	return latest?.percent;
+	return { taken, total: quizzes.length, lastPercent: latest?.percent };
 }

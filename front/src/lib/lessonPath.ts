@@ -15,6 +15,11 @@ export function isLessonDone(moduleId: string, lessonId: string): boolean {
 	return lessonProgress.isCompleted(moduleId, lessonId, getLesson(lessonId)?.requiredRounds);
 }
 
+/** Every round played, not just the required ones - the path's gold node. */
+export function isLessonGold(moduleId: string, lesson: LessonNode): boolean {
+	return lessonProgress.completedRounds(moduleId, lesson.id) >= lesson.content.rounds.length;
+}
+
 // The debug "unlock all" flag is a full override — it comes before every
 // other check, content-availability included, so it always does what it
 // says regardless of what's been authored yet. A lesson the student has
