@@ -1885,7 +1885,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n{d:rtl}חיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\n{d:rtl}\n**because / For example / In addition / For instance / As a result / In conclusion**\n\n{d:rtl}יש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.',
+                "**What do you think is the best way to spend a vacation? Give reasons to explain your opinion.**\n\n{d:rtl}חיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\n{d:rtl}\n**because / For example / In addition / For instance / As a result / In conclusion**\n\n{d:rtl}יש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.",
               wordBank: [
                 "I think",
                 "I believe",
