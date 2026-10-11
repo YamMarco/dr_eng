@@ -168,7 +168,7 @@
 		</div>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 auto-rows-max grid-cols-2 items-start gap-3 sm:grid-cols-3 lg:grid-cols-4 overflow-y-auto">
+			<ol class="mt-3 grid min-h-0 auto-rows-max rounded-2xl bg-line/40 p-2 grid-cols-2 items-start gap-3 sm:grid-cols-3 lg:grid-cols-4 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li
 						class="overflow-hidden rounded-xl border-2 {selected.includes(page.id)
@@ -223,7 +223,7 @@
 			</ol>
 		{/if}
 
-		<div class="mt-3 grid shrink-0 grid-cols-2 gap-3">
+		<div class="mt-4 grid shrink-0 grid-cols-2 gap-3 border-t-2 border-line pt-4">
 			<button type="button" onclick={() => open('camera')} class={sourceBtn}>
 				<Camera class="size-7 text-brand" />{pages.length ? i18n.dict.ocr.addPhoto : i18n.dict.ocr.takePhoto}
 			</button>
