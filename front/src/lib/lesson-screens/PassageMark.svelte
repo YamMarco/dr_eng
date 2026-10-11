@@ -11,9 +11,10 @@
 	let { lines, leading }: { lines: T[]; leading?: Snippet<[T]> } = $props();
 
 	type MarkColor = 'yellow' | 'green' | 'pink' | 'blue';
-	type Highlight = { lineKey: string | number; start: number; end: number; color: MarkColor };
+	// lineKey is the DOM attribute value, so always a string (line keys may be numbers).
+	type Highlight = { lineKey: string; start: number; end: number; color: MarkColor };
 	let highlights = $state<Highlight[]>([]);
-	let pendingSelection = $state<{ lineKey: string | number; start: number; end: number } | null>(
+	let pendingSelection = $state<{ lineKey: string; start: number; end: number } | null>(
 		null
 	);
 	let toolbarPos = $state<{ top: number; left: number } | null>(null);
@@ -32,7 +33,7 @@
 
 	function segmentsFor(line: T): { text: string; color: MarkColor | null }[] {
 		const spans = highlights
-			.filter((h) => h.lineKey === line.key)
+			.filter((h) => h.lineKey === String(line.key))
 			.sort((a, b) => a.start - b.start);
 		if (spans.length === 0) return [{ text: line.text, color: null }];
 		const segs: { text: string; color: MarkColor | null }[] = [];
