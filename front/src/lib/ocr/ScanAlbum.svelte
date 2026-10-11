@@ -89,7 +89,7 @@
 	const sourceBtn =
 		'flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-line bg-surface px-3 py-4 text-sm font-semibold text-ink/80 transition hover:border-brand active:scale-[0.98]';
 	const tileBtn =
-		'flex size-6 items-center justify-center rounded-full bg-black/55 text-white transition active:scale-90';
+		'flex size-8 items-center justify-center rounded-full bg-black/55 text-white transition active:scale-90';
 	const viewBtn =
 		'flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-white';
 </script>
@@ -156,12 +156,9 @@
 				</span>
 			{/if}
 		</div>
-		<p class="mt-1 text-sm leading-relaxed text-muted">
-			{pages.length ? i18n.dict.ocr.albumHint : i18n.dict.ocr.albumAsk}
-		</p>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 grid-cols-3 gap-2 overflow-y-auto">
+			<ol class="mt-3 grid min-h-0 grid-cols-2 gap-3 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li
 						class="relative aspect-square overflow-hidden rounded-xl border-2 bg-line/40 {selected.includes(page.id)
@@ -182,12 +179,12 @@
 							/>
 						</button>
 						<span
-							class="absolute start-1 top-1 flex size-6 items-center justify-center rounded-full bg-brand text-xs font-bold text-white shadow tabular"
+							class="absolute start-2 top-2 flex size-7 items-center justify-center rounded-full bg-brand text-xs font-bold text-white shadow tabular"
 							>{i + 1}</span
 						>
 						{#if selecting}
 							<span
-								class="absolute end-1 top-1 flex size-6 items-center justify-center rounded-full border-2 border-white shadow {selected.includes(page.id)
+								class="absolute end-2 top-2 flex size-7 items-center justify-center rounded-full border-2 border-white shadow {selected.includes(page.id)
 									? 'bg-danger text-white'
 									: 'bg-black/30'}"
 							>
@@ -197,17 +194,17 @@
 							<!-- RTL: the page before is to the right. -->
 							<button
 								type="button"
-								class="{tileBtn} absolute start-1 bottom-1 disabled:opacity-0"
+								class="{tileBtn} absolute start-2 bottom-2 disabled:opacity-0"
 								disabled={i === pages.length - 1}
 								aria-label={i18n.dict.ocr.moveLater}
-								onclick={() => move(i, 1)}><ChevronLeft class="size-3.5" /></button
+								onclick={() => move(i, 1)}><ChevronLeft class="size-4" /></button
 							>
 							<button
 								type="button"
-								class="{tileBtn} absolute end-1 bottom-1 disabled:opacity-0"
+								class="{tileBtn} absolute end-2 bottom-2 disabled:opacity-0"
 								disabled={i === 0}
 								aria-label={i18n.dict.ocr.moveEarlier}
-								onclick={() => move(i, -1)}><ChevronRight class="size-3.5" /></button
+								onclick={() => move(i, -1)}><ChevronRight class="size-4" /></button
 							>
 						{/if}
 					</li>
