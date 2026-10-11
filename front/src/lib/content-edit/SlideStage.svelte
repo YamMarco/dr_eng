@@ -41,6 +41,7 @@
 	import { expandAccepted } from '$lib/lesson-screens/acceptedAnswers';
 	import SettingsGroup from './fields/SettingsGroup.svelte';
 	import NumberField from './fields/NumberField.svelte';
+	import TextField from './fields/TextField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import {
@@ -529,6 +530,36 @@
 							<div
 								class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
 							>
+								<!-- Fundamental first: general settings, then the type's own groups. -->
+								{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
+									<SettingsGroup title="הגדרות כלליות">
+										{#if isExam}
+											<NumberField
+												label="ניקוד"
+												value={screen.points ?? 1}
+												onChange={(v) => (screen.points = v)}
+											/>
+										{:else}
+											<label class="flex items-center gap-2 text-xs text-muted">
+												<input
+													type="checkbox"
+													checked={screen.autoCheck ?? true}
+													onchange={(e) =>
+														(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
+												/>
+												בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
+											</label>
+										{/if}
+										{#if !isExam && screen.type === 'writing-task'}
+											<NumberField
+												label="שעון (דקות)"
+												min={1}
+												value={screen.timeLimitMinutes}
+												onChange={(v) => (screen.timeLimitMinutes = v)}
+											/>
+										{/if}
+									</SettingsGroup>
+								{/if}
 								{#if rawOpen}
 									<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
 										<p class="mb-2 text-xs font-bold text-muted">JSON מתקדם</p>
@@ -611,6 +642,9 @@
 										</button>
 									</div>
 								{:else if screen.type === 'mark-all'}
+									<SettingsGroup title="טיימר" hint="אופציונלי - ריק = בלי טיימר">
+										<TextField label="מזהה טיימר" bind:value={screen.timerKey} />
+									</SettingsGroup>
 									<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
 										<div class="flex flex-wrap items-center gap-1.5">
 											<span class="text-xs font-bold text-muted">קטגוריות:</span>
@@ -673,76 +707,28 @@
 												>
 											</div>
 										{/if}
-										<label class="flex items-center gap-2 text-xs text-muted">
-											מזהה טיימר (אופציונלי)
-											<input
-												bind:value={screen.timerKey}
-												dir="ltr"
-												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-											/>
-										</label>
 									</div>
 								{:else if screen.type === 'steps'}
-									<label
-										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-									>
-										<input type="checkbox" bind:checked={screen.ordered} />
-										רשימה ממוספרת
-									</label>
-								{:else if screen.type === 'passage-mcq'}
-									<div class="mt-4 border-t-2 border-dashed border-line/60 pt-4">
+									<SettingsGroup title="תצוגה">
 										<label class="flex items-center gap-2 text-xs text-muted">
-											מזהה טיימר (אופציונלי - ריק = בלי טיימר)
-											<input
-												bind:value={screen.timerKey}
-												dir="ltr"
-												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-											/>
+											<input type="checkbox" bind:checked={screen.ordered} />
+											רשימה ממוספרת
 										</label>
-									</div>
-								{:else if screen.type === 'timed-reading'}
-									<label
-										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
+									</SettingsGroup>
+								{:else if screen.type === 'passage-mcq' || screen.type === 'timed-reading' || screen.type === 'time-result'}
+									<SettingsGroup
+										title="טיימר"
+										hint={screen.type === 'passage-mcq' ? 'אופציונלי - ריק = בלי טיימר' : undefined}
 									>
-										מזהה טיימר
-										<input
-											bind:value={screen.timerKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-								{:else if screen.type === 'time-result'}
-									<label
-										class="mt-4 flex items-center gap-2 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-									>
-										מזהה טיימר
-										<input
-											bind:value={screen.timerKey}
-											dir="ltr"
-											class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
+										<TextField label="מזהה טיימר" bind:value={screen.timerKey} />
+									</SettingsGroup>
 								{:else if screen.type === 'time-comparison'}
-									<div
-										class="mt-4 flex flex-wrap gap-4 border-t-2 border-dashed border-line/60 pt-4"
-									>
-										<label class="flex items-center gap-2 text-xs text-muted">
-											מזהה א׳
-											<input
-												bind:value={screen.aKey}
-												dir="ltr"
-												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-											/>
-										</label>
-										<label class="flex items-center gap-2 text-xs text-muted">
-											מזהה ב׳
-											<input
-												bind:value={screen.bKey}
-												dir="ltr"
-												class="w-28 rounded-lg border-2 border-line bg-surface p-1"
-											/>
-										</label>
-									</div>
+									<SettingsGroup title="טיימרים להשוואה">
+										<div class="flex flex-wrap gap-4">
+											<TextField label="מזהה א׳" bind:value={screen.aKey} />
+											<TextField label="מזהה ב׳" bind:value={screen.bKey} />
+										</div>
+									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
 									{#if isExam}
 										<SettingsGroup title="חיבור חופשי - טווח מילים">
@@ -760,83 +746,119 @@
 											</div>
 										</SettingsGroup>
 									{:else}
-										<SettingsGroup title="תנאי מעבר">
+										{@const paragraph = screen.minWords !== undefined}
+										{@const fixedShape = (screen.acceptedAnswers?.length ?? 0) > 0}
+										<!-- minWords set = one paragraph box (the exam shape); unset = one line per sentence. -->
+										<SettingsGroup title="מבנה התשובה">
+											<div class="flex gap-4 text-xs text-muted">
+												<label class="flex items-center gap-1.5">
+													<input
+														type="radio"
+														name={`shape-${String(path.bucket)}-${path.index}`}
+														checked={!paragraph}
+														onchange={() => {
+															screen.minWords = undefined;
+															screen.maxWords = undefined;
+														}}
+													/>
+													שורה לכל משפט
+												</label>
+												<label class="flex items-center gap-1.5">
+													<input
+														type="radio"
+														name={`shape-${String(path.bucket)}-${path.index}`}
+														checked={paragraph}
+														onchange={() => {
+															screen.minWords = 70;
+															screen.maxWords = 90;
+															screen.wordCounter = undefined;
+														}}
+													/>
+													פסקה אחת (כמו בבחינה)
+												</label>
+											</div>
 											<div class="flex flex-wrap gap-x-4 gap-y-2">
 												<NumberField
-													label="מינ׳ משפטים"
+													label={paragraph ? 'מינ׳ משפטים' : 'מספר שורות'}
 													min={1}
 													value={screen.minSentences}
 													onChange={(v) => (screen.minSentences = v)}
 												/>
-												<NumberField
-													label="מינ׳ מילים מהבנק"
-													value={screen.minWordsUsed}
-													onChange={(v) => (screen.minWordsUsed = v)}
-												/>
-												<NumberField
-													label="טעויות קטנות מותרות"
-													value={screen.maxTypos ?? 1}
-													onChange={(v) => (screen.maxTypos = v)}
-												/>
-												<NumberField
-													label="מינ׳ מילים (פסקה)"
-													value={screen.minWords}
-													onChange={(v) => (screen.minWords = v)}
-												/>
-												{#if screen.minWords !== undefined}
+												{#if paragraph}
+													<NumberField
+														label="מינ׳ מילים"
+														value={screen.minWords}
+														onChange={(v) => (screen.minWords = v ?? 0)}
+													/>
 													<NumberField
 														label="מקס׳ מילים"
 														value={screen.maxWords}
 														onChange={(v) => (screen.maxWords = v)}
 													/>
 												{/if}
-												<NumberField
-													label="שעון (דקות)"
-													min={1}
-													value={screen.timeLimitMinutes}
-													onChange={(v) => (screen.timeLimitMinutes = v)}
-												/>
 											</div>
-											<p class="text-xs text-muted">
-												מינ׳ מילים = תיבת פסקה אחת (כמו בבחינה) במקום שורה לכל משפט.
-											</p>
-											<label class="flex items-center gap-2 text-xs text-muted">
-												<input
-													type="checkbox"
-													checked={screen.capitalIsError ?? true}
-													onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
-												/>
-												אות ראשונה קטנה = טעות
-											</label>
-											{#if screen.minWords === undefined}
+											{#if !paragraph}
 												<label class="flex items-center gap-2 text-xs text-muted">
 													<input
 														type="checkbox"
 														checked={screen.wordCounter ?? false}
-														onchange={(e) => (screen.wordCounter = e.currentTarget.checked || undefined)}
+														onchange={(e) =>
+															(screen.wordCounter = e.currentTarget.checked || undefined)}
 													/>
 													מונה מילים מתחת לשורות
 												</label>
 											{/if}
-											<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted" dir="ltr">
-												<span dir="rtl">מהלכים חובה:</span>
-												{#each MOVE_IDS as move (move)}
-													<label class="flex items-center gap-1">
+										</SettingsGroup>
+										<SettingsGroup
+											title="תנאי מעבר"
+											hint={fixedShape
+												? 'יש תשובות מתקבלות - הן מחליפות את התנאים האלה.'
+												: undefined}
+										>
+											{#if !fixedShape}
+												<NumberField
+													label="מינ׳ מילים מהבנק"
+													value={screen.minWordsUsed}
+													onChange={(v) => (screen.minWordsUsed = v)}
+												/>
+												{#if screen.autoCheck ?? true}
+													<NumberField
+														label="טעויות קטנות מותרות"
+														value={screen.maxTypos ?? 1}
+														onChange={(v) => (screen.maxTypos = v)}
+													/>
+													<label class="flex items-center gap-2 text-xs text-muted">
 														<input
 															type="checkbox"
-															checked={screen.requiredMoves?.includes(move) ?? false}
-															onchange={(e) => {
-																const on = e.currentTarget.checked;
-																const next = MOVE_IDS.filter((m) =>
-																	m === move ? on : (screen.requiredMoves ?? []).includes(m)
-																);
-																screen.requiredMoves = next.length ? next : undefined;
-															}}
+															checked={screen.capitalIsError ?? true}
+															onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
 														/>
-														{move}
+														אות ראשונה קטנה = טעות
 													</label>
-												{/each}
-											</div>
+												{/if}
+												<div
+													class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted"
+													dir="ltr"
+												>
+													<span dir="rtl">מהלכים חובה:</span>
+													{#each MOVE_IDS as move (move)}
+														<label class="flex items-center gap-1">
+															<input
+																type="checkbox"
+																checked={screen.requiredMoves?.includes(move) ?? false}
+																onchange={(e) => {
+																	const on = e.currentTarget.checked;
+																	const next = MOVE_IDS.filter((m) =>
+																		m === move ? on : (screen.requiredMoves ?? []).includes(m)
+																	);
+																	screen.requiredMoves = next.length ? next : undefined;
+																}}
+															/>
+															{move}
+														</label>
+													{/each}
+												</div>
+											{/if}
 										</SettingsGroup>
 									{/if}
 									<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
@@ -936,47 +958,20 @@
 										</label>
 									</div>
 									{#if screen.mode === 'listen'}
-										<label class="mt-2 flex flex-col gap-1 text-xs text-muted">
-											רמז בעברית (אופציונלי)
-											<input
-												bind:value={screen.hintHe}
-												dir="rtl"
-												class="rounded-lg border-2 border-line bg-surface p-1"
-											/>
-										</label>
+										<TextField
+											label="רמז בעברית (אופציונלי)"
+											bind:value={screen.hintHe}
+											dir="rtl"
+											stacked
+										/>
 									{/if}
 								{:else if screen.type === 'word-card'}
-									<label
-										class="mt-4 flex flex-col gap-1 border-t-2 border-dashed border-line/60 pt-4 text-xs text-muted"
-									>
-										תיאור תמונה (אופציונלי)
-										<input
-											bind:value={screen.imageAlt}
-											dir="auto"
-											class="rounded-lg border-2 border-line bg-surface p-1"
-										/>
-									</label>
-								{/if}
-								{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
-									<SettingsGroup title="הגדרות כלליות">
-										{#if isExam}
-											<NumberField
-												label="ניקוד"
-												value={screen.points ?? 1}
-												onChange={(v) => (screen.points = v)}
-											/>
-										{:else}
-											<label class="flex items-center gap-2 text-xs text-muted">
-												<input
-													type="checkbox"
-													checked={screen.autoCheck ?? true}
-													onchange={(e) =>
-														(screen.autoCheck = e.currentTarget.checked ? undefined : false)}
-												/>
-												בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
-											</label>
-										{/if}
-									</SettingsGroup>
+									<TextField
+										label="תיאור תמונה (אופציונלי)"
+										bind:value={screen.imageAlt}
+										dir="auto"
+										stacked
+									/>
 								{/if}
 							</div>
 						</div>

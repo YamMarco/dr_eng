@@ -1,7 +1,8 @@
 <script lang="ts">
 	// One titled block of settings under a screen's content. Every screen's
-	// settings are stacked below its content in groups like this one, in the
-	// order: type-specific groups, then general ones (score, auto-check).
+	// settings are stacked below its content in groups like this one, ordered
+	// from fundamental to specific: general (score, auto-check, timer), then
+	// shape, pass conditions, and content helpers.
 	// Plain flow only - nothing sticky - so groups never cover each other.
 	// The parent lays groups out as grid cells.
 	import type { Snippet } from 'svelte';
