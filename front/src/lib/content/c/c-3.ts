@@ -1095,7 +1095,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'בגרות C = 8 נקודות על Language Use.\n\nהכלל הבסיסי שמגן על הנקודות האלה:\nכל משפט חייב subject + verb.\n\nSubject = מי עושה את הפעולה.\nVerb = מה הם עושים.\n\n{p:text}"Students learn." - subject: students. verb: learn. ✅\n"Students responsible." - subject: students. verb: אין. ❌',
+          text: '{d:rtl}בגרות C = 8 נקודות על Language Use.\n\n{d:rtl}הכלל הבסיסי שמגן על הנקודות האלה:\n{d:rtl}כל משפט חייב subject + verb.\n\n{d:rtl}Subject = מי עושה את הפעולה.\n{d:rtl}\n{d:rtl}Verb = מה הם עושים.\n\n{p:text}"Students learn." - subject: students. verb: learn. ✅\n{d:rtl}"Students responsible." - subject: students. verb: אין. ❌',
         },
         {
           type: "preface",
