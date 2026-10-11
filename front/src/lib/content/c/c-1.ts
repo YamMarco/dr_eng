@@ -4307,7 +4307,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "אז נלמד איך מפצחים כל שאלה שיש בה But/However",
+          text: "{d:rtl}אז נלמד איך מפצחים כל שאלה שיש בה **But /However**",
         },
         {
           type: "summary",
@@ -4324,15 +4324,15 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "{d:rtl}however / but מסמנים פנייה בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל תמיד עונים על מה שהשאלה שואלת.",
+              text: "{d:rtl}however / but מסמנים** פנייה** בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל לזכור שתמיד עונים על מה שהשאלה שואלת.",
             },
             {
               type: "mcq",
               prompt:
-                '"Many people cannot swim. However, experts say it is never too late." - מה הנקודה של הכותב?',
+                "{a:left}{d:rtl}Many people cannot swim. However, experts say it is never too late- \n{d:rtl}מה הנקודה של הכותב?",
               options: [
-                '"Many people cannot swim"',
-                '"it is never too late"',
+                "Many people cannot swim",
+                "it is never too late for people to swim",
                 "שתיהן חשובות באותה מידה",
               ],
               correctIndex: 1,
