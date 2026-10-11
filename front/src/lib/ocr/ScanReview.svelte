@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { FilePlus, LoaderCircle } from '@lucide/svelte';
+	import { Camera, ImageUp, LoaderCircle } from '@lucide/svelte';
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
@@ -10,7 +10,8 @@
 		text = $bindable(),
 		progress,
 		error,
-		onAddPage,
+		onAddPhoto,
+		onAddFromGallery,
 		onInsert,
 		onCancel
 	}: {
@@ -18,7 +19,8 @@
 		/** "Reading page i of n" while a scan runs, else empty. */
 		progress: string;
 		error: string;
-		onAddPage: () => void;
+		onAddPhoto: () => void;
+		onAddFromGallery: () => void;
 		onInsert: () => void;
 		onCancel: () => void;
 	} = $props();
@@ -55,14 +57,26 @@
 		{:else if error}
 			<span class="font-semibold text-danger">{error}</span>
 		{/if}
-		<button
-			type="button"
-			disabled={!!progress}
-			onclick={onAddPage}
-			class="flex items-center gap-1.5 rounded-xl border-2 border-line px-3 py-1.5 font-semibold text-ink/80 hover:border-brand disabled:opacity-50"
-		>
-			<FilePlus class="size-4" />{i18n.dict.ocr.addPage}
-		</button>
+		<div class="flex gap-2">
+			<button
+				type="button"
+				disabled={!!progress}
+				onclick={onAddPhoto}
+				class="flex items-center gap-1.5 rounded-xl border-2 border-line px-3 py-1.5 font-semibold text-ink/80 hover:border-brand disabled:opacity-50"
+			>
+				<Camera class="size-4" />{i18n.dict.ocr.addPage}
+			</button>
+			<button
+				type="button"
+				disabled={!!progress}
+				onclick={onAddFromGallery}
+				aria-label={i18n.dict.ocr.gallery}
+				title={i18n.dict.ocr.gallery}
+				class="flex items-center rounded-xl border-2 border-line px-2 py-1.5 text-ink/80 hover:border-brand disabled:opacity-50"
+			>
+				<ImageUp class="size-4" />
+			</button>
+		</div>
 	</div>
 
 	<div class="mt-3 flex gap-3">

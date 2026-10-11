@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Camera } from '@lucide/svelte';
+	import { Camera, ImageUp } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { scanHandwriting } from './scan';
 	import ScanReview from './ScanReview.svelte';
@@ -7,7 +7,8 @@
 	let { onText, disabled = false }: { onText: (text: string) => void; disabled?: boolean } =
 		$props();
 
-	let input: HTMLInputElement;
+	let cameraInput: HTMLInputElement;
+	let galleryInput: HTMLInputElement;
 	let reviewing = $state(false);
 	let text = $state('');
 	let progress = $state('');
@@ -15,7 +16,7 @@
 
 	// An essay can run to two pages: each photo is read on its own and
 	// appended in order, from one multi-select or via "add page" in the review.
-	async function onPick() {
+	async function onPick(input: HTMLInputElement) {
 		const files = [...(input.files ?? [])];
 		input.value = ''; // picking the same photo again still fires `change`
 		if (files.length === 0) return;
@@ -39,20 +40,39 @@
 		text = '';
 		error = '';
 	}
+
+	const btn =
+		'flex items-center gap-2 rounded-xl border-2 border-line bg-surface px-3 py-2 text-sm font-semibold text-ink/80 transition hover:border-brand disabled:opacity-50';
 </script>
 
 <div class="mt-3">
-	<!-- No `capture`: phones then offer camera or gallery (two pages at once). -->
-	<input bind:this={input} type="file" accept="image/*" multiple class="hidden" onchange={onPick} />
-	<button
-		type="button"
-		{disabled}
-		onclick={() => input.click()}
-		class="flex items-center gap-2 rounded-xl border-2 border-line bg-surface px-3 py-2 text-sm font-semibold text-ink/80 transition hover:border-brand disabled:opacity-50"
-	>
-		<Camera class="size-4" />
-		{i18n.dict.ocr.button}
-	</button>
+	<!-- `capture` opens the camera directly on phones; desktop falls back to a file dialog. -->
+	<input
+		bind:this={cameraInput}
+		type="file"
+		accept="image/*"
+		capture="environment"
+		class="hidden"
+		onchange={() => onPick(cameraInput)}
+	/>
+	<input
+		bind:this={galleryInput}
+		type="file"
+		accept="image/*"
+		multiple
+		class="hidden"
+		onchange={() => onPick(galleryInput)}
+	/>
+	<div class="flex flex-wrap gap-2">
+		<button type="button" {disabled} onclick={() => cameraInput.click()} class={btn}>
+			<Camera class="size-4" />
+			{i18n.dict.ocr.button}
+		</button>
+		<button type="button" {disabled} onclick={() => galleryInput.click()} class={btn}>
+			<ImageUp class="size-4" />
+			{i18n.dict.ocr.gallery}
+		</button>
+	</div>
 	<p class="mt-1 text-xs text-muted">{i18n.dict.ocr.hint}</p>
 </div>
 
@@ -61,7 +81,8 @@
 		bind:text
 		{progress}
 		{error}
-		onAddPage={() => input.click()}
+		onAddPhoto={() => cameraInput.click()}
+		onAddFromGallery={() => galleryInput.click()}
 		onInsert={() => {
 			onText(text.trim());
 			close();
