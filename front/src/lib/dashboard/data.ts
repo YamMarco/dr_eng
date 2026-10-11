@@ -1,11 +1,9 @@
 // Derived data for the home dashboard: a module's route (its sections in
-// study order, with progress), today's lesson, and the latest exam score.
+// study order, with progress) and today's lesson.
 // Pure reads of the progress stores - call from $derived for reactivity.
 import { getLesson, getLessonsBySection, sectionMeta, type LessonNode } from '$lib/content';
 import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/lessonPath';
 import { moduleLocation } from '$lib/moduleLocation.svelte';
-import { getQuizzesForModule } from '$lib/quizzes';
-import { getLastAttempt } from '$lib/quiz/progress';
 
 /** `total` counts only lessons with content written ("ready" to play). */
 export type RouteSection = { id: string; done: number; gold: number; total: number };
@@ -47,26 +45,4 @@ export function todayLesson(moduleId: string): LessonNode | undefined {
 		if (next) return next;
 	}
 	return undefined;
-}
-
-export type ExamStats = { taken: number; total: number; lastPercent: number | undefined };
-
-/** How many of the module's exams were submitted at least once, and the
- *  auto-graded percent of the most recent submission. */
-export function examStats(moduleId: string): ExamStats {
-	const { assorted, ministry } = getQuizzesForModule(moduleId);
-	const quizzes = [...assorted, ...ministry];
-	let taken = 0;
-	let latest: { at: number; percent: number } | undefined;
-	for (const quiz of quizzes) {
-		const attempt = getLastAttempt(quiz.id);
-		if (!attempt) continue;
-		taken++;
-		if (attempt.score.auto.max === 0 || (latest && attempt.submittedAt <= latest.at)) continue;
-		latest = {
-			at: attempt.submittedAt,
-			percent: Math.round((attempt.score.auto.earned / attempt.score.auto.max) * 100)
-		};
-	}
-	return { taken, total: quizzes.length, lastPercent: latest?.percent };
 }

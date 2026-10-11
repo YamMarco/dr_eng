@@ -20,17 +20,10 @@ export const ar: DictionaryOverride = {
 		unitsSuffix: 'وحدة'
 	},
 	unit: {
-		backLabel: 'رجوع لاختيار الوحدات',
-		subtitle: 'اختاروا وحدة تعليمية لبدء التدريب.',
-		emptyTitle: 'ستُضاف وحدات هذا المستوى قريبًا',
 		modulePrefix: 'وحدة'
 	},
 	module: {
-		backLabel: 'رجوع لقائمة الوحدات',
-		lessonsTitle: 'دروس',
-		lessonsDesc: 'مسار تعلّم تدريجي حسب المواضيع',
-		examTitle: 'اختبارات',
-		examSubtitle: 'مجموعة اختبارات للتدريب، وأيضًا اختبارات بجروت رسمية بحسب السنة'
+		examTitle: 'اختبارات'
 	},
 	lessons: {
 		titlePrefix: 'دروس — وحدة',

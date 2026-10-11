@@ -97,7 +97,8 @@ export const he = {
 		assortedTitle: 'מגוון מבחנים',
 		ministryTitle: 'בגרויות',
 		yearPrefix: 'מבחן בגרות',
-		avgTimeLabel: 'זמן ממוצע',
+		takenLabel: 'מבחנים שנעשו',
+		avgMinutesLabel: 'דקות בממוצע',
 		avgGradeLabel: 'ציון ממוצע',
 		rulesTitle: 'מבנה המבחן',
 		readingTextsRule: (n: number) => (n === 1 ? 'טקסט קריאה אחד' : `${n} טקסטי קריאה`),
@@ -109,17 +110,10 @@ export const he = {
 		avgScoreLabel: 'ממוצע'
 	},
 	unit: {
-		backLabel: 'חזרה לבחירת יחידות',
-		subtitle: 'בחרו מודול כדי להתחיל לתרגל.',
-		emptyTitle: 'המודולים ברמה זו יתווספו בקרוב',
 		modulePrefix: 'מודול'
 	},
 	module: {
-		backLabel: 'חזרה לרשימת המודולים',
-		lessonsTitle: 'שיעורים',
-		lessonsDesc: 'מסע לימוד שלב אחר שלב לפי נושאים',
-		examTitle: 'מבחנים',
-		examSubtitle: 'מגוון מבחנים לתרגול, וגם מבחני בגרות רשמיים לפי שנה'
+		examTitle: 'מבחנים'
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',

@@ -3,14 +3,14 @@
 	import { resolve } from '$app/paths';
 	import type { CurriculumModule } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import type { ExamStats } from './data';
+	import StatTile from '$lib/components/StatTile.svelte';
+	import { formatExamStats, type ExamStats } from '$lib/quiz/stats';
 
-	// Exams across the student's modules: one row each, into that module's exam list.
+	// Exams across the student's modules: one row each with the same stats as
+	// that module's exam page, tapping into it.
 	type Props = { groupId: string; rows: { mod: CurriculumModule; stats: ExamStats }[] };
 
 	let { groupId, rows }: Props = $props();
-
-	let t = $derived(i18n.dict.home);
 </script>
 
 <ul
@@ -23,16 +23,17 @@
 					unitId: groupId,
 					moduleId: mod.id
 				})}
-				class="flex min-h-16 items-center gap-3 px-4 py-3 transition active:scale-[0.99]"
+				class="flex flex-col gap-3 p-4 transition active:scale-[0.99]"
 			>
-				<span class="min-w-0 flex-1">
-					<span class="block font-semibold">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
-					<span class="block text-sm text-muted">
-						{t.examsTaken(stats.taken, stats.total)}{#if stats.lastPercent !== undefined}
-							· {t.examLast(stats.lastPercent)}{/if}
-					</span>
+				<span class="flex items-center justify-between gap-3">
+					<span class="font-bold">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
+					<ChevronLeft size={20} class="shrink-0 text-muted ltr:rotate-180" aria-hidden="true" />
 				</span>
-				<ChevronLeft size={20} class="shrink-0 text-muted ltr:rotate-180" aria-hidden="true" />
+				<div class="grid grid-cols-3 gap-2">
+					{#each formatExamStats(stats) as tile (tile.label)}
+						<StatTile plain value={tile.value} label={tile.label} />
+					{/each}
+				</div>
 			</a>
 		</li>
 	{/each}

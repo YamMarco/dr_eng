@@ -25,7 +25,6 @@
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
-	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
 
 	// The generic canvas graph every module's path is drawn from: every
 	// lesson carries its own placement (x, y) and prerequisite lesson ids
@@ -376,7 +375,7 @@
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
 
-<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back={base}>
+<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back="/">
 	{#snippet trailing()}
 		<!-- In the bar rather than floating, so they never cover path nodes. -->
 		<div class="flex items-center gap-2">

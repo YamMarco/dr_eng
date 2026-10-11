@@ -9,7 +9,8 @@
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
-	import { examStats, moduleRoute, todayLesson } from '$lib/dashboard/data';
+	import { moduleRoute, todayLesson } from '$lib/dashboard/data';
+	import { examStats } from '$lib/quiz/stats';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import TodayCard from '$lib/dashboard/TodayCard.svelte';
 	import ModuleCard from '$lib/dashboard/ModuleCard.svelte';

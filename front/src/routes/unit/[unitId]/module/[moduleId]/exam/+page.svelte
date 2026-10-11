@@ -5,6 +5,8 @@
 	import { getQuizzesForModule, type Quiz } from '$lib/quizzes';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import StatTile from '$lib/components/StatTile.svelte';
+	import { examStats, formatExamStats } from '$lib/quiz/stats';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -48,7 +50,7 @@
      ever unlock it there (see the equivalent bootstrap link on the lessons
      page). Gating this link too would mean nothing on the deployed site
      could ever reach the password screen. -->
-<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
+<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back="/">
 	{#snippet trailing()}
 		<a
 			href="/edit-exam?module={mod.id}"
@@ -61,23 +63,13 @@
 </AppBar>
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
-	<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->
 	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
-		class="mb-6 grid grid-cols-2 gap-3"
+		class="mb-6 grid grid-cols-3 gap-3"
 	>
-		<div
-			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
-		>
-			<p class="text-2xl font-extrabold tabular" dir="ltr">18:42</p>
-			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgTimeLabel}</p>
-		</div>
-		<div
-			class="rounded-3xl bg-surface p-4 text-center shadow-md ring-1 shadow-overlay/5 ring-line/70"
-		>
-			<p class="text-2xl font-extrabold tabular">78</p>
-			<p class="mt-1 text-sm text-muted">{i18n.dict.quizzes.avgGradeLabel}</p>
-		</div>
+		{#each formatExamStats(examStats(mod.id)) as tile (tile.label)}
+			<StatTile value={tile.value} label={tile.label} />
+		{/each}
 	</section>
 
 	<section
