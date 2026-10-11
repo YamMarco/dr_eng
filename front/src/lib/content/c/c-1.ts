@@ -3384,7 +3384,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "c-l10",
     section: "c-1",
-    titleHe: "תשובה קצרה",
     titleEn: "Short Answer",
     required: ["c-l09"],
     requiredRounds: 3,
