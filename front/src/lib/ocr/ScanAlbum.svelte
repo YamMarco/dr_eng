@@ -168,10 +168,10 @@
 		</div>
 
 		{#if pages.length}
-			<ol class="mt-3 flex min-h-0 flex-col gap-3 overflow-y-auto">
+			<ol class="mt-3 grid min-h-0 grid-cols-2 items-start gap-3 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li
-						class="shrink-0 overflow-hidden rounded-xl border-2 {selected.includes(page.id)
+						class="overflow-hidden rounded-xl border-2 {selected.includes(page.id)
 							? 'border-danger'
 							: 'border-line'}"
 					>
@@ -216,7 +216,7 @@
 							aria-label={i18n.dict.ocr.view}
 							onclick={() => (selecting ? toggle(page.id) : (viewing = page.id))}
 						>
-							<img src={page.url} alt="" class="max-h-[55dvh] w-full object-contain" />
+							<img src={page.url} alt="" class="h-auto w-full" />
 						</button>
 					</li>
 				{/each}
