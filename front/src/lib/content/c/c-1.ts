@@ -3673,7 +3673,11 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'שני פורמטים של Complete the Sentence:\n\nפורמט א׳ - "People left because ___" ← מחפשים because / since.\nפורמט ב׳ - "They brought goats in order to ___" ← מחפשים to / in order to / so that.\n\nההבדל: because = למה זה קרה (סיבה). in order to = מה הם רצו להשיג (מטרה).',
+          text: "{d:rtl}**✍️ Complete the Sentence: שני סוגים, שתי שאלות**\n\n**🟦 סוג א׳: סיבה ← למה זה קרה?**\n*People left **because** ___*\n🔎 מחפשים בטקסט: **because / since / so**\n✏️ משלימים במשפט מלא: *because they could not find food.*",
+        },
+        {
+          type: "preface",
+          text: "\n---\n🟩 סוג ב׳: מטרה ← מה רצו להשיג?\n*They brought goats in order to ___*\n🔎 מחפשים בטקסט: to / in order to / so that✏️ משלימים בפועל: *in order to eat the plants.*\n\n---\n💡 איך לזכור?\nbecause 🔙 מסתכלים אחורה: מה גרם לזה?in order to 🔜 מסתכלים קדימה: מה רצו שיקרה?",
         },
         {
           type: "summary",
@@ -3696,7 +3700,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT - REDONDA ISLAND\n\n{p:text}"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\nBecause ___ → מחפשים because/so → "could not find food, so they left"\n{p:text}→ Because they could not find enough food.\n\nIn order to ___ → מחפשים so that/to → "removed the goats so that the plants could grow"\n{p:text}→ In order to let the plants grow back.',
+          text: 'WATCH IT - REDONDA ISLAND\n\n{p:text}"People first came to Redonda 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants. The people could not find enough food, so they left the island. In 2016, environmentalists removed the goats so that the plants could grow back."\n\n',
+        },
+        {
+          type: "preface",
+          text: "🟩 In order to ___ ← שאלה על מטרה (בשביל מה עשו את זה?)\nמחפשים בטקסט: so that / to / in order to\n📖 בטקסט: *They removed the goats so that the plants could grow.*✏️ תשובה: *In order to let the plants grow back.*\n⚠️ שימו לב: אחרי In order to בא פועל בצורת בסיס (*let, help, save*).",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}**🔍 איך מוצאים את התשובה בטקסט? לפי תחילת המשפט**\n\n---\n\n{d:rtl}**🟦 Because ___ ← שאלה על סיבה (למה זה קרה?)**\n\n{d:rtl}מחפשים בטקסט: **because / so / since / as**\n\n{d:rtl}📖 בטקסט: *They could not find food, **so** they left.*\n{d:rtl}✏️ תשובה: *Because they could not find enough food.*\n\n{d:rtl}⚠️ שימו לב: אחרי **so** בא מה שקרה, ולפני **so** באה הסיבה.\n",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}💡 בקיצור:\n{d:rtl}\n{d:rtl}Because = מה גרם לזה? 🔙\n{d:rtl}\n{d:rtl}In order to = מה רצו להשיג? 🔜",
         },
       ],
       rounds: [
@@ -3745,7 +3761,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
+              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
               questions: [
                 {
                   prompt:
@@ -3776,7 +3792,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳. מה שחשוב הוא המידע הנכון מהטקסט.",
+              text: "{d:rtl}דקדוק בתשובות קריאה:\n{d:rtl}\n{d:rtl}**לא מורידים **נקודות על שגיאות דקדוק קלות בחלק א׳. מה שחשוב הוא המידע הנכון מהטקסט.",
             },
             {
               type: "preface",
@@ -3792,7 +3808,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: '**II ** The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 "What do scientists do in order to help the trees? COMPLETE: In order to help the trees, they ___",
               modelAnswer:
@@ -3811,6 +3827,7 @@ export const c1Lessons: LessonNode[] = [
               type: "preface",
               text: "{d:rtl}רמת בחינה 💎\n{d:rtl}השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.",
             },
+            { type: "preface", text: "" },
             {
               type: "passage-quiz",
               text: "**REDONDA ISLAND**\n\nI  People first came to Redonda Island 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants, and the people could not find enough food, so they left the island.\n\nII  In 2016, environmentalists removed the goats so that the plants could grow back. Only a few years later, grass covered the island again, and birds returned to build their nests.",
@@ -3839,7 +3856,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "**A ZOO WITHOUT CAGES**\n\nI  When the city zoo in Valmora opened in 1950, most animals lived in small cages. Visitors complained that the animals looked sad and bored, and fewer people came every year.\n\nII  In 2010, the zoo removed most of its cages in order to give the animals more space. Large open areas with trees, rocks and water were built instead, and the animals can now move freely.\n\nIII  The change worked. The number of visitors doubled in five years, and baby animals were born in the zoo for the first time in decades. Today, schools from all over the country visit Valmora to learn about wildlife.\n\nIV  Not all experts agree that the change is enough. Some say that large animals, such as elephants, need much more space than any city zoo can give them. The zoo director, Paula Mendes, says the zoo will not bring in new elephants. Instead, it wants to focus on smaller animals that can live well in the open areas, and on teaching children why wild places must be protected.",
+              text: "{a:center}**A ZOO WITHOUT CAGES**\n\n**I**  When the city zoo in Valmora opened in 1950, most animals lived in small cages. Visitors complained that the animals looked sad and bored, and fewer people came every year.\n\n**II**  In 2010, the zoo removed most of its cages in order to give the animals more space. Large open areas with trees, rocks and water were built instead, and the animals can now move freely.\n\n**III**  The change worked. The number of visitors doubled in five years, and baby animals were born in the zoo for the first time in decades. Today, schools from all over the country visit Valmora to learn about wildlife.\n\n**IV**  Not all experts agree that the change is enough. Some say that large animals, such as elephants, need much more space than any city zoo can give them. The zoo director, Paula Mendes, says the zoo will not bring in new elephants. Instead, it wants to focus on smaller animals that can live well in the open areas, and on teaching children why wild places must be protected.",
               questions: [
                 {
                   prompt: "The zoo removed most of its cages in order to ___",
@@ -3865,7 +3882,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nסיבה או מטרה?" },
             {
               type: "passage-mcq",
-              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
+              text: "**I ** Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
               questions: [
                 {
                   prompt:
@@ -3904,7 +3921,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
-              text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: '**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 '"Why do most trees in the project survive? COMPLETE: Because ___"',
               modelAnswer:
