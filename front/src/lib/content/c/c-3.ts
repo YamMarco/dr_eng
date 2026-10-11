@@ -595,7 +595,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}**עוד שני מחברים שתצטרכו בחיבור המלא:**\n\n{p:text}**For instance** = בדיוק כמו For example.\n{d:rtl}משתמשים בו בדוגמה לסיבה השנייה, כדי לא לכתוב For example פעמיים.\n\n{p:text}**As a result** = כתוצאה מזה - מה קורה בגלל מה שאמרתם.\n{p:text}Students sleep more. **As a result**, they focus better in class.",
+          text: "{d:rtl}**עוד שני ביטויים שתצטרכו בחיבור המלא:**\n\n{p:text}**For instance** = בדיוק כמו For example.\n{d:rtl}משתמשים בו בדוגמה לסיבה השנייה, כדי לא לכתוב For example פעמיים.\n\n{p:text}{d:rtl}**As a result** = כתוצאה מזה - מה קורה בגלל מה שאמרתם.\n{p:text}Students sleep more. **As a result**, they focus better in class.",
         },
         {
           type: "summary",
