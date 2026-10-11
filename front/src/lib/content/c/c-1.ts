@@ -1138,8 +1138,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "summary",
-              title:
-                "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.",
+              title: "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.",
               lines: [
                 "קודם מבינים **מה השאלה מבקשת**.",
                 "אחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.",
@@ -2523,7 +2522,7 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "**Mark every limiting word : only, all, most, some, few, every, always**",
-              text: "**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\n**III**  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV**  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"\n",
+              text: '**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\n**III**  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV**  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."\n',
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
@@ -3385,6 +3384,7 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l10",
     section: "c-1",
+    titleHe: "תשובה קצרה",
     titleEn: "Short Answer",
     required: ["l09"],
     requiredRounds: 3,
@@ -3394,7 +3394,7 @@ export const c1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: 'טעות נפוצה:\n"Give ONE answer." - התלמיד כותב שלושה משפטים מהדעה שלו.\n← שלוש תשובות, ולא מהטקסט.\n\nנכון:\n"Give ONE answer." - משפט אחד מהטקסט.',
+          text: '{d:rtl}טעות נפוצה:\n{d:rtl}\n{d:rtl}"Give ONE answer." - התלמיד כותב שלושה משפטים מהדעה שלו.\n{d:rtl}← שלוש תשובות, ולא מהטקסט.\n\n{d:rtl}נכון:\n{d:rtl}\n{d:rtl}"Give ONE answer." - משפט אחד מהטקסט.',
         },
         {
           type: "summary",
@@ -3418,12 +3418,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: 'WATCH IT\n\nהשאלה: Why were the researchers surprised?\n\nWhy? ← מחפשים מילת סיבה.\nפסקה I: "Researchers were surprised because they expected that money and success would be the main reason for happiness."\n\nתשובה: Because they expected that money and success would be the main reason for happiness.',
+          text: 'WATCH IT\n\n{d:rtl}השאלה: Why were the researchers surprised?\n\n{d:rtl}Why? ← מחפשים מילת סיבה:\n{d:rtl}\n{d:rtl}**פסקה I**: "Researchers were surprised because they expected that money and success would be the main reason for happiness."\n\n{d:rtl}תשובה: Because they expected that money and success would be the main reason for happiness.',
         },
       ],
       rounds: [
         {
           screens: [
+            { type: "preface", text: "" },
             {
               type: "preface",
               text: "תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש.",
@@ -3463,7 +3464,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
-              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: '**II ** The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               questions: [
                 {
                   prompt:
@@ -3489,7 +3490,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: 'דקדוק בתשובות קריאה:\nלא מורידים נקודות על שגיאות דקדוק קלות בחלק א׳.\n\nמה שחשוב: המידע הנכון מהטקסט. כל עוד התשובה מובנת - מקבלים את הנקודות.\nלמשל "Because the goats ate all plants" מקבל ניקוד מלא, גם בלי "the" לפני plants.',
+              text: '{d:rtl}דקדוק בתשובות קריאה:\n{d:rtl}\n{d:rtl}**לא מורידים** נקודות על שגיאות דקדוק קלות בחלק א׳.\n\n{d:rtl}מה שחשוב: המידע הנכון מהטקסט. כל עוד התשובה מובנת - מקבלים את הנקודות.\n{d:rtl}למשל "Because the goats ate all plants" מקבל ניקוד מלא, גם בלי "the" לפני plants.',
             },
             {
               type: "preface",
@@ -3497,7 +3498,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "II  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.",
+              text: "**II ** The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.",
               prompt:
                 "According to Dr. Okafor, how do volunteers feel compared to non-volunteers? Give ONE answer.",
               modelAnswer: "ANSWER: They feel less stressed and sleep better.",
@@ -3526,7 +3527,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק.",
+              text: "{d:rtl}רמת בחינה 💎\n{d:rtl}\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק.",
             },
             {
               type: "passage-quiz",
@@ -3559,8 +3560,12 @@ export const c1Lessons: LessonNode[] = [
               ],
             },
             {
+              type: "preface",
+              text: "III The change has also brought visitors. Because the night sky is so dark, people come from far away to watch the stars. Local guide Anna Brooks takes small groups to a hill outside the town every weekend.\n\nIV Not everyone liked the change at first. Some residents said the streets felt less safe after midnight, and a few shop owners were worried about thieves. The council answered by putting small lights at the main crossings, which switch on when someone walks past. Two years later, the police say crime has not gone up, and the birds are back over Fulda Creek.",
+            },
+            {
               type: "passage-quiz",
-              text: "**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\nI  For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\nII  The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\nIII  The change has also brought visitors. Because the night sky is so dark, people come from far away to watch the stars. Local guide Anna Brooks takes small groups to a hill outside the town every weekend.\n\nIV  Not everyone liked the change at first. Some residents said the streets felt less safe after midnight, and a few shop owners were worried about thieves. The council answered by putting small lights at the main crossings, which switch on when someone walks past. Two years later, the police say crime has not gone up, and the birds are back over Fulda Creek.",
+              text: "{a:center}**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\n**I ** For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\n**II ** The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\n",
               questions: [
                 {
                   prompt:
