@@ -1980,7 +1980,11 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: '{d:rtl}יש סוג שלישי של שאלה - "In your opinion, what changes / what should...?"\n\n{d:rtl}זו לא שאלת YES/NO.\n{d:rtl}זו לא שאלת העדפה.\n\n{d:rtl}היא מבקשת: תציעו **משהו ספציפי **ותסבירו למה זה יעזור.',
+          text: '{d:rtl}**🧩 סוג 3: שאלת "מה הייתם עושים?"**\n*In your opinion, what should change…?*\n*What would you suggest to improve…?*\nכאן לא שואלים אתכם **אם**, וגם לא **מה אתם מעדיפים**.\nכאן אתם **היועצים**: מבקשים מכם להמציא פתרון.\n',
+        },
+        {
+          type: "preface",
+          text: "מה צריך בתשובה? שני דברים:\n💡 הצעה ספציפית: מה בדיוק כדאי לשנות?🎯 הסבר: למה זה יעזור?\n\nדוגמה:*In your opinion, what should schools change to help students?*\n❌ *Schools should be better.* (כללי מדי, אין הסבר)✅ *Schools should start at 9:00 instead of 8:00, because students will sleep more and concentrate better in class.*\n\nהנוסחה:      ‎ I think ___ should ___ because ___",
         },
         {
           type: "preface",
