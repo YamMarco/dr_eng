@@ -587,7 +587,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: '{d:rtl}יש לכם עמדה. יש לכם שתי סיבות. מצוין.\n\n{d:rtl}אבל סיבה בלי פרט - נשמעת ריקה.\n\n{p:ul}{d:ltr}**"Volunteering teaches skills."** - בסדר.\n{p:ul}{d:ltr}**"For example, students learn to work in a team and ****communicate with adults." **-  הרבה יותר טוב\n\n{p:callout}{d:rtl}**For example** = הוכחה שאתם יודעים על מה אתם מדברים.',
+          text: '{d:rtl}יש לכם עמדה. יש לכם שתי סיבות. מצוין.\n\n{d:rtl}אבל סיבה בלי הסבר ודוגמאות  נשמעת חסרה ולא מספקת\n\n{p:ul}{d:ltr}**"Volunteering teaches skills."** - בסדר.\n{p:ul}{d:ltr}**"For example, students learn to work in a team and ****communicate with adults." **-  הרבה יותר טוב\n\n{p:callout}{d:rtl}**For example** = הוכחה שאתם יודעים על מה אתם מדברים.',
         },
         {
           type: "preface",
