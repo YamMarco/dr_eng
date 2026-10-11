@@ -162,7 +162,8 @@ export const cQuizzes: QuizNode[] = [
         screens: [
           {
             type: "passage",
-            title: "Unusual Friendships Between Different Animals",
+            title:
+              "{a:center}**Unusual Friendships Between Different Animals**",
             paragraphs: [
               {
                 id: "p1",
