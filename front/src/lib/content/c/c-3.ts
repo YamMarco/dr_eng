@@ -201,7 +201,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}יש לכם עמדה. מצוין.\n\n{d:rtl}אבל המורה רוצה גם לדעת למה.\n\n{d:rtl}המילה שמחברת את הדעה לסיבה היא: because.\n{p:text}I think students should volunteer because it teaches responsibility.\n\n{d:rtl}עמדה + because + סיבה = משפט שמרוויח נקודות.",
+          text: "{d:rtl}יש לכם עמדה ברורה!  מצוין.\n\n{d:rtl}אבל המורה רוצה גם לדעת **למה.**\n\n{d:rtl}המילה שמחברת את הדעה לסיבה היא: **because**\n{p:text}I think students should volunteer because this act teaches responsibility.\n\n{d:rtl}עמדה + because + סיבה = משפט שמרוויח נקודות.",
         },
         {
           type: "preface",
@@ -352,7 +352,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"The government wants to raise the age for a driver\'s license to 19. Do you think this is a good idea?"\n\n✏️ I think / I do not think... because...\n\nאפשר גם NO. YES ו-NO מקבלים אותו ציון.',
+                "**The government wants to raise the age for a driver's license to 19. Do you think this is a good idea?**\n\n✏️ I think / I do not think... because...\n\n{d:rtl}אפשר גם NO. YES ו-NO מקבלים אותו ציון.",
               wordBank: [
                 "I think",
                 "I do not think",
