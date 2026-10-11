@@ -10,6 +10,7 @@ import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
+import { EditHistory } from './editHistory.svelte';
 
 const MODULE_ID = 'c';
 const SECTION_IDS = sectionMeta.map((s) => s.id);
@@ -30,7 +31,7 @@ function screenList(node: LessonNode, bucket: LessonBucket): LessonScreen[] {
 
 class EditModel implements EditModelLike {
 	nodes = $state<LessonNode[]>([]);
-	dirty = $state(false);
+	#dirty = $state(false);
 	/** Which node the lesson pane is showing. */
 	selectedNodeId = $state<string | null>(null);
 	/** Which screen inside that node the form/preview is showing. */
@@ -39,12 +40,52 @@ class EditModel implements EditModelLike {
 	/** sectionId -> JSON of that section's nodes at load / last save. */
 	#baseline = new Map<string, string>();
 
+	#history = new EditHistory(
+		() => JSON.stringify(this.nodes),
+		(snapshot) => this.#restore(snapshot)
+	);
+
+	/** Setting true records an undo step; every mutator ends with `dirty = true`. */
+	get dirty() {
+		return this.#dirty;
+	}
+	set dirty(v: boolean) {
+		this.#dirty = v;
+		if (v) this.#history.commit();
+	}
+
+	get canUndo() {
+		return this.#history.canUndo;
+	}
+	get canRedo() {
+		return this.#history.canRedo;
+	}
+	undo() {
+		this.#history.undo();
+	}
+	redo() {
+		this.#history.redo();
+	}
+
+	#restore(snapshot: string) {
+		this.nodes = JSON.parse(snapshot) as LessonNode[];
+		if (!this.node(this.selectedNodeId ?? '')) this.selectedNodeId = this.nodes[0]?.id ?? null;
+		if (
+			this.selectedNodeId &&
+			this.selectedPath &&
+			!this.screenAt(this.selectedNodeId, this.selectedPath)
+		)
+			this.selectedPath = null;
+		this.#dirty = this.changedSections.length > 0;
+	}
+
 	load() {
 		this.nodes = clone(SECTION_IDS.flatMap((id) => getLessonsBySection(id)));
 		this.#snapshotBaseline();
 		this.dirty = false;
 		this.selectedNodeId = this.nodes[0]?.id ?? null;
 		this.selectedPath = null;
+		this.#history.reset();
 	}
 
 	#snapshotBaseline() {
@@ -87,7 +128,7 @@ class EditModel implements EditModelLike {
 	/** Flag a mutation done in place on a node/screen object (e.g. an inline
 	 *  prose edit on the screen canvas). */
 	touch() {
-		this.dirty = true;
+		if (this.#history.commit()) this.#dirty = true;
 	}
 
 	/** The section a new/edited node belongs to (near the selection, else first). */

@@ -15,6 +15,7 @@ import type { LessonScreen } from '$lib/lesson-screens/types';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
+import { EditHistory } from './editHistory.svelte';
 
 function clone<T>(v: T): T {
 	return JSON.parse(JSON.stringify(v)) as T;
@@ -23,11 +24,52 @@ function clone<T>(v: T): T {
 class ExamEditModel implements EditModelLike {
 	moduleId = $state('');
 	quizzes = $state<QuizNode[]>([]);
-	dirty = $state(false);
+	#dirty = $state(false);
 	selectedQuizId = $state<string | null>(null);
 	selectedPath = $state<ScreenPath | null>(null);
 
 	#baseline = '';
+
+	#history = new EditHistory(
+		() => JSON.stringify(this.quizzes),
+		(snapshot) => this.#restore(snapshot)
+	);
+
+	/** Setting true records an undo step; every mutator ends with `dirty = true`. */
+	get dirty() {
+		return this.#dirty;
+	}
+	set dirty(v: boolean) {
+		this.#dirty = v;
+		if (v) this.#history.commit();
+	}
+
+	get canUndo() {
+		return this.#history.canUndo;
+	}
+	get canRedo() {
+		return this.#history.canRedo;
+	}
+	undo() {
+		this.#history.undo();
+	}
+	redo() {
+		this.#history.redo();
+	}
+
+	#restore(snapshot: string) {
+		this.quizzes = JSON.parse(snapshot) as QuizNode[];
+		if (!this.node(this.selectedQuizId ?? '')) {
+			this.selectedQuizId = this.quizzes[0]?.id ?? null;
+			this.selectedPath = null;
+		} else if (
+			this.selectedQuizId &&
+			this.selectedPath &&
+			!this.screenAt(this.selectedQuizId, this.selectedPath)
+		)
+			this.selectedPath = null;
+		this.#dirty = snapshot !== this.#baseline;
+	}
 
 	load(moduleId: string) {
 		this.moduleId = moduleId;
@@ -36,6 +78,7 @@ class ExamEditModel implements EditModelLike {
 		this.dirty = false;
 		this.selectedQuizId = this.quizzes[0]?.id ?? null;
 		this.selectedPath = null;
+		this.#history.reset();
 	}
 
 	#snapshotBaseline() {
@@ -48,7 +91,7 @@ class ExamEditModel implements EditModelLike {
 	}
 
 	touch() {
-		this.dirty = true;
+		if (this.#history.commit()) this.#dirty = true;
 	}
 
 	/** Node-level diff against the last-loaded/saved baseline - same

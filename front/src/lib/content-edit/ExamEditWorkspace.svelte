@@ -5,6 +5,7 @@
 	// Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { examEditModel } from './examEditModel.svelte';
 	import { saveExamChanges } from './api';
 	import { validateExam, issuesByNode } from './validate';
@@ -104,6 +105,8 @@
 				🗒️ רשימת המבחנים
 			</button>
 		{/if}
+
+		<UndoRedoButtons model={examEditModel} />
 
 		{#if issues.length}
 			<button

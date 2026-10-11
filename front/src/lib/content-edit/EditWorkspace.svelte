@@ -4,6 +4,7 @@
 	// once. Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { editModel } from './editModel.svelte';
 	import { saveSection } from './api';
 	import { validateSection, issuesByNode } from './validate';
@@ -123,6 +124,8 @@
 				onclick={() => (mode = 'lesson')}>✏️ עריכת שיעור</button
 			>
 		</div>
+
+		<UndoRedoButtons model={editModel} />
 
 		{#if issues.length}
 			<button
