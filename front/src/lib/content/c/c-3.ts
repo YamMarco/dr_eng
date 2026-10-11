@@ -1980,7 +1980,7 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: '{d:rtl}**🧩 סוג 3: שאלת:  "מה הייתם עושים?"**\n{d:rtl}\n*In your opinion, what should change…?*\n*What would you suggest to improve…?*\n{d:rtl}\n{d:rtl}כאן לא שואלים אתכם **אם**, וגם לא **מה אתם מעדיפים**.\n{d:rtl}כאן אתם **היועצים**: מבקשים מכם להמציא פתרון.\n',
+          text: '{d:rtl}**🧩 סוג 3: שאלת:  "מה הייתם עושים?"**\n{d:rtl}\n*In your opinion, what should change…?*\n*What would you suggest to improve…?*\n{d:rtl}\n{d:rtl}כאן לא שואלים אתכם **אם**, וגם לא **מה אתם מעדיפים**.\n{d:rtl}\n{d:rtl}כאן אתם **היועצים**: מבקשים מכם להמציא פתרון.\n',
         },
         {
           type: "preface",
