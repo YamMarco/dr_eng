@@ -3229,6 +3229,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "רעש יכול להשפיע על השינה. ההשפעה חמורה.",
               hookHe:
                 'affect = פועל, מה עושים: "noise affects sleep". effect = שם עצם, מה יש: "the effect of noise". a = action · e = end result.',
+              image: "/vocab-images/word-409321224c.jpg",
             },
             {
               type: "mcq",
@@ -3267,6 +3268,7 @@ export const c2Lessons: LessonNode[] = [
               exampleEn: "The programme **requires** two hours a week.",
               exampleHe: "התוכנית דורשת שעתיים בשבוע.",
               hookHe: "require = לדרוש, להצריך: משהו שחייבים כדי שיצליח.",
+              image: "/vocab-images/word-c33c833685.jpg",
             },
             {
               type: "mcq",
@@ -3292,6 +3294,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "יתרון אחד של פעילות גופנית הוא שינה טובה יותר.",
               hookHe:
                 "benefit = יתרון, הטוב שמקבלים. גם פועל: to benefit = להרוויח מזה.",
+              image: "/vocab-images/word-f86c2836d3.jpg",
             },
             {
               type: "mcq",
@@ -3339,6 +3342,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "זאת הזדמנות מצוינת ללמוד משהו חדש.",
               hookHe:
                 'opportunity = הזדמנות: רגע שאפשר לנצל. נשמע כמו "אופורטוניטי".',
+              image: "/vocab-images/word-e484c2104e.jpg",
             },
             {
               type: "mcq",
@@ -3510,7 +3514,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Many people think that exercise takes too much time.\n\nII  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\nIII  Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
+              text: "**I**  Many people think that exercise takes too much time.\n\n**II**  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\n**III ** Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
               questions: [
                 {
                   prompt: "How much time do the programs require?",
