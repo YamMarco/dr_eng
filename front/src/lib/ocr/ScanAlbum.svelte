@@ -54,8 +54,8 @@
 		pages.splice(i, 1);
 	}
 
-	const btn =
-		'flex items-center justify-center gap-2 rounded-xl border-2 border-line bg-surface px-3 py-2 text-sm font-semibold text-ink/80 transition hover:border-brand';
+	const sourceBtn =
+		'flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-line bg-surface px-3 py-4 text-sm font-semibold text-ink/80 transition hover:border-brand active:scale-[0.98]';
 	const iconBtn =
 		'rounded-lg p-1.5 text-ink/70 hover:bg-line/60 disabled:opacity-30 disabled:hover:bg-transparent';
 </script>
@@ -80,29 +80,24 @@
 	onchange={() => onPick(galleryInput, 'gallery')}
 />
 
-<div
-	role="dialog"
-	aria-modal="true"
-	aria-label={i18n.dict.ocr.albumTitle}
-	class="fixed inset-0 z-50 flex flex-col bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
->
-	<h2 class="text-xl font-bold">{i18n.dict.ocr.albumTitle}</h2>
-	<p class="mt-1 text-sm leading-relaxed text-muted">
-		{pages.length ? i18n.dict.ocr.albumHint : i18n.dict.ocr.albumAsk}
-	</p>
+<!-- Bottom sheet over a dimmed page, like Android's "open with" chooser. -->
+<div class="fixed inset-0 z-50 flex items-end bg-black/50" role="presentation" onclick={onCancel}>
+	<div
+		role="dialog"
+		aria-modal="true"
+		aria-label={i18n.dict.ocr.albumTitle}
+		tabindex="-1"
+		onclick={(e) => e.stopPropagation()}
+		onkeydown={() => {}}
+		class="flex max-h-[85dvh] w-full flex-col rounded-t-3xl bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-2xl"
+	>
+		<h2 class="text-lg font-bold">{i18n.dict.ocr.albumTitle}</h2>
+		<p class="mt-1 text-sm leading-relaxed text-muted">
+			{pages.length ? i18n.dict.ocr.albumHint : i18n.dict.ocr.albumAsk}
+		</p>
 
-	<div class="mt-3 min-h-0 flex-1 overflow-y-auto">
-		{#if pages.length === 0}
-			<div class="grid gap-3">
-				<button type="button" onclick={() => open('camera')} class="{btn} py-6 text-base">
-					<Camera class="size-5" />{i18n.dict.ocr.takePhoto}
-				</button>
-				<button type="button" onclick={() => open('gallery')} class="{btn} py-6 text-base">
-					<ImageUp class="size-5" />{i18n.dict.ocr.pickPhotos}
-				</button>
-			</div>
-		{:else}
-			<ol class="grid gap-2">
+		{#if pages.length}
+			<ol class="mt-3 grid min-h-0 gap-2 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li class="flex items-center gap-3 rounded-xl border-2 border-line p-2">
 						<div class="relative shrink-0">
@@ -144,21 +139,24 @@
 					</li>
 				{/each}
 			</ol>
-			<div class="mt-3 grid grid-cols-2 gap-2">
-				<button type="button" onclick={() => open('camera')} class={btn}>
-					<Camera class="size-4" />{i18n.dict.ocr.addPhoto}
-				</button>
-				<button type="button" onclick={() => open('gallery')} class={btn}>
-					<ImageUp class="size-4" />{i18n.dict.ocr.addFromGallery}
-				</button>
+		{/if}
+
+		<div class="mt-3 grid shrink-0 grid-cols-2 gap-3">
+			<button type="button" onclick={() => open('camera')} class={sourceBtn}>
+				<Camera class="size-7 text-brand" />{pages.length ? i18n.dict.ocr.addPhoto : i18n.dict.ocr.takePhoto}
+			</button>
+			<button type="button" onclick={() => open('gallery')} class={sourceBtn}>
+				<ImageUp class="size-7 text-brand" />{pages.length ? i18n.dict.ocr.addFromGallery : i18n.dict.ocr.pickPhotos}
+			</button>
+		</div>
+
+		{#if pages.length}
+			<div class="mt-3 flex shrink-0 gap-3">
+				<Button variant="ghost" onclick={onCancel}>{i18n.dict.ocr.cancel}</Button>
+				<Button onclick={() => onRead(pages.map((p) => p.file))}>
+					{i18n.dict.ocr.read(pages.length)}
+				</Button>
 			</div>
 		{/if}
-	</div>
-
-	<div class="mt-3 flex gap-3">
-		<Button variant="ghost" onclick={onCancel}>{i18n.dict.ocr.cancel}</Button>
-		<Button disabled={pages.length === 0} onclick={() => onRead(pages.map((p) => p.file))}>
-			{i18n.dict.ocr.read(pages.length)}
-		</Button>
 	</div>
 </div>
