@@ -1726,7 +1726,15 @@ export const c3Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\n{d:rtl}היא לא שואלת: **YES או NO?**\n{d:rtl}היא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\n{d:rtl}כלומר, צריך לעשות שני דברים:\n{d:rtl}🟢 **1. לבחור דבר אחד ברור**\n{d:rtl}🟢 **2. להסביר למה בחרתם בו**\n\n{d:rtl}למשל:\n{p:text}**What do you think is the best way to help teenagers study better?**\n\n{d:rtl}אל תכתבו:\n{p:text}❌ **There are many ways to help teenagers study.**\n{d:rtl}זה לא נותן תשובה ברורה.\n\n{d:rtl}במקום זה:\n{p:text}✅ **In my opinion, the best way is to give students more practice because it helps them understand the material better.**\n\n{d:rtl}שימו לב:\n{d:rtl}**the best way is...** = הבחירה שלי\n{d:rtl}**because...** = הסיבה שלי\n\n{p:callout}{d:rtl}**What do you think...? ← בוחרים תשובה אחת ברורה ← ואז מסבירים למה.**",
+          text: "{d:rtl}🟦 שאלה שמתחילה ב־**What do you think...?** היא שאלה קצת שונה.\n\n{d:rtl}היא לא שואלת: **YES או NO?**\n{d:rtl}\n{d:rtl}היא שואלת: **מה לדעתכם האפשרות הטובה ביותר?**\n\n{d:rtl}כלומר, צריך לעשות שני דברים:\n{d:rtl}\n{d:rtl}🟢 **1. לבחור דבר אחד ברור**\n{d:rtl}🟢 **2. להסביר למה בחרתם בו**\n",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}למשל:\n{p:text}What do you think is the best way to help teenagers study better?\n\n{d:rtl}אל תכתבו:\n{p:text}❌ There are many ways to help teenagers study.\n{d:rtl}זה לא נותן תשובה ברורה.\n\n{d:rtl}במקום זה:\n{p:text}✅ In my opinion, the best way is to give students more practice because it helps them understand the material better.",
+        },
+        {
+          type: "preface",
+          text: "שימו לב:\n{d:rtl}\n{d:rtl}the best way is... = הבחירה שלי\n{d:rtl}because... = הסיבה שלי\n\n{p:callout}{d:rtl}What do you think...? ← בוחרים תשובה אחת ברורה ← ואז מסבירים למה.",
         },
         {
           type: "preface",
@@ -1836,7 +1844,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחזרו לשלד שכתבתם בסיבוב הקודם. אחרי הסיבה השנייה (In addition) הוסיפו:\n✏️ For instance,... (פרט שמוכיח את הסיבה השנייה)\n✏️ As a result,... (מה יוצא מזה)\n\nלדוגמה, אחרי:\n{p:text}In addition, a trip with friends or family creates memories that last for years.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n{d:rtl}חזרו לשלד שכתבתם בסיבוב הקודם. אחרי הסיבה השנייה (In addition) הוסיפו:\n{d:rtl}\n{d:rtl}✏️ For instance,... (פרט שמוכיח את הסיבה השנייה)\n{d:rtl}✏️ As a result,... (מה יוצא מזה)\n\n{d:rtl}לדוגמה, אחרי:\n{p:text}In addition, a trip with friends or family creates memories that last for years.',
               wordBank: [
                 "for instance",
                 "as a result",
