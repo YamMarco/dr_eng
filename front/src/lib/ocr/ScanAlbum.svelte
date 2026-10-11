@@ -168,7 +168,7 @@
 		</div>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 grid-cols-2 items-start gap-3 overflow-y-auto">
+			<ol class="mt-3 grid min-h-0 grid-cols-2 items-start gap-3 sm:grid-cols-3 lg:grid-cols-4 overflow-y-auto">
 				{#each pages as page, i (page.id)}
 					<li
 						class="overflow-hidden rounded-xl border-2 {selected.includes(page.id)
