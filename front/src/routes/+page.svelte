@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { CalendarClock, Flame } from '@lucide/svelte';
+	import { CalendarClock, Flame, GraduationCap } from '@lucide/svelte';
+	import { resolve } from '$app/paths';
 	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -40,29 +41,36 @@
 		};
 	});
 
+	let pathRows = $derived(moduleRows.filter((r) => r.sections.length > 0));
+	let comingSoon = $derived(
+		moduleRows
+			.filter((r) => r.sections.length === 0)
+			.map((r) => `${i18n.dict.unit.modulePrefix} ${r.mod.letter}`)
+	);
 	let examRows = $derived(
 		moduleRows.filter((r) => r.exams.total > 0).map((r) => ({ mod: r.mod, stats: r.exams }))
 	);
 
-	let goalLine = $derived(
-		profile.value?.units === 'undecided' ? t.goalUndecided : t.goalLine(group.id)
+	let unitsChip = $derived(
+		profile.value?.units === 'undecided' ? t.unitsUndecided : `${group.units} ${t.unitsSuffix}`
 	);
+
+	const chip =
+		'flex min-h-9 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';
 </script>
 
 {#if !profile.value}
 	<Onboarding />
 {:else}
 	<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-5 px-4 pt-8 pb-12 sm:pt-12">
-		<header class="flex items-start justify-between gap-3">
-			<div>
-				<h1 class="text-3xl font-extrabold tracking-tight">{t.greeting}</h1>
-				<p class="mt-1 text-muted">{goalLine}</p>
-			</div>
-			<div class="flex shrink-0 flex-col items-end gap-1.5 text-sm font-bold">
-				<span
-					class="flex items-center gap-1 rounded-full bg-surface px-3 py-1 ring-1 ring-line/70"
-					title={t.streak(activity.streak)}
-				>
+		<header class="flex flex-col gap-3">
+			<h1 class="text-3xl font-extrabold tracking-tight">{t.greeting}</h1>
+			<div class="flex flex-wrap gap-2">
+				<a href={resolve('/settings')} class="{chip} transition hover:ring-brand/50">
+					<GraduationCap size={16} class="text-brand" aria-hidden="true" />
+					{unitsChip}
+				</a>
+				<span class={chip} title={t.streak(activity.streak)}>
 					<Flame
 						size={16}
 						class={activity.streak > 0 ? 'text-orange-500' : 'text-muted'}
@@ -72,9 +80,7 @@
 					<span aria-hidden="true">{activity.streak}</span>
 				</span>
 				{#if profile.daysToExam !== undefined}
-					<span
-						class="flex items-center gap-1 rounded-full bg-surface px-3 py-1 ring-1 ring-line/70"
-					>
+					<span class={chip}>
 						<CalendarClock size={16} class="text-brand" aria-hidden="true" />
 						{t.daysToExam(profile.daysToExam)}
 					</span>
@@ -86,32 +92,38 @@
 			<TodayCard lesson={main.lesson} roundsCompleted={main.roundsCompleted} href={main.href} />
 		{/if}
 
-		<section class="flex flex-col gap-3">
-			<h2 class="px-1 font-bold">{t.modulesTitle}</h2>
-			{#each moduleRows as row, i (row.mod.id)}
-				<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
-					<ModuleCard
-						mod={row.mod}
-						groupId={group.id}
-						sections={row.sections}
-						examDone={row.exams.taken > 0}
-						defaultOpen={row.mod.id === main?.moduleId}
-					/>
-				</div>
-			{/each}
-		</section>
+		{#if moduleRows.length}
+			<section class="flex flex-col gap-3">
+				<h2 class="px-1 text-sm font-bold text-muted">{t.modulesTitle}</h2>
+				{#each pathRows as row, i (row.mod.id)}
+					<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+						<ModuleCard
+							mod={row.mod}
+							groupId={group.id}
+							sections={row.sections}
+							defaultOpen={row.mod.id === main?.moduleId}
+						/>
+					</div>
+				{/each}
+				{#if comingSoon.length}
+					<p class="px-1 text-sm text-muted">{t.comingSoonModules(comingSoon.join(' · '))}</p>
+				{/if}
+			</section>
+		{/if}
 
 		{#if examRows.length}
-			<div
+			<section
+				class="flex flex-col gap-3"
 				in:fly={{
 					y: 12,
 					duration: 300,
-					delay: staggerDelay(moduleRows.length + 1),
+					delay: staggerDelay(pathRows.length + 1),
 					easing: cubicOut
 				}}
 			>
+				<h2 class="px-1 text-sm font-bold text-muted">{t.examsTitle}</h2>
 				<ExamsCard groupId={group.id} rows={examRows} />
-			</div>
+			</section>
 		{/if}
 	</main>
 {/if}

@@ -40,7 +40,7 @@
 			</span>
 		</span>
 		<span class="shrink-0 rounded-full bg-white/20 px-4 py-2 text-sm font-bold">
-			{!lesson ? t.examStart : roundsCompleted > 0 ? t.todayContinue : t.todayStart}
+			{!lesson ? t.todayExams : roundsCompleted > 0 ? t.todayContinue : t.todayStart}
 		</span>
 	</span>
 	{#if totalRounds > 1}
