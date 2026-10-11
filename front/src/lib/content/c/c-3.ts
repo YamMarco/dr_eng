@@ -1848,7 +1848,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n**🏗️ משדרגים את השלד**\nפתחו את השלד שכתבתם בסיבוב הקודם.\nמצאו את הסיבה השנייה, זו שמתחילה ב‑**In addition**.\nמיד אחריה הוסיפו שני משפטים:\n\n**✏️ For instance, ...**\n👈 תנו **דוגמה** שמוכיחה את הסיבה השנייה.\n**✏️ As a result, ...**\n👈 כתבו **מה יוצא מזה**: התוצאה או ההשפעה.\n\n',
+                "What do you think is the best way to spend a vacation? Give reasons to explain your opinion.\n\n{d:rtl}**🏗️ משדרגים את השלד**\n{d:rtl}\n{d:rtl}פתחו את השלד שכתבתם בסיבוב הקודם.\n{d:rtl}\n{d:rtl}מצאו את הסיבה השנייה, זו שמתחילה ב‑**In addition**.\n{d:rtl}מיד אחריה הוסיפו שני משפטים:\n\n**✏️ For instance, ...**\n{d:rtl}👈 תנו **דוגמה** שמוכיחה את הסיבה השנייה.\n**✏️ As a result, ...**\n{d:rtl}👈 כתבו **מה יוצא מזה**: התוצאה או ההשפעה.\n\n",
               wordBank: [
                 "for instance",
                 "as a result",
@@ -1885,7 +1885,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\nחיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\nbecause / For example / In addition / For instance / As a result / In conclusion\n\nיש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n{d:rtl}חיבור מלא, 70-90 מילים. אותו שלד של 6 משפטים - הפעם בלי תבנית על המסך, רק המחברים:\n{d:rtl}\n**because / For example / In addition / For instance / As a result / In conclusion**\n\n{d:rtl}יש לכם כבר את כל 6 המשפטים: 4 מהשלד ו-2 מהסיבוב הקודם. עכשיו מחברים אותם לחיבור אחד.',
               wordBank: [
                 "I think",
                 "I believe",
@@ -1940,7 +1940,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"Many people in Israel study English. In addition to English, which language would you like to know? Give reasons to explain your opinion."\n\nתנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.',
+                "**Many people in Israel study English. ++In addition to English++, which language would you like to know? Give reasons to explain your opinion.**\n\n{d:rtl}תנאי בחינה: 70-90 מילים, בלי בנק מילים, 20 דקות על השעון.",
               wordBank: [],
               minSentences: 5,
               minWordsUsed: 0,
