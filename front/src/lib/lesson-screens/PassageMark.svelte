@@ -55,7 +55,16 @@
 		return range.toString().length;
 	}
 
-	function onMouseUp() {
+	// `selectionchange` (debounced until the selection settles) instead of
+	// `mouseup`: phones never fire mouseup after a long-press text selection,
+	// so the color toolbar used to appear on desktop only.
+	let settle: ReturnType<typeof setTimeout> | undefined;
+	function onSelectionChange() {
+		clearTimeout(settle);
+		settle = setTimeout(readSelection, 250);
+	}
+
+	function readSelection() {
 		const sel = window.getSelection();
 		if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
 		const range = sel.getRangeAt(0);
@@ -80,7 +89,19 @@
 
 		const rect = range.getBoundingClientRect();
 		pendingSelection = { lineKey, start, end };
-		toolbarPos = { top: rect.top - 44, left: rect.left + rect.width / 2 };
+		toolbarPos = toolbarAt(rect);
+	}
+
+	function toolbarAt(rect: DOMRect) {
+		return { top: Math.max(8, rect.top - 44), left: rect.left + rect.width / 2 };
+	}
+
+	// Trackpad scrolling fires tiny/inertial scroll events: follow the selection
+	// instead of closing the toolbar on the first one.
+	function onScroll() {
+		const sel = window.getSelection();
+		if (!pendingSelection || !sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+		toolbarPos = toolbarAt(sel.getRangeAt(0).getBoundingClientRect());
 	}
 
 	function applyColor(color: MarkColor | null) {
@@ -110,17 +131,18 @@
 	}
 
 	// Closes on any click outside the toolbar itself. A click that starts a
-	// new selection inside the passage also lands here first (mousedown fires
-	// before the mouseup that would reopen it with the new selection), so it
+	// new selection inside the passage also lands here first (pointerdown fires
+	// before the selection that would reopen it), so it
 	// just closes then immediately reopens - no special-casing needed.
-	function onWindowMouseDown(e: MouseEvent) {
+	function onWindowPointerDown(e: PointerEvent) {
 		if (pendingSelection && !toolbarEl?.contains(e.target as Node)) closeToolbar();
 	}
 </script>
 
-<svelte:window onscroll={closeToolbar} onmousedown={onWindowMouseDown} />
+<svelte:window onscroll={onScroll} onpointerdown={onWindowPointerDown} />
+<svelte:document onselectionchange={onSelectionChange} />
 
-<div class="flex flex-col" dir="ltr" role="presentation" onmouseup={onMouseUp}>
+<div class="flex flex-col" dir="ltr">
 	{#each lines as line (line.key)}
 		<div class="flex items-start gap-2 {line.rowClass ?? ''}">
 			{#if leading}{@render leading(line)}{/if}
