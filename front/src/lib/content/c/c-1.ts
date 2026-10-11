@@ -2317,9 +2317,14 @@ export const c1Lessons: LessonNode[] = [
             "מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.",
           ],
         },
+        { type: "preface", text: "" },
         {
           type: "preface",
-          text: "השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\nלא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n\n✅ לכן התשובה:\n{p:text}**Programmes that bring young people face to face with the people they help.**\n\nוזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n⭐ הכלל: **השאלה ביקשה ONE BEST / MOST EFFECTIVE ← נותנים תשובה אחת מדויקת.**",
+          text: "{d:rtl}השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n{d:rtl}🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\n{d:rtl}\n{d:rtl}לא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n{d:rtl}📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n",
+        },
+        {
+          type: "preface",
+          text: "{d:rtl}✅ לכן התשובה:\n{p:text}Programmes that bring young people face to face with the people they help.\n\n{d:rtl}וזהו. לא מוסיפים עוד סוגים. לא כותבים מידע שלא ביקשו.\n\n{d:rtl}⭐ הכלל: השאלה ביקשה ONE BEST / MOST EFFECTIVE ← נותנים תשובה אחת מדויקת.",
         },
       ],
       rounds: [
@@ -2523,7 +2528,7 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "Mark every limiting word (only, all, most, some, few, every, always).",
-              text: '**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
+              text: "**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n",
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
@@ -2536,6 +2541,10 @@ export const c1Lessons: LessonNode[] = [
                   ],
                 },
               ],
+            },
+            {
+              type: "preface",
+              text: '**III **The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV** Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
             },
           ],
         },
