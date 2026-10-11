@@ -9,6 +9,7 @@
 // rounds (default 1) are done — later rounds are optional further practice
 // and don't affect anything downstream.
 
+import './legacyIds';
 import { activity } from './activity.svelte';
 
 const STORAGE_KEY = 'lesson-progress';

@@ -1,6 +1,7 @@
 // localStorage persistence for quiz attempts. No backend yet (see plan notes
 // - Supabase is future work), so this is the only place progress lives.
 
+import '$lib/legacyIds';
 import type { QuizScore } from './scoring';
 import { activity } from '$lib/activity.svelte';
 

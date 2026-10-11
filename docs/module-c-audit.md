@@ -1,6 +1,8 @@
 # Module C audit
 
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
+
+> **Ids renamed 2026-10-11:** every lesson id below is now `c-` prefixed (`l06` -> `c-l06`, `vocab-test` -> `c-vocab-test`), `n-<hex>` ids became `c-<hex>`, and exams are `c-exam-N` (was `module-c-exam-N`). Ids in this doc are the old ones.
 Snapshot: 2026-10-10 (Part C rebuilt, branch writing-loop). Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.

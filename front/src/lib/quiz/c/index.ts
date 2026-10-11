@@ -5,7 +5,7 @@ import type { QuizNode } from "../types";
 // this array by id, the same way it merges lesson nodes into a section.
 export const cQuizzes: QuizNode[] = [
   {
-    id: "module-c-exam-2",
+    id: "c-exam-2",
     module: "c",
     uuid: "c-t-4815",
     kind: "assorted",
@@ -149,7 +149,7 @@ export const cQuizzes: QuizNode[] = [
     ],
   },
   {
-    id: "module-c-exam-3",
+    id: "c-exam-3",
     module: "c",
     uuid: "c-t-7192",
     kind: "assorted",
@@ -295,7 +295,7 @@ export const cQuizzes: QuizNode[] = [
     ],
   },
   {
-    id: "module-c-exam-4",
+    id: "c-exam-4",
     module: "c",
     uuid: "c-t-3058",
     kind: "assorted",

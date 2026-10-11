@@ -5,6 +5,8 @@
 // someone is deep in). The timestamp lets the home page find the single most
 // recently touched lesson across every module, for its "continue" card.
 
+import './legacyIds';
+
 const STORAGE_KEY = 'module-location';
 
 type Entry = { lessonId: string; ts: number };

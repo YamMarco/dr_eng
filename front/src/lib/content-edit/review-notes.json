@@ -1,5 +1,5 @@
 {
-	"content-1a": {
+	"c-content-1a": {
 		"preface": true,
 		"rounds": [
 			true,
@@ -10,12 +10,12 @@
 		],
 		"comment": "asdafdsf"
 	},
-	"content-1c": {
+	"c-content-1c": {
 		"preface": false,
 		"rounds": [],
 		"comment": "הוספתי תרגיל חדש במקום משימת הכתיבה\n"
 	},
-	"l07": {
+	"c-l07": {
 		"preface": false,
 		"rounds": [
 			true,
@@ -25,7 +25,7 @@
 		],
 		"comment": ""
 	},
-	"l06": {
+	"c-l06": {
 		"preface": false,
 		"rounds": [
 			true,
@@ -35,7 +35,7 @@
 		],
 		"comment": ""
 	},
-	"l04": {
+	"c-l04": {
 		"preface": false,
 		"rounds": [
 			true,
@@ -45,7 +45,7 @@
 		],
 		"comment": ""
 	},
-	"n-221188d1": {
+	"c-221188d1": {
 		"preface": false,
 		"rounds": [
 			true,
@@ -55,7 +55,7 @@
 		],
 		"comment": ""
 	},
-	"yes-no": {
+	"c-yes-no": {
 		"preface": false,
 		"rounds": [
 			null,
@@ -64,22 +64,22 @@
 		],
 		"comment": ""
 	},
-	"n-5cd02dfa": {
+	"c-5cd02dfa": {
 		"preface": false,
 		"rounds": [],
 		"comment": "מחקתי כרטיסיות ושיניתי מלל- צריך למחוק כרטיסיות ריקות"
 	},
-	"vocab-test": {
+	"c-vocab-test": {
 		"preface": false,
 		"rounds": [],
 		"comment": "יש כרטיסיות ריקות שצריך למחוק"
 	},
-	"content-2a": {
+	"c-content-2a": {
 		"preface": false,
 		"rounds": [],
 		"comment": "המסך הראשון חוזר על עצמו"
 	},
-	"nav-words-1": {
+	"c-nav-words-1": {
 		"preface": false,
 		"rounds": [],
 		"comment": "ערכתי"
@@ -89,7 +89,7 @@
 		"rounds": [],
 		"comment": "הקדמה קצרה לכתיבה\n"
 	},
-	"l02": {
+	"c-l02": {
 		"preface": false,
 		"rounds": [],
 		"comment": "הדגש פה צריך להיות על שינון החוקים + להעריך את עצמך באופן כנה- הוספתי הערה בכטייה הראשונה להוסיף משהו ויזואלי\n"

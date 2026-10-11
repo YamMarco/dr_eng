@@ -37,7 +37,7 @@ Add an object to the right section's array:
 
 ```ts
 {
-  id: 's7-l2',                 // globally unique in the module; convention s{section}-l{n}
+  id: 'c-past-simple',         // globally unique; always starts with the module letter + '-'
   section: 'c-7',
   // no title field: the display title lives in front/src/lib/i18n/locales/titles.he.ts under this node's id
   required: ['s7-l1'],         // prerequisite lesson ids, AND'd; [] = a root node
@@ -161,7 +161,7 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 
 ## Reading round pattern (Part B)
 
-Reference implementation: `l06` + `not-q`. Rule: every round up to and including
+Reference implementation: `c-l06` + `c-not-q`. Rule: every round up to and including
 the exam-level round is required (`requiredRounds`). Rounds after it are optional
 and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the
 method itself (the old "PRACTICE · Round 1 🌱"). Only the exam-level round is
@@ -232,7 +232,7 @@ Before / after (content-2c):
 
 - all UI chrome is Hebrew, in `i18n/locales/he.ts`; `ar.ts` is a partial override
 - teaching content (passages, prompts, options) stays inline in the `c/*.ts` files — never i18n
-- lesson ids are globally unique within the module; convention `s{section}-l{n}`
+- lesson and exam ids always start with the module letter + `-` (`c-l06`, `c-exam-4`); editor-made ids are `c-<8 hex>`
 - after changes: `npm run check` in `front/`, then `graphify update .` at the repo root
 
 ## Writing checks (`front/src/lib/checks/`)
