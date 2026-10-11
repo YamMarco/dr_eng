@@ -2,7 +2,7 @@
 	import { Camera } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { scanHandwriting } from './scan';
-	import ScanAlbum from './ScanAlbum.svelte';
+	import ScanAlbum, { type ScanPage } from './ScanAlbum.svelte';
 	import ScanReview from './ScanReview.svelte';
 
 	let { onText, disabled = false }: { onText: (text: string) => void; disabled?: boolean } =
@@ -17,14 +17,14 @@
 	// An essay can run to two pages: the album collects the photos in order,
 	// each is read on its own and appended; "add page" in the review opens
 	// the album again for more.
-	async function read(files: File[]) {
+	async function read(pages: ScanPage[]) {
 		albumOpen = false;
 		reviewing = true;
 		error = '';
-		for (const [i, file] of files.entries()) {
-			progress = i18n.dict.ocr.pageProgress(i + 1, files.length);
+		for (const [i, { file, rotation }] of pages.entries()) {
+			progress = i18n.dict.ocr.pageProgress(i + 1, pages.length);
 			try {
-				const page = await scanHandwriting(file);
+				const page = await scanHandwriting(file, rotation);
 				if (page) text = text.trim() ? `${text.trimEnd()}\n\n${page}` : page;
 				else error = i18n.dict.ocr.empty;
 			} catch {

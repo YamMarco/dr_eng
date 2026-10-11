@@ -3,13 +3,19 @@
 
 const MAX_SIDE = 1600;
 
-async function toJpeg(file: File): Promise<Blob> {
+async function toJpeg(file: File, rotation: number): Promise<Blob> {
 	const bitmap = await createImageBitmap(file);
 	const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
+	const w = Math.round(bitmap.width * scale);
+	const h = Math.round(bitmap.height * scale);
+	const sideways = rotation % 180 !== 0;
 	const canvas = document.createElement('canvas');
-	canvas.width = Math.round(bitmap.width * scale);
-	canvas.height = Math.round(bitmap.height * scale);
-	canvas.getContext('2d')!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+	canvas.width = sideways ? h : w;
+	canvas.height = sideways ? w : h;
+	const ctx = canvas.getContext('2d')!;
+	ctx.translate(canvas.width / 2, canvas.height / 2);
+	ctx.rotate((rotation * Math.PI) / 180);
+	ctx.drawImage(bitmap, -w / 2, -h / 2, w, h);
 	bitmap.close();
 	return new Promise((resolve, reject) =>
 		canvas.toBlob(
@@ -20,11 +26,12 @@ async function toJpeg(file: File): Promise<Blob> {
 	);
 }
 
-export async function scanHandwriting(file: File): Promise<string> {
+/** `rotation` (0/90/180/270, clockwise) is the student's fix for a sideways photo. */
+export async function scanHandwriting(file: File, rotation = 0): Promise<string> {
 	const res = await fetch('/api/ocr', {
 		method: 'POST',
 		headers: { 'Content-Type': 'image/jpeg' },
-		body: await toJpeg(file)
+		body: await toJpeg(file, rotation)
 	});
 	if (!res.ok) throw new Error(`OCR ${res.status}`);
 	return ((await res.json()) as { text: string }).text;
