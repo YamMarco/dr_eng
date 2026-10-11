@@ -1784,6 +1784,10 @@ export const c3Lessons: LessonNode[] = [
               explanation:
                 '"What do you think?" מבקש את הדעה שלכם. לדון בשני צדדים בלי לבחור = partially on topic = ציון חלקי.',
             },
+            {
+              type: "preface",
+              text: "{a:left}📋 ככה זה נראה:*In addition, sports help students make friends**.**For instance, players spend a lot of time together after practice.**As a result, they feel less lonely at school.*💡 למה זה חשוב? סיבה בלי דוגמה היא סתם טענה. הדוגמה מוכיחה אותה, והתוצאה מראה למה היא חשובה.\n\n{d:rtl}לדוגמה, אחרי:\n{p:text}In addition, a trip with friends or family creates memories that last for years.",
+            },
           ],
         },
         {
@@ -1844,7 +1848,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n{d:rtl}חזרו לשלד שכתבתם בסיבוב הקודם. אחרי הסיבה השנייה (In addition) הוסיפו:\n{d:rtl}\n{d:rtl}✏️ For instance,... (פרט שמוכיח את הסיבה השנייה)\n{d:rtl}✏️ As a result,... (מה יוצא מזה)\n\n{d:rtl}לדוגמה, אחרי:\n{p:text}In addition, a trip with friends or family creates memories that last for years.',
+                '"What do you think is the best way to spend a vacation? Give reasons to explain your opinion."\n\n**🏗️ משדרגים את השלד**\nפתחו את השלד שכתבתם בסיבוב הקודם.\nמצאו את הסיבה השנייה, זו שמתחילה ב‑**In addition**.\nמיד אחריה הוסיפו שני משפטים:\n\n**✏️ For instance, ...**\n👈 תנו **דוגמה** שמוכיחה את הסיבה השנייה.\n**✏️ As a result, ...**\n👈 כתבו **מה יוצא מזה**: התוצאה או ההשפעה.\n\n',
               wordBank: [
                 "for instance",
                 "as a result",
