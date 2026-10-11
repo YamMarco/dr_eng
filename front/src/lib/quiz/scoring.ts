@@ -2,7 +2,7 @@
 // once at submit time with the answers it collected.
 
 import type { LessonScreen } from '$lib/lesson-screens/types';
-import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES } from '$lib/lesson-screens/types';
+import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES, mcqCorrect } from '$lib/lesson-screens/types';
 import type { QuizNode } from './types';
 import { screensWithIds } from './screenIds';
 import { isSentenceCompletionMatch } from '$lib/lesson-screens/sentenceCompletion';
@@ -39,13 +39,21 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 	switch (screen.type) {
 		case 'mcq': {
 			const points = screen.points ?? 1;
-			const correct = userAnswer === screen.correctIndex;
-			return { earned: correct ? points : 0, max: points, auto: true };
+			const right = mcqCorrect(screen);
+			// Tick-N: each right pick earns its share (picks are capped at N in the UI).
+			const picks = Array.isArray(userAnswer) ? (userAnswer as number[]) : [userAnswer];
+			const hits = picks.filter((p) => right.includes(p as number)).length;
+			return {
+				earned: (Math.min(hits, right.length) / right.length) * points,
+				max: points,
+				auto: true
+			};
 		}
 		case 'sentence-completion': {
 			const points = screen.points ?? 1;
 			const correct =
-				typeof userAnswer === 'string' && isSentenceCompletionMatch(userAnswer, screen.modelAnswers);
+				typeof userAnswer === 'string' &&
+				isSentenceCompletionMatch(userAnswer, screen.modelAnswers);
 			return { earned: correct ? points : 0, max: points, auto: true };
 		}
 		case 'cloze-pick': {

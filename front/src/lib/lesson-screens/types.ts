@@ -50,7 +50,6 @@ export function isMarkAllPass(screen: MarkAllScreen, picked: number[]): boolean 
 	return wrong <= (targets.size === 1 ? 0 : 1) && hits >= Math.ceil(targets.size * 0.7);
 }
 
-
 /**
  * A screen with no real content (e.g. a message left with empty text, or a
  * question with no options) is skipped by the runner instead of being shown
@@ -97,6 +96,11 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'time-comparison':
 			return false;
 	}
+}
+
+/** The right option(s) of an mcq: one for a plain question, N for tick-N. */
+export function mcqCorrect(screen: McqScreen): number[] {
+	return screen.correctIndices ?? (screen.correctIndex === undefined ? [] : [screen.correctIndex]);
 }
 
 /** How many scored questions a screen contributes, for a fixed-denominator score badge. */

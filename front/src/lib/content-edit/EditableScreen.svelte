@@ -9,6 +9,7 @@
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import NumberField from './fields/NumberField.svelte';
 	import WordChips from './fields/WordChips.svelte';
+	import { mcqCorrect } from '$lib/lesson-screens/types';
 	import type { ScreenPath } from './screenPath';
 	import type { EditModelLike } from './editModelTypes';
 	import WordImageField from './WordImageField.svelte';
@@ -164,17 +165,31 @@
 			<ul class="space-y-1.5">
 				{#each screen.options as _opt, i (i)}
 					<li
-						class="flex items-center gap-2 rounded-xl border p-2 {screen.correctIndex === i
+						class="flex items-center gap-2 rounded-xl border p-2 {mcqCorrect(screen).includes(i)
 							? 'border-brand bg-brand-soft/50'
 							: 'border-line'}"
 					>
 						<button
 							type="button"
 							title="סמן כנכונה"
-							class="h-4 w-4 shrink-0 rounded-full border-2 {screen.correctIndex === i
+							class="h-4 w-4 shrink-0 rounded-full border-2 {mcqCorrect(screen).includes(i)
 								? 'border-brand bg-brand'
 								: 'border-muted'}"
-							onclick={() => set('correctIndex', i)}
+							onclick={() => {
+								// Tick-N: toggle membership, keeping at least 2 right options.
+								const multi = screen.correctIndices;
+								if (!multi) set('correctIndex', i);
+								else if (!multi.includes(i))
+									set(
+										'correctIndices',
+										[...multi, i].sort((a, b) => a - b)
+									);
+								else if (multi.length > 2)
+									set(
+										'correctIndices',
+										multi.filter((c: number) => c !== i)
+									);
+							}}
 						></button>
 						<div class="flex-1">
 							<MarkdownInput

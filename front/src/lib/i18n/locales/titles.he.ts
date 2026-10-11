@@ -56,5 +56,9 @@ export const titlesHe: Record<string, string> = {
 	'module-c-exam-3': 'ידידות יוצאות דופן בין בעלי חיים',
 	'module-c-exam-3.description': 'מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.',
 	'module-c-exam-3.reading': 'קריאה',
-	'module-c-exam-3.writing': 'כתיבה'
+	'module-c-exam-3.writing': 'כתיבה',
+	'module-c-exam-4': 'איך ישיבה ממושכת משפיעה עלינו',
+	'module-c-exam-4.description': 'מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.',
+	'module-c-exam-4.reading': 'קריאה',
+	'module-c-exam-4.writing': 'כתיבה'
 };

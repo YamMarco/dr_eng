@@ -4,7 +4,7 @@
 // options, the dash rule). Messages are Hebrew - they're shown in the editor.
 import * as z from 'zod';
 import { lessonScreenSchema } from './schema';
-import { isScreenEmpty, type LessonScreen } from './types';
+import { isScreenEmpty, mcqCorrect, type LessonScreen } from './types';
 import { markAllSegments } from './markAllTokens';
 
 export type ScreenProblem = { severity: 'error' | 'warn'; message: string };
@@ -52,7 +52,13 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 
 	switch (screen.type) {
 		case 'mcq':
-			out.push(...outOfRange('correctIndex', [screen.correctIndex], screen.options.length));
+			if ((screen.correctIndex === undefined) === (screen.correctIndices === undefined))
+				out.push({
+					severity: 'error',
+					message: 'יש להגדיר correctIndex או correctIndices (אחד בלבד)'
+				});
+			out.push(...outOfRange('correctIndex', mcqCorrect(screen), screen.options.length));
+			out.push(...duplicates('correctIndices', (screen.correctIndices ?? []).map(String)));
 			out.push(...duplicates('options', screen.options));
 			break;
 		case 'cloze-pick':

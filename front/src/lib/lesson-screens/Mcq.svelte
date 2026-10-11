@@ -3,7 +3,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import { textDir } from './miniMarkdown';
 	import { backOut } from 'svelte/easing';
-	import type { McqScreen } from './types';
+	import { mcqCorrect, type McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -31,14 +31,20 @@
 		label?: string;
 	} = $props();
 
-	// Revisiting via the quiz navigator restores whatever was picked before.
-	const restoredAnswer = mode === 'quiz' ? (answerSlot!.get() as number | undefined) : undefined;
-	let selected = $state<number | null>(restoredAnswer ?? null);
+	// One right answer, or N for a tick-N question (pick exactly N).
+	let right = $derived(mcqCorrect(screen));
+	let needed = $derived(Math.max(1, right.length));
+
+	// Revisiting via the quiz navigator restores whatever was picked before
+	// (a number for a plain question, an array for tick-N).
+	const restored =
+		mode === 'quiz' ? (answerSlot!.get() as number | number[] | undefined) : undefined;
+	let picks = $state<number[]>(restored === undefined ? [] : [restored].flat());
 	let checked = $state(false);
 
 	// Lesson mode shows the options in a fresh order each time, so "the answer
 	// is always the second one" can't be learned. `order[slot]` = the authored
-	// index shown in that slot; `selected` / `correctIndex` stay authored indices.
+	// index shown in that slot; `picks` / `right` stay authored indices.
 	// Quiz mode keeps the authored order (an exam paper is fixed).
 	const identity = (n: number) => Array.from({ length: n }, (_, i) => i);
 	const shuffled = untrack(() =>
@@ -53,12 +59,14 @@
 	label = i18n.dict.exerciseKind.submitButton;
 	// Disabled until a pick in both modes - the runner's footer starts enabled.
 	// eslint-disable-next-line no-useless-assignment
-	disabled = restoredAnswer === undefined;
+	disabled = restored === undefined;
 
 	function pick(i: number) {
 		if (checked) return;
-		selected = i;
-		disabled = false;
+		if (needed === 1) picks = [i];
+		else if (picks.includes(i)) picks = picks.filter((p) => p !== i);
+		else if (picks.length < needed) picks = [...picks, i];
+		disabled = picks.length !== needed;
 	}
 
 	// The runner's single button drives both steps: first click checks the
@@ -66,16 +74,18 @@
 	// Quiz mode skips the check/feedback step entirely: the button just
 	// records the pick and advances.
 	export function primaryAction() {
+		if (picks.length !== needed) return;
 		if (mode === 'quiz') {
-			if (selected === null) return;
-			answerSlot!.set(selected);
+			answerSlot!.set(needed === 1 ? picks[0] : picks);
 			onAdvance();
 			return;
 		}
 		if (!checked) {
-			if (selected === null) return;
 			checked = true;
-			recordAnswer(score!, selected === screen.correctIndex);
+			recordAnswer(
+				score!,
+				picks.every((p) => right.includes(p))
+			);
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -117,6 +127,9 @@
 	     line-level syntax (headers, center, callout, divider). -->
 	<Md block text={screen.prompt} />
 </div>
+{#if needed > 1}
+	<p class="mt-1 text-sm font-semibold text-muted">{i18n.dict.exerciseKind.pickN(needed)}</p>
+{/if}
 
 {#if screen.layout === 'honeycomb'}
 	<div
@@ -127,8 +140,8 @@
 	>
 		{#each order as i, slot (i)}
 			{@const option = screen.options[i]}
-			{@const isCorrect = i === screen.correctIndex}
-			{@const isSelected = selected === i}
+			{@const isCorrect = right.includes(i)}
+			{@const isSelected = picks.includes(i)}
 			{@const feedback =
 				checked && isSelected
 					? isCorrect
@@ -165,8 +178,8 @@
 	<div class="mt-5 flex flex-col gap-3">
 		{#each order as i (i)}
 			{@const option = screen.options[i]}
-			{@const isCorrect = i === screen.correctIndex}
-			{@const isSelected = selected === i}
+			{@const isCorrect = right.includes(i)}
+			{@const isSelected = picks.includes(i)}
 			{@const feedback =
 				checked && isSelected
 					? isCorrect

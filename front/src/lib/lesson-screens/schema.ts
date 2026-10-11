@@ -154,7 +154,16 @@ export const mcqSchema = z
 		type: z.literal('mcq'),
 		prompt: z.string(),
 		options: z.array(z.string()).min(2),
-		correctIndex: index.describe('0-based index into options of the one right answer.'),
+		correctIndex: index
+			.optional()
+			.describe('0-based index into options of the one right answer. Set this or correctIndices.'),
+		correctIndices: z
+			.array(index)
+			.min(2)
+			.optional()
+			.describe(
+				'Tick-N question (the Bagrut "put a √ by the TWO correct answers"): every right option; the student picks exactly that many. Each right pick earns points / N. Set this or correctIndex.'
+			),
 		explanation: z
 			.string()
 			.optional()
@@ -168,7 +177,7 @@ export const mcqSchema = z
 		points: points.optional(),
 		paragraphRef: paragraphRef.optional()
 	})
-	.describe('Multiple choice. Scored: 1 point.');
+	.describe('Multiple choice (one answer, or tick-N with correctIndices). Scored: 1 point.');
 
 export const clozePickSchema = z
 	.strictObject({
@@ -308,7 +317,9 @@ export const writingTaskSchema = z
 			.int()
 			.min(0)
 			.optional()
-			.describe('Live word-count target. Lesson mode: setting it turns the task into one paragraph box (the exam shape); valid words (a copied prompt does not count) must reach it, and minSentences is a minimum.'),
+			.describe(
+				'Live word-count target. Lesson mode: setting it turns the task into one paragraph box (the exam shape); valid words (a copied prompt does not count) must reach it, and minSentences is a minimum.'
+			),
 		maxWords: z.number().int().min(0).optional(),
 		points: points.optional(),
 		paragraphRef: paragraphRef.optional()

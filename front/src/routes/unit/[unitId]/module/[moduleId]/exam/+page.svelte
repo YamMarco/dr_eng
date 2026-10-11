@@ -21,10 +21,6 @@
 		i18n.dict.quizzes.questionsRule(10),
 		i18n.dict.quizzes.timeRule(90)
 	];
-
-	function subtitle(quiz: Quiz) {
-		return quiz.kind === 'ministry' ? `${i18n.dict.quizzes.yearPrefix} ${quiz.year}` : undefined;
-	}
 </script>
 
 {#snippet quizList(list: Quiz[])}
@@ -36,9 +32,6 @@
 					class="group flex flex-col gap-1 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 				>
 					<span class="text-sm font-bold">{i18n.title(quiz.id)}</span>
-					{#if subtitle(quiz)}
-						<span class="text-xs leading-snug text-muted">{subtitle(quiz)}</span>
-					{/if}
 				</a>
 			</li>
 		{/each}
@@ -84,26 +77,12 @@
 		</ul>
 	</section>
 
-	<div
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-		class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-3"
-	>
-		<section>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.assortedTitle}</h2>
-			{#if quizzes.assorted.length}
-				{@render quizList(quizzes.assorted)}
-			{:else}
-				<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
-			{/if}
-		</section>
-
-		<section>
-			<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.ministryTitle}</h2>
-			{#if quizzes.ministry.length}
-				{@render quizList(quizzes.ministry)}
-			{:else}
-				<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
-			{/if}
-		</section>
-	</div>
+	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}>
+		<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.assortedTitle}</h2>
+		{#if quizzes.assorted.length}
+			{@render quizList(quizzes.assorted)}
+		{:else}
+			<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
+		{/if}
+	</section>
 </main>

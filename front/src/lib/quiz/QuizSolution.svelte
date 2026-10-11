@@ -4,6 +4,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screensWithIds } from './screenIds';
+	import { mcqCorrect } from '$lib/lesson-screens/types';
 	import type { QuizNode } from './types';
 
 	let { quiz, onBack }: { quiz: QuizNode; onBack: () => void } = $props();
@@ -21,7 +22,9 @@
 						<li class="rounded-2xl bg-surface p-4 shadow-md ring-1 shadow-overlay/5 ring-line/70">
 							<p class="font-semibold" dir="ltr"><Md text={screen.prompt} /></p>
 							<p class="mt-2 text-sm text-brand-dark" dir="ltr">
-								{i18n.dict.quiz.correctAnswerLabel}: {screen.options[screen.correctIndex]}
+								{i18n.dict.quiz.correctAnswerLabel}: {mcqCorrect(screen)
+									.map((i) => screen.options[i])
+									.join(' / ')}
 							</p>
 						</li>
 					{:else if screen.type === 'sentence-completion'}

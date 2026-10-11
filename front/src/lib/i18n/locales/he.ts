@@ -94,8 +94,6 @@ export const he = {
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',
-		ministryTitle: 'בגרויות',
-		yearPrefix: 'מבחן בגרות',
 		takenLabel: 'מבחנים שנעשו',
 		avgMinutesLabel: 'דקות בממוצע',
 		avgGradeLabel: 'ציון ממוצע',
@@ -154,6 +152,7 @@ export const he = {
 	// knows what they're about to do before it starts.
 	exerciseKind: {
 		mcq: 'תרגיל: שאלה אמריקאית',
+		pickN: (n: number) => `סמנו ${n} תשובות נכונות`,
 		markAll: 'תרגיל: סימון בטקסט',
 		clozePick: 'תרגיל: השלימו את המשפט',
 		wordBankLabel: 'מילים לחיפוש',

@@ -294,4 +294,156 @@ export const cQuizzes: QuizNode[] = [
       },
     ],
   },
+  {
+    id: "module-c-exam-4",
+    module: "c",
+    uuid: "c-t-3058",
+    kind: "assorted",
+    options: { passThreshold: 0.6, durationMinutes: 90, warnAtMinutes: 10 },
+    parts: [
+      {
+        id: "reading",
+        instructionsHe: "קראו את הקטע וענו על השאלות שאחריו.",
+        points: 70,
+        screens: [
+          {
+            type: "passage",
+            title: "{a:center}**How Sitting Too Much Affects Us**",
+            paragraphs: [
+              {
+                id: "p1",
+                text: 'Most of us spend many hours a day sitting down. We sit in many different places, such as in cars and buses, and in front of computers and TV screens. Spending most of the day in a chair without moving much is called a "sitting lifestyle." For many people, sitting feels comfortable and relaxing. However, according to research, too much sitting can be very bad for us.',
+              },
+              {
+                id: "p2",
+                text: "When we sit for many hours, our bodies don't move enough. As a result, we burn fewer calories, and we can easily put on weight. Sitting for a long time can also cause pain in our backs and necks, and this makes it difficult to work or study. In addition, people who don't move much often feel tired and weak. Doctors now know that people who are not active for many years can develop serious health problems, such as diabetes.",
+              },
+              {
+                id: "p3",
+                text: "Sitting too much can also affect the way we feel. When we sit alone in front of a screen for hours, we often become bored or sad. Young people today spend a lot of their free time playing computer games instead of playing sports outside, and this can make them feel lonely. Some adults also feel this way because they sit at a desk all day at work. Of course, people who feel lonely and sad often don't want to meet others. This too can have a negative effect on relationships.",
+              },
+              {
+                id: "p4",
+                text: 'Despite all these problems, most people continue to sit for many hours every day. "That\'s because most people don\'t realize how harmful sitting is. But this can change," says Dr. Sarah Collins, head of the organization Get Up and Move. "Just think about seat belts. For many years, people didn\'t wear seat belts in their cars. But when we understood how many lives they save, most of us started using them. In addition, governments made laws that require everyone in a car to wear a seat belt. Today, schools and workplaces can also help by giving people short breaks to stand up and walk around. We need people to understand the dangers of sitting too much. That will make everyone healthier."',
+              },
+            ],
+          },
+          {
+            type: "mcq",
+            paragraphRef: "I",
+            prompt: 'What do we learn about a "sitting lifestyle" in paragraph I?',
+            options: [
+              "How to change it.",
+              "What it is.",
+              "Who is doing research on it.",
+              "What serious health problems it causes.",
+            ],
+            correctIndex: 1,
+            points: 8,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "I",
+            prompt: "Where do people sit, according to paragraph I?",
+            modelAnswer: "In cars and buses, and in front of computers and TV screens.",
+            points: 8,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "II",
+            prompt:
+              "What problems can be caused by sitting for many hours? Give TWO answers from paragraph II. (1)",
+            modelAnswer:
+              "Any one of: we burn fewer calories / we can easily put on weight; pain in our backs and necks; we feel tired and weak.",
+            points: 7,
+          },
+          {
+            type: "writing-task",
+            paragraphRef: "II",
+            prompt:
+              "What problems can be caused by sitting for many hours? Give TWO answers from paragraph II. (2)",
+            modelAnswer:
+              "A different one of: we burn fewer calories / we can easily put on weight; pain in our backs and necks; we feel tired and weak.",
+            points: 7,
+          },
+          {
+            type: "sentence-completion",
+            paragraphRef: "II",
+            before:
+              "What might happen to people who are not active for many years? They might develop",
+            after: ".",
+            modelAnswers: [
+              "serious health problems, such as diabetes",
+              "serious health problems such as diabetes",
+              "serious health problems like diabetes",
+              "serious health problems",
+              "health problems such as diabetes",
+              "diabetes",
+            ],
+            points: 8,
+          },
+          {
+            type: "mcq",
+            paragraphRef: "III",
+            prompt: "What do we learn from paragraph III?",
+            options: [
+              "Why most young people play computer games.",
+              "Why adults have to sit at a desk at work.",
+              "How sitting too much can affect the way we feel.",
+              "How to make computer games less boring.",
+            ],
+            correctIndex: 2,
+            points: 8,
+          },
+          {
+            type: "sentence-completion",
+            paragraphRef: "III",
+            before:
+              "Why can feeling lonely and sad have a negative effect on relationships? Because",
+            after: ".",
+            modelAnswers: [
+              "people who feel lonely and sad often don't want to meet others",
+              "people who feel lonely and sad don't want to meet others",
+              "lonely and sad people often don't want to meet others",
+              "they often don't want to meet others",
+              "they don't want to meet others",
+              "they don't want to meet other people",
+            ],
+            points: 8,
+          },
+          {
+            type: "mcq",
+            paragraphRef: "IV",
+            prompt:
+              "What does Dr. Sarah Collins explain? Put a √ by the TWO correct answers.",
+            options: [
+              "How governments make laws.",
+              "Why seat belts save lives.",
+              "Why most people continue to sit for many hours.",
+              "When people learned about the dangers of sitting.",
+              "What can help people sit less.",
+              "Why people must wear seat belts.",
+            ],
+            correctIndices: [2, 4],
+            points: 16,
+          },
+        ],
+      },
+      {
+        id: "writing",
+        instructionsHe: "כתבו תשובה מלאה לשאלה הבאה.",
+        points: 30,
+        screens: [
+          {
+            type: "writing-task",
+            prompt:
+              "Do you think that all high school pupils should do volunteer work? Give reasons to explain your opinion.",
+            minWords: 70,
+            maxWords: 90,
+            points: 30,
+          },
+        ],
+      },
+    ],
+  },
 ];
