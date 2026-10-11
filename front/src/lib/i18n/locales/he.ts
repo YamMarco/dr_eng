@@ -24,11 +24,40 @@ export const he = {
 		mockup: 'הדגמה בלבד - אין צורך למלא'
 	},
 	home: {
-		title: 'בחרו יחידות לימוד',
-		subtitle: 'כל רמת יחידות כוללת מספר מודולים לתרגול.',
 		unitsSuffix: 'יח"ל',
-		continueTitle: 'המשך מהמקום שהפסקת',
-		continueButton: 'המשך'
+		greeting: 'שלום!',
+		unitsUndecided: 'יח"ל: לא נקבע',
+		streak: (n: number) => `${n} ימי תרגול ברצף`,
+		daysToExam: (n: number) => `${n} ימים לבגרות`,
+		daysShort: (n: number) => `${n} ימים`,
+		todayTitle: 'המשימה שלך היום',
+		todayStart: 'התחל',
+		todayContinue: 'המשך',
+		allDoneTitle: 'סיימת את כל המסלול!',
+		allDoneDesc: 'זה הזמן למבחן מלא בתנאי בגרות.',
+		sectionShort: { 'c-2': 'אוצר מילים', 'c-1': 'הבנה', 'c-3': 'כתיבה' } as Record<string, string>,
+		comingSoonModules: (list: string) => `בקרוב: ${list}`,
+		statDone: 'הושלמו',
+		statGold: 'זהב',
+		toPath: 'למסלול',
+		toExams: 'למבחנים',
+		examsLine: (taken: number, total: number, avg: number | undefined) =>
+			avg === undefined ? `${taken}/${total} מבחנים` : `${taken}/${total} מבחנים · ממוצע ${avg}`
+	},
+	onboarding: {
+		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
+		goalTitle: 'מה המטרה שלכם?',
+		goalDesc: 'נבנה לכם מסלול לפי רמת היחידות.',
+		units4: '4 יחידות',
+		units5: '5 יחידות',
+		undecided: 'עוד לא החלטתי',
+		examTitle: 'מתי הבגרות?',
+		examDesc: 'נספור יחד את הימים עד הבחינה.',
+		examUnknown: 'עוד לא ידוע',
+		seasonWinter: 'חורף',
+		seasonSummer: 'קיץ',
+		next: 'המשך',
+		finish: 'יאללה, מתחילים'
 	},
 	quiz: {
 		startButton: 'התחלת מבחן',
@@ -67,7 +96,8 @@ export const he = {
 		assortedTitle: 'מגוון מבחנים',
 		ministryTitle: 'בגרויות',
 		yearPrefix: 'מבחן בגרות',
-		avgTimeLabel: 'זמן ממוצע',
+		takenLabel: 'מבחנים שנעשו',
+		avgMinutesLabel: 'דקות בממוצע',
 		avgGradeLabel: 'ציון ממוצע',
 		rulesTitle: 'מבנה המבחן',
 		readingTextsRule: (n: number) => (n === 1 ? 'טקסט קריאה אחד' : `${n} טקסטי קריאה`),
@@ -79,17 +109,10 @@ export const he = {
 		avgScoreLabel: 'ממוצע'
 	},
 	unit: {
-		backLabel: 'חזרה לבחירת יחידות',
-		subtitle: 'בחרו מודול כדי להתחיל לתרגל.',
-		emptyTitle: 'המודולים ברמה זו יתווספו בקרוב',
 		modulePrefix: 'מודול'
 	},
 	module: {
-		backLabel: 'חזרה לרשימת המודולים',
-		lessonsTitle: 'שיעורים',
-		lessonsDesc: 'מסע לימוד שלב אחר שלב לפי נושאים',
-		examTitle: 'מבחנים',
-		examSubtitle: 'מגוון מבחנים לתרגול, וגם מבחני בגרות רשמיים לפי שנה'
+		examTitle: 'מבחנים'
 	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
@@ -276,6 +299,9 @@ export const he = {
 		themeSystem: 'אוטומטי',
 		themeLight: 'בהיר',
 		themeDark: 'כהה',
+		goalSection: 'המטרה שלי',
+		unitsLabel: 'רמת יחידות',
+		examLabel: 'מועד הבגרות',
 		practiceSection: 'חוויית תרגול',
 		soundEffects: 'אפקטי קול',
 		soundEffectsDesc: 'צליל בתשובה נכונה או שגויה',

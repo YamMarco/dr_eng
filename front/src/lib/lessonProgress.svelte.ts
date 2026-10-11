@@ -9,6 +9,8 @@
 // rounds (default 1) are done — later rounds are optional further practice
 // and don't affect anything downstream.
 
+import { activity } from './activity.svelte';
+
 const STORAGE_KEY = 'lesson-progress';
 
 type ProgressMap = Record<string, Record<string, number>>;
@@ -42,6 +44,7 @@ class LessonProgressStore {
 
 	/** Marks `roundIndex` (0-based) done; only ever moves the count forward. */
 	markRoundCompleted(moduleId: string, lessonId: string, roundIndex: number) {
+		activity.recordToday();
 		const current = this.completedRounds(moduleId, lessonId);
 		const next = Math.max(current, roundIndex + 1);
 		if (next === current) return;

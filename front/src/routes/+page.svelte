@@ -1,111 +1,107 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { moduleSummary, modules, unitGroups } from '$lib/curriculum';
+	import { CalendarClock, Flame, GraduationCap } from '@lucide/svelte';
+	import { resolve } from '$app/paths';
+	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { moduleLocation } from '$lib/moduleLocation.svelte';
+	import { profile } from '$lib/profile.svelte';
+	import { activity } from '$lib/activity.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
-	import { getLesson } from '$lib/content';
-	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
+	import { moduleRoute, todayLesson } from '$lib/dashboard/data';
+	import { examStats } from '$lib/quiz/stats';
+	import Onboarding from '$lib/dashboard/Onboarding.svelte';
+	import TodayCard from '$lib/dashboard/TodayCard.svelte';
+	import ModuleCard from '$lib/dashboard/ModuleCard.svelte';
 
-	// The single most recently opened lesson, across every module - lets a
-	// returning student resume in one tap instead of re-choosing unit/module.
-	let continueInfo = $derived.by(() => {
-		const recent = moduleLocation.mostRecent();
-		if (!recent) return undefined;
-		const lesson = getLesson(recent.lessonId);
-		const group = unitGroups.find((g) => g.moduleIds.includes(recent.moduleId));
-		if (!lesson || !group) return undefined;
+	let t = $derived(i18n.dict.home);
+	let group = $derived(getUnitGroup(profile.unitGroupId)!);
+
+	// Every module of the chosen unit level, with its track and exam stats.
+	let moduleRows = $derived(
+		group.moduleIds.map((id) => ({
+			mod: modules[id],
+			sections: moduleRoute(id),
+			exams: examStats(id)
+		}))
+	);
+
+	// Today's lesson comes from the first module that has a lesson path.
+	let main = $derived.by(() => {
+		const row = moduleRows.find((r) => r.sections.length > 0);
+		if (!row) return undefined;
+		const base = `/unit/${group.id}/module/${row.mod.id}`;
+		const lesson = todayLesson(row.mod.id);
 		return {
+			moduleId: row.mod.id,
 			lesson,
-			href: `/unit/${group.id}/module/${recent.moduleId}/lessons?lesson=${lesson.id}`,
-			roundsCompleted: lessonProgress.completedRounds(recent.moduleId, lesson.id),
-			totalRounds: lesson.content.rounds.length
+			roundsCompleted: lesson ? lessonProgress.completedRounds(row.mod.id, lesson.id) : 0,
+			href: lesson ? `${base}/lessons?lesson=${lesson.id}` : `${base}/exam`
 		};
 	});
+
+	// Modules with nothing to show yet collapse into one muted line.
+	let cardRows = $derived(moduleRows.filter((r) => r.sections.length > 0 || r.exams.total > 0));
+	let comingSoon = $derived(
+		moduleRows
+			.filter((r) => !cardRows.includes(r))
+			.map((r) => `${i18n.dict.unit.modulePrefix} ${r.mod.letter}`)
+	);
+
+	let unitsChip = $derived(
+		profile.value?.units === 'undecided' ? t.unitsUndecided : `${group.units} ${t.unitsSuffix}`
+	);
+
+	const chip =
+		'flex min-h-9 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';
 </script>
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-10 pb-12 sm:pt-14">
-	<div class="mb-8">
-		<h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">{i18n.dict.home.title}</h1>
-		<p class="mt-2 leading-relaxed text-muted">{i18n.dict.home.subtitle}</p>
-	</div>
-
-	{#if continueInfo}
-		<!-- continueInfo.href is a runtime-built query string into the lessons
-		     page, not a typed route -->
-		<!-- eslint-disable svelte/no-navigation-without-resolve -->
-		<a
-			href={continueInfo.href}
-			in:fly={{ y: 12, duration: 300, easing: cubicOut }}
-			class="mb-6 flex flex-col gap-3 rounded-3xl bg-brand p-5 text-white shadow-md transition duration-150 hover:shadow-lg active:scale-[0.99]"
-		>
-			<span class="text-sm font-semibold text-white/80">{i18n.dict.home.continueTitle}</span>
-			<span class="flex items-center justify-between gap-3">
-				<span class="min-w-0 flex-1">
-					<span class="block truncate text-lg font-bold">{i18n.title(continueInfo.lesson.id)}</span>
-					{#if continueInfo.totalRounds > 1}
-						<span class="mt-1 block text-sm text-white/80" dir="ltr">
-							{i18n.dict.lesson.roundLabel(
-								Math.min(continueInfo.roundsCompleted + 1, continueInfo.totalRounds),
-								continueInfo.totalRounds
-							)}
-						</span>
-					{/if}
-				</span>
-				<span class="shrink-0 rounded-full bg-white/20 px-4 py-2 text-sm font-bold active:scale-95">
-					{i18n.dict.home.continueButton}
-				</span>
+{#if !profile.value}
+	<Onboarding />
+{:else}
+	<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-4 px-4 pt-6 pb-12 sm:pt-10">
+		<header class="flex flex-wrap items-center gap-2">
+			<h1 class="me-auto text-2xl font-extrabold tracking-tight">{t.greeting}</h1>
+			<a href={resolve('/settings')} class="{chip} transition hover:ring-brand/50">
+				<GraduationCap size={16} class="text-brand" aria-hidden="true" />
+				{unitsChip}
+			</a>
+			<span class={chip} title={t.streak(activity.streak)}>
+				<Flame
+					size={16}
+					class={activity.streak > 0 ? 'text-orange-500' : 'text-muted'}
+					aria-hidden="true"
+				/>
+				<span class="sr-only">{t.streak(activity.streak)}</span>
+				<span aria-hidden="true">{activity.streak}</span>
 			</span>
-			<LessonProgressBar
-				compact
-				inverted
-				segments={Array.from({ length: continueInfo.totalRounds }, () => 1)}
-				current={continueInfo.roundsCompleted}
-			/>
-		</a>
-		<!-- eslint-enable svelte/no-navigation-without-resolve -->
-	{/if}
+			{#if profile.daysToExam !== undefined}
+				<span class={chip} title={t.daysToExam(profile.daysToExam)}>
+					<CalendarClock size={16} class="text-brand" aria-hidden="true" />
+					<span class="sr-only">{t.daysToExam(profile.daysToExam)}</span>
+					<span aria-hidden="true">{t.daysShort(profile.daysToExam)}</span>
+				</span>
+			{/if}
+		</header>
 
-	<ul class="flex flex-col gap-4">
-		{#each unitGroups as group, i (group.id)}
-			<li in:fly={{ y: 12, duration: 300, delay: staggerDelay(i), easing: cubicOut }}>
-				<a
-					href="/unit/{group.id}"
-					class="group flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
-				>
-					<span class="min-w-0 flex-1">
-						<span class="text-xl font-bold">{group.units} {i18n.dict.home.unitsSuffix}</span>
-						{#if group.moduleIds.length}
-							<span class="mt-2 flex flex-col gap-0.5 text-sm leading-relaxed text-muted">
-								{#each group.moduleIds as id (id)}
-									{@const mod = modules[id]}
-									<span>
-										<span class="font-bold text-ink" dir="ltr">{mod.letter}</span>
-										- {moduleSummary(mod) || i18n.dict.common.comingSoon}
-									</span>
-								{/each}
-							</span>
-						{:else}
-							<span class="mt-1 block text-sm text-muted">{i18n.dict.common.comingSoon}</span>
-						{/if}
-					</span>
+		{#if main}
+			<TodayCard lesson={main.lesson} roundsCompleted={main.roundsCompleted} href={main.href} />
+		{/if}
 
-					<svg
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="h-5 w-5 shrink-0 text-muted transition group-hover:text-brand rtl:rotate-180"
-						aria-hidden="true"
-					>
-						<path d="m9 18 6-6-6-6" />
-					</svg>
-				</a>
-			</li>
+		{#each cardRows as row, i (row.mod.id)}
+			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+				<ModuleCard
+					mod={row.mod}
+					groupId={group.id}
+					sections={row.sections}
+					exams={row.exams}
+					defaultOpen={row.mod.id === main?.moduleId}
+				/>
+			</div>
 		{/each}
-	</ul>
-</main>
+		{#if comingSoon.length}
+			<p class="px-1 text-sm text-muted">{t.comingSoonModules(comingSoon.join(' · '))}</p>
+		{/if}
+	</main>
+{/if}
