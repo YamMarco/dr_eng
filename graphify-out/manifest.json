@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1791725841.3401706,
-    "seen": 1791725866.2987323,
-    "ast_hash": "19b541c420bfb34aeb24546bd4422890",
+    "mtime": 1791728377.576936,
+    "seen": 1791728394.6991284,
+    "ast_hash": "935fcbd0c18ae2b4ba9e87227106c705",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1764,9 +1764,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/ocr/HandwritingScanButton.svelte": {
-    "mtime": 1791725152.0647776,
-    "seen": 1791725866.2988064,
-    "ast_hash": "91a0db1bc9b2ae2c67d0eaccf2c6fb89",
+    "mtime": 1791728131.6232338,
+    "seen": 1791728167.2487779,
+    "ast_hash": "c43fb85b438c4b40a512dfcad13cf9c0",
     "semantic_hash": ""
   },
   "front/src/lib/ocr/ScanReview.svelte": {
@@ -1776,9 +1776,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/ocr/scan.ts": {
-    "mtime": 1791706539.9161627,
-    "seen": 1791725866.2988105,
-    "ast_hash": "4a9bc38fd4e46b2f562bafa031f97371",
+    "mtime": 1791728557.4205809,
+    "seen": 1791728578.1416786,
+    "ast_hash": "2a9113b750ff0d4f66dc764067dae65f",
     "semantic_hash": ""
   },
   "front/src/routes/api/ocr/+server.ts": {
@@ -1998,9 +1998,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/ocr/ScanAlbum.svelte": {
-    "mtime": 1791725841.324248,
-    "seen": 1791725866.2988079,
-    "ast_hash": "aa3504a6f7d5c0ff60fcdb8eae456e0c",
+    "mtime": 1791728812.227731,
+    "seen": 1791728828.349435,
+    "ast_hash": "909765f87e286cfb82c9cf103800cc70",
     "semantic_hash": ""
   }
 }
