@@ -105,7 +105,13 @@
 			<ol class="grid gap-2">
 				{#each pages as page, i (page.id)}
 					<li class="flex items-center gap-3 rounded-xl border-2 border-line p-2">
-						<img src={page.url} alt="" class="size-16 shrink-0 rounded-lg object-cover" />
+						<div class="relative shrink-0">
+							<img src={page.url} alt="" class="size-20 rounded-lg object-cover" />
+							<span
+								class="absolute start-1 top-1 flex size-7 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow tabular"
+								>{i + 1}</span
+							>
+						</div>
 						<span class="font-semibold tabular">{i18n.dict.ocr.pageLabel(i + 1)}</span>
 						<span class="ms-auto flex items-center">
 							<button
