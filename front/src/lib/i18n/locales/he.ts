@@ -1,3 +1,5 @@
+import { titlesHe } from './titles.he';
+
 export const he = {
 	common: {
 		back: 'חזרה',
@@ -340,7 +342,9 @@ export const he = {
 		notFound: 'העמוד המבוקש לא נמצא',
 		subtitle: 'אפשר לחזור לדף הבית ולהמשיך משם.',
 		backButton: 'חזרה לדף הבית'
-	}
+	},
+	/** Content titles by id (section / lesson / exam / exam part) - see titles.he.ts. */
+	titles: titlesHe
 };
 
 export type Dictionary = typeof he;

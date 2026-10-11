@@ -11,6 +11,7 @@ import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
 import { EditHistory } from './editHistory.svelte';
+import { TitleEdits } from './titleEdits.svelte';
 
 const MODULE_ID = 'c';
 const SECTION_IDS = sectionMeta.map((s) => s.id);
@@ -37,11 +38,14 @@ class EditModel implements EditModelLike {
 	/** Which screen inside that node the form/preview is showing. */
 	selectedPath = $state<ScreenPath | null>(null);
 
+	/** Hebrew titles by node id - nodes themselves carry no title text. */
+	readonly titles = new TitleEdits();
+
 	/** sectionId -> JSON of that section's nodes at load / last save. */
 	#baseline = new Map<string, string>();
 
 	#history = new EditHistory(
-		() => JSON.stringify(this.nodes),
+		() => JSON.stringify({ nodes: this.nodes, titles: this.titles.map }),
 		(snapshot) => this.#restore(snapshot)
 	);
 
@@ -68,7 +72,9 @@ class EditModel implements EditModelLike {
 	}
 
 	#restore(snapshot: string) {
-		this.nodes = JSON.parse(snapshot) as LessonNode[];
+		const parsed = JSON.parse(snapshot) as { nodes: LessonNode[]; titles: Record<string, string> };
+		this.nodes = parsed.nodes;
+		this.titles.restore(parsed.titles);
 		if (!this.node(this.selectedNodeId ?? '')) this.selectedNodeId = this.nodes[0]?.id ?? null;
 		if (
 			this.selectedNodeId &&
@@ -76,11 +82,12 @@ class EditModel implements EditModelLike {
 			!this.screenAt(this.selectedNodeId, this.selectedPath)
 		)
 			this.selectedPath = null;
-		this.#dirty = this.changedSections.length > 0;
+		this.#dirty = this.hasChanges;
 	}
 
 	load() {
 		this.nodes = clone(SECTION_IDS.flatMap((id) => getLessonsBySection(id)));
+		this.titles.load();
 		this.#snapshotBaseline();
 		this.dirty = false;
 		this.selectedNodeId = this.nodes[0]?.id ?? null;
@@ -120,8 +127,14 @@ class EditModel implements EditModelLike {
 		return { upserts, deletes };
 	}
 
+	/** Anything a save would write: section node changes or title changes. */
+	get hasChanges(): boolean {
+		return this.changedSections.length > 0 || this.titles.changed;
+	}
+
 	markClean() {
 		this.#snapshotBaseline();
+		this.titles.markClean();
 		this.dirty = false;
 	}
 
@@ -203,13 +216,15 @@ class EditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
-	setMeta(
-		id: string,
-		patch: Partial<Pick<LessonNode, 'titleHe' | 'titleEn' | 'big' | 'requiredRounds'>>
-	) {
+	setMeta(id: string, patch: Partial<Pick<LessonNode, 'titleEn' | 'big' | 'requiredRounds'>>) {
 		const n = this.node(id);
 		if (!n) return;
 		Object.assign(n, patch);
+		this.dirty = true;
+	}
+
+	setTitle(id: string, title: string) {
+		this.titles.set(id, title);
 		this.dirty = true;
 	}
 
@@ -217,6 +232,7 @@ class EditModel implements EditModelLike {
 	renameNode(oldId: string, newId: string): boolean {
 		newId = newId.trim();
 		if (!newId || newId === oldId || this.node(newId)) return false;
+		this.titles.rename(oldId, newId);
 		for (const n of this.nodes) {
 			if (n.id === oldId) n.id = newId;
 			n.required = n.required.map((r) => (r === oldId ? newId : r));
@@ -258,13 +274,13 @@ class EditModel implements EditModelLike {
 		const node: LessonNode = {
 			id: this.shortId(),
 			section: near?.section ?? this.defaultSection,
-			titleHe: 'שיעור חדש',
 			required: [],
 			position: { x: near ? near.position.x : 0, y: near ? near.position.y + 120 : 120 },
 			big: false,
 			content: { preface: [], rounds: [{ screens: [] }] }
 		};
 		this.nodes.push(node);
+		this.titles.set(node.id, 'שיעור חדש');
 		this.dirty = true;
 		return node;
 	}
@@ -275,6 +291,7 @@ class EditModel implements EditModelLike {
 		const copy = clone(src);
 		copy.id = this.shortId();
 		copy.position = { x: src.position.x + 40, y: src.position.y + 40 };
+		this.titles.copy(src.id, copy.id);
 		this.nodes.push(copy);
 		this.dirty = true;
 		return copy;
@@ -282,6 +299,7 @@ class EditModel implements EditModelLike {
 
 	deleteNode(id: string) {
 		this.nodes = this.nodes.filter((n) => n.id !== id);
+		this.titles.remove(id);
 		for (const n of this.nodes) n.required = n.required.filter((r) => r !== id);
 		if (this.selectedNodeId === id) this.selectedNodeId = this.nodes[0]?.id ?? null;
 		this.dirty = true;
@@ -301,6 +319,7 @@ class EditModel implements EditModelLike {
 			keep.content.rounds.push(...clone(r.content.rounds));
 		}
 		const gone = new Set(rest);
+		for (const g of gone) this.titles.remove(g);
 		this.nodes = this.nodes.filter((n) => !gone.has(n.id));
 		for (const n of this.nodes) {
 			n.required = [
@@ -326,6 +345,7 @@ class EditModel implements EditModelLike {
 		};
 		const srcIdx = this.nodes.findIndex((n) => n.id === id);
 		this.nodes.splice(srcIdx + 1, 0, tail);
+		this.titles.copy(src.id, tail.id);
 		// Anything that required the original now flows through the tail.
 		for (const n of this.nodes) {
 			if (n.id === tail.id || n.id === src.id) continue;

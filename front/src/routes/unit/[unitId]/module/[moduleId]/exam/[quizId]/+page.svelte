@@ -27,7 +27,7 @@
 {:else if viewingSolution && quizNode}
 	<QuizSolution quiz={quizNode} onBack={() => (viewingSolution = false)} />
 {:else}
-	<AppBar title={quiz.titleHe} back={examBase} />
+	<AppBar title={i18n.title(quiz.id)} back={examBase} />
 
 	<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 		<!-- Mock scoreboard - real numbers land once quiz attempts are tracked -->

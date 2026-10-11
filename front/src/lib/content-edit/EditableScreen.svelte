@@ -7,12 +7,18 @@
 	// (lessons' editModel or exams' examEditModel). Detachable — content-edit/.
 	import MarkdownInput from './MarkdownInput.svelte';
 	import StringListEditor from './fields/StringListEditor.svelte';
+	import NumberField from './fields/NumberField.svelte';
+	import WordChips from './fields/WordChips.svelte';
 	import type { ScreenPath } from './screenPath';
 	import type { EditModelLike } from './editModelTypes';
 	import WordImageField from './WordImageField.svelte';
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let { model, nodeId, path }: { model: EditModelLike; nodeId: string; path: ScreenPath } =
-		$props();
+	let {
+		model,
+		nodeId,
+		path,
+		isExam = false
+	}: { model: EditModelLike; nodeId: string; path: ScreenPath; isExam?: boolean } = $props();
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screen = $derived.by<any>(() => model.screenAt(nodeId, path) ?? null);
@@ -238,13 +244,109 @@
 				/>
 			</div>
 		{:else if screen.type === 'writing-task'}
+			{@const paragraph = isExam || screen.minWords !== undefined}
 			<MarkdownInput bare minRows={3} value={screen.prompt} onInput={(v) => set('prompt', v)} />
 			<p class="text-xs text-muted">
-				החוקים ובנק המילים - מתחת לכרטיס (גללו בתוכו). בטקסט אפשר לכתוב <code dir="ltr"
-					>{'{sentences}'}</code
-				>
-				ו-<code dir="ltr">{'{words}'}</code> - יוחלפו במספר המשפטים / המילים.
+				בטקסט אפשר לכתוב <code dir="ltr">{'{sentences}'}</code> ו-<code dir="ltr">{'{words}'}</code>
+				- יוחלפו במספר המשפטים / המילים.
 			</p>
+
+			<!-- Same order the student sees: word bank, then the answer area. -->
+			{#if screen.wordBank}
+				<div>
+					<p class="mb-1 flex items-center gap-2 text-xs font-semibold text-muted">
+						בנק מילים
+						<button
+							type="button"
+							class="font-normal text-danger"
+							onclick={() => (screen.wordBank = undefined)}>הסר בנק</button
+						>
+					</p>
+					<WordChips bind:items={screen.wordBank} />
+				</div>
+			{:else}
+				<button
+					type="button"
+					class="self-start rounded-full border border-dashed border-brand px-2.5 py-1 text-xs font-semibold text-brand"
+					onclick={() => (screen.wordBank = [''])}>+ הוספת בנק מילים</button
+				>
+			{/if}
+
+			{#if !isExam}
+				<div class="flex gap-1 self-start rounded-lg border border-line p-0.5 text-xs font-bold">
+					<button
+						type="button"
+						class="rounded-md px-2 py-1 {paragraph ? 'text-muted' : 'bg-brand text-white'}"
+						onclick={() => {
+							screen.minWords = undefined;
+							screen.maxWords = undefined;
+						}}>שורה לכל משפט</button
+					>
+					<button
+						type="button"
+						class="rounded-md px-2 py-1 {paragraph ? 'bg-brand text-white' : 'text-muted'}"
+						onclick={() => {
+							screen.minWords = 70;
+							screen.maxWords = 90;
+							screen.wordCounter = undefined;
+						}}>פסקה אחת (כמו בבחינה)</button
+					>
+				</div>
+			{/if}
+
+			{#if paragraph}
+				<textarea
+					disabled
+					rows="4"
+					dir="ltr"
+					placeholder="אזור הכתיבה של התלמיד"
+					class="w-full rounded-xl border-2 border-line bg-surface p-3"></textarea>
+				<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+					{#if !isExam}
+						<NumberField
+							label="מינ׳ משפטים"
+							min={1}
+							value={screen.minSentences}
+							onChange={(v) => (screen.minSentences = v)}
+						/>
+					{/if}
+					<NumberField
+						label="מינ׳ מילים"
+						value={screen.minWords}
+						onChange={(v) => (screen.minWords = isExam ? v : (v ?? 0))}
+					/>
+					<NumberField
+						label="מקס׳ מילים"
+						value={screen.maxWords}
+						onChange={(v) => (screen.maxWords = v)}
+					/>
+				</div>
+			{:else}
+				<NumberField
+					label="מספר שורות"
+					min={1}
+					value={screen.minSentences}
+					onChange={(v) => (screen.minSentences = v)}
+				/>
+				<div class="flex flex-col gap-3">
+					{#each { length: screen.minSentences ?? 1 }, i (i)}
+						<input
+							disabled
+							dir="ltr"
+							placeholder="שורה {i + 1}"
+							class="w-full rounded-xl border-2 border-line bg-surface px-3 py-2"
+						/>
+					{/each}
+				</div>
+				<label class="flex items-center gap-2 text-xs text-muted">
+					<input
+						type="checkbox"
+						checked={screen.wordCounter ?? false}
+						onchange={(e) => set('wordCounter', e.currentTarget.checked || undefined)}
+					/>
+					מונה מילים מתחת לשורות
+				</label>
+			{/if}
 		{:else if screen.type === 'question-preview'}
 			<MarkdownInput bare minRows={2} value={screen.intro} onInput={(v) => set('intro', v)} />
 			<ul class="space-y-1">

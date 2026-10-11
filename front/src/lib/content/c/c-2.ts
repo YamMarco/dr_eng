@@ -7,7 +7,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "q-words-1",
     section: "c-2",
-    titleHe: "מילות שאלה: איפה ומה",
     titleEn: "Question Words: Where & What",
     required: ["n-5cd02dfa"],
     requiredRounds: 3,
@@ -411,7 +410,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "q-words-2",
     section: "c-2",
-    titleHe: "מילות שאלה: איך עונים",
     titleEn: "Question Words: How to Answer",
     required: ["q-words-1"],
     requiredRounds: 3,
@@ -827,7 +825,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "nav-words-1",
     section: "c-2",
-    titleHe: "מילות ניווט: ניגוד וסיבה",
     titleEn: "Navigation Words: Contrast & Reason",
     required: ["n-5cd02dfa"],
     requiredRounds: 2,
@@ -1182,7 +1179,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "nav-words-2",
     section: "c-2",
-    titleHe: "מילות ניווט: דוגמאות וממצאים",
     titleEn: "Navigation Words: Examples & Findings",
     required: ["nav-words-1"],
     requiredRounds: 2,
@@ -1493,7 +1489,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-1a",
     section: "c-2",
-    titleHe: "מילות תוכן: אנשים וקהילה",
     titleEn: "Content Words: People & Community",
     required: ["n-5cd02dfa"],
     requiredRounds: 3,
@@ -1922,7 +1917,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-1b",
     section: "c-2",
-    titleHe: "מילות תוכן: מחקר וממצאים",
     titleEn: "Content Words: Research & Findings",
     required: ["content-2c"],
     requiredRounds: 3,
@@ -2329,7 +2323,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-1c",
     section: "c-2",
-    titleHe: "מילות תוכן: שינוי וסביבה",
     titleEn: "Content Words: Change & Environment",
     required: ["n-5cd02dfa"],
     requiredRounds: 3,
@@ -2758,7 +2751,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-2a",
     section: "c-2",
-    titleHe: "מילות תוכן: התפתחות ולמידה",
     titleEn: "Content Words: Growth & Learning",
     required: ["content-1a"],
     requiredRounds: 3,
@@ -3172,7 +3164,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-2b",
     section: "c-2",
-    titleHe: "מילות תוכן: השפעה וערך",
     titleEn: "Content Words: Cause & Value",
     required: ["content-2a"],
     requiredRounds: 3,
@@ -3569,7 +3560,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "content-2c",
     section: "c-2",
-    titleHe: "מילות תוכן: אחריות חברתית",
     titleEn: "Content Words: Social Responsibility",
     required: ["content-1c"],
     requiredRounds: 3,
@@ -3967,7 +3957,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "vocab-test",
     section: "c-2",
-    titleHe: "מבחן סיכום - אוצר מילים",
     titleEn: "Vocabulary Review Test",
     required: ["q-words-2", "nav-words-2", "content-1b", "content-2b"],
     requiredRounds: 5,
@@ -4515,7 +4504,6 @@ export const c2Lessons: LessonNode[] = [
   {
     id: "n-5cd02dfa",
     section: "c-2",
-    titleHe: "פתיחה - Module C",
     required: [],
     position: { x: 0, y: 20 },
     big: true,
@@ -4527,7 +4515,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}📘 מתחילים מהטקסט \n\n{d:rtl}ב־**Module C** יש שני חלקים עיקריים:\n\n{d:rtl}**חלק 1 - הבנת הנקרא: 70 נקודות**\n\n{d:rtl}**חלק 2 – כתיבה: 30 נקודות**\n{d:rtl}\n{d:rtl}אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה: **הטקסט – **\n\n{d:rtl}רק אחרי שנלמד איך להתמודד עם הטקסט, נעבור לחלק השני ונלמד  **איך לכתוב חיבור בצורה פשוטה וברורה **👀 \n",
+          text: "{d:rtl}📘 מתחילים מהטקסט \n\n{d:rtl}ב־**Module C** יש שני חלקים עיקריים:\n\n{d:rtl}**חלק 1 - הבנת הנקרא: 70 נקודות**\n\n{d:rtl}**חלק 2 - כתיבה: 30 נקודות**\n{d:rtl}\n{d:rtl}אנחנו מתחילים קודם מהחלק הגדול יותר של הבחינה: **הטקסט - **\n\n{d:rtl}רק אחרי שנלמד איך להתמודד עם הטקסט, נעבור לחלק השני ונלמד  **איך לכתוב חיבור בצורה פשוטה וברורה **👀 \n",
         },
         {
           type: "preface",

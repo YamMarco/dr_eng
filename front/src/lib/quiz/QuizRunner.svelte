@@ -261,7 +261,7 @@
 	{#if submitted && score}
 		<QuizReport {quiz} {score} onBack={onExit} />
 	{:else}
-		<AppBar title={quiz.titleHe} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
+		<AppBar title={i18n.title(quiz.id)} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
 			{#snippet trailing()}
 				{#if showTimer}
 					<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
@@ -336,7 +336,9 @@
 					<p class="mb-3 text-xs text-muted">{i18n.dict.quiz.examModeNote}</p>
 				{/if}
 				{#if currentEntry?.isFirstOfPart}
-					<h3 class="mb-1 text-sm font-bold text-muted">{currentPart.titleHe}</h3>
+					<h3 class="mb-1 text-sm font-bold text-muted">
+						{i18n.title(`${quiz.id}.${currentPart.id}`)}
+					</h3>
 					{#if currentPart.instructionsHe}
 						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 					{/if}

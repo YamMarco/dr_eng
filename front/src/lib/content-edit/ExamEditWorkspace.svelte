@@ -7,7 +7,7 @@
 	import { goto } from '$app/navigation';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { examEditModel } from './examEditModel.svelte';
-	import { saveExamChanges } from './api';
+	import { saveExamChanges, saveTitles } from './api';
 	import { validateExam, issuesByNode } from './validate';
 	import ExamEditorView from './ExamEditorView.svelte';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
@@ -32,15 +32,20 @@
 	let saveState = $state<'idle' | 'saving' | 'saved' | 'error'>('idle');
 	let saveMsg = $state('');
 	async function save() {
-		if (!examEditModel.dirty) return;
+		if (!examEditModel.hasChanges) return;
 		saveState = 'saving';
 		saveMsg = '';
 		try {
 			const { upserts, deletes } = examEditModel.changes();
-			const res = await saveExamChanges(moduleId, upserts, deletes);
+			let committed = false;
+			if (upserts.length || deletes.length)
+				committed = (await saveExamChanges(moduleId, upserts, deletes)).committed;
+			const titles = examEditModel.titles.changes();
+			if (Object.keys(titles.upserts).length || titles.deletes.length)
+				committed ||= (await saveTitles(titles.upserts, titles.deletes)).committed;
 			examEditModel.markClean();
 			saveState = 'saved';
-			saveMsg = res.committed ? 'נשלח. המתן כדקה ורענן את הדף.' : 'נשמר. הדף ייטען מחדש.';
+			saveMsg = committed ? 'נשלח. המתן כדקה ורענן את הדף.' : 'נשמר. הדף ייטען מחדש.';
 		} catch (e) {
 			saveState = 'error';
 			saveMsg = e instanceof Error ? e.message : String(e);
@@ -183,7 +188,7 @@
 								onclick={() => openExam(quiz.id)}
 							>
 								<span class="flex-1">
-									<span class="block text-sm font-bold">{quiz.titleHe}</span>
+									<span class="block text-sm font-bold">{examEditModel.titles.get(quiz.id)}</span>
 									<span class="block text-xs text-muted" dir="ltr">{quiz.id}</span>
 								</span>
 								{#if iss.length}

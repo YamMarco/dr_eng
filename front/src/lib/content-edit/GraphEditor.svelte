@@ -55,7 +55,9 @@
 		sectionMeta
 			.map((s) => {
 				const ys = nodes.filter((n) => n.section === s.id).map((n) => n.position.y);
-				return ys.length ? { id: s.id, title: s.titleHe, top: Math.min(...ys) - 40 } : null;
+				return ys.length
+					? { id: s.id, title: editModel.titles.get(s.id), top: Math.min(...ys) - 40 }
+					: null;
 			})
 			.filter((b): b is { id: string; title: string; top: number } => b !== null)
 	);
@@ -306,7 +308,10 @@
 
 	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 px-6 py-4" bind:clientWidth={viewWidth}>
 		<!-- Sized to the scaled canvas so the scroll area matches what's drawn. -->
-		<div class="relative mx-auto" style="width:{CANVAS_WIDTH * scale}px; height:{canvasHeight * scale}px">
+		<div
+			class="relative mx-auto"
+			style="width:{CANVAS_WIDTH * scale}px; height:{canvasHeight * scale}px"
+		>
 			<div
 				bind:this={wrap}
 				role="presentation"
@@ -386,7 +391,9 @@
 						ondblclick={() => onOpenLesson(n.id)}
 						onkeydown={(e) => e.key === 'Enter' && onOpenLesson(n.id)}
 					>
-						<div class="truncate text-[11px] leading-tight font-bold">{n.titleHe}</div>
+						<div class="truncate text-[11px] leading-tight font-bold">
+							{editModel.titles.get(n.id)}
+						</div>
 						<div class="truncate font-mono text-[9px] text-ink/50" dir="ltr" title="מזהה: {n.id}">
 							{n.id}
 						</div>

@@ -39,7 +39,7 @@ Add an object to the right section's array:
 {
   id: 's7-l2',                 // globally unique in the module; convention s{section}-l{n}
   section: 'c-7',
-  titleHe: 'שם השיעור',
+  // no title field: the display title lives in front/src/lib/i18n/locales/titles.he.ts under this node's id
   required: ['s7-l1'],         // prerequisite lesson ids, AND'd; [] = a root node
   position: { x: -70, y: 1560 }, // px offset from the 400px canvas centre; y grows down
   big: false,                  // true = larger node (use for content-free / recap nodes)
@@ -148,7 +148,7 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 - a lesson with no content in any round renders as a permanently locked node
 - `big: true` draws an 80px node instead of 64px
 - canvas is 400px wide; `position.x` is an offset from centre, `position.y` grows downward
-- label shows `titleHe`, the start / next-round button, and `id`
+- label shows the title from `i18n.title(id)`, the start / next-round button, and `id`
 
 ## Adding a screen type
 

@@ -6,7 +6,7 @@
 	import { goto } from '$app/navigation';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { editModel } from './editModel.svelte';
-	import { saveSection } from './api';
+	import { saveSection, saveTitles } from './api';
 	import { validateSection, issuesByNode } from './validate';
 	import GraphEditor from './GraphEditor.svelte';
 	import LessonEditorView from './LessonEditorView.svelte';
@@ -40,7 +40,7 @@
 	let saveMsg = $state('');
 	async function save() {
 		const changed = editModel.changedSections;
-		if (!changed.length) return;
+		if (!editModel.hasChanges) return;
 		saveState = 'saving';
 		saveMsg = '';
 		try {
@@ -50,6 +50,9 @@
 				const res = await saveSection(sid, upserts, deletes);
 				committed ||= res.committed;
 			}
+			const titles = editModel.titles.changes();
+			if (Object.keys(titles.upserts).length || titles.deletes.length)
+				committed ||= (await saveTitles(titles.upserts, titles.deletes)).committed;
 			editModel.markClean();
 			saveState = 'saved';
 			saveMsg = committed
@@ -202,7 +205,7 @@
 		lesson={playNode}
 		roundIndex={play.round}
 		startScreenIndex={play.index}
-		lessonLabel={playNode.titleHe}
+		lessonLabel={editModel.titles.get(playNode.id)}
 		hasNextLesson={false}
 		onExit={() => (play = null)}
 		onFinish={() => (play = null)}

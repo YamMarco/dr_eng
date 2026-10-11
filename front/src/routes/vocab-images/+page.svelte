@@ -1,5 +1,6 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 	import { dev } from '$app/environment';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import { checkContentEditPassword, rememberContentEditPassword } from '$lib/content-edit/api';
@@ -47,7 +48,7 @@
 					out.push({
 						...screen,
 						lessonId: lesson.id,
-						lessonTitle: lesson.titleHe,
+						lessonTitle: i18n.title(lesson.id),
 						section: lesson.section,
 						round,
 						screenIndex,

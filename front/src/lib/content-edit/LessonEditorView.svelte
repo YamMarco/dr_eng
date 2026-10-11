@@ -71,7 +71,7 @@
 			>
 				← חזרה למפה
 			</button>
-			<strong class="text-sm">{node.titleHe}</strong>
+			<strong class="text-sm">{editModel.titles.get(node.id)}</strong>
 			<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{node.id}</span>
 			<span
 				class="rounded bg-amber-100 px-1.5 text-xs font-bold text-amber-900"
@@ -104,8 +104,8 @@
 					<span class="text-xs text-muted">כותרת (עברית)</span>
 					<input
 						class="fld"
-						value={node.titleHe}
-						oninput={(e) => editModel.setMeta(node.id, { titleHe: e.currentTarget.value })}
+						value={editModel.titles.get(node.id)}
+						oninput={(e) => editModel.setTitle(node.id, e.currentTarget.value)}
 					/>
 				</label>
 				<label class="flex flex-col gap-0.5">

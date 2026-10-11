@@ -27,7 +27,7 @@ export interface LessonNode {
 	id: string;
 	/** Grouping key, matches a SectionMeta.id (e.g. 'c-4'). */
 	section: string;
-	titleHe: string;
+	/** Display title: i18n/locales/titles.*.ts, keyed by `id`. */
 	titleEn?: string;
 	/** Lesson ids that must be done (see `requiredRounds`) before this unlocks (AND'd). */
 	required: string[];
@@ -43,7 +43,6 @@ export interface LessonNode {
 
 export interface SectionMeta {
 	id: string;
-	titleHe: string;
 	titleEn?: string;
 	intro?: { greeting: string; goal?: string };
 }

@@ -44,7 +44,7 @@
 			<span class="text-sm font-semibold text-white/80">{i18n.dict.home.continueTitle}</span>
 			<span class="flex items-center justify-between gap-3">
 				<span class="min-w-0 flex-1">
-					<span class="block truncate text-lg font-bold">{continueInfo.lesson.titleHe}</span>
+					<span class="block truncate text-lg font-bold">{i18n.title(continueInfo.lesson.id)}</span>
 					{#if continueInfo.totalRounds > 1}
 						<span class="mt-1 block text-sm text-white/80" dir="ltr">
 							{i18n.dict.lesson.roundLabel(

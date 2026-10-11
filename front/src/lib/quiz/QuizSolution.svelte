@@ -14,7 +14,7 @@
 
 	<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto overscroll-contain px-4 pt-4 pb-12">
 		{#each quiz.parts as part (part.id)}
-			<h2 class="mb-3 text-base font-bold">{part.titleHe}</h2>
+			<h2 class="mb-3 text-base font-bold">{i18n.title(`${quiz.id}.${part.id}`)}</h2>
 			<ul class="mb-6 flex flex-col gap-4">
 				{#each screensWithIds(part) as { id, screen } (id)}
 					{#if screen.type === 'mcq'}

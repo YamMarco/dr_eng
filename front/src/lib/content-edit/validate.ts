@@ -108,7 +108,7 @@ export function validateExam(quizzes: QuizNode[]): Issue[] {
 
 		quiz.parts.forEach((part) => {
 			part.screens.forEach((s, index) => {
-				const at = `${part.titleHe}[${index}]`;
+				const at = `${part.id}[${index}]`;
 				for (const p of screenProblems(s))
 					out.push({
 						nodeId: quiz.id,

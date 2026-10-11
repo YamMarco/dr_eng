@@ -64,7 +64,7 @@
 			>
 				← רשימת המבחנים
 			</button>
-			<strong class="text-sm">{quiz.titleHe}</strong>
+			<strong class="text-sm">{examEditModel.titles.get(quiz.id)}</strong>
 			<span class="rounded bg-line/60 px-1.5 text-xs" dir="ltr">{quiz.id}</span>
 			<button
 				type="button"
@@ -91,17 +91,16 @@
 					<span class="text-xs text-muted">כותרת (עברית)</span>
 					<input
 						class="fld"
-						value={quiz.titleHe}
-						oninput={(e) => examEditModel.setExamMeta(quiz.id, { titleHe: e.currentTarget.value })}
+						value={examEditModel.titles.get(quiz.id)}
+						oninput={(e) => examEditModel.setTitle(quiz.id, e.currentTarget.value)}
 					/>
 				</label>
 				<label class="flex flex-col gap-0.5">
 					<span class="text-xs text-muted">תיאור (עברית)</span>
 					<input
 						class="fld"
-						value={quiz.descriptionHe ?? ''}
-						oninput={(e) =>
-							examEditModel.setExamMeta(quiz.id, { descriptionHe: e.currentTarget.value })}
+						value={examEditModel.titles.get(`${quiz.id}.description`)}
+						oninput={(e) => examEditModel.setDescription(quiz.id, e.currentTarget.value)}
 					/>
 				</label>
 				<label class="flex flex-col gap-0.5">

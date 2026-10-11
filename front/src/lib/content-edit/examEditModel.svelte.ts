@@ -16,6 +16,7 @@ import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
 import { EditHistory } from './editHistory.svelte';
+import { TitleEdits } from './titleEdits.svelte';
 
 function clone<T>(v: T): T {
 	return JSON.parse(JSON.stringify(v)) as T;
@@ -30,8 +31,11 @@ class ExamEditModel implements EditModelLike {
 
 	#baseline = '';
 
+	/** Hebrew titles: `<examId>`, `<examId>.description`, `<examId>.<partId>`. */
+	readonly titles = new TitleEdits();
+
 	#history = new EditHistory(
-		() => JSON.stringify(this.quizzes),
+		() => JSON.stringify({ quizzes: this.quizzes, titles: this.titles.map }),
 		(snapshot) => this.#restore(snapshot)
 	);
 
@@ -58,7 +62,9 @@ class ExamEditModel implements EditModelLike {
 	}
 
 	#restore(snapshot: string) {
-		this.quizzes = JSON.parse(snapshot) as QuizNode[];
+		const parsed = JSON.parse(snapshot) as { quizzes: QuizNode[]; titles: Record<string, string> };
+		this.quizzes = parsed.quizzes;
+		this.titles.restore(parsed.titles);
 		if (!this.node(this.selectedQuizId ?? '')) {
 			this.selectedQuizId = this.quizzes[0]?.id ?? null;
 			this.selectedPath = null;
@@ -68,12 +74,13 @@ class ExamEditModel implements EditModelLike {
 			!this.screenAt(this.selectedQuizId, this.selectedPath)
 		)
 			this.selectedPath = null;
-		this.#dirty = snapshot !== this.#baseline;
+		this.#dirty = this.hasChanges;
 	}
 
 	load(moduleId: string) {
 		this.moduleId = moduleId;
 		this.quizzes = clone(getQuizNodesByModule(moduleId));
+		this.titles.load();
 		this.#snapshotBaseline();
 		this.dirty = false;
 		this.selectedQuizId = this.quizzes[0]?.id ?? null;
@@ -85,8 +92,14 @@ class ExamEditModel implements EditModelLike {
 		this.#baseline = JSON.stringify(this.quizzes);
 	}
 
+	/** Anything a save would write: exam changes or title changes. */
+	get hasChanges(): boolean {
+		return JSON.stringify(this.quizzes) !== this.#baseline || this.titles.changed;
+	}
+
 	markClean() {
 		this.#snapshotBaseline();
+		this.titles.markClean();
 		this.dirty = false;
 	}
 
@@ -141,11 +154,12 @@ class ExamEditModel implements EditModelLike {
 			module: this.moduleId,
 			uuid: `${this.moduleId}-t-${crypto.randomUUID().slice(0, 4)}`,
 			kind: 'assorted',
-			titleHe: 'מבחן חדש',
 			options: {},
-			parts: [{ id: 'part-1', titleHe: 'חלק 1', screens: [] }]
+			parts: [{ id: 'part-1', screens: [] }]
 		};
 		this.quizzes.push(node);
+		this.titles.set(id, 'מבחן חדש');
+		this.titles.set(`${id}.part-1`, 'חלק 1');
 		this.dirty = true;
 		this.selectedQuizId = id;
 		this.selectedPath = null;
@@ -154,6 +168,7 @@ class ExamEditModel implements EditModelLike {
 
 	deleteExam(id: string) {
 		this.quizzes = this.quizzes.filter((q) => q.id !== id);
+		this.titles.remove(id);
 		if (this.selectedQuizId === id) {
 			this.selectedQuizId = this.quizzes[0]?.id ?? null;
 			this.selectedPath = null;
@@ -161,7 +176,17 @@ class ExamEditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
-	setExamMeta(id: string, patch: Partial<Pick<QuizNode, 'titleHe' | 'titleEn' | 'descriptionHe'>>) {
+	setTitle(id: string, title: string) {
+		this.titles.set(id, title);
+		this.dirty = true;
+	}
+
+	setDescription(id: string, description: string) {
+		this.titles.set(`${id}.description`, description);
+		this.dirty = true;
+	}
+
+	setExamMeta(id: string, patch: Partial<Pick<QuizNode, 'titleEn'>>) {
 		const q = this.node(id);
 		if (!q) return;
 		Object.assign(q, patch);
@@ -191,7 +216,7 @@ class ExamEditModel implements EditModelLike {
 		if (!q) return [];
 		return q.parts.map((p, i) => ({
 			key: p.id,
-			label: p.titleHe || `חלק ${i + 1}`,
+			label: this.titles.get(`${quizId}.${p.id}`) || `חלק ${i + 1}`,
 			note: p.points != null ? `${p.points} נק'` : undefined,
 			screens: p.screens
 		}));
@@ -277,7 +302,9 @@ class ExamEditModel implements EditModelLike {
 		const q = this.node(quizId);
 		if (!q) return;
 		const idx = at < 0 ? q.parts.length : at;
-		q.parts.splice(idx, 0, { id: this.shortPartId(q), titleHe: `חלק ${idx + 1}`, screens: [] });
+		const partId = this.shortPartId(q);
+		q.parts.splice(idx, 0, { id: partId, screens: [] });
+		this.titles.set(`${quizId}.${partId}`, `חלק ${idx + 1}`);
 		this.dirty = true;
 	}
 
@@ -286,14 +313,17 @@ class ExamEditModel implements EditModelLike {
 		if (!q) return;
 		const src = q.parts[bucketIndex];
 		if (!src) return;
-		q.parts.splice(bucketIndex + 1, 0, { ...clone(src), id: this.shortPartId(q) });
+		const partId = this.shortPartId(q);
+		q.parts.splice(bucketIndex + 1, 0, { ...clone(src), id: partId });
+		this.titles.copy(`${quizId}.${src.id}`, `${quizId}.${partId}`);
 		this.dirty = true;
 	}
 
 	deleteBucket(quizId: string, bucketIndex: number) {
 		const q = this.node(quizId);
 		if (!q || q.parts.length <= 1) return;
-		q.parts.splice(bucketIndex, 1);
+		const [removed] = q.parts.splice(bucketIndex, 1);
+		this.titles.remove(`${quizId}.${removed.id}`);
 		this.dirty = true;
 	}
 
@@ -308,7 +338,7 @@ class ExamEditModel implements EditModelLike {
 	setPartMeta(
 		quizId: string,
 		partId: string,
-		patch: Partial<Pick<QuizPart, 'titleHe' | 'instructionsHe' | 'points'>>
+		patch: Partial<Pick<QuizPart, 'instructionsHe' | 'points'>>
 	) {
 		const part = this.part(quizId, partId);
 		if (!part) return;
@@ -319,7 +349,7 @@ class ExamEditModel implements EditModelLike {
 	setBucketLabel(quizId: string, bucketIndex: number, label: string) {
 		const part = this.node(quizId)?.parts[bucketIndex];
 		if (!part) return;
-		part.titleHe = label;
+		this.titles.set(`${quizId}.${part.id}`, label);
 		this.dirty = true;
 	}
 }

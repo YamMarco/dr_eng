@@ -40,6 +40,7 @@
 	import TextMarker from './fields/TextMarker.svelte';
 	import { expandAccepted } from '$lib/lesson-screens/acceptedAnswers';
 	import SettingsGroup from './fields/SettingsGroup.svelte';
+	import OptionalGroup from './fields/OptionalGroup.svelte';
 	import NumberField from './fields/NumberField.svelte';
 	import TextField from './fields/TextField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
@@ -498,11 +499,11 @@
 					>
 						<div
 							class="mx-auto w-full {device === 'phone'
-								? 'max-w-[390px]'
+								? 'max-w-97.5'
 								: 'max-w-lg'} overflow-hidden rounded-2xl border-2 border-line bg-canvas shadow-md transition-[max-width] duration-300 ease-in-out motion-reduce:transition-none"
 						>
 							<div class="h-[min(68vh,700px)] overflow-y-auto px-4 pt-6 pb-6">
-								<EditableScreen {model} {nodeId} {path} />
+								<EditableScreen {model} {nodeId} {path} {isExam} />
 							</div>
 						</div>
 					</div>
@@ -528,7 +529,7 @@
 								: ''}"
 						>
 							<div
-								class="hidden has-[*]:block xl:columns-[17rem] xl:gap-x-10 [&>*]:mt-0! [&>*]:mb-5 [&>*]:break-inside-avoid [&>*]:border-t-0! [&>*]:pt-0!"
+								class="hidden *:mt-0! *:mb-3 *:break-inside-avoid *:border-t-0! *:pt-0! has-[*]:block xl:columns-[17rem] xl:gap-x-10"
 							>
 								<!-- Fundamental first: general settings, then the type's own groups. -->
 								{#if !rawOpen && ((isExam && POINTS_TYPES.has(screen.type)) || (!isExam && AUTO_CHECK_TYPES.has(screen.type)))}
@@ -551,12 +552,25 @@
 											</label>
 										{/if}
 										{#if !isExam && screen.type === 'writing-task'}
-											<NumberField
-												label="שעון (דקות)"
-												min={1}
-												value={screen.timeLimitMinutes}
-												onChange={(v) => (screen.timeLimitMinutes = v)}
-											/>
+											<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+												<label class="flex items-center gap-2 text-xs text-muted">
+													<input
+														type="checkbox"
+														checked={!!screen.timeLimitMinutes}
+														onchange={(e) =>
+															(screen.timeLimitMinutes = e.currentTarget.checked ? 20 : undefined)}
+													/>
+													שעון
+												</label>
+												{#if screen.timeLimitMinutes}
+													<NumberField
+														label="דקות"
+														min={1}
+														value={screen.timeLimitMinutes}
+														onChange={(v) => (screen.timeLimitMinutes = v)}
+													/>
+												{/if}
+											</div>
 										{/if}
 									</SettingsGroup>
 								{/if}
@@ -730,85 +744,8 @@
 										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
-									{#if isExam}
-										<SettingsGroup title="חיבור חופשי - טווח מילים">
-											<div class="flex flex-wrap gap-x-4 gap-y-2">
-												<NumberField
-													label="מינ׳ מילים"
-													value={screen.minWords}
-													onChange={(v) => (screen.minWords = v)}
-												/>
-												<NumberField
-													label="מקס׳ מילים"
-													value={screen.maxWords}
-													onChange={(v) => (screen.maxWords = v)}
-												/>
-											</div>
-										</SettingsGroup>
-									{:else}
-										{@const paragraph = screen.minWords !== undefined}
+									{#if !isExam}
 										{@const fixedShape = (screen.acceptedAnswers?.length ?? 0) > 0}
-										<!-- minWords set = one paragraph box (the exam shape); unset = one line per sentence. -->
-										<SettingsGroup title="מבנה התשובה">
-											<div class="flex gap-4 text-xs text-muted">
-												<label class="flex items-center gap-1.5">
-													<input
-														type="radio"
-														name={`shape-${String(path.bucket)}-${path.index}`}
-														checked={!paragraph}
-														onchange={() => {
-															screen.minWords = undefined;
-															screen.maxWords = undefined;
-														}}
-													/>
-													שורה לכל משפט
-												</label>
-												<label class="flex items-center gap-1.5">
-													<input
-														type="radio"
-														name={`shape-${String(path.bucket)}-${path.index}`}
-														checked={paragraph}
-														onchange={() => {
-															screen.minWords = 70;
-															screen.maxWords = 90;
-															screen.wordCounter = undefined;
-														}}
-													/>
-													פסקה אחת (כמו בבחינה)
-												</label>
-											</div>
-											<div class="flex flex-wrap gap-x-4 gap-y-2">
-												<NumberField
-													label={paragraph ? 'מינ׳ משפטים' : 'מספר שורות'}
-													min={1}
-													value={screen.minSentences}
-													onChange={(v) => (screen.minSentences = v)}
-												/>
-												{#if paragraph}
-													<NumberField
-														label="מינ׳ מילים"
-														value={screen.minWords}
-														onChange={(v) => (screen.minWords = v ?? 0)}
-													/>
-													<NumberField
-														label="מקס׳ מילים"
-														value={screen.maxWords}
-														onChange={(v) => (screen.maxWords = v)}
-													/>
-												{/if}
-											</div>
-											{#if !paragraph}
-												<label class="flex items-center gap-2 text-xs text-muted">
-													<input
-														type="checkbox"
-														checked={screen.wordCounter ?? false}
-														onchange={(e) =>
-															(screen.wordCounter = e.currentTarget.checked || undefined)}
-													/>
-													מונה מילים מתחת לשורות
-												</label>
-											{/if}
-										</SettingsGroup>
 										<SettingsGroup
 											title="תנאי מעבר"
 											hint={fixedShape
@@ -821,28 +758,27 @@
 													value={screen.minWordsUsed}
 													onChange={(v) => (screen.minWordsUsed = v)}
 												/>
-												{#if screen.autoCheck ?? true}
-													<NumberField
-														label="טעויות קטנות מותרות"
-														value={screen.maxTypos ?? 1}
-														onChange={(v) => (screen.maxTypos = v)}
-													/>
-													<label class="flex items-center gap-2 text-xs text-muted">
-														<input
-															type="checkbox"
-															checked={screen.capitalIsError ?? true}
-															onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
+												<div class="flex flex-wrap gap-x-4 gap-y-2">
+													{#if screen.autoCheck ?? true}
+														<NumberField
+															label="טעויות קטנות מותרות"
+															value={screen.maxTypos ?? 1}
+															onChange={(v) => (screen.maxTypos = v)}
 														/>
-														אות ראשונה קטנה = טעות
-													</label>
-												{/if}
-												<div
-													class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted"
-													dir="ltr"
-												>
-													<span dir="rtl">מהלכים חובה:</span>
+														<label class="flex items-center gap-2 text-xs text-muted">
+															<input
+																type="checkbox"
+																checked={screen.capitalIsError ?? true}
+																onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
+															/>
+															אות ראשונה קטנה = טעות
+														</label>
+													{/if}
+												</div>
+												<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
+													<span>מהלכים חובה:</span>
 													{#each MOVE_IDS as move (move)}
-														<label class="flex items-center gap-1">
+														<label class="flex items-center gap-1" dir="ltr">
 															<input
 																type="checkbox"
 																checked={screen.requiredMoves?.includes(move) ?? false}
@@ -861,70 +797,52 @@
 											{/if}
 										</SettingsGroup>
 									{/if}
-									<SettingsGroup title="בנק מילים" hint="מוצג לתלמיד כצ׳יפים. אופציונלי.">
-										{#if screen.wordBank}
-											<StringListEditor
-												bind:items={screen.wordBank}
-												addLabel="+ מילה"
-												dir="ltr"
-												compact
-											/>
-										{:else}
-											<button
-												type="button"
-												class="self-start text-xs font-semibold text-brand"
-												onclick={() => (screen.wordBank = [])}
-											>
-												+ הוספת בנק מילים
-											</button>
-										{/if}
-									</SettingsGroup>
 									{#if !isExam}
-										<SettingsGroup
+										<OptionalGroup
 											title="תשובות מתקבלות"
 											hint="משפט שלם בכל שורה. הסימן | בתוך סוגריים = ״או״: (I think|I believe) = אחת משתי האפשרויות. אם יש שורות כאן, המשפט חייב להתאים לאחת מהן."
+											addLabel="+ הוספת תשובות מתקבלות"
+											present={!!screen.acceptedAnswers}
+											onAdd={() => (screen.acceptedAnswers = [])}
 										>
-											{#if screen.acceptedAnswers}
-												<StringListEditor
-													bind:items={screen.acceptedAnswers}
-													addLabel="+ תשובה"
-													dir="ltr"
-													multiline
-												/>
-												<details class="text-xs text-muted">
-													<summary class="cursor-pointer font-semibold">
-														מה יתקבל בפועל ({expandAccepted(screen.acceptedAnswers).length} משפטים)
-													</summary>
-													<ul class="mt-1 list-disc space-y-0.5 ps-5" dir="ltr">
-														{#each expandAccepted(screen.acceptedAnswers) as sentence (sentence)}
-															<li>{sentence}</li>
-														{/each}
-													</ul>
-												</details>
-											{:else}
-												<button
-													type="button"
-													class="self-start text-xs font-semibold text-brand"
-													onclick={() => (screen.acceptedAnswers = [])}
-												>
-													+ הוספת תשובות מתקבלות
-												</button>
-											{/if}
-										</SettingsGroup>
-										<SettingsGroup
+											<StringListEditor
+												bind:items={screen.acceptedAnswers}
+												addLabel="+ תשובה"
+												dir="ltr"
+												multiline
+											/>
+											<details class="text-xs text-muted">
+												<summary class="cursor-pointer font-semibold">
+													מה יתקבל בפועל ({expandAccepted(screen.acceptedAnswers).length} משפטים)
+												</summary>
+												<ul class="mt-1 list-disc space-y-0.5 ps-5" dir="ltr">
+													{#each expandAccepted(screen.acceptedAnswers) as sentence (sentence)}
+														<li>{sentence}</li>
+													{/each}
+												</ul>
+											</details>
+										</OptionalGroup>
+										<OptionalGroup
 											title="בדיקה עצמית"
 											hint="מוצג אחרי הבדיקה, בלי ציון: תשובה לדוגמה ורשימה שהתלמיד מסמן על הטקסט שלו."
+											addLabel="+ הוספת בדיקה עצמית"
+											present={screen.modelAnswer !== undefined || !!screen.checklist}
+											onAdd={() => (screen.modelAnswer = '')}
 										>
 											<textarea
 												dir="ltr"
-												rows="3"
+												rows="2"
 												placeholder="תשובה לדוגמה"
 												value={screen.modelAnswer ?? ''}
-												oninput={(e) => (screen.modelAnswer = e.currentTarget.value || undefined)}
+												oninput={(e) => (screen.modelAnswer = e.currentTarget.value)}
 												class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
 											></textarea>
 											{#if screen.checklist}
-												<StringListEditor bind:items={screen.checklist} addLabel="+ סעיף" compact />
+												<StringListEditor
+													bind:items={screen.checklist}
+													addLabel="+ סעיף"
+													dir="auto"
+												/>
 											{:else}
 												<button
 													type="button"
@@ -934,7 +852,7 @@
 													+ הוספת רשימת בדיקה
 												</button>
 											{/if}
-										</SettingsGroup>
+										</OptionalGroup>
 									{/if}
 								{:else if screen.type === 'spell-word'}
 									<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">

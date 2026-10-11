@@ -72,6 +72,11 @@ export function saveSection(sectionId: string, upserts: LessonNode[], deletes: s
 	return post({ sectionId, upserts, deletes });
 }
 
+/** Merges changed/removed Hebrew titles (by key) into i18n/locales/titles.he.ts. */
+export function saveTitles(upserts: Record<string, string>, deletes: string[]) {
+	return post({ titles: { upserts, deletes } });
+}
+
 /** Merges only the changed/removed exams into a module's quiz-content file in
  *  one write/commit - the exam-editor's equivalent of saveSection. */
 export function saveExamChanges(moduleId: string, upserts: QuizNode[], deletes: string[]) {

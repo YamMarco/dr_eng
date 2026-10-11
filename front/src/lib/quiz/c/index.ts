@@ -9,13 +9,10 @@ export const cQuizzes: QuizNode[] = [
     module: "c",
     uuid: "c-t-4815",
     kind: "assorted",
-    titleHe: "משקפיים חכמות שעוזרות לעיוורים לראות",
-    descriptionHe: "מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.",
     options: { passThreshold: 0.6, durationMinutes: 90, warnAtMinutes: 10 },
     parts: [
       {
         id: "reading",
-        titleHe: "קריאה",
         instructionsHe: "קראו את הקטע וענו על השאלות שאחריו.",
         points: 70,
         screens: [
@@ -135,7 +132,6 @@ export const cQuizzes: QuizNode[] = [
       },
       {
         id: "writing",
-        titleHe: "כתיבה",
         instructionsHe: "כתבו תשובה מלאה לשאלה הבאה.",
         points: 30,
         screens: [
@@ -156,13 +152,10 @@ export const cQuizzes: QuizNode[] = [
     module: "c",
     uuid: "c-t-7192",
     kind: "assorted",
-    titleHe: "ידידות יוצאות דופן בין בעלי חיים",
-    descriptionHe: "מבחן תרגול מלא בסגנון בגרות - קריאה וכתיבה.",
     options: { passThreshold: 0.6, durationMinutes: 90, warnAtMinutes: 10 },
     parts: [
       {
         id: "reading",
-        titleHe: "קריאה",
         instructionsHe: "קראו את הקטע וענו על השאלות שאחריו.",
         points: 70,
         screens: [
@@ -284,7 +277,6 @@ export const cQuizzes: QuizNode[] = [
       },
       {
         id: "writing",
-        titleHe: "כתיבה",
         instructionsHe: "כתבו תשובה מלאה לשאלה הבאה.",
         points: 30,
         screens: [

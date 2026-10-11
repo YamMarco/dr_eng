@@ -54,7 +54,6 @@
 	type PathNode = {
 		lesson: LessonNode;
 		sectionId: string;
-		sectionTitleHe: string;
 		/** 1-based position within its own section — shown on the node. */
 		lessonNumber: number;
 		theme: SectionTheme;
@@ -90,7 +89,6 @@
 				result.push({
 					lesson,
 					sectionId: section.id,
-					sectionTitleHe: section.titleHe,
 					lessonNumber: lessonIndexInSection + 1,
 					theme,
 					x: lesson.position.x,
@@ -108,16 +106,12 @@
 	// order — an intro node may be authored last in the file). Centred on the
 	// canvas, in the section's color, so it never reads as a node title.
 	let sectionHeadings = $derived.by(() => {
-		const top = new SvelteMap<
-			string,
-			{ sectionId: string; titleHe: string; theme: SectionTheme; y: number }
-		>();
+		const top = new SvelteMap<string, { sectionId: string; theme: SectionTheme; y: number }>();
 		for (const node of nodes) {
 			const cur = top.get(node.sectionId);
 			if (cur && cur.y <= node.y) continue;
 			top.set(node.sectionId, {
 				sectionId: node.sectionId,
-				titleHe: node.sectionTitleHe,
 				theme: node.theme,
 				y: node.y
 			});
@@ -507,7 +501,7 @@
 								class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
 									.theme.soft}"
 							>
-								{heading.titleHe}
+								{i18n.title(heading.sectionId)}
 							</p>
 						</div>
 					{/each}
@@ -603,7 +597,7 @@
 											? 'text-muted'
 											: 'text-ink'}"
 									>
-										{node.lesson.titleHe}
+										{i18n.title(node.lesson.id)}
 									</span>
 								</div>
 							{/if}
@@ -624,7 +618,7 @@
 									style="translate: calc(-50% + {labelShift(node.x)}px)"
 								>
 									<div class="flex flex-col gap-2">
-										<p class="text-sm font-bold">{node.lesson.titleHe}</p>
+										<p class="text-sm font-bold">{i18n.title(node.lesson.id)}</p>
 										{#if required > 1 && completed < required}
 											<p class="text-[11px] font-semibold text-muted">
 												{i18n.dict.lesson.roundsRequiredHint(required)}
@@ -676,7 +670,7 @@
 		<LessonRunner
 			lesson={activeNode.lesson}
 			roundIndex={activeRoundIndex}
-			lessonLabel={activeNode.lesson.titleHe}
+			lessonLabel={i18n.title(activeNode.lesson.id)}
 			roundLabel={totalRounds(activeNode) > 1
 				? i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))
 				: undefined}

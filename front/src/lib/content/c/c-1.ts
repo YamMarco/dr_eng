@@ -6,7 +6,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l00",
     section: "c-1",
-    titleHe: "אני מחפש, לא קורא",
     titleEn: "Mindset",
     required: [],
     position: { x: 0, y: 550 },
@@ -177,7 +176,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l01",
     section: "c-1",
-    titleHe: "מפת הדרכים",
     titleEn: "The Road Map",
     required: ["l00"],
     requiredRounds: 3,
@@ -485,7 +483,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l02",
     section: "c-1",
-    titleHe: "שיטת הרמזור",
     titleEn: "Traffic Light",
     required: ["l01"],
     requiredRounds: 3,
@@ -867,7 +864,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l03",
     section: "c-1",
-    titleHe: "P1 - ניווט בטקסט",
     titleEn: "P1 Navigation",
     required: ["l02"],
     requiredRounds: 3,
@@ -1143,8 +1139,13 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "summary",
               title:
-                "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.\n\nקודם מבינים **מה השאלה מבקשת**.\nאחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.\nמוצאים את המקום המתאים בטקסט, קוראים את המשפטים סביבו ורק אז עונים.\n📌 זכרו:\n**שאלה ← מילת מפתח ← חיפוש בטקסט ← קריאה ← תשובה**",
-              lines: [],
+                "בשיעור הזה למדנו איך למצוא תשובה בטקסט בצורה מסודרת.",
+              lines: [
+                "קודם מבינים **מה השאלה מבקשת**.",
+                "אחר כך מסמנים **מילת מפתח** שעוזרת לנו לדעת איפה לחפש.",
+                "מוצאים את המקום המתאים בטקסט, קוראים את המשפטים סביבו ורק אז עונים.",
+                "📌 זכרו: **שאלה ← מילת מפתח ← חיפוש בטקסט ← קריאה ← תשובה**",
+              ],
             },
           ],
         },
@@ -1205,7 +1206,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l04",
     section: "c-1",
-    titleHe: "מגנט לעין - מספרים ושמות",
     titleEn: "Eye Catcher: Numbers & Names",
     required: ["l03"],
     requiredRounds: 4,
@@ -1481,7 +1481,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "numbers-names-q",
     section: "c-1",
-    titleHe: "מספרים ושמות - תרגול שאלות",
     titleEn: "Numbers & Names: Practice",
     required: ["l04"],
     requiredRounds: 3,
@@ -1738,7 +1737,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l06",
     section: "c-1",
-    titleHe: "NOT - המילה הכי מסוכנת",
     titleEn: "Eye Catcher: NOT",
     required: ["l03"],
     requiredRounds: 4,
@@ -1979,7 +1977,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "not-q",
     section: "c-1",
-    titleHe: "NOT - תרגול שאלות",
     titleEn: "NOT: Practice",
     required: ["l06"],
     requiredRounds: 3,
@@ -2291,7 +2288,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l07",
     section: "c-1",
-    titleHe: "most / only - תשובה אחת",
     titleEn: "Key Limiters",
     required: ["l03"],
     requiredRounds: 4,
@@ -2317,7 +2313,6 @@ export const c1Lessons: LessonNode[] = [
             "מצאו בטקסט את הדבר הספציפי הזה. אל תוסיפו פרטים נוספים.",
           ],
         },
-        { type: "preface", text: "" },
         {
           type: "preface",
           text: "{d:rtl}השאלה: **According to Dr. Okafor, what is the most effective type of volunteering programme?**\n\n{d:rtl}🟢 קודם מבינים מה מחפשים: **most effective** = הכי יעיל.\n{d:rtl}\n{d:rtl}לא צריך לחפש את כל סוגי ההתנדבות. צריך למצוא **רק את הסוג הכי יעיל**.\n\n{d:rtl}📍 בפסקה II כתוב:\n{p:text}**“The most effective programmes bring young people face to face with the people they help.”**\n",
@@ -2528,7 +2523,7 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "**Mark every limiting word : only, all, most, some, few, every, always**",
-              text: "**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n",
+              text: "**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\n**III**  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV**  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. \"We have only two trucks for this job,\" she explains. \"We need at least five.\"\n",
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
@@ -2554,7 +2549,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "limiters-q",
     section: "c-1",
-    titleHe: "most / only - תרגול שאלות",
     titleEn: "Key Limiters: Practice",
     required: ["l07"],
     requiredRounds: 3,
@@ -2818,7 +2812,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l08",
     section: "c-1",
-    titleHe: "however / but - סימון בטקסט",
     titleEn: "Contrast Words",
     required: ["n-221188d1"],
     requiredRounds: 4,
@@ -3076,7 +3069,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l09",
     section: "c-1",
-    titleHe: "שאלות אמריקאיות",
     titleEn: "Multiple Choice",
     required: ["n-b46b7e2b"],
     requiredRounds: 3,
@@ -3393,7 +3385,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l10",
     section: "c-1",
-    titleHe: "תשובה קצרה",
     titleEn: "Short Answer",
     required: ["l09"],
     requiredRounds: 3,
@@ -3668,7 +3659,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l11",
     section: "c-1",
-    titleHe: "השלמת משפט",
     titleEn: "Complete the Sentence",
     required: ["l09"],
     requiredRounds: 3,
@@ -3938,7 +3928,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "l12",
     section: "c-1",
-    titleHe: "שתי תשובות",
     titleEn: "Two Answers",
     required: ["l11"],
     requiredRounds: 3,
@@ -4202,7 +4191,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-649ed18f",
     section: "c-1",
-    titleHe: "שאלות - סיכום",
     required: ["l10", "l12"],
     position: { x: 0, y: 1980 },
     big: false,
@@ -4297,7 +4285,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-b46b7e2b",
     section: "c-1",
-    titleHe: "however / but - כמו במבחן",
     titleEn: "Contrast Words",
     required: ["l08"],
     requiredRounds: 3,
@@ -4561,7 +4548,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-7c5330b8",
     section: "c-1",
-    titleHe: "חלק 1 - סיכום",
     required: ["n-649ed18f"],
     position: { x: 0, y: 2100 },
     big: true,
@@ -4649,7 +4635,6 @@ export const c1Lessons: LessonNode[] = [
   {
     id: "n-221188d1",
     section: "c-1",
-    titleHe: "שאלות 1 - סיכום",
     required: ["not-q", "limiters-q", "numbers-names-q"],
     position: { x: 0, y: 1260 },
     big: false,

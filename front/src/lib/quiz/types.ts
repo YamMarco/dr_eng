@@ -29,7 +29,6 @@ export interface QuizOptions {
 
 export interface QuizPart {
 	id: string;
-	titleHe: string;
 	instructionsHe?: string;
 	/** For display only (e.g. "20 נק'") - screen-level `points` are the scoring source of truth. */
 	points?: number;
@@ -49,9 +48,7 @@ export interface QuizNode {
 	kind: QuizKind;
 	/** Required when kind is 'ministry'. */
 	year?: number;
-	titleHe: string;
 	titleEn?: string;
-	descriptionHe?: string;
 	options: QuizOptions;
 	parts: QuizPart[];
 }

@@ -38,6 +38,11 @@ class I18n {
 		return dictionaries[this.language];
 	}
 
+	/** Display title of a section / lesson / exam / exam part (`<examId>.<partId>`). */
+	title(id: string): string {
+		return this.dict.titles[id] ?? id;
+	}
+
 	setLanguage(lang: Language) {
 		this.language = lang;
 		if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, lang);

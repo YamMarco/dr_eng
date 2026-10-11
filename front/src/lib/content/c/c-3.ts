@@ -6,7 +6,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "yes-no",
     section: "c-3",
-    titleHe: "YES or NO - לומר עמדה",
     titleEn: "YES or NO",
     required: ["c-a45c17de"],
     position: { x: 60, y: 2320 },
@@ -191,7 +190,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "because",
     section: "c-3",
-    titleHe: "because - לחבר לסיבה",
     titleEn: "because",
     required: ["yes-no"],
     position: { x: 100, y: 2420 },
@@ -385,7 +383,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "in-addition",
     section: "c-3",
-    titleHe: "In addition - סיבה שנייה",
     titleEn: "In addition",
     required: ["because"],
     position: { x: 100, y: 2510 },
@@ -577,7 +574,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "for-example",
     section: "c-3",
-    titleHe: "For example - לפרט",
     titleEn: "For example",
     required: ["in-addition"],
     position: { x: 70, y: 2600 },
@@ -858,7 +854,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "in-conclusion",
     section: "c-3",
-    titleHe: "In conclusion - לסגור",
     titleEn: "In conclusion",
     required: ["for-example"],
     position: { x: 0, y: 2720 },
@@ -1091,7 +1086,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "subject-verb",
     section: "c-3",
-    titleHe: "Subject + Verb - משפט שלם",
     titleEn: "Subject + Verb",
     required: ["in-conclusion"],
     position: { x: -70, y: 2840 },
@@ -1306,7 +1300,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "word-count",
     section: "c-3",
-    titleHe: "70-90 מילים - לספור",
     titleEn: "70-90 Words",
     required: ["subject-verb"],
     position: { x: -100, y: 2960 },
@@ -1437,7 +1430,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "topic-volunteer",
     section: "c-3",
-    titleHe: "Do you think? - התנדבות",
     titleEn: "Do you think? - Volunteer Work",
     required: ["word-count"],
     position: { x: -70, y: 3080 },
@@ -1725,7 +1717,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "topic-vacation",
     section: "c-3",
-    titleHe: "What do you think? - חופשה",
     titleEn: "What do you think? - Vacation",
     required: ["topic-volunteer"],
     position: { x: 0, y: 3200 },
@@ -1970,7 +1961,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "topic-school",
     section: "c-3",
-    titleHe: "What changes? - בית ספר",
     titleEn: "What changes? - School",
     required: ["topic-vacation"],
     position: { x: 70, y: 3320 },
@@ -2161,7 +2151,6 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "topic-cellphone",
     section: "c-3",
-    titleHe: "At what age? - פלאפונים",
     titleEn: "At what age? - Cellphones",
     required: ["topic-school"],
     position: { x: 100, y: 3440 },
@@ -2350,10 +2339,9 @@ export const c3Lessons: LessonNode[] = [
   {
     id: "c-a45c17de",
     section: "c-3",
-    titleHe: "כתיבה - הקדמה",
     required: ["n-7c5330b8"],
     position: { x: 0, y: 2230 },
-    big: false,
+    big: true,
     content: {
       preface: [
         {

@@ -61,7 +61,7 @@
 			{#each quiz.parts as part (part.id)}
 				{@const partScore = score.byPart[part.id]}
 				<li class="flex items-center justify-between py-2 text-sm first:pt-0 last:pb-0">
-					<span class="font-semibold">{part.titleHe}</span>
+					<span class="font-semibold">{i18n.title(`${quiz.id}.${part.id}`)}</span>
 					{#if partScore && partScore.max > 0}
 						<span class="tabular" dir="ltr">{partScore.earned}/{partScore.max}</span>
 					{:else}

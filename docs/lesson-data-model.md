@@ -17,11 +17,11 @@ LessonNode ──section──> SectionMeta          (grouping only: heading + t
 
 | Entity | Identity | Fields |
 | --- | --- | --- |
-| **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleHe`, `titleEn?`, `required: string[]`, `requiredRounds?` (default 1), `position: {x,y}`, `big: boolean`, `image?`, `content` |
+| **LessonNode** | `id: string`, globally unique in the module | `section` (`"c-4"`), `titleEn?` (display titles live in `i18n/locales/titles.he.ts`, keyed by id), `required: string[]`, `requiredRounds?` (default 1), `position: {x,y}`, `big: boolean`, `image?`, `content` |
 | **LessonContent** | — | `preface: LessonScreen[]` (teaching intro, played once before round 0), `rounds: LessonRound[]` (length ≥ 1) |
 | **LessonRound** | index in `rounds` | `screens: LessonScreen[]` — practice only. Round 0 is mandatory-to-progress; 1..n are optional extra practice, played without the preface |
 | **LessonScreen** | index in `screens` | discriminated union on `type`, defined in `lib/lesson-screens/schema.ts` (zod; TS types derived in `types.ts`) |
-| **SectionMeta** | `id: string` (`"c-1"`..`"c-25"`) | `titleHe`, `titleEn?`, `intro?{greeting,goal?}` |
+| **SectionMeta** | `id: string` (`"c-1"`..`"c-25"`) | `titleEn?`, `intro?{greeting,goal?}` |
 
 Everything is authored directly — nothing is derived at build time anymore.
 

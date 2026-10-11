@@ -1,7 +1,9 @@
 // Replaces a lesson's `content` ({ lessonId, content }), merges a patch of
 // changed/removed nodes into a lesson section ({ sectionId, upserts,
 // deletes }), or merges a patch of changed/removed exams into a module's
-// quiz-content file ({ examModuleId, upserts, deletes }) — one save = one
+// quiz-content file ({ examModuleId, upserts, deletes }), or merges changed/
+// removed Hebrew titles by key into the locale file ({ titles: { upserts,
+// deletes } }) — one save = one
 // write/commit, however many screens/nodes changed since the last save.
 // Untouched nodes pass through from the file's current content, not from the
 // caller's copy, so a save never reverts someone else's already-committed
@@ -41,6 +43,15 @@ import type { RequestHandler } from './$types';
 // on each other, in the file or in git history.
 type Body =
 	| {
+			titles: { upserts: Record<string, string>; deletes: string[] };
+			lessonId?: undefined;
+			sectionId?: undefined;
+			examModuleId?: undefined;
+			content?: undefined;
+			upserts?: undefined;
+			deletes?: undefined;
+	  }
+	| {
 			lessonId: string;
 			content: unknown;
 			sectionId?: undefined;
@@ -75,7 +86,28 @@ export const POST: RequestHandler = async ({ request }) => {
 	let label: string;
 	let transform: (raw: string) => string;
 
-	if (body.sectionId) {
+	if ('titles' in body) {
+		const { upserts, deletes } = body.titles;
+		if (!upserts || typeof upserts !== 'object' || !Array.isArray(deletes))
+			throw error(400, 'missing titles.upserts{}/deletes[]');
+		relPath = 'src/lib/i18n/locales/titles.he.ts';
+		label = 'titles (he)';
+		transform = (raw) => {
+			const open = raw.indexOf('{', raw.indexOf('export const titlesHe'));
+			const close = raw.lastIndexOf('}');
+			if (open < 0 || close < open) throw error(500, 'could not locate titlesHe object in file');
+			const fresh = parseArrayLiteral(`[${raw.slice(open, close + 1)}]`)[0] as Record<
+				string,
+				string
+			>;
+			for (const key of deletes) delete fresh[key];
+			for (const [key, value] of Object.entries(upserts)) {
+				if (typeof value !== 'string') throw error(400, `title for ${key} must be a string`);
+				fresh[key] = value;
+			}
+			return `${raw.slice(0, open)}${JSON.stringify(fresh)}${raw.slice(close + 1)}`;
+		};
+	} else if (body.sectionId) {
 		const { sectionId, upserts, deletes } = body;
 		if (!Array.isArray(upserts) || !Array.isArray(deletes))
 			throw error(400, 'missing upserts[]/deletes[]');
