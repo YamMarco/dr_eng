@@ -212,11 +212,11 @@
 						</div>
 						<button
 							type="button"
-							class="block w-full bg-line/40"
+							class="block aspect-[3/4] w-full bg-line/40"
 							aria-label={i18n.dict.ocr.view}
 							onclick={() => (selecting ? toggle(page.id) : (viewing = page.id))}
 						>
-							<img src={page.url} alt="" class="h-auto w-full" />
+							<img src={page.url} alt="" class="size-full object-contain" />
 						</button>
 					</li>
 				{/each}
