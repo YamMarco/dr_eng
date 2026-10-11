@@ -1,8 +1,8 @@
 <script lang="ts">
 	import {
 		Camera,
-		ChevronLeft,
-		ChevronRight,
+		ChevronDown,
+		ChevronUp,
 		ImageUp,
 		RefreshCw,
 		RotateCw,
@@ -191,21 +191,22 @@
 								{#if selected.includes(page.id)}<Check class="size-3.5" />{/if}
 							</span>
 						{:else}
-							<!-- RTL: the page before is to the right. -->
-							<button
-								type="button"
-								class="{tileBtn} absolute start-2 bottom-2 disabled:opacity-0"
-								disabled={i === pages.length - 1}
-								aria-label={i18n.dict.ocr.moveLater}
-								onclick={() => move(i, 1)}><ChevronLeft class="size-4" /></button
-							>
-							<button
-								type="button"
-								class="{tileBtn} absolute end-2 bottom-2 disabled:opacity-0"
-								disabled={i === 0}
-								aria-label={i18n.dict.ocr.moveEarlier}
-								onclick={() => move(i, -1)}><ChevronRight class="size-4" /></button
-							>
+							<span class="absolute end-2 bottom-2 flex gap-1.5">
+								<button
+									type="button"
+									class="{tileBtn} disabled:opacity-0"
+									disabled={i === 0}
+									aria-label={i18n.dict.ocr.moveEarlier}
+									onclick={() => move(i, -1)}><ChevronUp class="size-4" /></button
+								>
+								<button
+									type="button"
+									class="{tileBtn} disabled:opacity-0"
+									disabled={i === pages.length - 1}
+									aria-label={i18n.dict.ocr.moveLater}
+									onclick={() => move(i, 1)}><ChevronDown class="size-4" /></button
+								>
+							</span>
 						{/if}
 					</li>
 				{/each}
