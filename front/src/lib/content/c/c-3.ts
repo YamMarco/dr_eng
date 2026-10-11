@@ -818,7 +818,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"Do you think every city should have a project like the City Garden Project?"\n\n{p:text}THE CITY GARDEN PROJECT\n{p:text}Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted over 2,000 trees and created 15 community gardens. According to a survey, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.\n\n✏️ I think... because...\n✏️ For example, [עובדה מהטקסט, במילים שלכם],...\n✏️ In addition,...',
+                "**Do you think every city should have a project like the City Garden Project?**\n\n{p:text}THE CITY GARDEN PROJECT\n{p:text}Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted over 2,000 trees and created 15 community gardens. According to a survey, 85% of residents now say they are satisfied with their city. Stress levels fell by 40%, and the number of people who exercise outdoors increased from 15% to 60%.\n\n✏️ I think... because...\n{d:rtl}✏️ For example, [עובדה מהטקסט, במילים שלכם],...\n✏️ In addition,...",
               wordBank: [
                 "I think",
                 "I do not think",
