@@ -421,7 +421,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}עוד שלוש שאלות אמיתיות. המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n3. **Explain** why the trees grew back. Use **in order to**.\n\nלכמה מהן אתם יודעים להסביר מה הן מבקשות?",
+          text: "{d:rtl}**עוד שלוש סוגי  שאלות** . המילים המודגשות הן ההוראות, והפעם הן אומרות איך לענות.\n\n1. **Complete the sentence**: People left the island **because** ...\n\n2. **Circle the correct answer**: Why did the scientists remove the goats?\n\n3. **Explain** why the trees grew back. Use **in order to**.\n\n{d:rtl}לכמה מהן אתם יודעים להסביר מה הן מבקשות?",
         },
         {
           type: "preface",
@@ -640,6 +640,7 @@ export const c2Lessons: LessonNode[] = [
                 '"Explain why the goats were removed." ← נותנים סיבה מהטקסט, לא רק מעתיקים משפט.',
                 '"Because" בשאלה ← מחפשים סיבה. "In order to" בשאלה ← מחפשים מטרה.',
               ],
+              ordered: false,
             },
             {
               type: "preface",
@@ -647,7 +648,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "I  Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\nII  The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
+              text: "**I**  Redonda is a small island. For many years, goats lived on the island. They ate many of the plants. As a result, the island became dry, brown, and almost empty. In 2016, people who wanted to protect the island removed the goats.\n\n**II ** The goats were removed so that the plants could grow again. Without the goats, young plants were able to survive. Two years later, trees and other plants began to grow again. The island slowly became greener.",
               questions: [
                 {
                   prompt:
@@ -776,7 +777,7 @@ export const c2Lessons: LessonNode[] = [
             { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
             {
               type: "passage-mcq",
-              text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees. They did it in order to protect wildlife. The project is led by Dr. Diallo, who teaches local people how to care for trees because most trees die when nobody looks after them.",
+              text: "**I ** Every year, forests around the world are destroyed by fire, farming and pollution.\n\n**II**  In 2019, scientists started a project to plant one billion trees. They did it in order to protect wildlife. The project is led by Dr. Diallo, who teaches local people how to care for trees because most trees die when nobody looks after them.",
               questions: [
                 {
                   prompt:
