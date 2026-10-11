@@ -1,11 +1,12 @@
 <script lang="ts">
 	import {
-		ArrowDown,
-		ArrowUp,
 		Camera,
+		ChevronLeft,
+		ChevronRight,
 		ImageUp,
 		RefreshCw,
 		RotateCw,
+		Check,
 		Trash2,
 		X
 	} from '@lucide/svelte';
@@ -26,6 +27,8 @@
 	let pages = $state<Page[]>([]);
 	let nextId = 0;
 	let viewing = $state<number | null>(null); // id of the page shown full size
+	let selecting = $state(false); // delete mode: tiles toggle instead of opening
+	let selected = $state<number[]>([]); // ids marked for deletion
 	let replacing: number | null = null; // id of the page the next pick replaces
 	let cameraInput: HTMLInputElement;
 	let galleryInput: HTMLInputElement;
@@ -62,26 +65,33 @@
 		[pages[i], pages[j]] = [pages[j], pages[i]];
 	}
 
-	function remove(i: number) {
-		URL.revokeObjectURL(pages[i].url);
-		pages.splice(i, 1);
-	}
-
 	function rotate(i: number) {
 		pages[i].rotation = (pages[i].rotation + 90) % 360;
 	}
 
-	function clear() {
-		pages.forEach((p) => URL.revokeObjectURL(p.url));
-		pages = [];
+	function toggle(id: number) {
+		selected = selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id];
+	}
+
+	function endSelecting() {
+		selecting = false;
+		selected = [];
+	}
+
+	function deleteSelected() {
+		pages.filter((p) => selected.includes(p.id)).forEach((p) => URL.revokeObjectURL(p.url));
+		pages = pages.filter((p) => !selected.includes(p.id));
+		endSelecting();
 	}
 
 	let viewed = $derived(pages.find((p) => p.id === viewing));
 
 	const sourceBtn =
 		'flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-line bg-surface px-3 py-4 text-sm font-semibold text-ink/80 transition hover:border-brand active:scale-[0.98]';
-	const iconBtn =
-		'rounded-lg p-1.5 text-ink/70 hover:bg-line/60 disabled:opacity-30 disabled:hover:bg-transparent';
+	const tileBtn =
+		'flex size-6 items-center justify-center rounded-full bg-black/55 text-white transition active:scale-90';
+	const viewBtn =
+		'flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-white';
 </script>
 
 <svelte:window
@@ -119,10 +129,31 @@
 	>
 		<div class="flex items-center justify-between gap-2">
 			<h2 class="text-lg font-bold">{i18n.dict.ocr.albumTitle}</h2>
-			{#if pages.length > 1}
-				<button type="button" onclick={clear} class="text-sm font-semibold text-danger">
-					{i18n.dict.ocr.clearAll}
-				</button>
+			{#if pages.length}
+				<span class="flex items-center gap-3 text-sm font-semibold">
+					{#if selecting}
+						<button type="button" class="text-muted" onclick={() => (selected = pages.map((p) => p.id))}>
+							{i18n.dict.ocr.selectAll}
+						</button>
+						<button
+							type="button"
+							class="text-danger disabled:opacity-40"
+							disabled={selected.length === 0}
+							onclick={deleteSelected}>{i18n.dict.ocr.deleteSelected(selected.length)}</button
+						>
+					{/if}
+					<button
+						type="button"
+						aria-pressed={selecting}
+						aria-label={i18n.dict.ocr.deleteMode}
+						title={i18n.dict.ocr.deleteMode}
+						class="rounded-lg p-1.5 transition {selecting
+							? 'bg-danger text-white'
+							: 'text-ink/70 hover:bg-line/60'}"
+						onclick={() => (selecting ? endSelecting() : (selecting = true))}
+						><Trash2 class="size-4" /></button
+					>
+				</span>
 			{/if}
 		</div>
 		<p class="mt-1 text-sm leading-relaxed text-muted">
@@ -130,14 +161,18 @@
 		</p>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 gap-2 overflow-y-auto">
+			<ol class="mt-3 grid min-h-0 grid-cols-3 gap-2 overflow-y-auto">
 				{#each pages as page, i (page.id)}
-					<li class="flex items-center gap-3 rounded-xl border-2 border-line p-2">
+					<li
+						class="relative aspect-square overflow-hidden rounded-xl border-2 bg-line/40 {selected.includes(page.id)
+							? 'border-danger'
+							: 'border-line'}"
+					>
 						<button
 							type="button"
-							class="relative size-20 shrink-0 overflow-hidden rounded-lg"
+							class="size-full"
 							aria-label={i18n.dict.ocr.view}
-							onclick={() => (viewing = page.id)}
+							onclick={() => (selecting ? toggle(page.id) : (viewing = page.id))}
 						>
 							<img
 								src={page.url}
@@ -145,46 +180,36 @@
 								style:transform="rotate({page.rotation}deg)"
 								class="size-full object-cover transition-transform"
 							/>
-							<span
-								class="absolute start-1 top-1 flex size-7 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow tabular"
-								>{i + 1}</span
-							>
 						</button>
-						<span class="font-semibold tabular">{i18n.dict.ocr.pageLabel(i + 1)}</span>
-						<span class="ms-auto flex items-center">
-							<button
-								type="button"
-								class={iconBtn}
-								disabled={i === 0}
-								aria-label={i18n.dict.ocr.moveUp}
-								onclick={() => move(i, -1)}><ArrowUp class="size-4" /></button
+						<span
+							class="absolute start-1 top-1 flex size-6 items-center justify-center rounded-full bg-brand text-xs font-bold text-white shadow tabular"
+							>{i + 1}</span
+						>
+						{#if selecting}
+							<span
+								class="absolute end-1 top-1 flex size-6 items-center justify-center rounded-full border-2 border-white shadow {selected.includes(page.id)
+									? 'bg-danger text-white'
+									: 'bg-black/30'}"
 							>
+								{#if selected.includes(page.id)}<Check class="size-3.5" />{/if}
+							</span>
+						{:else}
+							<!-- RTL: the page before is to the right. -->
 							<button
 								type="button"
-								class={iconBtn}
+								class="{tileBtn} absolute start-1 bottom-1 disabled:opacity-0"
 								disabled={i === pages.length - 1}
-								aria-label={i18n.dict.ocr.moveDown}
-								onclick={() => move(i, 1)}><ArrowDown class="size-4" /></button
+								aria-label={i18n.dict.ocr.moveLater}
+								onclick={() => move(i, 1)}><ChevronLeft class="size-3.5" /></button
 							>
 							<button
 								type="button"
-								class={iconBtn}
-								aria-label={i18n.dict.ocr.rotate}
-								onclick={() => rotate(i)}><RotateCw class="size-4" /></button
+								class="{tileBtn} absolute end-1 bottom-1 disabled:opacity-0"
+								disabled={i === 0}
+								aria-label={i18n.dict.ocr.moveEarlier}
+								onclick={() => move(i, -1)}><ChevronRight class="size-3.5" /></button
 							>
-							<button
-								type="button"
-								class={iconBtn}
-								aria-label={i18n.dict.ocr.replace}
-								onclick={() => open(page.source, page.id)}><RefreshCw class="size-4" /></button
-							>
-							<button
-								type="button"
-								class="{iconBtn} text-danger"
-								aria-label={i18n.dict.ocr.remove}
-								onclick={() => remove(i)}><Trash2 class="size-4" /></button
-							>
-						</span>
+						{/if}
 					</li>
 				{/each}
 			</ol>
@@ -222,6 +247,26 @@
 			style:transform="rotate({viewed.rotation}deg)"
 			class="max-h-[80dvh] max-w-full object-contain transition-transform"
 		/>
+		<div class="absolute inset-x-0 bottom-6 flex justify-center gap-3">
+			<button
+				type="button"
+				class={viewBtn}
+				onclick={(e) => {
+					e.stopPropagation();
+					rotate(pages.indexOf(viewed!));
+				}}><RotateCw class="size-4" />{i18n.dict.ocr.rotate}</button
+			>
+			<button
+				type="button"
+				class={viewBtn}
+				onclick={(e) => {
+					e.stopPropagation();
+					const { id, source } = viewed!;
+					viewing = null;
+					open(source, id);
+				}}><RefreshCw class="size-4" />{i18n.dict.ocr.replace}</button
+			>
+		</div>
 		<button
 			type="button"
 			aria-label={i18n.dict.ocr.closeView}
