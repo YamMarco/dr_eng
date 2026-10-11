@@ -7,6 +7,16 @@
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore, type ThemeMode } from '$lib/theme.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import { profile, type UnitsGoal } from '$lib/profile.svelte';
+	import {
+		parseSessionKey,
+		sessionKey,
+		sessionOptions,
+		unitsOptions
+	} from '$lib/dashboard/goalOptions';
+
+	const selectClass =
+		'min-h-11 rounded-xl border-2 border-line bg-canvas px-3 py-2 font-semibold text-ink transition focus:border-brand';
 
 	let soundEffects = $state(true);
 	let dailyReminders = $state(true);
@@ -26,6 +36,46 @@
 <AppBar title={i18n.dict.settings.title} />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-28">
+	{#if profile.value}
+		{@const current = profile.value}
+		<section
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
+			class="mb-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		>
+			<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.goalSection}</h2>
+			<ul class="mt-2 flex flex-col divide-y divide-line/70">
+				<li class="flex items-center justify-between gap-4 px-5 py-4">
+					<span class="font-semibold">{i18n.dict.settings.unitsLabel}</span>
+					<select
+						value={current.units}
+						onchange={(e) =>
+							profile.save({ ...current, units: e.currentTarget.value as UnitsGoal })}
+						aria-label={i18n.dict.settings.unitsLabel}
+						class={selectClass}
+					>
+						{#each unitsOptions() as option (option.value)}
+							<option value={option.value}>{option.label}</option>
+						{/each}
+					</select>
+				</li>
+				<li class="flex items-center justify-between gap-4 px-5 py-4">
+					<span class="font-semibold">{i18n.dict.settings.examLabel}</span>
+					<select
+						value={sessionKey(current.exam)}
+						onchange={(e) =>
+							profile.save({ ...current, exam: parseSessionKey(e.currentTarget.value) })}
+						aria-label={i18n.dict.settings.examLabel}
+						class={selectClass}
+					>
+						{#each sessionOptions(current.exam) as option (option.value)}
+							<option value={option.value}>{option.label}</option>
+						{/each}
+					</select>
+				</li>
+			</ul>
+		</section>
+	{/if}
+
 	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
 		class="rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"

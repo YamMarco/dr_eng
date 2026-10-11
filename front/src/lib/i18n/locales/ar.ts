@@ -17,8 +17,6 @@ export const ar: DictionaryOverride = {
 	},
 	appTitle: 'بجروت في اللغة الإنجليزية — تدريب',
 	home: {
-		title: 'اختاروا وحدات التعلّم',
-		subtitle: 'كل مستوى وحدات يشمل عدة وحدات تدريب.',
 		unitsSuffix: 'وحدة'
 	},
 	unit: {

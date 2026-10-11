@@ -2,6 +2,7 @@
 // - Supabase is future work), so this is the only place progress lives.
 
 import type { QuizScore } from './scoring';
+import { activity } from '$lib/activity.svelte';
 
 export interface QuizAttempt {
 	quizId: string;
@@ -41,6 +42,7 @@ export function saveAttempt(attempt: QuizAttempt) {
 	if (!hasStorage()) return;
 	localStorage.setItem(attemptKey(attempt.quizId), JSON.stringify(attempt));
 	clearInProgress(attempt.quizId);
+	activity.recordToday();
 }
 
 export function getLastAttempt(quizId: string): QuizAttempt | null {
