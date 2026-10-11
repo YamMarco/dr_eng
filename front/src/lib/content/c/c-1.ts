@@ -3596,7 +3596,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
+              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
               prompt:
                 '"When did scientists start the project? Give ONE answer." - כתבו ANSWER:',
               modelAnswer: "ANSWER: In 2019.",
@@ -3629,7 +3629,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "passage-mcq",
-              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.",
+              text: "**II ** Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.",
               questions: [
                 {
                   prompt:
@@ -3645,7 +3645,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
+              text: "**III ** The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
               prompt:
                 '"Where did rivers begin to flow again? Give ONE answer." - כתבו ANSWER:',
               modelAnswer: "ANSWER: In Kenya.",
