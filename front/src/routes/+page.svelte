@@ -14,7 +14,6 @@
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import TodayCard from '$lib/dashboard/TodayCard.svelte';
 	import ModuleCard from '$lib/dashboard/ModuleCard.svelte';
-	import ExamsCard from '$lib/dashboard/ExamsCard.svelte';
 
 	let t = $derived(i18n.dict.home);
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
@@ -42,14 +41,12 @@
 		};
 	});
 
-	let pathRows = $derived(moduleRows.filter((r) => r.sections.length > 0));
+	// Modules with nothing to show yet collapse into one muted line.
+	let cardRows = $derived(moduleRows.filter((r) => r.sections.length > 0 || r.exams.total > 0));
 	let comingSoon = $derived(
 		moduleRows
-			.filter((r) => r.sections.length === 0)
+			.filter((r) => !cardRows.includes(r))
 			.map((r) => `${i18n.dict.unit.modulePrefix} ${r.mod.letter}`)
-	);
-	let examRows = $derived(
-		moduleRows.filter((r) => r.exams.total > 0).map((r) => ({ mod: r.mod, stats: r.exams }))
 	);
 
 	let unitsChip = $derived(
@@ -63,68 +60,48 @@
 {#if !profile.value}
 	<Onboarding />
 {:else}
-	<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-5 px-4 pt-8 pb-12 sm:pt-12">
-		<header class="flex flex-col gap-3">
-			<h1 class="text-3xl font-extrabold tracking-tight">{t.greeting}</h1>
-			<div class="flex flex-wrap gap-2">
-				<a href={resolve('/settings')} class="{chip} transition hover:ring-brand/50">
-					<GraduationCap size={16} class="text-brand" aria-hidden="true" />
-					{unitsChip}
-				</a>
-				<span class={chip} title={t.streak(activity.streak)}>
-					<Flame
-						size={16}
-						class={activity.streak > 0 ? 'text-orange-500' : 'text-muted'}
-						aria-hidden="true"
-					/>
-					<span class="sr-only">{t.streak(activity.streak)}</span>
-					<span aria-hidden="true">{activity.streak}</span>
+	<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-4 px-4 pt-6 pb-12 sm:pt-10">
+		<header class="flex flex-wrap items-center gap-2">
+			<h1 class="me-auto text-2xl font-extrabold tracking-tight">{t.greeting}</h1>
+			<a href={resolve('/settings')} class="{chip} transition hover:ring-brand/50">
+				<GraduationCap size={16} class="text-brand" aria-hidden="true" />
+				{unitsChip}
+			</a>
+			<span class={chip} title={t.streak(activity.streak)}>
+				<Flame
+					size={16}
+					class={activity.streak > 0 ? 'text-orange-500' : 'text-muted'}
+					aria-hidden="true"
+				/>
+				<span class="sr-only">{t.streak(activity.streak)}</span>
+				<span aria-hidden="true">{activity.streak}</span>
+			</span>
+			{#if profile.daysToExam !== undefined}
+				<span class={chip} title={t.daysToExam(profile.daysToExam)}>
+					<CalendarClock size={16} class="text-brand" aria-hidden="true" />
+					<span class="sr-only">{t.daysToExam(profile.daysToExam)}</span>
+					<span aria-hidden="true">{t.daysShort(profile.daysToExam)}</span>
 				</span>
-				{#if profile.daysToExam !== undefined}
-					<span class={chip}>
-						<CalendarClock size={16} class="text-brand" aria-hidden="true" />
-						{t.daysToExam(profile.daysToExam)}
-					</span>
-				{/if}
-			</div>
+			{/if}
 		</header>
 
 		{#if main}
 			<TodayCard lesson={main.lesson} roundsCompleted={main.roundsCompleted} href={main.href} />
 		{/if}
 
-		{#if moduleRows.length}
-			<section class="flex flex-col gap-3">
-				<h2 class="px-1 text-sm font-bold text-muted">{t.modulesTitle}</h2>
-				{#each pathRows as row, i (row.mod.id)}
-					<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
-						<ModuleCard
-							mod={row.mod}
-							groupId={group.id}
-							sections={row.sections}
-							defaultOpen={row.mod.id === main?.moduleId}
-						/>
-					</div>
-				{/each}
-				{#if comingSoon.length}
-					<p class="px-1 text-sm text-muted">{t.comingSoonModules(comingSoon.join(' · '))}</p>
-				{/if}
-			</section>
-		{/if}
-
-		{#if examRows.length}
-			<section
-				class="flex flex-col gap-3"
-				in:fly={{
-					y: 12,
-					duration: 300,
-					delay: staggerDelay(pathRows.length + 1),
-					easing: cubicOut
-				}}
-			>
-				<h2 class="px-1 text-sm font-bold text-muted">{t.examsTitle}</h2>
-				<ExamsCard groupId={group.id} rows={examRows} />
-			</section>
+		{#each cardRows as row, i (row.mod.id)}
+			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+				<ModuleCard
+					mod={row.mod}
+					groupId={group.id}
+					sections={row.sections}
+					exams={row.exams}
+					defaultOpen={row.mod.id === main?.moduleId}
+				/>
+			</div>
+		{/each}
+		{#if comingSoon.length}
+			<p class="px-1 text-sm text-muted">{t.comingSoonModules(comingSoon.join(' · '))}</p>
 		{/if}
 	</main>
 {/if}

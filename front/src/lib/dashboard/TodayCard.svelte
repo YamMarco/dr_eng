@@ -23,34 +23,27 @@
 <a
 	{href}
 	in:fly={{ y: 12, duration: 300, easing: cubicOut }}
-	class="flex flex-col gap-3 rounded-3xl bg-brand p-5 text-white shadow-md transition duration-150 hover:shadow-lg active:scale-[0.99]"
+	class="flex items-center gap-3 rounded-3xl bg-brand p-4 text-white shadow-md transition duration-150 hover:shadow-lg active:scale-[0.99]"
 >
-	<span class="text-sm font-semibold text-white/80">{t.todayTitle}</span>
-	<span class="flex items-center justify-between gap-3">
-		<span class="min-w-0 flex-1">
-			<span class="block truncate text-lg font-bold">
-				{lesson ? i18n.title(lesson.id) : t.allDoneTitle}
-			</span>
-			<span class="mt-1 block text-sm text-white/80">
-				{#if !lesson}
-					{t.allDoneDesc}
-				{:else if lesson.section}
-					{i18n.title(lesson.section)}
-				{/if}
-			</span>
+	<span class="flex min-w-0 flex-1 flex-col gap-1">
+		<span class="text-xs font-semibold text-white/80">{t.todayTitle}</span>
+		<span class="truncate text-lg font-bold">
+			{lesson ? i18n.title(lesson.id) : t.allDoneTitle}
 		</span>
-		<span class="shrink-0 rounded-full bg-white/20 px-4 py-2 text-sm font-bold">
-			{!lesson ? t.todayExams : roundsCompleted > 0 ? t.todayContinue : t.todayStart}
-		</span>
+		{#if !lesson}
+			<span class="text-sm text-white/80">{t.allDoneDesc}</span>
+		{:else if totalRounds > 1}
+			<LessonProgressBar
+				compact
+				inverted
+				segments={Array.from({ length: totalRounds }, () => 1)}
+				current={roundsCompleted}
+				label={i18n.dict.lesson.roundLabel(Math.min(roundsCompleted + 1, totalRounds), totalRounds)}
+			/>
+		{/if}
 	</span>
-	{#if totalRounds > 1}
-		<LessonProgressBar
-			compact
-			inverted
-			segments={Array.from({ length: totalRounds }, () => 1)}
-			current={roundsCompleted}
-			label={i18n.dict.lesson.roundLabel(Math.min(roundsCompleted + 1, totalRounds), totalRounds)}
-		/>
-	{/if}
+	<span class="shrink-0 rounded-full bg-white/20 px-4 py-2 text-sm font-bold">
+		{!lesson ? t.toExams : roundsCompleted > 0 ? t.todayContinue : t.todayStart}
+	</span>
 </a>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->

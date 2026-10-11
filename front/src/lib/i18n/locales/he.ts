@@ -29,21 +29,20 @@ export const he = {
 		unitsUndecided: 'יח"ל: לא נקבע',
 		streak: (n: number) => `${n} ימי תרגול ברצף`,
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
+		daysShort: (n: number) => `${n} ימים`,
 		todayTitle: 'המשימה שלך היום',
 		todayStart: 'התחל',
 		todayContinue: 'המשך',
-		todayExams: 'למבחנים',
 		allDoneTitle: 'סיימת את כל המסלול!',
 		allDoneDesc: 'זה הזמן למבחן מלא בתנאי בגרות.',
 		sectionShort: { 'c-2': 'אוצר מילים', 'c-1': 'הבנה', 'c-3': 'כתיבה' } as Record<string, string>,
-		modulesTitle: 'המודולים שלך',
 		comingSoonModules: (list: string) => `בקרוב: ${list}`,
 		statDone: 'הושלמו',
 		statGold: 'זהב',
 		toPath: 'למסלול',
-		examsTitle: 'מבחנים',
-		examsTaken: (taken: number, total: number) => `${taken} מתוך ${total} נעשו`,
-		examLast: (percent: number) => `ציון אחרון: ${percent}`
+		toExams: 'למבחנים',
+		examsLine: (taken: number, total: number, avg: number | undefined) =>
+			avg === undefined ? `${taken}/${total} מבחנים` : `${taken}/${total} מבחנים · ממוצע ${avg}`
 	},
 	onboarding: {
 		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
