@@ -2527,7 +2527,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "mark-all",
               instruction:
-                "Mark every limiting word (only, all, most, some, few, every, always).",
+                "**Mark every limiting word : only, all, most, some, few, every, always**",
               text: "**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n",
               dir: "ltr",
               timerKey: "sweep",
