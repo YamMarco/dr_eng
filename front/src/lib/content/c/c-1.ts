@@ -3704,7 +3704,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "🟩 In order to ___ ← שאלה על מטרה (בשביל מה עשו את זה?)\nמחפשים בטקסט: so that / to / in order to\n📖 בטקסט: *They removed the goats so that the plants could grow.*✏️ תשובה: *In order to let the plants grow back.*\n⚠️ שימו לב: אחרי In order to בא פועל בצורת בסיס (*let, help, save*).",
+          text: "{d:rtl}🟩 In order to ___ ← שאלה על מטרה (בשביל מה עשו את זה?)\n{d:rtl}\n{d:rtl}מחפשים בטקסט: so that / to / in order to\n{d:rtl}\n{d:rtl}📖 בטקסט: *They removed the goats so that the plants could grow.*✏️ \n{d:rtl}\n{d:rtl}תשובה: *In order to let the plants grow back.*\n{d:rtl}⚠️ שימו לב: אחרי In order to בא פועל בצורת בסיס (*let, help, save*).",
         },
         {
           type: "preface",
