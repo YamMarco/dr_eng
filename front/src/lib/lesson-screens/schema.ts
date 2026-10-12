@@ -340,6 +340,25 @@ export const writingTaskSchema = z
 		maxTypos: z.number().int().min(0).optional().describe('Forgiven small slips. Default 1.'),
 		capitalIsError: z.boolean().optional().describe('Default true.'),
 		autoCheck: autoCheck.optional(),
+		llmGrade: z
+			.boolean()
+			.optional()
+			.describe(
+				'Lesson mode: after the local checks pass, an LLM judges the answer against the prompt (pass/fail + marked errors). Overrides the section / lesson / module rule.'
+			),
+		maxAttempts: z
+			.number()
+			.int()
+			.min(1)
+			.max(5)
+			.optional()
+			.describe('With llmGrade: submits allowed before the student moves on. Default 2.'),
+		gradingNotes: z
+			.string()
+			.optional()
+			.describe(
+				'With llmGrade: what a good answer says and common pitfalls, given to the LLM with the prompt. English.'
+			),
 		minWords: z
 			.number()
 			.int()

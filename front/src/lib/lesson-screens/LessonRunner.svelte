@@ -15,6 +15,9 @@
 	import PrefaceRecap from './PrefaceRecap.svelte';
 	import { createLessonSession } from './session.svelte';
 	import { createLessonScore } from './score.svelte';
+	import { provideRuleChain } from '$lib/feedback/context';
+	import { moduleRules } from '$lib/content/rules';
+	import { sectionMeta } from '$lib/content/sectionMeta';
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lockScroll } from '$lib/scrollLock';
@@ -72,6 +75,11 @@
 	}: Props = $props();
 
 	const session = createLessonSession();
+	provideRuleChain(() => [
+		moduleRules,
+		sectionMeta.find((m) => m.id === lesson?.section)?.rules,
+		lesson?.rules
+	]);
 
 	$effect(() => lockScroll());
 

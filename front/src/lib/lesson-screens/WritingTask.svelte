@@ -17,6 +17,11 @@
 	import { missingMoves } from './writingMoves';
 	import QuizTimer from '$lib/quiz/QuizTimer.svelte';
 	import { formatTime } from '$lib/quiz/time';
+	import { getRuleChain } from '$lib/feedback/context';
+	import { resolveRules } from '$lib/feedback/rules';
+	import { gradeLesson } from '$lib/feedback/grade';
+	import FeedbackView from '$lib/feedback/FeedbackView.svelte';
+	import type { Feedback } from '$lib/feedback/types';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -70,8 +75,22 @@
 	);
 	let lengthOk = $derived(!paragraph || paragraphWords >= (screen.minWords ?? 0));
 
-	let maxTypos = $derived(Number.isFinite(screen.maxTypos) ? screen.maxTypos! : 1);
-	let capitalIsError = $derived(screen.capitalIsError ?? true);
+	// module > section > lesson rules (from the runner), then this screen's own fields on top.
+	const ruleChain = getRuleChain();
+	let rules = $derived(
+		resolveRules([
+			...ruleChain,
+			{
+				llmGrade: screen.llmGrade,
+				maxAttempts: screen.maxAttempts,
+				maxTypos: screen.maxTypos,
+				capitalIsError: screen.capitalIsError,
+				autoCheck: screen.autoCheck
+			}
+		])
+	);
+	let maxTypos = $derived(rules.maxTypos);
+	let capitalIsError = $derived(rules.capitalIsError);
 	// `{sentences}` / `{words}` in the prompt follow the rule numbers.
 	let prompt = $derived(
 		screen.prompt
@@ -90,7 +109,7 @@
 	);
 	// Per-screen switch for the capital/period check and the advice panel.
 	// Quiz mode (exams) never auto-checks, so it doesn't read this.
-	let autoCheck = $derived(screen.autoCheck ?? true);
+	let autoCheck = $derived(rules.autoCheck);
 	let punctuationOk = $derived(!autoCheck || minorIssues <= maxTypos);
 	let combinedText = $derived(lines.join(' '));
 	let wordsUsed = $derived(wordBank.filter((word) => usesWord(combinedText, word)).length);
@@ -105,11 +124,49 @@
 	let accepted = $derived(screen.acceptedAnswers ?? []);
 	let hasAccepted = $derived(accepted.length > 0);
 	let acceptedOk = $derived(lines.every((line) => matchesAccepted(line, accepted)));
+	// LLM grading (Layer 2): local gates first, then the model judges the answer against the prompt.
+	let llmMode = $derived(mode === 'lesson' && rules.llmGrade && !hasAccepted);
+	let feedback = $state<Feedback | null>(null);
+	let grading = $state(false);
+	let attempts = $state(0);
+	let attemptsLeft = $derived(rules.maxAttempts - attempts);
 	let allOk = $derived(
-		hasAccepted
-			? allFilled && acceptedOk
-			: allFilled && lengthOk && movesOk && punctuationOk && wordBankOk && contentOk
+		llmMode
+			? !!feedback?.pass
+			: hasAccepted
+				? allFilled && acceptedOk
+				: allFilled && lengthOk && movesOk && punctuationOk && wordBankOk && contentOk
 	);
+
+	async function submitToLlm() {
+		grading = true;
+		const text = paragraph ? essayText : lines.join('\n');
+		const result = await gradeLesson(text, rules, {
+			question,
+			notes: screen.gradingNotes,
+			check: { prompt: question, extraWords: wordBank },
+			minWords: paragraph ? screen.minWords : undefined,
+			wordBankOk
+		});
+		grading = false;
+		feedback = result;
+		if (result.stage === 'partial') return; // no verdict, no attempt spent
+		attempts += 1;
+		if (result.pass || attemptsLeft <= 0) finish(result.pass);
+		else label = i18n.dict.feedback.retry;
+	}
+
+	function finish(pass: boolean) {
+		checked = true;
+		recordAnswer(score!, pass);
+		label = i18n.dict.lesson.nextQuestionButton;
+	}
+
+	/** Gives up on this question: it counts as missed and the runner replays it at the end. */
+	function skip() {
+		if (feedback?.stage !== 'partial') finish(false);
+		onAdvance();
+	}
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
 	function fillFromScan(text: string) {
@@ -162,7 +219,7 @@
 
 	$effect(() => {
 		if (checked) return;
-		disabled = mode === 'quiz' ? !essayOk : paragraph ? essayWords === 0 : !allFilled;
+		disabled = grading || (mode === 'quiz' ? !essayOk : paragraph ? essayWords === 0 : !allFilled);
 	});
 
 	export function primaryAction() {
@@ -174,6 +231,10 @@
 		}
 		if (!checked) {
 			if (paragraph ? essayWords === 0 : !allFilled) return;
+			if (llmMode) {
+				void submitToLlm();
+				return;
+			}
 			if (limitSec) elapsedSec = Math.floor((performance.now() - startedAt) / 1000);
 			checked = true;
 			recordAnswer(score!, allOk);
@@ -219,7 +280,7 @@
 	<textarea
 		dir="ltr"
 		rows="7"
-		disabled={checked}
+		disabled={checked || grading}
 		bind:value={essayText}
 		placeholder={i18n.dict.selfCheck.placeholder}
 		class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
@@ -242,7 +303,7 @@
 			<input
 				type="text"
 				dir="ltr"
-				disabled={checked}
+				disabled={checked || grading}
 				value={line}
 				oninput={(e) => (inputLines[i] = e.currentTarget.value)}
 				placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
@@ -273,7 +334,25 @@
 		/>
 	{/if}
 
-	{#if checked}
+	{#if llmMode}
+		{#if grading}
+			<p class="mt-3 text-sm font-semibold text-muted">{i18n.dict.feedback.checking}</p>
+		{:else if feedback}
+			<FeedbackView text={paragraph ? essayText : lines.join('\n')} {feedback} />
+			{#if !checked}
+				<div class="mt-2 flex flex-wrap items-center gap-3 text-xs font-semibold text-muted">
+					{#if feedback.stage !== 'partial'}
+						<span>{i18n.dict.feedback.attemptsLeft(attemptsLeft)}</span>
+					{/if}
+					<button type="button" class="underline" onclick={skip}>{i18n.dict.feedback.skip}</button>
+					<span>{i18n.dict.feedback.replayNote}</span>
+				</div>
+			{/if}
+		{/if}
+		{#if checked}
+			<SelfReview modelAnswer={screen.modelAnswer} checklist={screen.checklist} />
+		{/if}
+	{:else if checked}
 		<ul class="mt-3 flex flex-col gap-1.5 text-sm">
 			<li class="flex items-center gap-2 {allFilled ? 'text-brand-dark' : 'text-miss'}">
 				<span>{allFilled ? '✓' : '✗'}</span>
