@@ -41,6 +41,8 @@ export const he = {
 		statGold: 'זהב',
 		toPath: 'למסלול',
 		toExams: 'למבחנים',
+		toWords: 'למילים',
+		wordsLine: (due: number) => (due ? `${due} מילים לחזרה היום` : 'אין מילים לחזרה היום'),
 		examsLine: (taken: number, total: number, avg: number | undefined) =>
 			avg === undefined ? `${taken}/${total} מבחנים` : `${taken}/${total} מבחנים · ממוצע ${avg}`
 	},
@@ -112,6 +114,31 @@ export const he = {
 	module: {
 		examTitle: 'מבחנים'
 	},
+	deck: {
+		title: 'אוצר מילים',
+		intro: 'כל יום קצת: מילים חדשות, ומילים שכדאי לחזור עליהן לפני שהן נשכחות.',
+		statDue: 'לחזרה היום',
+		statLearning: 'בלמידה',
+		statKnown: 'ידועות',
+		progress: (seen: number, total: number) => `פגשת ${seen} מתוך ${total} מילים`,
+		start: 'התחל תרגול',
+		newOnly: (n: number) => `${n} מילים חדשות`,
+		sessionSize: (reviews: number, fresh: number) =>
+			[reviews ? `${reviews} לחזרה` : '', fresh ? `${fresh} חדשות` : '']
+				.filter(Boolean)
+				.join(' · '),
+		allDoneTitle: 'סיימת להיום!',
+		allDoneDesc: 'המילים הבאות יחכו לך מחר. רוצים בכל זאת לתרגל?',
+		extra: 'תרגול נוסף',
+		sessionLabel: 'תרגול מילים',
+		howTitle: 'איך זה עובד?',
+		how: [
+			'מילה חדשה: כרטיס, שאלה קצרה והעתקה, כמו בשיעורי המילים במודול C.',
+			'עניתם נכון? המילה תחזור בעוד כמה ימים, וכל פעם בעוד יותר.',
+			'טעיתם? היא חוזרת מחר.',
+			'מילה שכבר כמעט ידועה חוזרת בפורמט של הבגרות: 6 מילים, 3 הגדרות.'
+		]
+	},
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
 		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`,
@@ -164,6 +191,8 @@ export const he = {
 		passageQuiz: 'תרגיל: תשובה קצרה',
 		sentenceCompletion: 'תרגיל: השלמת משפט',
 		matchPairs: 'תרגיל: התאימו זוגות',
+		matchDefinitions: 'תרגיל: התאימו מילה להגדרה',
+		matchDefinitionsHint: 'בחרו הגדרה, ואז את המילה שמתאימה לה',
 		answerKeyLabel: 'מפתח התשובה',
 		submitButton: 'בדיקה',
 		passedFeedback: 'יפה מאוד!',

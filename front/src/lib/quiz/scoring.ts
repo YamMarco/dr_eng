@@ -78,6 +78,12 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 			const correct = typeof userAnswer === 'number' && userAnswer <= MATCH_PAIRS_MAX_MISTAKES;
 			return { earned: correct ? points : 0, max: points, auto: true };
 		}
+		case 'match-definitions': {
+			const points = screen.points ?? screen.definitions.length;
+			const picks = Array.isArray(userAnswer) ? (userAnswer as (number | null)[]) : [];
+			const hits = screen.definitions.filter((d, i) => picks[i] === d.itemIndex).length;
+			return { earned: (hits / screen.definitions.length) * points, max: points, auto: true };
+		}
 		// passage-mcq/passage-quiz: scoring is wired here, but PassageMcq.svelte/
 		// PassageQuiz.svelte don't write a per-question answer into the quiz
 		// answer slot yet (they're still lesson-style self-contained multi-

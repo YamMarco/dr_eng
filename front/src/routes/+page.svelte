@@ -11,6 +11,7 @@
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { moduleRoute, todayLesson } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
+	import { getDeck } from '$lib/deck';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import TodayCard from '$lib/dashboard/TodayCard.svelte';
 	import ModuleCard from '$lib/dashboard/ModuleCard.svelte';
@@ -42,7 +43,9 @@
 	});
 
 	// Modules with nothing to show yet collapse into one muted line.
-	let cardRows = $derived(moduleRows.filter((r) => r.sections.length > 0 || r.exams.total > 0));
+	let cardRows = $derived(
+		moduleRows.filter((r) => r.sections.length > 0 || r.exams.total > 0 || getDeck(r.mod.id))
+	);
 	let comingSoon = $derived(
 		moduleRows
 			.filter((r) => !cardRows.includes(r))

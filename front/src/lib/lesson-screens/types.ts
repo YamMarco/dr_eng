@@ -20,6 +20,7 @@ export type ClozePickScreen = z.infer<typeof s.clozePickSchema>;
 export type TimeComparisonScreen = z.infer<typeof s.timeComparisonSchema>;
 export type WordCardScreen = z.infer<typeof s.wordCardSchema>;
 export type MatchPairsScreen = z.infer<typeof s.matchPairsSchema>;
+export type MatchDefinitionsScreen = z.infer<typeof s.matchDefinitionsSchema>;
 export type SpellWordScreen = z.infer<typeof s.spellWordSchema>;
 export type MarkAllCategory = z.infer<typeof s.markAllCategorySchema>;
 export type MarkAllScreen = z.infer<typeof s.markAllSchema>;
@@ -88,6 +89,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.prompt.trim();
 		case 'match-pairs':
 			return screen.pairs.length < 2;
+		case 'match-definitions':
+			return screen.items.length < 2 || screen.definitions.length === 0;
 		case 'passage':
 			return screen.paragraphs.length === 0;
 		case 'sentence-completion':
@@ -114,6 +117,8 @@ export function countQuestions(screen: LessonScreen): number {
 		case 'passage-quiz':
 		case 'passage-mcq':
 			return screen.questions.length;
+		case 'match-definitions':
+			return screen.definitions.length;
 		case 'writing-task':
 		case 'spell-word':
 		case 'sentence-completion':

@@ -52,6 +52,10 @@
 		<p class="mt-2 text-lg text-muted" dir="auto">{@html mdInline(screen.translationHe)}</p>
 	{/if}
 
+	{#if screen.definitionEn}
+		<p class="mt-2 leading-snug font-semibold" dir="ltr">{screen.definitionEn}</p>
+	{/if}
+
 	{#if screen.exampleEn}
 		<div class="mt-5 w-full rounded-2xl bg-accent-soft p-3 text-start">
 			<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.wordCard.exampleLabel}</p>

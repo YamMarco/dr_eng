@@ -1,0 +1,134 @@
+<script lang="ts">
+	import { untrack } from 'svelte';
+	import type { MatchDefinitionsScreen } from './types';
+	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
+	import { getLessonScore, recordAnswer } from './score.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+
+	const mode = getScreenMode();
+	const score = mode === 'lesson' ? getLessonScore() : undefined;
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
+
+	let {
+		screen,
+		onAdvance,
+		// eslint-disable-next-line no-useless-assignment
+		disabled = $bindable(true),
+		// eslint-disable-next-line no-useless-assignment
+		label = $bindable('')
+	}: {
+		screen: MatchDefinitionsScreen;
+		onAdvance: () => void;
+		disabled?: boolean;
+		label?: string;
+	} = $props();
+
+	// picks[d] = the item index written next to definition d (null = empty).
+	// The exam's own layout: numbered items, definitions with a blank each.
+	const restored =
+		mode === 'quiz' ? (answerSlot!.get() as (number | null)[] | undefined) : undefined;
+	let picks = $state<(number | null)[]>(
+		untrack(() => restored ?? screen.definitions.map(() => null))
+	);
+	let active = $state(0);
+	let checked = $state(false);
+
+	// eslint-disable-next-line no-useless-assignment
+	label = i18n.dict.exerciseKind.submitButton;
+	// eslint-disable-next-line no-useless-assignment
+	disabled = untrack(() => picks.some((p) => p === null));
+
+	function choose(item: number) {
+		if (checked) return;
+		// An item is written next to one definition at most: move it if reused.
+		picks = picks.map((p, d) => (d === active ? item : p === item ? null : p));
+		const nextEmpty = picks.findIndex((p) => p === null);
+		if (nextEmpty !== -1) active = nextEmpty;
+		disabled = nextEmpty !== -1;
+	}
+
+	function focus(d: number) {
+		if (checked) return;
+		active = d;
+	}
+
+	export function primaryAction() {
+		if (picks.some((p) => p === null)) return;
+		if (mode === 'quiz') {
+			answerSlot!.set(picks);
+			onAdvance();
+			return;
+		}
+		if (!checked) {
+			checked = true;
+			// One answer per definition, in order - the deck reads them per word.
+			screen.definitions.forEach((d, i) => recordAnswer(score!, picks[i] === d.itemIndex));
+			label = i18n.dict.lesson.nextQuestionButton;
+		} else {
+			onAdvance();
+		}
+	}
+</script>
+
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.matchDefinitions} />
+	<p class="mt-1 text-sm text-muted">{i18n.dict.exerciseKind.matchDefinitionsHint}</p>
+{/if}
+
+<div class="mt-4 flex flex-col gap-2" dir="ltr">
+	{#each screen.definitions as definition, d (d)}
+		{@const pick = picks[d]}
+		{@const right = checked && pick === definition.itemIndex}
+		{@const wrong = checked && pick !== definition.itemIndex}
+		<button
+			type="button"
+			onclick={() => focus(d)}
+			disabled={checked}
+			class="flex items-center gap-3 rounded-2xl border-2 px-3 py-3 text-start transition {wrong
+				? 'border-miss bg-miss-soft motion-safe:animate-shake-wrong'
+				: right
+					? 'border-brand bg-brand-soft motion-safe:animate-pop-correct'
+					: active === d
+						? 'border-brand bg-brand-soft/40'
+						: 'border-line bg-surface'}"
+		>
+			<span
+				class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg font-extrabold {pick ===
+				null
+					? 'border-2 border-dashed border-line text-muted'
+					: wrong
+						? 'bg-miss text-white'
+						: 'bg-brand text-white'}"
+			>
+				{pick === null ? '' : pick + 1}
+			</span>
+			<span class="leading-snug font-semibold">
+				{definition.text}
+				{#if wrong}
+					<span class="mt-1 block text-sm font-bold text-brand-dark">
+						{definition.itemIndex + 1}. {screen.items[definition.itemIndex]}
+					</span>
+				{/if}
+			</span>
+		</button>
+	{/each}
+</div>
+
+<div class="mt-5 grid grid-cols-2 gap-2" dir="ltr">
+	{#each screen.items as item, i (i)}
+		{@const used = picks.includes(i)}
+		<button
+			type="button"
+			onclick={() => choose(i)}
+			disabled={checked}
+			class="flex items-center gap-2 rounded-2xl border-2 px-3 py-2.5 text-start font-semibold transition active:scale-[0.97] {used
+				? 'border-brand/40 bg-brand-soft/40 text-ink/60'
+				: 'border-line bg-surface hover:border-brand'}"
+		>
+			<span class="text-sm font-extrabold text-muted tabular">{i + 1}.</span>
+			{item}
+		</button>
+	{/each}
+</div>

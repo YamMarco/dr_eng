@@ -4,6 +4,7 @@
 	// after a tap and made the panel flicker on phones).
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
+	import { deckProgress } from '$lib/deck/deckProgress.svelte';
 
 	let open = $state(false);
 </script>
@@ -37,10 +38,13 @@
 			</button>
 			<button
 				type="button"
-				onclick={() => lessonProgress.resetAll()}
+				onclick={() => {
+					lessonProgress.resetAll();
+					deckProgress.resetAll();
+				}}
 				class="mt-2 w-full rounded-xl border-2 border-line px-3 py-2 text-sm font-semibold transition hover:border-brand"
 			>
-				אפס התקדמות בכל השיעורים
+				אפס התקדמות (שיעורים ומילים)
 			</button>
 		</div>
 	{/if}

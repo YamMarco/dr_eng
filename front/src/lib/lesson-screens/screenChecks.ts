@@ -71,6 +71,22 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 				out.push(...duplicates(`questions[${i}].options`, q.options));
 			});
 			break;
+		case 'match-definitions':
+			out.push(
+				...outOfRange(
+					'itemIndex',
+					screen.definitions.map((d) => d.itemIndex),
+					screen.items.length
+				)
+			);
+			out.push(
+				...duplicates(
+					'itemIndex',
+					screen.definitions.map((d) => String(d.itemIndex))
+				)
+			);
+			out.push(...duplicates('items', screen.items));
+			break;
 		case 'mark-all': {
 			const count = markAllSegments(screen.text).filter((s) => s.token).length;
 			const ids = [

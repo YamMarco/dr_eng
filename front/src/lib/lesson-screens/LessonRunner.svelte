@@ -45,6 +45,13 @@
 		onFinishAndContinue: () => void;
 		/** Finished with a passing score and it's not the lesson's last round — marks complete and opens the next round. */
 		onNextRound: () => void;
+		/** Each played screen's answers, in order (empty for a teaching screen). `index`
+		    points into `screens`. Called once per screen, never for retry replays. */
+		onScreenResult?: (index: number, results: boolean[]) => void;
+		/** Static-screen runs: replay missed screens at the end (a lesson round sets this itself). */
+		retryMissed?: boolean;
+		/** Practice that can't be failed (the word deck): no pass threshold. */
+		alwaysPass?: boolean;
 	};
 
 	let {
@@ -58,7 +65,10 @@
 		onExit,
 		onFinish,
 		onFinishAndContinue,
-		onNextRound
+		onNextRound,
+		onScreenResult,
+		retryMissed: retryMissedProp = false,
+		alwaysPass = false
 	}: Props = $props();
 
 	const session = createLessonSession();
@@ -83,10 +93,13 @@
 	let baseScreens = $derived(keptIndices.map((i) => allScreens[i]));
 	// Rounds with `retryMissed` replay each wrongly-answered scored screen once,
 	// at the end. The replay is practice only — it never changes the score.
-	let retryMissed = $derived(!!lesson?.content.rounds[roundIndex ?? 0]?.retryMissed);
+	let retryMissed = $derived(
+		lesson ? !!lesson.content.rounds[roundIndex ?? 0]?.retryMissed : retryMissedProp
+	);
 	let retryQueue = $state<LessonScreen[]>([]);
 	let screens = $derived([...baseScreens, ...retryQueue]);
 	let correctAtScreenStart = 0;
+	let logAtScreenStart = 0;
 	let screenPaths = $derived(
 		allScreenPaths ? keptIndices.map((i) => allScreenPaths![i]) : undefined
 	);
@@ -160,7 +173,9 @@
 		footerLabel || (isLastScreen ? i18n.dict.lesson.doneButton : i18n.dict.lesson.continueButton)
 	);
 	// A lesson with no scored questions (pure teaching content) can't be failed.
-	let passed = $derived(score.total === 0 || score.correct / score.total >= PASS_THRESHOLD);
+	let passed = $derived(
+		alwaysPass || score.total === 0 || score.correct / score.total >= PASS_THRESHOLD
+	);
 	// Static-screen runs (e.g. the debug vocab test) have no rounds of their own —
 	// treat them as always "last round" so they keep the old finish/next-lesson flow.
 	let isLastRound = $derived(!lesson || (roundIndex ?? 0) >= lesson.content.rounds.length - 1);
@@ -170,6 +185,9 @@
 
 	function advance() {
 		direction = 1;
+		if (onScreenResult && screenIndex < baseScreens.length)
+			onScreenResult(keptIndices[screenIndex], score.log.slice(logAtScreenStart));
+		logAtScreenStart = score.log.length;
 		if (retryMissed && currentScreen) {
 			if (screenIndex >= baseScreens.length) {
 				score.correct = correctAtScreenStart;
@@ -193,7 +211,9 @@
 		justFinished = false;
 		retryQueue = [];
 		correctAtScreenStart = 0;
+		logAtScreenStart = 0;
 		score.correct = 0;
+		score.log = [];
 		score.total = totalQuestions;
 		scoreTween.set(0, { duration: 0 });
 		for (const key of Object.keys(session)) delete session[key];

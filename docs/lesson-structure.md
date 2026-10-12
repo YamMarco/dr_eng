@@ -101,6 +101,10 @@ in the review round or a test. Don't dictate homophones (affect / effect).
 `match-pairs`: tap an English word and its Hebrew meaning, in either order; the Hebrew column is
 shuffled per mount. One scored question, passes with at most 1 wrong tap; the
 button opens once every pair is matched.
+`match-definitions`: the Module E Part II item. Numbered `items` (the exam uses 6), and
+`definitions` (the exam uses 3), each pointing at its item by `itemIndex`. The student picks a
+definition, then an item. Scored 1 per definition. `word-card.definitionEn` shows an English
+definition under the translation (Module E matches English to English).
 A round with `retryMissed: true` replays each wrongly-answered scored screen once
 at the end (practice only, the score is unchanged). Used by the vocab nodes.
 `mcq.layout: 'honeycomb'` fits a fill-the-blank vocab pick where every option
@@ -141,6 +145,21 @@ Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
 - pass = ≥80% correct; a round with 0 scored questions always passes
 - timers write elapsed ms into a per-round session bag keyed by `timerKey`;
   `time-result` / `time-comparison` read it back
+- static-screen runs (the word deck) can pass `onScreenResult(index, answers)` (each screen's
+  answers in order, from the score's `log`), `retryMissed` and `alwaysPass`
+
+## Word deck (Module E vocabulary)
+
+Not nodes: a spaced-repetition deck. Plan and reasons: docs/module-e-plan.md.
+- words: `lib/content/e/words.ts` (one `DeckWord` per item: word, class, English definition,
+  Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the
+  example also becomes a fill-the-blank question). Register a deck in `lib/deck/index.ts`.
+- `lib/deck/scheduler.ts` Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box, wrong = box 1.
+- `lib/deck/session.ts` builds the screens. New words, two at a time, as in Module C:
+  card, Hebrew meaning, copy-spelling, match-pairs. Reviews by box: 1 Hebrew meaning,
+  2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
+- `lib/deck/deckProgress.svelte.ts` localStorage `deck-progress`. Page: `/unit/<u>/module/<m>/words`.
+- tests: `npm test` (`front/tests/deck.test.ts`, node's own runner).
 
 ## Node / path rules
 

@@ -64,6 +64,12 @@ export const wordCardSchema = z
 		type: z.literal('word-card'),
 		word: z.string(),
 		translationHe: z.string().optional(),
+		definitionEn: z
+			.string()
+			.optional()
+			.describe(
+				'An English definition, as the Module E exam phrases it. Shown under the translation.'
+			),
 		image: z
 			.string()
 			.optional()
@@ -259,6 +265,28 @@ export const matchPairsSchema = z
 		'Match English words to Hebrew meanings. Passes with at most 1 wrong tap. Scored: 1 point.'
 	);
 
+export const matchDefinitionsSchema = z
+	.strictObject({
+		type: z.literal('match-definitions'),
+		items: z
+			.array(z.string())
+			.min(2)
+			.describe('The numbered items (words or chunks), shown in this order. The exam uses 6.'),
+		definitions: z
+			.array(
+				z.strictObject({
+					text: z.string(),
+					itemIndex: index.describe('0-based index into items of the item this defines.')
+				})
+			)
+			.min(1)
+			.describe('The definitions to match. The exam uses 3, so 3 items stay unused.'),
+		points: points.optional()
+	})
+	.describe(
+		'Bagrut Part II vocabulary: match some of the items to the definitions. Scored: 1 point per definition.'
+	);
+
 export const writingTaskSchema = z
 	.strictObject({
 		type: z.literal('writing-task'),
@@ -401,6 +429,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	wordCardSchema,
 	spellWordSchema,
 	matchPairsSchema,
+	matchDefinitionsSchema,
 	selfCheckSchema,
 	passageSchema,
 	sentenceCompletionSchema

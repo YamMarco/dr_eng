@@ -7,6 +7,9 @@
 	import type { ExamStats } from '$lib/quiz/stats';
 	import type { RouteSection } from './data';
 	import RouteMap from './RouteMap.svelte';
+	import { getDeck } from '$lib/deck';
+	import { deckProgress } from '$lib/deck/deckProgress.svelte';
+	import { dayKey, dueWords } from '$lib/deck/scheduler';
 
 	// Everything about one module in one card: lessons progress and an exams
 	// summary when closed; tap for its track, done / gold counts and links.
@@ -26,6 +29,10 @@
 	let t = $derived(i18n.dict.home);
 	let hasPath = $derived(sections.length > 0);
 	let hasExams = $derived(exams.total > 0);
+	let hasDeck = $derived(!!getDeck(mod.id));
+	let wordsDue = $derived(
+		hasDeck ? dueWords(deckProgress.get(mod.id), dayKey(new Date())).length : 0
+	);
 	let total = $derived(sections.reduce((sum, s) => sum + s.total, 0));
 	let done = $derived(sections.reduce((sum, s) => sum + s.done, 0));
 	let gold = $derived(sections.reduce((sum, s) => sum + s.gold, 0));
@@ -63,6 +70,9 @@
 					>{t.examsLine(exams.taken, exams.total, exams.avgPercent)}</span
 				>
 			{/if}
+			{#if hasDeck}
+				<span class="text-xs text-muted">{t.wordsLine(wordsDue)}</span>
+			{/if}
 		</span>
 		<ChevronDown
 			size={20}
@@ -93,6 +103,11 @@
 					{#if hasPath}
 						<a href={resolve('/unit/[unitId]/module/[moduleId]/lessons', params)} class={link}>
 							{t.toPath}
+						</a>
+					{/if}
+					{#if hasDeck}
+						<a href={resolve('/unit/[unitId]/module/[moduleId]/words', params)} class={link}>
+							{t.toWords}
 						</a>
 					{/if}
 					{#if hasExams}

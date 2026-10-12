@@ -1,7 +1,7 @@
 # Module E plan
 
 Written 2026-10-12 from the winter 2026 exam (questionnaire 016471, version A, "new format").
-Status: plan only, nothing built. Module E serves both the 4-unit and the 5-unit tracks (`lib/curriculum.ts`).
+Status: the vocabulary deck is built (List A, 180 items; see docs/lesson-structure.md "Word deck"). Reading path and mocks not started. Module E serves both the 4-unit and the 5-unit tracks (`lib/curriculum.ts`).
 
 ## The exam
 
