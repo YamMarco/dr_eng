@@ -9,7 +9,7 @@ export const e1Lessons: LessonNode[] = [
     section: "e-1",
     titleEn: "Mindset",
     required: [],
-    position: { x: 0, y: 550 },
+    position: { x: 0, y: 130 },
     big: false,
     content: {
       preface: [
@@ -180,7 +180,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "The Road Map",
     required: ["e-l00"],
     requiredRounds: 3,
-    position: { x: 70, y: 660 },
+    position: { x: 70, y: 240 },
     big: false,
     content: {
       preface: [
@@ -487,7 +487,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Traffic Light",
     required: ["e-l01"],
     requiredRounds: 3,
-    position: { x: 100, y: 780 },
+    position: { x: 100, y: 360 },
     big: false,
     content: {
       preface: [
@@ -868,7 +868,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "P1 Navigation",
     required: ["e-l02"],
     requiredRounds: 3,
-    position: { x: 10, y: 900 },
+    position: { x: 10, y: 480 },
     big: true,
     content: {
       preface: [
@@ -1209,7 +1209,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Eye Catcher: Numbers & Names",
     required: ["e-l03"],
     requiredRounds: 4,
-    position: { x: -100, y: 1020 },
+    position: { x: -100, y: 600 },
     big: false,
     content: {
       preface: [
@@ -1484,7 +1484,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Numbers & Names: Practice",
     required: ["e-l04"],
     requiredRounds: 3,
-    position: { x: -100, y: 1140 },
+    position: { x: -100, y: 720 },
     big: false,
     content: {
       preface: [
@@ -1740,7 +1740,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Eye Catcher: NOT",
     required: ["e-l03"],
     requiredRounds: 4,
-    position: { x: 0, y: 1020 },
+    position: { x: 0, y: 600 },
     big: false,
     content: {
       preface: [
@@ -1980,7 +1980,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "NOT: Practice",
     required: ["e-l06"],
     requiredRounds: 3,
-    position: { x: 0, y: 1140 },
+    position: { x: 0, y: 720 },
     big: false,
     content: {
       preface: [
@@ -2291,7 +2291,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Key Limiters",
     required: ["e-l03"],
     requiredRounds: 4,
-    position: { x: 100, y: 1020 },
+    position: { x: 100, y: 600 },
     big: false,
     content: {
       preface: [
@@ -2552,7 +2552,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Key Limiters: Practice",
     required: ["e-l07"],
     requiredRounds: 3,
-    position: { x: 100, y: 1140 },
+    position: { x: 100, y: 720 },
     big: false,
     content: {
       preface: [
@@ -2815,7 +2815,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     required: ["e-221188d1"],
     requiredRounds: 4,
-    position: { x: 0, y: 1370 },
+    position: { x: 0, y: 950 },
     big: false,
     content: {
       preface: [
@@ -3072,7 +3072,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Multiple Choice",
     required: ["e-b46b7e2b"],
     requiredRounds: 3,
-    position: { x: 0, y: 1620 },
+    position: { x: 0, y: 1200 },
     big: false,
     content: {
       preface: [
@@ -3388,7 +3388,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Short Answer",
     required: ["e-l09"],
     requiredRounds: 3,
-    position: { x: -70, y: 1740 },
+    position: { x: -70, y: 1320 },
     big: false,
     content: {
       preface: [
@@ -3667,7 +3667,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Complete the Sentence",
     required: ["e-l09"],
     requiredRounds: 3,
-    position: { x: 70, y: 1740 },
+    position: { x: 70, y: 1320 },
     big: false,
     content: {
       preface: [
@@ -3953,7 +3953,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Two Answers",
     required: ["e-l11"],
     requiredRounds: 3,
-    position: { x: 70, y: 1860 },
+    position: { x: 70, y: 1440 },
     big: false,
     content: {
       preface: [
@@ -4214,7 +4214,7 @@ export const e1Lessons: LessonNode[] = [
     id: "e-649ed18f",
     section: "e-1",
     required: ["e-l10", "e-l12"],
-    position: { x: 0, y: 1980 },
+    position: { x: 0, y: 1560 },
     big: false,
     content: {
       preface: [
@@ -4310,7 +4310,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Contrast Words",
     required: ["e-l08"],
     requiredRounds: 3,
-    position: { x: 0, y: 1500 },
+    position: { x: 0, y: 1080 },
     big: false,
     content: {
       preface: [
@@ -4575,7 +4575,7 @@ export const e1Lessons: LessonNode[] = [
     id: "e-7c5330b8",
     section: "e-1",
     required: ["e-649ed18f"],
-    position: { x: 0, y: 2100 },
+    position: { x: 0, y: 1680 },
     big: true,
     content: {
       preface: [
@@ -4662,7 +4662,7 @@ export const e1Lessons: LessonNode[] = [
     id: "e-221188d1",
     section: "e-1",
     required: ["e-not-q", "e-limiters-q", "e-numbers-names-q"],
-    position: { x: 0, y: 1260 },
+    position: { x: 0, y: 840 },
     big: false,
     content: {
       preface: [
