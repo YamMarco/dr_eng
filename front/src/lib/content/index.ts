@@ -4,12 +4,12 @@ import type { LessonNode } from './types';
 import { c1Lessons } from './c/c-1';
 import { c2Lessons } from './c/c-2';
 import { c3Lessons } from './c/c-3';
-import { e1Lessons } from './e/e-1';
 
 export * from './types';
-export { sectionMeta } from './sectionMeta';
+import { sectionMeta } from './sectionMeta';
+export { sectionMeta };
 
-const all: LessonNode[] = [...c1Lessons, ...c2Lessons, ...c3Lessons, ...e1Lessons];
+const all: LessonNode[] = [...c1Lessons, ...c2Lessons, ...c3Lessons];
 
 export const allLessons: Record<string, LessonNode> = Object.fromEntries(
 	all.map((lesson) => [lesson.id, lesson])
@@ -21,4 +21,15 @@ export function getLesson(id: string): LessonNode | undefined {
 
 export function getLessonsBySection(section: string): LessonNode[] {
 	return all.filter((lesson) => lesson.section === section);
+}
+
+/** The sections on a module's path, in study order. */
+export function moduleSections(moduleId: string) {
+	return sectionMeta.filter((section) => section.modules.includes(moduleId));
+}
+
+/** Where a lesson's progress is saved: its section's shared scope, else the owning module. */
+export function progressScope(lessonId: string): string | undefined {
+	const section = sectionMeta.find((s) => s.id === allLessons[lessonId]?.section);
+	return section && (section.progressScope ?? section.modules[0]);
 }

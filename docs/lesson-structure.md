@@ -66,7 +66,12 @@ Add an object to the right section's array:
 - A node with no non-empty screen in `preface` or any round renders as a
   permanently-locked placeholder.
 - To add a section: new `c/c-<N>.ts`, import + spread it in `index.ts`, add an
-  entry to `sectionMeta.ts`.
+  entry to `sectionMeta.ts` with `modules` (the modules whose path shows it, owner first).
+- A section can sit on several paths: `c-1` (reading) has `modules: ['c', 'e']`. Both paths
+  show the same nodes and share one progress, saved under the section's `progressScope`
+  (`'reading'`; default: the owning module). Progress calls go through `lib/lessonPath.ts`
+  (`roundsCompleted`, `markRoundCompleted`, `isLessonDone`...), never the module being viewed.
+  Each path starts at the top whatever y its sections were authored at.
 
 ## Screen types
 

@@ -8,7 +8,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import { lessonProgress } from '$lib/lessonProgress.svelte';
+	import { roundsCompleted } from '$lib/lessonPath';
 	import { moduleRoute, todayLesson } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
@@ -37,7 +37,7 @@
 		return {
 			moduleId: row.mod.id,
 			lesson,
-			roundsCompleted: lesson ? lessonProgress.completedRounds(row.mod.id, lesson.id) : 0,
+			roundsCompleted: lesson ? roundsCompleted(lesson.id) : 0,
 			href: lesson ? `${base}/lessons?lesson=${lesson.id}` : `${base}/exam`
 		};
 	});

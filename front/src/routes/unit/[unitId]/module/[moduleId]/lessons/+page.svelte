@@ -10,13 +10,19 @@
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
-	import { sectionMeta, getLessonsBySection, type LessonNode } from '$lib/content';
+	import { moduleSections, getLessonsBySection, type LessonNode } from '$lib/content';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
-	import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/lessonPath';
+	import {
+		hasContent,
+		isLessonDone,
+		isLessonGold,
+		isLessonUnlocked,
+		markRoundCompleted,
+		roundsCompleted as lessonRounds
+	} from '$lib/lessonPath';
 	import { lessonIcon } from '$lib/lessonIcon';
 	import { SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
-	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
@@ -41,6 +47,9 @@
 	// Extra room added at each section boundary, so a section break reads as
 	// bigger than a row break and its divider clears the title above it.
 	const SECTION_GAP = 72;
+	// A module's path starts here whatever y its sections were authored at (a
+	// section shared with another module may sit lower on that module's path).
+	const TOP_Y = 130;
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
@@ -70,11 +79,12 @@
 		// Sections ordered top to bottom by their topmost node; each one is
 		// pushed down by one SECTION_GAP per section above it.
 		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
-		const sections = sectionMeta.filter((section) => section.id.startsWith(`${mod.id}-`));
+		const sections = moduleSections(mod.id);
 		const verticalOrder = sections
 			.filter((section) => getLessonsBySection(section.id).length > 0)
 			.map((section) => section.id)
 			.sort((a, b) => topY(a) - topY(b));
+		const shiftY = verticalOrder.length ? TOP_Y - topY(verticalOrder[0]) : 0;
 		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
 			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
@@ -85,7 +95,7 @@
 					lessonNumber: lessonIndexInSection + 1,
 					theme,
 					x: lesson.position.x,
-					y: lesson.position.y * Y_SPREAD + sectionOffset,
+					y: (lesson.position.y + shiftY) * Y_SPREAD + sectionOffset,
 					isBig: lesson.big
 				});
 			});
@@ -224,11 +234,11 @@
 	});
 
 	function isDone(lessonId: string): boolean {
-		return isLessonDone(mod.id, lessonId);
+		return isLessonDone(lessonId);
 	}
 
 	function roundsCompleted(lessonId: string): number {
-		return lessonProgress.completedRounds(mod.id, lessonId);
+		return lessonRounds(lessonId);
 	}
 
 	function totalRounds(node: PathNode): number {
@@ -241,7 +251,7 @@
 	}
 
 	function isUnlocked(node: PathNode): boolean {
-		return isLessonUnlocked(mod.id, node.lesson);
+		return isLessonUnlocked(node.lesson);
 	}
 
 	// Which node's title+start label is showing (click to toggle, not hover).
@@ -314,7 +324,7 @@
 	function finishNode() {
 		if (activeId) {
 			const wasDone = isDone(activeId);
-			lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
+			markRoundCompleted(activeId, activeRoundIndex);
 			celebrateIfNewlyDone(activeId, wasDone);
 		}
 		activeId = null;
@@ -323,14 +333,14 @@
 
 	function nextRound() {
 		if (!activeId) return;
-		lessonProgress.markRoundCompleted(mod.id, activeId, activeRoundIndex);
+		markRoundCompleted(activeId, activeRoundIndex);
 		activeRoundIndex += 1;
 	}
 
 	function finishNodeAndContinue() {
 		if (!activeNode) return;
 		const wasDone = isDone(activeNode.lesson.id);
-		lessonProgress.markRoundCompleted(mod.id, activeNode.lesson.id, activeRoundIndex);
+		markRoundCompleted(activeNode.lesson.id, activeRoundIndex);
 		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
 		const next = onlyNextNode(activeNode);
 		if (!next) {
@@ -487,7 +497,7 @@
 					{#each nodes as node, nodeIndex (node.lesson.id)}
 						{@const unlocked = isUnlocked(node)}
 						{@const done = isDone(node.lesson.id)}
-						{@const allRounds = isLessonGold(mod.id, node.lesson)}
+						{@const allRounds = isLessonGold(node.lesson)}
 						{@const size = node.isBig ? 'h-20 w-20 text-3xl' : 'h-16 w-16 text-2xl'}
 						<div
 							data-lesson-node

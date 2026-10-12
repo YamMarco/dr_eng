@@ -1,6 +1,9 @@
 // Done / unlocked rules for a lesson node, shared by the lessons path canvas
-// and the home dashboard so both always agree on what's open.
-import { getLesson, type LessonNode } from '$lib/content';
+// and the home dashboard so both always agree on what's open. Progress is
+// read and written under the lesson's progress scope (see progressScope), not
+// the module being viewed, so a section shared by two modules (C and E
+// reading) has one progress for both.
+import { getLesson, progressScope, type LessonNode } from '$lib/content';
 import { isScreenEmpty } from '$lib/lesson-screens/types';
 import { debugStore } from '$lib/debug.svelte';
 import { lessonProgress } from '$lib/lessonProgress.svelte';
@@ -11,13 +14,23 @@ export function hasContent(lesson: LessonNode): boolean {
 	return all.some((screens) => screens.some((screen) => !isScreenEmpty(screen)));
 }
 
-export function isLessonDone(moduleId: string, lessonId: string): boolean {
-	return lessonProgress.isCompleted(moduleId, lessonId, getLesson(lessonId)?.requiredRounds);
+export function roundsCompleted(lessonId: string): number {
+	const scope = progressScope(lessonId);
+	return scope ? lessonProgress.completedRounds(scope, lessonId) : 0;
+}
+
+export function markRoundCompleted(lessonId: string, roundIndex: number) {
+	const scope = progressScope(lessonId);
+	if (scope) lessonProgress.markRoundCompleted(scope, lessonId, roundIndex);
+}
+
+export function isLessonDone(lessonId: string): boolean {
+	return roundsCompleted(lessonId) >= (getLesson(lessonId)?.requiredRounds ?? 1);
 }
 
 /** Every round played, not just the required ones - the path's gold node. */
-export function isLessonGold(moduleId: string, lesson: LessonNode): boolean {
-	return lessonProgress.completedRounds(moduleId, lesson.id) >= lesson.content.rounds.length;
+export function isLessonGold(lesson: LessonNode): boolean {
+	return roundsCompleted(lesson.id) >= lesson.content.rounds.length;
 }
 
 // The debug "unlock all" flag is a full override — it comes before every
@@ -27,9 +40,9 @@ export function isLessonGold(moduleId: string, lesson: LessonNode): boolean {
 // used earlier to reach it out of order and its formal prerequisites
 // still aren't otherwise satisfied — turning "unlock all" back off must
 // never re-lock real progress.
-export function isLessonUnlocked(moduleId: string, lesson: LessonNode): boolean {
+export function isLessonUnlocked(lesson: LessonNode): boolean {
 	if (debugStore.unlockAll) return true;
-	if (isLessonDone(moduleId, lesson.id)) return true;
+	if (isLessonDone(lesson.id)) return true;
 	if (!hasContent(lesson)) return false;
-	return lesson.required.every((id) => isLessonDone(moduleId, id));
+	return lesson.required.every((id) => isLessonDone(id));
 }

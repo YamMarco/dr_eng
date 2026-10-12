@@ -1,10 +1,12 @@
 // Section grouping for the path canvas (headings + theme-color order).
-// One section per Part of a module's programme. Ids are `<moduleId>-<n>`.
+// One section per Part of a module's programme. A section can sit on several
+// modules' paths (`modules`); they then share its lessons and its progress.
 import type { SectionMeta } from './types';
 
 export const sectionMeta: SectionMeta[] = [
 	{
 		id: 'c-2',
+		modules: ['c'],
 		titleEn: 'Part A - Vocabulary',
 		intro: {
 			greeting: 'The words that keep coming back',
@@ -13,6 +15,8 @@ export const sectionMeta: SectionMeta[] = [
 	},
 	{
 		id: 'c-1',
+		modules: ['c', 'e'],
+		progressScope: 'reading',
 		titleEn: 'Part B - Reading Skills',
 		intro: {
 			greeting: 'I search - I do not read',
@@ -21,18 +25,11 @@ export const sectionMeta: SectionMeta[] = [
 	},
 	{
 		id: 'c-3',
+		modules: ['c'],
 		titleEn: 'Part C - Writing',
 		intro: {
 			greeting: '70-90 words, every time',
 			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
-		}
-	},
-	{
-		id: 'e-1',
-		titleEn: 'Part I - Reading Skills',
-		intro: {
-			greeting: 'I search - I do not read',
-			goal: 'הכלים לחלק הקריאה בבגרות: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
 		}
 	}
 ];

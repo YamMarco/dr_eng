@@ -43,6 +43,10 @@ export interface LessonNode {
 
 export interface SectionMeta {
 	id: string;
+	/** Modules whose path shows this section. The first one owns it. */
+	modules: string[];
+	/** Progress key shared by every module that shows the section. Default: the owning module. */
+	progressScope?: string;
 	titleEn?: string;
 	intro?: { greeting: string; goal?: string };
 }
