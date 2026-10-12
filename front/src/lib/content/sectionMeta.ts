@@ -1,5 +1,5 @@
 // Section grouping for the path canvas (headings + theme-color order).
-// One section per Part of the Module C programme.
+// One section per Part of a module's programme. Ids are `<moduleId>-<n>`.
 import type { SectionMeta } from './types';
 
 export const sectionMeta: SectionMeta[] = [
@@ -25,6 +25,14 @@ export const sectionMeta: SectionMeta[] = [
 		intro: {
 			greeting: '70-90 words, every time',
 			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
+		}
+	},
+	{
+		id: 'e-1',
+		titleEn: 'Part I - Reading Skills',
+		intro: {
+			greeting: 'I search - I do not read',
+			goal: 'הכלים לחלק הקריאה בבגרות: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
 		}
 	}
 ];

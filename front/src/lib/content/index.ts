@@ -4,11 +4,12 @@ import type { LessonNode } from './types';
 import { c1Lessons } from './c/c-1';
 import { c2Lessons } from './c/c-2';
 import { c3Lessons } from './c/c-3';
+import { e1Lessons } from './e/e-1';
 
 export * from './types';
 export { sectionMeta } from './sectionMeta';
 
-const all: LessonNode[] = [...c1Lessons, ...c2Lessons, ...c3Lessons];
+const all: LessonNode[] = [...c1Lessons, ...c2Lessons, ...c3Lessons, ...e1Lessons];
 
 export const allLessons: Record<string, LessonNode> = Object.fromEntries(
 	all.map((lesson) => [lesson.id, lesson])

@@ -67,15 +67,15 @@
 	// driven entirely by each lesson's own `prerequisites`.
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
-		if (mod.id !== 'c') return result;
 		// Sections ordered top to bottom by their topmost node; each one is
 		// pushed down by one SECTION_GAP per section above it.
 		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
-		const verticalOrder = sectionMeta
+		const sections = sectionMeta.filter((section) => section.id.startsWith(`${mod.id}-`));
+		const verticalOrder = sections
 			.filter((section) => getLessonsBySection(section.id).length > 0)
 			.map((section) => section.id)
 			.sort((a, b) => topY(a) - topY(b));
-		sectionMeta.forEach((section, sectionIndex) => {
+		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
 			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
 			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {

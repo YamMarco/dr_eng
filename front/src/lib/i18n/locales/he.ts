@@ -35,7 +35,10 @@ export const he = {
 		todayContinue: 'המשך',
 		allDoneTitle: 'סיימת את כל המסלול!',
 		allDoneDesc: 'זה הזמן למבחן מלא בתנאי בגרות.',
-		sectionShort: { 'c-2': 'אוצר מילים', 'c-1': 'הבנה', 'c-3': 'כתיבה' } as Record<string, string>,
+		sectionShort: { 'c-2': 'אוצר מילים', 'c-1': 'הבנה', 'c-3': 'כתיבה', 'e-1': 'הבנה' } as Record<
+			string,
+			string
+		>,
 		comingSoonModules: (list: string) => `בקרוב: ${list}`,
 		statDone: 'הושלמו',
 		statGold: 'זהב',
