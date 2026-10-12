@@ -26,11 +26,14 @@
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
+	import DeckGateway from '$lib/deck/DeckGateway.svelte';
+	import { dueToday, getDeck } from '$lib/deck';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
+	let hasDeck = $derived(!!getDeck(mod.id));
 
 	// The generic canvas graph every module's path is drawn from: every
 	// lesson carries its own placement (x, y) and prerequisite lesson ids
@@ -50,6 +53,8 @@
 	// A module's path starts here whatever y its sections were authored at (a
 	// section shared with another module may sit lower on that module's path).
 	const TOP_Y = 130;
+	// Room above the lessons for the word-deck gateway, when the module has one.
+	const GATEWAY_SPACE = 70;
 
 	/** Nudge (px) that keeps a node's label popup inside the canvas. */
 	function labelShift(nodeX: number): number {
@@ -84,7 +89,8 @@
 			.filter((section) => getLessonsBySection(section.id).length > 0)
 			.map((section) => section.id)
 			.sort((a, b) => topY(a) - topY(b));
-		const shiftY = verticalOrder.length ? TOP_Y - topY(verticalOrder[0]) : 0;
+		const top = TOP_Y + (hasDeck ? GATEWAY_SPACE : 0);
+		const shiftY = verticalOrder.length ? top - topY(verticalOrder[0]) : 0;
 		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
 			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
@@ -475,6 +481,12 @@
 							/>
 						{/each}
 					</svg>
+
+					{#if hasDeck}
+						<div class="absolute inset-x-0 top-4 flex justify-center" in:fade={{ duration: 180 }}>
+							<DeckGateway unitId={group.id} moduleId={mod.id} due={dueToday(mod.id)} />
+						</div>
+					{/if}
 
 					{#each sectionHeadings as heading (heading.sectionId)}
 						<!-- Section divider: a hairline across the canvas with the section's

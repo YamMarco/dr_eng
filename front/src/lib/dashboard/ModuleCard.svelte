@@ -7,9 +7,7 @@
 	import type { ExamStats } from '$lib/quiz/stats';
 	import type { RouteSection } from './data';
 	import RouteMap from './RouteMap.svelte';
-	import { getDeck } from '$lib/deck';
-	import { deckProgress } from '$lib/deck/deckProgress.svelte';
-	import { dayKey, dueWords } from '$lib/deck/scheduler';
+	import { dueToday, getDeck } from '$lib/deck';
 
 	// Everything about one module in one card: lessons progress and an exams
 	// summary when closed; tap for its track, done / gold counts and links.
@@ -30,9 +28,7 @@
 	let hasPath = $derived(sections.length > 0);
 	let hasExams = $derived(exams.total > 0);
 	let hasDeck = $derived(!!getDeck(mod.id));
-	let wordsDue = $derived(
-		hasDeck ? dueWords(deckProgress.get(mod.id), dayKey(new Date())).length : 0
-	);
+	let wordsDue = $derived(hasDeck ? dueToday(mod.id) : 0);
 	let total = $derived(sections.reduce((sum, s) => sum + s.total, 0));
 	let done = $derived(sections.reduce((sum, s) => sum + s.done, 0));
 	let gold = $derived(sections.reduce((sum, s) => sum + s.gold, 0));
