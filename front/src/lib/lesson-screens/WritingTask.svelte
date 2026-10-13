@@ -152,6 +152,7 @@
 		checked = true;
 		if (result.stage !== 'partial') recordAnswer(score!, result.pass);
 		label = i18n.dict.lesson.nextQuestionButton;
+		disabled = false; // the effect below stops updating once `checked` is set
 	}
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
