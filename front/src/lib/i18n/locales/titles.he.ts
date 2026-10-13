@@ -38,7 +38,7 @@ export const titlesHe: Record<string, string> = {
 	'c-vocab-test': 'מבחן סיכום - אוצר מילים',
 	'c-5cd02dfa': 'פתיחה - Module C',
 	'c-yes-no': 'YES or NO - לומר עמדה',
-	because: 'because - לחבר לסיבה',
+	'c-because': 'because - לחבר לסיבה',
 	'c-in-addition': 'In addition - סיבה שנייה',
 	'c-for-example': 'For example - לפרט',
 	'c-in-conclusion': 'In conclusion - לסגור',
