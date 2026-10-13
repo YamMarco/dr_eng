@@ -19,7 +19,11 @@
 
 	const BOOLS: { key: 'llmGrade' | 'autoCheck' | 'capitalIsError'; label: string }[] = [
 		{ key: 'llmGrade', label: 'בדיקת תשובה ע״י AI' },
-		{ key: 'autoCheck', label: 'בדיקה אוטומטית (כתיב, פיסוק) והערות' },
+		{
+			key: 'autoCheck',
+			label:
+				'בדיקת כתיב ופיסוק: התלמיד רואה את הטעויות בזמן הכתיבה, והן נספרות מול "טעויות קטנות מותרות"'
+		},
 		{ key: 'capitalIsError', label: 'אות ראשונה קטנה = טעות' }
 	];
 	const isOwn = (key: keyof RuleSet) => own[key] !== undefined;
@@ -57,7 +61,7 @@
 			checked={own.rulesLock ?? false}
 			onchange={(e) => onSet('rulesLock', e.currentTarget.checked)}
 		/>
-		🔒 לא לדרוס בהחלה גורפת מלמעלה
+		🔒 נעילה: "החלה על כל מה שמתחת" מרמה גבוהה יותר לא תשנה את ההגדרות כאן
 	</label>
 </div>
 

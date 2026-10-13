@@ -77,7 +77,7 @@
 			<label class="flex items-center gap-2 text-xs text-muted">
 				מודול
 				<select
-					class="rounded-lg border-2 border-line bg-surface p-1"
+					class="rounded-lg border-2 border-line bg-surface py-1 pr-8 pl-2"
 					value={moduleId}
 					onchange={(e) =>
 						(sectionId =
@@ -89,7 +89,10 @@
 		{:else}
 			<label class="flex items-center gap-2 text-xs text-muted">
 				פרק
-				<select class="rounded-lg border-2 border-line bg-surface p-1" bind:value={sectionId}>
+				<select
+					class="rounded-lg border-2 border-line bg-surface py-1 pr-8 pl-2"
+					bind:value={sectionId}
+				>
 					{#each sectionMeta as s (s.id)}
 						<option value={s.id}>{s.id} · {s.titleEn ?? ''}</option>
 					{/each}
@@ -98,7 +101,10 @@
 			{#if level === 'lessons'}
 				<label class="flex items-center gap-2 text-xs text-muted">
 					שיעור
-					<select class="rounded-lg border-2 border-line bg-surface p-1" bind:value={lessonId}>
+					<select
+						class="rounded-lg border-2 border-line bg-surface py-1 pr-8 pl-2"
+						bind:value={lessonId}
+					>
 						{#each lessons as n (n.id)}
 							<option value={n.id}>{n.id} · {editModel.titles.get(n.id)}</option>
 						{/each}
