@@ -197,3 +197,11 @@ export function applyGrades(
 		passed: max === 0 || earned / max >= passThreshold
 	};
 }
+
+/** The exam's final percent - undefined while open answers still await grading,
+ *  so a provisional auto-only score never counts as a result. */
+export function scorePercent(score: QuizScore): number | undefined {
+	const final = score.total ?? (score.manual.items.length ? undefined : score.auto);
+	if (!final || final.max === 0) return undefined;
+	return Math.round((final.earned / final.max) * 100);
+}

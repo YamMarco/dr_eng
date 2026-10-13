@@ -122,10 +122,26 @@ export const he = {
 		readingTextsRule: (n: number) => (n === 1 ? 'טקסט קריאה אחד' : `${n} טקסטי קריאה`),
 		questionsRule: (n: number) => `${n} שאלות`,
 		timeRule: (minutes: number) => `${minutes} דקות`,
-		scoreboardTitle: 'לוח התוצאות שלך',
-		bestScoreLabel: 'השיא שלך',
+		scoreboardTitle: 'התוצאות שלכם',
+		bestScoreLabel: 'השיא שלכם',
 		lastScoreLabel: 'ניסיון אחרון',
-		avgScoreLabel: 'ממוצע'
+		triesLabel: 'ניסיונות',
+		statusNew: 'עוד לא ניסיתם',
+		statusInProgress: 'באמצע',
+		statusBest: (best: number) => `שיא: ${best}`,
+		prepTitle: 'לפני שמתחילים',
+		prepDesc:
+			'מבחן בתנאי בגרות: שעון רץ, ואין משוב עד ההגשה. קצת לחץ זה בדיוק האימון - כל מבחן כאן הופך את הבגרות למשהו שכבר עשיתם.',
+		prepAgainTitle: 'עוד סיבוב',
+		prepAgainDesc: 'אותו מבחן, אתם כבר יותר מוכנים. נסו לשבור את השיא.',
+		tipsTitle: 'איך ניגשים',
+		tips: [
+			'קראו את השאלות לפני הקטע - ככה יודעים מה לחפש.',
+			'נתקעתם? דלגו וחזרו בסוף. אפשר לעבור בין החלקים.',
+			'הציון כאן לא נחשב לשום דבר - רק מראה לכם על מה לעבוד.'
+		],
+		resumeButton: 'המשך מבחן',
+		retakeButton: 'ניסיון נוסף'
 	},
 	unit: {
 		modulePrefix: 'מודול'

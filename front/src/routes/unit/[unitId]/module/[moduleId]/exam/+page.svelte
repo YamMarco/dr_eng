@@ -2,41 +2,21 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
-	import { getQuizzesForModule, type Quiz } from '$lib/quizzes';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import StatTile from '$lib/components/StatTile.svelte';
-	import { examStats, formatExamStats } from '$lib/quiz/stats';
+	import { examRows, examStats, formatExamStats } from '$lib/quiz/stats';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
 	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
-	let quizzes = $derived(getQuizzesForModule(mod.id));
+	let rows = $derived(examRows(mod.id));
+	let t = $derived(i18n.dict.quizzes);
 
-	// The Bagrut module exam's fixed structure - same for every quiz here.
-	const rules = [
-		i18n.dict.quizzes.readingTextsRule(1),
-		i18n.dict.quizzes.questionsRule(10),
-		i18n.dict.quizzes.timeRule(90)
-	];
+	const chip = 'shrink-0 rounded-full px-2.5 py-1 text-xs font-bold';
 </script>
-
-{#snippet quizList(list: Quiz[])}
-	<ul class="flex flex-col gap-3">
-		{#each list as quiz (quiz.id)}
-			<li>
-				<a
-					href="{base}/exam/{quiz.id}"
-					class="group flex flex-col gap-1 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
-				>
-					<span class="text-sm font-bold">{i18n.title(quiz.id)}</span>
-				</a>
-			</li>
-		{/each}
-	</ul>
-{/snippet}
 
 <!-- Always visible, not gated by editStore.available — /edit-exam itself is
      password-gated on the deployed site, and that gate is the only way to
@@ -65,22 +45,28 @@
 		{/each}
 	</section>
 
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-		class="mb-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
-	>
-		<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.rulesTitle}</h2>
-		<ul class="flex flex-col divide-y divide-line/70">
-			{#each rules as rule (rule)}
-				<li class="py-2 text-sm first:pt-0 last:pb-0">{rule}</li>
-			{/each}
-		</ul>
-	</section>
-
-	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}>
-		<h2 class="mb-3 text-base font-bold">{i18n.dict.quizzes.assortedTitle}</h2>
-		{#if quizzes.assorted.length}
-			{@render quizList(quizzes.assorted)}
+	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}>
+		<h2 class="mb-3 text-base font-bold">{t.assortedTitle}</h2>
+		{#if rows.length}
+			<ul class="flex flex-col gap-3">
+				{#each rows as row (row.quiz.id)}
+					<li>
+						<a
+							href="{base}/exam/{row.quiz.id}"
+							class="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
+						>
+							<span class="min-w-0 flex-1 text-sm font-bold">{i18n.title(row.quiz.id)}</span>
+							{#if row.inProgress}
+								<span class="{chip} bg-amber-100 text-amber-800">{t.statusInProgress}</span>
+							{:else if row.best !== undefined}
+								<span class="{chip} bg-brand-soft text-brand-dark">{t.statusBest(row.best)}</span>
+							{:else}
+								<span class="{chip} bg-line/60 font-semibold text-muted">{t.statusNew}</span>
+							{/if}
+						</a>
+					</li>
+				{/each}
+			</ul>
 		{:else}
 			<p class="text-sm text-muted">{i18n.dict.common.comingSoon}</p>
 		{/if}
