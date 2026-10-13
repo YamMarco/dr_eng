@@ -1,15 +1,15 @@
 # Module C: what's good, what's bad, and what to do
 
-**Version 3 · 3 October 2026**
-Reviewed by Claude, for Yam, after the changes made since version 2.3 (checked in the app's material, not just taken from the handoff notes).
+**Version 4 · 13 October 2026**
+Reviewed by Claude, for Yam, after the changes made since version 3 (3 October). Checked against the code and the lesson files as they are today, not taken from commit messages. `npm run check` passes (0 errors) and `npm test` passes (20 of 20).
 
 **What this report is for:** what's good and what's bad in Module C, where each thing is in the app today, an example of it, and what to do about it.
 
 **How to read it**
 - **The top part is today:** the good, the bad and the plan.
-- **The bottom part is the history** of how we got here. You don't need to read it; it's kept as a record.
+- **The bottom part is the history** of how we got here, including version 3 as it was. You don't need to read it; it's kept as a record.
 
-The app has three sections, plus two practice exams:
+The app has three sections, plus three practice exams:
 
 | Section | Name in the app |
 |---|---|
@@ -23,207 +23,185 @@ Lesson and exam names are written exactly as they appear in the app, each on its
 
 ## 1. In short
 
-Module C moved **from about 7 to about 7.5 out of 10.** The big step is in Reading: every reading lesson now ends with an exam-level round on a new text, and students now type real answers in the answer lessons.
+Module C moved **from about 7.5 to about 7.8 out of 10.** The big step is in Writing: it was rebuilt, it is now required, and the app can finally grade a written answer. The practice exams grew from two to three, and open answers and the essay are now graded instead of left blank.
 
-It is **still not a reliable sign that a student is ready.** The practice exams can still say "passed" when most of the exam wasn't checked, the new typed-answer checks can be fooled, the writing lessons still never ask for a full paragraph, and the last reading lesson still doesn't look like the exam.
+It is **still not a reliable sign that a student is ready.** The results screen can still say "passed" before the written answers are graded, the typed-answer checks in the reading lessons still look for keywords only, and the three summary lessons at the end of Reading are still the old design. **Nothing has been tried by a real student yet.**
 
-**Best use today:** next to classroom lessons, not instead of them. Nothing has been tried by a real student yet.
+**One correction to version 3:** it said the Bagrut text is about 340 words and the exam lasts 1 hour 45 minutes. The official handbook says up to 300 words and 1 hour 30 minutes. So the 90 minutes in the practice exams are right, and plan step 8 of version 3 (lengthen to 105 minutes) is cancelled.
+
+**Best use today:** next to classroom lessons, not instead of them.
 
 ## 2. What's good
 
 Each point: **where it is in the app today · an example · what to do with it.**
 
-**1. A clear method for the reading test.**
-- *Where:* Reading, the first four lessons:
-  - **אני מחפש, לא קורא**
-  - **מפת הדרכים**
-  - **שיטת הרמזור**
-  - **P1 - ניווט בטקסט**
-- *Example:* the first lesson compares the exam to a WhatsApp group with 500 messages: to find the exam date you search for "exam", you don't read from the top.
-- *What to do:* keep it. Fix its one summary line (bad point 4).
+**1. Writing was rebuilt and is now required.** *(new)*
+- *Where:* Writing, all eleven lessons:
+  - **YES or NO - לומר עמדה**
+  - **because - לחבר לסיבה**
+  - **In addition - סיבה שנייה**
+  - **For example - לפרט**
+  - **In conclusion - לסגור**
+  - **Subject + Verb - משפט שלם**
+  - **70-90 מילים - לספור**
+  - **Do you think? - התנדבות**
+  - **What do you think? - חופשה**
+  - **What changes? - בית ספר**
+  - **At what age? - פלאפונים**
+- *Example:* every round now counts, so the writing can't be skipped. Each skill lesson repeats the earlier moves and adds one (stance, then reason, then second reason, then example, then ending), three times, on real Ministry topics. A topic lesson goes from a skeleton, to one 70-90 word paragraph in a single box with a word counter, to an unseen topic with no word bank and a 20-minute countdown. After each task the student sees a model answer and ticks a checklist. Rounds are about 5 minutes, with optional practice rounds at the end.
+- *What to do:* keep it. Try it with real students (plan step 6).
 
-**2. Every reading lesson now ends with an exam-level round on a new text.** *(new)*
-- *Where:* Reading, all eleven method and question lessons, from the second lesson to the last answer lesson:
-  - **מפת הדרכים**
-  - **שתי תשובות**
-- *Example:* the traffic-light lesson ends with "SLEEPING IN SPACE", a text the student hasn't seen, with questions like "According to Dr. Laura Kim, how much longer do astronauts sleep with the new lights?". The student must finish this round before moving on. Old true/false rounds about the method are gone, and texts grow from about 120 words in the first lessons to about 250 in the later ones.
-- *What to do:* keep it, and try it with real students (plan step 9).
+**2. A written answer is now actually graded.** *(new)*
+- *Where:* every writing screen in the lessons, and the open questions and essay in the practice exams.
+- *Example:* first a free local check (empty, not English, too few words, too many spelling slips) can fail the answer without any cost. Then an AI check returns only marks on the student's own words, shown highlighted on the submitted answer. In the exams, each open answer gets a score out of its points, and the essay is scored on the official 30-point rubric, with the length deduction applied by the code (60-69 words costs 1 point, and so on). A lesson answer is tried once; a miss comes back at the end of the lesson.
+- *What to do:* keep it, and compare its marks with a teacher's on 10-20 real answers before trusting it (bad point 4).
 
-**3. The marking lessons build up step by step.** *(new)*
-- *Where:* Reading, the four marking lessons:
-  - **מגנט לעין - מספרים ושמות**
-  - **NOT - המילה הכי מסוכנת**
-  - **most / only - תשובה אחת**
-  - **however / but - סימון בטקסט**
-- *Example:* round 3 adds "look-alike" words that must not be marked, like "butter" in the however/but lesson or "almost" and "everyone" in the most/only lesson. Round 4 is an exam-size text with a stopwatch and three questions, each needing one quick hunt. Marking every word in the long text is now an optional extra, so the required part doesn't wear students out.
+**3. Three practice exams, and the results now include the written parts.** *(new)*
+- *Where:* the practice exams:
+  - **Smart Glasses That Help Blind People See**
+  - **Unusual Friendships Between Different Animals**
+  - **How Sitting Too Much Affects Us** *(new)*
+- *Example:* each is one text, MCQs, short written answers, a sentence completion and a 30-point essay. The third has a 359-word text. The report shows every answer with its score, the essay by criteria, and a "try again" button when grading failed. The passage stays pinned beside the questions on wide screens.
+- *What to do:* make the pass check honest while grading is not finished (bad point 1).
+
+**4. A clear method for the reading test, and rounds that build up.**
+- *Where:* Reading, all lessons from **אני מחפש, לא קורא** to **שתי תשובות**. Unchanged since version 3.
+- *Example:* every lesson ends with an exam-level round on a new text; marking lessons build in four steps, with look-alike words.
 - *What to do:* keep it.
 
-**4. Students now type their own answers in the answer lessons.** *(new)*
-- *Where:* Reading, the exam rounds of:
-  - **תשובה קצרה**
-  - **השלמת משפט**
-  - **שתי תשובות**
-- *Example:* "Why do people come from far away to Fulda Creek?" The student types the answer, and the app checks it. Until now, written answers in Reading were never checked.
-- *What to do:* make the checking fairer (bad point 2).
+**5. Text direction and formatting are consistent.** *(new)*
+- *Where:* every lesson screen.
+- *Example:* a line is right-to-left if it starts or ends in Hebrew (or is mostly Hebrew), so "האם זו שאלה נכונה?" and "According to מה זה אומר" both read correctly. Before, about 150 lines in Reading and Writing ran the wrong way. Also fixed: 13 full-size reading texts had no title, 8 paragraph markers showed as "**I**" in the text, 57 of 176 arrows pointed backwards, and 6 instructions sat on a separate page from the question.
+- *What to do:* keep it. A direction rule now lives in one place (`textDir`).
 
-**5. The writing check now reads the sentences.** *(new)*
-- *Where:* every writing screen in the Writing lessons.
-- *Example:* "I think it is good because it is good." is now flagged: the app says the word "good" explains nothing. It also flags very short sentences, a second reason that repeats the first, and "For example" without a real detail.
-- *What to do:* keep it, and fix the word list (bad point 6).
-
-**6. The words that tell you what to write are taught on their own.**
-- *Where:* Vocabulary, these two lessons:
-  - **מילות שאלה: איפה ומה**
-  - **מילות שאלה: איך עונים**
-- *Example:* "Give TWO answers" means (1) and (2), not one long sentence with "and".
+**6. One marking screen, shuffled options, safer editing.** *(new)*
+- *Where:* the whole module.
+- *Example:* the two marking screens (tap one word, tap many words) became one, with 27 screens converted. Answer options are shuffled in lessons (the exams keep the authored order). All ids start with `c-` and old progress moves over by itself. The editor has undo / redo and a rules panel.
 - *What to do:* keep it.
-
-**7. Vocabulary questions that make you really know the word, and spelling by ear.**
-- *Where:* Vocabulary, the six content-word lessons and the final test:
-  - **מבחן סיכום - אוצר מילים**
-- *Example:* "Every member of ___ should follow the law": *social / society / societies / socially*. In the review rounds the app says a word, like "residents", and the student types it.
-- *What to do:* keep it. Vocabulary is now optional, so students can go straight to Reading.
-
-**8. Practice exams that look like the real Bagrut, with their question mistakes fixed.**
-- *Where:* the two practice exams:
-  - **משקפיים חכמות שעוזרות לעיוורים לראות**
-  - **ידידות יוצאות דופן בין בעלי חיים**
-- *Example:* one text in 4 paragraphs, 9 questions of the Bagrut's kinds, and an essay. The question that gave away the next answer is fixed, and "books, signs, screens" is now accepted.
-- *What to do:* fix the results screen (bad point 1).
 
 ## 3. What's bad (most serious first)
 
 Each point: **where it is in the app today · an example · what to do.**
 
-**1. The practice exam results can still mislead.** *(not changed)*
-- *Where:* the results screen and the opening page of both practice exams:
-  - **משקפיים חכמות שעוזרות לעיוורים לראות**
-  - **ידידות יוצאות דופן בין בעלי חיים**
-- *Example:* a student who answers only the multiple-choice questions and leaves every written answer and the essay empty can still see **"passed"**. The app checks only 39 of the 100 points.
-- *What to do:* no "passed / failed". Show "Checked: 24 of 39 points. Not checked: the written answers and the essay (61 points)."
+**1. The practice exam result can still say "passed" before it is true.** *(partly fixed)*
+- *Where:* the results screen of all three practice exams.
+- *Example:* when the student submits, the app first scores only the multiple-choice and the sentence completion, and shows "passed" or "failed" from those points alone. The written answers and the essay (about 60 of 100 points) are graded a few seconds later. In those seconds the headline can say "passed" on the early score. If the grading fails (no internet, a rate limit, a bad key), the failed answers count as 0, so a good student sees "failed" until they press retry. Version 3 had the opposite problem for good; today it is a window of seconds, or a wrong "failed".
+- *What to do:* show no "passed / failed" until every open answer has a grade; meanwhile show "Checked: 24 of 39 points. Grading the written answers...". If grading fails, say "Not checked: 61 points" instead of failing the student, and keep the retry button.
 
-**2. The new typed-answer checks can be fooled, and can reject right answers.** *(new)*
+**2. The typed-answer checks in the reading lessons are still keyword matching.** *(not changed)*
 - *Where:* Reading, the exam rounds of:
   - **תשובה קצרה**
   - **השלמת משפט**
   - **שתי תשובות**
-- *Example:*
-  - **"Give TWO answers" passes with one answer.** "According to Dr. Diallo, what does the project do? Give TWO answers" checks only that "plant" and "teach" appear somewhere. So the single answer "It teaches local people how to care for plants" passes.
-  - **One word passes, even a wrong sentence.** "People brought goats to the island because ___" checks only for "meat". So "meat" alone passes, and so does "they did not want meat".
-  - **Right answers in other words fail.** "the animals looked bored" fails because the check wants "sad"; "birds came back" fails because it wants "return"; "it went up two times" fails because it wants "double".
-- *What to do:* for TWO-answer questions, check answer (1) and answer (2) separately; ask for at least a few words; and allow more than one accepted word ("sad" or "bored", "return" or "came back").
+- *Example:* "Give TWO answers" passes if "plant" and "teach" appear anywhere, so the single answer "It teaches local people how to care for plants" passes. "the animals looked bored" still fails where the key wants "sad". The AI check that grades the exams is not used here.
+- *What to do:* send these six typed-answer screens through the same AI check as the exam's open questions (it already knows how to score an answer against a paragraph), keeping the keyword check as the free first gate.
 
-**3. The last reading lessons don't look like the exam.** *(not changed)*
-- *Where:* Reading, the three summary lessons:
+**3. The three summary lessons at the end of Reading are still the old design.** *(not changed)*
+- *Where:* Reading, the last three lessons:
   - **שאלות 1 - סיכום**
   - **שאלות - סיכום**
   - **חלק 1 - סיכום**
-- *Example:* the very last lesson has a text of about 115 words and only multiple-choice questions; the real exam has about 340 words and 9 questions, 5 of them written. The review lesson still has the old "PRACTICE" rounds, and only its first round is required.
-- *What to do:* turn the last lesson into a small real exam (one ~340-word text, 9 questions, written answers checked), and rebuild the review lesson like the other reading lessons.
+- *Example:* the last one has one round: a text of 118 words and 4 multiple-choice questions, while the real exam has up to 300 words and 8-10 questions, written ones included. **שאלות - סיכום** has 143 words and 5 questions. **שאלות 1 - סיכום** still has the old "PRACTICE · טקסט מלא" rounds and no required-rounds setting, so only its first round is required.
+- *What to do:* make the last lesson a small real exam (one ~250-300-word text, 8 questions, written answers graded by the AI check) and rebuild the other two like the other reading lessons.
 
-**4. Three tips are still taught as rules that are always true.** *(partly fixed: the most/only lessons are done)*
-- *Where:* Reading, these three lessons. In the first it's round 2; in the last it's the summary line:
-  - **however / but - כמו במבחן**
-  - **שאלות 1 - סיכום**
-  - **אני מחפש, לא קורא**
-- *Example:* a summary screen still says "however / but = a turn; what comes after it = the point", although the same lesson shows a question whose answer comes *before* however. The review lesson still says "main / most / only all mean one answer".
-- *What to do:* say it as a hint: "usually the point comes after however, but always answer what the question asks". Use the most/only rule that's now in the most/only lessons.
+**4. The AI grading has never been compared with a teacher.** *(new)*
+- *Where:* the lesson writing tasks and the exam results.
+- *Example:* the marks come from a free-tier Gemini key. Nobody has checked whether it gives the essay 9 of 30 when a teacher would give 14, or accepts an answer that copies the passage. It also has a rate limit (30 requests per 5 minutes per address) and the limit counts addresses, not students, so one classroom behind one school network could hit it together.
+- *What to do:* grade 10-20 real student answers by hand and compare; count the limit per student before a class uses it.
 
-**5. Two required rounds can't be failed.** *(new)*
-- *Where:* round 2 of these two lessons:
+**5. Two required rounds can't be failed.** *(not changed)*
+- *Where:* round 2 of:
   - **מספרים ושמות - תרגול שאלות**
   - **השלמת משפט**
-- *Example:* the round only has "check yourself" screens, where the student sees the model answer and nothing is scored. So the round always counts as passed, even if the student typed nothing useful.
+- *Example:* the round only has "check yourself" screens, nothing scored, so it always counts as passed.
 - *What to do:* add one scored question to each of these rounds.
 
-**6. Topic words in the writing word list still never count.** *(partly fixed)*
-- *Where:* every writing screen with a word list in the Writing lessons.
-- *Example:* the word list stores each topic word with its Hebrew translation, and the app looks for the whole entry. So when a student writes "travel", this entry still doesn't count:
-  - travel / לטייל
-- *What to do:* count the English word alone.
+**6. Three tips are still taught as rules that are always true.** *(not changed)*
+- *Where:* Reading:
+  - **however / but - כמו במבחן** (the summary line "however / but = פנייה. מה שאחריו = הנקודה.")
+  - **שאלות 1 - סיכום** (a question that says "main / most / only" all mean one answer)
+- *Example:* the same course shows a question whose answer comes *before* however, and teaches that "most students" means the majority, not one answer.
+- *What to do:* say it as a hint ("usually the point comes after however, but answer what the question asks"), and use the rule that the most/only lessons already teach.
 
-**7. Students still never practise writing a full paragraph.** *(not changed)*
-- *Where:* Writing, the four topic lessons, and the writing practice in the seven skill lessons:
-  - **Do you think? - התנדבות**
-  - **What do you think? - חופשה**
-  - **What changes? - בית ספר**
-  - **At what age? - פלאפונים**
-- *Example:* a topic lesson asks for "70-90 words", but gives five separate one-line boxes and no word count. Students never see a model answer, and all writing practice can still be skipped.
-- *What to do:* one paragraph box with a word counter (the practice exams already have one), an example paragraph with a checklist, and one required full paragraph per topic lesson (needs your OK).
+**7. The newest practice exam is longer than the real one.** *(new)*
+- *Where:* **How Sitting Too Much Affects Us**.
+- *Example:* its text has 359 words; the handbook says up to 300. The other two have 233 and 276 words, and all three give 90 minutes, which is right.
+- *What to do:* trim it to about 300 words, or keep it on purpose as a harder one and say so in its description.
 
-**8. The practice exams are shorter than the Bagrut.** *(not changed)*
-- *Where:* both practice exams.
-- *Example:* their texts are 233 and 276 words and they give 90 minutes; the Bagrut's text is about 340 words and it lasts 1 hour 45 minutes.
-- *What to do:* lengthen the texts to about 340 words and set 105 minutes.
-
-**9. Small leftovers.**
+**8. Small leftovers.**
 - *Where and example:*
-  - Some questions repeat across lessons. "According to Dr. Diallo, why do most trees die?" is asked in the exam rounds of both of these:
+  - The optional rounds of the first reading lesson still have the old "PRACTICE · Round 1" true/false design:
+    - **אני מחפש, לא קורא**
+  - "According to Dr. Diallo, why do most trees die?" is now asked in four lessons:
     - **P1 - ניווט בטקסט**
     - **שתי תשובות**
-  - The fill-in answer check still cares about word order: "signs, books, screens" is marked wrong.
-  - One long dash is left in the opening screen of the Writing section:
-    - **כתיבה - הקדמה**
-  - The optional extra rounds of the first reading lesson still have the old true/false questions:
-    - **אני מחפש, לא קורא**
-- *What to do:* change the repeated questions, ignore word order in the fill-in, remove the dash, and replace the old optional rounds.
+    - **תשובה קצרה**
+    - **most / only - תרגול שאלות** (the limiters lesson)
+  - Four open items remain in the writing audit (`QC_report/writing-audit.md`): the lost organization points (a list or "Hi, my name is..." opener) are not taught, only one writing lesson links a Reading text, word-count never has the student count a real text, and the self-review checklist depends on honest ticking.
+- *What to do:* replace the old optional rounds, change the repeated questions, and do the four writing items (each is under an hour, listed in the writing audit).
 
-**10. No real student has used it yet, and the online editor is reported broken.**
-- *Where:* the whole module, and the lesson editor on the live site.
-- *Example:* everything in this report comes from reading the material. The other session also reports that the live editor can't save since 30 September, because its GitHub access key was rejected (I didn't check this myself).
-- *What to do:* let 2-3 students (weak, average, strong) use the rebuilt reading lessons for 20-30 minutes each; and create a new GitHub key for the live site and redeploy.
+**9. No real student has used it yet.**
+- *Where:* the whole module.
+- *Example:* everything in this report comes from reading the material and the code. The writing rounds are sized for about 5 minutes each, but that is a guess.
+- *What to do:* let 2-3 students (weak, average, strong) use the writing lessons from **YES or NO - לומר עמדה** and the rebuilt reading lessons, 20-30 minutes each, and time each round.
+
+**Closed since version 3:** the live editor's saving (editor commits appear again on 11 October; I didn't test the live site myself), the topic words in the writing word list, the missing full-paragraph writing, the always-skippable writing, the dash in the writing opening, the fill-in answer order.
 
 ## 4. The plan, in order
 
 | # | What to do | Solves | Size |
 |---|---|---|---|
-| 1 | Honest practice exam results | Bad 1 | Small |
-| 2 | Fairer typed-answer checks: check TWO answers separately, ask for a few words, allow more than one accepted word | Bad 2 | Small to medium |
-| 3 | A scored question in the two "can't fail" rounds; the three always-true tips; the small leftovers | Bad 4, 5, 9 | Small |
-| 4 | Count the English word in the writing word list | Bad 6 | Small |
-| 5 | Writing paragraph box with a word counter, an example paragraph with a checklist | Bad 7 | Medium |
-| 6 | Make one full paragraph per topic lesson required | Bad 7 | Small, **needs your OK** |
-| 7 | Rebuild the three summary lessons; the last one as a small real exam | Bad 3 | Large |
-| 8 | Longer practice exam texts and 105 minutes | Bad 8 | Medium |
-| 9 | Fix the live editor's GitHub key; try it with 2-3 real students | Bad 10 | You |
+| 1 | No "passed / failed" until every open answer is graded; a failed grading is "not checked", not 0 | Bad 1 | Small |
+| 2 | Typed answers in Reading through the AI check | Bad 2 | Small to medium |
+| 3 | A scored question in the two "can't fail" rounds; the two always-true tips; the small leftovers | Bad 5, 6, 8 | Small |
+| 4 | Compare the AI's marks with a teacher's on 10-20 answers; count the limit per student | Bad 4 | Small, **needs you** |
+| 5 | Rebuild the three summary lessons; the last one as a small real exam | Bad 3 | Large |
+| 6 | Try the writing and reading lessons with 2-3 real students | Bad 9 | You |
+| 7 | Trim the third practice exam, or label it as harder | Bad 7 | Small |
+| 8 | The four open writing items | Bad 8 | Small each |
 
-## 5. Fixed since version 2.3
+Cancelled from version 3: lengthening the practice exams to 340 words and 105 minutes (the handbook says 300 words and 90 minutes).
 
-- **Question mistakes:** the Night Market question now asks about the **unhappy** shop owners; the glasses exam no longer gives away an answer; the fill-in accepts small differences like "books, signs, screens"; "think" is now called an opinion word; the debatable In addition question was rewritten.
-- **Writing screens:** stuck-together lines and long dashes tidied in the writing openings, and in two reading lessons.
-- **Reading lessons:** all eleven method and question lessons and the four marking lessons rebuilt, each with a required exam-level round (10 new texts written, 5 existing ones made longer).
-- **Typed answers:** the three answer lessons now check what the student types.
-- **The most/only tip:** now taught correctly ("the most / the only / the main" = one answer; "most students" = the majority).
-- **Writing check:** now flags vague words, repeated ideas, very short sentences and examples without detail.
-- **Lesson editor:** shows and edits how many rounds are required, and marks each round as required or optional.
+## 5. Fixed since version 3
 
-Fixed earlier (see the history): the 11 wrong or double-answer questions, the silly wrong choices in Vocabulary, spelling by ear, typos in Vocabulary and Reading, and the NOT and however lessons.
+- **Writing rebuilt (10 October):** required rounds, three reps per move, paragraph box with counter, self-review, unseen topics, countdown, official length table, five new drill types, close wrong options.
+- **Grading:** local checks plus AI check for lesson writing; open answers and essay graded in the exams; errors highlighted on the answer; rules panel with module / section / lesson / screen levels.
+- **Exams:** a third practice exam; names are the English passage title; passage pinned beside the questions.
+- **Screens:** one marking screen instead of two; options shuffled in lessons; the "choose N" question type.
+- **Formatting:** direction rule, 13 missing titles, 8 broken paragraph markers, 6 missing instructions, 57 inverted arrows, run-together lines in the reading-navigation lesson; the title of **because - לחבר לסיבה** showed its raw id after the rename and is fixed.
+- **Ids:** every Module C lesson and exam id now starts with `c-`; saved progress migrates once.
+- **Editor:** undo / redo, rules panel, the settings next to the slide.
+
+Outside Module C, also built in this period: a spaced-repetition word deck and the shared reading path for Module E, handwriting scan (OCR) on writing tasks, a new home dashboard.
 
 ## 6. For reference: scores and decisions
 
-**Scores** (out of 10, as an English teacher would judge / as a student would feel):
+**Scores** (out of 10, editorial judgement as an English teacher / as a student; not measured):
 
-| Part | Teacher | Student | Change since 2.3 |
+| Part | Teacher | Student | Change since version 3 |
 |---|---|---|---|
 | Vocabulary | 7.5 | 7.6 | No change |
-| Reading | 7.7 | 7.8 | Up from 6.9 / 7.3: every lesson ends with a new text, typed answers |
-| Writing | 6.0 | 6.7 | Up from 5.5 / 6.5: the new writing check |
-| Practice exams: the questions | 7.8 | 7.8 | Up from 7.5: question mistakes fixed |
-| Practice exams: the results screen | 3 | 3 | No change |
-| **Whole module** | **about 7.4** | **about 7.6** | Up from about 7 |
+| Reading | 7.7 | 7.8 | No change |
+| Writing | 7.5 | 7.6 | Up from 6.0 / 6.7: rebuilt, required, graded |
+| Practice exams: the questions | 8.0 | 8.0 | Up from 7.8: third exam, graded open answers |
+| Practice exams: the results screen | 6.5 | 6.5 | Up from 3: written parts included; "passed" can still appear early |
+| **Whole module** | **about 7.8** | **about 7.9** | Up from about 7.4 / 7.6 |
 
 Nothing has been played by students, so these are judgements from reading the material.
 
-**You've decided:**
-- Vocabulary is optional; students can go straight to Reading. The "skip words you know" check is dropped.
+**You've decided (still in force):**
+- Vocabulary is optional; students can go straight to Reading.
 - In each lesson, everything up to the exam-level round must be finished; later rounds are optional extra practice.
-- Marking lessons have four required rounds (the last one an exam-size text with questions), plus an optional full marking round.
-- Copy-the-word spelling stays, next to spelling by ear.
-- The teacher's scoring advice in the lessons stays.
+- Marking lessons have four required rounds, plus an optional full marking round.
+- Writing is required: every round of every writing lesson counts.
+- Copy-the-word spelling stays, next to spelling by ear. The teacher's scoring advice in the lessons stays.
+- Exam names are the English passage title.
 
 **Waiting for you:**
-- Plan step 6: make a full paragraph per topic lesson required?
-- Plan step 9: the live editor's GitHub key, and a try-out with students.
+- Plan step 4: who marks 10-20 sample answers.
+- Plan step 6: the try-out with students.
+- Plan step 7: trim the third exam, or keep it as the harder one?
+- Whether the accessibility pass (ARIA / keyboard), postponed on 6 October, should come before the try-out.
 
 ---
 
@@ -1465,3 +1443,234 @@ Another Claude session made changes based on version 2.3 and wrote a handoff not
 - **Two required "your turn" rounds can't be failed:** only check-yourself screens, nothing scored (מספרים ושמות - תרגול שאלות and השלמת משפט, round 2).
 - **Some questions repeat** across exam rounds, such as "According to Dr. Diallo, why do most trees die?".
 - **The writing lab prototypes** (c7e60d0, 215844f, 9429b28) open only from the debug button, so students don't see them.
+
+### §16. Version 3, Part 1 as it was (snapshot, replaced on 2026-10-13)
+
+The top part of the report on 3 October 2026, kept word for word. Version 4 replaced it. Its bad point 8 (exam length: 340 words, 105 minutes) was wrong; see version 4, section 1.
+
+#### Module C: what's good, what's bad, and what to do
+
+**Version 3 · 3 October 2026**
+Reviewed by Claude, for Yam, after the changes made since version 2.3 (checked in the app's material, not just taken from the handoff notes).
+
+**What this report is for:** what's good and what's bad in Module C, where each thing is in the app today, an example of it, and what to do about it.
+
+**How to read it**
+- **The top part is today:** the good, the bad and the plan.
+- **The bottom part is the history** of how we got here. You don't need to read it; it's kept as a record.
+
+The app has three sections, plus two practice exams:
+
+| Section | Name in the app |
+|---|---|
+| Vocabulary | חלק א׳ - אוצר מילים |
+| Reading | חלק ב׳ - הבנת הנקרא |
+| Writing | חלק ג׳ - כתיבה |
+
+Lesson and exam names are written exactly as they appear in the app, each on its own line.
+
+---
+
+##### 1. In short
+
+Module C moved **from about 7 to about 7.5 out of 10.** The big step is in Reading: every reading lesson now ends with an exam-level round on a new text, and students now type real answers in the answer lessons.
+
+It is **still not a reliable sign that a student is ready.** The practice exams can still say "passed" when most of the exam wasn't checked, the new typed-answer checks can be fooled, the writing lessons still never ask for a full paragraph, and the last reading lesson still doesn't look like the exam.
+
+**Best use today:** next to classroom lessons, not instead of them. Nothing has been tried by a real student yet.
+
+##### 2. What's good
+
+Each point: **where it is in the app today · an example · what to do with it.**
+
+**1. A clear method for the reading test.**
+- *Where:* Reading, the first four lessons:
+  - **אני מחפש, לא קורא**
+  - **מפת הדרכים**
+  - **שיטת הרמזור**
+  - **P1 - ניווט בטקסט**
+- *Example:* the first lesson compares the exam to a WhatsApp group with 500 messages: to find the exam date you search for "exam", you don't read from the top.
+- *What to do:* keep it. Fix its one summary line (bad point 4).
+
+**2. Every reading lesson now ends with an exam-level round on a new text.** *(new)*
+- *Where:* Reading, all eleven method and question lessons, from the second lesson to the last answer lesson:
+  - **מפת הדרכים**
+  - **שתי תשובות**
+- *Example:* the traffic-light lesson ends with "SLEEPING IN SPACE", a text the student hasn't seen, with questions like "According to Dr. Laura Kim, how much longer do astronauts sleep with the new lights?". The student must finish this round before moving on. Old true/false rounds about the method are gone, and texts grow from about 120 words in the first lessons to about 250 in the later ones.
+- *What to do:* keep it, and try it with real students (plan step 9).
+
+**3. The marking lessons build up step by step.** *(new)*
+- *Where:* Reading, the four marking lessons:
+  - **מגנט לעין - מספרים ושמות**
+  - **NOT - המילה הכי מסוכנת**
+  - **most / only - תשובה אחת**
+  - **however / but - סימון בטקסט**
+- *Example:* round 3 adds "look-alike" words that must not be marked, like "butter" in the however/but lesson or "almost" and "everyone" in the most/only lesson. Round 4 is an exam-size text with a stopwatch and three questions, each needing one quick hunt. Marking every word in the long text is now an optional extra, so the required part doesn't wear students out.
+- *What to do:* keep it.
+
+**4. Students now type their own answers in the answer lessons.** *(new)*
+- *Where:* Reading, the exam rounds of:
+  - **תשובה קצרה**
+  - **השלמת משפט**
+  - **שתי תשובות**
+- *Example:* "Why do people come from far away to Fulda Creek?" The student types the answer, and the app checks it. Until now, written answers in Reading were never checked.
+- *What to do:* make the checking fairer (bad point 2).
+
+**5. The writing check now reads the sentences.** *(new)*
+- *Where:* every writing screen in the Writing lessons.
+- *Example:* "I think it is good because it is good." is now flagged: the app says the word "good" explains nothing. It also flags very short sentences, a second reason that repeats the first, and "For example" without a real detail.
+- *What to do:* keep it, and fix the word list (bad point 6).
+
+**6. The words that tell you what to write are taught on their own.**
+- *Where:* Vocabulary, these two lessons:
+  - **מילות שאלה: איפה ומה**
+  - **מילות שאלה: איך עונים**
+- *Example:* "Give TWO answers" means (1) and (2), not one long sentence with "and".
+- *What to do:* keep it.
+
+**7. Vocabulary questions that make you really know the word, and spelling by ear.**
+- *Where:* Vocabulary, the six content-word lessons and the final test:
+  - **מבחן סיכום - אוצר מילים**
+- *Example:* "Every member of ___ should follow the law": *social / society / societies / socially*. In the review rounds the app says a word, like "residents", and the student types it.
+- *What to do:* keep it. Vocabulary is now optional, so students can go straight to Reading.
+
+**8. Practice exams that look like the real Bagrut, with their question mistakes fixed.**
+- *Where:* the two practice exams:
+  - **משקפיים חכמות שעוזרות לעיוורים לראות**
+  - **ידידות יוצאות דופן בין בעלי חיים**
+- *Example:* one text in 4 paragraphs, 9 questions of the Bagrut's kinds, and an essay. The question that gave away the next answer is fixed, and "books, signs, screens" is now accepted.
+- *What to do:* fix the results screen (bad point 1).
+
+##### 3. What's bad (most serious first)
+
+Each point: **where it is in the app today · an example · what to do.**
+
+**1. The practice exam results can still mislead.** *(not changed)*
+- *Where:* the results screen and the opening page of both practice exams:
+  - **משקפיים חכמות שעוזרות לעיוורים לראות**
+  - **ידידות יוצאות דופן בין בעלי חיים**
+- *Example:* a student who answers only the multiple-choice questions and leaves every written answer and the essay empty can still see **"passed"**. The app checks only 39 of the 100 points.
+- *What to do:* no "passed / failed". Show "Checked: 24 of 39 points. Not checked: the written answers and the essay (61 points)."
+
+**2. The new typed-answer checks can be fooled, and can reject right answers.** *(new)*
+- *Where:* Reading, the exam rounds of:
+  - **תשובה קצרה**
+  - **השלמת משפט**
+  - **שתי תשובות**
+- *Example:*
+  - **"Give TWO answers" passes with one answer.** "According to Dr. Diallo, what does the project do? Give TWO answers" checks only that "plant" and "teach" appear somewhere. So the single answer "It teaches local people how to care for plants" passes.
+  - **One word passes, even a wrong sentence.** "People brought goats to the island because ___" checks only for "meat". So "meat" alone passes, and so does "they did not want meat".
+  - **Right answers in other words fail.** "the animals looked bored" fails because the check wants "sad"; "birds came back" fails because it wants "return"; "it went up two times" fails because it wants "double".
+- *What to do:* for TWO-answer questions, check answer (1) and answer (2) separately; ask for at least a few words; and allow more than one accepted word ("sad" or "bored", "return" or "came back").
+
+**3. The last reading lessons don't look like the exam.** *(not changed)*
+- *Where:* Reading, the three summary lessons:
+  - **שאלות 1 - סיכום**
+  - **שאלות - סיכום**
+  - **חלק 1 - סיכום**
+- *Example:* the very last lesson has a text of about 115 words and only multiple-choice questions; the real exam has about 340 words and 9 questions, 5 of them written. The review lesson still has the old "PRACTICE" rounds, and only its first round is required.
+- *What to do:* turn the last lesson into a small real exam (one ~340-word text, 9 questions, written answers checked), and rebuild the review lesson like the other reading lessons.
+
+**4. Three tips are still taught as rules that are always true.** *(partly fixed: the most/only lessons are done)*
+- *Where:* Reading, these three lessons. In the first it's round 2; in the last it's the summary line:
+  - **however / but - כמו במבחן**
+  - **שאלות 1 - סיכום**
+  - **אני מחפש, לא קורא**
+- *Example:* a summary screen still says "however / but = a turn; what comes after it = the point", although the same lesson shows a question whose answer comes *before* however. The review lesson still says "main / most / only all mean one answer".
+- *What to do:* say it as a hint: "usually the point comes after however, but always answer what the question asks". Use the most/only rule that's now in the most/only lessons.
+
+**5. Two required rounds can't be failed.** *(new)*
+- *Where:* round 2 of these two lessons:
+  - **מספרים ושמות - תרגול שאלות**
+  - **השלמת משפט**
+- *Example:* the round only has "check yourself" screens, where the student sees the model answer and nothing is scored. So the round always counts as passed, even if the student typed nothing useful.
+- *What to do:* add one scored question to each of these rounds.
+
+**6. Topic words in the writing word list still never count.** *(partly fixed)*
+- *Where:* every writing screen with a word list in the Writing lessons.
+- *Example:* the word list stores each topic word with its Hebrew translation, and the app looks for the whole entry. So when a student writes "travel", this entry still doesn't count:
+  - travel / לטייל
+- *What to do:* count the English word alone.
+
+**7. Students still never practise writing a full paragraph.** *(not changed)*
+- *Where:* Writing, the four topic lessons, and the writing practice in the seven skill lessons:
+  - **Do you think? - התנדבות**
+  - **What do you think? - חופשה**
+  - **What changes? - בית ספר**
+  - **At what age? - פלאפונים**
+- *Example:* a topic lesson asks for "70-90 words", but gives five separate one-line boxes and no word count. Students never see a model answer, and all writing practice can still be skipped.
+- *What to do:* one paragraph box with a word counter (the practice exams already have one), an example paragraph with a checklist, and one required full paragraph per topic lesson (needs your OK).
+
+**8. The practice exams are shorter than the Bagrut.** *(not changed)*
+- *Where:* both practice exams.
+- *Example:* their texts are 233 and 276 words and they give 90 minutes; the Bagrut's text is about 340 words and it lasts 1 hour 45 minutes.
+- *What to do:* lengthen the texts to about 340 words and set 105 minutes.
+
+**9. Small leftovers.**
+- *Where and example:*
+  - Some questions repeat across lessons. "According to Dr. Diallo, why do most trees die?" is asked in the exam rounds of both of these:
+    - **P1 - ניווט בטקסט**
+    - **שתי תשובות**
+  - The fill-in answer check still cares about word order: "signs, books, screens" is marked wrong.
+  - One long dash is left in the opening screen of the Writing section:
+    - **כתיבה - הקדמה**
+  - The optional extra rounds of the first reading lesson still have the old true/false questions:
+    - **אני מחפש, לא קורא**
+- *What to do:* change the repeated questions, ignore word order in the fill-in, remove the dash, and replace the old optional rounds.
+
+**10. No real student has used it yet, and the online editor is reported broken.**
+- *Where:* the whole module, and the lesson editor on the live site.
+- *Example:* everything in this report comes from reading the material. The other session also reports that the live editor can't save since 30 September, because its GitHub access key was rejected (I didn't check this myself).
+- *What to do:* let 2-3 students (weak, average, strong) use the rebuilt reading lessons for 20-30 minutes each; and create a new GitHub key for the live site and redeploy.
+
+##### 4. The plan, in order
+
+| # | What to do | Solves | Size |
+|---|---|---|---|
+| 1 | Honest practice exam results | Bad 1 | Small |
+| 2 | Fairer typed-answer checks: check TWO answers separately, ask for a few words, allow more than one accepted word | Bad 2 | Small to medium |
+| 3 | A scored question in the two "can't fail" rounds; the three always-true tips; the small leftovers | Bad 4, 5, 9 | Small |
+| 4 | Count the English word in the writing word list | Bad 6 | Small |
+| 5 | Writing paragraph box with a word counter, an example paragraph with a checklist | Bad 7 | Medium |
+| 6 | Make one full paragraph per topic lesson required | Bad 7 | Small, **needs your OK** |
+| 7 | Rebuild the three summary lessons; the last one as a small real exam | Bad 3 | Large |
+| 8 | Longer practice exam texts and 105 minutes | Bad 8 | Medium |
+| 9 | Fix the live editor's GitHub key; try it with 2-3 real students | Bad 10 | You |
+
+##### 5. Fixed since version 2.3
+
+- **Question mistakes:** the Night Market question now asks about the **unhappy** shop owners; the glasses exam no longer gives away an answer; the fill-in accepts small differences like "books, signs, screens"; "think" is now called an opinion word; the debatable In addition question was rewritten.
+- **Writing screens:** stuck-together lines and long dashes tidied in the writing openings, and in two reading lessons.
+- **Reading lessons:** all eleven method and question lessons and the four marking lessons rebuilt, each with a required exam-level round (10 new texts written, 5 existing ones made longer).
+- **Typed answers:** the three answer lessons now check what the student types.
+- **The most/only tip:** now taught correctly ("the most / the only / the main" = one answer; "most students" = the majority).
+- **Writing check:** now flags vague words, repeated ideas, very short sentences and examples without detail.
+- **Lesson editor:** shows and edits how many rounds are required, and marks each round as required or optional.
+
+Fixed earlier (see the history): the 11 wrong or double-answer questions, the silly wrong choices in Vocabulary, spelling by ear, typos in Vocabulary and Reading, and the NOT and however lessons.
+
+##### 6. For reference: scores and decisions
+
+**Scores** (out of 10, as an English teacher would judge / as a student would feel):
+
+| Part | Teacher | Student | Change since 2.3 |
+|---|---|---|---|
+| Vocabulary | 7.5 | 7.6 | No change |
+| Reading | 7.7 | 7.8 | Up from 6.9 / 7.3: every lesson ends with a new text, typed answers |
+| Writing | 6.0 | 6.7 | Up from 5.5 / 6.5: the new writing check |
+| Practice exams: the questions | 7.8 | 7.8 | Up from 7.5: question mistakes fixed |
+| Practice exams: the results screen | 3 | 3 | No change |
+| **Whole module** | **about 7.4** | **about 7.6** | Up from about 7 |
+
+Nothing has been played by students, so these are judgements from reading the material.
+
+**You've decided:**
+- Vocabulary is optional; students can go straight to Reading. The "skip words you know" check is dropped.
+- In each lesson, everything up to the exam-level round must be finished; later rounds are optional extra practice.
+- Marking lessons have four required rounds (the last one an exam-size text with questions), plus an optional full marking round.
+- Copy-the-word spelling stays, next to spelling by ear.
+- The teacher's scoring advice in the lessons stays.
+
+**Waiting for you:**
+- Plan step 6: make a full paragraph per topic lesson required?
+- Plan step 9: the live editor's GitHub key, and a try-out with students.
