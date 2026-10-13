@@ -9,14 +9,8 @@
 	import { staggerDelay } from '$lib/motion';
 	import { deckProgress } from '$lib/deck/deckProgress.svelte';
 	import { dayKey, dueWords } from '$lib/deck/scheduler';
-	import {
-		buildSession,
-		EXAM_BOX,
-		MAX_REVIEWS,
-		NEW_PER_SESSION,
-		wordResults,
-		type DeckSession
-	} from '$lib/deck/session';
+	import { buildSession, EXAM_BOX, wordResults, type DeckSession } from '$lib/deck/session';
+	import { deckToday } from '$lib/deck';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -29,10 +23,7 @@
 	let seen = $derived(words.filter((w) => progress[w.id]));
 	let due = $derived(dueWords(progress, today).length);
 	let known = $derived(seen.filter((w) => progress[w.id].box > EXAM_BOX).length);
-	let fresh = $derived(
-		due >= MAX_REVIEWS ? 0 : Math.min(NEW_PER_SESSION, words.length - seen.length)
-	);
-	let reviews = $derived(Math.min(due, MAX_REVIEWS));
+	let { reviews, fresh } = $derived(deckToday(mod.id));
 
 	let session = $state<DeckSession | null>(null);
 	// Answers per screen index, filled by the runner as each screen is left.
