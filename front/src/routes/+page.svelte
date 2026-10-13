@@ -4,13 +4,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import {
-		continueFrom,
-		continueHref,
-		latestEngagement,
-		lessonStats,
-		moduleRoute
-	} from '$lib/dashboard/data';
+	import { continueHref, lessonStats, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
@@ -51,10 +45,7 @@
 	let open = $derived(rows.find((r) => r.mod.id === openId));
 
 	// Back into the latest thing done, in any module of this unit level.
-	let resume = $derived.by(() => {
-		const item = continueFrom(latestEngagement());
-		return item && group.moduleIds.includes(item.moduleId) ? item : undefined;
-	});
+	let resume = $derived(resumeItem(group.moduleIds));
 
 	const chip =
 		'flex min-h-9 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';

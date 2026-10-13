@@ -128,10 +128,25 @@ export function continueFrom(engagement: Engagement | null): ContinueItem | unde
 
 /** The latest engagement, or for progress saved before it was tracked, the
  *  most recently opened lesson. */
-export function latestEngagement(): Engagement | null {
+function latestEngagement(): Engagement | null {
 	if (lastEngagement.value) return lastEngagement.value;
 	const recent = moduleLocation.mostRecent();
 	return recent ? { kind: 'lesson', moduleId: recent.moduleId, id: recent.lessonId } : null;
+}
+
+/** What home's continue bar offers for a unit level's modules: the latest thing
+ *  done if it's one of them, else the next lesson of any module with progress
+ *  (so a student with progress always has somewhere to continue). Undefined for
+ *  a student who hasn't started. */
+export function resumeItem(moduleIds: string[]): ContinueItem | undefined {
+	const latest = continueFrom(latestEngagement());
+	if (latest && moduleIds.includes(latest.moduleId)) return latest;
+	for (const moduleId of moduleIds) {
+		if (!lessonStats(moduleRoute(moduleId)).done && !moduleLocation.get(moduleId)) continue;
+		const lesson = todayLesson(moduleId);
+		if (lesson) return { kind: 'lesson', moduleId, lesson };
+	}
+	return undefined;
 }
 
 /** The lesson last opened if it isn't done yet, otherwise the first open,
