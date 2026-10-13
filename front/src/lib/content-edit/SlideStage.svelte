@@ -849,6 +849,10 @@
 												class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
 											></textarea>
 											{#if screen.checklist}
+												<p class="text-xs font-bold text-muted">
+													רשימת בדיקה עצמית - התלמיד מסמן כל סעיף על הטקסט שלו אחרי הבדיקה (לא נכנס
+													לציון)
+												</p>
 												<StringListEditor
 													bind:items={screen.checklist}
 													addLabel="+ סעיף"

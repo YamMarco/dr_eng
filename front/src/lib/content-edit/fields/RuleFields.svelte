@@ -32,28 +32,24 @@
 </script>
 
 <div class="flex flex-col gap-2 text-xs text-muted">
-	{#each BOOLS as row (row.key)}
-		<div class="flex items-center gap-2">
-			<input
-				type="checkbox"
-				checked={valueOf(row.key)}
-				onchange={(e) => onSet(row.key, e.currentTarget.checked)}
-			/>
-			<span class={isOwn(row.key) ? 'font-semibold text-ink' : ''}>{row.label}</span>
-			{@render source(row.key)}
-		</div>
+	{#each BOOLS.slice(0, 2) as row (row.key)}
+		{@render boolRow(row)}
 	{/each}
-	<div class="flex items-center gap-2">
-		<span class={isOwn('maxTypos') ? 'font-semibold text-ink' : ''}>טעויות קטנות מותרות</span>
-		<input
-			type="number"
-			min="0"
-			value={valueOf('maxTypos')}
-			oninput={(e) =>
-				onSet('maxTypos', e.currentTarget.value ? e.currentTarget.valueAsNumber : undefined)}
-			class="w-14 rounded-lg border-2 border-line bg-surface p-1"
-		/>
-		{@render source('maxTypos')}
+	<!-- the two small-slip settings share one row -->
+	<div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+		{@render boolRow(BOOLS[2])}
+		<div class="flex items-center gap-2">
+			<span class={isOwn('maxTypos') ? 'font-semibold text-ink' : ''}>טעויות קטנות מותרות</span>
+			<input
+				type="number"
+				min="0"
+				value={valueOf('maxTypos')}
+				oninput={(e) =>
+					onSet('maxTypos', e.currentTarget.value ? e.currentTarget.valueAsNumber : undefined)}
+				class="w-14 rounded-lg border-2 border-line bg-surface p-1"
+			/>
+			{@render source('maxTypos')}
+		</div>
 	</div>
 	<label class="mt-1 flex items-center gap-2 border-t border-line/60 pt-2">
 		<input
@@ -64,6 +60,18 @@
 		🔒 נעילה: "החלה על כל מה שמתחת" מרמה גבוהה יותר לא תשנה את ההגדרות כאן
 	</label>
 </div>
+
+{#snippet boolRow(row: (typeof BOOLS)[number])}
+	<div class="flex items-center gap-2">
+		<input
+			type="checkbox"
+			checked={valueOf(row.key)}
+			onchange={(e) => onSet(row.key, e.currentTarget.checked)}
+		/>
+		<span class={isOwn(row.key) ? 'font-semibold text-ink' : ''}>{row.label}</span>
+		{@render source(row.key)}
+	</div>
+{/snippet}
 
 {#snippet source(key: keyof RuleSet)}
 	{#if isOwn(key)}
