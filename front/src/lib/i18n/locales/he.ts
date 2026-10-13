@@ -29,8 +29,10 @@ export const he = {
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
 		tileLessons: 'שיעורים שהושלמו',
+		tileWords: 'מילים שנלמדו',
 		tileExam: 'שיא במבחן',
 		tileUntested: 'טרם',
+		examSoon: 'בקרוב',
 		todayStart: 'מתחילים',
 		todayContinue: 'ממשיכים',
 		lessonNext: 'השיעור הבא',
@@ -43,6 +45,8 @@ export const he = {
 			'path-done': 'סיימתם את המסלול. עכשיו מתאמנים על הדבר האמיתי.'
 		},
 		examsTitle: 'מבחני תרגול',
+		examsSoonDesc: 'מבחני המודול יתווספו בקרוב',
+		toExams: 'לכל המבחנים',
 		examsOpen: (total: number) => `${total} מבחנים · אפשר לנסות בכל רגע`,
 		examsSummary: (taken: number, total: number, best: number) =>
 			`${taken} מתוך ${total} · שיא ${best}`,

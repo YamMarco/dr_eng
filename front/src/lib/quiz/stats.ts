@@ -5,6 +5,15 @@ import { getInProgress, getLastAttempt, getResults } from './progress';
 import { scorePercent } from './scoring';
 import { i18n } from '$lib/i18n/index.svelte';
 
+/** Score tiers for the exam nugget. PASS matches scoring.ts's default passThreshold. */
+export const PASS_PERCENT = 60;
+export const GREAT_PERCENT = 85;
+export type ExamTier = 'great' | 'pass' | 'low';
+
+export function examTier(best: number): ExamTier {
+	return best >= GREAT_PERCENT ? 'great' : best >= PASS_PERCENT ? 'pass' : 'low';
+}
+
 /** One exam's record: every finished attempt's percent, oldest first. */
 export type ExamRow = {
 	quiz: Quiz;

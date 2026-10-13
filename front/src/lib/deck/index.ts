@@ -17,6 +17,14 @@ export function dueToday(moduleId: string): number {
 	return dueWords(deckProgress.get(moduleId), dayKey(new Date())).length;
 }
 
+/** How far a module's word deck has come: words met so far out of all of them.
+ *  Reactive: call from $derived. */
+export function deckStats(moduleId: string): { seen: number; total: number } {
+	const deck = getDeck(moduleId) ?? [];
+	const progress = deckProgress.get(moduleId);
+	return { seen: deck.filter((w) => progress[w.id]).length, total: deck.length };
+}
+
 /** Today's session size: reviews first, new words only while reviews leave room.
  *  Reactive: call from $derived. */
 export function deckToday(moduleId: string): { reviews: number; fresh: number } {

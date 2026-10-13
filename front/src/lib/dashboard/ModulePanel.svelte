@@ -31,6 +31,8 @@
 		sub?: string;
 		cta: string;
 		href: string;
+		/** Nothing to open yet: shown muted, not a link. */
+		soon?: boolean;
 	};
 
 	let t = $derived(i18n.dict.home);
@@ -41,7 +43,17 @@
 	let advice = $derived(examAdvice(mod.id));
 
 	let examAction = $derived.by((): Action | undefined => {
-		if (!exams.total) return undefined;
+		// Every module is a Bagrut exam: without exam content yet, say so rather than hide it.
+		if (!exams.total)
+			return {
+				kind: 'exam',
+				icon: ClipboardCheck,
+				title: t.examsTitle,
+				sub: t.examsSoonDesc,
+				cta: '',
+				href: '',
+				soon: true
+			};
 		const next = exams.next;
 		return {
 			kind: 'exam',
@@ -126,32 +138,50 @@
 	{/if}
 
 	{#each rows as row (row.kind)}
-		<a
-			href={row.href}
-			class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2 transition hover:bg-brand-soft/60 active:scale-[0.99]"
-		>
-			<span
-				class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand"
-			>
-				<row.icon size={18} aria-hidden="true" />
-			</span>
-			<span class="flex min-w-0 flex-1 flex-col">
-				<span dir="auto" class="truncate [text-align:match-parent] text-sm font-bold"
-					>{row.title}</span
+		{#if row.soon}
+			<div class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2 opacity-60">
+				<span
+					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-dashed border-line text-muted"
 				>
-				{#if row.sub}<span class="truncate text-xs text-muted">{row.sub}</span>{/if}
-			</span>
-			<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />
-		</a>
+					<row.icon size={18} aria-hidden="true" />
+				</span>
+				<span class="flex min-w-0 flex-1 flex-col">
+					<span class="truncate text-sm font-bold">{row.title}</span>
+					{#if row.sub}<span class="truncate text-xs text-muted">{row.sub}</span>{/if}
+				</span>
+			</div>
+		{:else}
+			<a
+				href={row.href}
+				class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2 transition hover:bg-brand-soft/60 active:scale-[0.99]"
+			>
+				<span
+					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand"
+				>
+					<row.icon size={18} aria-hidden="true" />
+				</span>
+				<span class="flex min-w-0 flex-1 flex-col">
+					<span dir="auto" class="truncate [text-align:match-parent] text-sm font-bold"
+						>{row.title}</span
+					>
+					{#if row.sub}<span class="truncate text-xs text-muted">{row.sub}</span>{/if}
+				</span>
+				<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />
+			</a>
+		{/if}
 	{/each}
 
-	{#if hasPath}
-		<a
-			href="{base}/lessons"
-			class="self-end px-3 py-1 text-sm font-semibold text-brand hover:underline"
+	{#if hasPath || exams.total}
+		<div
+			class="flex flex-wrap justify-end gap-x-5 gap-y-1 px-3 py-1 text-sm font-semibold text-brand"
 		>
-			{t.toPath}
-		</a>
+			{#if exams.total}
+				<a href="{base}/exam" class="hover:underline">{t.toExams}</a>
+			{/if}
+			{#if hasPath}
+				<a href="{base}/lessons" class="hover:underline">{t.toPath}</a>
+			{/if}
+		</div>
 	{/if}
 </section>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->

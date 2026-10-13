@@ -72,8 +72,13 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - **One screen on a phone, no scrolling.** **[decided]**
 - **The two things that matter, exams and lesson progress, each have one job per place**
   (phone space is tight, nothing is shown twice): **[decided]**
-  - *Tile* = status only: lessons done (`5/43` + bar) and best exam score, both always.
-  - *Continue bar* = the resume action.
+  - *Tile* = status only: lessons done (`5/43` + bar), the word engine's progress for
+    modules that have one (module E's words are a separate engine, not path lessons), and
+    the **exam nugget**: best score with a tier icon (trophy 85+, check 60+, target
+    below - a calm blue-grey, never red) and a dot per exam, filled once taken. Dashed
+    "טרם" before the first exam, "בקרוב" for a module with no exams yet.
+  - *Continue bar* = the resume action, styled apart from every card (dark pill, round
+    play button) so it reads as "the way back in", not another tile.
   - *Panel* = only what the bar doesn't already offer (an action the bar links to is left out).
 - **Each Bagrut module is an exam:** modules sit side by side as tiles. **[decided]**
 - **Continue bar** above the tiles: one tap back into the latest thing done in any module
@@ -82,6 +87,8 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - Tapping a tile opens its panel below (one at a time). The panel has at most **one big
   card**: the exam when it's advised (see section 3), otherwise the module's lesson;
   everything else is a row. **[decided]**
+- **Every panel has a way to exams:** an exam row (muted "coming soon" if the module has
+  no exams yet) and an "all exams" link. **[decided]**
 - Ads, when they come: bottom of home only.
 
 ## Evidence

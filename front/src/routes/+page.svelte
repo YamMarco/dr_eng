@@ -7,7 +7,7 @@
 	import { continueHref, lessonStats, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import { examStats } from '$lib/quiz/stats';
-	import { getDeck } from '$lib/deck';
+	import { deckStats, getDeck } from '$lib/deck';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import ModuleTile from '$lib/dashboard/ModuleTile.svelte';
@@ -30,6 +30,7 @@
 				exams,
 				hasPath: route.length > 0,
 				...lessonStats(route),
+				words: getDeck(id) ? deckStats(id) : undefined,
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
 		})
@@ -92,6 +93,7 @@
 					exams={row.exams}
 					done={row.done}
 					total={row.total}
+					words={row.words}
 					comingSoon={row.comingSoon}
 					selected={row.mod.id === openId}
 					onclick={() => (chosenId = row.mod.id)}
