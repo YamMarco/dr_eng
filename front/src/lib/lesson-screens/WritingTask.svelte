@@ -21,6 +21,7 @@
 	import { resolveRules } from '$lib/feedback/rules';
 	import { gradeLesson } from '$lib/feedback/grade';
 	import FeedbackView from '$lib/feedback/FeedbackView.svelte';
+	import MarkedText from '$lib/feedback/MarkedText.svelte';
 	import type { Feedback } from '$lib/feedback/types';
 
 	const mode = getScreenMode();
@@ -127,6 +128,20 @@
 	let llmMode = $derived(mode === 'lesson' && rules.llmGrade && !hasAccepted);
 	let feedback = $state<Feedback | null>(null);
 	let grading = $state(false);
+	// After an LLM check the answer itself shows the errors, in place of the inputs.
+	let showMarks = $derived(llmMode && checked && !!feedback);
+	// Marks are offsets into the lines joined by newlines; shift them onto each line box.
+	let lineMarks = $derived.by(() => {
+		let start = 0;
+		return inputLines.map((line) => {
+			const end = start + line.length;
+			const own = (feedback?.marks ?? [])
+				.filter((m) => m.start >= start && m.end <= end)
+				.map((m) => ({ ...m, start: m.start - start, end: m.end - start }));
+			start = end + 1;
+			return own;
+		});
+	});
 	let allOk = $derived(
 		llmMode
 			? !!feedback?.pass
@@ -264,17 +279,27 @@
 {/if}
 
 {#if mode === 'quiz' || paragraph}
-	<textarea
-		dir="ltr"
-		rows="7"
-		disabled={checked || grading}
-		bind:value={essayText}
-		placeholder={i18n.dict.selfCheck.placeholder}
-		class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
-			? allOk
+	{#if showMarks}
+		<MarkedText
+			text={essayText}
+			marks={feedback!.marks}
+			class="mt-4 rounded-xl border-2 p-3 {allOk
 				? 'border-brand bg-brand-soft/40'
-				: 'border-miss bg-miss-soft/40'
-			: 'border-line bg-surface focus:border-brand'}"></textarea>
+				: 'border-miss bg-miss-soft/40'}"
+		/>
+	{:else}
+		<textarea
+			dir="ltr"
+			rows="7"
+			disabled={checked || grading}
+			bind:value={essayText}
+			placeholder={i18n.dict.selfCheck.placeholder}
+			class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
+				? allOk
+					? 'border-brand bg-brand-soft/40'
+					: 'border-miss bg-miss-soft/40'
+				: 'border-line bg-surface focus:border-brand'}"></textarea>
+	{/if}
 	{#if !checked}
 		<HandwritingScanButton onText={appendScan} />
 	{/if}
@@ -287,19 +312,29 @@
 {:else}
 	<div class="mt-4 flex flex-col gap-3">
 		{#each inputLines as line, i (i)}
-			<input
-				type="text"
-				dir="ltr"
-				disabled={checked || grading}
-				value={line}
-				oninput={(e) => (inputLines[i] = e.currentTarget.value)}
-				placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
-				class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
-					? allOk
-						? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
-						: 'border-miss bg-miss-soft/40 motion-safe:animate-shake-wrong'
-					: 'border-line bg-surface focus:border-brand'}"
-			/>
+			{#if showMarks}
+				<MarkedText
+					text={line}
+					marks={lineMarks[i]}
+					class="rounded-xl border-2 px-3 py-2 {allOk
+						? 'border-brand bg-brand-soft/40'
+						: 'border-miss bg-miss-soft/40'}"
+				/>
+			{:else}
+				<input
+					type="text"
+					dir="ltr"
+					disabled={checked || grading}
+					value={line}
+					oninput={(e) => (inputLines[i] = e.currentTarget.value)}
+					placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
+					class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
+						? allOk
+							? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
+							: 'border-miss bg-miss-soft/40 motion-safe:animate-shake-wrong'
+						: 'border-line bg-surface focus:border-brand'}"
+				/>
+			{/if}
 		{/each}
 	</div>
 	{#if screen.wordCounter}
@@ -313,7 +348,8 @@
 {/if}
 
 {#if mode === 'lesson'}
-	{#if autoCheck}
+	<!-- after an LLM check the marks sit on the answer itself -->
+	{#if autoCheck && !showMarks}
 		<WritingCheck
 			text={paragraph ? essayText : lines.join('\n')}
 			options={{ prompt: paragraph ? question : prompt, extraWords: wordBank }}
@@ -325,7 +361,7 @@
 		{#if grading}
 			<p class="mt-3 text-sm font-semibold text-muted">{i18n.dict.feedback.checking}</p>
 		{:else if feedback}
-			<FeedbackView text={paragraph ? essayText : lines.join('\n')} {feedback} />
+			<FeedbackView {feedback} />
 			{#if !feedback.pass}
 				<p class="mt-2 text-xs font-semibold text-muted">{i18n.dict.feedback.replayNote}</p>
 			{/if}

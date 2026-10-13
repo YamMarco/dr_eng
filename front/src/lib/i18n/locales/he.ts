@@ -237,6 +237,7 @@ export const he = {
 		} as Record<string, string>,
 		timeUp: 'הזמן נגמר. בבחינה הייתם מגישים עכשיו - סיימו את המשפט ובדקו.',
 		timeTaken: (time: string, limit: number) => `זמן כתיבה: ${time} (יעד: עד ${limit} דקות)`,
+		reviewToggle: 'תשובה לדוגמה ובדיקה עצמית',
 		checklistTitle: 'השוו לתשובה לדוגמה, וסמנו רק מה שבאמת יש אצלכם:',
 		checklistDone: 'מעולה - זה בדיוק מה שהבודק מחפש.',
 		checkLength: (min: number, words: number) =>
@@ -341,6 +342,7 @@ export const he = {
 		checking: 'בודקים את התשובה...',
 		partial: 'הבדיקה המלאה לא זמינה כרגע. אלה הטעויות שמצאנו בינתיים.',
 		replayNote: 'השאלה תחזור בסוף השיעור.',
+		tapHint: 'הטעויות מסומנות בתשובה שלכם - לחצו על סימון כדי לראות מה לתקן.',
 		gate: {
 			empty: 'עוד לא כתבתם תשובה.',
 			'not-english': 'התשובה צריכה להיות באנגלית.',
