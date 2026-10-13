@@ -7,6 +7,7 @@ export const sectionMeta: SectionMeta[] = [
 	{
 		id: 'c-2',
 		modules: ['c'],
+		vocab: true,
 		titleEn: 'Part A - Vocabulary',
 		intro: {
 			greeting: 'The words that keep coming back',

@@ -4,10 +4,10 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import { continueHref, lessonStats, moduleRoute, resumeItem } from '$lib/dashboard/data';
+	import { continueHref, moduleRoute, resumeItem, tileProgress } from '$lib/dashboard/data';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import { examStats } from '$lib/quiz/stats';
-	import { deckStats, getDeck } from '$lib/deck';
+	import { getDeck } from '$lib/deck';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import ModuleTile from '$lib/dashboard/ModuleTile.svelte';
@@ -29,8 +29,7 @@
 				mod: modules[id],
 				exams,
 				hasPath: route.length > 0,
-				...lessonStats(route),
-				words: getDeck(id) ? deckStats(id) : undefined,
+				...tileProgress(id, route),
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
 		})
@@ -49,17 +48,17 @@
 	let resume = $derived(resumeItem(group.moduleIds));
 
 	const chip =
-		'flex min-h-9 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';
+		'flex min-h-8 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';
 </script>
 
 {#if !profile.value}
 	<Onboarding />
 {:else}
 	<main
-		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-5 pb-6 sm:pt-10 md:max-w-2xl"
+		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-10 sm:pb-6 md:max-w-2xl"
 	>
 		<header class="flex flex-wrap items-center gap-2">
-			<h1 class="me-auto text-2xl font-extrabold tracking-tight">{t.greeting}</h1>
+			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl">{t.greeting}</h1>
 			{#if profile.daysToExam !== undefined}
 				<span class={chip} title={t.daysToExam(profile.daysToExam)}>
 					<CalendarClock size={16} class="text-brand" aria-hidden="true" />
@@ -91,8 +90,7 @@
 				<ModuleTile
 					mod={row.mod}
 					exams={row.exams}
-					done={row.done}
-					total={row.total}
+					lessons={row.lessons}
 					words={row.words}
 					comingSoon={row.comingSoon}
 					selected={row.mod.id === openId}

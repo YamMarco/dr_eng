@@ -117,10 +117,10 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 <section
 	in:fly={{ y: 8, duration: 220, easing: cubicOut }}
-	class="flex flex-col gap-2 rounded-3xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70"
+	class="flex flex-col gap-1 rounded-2xl bg-surface p-2.5 shadow-md ring-1 shadow-overlay/5 ring-line/70"
 >
 	{#if primary}
-		<div class="flex flex-col gap-3 rounded-2xl bg-brand p-4 text-white">
+		<div class="flex flex-col gap-2.5 rounded-2xl bg-brand p-3 text-white">
 			<div class="flex items-start gap-3">
 				<primary.icon size={22} class="mt-0.5 shrink-0" aria-hidden="true" />
 				<div class="flex min-w-0 flex-col gap-0.5">
@@ -130,7 +130,7 @@
 			</div>
 			<a
 				href={primary.href}
-				class="flex min-h-11 items-center justify-center rounded-full bg-white px-6 font-bold text-brand-dark shadow-sm transition active:scale-[0.98]"
+				class="flex min-h-10 items-center justify-center rounded-full bg-white px-6 font-bold text-brand-dark shadow-sm transition active:scale-[0.98]"
 			>
 				{primary.cta}
 			</a>
@@ -139,11 +139,11 @@
 
 	{#each rows as row (row.kind)}
 		{#if row.soon}
-			<div class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2 opacity-60">
+			<div class="flex min-h-12 items-center gap-3 rounded-xl px-2 py-1.5 opacity-60">
 				<span
-					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-dashed border-line text-muted"
+					class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-dashed border-line text-muted"
 				>
-					<row.icon size={18} aria-hidden="true" />
+					<row.icon size={16} aria-hidden="true" />
 				</span>
 				<span class="flex min-w-0 flex-1 flex-col">
 					<span class="truncate text-sm font-bold">{row.title}</span>
@@ -153,12 +153,12 @@
 		{:else}
 			<a
 				href={row.href}
-				class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-2 transition hover:bg-brand-soft/60 active:scale-[0.99]"
+				class="flex min-h-12 items-center gap-3 rounded-xl px-2 py-1.5 transition hover:bg-brand-soft/60 active:scale-[0.99]"
 			>
 				<span
-					class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand"
+					class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-brand"
 				>
-					<row.icon size={18} aria-hidden="true" />
+					<row.icon size={16} aria-hidden="true" />
 				</span>
 				<span class="flex min-w-0 flex-1 flex-col">
 					<span dir="auto" class="truncate [text-align:match-parent] text-sm font-bold"
@@ -172,9 +172,7 @@
 	{/each}
 
 	{#if hasPath || exams.total}
-		<div
-			class="flex flex-wrap justify-end gap-x-5 gap-y-1 px-3 py-1 text-sm font-semibold text-brand"
-		>
+		<div class="flex flex-wrap justify-end gap-x-5 gap-y-1 px-2 text-sm font-semibold text-brand">
 			{#if exams.total}
 				<a href="{base}/exam" class="hover:underline">{t.toExams}</a>
 			{/if}

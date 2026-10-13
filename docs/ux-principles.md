@@ -69,12 +69,15 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 
 ## 7. Home
 
-- **One screen on a phone, no scrolling.** **[decided]**
+- **One screen on a phone, no scrolling** - checked down to 360x640 with the tallest panel
+  open (module E). Any addition to home must keep that true. **[decided]**
 - **The two things that matter, exams and lesson progress, each have one job per place**
   (phone space is tight, nothing is shown twice): **[decided]**
-  - *Tile* = status only: lessons done (`5/43` + bar), the word engine's progress for
-    modules that have one (module E's words are a separate engine, not path lessons), and
-    the **exam nugget**: best score with a tier icon (trophy 85+, check 60+, target
+  - *Tile* = status only, **the same three slots in the same order for every module**
+    (so tiles compare at a glance): path lessons (`0/31` + bar), words (+ bar) and the
+    exam nugget pinned to the bottom. Words are module E's separate word engine, or for
+    C its vocabulary section (`vocab: true` in `sectionMeta`, left out of the lessons
+    count so nothing is counted twice). The **exam nugget**: best score with a tier icon (trophy 85+, check 60+, target
     below - a calm blue-grey, never red) and a dot per exam, filled once taken. Dashed
     "טרם" before the first exam, "בקרוב" for a module with no exams yet.
   - *Continue bar* = the resume action, styled apart from every card (dark pill, round

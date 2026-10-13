@@ -47,6 +47,8 @@ export interface SectionMeta {
 	modules: string[];
 	/** Progress key shared by every module that shows the section. Default: the owning module. */
 	progressScope?: string;
+	/** This section teaches the module's vocabulary: home counts it as the module's "words". */
+	vocab?: boolean;
 	titleEn?: string;
 	intro?: { greeting: string; goal?: string };
 }

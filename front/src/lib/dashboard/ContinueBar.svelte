@@ -41,22 +41,21 @@
 <a
 	href={continueHref(item, groupId)}
 	in:fly={{ y: 8, duration: 250, easing: cubicOut }}
-	class="flex items-center gap-3 rounded-[28px] bg-overlay py-2.5 ps-2.5 pe-5 text-white shadow-lg ring-1 ring-brand/50 transition hover:shadow-xl active:scale-[0.99]"
+	class="flex items-center gap-3 rounded-[26px] bg-overlay py-2 ps-2 pe-4 text-white shadow-lg ring-1 ring-brand/50 transition hover:shadow-xl active:scale-[0.99]"
 >
 	<span
-		class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-white"
+		class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white"
 	>
-		<Play size={22} fill="currentColor" aria-hidden="true" />
+		<Play size={20} fill="currentColor" aria-hidden="true" />
 	</span>
 	<span class="flex min-w-0 flex-1 flex-col">
-		<span class="flex items-center gap-1.5 text-xs font-semibold text-white/70">
-			<view.icon size={13} aria-hidden="true" />
-			{t.todayContinue} · {moduleLabel}
-		</span>
-		<span dir="auto" class="line-clamp-2 [text-align:match-parent] leading-snug font-bold"
+		<span dir="auto" class="truncate [text-align:match-parent] leading-snug font-bold"
 			>{view.title}</span
 		>
-		<span class="truncate text-xs text-white/70">{view.sub}</span>
+		<span class="flex items-center gap-1.5 text-xs text-white/70">
+			<view.icon size={12} class="shrink-0" aria-hidden="true" />
+			<span class="truncate">{moduleLabel} · {view.sub}</span>
+		</span>
 	</span>
 </a>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->

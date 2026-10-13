@@ -6,6 +6,7 @@ import {
 	getLesson,
 	getLessonsBySection,
 	moduleSections as sectionsOf,
+	sectionMeta,
 	type LessonNode
 } from '$lib/content';
 import { i18n } from '$lib/i18n/index.svelte';
@@ -20,7 +21,7 @@ import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getInProgress } from '$lib/quiz/progress';
 import { examStats } from '$lib/quiz/stats';
 import { getQuiz, type Quiz } from '$lib/quizzes';
-import { deckToday } from '$lib/deck';
+import { deckStats, deckToday, getDeck } from '$lib/deck';
 import { lastEngagement, type Engagement } from '$lib/lastEngagement.svelte';
 
 /** `total` counts only lessons with content written ("ready" to play). */
@@ -57,11 +58,31 @@ export function isWritingLesson(lesson: LessonNode): boolean {
 }
 
 /** A module's lessons done out of those written. */
-export function lessonStats(route: RouteSection[]): { done: number; total: number } {
+export function lessonStats(route: RouteSection[]): Progress {
 	return {
 		done: route.reduce((sum, s) => sum + s.done, 0),
 		total: route.reduce((sum, s) => sum + s.total, 0)
 	};
+}
+
+export type Progress = { done: number; total: number };
+
+/** What a module tile shows, the same three slots for every module: path lessons,
+ *  words and exams. Words are the module's word engine when it has one (E), else
+ *  its vocabulary section (C, whose vocab is path lessons - left out of `lessons`
+ *  so nothing is counted twice). */
+export function tileProgress(
+	moduleId: string,
+	route: RouteSection[]
+): { lessons: Progress; words: Progress | undefined } {
+	const vocabIds = new Set(sectionMeta.filter((s) => s.vocab).map((s) => s.id));
+	const lessons = lessonStats(route.filter((s) => !vocabIds.has(s.id)));
+	if (getDeck(moduleId)) {
+		const { seen, total } = deckStats(moduleId);
+		return { lessons, words: { done: seen, total } };
+	}
+	const vocab = route.filter((s) => vocabIds.has(s.id));
+	return { lessons, words: vocab.length ? lessonStats(vocab) : undefined };
 }
 
 /** Share of a module's lessons that must be done before exams are suggested -
