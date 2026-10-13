@@ -6,7 +6,9 @@
 	import { goto } from '$app/navigation';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { editModel } from './editModel.svelte';
-	import { saveSection, saveTitles } from './api';
+	import { saveRules, saveSection, saveTitles } from './api';
+	import { rulesStore } from './rulesStore.svelte';
+	import RulesPanel from './RulesPanel.svelte';
 	import { validateSection, issuesByNode } from './validate';
 	import GraphEditor from './GraphEditor.svelte';
 	import LessonEditorView from './LessonEditorView.svelte';
@@ -20,8 +22,19 @@
 
 	let mode = $state<'graph' | 'lesson'>('graph');
 
+	let rulesOpen = $state(false);
+	// Unsaved lesson edits or rule settings.
+	let dirty = $derived(editModel.dirty || rulesStore.dirty);
+
 	onMount(() => {
 		editModel.load();
+		let key: string | null = null;
+		try {
+			key = sessionStorage.getItem('content-edit-key');
+		} catch {
+			// no storage: the read just 401s outside dev and the bundled rules stay
+		}
+		rulesStore.load(key ? { 'x-content-edit-key': key } : {});
 		if (lesson && editModel.node(lesson)) {
 			editModel.select(
 				lesson,
@@ -40,7 +53,7 @@
 	let saveMsg = $state('');
 	async function save() {
 		const changed = editModel.changedSections;
-		if (!editModel.hasChanges) return;
+		if (!editModel.hasChanges && !rulesStore.dirty) return;
 		saveState = 'saving';
 		saveMsg = '';
 		try {
@@ -53,6 +66,10 @@
 			const titles = editModel.titles.changes();
 			if (Object.keys(titles.upserts).length || titles.deletes.length)
 				committed ||= (await saveTitles(titles.upserts, titles.deletes)).committed;
+			if (rulesStore.dirty) {
+				committed ||= (await saveRules($state.snapshot(rulesStore.file))).committed;
+				rulesStore.markClean();
+			}
 			editModel.markClean();
 			saveState = 'saved';
 			saveMsg = committed
@@ -77,7 +94,7 @@
 	}
 
 	function exit() {
-		if (editModel.dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
+		if (dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
 		if (history.length > 1) history.back();
 		else goto('/');
 	}
@@ -95,7 +112,7 @@
 <svelte:window
 	onkeydown={onKey}
 	onbeforeunload={(e) => {
-		if (editModel.dirty) {
+		if (dirty) {
 			e.preventDefault();
 			e.returnValue = '';
 		}
@@ -130,6 +147,12 @@
 
 		<UndoRedoButtons model={editModel} />
 
+		<button
+			type="button"
+			class="rounded-lg border border-line px-2.5 py-1.5 text-sm font-semibold text-muted hover:bg-line/60"
+			onclick={() => (rulesOpen = true)}>⚙️ כללי בדיקה</button
+		>
+
 		{#if issues.length}
 			<button
 				type="button"
@@ -154,13 +177,13 @@
 		{/if}
 		<button
 			type="button"
-			class="rounded-lg px-4 py-1.5 text-sm font-bold text-white shadow-sm disabled:cursor-not-allowed {editModel.dirty
+			class="rounded-lg px-4 py-1.5 text-sm font-bold text-white shadow-sm disabled:cursor-not-allowed {dirty
 				? 'bg-emerald-600 hover:bg-emerald-700'
 				: 'bg-line/70 text-muted'}"
-			disabled={!editModel.dirty || saveState === 'saving'}
+			disabled={!dirty || saveState === 'saving'}
 			onclick={save}
 		>
-			{saveState === 'saving' ? 'שומר…' : editModel.dirty ? '💾 שמירת שינויים' : 'הכול שמור'}
+			{saveState === 'saving' ? 'שומר…' : dirty ? '💾 שמירת שינויים' : 'הכול שמור'}
 		</button>
 	</header>
 
@@ -205,6 +228,7 @@
 		lesson={playNode}
 		roundIndex={play.round}
 		startScreenIndex={play.index}
+		rules={rulesStore.file}
 		lessonLabel={editModel.titles.get(playNode.id)}
 		hasNextLesson={false}
 		onExit={() => (play = null)}
@@ -213,3 +237,5 @@
 		onNextRound={() => (play = null)}
 	/>
 {/if}
+
+<RulesPanel bind:open={rulesOpen} />

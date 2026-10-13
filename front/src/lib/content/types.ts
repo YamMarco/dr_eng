@@ -2,7 +2,6 @@
 // (see schema.sql). Screens keep the existing strict union so authoring
 // and the runner share one type.
 import type { LessonScreen } from '$lib/lesson-screens/types';
-import type { Rules } from '$lib/feedback/rules';
 
 export type { LessonScreen };
 
@@ -39,8 +38,6 @@ export interface LessonNode {
 	/** Bigger node — no scored screen in any round. */
 	big: boolean;
 	image?: string;
-	/** Rule settings for every screen in this lesson (cascade: module > section > lesson > screen). */
-	rules?: Rules;
 	content: LessonContent;
 }
 
@@ -52,6 +49,4 @@ export interface SectionMeta {
 	progressScope?: string;
 	titleEn?: string;
 	intro?: { greeting: string; goal?: string };
-	/** Rule settings for every lesson in this section. */
-	rules?: Rules;
 }

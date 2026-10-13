@@ -33,5 +33,6 @@ export async function gradeLesson(
 		return { stage: 'partial', pass: false, marks: l1.marks };
 	}
 	const marks = mergeMarks(l1.marks, locateMarks(text, corrected, verdict.marks));
-	return { stage: 'llm', pass: verdict.pass, marks };
+	const general = verdict.marks.filter((m) => !m.span.trim()).map((m) => m.tag);
+	return { stage: 'llm', pass: verdict.pass, marks, general };
 }

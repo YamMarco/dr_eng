@@ -82,7 +82,6 @@
 			...ruleChain,
 			{
 				llmGrade: screen.llmGrade,
-				maxAttempts: screen.maxAttempts,
 				maxTypos: screen.maxTypos,
 				capitalIsError: screen.capitalIsError,
 				autoCheck: screen.autoCheck
@@ -128,8 +127,6 @@
 	let llmMode = $derived(mode === 'lesson' && rules.llmGrade && !hasAccepted);
 	let feedback = $state<Feedback | null>(null);
 	let grading = $state(false);
-	let attempts = $state(0);
-	let attemptsLeft = $derived(rules.maxAttempts - attempts);
 	let allOk = $derived(
 		llmMode
 			? !!feedback?.pass
@@ -150,22 +147,11 @@
 		});
 		grading = false;
 		feedback = result;
-		if (result.stage === 'partial') return; // no verdict, no attempt spent
-		attempts += 1;
-		if (result.pass || attemptsLeft <= 0) finish(result.pass);
-		else label = i18n.dict.feedback.retry;
-	}
-
-	function finish(pass: boolean) {
+		// One attempt, like every other question: a miss is replayed at the end of the lesson.
+		// No verdict (LLM unavailable) records nothing, so the runner replays it too.
 		checked = true;
-		recordAnswer(score!, pass);
+		if (result.stage !== 'partial') recordAnswer(score!, result.pass);
 		label = i18n.dict.lesson.nextQuestionButton;
-	}
-
-	/** Gives up on this question: it counts as missed and the runner replays it at the end. */
-	function skip() {
-		if (feedback?.stage !== 'partial') finish(false);
-		onAdvance();
 	}
 
 	// A scanned page fills the inputs in order; extra sentences go on the last one.
@@ -339,14 +325,8 @@
 			<p class="mt-3 text-sm font-semibold text-muted">{i18n.dict.feedback.checking}</p>
 		{:else if feedback}
 			<FeedbackView text={paragraph ? essayText : lines.join('\n')} {feedback} />
-			{#if !checked}
-				<div class="mt-2 flex flex-wrap items-center gap-3 text-xs font-semibold text-muted">
-					{#if feedback.stage !== 'partial'}
-						<span>{i18n.dict.feedback.attemptsLeft(attemptsLeft)}</span>
-					{/if}
-					<button type="button" class="underline" onclick={skip}>{i18n.dict.feedback.skip}</button>
-					<span>{i18n.dict.feedback.replayNote}</span>
-				</div>
+			{#if !feedback.pass}
+				<p class="mt-2 text-xs font-semibold text-muted">{i18n.dict.feedback.replayNote}</p>
 			{/if}
 		{/if}
 		{#if checked}

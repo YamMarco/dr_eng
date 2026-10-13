@@ -45,6 +45,11 @@
 	import TextField from './fields/TextField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
 	import StringListEditor from './fields/StringListEditor.svelte';
+	import RuleFields from './fields/RuleFields.svelte';
+	import { editModel } from './editModel.svelte';
+	import { rulesStore } from './rulesStore.svelte';
+	import { ruleChain } from '$lib/content/rules';
+	import { resolveRules, type Rules } from '$lib/feedback/rules';
 	import {
 		MARK_ALL_PALETTE,
 		markAllSwatch,
@@ -68,6 +73,16 @@
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screen = $derived.by<any>(() => (path ? (model.screenAt(nodeId, path) ?? null) : null));
+
+	// Lesson writing tasks: what the module > section > lesson rules give this screen.
+	let inheritedRules = $derived.by(() => {
+		const node = isExam ? undefined : editModel.node(nodeId);
+		return resolveRules(node ? ruleChain(rulesStore.file, node) : []);
+	});
+	function setScreenRule(key: keyof Rules, value: boolean | number | undefined) {
+		if (value === undefined || (key === 'rulesLock' && !value)) delete screen[key];
+		else screen[key] = value;
+	}
 
 	// Copy-pasteable pointer to this exact screen (e.g. "q-words-1 · round 3 ·
 	// screen 6"), so a bug report can name a screen precisely instead of
@@ -540,7 +555,7 @@
 												value={screen.points ?? 1}
 												onChange={(v) => (screen.points = v)}
 											/>
-										{:else}
+										{:else if screen.type !== 'writing-task'}
 											<label class="flex items-center gap-2 text-xs text-muted">
 												<input
 													type="checkbox"
@@ -745,6 +760,19 @@
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
 									{#if !isExam}
+										<SettingsGroup
+											title="כללי בדיקה"
+											hint="ערך שלא הוגדר כאן מגיע מהשיעור / הפרק / המודול (⚙️ כללי בדיקה בראש העורך)."
+										>
+											<RuleFields own={screen} inherited={inheritedRules} onSet={setScreenRule} />
+											{#if screen.llmGrade ?? inheritedRules.llmGrade}
+												<TextField
+													label="הערות לבודק ה-AI (באנגלית: מה תשובה טובה אומרת, טעויות נפוצות)"
+													stacked
+													bind:value={screen.gradingNotes}
+												/>
+											{/if}
+										</SettingsGroup>
 										{@const fixedShape = (screen.acceptedAnswers?.length ?? 0) > 0}
 										<SettingsGroup
 											title="תנאי מעבר"
@@ -758,23 +786,6 @@
 													value={screen.minWordsUsed}
 													onChange={(v) => (screen.minWordsUsed = v)}
 												/>
-												<div class="flex flex-wrap gap-x-4 gap-y-2">
-													{#if screen.autoCheck ?? true}
-														<NumberField
-															label="טעויות קטנות מותרות"
-															value={screen.maxTypos ?? 1}
-															onChange={(v) => (screen.maxTypos = v)}
-														/>
-														<label class="flex items-center gap-2 text-xs text-muted">
-															<input
-																type="checkbox"
-																checked={screen.capitalIsError ?? true}
-																onchange={(e) => (screen.capitalIsError = e.currentTarget.checked)}
-															/>
-															אות ראשונה קטנה = טעות
-														</label>
-													{/if}
-												</div>
 												<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
 													<span>מהלכים חובה:</span>
 													{#each MOVE_IDS as move (move)}

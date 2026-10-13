@@ -23,6 +23,8 @@ export type Feedback = {
 	gate?: GateReason;
 	/** Layer 1 + Layer 2 together, sorted by position. */
 	marks: Mark[];
+	/** LLM tags about the whole answer (off-topic, incomplete): no position in the text. */
+	general?: string[];
 	/** Exam only. */
 	score?: { got: number; of: number; criteria: Record<string, number> };
 };

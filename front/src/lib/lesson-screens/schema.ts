@@ -337,8 +337,18 @@ export const writingTaskSchema = z
 			),
 		minSentences: z.number().int().min(0).optional(),
 		minWordsUsed: z.number().int().min(0).optional(),
-		maxTypos: z.number().int().min(0).optional().describe('Forgiven small slips. Default 1.'),
-		capitalIsError: z.boolean().optional().describe('Default true.'),
+		maxTypos: z
+			.number()
+			.int()
+			.min(0)
+			.optional()
+			.describe(
+				'Forgiven small slips. Unset = inherited from the lesson / section / module rules (default 1).'
+			),
+		capitalIsError: z
+			.boolean()
+			.optional()
+			.describe('Unset = inherited from the rules (default true).'),
 		autoCheck: autoCheck.optional(),
 		llmGrade: z
 			.boolean()
@@ -346,13 +356,12 @@ export const writingTaskSchema = z
 			.describe(
 				'Lesson mode: after the local checks pass, an LLM judges the answer against the prompt (pass/fail + marked errors). Overrides the section / lesson / module rule.'
 			),
-		maxAttempts: z
-			.number()
-			.int()
-			.min(1)
-			.max(5)
+		rulesLock: z
+			.boolean()
 			.optional()
-			.describe('With llmGrade: submits allowed before the student moves on. Default 2.'),
+			.describe(
+				"Keeps this screen's own rule fields (llmGrade, maxTypos, capitalIsError, autoCheck) when the editor applies a module / section / lesson rule to everything below."
+			),
 		gradingNotes: z
 			.string()
 			.optional()

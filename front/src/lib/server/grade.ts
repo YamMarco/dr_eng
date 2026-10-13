@@ -4,22 +4,15 @@ import { z } from 'zod';
 import { chat } from './llm';
 import LESSON_PROMPT from './prompts/grade-short.md?raw';
 import EXAM_PROMPT from './prompts/grade-essay.md?raw';
-import { EXAM_CRITERIA, FATAL_TAGS, TAGS, TAG_IDS } from '$lib/feedback/tags';
+import { EXAM_CRITERIA, FATAL_TAGS, TAG_IDS } from '$lib/feedback/tags';
 import type { ExamVerdict, GradeRequest, LessonVerdict, LlmMark } from '$lib/feedback/types';
 
 export const MAX_TEXT = 4000;
 
-const tagLines = TAGS.map((t) => `- ${t.id}${t.fatal ? ' (FATAL)' : ''}: ${t.desc}`).join('\n');
-const examCriteria = EXAM_CRITERIA.filter((c) => c.id !== 'mechanics');
-
-/** The system prompt as the model gets it (also served by GET /api/grade for the workbench). */
+/** The system prompt exactly as the model gets it: the .md file, untouched, so it can be
+ *  pasted as-is into Gemini's web UI (AI Studio) to try changes. */
 export function systemPrompt(kind: GradeRequest['kind']): string {
-	return kind === 'lesson'
-		? LESSON_PROMPT.replace('{{tags}}', tagLines)
-		: EXAM_PROMPT.replace('{{tags}}', tagLines).replace(
-				'{{criteria}}',
-				examCriteria.map((c) => `- ${c.id}: 0-${c.max}`).join('\n')
-			);
+	return kind === 'lesson' ? LESSON_PROMPT : EXAM_PROMPT;
 }
 
 export function userPrompt(req: GradeRequest): string {
@@ -68,7 +61,7 @@ export async function gradeLesson(req: GradeRequest): Promise<LessonVerdict> {
 
 export async function gradeExam(req: GradeRequest): Promise<ExamVerdict> {
 	const shape = Object.fromEntries(
-		examCriteria.map((c) => [c.id, z.number().int().min(0).max(c.max)])
+		EXAM_CRITERIA.map((c) => [c.id, z.number().int().min(0).max(c.max)])
 	);
 	const parsed = z
 		.object({ scores: z.object(shape), marks: z.array(markSchema).default([]) })

@@ -1,0 +1,75 @@
+<script lang="ts">
+	// The answer-checking rules of one level (module / section / lesson / screen).
+	// Each row is either inherited (greyed, shows the value from above) or set here.
+	// Shared by the rules panel and the writing-task screen settings.
+	import type { RuleSet, Rules } from '$lib/feedback/rules';
+
+	let {
+		own,
+		inherited,
+		onSet
+	}: {
+		/** What this level sets itself. */
+		own: Rules;
+		/** The value each field takes from the levels above. */
+		inherited: RuleSet;
+		/** `undefined` = back to inheriting. */
+		onSet: (key: keyof Rules, value: boolean | number | undefined) => void;
+	} = $props();
+
+	const BOOLS: { key: 'llmGrade' | 'autoCheck' | 'capitalIsError'; label: string }[] = [
+		{ key: 'llmGrade', label: 'בדיקת תשובה ע״י AI' },
+		{ key: 'autoCheck', label: 'בדיקה אוטומטית (כתיב, פיסוק) והערות' },
+		{ key: 'capitalIsError', label: 'אות ראשונה קטנה = טעות' }
+	];
+	const isOwn = (key: keyof RuleSet) => own[key] !== undefined;
+	const valueOf = <K extends keyof RuleSet>(key: K): RuleSet[K] =>
+		(own[key] as RuleSet[K] | undefined) ?? inherited[key];
+</script>
+
+<div class="flex flex-col gap-2 text-xs text-muted">
+	{#each BOOLS as row (row.key)}
+		<div class="flex items-center gap-2">
+			<input
+				type="checkbox"
+				checked={valueOf(row.key)}
+				onchange={(e) => onSet(row.key, e.currentTarget.checked)}
+			/>
+			<span class={isOwn(row.key) ? 'font-semibold text-ink' : ''}>{row.label}</span>
+			{@render source(row.key)}
+		</div>
+	{/each}
+	<div class="flex items-center gap-2">
+		<span class={isOwn('maxTypos') ? 'font-semibold text-ink' : ''}>טעויות קטנות מותרות</span>
+		<input
+			type="number"
+			min="0"
+			value={valueOf('maxTypos')}
+			oninput={(e) =>
+				onSet('maxTypos', e.currentTarget.value ? e.currentTarget.valueAsNumber : undefined)}
+			class="w-14 rounded-lg border-2 border-line bg-surface p-1"
+		/>
+		{@render source('maxTypos')}
+	</div>
+	<label class="mt-1 flex items-center gap-2 border-t border-line/60 pt-2">
+		<input
+			type="checkbox"
+			checked={own.rulesLock ?? false}
+			onchange={(e) => onSet('rulesLock', e.currentTarget.checked)}
+		/>
+		🔒 לא לדרוס בהחלה גורפת מלמעלה
+	</label>
+</div>
+
+{#snippet source(key: keyof RuleSet)}
+	{#if isOwn(key)}
+		<button
+			type="button"
+			class="text-brand underline"
+			title="חזרה לערך שמגיע מלמעלה"
+			onclick={() => onSet(key, undefined)}>הוגדר כאן · ביטול</button
+		>
+	{:else}
+		<span class="text-muted/70">(בירושה)</span>
+	{/if}
+{/snippet}

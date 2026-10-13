@@ -3,6 +3,7 @@
 // production backend requires it on each request (dev doesn't check it).
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
+import type { RulesFile } from '$lib/content/rules';
 
 const KEY_STORAGE = 'content-edit-key';
 
@@ -44,9 +45,12 @@ export async function uploadImage(jpeg: Blob): Promise<string> {
 	return (await res.json()).url;
 }
 
-async function post(body: unknown): Promise<{ ok: true; committed: boolean }> {
+async function post(
+	body: unknown,
+	url = '/api/content-edit'
+): Promise<{ ok: true; committed: boolean }> {
 	const key = storedKey();
-	const res = await fetch('/api/content-edit', {
+	const res = await fetch(url, {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json',
@@ -81,4 +85,9 @@ export function saveTitles(upserts: Record<string, string>, deletes: string[]) {
  *  one write/commit - the exam-editor's equivalent of saveSection. */
 export function saveExamChanges(moduleId: string, upserts: QuizNode[], deletes: string[]) {
 	return post({ examModuleId: moduleId, upserts, deletes });
+}
+
+/** Replaces the module / section / lesson rule settings (content/rules.json). */
+export function saveRules(file: RulesFile) {
+	return post(file, '/api/content-edit/rules');
 }

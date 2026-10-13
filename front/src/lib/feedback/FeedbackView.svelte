@@ -35,6 +35,9 @@
 			{feedback.pass ? '✓' : '✗'}
 			{feedback.pass ? t.pass : t.fail}
 		</p>
+		{#each feedback.general ?? [] as tag (tag)}
+			<p class="mt-1 text-xs font-semibold text-miss">• {t.tag[tag] ?? tag}</p>
+		{/each}
 	{/if}
 
 	{#if feedback.marks.length > 0}
