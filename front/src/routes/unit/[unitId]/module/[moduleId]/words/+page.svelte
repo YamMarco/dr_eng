@@ -11,6 +11,7 @@
 	import { dayKey, dueWords } from '$lib/deck/scheduler';
 	import { buildSession, EXAM_BOX, wordResults, type DeckSession } from '$lib/deck/session';
 	import { deckToday } from '$lib/deck';
+	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -32,6 +33,7 @@
 	function start(extra = false) {
 		results = {};
 		session = buildSession(words, progress, today, { extra });
+		lastEngagement.record({ kind: 'words', moduleId: mod.id });
 	}
 
 	// Leaving early still saves what was answered; unanswered words stay as they were.

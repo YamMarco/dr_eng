@@ -9,6 +9,7 @@
 	import { getQuizNode } from '$lib/quiz';
 	import { getLastAttempt } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
+	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
 	import QuizSolution from '$lib/quiz/QuizSolution.svelte';
 	import type { PageProps } from './$types';
@@ -33,7 +34,12 @@
 		t.timeRule(quizNode?.options.durationMinutes ?? 90)
 	]);
 
-	const card = 'rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	function start() {
+		running = true;
+		lastEngagement.record({ kind: 'exam', moduleId: data.mod.id, id: quiz.id });
+	}
+
+	const card ='rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 </script>
 
 {#if running && quizNode}
@@ -83,7 +89,7 @@
 			class="flex flex-col gap-3"
 		>
 			{#if quizNode}
-				<Button onclick={() => (running = true)}>
+				<Button onclick={start}>
 					{row?.inProgress
 						? t.resumeButton
 						: taken

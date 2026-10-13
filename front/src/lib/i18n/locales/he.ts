@@ -35,6 +35,7 @@ export const he = {
 		todayStart: 'מתחילים',
 		todayContinue: 'ממשיכים',
 		lessonNext: 'השיעור הבא',
+		examMidway: 'השארתם את המבחן באמצע',
 		lessonMidway: 'באמצע השיעור',
 		desktopNote: 'שיעור כתיבה - הכי נוח מהמחשב',
 		examReason: {

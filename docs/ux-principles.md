@@ -67,11 +67,14 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - **One screen on a phone, no scrolling.** **[decided]**
 - **Each Bagrut module is an exam:** modules sit side by side as tiles, each led by its best
   exam score, with a ring for lesson progress. **[decided]**
-- Tapping a tile opens its panel below (one at a time). In the panel, the coach's pick is
-  the one filled card: an exam left open, a diagnostic exam before anything else, an exam
-  after each finished section, else the next lesson. Everything else is a row. **[decided]**
-- No duplicate "next lesson" elsewhere on home - quick continue lives in the panel; the
-  full path is one tap away. **[decided]**
+- **Continue bar** above the tiles: one tap back into the latest thing done in any module
+  (an exam left mid-way, words still due, else that module's lesson). Hidden for a new
+  student. **[decided]**
+- Tapping a tile opens its panel below (one at a time). The **exam is the panel's one big
+  card**, its copy driven by the coach (diagnostic first, an exam after each finished
+  section, resume a half-done one). A module the student has started shows its continue
+  as a small row; a module without exams and not yet started leads with its first
+  lesson. **[decided]**
 - Ads, when they come: bottom of home only.
 
 ## Evidence

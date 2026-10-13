@@ -4,7 +4,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import { moduleRoute } from '$lib/dashboard/data';
+	import { continueFrom, latestEngagement, moduleRoute } from '$lib/dashboard/data';
+	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
@@ -12,8 +13,9 @@
 	import ModuleTile from '$lib/dashboard/ModuleTile.svelte';
 	import ModulePanel from '$lib/dashboard/ModulePanel.svelte';
 
-	// Home = the Bagrut modules side by side (each one is an exam), and the
-	// open module's actions below. One screen on a phone, no scrolling.
+	// Home = a "continue" bar for the latest thing done, the Bagrut modules side
+	// by side (each one is an exam), and the open module's actions below. One
+	// screen on a phone, no scrolling.
 	const WEEKLY_GOAL = 4;
 
 	let t = $derived(i18n.dict.home);
@@ -42,6 +44,12 @@
 			rows.find((r) => !r.comingSoon)?.mod.id
 	);
 	let open = $derived(rows.find((r) => r.mod.id === openId));
+
+	// Back into the latest thing done, in any module of this unit level.
+	let resume = $derived.by(() => {
+		const item = continueFrom(latestEngagement());
+		return item && group.moduleIds.includes(item.moduleId) ? item : undefined;
+	});
 
 	const chip =
 		'flex min-h-9 items-center gap-1.5 rounded-full bg-surface px-3 text-sm font-bold ring-1 ring-line/70';
@@ -76,6 +84,10 @@
 				<span aria-hidden="true" dir="ltr">{activity.daysThisWeek}/{WEEKLY_GOAL}</span>
 			</span>
 		</header>
+
+		{#if resume}
+			<ContinueBar item={resume} groupId={group.id} />
+		{/if}
 
 		<div class="grid gap-2" style="grid-template-columns: repeat({rows.length}, minmax(0, 1fr))">
 			{#each rows as row (row.mod.id)}

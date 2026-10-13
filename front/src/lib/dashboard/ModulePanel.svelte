@@ -9,10 +9,11 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { roundsCompleted } from '$lib/lessonPath';
 	import type { ExamStats } from '$lib/quiz/stats';
+	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import { isWritingLesson, nextStep, todayLesson } from './data';
 
 	// The open module's actions: its exams, the lesson to continue and today's
-	// words. The coach's pick (see nextStep) is the filled card; the rest are rows.
+	// words. nextStep's reason (diagnostic, section done, ...) drives the exam's copy.
 	type Props = { mod: CurriculumModule; groupId: string; exams: ExamStats; hasPath: boolean };
 
 	let { mod, groupId, exams, hasPath }: Props = $props();
@@ -91,9 +92,11 @@
 		};
 	});
 
-	let primaryKind = $derived(
-		step.kind === 'lesson' ? 'lesson' : examAction ? 'exam' : lessonAction ? 'lesson' : undefined
-	);
+	// The exam is the module's big card. Without exams, a module not yet started
+	// leads with its first lesson; once started, continuing is a small row (the
+	// big "continue" lives in home's top bar).
+	let started = $derived(!!moduleLocation.get(mod.id));
+	let primaryKind = $derived(examAction ? 'exam' : started ? undefined : 'lesson');
 	let actions = $derived([examAction, lessonAction, wordsAction].filter((a) => !!a));
 	let primary = $derived(actions.find((a) => a.kind === primaryKind));
 	let rows = $derived(actions.filter((a) => a !== primary));

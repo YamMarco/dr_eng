@@ -11,7 +11,9 @@ import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/l
 import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getInProgress } from '$lib/quiz/progress';
 import { examStats } from '$lib/quiz/stats';
-import type { Quiz } from '$lib/quizzes';
+import { getQuiz, type Quiz } from '$lib/quizzes';
+import { deckToday } from '$lib/deck';
+import { lastEngagement, type Engagement } from '$lib/lastEngagement.svelte';
 
 /** `total` counts only lessons with content written ("ready" to play). */
 export type RouteSection = { id: string; done: number; gold: number; total: number };
@@ -67,6 +69,36 @@ export function nextStep(moduleId: string): NextStep {
 	const lesson = todayLesson(moduleId);
 	if (lesson) return { kind: 'lesson', lesson };
 	return next ? { kind: 'exam', quiz: next, reason: 'path-done' } : { kind: 'done' };
+}
+
+export type ContinueItem =
+	| { kind: 'lesson'; moduleId: string; lesson: LessonNode }
+	| { kind: 'exam'; moduleId: string; quiz: Quiz }
+	| { kind: 'words'; moduleId: string };
+
+/** What "continue" resumes: the latest engagement while it's still open (an exam
+ *  mid-way, words still due), else that module's lesson to continue. */
+export function continueFrom(engagement: Engagement | null): ContinueItem | undefined {
+	if (!engagement) return undefined;
+	const { kind, moduleId, id } = engagement;
+	if (kind === 'exam' && id && getInProgress(id)) {
+		const quiz = getQuiz(id);
+		if (quiz) return { kind, moduleId, quiz };
+	}
+	if (kind === 'words') {
+		const today = deckToday(moduleId);
+		if (today.reviews + today.fresh > 0) return { kind, moduleId };
+	}
+	const lesson = todayLesson(moduleId);
+	return lesson && { kind: 'lesson', moduleId, lesson };
+}
+
+/** The latest engagement, or for progress saved before it was tracked, the
+ *  most recently opened lesson. */
+export function latestEngagement(): Engagement | null {
+	if (lastEngagement.value) return lastEngagement.value;
+	const recent = moduleLocation.mostRecent();
+	return recent ? { kind: 'lesson', moduleId: recent.moduleId, id: recent.lessonId } : null;
 }
 
 /** The lesson last opened if it isn't done yet, otherwise the first open,

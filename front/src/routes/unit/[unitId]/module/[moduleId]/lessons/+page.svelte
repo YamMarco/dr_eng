@@ -24,6 +24,7 @@
 	import { SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
 	import { moduleLocation } from '$lib/moduleLocation.svelte';
+	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
 	import DeckGateway from '$lib/deck/DeckGateway.svelte';
@@ -312,7 +313,12 @@
 		enterRunner();
 		activeId = node.lesson.id;
 		activeRoundIndex = nextRoundIndex(node);
-		moduleLocation.set(mod.id, node.lesson.id);
+		remember(node.lesson.id);
+	}
+
+	function remember(lessonId: string) {
+		moduleLocation.set(mod.id, lessonId);
+		lastEngagement.record({ kind: 'lesson', moduleId: mod.id, id: lessonId });
 	}
 
 	function closeNode() {
@@ -361,7 +367,7 @@
 		}
 		activeId = next.lesson.id;
 		activeRoundIndex = nextRoundIndex(next);
-		moduleLocation.set(mod.id, next.lesson.id);
+		remember(next.lesson.id);
 	}
 
 	function dismissLabelOnOutsideClick(event: MouseEvent) {
