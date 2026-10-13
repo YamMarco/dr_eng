@@ -13,7 +13,9 @@
 	import { createLessonSession } from '$lib/lesson-screens/session.svelte';
 	import { provideQuizAnswerSlot, type QuizAnswerSlot } from './answers.svelte';
 	import { screensWithIds } from './screenIds';
-	import { scoreQuiz, type QuizScore } from './scoring';
+	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
+	import { gradeExam } from '$lib/feedback/gradeExam';
+	import type { ExamGrade } from '$lib/feedback/types';
 	import { saveAttempt, saveInProgress, getInProgress, clearInProgress } from './progress';
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
@@ -75,6 +77,11 @@
 	let entryIndex = $state(untrack(() => entryIndexFor(startPartIndex, startScreenIndex)));
 	let submitted = $state(false);
 	let score = $state<QuizScore | null>(null);
+	// Open answers (writing tasks) are LLM-graded after submit; see feedback/gradeExam.
+	let autoScore: QuizScore | null = null;
+	let grades = $state<Record<string, ExamGrade>>({});
+	let grading = $state(false);
+	let submittedAt = 0;
 	let showExitPrompt = $state(false);
 	let showResumePrompt = $state(savedProgress !== null);
 	let footerDisabled = $state(false);
@@ -164,15 +171,38 @@
 
 	function submit() {
 		if (submitted) return;
-		score = scoreQuiz(quiz, answers);
+		autoScore = scoreQuiz(quiz, answers);
+		score = autoScore;
 		submitted = true;
-		if (preview) return;
+		submittedAt = Date.now();
+		persist(); // saved before grading too, so closing the page mid-grading keeps the attempt
+		void gradeOpen();
+	}
+
+	/** Grades the open answers (all, or only `ids` on a retry) and folds them into the score. */
+	async function gradeOpen(ids?: Set<string>) {
+		if (!autoScore || autoScore.manual.items.length === 0) return;
+		grading = true;
+		const fresh = await gradeExam(quiz, $state.snapshot(answers), ids);
+		grades = { ...grades, ...fresh };
+		score = applyGrades(quiz, autoScore, grades);
+		grading = false;
+		persist();
+	}
+
+	function retryGrading() {
+		void gradeOpen(new Set(Object.keys(grades).filter((id) => grades[id].status === 'failed')));
+	}
+
+	function persist() {
+		if (preview || !score) return;
 		saveAttempt({
 			quizId: quiz.id,
 			startedAt,
-			submittedAt: Date.now(),
+			submittedAt,
 			answers: { ...answers },
-			score
+			score,
+			grades: $state.snapshot(grades)
 		});
 	}
 
@@ -259,7 +289,7 @@
 
 <div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
 	{#if submitted && score}
-		<QuizReport {quiz} {score} onBack={onExit} />
+		<QuizReport {quiz} {score} {grades} {grading} onRetry={retryGrading} onBack={onExit} />
 	{:else}
 		<AppBar title={i18n.title(quiz.id)} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
 			{#snippet trailing()}

@@ -3,6 +3,7 @@
 
 import '$lib/legacyIds';
 import type { QuizScore } from './scoring';
+import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
 
 export interface QuizAttempt {
@@ -11,6 +12,8 @@ export interface QuizAttempt {
 	submittedAt: number;
 	answers: Record<string, unknown>;
 	score: QuizScore;
+	/** LLM grades of the open answers, by screen id (absent while grading or before this existed). */
+	grades?: Record<string, ExamGrade>;
 }
 
 export interface QuizInProgress {

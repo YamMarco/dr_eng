@@ -4,6 +4,17 @@ import { runLayer1, type Layer1Options } from './layer1';
 import type { RuleSet } from './rules';
 import type { Feedback, GradeRequest, LessonVerdict } from './types';
 
+/** POST /api/grade; throws when the LLM is unavailable, rate-limited or the reply is bad. */
+export async function postGrade<T>(body: GradeRequest): Promise<T> {
+	const res = await fetch('/api/grade', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(body)
+	});
+	if (!res.ok) throw new Error(`grade ${res.status}`);
+	return res.json();
+}
+
 export async function gradeLesson(
 	text: string,
 	rules: RuleSet,
@@ -13,21 +24,14 @@ export async function gradeLesson(
 	if (l1.gate) return { stage: 'l1-gate', pass: false, gate: l1.gate, marks: l1.marks };
 
 	const corrected = applyFixes(text, l1.marks);
-	const body: GradeRequest = {
-		kind: 'lesson',
-		question: task.question,
-		text: corrected.text,
-		notes: task.notes
-	};
 	let verdict: LessonVerdict;
 	try {
-		const res = await fetch('/api/grade', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(body)
+		verdict = await postGrade<LessonVerdict>({
+			kind: 'lesson',
+			question: task.question,
+			text: corrected.text,
+			notes: task.notes
 		});
-		if (!res.ok) throw new Error(`grade ${res.status}`);
-		verdict = await res.json();
 	} catch {
 		// LLM down or rate-limited: the local marks alone, no verdict
 		return { stage: 'partial', pass: false, marks: l1.marks };

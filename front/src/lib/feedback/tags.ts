@@ -28,10 +28,4 @@ export const TAGS: TagDef[] = [
 
 export const TAG_IDS = new Set(TAGS.map((t) => t.id));
 export const FATAL_TAGS = new Set(TAGS.filter((t) => t.fatal).map((t) => t.id));
-
-/** Bagrut Module C writing criteria scored by the LLM (mechanics, 4 pts, is Layer 1's). */
-export const EXAM_CRITERIA = [
-	{ id: 'content', max: 10 },
-	{ id: 'vocabulary', max: 8 },
-	{ id: 'language', max: 8 }
-] as const;
+export const CONTENT_TAGS = new Set(TAGS.filter((t) => t.area === 'content').map((t) => t.id));

@@ -13,6 +13,16 @@ model_list:
       model: gemini/gemini-3.1-flash-lite
       api_key: os.environ/GEMINI_API_KEY
 
+  # Exam open reading questions: short, scored 0..points against the passage.
+  - model_name: grade-reading
+    litellm_params:
+      model: openai/gpt-5.4-nano
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: grade-reading-fallback
+    litellm_params:
+      model: gemini/gemini-3.1-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+
   # 30-point essay: needs judgment on a rubric.
   - model_name: grade-essay
     litellm_params:
@@ -38,6 +48,7 @@ router_settings:
   timeout: 45
   fallbacks:
     - grade-short: [grade-short-fallback]
+    - grade-reading: [grade-reading-fallback]
     - grade-essay: [grade-essay-fallback]
     - ocr: [ocr-fallback]
 

@@ -1,10 +1,40 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import ExamAnswerReview from './ExamAnswerReview.svelte';
+	import { screensWithIds } from './screenIds';
 	import type { QuizNode } from './types';
 	import type { QuizScore } from './scoring';
+	import type { ExamGrade } from '$lib/feedback/types';
 
-	let { quiz, score, onBack }: { quiz: QuizNode; score: QuizScore; onBack: () => void } = $props();
+	let {
+		quiz,
+		score,
+		grades = {},
+		grading = false,
+		onRetry,
+		onBack
+	}: {
+		quiz: QuizNode;
+		score: QuizScore;
+		/** LLM grades of the open answers, by screen id. */
+		grades?: Record<string, ExamGrade>;
+		/** Open answers are being graded right now. */
+		grading?: boolean;
+		/** Re-grade the answers whose grading failed. */
+		onRetry?: () => void;
+		onBack: () => void;
+	} = $props();
+
+	const screens = $derived(
+		new Map(quiz.parts.flatMap((part) => screensWithIds(part).map((e) => [e.id, e.screen])))
+	);
+	// Question numbers as the student saw them in the navigator.
+	const numbers = $derived(
+		new Map(quiz.parts.flatMap((part) => screensWithIds(part)).map((e, i) => [e.id, i + 1]))
+	);
+	const headline = $derived(score.total ?? score.auto);
+	const anyFailed = $derived(Object.values(grades).some((g) => g.status === 'failed'));
 </script>
 
 <main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-10 pb-12">
@@ -47,11 +77,16 @@
 		<h1 class="mt-4 text-2xl font-extrabold">
 			{score.passed ? i18n.dict.quiz.passedTitle : i18n.dict.quiz.failedTitle}
 		</h1>
-		{#if score.auto.max > 0}
+		{#if headline.max > 0}
 			<p class="mt-4 text-lg font-bold text-brand-dark tabular" dir="ltr">
-				{score.auto.earned}/{score.auto.max}
+				{headline.earned}/{headline.max}
 			</p>
-			<p class="mt-1 text-sm text-muted">{i18n.dict.quiz.autoScoreLabel}</p>
+			<p class="mt-1 text-sm text-muted">
+				{score.total ? i18n.dict.quiz.totalScoreLabel : i18n.dict.quiz.autoScoreLabel}
+			</p>
+		{/if}
+		{#if grading}
+			<p class="mt-2 text-sm font-semibold text-muted">{i18n.dict.quiz.grading}</p>
 		{/if}
 	</div>
 
@@ -74,16 +109,28 @@
 
 	{#if score.manual.items.length > 0}
 		<section class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
-			<h2 class="mb-1 text-base font-bold">{i18n.dict.quiz.manualTitle}</h2>
-			<p class="mb-3 text-sm text-muted">{i18n.dict.quiz.manualDesc}</p>
+			<div class="mb-3 flex items-center justify-between gap-3">
+				<h2 class="text-base font-bold">{i18n.dict.quiz.openAnswersTitle}</h2>
+				{#if anyFailed && !grading && onRetry}
+					<button
+						type="button"
+						class="rounded-lg border-2 border-brand px-3 py-1 text-xs font-bold text-brand"
+						onclick={onRetry}>{i18n.dict.quiz.retryGrading}</button
+					>
+				{/if}
+			</div>
 			<ul class="flex flex-col divide-y divide-line/70">
-				{#each score.manual.items as item, i (item.screenId)}
-					<li class="flex items-center justify-between py-2 text-sm first:pt-0 last:pb-0">
-						<span>{i18n.dict.quiz.questionProgress(i + 1, score.manual.items.length)}</span>
-						<span class="text-muted tabular" dir="ltr"
-							>{i18n.dict.quiz.manualItem(item.points)}</span
-						>
-					</li>
+				{#each score.manual.items as item (item.screenId)}
+					{@const screen = screens.get(item.screenId)}
+					{@const grade = grades[item.screenId]}
+					<ExamAnswerReview
+						label={grade?.kind === 'essay'
+							? i18n.dict.quiz.essayLabel
+							: i18n.dict.quiz.questionProgress(numbers.get(item.screenId) ?? 0, numbers.size)}
+						prompt={screen && 'prompt' in screen ? String(screen.prompt) : ''}
+						points={item.points}
+						{grade}
+					/>
 				{/each}
 			</ul>
 		</section>

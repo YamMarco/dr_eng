@@ -5,7 +5,7 @@
 // next model in GEMINI_MODELS is tried when one is overloaded.
 import { env } from '$env/dynamic/private';
 
-export type LlmRole = 'grade-short' | 'grade-essay' | 'ocr';
+export type LlmRole = 'grade-short' | 'grade-reading' | 'grade-essay' | 'ocr';
 
 export interface LlmResult {
 	text: string;
@@ -19,6 +19,7 @@ const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai';
 // Direct mode only; keep in step with llm-gateway/config.yaml.
 const GEMINI_MODELS: Record<LlmRole, string[]> = {
 	'grade-short': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
+	'grade-reading': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
 	'grade-essay': ['gemini-3.8-flash', 'gemini-3.5-flash'],
 	ocr: ['gemini-3.8-flash', 'gemini-3.5-flash']
 };
@@ -53,7 +54,10 @@ export async function chat(opts: {
 	const target = endpoint(opts.role);
 	if (!target) throw new Error('LLM is not configured');
 	let res!: Response;
-	for (const model of target.models) {
+	// Every model overloaded: one more round after a short wait (exam submits fire ~10 calls at once).
+	const attempts = [...target.models, ...target.models];
+	for (const [i, model] of attempts.entries()) {
+		if (i === target.models.length) await new Promise((r) => setTimeout(r, 2000));
 		res = await fetch(`${target.url}/chat/completions`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${target.key}` },

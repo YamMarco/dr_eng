@@ -80,6 +80,25 @@ export const he = {
 		manualDesc: 'המשימות האלה נבדקות ע"י מורה ולא נכללות בציון האוטומטי.',
 		manualItem: (points: number) => `${points} נק'`,
 		backToQuizzes: 'חזרה למבחנים',
+		totalScoreLabel: 'ציון',
+		grading: 'בודקים את התשובות הפתוחות...',
+		openAnswersTitle: 'תשובות פתוחות',
+		notGraded: 'לא נבדקה - הבדיקה לא זמינה כרגע. בינתיים נספרת כ-0.',
+		retryGrading: 'בדיקה חוזרת',
+		essayLabel: 'משימת כתיבה',
+		criterion: {
+			content: 'תוכן וארגון',
+			vocabulary: 'אוצר מילים',
+			language: 'שימוש בשפה',
+			mechanics: 'כתיב ופיסוק'
+		} as Record<string, string>,
+		lengthDeduction: (points: number, words: number) =>
+			`הורדה על אורך (${words} מילים): ${points}- נק'`,
+		gateZero: {
+			empty: 'לא נכתבה תשובה.',
+			'not-english': 'התשובה לא באנגלית.',
+			'too-short': 'פחות מ-25 מילים - המשימה כולה מקבלת 0.'
+		} as Record<string, string>,
 		resumePromptTitle: 'להמשיך מאיפה שהפסקתם?',
 		resumePromptDesc: 'יש ניסיון פתוח למבחן הזה.',
 		resumeConfirm: 'המשך מאיפה שהפסקתי',

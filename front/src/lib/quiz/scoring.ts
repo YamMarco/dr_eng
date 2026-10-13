@@ -6,6 +6,7 @@ import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES, mcqCorrect } from '$lib/lesson
 import type { QuizNode } from './types';
 import { screensWithIds } from './screenIds';
 import { isSentenceCompletionMatch } from '$lib/lesson-screens/sentenceCompletion';
+import type { ExamGrade } from '$lib/feedback/types';
 
 export type Scored = {
 	earned: number;
@@ -18,8 +19,10 @@ export interface QuizScore {
 	auto: { earned: number; max: number };
 	manual: { max: number; items: { screenId: string; points: number }[] };
 	byPart: Record<string, { earned: number; max: number; auto: boolean }>;
-	/** Auto-graded score vs. options.passThreshold. Manual items aren't counted (no grader for them yet). */
+	/** Total vs. options.passThreshold: the auto score alone until applyGrades adds the LLM-graded answers. */
 	passed: boolean;
+	/** Auto + LLM-graded points, out of every scored point in the exam. Set by applyGrades. */
+	total?: { earned: number; max: number };
 }
 
 function normalize(value: string) {
@@ -159,4 +162,38 @@ export function scoreQuiz(quiz: QuizNode, answers: Record<string, unknown>): Qui
 	const passed = auto.max === 0 || auto.earned / auto.max >= passThreshold;
 
 	return { auto, manual, byPart, passed };
+}
+
+/** Adds the LLM grades of the open answers (see feedback/gradeExam) to an auto score:
+ *  per part, overall, and the pass check, which then runs on the whole exam. */
+export function applyGrades(
+	quiz: QuizNode,
+	score: QuizScore,
+	grades: Record<string, ExamGrade>
+): QuizScore {
+	const byPart = structuredClone(score.byPart);
+	const manualIds = new Set(score.manual.items.map((i) => i.screenId));
+	let earned = score.auto.earned;
+	for (const part of quiz.parts) {
+		const row = byPart[part.id];
+		if (!row) continue;
+		let allGraded = true;
+		for (const { id } of screensWithIds(part)) {
+			if (!manualIds.has(id)) continue;
+			const grade = grades[id];
+			if (grade?.status !== 'graded') allGraded = false;
+			if (!grade) continue;
+			earned += grade.earned;
+			row.earned += grade.earned;
+		}
+		row.auto = allGraded;
+	}
+	const max = score.auto.max + score.manual.max;
+	const passThreshold = quiz.options.passThreshold ?? 0.6;
+	return {
+		...score,
+		byPart,
+		total: { earned, max },
+		passed: max === 0 || earned / max >= passThreshold
+	};
 }

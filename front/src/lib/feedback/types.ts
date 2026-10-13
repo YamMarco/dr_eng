@@ -25,21 +25,51 @@ export type Feedback = {
 	marks: Mark[];
 	/** LLM tags about the whole answer (off-topic, incomplete): no position in the text. */
 	general?: string[];
-	/** Exam only. */
-	score?: { got: number; of: number; criteria: Record<string, number> };
 };
 
 /** What the LLM sends back. Spans are quoted text, never offsets. */
 export type LlmMark = { span: string; tag: string; nth?: number };
 export type LessonVerdict = { pass: boolean; marks: LlmMark[] };
-export type ExamVerdict = { scores: Record<string, number>; marks: LlmMark[] };
+/** An exam open reading question: points out of the question's POINTS. */
+export type ReadingVerdict = { score: number; marks: LlmMark[] };
+/** The exam essay: one score per rubric criterion (content, vocabulary, language, mechanics). */
+export type EssayVerdict = { scores: Record<string, number>; marks: LlmMark[] };
+
+/** Software mechanics counts handed to the essay grader (it sees spelling-corrected text). */
+export type MechanicsCount = { spelling: number; punctuation: number; runOn: number };
 
 export type GradeRequest = {
-	kind: 'lesson' | 'exam';
+	/** lesson = pass/fail; reading = exam open question, scored 0..points; essay = the 30-point rubric. */
+	kind: 'lesson' | 'reading' | 'essay';
 	/** The task's question, as the student saw it. */
 	question: string;
 	/** The student's text with Layer-1 typos already corrected. */
 	text: string;
 	/** Editor's best answers / pitfalls (`gradingNotes`). */
 	notes?: string;
+	/** reading: the paragraph(s) the question refers to. */
+	passage?: string;
+	/** reading: the question's points. */
+	points?: number;
+	/** essay */
+	mechanics?: MechanicsCount;
+};
+
+/** One graded open exam answer, stored with the attempt so a report never re-grades. */
+export type ExamGrade = {
+	kind: 'reading' | 'essay';
+	/** failed = the LLM was unavailable; counts 0 until re-graded. */
+	status: 'graded' | 'failed';
+	earned: number;
+	max: number;
+	/** The answer as submitted (marks point into it). */
+	text: string;
+	marks: Mark[];
+	general?: string[];
+	/** Scored 0 by rule, no LLM call (empty, not English, under 25 words). */
+	gate?: GateReason;
+	/** essay: points per rubric criterion, after the length deduction. */
+	criteria?: Record<string, number>;
+	lengthDeduction?: number;
+	validWords?: number;
 };
