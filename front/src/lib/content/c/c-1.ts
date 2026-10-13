@@ -1573,10 +1573,24 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: '**II**  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 "According to Dr. Diallo, what does the project teach local people?",
               modelAnswer: "How to care for the trees.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "ב-'What percentage of people exercise outdoors now?' - איזו מילה היא ה-Eye Catcher, ומה היא אומרת לחפש?",
+              options: [
+                "outdoors - מחפשים שם של מקום",
+                "percentage - מחפשים מספר, עם %",
+                "now - מחפשים שנה",
+                "people - מחפשים שם של אדם",
+              ],
+              correctIndex: 1,
+              explanation:
+                "percentage = אחוז, אז מחפשים מספר עם % ליד exercise outdoors. outdoors ו-people הם נושא השאלה, לא מה שמחפשים.",
             },
             {
               type: "summary",
@@ -1631,7 +1645,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: '{a:center}**SCHOOLS ON THE WATER**\n\n**I**  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\n**II**  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\n**III ** The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. "Before, many parents kept their daughters at home," she explains. "Now they see that school is safe."',
+              text: '{a:center}**SCHOOLS ON THE WATER**\n\nI  In parts of Bangladesh, heavy rain floods many villages for 4 months every year, and children cannot walk to school. In 2002, an architect named Karim Hossain had an idea: if children cannot reach the school, the school can reach the children.\n\nII  He built a school on a boat. Today, 22 boat schools sail along the rivers, and each boat stops at 3 villages a day to collect students. According to Mr. Hossain, more than 2,500 children study on the boats every year.\n\nIII  The boats also have solar panels, so students can use laptops and the internet. Teacher Nadia Akter says the boats changed how parents think. "Before, many parents kept their daughters at home," she explains. "Now they see that school is safe."',
               questions: [
                 {
                   prompt: "How many boat schools sail along the rivers today?",
@@ -1715,7 +1729,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: '**II ** One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
+              text: 'II  One study found that adults who learned to swim later in life often became stronger swimmers. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."',
               prompt:
                 '"According to Dr. Anna Klein, why do adult swimmers sometimes do better than children?" - כתבו ANSWER:',
               modelAnswer:
@@ -1723,7 +1737,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**I**  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030. The project has already planted over 200 million trees in 15 countries.",
               prompt:
                 'השלימו מהטקסט: "The project has already planted over _______ trees in _______ countries."',
               modelAnswer: "200 million trees · 15 countries.",
@@ -2522,7 +2536,7 @@ export const c1Lessons: LessonNode[] = [
               type: "mark-all",
               instruction:
                 "**Mark every limiting word : only, all, most, some, few, every, always**",
-              text: '**BIKES FOR EVERYONE**\n\n**I**  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\n**II**  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\n**III**  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV**  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."\n',
+              text: '**BIKES FOR EVERYONE**\n\nI  In 2019, the city of Ravenna started a bike programme. For only one euro a day, people could take a bike from one of 40 stations and leave it at any other station. At first, few people used the bikes, and some residents said the idea would never work.\n\nII  Two years later, the picture is different. Most stations are busy every morning, and the bikes are used about 6,000 times a day. Students are the biggest group of users, but some older people ride them too. According to the city, all the bikes are checked every week, so they are always safe to ride.\n\nIII  The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."\n',
               dir: "ltr",
               timerKey: "sweep",
               correctIndices: [],
@@ -2538,7 +2552,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: '**III **The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\n**IV** Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
+              text: '**III **The programme has also changed the streets. There are fewer cars in the centre, and the air is cleaner. Shop owners, who were worried at first, now say that most of their customers arrive by bike or on foot.\n\nIV  Not everything is perfect. Some stations are always empty in the evening, because everyone rides into the centre in the morning. City planner Elena Russo says the main problem is moving bikes back to the right stations. "We have only two trucks for this job," she explains. "We need at least five."',
             },
           ],
         },
@@ -3463,7 +3477,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
-              text: '**II ** The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               questions: [
                 {
                   prompt:
@@ -3497,7 +3511,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**II ** The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.",
+              text: "II  The benefits of volunteering go beyond simple happiness. Dr. Sarah Okafor studied the effects of volunteering on mental health for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results. According to Dr. Okafor, the most effective programmes bring young people face to face with the people they help.",
               prompt:
                 "According to Dr. Okafor, how do volunteers feel compared to non-volunteers? Give ONE answer.",
               modelAnswer: "ANSWER: They feel less stressed and sleep better.",
@@ -3564,7 +3578,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "{a:center}**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\n**I ** For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\n**II ** The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\n",
+              text: "{a:center}**THE TOWN THAT SWITCHED OFF ITS LIGHTS**\n\nI  For years, the small town of Fulda Creek had a problem: its bright street lights hid the stars, and birds flying at night lost their way. In 2018, the town council decided to change all 600 street lights.\n\nII  The new lights point down, not up, and they turn off at midnight when the streets are empty. According to the council, the town now saves about 30,000 dollars a year on electricity.\n\n",
               questions: [
                 {
                   prompt:
@@ -3595,7 +3609,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, scientists started a project to plant one billion trees in Africa by 2030.",
               prompt:
                 '"When did scientists start the project? Give ONE answer." - כתבו ANSWER:',
               modelAnswer: "ANSWER: In 2019.",
@@ -3628,7 +3642,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "passage-mcq",
-              text: "**II ** Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed and sleep better. However, not all types of volunteering produce the same results.",
               questions: [
                 {
                   prompt:
@@ -3644,7 +3658,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**III ** The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
+              text: "III  The results are already visible. In Ethiopia, the number of birds increased by 60%. In addition, in Kenya, rivers that were dry for 20 years began to flow again.",
               prompt:
                 '"Where did rivers begin to flow again? Give ONE answer." - כתבו ANSWER:',
               modelAnswer: "ANSWER: In Kenya.",
@@ -3760,7 +3774,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "ועכשיו טקסט ושאלה אמיתית." },
             {
               type: "passage-mcq",
-              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
               questions: [
                 {
                   prompt:
@@ -3807,11 +3821,25 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: '**II ** The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: 'II  The project is led by Dr. Amara Diallo, a scientist from Senegal. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 "What do scientists do in order to help the trees? COMPLETE: In order to help the trees, they ___",
               modelAnswer:
                 "In order to help the trees, they teach local people how to care for them.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "Complete the sentence: People stopped using plastic bags in order to ___",
+              options: [
+                "because plastic is cheap",
+                "protecting the sea",
+                "protect the sea",
+                "the sea is dirty",
+              ],
+              correctIndex: 2,
+              explanation:
+                "in order to + פועל = מטרה: protect the sea. 'because' פותח סיבה, protecting אחרי in order to הוא צורה לא נכונה, ו-the sea is dirty הוא משפט שלם ולא המשך.",
             },
             {
               type: "summary",
@@ -3855,7 +3883,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "{a:center}**A ZOO WITHOUT CAGES**\n\n**I**  When the city zoo in Valmora opened in 1950, most animals lived in small cages. Visitors complained that the animals looked sad and bored, and fewer people came every year.\n\n**II**  In 2010, the zoo removed most of its cages in order to give the animals more space. Large open areas with trees, rocks and water were built instead, and the animals can now move freely.\n\n**III**  The change worked. The number of visitors doubled in five years, and baby animals were born in the zoo for the first time in decades. Today, schools from all over the country visit Valmora to learn about wildlife.\n\n**IV**  Not all experts agree that the change is enough. Some say that large animals, such as elephants, need much more space than any city zoo can give them. The zoo director, Paula Mendes, says the zoo will not bring in new elephants. Instead, it wants to focus on smaller animals that can live well in the open areas, and on teaching children why wild places must be protected.",
+              text: "{a:center}**A ZOO WITHOUT CAGES**\n\nI  When the city zoo in Valmora opened in 1950, most animals lived in small cages. Visitors complained that the animals looked sad and bored, and fewer people came every year.\n\nII  In 2010, the zoo removed most of its cages in order to give the animals more space. Large open areas with trees, rocks and water were built instead, and the animals can now move freely.\n\nIII  The change worked. The number of visitors doubled in five years, and baby animals were born in the zoo for the first time in decades. Today, schools from all over the country visit Valmora to learn about wildlife.\n\nIV  Not all experts agree that the change is enough. Some say that large animals, such as elephants, need much more space than any city zoo can give them. The zoo director, Paula Mendes, says the zoo will not bring in new elephants. Instead, it wants to focus on smaller animals that can live well in the open areas, and on teaching children why wild places must be protected.",
               questions: [
                 {
                   prompt: "The zoo removed most of its cages in order to ___",
@@ -3881,7 +3909,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 🌟 (רשות)\nסיבה או מטרה?" },
             {
               type: "passage-mcq",
-              text: "**I ** Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
+              text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.",
               questions: [
                 {
                   prompt:
@@ -3920,7 +3948,7 @@ export const c1Lessons: LessonNode[] = [
             { type: "preface", text: "תרגול נוסף 💎 (רשות)\nבמילים שלכם." },
             {
               type: "self-check",
-              text: '**II**  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
+              text: 'II  The project is led by Dr. Amara Diallo. "We do not just plant trees," says Dr. Diallo. "We teach local people how to care for them." According to Dr. Diallo, most trees die because nobody looks after them. When local people are involved, 85% of trees survive.',
               prompt:
                 '"Why do most trees in the project survive? COMPLETE: Because ___"',
               modelAnswer:
@@ -4215,6 +4243,7 @@ export const c1Lessons: LessonNode[] = [
     required: ["c-l10", "c-l12"],
     position: { x: 0, y: 1980 },
     big: false,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -4288,6 +4317,66 @@ export const c1Lessons: LessonNode[] = [
               ],
             },
             { type: "time-result", label: "הזמן שלכם", timerKey: "qsTime" },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "רמת בחינה. טקסט חדש, אותם ארבעה סוגי שאלות: בחירה מרובה, NOT, תשובה קצרה, השלמת משפט ושתי תשובות.\n\nבשאלות הכתובות מקלידים בעצמכם - מילה אחת לא מספיקה, כותבים משפט מהטקסט.",
+            },
+            {
+              type: "passage-mcq",
+              text: "THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at \"bus stops\" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.",
+              questions: [
+                {
+                  prompt: "What do we learn from paragraph III about Anna Price?",
+                  options: [
+                    "She thinks the roads near the school are too busy",
+                    "She wants the village to stop the project",
+                    "She is worried that the project depends on volunteers",
+                    "She came up with the idea of the Walking Bus",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt:
+                    "Which of the following is NOT mentioned as a benefit of the Walking Bus?",
+                  options: [
+                    "Fewer cars near the school",
+                    "Children arrive calmer",
+                    "Children are ready to learn",
+                    "Children's grades have improved",
+                  ],
+                  correctIndex: 3,
+                },
+              ],
+            },
+            {
+              type: "passage-quiz",
+              text: "THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at \"bus stops\" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.",
+              questions: [
+                {
+                  prompt:
+                    "According to Mr. Wilder, why did most parents drive their children to school before the project? Give ONE answer.",
+                  keywords: ["roads", "busy"],
+                  answerHint: "Because the roads were busy.",
+                },
+                {
+                  prompt:
+                    "Complete the sentence: According to Mr. Wilder, the biggest challenge is ___",
+                  keywords: ["volunteers"],
+                  answerHint: "finding enough volunteers.",
+                },
+                {
+                  prompt:
+                    "Give TWO answers: How has the Walking Bus helped, according to the text?",
+                  keywords: ["cars", "calmer"],
+                  answerHint:
+                    "(1) There are fewer cars near the school. (2) Children arrive calmer.",
+                },
+              ],
+            },
             {
               type: "summary",
               title: "ארבעה סוגי שאלות",
@@ -4410,7 +4499,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**I ** Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
+              text: "I  Every year, forests around the world are destroyed by fire, farming, and pollution. However, there is good news. In 2019, a group of scientists started a project to plant one billion trees in Africa by 2030. The project, called Green Africa, has already planted over 200 million trees in 15 countries.",
               prompt: "{d:rtl}כתבו מה הם החדשות הטובות - מה שבא אחרי however.",
               modelAnswer:
                 "There is good news: in 2019 scientists started a project to plant one billion trees in Africa.",
@@ -4430,7 +4519,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "{a:center}**THE FOUR-DAY SCHOOL WEEK**\n\n**I**  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\n**II ** According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\n**III**  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\n**IV ** Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
+              text: "{a:center}**THE FOUR-DAY SCHOOL WEEK**\n\nI  In 2019, a group of schools in the Clearwater district tried something unusual: a four-day school week. Students came to school from Monday to Thursday, but each day was one hour longer. The district hoped to save money on buses and heating. Many parents were worried at first. They thought their children would fall behind. However, the first results were better than expected.\n\nII  According to the district report, attendance rose by 8% in the first year. Teachers also said they had more time to plan their lessons. Although some students found the longer days tiring, most of them said they enjoyed the free Fridays. Some used the extra day for sports or part-time jobs, while others simply rested. Test scores in maths and reading stayed about the same, but teachers noticed that students were more focused on Mondays.\n\nIII  Yet the change was not easy for every family. Parents who worked on Fridays had to find someone to look after younger children. Some families paid for day camps, but others could not afford them. The district tried to help by opening school libraries on Fridays. Nevertheless, only a few students used them.\n\nIV  Today, the Clearwater schools still use the four-day week. Although the district is happy with the results, it plans to review the programme every two years. Experts say the idea could work in other places, but only if schools listen to parents before they make the change.",
               questions: [
                 {
                   prompt:
@@ -4553,7 +4642,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**II**  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
+              text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               prompt:
                 '"What does paragraph II say after the word However?" - כתבו ANSWER:',
               modelAnswer:
@@ -4576,6 +4665,7 @@ export const c1Lessons: LessonNode[] = [
     required: ["c-649ed18f"],
     position: { x: 0, y: 2100 },
     big: true,
+    requiredRounds: 2,
     content: {
       preface: [
         {
@@ -4641,6 +4731,98 @@ export const c1Lessons: LessonNode[] = [
               label: "הזמן שלכם",
               timerKey: "partOneTime",
             },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "רמת בחינה. טקסט חדש, כמו במבחן: ארבע פסקאות, שמונה שאלות, והשעון רץ.\n\nקודם חמש שאלות אמריקאיות, אחר כך שלוש שאלות שמקלידים בהן תשובה. בכל שאלה: רמזור, מילת מפתח, איתור, קריאת המשפט.",
+            },
+            {
+              type: "passage-mcq",
+              label: "מבחן קטן",
+              timerKey: "examTime",
+              text: "THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. \"He used to wait in the car,\" she says. \"Now he helps me choose the fruit.\"\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store's coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: \"Small changes cost very little, but they help many people.\" She hopes that one day every store will offer a quiet hour.",
+              questions: [
+                {
+                  prompt: "Who finds a short visit to a supermarket very stressful, according to paragraph I?",
+                  options: [
+                    "Most shoppers",
+                    "People who are sensitive to sound and light",
+                    "People who shop on Tuesdays",
+                    "People who work in supermarkets",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "How many customers came each Tuesday a year after the quiet hour began?",
+                  options: ["40", "4", "2021", "180"],
+                  correctIndex: 3,
+                },
+                {
+                  prompt:
+                    "Which of the following is NOT mentioned as a change during the quiet hour?",
+                  options: [
+                    "The music is turned off",
+                    "The lights are lowered",
+                    "Soft music is played instead",
+                    "The checkout machines are silent",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "According to Ms. Moss, what is the MOST important lesson?",
+                  options: [
+                    "Every store should offer a quiet hour",
+                    "The Ministry of Health should write a guide",
+                    "Small changes cost very little, but they help many people",
+                    "Customers need soft chairs and a quiet corner",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "What do we learn from paragraph III?",
+                  options: [
+                    "The market stopped the quiet hour after a complaint",
+                    "Only 40 customers ever came to the quiet hour",
+                    "Some shoppers complained, but the market kept the hour",
+                    "The coffee machine is only open on Tuesdays",
+                  ],
+                  correctIndex: 2,
+                },
+              ],
+            },
+            {
+              type: "passage-quiz",
+              text: "THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. \"He used to wait in the car,\" she says. \"Now he helps me choose the fruit.\"\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store's coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: \"Small changes cost very little, but they help many people.\" She hopes that one day every store will offer a quiet hour.",
+              questions: [
+                {
+                  prompt:
+                    "According to manager Rachel Moss, where did the idea of the quiet hour come from? Give ONE answer.",
+                  keywords: ["customer", "son"],
+                  answerHint: "From a customer whose son could never shop with her.",
+                },
+                {
+                  prompt:
+                    "Complete the sentence: Some shoppers complained because ___",
+                  keywords: ["coffee", "machine"],
+                  answerHint: "they could not use the store's coffee machine.",
+                },
+                {
+                  prompt:
+                    "Give TWO answers: How are other stores following the Hartley Market, according to paragraph IV?",
+                  keywords: ["supermarkets", "guide"],
+                  answerHint:
+                    "(1) Four supermarkets have started similar programmes. (2) The Ministry asked the market to write a guide.",
+                },
+              ],
+            },
+            {
+              type: "time-result",
+              label: "הזמן שלכם במבחן הקטן",
+              timerKey: "examTime",
+            },
             {
               type: "summary",
               title: "סיכום חלק 1: כל השיטה",
@@ -4663,6 +4845,7 @@ export const c1Lessons: LessonNode[] = [
     required: ["c-not-q", "c-limiters-q", "c-numbers-names-q"],
     position: { x: 0, y: 1260 },
     big: false,
+    requiredRounds: 4,
     content: {
       preface: [
         {
@@ -4786,7 +4969,8 @@ export const c1Lessons: LessonNode[] = [
                 "לא קשורות זו לזו",
               ],
               correctIndex: 1,
-              explanation: "main / most / only - כולן מגבילות לתשובה אחת בלבד.",
+              explanation:
+                "the main / the most / the only מגבילות לתשובה אחת בלבד. אבל most + שם עצם (most students) = רוב, וזה לא מגביל.",
             },
             {
               type: "mcq",
@@ -4838,7 +5022,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · טקסט מלא 🌟\nשאלות מעורבות - NOT, הגבלה, מספרים ושמות.",
+              text: "טקסט מלא\nשאלות מעורבות - NOT, הגבלה, מספרים ושמות.",
             },
             {
               type: "passage-mcq",
@@ -4897,7 +5081,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "PRACTICE · טקסט מלא 💎\nרמת בחינה. שאלות מעורבות ללא עזרה.",
+              text: "רמת בחינה\nשאלות מעורבות ללא עזרה.",
             },
             {
               type: "passage-mcq",
@@ -4950,7 +5134,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "סיבוב מסכם - כל השיטה ביחד\n\nמפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.",
+              text: "תרגול נוסף (רשות) - כל השיטה ביחד\n\nמפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.",
             },
             {
               type: "passage-mcq",

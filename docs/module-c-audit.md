@@ -3,7 +3,7 @@
 Living doc: update the snapshot, grades and lists whenever Module C content changes.
 
 > **Ids renamed 2026-10-11:** every lesson id below is now `c-` prefixed (`l06` -> `c-l06`, `vocab-test` -> `c-vocab-test`), `n-<hex>` ids became `c-<hex>`, and exams are `c-exam-N` (was `module-c-exam-N`). Ids in this doc are the old ones.
-Snapshot: 2026-10-10 (Part C rebuilt, branch writing-loop). Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
+Snapshot: 2026-10-13 (summary lessons rebuilt; Part C rebuilt 2026-10-10). Chain order: n-5cd02dfa (intro) -> Part A vocabulary (c-2) -> Part B reading (c-1) -> Part C writing (c-3).
 
 Grades are 1-10 per node. `~` = judged from structure and a skim of sibling lessons in the same template, not a full read of the exercises, so the grade is less certain. n-649ed18f and n-7c5330b8 were filled on 2026-09-19 and have not been played yet.
 
@@ -74,6 +74,17 @@ Original note: the six content-word lessons are not prerequisites for the readin
 | topic-vacation | Listing options instead of choosing | Choose one and defend it ("What do you think") | 8.5 | Same 3-step shape; round 3 "which language". Unplayed |
 | topic-school | Describing problems instead of proposing | Make a specific proposal with a reason ("What changes") | 8.5 | Same 3-step shape; round 3 "prevent cheating". Unplayed |
 | topic-cellphone | "It depends" answers | Pick one specific age and justify it ("At what age") | 8.5 | Same 3-step shape; round 3 driver's license age. Unplayed |
+
+## Fixed on 2026-10-13 (QC report v4, bad points 3, 5, 6; branch worktree-summary-lessons-and-timer)
+
+Ids below are the `c-` ones. Unplayed.
+- **c-7c5330b8 (חלק 1 - סיכום):** now 2 required rounds. Round 1 is the old warm-up (118 words, 4 MCQ); round 2 is a small exam: THE QUIET HOUR, 4 paragraphs, 250 words, 8 questions (5 MCQ incl. NOT and most; 3 typed: short answer, completion, TWO answers), stopwatch.
+- **c-649ed18f (שאלות - סיכום):** now 2 required rounds. Round 2 is exam level on a new text, THE WALKING BUS (178 words): MCQ, NOT, then typed short answer, completion and TWO answers (the four formats the node teaches).
+- **c-221188d1 (שאלות 1 - סיכום):** `requiredRounds: 4` (up to the exam-level round); "PRACTICE" labels removed; the last round is labelled optional. The "main / most / only" explanation now separates "the main / the most / the only" (one answer) from "most + noun" (majority).
+- **Can't-fail rounds:** c-numbers-names-q and c-l11 round 2 each got one scored MCQ (Eye Catcher of a question; completing "in order to ___").
+- **Paragraph markers:** 32 more `**II**` bold markers in c-1 texts (editor-made) turned into `II  `.
+- **Editor:** the timer field is no longer a raw id box. Screens that measure time get a "עם טיימר" checkbox (id generated); time-result and time-comparison pick from the timers measured in the lesson (`fields/TimerField.svelte`).
+- **Still open:** typed answers in these new rounds are keyword-checked (QC v4 bad point 2); the exam text is 250 words, under the handbook's 300.
 
 ## Fixed on 2026-10-10 (Part C rebuild, branch writing-loop)
 

@@ -43,6 +43,7 @@
 	import OptionalGroup from './fields/OptionalGroup.svelte';
 	import NumberField from './fields/NumberField.svelte';
 	import TextField from './fields/TextField.svelte';
+	import TimerField from './fields/TimerField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import RuleFields from './fields/RuleFields.svelte';
@@ -73,6 +74,15 @@
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let screen = $derived.by<any>(() => (path ? (model.screenAt(nodeId, path) ?? null) : null));
+
+	// Timer ids measured by screens in this lesson (what a time-result can show).
+	let timerIds = $derived.by(() => {
+		const ids = new Set<string>();
+		for (const r of (isExam ? undefined : editModel.node(nodeId))?.content.rounds ?? [])
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			for (const s of r.screens as any[]) if (s.timerKey) ids.add(s.timerKey);
+		return [...ids];
+	});
 
 	// Lesson writing tasks: what the module > section > lesson rules give this screen.
 	let inheritedRules = $derived.by(() => {
@@ -671,8 +681,8 @@
 										</button>
 									</div>
 								{:else if screen.type === 'mark-all'}
-									<SettingsGroup title="טיימר" hint="אופציונלי - ריק = בלי טיימר">
-										<TextField label="מזהה טיימר" bind:value={screen.timerKey} />
+									<SettingsGroup title="טיימר">
+										<TimerField mode="make" bind:value={screen.timerKey} taken={timerIds} />
 									</SettingsGroup>
 									<div class="mt-4 space-y-3 border-t-2 border-dashed border-line/60 pt-4">
 										<div class="flex flex-wrap items-center gap-1.5">
@@ -745,17 +755,18 @@
 										</label>
 									</SettingsGroup>
 								{:else if screen.type === 'passage-mcq' || screen.type === 'timed-reading' || screen.type === 'time-result'}
-									<SettingsGroup
-										title="טיימר"
-										hint={screen.type === 'passage-mcq' ? 'אופציונלי - ריק = בלי טיימר' : undefined}
-									>
-										<TextField label="מזהה טיימר" bind:value={screen.timerKey} />
+									<SettingsGroup title="טיימר">
+										<TimerField
+											mode={screen.type === 'time-result' ? 'pick' : 'make'}
+											bind:value={screen.timerKey}
+											taken={timerIds}
+										/>
 									</SettingsGroup>
 								{:else if screen.type === 'time-comparison'}
 									<SettingsGroup title="טיימרים להשוואה">
 										<div class="flex flex-wrap gap-4">
-											<TextField label="מזהה א׳" bind:value={screen.aKey} />
-											<TextField label="מזהה ב׳" bind:value={screen.bKey} />
+											<TimerField mode="pick" label="א׳" bind:value={screen.aKey} taken={timerIds} />
+											<TimerField mode="pick" label="ב׳" bind:value={screen.bKey} taken={timerIds} />
 										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
