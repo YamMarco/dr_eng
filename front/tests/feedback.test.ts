@@ -7,7 +7,7 @@ import { applyFixes, locateMarks, mergeMarks } from '../src/lib/feedback/merge.t
 import { FATAL_TAGS, TAGS, TAG_IDS } from '../src/lib/feedback/tags.ts';
 import type { Mark } from '../src/lib/feedback/types.ts';
 import { readFileSync } from 'node:fs';
-import { applyLength, mechanicsCount, paragraphIndex } from '../src/lib/feedback/exam.ts';
+import { applyLength, mechanicsCount } from '../src/lib/feedback/exam.ts';
 
 test('nearest level wins, screen overrides section', () => {
 	const r = resolveRules([{ llmGrade: true, maxTypos: 3 }, undefined, { maxTypos: 0 }, {}]);
@@ -122,13 +122,6 @@ test('mechanics count buckets by kind', () => {
 		]),
 		{ spelling: 2, punctuation: 1, runOn: 1 }
 	);
-});
-
-test('roman paragraph refs', () => {
-	assert.equal(paragraphIndex('I'), 0);
-	assert.equal(paragraphIndex('iv'), 3);
-	assert.equal(paragraphIndex('IX'), 8);
-	assert.equal(paragraphIndex('p2'), -1);
 });
 
 test('rubric file matches the length rule in code', () => {

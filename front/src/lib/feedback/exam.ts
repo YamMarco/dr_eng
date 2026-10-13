@@ -29,17 +29,3 @@ export function applyLength(
 	}
 	return out;
 }
-
-const ROMAN: Record<string, number> = { I: 1, V: 5, X: 10 };
-
-/** "III" -> 2 (paragraph index). Unknown -> -1. */
-export function paragraphIndex(ref: string): number {
-	const s = ref.trim().toUpperCase();
-	if (!/^[IVX]+$/.test(s)) return -1;
-	let total = 0;
-	for (let i = 0; i < s.length; i++) {
-		const v = ROMAN[s[i]];
-		total += v < (ROMAN[s[i + 1]] ?? 0) ? -v : v;
-	}
-	return total - 1;
-}

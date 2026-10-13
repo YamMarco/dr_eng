@@ -12,16 +12,21 @@ import type {
 	GradeRequest,
 	LessonVerdict,
 	LlmMark,
-	ReadingVerdict
+	ReadingRequest,
+	ReadingVerdict,
+	SingleRequest
 } from '$lib/feedback/types';
 
 export const MAX_TEXT = 4000;
+/** A reading batch holds at most this many answers (an exam passage has ~6 open questions). */
+export const MAX_READING_ITEMS = 15;
 
 const KINDS: Record<
 	GradeRequest['kind'],
 	{ prompt: string; role: LlmRole; maxTokens: number; maxMarks: number }
 > = {
 	lesson: { prompt: LESSON_PROMPT, role: 'grade-short', maxTokens: 1000, maxMarks: 6 },
+	// per batch; ask() adds room for every answer in it
 	reading: { prompt: READING_PROMPT, role: 'grade-reading', maxTokens: 1000, maxMarks: 4 },
 	essay: { prompt: ESSAY_PROMPT, role: 'grade-essay', maxTokens: 3000, maxMarks: 8 }
 };
@@ -32,17 +37,33 @@ export function systemPrompt(kind: GradeRequest['kind']): string {
 	return KINDS[kind].prompt;
 }
 
+const block = (label: string, text: string) => `${label}:\n"""\n${text}\n"""`;
+
 export function userPrompt(req: GradeRequest): string {
+	if (req.kind === 'reading')
+		return [
+			block('PASSAGE', req.passage),
+			...req.items.map((it) =>
+				[
+					`ANSWER ${it.id}`,
+					`QUESTION: ${it.question}`,
+					it.paragraph ? `PARAGRAPH: ${it.paragraph}` : '',
+					`POINTS: ${it.points}`,
+					it.notes ? block('EDITOR NOTES', it.notes) : '',
+					block('STUDENT ANSWER', it.text)
+				]
+					.filter(Boolean)
+					.join('\n')
+			)
+		].join('\n\n');
 	const m = req.mechanics;
 	return [
-		`QUESTION:\n"""\n${req.question}\n"""`,
-		req.passage ? `PASSAGE:\n"""\n${req.passage}\n"""` : '',
-		req.points !== undefined ? `POINTS: ${req.points}` : '',
-		req.notes ? `EDITOR NOTES:\n"""\n${req.notes}\n"""` : '',
+		block('QUESTION', req.question),
+		req.notes ? block('EDITOR NOTES', req.notes) : '',
 		m
 			? `MECHANICS COUNT: spelling ${m.spelling}, punctuation/capitalization ${m.punctuation}, run-on sentences ${m.runOn}`
 			: '',
-		`STUDENT ANSWER:\n"""\n${req.text}\n"""`
+		block('STUDENT ANSWER', req.text)
 	]
 		.filter(Boolean)
 		.join('\n\n');
@@ -62,7 +83,9 @@ function cleanMarks(marks: z.infer<typeof markSchema>[], kind: GradeRequest['kin
 
 // maxTokens also covers the model's hidden reasoning (Gemini "thinking"): too low cuts the JSON off.
 async function ask(req: GradeRequest): Promise<unknown> {
-	const { role, maxTokens } = KINDS[req.kind];
+	const { role } = KINDS[req.kind];
+	const maxTokens =
+		KINDS[req.kind].maxTokens + (req.kind === 'reading' ? 300 * req.items.length : 0);
 	for (let attempt = 0; ; attempt++) {
 		const result = await chat({
 			role,
@@ -82,25 +105,34 @@ async function ask(req: GradeRequest): Promise<unknown> {
 	}
 }
 
-export async function gradeLesson(req: GradeRequest): Promise<LessonVerdict> {
+export async function gradeLesson(req: SingleRequest): Promise<LessonVerdict> {
 	const parsed = z.object({ pass: z.boolean(), marks: marksSchema }).parse(await ask(req));
 	const marks = cleanMarks(parsed.marks, 'lesson');
 	// a fatal tag means fail, whatever the model said
 	return { pass: parsed.pass && !marks.some((m) => FATAL_TAGS.has(m.tag)), marks };
 }
 
-export async function gradeReading(
-	req: GradeRequest & { points: number }
-): Promise<ReadingVerdict> {
-	const parsed = z.object({ score: z.number(), marks: marksSchema }).parse(await ask(req));
-	const score = Math.max(0, Math.min(req.points, Math.round(parsed.score)));
-	let marks = cleanMarks(parsed.marks, 'reading');
-	// a full-score answer can't be off-topic or incomplete: drop the model's contradicting content tags
-	if (score === req.points) marks = marks.filter((m) => !CONTENT_TAGS.has(m.tag));
-	return { score, marks };
+export async function gradeReading(req: ReadingRequest): Promise<ReadingVerdict> {
+	const parsed = z
+		.object({
+			answers: z.array(z.object({ id: z.string(), score: z.number(), marks: marksSchema }))
+		})
+		.parse(await ask(req));
+	const byId = new Map(parsed.answers.map((a) => [a.id, a]));
+	// answers the model skipped are left out; the client counts them as not graded
+	const answers = req.items.flatMap((item) => {
+		const a = byId.get(item.id);
+		if (!a) return [];
+		const score = Math.max(0, Math.min(item.points, Math.round(a.score)));
+		let marks = cleanMarks(a.marks, 'reading');
+		// a full-score answer can't be off-topic or incomplete: drop contradicting content tags
+		if (score === item.points) marks = marks.filter((m) => !CONTENT_TAGS.has(m.tag));
+		return [{ id: item.id, score, marks }];
+	});
+	return { answers };
 }
 
-export async function gradeEssay(req: GradeRequest): Promise<EssayVerdict> {
+export async function gradeEssay(req: SingleRequest): Promise<EssayVerdict> {
 	const shape = Object.fromEntries(
 		essayRubric.criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
 	);
@@ -112,9 +144,9 @@ export async function gradeEssay(req: GradeRequest): Promise<EssayVerdict> {
 }
 
 // Best-effort limiter (per server instance). Per-student auth is the real fix; see llm-gateway/README.
-// One exam submit grades every open answer at once (~10 calls).
+// One exam submit is 2 calls (reading batch + essay).
 const WINDOW_MS = 5 * 60_000;
-const MAX_CALLS = 40;
+const MAX_CALLS = 30;
 const calls = new Map<string, number[]>();
 
 export function rateLimited(key: string): boolean {

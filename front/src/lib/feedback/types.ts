@@ -30,30 +30,48 @@ export type Feedback = {
 /** What the LLM sends back. Spans are quoted text, never offsets. */
 export type LlmMark = { span: string; tag: string; nth?: number };
 export type LessonVerdict = { pass: boolean; marks: LlmMark[] };
-/** An exam open reading question: points out of the question's POINTS. */
-export type ReadingVerdict = { score: number; marks: LlmMark[] };
+/** Every open reading answer of one passage, graded in one call: points out of each POINTS. */
+export type ReadingVerdict = { answers: { id: string; score: number; marks: LlmMark[] }[] };
 /** The exam essay: one score per rubric criterion (content, vocabulary, language, mechanics). */
 export type EssayVerdict = { scores: Record<string, number>; marks: LlmMark[] };
 
 /** Software mechanics counts handed to the essay grader (it sees spelling-corrected text). */
 export type MechanicsCount = { spelling: number; punctuation: number; runOn: number };
 
-export type GradeRequest = {
-	/** lesson = pass/fail; reading = exam open question, scored 0..points; essay = the 30-point rubric. */
-	kind: 'lesson' | 'reading' | 'essay';
+/** One answer: lesson = pass/fail, essay = the 30-point rubric. */
+export type SingleRequest = {
+	kind: 'lesson' | 'essay';
 	/** The task's question, as the student saw it. */
 	question: string;
 	/** The student's text with Layer-1 typos already corrected. */
 	text: string;
 	/** Editor's best answers / pitfalls (`gradingNotes`). */
 	notes?: string;
-	/** reading: the paragraph(s) the question refers to. */
-	passage?: string;
-	/** reading: the question's points. */
-	points?: number;
-	/** essay */
+	/** essay only */
 	mechanics?: MechanicsCount;
 };
+
+/** One open reading question inside a batch. */
+export type ReadingItem = {
+	id: string;
+	question: string;
+	/** Roman paragraph label the question refers to ("III"), if any. */
+	paragraph?: string;
+	points: number;
+	/** Typo-corrected. */
+	text: string;
+	notes?: string;
+};
+
+/** Every open reading answer of an exam passage at once; the passage is sent a single time. */
+export type ReadingRequest = {
+	kind: 'reading';
+	/** The passage with its paragraphs labelled "[I] ...", "[II] ...". */
+	passage: string;
+	items: ReadingItem[];
+};
+
+export type GradeRequest = SingleRequest | ReadingRequest;
 
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */
 export type ExamGrade = {
