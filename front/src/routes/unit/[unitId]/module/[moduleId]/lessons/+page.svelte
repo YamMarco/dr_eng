@@ -200,8 +200,9 @@
 		return reducedMotion ? 0 : Math.max(0, delayForY(targetY) - 60);
 	}
 
-	// Jump straight to wherever the student left off, with that row at the
-	// top of the screen, instead of the top of a possibly long path. Instant
+	// Jump straight to wherever the student left off, with that row centered
+	// (what's done above, what's next below), instead of the top of a possibly
+	// long path. Instant
 	// (no smooth scroll) so it doesn't fight with the pop-in animation
 	// starting at the same time.
 	onMount(() => {
@@ -213,10 +214,12 @@
 			openNode(requestedNode);
 			return;
 		}
-		if (!lastLessonId) return;
+		// A new student has no last lesson: land on "start here" instead.
+		const anchorId = lastLessonId ?? startNodeId;
+		if (!anchorId) return;
 		document
-			.querySelector(`[data-lesson-node-id="${CSS.escape(lastLessonId)}"]`)
-			?.scrollIntoView({ block: 'start' });
+			.querySelector(`[data-lesson-node-id="${CSS.escape(anchorId)}"]`)
+			?.scrollIntoView({ block: 'center' });
 	});
 
 	// Entering /edit and coming back (a fresh navigation, so the browser's own
@@ -429,7 +432,7 @@
 	{/snippet}
 </AppBar>
 
-<main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-36 pb-12">
+<main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-4 pb-12">
 	{#if nodes.length === 0}
 		<div
 			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"

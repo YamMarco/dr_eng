@@ -174,15 +174,15 @@ export const he = {
 		statDue: 'לחזרה היום',
 		statLearning: 'בלמידה',
 		statKnown: 'ידועות',
-		progress: (seen: number, total: number) => `פגשת ${seen} מתוך ${total} מילים`,
-		start: 'התחל תרגול',
+		progress: (seen: number, total: number) => `פגשתם ${seen} מתוך ${total} מילים`,
+		start: 'מתחילים תרגול',
 		newOnly: (n: number) => `${n} מילים חדשות`,
 		sessionSize: (reviews: number, fresh: number) =>
 			[reviews ? `${reviews} לחזרה` : '', fresh ? `${fresh} חדשות` : '']
 				.filter(Boolean)
 				.join(' · '),
-		allDoneTitle: 'סיימת להיום!',
-		allDoneDesc: 'המילים הבאות יחכו לך מחר. רוצים בכל זאת לתרגל?',
+		allDoneTitle: 'סיימתם להיום!',
+		allDoneDesc: 'המילים הבאות יחכו לכם מחר. רוצים בכל זאת לתרגל?',
 		extra: 'תרגול נוסף',
 		sessionLabel: 'תרגול מילים',
 		gatewayDue: (n: number) => (n ? `${n} לחזרה` : 'פתוח לתרגול'),
@@ -202,8 +202,8 @@ export const he = {
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
 		/** The node label's start button: always names the round about to be played. */
-		start: 'התחל',
-		startRound: (round: number) => `התחל סבב ${round}`,
+		start: 'מתחילים',
+		startRound: (round: number) => `מתחילים סבב ${round}`,
 		roundLabel: (current: number, total: number) => `סבב ${current} מתוך ${total}`,
 		/** Shown on a not-yet-fully-passed node whose requiredRounds > 1, so it's
 		 *  clear before starting that one pass isn't enough to open what's next. */
@@ -211,7 +211,7 @@ export const he = {
 		exitLabel: 'יציאה מהשיעור',
 		prefaceButton: 'הסבר',
 		prefaceTitle: 'תזכורת: הסבר השיעור',
-		prefaceHint: 'זו רק הצצה - ההתקדמות שלך נשמרת והתרגיל ממשיך מאותו מקום.',
+		prefaceHint: 'זו רק הצצה - ההתקדמות שלכם נשמרת והתרגיל ממשיך מאותו מקום.',
 		prefaceBack: 'חזרה לתרגיל',
 		prefacePrev: 'הקודם',
 		prefaceNext: 'הבא',
@@ -227,7 +227,7 @@ export const he = {
 		nextQuestionButton: 'הבא',
 		continueNextLesson: 'המשך לשיעור הבא',
 		continueNextRound: 'המשך לסבב הבא',
-		retryButton: 'נסה שוב',
+		retryButton: 'עוד ניסיון',
 		failTitle: 'כמעט!',
 		failDesc: (percent: number) =>
 			`כדי להמשיך צריך לפחות ${percent}% תשובות נכונות. אפשר לנסות שוב.`

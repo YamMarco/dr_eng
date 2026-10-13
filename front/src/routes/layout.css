@@ -172,6 +172,11 @@
 .puck-3d:disabled {
 	transform: none;
 }
+/* Disabled = opacity, which flattens preserve-3d: the lip would then paint
+   over the label. Behind the content in the button's own stacking context instead. */
+.puck-3d:disabled::before {
+	z-index: -1;
+}
 
 /* Round lesson-path nodes: a physical push-button cap instead of .puck-3d's
    platform-press — the outer rim (this element's own background) stays
