@@ -286,21 +286,23 @@
 		return best?.lesson.id;
 	});
 
-	// "Continue to next lesson" is offered only when the path doesn't branch
-	// here: exactly one node lists this one as a prerequisite. A fork leaves
-	// the choice to the student, back on the path.
-	function onlyNextNode(node: PathNode): PathNode | undefined {
-		const dependents = nodes.filter((n) => n.lesson.required.includes(node.lesson.id));
-		return dependents.length === 1 ? dependents[0] : undefined;
+	// "Continue to next lesson" keeps the flow going: the first dependent (top
+	// to bottom, then by x) that this lesson's completion opens. At a fork the
+	// student can still pick another branch from the path.
+	function nextNode(node: PathNode): PathNode | undefined {
+		return nodes
+			.filter(
+				(n) =>
+					n.lesson.required.includes(node.lesson.id) &&
+					!isDone(n.lesson.id) &&
+					hasContent(n.lesson) &&
+					// Predict the unlock state right after this lesson gets marked done.
+					n.lesson.required.every((id) => id === node.lesson.id || isDone(id))
+			)
+			.sort((a, b) => a.y - b.y || a.x - b.x)[0];
 	}
 
-	let hasNextLesson = $derived.by(() => {
-		if (!activeNode) return false;
-		const next = onlyNextNode(activeNode);
-		if (!next || !hasContent(next.lesson)) return false;
-		// Predict the unlock state right after this lesson gets marked done.
-		return next.lesson.required.every((id) => id === activeNode!.lesson.id || isDone(id));
-	});
+	let hasNextLesson = $derived(!!activeNode && !!nextNode(activeNode));
 
 	function openNode(node: PathNode) {
 		openLabelId = null;
@@ -348,7 +350,7 @@
 		const wasDone = isDone(activeNode.lesson.id);
 		markRoundCompleted(activeNode.lesson.id, activeRoundIndex);
 		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
-		const next = onlyNextNode(activeNode);
+		const next = nextNode(activeNode);
 		if (!next) {
 			activeId = null;
 			exitRunner();

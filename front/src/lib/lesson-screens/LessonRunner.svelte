@@ -3,7 +3,8 @@
 	import { Tween } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
-	import { BookOpen } from '@lucide/svelte';
+	import { BookOpen, Star } from '@lucide/svelte';
+	import { roundsCompleted } from '$lib/lessonPath';
 	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -188,6 +189,12 @@
 	// Passing this round leaves the node complete (its required rounds are done),
 	// even if optional practice rounds remain.
 	let completesNode = $derived(!lesson || (roundIndex ?? 0) + 1 >= (lesson.requiredRounds ?? 1));
+	// The finish screen's gold track: rounds played including this one (the
+	// parent marks it complete only after this screen).
+	let goldRounds = $derived(lesson?.content.rounds.length ?? 0);
+	let roundsPlayed = $derived(
+		lesson ? Math.max(roundsCompleted(lesson.id), (roundIndex ?? 0) + 1) : 0
+	);
 
 	function advance() {
 		direction = 1;
@@ -303,6 +310,25 @@
 						{Math.round(scoreTween.current)}/{score.total}
 					</p>
 					<p class="mt-1 text-sm text-muted">{i18n.dict.lesson.scoreLabel}</p>
+				{/if}
+				{#if passed && goldRounds > 1}
+					<!-- One star per round: every round played turns the node gold. -->
+					<div class="mt-6 flex gap-1.5" dir="ltr" aria-hidden="true">
+						{#each { length: goldRounds } as _, i (i)}
+							<span in:fly={{ y: 8, duration: 250, delay: 300 + i * 120, easing: backOut }}>
+								<Star
+									size={28}
+									class={i < roundsPlayed ? 'text-amber-500' : 'text-line'}
+									fill="currentColor"
+								/>
+							</span>
+						{/each}
+					</div>
+					<p class="mt-2 text-sm font-semibold">
+						{roundsPlayed >= goldRounds
+							? i18n.dict.lesson.goldDone
+							: i18n.dict.lesson.toGold(goldRounds - roundsPlayed)}
+					</p>
 				{/if}
 			</div>
 		{:else if currentScreen && ScreenComponent}
