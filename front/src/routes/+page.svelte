@@ -4,7 +4,13 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import { continueFrom, latestEngagement, moduleRoute } from '$lib/dashboard/data';
+	import {
+		continueFrom,
+		continueHref,
+		latestEngagement,
+		lessonStats,
+		moduleRoute
+	} from '$lib/dashboard/data';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
@@ -29,8 +35,7 @@
 				mod: modules[id],
 				exams,
 				hasPath: route.length > 0,
-				done: route.reduce((sum, s) => sum + s.done, 0),
-				total: route.reduce((sum, s) => sum + s.total, 0),
+				...lessonStats(route),
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
 		})
@@ -105,7 +110,13 @@
 
 		{#if open}
 			{#key open.mod.id}
-				<ModulePanel mod={open.mod} groupId={group.id} exams={open.exams} hasPath={open.hasPath} />
+				<ModulePanel
+					mod={open.mod}
+					groupId={group.id}
+					exams={open.exams}
+					hasPath={open.hasPath}
+					covered={resume && continueHref(resume, group.id)}
+				/>
 			{/key}
 		{/if}
 	</main>

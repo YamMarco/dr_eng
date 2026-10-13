@@ -1,5 +1,6 @@
 // Derived data for the home dashboard: a module's route (its sections in
-// study order, with progress), today's lesson and the next step overall.
+// study order, with progress), today's lesson, when to suggest an exam and
+// what "continue" resumes.
 // Pure reads of the progress stores - call from $derived for reactivity.
 import {
 	getLesson,
@@ -7,7 +8,14 @@ import {
 	moduleSections as sectionsOf,
 	type LessonNode
 } from '$lib/content';
-import { hasContent, isLessonDone, isLessonGold, isLessonUnlocked } from '$lib/lessonPath';
+import { i18n } from '$lib/i18n/index.svelte';
+import {
+	hasContent,
+	isLessonDone,
+	isLessonGold,
+	isLessonUnlocked,
+	roundsCompleted
+} from '$lib/lessonPath';
 import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getInProgress } from '$lib/quiz/progress';
 import { examStats } from '$lib/quiz/stats';
@@ -48,33 +56,58 @@ export function isWritingLesson(lesson: LessonNode): boolean {
 	return all.some((screens) => screens.some((s) => s.type === 'writing-task'));
 }
 
-export type NextStep =
-	| { kind: 'lesson'; lesson: LessonNode }
-	| { kind: 'exam'; quiz: Quiz; reason: 'resume' | 'diagnostic' | 'section-done' | 'path-done' }
-	| { kind: 'done' };
+/** A module's lessons done out of those written. */
+export function lessonStats(route: RouteSection[]): { done: number; total: number } {
+	return {
+		done: route.reduce((sum, s) => sum + s.done, 0),
+		total: route.reduce((sum, s) => sum + s.total, 0)
+	};
+}
 
-/** The coach's pick for right now: an exam left open, a diagnostic exam before
- *  anything else, a practice exam once a section is finished (one per finished
- *  section), else today's lesson. */
-export function nextStep(moduleId: string): NextStep {
-	const exams = examStats(moduleId);
-	const next = exams.next;
-	if (next && getInProgress(next.id)) return { kind: 'exam', quiz: next, reason: 'resume' };
-	const route = moduleRoute(moduleId);
-	if (next && exams.taken === 0 && route.every((s) => s.done === 0))
-		return { kind: 'exam', quiz: next, reason: 'diagnostic' };
-	const sectionsDone = route.filter((s) => s.total && s.done === s.total).length;
-	if (next && sectionsDone > exams.taken)
-		return { kind: 'exam', quiz: next, reason: 'section-done' };
-	const lesson = todayLesson(moduleId);
-	if (lesson) return { kind: 'lesson', lesson };
-	return next ? { kind: 'exam', quiz: next, reason: 'path-done' } : { kind: 'done' };
+/** Share of a module's lessons that must be done before exams are suggested -
+ *  they stay open any time, but a student far from done isn't pushed to them. */
+export const EXAM_READY = 0.75;
+
+export type ExamAdvice = 'resume' | 'ready' | 'path-done';
+
+/** Whether to suggest an exam for this module now: one left open, else the next
+ *  untaken one once most (or all) of the path is done. Undefined = don't push. */
+export function examAdvice(moduleId: string): ExamAdvice | undefined {
+	const next = examStats(moduleId).next;
+	if (!next) return undefined;
+	if (getInProgress(next.id)) return 'resume';
+	const { done, total } = lessonStats(moduleRoute(moduleId));
+	if (!total || done === total) return 'path-done';
+	return done / total >= EXAM_READY ? 'ready' : undefined;
+}
+
+/** Second line under a lesson: where the student is in it, or that it's better
+ *  on a computer (writing). */
+export function lessonSubtitle(lesson: LessonNode, onPhone: boolean): string {
+	const t = i18n.dict;
+	if (onPhone && isWritingLesson(lesson)) return t.home.desktopNote;
+	const done = roundsCompleted(lesson.id);
+	const rounds = lesson.content.rounds.length;
+	return [
+		done ? t.home.lessonMidway : t.home.lessonNext,
+		rounds > 1 ? t.lesson.roundLabel(Math.min(done + 1, rounds), rounds) : ''
+	]
+		.filter(Boolean)
+		.join(' · ');
 }
 
 export type ContinueItem =
 	| { kind: 'lesson'; moduleId: string; lesson: LessonNode }
 	| { kind: 'exam'; moduleId: string; quiz: Quiz }
 	| { kind: 'words'; moduleId: string };
+
+/** Where a continue item leads. The same string identifies "already offered up top". */
+export function continueHref(item: ContinueItem, groupId: string): string {
+	const base = `/unit/${groupId}/module/${item.moduleId}`;
+	if (item.kind === 'exam') return `${base}/exam/${item.quiz.id}`;
+	if (item.kind === 'words') return `${base}/words`;
+	return `${base}/lessons?lesson=${item.lesson.id}`;
+}
 
 /** What "continue" resumes: the latest engagement while it's still open (an exam
  *  mid-way, words still due), else that module's lesson to continue. */

@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { BookOpen, ClipboardCheck } from '@lucide/svelte';
 	import type { CurriculumModule } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import type { ExamStats } from '$lib/quiz/stats';
 
-	// One Bagrut module on the home row: its best exam score up front (the
-	// exam is the point), a ring for the lesson path. Tapping opens its panel.
+	// One Bagrut module on the home row, status only: lessons done and the best
+	// exam score, both always visible. Tapping opens its panel.
 	type Props = {
 		mod: CurriculumModule;
 		exams: ExamStats;
@@ -19,9 +20,6 @@
 	let { mod, exams, done, total, selected, comingSoon = false, onclick }: Props = $props();
 
 	let t = $derived(i18n.dict.home);
-	const R = 15;
-	const C = 2 * Math.PI * R;
-	let ratio = $derived(total ? done / total : 0);
 </script>
 
 <button
@@ -29,39 +27,44 @@
 	{onclick}
 	disabled={comingSoon}
 	aria-expanded={comingSoon ? undefined : selected}
-	class="relative flex min-w-0 flex-col items-center gap-1.5 rounded-3xl p-3 text-center transition active:scale-[0.98] disabled:pointer-events-none {selected
+	class="flex min-w-0 flex-col gap-2.5 rounded-3xl p-3 text-start transition active:scale-[0.98] disabled:pointer-events-none {selected
 		? 'bg-surface shadow-md ring-2 ring-brand'
 		: 'bg-surface/70 ring-1 ring-line/70'} {comingSoon ? 'opacity-60' : ''}"
 >
-	<span class="relative flex h-12 w-12 items-center justify-center">
-		{#if total}
-			<svg viewBox="0 0 36 36" class="absolute inset-0 h-full w-full -rotate-90" aria-hidden="true">
-				<circle cx="18" cy="18" r={R} fill="none" class="stroke-line" stroke-width="3" />
-				<circle
-					cx="18"
-					cy="18"
-					r={R}
-					fill="none"
-					class="stroke-brand transition-[stroke-dashoffset] duration-500"
-					stroke-width="3"
-					stroke-linecap="round"
-					stroke-dasharray={C}
-					stroke-dashoffset={C * (1 - ratio)}
-				/>
-			</svg>
-		{/if}
-		<span class="font-extrabold text-brand" dir="ltr">{mod.letter}</span>
+	<span
+		class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-soft font-extrabold text-brand"
+		dir="ltr"
+	>
+		{mod.letter}
 	</span>
 	{#if comingSoon}
 		<span class="text-xs font-semibold text-muted">{i18n.dict.common.comingSoon}</span>
-	{:else if exams.best !== undefined}
-		<span class="text-lg leading-none font-extrabold tabular">{exams.best}</span>
-		<span class="text-xs text-muted">{t.tileBest}</span>
-	{:else if exams.total}
-		<span class="text-sm leading-tight font-bold">{t.tileUntested}</span>
-		<span class="text-xs text-muted">{t.tileFirstExam}</span>
 	{:else}
-		<span class="text-lg leading-none font-extrabold tabular" dir="ltr">{done}/{total}</span>
-		<span class="text-xs text-muted">{t.tileLessons}</span>
+		{#if total}
+			<span class="flex flex-col gap-1">
+				<span class="flex items-center gap-1.5 text-sm font-bold">
+					<BookOpen size={14} class="shrink-0 text-brand" aria-hidden="true" />
+					<span class="sr-only">{t.tileLessons}</span>
+					<span class="tabular" dir="ltr">{done}/{total}</span>
+				</span>
+				<span class="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
+					<span
+						class="block h-full rounded-full bg-brand transition-[width] duration-500"
+						style="width: {(done / total) * 100}%"
+					></span>
+				</span>
+			</span>
+		{/if}
+		{#if exams.total}
+			<span class="flex items-center gap-1.5 text-sm font-bold">
+				<ClipboardCheck size={14} class="shrink-0 text-brand" aria-hidden="true" />
+				<span class="sr-only">{t.tileExam}</span>
+				{#if exams.best !== undefined}
+					<span class="tabular" dir="ltr">{exams.best}</span>
+				{:else}
+					<span class="font-semibold text-muted">{t.tileUntested}</span>
+				{/if}
+			</span>
+		{/if}
 	{/if}
 </button>

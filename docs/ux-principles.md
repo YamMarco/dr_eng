@@ -26,8 +26,13 @@ the product owner) or **[evidence]** (backed by the research in the last section
 
 learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand -> work on what's weak.
 
-- **Exams are first-class**, never buried: diagnostic at the start and practice in real
-  conditions throughout (timer, grade, no feedback until submit). **[decided]**
+- **Exams are first-class**: always visible (the best score sits on every module tile) and
+  always one tap away, in real conditions (timer, grade, no feedback until submit).
+  **[decided]**
+- **But they're only *suggested* when the student is ready:** an exam left open, or at least
+  75% of the module's lessons done (`EXAM_READY` in `dashboard/data.ts`). A student far
+  from finishing the lessons is never pushed to an exam; the opening exam is an optional
+  row, not a recommendation. **[decided]**
 - Retrieval and spacing beat rereading: prefer a question over another reading screen;
   return to material in spaced intervals. **[evidence: Dunlosky]**
 - Every screen has **one obvious next step**, and no screen is a dead end - finishing
@@ -65,16 +70,18 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 ## 7. Home
 
 - **One screen on a phone, no scrolling.** **[decided]**
-- **Each Bagrut module is an exam:** modules sit side by side as tiles, each led by its best
-  exam score, with a ring for lesson progress. **[decided]**
+- **The two things that matter, exams and lesson progress, each have one job per place**
+  (phone space is tight, nothing is shown twice): **[decided]**
+  - *Tile* = status only: lessons done (`5/43` + bar) and best exam score, both always.
+  - *Continue bar* = the resume action.
+  - *Panel* = only what the bar doesn't already offer (an action the bar links to is left out).
+- **Each Bagrut module is an exam:** modules sit side by side as tiles. **[decided]**
 - **Continue bar** above the tiles: one tap back into the latest thing done in any module
   (an exam left mid-way, words still due, else that module's lesson). Hidden for a new
   student. **[decided]**
-- Tapping a tile opens its panel below (one at a time). The **exam is the panel's one big
-  card**, its copy driven by the coach (diagnostic first, an exam after each finished
-  section, resume a half-done one). A module the student has started shows its continue
-  as a small row; a module without exams and not yet started leads with its first
-  lesson. **[decided]**
+- Tapping a tile opens its panel below (one at a time). The panel has at most **one big
+  card**: the exam when it's advised (see section 3), otherwise the module's lesson;
+  everything else is a row. **[decided]**
 - Ads, when they come: bottom of home only.
 
 ## Evidence

@@ -2,28 +2,33 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { MediaQuery } from 'svelte/reactivity';
-	import { ChevronLeft, ClipboardCheck, Languages, Laptop, Play } from '@lucide/svelte';
+	import { ChevronLeft, ClipboardCheck, Languages, Play } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import type { CurriculumModule } from '$lib/curriculum';
 	import { deckToday, getDeck } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { roundsCompleted } from '$lib/lessonPath';
 	import type { ExamStats } from '$lib/quiz/stats';
-	import { moduleLocation } from '$lib/moduleLocation.svelte';
-	import { isWritingLesson, nextStep, todayLesson } from './data';
+	import { examAdvice, lessonSubtitle, todayLesson } from './data';
 
-	// The open module's actions: its exams, the lesson to continue and today's
-	// words. nextStep's reason (diagnostic, section done, ...) drives the exam's copy.
-	type Props = { mod: CurriculumModule; groupId: string; exams: ExamStats; hasPath: boolean };
+	// What the open module offers beyond the continue bar: its exams, its lesson
+	// and today's words. An action the bar already links to is left out. The exam
+	// is the big card only when examAdvice says so; otherwise it's a calm row.
+	type Props = {
+		mod: CurriculumModule;
+		groupId: string;
+		exams: ExamStats;
+		hasPath: boolean;
+		/** The href the continue bar already offers. */
+		covered?: string;
+	};
 
-	let { mod, groupId, exams, hasPath }: Props = $props();
+	let { mod, groupId, exams, hasPath, covered }: Props = $props();
 
 	type Action = {
 		kind: 'exam' | 'lesson' | 'words';
 		icon: Component;
 		title: string;
 		sub?: string;
-		note?: string;
 		cta: string;
 		href: string;
 	};
@@ -33,20 +38,22 @@
 	// Touch-first device: a writing lesson gets a "better on a computer" note.
 	const phone = new MediaQuery('pointer: coarse');
 
-	let step = $derived(nextStep(mod.id));
+	let advice = $derived(examAdvice(mod.id));
 
 	let examAction = $derived.by((): Action | undefined => {
 		if (!exams.total) return undefined;
 		const next = exams.next;
-		const reason = step.kind === 'exam' ? step.reason : undefined;
-		const summary = exams.taken ? t.examsSummary(exams.taken, exams.total, exams.best!) : undefined;
 		return {
 			kind: 'exam',
 			icon: ClipboardCheck,
 			title: t.examsTitle,
-			sub: reason ? t.examReason[reason] : (summary ?? t.examReason.diagnostic),
+			sub: advice
+				? t.examReason[advice]
+				: exams.taken
+					? t.examsSummary(exams.taken, exams.total, exams.best!)
+					: t.examsOpen(exams.total),
 			cta:
-				reason === 'resume'
+				advice === 'resume'
 					? i18n.dict.quizzes.resumeButton
 					: !exams.taken
 						? t.examsFirst
@@ -60,20 +67,12 @@
 	let lessonAction = $derived.by((): Action | undefined => {
 		const lesson = todayLesson(mod.id);
 		if (!lesson) return undefined;
-		const done = roundsCompleted(lesson.id);
-		const rounds = lesson.content.rounds.length;
 		return {
 			kind: 'lesson',
 			icon: Play,
 			title: i18n.title(lesson.id),
-			sub: [
-				done ? t.lessonMidway : t.lessonNext,
-				rounds > 1 ? i18n.dict.lesson.roundLabel(Math.min(done + 1, rounds), rounds) : ''
-			]
-				.filter(Boolean)
-				.join(' · '),
-			note: phone.current && isWritingLesson(lesson) ? t.desktopNote : undefined,
-			cta: done ? t.todayContinue : t.todayStart,
+			sub: lessonSubtitle(lesson, phone.current),
+			cta: t.todayStart,
 			href: `${base}/lessons?lesson=${lesson.id}`
 		};
 	});
@@ -92,13 +91,13 @@
 		};
 	});
 
-	// The exam is the module's big card. Without exams, a module not yet started
-	// leads with its first lesson; once started, continuing is a small row (the
-	// big "continue" lives in home's top bar).
-	let started = $derived(!!moduleLocation.get(mod.id));
-	let primaryKind = $derived(examAction ? 'exam' : started ? undefined : 'lesson');
-	let actions = $derived([examAction, lessonAction, wordsAction].filter((a) => !!a));
-	let primary = $derived(actions.find((a) => a.kind === primaryKind));
+	let actions = $derived(
+		[examAction, lessonAction, wordsAction].filter((a): a is Action => !!a && a.href !== covered)
+	);
+	// One big card at most: the advised exam, else the module's lesson.
+	let primary = $derived(
+		actions.find((a) => a.kind === 'exam' && advice) ?? actions.find((a) => a.kind === 'lesson')
+	);
 	let rows = $derived(actions.filter((a) => a !== primary));
 </script>
 
@@ -113,13 +112,8 @@
 			<div class="flex items-start gap-3">
 				<primary.icon size={22} class="mt-0.5 shrink-0" aria-hidden="true" />
 				<div class="flex min-w-0 flex-col gap-0.5">
-					<h2 class="font-extrabold">{primary.title}</h2>
+					<h2 dir="auto" class="[text-align:match-parent] font-extrabold">{primary.title}</h2>
 					{#if primary.sub}<p class="text-sm leading-snug text-white/85">{primary.sub}</p>{/if}
-					{#if primary.note}
-						<p class="mt-1 flex items-center gap-1.5 text-sm text-white/85">
-							<Laptop size={15} aria-hidden="true" />{primary.note}
-						</p>
-					{/if}
 				</div>
 			</div>
 			<a
@@ -142,7 +136,9 @@
 				<row.icon size={18} aria-hidden="true" />
 			</span>
 			<span class="flex min-w-0 flex-1 flex-col">
-				<span class="truncate text-sm font-bold">{row.title}</span>
+				<span dir="auto" class="truncate [text-align:match-parent] text-sm font-bold"
+					>{row.title}</span
+				>
 				{#if row.sub}<span class="truncate text-xs text-muted">{row.sub}</span>{/if}
 			</span>
 			<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />
