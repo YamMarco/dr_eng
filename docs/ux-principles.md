@@ -49,7 +49,8 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - **No leaderboards or comparison** between students - it feeds anxiety. **[decided]**
 - **Progression is the lever:** levels, mastery (gold lessons), visible paths. **[evidence:
   the learning gain in gamified courses came from levels]**
-- **Consistency:** a weekly goal (e.g. 4 of 7 days), not a fragile daily streak. *(planned)*
+- **Consistency:** a weekly goal (4 of 7 days, Sunday to Saturday), not a fragile daily
+  streak. Shown on home; rewards and badges for it are planned.
 - **Badges:** a few, for meaningful milestones - first full timed exam, a section mastered,
   finishing an exam without leaving early, coming back after a break. *(planned)*
 
@@ -63,9 +64,14 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 
 ## 7. Home
 
-- Top: the coach's **one next step** - a lesson, an exam left open, or an exam after each
-  finished section.
-- Exams and words have their own cards with real numbers. The path comes after.
+- **One screen on a phone, no scrolling.** **[decided]**
+- **Each Bagrut module is an exam:** modules sit side by side as tiles, each led by its best
+  exam score, with a ring for lesson progress. **[decided]**
+- Tapping a tile opens its panel below (one at a time). In the panel, the coach's pick is
+  the one filled card: an exam left open, a diagnostic exam before anything else, an exam
+  after each finished section, else the next lesson. Everything else is a row. **[decided]**
+- No duplicate "next lesson" elsewhere on home - quick continue lives in the panel; the
+  full path is one tap away. **[decided]**
 - Ads, when they come: bottom of home only.
 
 ## Evidence

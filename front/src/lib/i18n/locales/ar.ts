@@ -16,9 +16,6 @@ export const ar: DictionaryOverride = {
 		settings: 'الإعدادات'
 	},
 	appTitle: 'بجروت في اللغة الإنجليزية — تدريب',
-	home: {
-		unitsSuffix: 'وحدة'
-	},
 	unit: {
 		modulePrefix: 'وحدة'
 	},

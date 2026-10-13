@@ -1,5 +1,5 @@
 // Which calendar days the student practiced (finished a lesson round or
-// submitted an exam), for the home dashboard's streak counter.
+// submitted an exam), for the home dashboard's weekly goal and streak.
 
 const STORAGE_KEY = 'activity-days';
 /** Enough history for any streak we'd realistically show. */
@@ -30,6 +30,20 @@ class ActivityStore {
 		this.days = [...this.days, today].slice(-MAX_DAYS);
 		if (typeof localStorage !== 'undefined')
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.days));
+	}
+
+	/** Practice days in the current week (Sunday to Saturday, the Israeli week). */
+	get daysThisWeek(): number {
+		// A local walking cursor, not reactive state.
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
+		const cursor = new Date();
+		const set = new Set(this.days);
+		let count = 0;
+		for (let i = cursor.getDay(); i >= 0; i--) {
+			if (set.has(dayKey(cursor))) count++;
+			cursor.setDate(cursor.getDate() - 1);
+		}
+		return count;
 	}
 
 	/** Consecutive practice days ending today - or yesterday, so the streak

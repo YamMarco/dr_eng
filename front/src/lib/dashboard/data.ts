@@ -48,16 +48,20 @@ export function isWritingLesson(lesson: LessonNode): boolean {
 
 export type NextStep =
 	| { kind: 'lesson'; lesson: LessonNode }
-	| { kind: 'exam'; quiz: Quiz; reason: 'resume' | 'section-done' | 'path-done' }
+	| { kind: 'exam'; quiz: Quiz; reason: 'resume' | 'diagnostic' | 'section-done' | 'path-done' }
 	| { kind: 'done' };
 
-/** The coach's pick for right now: an exam left open, a practice exam once a
- *  section is finished (one exam per finished section), else today's lesson. */
+/** The coach's pick for right now: an exam left open, a diagnostic exam before
+ *  anything else, a practice exam once a section is finished (one per finished
+ *  section), else today's lesson. */
 export function nextStep(moduleId: string): NextStep {
 	const exams = examStats(moduleId);
 	const next = exams.next;
 	if (next && getInProgress(next.id)) return { kind: 'exam', quiz: next, reason: 'resume' };
-	const sectionsDone = moduleRoute(moduleId).filter((s) => s.total && s.done === s.total).length;
+	const route = moduleRoute(moduleId);
+	if (next && exams.taken === 0 && route.every((s) => s.done === 0))
+		return { kind: 'exam', quiz: next, reason: 'diagnostic' };
+	const sectionsDone = route.filter((s) => s.total && s.done === s.total).length;
 	if (next && sectionsDone > exams.taken)
 		return { kind: 'exam', quiz: next, reason: 'section-done' };
 	const lesson = todayLesson(moduleId);
