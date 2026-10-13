@@ -41,14 +41,18 @@ export interface LessonNode {
 	content: LessonContent;
 }
 
+/** In the order a module's page lists them. */
+export const SKILLS = ['vocab', 'reading', 'writing'] as const;
+export type Skill = (typeof SKILLS)[number];
+
 export interface SectionMeta {
 	id: string;
 	/** Modules whose path shows this section. The first one owns it. */
 	modules: string[];
 	/** Progress key shared by every module that shows the section. Default: the owning module. */
 	progressScope?: string;
-	/** This section teaches the module's vocabulary: home counts it as the module's "words". */
-	vocab?: boolean;
+	/** Which Bagrut skill the section trains: groups a module's rows on its page. */
+	skill?: Skill;
 	titleEn?: string;
 	intro?: { greeting: string; goal?: string };
 }

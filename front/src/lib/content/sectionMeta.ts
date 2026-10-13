@@ -7,7 +7,7 @@ export const sectionMeta: SectionMeta[] = [
 	{
 		id: 'c-2',
 		modules: ['c'],
-		vocab: true,
+		skill: 'vocab',
 		titleEn: 'Part A - Vocabulary',
 		intro: {
 			greeting: 'The words that keep coming back',
@@ -18,6 +18,7 @@ export const sectionMeta: SectionMeta[] = [
 		id: 'c-1',
 		modules: ['c', 'e'],
 		progressScope: 'reading',
+		skill: 'reading',
 		titleEn: 'Part B - Reading Skills',
 		intro: {
 			greeting: 'I search - I do not read',
@@ -27,6 +28,7 @@ export const sectionMeta: SectionMeta[] = [
 	{
 		id: 'c-3',
 		modules: ['c'],
+		skill: 'writing',
 		titleEn: 'Part C - Writing',
 		intro: {
 			greeting: '70-90 words, every time',

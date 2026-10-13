@@ -22,6 +22,16 @@ the product owner) or **[evidence]** (backed by the research in the last section
 - Celebrate real progress; never shame, never add fake urgency. **[decided]**
 - Address the student in plural (`לכם`, `סיימתם`, `מתחילים`). **[decided]**
 
+## Motion and feedback
+
+- **Every interaction answers back, and every screen moves.** Entrances, press states,
+  animated numbers and bars, a reward on every success, visible waiting states. This is a
+  requirement on every screen, not polish - the full checklist is in the `ui-review`
+  skill. **[decided]**
+- Rewards celebrate; failures stay calm (blue-grey, "almost", never red or shaking).
+  **[decided + evidence: informational feedback beats pay-offs, see section 5]**
+- Motion never delays the next action and respects reduced-motion. **[decided]**
+
 ## 3. The core loop
 
 learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand -> work on what's weak.
@@ -67,32 +77,39 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - Formats: an interstitial at a break (skippable, not after every lesson), and opt-in
   rewarded ads (e.g. unlock a full explanation). Under-18 audience: non-personalized ads. *(planned)*
 
-## 7. Home
+## 7. Home and the module page
 
-- **One screen on a phone, no scrolling** - checked down to 360x640 with the tallest panel
-  open (module E). Any addition to home must keep that true. **[decided]**
-- **The two things that matter, exams and lesson progress, each have one job per place**
-  (phone space is tight, nothing is shown twice): **[decided]**
-  - *Tile* = status only, **the same three slots in the same order for every module**
-    (so tiles compare at a glance): path lessons (`0/31` + bar), words (+ bar) and the
-    exam nugget pinned to the bottom. Words are module E's separate word engine, or for
-    C its vocabulary section (`vocab: true` in `sectionMeta`, left out of the lessons
-    count so nothing is counted twice). The **exam nugget**: best score with a tier icon (trophy 85+, check 60+, target
-    below - a calm blue-grey, never red) and a dot per exam, filled once taken. Dashed
-    "טרם" before the first exam, "בקרוב" for a module with no exams yet.
-  - *Continue bar* = the resume action, styled apart from every card (dark pill, round
-    play button) so it reads as "the way back in", not another tile.
-  - *Panel* = only what the bar doesn't already offer (an action the bar links to is left out).
-- **Each Bagrut module is an exam:** modules sit side by side as tiles. **[decided]**
-- **Continue bar** above the tiles: one tap back into the latest thing done in any module
-  (an exam left mid-way, words still due, else that module's lesson). Hidden for a new
-  student. **[decided]**
-- Tapping a tile opens its panel below (one at a time). The panel has at most **one big
-  card**: the exam when it's advised (see section 3), otherwise the module's lesson;
-  everything else is a row. **[decided]**
-- **Every panel has a way to exams:** an exam row (muted "coming soon" if the module has
-  no exams yet) and an "all exams" link. **[decided]**
+Two levels, so no screen has to hold everything: **home is concise and entices; the module
+page holds the detail and the actions.** Each fact lives in exactly one place. **[decided]**
+
+**Home** (one screen on a phone, no scrolling - checked down to 360x640):
+
+- **Continue bar** on top: one tap back into the latest thing done in any module (an exam
+  left mid-way, words still due, else that module's next lesson). Styled apart from every
+  card - a dark pill with a round play button - so it reads as "the way back in".
+  Hidden for a new student. **[decided]**
+- **One row per Bagrut module** (each module is an exam): the **exam nugget** (best score
+  with a tier icon - trophy 85+, check 60+, target below, a calm blue-grey and never red -
+  plus a dot per exam, filled once taken; dashed "טרם" before the first exam, "בקרוב" with
+  no exams yet), a bar for lesson progress with a notch where exams become worth taking,
+  and **one hook line**: the reason to open the module. **[decided]**
+- **Hooks**, in priority: an exam left open > an exam worth taking now > words due today
+  > "N lessons until you're ready for the exam" (the goal-gradient) > a plain invitation.
+- Rows, not side-by-side tiles: a hook needs width. **[decided]**
 - Ads, when they come: bottom of home only.
+
+**Module page** (`/unit/<level>/module/<id>`), **the same order for every module**:
+
+1. **One big card**: the next step - an exam when it's advised (see section 3), else the
+   module's next lesson.
+2. **Exams** row (muted "coming soon" when the module has none yet) with the nugget.
+3. **Vocabulary**, **Reading**, **Writing** rows with progress, in that order; a skill the
+   module doesn't train is simply absent. Vocabulary is module E's word engine, or for C its
+   vocabulary section; sections are tagged with `skill` in `sectionMeta`. On a phone the
+   writing row notes it's better on a computer.
+4. A link to the full lesson path.
+
+Keep the page to one phone screen where possible (checked at 360x640).
 
 ## Evidence
 

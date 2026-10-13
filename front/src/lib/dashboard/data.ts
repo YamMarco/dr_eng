@@ -7,7 +7,9 @@ import {
 	getLessonsBySection,
 	moduleSections as sectionsOf,
 	sectionMeta,
-	type LessonNode
+	SKILLS,
+	type LessonNode,
+	type Skill
 } from '$lib/content';
 import { i18n } from '$lib/i18n/index.svelte';
 import {
@@ -67,22 +69,29 @@ export function lessonStats(route: RouteSection[]): Progress {
 
 export type Progress = { done: number; total: number };
 
-/** What a module tile shows, the same three slots for every module: path lessons,
- *  words and exams. Words are the module's word engine when it has one (E), else
- *  its vocabulary section (C, whose vocab is path lessons - left out of `lessons`
- *  so nothing is counted twice). */
-export function tileProgress(
-	moduleId: string,
-	route: RouteSection[]
-): { lessons: Progress; words: Progress | undefined } {
-	const vocabIds = new Set(sectionMeta.filter((s) => s.vocab).map((s) => s.id));
-	const lessons = lessonStats(route.filter((s) => !vocabIds.has(s.id)));
-	if (getDeck(moduleId)) {
-		const { seen, total } = deckStats(moduleId);
-		return { lessons, words: { done: seen, total } };
-	}
-	const vocab = route.filter((s) => vocabIds.has(s.id));
-	return { lessons, words: vocab.length ? lessonStats(vocab) : undefined };
+export type SkillRow = {
+	skill: Skill;
+	progress: Progress;
+	/** The word engine (E's vocabulary) or the lesson path. */
+	kind: 'engine' | 'path';
+	/** For a path skill: the section it opens on. */
+	section?: string;
+};
+
+/** A module's rows on its page, always in SKILLS order (vocabulary, reading,
+ *  writing); a skill the module doesn't train is simply absent. Vocabulary is the
+ *  word engine when the module has one (E), else its vocab section (C). */
+export function moduleSkills(moduleId: string, route: RouteSection[]): SkillRow[] {
+	const skillOf = (sectionId: string) => sectionMeta.find((s) => s.id === sectionId)?.skill;
+	return SKILLS.flatMap((skill): SkillRow[] => {
+		if (skill === 'vocab' && getDeck(moduleId)) {
+			const { seen, total } = deckStats(moduleId);
+			return [{ skill, kind: 'engine', progress: { done: seen, total } }];
+		}
+		const sections = route.filter((s) => skillOf(s.id) === skill);
+		if (!sections.length) return [];
+		return [{ skill, kind: 'path', section: sections[0].id, progress: lessonStats(sections) }];
+	});
 }
 
 /** Share of a module's lessons that must be done before exams are suggested -
@@ -100,6 +109,28 @@ export function examAdvice(moduleId: string): ExamAdvice | undefined {
 	const { done, total } = lessonStats(moduleRoute(moduleId));
 	if (!total || done === total) return 'path-done';
 	return done / total >= EXAM_READY ? 'ready' : undefined;
+}
+
+export type ModuleHook = { text: string; tone: 'go' | 'info' };
+
+/** The one line under a module on home - the reason to open it. In order: an exam
+ *  left open, an exam worth taking now, words due today, how many lessons until the
+ *  student is ready for the exam (the goal-gradient), else a plain invitation. */
+export function moduleHook(moduleId: string, route: RouteSection[]): ModuleHook {
+	const t = i18n.dict.home;
+	const advice = examAdvice(moduleId);
+	if (advice === 'resume') return { tone: 'go', text: t.hookResume };
+	if (advice) return { tone: 'go', text: t.hookReady };
+	if (getDeck(moduleId)) {
+		const { reviews, fresh } = deckToday(moduleId);
+		if (reviews + fresh) return { tone: 'info', text: t.hookWords(reviews + fresh) };
+	}
+	const { done, total } = lessonStats(route);
+	const hasExams = examStats(moduleId).total > 0;
+	const left = hasExams ? Math.ceil(total * EXAM_READY) - done : total - done;
+	if (total && left > 0)
+		return { tone: 'info', text: hasExams ? t.hookToExam(left) : t.hookLessonsLeft(left) };
+	return { tone: 'info', text: t.hookOpen };
 }
 
 /** Second line under a lesson: where the student is in it, or that it's better

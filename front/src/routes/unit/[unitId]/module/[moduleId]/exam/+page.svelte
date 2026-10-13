@@ -23,7 +23,7 @@
      ever unlock it there (see the equivalent bootstrap link on the lessons
      page). Gating this link too would mean nothing on the deployed site
      could ever reach the password screen. -->
-<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back="/">
+<AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
 	{#snippet trailing()}
 		<a
 			href="/edit-exam?module={mod.id}"

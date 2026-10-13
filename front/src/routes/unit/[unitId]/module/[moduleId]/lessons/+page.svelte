@@ -215,8 +215,16 @@
 			openNode(requestedNode);
 			return;
 		}
-		// A new student has no last lesson: land on "start here" instead.
-		const anchorId = lastLessonId ?? startNodeId;
+		// A `?section=` param (from the module page's skill rows) lands on that part:
+		// its next open lesson, else its top. A new student has no last lesson, so
+		// "start here" is the last resort.
+		const sectionParam = page.url.searchParams.get('section');
+		const sectionNodes = nodes
+			.filter((node) => node.sectionId === sectionParam)
+			.sort((a, b) => a.y - b.y);
+		const sectionAnchor =
+			sectionNodes.find((node) => !isDone(node.lesson.id) && isUnlocked(node)) ?? sectionNodes[0];
+		const anchorId = sectionAnchor?.lesson.id ?? lastLessonId ?? startNodeId;
 		if (!anchorId) return;
 		document
 			.querySelector(`[data-lesson-node-id="${CSS.escape(anchorId)}"]`)
@@ -402,7 +410,10 @@
 
 <svelte:window onclick={dismissLabelOnOutsideClick} />
 
-<AppBar title="{i18n.dict.lessons.titlePrefix} {mod.letter}" back="/">
+<AppBar
+	title="{i18n.dict.lessons.titlePrefix} {mod.letter}"
+	back="/unit/{group.id}/module/{mod.id}"
+>
 	{#snippet trailing()}
 		<!-- In the bar rather than floating, so they never cover path nodes. -->
 		<div class="flex items-center gap-2">

@@ -1,21 +1,22 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import { CalendarClock, Flame } from '@lucide/svelte';
 	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import { continueHref, moduleRoute, resumeItem, tileProgress } from '$lib/dashboard/data';
-	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
+	import { lessonStats, moduleHook, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
-	import { moduleLocation } from '$lib/moduleLocation.svelte';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
-	import ModuleTile from '$lib/dashboard/ModuleTile.svelte';
-	import ModulePanel from '$lib/dashboard/ModulePanel.svelte';
+	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
+	import ModuleRow from '$lib/dashboard/ModuleRow.svelte';
 
-	// Home = a "continue" bar for the latest thing done, the Bagrut modules side
-	// by side (each one is an exam), and the open module's actions below. One
-	// screen on a phone, no scrolling.
+	// Home = where the student stands, and a reason to go in: a way back to the
+	// latest thing done, and one concise row per Bagrut module. Every action lives
+	// on the module's own page.
 	const WEEKLY_GOAL = 4;
 
 	let t = $derived(i18n.dict.home);
@@ -28,21 +29,13 @@
 			return {
 				mod: modules[id],
 				exams,
-				hasPath: route.length > 0,
-				...tileProgress(id, route),
+				lessons: lessonStats(route),
+				hook: moduleHook(id, route),
+				href: `/unit/${group.id}/module/${id}`,
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
 		})
 	);
-
-	// Opens on the module last studied, else the first one with something in it.
-	let chosenId = $state<string | undefined>();
-	let openId = $derived(
-		chosenId ??
-			rows.find((r) => !r.comingSoon && moduleLocation.get(r.mod.id))?.mod.id ??
-			rows.find((r) => !r.comingSoon)?.mod.id
-	);
-	let open = $derived(rows.find((r) => r.mod.id === openId));
 
 	// Back into the latest thing done, in any module of this unit level.
 	let resume = $derived(resumeItem(group.moduleIds));
@@ -55,7 +48,7 @@
 	<Onboarding />
 {:else}
 	<main
-		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-10 sm:pb-6 md:max-w-2xl"
+		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-6 sm:pt-10 md:max-w-2xl"
 	>
 		<header class="flex flex-wrap items-center gap-2">
 			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl">{t.greeting}</h1>
@@ -85,30 +78,10 @@
 			<ContinueBar item={resume} groupId={group.id} />
 		{/if}
 
-		<div class="grid gap-2" style="grid-template-columns: repeat({rows.length}, minmax(0, 1fr))">
-			{#each rows as row (row.mod.id)}
-				<ModuleTile
-					mod={row.mod}
-					exams={row.exams}
-					lessons={row.lessons}
-					words={row.words}
-					comingSoon={row.comingSoon}
-					selected={row.mod.id === openId}
-					onclick={() => (chosenId = row.mod.id)}
-				/>
-			{/each}
-		</div>
-
-		{#if open}
-			{#key open.mod.id}
-				<ModulePanel
-					mod={open.mod}
-					groupId={group.id}
-					exams={open.exams}
-					hasPath={open.hasPath}
-					covered={resume && continueHref(resume, group.id)}
-				/>
-			{/key}
-		{/if}
+		{#each rows as row, i (row.mod.id)}
+			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+				<ModuleRow {...row} />
+			</div>
+		{/each}
 	</main>
 {/if}
