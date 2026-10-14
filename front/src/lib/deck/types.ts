@@ -1,5 +1,5 @@
 // Shapes for the spaced-repetition word deck (Module E, Part II vocabulary).
-// See docs/module-e-plan.md.
+// See docs/modules/module-e.md.
 
 /** Word class. The exam groups each matching set by class, so distractors must share it. */
 export type WordPos = 'verb' | 'noun' | 'adj' | 'adv' | 'chunk' | 'other';

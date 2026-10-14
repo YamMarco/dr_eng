@@ -32,7 +32,7 @@ Part II: each set is one word class (verbs `to attach`, nouns `criticism`, adjec
 
 ## Reading path (section `e-1`, about 6-8 nodes)
 
-Uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c-audit.md`).
+Uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c.md`).
 
 1. **Bridge:** the C method (keyword -> locate -> read that sentence) on an E-length text. A check, not a re-teach.
 2. **Method detour** (optional): condensed c-l03.
@@ -75,4 +75,4 @@ One article + 9 questions + 5 `match-definitions` sets, timed (75 min). Vocab se
 - `lessons/+page.svelte` shows the edit link and path only for module `c`.
 - `editModel.svelte.ts` hardcodes `MODULE_ID = 'c'`; `edit-exam` defaults to `'c'`.
 - E-only sections go in `content/e/e-<N>.ts`, registered in `content/index.ts`, with `modules: ['e']` in `sectionMeta.ts`.
-- Add `docs/module-e-audit.md` once E-only nodes exist.
+- Once E-only nodes exist, add a per-node grades and open-issues section here, like `module-c.md`.
