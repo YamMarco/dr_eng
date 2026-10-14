@@ -1,14 +1,22 @@
-// Accounts: Supabase email sign-in with a one-time code (no passwords, no
-// magic links - a link would open the browser instead of the mobile app).
+// Accounts: Supabase email + password. The email is only for verification:
+// sign-up and password reset send a link, and everyday sign-in is the password.
 // Without a configured Supabase project the app runs open, as before.
 
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from './supabase';
 
+// Links in emails open in a browser, so they must point at the web deployment -
+// from the mobile app that's VITE_API_BASE, not the app's own origin.
+const WEB_BASE: string =
+	import.meta.env.VITE_API_BASE || (typeof location === 'undefined' ? '' : location.origin);
+const APP_URL = `${WEB_BASE}/app`;
+
 class AuthStore {
 	session = $state<Session | null>(null);
 	/** False until the stored session has been read, so the login screen doesn't flash. */
 	ready = $state(!supabase);
+	/** The student arrived from a password-reset email and must choose a new password. */
+	recovering = $state(false);
 
 	constructor() {
 		if (!supabase || typeof window === 'undefined') return;
@@ -18,8 +26,9 @@ class AuthStore {
 			this.session = data.session;
 			this.ready = true;
 		});
-		supabase.auth.onAuthStateChange((_event, session) => {
+		supabase.auth.onAuthStateChange((event, session) => {
 			this.session = session;
+			if (event === 'PASSWORD_RECOVERY') this.recovering = true;
 		});
 	}
 
@@ -39,17 +48,38 @@ class AuthStore {
 		return this.session?.access_token;
 	}
 
-	async sendCode(email: string) {
-		const { error } = await supabase!.auth.signInWithOtp({
+	async signIn(email: string, password: string) {
+		const { error } = await supabase!.auth.signInWithPassword({ email, password });
+		if (error) throw error;
+	}
+
+	async signUp(email: string, password: string) {
+		const { error } = await supabase!.auth.signUp({
 			email,
-			options: { shouldCreateUser: true }
+			password,
+			options: { emailRedirectTo: APP_URL }
 		});
 		if (error) throw error;
 	}
 
-	async verifyCode(email: string, token: string) {
-		const { error } = await supabase!.auth.verifyOtp({ email, token, type: 'email' });
+	async resendConfirmation(email: string) {
+		const { error } = await supabase!.auth.resend({
+			type: 'signup',
+			email,
+			options: { emailRedirectTo: APP_URL }
+		});
 		if (error) throw error;
+	}
+
+	async sendReset(email: string) {
+		const { error } = await supabase!.auth.resetPasswordForEmail(email, { redirectTo: APP_URL });
+		if (error) throw error;
+	}
+
+	async setPassword(password: string) {
+		const { error } = await supabase!.auth.updateUser({ password });
+		if (error) throw error;
+		this.recovering = false;
 	}
 
 	async signOut() {

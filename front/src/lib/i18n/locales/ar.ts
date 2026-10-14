@@ -22,8 +22,7 @@ export const ar: DictionaryOverride = {
 	appTitle: 'بجروت الإنجليزية - تدريب',
 	login: {
 		title: 'تسجيل الدخول',
-		subtitle: 'ادخلوا لمتابعة التدريب',
-		submit: 'دخول'
+		subtitle: 'ادخلوا لمتابعة التدريب'
 	},
 	home: {
 		greeting: 'مرحبًا!',

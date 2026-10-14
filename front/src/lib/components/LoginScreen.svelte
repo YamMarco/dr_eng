@@ -5,132 +5,273 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
-	// Two steps: email -> the one-time code from that email. The session that
-	// verifyCode starts flips auth.loggedIn, and the app layout takes over.
+	// One screen, five faces: sign in, sign up, forgot password, "check your
+	// email", and (arriving from a reset link) choose a new password. The email
+	// only verifies; everyday sign-in is email + password. A successful sign-in
+	// or password save flips the app layout past this screen by itself.
 
-	const RESEND_AFTER = 60; // Supabase allows one code per address per minute.
+	type Mode = 'signin' | 'signup' | 'forgot' | 'sent' | 'recovery' | 'otp';
+
+	// Mockup of a phone-code sign-in (SMS/WhatsApp). Off until a provider is chosen:
+	// the button shows but is disabled, and the screens below are not wired to anything.
+	const OTP_ENABLED = false;
+	let phone = $state('');
+	let otpCode = $state('');
+	let otpSent = $state(false);
 
 	let t = $derived(i18n.dict.login);
-	let step = $state<'email' | 'code'>('email');
+	let mode = $state<Mode>(auth.recovering ? 'recovery' : 'signin');
 	let email = $state('');
-	let code = $state('');
+	let password = $state('');
+	let sentKind = $state<'confirm' | 'reset'>('confirm');
 	let busy = $state(false);
 	let failed = $state<string | null>(null);
-	let wait = $state(0);
+	let canResend = $state(false);
+
+	// The link from a reset email lands here with a recovery session.
+	$effect(() => {
+		if (auth.recovering) mode = 'recovery';
+	});
 
 	const input =
 		'w-full rounded-2xl border-2 border-line bg-canvas px-4 py-3 text-lg focus:border-brand focus:outline-none';
+	const linkBtn =
+		'min-h-11 rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]';
 
-	function startCooldown() {
-		wait = RESEND_AFTER;
-		const timer = setInterval(() => {
-			wait -= 1;
-			if (wait <= 0) clearInterval(timer);
-		}, 1000);
+	let head = $derived(
+		mode === 'signup'
+			? [t.signUpTitle, t.signUpSubtitle]
+			: mode === 'forgot'
+				? [t.forgotTitle, t.forgotSubtitle]
+				: mode === 'recovery'
+					? [t.recoveryTitle, t.recoverySubtitle]
+					: mode === 'sent'
+						? [t.checkEmailTitle, '']
+						: mode === 'otp'
+							? [t.otpTitle, t.otpSubtitle]
+							: [t.title, t.subtitle]
+	);
+
+	function messageFor(error: unknown): string {
+		const code = (error as { code?: string })?.code;
+		if (code === 'invalid_credentials') return t.errors.badCredentials;
+		if (code === 'email_not_confirmed') {
+			canResend = true;
+			return t.errors.notConfirmed;
+		}
+		if (code === 'weak_password') return t.errors.weakPassword;
+		if (code === 'over_email_send_rate_limit' || code === 'over_request_rate_limit')
+			return t.errors.rateLimit;
+		return t.errors.generic;
 	}
 
-	async function sendCode(event?: SubmitEvent) {
-		event?.preventDefault();
+	async function run(action: () => Promise<void>, onDone?: () => void) {
 		busy = true;
 		failed = null;
+		canResend = false;
 		try {
-			await auth.sendCode(email.trim());
-			step = 'code';
-			code = '';
-			startCooldown();
-		} catch {
-			failed = t.sendFailed;
+			await action();
+			onDone?.();
+		} catch (error) {
+			failed = messageFor(error);
 		} finally {
 			busy = false;
 		}
 	}
 
-	async function verify(event: SubmitEvent) {
-		event.preventDefault();
-		busy = true;
+	function go(next: Mode) {
+		mode = next;
+		otpSent = false;
 		failed = null;
-		try {
-			await auth.verifyCode(email.trim(), code.trim());
-		} catch {
-			failed = t.codeFailed;
-			busy = false;
-		}
+		canResend = false;
+		password = '';
 	}
+
+	function submit(event: SubmitEvent) {
+		event.preventDefault();
+		const address = email.trim();
+		if (mode === 'signin') return run(() => auth.signIn(address, password));
+		if (mode === 'signup')
+			return run(
+				() => auth.signUp(address, password),
+				() => ((sentKind = 'confirm'), go('sent'))
+			);
+		if (mode === 'forgot')
+			return run(
+				() => auth.sendReset(address),
+				() => ((sentKind = 'reset'), go('sent'))
+			);
+		if (mode === 'recovery') return run(() => auth.setPassword(password));
+	}
+
+	let needsEmail = $derived(mode === 'signin' || mode === 'signup' || mode === 'forgot');
+	let needsPassword = $derived(mode === 'signin' || mode === 'signup' || mode === 'recovery');
+	let submitLabel = $derived(
+		mode === 'signup'
+			? t.signUp
+			: mode === 'forgot'
+				? t.sendLink
+				: mode === 'recovery'
+					? t.savePassword
+					: t.signIn
+	);
 </script>
 
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
-	<h1 class="text-3xl font-extrabold tracking-tight">{t.title}</h1>
-	<p class="mt-2 leading-relaxed text-muted">{t.subtitle}</p>
+	<h1 class="text-3xl font-extrabold tracking-tight">{head[0]}</h1>
+	{#if head[1]}<p class="mt-2 leading-relaxed text-muted">{head[1]}</p>{/if}
 
 	<div class="mt-8 rounded-3xl bg-surface p-5 shadow-md ring-1 ring-line/70">
-		{#key step}
+		{#key mode}
 			<div in:fly={{ y: 12, duration: 250, easing: cubicOut }}>
-				{#if step === 'email'}
-					<form class="flex flex-col gap-4" onsubmit={sendCode}>
+				{#if mode === 'sent'}
+					<div class="flex flex-col gap-4">
+						<p class="leading-relaxed">
+							{#if sentKind === 'confirm'}
+								{t.confirmSent} <span class="font-semibold" dir="ltr">{email.trim()}</span>.
+								{t.confirmThenSignIn}
+							{:else}
+								{t.resetSent}
+							{/if}
+						</p>
+						{#if sentKind === 'confirm'}
+							<button
+								type="button"
+								class={linkBtn}
+								disabled={busy}
+								onclick={() => run(() => auth.resendConfirmation(email.trim()))}
+							>
+								{t.resendConfirm}
+							</button>
+						{/if}
+						<Button variant="secondary" onclick={() => go('signin')}>{t.backToSignIn}</Button>
+					</div>
+				{:else if mode === 'otp'}
+					<form
+						class="flex flex-col gap-4"
+						onsubmit={(event) => {
+							event.preventDefault();
+							otpSent = true;
+						}}
+					>
 						<label class="flex flex-col gap-1.5 text-sm font-semibold">
-							{t.emailLabel}
+							{t.phoneLabel}
 							<input
-								type="email"
+								type="tel"
 								dir="ltr"
 								required
-								autocomplete="email"
-								bind:value={email}
+								autocomplete="tel"
+								bind:value={phone}
 								class={input}
 							/>
 						</label>
-						<p class="text-sm leading-relaxed text-muted">{t.noPassword}</p>
-						<Button type="submit" disabled={busy}>{busy ? t.sending : t.sendCode}</Button>
+						{#if otpSent}
+							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+								{t.otpLabel}
+								<input
+									type="text"
+									dir="ltr"
+									inputmode="numeric"
+									autocomplete="one-time-code"
+									maxlength="6"
+									bind:value={otpCode}
+									class="{input} text-center text-2xl tracking-[0.4em]"
+								/>
+							</label>
+						{/if}
+						<Button type="submit">{otpSent ? t.verifyOtp : t.sendOtp}</Button>
+						<button type="button" class={linkBtn} onclick={() => go('signin')}>
+							{t.backToSignIn}
+						</button>
 					</form>
 				{:else}
-					<form class="flex flex-col gap-4" onsubmit={verify}>
-						<p class="text-sm leading-relaxed text-muted">
-							{t.codeSentTo} <span class="font-semibold text-ink" dir="ltr">{email}</span>
-						</p>
-						<label class="flex flex-col gap-1.5 text-sm font-semibold">
-							{t.codeLabel}
-							<input
-								type="text"
-								dir="ltr"
-								required
-								inputmode="numeric"
-								autocomplete="one-time-code"
-								pattern="[0-9]{'{'}6,10{'}'}"
-								maxlength="10"
-								bind:value={code}
-								class="{input} text-center text-2xl tracking-[0.4em]"
-							/>
-						</label>
-						<Button type="submit" disabled={busy}>{busy ? t.verifying : t.submit}</Button>
-						<div class="flex justify-between gap-2 text-sm font-semibold">
-							<button
-								type="button"
-								class="min-h-11 rounded-lg px-2 text-muted hover:text-ink active:scale-[0.98]"
-								onclick={() => ((step = 'email'), (failed = null))}
-							>
-								{t.changeEmail}
-							</button>
-							<button
-								type="button"
-								disabled={busy || wait > 0}
-								class="min-h-11 rounded-lg px-2 text-brand-dark hover:underline active:scale-[0.98] disabled:text-muted disabled:no-underline"
-								onclick={() => sendCode()}
-							>
-								{wait > 0 ? t.resendIn(wait) : t.resend}
-							</button>
+					<form class="flex flex-col gap-4" onsubmit={submit}>
+						{#if needsEmail}
+							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+								{t.emailLabel}
+								<input
+									type="email"
+									dir="ltr"
+									required
+									autocomplete="email"
+									bind:value={email}
+									class={input}
+								/>
+							</label>
+						{/if}
+						{#if needsPassword}
+							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+								{mode === 'recovery' ? t.newPasswordLabel : t.passwordLabel}
+								<input
+									type="password"
+									dir="ltr"
+									required
+									minlength={mode === 'signin' ? undefined : 8}
+									autocomplete={mode === 'signin' ? 'current-password' : 'new-password'}
+									bind:value={password}
+									class={input}
+								/>
+								{#if mode !== 'signin'}
+									<span class="text-xs font-normal text-muted">{t.passwordHint}</span>
+								{/if}
+							</label>
+						{/if}
+						<Button type="submit" disabled={busy}>{busy ? t.busy : submitLabel}</Button>
+
+						<div class="flex flex-wrap justify-between gap-x-2">
+							{#if mode === 'signin'}
+								<button type="button" class={linkBtn} onclick={() => go('signup')}>
+									{t.toSignUp}
+								</button>
+								<button type="button" class={linkBtn} onclick={() => go('forgot')}>
+									{t.forgot}
+								</button>
+							{:else if mode !== 'recovery'}
+								<button type="button" class={linkBtn} onclick={() => go('signin')}>
+									{t.backToSignIn}
+								</button>
+							{/if}
 						</div>
+
+						{#if mode === 'signin'}
+							<button
+								type="button"
+								disabled={!OTP_ENABLED}
+								onclick={() => go('otp')}
+								class="flex min-h-11 items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line px-4 text-sm font-semibold text-muted enabled:hover:bg-line/40 disabled:cursor-not-allowed disabled:opacity-60"
+							>
+								{t.otpOption}
+								{#if !OTP_ENABLED}
+									<span
+										class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink/80"
+									>
+										{t.otpSoon}
+									</span>
+								{/if}
+							</button>
+						{/if}
 					</form>
 				{/if}
 			</div>
 		{/key}
 
 		{#if failed}
-			<p
+			<div
 				class="mt-4 rounded-2xl bg-miss-soft px-4 py-3 text-sm leading-relaxed font-semibold text-miss"
 				role="alert"
 				in:fly={{ y: 6, duration: 200 }}
 			>
 				{failed}
-			</p>
+				{#if canResend}
+					<button
+						type="button"
+						class="mt-1 block underline"
+						onclick={() => run(() => auth.resendConfirmation(email.trim()))}
+					>
+						{t.resendConfirm}
+					</button>
+				{/if}
+			</div>
 		{/if}
 	</div>
 </main>

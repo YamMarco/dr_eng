@@ -12,14 +12,14 @@
 
 	// Onboarding (no profile yet) is a focused two-step flow - no nav either.
 	let showNav = $derived(
-		auth.loggedIn && !!profile.value && !noNavPatterns.some((re) => re.test(page.url.pathname))
+		auth.loggedIn && !auth.recovering && !!profile.value && !noNavPatterns.some((re) => re.test(page.url.pathname))
 	);
 </script>
 
 <div class="flex flex-1 flex-col {showNav ? 'pb-16' : ''}">
 	{#if !auth.ready}
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
-	{:else if auth.loggedIn}
+	{:else if auth.loggedIn && !auth.recovering}
 		{@render children()}
 	{:else}
 		<LoginScreen />

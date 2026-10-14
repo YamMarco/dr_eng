@@ -22,23 +22,24 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
 - **CORS:** `/api/grade`, `/api/ocr` and `/api/account` accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
 
-## Accounts (Supabase Auth, email one-time code)
+## Accounts (Supabase Auth, email + password)
 
 Off until the env vars are set; the app then runs open, as before. Once set:
 
-- `/app` shows the login screen (email -> code) until there's a session (`$lib/auth.svelte.ts`).
+- `/app` shows the login screen until there's a session (`$lib/auth.svelte.ts`, `LoginScreen.svelte`): sign in, sign up, forgot password.
+- **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
+- The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - `/api/grade`, `/api/ocr` and `/api/account` need `Authorization: Bearer <token>`. Otherwise they return 401.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also clears this device's progress.
 
 ### Turning it on
 
-1. Create the Supabase project (or reuse the one in `.env.example`'s `DATABASE_URL`).
-2. **Authentication > Emails > Magic Link template:** put the code in the email - `{{ .Token }}` - instead of the link. A link would open the browser, not the mobile app. Write the template in Hebrew.
-3. **Authentication > URL Configuration:** Site URL = the web deployment.
-4. Set the env vars in `.env.local` and on the host:
+1. Env vars in `.env.local` and on the host:
    - `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` (public; the mobile build reads them from `.env.local` too)
    - `SUPABASE_SECRET_KEY` (server only)
-5. **Email sending:** Supabase's built-in sender is rate-limited (a few emails an hour). That's fine for development. Before real students arrive, set custom SMTP (e.g. Resend), which needs a domain.
+2. **Authentication > Sign In / Providers > Email:** "Confirm email" on, minimum password length 8.
+3. **Authentication > URL Configuration:** Site URL = the web deployment; add `<web deployment>/**` to Redirect URLs (the email links go to `/app`).
+4. **Email sending:** Supabase's built-in sender is for testing only: a couple of emails an hour, and only to your organization's team members. Before real students sign up, set custom SMTP (needs a domain for Resend; Gmail with an app password works for development). The default link-only templates are fine for this flow; customizing them needs custom SMTP.
 
 ## Capacitor, on the day
 
