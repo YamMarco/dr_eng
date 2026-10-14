@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Flame } from '@lucide/svelte';
 
-	// The weekly-streak flame. Lit = practiced this week: a living two-layer
+	// The weekly-streak flame. Lit = practiced this week: a living three-layer
 	// flame (pure SVG + CSS) that ignites once per session, then keeps burning.
 	// Unlit = the plain outline icon.
 	type Props = { days: number; goal: number };
@@ -26,20 +26,24 @@
 {#if lit}
 	<svg
 		viewBox="0 0 24 24"
-		width="18"
-		height="18"
+		width="20"
+		height="20"
 		class="flame"
 		class:ignite
 		class:full
 		aria-hidden="true"
 	>
 		<path
-			class="outer"
-			d="M12 1.5c.9 3.6 5.6 6.2 5.6 11.8a5.6 5.6 0 0 1-11.2 0c0-2.6 1.1-4.4 2.3-5.7.3 1.8 1.1 2.9 2.2 3.4-.2-3.9.4-7.1 1.1-9.5z"
+			class="back"
+			d="M12 1c1.2 3.8 7.5 6.6 7.5 12.6A7.5 7.5 0 0 1 4.5 13.6c0-3 1.4-5.1 3-6.6.3 2 1.3 3.2 2.6 3.8C9.8 6.6 10.8 3.6 12 1z"
 		/>
 		<path
-			class="inner"
-			d="M12 10.6c.7 1.8 2.9 3 2.9 5.5a2.9 2.9 0 0 1-5.8 0c0-1.7 1-2.9 1.8-3.8.2.9.6 1.5 1.1 1.7-.1-1.3-.1-2.3 0-3.4z"
+			class="mid"
+			d="M12.5 6c1 2.6 5 4.6 5 8.8a5.5 5.5 0 0 1-11 0c0-2.2 1-3.6 2.2-4.6.3 1.3.9 2.1 1.8 2.5-.2-2.6.6-4.9 2-6.7z"
+		/>
+		<path
+			class="core"
+			d="M12 11.5c.8 1.9 3.3 3.2 3.3 5.8a3.3 3.3 0 0 1-6.6 0c0-1.6.9-2.8 1.8-3.6.2.8.6 1.3 1.1 1.6-.1-1.4 0-2.6.4-3.8z"
 		/>
 	</svg>
 {:else}
@@ -54,21 +58,27 @@
 	.flame.full {
 		filter: drop-shadow(0 0 4px rgb(249 115 22 / 0.8));
 	}
-	.outer,
-	.inner {
+	/* Each layer stretches up from its base at its own pace - flicker, not bounce. */
+	.back,
+	.mid,
+	.core {
 		transform-box: fill-box;
 		transform-origin: 50% 100%;
 	}
-	.outer {
-		fill: #fb923c;
-		animation: sway 1.1s ease-in-out infinite;
-	}
-	.full .outer {
+	.back {
 		fill: #f97316;
+		animation: flick-back 1.3s ease-in-out infinite;
 	}
-	.inner {
+	.full .back {
+		fill: #ea580c;
+	}
+	.mid {
+		fill: #fb923c;
+		animation: flick-mid 0.85s ease-in-out -0.3s infinite;
+	}
+	.core {
 		fill: #fde047;
-		animation: lick 0.6s ease-in-out infinite;
+		animation: flick-core 0.55s ease-in-out -0.1s infinite;
 	}
 
 	/* First view of the session: grows from a spark, flares, settles. */
@@ -77,31 +87,37 @@
 		animation: ignite 1s cubic-bezier(0.3, 1.5, 0.5, 1) both;
 	}
 
-	@keyframes sway {
+	@keyframes flick-back {
 		0%,
 		100% {
 			transform: scale(1, 1) skewX(0);
 		}
-		25% {
-			transform: scale(0.9, 1.14) skewX(-10deg) rotate(-4deg);
+		30% {
+			transform: scale(0.97, 1.07) skewX(-3deg);
 		}
-		50% {
-			transform: scale(1.08, 0.88) skewX(4deg);
-		}
-		75% {
-			transform: scale(0.94, 1.1) skewX(10deg) rotate(4deg);
+		65% {
+			transform: scale(1.02, 0.96) skewX(3deg);
 		}
 	}
-	@keyframes lick {
+	@keyframes flick-mid {
 		0%,
 		100% {
-			transform: scale(1, 1) translateY(0);
+			transform: scale(1, 1) skewX(0);
 		}
-		35% {
-			transform: scale(0.7, 1.35) translateY(-10%);
+		40% {
+			transform: scale(0.94, 1.13) skewX(5deg);
 		}
-		70% {
-			transform: scale(1.15, 0.8) translateY(4%);
+		75% {
+			transform: scale(1.04, 0.93) skewX(-4deg);
+		}
+	}
+	@keyframes flick-core {
+		0%,
+		100% {
+			transform: scale(1, 1);
+		}
+		50% {
+			transform: scale(0.9, 1.2);
 		}
 	}
 	@keyframes ignite {
@@ -123,8 +139,9 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.flame,
-		.outer,
-		.inner {
+		.back,
+		.mid,
+		.core {
 			animation: none !important;
 		}
 	}

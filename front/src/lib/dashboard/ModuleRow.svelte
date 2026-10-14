@@ -31,7 +31,7 @@
 			<span class="me-auto truncate text-muted">{label}</span>
 			<span class="shrink-0 font-bold tabular" dir="ltr">{p.done}/{p.total}</span>
 		</span>
-		<span class="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
+		<span class="h-2 overflow-hidden rounded-full bg-line" aria-hidden="true">
 			<span
 				class="barber block h-full rounded-full transition-[width] duration-500"
 				style="width: {ratio(p) * 100}%"
@@ -100,8 +100,8 @@
 	.barber {
 		background: repeating-linear-gradient(
 			-45deg,
-			var(--color-brand) 0 6px,
-			var(--color-accent) 6px 12px
+			var(--color-brand-dark) 0 6px,
+			#facc15 6px 12px
 		);
 		background-size: 17px 100%;
 		animation: barber 0.8s linear infinite;
