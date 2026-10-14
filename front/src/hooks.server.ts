@@ -8,7 +8,7 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 // Capacitor app's webview origins (iOS, Android).
 const STUDENT_APIS = /^\/api\/(grade|ocr|account)$/;
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
-// Authoring APIs: staff only, same-origin. They also keep their own password.
+// Authoring APIs: staff only, same-origin. Staff role only.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
 
 function cors(origin: string): Record<string, string> {

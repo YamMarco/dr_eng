@@ -382,7 +382,9 @@
 							? 'border-brand bg-brand-soft ring-4 ring-brand/25'
 							: picked.has(n.id)
 								? 'border-dashed border-brand bg-canvas'
-								: styleFor(n.section).card} {dragId === n.id ? 'opacity-70' : ''}"
+								: `${styleFor(n.section).card} text-mark-ink`} {dragId === n.id
+							? 'opacity-70'
+							: ''}"
 						style="left:{cx(n)}px; top:{n.position.y}px; width:{n.big ? 104 : 92}px"
 						onpointerdown={(e) => nodePointerDown(e, n.id)}
 						onpointermove={nodePointerMove}
@@ -394,7 +396,7 @@
 						<div class="truncate text-[11px] leading-tight font-bold">
 							{editModel.titles.get(n.id)}
 						</div>
-						<div class="truncate font-mono text-[9px] text-ink/50" dir="ltr" title="מזהה: {n.id}">
+						<div class="truncate font-mono text-[9px] opacity-60" dir="ltr" title="מזהה: {n.id}">
 							{n.id}
 						</div>
 						<!-- svelte-ignore a11y_no_static_element_interactions -->

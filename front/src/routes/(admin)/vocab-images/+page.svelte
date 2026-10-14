@@ -1,30 +1,10 @@
 <script lang="ts">
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { dev } from '$app/environment';
-	import { editStore } from '$lib/content-edit/editStore.svelte';
-	import { checkContentEditPassword, rememberContentEditPassword } from '$lib/content-edit/api';
 	import { allLessons } from '$lib/content';
 	import { screensForRound } from '$lib/content-edit/screenPath';
 	import type { WordCardScreen } from '$lib/lesson-screens/types';
 	import { SvelteSet } from 'svelte/reactivity';
-
-	// Same session password gate as /edit - this is a content-authoring tool,
-	// not student-facing content, even though its nav tab is visible to all.
-	let unlocked = $derived(dev || editStore.authed);
-	let pw = $state('');
-	let err = $state('');
-
-	async function unlock(e: Event) {
-		e.preventDefault();
-		err = '';
-		if (await checkContentEditPassword(pw)) {
-			rememberContentEditPassword(pw);
-			editStore.setAuthed(true);
-		} else {
-			err = 'סיסמה שגויה';
-		}
-	}
 
 	type Entry = WordCardScreen & {
 		lessonId: string;
@@ -84,71 +64,53 @@
 
 <svelte:head><title>תמונות אוצר מילים</title></svelte:head>
 
-{#if unlocked}
-	<AppBar title="תמונות אוצר מילים" back="/" />
+<AppBar title="תמונות אוצר מילים" back="/" />
 
-	<main class="mx-auto w-full max-w-4xl flex-1 px-4 pt-6 pb-28">
-		<p class="mb-4 text-sm text-muted">
-			{entries.length} כרטיסי מילים · {missingCount} חסרות תמונה
-		</p>
+<main class="mx-auto w-full max-w-4xl flex-1 px-4 pt-6 pb-28">
+	<p class="mb-4 text-sm text-muted">
+		{entries.length} כרטיסי מילים · {missingCount} חסרות תמונה
+	</p>
 
-		<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-			{#each sortedEntries as entry (entryKey(entry))}
-				{@const key = entryKey(entry)}
-				{@const missing = !entry.image || brokenImages.has(key)}
-				<li
-					class="flex flex-col overflow-hidden rounded-2xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
-				>
-					<div
-						class="flex aspect-square w-full items-center justify-center overflow-hidden bg-canvas text-sm text-muted"
-					>
-						{#if entry.image && !brokenImages.has(key)}
-							<img
-								src={entry.image}
-								alt={entry.imageAlt ?? entry.word}
-								class="h-full w-full object-cover"
-								onerror={() => markBroken(key)}
-							/>
-						{:else}
-							אין תמונה
-						{/if}
-					</div>
-					<div class="flex flex-1 flex-col gap-1 p-3">
-						<p class="truncate font-bold" dir="ltr">{entry.word}</p>
-						{#if entry.translationHe}
-							<p class="truncate text-sm text-muted">{entry.translationHe}</p>
-						{/if}
-						<p class="truncate text-xs text-muted">{entry.lessonTitle}</p>
-						<!-- editHref is a runtime-built query string into /edit, not a typed route -->
-						<!-- eslint-disable svelte/no-navigation-without-resolve -->
-						<a
-							href={entry.editHref}
-							class="mt-auto w-full rounded-full px-3 py-1.5 text-center text-sm font-bold transition active:scale-95 {missing
-								? 'bg-danger-soft text-danger'
-								: 'bg-brand-soft text-brand-dark'}"
-						>
-							ערוך
-						</a>
-						<!-- eslint-enable svelte/no-navigation-without-resolve -->
-					</div>
-				</li>
-			{/each}
-		</ul>
-	</main>
-{:else}
-	<div class="mx-auto flex min-h-dvh max-w-sm flex-col justify-center px-6">
-		<form onsubmit={unlock} class="rounded-2xl border border-line bg-surface p-6">
-			<p class="mb-3 font-bold">תמונות אוצר מילים - נדרשת סיסמה</p>
-			<input
-				type="password"
-				bind:value={pw}
-				class="mb-2 w-full rounded-lg border-2 border-line bg-canvas p-2"
-				placeholder="סיסמה"
-			/>
-			{#if err}<p class="mb-2 text-xs text-danger">{err}</p>{/if}
-			<button type="submit" class="w-full rounded-lg bg-brand py-2 font-bold text-white"
-				>כניסה</button
+	<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+		{#each sortedEntries as entry (entryKey(entry))}
+			{@const key = entryKey(entry)}
+			{@const missing = !entry.image || brokenImages.has(key)}
+			<li
+				class="flex flex-col overflow-hidden rounded-2xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 			>
-		</form>
-	</div>
-{/if}
+				<div
+					class="flex aspect-square w-full items-center justify-center overflow-hidden bg-canvas text-sm text-muted"
+				>
+					{#if entry.image && !brokenImages.has(key)}
+						<img
+							src={entry.image}
+							alt={entry.imageAlt ?? entry.word}
+							class="h-full w-full object-cover"
+							onerror={() => markBroken(key)}
+						/>
+					{:else}
+						אין תמונה
+					{/if}
+				</div>
+				<div class="flex flex-1 flex-col gap-1 p-3">
+					<p class="truncate font-bold" dir="ltr">{entry.word}</p>
+					{#if entry.translationHe}
+						<p class="truncate text-sm text-muted">{entry.translationHe}</p>
+					{/if}
+					<p class="truncate text-xs text-muted">{entry.lessonTitle}</p>
+					<!-- editHref is a runtime-built query string into /edit, not a typed route -->
+					<!-- eslint-disable svelte/no-navigation-without-resolve -->
+					<a
+						href={entry.editHref}
+						class="mt-auto w-full rounded-full px-3 py-1.5 text-center text-sm font-bold transition active:scale-95 {missing
+							? 'bg-danger-soft text-danger'
+							: 'bg-brand-soft text-brand-dark'}"
+					>
+						ערוך
+					</a>
+					<!-- eslint-enable svelte/no-navigation-without-resolve -->
+				</div>
+			</li>
+		{/each}
+	</ul>
+</main>

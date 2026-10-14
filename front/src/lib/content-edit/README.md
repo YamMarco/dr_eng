@@ -14,7 +14,7 @@ Entry points into `/edit`:
 
 Entry point into `/edit-exam`: the module's exam list page always shows an
 **✎ ערוך** link → `/edit-exam?module=<id>` (never gated by `editStore` itself —
-that link *is* the only way to reach the password screen on the deployed
+that link _is_ the only way to reach the password screen on the deployed
 site, so gating it would make it unreachable there).
 
 Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
@@ -58,7 +58,7 @@ it's QA scratch state, not curriculum content, so it never touches
   **➕ הוספת מסך** at each bucket's end and **➕ הוספת סבב** at the bottom insert
   a blank screen/round directly — no type-choosing step, the type is picked
   in the stage.
-- **`SlideStage.svelte`** — the big central pane for the *selected* screen:
+- **`SlideStage.svelte`** — the big central pane for the _selected_ screen:
   one place with the **type selector**, **EditableScreen** (the editable
   canvas — prose is click-to-type via `MarkdownInput` in **bare** mode), every
   structural field that can't be typed onto the canvas (correct answer,
@@ -104,7 +104,7 @@ under the generic names for `EditModelLike` conformance.
 
 An exam's routing/list metadata (`uuid`, `kind`, `year`) lives directly on
 its `QuizNode` (see `$lib/quiz/types.ts`) — `$lib/quizzes.ts`'s
-`assortedQuizzes`/`ministryQuizzes` are a *derived* view over
+`assortedQuizzes`/`ministryQuizzes` are a _derived_ view over
 `allQuizNodes`, not a second hand-authored registry, so there's nothing else
 to keep in sync when an exam is renamed, retyped, or deleted.
 
@@ -134,7 +134,7 @@ or `{ examModuleId, ... }` for a module's exams — one call per changed
 lesson-section or per changed module's-exams file. The endpoint (via the
 shared helpers in `fileEmit.ts`: `splitArrayHead`/`extractArrayLiteral`/
 `mergeById`/`emit`) merges that patch into the target array-literal file's
-*current* content (nodes/exams nobody in this session touched pass through
+_current_ content (nodes/exams nobody in this session touched pass through
 untouched) rather than replacing the whole thing, so two people editing
 different entries in the same file never clobber each other — in the file or
 in git history. It also still accepts the older `{ lessonId, content }` shape
@@ -155,17 +155,14 @@ a content file are still lost on the first save of that file.
 
 - **Dev** (`$app/environment` `dev`): `/edit` opens with no password; the
   endpoint writes straight to disk; Vite HMR-reloads `$lib/content`.
-- **Deployed site**: `/edit` shows a password form
-  (`checkContentEditPassword` → `POST /api/content-edit/login`, verified
-  server-side; unlocked per session in `sessionStorage` via
-  `editStore.authed`). The endpoint has no writable FS, so it commits through
-  GitHub's Contents API (`github.ts`) — one commit per save, one retry on a
-  stale-sha 409. Server env vars: `GITHUB_TOKEN` (fine-grained PAT, Contents:
-  Read & write, this repo only), `GITHUB_OWNER`, `GITHUB_REPO`,
-  `GITHUB_BRANCH`, `CONTENT_EDIT_PASSWORD`, optional `CONTENT_EDIT_AUTHOR`
-  (default `Emil`, prefixes commit messages). Set in `front/.env.local`
-  (gitignored) and in Vercel. Outside dev the endpoint 401s any request
-  without a matching `x-content-edit-key`.
+- **Deployed site**: staff only (`app_metadata.role` admin, enforced in
+  `hooks.server.ts`; no separate password). The endpoint has no writable FS,
+  so it commits through GitHub's Contents API (`github.ts`) - one commit per
+  save, one retry on a stale-sha 409. Server env vars: `GITHUB_TOKEN`
+  (fine-grained PAT, Contents: Read & write, this repo only), `GITHUB_OWNER`,
+  `GITHUB_REPO`, `GITHUB_BRANCH`, optional `CONTENT_EDIT_AUTHOR` (default
+  `Emil`, prefixes commit messages). Set in `front/.env.local` (gitignored)
+  and in Vercel. With accounts off, outside dev the endpoints 401.
 
 ## Detach
 

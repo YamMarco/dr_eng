@@ -30,7 +30,7 @@ const fileSchema = z.strictObject({
 const serialize = (file: unknown) => JSON.stringify(file, null, '\t') + '\n';
 
 export const GET: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 	if (dev) return json(JSON.parse(readFileSync(join(process.cwd(), REL_PATH), 'utf8')));
 	try {
 		return json(JSON.parse((await getGithubFile(GITHUB_PATH)).content));
@@ -40,7 +40,7 @@ export const GET: RequestHandler = async ({ request }) => {
 };
 
 export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 	const parsed = fileSchema.safeParse(await request.json().catch(() => null));
 	if (!parsed.success) throw error(400, parsed.error.issues[0]?.message ?? 'bad rules file');
 

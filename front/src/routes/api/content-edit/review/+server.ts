@@ -20,7 +20,7 @@ type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 type ReviewNotes = Record<string, ReviewNote>;
 
 export const GET: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 
 	if (dev) {
 		const abs = join(process.cwd(), REL_PATH);
@@ -38,7 +38,7 @@ export const GET: RequestHandler = async ({ request }) => {
 };
 
 export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 
 	const { id, patch } = (await request.json()) as { id: string; patch: Partial<ReviewNote> };
 	if (!id || !patch) throw error(400, 'missing id/patch');

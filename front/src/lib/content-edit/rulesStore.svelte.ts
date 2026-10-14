@@ -18,8 +18,8 @@ class RulesStore {
 	}
 
 	/** Fresh copy from the server (production edits may be ahead of this deploy). */
-	async load(headers: Record<string, string>) {
-		const res = await apiFetch('/api/content-edit/rules', { headers });
+	async load() {
+		const res = await apiFetch('/api/content-edit/rules');
 		if (!res.ok) return;
 		const file = (await res.json()) as RulesFile;
 		this.file = file;

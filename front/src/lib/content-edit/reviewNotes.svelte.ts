@@ -6,20 +6,10 @@
 // the LessonNode schema on purpose: this is authoring scratch state, not
 // curriculum content.
 import { apiFetch } from '$lib/api';
-const KEY_STORAGE = 'content-edit-key'; // same session key as api.ts
 
 export type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 
 const BLANK: ReviewNote = { preface: false, rounds: [], comment: '' };
-
-function authHeaders(): Record<string, string> {
-	try {
-		const key = sessionStorage.getItem(KEY_STORAGE);
-		return key ? { 'x-content-edit-key': key } : {};
-	} catch {
-		return {};
-	}
-}
 
 class ReviewNotesStore {
 	notes = $state<Record<string, ReviewNote>>({});
@@ -31,7 +21,7 @@ class ReviewNotesStore {
 	async load() {
 		if (this.#loaded) return;
 		this.#loaded = true;
-		const res = await apiFetch('/api/content-edit/review', { headers: authHeaders() });
+		const res = await apiFetch('/api/content-edit/review');
 		if (res.ok) this.notes = await res.json();
 	}
 
@@ -53,7 +43,7 @@ class ReviewNotesStore {
 		this.#timers.delete(id);
 		await apiFetch('/api/content-edit/review', {
 			method: 'POST',
-			headers: { 'content-type': 'application/json', ...authHeaders() },
+			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ id, patch: this.notes[id] })
 		}).catch(() => {});
 	}

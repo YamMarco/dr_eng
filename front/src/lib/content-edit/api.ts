@@ -1,45 +1,15 @@
-// Thin wrapper around the content-edit endpoints: attaches the unlocked
-// session's password (see editStore.svelte.ts) to every write, since the
-// production backend requires it on each request (dev doesn't check it).
+// Thin wrapper around the content-edit endpoints. apiFetch attaches the
+// signed-in staff session; the server checks the role.
 import { apiFetch } from '$lib/api';
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
 import type { RulesFile } from '$lib/content/rules';
 
-const KEY_STORAGE = 'content-edit-key';
-
-function storedKey(): string | null {
-	try {
-		return sessionStorage.getItem(KEY_STORAGE);
-	} catch {
-		return null;
-	}
-}
-
-export async function checkContentEditPassword(password: string): Promise<boolean> {
-	const res = await apiFetch('/api/content-edit/login', {
-		method: 'POST',
-		headers: { 'content-type': 'application/json' },
-		body: JSON.stringify({ password })
-	});
-	return res.ok;
-}
-
-export function rememberContentEditPassword(password: string) {
-	try {
-		sessionStorage.setItem(KEY_STORAGE, password);
-	} catch {
-		// sessionStorage unavailable (private mode, etc.) — password will just
-		// need re-entering; writes will 401 with a clear message either way.
-	}
-}
-
 /** Stores a cropped JPEG and returns the site path to reference from a screen. */
 export async function uploadImage(jpeg: Blob): Promise<string> {
-	const key = storedKey();
 	const res = await apiFetch('/api/content-edit/image', {
 		method: 'POST',
-		headers: { 'content-type': 'image/jpeg', ...(key ? { 'x-content-edit-key': key } : {}) },
+		headers: { 'content-type': 'image/jpeg' },
 		body: jpeg
 	});
 	if (!res.ok) throw new Error(await res.text());
@@ -50,13 +20,9 @@ async function post(
 	body: unknown,
 	url = '/api/content-edit'
 ): Promise<{ ok: true; committed: boolean }> {
-	const key = storedKey();
 	const res = await apiFetch(url, {
 		method: 'POST',
-		headers: {
-			'content-type': 'application/json',
-			...(key ? { 'x-content-edit-key': key } : {})
-		},
+		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify(body)
 	});
 	if (!res.ok) throw new Error(await res.text());

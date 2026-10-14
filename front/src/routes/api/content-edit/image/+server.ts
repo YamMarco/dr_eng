@@ -17,7 +17,7 @@ import type { RequestHandler } from './$types';
 const MAX_BYTES = 2 * 1024 * 1024;
 
 export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
 
 	const bytes = Buffer.from(await request.arrayBuffer());

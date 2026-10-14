@@ -765,8 +765,18 @@
 								{:else if screen.type === 'time-comparison'}
 									<SettingsGroup title="טיימרים להשוואה">
 										<div class="flex flex-wrap gap-4">
-											<TimerField mode="pick" label="א׳" bind:value={screen.aKey} taken={timerIds} />
-											<TimerField mode="pick" label="ב׳" bind:value={screen.bKey} taken={timerIds} />
+											<TimerField
+												mode="pick"
+												label="א׳"
+												bind:value={screen.aKey}
+												taken={timerIds}
+											/>
+											<TimerField
+												mode="pick"
+												label="ב׳"
+												bind:value={screen.bKey}
+												taken={timerIds}
+											/>
 										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}

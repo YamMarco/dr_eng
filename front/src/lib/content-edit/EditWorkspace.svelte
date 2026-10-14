@@ -28,13 +28,7 @@
 
 	onMount(() => {
 		editModel.load();
-		let key: string | null = null;
-		try {
-			key = sessionStorage.getItem('content-edit-key');
-		} catch {
-			// no storage: the read just 401s outside dev and the bundled rules stay
-		}
-		rulesStore.load(key ? { 'x-content-edit-key': key } : {});
+		rulesStore.load();
 		if (lesson && editModel.node(lesson)) {
 			editModel.select(
 				lesson,
@@ -190,7 +184,9 @@
 	<div class="border-b border-line/70 bg-surface/60 px-3 py-1 text-xs text-muted">{hint}</div>
 
 	{#if showIssues && issues.length}
-		<ul class="max-h-40 overflow-y-auto border-b border-line bg-amber-50 px-3 py-2 text-xs">
+		<ul
+			class="max-h-40 overflow-y-auto border-b border-line bg-amber-50 px-3 py-2 text-xs text-mark-ink"
+		>
 			{#each issues as iss (iss.nodeId + iss.message)}
 				<li>
 					<button

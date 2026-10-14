@@ -77,7 +77,7 @@ type Body =
 	  };
 
 export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth(request)) throw error(401, 'wrong or missing content-edit password');
+	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 
 	const body = (await request.json()) as Body;
 

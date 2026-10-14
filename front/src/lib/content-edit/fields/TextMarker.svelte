@@ -68,12 +68,13 @@
 	onmouseup={readSelection}
 	ontouchend={readSelection}
 	class="w-full rounded-xl border-2 border-line bg-canvas p-3 text-sm leading-loose whitespace-pre-wrap select-text"
->{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token && colors[seg.index]}<button
+>
+	{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token && colors[seg.index]}<button
 				type="button"
 				onclick={() => onTokenClick(seg.index)}
 				title="בטל סימון"
-				style="background:{colors[seg.index].bg};color:{colors[
-					seg.index
-				].fg};user-select:text;-webkit-user-select:text"
-				class="rounded-sm px-px"
-			>{seg.text}</button>{:else}{seg.text}{/if}{/each}</div>
+				style="background:{colors[seg.index].bg};color:{colors[seg.index]
+					.fg};user-select:text;-webkit-user-select:text"
+				class="rounded-sm px-px">{seg.text}</button
+			>{:else}{seg.text}{/if}{/each}
+</div>

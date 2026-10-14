@@ -1,13 +1,7 @@
 {
 	"c-content-1a": {
 		"preface": true,
-		"rounds": [
-			true,
-			true,
-			true,
-			true,
-			true
-		],
+		"rounds": [true, true, true, true, true],
 		"comment": "asdafdsf"
 	},
 	"c-content-1c": {
@@ -17,51 +11,27 @@
 	},
 	"c-l07": {
 		"preface": false,
-		"rounds": [
-			true,
-			true,
-			true,
-			true
-		],
+		"rounds": [true, true, true, true],
 		"comment": ""
 	},
 	"c-l06": {
 		"preface": false,
-		"rounds": [
-			true,
-			true,
-			true,
-			true
-		],
+		"rounds": [true, true, true, true],
 		"comment": ""
 	},
 	"c-l04": {
 		"preface": false,
-		"rounds": [
-			true,
-			true,
-			true,
-			true
-		],
+		"rounds": [true, true, true, true],
 		"comment": ""
 	},
 	"c-221188d1": {
 		"preface": false,
-		"rounds": [
-			true,
-			true,
-			true,
-			true
-		],
+		"rounds": [true, true, true, true],
 		"comment": ""
 	},
 	"c-yes-no": {
 		"preface": false,
-		"rounds": [
-			null,
-			null,
-			true
-		],
+		"rounds": [null, null, true],
 		"comment": ""
 	},
 	"c-5cd02dfa": {

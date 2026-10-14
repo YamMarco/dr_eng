@@ -84,7 +84,7 @@
 	}
 </script>
 
-<AppBar title="{i18n.dict.unit.modulePrefix} {mod.letter}" back="/" />
+<AppBar title="{i18n.dict.unit.modulePrefix} {mod.letter}" back="/app" />
 
 <main
 	class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6"
