@@ -111,15 +111,31 @@ export function examAdvice(moduleId: string): ExamAdvice | undefined {
 	return done / total >= EXAM_READY ? 'ready' : undefined;
 }
 
-export type DeckSummary = { progress: Progress; today: number };
+export type HomeMeters = {
+	/** Vocabulary: the word deck (with today's session size) or the vocab lessons. */
+	vocab?: Progress & { today?: number };
+	/** Every other lesson (reading, writing). */
+	lessons?: Progress;
+};
 
-/** A module's word deck on home: words met out of all, and today's session size.
- *  Undefined when the module has no deck. */
-export function deckSummary(moduleId: string): DeckSummary | undefined {
-	if (!getDeck(moduleId)) return undefined;
-	const { seen, total } = deckStats(moduleId);
-	const { reviews, fresh } = deckToday(moduleId);
-	return { progress: { done: seen, total }, today: reviews + fresh };
+/** A module's two bars on home - same split for every module, so cards match. */
+export function homeMeters(moduleId: string, route: RouteSection[]): HomeMeters {
+	const rows = moduleSkills(moduleId, route);
+	const vocab = rows.find((r) => r.skill === 'vocab');
+	const rest = rows.filter((r) => r.skill !== 'vocab' && r.kind === 'path');
+	const lessons = {
+		done: rest.reduce((sum, r) => sum + r.progress.done, 0),
+		total: rest.reduce((sum, r) => sum + r.progress.total, 0)
+	};
+	let today: number | undefined;
+	if (vocab?.kind === 'engine') {
+		const { reviews, fresh } = deckToday(moduleId);
+		today = reviews + fresh;
+	}
+	return {
+		vocab: vocab?.progress.total ? { ...vocab.progress, today } : undefined,
+		lessons: lessons.total ? lessons : undefined
+	};
 }
 
 export type ModuleHook = { text: string; tone: 'go' | 'info' };

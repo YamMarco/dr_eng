@@ -3,54 +3,40 @@
 	import type { CurriculumModule } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import type { ExamStats } from '$lib/quiz/stats';
-	import { EXAM_READY, type DeckSummary, type ModuleHook, type Progress } from './data';
+	import type { HomeMeters, ModuleHook, Progress } from './data';
 	import ExamNugget from './ExamNugget.svelte';
 
-	// One Bagrut module on home, as concise as it gets: its exam nugget, how far
-	// the lessons are (with a notch where exams become worth taking) and a single
-	// hook line - the reason to open the module page.
+	// One Bagrut module on home, as concise as it gets: its exam nugget, a single
+	// hook line - the reason to open the module page - and the same two bars for
+	// every module: vocabulary, then the other lessons.
 	type Props = {
 		mod: CurriculumModule;
 		exams: ExamStats;
-		lessons: Progress;
+		meters: HomeMeters;
 		hook: ModuleHook;
-		/** Module has a word deck (E): lessons and words each get a labeled bar. */
-		deck?: DeckSummary;
 		href: string;
 		/** Nothing to study yet - shown muted, not a link. */
 		comingSoon?: boolean;
 	};
 
-	let { mod, exams, lessons, hook, deck, href, comingSoon = false }: Props = $props();
+	let { mod, exams, meters, hook, href, comingSoon = false }: Props = $props();
 
 	let t = $derived(i18n.dict.home);
 	const ratio = (p: Progress) => (p.total ? p.done / p.total : 0);
 </script>
 
-{#snippet bar(p: Progress, notch: boolean)}
-	<span class="relative h-1.5 flex-1 rounded-full bg-line" aria-hidden="true">
-		<span
-			class="absolute inset-y-0 start-0 rounded-full bg-brand transition-[width] duration-500"
-			style="width: {ratio(p) * 100}%"
-		></span>
-		{#if notch}
-			<!-- Where exams become worth taking. -->
-			<span
-				class="absolute -inset-y-0.5 w-0.5 rounded-full bg-ink/40"
-				style="inset-inline-start: {EXAM_READY * 100}%"
-			></span>
-		{/if}
-	</span>
-{/snippet}
-
-{#snippet meter(label: string, p: Progress, notch: boolean, go = false)}
+{#snippet meter(label: string, p: Progress)}
 	<span class="flex flex-col gap-1 text-xs">
 		<span class="flex items-center gap-2">
-			<span class="me-auto truncate {go ? 'font-bold text-brand-dark' : 'text-muted'}">{label}</span
-			>
+			<span class="me-auto truncate text-muted">{label}</span>
 			<span class="shrink-0 font-bold tabular" dir="ltr">{p.done}/{p.total}</span>
 		</span>
-		<span class="flex">{@render bar(p, notch)}</span>
+		<span class="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
+			<span
+				class="block h-full rounded-full bg-brand transition-[width] duration-500"
+				style="width: {ratio(p) * 100}%"
+			></span>
+		</span>
 	</span>
 {/snippet}
 
@@ -69,23 +55,24 @@
 		{#if comingSoon}
 			<span class="text-xs text-muted">{i18n.dict.common.comingSoon}</span>
 		{:else}
+			<span
+				class="truncate text-xs {hook.tone === 'go' ? 'font-bold text-brand-dark' : 'text-muted'}"
+			>
+				{hook.text}
+			</span>
 			<span class="mt-1 flex flex-col gap-2">
-				{#if lessons.total}
-					{@render meter(hook.text, lessons, exams.total > 0, hook.tone === 'go')}
-				{:else}
-					<span
-						class="truncate text-xs {hook.tone === 'go'
-							? 'font-bold text-brand-dark'
-							: 'text-muted'}">{hook.text}</span
-					>
-				{/if}
-				{#if deck}
+				{#if meters.vocab}
+					{@const { today } = meters.vocab}
 					{@render meter(
-						deck.today ? t.hookWords(deck.today) : `${t.meterWords} · ${t.wordsDone}`,
-						deck.progress,
-						false
+						today === undefined
+							? t.skills.vocab
+							: today
+								? t.hookWords(today)
+								: `${t.skills.vocab} · ${t.wordsDone}`,
+						meters.vocab
 					)}
 				{/if}
+				{#if meters.lessons}{@render meter(t.meterLessons, meters.lessons)}{/if}
 			</span>
 		{/if}
 	</span>

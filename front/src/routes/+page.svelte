@@ -7,13 +7,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
 	import { activity } from '$lib/activity.svelte';
-	import {
-		deckSummary,
-		lessonStats,
-		moduleHook,
-		moduleRoute,
-		resumeItem
-	} from '$lib/dashboard/data';
+	import { homeMeters, moduleHook, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
@@ -36,9 +30,8 @@
 			return {
 				mod: modules[id],
 				exams,
-				lessons: lessonStats(route),
+				meters: homeMeters(id, route),
 				hook: moduleHook(id, route),
-				deck: deckSummary(id),
 				href: `/unit/${group.id}/module/${id}`,
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
