@@ -79,6 +79,28 @@
 		}
 	};
 
+	/** A full answer carrying every in-text tag at once, to see how the marks read on a long block. */
+	const longText =
+		'I think all high school pupils should do volunteer work. Last year I volunteer in a home for old people, and it changed me. Every student need a chance to help others, because volunteers are very help for people who feel alone. I every week visited an old man called David. We talked about his life and I listened at his stories for hours. Students can learn a lot form this kind of work. Volunteering also makes a big benefit for the community, and it gives teenagers real experience for future. In addition, the volunteering builds the community of reasons in our town. My brother has a red car. I think volunteering is good. To sum up, I think volunteering is good, and every school should make it part of the program.';
+	const longFeedback: Feedback = {
+		stage: 'llm',
+		pass: true,
+		marks: build(longText, [
+			{ span: 'volunteer', tag: 'tense', nth: 2 },
+			{ span: 'need', tag: 'agreement' },
+			{ span: 'help', tag: 'word-form', nth: 2 },
+			{ span: 'every week visited', tag: 'word-order' },
+			{ span: 'at', tag: 'preposition' },
+			{ span: 'form', tag: 'wrong-word', fix: 'from' },
+			{ span: 'makes', tag: 'word-choice', fix: 'brings' },
+			{ span: 'future', tag: 'missing-word', fix: 'the' },
+			{ span: 'the', tag: 'extra-word', nth: 3 },
+			{ span: 'the community of reasons', tag: 'unclear' },
+			{ span: 'My brother has a red car.', tag: 'off-point' },
+			{ span: 'I think volunteering is good', tag: 'repeats', nth: 2 }
+		])
+	};
+
 	const AREA: Record<string, string> = {
 		content: 'תוכן',
 		vocabulary: 'אוצר מילים',
@@ -238,6 +260,17 @@
 					{/if}
 				</div>
 			{/each}
+		</section>
+
+		<section class="space-y-3">
+			<h2 class="text-lg font-extrabold">טקסט ארוך ({longFeedback.marks.length} סימונים)</h2>
+			<p class="text-xs text-muted" dir="ltr">{QUESTION}</p>
+			<MarkedText
+				text={longText}
+				marks={longFeedback.marks}
+				class="rounded-xl border border-line bg-canvas p-3 text-sm"
+			/>
+			<FeedbackView feedback={longFeedback} />
 		</section>
 
 		<section class="space-y-3">
