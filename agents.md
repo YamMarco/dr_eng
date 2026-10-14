@@ -1,5 +1,6 @@
 # mission
 - you're helping me build a hybrid, responsive app that helps kids prepare for their israel Bagrut in english
+- the vision is to provide a student a comphensive guidance and help to ace their understading of english and exams
 
 # workflow
 - avoid screenshot tests if possible
