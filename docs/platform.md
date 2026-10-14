@@ -51,3 +51,19 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 3. `npm run cap:sync` (mobile build + copy into the native projects), then open in Android Studio / Xcode.
 
 Not done yet: progress lives in `localStorage` per device. Syncing it to the account needs tables (Drizzle) and is a separate step.
+
+## `/mcp` endpoint (screen editing for outside editors)
+
+Read-only MCP server (`@modelcontextprotocol/server` v2, stateless per request, no auth). Lets Claude on the web get the rule book and validate screens; edited JSON goes back through the editor (`/edit` → a screen's **JSON** panel → **החל**). Connect once per person: Claude → Settings → Connectors → custom connector → `<web deployment>/mcp` (paid plan).
+
+| name | kind | what |
+| --- | --- | --- |
+| `get_editing_guide` | tool | `docs/ai-editing.md` plus every file it links, live from GitHub `main` |
+| `read_repo_file` | tool | one file live; only under `docs/`, `QC_report/`, `front/src/lib/` |
+| `get_screen_schema` | tool | screen types, or one type's JSON Schema (deployed code) |
+| `validate_screens` | tool | one screen or an array; same checks as the editor (deployed code) |
+| `edit_screens` | prompt | "יצירה ועריכה של מסכים" |
+
+- Rules follow `main` with no deploy: edit `ai-editing.md` or a file linked under its "Always read". Keep `ai-editing.md` at its path and free of dev notes, since editors receive it whole.
+- Screen shapes live once in `lesson-screens/schema.ts`; validation (`screenChecks.ts`) runs deployed code, so it follows the last deploy. Server: `server/mcp.ts`, `server/repoFiles.ts`, `routes/mcp/+server.ts`.
+- If `GITHUB_TOKEN` is rejected (401) the reader falls back to public raw GitHub (up to ~5 min stale), and `/edit`'s save-to-GitHub breaks too. Add a token check before any tool that writes.

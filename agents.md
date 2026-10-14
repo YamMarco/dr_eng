@@ -7,12 +7,16 @@
 - you only create hebrew ui text 
 - if feature is being repeated  => create resuable widget
 - material sturcutre: unit - module - section - lesson - screen
-- before adding/editing lesson content, read docs/lesson-structure.md (file map, builders, screen types, path rules) instead of re-reading the source
+- before adding/editing lesson content, read docs/lesson-structure.md (model, authoring, screen usage, round patterns, distractor rules, writing checks) instead of re-reading the source
 - vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-all, passage-mcq)
-- after changing Module C content, update docs/module-c-audit.md (snapshot date, grades, fixed/open lists)
+- after changing Module C content, update docs/module-c-audit.md (grades, issues, open list; present state only, no history)
 - before designing or changing student-facing UI, read docs/ux-principles.md and use the ui-review skill
 - LLM prompts live in front/src/lib/server/prompts/<role>.md (one file per gateway role, imported with ?raw)
 - routes (site / app / admin), web vs mobile builds, accounts: read docs/platform.md; app-only code must work in the mobile build (no server, call /api via apiFetch)
+- free-text feedback / grading / LLM prompts / rules cascade: read docs/feedback-framework.md
+- Module E (exam, vocabulary deck, reading path): read docs/module-e-plan.md
+- outside editors (/mcp, docs/ai-editing.md): ai-editing.md is served whole to them, keep it a pure rule book; /mcp details in docs/platform.md
+- docs/ are present-state guidelines: keep them concise, no history or dated status lines; only QC_report/ keeps history
 
 
 # persona

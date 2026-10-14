@@ -1,280 +1,148 @@
-# Lesson structure — quick reference
+# Lesson structure
 
-Read this instead of re-reading the source when adding or editing Module C content.
-Companion: `docs/lesson-data-model.md` (the model itself).
+Read this instead of re-reading the source when adding or editing Module C content. Screen types, fields and scoring live in `front/src/lib/lesson-screens/schema.ts` (zod, field docs in `.describe()`): that is the source of truth, this doc only adds rules and gotchas.
 
 ## Model
 
-Flat: one **LessonNode** = one path node = one object in `front/src/lib/content/c/c-<N>.ts`.
-It carries everything — `position`, `required` prerequisites, `content.rounds[].screens[]`.
-No build-time derivation: what you write is what renders.
+Flat: one **LessonNode** = one path node = one object in `front/src/lib/content/c/c-<N>.ts` (`export const c<N>Lessons: LessonNode[]`). Nothing is derived at build time: what you write is what renders.
 
-There is no separate display code — `id` is the only identifier, shown on
-the node label and everywhere else. Material position (unit/module/section/
-lesson, e.g. `4.c.1.2`) is conveyed by where the node sits in its section,
-not by a field on the node.
+```
+LessonNode ──content──> LessonContent ──preface──> LessonScreen[]   (teaching intro, round 0 only)
+                                     └─rounds──> LessonRound ──screens──> LessonScreen
+LessonNode ──required[]──> LessonNode        (prerequisite DAG, by id)
+LessonNode ──section──> SectionMeta          (heading + theme color, in sectionMeta.ts)
+```
 
-## Where things live (`front/src/`)
-
-| file | role |
-| --- | --- |
-| `lib/content/c/c-1.ts` … `c-25.ts` | the lessons — one `export const c<N>Lessons: LessonNode[]` each |
-| `lib/content/sectionMeta.ts` | section headings + theme-color order |
-| `lib/content/index.ts` | `allLessons`, `getLesson`, `getLessonsBySection` |
-| `lib/content/types.ts` | `LessonNode` / `LessonContent` / `LessonRound` / `SectionMeta` |
-| `lib/lesson-screens/schema.ts` | every screen type's shape + field docs (zod) - source of truth |
-| `lib/lesson-screens/types.ts` | `LessonScreen` types derived from the schema + `isScreenEmpty()` + `countQuestions()` |
-| `lib/lesson-screens/screenChecks.ts` | per-screen validation (schema + index ranges, duplicates, dash rule) |
-| `lib/lesson-screens/registry.ts` | screen type → component |
-| `lib/lesson-screens/LessonRunner.svelte` | plays one round |
-| `lib/lessonProgress.svelte.ts` | localStorage progress (rounds done per lesson) |
-| `routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` | the path canvas |
-| `scripts/snapshot-content.ts` | one-off generator that produced `lib/content/` (kept for reference) |
+- `id` is the only identifier (node label, progress, `required`). Always starts with the module letter + `-` (`c-l06`, `c-exam-4`); editor-made ids are `c-<8 hex>`. Renaming an id needs a progress migration.
+- Display titles are not on the node: `lib/i18n/locales/titles.he.ts` (and `titles.ar.ts`), keyed by id.
+- Section order and theme color = position in `lib/content/sectionMeta.ts`; headings render above a section's first node.
+- Runtime state is separate: `lessonProgress.svelte.ts` (localStorage, rounds done per lesson), `LessonScore` and `LessonSession` (`Record<timerKey, elapsedMs>`) in memory per round.
+- Planned Supabase tables: `lib/content/schema.sql` (not wired up).
 
 ## Authoring a lesson
 
-Add an object to the right section's array:
-
 ```ts
 {
-  id: 'c-past-simple',         // globally unique; always starts with the module letter + '-'
+  id: 'c-past-simple',
   section: 'c-7',
-  // no title field: the display title lives in front/src/lib/i18n/locales/titles.he.ts under this node's id
-  required: ['s7-l1'],         // prerequisite lesson ids, AND'd; [] = a root node
+  required: ['c-s7-l1'],         // prerequisite ids, AND'd; [] = a root node
   position: { x: -70, y: 1560 }, // px offset from the 400px canvas centre; y grows down
-  big: false,                  // true = larger node (use for content-free / recap nodes)
+  big: false,                    // 80px node instead of 64px; for content-free / recap nodes
   content: {
-    preface: [ { type: 'preface', text: '…' } ],  // teaching intro, shown once before round 0; [] if none
-    rounds: [
-      { screens: [ { type: 'mcq', /* … */ } ] },   // round 0 — practice; unlocks the path
-      // optional extra practice rounds (played without the preface)
-    ],
+    preface: [ { type: 'preface', text: '…' } ],  // played once, before round 0 only; [] if none
+    rounds: [ { screens: [ { type: 'mcq', /* … */ } ] } ],
   },
 }
 ```
 
-- **Positions are manual now.** Inserting a node between two others means nudging
-  the `y` of the ones below it. Keep a section's nodes roughly `~120` apart; the
-  `x` cycle the old builder used was `[0, 70, 100, 70, 0, -70, -100, -70]`.
-- `preface` plays once, before round 0 only. Put rule cards / steps / summary
-  intro screens there; keep exercises (and any mid- or end-of-round teaching
-  screens) in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
-- Round 0 is mandatory to progress; completing it unlocks dependents. Rounds 1+
-  are optional and don't affect anything downstream. To make the first N rounds
-  mandatory (a node that teaches its content across several short rounds, e.g. the
-  vocab nodes), set `requiredRounds: N` on the node; dependents unlock after N rounds.
-- A node with no non-empty screen in `preface` or any round renders as a
-  permanently-locked placeholder.
-- To add a section: new `c/c-<N>.ts`, import + spread it in `index.ts`, add an
-  entry to `sectionMeta.ts` with `modules` (the modules whose path shows it, owner first).
-- A section can sit on several paths: `c-1` (reading) has `modules: ['c', 'e']`. Both paths
-  show the same nodes and share one progress, saved under the section's `progressScope`
-  (`'reading'`; default: the owning module). Progress calls go through `lib/lessonPath.ts`
-  (`roundsCompleted`, `markRoundCompleted`, `isLessonDone`...), never the module being viewed.
-  Each path starts at the top whatever y its sections were authored at.
+- **Positions are manual.** Inserting a node means nudging the `y` of those below. Keep a section's nodes about 120 apart; the old `x` cycle was `[0, 70, 100, 70, 0, -70, -100, -70]`.
+- `preface` holds rule cards, steps and summary intros. Exercises and mid/end-of-round teaching screens go in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
+- **Unlock:** a node opens when every id in `required` has `roundsCompleted >= requiredRounds` (default 1). Round 0 is mandatory; rounds 1+ are optional and affect nothing downstream. To require the first N rounds, set `requiredRounds: N`.
+- A node with no non-empty screen in any round renders as a permanently locked placeholder.
+- New section: add `c/c-<N>.ts`, import and spread it in `lib/content/index.ts`, add an entry to `sectionMeta.ts` with `modules` (modules whose path shows it, owner first).
+- A section can sit on several paths: `c-1` (reading) has `modules: ['c', 'e']`, one shared progress under the section's `progressScope` (`'reading'`; default the owning module). Progress calls go through `lib/lessonPath.ts`, never the module being viewed.
+- The path canvas is `routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`.
 
-## Screen types
+## Screen usage notes
 
-Every screen type, its fields and what each field means are defined in code:
-`front/src/lib/lesson-screens/schema.ts` (zod; field docs in `.describe()`). That file is
-the source of truth - this doc only adds usage notes. Scored: exercises count 1 point,
-`passage-mcq` / `passage-quiz` 1 per question (`countQuestions()` in `types.ts`).
+Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`countQuestions()`).
 
-`mark-all` renders the passage as flowing text; each word is tap-to-toggle.
-Scored leniently: pass on ≥70% of targets found with ≤1 stray tap. With exactly one target it is strict (no stray tap): this is how to author the old tap-one-word screen (a single sentence, `correctIndices: [n]`, no `categories`, so no legend). There is no separate `mark-word` type.
-`mark-all.correctIndices` are token positions — split the text on whitespace and
-count. Targets = `correctIndices` ∪ every `categories[].indices`. `categories`
-is optional colour-coding (names / negatives / …): shown as a legend, and the
-matching tokens light up in that colour on the reveal (`color` is a key into
-`lesson-screens/markAllColors.ts`). Scoring ignores which category a token is in. `passage-quiz` marks correct when every keyword appears in the typed answer
-— keep keywords to content words, avoid numbers (`"2,000"` vs `"2000"` won't match).
-Paragraph markers: in `passage-mcq.text`, `passage-quiz.text` and `self-check.text`, start a paragraph with a roman numeral and **two** spaces (`"I  For years...
+- **`mark-all`:** flowing text, each word tap-to-toggle. `correctIndices` are token positions (split on whitespace and count); targets = `correctIndices` plus every `categories[].indices`. Passes at 70% of targets with at most 1 stray tap. **Exactly one target = strict (no stray tap)**: this is how to author a tap-one-word screen (single sentence, `correctIndices: [n]`, no `categories`). `categories` is optional colour-coding (legend, colours on reveal; `color` is a key in `markAllColors.ts`); scoring ignores the category. There is no `mark-word` type.
+- **`passage-quiz`:** correct when every keyword appears in the typed answer. Use content words only; avoid numbers (`"2,000"` vs `"2000"` won't match).
+- **Paragraph markers** (`passage-mcq.text`, `passage-quiz.text`, `self-check.text`): start a paragraph with a roman numeral and **two spaces** (`"I  For years…\n\nII  In 2022…"`). Never `**I**`. `PassageText` renders the gutter marker. Texts of 100+ words have a title.
+- **`passage-mcq`:** short text plus question(s) on one screen. `timerKey` (+ `label`) adds a stopwatch that stops on the last check.
+- **`cloze-pick`:** options as tiles, the picked one previews the assembled sentence (`option + clause`). Use it instead of `writing-task` when the free part is really a small closed set (stance opener, verb form, connector), so scoring is a lookup.
+- **`spell-word`:** listen mode speaks the word once on arrival (browser speech, en-GB), buttons replay at normal or slow speed; where the browser can't speak it falls back to copy mode. Keep copy right after a word's card; put listen later (review round, test). Never dictate homophones (affect / effect). `hintHe` shows the meaning under the buttons.
+- **`match-pairs`:** English word to Hebrew meaning in either order, Hebrew column shuffled per mount. One scored question, passes with at most 1 wrong tap.
+- **`match-definitions`** (Module E Part II): numbered `items` (exam uses 6) and `definitions` (3), each pointing at its item by `itemIndex`; pick a definition, then an item; 1 point per definition. `word-card.definitionEn` shows an English definition under the translation.
+- **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.
+- **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged).
 
-II  In 2022..."`); `PassageText` renders it as a gutter marker beside the paragraph's first line.
-`passage-mcq` is a short text + multiple-choice question(s) on one screen. Set
-`timerKey` (+ `label`) to add a stopwatch that stops on the last check.
-`cloze-pick` shows `options` as tiles; picking one previews the assembled
-sentence (`option + clause`) live. Any tile in `correctIndices` passes — use
-this instead of `writing-task` when the "free" part of an answer is really a
-small closed set (a stance opener, a verb form, a connector word, …), in any
-lesson, so scoring stays a lookup instead of fuzzy-matching typed text.
-`spell-word` listen mode speaks the word once on arrival (browser speech,
-en-GB) and the buttons replay it, at normal or slow speed. Where the browser
-can't speak, it falls back to copy mode, so the screen never dead-ends. Keep
-copy right after a word's card (weak students need it), and put listen later,
-in the review round or a test. Don't dictate homophones (affect / effect).
-`match-pairs`: tap an English word and its Hebrew meaning, in either order; the Hebrew column is
-shuffled per mount. One scored question, passes with at most 1 wrong tap; the
-button opens once every pair is matched.
-`match-definitions`: the Module E Part II item. Numbered `items` (the exam uses 6), and
-`definitions` (the exam uses 3), each pointing at its item by `itemIndex`. The student picks a
-definition, then an item. Scored 1 per definition. `word-card.definitionEn` shows an English
-definition under the translation (Module E matches English to English).
-A round with `retryMissed: true` replays each wrongly-answered scored screen once
-at the end (practice only, the score is unchanged). Used by the vocab nodes.
-`mcq.layout: 'honeycomb'` fits a fill-the-blank vocab pick where every option
-is a single word or short phrase (a stacked full-width row per option reads
-oddly once options are that short) — omit `layout` (or set `'rows'`) for the
-regular stacked-options look.
+### Adding a screen type
+
+1. Schema in `lesson-screens/schema.ts` (with `.describe()`), add to `lessonScreenSchema`, a type alias in `types.ts`, cases in `isScreenEmpty()` and `countQuestions()`. The /edit paste check and the /mcp endpoint pick it up from there.
+2. Component in `lesson-screens/`: props `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }` and `export function primaryAction()`.
+3. Register in `registry.ts`.
+4. Badge string in `i18n/locales/he.ts` under `exerciseKind`.
 
 ## Text formatting syntax
 
-Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-preview.intro`/`prompts[]`)
-go through `mdInline`/`mdBlock` (`lib/lesson-screens/miniMarkdown.ts`), a tiny fixed
-markdown subset — not full markdown. Authored either by hand or via the
-content-edit toolbar (`SlideStage.svelte`), which stores this syntax through
-`MarkdownInput.svelte`.
+Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-preview.intro`/`prompts[]`) go through `mdInline` / `mdBlock` (`lesson-screens/miniMarkdown.ts`), a fixed markdown subset, authored by hand or via the editor toolbar (`SlideStage.svelte` / `MarkdownInput.svelte`).
 
-Inline (works anywhere in a line): `**bold**`, `*italic*`/`_italic_`,
-`++underline++`, `~~strikethrough~~`, `` `code` ``, `[text](https://url)`,
-`{c:name}text{/c}` (name = a key in `lib/lesson-screens/textColors.ts`'s
-fixed palette).
-Direction (`textDir` in `miniMarkdown.ts`): every line, sentence and quote is RTL when its first or last letter is Hebrew,
-or when it is mostly Hebrew; otherwise it follows `dir="auto"`.
-Emoji, digits and punctuation do not count. `{d:..}` is only a manual override.
-
-Line-level (leading tokens on a line, `mdBlock` only — plain `mdInline` ignores
-them): `{a:left|center|right}` alignment, `{d:ltr|rtl}` direction override,
-`{p:text}` marks the line as English study text (tinted card with an accent edge)
-so it stands out from the app's Hebrew instructions, `{p:callout}` marks a tip / note
-(lightbulb icon on a soft highlight; `{i:warn|check|cross|star|fire|pin|ask}` swaps the icon, see `calloutIcons.ts`, picked in the editor by clicking the icon), a line that is only `---` is a divider, and a
-`#`/`##`/`###` prefix for the 3 header sizes (omit for regular text).
-Order: alignment/direction/paragraph tokens first, then the header marker, e.g.
-`{a:center}## כותרת ממורכזת`.
+- **Inline:** `**bold**`, `*italic*` / `_italic_`, `++underline++`, `~~strike~~`, `` `code` ``, `[text](url)`, `{c:name}text{/c}` (key in `textColors.ts`).
+- **Direction** (`textDir`): a line, sentence or quote is RTL when its first or last letter is Hebrew or it is mostly Hebrew (emoji, digits, punctuation don't count); else `dir="auto"`. `{d:..}` is a manual override.
+- **Flow arrows:** browsers never mirror `→` / `←`. Use `←` in a line that renders RTL, `→` in an English line or between two English words.
+- **Line-level** (leading tokens, `mdBlock` only): `{a:left|center|right}`, `{d:ltr|rtl}`, `{p:text}` (English study text card), `{p:callout}` (tip; `{i:warn|check|cross|star|fire|pin|ask}` swaps the icon, see `calloutIcons.ts`), `---` divider, `#`/`##`/`###` headers. Order: alignment/direction/paragraph tokens first, then the header, e.g. `{a:center}## כותרת`.
 
 ## Runner rules
 
-- one `LessonRunner` per **round**, remounted each time
-- screens that fail `isScreenEmpty()` are skipped, not shown blank
-- score denominator is fixed upfront from `countQuestions()` — the badge reads 1/3, 1/3, 2/3
-- pass = ≥80% correct; a round with 0 scored questions always passes
-- timers write elapsed ms into a per-round session bag keyed by `timerKey`;
-  `time-result` / `time-comparison` read it back
-- static-screen runs (the word deck) can pass `onScreenResult(index, answers)` (each screen's
-  answers in order, from the score's `log`), `retryMissed` and `alwaysPass`
-
-## Word deck (Module E vocabulary)
-
-Not nodes: a spaced-repetition deck. Plan and reasons: docs/module-e-plan.md.
-- words: `lib/content/e/words.ts` (one `DeckWord` per item: word, class, English definition,
-  Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the
-  example also becomes a fill-the-blank question). Register a deck in `lib/deck/index.ts`.
-- `lib/deck/scheduler.ts` Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box, wrong = box 1.
-- `lib/deck/session.ts` builds the screens. New words, two at a time, as in Module C:
-  card, Hebrew meaning, copy-spelling, match-pairs. Reviews by box: 1 Hebrew meaning,
-  2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
-- `lib/deck/deckProgress.svelte.ts` localStorage `deck-progress`. Page: `/app/unit/<u>/module/<m>/words`.
-- tests: `npm test` (`front/tests/deck.test.ts`, node's own runner).
-
-## Node / path rules
-
-- node = lesson. Unlocks when every id in `required` has round 1 done
-- a lesson with no content in any round renders as a permanently locked node
-- `big: true` draws an 80px node instead of 64px
-- canvas is 400px wide; `position.x` is an offset from centre, `position.y` grows downward
-- label shows the title from `i18n.title(id)`, the start / next-round button, and `id`
-
-## Adding a screen type
-
-1. schema in `lesson-screens/schema.ts` (with `.describe()` docs) → add it to `lessonScreenSchema`
-   → add a type alias in `types.ts` → add cases to `isScreenEmpty()` and `countQuestions()`.
-   The /edit paste check and the /mcp endpoint pick it up from there.
-2. component in `lesson-screens/`: props `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }`, and `export function primaryAction()`
-3. register in `registry.ts`
-4. badge string in `i18n/locales/he.ts` under `exerciseKind`
+- One `LessonRunner` per **round**, remounted each time; screens failing `isScreenEmpty()` are skipped.
+- Score denominator is fixed upfront from `countQuestions()`. Pass = 80% correct; a round with 0 scored questions always passes.
+- Timers write elapsed ms into a per-round bag keyed by `timerKey`; `time-result` / `time-comparison` read it. Screens that measure time get a "עם טיימר" checkbox in the editor (`fields/TimerField.svelte`). Only `passage-mcq` and `mark-all` have `timerKey`.
+- Static-screen runs (the word deck) can pass `onScreenResult(index, answers)`, `retryMissed` and `alwaysPass`.
 
 ## Reading round pattern (Part B)
 
-Reference implementation: `c-l06` + `c-not-q`. Rule: every round up to and including
-the exam-level round is required (`requiredRounds`). Rounds after it are optional
-and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the
-method itself (the old "PRACTICE · Round 1 🌱"). Only the exam-level round is
-called "רמת בחינה".
+Reference: `c-l06` + `c-not-q`. Every round up to and including the first exam-level round is required (`requiredRounds`). Later rounds are optional, and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the method itself. Only the exam-level round is called "רמת בחינה".
 
-Load rule (avoid burn-out): exhaustive marking ("mark every X") only on short
-material. On an exam-size text the student hunts **by question** - the exam asks
-for one word at a time, not every occurrence. Per lesson: about 10-14 scored
-questions, at most one required exam-size text, about 6-8 minutes of required rounds.
+Load rule: exhaustive marking ("mark every X") only on short material. On an exam-size text the student hunts **by question**. Per lesson: about 10-14 scored questions, at most one required exam-size text, about 6-8 minutes of required rounds.
 
-**Marking lesson** (l04, l06, l07, l08). `requiredRounds` = 4.
-Each round raises one thing.
+**Marking lesson** (l04, l06, l07, l08), `requiredRounds` 4:
 1. Recognise: Hebrew sentences to mark.
-2. Switch language: English sentences, with 1 rules MCQ mixed in.
-3. Context + precision: 2 short paragraphs, 1 rules MCQ, then a paragraph with
-   look-alikes that are not targets (another/noted/know for NOT, almost/everyone
-   for limiters, butter/because for contrast, capitalised sentence starters for names).
-4. Exam level: one exam-shaped text (title, I-IV, ~200-250 words), `passage-mcq`
-   with `timerKey`, 3 questions that each need one hunt.
+2. Switch language: English sentences, 1 rules MCQ mixed in.
+3. Context + precision: 2 short paragraphs, 1 rules MCQ, then a paragraph with look-alikes that are not targets (another/noted/know for NOT, almost/everyone for limiters, butter/because for contrast, capitalised sentence starters for names).
+4. Exam level: one exam-shaped text (title, I-IV, 200-250 words), `passage-mcq` with `timerKey`, 3 questions that each need one hunt.
 5. Optional challenge: mark every target in the same text, `mark-all` with `timerKey`.
 
-**Question lesson** (the paired -q lesson, and l01-l03, l09-l12). `requiredRounds` = 3.
+**Question lesson** (paired -q lessons, l01-l03, l09-l12), `requiredRounds` 3:
 1. Rules MCQs, then a short text with one real question.
 2. Your turn: one paragraph question.
-3. Exam level: a familiar passage (for a -q lesson: the long text from its
-   marking lesson) with 3-4 questions, then a **new text** (a topic not used
-   elsewhere) with 3 questions. One of those is not a target-word question, so
-   students read each question instead of answering by reflex. Answer-type
-   lessons (l10-l12) use typed answers (`passage-quiz`).
-4. and on: optional extra practice.
+3. Exam level: a familiar passage (for a -q lesson, the long text of its marking lesson) with 3-4 questions, then a **new text** (topic not used elsewhere) with 3 questions, one of them not a target-word question so students read each question. Answer-type lessons (l10-l12) use typed answers (`passage-quiz`).
+4. On: optional practice.
 
-New-text length grows through Part B: ~120-150 words in l01-l04, ~180-250 from
-NOT to l12, full exam (~340 words, 9 questions) only in the last lesson (n-7c5330b8).
+New-text length grows: 120-150 words in l01-l04, 180-250 from NOT to l12, a full exam (about 340 words, 9 questions) only in the last lesson.
 
 ## Writing round pattern (Part C)
 
-Rule: a round takes a weak student about 5 minutes. Exceptions: the 4-sentence skeleton (~7) and a 70-90 paragraph (~10-15, the exam unit; don't split a paragraph). More rounds are fine.
-Budget per round: a few MCQs / taps + at most one short writing task, or 1-2 one-sentence tasks, or one 2-4 sentence task.
+A round takes a weak student about 5 minutes (exceptions: the 4-sentence skeleton about 7, a 70-90 paragraph 10-15, which is never split). Budget per round: a few MCQs / taps plus at most one short writing task, or 1-2 one-sentence tasks, or one 2-4 sentence task.
+
 - **Micro-skill node:** recognise (MCQ, tap) -> fix a weak example (upgrade task) -> one writing task per round, 3 reps of the new move on MIKUD topics, each repeating the earlier moves (snowball).
-- **Topic node:** understand (MCQs) -> 4-sentence skeleton -> [the 2 added sentences: For instance + As a result] -> 70-90 paragraph -> unseen MIKUD topic, no bank, `timeLimitMinutes: 20`. Supports fade across topic lessons: template + bank, then connector list + bank, then nothing.
-- **Optional rounds:** `requiredRounds` stops before them; their preface starts with "תרגול נוסף (רשות)" and says who it is for ("still not sure? this one is for you"). Put a round there only when a strong student has the skill by then: a repeat of recognition, a second skeleton, free writing after the fix drills, a second timed paragraph once the student already writes without support.
-- Every writing task has `modelAnswer` + `checklist`; every model answer must pass the task's own checks.
+- **Topic node:** understand (MCQs) -> 4-sentence skeleton -> [For instance + As a result] -> 70-90 paragraph -> unseen MIKUD topic, no bank, `timeLimitMinutes: 20`. Supports fade across topic lessons: template + bank, then connectors + bank, then nothing.
+- **Optional rounds:** `requiredRounds` stops before them; the preface starts with "תרגול נוסף (רשות)" and says who it is for. Only for skills a strong student already has by then.
+- Every writing task has `modelAnswer` + `checklist`, and every model answer must pass the task's own checks.
 
 ## Writing distractors (wrong options)
 
-Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-all`, in every part. The test: could a student who does NOT know the target word or skill still pass by ruling out silly options? If yes, rewrite.
+Applies to `mcq`, `cloze-pick`, `passage-mcq`, `mark-all`. Test: could a student who does NOT know the target still pass by ruling out silly options? If yes, rewrite.
 
-Rules:
-1. **Every wrong option must be tempting to someone who is unsure.** Same part of speech, grammatically fits the blank, and belongs to the same topic as the sentence. Never fill slots with unrelated concrete nouns (bicycle, window, sandwich, kitchen, holiday).
-2. **Wrong on one clear point.** Each distractor fails for a reason you can state in the `explanation` (wrong meaning, wrong form, wrong preposition, opposite meaning). Keep exactly one defensible answer: read the sentence with each distractor in place before you ship it.
-3. **Give the sentence a decisive clue.** A vague sentence ("good for your ___") lets several options fit. Add the detail that only the target satisfies ("keep your body strong and free from illness").
-4. **Good sources of distractors, in order of preference:**
-   - a word from the same node that is already carded (never before its card) and fits grammatically
-   - another form of the target word (health / healthy / healthily / heal, society / social / societies)
-   - a near meaning that fails on one detail (encourage vs forbid in a sentence that praises)
-   - a collocation trap (responsible for, but proud of / afraid of)
-   - for passage questions: a real detail from the same text that answers a different question, or a plausible topic word that the text never mentions. Not an absurd one (prices, traffic, weather).
-5. **Use the `explanation` to say why the others fail**, not only why the answer is right. That is where the learning is.
-6. Lessons shuffle `mcq` options on every mount (`Mcq.svelte`; exams keep the authored order). Never refer to an option by its number ("אפשרות 2") in an `explanation`: quote its words.
-
-Before / after (content-2c):
-- Before: "Fruit and vegetables are good for your ___" support / health / window / society.
-- After: "Fruit and vegetables keep your body strong and free from illness. They are good for your ___" society / health / support / school.
-- Before: "Every member of ___ should follow the law" holiday / society / kitchen / bicycle.
-- After: same sentence, options social / society / societies / socially (forces a choice of form, not just meaning).
-
-## Conventions
-
-- all UI chrome is in `i18n/locales/he.ts` (source of truth) and `ar.ts` (Arabic, light MSA); content titles in `titles.he.ts` / `titles.ar.ts`
-- teaching content is authored in Hebrew inline in the `c/*.ts` files. Arabic lives in `lib/content/translations/ar.json`: whole Hebrew string -> whole Arabic string, English and markup kept inside. Applied by `localizeContent` (`lib/content/localize.svelte.ts`) on the lessons and exam pages only, never in the editor; lazy-loaded for Arabic users
-- after adding or editing Hebrew content: `node scripts/content-i18n.mjs` lists missing / stale Arabic entries (a missing one just shows Hebrew). A Hebrew `mark-all` text needs an Arabic version with the same token count and the targets at the same positions (`tests/content-i18n.test.ts` checks the count and markup)
-- word deck meanings in Arabic: `lib/content/e/words.ar.ts` by word id, applied by `localizeDeck` in `lib/deck/index.ts`
-- lesson and exam ids always start with the module letter + `-` (`c-l06`, `c-exam-4`); editor-made ids are `c-<8 hex>`
-- after changes: `npm run check` in `front/`, then `graphify update .` at the repo root
+1. Every wrong option must tempt someone unsure: same part of speech, fits the blank grammatically, same topic. Never unrelated concrete nouns (bicycle, window, sandwich).
+2. Wrong on one clear point you can state in the `explanation` (meaning, form, preposition, opposite). Exactly one defensible answer: read the sentence with each distractor before shipping.
+3. Give the sentence a decisive clue. "Good for your ___" lets several fit; "keep your body strong and free from illness" does not.
+4. Sources, in order: a word from the same node already carded (never before its card); another form of the target (health / healthy / heal); a near meaning failing on one detail; a collocation trap (responsible for, but proud of); for passage questions, a real detail from the same text answering a different question, or a plausible topic word the text never mentions.
+5. Use `explanation` to say why the others fail, not only why the answer is right.
 
 ## Writing checks (`front/src/lib/checks/`)
 
-Deterministic, free checks for student writing; run them before (and instead of) asking the LLM.
-`checkWriting(text, loader, {prompt, extraWords, source})` returns the Ministry length report
-(70-90 words, deduction table, under 25 valid words = 0, copied prompt/passage sentences not counted)
-and issues by rubric area: spelling (nspell, en-US + en-GB, dictionaries in `static/dict/`, lazy-loaded),
-mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.ts`).
-`confidence: 'maybe'` issues are worded as questions. `worthGrading(report)` gates the LLM call.
-UI: `<WritingCheck text options />` under the textarea (writing-task, self-check, writing lab).
-Lessons only: per-screen `autoCheck: false` hides it (and skips writing-task's capital/period check). Exams never auto-check.
+Deterministic, free checks for student writing, run before (and instead of) the LLM. `checkWriting(text, loader, {prompt, extraWords, source})` returns the Ministry length report (70-90 words, deduction table, under 25 valid words = 0, copied prompt/passage sentences not counted) and issues by rubric area: spelling (nspell, en-US + en-GB, dictionaries in `static/dict/`), mechanics (`mechanics.ts`), language use and Israeli-student errors (`language.ts`). `confidence: 'maybe'` issues are worded as questions. `worthGrading(report)` gates the LLM call. UI: `<WritingCheck text options />` (writing-task, self-check, writing lab). Lessons only: per-screen `autoCheck: false` hides it. Exams never auto-check. Rule explanations (Hebrew): `writingCheck.rule` in `i18n/locales/he.ts`.
 
-`writing-task.minWords` in a lesson = paragraph mode: one textarea with a live word counter and the length line (the exam's shape), instead of one input per sentence. The text is split into sentences for the punctuation / word-bank / lint checks, `minSentences` becomes a minimum, and valid words (copied prompt sentences not counted) must reach `minWords`. Use it for every 70-90 word task; keep line mode for 1-3 sentence drills. `writing-task.timeLimitMinutes` (lessons) adds the exam countdown pill (`QuizTimer`), stopped by the check; running out shows a note and the time taken, it never fails the task. Set it wherever the text promises a time (topic round 3 = 20). `writing-task.wordCounter` (lessons, line mode) shows a live word count under the inputs; on for every 3+ sentence task (paragraph mode always has one). `writing-task.requiredMoves` (lessons) lists the paragraph moves the text must show (`writingMoves.ts`: stance, because, in-addition, for-example, for-instance, as-a-result, in-conclusion; synonyms count, e.g. Also / Moreover = in-addition). A missing move fails the task and is named. Set it on every snowball task: it is what makes "repeat every earlier move" real, and it is the move list for the future LLM grader.
+`writing-task` options (lessons):
+- `minWords` = paragraph mode: one textarea with a live counter and the length line, split into sentences for the punctuation / word-bank / lint checks; `minSentences` becomes a minimum. Use for every 70-90 word task; line mode for 1-3 sentence drills.
+- `timeLimitMinutes` adds the exam countdown pill (`QuizTimer`); running out shows a note and the time taken, never fails the task. Set it wherever the text promises a time.
+- `wordCounter` (line mode) live count; on for every 3+ sentence task.
+- `requiredMoves` lists the paragraph moves the text must show (`writingMoves.ts`: stance, because, in-addition, for-example, for-instance, as-a-result, in-conclusion; synonyms count). A missing move fails the task and is named. Set it on every snowball task.
+- `acceptedAnswers` for fixed-shape tasks (the one-sentence YES/NO stance): whole sentences, `(a|b)` alternatives, groups multiply out (`acceptedAnswers.ts`). Each line must equal one (case, punctuation, apostrophes ignored); word-bank / punctuation / lint checks are skipped; a wrong answer shows up to 3 examples.
 
-`writing-task.acceptedAnswers` (lessons only): for fixed-shape tasks such as the one-sentence YES/NO stance. Whole sentences, `(a|b)` = a or b, groups multiply out (`acceptedAnswers.ts`). When set, each line must equal one of them (case, punctuation and apostrophes ignored) and the word-bank / punctuation / lint checks are skipped; a wrong answer shows up to 3 examples. Write the opener variants and the should / should not variants once per row, the subject stays fixed.
+## Word deck (Module E vocabulary)
 
-Editor settings layout (SlideStage): on wide screens (xl) the slide is the start column (right in RTL) and the settings card sits beside it; on narrow screens the settings stack under the slide. Settings are in plain flow (nothing sticky), as `SettingsGroup` blocks: type-specific groups first, then "הגדרות כלליות" (score in exams, auto-check in lessons). Use `SettingsGroup` + `NumberField` for any new setting.
-Rule explanations (Hebrew): `writingCheck.rule` in `i18n/locales/he.ts`.
+A spaced-repetition deck, not nodes. Plan: `docs/module-e-plan.md`.
+- Words: `lib/content/e/words.ts` (`DeckWord`: word, class, English definition, Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the example also becomes a fill-the-blank). Register a deck in `lib/deck/index.ts`. Arabic meanings: `lib/content/e/words.ar.ts` by word id (`localizeDeck`).
+- `lib/deck/scheduler.ts`: Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box, wrong = box 1.
+- `lib/deck/session.ts` builds the screens. New words two at a time (card, Hebrew meaning, copy-spelling, match-pairs). Reviews by box: 1 Hebrew meaning, 2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
+- Progress: `lib/deck/deckProgress.svelte.ts` (localStorage `deck-progress`). Page: `/app/unit/<u>/module/<m>/words`. Tests: `npm test` (`front/tests/deck.test.ts`).
+
+## Conventions
+
+- UI chrome is in `i18n/locales/he.ts` (source of truth) and `ar.ts`. Teaching content is Hebrew inline in `c/*.ts`; Arabic lives in `lib/content/translations/ar.json` (whole Hebrew string -> whole Arabic string, English and markup kept), applied by `localizeContent` on lesson and exam pages only, never in the editor.
+- After adding or editing Hebrew content: `node scripts/content-i18n.mjs` lists missing / stale Arabic entries (a missing one just shows Hebrew). A Hebrew `mark-all` text needs an Arabic version with the same token count and targets at the same positions (`tests/content-i18n.test.ts`).
+- Editor settings (SlideStage): on wide screens the slide is the start column and the settings card sits beside it; narrow screens stack. Plain flow (nothing sticky), `SettingsGroup` blocks, type-specific first, then "הגדרות כלליות". Use `SettingsGroup` + `NumberField` for any new setting.
+- After changes: `npm run check` in `front/`, then `graphify update .` at the repo root.

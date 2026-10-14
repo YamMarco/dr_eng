@@ -1,7 +1,5 @@
 # Submit → feedback framework
 
-Status 2026-10-13: lessons and exams live against Gemini; rule cascade with an editor panel.
-
 One loop for every free-text submit (lesson writing tasks, exam open answers and the exam essay):
 
 ```
@@ -38,7 +36,6 @@ A lesson task is answered once, like every other question. Wrong → the student
 - Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points), `essay` → `grade-essay` (official rubric). Direct Gemini via `GEMINI_API_KEY` in `front/.env.local` when no gateway is set; every model overloaded → one more round after 2 s; a cut-off JSON reply → one retry.
 - The LLM returns only tags + quoted spans, no prose: `{"pass": bool, "marks": [{"span", "tag", "nth"}]}`. Whole-answer tags (`off-topic`, `incomplete`) have an empty span and show as a general line. A fatal tag forces fail. Spans are mapped back onto the student's original text.
 - Tags: `feedback/tags.ts` (ids), the prompt files (English descriptions), `i18n` `feedback.tag` (Hebrew). `tests/feedback.test.ts` fails if they drift apart.
-- Measured 2026-10-13: ~500 input / 10-140 output tokens per lesson answer.
 
 ## Exams
 
@@ -48,7 +45,6 @@ Graded on final submit in **2 calls, in parallel**: one for every open reading a
 - **Essay** (`writing-task` with `minWords`): the official Module C rubric (`content/rubrics/module-c-writing.json`, written out in `grade-essay.md`). The LLM scores content /10, vocabulary /8, language /8 and mechanics /4 (from the software's spelling / punctuation / run-on counts). Code then applies the length table, starting with Content (rubric rule 5). Under 25 valid words, empty or not English = 0 with no call.
 - **Score**: `applyGrades` adds them to the auto score; the pass threshold runs on the whole exam (/100). A failed call counts 0, and the report offers **בדיקה חוזרת**.
 - **Report**: total, per part, and every open answer with its score, the answer highlighted in place, and the essay's criteria + length deduction.
-- Measured 2026-10-13 (c-exam-2): reading batch of 4 ~1140 in / ~190 out; essay ~1240 in / ~140 out.
 
 ## Tuning prompts in Gemini's web UI (AI Studio)
 
