@@ -5,23 +5,23 @@
 
 	let items = $derived([
 		{
-			href: '/',
+			href: '/app',
 			label: i18n.dict.nav.home,
-			match: (path: string) => path === '/' || path.startsWith('/unit'),
+			match: (path: string) => path === '/app' || path.startsWith('/app/unit'),
 			icon: 'home',
 			external: false
 		},
 		{
-			href: '/book',
+			href: '/app/book',
 			label: i18n.dict.nav.book,
-			match: (path: string) => path.startsWith('/book'),
+			match: (path: string) => path.startsWith('/app/book'),
 			icon: 'book',
 			external: false
 		},
 		{
-			href: '/settings',
+			href: '/app/settings',
 			label: i18n.dict.nav.settings,
-			match: (path: string) => path.startsWith('/settings'),
+			match: (path: string) => path.startsWith('/app/settings'),
 			icon: 'settings',
 			external: false
 		},

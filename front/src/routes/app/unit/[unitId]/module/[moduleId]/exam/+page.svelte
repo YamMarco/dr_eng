@@ -11,7 +11,7 @@
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
-	let base = $derived(`/unit/${group.id}/module/${mod.id}`);
+	let base = $derived(`/app/unit/${group.id}/module/${mod.id}`);
 	let rows = $derived(examRows(mod.id));
 	let t = $derived(i18n.dict.quizzes);
 

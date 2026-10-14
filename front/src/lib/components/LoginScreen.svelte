@@ -11,7 +11,7 @@
 
 	function login() {
 		auth.login();
-		goto(resolve('/'));
+		goto(resolve('/app'));
 	}
 </script>
 

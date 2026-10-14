@@ -96,7 +96,7 @@
 	function exit() {
 		if (dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
 		if (history.length > 1) history.back();
-		else goto('/');
+		else goto('/app');
 	}
 
 	let play = $state<{ nodeId: string; round: number; index: number } | null>(null);

@@ -98,7 +98,7 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
 - Rows, not side-by-side tiles: a hook needs width. **[decided]**
 - Ads, when they come: bottom of home only.
 
-**Module page** (`/unit/<level>/module/<id>`), **the same order for every module**:
+**Module page** (`/app/unit/<level>/module/<id>`), **the same order for every module**:
 
 1. **One big card**: the next step - an exam when it's advised (see section 3), else the
    module's next lesson.

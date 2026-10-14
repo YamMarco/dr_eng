@@ -32,7 +32,7 @@
 				exams,
 				meters: homeMeters(id, route),
 				hook: moduleHook(id, route),
-				href: `/unit/${group.id}/module/${id}`,
+				href: `/app/unit/${group.id}/module/${id}`,
 				comingSoon: !route.length && !exams.total && !getDeck(id)
 			};
 		})
@@ -61,7 +61,7 @@
 				</span>
 			{/if}
 			<a
-				href={resolve('/streak')}
+				href={resolve('/app/streak')}
 				class="{chip} transition hover:bg-brand-soft active:scale-95"
 				title={t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}
 			>

@@ -17,7 +17,7 @@
 
 	let { data }: PageProps = $props();
 	let quiz = $derived(data.quiz);
-	let examBase = $derived(`/unit/${data.group.id}/module/${data.mod.id}/exam`);
+	let examBase = $derived(`/app/unit/${data.group.id}/module/${data.mod.id}/exam`);
 	// Played / shown in the UI language (the editor keeps the authored Hebrew).
 	let quizNode = $derived.by(() => {
 		const node = getQuizNode(quiz.id);

@@ -178,7 +178,7 @@ export type ContinueItem =
 
 /** Where a continue item leads. The same string identifies "already offered up top". */
 export function continueHref(item: ContinueItem, groupId: string): string {
-	const base = `/unit/${groupId}/module/${item.moduleId}`;
+	const base = `/app/unit/${groupId}/module/${item.moduleId}`;
 	if (item.kind === 'exam') return `${base}/exam/${item.quiz.id}`;
 	if (item.kind === 'words') return `${base}/words`;
 	return `${base}/lessons?lesson=${item.lesson.id}`;

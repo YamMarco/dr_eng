@@ -28,7 +28,7 @@ not by a field on the node.
 | `lib/lesson-screens/registry.ts` | screen type → component |
 | `lib/lesson-screens/LessonRunner.svelte` | plays one round |
 | `lib/lessonProgress.svelte.ts` | localStorage progress (rounds done per lesson) |
-| `routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` | the path canvas |
+| `routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte` | the path canvas |
 | `scripts/snapshot-content.ts` | one-off generator that produced `lib/content/` (kept for reference) |
 
 ## Authoring a lesson
@@ -163,7 +163,7 @@ Not nodes: a spaced-repetition deck. Plan and reasons: docs/module-e-plan.md.
 - `lib/deck/session.ts` builds the screens. New words, two at a time, as in Module C:
   card, Hebrew meaning, copy-spelling, match-pairs. Reviews by box: 1 Hebrew meaning,
   2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
-- `lib/deck/deckProgress.svelte.ts` localStorage `deck-progress`. Page: `/unit/<u>/module/<m>/words`.
+- `lib/deck/deckProgress.svelte.ts` localStorage `deck-progress`. Page: `/app/unit/<u>/module/<m>/words`.
 - tests: `npm test` (`front/tests/deck.test.ts`, node's own runner).
 
 ## Node / path rules

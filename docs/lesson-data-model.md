@@ -72,7 +72,7 @@ Pass = ≥80% of a round's points. `isScreenEmpty(screen)` → skipped at runtim
 import { sectionMeta, getLessonsBySection, getLesson, allLessons } from '$lib/content';
 ```
 
-The canvas page (`routes/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`)
+The canvas page (`routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`)
 iterates `sectionMeta` for order/theme/heading, then `getLessonsBySection(id)` for
 the nodes; each node carries its own `position`, `required`, `big`.
 The screen list for a round feeds one `LessonRunner`: round 0 =

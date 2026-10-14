@@ -3,5 +3,5 @@ import type { PageLoad } from './$types';
 
 // Merged into the home dashboard (modules, tracks and exams all live there).
 export const load: PageLoad = () => {
-	redirect(307, '/');
+	redirect(307, '/app');
 };

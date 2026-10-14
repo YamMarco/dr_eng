@@ -119,7 +119,7 @@ No SM-2/FSRS (YAGNI). Swap later only if real data shows Leitner is too coarse.
 
 ## Part 3: Mock exams (section `e-exam`)
 
-One article + 9 questions + 5 `match-definitions` sets, timed (75 min). Vocab sets drawn from `words.ts`. Uses the existing exam route (`routes/unit/[unitId]/module/[moduleId]/exam`).
+One article + 9 questions + 5 `match-definitions` sets, timed (75 min). Vocab sets drawn from `words.ts`. Uses the existing exam route (`routes/app/unit/[unitId]/module/[moduleId]/exam`).
 
 ## Code prep (before content)
 

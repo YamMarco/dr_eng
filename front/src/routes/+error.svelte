@@ -19,6 +19,6 @@
 	<h1 class="mt-3 text-2xl font-bold">{title}</h1>
 	<p class="mt-2 text-muted">{i18n.dict.error.subtitle}</p>
 	<div class="mt-8 w-full max-w-xs">
-		<Button href="/">{i18n.dict.error.backButton}</Button>
+		<Button href="/app">{i18n.dict.error.backButton}</Button>
 	</div>
 </main>

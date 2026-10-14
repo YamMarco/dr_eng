@@ -335,6 +335,20 @@
 	animation: bar-fill 300ms ease-out backwards;
 }
 
+/* Entrance for server-rendered pages (the public site), where Svelte intro
+   transitions don't run on first load. `backwards` keeps staggered items
+   hidden during their delay. Use with `motion-safe:`. */
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+}
+
+@utility animate-rise {
+	animation: rise 280ms ease-out backwards;
+}
+
 /* One confetti piece falling + tumbling — see Confetti.svelte. */
 @keyframes confetti-fall {
 	0% {

@@ -72,7 +72,7 @@
 	function exit() {
 		if (examEditModel.dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
 		if (history.length > 1) history.back();
-		else goto('/');
+		else goto('/app');
 	}
 
 	let play = $state<{ quizId: string; partIndex: number; screenIndex: number } | null>(null);

@@ -27,7 +27,7 @@
 	let { data }: PageProps = $props();
 
 	let mod = $derived(data.mod);
-	let base = $derived(`/unit/${data.group.id}/module/${mod.id}`);
+	let base = $derived(`/app/unit/${data.group.id}/module/${mod.id}`);
 	let t = $derived(i18n.dict.home);
 	// Touch-first device: writing is better on a computer.
 	const phone = new MediaQuery('pointer: coarse');

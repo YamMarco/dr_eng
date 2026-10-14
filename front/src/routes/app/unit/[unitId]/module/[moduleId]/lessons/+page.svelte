@@ -413,7 +413,7 @@
 
 <AppBar
 	title="{i18n.dict.lessons.titlePrefix} {mod.letter}"
-	back="/unit/{group.id}/module/{mod.id}"
+	back="/app/unit/{group.id}/module/{mod.id}"
 >
 	{#snippet trailing()}
 		<!-- In the bar rather than floating, so they never cover path nodes. -->

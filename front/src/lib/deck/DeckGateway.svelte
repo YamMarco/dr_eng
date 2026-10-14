@@ -10,7 +10,7 @@
 </script>
 
 <a
-	href={resolve('/unit/[unitId]/module/[moduleId]/words', { unitId, moduleId })}
+	href={resolve('/app/unit/[unitId]/module/[moduleId]/words', { unitId, moduleId })}
 	class="group flex flex-col items-center gap-1.5 rounded-3xl bg-brand-soft px-5 py-4 text-brand-dark shadow-md ring-1 ring-brand/30 transition active:scale-95"
 >
 	<span

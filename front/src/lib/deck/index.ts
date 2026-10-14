@@ -1,5 +1,5 @@
 // Word decks by module. A module listed here gets a "words" page and a
-// dashboard link (see routes/unit/[unitId]/module/[moduleId]/words).
+// dashboard link (see routes/app/unit/[unitId]/module/[moduleId]/words).
 import { eWords } from '$lib/content/e/words';
 import { eGlossAr } from '$lib/content/e/words.ar';
 import type { Language } from '$lib/i18n/index.svelte';

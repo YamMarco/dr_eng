@@ -1,12 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import NavBar from '$lib/components/NavBar.svelte';
 	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
-	import LoginScreen from '$lib/components/LoginScreen.svelte';
-	import { auth } from '$lib/auth.svelte';
-	import { profile } from '$lib/profile.svelte';
-	import { page } from '$app/state';
 	import { onNavigate } from '$app/navigation';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
@@ -31,15 +26,6 @@
 
 	const THEME_COLOR = { light: '#f9f7f4', dark: '#14181b' };
 
-	// The exam-run screen has its own fixed bottom action bar, and the /edit
-	// authoring workspace is full-bleed — neither wants the global nav.
-	const noNavPatterns = [/\/exam\/run$/, /^\/edit/];
-
-	// Onboarding (no profile yet) is a focused two-step flow - no nav either.
-	let showNav = $derived(
-		auth.loggedIn && !!profile.value && !noNavPatterns.some((re) => re.test(page.url.pathname))
-	);
-
 	$effect(() => {
 		document.documentElement.lang = i18n.language;
 	});
@@ -58,17 +44,7 @@
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-canvas">
-	<div class="flex flex-1 flex-col {showNav ? 'pb-16' : ''}">
-		{#if auth.loggedIn}
-			{@render children()}
-		{:else}
-			<LoginScreen />
-		{/if}
-	</div>
-
-	{#if showNav}
-		<NavBar />
-	{/if}
+	{@render children()}
 </div>
 
 {#if debugStore.enabled}

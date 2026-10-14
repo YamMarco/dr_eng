@@ -51,7 +51,7 @@
 	}
 </script>
 
-<AppBar title="{t.title} — {mod.letter}" back="/unit/{data.group.id}/module/{mod.id}" />
+<AppBar title="{t.title} — {mod.letter}" back="/app/unit/{data.group.id}/module/{mod.id}" />
 
 <main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
 	<p
