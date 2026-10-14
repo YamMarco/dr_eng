@@ -11,7 +11,7 @@
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { moduleSections, getLessonsBySection, type LessonNode } from '$lib/content';
-	import { localizeContent } from '$lib/content/localize';
+	import { localizeContent } from '$lib/content/localize.svelte';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import {
 		hasContent,

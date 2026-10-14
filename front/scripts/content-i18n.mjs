@@ -5,7 +5,7 @@
 //   node scripts/content-i18n.mjs [lang] --missing  print missing strings as JSON
 //   node scripts/content-i18n.mjs [lang] --prune    drop stale entries
 // Translate by adding "<Hebrew>": "<translation>" pairs to
-// src/lib/content/translations/<lang>.json (see src/lib/content/localize.ts).
+// src/lib/content/translations/<lang>.json (see src/lib/content/localize.svelte.ts).
 import { readFileSync, writeFileSync } from 'node:fs';
 import { hebrewContentStrings } from './content-strings.mjs';
 

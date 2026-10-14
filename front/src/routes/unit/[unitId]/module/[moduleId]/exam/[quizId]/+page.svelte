@@ -7,7 +7,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
-	import { localizeContent } from '$lib/content/localize';
+	import { localizeContent } from '$lib/content/localize.svelte';
 	import { getLastAttempt } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
