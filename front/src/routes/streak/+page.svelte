@@ -40,14 +40,14 @@
 		{ value: activity.totalDays, label: t.totalDays }
 	]);
 
-	const card = 'rounded-3xl bg-surface p-4 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	const card = 'rounded-3xl bg-surface p-3.5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 </script>
 
 <AppBar title={t.title} back={resolve('/')} />
 
 <main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-4 sm:pb-6">
-	<section class="{card} flex flex-col items-center gap-3 text-center">
-		<StreakFlame {days} goal={WEEKLY_GOAL} size={64} />
+	<section class="{card} flex flex-col items-center gap-2 text-center">
+		<StreakFlame {days} goal={WEEKLY_GOAL} size={48} />
 		<div class="flex flex-col gap-0.5">
 			<h1 class="text-lg font-extrabold">{t.thisWeek(days, WEEKLY_GOAL)}</h1>
 			<p class="text-sm {left ? 'text-muted' : 'font-bold text-brand-dark'}">
@@ -60,7 +60,7 @@
 				{@const isToday = date.getTime() === today.getTime()}
 				<li class="flex flex-1 flex-col items-center gap-1 text-xs text-muted">
 					<span
-						class="flex h-9 w-9 items-center justify-center rounded-full {done
+						class="flex h-8 w-8 items-center justify-center rounded-full {done
 							? 'bg-orange-400 text-white'
 							: 'bg-line/60'} {isToday
 							? 'ring-2 ring-brand ring-offset-2 ring-offset-surface'
@@ -77,7 +77,7 @@
 
 	<section class="grid grid-cols-3 gap-3">
 		{#each stats as s (s.label)}
-			<div class="{card} flex flex-col items-center gap-0.5 !p-3">
+			<div class="{card} flex flex-col items-center gap-0.5 !p-2.5">
 				<span class="text-2xl font-extrabold tabular" dir="ltr">{s.value}</span>
 				<span class="text-xs text-muted">{s.label}</span>
 			</div>
@@ -92,7 +92,7 @@
 				<div class="flex flex-1 flex-col gap-1">
 					{#each week as date (date.getTime())}
 						<span
-							class="aspect-square w-full rounded-sm {date > today
+							class="h-3 w-full rounded-sm {date > today
 								? 'bg-transparent'
 								: activity.practiced(date)
 									? 'bg-orange-400'
