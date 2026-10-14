@@ -65,7 +65,7 @@
 	});
 
 	const card =
-		'flex flex-col rounded-3xl bg-surface p-2 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+		'flex flex-col rounded-3xl bg-surface p-1.5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 
 	const skillIcon: Record<Skill, Component> = {
 		vocab: Languages,
@@ -135,7 +135,7 @@
 		{#if route.length}
 			<a
 				href="{base}/lessons"
-				class="mt-1 border-t border-line/70 px-3 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
+				class="mt-1 border-t border-line/70 px-2 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
 			>
 				{t.toPath}
 			</a>

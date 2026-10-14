@@ -46,12 +46,12 @@
 {#if href}
 	<a
 		{href}
-		class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-1.5 transition hover:bg-brand-soft/60 active:scale-[0.99]"
+		class="flex min-h-14 items-center gap-3 rounded-2xl px-2 py-1.5 transition hover:bg-brand-soft/60 active:scale-[0.99]"
 	>
 		{@render body()}
 	</a>
 {:else}
-	<div class="flex min-h-14 items-center gap-3 rounded-2xl px-3 py-1.5 opacity-60">
+	<div class="flex min-h-14 items-center gap-3 rounded-2xl px-2 py-1.5 opacity-60">
 		{@render body()}
 	</div>
 {/if}

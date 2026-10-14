@@ -111,20 +111,27 @@ export function examAdvice(moduleId: string): ExamAdvice | undefined {
 	return done / total >= EXAM_READY ? 'ready' : undefined;
 }
 
+export type DeckSummary = { progress: Progress; today: number };
+
+/** A module's word deck on home: words met out of all, and today's session size.
+ *  Undefined when the module has no deck. */
+export function deckSummary(moduleId: string): DeckSummary | undefined {
+	if (!getDeck(moduleId)) return undefined;
+	const { seen, total } = deckStats(moduleId);
+	const { reviews, fresh } = deckToday(moduleId);
+	return { progress: { done: seen, total }, today: reviews + fresh };
+}
+
 export type ModuleHook = { text: string; tone: 'go' | 'info' };
 
 /** The one line under a module on home - the reason to open it. In order: an exam
- *  left open, an exam worth taking now, words due today, how many lessons until the
+ *  left open, an exam worth taking now, how many lessons until the
  *  student is ready for the exam (the goal-gradient), else a plain invitation. */
 export function moduleHook(moduleId: string, route: RouteSection[]): ModuleHook {
 	const t = i18n.dict.home;
 	const advice = examAdvice(moduleId);
 	if (advice === 'resume') return { tone: 'go', text: t.hookResume };
 	if (advice) return { tone: 'go', text: t.hookReady };
-	if (getDeck(moduleId)) {
-		const { reviews, fresh } = deckToday(moduleId);
-		if (reviews + fresh) return { tone: 'info', text: t.hookWords(reviews + fresh) };
-	}
 	const { done, total } = lessonStats(route);
 	const hasExams = examStats(moduleId).total > 0;
 	const left = hasExams ? Math.ceil(total * EXAM_READY) - done : total - done;
