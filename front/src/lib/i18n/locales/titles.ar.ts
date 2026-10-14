@@ -1,5 +1,6 @@
 // Arabic display titles for content, keyed like titles.he.ts. A missing key
 // falls back to the Hebrew title. Exam titles stay English (the passage title).
+// `<examId>.<partId>.instructions` overrides a part's Hebrew instructions.
 // Not patched by the /edit workspace - update by hand when titles change.
 export const titlesAr: Record<string, string> = {
 	'c-2': 'الجزء أ - المفردات',
@@ -51,10 +52,16 @@ export const titlesAr: Record<string, string> = {
 	'c-exam-2.description': 'امتحان تدريبي كامل بأسلوب البجروت - قراءة وكتابة.',
 	'c-exam-2.reading': 'قراءة',
 	'c-exam-2.writing': 'كتابة',
+	'c-exam-2.reading.instructions': 'اقرأوا النص وأجيبوا عن الأسئلة التي بعده.',
+	'c-exam-2.writing.instructions': 'اكتبوا إجابة كاملة عن السؤال التالي.',
 	'c-exam-3.description': 'امتحان تدريبي كامل بأسلوب البجروت - قراءة وكتابة.',
 	'c-exam-3.reading': 'قراءة',
 	'c-exam-3.writing': 'كتابة',
+	'c-exam-3.reading.instructions': 'اقرأوا النص وأجيبوا عن الأسئلة التي بعده.',
+	'c-exam-3.writing.instructions': 'اكتبوا إجابة كاملة عن السؤال التالي.',
 	'c-exam-4.description': 'امتحان تدريبي كامل بأسلوب البجروت - قراءة وكتابة.',
 	'c-exam-4.reading': 'قراءة',
-	'c-exam-4.writing': 'كتابة'
+	'c-exam-4.writing': 'كتابة',
+	'c-exam-4.reading.instructions': 'اقرأوا النص وأجيبوا عن الأسئلة التي بعده.',
+	'c-exam-4.writing.instructions': 'اكتبوا إجابة كاملة عن السؤال التالي.'
 };

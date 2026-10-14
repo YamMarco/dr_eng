@@ -32,7 +32,15 @@
 
 	function start(extra = false) {
 		results = {};
-		session = buildSession(words, progress, today, { extra });
+		const t = i18n.dict.deck;
+		session = buildSession(words, progress, today, {
+			extra,
+			prompts: {
+				meaning: t.promptMeaning,
+				context: t.promptContext,
+				definition: t.promptDefinition
+			}
+		});
 		lastEngagement.record({ kind: 'words', moduleId: mod.id });
 	}
 

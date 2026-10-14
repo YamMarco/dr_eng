@@ -369,8 +369,11 @@
 					<h3 class="mb-1 text-sm font-bold text-muted">
 						{i18n.title(`${quiz.id}.${currentPart.id}`)}
 					</h3>
-					{#if currentPart.instructionsHe}
-						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
+					{@const instructions =
+						i18n.dict.titles[`${quiz.id}.${currentPart.id}.instructions`] ??
+						currentPart.instructionsHe}
+					{#if instructions}
+						<p class="mb-4 text-sm leading-relaxed text-muted">{instructions}</p>
 					{/if}
 				{/if}
 				{#if currentEntry && ScreenComponent}

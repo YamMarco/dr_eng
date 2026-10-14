@@ -1,6 +1,5 @@
 export type CurriculumSection = {
 	id: string;
-	label: string;
 };
 
 export type CurriculumModule = {
@@ -16,9 +15,9 @@ export type UnitGroup = {
 	moduleIds: string[];
 };
 
-const textSection: CurriculumSection = { id: 'text', label: 'טקסט' };
-const wordsSection: CurriculumSection = { id: 'words', label: 'מילים' };
-const writingSection: CurriculumSection = { id: 'writing', label: 'חיבור' };
+const textSection: CurriculumSection = { id: 'text' };
+const wordsSection: CurriculumSection = { id: 'words' };
+const writingSection: CurriculumSection = { id: 'writing' };
 
 export const modules: Record<string, CurriculumModule> = {
 	c: { id: 'c', letter: 'C', sections: [textSection, writingSection] },
@@ -38,9 +37,4 @@ export function getUnitGroup(id: string): UnitGroup | undefined {
 
 export function getModule(id: string): CurriculumModule | undefined {
 	return modules[id.toLowerCase()];
-}
-
-/** Short Hebrew description, e.g. "טקסט · חיבור"; empty while the module has no content. */
-export function moduleSummary(mod: CurriculumModule): string {
-	return mod.sections.map((s) => s.label).join(' · ');
 }

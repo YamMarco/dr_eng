@@ -203,6 +203,9 @@ export const ar: DictionaryOverride = {
 		allDoneDesc: 'الكلمات القادمة ستنتظركم غدًا. هل تريدون التدرب رغم ذلك؟',
 		extra: 'تدريب إضافي',
 		sessionLabel: 'تدريب الكلمات',
+		promptMeaning: 'ما معنى الكلمة؟',
+		promptContext: 'أكملوا الجملة:',
+		promptDefinition: 'أي كلمة تناسب التعريف؟',
 		gatewayDue: (n: number) => (n ? `${n} للمراجعة` : 'مفتوح للتدريب'),
 		howTitle: 'كيف يعمل هذا؟',
 		how: [
@@ -520,6 +523,10 @@ export const ar: DictionaryOverride = {
 	error: {
 		defaultMessage: 'حدث خطأ ما',
 		notFound: 'الصفحة المطلوبة غير موجودة',
+		unitNotFound: 'عدد الوحدات المطلوب غير موجود',
+		moduleNotFound: 'الموديول المطلوب غير موجود',
+		examNotFound: 'الامتحان المطلوب غير موجود',
+		noDeck: 'لا توجد مفردات لهذا الموديول',
 		subtitle: 'يمكنكم العودة إلى الصفحة الرئيسية والمتابعة من هناك.',
 		backButton: 'العودة إلى الصفحة الرئيسية'
 	},

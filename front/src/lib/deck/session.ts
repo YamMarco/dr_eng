@@ -76,12 +76,16 @@ function explanation(word: DeckWord): string {
 	return `**${word.word}** = ${word.he}\n{p:text}${word.defEn}`;
 }
 
-function meaningMcq(word: DeckWord, all: DeckWord[], random: Rng): LessonScreen {
+/** The question lines above each mcq, in the UI language - passed in so this
+ *  module stays pure (no i18n store). */
+export type DeckPrompts = { meaning: string; context: string; definition: string };
+
+function meaningMcq(word: DeckWord, all: DeckWord[], random: Rng, p: DeckPrompts): LessonScreen {
 	// Hebrew options: no English decoy is shown, so any word may supply one.
 	const options = shuffle([word, ...decoys([word], all, all, 3, random)], random);
 	return {
 		type: 'mcq',
-		prompt: `מה הפירוש?\n\n{p:text}{a:center}## ${word.word}`,
+		prompt: `${p.meaning}\n\n{p:text}{a:center}## ${word.word}`,
 		options: options.map((w) => w.he),
 		correctIndex: options.indexOf(word),
 		explanation: explanation(word)
@@ -101,14 +105,26 @@ function wordMcq(word: DeckWord, prompt: string, pool: DeckWord[], all: DeckWord
 	return screen;
 }
 
-function contextMcq(word: DeckWord, pool: DeckWord[], all: DeckWord[], random: Rng) {
+function contextMcq(
+	word: DeckWord,
+	pool: DeckWord[],
+	all: DeckWord[],
+	random: Rng,
+	p: DeckPrompts
+) {
 	const sentence = blankedExample(word);
-	if (!sentence) return definitionMcq(word, pool, all, random);
-	return wordMcq(word, `השלימו את המשפט:\n\n{p:text}${sentence}`, pool, all, random);
+	if (!sentence) return definitionMcq(word, pool, all, random, p);
+	return wordMcq(word, `${p.context}\n\n{p:text}${sentence}`, pool, all, random);
 }
 
-function definitionMcq(word: DeckWord, pool: DeckWord[], all: DeckWord[], random: Rng) {
-	return wordMcq(word, `איזו מילה מתאימה להגדרה?\n\n{p:text}${word.defEn}`, pool, all, random);
+function definitionMcq(
+	word: DeckWord,
+	pool: DeckWord[],
+	all: DeckWord[],
+	random: Rng,
+	p: DeckPrompts
+) {
+	return wordMcq(word, `${p.definition}\n\n{p:text}${word.defEn}`, pool, all, random);
 }
 
 /** The exam's Part II item: 6 numbered items, definitions for the targets only. */
@@ -137,7 +153,11 @@ export function buildSession(
 	words: DeckWord[],
 	progress: DeckProgress,
 	today: string,
-	{ random = Math.random, extra = false }: { random?: Rng; extra?: boolean } = {}
+	{
+		random = Math.random,
+		extra = false,
+		prompts = { meaning: '', context: '', definition: '' }
+	}: { random?: Rng; extra?: boolean; prompts?: DeckPrompts } = {}
 ): DeckSession {
 	const byId = new Map(words.map((w) => [w.id, w]));
 	const seen = words.filter((w) => progress[w.id]);
@@ -176,10 +196,10 @@ export function buildSession(
 		const box = progress[w.id].box;
 		const screen =
 			box <= 1
-				? meaningMcq(w, words, random)
+				? meaningMcq(w, words, random, prompts)
 				: box === 2
-					? contextMcq(w, seen, words, random)
-					: definitionMcq(w, seen, words, random);
+					? contextMcq(w, seen, words, random, prompts)
+					: definitionMcq(w, seen, words, random, prompts);
 		add(screen, [w.id]);
 	}
 	for (const set of sets)
@@ -200,7 +220,7 @@ export function buildSession(
 				exampleEn: w.exampleEn,
 				hookHe: w.hookHe
 			});
-			add(meaningMcq(w, words, random), [w.id]);
+			add(meaningMcq(w, words, random, prompts), [w.id]);
 			if (spellable(w)) add({ type: 'spell-word', word: w.word, mode: 'copy' });
 			met.push(w);
 		}

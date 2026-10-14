@@ -195,6 +195,9 @@ export const he = {
 		allDoneDesc: 'המילים הבאות יחכו לכם מחר. רוצים בכל זאת לתרגל?',
 		extra: 'תרגול נוסף',
 		sessionLabel: 'תרגול מילים',
+		promptMeaning: 'מה הפירוש?',
+		promptContext: 'השלימו את המשפט:',
+		promptDefinition: 'איזו מילה מתאימה להגדרה?',
 		gatewayDue: (n: number) => (n ? `${n} לחזרה` : 'פתוח לתרגול'),
 		howTitle: 'איך זה עובד?',
 		how: [
@@ -515,6 +518,10 @@ export const he = {
 	error: {
 		defaultMessage: 'משהו השתבש',
 		notFound: 'העמוד המבוקש לא נמצא',
+		unitNotFound: 'רמת היחידות המבוקשת לא נמצאה',
+		moduleNotFound: 'המודול המבוקש לא נמצא',
+		examNotFound: 'המבחן המבוקש לא נמצא',
+		noDeck: 'אין אוצר מילים למודול הזה',
 		subtitle: 'אפשר לחזור לדף הבית ולהמשיך משם.',
 		backButton: 'חזרה לדף הבית'
 	},
