@@ -2,6 +2,9 @@
 // find its quoted spans in the student's own text, and merge the marks.
 import type { LlmMark, Mark } from './types';
 
+/** LLM tags that carry a `fix`: the UI shows it in the text (see MarkedText). */
+const FIX_TAGS = new Set(['wrong-word', 'missing-word']);
+
 type Fix = { start: number; end: number; with: string };
 
 export type Corrected = { text: string; fixes: Fix[] };
@@ -52,7 +55,15 @@ export function locateMarks(original: string, corrected: Corrected, llm: LlmMark
 		const start = toOriginal(from, corrected.fixes, 'start');
 		const end = toOriginal(from + span.length, corrected.fixes, 'end');
 		if (end <= start) continue;
-		out.push({ tag: m.tag, source: 'l2', start, end, text: original.slice(start, end) });
+		const fix = FIX_TAGS.has(m.tag) ? m.fix?.trim() : undefined;
+		out.push({
+			tag: m.tag,
+			source: 'l2',
+			start,
+			end,
+			text: original.slice(start, end),
+			...(fix && { suggestions: [fix] })
+		});
 	}
 	return out;
 }

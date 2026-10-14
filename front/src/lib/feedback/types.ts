@@ -28,7 +28,13 @@ export type Feedback = {
 };
 
 /** What the LLM sends back. Spans are quoted text, never offsets. */
-export type LlmMark = { span: string; tag: string; nth?: number };
+export type LlmMark = {
+	span: string;
+	tag: string;
+	nth?: number;
+	/** wrong-word: the word meant. missing-word: the word(s) to insert before `span`. */
+	fix?: string;
+};
 export type LessonVerdict = { pass: boolean; marks: LlmMark[] };
 /** Every open reading answer of one passage, graded in one call: points out of each POINTS. */
 export type ReadingVerdict = { answers: { id: string; score: number; marks: LlmMark[] }[] };

@@ -27,6 +27,8 @@ Tags - use only these ids:
 
 For each mark give "span": the smallest piece of the answer that shows the error, copied exactly. Tags about the whole answer (off-topic, incomplete) take an empty span "". If the same words appear more than once, add "nth" (1 = first occurrence). A mark with a FATAL tag means pass must be false.
 
+Two tags also take "fix", shown to the student in the text: wrong-word gets the word that was meant (span = the wrong word); missing-word gets the missing word(s) (span = the word right after the gap). Other tags have no "fix".
+
 Reply with JSON only, no explanation:
-{"pass": true, "marks": [{"span": "...", "tag": "...", "nth": 1}]}
+{"pass": true, "marks": [{"span": "...", "tag": "...", "nth": 1, "fix": "..."}]}
 When nothing is wrong: {"pass": true, "marks": []}

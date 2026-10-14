@@ -34,7 +34,13 @@
 					class="rounded px-0.5 underline decoration-dotted underline-offset-4 {m.maybe
 						? 'bg-accent-soft text-ink'
 						: 'bg-danger-soft text-danger'} {open === m ? 'ring-2 ring-danger/40' : ''}"
-					onclick={() => (open = open === m ? null : m)}>{piece.text}</button
+					onclick={() => (open = open === m ? null : m)}>{#if m.source === 'l2' && m.tag === 'missing-word' && m.suggestions?.[0]}<span
+						class="text-brand-dark/60 italic">{m.suggestions[0]}{' '}</span
+					>{piece.text}{:else if m.source === 'l2' && m.tag === 'wrong-word' && m.suggestions?.[0]}<ruby
+						><span class="line-through">{piece.text}</span><rt
+							class="text-brand-dark/60 text-xs italic">{m.suggestions[0]}</rt
+						></ruby
+					>{:else}{piece.text}{/if}</button
 				>{:else}{piece.text}{/if}{/each}
 	</p>
 	{#if open}
@@ -42,7 +48,7 @@
 			<span class="text-danger">
 				{open.maybe ? `${i18n.dict.writingCheck.maybe}: ` : ''}{label(open)}
 			</span>
-			{#if open.suggestions?.length}
+			{#if open.source === 'l1' && open.suggestions?.length}
 				<span dir="ltr" class="text-brand-dark">{open.text} → {open.suggestions.join(' / ')}</span>
 			{/if}
 		</p>

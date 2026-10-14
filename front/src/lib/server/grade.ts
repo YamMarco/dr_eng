@@ -72,7 +72,8 @@ export function userPrompt(req: GradeRequest): string {
 const markSchema = z.object({
 	span: z.string().max(200),
 	tag: z.string(),
-	nth: z.number().int().min(1).max(20).optional()
+	nth: z.number().int().min(1).max(20).optional(),
+	fix: z.string().max(60).optional()
 });
 const marksSchema = z.array(markSchema).default([]);
 
