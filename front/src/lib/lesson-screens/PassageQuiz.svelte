@@ -76,7 +76,9 @@
 			<div class="leading-relaxed font-semibold">
 				<Md block text={question.prompt} />
 				{#if question.points}
-					<span class="text-sm font-normal text-muted" dir="auto">({question.points} נק')</span>
+					<span class="text-sm font-normal text-muted" dir="auto"
+						>({i18n.dict.quiz.pointsShort(question.points)})</span
+					>
 				{/if}
 			</div>
 			<input
@@ -91,7 +93,10 @@
 					: 'border-line bg-surface focus:border-brand'}"
 			/>
 			{#if checked && !correct}
-				<p class="mt-1 text-sm text-muted">התשובה: <Md text={question.answerHint} /></p>
+				<p class="mt-1 text-sm text-muted">
+					{i18n.dict.exerciseKind.answerLabel}
+					<Md text={question.answerHint} />
+				</p>
 			{/if}
 		</div>
 	{/each}

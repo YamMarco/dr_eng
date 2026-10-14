@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { i18n } from '$lib/i18n/index.svelte';
 	// Pure display + tap-to-jump grid. Knows nothing about scoring, parts, or
 	// skip/back rules - QuizRunner decides whether to honor a jump.
 	let {
@@ -61,7 +62,9 @@
 				bind:this={buttonEls[i]}
 				type="button"
 				aria-current={isCurrent ? 'step' : undefined}
-				aria-label={isPassage ? `קטע קריאה, שאלה ${labels[i]}` : `שאלה ${labels[i]}`}
+				aria-label={isPassage
+					? `${i18n.dict.quiz.passageLabel}, ${i18n.dict.quiz.questionLabel(labels[i])}`
+					: i18n.dict.quiz.questionLabel(labels[i])}
 				onclick={() => onJump(i)}
 				class="flex h-11 min-w-11 shrink-0 items-center justify-center transition active:scale-90"
 			>
@@ -81,7 +84,7 @@
 						{labels[i]}
 					{/if}
 					{#if isPassage}
-						<span class="font-semibold">קטע קריאה</span>
+						<span class="font-semibold">{i18n.dict.quiz.passageLabel}</span>
 					{/if}
 				</span>
 			</button>

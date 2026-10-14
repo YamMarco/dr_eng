@@ -1,4 +1,5 @@
 <script lang="ts" generics="T extends { key: string | number; text: string; rowClass?: string }">
+	import { i18n } from '$lib/i18n/index.svelte';
 	import Md from '$lib/components/Md.svelte';
 	import type { Snippet } from 'svelte';
 
@@ -14,9 +15,7 @@
 	// lineKey is the DOM attribute value, so always a string (line keys may be numbers).
 	type Highlight = { lineKey: string; start: number; end: number; color: MarkColor };
 	let highlights = $state<Highlight[]>([]);
-	let pendingSelection = $state<{ lineKey: string; start: number; end: number } | null>(
-		null
-	);
+	let pendingSelection = $state<{ lineKey: string; start: number; end: number } | null>(null);
 	let toolbarPos = $state<{ top: number; left: number } | null>(null);
 	let toolbarEl = $state<HTMLElement | null>(null);
 
@@ -179,8 +178,8 @@
 		{/each}
 		<button
 			type="button"
-			aria-label="ללא צבע"
-			title="ללא צבע"
+			aria-label={i18n.dict.exerciseKind.noColor}
+			title={i18n.dict.exerciseKind.noColor}
 			onclick={() => applyColor(null)}
 			class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-line text-[10px] leading-none text-muted transition active:scale-90"
 		>

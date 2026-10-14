@@ -137,7 +137,10 @@ export const he = {
 		correctAnswerLabel: 'תשובה נכונה',
 		showPassage: 'הצגת הקטע',
 		hidePassage: 'הסתרת הקטע',
-		examModeNote: 'מצב מבחן: אין משוב והסברים עד ההגשה, בדיוק כמו בבגרות.'
+		examModeNote: 'מצב מבחן: אין משוב והסברים עד ההגשה, בדיוק כמו בבגרות.',
+		passageLabel: 'קטע קריאה',
+		questionLabel: (label: string | number) => `שאלה ${label}`,
+		pointsShort: (points: number) => `${points} נק'`
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',
@@ -208,6 +211,7 @@ export const he = {
 	},
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
+		progressLabel: 'התקדמות בשיעור',
 		/** The node label's start button: always names the round about to be played. */
 		start: 'מתחילים',
 		startRound: (round: number) => `מתחילים סבב ${round}`,
@@ -258,6 +262,8 @@ export const he = {
 		matchDefinitions: 'תרגיל: התאימו מילה להגדרה',
 		matchDefinitionsHint: 'בחרו הגדרה, ואז את המילה שמתאימה לה',
 		answerKeyLabel: 'מפתח התשובה',
+		answerLabel: 'התשובה:',
+		noColor: 'ללא צבע',
 		submitButton: 'בדיקה',
 		passedFeedback: 'יפה מאוד!',
 		notPassedFeedback: 'כמעט — הצבע מראה מה פספסתם'

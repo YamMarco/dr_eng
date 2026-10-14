@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { i18n } from '$lib/i18n/index.svelte';
 	/** Segmented, animated progress bar for a lesson run. Each entry in `segments`
 	 *  is the screen count of one bucket (preface, round N, ...) played in order;
 	 *  a visible gap between bars marks the boundary between them. */
@@ -34,7 +35,7 @@
 	<div
 		class="flex min-w-0 flex-1 items-center gap-1.5"
 		role="progressbar"
-		aria-label="התקדמות בשיעור"
+		aria-label={i18n.dict.lesson.progressLabel}
 		aria-valuenow={Math.min(current, total)}
 		aria-valuemin={0}
 		aria-valuemax={total}
