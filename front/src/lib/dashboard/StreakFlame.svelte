@@ -4,8 +4,8 @@
 	// The weekly-streak flame. Lit = practiced this week: a living three-layer
 	// flame (pure SVG + CSS) that ignites once per session, then keeps burning.
 	// Unlit = the plain outline icon.
-	type Props = { days: number; goal: number };
-	let { days, goal }: Props = $props();
+	type Props = { days: number; goal: number; size?: number };
+	let { days, goal, size = 20 }: Props = $props();
 
 	const SESSION_KEY = 'flame-lit';
 
@@ -26,8 +26,8 @@
 {#if lit}
 	<svg
 		viewBox="0 0 24 24"
-		width="20"
-		height="20"
+		width={size}
+		height={size}
 		class="flame"
 		class:ignite
 		class:full
@@ -47,7 +47,7 @@
 		/>
 	</svg>
 {:else}
-	<Flame size={16} class="text-muted" aria-hidden="true" />
+	<Flame size={size * 0.8} class="text-muted" aria-hidden="true" />
 {/if}
 
 <style>

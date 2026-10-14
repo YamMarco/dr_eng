@@ -4,9 +4,11 @@
 const STORAGE_KEY = 'activity-days';
 /** Enough history for any streak we'd realistically show. */
 const MAX_DAYS = 400;
+/** Practice days a week counts as "met". */
+export const WEEKLY_GOAL = 4;
 
 /** Local-time yyyy-mm-dd, so a streak follows the student's own midnight. */
-function dayKey(date: Date): string {
+export function dayKey(date: Date): string {
 	const pad = (n: number) => String(n).padStart(2, '0');
 	return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
@@ -30,6 +32,39 @@ class ActivityStore {
 		this.days = [...this.days, today].slice(-MAX_DAYS);
 		if (typeof localStorage !== 'undefined')
 			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.days));
+	}
+
+	/** Whether the student practiced on this day. */
+	practiced(date: Date): boolean {
+		return this.days.includes(dayKey(date));
+	}
+
+	get totalDays(): number {
+		return this.days.length;
+	}
+
+	/** Consecutive weeks (Sunday to Saturday) that reached WEEKLY_GOAL, ending
+	 *  this week if it already did, else last week. */
+	get weeksAtGoal(): number {
+		const set = new Set(this.days);
+		// A local walking cursor, not reactive state.
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity
+		const weekStart = new Date();
+		weekStart.setDate(weekStart.getDate() - weekStart.getDay());
+		const daysIn = (start: Date) => {
+			// eslint-disable-next-line svelte/prefer-svelte-reactivity
+			const d = new Date(start);
+			let n = 0;
+			for (let i = 0; i < 7; i++, d.setDate(d.getDate() + 1)) if (set.has(dayKey(d))) n++;
+			return n;
+		};
+		if (daysIn(weekStart) < WEEKLY_GOAL) weekStart.setDate(weekStart.getDate() - 7);
+		let count = 0;
+		while (daysIn(weekStart) >= WEEKLY_GOAL) {
+			count++;
+			weekStart.setDate(weekStart.getDate() - 7);
+		}
+		return count;
 	}
 
 	/** Practice days in the current week (Sunday to Saturday, the Israeli week). */

@@ -60,6 +60,18 @@ export const he = {
 		wordsDone: 'סיימתם להיום',
 		toPath: 'למסלול המלא'
 	},
+	streak: {
+		title: 'הרצף שלי',
+		thisWeek: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
+		goalMet: 'עמדתם ביעד השבועי!',
+		toGoal: (n: number) => (n === 1 ? 'עוד יום אחד ליעד השבועי' : `עוד ${n} ימים ליעד השבועי`),
+		weekDays: ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'],
+		dayStreak: 'ימים ברצף',
+		weekStreak: 'שבועות ביעד',
+		totalDays: 'ימי תרגול',
+		history: '12 השבועות האחרונים',
+		rule: 'יום תרגול = סיימתם סבב בשיעור או הגשתם מבחן.'
+	},
 	onboarding: {
 		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
 		goalTitle: 'מה המטרה שלכם?',

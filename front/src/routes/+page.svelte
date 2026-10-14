@@ -6,7 +6,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
-	import { activity } from '$lib/activity.svelte';
+	import { activity, WEEKLY_GOAL } from '$lib/activity.svelte';
+	import { resolve } from '$app/paths';
 	import { homeMeters, moduleHook, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDeck } from '$lib/deck';
@@ -18,7 +19,6 @@
 	// Home = where the student stands, and a reason to go in: a way back to the
 	// latest thing done, and one concise row per Bagrut module. Every action lives
 	// on the module's own page.
-	const WEEKLY_GOAL = 4;
 
 	let t = $derived(i18n.dict.home);
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
@@ -60,11 +60,15 @@
 					<span aria-hidden="true">{t.daysShort(profile.daysToExam)}</span>
 				</span>
 			{/if}
-			<span class={chip} title={t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}>
+			<a
+				href={resolve('/streak')}
+				class="{chip} transition hover:bg-brand-soft active:scale-95"
+				title={t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}
+			>
 				<StreakFlame days={activity.daysThisWeek} goal={WEEKLY_GOAL} />
 				<span class="sr-only">{t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}</span>
 				<span aria-hidden="true" dir="ltr">{activity.daysThisWeek}/{WEEKLY_GOAL}</span>
-			</span>
+			</a>
 		</header>
 
 		{#if resume}

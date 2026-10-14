@@ -100,7 +100,7 @@
 	.barber {
 		background: repeating-linear-gradient(
 			-45deg,
-			var(--color-brand-dark) 0 6px,
+			#2563eb 0 6px,
 			#facc15 6px 12px
 		);
 		background-size: 17px 100%;
