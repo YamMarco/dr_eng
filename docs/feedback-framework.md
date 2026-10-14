@@ -85,7 +85,8 @@ I think students should wear uniforms because it make everyone equal.
 | Rule levels above the screen       | `content/rules.json`, `content/rules.ts`                                                                              |
 | Rules editor                       | `content-edit/RulesPanel.svelte`, `fields/RuleFields.svelte`, `rulesStore.svelte.ts`, `routes/api/content-edit/rules` |
 | Per-screen fields                  | `llmGrade`, `maxTypos`, `capitalIsError`, `autoCheck`, `rulesLock`, `gradingNotes` on `writing-task`                  |
-- Debug showcase of every layer-2 output (all tags, verdict lines, exam report; static samples through the real components): the flask button on the lessons page (`writing-lab/WritingLab.svelte`). Add a sample there when adding a tag.
+
+Debug showcase of every layer-2 output (all tags, verdict lines, exam report; static samples through the real components): the flask button on the lessons page (`writing-lab/WritingLab.svelte`). Add a sample there when adding a tag.
 
 ## Next
 
