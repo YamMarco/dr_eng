@@ -1170,9 +1170,9 @@
     "semantic_hash": ""
   },
   "agents.md": {
-    "mtime": 1791986788.7688024,
-    "seen": 1791986805.4726846,
-    "ast_hash": "bf78da5f86d4bb0ea8784cf0e5efda3c",
+    "mtime": 1791987816.8506262,
+    "seen": 1791987868.2405243,
+    "ast_hash": "54c246a97d60f0ddc3588fe5885ce2cc",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -1635,12 +1635,6 @@
     "mtime": 1791871641.0971649,
     "seen": 1791963870.23278,
     "ast_hash": "b2cfa0044af2a0d82d57f7f43282914e",
-    "semantic_hash": ""
-  },
-  "writing-rules-archive.md": {
-    "mtime": 1791633440.264235,
-    "seen": 1791963870.2331567,
-    "ast_hash": "314832d7521b2683cd34a622429b0711",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/writingMoves.ts": {
