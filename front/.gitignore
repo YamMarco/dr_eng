@@ -7,6 +7,7 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/build-mobile
 
 # OS
 .DS_Store
@@ -17,6 +18,8 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
+# Public build settings for the mobile bundle (no secrets).
+!.env.mobile
 
 # Vite
 vite.config.js.timestamp-*

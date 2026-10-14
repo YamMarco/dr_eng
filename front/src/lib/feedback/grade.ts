@@ -1,4 +1,5 @@
 // Client side of the loop: Layer 1 -> (gate | /api/grade) -> one Feedback.
+import { apiFetch } from '$lib/api';
 import { applyFixes, locateMarks, mergeMarks } from './merge';
 import { runLayer1, type Layer1Options } from './layer1';
 import type { RuleSet } from './rules';
@@ -6,7 +7,7 @@ import type { Feedback, GradeRequest, LessonVerdict } from './types';
 
 /** POST /api/grade; throws when the LLM is unavailable, rate-limited or the reply is bad. */
 export async function postGrade<T>(body: GradeRequest): Promise<T> {
-	const res = await fetch('/api/grade', {
+	const res = await apiFetch('/api/grade', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(body)

@@ -2,8 +2,9 @@
 	import { page } from '$app/state';
 	import { Images } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { MOBILE_BUILD } from '$lib/platform';
 
-	let items = $derived([
+	let allItems = $derived([
 		{
 			href: '/app',
 			label: i18n.dict.nav.home,
@@ -34,6 +35,9 @@
 			external: false
 		}
 	] as const);
+
+	// Authoring tools need the server, so the mobile app leaves them out.
+	let items = $derived(MOBILE_BUILD ? allItems.filter((item) => item.icon !== 'images') : allItems);
 
 	let path = $derived(page.url.pathname);
 	let activeIndex = $derived(

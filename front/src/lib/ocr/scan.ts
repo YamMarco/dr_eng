@@ -1,5 +1,6 @@
 // Client side of /api/ocr: shrinks the photo (phone cameras shoot 10+ MB;
 // handwriting reads fine at ~1600px) and returns the transcribed text.
+import { apiFetch } from '$lib/api';
 
 const MAX_SIDE = 1600;
 
@@ -33,7 +34,7 @@ export async function previewUrl(file: File, rotation: number): Promise<string> 
 
 /** `rotation` (0/90/180/270, clockwise) is the student's fix for a sideways photo. */
 export async function scanHandwriting(file: File, rotation = 0): Promise<string> {
-	const res = await fetch('/api/ocr', {
+	const res = await apiFetch('/api/ocr', {
 		method: 'POST',
 		headers: { 'Content-Type': 'image/jpeg' },
 		body: await toJpeg(file, rotation)
