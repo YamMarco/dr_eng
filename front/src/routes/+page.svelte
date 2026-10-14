@@ -49,7 +49,7 @@
 	<Onboarding />
 {:else}
 	<main
-		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-6 sm:pt-10 md:max-w-2xl"
+		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-10 sm:pb-6 md:max-w-2xl"
 	>
 		<header class="flex flex-wrap items-center gap-2">
 			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl">{t.greeting}</h1>
@@ -71,16 +71,10 @@
 			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
-		<!-- auto-rows-fr: every module card as tall as the tallest -->
-		<div class="grid auto-rows-fr gap-3">
-			{#each rows as row, i (row.mod.id)}
-				<div
-					class="grid"
-					in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}
-				>
-					<ModuleRow {...row} />
-				</div>
-			{/each}
-		</div>
+		{#each rows as row, i (row.mod.id)}
+			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+				<ModuleRow {...row} />
+			</div>
+		{/each}
 	</main>
 {/if}
