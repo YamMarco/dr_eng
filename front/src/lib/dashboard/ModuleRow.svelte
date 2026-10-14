@@ -43,10 +43,11 @@
 	</span>
 {/snippet}
 
-{#snippet meter(label: string, p: Progress, notch: boolean)}
+{#snippet meter(label: string, p: Progress, notch: boolean, go = false)}
 	<span class="flex flex-col gap-1 text-xs">
 		<span class="flex items-center gap-2">
-			<span class="me-auto truncate text-muted">{label}</span>
+			<span class="me-auto truncate {go ? 'font-bold text-brand-dark' : 'text-muted'}">{label}</span
+			>
 			<span class="shrink-0 font-bold tabular" dir="ltr">{p.done}/{p.total}</span>
 		</span>
 		<span class="flex">{@render bar(p, notch)}</span>
@@ -68,23 +69,24 @@
 		{#if comingSoon}
 			<span class="text-xs text-muted">{i18n.dict.common.comingSoon}</span>
 		{:else}
-			<span
-				class="truncate text-xs {hook.tone === 'go' ? 'font-bold text-brand-dark' : 'text-muted'}"
-			>
-				{hook.text}
-			</span>
-			{#if deck}
-				<span class="mt-1 flex flex-col gap-2">
-					{#if lessons.total}{@render meter(t.meterLessons, lessons, exams.total > 0)}{/if}
+			<span class="mt-1 flex flex-col gap-2">
+				{#if lessons.total}
+					{@render meter(hook.text, lessons, exams.total > 0, hook.tone === 'go')}
+				{:else}
+					<span
+						class="truncate text-xs {hook.tone === 'go'
+							? 'font-bold text-brand-dark'
+							: 'text-muted'}">{hook.text}</span
+					>
+				{/if}
+				{#if deck}
 					{@render meter(
 						deck.today ? t.hookWords(deck.today) : `${t.meterWords} · ${t.wordsDone}`,
 						deck.progress,
 						false
 					)}
-				</span>
-			{:else if lessons.total}
-				<span class="flex">{@render bar(lessons, exams.total > 0)}</span>
-			{/if}
+				{/if}
+			</span>
 		{/if}
 	</span>
 	{#if !comingSoon}<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />{/if}

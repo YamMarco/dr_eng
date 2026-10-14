@@ -32,7 +32,6 @@ export const he = {
 		hookResume: 'השארתם מבחן באמצע - ממשיכים',
 		hookReady: 'מוכנים למבחן!',
 		hookWords: (n: number) => `${n} מילים לחזרה היום`,
-		meterLessons: 'שיעורים',
 		meterWords: 'מילים',
 		hookToExam: (n: number) =>
 			n === 1 ? 'עוד שיעור אחד עד שמוכנים למבחן' : `עוד ${n} שיעורים עד שמוכנים למבחן`,

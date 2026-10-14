@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { CalendarClock, Flame } from '@lucide/svelte';
+	import { CalendarClock } from '@lucide/svelte';
 	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -19,6 +19,7 @@
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import ModuleRow from '$lib/dashboard/ModuleRow.svelte';
+	import StreakFlame from '$lib/dashboard/StreakFlame.svelte';
 
 	// Home = where the student stands, and a reason to go in: a way back to the
 	// latest thing done, and one concise row per Bagrut module. Every action lives
@@ -67,15 +68,7 @@
 				</span>
 			{/if}
 			<span class={chip} title={t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}>
-				<Flame
-					size={16}
-					class={activity.daysThisWeek >= WEEKLY_GOAL
-						? 'text-orange-500'
-						: activity.daysThisWeek
-							? 'text-orange-400'
-							: 'text-muted'}
-					aria-hidden="true"
-				/>
+				<StreakFlame days={activity.daysThisWeek} goal={WEEKLY_GOAL} />
 				<span class="sr-only">{t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}</span>
 				<span aria-hidden="true" dir="ltr">{activity.daysThisWeek}/{WEEKLY_GOAL}</span>
 			</span>
@@ -85,10 +78,16 @@
 			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
-		{#each rows as row, i (row.mod.id)}
-			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
-				<ModuleRow {...row} />
-			</div>
-		{/each}
+		<!-- auto-rows-fr: every module card as tall as the tallest -->
+		<div class="grid auto-rows-fr gap-3">
+			{#each rows as row, i (row.mod.id)}
+				<div
+					class="grid"
+					in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}
+				>
+					<ModuleRow {...row} />
+				</div>
+			{/each}
+		</div>
 	</main>
 {/if}
