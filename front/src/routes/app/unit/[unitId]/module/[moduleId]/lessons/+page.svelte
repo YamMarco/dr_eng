@@ -421,15 +421,15 @@
 		<!-- In the bar rather than floating, so they never cover path nodes. -->
 		<div class="flex items-center gap-2">
 			{#if debugStore.enabled}
-				<!-- Debug-only: compare experimental writing flows without touching progress. -->
+				<!-- Debug-only: showcase of every LLM (layer 2) grading output. -->
 				<button
 					type="button"
 					onclick={() => {
 						enterRunner();
 						writingLabOpen = true;
 					}}
-					aria-label="פתיחת מעבדת הכתיבה"
-					title="מעבדת כתיבה: Claude מול GPT"
+					aria-label="תצוגת בדיקת AI"
+					title="תצוגת בדיקת AI (שכבה 2)"
 					class="flex h-11 w-11 items-center justify-center rounded-lg border border-dashed border-ink/40 text-ink/60 active:scale-95"
 				>
 					<FlaskConical size={18} aria-hidden="true" />
