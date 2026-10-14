@@ -6,6 +6,7 @@
 	type Props = {
 		variant?: Variant;
 		href?: string;
+		type?: 'button' | 'submit';
 		disabled?: boolean;
 		onclick?: (event: MouseEvent) => void;
 		class?: string;
@@ -15,6 +16,7 @@
 	let {
 		variant = 'primary',
 		href,
+		type = 'button',
 		disabled = false,
 		onclick,
 		class: extra = '',
@@ -49,7 +51,7 @@
 	>
 {:else}
 	<button
-		type="button"
+		{type}
 		class={classes}
 		style={variant === 'primary' ? puckStyle : undefined}
 		{disabled}

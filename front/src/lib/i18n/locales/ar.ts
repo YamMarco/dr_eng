@@ -23,10 +23,7 @@ export const ar: DictionaryOverride = {
 	login: {
 		title: 'تسجيل الدخول',
 		subtitle: 'ادخلوا لمتابعة التدريب',
-		phoneLabel: 'رقم الهاتف',
-		passwordLabel: 'كلمة المرور',
-		submit: 'دخول',
-		mockup: 'للعرض فقط - لا حاجة للتعبئة'
+		submit: 'دخول'
 	},
 	home: {
 		greeting: 'مرحبًا!',

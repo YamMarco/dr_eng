@@ -12,6 +12,7 @@
 - after changing Module C content, update docs/module-c-audit.md (snapshot date, grades, fixed/open lists)
 - before designing or changing student-facing UI, read docs/ux-principles.md and use the ui-review skill
 - LLM prompts live in front/src/lib/server/prompts/<role>.md (one file per gateway role, imported with ?raw)
+- routes (site / app / admin), web vs mobile builds, accounts: read docs/platform.md; app-only code must work in the mobile build (no server, call /api via apiFetch)
 
 
 # persona

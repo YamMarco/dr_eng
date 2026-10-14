@@ -3,6 +3,8 @@
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
+	import AccountSection from '$lib/components/AccountSection.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import { i18n, type Language } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore, type ThemeMode } from '$lib/theme.svelte';
@@ -176,8 +178,12 @@
 		</ul>
 	</section>
 
+	{#if auth.enabled}
+		<AccountSection index={4} />
+	{/if}
+
 	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(4), easing: cubicOut }}
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(5), easing: cubicOut }}
 		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 	>
 		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.aboutSection}</h2>

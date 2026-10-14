@@ -49,9 +49,9 @@ const body = z.discriminatedUnion('kind', [
 	})
 ]);
 
-export const POST: RequestHandler = async ({ request, getClientAddress }) => {
+export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
 	if (!llmConfigured()) throw error(503, 'LLM is not configured');
-	if (rateLimited(getClientAddress())) throw error(429, 'too many requests');
+	if (rateLimited(locals.userId ?? getClientAddress())) throw error(429, 'too many requests');
 	const parsed = body.safeParse(await request.json().catch(() => null));
 	if (!parsed.success) throw error(400, 'bad request');
 	const req = parsed.data;

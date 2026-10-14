@@ -17,7 +17,9 @@
 </script>
 
 <div class="flex flex-1 flex-col {showNav ? 'pb-16' : ''}">
-	{#if auth.loggedIn}
+	{#if !auth.ready}
+		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
+	{:else if auth.loggedIn}
 		{@render children()}
 	{:else}
 		<LoginScreen />
