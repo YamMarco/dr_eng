@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { ChevronLeft } from '@lucide/svelte';
 	import type { Component, Snippet } from 'svelte';
 
 	// One row of the module page: icon, title, a line of detail, optional progress
@@ -40,7 +39,6 @@
 		{/if}
 	</span>
 	{@render trailing?.()}
-	{#if href}<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />{/if}
 {/snippet}
 
 <!-- href is a runtime-built path or query string into a module page, not a typed route -->

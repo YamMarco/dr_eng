@@ -64,6 +64,9 @@
 		return undefined;
 	});
 
+	const card =
+		'flex flex-col rounded-3xl bg-surface p-2 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+
 	const skillIcon: Record<Skill, Component> = {
 		vocab: Languages,
 		reading: BookOpen,
@@ -92,7 +95,7 @@
 
 	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-		class="flex flex-col rounded-3xl bg-surface p-2 shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		class={card}
 	>
 		<HubRow
 			icon={ClipboardCheck}
@@ -106,7 +109,12 @@
 		>
 			{#snippet trailing()}<ExamNugget {exams} />{/snippet}
 		</HubRow>
+	</section>
 
+	<section
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+		class="{card} mt-2"
+	>
 		{#each skills as row (row.skill)}
 			{@const { done, total } = row.progress}
 			<HubRow
@@ -123,11 +131,14 @@
 				{/snippet}
 			</HubRow>
 		{/each}
-	</section>
 
-	{#if route.length}
-		<a href="{base}/lessons" class="self-end px-2 text-sm font-semibold text-brand hover:underline">
-			{t.toPath}
-		</a>
-	{/if}
+		{#if route.length}
+			<a
+				href="{base}/lessons"
+				class="mt-1 border-t border-line/70 px-3 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
+			>
+				{t.toPath}
+			</a>
+		{/if}
+	</section>
 </main>

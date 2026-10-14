@@ -75,7 +75,7 @@
 		</header>
 
 		{#if resume}
-			<ContinueBar item={resume} groupId={group.id} />
+			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
 		{#each rows as row, i (row.mod.id)}
