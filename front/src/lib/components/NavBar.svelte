@@ -3,6 +3,7 @@
 	import { Images } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { MOBILE_BUILD } from '$lib/platform';
+	import { auth } from '$lib/auth.svelte';
 
 	let allItems = $derived([
 		{
@@ -36,8 +37,10 @@
 		}
 	] as const);
 
-	// Authoring tools need the server, so the mobile app leaves them out.
-	let items = $derived(MOBILE_BUILD ? allItems.filter((item) => item.icon !== 'images') : allItems);
+	// Authoring tools are staff-only and need the server (so not in the mobile app).
+	let items = $derived(
+		MOBILE_BUILD || !auth.isAdmin ? allItems.filter((item) => item.icon !== 'images') : allItems
+	);
 
 	let path = $derived(page.url.pathname);
 	let activeIndex = $derived(

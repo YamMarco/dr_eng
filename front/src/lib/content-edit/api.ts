@@ -1,6 +1,7 @@
 // Thin wrapper around the content-edit endpoints: attaches the unlocked
 // session's password (see editStore.svelte.ts) to every write, since the
 // production backend requires it on each request (dev doesn't check it).
+import { apiFetch } from '$lib/api';
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
 import type { RulesFile } from '$lib/content/rules';
@@ -16,7 +17,7 @@ function storedKey(): string | null {
 }
 
 export async function checkContentEditPassword(password: string): Promise<boolean> {
-	const res = await fetch('/api/content-edit/login', {
+	const res = await apiFetch('/api/content-edit/login', {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({ password })
@@ -36,7 +37,7 @@ export function rememberContentEditPassword(password: string) {
 /** Stores a cropped JPEG and returns the site path to reference from a screen. */
 export async function uploadImage(jpeg: Blob): Promise<string> {
 	const key = storedKey();
-	const res = await fetch('/api/content-edit/image', {
+	const res = await apiFetch('/api/content-edit/image', {
 		method: 'POST',
 		headers: { 'content-type': 'image/jpeg', ...(key ? { 'x-content-edit-key': key } : {}) },
 		body: jpeg
@@ -50,7 +51,7 @@ async function post(
 	url = '/api/content-edit'
 ): Promise<{ ok: true; committed: boolean }> {
 	const key = storedKey();
-	const res = await fetch(url, {
+	const res = await apiFetch(url, {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json',

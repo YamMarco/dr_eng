@@ -40,6 +40,11 @@ class AuthStore {
 		return !supabase || !!this.session;
 	}
 
+	/** Staff accounts (app_metadata.role, set server-side only). Open when accounts are off. */
+	get isAdmin() {
+		return !supabase || this.session?.user.app_metadata?.role === 'admin';
+	}
+
 	get email() {
 		return this.session?.user.email;
 	}

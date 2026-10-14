@@ -158,25 +158,27 @@
 		</ul>
 	</section>
 
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
-		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
-	>
-		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.developerSection}</h2>
-		<ul class="mt-2 flex flex-col divide-y divide-line/70">
-			<li class="flex items-center justify-between gap-4 px-5 py-4">
-				<span>
-					<span class="block font-semibold">{i18n.dict.settings.debugTools}</span>
-					<span class="block text-sm text-muted">{i18n.dict.settings.debugToolsDesc}</span>
-				</span>
-				<Toggle
-					checked={debugStore.enabled}
-					onchange={(value) => debugStore.setEnabled(value)}
-					label={i18n.dict.settings.debugTools}
-				/>
-			</li>
-		</ul>
-	</section>
+	{#if auth.isAdmin}
+		<section
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
+			class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
+		>
+			<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.developerSection}</h2>
+			<ul class="mt-2 flex flex-col divide-y divide-line/70">
+				<li class="flex items-center justify-between gap-4 px-5 py-4">
+					<span>
+						<span class="block font-semibold">{i18n.dict.settings.debugTools}</span>
+						<span class="block text-sm text-muted">{i18n.dict.settings.debugToolsDesc}</span>
+					</span>
+					<Toggle
+						checked={debugStore.enabled}
+						onchange={(value) => debugStore.setEnabled(value)}
+						label={i18n.dict.settings.debugTools}
+					/>
+				</li>
+			</ul>
+		</section>
+	{/if}
 
 	{#if auth.enabled}
 		<AccountSection index={4} />

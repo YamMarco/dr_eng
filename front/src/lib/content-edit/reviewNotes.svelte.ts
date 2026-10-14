@@ -5,6 +5,7 @@
 // (disk in dev, a GitHub commit in production). Kept out of editModel /
 // the LessonNode schema on purpose: this is authoring scratch state, not
 // curriculum content.
+import { apiFetch } from '$lib/api';
 const KEY_STORAGE = 'content-edit-key'; // same session key as api.ts
 
 export type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
@@ -30,7 +31,7 @@ class ReviewNotesStore {
 	async load() {
 		if (this.#loaded) return;
 		this.#loaded = true;
-		const res = await fetch('/api/content-edit/review', { headers: authHeaders() });
+		const res = await apiFetch('/api/content-edit/review', { headers: authHeaders() });
 		if (res.ok) this.notes = await res.json();
 	}
 
@@ -50,7 +51,7 @@ class ReviewNotesStore {
 
 	async #save(id: string) {
 		this.#timers.delete(id);
-		await fetch('/api/content-edit/review', {
+		await apiFetch('/api/content-edit/review', {
 			method: 'POST',
 			headers: { 'content-type': 'application/json', ...authHeaders() },
 			body: JSON.stringify({ id, patch: this.notes[id] })

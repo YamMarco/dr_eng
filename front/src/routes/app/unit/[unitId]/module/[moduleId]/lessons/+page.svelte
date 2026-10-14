@@ -30,6 +30,7 @@
 	import DeckGateway from '$lib/deck/DeckGateway.svelte';
 	import { dueToday, getDeck } from '$lib/deck';
 	import { MOBILE_BUILD } from '$lib/platform';
+	import { auth } from '$lib/auth.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -438,7 +439,7 @@
 			     the content model / content-edit tooling covers so far (see the same
 			     `mod.id !== 'c'` guard below). /edit itself is password-gated on the
 			     deployed site. Detachable — see src/lib/content-edit/README.md. -->
-			{#if mod.id === 'c' && !MOBILE_BUILD}
+			{#if mod.id === 'c' && !MOBILE_BUILD && auth.isAdmin}
 				<a
 					href="/edit"
 					title="עריכת תוכן"

@@ -6,6 +6,7 @@
 //
 // Deliberately detachable — see ./README.md for how to rip it out.
 import { dev } from '$app/environment';
+import { auth } from '$lib/auth.svelte';
 
 const AUTHED_KEY = 'content-edit-authed';
 
@@ -21,9 +22,9 @@ class EditStore {
 	/** Unlocked this browser session (password check passed). Always false in dev — irrelevant there. */
 	authed = $state(dev ? false : loadAuthed());
 
-	/** dev: always open. Elsewhere: only after a successful password unlock. */
+	/** Staff only. dev: always open. Elsewhere: only after a successful password unlock. */
 	get available() {
-		return dev || this.authed;
+		return auth.isAdmin && (dev || this.authed);
 	}
 
 	setAuthed(value: boolean) {

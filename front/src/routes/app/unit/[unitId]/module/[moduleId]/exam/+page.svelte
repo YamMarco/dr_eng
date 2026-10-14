@@ -7,6 +7,7 @@
 	import StatTile from '$lib/components/StatTile.svelte';
 	import { examRows, examStats, formatExamStats } from '$lib/quiz/stats';
 	import { MOBILE_BUILD } from '$lib/platform';
+	import { auth } from '$lib/auth.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -26,7 +27,7 @@
      could ever reach the password screen. -->
 <AppBar title="{i18n.dict.module.examTitle} — {mod.letter}" back={base}>
 	{#snippet trailing()}
-		{#if !MOBILE_BUILD}
+		{#if !MOBILE_BUILD && auth.isAdmin}
 			<a
 				href="/edit-exam?module={mod.id}"
 				title="עריכת מבחנים"

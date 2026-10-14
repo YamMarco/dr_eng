@@ -1,5 +1,6 @@
 // /edit's working copy of content/rules.json (module > section > lesson rule settings).
 // Saved by the workspace's one save button, next to the lesson changes.
+import { apiFetch } from '$lib/api';
 import { ownerModule, rulesFile, type RulesFile } from '$lib/content/rules';
 import { clearBelow, ownKeys, type Rules } from '$lib/feedback/rules';
 import type { LessonNode } from '$lib/content';
@@ -18,7 +19,7 @@ class RulesStore {
 
 	/** Fresh copy from the server (production edits may be ahead of this deploy). */
 	async load(headers: Record<string, string>) {
-		const res = await fetch('/api/content-edit/rules', { headers });
+		const res = await apiFetch('/api/content-edit/rules', { headers });
 		if (!res.ok) return;
 		const file = (await res.json()) as RulesFile;
 		this.file = file;

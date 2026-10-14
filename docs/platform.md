@@ -29,6 +29,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - `/app` shows the login screen until there's a session (`$lib/auth.svelte.ts`, `LoginScreen.svelte`): sign in, sign up, forgot password.
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
+- **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
 - `/api/grade`, `/api/ocr` and `/api/account` need `Authorization: Bearer <token>`. Otherwise they return 401.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also clears this device's progress.
 

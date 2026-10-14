@@ -6,6 +6,7 @@ declare global {
 		interface Locals {
 			/** Supabase user id on the student APIs, once accounts are on (see hooks.server.ts). */
 			userId?: string;
+			isAdmin?: boolean;
 		}
 		// interface PageData {}
 		interface PageState {

@@ -24,3 +24,6 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Staff passwords written by scripts/create-admin.mjs
+admin-users.local.txt

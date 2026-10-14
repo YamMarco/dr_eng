@@ -2,6 +2,8 @@
 // Lives outside the settings page since it has to be readable from the root
 // layout, not just the settings screen — same pattern as i18n's language.
 
+import { auth } from './auth.svelte';
+
 const ENABLED_KEY = 'debug-tools-enabled';
 const UNLOCK_ALL_KEY = 'debug-unlock-all';
 
@@ -12,19 +14,27 @@ function loadBool(key: string, defaultValue: boolean): boolean {
 }
 
 class DebugStore {
-	// Defaults to open during this build phase — flip off in settings once
-	// the app is closer to shipping.
-	enabled = $state(loadBool(ENABLED_KEY, true));
+	// Developer tooling is staff-only: students never see it, whatever is stored.
+	// The stored switch defaults to on, so admins get the tools without opting in.
+	private enabledFlag = $state(loadBool(ENABLED_KEY, true));
+	private unlockAllFlag = $state(loadBool(UNLOCK_ALL_KEY, false));
+
+	get enabled() {
+		return this.enabledFlag && auth.isAdmin;
+	}
+
 	/** Bypasses the sequential lock on lesson sub-lessons, for QA. */
-	unlockAll = $state(loadBool(UNLOCK_ALL_KEY, false));
+	get unlockAll() {
+		return this.unlockAllFlag && auth.isAdmin;
+	}
 
 	setEnabled(value: boolean) {
-		this.enabled = value;
+		this.enabledFlag = value;
 		if (typeof localStorage !== 'undefined') localStorage.setItem(ENABLED_KEY, String(value));
 	}
 
 	setUnlockAll(value: boolean) {
-		this.unlockAll = value;
+		this.unlockAllFlag = value;
 		if (typeof localStorage !== 'undefined') localStorage.setItem(UNLOCK_ALL_KEY, String(value));
 	}
 }
