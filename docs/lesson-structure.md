@@ -254,8 +254,10 @@ Before / after (content-2c):
 
 ## Conventions
 
-- all UI chrome is Hebrew, in `i18n/locales/he.ts`; `ar.ts` is a partial override
-- teaching content (passages, prompts, options) stays inline in the `c/*.ts` files — never i18n
+- all UI chrome is in `i18n/locales/he.ts` (source of truth) and `ar.ts` (Arabic, light MSA); content titles in `titles.he.ts` / `titles.ar.ts`
+- teaching content is authored in Hebrew inline in the `c/*.ts` files. Arabic lives in `lib/content/translations/ar.json`: whole Hebrew string -> whole Arabic string, English and markup kept inside. Applied by `localizeContent` (`lib/content/localize.svelte.ts`) on the lessons and exam pages only, never in the editor; lazy-loaded for Arabic users
+- after adding or editing Hebrew content: `node scripts/content-i18n.mjs` lists missing / stale Arabic entries (a missing one just shows Hebrew). A Hebrew `mark-all` text needs an Arabic version with the same token count and the targets at the same positions (`tests/content-i18n.test.ts` checks the count and markup)
+- word deck meanings in Arabic: `lib/content/e/words.ar.ts` by word id, applied by `localizeDeck` in `lib/deck/index.ts`
 - lesson and exam ids always start with the module letter + `-` (`c-l06`, `c-exam-4`); editor-made ids are `c-<8 hex>`
 - after changes: `npm run check` in `front/`, then `graphify update .` at the repo root
 

@@ -1,6 +1,8 @@
 // Word decks by module. A module listed here gets a "words" page and a
 // dashboard link (see routes/unit/[unitId]/module/[moduleId]/words).
 import { eWords } from '$lib/content/e/words';
+import { eGlossAr } from '$lib/content/e/words.ar';
+import type { Language } from '$lib/i18n/index.svelte';
 import { deckProgress } from './deckProgress.svelte';
 import { dayKey, dueWords } from './scheduler';
 import { MAX_REVIEWS, NEW_PER_SESSION } from './session';
@@ -10,6 +12,18 @@ export const decks: Record<string, DeckWord[]> = { e: eWords };
 
 export function getDeck(moduleId: string): DeckWord[] | undefined {
 	return decks[moduleId];
+}
+
+/** Each deck's meanings in other UI languages, by word id (Hebrew is `he` itself). */
+const glosses: Record<string, Partial<Record<Language, Record<string, string>>>> = {
+	e: { ar: eGlossAr }
+};
+
+/** The deck with `he` holding the meaning in the UI language (falls back to
+ *  Hebrew per word), so the session builder stays language-agnostic. */
+export function localizeDeck(moduleId: string, words: DeckWord[], language: Language): DeckWord[] {
+	const table = glosses[moduleId]?.[language];
+	return table ? words.map((w) => ({ ...w, he: table[w.id] ?? w.he })) : words;
 }
 
 /** Words due for review today. Reactive: call from $derived. */

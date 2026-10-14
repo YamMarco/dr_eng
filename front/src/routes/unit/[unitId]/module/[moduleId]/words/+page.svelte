@@ -10,14 +10,14 @@
 	import { deckProgress } from '$lib/deck/deckProgress.svelte';
 	import { dayKey, dueWords } from '$lib/deck/scheduler';
 	import { buildSession, EXAM_BOX, wordResults, type DeckSession } from '$lib/deck/session';
-	import { deckToday } from '$lib/deck';
+	import { deckToday, localizeDeck } from '$lib/deck';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let t = $derived(i18n.dict.deck);
 	let mod = $derived(data.mod);
-	let words = $derived(data.words);
+	let words = $derived(localizeDeck(mod.id, data.words, i18n.language));
 
 	const today = dayKey(new Date());
 	let progress = $derived(deckProgress.get(mod.id));
