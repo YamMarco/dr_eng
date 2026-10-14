@@ -16,9 +16,9 @@ export async function checkWriting(
 	opts: CheckOptions = {}
 ): Promise<CheckReport> {
 	const length = lengthReport(text, opts);
-	const hebrew = (text.match(/[֐-׿]/g) ?? []).length;
+	const rtl = (text.match(/[֐-׿؀-ۿ]/g) ?? []).length;
 	const letters = (text.match(/\p{L}/gu) ?? []).length;
-	if (letters > 0 && hebrew / letters > 0.3) return { length, issues: [], notEnglish: true };
+	if (letters > 0 && rtl / letters > 0.3) return { length, issues: [], notEnglish: true };
 
 	const spellers = await loadSpellers(load);
 	const found: CheckIssue[] = [

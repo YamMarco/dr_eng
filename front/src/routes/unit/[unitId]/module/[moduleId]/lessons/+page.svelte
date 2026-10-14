@@ -11,6 +11,7 @@
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
 	import { moduleSections, getLessonsBySection, type LessonNode } from '$lib/content';
+	import { localizeContent } from '$lib/content/localize';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import {
 		hasContent,
@@ -690,7 +691,7 @@
 	     `lesson`/`roundIndex` props. -->
 	{#key `${activeId}-${activeRoundIndex}`}
 		<LessonRunner
-			lesson={activeNode.lesson}
+			lesson={localizeContent(activeNode.lesson, i18n.language)}
 			roundIndex={activeRoundIndex}
 			lessonLabel={i18n.title(activeNode.lesson.id)}
 			roundLabel={totalRounds(activeNode) > 1

@@ -23,20 +23,20 @@ const ESCAPE: Record<string, string> = {
  *  letter, which flips a mostly-Hebrew line that opens with an English term
  *  ("however = פנייה...") or a mostly-English line that opens with a Hebrew
  *  label ("השאלה: What do we learn...?") the wrong way. Rule: RTL when the first
- *  or last letter is Hebrew, or the text is mostly Hebrew; otherwise "auto".
+ *  or last letter is Hebrew or Arabic, or the text is mostly RTL; otherwise "auto".
  *  Tags, entities, punctuation and `{..}` tokens are ignored. */
 export function textDir(text: string): 'auto' | 'rtl' | 'ltr' {
 	const t = text
 		.replace(/<[^>]*>/g, '')
 		.replace(/&[#\w]+;/g, ' ')
 		.replace(/\{[a-z]:[^}]*\}|\{\/c\}/g, '');
-	const letters = t.match(/[A-Za-z֐-׿]/g);
+	const letters = t.match(/[A-Za-z֐-׿؀-ۿ]/g);
 	if (!letters) return 'auto';
-	// Starts or ends in Hebrew (punctuation / marks ignored) -> RTL.
-	if (/[֐-׿]/.test(letters[0]) || /[֐-׿]/.test(letters[letters.length - 1]))
+	// Starts or ends in Hebrew / Arabic (punctuation / marks ignored) -> RTL.
+	if (/[֐-׿؀-ۿ]/.test(letters[0]) || /[֐-׿؀-ۿ]/.test(letters[letters.length - 1]))
 		return 'rtl';
-	// English at both ends: RTL only if the line is mostly Hebrew.
-	const he = (t.match(/[֐-׿]/g) ?? []).length;
+	// English at both ends: RTL only if the line is mostly Hebrew / Arabic.
+	const he = (t.match(/[֐-׿؀-ۿ]/g) ?? []).length;
 	const en = letters.length - he;
 	return he > en ? 'rtl' : 'auto';
 }

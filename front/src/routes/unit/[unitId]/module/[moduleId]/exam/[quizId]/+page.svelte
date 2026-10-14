@@ -7,6 +7,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
+	import { localizeContent } from '$lib/content/localize';
 	import { getLastAttempt } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
@@ -17,7 +18,11 @@
 	let { data }: PageProps = $props();
 	let quiz = $derived(data.quiz);
 	let examBase = $derived(`/unit/${data.group.id}/module/${data.mod.id}/exam`);
-	let quizNode = $derived(getQuizNode(quiz.id));
+	// Played / shown in the UI language (the editor keeps the authored Hebrew).
+	let quizNode = $derived.by(() => {
+		const node = getQuizNode(quiz.id);
+		return node && localizeContent(node, i18n.language);
+	});
 	let running = $state(false);
 	let viewingSolution = $state(false);
 	let t = $derived(i18n.dict.quizzes);
