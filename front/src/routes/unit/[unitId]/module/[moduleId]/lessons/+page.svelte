@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { afterNavigate, beforeNavigate, pushState } from '$app/navigation';
 	import { page } from '$app/state';
 	import { FlaskConical } from '@lucide/svelte';
@@ -206,8 +205,9 @@
 	// (what's done above, what's next below), instead of the top of a possibly
 	// long path. Instant
 	// (no smooth scroll) so it doesn't fight with the pop-in animation
-	// starting at the same time.
-	onMount(() => {
+	// starting at the same time. Runs after navigation, not on mount: SvelteKit
+	// resets the scroll to the top after mounting, which would undo the jump.
+	function jumpToAnchor() {
 		// A `?lesson=` param (from the home page's "continue" card) opens that
 		// lesson straight into the runner instead of just scrolling to it.
 		const requestedId = page.url.searchParams.get('lesson');
@@ -230,7 +230,7 @@
 		document
 			.querySelector(`[data-lesson-node-id="${CSS.escape(anchorId)}"]`)
 			?.scrollIntoView({ block: 'center' });
-	});
+	}
 
 	// Entering /edit and coming back (a fresh navigation, so the browser's own
 	// scroll restore doesn't apply) must land on the same spot of the path.
@@ -243,7 +243,7 @@
 		}
 	});
 	afterNavigate(({ from }) => {
-		if (!from?.url.pathname.startsWith('/edit')) return;
+		if (!from?.url.pathname.startsWith('/edit')) return jumpToAnchor();
 		try {
 			const y = Number(sessionStorage.getItem(scrollKey()));
 			if (y > 0) window.scrollTo({ top: y, behavior: 'instant' });
