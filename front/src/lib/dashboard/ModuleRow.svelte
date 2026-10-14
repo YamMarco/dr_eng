@@ -33,7 +33,7 @@
 		</span>
 		<span class="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
 			<span
-				class="block h-full rounded-full bg-brand transition-[width] duration-500"
+				class="barber block h-full rounded-full transition-[width] duration-500"
 				style="width: {ratio(p) * 100}%"
 			></span>
 		</span>
@@ -94,3 +94,29 @@
 	</a>
 {/if}
 <!-- eslint-enable svelte/no-navigation-without-resolve -->
+
+<style>
+	/* Barber-pole fill: brand and accent stripes rolling forward. */
+	.barber {
+		background: repeating-linear-gradient(
+			-45deg,
+			var(--color-brand) 0 6px,
+			var(--color-accent) 6px 12px
+		);
+		background-size: 17px 100%;
+		animation: barber 0.8s linear infinite;
+	}
+	@keyframes barber {
+		to {
+			background-position: 17px 0;
+		}
+	}
+	:global([dir='rtl']) .barber {
+		animation-direction: reverse;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.barber {
+			animation: none;
+		}
+	}
+</style>

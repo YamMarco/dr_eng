@@ -61,14 +61,14 @@
 	}
 	.outer {
 		fill: #fb923c;
-		animation: sway 1.6s ease-in-out infinite;
+		animation: sway 1.1s ease-in-out infinite;
 	}
 	.full .outer {
 		fill: #f97316;
 	}
 	.inner {
 		fill: #fde047;
-		animation: lick 0.9s ease-in-out infinite;
+		animation: lick 0.6s ease-in-out infinite;
 	}
 
 	/* First view of the session: grows from a spark, flares, settles. */
@@ -83,13 +83,13 @@
 			transform: scale(1, 1) skewX(0);
 		}
 		25% {
-			transform: scale(0.96, 1.06) skewX(-4deg);
+			transform: scale(0.9, 1.14) skewX(-10deg) rotate(-4deg);
 		}
 		50% {
-			transform: scale(1.03, 0.95) skewX(2deg);
+			transform: scale(1.08, 0.88) skewX(4deg);
 		}
 		75% {
-			transform: scale(0.98, 1.04) skewX(4deg);
+			transform: scale(0.94, 1.1) skewX(10deg) rotate(4deg);
 		}
 	}
 	@keyframes lick {
@@ -98,10 +98,10 @@
 			transform: scale(1, 1) translateY(0);
 		}
 		35% {
-			transform: scale(0.85, 1.18) translateY(-4%);
+			transform: scale(0.7, 1.35) translateY(-10%);
 		}
 		70% {
-			transform: scale(1.08, 0.9) translateY(2%);
+			transform: scale(1.15, 0.8) translateY(4%);
 		}
 	}
 	@keyframes ignite {
