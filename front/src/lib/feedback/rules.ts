@@ -5,6 +5,8 @@
 export type RuleSet = {
 	/** Grade the answer with the LLM (Layer 2) after the local checks pass. */
 	llmGrade: boolean;
+	/** The LLM also returns the right word for wrong-word / word-choice / missing-word, shown in the text. */
+	llmFix: boolean;
 	/** Small slips forgiven before the local gate says "wrong". */
 	maxTypos: number;
 	capitalIsError: boolean;
@@ -14,10 +16,11 @@ export type RuleSet = {
 
 export type Rules = Partial<RuleSet> & { rulesLock?: boolean };
 
-export const RULE_KEYS = ['llmGrade', 'maxTypos', 'capitalIsError', 'autoCheck'] as const;
+export const RULE_KEYS = ['llmGrade', 'llmFix', 'maxTypos', 'capitalIsError', 'autoCheck'] as const;
 
 export const DEFAULT_RULES: RuleSet = {
 	llmGrade: false,
+	llmFix: true,
 	maxTypos: 1,
 	capitalIsError: true,
 	autoCheck: true

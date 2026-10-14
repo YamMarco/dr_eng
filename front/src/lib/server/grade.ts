@@ -60,6 +60,7 @@ export function userPrompt(req: GradeRequest): string {
 	return [
 		block('QUESTION', req.question),
 		req.notes ? block('EDITOR NOTES', req.notes) : '',
+		req.fixes === false ? 'FIXES: off' : '',
 		m
 			? `MECHANICS COUNT: spelling ${m.spelling}, punctuation/capitalization ${m.punctuation}, run-on sentences ${m.runOn}`
 			: '',
@@ -108,7 +109,9 @@ async function ask(req: GradeRequest): Promise<unknown> {
 
 export async function gradeLesson(req: SingleRequest): Promise<LessonVerdict> {
 	const parsed = z.object({ pass: z.boolean(), marks: marksSchema }).parse(await ask(req));
-	const marks = cleanMarks(parsed.marks, 'lesson');
+	const marks = cleanMarks(parsed.marks, 'lesson').map((m) =>
+		req.fixes === false ? { ...m, fix: undefined } : m
+	);
 	// a fatal tag means fail, whatever the model said
 	return { pass: parsed.pass && !marks.some((m) => FATAL_TAGS.has(m.tag)), marks };
 }

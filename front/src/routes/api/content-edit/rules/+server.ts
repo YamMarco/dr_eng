@@ -16,6 +16,7 @@ const GITHUB_PATH = `front/${REL_PATH}`;
 
 const rules = z.strictObject({
 	llmGrade: z.boolean().optional(),
+	llmFix: z.boolean().optional(),
 	maxTypos: z.number().int().min(0).optional(),
 	capitalIsError: z.boolean().optional(),
 	autoCheck: z.boolean().optional(),

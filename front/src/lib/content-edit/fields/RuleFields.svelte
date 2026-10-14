@@ -17,8 +17,9 @@
 		onSet: (key: keyof Rules, value: boolean | number | undefined) => void;
 	} = $props();
 
-	const BOOLS: { key: 'llmGrade' | 'autoCheck' | 'capitalIsError'; label: string }[] = [
+	const BOOLS: { key: 'llmGrade' | 'llmFix' | 'autoCheck' | 'capitalIsError'; label: string }[] = [
 		{ key: 'llmGrade', label: 'בדיקת תשובה ע״י AI' },
+		{ key: 'llmFix', label: 'ה-AI מציע תיקון: המילה הנכונה מוצגת בטקסט (מילה שגויה / חסרה)' },
 		{
 			key: 'autoCheck',
 			label:
@@ -32,12 +33,12 @@
 </script>
 
 <div class="flex flex-col gap-2 text-xs text-muted">
-	{#each BOOLS.slice(0, 2) as row (row.key)}
+	{#each BOOLS.slice(0, 3) as row (row.key)}
 		{@render boolRow(row)}
 	{/each}
 	<!-- the two small-slip settings share one row -->
 	<div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-		{@render boolRow(BOOLS[2])}
+		{@render boolRow(BOOLS[3])}
 		<div class="flex items-center gap-2">
 			<span class={isOwn('maxTypos') ? 'font-semibold text-ink' : ''}>טעויות קטנות מותרות</span>
 			<input

@@ -27,7 +27,7 @@ Mark errors in each answer (at most 4, most important first). Tags - use only th
 
 For each mark give "span": the smallest piece of that answer that shows the error, copied exactly. Tags about the whole answer (off-topic, incomplete) take an empty span "". If the same words appear more than once in the answer, add "nth" (1 = first occurrence).
 
-Two tags also take "fix", shown to the student in the text: wrong-word gets the word that was meant (span = the wrong word); missing-word gets the missing word(s) (span = the word right after the gap). Other tags have no "fix".
+Three tags also take "fix", shown to the student in the text: wrong-word gets the word that was meant and word-choice gets the better word (span = the word to replace); missing-word gets the missing word(s) (span = the word right after the gap). Other tags have no "fix".
 
 Reply with JSON only, no explanation, one entry per ANSWER id:
 {"answers": [{"id": "q1", "score": 0, "marks": [{"span": "...", "tag": "...", "nth": 1, "fix": "..."}]}]}

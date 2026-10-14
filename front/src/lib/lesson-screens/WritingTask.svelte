@@ -83,6 +83,7 @@
 			...ruleChain,
 			{
 				llmGrade: screen.llmGrade,
+				llmFix: screen.llmFix,
 				maxTypos: screen.maxTypos,
 				capitalIsError: screen.capitalIsError,
 				autoCheck: screen.autoCheck
@@ -155,6 +156,7 @@
 		const text = paragraph ? essayText : lines.join('\n');
 		const result = await gradeLesson(text, rules, {
 			question,
+			fixes: rules.llmFix,
 			notes: screen.gradingNotes,
 			check: { prompt: question, extraWords: wordBank },
 			minWords: paragraph ? screen.minWords : undefined,

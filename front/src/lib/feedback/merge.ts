@@ -3,7 +3,7 @@
 import type { LlmMark, Mark } from './types';
 
 /** LLM tags that carry a `fix`: the UI shows it in the text (see MarkedText). */
-const FIX_TAGS = new Set(['wrong-word', 'missing-word']);
+const FIX_TAGS = new Set(['wrong-word', 'word-choice', 'missing-word']);
 
 type Fix = { start: number; end: number; with: string };
 

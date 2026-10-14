@@ -19,7 +19,7 @@ export async function postGrade<T>(body: GradeRequest): Promise<T> {
 export async function gradeLesson(
 	text: string,
 	rules: RuleSet,
-	task: Layer1Options & { question: string; notes?: string }
+	task: Layer1Options & { question: string; notes?: string; fixes?: boolean }
 ): Promise<Feedback> {
 	const l1 = await runLayer1(text, rules, task);
 	if (l1.gate) return { stage: 'l1-gate', pass: false, gate: l1.gate, marks: l1.marks };
@@ -31,7 +31,8 @@ export async function gradeLesson(
 			kind: 'lesson',
 			question: task.question,
 			text: corrected.text,
-			notes: task.notes
+			notes: task.notes,
+			fixes: task.fixes
 		});
 	} catch {
 		// LLM down or rate-limited: the local marks alone, no verdict

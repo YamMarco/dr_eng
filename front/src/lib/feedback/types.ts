@@ -53,6 +53,8 @@ export type SingleRequest = {
 	text: string;
 	/** Editor's best answers / pitfalls (`gradingNotes`). */
 	notes?: string;
+	/** lesson only: false = the LLM leaves out `fix` (default true). */
+	fixes?: boolean;
 	/** essay only */
 	mechanics?: MechanicsCount;
 };

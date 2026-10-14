@@ -22,7 +22,7 @@
 		return mergeMarks([], locateMarks(text, applyFixes(text, []), llm));
 	}
 
-	/** One sample answer per tag; `fix` only where the model sends one (wrong-word, missing-word). */
+	/** One sample answer per tag; `fix` only where the model sends one (wrong-word, word-choice, missing-word). */
 	const SAMPLES: Record<string, { text: string; marks: LlmMark[] }> = {
 		'off-topic': { text: 'My favourite food is pizza with cheese.', marks: [] },
 		incomplete: {
@@ -47,7 +47,7 @@
 		},
 		'word-choice': {
 			text: 'Volunteering makes a big benefit for the community.',
-			marks: [{ span: 'makes', tag: 'word-choice' }]
+			marks: [{ span: 'makes', tag: 'word-choice', fix: 'brings' }]
 		},
 		tense: {
 			text: 'Last year I volunteer in a school.',

@@ -356,11 +356,17 @@ export const writingTaskSchema = z
 			.describe(
 				'Lesson mode: after the local checks pass, an LLM judges the answer against the prompt (pass/fail + marked errors). Overrides the section / lesson / module rule.'
 			),
+		llmFix: z
+			.boolean()
+			.optional()
+			.describe(
+				'With llmGrade: the LLM also returns the right word for a wrong / badly chosen / missing word and the student sees it in the text. Unset = inherited (default true).'
+			),
 		rulesLock: z
 			.boolean()
 			.optional()
 			.describe(
-				"Keeps this screen's own rule fields (llmGrade, maxTypos, capitalIsError, autoCheck) when the editor applies a module / section / lesson rule to everything below."
+				"Keeps this screen's own rule fields (llmGrade, llmFix, maxTypos, capitalIsError, autoCheck) when the editor applies a module / section / lesson rule to everything below."
 			),
 		gradingNotes: z
 			.string()

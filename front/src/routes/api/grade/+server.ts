@@ -28,6 +28,7 @@ const body = z.discriminatedUnion('kind', [
 		question,
 		text,
 		notes,
+		fixes: z.boolean().optional(),
 		mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional()
 	}),
 	z.object({

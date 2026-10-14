@@ -16,7 +16,7 @@ typed text ───────────────────────
 
 ## Rules (Layer 1 settings)
 
-`RuleSet`: `llmGrade`, `maxTypos`, `capitalIsError`, `autoCheck`. Levels **module → section → lesson → screen**; the nearest level that sets a field wins (resolved when read, never copied down).
+`RuleSet`: `llmGrade`, `llmFix`, `maxTypos`, `capitalIsError`, `autoCheck`. Levels **module → section → lesson → screen**; the nearest level that sets a field wins (resolved when read, never copied down).
 
 - Module / section / lesson values: `front/src/lib/content/rules.json`. Screen values: the `writing-task` fields themselves.
 - Editor: `/edit` → **⚙️ כללי בדיקה** (pick module / section / lesson), and on each writing-task screen the **כללי בדיקה** group. Unset rows show the inherited value.
@@ -34,7 +34,7 @@ A lesson task is answered once, like every other question. Wrong → the student
 
 - Client sends `{ kind, question, text (typo-corrected), notes?, mechanics? }`, or for reading `{ kind, passage, items: [{ id, question, paragraph?, points, text, notes? }] }`; anonymous, no user info. Per-IP in-memory rate limit (30 / 5 min); per-student auth is still needed before a public launch.
 - Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points), `essay` → `grade-essay` (official rubric). Direct Gemini via `GEMINI_API_KEY` in `front/.env.local` when no gateway is set; every model overloaded → one more round after 2 s; a cut-off JSON reply → one retry.
-- The LLM returns only tags + quoted spans, no prose: `{"pass": bool, "marks": [{"span", "tag", "nth", "fix"}]}`. `fix` only on `wrong-word` (the word meant: span shown struck through with the fix above it) and `missing-word` (span = word after the gap; the fix is ghosted in before it); it becomes the mark's `suggestions`. Whole-answer tags (`off-topic`, `incomplete`) have an empty span and show as a general line. A fatal tag forces fail. Spans are mapped back onto the student's original text.
+- The LLM returns only tags + quoted spans, no prose: `{"pass": bool, "marks": [{"span", "tag", "nth", "fix"}]}`. `fix` only on `wrong-word` / `word-choice` (the word meant: span shown struck through with the fix above it) and `missing-word` (span = word after the gap; the fix is ghosted in before it); it becomes the mark's `suggestions`. The `llmFix` rule (default on) turns it off per level: the request sends `fixes: false`, the user message adds `FIXES: off`, and the server drops any `fix` anyway (lessons only; exams always on). Whole-answer tags (`off-topic`, `incomplete`) have an empty span and show as a general line. A fatal tag forces fail. Spans are mapped back onto the student's original text.
 - Tags: `feedback/tags.ts` (ids), the prompt files (English descriptions), `i18n` `feedback.tag` (Hebrew). `tests/feedback.test.ts` fails if they drift apart.
 
 ## Exams
@@ -84,7 +84,7 @@ I think students should wear uniforms because it make everyone equal.
 | Exam grading                       | `feedback/gradeExam.ts`, `feedback/exam.ts` (pure), `quiz/scoring.ts` `applyGrades`, `quiz/ExamAnswerReview.svelte`   |
 | Rule levels above the screen       | `content/rules.json`, `content/rules.ts`                                                                              |
 | Rules editor                       | `content-edit/RulesPanel.svelte`, `fields/RuleFields.svelte`, `rulesStore.svelte.ts`, `routes/api/content-edit/rules` |
-| Per-screen fields                  | `llmGrade`, `maxTypos`, `capitalIsError`, `autoCheck`, `rulesLock`, `gradingNotes` on `writing-task`                  |
+| Per-screen fields                  | `llmGrade`, `llmFix`, `maxTypos`, `capitalIsError`, `autoCheck`, `rulesLock`, `gradingNotes` on `writing-task`                  |
 
 Debug showcase of every layer-2 output (all tags, verdict lines, exam report; static samples through the real components): the flask button on the lessons page (`writing-lab/WritingLab.svelte`). Add a sample there when adding a tag.
 
