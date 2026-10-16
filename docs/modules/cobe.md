@@ -1,12 +1,22 @@
 # COBE (oral exam)
 
-Present state only. Module id `cobe`, on the unit 4 and unit 5 paths (`curriculum.ts`): one module, so both units show the same lessons and share progress (the 4- and 5-point COBE have the same three parts). Lesson ids are `cobe-` prefixed. Content: `front/src/lib/content/cobe/cobe-<N>.ts`; skill row "דיבור" (`skill: 'speaking'`).
+Present state only. Module id `cobe`, on the unit 4 and unit 5 paths (`curriculum.ts`): one module, so both units show the same lessons and share progress. Lesson ids are `cobe-` prefixed. Content: `front/src/lib/content/cobe/cobe-<N>.ts`; skill row "דיבור" (`skill: 'speaking'`).
 
 ## Sources
 
-- **Truth source:** `docs/material/cobe/` lesson-plan set (`cobe_lesson_plan.pdf`, `COBE Exam Lesson Plan.pdf`, `cobe_student_worksheets.pdf`): the 3-step model, the 3 simulations, the peer-feedback criteria.
-- **Exam structure:** Ministry 4-point handbook, Dec 2024, pp. 15-19 (`ministry-4points-booklet-2025.pdf`). Computerized; every answer is ONE recording. Part A personal response (25 pts, choose 1 of 2 topics, a set of questions, 2-3 min); Part B project (25 pts, a set of questions, 1-2 min speaking); Part C audio-visual prompt (50 pts, 2 sets: understanding, interpretation, 4-5 min).
-- **Older, question bank only:** `COBE_workbook.pdf` (24 Part A topics with vocabulary and questions, 25 project questions). Its model answers contain errors; its exam rules are outdated. Never quote rules from it (20-second minimum, pause penalties, criteria weights, no notes, headphones).
+- **Exam rules (official, overrides everything):** Ministry "Table of Specifications, Rubrics and Guidelines for 4 and 5 Point COBE", updated 15-09-2026 for 2027 (`docs/material/cobe/COBE20232024TableofSpecsANDRubrics.pdf`), stored as data in `front/src/lib/content/rubrics/cobe.json` (`cobeRubric`).
+- **Teaching (truest):** the lesson-plan set (`cobe_lesson_plan.pdf`, `COBE Exam Lesson Plan.pdf`, `cobe_student_worksheets.pdf`): the 3-step model, the 3 simulations, the peer-feedback criteria.
+- **Older, question bank only:** `COBE_workbook.pdf` (24 Part A topics with vocabulary and questions, 25 project questions); its model answers contain errors.
+
+## The exam
+
+Three parts, a set of two questions each, one recording per set (max 2 files), 30 minutes, no notes. A personal response 25 (choose 1 of 2 topics), B project 25 (1-2 min), C clip 50 (set 1 understanding, set 2 interpretation). Deductions: under 20 s = 0; Part B under a minute loses 20% / 50% of every criterion; answering one question of a set halves Topic Development; Part C needs at least one answer.
+
+**4 vs 5 points** differ only in grading: weights (topic / delivery / vocabulary / language) 60/10/20/10 vs 50/15/20/15, and stricter 5-point descriptors. The lessons and the mock exam are shared; the report grades with the student's level (`profile.units`, undecided = 4).
+
+## Grading a recording
+
+`feedback/speaking.ts` `gradeSpeaking(rubric, {level, part, points, seconds}, {bands, answeredAll})`: each criterion is judged in a band (76-100 / 55-75 / 26-54 / 0-25, counted at its midpoint), weighted by level, then the deductions. Pure; tests in `tests/cobe.test.ts`. Today the judgement comes from the student (self-assessment in the exam report, `quiz/SpeakingReview.svelte`); the voice-LLM grader will supply the same judgement.
 
 ## Part B - Project (cobe-1)
 
@@ -33,11 +43,17 @@ Each lesson: recognise (cloze-pick, mcq), a `video` screen, then a `speak` answe
 
 The `speak` prompts are generic ("the people in the clip"); rewrite them once each lesson has its clip.
 
+## Mock exam (quiz/cobe)
+
+`cobe-exam-1`: A (two topics, one recording), B (project, 90 s target), C (clip placeholder + two sets), 30 minutes, 4 recordings x 25 points. Each recording is a manual item (`speak` with `part` + `points`); the report holds the result as pending until every recording is judged, then totals and pass / fail.
+
 ## Open
 
 - Nothing played by a student yet.
-- Part A (personal response) has no nodes.
-- Part C clips: none yet. Add `src` to the two `video` screens (`/edit` -> the screen -> clip link), then fit the questions to each clip.
+- Part A (personal response) has no lessons.
+- Part C clips: none yet (lessons and the mock exam). Add `src` to the `video` screens in `/edit`, then fit the questions to each clip.
+- Recordings live in memory: after a reload the report can't play them back (scores stay).
+- The "Part C needs at least one answer" rule is not enforced in code.
 - Drafts in the self-check screens are not saved, so the simulation cannot show the student's own hook back.
-- Arabic content translations (`translations/ar.json`) missing for cobe-1; titles are in.
-- Model-graded speaking (speech-to-text + feedback) not built; see `feedback-framework.md` if added.
+- Arabic content translations (`translations/ar.json`) missing for cobe-1 / cobe-2; titles are in. Report strings (`cobeReview`) are Hebrew only.
+- Voice-LLM grading not built; it plugs into `gradeSpeaking` (see `feedback-framework.md` when added).

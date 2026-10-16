@@ -123,6 +123,11 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 			return { earned: 0, max: screen.points ?? 0, auto: false };
 		case 'self-check':
 			return { earned: 0, max: 0, auto: false };
+		case 'speak':
+			// Graded in the report against the COBE rubric (feedback/speaking.ts).
+			return screen.points
+				? { earned: 0, max: screen.points, auto: false }
+				: { earned: 0, max: 0, auto: true };
 		default:
 			return { earned: 0, max: 0, auto: true };
 	}
@@ -159,7 +164,9 @@ export function scoreQuiz(quiz: QuizNode, answers: Record<string, unknown>): Qui
 	}
 
 	const passThreshold = quiz.options.passThreshold ?? 0.6;
-	const passed = auto.max === 0 || auto.earned / auto.max >= passThreshold;
+	// Nothing auto-scored: not passed until the open answers are graded.
+	const passed =
+		auto.max === 0 ? manual.items.length === 0 : auto.earned / auto.max >= passThreshold;
 
 	return { auto, manual, byPart, passed };
 }
@@ -173,6 +180,8 @@ export function applyGrades(
 ): QuizScore {
 	const byPart = structuredClone(score.byPart);
 	const manualIds = new Set(score.manual.items.map((i) => i.screenId));
+	// A recording not graded yet (COBE self-assessment) leaves the result open.
+	if ([...manualIds].some((id) => !grades[id])) return { ...score, total: undefined };
 	let earned = score.auto.earned;
 	for (const part of quiz.parts) {
 		const row = byPart[part.id];

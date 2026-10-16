@@ -133,10 +133,15 @@ export const speakSchema = z
 		checklist: z
 			.array(z.string())
 			.optional()
-			.describe('Items the student ticks about their own recording. Not scored.')
+			.describe('Items the student ticks about their own recording. Not scored.'),
+		part: z
+			.enum(['A', 'B', 'C'])
+			.optional()
+			.describe('Exams: the COBE part, for the rubric length rules (Part B needs a full minute).'),
+		points: points.optional()
 	})
 	.describe(
-		'The student records one spoken answer in a single take (no pause), listens back and self-checks. Recordings stay on the device. Without a microphone it runs as a stopwatch. Never scored.'
+		'The student records one spoken answer in a single take (no pause), listens back and self-checks. Recordings stay on the device. Without a microphone it runs as a stopwatch. Lessons: never scored. Exams: graded in the report against the COBE rubric (self-assessment for now).'
 	);
 
 export const videoSchema = z

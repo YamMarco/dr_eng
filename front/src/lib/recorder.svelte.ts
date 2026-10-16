@@ -4,6 +4,9 @@
 
 export type RecorderState = 'idle' | 'starting' | 'recording' | 'done';
 
+/** A finished take, as an exam keeps it between screens. */
+export type Take = { seconds: number; audioUrl?: string };
+
 export class Recorder {
 	state = $state<RecorderState>('idle');
 	elapsedMs = $state(0);
@@ -17,6 +20,22 @@ export class Recorder {
 	#chunks: Blob[] = [];
 	#startedAt = 0;
 	#tick?: ReturnType<typeof setInterval>;
+	#onStopped?: () => void;
+	/** Exams keep the audio after the screen unmounts (it's played back in the report). */
+	#keepAudio: boolean;
+
+	constructor({ keepAudio = false, take }: { keepAudio?: boolean; take?: Take } = {}) {
+		this.#keepAudio = keepAudio;
+		if (take) {
+			this.state = 'done';
+			this.elapsedMs = take.seconds * 1000;
+			this.audioUrl = take.audioUrl;
+		}
+	}
+
+	get take(): Take {
+		return { seconds: this.elapsedMs / 1000, audioUrl: this.audioUrl };
+	}
 
 	/** Starts a new take; a previous one is discarded (the exam keeps only the last). */
 	async start() {
@@ -33,12 +52,18 @@ export class Recorder {
 		this.state = 'recording';
 	}
 
-	stop() {
+	/** Resolves once the take's audio is ready. */
+	async stop() {
 		if (this.state !== 'recording') return;
 		clearInterval(this.#tick);
 		this.elapsedMs = performance.now() - this.#startedAt;
-		if (this.#media?.state === 'recording') this.#media.stop();
 		this.state = 'done';
+		const media = this.#media;
+		if (media?.state === 'recording')
+			await new Promise<void>((resolve) => {
+				this.#onStopped = resolve;
+				media.stop();
+			});
 	}
 
 	/** Call on unmount: stops the microphone and frees the audio. */
@@ -47,7 +72,7 @@ export class Recorder {
 		if (this.#media) this.#media.onstop = null;
 		if (this.#media?.state === 'recording') this.#media.stop();
 		this.#releaseMic();
-		this.#clearTake();
+		if (!this.#keepAudio) this.#clearTake();
 		this.state = 'idle';
 	}
 
@@ -66,6 +91,7 @@ export class Recorder {
 			media.onstop = () => {
 				this.audioUrl = URL.createObjectURL(new Blob(this.#chunks, { type: media.mimeType }));
 				this.#releaseMic();
+				this.#onStopped?.();
 			};
 			this.#media = media;
 		} catch {

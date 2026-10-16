@@ -1,7 +1,8 @@
 <script lang="ts">
-	// COBE practice: one spoken answer in a single take, like the exam. The
-	// primary button starts, stops, then moves on; "record again" replaces the
-	// take. Not scored - the student listens back and ticks the checklist.
+	// COBE: one spoken answer in a single take, like the exam. The primary
+	// button starts, stops, then moves on; "record again" replaces the take.
+	// Lessons: not scored, the student listens back and ticks the checklist.
+	// Exams: the take is the answer (graded in the report), no feedback here.
 	import { onDestroy } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { Mic, RotateCcw } from '@lucide/svelte';
@@ -10,15 +11,20 @@
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import SpeakButtons from './SpeakButtons.svelte';
 	import SelfReview from './SelfReview.svelte';
-	import { Recorder } from '$lib/recorder.svelte';
+	import { Recorder, type Take } from '$lib/recorder.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { getScreenMode } from './mode.svelte';
+	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+
+	const mode = getScreenMode();
+	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
 
 	let {
 		screen,
 		onAdvance,
 		// eslint-disable-next-line no-useless-assignment
 		disabled = $bindable(false),
-		// eslint-disable-next-line no-useless-assignment
+		 
 		label = $bindable('')
 	}: {
 		screen: SpeakScreen;
@@ -28,7 +34,11 @@
 	} = $props();
 
 	const t = i18n.dict.speak;
-	const recorder = new Recorder();
+	// Exams keep the take (and its audio) when the student moves between questions.
+	const recorder =
+		mode === 'quiz'
+			? new Recorder({ keepAudio: true, take: answerSlot!.get() as Take | undefined })
+			: new Recorder();
 	onDestroy(() => recorder.destroy());
 
 	let seconds = $derived(Math.floor(recorder.elapsedMs / 1000));
@@ -49,14 +59,31 @@
 		return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 	}
 
-	export function primaryAction() {
-		if (recorder.state === 'idle') recorder.start();
-		else if (recorder.state === 'recording') recorder.stop();
-		else if (recorder.state === 'done') onAdvance();
+	/** Stops the take; in an exam it becomes this question's answer. */
+	async function stop() {
+		await recorder.stop();
+		answerSlot?.set(recorder.take);
+	}
+
+	function toggle() {
+		if (recorder.state === 'recording') void stop();
+		else if (recorder.state === 'idle') void recorder.start();
+	}
+
+	export async function primaryAction() {
+		if (mode === 'quiz') {
+			if (recorder.state === 'recording') await stop();
+			onAdvance();
+			return;
+		}
+		if (recorder.state === 'done') onAdvance();
+		else toggle();
 	}
 </script>
 
-<ExerciseKindBadge label={i18n.dict.exerciseKind.speak} />
+{#if mode === 'lesson'}
+	<ExerciseKindBadge label={i18n.dict.exerciseKind.speak} />
+{/if}
 
 <div class="flex items-start gap-3 rounded-2xl bg-accent-soft p-3">
 	<div class="min-w-0 flex-1 text-lg leading-relaxed font-semibold" dir="ltr">
@@ -73,7 +100,7 @@
 	<!-- Same action as the primary button: start, then stop. -->
 	<button
 		type="button"
-		onclick={primaryAction}
+		onclick={toggle}
 		disabled={recorder.state === 'starting' || recorder.state === 'done'}
 		aria-label={label}
 		class="relative flex h-16 w-16 items-center justify-center rounded-full transition duration-200 active:scale-95 disabled:active:scale-100 {recorder.state ===
@@ -111,13 +138,15 @@
 
 {#if recorder.state === 'done'}
 	<div in:fly={{ y: 10, duration: 250 }}>
-		<p
-			class="mt-4 rounded-2xl px-4 py-3 text-sm font-semibold {reached
-				? 'bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'
-				: 'bg-miss-soft text-miss'}"
-		>
-			{reached ? t.reached(clock(seconds)) : t.short(clock(seconds))}
-		</p>
+		{#if mode === 'lesson'}
+			<p
+				class="mt-4 rounded-2xl px-4 py-3 text-sm font-semibold {reached
+					? 'bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'
+					: 'bg-miss-soft text-miss'}"
+			>
+				{reached ? t.reached(clock(seconds)) : t.short(clock(seconds))}
+			</p>
+		{/if}
 
 		{#if recorder.audioUrl}
 			<p class="mt-4 mb-1 text-xs font-bold text-muted">{t.listenBack}</p>
@@ -136,6 +165,8 @@
 			{t.again}
 		</button>
 
-		<SelfReview modelAnswer={screen.modelAnswer} checklist={screen.checklist} />
+		{#if mode === 'lesson'}
+			<SelfReview modelAnswer={screen.modelAnswer} checklist={screen.checklist} />
+		{/if}
 	</div>
 {/if}

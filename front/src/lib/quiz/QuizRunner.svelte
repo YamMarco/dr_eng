@@ -190,6 +190,14 @@
 		persist();
 	}
 
+	/** A COBE recording judged in the report: folded in like an LLM grade. */
+	function selfGrade(screenId: string, grade: ExamGrade) {
+		if (!autoScore) return;
+		grades = { ...grades, [screenId]: grade };
+		score = applyGrades(quiz, autoScore, grades);
+		persist();
+	}
+
 	function retryGrading() {
 		void gradeOpen(new Set(Object.keys(grades).filter((id) => grades[id].status === 'failed')));
 	}
@@ -289,7 +297,16 @@
 
 <div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
 	{#if submitted && score}
-		<QuizReport {quiz} {score} {grades} {grading} onRetry={retryGrading} onBack={onExit} />
+		<QuizReport
+			{quiz}
+			{score}
+			{grades}
+			{grading}
+			{answers}
+			onGrade={selfGrade}
+			onRetry={retryGrading}
+			onBack={onExit}
+		/>
 	{:else}
 		<AppBar title={i18n.title(quiz.id)} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
 			{#snippet trailing()}

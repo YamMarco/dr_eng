@@ -2,6 +2,9 @@
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import ExamAnswerReview from './ExamAnswerReview.svelte';
+	import SpeakingReview from './SpeakingReview.svelte';
+	import type { Take } from '$lib/recorder.svelte';
+	import { profile } from '$lib/profile.svelte';
 	import { screensWithIds } from './screenIds';
 	import type { QuizNode } from './types';
 	import type { QuizScore } from './scoring';
@@ -12,6 +15,8 @@
 		score,
 		grades = {},
 		grading = false,
+		answers = {},
+		onGrade,
 		onRetry,
 		onBack
 	}: {
@@ -21,6 +26,10 @@
 		grades?: Record<string, ExamGrade>;
 		/** Open answers are being graded right now. */
 		grading?: boolean;
+		/** The submitted answers (COBE recordings are played back from here). */
+		answers?: Record<string, unknown>;
+		/** A recording judged in the report (COBE self-assessment). */
+		onGrade?: (screenId: string, grade: ExamGrade) => void;
 		/** Re-grade the answers whose grading failed. */
 		onRetry?: () => void;
 		onBack: () => void;
@@ -34,17 +43,26 @@
 		new Map(quiz.parts.flatMap((part) => screensWithIds(part)).map((e, i) => [e.id, i + 1]))
 	);
 	const headline = $derived(score.total ?? score.auto);
+	// COBE: the student's level picks the rubric's weights.
+	const level = $derived(profile.value?.units === '5' ? '5' : '4');
+	const hasSpeaking = $derived(
+		score.manual.items.some((i) => screens.get(i.screenId)?.type === 'speak')
+	);
+	// COBE before every recording is judged: no pass / fail yet.
+	const pending = $derived(hasSpeaking && !score.total);
 	const anyFailed = $derived(Object.values(grades).some((g) => g.status === 'failed'));
 </script>
 
 <main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-10 pb-12">
 	<div class="flex flex-col items-center text-center">
 		<span
-			class="flex h-16 w-16 items-center justify-center rounded-2xl {score.passed
-				? 'bg-brand-soft text-brand'
-				: 'bg-miss-soft text-miss'}"
+			class="flex h-16 w-16 items-center justify-center rounded-2xl {pending
+				? 'bg-line/60 text-ink/60'
+				: score.passed
+					? 'bg-brand-soft text-brand'
+					: 'bg-miss-soft text-miss'}"
 		>
-			{#if score.passed}
+			{#if score.passed && !pending}
 				<svg
 					viewBox="0 0 24 24"
 					fill="none"
@@ -75,7 +93,11 @@
 			{/if}
 		</span>
 		<h1 class="mt-4 text-2xl font-extrabold">
-			{score.passed ? i18n.dict.quiz.passedTitle : i18n.dict.quiz.failedTitle}
+			{pending
+				? i18n.dict.cobeReview.pendingTitle
+				: score.passed
+					? i18n.dict.quiz.passedTitle
+					: i18n.dict.quiz.failedTitle}
 		</h1>
 		{#if headline.max > 0}
 			<p class="mt-4 text-lg font-bold text-brand-dark tabular" dir="ltr">
@@ -98,7 +120,9 @@
 				<li class="flex items-center justify-between py-2 text-sm first:pt-0 last:pb-0">
 					<span class="font-semibold">{i18n.title(`${quiz.id}.${part.id}`)}</span>
 					{#if partScore && partScore.max > 0}
-						<span class="tabular" dir="ltr">{partScore.earned}/{partScore.max}</span>
+						<span class="tabular" dir="ltr"
+							>{pending && !partScore.auto ? '-' : partScore.earned}/{partScore.max}</span
+						>
 					{:else}
 						<span class="text-muted">{i18n.dict.quiz.manualTitle}</span>
 					{/if}
@@ -110,7 +134,9 @@
 	{#if score.manual.items.length > 0}
 		<section class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
 			<div class="mb-3 flex items-center justify-between gap-3">
-				<h2 class="text-base font-bold">{i18n.dict.quiz.openAnswersTitle}</h2>
+				<h2 class="text-base font-bold">
+					{hasSpeaking ? i18n.dict.cobeReview.title : i18n.dict.quiz.openAnswersTitle}
+				</h2>
 				{#if anyFailed && !grading && onRetry}
 					<button
 						type="button"
@@ -119,18 +145,34 @@
 					>
 				{/if}
 			</div>
+			{#if hasSpeaking}
+				<p class="mb-3 text-sm leading-relaxed text-muted">{i18n.dict.cobeReview.intro}</p>
+			{/if}
 			<ul class="flex flex-col divide-y divide-line/70">
 				{#each score.manual.items as item (item.screenId)}
 					{@const screen = screens.get(item.screenId)}
 					{@const grade = grades[item.screenId]}
-					<ExamAnswerReview
-						label={grade?.kind === 'essay'
-							? i18n.dict.quiz.essayLabel
-							: i18n.dict.quiz.questionProgress(numbers.get(item.screenId) ?? 0, numbers.size)}
-						prompt={screen && 'prompt' in screen ? String(screen.prompt) : ''}
-						points={item.points}
-						{grade}
-					/>
+					{#if screen?.type === 'speak' && onGrade}
+						<SpeakingReview
+							label={i18n.dict.quiz.questionProgress(numbers.get(item.screenId) ?? 0, numbers.size)}
+							prompt={screen.prompt}
+							part={screen.part ?? 'A'}
+							points={item.points}
+							{level}
+							take={answers[item.screenId] as Take | undefined}
+							{grade}
+							onGrade={(g) => onGrade(item.screenId, g)}
+						/>
+					{:else}
+						<ExamAnswerReview
+							label={grade?.kind === 'essay'
+								? i18n.dict.quiz.essayLabel
+								: i18n.dict.quiz.questionProgress(numbers.get(item.screenId) ?? 0, numbers.size)}
+							prompt={screen && 'prompt' in screen ? String(screen.prompt) : ''}
+							points={item.points}
+							{grade}
+						/>
+					{/if}
 				{/each}
 			</ul>
 		</section>

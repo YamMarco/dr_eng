@@ -1,3 +1,5 @@
+import type { SpeakingJudgement } from './speaking';
+
 /** One flagged spot in the student's text - from the local checks (l1) or the LLM (l2). */
 export type Mark = {
 	/** Layer-1 rule id or Layer-2 tag; the UI looks the Hebrew text up by it. */
@@ -83,7 +85,7 @@ export type GradeRequest = SingleRequest | ReadingRequest;
 
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */
 export type ExamGrade = {
-	kind: 'reading' | 'essay';
+	kind: 'reading' | 'essay' | 'speaking';
 	/** failed = the LLM was unavailable; counts 0 until re-graded. */
 	status: 'graded' | 'failed';
 	earned: number;
@@ -98,4 +100,10 @@ export type ExamGrade = {
 	criteria?: Record<string, number>;
 	lengthDeduction?: number;
 	validWords?: number;
+	/** speaking: percent off every criterion for the recording's length. */
+	lengthPercentOff?: number;
+	/** speaking: the recording's length. */
+	seconds?: number;
+	/** speaking: the bands the criteria were judged in (see feedback/speaking.ts). */
+	judgement?: SpeakingJudgement;
 };

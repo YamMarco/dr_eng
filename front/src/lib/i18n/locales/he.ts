@@ -330,6 +330,27 @@ export const he = {
 		wordCount: (n: number) => `${n} מילים`,
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
 	},
+	cobeReview: {
+		title: 'בדיקת ההקלטות',
+		pendingTitle: 'בדקו את ההקלטות כדי לקבל ציון',
+		intro:
+			'הקשיבו לכל הקלטה ובחרו לכל קריטריון את הרמה שמתאימה לה לפי המחוון הרשמי. הציון מחושב לפי המשקלות וההורדות של משרד החינוך.',
+		criterion: {
+			topic: 'פיתוח התוכן',
+			delivery: 'בהירות ושטף',
+			vocabulary: 'אוצר מילים',
+			language: 'מבנים ודקדוק'
+		} as Record<string, string>,
+		band: { high: 'גבוה', mid: 'בינוני', low: 'נמוך', none: 'חלש' } as Record<string, string>,
+		answeredAll: 'עניתי על כל השאלות בסט',
+		pickAll: 'בחרו רמה לכל קריטריון כדי לקבל ציון.',
+		notRecorded: 'לא הוקלטה תשובה.',
+		audioGone: 'ההקלטה נשמרת רק עד שסוגרים את הדף.',
+		seconds: (s: number) => `${s} שניות`,
+		tooShort: (min: number) => `פחות מ-${min} שניות - לפי המחוון החלק מקבל 0.`,
+		lengthOff: (p: number) => `הורדה של ${p}% מכל הקריטריונים על אורך ההקלטה (פחות מדקה)`,
+		setOff: 'עניתם רק על חלק מהשאלות: חצי מהניקוד על פיתוח התוכן'
+	},
 	video: {
 		placeholderTitle: 'כאן יופיע הקליפ',
 		placeholderNote: 'הקליפ עוד לא הועלה. בינתיים אפשר לענות על השאלות כתרגול.'

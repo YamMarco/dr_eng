@@ -1,0 +1,322 @@
+{
+	"id": "cobe",
+	"title": "COBE - Computerized Oral Bagrut Exam Rubrics",
+	"source": "Ministry of Education, Table of Specifications, Rubrics and Guidelines for 4 and 5 Point COBE, updated 15-09-2026 for Winter - Summer 2027 (docs/material/cobe/COBE20232024TableofSpecsANDRubrics.pdf)",
+	"examNumbers": { "4": "016486", "5": "016586" },
+	"timeLimitMinutes": 30,
+	"parts": [
+		{
+			"id": "A",
+			"name": "Personal Response to a Prompt",
+			"points": 25,
+			"timeFrame": "2-3 minutes for listening, viewing questions and answering",
+			"description": "A choice of two topics. The student chooses one and responds to a set of thematically related questions in detail, in ONE recording (1-2 audio files).",
+			"topics": [
+				"Advertising",
+				"Animals",
+				"Education",
+				"Fame and celebrities",
+				"Favorite books and movies",
+				"Food",
+				"Free time activities",
+				"Friendship",
+				"Future plans",
+				"Games",
+				"Health",
+				"Hobbies and habits / routines",
+				"Holidays and customs",
+				"Hometown",
+				"Languages",
+				"Music",
+				"Personal belongings",
+				"Personal strengths and weaknesses",
+				"Professional ambitions",
+				"Reflection on personal experiences",
+				"Respect",
+				"Role models",
+				"School",
+				"Sports",
+				"Suggesting individual / community change",
+				"Technology",
+				"Transportation",
+				"Vacations",
+				"Volunteering"
+			]
+		},
+		{
+			"id": "B",
+			"name": "Project / Bridging Project Presentation - Responding to a Prompt",
+			"points": 25,
+			"timeFrame": "1-2 minutes of speaking time; a minimum of one minute is required",
+			"description": "A set of questions about the student's project, answered in depth in ONE recording (1-2 audio files).",
+			"topics": [
+				"Topic and reason for choice",
+				"What was learned",
+				"What they wanted to learn",
+				"Learning skills improved",
+				"Interesting facts learned",
+				"Surprising information",
+				"Future use of information",
+				"Redoing it if opportunity arose",
+				"Topic related to literary piece",
+				"How the project influenced them",
+				"How the project helped them understand the literary text better",
+				"Reflections on: challenges of the work",
+				"Reflections on: teamwork vs. individual work",
+				"Reflections on: finding information on the topic",
+				"Reflections on: writing up their project",
+				"Reflections on: learning and language skills",
+				"Reflections on: personal achievement and feeling"
+			]
+		},
+		{
+			"id": "C",
+			"name": "Response to an Audio-Visual Prompt",
+			"points": 50,
+			"timeFrame": "4-5 minutes for viewing and answering all questions (includes listening to the questions and viewing the clip)",
+			"description": "One clip (a conversation, an interview, a talk, a presentation), then TWO sets of questions about what is seen and heard. Level One (25 points): basic understanding of events and content. Level Two (25 points): understanding and interpretation of content. Each set is answered in depth.",
+			"topics": [
+				"Themes: formal and informal social interactions in a variety of situations",
+				"Themes: various social and/or personal dilemmas, problems, or conflicts",
+				"Themes: various formats of interaction and presentation",
+				"Themes: reacting to lectures and speeches",
+				"Questions: Wh questions",
+				"Questions: making plans and arrangements",
+				"Questions: comparing and contrasting",
+				"Questions: persuading",
+				"Questions: making suggestions",
+				"Questions: solving problems",
+				"Questions: making decisions",
+				"Questions: giving instructions and how-to guides",
+				"Questions: sequencing",
+				"Questions: summarizing",
+				"Questions: distinguishing and/or reacting to different perspectives",
+				"Questions: using given information for different purposes"
+			]
+		}
+	],
+	"bands": [
+		{ "id": "high", "range": [76, 100] },
+		{ "id": "mid", "range": [55, 75] },
+		{ "id": "low", "range": [26, 54] },
+		{ "id": "none", "range": [0, 25] }
+	],
+	"levels": {
+		"4": [
+			{
+				"id": "topic",
+				"name": "Topic Development (Extended answers)",
+				"weight": 60,
+				"descriptors": {
+					"high": [
+						"are mostly relevant to topic asked",
+						"show understanding of key information, questions asked and prompts",
+						"are logical and well organized",
+						"are well developed (including detailed explanations / examples to support answers)"
+					],
+					"mid": [
+						"are partially relevant to topic asked",
+						"show partial understanding of key information, questions asked and prompts",
+						"are mostly logical and well organized",
+						"are mostly developed (some details, some explanations / examples to support answers)"
+					],
+					"low": [
+						"are minimally relevant to topic asked",
+						"show minimal understanding of key information, questions and prompts",
+						"are partially organized",
+						"lack details (not enough or limited explanations / examples information to support answer)"
+					],
+					"none": [
+						"irrelevant to topic",
+						"show lack of understanding of key information, questions and prompts",
+						"lack organization",
+						"lack details (no explanations and examples)"
+					]
+				}
+			},
+			{
+				"id": "delivery",
+				"name": "Delivery (Clarity and Fluency)",
+				"weight": 10,
+				"descriptors": {
+					"high": [
+						"is mostly comprehensible (pace, intonation and word stress allow for clear and easy comprehension)",
+						"has some hesitations"
+					],
+					"mid": [
+						"is partially comprehensible (pace, intonation and word stress only allow for partial comprehension)",
+						"has many hesitations"
+					],
+					"low": [
+						"is minimally comprehensible (pace, intonation and word stress make it difficult to comprehend)",
+						"is mostly hesitant"
+					],
+					"none": [
+						"is incomprehensible (pace, intonation, and word stress are unintelligible)",
+						"is extremely hesitant"
+					]
+				}
+			},
+			{
+				"id": "vocabulary",
+				"name": "Vocabulary",
+				"weight": 20,
+				"descriptors": {
+					"high": ["mostly correct and varied use of appropriate words, chunks, and expressions"],
+					"mid": [
+						"partially correct and mostly varied use of appropriate words, chunks, and expressions"
+					],
+					"low": [
+						"minimally correct and some inappropriate use or repetition of words, chunks, and expressions"
+					],
+					"none": ["mostly incorrect and repetitive use of words, chunks, and expressions"]
+				}
+			},
+			{
+				"id": "language",
+				"name": "Language",
+				"weight": 10,
+				"descriptors": {
+					"high": [
+						"mostly correct use of appropriate language structures",
+						"only the use of English (other than religious holidays, national celebrations and culturally bound phrases)"
+					],
+					"mid": [
+						"partially correct use of appropriate language structures",
+						"only the use of English (other than religious holidays, national celebrations and culturally bound phrases)"
+					],
+					"low": [
+						"minimal use of appropriate language structures with many errors",
+						"use of languages other than English (other than for religious holidays, national celebrations and culturally bound phrases)"
+					],
+					"none": [
+						"mostly incorrect use of language structures",
+						"very limited use of English in answering the questions"
+					]
+				}
+			}
+		],
+		"5": [
+			{
+				"id": "topic",
+				"name": "Topic Development (Extended answers)",
+				"weight": 50,
+				"descriptors": {
+					"high": [
+						"are relevant to topic asked",
+						"show complete understanding of key information, questions and prompts",
+						"are logical and well organized",
+						"are well developed (in-depth, including detailed explanations / examples to support answers)"
+					],
+					"mid": [
+						"are mostly relevant to topic asked",
+						"show understanding of key information, questions and prompts for the most part",
+						"are mostly logical and well organized",
+						"are mostly developed (lacking detail or explanations / examples to support answers)"
+					],
+					"low": [
+						"are partially relevant to topic asked",
+						"show partial understanding of key information, questions and prompts",
+						"are partially organized",
+						"lack development (lacking detail or superficial explanations / examples information to support answer)"
+					],
+					"none": [
+						"irrelevant to topic",
+						"show lack of understanding of key information, questions and prompts",
+						"lack organization",
+						"lack development: no depth, explanations and examples"
+					]
+				}
+			},
+			{
+				"id": "delivery",
+				"name": "Delivery (Clarity and Fluency)",
+				"weight": 15,
+				"descriptors": {
+					"high": [
+						"is comprehensible (pace, intonation and word stress allow for clear and easy comprehension)",
+						"has almost no hesitations"
+					],
+					"mid": [
+						"is mostly comprehensible (pace, intonation and word stress allow for clear and easy comprehension for the most part)",
+						"has some hesitations"
+					],
+					"low": [
+						"is partially comprehensible (pace, intonation and word stress make it difficult to comprehend)",
+						"has many hesitations"
+					],
+					"none": [
+						"is incomprehensible (pace, intonation, and word stress are unintelligible)",
+						"is mostly hesitant"
+					]
+				}
+			},
+			{
+				"id": "vocabulary",
+				"name": "Vocabulary",
+				"weight": 20,
+				"descriptors": {
+					"high": ["correct and varied use of appropriate words, chunks, and expressions"],
+					"mid": [
+						"mostly correct and mostly varied use of appropriate words, chunks, and expressions"
+					],
+					"low": [
+						"partially correct and some inappropriate use or repetition of words, chunks, and expressions"
+					],
+					"none": ["mostly incorrect and repetitive use of words, chunks, and expressions"]
+				}
+			},
+			{
+				"id": "language",
+				"name": "Language",
+				"weight": 15,
+				"descriptors": {
+					"high": [
+						"correct use of appropriate language structures",
+						"only the use of English (other than religious holidays, national celebrations)"
+					],
+					"mid": [
+						"mostly correct use of appropriate language structures",
+						"only the use of English (other than religious holidays, national celebrations)"
+					],
+					"low": [
+						"partial use of appropriate language structures with many errors",
+						"only the use of English (other than religious holidays, national celebrations)"
+					],
+					"none": [
+						"mostly incorrect use of language structures",
+						"use of languages other than English (other than for religious holidays, national celebrations)"
+					]
+				}
+			}
+		]
+	},
+	"notes": [
+		"Students are asked a set of two questions (prompts) in each part.",
+		"Responses MAY include appropriate and effective use of compensation strategies: fillers, expressions, self-correction, substitution, paraphrasing, rephrasing, and hesitation (elements of natural, spontaneous speech).",
+		"Part C: answers must be based on the spoken text. Deductions may be taken from Topic Development for answers that are inaccurate and/or not based on the spoken text.",
+		"Reading from notes or any other source is strictly forbidden and will result in Hashad.",
+		"Students must not use the stop button as a pause button. At most TWO audio files per question (two files carry no deduction). Deleting erases the whole answer.",
+		"Students must answer at least one of the questions in Part C. With no recording for either question, or a completely empty recording, the student is not eligible for a grade on the exam."
+	],
+	"deductions": {
+		"minSeconds": 20,
+		"partBLength": [
+			{ "minSeconds": 60, "maxSeconds": 120, "percentOff": 0 },
+			{ "minSeconds": 40, "maxSeconds": 59, "percentOff": 20 },
+			{ "minSeconds": 20, "maxSeconds": 39, "percentOff": 50 },
+			{ "minSeconds": 0, "maxSeconds": 19, "percentOff": 100 }
+		],
+		"partBLengthAppliesTo": "the grade given in ALL criteria",
+		"onlyOneQuestionAnsweredPercentOff": 50,
+		"onlyOneQuestionAppliesTo": "Topic Development only",
+		"zeroForSection": [
+			"use of foul language, cursing or swearing",
+			"an empty file",
+			"unintelligible language",
+			"answers not in English (other than religious holidays and national celebrations)",
+			"answers that are under 20 seconds of speech"
+		],
+		"hashad": ["clearly reading from a page or from notes"]
+	}
+}
