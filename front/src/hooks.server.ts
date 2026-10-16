@@ -6,7 +6,7 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 
 // Student APIs: signed-in users only (once accounts are on), and open to the
 // Capacitor app's webview origins (iOS, Android).
-const STUDENT_APIS = /^\/api\/(grade|ocr|speak|account)$/;
+const STUDENT_APIS = /^\/api\/(grade|ocr|speak|account|access|checkout|checkout\/quote)$/;
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
 // Authoring APIs: staff only, same-origin. Staff role only.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
@@ -14,7 +14,7 @@ const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
 function cors(origin: string): Record<string, string> {
 	return {
 		'Access-Control-Allow-Origin': origin,
-		'Access-Control-Allow-Methods': 'POST, DELETE, OPTIONS',
+		'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
 		'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 		'Access-Control-Max-Age': '86400',
 		Vary: 'Origin'

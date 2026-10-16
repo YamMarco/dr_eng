@@ -58,20 +58,21 @@ class AuthStore {
 		if (error) throw error;
 	}
 
-	async signUp(email: string, password: string) {
+	/** `returnTo`: where the confirmation link lands (default /app; checkout passes itself). */
+	async signUp(email: string, password: string, returnTo = APP_URL) {
 		const { error } = await supabase!.auth.signUp({
 			email,
 			password,
-			options: { emailRedirectTo: APP_URL }
+			options: { emailRedirectTo: returnTo }
 		});
 		if (error) throw error;
 	}
 
-	async resendConfirmation(email: string) {
+	async resendConfirmation(email: string, returnTo = APP_URL) {
 		const { error } = await supabase!.auth.resend({
 			type: 'signup',
 			email,
-			options: { emailRedirectTo: APP_URL }
+			options: { emailRedirectTo: returnTo }
 		});
 		if (error) throw error;
 	}

@@ -76,6 +76,8 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 ## 6. Monetization
 
 - Freemium: free tier has ads, premium removes them. **[decided]**
+- Tester phase (until the free tier exists): the app needs an active plan; testers get one
+  free with a code. **[decided]**
 - Ads only at natural breaks (end of a lesson), **never** inside a lesson or exam. **[decided]**
 - **Progress is saved before any ad.** An ad never holds progress hostage. **[decided]**
 - Formats: an interstitial at a break (skippable, not after every lesson), and opt-in

@@ -5,10 +5,9 @@ import postgres from 'postgres';
 import { env } from '$env/dynamic/private';
 import * as schema from './schema';
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
-
 // DATABASE_URL is Supabase's transaction pooler (port 6543) - the right one
 // for serverless (Vercel). That pooler doesn't support prepared statements.
-const client = postgres(env.DATABASE_URL, { prepare: false });
-
-export const db = drizzle(client, { schema, casing: 'snake_case' });
+// null when unset: features that need the database report themselves off.
+export const db = env.DATABASE_URL
+	? drizzle(postgres(env.DATABASE_URL, { prepare: false }), { schema, casing: 'snake_case' })
+	: null;

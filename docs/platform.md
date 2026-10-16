@@ -6,7 +6,8 @@ One SvelteKit codebase (`front/`), two build targets.
 
 | Path | What | Web | Mobile |
 |---|---|---|---|
-| `/`, `/privacy`, `/terms` | `routes/(site)` - public pages, pre-rendered | yes | redirects to `/app` |
+| `/`, `/about`, `/plans`, `/privacy`, `/terms` | `routes/(site)` - public pages, pre-rendered | yes | redirects to `/app` |
+| `/checkout` | `routes/(site)/checkout` - client-only (needs the session) | yes | redirects to `/app` |
 | `/app/...` | `routes/app` - the student app, client-only (`ssr = false`) | yes | yes (the whole bundle) |
 | `/edit`, `/edit-exam`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
 | `/api/...`, `/mcp` | server routes | yes | absent - the app calls the web deployment |
@@ -20,7 +21,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
   - `$lib/platform.ts` `MOBILE_BUILD` is the compile-time switch.
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment. Change it when there's a real domain.
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
-- **CORS:** `/api/grade`, `/api/ocr`, `/api/speak` and `/api/account` accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
+- **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
 
 ## Accounts (Supabase Auth, email + password)
 
@@ -30,7 +31,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
-- `/api/grade`, `/api/ocr` and `/api/account` need `Authorization: Bearer <token>`. Otherwise they return 401.
+- `/api/grade`, `/api/ocr`, `/api/account`, `/api/access` and `/api/checkout(/quote)` need `Authorization: Bearer <token>`. Otherwise they return 401.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also clears this device's progress.
 
 ### Turning it on
@@ -41,6 +42,17 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 2. **Authentication > Sign In / Providers > Email:** "Confirm email" on, minimum password length 8.
 3. **Authentication > URL Configuration:** Site URL = the web deployment; add `<web deployment>/**` to Redirect URLs (the email links go to `/app`).
 4. **Email sending:** Supabase's built-in sender is for testing only: a couple of emails an hour, and only to your organization's team members. Before real students sign up, set custom SMTP (needs a domain for Resend; Gmail with an app password works for development). The default link-only templates are fine for this flow; customizing them needs custom SMTP.
+
+## Plans, checkout, access
+
+Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answers "active" for everyone and the app stays open.
+
+- **Plans** live in `$lib/plans.ts` (id, price in agorot, months); names and features in i18n `plans.items`. The server prices orders from there, never from the client. Prices are placeholders.
+- **Tables** (`server/db/schema.ts`, RLS on with no policies, so the publishable key can't read them): `coupons` (code, percent off, optional plan, max uses, expiry) and `orders` (one per checkout; `paid`/`free` with `access_until` ahead = access).
+- **Access gate:** `/app` shows `Paywall.svelte` (redeem a code; plans link on web only, store apps can't link to outside purchases) while `/api/access` says no. Staff always pass. If the server can't be reached the app stays open (offline use).
+- **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
+- **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs TESTERS --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). Tester link: `<web>/checkout?coupon=TESTERS`.
+- **Migrations:** `npm run db:migrate` (needs `DATABASE_MIGRATE_URL`, the session pooler on 5432). Set `DATABASE_URL` (transaction pooler, 6543) on the host too.
 
 ## Capacitor, on the day
 
