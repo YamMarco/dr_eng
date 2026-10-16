@@ -145,15 +145,17 @@
 
 	/** Clicking a callout's icon (a CSS pseudo-element, so we test the click
 	 *  position against the line's start edge) opens the icon picker. */
-	let picker = $state<{ block: HTMLElement; x: number; y: number } | null>(null);
+	let picker = $state<{ block: HTMLElement; x: number; y: number; rtl: boolean } | null>(null);
 
 	function onIconClick(e: MouseEvent) {
 		const block = (e.target as HTMLElement).closest<HTMLElement>('[data-p="callout"]');
 		if (!block || block.parentElement !== el) return (picker = null);
 		const r = block.getBoundingClientRect();
-		const fromStart =
-			getComputedStyle(block).direction === 'rtl' ? r.right - e.clientX : e.clientX - r.left;
-		picker = fromStart > 0 && fromStart < 44 ? { block, x: r.left, y: r.bottom } : null;
+		const rtl = getComputedStyle(block).direction === 'rtl';
+		const fromStart = rtl ? r.right - e.clientX : e.clientX - r.left;
+		// Anchored under the callout's start edge, where the icon sits.
+		picker =
+			fromStart > 0 && fromStart < 44 ? { block, x: rtl ? r.right : r.left, y: r.bottom, rtl } : null;
 	}
 
 	function pickIcon(name: string) {
@@ -217,16 +219,24 @@
 {#if picker}
 	<div
 		data-icon-picker
-		class="fixed z-60 flex gap-1 rounded-xl border border-line bg-surface p-1.5 shadow-lg"
-		style="left:{picker.x}px; top:{picker.y + 4}px"
+		class="fixed z-60 mt-2 flex gap-0.5 rounded-xl border-2 border-accent bg-accent-soft p-1 shadow-md {picker.rtl
+			? '-translate-x-full'
+			: ''}"
+		style="left:{picker.x}px; top:{picker.y}px"
 	>
+		<!-- Little tail pointing up at the callout's icon. -->
+		<span
+			class="absolute -top-[7px] size-3 rotate-45 border-t-2 border-l-2 border-accent bg-accent-soft {picker.rtl
+				? 'right-3.5'
+				: 'left-3.5'}"
+		></span>
 		{#each Object.entries(CALLOUT_ICONS) as [name, emoji] (name)}
 			<button
 				type="button"
 				aria-label={name}
 				onmousedown={(e) => e.preventDefault()}
 				onclick={() => pickIcon(name)}
-				class="h-8 w-8 rounded-lg text-lg transition hover:bg-line/60 active:scale-90"
+				class="relative h-8 w-8 rounded-lg text-lg transition hover:bg-surface active:scale-90"
 			>
 				{emoji}
 			</button>
