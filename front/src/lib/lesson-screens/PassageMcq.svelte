@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ReadingPaper from './ReadingPaper.svelte';
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import { textDir } from './miniMarkdown';
@@ -91,7 +92,7 @@
 	label={screen.timerKey ? i18n.dict.exerciseKind.timedReading : i18n.dict.exerciseKind.mcq}
 />
 <div class="lg:-mx-40 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
-<div class="lg:sticky lg:top-0 lg:max-h-[calc(100dvh-15rem)] lg:overflow-y-auto">
+<ReadingPaper>
 {#if screen.timerKey}
 	<div class="flex items-center justify-between">
 		<span class="font-semibold text-muted"><Md text={screen.label ?? ''} /></span>
@@ -104,7 +105,7 @@
 	</div>
 {/if}
 <PassageText text={screen.text} />
-</div>
+</ReadingPaper>
 
 <div class="mt-6 lg:mt-0">
 	{#if screen.questions.length > 1}
