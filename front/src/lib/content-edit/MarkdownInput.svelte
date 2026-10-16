@@ -207,6 +207,33 @@
 	></div>
 </div>
 
+<svelte:window
+	onpointerdown={(e) => {
+		const t = e.target as HTMLElement;
+		if (picker && !t.closest('[data-icon-picker]') && !el?.contains(t)) picker = null;
+	}}
+/>
+
+{#if picker}
+	<div
+		data-icon-picker
+		class="fixed z-60 flex gap-1 rounded-xl border border-line bg-surface p-1.5 shadow-lg"
+		style="left:{picker.x}px; top:{picker.y + 4}px"
+	>
+		{#each Object.entries(CALLOUT_ICONS) as [name, emoji] (name)}
+			<button
+				type="button"
+				aria-label={name}
+				onmousedown={(e) => e.preventDefault()}
+				onclick={() => pickIcon(name)}
+				class="h-8 w-8 rounded-lg text-lg transition hover:bg-line/60 active:scale-90"
+			>
+				{emoji}
+			</button>
+		{/each}
+	</div>
+{/if}
+
 <style>
 	.mdi:has(:focus) {
 		outline: 2px solid var(--color-brand, #6366f1);
