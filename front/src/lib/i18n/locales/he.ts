@@ -33,6 +33,8 @@ export const he = {
 		navAbout: 'אודות',
 		navPlans: 'מסלולים',
 		navEnter: 'כניסה',
+		navApp: 'לאפליקציה',
+		navSignOut: 'יציאה',
 		seePlans: 'למסלולים',
 		testerTitle: 'קיבלתם קוד בודקים?',
 		testerBody: 'הירשמו, הזינו את הקוד ותקבלו גישה מלאה בחינם.',
