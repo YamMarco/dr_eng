@@ -408,9 +408,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/WritingTask.svelte": {
-    "mtime": 1791871700.288005,
-    "seen": 1791963870.2328036,
-    "ast_hash": "25a903a725f3c1072dd9f8b4f3b1cd13",
+    "mtime": 1791995201.9350324,
+    "seen": 1791995231.772401,
+    "ast_hash": "dee752e08b61d0136c4b3c21fefef12f",
     "semantic_hash": ""
   },
   "front/src/lib/sectionThemes.ts": {
@@ -1302,9 +1302,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/writing-lab/WritingLab.svelte": {
-    "mtime": 1791994747.3891306,
-    "seen": 1791994787.2192616,
-    "ast_hash": "3e58afb8902f24072d180d4a1ef1eefc",
+    "mtime": 1791995202.0987735,
+    "seen": 1791995231.7725,
+    "ast_hash": "b608f49388e8a215a928f6df6ab2faa8",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/sentenceCompletion.ts": {
@@ -1446,9 +1446,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
-    "mtime": 1791870277.0056105,
-    "seen": 1791963870.2328207,
-    "ast_hash": "32ef23a275c8b217bacd9ace38d96bd8",
+    "mtime": 1791995201.895263,
+    "seen": 1791995231.772415,
+    "ast_hash": "410194d1ae202b2b1ea6073e6e1af5ba",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/screenChecks.ts": {
@@ -1818,9 +1818,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/grade.ts": {
-    "mtime": 1791966023.262497,
-    "seen": 1791967329.2670145,
-    "ast_hash": "5e06782704a8b6aaaaaf1698b3ae401b",
+    "mtime": 1791995201.953995,
+    "seen": 1791995231.7723236,
+    "ast_hash": "30efed2e4c197bbc6c5c42a2d8b63ba2",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/layer1.ts": {
@@ -1830,15 +1830,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/merge.ts": {
-    "mtime": 1791994172.2674475,
-    "seen": 1791994787.2189565,
-    "ast_hash": "fcde24eaa5f213600e4eb430f379a152",
+    "mtime": 1791995201.9825137,
+    "seen": 1791995231.7723286,
+    "ast_hash": "e9d31fdba1e7600bec6d32820a58ee28",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/rules.ts": {
-    "mtime": 1791869784.6186378,
-    "seen": 1791963870.2327168,
-    "ast_hash": "716910bb370dc9cafa90973772d9b961",
+    "mtime": 1791995201.7841628,
+    "seen": 1791995231.7723303,
+    "ast_hash": "ac935006c57eee391a5c50e2c0db5b11",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/tags.ts": {
@@ -1848,9 +1848,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/types.ts": {
-    "mtime": 1791994168.8781543,
-    "seen": 1791994787.218989,
-    "ast_hash": "ac48d4d40f48e56c64c5f8ba4d01c6c7",
+    "mtime": 1791995201.9549954,
+    "seen": 1791995231.7723334,
+    "ast_hash": "bad7a13aa65a3d1ce17e3ea49b9c91ab",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchDefinitions.svelte": {
@@ -1860,15 +1860,15 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/grade.ts": {
-    "mtime": 1791994169.9961932,
-    "seen": 1791994787.219239,
-    "ast_hash": "fd05c71f4b43d78066358e4a6502a202",
+    "mtime": 1791995210.0898714,
+    "seen": 1791995231.7724864,
+    "ast_hash": "2f408c63d7986a60b2a7aa4ec3068565",
     "semantic_hash": ""
   },
   "front/src/routes/api/grade/+server.ts": {
-    "mtime": 1791967678.720631,
-    "seen": 1791969762.958188,
-    "ast_hash": "2330060d079b504ac5b2dfe65f3abbac",
+    "mtime": 1791995201.9549954,
+    "seen": 1791995231.7725334,
+    "ast_hash": "cbc37293a3f7b8b193a3b2224b8cec1e",
     "semantic_hash": ""
   },
   "front/tests/deck.test.ts": {
@@ -1884,21 +1884,21 @@
     "semantic_hash": ""
   },
   "docs/feedback-framework.md": {
-    "mtime": 1791994786.4951558,
-    "seen": 1791994787.2194366,
-    "ast_hash": "1439dde8db7863f263eafbcb79126742",
+    "mtime": 1791995208.215475,
+    "seen": 1791995231.7726047,
+    "ast_hash": "7164228a4a922ee7ef1f08e97a192e90",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay.md": {
-    "mtime": 1791994159.641897,
-    "seen": 1791994787.2195165,
-    "ast_hash": "7bd46af5c0f6d3207294539c842e71d8",
+    "mtime": 1791995202.068905,
+    "seen": 1791995231.7726514,
+    "ast_hash": "be8c678156b0523010300d53529ad32f",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-short.md": {
-    "mtime": 1791994155.3658788,
-    "seen": 1791994787.2195213,
-    "ast_hash": "6a057fd10f90e896aedb309a3825c718",
+    "mtime": 1791995202.0786393,
+    "seen": 1791995231.7726543,
+    "ast_hash": "18f95b21194601edf1516f25f224d30e",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/RulesPanel.svelte": {
@@ -1908,9 +1908,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/fields/RuleFields.svelte": {
-    "mtime": 1791870898.2100132,
-    "seen": 1791963870.2325897,
-    "ast_hash": "dc8bdfd8413f43e3fa704449d2570ad6",
+    "mtime": 1791995201.8558059,
+    "seen": 1791995231.772229,
+    "ast_hash": "d7319c107b382f0c90344a1318974d7b",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/rulesStore.svelte.ts": {
@@ -1926,15 +1926,15 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/content-edit/rules/+server.ts": {
-    "mtime": 1791985551.0659108,
-    "seen": 1791985730.405771,
-    "ast_hash": "07b5b886ea4a4e68096c2b06a833ca4d",
+    "mtime": 1791995201.8563118,
+    "seen": 1791995231.7725322,
+    "ast_hash": "914bf6109db337568761ef8b4af1c65d",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/MarkedText.svelte": {
-    "mtime": 1791994193.486707,
-    "seen": 1791994787.2189386,
-    "ast_hash": "73eb7e3b91b482308bfd12e8f685c965",
+    "mtime": 1791995210.2104213,
+    "seen": 1791995231.7723184,
+    "ast_hash": "4923962b9a58c636f25d566d9db8f8c7",
     "semantic_hash": ""
   },
   "front/src/lib/content/rubrics/index.ts": {
@@ -1968,9 +1968,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-reading.md": {
-    "mtime": 1791994157.5287323,
-    "seen": 1791994787.219519,
-    "ast_hash": "e213fd36032152b8a66e8071043560ff",
+    "mtime": 1791995202.0574942,
+    "seen": 1791995231.772653,
+    "ast_hash": "9ebad53daadb8dc23a4bc0e50713067c",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/fields/TimerField.svelte": {
