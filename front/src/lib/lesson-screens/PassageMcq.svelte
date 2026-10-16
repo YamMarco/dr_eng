@@ -91,7 +91,7 @@
 <ExerciseKindBadge
 	label={screen.timerKey ? i18n.dict.exerciseKind.timedReading : i18n.dict.exerciseKind.mcq}
 />
-<div class="lg:-mx-40 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+<div class="lg:-mx-40 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-10">
 <ReadingPaper>
 {#if screen.timerKey}
 	<div class="flex items-center justify-between">
@@ -107,7 +107,7 @@
 <PassageText text={screen.text} />
 </ReadingPaper>
 
-<div class="mt-6 lg:mt-0">
+<div class="mt-6 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
 	{#if screen.questions.length > 1}
 		<p class="mb-2 text-sm font-semibold text-muted">
 			{i18n.dict.lesson.questionProgress(qi + 1, screen.questions.length)}

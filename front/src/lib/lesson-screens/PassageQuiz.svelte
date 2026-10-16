@@ -63,7 +63,7 @@
 	}
 </script>
 
-<div class="lg:-mx-40 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+<div class="lg:-mx-40 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-10">
 <ReadingPaper>
 <ExerciseKindBadge label={i18n.dict.exerciseKind.passageQuiz} />
 {#if hasParagraphMarkers(screen.text)}
@@ -73,7 +73,7 @@
 {/if}
 </ReadingPaper>
 
-<div class="mt-6 flex flex-col gap-5 lg:mt-0">
+<div class="mt-6 flex flex-col gap-5 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>

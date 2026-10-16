@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="lg:sticky lg:top-0 lg:max-h-[calc(100dvh-19rem)] lg:overflow-y-auto lg:rounded-2xl lg:border lg:border-line lg:bg-surface lg:px-8 lg:py-7 lg:font-serif lg:shadow-sm lg:[&_p]:text-[1.0625rem] lg:[&_p]:leading-8"
+	class="lg:h-full lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:rounded-2xl lg:border lg:border-line lg:bg-surface lg:px-8 lg:py-7 lg:font-serif lg:shadow-sm lg:[&_p]:text-[1.0625rem] lg:[&_p]:leading-8"
 >
 	{@render children()}
 </div>
