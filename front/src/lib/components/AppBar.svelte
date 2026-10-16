@@ -20,7 +20,7 @@
 <header
 	class="sticky top-0 z-20 border-b border-line/70 bg-canvas/85 backdrop-blur supports-backdrop-filter:bg-canvas/70"
 >
-	<div class="mx-auto flex h-16 max-w-lg items-center gap-2 px-4">
+	<div class="app-col flex h-16 items-center gap-2 px-4">
 		{#snippet chevron()}
 			<!-- chevron pointing to the start edge (right, in RTL) -->
 			<svg

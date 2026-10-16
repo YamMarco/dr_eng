@@ -88,7 +88,7 @@
 
 <AppBar title={b.title} />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-28">
+<main class="app-col flex-1 px-4 pt-6 pb-28">
 	{#if submitted}
 		<div class="{card} flex flex-col items-center gap-4 text-center">
 			<span

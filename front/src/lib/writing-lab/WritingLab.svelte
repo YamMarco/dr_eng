@@ -227,7 +227,7 @@
 <div class="fixed inset-0 z-50 flex flex-col overflow-hidden bg-canvas">
 	<AppBar title="תצוגת בדיקת AI" onback={onclose} />
 
-	<main class="mx-auto w-full max-w-lg flex-1 space-y-8 overflow-y-auto px-4 py-6 pb-12">
+	<main class="app-col flex-1 space-y-8 overflow-y-auto px-4 py-6 pb-12">
 		<p class="rounded-2xl border border-dashed border-line p-3 text-xs leading-relaxed text-muted">
 			דוגמאות קבועות דרך אותם רכיבים ואותו מסלול סימון כמו בבדיקה אמיתית. אין קריאה ל-AI.
 			לחצו על מילה מסומנת כדי לראות את ההסבר.

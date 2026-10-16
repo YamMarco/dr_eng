@@ -451,7 +451,7 @@
 	{/snippet}
 </AppBar>
 
-<main class="mx-auto w-full max-w-lg flex-1 overflow-x-clip px-4 pt-4 pb-12">
+<main class="app-col flex-1 overflow-x-clip px-4 pt-4 pb-12">
 	{#if nodes.length === 0}
 		<div
 			class="flex flex-col items-center rounded-3xl border-2 border-dashed border-line bg-surface/60 px-6 py-14 text-center"

@@ -45,7 +45,7 @@
 
 <AppBar title={t.title} back={resolve('/app')} />
 
-<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-4 sm:pb-6">
+<main class="app-col flex flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-4 sm:pb-6">
 	<section class="{card} flex flex-col items-center gap-2 text-center">
 		<StreakFlame {days} goal={WEEKLY_GOAL} size={48} />
 		<div class="flex flex-col gap-0.5">

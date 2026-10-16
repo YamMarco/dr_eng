@@ -105,14 +105,16 @@
 
 <nav
 	aria-label={i18n.dict.nav.mainNav}
-	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-backdrop-filter:bg-surface/85"
+	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 lg:inset-x-auto lg:inset-y-0 lg:start-0 lg:w-24 lg:border-t-0 lg:border-e backdrop-blur supports-backdrop-filter:bg-surface/85"
 	style="padding-bottom: env(safe-area-inset-bottom)"
 >
-	<div class="relative mx-auto flex max-w-lg items-stretch justify-around px-2">
+	<div
+		class="relative mx-auto flex max-w-lg items-stretch justify-around px-2 lg:h-full lg:max-w-none lg:flex-col lg:justify-start lg:gap-2 lg:pt-8"
+	>
 		<!-- Slides to whichever tab is active — inset-inline-start (not left)
 		     so it lands under the right tab regardless of the RTL flex order. -->
 		<span
-			class="absolute top-0 h-0.5 rounded-full bg-brand-dark transition-[inset-inline-start] duration-200 ease-out"
+			class="absolute top-0 h-0.5 rounded-full lg:hidden bg-brand-dark transition-[inset-inline-start] duration-200 ease-out"
 			style="width: {100 / items.length}%; inset-inline-start: {(activeIndex / items.length) *
 				100}%"
 		></span>
@@ -123,8 +125,8 @@
 				href={item.href}
 				data-sveltekit-reload={item.external ? '' : undefined}
 				aria-current={active ? 'page' : undefined}
-				class="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 py-2 text-xs font-semibold transition active:scale-95 {active
-					? 'text-brand-dark'
+				class="flex min-h-16 flex-1 flex-col items-center justify-center gap-1 py-2 text-xs font-semibold transition active:scale-95 lg:flex-none lg:rounded-2xl {active
+					? 'text-brand-dark lg:bg-brand-soft'
 					: 'text-muted hover:text-ink'}"
 			>
 				<span class="inline-flex transition-transform duration-150 {active ? 'scale-110' : ''}">

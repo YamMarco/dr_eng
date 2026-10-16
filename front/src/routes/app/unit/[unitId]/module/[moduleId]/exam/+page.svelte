@@ -39,7 +39,7 @@
 	{/snippet}
 </AppBar>
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
+<main class="app-col flex-1 px-4 pt-6 pb-12">
 	<section
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
 		class="mb-6 grid grid-cols-3 gap-3"

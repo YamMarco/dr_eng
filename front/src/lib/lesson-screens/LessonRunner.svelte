@@ -256,7 +256,7 @@
 	{/if}
 
 	<main
-		class="mx-auto flex w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-6 pb-6"
+		class="flex w-full flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-6 pb-6 lg:px-[max(1rem,calc((100%-44rem)/2))]"
 	>
 		{#if justFinished}
 			<div class="relative flex flex-col items-center pt-10 text-center">
@@ -353,7 +353,7 @@
 	</main>
 
 	<div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">
-		<div class="mx-auto flex max-w-lg flex-col gap-3">
+		<div class="app-col flex flex-col gap-3 lg:max-w-sm">
 			{#if justFinished}
 				{#if passed}
 					{#if isLastRound}

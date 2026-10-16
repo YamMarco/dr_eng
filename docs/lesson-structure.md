@@ -142,6 +142,10 @@ A spaced-repetition deck, not nodes. Plan: `docs/modules/module-e.md`.
 - `lib/deck/session.ts` builds the screens. New words two at a time (card, Hebrew meaning, copy-spelling, match-pairs). Reviews by box: 1 Hebrew meaning, 2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
 - Progress: `lib/deck/deckProgress.svelte.ts` (localStorage `deck-progress`). Page: `/app/unit/<u>/module/<m>/words`. Tests: `npm test` (`front/tests/deck.test.ts`).
 
+## Screen length on a phone
+
+A teaching screen (`preface`, `steps`, `summary`) must not scroll on a phone (390x700). Rule of thumb: about 300 characters and one idea per screen; end a split screen on a hook (a question, "but...") that the next screen pays off. Desktop has more room, so the phone is the test. Check with `front/scripts/measure-overflow.mjs` (usage and requirements in its header). Splitting a screen changes its text, so its Arabic entry in `translations/ar.json` no longer matches and falls back to Hebrew until re-translated.
+
 ## Conventions
 
 - UI chrome is in `i18n/locales/he.ts` (source of truth) and `ar.ts`. Teaching content is Hebrew inline in `c/*.ts`; Arabic lives in `lib/content/translations/ar.json` (whole Hebrew string -> whole Arabic string, English and markup kept), applied by `localizeContent` on lesson and exam pages only, never in the editor.

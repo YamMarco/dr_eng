@@ -49,7 +49,7 @@
 	<Onboarding />
 {:else}
 	<main
-		class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-10 sm:pb-6 md:max-w-2xl"
+		class="app-wide flex flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-10 sm:pb-6"
 	>
 		<header class="flex flex-wrap items-center gap-2">
 			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl">{t.greeting}</h1>
@@ -75,10 +75,12 @@
 			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
-		{#each rows as row, i (row.mod.id)}
-			<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
-				<ModuleRow {...row} />
-			</div>
-		{/each}
+		<div class="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-4">
+			{#each rows as row, i (row.mod.id)}
+				<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+					<ModuleRow {...row} />
+				</div>
+			{/each}
+		</div>
 	</main>
 {/if}

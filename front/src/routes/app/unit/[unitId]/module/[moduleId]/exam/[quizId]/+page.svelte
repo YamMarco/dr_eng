@@ -54,7 +54,7 @@
 {:else}
 	<AppBar title={i18n.title(quiz.id)} back={examBase} />
 
-	<main class="mx-auto flex w-full max-w-lg flex-1 flex-col gap-4 px-4 pt-6 pb-12">
+	<main class="app-col flex flex-1 flex-col gap-4 px-4 pt-6 pb-12">
 		{#if taken && row}
 			<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}>
 				<h2 class="mb-3 text-base font-bold">{t.scoreboardTitle}</h2>

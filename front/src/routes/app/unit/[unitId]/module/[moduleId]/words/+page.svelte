@@ -53,7 +53,7 @@
 
 <AppBar title="{t.title} — {mod.letter}" back="/app/unit/{data.group.id}/module/{mod.id}" />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-12">
+<main class="app-col flex-1 px-4 pt-6 pb-12">
 	<p
 		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
 		class="mb-4 leading-relaxed text-muted"

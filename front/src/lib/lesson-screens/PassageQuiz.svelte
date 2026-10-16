@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ReadingPaper from './ReadingPaper.svelte';
 	import { untrack } from 'svelte';
 	import Md from '$lib/components/Md.svelte';
 	import type { PassageQuizScreen } from './types';
@@ -62,14 +63,17 @@
 	}
 </script>
 
+<div class="lg:-mx-40 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-10">
+<ReadingPaper>
 <ExerciseKindBadge label={i18n.dict.exerciseKind.passageQuiz} />
 {#if hasParagraphMarkers(screen.text)}
 	<PassageText text={screen.text} />
 {:else}
 	<div class="leading-relaxed"><Md block text={screen.text} /></div>
 {/if}
+</ReadingPaper>
 
-<div class="mt-6 flex flex-col gap-5">
+<div class="mt-6 flex flex-col gap-5 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
@@ -100,4 +104,5 @@
 			{/if}
 		</div>
 	{/each}
+</div>
 </div>
