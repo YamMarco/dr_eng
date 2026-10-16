@@ -260,6 +260,7 @@ export const ar: DictionaryOverride = {
 		spellWordListen: 'تمرين: إملاء',
 		selfCheck: 'تمرين: إجابة حرة',
 		speak: 'تمرين: تحدث',
+		video: 'مشاهدة المقطع',
 		passageQuiz: 'تمرين: إجابة قصيرة',
 		sentenceCompletion: 'تمرين: إكمال جملة',
 		matchPairs: 'تمرين: صِلوا الأزواج',
@@ -279,6 +280,10 @@ export const ar: DictionaryOverride = {
 		compareNote: 'لا علامة في هذه الشاشة - قارنوا ما كتبتم بالإجابة أعلاه.',
 		wordCount: (n: number) => `${n} كلمة`,
 		wordTarget: (min: number, max: number) => `الهدف: ${min}-${max} كلمة`
+	},
+	video: {
+		placeholderTitle: 'هنا سيظهر المقطع',
+		placeholderNote: 'لم يُرفع المقطع بعد. حتى ذلك الحين يمكن الإجابة عن الأسئلة كتمرين.'
 	},
 	speak: {
 		start: 'بدء التسجيل',

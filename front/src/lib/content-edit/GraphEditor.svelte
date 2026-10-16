@@ -31,7 +31,8 @@
 		'c-1': { card: 'border-sky-400 bg-sky-50', band: 'bg-sky-100 text-sky-900' },
 		'c-2': { card: 'border-violet-400 bg-violet-50', band: 'bg-violet-100 text-violet-900' },
 		'c-3': { card: 'border-amber-400 bg-amber-50', band: 'bg-amber-100 text-amber-900' },
-		'cobe-1': { card: 'border-rose-400 bg-rose-50', band: 'bg-rose-100 text-rose-900' }
+		'cobe-1': { card: 'border-rose-400 bg-rose-50', band: 'bg-rose-100 text-rose-900' },
+		'cobe-2': { card: 'border-teal-400 bg-teal-50', band: 'bg-teal-100 text-teal-900' }
 	};
 	const styleFor = (sid: string) =>
 		SECTION_STYLE[sid] ?? { card: 'border-line bg-surface', band: 'bg-line/60 text-ink' };

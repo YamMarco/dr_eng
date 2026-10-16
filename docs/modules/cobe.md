@@ -1,6 +1,6 @@
 # COBE (oral exam)
 
-Present state only. Module id `cobe`, on the unit 4 and unit 5 paths (`curriculum.ts`). Lesson ids are `cobe-` prefixed. Content: `front/src/lib/content/cobe/cobe-<N>.ts`; skill row "דיבור" (`skill: 'speaking'`).
+Present state only. Module id `cobe`, on the unit 4 and unit 5 paths (`curriculum.ts`): one module, so both units show the same lessons and share progress (the 4- and 5-point COBE have the same three parts). Lesson ids are `cobe-` prefixed. Content: `front/src/lib/content/cobe/cobe-<N>.ts`; skill row "דיבור" (`skill: 'speaking'`).
 
 ## Sources
 
@@ -22,10 +22,22 @@ The 3-step model: **Personal Hook** (why I chose the topic) -> **Honest Pivot** 
 
 Self-check criteria (from the peer sheet): Energy & Voice (replaces eye contact: the exam is on a computer), Rescue Phrases, the "So What?" factor.
 
+## Part C - Clip (cobe-2)
+
+Each lesson: recognise (cloze-pick, mcq), a `video` screen, then a `speak` answer to the set.
+
+| Node | Micro-skill | Clip |
+|---|---|---|
+| clip-describe | Set 1: who, where, what happened in order, how it ended | placeholder |
+| clip-interpret | Set 2: stance, because, example from the clip, "If I were..., I would..." | placeholder |
+
+The `speak` prompts are generic ("the people in the clip"); rewrite them once each lesson has its clip.
+
 ## Open
 
 - Nothing played by a student yet.
-- Part A (personal response) and Part C (clip) have no nodes. Part C has no material (needs clips).
+- Part A (personal response) has no nodes.
+- Part C clips: none yet. Add `src` to the two `video` screens (`/edit` -> the screen -> clip link), then fit the questions to each clip.
 - Drafts in the self-check screens are not saved, so the simulation cannot show the student's own hook back.
 - Arabic content translations (`translations/ar.json`) missing for cobe-1; titles are in.
 - Model-graded speaking (speech-to-text + feedback) not built; see `feedback-framework.md` if added.

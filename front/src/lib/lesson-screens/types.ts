@@ -26,6 +26,7 @@ export type MarkAllCategory = z.infer<typeof s.markAllCategorySchema>;
 export type MarkAllScreen = z.infer<typeof s.markAllSchema>;
 export type SelfCheckScreen = z.infer<typeof s.selfCheckSchema>;
 export type SpeakScreen = z.infer<typeof s.speakSchema>;
+export type VideoScreen = z.infer<typeof s.videoSchema>;
 export type PassageScreen = z.infer<typeof s.passageSchema>;
 export type SentenceCompletionScreen = z.infer<typeof s.sentenceCompletionSchema>;
 export type LessonScreen = z.infer<typeof s.lessonScreenSchema>;
@@ -99,6 +100,7 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.before.trim() && !screen.after.trim();
 		case 'time-result':
 		case 'time-comparison':
+		case 'video':
 			return false;
 	}
 }

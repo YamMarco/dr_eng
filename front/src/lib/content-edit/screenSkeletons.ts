@@ -5,7 +5,7 @@ import type { LessonScreen } from '$lib/lesson-screens/types';
 export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] }[] = [
 	{
 		label: 'טקסט והצגה',
-		types: ['preface', 'steps', 'summary', 'question-preview', 'word-card']
+		types: ['preface', 'steps', 'summary', 'question-preview', 'word-card', 'video']
 	},
 	{
 		label: 'שאלות',
@@ -50,6 +50,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, prompt: '', modelAnswer: '' };
 		case 'speak':
 			return { type, prompt: '', targetSeconds: 60 };
+		case 'video':
+			return { type };
 		case 'cloze-pick':
 			return { type, clause: '', options: ['', ''], correctIndices: [] };
 		case 'mark-all':

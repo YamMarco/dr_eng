@@ -5,12 +5,19 @@ import { c1Lessons } from './c/c-1';
 import { c2Lessons } from './c/c-2';
 import { c3Lessons } from './c/c-3';
 import { cobe1Lessons } from './cobe/cobe-1';
+import { cobe2Lessons } from './cobe/cobe-2';
 
 export * from './types';
 import { sectionMeta } from './sectionMeta';
 export { sectionMeta };
 
-const all: LessonNode[] = [...c1Lessons, ...c2Lessons, ...c3Lessons, ...cobe1Lessons];
+const all: LessonNode[] = [
+	...c1Lessons,
+	...c2Lessons,
+	...c3Lessons,
+	...cobe1Lessons,
+	...cobe2Lessons
+];
 
 export const allLessons: Record<string, LessonNode> = Object.fromEntries(
 	all.map((lesson) => [lesson.id, lesson])

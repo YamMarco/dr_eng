@@ -139,6 +139,19 @@ export const speakSchema = z
 		'The student records one spoken answer in a single take (no pause), listens back and self-checks. Recordings stay on the device. Without a microphone it runs as a stopwatch. Never scored.'
 	);
 
+export const videoSchema = z
+	.strictObject({
+		type: z.literal('video'),
+		src: z
+			.string()
+			.optional()
+			.describe(
+				'Site path or URL of the clip. Omit while the clip is not ready: a placeholder marks its place.'
+			),
+		caption: z.string().optional().describe('Hebrew line under the clip (what to watch for).')
+	})
+	.describe('A clip to watch before answering (COBE Part C). Not scored.');
+
 export const passageSchema = z
 	.strictObject({
 		type: z.literal('passage'),
@@ -493,6 +506,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	matchDefinitionsSchema,
 	selfCheckSchema,
 	speakSchema,
+	videoSchema,
 	passageSchema,
 	sentenceCompletionSchema
 ]);

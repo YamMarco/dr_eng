@@ -21,6 +21,7 @@ import WordCard from './WordCard.svelte';
 import SpellWord from './SpellWord.svelte';
 import SelfCheck from './SelfCheck.svelte';
 import Speak from './Speak.svelte';
+import Video from './Video.svelte';
 import MatchPairs from './MatchPairs.svelte';
 import MatchDefinitions from './MatchDefinitions.svelte';
 import Passage from './Passage.svelte';
@@ -47,6 +48,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'spell-word': SpellWord,
 	'self-check': SelfCheck,
 	speak: Speak,
+	video: Video,
 	'match-pairs': MatchPairs,
 	'match-definitions': MatchDefinitions,
 	passage: Passage,

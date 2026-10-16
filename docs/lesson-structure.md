@@ -57,6 +57,7 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 - **`match-definitions`** (Module E Part II): numbered `items` (exam uses 6) and `definitions` (3), each pointing at its item by `itemIndex`; pick a definition, then an item; 1 point per definition. `word-card.definitionEn` shows an English definition under the translation.
 - **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.
 - **`speak`** (COBE): the question (English, with listen buttons), an optional Hebrew `tip`, one take with no pause and a bar to `targetSeconds`, then playback, "record again" (replaces the take), and `modelAnswer` + `checklist`. Never scored. Audio stays in memory on the device (`lib/recorder.svelte.ts`); without a microphone it runs as a stopwatch.
+- **`video`** (COBE Part C): a clip with an optional Hebrew `caption`. Without `src` it shows a dashed placeholder marking where the clip goes. Never scored.
 - **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged).
 
 ### Adding a screen type

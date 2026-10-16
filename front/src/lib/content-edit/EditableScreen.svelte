@@ -258,6 +258,21 @@
 					onInput={(v) => set('modelAnswer', v)}
 				/>
 			</div>
+		{:else if screen.type === 'video'}
+			<p class="text-xs font-bold text-muted">קישור לקליפ (ריק = מקום שמור לקליפ)</p>
+			<input
+				dir="ltr"
+				value={screen.src ?? ''}
+				oninput={(e) => set('src', e.currentTarget.value || undefined)}
+				class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
+			/>
+			<p class="text-xs font-bold text-muted">שורה מתחת לקליפ (לא חובה)</p>
+			<MarkdownInput
+				bare
+				minRows={1}
+				value={screen.caption ?? ''}
+				onInput={(v) => set('caption', v)}
+			/>
 		{:else if screen.type === 'speak'}
 			<p class="text-xs font-bold text-muted">השאלה (באנגלית)</p>
 			<MarkdownInput

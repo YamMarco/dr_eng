@@ -309,6 +309,7 @@ export const he = {
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
 		speak: 'תרגיל: דיבור',
+		video: 'צפייה בקליפ',
 		passageQuiz: 'תרגיל: תשובה קצרה',
 		sentenceCompletion: 'תרגיל: השלמת משפט',
 		matchPairs: 'תרגיל: התאימו זוגות',
@@ -328,6 +329,10 @@ export const he = {
 		compareNote: 'אין ציון על המסך הזה — השוו את מה שכתבתם לתשובה שלמעלה.',
 		wordCount: (n: number) => `${n} מילים`,
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
+	},
+	video: {
+		placeholderTitle: 'כאן יופיע הקליפ',
+		placeholderNote: 'הקליפ עוד לא הועלה. בינתיים אפשר לענות על השאלות כתרגול.'
 	},
 	speak: {
 		start: 'התחלת הקלטה',
