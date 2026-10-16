@@ -8,7 +8,7 @@
 <svelte:head><title>עריכת תוכן</title></svelte:head>
 
 <EditWorkspace
-	section={data.section}
+	module={data.module}
 	lesson={data.lesson}
 	round={data.round}
 	screen={data.screen}

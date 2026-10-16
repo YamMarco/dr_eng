@@ -435,13 +435,12 @@
 					<FlaskConical size={18} aria-hidden="true" />
 				</button>
 			{/if}
-			<!-- Open the /edit workspace. Only for module 'c' — that's the only module
-			     the content model / content-edit tooling covers so far (see the same
-			     `mod.id !== 'c'` guard below). /edit itself is password-gated on the
-			     deployed site. Detachable — see src/lib/content-edit/README.md. -->
-			{#if mod.id === 'c' && !MOBILE_BUILD && auth.isAdmin}
+			<!-- Open this module's map in the /edit workspace (any module with a
+			     lesson path). /edit itself is password-gated on the deployed site.
+			     Detachable — see src/lib/content-edit/README.md. -->
+			{#if nodes.length > 0 && !MOBILE_BUILD && auth.isAdmin}
 				<a
-					href="/edit"
+					href="/edit?module={mod.id}"
 					title="עריכת תוכן"
 					class="inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-xs font-bold hover:bg-line/60"
 				>

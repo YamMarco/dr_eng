@@ -1,14 +1,15 @@
 # content-edit — the `/edit` and `/edit-exam` authoring workspaces
 
-A dev-flavoured, self-contained pair of workspaces: **`/edit`** for Module C
-lesson content (the path graph **and** each lesson's screens, with a live
-preview) and **`/edit-exam`** for one module's exams (parts + screens, no
+A dev-flavoured, self-contained pair of workspaces: **`/edit`** for one
+module's lesson content (`?module=<id>`: every section on that module's path,
+the graph **and** each lesson's screens, with a live preview) and **`/edit-exam`** for one module's exams (parts + screens, no
 graph — exams aren't a DAG). Both are dev: open, deployed site: one password
 prompt per browser session (the two share the same unlock — `editStore`).
 Entry points into `/edit`:
 
-- Lessons path, dev only: the **✎** FAB (top-start) → `/edit`; each node's
-  popover has **✎ ערוך** → `/edit?section=…&lesson=…`.
+- Lessons path of any module with lessons (staff): **✎ ערוך** in the app bar →
+  `/edit?module=<id>`; each node's popover has **✎ ערוך** →
+  `/edit?section=…&lesson=…` (module = the section's owner).
 - While playing a lesson, dev only: **✏️ ערוך מסך זה** (bottom-start FAB) →
   `/edit?section=…&lesson=…&round=…&screen=…`, focused on that screen.
 

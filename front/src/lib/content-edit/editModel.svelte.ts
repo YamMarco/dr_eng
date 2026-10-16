@@ -1,20 +1,18 @@
-// The in-memory working copy for the /edit workspace. One instance holds the
-// WHOLE module's LessonNode[] (every section) so the graph shows everything at
-// once. `changedSections` diffs each section's slice against what was loaded,
+// The in-memory working copy for the /edit workspace. One instance holds one
+// WHOLE module's LessonNode[] (every section on its path) so the graph shows
+// everything at once. `changedSections` diffs each section's slice against what was loaded,
 // so a save only rewrites the section files that actually changed.
 //
 // Detachable — part of src/lib/content-edit/. See README.md.
 
-import { getLessonsBySection, sectionMeta } from '$lib/content';
+import { getLessonsBySection, moduleSections } from '$lib/content';
+import { ownerModule } from '$lib/content/rules';
 import type { LessonNode, LessonScreen } from '$lib/content';
 import { blankScreen } from './screenSkeletons';
 import type { ScreenPath } from './screenPath';
 import type { Bucket, EditModelLike } from './editModelTypes';
 import { EditHistory } from './editHistory.svelte';
 import { TitleEdits } from './titleEdits.svelte';
-
-const MODULE_ID = 'c';
-const SECTION_IDS = sectionMeta.map((s) => s.id);
 
 /** Deep, plain clone — content nodes are pure JSON so this is safe and cheap. */
 function clone<T>(v: T): T {
@@ -31,6 +29,8 @@ function screenList(node: LessonNode, bucket: LessonBucket): LessonScreen[] {
 }
 
 class EditModel implements EditModelLike {
+	/** The module being edited; its path's sections are what load and save cover. */
+	moduleId = $state('c');
 	nodes = $state<LessonNode[]>([]);
 	#dirty = $state(false);
 	/** Which node the lesson pane is showing. */
@@ -85,8 +85,13 @@ class EditModel implements EditModelLike {
 		this.#dirty = this.hasChanges;
 	}
 
-	load() {
-		this.nodes = clone(SECTION_IDS.flatMap((id) => getLessonsBySection(id)));
+	get sectionIds(): string[] {
+		return moduleSections(this.moduleId).map((s) => s.id);
+	}
+
+	load(moduleId: string) {
+		this.moduleId = moduleId;
+		this.nodes = clone(this.sectionIds.flatMap((id) => getLessonsBySection(id)));
 		this.titles.load();
 		this.#snapshotBaseline();
 		this.dirty = false;
@@ -98,14 +103,14 @@ class EditModel implements EditModelLike {
 	#snapshotBaseline() {
 		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
 		this.#baseline = new Map(
-			SECTION_IDS.map((id) => [id, JSON.stringify(plain.filter((n) => n.section === id))])
+			this.sectionIds.map((id) => [id, JSON.stringify(plain.filter((n) => n.section === id))])
 		);
 	}
 
 	/** Section files whose nodes differ from what was loaded — what save writes. */
 	get changedSections(): string[] {
 		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
-		return SECTION_IDS.filter(
+		return this.sectionIds.filter(
 			(id) => JSON.stringify(plain.filter((n) => n.section === id)) !== this.#baseline.get(id)
 		);
 	}
@@ -146,7 +151,7 @@ class EditModel implements EditModelLike {
 
 	/** The section a new/edited node belongs to (near the selection, else first). */
 	get defaultSection(): string {
-		return this.selectedNode?.section ?? this.nodes[0]?.section ?? SECTION_IDS[0];
+		return this.selectedNode?.section ?? this.nodes[0]?.section ?? this.sectionIds[0];
 	}
 
 	get selectedNode(): LessonNode | undefined {
@@ -261,19 +266,21 @@ class EditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
-	/** Short, collision-checked id for a freshly created node (`c-` + 8 random
-	 *  chars) — stable from the start so it can be linked/dragged before anyone
-	 *  bothers naming it. The editor only covers module C for now. */
-	private shortId(): string {
-		let id = `${MODULE_ID}-${crypto.randomUUID().slice(0, 8)}`;
-		while (this.node(id)) id = `${MODULE_ID}-${crypto.randomUUID().slice(0, 8)}`;
+	/** Short, collision-checked id for a freshly created node (the section's
+	 *  owner module + `-` + 8 random chars, e.g. `cobe-1a2b3c4d`) — stable from
+	 *  the start so it can be linked/dragged before anyone bothers naming it. */
+	private shortId(section: string): string {
+		const prefix = ownerModule(section) ?? this.moduleId;
+		let id = `${prefix}-${crypto.randomUUID().slice(0, 8)}`;
+		while (this.node(id)) id = `${prefix}-${crypto.randomUUID().slice(0, 8)}`;
 		return id;
 	}
 
 	addNode(near?: LessonNode): LessonNode {
+		const section = near?.section ?? this.defaultSection;
 		const node: LessonNode = {
-			id: this.shortId(),
-			section: near?.section ?? this.defaultSection,
+			id: this.shortId(section),
+			section,
 			required: [],
 			position: { x: near ? near.position.x : 0, y: near ? near.position.y + 120 : 120 },
 			big: false,
@@ -289,7 +296,7 @@ class EditModel implements EditModelLike {
 		const src = this.node(id);
 		if (!src) return;
 		const copy = clone(src);
-		copy.id = this.shortId();
+		copy.id = this.shortId(src.section);
 		copy.position = { x: src.position.x + 40, y: src.position.y + 40 };
 		this.titles.copy(src.id, copy.id);
 		this.nodes.push(copy);
@@ -338,7 +345,7 @@ class EditModel implements EditModelLike {
 		const moved = src.content.rounds.splice(afterRound + 1);
 		const tail: LessonNode = {
 			...clone(src),
-			id: this.shortId(),
+			id: this.shortId(src.section),
 			required: [src.id],
 			position: { x: src.position.x, y: src.position.y + 120 },
 			content: { preface: [], rounds: moved }
@@ -456,5 +463,5 @@ class EditModel implements EditModelLike {
 	}
 }
 
-/** One shared instance; `load()` seeds it with the whole module. */
+/** One shared instance; `load(moduleId)` seeds it with that whole module. */
 export const editModel = new EditModel();

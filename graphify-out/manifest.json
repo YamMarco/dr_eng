@@ -420,8 +420,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/README.md": {
-    "mtime": 1792154723.9869115,
-    "ast_hash": "bd9bda089adcca0a6a7fc8c312061acc",
+    "mtime": 1792157517.3226676,
+    "ast_hash": "0295f6d5d8af268f65967aad362c8309",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenSkeletons.ts": {
@@ -485,18 +485,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditWorkspace.svelte": {
-    "mtime": 1792154723.973855,
-    "ast_hash": "d3bdc6f1a80eeb156b499001d29656d9",
+    "mtime": 1792157484.123274,
+    "ast_hash": "cab9b7a655512ac91fcc82a5768f7836",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
-    "mtime": 1792156182.206387,
-    "ast_hash": "a45f0ba7673902a0d14cd8ce76668787",
+    "mtime": 1792157606.2610528,
+    "ast_hash": "4107d9df58d792c5ee4f3d749cd08fda",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editModel.svelte.ts": {
-    "mtime": 1792154724.0114813,
-    "ast_hash": "bead87a12c05dda1d0e007ed04e92b0c",
+    "mtime": 1792157540.0015595,
+    "ast_hash": "0a98729db8e7a94e77cb281de9b5c51d",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/validate.ts": {
@@ -1750,13 +1750,13 @@
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit/+page.svelte": {
-    "mtime": 1792154723.9592836,
-    "ast_hash": "45aba3eb67e59af466c4d1eac719b6cc",
+    "mtime": 1792157484.1220827,
+    "ast_hash": "c8f1bc5c1c5f7db2861b3219fc1346cd",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit/+page.ts": {
-    "mtime": 1792154723.9633005,
-    "ast_hash": "ace0bc09cc3309312ad219816b2265dc",
+    "mtime": 1792157539.869774,
+    "ast_hash": "15281428208be969a040d2dbc26d4959",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/vocab-images/+page.svelte": {
@@ -1855,8 +1855,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1792156798.780128,
-    "ast_hash": "2b5de587413870a9c70de6d276c9e40d",
+    "mtime": 1792157484.124273,
+    "ast_hash": "a9a4c668a52a68e58797918c84c86035",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/words/+page.svelte": {

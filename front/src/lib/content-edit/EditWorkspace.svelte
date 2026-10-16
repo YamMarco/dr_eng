@@ -1,7 +1,7 @@
 <script lang="ts">
 	// The /edit workspace shell: one save + a switch between the whole-module
-	// map and the single-lesson editor. Loads every section of the module at
-	// once. Detachable — part of src/lib/content-edit/.
+	// map and the single-lesson editor. Loads every section on the module's
+	// path at once. Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
@@ -13,12 +13,14 @@
 	import GraphEditor from './GraphEditor.svelte';
 	import LessonEditorView from './LessonEditorView.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
+	import { getModule } from '$lib/curriculum';
 
 	let {
+		module: moduleId = 'c',
 		lesson = '',
 		round = 0,
 		screen = -1
-	} = $props<{ section?: string; lesson?: string; round?: number; screen?: number }>();
+	} = $props<{ module?: string; lesson?: string; round?: number; screen?: number }>();
 
 	let mode = $state<'graph' | 'lesson'>('graph');
 
@@ -27,7 +29,7 @@
 	let dirty = $derived(editModel.dirty || rulesStore.dirty);
 
 	onMount(() => {
-		editModel.load();
+		editModel.load(moduleId);
 		rulesStore.load();
 		if (lesson && editModel.node(lesson)) {
 			editModel.select(
@@ -138,6 +140,10 @@
 				onclick={() => (mode = 'lesson')}>✏️ עריכת שיעור</button
 			>
 		</div>
+
+		<span class="rounded-lg bg-line/60 px-2.5 py-1.5 text-sm font-bold" dir="ltr"
+			>{getModule(moduleId)?.letter ?? moduleId}</span
+		>
 
 		<UndoRedoButtons model={editModel} />
 

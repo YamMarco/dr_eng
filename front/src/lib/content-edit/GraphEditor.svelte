@@ -38,6 +38,16 @@
 
 	let wrap = $state<HTMLDivElement>();
 
+	// Section coordinates are shared across modules (E shows C's reading part far
+	// down), so open the map at its first section rather than at y = 0.
+	let scroller = $state<HTMLDivElement>();
+	let scrolledToTop = false;
+	$effect(() => {
+		if (scrolledToTop || !scroller || !bands.length) return;
+		scrolledToTop = true;
+		scroller.scrollTop = Math.max(0, Math.min(...bands.map((b) => b.top)) * scale - 16);
+	});
+
 	// Pointer position in canvas coordinates (undoes the fit-to-width scale).
 	function local(e: PointerEvent) {
 		const r = wrap!.getBoundingClientRect();
@@ -307,7 +317,11 @@
 		מחברת מבטלת אותו · Ctrl+לחיצה לבחירת כמה שיעורים למיזוג
 	</div>
 
-	<div class="min-h-0 flex-1 overflow-auto bg-surface/30 px-6 py-4" bind:clientWidth={viewWidth}>
+	<div
+		bind:this={scroller}
+		class="min-h-0 flex-1 overflow-auto bg-surface/30 px-6 py-4"
+		bind:clientWidth={viewWidth}
+	>
 		<!-- Sized to the scaled canvas so the scroll area matches what's drawn. -->
 		<div
 			class="relative mx-auto"
