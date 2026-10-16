@@ -112,6 +112,31 @@ export const selfCheckSchema = z
 		'The student writes freely, then reveals a model answer to compare. Never scored ("YOUR TURN").'
 	);
 
+export const speakSchema = z
+	.strictObject({
+		type: z.literal('speak'),
+		prompt: z
+			.string()
+			.describe('The question, in English as the exam asks it. Mini-markdown; the student can listen to it.'),
+		tip: z
+			.string()
+			.optional()
+			.describe('Optional Hebrew coaching line under the question (which move to use).'),
+		targetSeconds: z
+			.number()
+			.int()
+			.min(5)
+			.describe('How long the answer should run; marked on the time bar.'),
+		modelAnswer: z.string().optional().describe('An example spoken answer, shown after the take.'),
+		checklist: z
+			.array(z.string())
+			.optional()
+			.describe('Items the student ticks about their own recording. Not scored.')
+	})
+	.describe(
+		'The student records one spoken answer in a single take (no pause), listens back and self-checks. Recordings stay on the device. Without a microphone it runs as a stopwatch. Never scored.'
+	);
+
 export const passageSchema = z
 	.strictObject({
 		type: z.literal('passage'),
@@ -465,6 +490,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	matchPairsSchema,
 	matchDefinitionsSchema,
 	selfCheckSchema,
+	speakSchema,
 	passageSchema,
 	sentenceCompletionSchema
 ]);

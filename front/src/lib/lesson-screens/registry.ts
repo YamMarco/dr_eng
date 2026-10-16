@@ -20,6 +20,7 @@ import WritingTask from './WritingTask.svelte';
 import WordCard from './WordCard.svelte';
 import SpellWord from './SpellWord.svelte';
 import SelfCheck from './SelfCheck.svelte';
+import Speak from './Speak.svelte';
 import MatchPairs from './MatchPairs.svelte';
 import MatchDefinitions from './MatchDefinitions.svelte';
 import Passage from './Passage.svelte';
@@ -45,6 +46,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'word-card': WordCard,
 	'spell-word': SpellWord,
 	'self-check': SelfCheck,
+	speak: Speak,
 	'match-pairs': MatchPairs,
 	'match-definitions': MatchDefinitions,
 	passage: Passage,

@@ -20,6 +20,7 @@ export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	'passage-quiz': 'קטע + שאלות פתוחות',
 	'passage-mcq': 'קטע + שאלות אמריקאיות',
 	'self-check': 'בדיקה עצמית',
+	speak: 'דיבור (הקלטה)',
 	'sentence-completion': 'השלמת משפט',
 	passage: 'קטע קריאה (מבחן)',
 	'timed-reading': 'קריאה מתוזמנת',

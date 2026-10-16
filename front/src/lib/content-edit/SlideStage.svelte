@@ -890,6 +890,23 @@
 											{/if}
 										</OptionalGroup>
 									{/if}
+								{:else if screen.type === 'speak'}
+									<SettingsGroup title="הקלטה">
+										<NumberField
+											label="זמן יעד (שניות)"
+											min={5}
+											value={screen.targetSeconds}
+											onChange={(v) => (screen.targetSeconds = v ?? 60)}
+										/>
+										<p class="text-xs font-bold text-muted">
+											רשימת בדיקה עצמית - התלמיד מסמן אחרי ההקלטה (לא נכנס לציון)
+										</p>
+										<StringListEditor
+											bind:items={() => screen.checklist ?? [], (v) => (screen.checklist = v)}
+											addLabel="+ סעיף"
+											dir="auto"
+										/>
+									</SettingsGroup>
 								{:else if screen.type === 'spell-word'}
 									<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
 										<label class="flex items-center gap-1.5">

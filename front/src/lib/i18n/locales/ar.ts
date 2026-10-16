@@ -259,6 +259,7 @@ export const ar: DictionaryOverride = {
 		spellWordCopy: 'تمرين: تهجئة',
 		spellWordListen: 'تمرين: إملاء',
 		selfCheck: 'تمرين: إجابة حرة',
+		speak: 'تمرين: تحدث',
 		passageQuiz: 'تمرين: إجابة قصيرة',
 		sentenceCompletion: 'تمرين: إكمال جملة',
 		matchPairs: 'تمرين: صِلوا الأزواج',
@@ -278,6 +279,18 @@ export const ar: DictionaryOverride = {
 		compareNote: 'لا علامة في هذه الشاشة - قارنوا ما كتبتم بالإجابة أعلاه.',
 		wordCount: (n: number) => `${n} كلمة`,
 		wordTarget: (min: number, max: number) => `الهدف: ${min}-${max} كلمة`
+	},
+	speak: {
+		start: 'بدء التسجيل',
+		stop: 'إنهاء',
+		again: 'تسجيل جديد',
+		recording: 'نسجّل - تسجيل واحد، بلا توقف',
+		target: (time: string) => `الهدف: ${time}`,
+		reached: (time: string) => `أحسنتم! تحدثتم ${time} - وصلتم إلى الهدف`,
+		short: (time: string) => `تحدثتم ${time}، أقل قليلًا من الهدف. يمكن التسجيل من جديد`,
+		listenBack: 'استمعوا إلى أنفسكم',
+		noMic: 'لا وصول إلى الميكروفون، لذلك نقيس الوقت فقط. تحدثوا بصوت عالٍ واضغطوا إنهاء.',
+		privacy: 'يبقى التسجيل على هذا الجهاز فقط'
 	},
 	wordCard: {
 		listenLabel: 'استماع',

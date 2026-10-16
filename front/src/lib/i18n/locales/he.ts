@@ -308,6 +308,7 @@ export const he = {
 		spellWordCopy: 'תרגיל: איות',
 		spellWordListen: 'תרגיל: הכתבה',
 		selfCheck: 'תרגיל: תשובה חופשית',
+		speak: 'תרגיל: דיבור',
 		passageQuiz: 'תרגיל: תשובה קצרה',
 		sentenceCompletion: 'תרגיל: השלמת משפט',
 		matchPairs: 'תרגיל: התאימו זוגות',
@@ -327,6 +328,18 @@ export const he = {
 		compareNote: 'אין ציון על המסך הזה — השוו את מה שכתבתם לתשובה שלמעלה.',
 		wordCount: (n: number) => `${n} מילים`,
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
+	},
+	speak: {
+		start: 'התחלת הקלטה',
+		stop: 'סיום',
+		again: 'הקלטה חדשה',
+		recording: 'מקליטים - הקלטה אחת, בלי עצירות',
+		target: (time: string) => `יעד: ${time}`,
+		reached: (time: string) => `יפה! דיברתם ${time} - עמדתם ביעד`,
+		short: (time: string) => `דיברתם ${time}, קצת פחות מהיעד. אפשר להקליט שוב`,
+		listenBack: 'האזינו לעצמכם',
+		noMic: 'אין גישה למיקרופון, אז מודדים רק זמן. דברו בקול ולחצו סיום.',
+		privacy: 'ההקלטה נשארת רק במכשיר הזה'
 	},
 	wordCard: {
 		listenLabel: 'השמעה',

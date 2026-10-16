@@ -25,7 +25,8 @@ export type SpellWordScreen = z.infer<typeof s.spellWordSchema>;
 export type MarkAllCategory = z.infer<typeof s.markAllCategorySchema>;
 export type MarkAllScreen = z.infer<typeof s.markAllSchema>;
 export type SelfCheckScreen = z.infer<typeof s.selfCheckSchema>;
-export type PassageScreen = z.infer<typeof s.passageSchema>;
+export type SpeakScreen = z.infer<typeof s.speakSchema>;
+export type PassageScreen =z.infer<typeof s.passageSchema>;
 export type SentenceCompletionScreen = z.infer<typeof s.sentenceCompletionSchema>;
 export type LessonScreen = z.infer<typeof s.lessonScreenSchema>;
 
@@ -86,6 +87,7 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'spell-word':
 			return !screen.word.trim();
 		case 'self-check':
+		case 'speak':
 			return !screen.prompt.trim();
 		case 'match-pairs':
 			return screen.pairs.length < 2;

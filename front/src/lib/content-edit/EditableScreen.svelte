@@ -258,6 +258,27 @@
 					onInput={(v) => set('modelAnswer', v)}
 				/>
 			</div>
+		{:else if screen.type === 'speak'}
+			<p class="text-xs font-bold text-muted">השאלה (באנגלית)</p>
+			<MarkdownInput
+				bare
+				minRows={2}
+				dir="ltr"
+				value={screen.prompt}
+				onInput={(v) => set('prompt', v)}
+			/>
+			<p class="text-xs font-bold text-muted">טיפ (לא חובה)</p>
+			<MarkdownInput bare minRows={1} value={screen.tip ?? ''} onInput={(v) => set('tip', v)} />
+			<p class="text-xs font-bold text-muted">תשובה לדוגמה (לא חובה)</p>
+			<div class="rounded-xl bg-surface/70 p-2">
+				<MarkdownInput
+					bare
+					minRows={2}
+					dir="ltr"
+					value={screen.modelAnswer ?? ''}
+					onInput={(v) => set('modelAnswer', v)}
+				/>
+			</div>
 		{:else if screen.type === 'writing-task'}
 			{@const paragraph = isExam || screen.minWords !== undefined}
 			<MarkdownInput bare minRows={3} value={screen.prompt} onInput={(v) => set('prompt', v)} />

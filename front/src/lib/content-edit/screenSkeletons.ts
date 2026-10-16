@@ -20,6 +20,7 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 			'passage-quiz',
 			'passage-mcq',
 			'self-check',
+			'speak',
 			'sentence-completion'
 		]
 	},
@@ -47,6 +48,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, prompt: '', options: ['', ''], correctIndex: 0 };
 		case 'self-check':
 			return { type, prompt: '', modelAnswer: '' };
+		case 'speak':
+			return { type, prompt: '', targetSeconds: 60 };
 		case 'cloze-pick':
 			return { type, clause: '', options: ['', ''], correctIndices: [] };
 		case 'mark-all':
