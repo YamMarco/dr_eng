@@ -116,6 +116,29 @@
 	font-variant-numeric: tabular-nums;
 }
 
+/* Page column widths. Phone stays a 32rem column; desktop (lg = side rail
+   shows) widens it. app-col: single-column reading/learning pages.
+   app-wide: dashboards that lay cards out in a grid. */
+@utility app-col {
+	margin-inline: auto;
+	width: 100%;
+	max-width: 32rem;
+	@media (min-width: 1024px) {
+		max-width: 44rem;
+	}
+}
+@utility app-wide {
+	margin-inline: auto;
+	width: 100%;
+	max-width: 32rem;
+	@media (min-width: 768px) {
+		max-width: 42rem;
+	}
+	@media (min-width: 1024px) {
+		max-width: 64rem;
+	}
+}
+
 /* Shared "pressable puck" — the layered ::before button (ring outline + a
    bottom lip that shrinks away on press), used for both the primary CTA
    button and lesson-path nodes. Needs real transform compositing

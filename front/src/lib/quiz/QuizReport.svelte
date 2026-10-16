@@ -37,7 +37,7 @@
 	const anyFailed = $derived(Object.values(grades).some((g) => g.status === 'failed'));
 </script>
 
-<main class="mx-auto w-full max-w-lg flex-1 overflow-y-auto px-4 pt-10 pb-12">
+<main class="app-col flex-1 overflow-y-auto px-4 pt-10 pb-12">
 	<div class="flex flex-col items-center text-center">
 		<span
 			class="flex h-16 w-16 items-center justify-center rounded-2xl {score.passed

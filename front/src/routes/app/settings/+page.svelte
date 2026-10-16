@@ -37,7 +37,7 @@
 
 <AppBar title={i18n.dict.settings.title} />
 
-<main class="mx-auto w-full max-w-lg flex-1 px-4 pt-6 pb-28">
+<main class="app-col flex-1 px-4 pt-6 pb-28">
 	{#if profile.value}
 		{@const current = profile.value}
 		<section

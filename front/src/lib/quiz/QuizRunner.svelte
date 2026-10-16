@@ -300,7 +300,7 @@
 		</AppBar>
 
 		<div
-			class="mx-auto w-full max-w-lg border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
+			class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
 				? 'lg:max-w-5xl'
 				: ''}"
 		>
@@ -331,7 +331,7 @@
 		     passage-less one (e.g. writing) only widens the column from the same
 		     start edge instead of re-centering everything. -->
 		<main
-			class="mx-auto flex min-h-0 w-full max-w-lg flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {quizHasPassage
+			class="app-col flex min-h-0  flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {quizHasPassage
 				? 'lg:max-w-5xl'
 				: ''} {activePassage
 				? 'lg:grid lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:pb-0'
@@ -391,7 +391,7 @@
 
 		<div class="sticky bottom-0 border-t border-line/70 bg-canvas/90 px-4 py-3 backdrop-blur">
 			<!-- Lines up under the question column, wherever the passage is. -->
-			<div class="mx-auto max-w-lg {quizHasPassage ? 'lg:max-w-5xl lg:*:w-[calc(50%-1rem)]' : ''}">
+			<div class="app-col {quizHasPassage ? 'lg:max-w-5xl lg:*:w-[calc(50%-1rem)]' : ''}">
 				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
 					{footerLabel}
 				</Button>

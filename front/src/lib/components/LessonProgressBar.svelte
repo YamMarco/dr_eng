@@ -31,7 +31,7 @@
 	});
 </script>
 
-<div class="flex w-full items-center gap-3 {compact ? '' : 'mx-auto max-w-lg px-4 py-3'}">
+<div class="flex w-full items-center gap-3 {compact ? '' : 'app-col px-4 py-3'}">
 	<div
 		class="flex min-w-0 flex-1 items-center gap-1.5"
 		role="progressbar"

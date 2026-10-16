@@ -62,14 +62,17 @@
 	}
 </script>
 
+<div class="lg:-mx-40 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+<div class="lg:sticky lg:top-0 lg:max-h-[calc(100dvh-15rem)] lg:overflow-y-auto">
 <ExerciseKindBadge label={i18n.dict.exerciseKind.passageQuiz} />
 {#if hasParagraphMarkers(screen.text)}
 	<PassageText text={screen.text} />
 {:else}
 	<div class="leading-relaxed"><Md block text={screen.text} /></div>
 {/if}
+</div>
 
-<div class="mt-6 flex flex-col gap-5">
+<div class="mt-6 flex flex-col gap-5 lg:mt-0">
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
@@ -100,4 +103,5 @@
 			{/if}
 		</div>
 	{/each}
+</div>
 </div>

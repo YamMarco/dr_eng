@@ -37,10 +37,9 @@
 					onclick={() => (open = open === m ? null : m)}
 					>{#if m.source === 'l2' && m.tag === 'missing-word' && m.suggestions?.[0]}<span
 							class="text-brand-dark/70 italic">{m.suggestions[0]}{' '}</span
-						>{piece.text}{:else if m.source === 'l2' && (m.tag === 'wrong-word' || m.tag === 'word-choice') && m.suggestions?.[0]}<ruby
-							><span class="line-through">{piece.text}</span><rt
-								class="text-base font-semibold text-brand-dark">{m.suggestions[0]}</rt
-							></ruby
+						>{piece.text}{:else if m.source === 'l2' && (m.tag === 'wrong-word' || m.tag === 'word-choice') && m.suggestions?.[0]}<span class="line-through">{piece.text}</span><span
+							class="font-semibold text-brand-dark"
+							>{' '}{m.suggestions[0]}</span
 						>{:else}{piece.text}{/if}</button
 				>{:else}{piece.text}{/if}{/each}
 	</p>

@@ -51,6 +51,10 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 ## 4. Devices
 
 - Both desktop and mobile, by design. **[decided]**
+- Desktop = `lg` (1024px+): the bottom nav becomes a side rail (`NavBar`), page columns
+  widen via the `app-col` / `app-wide` utilities in `layout.css` (never a raw `max-w-lg`),
+  and passage screens go two-pane (passage beside its questions). Phone layout is the
+  base; desktop only adds `lg:` rules. **[decided]**
 - **Writing** (essays, long answers) is steered to the desktop. **Short tasks** (words,
   reading questions, reviews) fit the phone. A phone user who reaches a writing step gets
   the note plus a phone-sized alternative, never a block. **[decided]**
