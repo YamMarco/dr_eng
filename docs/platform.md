@@ -20,7 +20,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
   - `$lib/platform.ts` `MOBILE_BUILD` is the compile-time switch.
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment. Change it when there's a real domain.
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
-- **CORS:** `/api/grade`, `/api/ocr` and `/api/account` accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
+- **CORS:** `/api/grade`, `/api/ocr`, `/api/speak` and `/api/account` accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
 
 ## Accounts (Supabase Auth, email + password)
 

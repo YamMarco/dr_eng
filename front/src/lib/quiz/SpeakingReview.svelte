@@ -16,6 +16,8 @@
 	import type { Take } from '$lib/recorder.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import Md from '$lib/components/Md.svelte';
+	import SpeakingFeedback from '$lib/feedback/SpeakingFeedback.svelte';
+	import type { SpeakingVerdict } from '$lib/feedback/types';
 
 	let {
 		label,
@@ -51,12 +53,23 @@
 	// svelte-ignore state_referenced_locally
 	let answeredAll = $state(grade?.judgement?.answeredAll ?? true);
 	let audioFailed = $state(false);
+	// What the AI heard and advised, kept with the grade.
+	// svelte-ignore state_referenced_locally
+	let ai = $state(grade?.ai);
 
 	function regrade() {
 		if (zeroByRule) return;
 		if (!criteria.every((c) => bands[c.id])) return;
 		const judgement = { bands: { ...bands }, answeredAll } as SpeakingJudgement;
-		onGrade(gradeSpeaking(cobeRubric, { level, part, points, seconds }, judgement));
+		onGrade({ ...gradeSpeaking(cobeRubric, { level, part, points, seconds }, judgement), ai });
+	}
+
+	/** The AI judged the recording: its bands fill the rubric (still editable). */
+	function fromAi({ judgement, ...rest }: SpeakingVerdict) {
+		ai = rest;
+		bands = { ...judgement.bands };
+		answeredAll = judgement.answeredAll;
+		regrade();
 	}
 
 	$effect(() => {
@@ -98,6 +111,21 @@
 			{/if}
 			<p class="text-xs font-semibold text-ink/70">{t.seconds(seconds)}</p>
 		</div>
+	{/if}
+
+	{#if take?.audioUrl && !audioFailed && !zeroByRule}
+		<SpeakingFeedback
+			{level}
+			{part}
+			question={prompt}
+			{seconds}
+			audioUrl={take.audioUrl}
+			verdict={grade?.ai}
+			onVerdict={fromAi}
+		/>
+		{#if ai}
+			<p class="text-xs text-muted">{t.aiFilled}</p>
+		{/if}
 	{/if}
 
 	{#if zeroByRule}

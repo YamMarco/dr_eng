@@ -106,4 +106,16 @@ export type ExamGrade = {
 	seconds?: number;
 	/** speaking: the bands the criteria were judged in (see feedback/speaking.ts). */
 	judgement?: SpeakingJudgement;
+	/** speaking: what the AI heard and its tips, when it judged the recording. */
+	ai?: Omit<SpeakingVerdict, 'judgement'>;
+};
+
+/** The LLM's reply on one COBE recording (/api/speak). Points come from gradeSpeaking. */
+export type SpeakingVerdict = {
+	transcript: string;
+	judgement: SpeakingJudgement;
+	/** Hebrew, 1-2 items. */
+	strengths: string[];
+	/** Hebrew, 2-3 items, most important first. */
+	tips: string[];
 };

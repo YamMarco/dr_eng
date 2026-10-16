@@ -18,6 +18,11 @@ Three parts, a set of two questions each, one recording per set (max 2 files), 3
 
 `feedback/speaking.ts` `gradeSpeaking(rubric, {level, part, points, seconds}, {bands, answeredAll})`: each criterion is judged in a band (76-100 / 55-75 / 26-54 / 0-25, counted at its midpoint), weighted by level, then the deductions. Pure; tests in `tests/cobe.test.ts`. Today the judgement comes from the student (self-assessment in the exam report, `quiz/SpeakingReview.svelte`); the voice-LLM grader will supply the same judgement.
 
+## Progress and AI feedback
+
+- **Take history** (`lib/takeHistory.ts`): per question (prompt hash) the FIRST and LATEST take's audio in IndexedDB, and counts (takes, reached the target) in localStorage. Device only. After a lesson take, `TakeCompare` shows the first try next to now (seconds, +/- badge, "reached the target for the first time", the first take to play). The module page's speaking row shows questions practiced and the share of takes that reached the target.
+- **AI feedback** (`/api/speak`, role `grade-speaking`, prompt `server/prompts/grade-speaking.md`): the take is converted in the browser to 12 kHz mono WAV (`lib/audioWav.ts`, trimmed to 2 minutes) and sent with the question set and the level. The model returns a transcript, a band per criterion, answeredAll and Hebrew strengths / tips. Lessons: a "משוב AI על ההקלטה" button after each take (`feedback/SpeakingFeedback.svelte`). Exam report: the same button fills the rubric bands (the student can still change them); the score always comes from `gradeSpeaking`.
+
 ## Part B - Project (cobe-1)
 
 The 3-step model: **Personal Hook** (why I chose the topic) -> **Honest Pivot** (rescue phrase when a fact is forgotten) -> **"So What?"** (why it matters today). Steps 1-3 lessons: recognise (mcq, cloze-pick, mark-all, sentence-completion), then a `self-check` where the student drafts their own project answer. The simulation records each step, then the whole set in one take.
@@ -56,4 +61,6 @@ The `speak` prompts are generic ("the people in the clip"); rewrite them once ea
 - The "Part C needs at least one answer" rule is not enforced in code.
 - Drafts in the self-check screens are not saved, so the simulation cannot show the student's own hook back.
 - Arabic content translations (`translations/ar.json`) missing for cobe-1 / cobe-2; titles are in. Report strings (`cobeReview`) are Hebrew only.
-- Voice-LLM grading not built; it plugs into `gradeSpeaking` (see `feedback-framework.md` when added).
+- AI feedback is one-shot per take, not yet a back-and-forth voice conversation.
+- The AI never sees the Part C clip: it judges whether answers respond to the questions, not their accuracy about the clip.
+- Take history is per device and per prompt text: editing a prompt starts a new history.

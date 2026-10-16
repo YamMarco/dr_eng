@@ -330,6 +330,23 @@ export const he = {
 		wordCount: (n: number) => `${n} מילים`,
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
 	},
+	speakAi: {
+		button: 'משוב AI על ההקלטה',
+		listening: 'מקשיבים להקלטה...',
+		failed: 'לא הצלחנו לבדוק עכשיו. נסו שוב בעוד רגע.',
+		title: 'משוב AI',
+		strengths: 'מה עבד',
+		tips: 'מה לשפר',
+		transcript: 'מה שמענו'
+	},
+	takeCompare: {
+		firstTry: 'ההקלטה נשמרה כנקודת ההתחלה שלכם. בפעם הבאה תשמעו כמה התקדמתם.',
+		title: 'ההתקדמות שלכם בשאלה הזאת',
+		then: (s: number) => `בפעם הראשונה: ${s} שניות`,
+		now: (s: number) => `עכשיו: ${s} שניות`,
+		reachedNow: 'הגעתם ליעד - בפעם הראשונה לא!',
+		listenFirst: 'האזינו לניסיון הראשון שלכם'
+	},
 	cobeReview: {
 		title: 'בדיקת ההקלטות',
 		pendingTitle: 'בדקו את ההקלטות כדי לקבל ציון',
@@ -349,7 +366,10 @@ export const he = {
 		seconds: (s: number) => `${s} שניות`,
 		tooShort: (min: number) => `פחות מ-${min} שניות - לפי המחוון החלק מקבל 0.`,
 		lengthOff: (p: number) => `הורדה של ${p}% מכל הקריטריונים על אורך ההקלטה (פחות מדקה)`,
-		setOff: 'עניתם רק על חלק מהשאלות: חצי מהניקוד על פיתוח התוכן'
+		setOff: 'עניתם רק על חלק מהשאלות: חצי מהניקוד על פיתוח התוכן',
+		aiFilled: 'ה-AI בחר את הרמות. אפשר לשנות אם אתם לא מסכימים.',
+		practiced: (questions: number, percent: number) =>
+			`${questions === 1 ? 'שאלה אחת תורגלה' : `${questions} שאלות תורגלו`} · ${percent}% מההקלטות הגיעו ליעד`
 	},
 	video: {
 		placeholderTitle: 'כאן יופיע הקליפ',

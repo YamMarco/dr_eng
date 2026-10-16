@@ -5,7 +5,7 @@
 // next model in GEMINI_MODELS is tried when one is overloaded.
 import { env } from '$env/dynamic/private';
 
-export type LlmRole = 'grade-short' | 'grade-reading' | 'grade-essay' | 'ocr';
+export type LlmRole = 'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'ocr';
 
 export interface LlmResult {
 	text: string;
@@ -21,6 +21,7 @@ const GEMINI_MODELS: Record<LlmRole, string[]> = {
 	'grade-short': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
 	'grade-reading': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
 	'grade-essay': ['gemini-3.8-flash', 'gemini-3.5-flash'],
+	'grade-speaking': ['gemini-3.8-flash', 'gemini-3.5-flash'],
 	ocr: ['gemini-3.8-flash', 'gemini-3.5-flash']
 };
 
@@ -41,13 +42,15 @@ export function llmConfigured(): boolean {
 
 /**
  * One system + user turn. `json` asks for a JSON object back (the caller parses and validates it).
- * `image` (a data: URL) is sent alongside `user` for vision roles.
+ * `image` (a data: URL) is sent alongside `user` for vision roles, `audio` (base64 WAV) for
+ * listening roles.
  */
 export async function chat(opts: {
 	role: LlmRole;
 	system: string;
 	user: string;
 	image?: string;
+	audio?: string;
 	json?: boolean;
 	maxTokens?: number;
 }): Promise<LlmResult> {
@@ -72,7 +75,12 @@ export async function chat(opts: {
 									{ type: 'text', text: opts.user },
 									{ type: 'image_url', image_url: { url: opts.image } }
 								]
-							: opts.user
+							: opts.audio
+								? [
+										{ type: 'text', text: opts.user },
+										{ type: 'input_audio', input_audio: { data: opts.audio, format: 'wav' } }
+									]
+								: opts.user
 					}
 				],
 				max_tokens: opts.maxTokens ?? 1500,

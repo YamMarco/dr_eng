@@ -15,6 +15,10 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import TakeCompare from './TakeCompare.svelte';
+	import SpeakingFeedback from '$lib/feedback/SpeakingFeedback.svelte';
+	import { recordTake, takeKey, type SavedTake } from '$lib/takeHistory';
+	import { profile } from '$lib/profile.svelte';
 
 	const mode = getScreenMode();
 	const answerSlot = mode === 'quiz' ? getQuizAnswerSlot() : undefined;
@@ -24,7 +28,6 @@
 		onAdvance,
 		// eslint-disable-next-line no-useless-assignment
 		disabled = $bindable(false),
-		 
 		label = $bindable('')
 	}: {
 		screen: SpeakScreen;
@@ -59,15 +62,31 @@
 		return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 	}
 
-	/** Stops the take; in an exam it becomes this question's answer. */
+	// Lessons: this question's first take from before, to hear the progress.
+	let progress = $state<{ first?: SavedTake } | null>(null);
+	const level = profile.value?.units === '5' ? '5' : '4';
+
+	/** Stops the take; in an exam it becomes this question's answer, in a lesson it joins the history. */
 	async function stop() {
 		await recorder.stop();
-		answerSlot?.set(recorder.take);
+		if (answerSlot) return answerSlot.set(recorder.take);
+		const blob = recorder.audioUrl ? await (await fetch(recorder.audioUrl)).blob() : undefined;
+		const first = await recordTake(
+			takeKey(screen.prompt),
+			{ blob, seconds: recorder.elapsedMs / 1000 },
+			screen.targetSeconds
+		);
+		progress = { first };
+	}
+
+	function record() {
+		progress = null;
+		void recorder.start();
 	}
 
 	function toggle() {
 		if (recorder.state === 'recording') void stop();
-		else if (recorder.state === 'idle') void recorder.start();
+		else if (recorder.state === 'idle') record();
 	}
 
 	export async function primaryAction() {
@@ -158,7 +177,7 @@
 
 		<button
 			type="button"
-			onclick={() => recorder.start()}
+			onclick={record}
 			class="mt-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold text-brand transition hover:bg-brand-soft active:scale-[0.98]"
 		>
 			<RotateCcw size={16} aria-hidden="true" />
@@ -166,6 +185,23 @@
 		</button>
 
 		{#if mode === 'lesson'}
+			{#if progress}
+				<TakeCompare first={progress.first} {seconds} targetSeconds={screen.targetSeconds} />
+			{/if}
+			{#if recorder.audioUrl}
+				{#key recorder.audioUrl}
+					<div class="mt-4">
+						<SpeakingFeedback
+							{level}
+							part={screen.part}
+							question={screen.prompt}
+							{seconds}
+							audioUrl={recorder.audioUrl}
+							showBands
+						/>
+					</div>
+				{/key}
+			{/if}
 			<SelfReview modelAnswer={screen.modelAnswer} checklist={screen.checklist} />
 		{/if}
 	</div>

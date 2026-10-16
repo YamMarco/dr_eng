@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1792163626.097236,
-    "ast_hash": "a6ae204ca640686181c4e0a7b6f3dc2a",
+    "mtime": 1792164935.1129487,
+    "ast_hash": "1b1373222b603a13939225b9a3cfbd25",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1235,8 +1235,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llm.ts": {
-    "mtime": 1792154724.0343442,
-    "ast_hash": "4634fe2963203eabf0816d123e2c4b67",
+    "mtime": 1792164616.4535508,
+    "ast_hash": "d704a2de5a33e3609c1e71c8aff75464",
     "semantic_hash": ""
   },
   "llm-gateway/README.md": {
@@ -1245,8 +1245,8 @@
     "semantic_hash": ""
   },
   "llm-gateway/config.yaml": {
-    "mtime": 1792154724.0952964,
-    "ast_hash": "5b85a8df8c70499ff9eb7134993f3e13",
+    "mtime": 1792164616.4543743,
+    "ast_hash": "761f77291384e064b4146095cb762858",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/calloutIcons.ts": {
@@ -1540,8 +1540,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/types.ts": {
-    "mtime": 1792163071.1246176,
-    "ast_hash": "8d1ba610fcc07d5c09663add366d0f74",
+    "mtime": 1792164660.2138407,
+    "ast_hash": "8c02a96c5c5c54a5064a22e92779f3cf",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchDefinitions.svelte": {
@@ -1570,8 +1570,8 @@
     "semantic_hash": ""
   },
   "docs/feedback-framework.md": {
-    "mtime": 1792154724.009473,
-    "ast_hash": "7164228a4a922ee7ef1f08e97a192e90",
+    "mtime": 1792164944.080903,
+    "ast_hash": "66936c1115d5b4d92d968e30313b9140",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay.md": {
@@ -1735,8 +1735,8 @@
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1792154724.0620255,
-    "ast_hash": "ded98a1e3b1e39f6c1e1d7ec4d30762e",
+    "mtime": 1792164616.4553862,
+    "ast_hash": "f9fcbd8457e4d00c2bb5ec1a6a60c11c",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1835,8 +1835,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/+page.svelte": {
-    "mtime": 1792156508.753237,
-    "ast_hash": "bdf891aecb7a7a628bd186b176f4ba1d",
+    "mtime": 1792164787.849892,
+    "ast_hash": "99c70e87373fd8e9ea294545532ac24c",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
@@ -1915,8 +1915,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1792157036.6786003,
-    "ast_hash": "7facba6cdee65c553592e2f03dfc27f1",
+    "mtime": 1792164935.1154504,
+    "ast_hash": "559412ca87c1d5548412ac25286230f1",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1950,8 +1950,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Speak.svelte": {
-    "mtime": 1792163927.979175,
-    "ast_hash": "5ec3ce51a0cf1eade2cd73a97eb85a2f",
+    "mtime": 1792164754.2666428,
+    "ast_hash": "2cd9ca73033f707ea93cf03ecacc1b2b",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Video.svelte": {
@@ -1965,8 +1965,8 @@
     "semantic_hash": ""
   },
   "docs/modules/cobe.md": {
-    "mtime": 1792163897.8767154,
-    "ast_hash": "82285a5c6ff3a59152f005b6e74db11e",
+    "mtime": 1792164935.1146283,
+    "ast_hash": "9577616ce726af5334d82244ce8ab2d3",
     "semantic_hash": ""
   },
   "graphify-out/converted/module-c-report-v3_b3755107.md": {
@@ -2025,8 +2025,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/SpeakingReview.svelte": {
-    "mtime": 1792163626.0961473,
-    "ast_hash": "05ba4c74aa8f77b0531fbcdfff043acc",
+    "mtime": 1792164787.849892,
+    "ast_hash": "f9c25f268321973723bc893a35c54648",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/cobe/index.ts": {
@@ -2042,6 +2042,46 @@
   "docs/material/cobe/COBE20232024TableofSpecsANDRubrics.pdf": {
     "mtime": 1792162880.563923,
     "ast_hash": "4e9e514c60bfce2e46d23f9f0b35e0ac",
+    "semantic_hash": ""
+  },
+  "front/src/lib/audioWav.ts": {
+    "mtime": 1792164660.8673468,
+    "ast_hash": "af9b05b8610d9e11aa9e3f068dce6929",
+    "semantic_hash": ""
+  },
+  "front/src/lib/feedback/SpeakingFeedback.svelte": {
+    "mtime": 1792164845.018474,
+    "ast_hash": "e6286feffe1a7d0a9628b4bda02686b4",
+    "semantic_hash": ""
+  },
+  "front/src/lib/feedback/speakingAi.ts": {
+    "mtime": 1792164661.035329,
+    "ast_hash": "2fa392ab977428baa8a6bec452052867",
+    "semantic_hash": ""
+  },
+  "front/src/lib/lesson-screens/TakeCompare.svelte": {
+    "mtime": 1792164790.6244192,
+    "ast_hash": "813b95ad950915b67d64b165e5d4ec88",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/speaking.ts": {
+    "mtime": 1792164642.119903,
+    "ast_hash": "0807556be6991b17d10caa61a466dadc",
+    "semantic_hash": ""
+  },
+  "front/src/lib/takeHistory.ts": {
+    "mtime": 1792164691.6418822,
+    "ast_hash": "1ec1110667a93e248c6ab964f7867925",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/speak/+server.ts": {
+    "mtime": 1792164642.3456721,
+    "ast_hash": "787e3106cd38b3161415d2b6f7cc6909",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/prompts/grade-speaking.md": {
+    "mtime": 1792164642.0361698,
+    "ast_hash": "3e8c7f377d58c2641c8e40849193adfb",
     "semantic_hash": ""
   }
 }

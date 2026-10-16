@@ -19,6 +19,7 @@
 	} from '$lib/dashboard/data';
 	import ExamNugget from '$lib/dashboard/ExamNugget.svelte';
 	import HubRow from '$lib/dashboard/HubRow.svelte';
+	import { speakingSummary } from '$lib/takeHistory';
 	import NextStepHero from '$lib/dashboard/NextStepHero.svelte';
 	import type { PageProps } from './$types';
 
@@ -80,6 +81,10 @@
 			return today.reviews + today.fresh
 				? i18n.dict.deck.sessionSize(today.reviews, today.fresh)
 				: t.wordsDone;
+		}
+		if (skill === 'speaking') {
+			const { questions, reachedPercent } = speakingSummary();
+			return questions ? i18n.dict.cobeReview.practiced(questions, reachedPercent) : undefined;
 		}
 		return skill === 'writing' && phone.current ? t.desktopNote : undefined;
 	}
