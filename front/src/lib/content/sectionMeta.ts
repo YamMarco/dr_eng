@@ -34,5 +34,15 @@ export const sectionMeta: SectionMeta[] = [
 			greeting: '70-90 words, every time',
 			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
 		}
+	},
+	{
+		id: 'cobe-1',
+		modules: ['cobe'],
+		skill: 'speaking',
+		titleEn: 'Part B - Project',
+		intro: {
+			greeting: 'Confidence, not memory',
+			goal: 'חמישה שיעורים לשאלות על הפרויקט: פתיחה אישית, משפט חילוץ כששוכחים פרט, למה הנושא חשוב היום, וסימולציה מוקלטת.'
+		}
 	}
 ];

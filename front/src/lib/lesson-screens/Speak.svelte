@@ -70,17 +70,22 @@
 {/if}
 
 <div class="mt-5 flex flex-col items-center gap-3">
-	<div
-		class="relative flex h-16 w-16 items-center justify-center rounded-full transition-colors duration-200 {recorder.state ===
+	<!-- Same action as the primary button: start, then stop. -->
+	<button
+		type="button"
+		onclick={primaryAction}
+		disabled={recorder.state === 'starting' || recorder.state === 'done'}
+		aria-label={label}
+		class="relative flex h-16 w-16 items-center justify-center rounded-full transition duration-200 active:scale-95 disabled:active:scale-100 {recorder.state ===
 		'recording'
 			? 'bg-brand text-white'
-			: 'bg-surface text-ink/50 ring-2 ring-line'}"
+			: 'bg-surface text-ink/50 ring-2 ring-line enabled:hover:text-brand enabled:hover:ring-brand'}"
 	>
 		{#if recorder.state === 'recording'}
 			<span class="absolute inset-0 rounded-full bg-brand/40 motion-safe:animate-ping"></span>
 		{/if}
 		<Mic size={28} aria-hidden="true" class="relative" />
-	</div>
+	</button>
 
 	<div class="w-full max-w-sm">
 		<div class="h-3 overflow-hidden rounded-full bg-line/60">

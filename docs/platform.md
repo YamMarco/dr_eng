@@ -48,7 +48,8 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 
 1. Settle `appId` in `capacitor.config.ts`. It's permanent once the app is published.
 2. `npm i @capacitor/android @capacitor/ios`, then `npx cap add android` / `npx cap add ios`.
-3. `npm run cap:sync` (mobile build + copy into the native projects), then open in Android Studio / Xcode.
+3. Microphone (the `speak` screen): Android `RECORD_AUDIO` in `AndroidManifest.xml`, iOS `NSMicrophoneUsageDescription` in `Info.plist`.
+4. `npm run cap:sync` (mobile build + copy into the native projects), then open in Android Studio / Xcode.
 
 Not done yet: progress lives in `localStorage` per device. Syncing it to the account needs tables (Drizzle) and is a separate step.
 

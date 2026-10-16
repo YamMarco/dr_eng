@@ -76,6 +76,18 @@ type Body =
 			content?: undefined;
 	  };
 
+/** A section's lesson file: 'c-3' -> content/c/c-3.ts exporting c3Lessons;
+ *  'cobe-1' -> content/cobe/cobe-1.ts exporting cobe1Lessons. */
+function sectionFile(sectionId: string) {
+	const match = /^([a-z]+)-(\d+)$/.exec(sectionId);
+	if (!match) throw error(400, `bad section id: ${sectionId}`);
+	const [, module, num] = match;
+	return {
+		relPath: `src/lib/content/${module}/${sectionId}.ts`,
+		arrayName: `${module}${num}Lessons`
+	};
+}
+
 export const POST: RequestHandler = async ({ request }) => {
 	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
 
@@ -111,11 +123,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		const { sectionId, upserts, deletes } = body;
 		if (!Array.isArray(upserts) || !Array.isArray(deletes))
 			throw error(400, 'missing upserts[]/deletes[]');
-		const fileNum = sectionId.replace(/^c-/, '');
-		relPath = `src/lib/content/c/c-${fileNum}.ts`;
+		const file = sectionFile(sectionId);
+		relPath = file.relPath;
 		label = `section ${sectionId}`;
 		transform = (raw) => {
-			const head = splitArrayHead(raw, `c${fileNum}Lessons`);
+			const head = splitArrayHead(raw, file.arrayName);
 			const { arrayText, tail } = extractArrayLiteral(raw, head);
 			const fresh = parseArrayLiteral(arrayText);
 			const merged = mergeById(fresh, upserts, deletes);
@@ -139,11 +151,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		if (!lessonId || !content) throw error(400, 'missing lessonId/content');
 		const meta = getLesson(lessonId);
 		if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
-		const fileNum = meta.section.replace(/^c-/, ''); // 'c-3' -> '3'
-		relPath = `src/lib/content/c/c-${fileNum}.ts`;
+		const file = sectionFile(meta.section);
+		relPath = file.relPath;
 		label = lessonId;
 		transform = (raw) => {
-			const head = splitArrayHead(raw, `c${fileNum}Lessons`);
+			const head = splitArrayHead(raw, file.arrayName);
 			const { arrayText, tail } = extractArrayLiteral(raw, head);
 			const lessons = parseArrayLiteral(arrayText);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -77,7 +77,7 @@ export const he = {
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
-		skills: { vocab: 'אוצר מילים', reading: 'הבנת הנקרא', writing: 'כתיבה' },
+		skills: { vocab: 'אוצר מילים', reading: 'הבנת הנקרא', writing: 'כתיבה', speaking: 'דיבור' },
 		hookResume: 'השארתם מבחן באמצע - ממשיכים',
 		hookReady: 'מוכנים למבחן!',
 		hookWords: (n: number) => `${n} מילים לחזרה היום`,

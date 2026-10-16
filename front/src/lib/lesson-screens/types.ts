@@ -26,7 +26,7 @@ export type MarkAllCategory = z.infer<typeof s.markAllCategorySchema>;
 export type MarkAllScreen = z.infer<typeof s.markAllSchema>;
 export type SelfCheckScreen = z.infer<typeof s.selfCheckSchema>;
 export type SpeakScreen = z.infer<typeof s.speakSchema>;
-export type PassageScreen =z.infer<typeof s.passageSchema>;
+export type PassageScreen = z.infer<typeof s.passageSchema>;
 export type SentenceCompletionScreen = z.infer<typeof s.sentenceCompletionSchema>;
 export type LessonScreen = z.infer<typeof s.lessonScreenSchema>;
 

@@ -117,7 +117,9 @@ export const speakSchema = z
 		type: z.literal('speak'),
 		prompt: z
 			.string()
-			.describe('The question, in English as the exam asks it. Mini-markdown; the student can listen to it.'),
+			.describe(
+				'The question, in English as the exam asks it. Mini-markdown; the student can listen to it.'
+			),
 		tip: z
 			.string()
 			.optional()

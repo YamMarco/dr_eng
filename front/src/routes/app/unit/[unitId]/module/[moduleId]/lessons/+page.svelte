@@ -245,7 +245,7 @@
 		}
 	});
 	afterNavigate(({ from }) => {
-		if (!from?.url.pathname.startsWith('/edit')) return jumpToAnchor();
+		if (!from?.url?.pathname.startsWith('/edit')) return jumpToAnchor();
 		try {
 			const y = Number(sessionStorage.getItem(scrollKey()));
 			if (y > 0) window.scrollTo({ top: y, behavior: 'instant' });

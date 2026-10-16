@@ -42,7 +42,7 @@ export interface LessonNode {
 }
 
 /** In the order a module's page lists them. */
-export const SKILLS = ['vocab', 'reading', 'writing'] as const;
+export const SKILLS = ['vocab', 'reading', 'writing', 'speaking'] as const;
 export type Skill = (typeof SKILLS)[number];
 
 export interface SectionMeta {

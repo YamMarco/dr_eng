@@ -3,7 +3,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { staggerDelay } from '$lib/motion';
-	import { BookOpen, ClipboardCheck, Languages, PenLine, Play } from '@lucide/svelte';
+	import { BookOpen, ClipboardCheck, Languages, Mic, PenLine, Play } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import type { Skill } from '$lib/content';
@@ -23,7 +23,7 @@
 	import type { PageProps } from './$types';
 
 	// A module's page: everything about one Bagrut module, in the same order for
-	// every module - the next step, then exams, vocabulary, reading, writing.
+	// every module - the next step, then exams, vocabulary, reading, writing, speaking.
 	let { data }: PageProps = $props();
 
 	let mod = $derived(data.mod);
@@ -70,7 +70,8 @@
 	const skillIcon: Record<Skill, Component> = {
 		vocab: Languages,
 		reading: BookOpen,
-		writing: PenLine
+		writing: PenLine,
+		speaking: Mic
 	};
 
 	function skillSub(skill: Skill, kind: 'engine' | 'path'): string | undefined {
@@ -93,10 +94,7 @@
 		<NextStepHero {...hero} />
 	{/if}
 
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
-		class={card}
-	>
+	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }} class={card}>
 		<HubRow
 			icon={ClipboardCheck}
 			title={t.examsTitle}

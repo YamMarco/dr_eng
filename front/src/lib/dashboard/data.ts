@@ -79,7 +79,7 @@ export type SkillRow = {
 };
 
 /** A module's rows on its page, always in SKILLS order (vocabulary, reading,
- *  writing); a skill the module doesn't train is simply absent. Vocabulary is the
+ *  writing, speaking); a skill the module doesn't train is simply absent. Vocabulary is the
  *  word engine when the module has one (E), else its vocab section (C). */
 export function moduleSkills(moduleId: string, route: RouteSection[]): SkillRow[] {
 	const skillOf = (sectionId: string) => sectionMeta.find((s) => s.id === sectionId)?.skill;

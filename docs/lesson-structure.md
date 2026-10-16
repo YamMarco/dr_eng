@@ -39,7 +39,7 @@ LessonNode ──section──> SectionMeta          (heading + theme color, in 
 - `preface` holds rule cards, steps and summary intros. Exercises and mid/end-of-round teaching screens go in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
 - **Unlock:** a node opens when every id in `required` has `roundsCompleted >= requiredRounds` (default 1). Round 0 is mandatory; rounds 1+ are optional and affect nothing downstream. To require the first N rounds, set `requiredRounds: N`.
 - A node with no non-empty screen in any round renders as a permanently locked placeholder.
-- New section: add `c/c-<N>.ts`, import and spread it in `lib/content/index.ts`, add an entry to `sectionMeta.ts` with `modules` (modules whose path shows it, owner first).
+- New section: add `<module>/<module>-<N>.ts` exporting `<module><N>Lessons` (e.g. `cobe/cobe-1.ts`, `cobe1Lessons`; the /edit save endpoint derives the file from the section id), import and spread it in `lib/content/index.ts`, add an entry to `sectionMeta.ts` with `modules` (modules whose path shows it, owner first) and `skill` (vocab / reading / writing / speaking: the module page row).
 - A section can sit on several paths: `c-1` (reading) has `modules: ['c', 'e']`, one shared progress under the section's `progressScope` (`'reading'`; default the owning module). Progress calls go through `lib/lessonPath.ts`, never the module being viewed.
 - The path canvas is `routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`.
 
@@ -56,6 +56,7 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 - **`match-pairs`:** English word to Hebrew meaning in either order, Hebrew column shuffled per mount. One scored question, passes with at most 1 wrong tap.
 - **`match-definitions`** (Module E Part II): numbered `items` (exam uses 6) and `definitions` (3), each pointing at its item by `itemIndex`; pick a definition, then an item; 1 point per definition. `word-card.definitionEn` shows an English definition under the translation.
 - **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.
+- **`speak`** (COBE): the question (English, with listen buttons), an optional Hebrew `tip`, one take with no pause and a bar to `targetSeconds`, then playback, "record again" (replaces the take), and `modelAnswer` + `checklist`. Never scored. Audio stays in memory on the device (`lib/recorder.svelte.ts`); without a microphone it runs as a stopwatch.
 - **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged).
 
 ### Adding a screen type

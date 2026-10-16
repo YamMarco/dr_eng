@@ -29,7 +29,7 @@ export const ar: DictionaryOverride = {
 		daysToExam: (n: number) => `${n} يومًا حتى البجروت`,
 		daysShort: (n: number) => `${n} يومًا`,
 		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
-		skills: { vocab: 'المفردات', reading: 'فهم المقروء', writing: 'الكتابة' },
+		skills: { vocab: 'المفردات', reading: 'فهم المقروء', writing: 'الكتابة', speaking: 'المحادثة' },
 		hookResume: 'تركتم امتحانًا في المنتصف - تابعوا',
 		hookReady: 'أنتم جاهزون للامتحان!',
 		hookWords: (n: number) => `${n} كلمات للمراجعة اليوم`,
