@@ -16,6 +16,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import TakeCompare from './TakeCompare.svelte';
+	import PhraseBank from './PhraseBank.svelte';
 	import SpeakingFeedback from '$lib/feedback/SpeakingFeedback.svelte';
 	import { recordTake, takeKey, type SavedTake } from '$lib/takeHistory';
 	import { profile } from '$lib/profile.svelte';
@@ -113,6 +114,10 @@
 
 {#if screen.tip}
 	<div class="mt-2 text-sm leading-relaxed text-muted"><Md block text={screen.tip} /></div>
+{/if}
+
+{#if mode === 'lesson'}
+	<div class="mt-3"><PhraseBank part={screen.part} /></div>
 {/if}
 
 <div class="mt-5 flex flex-col items-center gap-3">

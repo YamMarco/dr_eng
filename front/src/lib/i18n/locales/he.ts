@@ -330,6 +330,17 @@ export const he = {
 		wordCount: (n: number) => `${n} מילים`,
 		wordTarget: (min: number, max: number) => `היעד: ${min}-${max} מילים`
 	},
+	phraseBank: {
+		chip: 'ביטויים',
+		title: 'בנק ביטויים',
+		description:
+			'משפטים מוכנים שעוזרים לדבר ברצף ומעשירים את אוצר המילים. הקשיבו, אמרו בקול, וסמנו בכוכב את אלה שתרצו לזכור.',
+		mine: 'הביטויים שלי',
+		fits: 'מתאים לשאלה הזאת',
+		save: '+ לבנק',
+		remove: 'הסרה מהבנק',
+		added: '✓ בבנק'
+	},
 	speakAi: {
 		button: 'משוב AI על ההקלטה',
 		listening: 'מקשיבים להקלטה...',

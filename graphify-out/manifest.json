@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1792164935.1129487,
-    "ast_hash": "1b1373222b603a13939225b9a3cfbd25",
+    "mtime": 1792165547.018775,
+    "ast_hash": "b727f9576b6550980460f157c67cba6e",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1940,18 +1940,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/cobe-1.ts": {
-    "mtime": 1792156949.3732462,
-    "ast_hash": "92ffe20843a992764e7d05f5505cde0b",
+    "mtime": 1792165547.0141656,
+    "ast_hash": "08b33d41697658a3072bed902c469fe6",
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/cobe-2.ts": {
-    "mtime": 1792158124.8244038,
-    "ast_hash": "ed36912d4d32f90d8114d842cc2755a2",
+    "mtime": 1792165547.0151849,
+    "ast_hash": "0fc0951e647a905ef3a46d4adfc3e7d6",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Speak.svelte": {
-    "mtime": 1792164754.2666428,
-    "ast_hash": "2cd9ca73033f707ea93cf03ecacc1b2b",
+    "mtime": 1792165547.0167477,
+    "ast_hash": "5af111573738c1c886d25a7e02f93d79",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Video.svelte": {
@@ -1965,8 +1965,8 @@
     "semantic_hash": ""
   },
   "docs/modules/cobe.md": {
-    "mtime": 1792164935.1146283,
-    "ast_hash": "9577616ce726af5334d82244ce8ab2d3",
+    "mtime": 1792165622.5059354,
+    "ast_hash": "c3db7186b1a0f73521be72a4980e13ce",
     "semantic_hash": ""
   },
   "graphify-out/converted/module-c-report-v3_b3755107.md": {
@@ -2050,8 +2050,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/SpeakingFeedback.svelte": {
-    "mtime": 1792164845.018474,
-    "ast_hash": "e6286feffe1a7d0a9628b4bda02686b4",
+    "mtime": 1792165547.0167477,
+    "ast_hash": "11a50cce38397dedad872d5c9d6999c1",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/speakingAi.ts": {
@@ -2082,6 +2082,21 @@
   "front/src/lib/server/prompts/grade-speaking.md": {
     "mtime": 1792164642.0361698,
     "ast_hash": "3e8c7f377d58c2641c8e40849193adfb",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content/cobe/phrases.ts": {
+    "mtime": 1792165550.507969,
+    "ast_hash": "abc4c0c8bcad366028588d0b4cc3b017",
+    "semantic_hash": ""
+  },
+  "front/src/lib/lesson-screens/PhraseBank.svelte": {
+    "mtime": 1792165524.815248,
+    "ast_hash": "6a346937f6e6317a1feab5e92e45cc80",
+    "semantic_hash": ""
+  },
+  "front/src/lib/phraseBank.svelte.ts": {
+    "mtime": 1792165509.2298064,
+    "ast_hash": "2c0137e2f5b039d5f863ad56cac99c2a",
     "semantic_hash": ""
   }
 }

@@ -462,6 +462,7 @@ export const cobe1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'speak',
+							part: 'B',
 							prompt: 'Tell me about your project in under a minute.',
 							tip: '**Simulation 1: The Elevator Pitch**\n\nהציגו את הנושא רק דרך ה-Personal Hook. דגש על תשוקה ואנרגיה, בלי להיכנס לפרטים יבשים.',
 							targetSeconds: 45,
@@ -475,6 +476,7 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'speak',
+							part: 'B',
 							prompt: 'What were the exact statistics or sources you used in section 2?',
 							tip: "**Simulation 2: The Honest Pivot**\n\nשאלת מכשול. גם אם אתם זוכרים, התאמנו: פתחו במשפט החילוץ וחזרו לעיקר.\n\n{p:text}To be completely honest, I don't recall the exact number/details, but what I learned was...",
 							targetSeconds: 30,
@@ -488,6 +490,7 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'speak',
+							part: 'B',
 							prompt: 'Why does this topic even matter to teenagers today?',
 							tip: '**Simulation 3: The "So What?" Challenge**\n\nחברו את הפרויקט למציאות היומיומית, לחיים בישראל או לעתיד.',
 							targetSeconds: 45,
@@ -509,6 +512,7 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'speak',
+							part: 'B',
 							prompt:
 								'Tell me about your project. Why did you choose this topic? What did you learn? Why does it matter today?',
 							tip: 'Hook ← מה למדתם (ואם שכחתם פרט: Honest Pivot) ← So What. ענו על **כל** השאלות בסט.',

@@ -59,6 +59,7 @@ export const cobe2Lessons: LessonNode[] = [
 						},
 						{
 							type: 'speak',
+							part: 'C',
 							prompt:
 								'Describe what happened in the clip. Who was in it, where were they and what did they do?',
 							tip: 'מי ← איפה ← מה קרה (First, Then, After that) ← איך זה נגמר.',
@@ -129,6 +130,7 @@ export const cobe2Lessons: LessonNode[] = [
 						},
 						{
 							type: 'speak',
+							part: 'C',
 							prompt:
 								'Why do you think the people in the clip acted the way they did? What would you do in their place?',
 							tip: 'עמדה ← because ← דוגמה מהקליפ ← If I were..., I would...',

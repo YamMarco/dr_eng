@@ -6,6 +6,7 @@
 	import { LoaderCircle, Sparkles } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { requestSpeakingFeedback } from './speakingAi';
+	import { myPhrases, quotedPhrases } from '$lib/phraseBank.svelte';
 	import type { CobeLevel, CobePart } from './speaking';
 	import type { SpeakingVerdict } from './types';
 
@@ -79,7 +80,24 @@
 			<div>
 				<p class="mb-1 text-xs font-bold text-ink/70">{t.tips}</p>
 				<ol class="flex list-decimal flex-col gap-1 ps-5 leading-relaxed">
-					{#each shown.tips as line (line)}<li>{line}</li>{/each}
+					{#each shown.tips as line (line)}
+						<li>
+							{line}
+							{#each quotedPhrases(line) as phrase (phrase)}
+								<button
+									type="button"
+									onclick={() => myPhrases.toggle(phrase)}
+									class="ms-1 inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold transition active:scale-95 {myPhrases.has(
+										phrase
+									)
+										? 'bg-amber-100 text-amber-700'
+										: 'bg-surface text-brand ring-1 ring-brand/40'}"
+								>
+									{myPhrases.has(phrase) ? i18n.dict.phraseBank.added : i18n.dict.phraseBank.save}
+								</button>
+							{/each}
+						</li>
+					{/each}
 				</ol>
 			</div>
 		{/if}
