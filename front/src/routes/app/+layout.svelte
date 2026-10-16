@@ -1,7 +1,9 @@
 <script lang="ts">
 	import NavBar from '$lib/components/NavBar.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
+	import Paywall from '$lib/components/Paywall.svelte';
 	import { auth } from '$lib/auth.svelte';
+	import { access } from '$lib/access.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { page } from '$app/state';
 
@@ -10,19 +12,29 @@
 	// The exam-run screen has its own fixed bottom action bar - no global nav.
 	const noNavPatterns = [/\/exam\/run$/];
 
+	let signedIn = $derived(auth.loggedIn && !auth.recovering);
+	$effect(() => access.sync(auth.session?.user.id));
+
 	// Onboarding (no profile yet) is a focused two-step flow - no nav either.
 	let showNav = $derived(
-		auth.loggedIn && !auth.recovering && !!profile.value && !noNavPatterns.some((re) => re.test(page.url.pathname))
+		signedIn &&
+			access.active === true &&
+			!!profile.value &&
+			!noNavPatterns.some((re) => re.test(page.url.pathname))
 	);
 </script>
 
 <div class="flex flex-1 flex-col {showNav ? 'pb-16' : ''}">
 	{#if !auth.ready}
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
-	{:else if auth.loggedIn && !auth.recovering}
+	{:else if !signedIn}
+		<LoginScreen />
+	{:else if access.active === null}
+		<!-- Checking the plan: same beat. -->
+	{:else if access.active}
 		{@render children()}
 	{:else}
-		<LoginScreen />
+		<Paywall />
 	{/if}
 </div>
 

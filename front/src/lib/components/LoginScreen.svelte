@@ -19,8 +19,19 @@
 	let otpCode = $state('');
 	let otpSent = $state(false);
 
+	type Props = {
+		/** Opening face (checkout starts new visitors on sign up). */
+		startWith?: 'signin' | 'signup';
+		/** Where the sign-up confirmation link lands. Default /app. */
+		returnTo?: string;
+		/** A line above the card (checkout explains why it asks). */
+		note?: string;
+	};
+	let { startWith = 'signin', returnTo, note }: Props = $props();
+
 	let t = $derived(i18n.dict.login);
-	let mode = $state<Mode>(auth.recovering ? 'recovery' : 'signin');
+	// svelte-ignore state_referenced_locally
+	let mode = $state<Mode>(auth.recovering ? 'recovery' : startWith);
 	let email = $state('');
 	let password = $state('');
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
@@ -93,7 +104,7 @@
 		if (mode === 'signin') return run(() => auth.signIn(address, password));
 		if (mode === 'signup')
 			return run(
-				() => auth.signUp(address, password),
+				() => auth.signUp(address, password, returnTo),
 				() => ((sentKind = 'confirm'), go('sent'))
 			);
 		if (mode === 'forgot')
@@ -120,6 +131,9 @@
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
 	<h1 class="text-3xl font-extrabold tracking-tight">{head[0]}</h1>
 	{#if head[1]}<p class="mt-2 leading-relaxed text-muted">{head[1]}</p>{/if}
+	{#if note}<p class="mt-4 rounded-2xl bg-brand-soft px-4 py-3 text-sm leading-relaxed">
+			{note}
+		</p>{/if}
 
 	<div class="mt-8 rounded-3xl bg-surface p-5 shadow-md ring-1 ring-line/70">
 		{#key mode}
@@ -139,7 +153,7 @@
 								type="button"
 								class={linkBtn}
 								disabled={busy}
-								onclick={() => run(() => auth.resendConfirmation(email.trim()))}
+								onclick={() => run(() => auth.resendConfirmation(email.trim(), returnTo))}
 							>
 								{t.resendConfirm}
 							</button>
@@ -266,7 +280,7 @@
 					<button
 						type="button"
 						class="mt-1 block underline"
-						onclick={() => run(() => auth.resendConfirmation(email.trim()))}
+						onclick={() => run(() => auth.resendConfirmation(email.trim(), returnTo))}
 					>
 						{t.resendConfirm}
 					</button>

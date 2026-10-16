@@ -15,8 +15,9 @@
 	<header class="flex flex-col items-center gap-4 text-center motion-safe:animate-rise">
 		<h1 class="text-3xl font-extrabold tracking-tight sm:text-5xl">{t.tagline}</h1>
 		<p class="max-w-xl text-lg leading-relaxed text-muted">{t.intro}</p>
-		<div class="mt-2 w-full max-w-xs">
+		<div class="mt-2 flex w-full max-w-md flex-col gap-3 sm:flex-row">
 			<Button href={resolve('/app')}>{t.enter}</Button>
+			<Button variant="secondary" href={resolve('/plans')}>{t.seePlans}</Button>
 		</div>
 	</header>
 
@@ -33,4 +34,16 @@
 			</li>
 		{/each}
 	</ul>
+
+	<a
+		href={resolve('/checkout')}
+		class="flex flex-col gap-1 rounded-3xl bg-accent-soft p-5 transition duration-100 hover:shadow-sm active:scale-[0.99] motion-safe:animate-rise sm:flex-row sm:items-center sm:justify-between"
+		style="animation-delay: {staggerDelay(4)}ms"
+	>
+		<span>
+			<span class="block text-lg font-bold">{t.testerTitle}</span>
+			<span class="text-muted">{t.testerBody}</span>
+		</span>
+		<span class="font-semibold text-brand-dark">{t.testerCta}</span>
+	</a>
 </main>
