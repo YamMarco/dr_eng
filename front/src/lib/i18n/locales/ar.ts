@@ -47,6 +47,7 @@ export const ar: DictionaryOverride = {
 		todayStart: 'لنبدأ',
 		lessonNext: 'الدرس التالي',
 		examMidway: 'تركتم الامتحان في المنتصف',
+		continueCta: 'تابعوا',
 		lessonMidway: 'في منتصف الدرس',
 		desktopNote: 'درس كتابة - الأفضل من الحاسوب',
 		examReason: {

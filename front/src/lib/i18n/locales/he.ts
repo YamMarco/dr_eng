@@ -193,6 +193,7 @@ export const he = {
 		todayStart: 'מתחילים',
 		lessonNext: 'השיעור הבא',
 		examMidway: 'השארתם את המבחן באמצע',
+		continueCta: 'המשיכו',
 		lessonMidway: 'באמצע השיעור',
 		desktopNote: 'שיעור כתיבה - הכי נוח מהמחשב',
 		examReason: {

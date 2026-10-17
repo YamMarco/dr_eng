@@ -93,7 +93,7 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
 - **Continue bar** on top: one tap back into the latest thing done in any module (an exam
   left mid-way, words still due, else that module's next lesson). Styled apart from every
   card - a dark pill with a round play button - so it reads as "the way back in".
-  Hidden for a new student. **[decided]**
+  Hidden for a new student. On desktop it is a full-width hero with a "המשיכו" button at its end. **[decided]**
 - **One row per Bagrut module** (each module is an exam): the **exam nugget** (best score
   with a tier icon - trophy 85+, check 60+, target below, a calm blue-grey and never red -
   plus a dot per exam, filled once taken; dashed "טרם" before the first exam, "בקרוב" with

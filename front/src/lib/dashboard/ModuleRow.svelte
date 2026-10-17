@@ -26,12 +26,12 @@
 </script>
 
 {#snippet meter(label: string, p: Progress)}
-	<span class="flex flex-col gap-1 text-xs">
+	<span class="flex flex-col gap-1 text-xs lg:gap-1.5 lg:text-sm">
 		<span class="flex items-center gap-2">
 			<span class="me-auto truncate text-muted">{label}</span>
 			<span class="shrink-0 font-bold tabular" dir="ltr">{p.done}/{p.total}</span>
 		</span>
-		<span class="h-2 overflow-hidden rounded-sm bg-line" aria-hidden="true">
+		<span class="h-2 overflow-hidden rounded-sm bg-line lg:h-2.5" aria-hidden="true">
 			<span
 				class="barber block h-full transition-[width] duration-500"
 				style="width: {ratio(p) * 100}%"
@@ -50,7 +50,7 @@
 	<span class="flex min-w-0 flex-1 flex-col gap-1 lg:gap-2">
 		<span class="flex items-center gap-2">
 			<span class="me-auto font-bold lg:text-lg">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
-			{#if !comingSoon}<ExamNugget {exams} />{/if}
+			{#if !comingSoon}<span class="lg:absolute lg:end-6 lg:top-6"><ExamNugget {exams} /></span>{/if}
 		</span>
 		{#if comingSoon}
 			<span class="text-xs text-muted">{i18n.dict.common.comingSoon}</span>
@@ -82,13 +82,13 @@
 <!-- href is a runtime-built module path, not a typed route -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 {#if comingSoon}
-	<div class="flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70 lg:flex-col lg:items-stretch lg:gap-4 lg:p-5">
+	<div class="relative flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70 lg:flex-col lg:items-stretch lg:gap-4 lg:p-6">
 		{@render body()}
 	</div>
 {:else}
 	<a
 		{href}
-		class="flex items-center gap-3 rounded-3xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition hover:shadow-lg active:scale-[0.99] lg:flex-col lg:items-stretch lg:gap-4 lg:p-5 lg:hover:-translate-y-0.5"
+		class="relative flex items-center gap-3 rounded-3xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition hover:shadow-lg active:scale-[0.99] lg:flex-col lg:items-stretch lg:gap-4 lg:p-6 lg:hover:-translate-y-0.5"
 	>
 		{@render body()}
 	</a>

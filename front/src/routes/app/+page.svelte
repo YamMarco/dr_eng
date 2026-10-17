@@ -49,10 +49,10 @@
 	<Onboarding />
 {:else}
 	<main
-		class="app-wide flex flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-10 sm:pb-6"
+		class="app-wide flex flex-1 flex-col gap-3 px-4 pt-3 pb-3 sm:pt-10 sm:pb-6 lg:gap-5 lg:pt-12"
 	>
 		<header class="flex flex-wrap items-center gap-2">
-			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl">{t.greeting}</h1>
+			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl lg:text-3xl">{t.greeting}</h1>
 			{#if profile.daysToExam !== undefined}
 				<span class={chip} title={t.daysToExam(profile.daysToExam)}>
 					<CalendarClock size={16} class="text-brand" aria-hidden="true" />
