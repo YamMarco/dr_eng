@@ -13,41 +13,74 @@
 	// Keeps counting in the background either way - this only hides the
 	// digits from view (dashes, same size), e.g. so a passer-by can't read how much time is left.
 	let hidden = $state(false);
+	// Counts taps: keys the content so each tap replays the flip (not on first paint).
+	let taps = $state(0);
 </script>
 
 <button
 	type="button"
 	aria-live="off"
 	aria-label={i18n.dict.quiz.timeLeftLabel}
-	onclick={() => (hidden = !hidden)}
+	onclick={() => {
+		hidden = !hidden;
+		taps++;
+	}}
 	class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold tabular transition-colors active:scale-95 {warning
 		? 'bg-danger-soft text-danger'
 		: 'text-muted ring-1 ring-line'}"
 >
-	<svg
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		class="h-4 w-4"
-		aria-hidden="true"
-	>
-		<circle cx="12" cy="12" r="9" />
-		<path d="M12 7v5l3 2" />
-	</svg>
-	{#if label}
-		<span class="font-semibold">{label}</span>
-	{/if}
-	<!-- Hidden: the digits keep their space (invisible) with dashes over them, so
-	     the chip never changes size. -->
-	<span dir="ltr" class="grid">
-		<span class="col-start-1 row-start-1 {hidden ? 'invisible' : ''}">{formatTime(seconds)}</span>
-		{#if hidden}
-			<span class="col-start-1 row-start-1 text-center" aria-hidden="true"
-				>{formatTime(seconds).replace(/\d/g, '-')}</span
+	{#key taps}
+		<span class="inline-flex items-center gap-1.5 {taps ? 'timer-flip' : ''}">
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="h-4 w-4"
+				aria-hidden="true"
 			>
-		{/if}
-	</span>
+				<circle cx="12" cy="12" r="9" />
+				<path d="M12 7v5l3 2" />
+			</svg>
+			{#if label}
+				<span class="font-semibold">{label}</span>
+			{/if}
+			<!-- Hidden: the digits keep their space (invisible) with dashes over them, so
+			     the chip never changes size. -->
+			<span dir="ltr" class="grid">
+				<span class="col-start-1 row-start-1 {hidden ? 'invisible' : ''}"
+					>{formatTime(seconds)}</span
+				>
+				{#if hidden}
+					<span class="col-start-1 row-start-1 text-center" aria-hidden="true"
+						>{formatTime(seconds).replace(/\d/g, '-')}</span
+					>
+				{/if}
+			</span>
+		</span>
+	{/key}
 </button>
+
+<style>
+	/* A small split-flap turn when the digits are hidden or shown. */
+	.timer-flip {
+		animation: timer-flip 220ms ease-out;
+	}
+	@keyframes timer-flip {
+		from {
+			transform: perspective(120px) rotateX(-90deg);
+			opacity: 0;
+		}
+		to {
+			transform: perspective(120px) rotateX(0);
+			opacity: 1;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.timer-flip {
+			animation: none;
+		}
+	}
+</style>
