@@ -330,13 +330,28 @@
 			onback={requestExit}
 			backLabel={i18n.dict.quiz.exitLabel}
 			center={showNavigator && allEntries.length > 1 ? navigator : undefined}
-		>
-			{#snippet trailing()}
-				{#if showTimer}
-					<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
+		></AppBar>
+
+		<!-- The passage toggle (phones) and the timer share one row under the bar. -->
+		{#if showTimer || activePassage}
+			<div class="app-col flex items-center gap-2 px-4 pt-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}">
+				{#if activePassage}
+					<button
+						type="button"
+						aria-expanded={passageOpen}
+						onclick={() => (passageOpen = !passageOpen)}
+						class="self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
+					>
+						{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
+					</button>
 				{/if}
-			{/snippet}
-		</AppBar>
+				{#if showTimer}
+					<div class="ms-auto">
+						<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
+					</div>
+				{/if}
+			</div>
+		{/if}
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
 		     lg+ splits into two independently scrolling columns - question on the
@@ -352,14 +367,6 @@
 				: ''}"
 		>
 			{#if activePassage}
-				<button
-					type="button"
-					aria-expanded={passageOpen}
-					onclick={() => (passageOpen = !passageOpen)}
-					class="mb-3 self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
-				>
-					{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
-				</button>
 				{#key passageEntryIndex}
 					<aside
 						dir="ltr"
