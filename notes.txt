@@ -7,7 +7,7 @@ Examples: "finished the Module C reading section", "first exam above 80", "100 w
 They should tell students where they stand rather than act as a prize stream. No leaderboard, which was the element in the study that backfired.
 * A streak freeze. the student has to acomplish some progress to earn it
 * AI feedback: the writing feedback prompts in lib/server/prompts/ probably make the AI answer in Hebrew. The fix would be to pass the UI language to them.
-
+* accessibility
 
 
 
@@ -18,3 +18,19 @@ They should tell students where they stand rather than act as a prize stream. No
 | Runway Gen-4.5                 | More control over shots, camera, editing      | Short clips                                     | Best if you want to direct the video like an editor; its video output is silent, so add audio separately. resources.rework+1         |
 | Pika                           | Fast, simple social-style clips               | Short clips                                     | Easiest for quick experiments, but less control than Runway/Veo. convly                                                              |
 | InVideo AI / CapCut / Dreamina | Full 30–60 second video from a script         | Builds a complete video                         | Better when you want narration, captions, stock footage, and automatic editing rather than pure AI-generated footage. aicomparison+1 |
+
+
+
+
+Payments: pick a provider (Cardcom, PayPlus or Grow), implement startPayment plus the webhook, issue tax invoices or receipts, and set real prices.
+Sync student data to Supabase: progress, take history, decks, phrase bank, profile.
+Custom email sending: buy a domain, set up Resend, and connect it in Supabase Auth.
+Legal text: review the privacy and terms pages. Add parental consent for minors, a line on what's sent to the LLM, and a refund policy (Israeli law allows 14 days).
+Real support contacts: a support inbox and a WhatsApp Business number, set in support.ts.
+Production domain on Vercel: set every env var there, including DATABASE_URL, SUPABASE_SECRET_KEY and the Sentry DSN, then update the Supabase Site URL and redirect URLs to the new domain.
+LLM provider spending cap: set a monthly budget alert or limit as a backstop to the daily quota.
+Analytics: sign-ups, payment conversion, lesson drop-off.
+Database backups: upgrade to Supabase Pro or schedule dumps once orders are real.
+Turn accounts and billing on in production, then test end to end: sign up, then pay or use a coupon, then use the app and grading.
+Content QC pass: the remaining Module C and COBE open items in the module docs.
+Later: a specific message when a student hits the daily limit, a free tier with ads, and the accessibility pass (already postponed).
