@@ -2,6 +2,8 @@
 // session, in any module - for the home page's "continue" bar. Per-module lesson
 // position stays in moduleLocation; this only answers "what was I doing last?".
 
+import { onSyncedChange, saveSynced } from './progressSync.svelte';
+
 const STORAGE_KEY = 'last-engagement';
 
 export type Engagement = {
@@ -24,10 +26,13 @@ function load(): Engagement | null {
 class LastEngagementStore {
 	value = $state<Engagement | null>(load());
 
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.value = load()));
+	}
+
 	record(engagement: Engagement) {
 		this.value = engagement;
-		if (typeof localStorage !== 'undefined')
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(engagement));
+		saveSynced(STORAGE_KEY, engagement);
 	}
 }
 

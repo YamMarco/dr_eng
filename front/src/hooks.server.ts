@@ -12,7 +12,7 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 
 // Student APIs: signed-in users only (once accounts are on), and open to the
 // Capacitor app's webview origins (iOS, Android).
-const STUDENT_APIS = /^\/api\/(grade|ocr|speak|account|access|checkout|checkout\/quote)$/;
+const STUDENT_APIS = /^\/api\/(grade|ocr|speak|account|access|progress|checkout|checkout\/quote)$/;
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
 // Authoring APIs: staff only, same-origin. Staff role only.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;

@@ -1,7 +1,8 @@
 // Persisted Leitner state per word, keyed by moduleId then word id. Same
-// pattern as lessonProgress: localStorage now, a `word_progress` table later.
+// pattern as lessonProgress: localStorage, synced to the account.
 
 import { activity } from '$lib/activity.svelte';
+import { onSyncedChange, saveSynced } from '$lib/progressSync.svelte';
 import { review } from './scheduler';
 import type { DeckProgress } from './types';
 
@@ -19,12 +20,16 @@ function load(): ProgressMap {
 	}
 }
 
-function persist(map: ProgressMap) {
-	if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+function persist(map: ProgressMap, replace = false) {
+	saveSynced(STORAGE_KEY, map, { replace });
 }
 
 class DeckProgressStore {
 	private map = $state<ProgressMap>(load());
+
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.map = load()));
+	}
 
 	get(moduleId: string): DeckProgress {
 		return this.map[moduleId] ?? {};
@@ -43,7 +48,7 @@ class DeckProgressStore {
 
 	resetAll() {
 		this.map = {};
-		persist(this.map);
+		persist(this.map, true);
 	}
 }
 

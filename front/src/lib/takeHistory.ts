@@ -1,7 +1,9 @@
 // The student's spoken takes per question, so they can hear how they've grown:
 // the FIRST and the LATEST take's audio (IndexedDB - too big for localStorage)
-// and small stats per question (localStorage) for the module page. Device only,
-// never uploaded. Every read and write is best-effort: no storage, no history.
+// and small stats per question (localStorage, synced to the account) for the
+// module page. The audio never leaves the device. Every read and write is
+// best-effort: no storage, no history.
+import { saveSynced } from './progressSync.svelte';
 
 export type SavedTake = { blob?: Blob; seconds: number; at: number };
 type Entry = { key: string; first: SavedTake; latest: SavedTake };
@@ -48,7 +50,7 @@ export async function recordTake(
 			count: row.count + 1,
 			reached: row.reached + (take.seconds >= targetSeconds ? 1 : 0)
 		};
-		localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+		saveSynced(STATS_KEY, stats);
 	} catch {
 		// stats are a nicety
 	}

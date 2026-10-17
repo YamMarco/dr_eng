@@ -5,6 +5,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { access } from '$lib/access.svelte';
 	import { profile } from '$lib/profile.svelte';
+	import { progressSync } from '$lib/progressSync.svelte';
 	import { page } from '$app/state';
 
 	let { children } = $props();
@@ -14,11 +15,13 @@
 
 	let signedIn = $derived(auth.loggedIn && !auth.recovering);
 	$effect(() => access.sync(auth.session?.user.id));
+	$effect(() => progressSync.start(auth.session?.user.id));
 
 	// Onboarding (no profile yet) is a focused two-step flow - no nav either.
 	let showNav = $derived(
 		signedIn &&
 			access.active === true &&
+			progressSync.ready &&
 			!!profile.value &&
 			!noNavPatterns.some((re) => re.test(page.url.pathname))
 	);
@@ -29,8 +32,8 @@
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
 	{:else if !signedIn}
 		<LoginScreen />
-	{:else if access.active === null}
-		<!-- Checking the plan: same beat. -->
+	{:else if access.active === null || !progressSync.ready}
+		<!-- Checking the plan, or bringing the account's progress to a new device: same beat. -->
 	{:else if access.active}
 		{@render children()}
 	{:else}

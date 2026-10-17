@@ -1,10 +1,11 @@
-// localStorage persistence for quiz attempts. No backend yet (see plan notes
-// - Supabase is future work), so this is the only place progress lives.
+// localStorage persistence for quiz attempts. Attempts and results sync to the
+// account ($lib/progressSync); the in-progress marker stays on the device.
 
 import '$lib/legacyIds';
 import { scorePercent, type QuizScore } from './scoring';
 import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
+import { saveSynced } from '$lib/progressSync.svelte';
 
 export interface QuizAttempt {
 	quizId: string;
@@ -44,14 +45,14 @@ function hasStorage() {
 
 export function saveAttempt(attempt: QuizAttempt) {
 	if (!hasStorage()) return;
-	localStorage.setItem(attemptKey(attempt.quizId), JSON.stringify(attempt));
+	saveSynced(attemptKey(attempt.quizId), attempt);
 	clearInProgress(attempt.quizId);
 	const percent = scorePercent(attempt.score);
 	if (percent !== undefined) {
 		// Saved again after grading (and on a grading retry): replace, don't append.
 		const results = getResults(attempt.quizId).filter((r) => r.at !== attempt.submittedAt);
 		results.push({ at: attempt.submittedAt, percent });
-		localStorage.setItem(resultsKey(attempt.quizId), JSON.stringify(results));
+		saveSynced(resultsKey(attempt.quizId), results);
 	}
 	activity.recordToday();
 }

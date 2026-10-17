@@ -1,5 +1,7 @@
-// The student's own phrases, collected from AI tips. Device only
-// (localStorage); shown first in the phrase bank.
+// The student's own phrases, collected from AI tips (localStorage, synced to
+// the account); shown first in the phrase bank.
+import { onSyncedChange, saveSynced } from './progressSync.svelte';
+
 const KEY = 'my-phrases';
 
 function load(): string[] {
@@ -13,6 +15,10 @@ function load(): string[] {
 class MyPhrases {
 	list = $state<string[]>(load());
 
+	constructor() {
+		onSyncedChange(KEY, () => (this.list = load()));
+	}
+
 	has(phrase: string) {
 		return this.list.includes(phrase);
 	}
@@ -20,7 +26,7 @@ class MyPhrases {
 	toggle(phrase: string) {
 		this.list = this.has(phrase) ? this.list.filter((p) => p !== phrase) : [phrase, ...this.list];
 		try {
-			localStorage.setItem(KEY, JSON.stringify(this.list));
+			saveSynced(KEY, this.list);
 		} catch {
 			// a nicety: works for this session only
 		}

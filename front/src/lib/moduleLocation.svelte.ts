@@ -6,6 +6,7 @@
 // recently touched lesson across every module, for its "continue" card.
 
 import './legacyIds';
+import { onSyncedChange, saveSynced } from './progressSync.svelte';
 
 const STORAGE_KEY = 'module-location';
 
@@ -23,11 +24,15 @@ function load(): LocationMap {
 }
 
 function persist(map: LocationMap) {
-	if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+	saveSynced(STORAGE_KEY, map);
 }
 
 class ModuleLocationStore {
 	private map = $state<LocationMap>(load());
+
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.map = load()));
+	}
 
 	/** The last lesson node opened in this module, if any. */
 	get(moduleId: string): string | undefined {

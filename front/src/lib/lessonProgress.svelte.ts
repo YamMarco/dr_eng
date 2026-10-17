@@ -13,6 +13,7 @@
 import './legacyIds';
 import { progressScope } from '$lib/content';
 import { activity } from './activity.svelte';
+import { onSyncedChange, saveSynced } from './progressSync.svelte';
 
 const STORAGE_KEY = 'lesson-progress';
 
@@ -45,12 +46,16 @@ function rescope(map: ProgressMap): ProgressMap {
 	return map;
 }
 
-function persist(map: ProgressMap) {
-	if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+function persist(map: ProgressMap, replace = false) {
+	saveSynced(STORAGE_KEY, map, { replace });
 }
 
 class LessonProgressStore {
 	private map = $state<ProgressMap>(load());
+
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.map = load()));
+	}
 
 	/** How many rounds of this lesson have been completed (0 = never started). */
 	completedRounds(scope: string, lessonId: string): number {
@@ -69,7 +74,7 @@ class LessonProgressStore {
 
 	resetAll() {
 		this.map = {};
-		persist(this.map);
+		persist(this.map, true);
 	}
 }
 

@@ -7,9 +7,11 @@
 // database owner, which bypasses RLS.
 import { sql } from 'drizzle-orm';
 import {
+	bigint,
 	date,
 	index,
 	integer,
+	jsonb,
 	pgTable,
 	primaryKey,
 	text,
@@ -71,4 +73,18 @@ export const llmUsage = pgTable(
 		calls: integer().notNull().default(0)
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.day] })]
+).enableRLS();
+
+/** The student's progress, one row per synced localStorage key ($lib/progressSync). */
+export const progress = pgTable(
+	'progress',
+	{
+		userId: uuid().notNull(),
+		key: text().notNull(),
+		value: jsonb().notNull(),
+		/** When it last changed on the device that wrote it (ms); newer-copy keys compare it. */
+		at: bigint({ mode: 'number' }).notNull().default(0),
+		updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow()
+	},
+	(table) => [primaryKey({ columns: [table.userId, table.key] })]
 ).enableRLS();

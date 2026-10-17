@@ -1,6 +1,8 @@
 // Which calendar days the student practiced (finished a lesson round or
 // submitted an exam), for the home dashboard's weekly goal and streak.
 
+import { onSyncedChange, saveSynced } from '$lib/progressSync.svelte';
+
 const STORAGE_KEY = 'activity-days';
 /** Enough history for any streak we'd realistically show. */
 const MAX_DAYS = 400;
@@ -26,12 +28,15 @@ function load(): string[] {
 class ActivityStore {
 	private days = $state<string[]>(load());
 
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.days = load()));
+	}
+
 	recordToday() {
 		const today = dayKey(new Date());
 		if (this.days.includes(today)) return;
 		this.days = [...this.days, today].slice(-MAX_DAYS);
-		if (typeof localStorage !== 'undefined')
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(this.days));
+		saveSynced(STORAGE_KEY, this.days);
 	}
 
 	/** Whether the student practiced on this day. */

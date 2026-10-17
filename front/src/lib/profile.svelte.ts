@@ -3,6 +3,7 @@
 // dashboard - its route, and the days-to-exam counter.
 
 import { examDate, type ExamSession } from './examSessions';
+import { onSyncedChange, saveSynced } from './progressSync.svelte';
 
 const STORAGE_KEY = 'profile';
 
@@ -25,6 +26,10 @@ class ProfileStore {
 	/** null until onboarding is finished. */
 	value = $state<Profile | null>(load());
 
+	constructor() {
+		onSyncedChange(STORAGE_KEY, () => (this.value = load()));
+	}
+
 	/** The unit group id whose route the dashboard shows. */
 	get unitGroupId(): string {
 		return this.value?.units === '5' ? '5' : '4';
@@ -40,8 +45,7 @@ class ProfileStore {
 
 	save(profile: Profile) {
 		this.value = profile;
-		if (typeof localStorage !== 'undefined')
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+		saveSynced(STORAGE_KEY, profile);
 	}
 }
 
