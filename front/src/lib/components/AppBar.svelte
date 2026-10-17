@@ -8,9 +8,11 @@
 		onback?: () => void;
 		backLabel?: string;
 		trailing?: Snippet;
+		/** Replaces the title with custom content that fills the space. */
+		center?: Snippet;
 	};
 
-	let { title = '', back, onback, backLabel, trailing }: Props = $props();
+	let { title = '', back, onback, backLabel, trailing, center }: Props = $props();
 	let resolvedBackLabel = $derived(backLabel ?? i18n.dict.common.back);
 
 	const backClasses =
@@ -47,11 +49,15 @@
 			</a>
 		{/if}
 
-		<!-- dir=auto: an English exam title truncates at its own end, not its start;
-		     match-parent keeps it aligned with the page, beside the back button. -->
-		<h1 dir="auto" class="min-w-0 flex-1 truncate text-lg font-bold [text-align:match-parent]">
-			{title}
-		</h1>
+		{#if center}
+			<div class="min-w-0 flex-1">{@render center()}</div>
+		{:else}
+			<!-- dir=auto: an English exam title truncates at its own end, not its start;
+			     match-parent keeps it aligned with the page, beside the back button. -->
+			<h1 dir="auto" class="min-w-0 flex-1 truncate [text-align:match-parent] text-lg font-bold">
+				{title}
+			</h1>
+		{/if}
 
 		{#if trailing}
 			<div class="shrink-0">{@render trailing()}</div>

@@ -295,6 +295,19 @@
 	}
 </script>
 
+{#snippet navigator()}
+	<QuestionNavigator
+		total={allEntries.length}
+		currentIndex={entryIndex}
+		answered={answeredIndices}
+		onJump={jump}
+		style={quiz.options.navigatorStyle ?? 'numbers'}
+		{passageIndices}
+		{hiddenIndices}
+		{partBreaks}
+	/>
+{/snippet}
+
 <div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
 	{#if submitted && score}
 		<QuizReport
@@ -308,14 +321,15 @@
 			onBack={onExit}
 		/>
 	{:else}
-		<!-- The bar's title slot says where you are, not which exam: the exam's name
-		     tells the student nothing mid-exam and clips on a phone. -->
+		<!-- No exam title: it tells the student nothing mid-exam and clips on a phone.
+		     The bar holds the question navigator, or a plain count when there is none. -->
 		<AppBar
-			title={allEntries.length > 1
+			title={!showNavigator && allEntries.length > 1
 				? i18n.dict.quiz.questionProgress(entryIndex + 1, allEntries.length)
 				: ''}
 			onback={requestExit}
 			backLabel={i18n.dict.quiz.exitLabel}
+			center={showNavigator && allEntries.length > 1 ? navigator : undefined}
 		>
 			{#snippet trailing()}
 				{#if showTimer}
@@ -323,27 +337,6 @@
 				{/if}
 			{/snippet}
 		</AppBar>
-
-		{#if showNavigator && allEntries.length > 1}
-			<div
-				class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
-					? 'lg:max-w-5xl'
-					: ''}"
-			>
-				<div class="flex min-w-0 items-center gap-1.5">
-					<QuestionNavigator
-						total={allEntries.length}
-						currentIndex={entryIndex}
-						answered={answeredIndices}
-						onJump={jump}
-						style={quiz.options.navigatorStyle ?? 'numbers'}
-						{passageIndices}
-						{hiddenIndices}
-						{partBreaks}
-					/>
-				</div>
-			</div>
-		{/if}
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
 		     lg+ splits into two independently scrolling columns - question on the
