@@ -69,7 +69,9 @@
 {:else}
 	<AppBar title={i18n.title(quiz.id)} back={examBase} />
 
-	<main class="app-col flex flex-1 flex-col gap-4 px-4 pt-6 pb-12">
+	<main
+		class="app-col flex flex-1 flex-col gap-4 px-4 pt-6 pb-12 lg:max-w-5xl lg:gap-3 lg:pt-4 lg:pb-6"
+	>
 		{#if taken && row}
 			<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}>
 				<h2 class="mb-3 text-base font-bold">{t.scoreboardTitle}</h2>
@@ -85,28 +87,36 @@
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class={card}
 		>
-			<h2 class="text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
-			<p class="mt-1 text-sm leading-relaxed text-muted">
-				{taken ? t.prepAgainDesc : t.prepDesc}
-			</p>
-			<ul class="mt-2 flex flex-wrap gap-1.5">
-				{#each rules as rule (rule)}
-					<li class="rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-semibold text-brand-dark">
-						{rule}
-					</li>
-				{/each}
-			</ul>
-			<h3 class="mt-4 text-sm font-bold">{t.tipsTitle}</h3>
-			<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed">
-				{#each tips as tip (tip)}
-					<li class="whitespace-pre-line">{tip}</li>
-				{/each}
-			</ul>
+			<div class="lg:grid lg:grid-cols-2 lg:gap-8">
+				<div>
+					<h2 class="text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
+					<p class="mt-1 text-sm leading-relaxed text-muted">
+						{taken ? t.prepAgainDesc : t.prepDesc}
+					</p>
+					<ul class="mt-2 flex flex-wrap gap-1.5">
+						{#each rules as rule (rule)}
+							<li
+								class="rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-semibold text-brand-dark"
+							>
+								{rule}
+							</li>
+						{/each}
+					</ul>
+				</div>
+				<div class="mt-4 lg:mt-0">
+					<h3 class="text-sm font-bold">{t.tipsTitle}</h3>
+					<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed">
+						{#each tips as tip (tip)}
+							<li class="whitespace-pre-line">{tip}</li>
+						{/each}
+					</ul>
+				</div>
+			</div>
 		</section>
 
 		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-			class="flex flex-col gap-3"
+			class="flex flex-col gap-3 lg:flex-row lg:*:flex-1"
 		>
 			{#if quizNode}
 				<Button onclick={start}>
