@@ -89,9 +89,9 @@
 			<p class="mt-1 text-sm leading-relaxed text-muted">
 				{taken ? t.prepAgainDesc : t.prepDesc}
 			</p>
-			<ul class="mt-3 flex flex-wrap gap-2">
+			<ul class="mt-2 flex flex-wrap gap-1.5">
 				{#each rules as rule (rule)}
-					<li class="rounded-full bg-brand-soft px-3 py-1 text-sm font-semibold text-brand-dark">
+					<li class="rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-semibold text-brand-dark">
 						{rule}
 					</li>
 				{/each}
