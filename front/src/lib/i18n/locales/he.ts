@@ -36,6 +36,7 @@ export const he = {
 		navEnter: 'כניסה',
 		navApp: 'לאפליקציה',
 		navSignOut: 'יציאה',
+		themeToggle: 'מעבר בין מצב בהיר לכהה',
 		seePlans: 'למסלולים',
 		testerTitle: 'קיבלתם קוד בודקים?',
 		testerBody: 'הירשמו, הזינו את הקוד ותקבלו גישה מלאה בחינם.',
