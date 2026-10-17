@@ -16,7 +16,7 @@
 	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
 	import { gradeExam } from '$lib/feedback/gradeExam';
 	import type { ExamGrade } from '$lib/feedback/types';
-	import { saveAttempt, saveInProgress, getInProgress, clearInProgress } from './progress';
+	import { saveAttempt, saveInProgress } from './progress';
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
@@ -51,9 +51,7 @@
 	createLessonScore(0);
 	createLessonSession();
 
-	// One-time read at mount: is there an unfinished attempt to offer resuming?
-	const savedProgress = untrack(() => (preview ? null : getInProgress(quiz.id)));
-	const startedAt = savedProgress?.startedAt ?? Date.now();
+	const startedAt = Date.now();
 
 	// Parts are a cosmetic grouping only (section headings + scoring buckets) -
 	// the student plays through every screen from every part as one continuous
@@ -83,7 +81,6 @@
 	let grading = $state(false);
 	let submittedAt = 0;
 	let showExitPrompt = $state(false);
-	let showResumePrompt = $state(savedProgress !== null);
 	let footerDisabled = $state(false);
 	// Screens still write to this (their own two-phase label), but the quiz
 	// footer's visible text is computed below instead - a screen doesn't know
@@ -214,19 +211,6 @@
 		});
 	}
 
-	function resume() {
-		if (!savedProgress) return;
-		entryIndex = savedProgress.entryIndex;
-		Object.assign(answers, savedProgress.answers);
-		remainingSeconds = savedProgress.remainingSeconds;
-		showResumePrompt = false;
-	}
-
-	function startOver() {
-		clearInProgress(quiz.id);
-		showResumePrompt = false;
-	}
-
 	function advance() {
 		direction = 1;
 		if (!isLastScreen) {
@@ -244,16 +228,12 @@
 		entryIndex = index;
 	}
 
-	// Waits out the resume prompt (depends on showResumePrompt so it re-runs
-	// exactly once when that closes) and otherwise runs once, since
-	// durationMinutes is a fixed prop. Starts from the current
-	// remainingSeconds (read via untrack so the effect itself doesn't
-	// depend on it - resume() may have already set it to a mid-quiz value).
+	// Runs once, since durationMinutes is a fixed prop.
 	// The interval checks `submitted` itself each tick rather than the effect
 	// depending on it, so a manual submit just lets the next tick stop it.
 	$effect(() => {
 		const minutes = quiz.options.durationMinutes;
-		if (!minutes || showResumePrompt) return;
+		if (!minutes) return;
 		const startSeconds = untrack(() => remainingSeconds);
 		const endsAt = Date.now() + startSeconds * 1000;
 		const interval = setInterval(() => {
@@ -271,19 +251,12 @@
 		return () => clearInterval(interval);
 	});
 
-	// Persists on every screen move and timer tick so a refresh mid-quiz can
-	// offer to resume. Skipped while the resume decision hasn't been made yet
-	// (nothing has actually started), and once submitted (saveAttempt already
-	// clears the in-progress record).
+	// An exam can't be resumed: leaving it loses the answers. This marker only
+	// drives the "unfinished exam" badge until the next attempt is submitted
+	// (saveAttempt clears it).
 	$effect(() => {
-		if (preview || submitted || showResumePrompt) return;
-		saveInProgress({
-			quizId: quiz.id,
-			startedAt,
-			entryIndex,
-			answers: { ...answers },
-			remainingSeconds
-		});
+		if (preview || submitted) return;
+		saveInProgress({ quizId: quiz.id, startedAt });
 	});
 
 	function requestExit() {
@@ -430,15 +403,6 @@
 			<Button variant="ghost" onclick={() => (showExitPrompt = false)}>
 				{i18n.dict.quiz.exitCancel}
 			</Button>
-		</Sheet>
-
-		<Sheet
-			bind:open={showResumePrompt}
-			title={i18n.dict.quiz.resumePromptTitle}
-			description={i18n.dict.quiz.resumePromptDesc}
-		>
-			<Button onclick={resume}>{i18n.dict.quiz.resumeConfirm}</Button>
-			<Button variant="ghost" onclick={startOver}>{i18n.dict.quiz.resumeRestart}</Button>
 		</Sheet>
 	{/if}
 </div>

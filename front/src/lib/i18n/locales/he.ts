@@ -179,7 +179,7 @@ export const he = {
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
 		skills: { vocab: 'אוצר מילים', reading: 'הבנת הנקרא', writing: 'כתיבה', speaking: 'דיבור' },
-		hookResume: 'השארתם מבחן באמצע - ממשיכים',
+		hookResume: 'יש לכם מבחן שלא סיימתם',
 		hookReady: 'מוכנים למבחן!',
 		hookWords: (n: number) => `${n} מילים לחזרה היום`,
 		meterLessons: 'שיעורים',
@@ -192,12 +192,12 @@ export const he = {
 		examSoon: 'בקרוב',
 		todayStart: 'מתחילים',
 		lessonNext: 'השיעור הבא',
-		examMidway: 'השארתם את המבחן באמצע',
+		examMidway: 'יש לכם מבחן שלא סיימתם',
 		continueCta: 'המשיכו',
 		lessonMidway: 'באמצע השיעור',
 		desktopNote: 'שיעור כתיבה - הכי נוח מהמחשב',
 		examReason: {
-			resume: 'השארתם את המבחן באמצע - הוא מחכה לכם.',
+			resume: 'יש לכם מבחן שלא סיימתם. אי אפשר להמשיך אותו, אז מתחילים מחדש.',
 			ready: 'סיימתם את רוב המסלול. זמן לבדוק את עצמכם במבחן בתנאי בגרות.',
 			'path-done': 'סיימתם את המסלול. עכשיו מתאמנים על הדבר האמיתי.'
 		},
@@ -276,10 +276,6 @@ export const he = {
 			'not-english': 'התשובה לא באנגלית.',
 			'too-short': 'פחות מ-25 מילים - המשימה כולה מקבלת 0.'
 		} as Record<string, string>,
-		resumePromptTitle: 'להמשיך מאיפה שהפסקתם?',
-		resumePromptDesc: 'יש ניסיון פתוח למבחן הזה.',
-		resumeConfirm: 'המשך מאיפה שהפסקתי',
-		resumeRestart: 'התחלה מהתחלה',
 		lastAttemptLabel: 'ניסיון אחרון',
 		timeLeftLabel: 'זמן שנותר',
 		viewSolutionButton: 'צפייה בפתרונות',
@@ -330,7 +326,7 @@ export const he = {
 			'ארבע אפשרויות: קראו את כולן, מחקו את הברור, והוכיחו את הנבחרת מהקטע.',
 			'השאירו לפחות 20 דקות לכתיבה: עמדה, סיבה, דוגמה וסיכום, שבעים עד תשעים מילים. פחות משבעים מורידים נקודות, יותר מתשעים לא.'
 		],
-		resumeButton: 'המשך מבחן',
+		resumeButton: 'התחלה מחדש',
 		retakeButton: 'ניסיון נוסף'
 	},
 	unit: {

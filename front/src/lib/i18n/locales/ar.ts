@@ -31,7 +31,7 @@ export const ar: DictionaryOverride = {
 		daysShort: (n: number) => `${n} يومًا`,
 		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
 		skills: { vocab: 'المفردات', reading: 'فهم المقروء', writing: 'الكتابة', speaking: 'المحادثة' },
-		hookResume: 'تركتم امتحانًا في المنتصف - تابعوا',
+		hookResume: 'لديكم امتحان لم تنهوه',
 		hookReady: 'أنتم جاهزون للامتحان!',
 		hookWords: (n: number) => `${n} كلمات للمراجعة اليوم`,
 		meterLessons: 'الدروس',
@@ -46,12 +46,12 @@ export const ar: DictionaryOverride = {
 		examSoon: 'قريبًا',
 		todayStart: 'لنبدأ',
 		lessonNext: 'الدرس التالي',
-		examMidway: 'تركتم الامتحان في المنتصف',
+		examMidway: 'لديكم امتحان لم تنهوه',
 		continueCta: 'تابعوا',
 		lessonMidway: 'في منتصف الدرس',
 		desktopNote: 'درس كتابة - الأفضل من الحاسوب',
 		examReason: {
-			resume: 'تركتم الامتحان في المنتصف - إنه بانتظاركم.',
+			resume: 'لديكم امتحان لم تنهوه. لا يمكن متابعته، لذا نبدأ من جديد.',
 			ready: 'أنهيتم معظم المسار. حان وقت اختبار أنفسكم في امتحان بشروط البجروت.',
 			'path-done': 'أنهيتم المسار. الآن تتدربون على الامتحان الحقيقي.'
 		},
@@ -131,10 +131,6 @@ export const ar: DictionaryOverride = {
 			'not-english': 'الإجابة ليست بالإنجليزية.',
 			'too-short': 'أقل من 25 كلمة - المهمة كلها تحصل على 0.'
 		} as Record<string, string>,
-		resumePromptTitle: 'المتابعة من حيث توقفتم؟',
-		resumePromptDesc: 'هناك محاولة مفتوحة لهذا الامتحان.',
-		resumeConfirm: 'المتابعة من حيث توقفت',
-		resumeRestart: 'البدء من جديد',
 		lastAttemptLabel: 'آخر محاولة',
 		timeLeftLabel: 'الوقت المتبقي',
 		viewSolutionButton: 'عرض الحلول',
@@ -184,7 +180,7 @@ export const ar: DictionaryOverride = {
 			'أربعة خيارات: اقرأوها كلها، اشطبوا الواضح خطؤه، وأثبتوا الخيار المختار من النص.',
 			'اتركوا 20 دقيقة على الأقل للكتابة: موقف، سبب، مثال وخلاصة، من سبعين إلى تسعين كلمة. أقل من سبعين تخسرون علامات، وأكثر من تسعين لا.'
 		],
-		resumeButton: 'متابعة الامتحان',
+		resumeButton: 'البدء من جديد',
 		retakeButton: 'محاولة أخرى'
 	},
 	unit: {

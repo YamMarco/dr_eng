@@ -16,14 +16,10 @@ export interface QuizAttempt {
 	grades?: Record<string, ExamGrade>;
 }
 
+/** Marker for an exam left unfinished (exams can't be resumed). */
 export interface QuizInProgress {
 	quizId: string;
 	startedAt: number;
-	/** Index into the quiz's screens flattened across every part (parts are a
-	 *  cosmetic grouping, not a separate navigation phase). */
-	entryIndex: number;
-	answers: Record<string, unknown>;
-	remainingSeconds: number;
 }
 
 const attemptKey = (quizId: string) => `quiz:attempt:${quizId}`;
