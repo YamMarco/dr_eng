@@ -17,7 +17,8 @@ export const ar: DictionaryOverride = {
 		home: 'الرئيسية',
 		book: 'حجز درس',
 		settings: 'الإعدادات',
-		vocabImages: 'صور الكلمات'
+		vocabImages: 'صور الكلمات',
+		toSite: 'إلى الصفحة الرئيسية'
 	},
 	appTitle: 'بجروت الإنجليزية - تدريب',
 	login: {

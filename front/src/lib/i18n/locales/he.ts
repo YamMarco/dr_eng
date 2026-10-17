@@ -12,7 +12,8 @@ export const he = {
 		home: 'בית',
 		book: 'תיאום שיעור',
 		settings: 'הגדרות',
-		vocabImages: 'תמונות מילים'
+		vocabImages: 'תמונות מילים',
+		toSite: 'לדף הראשי'
 	},
 	appTitle: 'בגרות באנגלית — תרגול',
 	site: {

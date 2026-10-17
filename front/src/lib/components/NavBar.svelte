@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
+	import { MOBILE_BUILD } from '$lib/platform';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	let items = $derived([
@@ -102,6 +104,15 @@
 			style="width: {100 / items.length}%; inset-inline-start: {(activeIndex / items.length) *
 				100}%"
 		></span>
+
+		{#if !MOBILE_BUILD}
+			<a
+				href={resolve('/')}
+				class="me-auto hidden min-h-10 items-center rounded-full px-4 text-sm font-extrabold tracking-tight text-ink transition hover:bg-line/60 active:scale-95 lg:flex"
+			>
+				{i18n.dict.site.brand}
+			</a>
+		{/if}
 
 		{#each items as item (item.href)}
 			{@const active = item.match(path)}

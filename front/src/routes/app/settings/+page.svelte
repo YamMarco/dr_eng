@@ -205,6 +205,18 @@
 	>
 		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.aboutSection}</h2>
 		<ul class="mt-2 flex flex-col divide-y divide-line/70">
+			<!-- The public site (splash) doesn't exist in the mobile app. -->
+			{#if !MOBILE_BUILD}
+				<li>
+					<a
+						href={resolve('/')}
+						class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
+					>
+						{i18n.dict.nav.toSite}
+						<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+					</a>
+				</li>
+			{/if}
 			<li class="flex items-center justify-between gap-4 px-5 py-4">
 				<span class="font-semibold">{i18n.dict.settings.version}</span>
 				<span class="text-sm text-muted" dir="ltr">{i18n.dict.settings.versionValue}</span>
