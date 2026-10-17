@@ -50,13 +50,16 @@
 	<span class="flex min-w-0 flex-1 flex-col gap-1 lg:gap-2">
 		<span class="flex items-center gap-2">
 			<span class="me-auto font-bold lg:text-lg">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
-			{#if !comingSoon}<span class="lg:absolute lg:end-6 lg:top-6"><ExamNugget {exams} /></span>{/if}
+			{#if !comingSoon}<span class="lg:absolute lg:end-6 lg:top-6"><ExamNugget {exams} /></span
+				>{/if}
 		</span>
 		{#if comingSoon}
 			<span class="text-xs text-muted">{i18n.dict.common.comingSoon}</span>
 		{:else}
 			<span
-				class="truncate text-xs lg:whitespace-normal lg:text-sm {hook.tone === 'go' ? 'font-bold text-brand-dark' : 'text-muted'}"
+				class="truncate text-xs lg:text-sm lg:whitespace-normal {hook.tone === 'go'
+					? 'font-bold text-brand-dark'
+					: 'text-muted'}"
 			>
 				{hook.text}
 			</span>
@@ -76,13 +79,19 @@
 			</span>
 		{/if}
 	</span>
-	{#if !comingSoon}<ChevronLeft size={18} class="shrink-0 text-muted lg:hidden" aria-hidden="true" />{/if}
+	{#if !comingSoon}<ChevronLeft
+			size={18}
+			class="shrink-0 text-muted lg:hidden"
+			aria-hidden="true"
+		/>{/if}
 {/snippet}
 
 <!-- href is a runtime-built module path, not a typed route -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 {#if comingSoon}
-	<div class="relative flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70 lg:flex-col lg:items-stretch lg:gap-4 lg:p-6">
+	<div
+		class="relative flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70 lg:flex-col lg:items-stretch lg:gap-4 lg:p-6"
+	>
 		{@render body()}
 	</div>
 {:else}
@@ -93,16 +102,13 @@
 		{@render body()}
 	</a>
 {/if}
+
 <!-- eslint-enable svelte/no-navigation-without-resolve -->
 
 <style>
 	/* Barber-pole fill: brand and accent stripes rolling forward. */
 	.barber {
-		background: repeating-linear-gradient(
-			-45deg,
-			#2563eb 0 6px,
-			#facc15 6px 12px
-		);
+		background: repeating-linear-gradient(-45deg, #2563eb 0 6px, #facc15 6px 12px);
 		background-size: 17px 100%;
 		animation: barber 0.8s linear infinite;
 	}

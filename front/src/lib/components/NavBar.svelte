@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { MOBILE_BUILD } from '$lib/platform';
+	import StatusChips from '$lib/dashboard/StatusChips.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	let items = $derived([
@@ -91,7 +92,7 @@
 
 <nav
 	aria-label={i18n.dict.nav.mainNav}
-	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 lg:inset-x-0 lg:top-0 lg:bottom-auto lg:border-t-0 lg:border-b backdrop-blur supports-backdrop-filter:bg-surface/85"
+	class="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 backdrop-blur supports-backdrop-filter:bg-surface/85 lg:inset-x-0 lg:top-0 lg:bottom-auto lg:border-t-0 lg:border-b"
 	style="padding-bottom: env(safe-area-inset-bottom)"
 >
 	<div
@@ -100,7 +101,7 @@
 		<!-- Slides to whichever tab is active — inset-inline-start (not left)
 		     so it lands under the right tab regardless of the RTL flex order. -->
 		<span
-			class="absolute top-0 h-0.5 rounded-full lg:hidden bg-brand-dark transition-[inset-inline-start] duration-200 ease-out"
+			class="absolute top-0 h-0.5 rounded-full bg-brand-dark transition-[inset-inline-start] duration-200 ease-out lg:hidden"
 			style="width: {100 / items.length}%; inset-inline-start: {(activeIndex / items.length) *
 				100}%"
 		></span>
@@ -108,7 +109,7 @@
 		{#if !MOBILE_BUILD}
 			<a
 				href={resolve('/')}
-				class="me-auto hidden min-h-10 items-center rounded-full px-4 text-sm font-extrabold tracking-tight text-ink transition hover:bg-line/60 active:scale-95 lg:flex"
+				class="hidden min-h-10 items-center rounded-full px-4 text-sm font-extrabold tracking-tight text-ink transition hover:bg-line/60 active:scale-95 lg:flex"
 			>
 				{i18n.dict.site.brand}
 			</a>
@@ -136,5 +137,7 @@
 				{item.label}
 			</a>
 		{/each}
+
+		<StatusChips class="ms-auto max-lg:hidden" />
 	</div>
 </nav>
