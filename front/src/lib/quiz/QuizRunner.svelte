@@ -308,7 +308,8 @@
 			onBack={onExit}
 		/>
 	{:else}
-		<AppBar title={i18n.title(quiz.id)} onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
+		<!-- No title: it tells the student nothing mid-exam and clips on a phone. -->
+		<AppBar onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
 			{#snippet trailing()}
 				{#if showTimer}
 					<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
@@ -317,9 +318,7 @@
 		</AppBar>
 
 		<div
-			class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
-				? 'lg:max-w-5xl'
-				: ''}"
+			class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage ? 'lg:max-w-5xl' : ''}"
 		>
 			<div class="flex min-w-0 items-center gap-1.5">
 				{#if showNavigator && allEntries.length > 1}
@@ -348,7 +347,7 @@
 		     passage-less one (e.g. writing) only widens the column from the same
 		     start edge instead of re-centering everything. -->
 		<main
-			class="app-col flex min-h-0  flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {quizHasPassage
+			class="app-col flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-4 pt-3 pb-6 {quizHasPassage
 				? 'lg:max-w-5xl'
 				: ''} {activePassage
 				? 'lg:grid lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-8 lg:overflow-hidden lg:pb-0'

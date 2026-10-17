@@ -11,7 +11,7 @@
 	// Ambient by design: a quiet outline until `warning` (the final minutes),
 	// then the only red on the screen - present, never a countdown bomb.
 	// Keeps counting in the background either way - this only hides the
-	// digits from view, e.g. so a passer-by can't read how much time is left.
+	// digits from view (dashes, same size), e.g. so a passer-by can't read how much time is left.
 	let hidden = $state(false);
 </script>
 
@@ -37,10 +37,17 @@
 		<circle cx="12" cy="12" r="9" />
 		<path d="M12 7v5l3 2" />
 	</svg>
-	{#if !hidden}
-		{#if label}
-			<span class="font-semibold">{label}</span>
-		{/if}
-		<span dir="ltr">{formatTime(seconds)}</span>
+	{#if label}
+		<span class="font-semibold">{label}</span>
 	{/if}
+	<!-- Hidden: the digits keep their space (invisible) with dashes over them, so
+	     the chip never changes size. -->
+	<span dir="ltr" class="grid">
+		<span class="col-start-1 row-start-1 {hidden ? 'invisible' : ''}">{formatTime(seconds)}</span>
+		{#if hidden}
+			<span class="col-start-1 row-start-1 text-center" aria-hidden="true"
+				>{formatTime(seconds).replace(/\d/g, '-')}</span
+			>
+		{/if}
+	</span>
 </button>
