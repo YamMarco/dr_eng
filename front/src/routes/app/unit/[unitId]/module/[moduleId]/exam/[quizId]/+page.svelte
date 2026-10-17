@@ -99,7 +99,7 @@
 			<h3 class="mt-4 text-sm font-bold">{t.tipsTitle}</h3>
 			<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed">
 				{#each tips as tip (tip)}
-					<li>{tip}</li>
+					<li class="whitespace-pre-line">{tip}</li>
 				{/each}
 			</ul>
 		</section>
