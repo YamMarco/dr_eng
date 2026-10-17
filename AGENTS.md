@@ -13,8 +13,7 @@
 - free-text feedback / grading / LLM prompts / rules cascade: read docs/feedback-framework.md
 - Module E (exam, vocabulary deck, reading path): read docs/modules/module-e.md
 - COBE (oral exam, speak screen, source ranking): read docs/modules/cobe.md; after changing COBE content, update it
-- outside editors (/mcp, docs/ai-editing.md): ai-editing.md is served whole to them, keep it a pure rule book; /mcp details in docs/platform.md
-- security audits / changes to auth, /api, /mcp, payments or deps: read docs/security.md
+- security audits / changes to auth, /api, payments or deps: read docs/security.md
 - docs/ are present-state guidelines: keep them concise and updated, no history or dated status lines
 
 ## content

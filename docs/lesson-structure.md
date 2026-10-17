@@ -62,7 +62,7 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 
 ### Adding a screen type
 
-1. Schema in `lesson-screens/schema.ts` (with `.describe()`), add to `lessonScreenSchema`, a type alias in `types.ts`, cases in `isScreenEmpty()` and `countQuestions()`. The /edit paste check and the /mcp endpoint pick it up from there.
+1. Schema in `lesson-screens/schema.ts` (with `.describe()`), add to `lessonScreenSchema`, a type alias in `types.ts`, cases in `isScreenEmpty()` and `countQuestions()`. The /edit paste check picks it up from there.
 2. Component in `lesson-screens/`: props `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }` and `export function primaryAction()`.
 3. Register in `registry.ts`.
 4. Badge string in `i18n/locales/he.ts` under `exerciseKind`.

@@ -1,5 +1,4 @@
-// Checks for one screen, shared by the /edit workspace (issue list + paste),
-// and the /mcp endpoint's validate_screens. Shape comes from schema.ts; these
+// Checks for one screen, used by the /edit workspace (issue list + paste). Shape comes from schema.ts; these
 // add the content rules a schema can't express (index ranges, duplicate
 // options, the dash rule). Messages are Hebrew - they're shown in the editor.
 import * as z from 'zod';

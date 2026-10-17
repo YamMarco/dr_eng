@@ -1,15 +1,15 @@
 # Security audit rule book
 
-Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM routes + `/mcp`, Vercel, Capacitor, users are minors). Re-run it before launch and after any change to auth, `/api`, `/mcp`, payments or dependencies. Also apply it when writing such code, not only when auditing.
+Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM routes, Vercel, Capacitor, users are minors). Re-run it before launch and after any change to auth, `/api`, payments or dependencies. Also apply it when writing such code, not only when auditing.
 
 **Core principle: never trust the client.** Every price, user id, role, plan status, feature flag and rate-limit counter is enforced on the server. Anything that lives only in the browser, the mobile bundle or the request body is controlled by the attacker.
 
 ## How to run an audit
 
-1. Refresh the threat list: search for new CVEs for `@sveltejs/kit`, `svelte`, `vite`, `devalue`, `@supabase/*`, `@modelcontextprotocol/*`, and new npm supply-chain incidents. Add anything relevant to "Known exploit classes".
+1. Refresh the threat list: search for new CVEs for `@sveltejs/kit`, `svelte`, `vite`, `devalue`, `@supabase/*`, and new npm supply-chain incidents. Add anything relevant to "Known exploit classes".
 2. Check installed versions (`node_modules/<pkg>/package.json`), then `npm audit --omit=dev` and `npm audit`.
 3. Secrets sweep: `gitleaks detect` (whole history), `git ls-files | grep -i env`, grep for `sk_live_`, `sk_test_`, `AKIA`, `ghp_`, `glpat-`, `xoxb-`, `postgres://user:pass@`, and `VITE_*` / `PUBLIC_*` names containing secret, private, service or key.
-4. Walk every server entry point: `hooks.server.ts`, `routes/api/**`, `routes/mcp`, `lib/server/**`.
+4. Walk every server entry point: `hooks.server.ts`, `routes/api/**`, `lib/server/**`.
 5. Check Supabase (RLS, policies, functions, storage buckets, auth settings) and host env vars per environment.
 6. Probe the live deployment: security headers, `/.git/HEAD`, `*.js.map`, error pages, CORS response to a foreign origin.
 7. Report (format below) and grade.
@@ -23,12 +23,11 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 | E3 | Transitive DoS libs (`brace-expansion`, `source-map-js`), `cookie` < 0.7 | `npm audit` clean or each item justified |
 | E4 | npm worms (Shai-Hulud family): steal tokens on install, plant `.claude/settings.json` / `.vscode/tasks.json` | Lockfile committed, `npm ci`, soak period before upgrading, no unexpected files in those paths |
 | E5 | Vite dev server `server.fs.deny` bypasses (incl. Windows backslash) | Patched Vite; dev server never on `--host` in untrusted networks |
-| E6 | Unauthenticated remote MCP servers | `/mcp` auth, read-only tools, input limits, rate limit |
-| E7 | Prompt injection, direct (student text) and indirect (OCR'd images) | Grader prompts isolate student input; output schema-validated |
-| E8 | System prompt leakage | Prompts hold no secrets; security never depends on the prompt |
-| E9 | Unbounded LLM consumption (cost / DoS) | Per-user quota, global cap, input size limit, max tokens, timeouts; burst limit not per-instance only |
-| E10 | Supabase misconfig: RLS off, `USING (true)`, `SECURITY DEFINER` functions, leaked secret key | Every exposed table has RLS; secret key server-only |
-| E11 | Hook-only auth (cf. Next.js CVE-2025-29927 middleware bypass) | Auth re-checked inside each handler, not only in `hooks.server.ts` |
+| E6 | Prompt injection, direct (student text) and indirect (OCR'd images) | Grader prompts isolate student input; output schema-validated |
+| E7 | System prompt leakage | Prompts hold no secrets; security never depends on the prompt |
+| E8 | Unbounded LLM consumption (cost / DoS) | Per-user quota, global cap, input size limit, max tokens, timeouts; burst limit not per-instance only |
+| E9 | Supabase misconfig: RLS off, `USING (true)`, `SECURITY DEFINER` functions, leaked secret key | Every exposed table has RLS; secret key server-only |
+| E10 | Hook-only auth (cf. Next.js CVE-2025-29927 middleware bypass) | Auth re-checked inside each handler, not only in `hooks.server.ts` |
 
 ## Checklist
 
@@ -65,7 +64,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 20. Coupon redemption atomic (no race past `max uses`).
 
 ### Rate limiting and abuse (LLM10)
-21. Limits on: auth flows, LLM routes, email sending, file processing (OCR, uploads), `/mcp`.
+21. Limits on: auth flows, LLM routes, email sending, file processing (OCR, uploads).
 22. Counters not writable by users (no RLS-open public table); per-instance memory isn't a real limit on serverless.
 23. Combine per-IP and per-user limits (IP alone: rotated; user alone: new accounts).
 24. Billing alerts on Vercel, Supabase and the LLM provider; hard spend cap at the provider; per-user hard quota in the app.
@@ -75,32 +74,29 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 26. LLM output is untrusted input: parse with zod, clamp scores to the rubric, render as text, never execute.
 27. Limits: max input chars / image size, max output tokens, request timeout.
 
-### MCP endpoint
-28. Auth (OAuth 2.1 + PKCE, or a scoped per-editor token); read-only tools; no filesystem path built from input (`repoFiles` traversal); body size and rate limits.
-
 ### Supabase / DB
-29. RLS on every table in exposed schemas (Drizzle migrations create tables with RLS off; check `pg_tables` where `rowsecurity = false`). Junction/log tables too.
-30. No `USING (true)` or `USING (auth.uid() IS NOT NULL)` on select/update/delete; insert/update policies have `WITH CHECK`.
-31. Users can't update sensitive columns (role, plan, credits): keep them in server-only tables or use column grants.
-32. `SECURITY DEFINER` functions live outside `public`, set `search_path = ''`, validate inputs.
-33. Storage: public read OK for `vocab-images`, upload/delete restricted to staff, MIME and size limits.
-34. 2FA on the dashboard; secret key and `DATABASE_URL` server-only.
+28. RLS on every table in exposed schemas (Drizzle migrations create tables with RLS off; check `pg_tables` where `rowsecurity = false`). Junction/log tables too.
+29. No `USING (true)` or `USING (auth.uid() IS NOT NULL)` on select/update/delete; insert/update policies have `WITH CHECK`.
+30. Users can't update sensitive columns (role, plan, credits): keep them in server-only tables or use column grants.
+31. `SECURITY DEFINER` functions live outside `public`, set `search_path = ''`, validate inputs.
+32. Storage: public read OK for `vocab-images`, upload/delete restricted to staff, MIME and size limits.
+33. 2FA on the dashboard; secret key and `DATABASE_URL` server-only.
 
 ### Mobile (Capacitor)
-35. The bundle holds public values only; all secret-key calls go through our `/api`.
-36. Tokens: Capacitor `Preferences` / `localStorage` are plaintext on disk; prefer a secure-storage (Keychain/Keystore) adapter for the Supabase session.
-37. Deep links: validate every parameter, no tokens in URLs, no destructive action without confirmation.
+34. The bundle holds public values only; all secret-key calls go through our `/api`.
+35. Tokens: Capacitor `Preferences` / `localStorage` are plaintext on disk; prefer a secure-storage (Keychain/Keystore) adapter for the Supabase session.
+36. Deep links: validate every parameter, no tokens in URLs, no destructive action without confirmation.
 
 ### Logging and errors (A09, A10)
-38. Sentry scrubs PII (tokens, emails, essay text); no replay; failure alerts exist.
-39. Fail closed: when auth, access or quota checks error, paid/LLM routes deny. Only offline content may fail open.
+37. Sentry scrubs PII (tokens, emails, essay text); no replay; failure alerts exist.
+38. Fail closed: when auth, access or quota checks error, paid/LLM routes deny. Only offline content may fail open.
 
 ### Privacy (Israel Protection of Privacy Law, Amendment 13; Data Security Regulations 5777)
-40. Privacy notice: purpose, controller, recipients, access/correction rights; data minimization; account deletion also removes server rows; check DPO need (large-scale minors' data); minors' consent follows guardianship law.
-41. Security regulations: access control, encryption at rest/in transit, periodic audit, written incident procedure.
+39. Privacy notice: purpose, controller, recipients, access/correction rights; data minimization; account deletion also removes server rows; check DPO need (large-scale minors' data); minors' consent follows guardianship law.
+40. Security regulations: access control, encryption at rest/in transit, periodic audit, written incident procedure.
 
 ### Ops
-42. 2FA on GitHub, Vercel, Supabase, npm, LLM provider; host secrets marked sensitive; key rotation steps known.
+41. 2FA on GitHub, Vercel, Supabase, npm, LLM provider; host secrets marked sensitive; key rotation steps known.
 
 ## Report format
 
@@ -122,7 +118,6 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 - [OWASP Top 10:2025](https://owasp.org/Top10/2025/)
 - [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/llm-top-10/)
 - [vibe-security skill (common AI-coding security mistakes)](https://github.com/raroque/vibe-security-skill)
-- [MCP security risks and controls (Checkmarx)](https://checkmarx.com/learn/mcp-security-risks-real-world-incidents-and-security-controls/)
 - [Shai-Hulud npm worm (Microsoft)](https://www.microsoft.com/en-us/security/blog/2025/12/09/shai-hulud-2-0-guidance-for-detecting-investigating-and-defending-against-the-supply-chain-attack/)
 - [Supabase RLS docs](https://supabase.com/docs/guides/database/postgres/row-level-security)
 - [Israel PPL incl. Amendment 13](https://edlaw.eduverse.com/docs/jurisdiction/nat/il/protection-of-privacy-law)

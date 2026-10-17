@@ -1,5 +1,5 @@
 // The single source of truth for lesson-screen shapes. TypeScript types
-// (types.ts), the /edit paste check and the /mcp endpoint all derive from
+// (types.ts) and the /edit paste check derive from
 // these schemas, and the `.describe()` texts double as the field docs an AI
 // editor reads. To add a screen type: add its schema here and to
 // `lessonScreenSchema`, then follow "Adding a screen type" in
