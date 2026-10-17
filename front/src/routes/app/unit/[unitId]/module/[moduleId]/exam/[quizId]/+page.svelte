@@ -32,19 +32,34 @@
 	let row = $derived(running ? undefined : examRow(quiz));
 	let taken = $derived(!!row?.percents.length);
 
-	// The Bagrut module exam's fixed structure - same for every quiz here.
-	let rules = $derived([
-		t.readingTextsRule(1),
-		t.questionsRule(10),
-		t.timeRule(quizNode?.options.durationMinutes ?? 90)
-	]);
+	// The exam's structure, read from the quiz itself: reading texts and
+	// questions, the writing task when there is one, and the time.
+	let rules = $derived.by(() => {
+		const parts = quizNode?.parts ?? [];
+		const screens = parts.flatMap((part) => part.screens);
+		const writing = parts.find((part) => part.id === 'writing')?.screens[0];
+		const list = [
+			t.readingTextsRule(screens.filter((s) => s.type === 'passage').length || 1),
+			t.questionsRule(
+				parts
+					.filter((part) => part.id !== 'writing')
+					.flatMap((part) => part.screens)
+					.filter((s) => s.type !== 'passage').length
+			)
+		];
+		if (writing?.type === 'writing-task' && writing.minWords && writing.maxWords)
+			list.push(t.writingRule(writing.minWords, writing.maxWords));
+		list.push(t.timeRule(quizNode?.options.durationMinutes ?? 90));
+		return list;
+	});
+	let tips = $derived(data.mod.id === 'c' ? t.tipsC : t.tips);
 
 	function start() {
 		running = true;
 		lastEngagement.record({ kind: 'exam', moduleId: data.mod.id, id: quiz.id });
 	}
 
-	const card ='rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	const card = 'rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 </script>
 
 {#if running && quizNode}
@@ -83,7 +98,7 @@
 			</ul>
 			<h3 class="mt-4 text-sm font-bold">{t.tipsTitle}</h3>
 			<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed">
-				{#each t.tips as tip (tip)}
+				{#each tips as tip (tip)}
 					<li>{tip}</li>
 				{/each}
 			</ul>
@@ -95,11 +110,7 @@
 		>
 			{#if quizNode}
 				<Button onclick={start}>
-					{row?.inProgress
-						? t.resumeButton
-						: taken
-							? t.retakeButton
-							: i18n.dict.quiz.startButton}
+					{row?.inProgress ? t.resumeButton : taken ? t.retakeButton : i18n.dict.quiz.startButton}
 				</Button>
 				{#if lastAttempt}
 					<Button variant="secondary" onclick={() => (viewingSolution = true)}>
