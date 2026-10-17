@@ -4,6 +4,9 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
+	import { ChevronLeft } from '@lucide/svelte';
+	import { resolve } from '$app/paths';
+	import { MOBILE_BUILD } from '$lib/platform';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n, type Language } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
@@ -176,6 +179,18 @@
 						label={i18n.dict.settings.debugTools}
 					/>
 				</li>
+				<!-- Authoring tool: needs the server, so not in the mobile app. -->
+				{#if !MOBILE_BUILD}
+					<li>
+						<a
+							href={resolve('/vocab-images')}
+							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
+						>
+							{i18n.dict.nav.vocabImages}
+							<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+						</a>
+					</li>
+				{/if}
 			</ul>
 		</section>
 	{/if}

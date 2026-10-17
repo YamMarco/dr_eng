@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Images } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { MOBILE_BUILD } from '$lib/platform';
-	import { auth } from '$lib/auth.svelte';
 
-	let allItems = $derived([
+	let items = $derived([
 		{
 			href: '/app',
 			label: i18n.dict.nav.home,
@@ -26,21 +23,8 @@
 			match: (path: string) => path.startsWith('/app/settings'),
 			icon: 'settings',
 			external: false
-		},
-		{
-			// Content-authoring tool (password-gated in production, same as /edit).
-			href: '/vocab-images',
-			label: i18n.dict.nav.vocabImages,
-			match: (path: string) => path.startsWith('/vocab-images'),
-			icon: 'images',
-			external: false
 		}
 	] as const);
-
-	// Authoring tools are staff-only and need the server (so not in the mobile app).
-	let items = $derived(
-		MOBILE_BUILD || !auth.isAdmin ? allItems.filter((item) => item.icon !== 'images') : allItems
-	);
 
 	let path = $derived(page.url.pathname);
 	let activeIndex = $derived(
@@ -134,8 +118,6 @@
 						{@render homeIcon(active)}
 					{:else if item.icon === 'book'}
 						{@render bookIcon(active)}
-					{:else if item.icon === 'images'}
-						<Images size={24} aria-hidden="true" />
 					{:else}
 						{@render settingsIcon(active)}
 					{/if}
