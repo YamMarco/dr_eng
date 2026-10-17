@@ -4,11 +4,11 @@ import adapterAuto from '@sveltejs/adapter-auto';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
-// The Svelte inspector's "open in editor" action shells out via the
-// `launch-editor` package, which picks an editor from EDITOR/VISUAL — set
-// here (rather than relying on shell env) so it opens VS Code regardless of
-// how `npm run dev` was launched, instead of falling back to Notepad.
-process.env.EDITOR ??= 'code';
+// The Svelte inspector's "open in editor" action shells out via
+// `launch-editor`, which tries LAUNCH_EDITOR first, then guesses from the
+// editors currently running, and only then reads EDITOR/VISUAL. Setting
+// LAUNCH_EDITOR here makes it always open VS Code, whatever else is running.
+process.env.LAUNCH_EDITOR = 'code';
 
 // Two targets from one codebase:
 // - web (default): the whole site - public pages, /app, admin tools, /api.
