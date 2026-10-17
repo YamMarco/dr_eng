@@ -1,17 +1,18 @@
 // Layer 2 endpoint: the student's (already typo-corrected, anonymous) text and its
 // question in, a tag-and-span verdict out. No user info ever reaches the LLM.
 // An exam's open reading answers come as one batch per passage.
+import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/environment';
 import { error, json } from '@sveltejs/kit';
 import { z } from 'zod';
 import { llmConfigured } from '$lib/server/llm';
+import { guardLlm } from '$lib/server/llmGuard';
 import {
 	MAX_READING_ITEMS,
 	MAX_TEXT,
 	gradeEssay,
 	gradeLesson,
 	gradeReading,
-	rateLimited,
 	systemPrompt,
 	userPrompt
 } from '$lib/server/grade';
@@ -52,7 +53,7 @@ const body = z.discriminatedUnion('kind', [
 
 export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
 	if (!llmConfigured()) throw error(503, 'LLM is not configured');
-	if (rateLimited(locals.userId ?? getClientAddress())) throw error(429, 'too many requests');
+	await guardLlm(locals, getClientAddress());
 	const parsed = body.safeParse(await request.json().catch(() => null));
 	if (!parsed.success) throw error(400, 'bad request');
 	const req = parsed.data;
@@ -62,6 +63,7 @@ export const POST: RequestHandler = async ({ request, locals, getClientAddress }
 		return json(await gradeEssay(req));
 	} catch (e) {
 		console.error('grade failed:', e);
+		Sentry.captureException(e);
 		throw error(502, 'grading failed');
 	}
 };

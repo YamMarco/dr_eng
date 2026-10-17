@@ -71,9 +71,9 @@ it's QA scratch state, not curriculum content, so it never touches
 add / replace / delete controls (top-right). Picking a file opens
 `ImageCropper.svelte` (drag / zoom / rotate under a 16:9 frame, same shape as
 the player's `WordImage`); accepting POSTs the cropped JPEG to
-`/api/content-edit/image`, which stores it as `static/vocab-images/word-<hash>.jpg`
-(disk in dev, a GitHub commit in production - live after the next deploy) and
-the screen keeps its path in `image`. Delete only clears the field.
+`/api/content-edit/image`, which stores it as `word-<hash>.jpg` in the public
+`vocab-images` Supabase Storage bucket (live at once) and the screen keeps
+`/vocab-images/word-<hash>.jpg` in `image` (`lesson-screens/vocabImage.ts` maps it to the bucket). Delete only clears the field.
 
 Prose is stored as markdown, rendered at runtime by
 `src/lib/lesson-screens/miniMarkdown.ts` (not part of this folder).

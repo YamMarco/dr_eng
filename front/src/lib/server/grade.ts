@@ -146,21 +146,3 @@ export async function gradeEssay(req: SingleRequest): Promise<EssayVerdict> {
 	);
 	return { scores, marks: cleanMarks(parsed.marks, 'essay') };
 }
-
-// Best-effort limiter (per server instance). Per-student auth is the real fix; see llm-gateway/README.
-// One exam submit is 2 calls (reading batch + essay).
-const WINDOW_MS = 5 * 60_000;
-const MAX_CALLS = 30;
-const calls = new Map<string, number[]>();
-
-export function rateLimited(key: string): boolean {
-	const now = Date.now();
-	const recent = (calls.get(key) ?? []).filter((t) => now - t < WINDOW_MS);
-	if (recent.length >= MAX_CALLS) {
-		calls.set(key, recent);
-		return true;
-	}
-	recent.push(now);
-	calls.set(key, recent);
-	return false;
-}

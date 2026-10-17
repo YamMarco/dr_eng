@@ -4,6 +4,7 @@
 	import { allLessons } from '$lib/content';
 	import { screensForRound } from '$lib/content-edit/screenPath';
 	import type { WordCardScreen } from '$lib/lesson-screens/types';
+	import { vocabImageUrl } from '$lib/lesson-screens/vocabImage';
 	import { SvelteSet } from 'svelte/reactivity';
 
 	type Entry = WordCardScreen & {
@@ -83,7 +84,7 @@
 				>
 					{#if entry.image && !brokenImages.has(key)}
 						<img
-							src={entry.image}
+							src={vocabImageUrl(entry.image)}
 							alt={entry.imageAlt ?? entry.word}
 							class="h-full w-full object-cover"
 							onerror={() => markBroken(key)}

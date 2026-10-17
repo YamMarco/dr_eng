@@ -1,5 +1,11 @@
+import * as Sentry from '@sentry/sveltekit';
 import { redirect, type Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
 import { accountsEnabled, userFrom } from '$lib/server/supabase';
+
+// Error reporting: same DSN and rules as hooks.client.ts (off until set).
+const dsn = import.meta.env.VITE_SENTRY_DSN;
+if (dsn) Sentry.init({ dsn, environment: import.meta.env.MODE });
 
 // The app moved under /app; old bookmarks and installed shortcuts land there.
 const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
@@ -21,7 +27,7 @@ function cors(origin: string): Record<string, string> {
 	};
 }
 
-export const handle: Handle = async ({ event, resolve }) => {
+const app: Handle = async ({ event, resolve }) => {
 	const { pathname } = event.url;
 	// url.search is off-limits while prerendering, so only read it on a match.
 	if (MOVED.test(pathname)) redirect(308, `/app${pathname}${event.url.search}`);
@@ -46,3 +52,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	for (const [key, value] of Object.entries(headers)) response.headers.set(key, value);
 	return response;
 };
+
+export const handle = sequence(Sentry.sentryHandle(), app);
+export const handleError = Sentry.handleErrorWithSentry();

@@ -3,15 +3,18 @@
 // client posts a downscaled JPEG as the raw body; the `ocr` gateway role
 // (a vision model) transcribes it. It must copy, never fix: correcting the
 // student's spelling here would hide exactly the mistakes we grade.
+import * as Sentry from '@sentry/sveltekit';
 import { error, json } from '@sveltejs/kit';
 import { chat, llmConfigured } from '$lib/server/llm';
+import { guardLlm } from '$lib/server/llmGuard';
 import SYSTEM from '$lib/server/prompts/ocr.md?raw';
 import type { RequestHandler } from './$types';
 
 const MAX_BYTES = 4 * 1024 * 1024;
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
 	if (!llmConfigured()) throw error(503, 'OCR is not configured');
+	await guardLlm(locals, getClientAddress());
 	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
 
 	const bytes = Buffer.from(await request.arrayBuffer());
@@ -30,6 +33,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		text = JSON.parse(result.text).text;
 	} catch (e) {
 		console.error('OCR failed:', e);
+		Sentry.captureException(e);
 		throw error(502, 'OCR failed');
 	}
 	if (typeof text !== 'string') throw error(502, 'OCR returned no text');

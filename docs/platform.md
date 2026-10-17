@@ -31,7 +31,8 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
-- `/api/grade`, `/api/ocr`, `/api/account`, `/api/access` and `/api/checkout(/quote)` need `Authorization: Bearer <token>`. Otherwise they return 401.
+- `/api/grade`, `/api/ocr`, `/api/speak`, `/api/account`, `/api/access` and `/api/checkout(/quote)` need `Authorization: Bearer <token>`. Otherwise they return 401.
+- **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/ocr`): with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over); a per-instance burst limit.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also clears this device's progress.
 
 ### Turning it on
@@ -53,6 +54,14 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
 - **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs TESTERS --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). Tester link: `<web>/checkout?coupon=TESTERS`.
 - **Migrations:** `npm run db:migrate` (needs `DATABASE_MIGRATE_URL`, the session pooler on 5432). Set `DATABASE_URL` (transaction pooler, 6543) on the host too.
+
+## Word-card images
+
+Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<file>`; `lesson-screens/vocabImage.ts` maps it to the bucket URL. `/edit` uploads go straight to the bucket (live at once). Bulk copy: `node --env-file=.env.local scripts/upload-vocab-images.mjs <folder>`.
+
+## Error reporting (Sentry)
+
+Off until `VITE_SENTRY_DSN` is set (`.env.local` and the host). `hooks.client.ts` and `hooks.server.ts` report unhandled errors; the LLM routes also report their failures. No replay or tracing (students are minors).
 
 ## Capacitor, on the day
 

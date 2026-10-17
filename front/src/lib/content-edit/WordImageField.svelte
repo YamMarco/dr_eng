@@ -16,10 +16,6 @@
 
 	let picked = $state<File | null>(null);
 	let input = $state<HTMLInputElement>();
-	// A just-uploaded file isn't served until the next deploy in production, so
-	// show the local crop for it meanwhile.
-	let local = $state<{ url: string; objectUrl: string } | null>(null);
-	let shown = $derived(local && local.url === src ? local.objectUrl : src);
 
 	function onPick(e: Event & { currentTarget: HTMLInputElement }) {
 		picked = e.currentTarget.files?.[0] ?? null;
@@ -27,10 +23,7 @@
 	}
 
 	async function accept(jpeg: Blob) {
-		const url = await uploadImage(jpeg);
-		if (local) URL.revokeObjectURL(local.objectUrl);
-		local = { url, objectUrl: URL.createObjectURL(jpeg) };
-		onChange(url);
+		onChange(await uploadImage(jpeg));
 		picked = null;
 	}
 
@@ -38,7 +31,7 @@
 		'flex h-8 items-center gap-1 rounded-full bg-surface/90 px-2.5 text-xs font-semibold text-ink shadow';
 </script>
 
-<WordImage src={shown} {alt}>
+<WordImage {src} {alt}>
 	<div class="absolute top-2 right-2 flex gap-1.5">
 		{#if src}
 			<button

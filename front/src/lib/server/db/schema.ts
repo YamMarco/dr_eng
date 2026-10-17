@@ -6,7 +6,16 @@
 // to the publishable key, and RLS keeps it closed. The server connects as the
 // database owner, which bypasses RLS.
 import { sql } from 'drizzle-orm';
-import { index, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import {
+	date,
+	index,
+	integer,
+	pgTable,
+	primaryKey,
+	text,
+	timestamp,
+	uuid
+} from 'drizzle-orm/pg-core';
 
 /** Discount codes. Created with scripts/create-coupon.mjs. */
 export const coupons = pgTable('coupons', {
@@ -51,4 +60,15 @@ export const orders = pgTable(
 			.on(table.couponCode)
 			.where(sql`${table.status} in ('paid', 'free')`)
 	]
+).enableRLS();
+
+/** LLM calls per user per day (UTC), for the daily quota in server/llmGuard.ts. */
+export const llmUsage = pgTable(
+	'llm_usage',
+	{
+		userId: uuid().notNull(),
+		day: date().notNull().default(sql`current_date`),
+		calls: integer().notNull().default(0)
+	},
+	(table) => [primaryKey({ columns: [table.userId, table.day] })]
 ).enableRLS();
