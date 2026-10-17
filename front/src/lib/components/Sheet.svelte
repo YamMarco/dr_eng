@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { X } from '@lucide/svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
@@ -48,7 +49,15 @@
 			transition:fly={{ y: 240, duration: 160 }}
 		>
 			<div class="mx-auto mb-5 h-1.5 w-10 rounded-full bg-line sm:hidden"></div>
-			<h2 class="text-xl font-bold">{title}</h2>
+			<button
+				type="button"
+				aria-label={i18n.dict.common.close}
+				onclick={close}
+				class="absolute end-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-muted transition hover:bg-line/60 active:scale-95"
+			>
+				<X size={20} aria-hidden="true" />
+			</button>
+			<h2 class="pe-10 text-xl font-bold">{title}</h2>
 			{#if description}
 				<p class="mt-2 leading-relaxed text-muted">{description}</p>
 			{/if}
