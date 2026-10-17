@@ -143,7 +143,6 @@ export const ar: DictionaryOverride = {
 		correctAnswerLabel: 'الإجابة الصحيحة',
 		showPassage: 'عرض النص',
 		hidePassage: 'إخفاء النص',
-		examModeNote: 'وضع الامتحان: لا ملاحظات ولا شروح حتى التسليم، تمامًا كما في البجروت.',
 		passageLabel: 'نص القراءة',
 		questionLabel: (label: string | number) => `سؤال ${label}`,
 		pointsShort: (points: number) => `${points} نقاط`

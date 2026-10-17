@@ -288,7 +288,6 @@ export const he = {
 		correctAnswerLabel: 'תשובה נכונה',
 		showPassage: 'הצגת הקטע',
 		hidePassage: 'הסתרת הקטע',
-		examModeNote: 'מצב מבחן: אין משוב והסברים עד ההגשה, בדיוק כמו בבגרות.',
 		passageLabel: 'קטע קריאה',
 		questionLabel: (label: string | number) => `שאלה ${label}`,
 		pointsShort: (points: number) => `${points} נק'`

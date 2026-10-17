@@ -308,8 +308,15 @@
 			onBack={onExit}
 		/>
 	{:else}
-		<!-- No title: it tells the student nothing mid-exam and clips on a phone. -->
-		<AppBar onback={requestExit} backLabel={i18n.dict.quiz.exitLabel}>
+		<!-- The bar's title slot says where you are, not which exam: the exam's name
+		     tells the student nothing mid-exam and clips on a phone. -->
+		<AppBar
+			title={allEntries.length > 1
+				? i18n.dict.quiz.questionProgress(entryIndex + 1, allEntries.length)
+				: ''}
+			onback={requestExit}
+			backLabel={i18n.dict.quiz.exitLabel}
+		>
 			{#snippet trailing()}
 				{#if showTimer}
 					<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
@@ -317,11 +324,13 @@
 			{/snippet}
 		</AppBar>
 
-		<div
-			class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage ? 'lg:max-w-5xl' : ''}"
-		>
-			<div class="flex min-w-0 items-center gap-1.5">
-				{#if showNavigator && allEntries.length > 1}
+		{#if showNavigator && allEntries.length > 1}
+			<div
+				class="app-col border-b border-line/70 px-4 pt-2 pb-2 {quizHasPassage
+					? 'lg:max-w-5xl'
+					: ''}"
+			>
+				<div class="flex min-w-0 items-center gap-1.5">
 					<QuestionNavigator
 						total={allEntries.length}
 						currentIndex={entryIndex}
@@ -332,13 +341,9 @@
 						{hiddenIndices}
 						{partBreaks}
 					/>
-				{:else if allEntries.length > 1}
-					<p class="text-xs font-semibold text-muted tabular">
-						{i18n.dict.quiz.questionProgress(entryIndex + 1, allEntries.length)}
-					</p>
-				{/if}
+				</div>
 			</div>
-		</div>
+		{/if}
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
 		     lg+ splits into two independently scrolling columns - question on the
@@ -378,9 +383,6 @@
 					? 'lg:col-start-1 lg:row-start-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-6'
 					: ''}
 			>
-				{#if entryIndex === 0}
-					<p class="mb-3 text-xs text-muted">{i18n.dict.quiz.examModeNote}</p>
-				{/if}
 				{#if currentEntry?.isFirstOfPart}
 					<h3 class="mb-1 text-sm font-bold text-muted">
 						{i18n.title(`${quiz.id}.${currentPart.id}`)}
