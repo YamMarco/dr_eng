@@ -346,9 +346,11 @@
 						{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
 					</button>
 				{/if}
-				<h3 class="min-w-0 truncate text-sm font-bold text-muted">
-					{i18n.title(`${quiz.id}.${currentPart.id}`)}
-				</h3>
+				{#if currentEntry?.isFirstOfPart}
+					<h3 class="min-w-0 truncate text-sm font-bold text-muted">
+						{i18n.title(`${quiz.id}.${currentPart.id}`)}
+					</h3>
+				{/if}
 				{#if showTimer}
 					<div class="ms-auto shrink-0">
 						<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
