@@ -27,15 +27,6 @@
 				{link.label}
 			</a>
 		{/each}
-		{#if auth.session}
-			<button
-				type="button"
-				onclick={() => auth.signOut()}
-				class="min-h-11 rounded-xl px-3 text-sm font-semibold text-muted transition duration-100 hover:bg-line/60 hover:text-ink active:scale-[0.98]"
-			>
-				{t.navSignOut}
-			</button>
-		{/if}
 		<a
 			href={resolve('/app')}
 			class="ms-1 min-h-11 content-center rounded-xl bg-brand px-4 text-sm font-semibold text-white transition duration-100 hover:bg-brand-dark active:scale-[0.98]"
@@ -54,4 +45,9 @@
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>
 	<a href={resolve('/terms')} class="hover:text-ink">{t.terms}</a>
+	{#if auth.session}
+		<button type="button" onclick={() => auth.signOut()} class="hover:text-ink">
+			{t.navSignOut}
+		</button>
+	{/if}
 </footer>
