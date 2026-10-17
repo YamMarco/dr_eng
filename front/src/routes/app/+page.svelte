@@ -75,9 +75,9 @@
 			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
-		<div class="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-4">
+		<div class="flex flex-col gap-3 lg:grid lg:grid-cols-3 lg:gap-5">
 			{#each rows as row, i (row.mod.id)}
-				<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
+				<div class="lg:grid" in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 1), easing: cubicOut }}>
 					<ModuleRow {...row} />
 				</div>
 			{/each}

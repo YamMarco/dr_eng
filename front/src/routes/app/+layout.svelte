@@ -24,7 +24,7 @@
 	);
 </script>
 
-<div class="flex flex-1 flex-col {showNav ? 'pb-16 lg:ps-24 lg:pb-0' : ''}">
+<div class="flex flex-1 flex-col {showNav ? 'pb-16 lg:pt-14 lg:pb-0' : ''}">
 	{#if !auth.ready}
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
 	{:else if !signedIn}

@@ -42,25 +42,25 @@
 
 {#snippet body()}
 	<span
-		class="flex h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft px-2 text-lg font-extrabold text-brand"
+		class="flex h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft px-2 text-lg font-extrabold text-brand lg:h-14 lg:min-w-14 lg:self-start lg:rounded-2xl lg:text-2xl"
 		dir="ltr"
 	>
 		{mod.letter}
 	</span>
-	<span class="flex min-w-0 flex-1 flex-col gap-1">
+	<span class="flex min-w-0 flex-1 flex-col gap-1 lg:gap-2">
 		<span class="flex items-center gap-2">
-			<span class="me-auto font-bold">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
+			<span class="me-auto font-bold lg:text-lg">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
 			{#if !comingSoon}<ExamNugget {exams} />{/if}
 		</span>
 		{#if comingSoon}
 			<span class="text-xs text-muted">{i18n.dict.common.comingSoon}</span>
 		{:else}
 			<span
-				class="truncate text-xs {hook.tone === 'go' ? 'font-bold text-brand-dark' : 'text-muted'}"
+				class="truncate text-xs lg:whitespace-normal lg:text-sm {hook.tone === 'go' ? 'font-bold text-brand-dark' : 'text-muted'}"
 			>
 				{hook.text}
 			</span>
-			<span class="mt-1 flex flex-col gap-2">
+			<span class="mt-1 flex flex-col gap-2 lg:mt-auto lg:gap-3 lg:pt-3">
 				{#if meters.vocab}
 					{@const { today } = meters.vocab}
 					{@render meter(
@@ -76,19 +76,19 @@
 			</span>
 		{/if}
 	</span>
-	{#if !comingSoon}<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />{/if}
+	{#if !comingSoon}<ChevronLeft size={18} class="shrink-0 text-muted lg:hidden" aria-hidden="true" />{/if}
 {/snippet}
 
 <!-- href is a runtime-built module path, not a typed route -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 {#if comingSoon}
-	<div class="flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70">
+	<div class="flex items-center gap-3 rounded-3xl bg-surface/70 p-3 opacity-60 ring-1 ring-line/70 lg:flex-col lg:items-stretch lg:gap-4 lg:p-5">
 		{@render body()}
 	</div>
 {:else}
 	<a
 		{href}
-		class="flex items-center gap-3 rounded-3xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition hover:shadow-lg active:scale-[0.99]"
+		class="flex items-center gap-3 rounded-3xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition hover:shadow-lg active:scale-[0.99] lg:flex-col lg:items-stretch lg:gap-4 lg:p-5 lg:hover:-translate-y-0.5"
 	>
 		{@render body()}
 	</a>

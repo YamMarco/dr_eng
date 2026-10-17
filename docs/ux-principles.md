@@ -51,7 +51,7 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 ## 4. Devices
 
 - Both desktop and mobile, by design. **[decided]**
-- Desktop = `lg` (1024px+): the bottom nav becomes a side rail (`NavBar`), page columns
+- Desktop = `lg` (1024px+): the bottom nav becomes a slim top bar (`NavBar`), page columns
   widen via the `app-col` / `app-wide` utilities in `layout.css` (never a raw `max-w-lg`),
   and passage screens go two-pane (passage beside its questions). Phone layout is the
   base; desktop only adds `lg:` rules. **[decided]**
@@ -101,7 +101,8 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
   and **one hook line**: the reason to open the module. **[decided]**
 - **Hooks**, in priority: an exam left open > an exam worth taking now > words due today
   > "N lessons until you're ready for the exam" (the goal-gradient) > a plain invitation.
-- Rows, not side-by-side tiles: a hook needs width. **[decided]**
+- Rows on phone and tablet (a hook needs width); on desktop (`lg`) the rows become equal-height
+  vertical tiles, three across, so the hook wraps instead of truncating. **[decided]**
 - Ads, when they come: bottom of home only.
 
 **Module page** (`/app/unit/<level>/module/<id>`), **the same order for every module**:

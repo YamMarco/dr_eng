@@ -116,8 +116,8 @@
 	font-variant-numeric: tabular-nums;
 }
 
-/* Page column widths. Phone stays a 32rem column; desktop (lg = side rail
-   shows) widens it. app-col: single-column reading/learning pages.
+/* Page column widths. Phone stays a 32rem column; desktop (lg = top nav
+   bar shows) widens it. app-col: single-column reading/learning pages.
    app-wide: dashboards that lay cards out in a grid. */
 @utility app-col {
 	margin-inline: auto;
