@@ -57,7 +57,7 @@ tagged `[P:motion]`.
 - **Svelte, not React:** `onclick`/`bind:value` replace `onClick`/`onChange`; ignore
   `nuqs`, `suppressHydrationWarning`, `<Link>`. The app is client-rendered: skip
   Hydration Safety.
-- **Copy is Hebrew** (agents.md: Hebrew-only UI text): no Title Case; quotes and
+- **Copy is Hebrew** (AGENTS.md: Hebrew-only UI text): no Title Case; quotes and
   ellipsis per Hebrew usage; lesson content uses at most a single `-`, never an em-dash.
   Address the student in plural (`לכם`, `סיימתם`). English exam/passage titles stay
   English and get `dir="auto"`.

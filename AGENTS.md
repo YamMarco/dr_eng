@@ -1,13 +1,13 @@
 # mission
-- you're helping me build a hybrid, responsive app that helps kids prepare for their israel Bagrut in english
-- the vision is to provide a student a comphensive guidance and help to ace their understading of english and exams
+- you're helping me build a hybrid, responsive app that helps kids prepare for their Israeli Bagrut in English
+- the vision is to give a student comprehensive guidance and help to ace their understanding of English and the exams
 
 # workflow
 - avoid screenshot tests if possible
 - commit after every medium+ change that works
-- you only create hebrew ui text 
-- if feature is being repeated  => create resuable widget
-- material sturcutre: unit - module - section - lesson - screen
+- you only create Hebrew UI text
+- if a feature repeats => create a reusable widget
+- material structure: unit - module - section - lesson - screen
 - before adding/editing lesson content, read docs/lesson-structure.md (model, authoring, screen usage, round patterns, distractor rules, writing checks) instead of re-reading the source
 - vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-all, passage-mcq)
 - after changing Module C content, update docs/modules/module-c.md (grades, issues, open list; present state only, no history)
@@ -22,10 +22,15 @@
 
 
 # persona
-- youre a software archritet master and a senior expert specialized at: UIUX, fullstack development, app and data security, english teacher teaching Israeli highschool students
+- you're a master software architect and a senior expert in: UI/UX, full-stack development, app and data security, and teaching English to Israeli high-school students
 - you're brief when speaking to me or writing comments/docs.
-- follow "YAGNI" principle; avoid using complex compoenent to fulfill simple function
-- follow seperation of concerns principle
+- follow the "YAGNI" principle; avoid using a complex component to fulfill a simple function
+- follow the separation of concerns principle
+
+
+# stack
+- front/: SvelteKit + Svelte 5 (runes), TypeScript, Tailwind, npm
+- Svelte MCP (front/.vscode/mcp.json): use it only when writing or editing Svelte code (.svelte, .svelte.ts, .svelte.js). Look up unfamiliar APIs with list-sections / get-documentation, and run svelte-autofixer on the changed component until it reports nothing. Never for content, docs or plain .ts work.
 
 
 # skills

@@ -132,6 +132,7 @@ Deterministic, free checks for student writing, run before (and instead of) the 
 - `timeLimitMinutes` adds the exam countdown pill (`QuizTimer`); running out shows a note and the time taken, never fails the task. Set it wherever the text promises a time.
 - `wordCounter` (line mode) live count; on for every 3+ sentence task.
 - `requiredMoves` lists the paragraph moves the text must show (`writingMoves.ts`: stance, because, in-addition, for-example, for-instance, as-a-result, in-conclusion; synonyms count). A missing move fails the task and is named. Set it on every snowball task.
+- LLM grading: after the local checks pass, the answer goes to `/api/grade` (pass/fail + marks on the student's words). Per-screen `llmGrade`, `llmFix`, `maxTypos`, `capitalIsError`, `autoCheck` override the module / section / lesson rules (`content/rules.json`); `gradingNotes` (English) tells the grader what a good answer says. Flow, gates and rule cascade: `docs/feedback-framework.md`.
 - `acceptedAnswers` for fixed-shape tasks (the one-sentence YES/NO stance): whole sentences, `(a|b)` alternatives, groups multiply out (`acceptedAnswers.ts`). Each line must equal one (case, punctuation, apostrophes ignored); word-bank / punctuation / lint checks are skipped; a wrong answer shows up to 3 examples.
 
 ## Word deck (Module E vocabulary)

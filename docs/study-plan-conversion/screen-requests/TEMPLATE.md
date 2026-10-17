@@ -45,10 +45,5 @@
 
 ## צ׳ק ליסט מימוש
 
-1. הוספת הצורה ל-`lib/lesson-screens/types.ts`, לאיחוד `LessonScreen`, ומקרים
-   ב-`isScreenEmpty()` וב-`countQuestions()`
-2. קומפוננטה ב-`lib/lesson-screens/<Name>.svelte` עם
-   `{ screen, onAdvance, disabled = $bindable(), label = $bindable() }`
-   ו-`export function primaryAction()`
-3. רישום ב-`lib/lesson-screens/registry.ts`
-4. תווית בעברית ב-`i18n/locales/he.ts` תחת `exerciseKind` - כתוב פה את הטקסט המוצע
+לפי "Adding a screen type" ב-`docs/lesson-structure.md` (המקור היחיד לשלבים).
+התווית בעברית המוצעת ל-`exerciseKind`: <כתוב פה>
