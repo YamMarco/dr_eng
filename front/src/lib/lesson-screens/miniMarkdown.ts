@@ -148,7 +148,7 @@ export const CALLOUT_BLOCK_CLASS =
 export const UL_BLOCK_CLASS = 'list-item list-disc list-inside my-0.5';
 export const OL_BLOCK_CLASS = 'list-item list-decimal list-inside my-0.5';
 
-const HEADER_CLASS: Record<number, string> = {
+export const HEADER_CLASS: Record<number, string> = {
 	1: 'text-2xl font-bold',
 	2: 'text-xl font-bold',
 	3: 'text-lg font-semibold'

@@ -12,7 +12,8 @@ import {
 	TEXT_BLOCK_CLASS,
 	CALLOUT_BLOCK_CLASS,
 	UL_BLOCK_CLASS,
-	OL_BLOCK_CLASS
+	OL_BLOCK_CLASS,
+	HEADER_CLASS
 } from '$lib/lesson-screens/miniMarkdown';
 
 class ActiveField {
@@ -158,6 +159,7 @@ export function formatHeader(level: 0 | 1 | 2 | 3) {
 		const targetTag = level ? `h${level}` : 'div';
 		if (block.tagName.toLowerCase() === targetTag) return;
 		const replacement = document.createElement(targetTag);
+		if (level) replacement.className = HEADER_CLASS[level];
 		replacement.innerHTML = block.innerHTML;
 		if (block.style.textAlign) replacement.style.textAlign = block.style.textAlign;
 		if (block.hasAttribute('dir')) replacement.setAttribute('dir', block.getAttribute('dir')!);

@@ -67,7 +67,10 @@
 <p class="leading-relaxed font-semibold" dir="ltr">
 	{#if selected !== null}<span class="rounded-md bg-brand-soft px-1 text-brand-dark"
 			><Md text={screen.options[selected]} /></span
-		>{:else}___{/if}
+		>{:else}<span
+			class="inline-block w-[6.5rem] border-b-2 border-ink/60 align-baseline"
+			aria-label="___">&nbsp;</span
+		>{/if}
 	<Md text={screen.clause} />
 </p>
 
