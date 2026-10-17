@@ -41,7 +41,7 @@
 <a
 	href={continueHref(item, groupId)}
 	in:fly={{ y: 8, duration: 250, easing: cubicOut }}
-	class="flex items-center gap-3 rounded-[26px] bg-overlay py-2 ps-2 pe-4 text-white shadow-lg ring-1 ring-brand/50 transition hover:shadow-xl active:scale-[0.99]"
+	class="flex items-center gap-3 rounded-[26px] bg-overlay py-2 ps-2 pe-4 text-white shadow-lg lg:w-fit lg:max-w-md lg:min-w-72 lg:pe-6 ring-1 ring-brand/50 transition hover:shadow-xl active:scale-[0.99]"
 >
 	<span
 		class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white"

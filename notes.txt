@@ -7,3 +7,14 @@ Examples: "finished the Module C reading section", "first exam above 80", "100 w
 They should tell students where they stand rather than act as a prize stream. No leaderboard, which was the element in the study that backfired.
 * A streak freeze. the student has to acomplish some progress to earn it
 * AI feedback: the writing feedback prompts in lib/server/prompts/ probably make the AI answer in Hebrew. The fix would be to pass the UI language to them.
+
+
+
+
+* | Tool                           | Best use                                      | Typical clip length                             | Notes                                                                                                                                |
+| ------------------------------ | --------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Google Veo 3.1 / Flow          | Most realistic result, dialogue/sound effects | Short clips, stitched in Flow                   | Strong prompt following and native synchronized audio; available through Google AI plans. freeacademy+1                              |
+| Kling 3.0                      | Cinematic motion, best value for many clips   | Short to medium clips, up to 4K on higher tiers | Good motion control and relatively low entry cost. resources.rework+1                                                                |
+| Runway Gen-4.5                 | More control over shots, camera, editing      | Short clips                                     | Best if you want to direct the video like an editor; its video output is silent, so add audio separately. resources.rework+1         |
+| Pika                           | Fast, simple social-style clips               | Short clips                                     | Easiest for quick experiments, but less control than Runway/Veo. convly                                                              |
+| InVideo AI / CapCut / Dreamina | Full 30–60 second video from a script         | Builds a complete video                         | Better when you want narration, captions, stock footage, and automatic editing rather than pure AI-generated footage. aicomparison+1 |
