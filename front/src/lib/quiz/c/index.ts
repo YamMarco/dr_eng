@@ -22,19 +22,19 @@ export const cQuizzes: QuizNode[] = [
             paragraphs: [
               {
                 id: "p1",
-                text: "Many people around the world cannot see well or are\nblind. For them, simple tasks like walking to a bus\nstop or reading a menu can be very hard. A new kind of smart glasses is now helping these people. The glasses talk to the user through a small speaker and tell them about the world around them.",
+                text: "Many people around the world cannot see well or are\nblind. For them, simple tasks like walking to a bus\nstop or reading a menu can be very hard. A new kind\nof smart glasses is now helping these people. The\nglasses talk to the user through a small speaker and\ntell them about the world around them.",
               },
               {
                 id: "p2",
-                text: 'The glasses have a small camera at the front. The\ncamera looks at what is in front of the user,\nand a computer program tells them what it sees. For\nexample, it can say "there is a step in front of you" or "the door is on your right." The glasses can also read words from books, signs, and screens out loud.',
+                text: "The glasses have a small camera at the front. The\ncamera looks at what is in front of the user, and a\ncomputer program tells them what it sees. For\nexample, it can say \"there is a step in front of\nyou\" or \"the door is on your right.\" The glasses can\nalso read words from books, signs, and screens out\nloud.",
               },
               {
                 id: "p3",
-                text: "But the glasses are not always perfect. They can make\nmistakes when it is dark or when things move fast. The battery runs out after a few hours, so users need to charge them often. The glasses are also very expensive, and many families cannot afford to buy them.",
+                text: "But the glasses are not always perfect. They can\nmake mistakes when it is dark or when things move\nfast. The battery runs out after a few hours, so\nusers need to charge them often. The glasses are\nalso very expensive, and many families cannot afford\nto buy them.",
               },
               {
                 id: "p4",
-                text: "Many blind people are already using smart glasses every day. Students use them in class to read the board, and workers use them to find their way around buildings. One man said the glasses helped him see his daughter's face for the first time. In the future, companies hope to make the glasses smaller, cheaper, and better so that more people can use them.",
+                text: "Many blind people are already using smart glasses\nevery day. Students use them in class to read the\nboard, and workers use them to find their way around\nbuildings. One man said the glasses helped him see\nhis daughter's face for the first time. In the\nfuture, companies hope to make the glasses smaller,\ncheaper, and better so that more people can use\nthem.",
               },
             ],
           },
@@ -167,19 +167,19 @@ export const cQuizzes: QuizNode[] = [
             paragraphs: [
               {
                 id: "p1",
-                text: "Most animals spend their time with others of the same kind. They eat together, play together, and protect each other. But sometimes, two very different animals become close friends. These unusual friendships surprise people because the animals are so different. Some of the most famous examples are between animals that would normally never be near each other.",
+                text: "Most animals spend their time with others of the\nsame kind. They eat together, play together, and\nprotect each other. But sometimes, two very\ndifferent animals become close friends. These\nunusual friendships surprise people because the\nanimals are so different. Some of the most famous\nexamples are between animals that would normally\nnever be near each other.",
               },
               {
                 id: "p2",
-                text: "One well-known friendship is between a dog and a deer. The two animals met when they were both very young. They began to play together every day, and soon they became best friends. They sleep next to each other and do not like to be apart. Another famous example is a lion and a goat that lived together in a zoo. At first, the goat was put in the lion's home as food. But the lion did not eat the goat. Instead, the two animals became friends.",
+                text: "One well-known friendship is between a dog and a\ndeer. The two animals met when they were both very\nyoung. They began to play together every day, and\nsoon they became best friends. They sleep next to\neach other and do not like to be apart. Another\nfamous example is a lion and a goat that lived\ntogether in a zoo. At first, the goat was put in the\nlion's home as food. But the lion did not eat the\ngoat. Instead, the two animals became friends.",
               },
               {
                 id: "p3",
-                text: "Scientists say these friendships happen for different reasons. Sometimes, a young animal loses its mother and looks for love from another animal. Other times, two animals grow up together and get used to each other. Scientists also say that many animals feel lonely, just like people do. When they find a friend, even one that looks very different, they are happy to keep that friendship.",
+                text: "Scientists say these friendships happen for\ndifferent reasons. Sometimes, a young animal loses\nits mother and looks for love from another animal.\nOther times, two animals grow up together and get\nused to each other. Scientists also say that many\nanimals feel lonely, just like people do. When they\nfind a friend, even one that looks very different,\nthey are happy to keep that friendship.",
               },
               {
                 id: "p4",
-                text: "These unusual friendships teach us something important. They show us that being friends does not mean you have to be the same. Animals can be close to others who look different and live in different ways. Many people who see these friendships say they feel happy and full of hope. Some animal shelters now put different kinds of animals together to help lonely animals find a friend.",
+                text: "These unusual friendships teach us something\nimportant. They show us that being friends does not\nmean you have to be the same. Animals can be close\nto others who look different and live in different\nways. Many people who see these friendships say they\nfeel happy and full of hope. Some animal shelters\nnow put different kinds of animals together to help\nlonely animals find a friend.",
               },
             ],
           },
@@ -312,19 +312,19 @@ export const cQuizzes: QuizNode[] = [
             paragraphs: [
               {
                 id: "p1",
-                text: 'Most of us spend many hours a day sitting down. We sit in many different places, such as in cars and buses, and in front of computers and TV screens. Spending most of the day in a chair without moving much is called a "sitting lifestyle." For many people, sitting feels comfortable and relaxing. However, according to research, too much sitting can be very bad for us.',
+                text: "Most of us spend many hours a day sitting down. We\nsit in many different places, such as in cars and\nbuses, and in front of computers and TV screens.\nSpending most of the day in a chair without moving\nmuch is called a \"sitting lifestyle.\" For many\npeople, sitting feels comfortable and relaxing.\nHowever, according to research, too much sitting can\nbe very bad for us.",
               },
               {
                 id: "p2",
-                text: "When we sit for many hours, our bodies don't move enough. As a result, we burn fewer calories, and we can easily put on weight. Sitting for a long time can also cause pain in our backs and necks, and this makes it difficult to work or study. In addition, people who don't move much often feel tired and weak. Doctors now know that people who are not active for many years can develop serious health problems, such as diabetes.",
+                text: "When we sit for many hours, our bodies don't move\nenough. As a result, we burn fewer calories, and we\ncan easily put on weight. Sitting for a long time\ncan also cause pain in our backs and necks, and this\nmakes it difficult to work or study. In addition,\npeople who don't move much often feel tired and\nweak. Doctors now know that people who are not\nactive for many years can develop serious health\nproblems, such as diabetes.",
               },
               {
                 id: "p3",
-                text: "Sitting too much can also affect the way we feel. When we sit alone in front of a screen for hours, we often become bored or sad. Young people today spend a lot of their free time playing computer games instead of playing sports outside, and this can make them feel lonely. Some adults also feel this way because they sit at a desk all day at work. Of course, people who feel lonely and sad often don't want to meet others. This too can have a negative effect on relationships.",
+                text: "Sitting too much can also affect the way we feel.\nWhen we sit alone in front of a screen for hours, we\noften become bored or sad. Young people today spend\na lot of their free time playing computer games\ninstead of playing sports outside, and this can make\nthem feel lonely. Some adults also feel this way\nbecause they sit at a desk all day at work. Of\ncourse, people who feel lonely and sad often don't\nwant to meet others. This too can have a negative\neffect on relationships.",
               },
               {
                 id: "p4",
-                text: 'Despite all these problems, most people continue to sit for many hours every day. "That\'s because most people don\'t realize how harmful sitting is. But this can change," says Dr. Sarah Collins, head of the organization Get Up and Move. "Just think about seat belts. For many years, people didn\'t wear seat belts in their cars. But when we understood how many lives they save, most of us started using them. In addition, governments made laws that require everyone in a car to wear a seat belt. Today, schools and workplaces can also help by giving people short breaks to stand up and walk around. We need people to understand the dangers of sitting too much. That will make everyone healthier."',
+                text: "Despite all these problems, most people continue to\nsit for many hours every day. \"That's because most\npeople don't realize how harmful sitting is. But\nthis can change,\" says Dr. Sarah Collins, head of\nthe organization Get Up and Move. \"Just think about\nseat belts. For many years, people didn't wear seat\nbelts in their cars. But when we understood how many\nlives they save, most of us started using them. In\naddition, governments made laws that require\neveryone in a car to wear a seat belt. Today,\nschools and workplaces can also help by giving\npeople short breaks to stand up and walk around. We\nneed people to understand the dangers of sitting too\nmuch. That will make everyone healthier.\"",
               },
             ],
           },

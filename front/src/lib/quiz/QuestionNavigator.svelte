@@ -29,7 +29,7 @@
 		return Array.from({ length: total }, (_, i) => (hiddenIndices?.has(i) ? 0 : ++n));
 	});
 
-	let buttonEls: (HTMLButtonElement | undefined)[] = [];
+	let buttonEls = $state<(HTMLButtonElement | undefined)[]>([]);
 
 	// Keeps the current question in view as the student advances (or jumps)
 	// past the edge of the scrollable row.

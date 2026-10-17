@@ -17,7 +17,6 @@
 - security audits / changes to auth, /api, /mcp, payments or deps: read docs/security.md
 - docs/ are present-state guidelines: keep them concise and updated, no history or dated status lines
 
-
 ## content
 - if a feature repeats => create a reusable widget
 - material structure: unit - module - section - lesson - screen

@@ -34,3 +34,6 @@ Database backups: upgrade to Supabase Pro or schedule dumps once orders are real
 Turn accounts and billing on in production, then test end to end: sign up, then pay or use a coupon, then use the app and grading.
 Content QC pass: the remaining Module C and COBE open items in the module docs.
 Later: a specific message when a student hits the daily limit, a free tier with ads, and the accessibility pass (already postponed).
+
+* cobe writing LLM can be tricky, need to review it, eg: cobe-hook · round 2 · screen 2
+* desktop and phone show diffrent line counter values (in smaller phone screen it says 5 lines when its around, due to wrapping)

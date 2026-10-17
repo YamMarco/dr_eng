@@ -247,7 +247,7 @@ export const he = {
 		partProgress: (current: number, total: number) => `חלק ${current} מתוך ${total}`,
 		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
 		exitPromptTitle: 'לצאת מהמבחן?',
-		exitPromptDesc: 'היציאה תבטל את ההתקדמות בניסיון הנוכחי.',
+		exitPromptDesc: 'אם תצאו עכשיו, כל מה שעשיתם במבחן יימחק ולא יישמר.',
 		exitConfirm: 'יציאה מהמבחן',
 		exitCancel: 'המשך במבחן',
 		passedTitle: 'עברתם בהצלחה!',
@@ -327,7 +327,7 @@ export const he = {
 			'ארבע אפשרויות: קראו את כולן, מחקו את הברור, והוכיחו את הנבחרת מהקטע.',
 			'השאירו לפחות 20 דקות לכתיבה: עמדה, סיבה, דוגמה וסיכום, שבעים עד תשעים מילים. פחות משבעים מורידים נקודות, יותר מתשעים לא.'
 		],
-		resumeButton: 'התחלה מחדש',
+		resumeButton: 'התחלה',
 		retakeButton: 'ניסיון נוסף'
 	},
 	unit: {

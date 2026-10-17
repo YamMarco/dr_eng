@@ -1,7 +1,8 @@
 <script lang="ts" generics="T extends { key: string | number; text: string; rowClass?: string }">
 	import { i18n } from '$lib/i18n/index.svelte';
 	import Md from '$lib/components/Md.svelte';
-	import type { Snippet } from 'svelte';
+	import { untrack, type Snippet } from 'svelte';
+	import type { Highlight, MarkColor } from './passageMarks';
 
 	// Reusable "select text, pick a highlight color" tool for reading
 	// passages - shared by the standalone Passage screen (with its
@@ -9,12 +10,21 @@
 	// screens (no gutter). Segments are computed from plain-text offsets, so
 	// highlighting only lines up correctly on lines with no inline markdown
 	// (the norm for reading passages).
-	let { lines, leading }: { lines: T[]; leading?: Snippet<[T]> } = $props();
+	// `marks` seeds the highlights and `onMarks` reports each change, so a parent
+	// can carry them over to another instance of the same passage.
+	let {
+		lines,
+		leading,
+		marks,
+		onMarks
+	}: {
+		lines: T[];
+		leading?: Snippet<[T]>;
+		marks?: Highlight[];
+		onMarks?: (highlights: Highlight[]) => void;
+	} = $props();
 
-	type MarkColor = 'yellow' | 'green' | 'pink' | 'blue';
-	// lineKey is the DOM attribute value, so always a string (line keys may be numbers).
-	type Highlight = { lineKey: string; start: number; end: number; color: MarkColor };
-	let highlights = $state<Highlight[]>([]);
+	let highlights = $state<Highlight[]>(untrack(() => marks ?? []));
 	let pendingSelection = $state<{ lineKey: string; start: number; end: number } | null>(null);
 	let toolbarPos = $state<{ top: number; left: number } | null>(null);
 	let toolbarEl = $state<HTMLElement | null>(null);
@@ -120,6 +130,7 @@
 		highlights = color
 			? [...otherLines, ...kept, { lineKey, start, end, color }]
 			: [...otherLines, ...kept];
+		onMarks?.(highlights);
 		window.getSelection()?.removeAllRanges();
 		pendingSelection = null;
 		toolbarPos = null;

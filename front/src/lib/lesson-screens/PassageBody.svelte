@@ -1,12 +1,16 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import Md from '$lib/components/Md.svelte';
 	import PassageMark from './PassageMark.svelte';
+	import { PASSAGE_MARKS, type PassageMarksStore } from './passageMarks';
 	import { stripLineAttrs } from './miniMarkdown';
 	import type { PassageScreen } from './types';
 
 	// Pure display, shared by the `passage` screen and QuizRunner's
 	// "read the passage again" overlay - no advance/disabled contract here.
 	let { passage }: { passage: PassageScreen } = $props();
+
+	const marksStore = getContext<PassageMarksStore | undefined>(PASSAGE_MARKS);
 
 	const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
@@ -45,7 +49,11 @@
 	<h2 class="mb-3 text-lg font-bold" dir="ltr"><Md text={stripLineAttrs(passage.title)} /></h2>
 {/if}
 
-<PassageMark {lines}>
+<PassageMark
+	{lines}
+	marks={marksStore?.get(passage)}
+	onMarks={(h) => marksStore?.set(passage, h)}
+>
 	{#snippet leading(line)}
 		<span
 			class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman

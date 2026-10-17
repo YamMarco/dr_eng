@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
+	import { setContext, untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { SvelteMap } from 'svelte/reactivity';
+	import { PASSAGE_MARKS, type PassageMarksStore } from '$lib/lesson-screens/passageMarks';
 	import { MediaQuery } from 'svelte/reactivity';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -116,6 +118,9 @@
 		return screen?.type === 'passage' ? screen : undefined;
 	});
 	let passageOpen = $state(false);
+
+	// Highlights per passage, shared by its own screen and the in-question panel.
+	setContext<PassageMarksStore>(PASSAGE_MARKS, new SvelteMap());
 
 	let showNavigator = $derived(quiz.options.showNavigator ?? true);
 	let answeredIndices = $derived(
@@ -260,11 +265,7 @@
 	});
 
 	function requestExit() {
-		if (Object.keys(answers).length > 0) {
-			showExitPrompt = true;
-		} else {
-			onExit();
-		}
+		showExitPrompt = true;
 	}
 </script>
 
@@ -279,6 +280,10 @@
 		{hiddenIndices}
 		{partBreaks}
 	/>
+{/snippet}
+
+{#snippet barTimer()}
+	<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
 {/snippet}
 
 <div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
@@ -302,15 +307,18 @@
 				: ''}
 			onback={requestExit}
 			backLabel={i18n.dict.quiz.exitLabel}
-			center={showNavigator && allEntries.length > 1 ? navigator : undefined}
+			overlay={showTimer ? barTimer : undefined}
 		></AppBar>
 
-		<!-- One strip under the bar: passage toggle (phones), the part's title and the
-		     timer on a row, the part's instructions beneath on its first question. -->
+		<!-- One strip under the bar: the question navigator, then passage toggle (phones)
+		     and the part's title on a row, the part's instructions beneath on its first question. -->
 		<div class="border-b border-line/70">
 			<div
 				class="app-col flex flex-col gap-1 px-4 pt-3 pb-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}"
 			>
+				{#if showNavigator && allEntries.length > 1}
+					<div class="min-w-0">{@render navigator()}</div>
+				{/if}
 				<div class="flex min-h-9 items-center gap-2">
 					{#if activePassage}
 						<button
@@ -327,14 +335,9 @@
 							{i18n.title(`${quiz.id}.${currentPart.id}`)}
 						</h3>
 					{/if}
-					{#if showTimer}
-						<div class="ms-auto shrink-0">
-							<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
-						</div>
-					{/if}
 				</div>
 				{#if currentEntry?.isFirstOfPart && currentPart.instructionsHe}
-					<p class="text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
+					<p class="-mt-1.5 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 				{/if}
 			</div>
 		</div>
@@ -354,14 +357,21 @@
 		>
 			{#if activePassage}
 				{#key passageEntryIndex}
-					<aside
-						dir="ltr"
-						class="mb-4 max-h-[45dvh] shrink-0 overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 {passageOpen
-							? ''
-							: 'hidden'} lg:col-start-2 lg:row-start-1 lg:mb-6 lg:block lg:max-h-none lg:min-h-0"
+					<!-- Phones: grid-rows 0fr -> 1fr animates the collapse; lg: always shown. -->
+					<div
+						class="grid shrink-0 transition-[grid-template-rows,visibility] duration-150 ease-out {passageOpen
+							? 'grid-rows-[1fr]'
+							: 'invisible grid-rows-[0fr]'} lg:visible lg:col-start-2 lg:row-start-1 lg:block lg:min-h-0"
 					>
-						<PassageBody passage={activePassage} />
-					</aside>
+						<div class="min-h-0 overflow-hidden lg:h-full lg:pb-6">
+							<aside
+								dir="ltr"
+								class="mb-4 max-h-[45dvh] overflow-y-auto overscroll-contain rounded-2xl bg-surface p-4 ring-1 ring-line/70 lg:mb-0 lg:h-full lg:max-h-none"
+							>
+								<PassageBody passage={activePassage} />
+							</aside>
+						</div>
+					</div>
 				{/key}
 			{/if}
 			<div
