@@ -334,32 +334,36 @@
 
 		<!-- One strip under the bar: passage toggle (phones), the part's title and the
 		     timer on a row, the part's instructions beneath on its first question. -->
-		<div class="app-col flex flex-col gap-1 px-4 pt-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}">
-			<div class="flex min-h-9 items-center gap-2">
-				{#if activePassage}
-					<button
-						type="button"
-						aria-expanded={passageOpen}
-						onclick={() => (passageOpen = !passageOpen)}
-						class="shrink-0 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
-					>
-						{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
-					</button>
-				{/if}
-				{#if currentEntry?.isFirstOfPart}
-					<h3 class="min-w-0 truncate text-sm font-bold text-muted">
-						{i18n.title(`${quiz.id}.${currentPart.id}`)}
-					</h3>
-				{/if}
-				{#if showTimer}
-					<div class="ms-auto shrink-0">
-						<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
-					</div>
+		<div class="border-b border-line/70">
+			<div
+				class="app-col flex flex-col gap-1 px-4 pt-3 pb-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}"
+			>
+				<div class="flex min-h-9 items-center gap-2">
+					{#if activePassage}
+						<button
+							type="button"
+							aria-expanded={passageOpen}
+							onclick={() => (passageOpen = !passageOpen)}
+							class="shrink-0 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
+						>
+							{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
+						</button>
+					{/if}
+					{#if currentEntry?.isFirstOfPart}
+						<h3 class="min-w-0 truncate text-sm font-bold text-muted">
+							{i18n.title(`${quiz.id}.${currentPart.id}`)}
+						</h3>
+					{/if}
+					{#if showTimer}
+						<div class="ms-auto shrink-0">
+							<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
+						</div>
+					{/if}
+				</div>
+				{#if currentEntry?.isFirstOfPart && currentPart.instructionsHe}
+					<p class="text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 				{/if}
 			</div>
-			{#if currentEntry?.isFirstOfPart && currentPart.instructionsHe}
-				<p class="text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
-			{/if}
 		</div>
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
