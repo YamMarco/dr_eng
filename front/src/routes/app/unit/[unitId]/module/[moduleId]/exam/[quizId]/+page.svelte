@@ -59,7 +59,7 @@
 		lastEngagement.record({ kind: 'exam', moduleId: data.mod.id, id: quiz.id });
 	}
 
-	const card = 'rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	const card = 'rounded-3xl bg-surface p-5 lg:p-4 shadow-md ring-1 shadow-overlay/5 ring-line/70';
 </script>
 
 {#if running && quizNode}
@@ -69,12 +69,10 @@
 {:else}
 	<AppBar title={i18n.title(quiz.id)} back={examBase} />
 
-	<main
-		class="app-col flex flex-1 flex-col gap-4 px-4 pt-6 pb-12 lg:max-w-5xl lg:gap-3 lg:pt-4 lg:pb-6"
-	>
+	<main class="app-col flex flex-1 flex-col gap-4 px-4 pt-6 pb-12 lg:gap-3 lg:pt-3 lg:pb-6">
 		{#if taken && row}
 			<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}>
-				<h2 class="mb-3 text-base font-bold">{t.scoreboardTitle}</h2>
+				<h2 class="mb-3 text-base font-bold lg:sr-only">{t.scoreboardTitle}</h2>
 				<div class="grid grid-cols-3 gap-3">
 					<StatTile value={String(row.best)} label={t.bestScoreLabel} />
 					<StatTile value={String(row.last)} label={t.lastScoreLabel} />
@@ -87,7 +85,7 @@
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class={card}
 		>
-			<div class="lg:grid lg:grid-cols-2 lg:gap-8">
+			<div>
 				<div>
 					<h2 class="text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
 					<p class="mt-1 text-sm leading-relaxed text-muted">
@@ -103,9 +101,9 @@
 						{/each}
 					</ul>
 				</div>
-				<div class="mt-4 lg:mt-0">
+				<div class="mt-4 lg:mt-3">
 					<h3 class="text-sm font-bold">{t.tipsTitle}</h3>
-					<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed">
+					<ul class="mt-2 flex list-disc flex-col gap-1.5 ps-5 text-sm leading-relaxed lg:gap-1">
 						{#each tips as tip (tip)}
 							<li class="whitespace-pre-line">{tip}</li>
 						{/each}
