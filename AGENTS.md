@@ -2,15 +2,11 @@
 - you're helping me build a hybrid, responsive app that helps kids prepare for their Israeli Bagrut in English
 - the vision is to give a student comprehensive guidance and help to ace their understanding of English and the exams
 
+
 # workflow
 - avoid screenshot tests if possible
 - commit after every medium+ change that works
 - you only create Hebrew UI text
-- if a feature repeats => create a reusable widget
-- material structure: unit - module - section - lesson - screen
-- before adding/editing lesson content, read docs/lesson-structure.md (model, authoring, screen usage, round patterns, distractor rules, writing checks) instead of re-reading the source
-- vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-all, passage-mcq)
-- after changing Module C content, update docs/modules/module-c.md (grades, issues, open list; present state only, no history)
 - before designing or changing student-facing UI, read docs/ux-principles.md and use the ui-review skill
 - LLM prompts live in front/src/lib/server/prompts/<role>.md (one file per gateway role, imported with ?raw)
 - routes (site / app / admin), web vs mobile builds, accounts: read docs/platform.md; app-only code must work in the mobile build (no server, call /api via apiFetch)
@@ -18,7 +14,15 @@
 - Module E (exam, vocabulary deck, reading path): read docs/modules/module-e.md
 - COBE (oral exam, speak screen, source ranking): read docs/modules/cobe.md; after changing COBE content, update it
 - outside editors (/mcp, docs/ai-editing.md): ai-editing.md is served whole to them, keep it a pure rule book; /mcp details in docs/platform.md
-- docs/ are present-state guidelines: keep them concise, no history or dated status lines; only QC_report/ keeps history
+- docs/ are present-state guidelines: keep them concise and updated, no history or dated status lines
+
+
+## content
+- if a feature repeats => create a reusable widget
+- material structure: unit - module - section - lesson - screen
+- before adding/editing lesson content, read docs/lesson-structure.md (model, authoring, screen usage, round patterns, distractor rules, writing checks) instead of re-reading the source
+- vocab nodes are NOT limited to 4 question types; mix any scored screen type (mcq, spell-word, cloze-pick, mark-all, passage-mcq)
+- after changing Module C content, update docs/modules/module-c.md (grades, issues, open list; present state only, no history)
 
 
 # persona
