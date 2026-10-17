@@ -39,7 +39,7 @@ export const sectionMeta: SectionMeta[] = [
 		id: 'cobe-1',
 		modules: ['cobe'],
 		skill: 'speaking',
-		titleEn: 'Part B - Project',
+		titleEn: 'Part 1 - Project',
 		intro: {
 			greeting: 'Confidence, not memory',
 			goal: 'חמישה שיעורים לשאלות על הפרויקט: פתיחה אישית, משפט חילוץ כששוכחים פרט, למה הנושא חשוב היום, וסימולציה מוקלטת.'
@@ -49,7 +49,7 @@ export const sectionMeta: SectionMeta[] = [
 		id: 'cobe-2',
 		modules: ['cobe'],
 		skill: 'speaking',
-		titleEn: 'Part C - Clip',
+		titleEn: 'Part 2 - Clip',
 		intro: {
 			greeting: 'Watch, then speak',
 			goal: 'שני שיעורים לחלק של הקליפ: לתאר מה ראיתם (סט 1), ולהסביר מה אתם חושבים (סט 2).'

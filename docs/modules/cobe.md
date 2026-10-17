@@ -25,7 +25,7 @@ Three parts, a set of two questions each, one recording per set (max 2 files), 3
 
 - **Phrase bank** (`content/cobe/phrases.ts`, `lesson-screens/PhraseBank.svelte`): a "ביטויים" chip on lesson speaking screens (never in exams: no notes) opens spoken chunks by job (open, buy time, rescue, opinion, example, link, project, clip, close), the groups that fit the screen's `part` first, each with listen + star. Starred phrases and phrases quoted in AI tips ("+ לבנק") go to "הביטויים שלי" (`lib/phraseBank.svelte.ts`, localStorage). Targets Vocabulary (chunks and expressions) and Delivery (fewer hesitations).
 
-## Part B - Project (cobe-1)
+## Part B - Project (cobe-1, map chapter "Part 1")
 
 The 3-step model: **Personal Hook** (why I chose the topic) -> **Honest Pivot** (rescue phrase when a fact is forgotten) -> **"So What?"** (why it matters today). Steps 1-3 lessons: recognise (mcq, cloze-pick, mark-all, sentence-completion), then a `self-check` where the student drafts their own project answer. The simulation records each step, then the whole set in one take.
 
@@ -39,7 +39,7 @@ The 3-step model: **Personal Hook** (why I chose the topic) -> **Honest Pivot** 
 
 Self-check criteria (from the peer sheet): Energy & Voice (replaces eye contact: the exam is on a computer), Rescue Phrases, the "So What?" factor.
 
-## Part C - Clip (cobe-2)
+## Part C - Clip (cobe-2, map chapter "Part 2")
 
 Each lesson: recognise (cloze-pick, mcq), a `video` screen, then a `speak` answer to the set.
 
