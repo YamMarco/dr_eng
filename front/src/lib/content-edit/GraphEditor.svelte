@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 	import { editModel } from './editModel.svelte';
 	import { reviewNotes } from './reviewNotes.svelte';
-	import ReviewFloat from './ReviewFloat.svelte';
 	import { sectionMeta } from '$lib/content';
 
 	let { onOpenLesson }: { onOpenLesson: (id: string) => void } = $props();
@@ -17,7 +16,6 @@
 	const CANVAS_WIDTH = 520;
 	const CENTER = CANVAS_WIDTH / 2;
 	const GRID = 10;
-	const FLOAT_WIDTH = 240; // ReviewFloat's w-60
 	const NODE_HEIGHT = 56;
 	const PAD = 24; // the scroll area's horizontal padding (px-6)
 
@@ -77,19 +75,7 @@
 	// multi-select for merge (Ctrl/Cmd-click accumulates)
 	let picked = $state<Set<string>>(new Set());
 
-	// A fully-reviewed node's float is replaced by the green ✓ badge; clicking
-	// that badge force-opens it for this one id. Any ordinary node click
-	// clears the override, so leaving and reselecting the node hides it again.
-	let forceOpenId = $state<string | null>(null);
-
-	function openReviewFloat(e: PointerEvent, id: string) {
-		e.stopPropagation();
-		editModel.select(id);
-		forceOpenId = id;
-	}
-
 	function pick(id: string, additive: boolean) {
-		forceOpenId = null;
 		editModel.select(id);
 		if (additive) {
 			const next = new Set(picked);
@@ -219,18 +205,6 @@
 
 	const cx = (n: { position: { x: number } }) => CENTER + n.position.x;
 	const cy = (n: { position: { y: number } }) => n.position.y + 26;
-
-	// ReviewFloat goes beside the node (right, else left) and drops below it
-	// when neither side fits inside the canvas, so it never widens the scroll area.
-	function floatPos(n: { position: { x: number; y: number }; big: boolean }) {
-		const half = (n.big ? 104 : 92) / 2;
-		const right = cx(n) + half + 8;
-		if (right + FLOAT_WIDTH <= CANVAS_WIDTH) return { left: right, top: n.position.y };
-		const left = cx(n) - half - 8 - FLOAT_WIDTH;
-		if (left >= 0) return { left, top: n.position.y };
-		const centred = Math.min(Math.max(0, cx(n) - FLOAT_WIDTH / 2), CANVAS_WIDTH - FLOAT_WIDTH);
-		return { left: centred, top: n.position.y + NODE_HEIGHT + 12 };
-	}
 
 	// ---- toolbar actions ----
 	function addNode() {
@@ -442,23 +416,14 @@
 							</span>
 						{/if}
 						{#if reviewDone}
-							<button
-								type="button"
+							<span
 								class="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500 text-[9px] leading-none font-bold text-white shadow"
-								title="נבדק במלואו - לחצו לפתיחה"
-								onpointerdown={(e) => openReviewFloat(e, n.id)}
+								title="נבדק במלואו"
 							>
 								✓
-							</button>
+							</span>
 						{/if}
 					</div>
-
-					{#if sel && (!reviewDone || forceOpenId === n.id)}
-						{@const pos = floatPos(n)}
-						<div class="absolute z-50" style="left:{pos.left}px; top:{pos.top}px">
-							<ReviewFloat nodeId={n.id} roundCount={n.content.rounds.length} />
-						</div>
-					{/if}
 				{/each}
 
 				{#if marquee}
