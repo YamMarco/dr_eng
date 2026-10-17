@@ -332,26 +332,33 @@
 			center={showNavigator && allEntries.length > 1 ? navigator : undefined}
 		></AppBar>
 
-		<!-- The passage toggle (phones) and the timer share one row under the bar. -->
-		{#if showTimer || activePassage}
-			<div class="app-col flex items-center gap-2 px-4 pt-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}">
+		<!-- One strip under the bar: passage toggle (phones), the part's title and the
+		     timer on a row, the part's instructions beneath on its first question. -->
+		<div class="app-col flex flex-col gap-1 px-4 pt-3 {quizHasPassage ? 'lg:max-w-5xl' : ''}">
+			<div class="flex min-h-9 items-center gap-2">
 				{#if activePassage}
 					<button
 						type="button"
 						aria-expanded={passageOpen}
 						onclick={() => (passageOpen = !passageOpen)}
-						class="self-start rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
+						class="shrink-0 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-ink/80 transition active:scale-95 lg:hidden"
 					>
 						{passageOpen ? i18n.dict.quiz.hidePassage : i18n.dict.quiz.showPassage}
 					</button>
 				{/if}
+				<h3 class="min-w-0 truncate text-sm font-bold text-muted">
+					{i18n.title(`${quiz.id}.${currentPart.id}`)}
+				</h3>
 				{#if showTimer}
-					<div class="ms-auto">
+					<div class="ms-auto shrink-0">
 						<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
 					</div>
 				{/if}
 			</div>
-		{/if}
+			{#if currentEntry?.isFirstOfPart && currentPart.instructionsHe}
+				<p class="text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
+			{/if}
+		</div>
 
 		<!-- With a passage: phones stack [toggle, passage (collapsible), question];
 		     lg+ splits into two independently scrolling columns - question on the
@@ -383,14 +390,6 @@
 					? 'lg:col-start-1 lg:row-start-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-6'
 					: ''}
 			>
-				{#if currentEntry?.isFirstOfPart}
-					<h3 class="mb-1 text-sm font-bold text-muted">
-						{i18n.title(`${quiz.id}.${currentPart.id}`)}
-					</h3>
-					{#if currentPart.instructionsHe}
-						<p class="mb-4 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
-					{/if}
-				{/if}
 				{#if currentEntry && ScreenComponent}
 					{#key entryIndex}
 						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
