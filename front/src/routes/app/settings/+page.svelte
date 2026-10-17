@@ -4,6 +4,7 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
+	import SupportSection from '$lib/components/SupportSection.svelte';
 	import { ChevronLeft } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 	import { MOBILE_BUILD } from '$lib/platform';
@@ -195,12 +196,14 @@
 		</section>
 	{/if}
 
+	<SupportSection index={4} />
+
 	{#if auth.enabled}
-		<AccountSection index={4} />
+		<AccountSection index={5} />
 	{/if}
 
 	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(5), easing: cubicOut }}
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(6), easing: cubicOut }}
 		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 	>
 		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.aboutSection}</h2>
