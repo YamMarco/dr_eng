@@ -77,7 +77,7 @@
 
 	<section class="grid grid-cols-3 gap-3">
 		{#each stats as s (s.label)}
-			<div class="{card} flex flex-col items-center gap-0.5 !p-2.5">
+			<div class="{card} flex flex-col items-center gap-0.5 p-2.5!">
 				<span class="text-2xl font-extrabold tabular" dir="ltr">{s.value}</span>
 				<span class="text-xs text-muted">{s.label}</span>
 			</div>
