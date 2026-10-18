@@ -88,8 +88,8 @@ function sectionFile(sectionId: string) {
 	};
 }
 
-export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
+export const POST: RequestHandler = async ({ request, locals }) => {
+	if (!checkAuth(locals)) throw error(403, 'staff only');
 
 	const body = (await request.json()) as Body;
 

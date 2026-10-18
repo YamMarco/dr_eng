@@ -11,8 +11,8 @@ import type { RequestHandler } from './$types';
 
 const MAX_BYTES = 2 * 1024 * 1024;
 
-export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
+export const POST: RequestHandler = async ({ request, locals }) => {
+	if (!checkAuth(locals)) throw error(403, 'staff only');
 	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
 	const supabase = adminClient();
 	if (!supabase) throw error(503, 'image storage is not configured');

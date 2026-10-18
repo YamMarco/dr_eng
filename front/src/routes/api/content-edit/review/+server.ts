@@ -19,8 +19,8 @@ const GITHUB_PATH = `front/${REL_PATH}`;
 type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 type ReviewNotes = Record<string, ReviewNote>;
 
-export const GET: RequestHandler = async ({ request }) => {
-	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
+export const GET: RequestHandler = async ({ request, locals }) => {
+	if (!checkAuth(locals)) throw error(403, 'staff only');
 
 	if (dev) {
 		const abs = join(process.cwd(), REL_PATH);
@@ -37,8 +37,8 @@ export const GET: RequestHandler = async ({ request }) => {
 	}
 };
 
-export const POST: RequestHandler = async ({ request }) => {
-	if (!checkAuth()) throw error(401, 'content editing needs accounts enabled');
+export const POST: RequestHandler = async ({ request, locals }) => {
+	if (!checkAuth(locals)) throw error(403, 'staff only');
 
 	const { id, patch } = (await request.json()) as { id: string; patch: Partial<ReviewNote> };
 	if (!id || !patch) throw error(400, 'missing id/patch');

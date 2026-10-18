@@ -10,12 +10,12 @@ if (dsn) Sentry.init({ dsn, environment: import.meta.env.MODE });
 // The app moved under /app; old bookmarks and installed shortcuts land there.
 const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 
-// Student APIs: signed-in users only (once accounts are on), and open to the
-// Capacitor app's webview origins (iOS, Android).
-const STUDENT_APIS =
-	/^\/api\/(grade|ocr|speak|chat-speak|account|access|progress|checkout|checkout\/quote)$/;
+// Every /api route needs a signed-in user (once accounts are on); a new route is
+// never public by accident. Matched on the resolved route id, not the raw path:
+// SvelteKit routes /api/%67rade to /api/grade, so a path regex can be skipped.
+// Student APIs are open to the Capacitor app's webview origins (iOS, Android).
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
-// Authoring APIs: staff only, same-origin. Staff role only.
+// Authoring APIs: staff only, same-origin.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
 
 function cors(origin: string): Record<string, string> {
@@ -33,9 +33,10 @@ const app: Handle = async ({ event, resolve }) => {
 	// url.search is off-limits while prerendering, so only read it on a match.
 	if (MOVED.test(pathname)) redirect(308, `/app${pathname}${event.url.search}`);
 
-	const student = STUDENT_APIS.test(pathname);
-	const admin = ADMIN_APIS.test(pathname);
-	if (!student && !admin) return resolve(event);
+	const routeId = event.route.id ?? '';
+	if (!routeId.startsWith('/api/')) return resolve(event);
+	const admin = ADMIN_APIS.test(routeId);
+	const student = !admin;
 
 	const origin = event.request.headers.get('origin');
 	const headers = student && origin && APP_ORIGINS.has(origin) ? cors(origin) : {};
