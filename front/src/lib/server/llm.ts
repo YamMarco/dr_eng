@@ -5,7 +5,8 @@
 // next model in GEMINI_MODELS is tried when one is overloaded.
 import { env } from '$env/dynamic/private';
 
-export type LlmRole = 'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'ocr';
+export type LlmRole =
+	'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'chat-speaking' | 'ocr';
 
 export interface LlmResult {
 	text: string;
@@ -22,6 +23,7 @@ const GEMINI_MODELS: Record<LlmRole, string[]> = {
 	'grade-reading': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
 	'grade-essay': ['gemini-3.8-flash', 'gemini-3.5-flash'],
 	'grade-speaking': ['gemini-3.8-flash', 'gemini-3.5-flash'],
+	'chat-speaking': ['gemini-3.8-flash', 'gemini-3.5-flash'],
 	ocr: ['gemini-3.8-flash', 'gemini-3.5-flash']
 };
 
