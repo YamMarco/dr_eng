@@ -28,6 +28,9 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 | E8 | Unbounded LLM consumption (cost / DoS) | Per-user quota, global cap, input size limit, max tokens, timeouts; burst limit not per-instance only |
 | E9 | Supabase misconfig: RLS off, `USING (true)`, `SECURITY DEFINER` functions, leaked secret key | Every exposed table has RLS; secret key server-only |
 | E10 | Hook-only auth (cf. Next.js CVE-2025-29927 middleware bypass) | Auth re-checked inside each handler, not only in `hooks.server.ts` |
+| E11 | Path-encoding bypass: Kit routes the decoded path, so `/api/%67rade` reaches `/api/grade` | Hooks match `event.route.id`, never a regex on `url.pathname`; probe `%`-encoded variants |
+| E12 | LiteLLM proxy CVEs (pre-auth SQLi, MCP auth bypass, RCE chains; many in 2026) | Pinned to a patched release, admin UI off, master key server-only; re-check advisories before each deploy |
+| E13 | Guessable 100% coupon in a public repo | 100% codes random, capped and expiring; no real code in docs |
 
 ## Checklist
 
@@ -75,7 +78,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 27. Limits: max input chars / image size, max output tokens, request timeout.
 
 ### Supabase / DB
-28. RLS on every table in exposed schemas (Drizzle migrations create tables with RLS off; check `pg_tables` where `rowsecurity = false`). Junction/log tables too.
+28. RLS on every table in exposed schemas (Drizzle migrations create tables with RLS off; check `pg_tables` where `rowsecurity = false`). Junction/log tables too. Server-only tables also revoke the `anon` / `authenticated` grants (RLS doesn't cover `TRUNCATE`).
 29. No `USING (true)` or `USING (auth.uid() IS NOT NULL)` on select/update/delete; insert/update policies have `WITH CHECK`.
 30. Users can't update sensitive columns (role, plan, credits): keep them in server-only tables or use column grants.
 31. `SECURITY DEFINER` functions live outside `public`, set `search_path = ''`, validate inputs.
