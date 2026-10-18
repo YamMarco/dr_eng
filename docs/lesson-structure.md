@@ -138,10 +138,10 @@ Deterministic, free checks for student writing, run before (and instead of) the 
 ## Word deck (Module E vocabulary)
 
 A spaced-repetition deck, not nodes. Plan: `docs/modules/module-e.md`.
-- Words: `lib/content/e/words.ts` (`DeckWord`: word, class, English definition, Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the example also becomes a fill-the-blank). Register a deck in `lib/deck/index.ts`. Arabic meanings: `lib/content/e/words.ar.ts` by word id (`localizeDeck`).
+- Words: one file per list, `lib/content/e/list-a.ts` .. `list-d.ts` (`DeckWord`: word, class, English definition, Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the example also becomes a fill-the-blank). Register a list in `lib/deck/index.ts` (`decks`: id, letter, exam date). Arabic meanings: `lib/content/e/words.ar.ts` by word id (`localizeDeck`).
 - `lib/deck/scheduler.ts`: Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box; wrong = first lapse down one box, later lapses box 1, due tomorrow.
 - `lib/deck/session.ts` builds the screens. New words two at a time (card, Hebrew meaning, copy-spelling, match-pairs). Reviews by box: 1 Hebrew meaning, 2 fill the blank, 3+ in sets of 3 as `match-definitions` (leftovers: definition -> word).
-- Progress: `lib/deck/deckProgress.svelte.ts` (localStorage `deck-progress`). Page: `/app/unit/<u>/module/<m>/words`. Tests: `npm test` (`front/tests/deck.test.ts`).
+- Progress: `lib/deck/deckProgress.svelte.ts` (localStorage `deck-progress`, keyed by deck id; `migrate` moves older module-keyed progress). Page: `/app/unit/<u>/module/<m>/words`. Tests: `npm test` (`front/tests/deck.test.ts`).
 
 ## Screen length on a phone
 

@@ -28,7 +28,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
 	import DeckGateway from '$lib/deck/DeckGateway.svelte';
-	import { dueToday, getDeck } from '$lib/deck';
+	import { dueToday, getDecks } from '$lib/deck';
 	import { MOBILE_BUILD } from '$lib/platform';
 	import { auth } from '$lib/auth.svelte';
 	import type { PageProps } from './$types';
@@ -36,7 +36,7 @@
 	let { data }: PageProps = $props();
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
-	let hasDeck = $derived(!!getDeck(mod.id));
+	let hasDeck = $derived(!!getDecks(mod.id));
 
 	// The generic canvas graph every module's path is drawn from: every
 	// lesson carries its own placement (x, y) and prerequisite lesson ids

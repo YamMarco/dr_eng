@@ -1,4 +1,4 @@
-// Word deck: scheduler, session builder and the List A data.
+// Word deck: scheduler, session builder and the word lists.
 // Run: npm test (node's built-in runner, no extra deps).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,7 +11,12 @@ import {
 	NEW_PER_SESSION,
 	wordResults
 } from '../src/lib/deck/session.ts';
-import { eWords } from '../src/lib/content/e/words.ts';
+import { listA } from '../src/lib/content/e/list-a.ts';
+import { listB } from '../src/lib/content/e/list-b.ts';
+import { listC } from '../src/lib/content/e/list-c.ts';
+import { listD } from '../src/lib/content/e/list-d.ts';
+
+const eWords = listA;
 import type { DeckProgress } from '../src/lib/deck/types.ts';
 
 const today = '2026-10-12';
@@ -59,15 +64,18 @@ test('dueWords: only due or overdue, most overdue first', () => {
 	assert.deepEqual(dueWords(progress, today), ['b', 'a']);
 });
 
-test('words: unique ids, every field filled, bold in every example', () => {
-	assert.equal(eWords.length, 180);
-	assert.equal(new Set(eWords.map((w) => w.id)).size, eWords.length);
-	for (const w of eWords) {
-		assert.ok(w.word && w.defEn && w.he, w.id);
-		assert.match(w.exampleEn, /\*\*.+?\*\*/, w.id);
+test('lists: unique ids, every field filled, bold in every example', () => {
+	for (const [name, list] of Object.entries({ listA, listB, listC, listD })) {
+		assert.ok(list.length > 200, name);
+		assert.equal(new Set(list.map((w) => w.id)).size, list.length, name);
+		for (const w of list) {
+			assert.ok(w.word && w.defEn && w.he, w.id);
+			assert.match(w.exampleEn, /\*\*.+?\*\*/, w.id);
+			assert.doesNotMatch(w.defEn + w.he + w.exampleEn, /—|--/, w.id);
+		}
+		// Most examples must work as fill-the-blank.
+		assert.ok(list.filter((w) => blankedExample(w)).length >= list.length * 0.9, name);
 	}
-	// Most examples must work as fill-the-blank.
-	assert.ok(eWords.filter((w) => blankedExample(w)).length >= 170);
 });
 
 test('first session: new words only, taught like Module C', () => {

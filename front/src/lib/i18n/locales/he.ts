@@ -350,9 +350,13 @@ export const he = {
 				.filter(Boolean)
 				.join(' · '),
 		allDoneTitle: 'סיימתם להיום!',
-		allDoneDesc: 'המילים הבאות יחכו לכם מחר. רוצים בכל זאת לתרגל?',
 		extra: 'תרגול נוסף',
 		sessionLabel: 'תרגול מילים',
+		listsTitle: 'הרשימות',
+		listsNote: 'כל רשימה היא רשימת המילים הרשמית של מועד בגרות אחד. כל רשימה מתקדמת בקצב שלה.',
+		listTitle: (letter: string) => `רשימה ${letter}`,
+		listExam: (season: 'winter' | 'summer', year: number) =>
+			`${season === 'winter' ? 'חורף' : 'קיץ'} ${year}`,
 		promptMeaning: 'מה הפירוש?',
 		promptContext: 'השלימו את המשפט:',
 		promptDefinition: 'איזו מילה מתאימה להגדרה?',
