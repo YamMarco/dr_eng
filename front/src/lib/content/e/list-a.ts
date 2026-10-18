@@ -32,7 +32,8 @@ export const listA = [
 		'noun',
 		'telling people about products so that they buy them',
 		'פרסום',
-		'Companies spend millions on **advertising**.'
+		'Companies spend millions on **advertising**.',
+		'-'
 	),
 	w(
 		'among other things',
@@ -81,7 +82,8 @@ export const listA = [
 		'chunk',
 		'to have the duty of taking care of something',
 		'להיות אחראי ל-',
-		'From now on, you will **be responsible for** the keys.'
+		'From now on, you will **be responsible for** the keys.',
+		'to'
 	),
 	w(
 		'besides',
@@ -109,7 +111,8 @@ export const listA = [
 		'noun',
 		'the money you get back when you pay more than the price',
 		'עודף',
-		"Here's your ticket and your **change**."
+		"Here's your ticket and your **change**.",
+		'-'
 	),
 	w(
 		'characteristic',
@@ -130,7 +133,8 @@ export const listA = [
 		'chunk',
 		'to win; to finish in first place',
 		'להגיע ראשון',
-		'Who do you think will **come first** in the race?'
+		'Who do you think will **come first** in the race?',
+		'to'
 	),
 	w(
 		'common',
@@ -152,7 +156,8 @@ export const listA = [
 		'noun',
 		'the circumstances that affect a situation',
 		'תנאים',
-		'Working **conditions** in the factory were bad.'
+		'Working **conditions** in the factory were bad.',
+		'-'
 	),
 	w(
 		'conduct',
@@ -230,7 +235,8 @@ export const listA = [
 		'noun',
 		'serious damage that ruins something',
 		'הרס',
-		'The fire caused great **destruction**.'
+		'The fire caused great **destruction**.',
+		'-'
 	),
 	w(
 		'development',
@@ -300,7 +306,8 @@ export const listA = [
 		'noun',
 		'special importance given to something',
 		'דגש',
-		'The school puts great **emphasis** on sport.'
+		'The school puts great **emphasis** on sport.',
+		'-'
 	),
 	w('enjoyable', 'adj', 'giving pleasure', 'מהנה', 'We had an **enjoyable** day at the beach.'),
 	w(
@@ -378,7 +385,8 @@ export const listA = [
 		'noun',
 		'comments about how well someone has done something',
 		'משוב',
-		'The teacher gave us **feedback** on our essays.'
+		'The teacher gave us **feedback** on our essays.',
+		'-'
 	),
 	w(
 		'figure',
@@ -393,7 +401,8 @@ export const listA = [
 		'noun',
 		'the information discovered in a study',
 		'ממצאים',
-		'The **findings** of the study surprised the scientists.'
+		'The **findings** of the study surprised the scientists.',
+		'-'
 	),
 	w('flexible', 'adj', 'able to change easily', 'גמיש', 'My working hours are **flexible**.'),
 	w(
@@ -408,21 +417,24 @@ export const listA = [
 		'noun',
 		'an illness like a bad cold, with a fever',
 		'שפעת',
-		'I missed a week of school because of the **flu**.'
+		'I missed a week of school because of the **flu**.',
+		'-'
 	),
 	w(
 		'focus on',
 		'chunk',
 		'to give all your attention to something',
 		'להתמקד ב-',
-		'Turn off your phone and **focus on** your work.'
+		'Turn off your phone and **focus on** your work.',
+		'to'
 	),
 	w(
 		'focus',
 		'noun',
 		'the main point of attention',
 		'מוקד',
-		'The **focus** of the lesson is grammar.'
+		'The **focus** of the lesson is grammar.',
+		'-'
 	),
 	w('frequent', 'adj', 'happening often', 'תכוף', 'He makes **frequent** trips to London.'),
 	w('fresh', 'adj', 'new and different', 'חדש, רענן', 'We need some **fresh** ideas.'),
@@ -434,7 +446,8 @@ export const listA = [
 		'noun',
 		'help and advice',
 		'הדרכה, הכוונה',
-		'Students need **guidance** when they choose a career.'
+		'Students need **guidance** when they choose a career.',
+		'-'
 	),
 	w(
 		'hopefully',
@@ -525,7 +538,8 @@ export const listA = [
 		'noun',
 		'the ability to learn and understand',
 		'אינטליגנציה',
-		'Dolphins are known for their **intelligence**.'
+		'Dolphins are known for their **intelligence**.',
+		'-'
 	),
 	w(
 		'interest',
@@ -561,7 +575,8 @@ export const listA = [
 		'chunk',
 		'to continue doing something',
 		'להמשיך (לעשות)',
-		'If you **keep on** practising, you will improve.'
+		'If you **keep on** practising, you will improve.',
+		'to'
 	),
 	w(
 		'kind of',
@@ -575,7 +590,8 @@ export const listA = [
 		'noun',
 		'the information and understanding that you have',
 		'ידע',
-		'He has a good **knowledge** of history.'
+		'He has a good **knowledge** of history.',
+		'-'
 	),
 	w(
 		'lack',
@@ -605,7 +621,8 @@ export const listA = [
 		'chunk',
 		'to examine something',
 		'לבדוק, לבחון',
-		'The doctor will **look at** your arm.'
+		'The doctor will **look at** your arm.',
+		'to'
 	),
 	w('low', 'adv', 'at or to a small height or level', 'נמוך', 'The plane was flying very **low**.'),
 	w(
@@ -613,7 +630,8 @@ export const listA = [
 		'noun',
 		'information used for writing or study',
 		'חומר (לימודי)',
-		"I'm collecting **material** for my project."
+		"I'm collecting **material** for my project.",
+		'-'
 	),
 	w(
 		'mean',
@@ -676,7 +694,8 @@ export const listA = [
 		'noun',
 		'the basic character of a person or thing',
 		'אופי, טבע',
-		"It's not in his **nature** to lie."
+		"It's not in his **nature** to lie.",
+		'-'
 	),
 	w(
 		'necessarily',
@@ -797,7 +816,8 @@ export const listA = [
 		'noun',
 		'the process of making plans',
 		'תכנון',
-		'A good trip needs careful **planning**.'
+		'A good trip needs careful **planning**.',
+		'-'
 	),
 	w(
 		'plant',
@@ -825,7 +845,8 @@ export const listA = [
 		'noun',
 		'damage to air, water or land by harmful substances',
 		'זיהום',
-		'Air **pollution** is a problem in big cities.'
+		'Air **pollution** is a problem in big cities.',
+		'-'
 	),
 	w(
 		'popular',
@@ -895,7 +916,8 @@ export const listA = [
 		'noun',
 		'facts that show something is true',
 		'הוכחה',
-		'Do you have any **proof** that he took it?'
+		'Do you have any **proof** that he took it?',
+		'-'
 	),
 	w('proposed', 'adj', 'suggested as a plan', 'מוצע', 'The **proposed** road will cross the park.'),
 	w(
@@ -917,7 +939,8 @@ export const listA = [
 		'noun',
 		'the study of the mind and behavior',
 		'פסיכולוגיה',
-		'She is studying **psychology** at university.'
+		'She is studying **psychology** at university.',
+		'-'
 	),
 	w(
 		'public',
@@ -1010,7 +1033,8 @@ export const listA = [
 		'chunk',
 		'to need or trust someone or something',
 		'לסמוך על',
-		'You can always **rely on** me.'
+		'You can always **rely on** me.',
+		'to'
 	),
 	w(
 		'request',
@@ -1024,7 +1048,8 @@ export const listA = [
 		'noun',
 		'a detailed study to discover new facts',
 		'מחקר',
-		'Scientists are doing **research** on cancer.'
+		'Scientists are doing **research** on cancer.',
+		'-'
 	),
 	w(
 		'result',
@@ -1059,7 +1084,8 @@ export const listA = [
 		'chunk',
 		'to have no more of something',
 		'שנגמר ל-',
-		'The car is about to **run out of** petrol.'
+		'The car is about to **run out of** petrol.',
+		'to'
 	),
 	w('rural', 'adj', 'in or of the countryside', 'כפרי', 'They live in a **rural** area.'),
 	w(
@@ -1077,13 +1103,14 @@ export const listA = [
 		'The nurse took a blood **sample**.'
 	),
 	w('seldom', 'adv', 'not often; rarely', 'לעתים רחוקות', 'We **seldom** go to the cinema.'),
-	w('sense', 'noun', 'good judgment', 'שכל ישר', 'He had the **sense** to call the police.'),
+	w('sense', 'noun', 'good judgment', 'שכל ישר', 'He had the **sense** to call the police.', '-'),
 	w(
 		'set up',
 		'chunk',
 		'to start a business or organization',
 		'להקים',
-		'They want to **set up** a new company.'
+		'They want to **set up** a new company.',
+		'to'
 	),
 	w(
 		'significant',
@@ -1148,7 +1175,8 @@ export const listA = [
 		'chunk',
 		'to make good use of a chance or situation',
 		'לנצל',
-		'You should **take advantage of** the sale.'
+		'You should **take advantage of** the sale.',
+		'to'
 	),
 	w(
 		'thanks to',
@@ -1169,28 +1197,32 @@ export const listA = [
 		'chunk',
 		"to get rid of something you don't want",
 		'לזרוק (לפח)',
-		"Don't **throw away** the box."
+		"Don't **throw away** the box.",
+		'to'
 	),
 	w(
 		'transport',
 		'noun',
 		'a system for carrying people or goods',
 		'תחבורה',
-		'Public **transport** in the city is cheap.'
+		'Public **transport** in the city is cheap.',
+		'-'
 	),
 	w(
 		'trash',
 		'noun',
 		'things that people throw away',
 		'זבל, אשפה',
-		'Please take out the **trash**.'
+		'Please take out the **trash**.',
+		'-'
 	),
 	w(
 		'treatment',
 		'noun',
 		'the way you behave towards someone',
 		'יחס',
-		'The workers complained about their **treatment**.'
+		'The workers complained about their **treatment**.',
+		'-'
 	),
 	w(
 		'unfortunately',
@@ -1219,7 +1251,8 @@ export const listA = [
 		'noun',
 		'everything that exists in space',
 		'יקום',
-		'Our planet is a tiny part of the **universe**.'
+		'Our planet is a tiny part of the **universe**.',
+		'the universe'
 	),
 	w(
 		'unknown',
@@ -1257,14 +1290,16 @@ export const listA = [
 		'noun',
 		'the amount of something',
 		'כמות, נפח',
-		'The **volume** of traffic grows in the morning.'
+		'The **volume** of traffic grows in the morning.',
+		'-'
 	),
 	w(
 		'wildlife',
 		'noun',
 		'animals and plants living in nature',
 		'חיות בר',
-		'The park protects local **wildlife**.'
+		'The park protects local **wildlife**.',
+		'-'
 	),
 	w(
 		'worthwhile',

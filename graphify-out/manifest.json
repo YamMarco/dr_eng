@@ -350,8 +350,8 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1792308231.0279393,
-    "ast_hash": "ac6f84960f66ed51c7ba0dfb51e7ca03",
+    "mtime": 1792308944.9095428,
+    "ast_hash": "b9712d586677803696138cebd91df051",
     "semantic_hash": ""
   },
   "front/scripts/snapshot-content.ts": {
@@ -1095,13 +1095,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/deck/session.ts": {
-    "mtime": 1792304730.6334288,
-    "ast_hash": "ff7ff231c8ff137fb3b85d565d60c9c2",
+    "mtime": 1792308782.47882,
+    "ast_hash": "37230f3b9306140a6ba9ebb6431a17ce",
     "semantic_hash": ""
   },
   "front/src/lib/deck/types.ts": {
-    "mtime": 1792304730.6344292,
-    "ast_hash": "81544762813dbfbe3e934585689c4e0a",
+    "mtime": 1792308782.5790846,
+    "ast_hash": "2ee47bb2f473bafe4b6ea904ebca0de8",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/FeedbackView.svelte": {
@@ -1160,8 +1160,8 @@
     "semantic_hash": ""
   },
   "front/tests/deck.test.ts": {
-    "mtime": 1792308010.4408114,
-    "ast_hash": "cf57b8bf05c0e28ed6e4c80b7a425204",
+    "mtime": 1792308887.798235,
+    "ast_hash": "ec8e6cf6054b9f2ae5510a29d189a524",
     "semantic_hash": ""
   },
   "front/tests/feedback.test.ts": {
@@ -1260,8 +1260,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/e/words.ar.ts": {
-    "mtime": 1792308140.3232274,
-    "ast_hash": "047ca795bfe2dd9120b16bfcb7d8b3fb",
+    "mtime": 1792308820.740806,
+    "ast_hash": "75127de80f1b798cd38fea70f6faea4a",
     "semantic_hash": ""
   },
   "front/src/lib/content/localize.svelte.ts": {
@@ -1535,8 +1535,8 @@
     "semantic_hash": ""
   },
   "docs/modules/module-e.md": {
-    "mtime": 1792308231.0279393,
-    "ast_hash": "d36364279db3ad59aeb25a52bba41b1e",
+    "mtime": 1792308944.821566,
+    "ast_hash": "66e13f838d07d5dfd6053b7e332fe9df",
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/cobe-1.ts": {
@@ -1880,28 +1880,33 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/e/list-a.ts": {
-    "mtime": 1792308100.9729812,
-    "ast_hash": "c4a546b142f2f7d05c5341d60156b344",
+    "mtime": 1792308810.708821,
+    "ast_hash": "58ef349a64566bacd75eaa41a0685c2f",
     "semantic_hash": ""
   },
   "front/src/lib/content/e/list-b.ts": {
-    "mtime": 1792308100.9977708,
-    "ast_hash": "613636fc52f71ec4a4365b0d2cab70da",
+    "mtime": 1792308834.146325,
+    "ast_hash": "96370a924557c418dca82c8b499213cd",
     "semantic_hash": ""
   },
   "front/src/lib/content/e/list-c.ts": {
-    "mtime": 1792308101.0149403,
-    "ast_hash": "ccfc031e64d92e67cbacab4dc2144256",
+    "mtime": 1792308820.6646028,
+    "ast_hash": "a09a26d1fabae7d76df04de68c7641e0",
     "semantic_hash": ""
   },
   "front/src/lib/content/e/list-d.ts": {
-    "mtime": 1792308101.033013,
-    "ast_hash": "2323e940b78b746a76f24b298114e071",
+    "mtime": 1792308820.69654,
+    "ast_hash": "24ab61a4690dbc0d2efbcd6168d51bb0",
     "semantic_hash": ""
   },
   "front/src/lib/content/e/word.ts": {
-    "mtime": 1792306968.3137789,
-    "ast_hash": "6255bb954c085ccb7b679e378819b48d",
+    "mtime": 1792308782.784948,
+    "ast_hash": "424ee09fd60660eddd8f4d11fa1db713",
+    "semantic_hash": ""
+  },
+  ".mcp.json": {
+    "mtime": 1792308711.7722926,
+    "ast_hash": "81a14d5d7fd38422182a8eeaef76c78f",
     "semantic_hash": ""
   }
 }

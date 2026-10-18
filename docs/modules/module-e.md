@@ -60,11 +60,13 @@ Implementation and file map: `lesson-structure.md` "Word deck". Design decisions
 | new | `word-card`, Hebrew-meaning `mcq`, `spell-word` copy; then `match-pairs` EN-HE of the words met |
 | 1 | `mcq`: word -> pick the Hebrew meaning |
 | 2 | `mcq` honeycomb: example sentence with a blank -> pick the word (no clean blank: definition) |
-| 3+ | `match-definitions` in sets of 3: the exam format, 6 items / 3 definitions; leftovers: `mcq` definition -> pick the word |
+| 3+ | `match-definitions` in sets of 3: the exam format, 6 items of one class / 3 definitions; leftovers and classes too small for 3 decoys: `mcq` definition -> pick the word |
 
 - **Known** = box 4-5 (passed the exam format at least once). Learning = box 1-3.
 - Graded: only screens with `targets`. For a new word only the meaning `mcq` counts; card, copy-spelling and `match-pairs` do not. A word answered twice in a session counts right only if both were. `match-definitions` grades each target separately; its decoys are not graded.
-- Distractors: same `pos` first, from words already met (never a decoy before its card). Missed screens replay at the end of the session (`retryMissed`).
+- **Printed like the exam** (`printed()`): `to` + verb, `a`/`an` + noun, adjectives and adverbs bare, phrasal chunks with `to` (`to mix up`), other chunks bare (`at least`). Exceptions sit on the word as `form` (uncountable nouns bare, `a union`). Spelling and fill-the-blank use the bare word.
+- **Classes like the exam's sets** (`wordClass()`): verb, noun, adj, adv, phrasal chunk, other chunk. A set holds one class only, decoys included, so the printed `to`/`a` never gives the answer away. English `mcq` options also stay in the class unless it is too small.
+- Distractors: from words already met (never a decoy before its card). Missed screens replay at the end of the session (`retryMissed`).
 - Deck sessions never fail: no 80% gate, the result is the schedule. Leaving early saves what was answered.
 - Per session: up to 15 due reviews (most overdue first), then up to 6 new words only if reviews leave room. Nothing due: "extra practice" on the soonest-due words. Sessions call `activity.recordToday()` so they count toward the weekly goal.
 - Progress: localStorage `deck-progress`, synced to the account (`docs/platform.md`).

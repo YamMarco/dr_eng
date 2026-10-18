@@ -33,7 +33,8 @@ export const listB = [
 		'noun',
 		'farming or growing crops',
 		'חקלאות',
-		'Water is very important for **agriculture**.'
+		'Water is very important for **agriculture**.',
+		'-'
 	),
 	w(
 		'all of a sudden',
@@ -75,7 +76,8 @@ export const listB = [
 		'noun',
 		'the mood or feeling of a place',
 		'אווירה',
-		'The **atmosphere** at the party was warm and friendly.'
+		'The **atmosphere** at the party was warm and friendly.',
+		'-'
 	),
 	w(
 		'automatically',
@@ -90,14 +92,16 @@ export const listB = [
 		'chunk',
 		'to be responsible for controlling something',
 		'להיות אחראי, לנהל',
-		'Who will **be in charge** while the manager is away?'
+		'Who will **be in charge** while the manager is away?',
+		'to'
 	),
 	w(
 		'be situated',
 		'chunk',
 		'to be in a particular place',
 		'להיות ממוקם',
-		'The new hotel will **be situated** near the beach.'
+		'The new hotel will **be situated** near the beach.',
+		'to'
 	),
 	w(
 		'behind',
@@ -111,14 +115,16 @@ export const listB = [
 		'chunk',
 		'to trust that something exists or is good',
 		'להאמין ב-',
-		'I **believe in** hard work.'
+		'I **believe in** hard work.',
+		'to'
 	),
 	w(
 		'blame',
 		'noun',
 		'responsibility for something bad',
 		'אשמה',
-		'He took the **blame** for the mistake.'
+		'He took the **blame** for the mistake.',
+		'-'
 	),
 	w(
 		'block',
@@ -133,7 +139,8 @@ export const listB = [
 		'chunk',
 		'to care for a child until it grows up',
 		'לגדל (ילד)',
-		'It is not easy to **bring up** three children alone.'
+		'It is not easy to **bring up** three children alone.',
+		'to'
 	),
 	w(
 		'calculate',
@@ -142,7 +149,14 @@ export const listB = [
 		'לחשב',
 		'Can you **calculate** how much the trip will cost?'
 	),
-	w('clothing', 'noun', 'clothes in general', 'ביגוד', 'Bring warm **clothing** for the trip.'),
+	w(
+		'clothing',
+		'noun',
+		'clothes in general',
+		'ביגוד',
+		'Bring warm **clothing** for the trip.',
+		'-'
+	),
 	w(
 		'competitive',
 		'adj',
@@ -184,7 +198,8 @@ export const listB = [
 		'chunk',
 		'to reduce the amount of something',
 		'לצמצם',
-		'Doctors told him to **cut down** on sugar.'
+		'Doctors told him to **cut down** on sugar.',
+		'to'
 	),
 	w(
 		'decade',
@@ -400,35 +415,40 @@ export const listB = [
 		'chunk',
 		'to throw away or remove something unwanted',
 		'להיפטר מ-',
-		'We need to **get rid of** these old clothes.'
+		'We need to **get rid of** these old clothes.',
+		'to'
 	),
 	w(
 		'get it wrong',
 		'chunk',
 		'to make a mistake about something',
 		'לטעות',
-		"Don't worry if you **get it wrong** the first time."
+		"Don't worry if you **get it wrong** the first time.",
+		'to'
 	),
 	w(
 		'get worse',
 		'chunk',
 		'to become more serious',
 		'להחמיר',
-		"The pain will **get worse** if you don't rest."
+		"The pain will **get worse** if you don't rest.",
+		'to'
 	),
 	w(
 		'give away',
 		'chunk',
 		'to give something to someone for free',
 		'לחלק, לתת במתנה',
-		'She decided to **give away** her old books.'
+		'She decided to **give away** her old books.',
+		'to'
 	),
 	w(
 		'go out',
 		'chunk',
 		'to stop burning or shining',
 		'לכבות (אור, אש)',
-		"The fire will **go out** if you don't add wood."
+		"The fire will **go out** if you don't add wood.",
+		'to'
 	),
 	w(
 		'hidden',
@@ -464,7 +484,8 @@ export const listB = [
 		'noun',
 		'coming to live in a new country',
 		'הגירה, עלייה',
-		'The country has strict **immigration** laws.'
+		'The country has strict **immigration** laws.',
+		'-'
 	),
 	w(
 		'import',
@@ -513,7 +534,8 @@ export const listB = [
 		'noun',
 		'ideas or help you give to a project',
 		'תרומה, קלט',
-		'Thanks for your **input** on the project.'
+		'Thanks for your **input** on the project.',
+		'-'
 	),
 	w(
 		'inside',
@@ -527,7 +549,8 @@ export const listB = [
 		'noun',
 		'communication between people',
 		'קשר הדדי, אינטראקציה',
-		'There is little **interaction** between the two groups.'
+		'There is little **interaction** between the two groups.',
+		'-'
 	),
 	w(
 		'interpret',
@@ -548,7 +571,8 @@ export const listB = [
 		'noun',
 		'taking part in something',
 		'מעורבות',
-		"Parents' **involvement** in school is important."
+		"Parents' **involvement** in school is important.",
+		'-'
 	),
 	w(
 		'issue',
@@ -583,9 +607,10 @@ export const listB = [
 		'noun',
 		'the ability to make good decisions',
 		'שיקול דעת',
-		'I trust your **judgment**.'
+		'I trust your **judgment**.',
+		'-'
 	),
-	w('justice', 'noun', 'fair treatment', 'צדק', 'They are fighting for **justice**.'),
+	w('justice', 'noun', 'fair treatment', 'צדק', 'They are fighting for **justice**.', '-'),
 	w('keen', 'adj', 'very interested; eager', 'להוט, נלהב', 'He is **keen** on football.'),
 	w('keep', 'verb', 'to delay someone', 'לעכב', "I won't **keep** you long."),
 	w(
@@ -629,7 +654,8 @@ export const listB = [
 		'chunk',
 		'to feel happy about something that is going to happen',
 		'לחכות בקוצר רוח ל-',
-		'I **look forward to** seeing you.'
+		'I **look forward to** seeing you.',
+		'to'
 	),
 	w(
 		'lower',
@@ -643,21 +669,24 @@ export const listB = [
 		'chunk',
 		'to be easy to understand',
 		'להיות הגיוני, מובן',
-		"Your plan doesn't **make sense**."
+		"Your plan doesn't **make sense**.",
+		'to'
 	),
 	w(
 		'make up',
 		'chunk',
 		'to invent a story or excuse',
 		'להמציא',
-		'He likes to **make up** stories.'
+		'He likes to **make up** stories.',
+		'to'
 	),
 	w(
 		'make up your mind',
 		'chunk',
 		'to decide',
 		'להחליט',
-		'You have to **make up your mind** today.'
+		'You have to **make up your mind** today.',
+		'to'
 	),
 	w('mend', 'verb', 'to repair', 'לתקן', 'Can you **mend** my bike?'),
 	w(
@@ -701,7 +730,8 @@ export const listB = [
 		'noun',
 		'words or ideas that are silly or not true',
 		'שטויות',
-		"Don't talk **nonsense**."
+		"Don't talk **nonsense**.",
+		'-'
 	),
 	w(
 		'not believe a word',
@@ -724,7 +754,7 @@ export const listB = [
 		'לתפוס, למלא',
 		'Games **occupy** most of his free time.'
 	),
-	w('oil', 'noun', 'a thick liquid used as fuel', 'נפט', 'The price of **oil** went up.'),
+	w('oil', 'noun', 'a thick liquid used as fuel', 'נפט', 'The price of **oil** went up.', '-'),
 	w('on the whole', 'chunk', 'in general', 'בסך הכול', '**On the whole**, the trip was a success.'),
 	w(
 		'open',
@@ -752,7 +782,8 @@ export const listB = [
 		'noun',
 		'the way something is planned and arranged',
 		'ארגון, סידור',
-		'The **organization** of the party took weeks.'
+		'The **organization** of the party took weeks.',
+		'-'
 	),
 	w('outstanding', 'adj', 'excellent', 'מצוין, יוצא מן הכלל', 'She is an **outstanding** student.'),
 	w(
@@ -784,7 +815,8 @@ export const listB = [
 		'noun',
 		'the ability to develop in the future',
 		'פוטנציאל',
-		'This young player has great **potential**.'
+		'This young player has great **potential**.',
+		'-'
 	),
 	w(
 		'preference',
@@ -805,7 +837,8 @@ export const listB = [
 		'noun',
 		'stress caused by having too much to do',
 		'לחץ',
-		'Students are under a lot of **pressure** before exams.'
+		'Students are under a lot of **pressure** before exams.',
+		'-'
 	),
 	w('prime', 'adj', 'main; most important', 'ראשי, עיקרי', 'Safety is our **prime** concern.'),
 	w(
@@ -827,7 +860,8 @@ export const listB = [
 		'chunk',
 		'to accept something unpleasant without complaining',
 		'לסבול, להשלים עם',
-		"I can't **put up with** this noise any more."
+		"I can't **put up with** this noise any more.",
+		'to'
 	),
 	w(
 		'reach',
@@ -841,7 +875,8 @@ export const listB = [
 		'noun',
 		'good judgment; the ability to think sensibly',
 		'היגיון',
-		'Try to listen to **reason**.'
+		'Try to listen to **reason**.',
+		'-'
 	),
 	w(
 		'record',
@@ -900,7 +935,8 @@ export const listB = [
 		'noun',
 		'a feeling of admiration for someone',
 		'כבוד',
-		'Students have great **respect** for this teacher.'
+		'Students have great **respect** for this teacher.',
+		'-'
 	),
 	w(
 		'retire',
@@ -917,7 +953,7 @@ export const listB = [
 		'תפקיד',
 		'Parents play an important **role** in education.'
 	),
-	w('room', 'noun', 'empty space that can be used', 'מקום', 'Is there **room** for one more?'),
+	w('room', 'noun', 'empty space that can be used', 'מקום', 'Is there **room** for one more?', '-'),
 	w(
 		'rough',
 		'adj',
@@ -996,7 +1032,8 @@ export const listB = [
 		'chunk',
 		'to close a business or a machine',
 		'לסגור, לכבות',
-		'The factory will **shut down** next year.'
+		'The factory will **shut down** next year.',
+		'to'
 	),
 	w(
 		'similarity',
@@ -1005,7 +1042,14 @@ export const listB = [
 		'דמיון',
 		'There is a strong **similarity** between the sisters.'
 	),
-	w('slow down', 'chunk', 'to become slower', 'להאט', "**Slow down**, you're driving too fast."),
+	w(
+		'slow down',
+		'chunk',
+		'to become slower',
+		'להאט',
+		"**Slow down**, you're driving too fast.",
+		'to'
+	),
 	w(
 		'so-called',
 		'adj',
@@ -1036,7 +1080,7 @@ export const listB = [
 		'The president gave a **speech**.'
 	),
 	w('spoil', 'verb', 'to ruin something', 'להרוס, לקלקל', "Don't let the rain **spoil** your day."),
-	w('start off', 'chunk', 'to begin', 'להתחיל', "Let's **start off** with a short game."),
+	w('start off', 'chunk', 'to begin', 'להתחיל', "Let's **start off** with a short game.", 'to'),
 	w(
 		'style',
 		'noun',
@@ -1049,7 +1093,8 @@ export const listB = [
 		'chunk',
 		'to give the main points briefly',
 		'לסכם',
-		'Can you **sum up** the story in one sentence?'
+		'Can you **sum up** the story in one sentence?',
+		'to'
 	),
 	w(
 		'summary',
@@ -1071,36 +1116,48 @@ export const listB = [
 		'chunk',
 		'to consider something when you decide',
 		'להביא בחשבון',
-		'You must **take into account** the cost.'
+		'You must **take into account** the cost.',
+		'to'
 	),
 	w(
 		'take part',
 		'chunk',
 		'to join an activity',
 		'להשתתף',
-		'Everyone can **take part** in the game.'
+		'Everyone can **take part** in the game.',
+		'to'
 	),
-	w('take place', 'chunk', 'to happen', 'להתקיים', 'The concert will **take place** in the park.'),
+	w(
+		'take place',
+		'chunk',
+		'to happen',
+		'להתקיים',
+		'The concert will **take place** in the park.',
+		'to'
+	),
 	w(
 		'take the opportunity',
 		'chunk',
 		'to use a good chance to do something',
 		'לנצל את ההזדמנות',
-		'I want to **take the opportunity** to thank you.'
+		'I want to **take the opportunity** to thank you.',
+		'to'
 	),
 	w(
 		'take it seriously',
 		'chunk',
 		'to treat something as important',
 		'להתייחס ברצינות',
-		'This is a real danger, so **take it seriously**.'
+		'This is a real danger, so **take it seriously**.',
+		'to'
 	),
 	w(
 		'take responsibility for',
 		'chunk',
 		'to accept that something is your duty or your fault',
 		'לקחת אחריות על',
-		'You have to **take responsibility for** your actions.'
+		'You have to **take responsibility for** your actions.',
+		'to'
 	),
 	w(
 		'the headlines',
@@ -1149,7 +1206,8 @@ export const listB = [
 		'noun',
 		'valuable gold, jewels, etc.',
 		'אוצר',
-		'The pirates buried their **treasure**.'
+		'The pirates buried their **treasure**.',
+		'-'
 	),
 	w('try', 'noun', 'an attempt', 'ניסיון', 'It looks hard, but give it a **try**.'),
 	w(
@@ -1214,14 +1272,16 @@ export const listB = [
 		'chunk',
 		'to use all of something',
 		'לגמור (עד הסוף)',
-		"Don't **use up** all the hot water."
+		"Don't **use up** all the hot water.",
+		'to'
 	),
 	w(
 		'virtual reality',
 		'noun',
 		'computer images that make you feel you are in a real place',
 		'מציאות מדומה',
-		'With **virtual reality**, you can walk on the moon.'
+		'With **virtual reality**, you can walk on the moon.',
+		'-'
 	),
 	w('vowel', 'noun', 'one of the letters a, e, i, o, u', 'תנועה (אות)', '"A" is a **vowel**.'),
 	w(
@@ -1231,7 +1291,7 @@ export const listB = [
 		'לבזבז',
 		"Don't **waste** water."
 	),
-	w('wealth', 'noun', 'a large amount of money', 'עושר', 'He made his **wealth** in oil.'),
+	w('wealth', 'noun', 'a large amount of money', 'עושר', 'He made his **wealth** in oil.', '-'),
 	w(
 		'welcome',
 		'verb',

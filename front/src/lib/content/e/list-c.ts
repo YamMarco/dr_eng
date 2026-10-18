@@ -33,7 +33,8 @@ export const listC = [
 		'noun',
 		'the right or the way to enter or use something',
 		'גישה',
-		'Every student should have **access** to a computer.'
+		'Every student should have **access** to a computer.',
+		'-'
 	),
 	w(
 		'ambition',
@@ -97,7 +98,8 @@ export const listC = [
 		'noun',
 		'knowledge or understanding of a situation',
 		'מודעות',
-		'The campaign raised **awareness** of the danger of smoking.'
+		'The campaign raised **awareness** of the danger of smoking.',
+		'-'
 	),
 	w('barely', 'adv', 'only just; almost not', 'בקושי', 'I could **barely** hear the teacher.'),
 	w(
@@ -112,14 +114,16 @@ export const listC = [
 		'chunk',
 		'to be going to do something very soon',
 		'עומד ל-',
-		'Hurry! The train is **about to** leave.'
+		'Hurry! The train is **about to** leave.',
+		'to'
 	),
 	w(
 		'be out of',
 		'chunk',
 		'to have no more of something left',
 		'שנגמר ל-',
-		'We will **be out of** milk by tomorrow.'
+		'We will **be out of** milk by tomorrow.',
+		'to'
 	),
 	w('beat', 'noun', 'a rhythm in music', 'מקצב', 'The song has a fast **beat**.'),
 	w(
@@ -134,7 +138,8 @@ export const listC = [
 		'noun',
 		'the science of living things',
 		'ביולוגיה',
-		'We learned about cells in **biology**.'
+		'We learned about cells in **biology**.',
+		'-'
 	),
 	w(
 		'bitter',
@@ -282,7 +287,8 @@ export const listC = [
 		'noun',
 		'the ability to face fear or difficulty',
 		'אומץ',
-		'It takes **courage** to say you were wrong.'
+		'It takes **courage** to say you were wrong.',
+		'-'
 	),
 	w(
 		'cover',
@@ -303,7 +309,8 @@ export const listC = [
 		'noun',
 		'bullying that takes place through digital technology',
 		'בריונות ברשת',
-		'**Cyberbullying** can hurt as much as real bullying.'
+		'**Cyberbullying** can hurt as much as real bullying.',
+		'-'
 	),
 	w('cycle', 'verb', 'to ride a bicycle', 'לרכוב על אופניים', 'I **cycle** to school every day.'),
 	w('deaf', 'adj', 'unable to hear', 'חירש', 'He is **deaf**, so he uses sign language.'),
@@ -390,7 +397,8 @@ export const listC = [
 		'chunk',
 		'to do something well',
 		'לעשות עבודה טובה',
-		'You will **do a good job** if you prepare.'
+		'You will **do a good job** if you prepare.',
+		'to'
 	),
 	w('dozen', 'noun', 'twelve of something', 'תריסר', 'She bought a **dozen** eggs.'),
 	w(
@@ -412,7 +420,8 @@ export const listC = [
 		'noun',
 		'the soil in which plants grow',
 		'אדמה',
-		'Fill the pot with **earth** and plant the seeds.'
+		'Fill the pot with **earth** and plant the seeds.',
+		'-'
 	),
 	w(
 		'earthquake',
@@ -514,7 +523,8 @@ export const listC = [
 		'noun',
 		'the ability to make your own choices',
 		'בחירה חופשית',
-		'Nobody forced him; he did it of his own **free will**.'
+		'Nobody forced him; he did it of his own **free will**.',
+		'-'
 	),
 	w('frozen', 'adj', 'turned into ice; very cold', 'קפוא', 'The lake was **frozen** all winter.'),
 	w(
@@ -536,28 +546,32 @@ export const listC = [
 		'chunk',
 		'to contact someone',
 		'ליצור קשר',
-		'**Get in touch** when you arrive.'
+		'**Get in touch** when you arrive.',
+		'to'
 	),
 	w(
 		'give in',
 		'chunk',
 		'to stop fighting; to accept defeat',
 		'להיכנע',
-		"If you keep asking, they'll **give in** in the end."
+		"If you keep asking, they'll **give in** in the end.",
+		'to'
 	),
 	w(
 		'give up',
 		'chunk',
 		'to stop doing something',
 		'לוותר, להפסיק',
-		"Don't **give up**, you're almost there!"
+		"Don't **give up**, you're almost there!",
+		'to'
 	),
 	w(
 		'go ahead',
 		'chunk',
 		'to start doing something',
 		'קדימה, בבקשה',
-		'**Go ahead**, ask your question.'
+		'**Go ahead**, ask your question.',
+		'to'
 	),
 	w(
 		'grab',
@@ -572,28 +586,32 @@ export const listC = [
 		'noun',
 		'computer machines and equipment',
 		'חומרה',
-		'The program needs new **hardware**.'
+		'The program needs new **hardware**.',
+		'-'
 	),
 	w(
 		'headquarters',
 		'noun',
 		'the main office of an organization',
 		'מטה',
-		'The company **headquarters** is in Tel Aviv.'
+		'The company **headquarters** is in Tel Aviv.',
+		'-'
 	),
 	w(
 		'hold up',
 		'chunk',
 		'to delay someone or something',
 		'לעכב',
-		'An accident can **hold up** traffic for hours.'
+		'An accident can **hold up** traffic for hours.',
+		'to'
 	),
 	w(
 		'honesty',
 		'noun',
 		'the quality of telling the truth',
 		'כנות, יושר',
-		'I value **honesty** in a friend.'
+		'I value **honesty** in a friend.',
+		'-'
 	),
 	w(
 		'idiom',
@@ -635,21 +653,24 @@ export const listC = [
 		'chunk',
 		'to not take something with you',
 		'להשאיר מאחור',
-		"Don't **leave behind** your phone."
+		"Don't **leave behind** your phone.",
+		'to'
 	),
 	w(
 		'let out',
 		'chunk',
 		'to allow someone or something to leave',
 		'לשחרר, להוציא',
-		'Please **let out** the dog.'
+		'Please **let out** the dog.',
+		'to'
 	),
 	w(
 		'let in',
 		'chunk',
 		'to allow someone to enter',
 		'להכניס',
-		'Open the window to **let in** some air.'
+		'Open the window to **let in** some air.',
+		'to'
 	),
 	w('light', 'verb', 'to make something start burning', 'להדליק', 'Please **light** the candles.'),
 	w(
@@ -680,9 +701,17 @@ export const listC = [
 		'chunk',
 		'to enter a computer system with a password',
 		'להתחבר',
-		'You need a password to **log in**.'
+		'You need a password to **log in**.',
+		'to'
 	),
-	w('log out', 'chunk', 'to leave a computer system', 'להתנתק', "Don't forget to **log out**."),
+	w(
+		'log out',
+		'chunk',
+		'to leave a computer system',
+		'להתנתק',
+		"Don't forget to **log out**.",
+		'to'
+	),
 	w(
 		'lonely',
 		'adj',
@@ -696,7 +725,8 @@ export const listC = [
 		'chunk',
 		'to stop being interested',
 		'לאבד עניין',
-		'Children quickly **lose interest** in new toys.'
+		'Children quickly **lose interest** in new toys.',
+		'to'
 	),
 	w('maker', 'noun', 'a company that makes something', 'יצרן', 'He works for a car **maker**.'),
 	w(
@@ -720,7 +750,8 @@ export const listC = [
 		'noun',
 		'being a member of a group',
 		'חברות (במועדון)',
-		'Gym **membership** costs 200 shekels a month.'
+		'Gym **membership** costs 200 shekels a month.',
+		'-'
 	),
 	w(
 		'message',
@@ -825,7 +856,8 @@ export const listC = [
 		'noun',
 		'a feeling of satisfaction about what you have done',
 		'גאווה',
-		'She looked at her work with **pride**.'
+		'She looked at her work with **pride**.',
+		'-'
 	),
 	w(
 		'punish',
@@ -868,7 +900,8 @@ export const listC = [
 		'chunk',
 		'to stay quiet and not get upset',
 		'להישאר רגוע',
-		'In an emergency, try to **remain calm**.'
+		'In an emergency, try to **remain calm**.',
+		'to'
 	),
 	w(
 		'reserve',
@@ -896,7 +929,8 @@ export const listC = [
 		'noun',
 		'making someone feel ashamed in public',
 		'ביוש',
-		'Online **shaming** can destroy a person.'
+		'Online **shaming** can destroy a person.',
+		'-'
 	),
 	w(
 		'shelter',
@@ -910,7 +944,8 @@ export const listC = [
 		'chunk',
 		'to arrive',
 		'להופיע, להגיע',
-		'Only five people **show up** to the meeting every week.'
+		'Only five people **show up** to the meeting every week.',
+		'to'
 	),
 	w('side', 'noun', "a part of someone's character", 'צד', 'I saw a new **side** of him today.'),
 	w('sign', 'verb', 'to write your name on a document', 'לחתום', 'Please **sign** here.'),
@@ -944,14 +979,16 @@ export const listC = [
 		'chunk',
 		'to seem angry from the way someone speaks',
 		'להישמע כועס',
-		'You **sound angry**. What happened?'
+		'You **sound angry**. What happened?',
+		'to'
 	),
 	w(
 		'speak about',
 		'chunk',
 		'to talk about a subject',
 		'לדבר על',
-		'The writer will **speak about** her new book.'
+		'The writer will **speak about** her new book.',
+		'to'
 	),
 	w(
 		'special offer',
@@ -960,14 +997,22 @@ export const listC = [
 		'מבצע',
 		'There is a **special offer** on shoes this week.'
 	),
-	w('speed', 'noun', 'how fast something moves', 'מהירות', 'The car was going at high **speed**.'),
+	w(
+		'speed',
+		'noun',
+		'how fast something moves',
+		'מהירות',
+		'The car was going at high **speed**.',
+		'-'
+	),
 	w('spill', 'verb', 'to let liquid fall out by accident', 'לשפוך', "Don't **spill** your juice."),
 	w(
 		'spirit',
 		'noun',
 		'the attitude or feeling of a group',
 		'רוח, מורל',
-		'The team has great **spirit**.'
+		'The team has great **spirit**.',
+		'-'
 	),
 	w(
 		'spread',
@@ -1011,7 +1056,8 @@ export const listC = [
 		'chunk',
 		'to have an illness or problem',
 		'לסבול מ-',
-		'Many people **suffer from** headaches.'
+		'Many people **suffer from** headaches.',
+		'to'
 	),
 	w('super', 'adj', 'very good; marvelous', 'מעולה', 'We had a **super** time at the party.'),
 	w('swear', 'verb', 'to promise seriously', 'להישבע', 'I **swear** I will never tell anyone.'),
@@ -1048,14 +1094,16 @@ export const listC = [
 		'chunk',
 		'to feel proud of something',
 		'להתגאות ב-',
-		'Good workers **take pride in** what they do.'
+		'Good workers **take pride in** what they do.',
+		'to'
 	),
 	w(
 		"take someone's place",
 		'chunk',
 		'to do something instead of someone',
 		'לתפוס את מקומו של',
-		"Can you **take someone's place** in the team if they're ill?"
+		"Can you **take someone's place** in the team if they're ill?",
+		'to'
 	),
 	w(
 		'tear',
@@ -1151,7 +1199,8 @@ export const listC = [
 		'chunk',
 		'to change into something else',
 		'להפוך ל-',
-		'Water will **turn into** ice when it is very cold.'
+		'Water will **turn into** ice when it is very cold.',
+		'to'
 	),
 	w(
 		'underline',
@@ -1165,7 +1214,8 @@ export const listC = [
 		'noun',
 		"an organization that protects workers' rights",
 		'איגוד (עובדים)',
-		'The **union** is asking for higher pay.'
+		'The **union** is asking for higher pay.',
+		'a union'
 	),
 	w(
 		'victim',
@@ -1181,7 +1231,8 @@ export const listC = [
 		'chunk',
 		'to use something until it cannot be used any more',
 		'לבלות (משימוש)',
-		'Running every day will **wear out** your shoes.'
+		'Running every day will **wear out** your shoes.',
+		'to'
 	),
 	w(
 		'weather forecast',

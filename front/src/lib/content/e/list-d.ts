@@ -18,7 +18,8 @@ export const listD = [
 		'noun',
 		'the part of the army that uses planes',
 		'חיל האוויר',
-		'My brother is a pilot in the **air force**.'
+		'My brother is a pilot in the **air force**.',
+		'the air force'
 	),
 	w(
 		'alarm',
@@ -103,7 +104,8 @@ export const listD = [
 		'chunk',
 		'to be going to have a baby; to be pregnant',
 		'לצפות לתינוק',
-		'My sister will **be expecting** her first baby in May.'
+		'My sister will **be expecting** her first baby in May.',
+		'to'
 	),
 	w(
 		'believe it or not',
@@ -125,7 +127,8 @@ export const listD = [
 		'chunk',
 		'to explode or make something explode',
 		'לפוצץ, להתפוצץ',
-		'In the film, they **blow up** an old bridge.'
+		'In the film, they **blow up** an old bridge.',
+		'to'
 	),
 	w(
 		'boiled',
@@ -176,7 +179,8 @@ export const listD = [
 		'chunk',
 		'to suddenly begin crying',
 		'לפרוץ בבכי',
-		'When she heard the news, she **burst into tears**.'
+		'When she heard the news, she **burst into tears**.',
+		'to'
 	),
 	w(
 		'bury',
@@ -233,7 +237,8 @@ export const listD = [
 		'chunk',
 		'to arrive at or leave a hotel or airport officially',
 		'להירשם / לעזוב (מלון, שדה תעופה)',
-		'Guests must **check in** before 3 p.m.'
+		'Guests must **check in** before 3 p.m.',
+		'to'
 	),
 	w('cold', 'adj', 'not friendly', 'קר, מרוחק', 'She gave me a **cold** look.'),
 	w(
@@ -256,7 +261,8 @@ export const listD = [
 		'noun',
 		'the place at a border where bags are checked',
 		'מכס',
-		'We waited an hour at **customs**.'
+		'We waited an hour at **customs**.',
+		'-'
 	),
 	w('date', 'noun', 'a romantic meeting', 'דייט', 'They went on a **date** to the cinema.'),
 	w(
@@ -352,7 +358,8 @@ export const listD = [
 		'chunk',
 		'to start to love someone',
 		'להתאהב',
-		'They **fall in love** at the end of the film.'
+		'They **fall in love** at the end of the film.',
+		'to'
 	),
 	w(
 		'fasten',
@@ -406,14 +413,16 @@ export const listD = [
 		'chunk',
 		'to do something wrong without being punished',
 		'לצאת מזה בלי עונש',
-		"He won't **get away with** it."
+		"He won't **get away with** it.",
+		'to'
 	),
 	w(
 		'get in',
 		'chunk',
 		'to enter a car or a building',
 		'להיכנס',
-		'**Get in**, I will drive you home.'
+		'**Get in**, I will drive you home.',
+		'to'
 	),
 	w(
 		'ghost',
@@ -434,21 +443,24 @@ export const listD = [
 		'chunk',
 		'to slowly become tired or bored',
 		'להתעייף, להימאס',
-		'After an hour, the children began to **grow tired**.'
+		'After an hour, the children began to **grow tired**.',
+		'to'
 	),
 	w(
 		'hang around',
 		'chunk',
 		'to wait or stay somewhere with nothing to do',
 		'להסתובב, לבטל זמן',
-		"Don't **hang around** outside the shop."
+		"Don't **hang around** outside the shop.",
+		'to'
 	),
 	w(
 		'hang out',
 		'chunk',
 		'to spend free time with friends',
 		'לבלות',
-		'We like to **hang out** at the mall.'
+		'We like to **hang out** at the mall.',
+		'to'
 	),
 	w(
 		'harbor',
@@ -462,7 +474,8 @@ export const listD = [
 		'noun',
 		'the place where good people go after death',
 		'גן עדן',
-		'She believes her dog is in **heaven**.'
+		'She believes her dog is in **heaven**.',
+		'-'
 	),
 	w('heel', 'noun', 'the back part of the foot', 'עקב', 'My new shoes hurt my **heel**.'),
 	w(
@@ -470,17 +483,19 @@ export const listD = [
 		'noun',
 		'the place where bad people go after death',
 		'גיהנום',
-		'In the story, the king was sent to **hell**.'
+		'In the story, the king was sent to **hell**.',
+		'-'
 	),
 	w(
 		'horror',
 		'noun',
 		'a feeling of great fear',
 		'אימה',
-		'She watched in **horror** as the car crashed.'
+		'She watched in **horror** as the car crashed.',
+		'-'
 	),
 	w('hunt', 'verb', 'to chase and kill animals', 'לצוד', 'Lions **hunt** at night.'),
-	w('hurry up', 'chunk', 'to do something more quickly', 'למהר', "**Hurry up**, we're late!"),
+	w('hurry up', 'chunk', 'to do something more quickly', 'למהר', "**Hurry up**, we're late!", 'to'),
 	w(
 		'hut',
 		'noun',
@@ -503,7 +518,8 @@ export const listD = [
 		'noun',
 		'an arrangement where a company pays you if something bad happens',
 		'ביטוח',
-		'Do you have health **insurance**?'
+		'Do you have health **insurance**?',
+		'-'
 	),
 	w(
 		'iron',
@@ -552,21 +568,24 @@ export const listD = [
 		'noun',
 		'the position of being first in a race or game',
 		'הובלה',
-		'Our team is in the **lead**.'
+		'Our team is in the **lead**.',
+		'the lead'
 	),
 	w(
 		'learning',
 		'noun',
 		'knowledge you get from a lot of study',
 		'השכלה, ידע',
-		'He is a man of great **learning**.'
+		'He is a man of great **learning**.',
+		'-'
 	),
 	w(
 		'lightning',
 		'noun',
 		'a flash of light in the sky during a storm',
 		'ברק',
-		'The tree was hit by **lightning**.'
+		'The tree was hit by **lightning**.',
+		'-'
 	),
 	w(
 		'literary',
@@ -613,14 +632,16 @@ export const listD = [
 		'noun',
 		'water from a natural spring, sold in bottles',
 		'מים מינרליים',
-		'Can I have a bottle of **mineral water**?'
+		'Can I have a bottle of **mineral water**?',
+		'-'
 	),
 	w(
 		'mix up',
 		'chunk',
 		'to confuse two people or things',
 		'לבלבל',
-		'People often **mix up** the twins.'
+		'People often **mix up** the twins.',
+		'to'
 	),
 	w(
 		'monster',
@@ -758,7 +779,8 @@ export const listD = [
 		'noun',
 		"a feeling of sadness for someone else's problems",
 		'רחמים',
-		'I felt **pity** for the lost dog.'
+		'I felt **pity** for the lost dog.',
+		'-'
 	),
 	w('pray', 'verb', 'to speak to God', 'להתפלל', 'They **pray** every morning.'),
 	w(
@@ -812,7 +834,7 @@ export const listD = [
 		'החזר כספי',
 		'The shoes broke, so I asked for a **refund**.'
 	),
-	w('regards', 'noun', 'good wishes', 'ד״ש, איחולים', 'Give my **regards** to your parents.'),
+	w('regards', 'noun', 'good wishes', 'ד״ש, איחולים', 'Give my **regards** to your parents.', '-'),
 	w(
 		'republic',
 		'noun',
@@ -841,16 +863,18 @@ export const listD = [
 		'chunk',
 		'to remove writing with an eraser',
 		'למחוק (במחק)',
-		'**Rub out** the mistake and write it again.'
+		'**Rub out** the mistake and write it again.',
+		'to'
 	),
 	w(
 		'rubber',
 		'noun',
 		'a soft material used to make tyres',
 		'גומי',
-		'The ball is made of **rubber**.'
+		'The ball is made of **rubber**.',
+		'-'
 	),
-	w('rubbish', 'noun', 'things people throw away', 'זבל', 'Put the **rubbish** in the bin.'),
+	w('rubbish', 'noun', 'things people throw away', 'זבל', 'Put the **rubbish** in the bin.', '-'),
 	w('rude', 'adj', 'not polite', 'גס רוח', "It's **rude** to talk with your mouth full."),
 	w(
 		'scandal',
@@ -878,7 +902,8 @@ export const listD = [
 		'chunk',
 		'to go to an airport or station to say goodbye',
 		'ללוות (לפרידה)',
-		'We went to the airport to **see off** my uncle.'
+		'We went to the airport to **see off** my uncle.',
+		'to'
 	),
 	w(
 		'selfish',
@@ -894,13 +919,14 @@ export const listD = [
 		'להיפרד',
 		'His parents decided to **separate**.'
 	),
-	w('shade', 'noun', 'an area out of the sun', 'צל', "Let's sit in the **shade**."),
+	w('shade', 'noun', 'an area out of the sun', 'צל', "Let's sit in the **shade**.", '-'),
 	w(
 		'shake your head',
 		'chunk',
 		'to move your head from side to side to say no',
 		'לנענע בראש (לשלילה)',
-		"If you don't agree, just **shake your head**."
+		"If you don't agree, just **shake your head**.",
+		'to'
 	),
 	w('shave', 'verb', 'to cut hair off your face', 'להתגלח', 'He has to **shave** every morning.'),
 	w('shore', 'noun', 'the land along the sea or a lake', 'חוף', 'We walked along the **shore**.'),
@@ -909,9 +935,17 @@ export const listD = [
 		'chunk',
 		'to take a visitor around a place',
 		'לערוך סיור',
-		'Students will **show around** the visitors on open day.'
+		'Students will **show around** the visitors on open day.',
+		'to'
 	),
-	w('shut up', 'chunk', 'to stop talking (rude)', 'לשתוק', 'He told his brother to **shut up**.'),
+	w(
+		'shut up',
+		'chunk',
+		'to stop talking (rude)',
+		'לשתוק',
+		'He told his brother to **shut up**.',
+		'to'
+	),
 	w(
 		'sidewalk',
 		'noun',
@@ -926,13 +960,21 @@ export const listD = [
 		'להיאנח',
 		'I heard her **sigh** and close the book.'
 	),
-	w('silk', 'noun', 'a smooth, soft cloth made by insects', 'משי', 'She wore a **silk** dress.'),
+	w(
+		'silk',
+		'noun',
+		'a smooth, soft cloth made by insects',
+		'משי',
+		'She wore a **silk** dress.',
+		'-'
+	),
 	w(
 		'sit up straight',
 		'chunk',
 		'to sit with a straight back',
 		'לשבת זקוף',
-		'**Sit up straight** at your desk.'
+		'**Sit up straight** at your desk.',
+		'to'
 	),
 	w(
 		'slave',
@@ -954,7 +996,8 @@ export const listD = [
 		'chunk',
 		'to end a relationship; to separate',
 		'להיפרד',
-		'They decided to **split up** after two years.'
+		'They decided to **split up** after two years.',
+		'to'
 	),
 	w('sportsman', 'noun', 'a man who plays sports', 'ספורטאי', 'He is a great **sportsman**.'),
 	w('spot', 'verb', 'to notice something', 'להבחין, לזהות', 'Can you **spot** the mistake?'),
@@ -984,17 +1027,26 @@ export const listD = [
 		'chunk',
 		"to sleep at someone else's house",
 		'לישון אצל מישהו',
-		'Can I **stay over** at your place tonight?'
+		'Can I **stay over** at your place tonight?',
+		'to'
 	),
-	w('stay up', 'chunk', 'to go to bed late', 'להישאר ער', "Don't **stay up** too late."),
+	w('stay up', 'chunk', 'to go to bed late', 'להישאר ער', "Don't **stay up** too late.", 'to'),
 	w('steep', 'adj', 'rising or falling sharply', 'תלול', 'The road up the hill is very **steep**.'),
-	w('step back', 'chunk', 'to move backward', 'לצעוד אחורה', 'Please **step back** from the door.'),
+	w(
+		'step back',
+		'chunk',
+		'to move backward',
+		'לצעוד אחורה',
+		'Please **step back** from the door.',
+		'to'
+	),
 	w(
 		'step on',
 		'chunk',
 		'to put your foot on something',
 		'לדרוך על',
-		"Don't **step on** the flowers."
+		"Don't **step on** the flowers.",
+		'to'
 	),
 	w('stick', 'noun', 'a thin piece of wood', 'מקל', 'The dog brought back the **stick**.'),
 	w(
@@ -1019,7 +1071,7 @@ export const listD = [
 		'קפדן, נוקשה',
 		'Our math teacher is very **strict**.'
 	),
-	w('string', 'noun', 'a thin rope', 'חוט', 'Tie the box with **string**.'),
+	w('string', 'noun', 'a thin rope', 'חוט', 'Tie the box with **string**.', '-'),
 	w('stripe', 'noun', 'a long line of color', 'פס', 'The flag has a blue **stripe**.'),
 	w('suit', 'verb', 'to look good on someone', 'להלום, להתאים', 'Does this hat **suit** me?'),
 	w('swear', 'verb', 'to use rude words', 'לקלל', "Don't **swear** in front of the children."),
@@ -1049,14 +1101,16 @@ export const listD = [
 		'chunk',
 		'to do something that may be dangerous',
 		'לקחת סיכון',
-		'Sometimes you have to **take a risk**.'
+		'Sometimes you have to **take a risk**.',
+		'to'
 	),
 	w(
 		'take out',
 		'chunk',
 		'to take someone to a restaurant, film, etc.',
 		'להוציא (לבילוי)',
-		'I want to **take out** my mom for her birthday.'
+		'I want to **take out** my mom for her birthday.',
+		'to'
 	),
 	w('tap', 'noun', 'a device that controls the flow of water', 'ברז', 'Turn off the **tap**.'),
 	w(
@@ -1073,13 +1127,14 @@ export const listD = [
 		'שטח, טריטוריה',
 		'The army entered enemy **territory**.'
 	),
-	w('terror', 'noun', 'very great fear; horror', 'אימה, פחד', 'The people ran in **terror**.'),
+	w('terror', 'noun', 'very great fear; horror', 'אימה, פחד', 'The people ran in **terror**.', '-'),
 	w(
 		'tie up',
 		'chunk',
 		'to fasten with rope or string',
 		'לקשור',
-		'They **tie up** the boat at night.'
+		'They **tie up** the boat at night.',
+		'to'
 	),
 	w(
 		'tournament',
@@ -1140,5 +1195,5 @@ export const listD = [
 		'קורי עכביש',
 		'A spider is making a **web** in the corner.'
 	),
-	w('wheat', 'noun', 'a plant used to make flour', 'חיטה', 'Bread is made from **wheat**.')
+	w('wheat', 'noun', 'a plant used to make flour', 'חיטה', 'Bread is made from **wheat**.', '-')
 ];

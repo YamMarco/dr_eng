@@ -1,4 +1,6 @@
 // Builds one deck item; the id is the word in kebab case (the progress key).
+// `form` overrides how the exam prints it (see DeckWord.form); `to` alone
+// means "to" + the word, `-` means the bare word.
 import type { DeckWord, WordPos } from '$lib/deck/types';
 
 export const w = (
@@ -6,7 +8,8 @@ export const w = (
 	pos: WordPos,
 	defEn: string,
 	he: string,
-	exampleEn: string
+	exampleEn: string,
+	form?: 'to' | '-' | string
 ): DeckWord => ({
 	id: word
 		.toLowerCase()
@@ -16,5 +19,6 @@ export const w = (
 	pos,
 	defEn,
 	he,
-	exampleEn
+	exampleEn,
+	...(form && { form: form === 'to' ? `to ${word}` : form === '-' ? word : form })
 });
