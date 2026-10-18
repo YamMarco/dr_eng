@@ -350,9 +350,12 @@ export const he = {
 				.filter(Boolean)
 				.join(' · '),
 		allDoneTitle: 'סיימתם להיום!',
-		allDoneDesc: 'המילים הבאות יחכו לכם מחר. רוצים בכל זאת לתרגל?',
 		extra: 'תרגול נוסף',
 		sessionLabel: 'תרגול מילים',
+		listsTitle: 'הרשימות',
+		listsNote:
+			'ארבע הרשימות הרשמיות יחד הן אוצר המילים של הבגרות, וכולן נבחנות. כל רשימה מתקדמת בקצב שלה.',
+		listTitle: (letter: string) => `רשימה ${letter}`,
 		promptMeaning: 'מה הפירוש?',
 		promptContext: 'השלימו את המשפט:',
 		promptDefinition: 'איזו מילה מתאימה להגדרה?',

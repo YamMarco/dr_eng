@@ -23,7 +23,7 @@ import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getInProgress } from '$lib/quiz/progress';
 import { examStats } from '$lib/quiz/stats';
 import { getQuiz, type Quiz } from '$lib/quizzes';
-import { deckStats, deckToday, getDeck } from '$lib/deck';
+import { getDecks, moduleDeckStats, moduleDeckToday } from '$lib/deck';
 import { lastEngagement, type Engagement } from '$lib/lastEngagement.svelte';
 
 /** `total` counts only lessons with content written ("ready" to play). */
@@ -84,8 +84,8 @@ export type SkillRow = {
 export function moduleSkills(moduleId: string, route: RouteSection[]): SkillRow[] {
 	const skillOf = (sectionId: string) => sectionMeta.find((s) => s.id === sectionId)?.skill;
 	return SKILLS.flatMap((skill): SkillRow[] => {
-		if (skill === 'vocab' && getDeck(moduleId)) {
-			const { seen, total } = deckStats(moduleId);
+		if (skill === 'vocab' && getDecks(moduleId)) {
+			const { seen, total } = moduleDeckStats(moduleId);
 			return [{ skill, kind: 'engine', progress: { done: seen, total } }];
 		}
 		const sections = route.filter((s) => skillOf(s.id) === skill);
@@ -129,7 +129,7 @@ export function homeMeters(moduleId: string, route: RouteSection[]): HomeMeters 
 	};
 	let today: number | undefined;
 	if (vocab?.kind === 'engine') {
-		const { reviews, fresh } = deckToday(moduleId);
+		const { reviews, fresh } = moduleDeckToday(moduleId);
 		today = reviews + fresh;
 	}
 	return {
@@ -194,7 +194,7 @@ export function continueFrom(engagement: Engagement | null): ContinueItem | unde
 		if (quiz) return { kind, moduleId, quiz };
 	}
 	if (kind === 'words') {
-		const today = deckToday(moduleId);
+		const today = moduleDeckToday(moduleId);
 		if (today.reviews + today.fresh > 0) return { kind, moduleId };
 	}
 	const lesson = todayLesson(moduleId);

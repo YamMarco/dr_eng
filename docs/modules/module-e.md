@@ -1,6 +1,6 @@
 # Module E plan
 
-Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (List A, 180 items) and a reading path that shows Module C's `c-1` with shared progress. Not built: E-only reading nodes, mock exams.
+Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and a reading path that shows Module C's `c-1` with shared progress. Not built: E-only reading nodes, mock exams.
 
 ## The exam
 
@@ -26,7 +26,7 @@ Part II: each set is one word class (verbs `to attach`, nouns `criticism`, adjec
 
 | # | Decision | Default |
 |---|---|---|
-| E1 | The official Module E word list (Ministry); without it the deck is guesswork | Get it; if none, build from 3-4 new-format exams + their band |
+| E1 | Band III Core I (874 words, Ministry lists A-D) is the tested vocabulary; all four lists are tested. A real Part II also had words outside it (earlier bands: muscle, citizen, budget) | Decks cover Core I; add earlier-band words only if more exams show them |
 | E2 | Is the question mix stable (4 topic MCQs + 5 completions)? | Check 2-3 more new-format exams |
 | E3 | Does E assume Module C done? | Assume C; add a short "method" detour node for those who skipped it |
 
@@ -48,27 +48,33 @@ Needs first: a text pool of E-length articles (5 paragraphs, line numbers, 3-4 g
 
 Implementation and file map: `lesson-structure.md` "Word deck". Design decisions:
 
-- **Single source:** `lib/content/e/words.ts`, one `DeckWord` per item. `pos` (verb / noun / adj / adv / chunk) matters because distractors must come from the same class, like the exam.
-- **Leitner boxes, binary right/wrong.** The exam is binary; no easy/hard self-rating that kids would game. No SM-2/FSRS (YAGNI); swap only if real data shows Leitner is too coarse.
+- **One deck per Ministry list:** `lib/content/e/list-a.ts` .. `list-d.ts`, one `DeckWord` per entry, in the list's order, using the meaning the list gives. Grammar-only entries (modals, prepositions, pronouns, exclamations) are left out; a word listed twice in one list keeps one meaning. `pos` (verb / noun / adj / adv / chunk) matters because distractors must come from the same class, like the exam.
+- **Ambiguity guard:** two items with near-synonym definitions in one list would make a set ambiguous. Write one definition to contain the other's headword (`probable`: "likely to be true"), so `clashes()` keeps them apart.
+- Each list has its own progress and schedule (deck id `e-a` .. `e-d`). The words page lists them with progress and states all four are tested; the main button opens the started list with work today. Module-level numbers (home, module page, gateway) sum the lists in progress.
+- **Leitner boxes 1-5, binary right/wrong.** The exam is binary; no easy/hard self-rating that kids would game. No SM-2/FSRS (YAGNI); swap only if real data shows Leitner is too coarse.
+- **Scheduling is per word**, never per screen: screens are rebuilt each session from the word's box. Intervals 1, 3, 7, 14, 30 days. Right = up a box. Wrong = a lapse: the first drops one box, later ones drop to box 1; a miss is due tomorrow. A miss on a new word's first answer is not a lapse.
 - **The box decides the screen**, difficulty rises as the word is learned:
 
 | Box | Screen |
 |---|---|
-| new | `word-card` then `match-pairs` EN-HE |
-| 1 | `mcq` honeycomb: Hebrew -> pick the word (same-`pos` distractors) |
-| 2 | `mcq`: English definition -> pick the word |
-| 3+ | `match-definitions`: the exam format, 6 items / 3 definitions |
-| 4+ (some) | `spell-word` listen |
+| new | `word-card`, Hebrew-meaning `mcq`, `spell-word` copy; then `match-pairs` EN-HE of the words met |
+| 1 | `mcq`: word -> pick the Hebrew meaning |
+| 2 | `mcq` honeycomb: example sentence with a blank -> pick the word (no clean blank: definition) |
+| 3+ | `match-definitions` in sets of 3: the exam format, 6 items of one class / 3 definitions; leftovers and classes too small for 3 decoys: `mcq` definition -> pick the word |
 
-- Distractors: same `pos`, words the student has already seen (never a decoy before its card). Missed words replay at the end of the session (box drops to 1, due today).
-- Deck sessions never fail: no 80% gate, the result is the schedule. The end screen shows "learned / to review tomorrow". `match-definitions` reports per target, so one wrong match does not fail the other two words.
-- The deck page lists words due today, a start button, box distribution (new / learning / known) and a daily new-word limit. Sessions call `activity.recordToday()` so they count toward the weekly goal.
-- Later: `word_progress (user_id, word_id, box, due, lapses)` in `content/schema.sql`; progress is localStorage until then.
-- Tests, no screenshots: scheduler box moves and due dates; session due-first order, new-word cap, same-`pos` distractors, `targets` aligned with `screens`; `match-definitions` per-target scoring.
+- **Known** = box 4-5 (passed the exam format at least once). Learning = box 1-3.
+- Graded: only screens with `targets`. For a new word only the meaning `mcq` counts; card, copy-spelling and `match-pairs` do not. A word answered twice in a session counts right only if both were. `match-definitions` grades each target separately; its decoys are not graded.
+- **Printed like the exam** (`printed()`): `to` + verb, `a`/`an` + noun, adjectives and adverbs bare, phrasal chunks with `to` (`to mix up`), other chunks bare (`at least`). Exceptions sit on the word as `form` (uncountable nouns bare, `a union`). Spelling and fill-the-blank use the bare word.
+- **Classes like the exam's sets** (`wordClass()`): verb, noun, adj, adv, phrasal chunk, other chunk. A set holds one class only, decoys included, so the printed `to`/`a` never gives the answer away. English `mcq` options also stay in the class unless it is too small.
+- Distractors: from words already met (never a decoy before its card). Missed screens replay at the end of the session (`retryMissed`).
+- Deck sessions never fail: no 80% gate, the result is the schedule. Leaving early saves what was answered.
+- Per session: up to 15 due reviews (most overdue first), then up to 6 new words only if reviews leave room. Nothing due: "extra practice" on the soonest-due words. Sessions call `activity.recordToday()` so they count toward the weekly goal.
+- Progress: localStorage `deck-progress`, synced to the account (`docs/platform.md`).
+- Tests, no screenshots: scheduler box moves, lapses and due dates; session due-first order, new-word cap, same-`pos` distractors, `targets` aligned with `screens`; `match-definitions` per-target scoring.
 
 ## Mock exams (section `e-exam`)
 
-One article + 9 questions + 5 `match-definitions` sets, timed (75 min). Vocab sets drawn from `words.ts`. Uses the existing exam route (`routes/app/unit/[unitId]/module/[moduleId]/exam`).
+One article + 9 questions + 5 `match-definitions` sets, timed (75 min). Vocab sets drawn from the lists. Uses the existing exam route (`routes/app/unit/[unitId]/module/[moduleId]/exam`).
 
 ## Code prep still open
 

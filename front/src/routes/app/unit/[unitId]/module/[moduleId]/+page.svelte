@@ -15,7 +15,7 @@
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import type { Skill } from '$lib/content';
-	import { deckToday } from '$lib/deck';
+	import { moduleDeckToday } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { examStats } from '$lib/quiz/stats';
 	import {
@@ -87,7 +87,7 @@
 
 	function skillSub(skill: Skill, kind: 'engine' | 'path'): string | undefined {
 		if (kind === 'engine') {
-			const today = deckToday(mod.id);
+			const today = moduleDeckToday(mod.id);
 			return today.reviews + today.fresh
 				? i18n.dict.deck.sessionSize(today.reviews, today.fresh)
 				: t.wordsDone;

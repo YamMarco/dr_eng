@@ -4,7 +4,7 @@
 	import { MediaQuery } from 'svelte/reactivity';
 	import { BookOpen, ChevronLeft, ClipboardCheck, Languages, Play } from '@lucide/svelte';
 	import { modules } from '$lib/curriculum';
-	import { deckToday } from '$lib/deck';
+	import { moduleDeckToday } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { continueHref, lessonSubtitle, type ContinueItem } from './data';
 
@@ -21,7 +21,7 @@
 		if (item.kind === 'exam')
 			return { icon: ClipboardCheck, title: i18n.title(item.quiz.id), sub: t.examMidway };
 		if (item.kind === 'words') {
-			const today = deckToday(item.moduleId);
+			const today = moduleDeckToday(item.moduleId);
 			return {
 				icon: Languages,
 				title: i18n.dict.deck.title,

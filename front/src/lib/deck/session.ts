@@ -47,24 +47,40 @@ function clashes(a: DeckWord, b: DeckWord): boolean {
 	);
 }
 
+/** The word as the exam prints it: `to wrap`, `an idiom`, `reliable`, `to mix up`. */
+export function printed(word: DeckWord): string {
+	if (word.form) return word.form;
+	if (word.pos === 'verb') return `to ${word.word}`;
+	if (word.pos === 'noun') return `${/^[aeiou]/i.test(word.word) ? 'an' : 'a'} ${word.word}`;
+	return word.word;
+}
+
+/** The exam's set class: the part of speech, with phrasal chunks (`to give up`)
+ *  apart from the others (`at least`), since the printed `to` tells them apart. */
+export function wordClass(word: DeckWord): string {
+	return word.pos === 'chunk' && printed(word).startsWith('to ') ? 'phrasal' : word.pos;
+}
+
 /**
- * `n` decoys for `targets`: same word class first, then any class. Only words
- * from `pool` (already met - a word is never a decoy before its card), unless
- * the pool is too small.
+ * `n` decoys for `targets`: same class first, then (unless `strict`) any class.
+ * Only words from `pool` (already met - a word is never a decoy before its
+ * card), unless the pool is too small. Strict decoys can come up short.
  */
 function decoys(
 	targets: DeckWord[],
 	pool: DeckWord[],
 	all: DeckWord[],
 	n: number,
-	random: Rng
+	random: Rng,
+	strict = false
 ): DeckWord[] {
-	const pos = new Set(targets.map((t) => t.pos));
+	const classes = new Set(targets.map(wordClass));
 	const ok = (w: DeckWord) => !targets.some((t) => t.id === w.id || t.he === w.he || clashes(t, w));
 	const out: DeckWord[] = [];
 	for (const source of [pool, all]) {
 		const fresh = shuffle(source.filter(ok), random).filter((w) => !out.includes(w));
-		for (const w of [...fresh.filter((w) => pos.has(w.pos)), ...fresh]) {
+		const same = fresh.filter((w) => classes.has(wordClass(w)));
+		for (const w of strict ? same : [...same, ...fresh]) {
 			if (out.length === n) return out;
 			if (!out.includes(w)) out.push(w);
 		}
@@ -73,7 +89,7 @@ function decoys(
 }
 
 function explanation(word: DeckWord): string {
-	return `**${word.word}** = ${word.he}\n{p:text}${word.defEn}`;
+	return `**${printed(word)}** = ${word.he}\n{p:text}${word.defEn}`;
 }
 
 /** The question lines above each mcq, in the UI language - passed in so this
@@ -85,19 +101,23 @@ function meaningMcq(word: DeckWord, all: DeckWord[], random: Rng, p: DeckPrompts
 	const options = shuffle([word, ...decoys([word], all, all, 3, random)], random);
 	return {
 		type: 'mcq',
-		prompt: `${p.meaning}\n\n{p:text}{a:center}## ${word.word}`,
+		prompt: `${p.meaning}\n\n{p:text}{a:center}## ${printed(word)}`,
 		options: options.map((w) => w.he),
 		correctIndex: options.indexOf(word),
 		explanation: explanation(word)
 	};
 }
 
+// English options: other classes only when the class is too small, since the
+// printed form (`to`, `a`) would give the answer away.
 function wordMcq(word: DeckWord, prompt: string, pool: DeckWord[], all: DeckWord[], random: Rng) {
-	const options = shuffle([word, ...decoys([word], pool, all, 3, random)], random);
+	const same = decoys([word], pool, all, 3, random, true);
+	const rest = decoys([word, ...same], pool, all, 3 - same.length, random);
+	const options = shuffle([word, ...same, ...rest], random);
 	const screen: LessonScreen = {
 		type: 'mcq',
 		prompt,
-		options: options.map((w) => w.word),
+		options: options.map(printed),
 		correctIndex: options.indexOf(word),
 		layout: 'honeycomb',
 		explanation: explanation(word)
@@ -127,20 +147,20 @@ function definitionMcq(
 	return wordMcq(word, `${p.definition}\n\n{p:text}${word.defEn}`, pool, all, random);
 }
 
-/** The exam's Part II item: 6 numbered items, definitions for the targets only. */
+/** The exam's Part II item: 6 numbered items of one class, definitions for the
+ *  targets only. Undefined when the class has too few words for the decoys. */
 function matchDefinitions(
 	targets: DeckWord[],
 	pool: DeckWord[],
 	all: DeckWord[],
 	random: Rng
-): LessonScreen {
-	const items = shuffle(
-		[...targets, ...decoys(targets, pool, all, 6 - targets.length, random)],
-		random
-	);
+): LessonScreen | undefined {
+	const extra = decoys(targets, pool, all, 6 - targets.length, random, true);
+	if (targets.length + extra.length < 6) return undefined;
+	const items = shuffle([...targets, ...extra], random);
 	return {
 		type: 'match-definitions',
-		items: items.map((w) => w.word),
+		items: items.map(printed),
 		definitions: targets.map((t) => ({ text: t.defEn, itemIndex: items.indexOf(t) }))
 	};
 }
@@ -181,13 +201,19 @@ export function buildSession(
 		targets.push(ids);
 	};
 
-	// Reviews: single questions shuffled, then the exam-format sets.
-	const examWords = reviews
-		.filter((w) => progress[w.id].box >= EXAM_BOX)
-		.sort((a, b) => a.pos.localeCompare(b.pos));
-	const sets: DeckWord[][] = [];
-	for (let i = 0; i + 3 <= examWords.length; i += 3) sets.push(examWords.slice(i, i + 3));
-	const inSets = new Set(sets.flat());
+	// Reviews: single questions shuffled, then the exam-format sets, each of one
+	// class like the exam (leftovers and too-small classes go single).
+	const examWords = reviews.filter((w) => progress[w.id].box >= EXAM_BOX);
+	const sets: { words: DeckWord[]; screen: LessonScreen }[] = [];
+	for (const cls of new Set(examWords.map(wordClass))) {
+		const group = examWords.filter((w) => wordClass(w) === cls);
+		for (let i = 0; i + 3 <= group.length; i += 3) {
+			const set = group.slice(i, i + 3);
+			const screen = matchDefinitions(set, seen, words, random);
+			if (screen) sets.push({ words: set, screen });
+		}
+	}
+	const inSets = new Set(sets.flatMap((s) => s.words));
 	const singles = shuffle(
 		reviews.filter((w) => !inSets.has(w)),
 		random
@@ -204,8 +230,8 @@ export function buildSession(
 	}
 	for (const set of sets)
 		add(
-			matchDefinitions(set, seen, words, random),
-			set.map((w) => w.id)
+			set.screen,
+			set.words.map((w) => w.id)
 		);
 
 	// New words, two at a time.
@@ -214,7 +240,7 @@ export function buildSession(
 		for (const w of fresh.slice(i, i + 2)) {
 			add({
 				type: 'word-card',
-				word: w.word,
+				word: printed(w),
 				translationHe: w.he,
 				definitionEn: w.defEn,
 				exampleEn: w.exampleEn,
@@ -229,7 +255,7 @@ export function buildSession(
 				type: 'match-pairs',
 				pairs: shuffle(met, random)
 					.slice(0, 5)
-					.map((w) => ({ en: w.word, he: w.he }))
+					.map((w) => ({ en: printed(w), he: w.he }))
 			});
 	}
 

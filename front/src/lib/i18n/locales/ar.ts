@@ -203,7 +203,6 @@ export const ar: DictionaryOverride = {
 				.filter(Boolean)
 				.join(' · '),
 		allDoneTitle: 'أنهيتم لهذا اليوم!',
-		allDoneDesc: 'الكلمات القادمة ستنتظركم غدًا. هل تريدون التدرب رغم ذلك؟',
 		extra: 'تدريب إضافي',
 		sessionLabel: 'تدريب الكلمات',
 		promptMeaning: 'ما معنى الكلمة؟',

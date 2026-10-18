@@ -16,6 +16,9 @@ export type DeckWord = {
 	/** One sentence with the word in `**bold**`. When the bold part is exactly `word`, it also feeds the fill-the-blank screen. */
 	exampleEn: string;
 	hookHe?: string;
+	/** As the exam prints it, when the default (`to` + verb, `a`/`an` + noun) is
+	 *  wrong: uncountable nouns (`advertising`), `a universe`, `to give up`. */
+	form?: string;
 };
 
 /** Leitner box 1-5 and the day the word is next due (YYYY-MM-DD, local). */

@@ -7,7 +7,7 @@
 	import { profile } from '$lib/profile.svelte';
 	import { homeMeters, moduleHook, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
-	import { getDeck } from '$lib/deck';
+	import { getDecks } from '$lib/deck';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
 	import ModuleRow from '$lib/dashboard/ModuleRow.svelte';
@@ -30,7 +30,7 @@
 				meters: homeMeters(id, route),
 				hook: moduleHook(id, route),
 				href: `/app/unit/${group.id}/module/${id}`,
-				comingSoon: !route.length && !exams.total && !getDeck(id)
+				comingSoon: !route.length && !exams.total && !getDecks(id)
 			};
 		})
 	);
