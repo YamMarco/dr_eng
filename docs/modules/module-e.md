@@ -49,22 +49,24 @@ Needs first: a text pool of E-length articles (5 paragraphs, line numbers, 3-4 g
 Implementation and file map: `lesson-structure.md` "Word deck". Design decisions:
 
 - **Single source:** `lib/content/e/words.ts`, one `DeckWord` per item. `pos` (verb / noun / adj / adv / chunk) matters because distractors must come from the same class, like the exam.
-- **Leitner boxes, binary right/wrong.** The exam is binary; no easy/hard self-rating that kids would game. No SM-2/FSRS (YAGNI); swap only if real data shows Leitner is too coarse.
+- **Leitner boxes 1-5, binary right/wrong.** The exam is binary; no easy/hard self-rating that kids would game. No SM-2/FSRS (YAGNI); swap only if real data shows Leitner is too coarse.
+- **Scheduling is per word**, never per screen: screens are rebuilt each session from the word's box. Intervals 1, 3, 7, 14, 30 days. Right = up a box. Wrong = a lapse: the first drops one box, later ones drop to box 1; a miss is due tomorrow. A miss on a new word's first answer is not a lapse.
 - **The box decides the screen**, difficulty rises as the word is learned:
 
 | Box | Screen |
 |---|---|
-| new | `word-card` then `match-pairs` EN-HE |
-| 1 | `mcq` honeycomb: Hebrew -> pick the word (same-`pos` distractors) |
-| 2 | `mcq`: English definition -> pick the word |
-| 3+ | `match-definitions`: the exam format, 6 items / 3 definitions |
-| 4+ (some) | `spell-word` listen |
+| new | `word-card`, Hebrew-meaning `mcq`, `spell-word` copy; then `match-pairs` EN-HE of the words met |
+| 1 | `mcq`: word -> pick the Hebrew meaning |
+| 2 | `mcq` honeycomb: example sentence with a blank -> pick the word (no clean blank: definition) |
+| 3+ | `match-definitions` in sets of 3: the exam format, 6 items / 3 definitions; leftovers: `mcq` definition -> pick the word |
 
-- Distractors: same `pos`, words the student has already seen (never a decoy before its card). Missed words replay at the end of the session (box drops to 1, due today).
-- Deck sessions never fail: no 80% gate, the result is the schedule. The end screen shows "learned / to review tomorrow". `match-definitions` reports per target, so one wrong match does not fail the other two words.
-- The deck page lists words due today, a start button, box distribution (new / learning / known) and a daily new-word limit. Sessions call `activity.recordToday()` so they count toward the weekly goal.
-- Later: `word_progress (user_id, word_id, box, due, lapses)` in `content/schema.sql`; progress is localStorage until then.
-- Tests, no screenshots: scheduler box moves and due dates; session due-first order, new-word cap, same-`pos` distractors, `targets` aligned with `screens`; `match-definitions` per-target scoring.
+- **Known** = box 4-5 (passed the exam format at least once). Learning = box 1-3.
+- Graded: only screens with `targets`. For a new word only the meaning `mcq` counts; card, copy-spelling and `match-pairs` do not. A word answered twice in a session counts right only if both were. `match-definitions` grades each target separately; its decoys are not graded.
+- Distractors: same `pos` first, from words already met (never a decoy before its card). Missed screens replay at the end of the session (`retryMissed`).
+- Deck sessions never fail: no 80% gate, the result is the schedule. Leaving early saves what was answered.
+- Per session: up to 15 due reviews (most overdue first), then up to 6 new words only if reviews leave room. Nothing due: "extra practice" on the soonest-due words. Sessions call `activity.recordToday()` so they count toward the weekly goal.
+- Progress: localStorage `deck-progress`, synced to the account (`docs/platform.md`).
+- Tests, no screenshots: scheduler box moves, lapses and due dates; session due-first order, new-word cap, same-`pos` distractors, `targets` aligned with `screens`; `match-definitions` per-target scoring.
 
 ## Mock exams (section `e-exam`)
 

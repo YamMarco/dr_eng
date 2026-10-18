@@ -27,15 +27,21 @@ test('addDays crosses month and year ends', () => {
 
 test('review: new word starts in box 1 either way, due tomorrow', () => {
 	assert.deepEqual(review(undefined, true, today), { box: 1, due: '2026-10-13', lapses: 0 });
-	assert.deepEqual(review(undefined, false, today), { box: 1, due: '2026-10-13', lapses: 1 });
+	assert.deepEqual(review(undefined, false, today), { box: 1, due: '2026-10-13', lapses: 0 });
 });
 
-test('review: right climbs a box, wrong drops to box 1, box caps at 5', () => {
+test('review: right climbs a box, first lapse drops one box, later lapses drop to box 1, box caps at 5', () => {
 	assert.deepEqual(review({ box: 2, due: today, lapses: 0 }, true, today), {
 		box: 3,
 		due: '2026-10-19',
 		lapses: 0
 	});
+	assert.deepEqual(review({ box: 5, due: today, lapses: 0 }, false, today), {
+		box: 4,
+		due: '2026-10-13',
+		lapses: 1
+	});
+	assert.deepEqual(review({ box: 1, due: today, lapses: 0 }, false, today).box, 1);
 	assert.deepEqual(review({ box: 4, due: today, lapses: 1 }, false, today), {
 		box: 1,
 		due: '2026-10-13',
