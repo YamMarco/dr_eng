@@ -135,6 +135,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		};
 	} else if (body.examModuleId) {
 		const { examModuleId, upserts, deletes } = body;
+		if (!/^[a-z]+$/.test(examModuleId)) throw error(400, `bad exam module id: ${examModuleId}`);
 		if (!Array.isArray(upserts) || !Array.isArray(deletes))
 			throw error(400, 'missing upserts[]/deletes[]');
 		relPath = `src/lib/quiz/${examModuleId}/index.ts`;

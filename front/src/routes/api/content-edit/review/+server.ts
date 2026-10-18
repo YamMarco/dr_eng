@@ -9,6 +9,7 @@ import { env } from '$env/dynamic/private';
 import { error, json } from '@sveltejs/kit';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { z } from 'zod';
 import { checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/server/github';
 import type { RequestHandler } from './$types';
@@ -16,8 +17,17 @@ import type { RequestHandler } from './$types';
 const REL_PATH = 'src/lib/content-edit/review-notes.json';
 const GITHUB_PATH = `front/${REL_PATH}`;
 
-type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
+type ReviewNote = { preface: boolean; rounds: (boolean | null)[]; comment: string };
 type ReviewNotes = Record<string, ReviewNote>;
+
+const body = z.object({
+	id: z.string().regex(/^[\w-]{1,80}$/),
+	patch: z.strictObject({
+		preface: z.boolean().optional(),
+		rounds: z.array(z.boolean().nullable()).max(50).optional(),
+		comment: z.string().max(5000).optional()
+	})
+});
 
 export const GET: RequestHandler = async ({ locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
@@ -40,8 +50,9 @@ export const GET: RequestHandler = async ({ locals }) => {
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
 
-	const { id, patch } = (await request.json()) as { id: string; patch: Partial<ReviewNote> };
-	if (!id || !patch) throw error(400, 'missing id/patch');
+	const parsed = body.safeParse(await request.json().catch(() => null));
+	if (!parsed.success) throw error(400, 'bad review note');
+	const { id, patch } = parsed.data;
 	const blank: ReviewNote = { preface: false, rounds: [], comment: '' };
 
 	if (dev) {
