@@ -25,6 +25,17 @@ Three parts, a set of two questions each, one recording per set (max 2 files), 3
 
 - **Phrase bank** (`content/cobe/phrases.ts`, `lesson-screens/PhraseBank.svelte`): a "ביטויים" chip on lesson speaking screens (never in exams: no notes) opens spoken chunks by job (open, buy time, rescue, opinion, example, link, project, clip, close), the groups that fit the screen's `part` first, each with listen + star. Starred phrases and phrases quoted in AI tips ("+ לבנק") go to "הביטויים שלי" (`lib/phraseBank.svelte.ts`, localStorage). Targets Vocabulary (chunks and expressions) and Delivery (fewer hesitations).
 
+## AI chat (שיחה עם AI)
+
+Short spoken conversations for confidence and fluency, not grading. A row on the COBE module page opens `/app/unit/<u>/module/cobe/chat`.
+
+- **Modes:** banter (10 light topics from the official Part A list + "הפתעה", 4-6 student turns) and mini COBE: Part A (two drawn topics, the student picks one, 2 questions + a follow-up) or Part B (the student names their project, 2 questions + a follow-up), 4 turns. Topics and openers: `content/cobe/chatTopics.ts`; turn limits: `feedback/chat.ts`.
+- **A turn:** the AI line is spoken (text hidden - listening first; "תמליל השיחה" shows the chat), the student answers in one take with a ring toward a soft 20 s goal, `/api/chat-speak` (role `chat-speaking`, prompt `server/prompts/chat-speaking.md`) gets the take as WAV plus the chat so far as text and returns what it heard and its next line. The opener needs no call. No hints, no typing.
+- **Tone:** warm, praises effort, gentle recasts (the correct form inside the reply, never pointing at the mistake), stays away from personal details and sensitive topics.
+- **End:** the last turn carries a summary (2 strengths and a closing line in Hebrew, 1-2 English phrases with "+ לבנק"); no score. Counts as a practice day; `chat-count` syncs. The chat itself is not saved.
+- **Voice:** `lib/chatVoice.ts` (browser TTS today); a server voice is another `ChatVoice`.
+- Each turn counts toward the daily LLM quota; at the limit the chat says so and ends.
+
 ## Part B - Project (cobe-1, map chapter "Part 1")
 
 The 3-step model: **Personal Hook** (why I chose the topic) -> **Honest Pivot** (rescue phrase when a fact is forgotten) -> **"So What?"** (why it matters today). Steps 1-3 lessons: recognise (mcq, cloze-pick, mark-all, sentence-completion), then a `self-check` where the student drafts their own project answer. The simulation records each step, then the whole set in one take.
@@ -63,6 +74,6 @@ The `speak` prompts are generic ("the people in the clip"); rewrite them once ea
 - The "Part C needs at least one answer" rule is not enforced in code.
 - Drafts in the self-check screens are not saved, so the simulation cannot show the student's own hook back.
 - Arabic content translations (`translations/ar.json`) missing for cobe-1 / cobe-2; titles are in. Report strings (`cobeReview`) are Hebrew only.
-- AI feedback is one-shot per take, not yet a back-and-forth voice conversation.
+- AI feedback in lessons is one-shot per take; the back-and-forth is the AI chat (turn-based, not live voice).
 - The AI never sees the Part C clip: it judges whether answers respond to the questions, not their accuracy about the clip.
 - Take history is per device and per prompt text: editing a prompt starts a new history.

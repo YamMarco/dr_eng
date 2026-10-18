@@ -3,7 +3,15 @@
 	import { cubicOut } from 'svelte/easing';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { staggerDelay } from '$lib/motion';
-	import { BookOpen, ClipboardCheck, Languages, Mic, PenLine, Play } from '@lucide/svelte';
+	import {
+		BookOpen,
+		ClipboardCheck,
+		Languages,
+		MessagesSquare,
+		Mic,
+		PenLine,
+		Play
+	} from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import type { Skill } from '$lib/content';
@@ -20,6 +28,7 @@
 	import ExamNugget from '$lib/dashboard/ExamNugget.svelte';
 	import HubRow from '$lib/dashboard/HubRow.svelte';
 	import { speakingSummary } from '$lib/takeHistory';
+	import { chatCount } from '$lib/feedback/chatAi';
 	import NextStepHero from '$lib/dashboard/NextStepHero.svelte';
 	import type { PageProps } from './$types';
 
@@ -38,6 +47,7 @@
 	let advice = $derived(examAdvice(mod.id));
 	let lesson = $derived(todayLesson(mod.id));
 	let skills = $derived(moduleSkills(mod.id, route));
+	const chats = chatCount();
 
 	// The one big card: an exam worth taking now, else the next lesson.
 	let hero = $derived.by(() => {
@@ -92,9 +102,7 @@
 
 <AppBar title="{i18n.dict.unit.modulePrefix} {mod.letter}" back="/app" />
 
-<main
-	class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6"
->
+<main class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6">
 	{#if hero}
 		<NextStepHero {...hero} />
 	{/if}
@@ -134,6 +142,15 @@
 				{/snippet}
 			</HubRow>
 		{/each}
+
+		{#if mod.id === 'cobe'}
+			<HubRow
+				icon={MessagesSquare}
+				title={i18n.dict.chat.title}
+				sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
+				href="{base}/chat"
+			/>
+		{/if}
 
 		{#if route.length}
 			<a

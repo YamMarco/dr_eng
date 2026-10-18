@@ -31,8 +31,8 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
-- `/api/grade`, `/api/ocr`, `/api/speak`, `/api/account`, `/api/access` and `/api/checkout(/quote)` need `Authorization: Bearer <token>`. Otherwise they return 401.
-- **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/ocr`): with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over); a per-instance burst limit.
+- `/api/grade`, `/api/ocr`, `/api/speak`, `/api/chat-speak`, `/api/account`, `/api/access` and `/api/checkout(/quote)` need `Authorization: Bearer <token>`. Otherwise they return 401.
+- **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/chat-speak`, `/api/ocr`): with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over); a per-instance burst limit.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also removes the account's progress rows and clears this device's.
 
 ### Turning it on
@@ -59,7 +59,7 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 
 Progress follows the account (needs accounts and `DATABASE_URL`; otherwise it stays on the device). `localStorage` is the working copy; the `progress` table keeps one JSON row per key.
 
-- **Synced keys:** `isSyncedKey` in `$lib/progressMerge.ts` (lessons, word deck, practice days, module location, last engagement, profile, my phrases, speaking stats, exam attempts and results). Theme, language, debug flags and the exam in-progress marker stay on the device; spoken-take audio never leaves it.
+- **Synced keys:** `isSyncedKey` in `$lib/progressMerge.ts` (lessons, word deck, practice days, module location, last engagement, profile, my phrases, speaking stats, chat count, exam attempts and results). Theme, language, debug flags and the exam in-progress marker stay on the device; spoken-take audio never leaves it.
 - **Writes:** stores save with `saveSynced(key, value)` (`$lib/progressSync.svelte.ts`), never `localStorage.setItem`, for a synced key. Pushed 3 s later in batches, and when the page is hidden. A store that holds the value in state registers `onSyncedChange(key, reload)`.
 - **Merge** (`progressMerge.ts`, same code on client and `/api/progress`): never loses work. Max rounds per lesson, later review per word, union of days / phrases / results, newer `ts` / `submittedAt`; profile and last engagement keep the newer copy (`at`, the device clock). `{ replace: true }` overwrites (debug reset).
 - **Sign-in:** pull, merge, push what differs. On a device the account used before, the app opens at once and merges in the background; on a new one it waits for the pull (max 4 s). Another account signing in on the device clears the previous one's local progress first (`progress-owner`).

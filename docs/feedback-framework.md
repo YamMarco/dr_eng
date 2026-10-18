@@ -33,7 +33,7 @@ A lesson task is answered once, like every other question. Wrong → the student
 ## Layer 2
 
 - Client sends `{ kind, question, text (typo-corrected), notes?, mechanics? }`, or for reading `{ kind, passage, items: [{ id, question, paragraph?, points, text, notes? }] }`; anonymous, no user info. Per-IP in-memory rate limit (30 / 5 min); per-student auth is still needed before a public launch.
-- Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points), `essay` → `grade-essay` (official rubric), COBE recordings → `grade-speaking` (`/api/speak`, audio in; see `docs/modules/cobe.md`). Direct Gemini via `GEMINI_API_KEY` in `front/.env.local` when no gateway is set; every model overloaded → one more round after 2 s; a cut-off JSON reply → one retry.
+- Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points), `essay` → `grade-essay` (official rubric), COBE recordings → `grade-speaking` (`/api/speak`, audio in), COBE chat turns → `chat-speaking` (`/api/chat-speak`; see `docs/modules/cobe.md`). Direct Gemini via `GEMINI_API_KEY` in `front/.env.local` when no gateway is set; every model overloaded → one more round after 2 s; a cut-off JSON reply → one retry.
 - The LLM returns only tags + quoted spans, no prose: `{"pass": bool, "marks": [{"span", "tag", "nth", "fix"}]}`. `fix` only on `wrong-word` / `word-choice` (the word meant: span shown struck through with the fix above it) and `missing-word` (span = word after the gap; the fix is ghosted in before it); it becomes the mark's `suggestions`. The `llmFix` rule (default on) turns it off per level: the request sends `fixes: false`, the user message adds `FIXES: off`, and the server drops any `fix` anyway (lessons only; exams always on). Whole-answer tags (`off-topic`, `incomplete`) have an empty span and show as a general line. A fatal tag forces fail. Spans are mapped back onto the student's original text.
 - Tags: `feedback/tags.ts` (ids), the prompt files (English descriptions), `i18n` `feedback.tag` (Hebrew). `tests/feedback.test.ts` fails if they drift apart.
 
@@ -79,7 +79,7 @@ I think students should wear uniforms because it make everyone equal.
 | Layer 1 + client loop              | `feedback/layer1.ts`, `feedback/grade.ts`                                                                             |
 | Result UI                          | `feedback/FeedbackView.svelte`; Hebrew in `i18n` `feedback.*`                                                         |
 | Layer 2 server                     | `server/grade.ts`, `routes/api/grade/+server.ts`                                                                      |
-| Prompts                            | `server/prompts/grade-short.md`, `grade-reading.md`, `grade-essay.md`, `grade-speaking.md`                            |
+| Prompts                            | `server/prompts/grade-short.md`, `grade-reading.md`, `grade-essay.md`, `grade-speaking.md`, `chat-speaking.md`                            |
 | Rubric                             | `content/rubrics/module-c-writing.json` (+ `index.ts`)                                                                |
 | Exam grading                       | `feedback/gradeExam.ts`, `feedback/exam.ts` (pure), `quiz/scoring.ts` `applyGrades`, `quiz/ExamAnswerReview.svelte`   |
 | Rule levels above the screen       | `content/rules.json`, `content/rules.ts`                                                                              |
