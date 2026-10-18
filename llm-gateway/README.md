@@ -24,4 +24,5 @@ On Windows set `PYTHONUTF8=1` first (the startup banner crashes on a Hebrew cons
 
 - Student text is never logged or cached here (`turn_off_message_logging`, `cache: false`).
 - Prices behind the model choices: see the comparison in the session notes; re-check the vendors' pricing pages before changing roles. Gemini 3.8 Flash is an intro price until 2026-12-31 and doubles after.
-- Not built yet: per-student auth and rate limiting on the app side, the grading rubrics and the `/api/grade` route. Without a database the proxy has a single master key, so keep it server-side only.
+- Per-student auth, plans and quotas live in the app (`front/src/lib/server/llmGuard.ts`). The proxy has one master key: server-side only, long and random; the admin UI is off.
+- LiteLLM has a heavy 2026 CVE record: before deploying, bump to the newest patch release that is 2+ weeks old, and re-check its advisories after.
