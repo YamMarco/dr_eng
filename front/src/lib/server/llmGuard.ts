@@ -1,6 +1,6 @@
 // Who may spend LLM money: every /api/grade, /api/speak, /api/chat-speak and /api/ocr call passes
 // here first. hooks.server.ts enforces sign-in; this checks again and fails closed.
-// - Outside dev: accounts must be on and the user signed in.
+// - Outside dev: accounts and the database must be on, and the user signed in.
 // - Billing on: an active plan is required (staff always pass).
 // - A per-user daily quota and a global one, counted in Postgres so they hold across instances.
 // - A short burst limiter in memory (per instance) catches loops and scripts.
@@ -54,7 +54,8 @@ async function countAllToday(): Promise<number> {
 /** Throws 402 (no plan) or 429 (over a limit); otherwise counts the call. */
 export async function guardLlm(locals: App.Locals, clientAddress: string): Promise<void> {
 	const { userId, isAdmin } = locals;
-	if (!dev && !accountsEnabled) throw error(503, 'accounts are not configured');
+	// Without accounts or the database there's no plan or quota to check: deny.
+	if (!dev && (!accountsEnabled || !db)) throw error(503, 'accounts are not configured');
 	if (accountsEnabled && !userId) throw error(401, 'sign in required');
 	if (burstLimited(userId ?? clientAddress)) throw error(429, 'too many requests');
 	if (!userId || isAdmin || !db) return;
