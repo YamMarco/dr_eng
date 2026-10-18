@@ -3,7 +3,8 @@
 // Column names are written camelCase and stored snake_case (see `casing`).
 //
 // Every table enables RLS with no policies: Supabase exposes the public schema
-// to the publishable key, and RLS keeps it closed. The server connects as the
+// to the publishable key, and RLS keeps it closed. Its migration also revokes
+// the API roles' grants (see drizzle/0003). The server connects as the
 // database owner, which bypasses RLS.
 import { sql } from 'drizzle-orm';
 import {
