@@ -2,7 +2,7 @@
 // here first. hooks.server.ts enforces sign-in; this checks again and fails closed.
 // - Outside dev: accounts must be on and the user signed in.
 // - Billing on: an active plan is required (staff always pass).
-// - A per-user daily quota, counted in Postgres so it holds across server instances.
+// - A per-user daily quota and a global one, counted in Postgres so they hold across instances.
 // - A short burst limiter in memory (per instance) catches loops and scripts.
 import { dev } from '$app/environment';
 import { error } from '@sveltejs/kit';
@@ -13,7 +13,9 @@ import { db } from './db';
 import { llmUsage } from './db/schema';
 
 /** Calls per user per day (UTC). One exam submit is 2 calls (reading batch + essay). */
-const DAILY_LIMIT = 150;
+const DAILY_LIMIT = 80;
+/** All students together per day: a ceiling on spend (many new accounts each using their quota). */
+const GLOBAL_DAILY_LIMIT = 1000;
 
 const BURST_WINDOW_MS = 5 * 60_000;
 const BURST_MAX = 30;
@@ -41,6 +43,14 @@ async function countToday(userId: string): Promise<number> {
 	return row.calls;
 }
 
+async function countAllToday(): Promise<number> {
+	const [row] = await db!
+		.select({ calls: sql<number>`coalesce(sum(${llmUsage.calls}), 0)::int` })
+		.from(llmUsage)
+		.where(sql`${llmUsage.day} = current_date`);
+	return row.calls;
+}
+
 /** Throws 402 (no plan) or 429 (over a limit); otherwise counts the call. */
 export async function guardLlm(locals: App.Locals, clientAddress: string): Promise<void> {
 	const { userId, isAdmin } = locals;
@@ -49,5 +59,6 @@ export async function guardLlm(locals: App.Locals, clientAddress: string): Promi
 	if (burstLimited(userId ?? clientAddress)) throw error(429, 'too many requests');
 	if (!userId || isAdmin || !db) return;
 	if (billingEnabled && !(await accessUntil(userId))) throw error(402, 'no active plan');
+	if ((await countAllToday()) >= GLOBAL_DAILY_LIMIT) throw error(503, 'service is busy');
 	if ((await countToday(userId)) > DAILY_LIMIT) throw error(429, 'daily limit reached');
 }

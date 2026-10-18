@@ -37,7 +37,9 @@ export function systemPrompt(kind: GradeRequest['kind']): string {
 	return KINDS[kind].prompt;
 }
 
-const block = (label: string, text: string) => `${label}:\n"""\n${text}\n"""`;
+// Fences are stripped from the text, so a student can't close the block and write outside it.
+const block = (label: string, text: string) =>
+	`${label}:\n"""\n${text.replaceAll('"""', '"')}\n"""`;
 
 export function userPrompt(req: GradeRequest): string {
 	if (req.kind === 'reading')
