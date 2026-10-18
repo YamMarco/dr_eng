@@ -5,3 +5,6 @@
 graphify-out/20??-??-??/
 graphify-out/cache/
 graphify-out/converted/
+
+# stray SvelteKit output if sync runs at the root
+.svelte-kit

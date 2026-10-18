@@ -8,7 +8,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { z } from 'zod';
 import { checkAuth } from '$lib/content-edit/auth';
-import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
+import { getGithubFile, putGithubFile } from '$lib/server/github';
 import type { RequestHandler } from './$types';
 
 const REL_PATH = 'src/lib/content/rules.json';

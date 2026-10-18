@@ -10,7 +10,7 @@ import { error, json } from '@sveltejs/kit';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { checkAuth } from '$lib/content-edit/auth';
-import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
+import { getGithubFile, putGithubFile } from '$lib/server/github';
 import type { RequestHandler } from './$types';
 
 const REL_PATH = 'src/lib/content-edit/review-notes.json';

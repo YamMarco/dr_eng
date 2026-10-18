@@ -22,7 +22,7 @@ import { join } from 'node:path';
 import prettier from 'prettier';
 import { getLesson } from '$lib/content';
 import { checkAuth } from '$lib/content-edit/auth';
-import { getGithubFile, putGithubFile } from '$lib/content-edit/github';
+import { getGithubFile, putGithubFile } from '$lib/server/github';
 import {
 	splitArrayHead,
 	extractArrayLiteral,
