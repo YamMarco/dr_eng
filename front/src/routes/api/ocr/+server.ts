@@ -3,39 +3,28 @@
 // client posts a downscaled JPEG as the raw body; the `ocr` gateway role
 // (a vision model) transcribes it. It must copy, never fix: correcting the
 // student's spelling here would hide exactly the mistakes we grade.
-import * as Sentry from '@sentry/sveltekit';
-import { error, json } from '@sveltejs/kit';
-import { chat, llmConfigured } from '$lib/server/llm';
-import { guardLlm } from '$lib/server/llmGuard';
+import { error } from '@sveltejs/kit';
+import { z } from 'zod';
+import { chatJson } from '$lib/server/llm';
+import { llmRoute } from '$lib/server/llmRoute';
 import SYSTEM from '$lib/server/prompts/ocr.md?raw';
-import type { RequestHandler } from './$types';
 
 const MAX_BYTES = 4 * 1024 * 1024;
 
-export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
-	if (!llmConfigured()) throw error(503, 'OCR is not configured');
-	await guardLlm(locals, getClientAddress());
+export const POST = llmRoute('OCR failed', async ({ request }) => {
 	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
-
 	const bytes = Buffer.from(await request.arrayBuffer());
 	if (bytes.length === 0 || bytes.length > MAX_BYTES) throw error(413, 'image is empty or too big');
 
-	let text: unknown;
-	try {
-		const result = await chat({
+	const { text } = await chatJson(
+		{
 			role: 'ocr',
 			system: SYSTEM,
 			user: 'Transcribe this page.',
 			image: `data:image/jpeg;base64,${bytes.toString('base64')}`,
-			json: true,
 			maxTokens: 2000
-		});
-		text = JSON.parse(result.text).text;
-	} catch (e) {
-		console.error('OCR failed:', e);
-		Sentry.captureException(e);
-		throw error(502, 'OCR failed');
-	}
-	if (typeof text !== 'string') throw error(502, 'OCR returned no text');
-	return json({ text: text.trim() });
-};
+		},
+		z.object({ text: z.string() })
+	);
+	return { text: text.trim() };
+});

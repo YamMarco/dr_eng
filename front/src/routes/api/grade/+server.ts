@@ -1,12 +1,10 @@
 // Layer 2 endpoint: the student's (already typo-corrected, anonymous) text and its
 // question in, a tag-and-span verdict out. No user info ever reaches the LLM.
 // An exam's open reading answers come as one batch per passage.
-import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/environment';
-import { error, json } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { z } from 'zod';
-import { llmConfigured } from '$lib/server/llm';
-import { guardLlm } from '$lib/server/llmGuard';
+import { jsonBody, llmRoute } from '$lib/server/llmRoute';
 import {
 	MAX_READING_ITEMS,
 	MAX_TEXT,
@@ -51,22 +49,12 @@ const body = z.discriminatedUnion('kind', [
 	})
 ]);
 
-export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
-	if (!llmConfigured()) throw error(503, 'LLM is not configured');
-	await guardLlm(locals, getClientAddress());
-	const parsed = body.safeParse(await request.json().catch(() => null));
-	if (!parsed.success) throw error(400, 'bad request');
-	const req = parsed.data;
-	try {
-		if (req.kind === 'reading') return json(await gradeReading(req));
-		if (req.kind === 'lesson') return json(await gradeLesson(req));
-		return json(await gradeEssay(req));
-	} catch (e) {
-		console.error('grade failed:', e);
-		Sentry.captureException(e);
-		throw error(502, 'grading failed');
-	}
-};
+export const POST = llmRoute('grading failed', async ({ request }) => {
+	const req = await jsonBody(request, body);
+	if (req.kind === 'reading') return gradeReading(req);
+	if (req.kind === 'lesson') return gradeLesson(req);
+	return gradeEssay(req);
+});
 
 /** Dev only: the assembled prompt for ?kind=lesson|reading|essay, to copy into AI Studio. */
 export const GET: RequestHandler = ({ url }) => {

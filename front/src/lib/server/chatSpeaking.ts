@@ -13,7 +13,7 @@ import {
 	type ChatMode,
 	type ChatTurnReply
 } from '$lib/feedback/chat';
-import { chat } from './llm';
+import { chatJson } from './llm';
 
 export type ChatTurnRequest = {
 	mode: ChatMode;
@@ -62,29 +62,20 @@ export function chatPrompt(req: Omit<ChatTurnRequest, 'audio'>): string {
 }
 
 export async function chatTurn(req: ChatTurnRequest): Promise<ChatTurnReply> {
-	const user = chatPrompt(req);
 	const turn = turnNumber(req.history);
 	const final = turn >= MAX_TURNS[req.mode];
-	for (let attempt = 0; ; attempt++) {
-		const result = await chat({
+	const v = await chatJson(
+		{
 			role: 'chat-speaking',
 			system: PROMPT,
-			user,
+			user: chatPrompt(req),
 			audio: req.audio,
-			json: true,
 			maxTokens: 1200
-		});
-		console.info(
-			`chat speaking: ${result.model} in=${result.inputTokens} out=${result.outputTokens}`
-		);
-		try {
-			const v = replySchema.parse(JSON.parse(result.text));
-			// The last turn should carry its summary: one more try, then end without it.
-			if (final && !v.summary && attempt === 0) throw new Error('summary missing');
-			const done = chatEnds(req.mode, turn, Boolean(v.done), Boolean(v.summary));
-			return { heard: v.heard, reply: v.reply, done, ...(done && { summary: v.summary }) };
-		} catch (e) {
-			if (attempt > 0) throw e;
-		}
-	}
+		},
+		replySchema,
+		// The last turn should carry its summary: one more try, then end without it.
+		(r) => final && !r.summary
+	);
+	const done = chatEnds(req.mode, turn, Boolean(v.done), Boolean(v.summary));
+	return { heard: v.heard, reply: v.reply, done, ...(done && { summary: v.summary }) };
 }

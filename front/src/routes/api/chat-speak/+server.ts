@@ -1,16 +1,12 @@
 // COBE chat: one spoken turn (base64 WAV) and the chat so far in, what the AI
 // heard + its next line (+ the summary on the last turn) out. No user info
 // reaches the LLM. Every turn counts toward the daily LLM quota.
-import * as Sentry from '@sentry/sveltekit';
-import { error, json } from '@sveltejs/kit';
 import { z } from 'zod';
-import { llmConfigured } from '$lib/server/llm';
-import { guardLlm } from '$lib/server/llmGuard';
+import { jsonBody, llmRoute } from '$lib/server/llmRoute';
 import { MAX_AUDIO_CHARS } from '$lib/server/speaking';
 import { chatTurn } from '$lib/server/chatSpeaking';
 import { validChatTopics } from '$lib/content/cobe/chatTopics';
 import { MAX_TURNS, turnNumber } from '$lib/feedback/chat';
-import type { RequestHandler } from './$types';
 
 const body = z
 	.object({
@@ -28,16 +24,6 @@ const body = z
 	.refine((b) => validChatTopics(b.mode, b.topics))
 	.refine((b) => turnNumber(b.history) <= MAX_TURNS[b.mode]);
 
-export const POST: RequestHandler = async ({ request, locals, getClientAddress }) => {
-	if (!llmConfigured()) throw error(503, 'LLM is not configured');
-	await guardLlm(locals, getClientAddress());
-	const parsed = body.safeParse(await request.json().catch(() => null));
-	if (!parsed.success) throw error(400, 'bad request');
-	try {
-		return json(await chatTurn(parsed.data));
-	} catch (e) {
-		console.error('chat turn failed:', e);
-		Sentry.captureException(e);
-		throw error(502, 'chat failed');
-	}
-};
+export const POST = llmRoute('chat failed', async ({ request }) =>
+	chatTurn(await jsonBody(request, body))
+);
