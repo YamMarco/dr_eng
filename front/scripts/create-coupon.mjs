@@ -1,11 +1,12 @@
 // Creates or updates a coupon, and lists them all with their use counts.
 //
-//   node --env-file=.env.local scripts/create-coupon.mjs TESTERS --percent 100 --max 50 --expires 2027-01-01
+//   node --env-file=.env.local scripts/create-coupon.mjs <RANDOM-CODE> --percent 100 --max 50 --expires 2027-01-01
 //   node --env-file=.env.local scripts/create-coupon.mjs            (list only)
 //
 // Options: --percent (default 100), --plan <plan id> (default: any plan),
 // --max <redemptions> (default unlimited), --expires <date>, --note <text>.
-// Testers then go to <site>/checkout?coupon=TESTERS (or enter it in the app).
+// A 100% code must be random (the repo is public, so never a word like TESTERS) and needs
+// --max and --expires. Testers then go to <site>/checkout?coupon=<code> (or enter it in the app).
 import { parseArgs } from 'node:util';
 import postgres from 'postgres';
 
@@ -29,6 +30,8 @@ if (code) {
 	const percent = Number(values.percent);
 	if (!Number.isInteger(percent) || percent < 1 || percent > 100)
 		throw new Error('--percent: 1-100');
+	if (percent === 100 && !(values.max && values.expires))
+		throw new Error('a 100% code needs --max and --expires');
 	const row = {
 		code,
 		percent_off: percent,

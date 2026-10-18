@@ -162,7 +162,8 @@ export async function checkout(
 	return { status: 'redirect', url: payment.redirectUrl };
 }
 
-/** For the provider webhook: grants access from the moment of payment. */
+/** For the provider webhook: grants access from the moment of payment. Idempotent: a
+ *  repeated or concurrent webhook for the same order finds it no longer pending. */
 export async function completeOrder(orderId: string, status: 'paid' | 'failed') {
 	const [order] = await db!.select().from(orders).where(eq(orders.id, orderId));
 	if (!order || order.status !== 'pending') return;
@@ -176,5 +177,5 @@ export async function completeOrder(orderId: string, status: 'paid' | 'failed') 
 			completedAt: new Date(),
 			accessUntil: status === 'paid' && plan ? addMonths(start, plan.months) : null
 		})
-		.where(eq(orders.id, orderId));
+		.where(and(eq(orders.id, orderId), eq(orders.status, 'pending')));
 }

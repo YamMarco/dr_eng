@@ -52,7 +52,7 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Tables** (`server/db/schema.ts`, RLS on with no policies, so the publishable key can't read them): `coupons` (code, percent off, optional plan, max uses, expiry) and `orders` (one per checkout; `paid`/`free` with `access_until` ahead = access).
 - **Access gate:** `/app` shows `Paywall.svelte` (redeem a code; plans link on web only, store apps can't link to outside purchases) while `/api/access` says no. Staff always pass. If the server can't be reached the app stays open (offline use).
 - **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
-- **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs TESTERS --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). Tester link: `<web>/checkout?coupon=TESTERS`.
+- **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs <RANDOM-CODE> --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). The repo is public: a 100% code is random, never a word, and needs `--max` and `--expires`. Tester link: `<web>/checkout?coupon=<code>`.
 - **Migrations:** `npm run db:migrate` (needs `DATABASE_MIGRATE_URL`, the session pooler on 5432). Set `DATABASE_URL` (transaction pooler, 6543) on the host too.
 
 ## Progress sync
