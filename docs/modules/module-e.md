@@ -1,6 +1,6 @@
 # Module E plan
 
-Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists, 855 items) and a reading path that shows Module C's `c-1` with shared progress. Not built: E-only reading nodes, mock exams.
+Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and a reading path that shows Module C's `c-1` with shared progress. Not built: E-only reading nodes, mock exams.
 
 ## The exam
 
@@ -26,7 +26,7 @@ Part II: each set is one word class (verbs `to attach`, nouns `criticism`, adjec
 
 | # | Decision | Default |
 |---|---|---|
-| E1 | Which list(s) does each exam draw on? The Ministry publishes Band III Core I lists A-D, one per exam date (A winter 2023, B summer 2023, C winter 2024, D summer 2024). A real Part II drew items from all four lists plus words outside them (earlier bands) | Treat the lists as cumulative; get the list for each new exam date and older-band lists |
+| E1 | Band III Core I (874 words, Ministry lists A-D) is the tested vocabulary; all four lists are tested. A real Part II also had words outside it (earlier bands: muscle, citizen, budget) | Decks cover Core I; add earlier-band words only if more exams show them |
 | E2 | Is the question mix stable (4 topic MCQs + 5 completions)? | Check 2-3 more new-format exams |
 | E3 | Does E assume Module C done? | Assume C; add a short "method" detour node for those who skipped it |
 
@@ -50,7 +50,7 @@ Implementation and file map: `lesson-structure.md` "Word deck". Design decisions
 
 - **One deck per Ministry list:** `lib/content/e/list-a.ts` .. `list-d.ts`, one `DeckWord` per entry, in the list's order, using the meaning the list gives. Grammar-only entries (modals, prepositions, pronouns, exclamations) are left out; a word listed twice in one list keeps one meaning. `pos` (verb / noun / adj / adv / chunk) matters because distractors must come from the same class, like the exam.
 - **Ambiguity guard:** two items with near-synonym definitions in one list would make a set ambiguous. Write one definition to contain the other's headword (`probable`: "likely to be true"), so `clashes()` keeps them apart.
-- Each list has its own progress and schedule (deck id `e-a` .. `e-d`). The words page lists them with exam date and progress; the main button opens the started list with work today. Module-level numbers (home, module page, gateway) sum the lists in progress.
+- Each list has its own progress and schedule (deck id `e-a` .. `e-d`). The words page lists them with progress and states all four are tested; the main button opens the started list with work today. Module-level numbers (home, module page, gateway) sum the lists in progress.
 - **Leitner boxes 1-5, binary right/wrong.** The exam is binary; no easy/hard self-rating that kids would game. No SM-2/FSRS (YAGNI); swap only if real data shows Leitner is too coarse.
 - **Scheduling is per word**, never per screen: screens are rebuilt each session from the word's box. Intervals 1, 3, 7, 14, 30 days. Right = up a box. Wrong = a lapse: the first drops one box, later ones drop to box 1; a miss is due tomorrow. A miss on a new word's first answer is not a lapse.
 - **The box decides the screen**, difficulty rises as the word is learned:

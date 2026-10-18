@@ -1,4 +1,4 @@
-// Module E word deck: Band III Core I, List D (summer 2024), in the list's order.
+// Module E word deck: Band III Core I, List D, in the list's order.
 // Source: the Ministry list (entry, part of speech, meaning hint). Each item uses
 // the meaning the list gives; definitions, Hebrew and examples are ours.
 // Left out: exclamations (Cheers!, Don't ask!, Don't ask me!).
@@ -331,6 +331,13 @@ export const listD = [
 		'affected by too much alcohol',
 		'שיכור',
 		'It is dangerous to drive when you are **drunk**.'
+	),
+	w(
+		'breast',
+		'noun',
+		'the front part of the chest',
+		'חזה',
+		'The bird had a red **breast**.'
 	),
 	w(
 		'elbow',

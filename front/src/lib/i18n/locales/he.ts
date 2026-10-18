@@ -353,10 +353,9 @@ export const he = {
 		extra: 'תרגול נוסף',
 		sessionLabel: 'תרגול מילים',
 		listsTitle: 'הרשימות',
-		listsNote: 'כל רשימה היא רשימת המילים הרשמית של מועד בגרות אחד. כל רשימה מתקדמת בקצב שלה.',
+		listsNote:
+			'ארבע הרשימות הרשמיות יחד הן אוצר המילים של הבגרות, וכולן נבחנות. כל רשימה מתקדמת בקצב שלה.',
 		listTitle: (letter: string) => `רשימה ${letter}`,
-		listExam: (season: 'winter' | 'summer', year: number) =>
-			`${season === 'winter' ? 'חורף' : 'קיץ'} ${year}`,
 		promptMeaning: 'מה הפירוש?',
 		promptContext: 'השלימו את המשפט:',
 		promptDefinition: 'איזו מילה מתאימה להגדרה?',

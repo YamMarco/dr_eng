@@ -1,4 +1,4 @@
-// Module E word deck: Band III Core I, List A (winter 2023), in the list's order.
+// Module E word deck: Band III Core I, List A, in the list's order.
 // Source: the Ministry list (entry, part of speech, meaning hint). Each item uses
 // the meaning the list gives; definitions, Hebrew and examples are ours.
 // Grammar-only entries (as, can, do, from, in, must, others, whom, would, once,

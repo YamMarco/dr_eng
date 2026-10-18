@@ -1,6 +1,6 @@
 // Word decks by module. A module listed here gets a "words" page and a
 // dashboard link (see routes/app/unit/[unitId]/module/[moduleId]/words).
-// Module E has one deck per Ministry list; each list belongs to an exam date.
+// Module E has one deck per Ministry list (Band III Core I, A-D); all four are tested.
 import { listA } from '$lib/content/e/list-a';
 import { listB } from '$lib/content/e/list-b';
 import { listC } from '$lib/content/e/list-c';
@@ -12,21 +12,19 @@ import { dayKey, dueWords } from './scheduler';
 import { MAX_REVIEWS, NEW_PER_SESSION } from './session';
 import type { DeckWord } from './types';
 
-/** One list: `id` is its progress key, `letter` and the exam date label it. */
+/** One list: `id` is its progress key, `letter` labels it. */
 export type Deck = {
 	id: string;
 	letter: string;
-	season: 'winter' | 'summer';
-	year: number;
 	words: DeckWord[];
 };
 
 export const decks: Record<string, Deck[]> = {
 	e: [
-		{ id: 'e-a', letter: 'A', season: 'winter', year: 2023, words: listA },
-		{ id: 'e-b', letter: 'B', season: 'summer', year: 2023, words: listB },
-		{ id: 'e-c', letter: 'C', season: 'winter', year: 2024, words: listC },
-		{ id: 'e-d', letter: 'D', season: 'summer', year: 2024, words: listD }
+		{ id: 'e-a', letter: 'A', words: listA },
+		{ id: 'e-b', letter: 'B', words: listB },
+		{ id: 'e-c', letter: 'C', words: listC },
+		{ id: 'e-d', letter: 'D', words: listD }
 	]
 };
 

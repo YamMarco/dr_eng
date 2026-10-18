@@ -599,8 +599,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "front_package_devdependencies_dictionary_en_gb",
-      "community": 170,
-      "community_name": "dictionary-en-gb",
+      "community": 0,
+      "community_name": "devDependencies",
       "norm_label": "dictionary-en-gb"
     },
     {
@@ -610,8 +610,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "dictionary_en_gb",
-      "community": 170,
-      "community_name": "dictionary-en-gb",
+      "community": 0,
+      "community_name": "devDependencies",
       "norm_label": "dictionary-en-gb"
     },
     {
@@ -643,8 +643,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "front_package_devdependencies_eslint",
-      "community": 0,
-      "community_name": "devDependencies",
+      "community": 108,
+      "community_name": "eslint",
       "norm_label": "eslint"
     },
     {
@@ -654,8 +654,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "eslint",
-      "community": 0,
-      "community_name": "devDependencies",
+      "community": 108,
+      "community_name": "eslint",
       "norm_label": "eslint"
     },
     {
@@ -2146,8 +2146,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "dictionaries.ts"
     },
     {
@@ -2158,8 +2158,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries_bytes",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "bytes()"
     },
     {
@@ -2170,8 +2170,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries_browserdictionaries",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "browserdictionaries()"
     },
     {
@@ -2640,8 +2640,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_dictdata",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "dictdata"
     },
     {
@@ -8334,7 +8334,7 @@
       "label": "decks",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L24",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_deck_index_decks",
       "community": 90,
@@ -8345,7 +8345,7 @@
       "label": "getDecks()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L36",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_getdecks",
@@ -8357,7 +8357,7 @@
       "label": "glosses",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L41",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_lib_deck_index_glosses",
       "community": 90,
@@ -8368,7 +8368,7 @@
       "label": "localizeDeck()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L47",
+      "source_location": "L45",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_localizedeck",
@@ -8380,7 +8380,7 @@
       "label": "deckToday()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L54",
+      "source_location": "L52",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_decktoday",
@@ -8392,7 +8392,7 @@
       "label": "deckStats()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L65",
+      "source_location": "L63",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_deckstats",
@@ -8404,7 +8404,7 @@
       "label": "activeDecks()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L71",
+      "source_location": "L69",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_activedecks",
@@ -8416,7 +8416,7 @@
       "label": "dueToday()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L78",
+      "source_location": "L76",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_duetoday",
@@ -8428,7 +8428,7 @@
       "label": "moduleDeckStats()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L86",
+      "source_location": "L84",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_moduledeckstats",
@@ -8440,7 +8440,7 @@
       "label": "moduleDeckToday()",
       "file_type": "code",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L93",
+      "source_location": "L91",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_moduledecktoday",
@@ -9024,8 +9024,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_exam",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "exam.ts"
     },
     {
@@ -9036,8 +9036,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_exam_mechanicscount",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "mechanicscount()"
     },
     {
@@ -9048,8 +9048,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_exam_applylength",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "applylength()"
     },
     {
@@ -9059,8 +9059,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_grade",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "feedback/grade.ts"
     },
     {
@@ -9071,8 +9071,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_grade_postgrade",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "postgrade()"
     },
     {
@@ -9250,8 +9250,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_layer1",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "layer1.ts"
     },
     {
@@ -9262,8 +9262,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_layer1_issuestomarks",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "issuestomarks()"
     },
     {
@@ -9275,8 +9275,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_layer1_layer1",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "layer1"
     },
     {
@@ -9288,8 +9288,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_layer1_layer1options",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "layer1options"
     },
     {
@@ -9300,8 +9300,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_layer1_runlayer1",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "runlayer1()"
     },
     {
@@ -9611,8 +9611,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_tags",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "tags.ts"
     },
     {
@@ -9624,8 +9624,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_tags_tagdef",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "tagdef"
     },
     {
@@ -9635,8 +9635,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "front_src_lib_feedback_tags_tags",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "tags"
     },
     {
@@ -9646,8 +9646,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_src_lib_feedback_tags_tag_ids",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "tag_ids"
     },
     {
@@ -9657,8 +9657,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_src_lib_feedback_tags_fatal_tags",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "fatal_tags"
     },
     {
@@ -9705,8 +9705,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_gatereason",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "gatereason"
     },
     {
@@ -9718,8 +9718,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_feedback",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "feedback"
     },
     {
@@ -9744,8 +9744,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_lessonverdict",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "lessonverdict"
     },
     {
@@ -9783,8 +9783,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_mechanicscount",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "mechanicscount"
     },
     {
@@ -9835,8 +9835,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_graderequest",
-      "community": 46,
-      "community_name": "feedback/types.ts",
+      "community": 43,
+      "community_name": "gradeExam.ts",
       "norm_label": "graderequest"
     },
     {
@@ -10021,7 +10021,7 @@
       "label": "Dictionary",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L779",
+      "source_location": "L778",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -10034,7 +10034,7 @@
       "label": "DictionaryOverride",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L782",
+      "source_location": "L781",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -18955,8 +18955,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_feedback_test",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "feedback.test.ts"
     },
     {
@@ -18967,8 +18967,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_tests_feedback_test_typo",
-      "community": 43,
-      "community_name": "gradeExam.ts",
+      "community": 100,
+      "community_name": "feedback.test.ts",
       "norm_label": "typo()"
     },
     {
@@ -41547,7 +41547,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L71",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41569,7 +41569,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41580,7 +41580,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L65",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41591,7 +41591,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L54",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41602,7 +41602,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L78",
+      "source_location": "L76",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41613,7 +41613,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L36",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41624,7 +41624,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L41",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41635,7 +41635,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L47",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41646,7 +41646,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L86",
+      "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41657,7 +41657,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L93",
+      "source_location": "L91",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index",
@@ -41837,7 +41837,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L72",
+      "source_location": "L70",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_activedecks",
@@ -41849,7 +41849,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L79",
+      "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_duetoday",
@@ -41861,7 +41861,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L87",
+      "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_moduledeckstats",
@@ -41910,7 +41910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L56",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_decktoday",
@@ -41922,7 +41922,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L56",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_decktoday",
@@ -41933,7 +41933,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L95",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_moduledecktoday",
@@ -41957,7 +41957,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L73",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_activedecks",
@@ -41969,7 +41969,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L88",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_moduledeckstats",
@@ -41981,7 +41981,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L94",
+      "source_location": "L92",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_moduledecktoday",
@@ -41994,7 +41994,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L80",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_duetoday",
@@ -42006,7 +42006,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/deck/index.ts",
-      "source_location": "L80",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_deck_index_duetoday",
@@ -46599,7 +46599,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L779",
+      "source_location": "L778",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -46610,7 +46610,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L782",
+      "source_location": "L781",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -63896,5 +63896,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "69cc350358b334dd1298207bc37a4064aa86300f"
+  "built_at_commit": "d3e48e4dafe74604f56bc0d7428da8a542b301bd"
 }

@@ -1,16 +1,16 @@
 # Graph Report - module_e_progress  (2026-10-18)
 
 ## Corpus Check
-- 370 files · ~286,557 words
+- 370 files · ~286,513 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1965 nodes · 3698 edges · 159 communities (106 shown, 53 thin omitted)
+- 1965 nodes · 3698 edges · 160 communities (107 shown, 53 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 79 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `69cc3503`
+- Built from commit: `d3e48e4d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -112,6 +112,7 @@
 - ExamEditModel
 - RulesStore
 - .mcp.json
+- feedback.test.ts
 - Platform: web, mobile, accounts
 - support.ts
 - @eslint/js
@@ -119,6 +120,7 @@
 - AGENTS.md
 - Rules
 - takeHistory.ts
+- eslint
 - SlideStage.svelte
 - content-i18n.mjs
 - globals
@@ -148,7 +150,6 @@
 - EditWorkspace.svelte
 - ExamEditWorkspace.svelte
 - eslint-config-prettier
-- dictionary-en-gb
 - app/+layout.ts
 - capacitor.config.ts
 - content-edit/api.ts
@@ -180,21 +181,21 @@
   front/src/lib/components/AccountSection.svelte → front/src/lib/api.ts
 - `uploadImage()` --calls--> `apiFetch()`  [EXTRACTED]
   front/src/lib/content-edit/api.ts → front/src/lib/api.ts
-- `check()` --indirect_call--> `browserDictionaries()`  [INFERRED]
-  front/src/lib/feedback/gradeExam.ts → front/src/lib/checks/dictionaries.ts
 - `validateExam()` --calls--> `screenProblems()`  [EXTRACTED]
   front/src/lib/content-edit/validate.ts → front/src/lib/lesson-screens/screenChecks.ts
 - `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
   front/src/lib/content/types.ts → front/src/lib/lesson-screens/types.ts
+- `load()` --calls--> `getDecks()`  [EXTRACTED]
+  front/src/routes/app/unit/[unitId]/module/[moduleId]/words/+page.ts → front/src/lib/deck/index.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (159 total, 53 thin omitted)
+## Communities (160 total, 53 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.29
-Nodes (7): eslint, eslint-plugin-svelte, devDependencies, eslint, eslint-plugin-svelte, svelte-check, svelte-check
+Nodes (7): dictionary-en-gb, eslint-plugin-svelte, devDependencies, dictionary-en-gb, eslint-plugin-svelte, svelte-check, svelte-check
 
 ### Community 1 - "Svelte MCP Server"
 Cohesion: 0.24
@@ -301,8 +302,8 @@ Cohesion: 0.15
 Nodes (12): sessionKey(), sessionOptions(), UNKNOWN_SESSION, examDate(), ExamSeason, ExamSession, SEASON_DATE, upcomingSessions() (+4 more)
 
 ### Community 43 - "gradeExam.ts"
-Cohesion: 0.12
-Nodes (29): applyLength(), mechanicsCount(), gradeLesson(), check(), Checked, failed(), gradeEssay(), gradeExam() (+21 more)
+Cohesion: 0.11
+Nodes (34): browserDictionaries(), bytes(), DictData, gradeLesson(), postGrade(), check(), Checked, failed() (+26 more)
 
 ### Community 44 - "Module C audit"
 Cohesion: 0.18
@@ -313,8 +314,8 @@ Cohesion: 0.17
 Nodes (17): SpeakingVerdict, chat(), endpoint(), GEMINI_MODELS, llmConfigured(), LlmResult, LlmRole, band (+9 more)
 
 ### Community 46 - "feedback/types.ts"
-Cohesion: 0.13
-Nodes (17): browserDictionaries(), bytes(), DictData, postGrade(), issuesToMarks(), Layer1, Layer1Options, runLayer1() (+9 more)
+Cohesion: 0.29
+Nodes (5): pieces, SpeakingJudgement, ReadingItem, ReadingVerdict, SingleRequest
 
 ### Community 47 - "writingLint.ts"
 Cohesion: 0.42
@@ -475,6 +476,10 @@ Nodes (4): clone(), ExamEditModel, getQuizNodesByModule(), QuizPart
 ### Community 98 - "RulesStore"
 Cohesion: 0.19
 Nodes (4): RulesStore, KEY, clearBelow(), Rules
+
+### Community 100 - "feedback.test.ts"
+Cohesion: 0.27
+Nodes (7): applyLength(), mechanicsCount(), FATAL_TAGS, TAG_IDS, TagDef, TAGS, MechanicsCount
 
 ### Community 101 - "Platform: web, mobile, accounts"
 Cohesion: 0.18

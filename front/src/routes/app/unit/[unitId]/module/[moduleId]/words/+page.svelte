@@ -69,7 +69,7 @@
 	}
 
 	function listTitle(deck: Deck): string {
-		return `${t.listTitle(deck.letter)} · ${t.listExam(deck.season, deck.year)}`;
+		return t.listTitle(deck.letter);
 	}
 </script>
 

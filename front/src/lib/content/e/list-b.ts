@@ -1,4 +1,4 @@
-// Module E word deck: Band III Core I, List B (summer 2023), in the list's order.
+// Module E word deck: Band III Core I, List B, in the list's order.
 // Source: the Ministry list (entry, part of speech, meaning hint). Each item uses
 // the meaning the list gives; definitions, Hebrew and examples are ours.
 // Left out: grammar-only entries (to, neither ... nor, just as ... as, not until);

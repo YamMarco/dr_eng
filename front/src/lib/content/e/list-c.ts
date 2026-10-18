@@ -1,4 +1,4 @@
-// Module E word deck: Band III Core I, List C (winter 2024), in the list's order.
+// Module E word deck: Band III Core I, List C, in the list's order.
 // Source: the Ministry list (entry, part of speech, meaning hint). Each item uses
 // the meaning the list gives; definitions, Hebrew and examples are ours.
 // Left out: grammar-only entries (so did we, here you are, Yours sincerely, via,
