@@ -19,7 +19,7 @@ const GITHUB_PATH = `front/${REL_PATH}`;
 type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 type ReviewNotes = Record<string, ReviewNote>;
 
-export const GET: RequestHandler = async ({ request, locals }) => {
+export const GET: RequestHandler = async ({ locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
 
 	if (dev) {

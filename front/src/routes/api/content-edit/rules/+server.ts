@@ -30,7 +30,7 @@ const fileSchema = z.strictObject({
 
 const serialize = (file: unknown) => JSON.stringify(file, null, '\t') + '\n';
 
-export const GET: RequestHandler = async ({ request, locals }) => {
+export const GET: RequestHandler = async ({ locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
 	if (dev) return json(JSON.parse(readFileSync(join(process.cwd(), REL_PATH), 'utf8')));
 	try {
