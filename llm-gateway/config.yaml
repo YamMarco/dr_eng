@@ -43,6 +43,16 @@ model_list:
       model: gemini/gemini-3.5-flash
       api_key: os.environ/GEMINI_API_KEY
 
+  # COBE chat turn (audio) -> transcript + the next spoken line (+ summary).
+  - model_name: chat-speaking
+    litellm_params:
+      model: gemini/gemini-3.8-flash
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: chat-speaking-fallback
+    litellm_params:
+      model: gemini/gemini-3.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
   # Handwriting photo -> text (vision). Must transcribe, never correct.
   - model_name: ocr
     litellm_params:
@@ -61,6 +71,7 @@ router_settings:
     - grade-reading: [grade-reading-fallback]
     - grade-essay: [grade-essay-fallback]
     - grade-speaking: [grade-speaking-fallback]
+    - chat-speaking: [chat-speaking-fallback]
     - ocr: [ocr-fallback]
 
 litellm_settings:

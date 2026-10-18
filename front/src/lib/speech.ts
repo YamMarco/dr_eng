@@ -20,9 +20,14 @@ export function speechSupported(): boolean {
 
 /** Speaks `text` (cutting off whatever is playing). Silent if unsupported. */
 export function speak(text: string, rate: number) {
-	if (!speechSupported()) return;
+	void say(text, rate);
+}
+
+/** Like `speak`, resolving when the speech ends (or is cut off). */
+export function say(text: string, rate: number): Promise<void> {
+	if (!speechSupported()) return Promise.resolve();
 	const spoken = speechText(text);
-	if (!spoken) return;
+	if (!spoken) return Promise.resolve();
 	const utterance = new SpeechSynthesisUtterance(spoken);
 	utterance.lang = 'en-GB';
 	utterance.rate = rate;
@@ -33,5 +38,20 @@ export function speak(text: string, rate: number) {
 		.find((v) => v.lang.replace('_', '-').toLowerCase() === 'en-gb');
 	if (voice) utterance.voice = voice;
 	speechSynthesis.cancel();
-	speechSynthesis.speak(utterance);
+	return new Promise((resolve) => {
+		// Some browsers never fire `end`: give up after a generous reading time.
+		const timer = setTimeout(resolve, 4000 + spoken.length * 120);
+		const done = () => {
+			clearTimeout(timer);
+			resolve();
+		};
+		utterance.onend = done;
+		utterance.onerror = done;
+		speechSynthesis.speak(utterance);
+	});
+}
+
+/** Stops whatever is being spoken. */
+export function hush() {
+	if (speechSupported()) speechSynthesis.cancel();
 }

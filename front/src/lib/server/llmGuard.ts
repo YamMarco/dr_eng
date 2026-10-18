@@ -1,4 +1,4 @@
-// Who may spend LLM money: every /api/grade, /api/speak and /api/ocr call passes
+// Who may spend LLM money: every /api/grade, /api/speak, /api/chat-speak and /api/ocr call passes
 // here first. Sign-in is already enforced by hooks.server.ts (once accounts are on).
 // - Billing on: an active plan is required (staff always pass).
 // - A per-user daily quota, counted in Postgres so it holds across server instances.

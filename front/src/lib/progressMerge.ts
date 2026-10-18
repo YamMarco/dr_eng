@@ -13,7 +13,7 @@ export type Item = {
 };
 
 const SYNCED =
-	/^(lesson-progress|deck-progress|activity-days|module-location|last-engagement|profile|my-phrases|speak-stats|quiz:(attempt|results):[\w-]{1,80})$/;
+	/^(lesson-progress|deck-progress|activity-days|module-location|last-engagement|profile|my-phrases|speak-stats|chat-count|quiz:(attempt|results):[\w-]{1,80})$/;
 
 /** The localStorage keys that follow the account. Everything else stays on the device. */
 export const isSyncedKey = (key: string) => SYNCED.test(key);
@@ -58,6 +58,7 @@ function mergeFor(key: string): ((a: unknown, b: unknown) => unknown) | undefine
 	if (key === 'my-phrases') return (a, b) => [...new Set([...strings(a), ...strings(b)])];
 	if (key === 'module-location') return (a, b) => byKey(a, b, larger('ts'));
 	if (key === 'speak-stats') return (a, b) => byKey(a, b, larger('count'));
+	if (key === 'chat-count') return (a, b) => Math.max(num(a), num(b));
 	if (key.startsWith('quiz:attempt:')) return larger('submittedAt');
 	if (key.startsWith('quiz:results:'))
 		return (a, b) => {
