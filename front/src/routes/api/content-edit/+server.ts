@@ -11,7 +11,7 @@
 // hand-written style (`emit`) and then run through Prettier so the on-disk
 // diff stays small and lint-clean.
 // - In dev: writes straight to the local file (fast, no password needed).
-// - Elsewhere (the deployed site): requires the content-edit password and
+// - Elsewhere (the deployed site): requires a staff account (checkAuth) and
 //   commits through the GitHub API instead — there's no writable local
 //   filesystem in production. See src/lib/content-edit/README.md.
 import { dev } from '$app/environment';

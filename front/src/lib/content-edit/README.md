@@ -3,8 +3,7 @@
 A dev-flavoured, self-contained pair of workspaces: **`/edit`** for one
 module's lesson content (`?module=<id>`: every section on that module's path,
 the graph **and** each lesson's screens, with a live preview) and **`/edit-exam`** for one module's exams (parts + screens, no
-graph — exams aren't a DAG). Both are dev: open, deployed site: one password
-prompt per browser session (the two share the same unlock — `editStore`).
+graph — exams aren't a DAG). Both are dev: open, deployed site: staff accounts only.
 Entry points into `/edit`:
 
 - Lessons path of any module with lessons (staff): **✎ ערוך** in the app bar →
@@ -15,8 +14,7 @@ Entry points into `/edit`:
 
 Entry point into `/edit-exam`: the module's exam list page always shows an
 **✎ ערוך** link → `/edit-exam?module=<id>` (never gated by `editStore` itself —
-that link _is_ the only way to reach the password screen on the deployed
-site, so gating it would make it unreachable there).
+the page itself checks for staff).
 
 Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
 `src/routes/edit-exam/` + `src/routes/api/content-edit/` — see **Detach** at
@@ -157,13 +155,13 @@ a content file are still lost on the first save of that file.
 - **Dev** (`$app/environment` `dev`): `/edit` opens with no password; the
   endpoint writes straight to disk; Vite HMR-reloads `$lib/content`.
 - **Deployed site**: staff only (`app_metadata.role` admin, enforced in
-  `hooks.server.ts`; no separate password). The endpoint has no writable FS,
-  so it commits through GitHub's Contents API (`github.ts`) - one commit per
+  `hooks.server.ts` and again by `checkAuth(locals)`; no separate password). The endpoint has no writable FS,
+  so it commits through GitHub's Contents API (`$lib/server/github.ts`) - one commit per
   save, one retry on a stale-sha 409. Server env vars: `GITHUB_TOKEN`
   (fine-grained PAT, Contents: Read & write, this repo only), `GITHUB_OWNER`,
   `GITHUB_REPO`, `GITHUB_BRANCH`, optional `CONTENT_EDIT_AUTHOR` (default
   `Emil`, prefixes commit messages). Set in `front/.env.local` (gitignored)
-  and in Vercel. With accounts off, outside dev the endpoints 401.
+  and in Vercel. With accounts off, outside dev the endpoints 403.
 
 ## Detach
 
@@ -179,4 +177,4 @@ a content file are still lost on the first save of that file.
    `startScreenIndex` prop, and the `editHref` FAB.
 6. `src/lib/quiz/QuizRunner.svelte` — remove the `preview`/`startPartIndex`/
    `startScreenIndex` props (content-edit's "play from here" only).
-7. Remove the GitHub/password env vars from Vercel and delete the token.
+7. Remove the GitHub env vars from Vercel and delete the token; delete `$lib/server/github.ts`.
