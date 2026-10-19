@@ -12,6 +12,8 @@ One SvelteKit codebase (`front/`), two build targets.
 | `/edit`, `/edit-exam`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
 | `/api/...` | server routes | yes | absent - the app calls the web deployment |
 
+Home page (`/`) photos and looping videos: files in `front/static/home/`, paths in `$lib/site/media.ts`; an empty slot shows gradient art.
+
 Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`hooks.server.ts`).
 
 ## Builds
@@ -31,7 +33,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
-- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401. `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
+- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except those named in `PUBLIC_APIS` (`hooks.server.ts`): only `/api/waitlist`. `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
 - **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/chat-speak`, `/api/ocr`): outside dev, accounts and `DATABASE_URL` on and a signed-in user (fails closed, so a preview without a DB has no LLM); with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over) and for everyone together (`GLOBAL_DAILY_LIMIT`, 503); a per-instance burst limit.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also removes the account's progress and LLM usage rows and clears this device's; orders stay (purchase records for tax law).
 
@@ -54,6 +56,10 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
 - **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs <RANDOM-CODE> --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). The repo is public: a 100% code is random, never a word, and needs `--max` and `--expires`. Tester link: `<web>/checkout?coupon=<code>`.
 - **Migrations:** `npm run db:migrate` (needs `DATABASE_MIGRATE_URL`, the session pooler on 5432). Set `DATABASE_URL` (transaction pooler, 6543) on the host too.
+
+## Waitlist
+
+The home page CTAs (`$lib/site/JoinCtas.svelte`: waitlist or code, side by side) post an email to `/api/waitlist`: no account, stored lower-cased in the `waitlist` table (email + time only, users are minors). Duplicates are ignored, a honeypot field drops bots, and a daily cap (`DAILY_CAP`, 429) bounds what a script can write. Off (503) without `DATABASE_URL`. Read the list in Supabase's table editor.
 
 ## Progress sync
 

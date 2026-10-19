@@ -8,6 +8,8 @@
 		href?: string;
 		type?: 'button' | 'submit';
 		disabled?: boolean;
+		/** For a button that opens a panel (aria-expanded). */
+		expanded?: boolean;
 		onclick?: (event: MouseEvent) => void;
 		class?: string;
 		children: Snippet;
@@ -18,6 +20,7 @@
 		href,
 		type = 'button',
 		disabled = false,
+		expanded,
 		onclick,
 		class: extra = '',
 		children
@@ -55,6 +58,7 @@
 		class={classes}
 		style={variant === 'primary' ? puckStyle : undefined}
 		{disabled}
+		aria-expanded={expanded}
 		{onclick}>{@render children()}</button
 	>
 {/if}
