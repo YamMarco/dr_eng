@@ -148,6 +148,9 @@
    depth but nodes set a shallower one inline — same recipe, lower profile. */
 .puck-3d {
 	--puck-offset: 0.28em;
+	/* The lip hangs below the box: reserve its room, so gaps below stay true and a
+	   stretched neighbour (secondary button, input) matches face + lip. */
+	margin-bottom: var(--puck-offset);
 	position: relative;
 	touch-action: manipulation;
 	border: 2px solid var(--puck-border);
