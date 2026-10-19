@@ -14,7 +14,8 @@ export const titlesHe: Record<string, string> = {
 	'cobe-simulation': 'סימולציה - מקליטים',
 	'cobe-2': 'חלק ב׳ - הקליפ',
 	'cobe-exam-1': 'COBE Practice Test 1',
-	'cobe-exam-1.description': 'מבחן דמה מלא: שלושה חלקים, ארבע הקלטות, 30 דקות. בסוף בודקים את ההקלטות לפי המחוון הרשמי.',
+	'cobe-exam-1.description':
+		'מבחן דמה מלא: שלושה חלקים, ארבע הקלטות, 30 דקות. בסוף בודקים את ההקלטות לפי המחוון הרשמי.',
 	'cobe-exam-1.a': 'חלק A - תגובה אישית',
 	'cobe-exam-1.b': 'חלק B - הפרויקט',
 	'cobe-exam-1.c': 'חלק C - הקליפ',

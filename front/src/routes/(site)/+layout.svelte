@@ -1,10 +1,10 @@
 <script lang="ts">
 	import './site.css';
-	import { GraduationCap } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 	import ThemeSwitch from '$lib/components/ThemeSwitch.svelte';
 	import { themeStore } from '$lib/theme.svelte';
 
@@ -21,14 +21,8 @@
 	class="sticky top-0 z-30 border-b border-line/60 bg-canvas/80 backdrop-blur-lg supports-[backdrop-filter]:bg-canvas/70"
 >
 	<div class="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-2.5 sm:px-6">
-		<a
-			href={resolve('/')}
-			class="me-auto flex items-center gap-2 text-base font-extrabold tracking-tight whitespace-nowrap active:scale-[0.98] sm:text-lg"
-		>
-			<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-brand text-white">
-				<GraduationCap size={18} aria-hidden="true" />
-			</span>
-			<span class="max-[380px]:sr-only">{t.brand}</span>
+		<a href={resolve('/')} class="me-auto active:scale-[0.98]">
+			<Logo class="text-xl" />
 		</a>
 		<nav aria-label={t.siteNav} class="flex items-center gap-1">
 			{#each links as link (link.href)}
