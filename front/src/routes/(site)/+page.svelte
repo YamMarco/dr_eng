@@ -23,6 +23,7 @@
 	import MediaFrame from '$lib/site/MediaFrame.svelte';
 	import PhoneMock from '$lib/site/PhoneMock.svelte';
 	import StepVignette from '$lib/site/StepVignette.svelte';
+	import WaitlistForm from '$lib/site/WaitlistForm.svelte';
 	import { homeMedia } from '$lib/site/media';
 	import { reveal } from '$lib/site/reveal';
 
@@ -67,15 +68,19 @@
 	>
 {/snippet}
 
-{#snippet ctas()}
-	<div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-		<Button href={resolve('/checkout')} class="sm:w-auto sm:px-8">
-			<KeyRound size={20} aria-hidden="true" />
-			{t.ctaCode}
-		</Button>
-		<Button variant="secondary" href={resolve('/app')} class="sm:w-auto sm:px-8">
-			{t.ctaPeek}
-		</Button>
+{#snippet ctas(id: string)}
+	<div class="flex w-full max-w-xl flex-col gap-3">
+		<WaitlistForm {id} />
+		<div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+			<a
+				href={resolve('/checkout')}
+				class="flex min-h-11 items-center gap-2 rounded-xl px-1 font-semibold text-brand-dark transition duration-100 hover:underline active:scale-[0.98]"
+			>
+				<KeyRound size={18} aria-hidden="true" />
+				{t.ctaCode}
+			</a>
+			<span class="text-sm text-muted">{t.waitlist.note}</span>
+		</div>
 	</div>
 {/snippet}
 
@@ -110,8 +115,7 @@
 				class="flex w-full flex-col gap-3 motion-safe:animate-rise"
 				style="animation-delay: {staggerDelay(3)}ms"
 			>
-				{@render ctas()}
-				<p class="text-sm text-muted">{t.ctaNote}</p>
+				{@render ctas('waitlist')}
 			</div>
 		</div>
 
@@ -318,7 +322,7 @@
 						{t.ctaCode}
 					</Button>
 					<a
-						href={resolve('/plans')}
+						href="#waitlist"
 						class="flex items-center gap-1 text-sm font-semibold text-brand-dark hover:underline"
 					>
 						{t.noCode}
@@ -374,7 +378,7 @@
 		<div {@attach reveal} class="flex flex-col items-center gap-4">
 			<h2 class="text-4xl font-black tracking-tight text-balance sm:text-6xl">{t.finalTitle}</h2>
 			<p class="max-w-xl text-lg text-muted">{t.finalBody}</p>
-			<div class="mt-2">{@render ctas()}</div>
+			<div class="mt-2 flex w-full justify-center text-start">{@render ctas('waitlist-end')}</div>
 		</div>
 	</section>
 </main>
