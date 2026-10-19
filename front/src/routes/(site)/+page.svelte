@@ -155,7 +155,6 @@
 		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
 			{@render kicker(t.methodKicker)}
 			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
-			<p class="text-lg text-muted">{t.methodBody}</p>
 		</header>
 		<ul class="grid gap-4 md:grid-cols-3">
 			{#each t.methods as method, i (method.title)}
@@ -274,19 +273,6 @@
 				<p class="text-lg leading-relaxed text-white/75 sm:text-xl">{t.pressureBody}</p>
 			</div>
 			<div class="relative text-brand"><PulseLine /></div>
-			<dl class="relative grid gap-6 border-t border-white/15 pt-10 sm:grid-cols-3">
-				{#each t.facts as fact (fact.label)}
-					<div class="flex flex-col gap-1">
-						<dt class="order-2 text-white/70">{fact.label}</dt>
-						<dd class="flex items-baseline gap-2">
-							<span dir="ltr" class="text-5xl font-black tracking-tight tabular sm:text-6xl"
-								>{fact.value}</span
-							>
-							<span class="text-lg font-bold text-brand">{fact.unit}</span>
-						</dd>
-					</div>
-				{/each}
-			</dl>
 		</div>
 	</section>
 
