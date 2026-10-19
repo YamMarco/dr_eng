@@ -4,6 +4,7 @@
 // OpenAI-compatible endpoint with GEMINI_API_KEY: same request, and the
 // next model in GEMINI_MODELS is tried when one is overloaded.
 import { env } from '$env/dynamic/private';
+import type { z } from 'zod';
 
 export type LlmRole =
 	'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'chat-speaking' | 'ocr';
@@ -42,12 +43,7 @@ export function llmConfigured(): boolean {
 	return Boolean(env.LLM_GATEWAY_URL && env.LLM_GATEWAY_KEY) || Boolean(env.GEMINI_API_KEY);
 }
 
-/**
- * One system + user turn. `json` asks for a JSON object back (the caller parses and validates it).
- * `image` (a data: URL) is sent alongside `user` for vision roles, `audio` (base64 WAV) for
- * listening roles.
- */
-export async function chat(opts: {
+type ChatOptions = {
 	role: LlmRole;
 	system: string;
 	user: string;
@@ -55,7 +51,14 @@ export async function chat(opts: {
 	audio?: string;
 	json?: boolean;
 	maxTokens?: number;
-}): Promise<LlmResult> {
+};
+
+/**
+ * One system + user turn. `json` asks for a JSON object back (the caller parses and validates it).
+ * `image` (a data: URL) is sent alongside `user` for vision roles, `audio` (base64 WAV) for
+ * listening roles.
+ */
+export async function chat(opts: ChatOptions): Promise<LlmResult> {
 	const target = endpoint(opts.role);
 	if (!target) throw new Error('LLM is not configured');
 	let res!: Response;
@@ -101,4 +104,29 @@ export async function chat(opts: {
 		inputTokens: data.usage?.prompt_tokens ?? 0,
 		outputTokens: data.usage?.completion_tokens ?? 0
 	};
+}
+
+/**
+ * `chat` with a JSON reply validated against `schema` (LLM output is untrusted).
+ * A cut-off, malformed or off-schema reply gets one more try; so does a valid first
+ * reply that `retryIf` rejects (the second one is then accepted as is).
+ */
+export async function chatJson<S extends z.ZodType>(
+	opts: Omit<ChatOptions, 'json'>,
+	schema: S,
+	retryIf?: (reply: z.output<S>) => boolean
+): Promise<z.output<S>> {
+	for (let attempt = 0; ; attempt++) {
+		const result = await chat({ ...opts, json: true });
+		console.info(
+			`${opts.role}: ${result.model} in=${result.inputTokens} out=${result.outputTokens}`
+		);
+		try {
+			const reply = schema.parse(JSON.parse(result.text));
+			if (attempt === 0 && retryIf?.(reply)) continue;
+			return reply;
+		} catch (e) {
+			if (attempt > 0) throw e;
+		}
+	}
 }

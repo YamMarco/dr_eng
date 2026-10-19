@@ -1,7 +1,7 @@
 // Layer 2: builds the grading prompt, asks the LLM, validates what comes back.
 // The model only picks tags from a closed list (the Hebrew text is in i18n), so replies stay tiny.
 import { z } from 'zod';
-import { chat, type LlmRole } from './llm';
+import { chatJson, type LlmRole } from './llm';
 import LESSON_PROMPT from './prompts/grade-short.md?raw';
 import READING_PROMPT from './prompts/grade-reading.md?raw';
 import ESSAY_PROMPT from './prompts/grade-essay.md?raw';
@@ -86,31 +86,18 @@ function cleanMarks(marks: z.infer<typeof markSchema>[], kind: GradeRequest['kin
 }
 
 // maxTokens also covers the model's hidden reasoning (Gemini "thinking"): too low cuts the JSON off.
-async function ask(req: GradeRequest): Promise<unknown> {
+function ask<S extends z.ZodType>(req: GradeRequest, schema: S): Promise<z.output<S>> {
 	const { role } = KINDS[req.kind];
 	const maxTokens =
 		KINDS[req.kind].maxTokens + (req.kind === 'reading' ? 300 * req.items.length : 0);
-	for (let attempt = 0; ; attempt++) {
-		const result = await chat({
-			role,
-			system: systemPrompt(req.kind),
-			user: userPrompt(req),
-			json: true,
-			maxTokens
-		});
-		console.info(
-			`grade ${req.kind}: ${result.model} in=${result.inputTokens} out=${result.outputTokens}`
-		);
-		try {
-			return JSON.parse(result.text);
-		} catch (e) {
-			if (attempt > 0) throw e; // one more try on a cut-off or malformed reply
-		}
-	}
+	return chatJson(
+		{ role, system: systemPrompt(req.kind), user: userPrompt(req), maxTokens },
+		schema
+	);
 }
 
 export async function gradeLesson(req: SingleRequest): Promise<LessonVerdict> {
-	const parsed = z.object({ pass: z.boolean(), marks: marksSchema }).parse(await ask(req));
+	const parsed = await ask(req, z.object({ pass: z.boolean(), marks: marksSchema }));
 	const marks = cleanMarks(parsed.marks, 'lesson').map((m) =>
 		req.fixes === false ? { ...m, fix: undefined } : m
 	);
@@ -119,11 +106,12 @@ export async function gradeLesson(req: SingleRequest): Promise<LessonVerdict> {
 }
 
 export async function gradeReading(req: ReadingRequest): Promise<ReadingVerdict> {
-	const parsed = z
-		.object({
+	const parsed = await ask(
+		req,
+		z.object({
 			answers: z.array(z.object({ id: z.string(), score: z.number(), marks: marksSchema }))
 		})
-		.parse(await ask(req));
+	);
 	const byId = new Map(parsed.answers.map((a) => [a.id, a]));
 	// answers the model skipped are left out; the client counts them as not graded
 	const answers = req.items.flatMap((item) => {
@@ -142,7 +130,7 @@ export async function gradeEssay(req: SingleRequest): Promise<EssayVerdict> {
 	const shape = Object.fromEntries(
 		essayRubric.criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
 	);
-	const parsed = z.object({ scores: z.object(shape), marks: marksSchema }).parse(await ask(req));
+	const parsed = await ask(req, z.object({ scores: z.object(shape), marks: marksSchema }));
 	const scores = Object.fromEntries(
 		Object.entries(parsed.scores as Record<string, number>).map(([k, v]) => [k, Math.round(v)])
 	);

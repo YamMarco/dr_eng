@@ -6,7 +6,7 @@ import { z } from 'zod';
 import PROMPT from './prompts/grade-speaking.md?raw';
 import { cobeRubric } from '$lib/content/rubrics';
 import type { SpeakingVerdict } from '$lib/feedback/types';
-import { chat } from './llm';
+import { chatJson } from './llm';
 
 /** ~2 minutes of 12 kHz mono 16-bit WAV, base64 (the client trims longer takes). */
 export const MAX_AUDIO_CHARS = 4_000_000;
@@ -51,29 +51,20 @@ export function speakingPrompt(req: Omit<SpeakingRequest, 'audio'>): string {
 }
 
 export async function gradeSpeakingAudio(req: SpeakingRequest): Promise<SpeakingVerdict> {
-	const user = speakingPrompt(req);
-	for (let attempt = 0; ; attempt++) {
-		const result = await chat({
+	const v = await chatJson(
+		{
 			role: 'grade-speaking',
 			system: PROMPT,
-			user,
+			user: speakingPrompt(req),
 			audio: req.audio,
-			json: true,
 			maxTokens: 2500
-		});
-		console.info(
-			`grade speaking: ${result.model} in=${result.inputTokens} out=${result.outputTokens}`
-		);
-		try {
-			const v = verdictSchema.parse(JSON.parse(result.text));
-			return {
-				transcript: v.transcript,
-				judgement: { bands: v.bands, answeredAll: v.answeredAll },
-				strengths: v.strengths,
-				tips: v.tips
-			};
-		} catch (e) {
-			if (attempt > 0) throw e; // one more try on a cut-off or malformed reply
-		}
-	}
+		},
+		verdictSchema
+	);
+	return {
+		transcript: v.transcript,
+		judgement: { bands: v.bands, answeredAll: v.answeredAll },
+		strengths: v.strengths,
+		tips: v.tips
+	};
 }
