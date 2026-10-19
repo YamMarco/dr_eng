@@ -51,9 +51,7 @@ export const he = {
 				placeholder: 'name@example.com',
 				submit: 'שליחה',
 				sending: 'שולחים...',
-				note: 'רק מייל, רק עדכון כשנפתח. בלי ספאם.',
 				doneTitle: 'אתם ברשימה!',
-				doneBody: 'נעדכן אתכם במייל ברגע שנפתח.',
 				errors: {
 					invalid: 'נראה שהמייל לא תקין. בדקו ונסו שוב.',
 					unavailable: 'הרשימה עוד לא פתוחה. נסו שוב בקרוב.',

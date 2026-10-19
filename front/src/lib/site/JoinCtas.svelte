@@ -141,8 +141,6 @@
 			</div>
 			{#if error}
 				<p class="text-sm font-semibold text-miss" role="alert">{t.waitlist.errors[error]}</p>
-			{:else}
-				<p class="text-sm text-muted">{t.waitlist.note}</p>
 			{/if}
 		</form>
 	{:else if open === 'code'}
@@ -170,7 +168,5 @@
 			</label>
 			<Button type="submit" class="sm:w-auto sm:px-7">{t.code.submit}</Button>
 		</form>
-	{:else if status === 'done'}
-		<p class="text-sm text-muted">{t.waitlist.doneBody}</p>
 	{/if}
 </div>
