@@ -12,6 +12,8 @@ One SvelteKit codebase (`front/`), two build targets.
 | `/edit`, `/edit-exam`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
 | `/api/...` | server routes | yes | absent - the app calls the web deployment |
 
+Home page (`/`) photos and looping videos: files in `front/static/home/`, paths in `$lib/site/media.ts`; an empty slot shows gradient art.
+
 Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`hooks.server.ts`).
 
 ## Builds

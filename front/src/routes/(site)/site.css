@@ -1,0 +1,203 @@
+/* Public-site motion and art. Everything here is decorative; reduced motion turns
+   it off and leaves the content in place. */
+
+/* Scroll-in entrance (see $lib/site/reveal.ts). */
+[data-reveal] {
+	transition:
+		opacity 450ms ease-out,
+		transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+	transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal='hidden'] {
+	opacity: 0;
+	transform: translateY(28px);
+}
+[data-reveal='hidden'] * {
+	animation-play-state: paused !important;
+}
+
+/* Gradient art standing in for a photo until one is set ($lib/site/media.ts). */
+.art {
+	background:
+		radial-gradient(120% 90% at 85% 10%, var(--art-a), transparent 60%),
+		radial-gradient(90% 80% at 10% 95%, var(--art-b), transparent 65%), var(--art-base);
+}
+.art-teal {
+	--art-a: #7fd8c8;
+	--art-b: #e9c46a;
+	--art-base: #2a9d8f;
+}
+.art-gold {
+	--art-a: #fff3cf;
+	--art-b: #e76f51;
+	--art-base: #e9c46a;
+}
+.art-navy {
+	--art-a: #7fa3d6;
+	--art-b: #35b3a3;
+	--art-base: #2c3a52;
+}
+.art-sunset {
+	--art-a: #f6c29a;
+	--art-b: #8e6fd1;
+	--art-base: #e07a5f;
+}
+.art-orb {
+	position: absolute;
+	border-radius: 9999px;
+	background: rgb(255 255 255 / 0.18);
+	filter: blur(2px);
+}
+.art-orb-a {
+	inset-inline-start: -15%;
+	top: 8%;
+	width: 70%;
+	aspect-ratio: 1;
+	animation: drift 14s ease-in-out infinite alternate;
+}
+.art-orb-b {
+	inset-inline-end: -10%;
+	bottom: -12%;
+	width: 55%;
+	aspect-ratio: 1;
+	background: rgb(255 255 255 / 0.12);
+	animation: drift 18s ease-in-out infinite alternate-reverse;
+}
+.art .art-icon {
+	position: absolute;
+	inset-inline-end: 12%;
+	top: 18%;
+	color: rgb(255 255 255 / 0.85);
+	stroke-width: 1.25;
+}
+@keyframes drift {
+	to {
+		transform: translate(8%, 6%) scale(1.08);
+	}
+}
+
+/* Hero: the phone floats, the chips around it bob out of step. */
+.float-slow {
+	animation: float 7s ease-in-out infinite;
+}
+.float-chip {
+	animation:
+		rise 400ms ease-out backwards,
+		float 6s ease-in-out infinite;
+	animation-delay: var(--chip-delay, 0ms), calc(var(--chip-delay, 0ms) + 400ms);
+}
+@keyframes float {
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+/* The "בלי לנחש" highlighter stroke behind the headline. */
+.mark-stroke {
+	background: linear-gradient(
+			transparent 62%,
+			var(--color-accent) 62%,
+			var(--color-accent) 90%,
+			transparent 90%
+		)
+		no-repeat;
+	background-size: 100% 100%;
+	animation: mark-in 700ms 350ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+	padding-inline: 0.08em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+@keyframes mark-in {
+	from {
+		background-size: 0% 100%;
+	}
+}
+:root[data-theme='dark'] .mark-stroke {
+	background-image: linear-gradient(
+		transparent 62%,
+		color-mix(in oklab, var(--color-accent), transparent 45%) 62%,
+		color-mix(in oklab, var(--color-accent), transparent 45%) 90%,
+		transparent 90%
+	);
+}
+
+.live-dot {
+	animation: live 2s ease-out infinite;
+}
+@keyframes live {
+	0% {
+		box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-brand), transparent 30%);
+	}
+	100% {
+		box-shadow: 0 0 0 8px transparent;
+	}
+}
+
+/* Moments strip: two identical sets, the track slides one set's width and loops.
+   RTL: the copy sits to the left, so the track moves right. */
+.marquee {
+	animation: marquee 48s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+	animation-play-state: paused;
+}
+@keyframes marquee {
+	to {
+		transform: translateX(50%);
+	}
+}
+
+/* Product stills. */
+.mock-bar {
+	animation: bar-fill 900ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.vig-pick {
+	animation: pop-correct 260ms 700ms ease-out backwards;
+}
+.vig-pop {
+	animation: pop-in 260ms 760ms ease-out backwards;
+}
+.vig-flip {
+	animation: flip-in 600ms 200ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+	perspective: 600px;
+}
+.vig-tick {
+	animation: tick 1s steps(2) infinite;
+}
+.vig-dot {
+	animation: pop-in 240ms ease-out backwards;
+}
+@keyframes pop-in {
+	from {
+		opacity: 0;
+		transform: scale(0.4);
+	}
+}
+@keyframes flip-in {
+	from {
+		opacity: 0;
+		transform: rotateX(70deg);
+	}
+}
+@keyframes tick {
+	50% {
+		transform: rotate(12deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.art-orb,
+	.float-slow,
+	.float-chip,
+	.mark-stroke,
+	.live-dot,
+	.marquee,
+	.mock-bar,
+	.vig-pick,
+	.vig-pop,
+	.vig-flip,
+	.vig-tick,
+	.vig-dot {
+		animation: none;
+	}
+}

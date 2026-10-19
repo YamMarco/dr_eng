@@ -13,7 +13,7 @@
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 @theme {
-	--font-sans: 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
+	--font-sans: 'Heebo Variable', 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
 
 	--color-canvas: #f9f7f4;
 	--color-surface: #ffffff;
