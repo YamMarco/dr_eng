@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { Check, RotateCcw, Timer, Trophy } from '@lucide/svelte';
+	import { Check, RotateCcw, Timer } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	// The small product still on each "how it works" card. Animations play once the
 	// card scrolls in (paused under [data-reveal='hidden'] in site.css).
 	let { step }: { step: number } = $props();
 	let t = $derived(i18n.dict.site.home.vignette);
-	let mods = $derived(i18n.dict.site.home.mock.modules);
 </script>
 
 <div class="flex h-44 flex-col justify-center gap-2 rounded-2xl bg-canvas p-4" aria-hidden="true">
@@ -58,21 +57,12 @@
 			{/each}
 		</span>
 	{:else}
-		{#each mods.slice(0, 2) as mod, i (mod.name)}
-			<div class="flex items-center gap-3 rounded-xl bg-surface px-3 py-2 ring-1 ring-line">
-				<span class="w-14 shrink-0 text-sm font-bold">{mod.name}</span>
-				<span class="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
-					<span
-						class="mock-bar block h-full rounded-full bg-brand"
-						style="width: {mod.bar}%; animation-delay: {200 + i * 150}ms"
-					></span>
-				</span>
-				<span class="flex items-center gap-1 text-sm font-bold">
-					{#if i === 0}<Trophy size={13} class="text-accent" />{/if}
-					<span dir="ltr" class="tabular">{mod.score}</span>
-				</span>
-			</div>
-		{/each}
-		<span class="text-center text-xs font-semibold text-muted">{t.standLabel}</span>
+		<p dir="ltr" class="rounded-xl bg-surface px-3 py-2 text-start text-sm ring-1 ring-line">
+			{t.feedbackAnswer}
+		</p>
+		<div class="vig-flip flex items-start gap-2 rounded-xl bg-miss-soft p-3 text-sm text-ink">
+			<span dir="ltr" class="shrink-0 font-black text-miss tabular">{t.feedbackScore}</span>
+			<span class="leading-snug">{t.feedbackNote}</span>
+		</div>
 	{/if}
 </div>

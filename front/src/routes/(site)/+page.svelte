@@ -242,7 +242,9 @@
 			></div>
 			<div class="relative flex max-w-2xl flex-col gap-4">
 				{@render kicker(t.pressureKicker, true)}
-				<h2 class="text-5xl font-black tracking-tight sm:text-7xl">{t.pressureTitle}</h2>
+				<h2 class="text-5xl font-black tracking-tight whitespace-pre-line sm:text-7xl">
+					{t.pressureTitle}
+				</h2>
 				<p class="text-lg leading-relaxed text-white/75 sm:text-xl">{t.pressureBody}</p>
 			</div>
 			<dl class="relative grid gap-6 border-t border-white/15 pt-10 sm:grid-cols-3">
