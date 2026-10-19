@@ -20,8 +20,11 @@
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
+	import LadderArt from '$lib/site/LadderArt.svelte';
 	import MediaFrame from '$lib/site/MediaFrame.svelte';
+	import MethodDemo from '$lib/site/MethodDemo.svelte';
 	import PhoneMock from '$lib/site/PhoneMock.svelte';
+	import PulseLine from '$lib/site/PulseLine.svelte';
 	import StepVignette from '$lib/site/StepVignette.svelte';
 	import JoinCtas from '$lib/site/JoinCtas.svelte';
 	import { homeMedia } from '$lib/site/media';
@@ -47,11 +50,6 @@
 		oral: Mic
 	};
 	const perkIcons = [KeyRound, Heart, RefreshCw];
-	const moduleTones = [
-		'bg-brand-soft text-brand-dark',
-		'bg-accent-soft text-ink',
-		'bg-miss-soft text-miss'
-	];
 </script>
 
 <svelte:head>
@@ -152,6 +150,31 @@
 		</div>
 	</section>
 
+	<!-- Method -->
+	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
+		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
+			{@render kicker(t.methodKicker)}
+			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
+			<p class="text-lg text-muted">{t.methodBody}</p>
+		</header>
+		<ul class="grid gap-4 md:grid-cols-3">
+			{#each t.methods as method, i (method.title)}
+				<li
+					{@attach reveal}
+					style="--reveal-delay: {i * 90}ms"
+					class="flex flex-col gap-4 rounded-[2rem] bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+				>
+					<MethodDemo kind={i} />
+					<div class="flex flex-col gap-1 px-1 pb-1">
+						<span class="text-sm font-bold text-brand-dark">{method.tag}</span>
+						<span class="text-xl font-extrabold">{method.title}</span>
+						<p class="leading-relaxed text-muted">{method.body}</p>
+					</div>
+				</li>
+			{/each}
+		</ul>
+	</section>
+
 	<!-- Moments -->
 	<section class="flex flex-col gap-8 pb-20 lg:pb-28">
 		<header {@attach reveal} class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 sm:px-6">
@@ -199,10 +222,13 @@
 
 	<!-- How it works -->
 	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
-		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
-			{@render kicker(t.loopKicker)}
-			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.loopTitle}</h2>
-		</header>
+		<div {@attach reveal} class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+			<header class="flex max-w-2xl flex-col gap-2">
+				{@render kicker(t.loopKicker)}
+				<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.loopTitle}</h2>
+			</header>
+			<LadderArt />
+		</div>
 		<ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			{#each t.steps as step, i (step.title)}
 				<li
@@ -247,6 +273,7 @@
 				</h2>
 				<p class="text-lg leading-relaxed text-white/75 sm:text-xl">{t.pressureBody}</p>
 			</div>
+			<div class="relative text-brand"><PulseLine /></div>
 			<dl class="relative grid gap-6 border-t border-white/15 pt-10 sm:grid-cols-3">
 				{#each t.facts as fact (fact.label)}
 					<div class="flex flex-col gap-1">
@@ -261,33 +288,6 @@
 				{/each}
 			</dl>
 		</div>
-	</section>
-
-	<!-- Modules -->
-	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
-		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
-			{@render kicker(t.modulesKicker)}
-			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.modulesTitle}</h2>
-		</header>
-		<ul class="grid gap-4 md:grid-cols-3">
-			{#each t.modules as mod, i (mod.name)}
-				<li
-					{@attach reveal}
-					style="--reveal-delay: {i * 90}ms"
-					class="flex flex-col gap-4 rounded-[2rem] bg-surface p-6 shadow-sm ring-1 ring-line/70"
-				>
-					<span class="text-2xl font-black">{mod.name}</span>
-					<p class="flex-1 leading-relaxed text-muted">{mod.body}</p>
-					<span class="flex flex-wrap gap-2">
-						{#each mod.tags as tag (tag)}
-							<span class="rounded-full px-3 py-1 text-sm font-semibold {moduleTones[i]}"
-								>{tag}</span
-							>
-						{/each}
-					</span>
-				</li>
-			{/each}
-		</ul>
 	</section>
 
 	<!-- Testers -->

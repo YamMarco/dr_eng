@@ -201,3 +201,330 @@
 		animation: none;
 	}
 }
+
+/* Technique demos ($lib/site/MethodDemo.svelte), one 7s loop each. */
+.m-anchor {
+	background: transparent;
+	color: inherit;
+	animation: m-anchor 7s ease-in-out infinite;
+}
+p + p .m-anchor {
+	animation-delay: 0.5s;
+}
+@keyframes m-anchor {
+	0%,
+	12% {
+		background: transparent;
+	}
+	20%,
+	88% {
+		background: color-mix(in oklab, var(--color-accent), transparent 30%);
+	}
+	96%,
+	100% {
+		background: transparent;
+	}
+}
+.m-answer {
+	animation: m-answer 7s ease-in-out infinite;
+}
+@keyframes m-answer {
+	0%,
+	38% {
+		background: transparent;
+		box-shadow: inset 0 -2px 0 transparent;
+	}
+	46%,
+	88% {
+		background: var(--color-brand-soft);
+		box-shadow: inset 0 -2px 0 var(--color-brand);
+	}
+	96%,
+	100% {
+		background: transparent;
+		box-shadow: inset 0 -2px 0 transparent;
+	}
+}
+.m-dim {
+	animation: m-dim 7s ease-in-out infinite;
+}
+@keyframes m-dim {
+	0%,
+	25%,
+	96%,
+	100% {
+		opacity: 1;
+	}
+	33%,
+	88% {
+		opacity: 0.35;
+	}
+}
+.m-circle {
+	stroke: var(--color-accent);
+	stroke-dasharray: 1;
+	animation: m-circle 7s ease-in-out infinite;
+}
+@keyframes m-circle {
+	0%,
+	10% {
+		stroke-dashoffset: 1;
+	}
+	26%,
+	90% {
+		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+	97%,
+	100% {
+		stroke-dashoffset: 0;
+		opacity: 0;
+	}
+}
+.m-slot,
+.m-tick {
+	animation: m-in 7s ease-out infinite;
+}
+.m-slot-2,
+.m-tick-2 {
+	animation-name: m-in-late;
+}
+.m-tick {
+	animation-delay: 0.3s;
+}
+@keyframes m-in {
+	0%,
+	34% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	40%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes m-in-late {
+	0%,
+	54% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	60%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+.m-typing {
+	animation: m-typing 7s ease-out infinite;
+}
+@keyframes m-typing {
+	0%,
+	14%,
+	44%,
+	100% {
+		opacity: 0;
+	}
+	18%,
+	40% {
+		opacity: 1;
+	}
+}
+.m-pivot {
+	animation: m-pivot 7s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+@keyframes m-pivot {
+	0%,
+	42% {
+		opacity: 0;
+		transform: translateY(8px) scale(0.96);
+	}
+	50%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Skill ladder ($lib/site/LadderArt.svelte): 7s, the ball hops up four steps to the goal. */
+.ladder-steps {
+	stroke: var(--color-line);
+	stroke-dasharray: 1;
+	animation: draw 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+@keyframes draw {
+	from {
+		stroke-dashoffset: 1;
+	}
+}
+.ladder-node {
+	fill: var(--color-line);
+	animation: 7s ease-out infinite;
+}
+.ladder-node-0 {
+	animation-name: node-0;
+}
+.ladder-node-1 {
+	animation-name: node-1;
+}
+.ladder-node-2 {
+	animation-name: node-2;
+}
+.ladder-node-3 {
+	animation-name: node-3;
+}
+@keyframes node-0 {
+	0%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-1 {
+	0%,
+	15% {
+		fill: var(--color-line);
+	}
+	17%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-2 {
+	0%,
+	31% {
+		fill: var(--color-line);
+	}
+	33%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-3 {
+	0%,
+	47% {
+		fill: var(--color-line);
+	}
+	49%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+.ladder-goal {
+	fill: var(--color-accent);
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: goal 7s ease-out infinite;
+}
+@keyframes goal {
+	0%,
+	63%,
+	80%,
+	100% {
+		transform: scale(1);
+	}
+	68% {
+		transform: scale(1.6);
+	}
+}
+.ladder-ball {
+	fill: var(--color-brand-dark);
+	animation: ball 7s ease-in-out infinite;
+}
+@keyframes ball {
+	0%,
+	6% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+	11% {
+		transform: translate(-20px, -30px);
+	}
+	16%,
+	22% {
+		transform: translate(-40px, -25px);
+	}
+	27% {
+		transform: translate(-60px, -55px);
+	}
+	32%,
+	38% {
+		transform: translate(-80px, -50px);
+	}
+	43% {
+		transform: translate(-100px, -80px);
+	}
+	48%,
+	54% {
+		transform: translate(-120px, -75px);
+	}
+	59% {
+		transform: translate(-137px, -108px);
+	}
+	64%,
+	88% {
+		transform: translate(-153px, -100px);
+		opacity: 1;
+	}
+	94%,
+	100% {
+		transform: translate(-153px, -100px);
+		opacity: 0;
+	}
+}
+
+/* Heartbeat ($lib/site/PulseLine.svelte). */
+.pulse-mask {
+	mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+}
+.pulse-track {
+	animation: pulse-run 5s linear infinite;
+}
+@keyframes pulse-run {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.m-anchor,
+	.m-answer,
+	.m-dim,
+	.m-circle,
+	.m-slot,
+	.m-tick,
+	.m-typing,
+	.m-pivot,
+	.ladder-steps,
+	.ladder-node,
+	.ladder-goal,
+	.ladder-ball,
+	.pulse-track {
+		animation: none;
+	}
+	.m-anchor {
+		background: color-mix(in oklab, var(--color-accent), transparent 30%);
+	}
+	.m-answer {
+		background: var(--color-brand-soft);
+	}
+	.m-typing,
+	.ladder-ball {
+		display: none;
+	}
+	.ladder-node {
+		fill: var(--color-brand);
+	}
+}

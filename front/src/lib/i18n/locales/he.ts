@@ -36,10 +36,10 @@ export const he = {
 			badge: 'גישה מוקדמת',
 			badgeUnits: '4 ו־5 יחידות',
 			titleLead: 'מגיעים לבגרות אחרי שכבר',
-			titleMark: 'הצטיינתם',
-			titleTail: 'בה.',
+			titleMark: 'עברתם',
+			titleTail: 'אותה.',
 			intro:
-				'מבחנים קשים מהבגרות עצמה, משוב מיידי על כל תשובה ומסלול של צעדים קטנים שמכסה שלוש שנות חומר.',
+				'לא עוד פתרון של מבחנים. לומדים את השיטה לעבור אותם: טכניקות ודרך חשיבה שמורידות לחץ ומעלות ציון, עם משוב מיידי על כל תשובה.',
 			ctaJoin: 'הצטרפו לרשימה',
 			ctaCode: 'יש לי קוד',
 			code: {
@@ -143,21 +143,34 @@ export const he = {
 				{ value: '856', unit: 'מילים', label: 'מהרשימות של משרד החינוך' },
 				{ value: '3', unit: 'חלקים', label: 'בבגרות בעל פה, עם הקלטה ומשוב' }
 			],
-			modulesKicker: 'מה כבר יש',
-			modulesTitle: 'כל חלקי הבגרות, במקום אחד.',
-			modules: [
+			methodKicker: 'השיטה',
+			methodTitle: 'לא פותרים עוד מבחן. לומדים איך לעבור אותו.',
+			methodBody: 'טכניקות ודרך חשיבה שמכוילות למינימום לחץ ולמקסימום נקודות.',
+			methods: [
 				{
-					name: 'מודול C',
-					body: 'קריאה, אוצר מילים וכתיבה, עם משוב על החיבור.',
-					tags: ['קריאה', 'מילים', 'כתיבה']
+					tag: 'קריאה',
+					title: 'מילת העוגן',
+					body: 'מוצאים בטקסט את המילים מהשאלה. התשובה כמעט תמיד יושבת לידן.'
 				},
 				{
-					name: 'מודול E',
-					body: 'מסלול קריאה וחפיסת המילים המלאה של הבגרות.',
-					tags: ['קריאה', 'מילים']
+					tag: 'שאלות פתוחות',
+					title: 'מפענחים את ההוראה',
+					body: 'ההוראה כבר אומרת כמה לכתוב ואיפה לחפש. לא מפספסים נקודות על ניסוח.'
 				},
-				{ name: 'בעל פה', body: 'שלושת החלקים של המבחן, עם הקלטה ומשוב.', tags: ['דיבור'] }
+				{
+					tag: 'בעל פה',
+					title: 'משפט ההצלה',
+					body: 'שכחתם עובדה באמצע ההקלטה? יש משפט מוכן שממשיך הלאה, בלי לקפוא.'
+				}
 			],
+			methodDemo: {
+				question: ['Why did the', 'last family', 'leave?'],
+				passage: ['In 1998, the', 'last family', 'moved out,', 'because the school closed.'],
+				instruction: ['Give', 'TWO', 'reasons.'],
+				slots: ['the school closed', 'no jobs'],
+				stuck: 'In my project I found that... um...',
+				pivot: "I don't remember the exact number, but what matters is..."
+			},
 			testersKicker: 'גישה מוקדמת',
 			testersTitle: 'קיבלתם קוד? אתם בפנים.',
 			testersBody:
