@@ -10,7 +10,6 @@
 		Layers,
 		Mic,
 		PenLine,
-		Plus,
 		RefreshCw,
 		Sparkles,
 		Timer,
@@ -318,28 +317,6 @@
 					</li>
 				{/each}
 			</ul>
-		</div>
-	</section>
-
-	<!-- FAQ -->
-	<section class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 pb-20 sm:px-6 lg:pb-28">
-		<h2 {@attach reveal} class="text-3xl font-black tracking-tight sm:text-4xl">{t.faqTitle}</h2>
-		<div {@attach reveal} class="flex flex-col divide-y divide-line border-y border-line">
-			{#each t.faq as item (item.q)}
-				<details class="group">
-					<summary
-						class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-bold transition-colors hover:text-brand-dark [&::-webkit-details-marker]:hidden"
-					>
-						{item.q}
-						<Plus
-							size={20}
-							class="shrink-0 text-muted transition-transform duration-200 group-open:rotate-45"
-							aria-hidden="true"
-						/>
-					</summary>
-					<p class="pb-5 leading-relaxed text-muted">{item.a}</p>
-				</details>
-			{/each}
 		</div>
 	</section>
 
