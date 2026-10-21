@@ -4,14 +4,15 @@
 	import Button from '$lib/components/Button.svelte';
 	import ChoiceList from '$lib/components/ChoiceList.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { profile, type UnitsGoal } from '$lib/profile.svelte';
+	import { NAME_MAX, profile, type UnitsGoal } from '$lib/profile.svelte';
 	import { parseSessionKey, sessionOptions, unitsOptions } from './goalOptions';
 
-	// Two short questions before the dashboard - no signup wall, just enough
-	// to build the route and the countdown.
-	const TOTAL_STEPS = 2;
+	// Three short questions before the dashboard - no signup wall, just a name
+	// for the greeting (optional) and enough to build the route and the countdown.
+	const TOTAL_STEPS = 3;
 
 	let step = $state(1);
+	let name = $state('');
 	let units = $state<UnitsGoal | undefined>();
 	let session = $state<string | undefined>();
 
@@ -19,7 +20,7 @@
 
 	function finish() {
 		if (!units || !session) return;
-		profile.save({ units, exam: parseSessionKey(session) });
+		profile.save({ units, exam: parseSessionKey(session), name: name.trim() || undefined });
 	}
 </script>
 
@@ -42,6 +43,19 @@
 	{#key step}
 		<section in:fly={{ x: -16, duration: 250, easing: cubicOut }} class="mt-6 flex-1">
 			{#if step === 1}
+				<h1 class="text-3xl font-extrabold tracking-tight">{t.nameTitle}</h1>
+				<p class="mt-2 mb-6 text-muted">{t.nameDesc}</p>
+				<input
+					type="text"
+					bind:value={name}
+					maxlength={NAME_MAX}
+					autocomplete="given-name"
+					placeholder={t.namePlaceholder}
+					aria-label={t.nameTitle}
+					onkeydown={(e) => e.key === 'Enter' && step++}
+					class="min-h-14 w-full rounded-2xl border-2 border-line bg-surface px-4 text-lg transition-colors placeholder:text-muted/70 focus:border-brand focus:outline-none"
+				/>
+			{:else if step === 2}
 				<h1 class="text-3xl font-extrabold tracking-tight">{t.goalTitle}</h1>
 				<p class="mt-2 mb-6 text-muted">{t.goalDesc}</p>
 				<ChoiceList
@@ -65,7 +79,7 @@
 
 	<div class="mt-8">
 		{#if step < TOTAL_STEPS}
-			<Button disabled={!units} onclick={() => step++}>{t.next}</Button>
+			<Button disabled={step === 2 && !units} onclick={() => step++}>{t.next}</Button>
 		{:else}
 			<Button disabled={!session} onclick={finish}>{t.finish}</Button>
 		{/if}

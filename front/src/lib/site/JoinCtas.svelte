@@ -8,7 +8,8 @@
 
 	// The two ways in, side by side: join the waitlist (/api/waitlist) or redeem a code
 	// (a GET form to /checkout?coupon=). Tapping one opens its field and closes the other.
-	// A link to #<id> opens the waitlist field.
+	// A link to #<id> opens the waitlist field. The field opens as a card over what's
+	// below, so nothing on the page moves.
 	let { id }: { id: string } = $props();
 	let t = $derived(i18n.dict.site.home);
 
@@ -58,11 +59,13 @@
 		status = 'idle';
 	}
 
+	const panel =
+		'absolute inset-x-0 top-full z-30 mt-3 rounded-3xl bg-surface p-3 text-start shadow-xl ring-1 ring-line';
 	const input =
 		'min-h-[56px] w-full rounded-2xl border-2 border-line bg-surface px-4 text-lg transition-colors placeholder:text-muted/70 focus:border-brand focus:ring-0 focus:outline-none';
 </script>
 
-<div {id} class="flex w-full max-w-xl scroll-mt-28 flex-col gap-3">
+<div {id} class="relative w-full max-w-xl scroll-mt-28">
 	<div class="grid grid-cols-2 gap-3">
 		{#if status === 'done'}
 			<div
@@ -109,7 +112,7 @@
 	</div>
 
 	{#if open === 'waitlist'}
-		<form onsubmit={join} class="flex flex-col gap-2" transition:slide={{ duration: 200 }}>
+		<form onsubmit={join} class="{panel} flex flex-col gap-2" transition:slide={{ duration: 200 }}>
 			<div class="flex flex-col gap-3 sm:flex-row">
 				<label class="flex-1">
 					<span class="sr-only">{t.waitlist.label}</span>
@@ -147,7 +150,7 @@
 		<form
 			method="get"
 			action={resolve('/checkout')}
-			class="flex flex-col gap-3 sm:flex-row"
+			class="{panel} flex flex-col gap-3 sm:flex-row"
 			transition:slide={{ duration: 200 }}
 		>
 			<label class="flex-1">

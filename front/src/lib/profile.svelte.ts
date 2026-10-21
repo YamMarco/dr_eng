@@ -10,7 +10,10 @@ const STORAGE_KEY = 'profile';
 /** 'undecided' falls back to the 4-unit route (the one with content today). */
 export type UnitsGoal = '4' | '5' | 'undecided';
 
-export type Profile = { units: UnitsGoal; exam: ExamSession | null };
+/** `name`: what to call the student - optional, used only in greetings. */
+export type Profile = { units: UnitsGoal; exam: ExamSession | null; name?: string };
+
+export const NAME_MAX = 30;
 
 function load(): Profile | null {
 	if (typeof localStorage === 'undefined') return null;
@@ -33,6 +36,11 @@ class ProfileStore {
 	/** The unit group id whose route the dashboard shows. */
 	get unitGroupId(): string {
 		return this.value?.units === '5' ? '5' : '4';
+	}
+
+	/** The student's first name, or undefined when not given. */
+	get name(): string | undefined {
+		return this.value?.name?.trim() || undefined;
 	}
 
 	/** Whole days until the chosen session; undefined when none was picked. */

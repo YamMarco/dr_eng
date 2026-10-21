@@ -32,14 +32,14 @@ export const he = {
 		home: {
 			metaTitle: 'EngUp - הבגרות באנגלית. קשה באימון, קל בבגרות.',
 			metaDescription:
-				'הכנה לבגרות באנגלית ב־4 או 5 יחידות: טכניקה למינימום לחץ ומקסימום ציון, מבחנים בתנאי אמת ופידבק מיידי ואישי.',
+				'הכנה לבגרות באנגלית ב־4 או 5 יחידות: טכניקה למינימום סטרס ומקסימום ציון, מבחנים בתנאי אמת ופידבק מיידי ואישי.',
 			badge: 'גישה מוקדמת',
 			badgeUnits: '4 ו־5 יחידות',
 			titleLead: 'מגיעים לבגרות אחרי שכבר',
 			titleMark: 'עברתם',
 			titleTail: 'אותה.',
 			intro:
-				'לא סתם פותרים: מקבלים טכניקה למינימום לחץ ומקסימום ציון במבחן, כל זאת עם פידבק מיידי ואישי.',
+				'לא סתם פותרים: מקבלים טכניקה למינימום סטרס ומקסימום ציון במבחן, כל זאת עם פידבק מיידי ואישי.',
 			ctaJoin: 'הצטרפו לרשימה',
 			ctaCode: 'יש לי קוד',
 			code: {
@@ -338,7 +338,8 @@ export const he = {
 		}
 	},
 	home: {
-		greeting: 'שלום!',
+		greeting: (part: 'morning' | 'noon' | 'evening' | 'night', name?: string) =>
+			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}${name ? `, ${name}` : ''}!`,
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
@@ -389,6 +390,9 @@ export const he = {
 	},
 	onboarding: {
 		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
+		nameTitle: 'איך קוראים לכם?',
+		nameDesc: 'רק כדי שנדע איך לפנות אליכם. אפשר גם לדלג.',
+		namePlaceholder: 'השם הפרטי',
 		goalTitle: 'מה המטרה שלכם?',
 		goalDesc: 'נבנה לכם מסלול לפי רמת היחידות.',
 		units4: '4 יחידות',
@@ -884,7 +888,8 @@ export const he = {
 		themeSystem: 'אוטומטי',
 		themeLight: 'בהיר',
 		themeDark: 'כהה',
-		goalSection: 'המטרה שלי',
+		goalSection: 'הפרופיל שלי',
+		nameLabel: 'השם שלי',
 		unitsLabel: 'רמת יחידות',
 		examLabel: 'מועד הבגרות',
 		practiceSection: 'חוויית תרגול',

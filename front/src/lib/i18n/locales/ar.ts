@@ -26,7 +26,8 @@ export const ar: DictionaryOverride = {
 		subtitle: 'ادخلوا لمتابعة التدريب'
 	},
 	home: {
-		greeting: 'مرحبًا!',
+		greeting: (part: 'morning' | 'noon' | 'evening' | 'night', name?: string) =>
+			`${part === 'morning' ? 'صباح الخير' : 'مساء الخير'}${name ? `، ${name}` : ''}!`,
 		daysToExam: (n: number) => `${n} يومًا حتى البجروت`,
 		daysShort: (n: number) => `${n} يومًا`,
 		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
@@ -80,6 +81,9 @@ export const ar: DictionaryOverride = {
 	},
 	onboarding: {
 		step: (current: number, total: number) => `خطوة ${current} من ${total}`,
+		nameTitle: 'ما اسمكم؟',
+		nameDesc: 'فقط لنعرف كيف نناديكم. يمكن التخطي.',
+		namePlaceholder: 'الاسم الأول',
 		goalTitle: 'ما هو هدفكم؟',
 		goalDesc: 'سنبني لكم مسارًا حسب عدد الوحدات.',
 		units4: '4 وحدات',
@@ -477,7 +481,8 @@ export const ar: DictionaryOverride = {
 		themeSystem: 'تلقائي',
 		themeLight: 'فاتح',
 		themeDark: 'داكن',
-		goalSection: 'هدفي',
+		goalSection: 'ملفي',
+		nameLabel: 'اسمي',
 		unitsLabel: 'عدد الوحدات',
 		examLabel: 'موعد البجروت',
 		practiceSection: 'تجربة التدريب',

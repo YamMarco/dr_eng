@@ -525,7 +525,7 @@
 								class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
 									.theme.soft}"
 							>
-								{i18n.title(heading.sectionId)}
+								{i18n.title(heading.sectionId, mod.id)}
 							</p>
 						</div>
 					{/each}

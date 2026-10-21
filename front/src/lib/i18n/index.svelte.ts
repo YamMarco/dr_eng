@@ -38,9 +38,10 @@ class I18n {
 		return dictionaries[this.language];
 	}
 
-	/** Display title of a section / lesson / exam / exam part (`<examId>.<partId>`). */
-	title(id: string): string {
-		return this.dict.titles[id] ?? id;
+	/** Display title of a section / lesson / exam / exam part (`<examId>.<partId>`).
+	 *  A section shared across modules can be renamed in one: key `<moduleId>:<id>`. */
+	title(id: string, moduleId?: string): string {
+		return (moduleId && this.dict.titles[`${moduleId}:${id}`]) || (this.dict.titles[id] ?? id);
 	}
 
 	setLanguage(lang: Language) {

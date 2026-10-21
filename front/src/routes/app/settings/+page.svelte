@@ -13,7 +13,7 @@
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore, type ThemeMode } from '$lib/theme.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { profile, type UnitsGoal } from '$lib/profile.svelte';
+	import { NAME_MAX, profile, type UnitsGoal } from '$lib/profile.svelte';
 	import {
 		parseSessionKey,
 		sessionKey,
@@ -50,6 +50,20 @@
 		>
 			<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.goalSection}</h2>
 			<ul class="mt-2 flex flex-col divide-y divide-line/70">
+				<li class="flex items-center justify-between gap-4 px-5 py-4">
+					<span class="font-semibold">{i18n.dict.settings.nameLabel}</span>
+					<input
+						type="text"
+						value={current.name ?? ''}
+						onchange={(e) =>
+							profile.save({ ...current, name: e.currentTarget.value.trim() || undefined })}
+						maxlength={NAME_MAX}
+						autocomplete="given-name"
+						placeholder={i18n.dict.onboarding.namePlaceholder}
+						aria-label={i18n.dict.settings.nameLabel}
+						class="{selectClass} w-40 min-w-0"
+					/>
+				</li>
 				<li class="flex items-center justify-between gap-4 px-5 py-4">
 					<span class="font-semibold">{i18n.dict.settings.unitsLabel}</span>
 					<select

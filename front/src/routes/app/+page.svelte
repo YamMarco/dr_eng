@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
+	import { greeting } from '$lib/greeting';
 	import { homeMeters, moduleHook, moduleRoute, resumeItem } from '$lib/dashboard/data';
 	import { examStats } from '$lib/quiz/stats';
 	import { getDecks } from '$lib/deck';
@@ -47,7 +48,7 @@
 	>
 		<header class="flex flex-wrap items-center gap-2">
 			<h1 class="me-auto text-xl font-extrabold tracking-tight sm:text-2xl lg:text-3xl">
-				{t.greeting}
+				{greeting()}
 			</h1>
 			<StatusChips class="lg:hidden" />
 		</header>
