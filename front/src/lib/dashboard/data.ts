@@ -23,7 +23,7 @@ import { moduleLocation } from '$lib/moduleLocation.svelte';
 import { getInProgress } from '$lib/quiz/progress';
 import { examStats } from '$lib/quiz/stats';
 import { getQuiz, type Quiz } from '$lib/quizzes';
-import { getDecks, moduleDeckStats, moduleDeckToday } from '$lib/deck';
+import { getDecks, moduleDeckToday, moduleWon, nextMilestone } from '$lib/deck';
 import { lastEngagement, type Engagement } from '$lib/lastEngagement.svelte';
 
 /** `total` counts only lessons with content written ("ready" to play). */
@@ -67,7 +67,8 @@ export function lessonStats(route: RouteSection[]): Progress {
 	};
 }
 
-export type Progress = { done: number; total: number };
+/** `milestone`: total is only the next round target (a word count), not shown as a fraction. */
+export type Progress = { done: number; total: number; milestone?: boolean };
 
 export type SkillRow = {
 	skill: Skill;
@@ -85,8 +86,10 @@ export function moduleSkills(moduleId: string, route: RouteSection[]): SkillRow[
 	const skillOf = (sectionId: string) => sectionMeta.find((s) => s.id === sectionId)?.skill;
 	return SKILLS.flatMap((skill): SkillRow[] => {
 		if (skill === 'vocab' && getDecks(moduleId)) {
-			const { seen, total } = moduleDeckStats(moduleId);
-			return [{ skill, kind: 'engine', progress: { done: seen, total } }];
+			const won = moduleWon(moduleId);
+			return [
+				{ skill, kind: 'engine', progress: { done: won, total: nextMilestone(won), milestone: true } }
+			];
 		}
 		const sections = route.filter((s) => skillOf(s.id) === skill);
 		if (!sections.length) return [];

@@ -59,10 +59,24 @@ export function deckToday(deck: Deck): { reviews: number; fresh: number } {
 	};
 }
 
-/** Words met so far out of all of them, in one list. Reactive: call from $derived. */
-export function deckStats(deck: Deck): { seen: number; total: number } {
+/** A word is won once it was answered right after its first meeting (box 2+). */
+const WON_BOX = 2;
+/** Step of the encouragement bar: the student chases the next 50, never the whole list. */
+const MILESTONE = 50;
+
+/** The next round number above n - the bar's target, so the full list size stays hidden. */
+export function nextMilestone(n: number): number {
+	return (Math.floor(n / MILESTONE) + 1) * MILESTONE;
+}
+
+/** Words met and words won in one list. Reactive: call from $derived. */
+export function deckStats(deck: Deck): { seen: number; won: number; total: number } {
 	const progress = deckProgress.get(deck.id);
-	return { seen: deck.words.filter((w) => progress[w.id]).length, total: deck.words.length };
+	return {
+		seen: deck.words.filter((w) => progress[w.id]).length,
+		won: deck.words.filter((w) => (progress[w.id]?.box ?? 0) >= WON_BOX).length,
+		total: deck.words.length
+	};
 }
 
 /** The lists a student is working on: those started, or the first one before any. */
@@ -80,11 +94,9 @@ export function dueToday(moduleId: string): number {
 	);
 }
 
-/** Words met out of all words, across a module's lists. Reactive: call from $derived. */
-export function moduleDeckStats(moduleId: string): { seen: number; total: number } {
-	return (getDecks(moduleId) ?? [])
-		.map(deckStats)
-		.reduce((a, b) => ({ seen: a.seen + b.seen, total: a.total + b.total }), { seen: 0, total: 0 });
+/** Words won across a module's lists. Reactive: call from $derived. */
+export function moduleWon(moduleId: string): number {
+	return (getDecks(moduleId) ?? []).reduce((sum, d) => sum + deckStats(d).won, 0);
 }
 
 /** Today's work across the lists in progress. Reactive: call from $derived. */

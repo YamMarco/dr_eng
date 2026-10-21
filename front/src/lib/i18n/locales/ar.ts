@@ -195,7 +195,9 @@ export const ar: DictionaryOverride = {
 		statDue: 'للمراجعة اليوم',
 		statLearning: 'قيد التعلم',
 		statKnown: 'معروفة',
-		progress: (seen: number, total: number) => `تعرفتم على ${seen} من ${total} كلمة`,
+		wordsWon: (n: number) => (n === 1 ? 'أتقنتم كلمة واحدة' : `أتقنتم ${n} كلمة`),
+		wordsWonShort: (n: number) => `أتقنتم ${n}`,
+		wordsWonNone: 'نبدأ!',
 		start: 'بدء التدريب',
 		newOnly: (n: number) => `${n} كلمات جديدة`,
 		sessionSize: (reviews: number, fresh: number) =>

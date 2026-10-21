@@ -69,6 +69,7 @@ Implementation and file map: `lesson-structure.md` "Word deck". Design decisions
 - Distractors: from words already met (never a decoy before its card). Missed screens replay at the end of the session (`retryMissed`).
 - Deck sessions never fail: no 80% gate, the result is the schedule. Leaving early saves what was answered.
 - Per session: up to 15 due reviews (most overdue first), then up to 6 new words only if reviews leave room. Nothing due: "extra practice" on the soonest-due words. Sessions call `activity.recordToday()` so they count toward the weekly goal.
+- **Shown as wins, never X/total:** the 850 stays hidden. Home, module page and list rows show "שלטתם ב-N" (a word is *won* at box 2+, `deckStats().won`), and the bar fills toward the next multiple of 50 (`nextMilestone`).
 - Progress: localStorage `deck-progress`, synced to the account (`docs/platform.md`).
 - Tests, no screenshots: scheduler box moves, lapses and due dates; session due-first order, new-word cap, same-`pos` distractors, `targets` aligned with `screens`; `match-definitions` per-target scoring.
 

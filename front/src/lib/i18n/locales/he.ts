@@ -342,7 +342,9 @@ export const he = {
 		statDue: 'לחזרה היום',
 		statLearning: 'בלמידה',
 		statKnown: 'ידועות',
-		progress: (seen: number, total: number) => `פגשתם ${seen} מתוך ${total} מילים`,
+		wordsWon: (n: number) => (n === 1 ? 'שלטתם במילה אחת' : `שלטתם ב-${n} מילים`),
+		wordsWonShort: (n: number) => `שלטתם ב-${n}`,
+		wordsWonNone: 'מתחילים!',
 		start: 'מתחילים תרגול',
 		newOnly: (n: number) => `${n} מילים חדשות`,
 		sessionSize: (reviews: number, fresh: number) =>

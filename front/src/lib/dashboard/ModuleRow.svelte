@@ -5,6 +5,7 @@
 	import type { ExamStats } from '$lib/quiz/stats';
 	import type { HomeMeters, ModuleHook, Progress } from './data';
 	import ExamNugget from './ExamNugget.svelte';
+	import ProgressValue from './ProgressValue.svelte';
 
 	// One Bagrut module on home, as concise as it gets: its exam nugget, a single
 	// hook line - the reason to open the module page - and the same two bars for
@@ -29,7 +30,7 @@
 	<span class="flex flex-col gap-1 text-xs lg:gap-1.5 lg:text-sm">
 		<span class="flex items-center gap-2">
 			<span class="me-auto truncate text-muted">{label}</span>
-			<span class="shrink-0 font-bold tabular" dir="ltr">{p.done}/{p.total}</span>
+			<span class="shrink-0 font-bold tabular"><ProgressValue {p} /></span>
 		</span>
 		<span class="h-2 overflow-hidden rounded-sm bg-line lg:h-2.5" aria-hidden="true">
 			<span

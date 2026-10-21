@@ -10,7 +10,14 @@
 	import { deckProgress } from '$lib/deck/deckProgress.svelte';
 	import { dayKey } from '$lib/deck/scheduler';
 	import { buildSession, EXAM_BOX, wordResults, type DeckSession } from '$lib/deck/session';
-	import { deckStats, deckToday, dueToday, localizeDeck, type Deck } from '$lib/deck';
+	import {
+		deckStats,
+		deckToday,
+		dueToday,
+		localizeDeck,
+		nextMilestone,
+		type Deck
+	} from '$lib/deck';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import type { PageProps } from './$types';
 
@@ -118,7 +125,9 @@
 					>
 						<span class="flex items-baseline justify-between gap-3">
 							<span class="font-bold">{listTitle(deck)}</span>
-							<span class="text-sm text-muted tabular" dir="ltr">{stats.seen}/{stats.total}</span>
+							<span class="text-sm text-muted tabular"
+									>{stats.won ? t.wordsWon(stats.won) : t.wordsWonNone}</span
+								>
 						</span>
 						<span
 							class="my-2.5 block h-1.5 overflow-hidden rounded-full bg-line"
@@ -126,7 +135,7 @@
 						>
 							<span
 								class="block h-full rounded-full bg-brand transition-[width] duration-500"
-								style="width: {(stats.seen / stats.total) * 100}%"
+								style="width: {(stats.won / nextMilestone(stats.won)) * 100}%"
 							></span>
 						</span>
 						<span class="block text-sm text-muted">

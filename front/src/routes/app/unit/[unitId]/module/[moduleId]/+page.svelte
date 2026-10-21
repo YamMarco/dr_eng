@@ -27,6 +27,7 @@
 	} from '$lib/dashboard/data';
 	import ExamNugget from '$lib/dashboard/ExamNugget.svelte';
 	import HubRow from '$lib/dashboard/HubRow.svelte';
+	import ProgressValue from '$lib/dashboard/ProgressValue.svelte';
 	import { speakingSummary } from '$lib/takeHistory';
 	import { chatCount } from '$lib/feedback/chatAi';
 	import NextStepHero from '$lib/dashboard/NextStepHero.svelte';
@@ -136,8 +137,8 @@
 				href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
 			>
 				{#snippet trailing()}
-					<span class="w-14 shrink-0 text-end text-sm font-bold tabular" dir="ltr"
-						>{done}/{total}</span
+					<span class="shrink-0 text-end text-sm font-bold tabular"
+						><ProgressValue p={row.progress} /></span
 					>
 				{/snippet}
 			</HubRow>
