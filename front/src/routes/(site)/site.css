@@ -1,0 +1,530 @@
+/* Public-site motion and art. Everything here is decorative; reduced motion turns
+   it off and leaves the content in place. */
+
+/* Scroll-in entrance (see $lib/site/reveal.ts). */
+[data-reveal] {
+	transition:
+		opacity 450ms ease-out,
+		transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+	transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal='hidden'] {
+	opacity: 0;
+	transform: translateY(28px);
+}
+[data-reveal='hidden'] * {
+	animation-play-state: paused !important;
+}
+
+/* Gradient art standing in for a photo until one is set ($lib/site/media.ts). */
+.art {
+	background:
+		radial-gradient(120% 90% at 85% 10%, var(--art-a), transparent 60%),
+		radial-gradient(90% 80% at 10% 95%, var(--art-b), transparent 65%), var(--art-base);
+}
+.art-teal {
+	--art-a: #7fd8c8;
+	--art-b: #e9c46a;
+	--art-base: #2a9d8f;
+}
+.art-gold {
+	--art-a: #fff3cf;
+	--art-b: #e76f51;
+	--art-base: #e9c46a;
+}
+.art-navy {
+	--art-a: #7fa3d6;
+	--art-b: #35b3a3;
+	--art-base: #2c3a52;
+}
+.art-sunset {
+	--art-a: #f6c29a;
+	--art-b: #8e6fd1;
+	--art-base: #e07a5f;
+}
+.art-orb {
+	position: absolute;
+	border-radius: 9999px;
+	background: rgb(255 255 255 / 0.18);
+	filter: blur(2px);
+}
+.art-orb-a {
+	inset-inline-start: -15%;
+	top: 8%;
+	width: 70%;
+	aspect-ratio: 1;
+	animation: drift 14s ease-in-out infinite alternate;
+}
+.art-orb-b {
+	inset-inline-end: -10%;
+	bottom: -12%;
+	width: 55%;
+	aspect-ratio: 1;
+	background: rgb(255 255 255 / 0.12);
+	animation: drift 18s ease-in-out infinite alternate-reverse;
+}
+.art .art-icon {
+	position: absolute;
+	inset-inline-end: 12%;
+	top: 18%;
+	color: rgb(255 255 255 / 0.85);
+	stroke-width: 1.25;
+}
+@keyframes drift {
+	to {
+		transform: translate(8%, 6%) scale(1.08);
+	}
+}
+
+/* Hero: the phone floats, the chips around it bob out of step. */
+.float-slow {
+	animation: float 7s ease-in-out infinite;
+}
+.float-chip {
+	animation:
+		rise 400ms ease-out backwards,
+		float 6s ease-in-out infinite;
+	animation-delay: var(--chip-delay, 0ms), calc(var(--chip-delay, 0ms) + 400ms);
+}
+@keyframes float {
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+/* The "בלי לנחש" highlighter stroke behind the headline. */
+.mark-stroke {
+	background: linear-gradient(
+			transparent 62%,
+			var(--color-accent) 62%,
+			var(--color-accent) 90%,
+			transparent 90%
+		)
+		no-repeat;
+	background-size: 100% 100%;
+	animation: mark-in 700ms 350ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+	padding-inline: 0.08em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+@keyframes mark-in {
+	from {
+		background-size: 0% 100%;
+	}
+}
+:root[data-theme='dark'] .mark-stroke {
+	background-image: linear-gradient(
+		transparent 62%,
+		color-mix(in oklab, var(--color-accent), transparent 45%) 62%,
+		color-mix(in oklab, var(--color-accent), transparent 45%) 90%,
+		transparent 90%
+	);
+}
+
+.live-dot {
+	animation: live 2s ease-out infinite;
+}
+@keyframes live {
+	0% {
+		box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-brand), transparent 30%);
+	}
+	100% {
+		box-shadow: 0 0 0 8px transparent;
+	}
+}
+
+/* Moments strip: two identical sets, the track slides one set's width and loops.
+   RTL: the copy sits to the left, so the track moves right. */
+.marquee {
+	animation: marquee 48s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+	animation-play-state: paused;
+}
+@keyframes marquee {
+	to {
+		transform: translateX(50%);
+	}
+}
+
+/* Product stills. */
+.mock-bar {
+	animation: bar-fill 900ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.vig-pick {
+	animation: pop-correct 260ms 700ms ease-out backwards;
+}
+.vig-pop {
+	animation: pop-in 260ms 760ms ease-out backwards;
+}
+.vig-flip {
+	animation: flip-in 600ms 200ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+	perspective: 600px;
+}
+.vig-tick {
+	animation: tick 1s steps(2) infinite;
+}
+.vig-dot {
+	animation: pop-in 240ms ease-out backwards;
+}
+@keyframes pop-in {
+	from {
+		opacity: 0;
+		transform: scale(0.4);
+	}
+}
+@keyframes flip-in {
+	from {
+		opacity: 0;
+		transform: rotateX(70deg);
+	}
+}
+@keyframes tick {
+	50% {
+		transform: rotate(12deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.art-orb,
+	.float-slow,
+	.float-chip,
+	.mark-stroke,
+	.live-dot,
+	.marquee,
+	.mock-bar,
+	.vig-pick,
+	.vig-pop,
+	.vig-flip,
+	.vig-tick,
+	.vig-dot {
+		animation: none;
+	}
+}
+
+/* Technique demos ($lib/site/MethodDemo.svelte), one 7s loop each. */
+.m-anchor {
+	background: transparent;
+	color: inherit;
+	animation: m-anchor 7s ease-in-out infinite;
+}
+p + p .m-anchor {
+	animation-delay: 0.5s;
+}
+@keyframes m-anchor {
+	0%,
+	12% {
+		background: transparent;
+	}
+	20%,
+	88% {
+		background: color-mix(in oklab, var(--color-accent), transparent 30%);
+	}
+	96%,
+	100% {
+		background: transparent;
+	}
+}
+.m-answer {
+	animation: m-answer 7s ease-in-out infinite;
+}
+@keyframes m-answer {
+	0%,
+	38% {
+		background: transparent;
+		box-shadow: inset 0 -2px 0 transparent;
+	}
+	46%,
+	88% {
+		background: var(--color-brand-soft);
+		box-shadow: inset 0 -2px 0 var(--color-brand);
+	}
+	96%,
+	100% {
+		background: transparent;
+		box-shadow: inset 0 -2px 0 transparent;
+	}
+}
+.m-dim {
+	animation: m-dim 7s ease-in-out infinite;
+}
+@keyframes m-dim {
+	0%,
+	25%,
+	96%,
+	100% {
+		opacity: 1;
+	}
+	33%,
+	88% {
+		opacity: 0.35;
+	}
+}
+.m-circle {
+	stroke: var(--color-accent);
+	stroke-dasharray: 1;
+	animation: m-circle 7s ease-in-out infinite;
+}
+@keyframes m-circle {
+	0%,
+	10% {
+		stroke-dashoffset: 1;
+	}
+	26%,
+	90% {
+		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+	97%,
+	100% {
+		stroke-dashoffset: 0;
+		opacity: 0;
+	}
+}
+.m-slot,
+.m-tick {
+	animation: m-in 7s ease-out infinite;
+}
+.m-slot-2,
+.m-tick-2 {
+	animation-name: m-in-late;
+}
+.m-tick {
+	animation-delay: 0.3s;
+}
+@keyframes m-in {
+	0%,
+	34% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	40%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes m-in-late {
+	0%,
+	54% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	60%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+.m-typing {
+	animation: m-typing 7s ease-out infinite;
+}
+@keyframes m-typing {
+	0%,
+	14%,
+	44%,
+	100% {
+		opacity: 0;
+	}
+	18%,
+	40% {
+		opacity: 1;
+	}
+}
+.m-pivot {
+	animation: m-pivot 7s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+@keyframes m-pivot {
+	0%,
+	42% {
+		opacity: 0;
+		transform: translateY(8px) scale(0.96);
+	}
+	50%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Skill ladder ($lib/site/LadderArt.svelte): 7s, the ball hops up four steps to the goal. */
+.ladder-steps {
+	stroke: var(--color-line);
+	stroke-dasharray: 1;
+	animation: draw 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+@keyframes draw {
+	from {
+		stroke-dashoffset: 1;
+	}
+}
+.ladder-node {
+	fill: var(--color-line);
+	animation: 7s ease-out infinite;
+}
+.ladder-node-0 {
+	animation-name: node-0;
+}
+.ladder-node-1 {
+	animation-name: node-1;
+}
+.ladder-node-2 {
+	animation-name: node-2;
+}
+.ladder-node-3 {
+	animation-name: node-3;
+}
+@keyframes node-0 {
+	0%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-1 {
+	0%,
+	15% {
+		fill: var(--color-line);
+	}
+	17%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-2 {
+	0%,
+	31% {
+		fill: var(--color-line);
+	}
+	33%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+@keyframes node-3 {
+	0%,
+	47% {
+		fill: var(--color-line);
+	}
+	49%,
+	92% {
+		fill: var(--color-brand);
+	}
+}
+.ladder-goal {
+	fill: var(--color-accent);
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: goal 7s ease-out infinite;
+}
+@keyframes goal {
+	0%,
+	63%,
+	80%,
+	100% {
+		transform: scale(1);
+	}
+	68% {
+		transform: scale(1.6);
+	}
+}
+.ladder-ball {
+	fill: var(--color-brand-dark);
+	animation: ball 7s ease-in-out infinite;
+}
+@keyframes ball {
+	0%,
+	6% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+	11% {
+		transform: translate(-20px, -30px);
+	}
+	16%,
+	22% {
+		transform: translate(-40px, -25px);
+	}
+	27% {
+		transform: translate(-60px, -55px);
+	}
+	32%,
+	38% {
+		transform: translate(-80px, -50px);
+	}
+	43% {
+		transform: translate(-100px, -80px);
+	}
+	48%,
+	54% {
+		transform: translate(-120px, -75px);
+	}
+	59% {
+		transform: translate(-137px, -108px);
+	}
+	64%,
+	88% {
+		transform: translate(-153px, -100px);
+		opacity: 1;
+	}
+	94%,
+	100% {
+		transform: translate(-153px, -100px);
+		opacity: 0;
+	}
+}
+
+/* Heartbeat ($lib/site/PulseLine.svelte). */
+.pulse-mask {
+	mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+}
+.pulse-track {
+	animation: pulse-run 5s linear infinite;
+}
+@keyframes pulse-run {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.m-anchor,
+	.m-answer,
+	.m-dim,
+	.m-circle,
+	.m-slot,
+	.m-tick,
+	.m-typing,
+	.m-pivot,
+	.ladder-steps,
+	.ladder-node,
+	.ladder-goal,
+	.ladder-ball,
+	.pulse-track {
+		animation: none;
+	}
+	.m-anchor {
+		background: color-mix(in oklab, var(--color-accent), transparent 30%);
+	}
+	.m-answer {
+		background: var(--color-brand-soft);
+	}
+	.m-typing,
+	.ladder-ball {
+		display: none;
+	}
+	.ladder-node {
+		fill: var(--color-brand);
+	}
+}

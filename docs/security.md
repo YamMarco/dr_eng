@@ -39,7 +39,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 2. `.env*` (except committed public-only `.env.mobile`) and `admin-users.local.txt` are gitignored; `.env.example` holds placeholders only. A secret ever committed = rotate it; deleting the file doesn't remove it from history.
 
 ### Access control and auth (OWASP A01, A07)
-3. Every `+server.ts` is a public endpoint: at the top, (a) zod-validate input, (b) authenticate, (c) authorize ownership. User ids come from the verified token, never the body (no IDOR).
+3. Every `+server.ts` is a public endpoint: at the top, (a) zod-validate input, (b) authenticate, (c) authorize ownership. User ids come from the verified token, never the body (no IDOR). Unauthenticated routes are only those in `PUBLIC_APIS` (`hooks.server.ts`), each with a server-side write cap.
 4. Supabase JWT verified server-side (`auth.getUser` or JWKS with issuer/audience/expiry checked; `alg: none` rejected), never decode-only. Admin = `app_metadata.role` from the verified token, never a client flag.
 5. Return only the fields the client needs, never whole DB rows. Server-only code stays under `$lib/server`.
 6. Sign-up / sign-in / reset: rate limited, CAPTCHA, leaked-password protection, exact redirect URLs, no open redirects.

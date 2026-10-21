@@ -17,6 +17,8 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
 // Authoring APIs: staff only, same-origin.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
+// Open to anyone, by name: the home page waitlist form.
+const PUBLIC_APIS = new Set(['/api/waitlist']);
 
 function cors(origin: string): Record<string, string> {
 	return {
@@ -34,7 +36,7 @@ const app: Handle = async ({ event, resolve }) => {
 	if (MOVED.test(pathname)) redirect(308, `/app${pathname}${event.url.search}`);
 
 	const routeId = event.route.id ?? '';
-	if (!routeId.startsWith('/api/')) return resolve(event);
+	if (!routeId.startsWith('/api/') || PUBLIC_APIS.has(routeId)) return resolve(event);
 	const admin = ADMIN_APIS.test(routeId);
 	const student = !admin;
 

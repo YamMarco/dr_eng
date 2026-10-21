@@ -70,7 +70,9 @@ export const llmUsage = pgTable(
 	'llm_usage',
 	{
 		userId: uuid().notNull(),
-		day: date().notNull().default(sql`current_date`),
+		day: date()
+			.notNull()
+			.default(sql`current_date`),
 		calls: integer().notNull().default(0)
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.day] })]
@@ -89,3 +91,10 @@ export const progress = pgTable(
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.key] })]
 ).enableRLS();
+
+/** Emails waiting for open sign-up (the home page form). Email only: users are minors. */
+export const waitlist = pgTable('waitlist', {
+	/** Stored trimmed and lower-cased. */
+	email: text().primaryKey(),
+	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
+}).enableRLS();

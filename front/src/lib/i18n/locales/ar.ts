@@ -20,7 +20,7 @@ export const ar: DictionaryOverride = {
 		vocabImages: 'صور الكلمات',
 		toSite: 'إلى الصفحة الرئيسية'
 	},
-	appTitle: 'بجروت الإنجليزية - تدريب',
+	appTitle: 'EngUp',
 	login: {
 		title: 'تسجيل الدخول',
 		subtitle: 'ادخلوا لمتابعة التدريب'

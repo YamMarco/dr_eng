@@ -13,7 +13,7 @@
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 @theme {
-	--font-sans: 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
+	--font-sans: 'Heebo Variable', 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
 
 	--color-canvas: #f9f7f4;
 	--color-surface: #ffffff;
@@ -148,6 +148,9 @@
    depth but nodes set a shallower one inline — same recipe, lower profile. */
 .puck-3d {
 	--puck-offset: 0.28em;
+	/* The lip hangs below the box: reserve its room, so gaps below stay true and a
+	   stretched neighbour (secondary button, input) matches face + lip. */
+	margin-bottom: var(--puck-offset);
 	position: relative;
 	touch-action: manipulation;
 	border: 2px solid var(--puck-border);

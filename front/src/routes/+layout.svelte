@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fontsource-variable/heebo';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
