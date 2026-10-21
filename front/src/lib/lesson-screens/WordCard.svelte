@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
+	import { staggerDelay } from '$lib/motion';
 	import type { WordCardScreen } from './types';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { mdBlock, mdInline } from './miniMarkdown';
@@ -47,16 +50,48 @@
 		<SpeakButtons text={screen.word} />
 	</div>
 
-	{#if screen.translationHe}
+	{#if screen.definitionEn}
+		<!-- Exam vocabulary (Module E deck): the meaning is the hero, then two small
+		     lines - the word in a real sentence, and the exact line the exam prints. -->
+		{#if screen.translationHe}
+			<p
+				in:fly={{ y: 8, duration: 250, delay: staggerDelay(1), easing: cubicOut }}
+				class="mt-3 rounded-2xl bg-brand-soft px-5 py-2 text-3xl font-extrabold text-brand-dark"
+				dir="auto"
+			>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html mdInline(screen.translationHe)}
+			</p>
+		{/if}
+		<dl
+			class="mt-6 flex w-full flex-col divide-y divide-line/70 rounded-2xl bg-surface text-start text-sm ring-1 ring-line/70"
+		>
+			{#if screen.exampleEn}
+				<div
+					in:fly={{ y: 8, duration: 250, delay: staggerDelay(2), easing: cubicOut }}
+					class="px-3 py-2.5"
+				>
+					<dt class="mb-0.5 text-xs font-bold text-muted">{i18n.dict.wordCard.sentenceLabel}</dt>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					<dd class="leading-relaxed" dir="ltr">{@html mdInline(screen.exampleEn)}</dd>
+				</div>
+			{/if}
+			<div
+				in:fly={{ y: 8, duration: 250, delay: staggerDelay(3), easing: cubicOut }}
+				class="px-3 py-2.5"
+			>
+				<dt class="mb-0.5 text-xs font-bold text-muted">{i18n.dict.wordCard.examLabel}</dt>
+				<dd class="leading-relaxed" dir="ltr">
+					<strong>{screen.word}</strong> - {screen.definitionEn}
+				</dd>
+			</div>
+		</dl>
+	{:else if screen.translationHe}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<p class="mt-2 text-lg text-muted" dir="auto">{@html mdInline(screen.translationHe)}</p>
 	{/if}
 
-	{#if screen.definitionEn}
-		<p class="mt-2 leading-snug font-semibold" dir="ltr">{screen.definitionEn}</p>
-	{/if}
-
-	{#if screen.exampleEn}
+	{#if screen.exampleEn && !screen.definitionEn}
 		<div class="mt-5 w-full rounded-2xl bg-accent-soft p-3 text-start">
 			<p class="mb-1 text-xs font-bold text-ink/60">{i18n.dict.wordCard.exampleLabel}</p>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->

@@ -314,6 +314,8 @@ export const ar: DictionaryOverride = {
 		listenSlowLabel: 'استماع ببطء',
 		hookLabel: 'نصيحة للحفظ',
 		exampleLabel: 'في النص',
+		sentenceLabel: 'في جملة',
+		examLabel: 'هكذا تظهر في الامتحان',
 		spellCopyPrompt: 'اكتبوا الكلمة التي في الأعلى',
 		spellListenPrompt: 'استمعوا إلى الكلمة واكتبوها',
 		inputPlaceholder: 'اكتبوا هنا...',

@@ -721,6 +721,8 @@ export const he = {
 		listenSlowLabel: 'השמעה לאט',
 		hookLabel: 'טיפ לזיכרון',
 		exampleLabel: 'בטקסט',
+		sentenceLabel: 'במשפט',
+		examLabel: 'כך זה נראה בבחינה',
 		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
 		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
 		inputPlaceholder: 'הקלידו כאן...',
