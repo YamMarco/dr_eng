@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import AppBar from '$lib/components/AppBar.svelte';
+	import MarkdownInput from '$lib/content-edit/MarkdownInput.svelte';
 	import { eGlossAr } from '$lib/content/e/words.ar';
 	import { saveWordGlossesAr, saveWords } from '$lib/content-edit/api';
 	import type { PageProps } from './$types';
@@ -60,9 +61,6 @@
 			saving = false;
 		}
 	}
-
-	// `**word**` -> bold, as on the word card.
-	const parts = (s: string) => s.split('**').map((text, i) => ({ text, bold: i % 2 === 1 }));
 </script>
 
 <svelte:head><title>עריכת מילים · רשימה {data.deck.letter}</title></svelte:head>
@@ -152,23 +150,31 @@
 								class="rounded-xl border border-line bg-canvas px-3 py-2 text-base font-normal text-ink"
 							></textarea>
 						</label>
-						<label class="flex flex-col gap-1 text-xs font-bold text-muted">
-							משפט לדוגמה (המילה בין **כוכביות**)
-							<textarea
-								bind:value={row.exampleEn}
+						<div class="flex flex-col gap-1">
+							<div class="flex items-center justify-between gap-2">
+								<span class="text-xs font-bold text-muted">משפט לדוגמה</span>
+								<!-- mousedown keeps the selection in the sentence for execCommand -->
+								<button
+									type="button"
+									title="הדגשה: סמנו את המילה ולחצו"
+									aria-label="הדגשה"
+									onmousedown={(e) => e.preventDefault()}
+									onclick={() => document.execCommand('bold')}
+									class="h-9 w-9 rounded-lg border border-line text-base font-black transition hover:bg-canvas active:scale-95"
+								>
+									B
+								</button>
+							</div>
+							<MarkdownInput
 								dir="ltr"
-								rows="2"
-								class="rounded-xl border border-line bg-canvas px-3 py-2 text-base font-normal text-ink"
-							></textarea>
-						</label>
-						<p class="text-sm" dir="ltr">
-							{#each parts(row.exampleEn) as part, j (j)}
-								{#if part.bold}<strong>{part.text}</strong>{:else}{part.text}{/if}
-							{/each}
-						</p>
+								minRows={2}
+								value={row.exampleEn}
+								onInput={(v) => (row.exampleEn = v)}
+							/>
+						</div>
 						{#if invalid(row)}
 							<p class="text-sm font-bold text-danger">
-								צריך תרגום לעברית, הגדרה ומשפט עם המילה בין **כוכביות**.
+								צריך תרגום לעברית, הגדרה, ומשפט שבו המילה מודגשת (סמנו אותה ולחצו B).
 							</p>
 						{/if}
 						{#if dirty}

@@ -142,7 +142,7 @@ A spaced-repetition deck, not nodes. Plan: `docs/modules/module-e.md`.
 - `lib/deck/scheduler.ts`: Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box; wrong = first lapse down one box, later lapses box 1, due tomorrow.
 - `lib/deck/session.ts` builds the screens. New words two at a time (card, Hebrew meaning, copy-spelling, match-pairs). Reviews by box: 1 Hebrew meaning, 2 fill the blank, 3+ in one-class sets of 3 as `match-definitions` (leftovers: definition -> word). Words show as the exam prints them (`printed()`: `to cope`, `an essay`; exceptions in `form`).
 - Progress: `lib/deck/deckProgress.svelte.ts` (localStorage `deck-progress`, keyed by deck id; `migrate` moves older module-keyed progress). Page: `/app/unit/<u>/module/<m>/words`. Tests: `npm test` (`front/tests/deck.test.ts`).
-- Editing (staff, web): **✎ עריכה** beside each list -> `/edit-words?deck=e-a`: a table of the list's words (English, Hebrew, Arabic); a row opens to edit Hebrew, Arabic, definition and example. Saves through `/api/content-edit` (`content-edit/wordsFile.ts`: the list file's `w(...)` calls and `words.ar.ts`; an empty Arabic falls back to Hebrew).
+- Editing (staff, web): **✎ עריכה** beside each list -> `/edit-words?deck=e-a`: a table of the list's words (English, Hebrew, Arabic); a row opens to edit Hebrew, Arabic, definition and example (shown formatted; a **B** button bolds the word). Saves like `/edit`: local file in dev, a GitHub commit on the production deployment (preview deployments have no `GITHUB_*` vars, so they cannot save). Saves through `/api/content-edit` (`content-edit/wordsFile.ts`: the list file's `w(...)` calls and `words.ar.ts`; an empty Arabic falls back to Hebrew).
 
 ## Screen length on a phone
 
