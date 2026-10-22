@@ -2,6 +2,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { SentenceCompletionScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import AnswerLang from './AnswerLang.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -64,11 +65,13 @@
 	</div>
 {/if}
 
-<div class="text-lg leading-relaxed font-semibold" dir="ltr">
+<AnswerLang />
+<div class="mt-2 text-lg leading-relaxed font-semibold" dir="ltr">
 	<Md text={screen.before} />
 	<input
 		type="text"
 		dir="ltr"
+		lang="en"
 		disabled={checked}
 		bind:value={answer}
 		class="mx-1 inline-block w-40 rounded-lg border-2 px-2 py-1 align-middle text-base font-semibold transition {checked

@@ -17,11 +17,18 @@ import { getContext, setContext } from 'svelte';
 const KEY = Symbol('lesson-score');
 
 /** `log` holds every answer in order (right / wrong), so a caller can read
- *  per-question results, not only the total (the word deck grades each word). */
-export type LessonScore = { correct: number; total: number; log: boolean[] };
+ *  per-question results, not only the total (the word deck grades each word).
+ *  `verdict` is the latest check (all of its answers right?), null until one;
+ *  the runner clears it on each press and shows it as the feedback bar. */
+export type LessonScore = {
+	correct: number;
+	total: number;
+	log: boolean[];
+	verdict: boolean | null;
+};
 
 export function createLessonScore(total: number): LessonScore {
-	const score = $state<LessonScore>({ correct: 0, total, log: [] });
+	const score = $state<LessonScore>({ correct: 0, total, log: [], verdict: null });
 	setContext(KEY, score);
 	return score;
 }
@@ -35,4 +42,5 @@ export function getLessonScore(): LessonScore {
 export function recordAnswer(score: LessonScore, correct: boolean) {
 	score.log.push(correct);
 	if (correct) score.correct += 1;
+	score.verdict = (score.verdict ?? true) && correct;
 }

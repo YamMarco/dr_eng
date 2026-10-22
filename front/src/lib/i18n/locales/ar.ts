@@ -253,6 +253,10 @@ export const ar: DictionaryOverride = {
 		scoreLabel: 'إجابات صحيحة',
 		questionProgress: (current: number, total: number) => `سؤال ${current} من ${total}`,
 		nextQuestionButton: 'التالي',
+		feedbackRight: ['صحيح!', 'ممتاز!', 'بالضبط!', 'أحسنتم!'],
+		feedbackWrong: 'تقريبًا',
+		feedbackRetryLater: 'سنعود إلى هذا السؤال في نهاية الجولة.',
+		feedbackLook: 'انظروا إلى الإجابة الصحيحة قبل المتابعة.',
 		continueNextLesson: 'متابعة إلى الدرس التالي',
 		continueNextRound: 'متابعة إلى الجولة التالية',
 		retryButton: 'محاولة أخرى',
@@ -284,6 +288,13 @@ export const ar: DictionaryOverride = {
 		submitButton: 'فحص',
 		passedFeedback: 'ممتاز!',
 		notPassedFeedback: 'تقريبًا - اللون يريكم ما فاتكم'
+	},
+	answerLang: {
+		en: 'الإجابة بالإنجليزية',
+		he: 'الإجابة بالعربية',
+		speak: 'تحدّثوا بالإنجليزية',
+		placeholderEn: 'اكتبوا هنا بالإنجليزية...',
+		placeholderHe: 'اكتبوا هنا بالعربية...'
 	},
 	selfCheck: {
 		placeholder: 'اكتبوا هنا...',

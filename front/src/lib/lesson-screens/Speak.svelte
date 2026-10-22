@@ -9,6 +9,7 @@
 	import type { SpeakScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import AnswerLang from './AnswerLang.svelte';
 	import SpeakButtons from './SpeakButtons.svelte';
 	import SelfReview from './SelfReview.svelte';
 	import { Recorder, type Take } from '$lib/recorder.svelte';
@@ -121,6 +122,7 @@
 {/if}
 
 <div class="mt-5 flex flex-col items-center gap-3">
+	<AnswerLang speak />
 	<!-- Same action as the primary button: start, then stop. -->
 	<button
 		type="button"

@@ -58,7 +58,8 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 - **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.
 - **`speak`** (COBE): the question (English, with listen buttons), an optional Hebrew `tip`, one take with no pause and a bar to `targetSeconds`, then playback, "record again" (replaces the take), and `modelAnswer` + `checklist`. Never scored in lessons. In an exam it takes `part` (A/B/C) + `points`, hides all feedback, keeps the take between questions and is graded in the report against the COBE rubric (see `docs/modules/cobe.md`). Audio stays in memory on the device (`lib/recorder.svelte.ts`); without a microphone it runs as a stopwatch.
 - **`video`** (COBE Part C): a clip with an optional Hebrew `caption`. Without `src` it shows a dashed placeholder marking where the clip goes. Never scored.
-- **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged).
+- **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged). Every round with a `spell-word` has it.
+- **Answer language:** open and voice inputs show a pill above the input (`AnswerLang.svelte`): `writing-task`, `passage-quiz`, `sentence-completion` English, `speak` "speak English". `self-check.answerLang: 'he'` (the UI language: Hebrew, Arabic in the Arabic UI) for questions answered in the student's language (explain, "what's the difference"); default English. Set it per screen in the editor.
 
 ### Adding a screen type
 
@@ -81,6 +82,7 @@ Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-previe
 - One `LessonRunner` per **round**, remounted each time; screens failing `isScreenEmpty()` are skipped.
 - Score denominator is fixed upfront from `countQuestions()`. Pass = 80% correct; a round with 0 scored questions always passes.
 - Timers write elapsed ms into a per-round bag keyed by `timerKey`; `time-result` / `time-comparison` read it. Screens that measure time get a "עם טיימר" checkbox in the editor (`fields/TimerField.svelte`). Only `passage-mcq` and `mark-all` have `timerKey`.
+- After each check the footer shows a feedback bar (`score.verdict`, set by `recordAnswer`, cleared on every press): right = praise + check, wrong = calm "כמעט" + "we'll come back to it" when the round retries, else "look at the answer".
 - Static-screen runs (the word deck) can pass `onScreenResult(index, answers)`, `retryMissed` and `alwaysPass`.
 
 ## Reading round pattern (Part B)

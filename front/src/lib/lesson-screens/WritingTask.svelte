@@ -3,6 +3,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { WritingTaskScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import AnswerLang from './AnswerLang.svelte';
 	import SelfReview from './SelfReview.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -290,13 +291,15 @@
 				: 'border-miss bg-miss-soft/40'}"
 		/>
 	{:else}
+		<AnswerLang />
 		<textarea
 			dir="ltr"
+			lang="en"
 			rows="7"
 			disabled={checked || grading}
 			bind:value={essayText}
-			placeholder={i18n.dict.selfCheck.placeholder}
-			class="mt-4 w-full rounded-xl border-2 p-3 leading-relaxed transition {checked
+			placeholder={i18n.dict.answerLang.placeholderEn}
+			class="mt-2 w-full rounded-xl border-2 p-3 leading-relaxed transition placeholder-shown:[direction:rtl] {checked
 				? allOk
 					? 'border-brand bg-brand-soft/40'
 					: 'border-miss bg-miss-soft/40'
@@ -312,7 +315,8 @@
 		</p>
 	{/if}
 {:else}
-	<div class="mt-4 flex flex-col gap-3">
+	<AnswerLang />
+	<div class="mt-2 flex flex-col gap-3">
 		{#each inputLines as line, i (i)}
 			{#if showMarks}
 				<MarkedText
@@ -326,6 +330,7 @@
 				<input
 					type="text"
 					dir="ltr"
+					lang="en"
 					disabled={checked || grading}
 					value={line}
 					oninput={(e) => (inputLines[i] = e.currentTarget.value)}

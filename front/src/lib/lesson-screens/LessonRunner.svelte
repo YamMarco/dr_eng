@@ -3,7 +3,7 @@
 	import { Tween } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
-	import { BookOpen, Star } from '@lucide/svelte';
+	import { BookOpen, Check, Lightbulb, RotateCcw, Star } from '@lucide/svelte';
 	import { roundsCompleted } from '$lib/lessonPath';
 	import { dev } from '$app/environment';
 	import AppBar from '$lib/components/AppBar.svelte';
@@ -196,8 +196,21 @@
 		lesson ? Math.max(roundsCompleted(lesson.id), (roundIndex ?? 0) + 1) : 0
 	);
 
+	// The feedback bar after a check: a wrong answer on a first pass comes back at the end.
+	let isReplay = $derived(screenIndex >= baseScreens.length);
+	let willRetry = $derived(retryMissed && !isReplay);
+	let praise = $derived(
+		i18n.dict.lesson.feedbackRight[score.log.length % i18n.dict.lesson.feedbackRight.length]
+	);
+
+	function primary() {
+		score.verdict = null;
+		screenInstance?.primaryAction();
+	}
+
 	function advance() {
 		direction = 1;
+		score.verdict = null;
 		if (onScreenResult && screenIndex < baseScreens.length)
 			onScreenResult(keptIndices[screenIndex], score.log.slice(logAtScreenStart));
 		logAtScreenStart = score.log.length;
@@ -227,6 +240,7 @@
 		logAtScreenStart = 0;
 		score.correct = 0;
 		score.log = [];
+		score.verdict = null;
 		score.total = totalQuestions;
 		scoreTween.set(0, { duration: 0 });
 		for (const key of Object.keys(session)) delete session[key];
@@ -387,7 +401,41 @@
 					{/if}
 				{/if}
 			{:else}
-				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
+				{#if score.verdict !== null}
+					{@const right = score.verdict}
+					<div
+						role="status"
+						in:fly={{ y: 16, duration: 220, easing: backOut }}
+						class="flex items-center gap-3 rounded-2xl px-4 py-3 {right
+							? 'bg-brand-soft text-brand-dark'
+							: 'bg-miss-soft text-miss'}"
+					>
+						<span
+							class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white {right
+								? 'bg-brand motion-safe:animate-pop-correct'
+								: 'bg-miss'}"
+						>
+							{#if right}
+								<Check size={26} strokeWidth={3} aria-hidden="true" />
+							{:else if willRetry}
+								<RotateCcw size={22} strokeWidth={2.5} aria-hidden="true" />
+							{:else}
+								<Lightbulb size={22} strokeWidth={2.5} aria-hidden="true" />
+							{/if}
+						</span>
+						<span class="min-w-0">
+							<span class="block text-xl font-extrabold">
+								{right ? praise : i18n.dict.lesson.feedbackWrong}
+							</span>
+							{#if !right}
+								<span class="block text-sm font-semibold">
+									{willRetry ? i18n.dict.lesson.feedbackRetryLater : i18n.dict.lesson.feedbackLook}
+								</span>
+							{/if}
+						</span>
+					</div>
+				{/if}
+				<Button onclick={primary} disabled={footerDisabled}>
 					{primaryLabel}
 				</Button>
 			{/if}

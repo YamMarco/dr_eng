@@ -411,6 +411,7 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 'תלמיד קיבל את ההוראה "Give TWO answers" וכתב. מה הבעיה? תשובה אחת ארוכה עם "and" באמצע',
+              answerLang: "he",
               modelAnswer:
                 "זו עדיין תשובה אחת: הבודק של בחינת הבגרות מחפש שתי נקודות נפרדות וממוספרות, לא משפט אחד ארוך שיש בתוכו שתי תשובות.",
             },
@@ -826,6 +827,7 @@ export const c2Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 'תלמיד ענה על "Circle the correct answer" בכך שכתב תשובה משלו במקום להקיף אחת מהאפשרויות. מה קרה לו?',
+              answerLang: "he",
               modelAnswer:
                 "הוא קיבל 0: ההוראה דורשת הקפה של אפשרות קיימת, לא כתיבת תשובה חדשה.",
             },

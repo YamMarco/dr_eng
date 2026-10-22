@@ -103,6 +103,12 @@ export const selfCheckSchema = z
 		prompt: z.string(),
 		text: z.string().optional().describe('Optional English passage shown above the prompt.'),
 		modelAnswer: z.string(),
+		answerLang: z
+			.enum(['en', 'he'])
+			.optional()
+			.describe(
+				'The language the student answers in, shown above the input: English (default) or "he" = the UI language (Hebrew, Arabic in the Arabic UI).'
+			),
 		placeholder: z.string().optional(),
 		minWords: z.number().int().min(0).optional().describe('With maxWords: live word counter.'),
 		maxWords: z.number().int().min(0).optional(),

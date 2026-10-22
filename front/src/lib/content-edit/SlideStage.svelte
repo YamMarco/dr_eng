@@ -575,6 +575,18 @@
 												/>
 												בדיקה אוטומטית (אותיות גדולות, פיסוק, כתיב) והערות
 											</label>
+											<label class="flex items-center gap-2 text-xs text-muted">
+												שפת התשובה
+												<select
+													value={screen.answerLang ?? 'en'}
+													onchange={(e) =>
+														(screen.answerLang = e.currentTarget.value === 'he' ? 'he' : undefined)}
+													class="rounded-lg border border-line bg-canvas px-2 py-1"
+												>
+													<option value="en">אנגלית</option>
+													<option value="he">עברית</option>
+												</select>
+											</label>
 										{/if}
 										{#if !isExam && screen.type === 'writing-task'}
 											<div class="flex flex-wrap items-center gap-x-4 gap-y-2">

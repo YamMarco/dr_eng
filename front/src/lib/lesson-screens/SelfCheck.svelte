@@ -2,6 +2,7 @@
 	import type { SelfCheckScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import AnswerLang from './AnswerLang.svelte';
 	import WritingCheck from '$lib/checks/WritingCheck.svelte';
 	import PassageText, { hasParagraphMarkers } from './PassageText.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -26,6 +27,7 @@
 		disabled?: boolean;
 		label?: string;
 	} = $props();
+	let lang = $derived(screen.answerLang ?? 'en');
 
 	// Revisiting via the quiz navigator restores whatever was typed before.
 	let answer = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
@@ -86,13 +88,16 @@
 	<Md block text={screen.prompt} />
 </div>
 
+<AnswerLang {lang} />
 <textarea
-	dir="auto"
+	dir={lang === 'en' ? 'ltr' : 'rtl'}
+	lang={lang === 'en' ? 'en' : undefined}
 	rows="4"
 	disabled={revealed}
 	bind:value={answer}
-	placeholder={screen.placeholder ?? i18n.dict.selfCheck.placeholder}
-	class="mt-3 w-full rounded-xl border-2 border-line bg-surface p-3 leading-relaxed focus:border-brand"
+	placeholder={screen.placeholder ??
+		(lang === 'en' ? i18n.dict.answerLang.placeholderEn : i18n.dict.answerLang.placeholderHe)}
+	class="mt-2 w-full rounded-xl border-2 border-line bg-surface p-3 leading-relaxed placeholder-shown:[direction:rtl] focus:border-brand"
 ></textarea>
 
 {#if hasCounter}

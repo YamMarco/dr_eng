@@ -486,6 +486,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               text: "Five years ago, the streets of Greenville had almost no plants or trees. A local charity planted 2,000 trees and 15 gardens.",
               prompt: "השלימו: הטקסט הזה הוא על ___________ ב-___________.",
+              answerLang: "he",
               modelAnswer: "על נטיעת עצים וגינות (שינוי ירוק) בעיר Greenville.",
             },
           ],
@@ -497,12 +498,14 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               text: "LEARNING TO SWIM AS AN ADULT\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults cannot swim.",
               prompt: "על סמך הכותרת ופסקה I - על מה הטקסט? ענו במשפט אחד.",
+              answerLang: "he",
               modelAnswer: "הטקסט על מבוגרים שלומדים לשחות.",
             },
             {
               type: "self-check",
               prompt:
                 "כמה זמן לוקח לקרוא כותרת + פסקה 1, ולמה זה שווה את הזמן?",
+              answerLang: "he",
               modelAnswer:
                 '30 שניות. אחרי זה יודעים על מה הטקסט ולא נכנסים לשאלות "עיוור".',
             },
@@ -899,11 +902,13 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 "מלאו את הכלל: רק _______ = עונה. צהוב מרגיש כמו _______ - אבל הוא לא.",
+              answerLang: "he",
               modelAnswer: "רק ירוק = עונה. צהוב מרגיש כמו ירוק - אבל הוא לא.",
             },
             {
               type: "self-check",
               prompt: 'תלמיד קרא שאלה, "הבין", ענה - וקיבל 0. מה כנראה קרה?',
+              answerLang: "he",
               modelAnswer:
                 "**הוא היה בצהוב ולא בירוק. חשב שהבין, אבל לא הבין מה בדיוק השאלה ביקשה.**",
             },
@@ -1273,6 +1278,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: "הסבירו בעברית: למה P1 יעיל דווקא לתלמיד עם אנגלית חלשה?",
+              answerLang: "he",
               modelAnswer:
                 "כי הוא נותן נוסחה קבועה לכל שאלה. לא צריך לחשוב מחדש בכל פעם - רק לבצע חמישה שלבים.",
             },
@@ -2362,6 +2368,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: "בשתי מילים: מה עושים כשרואים NOT בשאלה?",
+              answerLang: "he",
               modelAnswer: "ציד - מחפשים מה שגוי או מה שלא מוזכר.",
             },
             {
@@ -2369,6 +2376,7 @@ export const c1Lessons: LessonNode[] = [
               text: "II  Dr. Sarah Okafor studied volunteering for ten years. She found that teenagers who volunteer feel less stressed. However, not all types of volunteering produce the same results. The most effective programmes bring young people face to face with the people they help.",
               prompt:
                 '"Which does Dr. Okafor NOT say about volunteering programmes?" - כתבו את תהליך הבדיקה שלכם בשלושה שלבים.',
+              answerLang: "he",
               modelAnswer:
                 "1-סורק מה בדיוק Dr. Okafor אמרה. 2-בודק כל אפשרות מול הטקסט. 3-האפשרות שאין לה הוכחה = התשובה.",
             },
@@ -2893,6 +2901,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: 'מה ההבדל בין "the most" לבין "most" בשאלה? תנו דוגמה.',
+              answerLang: "he",
               modelAnswer:
                 '"What is the most common reason?" - the most = סיבה אחת, הכי נפוצה. "Why do most trees die?" - most = רוב העצים; השאלה שואלת מה קורה לרובם.',
             },
@@ -3458,6 +3467,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: "הסבירו: מהם ארבעת הצעדים של MC, ולמה הסדר חשוב?",
+              answerLang: "he",
               modelAnswer:
                 "1-קוראים את כל 4 האפשרויות. 2-חוצים סותרים ואפשרויות מהפסקה הלא נכונה. 3-מחפשים הוכחה בפסקה הנכונה. 4-מקיפים. הסדר חשוב כי לא מסמנים לפני שיש הוכחה.",
             },
@@ -3745,6 +3755,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: 'הסבירו: למה חשוב לכתוב "Because…" כשהשאלה שואלת "Why?"',
+              answerLang: "he",
               modelAnswer:
                 'כי זה מראה שהבנתם שהשאלה ביקשה סיבה, וגם עוזר לדקדוק - "Because + סיבה" הוא משפט שלם.',
             },
@@ -4045,6 +4056,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 'הסבירו: מה ההבדל בין "because" לבין "in order to" בהשלמת משפט?',
+              answerLang: "he",
               modelAnswer:
                 'because = סיבה, מה גרם. in order to = מטרה, מה רצו להשיג. "They left because they had no food" מול "They came in order to find food."',
             },
@@ -4301,6 +4313,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "self-check",
               prompt: 'תלמיד כתב שלוש תשובות ל-"Give TWO answers". מה הסיכון?',
+              answerLang: "he",
               modelAnswer:
                 "הבודק מתייחס לשתי הראשונות בלבד. אם אחת מהן שגויה - מפסידים נקודות, גם אם התשובה השלישית נכונה.",
             },
@@ -4308,6 +4321,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 'הסבירו: מה התפקיד של "and / also / in addition" בשאלת TWO answers?',
+              answerLang: "he",
               modelAnswer:
                 "הן הסיגנל בטקסט שתשובה שנייה מגיעה. מוצאים אחת מהן - ממשיכים לקרוא, והתשובה השנייה שם.",
             },
@@ -4708,6 +4722,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 "השלימו: however / but מסמנים ___________. מה שאחריהם הוא ___________.",
+              answerLang: "he",
               modelAnswer:
                 "פנייה בטקסט. מה שאחריהם הוא הנקודה החשובה - המידע החדש.",
             },
@@ -4731,6 +4746,7 @@ export const c1Lessons: LessonNode[] = [
               type: "self-check",
               prompt:
                 '{a:left}{d:rtl}"The air was polluted, and most residents felt the city was unpleasant. However, a local charity decided to change this." -\n{d:rtl}\n{d:rtl} מה הנקודה החשובה במשפט זה?',
+              answerLang: "he",
               modelAnswer: "שארגון צדקה מקומי החליט לשנות את המצב בעיר.",
             },
           ],

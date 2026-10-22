@@ -4,6 +4,7 @@
 	import Md from '$lib/components/Md.svelte';
 	import type { PassageQuizScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import AnswerLang from './AnswerLang.svelte';
 	import PassageText, { hasParagraphMarkers } from './PassageText.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -74,6 +75,7 @@
 </ReadingPaper>
 
 <div class="mt-6 flex flex-col gap-5 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
+	<div class="-mt-3"><AnswerLang /></div>
 	{#each screen.questions as question, i (i)}
 		{@const correct = results[i]}
 		<div>
@@ -88,6 +90,7 @@
 			<input
 				type="text"
 				dir="ltr"
+				lang="en"
 				disabled={checked}
 				bind:value={answers[i]}
 				class="mt-2 w-full rounded-xl border-2 px-3 py-2 font-semibold transition {checked

@@ -569,6 +569,10 @@ export const he = {
 		scoreLabel: 'תשובות נכונות',
 		questionProgress: (current: number, total: number) => `שאלה ${current} מתוך ${total}`,
 		nextQuestionButton: 'הבא',
+		feedbackRight: ['נכון!', 'מעולה!', 'בדיוק!', 'יפה מאוד!'],
+		feedbackWrong: 'כמעט',
+		feedbackRetryLater: 'נחזור לשאלה הזאת בסוף הסבב.',
+		feedbackLook: 'שווה להציץ בתשובה הנכונה לפני שממשיכים.',
 		continueNextLesson: 'המשך לשיעור הבא',
 		continueNextRound: 'המשך לסבב הבא',
 		retryButton: 'עוד ניסיון',
@@ -602,6 +606,13 @@ export const he = {
 		submitButton: 'בדיקה',
 		passedFeedback: 'יפה מאוד!',
 		notPassedFeedback: 'כמעט — הצבע מראה מה פספסתם'
+	},
+	answerLang: {
+		en: 'עונים באנגלית',
+		he: 'עונים בעברית',
+		speak: 'מדברים באנגלית',
+		placeholderEn: 'כתבו כאן באנגלית...',
+		placeholderHe: 'כתבו כאן בעברית...'
 	},
 	selfCheck: {
 		placeholder: 'כתבו כאן...',
