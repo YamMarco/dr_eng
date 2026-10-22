@@ -19,6 +19,9 @@
 		type Deck
 	} from '$lib/deck';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { MOBILE_BUILD } from '$lib/platform';
+	import { resolve } from '$app/paths';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -114,11 +117,14 @@
 		<p class="mb-3 text-sm text-muted">{t.listsNote}</p>
 		<ul class="flex flex-col gap-3">
 			{#each lists as { deck, stats, today: work }, i (deck.id)}
-				<li in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 3), easing: cubicOut }}>
+				<li
+					in:fly={{ y: 12, duration: 300, delay: staggerDelay(i + 3), easing: cubicOut }}
+					class="flex items-stretch gap-2"
+				>
 					<button
 						type="button"
 						onclick={() => start(deck)}
-						class="w-full rounded-3xl bg-surface p-4 text-start shadow-md ring-1 shadow-overlay/5 transition duration-100 hover:ring-brand/40 active:scale-[0.98] {deck ===
+						class="min-w-0 flex-1 rounded-3xl bg-surface p-4 text-start shadow-md ring-1 shadow-overlay/5 transition duration-100 hover:ring-brand/40 active:scale-[0.98] {deck ===
 						next?.deck
 							? 'ring-brand/50'
 							: 'ring-line/70'}"
@@ -126,8 +132,8 @@
 						<span class="flex items-baseline justify-between gap-3">
 							<span class="font-bold">{listTitle(deck)}</span>
 							<span class="text-sm text-muted tabular"
-									>{stats.won ? t.wordsWon(stats.won) : t.wordsWonNone}</span
-								>
+								>{stats.won ? t.wordsWon(stats.won) : t.wordsWonNone}</span
+							>
 						</span>
 						<span
 							class="my-2.5 block h-1.5 overflow-hidden rounded-full bg-line"
@@ -142,6 +148,16 @@
 							{work.reviews + work.fresh ? t.sessionSize(work.reviews, work.fresh) : t.allDoneTitle}
 						</span>
 					</button>
+					<!-- Staff: edit this list's words (web only, /edit-words needs the server). -->
+					{#if !MOBILE_BUILD && auth.isAdmin}
+						<a
+							href="{resolve('/edit-words')}?deck={deck.id}&unit={data.group.id}"
+							title="עריכת המילים ב{listTitle(deck)}"
+							class="inline-flex min-w-11 items-center justify-center rounded-2xl border border-line px-3 text-xs font-bold transition hover:bg-line/60 active:scale-95"
+						>
+							✎ עריכה
+						</a>
+					{/if}
 				</li>
 			{/each}
 		</ul>

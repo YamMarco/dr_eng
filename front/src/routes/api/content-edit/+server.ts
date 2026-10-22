@@ -3,7 +3,8 @@
 // deletes }), or merges a patch of changed/removed exams into a module's
 // quiz-content file ({ examModuleId, upserts, deletes }), or merges changed/
 // removed Hebrew titles by key into the locale file ({ titles: { upserts,
-// deletes } }) — one save = one
+// deletes } }), or patches Module E words ({ wordDeckId, words } into a list
+// file, { wordGlossesAr } into the Arabic meanings) — one save = one
 // write/commit, however many screens/nodes changed since the last save.
 // Untouched nodes pass through from the file's current content, not from the
 // caller's copy, so a save never reverts someone else's already-committed
@@ -30,6 +31,12 @@ import {
 	mergeById,
 	emit
 } from '$lib/content-edit/fileEmit';
+import {
+	patchGlosses,
+	patchWordList,
+	wordListFile,
+	type WordPatch
+} from '$lib/content-edit/wordsFile';
 import type { RequestHandler } from './$types';
 
 // One request either replaces a single lesson's `content` ({ lessonId,
@@ -42,6 +49,8 @@ import type { RequestHandler } from './$types';
 // changed: two people editing different nodes in the same file never stomp
 // on each other, in the file or in git history.
 type Body =
+	| { wordDeckId: string; words: WordPatch[] }
+	| { wordGlossesAr: Record<string, string> }
 	| {
 			titles: { upserts: Record<string, string>; deletes: string[] };
 			lessonId?: undefined;
@@ -76,6 +85,10 @@ type Body =
 			content?: undefined;
 	  };
 
+const MAX_TEXT = 400;
+const isText = (v: unknown, required = true): v is string =>
+	typeof v === 'string' && v.length <= MAX_TEXT && (!required || v.trim() !== '');
+
 /** A section's lesson file: 'c-3' -> content/c/c-3.ts exporting c3Lessons;
  *  'cobe-1' -> content/cobe/cobe-1.ts exporting cobe1Lessons. */
 function sectionFile(sectionId: string) {
@@ -98,7 +111,36 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	let label: string;
 	let transform: (raw: string) => string;
 
-	if ('titles' in body) {
+	if ('wordDeckId' in body) {
+		const { wordDeckId, words } = body;
+		if (!Array.isArray(words) || !words.length) throw error(400, 'missing words[]');
+		for (const p of words)
+			if (
+				!isText(p?.id) ||
+				!isText(p.defEn) ||
+				!isText(p.he) ||
+				!isText(p.exampleEn) ||
+				!p.exampleEn.includes('**')
+			)
+				throw error(400, `bad word ${String(p?.id)}: definition, Hebrew and a **bold** example`);
+		const file = wordListFile(wordDeckId);
+		relPath = file.relPath;
+		label = `words ${wordDeckId}`;
+		transform = (raw) =>
+			patchWordList(
+				raw,
+				file.arrayName,
+				words.map(({ id, defEn, he, exampleEn }) => ({ id, defEn, he, exampleEn }))
+			);
+	} else if ('wordGlossesAr' in body) {
+		const upserts = body.wordGlossesAr;
+		if (!upserts || typeof upserts !== 'object') throw error(400, 'missing wordGlossesAr{}');
+		for (const [id, value] of Object.entries(upserts))
+			if (!/^[a-z-]+$/.test(id) || !isText(value, false)) throw error(400, `bad Arabic for ${id}`);
+		relPath = 'src/lib/content/e/words.ar.ts';
+		label = 'words (ar)';
+		transform = (raw) => patchGlosses(raw, 'eGlossAr', upserts);
+	} else if ('titles' in body) {
 		const { upserts, deletes } = body.titles;
 		if (!upserts || typeof upserts !== 'object' || !Array.isArray(deletes))
 			throw error(400, 'missing titles.upserts{}/deletes[]');

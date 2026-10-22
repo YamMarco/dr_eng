@@ -332,13 +332,7 @@ export const listD = [
 		'שיכור',
 		'It is dangerous to drive when you are **drunk**.'
 	),
-	w(
-		'breast',
-		'noun',
-		'the front part of the chest',
-		'חזה',
-		'The bird had a red **breast**.'
-	),
+	w('breast', 'noun', 'the front part of the chest', 'חזה', 'The bird had a red **breast**.'),
 	w(
 		'elbow',
 		'noun',

@@ -3,6 +3,13 @@
 // means "to" + the word, `-` means the bare word.
 import type { DeckWord, WordPos } from '$lib/deck/types';
 
+/** A word's id: kebab case, the progress key. */
+export const wordId = (word: string) =>
+	word
+		.toLowerCase()
+		.replace(/[^a-z]+/g, '-')
+		.replace(/^-|-$/g, '');
+
 export const w = (
 	word: string,
 	pos: WordPos,
@@ -11,10 +18,7 @@ export const w = (
 	exampleEn: string,
 	form?: 'to' | '-' | string
 ): DeckWord => ({
-	id: word
-		.toLowerCase()
-		.replace(/[^a-z]+/g, '-')
-		.replace(/^-|-$/g, ''),
+	id: wordId(word),
 	word,
 	pos,
 	defEn,

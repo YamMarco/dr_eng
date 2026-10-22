@@ -16,6 +16,10 @@ Entry point into `/edit-exam`: the module's exam list page always shows an
 **✎ ערוך** link → `/edit-exam?module=<id>` (never gated by `editStore` itself —
 the page itself checks for staff).
 
+**`/edit-words?deck=e-a`** (staff, the Module E words page's **✎ עריכה** per
+list): a table of one list's words; a row opens to edit Hebrew, Arabic,
+definition and example. Saved by `wordsFile.ts` (list file + `words.ar.ts`).
+
 Everything lives in `src/lib/content-edit/` + `src/routes/edit/` +
 `src/routes/edit-exam/` + `src/routes/api/content-edit/` — see **Detach** at
 the end.

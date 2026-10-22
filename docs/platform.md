@@ -9,7 +9,7 @@ One SvelteKit codebase (`front/`), two build targets.
 | `/`, `/about`, `/plans`, `/privacy`, `/terms` | `routes/(site)` - public pages, pre-rendered | yes | redirects to `/app` |
 | `/checkout` | `routes/(site)/checkout` - client-only (needs the session) | yes | redirects to `/app` |
 | `/app/...` | `routes/app` - the student app, client-only (`ssr = false`) | yes | yes (the whole bundle) |
-| `/edit`, `/edit-exam`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
+| `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
 | `/api/...` | server routes | yes | absent - the app calls the web deployment |
 
 Home page (`/`) photos and looping videos: files in `front/static/home/`, paths in `$lib/site/media.ts`; an empty slot shows gradient art.
@@ -32,7 +32,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - `/app` shows the login screen until there's a session (`$lib/auth.svelte.ts`, `LoginScreen.svelte`): sign in, sign up, forgot password.
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
-- **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
+- **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam`, `/edit-words` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
 - Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except those named in `PUBLIC_APIS` (`hooks.server.ts`): only `/api/waitlist`. `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
 - **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/chat-speak`, `/api/ocr`): outside dev, accounts and `DATABASE_URL` on and a signed-in user (fails closed, so a preview without a DB has no LLM); with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over) and for everyone together (`GLOBAL_DAILY_LIMIT`, 503); a per-instance burst limit.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also removes the account's progress and LLM usage rows and clears this device's; orders stay (purchase records for tax law).

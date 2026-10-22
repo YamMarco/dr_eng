@@ -4,6 +4,7 @@ import { apiFetch } from '$lib/api';
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
 import type { RulesFile } from '$lib/content/rules';
+import type { WordPatch } from './wordsFile';
 
 /** Stores a cropped JPEG and returns the site path to reference from a screen. */
 export async function uploadImage(jpeg: Blob): Promise<string> {
@@ -57,4 +58,14 @@ export function saveExamChanges(moduleId: string, upserts: QuizNode[], deletes: 
 /** Replaces the module / section / lesson rule settings (content/rules.json). */
 export function saveRules(file: RulesFile) {
 	return post(file, '/api/content-edit/rules');
+}
+
+/** Replaces the given words' definition, Hebrew and example in one deck's list file. */
+export function saveWords(deckId: string, words: WordPatch[]) {
+	return post({ wordDeckId: deckId, words });
+}
+
+/** Merges Module E Arabic meanings by word id; an empty one is removed. */
+export function saveWordGlossesAr(upserts: Record<string, string>) {
+	return post({ wordGlossesAr: upserts });
 }
