@@ -36,6 +36,26 @@ export const sectionMeta: SectionMeta[] = [
 		}
 	},
 	{
+		id: 'g-1',
+		modules: ['g'],
+		skill: 'reading',
+		titleEn: 'Part A - Reading Skills',
+		intro: {
+			greeting: 'Map, locate, answer',
+			goal: 'שמונה־עשר שיעורים על טקסט באורך בחינה: סריקה, מגנטים, סוגי שאלות, פרפרזה, השוואת דעות וניהול זמן.'
+		}
+	},
+	{
+		id: 'g-2',
+		modules: ['g'],
+		skill: 'writing',
+		titleEn: 'Part B - Writing',
+		intro: {
+			greeting: 'One clear opinion, two reasons',
+			goal: 'שישה שיעורים לחיבור דעה: מפת 4 הפסקאות, שלושה מבנים שמעלים את רמת השפה, תבניות לפי סוג שאלה וחיבור מלא.'
+		}
+	},
+	{
 		id: 'cobe-1',
 		modules: ['cobe'],
 		skill: 'speaking',

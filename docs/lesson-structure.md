@@ -131,6 +131,7 @@ Deterministic, free checks for student writing, run before (and instead of) the 
 
 `writing-task` options (lessons):
 - `minWords` = paragraph mode: one textarea with a live counter and the length line, split into sentences for the punctuation / word-bank / lint checks; `minSentences` becomes a minimum. Use for every 70-90 word task; line mode for 1-3 sentence drills.
+- `minWords` + `maxWords` set the length line's range (e.g. a Module G essay); the Module C deduction table applies only to 70-90. Same on `self-check`.
 - `timeLimitMinutes` adds the exam countdown pill (`QuizTimer`); running out shows a note and the time taken, never fails the task. Set it wherever the text promises a time.
 - `wordCounter` (line mode) live count; on for every 3+ sentence task.
 - `requiredMoves` lists the paragraph moves the text must show (`writingMoves.ts`: stance, because, in-addition, for-example, for-instance, as-a-result, in-conclusion; synonyms count). A missing move fails the task and is named. Set it on every snowball task.

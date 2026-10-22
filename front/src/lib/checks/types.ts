@@ -26,6 +26,8 @@ export type CheckOptions = {
 	extraWords?: string[];
 	/** The reading passage: sentences copied from it are not counted as the student's words. */
 	source?: string;
+	/** Target length when it is not Module C's 70-90 (e.g. a Module G essay). The C deduction table applies only to 70-90. */
+	range?: { min: number; max: number };
 };
 
 export type LengthReport = {
@@ -37,6 +39,9 @@ export type LengthReport = {
 	deduction: number;
 	zero: boolean;
 	status: 'short' | 'ok' | 'long';
+	/** The target range the status was judged against. */
+	min: number;
+	max: number;
 };
 
 export type CheckReport = {

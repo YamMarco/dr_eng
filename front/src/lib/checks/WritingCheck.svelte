@@ -46,9 +46,9 @@
 		if (!l) return null;
 		if (l.zero) return { tone: 'text-danger', text: t.lengthZero };
 		if (l.status === 'short')
-			return { tone: 'text-danger', text: t.lengthShort(l.valid, l.deduction) };
-		if (l.status === 'long') return { tone: 'text-muted', text: t.lengthLong(l.valid) };
-		return { tone: 'text-brand-dark', text: t.lengthOk };
+			return { tone: 'text-danger', text: t.lengthShort(l.valid, l.deduction, l.min, l.max) };
+		if (l.status === 'long') return { tone: 'text-muted', text: t.lengthLong(l.valid, l.max) };
+		return { tone: 'text-brand-dark', text: t.lengthOk(l.min, l.max) };
 	});
 </script>
 

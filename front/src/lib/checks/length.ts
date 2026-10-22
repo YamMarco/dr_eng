@@ -64,13 +64,18 @@ export function countValidWords(text: string, opts: CheckOptions = {}): number {
 export function lengthReport(text: string, opts: CheckOptions = {}): LengthReport {
 	const typed = tokens(text).length;
 	const valid = countValidWords(text, opts);
+	const { min, max } = opts.range ?? { min: MIN_WORDS, max: MAX_WORDS };
+	const moduleC = min === MIN_WORDS && max === MAX_WORDS;
 	const zero = valid < ZERO_BELOW;
-	const deduction = zero ? 0 : (DEDUCTIONS.find(([min]) => valid >= min)?.[1] ?? 0);
+	const deduction =
+		zero || !moduleC ? 0 : (DEDUCTIONS.find(([from]) => valid >= from)?.[1] ?? 0);
 	return {
 		valid,
 		typed,
 		deduction,
 		zero,
-		status: valid < MIN_WORDS ? 'short' : valid > MAX_WORDS ? 'long' : 'ok'
+		status: valid < min ? 'short' : valid > max ? 'long' : 'ok',
+		min,
+		max
 	};
 }

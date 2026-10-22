@@ -115,7 +115,14 @@
 {#if mode === 'lesson' && (screen.autoCheck ?? true)}
 	<WritingCheck
 		text={answer}
-		options={{ prompt: screen.prompt, source: screen.text }}
+		options={{
+			prompt: screen.prompt,
+			source: screen.text,
+			range:
+				screen.minWords !== undefined && screen.maxWords !== undefined
+					? { min: screen.minWords, max: screen.maxWords }
+					: undefined
+		}}
 		showLength={hasCounter}
 	/>
 {/if}

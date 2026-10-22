@@ -819,14 +819,14 @@ export const he = {
 		loading: 'בודקים...',
 		allClear: 'לא נמצאו טעויות כתיב או פיסוק.',
 		notEnglish: 'הטקסט צריך להיות באנגלית.',
-		lengthOk: 'אורך תקין (70-90 מילים)',
-		lengthShort: (valid: number, deduction: number) =>
+		lengthOk: (min: number, max: number) => `אורך תקין (${min}-${max} מילים)`,
+		lengthShort: (valid: number, deduction: number, min: number, max: number) =>
 			deduction > 0
 				? `קצר מדי: ${valid} מילים. בבחינה יורדות ${deduction} נקודות מהתוכן.`
-				: `קצר מדי: ${valid} מילים. היעד הוא 70-90.`,
+				: `קצר מדי: ${valid} מילים. היעד הוא ${min}-${max}.`,
 		lengthZero: 'מתחת ל-25 מילים - בבחינה המטלה כולה מקבלת 0.',
-		lengthLong: (valid: number) =>
-			`${valid} מילים - יותר מהיעד (90). אין הורדת נקודות, אבל קצרו אם אפשר.`,
+		lengthLong: (valid: number, max: number) =>
+			`${valid} מילים - יותר מהיעד (${max}). אין הורדת נקודות, אבל קצרו אם אפשר.`,
 		maybe: 'אולי',
 		more: (n: number) => `ועוד ${n}...`,
 

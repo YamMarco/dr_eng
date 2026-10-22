@@ -413,14 +413,14 @@ export const ar: DictionaryOverride = {
 		loading: 'نفحص...',
 		allClear: 'لم نجد أخطاء إملاء أو ترقيم.',
 		notEnglish: 'يجب أن يكون النص بالإنجليزية.',
-		lengthOk: 'الطول مناسب (70-90 كلمة)',
-		lengthShort: (valid: number, deduction: number) =>
+		lengthOk: (min: number, max: number) => `الطول مناسب (${min}-${max} كلمة)`,
+		lengthShort: (valid: number, deduction: number, min: number, max: number) =>
 			deduction > 0
 				? `قصير جدًا: ${valid} كلمة. في الامتحان تُخصم ${deduction} نقاط من المضمون.`
-				: `قصير جدًا: ${valid} كلمة. الهدف هو 70-90.`,
+				: `قصير جدًا: ${valid} كلمة. الهدف هو ${min}-${max}.`,
 		lengthZero: 'أقل من 25 كلمة - في الامتحان تحصل المهمة كلها على 0.',
-		lengthLong: (valid: number) =>
-			`${valid} كلمة - أكثر من الهدف (90). لا يوجد خصم، لكن اختصروا إن أمكن.`,
+		lengthLong: (valid: number, max: number) =>
+			`${valid} كلمة - أكثر من الهدف (${max}). لا يوجد خصم، لكن اختصروا إن أمكن.`,
 		maybe: 'ربما',
 		more: (n: number) => `و${n} أخرى...`,
 		area: {

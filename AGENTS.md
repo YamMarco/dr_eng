@@ -12,6 +12,7 @@
 - routes (site / app / admin), web vs mobile builds, accounts: read docs/platform.md; app-only code must work in the mobile build (no server, call /api via apiFetch)
 - free-text feedback / grading / LLM prompts / rules cascade: read docs/feedback-framework.md
 - Module E (exam, vocabulary deck, reading path): read docs/modules/module-e.md
+- Module G (reading + opinion essay): read docs/modules/module-g.md; after changing Module G content, update it
 - COBE (oral exam, speak screen, source ranking): read docs/modules/cobe.md; after changing COBE content, update it
 - security audits / changes to auth, /api, payments or deps: read docs/security.md
 - docs/ are present-state guidelines: keep them concise and updated, no history or dated status lines

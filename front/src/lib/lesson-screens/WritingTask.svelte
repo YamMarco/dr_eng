@@ -55,6 +55,12 @@
 	let minWordsUsedReq = $derived(screen.minWordsUsed ?? 0);
 	let wordBank = $derived(screen.wordBank ?? []);
 	const paragraph = mode === 'lesson' && untrack(() => screen.minWords !== undefined);
+	// The length line's target; unset = Module C's 70-90.
+	let range = $derived(
+		screen.minWords !== undefined && screen.maxWords !== undefined
+			? { min: screen.minWords, max: screen.maxWords }
+			: undefined
+	);
 	// The text of the single box (quiz essay or lesson paragraph). Revisiting
 	// via the quiz navigator restores whatever was typed before.
 	let essayText = $state(mode === 'quiz' ? ((answerSlot!.get() as string | undefined) ?? '') : '');
@@ -159,7 +165,7 @@
 			question,
 			fixes: rules.llmFix,
 			notes: screen.gradingNotes,
-			check: { prompt: question, extraWords: wordBank },
+			check: { prompt: question, extraWords: wordBank, range },
 			minWords: paragraph ? screen.minWords : undefined,
 			wordBankOk
 		});
@@ -359,7 +365,7 @@
 	{#if autoCheck && !showMarks}
 		<WritingCheck
 			text={paragraph ? essayText : lines.join('\n')}
-			options={{ prompt: paragraph ? question : prompt, extraWords: wordBank }}
+			options={{ prompt: paragraph ? question : prompt, extraWords: wordBank, range }}
 			showLength={paragraph}
 		/>
 	{/if}

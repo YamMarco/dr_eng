@@ -4,6 +4,8 @@ import type { LessonNode } from './types';
 import { c1Lessons } from './c/c-1';
 import { c2Lessons } from './c/c-2';
 import { c3Lessons } from './c/c-3';
+import { g1Lessons } from './g/g-1';
+import { g2Lessons } from './g/g-2';
 import { cobe1Lessons } from './cobe/cobe-1';
 import { cobe2Lessons } from './cobe/cobe-2';
 
@@ -15,6 +17,8 @@ const all: LessonNode[] = [
 	...c1Lessons,
 	...c2Lessons,
 	...c3Lessons,
+	...g1Lessons,
+	...g2Lessons,
 	...cobe1Lessons,
 	...cobe2Lessons
 ];
