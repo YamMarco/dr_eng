@@ -665,6 +665,7 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
+            { type: "preface", text: "" },
           ],
         },
         {
@@ -753,6 +754,7 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
+            { type: "preface", text: "" },
             {
               type: "summary",
               title: "ONE SENTENCE",
@@ -768,7 +770,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: '**LEARNING TO SWIM AS AN ADULT**\n\nI  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\nII  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\nIII  Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
+              text: '**LEARNING TO SWIM AS AN ADULT**\n\n**I**  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim. Many of them feel embarrassed about this and never try to learn. However, experts say it is never too late.\n\n**II**  One study found that adults who learned to swim later in life often became stronger swimmers than those who learned as children. "Adults understand what the teacher explains and can correct their mistakes more quickly," says Dr. Anna Klein. "They are also not afraid to ask questions."\n\n**III ** Adult swimming classes are now available in most cities. Some programs meet only once a week, while others offer three sessions a week. According to instructors, adults who practice regularly usually make good progress in less than two months.',
               questions: [
                 {
                   prompt:
