@@ -644,6 +644,27 @@
 											>
 										</div>
 									</div>
+								{:else if screen.type === 'mcq'}
+									<SettingsGroup title="האזנה">
+										<TextField
+											label="טקסט באנגלית שהתלמיד שומע ולא רואה (מופיע אחרי הבדיקה). ריק = בלי האזנה"
+											bind:value={
+												() => screen.listen ?? '', (v) => (screen.listen = v || undefined)
+											}
+											stacked
+										/>
+									</SettingsGroup>
+								{:else if screen.type === 'order'}
+									<SettingsGroup title="האזנה">
+										<label class="flex items-center gap-2 text-xs text-muted">
+											<input
+												type="checkbox"
+												checked={screen.listen ?? false}
+												onchange={(e) => (screen.listen = e.currentTarget.checked || undefined)}
+											/>
+											הכתבה: התלמיד שומע את המשפט ובונה אותו
+										</label>
+									</SettingsGroup>
 								{:else if screen.type === 'cloze-pick'}
 									<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">
 										<p class="mb-2 text-xs font-bold text-muted">
@@ -905,6 +926,14 @@
 									{/if}
 								{:else if screen.type === 'speak'}
 									<SettingsGroup title="הקלטה">
+										<label class="flex items-center gap-2 text-xs text-muted">
+											<input
+												type="checkbox"
+												checked={screen.listen ?? false}
+												onchange={(e) => (screen.listen = e.currentTarget.checked || undefined)}
+											/>
+											כמו בבחינה: השאלה נשמעת בלבד, ומופיעה אחרי ההקלטה
+										</label>
 										<NumberField
 											label="זמן יעד (שניות)"
 											min={5}

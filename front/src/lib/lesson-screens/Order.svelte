@@ -9,6 +9,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { shuffle } from './shuffle';
+	import ListenCard from './ListenCard.svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -80,6 +81,15 @@
 {/if}
 
 <div class="leading-relaxed font-semibold"><Md block text={screen.prompt} /></div>
+{#if screen.listen}
+	<div class="mt-3">
+		<ListenCard
+			text={tiles.join(' ')}
+			hint={i18n.dict.exerciseKind.listenHint}
+			revealed={checked}
+		/>
+	</div>
+{/if}
 
 <!-- The answer being built: tap a tile to send it back. -->
 <div

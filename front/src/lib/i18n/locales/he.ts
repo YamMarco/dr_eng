@@ -583,6 +583,7 @@ export const he = {
 	// Shown as a small badge before each exercise screen, so the student
 	// knows what they're about to do before it starts.
 	exerciseKind: {
+		listenHint: 'הקשיבו. הטקסט יופיע אחרי הבדיקה',
 		mcq: 'תרגיל: שאלה אמריקאית',
 		pickN: (n: number) => `סמנו ${n} תשובות נכונות`,
 		markAll: 'תרגיל: סימון בטקסט',
@@ -725,6 +726,7 @@ export const he = {
 		reached: (time: string) => `יפה! דיברתם ${time} - עמדתם ביעד`,
 		short: (time: string) => `דיברתם ${time}, קצת פחות מהיעד. אפשר להקליט שוב`,
 		listenBack: 'האזינו לעצמכם',
+		listenQuestion: 'הקשיבו לשאלה. היא תופיע אחרי ההקלטה',
 		noMic: 'אין גישה למיקרופון, אז מודדים רק זמן. דברו בקול ולחצו סיום.',
 		privacy: 'ההקלטה נשארת רק במכשיר הזה'
 	},

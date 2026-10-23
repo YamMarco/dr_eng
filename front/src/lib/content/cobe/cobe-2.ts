@@ -124,6 +124,12 @@ export const cobe2Lessons: LessonNode[] = [
 							hintHe: 'סקר'
 						},
 						{
+							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['My partner and I', 'helped', 'each other.'],
+							listen: true
+						},
+						{
 							type: 'preface',
 							text: '### על מה ישאלו?\n\nשאלות על הפרויקט מתחלקות ל**שש משפחות**: ① הנושא ולמה ② מה למדתי ③ מקורות ④ אתגרים ⑤ עבודת צוות ומיומנויות ⑥ מה הייתי עושה אחרת.\n\n{p:callout}רעיון קצר אחד לכל משפחה - ואתם מוכנים כמעט לכל שאלה.'
 						},
@@ -265,6 +271,12 @@ export const cobe2Lessons: LessonNode[] = [
 							word: 'conclusion',
 							mode: 'listen',
 							hintHe: 'מסקנה'
+						},
+						{
+							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['We analyzed', 'the data', 'and reached', 'a clear conclusion.'],
+							listen: true
 						},
 						{
 							type: 'preface',
@@ -1218,7 +1230,8 @@ export const cobe2Lessons: LessonNode[] = [
 								'דוגמה מהפרויקט',
 								'דקה עד שתיים'
 							],
-							part: 'B'
+							part: 'B',
+							listen: true
 						}
 					],
 					retryMissed: true
@@ -1296,7 +1309,8 @@ export const cobe2Lessons: LessonNode[] = [
 								'השפעה (Since then, I have...)',
 								'כדקה וחצי'
 							],
-							part: 'B'
+							part: 'B',
+							listen: true
 						}
 					],
 					retryMissed: true

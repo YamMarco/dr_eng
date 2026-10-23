@@ -50,11 +50,11 @@
 <PassageMark {lines}>
 	{#snippet leading(line)}
 		{#if gutter}<span
-			class="mt-0.5 flex h-6 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
-				? 'bg-accent-soft text-ink/70'
-				: ''}"
-		>
-			{line.roman ?? ''}
-		</span>{/if}
+				class="mt-0.5 flex h-6 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
+					? 'bg-accent-soft text-ink/70'
+					: ''}"
+			>
+				{line.roman ?? ''}
+			</span>{/if}
 	{/snippet}
 </PassageMark>

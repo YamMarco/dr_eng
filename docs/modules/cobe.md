@@ -56,7 +56,7 @@ One path, three sections (one per exam part), 5 lessons each, one round each wit
 
 Practice clips: "The Lost Wallet" (4) and "The New Student" (5); their model answers and questions describe them.
 
-Mapped from the partner's exercise kinds: true/false and sorting -> `mcq`; build a sentence / put in order -> `order`; tap the parts -> `mark-all` with categories; say it / record -> `speak`; Project Card -> `self-check`; "save to My Bank" -> a pointer to the phrase bank. Left out: XP, streaks, leaderboards (ux-principles), timer sliders and meters, hotspots, memory games, listen-only questions, exit tickets.
+Mapped from the partner's exercise kinds: true/false and sorting -> `mcq`; build a sentence / put in order -> `order`; tap the parts -> `mark-all` with categories; say it / record -> `speak`; Project Card -> `self-check`; "save to My Bank" -> a pointer to the phrase bank. Left out: XP, streaks, leaderboards (ux-principles), timer sliders and meters, hotspots, memory games, exit tickets. Listening: "count the tasks you heard" (`mcq.listen`), hear & build a sentence (`order.listen`), and the checkpoints' questions are heard only (`speak.listen`).
 
 ## Mock exam (quiz/cobe)
 

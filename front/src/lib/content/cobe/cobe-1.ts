@@ -421,17 +421,18 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'preface',
-							text: '### מפרקים שאלה אמיתית\n\nשאלה מדוגמה רשמית:\n\n{p:text}"Tell me where you live and a little bit about the place. What is your favorite place in your hometown? Explain why."'
+							text: '### מפרקים שאלה אמיתית\n\nבבחינה **שומעים** את השאלה ולא רואים אותה. הקשיבו לשאלה מדוגמה רשמית, וספרו על האצבעות ✋ כמה משימות יש בה.'
 						},
 						{
 							type: 'mcq',
-							prompt:
-								'{p:text}"Tell me where you live and a little bit about the place. What is your favorite place in your hometown? Explain why."\n\nעל כמה דברים צריך לדבר?',
+							prompt: 'כמה משימות שמעתם?',
 							options: ['1', '2', '4'],
 							correctIndex: 2,
 							explanation:
 								'4 משימות בשאלה אחת: איפה אתם גרים, קצת על המקום, המקום האהוב עליכם, ולמה. תמיד סופרים את המשימות לפני שמדברים.',
-							layout: 'honeycomb'
+							layout: 'honeycomb',
+							listen:
+								'Tell me where you live and a little bit about the place. What is your favorite place in your hometown? Explain why.'
 						},
 						{
 							type: 'preface',
@@ -573,17 +574,18 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'preface',
-							text: '### מפרקים שאלה אמיתית\n\nשאלה מדוגמה רשמית:\n\n{p:text}"Describe your volunteering experience in high school. Do you think you will continue volunteering in the future as a result of your volunteer work in high school? Explain."'
+							text: '### מפרקים שאלה אמיתית\n\nבבחינה **שומעים** את השאלה ולא רואים אותה. הקשיבו לשאלה מדוגמה רשמית, וספרו על האצבעות ✋ כמה משימות יש בה.'
 						},
 						{
 							type: 'mcq',
-							prompt:
-								'{p:text}"Describe your volunteering experience in high school. Do you think you will continue volunteering in the future as a result of your volunteer work in high school? Explain."\n\nכמה משימות יש בשאלה?',
+							prompt: 'כמה משימות שמעתם?',
 							options: ['1', '2', '3'],
 							correctIndex: 2,
 							explanation:
 								'3 משימות: לתאר את ההתנדבות, האם תמשיכו, ולהסביר למה - בקשר לחוויה שלכם.',
-							layout: 'honeycomb'
+							layout: 'honeycomb',
+							listen:
+								'Describe your volunteering experience in high school. Do you think you will continue volunteering in the future as a result of your volunteer work in high school? Explain.'
 						},
 						{
 							type: 'mcq',
@@ -975,6 +977,12 @@ export const cobe1Lessons: LessonNode[] = [
 						},
 						{
 							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['My town', 'is quiet', 'and safe.'],
+							listen: true
+						},
+						{
+							type: 'order',
 							prompt: 'בנו את המשפט.',
 							tiles: ['In my neighbourhood,', 'people', 'help', 'each other.']
 						}
@@ -1207,6 +1215,12 @@ export const cobe1Lessons: LessonNode[] = [
 							word: 'reliable',
 							mode: 'listen',
 							hintHe: 'אמין'
+						},
+						{
+							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['A good friend', 'is supportive', 'and reliable.'],
+							listen: true
 						},
 						{
 							type: 'mcq',
@@ -1629,7 +1643,8 @@ export const cobe1Lessons: LessonNode[] = [
 								'רק אנגלית',
 								'בערך דקה'
 							],
-							part: 'A'
+							part: 'A',
+							listen: true
 						}
 					],
 					retryMissed: true
@@ -1753,7 +1768,8 @@ export const cobe1Lessons: LessonNode[] = [
 								'כמעט בלי הפסקות ארוכות',
 								'דקה עד דקה וחצי'
 							],
-							part: 'A'
+							part: 'A',
+							listen: true
 						}
 					],
 					retryMissed: true

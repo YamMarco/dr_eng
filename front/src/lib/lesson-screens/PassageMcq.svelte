@@ -91,59 +91,61 @@
 <ExerciseKindBadge
 	label={screen.timerKey ? i18n.dict.exerciseKind.timedReading : i18n.dict.exerciseKind.mcq}
 />
-<div class="lg:-mx-40 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-10">
-<ReadingPaper>
-{#if screen.timerKey}
-	<div class="flex items-center justify-between">
-		<span class="font-semibold text-muted"><Md text={screen.label ?? ''} /></span>
-		<span
-			class="rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"
-			dir="ltr"
-		>
-			{((now - startedAt) / 1000).toFixed(1)}s
-		</span>
-	</div>
-{/if}
-<PassageText text={screen.text} />
-</ReadingPaper>
+<div
+	class="lg:-mx-40 lg:grid lg:min-h-0 lg:flex-1 lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] lg:gap-10"
+>
+	<ReadingPaper>
+		{#if screen.timerKey}
+			<div class="flex items-center justify-between">
+				<span class="font-semibold text-muted"><Md text={screen.label ?? ''} /></span>
+				<span
+					class="rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-brand-dark tabular"
+					dir="ltr"
+				>
+					{((now - startedAt) / 1000).toFixed(1)}s
+				</span>
+			</div>
+		{/if}
+		<PassageText text={screen.text} />
+	</ReadingPaper>
 
-<div class="mt-6 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
-	{#if screen.questions.length > 1}
-		<p class="mb-2 text-sm font-semibold text-muted">
-			{i18n.dict.lesson.questionProgress(qi + 1, screen.questions.length)}
-		</p>
-	{/if}
-	<div class="text-lg leading-relaxed font-semibold">
-		<Md block text={question.prompt} />
-	</div>
-	<div class="mt-3 flex flex-col gap-3">
-		{#each question.options as option, oi (oi)}
-			{@const isCorrect = oi === question.correctIndex}
-			{@const isSelected = picked === oi}
-			{@const feedback =
-				checked && isSelected
-					? isCorrect
-						? 'motion-safe:animate-pop-correct'
-						: 'motion-safe:animate-shake-wrong'
-					: ''}
-			<button
-				type="button"
-				disabled={checked}
-				onclick={() => pick(oi)}
-				dir={textDir(option)}
-				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
-					? isCorrect
-						? 'border-brand bg-brand-soft text-brand-dark'
+	<div class="mt-6 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">
+		{#if screen.questions.length > 1}
+			<p class="mb-2 text-sm font-semibold text-muted">
+				{i18n.dict.lesson.questionProgress(qi + 1, screen.questions.length)}
+			</p>
+		{/if}
+		<div class="text-lg leading-relaxed font-semibold">
+			<Md block text={question.prompt} />
+		</div>
+		<div class="mt-3 flex flex-col gap-3">
+			{#each question.options as option, oi (oi)}
+				{@const isCorrect = oi === question.correctIndex}
+				{@const isSelected = picked === oi}
+				{@const feedback =
+					checked && isSelected
+						? isCorrect
+							? 'motion-safe:animate-pop-correct'
+							: 'motion-safe:animate-shake-wrong'
+						: ''}
+				<button
+					type="button"
+					disabled={checked}
+					onclick={() => pick(oi)}
+					dir={textDir(option)}
+					class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
+						? isCorrect
+							? 'border-brand bg-brand-soft text-brand-dark'
+							: isSelected
+								? 'border-miss bg-miss-soft text-miss'
+								: 'border-line bg-surface opacity-50'
 						: isSelected
-							? 'border-miss bg-miss-soft text-miss'
-							: 'border-line bg-surface opacity-50'
-					: isSelected
-						? 'border-brand bg-brand-soft/60'
-						: 'border-line bg-surface hover:border-brand'}"
-			>
-				<Md text={option} />
-			</button>
-		{/each}
+							? 'border-brand bg-brand-soft/60'
+							: 'border-line bg-surface hover:border-brand'}"
+				>
+					<Md text={option} />
+				</button>
+			{/each}
+		</div>
 	</div>
-</div>
 </div>

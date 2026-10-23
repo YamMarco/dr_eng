@@ -49,11 +49,7 @@
 	<h2 class="mb-3 text-lg font-bold" dir="ltr"><Md text={stripLineAttrs(passage.title)} /></h2>
 {/if}
 
-<PassageMark
-	{lines}
-	marks={marksStore?.get(passage)}
-	onMarks={(h) => marksStore?.set(passage, h)}
->
+<PassageMark {lines} marks={marksStore?.get(passage)} onMarks={(h) => marksStore?.set(passage, h)}>
 	{#snippet leading(line)}
 		<span
 			class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman

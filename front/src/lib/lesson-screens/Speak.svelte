@@ -11,6 +11,7 @@
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import AnswerLang from './AnswerLang.svelte';
 	import SpeakButtons from './SpeakButtons.svelte';
+	import ListenCard from './ListenCard.svelte';
 	import SelfReview from './SelfReview.svelte';
 	import { Recorder, type Take } from '$lib/recorder.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -106,12 +107,21 @@
 	<ExerciseKindBadge label={i18n.dict.exerciseKind.speak} />
 {/if}
 
-<div class="flex items-start gap-3 rounded-2xl bg-accent-soft p-3">
-	<div class="min-w-0 flex-1 text-lg leading-relaxed font-semibold" dir="ltr">
-		<Md block text={screen.prompt} />
+{#if screen.listen}
+	<ListenCard
+		text={screen.prompt}
+		hint={t.listenQuestion}
+		revealed={recorder.state === 'done'}
+		disabled={recorder.state === 'recording'}
+	/>
+{:else}
+	<div class="flex items-start gap-3 rounded-2xl bg-accent-soft p-3">
+		<div class="min-w-0 flex-1 text-lg leading-relaxed font-semibold" dir="ltr">
+			<Md block text={screen.prompt} />
+		</div>
+		<SpeakButtons text={screen.prompt} disabled={recorder.state === 'recording'} />
 	</div>
-	<SpeakButtons text={screen.prompt} disabled={recorder.state === 'recording'} />
-</div>
+{/if}
 
 {#if screen.tip}
 	<div class="mt-2 text-sm leading-relaxed text-muted"><Md block text={screen.tip} /></div>

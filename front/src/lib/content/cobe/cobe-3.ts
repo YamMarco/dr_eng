@@ -263,6 +263,12 @@ export const cobe3Lessons: LessonNode[] = [
 							hintHe: 'אדם זר'
 						},
 						{
+							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['An old man', 'is waiting', 'at the bus stop.'],
+							listen: true
+						},
+						{
 							type: 'preface',
 							text: '### פעלי פעולה\n\nפעלים שמתארים מה קורה בקליפ, בהווה ובעבר.\n\n{p:text}help → helped  give → gave  find → found  run → ran  see → saw  fall → fell\n{p:text}smile → smiled  hug → hugged  thank → thanked  share → shared  cry → cried'
 						},
@@ -394,6 +400,12 @@ export const cobe3Lessons: LessonNode[] = [
 							word: 'hesitates',
 							mode: 'listen',
 							hintHe: 'מהסס'
+						},
+						{
+							type: 'order',
+							prompt: 'הקשיבו ובנו את המשפט ששמעתם.',
+							tiles: ['Noa hesitates,', 'then walks over', "to Maya's table."],
+							listen: true
 						},
 						{
 							type: 'preface',
@@ -1183,7 +1195,8 @@ export const cobe3Lessons: LessonNode[] = [
 								'Many things happened in the clip. Describe the events in the clip you just watched. What is the outcome of these events?',
 							targetSeconds: 60,
 							checklist: ['התחלה, אמצע וסוף', 'תוצאה'],
-							part: 'C'
+							part: 'C',
+							listen: true
 						},
 						{
 							type: 'speak',
@@ -1191,7 +1204,8 @@ export const cobe3Lessons: LessonNode[] = [
 								'How do you think the main character feels at the end of the clip? Explain. What do you think the message of the clip is? Explain.',
 							targetSeconds: 60,
 							checklist: ['רגש + because', 'הוכחה', 'המסר', 'עניתי על כל השאלות'],
-							part: 'C'
+							part: 'C',
+							listen: true
 						}
 					],
 					retryMissed: true
@@ -1320,7 +1334,8 @@ export const cobe3Lessons: LessonNode[] = [
 								'Describe the major events in the clip you have just watched. What is the outcome of these events?',
 							targetSeconds: 75,
 							checklist: ['האירועים העיקריים לפי הסדר', 'נקודת מפנה', 'תוצאה'],
-							part: 'C'
+							part: 'C',
+							listen: true
 						},
 						{
 							type: 'speak',
@@ -1328,7 +1343,8 @@ export const cobe3Lessons: LessonNode[] = [
 								'What do you think the message of the clip is? Explain. What do you think students can learn from it? Explain.',
 							targetSeconds: 75,
 							checklist: ['פרשנות', 'ראיה', 'עניתי על כל השאלות', 'כמעט בלי הפסקות ארוכות'],
-							part: 'C'
+							part: 'C',
+							listen: true
 						}
 					],
 					retryMissed: true

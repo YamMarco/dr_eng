@@ -136,6 +136,10 @@ export const speakSchema = z
 			.min(5)
 			.describe('How long the answer should run; marked on the time bar.'),
 		modelAnswer: z.string().optional().describe('An example spoken answer, shown after the take.'),
+		listen: z
+			.boolean()
+			.optional()
+			.describe('Exam style: the question is heard, not shown, until the take is done.'),
 		checklist: z
 			.array(z.string())
 			.optional()
@@ -225,6 +229,12 @@ export const mcqSchema = z
 			.string()
 			.optional()
 			.describe('Shown after checking. Say why the others fail, not only why the answer is right.'),
+		listen: z
+			.string()
+			.optional()
+			.describe(
+				'English the student hears instead of reads (a question, a sentence), above the prompt; shown after checking. Exams never show it.'
+			),
 		layout: z
 			.enum(['rows', 'honeycomb'])
 			.optional()
@@ -274,6 +284,10 @@ export const orderSchema = z
 				'The answer in the right order: words / chunks of one sentence, or whole sentences / events. Shown shuffled. Tiles that are whole sentences (2+ ending in . ? !) stack as numbered lines; word tiles flow as one sentence.'
 			),
 		explanation: z.string().optional(),
+		listen: z
+			.boolean()
+			.optional()
+			.describe('Dictation: the sentence (the tiles joined) is heard, not shown, until checked.'),
 		points: points.optional()
 	})
 	.describe(

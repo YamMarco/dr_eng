@@ -12,6 +12,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import { shuffle } from './shuffle';
 	import { untrack } from 'svelte';
+	import ListenCard from './ListenCard.svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -120,6 +121,11 @@
 {#if mode === 'lesson'}
 	<div class="flex flex-wrap items-center gap-2">
 		<ExerciseKindBadge label={i18n.dict.exerciseKind.mcq} />
+	</div>
+{/if}
+{#if screen.listen}
+	<div class="mb-3">
+		<ListenCard text={screen.listen} hint={i18n.dict.exerciseKind.listenHint} revealed={checked} />
 	</div>
 {/if}
 <div class="text-lg leading-relaxed font-semibold">
