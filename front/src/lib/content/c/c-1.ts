@@ -18,7 +18,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}בקבוצת הוואטסאפ של האנגלית יש כבר מאות הודעות, ואז תמיד מגיע החבר ששואל: **\"נו, מתי הבחינה? ומה החומר?\"**\n{d:rtl}**מ**ה אתם עושים? גוללים 500 הודעות מההתחלה?\n\n{d:rtl}ברור שלא. אז מה כן?",
+          text: '{d:rtl}בקבוצת הוואטסאפ של האנגלית יש כבר מאות הודעות, ואז תמיד מגיע החבר ששואל: **"נו, מתי הבחינה? ומה החומר?"**\n{d:rtl}**מ**ה אתם עושים? גוללים 500 הודעות מההתחלה?\n\n{d:rtl}ברור שלא. אז מה כן?',
         },
         {
           type: "preface",
@@ -534,19 +534,19 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "אבל רגע... גם כשמגיעים לשאלות יש טעות שתלמידים עושים כל הזמן: הם קוראים שאלה, **לא ממש מבינים אותה,** ובכל זאת מתחילים לחפש תשובה בטקסט.\n\nלפני שאתם מחפשים תשובה, בודקים דבר אחד:\n**האם אני באמת מבין את השאלה?**",
+          text: "{d:rtl}אבל רגע... **טעות נפוצה** של תלמידים בשאלות הינה: הם קוראים שאלה ו**לא ממש מבינים אותה,** ובכל זאת הם ישר מתחילים לחפש תשובה בטקסט.\n\n{d:rtl}לפני שאתם מחפשים תשובה, בודקים דבר אחד:\n{d:rtl}\n{d:rtl}**האם אני באמת מבין את השאלה? **",
         },
         {
           type: "preface",
-          text: 'הסיטואציה הזאת קורית כמעט בכל מבחן:\n\nתלמיד מגיע לשאלה 3 ומרים יד.\nאני, המורה, שואל: **"מה הבעיה?"**\nוהוא אומר: **"אני לא מוצא את התשובה."**\nאני שואל: **"אתה מבין מה השאלה מבקשת?"**\nוהתשובה היא:**"כן... נראה לי."**\nאז אני תמיד עונה:\n**"תסביר לי בעברית מה אתה צריך למצוא."**\nהוא לא יודע להסביר ומתברר שהבעיה היא בכלל לא בטקסט.\nהוא עדיין לא הבין את השאלה.\nלכן הכלל שלנו פשוט:\n**אם אתם לא יודעים להסביר בעברית מה השאלה רוצה - עדיין לא מתחילים לחפש את התשובה.**',
+          text: '{d:rtl}בכדי להבין את זה יותר טוב, הנה סיטואציה  שקורת כמעט בכל מבחן:\n\n{d:rtl}תלמיד מגיע לשאלה 3 ומרים יד.\n{d:rtl}אני, המורה, שואל: **"מה הבעיה?"**\n{d:rtl}והוא אומר: **"אני לא מוצא את התשובה."**\n{d:rtl}אני שואל: **"אתה מבין מה השאלה מבקשת?"**\n{d:rtl}והתשובה היא: **"כן... נראה לי."**\n{d:rtl}אז אני תמיד עונה:\n{d:rtl}**"תסביר לי בעברית מה אתה צריך למצוא."**\n{d:rtl}\n{d:rtl}**הוא לא יודע להסביר** ומתברר שהבעיה היא בכלל לא בטקסט.\n{d:rtl}הוא עדיין לא הבין את השאלה.\n{d:rtl}לכן הכלל שלנו פשוט: **אם אתם לא יודעים להסביר בעברית מה השאלה רוצה - עדיין לא מתחילים לחפש את התשובה.**',
         },
         {
           type: "preface",
-          text: "## שיטת הרמזור\nמהיום, לפני שעונים על כל שאלה, בודקים באיזה צבע אנחנו:\n\n🟢 **ירוק - הבנתי את השאלה.**\nאני יכול להסביר בעברית מה רוצים ממני.\n**מתקדמים לטקסט ומחפשים את התשובה.**\n\n🟡 **צהוב - הבנתי כמעט הכול.**\nיש מילה או שתיים שחסרות לי.\n**לא מנחשים.** בודקים במילון מהר, משלימים את המשמעות - ורק אז מתחילים לחפש.",
+          text: "{d:rtl}## שיטת הרמזור\n{d:rtl}\n{d:rtl}מהיום, לפני שעונים על כל שאלה, בודקים באיזה צבע אנחנו:\n\n{d:rtl}🟢 **ירוק - הבנתי את השאלה.**\n{d:rtl}אני יכול להסביר בעברית מה רוצים ממני.\n{d:rtl}**מתקדמים לטקסט ומחפשים את התשובה.**\n\n{d:rtl}🟡 **צהוב - הבנתי כמעט הכל.**\n{d:rtl}יש עדיין מילה או שתיים שחסרות לי להשלים את המשמעות של השאלה. **לא מנחשים. במקרה זה עובדים לפי השיטות המפורטות שנסביר בהמשך.**",
         },
         {
           type: "preface",
-          text: "ומה אם אין לא ירוק ולא צהוב?\n\n🔴 **אדום - אני לא באמת מבין מה רוצים ממני.**\nעוצרים. לא רצים שוב לטקסט. לא מנחשים.\nקודם מפרקים את השאלה:\n\nעל מי או על מה מדברים? מה מבקשים ממני למצוא? איפה צריך לחפש? כמה תשובות צריך לתת?\n\nרק למה שעדיין לא ברור - משתמשים במילון.\n++הכלל:++ **אם אתם לא בירוק, עדיין לא מתחילים לענות.**",
+          text: "{d:rtl}ומה אם אין לא ירוק ולא צהוב?\n\n{d:rtl}🔴 **אדום - אני לא באמת מבין מה רוצים ממני.**\n{d:rtl}עוצרים. לא רצים שוב לטקסט. לא מנחשים.\n{d:rtl}קודם מפרקים את השאלה:\n\n{d:rtl}על מי או על מה מדברים? מה מבקשים ממני למצוא? איפה צריך לחפש? כמה תשובות צריך לתת?\n{d:rtl}",
         },
         {
           type: "preface",
@@ -558,7 +558,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "קודם מפענחים בעזרת המילון:\n\n**so far** = עד עכשיו\n**achieved** = השיג / הצליח לעשות\n\nהשאלה אומרת: *מה הפרויקט הצליח לעשות עד עכשיו?*\n\nעכשיו 🟢 ירוק - אפשר לחפש תשובה.",
+          text: "{d:rtl}במקרים כמו בשאלון הזה שהשימוש במילון** לא מותר**  ועדיין לא יודעים את המשמעות של כל מילה בשאלה אפשר ללכת לפי השלבים שנפרט בהמשך. \n{d:rtl}",
         },
         {
           type: "preface",
@@ -949,11 +949,11 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "השאלה:\n{p:text}**According to Dr. Diallo, why do most trees die?**\n\nקודם בודקים: האם אני מבין מה רוצים ממני?\n\n**According to Dr. Diallo** = לפי ד\"ר דיאלו\n**why** = למה / מה הסיבה\n**most trees die** = רוב העצים מתים",
+          text: 'השאלה:\n{p:text}**According to Dr. Diallo, why do most trees die?**\n\nקודם בודקים: האם אני מבין מה רוצים ממני?\n\n**According to Dr. Diallo** = לפי ד"ר דיאלו\n**why** = למה / מה הסיבה\n**most trees die** = רוב העצים מתים',
         },
         {
           type: "preface",
-          text: "עכשיו אני יכול להסביר את השאלה בעברית:\n**לפי ד\"ר דיאלו, למה רוב העצים מתים?**\n\n🟢 **ירוק - השאלה ברורה.**",
+          text: 'עכשיו אני יכול להסביר את השאלה בעברית:\n**לפי ד"ר דיאלו, למה רוב העצים מתים?**\n\n🟢 **ירוק - השאלה ברורה.**',
         },
         {
           type: "preface",
@@ -4420,10 +4420,11 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at \"bus stops\" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.",
+              text: 'THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at "bus stops" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.',
               questions: [
                 {
-                  prompt: "What do we learn from paragraph III about Anna Price?",
+                  prompt:
+                    "What do we learn from paragraph III about Anna Price?",
                   options: [
                     "She thinks the roads near the school are too busy",
                     "She wants the village to stop the project",
@@ -4447,7 +4448,7 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at \"bus stops\" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.",
+              text: 'THE WALKING BUS\n\nI  Every morning at 8:00, a group of children in the village of Ashby walks to school together. They are led by two adults and stop at "bus stops" along the way to pick up friends. The project, called the Walking Bus, began in 2020.\n\nII  The idea came from parent Tom Wilder. According to Mr. Wilder, only 15 children walked to school before the project, and most parents drove them because the roads were busy. Today, 60 children join the Walking Bus every day, and the number of cars near the school has fallen by half.\n\nIII  The Walking Bus has other benefits. Teachers say that children who walk arrive calmer and ready to learn. However, not everyone is sure about the future. Head teacher Anna Price worries that the project depends on volunteers, and it might stop if too few parents have time to help.\n\nIV  Despite this concern, the village is planning to start two more routes next year. Mr. Wilder says the biggest challenge is not money but finding enough volunteers.',
               questions: [
                 {
                   prompt:
@@ -4838,10 +4839,11 @@ export const c1Lessons: LessonNode[] = [
               type: "passage-mcq",
               label: "מבחן קטן",
               timerKey: "examTime",
-              text: "THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. \"He used to wait in the car,\" she says. \"Now he helps me choose the fruit.\"\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store's coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: \"Small changes cost very little, but they help many people.\" She hopes that one day every store will offer a quiet hour.",
+              text: 'THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. "He used to wait in the car," she says. "Now he helps me choose the fruit."\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store\'s coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: "Small changes cost very little, but they help many people." She hopes that one day every store will offer a quiet hour.',
               questions: [
                 {
-                  prompt: "Who finds a short visit to a supermarket very stressful, according to paragraph I?",
+                  prompt:
+                    "Who finds a short visit to a supermarket very stressful, according to paragraph I?",
                   options: [
                     "Most shoppers",
                     "People who are sensitive to sound and light",
@@ -4851,7 +4853,8 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 1,
                 },
                 {
-                  prompt: "How many customers came each Tuesday a year after the quiet hour began?",
+                  prompt:
+                    "How many customers came each Tuesday a year after the quiet hour began?",
                   options: ["40", "4", "2021", "180"],
                   correctIndex: 3,
                 },
@@ -4867,7 +4870,8 @@ export const c1Lessons: LessonNode[] = [
                   correctIndex: 2,
                 },
                 {
-                  prompt: "According to Ms. Moss, what is the MOST important lesson?",
+                  prompt:
+                    "According to Ms. Moss, what is the MOST important lesson?",
                   options: [
                     "Every store should offer a quiet hour",
                     "The Ministry of Health should write a guide",
@@ -4890,13 +4894,14 @@ export const c1Lessons: LessonNode[] = [
             },
             {
               type: "passage-quiz",
-              text: "THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. \"He used to wait in the car,\" she says. \"Now he helps me choose the fruit.\"\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store's coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: \"Small changes cost very little, but they help many people.\" She hopes that one day every store will offer a quiet hour.",
+              text: 'THE QUIET HOUR\n\nI  Supermarkets are usually noisy places. Music plays, machines beep, and trolleys rattle between the shelves. For many shoppers this is not a problem. However, for people who are sensitive to sound and light, even a short visit can be very stressful.\n\nII  In 2021, the Hartley Market in the town of Brenton decided to change this. Every Tuesday, between 9:00 and 10:00 in the morning, the music is turned off, the lights are lowered, and the checkout machines are set to silent. According to manager Rachel Moss, the idea came from a customer whose son could never shop with her. "He used to wait in the car," she says. "Now he helps me choose the fruit."\n\nIII  The quiet hour was an immediate success. In the first month, about 40 customers came each Tuesday. A year later, the number had grown to 180. Not everyone was pleased, though. Some shoppers complained because they could not use the store\'s coffee machine. Nevertheless, the market kept the hour, and it also opened a quiet corner with soft chairs for people who need a rest.\n\nIV  Other stores are now following. Four supermarkets in the region have already started similar programmes, and the Ministry of Health has asked the Hartley Market to write a guide for them. Ms. Moss believes that the most important lesson is simple: "Small changes cost very little, but they help many people." She hopes that one day every store will offer a quiet hour.',
               questions: [
                 {
                   prompt:
                     "According to manager Rachel Moss, where did the idea of the quiet hour come from? Give ONE answer.",
                   keywords: ["customer", "son"],
-                  answerHint: "From a customer whose son could never shop with her.",
+                  answerHint:
+                    "From a customer whose son could never shop with her.",
                 },
                 {
                   prompt:
@@ -5174,10 +5179,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            {
-              type: "preface",
-              text: "רמת בחינה\nשאלות מעורבות ללא עזרה.",
-            },
+            { type: "preface", text: "רמת בחינה\nשאלות מעורבות ללא עזרה." },
             {
               type: "passage-mcq",
               text: '**A LIBRARY BACK TO LIFE**\n\nI  Two years ago, Green Valley High School had almost no working computers in its library. According to Principal Laura Kim, only 12 out of 40 computers still worked. Today, the library has 55 new computers and free wifi throughout the building.\n\nII  The renovation was led by IT coordinator Mr. David Osei. "We did not receive government funding," he explains. "No company offered to help at first." According to Mr. Osei, the most useful change was training students as tech helpers, a project that began in September 2022.\n\nIII  Not all teachers were convinced at first. A few worried that students would waste time online. However, a recent survey found that 88% of teachers now say the library is more useful for lessons, and only 2% still have concerns.',
