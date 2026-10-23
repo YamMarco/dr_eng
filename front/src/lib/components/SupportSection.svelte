@@ -4,7 +4,7 @@
 	import { ChevronLeft, Mail, MessageCircle } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { SUPPORT_EMAIL, emailHref, whatsappHref } from '$lib/support';
+	import { SUPPORT_EMAIL, SUPPORT_WHATSAPP, emailHref, whatsappHref } from '$lib/support';
 
 	// Settings > help: WhatsApp or email us. Contacts live in $lib/support.
 
@@ -24,18 +24,20 @@
 	<h2 class="px-5 pt-5 text-sm font-bold text-muted">{t.supportSection}</h2>
 	<p class="px-5 pt-1 text-sm leading-relaxed text-muted">{t.supportHint}</p>
 	<ul class="mt-2 flex flex-col divide-y divide-line/70">
-		<li>
-			<a href={whatsappHref(t.supportMessage)} target="_blank" rel="noopener" class={row}>
-				<span class="{icon} bg-brand-soft text-brand">
-					<MessageCircle size={20} aria-hidden="true" />
-				</span>
-				<span class="flex-1">
-					<span class="block font-semibold">{t.supportWhatsapp}</span>
-					<span class="block text-sm text-muted">{t.supportWhatsappDesc}</span>
-				</span>
-				<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
-			</a>
-		</li>
+		{#if SUPPORT_WHATSAPP}
+			<li>
+				<a href={whatsappHref(t.supportMessage)} target="_blank" rel="noopener" class={row}>
+					<span class="{icon} bg-brand-soft text-brand">
+						<MessageCircle size={20} aria-hidden="true" />
+					</span>
+					<span class="flex-1">
+						<span class="block font-semibold">{t.supportWhatsapp}</span>
+						<span class="block text-sm text-muted">{t.supportWhatsappDesc}</span>
+					</span>
+					<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+				</a>
+			</li>
+		{/if}
 		<li>
 			<a href={emailHref(t.supportSubject)} class={row}>
 				<span class="{icon} bg-accent-soft text-ink">
