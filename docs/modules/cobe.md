@@ -26,6 +26,10 @@ Three parts, a set of two questions each, one recording per set (max 2 files), 3
 
 - **Phrase bank** (`content/cobe/phrases.ts`, `lesson-screens/PhraseBank.svelte`): a "ביטויים" chip on lesson speaking screens (never in exams: no notes) opens spoken chunks by job (open, buy time, rescue, opinion, example, link, project, clip, close), the groups that fit the screen's `part` first, each with listen + star. Starred phrases and phrases quoted in AI tips ("+ לבנק") go to "הביטויים שלי" (`lib/phraseBank.svelte.ts`, localStorage). Targets Vocabulary (chunks and expressions) and Delivery (fewer hesitations).
 
+## Module page
+
+Hero, exams, then a lessons card (a row per part with progress, the path link) and a speaking card (AI chat; recording practice once there are takes). Parts are named with Hebrew letters in Hebrew text (חלק א׳ / ב׳ / ג׳), "Part A" in English text.
+
 ## AI chat (שיחה עם AI)
 
 Short spoken conversations for confidence and fluency, not grading. A row on the COBE module page opens `/app/unit/<u>/module/cobe/chat`.

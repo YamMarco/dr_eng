@@ -6,11 +6,14 @@
 	import {
 		BookOpen,
 		ClipboardCheck,
+		Film,
+		FolderOpen,
 		Languages,
 		MessagesSquare,
 		Mic,
 		PenLine,
-		Play
+		Play,
+		User
 	} from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
@@ -49,6 +52,9 @@
 	let lesson = $derived(todayLesson(mod.id));
 	let skills = $derived(moduleSkills(mod.id, route));
 	const chats = chatCount();
+	const speaking = speakingSummary();
+	// COBE: a row per exam part (its lesson section), in path order.
+	const partIcons = [User, FolderOpen, Film];
 
 	// The one big card: an exam worth taking now, else the next lesson.
 	let hero = $derived.by(() => {
@@ -93,10 +99,6 @@
 				? i18n.dict.deck.sessionSize(today.reviews, today.fresh)
 				: t.wordsDone;
 		}
-		if (skill === 'speaking') {
-			const { questions, reachedPercent } = speakingSummary();
-			return questions ? i18n.dict.cobeReview.practiced(questions, reachedPercent) : undefined;
-		}
 		return skill === 'writing' && phone.current ? t.desktopNote : undefined;
 	}
 </script>
@@ -123,43 +125,80 @@
 		</HubRow>
 	</section>
 
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-		class="{card} mt-2"
-	>
-		{#each skills as row (row.skill)}
-			{@const { done, total } = row.progress}
-			<HubRow
-				icon={skillIcon[row.skill]}
-				title={t.skills[row.skill]}
-				sub={skillSub(row.skill, row.kind)}
-				progress={total ? done / total : 0}
-				href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
-			>
-				{#snippet trailing()}
-					<span class="shrink-0 text-end text-sm font-bold tabular"
-						><ProgressValue p={row.progress} /></span
-					>
-				{/snippet}
-			</HubRow>
-		{/each}
+	{#if mod.id === 'cobe'}
+		<!-- COBE: lessons by exam part, then speaking practice, each its own card. -->
+		<section
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+			class="{card} mt-2"
+		>
+			{#each route as part, i (part.id)}
+				<HubRow
+					icon={partIcons[i] ?? Mic}
+					title={i18n.title(part.id, mod.id)}
+					progress={part.total ? part.done / part.total : 0}
+					href="{base}/lessons?section={part.id}"
+				>
+					{#snippet trailing()}
+						<span class="shrink-0 text-end text-sm font-bold tabular"
+							><ProgressValue p={part} /></span
+						>
+					{/snippet}
+				</HubRow>
+			{/each}
+			{@render pathLink()}
+		</section>
 
-		{#if mod.id === 'cobe'}
+		<section
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
+			class="{card} mt-2"
+		>
 			<HubRow
 				icon={MessagesSquare}
 				title={i18n.dict.chat.title}
 				sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
 				href="{base}/chat"
 			/>
-		{/if}
-
-		{#if route.length}
-			<a
-				href="{base}/lessons"
-				class="mt-1 border-t border-line/70 px-2 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
-			>
-				{t.toPath}
-			</a>
-		{/if}
-	</section>
+			{#if speaking.questions}
+				<HubRow
+					icon={Mic}
+					title={t.skills.speaking}
+					sub={i18n.dict.cobeReview.practiced(speaking.questions, speaking.reachedPercent)}
+				/>
+			{/if}
+		</section>
+	{:else}
+		<section
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+			class="{card} mt-2"
+		>
+			{#each skills as row (row.skill)}
+				{@const { done, total } = row.progress}
+				<HubRow
+					icon={skillIcon[row.skill]}
+					title={t.skills[row.skill]}
+					sub={skillSub(row.skill, row.kind)}
+					progress={total ? done / total : 0}
+					href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
+				>
+					{#snippet trailing()}
+						<span class="shrink-0 text-end text-sm font-bold tabular"
+							><ProgressValue p={row.progress} /></span
+						>
+					{/snippet}
+				</HubRow>
+			{/each}
+			{@render pathLink()}
+		</section>
+	{/if}
 </main>
+
+{#snippet pathLink()}
+	{#if route.length}
+		<a
+			href="{base}/lessons"
+			class="mt-1 border-t border-line/70 px-2 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
+		>
+			{t.toPath}
+		</a>
+	{/if}
+{/snippet}
