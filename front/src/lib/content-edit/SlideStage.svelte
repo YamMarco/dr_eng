@@ -46,6 +46,7 @@
 	import TimerField from './fields/TimerField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
 	import StringListEditor from './fields/StringListEditor.svelte';
+	import ListenField from './fields/ListenField.svelte';
 	import RuleFields from './fields/RuleFields.svelte';
 	import { editModel } from './editModel.svelte';
 	import { rulesStore } from './rulesStore.svelte';
@@ -645,26 +646,21 @@
 										</div>
 									</div>
 								{:else if screen.type === 'mcq'}
-									<SettingsGroup title="האזנה">
+									<ListenField
+										checked={screen.listen !== undefined}
+										onChange={(on) => (screen.listen = on ? '' : undefined)}
+									>
 										<TextField
-											label="טקסט באנגלית שהתלמיד שומע ולא רואה (מופיע אחרי הבדיקה). ריק = בלי האזנה"
-											bind:value={
-												() => screen.listen ?? '', (v) => (screen.listen = v || undefined)
-											}
+											label="מה התלמיד שומע (באנגלית)"
+											bind:value={screen.listen}
 											stacked
 										/>
-									</SettingsGroup>
+									</ListenField>
 								{:else if screen.type === 'order'}
-									<SettingsGroup title="האזנה">
-										<label class="flex items-center gap-2 text-xs text-muted">
-											<input
-												type="checkbox"
-												checked={screen.listen ?? false}
-												onchange={(e) => (screen.listen = e.currentTarget.checked || undefined)}
-											/>
-											הכתבה: התלמיד שומע את המשפט ובונה אותו
-										</label>
-									</SettingsGroup>
+									<ListenField
+										checked={screen.listen ?? false}
+										onChange={(on) => (screen.listen = on || undefined)}
+									/>
 								{:else if screen.type === 'cloze-pick'}
 									<div class="mt-4 space-y-2 border-t-2 border-dashed border-line/60 pt-4">
 										<p class="mb-2 text-xs font-bold text-muted">
@@ -925,15 +921,11 @@
 										</OptionalGroup>
 									{/if}
 								{:else if screen.type === 'speak'}
+									<ListenField
+										checked={screen.listen ?? false}
+										onChange={(on) => (screen.listen = on || undefined)}
+									/>
 									<SettingsGroup title="הקלטה">
-										<label class="flex items-center gap-2 text-xs text-muted">
-											<input
-												type="checkbox"
-												checked={screen.listen ?? false}
-												onchange={(e) => (screen.listen = e.currentTarget.checked || undefined)}
-											/>
-											כמו בבחינה: השאלה נשמעת בלבד, ומופיעה אחרי ההקלטה
-										</label>
 										<NumberField
 											label="זמן יעד (שניות)"
 											min={5}
@@ -950,34 +942,17 @@
 										/>
 									</SettingsGroup>
 								{:else if screen.type === 'spell-word'}
-									<div class="mt-4 flex gap-4 border-t-2 border-dashed border-line/60 pt-4 text-sm">
-										<label class="flex items-center gap-1.5">
-											<input
-												type="radio"
-												name={`m-${String(path.bucket)}-${path.index}`}
-												checked={screen.mode === 'copy'}
-												onchange={() => (screen.mode = 'copy')}
-											/>
-											העתקה (המילה מוצגת)
-										</label>
-										<label class="flex items-center gap-1.5">
-											<input
-												type="radio"
-												name={`m-${String(path.bucket)}-${path.index}`}
-												checked={screen.mode === 'listen'}
-												onchange={() => (screen.mode = 'listen')}
-											/>
-											הכתבה (לפי שמיעה)
-										</label>
-									</div>
-									{#if screen.mode === 'listen'}
+									<ListenField
+										checked={screen.mode === 'listen'}
+										onChange={(on) => (screen.mode = on ? 'listen' : 'copy')}
+									>
 										<TextField
 											label="רמז בעברית (אופציונלי)"
 											bind:value={screen.hintHe}
 											dir="rtl"
 											stacked
 										/>
-									{/if}
+									</ListenField>
 								{:else if screen.type === 'word-card'}
 									<TextField
 										label="תיאור תמונה (אופציונלי)"

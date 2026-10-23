@@ -552,7 +552,7 @@
 				value={screen.word}
 				onInput={(v) => set('word', v)}
 			/>
-			<p class="text-xs text-muted">מצב ({screen.mode}) - בסרגל התחתון</p>
+			<p class="text-xs text-muted">🎧 האזנה - בסרגל התחתון</p>
 		{:else if screen.type === 'timed-reading'}
 			<MarkdownInput bare minRows={1} value={screen.label} onInput={(v) => set('label', v)} />
 			<MarkdownInput
