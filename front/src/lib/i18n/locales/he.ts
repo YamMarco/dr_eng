@@ -587,6 +587,7 @@ export const he = {
 		pickN: (n: number) => `סמנו ${n} תשובות נכונות`,
 		markAll: 'תרגיל: סימון בטקסט',
 		clozePick: 'תרגיל: השלימו את המשפט',
+		order: 'תרגיל: סדרו לפי הסדר',
 		wordBankLabel: 'מילים לחיפוש',
 		timedReading: 'תרגיל מתוזמן: קריאה',
 		writingTask: 'משימת כתיבה',

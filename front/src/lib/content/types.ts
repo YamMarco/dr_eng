@@ -39,6 +39,8 @@ export interface LessonNode {
 	big: boolean;
 	image?: string;
 	content: LessonContent;
+	/** The 5-point path's version (COBE): same rounds count, any screens. Omit when both levels share `content`. */
+	content5?: LessonContent;
 }
 
 /** In the order a module's page lists them. */

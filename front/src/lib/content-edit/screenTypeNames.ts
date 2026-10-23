@@ -12,6 +12,7 @@ export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	'word-card': 'כרטיס מילה',
 	mcq: 'שאלה אמריקאית',
 	'cloze-pick': 'השלמת משפט מרשימה',
+	order: 'סידור לפי הסדר',
 	'mark-all': 'סימון במלל',
 	'spell-word': 'איות מילה',
 	'match-pairs': 'התאמת זוגות',

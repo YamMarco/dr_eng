@@ -5,6 +5,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gradeSpeaking, lengthPercentOff } from '../src/lib/feedback/speaking.ts';
 import type { CobeRubric } from '../src/lib/content/rubrics/index.ts';
+import { cobe1Lessons } from '../src/lib/content/cobe/cobe-1.ts';
+import { cobe2Lessons } from '../src/lib/content/cobe/cobe-2.ts';
+import { cobe3Lessons } from '../src/lib/content/cobe/cobe-3.ts';
 
 const rubric = JSON.parse(
 	readFileSync(new URL('../src/lib/content/rubrics/cobe.json', import.meta.url), 'utf8')
@@ -71,4 +74,11 @@ test('grade: weights by level, band midpoints, set and length deductions', () =>
 	);
 	// 5 points weighs delivery and language more (15% each).
 	assert.equal(five.criteria!.delivery, 3.5);
+});
+
+// Progress counts rounds per lesson id, so both levels must agree on them.
+test('lessons: the 5-point version has the same rounds', () => {
+	for (const lesson of [...cobe1Lessons, ...cobe2Lessons, ...cobe3Lessons])
+		if (lesson.content5)
+			assert.equal(lesson.content5.rounds.length, lesson.content.rounds.length, lesson.id);
 });

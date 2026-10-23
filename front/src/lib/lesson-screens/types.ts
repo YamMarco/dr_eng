@@ -17,6 +17,7 @@ export type PassageQuizQuestion = PassageQuizScreen['questions'][number];
 export type PassageMcqScreen = z.infer<typeof s.passageMcqSchema>;
 export type WritingTaskScreen = z.infer<typeof s.writingTaskSchema>;
 export type ClozePickScreen = z.infer<typeof s.clozePickSchema>;
+export type OrderScreen = z.infer<typeof s.orderSchema>;
 export type TimeComparisonScreen = z.infer<typeof s.timeComparisonSchema>;
 export type WordCardScreen = z.infer<typeof s.wordCardSchema>;
 export type MatchPairsScreen = z.infer<typeof s.matchPairsSchema>;
@@ -71,6 +72,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return !screen.prompt.trim() || screen.options.length === 0;
 		case 'cloze-pick':
 			return !screen.clause.trim() || screen.options.length === 0;
+		case 'order':
+			return screen.tiles.length < 2;
 		case 'mark-all':
 			return (
 				!screen.text.trim() ||
@@ -115,6 +118,7 @@ export function countQuestions(screen: LessonScreen): number {
 	switch (screen.type) {
 		case 'mcq':
 		case 'cloze-pick':
+		case 'order':
 		case 'mark-all':
 		case 'match-pairs':
 			return 1;
@@ -132,4 +136,12 @@ export function countQuestions(screen: LessonScreen): number {
 		default:
 			return 0;
 	}
+}
+
+/** Order screens: the placed tiles read as the answer (by text, so two equal tiles are interchangeable). */
+export function isOrderCorrect(screen: OrderScreen, placed: number[]): boolean {
+	return (
+		placed.length === screen.tiles.length &&
+		placed.every((t, i) => screen.tiles[t] === screen.tiles[i])
+	);
 }

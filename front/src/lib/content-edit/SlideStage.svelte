@@ -202,6 +202,7 @@
 	const POINTS_TYPES = new Set([
 		'mcq',
 		'cloze-pick',
+		'order',
 		'mark-all',
 		'spell-word',
 		'match-pairs',

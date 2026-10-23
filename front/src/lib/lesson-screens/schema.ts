@@ -259,6 +259,27 @@ export const clozePickSchema = z
 		'Fill a blank by picking a tile; any tile in correctIndices passes. Use instead of typed answers when the "free" part is a small closed set (stance opener, verb form, connector). Scored: 1 point.'
 	);
 
+export const orderSchema = z
+	.strictObject({
+		type: z.literal('order'),
+		prompt: z
+			.string()
+			.describe(
+				'What to build: an instruction, or the Hebrew sentence to say in English. Mini-markdown.'
+			),
+		tiles: z
+			.array(z.string())
+			.min(2)
+			.describe(
+				'The answer in the right order: words / chunks of one sentence, or whole sentences / events. Shown shuffled. Tiles that are whole sentences (2+ ending in . ? !) stack as numbered lines; word tiles flow as one sentence.'
+			),
+		explanation: z.string().optional(),
+		points: points.optional()
+	})
+	.describe(
+		'Tap the tiles into the right order: build a sentence from words, or order sentences / events. Passes only with every tile in place. Scored: 1 point.'
+	);
+
 export const markAllCategorySchema = z.strictObject({
 	name: z.string(),
 	color: z.string().describe('A key in lesson-screens/markAllColors.ts.'),
@@ -503,6 +524,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	summarySchema,
 	mcqSchema,
 	clozePickSchema,
+	orderSchema,
 	markAllSchema,
 	timedReadingSchema,
 	questionPreviewSchema,

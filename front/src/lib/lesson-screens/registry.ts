@@ -9,6 +9,7 @@ import Steps from './Steps.svelte';
 import Summary from './Summary.svelte';
 import Mcq from './Mcq.svelte';
 import ClozePick from './ClozePick.svelte';
+import Order from './Order.svelte';
 import MarkAll from './MarkAll.svelte';
 import TimedReading from './TimedReading.svelte';
 import QuestionPreview from './QuestionPreview.svelte';
@@ -36,6 +37,7 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	summary: Summary,
 	mcq: Mcq,
 	'cloze-pick': ClozePick,
+	order: Order,
 	'mark-all': MarkAll,
 	'timed-reading': TimedReading,
 	'question-preview': QuestionPreview,

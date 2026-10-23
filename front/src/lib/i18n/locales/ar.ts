@@ -269,6 +269,7 @@ export const ar: DictionaryOverride = {
 		pickN: (n: number) => `اختاروا ${n} إجابات صحيحة`,
 		markAll: 'تمرين: التحديد في النص',
 		clozePick: 'تمرين: أكملوا الجملة',
+		order: 'تمرين: رتّبوا بالترتيب الصحيح',
 		wordBankLabel: 'كلمات للبحث',
 		timedReading: 'تمرين بوقت محدد: قراءة',
 		writingTask: 'مهمة كتابة',

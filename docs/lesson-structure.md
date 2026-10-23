@@ -36,6 +36,7 @@ LessonNode ──section──> SectionMeta          (heading + theme color, in 
 ```
 
 - **Positions are manual.** Inserting a node means nudging the `y` of those below. Keep a section's nodes about 120 apart; the old `x` cycle was `[0, 70, 100, 70, 0, -70, -100, -70]`.
+- **Level variant (COBE):** `content5` replaces `content` on the 5-point path (`lessonForUnits`, used by the lessons page). Same rounds count as `content` (progress is per id); `/edit` edits `content` only.
 - `preface` holds rule cards, steps and summary intros. Exercises and mid/end-of-round teaching screens go in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
 - **Unlock:** a node opens when every id in `required` has `roundsCompleted >= requiredRounds` (default 1). Round 0 is mandatory; rounds 1+ are optional and affect nothing downstream. To require the first N rounds, set `requiredRounds: N`.
 - A node with no non-empty screen in any round renders as a permanently locked placeholder.
@@ -53,6 +54,7 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 - **`passage-mcq`:** short text plus question(s) on one screen. `timerKey` (+ `label`) adds a stopwatch that stops on the last check.
 - **`cloze-pick`:** options as tiles, the picked one previews the assembled sentence (`option + clause`). Use it instead of `writing-task` when the free part is really a small closed set (stance opener, verb form, connector), so scoring is a lookup.
 - **`spell-word`:** listen mode speaks the word once on arrival (browser speech, en-GB), buttons replay at normal or slow speed; where the browser can't speak it falls back to copy mode. Keep copy right after a word's card; put listen later (review round, test). Never dictate homophones (affect / effect). `hintHe` shows the meaning under the buttons.
+- **`order`:** tap the shuffled `tiles` into the right order; passes only when all are in place (equal tiles are interchangeable). Word / chunk tiles build one sentence (`"How do you say: ..."` in the prompt for Hebrew-to-English); 2+ tiles ending in `.` `?` `!` = ordering sentences or events, shown as numbered lines. Author the tiles in the right order.
 - **`match-pairs`:** English word to Hebrew meaning in either order, Hebrew column shuffled per mount. One scored question, passes with at most 1 wrong tap.
 - **`match-definitions`** (Module E Part II): numbered `items` (exam uses 6) and `definitions` (3), each pointing at its item by `itemIndex`; pick a definition, then an item; 1 point per definition. `word-card.definitionEn` switches the card to the exam-vocabulary layout: the Hebrew translation large, then two small lines - the example sentence and the exam's line (`**a prize** - definition`).
 - **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.

@@ -9,7 +9,12 @@
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
-	import { moduleSections, getLessonsBySection, type LessonNode } from '$lib/content';
+	import {
+		moduleSections,
+		getLessonsBySection,
+		lessonForUnits,
+		type LessonNode
+	} from '$lib/content';
 	import { localizeContent } from '$lib/content/localize.svelte';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import {
@@ -692,7 +697,7 @@
 	     `lesson`/`roundIndex` props. -->
 	{#key `${activeId}-${activeRoundIndex}`}
 		<LessonRunner
-			lesson={localizeContent(activeNode.lesson, i18n.language)}
+			lesson={localizeContent(lessonForUnits(activeNode.lesson, group.units), i18n.language)}
 			roundIndex={activeRoundIndex}
 			lessonLabel={i18n.title(activeNode.lesson.id)}
 			roundLabel={totalRounds(activeNode) > 1

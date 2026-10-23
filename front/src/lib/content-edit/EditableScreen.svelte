@@ -222,6 +222,36 @@
 				המשפט הקבוע (אחרי הפתיח שנבחר) - האפשרויות והתשובה הנכונה בסרגל התחתון
 			</p>
 			<MarkdownInput bare minRows={2} value={screen.clause} onInput={(v) => set('clause', v)} />
+		{:else if screen.type === 'order'}
+			<MarkdownInput bare minRows={1} value={screen.prompt} onInput={(v) => set('prompt', v)} />
+			<p class="text-xs text-muted">האריחים בסדר הנכון (התלמיד רואה אותם מעורבבים)</p>
+			<div class="flex flex-col gap-2">
+				{#each screen.tiles as _tile, i (i)}
+					<div class="flex items-center gap-2">
+						<span class="text-xs text-muted">{i + 1}.</span>
+						<input
+							bind:value={screen.tiles[i]}
+							oninput={touch}
+							dir="ltr"
+							class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+						/>
+						<button
+							type="button"
+							class="text-xs font-semibold text-danger"
+							onclick={() => removeFrom('tiles', i)}
+						>
+							✕
+						</button>
+					</div>
+				{/each}
+				<button
+					type="button"
+					class="self-start text-xs font-semibold text-brand"
+					onclick={() => pushInto('tiles', '')}
+				>
+					+ אריח
+				</button>
+			</div>
 		{:else if screen.type === 'mark-all'}
 			<MarkdownInput
 				bare

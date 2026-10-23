@@ -59,20 +59,30 @@ export const sectionMeta: SectionMeta[] = [
 		id: 'cobe-1',
 		modules: ['cobe'],
 		skill: 'speaking',
-		titleEn: 'Part A - Project',
+		titleEn: 'Part A - About me',
 		intro: {
-			greeting: 'Confidence, not memory',
-			goal: 'חמישה שיעורים לשאלות על הפרויקט: פתיחה אישית, משפט חילוץ כששוכחים פרט, למה הנושא חשוב היום, וסימולציה מוקלטת.'
+			greeting: 'Answer all, say why, give an example',
+			goal: 'חמישה שיעורים לחלק האישי: חוקי הבחינה, סולם התשובה, משפטי הצלה, ותרגול על עצמכם, הבית וסיפורים.'
 		}
 	},
 	{
 		id: 'cobe-2',
 		modules: ['cobe'],
 		skill: 'speaking',
-		titleEn: 'Part B - Clip',
+		titleEn: 'Part B - Project',
+		intro: {
+			greeting: 'One full minute about your project',
+			goal: 'חמישה שיעורים לשאלות על הפרויקט: כרטיס פרויקט, משפחות השאלות, מאתגר לפתרון, להאריך לדקה, ותרגול.'
+		}
+	},
+	{
+		id: 'cobe-3',
+		modules: ['cobe'],
+		skill: 'speaking',
+		titleEn: 'Part C - Clip',
 		intro: {
 			greeting: 'Watch, then speak',
-			goal: 'שני שיעורים לחלק של הקליפ: לתאר מה ראיתם (סט 1), ולהסביר מה אתם חושבים (סט 2).'
+			goal: 'חמישה שיעורים לחלק של הקליפ: לתאר מה קרה ואת התוצאה (סט 1), ולהסביר רגשות, מסר ו"אילו הייתי" (סט 2).'
 		}
 	}
 ];

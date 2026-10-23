@@ -2,7 +2,12 @@
 // once at submit time with the answers it collected.
 
 import type { LessonScreen } from '$lib/lesson-screens/types';
-import { isMarkAllPass, MATCH_PAIRS_MAX_MISTAKES, mcqCorrect } from '$lib/lesson-screens/types';
+import {
+	isMarkAllPass,
+	isOrderCorrect,
+	MATCH_PAIRS_MAX_MISTAKES,
+	mcqCorrect
+} from '$lib/lesson-screens/types';
 import type { QuizNode } from './types';
 import { screensWithIds } from './screenIds';
 import { isSentenceCompletionMatch } from '$lib/lesson-screens/sentenceCompletion';
@@ -74,6 +79,11 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 			const points = screen.points ?? 1;
 			const picked = Array.isArray(userAnswer) ? (userAnswer as number[]) : [];
 			const correct = picked.length > 0 && isMarkAllPass(screen, picked);
+			return { earned: correct ? points : 0, max: points, auto: true };
+		}
+		case 'order': {
+			const points = screen.points ?? 1;
+			const correct = Array.isArray(userAnswer) && isOrderCorrect(screen, userAnswer as number[]);
 			return { earned: correct ? points : 0, max: points, auto: true };
 		}
 		case 'match-pairs': {
