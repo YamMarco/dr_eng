@@ -10,7 +10,7 @@ export const cobe3Lessons: LessonNode[] = [
 		required: ['cobe-b-practice'],
 		position: {
 			x: 0,
-			y: 1400
+			y: 1200
 		},
 		big: false,
 		content: {
@@ -244,7 +244,7 @@ export const cobe3Lessons: LessonNode[] = [
 		required: ['cobe-c-how-it-works'],
 		position: {
 			x: 70,
-			y: 1520
+			y: 1320
 		},
 		big: false,
 		content: {
@@ -523,7 +523,7 @@ export const cobe3Lessons: LessonNode[] = [
 		required: ['cobe-c-describe'],
 		position: {
 			x: 100,
-			y: 1640
+			y: 1440
 		},
 		big: false,
 		content: {
@@ -805,7 +805,7 @@ export const cobe3Lessons: LessonNode[] = [
 		required: ['cobe-c-outcome-feelings'],
 		position: {
 			x: 70,
-			y: 1760
+			y: 1560
 		},
 		big: false,
 		content: {
@@ -1069,7 +1069,7 @@ export const cobe3Lessons: LessonNode[] = [
 		required: ['cobe-c-interpret'],
 		position: {
 			x: 0,
-			y: 1880
+			y: 1680
 		},
 		big: false,
 		content: {

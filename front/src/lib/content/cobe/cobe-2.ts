@@ -10,7 +10,7 @@ export const cobe2Lessons: LessonNode[] = [
 		required: ['cobe-a-stories'],
 		position: {
 			x: 0,
-			y: 700
+			y: 600
 		},
 		big: false,
 		content: {
@@ -325,7 +325,7 @@ export const cobe2Lessons: LessonNode[] = [
 		required: ['cobe-b-basics'],
 		position: {
 			x: 70,
-			y: 820
+			y: 720
 		},
 		big: false,
 		content: {
@@ -625,7 +625,7 @@ export const cobe2Lessons: LessonNode[] = [
 		required: ['cobe-b-topic'],
 		position: {
 			x: 100,
-			y: 940
+			y: 840
 		},
 		big: false,
 		content: {
@@ -890,7 +890,7 @@ export const cobe2Lessons: LessonNode[] = [
 		required: ['cobe-b-sources-team'],
 		position: {
 			x: 70,
-			y: 1060
+			y: 960
 		},
 		big: false,
 		content: {
@@ -1162,7 +1162,7 @@ export const cobe2Lessons: LessonNode[] = [
 		required: ['cobe-b-full-minute'],
 		position: {
 			x: 0,
-			y: 1180
+			y: 1080
 		},
 		big: false,
 		content: {
