@@ -8,6 +8,7 @@ import type { PageLoad } from './$types';
 // seed the module and the initial selection:
 //   /edit?module=cobe
 //   /edit?section=c-1&lesson=c-l06&round=2&screen=1  (module = the section's owner)
+//   &units=5 opens the 5-point version of a module that has one (COBE)
 export const load: PageLoad = ({ url }) => {
 	const lesson = url.searchParams.get('lesson') ?? '';
 	const section = url.searchParams.get('section') ?? getLesson(lesson)?.section;
@@ -21,6 +22,7 @@ export const load: PageLoad = ({ url }) => {
 		module: (requested && getModule(requested)?.id) || (section && ownerModule(section)) || 'c',
 		lesson,
 		round: num('round', 0),
-		screen: num('screen', -1)
+		screen: num('screen', -1),
+		units: url.searchParams.get('units') === '5' ? (5 as const) : (4 as const)
 	};
 };

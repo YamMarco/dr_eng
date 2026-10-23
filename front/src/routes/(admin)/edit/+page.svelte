@@ -12,4 +12,5 @@
 	lesson={data.lesson}
 	round={data.round}
 	screen={data.screen}
+	units={data.units}
 />

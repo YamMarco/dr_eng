@@ -36,7 +36,7 @@ LessonNode ──section──> SectionMeta          (heading + theme color, in 
 ```
 
 - **Positions are manual.** Inserting a node means nudging the `y` of those below. Keep a section's nodes about 120 apart; the old `x` cycle was `[0, 70, 100, 70, 0, -70, -100, -70]`.
-- **Level variant (COBE):** `content5` replaces `content` on the 5-point path (`lessonForUnits`, used by the lessons page). Same rounds count as `content` (progress is per id); `/edit` edits `content` only.
+- **Level variant (COBE):** `content5` replaces `content` on the 5-point path (`lessonForUnits`, used by the lessons page). Same rounds count as `content` (progress is per id). `/edit` switches versions with a level toggle (`editModel.level` swaps the two in place; saves always write the stored layout).
 - `preface` holds rule cards, steps and summary intros. Exercises and mid/end-of-round teaching screens go in `rounds[].screens`. Round 0's played list is `[...preface, ...rounds[0].screens]`.
 - **Unlock:** a node opens when every id in `required` has `roundsCompleted >= requiredRounds` (default 1). Round 0 is mandatory; rounds 1+ are optional and affect nothing downstream. To require the first N rounds, set `requiredRounds: N`.
 - A node with no non-empty screen in any round renders as a permanently locked placeholder.

@@ -24,6 +24,16 @@ function clone<T>(v: T): T {
  *  model), so callers narrow at the boundary. */
 type LessonBucket = 'preface' | number;
 
+/** Both level versions of a node (COBE): round changes apply to both, so their rounds stay aligned. */
+function versions(node: LessonNode) {
+	return node.content5 ? [node.content, node.content5] : [node.content];
+}
+
+/** Swap `content` and `content5` in place on every node that has both. */
+function swapLevels(nodes: LessonNode[]) {
+	for (const n of nodes) if (n.content5) [n.content, n.content5] = [n.content5, n.content];
+}
+
 function screenList(node: LessonNode, bucket: LessonBucket): LessonScreen[] {
 	return bucket === 'preface' ? node.content.preface : node.content.rounds[bucket].screens;
 }
@@ -38,6 +48,36 @@ class EditModel implements EditModelLike {
 	/** Which screen inside that node the form/preview is showing. */
 	selectedPath = $state<ScreenPath | null>(null);
 
+	/** Which version is being edited. At 5 the nodes that have `content5` hold
+	 *  it in `content` (swapped in place), so every editing path stays on
+	 *  `content`; snapshots, diffs and saves use `#stored()`. The two versions
+	 *  are independent: a screen edited in one never changes the other. */
+	level = $state<4 | 5>(4);
+
+	/** The nodes as the content files store them (4-point in `content`). */
+	#stored(): LessonNode[] {
+		const plain = clone(this.nodes);
+		if (this.level === 5) swapLevels(plain);
+		return plain;
+	}
+
+	/** True when the module has 5-point versions (shows the level switch). */
+	get hasLevels(): boolean {
+		return this.nodes.some((n) => n.content5);
+	}
+
+	setLevel(level: 4 | 5) {
+		if (level === this.level) return;
+		swapLevels(this.nodes);
+		this.level = level;
+		if (
+			this.selectedNodeId &&
+			this.selectedPath &&
+			!this.screenAt(this.selectedNodeId, this.selectedPath)
+		)
+			this.selectedPath = null;
+	}
+
 	/** Hebrew titles by node id - nodes themselves carry no title text. */
 	readonly titles = new TitleEdits();
 
@@ -45,7 +85,7 @@ class EditModel implements EditModelLike {
 	#baseline = new Map<string, string>();
 
 	#history = new EditHistory(
-		() => JSON.stringify({ nodes: this.nodes, titles: this.titles.map }),
+		() => JSON.stringify({ nodes: this.#stored(), titles: this.titles.map }),
 		(snapshot) => this.#restore(snapshot)
 	);
 
@@ -73,6 +113,7 @@ class EditModel implements EditModelLike {
 
 	#restore(snapshot: string) {
 		const parsed = JSON.parse(snapshot) as { nodes: LessonNode[]; titles: Record<string, string> };
+		if (this.level === 5) swapLevels(parsed.nodes);
 		this.nodes = parsed.nodes;
 		this.titles.restore(parsed.titles);
 		if (!this.node(this.selectedNodeId ?? '')) this.selectedNodeId = this.nodes[0]?.id ?? null;
@@ -89,8 +130,9 @@ class EditModel implements EditModelLike {
 		return moduleSections(this.moduleId).map((s) => s.id);
 	}
 
-	load(moduleId: string) {
+	load(moduleId: string, level: 4 | 5 = 4) {
 		this.moduleId = moduleId;
+		this.level = 4;
 		this.nodes = clone(this.sectionIds.flatMap((id) => getLessonsBySection(id)));
 		this.titles.load();
 		this.#snapshotBaseline();
@@ -98,10 +140,11 @@ class EditModel implements EditModelLike {
 		this.selectedNodeId = this.nodes[0]?.id ?? null;
 		this.selectedPath = null;
 		this.#history.reset();
+		this.setLevel(level);
 	}
 
 	#snapshotBaseline() {
-		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
+		const plain = this.#stored();
 		this.#baseline = new Map(
 			this.sectionIds.map((id) => [id, JSON.stringify(plain.filter((n) => n.section === id))])
 		);
@@ -109,7 +152,7 @@ class EditModel implements EditModelLike {
 
 	/** Section files whose nodes differ from what was loaded — what save writes. */
 	get changedSections(): string[] {
-		const plain = JSON.parse(JSON.stringify(this.nodes)) as LessonNode[];
+		const plain = this.#stored();
 		return this.sectionIds.filter(
 			(id) => JSON.stringify(plain.filter((n) => n.section === id)) !== this.#baseline.get(id)
 		);
@@ -121,12 +164,10 @@ class EditModel implements EditModelLike {
 	 *  server merges each patch into whatever's currently on disk/GitHub
 	 *  instead of overwriting the whole section from a possibly-stale copy. */
 	changesForSection(id: string): { upserts: LessonNode[]; deletes: string[] } {
-		const current = this.nodes.filter((n) => n.section === id);
+		const current = this.#stored().filter((n) => n.section === id);
 		const baseline: LessonNode[] = JSON.parse(this.#baseline.get(id) ?? '[]');
 		const baseById = new Map(baseline.map((n) => [n.id, n]));
-		const upserts = current
-			.filter((n) => JSON.stringify(n) !== JSON.stringify(baseById.get(n.id)))
-			.map((n) => JSON.parse(JSON.stringify(n)) as LessonNode);
+		const upserts = current.filter((n) => JSON.stringify(n) !== JSON.stringify(baseById.get(n.id)));
 		const currentIds = new Set(current.map((n) => n.id));
 		const deletes = baseline.map((n) => n.id).filter((id) => !currentIds.has(id));
 		return { upserts, deletes };
@@ -324,6 +365,10 @@ class EditModel implements EditModelLike {
 			if (!r) continue;
 			keep.content.preface.push(...clone(r.content.preface));
 			keep.content.rounds.push(...clone(r.content.rounds));
+			if (keep.content5) {
+				keep.content5.preface.push(...clone((r.content5 ?? r.content).preface));
+				keep.content5.rounds.push(...clone((r.content5 ?? r.content).rounds));
+			}
 		}
 		const gone = new Set(rest);
 		for (const g of gone) this.titles.remove(g);
@@ -343,12 +388,14 @@ class EditModel implements EditModelLike {
 		const src = this.node(id);
 		if (!src || afterRound < 0 || afterRound >= src.content.rounds.length - 1) return;
 		const moved = src.content.rounds.splice(afterRound + 1);
+		const moved5 = src.content5?.rounds.splice(afterRound + 1);
 		const tail: LessonNode = {
 			...clone(src),
 			id: this.shortId(src.section),
 			required: [src.id],
 			position: { x: src.position.x, y: src.position.y + 120 },
-			content: { preface: [], rounds: moved }
+			content: { preface: [], rounds: moved },
+			...(moved5 && { content5: { preface: [], rounds: moved5 } })
 		};
 		const srcIdx = this.nodes.findIndex((n) => n.id === id);
 		this.nodes.splice(srcIdx + 1, 0, tail);
@@ -367,29 +414,31 @@ class EditModel implements EditModelLike {
 		const n = this.node(nodeId);
 		if (!n) return;
 		const idx = at < 0 ? n.content.rounds.length : at;
-		n.content.rounds.splice(idx, 0, { screens: [] });
+		for (const c of versions(n)) c.rounds.splice(idx, 0, { screens: [] });
 		this.dirty = true;
 	}
 
 	deleteRound(nodeId: string, roundIndex: number) {
 		const n = this.node(nodeId);
 		if (!n || n.content.rounds.length <= 1) return;
-		n.content.rounds.splice(roundIndex, 1);
+		for (const c of versions(n)) c.rounds.splice(roundIndex, 1);
 		this.dirty = true;
 	}
 
 	duplicateRound(nodeId: string, roundIndex: number) {
 		const n = this.node(nodeId);
 		if (!n) return;
-		n.content.rounds.splice(roundIndex + 1, 0, clone(n.content.rounds[roundIndex]));
+		for (const c of versions(n)) c.rounds.splice(roundIndex + 1, 0, clone(c.rounds[roundIndex]));
 		this.dirty = true;
 	}
 
 	moveRound(nodeId: string, from: number, to: number) {
 		const n = this.node(nodeId);
 		if (!n || from === to) return;
-		const [r] = n.content.rounds.splice(from, 1);
-		n.content.rounds.splice(to, 0, r);
+		for (const c of versions(n)) {
+			const [r] = c.rounds.splice(from, 1);
+			c.rounds.splice(to, 0, r);
+		}
 		this.dirty = true;
 	}
 

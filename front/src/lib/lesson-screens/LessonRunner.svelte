@@ -157,7 +157,9 @@
 	let editHref = $derived.by(() => {
 		if (!dev || !lesson || !currentPath) return undefined;
 		const round = currentPath.bucket === 'preface' ? 0 : currentPath.bucket;
-		return `/edit?section=${lesson.section}&lesson=${lesson.id}&round=${round}&screen=${currentPath.index}`;
+		// Playing the 5-point version (lessonForUnits) opens that version.
+		const units = lesson.content5 && lesson.content === lesson.content5 ? '&units=5' : '';
+		return `/edit?section=${lesson.section}&lesson=${lesson.id}&round=${round}&screen=${currentPath.index}${units}`;
 	});
 
 	// "Glance back" sheet: the lesson's teaching preface, viewable over any

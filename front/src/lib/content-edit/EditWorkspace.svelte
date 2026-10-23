@@ -19,8 +19,15 @@
 		module: moduleId = 'c',
 		lesson = '',
 		round = 0,
-		screen = -1
-	} = $props<{ module?: string; lesson?: string; round?: number; screen?: number }>();
+		screen = -1,
+		units = 4
+	} = $props<{
+		module?: string;
+		lesson?: string;
+		round?: number;
+		screen?: number;
+		units?: 4 | 5;
+	}>();
 
 	let mode = $state<'graph' | 'lesson'>('graph');
 
@@ -29,7 +36,7 @@
 	let dirty = $derived(editModel.dirty || rulesStore.dirty);
 
 	onMount(() => {
-		editModel.load(moduleId);
+		editModel.load(moduleId, units);
 		rulesStore.load();
 		if (lesson && editModel.node(lesson)) {
 			editModel.select(
@@ -144,6 +151,21 @@
 		<span class="rounded-lg bg-line/60 px-2.5 py-1.5 text-sm font-bold" dir="ltr"
 			>{getModule(moduleId)?.letter ?? moduleId}</span
 		>
+
+		{#if editModel.hasLevels}
+			<!-- Which version is edited: each level's screens are separate. -->
+			<div class="flex overflow-hidden rounded-lg border-2 border-violet-500 text-sm font-bold">
+				{#each [4, 5] as const as level (level)}
+					<button
+						type="button"
+						class="px-3 py-1.5 {editModel.level === level
+							? 'bg-violet-500 text-white'
+							: 'bg-canvas text-violet-700'}"
+						onclick={() => editModel.setLevel(level)}>{level} יחידות</button
+					>
+				{/each}
+			</div>
+		{/if}
 
 		<UndoRedoButtons model={editModel} />
 

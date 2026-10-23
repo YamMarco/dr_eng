@@ -39,7 +39,7 @@ Short spoken conversations for confidence and fluency, not grading. A row on the
 
 ## Lessons
 
-One path, three sections (one per exam part), 5 lessons each, one round each with `retryMissed`, unlocked in a chain A -> B -> C. Each lesson holds the 4-point version in `content` and the 5-point one in `content5`, picked by the path's unit (`lessonForUnits`, lessons page); same ids, same rounds count (test), so progress is shared. Screens shared by both levels (exam rules, official sets) are written into both. Content files are generated plain data; edit them in `/edit` (it shows `content` only, `content5` is kept) or by hand.
+One path, three sections (one per exam part), 5 lessons each, one round each with `retryMissed`, unlocked in a chain A -> B -> C. Each lesson holds the 4-point version in `content` and the 5-point one in `content5`, picked by the path's unit (`lessonForUnits`, lessons page); same ids, same rounds count (test), so progress is shared. Screens shared by both levels (exam rules, official sets) are written into both. Content files are generated plain data; edit them in `/edit`: a "4 יחידות / 5 יחידות" switch picks the version (an edit link from the 5-unit path opens 5). The versions are independent - a screen edited in one never changes the other, so a shared screen is edited twice. Round add / delete / move applies to both.
 
 - **4 points:** answer every question, say why, give an example; survival phrases; simple words; Part B at least a minute (target 75 s).
 - **5 points:** depth - reason + explanation, specific evidence, the other side, a takeaway; precise words; Part B about 1:30.
@@ -66,7 +66,7 @@ Mapped from the partner's exercise kinds: true/false and sorting -> `mcq`; build
 - Recordings live in memory: after a reload the report can't play them back (scores stay).
 - The "Part C needs at least one answer" rule is not enforced in code.
 - The Project Card (`self-check`) is not saved, so later Part B screens can't show it back.
-- `/edit` shows and edits only the 4-point `content`.
+- `/edit` checks (issues) cover the version on screen only.
 - Arabic content translations (`translations/ar.json`) missing for the lessons; titles are in. Report strings (`cobeReview`) are Hebrew only.
 - AI feedback in lessons is one-shot per take; the back-and-forth is the AI chat (turn-based, not live voice).
 - The AI never sees the Part C clip: it judges whether answers respond to the questions, not their accuracy about the clip.
