@@ -4,6 +4,8 @@
 	import Button from '$lib/components/Button.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { onMount } from 'svelte';
+	import { replaceState } from '$app/navigation';
 
 	// One screen, five faces: sign in, sign up, forgot password, "check your
 	// email", and (arriving from a reset link) choose a new password. The email
@@ -37,7 +39,18 @@
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
 	let busy = $state(false);
 	let failed = $state<string | null>(null);
-	let canResend = $state(false);
+	/** What the error box offers: resend the confirmation, or sign in / reset for a known email. */
+	let fix = $state<'resend' | 'existing' | null>(null);
+	let resent = $state(false);
+
+	// An expired or used email link comes back with the error in the URL.
+	onMount(() => {
+		const params = new URLSearchParams(location.hash.slice(1) || location.search);
+		const code = params.get('error_code');
+		if (!code) return;
+		failed = code === 'otp_expired' ? t.errors.linkExpired : t.errors.generic;
+		replaceState(location.pathname, {});
+	});
 
 	// The link from a reset email lands here with a recovery session.
 	$effect(() => {
@@ -63,23 +76,53 @@
 							: [t.title, t.subtitle]
 	);
 
+	// Supabase auth error codes -> what the student sees (and can do next).
 	function messageFor(error: unknown): string {
-		const code = (error as { code?: string })?.code;
-		if (code === 'invalid_credentials') return t.errors.badCredentials;
-		if (code === 'email_not_confirmed') {
-			canResend = true;
-			return t.errors.notConfirmed;
+		const { code, name, status } = (error ?? {}) as {
+			code?: string;
+			name?: string;
+			status?: number;
+		};
+		if (name === 'AuthRetryableFetchError' || status === 0 || error instanceof TypeError)
+			return t.errors.offline;
+		switch (code) {
+			case 'invalid_credentials':
+				return t.errors.badCredentials;
+			case 'email_not_confirmed':
+				fix = 'resend';
+				return t.errors.notConfirmed;
+			case 'user_already_exists':
+			case 'email_exists':
+				fix = 'existing';
+				return t.errors.alreadyRegistered;
+			case 'weak_password':
+				return t.errors.weakPassword;
+			case 'same_password':
+				return t.errors.samePassword;
+			case 'email_address_invalid':
+			case 'validation_failed':
+				return t.errors.invalidEmail;
+			case 'user_banned':
+				return t.errors.banned;
+			case 'signup_disabled':
+				return t.errors.signupClosed;
+			case 'otp_expired':
+			case 'session_not_found':
+			case 'session_expired':
+				return t.errors.linkExpired;
+			case 'over_email_send_rate_limit':
+			case 'over_request_rate_limit':
+				return t.errors.rateLimit;
 		}
-		if (code === 'weak_password') return t.errors.weakPassword;
-		if (code === 'over_email_send_rate_limit' || code === 'over_request_rate_limit')
-			return t.errors.rateLimit;
+		console.error('auth error', error);
 		return t.errors.generic;
 	}
 
 	async function run(action: () => Promise<void>, onDone?: () => void) {
 		busy = true;
 		failed = null;
-		canResend = false;
+		fix = null;
+		resent = false;
 		try {
 			await action();
 			onDone?.();
@@ -94,9 +137,16 @@
 		mode = next;
 		otpSent = false;
 		failed = null;
-		canResend = false;
+		fix = null;
+		resent = false;
 		password = '';
 	}
+
+	const resend = () =>
+		run(
+			() => auth.resendConfirmation(email.trim(), returnTo),
+			() => (resent = true)
+		);
 
 	function submit(event: SubmitEvent) {
 		event.preventDefault();
@@ -149,12 +199,7 @@
 							{/if}
 						</p>
 						{#if sentKind === 'confirm'}
-							<button
-								type="button"
-								class={linkBtn}
-								disabled={busy}
-								onclick={() => run(() => auth.resendConfirmation(email.trim(), returnTo))}
-							>
+							<button type="button" class={linkBtn} disabled={busy} onclick={resend}>
 								{t.resendConfirm}
 							</button>
 						{/if}
@@ -269,6 +314,11 @@
 			</div>
 		{/key}
 
+		{#if resent}
+			<p class="mt-4 text-sm text-muted" role="status" in:fly={{ y: 6, duration: 200 }}>
+				{t.resent}
+			</p>
+		{/if}
 		{#if failed}
 			<div
 				class="mt-4 rounded-2xl bg-miss-soft px-4 py-3 text-sm leading-relaxed font-semibold text-miss"
@@ -276,14 +326,19 @@
 				in:fly={{ y: 6, duration: 200 }}
 			>
 				{failed}
-				{#if canResend}
-					<button
-						type="button"
-						class="mt-1 block underline"
-						onclick={() => run(() => auth.resendConfirmation(email.trim(), returnTo))}
-					>
+				{#if fix === 'resend'}
+					<button type="button" class="mt-1 block underline" onclick={resend}>
 						{t.resendConfirm}
 					</button>
+				{:else if fix === 'existing'}
+					<span class="mt-1 flex flex-wrap gap-x-4">
+						<button type="button" class="underline" onclick={() => go('signin')}>
+							{t.backToSignIn}
+						</button>
+						<button type="button" class="underline" onclick={() => go('forgot')}>
+							{t.forgot}
+						</button>
+					</span>
 				{/if}
 			</div>
 		{/if}

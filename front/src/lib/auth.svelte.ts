@@ -60,12 +60,16 @@ class AuthStore {
 
 	/** `returnTo`: where the confirmation link lands (default /app; checkout passes itself). */
 	async signUp(email: string, password: string, returnTo = APP_URL) {
-		const { error } = await supabase!.auth.signUp({
+		const { data, error } = await supabase!.auth.signUp({
 			email,
 			password,
 			options: { emailRedirectTo: returnTo }
 		});
 		if (error) throw error;
+		// A confirmed email signs up "successfully" with no identities and no
+		// email sent (Supabase hides who has an account): say so instead.
+		if (data.user && data.user.identities?.length === 0)
+			throw Object.assign(new Error('user already exists'), { code: 'user_already_exists' });
 	}
 
 	async resendConfirmation(email: string, returnTo = APP_URL) {
