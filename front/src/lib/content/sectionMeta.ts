@@ -16,7 +16,8 @@ export const sectionMeta: SectionMeta[] = [
 	},
 	{
 		id: 'c-1',
-		modules: ['c', 'e'],
+		modules: ['c'],
+		// Kept from when E shared this section, so saved C progress still matches.
 		progressScope: 'reading',
 		skill: 'reading',
 		titleEn: 'Part B - Reading Skills',
@@ -33,6 +34,16 @@ export const sectionMeta: SectionMeta[] = [
 		intro: {
 			greeting: '70-90 words, every time',
 			goal: 'שבעה מיקרו-סקילס שבונים פסקה שלב אחר שלב, ואחריהם ארבעה שיעורי נושא על שאלות בגרות אמיתיות.'
+		}
+	},
+	{
+		id: 'e-1',
+		modules: ['e'],
+		skill: 'reading',
+		titleEn: 'Part B - Reading Skills',
+		intro: {
+			greeting: 'I search - I do not read',
+			goal: 'שמונה־עשר שיעורים ומבחן סיכום שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
 		}
 	},
 	{

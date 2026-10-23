@@ -1,6 +1,6 @@
 # Module E plan
 
-Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and a reading path that shows Module C's `c-1` with shared progress. Not built: E-only reading nodes, mock exams.
+Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and a reading section `e-1` (`lib/content/e/e-1.ts`): a copy of Module C's `c-1` (19 lessons, ids `e-...`), with its own progress, edited separately from C. Not built: the E-specific reading nodes below, mock exams.
 
 ## The exam
 
@@ -30,9 +30,9 @@ Part II: each set is one word class (verbs `to attach`, nouns `criticism`, adjec
 | E2 | Is the question mix stable (4 topic MCQs + 5 completions)? | Check 2-3 more new-format exams |
 | E3 | Does E assume Module C done? | Assume C; add a short "method" detour node for those who skipped it |
 
-## Reading path (section `e-1`, about 6-8 nodes)
+## Reading path (section `e-1`)
 
-Uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c.md`).
+Today the copy of C's reading lessons. Plan for adapting it to E (about 6-8 nodes); uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c.md`).
 
 1. **Bridge:** the C method (keyword -> locate -> read that sentence) on an E-length text. A check, not a re-teach.
 2. **Method detour** (optional): condensed c-l03.

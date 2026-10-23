@@ -41,7 +41,7 @@ LessonNode ──section──> SectionMeta          (heading + theme color, in 
 - **Unlock:** a node opens when every id in `required` has `roundsCompleted >= requiredRounds` (default 1). Round 0 is mandatory; rounds 1+ are optional and affect nothing downstream. To require the first N rounds, set `requiredRounds: N`.
 - A node with no non-empty screen in any round renders as a permanently locked placeholder.
 - New section: add `<module>/<module>-<N>.ts` exporting `<module><N>Lessons` (e.g. `cobe/cobe-1.ts`, `cobe1Lessons`; the /edit save endpoint derives the file from the section id), import and spread it in `lib/content/index.ts`, add an entry to `sectionMeta.ts` with `modules` (modules whose path shows it, owner first) and `skill` (vocab / reading / writing / speaking: the module page row).
-- A section can sit on several paths: `c-1` (reading) has `modules: ['c', 'e']`, one shared progress under the section's `progressScope` (`'reading'`; default the owning module). Progress calls go through `lib/lessonPath.ts`, never the module being viewed.
+- A section can sit on several paths (`modules: [...]`), with one shared progress under the section's `progressScope` (default the owning module). No section is shared today; `c-1` keeps `progressScope: 'reading'` from when E shared it. Progress calls go through `lib/lessonPath.ts`, never the module being viewed.
 - The path canvas is `routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte`.
 
 ## Screen usage notes
