@@ -939,7 +939,7 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "מילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\nלמשל:\n{p:text}**Why did the scientists start the project?**\n**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists**, **project**",
+          text: "{d:rtl}מילות שאלה כמו **what, why, how, when** לא עוזרות לנו למצוא את המקום בטקסט. הן אומרות לנו **איזה סוג תשובה צריך לתת**, אבל לא איפה לחפש.\n\n{d:rtl}למשל:\n{p:text}**Why did the scientists start the project?**\n{d:rtl}**Why** אומר לנו שאנחנו צריכים למצוא **סיבה**.\n{d:rtl}**אבל** המילים שעוזרות לנו למצוא את המקום בטקסט הן:\n**scientists**, **project**",
         },
         {
           type: "preface",
