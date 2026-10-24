@@ -7,6 +7,7 @@
 		TITLE_MAX,
 		personLabel,
 		priorityLabel,
+		tagColor,
 		type Task
 	} from '$lib/kanban';
 
@@ -34,6 +35,11 @@
 	};
 
 	let priority = $derived(priorityStyle[task.priority]);
+	// A light wash of the first tag's color over the card, in both themes.
+	let tint = $derived(
+		task.tags[0] &&
+			`linear-gradient(${tagColor(task.tags[0], 0.08)}, ${tagColor(task.tags[0], 0.08)})`
+	);
 
 	/** low -> medium -> high -> low */
 	function nextPriority() {
@@ -62,6 +68,7 @@
 		ondragstart();
 	}}
 	{ondragend}
+	style:background-image={tint || null}
 	class="flex cursor-grab flex-col gap-3 rounded-2xl border-s-4 bg-surface p-3 shadow-sm ring-1 ring-line/70 active:cursor-grabbing {priority.border}"
 >
 	<div class="flex items-start gap-2">
@@ -113,14 +120,15 @@
 	<div class="flex flex-wrap items-center gap-1.5">
 		{#each task.tags as tag (tag)}
 			<span
-				class="inline-flex items-center gap-1 rounded-full bg-brand-soft py-0.5 ps-2.5 pe-1 text-xs font-semibold text-brand-dark"
+				style:background-color={tagColor(tag, 0.2)}
+				class="inline-flex items-center gap-1 rounded-full py-0.5 ps-2.5 pe-1 text-xs font-semibold text-ink"
 			>
 				<bdi>{tag}</bdi>
 				<button
 					type="button"
 					onclick={() => onsave({ tags: task.tags.filter((t) => t !== tag) })}
 					aria-label="הסרת התגית {tag}"
-					class="inline-flex h-5 w-5 items-center justify-center rounded-full hover:bg-brand/20"
+					class="inline-flex h-5 w-5 items-center justify-center rounded-full hover:bg-ink/10"
 				>
 					<X size={12} aria-hidden="true" />
 				</button>

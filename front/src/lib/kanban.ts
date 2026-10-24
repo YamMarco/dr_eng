@@ -20,6 +20,13 @@ export type Task = {
 	tags: string[];
 };
 
+/** A tag's color: a hue picked from its name, so it's the same everywhere with nothing stored. */
+export function tagColor(tag: string, alpha: number): string {
+	let hash = 0;
+	for (const char of tag) hash = (hash * 31 + char.codePointAt(0)!) | 0;
+	return `hsl(${Math.abs(hash) % 360} 70% 50% / ${alpha})`;
+}
+
 export const statusLabel: Record<Status, string> = {
 	todo: 'לביצוע',
 	doing: 'בעבודה',
