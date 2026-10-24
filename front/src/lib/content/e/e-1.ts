@@ -153,8 +153,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'PRACTICE · Round 1 🌱\nקל. חזרה על המושגים. בלי לחץ.\n\n📌 זכור: אני מחפש, לא קורא.'
+							type: 'opener',
+							kicker: 'תרגול 1',
+							level: 1,
+							title: 'חזרה על המושגים',
+							subtitle: 'קל, בלי לחץ.\n📌 זכור: אני מחפש, לא קורא.'
 						},
 						{
 							type: 'mcq',
@@ -179,8 +182,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'PRACTICE · Round 2 🌟\nעם טקסטים אמיתיים. כמו בקורס.'
+							type: 'opener',
+							kicker: 'תרגול 2',
+							level: 2,
+							title: 'עם טקסטים אמיתיים',
+							subtitle: 'כמו בקורס.'
 						},
 						{
 							type: 'mcq',
@@ -369,8 +375,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -459,8 +468,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nעוד מפה על טקסט מוכר.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'עוד מפה על טקסט מוכר.'
 						},
 						{
 							type: 'passage-mcq',
@@ -489,8 +501,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'self-check',
@@ -765,8 +780,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -852,8 +870,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nצבע לכל שאלה.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'צבע לכל שאלה.'
 						},
 						{
 							type: 'mcq',
@@ -887,8 +908,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'mcq',
@@ -1081,8 +1105,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. שימו לב: לפעמים בטקסט כתובה מילה אחרת מזו שבשאלה, עם אותה משמעות.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. שימו לב: לפעמים בטקסט כתובה מילה אחרת מזו שבשאלה, עם אותה משמעות.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1228,8 +1256,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nP1 על טקסטים מוכרים.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'P1 על טקסטים מוכרים.'
 						},
 						{
 							type: 'mcq',
@@ -1252,8 +1283,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nכל חמשת השלבים, במילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 6 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'כל חמשת השלבים, במילים שלכם.'
 						},
 						{
 							type: 'self-check',
@@ -1541,8 +1575,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
+							type: 'opener',
+							kicker: 'סיבוב 4',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\nהשעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1582,8 +1620,13 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מספר וכל שם פרטי. השעון רץ - נסו לנצח את עצמכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 5,
+							title: 'תרגול נוסף',
+							subtitle:
+								'אתגר: אותו טקסט, ועכשיו מסמנים כל מספר וכל שם פרטי. השעון רץ - נסו לנצח את עצמכם.',
+							badge: '⏱️'
 						},
 						{
 							type: 'mark-all',
@@ -1737,8 +1780,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת מספר או שם: קראו כל שאלה עד הסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1807,8 +1854,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nשם בשאלה = כתובת - על טקסט מוכר.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'שם בשאלה = כתובת - על טקסט מוכר.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1849,8 +1899,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nתשובה פתוחה: שם ומספר.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'תשובה פתוחה: שם ומספר.'
 						},
 						{
 							type: 'self-check',
@@ -2098,8 +2151,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
+							type: 'opener',
+							kicker: 'סיבוב 4',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\nהשעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2144,8 +2201,13 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת שלילה. השעון רץ - נסו לנצח את עצמכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 5,
+							title: 'תרגול נוסף',
+							subtitle:
+								'אתגר: אותו טקסט, ועכשיו מסמנים כל מילת שלילה. השעון רץ - נסו לנצח את עצמכם.',
+							badge: '⏱️'
 						},
 						{
 							type: 'mark-all',
@@ -2321,8 +2383,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת NOT: קראו כל שאלה עד הסוף, ובשאלת NOT בדקו כל אפשרות מול הטקסט.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2396,8 +2462,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nעוד שאלת NOT על טקסט מוכר.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'עוד שאלת NOT על טקסט מוכר.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2434,8 +2503,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nשאלת NOT על טקסט Green Africa.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'שאלת NOT על טקסט Green Africa.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2705,8 +2777,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
+							type: 'opener',
+							kicker: 'סיבוב 4',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\nהשעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2746,8 +2822,13 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת הגבלה. השעון רץ - נסו לנצח את עצמכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 5,
+							title: 'תרגול נוסף',
+							subtitle:
+								'אתגר: אותו טקסט, ועכשיו מסמנים כל מילת הגבלה. השעון רץ - נסו לנצח את עצמכם.',
+							badge: '⏱️'
 						},
 						{
 							type: 'mark-all',
@@ -2902,8 +2983,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת הגבלה: קראו כל שאלה עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. לא כל שאלה היא שאלת הגבלה: קראו כל שאלה עד הסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2968,8 +3053,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nעוד שאלת the most על טקסט מוכר.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'עוד שאלת the most על טקסט מוכר.'
 						},
 						{
 							type: 'passage-mcq',
@@ -3001,8 +3089,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nשאלה פתוחה על טקסט Green Africa.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'שאלה פתוחה על טקסט Green Africa.'
 						},
 						{
 							type: 'self-check',
@@ -3269,8 +3360,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\n{d:rtl}השעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
+							type: 'opener',
+							kicker: 'סיבוב 4',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט באורך מבחן. לא מסמנים הכול: כל שאלה אומרת לכם מה לחפש. מוצאים את המילה, קוראים סביבה ועונים.\nהשעון רק מראה כמה זמן לקח - הוא לא משפיע על הציון.'
 						},
 						{
 							type: 'passage-mcq',
@@ -3316,8 +3411,13 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף ⏱️ (רשות)\nאתגר: אותו טקסט, ועכשיו מסמנים כל מילת ניגוד. השעון רץ - נסו לנצח את עצמכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 5,
+							title: 'תרגול נוסף',
+							subtitle:
+								'אתגר: אותו טקסט, ועכשיו מסמנים כל מילת ניגוד. השעון רץ - נסו לנצח את עצמכם.',
+							badge: '⏱️'
 						},
 						{
 							type: 'mark-all',
@@ -3508,8 +3608,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -3598,8 +3701,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nעוד שאלת "What do we learn from paragraph X?".'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'עוד שאלת "What do we learn from paragraph X?".'
 						},
 						{
 							type: 'passage-mcq',
@@ -3632,8 +3738,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'self-check',
@@ -3799,8 +3908,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}\n{d:rtl}כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'כתבו תשובות קצרות, באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. הבדיקה מחפשת את המילה החשובה בתשובה - לא דקדוק.'
 						},
 						{
 							type: 'passage-quiz',
@@ -3860,8 +3973,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nתשובה אחת, מהטקסט.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'תשובה אחת, מהטקסט.'
 						},
 						{
 							type: 'self-check',
@@ -3894,8 +4010,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'passage-mcq',
@@ -4101,8 +4220,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.'
 						},
 						{
 							type: 'preface',
@@ -4160,8 +4283,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nסיבה או מטרה?'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'סיבה או מטרה?'
 						},
 						{
 							type: 'passage-mcq',
@@ -4200,8 +4326,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'self-check',
@@ -4376,8 +4505,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו באנגלית, מהטקסט. בשאלת TWO - כתבו (1) ו-(2) באותה תיבה. טקסט מוכר, ואחריו טקסט חדש. לא כל שאלה מבקשת שתי תשובות.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'כתבו באנגלית, מהטקסט. בשאלת TWO - כתבו (1) ו-(2) באותה תיבה. טקסט מוכר, ואחריו טקסט חדש. לא כל שאלה מבקשת שתי תשובות.'
 						},
 						{
 							type: 'passage-quiz',
@@ -4438,8 +4571,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nמסמנים שתי תשובות.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'מסמנים שתי תשובות.'
 						},
 						{
 							type: 'mark-all',
@@ -4460,8 +4596,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nבמילים שלכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'במילים שלכם.'
 						},
 						{
 							type: 'self-check',
@@ -4580,8 +4719,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'רמת בחינה. טקסט חדש, אותם ארבעה סוגי שאלות: בחירה מרובה, NOT, תשובה קצרה, השלמת משפט ושתי תשובות.\n\nבשאלות הכתובות מקלידים בעצמכם - מילה אחת לא מספיקה, כותבים משפט מהטקסט.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט חדש, אותם ארבעה סוגי שאלות: בחירה מרובה, NOT, תשובה קצרה, השלמת משפט ושתי תשובות.\nבשאלות הכתובות מקלידים בעצמכם - מילה אחת לא מספיקה, כותבים משפט מהטקסט.'
 						},
 						{
 							type: 'passage-mcq',
@@ -4777,8 +4920,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף: לא כל תשובה נמצאת אחרי however.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט מוכר, ואחריו טקסט חדש שלא ראיתם. קראו כל שאלה עד הסוף: לא כל תשובה נמצאת אחרי however.'
 						},
 						{
 							type: 'passage-mcq',
@@ -4848,8 +4995,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 🌟 (רשות)\nסימון ושאלה על however בטקסט מוכר.'
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 2,
+							title: 'תרגול נוסף',
+							subtitle: 'סימון ושאלה על however בטקסט מוכר.'
 						},
 						{
 							type: 'mark-all',
@@ -4885,8 +5035,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף 💎 (רשות)\nכתבו את התשובה בעצמכם.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
+							title: 'תרגול נוסף',
+							subtitle: 'כתבו את התשובה בעצמכם.'
 						},
 						{
 							type: 'self-check',
@@ -4980,8 +5133,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'רמת בחינה. טקסט חדש, כמו במבחן: ארבע פסקאות, שמונה שאלות, והשעון רץ.\n\nקודם חמש שאלות אמריקאיות, אחר כך שלוש שאלות שמקלידים בהן תשובה. בכל שאלה: רמזור, מילת מפתח, איתור, קריאת המשפט.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'טקסט חדש, כמו במבחן: ארבע פסקאות, שמונה שאלות, והשעון רץ.\nקודם חמש שאלות אמריקאיות, אחר כך שלוש שאלות שמקלידים בהן תשובה. בכל שאלה: רמזור, מילת מפתח, איתור, קריאת המשפט.'
 						},
 						{
 							type: 'passage-mcq',
@@ -5184,8 +5341,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'סיבוב חזרה - שלושה כלים ביחד: NOT, מילות הגבלה, מספרים ושמות.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'חזרה: שלושה כלים ביחד',
+							subtitle: 'NOT, מילות הגבלה, מספרים ושמות.'
 						},
 						{
 							type: 'mcq',
@@ -5280,8 +5440,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'טקסט מלא\nשאלות מעורבות - NOT, הגבלה, מספרים ושמות.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 3,
+							title: 'טקסט מלא',
+							subtitle: 'שאלות מעורבות - NOT, הגבלה, מספרים ושמות.'
 						},
 						{
 							type: 'passage-mcq',
@@ -5337,8 +5500,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'רמת בחינה\nשאלות מעורבות ללא עזרה.'
+							type: 'opener',
+							kicker: 'סיבוב 4',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'שאלות מעורבות ללא עזרה.'
 						},
 						{
 							type: 'passage-mcq',
@@ -5388,8 +5554,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'תרגול נוסף (רשות) - כל השיטה ביחד\n\nמפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.'
+							type: 'opener',
+							kicker: 'סיבוב 5 (רשות)',
+							title: 'כל השיטה ביחד',
+							subtitle:
+								'מפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.'
 						},
 						{
 							type: 'passage-mcq',

@@ -1171,8 +1171,10 @@ export const cobe2Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '### תרגול: הסט הרשמי\n\nמקליטים תשובה אחת, **לפחות דקה**. נשארים באזור הירוק: 1:00-2:00.'
+							type: 'opener',
+							badge: '🎙️',
+							title: 'תרגול: הסט הרשמי',
+							subtitle: 'מקליטים תשובה אחת, **לפחות דקה**. נשארים באזור הירוק: 1:00-2:00.'
 						},
 						{
 							type: 'speak',
@@ -1244,8 +1246,10 @@ export const cobe2Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '### תרגול: הסט הרשמי\n\nמכוונים ל**כדקה וחצי**: כל המשימות, עם דוגמאות ספציפיות.'
+							type: 'opener',
+							badge: '🎙️',
+							title: 'תרגול: הסט הרשמי',
+							subtitle: 'מכוונים ל**כדקה וחצי**: כל המשימות, עם דוגמאות ספציפיות.'
 						},
 						{
 							type: 'speak',
