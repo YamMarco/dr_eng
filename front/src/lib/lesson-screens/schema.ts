@@ -50,7 +50,16 @@ export const openerSchema = z
 			.string()
 			.optional()
 			.describe(
-				'Emoji or 1-3 characters in the round badge (e.g. "2", "💎"). Omit for a flag icon.'
+				'Emoji or 1-3 characters in the round badge (e.g. "2", "💎"). Overrides the level emoji; omit both for a flag icon.'
+			),
+		level: z
+			.number()
+			.int()
+			.min(1)
+			.max(6)
+			.optional()
+			.describe(
+				'Round preset, growing with difficulty (openerLevels.ts): 1 🌱 green, 2 🌟 amber, 3 🔥 orange, 4 💎 blue, 5 🏆 gold, 6 👑 violet. Sets the badge emoji and colors.'
 			),
 		motion: z
 			.enum(['full', 'soft', 'none'])

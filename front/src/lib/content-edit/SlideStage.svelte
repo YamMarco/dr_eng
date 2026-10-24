@@ -45,6 +45,7 @@
 	import TextField from './fields/TextField.svelte';
 	import TimerField from './fields/TimerField.svelte';
 	import { MOVE_IDS } from '$lib/lesson-screens/writingMoves';
+	import { OPENER_LEVELS } from '$lib/lesson-screens/openerLevels';
 	import StringListEditor from './fields/StringListEditor.svelte';
 	import ListenField from './fields/ListenField.svelte';
 	import RuleFields from './fields/RuleFields.svelte';
@@ -788,7 +789,23 @@
 									<SettingsGroup title="תצוגה">
 										<div class="flex flex-wrap gap-4">
 											<TextField label="תווית מעל הכותרת" bind:value={screen.kicker} dir="auto" />
-											<TextField label="בעיגול (ריק = דגל)" bind:value={screen.badge} dir="auto" />
+											<label class="flex items-center gap-2 text-xs text-muted">
+												רמת סיבוב
+												<select
+													bind:value={screen.level}
+													class="rounded-lg border-2 border-line bg-surface p-1"
+												>
+													<option value={undefined}>בלי</option>
+													{#each OPENER_LEVELS as preset, i (i)}
+														<option value={i + 1}>{i + 1} {preset.emoji} {preset.name}</option>
+													{/each}
+												</select>
+											</label>
+											<TextField
+												label="בעיגול (ריק = לפי הרמה)"
+												bind:value={screen.badge}
+												dir="auto"
+											/>
 											<label class="flex items-center gap-2 text-xs text-muted">
 												אנימציה
 												<select

@@ -2,6 +2,7 @@
 	import { Flag } from '@lucide/svelte';
 	import type { OpenerScreen } from './types';
 	import { mdBlock, mdInline, textDir } from './miniMarkdown';
+	import { openerLevel } from './openerLevels';
 
 	// disabled/label are write-only here (never overridden): the runner reads
 	// them through the bindable props to size and gate its single button.
@@ -20,6 +21,7 @@
 	} = $props();
 
 	let motion = $derived(screen.motion ?? 'full');
+	let preset = $derived(openerLevel(screen.level));
 
 	export function primaryAction() {
 		onAdvance();
@@ -31,9 +33,14 @@
 	class:motion-full={motion === 'full'}
 	class:motion-soft={motion === 'soft'}
 >
-	<div class="badge" aria-hidden="true">
-		{#if screen.badge}
-			<span class="text-4xl font-extrabold tabular-nums">{screen.badge}</span>
+	<div
+		class="badge"
+		aria-hidden="true"
+		style={preset ? `--from: ${preset.from}; --to: ${preset.to}` : undefined}
+	>
+		{#if screen.badge || preset}
+			<span class="glyph text-4xl font-extrabold tabular-nums">{screen.badge || preset?.emoji}</span
+			>
 		{:else}
 			<Flag size={34} strokeWidth={2.25} />
 		{/if}
@@ -69,14 +76,24 @@
 		width: 5.5rem;
 		height: 5.5rem;
 		border-radius: 9999px;
+		/* A level preset sets --from/--to inline; otherwise the brand colors. */
 		color: var(--color-surface);
-		background: linear-gradient(145deg, var(--color-brand), var(--color-brand-dark));
-		box-shadow: 0 10px 24px -8px color-mix(in oklab, var(--color-brand), transparent 30%);
+		background: linear-gradient(
+			145deg,
+			var(--from, var(--color-brand)),
+			var(--to, var(--color-brand-dark))
+		);
+		box-shadow: 0 10px 24px -8px color-mix(in oklab, var(--to, var(--color-brand)), transparent 30%);
 	}
 
-	/* full: the badge pops in, two rings ripple out a few times, lines rise in. */
+	/* full: the badge pops in, its glyph wiggles, two rings ripple out a few
+	   times, lines rise in. */
 	.motion-full .badge {
 		animation: badge-pop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+	}
+	.motion-full .glyph {
+		display: inline-block;
+		animation: wiggle 700ms ease-in-out 520ms;
 	}
 	.motion-full .badge::before,
 	.motion-full .badge::after {
@@ -84,7 +101,7 @@
 		position: absolute;
 		inset: 0;
 		border-radius: inherit;
-		border: 2px solid var(--color-brand);
+		border: 2px solid var(--to, var(--color-brand));
 		opacity: 0;
 		animation: ripple 2.4s ease-out 500ms 3;
 	}
@@ -101,6 +118,17 @@
 		from {
 			transform: scale(0.4) rotate(-12deg);
 			opacity: 0;
+		}
+	}
+	@keyframes wiggle {
+		25% {
+			transform: rotate(-12deg) scale(1.1);
+		}
+		50% {
+			transform: rotate(10deg) scale(1.1);
+		}
+		75% {
+			transform: rotate(-6deg);
 		}
 	}
 	@keyframes ripple {
@@ -121,6 +149,7 @@
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.badge,
+		.glyph,
 		.rise {
 			animation: none !important;
 		}
