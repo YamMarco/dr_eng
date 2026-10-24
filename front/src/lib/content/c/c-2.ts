@@ -848,7 +848,7 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "לפעמים אנחנו מבינים את הכיוון של הטקסט עוד לפני שהבנו כל מילה. יש מילים שמאותתות לנו:\n**עכשיו מגיע ניגוד. עכשיו מוסיפים מידע. עכשיו מגיעה תוצאה.**\nאלה **מילות ניווט**.\n\nקראו את הפסקה הבאה:\n{p:text}*The city wanted to plant more trees. **However**, there was not enough money. **In addition**, there was not enough space. **As a result**, the project was delayed.*",
+          text: "{d:rtl} מילות ניווט עוזרות לנו להבין את הטקסט בחוכמה\n{d:rtl}\n{d:rtl}לפעמים אנחנו לא מבינים כל מילה באנגלית, אבל עדיין יכולים להבין מה קורה בטקסט.\n{d:rtl}\n{d:rtl}",
         },
         {
           type: "preface",
@@ -1030,7 +1030,7 @@ export const c2Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: "Every year, forests are destroyed. However, there is good news. Although the project is expensive, it is working. In addition, local people learn new jobs. As a result, the forest is coming back.",
+              text: "\nEvery year, forests are destroyed. However, there is good news. Although the project is expensive, it is working. In addition, local people learn new jobs. As a result, the forest is coming back.",
               questions: [
                 {
                   prompt: 'What is the main point after "however"?',
