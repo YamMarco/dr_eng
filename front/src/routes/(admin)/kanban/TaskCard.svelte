@@ -136,7 +136,7 @@
 					dir="auto"
 					placeholder="+ תגית"
 					aria-label="הוספת תגית"
-					class="w-24 rounded-full placeholder-shown:[direction:rtl] border border-dashed border-line bg-transparent px-2.5 py-0.5 text-xs text-ink placeholder:text-muted focus:border-brand"
+					class="w-24 rounded-full border border-dashed border-line bg-transparent px-2.5 py-0.5 text-xs text-ink placeholder:text-muted placeholder-shown:[direction:rtl] focus:border-brand"
 				/>
 			</form>
 		{/if}

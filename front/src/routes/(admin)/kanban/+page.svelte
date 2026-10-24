@@ -87,7 +87,7 @@
 			dir="auto"
 			placeholder="משימה חדשה"
 			aria-label="משימה חדשה"
-			class="min-h-11 min-w-0 flex-1 rounded-xl placeholder-shown:[direction:rtl] border-2 border-line bg-surface px-3 text-ink focus:border-brand"
+			class="min-h-11 min-w-0 flex-1 rounded-xl border-2 border-line bg-surface px-3 text-ink placeholder-shown:[direction:rtl] focus:border-brand"
 		/>
 		<button
 			type="submit"
