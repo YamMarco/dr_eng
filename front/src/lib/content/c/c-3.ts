@@ -45,7 +45,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים עמדה ברורה" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים עמדה ברורה",
+            },
             {
               type: "mcq",
               prompt:
@@ -85,8 +90,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 2 | כותבים עמדה - משפט אחד לכל שאלה",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "כותבים עמדה",
+              subtitle: "משפט אחד לכל שאלה",
             },
             {
               type: "writing-task",

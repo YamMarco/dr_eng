@@ -40,6 +40,36 @@ export const prefaceSchema = z
 	})
 	.describe('A paragraph of teaching. Not scored.');
 
+export const openerSchema = z
+	.strictObject({
+		type: z.literal('opener'),
+		title: z.string().describe('The headline, short. Mini-markdown inline.'),
+		kicker: z.string().optional().describe('Small pill above the title, e.g. "סיבוב 2".'),
+		subtitle: z.string().optional().describe('One or two lines under the title. Mini-markdown.'),
+		badge: z
+			.string()
+			.optional()
+			.describe(
+				'Emoji or 1-3 characters in the round badge (e.g. "2", "💎"). Overrides the level emoji; omit both for a flag icon.'
+			),
+		level: z
+			.number()
+			.int()
+			.min(1)
+			.max(6)
+			.optional()
+			.describe(
+				'Round preset, growing with difficulty (openerLevels.ts): 1 🌱 green, 2 🌟 amber, 3 🔥 orange, 4 💎 blue, 5 🏆 gold, 6 👑 violet. Sets the badge emoji and colors.'
+			),
+		motion: z
+			.enum(['full', 'soft', 'none'])
+			.optional()
+			.describe(
+				'full (default): badge pops, rings ripple, lines rise in. soft: lines rise in. none: static.'
+			)
+	})
+	.describe('A title card that opens a round or a lesson. Not scored.');
+
 export const stepsSchema = z
 	.strictObject({
 		type: z.literal('steps'),
@@ -534,6 +564,7 @@ export const passageMcqSchema = z
 
 export const lessonScreenSchema = z.discriminatedUnion('type', [
 	prefaceSchema,
+	openerSchema,
 	stepsSchema,
 	summarySchema,
 	mcqSchema,

@@ -6,6 +6,7 @@ import type * as z from 'zod';
 import type * as s from './schema';
 
 export type PrefaceScreen = z.infer<typeof s.prefaceSchema>;
+export type OpenerScreen = z.infer<typeof s.openerSchema>;
 export type StepsScreen = z.infer<typeof s.stepsSchema>;
 export type SummaryScreen = z.infer<typeof s.summarySchema>;
 export type McqScreen = z.infer<typeof s.mcqSchema>;
@@ -64,6 +65,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 		case 'preface':
 		case 'timed-reading':
 			return !screen.text.trim();
+		case 'opener':
+			return !screen.title.trim();
 		case 'steps':
 			return screen.steps.length === 0;
 		case 'summary':
