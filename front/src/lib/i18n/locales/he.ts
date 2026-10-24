@@ -58,7 +58,7 @@ export const he = {
 			heroAlt: 'תלמידה לומדת אנגלית בטלפון',
 			mock: {
 				label: 'תצוגה של מסך הבית באפליקציה',
-				greeting: 'בוקר טוב, דנה!',
+				greeting: 'בוקר טוב דנה',
 				week: 'השבוע: 3 מתוך 4 ימים',
 				continueTitle: 'The Lost Village',
 				continueSub: 'מודול C · קריאה',
