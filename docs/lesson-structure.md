@@ -61,6 +61,10 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
 - **`mcq.layout: 'honeycomb'`** for fill-the-blank vocab picks where every option is a single word or short phrase; omit for stacked rows. Lessons shuffle `mcq` options on every mount (exams keep authored order), so never refer to an option by number in an `explanation`: quote its words.
 - **`speak`** (COBE): the question (English, with listen buttons), an optional Hebrew `tip`, one take with no pause and a bar to `targetSeconds`, then playback, "record again" (replaces the take), and `modelAnswer` + `checklist`. Never scored in lessons. In an exam it takes `part` (A/B/C) + `points`, hides all feedback, keeps the take between questions and is graded in the report against the COBE rubric (see `docs/modules/cobe.md`). Audio stays in memory on the device (`lib/recorder.svelte.ts`); without a microphone it runs as a stopwatch.
 - **`opener`** ("פתיח סיבוב"): the title card that starts a round or a lesson. `title`, optional `kicker` (pill above, e.g. "סיבוב 2"), `subtitle` (mini-markdown), `level` (1-6 round preset from `openerLevels.ts`, growing with difficulty: 🌱 green, 🌟 amber, 🔥 orange, 💎 blue, 🏆 gold, 👑 violet; sets the badge emoji and colors), `badge` (emoji or 1-3 characters, overrides the level emoji; neither = a flag), `motion` (`full` default: badge pops, rings ripple, lines rise; `soft`: lines rise; `none`). Never scored, left out of the preface recap.
+  - **When:** the first screen of a round whose job is to name it: which round, how hard, one goal. Title of a few words, subtitle at most 2 short lines (exam-level instructions fit; a third paragraph does not).
+  - **Not when:** the card teaches (rule, worked example, `{p:text}` / `###` content, steps), carries the question text, or is just the next task's instruction ("סמנו כל מילת שלילה" belongs in that exercise's `instruction` / `prompt`) or a bridge line ("בואו ננסה עוד תרגיל"). Keep those as `preface`, or put an opener before them if the round needs a name.
+  - **Conventions:** kicker `סיבוב N` (vocab nodes `סבב N`); optional rounds `סיבוב N (רשות)`, title `תרגול נוסף` or the round's goal. `level`: writing rounds = round number; the exam-level round 4 💎 (title "רמת בחינה"); optional extras by difficulty (🌟 2, 💎 4); a timed challenge 5 + `badge: '⏱️'`; an optional review for whoever is unsure: no level (flag). Never English labels ("YOUR TURN", "PRACTICE").
+  - New opener strings need an entry in `translations/ar.json` (`node front/scripts/content-i18n.mjs`).
 - **`video`** (COBE Part C): a clip with an optional Hebrew `caption`. Without `src` it shows a dashed placeholder marking where the clip goes. Never scored.
 - **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged). Every round with a `spell-word` has it.
 - **Answer language:** open and voice inputs show a pill above the input (`AnswerLang.svelte`): `writing-task`, `passage-quiz`, `sentence-completion` English, `speak` "speak English". `self-check.answerLang: 'he'` (the UI language: Hebrew, Arabic in the Arabic UI) for questions answered in the student's language (explain, "what's the difference"); default English. Set it per screen in the editor.
@@ -91,7 +95,7 @@ Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-previe
 
 ## Reading round pattern (Part B)
 
-Reference: `c-l06` + `c-not-q`. Every round up to and including the first exam-level round is required (`requiredRounds`). Later rounds are optional, and their preface starts with "תרגול נוסף (רשות)". No true/false rounds about the method itself. Only the exam-level round is called "רמת בחינה".
+Reference: `c-l06` + `c-not-q`. Every round up to and including the first exam-level round is required (`requiredRounds`). Later rounds are optional and start with an opener, kicker "סיבוב N (רשות)". No true/false rounds about the method itself. Only the exam-level round is called "רמת בחינה".
 
 Load rule: exhaustive marking ("mark every X") only on short material. On an exam-size text the student hunts **by question**. Per lesson: about 10-14 scored questions, at most one required exam-size text, about 6-8 minutes of required rounds.
 
@@ -116,7 +120,7 @@ A round takes a weak student about 5 minutes (exceptions: the 4-sentence skeleto
 
 - **Micro-skill node:** recognise (MCQ, tap) -> fix a weak example (upgrade task) -> one writing task per round, 3 reps of the new move on MIKUD topics, each repeating the earlier moves (snowball).
 - **Topic node:** understand (MCQs) -> 4-sentence skeleton -> [For instance + As a result] -> 70-90 paragraph -> unseen MIKUD topic, no bank, `timeLimitMinutes: 20`. Supports fade across topic lessons: template + bank, then connectors + bank, then nothing.
-- **Optional rounds:** `requiredRounds` stops before them; the preface starts with "תרגול נוסף (רשות)" and says who it is for. Only for skills a strong student already has by then.
+- **Optional rounds:** `requiredRounds` stops before them; the round starts with an opener (kicker "סיבוב N (רשות)") whose subtitle says who it is for. Only for skills a strong student already has by then.
 - Every writing task has `modelAnswer` + `checklist`, and every model answer must pass the task's own checks.
 
 ## Writing distractors (wrong options)

@@ -308,7 +308,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt:
@@ -372,7 +378,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  Learning to swim as an adult is more common than many people think. According to a recent survey, over 30% of adults in large cities cannot swim.\n\nII  One study found that adults who learn to swim later in life often become stronger swimmers. According to Dr. Anna Klein, adults understand what the teacher explains and correct their mistakes quickly. They are also not afraid to ask questions.",
@@ -707,7 +719,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt:
@@ -785,7 +803,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "**I ** Every year, forests around the world are destroyed by fire, farming and pollution.\n\n**II**  In 2019, scientists started a project to plant one billion trees. They did it in order to protect wildlife. The project is led by Dr. Diallo, who teaches local people how to care for trees because most trees die when nobody looks after them.",
@@ -1077,7 +1101,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 3",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt: "The exam was difficult. ______, most students passed.",
@@ -1143,7 +1173,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  Learning to swim as an adult is more common than many people think.\n\nII  Many adults feel embarrassed and never try to learn. However, experts say it is never too late. Although some adults are afraid of the water, they usually make good progress.\n\nIII  Lessons for adults are now cheap. In addition, many pools offer evening classes. As a result, more adults are learning to swim every year.",
@@ -1391,7 +1427,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 3",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt: "Many fruits are healthy. ______, apples and oranges.",
@@ -1459,7 +1501,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  Sleep is important for teenagers.\n\nII  Researchers found that teenagers who sleep eight hours get better grades. For example, in one school, average grades increased by 10 points after classes started later.\n\nIII  At the same time, the number of students who felt tired decreased by 30%.",
@@ -1793,7 +1841,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt:
@@ -1879,7 +1933,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  The city of Greenfield had a problem. The parks were dirty, and many residents stopped using them.\n\nII  A local charity started a project. It asked young people to volunteer for two hours a week. However, the charity could not do it alone. The whole community had to take part.\n\nIII  After a year, the parks were clean again. Residents said they felt safer, and the environment in the city was healthier.",
@@ -2211,7 +2271,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt:
@@ -2290,7 +2356,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  For ten years, Dr. Sarah Okafor studied volunteering. She found that teenagers who volunteer feel less stressed.\n\nII  According to the study, the most effective programmes bring young people face to face with the people they help. The results also showed that volunteering can affect school grades.\n\nIII  Other researchers discovered the same thing in twelve countries.",
@@ -2600,7 +2672,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt:
@@ -2682,7 +2760,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  Every year, forests around the world are destroyed by fire, farming and pollution.\n\nII  In 2019, scientists started a project to plant one billion trees in Africa. The project aims to protect forests and increase the number of wild animals.\n\nIII  After two years, the number of species in the area increased by 20%. At the same time, air pollution decreased.",
@@ -3052,7 +3136,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt: "Reading every day can ______ your vocabulary.",
@@ -3134,7 +3224,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  Many students think that grades are the only thing that matters at school.\n\nII  However, education is also about learning how to think. A good teacher helps students develop skills such as teamwork and creativity.\n\nIII  A study of 1,000 students found that those who joined after-school clubs improved their grades and achieved more of their goals.",
@@ -3462,7 +3558,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt: "What ______ the fire? Nobody knows.",
@@ -3540,7 +3642,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "**I**  Many people think that exercise takes too much time.\n\n**II**  However, a recent study found that programs that require only 20 minutes a day can still benefit everyone. The main effect is better sleep.\n\n**III ** Stress, on the other hand, can cause serious health problems and affect how well people learn. Exercise is an opportunity to protect both body and mind.",
@@ -3858,7 +3966,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב חזרה: אותן מילים, משפטים חדשים." },
+            {
+              type: "opener",
+              kicker: "סבב 4",
+              level: 2,
+              title: "סבב חזרה",
+              subtitle: "אותן מילים, משפטים חדשים.",
+            },
             {
               type: "mcq",
               prompt: "A ______ person does not forget to feed the dog.",
@@ -3944,7 +4058,13 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סבב ברמת בחינה: טקסט חדש, בלי עזרה." },
+            {
+              type: "opener",
+              kicker: "סבב 5",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle: "טקסט חדש, בלי עזרה.",
+            },
             {
               type: "passage-mcq",
               text: "I  In many countries, schools ask students to do volunteer work.\n\nII  Teachers say this encourages students to be more responsible. According to one teacher, students who volunteer support their classmates more.\n\nIII  A study found that volunteering is also good for health, and that society benefits when young people take part.",
@@ -4016,7 +4136,13 @@ export const c2Lessons: LessonNode[] = [
         {
           retryMissed: true,
           screens: [
-            { type: "preface", text: "סבב 1: חימום. מילים קלות מכל הקבוצות." },
+            {
+              type: "opener",
+              kicker: "סבב 1",
+              level: 1,
+              title: "חימום",
+              subtitle: "מילים קלות מכל הקבוצות.",
+            },
             {
               type: "mcq",
               prompt: "Read paragraph III only. איפה מחפשים?",
@@ -4108,8 +4234,11 @@ export const c2Lessons: LessonNode[] = [
           retryMissed: true,
           screens: [
             {
-              type: "preface",
-              text: "סבב 2: מתרחבים. עוד מילים, ועוד הוראות.",
+              type: "opener",
+              kicker: "סבב 2",
+              level: 2,
+              title: "מתרחבים",
+              subtitle: "עוד מילים, ועוד הוראות.",
             },
             {
               type: "mcq",
@@ -4220,8 +4349,11 @@ export const c2Lessons: LessonNode[] = [
           retryMissed: true,
           screens: [
             {
-              type: "preface",
-              text: "סבב 3: באמצע הדרך. הברירות מתקרבות זו לזו.",
+              type: "opener",
+              kicker: "סבב 3",
+              level: 3,
+              title: "באמצע הדרך",
+              subtitle: "הברירות מתקרבות זו לזו.",
             },
             {
               type: "mcq",
@@ -4323,8 +4455,11 @@ export const c2Lessons: LessonNode[] = [
           retryMissed: true,
           screens: [
             {
-              type: "preface",
-              text: "סבב 4: מתקשים. משפטים ארוכים יותר ומילים דומות.",
+              type: "opener",
+              kicker: "סבב 4",
+              level: 4,
+              title: "מתקשים",
+              subtitle: "משפטים ארוכים יותר ומילים דומות.",
             },
             {
               type: "mcq",
@@ -4424,8 +4559,11 @@ export const c2Lessons: LessonNode[] = [
           retryMissed: true,
           screens: [
             {
-              type: "preface",
-              text: "סבב 5: הסבב האחרון, והקשה ביותר. ובסוף, משפט משלכם.",
+              type: "opener",
+              kicker: "סבב 5",
+              level: 5,
+              title: "הסבב האחרון, והקשה ביותר",
+              subtitle: "ובסוף, משפט משלכם.",
             },
             {
               type: "mcq",

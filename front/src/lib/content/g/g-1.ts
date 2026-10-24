@@ -77,8 +77,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}שלב 1: קראו את השאלה. שלב 2: סמנו לעצמכם מילת שאלה או מגנט. שלב 3: מצאו משפט תומך, ורק אז ענו.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'שלב 1: קראו את השאלה. שלב 2: סמנו לעצמכם מילת שאלה או מגנט. שלב 3: מצאו משפט תומך, ורק אז ענו.'
 						},
 						{
 							type: 'passage-quiz',
@@ -186,8 +190,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}אל תקראו הכול לעומק. קראו את פתיחת כל פסקה, ואז בחרו לכל שאלה את הפסקה שתקראו **ראשונה**.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'אל תקראו הכול לעומק. קראו את פתיחת כל פסקה, ואז בחרו לכל שאלה את הפסקה שתקראו **ראשונה**.'
 						},
 						{
 							type: 'passage-mcq',
@@ -280,8 +288,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}🔴 מה שואלים? 🟡 איזה רמז יעזור למצוא? 🟢 קראו סביב הרמז ובדקו את התשובה.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: '🔴 מה שואלים? 🟡 איזה רמז יעזור למצוא? 🟢 קראו סביב הרמז ובדקו את התשובה.'
 						},
 						{
 							type: 'passage-quiz',
@@ -368,8 +379,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}מספרים הם רמזים, לא תשובות. מצאו את המספר ואת מה שהוא מודד: מה השתנה? מה הוא מראה?'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'מספרים הם רמזים, לא תשובות. מצאו את המספר ואת מה שהוא מודד: מה השתנה? מה הוא מראה?'
 						},
 						{
 							type: 'passage-mcq',
@@ -483,8 +498,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}מצאו את השם בשאלה, מצאו אותו בטקסט, וקראו את הפעולה שמופיעה לידו.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'מצאו את השם בשאלה, מצאו אותו בטקסט, וקראו את הפעולה שמופיעה לידו.'
 						},
 						{
 							type: 'passage-quiz',
@@ -606,8 +624,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}לפני כל תשובה, זהו את מילת השאלה: According to = ישיר · refer to = למה זה מתייחס · imply / infer = מסקנה נתמכת.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'לפני כל תשובה, זהו את מילת השאלה: According to = ישיר · refer to = למה זה מתייחס · imply / infer = מסקנה נתמכת.'
 						},
 						{
 							type: 'passage-quiz',
@@ -737,8 +759,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}התשובה הנכונה היא לרוב **פרפרזה** או **מסקנה**, לא העתקה. הסירו אפשרויות מוחלטות או לא נתמכות.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'התשובה הנכונה היא לרוב **פרפרזה** או **מסקנה**, לא העתקה. הסירו אפשרויות מוחלטות או לא נתמכות.'
 						},
 						{
 							type: 'passage-mcq',
@@ -823,8 +849,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}בדקו כל אפשרות לבד מול הטקסט. V רק אם יש לה תמיכה ברורה. בסוף: בדיוק שתיים.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'בדקו כל אפשרות לבד מול הטקסט. V רק אם יש לה תמיכה ברורה. בסוף: בדיוק שתיים.'
 						},
 						{
 							type: 'mcq',
@@ -910,8 +940,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}שאלו את עצמכם: במה שני הדברים שונים? בזמן? בכמות? בשיטה? בתדירות? זה התחום.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'שאלו את עצמכם: במה שני הדברים שונים? בזמן? בכמות? בשיטה? בתדירות? זה התחום.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1038,8 +1072,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}קראו את הגזע יחד עם התשובה שלכם. זה צריך להיות משפט אחד נכון, שמתאים לטקסט. כתבו רק את ההמשך.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'קראו את הגזע יחד עם התשובה שלכם. זה צריך להיות משפט אחד נכון, שמתאים לטקסט. כתבו רק את ההמשך.'
 						},
 						{
 							type: 'passage-quiz',
@@ -1143,8 +1181,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}בחרו את ההמשך שגם נכון בדקדוק וגם נכון לפי הטקסט.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'בחרו את ההמשך שגם נכון בדקדוק וגם נכון לפי הטקסט.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1280,8 +1321,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}קודם מוצאים את הפעולה בטקסט. רק אחר כך מתאימים אותה לצורה By + ing. כתבו רק את ההמשך.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'קודם מוצאים את הפעולה בטקסט. רק אחר כך מתאימים אותה לצורה By + ing. כתבו רק את ההמשך.'
 						},
 						{
 							type: 'passage-quiz',
@@ -1376,8 +1421,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}שימו לב למילת השאלה ולמספר הרעיונות שמבקשים. כתבו תשובה קצרה, רק עם מידע מהטקסט.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'שימו לב למילת השאלה ולמספר הרעיונות שמבקשים. כתבו תשובה קצרה, רק עם מידע מהטקסט.'
 						},
 						{
 							type: 'passage-quiz',
@@ -1491,8 +1540,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}הבינו את הרעיון, ואז מצאו את האפשרות שאומרת אותו במילים אחרות.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'הבינו את הרעיון, ואז מצאו את האפשרות שאומרת אותו במילים אחרות.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1601,8 +1653,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}כתבו לעצמכם במשפט קצר מה אומר כל דובר. אחר כך חפשו רעיון אחד ששניהם באמת תומכים בו.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'כתבו לעצמכם במשפט קצר מה אומר כל דובר. אחר כך חפשו רעיון אחד ששניהם באמת תומכים בו.'
 						},
 						{
 							type: 'passage-quiz',
@@ -1709,8 +1765,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}קראו רק את השורות שהשאלה נותנת. ענו מהן, בלי להוסיף מידע מבחוץ.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'קראו רק את השורות שהשאלה נותנת. ענו מהן, בלי להוסיף מידע מבחוץ.'
 						},
 						{
 							type: 'passage-quiz',
@@ -1822,8 +1881,12 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}השעון רץ. התחילו בשאלות עם מספר או תשובה ישירה. השאירו את שאלת ה-infer לסוף.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle:
+								'השעון רץ. התחילו בשאלות עם מספר או תשובה ישירה. השאירו את שאלת ה-infer לסוף.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1898,8 +1961,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}Guided Practice: כל הטקסט DIGITAL MENTORING AT WORK. זוכרים את הכלים?'
+							type: 'opener',
+							kicker: 'תרגול מודרך',
+							level: 3,
+							title: 'כל הטקסט: DIGITAL MENTORING AT WORK',
+							subtitle: 'זוכרים את הכלים?'
 						},
 						{
 							type: 'passage-mcq',
@@ -1998,8 +2064,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}רמת בחינה 💎\n{d:rtl}טקסט חדש, באורך של בחינה. סרקו קודם, ואז ענו לפי הסדר המומלץ.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'רמת בחינה',
+							subtitle: 'טקסט חדש, באורך של בחינה. סרקו קודם, ואז ענו לפי הסדר המומלץ.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2106,8 +2175,11 @@ export const g1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}תרגול נוסף (רשות)\n{d:rtl}סימולציה מלאה על טקסט חדש: STUDY PODS. מתאים למי שרוצה עוד תרגול לפני הבחינה.'
+							type: 'opener',
+							kicker: 'סיבוב 3 (רשות)',
+							title: 'תרגול נוסף',
+							subtitle:
+								'סימולציה מלאה על טקסט חדש: STUDY PODS. מתאים למי שרוצה עוד תרגול לפני הבחינה.'
 						},
 						{
 							type: 'passage-quiz',

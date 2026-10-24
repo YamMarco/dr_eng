@@ -169,8 +169,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "תרגול נוסף (רשות) | עוד זיהוי של עמדה\n\nהבנתם? אפשר להמשיך. עוד לא בטוחים מה ההבדל בין עמדה לתיאור? הסיבוב הזה בשבילכם.",
+              type: "opener",
+              kicker: "סיבוב 3 (רשות)",
+              title: "עוד זיהוי של עמדה",
+              subtitle: "הבנתם? אפשר להמשיך. עוד לא בטוחים מה ההבדל בין עמדה לתיאור? הסיבוב הזה בשבילכם.",
             },
             {
               type: "mcq",
@@ -247,7 +249,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים סיבה חזקה" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים סיבה חזקה" },
             {
               type: "mcq",
               prompt: "איזו סיבה אחרי because היא הכי חזקה?",
@@ -286,7 +288,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | מתקנים סיבה חלשה, ואז כותבים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "מתקנים סיבה חלשה, ואז כותבים",
+            },
             {
               type: "writing-task",
               prompt:
@@ -344,8 +351,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | עוד שתי שאלות מהבגרות - עמדה + because",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "עוד שתי שאלות מהבגרות - עמדה + because",
             },
             {
               type: "writing-task",
@@ -440,7 +449,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים סיבה שנייה אמיתית" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים סיבה שנייה אמיתית",
+            },
             {
               type: "mcq",
               prompt:
@@ -488,8 +502,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 2 | כותבים: עמדה + because + In addition",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "כותבים: עמדה + because + In addition",
             },
             {
               type: "writing-task",
@@ -525,8 +541,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | עוד אחת - נושא אחר, אותו מבנה",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "עוד אחת - נושא אחר, אותו מבנה",
             },
             {
               type: "writing-task",
@@ -562,8 +580,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 4 | עוד אחת - והפעם שימו לב שהסיבה השנייה באמת חדשה",
+              type: "opener",
+              kicker: "סיבוב 4",
+              level: 4,
+              title: "עוד אחת - והפעם שימו לב שהסיבה השנייה באמת חדשה",
             },
             {
               type: "writing-task",
@@ -636,7 +656,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים For example נכון" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים For example נכון",
+            },
             {
               type: "mcq",
               prompt: 'היכן "For example" ממוקם בצורה הנכונה?',
@@ -688,8 +713,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 2 | משדרגים דוגמה, ולוקחים דוגמה מהטקסט",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משדרגים דוגמה, ולוקחים דוגמה מהטקסט",
             },
             {
               type: "mcq",
@@ -746,8 +773,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | כותבים: עמדה + because + For example + In addition",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "כותבים: עמדה + because + For example + In addition",
             },
             {
               type: "writing-task",
@@ -791,8 +820,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 4 | עוד אחת - הפעם על אדם אחד ספציפי",
+              type: "opener",
+              kicker: "סיבוב 4",
+              level: 4,
+              title: "עוד אחת - הפעם על אדם אחד ספציפי",
             },
             {
               type: "writing-task",
@@ -836,8 +867,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 5 | מקריאה לכתיבה - דוגמה מהטקסט, במילים שלכם",
+              type: "opener",
+              kicker: "סיבוב 5",
+              level: 5,
+              title: "מקריאה לכתיבה - דוגמה מהטקסט, במילים שלכם",
             },
             {
               type: "writing-task",
@@ -911,7 +944,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים סיום טוב" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים סיום טוב" },
             {
               type: "mcq",
               prompt: "איזה משפט סיום הוא הכי טוב?",
@@ -949,7 +982,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | כל המחברים בפסקה אחת" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "כל המחברים בפסקה אחת",
+            },
             {
               type: "passage-mcq",
               text: "I think every pupil should learn to swim (1) ___ it can save lives. (2) ___, a child who falls into a pool knows how to reach the edge. (3) ___, swimming keeps the body strong and healthy. (4) ___, I believe swimming lessons should be part of every school.",
@@ -1063,8 +1101,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "תרגול נוסף (רשות) | עוד שלד אחד\n\nכתבתם שלד שלם? מצוין, אפשר להמשיך. רוצים עוד חזרה לפני שיעורי הנושא - הנה עוד אחד.",
+              type: "opener",
+              kicker: "סיבוב 4 (רשות)",
+              title: "עוד שלד אחד",
+              subtitle: "כתבתם שלד שלם? מצוין, אפשר להמשיך. רוצים עוד חזרה לפני שיעורי הנושא - הנה עוד אחד.",
             },
             {
               type: "writing-task",
@@ -1143,7 +1183,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים משפט שלם ונכון" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים משפט שלם ונכון",
+            },
             {
               type: "mcq",
               prompt: "איזה משפט שלם ונכון?",
@@ -1194,7 +1239,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | מוצאים ומתקנים משפטים שבורים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "מוצאים ומתקנים משפטים שבורים",
+            },
             {
               type: "mark-all",
               instruction: "מצאו את הטעות: לחצו על המילה המיותרת.",
@@ -1281,8 +1331,12 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: 'סיבוב 3 | השלד, והפעם בודקים subject + verb בכל משפט\n\nכותבים את 4 המשפטים של השלד, כמו בשיעור In conclusion. לפני שלוחצים "בדיקה" - עוברים משפט-משפט: מי עושה? מה עושים?',
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "השלד, והפעם בודקים subject + verb בכל משפט",
+              subtitle:
+                'כותבים את 4 המשפטים של השלד, כמו בשיעור In conclusion. לפני שלוחצים "בדיקה" - עוברים משפט-משפט: מי עושה? מה עושים?',
             },
             {
               type: "writing-task",
@@ -1370,7 +1424,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | החשבון והכללים" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "החשבון והכללים" },
             {
               type: "mcq",
               prompt:
@@ -1411,8 +1465,10 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 2 | החשבון בפועל: מ-49 מילים ל-75",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "החשבון בפועל: מ-49 מילים ל-75",
             },
             {
               type: "mcq",
@@ -1503,7 +1559,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | להבין מה מבקשים" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "להבין מה מבקשים" },
             {
               type: "mcq",
               prompt:
@@ -1576,7 +1632,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
+            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1626,8 +1682,12 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | שני המשפטים שחסרים לשלד\n\nהשלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "שני המשפטים שחסרים לשלד",
+              subtitle:
+                "השלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
             },
             {
               type: "writing-task",
@@ -1663,8 +1723,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 4 | חיבור מלא, 70-90 מילים\n\nשלד מלא על המסך + בנק מילים.",
+              type: "opener",
+              kicker: "סיבוב 4",
+              level: 4,
+              title: "חיבור מלא, 70-90 מילים",
+              subtitle: "שלד מלא על המסך + בנק מילים.",
             },
             {
               type: "writing-task",
@@ -1718,8 +1781,12 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 5 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              type: "opener",
+              kicker: "סיבוב 5",
+              level: 5,
+              title: "תנאי בחינה - שאלה חדשה",
+              subtitle:
+                "שאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (Do you think), אותו שלד של 6 משפטים.\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -1799,7 +1866,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | להבין מה מבקשים" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "להבין מה מבקשים" },
             {
               type: "mcq",
               prompt:
@@ -1836,7 +1903,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
+            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -1886,8 +1953,12 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | שני המשפטים שחסרים לשלד\n\nהשלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "שני המשפטים שחסרים לשלד",
+              subtitle:
+                "השלד שלכם (4 משפטים) הוא בערך 50 מילים. כדי להגיע ל-70-90 חסרים שני משפטים - ורק אותם כותבים עכשיו.",
             },
             {
               type: "writing-task",
@@ -1923,8 +1994,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 4 | חיבור מלא, 70-90 מילים\n\nהפעם רק רשימת המחברים, בלי תבנית שורה-שורה.",
+              type: "opener",
+              kicker: "סיבוב 4",
+              level: 4,
+              title: "חיבור מלא, 70-90 מילים",
+              subtitle: "הפעם רק רשימת המחברים, בלי תבנית שורה-שורה.",
             },
             {
               type: "writing-task",
@@ -1978,8 +2052,12 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 5 | תנאי בחינה - שאלה חדשה\n\nשאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\n\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
+              type: "opener",
+              kicker: "סיבוב 5",
+              level: 5,
+              title: "תנאי בחינה - שאלה חדשה",
+              subtitle:
+                "שאלה מרשימת הנושאים הרשמית של הבגרות, שעוד לא כתבתם עליה חיבור. אותו סוג שאלה (What do you think / Which), אותו שלד של 6 משפטים.\nבלי בנק מילים. שעון של 20 דקות רץ למעלה, כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -2051,7 +2129,7 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | מזהים הצעה ספציפית" },
+            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים הצעה ספציפית" },
             {
               type: "mcq",
               prompt: "מה מבדיל הצעה טובה מתיאור בעיה?",
@@ -2082,7 +2160,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
+            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -2132,8 +2210,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "חיבור מלא, 70-90 מילים",
+              subtitle: "הפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -2168,8 +2249,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "תרגול נוסף (רשות) | תנאי בחינה עם שעון - שאלה חדשה\n\nכתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
+              type: "opener",
+              kicker: "סיבוב 4 (רשות)",
+              title: "תנאי בחינה עם שעון - שאלה חדשה",
+              subtitle:
+                "כתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
             },
             {
               type: "writing-task",
@@ -2245,7 +2329,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "סיבוב 1 | גיל ספציפי במשפט הראשון" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "גיל ספציפי במשפט הראשון",
+            },
             {
               type: "mcq",
               prompt:
@@ -2278,7 +2367,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "סיבוב 2 | השלד: 4 משפטים" },
+            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
             {
               type: "writing-task",
               prompt:
@@ -2328,8 +2417,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 3 | חיבור מלא, 70-90 מילים\n\nהפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "חיבור מלא, 70-90 מילים",
+              subtitle: "הפעם בלי תבנית ובלי בנק מילים - כמו בבחינה.",
             },
             {
               type: "writing-task",
@@ -2364,8 +2456,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "תרגול נוסף (רשות) | תנאי בחינה עם שעון - שאלה חדשה\n\nכתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
+              type: "opener",
+              kicker: "סיבוב 4 (רשות)",
+              title: "תנאי בחינה עם שעון - שאלה חדשה",
+              subtitle:
+                "כתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
             },
             {
               type: "writing-task",
