@@ -2240,23 +2240,23 @@
     "semantic_hash": ""
   },
   "front/src/lib/kanban.ts": {
-    "mtime": 1792831612.567881,
-    "ast_hash": "29e79c912cc97eff2e4c8932daf581c6",
+    "mtime": 1792832107.2237008,
+    "ast_hash": "caec54d7eda03454f51e8865fa15472b",
     "semantic_hash": ""
   },
   "front/src/lib/server/kanban.ts": {
-    "mtime": 1792830409.984574,
-    "ast_hash": "b511c37690b2b38dc852ffa353b5ecdc",
+    "mtime": 1792832079.1285,
+    "ast_hash": "9ab14a01a17928e35b19cb88e3a7399e",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/+page.svelte": {
-    "mtime": 1792831430.0014384,
-    "ast_hash": "4cb3860b67073bb46f202f4b0e25b4ab",
+    "mtime": 1792832100.1510773,
+    "ast_hash": "d5000fe8c6cdb9f719893041a1bb68f6",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/TaskCard.svelte": {
-    "mtime": 1792831625.769116,
-    "ast_hash": "82559b0f4df5c67eb63c68758f3eace5",
+    "mtime": 1792832100.3265524,
+    "ast_hash": "c77c8319b1db962e907331b40200047b",
     "semantic_hash": ""
   },
   "front/src/routes/api/kanban/+server.ts": {

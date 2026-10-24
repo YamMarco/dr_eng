@@ -34,5 +34,7 @@ export const taskColumns = {
 	status: kanbanTasks.status,
 	priority: kanbanTasks.priority,
 	assignee: kanbanTasks.assignee,
-	tags: kanbanTasks.tags
+	tags: kanbanTasks.tags,
+	createdAt: kanbanTasks.createdAt,
+	updatedAt: kanbanTasks.updatedAt
 };

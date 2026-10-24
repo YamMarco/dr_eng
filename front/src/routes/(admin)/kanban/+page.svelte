@@ -2,7 +2,16 @@
 	import { onMount } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
-	import { STATUSES, TITLE_MAX, statusLabel, type Status, type Task } from '$lib/kanban';
+	import {
+		SORTS,
+		STATUSES,
+		TITLE_MAX,
+		statusLabel,
+		type SortKey,
+		type Status,
+		type Task,
+		type TaskPatch
+	} from '$lib/kanban';
 	import TaskCard from './TaskCard.svelte';
 
 	// Staff board of project tasks, stored in the kanban_tasks table (/api/kanban).
@@ -15,10 +24,29 @@
 	let dragId = $state<string | null>(null);
 	let dropStatus = $state<Status | null>(null);
 
+	const SORT_KEY = 'kanban-sort';
+	let sortKey = $state<SortKey>(storedSort());
+
 	let allTags = $derived([...new Set(tasks.flatMap((t) => t.tags))].sort());
 
-	function byPriority(a: Task, b: Task) {
-		return b.priority - a.priority;
+	/** This browser's last choice (a convenience; storage may be blocked). */
+	function storedSort(): SortKey {
+		try {
+			const saved = localStorage.getItem(SORT_KEY);
+			if (saved && saved in SORTS) return saved as SortKey;
+		} catch {
+			// no storage: default order
+		}
+		return 'priority';
+	}
+
+	function setSort(key: SortKey) {
+		sortKey = key;
+		try {
+			localStorage.setItem(SORT_KEY, key);
+		} catch {
+			// not remembered, still applied
+		}
 	}
 
 	async function load() {
@@ -53,10 +81,10 @@
 		if (res) tasks.push(await res.json());
 	}
 
-	function save(id: string, patch: Partial<Omit<Task, 'id'>>) {
+	function save(id: string, patch: TaskPatch) {
 		const task = tasks.find((t) => t.id === id);
 		if (!task) return;
-		Object.assign(task, patch);
+		Object.assign(task, patch, { updatedAt: new Date().toISOString() });
 		send(`/api/kanban/${id}`, { method: 'PATCH', body: JSON.stringify(patch) });
 	}
 
@@ -98,6 +126,19 @@
 		</button>
 	</form>
 
+	<label class="mb-4 flex items-center gap-2 text-sm font-semibold text-muted">
+		מיון לפי
+		<select
+			value={sortKey}
+			onchange={(event) => setSort(event.currentTarget.value as SortKey)}
+			class="min-h-9 rounded-lg border border-line bg-surface px-2 font-semibold text-ink focus:border-brand"
+		>
+			{#each Object.entries(SORTS) as [key, sort] (key)}
+				<option value={key}>{sort.label}</option>
+			{/each}
+		</select>
+	</label>
+
 	{#if failed}
 		<p class="mb-4 rounded-xl bg-danger-soft px-4 py-3 text-sm font-semibold text-danger">
 			השמירה או הטעינה נכשלו. הלוח נטען מחדש מהשרת.
@@ -115,7 +156,7 @@
 	{:else}
 		<div class="grid gap-4 md:grid-cols-3">
 			{#each STATUSES as status (status)}
-				{@const column = tasks.filter((t) => t.status === status).sort(byPriority)}
+				{@const column = tasks.filter((t) => t.status === status).sort(SORTS[sortKey].compare)}
 				<section
 					aria-label={statusLabel[status]}
 					ondragover={(event) => {

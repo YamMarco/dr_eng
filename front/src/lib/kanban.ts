@@ -18,7 +18,41 @@ export type Task = {
 	priority: Priority;
 	assignee: Person | null;
 	tags: string[];
+	/** ISO times. */
+	createdAt: string;
+	updatedAt: string;
 };
+
+/** Editable fields (what a card saves). */
+export type TaskPatch = Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>;
+
+/** How cards are ordered inside each column. */
+export const SORTS = {
+	priority: { label: 'עדיפות', compare: (a: Task, b: Task) => b.priority - a.priority },
+	title: { label: 'שם', compare: (a: Task, b: Task) => a.title.localeCompare(b.title, 'he') },
+	assignee: {
+		label: 'אחראי',
+		compare: (a: Task, b: Task) =>
+			byText(a.assignee && personLabel[a.assignee], b.assignee && personLabel[b.assignee])
+	},
+	tags: { label: 'תגית', compare: (a: Task, b: Task) => byText(a.tags[0], b.tags[0]) },
+	updated: {
+		label: 'עריכה אחרונה',
+		compare: (a: Task, b: Task) => b.updatedAt.localeCompare(a.updatedAt)
+	},
+	created: {
+		label: 'נוצרה לאחרונה',
+		compare: (a: Task, b: Task) => b.createdAt.localeCompare(a.createdAt)
+	}
+};
+
+export type SortKey = keyof typeof SORTS;
+
+/** Alphabetical; empty values last. */
+function byText(a: string | null | undefined, b: string | null | undefined): number {
+	if (!a || !b) return Number(!a) - Number(!b);
+	return a.localeCompare(b, 'he');
+}
 
 /** A tag's color: a hue picked from its name, so it's the same everywhere with nothing stored. */
 export function tagColor(tag: string, alpha: number): string {

@@ -8,14 +8,15 @@
 		personLabel,
 		priorityLabel,
 		tagColor,
-		type Task
+		type Task,
+		type TaskPatch
 	} from '$lib/kanban';
 
 	type Props = {
 		task: Task;
 		/** Every tag on the board, offered while typing a new one. */
 		tagListId: string;
-		onsave: (patch: Partial<Omit<Task, 'id'>>) => void;
+		onsave: (patch: TaskPatch) => void;
 		ondelete: () => void;
 		ondragstart: () => void;
 		ondragend: () => void;
