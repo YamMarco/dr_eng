@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { ArrowDownWideNarrow, ArrowUpNarrowWide } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
 	import {
 		SORTS,
 		STATUSES,
 		TITLE_MAX,
+		sortTasks,
 		statusLabel,
 		type SortKey,
 		type Status,
@@ -24,26 +26,26 @@
 	let dragId = $state<string | null>(null);
 	let dropStatus = $state<Status | null>(null);
 
-	const SORT_KEY = 'kanban-sort';
-	let sortKey = $state<SortKey>(storedSort());
+	const SORT_STORE = 'kanban-sort';
+	let sort = $state(storedSort());
 
 	let allTags = $derived([...new Set(tasks.flatMap((t) => t.tags))].sort());
 
-	/** This browser's last choice (a convenience; storage may be blocked). */
-	function storedSort(): SortKey {
+	/** This browser's last choice, "<key>:<asc|desc>" (a convenience; storage may be blocked). */
+	function storedSort(): { key: SortKey; desc: boolean } {
 		try {
-			const saved = localStorage.getItem(SORT_KEY);
-			if (saved && saved in SORTS) return saved as SortKey;
+			const [key, dir] = (localStorage.getItem(SORT_STORE) ?? '').split(':');
+			if (key in SORTS) return { key: key as SortKey, desc: dir === 'desc' };
 		} catch {
 			// no storage: default order
 		}
-		return 'priority';
+		return { key: 'priority', desc: true };
 	}
 
-	function setSort(key: SortKey) {
-		sortKey = key;
+	function setSort(key: SortKey, desc: boolean) {
+		sort = { key, desc };
 		try {
-			localStorage.setItem(SORT_KEY, key);
+			localStorage.setItem(SORT_STORE, `${key}:${desc ? 'desc' : 'asc'}`);
 		} catch {
 			// not remembered, still applied
 		}
@@ -126,18 +128,36 @@
 		</button>
 	</form>
 
-	<label class="mb-4 flex items-center gap-2 text-sm font-semibold text-muted">
-		מיון לפי
-		<select
-			value={sortKey}
-			onchange={(event) => setSort(event.currentTarget.value as SortKey)}
-			class="min-h-9 rounded-lg border border-line bg-surface px-2 font-semibold text-ink focus:border-brand"
+	<div class="mb-4 flex items-center gap-2 text-sm font-semibold text-muted">
+		<label class="flex items-center gap-2">
+			מיון לפי
+			<select
+				value={sort.key}
+				onchange={(event) => {
+					const key = event.currentTarget.value as SortKey;
+					setSort(key, SORTS[key].desc);
+				}}
+				class="min-h-9 rounded-lg border border-line bg-surface px-2 font-semibold text-ink focus:border-brand"
+			>
+				{#each Object.entries(SORTS) as [key, option] (key)}
+					<option value={key}>{option.label}</option>
+				{/each}
+			</select>
+		</label>
+		<button
+			type="button"
+			onclick={() => setSort(sort.key, !sort.desc)}
+			aria-label={sort.desc ? 'סדר יורד - לחיצה להפוך' : 'סדר עולה - לחיצה להפוך'}
+			title={sort.desc ? 'סדר יורד' : 'סדר עולה'}
+			class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface text-ink transition hover:border-brand active:scale-95"
 		>
-			{#each Object.entries(SORTS) as [key, sort] (key)}
-				<option value={key}>{sort.label}</option>
-			{/each}
-		</select>
-	</label>
+			{#if sort.desc}
+				<ArrowDownWideNarrow size={18} aria-hidden="true" />
+			{:else}
+				<ArrowUpNarrowWide size={18} aria-hidden="true" />
+			{/if}
+		</button>
+	</div>
 
 	{#if failed}
 		<p class="mb-4 rounded-xl bg-danger-soft px-4 py-3 text-sm font-semibold text-danger">
@@ -156,7 +176,11 @@
 	{:else}
 		<div class="grid gap-4 md:grid-cols-3">
 			{#each STATUSES as status (status)}
-				{@const column = tasks.filter((t) => t.status === status).sort(SORTS[sortKey].compare)}
+				{@const column = sortTasks(
+					tasks.filter((t) => t.status === status),
+					sort.key,
+					sort.desc
+				)}
 				<section
 					aria-label={statusLabel[status]}
 					ondragover={(event) => {

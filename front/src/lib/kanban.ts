@@ -26,32 +26,35 @@ export type Task = {
 /** Editable fields (what a card saves). */
 export type TaskPatch = Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>;
 
+type Sort = {
+	label: string;
+	/** The value cards are ordered by; empty = always last. */
+	value: (task: Task) => string | number | null | undefined;
+	/** The direction a fresh pick starts in. */
+	desc: boolean;
+};
+
 /** How cards are ordered inside each column. */
 export const SORTS = {
-	priority: { label: 'עדיפות', compare: (a: Task, b: Task) => b.priority - a.priority },
-	title: { label: 'שם', compare: (a: Task, b: Task) => a.title.localeCompare(b.title, 'he') },
-	assignee: {
-		label: 'אחראי',
-		compare: (a: Task, b: Task) =>
-			byText(a.assignee && personLabel[a.assignee], b.assignee && personLabel[b.assignee])
-	},
-	tags: { label: 'תגית', compare: (a: Task, b: Task) => byText(a.tags[0], b.tags[0]) },
-	updated: {
-		label: 'עריכה אחרונה',
-		compare: (a: Task, b: Task) => b.updatedAt.localeCompare(a.updatedAt)
-	},
-	created: {
-		label: 'נוצרה לאחרונה',
-		compare: (a: Task, b: Task) => b.createdAt.localeCompare(a.createdAt)
-	}
-};
+	priority: { label: 'עדיפות', value: (t) => t.priority, desc: true },
+	title: { label: 'שם', value: (t) => t.title, desc: false },
+	assignee: { label: 'אחראי', value: (t) => t.assignee && personLabel[t.assignee], desc: false },
+	tags: { label: 'תגית', value: (t) => t.tags[0], desc: false },
+	updated: { label: 'תאריך עריכה', value: (t) => t.updatedAt, desc: true },
+	created: { label: 'תאריך יצירה', value: (t) => t.createdAt, desc: true }
+} satisfies Record<string, Sort>;
 
 export type SortKey = keyof typeof SORTS;
 
-/** Alphabetical; empty values last. */
-function byText(a: string | null | undefined, b: string | null | undefined): number {
-	if (!a || !b) return Number(!a) - Number(!b);
-	return a.localeCompare(b, 'he');
+export function sortTasks(tasks: Task[], key: SortKey, desc: boolean): Task[] {
+	const { value } = SORTS[key] as Sort;
+	return tasks.toSorted((a, b) => {
+		const x = value(a);
+		const y = value(b);
+		if (!x || !y) return Number(!x) - Number(!y);
+		const order = typeof x === 'number' ? x - (y as number) : x.localeCompare(String(y), 'he');
+		return desc ? -order : order;
+	});
 }
 
 /** A tag's color: a hue picked from its name, so it's the same everywhere with nothing stored. */
