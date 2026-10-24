@@ -69,7 +69,8 @@
 		border: 0;
 		background-color: var(--fill);
 		background-image: none;
-		box-shadow: inset 0 0 0 1.5px var(--rim);
+		/* 1px: the knob sits 0.125em in, so a thicker rim would touch it. */
+		box-shadow: inset 0 0 0 1px var(--rim);
 	}
 	.switch__input::before {
 		content: '';
@@ -185,7 +186,8 @@
 		height: 3em;
 	}
 	.switch--v .switch__icon {
-		top: 0.125em;
+		/* From the center: the label's 44px tap target is taller than the track. */
+		top: calc(50% - 1.375em);
 		left: 50%;
 		margin-top: 0;
 		margin-left: -0.625em;
