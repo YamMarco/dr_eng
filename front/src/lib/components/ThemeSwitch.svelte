@@ -51,9 +51,9 @@
 		width: 3em;
 		height: 1.5em;
 		border-radius: 0.75em;
-		/* Light: light fill, dark rim. Dark (checked): flipped. */
+		/* Fill is the page color in both themes; the rim flips (dark on light). */
 		--rim: var(--on);
-		--fill: var(--off);
+		--fill: var(--color-canvas);
 		outline: none;
 		cursor: pointer;
 		transition:
@@ -69,7 +69,8 @@
 		border: 0;
 		background-color: var(--fill);
 		background-image: none;
-		box-shadow: inset 0 0 0 1.5px var(--rim);
+		/* 1px: the knob sits 0.125em in, so a thicker rim would touch it. */
+		box-shadow: inset 0 0 0 1px var(--rim);
 	}
 	.switch__input::before {
 		content: '';
@@ -79,10 +80,10 @@
 		width: 1.25em;
 		height: 1.25em;
 		border-radius: 50%;
-		background-color: var(--on);
-		transition:
-			background-color var(--dur) var(--ease),
-			transform var(--dur) var(--ease);
+		/* Transparent: the icon draws the knob; a filled circle here peeks out
+		   around it as a dark halo on the light track. */
+		background-color: transparent;
+		transition: transform var(--dur) var(--ease);
 	}
 	.switch__input:focus-visible {
 		outline: 2px solid var(--color-brand);
@@ -102,10 +103,13 @@
 		height: 1.25em;
 		margin-top: -0.625em;
 		border-radius: 50%;
-		background-color: var(--off);
+		--disc: var(--color-canvas);
+		background-color: var(--disc);
 		overflow: hidden;
 		pointer-events: none;
-		transition: transform var(--dur) var(--ease);
+		transition:
+			background-color var(--dur) var(--ease),
+			transform var(--dur) var(--ease);
 	}
 	.switch__icon-part {
 		transition:
@@ -118,7 +122,7 @@
 		border-radius: 50%;
 	}
 	.switch__icon-part--1 {
-		background-color: var(--off);
+		background-color: var(--disc);
 		top: calc(50% - 0.375em);
 		left: calc(50% - 0.375em);
 		width: 0.75em;
@@ -185,16 +189,23 @@
 		height: 3em;
 	}
 	.switch--v .switch__icon {
-		top: 0.125em;
+		/* From the center: the label's 44px tap target is taller than the track. */
+		top: calc(50% - 1.375em);
 		left: 50%;
 		margin-top: 0;
 		margin-left: -0.625em;
 	}
 
-	/* Dark (checked): moon, track turns light. */
+	/* Dark (checked): moon, light rim. The track stays the page color; the
+	   moon's disc turns light and its bite is cut in the page color. */
 	.switch__input:checked {
 		--rim: var(--off);
-		--fill: var(--on);
+	}
+	.switch__input:checked ~ .switch__icon {
+		--disc: var(--off);
+	}
+	.switch__input:checked ~ .switch__icon .switch__icon-part--2 {
+		background-color: var(--color-canvas);
 	}
 	.switch__input:checked::before,
 	.switch__input:checked ~ .switch__icon {
@@ -208,7 +219,7 @@
 		transform: translate(0, 0) scale(1);
 	}
 	.switch__input:checked ~ .switch__icon .switch__icon-part--3 {
-		box-shadow: 0 0 0 0.25em var(--on) inset;
+		box-shadow: 0 0 0 0.25em var(--color-canvas) inset;
 		transform: scale(1);
 	}
 	.switch__input:checked ~ .switch__icon .switch__icon-part--4 {

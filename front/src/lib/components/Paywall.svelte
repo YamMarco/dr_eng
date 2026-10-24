@@ -35,6 +35,14 @@
 
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
 	<div in:fly={{ y: 12, duration: 250, easing: cubicOut }}>
+		{#if !MOBILE_BUILD}
+			<a
+				href={resolve('/')}
+				class="-ms-2 mb-4 flex min-h-11 w-fit items-center rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]"
+			>
+				{i18n.dict.login.backToSite}
+			</a>
+		{/if}
 		<h1 class="text-3xl font-extrabold tracking-tight">{t.title}</h1>
 		<p class="mt-2 leading-relaxed text-muted">{t.body}</p>
 

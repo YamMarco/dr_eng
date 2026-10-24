@@ -13,7 +13,9 @@
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 @theme {
-	--font-sans: 'Heebo Variable', 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui, sans-serif;
+	--font-sans:
+		'Heebo Variable', 'Heebo', 'Assistant', 'Rubik', 'Segoe UI', 'Noto Sans Hebrew', system-ui,
+		sans-serif;
 
 	--color-canvas: #f9f7f4;
 	--color-surface: #ffffff;
@@ -110,6 +112,18 @@
 		outline: 2px solid var(--color-brand);
 		outline-offset: 2px;
 	}
+}
+
+/* @tailwindcss/forms draws the select chevron on the right and pads for it,
+   but a px-* / p-* utility drops that padding, so (in RTL especially) the text
+   runs under the chevron. Reserve the end side and mirror the chevron in RTL.
+   Unlayered on purpose: it must beat the padding utilities. */
+select:not([multiple], [size]) {
+	padding-inline-end: 2.25rem;
+	background-position: right 0.5rem center;
+}
+select:not([multiple], [size]):dir(rtl) {
+	background-position: left 0.5rem center;
 }
 
 @utility tabular {

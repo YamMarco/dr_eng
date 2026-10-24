@@ -31,7 +31,7 @@ export const he = {
 		themeToggle: 'מעבר בין מצב בהיר לכהה',
 		seePlans: 'למסלולים',
 		home: {
-			metaTitle: 'EngUp - הבגרות באנגלית. קשה באימון, קל בבגרות.',
+			metaTitle: 'EngUp - מורה פרטי לאנגלית משלכם',
 			metaDescription:
 				'הכנה לבגרות באנגלית ב־4 או 5 יחידות: טכניקה למינימום סטרס ומקסימום ציון, מבחנים בתנאי אמת ופידבק מיידי ואישי.',
 			badge: 'גישה מוקדמת',
@@ -41,7 +41,7 @@ export const he = {
 			titleTail: 'אותה.',
 			intro:
 				'לא סתם פותרים: מקבלים טכניקה למינימום סטרס ומקסימום ציון במבחן, כל זאת עם פידבק מיידי ואישי.',
-			ctaJoin: 'הצטרפו לרשימה',
+			ctaJoin: 'הצטרפו לרשימת ההמתנה',
 			ctaCode: 'יש לי קוד',
 			waitlist: {
 				label: 'כתובת מייל',
@@ -59,7 +59,7 @@ export const he = {
 			heroAlt: 'תלמידה לומדת אנגלית בטלפון',
 			mock: {
 				label: 'תצוגה של מסך הבית באפליקציה',
-				greeting: 'בוקר טוב, דנה!',
+				greeting: 'בוקר טוב דנה',
 				week: 'השבוע: 3 מתוך 4 ימים',
 				continueTitle: 'The Lost Village',
 				continueSub: 'מודול C · קריאה',
