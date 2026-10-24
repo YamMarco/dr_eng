@@ -6,8 +6,12 @@
 		label,
 		vertical = false,
 		onchange
-	}: { dark: boolean; label: string; vertical?: boolean; onchange: (dark: boolean) => void } =
-		$props();
+	}: {
+		dark: boolean;
+		label: string;
+		vertical?: boolean;
+		onchange: (dark: boolean) => void;
+	} = $props();
 </script>
 
 <label class="switch" class:switch--v={vertical}>
@@ -47,10 +51,14 @@
 		width: 3em;
 		height: 1.5em;
 		border-radius: 0.75em;
-		background-color: var(--on);
+		/* Light: light fill, dark rim. Dark (checked): flipped. */
+		background-color: var(--off);
+		box-shadow: inset 0 0 0 1.5px var(--on);
 		outline: none;
 		cursor: pointer;
-		transition: background-color var(--dur) var(--ease);
+		transition:
+			background-color var(--dur) var(--ease),
+			box-shadow var(--dur) var(--ease);
 	}
 	.switch__input::before {
 		content: '';
@@ -174,7 +182,8 @@
 
 	/* Dark (checked): moon, track turns light. */
 	.switch__input:checked {
-		background-color: var(--off);
+		background-color: var(--on);
+		box-shadow: inset 0 0 0 1.5px var(--off);
 	}
 	.switch__input:checked::before,
 	.switch__input:checked ~ .switch__icon {
