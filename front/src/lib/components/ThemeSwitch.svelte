@@ -1,11 +1,16 @@
 <script lang="ts">
-	// Animated vertical sun/moon switch. Sized in em, so it scales with the surrounding
-	// text; the label carries the 44px tap target.
-	let { dark, label, onchange }: { dark: boolean; label: string; onchange: (dark: boolean) => void } =
+	// Animated sun/moon switch, horizontal or vertical. Sized in em, so it scales
+	// with the surrounding text; the label carries the 44px tap target.
+	let {
+		dark,
+		label,
+		vertical = false,
+		onchange
+	}: { dark: boolean; label: string; vertical?: boolean; onchange: (dark: boolean) => void } =
 		$props();
 </script>
 
-<label class="switch">
+<label class="switch" class:switch--v={vertical}>
 	<input
 		class="switch__input"
 		type="checkbox"
@@ -39,8 +44,8 @@
 		appearance: none;
 		position: relative;
 		display: block;
-		width: 1.5em;
-		height: 3em;
+		width: 3em;
+		height: 1.5em;
 		border-radius: 0.75em;
 		background-color: var(--on);
 		outline: none;
@@ -72,11 +77,11 @@
 		left: 0;
 	}
 	.switch__icon {
-		top: 0.125em;
-		left: 50%;
+		top: 50%;
+		left: 0.125em;
 		width: 1.25em;
 		height: 1.25em;
-		margin-left: -0.625em;
+		margin-top: -0.625em;
 		border-radius: 50%;
 		background-color: var(--off);
 		overflow: hidden;
@@ -155,12 +160,28 @@
 		overflow: hidden;
 	}
 
+	/* Vertical: the knob slides down instead of across. */
+	.switch--v .switch__input {
+		width: 1.5em;
+		height: 3em;
+	}
+	.switch--v .switch__icon {
+		top: 0.125em;
+		left: 50%;
+		margin-top: 0;
+		margin-left: -0.625em;
+	}
+
 	/* Dark (checked): moon, track turns light. */
 	.switch__input:checked {
 		background-color: var(--off);
 	}
 	.switch__input:checked::before,
 	.switch__input:checked ~ .switch__icon {
+		transform: translateX(1.5em);
+	}
+	.switch--v .switch__input:checked::before,
+	.switch--v .switch__input:checked ~ .switch__icon {
 		transform: translateY(1.5em);
 	}
 	.switch__input:checked ~ .switch__icon .switch__icon-part--2 {

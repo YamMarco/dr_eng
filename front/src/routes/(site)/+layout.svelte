@@ -40,8 +40,9 @@
 			>
 				{auth.session ? t.navApp : t.navEnter}
 			</a>
-			<span class="ms-1">
+			<span class="ms-1 hidden text-[0.8em] md:block">
 				<ThemeSwitch
+					vertical
 					label={t.themeToggle}
 					dark={themeStore.resolved === 'dark'}
 					onchange={(dark) => themeStore.setMode(dark ? 'dark' : 'light')}
@@ -56,6 +57,13 @@
 <footer
 	class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-6 text-sm text-muted sm:px-6"
 >
+	<span class="md:hidden">
+		<ThemeSwitch
+			label={t.themeToggle}
+			dark={themeStore.resolved === 'dark'}
+			onchange={(dark) => themeStore.setMode(dark ? 'dark' : 'light')}
+		/>
+	</span>
 	<a href={resolve('/about')} class="hover:text-ink">{t.navAbout}</a>
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>

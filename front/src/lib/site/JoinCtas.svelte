@@ -6,30 +6,29 @@
 	import Confetti from '$lib/components/Confetti.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
-	// The two ways in, side by side: join the waitlist (/api/waitlist) or redeem a code
-	// (a GET form to /checkout?coupon=). Tapping one opens its field and closes the other.
-	// A link to #<id> opens the waitlist field. The field opens as a card over what's
-	// below, so nothing on the page moves.
+	// The two ways in, side by side: join the waitlist (/api/waitlist) or go to
+	// /checkout to redeem a code (signed-out visitors meet the sign-up/sign-in screen
+	// there first, then land on the code field). A link to #<id> opens the waitlist
+	// field. The field opens as a card over what's below, so nothing on the page moves.
 	let { id }: { id: string } = $props();
 	let t = $derived(i18n.dict.site.home);
 
-	type Panel = 'waitlist' | 'code';
 	type Error = keyof typeof t.waitlist.errors;
-	let open = $state<Panel | null>(null);
+	let open = $state(false);
 	let email = $state('');
 	let website = $state('');
 	let status = $state<'idle' | 'sending' | 'done'>('idle');
 	let error = $state<Error | null>(null);
 
-	const toggle = (panel: Panel) => {
-		open = open === panel ? null : panel;
+	const toggle = () => {
+		open = !open;
 		error = null;
 	};
 	const focus = (node: HTMLInputElement) => node.focus({ preventScroll: true });
 
 	$effect(() => {
 		const onHash = () => {
-			if (location.hash === `#${id}`) open = 'waitlist';
+			if (location.hash === `#${id}`) open = true;
 		};
 		onHash();
 		window.addEventListener('hashchange', onHash);
@@ -48,7 +47,7 @@
 			});
 			if (res.ok) {
 				status = 'done';
-				open = null;
+				open = false;
 				return;
 			}
 			const reason = (await res.json().catch(() => ({}))).error;
@@ -83,15 +82,13 @@
 		{:else}
 			<Button
 				class="px-3 text-base whitespace-nowrap sm:text-lg"
-				onclick={() => toggle('waitlist')}
-				expanded={open === 'waitlist'}
+				onclick={toggle}
+				expanded={open}
 			>
 				{t.ctaJoin}
 				<ChevronDown
 					size={18}
-					class="shrink-0 transition-transform duration-200 {open === 'waitlist'
-						? 'rotate-180'
-						: ''}"
+					class="shrink-0 transition-transform duration-200 {open ? 'rotate-180' : ''}"
 					aria-hidden="true"
 				/>
 			</Button>
@@ -99,19 +96,13 @@
 		<Button
 			variant="secondary"
 			class="px-3 text-base whitespace-nowrap sm:text-lg"
-			onclick={() => toggle('code')}
-			expanded={open === 'code'}
+			href={resolve('/checkout')}
 		>
 			{t.ctaCode}
-			<ChevronDown
-				size={18}
-				class="shrink-0 transition-transform duration-200 {open === 'code' ? 'rotate-180' : ''}"
-				aria-hidden="true"
-			/>
 		</Button>
 	</div>
 
-	{#if open === 'waitlist'}
+	{#if open}
 		<form onsubmit={join} class="{panel} flex flex-col gap-2" transition:slide={{ duration: 200 }}>
 			<div class="flex flex-col gap-3 sm:flex-row">
 				<label class="flex-1">
@@ -145,31 +136,6 @@
 			{#if error}
 				<p class="text-sm font-semibold text-miss" role="alert">{t.waitlist.errors[error]}</p>
 			{/if}
-		</form>
-	{:else if open === 'code'}
-		<form
-			method="get"
-			action={resolve('/checkout')}
-			class="{panel} flex flex-col gap-3 sm:flex-row"
-			transition:slide={{ duration: 200 }}
-		>
-			<label class="flex-1">
-				<span class="sr-only">{t.code.label}</span>
-				<input
-					{@attach focus}
-					type="text"
-					name="coupon"
-					dir="ltr"
-					required
-					maxlength="64"
-					autocomplete="off"
-					autocapitalize="characters"
-					spellcheck="false"
-					placeholder={t.code.label}
-					class="{input} uppercase placeholder:text-end placeholder:normal-case"
-				/>
-			</label>
-			<Button type="submit" class="sm:w-auto sm:px-7">{t.code.submit}</Button>
 		</form>
 	{/if}
 </div>

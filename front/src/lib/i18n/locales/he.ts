@@ -42,10 +42,6 @@ export const he = {
 				'לא סתם פותרים: מקבלים טכניקה למינימום סטרס ומקסימום ציון במבחן, כל זאת עם פידבק מיידי ואישי.',
 			ctaJoin: 'הצטרפו לרשימה',
 			ctaCode: 'יש לי קוד',
-			code: {
-				label: 'הקוד שלכם',
-				submit: 'המשך'
-			},
 			waitlist: {
 				label: 'כתובת מייל',
 				placeholder: 'name@example.com',
@@ -62,7 +58,7 @@ export const he = {
 			heroAlt: 'תלמידה לומדת אנגלית בטלפון',
 			mock: {
 				label: 'תצוגה של מסך הבית באפליקציה',
-				greeting: 'בוקר טוב!',
+				greeting: 'בוקר טוב, דנה!',
 				week: 'השבוע: 3 מתוך 4 ימים',
 				continueTitle: 'The Lost Village',
 				continueSub: 'מודול C · קריאה',
