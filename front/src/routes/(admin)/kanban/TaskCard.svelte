@@ -35,11 +35,9 @@
 	};
 
 	let priority = $derived(priorityStyle[task.priority]);
-	// A light wash of the first tag's color over the card, in both themes.
-	let tint = $derived(
-		task.tags[0] &&
-			`linear-gradient(${tagColor(task.tags[0], 0.08)}, ${tagColor(task.tags[0], 0.08)})`
-	);
+	// A wash (and ring) of the first tag's color over the card, in both themes.
+	let firstTag = $derived(task.tags[0]);
+	let tint = $derived(firstTag ? tagColor(firstTag, 0.16) : null);
 
 	/** low -> medium -> high -> low */
 	function nextPriority() {
@@ -68,7 +66,8 @@
 		ondragstart();
 	}}
 	{ondragend}
-	style:background-image={tint || null}
+	style:background-image={tint && `linear-gradient(${tint}, ${tint})`}
+	style:--tw-ring-color={firstTag ? tagColor(firstTag, 0.5) : null}
 	class="flex cursor-grab flex-col gap-3 rounded-2xl border-s-4 bg-surface p-3 shadow-sm ring-1 ring-line/70 active:cursor-grabbing {priority.border}"
 >
 	<div class="flex items-start gap-2">
