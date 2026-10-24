@@ -79,10 +79,10 @@
 		width: 1.25em;
 		height: 1.25em;
 		border-radius: 50%;
-		background-color: var(--on);
-		transition:
-			background-color var(--dur) var(--ease),
-			transform var(--dur) var(--ease);
+		/* Transparent: the icon draws the knob; a filled circle here peeks out
+		   around it as a dark halo on the light track. */
+		background-color: transparent;
+		transition: transform var(--dur) var(--ease);
 	}
 	.switch__input:focus-visible {
 		outline: 2px solid var(--color-brand);
