@@ -101,6 +101,16 @@
 				value={screen.text}
 				onInput={(v) => set('text', v)}
 			/>
+		{:else if screen.type === 'opener'}
+			<p class="text-xs font-bold text-muted">כותרת</p>
+			<MarkdownInput bare minRows={1} value={screen.title} onInput={(v) => set('title', v)} />
+			<p class="text-xs font-bold text-muted">שורה מתחת לכותרת (לא חובה)</p>
+			<MarkdownInput
+				bare
+				minRows={1}
+				value={screen.subtitle ?? ''}
+				onInput={(v) => set('subtitle', v || undefined)}
+			/>
 		{:else if screen.type === 'summary'}
 			<MarkdownInput bare minRows={1} value={screen.title} onInput={(v) => set('title', v)} />
 			<ul class="space-y-1">

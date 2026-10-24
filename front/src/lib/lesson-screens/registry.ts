@@ -5,6 +5,7 @@
 import type { Component } from 'svelte';
 import type { LessonScreen } from './types';
 import Preface from './Preface.svelte';
+import Opener from './Opener.svelte';
 import Steps from './Steps.svelte';
 import Summary from './Summary.svelte';
 import Mcq from './Mcq.svelte';
@@ -33,6 +34,7 @@ import SentenceCompletion from './SentenceCompletion.svelte';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	preface: Preface,
+	opener: Opener,
 	steps: Steps,
 	summary: Summary,
 	mcq: Mcq,

@@ -154,11 +154,6 @@
 
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
-	// The first screen of the preface or of a round gets the title-card layout.
-	let isOpener = $derived(
-		screenIndex < baseScreens.length &&
-			(screenIndex === 0 || screenPaths?.[screenIndex - 1]?.bucket !== currentPath?.bucket)
-	);
 	let editHref = $derived.by(() => {
 		if (!dev || !lesson || !currentPath) return undefined;
 		const round = currentPath.bucket === 'preface' ? 0 : currentPath.bucket;
@@ -174,7 +169,9 @@
 	let prefaceOpen = $state(false);
 	let debugOpen = $state(false);
 	let prefaceScreens = $derived(
-		(lesson?.content.preface ?? []).filter((s) => !isScreenEmpty(s) && countQuestions(s) === 0)
+		(lesson?.content.preface ?? []).filter(
+			(s) => s.type !== 'opener' && !isScreenEmpty(s) && countQuestions(s) === 0
+		)
 	);
 	// Redundant while the preface itself is what's on screen.
 	let canRecapPreface = $derived(
@@ -363,7 +360,6 @@
 				>
 					<ScreenComponent
 						screen={currentScreen}
-						opener={isOpener}
 						onAdvance={advance}
 						bind:disabled={footerDisabled}
 						bind:label={footerLabel}

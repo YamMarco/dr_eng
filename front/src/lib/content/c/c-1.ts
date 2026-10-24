@@ -4951,8 +4951,12 @@ export const c1Lessons: LessonNode[] = [
     content: {
       preface: [
         {
-          type: "preface",
-          text: "סיכום - שלושה כלים ביחד: NOT, מילות הגבלה (most / only), מספרים ושמות. בכל משפט ושאלה תזהו איזה כלי צריך.",
+          type: "opener",
+          kicker: "סיכום",
+          badge: "🧰",
+          title: "שלושה כלים ביחד",
+          subtitle:
+            "NOT, מילות הגבלה (most / only), מספרים ושמות.\nבכל משפט ושאלה תזהו איזה כלי צריך.",
         },
       ],
       rounds: [

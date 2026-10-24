@@ -5,7 +5,7 @@ import type { LessonScreen } from '$lib/lesson-screens/types';
 export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] }[] = [
 	{
 		label: 'טקסט והצגה',
-		types: ['preface', 'steps', 'summary', 'question-preview', 'word-card', 'video']
+		types: ['opener', 'preface', 'steps', 'summary', 'question-preview', 'word-card', 'video']
 	},
 	{
 		label: 'שאלות',
@@ -41,6 +41,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 	switch (type) {
 		case 'preface':
 			return { type, text: '' };
+		case 'opener':
+			return { type, title: '' };
 		case 'steps':
 			return { type, steps: [''] };
 		case 'summary':

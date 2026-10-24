@@ -6,6 +6,7 @@ import type { LessonScreen } from '$lib/lesson-screens/types';
 
 export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	preface: 'טקסט / הסבר',
+	opener: 'פתיח סיבוב',
 	steps: 'שלבים',
 	summary: 'סיכום',
 	'question-preview': 'הצצה לשאלות',

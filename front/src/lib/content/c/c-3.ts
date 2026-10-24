@@ -85,8 +85,11 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "סיבוב 2 | כותבים עמדה - משפט אחד לכל שאלה",
+              type: "opener",
+              kicker: "סיבוב 2",
+              badge: "2",
+              title: "כותבים עמדה",
+              subtitle: "משפט אחד לכל שאלה",
             },
             {
               type: "writing-task",

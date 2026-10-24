@@ -784,6 +784,24 @@
 											רשימה ממוספרת
 										</label>
 									</SettingsGroup>
+								{:else if screen.type === 'opener'}
+									<SettingsGroup title="תצוגה">
+										<div class="flex flex-wrap gap-4">
+											<TextField label="תווית מעל הכותרת" bind:value={screen.kicker} dir="auto" />
+											<TextField label="בעיגול (ריק = דגל)" bind:value={screen.badge} dir="auto" />
+											<label class="flex items-center gap-2 text-xs text-muted">
+												אנימציה
+												<select
+													bind:value={screen.motion}
+													class="rounded-lg border-2 border-line bg-surface p-1"
+												>
+													<option value={undefined}>מלאה</option>
+													<option value="soft">עדינה</option>
+													<option value="none">בלי</option>
+												</select>
+											</label>
+										</div>
+									</SettingsGroup>
 								{:else if screen.type === 'passage-mcq' || screen.type === 'timed-reading' || screen.type === 'time-result'}
 									<SettingsGroup title="טיימר">
 										<TimerField
