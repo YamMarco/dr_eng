@@ -899,6 +899,35 @@ export const he = {
 			'extra-word': 'מילה מיותרת'
 		} as Record<string, string>
 	},
+	install: {
+		title: 'התקנה על הטלפון',
+		heading: 'EngUp על מסך הבית',
+		perks: ['נפתח במסך מלא, בלי שורת כתובת', 'תזכורת יומית לתרגול', 'אותו חשבון ואותה התקדמות'],
+		installNow: 'התקנה',
+		platforms: { ios: 'אייפון', android: 'אנדרואיד', desktop: 'מחשב' },
+		steps: {
+			ios: [
+				'פותחים את האתר בספארי',
+				'מקישים על כפתור השיתוף בתחתית המסך',
+				'גוללים ובוחרים "הוספה למסך הבית" (Add to Home Screen)',
+				'מקישים "הוספה" ופותחים את EngUp מהאייקון החדש'
+			],
+			android: [
+				'פותחים את האתר בכרום',
+				'מקישים על שלוש הנקודות בפינה העליונה',
+				'בוחרים "התקנת אפליקציה" או "הוספה למסך הבית"',
+				'מאשרים ופותחים את EngUp מהאייקון החדש'
+			],
+			desktop: [
+				"פותחים את האתר בכרום או באדג'",
+				'לוחצים על סמל ההתקנה בקצה שורת הכתובת',
+				'מאשרים "התקנה"'
+			]
+		},
+		installedTitle: 'האפליקציה מותקנת',
+		installedBody: 'נשאר צעד אחד: תזכורת יומית, כדי שהתרגול יהיה הרגל.',
+		toPractice: 'חזרה לתרגול'
+	},
 	settings: {
 		title: 'הגדרות',
 		languageSection: 'שפה',
@@ -916,8 +945,16 @@ export const he = {
 		practiceSection: 'חוויית תרגול',
 		soundEffects: 'אפקטי קול',
 		soundEffectsDesc: 'צליל בתשובה נכונה או שגויה',
-		dailyReminders: 'תזכורות יומיות',
-		dailyRemindersDesc: 'התראה לתרגול יומי',
+		dailyReminders: 'תזכורת יומית',
+		dailyRemindersDesc: 'התראה אחת אחר הצהריים, רק בימים שעוד לא תרגלתם',
+		remindersBusy: 'רגע...',
+		remindersDenied: 'ההתראות חסומות בדפדפן. אפשרו אותן בהגדרות האתר ונסו שוב.',
+		remindersNeedInstall: 'באייפון התזכורות עובדות אחרי התקנה למסך הבית.',
+		remindersHowTo: 'איך מתקינים?',
+		remindersUnsupported: 'הדפדפן הזה לא תומך בהתראות.',
+		remindersFailed: 'לא הצלחנו להפעיל. נסו שוב בעוד רגע.',
+		installRow: 'התקנה על הטלפון',
+		installRowDesc: 'אייקון במסך הבית, נפתח כמו אפליקציה',
 		developerSection: 'מפתחים',
 		debugTools: 'כלי דיבוג',
 		debugToolsDesc: 'הצגת כפתור דיבוג צף בכל האפליקציה',

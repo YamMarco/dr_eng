@@ -33,7 +33,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam`, `/edit-words` and `/vocab-images` pages, the debug tools and the settings developer section; `/api/content-edit/*` returns 403 to non-staff. With accounts off, everything stays open (dev).
-- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except those named in `PUBLIC_APIS` (`hooks.server.ts`): only `/api/waitlist`. `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
+- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except those named in `PUBLIC_APIS` (`hooks.server.ts`): `/api/waitlist` and `/api/cron/reminders` (checks `CRON_SECRET`). `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
 - **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/chat-speak`, `/api/ocr`): outside dev, accounts and `DATABASE_URL` on and a signed-in user (fails closed, so a preview without a DB has no LLM); with billing on, an active plan (402 otherwise; staff pass); a daily quota per user (`DAILY_LIMIT`, counted in the `llm_usage` table, 429 when over) and for everyone together (`GLOBAL_DAILY_LIMIT`, 503); a per-instance burst limit.
 - **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also removes the account's progress and LLM usage rows and clears this device's; orders stay (purchase records for tax law).
 
@@ -72,6 +72,32 @@ Progress follows the account (needs accounts and `DATABASE_URL`; otherwise it st
 - **Limits** (`/api/progress`): known keys only, 100 keys a request, 100 KB a value, 1 MB a body, 400 rows per user.
 - **Renaming a lesson or exam id** (`legacyIds.ts`) now also needs the same rename on the `progress` rows.
 - New synced key: add it to `isSyncedKey` and give it a merge in `mergeFor` (else newer copy wins).
+
+## Install and daily reminder (web)
+
+The site installs as a home-screen app (PWA) and sends one push reminder a day. Web build only (`MOBILE_BUILD` hides it and skips the service worker).
+
+- **Install:**
+  - `static/manifest.webmanifest` plus the icons in `static/icons/` (rendered from the logo; re-render if the logo changes). `start_url` is `/app`.
+  - `$lib/install.svelte.ts` keeps Chrome/Edge's one-time install prompt.
+  - The student guide is `/app/install`: one tap where the browser offers it, otherwise steps per device (iPhone, Android, computer). Settings > practice links to it until the app is installed.
+- **Service worker** (`src/service-worker.ts`): push and notification click only, no offline cache.
+- **Reminder:**
+  - Settings > practice > "תזכורת יומית" (`ReminderRow.svelte`, also on the install screen once installed). This device's push subscription is the on/off state; `/api/reminders` saves it (POST) or drops it (DELETE), max 5 devices per account.
+  - Endpoints are limited to the browsers' push services (`server/push.ts`, no SSRF).
+  - Sign-out and account deletion drop it.
+- **Send:** Vercel Cron (`vercel.json`, `0 15 * * *` UTC = 17:00-18:00 in Israel) calls `/api/cron/reminders` (public by name, checks `CRON_SECRET`, fails closed).
+  - Skips students whose synced `activity-days` already has today (Israel date), and sends at most once a day per device.
+  - Expired subscriptions (404/410) are deleted. A reminder not delivered within 4 hours is dropped.
+- **iPhone:** push works only in the installed app (iOS 16.4+). The reminder row says so and links to the guide.
+- **Hobby plan:** crons run once a day, anywhere within the hour. A student-chosen reminder time needs an hourly cron (Pro).
+
+### Turning it on
+
+1. `npx web-push generate-vapid-keys`. Set `VITE_VAPID_PUBLIC_KEY` (public) and `VAPID_PRIVATE_KEY` (server only) in `.env.local` and on Vercel.
+2. `CRON_SECRET` on Vercel (long random string; Vercel sends it to the cron).
+3. `npm run db:migrate` (table `push_subscriptions`).
+4. Redeploy. Until the keys are set, the reminder row is hidden and the routes answer 503.
 
 ## Word-card images
 

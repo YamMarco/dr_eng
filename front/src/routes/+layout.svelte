@@ -7,6 +7,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore } from '$lib/theme.svelte';
+	// Catches the browser's one-time install prompt, whichever page it fires on.
+	import '$lib/install.svelte';
 
 	let { children } = $props();
 

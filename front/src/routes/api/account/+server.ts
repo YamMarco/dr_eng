@@ -5,7 +5,7 @@
 import { error } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/db';
-import { llmUsage, progress } from '$lib/server/db/schema';
+import { llmUsage, progress, pushSubscriptions } from '$lib/server/db/schema';
 import { adminClient } from '$lib/server/supabase';
 import type { RequestHandler } from './$types';
 
@@ -15,6 +15,7 @@ export const DELETE: RequestHandler = async ({ locals }) => {
 	if (db) {
 		await db.delete(progress).where(eq(progress.userId, locals.userId));
 		await db.delete(llmUsage).where(eq(llmUsage.userId, locals.userId));
+		await db.delete(pushSubscriptions).where(eq(pushSubscriptions.userId, locals.userId));
 	}
 	const { error: failed } = await admin.auth.admin.deleteUser(locals.userId);
 	if (failed) error(500, 'delete failed');

@@ -92,6 +92,21 @@ export const progress = pgTable(
 	(table) => [primaryKey({ columns: [table.userId, table.key] })]
 ).enableRLS();
 
+/** Web Push subscriptions for the daily practice reminder (one per device). */
+export const pushSubscriptions = pgTable(
+	'push_subscriptions',
+	{
+		endpoint: text().primaryKey(),
+		userId: uuid().notNull(),
+		p256dh: text().notNull(),
+		auth: text().notNull(),
+		/** Israel date of the last reminder sent: at most one a day. */
+		lastSentDay: date(),
+		createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
+	},
+	(table) => [index().on(table.userId)]
+).enableRLS();
+
 /** Emails waiting for open sign-up (the home page form). Email only: users are minors. */
 export const waitlist = pgTable('waitlist', {
 	/** Stored trimmed and lower-cased. */

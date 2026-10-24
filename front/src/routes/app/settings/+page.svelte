@@ -5,6 +5,10 @@
 	import Toggle from '$lib/components/Toggle.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
 	import SupportSection from '$lib/components/SupportSection.svelte';
+	import ReminderRow from '$lib/components/ReminderRow.svelte';
+	import Segmented from '$lib/components/Segmented.svelte';
+	import { install } from '$lib/install.svelte';
+	import { reminders } from '$lib/reminders.svelte';
 	import { ChevronLeft } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 	import { MOBILE_BUILD } from '$lib/platform';
@@ -25,7 +29,6 @@
 		'min-h-11 rounded-xl border-2 border-line bg-canvas px-3 py-2 font-semibold text-ink transition focus:border-brand';
 
 	let soundEffects = $state(true);
-	let dailyReminders = $state(true);
 
 	const languages: { value: Language; label: string }[] = [
 		{ value: 'he', label: 'עברית' },
@@ -129,26 +132,12 @@
 		<ul class="mt-2 flex flex-col divide-y divide-line/70">
 			<li class="flex items-center justify-between gap-4 px-5 py-4">
 				<span class="font-semibold">{i18n.dict.settings.theme}</span>
-				<div
-					role="radiogroup"
-					aria-label={i18n.dict.settings.theme}
-					class="flex gap-1 rounded-xl bg-canvas p-1"
-				>
-					{#each themeOptions as option (option.value)}
-						<button
-							type="button"
-							role="radio"
-							aria-checked={themeStore.mode === option.value}
-							onclick={() => themeStore.setMode(option.value)}
-							class="min-h-11 rounded-lg px-3 text-sm font-semibold transition active:scale-95 {themeStore.mode ===
-							option.value
-								? 'bg-brand text-white shadow'
-								: 'text-muted hover:text-ink'}"
-						>
-							{option.label()}
-						</button>
-					{/each}
-				</div>
+				<Segmented
+					options={themeOptions.map((o) => ({ value: o.value, label: o.label() }))}
+					value={themeStore.mode}
+					label={i18n.dict.settings.theme}
+					onchange={(mode) => themeStore.setMode(mode)}
+				/>
 			</li>
 		</ul>
 	</section>
@@ -166,13 +155,23 @@
 				</span>
 				<Toggle bind:checked={soundEffects} label={i18n.dict.settings.soundEffects} />
 			</li>
-			<li class="flex items-center justify-between gap-4 px-5 py-4">
-				<span>
-					<span class="block font-semibold">{i18n.dict.settings.dailyReminders}</span>
-					<span class="block text-sm text-muted">{i18n.dict.settings.dailyRemindersDesc}</span>
-				</span>
-				<Toggle bind:checked={dailyReminders} label={i18n.dict.settings.dailyReminders} />
-			</li>
+			{#if reminders.available}
+				<ReminderRow />
+			{/if}
+			{#if !MOBILE_BUILD && !install.installed}
+				<li>
+					<a
+						href={resolve('/app/install')}
+						class="flex items-center justify-between gap-4 px-5 py-4 transition hover:bg-brand-soft active:scale-[0.99]"
+					>
+						<span>
+							<span class="block font-semibold">{i18n.dict.settings.installRow}</span>
+							<span class="block text-sm text-muted">{i18n.dict.settings.installRowDesc}</span>
+						</span>
+						<ChevronLeft size={18} class="shrink-0 text-muted" aria-hidden="true" />
+					</a>
+				</li>
+			{/if}
 		</ul>
 	</section>
 

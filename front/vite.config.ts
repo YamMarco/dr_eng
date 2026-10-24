@@ -64,6 +64,8 @@ export default defineConfig(({ mode, command }) => ({
 					: // Host-agnostic: picks the Vercel/Netlify/Cloudflare adapter at build time.
 						adapterAuto(),
 			...(command === 'build' && { csp: csp(mode) }),
+			// Install + push reminders are a web feature (src/service-worker.ts).
+			serviceWorker: { register: mode !== 'mobile' },
 
 			// Svelte inspector: hold Alt (Option on Mac) and click any element in
 			// the dev server to jump straight to its source in your editor.

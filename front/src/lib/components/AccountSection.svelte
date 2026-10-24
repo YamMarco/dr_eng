@@ -3,6 +3,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { auth } from '$lib/auth.svelte';
 	import { apiFetch } from '$lib/api';
+	import { reminders } from '$lib/reminders.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 
@@ -19,6 +20,11 @@
 	const row =
 		'flex min-h-14 w-full items-center px-5 py-4 text-start font-semibold transition hover:bg-line/40 active:scale-[0.99]';
 
+	async function signOut() {
+		await reminders.disable().catch(() => {});
+		await auth.signOut();
+	}
+
 	async function deleteAccount() {
 		if (!confirming) {
 			confirming = true;
@@ -33,7 +39,7 @@
 			return;
 		}
 		localStorage.clear();
-		await auth.signOut();
+		await signOut();
 		location.reload();
 	}
 </script>
@@ -49,7 +55,7 @@
 			<span class="block font-semibold" dir="ltr">{auth.email}</span>
 		</li>
 		<li>
-			<button type="button" class={row} onclick={() => auth.signOut()}>{t.signOut}</button>
+			<button type="button" class={row} onclick={signOut}>{t.signOut}</button>
 		</li>
 		<li>
 			<button

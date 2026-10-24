@@ -17,8 +17,9 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
 // Authoring APIs: staff only, same-origin.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
-// Open to anyone, by name: the home page waitlist form.
-const PUBLIC_APIS = new Set(['/api/waitlist']);
+// Open to anyone, by name: the home page waitlist form, and the reminder cron
+// (no user; it checks CRON_SECRET itself).
+const PUBLIC_APIS = new Set(['/api/waitlist', '/api/cron/reminders']);
 
 function cors(origin: string): Record<string, string> {
 	return {
