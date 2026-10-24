@@ -15,8 +15,8 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 // SvelteKit routes /api/%67rade to /api/grade, so a path regex can be skipped.
 // Student APIs are open to the mobile build's webview origins.
 const APP_ORIGINS = new Set(['https://localhost']);
-// Authoring APIs: staff only, same-origin.
-const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
+// Authoring and staff-board APIs: staff only, same-origin.
+const ADMIN_APIS = /^\/api\/(content-edit|kanban)(\/|$)/;
 // Open to anyone, by name: the home page waitlist form, and the reminder cron
 // (no user; it checks CRON_SECRET itself).
 const PUBLIC_APIS = new Set(['/api/waitlist', '/api/cron/reminders']);

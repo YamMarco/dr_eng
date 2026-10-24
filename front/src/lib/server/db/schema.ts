@@ -113,3 +113,19 @@ export const waitlist = pgTable('waitlist', {
 	email: text().primaryKey(),
 	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
 }).enableRLS();
+
+/** Staff kanban board of project tasks (/kanban). Values: $lib/kanban.ts. */
+export const kanbanTasks = pgTable('kanban_tasks', {
+	id: uuid().primaryKey().defaultRandom(),
+	title: text().notNull(),
+	status: text({ enum: ['todo', 'doing', 'done'] })
+		.notNull()
+		.default('todo'),
+	/** 1 = low, 2 = medium, 3 = high. */
+	priority: integer().notNull().default(2),
+	/** Who made it / it's assigned to; null = nobody yet. */
+	assignee: text({ enum: ['yam', 'emil'] }),
+	tags: text().array().notNull().default([]),
+	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+	updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow()
+}).enableRLS();
