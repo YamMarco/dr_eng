@@ -31,6 +31,9 @@ function standalone(): boolean {
 
 class InstallStore {
 	readonly platform = detectPlatform();
+	/** Opened inside a social app's browser (a link from Instagram, TikTok...): no install, no push. */
+	readonly inApp =
+		browser && /Instagram|FBAN|FBAV|TikTok|musical_ly|Snapchat/.test(navigator.userAgent);
 	/** Running as the installed app (or just installed from this tab). */
 	installed = $state(standalone());
 	/** The browser handed us its install dialog. */

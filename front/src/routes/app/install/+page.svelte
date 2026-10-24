@@ -74,6 +74,9 @@
 				in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 				class="{card} mt-4 p-5"
 			>
+				{#if install.inApp}
+					<p class="mb-4 rounded-2xl bg-brand-soft p-3 text-sm font-semibold">{t.inAppNote}</p>
+				{/if}
 				<Segmented
 					options={(['ios', 'android', 'desktop'] as const).map((p) => ({
 						value: p,
@@ -96,6 +99,11 @@
 							</li>
 						{/each}
 					</ol>
+					{#if platform === 'ios'}
+						<p in:fade={{ duration: 200 }} class="mt-4 rounded-2xl bg-brand-soft p-3 text-sm">
+							{t.iosNote}
+						</p>
+					{/if}
 				{/key}
 			</section>
 		{/if}

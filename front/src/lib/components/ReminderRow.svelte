@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import Toggle from '$lib/components/Toggle.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { reminders } from '$lib/reminders.svelte';
+	import { reminders, type ReminderStatus } from '$lib/reminders.svelte';
 
 	// The daily-reminder switch, as a row in a settings-style list (settings, install screen).
 
@@ -14,18 +14,20 @@
 		reminders.load();
 	});
 
+	// Why it can't be switched on here, per device (see ReminderStatus).
+	let blocked = $derived<Partial<Record<ReminderStatus, string>>>({
+		denied: t.remindersDenied,
+		'needs-install': t.remindersNeedInstall,
+		'ios-update': t.remindersIosUpdate,
+		'in-app': t.remindersInApp,
+		unsupported: t.remindersUnsupported
+	});
 	let note = $derived(
 		reminders.busy
 			? t.remindersBusy
 			: reminders.failed
 				? t.remindersFailed
-				: reminders.status === 'denied'
-					? t.remindersDenied
-					: reminders.status === 'needs-install'
-						? t.remindersNeedInstall
-						: reminders.status === 'unsupported'
-							? t.remindersUnsupported
-							: t.dailyRemindersDesc
+				: (blocked[reminders.status] ?? t.dailyRemindersDesc)
 	);
 	let switchable = $derived(reminders.status === 'on' || reminders.status === 'off');
 </script>

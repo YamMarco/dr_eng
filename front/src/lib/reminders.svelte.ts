@@ -7,7 +7,8 @@ import { MOBILE_BUILD } from './platform';
 
 const KEY: string | undefined = import.meta.env.VITE_VAPID_PUBLIC_KEY;
 
-export type ReminderStatus = 'loading' | 'off' | 'on' | 'denied' | 'needs-install' | 'unsupported';
+export type ReminderStatus =
+	'loading' | 'off' | 'on' | 'denied' | 'needs-install' | 'ios-update' | 'in-app' | 'unsupported';
 
 async function currentSubscription(): Promise<PushSubscription | null> {
 	const reg = await navigator.serviceWorker.getRegistration();
@@ -30,9 +31,16 @@ class RemindersStore {
 	failed = $state(false);
 
 	async load(): Promise<void> {
-		if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+		if (install.inApp) {
+			this.status = 'in-app';
+		} else if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+			// iPhone: push only in the installed app, and only from iOS 16.4.
 			this.status =
-				install.platform === 'ios' && !install.installed ? 'needs-install' : 'unsupported';
+				install.platform !== 'ios'
+					? 'unsupported'
+					: install.installed
+						? 'ios-update'
+						: 'needs-install';
 		} else if (Notification.permission === 'denied') {
 			this.status = 'denied';
 		} else {

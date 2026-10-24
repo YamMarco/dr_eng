@@ -89,7 +89,7 @@ The site installs as a home-screen app (PWA) and sends one push reminder a day. 
 - **Send:** Vercel Cron (`vercel.json`, `0 15 * * *` UTC = 17:00-18:00 in Israel) calls `/api/cron/reminders` (public by name, checks `CRON_SECRET`, fails closed).
   - Skips students whose synced `activity-days` already has today (Israel date), and sends at most once a day per device.
   - Expired subscriptions (404/410) are deleted. A reminder not delivered within 4 hours is dropped.
-- **iPhone:** push works only in the installed app (iOS 16.4+). The reminder row says so and links to the guide.
+- **Per device** (`ReminderStatus`): the reminder row explains what this device needs instead of offering a switch that can't work. On iPhone, push works only in the installed app (iOS 16.4+): not installed means a link to the guide, installed but older means "update iOS". A social app's in-app browser (Instagram, TikTok...) gets "open in Safari / Chrome", and the guide says the same. On the iPhone tab, the guide notes that reminders need the install.
 - **Hobby plan:** crons run once a day, anywhere within the hour. A student-chosen reminder time needs an hourly cron (Pro).
 
 ### Turning it on
