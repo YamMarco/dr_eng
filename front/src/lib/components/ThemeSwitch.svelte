@@ -52,13 +52,24 @@
 		height: 1.5em;
 		border-radius: 0.75em;
 		/* Light: light fill, dark rim. Dark (checked): flipped. */
-		background-color: var(--off);
-		box-shadow: inset 0 0 0 1.5px var(--on);
+		--rim: var(--on);
+		--fill: var(--off);
 		outline: none;
 		cursor: pointer;
 		transition:
 			background-color var(--dur) var(--ease),
 			box-shadow var(--dur) var(--ease);
+	}
+	/* Override @tailwindcss/forms: its checked tick, border, focus ring and hover fill. */
+	.switch__input,
+	.switch__input:focus,
+	.switch__input:checked,
+	.switch__input:checked:hover,
+	.switch__input:checked:focus {
+		border: 0;
+		background-color: var(--fill);
+		background-image: none;
+		box-shadow: inset 0 0 0 1.5px var(--rim);
 	}
 	.switch__input::before {
 		content: '';
@@ -182,8 +193,8 @@
 
 	/* Dark (checked): moon, track turns light. */
 	.switch__input:checked {
-		background-color: var(--on);
-		box-shadow: inset 0 0 0 1.5px var(--off);
+		--rim: var(--off);
+		--fill: var(--on);
 	}
 	.switch__input:checked::before,
 	.switch__input:checked ~ .switch__icon {
