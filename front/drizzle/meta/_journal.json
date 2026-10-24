@@ -43,6 +43,13 @@
       "when": 1792822016504,
       "tag": "0005_push_subscriptions",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792830365816,
+      "tag": "0006_kanban_tasks",
+      "breakpoints": true
     }
   ]
 }

@@ -13,6 +13,7 @@ export const he = {
 		book: 'תיאום שיעור',
 		settings: 'הגדרות',
 		vocabImages: 'תמונות מילים',
+		kanban: 'לוח משימות',
 		toSite: 'לדף הראשי'
 	},
 	appTitle: 'EngUp',

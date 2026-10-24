@@ -193,7 +193,7 @@
 						label={i18n.dict.settings.debugTools}
 					/>
 				</li>
-				<!-- Authoring tool: needs the server, so not in the mobile app. -->
+				<!-- Staff tools: need the server, so not in the mobile app. -->
 				{#if !MOBILE_BUILD}
 					<li>
 						<a
@@ -201,6 +201,16 @@
 							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
 						>
 							{i18n.dict.nav.vocabImages}
+							<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+						</a>
+					</li>
+					<li>
+						<a
+							href={resolve('/kanban')}
+							data-sveltekit-preload-data="off"
+							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
+						>
+							{i18n.dict.nav.kanban}
 							<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
 						</a>
 					</li>
