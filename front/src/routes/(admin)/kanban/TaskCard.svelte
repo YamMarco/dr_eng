@@ -1,15 +1,12 @@
 <script lang="ts">
-	import { Trash2, X } from '@lucide/svelte';
+	import { ChevronDown, ChevronsUp, Equal, Trash2, X } from '@lucide/svelte';
 	import {
 		PEOPLE,
-		PRIORITIES,
-		STATUSES,
 		TAGS_MAX,
 		TAG_MAX,
 		TITLE_MAX,
 		personLabel,
 		priorityLabel,
-		statusLabel,
 		type Task
 	} from '$lib/kanban';
 
@@ -30,11 +27,18 @@
 	const selectClass =
 		'min-h-9 rounded-lg border border-line bg-canvas px-2 text-sm font-semibold text-ink focus:border-brand';
 
-	const priorityClass: Record<number, string> = {
-		3: 'border-s-danger',
-		2: 'border-s-accent',
-		1: 'border-s-line'
+	const priorityStyle = {
+		3: { icon: ChevronsUp, border: 'border-s-danger', badge: 'bg-danger-soft text-danger' },
+		2: { icon: Equal, border: 'border-s-accent', badge: 'bg-accent-soft text-ink' },
+		1: { icon: ChevronDown, border: 'border-s-line', badge: 'bg-line/60 text-muted' }
 	};
+
+	let priority = $derived(priorityStyle[task.priority]);
+
+	/** low -> medium -> high -> low */
+	function nextPriority() {
+		onsave({ priority: ((task.priority % 3) + 1) as Task['priority'] });
+	}
 
 	function saveTitle(event: Event) {
 		const input = event.currentTarget as HTMLTextAreaElement;
@@ -58,15 +62,14 @@
 		ondragstart();
 	}}
 	{ondragend}
-	class="flex cursor-grab flex-col gap-3 rounded-2xl border-s-4 bg-surface p-3 shadow-sm ring-1 ring-line/70 active:cursor-grabbing {priorityClass[
-		task.priority
-	]}"
+	class="flex cursor-grab flex-col gap-3 rounded-2xl border-s-4 bg-surface p-3 shadow-sm ring-1 ring-line/70 active:cursor-grabbing {priority.border}"
 >
 	<div class="flex items-start gap-2">
 		<textarea
 			value={task.title}
 			maxlength={TITLE_MAX}
 			rows="1"
+			dir="auto"
 			onchange={saveTitle}
 			aria-label="כותרת המשימה"
 			class="field-sizing-content min-w-0 flex-1 resize-none rounded-lg border border-transparent bg-transparent px-1 py-0.5 font-semibold text-ink hover:border-line focus:border-brand"
@@ -82,6 +85,15 @@
 	</div>
 
 	<div class="flex flex-wrap gap-2">
+		<button
+			type="button"
+			onclick={nextPriority}
+			aria-label="עדיפות {priorityLabel[task.priority]} - לחיצה לשינוי"
+			title="עדיפות {priorityLabel[task.priority]}"
+			class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition active:scale-95 {priority.badge}"
+		>
+			<priority.icon size={18} strokeWidth={2.5} aria-hidden="true" />
+		</button>
 		<select
 			value={task.assignee ?? ''}
 			onchange={(event) => {
@@ -96,27 +108,6 @@
 				<option value={person}>{personLabel[person]}</option>
 			{/each}
 		</select>
-		<select
-			value={task.priority}
-			onchange={(event) =>
-				onsave({ priority: Number(event.currentTarget.value) as Task['priority'] })}
-			aria-label="עדיפות"
-			class={selectClass}
-		>
-			{#each PRIORITIES as priority (priority)}
-				<option value={priority}>עדיפות {priorityLabel[priority]}</option>
-			{/each}
-		</select>
-		<select
-			value={task.status}
-			onchange={(event) => onsave({ status: event.currentTarget.value as Task['status'] })}
-			aria-label="סטטוס"
-			class={selectClass}
-		>
-			{#each STATUSES as status (status)}
-				<option value={status}>{statusLabel[status]}</option>
-			{/each}
-		</select>
 	</div>
 
 	<div class="flex flex-wrap items-center gap-1.5">
@@ -124,7 +115,7 @@
 			<span
 				class="inline-flex items-center gap-1 rounded-full bg-brand-soft py-0.5 ps-2.5 pe-1 text-xs font-semibold text-brand-dark"
 			>
-				{tag}
+				<bdi>{tag}</bdi>
 				<button
 					type="button"
 					onclick={() => onsave({ tags: task.tags.filter((t) => t !== tag) })}
@@ -142,9 +133,10 @@
 					bind:value={newTag}
 					maxlength={TAG_MAX}
 					list={tagListId}
+					dir="auto"
 					placeholder="+ תגית"
 					aria-label="הוספת תגית"
-					class="w-24 rounded-full border border-dashed border-line bg-transparent px-2.5 py-0.5 text-xs text-ink placeholder:text-muted focus:border-brand"
+					class="w-24 rounded-full placeholder-shown:[direction:rtl] border border-dashed border-line bg-transparent px-2.5 py-0.5 text-xs text-ink placeholder:text-muted focus:border-brand"
 				/>
 			</form>
 		{/if}
