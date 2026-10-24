@@ -13,7 +13,7 @@ process.env.LAUNCH_EDITOR = 'code';
 
 // Two targets from one codebase:
 // - web (default): the whole site - public pages, /app, admin tools, /api.
-// - mobile (`vite build --mode mobile`): a static SPA for the Capacitor shell.
+// - mobile (`vite build --mode mobile`): a static SPA.
 //   Server routes drop out; the app calls the web deployment's /api instead
 //   (VITE_API_BASE in .env.mobile).
 // CSP: the real defence for the Supabase session in localStorage (XSS = token theft).

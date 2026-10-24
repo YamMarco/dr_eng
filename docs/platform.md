@@ -19,11 +19,11 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 ## Builds
 
 - **Web:** `npm run build` - `adapter-auto` (picks Vercel/Netlify/Cloudflare on the host). Vercel is only the dev site for now. Security headers and the install command (`npm ci`) are in `front/vercel.json`; the CSP (built pages only) in `vite.config.ts` - a new external origin (fonts, CDN, analytics) must be added there.
-- **Mobile:** `npm run build:mobile` (`vite build --mode mobile`) - `adapter-static` SPA in `build-mobile/`, Capacitor's `webDir`.
+- **Mobile:** `npm run build:mobile` (`vite build --mode mobile`) - `adapter-static` SPA in `build-mobile/`.
   - `$lib/platform.ts` `MOBILE_BUILD` is the compile-time switch.
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment (`https://www.engup.co.il`).
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
-- **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the Capacitor origins (`capacitor://localhost`, `https://localhost`).
+- **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the mobile webview origin (`https://localhost`).
 
 ## Accounts (Supabase Auth, email + password)
 
@@ -106,12 +106,3 @@ Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<fil
 ## Error reporting (Sentry)
 
 Off until `VITE_SENTRY_DSN` is set (`.env.local` and the host). `hooks.client.ts` and `hooks.server.ts` report unhandled errors; the LLM routes also report their failures. No replay or tracing (students are minors).
-
-## Capacitor, on the day
-
-`@capacitor/core` and `@capacitor/cli` are installed; `capacitor.config.ts` points at `build-mobile`.
-
-1. Settle `appId` in `capacitor.config.ts`. It's permanent once the app is published.
-2. `npm i @capacitor/android @capacitor/ios`, then `npx cap add android` / `npx cap add ios`.
-3. Microphone (the `speak` screen): Android `RECORD_AUDIO` in `AndroidManifest.xml`, iOS `NSMicrophoneUsageDescription` in `Info.plist`.
-4. `npm run cap:sync` (mobile build + copy into the native projects), then open in Android Studio / Xcode.

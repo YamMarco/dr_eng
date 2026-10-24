@@ -1,6 +1,6 @@
 # Security audit rule book
 
-Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM routes, Vercel, Capacitor, users are minors). Re-run it before launch and after any change to auth, `/api`, payments or dependencies. Also apply it when writing such code, not only when auditing.
+Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM routes, Vercel, users are minors). Re-run it before launch and after any change to auth, `/api`, payments or dependencies. Also apply it when writing such code, not only when auditing.
 
 **Core principle: never trust the client.** Every price, user id, role, plan status, feature flag and rate-limit counter is enforced on the server. Anything that lives only in the browser, the mobile bundle or the request body is controlled by the attacker.
 
@@ -85,9 +85,9 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 32. Storage: public read OK for `vocab-images`, upload/delete restricted to staff, MIME and size limits.
 33. 2FA on the dashboard; secret key and `DATABASE_URL` server-only.
 
-### Mobile (Capacitor)
+### Mobile build
 34. The bundle holds public values only; all secret-key calls go through our `/api`.
-35. Tokens: Capacitor `Preferences` / `localStorage` are plaintext on disk; prefer a secure-storage (Keychain/Keystore) adapter for the Supabase session.
+35. Tokens: `localStorage` is plaintext on disk; keep the Supabase session out of long-lived storage where possible.
 36. Deep links: validate every parameter, no tokens in URLs, no destructive action without confirmation.
 
 ### Logging and errors (A09, A10)

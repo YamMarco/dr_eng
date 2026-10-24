@@ -13,8 +13,8 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 // Every /api route needs a signed-in user (once accounts are on); a new route is
 // never public by accident. Matched on the resolved route id, not the raw path:
 // SvelteKit routes /api/%67rade to /api/grade, so a path regex can be skipped.
-// Student APIs are open to the Capacitor app's webview origins (iOS, Android).
-const APP_ORIGINS = new Set(['capacitor://localhost', 'https://localhost']);
+// Student APIs are open to the mobile build's webview origins.
+const APP_ORIGINS = new Set(['https://localhost']);
 // Authoring APIs: staff only, same-origin.
 const ADMIN_APIS = /^\/api\/content-edit(\/|$)/;
 // Open to anyone, by name: the home page waitlist form, and the reminder cron
