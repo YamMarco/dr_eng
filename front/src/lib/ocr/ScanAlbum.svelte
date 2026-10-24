@@ -277,7 +277,7 @@
 		<button
 			type="button"
 			aria-label={i18n.dict.ocr.closeView}
-			class="absolute end-4 top-4 rounded-full bg-black/60 p-2 text-white"
+			class="absolute inset-e-4 top-4 rounded-full bg-black/60 p-2 text-white"
 			onclick={() => (viewing = null)}><X class="size-5" /></button
 		>
 	</div>

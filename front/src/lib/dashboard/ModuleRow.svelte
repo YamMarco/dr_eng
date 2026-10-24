@@ -51,7 +51,7 @@
 	<span class="flex min-w-0 flex-1 flex-col gap-1 lg:gap-2">
 		<span class="flex items-center gap-2">
 			<span class="me-auto font-bold lg:text-lg">{i18n.dict.unit.modulePrefix} {mod.letter}</span>
-			{#if !comingSoon}<span class="lg:absolute lg:end-6 lg:top-6"><ExamNugget {exams} /></span
+			{#if !comingSoon}<span class="lg:absolute lg:inset-e-6 lg:top-6"><ExamNugget {exams} /></span
 				>{/if}
 		</span>
 		{#if comingSoon}

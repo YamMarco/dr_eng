@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1792778349.4612556,
-    "seen": 1792778586.3623815,
-    "ast_hash": "957d61c422449a1e52d0d92a822b789d",
+    "mtime": 1792820876.231701,
+    "seen": 1792821031.0732737,
+    "ast_hash": "4a2074012d0856444d1714678f3491ec",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-2.ts": {
-    "mtime": 1792686805.0148911,
-    "seen": 1792771125.207165,
-    "ast_hash": "a04860063a79009949474830ba6a8222",
+    "mtime": 1792820348.4195664,
+    "seen": 1792820523.2116084,
+    "ast_hash": "fc64bc4723ef8eb1b9638544cdf8d902",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-3.ts": {
@@ -959,9 +959,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1792778431.0089538,
-    "seen": 1792778586.362198,
-    "ast_hash": "72c6c4e612307969d2395f2f2e74b5bf",
+    "mtime": 1792820493.9502304,
+    "seen": 1792820523.2113295,
+    "ast_hash": "8222caaabdc114bc1eae207bae010170",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -1631,9 +1631,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.svelte": {
-    "mtime": 1792598342.5411751,
-    "seen": 1792771125.2075818,
-    "ast_hash": "1032174308ae00088c9fc014f561a632",
+    "mtime": 1792820730.842654,
+    "seen": 1792821031.0736713,
+    "ast_hash": "7ceca22c079c198198360e99e75d35d2",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.ts": {
@@ -1661,9 +1661,9 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.svelte": {
-    "mtime": 1792252133.7669654,
-    "seen": 1792771125.207636,
-    "ast_hash": "014b9d99760f576370db8af62a2ceda5",
+    "mtime": 1792820494.7468083,
+    "seen": 1792820523.2128475,
+    "ast_hash": "6ef1c83e56f4fc0d66e7d6ed17a6adf6",
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.ts": {
@@ -2225,9 +2225,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/ThemeSwitch.svelte": {
-    "mtime": 1792251336.6220922,
-    "seen": 1792771125.207069,
-    "ast_hash": "4e837154e5487170a507c1ff09908ae1",
+    "mtime": 1792820723.5996644,
+    "seen": 1792821031.0729566,
+    "ast_hash": "a8f96adb1dc6a79f5e2ea218ef0ab76a",
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/chatTopics.ts": {
@@ -2423,9 +2423,9 @@
     "semantic_hash": ""
   },
   "front/src/lib/site/JoinCtas.svelte": {
-    "mtime": 1792599013.473091,
-    "seen": 1792771125.2075312,
-    "ast_hash": "8824f97d0cdf73b6c9f776e3745542d5",
+    "mtime": 1792820890.422105,
+    "seen": 1792821031.0736063,
+    "ast_hash": "08978096ebb688106961e1cb41ee53b2",
     "semantic_hash": ""
   },
   "front/src/lib/site/LadderArt.svelte": {

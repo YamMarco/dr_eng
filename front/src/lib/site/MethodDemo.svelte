@@ -64,7 +64,7 @@
 		</span>
 		<span class="relative self-end">
 			<span
-				class="m-typing absolute end-0 top-0 flex gap-1 rounded-2xl rounded-se-sm bg-brand px-3 py-3"
+				class="m-typing absolute inset-e-0 top-0 flex gap-1 rounded-2xl rounded-se-sm bg-brand px-3 py-3"
 			>
 				<span class="h-1.5 w-1.5 rounded-full bg-white"></span>
 				<span class="h-1.5 w-1.5 rounded-full bg-white"></span>

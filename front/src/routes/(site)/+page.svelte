@@ -124,7 +124,7 @@
 				<PhoneMock />
 			</div>
 			<span
-				class="float-chip absolute end-0 top-16 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-end-2"
+				class="float-chip absolute inset-e-0 top-16 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-e-2"
 				style="--chip-delay: 700ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-soft">
@@ -136,7 +136,7 @@
 				</span>
 			</span>
 			<span
-				class="float-chip absolute start-0 bottom-24 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-start-2"
+				class="float-chip absolute inset-s-0 bottom-24 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-s-2"
 				style="--chip-delay: 900ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-soft">
@@ -148,7 +148,7 @@
 				</span>
 			</span>
 			<span
-				class="float-chip absolute end-4 bottom-6 z-20 flex items-center gap-1.5 rounded-full bg-overlay px-3 py-1.5 text-xs font-bold text-white shadow-xl"
+				class="float-chip absolute inset-e-4 bottom-6 z-20 flex items-center gap-1.5 rounded-full bg-overlay px-3 py-1.5 text-xs font-bold text-white shadow-xl"
 				style="--chip-delay: 1100ms"
 			>
 				<Flame size={14} class="text-accent" aria-hidden="true" />
@@ -169,7 +169,7 @@
 				<li
 					{@attach reveal}
 					style="--reveal-delay: {i * 90}ms"
-					class="flex flex-col gap-4 rounded-[2rem] bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
 				>
 					<MethodDemo kind={i} />
 					<div class="flex flex-col gap-1 px-1 pb-1">
@@ -201,20 +201,20 @@
 						{#each t.moments as moment (moment.id)}
 							{@const art = momentArt[moment.id as keyof typeof momentArt]}
 							{@const ChipIcon = momentChipIcons[moment.id as keyof typeof momentChipIcons]}
-							<li class="relative h-[22rem] w-64 shrink-0 sm:h-[26rem] sm:w-72">
+							<li class="relative h-88 w-64 shrink-0 sm:h-104 sm:w-72">
 								<MediaFrame
 									media={homeMedia[moment.id]}
 									alt={moment.alt}
 									tone={art.tone}
 									icon={art.icon}
-									class="relative h-full w-full rounded-[2rem]"
+									class="relative h-full w-full rounded-4xl"
 								/>
 								<span
 									class="absolute inset-x-4 top-4 text-xl font-extrabold text-white drop-shadow-sm"
 									>{moment.when}</span
 								>
 								<span
-									class="absolute start-4 bottom-4 flex items-center gap-2 rounded-2xl bg-surface/95 px-3 py-2 text-sm font-bold shadow-lg backdrop-blur"
+									class="absolute inset-s-4 bottom-4 flex items-center gap-2 rounded-2xl bg-surface/95 px-3 py-2 text-sm font-bold shadow-lg backdrop-blur"
 								>
 									<ChipIcon size={16} class="text-brand-dark" aria-hidden="true" />
 									{moment.chip}
@@ -241,7 +241,7 @@
 				<li
 					{@attach reveal}
 					style="--reveal-delay: {i * 90}ms"
-					class="group flex flex-col gap-4 rounded-[2rem] bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+					class="group flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
 				>
 					<StepVignette step={i} />
 					<div class="flex flex-col gap-1 px-1 pb-1">
@@ -266,11 +266,11 @@
 			class="relative mx-auto flex max-w-6xl flex-col gap-12 overflow-hidden rounded-[2.5rem] bg-overlay px-6 py-14 text-white ring-1 ring-white/10 sm:px-12 lg:py-20"
 		>
 			<div
-				class="pointer-events-none absolute -end-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl"
+				class="pointer-events-none absolute -inset-e-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl"
 				aria-hidden="true"
 			></div>
 			<div
-				class="pointer-events-none absolute -start-20 -bottom-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
+				class="pointer-events-none absolute -inset-s-20 -bottom-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
 				aria-hidden="true"
 			></div>
 			<div class="relative flex max-w-2xl flex-col gap-4">

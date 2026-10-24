@@ -53,7 +53,7 @@
 				type="button"
 				aria-label={i18n.dict.common.close}
 				onclick={close}
-				class="absolute end-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-muted transition hover:bg-line/60 active:scale-95"
+				class="absolute inset-e-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-muted transition hover:bg-line/60 active:scale-95"
 			>
 				<X size={20} aria-hidden="true" />
 			</button>

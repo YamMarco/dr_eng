@@ -18,7 +18,7 @@
 </script>
 
 <header
-	class="sticky top-0 z-30 border-b border-line/60 bg-canvas/80 backdrop-blur-lg supports-[backdrop-filter]:bg-canvas/70"
+	class="sticky top-0 z-30 border-b border-line/60 bg-canvas/80 backdrop-blur-lg supports-backdrop-filter:bg-canvas/70"
 >
 	<div class="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-2.5 sm:px-6">
 		<a href={resolve('/')} class="me-auto active:scale-[0.98]">
@@ -40,7 +40,7 @@
 			>
 				{auth.session ? t.navApp : t.navEnter}
 			</a>
-			<span class="ms-1 hidden text-[0.8em] md:block">
+			<span class="hidden text-[0.8em] md:ms-4 md:block">
 				<ThemeSwitch
 					vertical
 					label={t.themeToggle}

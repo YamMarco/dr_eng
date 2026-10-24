@@ -19,7 +19,7 @@
 		<Layers size={32} aria-hidden="true" />
 		{#if due}
 			<span
-				class="absolute -end-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-amber-500 px-1.5 text-xs font-extrabold text-white tabular"
+				class="absolute -inset-e-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-amber-500 px-1.5 text-xs font-extrabold text-white tabular"
 			>
 				{due}
 			</span>

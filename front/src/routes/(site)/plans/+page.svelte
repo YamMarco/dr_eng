@@ -31,7 +31,7 @@
 			>
 				{#if plan.highlight}
 					<span
-						class="absolute start-6 -top-3 rounded-full bg-brand px-3 py-0.5 text-xs font-bold text-white"
+						class="absolute inset-s-6 -top-3 rounded-full bg-brand px-3 py-0.5 text-xs font-bold text-white"
 					>
 						{t.popular}
 					</span>
