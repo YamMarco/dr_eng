@@ -29,7 +29,7 @@
 </script>
 
 <div
-	class="flex flex-1 flex-col items-center justify-center gap-4 py-4 text-center"
+	class="flex flex-1 flex-col items-center justify-center gap-5 py-4 text-center"
 	class:motion-full={motion === 'full'}
 	class:motion-soft={motion === 'soft'}
 >
@@ -38,30 +38,33 @@
 		aria-hidden="true"
 		style={preset ? `--from: ${preset.from}; --to: ${preset.to}` : undefined}
 	>
-		{#if screen.badge || preset}
-			<span class="glyph text-4xl font-extrabold tabular-nums">{screen.badge || preset?.emoji}</span
-			>
-		{:else}
-			<Flag size={34} strokeWidth={2.25} />
-		{/if}
+		<span class="disc">
+			{#if screen.badge || preset}
+				<span class="glyph text-5xl font-extrabold tabular-nums"
+					>{screen.badge || preset?.emoji}</span
+				>
+			{:else}
+				<Flag size={44} strokeWidth={2.25} />
+			{/if}
+		</span>
 	</div>
 	{#if screen.kicker}
 		<span
-			class="rise rounded-full bg-brand-soft px-3 py-1 text-sm font-semibold text-brand-dark"
+			class="rise rounded-full bg-brand-soft px-4 py-1.5 text-base font-semibold text-brand-dark"
 			style="--delay: 120ms"
 			dir={textDir(screen.kicker)}>{screen.kicker}</span
 		>
 	{/if}
 	<!-- eslint-disable svelte/no-at-html-tags -->
 	<h2
-		class="rise max-w-md text-2xl/snug font-bold text-balance text-ink"
+		class="rise max-w-lg text-3xl/snug font-bold text-balance text-ink"
 		style="--delay: 200ms"
 		dir={textDir(screen.title)}
 	>
 		{@html mdInline(screen.title)}
 	</h2>
 	{#if screen.subtitle}
-		<div class="rise flex max-w-md flex-col gap-1 text-lg text-muted" style="--delay: 300ms">
+		<div class="rise flex max-w-lg flex-col gap-1 text-xl text-muted" style="--delay: 300ms">
 			{@html mdBlock(screen.subtitle)}
 		</div>
 	{/if}
@@ -73,17 +76,27 @@
 		position: relative;
 		display: grid;
 		place-items: center;
-		width: 5.5rem;
-		height: 5.5rem;
+		width: 7.5rem;
+		height: 7.5rem;
 		border-radius: 9999px;
-		/* A level preset sets --from/--to inline; otherwise the brand colors. */
-		color: var(--color-surface);
+		/* A level preset sets --from/--to inline; otherwise the brand colors.
+		   The color is a thick ring; the glyph sits on a plain disc inside it,
+		   so no emoji ever melts into a same-hue background. */
 		background: linear-gradient(
 			145deg,
 			var(--from, var(--color-brand)),
 			var(--to, var(--color-brand-dark))
 		);
-		box-shadow: 0 10px 24px -8px color-mix(in oklab, var(--to, var(--color-brand)), transparent 30%);
+		box-shadow: 0 12px 28px -8px color-mix(in oklab, var(--to, var(--color-brand)), transparent 30%);
+	}
+	.disc {
+		display: grid;
+		place-items: center;
+		width: calc(100% - 1rem);
+		height: calc(100% - 1rem);
+		border-radius: inherit;
+		background: var(--color-surface);
+		color: var(--to, var(--color-brand-dark));
 	}
 
 	/* full: the badge pops in, its glyph wiggles, two rings ripple out a few
