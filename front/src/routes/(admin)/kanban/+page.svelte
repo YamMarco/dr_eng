@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { ArrowDownWideNarrow, ArrowUpNarrowWide } from '@lucide/svelte';
+	import { ArrowDownWideNarrow, ArrowUpNarrowWide, LoaderCircle } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
 	import {
@@ -52,6 +52,7 @@
 	}
 
 	async function load() {
+		loading = true;
 		const res = await apiFetch('/api/kanban').catch(() => null);
 		if (res?.ok) tasks = await res.json();
 		else failed = true;
@@ -121,7 +122,7 @@
 		/>
 		<button
 			type="submit"
-			disabled={!newTitle.trim()}
+			disabled={loading || !newTitle.trim()}
 			class="min-h-11 rounded-xl bg-brand px-5 font-bold text-white transition hover:bg-brand-dark disabled:opacity-50"
 		>
 			הוספה
@@ -171,10 +172,8 @@
 		{/each}
 	</datalist>
 
-	{#if loading}
-		<p class="text-muted">טוען...</p>
-	{:else}
-		<div class="grid gap-4 md:grid-cols-3">
+	<div class="relative" aria-busy={loading}>
+		<div class="grid gap-4 md:grid-cols-3" inert={loading}>
 			{#each STATUSES as status (status)}
 				{@const column = sortTasks(
 					tasks.filter((t) => t.status === status),
@@ -221,5 +220,18 @@
 				</section>
 			{/each}
 		</div>
-	{/if}
+		{#if loading}
+			<div
+				role="status"
+				class="absolute inset-0 z-10 flex items-start justify-center rounded-3xl bg-surface/60 pt-16 backdrop-blur-[1px]"
+			>
+				<span
+					class="flex items-center gap-2 rounded-full bg-surface px-4 py-2 font-semibold text-ink shadow"
+				>
+					<LoaderCircle size={18} class="motion-safe:animate-spin" aria-hidden="true" />
+					טוען...
+				</span>
+			</div>
+		{/if}
+	</div>
 </main>
