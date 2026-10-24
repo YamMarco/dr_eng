@@ -40,6 +40,13 @@
 			>
 				{auth.session ? t.navApp : t.navEnter}
 			</a>
+			<span class="ms-1">
+				<ThemeSwitch
+					label={t.themeToggle}
+					dark={themeStore.resolved === 'dark'}
+					onchange={(dark) => themeStore.setMode(dark ? 'dark' : 'light')}
+				/>
+			</span>
 		</nav>
 	</div>
 </header>
@@ -49,11 +56,6 @@
 <footer
 	class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-6 text-sm text-muted sm:px-6"
 >
-	<ThemeSwitch
-		label={t.themeToggle}
-		dark={themeStore.resolved === 'dark'}
-		onchange={(dark) => themeStore.setMode(dark ? 'dark' : 'light')}
-	/>
 	<a href={resolve('/about')} class="hover:text-ink">{t.navAbout}</a>
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>

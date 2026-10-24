@@ -321,6 +321,7 @@ export const he = {
 		resetSent: 'אם יש חשבון עם הכתובת הזאת, שלחנו אליה קישור לבחירת סיסמה חדשה.',
 		resendConfirm: 'שליחה מחדש של מייל האישור',
 		backToSignIn: 'חזרה לכניסה',
+		backToSite: 'חזרה לאתר',
 		otpOption: 'כניסה עם קוד בהודעה',
 		otpSoon: 'בקרוב',
 		otpTitle: 'כניסה עם קוד',

@@ -31,7 +31,7 @@
 	{#if !auth.ready}
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
 	{:else if !signedIn}
-		<LoginScreen />
+		<LoginScreen homeLink />
 	{:else if access.active === null || !progressSync.ready}
 		<!-- Checking the plan, or bringing the account's progress to a new device: same beat. -->
 	{:else if access.active}

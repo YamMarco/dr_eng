@@ -1,5 +1,5 @@
 <script lang="ts">
-	// Animated sun/moon switch. Sized in em, so it scales with the surrounding
+	// Animated vertical sun/moon switch. Sized in em, so it scales with the surrounding
 	// text; the label carries the 44px tap target.
 	let { dark, label, onchange }: { dark: boolean; label: string; onchange: (dark: boolean) => void } =
 		$props();
@@ -39,8 +39,8 @@
 		appearance: none;
 		position: relative;
 		display: block;
-		width: 3em;
-		height: 1.5em;
+		width: 1.5em;
+		height: 3em;
 		border-radius: 0.75em;
 		background-color: var(--on);
 		outline: none;
@@ -72,11 +72,11 @@
 		left: 0;
 	}
 	.switch__icon {
-		top: 50%;
-		left: 0.125em;
+		top: 0.125em;
+		left: 50%;
 		width: 1.25em;
 		height: 1.25em;
-		margin-top: -0.625em;
+		margin-left: -0.625em;
 		border-radius: 50%;
 		background-color: var(--off);
 		overflow: hidden;
@@ -161,7 +161,7 @@
 	}
 	.switch__input:checked::before,
 	.switch__input:checked ~ .switch__icon {
-		transform: translateX(1.5em);
+		transform: translateY(1.5em);
 	}
 	.switch__input:checked ~ .switch__icon .switch__icon-part--2 {
 		transform: translate(0, 0) scale(1);

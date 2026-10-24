@@ -6,6 +6,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { onMount } from 'svelte';
 	import { replaceState } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { MOBILE_BUILD } from '$lib/platform';
 
 	// One screen, five faces: sign in, sign up, forgot password, "check your
 	// email", and (arriving from a reset link) choose a new password. The email
@@ -28,8 +30,10 @@
 		returnTo?: string;
 		/** A line above the card (checkout explains why it asks). */
 		note?: string;
+		/** Offer a way back to the marketing site (the /app gate; not on site pages, not in the mobile build). */
+		homeLink?: boolean;
 	};
-	let { startWith = 'signin', returnTo, note }: Props = $props();
+	let { startWith = 'signin', returnTo, note, homeLink = false }: Props = $props();
 
 	let t = $derived(i18n.dict.login);
 	// svelte-ignore state_referenced_locally
@@ -179,6 +183,11 @@
 </script>
 
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
+	{#if homeLink && !MOBILE_BUILD}
+		<a href={resolve('/')} class="{linkBtn} mb-4 -ms-2 flex w-fit items-center">
+			{t.backToSite}
+		</a>
+	{/if}
 	<h1 class="text-3xl font-extrabold tracking-tight">{head[0]}</h1>
 	{#if head[1]}<p class="mt-2 leading-relaxed text-muted">{head[1]}</p>{/if}
 	{#if note}<p class="mt-4 rounded-2xl bg-brand-soft px-4 py-3 text-sm leading-relaxed">
