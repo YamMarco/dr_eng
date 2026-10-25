@@ -24,19 +24,25 @@
 
 	let t = $derived(i18n.dict.plans);
 	let cycle = $state<Cycle>('month');
-	// COBE added per tier; the card switch and the table row share it.
-	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
-
 	const tiers = OFFERS.filter((offer) => offer.id !== 'cobe');
+	// COBE added per tier, on by default; the card switch and the table row share it.
+	let cobeOn = $state<Partial<Record<OfferId, boolean>>>(
+		Object.fromEntries(tiers.map((offer) => [offer.id, true]))
+	);
 	const cobeOffer = OFFERS.find((offer) => offer.id === 'cobe')!;
 	type Offer = (typeof OFFERS)[number];
 
-	/** The plan a card sells right now, and its yearly saving. */
+	/** The plan a card sells right now, both cycles, and the yearly saving. */
 	function pick(offer: Offer) {
 		const on = !!cobeOn[offer.id];
 		const month = planById(withCobe(offer.month, on))!;
 		const year = planById(withCobe(offer.year, on))!;
-		return { plan: cycle === 'month' ? month : year, saving: yearSavingPercent(month, year) };
+		return {
+			plan: cycle === 'month' ? month : year,
+			month,
+			year,
+			saving: yearSavingPercent(month, year)
+		};
 	}
 
 	const maxSaving = Math.max(
@@ -63,9 +69,17 @@
 </svelte:head>
 
 {#snippet priceLine(offer: Offer, big: boolean)}
-	{@const { plan, saving } = pick(offer)}
+	{@const { plan, month, year, saving } = pick(offer)}
 	<div class="flex flex-col gap-1">
-		<p class="flex items-baseline gap-1">
+		<p class="flex flex-wrap items-baseline gap-1">
+			{#if cycle === 'year'}
+				<s
+					class="me-1 text-xl font-bold text-muted decoration-2 motion-safe:animate-rise"
+					aria-label={t.insteadOf(monthlyShekels(month))}
+				>
+					{monthlyShekels(month)}
+				</s>
+			{/if}
 			<span class="{big ? 'text-5xl' : 'text-4xl'} font-extrabold">
 				<OfferPrice value={monthlyShekels(plan)} />
 			</span>
@@ -89,6 +103,13 @@
 				</span>
 			{:else}
 				{t.paidMonthly}
+				<button
+					type="button"
+					onclick={() => (cycle = 'year')}
+					class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand transition duration-100 hover:bg-brand hover:text-white active:scale-[0.97]"
+				>
+					{t.yearNudge(monthlyShekels(year), saving)}
+				</button>
 			{/if}
 		</p>
 	</div>
@@ -244,6 +265,14 @@
 						>
 							<span class="block font-bold">{t.offers[offer.id].name}</span>
 							<span class="block text-lg font-extrabold sm:text-2xl">
+								{#if cycle === 'year'}
+									<s
+										class="text-sm font-bold text-muted"
+										aria-label={t.insteadOf(monthlyShekels(pick(offer).month))}
+									>
+										{monthlyShekels(pick(offer).month)}
+									</s>
+								{/if}
 								<OfferPrice value={monthlyShekels(pick(offer).plan)} />
 								<span class="text-sm">{t.currency}</span>
 							</span>

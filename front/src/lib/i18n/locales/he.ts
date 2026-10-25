@@ -238,6 +238,8 @@ export const he = {
 		saveUpTo: (percent: number) => `חוסכים עד ${percent}%`,
 		paidOnce: (total: string, months: number) => `תשלום אחד של ${total} ₪ ל-${months} חודשים`,
 		paidMonthly: 'משלמים חודש בחודש, בלי התחייבות',
+		yearNudge: (price: number, percent: number) => `עד הבגרות: ${price} ₪ לחודש (${percent}% פחות)`,
+		insteadOf: (price: number) => `במקום ${price} ₪`,
 		save: (percent: number) => `חיסכון של ${percent}%`,
 		free: 'חינם',
 		currency: '₪',
