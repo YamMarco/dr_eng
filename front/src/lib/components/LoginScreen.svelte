@@ -48,8 +48,6 @@
 	let fix = $state<'resend' | 'existing' | null>(null);
 	let resent = $state(false);
 	let captcha = $state<ReturnType<typeof Captcha>>();
-	let captchaToken = $state<string | null>(null);
-	let captchaBroken = $state(false);
 	/** Faces that call Supabase with a CAPTCHA token (recovery already has a session). */
 	let needsCaptcha = $derived(
 		!!CAPTCHA_KEY &&
@@ -134,16 +132,11 @@
 	}
 
 	async function run(action: (token?: string) => Promise<void>, onDone?: () => void) {
-		// Wait for a token while the widget works; if it failed, try anyway.
-		if (needsCaptcha && !captchaToken && !captchaBroken) {
-			failed = t.errors.captchaPending;
-			return;
-		}
-		const token = captchaToken ?? undefined;
 		busy = true;
 		failed = null;
 		fix = null;
 		resent = false;
+		const token = needsCaptcha ? await captcha?.getToken() : undefined;
 		try {
 			await action(token);
 			onDone?.();
@@ -344,7 +337,7 @@
 
 		{#if needsCaptcha}
 			<div class="mt-4">
-				<Captcha bind:this={captcha} bind:token={captchaToken} bind:broken={captchaBroken} />
+				<Captcha bind:this={captcha} />
 			</div>
 		{/if}
 
