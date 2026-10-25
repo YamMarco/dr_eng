@@ -10,7 +10,7 @@ One SvelteKit codebase (`front/`), two build targets.
 | `/checkout` | `routes/(site)/checkout` - client-only (needs the session) | yes | redirects to `/app` |
 | `/app/...` | `routes/app` - the student app, client-only (`ssr = false`) | yes | yes (the whole bundle) |
 | `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
-| `/kanban` | `routes/(admin)/kanban` - staff task board (to do / doing / done; assignee, priority, tags), table `kanban_tasks` via `/api/kanban` | yes | redirects to `/app`, link hidden |
+| `/kanban` | `routes/(admin)/kanban` - staff task board (to do / doing / done; assignee, priority, tags), table `kanban_tasks` via `/api/kanban`; on mobile the columns swipe (tabs on top) and a card select moves tasks | yes | redirects to `/app`, link hidden |
 | `/api/...` | server routes | yes | absent - the app calls the web deployment |
 
 Home page (`/`) photos and looping videos: files in `front/static/home/`, paths in `$lib/site/media.ts`; an empty slot shows gradient art.

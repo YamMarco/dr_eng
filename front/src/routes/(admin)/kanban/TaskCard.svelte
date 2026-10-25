@@ -2,11 +2,13 @@
 	import { ChevronDown, ChevronsUp, Equal, Trash2, X } from '@lucide/svelte';
 	import {
 		PEOPLE,
+		STATUSES,
 		TAGS_MAX,
 		TAG_MAX,
 		TITLE_MAX,
 		personLabel,
 		priorityLabel,
+		statusLabel,
 		tagColor,
 		type Task,
 		type TaskPatch
@@ -113,6 +115,17 @@
 			<option value="">ללא אחראי</option>
 			{#each PEOPLE as person (person)}
 				<option value={person}>{personLabel[person]}</option>
+			{/each}
+		</select>
+		<!-- Touch has no drag and drop: move between columns here. -->
+		<select
+			value={task.status}
+			onchange={(event) => onsave({ status: event.currentTarget.value as Task['status'] })}
+			aria-label="עמודה"
+			class="{selectClass} md:hidden"
+		>
+			{#each STATUSES as status (status)}
+				<option value={status}>{statusLabel[status]}</option>
 			{/each}
 		</select>
 	</div>
