@@ -53,17 +53,22 @@ class AuthStore {
 		return this.session?.access_token;
 	}
 
-	async signIn(email: string, password: string) {
-		const { error } = await supabase!.auth.signInWithPassword({ email, password });
+	// `captchaToken`: the login screen's Turnstile token (Supabase checks it when CAPTCHA is on).
+	async signIn(email: string, password: string, captchaToken?: string) {
+		const { error } = await supabase!.auth.signInWithPassword({
+			email,
+			password,
+			options: { captchaToken }
+		});
 		if (error) throw error;
 	}
 
 	/** `returnTo`: where the confirmation link lands (default /app; checkout passes itself). */
-	async signUp(email: string, password: string, returnTo = APP_URL) {
+	async signUp(email: string, password: string, returnTo = APP_URL, captchaToken?: string) {
 		const { data, error } = await supabase!.auth.signUp({
 			email,
 			password,
-			options: { emailRedirectTo: returnTo }
+			options: { emailRedirectTo: returnTo, captchaToken }
 		});
 		if (error) throw error;
 		// A confirmed email signs up "successfully" with no identities and no
@@ -72,17 +77,20 @@ class AuthStore {
 			throw Object.assign(new Error('user already exists'), { code: 'user_already_exists' });
 	}
 
-	async resendConfirmation(email: string, returnTo = APP_URL) {
+	async resendConfirmation(email: string, returnTo = APP_URL, captchaToken?: string) {
 		const { error } = await supabase!.auth.resend({
 			type: 'signup',
 			email,
-			options: { emailRedirectTo: returnTo }
+			options: { emailRedirectTo: returnTo, captchaToken }
 		});
 		if (error) throw error;
 	}
 
-	async sendReset(email: string) {
-		const { error } = await supabase!.auth.resetPasswordForEmail(email, { redirectTo: APP_URL });
+	async sendReset(email: string, captchaToken?: string) {
+		const { error } = await supabase!.auth.resetPasswordForEmail(email, {
+			redirectTo: APP_URL,
+			captchaToken
+		});
 		if (error) throw error;
 	}
 

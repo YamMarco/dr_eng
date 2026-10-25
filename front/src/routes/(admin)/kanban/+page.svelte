@@ -26,6 +26,30 @@
 	let dragId = $state<string | null>(null);
 	let dropStatus = $state<Status | null>(null);
 
+	// Mobile: one column at a time, swiped (scroll snap); the tabs follow and jump.
+	let board = $state<HTMLDivElement>();
+	let shown = $state(0);
+
+	function onBoardScroll() {
+		if (!board) return;
+		const box = board.getBoundingClientRect();
+		const mid = box.left + box.width / 2;
+		const distances = [...board.children].map((el) => {
+			const r = el.getBoundingClientRect();
+			return Math.abs(r.left + r.width / 2 - mid);
+		});
+		shown = distances.indexOf(Math.min(...distances));
+	}
+
+	function showColumn(index: number) {
+		const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+		board?.children[index]?.scrollIntoView({
+			behavior: smooth ? 'smooth' : 'auto',
+			block: 'nearest',
+			inline: 'center'
+		});
+	}
+
 	const SORT_STORE = 'kanban-sort';
 	let sort = $state(storedSort());
 
@@ -172,8 +196,29 @@
 		{/each}
 	</datalist>
 
+	<div class="mb-3 grid grid-cols-3 gap-1 rounded-2xl bg-line/40 p-1 md:hidden">
+		{#each STATUSES as status, index (status)}
+			<button
+				type="button"
+				onclick={() => showColumn(index)}
+				aria-current={shown === index ? 'true' : undefined}
+				class="flex min-h-10 items-center justify-center gap-1.5 rounded-xl text-sm font-semibold text-muted transition aria-[current=true]:bg-surface aria-[current=true]:text-ink aria-[current=true]:shadow-sm"
+			>
+				{statusLabel[status]}
+				<span class="text-xs tabular-nums opacity-70">
+					{tasks.filter((t) => t.status === status).length}
+				</span>
+			</button>
+		{/each}
+	</div>
+
 	<div class="relative" aria-busy={loading}>
-		<div class="grid gap-4 md:grid-cols-3" inert={loading}>
+		<div
+			bind:this={board}
+			onscroll={onBoardScroll}
+			inert={loading}
+			class="-mx-4 flex snap-x snap-mandatory [scrollbar-width:none] items-start gap-3 overflow-x-auto overscroll-x-contain px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0"
+		>
 			{#each STATUSES as status (status)}
 				{@const column = sortTasks(
 					tasks.filter((t) => t.status === status),
@@ -193,7 +238,7 @@
 						event.preventDefault();
 						drop(status);
 					}}
-					class="flex flex-col gap-3 rounded-3xl bg-line/40 p-3 ring-2 transition {dropStatus ===
+					class="flex w-[86%] shrink-0 snap-center snap-always flex-col gap-3 rounded-3xl bg-line/40 p-3 ring-2 transition md:w-auto {dropStatus ===
 					status
 						? 'ring-brand'
 						: 'ring-transparent'}"
