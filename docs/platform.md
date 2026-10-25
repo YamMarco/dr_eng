@@ -52,7 +52,9 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 
 Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answers "active" for everyone and the app stays open.
 
-- **Plans** live in `$lib/plans.ts` (id, price in agorot, months); names and features in i18n `plans.items`. The server prices orders from there, never from the client. Prices are placeholders.
+- **Plans** live in `$lib/plans.ts` (id, price in agorot, months); plan names in i18n `plans.items`. The server prices orders from there, never from the client. Prices are placeholders.
+- **Offers** (`OFFERS`, the `/plans` page): עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a private tutor's `TUTOR_HOUR`), אישי (+ 2 private Zoom lessons a month), and COBE as a separate product (AI chat costs more). Each has a monthly and an "until the Bagrut" (12 months) plan; copy in i18n `plans.offers`.
+- **Access is not per product yet:** any active order opens the whole app, COBE included. Selling COBE apart needs a product on the order and a check in `/api/access` and `llmGuard` (`/api/chat-speak`).
 - **Tables** (`server/db/schema.ts`, RLS on with no policies and no grants to the API roles, so the publishable key can't touch them): `coupons` (code, percent off, optional plan, max uses, expiry) and `orders` (one per checkout; `paid`/`free` with `access_until` ahead = access).
 - **Access gate:** `/app` shows `Paywall.svelte` (redeem a code; plans link on web only, store apps can't link to outside purchases) while `/api/access` says no. Staff always pass. If the server can't be reached the app stays open (offline use).
 - **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
