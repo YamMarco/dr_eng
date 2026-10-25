@@ -16,15 +16,27 @@
 		type Quote
 	} from '$lib/access.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { DEFAULT_PLAN, formatPrice, isPurchasable, planById } from '$lib/plans';
+	import Toggle from '$lib/components/Toggle.svelte';
+	import {
+		COBE_ADDON,
+		DEFAULT_PLAN,
+		baseId,
+		cycleOf,
+		formatPrice,
+		isPurchasable,
+		planById,
+		withCobe
+	} from '$lib/plans';
 
 	// /checkout?plan=<id>&coupon=<code>: plan -> account -> code -> activate or pay.
 	// A tester link carries the code; sign-up's confirmation email returns here
 	// with the same query, so nothing is lost on the way.
 
 	let t = $derived(i18n.dict.checkout);
-	let requested = planById(page.url.searchParams.get('plan'));
-	const plan = isPurchasable(requested) ? requested : planById(DEFAULT_PLAN)!;
+	const requested = planById(page.url.searchParams.get('plan'));
+	let plan = $state(isPurchasable(requested) ? requested : planById(DEFAULT_PLAN)!);
+	// Order bump: COBE can be added to any plan that isn't COBE itself.
+	let canAddCobe = $derived(!!planById(withCobe(baseId(plan), true)));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');
 
 	let quote = $state<Quote | null>(null);
@@ -74,7 +86,14 @@
 		}
 	}
 
-	let item = $derived(i18n.dict.plans.items[plan.id]);
+	function setCobe(on: boolean) {
+		plan = planById(withCobe(baseId(plan), on))!;
+		loadQuote(quote?.coupon?.code ?? (code.trim() || null));
+	}
+
+	let name = $derived(
+		i18n.dict.plans.items[baseId(plan)].name + (plan.cobe ? i18n.dict.plans.withCobe : '')
+	);
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
 	const date = (iso: string) => new Date(iso).toLocaleDateString('he-IL');
 	const row = 'flex justify-between gap-4';
@@ -115,7 +134,7 @@
 			<div class={row}>
 				<div>
 					<p class="text-sm text-muted">{t.yourPlan}</p>
-					<p class="text-lg font-bold">{item.name}</p>
+					<p class="text-lg font-bold">{name}</p>
 				</div>
 				<a
 					href={resolve('/plans')}
@@ -138,6 +157,22 @@
 					{t.notYou}
 				</button>
 			</div>
+
+			{#if canAddCobe}
+				<div
+					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {plan.cobe
+						? 'bg-accent-soft'
+						: 'bg-canvas'}"
+				>
+					<div class="flex min-w-0 flex-1 flex-col leading-snug">
+						<span class="font-bold">{t.bumpTitle}</span>
+						<span class="text-sm text-muted">
+							{t.bumpBody(formatPrice(COBE_ADDON[cycleOf(plan)]))}
+						</span>
+					</div>
+					<Toggle checked={!!plan.cobe} label={t.bumpTitle} onchange={setCobe} />
+				</div>
+			{/if}
 
 			{#if access.active && access.until}
 				<p class="rounded-2xl bg-brand-soft px-4 py-3 text-sm">{t.alreadyActive}</p>

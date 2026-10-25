@@ -244,11 +244,26 @@ export const he = {
 		popular: 'הכי פופולרי',
 		choose: 'בחירה',
 		chooseFeatured: 'מתחילים עכשיו',
-		separate: 'מוצר נפרד',
-		cobeTitle: 'מתכוננים גם לבחינה בעל פה?',
-		cobeWhy:
-			'COBE נמכר בנפרד כי הוא מבוסס על שיחה חיה עם בינה מלאכותית. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
-		cobeChoose: 'הוספת COBE',
+		addCobe: 'הוספת COBE',
+		addCobeHint: 'תרגול לבחינה בעל פה עם שיחת AI',
+		addCobePrice: (price: string) => `+₪${price}`,
+		cobeIncluded: 'כולל COBE',
+		cobeOnlyTitle: 'צריכים רק את הבחינה בעל פה?',
+		cobeOnlyBody:
+			'COBE מבוסס על שיחה חיה עם בינה מלאכותית, ולכן הוא מוצר נפרד. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
+		cobeOnlyChoose: 'רק COBE',
+		compareTitle: 'השוואה מלאה',
+		compareFeature: 'מה מקבלים',
+		comparePrice: 'מחיר לחודש',
+		compareRows: [
+			{ label: 'כל היחידות והמודולים', values: [true, true, true] },
+			{ label: 'מבחני בגרות בתנאי אמת', values: [true, true, true] },
+			{ label: 'משוב מיידי על כתיבה', values: [true, true, true] },
+			{ label: 'אוצר מילים עם חזרות חכמות', values: [true, true, true] },
+			{ label: 'מפגש זום קבוצתי עם מורה', values: [false, 'כל שבוע', 'כל שבוע'] },
+			{ label: 'שיעורים פרטיים בזום', values: [false, false, '2 בחודש'] },
+			{ label: 'תוכנית אישית מול הנקודות החלשות', values: [false, false, true] }
+		] as { label: string; values: (boolean | string)[] }[],
 		freeSoon: 'גרסה חינמית עם פרסומות תגיע בקרוב.',
 		soon: 'בקרוב',
 		placeholder: 'המחירים זמניים ועשויים להשתנות.',
@@ -324,7 +339,8 @@ export const he = {
 			'personal-year': { name: 'אישי, עד הבגרות' },
 			'cobe-month': { name: 'COBE, חודשי' },
 			'cobe-year': { name: 'COBE, עד הבגרות' }
-		} as Record<string, { name: string }>
+		} as Record<string, { name: string }>,
+		withCobe: ' + COBE'
 	},
 	checkout: {
 		title: 'הצטרפות',
@@ -341,6 +357,8 @@ export const he = {
 		activate: 'הפעלת הגישה',
 		pay: 'מעבר לתשלום',
 		checking: 'בודקים...',
+		bumpTitle: 'להוסיף את COBE?',
+		bumpBody: (price: string) => `תרגול לבחינה בעל פה עם שיחת AI, רק ${price} ₪ נוספים.`,
 		doneTitle: 'הגישה פעילה!',
 		doneBody: 'אפשר להתחיל ללמוד.',
 		until: 'בתוקף עד',
