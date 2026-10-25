@@ -11,6 +11,11 @@
 	let { children } = $props();
 	let t = $derived(i18n.dict.site);
 
+	// static/boot.js guesses signed-in from storage before paint; auth corrects it.
+	$effect(() => {
+		if (auth.ready) document.documentElement.toggleAttribute('data-session', !!auth.session);
+	});
+
 	let links = $derived([
 		{ href: resolve('/about'), label: t.navAbout },
 		{ href: resolve('/plans'), label: t.navPlans }
@@ -38,7 +43,8 @@
 				href={resolve('/app')}
 				class="ms-1 min-h-10 content-center rounded-xl bg-brand px-4 text-sm font-semibold text-white transition duration-100 hover:bg-brand-dark active:scale-[0.98]"
 			>
-				{auth.session ? t.navApp : t.navEnter}
+				<span class="signed-in">{t.navApp}</span>
+				<span class="signed-out">{t.navEnter}</span>
 			</a>
 			<span class="hidden text-[0.8em] md:ms-4 md:block">
 				<ThemeSwitch
