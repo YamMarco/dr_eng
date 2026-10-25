@@ -32,9 +32,14 @@
 	import { themeStore } from '$lib/theme.svelte';
 
 	// Invisible unless Cloudflare wants a click. Tokens are single-use: call reset()
-	// after every request that spent one.
-	// eslint-disable-next-line no-useless-assignment
-	let { token = $bindable(null) }: { token?: string | null } = $props();
+	// after every request that spent one. `broken`: the widget failed (blocked script,
+	// hostname not allowed); callers go on without a token and Supabase decides.
+	let {
+		// eslint-disable-next-line no-useless-assignment
+		token = $bindable(null),
+		// eslint-disable-next-line no-useless-assignment
+		broken = $bindable(false)
+	}: { token?: string | null; broken?: boolean } = $props();
 
 	let el: HTMLDivElement;
 	let api: Turnstile | undefined;
@@ -56,12 +61,16 @@
 					language: 'he',
 					theme: themeStore.resolved,
 					appearance: 'interaction-only',
-					callback: (value: string) => (token = value),
+					callback: (value: string) => ((token = value), (broken = false)),
 					'expired-callback': () => (token = null),
-					'error-callback': () => (token = null)
+					'error-callback': (code: string) => {
+						console.warn('turnstile error', code);
+						token = null;
+						broken = true;
+					}
 				});
 			})
-			.catch(() => {});
+			.catch(() => (broken = true));
 		return () => {
 			gone = true;
 			if (api && id) api.remove(id);
