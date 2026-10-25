@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import Button from '$lib/components/Button.svelte';
+	import Captcha, { CAPTCHA_KEY } from '$lib/components/Captcha.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { onMount } from 'svelte';
@@ -46,6 +47,13 @@
 	/** What the error box offers: resend the confirmation, or sign in / reset for a known email. */
 	let fix = $state<'resend' | 'existing' | null>(null);
 	let resent = $state(false);
+	let captcha = $state<ReturnType<typeof Captcha>>();
+	let captchaToken = $state<string | null>(null);
+	/** Faces that call Supabase with a CAPTCHA token (recovery already has a session). */
+	let needsCaptcha = $derived(
+		!!CAPTCHA_KEY &&
+			(mode === 'signin' || mode === 'signup' || mode === 'forgot' || mode === 'sent')
+	);
 
 	// An expired or used email link comes back with the error in the URL.
 	onMount(() => {
@@ -114,6 +122,8 @@
 			case 'session_not_found':
 			case 'session_expired':
 				return t.errors.linkExpired;
+			case 'captcha_failed':
+				return t.errors.captcha;
 			case 'over_email_send_rate_limit':
 			case 'over_request_rate_limit':
 				return t.errors.rateLimit;
@@ -122,18 +132,25 @@
 		return t.errors.generic;
 	}
 
-	async function run(action: () => Promise<void>, onDone?: () => void) {
+	async function run(action: (token?: string) => Promise<void>, onDone?: () => void) {
+		if (needsCaptcha && !captchaToken) {
+			failed = t.errors.captchaPending;
+			return;
+		}
+		const token = captchaToken ?? undefined;
 		busy = true;
 		failed = null;
 		fix = null;
 		resent = false;
 		try {
-			await action();
+			await action(token);
 			onDone?.();
 		} catch (error) {
 			failed = messageFor(error);
 		} finally {
 			busy = false;
+			// Single-use: the next request needs a fresh one.
+			if (token) captcha?.reset();
 		}
 	}
 
@@ -148,22 +165,22 @@
 
 	const resend = () =>
 		run(
-			() => auth.resendConfirmation(email.trim(), returnTo),
+			(token) => auth.resendConfirmation(email.trim(), returnTo, token),
 			() => (resent = true)
 		);
 
 	function submit(event: SubmitEvent) {
 		event.preventDefault();
 		const address = email.trim();
-		if (mode === 'signin') return run(() => auth.signIn(address, password));
+		if (mode === 'signin') return run((token) => auth.signIn(address, password, token));
 		if (mode === 'signup')
 			return run(
-				() => auth.signUp(address, password, returnTo),
+				(token) => auth.signUp(address, password, returnTo, token),
 				() => ((sentKind = 'confirm'), go('sent'))
 			);
 		if (mode === 'forgot')
 			return run(
-				() => auth.sendReset(address),
+				(token) => auth.sendReset(address, token),
 				() => ((sentKind = 'reset'), go('sent'))
 			);
 		if (mode === 'recovery') return run(() => auth.setPassword(password));
@@ -184,7 +201,7 @@
 
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
 	{#if homeLink && !MOBILE_BUILD}
-		<a href={resolve('/')} class="{linkBtn} mb-4 -ms-2 flex w-fit items-center">
+		<a href={resolve('/')} class="{linkBtn} -ms-2 mb-4 flex w-fit items-center">
 			{t.backToSite}
 		</a>
 	{/if}
@@ -322,6 +339,10 @@
 				{/if}
 			</div>
 		{/key}
+
+		{#if needsCaptcha}
+			<div class="mt-4"><Captcha bind:this={captcha} bind:token={captchaToken} /></div>
+		{/if}
 
 		{#if resent}
 			<p class="mt-4 text-sm text-muted" role="status" in:fly={{ y: 6, duration: 200 }}>

@@ -24,6 +24,10 @@ function csp(mode: string): KitConfig['csp'] {
 	type Host = `https://${string}.${string}`;
 	const origin = (url?: string): Host[] => (url ? [new URL(url).origin as Host] : []);
 	const supabase = origin(env.VITE_SUPABASE_URL);
+	// Turnstile (login CAPTCHA): its script and challenge iframe.
+	const turnstile: Host[] = env.VITE_TURNSTILE_SITE_KEY
+		? ['https://challenges.cloudflare.com']
+		: [];
 	const sentry: Host[] = env.VITE_SENTRY_DSN
 		? ['https://*.ingest.sentry.io', 'https://*.ingest.de.sentry.io']
 		: [];
@@ -31,7 +35,8 @@ function csp(mode: string): KitConfig['csp'] {
 		mode: 'auto',
 		directives: {
 			'default-src': ['self'],
-			'script-src': ['self'],
+			'script-src': ['self', ...turnstile],
+			'frame-src': ['self', ...turnstile],
 			'style-src': ['self', 'unsafe-inline'],
 			'img-src': ['self', 'data:', 'blob:', ...supabase],
 			'media-src': ['self', 'blob:', ...supabase],

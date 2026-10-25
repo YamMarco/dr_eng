@@ -42,7 +42,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 3. Every `+server.ts` is a public endpoint: at the top, (a) zod-validate input, (b) authenticate, (c) authorize ownership. User ids come from the verified token, never the body (no IDOR). Unauthenticated routes are only those in `PUBLIC_APIS` (`hooks.server.ts`), each with a server-side write cap.
 4. Supabase JWT verified server-side (`auth.getUser` or JWKS with issuer/audience/expiry checked; `alg: none` rejected), never decode-only. Admin = `app_metadata.role` from the verified token, never a client flag.
 5. Return only the fields the client needs, never whole DB rows. Server-only code stays under `$lib/server`.
-6. Sign-up / sign-in / reset: rate limited, CAPTCHA, leaked-password protection, exact redirect URLs, no open redirects.
+6. Sign-up / sign-in / reset: rate limited, CAPTCHA (Turnstile, enforced by Supabase; setup in platform.md), leaked-password protection, exact redirect URLs, no open redirects.
 7. Tokens: supabase-js keeps them in `localStorage`, so XSS = token theft. Strong CSP and no `{@html}` on untrusted text are the real defence.
 
 ### Config and deployment (A02)

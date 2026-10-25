@@ -46,6 +46,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 2. **Authentication > Sign In / Providers > Email:** "Confirm email" on, minimum password length 8.
 3. **Authentication > URL Configuration:** Site URL = the web deployment; add `<web deployment>/**` to Redirect URLs (the email links go to `/app`).
 4. **Email sending:** Supabase's built-in sender is for testing only: a couple of emails an hour, and only to your organization's team members. Before real students sign up, set custom SMTP (needs a domain for Resend; Gmail with an app password works for development). The default link-only templates are fine for this flow; customizing them needs custom SMTP.
+5. **CAPTCHA (Cloudflare Turnstile):** create a widget in Cloudflare (hostnames: the web deployment's domain, plus `localhost` for the mobile webview), set its site key as `VITE_TURNSTILE_SITE_KEY` (public, web and mobile), and paste its secret key in Supabase **Authentication > Attack Protection > CAPTCHA** (provider Turnstile). Set both together: with only the Supabase side on, sign-in fails; with only the site key, the widget shows but nothing checks it. `Captcha.svelte` is invisible unless Cloudflare wants a click; sign in, sign up, reset and resend each spend one token.
 
 ## Plans, checkout, access
 
