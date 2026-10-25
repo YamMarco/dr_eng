@@ -32,18 +32,32 @@
 	import { themeStore } from '$lib/theme.svelte';
 
 	// Invisible unless Cloudflare wants a click. Tokens are single-use: call reset()
-	// after every request that spent one. `broken`: the widget failed (blocked script,
-	// hostname not allowed); callers go on without a token and Supabase decides.
-	let {
-		// eslint-disable-next-line no-useless-assignment
-		token = $bindable(null),
-		// eslint-disable-next-line no-useless-assignment
-		broken = $bindable(false)
-	}: { token?: string | null; broken?: boolean } = $props();
+	// after every request that spent one.
 
 	let el: HTMLDivElement;
 	let api: Turnstile | undefined;
 	let id: string | undefined;
+	let token: string | null = null;
+	let broken = false;
+	let waiting: ((value?: string) => void)[] = [];
+
+	function settle(value?: string) {
+		for (const done of waiting) done(value);
+		waiting = [];
+	}
+
+	/** The token once Cloudflare issues it; undefined if the widget failed or took too
+	 * long (blocked script, hostname not allowed): callers go on and Supabase decides. */
+	export function getToken(timeout = 8000): Promise<string | undefined> {
+		if (token || broken) return Promise.resolve(token ?? undefined);
+		return new Promise((done) => {
+			waiting.push(done);
+			setTimeout(() => {
+				if (!token) console.warn('turnstile: no token after', timeout, 'ms');
+				done(token ?? undefined);
+			}, timeout);
+		});
+	}
 
 	export function reset() {
 		token = null;
@@ -61,16 +75,24 @@
 					language: 'he',
 					theme: themeStore.resolved,
 					appearance: 'interaction-only',
-					callback: (value: string) => ((token = value), (broken = false)),
+					callback: (value: string) => {
+						token = value;
+						broken = false;
+						settle(value);
+					},
 					'expired-callback': () => (token = null),
 					'error-callback': (code: string) => {
 						console.warn('turnstile error', code);
 						token = null;
 						broken = true;
+						settle();
 					}
 				});
 			})
-			.catch(() => (broken = true));
+			.catch(() => {
+				broken = true;
+				settle();
+			});
 		return () => {
 			gone = true;
 			if (api && id) api.remove(id);
@@ -79,4 +101,5 @@
 	});
 </script>
 
-<div bind:this={el} class="flex justify-center empty:hidden"></div>
+<!-- Never display:none - Turnstile stalls in a hidden container. -->
+<div bind:this={el} class="flex justify-center"></div>
