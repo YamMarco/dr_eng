@@ -1,5 +1,11 @@
-/* Public-site motion and art. Everything here is decorative; reduced motion turns
-   it off and leaves the content in place. */
+/* Public-site motion and art (decorative; reduced motion turns it off and leaves
+   the content in place), plus the signed-in header label. */
+
+/* Header label by session (data-session on <html>: static/boot.js, then the layout). */
+:root:not([data-session]) .signed-in,
+:root[data-session] .signed-out {
+	display: none;
+}
 
 /* Scroll-in entrance (see $lib/site/reveal.ts). */
 [data-reveal] {
