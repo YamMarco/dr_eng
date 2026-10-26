@@ -59,7 +59,7 @@ export const he = {
 			heroAlt: 'תלמידה לומדת אנגלית בטלפון',
 			mock: {
 				label: 'תצוגה של מסך הבית באפליקציה',
-				greeting: 'בוקר טוב דנה',
+				greeting: 'בוקר טוב!',
 				week: 'השבוע: 3 מתוך 4 ימים',
 				continueTitle: 'The Lost Village',
 				continueSub: 'מודול C · קריאה',
@@ -440,8 +440,8 @@ export const he = {
 		resent: 'שלחנו שוב. בדקו גם בתיקיית הספאם.'
 	},
 	home: {
-		greeting: (part: 'morning' | 'noon' | 'evening' | 'night', name?: string) =>
-			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}${name ? `, ${name}` : ''}!`,
+		greeting: (part: 'morning' | 'noon' | 'evening' | 'night') =>
+			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}!`,
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
@@ -493,7 +493,9 @@ export const he = {
 	onboarding: {
 		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
 		nameTitle: 'איך קוראים לכם?',
-		nameDesc: 'רק כדי שנדע איך לפנות אליכם. אפשר גם לדלג.',
+		nameDesc: 'אפשר לדלג ולהוסיף אחר כך בהגדרות.',
+		nameOptional: 'לא חובה',
+		skip: 'דילוג',
 		namePlaceholder: 'השם הפרטי',
 		goalTitle: 'מה המטרה שלכם?',
 		goalDesc: 'נבנה לכם מסלול לפי רמת היחידות.',

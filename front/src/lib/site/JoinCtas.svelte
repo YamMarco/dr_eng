@@ -10,6 +10,9 @@
 	// /checkout to redeem a code (signed-out visitors meet the sign-up/sign-in screen
 	// there first, then land on the code field). A link to #<id> opens the waitlist
 	// field. The field opens as a card over what's below, so nothing on the page moves.
+	// Phones stack the buttons (the join label doesn't fit half a row); the open card
+	// then sits right under the join button (top: half the stack less half the gap),
+	// over the code button.
 	let { id }: { id: string } = $props();
 	let t = $derived(i18n.dict.site.home);
 
@@ -59,16 +62,16 @@
 	}
 
 	const panel =
-		'absolute inset-x-0 top-full z-30 mt-3 rounded-3xl bg-surface p-3 text-start shadow-xl ring-1 ring-line';
+		'absolute inset-x-0 top-[calc(50%-0.375rem)] z-30 sm:top-full mt-3 rounded-3xl bg-surface p-3 text-start shadow-xl ring-1 ring-line';
 	const input =
 		'min-h-[56px] w-full rounded-2xl border-2 border-line bg-surface px-4 text-lg transition-colors placeholder:text-muted/70 focus:border-brand focus:ring-0 focus:outline-none';
 </script>
 
 <div {id} class="relative w-full max-w-xl scroll-mt-28">
-	<div class="grid grid-cols-2 gap-3">
+	<div class="grid gap-3 sm:grid-cols-2">
 		{#if status === 'done'}
 			<div
-				class="relative flex items-center justify-center gap-2 rounded-2xl bg-brand-soft px-3 font-bold text-brand-dark motion-safe:animate-rise"
+				class="relative flex min-h-[56px] items-center justify-center gap-2 rounded-2xl bg-brand-soft px-3 font-bold text-brand-dark motion-safe:animate-rise"
 				role="status"
 			>
 				<Confetti />
@@ -80,11 +83,7 @@
 				{t.waitlist.doneTitle}
 			</div>
 		{:else}
-			<Button
-				class="px-3 text-base whitespace-nowrap sm:text-lg"
-				onclick={toggle}
-				expanded={open}
-			>
+			<Button class="px-3 whitespace-nowrap" onclick={toggle} expanded={open}>
 				{t.ctaJoin}
 				<ChevronDown
 					size={18}
@@ -93,11 +92,7 @@
 				/>
 			</Button>
 		{/if}
-		<Button
-			variant="secondary"
-			class="px-3 text-base whitespace-nowrap sm:text-lg"
-			href={resolve('/checkout')}
-		>
+		<Button variant="secondary" class="px-3 whitespace-nowrap" href={resolve('/checkout')}>
 			{t.ctaCode}
 		</Button>
 	</div>

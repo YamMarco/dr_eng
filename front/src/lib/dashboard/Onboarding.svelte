@@ -7,8 +7,8 @@
 	import { NAME_MAX, profile, type UnitsGoal } from '$lib/profile.svelte';
 	import { parseSessionKey, sessionOptions, unitsOptions } from './goalOptions';
 
-	// Three short questions before the dashboard - no signup wall, just a name
-	// for the greeting (optional) and enough to build the route and the countdown.
+	// Three short questions before the dashboard - no signup wall: an optional name
+	// (may stay empty) and enough to build the route and the countdown.
 	const TOTAL_STEPS = 3;
 
 	let step = $state(1);
@@ -43,7 +43,14 @@
 	{#key step}
 		<section in:fly={{ x: -16, duration: 250, easing: cubicOut }} class="mt-6 flex-1">
 			{#if step === 1}
-				<h1 class="text-3xl font-extrabold tracking-tight">{t.nameTitle}</h1>
+				<h1
+					class="flex flex-wrap items-center gap-x-3 gap-y-1 text-3xl font-extrabold tracking-tight"
+				>
+					{t.nameTitle}
+					<span class="rounded-full bg-line/60 px-2.5 py-0.5 text-sm font-semibold text-muted"
+						>{t.nameOptional}</span
+					>
+				</h1>
 				<p class="mt-2 mb-6 text-muted">{t.nameDesc}</p>
 				<input
 					type="text"
@@ -79,7 +86,9 @@
 
 	<div class="mt-8">
 		{#if step < TOTAL_STEPS}
-			<Button disabled={step === 2 && !units} onclick={() => step++}>{t.next}</Button>
+			<Button disabled={step === 2 && !units} onclick={() => step++}>
+				{step === 1 && !name.trim() ? t.skip : t.next}
+			</Button>
 		{:else}
 			<Button disabled={!session} onclick={finish}>{t.finish}</Button>
 		{/if}

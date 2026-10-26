@@ -26,8 +26,8 @@ export const ar: DictionaryOverride = {
 		subtitle: 'ادخلوا لمتابعة التدريب'
 	},
 	home: {
-		greeting: (part: 'morning' | 'noon' | 'evening' | 'night', name?: string) =>
-			`${part === 'morning' ? 'صباح الخير' : 'مساء الخير'}${name ? `، ${name}` : ''}!`,
+		greeting: (part: 'morning' | 'noon' | 'evening' | 'night') =>
+			`${part === 'morning' ? 'صباح الخير' : 'مساء الخير'}!`,
 		daysToExam: (n: number) => `${n} يومًا حتى البجروت`,
 		daysShort: (n: number) => `${n} يومًا`,
 		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
