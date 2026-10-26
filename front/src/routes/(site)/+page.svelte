@@ -15,7 +15,6 @@
 		Timer,
 		Trophy
 	} from '@lucide/svelte';
-	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -29,16 +28,11 @@
 	import JoinCtas from '$lib/site/JoinCtas.svelte';
 	import { homeMedia } from '$lib/site/media';
 	import { reveal } from '$lib/site/reveal';
-	import { greeting } from '$lib/greeting';
-	import { profile } from '$lib/profile.svelte';
 
 	// Public front door, for testers now and strangers later: what this is, why it
 	// works, one way in (a tester code). Everything else lives in /app.
 
 	let t = $derived(i18n.dict.site.home);
-	// The page is pre-rendered: the name (local profile) only exists after mount.
-	let mounted = $state(false);
-	onMount(() => (mounted = true));
 
 	const momentArt = {
 		break: { icon: Coffee, tone: 'gold' },
@@ -96,9 +90,6 @@
 				class="max-w-xl text-lg leading-relaxed text-muted motion-safe:animate-rise sm:text-xl"
 				style="animation-delay: {staggerDelay(2)}ms"
 			>
-				{#if mounted && profile.name}
-					<strong class="font-bold text-ink">{greeting()}</strong>
-				{/if}
 				{t.intro}
 			</p>
 			<div

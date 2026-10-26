@@ -10,7 +10,7 @@ const STORAGE_KEY = 'profile';
 /** 'undecided' falls back to the 4-unit route (the one with content today). */
 export type UnitsGoal = '4' | '5' | 'undecided';
 
-/** `name`: what to call the student - optional, used only in greetings. */
+/** `name`: the student's first name - optional, may stay empty. Never used in greetings. */
 export type Profile = { units: UnitsGoal; exam: ExamSession | null; name?: string };
 
 export const NAME_MAX = 30;
