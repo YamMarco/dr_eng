@@ -33,6 +33,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import WritingLab from '$lib/writing-lab/WritingLab.svelte';
 	import DeckGateway from '$lib/deck/DeckGateway.svelte';
+	import ChatGateway from '$lib/components/ChatGateway.svelte';
 	import { dueToday, getDecks } from '$lib/deck';
 	import { MOBILE_BUILD } from '$lib/platform';
 	import { auth } from '$lib/auth.svelte';
@@ -42,6 +43,7 @@
 	let group = $derived(data.group);
 	let mod = $derived(data.mod);
 	let hasDeck = $derived(!!getDecks(mod.id));
+	let hasChat = $derived(mod.id === 'cobe');
 
 	// The generic canvas graph every module's path is drawn from: every
 	// lesson carries its own placement (x, y) and prerequisite lesson ids
@@ -97,7 +99,7 @@
 			.filter((section) => getLessonsBySection(section.id).length > 0)
 			.map((section) => section.id)
 			.sort((a, b) => topY(a) - topY(b));
-		const top = TOP_Y + (hasDeck ? GATEWAY_SPACE : 0);
+		const top = TOP_Y + (hasDeck || hasChat ? GATEWAY_SPACE : 0);
 		const shiftY = verticalOrder.length ? top - topY(verticalOrder[0]) : 0;
 		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
@@ -514,6 +516,10 @@
 					{#if hasDeck}
 						<div class="absolute inset-x-0 top-4 flex justify-center" in:fade={{ duration: 180 }}>
 							<DeckGateway unitId={group.id} moduleId={mod.id} due={dueToday(mod.id)} />
+						</div>
+					{:else if hasChat}
+						<div class="absolute inset-x-0 top-4 flex justify-center" in:fade={{ duration: 180 }}>
+							<ChatGateway unitId={group.id} moduleId={mod.id} />
 						</div>
 					{/if}
 

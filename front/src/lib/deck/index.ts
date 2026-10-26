@@ -21,10 +21,10 @@ export type Deck = {
 
 export const decks: Record<string, Deck[]> = {
 	e: [
-		{ id: 'e-a', letter: 'A', words: listA },
-		{ id: 'e-b', letter: 'B', words: listB },
-		{ id: 'e-c', letter: 'C', words: listC },
-		{ id: 'e-d', letter: 'D', words: listD }
+		{ id: 'e-a', letter: '1', words: listA },
+		{ id: 'e-b', letter: '2', words: listB },
+		{ id: 'e-c', letter: '3', words: listC },
+		{ id: 'e-d', letter: '4', words: listD }
 	]
 };
 

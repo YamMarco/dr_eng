@@ -126,69 +126,71 @@
 	</section>
 
 	{#if mod.id === 'cobe'}
-		<!-- COBE: lessons by exam part, then speaking practice, each its own card. -->
-		<section
+		<!-- COBE: chat first, then the lessons by exam part in one card, then speaking practice. -->
+		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-			class="{card} mt-2"
+			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
 		>
-			{#each route as part, i (part.id)}
+			<section class={card}>
 				<HubRow
-					icon={partIcons[i] ?? Mic}
-					title={i18n.title(part.id, mod.id)}
-					progress={part.total ? part.done / part.total : 0}
-					href="{base}/lessons?section={part.id}"
-				>
-					{#snippet trailing()}
-						<span class="shrink-0 text-end text-sm font-bold tabular"
-							><ProgressValue p={part} /></span
-						>
-					{/snippet}
-				</HubRow>
-			{/each}
-			{@render pathLink()}
-		</section>
-
-		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
-			class="{card} mt-2"
-		>
-			<HubRow
-				icon={MessagesSquare}
-				title={i18n.dict.chat.title}
-				sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
-				href="{base}/chat"
-			/>
-			{#if speaking.questions}
-				<HubRow
-					icon={Mic}
-					title={t.skills.speaking}
-					sub={i18n.dict.cobeReview.practiced(speaking.questions, speaking.reachedPercent)}
+					icon={MessagesSquare}
+					title={i18n.dict.chat.title}
+					sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
+					href="{base}/chat"
 				/>
+			</section>
+			<section class={card}>
+				{#each route as part, i (part.id)}
+					<HubRow
+						icon={partIcons[i] ?? Mic}
+						title={i18n.title(part.id, mod.id)}
+						progress={part.total ? part.done / part.total : 0}
+						href="{base}/lessons?section={part.id}"
+					>
+						{#snippet trailing()}
+							<span class="shrink-0 text-end text-sm font-bold tabular"
+								><ProgressValue p={part} /></span
+							>
+						{/snippet}
+					</HubRow>
+				{/each}
+			</section>
+			{#if speaking.questions}
+				<section class={card}>
+					<HubRow
+						icon={Mic}
+						title={t.skills.speaking}
+						sub={i18n.dict.cobeReview.practiced(speaking.questions, speaking.reachedPercent)}
+					/>
+				</section>
 			{/if}
-		</section>
-	{:else}
-		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-			class="{card} mt-2"
-		>
-			{#each skills as row (row.skill)}
-				{@const { done, total } = row.progress}
-				<HubRow
-					icon={skillIcon[row.skill]}
-					title={t.skills[row.skill]}
-					sub={skillSub(row.skill, row.kind)}
-					progress={total ? done / total : 0}
-					href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
-				>
-					{#snippet trailing()}
-						<span class="shrink-0 text-end text-sm font-bold tabular"
-							><ProgressValue p={row.progress} /></span
-						>
-					{/snippet}
-				</HubRow>
-			{/each}
 			{@render pathLink()}
-		</section>
+		</div>
+	{:else}
+		<div
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
+			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
+		>
+			<section class={card}>
+				{#each skills as row (row.skill)}
+					{@const { done, total } = row.progress}
+					<HubRow
+						icon={skillIcon[row.skill]}
+						title={t.skills[row.skill]}
+						sub={skillSub(row.skill, row.kind)}
+						progress={total ? done / total : 0}
+						href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
+					>
+						{#snippet trailing()}
+							<span class="shrink-0 text-end text-sm font-bold tabular"
+								><ProgressValue p={row.progress} /></span
+							>
+						{/snippet}
+					</HubRow>
+				{/each}
+			</section>
+			{@render pathLink()}
+		</div>
 	{/if}
 </main>
 
@@ -196,7 +198,7 @@
 	{#if route.length}
 		<a
 			href="{base}/lessons"
-			class="mt-1 border-t border-line/70 px-2 pt-2.5 pb-1.5 text-center text-sm font-semibold text-brand hover:underline"
+			class="px-2 py-1.5 text-center text-sm font-semibold text-brand hover:underline"
 		>
 			{t.toPath}
 		</a>
