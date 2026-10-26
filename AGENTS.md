@@ -28,6 +28,7 @@
 - routes (site / app / admin), web vs mobile builds, accounts: read docs/platform.md; app-only code must work in the mobile build (no server, call /api via apiFetch)
 - free-text feedback / grading / LLM prompts / rules cascade: read docs/feedback-framework.md; prompts live in front/src/lib/server/prompts/<role>.md (imported with ?raw)
 - auth, /api, payments, deps, security audits: read docs/security.md
+- brand, motto, tone, emails/marketing copy: read docs/brand.md
 - writing/editing Svelte code: use the Svelte MCP (list-sections / get-documentation for unfamiliar APIs, svelte-autofixer on the changed component until clean); never for content, docs or plain .ts
 - codebase questions: run `graphify query "<question>"` first when graphify-out/graph.json exists (also `graphify path`, `graphify explain`); after modifying code run `graphify update .`; `/graphify` uses .claude/skills/graphify/SKILL.md
 - docs/ are concise present-state guidelines, no history

@@ -62,7 +62,6 @@
 							profile.save({ ...current, name: e.currentTarget.value.trim() || undefined })}
 						maxlength={NAME_MAX}
 						autocomplete="given-name"
-						placeholder={i18n.dict.onboarding.nameOptional}
 						aria-label={i18n.dict.settings.nameLabel}
 						class="{selectClass} w-40 min-w-0"
 					/>

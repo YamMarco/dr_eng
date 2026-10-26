@@ -38,9 +38,18 @@
 	};
 
 	let priority = $derived(priorityStyle[task.priority]);
-	// A wash (and ring) of the first tag's color over the card, in both themes.
+	// A wash of the tags' colors over the card, in both themes: one equal vertical
+	// band per tag. The ring takes the first tag's color.
 	let firstTag = $derived(task.tags[0]);
-	let tint = $derived(firstTag ? tagColor(firstTag, 0.16) : null);
+	let tint = $derived.by(() => {
+		const n = task.tags.length;
+		if (!n) return null;
+		const bands = task.tags.map((tag, i) => {
+			const color = tagColor(tag, 0.16);
+			return `${color} ${(i / n) * 100}% ${((i + 1) / n) * 100}%`;
+		});
+		return `linear-gradient(to right, ${bands.join(', ')})`;
+	});
 
 	/** low -> medium -> high -> low */
 	function nextPriority() {
@@ -69,7 +78,7 @@
 		ondragstart();
 	}}
 	{ondragend}
-	style:background-image={tint && `linear-gradient(${tint}, ${tint})`}
+	style:background-image={tint}
 	style:--tw-ring-color={firstTag ? tagColor(firstTag, 0.5) : null}
 	class="flex cursor-grab flex-col gap-3 rounded-2xl border-s-4 bg-surface p-3 shadow-sm ring-1 ring-line/70 active:cursor-grabbing {priority.border}"
 >
