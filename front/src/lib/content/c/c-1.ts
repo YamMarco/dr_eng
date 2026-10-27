@@ -151,7 +151,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "opener",
-              kicker: "תרגול 1",
+              kicker: "סיבוב 3",
               level: 1,
               title: "חזרה על המושגים",
               subtitle: "קל, בלי לחץ.\n📌 זכור: אני מחפש, לא קורא.",
@@ -180,7 +180,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "opener",
-              kicker: "תרגול 2",
+              kicker: "סיבוב 4",
               level: 2,
               title: "עם טקסטים אמיתיים",
               subtitle: "כמו בקורס.",
@@ -686,7 +686,6 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
-            { type: "preface", text: "" },
           ],
         },
         {
@@ -781,7 +780,6 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
-            { type: "preface", text: "" },
             {
               type: "summary",
               title: "ONE SENTENCE",
@@ -1405,8 +1403,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -1443,8 +1443,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.",
             },
             {
               type: "mark-all",
@@ -1497,8 +1500,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מספר וכל שם פרטי בפסקה.",
             },
             {
               type: "mark-all",
@@ -1953,8 +1959,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מילת שלילה במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -1985,8 +1993,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מילת שלילה.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מילת שלילה.",
             },
             {
               type: "mark-all",
@@ -2037,7 +2048,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו כל מילת שלילה בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מילת שלילה בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
@@ -2536,8 +2553,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
+              subtitle: "סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.",
             },
             {
               type: "mark-all",
@@ -2568,8 +2588,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מילת הגבלה.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מילת הגבלה.",
             },
             {
               type: "mark-all",
@@ -2624,7 +2647,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו כל מילת הגבלה בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מילת הגבלה בפסקה.",
+            },
             {
               type: "mark-all",
               instruction:
@@ -3086,8 +3115,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו את מילת הניגוד במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -3128,8 +3159,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו את מילת הניגוד.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו את מילת הניגוד.",
             },
             {
               type: "mark-all",
@@ -3180,7 +3214,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו את מילת הניגוד בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו את מילת הניגוד בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark the contrast word in the paragraph.",
@@ -4118,7 +4158,6 @@ export const c1Lessons: LessonNode[] = [
               subtitle:
                 "השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.",
             },
-            { type: "preface", text: "" },
             {
               type: "passage-quiz",
               text: "**REDONDA ISLAND**\n\nI  People first came to Redonda Island 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants, and the people could not find enough food, so they left the island.\n\nII  In 2016, environmentalists removed the goats so that the plants could grow back. Only a few years later, grass covered the island again, and birds returned to build their nests.",
@@ -5184,8 +5223,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "שלושה טקסטים. סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "שלושה טקסטים",
+              subtitle: "סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.",
             },
             {
               type: "mark-all",
@@ -5471,6 +5513,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "opener",
               kicker: "סיבוב 5 (רשות)",
+              level: 4,
               title: "כל השיטה ביחד",
               subtitle:
                 "מפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.",

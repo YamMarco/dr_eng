@@ -154,7 +154,7 @@ export const e1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'opener',
-							kicker: 'תרגול 1',
+							kicker: 'סיבוב 3',
 							level: 1,
 							title: 'חזרה על המושגים',
 							subtitle: 'קל, בלי לחץ.\n📌 זכור: אני מחפש, לא קורא.'
@@ -183,7 +183,7 @@ export const e1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'opener',
-							kicker: 'תרגול 2',
+							kicker: 'סיבוב 4',
 							level: 2,
 							title: 'עם טקסטים אמיתיים',
 							subtitle: 'כמו בקורס.'
@@ -679,10 +679,6 @@ export const e1Lessons: LessonNode[] = [
 									correctIndex: 0
 								}
 							]
-						},
-						{
-							type: 'preface',
-							text: ''
 						}
 					]
 				},
@@ -771,10 +767,6 @@ export const e1Lessons: LessonNode[] = [
 									correctIndex: 2
 								}
 							]
-						},
-						{
-							type: 'preface',
-							text: ''
 						},
 						{
 							type: 'summary',
@@ -1382,8 +1374,10 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.'
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'משפטים בעברית',
 						},
 						{
 							type: 'mark-all',
@@ -1442,8 +1436,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'משפטים באנגלית',
+							subtitle: 'סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.',
 						},
 						{
 							type: 'mark-all',
@@ -1515,8 +1512,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 3,
+							title: 'פסקאות',
+							subtitle: 'סמנו כל מספר וכל שם פרטי בפסקה.',
 						},
 						{
 							type: 'mark-all',
@@ -1983,8 +1983,10 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה משפטים בעברית. סמנו כל מילת שלילה במשפט.'
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'משפטים בעברית',
 						},
 						{
 							type: 'mark-all',
@@ -2033,8 +2035,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'עכשיו באנגלית. כמה משפטים. סמנו כל מילת שלילה.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'משפטים באנגלית',
+							subtitle: 'סמנו כל מילת שלילה.',
 						},
 						{
 							type: 'mark-all',
@@ -2108,8 +2113,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה פסקאות. סמנו כל מילת שלילה בפסקה.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 3,
+							title: 'פסקאות',
+							subtitle: 'סמנו כל מילת שלילה בפסקה.',
 						},
 						{
 							type: 'mark-all',
@@ -2615,8 +2623,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה משפטים בעברית. סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.'
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'משפטים בעברית',
+							subtitle: 'סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.',
 						},
 						{
 							type: 'mark-all',
@@ -2665,8 +2676,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'עכשיו באנגלית. כמה משפטים. סמנו כל מילת הגבלה.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'משפטים באנגלית',
+							subtitle: 'סמנו כל מילת הגבלה.',
 						},
 						{
 							type: 'mark-all',
@@ -2741,8 +2755,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה פסקאות. סמנו כל מילת הגבלה בפסקה.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 3,
+							title: 'פסקאות',
+							subtitle: 'סמנו כל מילת הגבלה בפסקה.',
 						},
 						{
 							type: 'mark-all',
@@ -3190,8 +3207,10 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה משפטים בעברית. סמנו את מילת הניגוד במשפט.'
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'משפטים בעברית',
 						},
 						{
 							type: 'mark-all',
@@ -3254,8 +3273,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'עכשיו באנגלית. כמה משפטים. סמנו את מילת הניגוד.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'משפטים באנגלית',
+							subtitle: 'סמנו את מילת הניגוד.',
 						},
 						{
 							type: 'mark-all',
@@ -3326,8 +3348,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'כמה פסקאות. סמנו את מילת הניגוד בפסקה.'
+							type: 'opener',
+							kicker: 'סיבוב 3',
+							level: 3,
+							title: 'פסקאות',
+							subtitle: 'סמנו את מילת הניגוד בפסקה.',
 						},
 						{
 							type: 'mark-all',
@@ -4258,10 +4283,6 @@ export const e1Lessons: LessonNode[] = [
 							title: 'רמת בחינה',
 							subtitle:
 								'השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.'
-						},
-						{
-							type: 'preface',
-							text: ''
 						},
 						{
 							type: 'passage-quiz',
@@ -5299,8 +5320,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'שלושה טקסטים. סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.'
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'שלושה טקסטים',
+							subtitle: 'סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.',
 						},
 						{
 							type: 'mark-all',
@@ -5594,6 +5618,7 @@ export const e1Lessons: LessonNode[] = [
 						{
 							type: 'opener',
 							kicker: 'סיבוב 5 (רשות)',
+							level: 4,
 							title: 'כל השיטה ביחד',
 							subtitle:
 								'מפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.'
