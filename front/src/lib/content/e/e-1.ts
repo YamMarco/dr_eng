@@ -283,6 +283,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'מפת הדרכים',
+						},
+						{
 							type: 'preface',
 							text: 'מפת הדרכים = כותרת + פסקה 1. היא אומרת לכם על מה הטקסט ולאן הוא הולך - לפני שנוגעים בשאלות.'
 						},
@@ -1008,6 +1014,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'P1 - ניווט בטקסט',
+						},
+						{
 							type: 'preface',
 							text: 'P1 = שאלה ← מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה. לא קוראים את כל הטקסט.'
 						},
@@ -1704,6 +1716,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'מספרים ושמות בשאלה',
+						},
+						{
 							type: 'preface',
 							text: '{d:rtl}מספר או שם בשאלה הם** Eye Catchers**: הם אומרים לכם לאן ללכת בטקסט.'
 						},
@@ -2290,6 +2308,12 @@ export const e1Lessons: LessonNode[] = [
 			rounds: [
 				{
 					screens: [
+						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'NOT בשאלה',
+						},
 						{
 							type: 'preface',
 							text: 'NOT לא מוסיף מידע - הוא הופך את הכיוון.\nרגיל: מצא מה נכון. עם NOT: מצא מה לא נכון.'
@@ -2930,6 +2954,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'most / only בשאלה',
+						},
+						{
 							type: 'preface',
 							text: 'the most / the only / the main בשאלה = מחפשים דבר אחד מסוים.\nmost לבד = רוב. קוראים את השאלה עד הסוף.'
 						},
@@ -3554,6 +3584,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'שאלות אמריקאיות',
+						},
+						{
 							type: 'preface',
 							text: 'ארבעה צעדים: קוראים את כל 4 האפשרויות ← חוצים ← מוצאים הוכחה בפסקה הנכונה ← עונים.'
 						},
@@ -4167,6 +4203,12 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'השלמת משפט',
+						},
+						{
 							type: 'preface',
 							text: 'השלמת משפט: קוראים את ההתחלה. Because ___ = מחפשים סיבה. In order to ___ = מחפשים מטרה.'
 						},
@@ -4458,6 +4500,12 @@ export const e1Lessons: LessonNode[] = [
 			rounds: [
 				{
 					screens: [
+						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'שתי תשובות',
+						},
 						{
 							type: 'preface',
 							text: 'Give TWO answers = שתי תשובות, ממוספרות (1) ו-(2). מצאתם אחת? ממשיכים לחפש.'
@@ -4876,6 +4924,12 @@ export const e1Lessons: LessonNode[] = [
 			rounds: [
 				{
 					screens: [
+						{
+							type: 'opener',
+							kicker: 'סיבוב 1',
+							level: 1,
+							title: 'however / but',
+						},
 						{
 							type: 'preface',
 							text: '{d:rtl}however / but מסמנים** פנייה** בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל לזכור שתמיד עונים על מה שהשאלה שואלת.'
