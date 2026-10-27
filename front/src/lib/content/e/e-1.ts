@@ -336,8 +336,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: '30 שניות. כותרת + פסקה 1. על מה הטקסט?'
 						},
 						{
 							type: 'passage-mcq',
@@ -686,8 +689,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: 'YOUR TURN - קבעו צבע ופעולה לכל שאלה.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: 'קבעו צבע ופעולה לכל שאלה.'
 						},
 						{
 							type: 'mcq',
@@ -1080,8 +1086,15 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: 'חמישה שלבים, לבד.'
+						},
+						{
 							type: 'preface',
-							text: 'YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)'
+							text: 'השאלה: What happened in Ethiopia after trees were planted? (paragraph III)'
 						},
 						{
 							type: 'mcq',
@@ -1194,8 +1207,15 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 4 (רשות)',
+							level: 5,
+							badge: '⏱️',
+							title: 'המרוץ: אותה משימה, שתי דרכים'
+						},
+						{
 							type: 'preface',
-							text: 'תרגול נוסף ⏱️ (רשות)\nהמרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.'
+							text: 'בשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.'
 						},
 						{
 							type: 'preface',
@@ -1740,8 +1760,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}אתם - שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו.'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: 'שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו.'
 						},
 						{
 							type: 'self-check',
@@ -2343,8 +2366,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}אתם - שאלת NOT על פיסקה. בהצלחה!'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: 'שאלת NOT על פסקה.'
 						},
 						{
 							type: 'passage-mcq',
@@ -2951,8 +2977,15 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'תורכם',
+							subtitle: 'שאלה עם the main על פסקה.'
+						},
+						{
 							type: 'preface',
-							text: '{d:rtl}אתם - שאלה עם the main על פסקה. שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to the survey, what is the main reason teenagers stop reading?'
+							text: '{d:rtl}שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to the survey, what is the main reason teenagers stop reading?'
 						},
 						{
 							type: 'self-check',
@@ -3569,8 +3602,11 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
-							type: 'preface',
-							text: '{d:rtl}עכשיו פורמט בחינה.\n{d:rtl}\n{d:rtl}🚦 רמזור לפני שעונים. **רק ירוק = עונים.**'
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 3,
+							title: 'פורמט בחינה',
+							subtitle: '🚦 רמזור לפני שעונים. **רק ירוק = עונים.**'
 						},
 						{
 							type: 'passage-mcq',
@@ -3809,10 +3845,6 @@ export const e1Lessons: LessonNode[] = [
 			rounds: [
 				{
 					screens: [
-						{
-							type: 'preface',
-							text: ''
-						},
 						{
 							type: 'preface',
 							text: 'תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש.'
@@ -4889,8 +4921,14 @@ export const e1Lessons: LessonNode[] = [
 				{
 					screens: [
 						{
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 2,
+							title: 'מוצאים את however'
+						},
+						{
 							type: 'preface',
-							text: '{d:rtl} מצאו את however, וקראו מה בא אחריו.\n\n{d:rtl}השאלה: What good news does paragraph I mention?'
+							text: '{d:rtl}מצאו את however, וקראו מה בא אחריו.\n\n{d:rtl}השאלה: What good news does paragraph I mention?'
 						},
 						{
 							type: 'mcq',
