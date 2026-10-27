@@ -1,11 +1,11 @@
-// LLM client: Gemini's OpenAI-compatible endpoint with GEMINI_API_KEY.
-// Callers pick a role, not a vendor; the next model in GEMINI_MODELS is
-// tried when one is overloaded.
+// LLM client (OpenAI-compatible HTTP). Callers pick a role, not a vendor; the
+// role's models and their order are in llmModels.ts. Vercel AI Gateway first,
+// Gemini's own API as the safety net while the gateway is new.
 import { env } from '$env/dynamic/private';
 import type { z } from 'zod';
+import { llmTargets, type LlmRole } from './llmModels';
 
-export type LlmRole =
-	'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'chat-speaking' | 'ocr';
+export type { LlmRole };
 
 export interface LlmResult {
 	text: string;
@@ -15,23 +15,10 @@ export interface LlmResult {
 	outputTokens: number;
 }
 
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai';
-const GEMINI_MODELS: Record<LlmRole, string[]> = {
-	'grade-short': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
-	'grade-reading': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
-	'grade-essay': ['gemini-3.8-flash', 'gemini-3.5-flash'],
-	'grade-speaking': ['gemini-3.8-flash', 'gemini-3.5-flash'],
-	'chat-speaking': ['gemini-3.8-flash', 'gemini-3.5-flash'],
-	ocr: ['gemini-3.8-flash', 'gemini-3.5-flash']
-};
-
-function endpoint(role: LlmRole): { url: string; key: string; models: string[] } | undefined {
-	if (env.GEMINI_API_KEY)
-		return { url: GEMINI_URL, key: env.GEMINI_API_KEY, models: GEMINI_MODELS[role] };
-}
+const keys = () => ({ gateway: env.AI_GATEWAY_API_KEY, gemini: env.GEMINI_API_KEY });
 
 export function llmConfigured(): boolean {
-	return Boolean(env.GEMINI_API_KEY);
+	return Boolean(env.AI_GATEWAY_API_KEY || env.GEMINI_API_KEY);
 }
 
 type ChatOptions = {
@@ -50,44 +37,60 @@ type ChatOptions = {
  * listening roles.
  */
 export async function chat(opts: ChatOptions): Promise<LlmResult> {
-	const target = endpoint(opts.role);
-	if (!target) throw new Error('LLM is not configured');
-	let res!: Response;
-	// Every model overloaded: one more round after a short wait (exam submits fire ~10 calls at once).
-	const attempts = [...target.models, ...target.models];
-	for (const [i, model] of attempts.entries()) {
-		if (i === target.models.length) await new Promise((r) => setTimeout(r, 2000));
-		res = await fetch(`${target.url}/chat/completions`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${target.key}` },
-			body: JSON.stringify({
-				model,
-				messages: [
-					{ role: 'system', content: opts.system },
-					{
-						role: 'user',
-						content: opts.image
+	const targets = llmTargets(opts.role, keys());
+	if (!targets.length) throw new Error('LLM is not configured');
+	const body = (model: string) =>
+		JSON.stringify({
+			model,
+			messages: [
+				{ role: 'system', content: opts.system },
+				{
+					role: 'user',
+					content: opts.image
+						? [
+								{ type: 'text', text: opts.user },
+								{ type: 'image_url', image_url: { url: opts.image } }
+							]
+						: opts.audio
 							? [
 									{ type: 'text', text: opts.user },
-									{ type: 'image_url', image_url: { url: opts.image } }
+									{ type: 'input_audio', input_audio: { data: opts.audio, format: 'wav' } }
 								]
-							: opts.audio
-								? [
-										{ type: 'text', text: opts.user },
-										{ type: 'input_audio', input_audio: { data: opts.audio, format: 'wav' } }
-									]
-								: opts.user
-					}
-				],
-				max_tokens: opts.maxTokens ?? 1500,
-				...(opts.json && { response_format: { type: 'json_object' } })
-			}),
-			signal: AbortSignal.timeout(60_000)
+							: opts.user
+				}
+			],
+			max_tokens: opts.maxTokens ?? 1500,
+			...(opts.json && { response_format: { type: 'json_object' } })
 		});
-		// Overloaded or rate-limited: try the next model; anything else is final.
-		if (res.status !== 429 && res.status < 500) break;
+	const calls = targets.flatMap((t) => t.models.map((model) => ({ ...t, model })));
+	let res: Response | undefined;
+	let failure = '';
+	// Everything overloaded: one more round after a short wait (exam submits fire ~10 calls at once).
+	for (const [i, call] of [...calls, ...calls].entries()) {
+		if (i === calls.length) await new Promise((r) => setTimeout(r, 2000));
+		try {
+			res = await fetch(`${call.url}/chat/completions`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${call.key}` },
+				body: body(call.model),
+				signal: AbortSignal.timeout(60_000)
+			});
+		} catch (e) {
+			failure = `${call.model}: ${e instanceof Error ? e.message : e}`;
+			console.warn(`${opts.role}: ${failure}`);
+			continue;
+		}
+		if (res.ok) break;
+		failure = `${call.model} ${res.status}: ${(await res.text()).slice(0, 300)}`;
+		// The gateway is new: any failure there moves on (next model, then Gemini direct).
+		// Direct, only overloaded or rate-limited does; anything else is final.
+		if (call.gateway || res.status === 429 || res.status >= 500) {
+			console.warn(`${opts.role}: ${failure}`);
+			continue;
+		}
+		break;
 	}
-	if (!res.ok) throw new Error(`LLM error ${res.status}: ${(await res.text()).slice(0, 300)}`);
+	if (!res?.ok) throw new Error(`LLM error ${failure}`);
 	const data = await res.json();
 	return {
 		text: data.choices?.[0]?.message?.content ?? '',
