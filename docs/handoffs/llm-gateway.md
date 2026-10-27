@@ -1,14 +1,12 @@
-# Handoff: turn on Vercel AI Gateway
+# Handoff: verify Vercel AI Gateway
 
-Code is ready: `llm.ts` sends each role to Vercel AI Gateway first (models and order in `front/src/lib/server/llmModels.ts`), then falls back to Gemini direct. Until `AI_GATEWAY_API_KEY` is set, production runs Gemini direct, as before.
+Live in production: `AI_GATEWAY_API_KEY` is set (Production) and the gateway code is deployed (`fba807a`). Each role goes to the gateway first (models and order in `front/src/lib/server/llmModels.ts`), then falls back to Gemini direct. Not yet verified with a real call.
 
-## Turn it on (Vercel dashboard, phone is fine)
+## Before checking
 
-1. Vercel → team `site-boi` → **AI Gateway** → **API Keys** → create a key.
-2. Project `dr-eng` → Settings → Environment Variables → `AI_GATEWAY_API_KEY`, **Production only**, Sensitive. Redeploy.
-3. AI Gateway → set a monthly budget and a spend alert.
+- AI Gateway → set a monthly budget and a spend alert (if not done yet).
 
-## Check (Claude can read the logs through the Vercel connector)
+## Check (signed in, on the production site; then ask Claude to read the logs)
 
 - One live call per role: a lesson answer, an exam open question, an essay, a photo scan, a COBE recording, a COBE chat turn.
 - AI Gateway → Logs: each call is there with the primary model. Runtime logs: no `warn` lines like `grade-speaking: google/... 400` (that line means the gateway failed and Gemini direct answered).
