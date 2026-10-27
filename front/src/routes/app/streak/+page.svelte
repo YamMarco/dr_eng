@@ -2,11 +2,13 @@
 	import { resolve } from '$app/paths';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import StreakFlame from '$lib/dashboard/StreakFlame.svelte';
+	import ReminderRow from '$lib/components/ReminderRow.svelte';
+	import { reminders } from '$lib/reminders.svelte';
 	import { activity, WEEKLY_GOAL } from '$lib/activity.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	// The streak dashboard, opened from home's flame: this week against the goal,
-	// the streaks, and the last 12 weeks at a glance.
+	// the streaks, the last 12 weeks at a glance, and the daily reminder that keeps it going.
 	const HISTORY_WEEKS = 12;
 
 	let t = $derived(i18n.dict.streak);
@@ -104,4 +106,10 @@
 		</div>
 		<p class="text-xs text-muted">{t.rule}</p>
 	</section>
+
+	{#if reminders.available}
+		<ul class="{card} p-0!">
+			<ReminderRow />
+		</ul>
+	{/if}
 </main>
