@@ -101,7 +101,7 @@
 		</div>
 
 		<!-- On a phone: photo on top, the mock rising over its lower part. Desktop: photo at
-		     the end, the mock overlapping its inner edge. Either way the face stays clear. -->
+		     the start (right), the mock overlapping its inner edge. Either way the face stays clear. -->
 		<div class="relative mx-auto w-full max-w-md lg:max-w-none">
 			<MediaFrame
 				media={homeMedia.hero}
@@ -109,16 +109,16 @@
 				tone="teal"
 				eager
 				shade={false}
-				class="relative aspect-square w-full rounded-[2.5rem] shadow-xl motion-safe:animate-rise lg:absolute lg:inset-y-0 lg:inset-e-0 lg:aspect-auto lg:w-[60%]"
+				class="relative aspect-square w-full rounded-[2.5rem] shadow-xl motion-safe:animate-rise lg:absolute lg:inset-y-0 lg:inset-s-0 lg:aspect-auto lg:w-[60%]"
 			/>
 			<div
-				class="float-slow relative z-10 -mt-[38%] flex justify-center motion-safe:animate-rise lg:mt-0 lg:justify-start lg:py-12"
+				class="float-slow relative z-10 -mt-[38%] flex justify-center motion-safe:animate-rise lg:mt-0 lg:justify-end lg:py-12"
 				style="animation-delay: 150ms"
 			>
 				<PhoneMock />
 			</div>
 			<span
-				class="float-chip absolute inset-s-0 top-[29%] z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-s-2 lg:-inset-s-4 lg:top-20"
+				class="float-chip absolute inset-e-0 top-[29%] z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-e-2 lg:-inset-e-4 lg:top-20"
 				style="--chip-delay: 700ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-soft">
@@ -130,7 +130,7 @@
 				</span>
 			</span>
 			<span
-				class="float-chip absolute inset-e-0 bottom-28 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-e-2 lg:inset-e-[30%] lg:bottom-24"
+				class="float-chip absolute inset-s-0 bottom-28 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-s-2 lg:inset-s-auto lg:-inset-e-4 lg:bottom-24"
 				style="--chip-delay: 900ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-soft">

@@ -7,7 +7,7 @@ export type Media = { image?: string; video?: string; focus?: string };
 // All photos: Unsplash License.
 export const homeMedia: Record<string, Media> = {
 	// Luke Porter, unsplash.com/photos/UGX2qdjdKkw
-	hero: { image: '/home/hero.webp', focus: '46% 40%' },
+	hero: { image: '/home/hero.webp', focus: '30% 40%' },
 	// Juice Mendez, unsplash.com/photos/0wPugJfKafQ
 	break: { image: '/home/break.webp', focus: '50% 40%' },
 	// Jadon Johnson, unsplash.com/photos/tD8iyxepip8
@@ -16,6 +16,6 @@ export const homeMedia: Record<string, Media> = {
 	evening: { image: '/home/evening.webp', focus: '50% 45%' },
 	// Yustinus Tjiuwanda, unsplash.com/photos/BCBGahg0MH0
 	exam: { image: '/home/exam.webp', focus: '50% 55%' },
-	// Sincerely Media, unsplash.com/photos/dxnEyQszbUo
-	oral: { image: '/home/oral.webp', focus: '50% 25%' }
+	// Vitaly Gariev, unsplash.com/photos/dKEP847G5Fo
+	oral: { image: '/home/oral.webp', focus: '50% 22%' }
 };
