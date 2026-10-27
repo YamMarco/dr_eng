@@ -1053,8 +1053,14 @@ export const c3Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "כותבים את כל השלד",
+            },
+            {
               type: "preface",
-              text: "סיבוב 3 | כותבים את כל השלד\n\nעכשיו מחברים את כל מה שלמדתם, בפעם הראשונה:\n\n{p:text}I think... because...\n{p:text}For example,...\n{p:text}In addition,...\n{p:text}In conclusion,...\n\nזה השלד של כל חיבור בבגרות. בשיעורי הנושא נרחיב אותו ל-70-90 מילים.",
+              text: "עכשיו מחברים את כל מה שלמדתם, בפעם הראשונה:\n\n{p:text}I think... because...\n{p:text}For example,...\n{p:text}In addition,...\n{p:text}In conclusion,...\n\nזה השלד של כל חיבור בבגרות. בשיעורי הנושא נרחיב אותו ל-70-90 מילים.",
             },
             {
               type: "writing-task",
@@ -2251,6 +2257,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "opener",
               kicker: "סיבוב 4 (רשות)",
+              level: 4,
               title: "תנאי בחינה עם שעון - שאלה חדשה",
               subtitle:
                 "כתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",
@@ -2458,6 +2465,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "opener",
               kicker: "סיבוב 4 (רשות)",
+              level: 4,
               title: "תנאי בחינה עם שעון - שאלה חדשה",
               subtitle:
                 "כתבתם חיבור מלא בלי עזרה? אתם במקום טוב. רוצים עוד חזרה בתנאי בחינה, עם שעון - הנה שאלה חדשה מהרשימה הרשמית.",

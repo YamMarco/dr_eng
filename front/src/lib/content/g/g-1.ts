@@ -2177,6 +2177,7 @@ export const g1Lessons: LessonNode[] = [
 						{
 							type: 'opener',
 							kicker: 'סיבוב 3 (רשות)',
+							level: 4,
 							title: 'תרגול נוסף',
 							subtitle:
 								'סימולציה מלאה על טקסט חדש: STUDY PODS. מתאים למי שרוצה עוד תרגול לפני הבחינה.'

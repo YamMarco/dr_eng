@@ -151,7 +151,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "opener",
-              kicker: "תרגול 1",
+              kicker: "סיבוב 3",
               level: 1,
               title: "חזרה על המושגים",
               subtitle: "קל, בלי לחץ.\n📌 זכור: אני מחפש, לא קורא.",
@@ -180,7 +180,7 @@ export const c1Lessons: LessonNode[] = [
           screens: [
             {
               type: "opener",
-              kicker: "תרגול 2",
+              kicker: "סיבוב 4",
               level: 2,
               title: "עם טקסטים אמיתיים",
               subtitle: "כמו בקורס.",
@@ -279,6 +279,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מפת הדרכים",
+            },
+            {
               type: "preface",
               text: "מפת הדרכים = כותרת + פסקה 1. היא אומרת לכם על מה הטקסט ולאן הוא הולך - לפני שנוגעים בשאלות.",
             },
@@ -340,8 +346,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "YOUR TURN - 30 שניות. כותרת + פסקה 1. על מה הטקסט?",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "30 שניות. כותרת + פסקה 1. על מה הטקסט?",
             },
             {
               type: "passage-mcq",
@@ -683,12 +692,17 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
-            { type: "preface", text: "" },
           ],
         },
         {
           screens: [
-            { type: "preface", text: "YOUR TURN - קבעו צבע ופעולה לכל שאלה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "קבעו צבע ופעולה לכל שאלה.",
+            },
             {
               type: "mcq",
               prompt: '"According to whom?" - צבע ופעולה?',
@@ -772,7 +786,6 @@ export const c1Lessons: LessonNode[] = [
                 },
               ],
             },
-            { type: "preface", text: "" },
             {
               type: "summary",
               title: "ONE SENTENCE",
@@ -1019,6 +1032,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "P1 - ניווט בטקסט",
+            },
+            {
               type: "preface",
               text: "P1 = שאלה ← מילת מפתח ← איתור בטקסט ← קריאת המשפט ← תשובה. לא קוראים את כל הטקסט.",
             },
@@ -1096,8 +1115,15 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "חמישה שלבים, לבד.",
+            },
+            {
               type: "preface",
-              text: "YOUR TURN - חמישה שלבים, לבד.\n\nהשאלה: What happened in Ethiopia after trees were planted? (paragraph III)",
+              text: "השאלה: What happened in Ethiopia after trees were planted? (paragraph III)",
             },
             {
               type: "mcq",
@@ -1211,8 +1237,15 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 4 (רשות)",
+              level: 5,
+              badge: "⏱️",
+              title: "המרוץ: אותה משימה, שתי דרכים",
+            },
+            {
               type: "preface",
-              text: "תרגול נוסף ⏱️ (רשות)\nהמרוץ: אותה משימה, שתי דרכים\n\nבשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.",
+              text: "בשתי המשימות הבאות יש טקסט ושאלה אחת, והשעון רץ. הטקסטים שונים אבל באותו אורך.\n\nהשעון לא משפיע על הציון - הוא רק מראה לכם כמה זמן חוסכת השיטה.",
             },
             {
               type: "preface",
@@ -1382,8 +1415,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מספר וכל שם פרטי במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -1420,8 +1455,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מספר וכל שם פרטי - רק את המספר עצמו, בלי המילה שאחריו.",
             },
             {
               type: "mark-all",
@@ -1474,8 +1512,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה פסקאות. סמנו כל מספר וכל שם פרטי בפסקה.",
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מספר וכל שם פרטי בפסקה.",
             },
             {
               type: "mark-all",
@@ -1643,6 +1684,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מספרים ושמות בשאלה",
+            },
+            {
               type: "preface",
               text: "{d:rtl}מספר או שם בשאלה הם** Eye Catchers**: הם אומרים לכם לאן ללכת בטקסט.",
             },
@@ -1699,8 +1746,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "{d:rtl}אתם - שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "שתי שאלות על פסקה: אחת עם מספר ואחת עם שם. מצאו את ה-Eye Catcher, ואז ענו.",
             },
             {
               type: "self-check",
@@ -1927,8 +1977,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מילת שלילה במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -1959,8 +2011,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מילת שלילה.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מילת שלילה.",
             },
             {
               type: "mark-all",
@@ -2011,7 +2066,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו כל מילת שלילה בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מילת שלילה בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark every negative word.",
@@ -2171,6 +2232,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "NOT בשאלה",
+            },
+            {
               type: "preface",
               text: "NOT לא מוסיף מידע - הוא הופך את הכיוון.\nרגיל: מצא מה נכון. עם NOT: מצא מה לא נכון.",
             },
@@ -2254,8 +2321,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "{d:rtl}אתם - שאלת NOT על פיסקה. בהצלחה!",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "שאלת NOT על פסקה.",
             },
             {
               type: "passage-mcq",
@@ -2507,8 +2577,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
+              subtitle: "סמנו כל מילת הגבלה - רק, כל, רוב, מעטים, תמיד.",
             },
             {
               type: "mark-all",
@@ -2539,8 +2612,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו כל מילת הגבלה.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו כל מילת הגבלה.",
             },
             {
               type: "mark-all",
@@ -2595,7 +2671,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו כל מילת הגבלה בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו כל מילת הגבלה בפסקה.",
+            },
             {
               type: "mark-all",
               instruction:
@@ -2764,6 +2846,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "most / only בשאלה",
+            },
+            {
               type: "preface",
               text: "the most / the only / the main בשאלה = מחפשים דבר אחד מסוים.\nmost לבד = רוב. קוראים את השאלה עד הסוף.",
             },
@@ -2829,8 +2917,15 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "תורכם",
+              subtitle: "שאלה עם the main על פסקה.",
+            },
+            {
               type: "preface",
-              text: "{d:rtl}אתם - שאלה עם the main על פסקה. שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to the survey, what is the main reason teenagers stop reading?",
+              text: "{d:rtl}שימו לב למילת ההגבלה בשאלה.\n\nהשאלה: According to the survey, what is the main reason teenagers stop reading?",
             },
             {
               type: "self-check",
@@ -3050,8 +3145,10 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "כמה משפטים בעברית. סמנו את מילת הניגוד במשפט.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "משפטים בעברית",
             },
             {
               type: "mark-all",
@@ -3092,8 +3189,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "עכשיו באנגלית. כמה משפטים. סמנו את מילת הניגוד.",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "משפטים באנגלית",
+              subtitle: "סמנו את מילת הניגוד.",
             },
             {
               type: "mark-all",
@@ -3144,7 +3244,13 @@ export const c1Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "preface", text: "כמה פסקאות. סמנו את מילת הניגוד בפסקה." },
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 3,
+              title: "פסקאות",
+              subtitle: "סמנו את מילת הניגוד בפסקה.",
+            },
             {
               type: "mark-all",
               instruction: "Mark the contrast word in the paragraph.",
@@ -3328,6 +3434,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "שאלות אמריקאיות",
+            },
+            {
               type: "preface",
               text: "ארבעה צעדים: קוראים את כל 4 האפשרויות ← חוצים ← מוצאים הוכחה בפסקה הנכונה ← עונים.",
             },
@@ -3402,8 +3514,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "{d:rtl}עכשיו פורמט בחינה.\n{d:rtl}\n{d:rtl}🚦 רמזור לפני שעונים. **רק ירוק = עונים.**",
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 3,
+              title: "פורמט בחינה",
+              subtitle: "🚦 רמזור לפני שעונים. **רק ירוק = עונים.**",
             },
             {
               type: "passage-mcq",
@@ -3645,7 +3760,6 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "preface", text: "" },
             {
               type: "preface",
               text: "תשובה קצרה = תשובה אחת, מהטקסט, במשפט אחד. מילת השאלה אומרת מה לחפש.",
@@ -3954,6 +4068,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "השלמת משפט",
+            },
+            {
               type: "preface",
               text: "השלמת משפט: קוראים את ההתחלה. Because ___ = מחפשים סיבה. In order to ___ = מחפשים מטרה.",
             },
@@ -4080,7 +4200,6 @@ export const c1Lessons: LessonNode[] = [
               subtitle:
                 "השלימו את המשפטים באנגלית, מהטקסט. טקסט מוכר, ואחריו טקסט חדש. לא כל השלמה היא סיבה או מטרה - קראו את תחילת המשפט עד הסוף.",
             },
-            { type: "preface", text: "" },
             {
               type: "passage-quiz",
               text: "**REDONDA ISLAND**\n\nI  People first came to Redonda Island 150 years ago. They brought many goats with them because they wanted meat and milk. The goats ate all the plants, and the people could not find enough food, so they left the island.\n\nII  In 2016, environmentalists removed the goats so that the plants could grow back. Only a few years later, grass covered the island again, and birds returned to build their nests.",
@@ -4259,6 +4378,12 @@ export const c1Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "שתי תשובות",
+            },
             {
               type: "preface",
               text: "Give TWO answers = שתי תשובות, ממוספרות (1) ו-(2). מצאתם אחת? ממשיכים לחפש.",
@@ -4679,6 +4804,12 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "however / but",
+            },
+            {
               type: "preface",
               text: "{d:rtl}however / but מסמנים** פנייה** בטקסט. בדרך כלל אחריהם מגיעה הנקודה של הכותב - אבל לזכור שתמיד עונים על מה שהשאלה שואלת.",
             },
@@ -4742,8 +4873,14 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "מוצאים את however",
+            },
+            {
               type: "preface",
-              text: "{d:rtl} מצאו את however, וקראו מה בא אחריו.\n\n{d:rtl}השאלה: What good news does paragraph I mention?",
+              text: "{d:rtl}מצאו את however, וקראו מה בא אחריו.\n\n{d:rtl}השאלה: What good news does paragraph I mention?",
             },
             {
               type: "mcq",
@@ -5140,8 +5277,11 @@ export const c1Lessons: LessonNode[] = [
         {
           screens: [
             {
-              type: "preface",
-              text: "שלושה טקסטים. סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.",
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "שלושה טקסטים",
+              subtitle: "סמנו בכל אחד: מילות שלילה, מילות הגבלה, ומספרים ושמות.",
             },
             {
               type: "mark-all",
@@ -5427,6 +5567,7 @@ export const c1Lessons: LessonNode[] = [
             {
               type: "opener",
               kicker: "סיבוב 5 (רשות)",
+              level: 4,
               title: "כל השיטה ביחד",
               subtitle:
                 "מפה ← רמזור ← כלי ← תשובה.\nבכל שאלה תזהו איזה כלי צריך: שם או מספר שמכוונים אתכם, NOT או most / only שמשנים את התשובה.",
