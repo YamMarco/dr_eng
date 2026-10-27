@@ -1,8 +1,6 @@
-// Client for the LiteLLM proxy in /llm-gateway (OpenAI-compatible HTTP).
-// Callers pick a role from config.yaml, not a vendor.
-// Without a gateway (the Vercel MVP), falls back to Gemini's own
-// OpenAI-compatible endpoint with GEMINI_API_KEY: same request, and the
-// next model in GEMINI_MODELS is tried when one is overloaded.
+// LLM client: Gemini's OpenAI-compatible endpoint with GEMINI_API_KEY.
+// Callers pick a role, not a vendor; the next model in GEMINI_MODELS is
+// tried when one is overloaded.
 import { env } from '$env/dynamic/private';
 import type { z } from 'zod';
 
@@ -18,7 +16,6 @@ export interface LlmResult {
 }
 
 const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai';
-// Direct mode only; keep in step with llm-gateway/config.yaml.
 const GEMINI_MODELS: Record<LlmRole, string[]> = {
 	'grade-short': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
 	'grade-reading': ['gemini-3.1-flash-lite', 'gemini-3.5-flash-lite'],
@@ -29,18 +26,12 @@ const GEMINI_MODELS: Record<LlmRole, string[]> = {
 };
 
 function endpoint(role: LlmRole): { url: string; key: string; models: string[] } | undefined {
-	if (env.LLM_GATEWAY_URL && env.LLM_GATEWAY_KEY)
-		return {
-			url: `${env.LLM_GATEWAY_URL.replace(/\/$/, '')}/v1`,
-			key: env.LLM_GATEWAY_KEY,
-			models: [role] // the gateway does its own fallbacks
-		};
 	if (env.GEMINI_API_KEY)
 		return { url: GEMINI_URL, key: env.GEMINI_API_KEY, models: GEMINI_MODELS[role] };
 }
 
 export function llmConfigured(): boolean {
-	return Boolean(env.LLM_GATEWAY_URL && env.LLM_GATEWAY_KEY) || Boolean(env.GEMINI_API_KEY);
+	return Boolean(env.GEMINI_API_KEY);
 }
 
 type ChatOptions = {
