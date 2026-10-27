@@ -29,7 +29,6 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 | E9 | Supabase misconfig: RLS off, `USING (true)`, `SECURITY DEFINER` functions, leaked secret key | Every exposed table has RLS; secret key server-only |
 | E10 | Hook-only auth (cf. Next.js CVE-2025-29927 middleware bypass) | Auth re-checked inside each handler, not only in `hooks.server.ts` |
 | E11 | Path-encoding bypass: Kit routes the decoded path, so `/api/%67rade` reaches `/api/grade` | Hooks match `event.route.id`, never a regex on `url.pathname`; probe `%`-encoded variants |
-| E12 | LiteLLM proxy CVEs (pre-auth SQLi, MCP auth bypass, RCE chains; many in 2026) | Pinned to a patched release, admin UI off, master key server-only; re-check advisories before each deploy |
 | E13 | Guessable 100% coupon in a public repo | 100% codes random, capped and expiring; no real code in docs |
 
 ## Checklist
