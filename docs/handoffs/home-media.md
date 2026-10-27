@@ -1,6 +1,6 @@
 # Handoff: home page media
 
-Photos are in for all 6 slots (`front/static/home/`, paths and credits in `front/src/lib/site/media.ts`). Left:
+Photos are in for all 6 slots (`front/static/home/`, uncropped; paths, credits and `focus` (object-position) in `front/src/lib/site/media.ts`). Left:
 
 ## 1. Videos (optional)
 
@@ -10,10 +10,6 @@ Photos are in for all 6 slots (`front/static/home/`, paths and credits in `front
 - Set `video` and keep the current WebP as `image` (poster).
 - CSP allows `self` for `media-src`; don't hotlink.
 
-## 2. Hero face is hidden
+## 2. Look
 
-The phone mock (19rem) covers the middle of the hero frame; at 1280px only ~85px shows on each side, so no face fits. The hero photo works as atmosphere only. To show a face, narrow the mock or shift it off-center in `(site)/+page.svelte`.
-
-## 3. Look
-
-Check 390px and 1280px, both themes.
+Dark theme not yet checked.

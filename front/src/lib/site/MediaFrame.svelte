@@ -9,16 +9,33 @@
 		tone: 'teal' | 'gold' | 'navy' | 'sunset';
 		icon?: Component<{ size?: number; class?: string; 'aria-hidden'?: 'true' }>;
 		eager?: boolean;
+		zoom?: boolean;
+		shade?: boolean;
 		class?: string;
 	};
 
-	let { media, alt, tone, icon: Icon, eager = false, class: extra = '' }: Props = $props();
+	let {
+		media,
+		alt,
+		tone,
+		icon: Icon,
+		eager = false,
+		zoom = false,
+		shade = true,
+		class: extra = ''
+	}: Props = $props();
+
+	// zoom: the photo eases in when a parent `.group` is hovered.
+	let fill = $derived(
+		`absolute inset-0 h-full w-full object-cover ${zoom ? 'transition-transform duration-500 ease-out group-hover:scale-105' : ''}`
+	);
 </script>
 
 <div class="isolate overflow-hidden {extra}">
 	{#if media.video}
 		<video
-			class="absolute inset-0 h-full w-full object-cover"
+			class={fill}
+			style:object-position={media.focus}
 			src={media.video}
 			poster={media.image}
 			autoplay
@@ -29,7 +46,8 @@
 		></video>
 	{:else if media.image}
 		<img
-			class="absolute inset-0 h-full w-full object-cover"
+			class={fill}
+			style:object-position={media.focus}
 			src={media.image}
 			{alt}
 			loading={eager ? 'eager' : 'lazy'}
@@ -43,8 +61,11 @@
 			{#if Icon}<Icon size={140} class="art-icon" aria-hidden="true" />{/if}
 		</div>
 	{/if}
-	<div
-		class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0"
-		aria-hidden="true"
-	></div>
+	{#if shade}
+		<!-- Legibility for text laid over the photo, top and bottom. -->
+		<div
+			class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/0 to-black/55"
+			aria-hidden="true"
+		></div>
+	{/if}
 </div>

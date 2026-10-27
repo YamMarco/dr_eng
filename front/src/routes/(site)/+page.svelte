@@ -100,22 +100,25 @@
 			</div>
 		</div>
 
-		<div class="relative mx-auto flex w-full max-w-md justify-center lg:max-w-none">
+		<!-- On a phone: photo on top, the mock rising over its lower part. Desktop: photo at
+		     the end, the mock overlapping its inner edge. Either way the face stays clear. -->
+		<div class="relative mx-auto w-full max-w-md lg:max-w-none">
 			<MediaFrame
 				media={homeMedia.hero}
 				alt={t.heroAlt}
 				tone="teal"
 				eager
-				class="absolute inset-x-0 inset-y-6 rounded-[2.5rem] motion-safe:animate-rise sm:inset-x-6"
+				shade={false}
+				class="relative aspect-square w-full rounded-[2.5rem] shadow-xl motion-safe:animate-rise lg:absolute lg:inset-y-0 lg:inset-e-0 lg:aspect-auto lg:w-[60%]"
 			/>
 			<div
-				class="float-slow relative z-10 py-12 motion-safe:animate-rise"
+				class="float-slow relative z-10 -mt-[38%] flex justify-center motion-safe:animate-rise lg:mt-0 lg:justify-start lg:py-12"
 				style="animation-delay: 150ms"
 			>
 				<PhoneMock />
 			</div>
 			<span
-				class="float-chip absolute inset-e-0 top-16 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-e-2"
+				class="float-chip absolute inset-s-0 top-[29%] z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-s-2 lg:-inset-s-4 lg:top-20"
 				style="--chip-delay: 700ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-soft">
@@ -127,7 +130,7 @@
 				</span>
 			</span>
 			<span
-				class="float-chip absolute inset-s-0 bottom-24 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-s-2"
+				class="float-chip absolute inset-e-0 bottom-28 z-20 flex items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-xl ring-1 ring-line sm:-inset-e-2 lg:inset-e-[30%] lg:bottom-24"
 				style="--chip-delay: 900ms"
 			>
 				<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-soft">
@@ -139,7 +142,7 @@
 				</span>
 			</span>
 			<span
-				class="float-chip absolute inset-e-4 bottom-6 z-20 flex items-center gap-1.5 rounded-full bg-overlay px-3 py-1.5 text-xs font-bold text-white shadow-xl"
+				class="float-chip absolute inset-s-4 bottom-6 z-20 flex items-center gap-1.5 rounded-full bg-overlay px-3 py-1.5 text-xs font-bold text-white shadow-xl"
 				style="--chip-delay: 1100ms"
 			>
 				<Flame size={14} class="text-accent" aria-hidden="true" />
@@ -174,48 +177,53 @@
 	</section>
 
 	<!-- Moments -->
-	<section class="flex flex-col gap-8 pb-20 lg:pb-28">
-		<header {@attach reveal} class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 sm:px-6">
+	<!-- Phone: a swipeable row that peeks the next card. Desktop: a bento, the first moment
+	     tall at the start, the other four in a 2x2 beside it. -->
+	<section class="mx-auto flex w-full max-w-6xl flex-col gap-8 pb-20 lg:pb-28">
+		<header {@attach reveal} class="flex flex-col gap-2 px-4 sm:px-6">
 			{@render kicker(t.momentsKicker)}
 			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.momentsTitle}</h2>
 			<p class="text-lg text-muted">{t.momentsBody}</p>
 		</header>
-		<div
-			class="marquee-wrap overflow-hidden motion-reduce:scrollbar-none motion-reduce:overflow-x-auto"
+		<ul
+			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
 		>
-			<div class="marquee flex w-max">
-				{#each [0, 1] as copy (copy)}
-					<ul
-						class="flex gap-4 pe-4 {copy ? 'motion-reduce:hidden' : ''}"
-						aria-hidden={copy ? 'true' : undefined}
+			{#each t.moments as moment, i (moment.id)}
+				{@const art = momentArt[moment.id as keyof typeof momentArt]}
+				{@const ChipIcon = momentChipIcons[moment.id as keyof typeof momentChipIcons]}
+				<li
+					{@attach reveal}
+					style="--reveal-delay: {i * 80}ms"
+					class="group relative aspect-[3/4] w-[78%] shrink-0 snap-start sm:w-80 lg:aspect-auto lg:w-auto {i ===
+					0
+						? 'lg:row-span-2'
+						: ''}"
+				>
+					<MediaFrame
+						media={homeMedia[moment.id]}
+						alt={moment.alt}
+						tone={art.tone}
+						icon={art.icon}
+						zoom
+						class="relative h-full w-full rounded-4xl shadow-md ring-1 ring-black/5 transition-shadow duration-300 group-hover:shadow-xl"
+					/>
+					<span
+						class="absolute inset-x-5 top-5 text-2xl font-black tracking-tight text-white drop-shadow-md {i ===
+						0
+							? 'lg:text-4xl'
+							: ''}">{moment.when}</span
 					>
-						{#each t.moments as moment (moment.id)}
-							{@const art = momentArt[moment.id as keyof typeof momentArt]}
-							{@const ChipIcon = momentChipIcons[moment.id as keyof typeof momentChipIcons]}
-							<li class="relative h-88 w-64 shrink-0 sm:h-104 sm:w-72">
-								<MediaFrame
-									media={homeMedia[moment.id]}
-									alt={moment.alt}
-									tone={art.tone}
-									icon={art.icon}
-									class="relative h-full w-full rounded-4xl"
-								/>
-								<span
-									class="absolute inset-x-4 top-4 text-xl font-extrabold text-white drop-shadow-sm"
-									>{moment.when}</span
-								>
-								<span
-									class="absolute inset-s-4 bottom-4 flex items-center gap-2 rounded-2xl bg-surface/95 px-3 py-2 text-sm font-bold shadow-lg backdrop-blur"
-								>
-									<ChipIcon size={16} class="text-brand-dark" aria-hidden="true" />
-									{moment.chip}
-								</span>
-							</li>
-						{/each}
-					</ul>
-				{/each}
-			</div>
-		</div>
+					<span
+						class="absolute inset-s-4 bottom-4 flex items-center gap-2.5 rounded-2xl bg-surface/95 py-2 ps-2 pe-3.5 text-sm font-bold shadow-lg backdrop-blur transition-transform duration-300 group-hover:-translate-y-1"
+					>
+						<span class="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-soft">
+							<ChipIcon size={16} class="text-brand-dark" aria-hidden="true" />
+						</span>
+						{moment.chip}
+					</span>
+				</li>
+			{/each}
+		</ul>
 	</section>
 
 	<!-- How it works -->
