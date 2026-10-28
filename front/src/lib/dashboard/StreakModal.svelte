@@ -7,6 +7,8 @@
 	import { activity, WEEKLY_GOAL } from '$lib/activity.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { reducedMotion } from '$lib/motion';
+	import { Flame } from '@lucide/svelte';
 
 	// The day's first practice: the flame ignites, the day count rolls up and
 	// today's dot fills in. Shown once a day, over whatever screen finished it.
@@ -20,6 +22,16 @@
 	});
 
 	const close = () => (activity.celebrating = false);
+
+	// A new streak: the unlit flame catches fire a beat after the modal opens.
+	// A continued one: the burning flame grows and flares instead.
+	const LIGHT_DELAY = 450;
+	let lit = $state(false);
+	$effect(() => {
+		if (!activity.celebrating) return void (lit = false);
+		const id = setTimeout(() => (lit = true), reducedMotion ? 0 : LIGHT_DELAY);
+		return () => clearTimeout(id);
+	});
 
 	// Fixed for the modal's lifetime, not reactive state.
 	const today = new Date();
@@ -51,7 +63,19 @@
 			transition:scale={{ start: 0.85, duration: 300, easing: backOut }}
 		>
 			<Confetti />
-			<StreakFlame days={days || 1} goal={WEEKLY_GOAL} size={96} replay />
+			<div class="relative flex h-24 w-24 items-center justify-center">
+				{#if streak > 1}
+					<span class="grow">
+						<StreakFlame {days} goal={WEEKLY_GOAL} size={96} ignite={false} />
+					</span>
+				{:else if lit}
+					<StreakFlame days={1} goal={WEEKLY_GOAL} size={96} ignite />
+				{:else}
+					<span out:fade={{ duration: 150 }} class="absolute">
+						<Flame size={80} class="text-muted" aria-hidden="true" />
+					</span>
+				{/if}
+			</div>
 
 			<div class="flex flex-col items-center">
 				<span
@@ -115,6 +139,24 @@
 			transform: translateY(-50%);
 		}
 	}
+	/* A continued streak: the flame swells, flares and settles bigger. */
+	.grow {
+		display: block;
+		transform-origin: 50% 90%;
+		animation: grow 900ms cubic-bezier(0.3, 1.5, 0.5, 1) 300ms both;
+	}
+	@keyframes grow {
+		0% {
+			transform: scale(0.6);
+		}
+		55% {
+			transform: scale(1.3);
+			filter: drop-shadow(0 0 12px rgb(251 146 60 / 0.9));
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
 	/* Today's dot fills in with a pop, right after the count. */
 	.today-pop {
 		animation: today-pop 400ms cubic-bezier(0.3, 1.6, 0.5, 1) 1000ms both;
@@ -133,7 +175,8 @@
 			animation: none;
 			transform: translateY(-50%);
 		}
-		.today-pop {
+		.today-pop,
+		.grow {
 			animation: none;
 		}
 	}
