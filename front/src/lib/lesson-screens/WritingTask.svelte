@@ -160,6 +160,7 @@
 
 	async function submitToLlm() {
 		grading = true;
+		label = i18n.dict.feedback.checking;
 		const text = paragraph ? essayText : lines.join('\n');
 		const result = await gradeLesson(text, rules, {
 			question,
@@ -371,9 +372,7 @@
 	{/if}
 
 	{#if llmMode}
-		{#if grading}
-			<p class="mt-3 text-sm font-semibold text-muted">{i18n.dict.feedback.checking}</p>
-		{:else if feedback}
+		{#if feedback}
 			<FeedbackView {feedback} />
 			{#if !feedback.pass}
 				<p class="mt-2 text-xs font-semibold text-muted">{i18n.dict.feedback.replayNote}</p>
