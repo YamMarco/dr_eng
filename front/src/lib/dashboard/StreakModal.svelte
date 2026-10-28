@@ -24,7 +24,7 @@
 	const close = () => (activity.celebrating = false);
 
 	// A new streak: the unlit flame catches fire a beat after the modal opens.
-	// A continued one: the burning flame grows and flares instead.
+	// A continued one: the burning flame gets a boost of fire, then settles back.
 	const LIGHT_DELAY = 450;
 	let lit = $state(false);
 	$effect(() => {
@@ -65,7 +65,7 @@
 			<Confetti />
 			<div class="relative flex h-24 w-24 items-center justify-center">
 				{#if streak > 1}
-					<span class="grow">
+					<span class="boost">
 						<StreakFlame {days} goal={WEEKLY_GOAL} size={96} ignite={false} />
 					</span>
 				{:else if lit}
@@ -139,22 +139,27 @@
 			transform: translateY(-50%);
 		}
 	}
-	/* A continued streak: the flame swells, flares and settles bigger. */
-	.grow {
+	/* A continued streak: from its normal size the flame flares up, then settles back. */
+	.boost {
 		display: block;
 		transform-origin: 50% 90%;
-		animation: grow 900ms cubic-bezier(0.3, 1.5, 0.5, 1) 300ms both;
+		animation: boost 1100ms ease-in-out 450ms both;
 	}
-	@keyframes grow {
-		0% {
-			transform: scale(0.6);
-		}
-		55% {
-			transform: scale(1.3);
-			filter: drop-shadow(0 0 12px rgb(251 146 60 / 0.9));
-		}
+	@keyframes boost {
+		0%,
 		100% {
 			transform: scale(1);
+			filter: none;
+		}
+		35% {
+			transform: scale(1.4, 1.5);
+			filter: drop-shadow(0 0 16px rgb(249 115 22 / 0.95));
+		}
+		60% {
+			transform: scale(0.94, 0.9);
+		}
+		80% {
+			transform: scale(1.06);
 		}
 	}
 	/* Today's dot fills in with a pop, right after the count. */
@@ -176,7 +181,7 @@
 			transform: translateY(-50%);
 		}
 		.today-pop,
-		.grow {
+		.boost {
 			animation: none;
 		}
 	}
