@@ -1,9 +1,10 @@
-// Daily practice reminder, run by Vercel Cron (vercel.json). Public route by name
+// Daily practice reminder, run hourly (.github/workflows/reminders.yml). Public route by name
 // (hooks.server.ts) because no user calls it: it checks CRON_SECRET itself and fails closed.
-// Skips students who already practiced today (their synced `activity-days`).
+// Sends to devices whose chosen hour has come, and skips students who already practiced today
+// (their synced `activity-days`).
 import { timingSafeEqual } from 'node:crypto';
 import { error, json } from '@sveltejs/kit';
-import { and, eq, inArray, isNull, lt, or } from 'drizzle-orm';
+import { and, between, eq, inArray, isNull, lt, or } from 'drizzle-orm';
 import { env } from '$env/dynamic/private';
 import { db } from '$lib/server/db';
 import { progress, pushSubscriptions } from '$lib/server/db/schema';
@@ -22,18 +23,35 @@ function authorized(header: string | null): boolean {
 	return got.length === expected.length && timingSafeEqual(got, expected);
 }
 
+/** A late or missed run still sends, up to this many hours after the chosen one. */
+const LATE_HOURS = 2;
+
 /** Today in Israel, as `activity-days` stores it (YYYY-MM-DD). */
 const israelDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jerusalem' });
+const israelHour = () =>
+	Number(
+		new Date().toLocaleString('en-US', {
+			timeZone: 'Asia/Jerusalem',
+			hour: 'numeric',
+			hourCycle: 'h23'
+		})
+	);
 
 export const GET: RequestHandler = async ({ request }) => {
 	if (!env.CRON_SECRET || !pushEnabled || !db) error(503, 'reminders are not configured');
 	if (!authorized(request.headers.get('authorization'))) error(401, 'unauthorized');
 
 	const today = israelDay();
+	const hour = israelHour();
 	const subs = await db
 		.select()
 		.from(pushSubscriptions)
-		.where(or(isNull(pushSubscriptions.lastSentDay), lt(pushSubscriptions.lastSentDay, today)));
+		.where(
+			and(
+				between(pushSubscriptions.remindHour, hour - LATE_HOURS, hour),
+				or(isNull(pushSubscriptions.lastSentDay), lt(pushSubscriptions.lastSentDay, today))
+			)
+		);
 	if (!subs.length) return json({ sent: 0 });
 
 	const days = await db

@@ -1,11 +1,26 @@
 // The daily practice reminder (Web Push, src/service-worker.ts). This device's push
-// subscription is the on/off state; the server keeps a copy to send to (/api/reminders).
+// subscription is the on/off state; the server keeps a copy to send to (/api/reminders),
+// with the hour (Israel time) chosen on this device.
 // iPhone: push exists only inside the installed app (Add to Home Screen).
 import { apiFetch } from './api';
 import { install } from './install.svelte';
 import { MOBILE_BUILD } from './platform';
 
 const KEY: string | undefined = import.meta.env.VITE_VAPID_PUBLIC_KEY;
+const HOUR_KEY = 'reminder-hour';
+
+/** The hours a student can pick (Israel time). */
+export const REMINDER_HOURS = Array.from({ length: 16 }, (_, i) => i + 7);
+const DEFAULT_HOUR = 17;
+
+function storedHour(): number {
+	try {
+		const hour = Number(localStorage.getItem(HOUR_KEY));
+		return REMINDER_HOURS.includes(hour) ? hour : DEFAULT_HOUR;
+	} catch {
+		return DEFAULT_HOUR;
+	}
+}
 
 export type ReminderStatus =
 	'loading' | 'off' | 'on' | 'denied' | 'needs-install' | 'ios-update' | 'in-app' | 'unsupported';
@@ -27,10 +42,12 @@ class RemindersStore {
 	/** Off entirely until the VAPID key is configured. */
 	readonly available = Boolean(KEY) && !MOBILE_BUILD;
 	status = $state<ReminderStatus>('loading');
+	hour = $state(DEFAULT_HOUR);
 	busy = $state(false);
 	failed = $state(false);
 
 	async load(): Promise<void> {
+		this.hour = storedHour();
 		if (install.inApp) {
 			this.status = 'in-app';
 		} else if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
@@ -62,15 +79,11 @@ class RemindersStore {
 				userVisibleOnly: true,
 				applicationServerKey: KEY
 			});
-			const res = await apiFetch('/api/reminders', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(sub.toJSON())
-			});
-			if (!res.ok) {
+			if (!(await this.#save(sub))) {
 				await sub.unsubscribe();
-				throw new Error(`reminders ${res.status}`);
+				throw new Error('reminders not saved');
 			}
+			this.#remember();
 			this.status = 'on';
 		} catch {
 			this.failed = true;
@@ -78,6 +91,41 @@ class RemindersStore {
 		} finally {
 			this.busy = false;
 		}
+	}
+
+	async setHour(hour: number): Promise<void> {
+		const previous = this.hour;
+		this.hour = hour;
+		if (this.status !== 'on') return this.#remember();
+		this.busy = true;
+		this.failed = false;
+		try {
+			const sub = await currentSubscription();
+			if (!sub || !(await this.#save(sub))) throw new Error('reminders not saved');
+			this.#remember();
+		} catch {
+			this.hour = previous;
+			this.failed = true;
+		} finally {
+			this.busy = false;
+		}
+	}
+
+	#remember(): void {
+		try {
+			localStorage.setItem(HOUR_KEY, String(this.hour));
+		} catch {
+			// private mode: the hour still holds on the server
+		}
+	}
+
+	async #save(sub: PushSubscription): Promise<boolean> {
+		const res = await apiFetch('/api/reminders', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ ...sub.toJSON(), hour: this.hour })
+		});
+		return res.ok;
 	}
 
 	/** Also on sign-out: a shared device stops getting the previous account's reminders. */

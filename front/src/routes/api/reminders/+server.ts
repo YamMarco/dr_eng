@@ -1,4 +1,5 @@
-// The daily practice reminder: save (POST) or drop (DELETE) this device's push subscription.
+// The daily practice reminder: save (POST, also to change its hour) or drop (DELETE) this
+// device's push subscription.
 // The user comes from the verified token (hooks.server.ts), never the body.
 import { error } from '@sveltejs/kit';
 import { and, count, eq, ne } from 'drizzle-orm';
@@ -17,7 +18,12 @@ const key = z
 	.string()
 	.regex(/^[\w-]+=*$/)
 	.max(200);
-const subscribeBody = z.object({ endpoint, keys: z.object({ p256dh: key, auth: key }) });
+const subscribeBody = z.object({
+	endpoint,
+	keys: z.object({ p256dh: key, auth: key }),
+	/** Israel hour. */
+	hour: z.number().int().min(0).max(23)
+});
 const unsubscribeBody = z.object({ endpoint });
 
 function ready(locals: App.Locals): string {
@@ -27,7 +33,7 @@ function ready(locals: App.Locals): string {
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	const userId = ready(locals);
-	const { endpoint, keys } = await jsonBody(request, subscribeBody);
+	const { endpoint, keys, hour } = await jsonBody(request, subscribeBody);
 	const [{ devices }] = await db!
 		.select({ devices: count() })
 		.from(pushSubscriptions)
@@ -36,8 +42,11 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	// Same device, another account: the subscription moves to whoever turned it on last.
 	await db!
 		.insert(pushSubscriptions)
-		.values({ endpoint, userId, ...keys })
-		.onConflictDoUpdate({ target: pushSubscriptions.endpoint, set: { userId, ...keys } });
+		.values({ endpoint, userId, ...keys, remindHour: hour })
+		.onConflictDoUpdate({
+			target: pushSubscriptions.endpoint,
+			set: { userId, ...keys, remindHour: hour }
+		});
 	return new Response(null, { status: 204 });
 };
 

@@ -1,0 +1,19 @@
+# Hourly trigger for the daily practice reminder (front/src/routes/api/cron/reminders).
+# GitHub, not Vercel Cron: Vercel's Hobby plan runs crons only once a day.
+# Needs the repo secret CRON_SECRET (same value as on Vercel).
+name: reminders
+on:
+  schedule:
+    - cron: '5 * * * *'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: >
+          curl -fsS --retry 3 -H "Authorization: Bearer $CRON_SECRET"
+          https://www.engup.co.il/api/cron/reminders
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}

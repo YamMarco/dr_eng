@@ -80,7 +80,7 @@ Progress follows the account (needs accounts and `DATABASE_URL`; otherwise it st
 
 ## Install and daily reminder (web)
 
-The site installs as a home-screen app (PWA) and sends one push reminder a day. Web build only (`MOBILE_BUILD` hides it and skips the service worker).
+The site installs as a home-screen app (PWA) and sends one push reminder a day, at the hour the student picks. Web build only (`MOBILE_BUILD` hides it and skips the service worker).
 
 - **Install:**
   - `static/manifest.webmanifest` plus the icons in `static/icons/` (rendered from the logo; re-render if the logo changes). `start_url` is `/app`.
@@ -88,19 +88,19 @@ The site installs as a home-screen app (PWA) and sends one push reminder a day. 
   - The student guide is `/app/install`: one tap where the browser offers it, otherwise steps per device (iPhone, Android, computer). Settings > practice links to it until the app is installed.
 - **Service worker** (`src/service-worker.ts`): push and notification click only, no offline cache.
 - **Reminder:**
-  - Settings > practice > "תזכורת יומית" (`ReminderRow.svelte`, also on the install screen once installed). This device's push subscription is the on/off state; `/api/reminders` saves it (POST) or drops it (DELETE), max 5 devices per account.
+  - Settings > practice > "תזכורת יומית" (`ReminderRow.svelte`, also on the streak screen and the install screen once installed). This device's push subscription is the on/off state; `/api/reminders` saves it (POST) or drops it (DELETE), max 5 devices per account.
+  - Hour: once on, a picker (07:00-22:00 Israel time, default 17:00). Kept per device (`remind_hour`, and `localStorage` for display); changing it re-POSTs the subscription.
   - Endpoints are limited to the browsers' push services (`server/push.ts`, no SSRF).
   - Sign-out and account deletion drop it.
-- **Send:** Vercel Cron (`vercel.json`, `0 15 * * *` UTC = 17:00-18:00 in Israel) calls `/api/cron/reminders` (public by name, checks `CRON_SECRET`, fails closed).
-  - Skips students whose synced `activity-days` already has today (Israel date), and sends at most once a day per device.
+- **Send:** a GitHub Actions schedule (`.github/workflows/reminders.yml`, hourly at :05; Vercel Hobby crons are daily only) calls `/api/cron/reminders` (public by name, checks `CRON_SECRET`, fails closed).
+  - Sends to devices whose hour has come, up to 2 hours late (GitHub schedules can lag or skip a run). Skips students whose synced `activity-days` already has today (Israel date), and sends at most once a day per device.
   - Expired subscriptions (404/410) are deleted. A reminder not delivered within 4 hours is dropped.
-- **Per device** (`ReminderStatus`): the reminder row explains what this device needs instead of offering a switch that can't work. On iPhone, push works only in the installed app (iOS 16.4+): not installed means a link to the guide, installed but older means "update iOS". A social app's in-app browser (Instagram, TikTok...) gets "open in Safari / Chrome", and the guide says the same. On the iPhone tab, the guide notes that reminders need the install.
-- **Hobby plan:** crons run once a day, anywhere within the hour. A student-chosen reminder time needs an hourly cron (Pro).
+- **Per device** (`ReminderStatus`): the reminder row explains what this device needs instead of offering a switch that can't work. On iPhone, push works only in the installed app (iOS 16.4+): not installed means an "להתקנה" button (the browser's install dialog where it has one, else the guide), installed but older means "update iOS". A social app's in-app browser (Instagram, TikTok...) gets "open in Safari / Chrome", and the guide says the same. On the iPhone tab, the guide notes that reminders need the install.
 
 ### Turning it on
 
 1. `npx web-push generate-vapid-keys`. Set `VITE_VAPID_PUBLIC_KEY` (public) and `VAPID_PRIVATE_KEY` (server only) in `.env.local` and on Vercel.
-2. `CRON_SECRET` on Vercel (long random string; Vercel sends it to the cron).
+2. `CRON_SECRET` (long random string) on Vercel and as a GitHub repo secret (the workflow sends it).
 3. `npm run db:migrate` (table `push_subscriptions`).
 4. Redeploy. Until the keys are set, the reminder row is hidden and the routes answer 503.
 

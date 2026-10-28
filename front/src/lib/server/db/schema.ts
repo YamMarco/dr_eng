@@ -15,6 +15,7 @@ import {
 	jsonb,
 	pgTable,
 	primaryKey,
+	smallint,
 	text,
 	timestamp,
 	uuid
@@ -100,6 +101,8 @@ export const pushSubscriptions = pgTable(
 		userId: uuid().notNull(),
 		p256dh: text().notNull(),
 		auth: text().notNull(),
+		/** Israel hour (0-23) the student chose for the reminder. */
+		remindHour: smallint().notNull().default(17),
 		/** Israel date of the last reminder sent: at most one a day. */
 		lastSentDay: date(),
 		createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()

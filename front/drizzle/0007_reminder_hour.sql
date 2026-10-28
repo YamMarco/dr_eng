@@ -1,0 +1,1 @@
+ALTER TABLE "push_subscriptions" ADD COLUMN "remind_hour" smallint DEFAULT 17 NOT NULL;
