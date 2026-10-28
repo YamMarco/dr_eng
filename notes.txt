@@ -27,7 +27,7 @@ Sync student data to Supabase: progress, take history, decks, phrase bank, profi
 Custom email sending: buy a domain, set up Resend, and connect it in Supabase Auth.
 Legal text: review the privacy and terms pages. Add parental consent for minors, a line on what's sent to the LLM, and a refund policy (Israeli law allows 14 days).
 Real support contacts: a support inbox and a WhatsApp Business number, set in support.ts.
-Production domain on Vercel: set every env var there, including DATABASE_URL, SUPABASE_SECRET_KEY and the Sentry DSN, then update the Supabase Site URL and redirect URLs to the new domain.
+Production domain on Vercel: set every env var there, including DATABASE_URL, SUPABASE_SECRET_KEY, then update the Supabase Site URL and redirect URLs to the new domain.
 LLM provider spending cap: set a monthly budget alert or limit as a backstop to the daily quota.
 Analytics: sign-ups, payment conversion, lesson drop-off.
 Database backups: upgrade to Supabase Pro or schedule dumps once orders are real.

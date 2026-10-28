@@ -108,6 +108,3 @@ The site installs as a home-screen app (PWA) and sends one push reminder a day, 
 
 Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<file>`; `lesson-screens/vocabImage.ts` maps it to the bucket URL. `/edit` uploads go straight to the bucket (live at once). Bulk copy: `node --env-file=.env.local scripts/upload-vocab-images.mjs <folder>`.
 
-## Error reporting (Sentry)
-
-Off until `VITE_SENTRY_DSN` is set (`.env.local` and the host). `hooks.client.ts` and `hooks.server.ts` report unhandled errors; the LLM routes also report their failures. No replay or tracing (students are minors).

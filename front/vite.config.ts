@@ -28,9 +28,6 @@ function csp(mode: string): KitConfig['csp'] {
 	const turnstile: Host[] = env.VITE_TURNSTILE_SITE_KEY
 		? ['https://challenges.cloudflare.com']
 		: [];
-	const sentry: Host[] = env.VITE_SENTRY_DSN
-		? ['https://*.ingest.sentry.io', 'https://*.ingest.de.sentry.io']
-		: [];
 	return {
 		mode: 'auto',
 		directives: {
@@ -41,7 +38,7 @@ function csp(mode: string): KitConfig['csp'] {
 			'img-src': ['self', 'data:', 'blob:', ...supabase],
 			'media-src': ['self', 'blob:', ...supabase],
 			'font-src': ['self', 'data:'],
-			'connect-src': ['self', ...supabase, ...sentry, ...origin(env.VITE_API_BASE)],
+			'connect-src': ['self', ...supabase, ...origin(env.VITE_API_BASE)],
 			'object-src': ['none'],
 			'base-uri': ['self'],
 			'form-action': ['self'],

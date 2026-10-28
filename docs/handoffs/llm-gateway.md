@@ -15,7 +15,6 @@ Live in production: `AI_GATEWAY_API_KEY` is set (Production) and the gateway cod
 ## Still open from before
 
 - **Gemini billing** (AI Studio → the key's project): paid tier, so student prompts aren't used for training; budget alert in Google Cloud Billing. Needed while Gemini direct is the fallback.
-- **Sentry:** create the project, set `VITE_SENTRY_DSN` on Vercel (Production).
 - **Preview:** no `DATABASE_URL`, so AI routes there answer 503 (by design). Add a dev database, or accept it.
 - **Vercel Pro** before the first paid user (Hobby is non-commercial).
 - **Prices:** Gemini 3.8 Flash doubles on 2027-01-01 (see the note in `llmModels.ts`). Re-check in December.

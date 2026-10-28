@@ -34,7 +34,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 ## Checklist
 
 ### Secrets
-1. Only public values client-side: Supabase URL + publishable key, Sentry DSN, Stripe `pk_*`. Never client-side: Supabase secret key, `DATABASE_URL`, LLM keys, payment secret keys, webhook secrets.
+1. Only public values client-side: Supabase URL + publishable key, Stripe `pk_*`. Never client-side: Supabase secret key, `DATABASE_URL`, LLM keys, payment secret keys, webhook secrets.
 2. `.env*` (except committed public-only `.env.mobile`) and `admin-users.local.txt` are gitignored; `.env.example` holds placeholders only. A secret ever committed = rotate it; deleting the file doesn't remove it from history.
 
 ### Access control and auth (OWASP A01, A07)
@@ -47,7 +47,7 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 ### Config and deployment (A02)
 8. Headers: CSP (start strict, loosen as needed), HSTS, `frame-ancestors 'none'` / `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` (camera=(), geolocation=(), microphone=(self) for the speak screen).
 9. CORS: exact origin allowlist, never `*` on authenticated routes; `Allow-Credentials` only with specific origins.
-10. Production: no public source maps (upload to Sentry, then delete), `/.git` not served, error pages without stack traces, no verbose logging.
+10. Production: no public source maps, `/.git` not served, error pages without stack traces, no verbose logging.
 11. Environments: preview deployments never use production DB, payment or LLM keys (previews are reachable by URL).
 
 ### Supply chain (A03)
@@ -90,15 +90,14 @@ Reusable checklist for auditing this app (SvelteKit + Supabase + Drizzle + LLM r
 36. Deep links: validate every parameter, no tokens in URLs, no destructive action without confirmation.
 
 ### Logging and errors (A09, A10)
-37. Sentry scrubs PII (tokens, emails, essay text); no replay; failure alerts exist.
-38. Fail closed: when auth, access or quota checks error, paid/LLM routes deny. Only offline content may fail open.
+37. Fail closed: when auth, access or quota checks error, paid/LLM routes deny. Only offline content may fail open.
 
 ### Privacy (Israel Protection of Privacy Law, Amendment 13; Data Security Regulations 5777)
-39. Privacy notice: purpose, controller, recipients, access/correction rights; data minimization; account deletion also removes server rows; check DPO need (large-scale minors' data); minors' consent follows guardianship law.
-40. Security regulations: access control, encryption at rest/in transit, periodic audit, written incident procedure.
+38. Privacy notice: purpose, controller, recipients, access/correction rights; data minimization; account deletion also removes server rows; check DPO need (large-scale minors' data); minors' consent follows guardianship law.
+39. Security regulations: access control, encryption at rest/in transit, periodic audit, written incident procedure.
 
 ### Ops
-41. 2FA on GitHub, Vercel, Supabase, npm, LLM provider; host secrets marked sensitive; key rotation steps known.
+40. 2FA on GitHub, Vercel, Supabase, npm, LLM provider; host secrets marked sensitive; key rotation steps known.
 
 ## Report format
 

@@ -1,7 +1,6 @@
 // The shell every LLM endpoint shares: configured -> guardLlm (auth, plan, quotas) ->
 // the handler -> JSON. An HTTP error thrown on purpose (401, 429, 400...) is logged as a
 // warning and passed on; any other failure is logged and becomes a 502.
-import * as Sentry from '@sentry/sveltekit';
 import { error, isHttpError, json, type RequestEvent, type RequestHandler } from '@sveltejs/kit';
 import type { z } from 'zod';
 import { llmConfigured } from './llm';
@@ -23,7 +22,6 @@ export function llmRoute(
 				throw e;
 			}
 			console.error(`${failure}:`, e);
-			Sentry.captureException(e);
 			throw error(502, failure);
 		}
 	};
