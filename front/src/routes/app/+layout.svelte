@@ -2,6 +2,7 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
 	import Paywall from '$lib/components/Paywall.svelte';
+	import StreakModal from '$lib/dashboard/StreakModal.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { access } from '$lib/access.svelte';
 	import { profile } from '$lib/profile.svelte';
@@ -36,6 +37,7 @@
 		<!-- Checking the plan, or bringing the account's progress to a new device: same beat. -->
 	{:else if access.active}
 		{@render children()}
+		<StreakModal />
 	{:else}
 		<Paywall />
 	{/if}

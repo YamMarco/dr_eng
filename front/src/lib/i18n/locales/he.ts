@@ -490,6 +490,14 @@ export const he = {
 		history: '12 השבועות האחרונים',
 		rule: 'יום תרגול = סיימתם סבב בשיעור או הגשתם מבחן.'
 	},
+	streakModal: {
+		started: 'התחלתם רצף!',
+		continued: 'הרצף ממשיך!',
+		days: (n: number) => (n === 1 ? 'יום ברצף' : 'ימים ברצף'),
+		startedSub: 'תרגלו גם מחר והרצף יגדל.',
+		continuedSub: 'עוד יום של תרגול - ככה מתקדמים.',
+		cta: 'המשיכו'
+	},
 	onboarding: {
 		step: (current: number, total: number) => `שלב ${current} מתוך ${total}`,
 		nameTitle: 'איך קוראים לכם?',

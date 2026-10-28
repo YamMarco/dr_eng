@@ -4,8 +4,9 @@
 	// The weekly-streak flame. Lit = practiced this week: a living three-layer
 	// flame (pure SVG + CSS) that ignites once per session, then keeps burning.
 	// Unlit = the plain outline icon.
-	type Props = { days: number; goal: number; size?: number };
-	let { days, goal, size = 20 }: Props = $props();
+	// `replay` ignites regardless of the session (the streak modal).
+	type Props = { days: number; goal: number; size?: number; replay?: boolean };
+	let { days, goal, size = 20, replay = false }: Props = $props();
 
 	const SESSION_KEY = 'flame-lit';
 
@@ -13,6 +14,7 @@
 	let full = $derived(days >= goal);
 	// Read once: ignite only on the session's first view.
 	const ignite = (() => {
+		if (replay) return true;
 		try {
 			if (sessionStorage.getItem(SESSION_KEY)) return false;
 			sessionStorage.setItem(SESSION_KEY, '1');

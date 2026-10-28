@@ -27,6 +27,8 @@ function load(): string[] {
 
 class ActivityStore {
 	private days = $state<string[]>(load());
+	/** Today just became a practice day here: the streak modal is due. */
+	celebrating = $state(false);
 
 	constructor() {
 		onSyncedChange(STORAGE_KEY, () => (this.days = load()));
@@ -37,6 +39,7 @@ class ActivityStore {
 		if (this.days.includes(today)) return;
 		this.days = [...this.days, today].slice(-MAX_DAYS);
 		saveSynced(STORAGE_KEY, this.days);
+		this.celebrating = true;
 	}
 
 	/** Whether the student practiced on this day. */
