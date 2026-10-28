@@ -172,7 +172,8 @@ export const c3Lessons: LessonNode[] = [
               type: "opener",
               kicker: "סיבוב 3 (רשות)",
               title: "עוד זיהוי של עמדה",
-              subtitle: "הבנתם? אפשר להמשיך. עוד לא בטוחים מה ההבדל בין עמדה לתיאור? הסיבוב הזה בשבילכם.",
+              subtitle:
+                "הבנתם? אפשר להמשיך. עוד לא בטוחים מה ההבדל בין עמדה לתיאור? הסיבוב הזה בשבילכם.",
             },
             {
               type: "mcq",
@@ -229,7 +230,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}הסיבה צריכה לענות על שאלה אחת: למה?\n{p:text}❌ I think students should volunteer because volunteering is good.\n\n{d:rtl}למה זה לא עובד? כי \"good\" לא מסביר כלום.\n\n{d:rtl}ומה כן עובד?",
+          text: '{d:rtl}הסיבה צריכה לענות על שאלה אחת: למה?\n{p:text}❌ I think students should volunteer because volunteering is good.\n\n{d:rtl}למה זה לא עובד? כי "good" לא מסביר כלום.\n\n{d:rtl}ומה כן עובד?',
         },
         {
           type: "preface",
@@ -249,7 +250,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים סיבה חזקה" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים סיבה חזקה",
+            },
             {
               type: "mcq",
               prompt: "איזו סיבה אחרי because היא הכי חזקה?",
@@ -535,6 +541,7 @@ export const c3Lessons: LessonNode[] = [
                 "In addition מביא סיבה שנייה, שונה מהראשונה",
               ],
               requiredMoves: ["stance", "because", "in-addition"],
+              llmGrade: true,
             },
           ],
         },
@@ -944,7 +951,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים סיום טוב" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים סיום טוב",
+            },
             {
               type: "mcq",
               prompt: "איזה משפט סיום הוא הכי טוב?",
@@ -1110,7 +1122,8 @@ export const c3Lessons: LessonNode[] = [
               type: "opener",
               kicker: "סיבוב 4 (רשות)",
               title: "עוד שלד אחד",
-              subtitle: "כתבתם שלד שלם? מצוין, אפשר להמשיך. רוצים עוד חזרה לפני שיעורי הנושא - הנה עוד אחד.",
+              subtitle:
+                "כתבתם שלד שלם? מצוין, אפשר להמשיך. רוצים עוד חזרה לפני שיעורי הנושא - הנה עוד אחד.",
             },
             {
               type: "writing-task",
@@ -1430,7 +1443,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "החשבון והכללים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "החשבון והכללים",
+            },
             {
               type: "mcq",
               prompt:
@@ -1565,7 +1583,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "להבין מה מבקשים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "להבין מה מבקשים",
+            },
             {
               type: "mcq",
               prompt:
@@ -1638,7 +1661,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "השלד: 4 משפטים",
+            },
             {
               type: "writing-task",
               prompt:
@@ -1872,7 +1900,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "להבין מה מבקשים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "להבין מה מבקשים",
+            },
             {
               type: "mcq",
               prompt:
@@ -1909,7 +1942,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "השלד: 4 משפטים",
+            },
             {
               type: "writing-task",
               prompt:
@@ -2135,7 +2173,12 @@ export const c3Lessons: LessonNode[] = [
       rounds: [
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 1", level: 1, title: "מזהים הצעה ספציפית" },
+            {
+              type: "opener",
+              kicker: "סיבוב 1",
+              level: 1,
+              title: "מזהים הצעה ספציפית",
+            },
             {
               type: "mcq",
               prompt: "מה מבדיל הצעה טובה מתיאור בעיה?",
@@ -2166,7 +2209,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "השלד: 4 משפטים",
+            },
             {
               type: "writing-task",
               prompt:
@@ -2374,7 +2422,12 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           screens: [
-            { type: "opener", kicker: "סיבוב 2", level: 2, title: "השלד: 4 משפטים" },
+            {
+              type: "opener",
+              kicker: "סיבוב 2",
+              level: 2,
+              title: "השלד: 4 משפטים",
+            },
             {
               type: "writing-task",
               prompt:
