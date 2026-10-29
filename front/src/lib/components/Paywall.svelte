@@ -11,9 +11,14 @@
 
 	// Signed in, no active plan. Redeeming a code activates in place (the layout
 	// then shows the app). The plans page is web-only: store apps can't link out
-	// to an outside purchase.
+	// to an outside purchase. `lock`: a module the plan lacks (COBE, or the rest of
+	// the app on a COBE-only plan), shown inside the app.
+
+	let { lock }: { lock?: 'app' | 'cobe' } = $props();
 
 	let t = $derived(i18n.dict.paywall);
+	let title = $derived(lock ? t.locks[lock].title : t.title);
+	let body = $derived(lock ? t.locks[lock].body : t.body);
 	let errors = $derived(i18n.dict.checkout.errors);
 	let code = $state('');
 	let busy = $state(false);
@@ -35,7 +40,7 @@
 
 <main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
 	<div in:fly={{ y: 12, duration: 250, easing: cubicOut }}>
-		{#if !MOBILE_BUILD}
+		{#if !MOBILE_BUILD && !lock}
 			<a
 				href={resolve('/')}
 				class="-ms-2 mb-4 flex min-h-11 w-fit items-center rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]"
@@ -43,8 +48,8 @@
 				{i18n.dict.login.backToSite}
 			</a>
 		{/if}
-		<h1 class="text-3xl font-extrabold tracking-tight">{t.title}</h1>
-		<p class="mt-2 leading-relaxed text-muted">{t.body}</p>
+		<h1 class="text-3xl font-extrabold tracking-tight">{title}</h1>
+		<p class="mt-2 leading-relaxed text-muted">{body}</p>
 
 		<div class="mt-8 flex flex-col gap-4 rounded-3xl bg-surface p-5 shadow-md ring-1 ring-line/70">
 			<CodeField
@@ -60,12 +65,14 @@
 			{/if}
 		</div>
 
-		<button
-			type="button"
-			class="mx-auto mt-6 block min-h-11 rounded-lg px-2 text-sm font-semibold text-muted hover:text-ink active:scale-[0.98]"
-			onclick={() => auth.signOut()}
-		>
-			{t.signOut}
-		</button>
+		{#if !lock}
+			<button
+				type="button"
+				class="mx-auto mt-6 block min-h-11 rounded-lg px-2 text-sm font-semibold text-muted hover:text-ink active:scale-[0.98]"
+				onclick={() => auth.signOut()}
+			>
+				{t.signOut}
+			</button>
+		{/if}
 	</div>
 </main>

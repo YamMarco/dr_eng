@@ -12,6 +12,6 @@ const body = z.object({
 	audio: z.string().min(100).max(MAX_AUDIO_CHARS)
 });
 
-export const POST = llmRoute('grading failed', async ({ request }) =>
+export const POST = llmRoute('grading failed', 'cobe', async ({ request }) =>
 	gradeSpeakingAudio(await jsonBody(request, body))
 );

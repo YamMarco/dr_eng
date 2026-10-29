@@ -1,0 +1,1 @@
+ALTER TABLE "llm_usage" ADD COLUMN "cobe_calls" integer DEFAULT 0 NOT NULL;

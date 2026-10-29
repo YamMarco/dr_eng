@@ -19,11 +19,12 @@
 	import Toggle from '$lib/components/Toggle.svelte';
 	import {
 		COBE_ADDON,
-		DEFAULT_PLAN,
-		baseId,
-		cycleOf,
+		GUARANTEE,
+		INSTALLMENTS,
+		defaultPlan,
 		formatPrice,
 		isPurchasable,
+		monthlyShekels,
 		planById,
 		withCobe
 	} from '$lib/plans';
@@ -33,10 +34,11 @@
 	// with the same query, so nothing is lost on the way.
 
 	let t = $derived(i18n.dict.checkout);
+	// Shown as priced today; the server prices the order itself.
 	const requested = planById(page.url.searchParams.get('plan'));
-	let plan = $state(isPurchasable(requested) ? requested : planById(DEFAULT_PLAN)!);
-	// Order bump: COBE can be added to any plan that isn't COBE itself.
-	let canAddCobe = $derived(!!planById(withCobe(baseId(plan), true)));
+	let plan = $state(isPurchasable(requested) ? requested : defaultPlan());
+	// Order bump: COBE can be added to any plan but COBE itself and a lesson.
+	let canAddCobe = $derived(!!withCobe(plan, true));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');
 
 	let quote = $state<Quote | null>(null);
@@ -87,13 +89,16 @@
 	}
 
 	function setCobe(on: boolean) {
-		plan = planById(withCobe(baseId(plan), on))!;
+		plan = withCobe(plan, on)!;
 		loadQuote(quote?.coupon?.code ?? (code.trim() || null));
 	}
 
 	let name = $derived(
-		i18n.dict.plans.items[baseId(plan)].name + (plan.cobe ? i18n.dict.plans.withCobe : '')
+		i18n.dict.plans.offers[plan.offer].name +
+			(plan.cycle ? `, ${i18n.dict.plans.cycles[plan.cycle]}` : '') +
+			(plan.bundle ? i18n.dict.plans.withCobe : '')
 	);
+	let perMonth = $derived(monthlyShekels(plan.price, plan.months));
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
 	const date = (iso: string) => new Date(iso).toLocaleDateString('he-IL');
 	const row = 'flex justify-between gap-4';
@@ -121,6 +126,9 @@
 			<h1 class="text-3xl font-extrabold tracking-tight">{t.doneTitle}</h1>
 			<p class="text-lg text-muted">{t.doneBody}</p>
 			<p class="text-sm text-muted">{t.until} {date(doneUntil)}</p>
+			{#if plan.offer === 'lesson'}
+				<p class="text-muted">{t.lessonDone}</p>
+			{/if}
 			<Button href={resolve('/app')} class="mt-4">{t.toApp}</Button>
 		</div>
 	</main>
@@ -135,6 +143,14 @@
 				<div>
 					<p class="text-sm text-muted">{t.yourPlan}</p>
 					<p class="text-lg font-bold">{name}</p>
+					{#if plan.cycle === 'pass'}
+						<p class="text-sm text-muted">{t.passLine(plan.months)}</p>
+					{/if}
+					{#if plan.launch}
+						<p class="text-sm font-semibold text-brand-dark">
+							{plan.cycle === 'pass' ? t.launchLine(perMonth) : t.launchMonthLine}
+						</p>
+					{/if}
 				</div>
 				<a
 					href={resolve('/plans')}
@@ -160,17 +176,17 @@
 
 			{#if canAddCobe}
 				<div
-					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {plan.cobe
+					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {plan.bundle
 						? 'bg-accent-soft'
 						: 'bg-canvas'}"
 				>
 					<div class="flex min-w-0 flex-1 flex-col leading-snug">
 						<span class="font-bold">{t.bumpTitle}</span>
 						<span class="text-sm text-muted">
-							{t.bumpBody(formatPrice(COBE_ADDON[cycleOf(plan)]))}
+							{t.bumpBody(formatPrice(COBE_ADDON[plan.cycle!]))}
 						</span>
 					</div>
-					<Toggle checked={!!plan.cobe} label={t.bumpTitle} onchange={setCobe} />
+					<Toggle checked={plan.bundle} label={t.bumpTitle} onchange={setCobe} />
 				</div>
 			{/if}
 
@@ -208,12 +224,18 @@
 						<dt>{t.total}</dt>
 						<dd class="tabular-nums">{money(quote.total)}</dd>
 					</div>
+					{#if INSTALLMENTS && plan.cycle === 'pass' && quote.total}
+						<p class="text-end text-sm text-muted">{t.installments(plan.months)}</p>
+					{/if}
 				</dl>
 			{/if}
 
 			<Button disabled={busy || !quote} onclick={submit}>
 				{busy ? t.checking : quote?.total === 0 ? t.activate : t.pay}
 			</Button>
+			{#if GUARANTEE && quote?.total}
+				<p class="-mt-2 text-center text-sm text-muted">{t.guarantee}</p>
+			{/if}
 
 			{#if orderError}
 				<p

@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Check, Minus, Mic, Sparkles } from '@lucide/svelte';
+	import { Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
+	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import Segmented from '$lib/components/Segmented.svelte';
@@ -11,54 +13,71 @@
 	import {
 		COBE_ADDON,
 		FEATURED_OFFER,
-		OFFERS,
+		GUARANTEE,
+		INSTALLMENTS,
+		TIERS,
 		TUTOR_HOUR,
 		formatPrice,
+		isLaunch,
+		launchDaysLeft,
 		monthlyShekels,
+		passSavingPercent,
 		planById,
-		withCobe,
-		yearSavingPercent,
+		planId,
 		type Cycle,
-		type OfferId
+		type OfferId,
+		type Plan
 	} from '$lib/plans';
 
 	let t = $derived(i18n.dict.plans);
-	let cycle = $state<Cycle>('month');
-	const tiers = OFFERS.filter((offer) => offer.id !== 'cobe');
-	// COBE added per tier, on by default; the card switch and the table row share it.
-	let cobeOn = $state<Partial<Record<OfferId, boolean>>>(
-		Object.fromEntries(tiers.map((offer) => [offer.id, true]))
-	);
-	const cobeOffer = OFFERS.find((offer) => offer.id === 'cobe')!;
-	type Offer = (typeof OFFERS)[number];
 
-	/** The plan a card sells right now, both cycles, and the yearly saving. */
-	function pick(offer: Offer) {
-		const on = !!cobeOn[offer.id];
-		const month = planById(withCobe(offer.month, on))!;
-		const year = planById(withCobe(offer.year, on))!;
-		return {
-			plan: cycle === 'month' ? month : year,
-			month,
-			year,
-			saving: yearSavingPercent(month, year)
-		};
-	}
+	// Prices depend on the date. The page is pre-rendered, so the real date is set once
+	// it runs in the browser. The debug panel (dev, or ?debug) picks another date and the
+	// pending promises, to preview each version; checkout always prices on the server's date.
+	let mounted = $state(false);
+	onMount(() => (mounted = true));
+	let debug = $derived(mounted && (dev || new URLSearchParams(location.search).has('debug')));
+	let debugDate = $state('');
+	let showGuarantee = $state(GUARANTEE);
+	let showInstallments = $state(INSTALLMENTS);
+	let now = $derived.by(() => {
+		if (!mounted) return new Date(); // pre-rendered: the build date, replaced in the browser
+		return debugDate ? new Date(`${debugDate}T12:00:00+02:00`) : new Date();
+	});
 
-	const maxSaving = Math.max(
-		...OFFERS.map((offer) => yearSavingPercent(planById(offer.month)!, planById(offer.year)!))
-	);
-	let addonPrice = $derived(
-		formatPrice(Math.round(COBE_ADDON[cycle] / (cycle === 'month' ? 1 : 12) / 100) * 100)
-	);
+	let passOn = $derived(!!planById('premium-pass', now));
+	let chosen = $state<Cycle>('pass');
+	let cycle = $derived<Cycle>(passOn ? chosen : 'month');
+	let launch = $derived(isLaunch(now));
+	let daysLeft = $derived(launchDaysLeft(now));
+	// COBE added per plan, off by default; the card switch and the table row share it.
+	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 
-	// The anchor: a month of weekly private lessons against the featured offer's month.
+	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
+		planById(planId(offer, c, cobe), now)!;
+	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
+
+	const maxSaving = Math.max(...TIERS.map(passSavingPercent));
+	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
+	let lesson = $derived(planById('lesson', now)!);
+
+	// The anchor: a month of weekly private lessons against the featured plan's month.
 	const tutorMonth = (TUTOR_HOUR * 4) / 100;
-	const featuredMonth = monthlyShekels(planById(`${FEATURED_OFFER}-month`)!);
+	let featuredMonth = $derived(perMonth(plan(FEATURED_OFFER, cycle, false)));
 	let barsIn = $state(false);
 	$effect(() => {
 		requestAnimationFrame(() => (barsIn = true));
 	});
+
+	let faq = $derived(
+		t.faq.filter(
+			(entry) =>
+				!entry.needs ||
+				(entry.needs === 'launch' && launch) ||
+				(entry.needs === 'guarantee' && showGuarantee) ||
+				(entry.needs === 'installments' && showInstallments)
+		)
+	);
 
 	const checkoutHref = (id: string) => `${resolve('/checkout')}?plan=${id}`;
 </script>
@@ -68,24 +87,25 @@
 	<meta name="description" content={t.subtitle} />
 </svelte:head>
 
-{#snippet priceLine(offer: Offer, big: boolean)}
-	{@const { plan, month, year, saving } = pick(offer)}
+{#snippet priceLine(offer: OfferId, big: boolean)}
+	{@const p = plan(offer)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
-			{#if cycle === 'year'}
+			{#if cycle === 'pass'}
+				{@const month = perMonth(plan(offer, 'month'))}
 				<s
 					class="me-1 text-xl font-bold text-muted decoration-2 motion-safe:animate-rise"
-					aria-label={t.insteadOf(monthlyShekels(month))}
+					aria-label={t.insteadOf(month)}
 				>
-					{monthlyShekels(month)}
+					{month}
 				</s>
 			{/if}
 			<span class="{big ? 'text-5xl' : 'text-4xl'} font-extrabold">
-				<OfferPrice value={monthlyShekels(plan)} />
+				<OfferPrice value={perMonth(p)} />
 			</span>
 			<span class="text-lg font-bold">{t.currency}</span>
 			<span class="text-sm text-muted">{t.perMonth}</span>
-			{#if plan.cobe}
+			{#if p.cobe}
 				<span
 					class="ms-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold motion-safe:animate-rise"
 				>
@@ -93,30 +113,35 @@
 				</span>
 			{/if}
 		</p>
-		<p class="flex min-h-11 flex-col items-start gap-1 text-sm text-muted">
-			{#if cycle === 'year'}
-				{t.paidOnce(formatPrice(plan.price), plan.months)}
-				<span
-					class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand motion-safe:animate-rise"
-				>
-					{t.save(saving)}
-				</span>
+		<div class="flex min-h-11 flex-col items-start gap-1 text-sm text-muted">
+			{#if cycle === 'pass'}
+				<p>{t.passTotal(p.months, formatPrice(p.price))}</p>
+				{#if showInstallments}
+					<p class="font-bold text-ink">{t.installments(p.months, perMonth(p))}</p>
+				{/if}
 			{:else}
-				{t.paidMonthly}
-				<button
-					type="button"
-					onclick={() => (cycle = 'year')}
-					class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand transition duration-100 hover:bg-brand hover:text-white active:scale-[0.97]"
-				>
-					{t.yearNudge(monthlyShekels(year), saving)}
-				</button>
+				<p>{t.paidMonthly}</p>
+				{#if passOn}
+					<button
+						type="button"
+						onclick={() => (chosen = 'pass')}
+						class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand transition duration-100 hover:bg-brand hover:text-white active:scale-[0.97]"
+					>
+						{t.passNudge(perMonth(plan(offer, 'pass')))}
+					</button>
+				{/if}
 			{/if}
-		</p>
+			{#if p.launch}
+				<p class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink">
+					{t.launchLine(monthlyShekels(p.regular, p.months))}
+				</p>
+			{/if}
+		</div>
 	</div>
 {/snippet}
 
-{#snippet cobeSwitch(offer: Offer)}
-	{@const on = !!cobeOn[offer.id]}
+{#snippet cobeSwitch(offer: OfferId)}
+	{@const on = !!cobeOn[offer]}
 	<div
 		class="flex items-center gap-3 rounded-2xl px-3 py-1 transition-colors duration-200 {on
 			? 'bg-accent-soft'
@@ -124,8 +149,8 @@
 	>
 		<Toggle
 			checked={on}
-			label="{t.addCobe} - {t.offers[offer.id].name}"
-			onchange={(checked) => (cobeOn[offer.id] = checked)}
+			label="{t.addCobe} - {t.offers[offer].name}"
+			onchange={(checked) => (cobeOn[offer] = checked)}
 		/>
 		<div class="flex min-w-0 flex-1 flex-col py-1 leading-tight">
 			<span class="flex items-center gap-1 text-sm font-bold">
@@ -145,7 +170,25 @@
 		<p class="text-lg text-pretty text-muted">{t.subtitle}</p>
 	</header>
 
-	<!-- Price anchor: a private tutor vs. the featured offer. -->
+	{#if launch}
+		<section
+			class="mx-auto flex w-full max-w-xl flex-col items-center gap-1 rounded-3xl bg-accent-soft px-5 py-4 text-center ring-1 ring-accent/40 motion-safe:animate-rise"
+			aria-labelledby="launch-title"
+		>
+			<h2 id="launch-title" class="flex items-center gap-1 font-extrabold">
+				<Sparkles size={16} aria-hidden="true" />
+				{t.launchTitle}
+			</h2>
+			<p class="text-pretty">
+				{t.launchBody(perMonth(plan('group', passOn ? 'pass' : 'month', false)))}
+			</p>
+			{#if daysLeft <= 31}
+				<p class="text-sm font-bold text-brand-dark tabular-nums">{t.launchCountdown(daysLeft)}</p>
+			{/if}
+		</section>
+	{/if}
+
+	<!-- Price anchor: a private tutor vs. the featured plan. -->
 	<section
 		class="mx-auto flex w-full max-w-xl flex-col gap-3 rounded-3xl bg-surface p-5 shadow-sm ring-1 ring-line/70 motion-safe:animate-rise"
 		style="animation-delay: {staggerDelay(1)}ms"
@@ -175,32 +218,34 @@
 		{/each}
 	</section>
 
-	<!-- Billing cycle -->
-	<div class="flex flex-col items-center gap-2">
-		<Segmented
-			label={t.cycleLabel}
-			value={cycle}
-			options={[
-				{ value: 'month', label: t.cycleMonth },
-				{ value: 'year', label: t.cycleYear }
-			]}
-			onchange={(value) => (cycle = value)}
-		/>
-		<p
-			class="rounded-full bg-accent-soft px-3 py-0.5 text-xs font-bold transition-transform duration-200 {cycle ===
-			'year'
-				? 'scale-105'
-				: ''}"
-		>
-			{t.cycleYear}: {t.saveUpTo(maxSaving)}
-		</p>
-	</div>
+	<!-- Billing cycle: the school-year pass first, while it's sold. -->
+	{#if passOn}
+		<div class="flex flex-col items-center gap-2">
+			<Segmented
+				label={t.cycleLabel}
+				value={cycle}
+				options={[
+					{ value: 'pass', label: t.cycles.pass },
+					{ value: 'month', label: t.cycles.month }
+				]}
+				onchange={(value) => (chosen = value)}
+			/>
+			<p
+				class="rounded-full bg-accent-soft px-3 py-0.5 text-xs font-bold transition-transform duration-200 {cycle ===
+				'pass'
+					? 'scale-105'
+					: ''}"
+			>
+				{t.cycles.pass}: {t.saveUpTo(maxSaving)}
+			</p>
+		</div>
+	{/if}
 
-	<!-- Tiers -->
+	<!-- Plans -->
 	<ul class="grid items-stretch gap-4 md:grid-cols-3">
-		{#each tiers as offer, i (offer.id)}
-			{@const item = t.offers[offer.id]}
-			{@const featured = offer.id === FEATURED_OFFER}
+		{#each TIERS as offer, i (offer)}
+			{@const item = t.offers[offer]}
+			{@const featured = offer === FEATURED_OFFER}
 			<li
 				class="relative flex flex-col gap-4 rounded-3xl bg-surface p-6 shadow-sm motion-safe:animate-rise {featured
 					? 'order-first ring-2 ring-brand md:order-none md:-my-3 md:py-9 md:shadow-lg'
@@ -229,15 +274,22 @@
 					{/each}
 				</ul>
 				{@render cobeSwitch(offer)}
-				<Button
-					variant={featured ? 'primary' : 'secondary'}
-					href={checkoutHref(pick(offer).plan.id)}
-				>
+				<Button variant={featured ? 'primary' : 'secondary'} href={checkoutHref(plan(offer).id)}>
 					{featured ? t.chooseFeatured : t.choose}
 				</Button>
 			</li>
 		{/each}
 	</ul>
+
+	<div class="-mt-4 flex flex-col items-center gap-1 text-center text-sm">
+		{#if showGuarantee}
+			<p class="flex items-center gap-1 font-bold">
+				<ShieldCheck size={16} class="text-brand" aria-hidden="true" />
+				{t.guarantee}
+			</p>
+		{/if}
+		<p class="text-muted">{t.extension}</p>
+	</div>
 
 	<!-- Full comparison: the same choices as the cards, row by row. -->
 	<section
@@ -249,31 +301,23 @@
 		<table class="w-full table-fixed border-separate border-spacing-0 text-sm sm:text-base">
 			<colgroup>
 				<col class="w-[34%] sm:w-[40%]" />
-				{#each tiers as offer (offer.id)}<col />{/each}
+				{#each TIERS as offer (offer)}<col />{/each}
 			</colgroup>
 			<thead>
 				<tr>
 					<th class="sticky top-16 z-10 bg-canvas py-3 text-start align-bottom text-muted">
 						<span class="text-xs font-semibold sm:text-sm">{t.compareFeature}</span>
 					</th>
-					{#each tiers as offer (offer.id)}
-						{@const featured = offer.id === FEATURED_OFFER}
+					{#each TIERS as offer (offer)}
+						{@const featured = offer === FEATURED_OFFER}
 						<th
 							class="sticky top-16 z-10 px-1 py-3 align-bottom {featured
 								? 'rounded-t-2xl bg-brand-soft'
 								: 'bg-canvas'}"
 						>
-							<span class="block font-bold">{t.offers[offer.id].name}</span>
+							<span class="block font-bold">{t.offers[offer].name}</span>
 							<span class="block text-lg font-extrabold sm:text-2xl">
-								{#if cycle === 'year'}
-									<s
-										class="text-sm font-bold text-muted"
-										aria-label={t.insteadOf(monthlyShekels(pick(offer).month))}
-									>
-										{monthlyShekels(pick(offer).month)}
-									</s>
-								{/if}
-								<OfferPrice value={monthlyShekels(pick(offer).plan)} />
+								<OfferPrice value={perMonth(plan(offer))} />
 								<span class="text-sm">{t.currency}</span>
 							</span>
 						</th>
@@ -288,7 +332,7 @@
 						</th>
 						{#each row.values as value, i (i)}
 							<td
-								class="border-t border-line px-1 py-3 text-center {tiers[i].id === FEATURED_OFFER
+								class="border-t border-line px-1 py-3 text-center {TIERS[i] === FEATURED_OFFER
 									? 'bg-brand-soft'
 									: ''}"
 							>
@@ -311,17 +355,17 @@
 						</span>
 						<span class="text-xs text-muted">{t.addCobeHint}</span>
 					</th>
-					{#each tiers as offer (offer.id)}
+					{#each TIERS as offer (offer)}
 						<td
-							class="border-t border-line px-1 py-2 text-center {offer.id === FEATURED_OFFER
+							class="border-t border-line px-1 py-2 text-center {offer === FEATURED_OFFER
 								? 'bg-brand-soft'
 								: ''}"
 						>
 							<div class="flex flex-col items-center">
 								<Toggle
-									checked={!!cobeOn[offer.id]}
-									label="{t.addCobe} - {t.offers[offer.id].name}"
-									onchange={(checked) => (cobeOn[offer.id] = checked)}
+									checked={!!cobeOn[offer]}
+									label="{t.addCobe} - {t.offers[offer].name}"
+									onchange={(checked) => (cobeOn[offer] = checked)}
 								/>
 								<span class="text-xs font-bold tabular-nums" dir="ltr"
 									>{t.addCobePrice(addonPrice)}</span
@@ -332,11 +376,11 @@
 				</tr>
 				<tr>
 					<td class="pt-3"></td>
-					{#each tiers as offer (offer.id)}
-						{@const featured = offer.id === FEATURED_OFFER}
+					{#each TIERS as offer (offer)}
+						{@const featured = offer === FEATURED_OFFER}
 						<td class="px-1 pt-3 pb-3 {featured ? 'rounded-b-2xl bg-brand-soft' : ''}">
 							<a
-								href="{resolve('/checkout')}?plan={pick(offer).plan.id}"
+								href="{resolve('/checkout')}?plan={plan(offer).id}"
 								class="flex min-h-11 items-center justify-center rounded-xl px-1 text-sm font-bold transition duration-100 active:scale-[0.97] {featured
 									? 'bg-brand text-white hover:bg-brand-dark'
 									: 'border-2 border-brand text-brand hover:bg-brand-soft'}"
@@ -350,37 +394,65 @@
 		</table>
 	</section>
 
-	<!-- COBE alone -->
-	<section
-		{@attach reveal}
-		class="flex flex-col gap-4 rounded-3xl bg-accent-soft p-6 ring-1 ring-accent/40 sm:flex-row sm:items-center sm:gap-8"
-		aria-labelledby="cobe-title"
-	>
-		<div class="flex flex-1 flex-col gap-2">
-			<h2 id="cobe-title" class="flex items-center gap-2 text-xl font-extrabold">
-				<Mic size={20} aria-hidden="true" />
-				{t.cobeOnlyTitle}
-			</h2>
-			<p class="text-pretty text-muted">{t.cobeOnlyBody}</p>
-		</div>
-		<div class="flex flex-col gap-2 sm:w-56 sm:shrink-0">
-			<p class="flex items-baseline gap-1">
-				<span class="text-3xl font-extrabold">
-					<OfferPrice value={monthlyShekels(pick(cobeOffer).plan)} />
-				</span>
-				<span class="font-bold">{t.currency}</span>
-				<span class="text-sm text-muted">{t.perMonth}</span>
-			</p>
-			<Button variant="secondary" href={checkoutHref(pick(cobeOffer).plan.id)}>
-				{t.cobeOnlyChoose}
-			</Button>
-		</div>
-	</section>
+	<!-- Standalone: a private lesson, COBE alone -->
+	{#snippet standalone(
+		id: string,
+		icon: typeof Mic,
+		title: string,
+		body: string,
+		price: number,
+		unit: string,
+		cta: string,
+		href: string
+	)}
+		{@const Icon = icon}
+		<section
+			{@attach reveal}
+			class="flex flex-col gap-4 rounded-3xl bg-accent-soft p-6 ring-1 ring-accent/40 sm:flex-row sm:items-center sm:gap-8"
+			aria-labelledby="{id}-title"
+		>
+			<div class="flex flex-1 flex-col gap-2">
+				<h2 id="{id}-title" class="flex items-center gap-2 text-xl font-extrabold">
+					<Icon size={20} aria-hidden="true" />
+					{title}
+				</h2>
+				<p class="text-pretty text-muted">{body}</p>
+			</div>
+			<div class="flex flex-col gap-2 sm:w-56 sm:shrink-0">
+				<p class="flex items-baseline gap-1">
+					<span class="text-3xl font-extrabold"><OfferPrice value={price} /></span>
+					<span class="font-bold">{t.currency}</span>
+					<span class="text-sm text-muted">{unit}</span>
+				</p>
+				<Button variant="secondary" {href}>{cta}</Button>
+			</div>
+		</section>
+	{/snippet}
+	{@render standalone(
+		'lesson',
+		Video,
+		t.lessonTitle,
+		t.lessonBody,
+		lesson.price / 100,
+		t.perLesson,
+		t.lessonChoose,
+		checkoutHref(lesson.id)
+	)}
+	{@render standalone(
+		'cobe',
+		Mic,
+		t.cobeOnlyTitle,
+		t.cobeOnlyBody,
+		perMonth(plan('cobe', cycle, false)),
+		t.perMonth,
+		t.cobeOnlyChoose,
+		checkoutHref(plan('cobe', cycle, false).id)
+	)}
 
 	<!-- FAQ -->
 	<section {@attach reveal} class="mx-auto flex w-full max-w-2xl flex-col gap-3">
 		<h2 class="text-center text-2xl font-extrabold">{t.faqTitle}</h2>
-		{#each t.faq as entry (entry.q)}
+		{#each faq as entry (entry.q)}
 			<details class="group rounded-2xl bg-surface ring-1 ring-line/70">
 				<summary
 					class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 font-semibold transition duration-100 hover:text-brand active:scale-[0.99]"
@@ -396,9 +468,49 @@
 		{/each}
 	</section>
 
-	<div class="flex flex-col items-center gap-1 text-center text-sm text-muted">
-		<p>{t.haveCode}</p>
-		<p>{t.freeSoon}</p>
-		<p>{t.placeholder}</p>
-	</div>
+	<p class="text-center text-sm text-muted">{t.haveCode}</p>
 </main>
+
+{#if debug}
+	<details
+		class="fixed start-4 bottom-4 z-50 w-72 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line"
+	>
+		<summary class="cursor-pointer font-bold">{t.debug.title}</summary>
+		<div class="mt-2 flex flex-col gap-2">
+			<div class="flex flex-wrap gap-1">
+				{#each t.debug.presets as preset (preset.label)}
+					<button
+						type="button"
+						onclick={() => (debugDate = preset.date)}
+						class="min-h-9 rounded-lg px-2 text-xs font-semibold {debugDate === preset.date
+							? 'bg-brand text-white'
+							: 'bg-canvas hover:bg-brand-soft'}"
+					>
+						{preset.label}
+					</button>
+				{/each}
+			</div>
+			<label class="flex items-center justify-between gap-2">
+				{t.debug.date}
+				<input type="date" bind:value={debugDate} class="rounded-lg bg-canvas px-2 py-1" />
+			</label>
+			<div class="flex items-center justify-between gap-2">
+				{t.debug.guarantee}
+				<Toggle
+					checked={showGuarantee}
+					label={t.debug.guarantee}
+					onchange={(on) => (showGuarantee = on)}
+				/>
+			</div>
+			<div class="flex items-center justify-between gap-2">
+				{t.debug.installments}
+				<Toggle
+					checked={showInstallments}
+					label={t.debug.installments}
+					onchange={(on) => (showInstallments = on)}
+				/>
+			</div>
+			<p class="text-xs text-muted">{t.debug.note}</p>
+		</div>
+	</details>
+{/if}

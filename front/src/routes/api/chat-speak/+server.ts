@@ -24,6 +24,6 @@ const body = z
 	.refine((b) => validChatTopics(b.mode, b.topics))
 	.refine((b) => turnNumber(b.history) <= MAX_TURNS[b.mode]);
 
-export const POST = llmRoute('chat failed', async ({ request }) =>
+export const POST = llmRoute('chat failed', 'cobe', async ({ request }) =>
 	chatTurn(await jsonBody(request, body))
 );

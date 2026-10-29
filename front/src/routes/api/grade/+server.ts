@@ -49,7 +49,7 @@ const body = z.discriminatedUnion('kind', [
 	})
 ]);
 
-export const POST = llmRoute('grading failed', async ({ request }) => {
+export const POST = llmRoute('grading failed', 'app', async ({ request }) => {
 	const req = await jsonBody(request, body);
 	if (req.kind === 'reading') return gradeReading(req);
 	if (req.kind === 'lesson') return gradeLesson(req);

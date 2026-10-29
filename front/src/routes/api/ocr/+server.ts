@@ -11,7 +11,7 @@ import SYSTEM from '$lib/server/prompts/ocr.md?raw';
 
 const MAX_BYTES = 4 * 1024 * 1024;
 
-export const POST = llmRoute('OCR failed', async ({ request }) => {
+export const POST = llmRoute('OCR failed', 'app', async ({ request }) => {
 	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
 	const bytes = Buffer.from(await request.arrayBuffer());
 	if (bytes.length === 0 || bytes.length > MAX_BYTES) throw error(413, 'image is empty or too big');

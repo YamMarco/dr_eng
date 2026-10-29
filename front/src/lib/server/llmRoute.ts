@@ -1,19 +1,20 @@
-// The shell every LLM endpoint shares: configured -> guardLlm (auth, plan, quotas) ->
+// The shell every LLM endpoint shares: configured -> guardLlm (auth, the product's plan, quotas) ->
 // the handler -> JSON. An HTTP error thrown on purpose (401, 429, 400...) is logged as a
 // warning and passed on; any other failure is logged and becomes a 502.
 import { error, isHttpError, json, type RequestEvent, type RequestHandler } from '@sveltejs/kit';
 import type { z } from 'zod';
 import { llmConfigured } from './llm';
-import { guardLlm } from './llmGuard';
+import { guardLlm, type Product } from './llmGuard';
 
 export function llmRoute(
 	failure: string,
+	product: Product,
 	handle: (event: RequestEvent) => Promise<unknown>
 ): RequestHandler {
 	return async (event) => {
 		try {
 			if (!llmConfigured()) throw error(503, 'LLM is not configured');
-			await guardLlm(event.locals, event.getClientAddress());
+			await guardLlm(event.locals, event.getClientAddress(), product);
 			return json(await handle(event));
 		} catch (e) {
 			if (isHttpError(e)) {

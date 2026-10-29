@@ -3,7 +3,7 @@
 import { and, eq, gt, inArray, sql } from 'drizzle-orm';
 import { db } from './db';
 import { coupons, orders } from './db/schema';
-import { DEFAULT_PLAN, planById, type Plan } from '$lib/plans';
+import { defaultPlan, planById, productsOf, type Plan } from '$lib/plans';
 import { startPayment } from './payments';
 
 export const billingEnabled = !!db;
@@ -12,7 +12,8 @@ type Db = NonNullable<typeof db>;
 type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 type Coupon = typeof coupons.$inferSelect;
 
-export type CouponProblem = 'unknown' | 'expired' | 'used-up' | 'wrong-plan' | 'already-used';
+export type CouponProblem =
+	'unknown' | 'expired' | 'used-up' | 'wrong-plan' | 'already-used' | 'launch';
 
 export type Quote = {
 	planId: string;
@@ -36,10 +37,13 @@ export function normalizeCode(code: string | null | undefined): string | null {
 	return trimmed ? trimmed : null;
 }
 
-/** The active order's end date, or null when the user has no access. */
-export async function accessUntil(userId: string): Promise<Date | null> {
-	const [row] = await db!
-		.select({ until: orders.accessUntil })
+export type Access = { app: Date | null; cobe: Date | null };
+
+/** Until when the user has the app and COBE (null = no access). A plan id the catalogue
+ *  no longer knows (an older plan) opens both, as every plan did before COBE was sold apart. */
+export async function access(userId: string): Promise<Access> {
+	const rows = await db!
+		.select({ planId: orders.planId, until: orders.accessUntil })
 		.from(orders)
 		.where(
 			and(
@@ -47,10 +51,21 @@ export async function accessUntil(userId: string): Promise<Date | null> {
 				inArray(orders.status, DONE),
 				gt(orders.accessUntil, sql`now()`)
 			)
-		)
-		.orderBy(sql`${orders.accessUntil} desc`)
-		.limit(1);
-	return row?.until ?? null;
+		);
+	const result: Access = { app: null, cobe: null };
+	const later = (a: Date | null, b: Date) => (a && a > b ? a : b);
+	for (const row of rows) {
+		const products = productsOf(row.planId) ?? { app: true, cobe: true };
+		if (products.app) result.app = later(result.app, row.until!);
+		if (products.cobe) result.cobe = later(result.cobe, row.until!);
+	}
+	return result;
+}
+
+/** The latest end date of any access, for "already active" in checkout. */
+export async function accessUntil(userId: string): Promise<Date | null> {
+	const { app, cobe } = await access(userId);
+	return app && (!cobe || app > cobe) ? app : cobe;
 }
 
 async function couponProblem(
@@ -60,6 +75,7 @@ async function couponProblem(
 	userId: string
 ): Promise<CouponProblem | null> {
 	if (!coupon) return 'unknown';
+	if (plan.launch) return 'launch';
 	if (coupon.expiresAt && coupon.expiresAt.getTime() < Date.now()) return 'expired';
 	if (coupon.planId && coupon.planId !== plan.id) return 'wrong-plan';
 	const used = await tx
@@ -71,14 +87,16 @@ async function couponProblem(
 	return null;
 }
 
-/** Without a plan, a coupon decides it (its own plan, else DEFAULT_PLAN). */
+/** Without a plan, a coupon decides it (its own plan, else defaultPlan). A coupon takes off
+ *  the app part only: the Zoom part is the teacher's. */
 async function resolve(tx: Tx | Db, planId: string | null, code: string | null, userId: string) {
 	const [coupon] = code ? await tx.select().from(coupons).where(eq(coupons.code, code)) : [];
-	const plan = planById(planId ?? coupon?.planId ?? DEFAULT_PLAN);
-	if (!plan || plan.soon || plan.price === 0) throw new BillingError('unknown-plan');
+	const id = planId ?? coupon?.planId;
+	const plan = id ? planById(id) : defaultPlan();
+	if (!plan || plan.price === 0) throw new BillingError('unknown-plan');
 	const problem = code ? await couponProblem(tx, coupon, plan, userId) : null;
 	const applied = code && !problem ? coupon : undefined;
-	const discount = applied ? Math.round((plan.price * applied.percentOff) / 100) : 0;
+	const discount = applied ? Math.round((plan.app * applied.percentOff) / 100) : 0;
 	const quote: Quote = {
 		planId: plan.id,
 		price: plan.price,
@@ -94,9 +112,11 @@ export async function quote(planId: string | null, code: string | null, userId: 
 	return (await resolve(db!, planId, normalizeCode(code), userId)).quote;
 }
 
-function addMonths(from: Date, months: number): Date {
-	const until = new Date(from);
-	until.setMonth(until.getMonth() + months);
+/** A pass ends on its fixed date; any other plan adds its months to `start`. */
+function accessEnd(plan: Plan, start: Date): Date {
+	if (plan.until && plan.until > start) return plan.until;
+	const until = new Date(start);
+	until.setMonth(until.getMonth() + plan.months);
 	return until;
 }
 
@@ -135,7 +155,7 @@ export async function checkout(
 				total: quote.total,
 				couponCode: quote.coupon?.code ?? null,
 				status: free ? 'free' : 'pending',
-				accessUntil: free ? addMonths(start, plan.months) : null,
+				accessUntil: free ? accessEnd(plan, start) : null,
 				completedAt: free ? new Date() : null
 			})
 			.returning();
@@ -167,7 +187,8 @@ export async function checkout(
 export async function completeOrder(orderId: string, status: 'paid' | 'failed') {
 	const [order] = await db!.select().from(orders).where(eq(orders.id, orderId));
 	if (!order || order.status !== 'pending') return;
-	const plan = planById(order.planId);
+	// Priced and dated as on the day of the order.
+	const plan = planById(order.planId, order.createdAt);
 	const current = await accessUntil(order.userId);
 	const start = current && current > new Date() ? current : new Date();
 	await db!
@@ -175,7 +196,7 @@ export async function completeOrder(orderId: string, status: 'paid' | 'failed') 
 		.set({
 			status,
 			completedAt: new Date(),
-			accessUntil: status === 'paid' && plan ? addMonths(start, plan.months) : null
+			accessUntil: status === 'paid' && plan ? accessEnd(plan, start) : null
 		})
 		.where(and(eq(orders.id, orderId), eq(orders.status, 'pending')));
 }

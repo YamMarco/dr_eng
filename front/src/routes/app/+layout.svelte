@@ -21,7 +21,7 @@
 	// Onboarding (no profile yet) is a focused two-step flow - no nav either.
 	let showNav = $derived(
 		signedIn &&
-			access.active === true &&
+			!!(access.active || access.cobe) &&
 			progressSync.ready &&
 			!!profile.value &&
 			!noNavPatterns.some((re) => re.test(page.url.pathname))
@@ -33,9 +33,9 @@
 		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
 	{:else if !signedIn}
 		<LoginScreen homeLink />
-	{:else if access.active === null || !progressSync.ready}
+	{:else if access.active === null || access.cobe === null || !progressSync.ready}
 		<!-- Checking the plan, or bringing the account's progress to a new device: same beat. -->
-	{:else if access.active}
+	{:else if access.active || access.cobe}
 		{@render children()}
 		<StreakModal />
 	{:else}

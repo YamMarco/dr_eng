@@ -74,7 +74,9 @@ export const llmUsage = pgTable(
 		day: date()
 			.notNull()
 			.default(sql`current_date`),
-		calls: integer().notNull().default(0)
+		calls: integer().notNull().default(0),
+		/** Of `calls`, how many were COBE (its monthly quota). */
+		cobeCalls: integer().notNull().default(0)
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.day] })]
 ).enableRLS();
