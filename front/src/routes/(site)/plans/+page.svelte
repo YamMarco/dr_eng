@@ -12,6 +12,7 @@
 	import { reveal } from '$lib/site/reveal';
 	import {
 		COBE_ADDON,
+		CYCLES,
 		FEATURED_OFFER,
 		GUARANTEE,
 		INSTALLMENTS,
@@ -21,7 +22,7 @@
 		isLaunch,
 		launchDaysLeft,
 		monthlyShekels,
-		passSavingPercent,
+		savingPercent,
 		planById,
 		planId,
 		type Cycle,
@@ -46,8 +47,15 @@
 	});
 
 	let passOn = $derived(!!planById('premium-pass', now));
+	// Longest first; the pass only while it's sold.
+	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn).reverse());
 	let chosen = $state<Cycle>('pass');
-	let cycle = $derived<Cycle>(passOn ? chosen : 'month');
+	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : cycles[0]);
+	/** The longest cycle on sale: what a monthly price nudges toward. */
+	let best = $derived(cycles[0]);
+	let saving = $derived(
+		Math.max(...TIERS.map((offer) => savingPercent(offer, cycle === 'month' ? best : cycle)))
+	);
 	let launch = $derived(isLaunch(now));
 	let daysLeft = $derived(launchDaysLeft(now));
 	// COBE added per plan, off by default; the card switch and the table row share it.
@@ -57,7 +65,6 @@
 		planById(planId(offer, c, cobe), now)!;
 	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
 
-	const maxSaving = Math.max(...TIERS.map(passSavingPercent));
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
 	let lesson = $derived(planById('lesson', now)!);
 
@@ -91,7 +98,7 @@
 	{@const p = plan(offer)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
-			{#if cycle === 'pass'}
+			{#if cycle !== 'month'}
 				{@const month = perMonth(plan(offer, 'month'))}
 				<s
 					class="me-1 text-xl font-bold text-muted decoration-2 motion-safe:animate-rise"
@@ -114,20 +121,24 @@
 			{/if}
 		</p>
 		<div class="flex min-h-11 flex-col items-start gap-1 text-sm text-muted">
-			{#if cycle === 'pass'}
-				<p>{t.passTotal(p.months, formatPrice(p.price))}</p>
+			{#if cycle !== 'month'}
+				<p>
+					{cycle === 'pass'
+						? t.passTotal(p.months, formatPrice(p.price))
+						: t.packTotal(p.months, formatPrice(p.price))}
+				</p>
 				{#if showInstallments}
 					<p class="font-bold text-ink">{t.installments(p.months, perMonth(p))}</p>
 				{/if}
 			{:else}
 				<p>{t.paidMonthly}</p>
-				{#if passOn}
+				{#if best !== 'month'}
 					<button
 						type="button"
-						onclick={() => (chosen = 'pass')}
+						onclick={() => (chosen = best)}
 						class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand transition duration-100 hover:bg-brand hover:text-white active:scale-[0.97]"
 					>
-						{t.passNudge(perMonth(plan(offer, 'pass')))}
+						{t.longerNudge(t.cycles[best], perMonth(plan(offer, best)))}
 					</button>
 				{/if}
 			{/if}
@@ -180,7 +191,7 @@
 				{t.launchTitle}
 			</h2>
 			<p class="text-pretty">
-				{t.launchBody(perMonth(plan('group', passOn ? 'pass' : 'month', false)))}
+				{t.launchBody(perMonth(plan('group', best, false)))}
 			</p>
 			{#if daysLeft <= 31}
 				<p class="text-sm font-bold text-brand-dark tabular-nums">{t.launchCountdown(daysLeft)}</p>
@@ -218,28 +229,23 @@
 		{/each}
 	</section>
 
-	<!-- Billing cycle: the school-year pass first, while it's sold. -->
-	{#if passOn}
-		<div class="flex flex-col items-center gap-2">
-			<Segmented
-				label={t.cycleLabel}
-				value={cycle}
-				options={[
-					{ value: 'pass', label: t.cycles.pass },
-					{ value: 'month', label: t.cycles.month }
-				]}
-				onchange={(value) => (chosen = value)}
-			/>
-			<p
-				class="rounded-full bg-accent-soft px-3 py-0.5 text-xs font-bold transition-transform duration-200 {cycle ===
-				'pass'
-					? 'scale-105'
-					: ''}"
-			>
-				{t.cycles.pass}: {t.saveUpTo(maxSaving)}
-			</p>
-		</div>
-	{/if}
+	<!-- Billing cycle: the longest first. -->
+	<div class="flex flex-col items-center gap-2">
+		<Segmented
+			label={t.cycleLabel}
+			value={cycle}
+			options={cycles.map((value) => ({ value, label: t.cycles[value] }))}
+			onchange={(value) => (chosen = value)}
+		/>
+		<p
+			class="rounded-full bg-accent-soft px-3 py-0.5 text-xs font-bold transition-transform duration-200 {cycle !==
+			'month'
+				? 'scale-105'
+				: ''}"
+		>
+			{cycle === 'month' ? t.saveLonger(saving) : `${t.cycles[cycle]}: ${t.saveUpTo(saving)}`}
+		</p>
+	</div>
 
 	<!-- Plans -->
 	<ul class="grid items-stretch gap-4 md:grid-cols-3">

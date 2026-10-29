@@ -145,10 +145,16 @@
 					<p class="text-lg font-bold">{name}</p>
 					{#if plan.cycle === 'pass'}
 						<p class="text-sm text-muted">{t.passLine(plan.months)}</p>
+					{:else if plan.months > 1}
+						<p class="text-sm text-muted">{t.packLine(plan.months)}</p>
 					{/if}
 					{#if plan.launch}
 						<p class="text-sm font-semibold text-brand-dark">
-							{plan.cycle === 'pass' ? t.launchLine(perMonth) : t.launchMonthLine}
+							{plan.cycle === 'pass'
+								? t.launchLine(perMonth)
+								: plan.months > 1
+									? t.launchPackLine(perMonth, plan.months)
+									: t.launchMonthLine}
 						</p>
 					{/if}
 				</div>
@@ -224,7 +230,7 @@
 						<dt>{t.total}</dt>
 						<dd class="tabular-nums">{money(quote.total)}</dd>
 					</div>
-					{#if INSTALLMENTS && plan.cycle === 'pass' && quote.total}
+					{#if INSTALLMENTS && plan.months > 1 && quote.total}
 						<p class="text-end text-sm text-muted">{t.installments(plan.months)}</p>
 					{/if}
 				</dl>
