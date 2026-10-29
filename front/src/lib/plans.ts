@@ -24,20 +24,22 @@ export type Plan = {
 	months: number;
 	/** Not offered yet. */
 	soon?: boolean;
-	/** Includes COBE. */
+	/** Includes COBE (built in, or added on as a bundle). */
 	cobe?: boolean;
 };
 
 export const PLANS: Plan[] = [
 	{ id: 'free', price: 0, months: 0, soon: true },
+	// Software only: a deep yearly discount costs nothing to serve.
 	{ id: 'premium-month', price: 4900, months: 1 },
 	{ id: 'premium-year', price: 29900, months: 12 },
-	{ id: 'group-month', price: 15000, months: 1 },
-	{ id: 'group-year', price: 119000, months: 12 },
-	{ id: 'personal-month', price: 39000, months: 1 },
-	{ id: 'personal-year', price: 349000, months: 12 },
-	{ id: 'cobe-month', price: 5900, months: 1 },
-	{ id: 'cobe-year', price: 39000, months: 12 }
+	// Teacher hours: small yearly discounts, COBE built in.
+	{ id: 'group-month', price: 14900, months: 1, cobe: true },
+	{ id: 'group-year', price: 129000, months: 12, cobe: true },
+	{ id: 'personal-month', price: 59000, months: 1, cobe: true },
+	{ id: 'personal-year', price: 599000, months: 12, cobe: true },
+	{ id: 'cobe-month', price: 5900, months: 1, cobe: true },
+	{ id: 'cobe-year', price: 39000, months: 12, cobe: true }
 ];
 
 export type Cycle = 'month' | 'year';
@@ -71,7 +73,7 @@ export const cycleOf = (plan: Plan): Cycle => (plan.months === 1 ? 'month' : 'ye
 export function planById(id: string | null | undefined): Plan | undefined {
 	if (!id?.endsWith(COBE_SUFFIX)) return PLANS.find((plan) => plan.id === id);
 	const base = planById(id.slice(0, -COBE_SUFFIX.length));
-	if (!base || base.cobe || base.soon || base.price === 0 || base.id.startsWith('cobe')) return;
+	if (!base || base.cobe || base.soon || base.price === 0) return;
 	return {
 		...base,
 		id: `${base.id as PlanId}${COBE_SUFFIX}`,
@@ -83,9 +85,12 @@ export function planById(id: string | null | undefined): Plan | undefined {
 /** The plan id, with COBE added when `cobe` is on. */
 export const withCobe = (id: PlanId, cobe: boolean): string => (cobe ? id + COBE_SUFFIX : id);
 
-/** "group-month-cobe" -> "group-month" */
+/** A plan with COBE added on, not built in. */
+export const isBundle = (plan: Plan): boolean => plan.id.endsWith(COBE_SUFFIX);
+
+/** "premium-month-cobe" -> "premium-month" */
 export const baseId = (plan: Plan): PlanId =>
-	(plan.cobe ? plan.id.slice(0, -COBE_SUFFIX.length) : plan.id) as PlanId;
+	(isBundle(plan) ? plan.id.slice(0, -COBE_SUFFIX.length) : plan.id) as PlanId;
 
 export function isPurchasable(plan: Plan | undefined): plan is Plan {
 	return !!plan && plan.price > 0 && !plan.soon;

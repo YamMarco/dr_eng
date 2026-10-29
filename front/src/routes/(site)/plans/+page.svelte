@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Check, Minus, Mic, Sparkles } from '@lucide/svelte';
+	import { Check, Minus, Mic, ShieldCheck, Sparkles } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import Segmented from '$lib/components/Segmented.svelte';
@@ -23,14 +23,15 @@
 	} from '$lib/plans';
 
 	let t = $derived(i18n.dict.plans);
-	let cycle = $state<Cycle>('month');
+	// "Until the Bagrut" first: the lowest monthly price is the first one seen.
+	let cycle = $state<Cycle>('year');
 	const tiers = OFFERS.filter((offer) => offer.id !== 'cobe');
-	// COBE added per tier, on by default; the card switch and the table row share it.
-	let cobeOn = $state<Partial<Record<OfferId, boolean>>>(
-		Object.fromEntries(tiers.map((offer) => [offer.id, true]))
-	);
-	const cobeOffer = OFFERS.find((offer) => offer.id === 'cobe')!;
 	type Offer = (typeof OFFERS)[number];
+	/** COBE is built into the higher tiers; the rest can add it on. */
+	const hasCobe = (offer: Offer) => !!planById(offer.month)!.cobe;
+	// COBE added per tier, off by default; the card switch and the table row share it.
+	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
+	const cobeOffer = OFFERS.find((offer) => offer.id === 'cobe')!;
 
 	/** The plan a card sells right now, both cycles, and the yearly saving. */
 	function pick(offer: Offer) {
@@ -228,7 +229,9 @@
 						</li>
 					{/each}
 				</ul>
-				{@render cobeSwitch(offer)}
+				{#if !hasCobe(offer)}
+					{@render cobeSwitch(offer)}
+				{/if}
 				<Button
 					variant={featured ? 'primary' : 'secondary'}
 					href={checkoutHref(pick(offer).plan.id)}
@@ -238,6 +241,15 @@
 			</li>
 		{/each}
 	</ul>
+
+	<!-- Risk reversal -->
+	<div class="-mt-4 flex flex-col items-center gap-1 text-center text-sm">
+		<p class="flex items-center gap-1 font-bold">
+			<ShieldCheck size={16} class="text-brand" aria-hidden="true" />
+			{t.guarantee}
+		</p>
+		<p class="text-muted">{t.installments}</p>
+	</div>
 
 	<!-- Full comparison: the same choices as the cards, row by row. -->
 	<section
@@ -317,16 +329,21 @@
 								? 'bg-brand-soft'
 								: ''}"
 						>
-							<div class="flex flex-col items-center">
-								<Toggle
-									checked={!!cobeOn[offer.id]}
-									label="{t.addCobe} - {t.offers[offer.id].name}"
-									onchange={(checked) => (cobeOn[offer.id] = checked)}
-								/>
-								<span class="text-xs font-bold tabular-nums" dir="ltr"
-									>{t.addCobePrice(addonPrice)}</span
-								>
-							</div>
+							{#if hasCobe(offer)}
+								<Check size={20} class="mx-auto text-brand" aria-label="✓" />
+								<span class="text-xs font-bold">{t.included}</span>
+							{:else}
+								<div class="flex flex-col items-center">
+									<Toggle
+										checked={!!cobeOn[offer.id]}
+										label="{t.addCobe} - {t.offers[offer.id].name}"
+										onchange={(checked) => (cobeOn[offer.id] = checked)}
+									/>
+									<span class="text-xs font-bold tabular-nums" dir="ltr"
+										>{t.addCobePrice(addonPrice)}</span
+									>
+								</div>
+							{/if}
 						</td>
 					{/each}
 				</tr>
