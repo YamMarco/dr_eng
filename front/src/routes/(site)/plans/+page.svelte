@@ -37,7 +37,13 @@
 	// pending promises, to preview each version; checkout always prices on the server's date.
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
-	let debug = $derived(mounted && (dev || new URLSearchParams(location.search).has('debug')));
+	// Everywhere but the real site (engup.co.il), where it takes ?debug.
+	let debug = $derived(
+		mounted &&
+			(dev ||
+				!location.hostname.endsWith('engup.co.il') ||
+				new URLSearchParams(location.search).has('debug'))
+	);
 	let debugDate = $state('');
 	let showGuarantee = $state(GUARANTEE);
 	let showInstallments = $state(INSTALLMENTS);
@@ -448,23 +454,17 @@
 </main>
 
 {#if debug}
-	<!-- Which version of the page: pinned so the two can be flipped while scrolling. -->
-	<div
-		class="fixed inset-x-0 top-20 z-50 mx-auto flex w-fit items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-lg ring-1 ring-line"
+	<!-- One tap flips the page between its two versions. -->
+	<button
+		type="button"
+		onclick={() => (pricing = launch ? 'regular' : 'launch')}
+		class="fixed inset-x-0 bottom-20 z-50 mx-auto flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-5 text-sm font-bold text-white shadow-lg active:scale-[0.97]"
 	>
-		{t.debug.version}
-		<Segmented
-			label={t.debug.version}
-			value={pricing}
-			options={(['regular', 'launch'] as const).map((value) => ({
-				value,
-				label: t.debug.pricings[value]
-			}))}
-			onchange={(value) => (pricing = value)}
-		/>
-	</div>
+		{t.debug.version}: {t.debug.pricings[pricing]}
+		<span class="text-white/70">⇄</span>
+	</button>
 	<details
-		class="fixed start-4 bottom-4 z-50 w-80 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line"
+		class="fixed start-4 bottom-4 z-50 w-fit max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line open:w-80"
 	>
 		<summary class="cursor-pointer font-bold">{t.debug.title}</summary>
 		<div class="mt-2 flex flex-col gap-2">
