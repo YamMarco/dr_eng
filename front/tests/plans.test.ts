@@ -1,11 +1,10 @@
-// Plan catalogue: prices depend on the date (pass months left, launch), coupons see the
+// Plan catalogue: the pass depends on the date (months left), coupons see the
 // app part only, and access per product never depends on the date.
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
 	COBE_ADDON,
-	LAUNCH_ZOOM,
 	passEnd,
 	passMonths,
 	planById,
@@ -61,24 +60,10 @@ test('a pack buys fixed months from the day of purchase', () => {
 	assert.equal(planById('group-pack6', at('2027-05-10'))!.months, 6);
 });
 
-test('launch prices the group lessons at LAUNCH_ZOOM until 31.12, except monthly', () => {
-	const launch = planById('group-pass', NOV)!;
-	assert.equal(launch.launch, true);
-	assert.equal(launch.price / launch.months, 10900);
-	assert.equal(launch.app, 2900 * 8);
-	assert.equal(launch.zoom, LAUNCH_ZOOM * 8);
-	assert.equal(launch.regular, 13900 * 8);
-	assert.equal(planById('group-pack3', NOV)!.price, 11900 * 3);
-	// Monthly is always 179, COBE extra.
-	assert.equal(planById('group-month', NOV)!.launch, false);
+test('prices are the same on any date: no launch price', () => {
+	for (const id of ['group-month', 'group-pack3', 'personal-pack6'])
+		assert.equal(planById(id, NOV)!.price, planById(id, FEB)!.price, id);
 	assert.equal(planById('group-month', NOV)!.price, 17900);
-	// Private lessons keep the teacher's price.
-	assert.equal(planById('personal-pack3', NOV)!.price, (3100 + LAUNCH_ZOOM + 35800) * 3);
-	const after = planById('group-month', FEB)!;
-	assert.equal(after.launch, false);
-	assert.equal(after.price, 17900);
-	// No launch on app-only plans or the teacher's own lesson price.
-	assert.equal(planById('premium-month', NOV)!.launch, false);
 	assert.equal(planById('lesson', NOV)!.price, 17900);
 });
 

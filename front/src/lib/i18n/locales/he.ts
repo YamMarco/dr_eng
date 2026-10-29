@@ -234,12 +234,6 @@ export const he = {
 		headline: 'הכנה לבגרות עם מורה, בפחות משליש ממחיר של מורה פרטי',
 		subtitle:
 			'תרגול יומי באפליקציה, מבחנים בתנאי אמת ומורה אמיתי בזום. משלמים פעם אחת, בלי חיוב מתחדש.',
-		launchTitle: 'מחיר השקה עד 31.12',
-		launchBody: (price: number) =>
-			`מצטרפים למסלול הקבוצתי ב-${price} ₪ לחודש, והמחיר נשאר נעול עד סוף שנת הלימודים.`,
-		launchCountdown: (days: number) =>
-			days === 1 ? 'היום אחרון למחיר ההשקה' : `נשארו ${days} ימים למחיר ההשקה`,
-		launchLine: (price: number) => `מחיר השקה עד 31.12. אחרי ההשקה: ${price} ₪`,
 		anchorTitle: 'כמה עולה להתכונן לבגרות?',
 		anchorTutor: 'מורה פרטי, שיעור בשבוע',
 		anchorUs: 'מסלול קבוצתי, שיעור בשבוע ואפליקציה',
@@ -252,14 +246,10 @@ export const he = {
 			pack6: '6 חודשים',
 			pass: 'שנת לימודים'
 		} as Record<string, string>,
-		saveUpTo: (percent: number) => `חוסכים עד ${percent}%`,
-		saveLonger: (percent: number) => `לתקופה ארוכה יותר: חוסכים עד ${percent}%`,
 		passTotal: (months: number, total: string) => `עד 30.6, ${months} חודשים, ${total} ₪ בסך הכול`,
 		installments: (months: number, price: number) => `אפשר ב-${months} תשלומים של ${price} ₪`,
 		paidMonthly: 'משלמים חודש בחודש, בלי התחייבות',
 		packTotal: (months: number, total: string) => `תשלום אחד של ${total} ₪ ל-${months} חודשים`,
-		longerNudge: (cycle: string, price: number) => `${cycle}: ${price} ₪ לחודש`,
-		insteadOf: (price: number) => `במקום ${price} ₪`,
 		popular: 'הכי פופולרי',
 		choose: 'בחירה',
 		chooseFeatured: 'מתחילים עכשיו',
@@ -289,9 +279,8 @@ export const he = {
 		cobeOnlyBody:
 			'COBE הוא שיחה חיה באנגלית עם בינה מלאכותית, עם משוב אחרי כל תשובה. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
 		cobeOnlyChoose: 'רק COBE',
-		haveCode: 'יש לכם קוד הטבה? מזינים אותו בשלב התשלום. קוד הטבה לא מצטרף למחיר ההשקה.',
 		faqTitle: 'שאלות נפוצות',
-		/** `needs`: shown only during launch, or once that promise is on (plans.ts GUARANTEE / INSTALLMENTS). */
+		/** `needs`: shown only once that promise is on (plans.ts GUARANTEE / INSTALLMENTS). */
 		faq: [
 			{
 				q: 'יש חיוב מתחדש?',
@@ -299,16 +288,11 @@ export const he = {
 			},
 			{
 				q: 'מה זה שנת לימודים?',
-				a: 'גישה עד 30 ביוני, במחיר מוזל לחודש. משלמים רק על החודשים שנשארו, אז מצטרפים בכל שלב בשנה.'
+				a: 'גישה עד 30 ביוני. משלמים רק על החודשים שנשארו, אז מצטרפים בכל שלב בשנה.'
 			},
 			{
 				q: 'מה ההבדל בין 3 או 6 חודשים לשנת לימודים?',
-				a: '3 או 6 חודשים מתחילים ביום הרכישה. שנת לימודים נגמרת ב-30.6 ויוצאת הכי משתלמת לחודש.'
-			},
-			{
-				q: 'מה זה מחיר השקה?',
-				a: 'מי שמצטרף עד 31.12 משלם 109 ₪ לחודש במסלול הקבוצתי. בשנת לימודים המחיר נשאר נעול עד 30.6.',
-				needs: 'launch'
+				a: '3 או 6 חודשים מתחילים ביום הרכישה. שנת לימודים נגמרת ב-30.6.'
 			},
 			{
 				q: 'כמה זה יוצא לעומת מורה פרטי?',
@@ -340,7 +324,7 @@ export const he = {
 				q: 'צריכים עוד זמן אחרי יוני?',
 				a: 'מאריכים בעוד חודש בכל רגע, והזמן מתווסף לזמן שנשאר לכם.'
 			}
-		] as { q: string; a: string; needs?: 'launch' | 'guarantee' | 'installments' }[],
+		] as { q: string; a: string; needs?: 'guarantee' | 'installments' }[],
 		offers: {
 			premium: {
 				name: 'עצמאי',
@@ -381,9 +365,7 @@ export const he = {
 			date: 'תאריך מדומה',
 			presets: [
 				{ label: 'היום', date: '' },
-				{ label: 'השקה, נובמבר', date: '2026-11-10' },
-				{ label: 'השקה, ספירה לאחור', date: '2026-12-20' },
-				{ label: 'אחרי ההשקה', date: '2027-02-10' },
+				{ label: 'פברואר', date: '2027-02-10' },
 				{ label: 'מאי, בלי שנת לימודים', date: '2027-05-10' },
 				{ label: 'קיץ, השנה הבאה', date: '2027-07-10' }
 			],
@@ -411,9 +393,6 @@ export const he = {
 		bumpBody: (price: string) => `תרגול לבחינה בעל פה עם שיחת AI, רק ${price} ₪ לחודש.`,
 		passLine: (months: number) => `גישה עד 30.6 (${months} חודשים)`,
 		packLine: (months: number) => `גישה ל-${months} חודשים מיום הרכישה`,
-		launchPackLine: (price: number, months: number) =>
-			`מחיר השקה: ${price} ₪ לחודש, ל-${months} החודשים`,
-		launchLine: (price: number) => `מחיר השקה: ${price} ₪ לחודש, נעול עד 30.6`,
 		installments: (months: number) => `עד ${months} תשלומים ללא ריבית`,
 		guarantee: 'לא מתאים? החזר מלא תוך 14 יום.',
 		lessonDone: 'נחזור אליכם במייל לתיאום מועד השיעור.',
@@ -430,7 +409,6 @@ export const he = {
 			'used-up': 'הקוד כבר נוצל עד הסוף.',
 			'wrong-plan': 'הקוד לא מתאים למסלול הזה.',
 			'already-used': 'כבר השתמשתם בקוד הזה.',
-			launch: 'קוד הטבה לא מצטרף למחיר ההשקה.',
 			'unknown-plan': 'המסלול לא זמין כרגע.',
 			'payments-unavailable': 'התשלום באתר עוד לא פתוח. אם קיבלתם קוד, הזינו אותו למעלה.',
 			network: 'אין חיבור לשרת. נסו שוב בעוד רגע.'

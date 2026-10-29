@@ -46,7 +46,6 @@ export type CheckoutError =
 	| 'used-up'
 	| 'wrong-plan'
 	| 'already-used'
-	| 'launch'
 	| 'unknown-plan'
 	| 'payments-unavailable'
 	| 'unavailable'

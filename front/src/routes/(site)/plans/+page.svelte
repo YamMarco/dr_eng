@@ -19,10 +19,7 @@
 		TIERS,
 		TUTOR_HOUR,
 		formatPrice,
-		isLaunch,
-		launchDaysLeft,
 		monthlyShekels,
-		savingPercent,
 		planById,
 		planId,
 		type Cycle,
@@ -47,17 +44,10 @@
 	});
 
 	let passOn = $derived(!!planById('premium-pass', now));
-	// Longest first; the pass only while it's sold.
-	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn).reverse());
-	let chosen = $state<Cycle>('pass');
-	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : cycles[0]);
-	/** The longest cycle on sale: what a monthly price nudges toward. */
-	let best = $derived(cycles[0]);
-	let saving = $derived(
-		Math.max(...TIERS.map((offer) => savingPercent(offer, cycle === 'month' ? best : cycle)))
-	);
-	let launch = $derived(isLaunch(now));
-	let daysLeft = $derived(launchDaysLeft(now));
+	// The pass only while it's sold.
+	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn));
+	let chosen = $state<Cycle>('month');
+	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : 'month');
 	// COBE added per plan, off by default; the card switch and the table row share it.
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 
@@ -80,7 +70,6 @@
 		t.faq.filter(
 			(entry) =>
 				!entry.needs ||
-				(entry.needs === 'launch' && launch) ||
 				(entry.needs === 'guarantee' && showGuarantee) ||
 				(entry.needs === 'installments' && showInstallments)
 		)
@@ -98,15 +87,6 @@
 	{@const p = plan(offer)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
-			{#if cycle !== 'month'}
-				{@const month = perMonth(plan(offer, 'month'))}
-				<s
-					class="me-1 text-xl font-bold text-muted decoration-2 motion-safe:animate-rise"
-					aria-label={t.insteadOf(month)}
-				>
-					{month}
-				</s>
-			{/if}
 			<span class="{big ? 'text-5xl' : 'text-4xl'} font-extrabold">
 				<OfferPrice value={perMonth(p)} />
 			</span>
@@ -132,20 +112,6 @@
 				{/if}
 			{:else}
 				<p>{t.paidMonthly}</p>
-				{#if best !== 'month'}
-					<button
-						type="button"
-						onclick={() => (chosen = best)}
-						class="rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand transition duration-100 hover:bg-brand hover:text-white active:scale-[0.97]"
-					>
-						{t.longerNudge(t.cycles[best], perMonth(plan(offer, best)))}
-					</button>
-				{/if}
-			{/if}
-			{#if p.launch}
-				<p class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink">
-					{t.launchLine(monthlyShekels(p.regular, p.months))}
-				</p>
 			{/if}
 		</div>
 	</div>
@@ -181,24 +147,6 @@
 		<p class="text-lg text-pretty text-muted">{t.subtitle}</p>
 	</header>
 
-	{#if launch}
-		<section
-			class="mx-auto flex w-full max-w-xl flex-col items-center gap-1 rounded-3xl bg-accent-soft px-5 py-4 text-center ring-1 ring-accent/40 motion-safe:animate-rise"
-			aria-labelledby="launch-title"
-		>
-			<h2 id="launch-title" class="flex items-center gap-1 font-extrabold">
-				<Sparkles size={16} aria-hidden="true" />
-				{t.launchTitle}
-			</h2>
-			<p class="text-pretty">
-				{t.launchBody(perMonth(plan('group', best, false)))}
-			</p>
-			{#if daysLeft <= 31}
-				<p class="text-sm font-bold text-brand-dark tabular-nums">{t.launchCountdown(daysLeft)}</p>
-			{/if}
-		</section>
-	{/if}
-
 	<!-- Price anchor: a private tutor vs. the featured plan. -->
 	<section
 		class="mx-auto flex w-full max-w-xl flex-col gap-3 rounded-3xl bg-surface p-5 shadow-sm ring-1 ring-line/70 motion-safe:animate-rise"
@@ -210,9 +158,7 @@
 			<div class="flex flex-col gap-1">
 				<div class="flex items-baseline justify-between gap-2 text-sm">
 					<span class={row.us ? 'font-bold' : 'text-muted'}>{row.label}</span>
-					<span
-						class="font-extrabold tabular-nums {row.us ? 'text-brand' : 'text-muted line-through'}"
-					>
+					<span class="font-extrabold tabular-nums {row.us ? 'text-brand' : 'text-muted'}">
 						{row.value}
 						{t.currency}
 					</span>
@@ -229,22 +175,14 @@
 		{/each}
 	</section>
 
-	<!-- Billing cycle: the longest first. -->
-	<div class="flex flex-col items-center gap-2">
+	<!-- Billing cycle -->
+	<div class="flex justify-center">
 		<Segmented
 			label={t.cycleLabel}
 			value={cycle}
 			options={cycles.map((value) => ({ value, label: t.cycles[value] }))}
 			onchange={(value) => (chosen = value)}
 		/>
-		<p
-			class="rounded-full bg-accent-soft px-3 py-0.5 text-xs font-bold transition-transform duration-200 {cycle !==
-			'month'
-				? 'scale-105'
-				: ''}"
-		>
-			{cycle === 'month' ? t.saveLonger(saving) : `${t.cycles[cycle]}: ${t.saveUpTo(saving)}`}
-		</p>
 	</div>
 
 	<!-- Plans -->
@@ -473,8 +411,6 @@
 			</details>
 		{/each}
 	</section>
-
-	<p class="text-center text-sm text-muted">{t.haveCode}</p>
 </main>
 
 {#if debug}

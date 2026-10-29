@@ -12,8 +12,7 @@ type Db = NonNullable<typeof db>;
 type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 type Coupon = typeof coupons.$inferSelect;
 
-export type CouponProblem =
-	'unknown' | 'expired' | 'used-up' | 'wrong-plan' | 'already-used' | 'launch';
+export type CouponProblem = 'unknown' | 'expired' | 'used-up' | 'wrong-plan' | 'already-used';
 
 export type Quote = {
 	planId: string;
@@ -75,7 +74,6 @@ async function couponProblem(
 	userId: string
 ): Promise<CouponProblem | null> {
 	if (!coupon) return 'unknown';
-	if (plan.launch) return 'launch';
 	if (coupon.expiresAt && coupon.expiresAt.getTime() < Date.now()) return 'expired';
 	if (coupon.planId && coupon.planId !== plan.id) return 'wrong-plan';
 	const used = await tx

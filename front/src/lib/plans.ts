@@ -5,13 +5,12 @@
 // group lessons and private lessons). Coupons take off the app part only.
 // Cycles: `month`; `pack3` / `pack6` (months from the day of purchase); and `pass`
 // (the school year, sold by the months left until 30.6). Longer cycles cost less a month.
-// Prices depend on the date (months left, launch), so every lookup takes one.
+// The pass depends on the date (months left), so every lookup takes one.
 
 export type OfferId = 'premium' | 'group' | 'personal' | 'cobe' | 'lesson';
 export type Cycle = 'month' | 'pack3' | 'pack6' | 'pass';
 export const CYCLES: Cycle[] = ['month', 'pack3', 'pack6', 'pass'];
-/** `zoom`: the weekly group lesson (launch-priced); `lessons`: private lessons. */
-type Split = { app: number; zoom: number; lessons?: number };
+type Split = { app: number; zoom: number };
 
 /** Months a cycle buys; the pass's depend on the date. */
 const CYCLE_MONTHS: Record<Exclude<Cycle, 'pass'>, number> = { month: 1, pack3: 3, pack6: 6 };
@@ -33,22 +32,18 @@ const MONTHLY: Record<Exclude<OfferId, 'lesson'>, Record<Cycle, Split>> = {
 	cobe: split(per(5900, 5500, 5000, 4500), per(0, 0, 0, 0))
 };
 
+/** Per cycle; `lessons`: private lessons a month, added to the Zoom part. */
 function split(app: Record<Cycle, number>, zoom: Record<Cycle, number>, lessons = 0) {
 	return Object.fromEntries(
-		CYCLES.map((c) => [c, { app: app[c], zoom: zoom[c], lessons }])
+		CYCLES.map((c) => [c, { app: app[c], zoom: zoom[c] + lessons }])
 	) as Record<Cycle, Split>;
 }
 
 /** One private Zoom lesson: all of it goes to the teacher; a month of the app comes free. */
-const LESSON: Split = { app: 0, zoom: 0, lessons: 17900 };
+const LESSON: Split = { app: 0, zoom: 17900 };
 
 /** COBE added to a plan, per month (cheaper than COBE alone). */
 export const COBE_ADDON = per(3900, 3500, 3200, 2900);
-
-/** Launch: plans longer than a month bought until LAUNCH_END pay the teacher this a month for
- *  the group lessons. Monthly is always the regular price. */
-export const LAUNCH_ZOOM = 8000;
-export const LAUNCH_END = new Date('2026-12-31T23:59:59+02:00');
 
 /** The pass is sold while at least this many months are left. */
 const PASS_MIN_MONTHS = 3;
@@ -81,9 +76,6 @@ export type Plan = {
 	cobe: boolean;
 	/** COBE added on: the id ends with COBE_SUFFIX. */
 	bundle: boolean;
-	/** Bought at the launch price; `regular` is the price after launch. */
-	launch: boolean;
-	regular: number;
 };
 
 const COBE_SUFFIX = '-cobe';
@@ -112,12 +104,6 @@ export function passMonths(at: Date): number {
 	return Math.min(months, 10);
 }
 
-export const isLaunch = (at: Date) => at <= LAUNCH_END;
-
-/** Whole days left to the launch price, counting today. */
-export const launchDaysLeft = (at: Date) =>
-	Math.max(0, Math.ceil((LAUNCH_END.getTime() - at.getTime()) / 86_400_000));
-
 type Parsed = { offer: OfferId; cycle: Cycle | null; bundle: boolean };
 
 /** "premium-month-cobe" -> its parts; undefined for an id the catalogue doesn't know. */
@@ -141,14 +127,14 @@ export function planById(id: string | null | undefined, at = new Date()): Plan |
 	const parsed = id ? parse(id) : undefined;
 	if (!id || !parsed) return;
 	const { offer, cycle, bundle } = parsed;
-	if (!cycle) return build(id, offer, null, LESSON, 1, undefined, false, at);
+	if (!cycle) return build(id, offer, null, LESSON, 1, undefined, false);
 	const monthly = MONTHLY[offer as keyof typeof MONTHLY][cycle];
 	const split = { ...monthly, app: monthly.app + (bundle ? COBE_ADDON[cycle] : 0) };
 	if (cycle !== 'pass')
-		return build(id, offer, cycle, split, CYCLE_MONTHS[cycle], undefined, bundle, at);
+		return build(id, offer, cycle, split, CYCLE_MONTHS[cycle], undefined, bundle);
 	const months = passMonths(at);
 	if (months < PASS_MIN_MONTHS) return;
-	return build(id, offer, cycle, split, months, passEnd(at), bundle, at);
+	return build(id, offer, cycle, split, months, passEnd(at), bundle);
 }
 
 function build(
@@ -158,14 +144,10 @@ function build(
 	monthly: Split,
 	months: number,
 	until: Date | undefined,
-	bundle: boolean,
-	at: Date
+	bundle: boolean
 ): Plan {
-	// Only the group lessons have a launch price; private lessons are the teacher's own price.
-	const launch = isLaunch(at) && cycle !== 'month' && monthly.zoom > LAUNCH_ZOOM;
-	const lessons = monthly.lessons ?? 0;
 	const app = monthly.app * months;
-	const zoom = ((launch ? LAUNCH_ZOOM : monthly.zoom) + lessons) * months;
+	const zoom = monthly.zoom * months;
 	return {
 		id,
 		offer,
@@ -176,9 +158,7 @@ function build(
 		months,
 		until,
 		cobe: offer === 'cobe' || bundle,
-		bundle,
-		launch,
-		regular: (monthly.app + monthly.zoom + lessons) * months
+		bundle
 	};
 }
 
@@ -201,16 +181,6 @@ export function isPurchasable(plan: Plan | undefined): plan is Plan {
 
 /** Whole shekels a month, rounded. */
 export const monthlyShekels = (agorot: number, months: number) => Math.round(agorot / months / 100);
-
-/** How much a cycle saves a month on paying monthly (regular prices), in percent. */
-export function savingPercent(offer: OfferId, cycle: Cycle): number {
-	if (offer === 'lesson') return 0;
-	const total = (c: Cycle) => {
-		const { app, zoom, lessons = 0 } = MONTHLY[offer][c];
-		return app + zoom + lessons;
-	};
-	return Math.round((1 - total(cycle) / total('month')) * 100);
-}
 
 /** 4900 -> "49", 4950 -> "49.50" */
 export function formatPrice(agorot: number): string {

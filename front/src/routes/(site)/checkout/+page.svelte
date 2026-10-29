@@ -24,7 +24,6 @@
 		defaultPlan,
 		formatPrice,
 		isPurchasable,
-		monthlyShekels,
 		planById,
 		withCobe
 	} from '$lib/plans';
@@ -98,7 +97,6 @@
 			(plan.cycle ? `, ${i18n.dict.plans.cycles[plan.cycle]}` : '') +
 			(plan.bundle ? i18n.dict.plans.withCobe : '')
 	);
-	let perMonth = $derived(monthlyShekels(plan.price, plan.months));
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
 	const date = (iso: string) => new Date(iso).toLocaleDateString('he-IL');
 	const row = 'flex justify-between gap-4';
@@ -147,13 +145,6 @@
 						<p class="text-sm text-muted">{t.passLine(plan.months)}</p>
 					{:else if plan.months > 1}
 						<p class="text-sm text-muted">{t.packLine(plan.months)}</p>
-					{/if}
-					{#if plan.launch}
-						<p class="text-sm font-semibold text-brand-dark">
-							{plan.cycle === 'pass'
-								? t.launchLine(perMonth)
-								: t.launchPackLine(perMonth, plan.months)}
-						</p>
 					{/if}
 				</div>
 				<a
