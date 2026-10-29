@@ -17,6 +17,7 @@
 		GUARANTEE,
 		INSTALLMENTS,
 		PRICING,
+		launchDaysLeft,
 		TIERS,
 		TUTOR_HOUR,
 		formatPrice,
@@ -40,7 +41,9 @@
 	let debugDate = $state('');
 	let showGuarantee = $state(GUARANTEE);
 	let showInstallments = $state(INSTALLMENTS);
+	// Two versions of the page: regular, and launch (its prices and their presentation).
 	let pricing = $state<Pricing>(PRICING);
+	let launch = $derived(pricing === 'launch');
 	let now = $derived.by(() => {
 		if (!mounted) return new Date(); // pre-rendered: the build date, replaced in the browser
 		return debugDate ? new Date(`${debugDate}T12:00:00+02:00`) : new Date();
@@ -73,6 +76,7 @@
 		t.faq.filter(
 			(entry) =>
 				!entry.needs ||
+				(entry.needs === 'launch' && launch) ||
 				(entry.needs === 'guarantee' && showGuarantee) ||
 				(entry.needs === 'installments' && showInstallments)
 		)
@@ -116,6 +120,14 @@
 			{:else}
 				<p>{t.paidMonthly}</p>
 			{/if}
+			{#if launch}
+				{@const regular = perMonth(planById(p.id, now, 'regular')!)}
+				{#if regular !== perMonth(p)}
+					<p class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink">
+						{t.launchLine(regular)}
+					</p>
+				{/if}
+			{/if}
 		</div>
 	</div>
 {/snippet}
@@ -149,6 +161,25 @@
 		<h1 class="text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">{t.headline}</h1>
 		<p class="text-lg text-pretty text-muted">{t.subtitle}</p>
 	</header>
+
+	{#if launch}
+		{@const days = launchDaysLeft(now)}
+		<section
+			class="mx-auto flex w-full max-w-xl flex-col items-center gap-1 rounded-3xl bg-accent-soft px-5 py-4 text-center ring-1 ring-accent/40 motion-safe:animate-rise"
+			aria-labelledby="launch-title"
+		>
+			<h2 id="launch-title" class="flex items-center gap-1 font-extrabold">
+				<Sparkles size={16} aria-hidden="true" />
+				{t.launchTitle}
+			</h2>
+			<p class="text-pretty">
+				{t.launchBody(perMonth(plan('group', passOn ? 'pass' : 'pack6', false)))}
+			</p>
+			{#if days <= 31}
+				<p class="text-sm font-bold text-brand-dark tabular-nums">{t.launchCountdown(days)}</p>
+			{/if}
+		</section>
+	{/if}
 
 	<!-- Price anchor: a private tutor vs. the featured plan. -->
 	<section
@@ -417,6 +448,21 @@
 </main>
 
 {#if debug}
+	<!-- Which version of the page: pinned so the two can be flipped while scrolling. -->
+	<div
+		class="fixed inset-x-0 top-20 z-50 mx-auto flex w-fit items-center gap-2 rounded-2xl bg-surface px-3 py-2 text-sm font-bold shadow-lg ring-1 ring-line"
+	>
+		{t.debug.version}
+		<Segmented
+			label={t.debug.version}
+			value={pricing}
+			options={(['regular', 'launch'] as const).map((value) => ({
+				value,
+				label: t.debug.pricings[value]
+			}))}
+			onchange={(value) => (pricing = value)}
+		/>
+	</div>
 	<details
 		class="fixed start-4 bottom-4 z-50 w-80 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line"
 	>
@@ -453,18 +499,6 @@
 					checked={showInstallments}
 					label={t.debug.installments}
 					onchange={(on) => (showInstallments = on)}
-				/>
-			</div>
-			<div class="flex items-center justify-between gap-2">
-				{t.debug.pricing}
-				<Segmented
-					label={t.debug.pricing}
-					value={pricing}
-					options={(['regular', 'launch'] as const).map((value) => ({
-						value,
-						label: t.debug.pricings[value]
-					}))}
-					onchange={(value) => (pricing = value)}
 				/>
 			</div>
 			<table class="w-full text-center text-xs tabular-nums">

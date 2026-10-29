@@ -234,6 +234,12 @@ export const he = {
 		headline: 'הכנה לבגרות עם מורה, בפחות משליש ממחיר של מורה פרטי',
 		subtitle:
 			'תרגול יומי באפליקציה, מבחנים בתנאי אמת ומורה אמיתי בזום. משלמים פעם אחת, בלי חיוב מתחדש.',
+		launchTitle: 'מחיר השקה עד 31.12',
+		launchBody: (price: number) =>
+			`מצטרפים למסלול הקבוצתי ב-${price} ₪ לחודש, והמחיר נשאר נעול עד סוף שנת הלימודים.`,
+		launchCountdown: (days: number) =>
+			days === 1 ? 'היום אחרון למחיר ההשקה' : `נשארו ${days} ימים למחיר ההשקה`,
+		launchLine: (price: number) => `מחיר השקה עד 31.12. אחרי ההשקה: ${price} ₪`,
 		anchorTitle: 'כמה עולה להתכונן לבגרות?',
 		anchorTutor: 'מורה פרטי, שיעור בשבוע',
 		anchorUs: 'מסלול קבוצתי, שיעור בשבוע ואפליקציה',
@@ -280,7 +286,7 @@ export const he = {
 			'COBE הוא שיחה חיה באנגלית עם בינה מלאכותית, עם משוב אחרי כל תשובה. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
 		cobeOnlyChoose: 'רק COBE',
 		faqTitle: 'שאלות נפוצות',
-		/** `needs`: shown only once that promise is on (plans.ts GUARANTEE / INSTALLMENTS). */
+		/** `needs`: shown only on the launch version, or once that promise is on (plans.ts GUARANTEE / INSTALLMENTS). */
 		faq: [
 			{
 				q: 'יש חיוב מתחדש?',
@@ -293,6 +299,11 @@ export const he = {
 			{
 				q: 'מה ההבדל בין 3 או 6 חודשים לשנת לימודים?',
 				a: '3 או 6 חודשים מתחילים ביום הרכישה. שנת לימודים נגמרת ב-30.6.'
+			},
+			{
+				q: 'מה זה מחיר השקה?',
+				a: 'מי שמצטרף עד 31.12 ל-3 חודשים, 6 חודשים או שנת לימודים, משלם פחות על השיעורים הקבוצתיים, והמחיר נשאר לכל התקופה.',
+				needs: 'launch'
 			},
 			{
 				q: 'כמה זה יוצא לעומת מורה פרטי?',
@@ -324,7 +335,7 @@ export const he = {
 				q: 'צריכים עוד זמן אחרי יוני?',
 				a: 'מאריכים בעוד חודש בכל רגע, והזמן מתווסף לזמן שנשאר לכם.'
 			}
-		] as { q: string; a: string; needs?: 'guarantee' | 'installments' }[],
+		] as { q: string; a: string; needs?: 'launch' | 'guarantee' | 'installments' }[],
 		offers: {
 			premium: {
 				name: 'עצמאי',
@@ -371,8 +382,8 @@ export const he = {
 			],
 			guarantee: 'הבטחת החזר',
 			installments: 'תשלומים',
-			pricing: 'מחירון',
-			pricings: { regular: 'רגיל', launch: 'השקה' } as Record<string, string>,
+			version: 'גרסה',
+			pricings: { regular: 'רגילה', launch: 'השקה' } as Record<string, string>,
 			diffTitle: 'רגיל / השקה, ₪ לחודש',
 			note: 'רק התצוגה משתנה. המחיר בתשלום נקבע בשרת לפי התאריך האמיתי.'
 		}

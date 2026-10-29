@@ -32,6 +32,12 @@ const PRIVATE = 35800;
 export type Pricing = keyof typeof GROUP_ZOOM;
 /** What the site charges. */
 export const PRICING: Pricing = 'regular';
+/** The launch list's deadline (its copy says 31.12). */
+export const LAUNCH_END = new Date('2026-12-31T23:59:59+02:00');
+
+/** Whole days left to the launch price, counting today. */
+export const launchDaysLeft = (at: Date) =>
+	Math.max(0, Math.ceil((LAUNCH_END.getTime() - at.getTime()) / 86_400_000));
 
 /** Monthly prices in agorot (VAT included), per price list. */
 const MONTHLY = Object.fromEntries(
