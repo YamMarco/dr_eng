@@ -21,10 +21,10 @@ const CYCLE_MONTHS: Record<Exclude<Cycle, 'pass'>, number> = { month: 1, pack3: 
 const per = (month: number, pack3: number, pack6: number, pass: number) =>
 	({ month, pack3, pack6, pass }) as Record<Cycle, number>;
 const APP = per(4900, 3900, 3400, 2900);
-/** The teacher's part for the weekly group lesson. Launch: 80 on every cycle but monthly. */
+/** The teacher's part for the weekly group lesson. Launch: 80 on every cycle. */
 const GROUP_ZOOM = {
 	regular: per(13000, 12000, 11500, 11000),
-	launch: per(13000, 8000, 8000, 8000)
+	launch: per(8000, 8000, 8000, 8000)
 };
 /** Two private lessons a month (2 x LESSON), never discounted. */
 const PRIVATE = 35800;

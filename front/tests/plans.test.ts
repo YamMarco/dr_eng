@@ -91,15 +91,16 @@ test('what an order opens never depends on the date', () => {
 	assert.equal(productsOf('premium-year'), undefined);
 });
 
-test('the site charges PRICING; launch only lowers the group lessons on longer cycles', () => {
+test('the site charges PRICING; launch only lowers the group lessons, to 80 a month', () => {
 	assert.equal(PRICING, 'regular');
 	const launch = (id: string) => planById(id, FEB, 'launch')!.price / planById(id, FEB)!.months;
 	assert.deepEqual(
 		['group-month', 'group-pack3', 'group-pack6', 'group-pass'].map(launch),
-		[17900, 11900, 11400, 10900]
+		[12900, 11900, 11400, 10900]
 	);
 	assert.equal(launch('premium-pass'), 2900);
 	assert.equal(launch('personal-pack3'), 3100 + 8000 + 35800);
+	assert.equal(launch('personal-month'), 4100 + 8000 + 35800);
 	assert.equal(
 		withCobe(planById('group-pack3', FEB, 'launch')!, true, FEB, 'launch')!.price,
 		(11900 + COBE_ADDON.pack3) * 3
