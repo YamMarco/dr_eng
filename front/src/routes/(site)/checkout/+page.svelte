@@ -152,9 +152,7 @@
 						<p class="text-sm font-semibold text-brand-dark">
 							{plan.cycle === 'pass'
 								? t.launchLine(perMonth)
-								: plan.months > 1
-									? t.launchPackLine(perMonth, plan.months)
-									: t.launchMonthLine}
+								: t.launchPackLine(perMonth, plan.months)}
 						</p>
 					{/if}
 				</div>

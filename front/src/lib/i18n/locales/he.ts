@@ -414,7 +414,6 @@ export const he = {
 		launchPackLine: (price: number, months: number) =>
 			`מחיר השקה: ${price} ₪ לחודש, ל-${months} החודשים`,
 		launchLine: (price: number) => `מחיר השקה: ${price} ₪ לחודש, נעול עד 30.6`,
-		launchMonthLine: 'מחיר השקה, לרכישות עד 31.12',
 		installments: (months: number) => `עד ${months} תשלומים ללא ריבית`,
 		guarantee: 'לא מתאים? החזר מלא תוך 14 יום.',
 		lessonDone: 'נחזור אליכם במייל לתיאום מועד השיעור.',

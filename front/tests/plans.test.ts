@@ -61,17 +61,19 @@ test('a pack buys fixed months from the day of purchase', () => {
 	assert.equal(planById('group-pack6', at('2027-05-10'))!.months, 6);
 });
 
-test('launch prices the group lessons at LAUNCH_ZOOM until 31.12; app part unchanged', () => {
+test('launch prices the group lessons at LAUNCH_ZOOM until 31.12, except monthly', () => {
 	const launch = planById('group-pass', NOV)!;
 	assert.equal(launch.launch, true);
 	assert.equal(launch.price / launch.months, 10900);
 	assert.equal(launch.app, 2900 * 8);
 	assert.equal(launch.zoom, LAUNCH_ZOOM * 8);
 	assert.equal(launch.regular, 13900 * 8);
-	assert.equal(planById('group-month', NOV)!.price, 12900);
 	assert.equal(planById('group-pack3', NOV)!.price, 11900 * 3);
+	// Monthly is always 179, COBE extra.
+	assert.equal(planById('group-month', NOV)!.launch, false);
+	assert.equal(planById('group-month', NOV)!.price, 17900);
 	// Private lessons keep the teacher's price.
-	assert.equal(planById('personal-month', NOV)!.price, 4100 + LAUNCH_ZOOM + 35800);
+	assert.equal(planById('personal-pack3', NOV)!.price, (3100 + LAUNCH_ZOOM + 35800) * 3);
 	const after = planById('group-month', FEB)!;
 	assert.equal(after.launch, false);
 	assert.equal(after.price, 17900);

@@ -45,7 +45,8 @@ const LESSON: Split = { app: 0, zoom: 0, lessons: 17900 };
 /** COBE added to a plan, per month (cheaper than COBE alone). */
 export const COBE_ADDON = per(3900, 3500, 3200, 2900);
 
-/** Launch: plans bought until LAUNCH_END pay the teacher this a month for the group lessons. */
+/** Launch: plans longer than a month bought until LAUNCH_END pay the teacher this a month for
+ *  the group lessons. Monthly is always the regular price. */
 export const LAUNCH_ZOOM = 8000;
 export const LAUNCH_END = new Date('2026-12-31T23:59:59+02:00');
 
@@ -161,7 +162,7 @@ function build(
 	at: Date
 ): Plan {
 	// Only the group lessons have a launch price; private lessons are the teacher's own price.
-	const launch = isLaunch(at) && monthly.zoom > LAUNCH_ZOOM;
+	const launch = isLaunch(at) && cycle !== 'month' && monthly.zoom > LAUNCH_ZOOM;
 	const lessons = monthly.lessons ?? 0;
 	const app = monthly.app * months;
 	const zoom = ((launch ? LAUNCH_ZOOM : monthly.zoom) + lessons) * months;
