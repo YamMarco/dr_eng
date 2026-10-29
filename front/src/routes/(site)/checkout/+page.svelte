@@ -23,7 +23,6 @@
 		baseId,
 		cycleOf,
 		formatPrice,
-		isBundle,
 		isPurchasable,
 		planById,
 		withCobe
@@ -36,7 +35,7 @@
 	let t = $derived(i18n.dict.checkout);
 	const requested = planById(page.url.searchParams.get('plan'));
 	let plan = $state(isPurchasable(requested) ? requested : planById(DEFAULT_PLAN)!);
-	// Order bump: COBE can be added to any plan without it built in.
+	// Order bump: COBE can be added to any plan that isn't COBE itself.
 	let canAddCobe = $derived(!!planById(withCobe(baseId(plan), true)));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');
 
@@ -93,7 +92,7 @@
 	}
 
 	let name = $derived(
-		i18n.dict.plans.items[baseId(plan)].name + (isBundle(plan) ? i18n.dict.plans.withCobe : '')
+		i18n.dict.plans.items[baseId(plan)].name + (plan.cobe ? i18n.dict.plans.withCobe : '')
 	);
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
 	const date = (iso: string) => new Date(iso).toLocaleDateString('he-IL');
@@ -161,9 +160,7 @@
 
 			{#if canAddCobe}
 				<div
-					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {isBundle(
-						plan
-					)
+					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {plan.cobe
 						? 'bg-accent-soft'
 						: 'bg-canvas'}"
 				>
@@ -173,7 +170,7 @@
 							{t.bumpBody(formatPrice(COBE_ADDON[cycleOf(plan)]))}
 						</span>
 					</div>
-					<Toggle checked={isBundle(plan)} label={t.bumpTitle} onchange={setCobe} />
+					<Toggle checked={!!plan.cobe} label={t.bumpTitle} onchange={setCobe} />
 				</div>
 			{/if}
 
@@ -217,9 +214,6 @@
 			<Button disabled={busy || !quote} onclick={submit}>
 				{busy ? t.checking : quote?.total === 0 ? t.activate : t.pay}
 			</Button>
-			{#if quote?.total}
-				<p class="-mt-2 text-center text-sm text-muted">{i18n.dict.plans.guarantee}</p>
-			{/if}
 
 			{#if orderError}
 				<p
