@@ -371,6 +371,9 @@ export const he = {
 			],
 			guarantee: 'הבטחת החזר',
 			installments: 'תשלומים',
+			pricing: 'מחירון',
+			pricings: { regular: 'רגיל', launch: 'השקה' } as Record<string, string>,
+			diffTitle: 'רגיל / השקה, ₪ לחודש',
 			note: 'רק התצוגה משתנה. המחיר בתשלום נקבע בשרת לפי התאריך האמיתי.'
 		}
 	},

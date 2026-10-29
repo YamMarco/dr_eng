@@ -6,6 +6,8 @@
 // Cycles: `month`; `pack3` / `pack6` (months from the day of purchase); and `pass`
 // (the school year, sold by the months left until 30.6). Longer cycles cost less a month.
 // The pass depends on the date (months left), so every lookup takes one.
+// Two price lists: `regular` and `launch`. The site charges PRICING; the other is only
+// previewed in the /plans debug panel.
 
 export type OfferId = 'premium' | 'group' | 'personal' | 'cobe' | 'lesson';
 export type Cycle = 'month' | 'pack3' | 'pack6' | 'pass';
@@ -19,18 +21,31 @@ const CYCLE_MONTHS: Record<Exclude<Cycle, 'pass'>, number> = { month: 1, pack3: 
 const per = (month: number, pack3: number, pack6: number, pass: number) =>
 	({ month, pack3, pack6, pass }) as Record<Cycle, number>;
 const APP = per(4900, 3900, 3400, 2900);
-const GROUP_ZOOM = per(13000, 12000, 11500, 11000);
+/** The teacher's part for the weekly group lesson. Launch: 80 on every cycle but monthly. */
+const GROUP_ZOOM = {
+	regular: per(13000, 12000, 11500, 11000),
+	launch: per(13000, 8000, 8000, 8000)
+};
 /** Two private lessons a month (2 x LESSON), never discounted. */
 const PRIVATE = 35800;
 
-/** Monthly prices in agorot (VAT included). */
-const MONTHLY: Record<Exclude<OfferId, 'lesson'>, Record<Cycle, Split>> = {
-	premium: split(APP, per(0, 0, 0, 0)),
-	group: split(APP, GROUP_ZOOM),
-	// Rounded down to a price ending in 9: the app part takes the difference.
-	personal: split(per(4100, 3100, 2600, 2100), GROUP_ZOOM, PRIVATE),
-	cobe: split(per(5900, 5500, 5000, 4500), per(0, 0, 0, 0))
-};
+export type Pricing = keyof typeof GROUP_ZOOM;
+/** What the site charges. */
+export const PRICING: Pricing = 'regular';
+
+/** Monthly prices in agorot (VAT included), per price list. */
+const MONTHLY = Object.fromEntries(
+	(['regular', 'launch'] as const).map((pricing) => [
+		pricing,
+		{
+			premium: split(APP, per(0, 0, 0, 0)),
+			group: split(APP, GROUP_ZOOM[pricing]),
+			// Rounded down to a price ending in 9: the app part takes the difference.
+			personal: split(per(4100, 3100, 2600, 2100), GROUP_ZOOM[pricing], PRIVATE),
+			cobe: split(per(5900, 5500, 5000, 4500), per(0, 0, 0, 0))
+		}
+	])
+) as Record<Pricing, Record<Exclude<OfferId, 'lesson'>, Record<Cycle, Split>>>;
 
 /** Per cycle; `lessons`: private lessons a month, added to the Zoom part. */
 function split(app: Record<Cycle, number>, zoom: Record<Cycle, number>, lessons = 0) {
@@ -111,7 +126,7 @@ function parse(id: string): Parsed | undefined {
 	if (id === 'lesson') return { offer: 'lesson', cycle: null, bundle: false };
 	const bundle = id.endsWith(COBE_SUFFIX);
 	const [offer, cycle, ...rest] = (bundle ? id.slice(0, -COBE_SUFFIX.length) : id).split('-');
-	if (rest.length || !CYCLES.includes(cycle as Cycle) || !(offer in MONTHLY)) return;
+	if (rest.length || !CYCLES.includes(cycle as Cycle) || !(offer in MONTHLY.regular)) return;
 	if (bundle && offer === 'cobe') return;
 	return { offer: offer as OfferId, cycle: cycle as Cycle, bundle };
 }
@@ -122,13 +137,18 @@ export function productsOf(id: string): { app: boolean; cobe: boolean } | undefi
 	return parsed && { app: parsed.offer !== 'cobe', cobe: parsed.offer === 'cobe' || parsed.bundle };
 }
 
-/** "group-pass", "premium-month-cobe" or "lesson", priced on `at`. Undefined when not sold then. */
-export function planById(id: string | null | undefined, at = new Date()): Plan | undefined {
+/** "group-pass", "premium-month-cobe" or "lesson", priced on `at`. Undefined when not sold then.
+ *  `pricing` other than PRICING is for the page's preview only. */
+export function planById(
+	id: string | null | undefined,
+	at = new Date(),
+	pricing: Pricing = PRICING
+): Plan | undefined {
 	const parsed = id ? parse(id) : undefined;
 	if (!id || !parsed) return;
 	const { offer, cycle, bundle } = parsed;
 	if (!cycle) return build(id, offer, null, LESSON, 1, undefined, false);
-	const monthly = MONTHLY[offer as keyof typeof MONTHLY][cycle];
+	const monthly = MONTHLY[pricing][offer as Exclude<OfferId, 'lesson'>][cycle];
 	const split = { ...monthly, app: monthly.app + (bundle ? COBE_ADDON[cycle] : 0) };
 	if (cycle !== 'pass')
 		return build(id, offer, cycle, split, CYCLE_MONTHS[cycle], undefined, bundle);
@@ -166,9 +186,14 @@ export const planId = (offer: OfferId, cycle: Cycle, cobe = false) =>
 	`${offer}-${cycle}${cobe ? COBE_SUFFIX : ''}`;
 
 /** The same plan with COBE added or removed; undefined when it can't take COBE. */
-export function withCobe(plan: Plan, on: boolean, at = new Date()): Plan | undefined {
+export function withCobe(
+	plan: Plan,
+	on: boolean,
+	at = new Date(),
+	pricing: Pricing = PRICING
+): Plan | undefined {
 	if (!plan.cycle) return;
-	return planById(planId(plan.offer, plan.cycle, on), at);
+	return planById(planId(plan.offer, plan.cycle, on), at, pricing);
 }
 
 /** What a coupon without its own plan unlocks, and what the in-app code box redeems. */

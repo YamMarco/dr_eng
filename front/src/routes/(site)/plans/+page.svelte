@@ -16,6 +16,7 @@
 		FEATURED_OFFER,
 		GUARANTEE,
 		INSTALLMENTS,
+		PRICING,
 		TIERS,
 		TUTOR_HOUR,
 		formatPrice,
@@ -24,6 +25,7 @@
 		planId,
 		type Cycle,
 		type OfferId,
+		type Pricing,
 		type Plan
 	} from '$lib/plans';
 
@@ -38,6 +40,7 @@
 	let debugDate = $state('');
 	let showGuarantee = $state(GUARANTEE);
 	let showInstallments = $state(INSTALLMENTS);
+	let pricing = $state<Pricing>(PRICING);
 	let now = $derived.by(() => {
 		if (!mounted) return new Date(); // pre-rendered: the build date, replaced in the browser
 		return debugDate ? new Date(`${debugDate}T12:00:00+02:00`) : new Date();
@@ -52,7 +55,7 @@
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 
 	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
-		planById(planId(offer, c, cobe), now)!;
+		planById(planId(offer, c, cobe), now, pricing)!;
 	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
 
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
@@ -415,7 +418,7 @@
 
 {#if debug}
 	<details
-		class="fixed start-4 bottom-4 z-50 w-72 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line"
+		class="fixed start-4 bottom-4 z-50 w-80 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line"
 	>
 		<summary class="cursor-pointer font-bold">{t.debug.title}</summary>
 		<div class="mt-2 flex flex-col gap-2">
@@ -452,6 +455,42 @@
 					onchange={(on) => (showInstallments = on)}
 				/>
 			</div>
+			<div class="flex items-center justify-between gap-2">
+				{t.debug.pricing}
+				<Segmented
+					label={t.debug.pricing}
+					value={pricing}
+					options={(['regular', 'launch'] as const).map((value) => ({
+						value,
+						label: t.debug.pricings[value]
+					}))}
+					onchange={(value) => (pricing = value)}
+				/>
+			</div>
+			<table class="w-full text-center text-xs tabular-nums">
+				<caption class="pb-1 text-start font-semibold">{t.debug.diffTitle}</caption>
+				<thead>
+					<tr>
+						<th></th>
+						{#each cycles as c (c)}<th class="font-semibold">{t.cycles[c]}</th>{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each TIERS as offer (offer)}
+						<tr>
+							<th scope="row" class="text-start font-semibold">{t.offers[offer].name}</th>
+							{#each cycles as c (c)}
+								{@const id = planId(offer, c)}
+								{@const regular = perMonth(planById(id, now, 'regular')!)}
+								{@const launch = perMonth(planById(id, now, 'launch')!)}
+								<td class={regular === launch ? 'text-muted' : 'font-bold text-brand-dark'}>
+									{regular === launch ? regular : `${regular} / ${launch}`}
+								</td>
+							{/each}
+						</tr>
+					{/each}
+				</tbody>
+			</table>
 			<p class="text-xs text-muted">{t.debug.note}</p>
 		</div>
 	</details>
