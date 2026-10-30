@@ -1,4 +1,5 @@
 import type { SpeakingJudgement } from './speaking';
+import type { WritingRubricId } from '$lib/content/rubrics';
 
 /** One flagged spot in the student's text - from the local checks (l1) or the LLM (l2). */
 export type Mark = {
@@ -46,7 +47,7 @@ export type EssayVerdict = { scores: Record<string, number>; marks: LlmMark[] };
 /** Software mechanics counts handed to the essay grader (it sees spelling-corrected text). */
 export type MechanicsCount = { spelling: number; punctuation: number; runOn: number };
 
-/** One answer: lesson = pass/fail, essay = the 30-point rubric. */
+/** One answer: lesson = pass/fail, essay = the module's rubric (C 30 points, G 40). */
 export type SingleRequest = {
 	kind: 'lesson' | 'essay';
 	/** The task's question, as the student saw it. */
@@ -59,6 +60,8 @@ export type SingleRequest = {
 	fixes?: boolean;
 	/** essay only */
 	mechanics?: MechanicsCount;
+	/** essay only: which writing rubric; default 'c'. */
+	rubric?: WritingRubricId;
 };
 
 /** One open reading question inside a batch. */
@@ -98,6 +101,8 @@ export type ExamGrade = {
 	gate?: GateReason;
 	/** essay: points per rubric criterion, after the length deduction. */
 	criteria?: Record<string, number>;
+	/** essay: the rubric the criteria belong to; default 'c'. */
+	rubric?: WritingRubricId;
 	lengthDeduction?: number;
 	validWords?: number;
 	/** speaking: percent off every criterion for the recording's length. */

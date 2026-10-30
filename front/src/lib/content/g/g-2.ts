@@ -586,7 +586,7 @@ export const g2Lessons: LessonNode[] = [
 						{
 							type: 'writing-task',
 							prompt:
-								'It has been suggested that the use of AI for school purposes should be banned among high school students. What do you think? Write a 4-paragraph opinion essay (120-150 words). Use the Present Perfect, one If-sentence and one inversion.',
+								'It has been suggested that the use of AI for school purposes should be banned among high school students. What do you think? Write a 4-paragraph opinion essay (120-140 words). Use the Present Perfect, one If-sentence and one inversion.',
 							wordBank: [
 								'I believe that',
 								'First,',
@@ -603,14 +603,14 @@ export const g2Lessons: LessonNode[] = [
 								'שתי סיבות שונות, לכל אחת משפט נושא',
 								'Present Perfect, תנאי והיפוך - כל אחד פעם אחת',
 								'בסיכום אין סיבה חדשה',
-								'120-150 מילים'
+								'120-140 מילים'
 							],
 							requiredMoves: ['stance', 'in-conclusion'],
 							timeLimitMinutes: 40,
 							minSentences: 1,
 							minWordsUsed: 4,
 							minWords: 120,
-							maxWords: 150
+							maxWords: 140
 						}
 					]
 				}

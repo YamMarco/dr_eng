@@ -6,7 +6,7 @@
 // Empty / not-English / under-25-words answers score 0 by rule and are never sent.
 import { checkWriting, type CheckReport } from '$lib/checks';
 import { browserDictionaries } from '$lib/checks/dictionaries';
-import { essayRubric } from '$lib/content/rubrics';
+import { writingRubricId, writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
 import { screensWithIds } from '$lib/quiz/screenIds';
 import type { QuizNode } from '$lib/quiz/types';
 import type { WritingTaskScreen } from '$lib/lesson-screens/types';
@@ -25,6 +25,8 @@ type OpenAnswer = {
 	group: string;
 	/** reading: the part's passage, paragraphs labelled [I], [II]... essay: every passage, for copy detection. */
 	passage: string;
+	/** essay: the exam module's writing rubric. */
+	rubric: WritingRubricId;
 };
 
 /** An answer after the local checks: either finished (scored 0 by rule) or ready to send. */
@@ -56,7 +58,8 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 				screen,
 				text,
 				group: essay ? id : part.id,
-				passage: essay ? allPassages : passage
+				passage: essay ? allPassages : passage,
+				rubric: writingRubricId(quiz.module)
 			});
 		}
 	}
@@ -64,14 +67,19 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 }
 
 const maxOf = (a: OpenAnswer) =>
-	a.screen.points ?? (a.kind === 'essay' ? essayRubric.totalPoints : 1);
+	a.screen.points ?? (a.kind === 'essay' ? writingRubrics[a.rubric].totalPoints : 1);
 
 async function check(a: OpenAnswer): Promise<Checked> {
 	const base = { kind: a.kind, max: maxOf(a), text: a.text, status: 'graded' as const };
 	if (!a.text.trim()) return { a, done: { ...base, earned: 0, marks: [], gate: 'empty' } };
+	const { minWords, maxWords } = a.screen;
 	const report = await checkWriting(a.text, browserDictionaries, {
 		prompt: a.screen.prompt,
-		source: a.kind === 'essay' ? a.passage : undefined
+		source: a.kind === 'essay' ? a.passage : undefined,
+		range:
+			a.kind === 'essay' && minWords !== undefined && maxWords !== undefined
+				? { min: minWords, max: maxWords }
+				: undefined
 	});
 	const l1 = issuesToMarks(report.issues);
 	if (report.notEnglish) return { a, done: { ...base, earned: 0, marks: l1, gate: 'not-english' } };
@@ -146,23 +154,26 @@ async function gradeEssay(c: Extract<Checked, { done?: undefined }>): Promise<Ex
 			question: c.a.screen.prompt,
 			text: c.corrected.text,
 			notes: c.a.screen.gradingNotes,
-			mechanics: mechanicsCount(c.report.issues)
+			mechanics: mechanicsCount(c.report.issues),
+			rubric: c.a.rubric
 		});
 	} catch {
 		return failed(c);
 	}
-	const order = essayRubric.criteria.map((cr) => cr.id);
+	const rubric = writingRubrics[c.a.rubric];
+	const order = rubric.criteria.map((cr) => cr.id);
 	const criteria = applyLength(v.scores, order, c.report.length.deduction);
 	const raw = order.reduce((sum, id) => sum + (criteria[id] ?? 0), 0);
 	const max = maxOf(c.a);
 	return {
 		kind: 'essay',
 		status: 'graded',
-		// a screen worth other than 30 points scales the rubric total
-		earned: Math.round((raw * max) / essayRubric.totalPoints),
+		// a screen worth other than the rubric total scales it
+		earned: Math.round((raw * max) / rubric.totalPoints),
 		max,
 		text: c.a.text,
 		criteria,
+		rubric: c.a.rubric,
 		lengthDeduction: c.report.length.deduction,
 		validWords: c.report.length.valid,
 		...withLlmMarks(c, v.marks)

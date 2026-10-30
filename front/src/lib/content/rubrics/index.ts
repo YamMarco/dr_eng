@@ -1,7 +1,8 @@
-// Official marking rubrics, stored as data (Supabase later). The essay prompt
-// (server/prompts/grade-essay.md) is written from this file; the criteria's
+// Official marking rubrics, stored as data (Supabase later). Each essay prompt
+// (server/prompts/grade-essay[-g].md) is written from its file; the criteria's
 // ids and maxima here are what the grader's reply is validated against.
 import moduleCWriting from './module-c-writing.json';
+import moduleGWriting from './module-g-writing.json';
 import cobe from './cobe.json';
 
 export type RubricCriterion = {
@@ -22,6 +23,14 @@ export type Rubric = {
 };
 
 export const essayRubric = moduleCWriting as Rubric;
+
+/** Exam writing rubrics by module; other modules use Module C's. */
+export const writingRubrics = { c: essayRubric, g: moduleGWriting as Rubric };
+export type WritingRubricId = keyof typeof writingRubrics;
+
+export function writingRubricId(moduleId: string): WritingRubricId {
+	return moduleId === 'g' ? 'g' : 'c';
+}
 
 /** COBE (oral exam): one rubric per level (4 / 5 points), the same four
  *  criteria with different weights. A criterion is judged in one of four

@@ -133,7 +133,7 @@ export const ar: DictionaryOverride = {
 		gateZero: {
 			empty: 'لم تُكتب إجابة.',
 			'not-english': 'الإجابة ليست بالإنجليزية.',
-			'too-short': 'أقل من 25 كلمة - المهمة كلها تحصل على 0.'
+			'too-short': 'أقل من الحد الأدنى للكلمات - المهمة كلها تحصل على 0.'
 		} as Record<string, string>,
 		lastAttemptLabel: 'آخر محاولة',
 		timeLeftLabel: 'الوقت المتبقي',

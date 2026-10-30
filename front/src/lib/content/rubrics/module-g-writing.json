@@ -1,0 +1,238 @@
+{
+	"id": "module-g-writing",
+	"title": "Module G - Writing Rubric",
+	"source": "Ministry of Education, English Language Education, Modules F & G writing rubric, as of Winter 2020 (FGExternalInternal2020.pdf)",
+	"totalPoints": 40,
+	"requiredWords": { "min": 120, "max": 140 },
+	"bands": ["correct", "partially correct", "minimally correct", "incorrect"],
+	"criteria": [
+		{
+			"id": "content",
+			"name": "Content and Organization",
+			"max": 8,
+			"levels": [
+				{
+					"band": "correct",
+					"points": 8,
+					"descriptors": [
+						"fully on topic",
+						"fully developed (main idea and supporting details)",
+						"all elements of task are addressed",
+						"information is relevant",
+						"content is understood",
+						"task is well organized and coherent"
+					]
+				},
+				{
+					"band": "partially correct",
+					"points": 5,
+					"descriptors": [
+						"partially on topic",
+						"partially developed (main idea or supporting details)",
+						"partially addresses elements of task",
+						"information is partially relevant",
+						"content is partially understood",
+						"task is partially organized and coherent"
+					]
+				},
+				{
+					"band": "minimally correct",
+					"points": 2,
+					"descriptors": [
+						"minimally on topic",
+						"minimally developed (main idea or supporting details)",
+						"minimally addresses elements of task",
+						"information is minimally relevant",
+						"content is minimally understood",
+						"task is minimally organized and coherent"
+					]
+				},
+				{
+					"band": "incorrect",
+					"points": 0,
+					"descriptors": [
+						"not on topic",
+						"not developed (main idea or supporting details)",
+						"elements are not addressed due to misunderstanding",
+						"information is not relevant due to misunderstanding",
+						"content is not understood",
+						"task is not organized and not coherent"
+					]
+				}
+			],
+			"notes": [
+				"Partially correct: required to present advantages and/or disadvantages and give an opinion, but no opinion is given.",
+				"Partially correct: written in the wrong tense (e.g. a future event instead of a past one).",
+				"Partially correct: states an opinion but contradicts it later in the task.",
+				"Minimally correct: zero or minimal Content points (other criteria still scored) when irrelevance clearly reflects misunderstanding of the subject (e.g. 'pastimes' read as 'past times').",
+				"If a partial reference to the task changes the essence of the task: zero for the entire task (e.g. required 'a nice thing that someone did for him', describes only 'a nice thing' such as a car).",
+				"Poor language, organization or vocabulary making the task almost incomprehensible: 1-2 points for Content; the other criteria will also be very low.",
+				"Content completely incomprehensible: zero for the entire task.",
+				"Partially organized, deduct by severity (not more than 50%): list form; letter format (date, Dear X, signature) in a task that is not a letter; opening with 'Hi. My name is... / I live in... / I study at... / I am seventeen' when irrelevant; whole ideas repeated; no introduction and/or conclusion; ideas disorganized and confusing."
+			]
+		},
+		{
+			"id": "vocabulary",
+			"name": "Vocabulary",
+			"max": 10,
+			"levels": [
+				{
+					"band": "correct",
+					"points": 10,
+					"descriptors": [
+						"correct use of varied and rich vocabulary",
+						"appropriate use of language chunks and phrases (such as phrasal verbs and collocations)",
+						"correct use of connecting words or phrases",
+						"use of appropriate register"
+					]
+				},
+				{
+					"band": "partially correct",
+					"points": 6,
+					"descriptors": [
+						"correct use of basic, appropriate vocabulary",
+						"partially appropriate use of chunks and phrases",
+						"partial and correct use of connecting words or phrases",
+						"occasional use of inappropriate register"
+					]
+				},
+				{
+					"band": "minimally correct",
+					"points": 3,
+					"descriptors": [
+						"minimally correct use of basic, appropriate vocabulary",
+						"minimally appropriate chunks and phrases",
+						"minimal use of connecting words or phrases",
+						"consistent use of inappropriate register"
+					]
+				},
+				{
+					"band": "incorrect",
+					"points": 0,
+					"descriptors": [
+						"incorrect use of words",
+						"inappropriate use of chunks and phrases",
+						"no use of connecting words or phrases",
+						"consistent use of inappropriate register"
+					]
+				}
+			],
+			"notes": [
+				"Students are expected to use a variety of low frequency words and appropriate connectors (words and/or phrases). As of Winter 2020, compositions must show productive knowledge of Band 3 vocabulary.",
+				"Deduct up to 3 points when vocabulary is correct but repeated (e.g. 'very' and 'much' over and over).",
+				"Deduct up to 3 points for slang or abbreviations (4U, BTW)."
+			]
+		},
+		{
+			"id": "language",
+			"name": "Language Use",
+			"max": 16,
+			"levels": [
+				{
+					"band": "correct",
+					"points": 16,
+					"descriptors": [
+						"correct use of basic tenses and/or language structures",
+						"correct use of advanced language structures",
+						"correct word order",
+						"correct use of parts of speech, pronouns and prepositions"
+					]
+				},
+				{
+					"band": "partially correct",
+					"points": 10,
+					"descriptors": [
+						"correct use of basic tenses and/or language structures",
+						"incorrect or no use of advanced language structures",
+						"occasional instances of incorrect word order",
+						"occasional incorrect use of parts of speech, pronouns and prepositions"
+					]
+				},
+				{
+					"band": "minimally correct",
+					"points": 5,
+					"descriptors": [
+						"minimally correct use of basic tenses and/or language structures",
+						"incorrect or no use of advanced language structures",
+						"minimally correct word order",
+						"minimally correct use of parts of speech, pronouns and prepositions"
+					]
+				},
+				{
+					"band": "incorrect",
+					"points": 0,
+					"descriptors": [
+						"incorrect use of basic tenses and/or language structures",
+						"incorrect or no use of advanced language structures",
+						"incorrect word order",
+						"incorrect use of parts of speech, pronouns and prepositions"
+					]
+				}
+			],
+			"notes": [
+				"Basic: present simple/progressive, past simple, future simple; modals, parts of speech, determiners, singular and plural nouns.",
+				"Advanced structures: passive, conditionals, inversions, verb complements (gerunds, infinitives), relative clauses, reported/indirect speech, indirect questions, perfect tenses, temporal clauses and other complex sentences. Students should correctly use a variety of at least 3.",
+				"Basic language correct but no advanced forms at all: deduct up to 6 points."
+			]
+		},
+		{
+			"id": "mechanics",
+			"name": "Mechanics",
+			"max": 6,
+			"levels": [
+				{
+					"band": "correct",
+					"points": 6,
+					"descriptors": [
+						"correct spelling, punctuation, capitalization and paragraphing",
+						"no run-on sentences"
+					]
+				},
+				{
+					"band": "partially correct",
+					"points": 4,
+					"descriptors": [
+						"partially correct spelling, punctuation, capitalization and paragraphing",
+						"some run-on sentences"
+					]
+				},
+				{
+					"band": "minimally correct",
+					"points": 2,
+					"descriptors": [
+						"minimally correct spelling, punctuation, capitalization and paragraphing",
+						"frequent run-on sentences"
+					]
+				},
+				{
+					"band": "incorrect",
+					"points": 0,
+					"descriptors": [
+						"incorrect spelling, punctuation, capitalization and paragraphing",
+						"consistent use of run-on sentences"
+					]
+				}
+			],
+			"notes": [
+				"The maximum deduction for spelling alone is 3 points. More may be deducted when spelling problems come with punctuation, capitalization, paragraphing and/or run-on errors."
+			]
+		}
+	],
+	"generalComments": [
+		"Markers can give in-between grades, e.g. 7 points.",
+		"When the reading passage and the writing task share a topic: copied in its entirety from the passage - zero for the entire task; substantial parts copied - count only the student's own words and deduct for length. Individual vocabulary items from the passage are acceptable.",
+		"An entire composition scores zero when: fewer than 50 words; totally unrelated to the topic; content cannot be understood at all; copied from the Internet (reported as chashad with the site address).",
+		"Not counted in the word count: letter elements (date, Dear X, Yours/Love and kisses, signature); the instruction sentence copied word for word (incorporating it with changed pronouns and adjustments is fine and counts); substantial parts copied word for word from the reading passage; a title (not required).",
+		"Length: first evaluate the task on merit as if it were the right length, then make the deduction, starting with the Content criterion and continuing to the other criteria if needed."
+	],
+	"lengthDeductions": [
+		{ "minWords": 110, "maxWords": 119, "pointsOff": 2 },
+		{ "minWords": 100, "maxWords": 109, "pointsOff": 4 },
+		{ "minWords": 90, "maxWords": 99, "pointsOff": 8 },
+		{ "minWords": 80, "maxWords": 89, "pointsOff": 12 },
+		{ "minWords": 70, "maxWords": 79, "pointsOff": 16 },
+		{ "minWords": 60, "maxWords": 69, "pointsOff": 18 },
+		{ "minWords": 50, "maxWords": 59, "pointsOff": 20 },
+		{ "minWords": 0, "maxWords": 49, "pointsOff": 40 }
+	]
+}

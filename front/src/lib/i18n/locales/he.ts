@@ -613,7 +613,7 @@ export const he = {
 		gateZero: {
 			empty: 'לא נכתבה תשובה.',
 			'not-english': 'התשובה לא באנגלית.',
-			'too-short': 'פחות מ-25 מילים - המשימה כולה מקבלת 0.'
+			'too-short': 'פחות מהמינימום של המילים - המשימה כולה מקבלת 0.'
 		} as Record<string, string>,
 		lastAttemptLabel: 'ניסיון אחרון',
 		timeLeftLabel: 'זמן שנותר',
