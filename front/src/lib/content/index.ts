@@ -10,6 +10,9 @@ import { d3Lessons } from './d/d-3';
 import { d4Lessons } from './d/d-4';
 import { d5Lessons } from './d/d-5';
 import { e1Lessons } from './e/e-1';
+import { f1Lessons } from './f/f-1';
+import { f2Lessons } from './f/f-2';
+import { f3Lessons } from './f/f-3';
 import { g1Lessons } from './g/g-1';
 import { g2Lessons } from './g/g-2';
 import { cobe1Lessons } from './cobe/cobe-1';
@@ -30,6 +33,9 @@ const all: LessonNode[] = [
 	...d4Lessons,
 	...d5Lessons,
 	...e1Lessons,
+	...f1Lessons,
+	...f2Lessons,
+	...f3Lessons,
 	...g1Lessons,
 	...g2Lessons,
 	...cobe1Lessons,

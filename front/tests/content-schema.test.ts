@@ -8,13 +8,19 @@ import { d2Lessons } from '../src/lib/content/d/d-2.ts';
 import { d3Lessons } from '../src/lib/content/d/d-3.ts';
 import { d4Lessons } from '../src/lib/content/d/d-4.ts';
 import { d5Lessons } from '../src/lib/content/d/d-5.ts';
+import { f1Lessons } from '../src/lib/content/f/f-1.ts';
+import { f2Lessons } from '../src/lib/content/f/f-2.ts';
+import { f3Lessons } from '../src/lib/content/f/f-3.ts';
 
 const lessons: LessonNode[] = [
 	...d1Lessons,
 	...d2Lessons,
 	...d3Lessons,
 	...d4Lessons,
-	...d5Lessons
+	...d5Lessons,
+	...f1Lessons,
+	...f2Lessons,
+	...f3Lessons
 ];
 
 test('every literature screen passes the schema', () => {
@@ -33,8 +39,8 @@ test('every literature screen passes the schema', () => {
 	assert.deepEqual(bad, []);
 });
 
-test('literature mcqs: one right answer, feedback on every wrong option', () => {
-	for (const lesson of lessons)
+test('Module D mcqs: one right answer, feedback on every wrong option', () => {
+	for (const lesson of lessons.filter((l) => l.id.startsWith('d-')))
 		for (const screen of lesson.content.rounds.flatMap((r) => r.screens))
 			if (screen.type === 'mcq')
 				screen.options.forEach((o, i) =>

@@ -97,6 +97,36 @@ export const sectionMeta: SectionMeta[] = [
 		}
 	},
 	{
+		id: 'f-1',
+		modules: ['f'],
+		skill: 'literature',
+		titleEn: "A Summer's Reading",
+		intro: {
+			greeting: 'Bernard Malamud, 1956',
+			goal: 'נער שעזב את הלימודים, שקר על מאה ספרים, ושכן שמאמין בו.'
+		}
+	},
+	{
+		id: 'f-2',
+		modules: ['f'],
+		skill: 'literature',
+		titleEn: 'Mr. Know-All',
+		intro: {
+			greeting: 'W. Somerset Maugham, 1925',
+			goal: 'מספר עם דעה קדומה, התערבות על שרשרת פנינים, ומעשה נדיב שמפתיע את כולם.'
+		}
+	},
+	{
+		id: 'f-3',
+		modules: ['f'],
+		skill: 'literature',
+		titleEn: 'Comparing the stories',
+		intro: {
+			greeting: 'Similar, but different',
+			goal: 'משווים בין הדמויות והרעיונות בשני הסיפורים.'
+		}
+	},
+	{
 		id: 'g-1',
 		modules: ['g'],
 		skill: 'reading',
