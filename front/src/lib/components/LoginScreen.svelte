@@ -296,7 +296,7 @@
 								{/if}
 							</label>
 						{/if}
-						<Button type="submit" disabled={busy}>{busy ? t.busy : submitLabel}</Button>
+						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
 
 						<div class="flex flex-wrap justify-between gap-x-2">
 							{#if mode === 'signin'}

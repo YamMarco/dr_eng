@@ -76,8 +76,8 @@ export const TUTOR_HOUR = 15000;
 export const GUARANTEE = false;
 export const INSTALLMENTS = false;
 
-/** The plans on the page, in order; the featured one is pushed. */
-export const TIERS = ['premium', 'group', 'personal'] as const;
+/** The plans on the page, in order; the featured one is pushed. `personal` is priced but hidden for now. */
+export const TIERS = ['premium', 'group'] as const;
 export const FEATURED_OFFER: OfferId = 'group';
 
 export type Plan = {

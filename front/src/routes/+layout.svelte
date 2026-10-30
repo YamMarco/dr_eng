@@ -4,6 +4,8 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
 	import { onNavigate } from '$app/navigation';
+	import { navigating } from '$app/state';
+	import Loader from '$lib/components/Loader.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore } from '$lib/theme.svelte';
@@ -49,6 +51,14 @@
 <div class="flex min-h-dvh flex-col bg-canvas">
 	{@render children()}
 </div>
+
+{#if navigating.to}
+	<!-- A page chunk still on its way: shows only if it takes more than a beat. -->
+	<Loader
+		size="sm"
+		class="fixed inset-x-0 top-3 z-50 mx-auto w-fit rounded-full bg-surface px-4 py-2.5 shadow-lg ring-1 ring-line/70"
+	/>
+{/if}
 
 {#if debugStore.enabled}
 	<DebugTooltip />

@@ -151,6 +151,9 @@ select:not([multiple], [size]):dir(rtl) {
 	@media (min-width: 1024px) {
 		max-width: 64rem;
 	}
+	@media (min-width: 1280px) {
+		max-width: 80rem;
+	}
 }
 
 /* Shared "pressable puck" — the layered ::before button (ring outline + a

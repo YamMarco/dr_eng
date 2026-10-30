@@ -36,6 +36,16 @@
 		})
 	);
 
+	// All cards in one row on desktop, whatever the count; four wrap 2x2 below xl.
+	const GRID_COLS = [
+		'lg:grid-cols-1',
+		'lg:grid-cols-1',
+		'lg:grid-cols-2',
+		'lg:grid-cols-3',
+		'lg:grid-cols-2 xl:grid-cols-4'
+	];
+	let gridCols = $derived(GRID_COLS[Math.min(rows.length, 4)]);
+
 	// Back into the latest thing done, in any module of this unit level.
 	let resume = $derived(resumeItem(group.moduleIds));
 </script>
@@ -57,7 +67,7 @@
 			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
 		{/if}
 
-		<div class="flex flex-col gap-3 lg:grid lg:grid-cols-3 lg:gap-5">
+		<div class="flex flex-col gap-3 lg:grid lg:gap-5 {gridCols}">
 			{#each rows as row, i (row.mod.id)}
 				<div
 					class="lg:grid"

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import Loader from './Loader.svelte';
 
 	// A coupon-code input with its own submit button and a calm error line.
 	// Used by checkout (apply a discount) and the in-app paywall (redeem).
@@ -46,9 +47,9 @@
 		<button
 			type="submit"
 			disabled={busy || !value.trim()}
-			class="min-h-[52px] shrink-0 rounded-2xl border-2 border-brand px-5 font-semibold text-brand transition duration-100 hover:bg-brand-soft active:scale-[0.98] disabled:opacity-50"
+			class="inline-flex min-h-[52px] shrink-0 items-center gap-2 rounded-2xl border-2 border-brand px-5 font-semibold text-brand transition duration-100 hover:bg-brand-soft active:scale-[0.98] disabled:opacity-50"
 		>
-			{action}
+			{#if busy}<Loader size="sm" class="[&_.dot]:bg-current" />{/if}{action}
 		</button>
 	</div>
 	{#if error}

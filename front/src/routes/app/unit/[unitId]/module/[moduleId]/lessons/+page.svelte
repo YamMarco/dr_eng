@@ -15,7 +15,8 @@
 		lessonForUnits,
 		type LessonNode
 	} from '$lib/content';
-	import { localizeContent } from '$lib/content/localize.svelte';
+	import { contentReady, localizeContent } from '$lib/content/localize.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
 	import {
 		hasContent,
@@ -723,7 +724,10 @@
 	<WritingLab onclose={closeWritingLab} />
 {/if}
 
-{#if activeNode}
+{#if activeNode && !contentReady(i18n.language)}
+	<!-- The lesson's translation table is still on its way. -->
+	<div class="fixed inset-0 z-50 flex bg-canvas"><Loader screen /></div>
+{:else if activeNode}
 	<!-- Keyed so "continue to next lesson"/"continue to next round" force a
 	     full remount instead of just handing the same runner instance new
 	     `lesson`/`roundIndex` props. -->

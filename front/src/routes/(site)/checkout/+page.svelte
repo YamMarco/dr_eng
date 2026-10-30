@@ -225,7 +225,7 @@
 				</dl>
 			{/if}
 
-			<Button disabled={busy || !quote} onclick={submit}>
+			<Button {busy} disabled={!quote} onclick={submit}>
 				{busy ? t.checking : quote?.total === 0 ? t.activate : t.pay}
 			</Button>
 			{#if GUARANTEE && quote?.total}

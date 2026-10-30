@@ -226,7 +226,7 @@
 	</div>
 
 	<!-- Plans -->
-	<ul class="grid items-stretch gap-4 md:grid-cols-3">
+	<ul class="mx-auto grid max-w-3xl items-stretch gap-4 md:grid-cols-2">
 		{#each TIERS as offer, i (offer)}
 			{@const item = t.offers[offer]}
 			{@const featured = offer === FEATURED_OFFER}

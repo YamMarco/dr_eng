@@ -5,6 +5,7 @@
 	import { checkWriting, type CheckOptions, type CheckReport } from './index';
 	import { browserDictionaries } from './dictionaries';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 
 	let {
 		text,
@@ -92,5 +93,7 @@
 		{/if}
 	</div>
 {:else if busy}
-	<p class="mt-3 text-xs text-muted">{t.loading}</p>
+	<div class="mt-3 flex items-center gap-2 text-xs text-muted">
+		<Loader size="sm" />{t.loading}
+	</div>
 {/if}

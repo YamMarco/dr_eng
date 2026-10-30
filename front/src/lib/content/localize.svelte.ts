@@ -38,6 +38,11 @@ function translate(value: unknown, table: Table): unknown {
 	return value;
 }
 
+/** False while the language's table is still loading (always true for Hebrew). */
+export function contentReady(language: Language): boolean {
+	return !loaders[language] || !!tables[language];
+}
+
 /** A translated copy of a lesson / exam node (the same object for Hebrew, and
  *  until the language's table has loaded). Reactive: call from $derived or
  *  markup. Cached per node and language, so the result is stable across renders. */

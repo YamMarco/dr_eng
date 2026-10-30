@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Loader from './Loader.svelte';
 
 	type Variant = 'primary' | 'secondary' | 'ghost';
 
@@ -8,6 +9,8 @@
 		href?: string;
 		type?: 'button' | 'submit';
 		disabled?: boolean;
+		/** Waiting on the server: disables the button and shows the loader before the label. */
+		busy?: boolean;
 		/** For a button that opens a panel (aria-expanded). */
 		expanded?: boolean;
 		onclick?: (event: MouseEvent) => void;
@@ -20,6 +23,7 @@
 		href,
 		type = 'button',
 		disabled = false,
+		busy = false,
 		expanded,
 		onclick,
 		class: extra = '',
@@ -57,8 +61,10 @@
 		{type}
 		class={classes}
 		style={variant === 'primary' ? puckStyle : undefined}
-		{disabled}
+		disabled={disabled || busy}
+		aria-busy={busy}
 		aria-expanded={expanded}
-		{onclick}>{@render children()}</button
+		{onclick}
+		>{#if busy}<Loader size="sm" class="[&_.dot]:bg-current" />{/if}{@render children()}</button
 	>
 {/if}

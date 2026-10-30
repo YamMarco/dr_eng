@@ -268,13 +268,11 @@ export const he = {
 		compareTitle: 'השוואה מלאה',
 		compareFeature: 'מה מקבלים',
 		compareRows: [
-			{ label: 'כל היחידות והמודולים', values: [true, true, true] },
-			{ label: 'מבחני בגרות בתנאי אמת', values: [true, true, true] },
-			{ label: 'משוב מיידי על כתיבה', values: [true, true, true] },
-			{ label: 'אוצר מילים עם חזרות חכמות', values: [true, true, true] },
-			{ label: 'שיעור זום קבוצתי עם מורה', values: [false, 'כל שבוע', 'כל שבוע'] },
-			{ label: 'שיעורים פרטיים בזום', values: [false, false, '2 בחודש'] },
-			{ label: 'תוכנית אישית מול הנקודות החלשות', values: [false, false, true] }
+			{ label: 'כל היחידות והמודולים', values: [true, true] },
+			{ label: 'מבחני בגרות בתנאי אמת', values: [true, true] },
+			{ label: 'משוב מיידי על כתיבה', values: [true, true] },
+			{ label: 'אוצר מילים עם חזרות חכמות', values: [true, true] },
+			{ label: 'שיעור זום קבוצתי עם מורה', values: [false, 'כל שבוע'] }
 		] as { label: string; values: (boolean | string)[] }[],
 		lessonTitle: 'רוצים רק שיעור פרטי?',
 		lessonBody:
@@ -321,7 +319,7 @@ export const he = {
 			},
 			{
 				q: 'איך עובדים השיעורים בזום?',
-				a: 'שיעור שבועי עם מורה בקבוצה קטנה. שואלים, מתרגלים ומתכוננים יחד למבחן. במסלול האישי נוספים שני שיעורים פרטיים בחודש, שמתאמים באפליקציה.'
+				a: 'שיעור שבועי עם מורה בקבוצה קטנה. שואלים, מתרגלים ומתכוננים יחד למבחן.'
 			},
 			{
 				q: 'למה COBE בנפרד?',

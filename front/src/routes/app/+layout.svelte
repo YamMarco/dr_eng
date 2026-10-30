@@ -2,6 +2,7 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
 	import Paywall from '$lib/components/Paywall.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 	import StreakModal from '$lib/dashboard/StreakModal.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { access } from '$lib/access.svelte';
@@ -30,11 +31,13 @@
 
 <div class="flex flex-1 flex-col {showNav ? 'pb-16 lg:pt-14 lg:pb-0' : ''}">
 	{#if !auth.ready}
-		<!-- Reading the stored session: a beat, so the login screen doesn't flash. -->
+		<!-- Reading the stored session: the loader waits a beat, so a fast read shows nothing. -->
+		<Loader screen />
 	{:else if !signedIn}
 		<LoginScreen homeLink />
 	{:else if access.active === null || access.cobe === null || !progressSync.ready}
 		<!-- Checking the plan, or bringing the account's progress to a new device: same beat. -->
+		<Loader screen />
 	{:else if access.active || access.cobe}
 		{@render children()}
 		<StreakModal />
