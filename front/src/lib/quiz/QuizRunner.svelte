@@ -101,6 +101,8 @@
 	// Practice: questions answered and shown with their feedback, and the
 	// first answer to each (what the score counts, whatever the retries).
 	const reviewed = new SvelteSet<string>();
+	// The question types AnswerReview can show; others (a COBE recording) just move on.
+	const REVIEWED_TYPES = new Set(['mcq', 'match-definitions', 'writing-task']);
 	const firstAnswers: Record<string, unknown> = {};
 	let retries = $state(0);
 
@@ -248,7 +250,7 @@
 	function advance() {
 		// Practice: a just-answered question stops for its feedback first.
 		const entry = currentEntry;
-		if (practice && entry && !reviewing && scoreScreen(entry.screen, undefined).max > 0) {
+		if (practice && entry && !reviewing && REVIEWED_TYPES.has(entry.screen.type)) {
 			if (!(entry.id in firstAnswers)) firstAnswers[entry.id] = $state.snapshot(answers[entry.id]);
 			reviewed.add(entry.id);
 			return;
