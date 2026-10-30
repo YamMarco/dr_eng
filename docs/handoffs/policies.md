@@ -26,7 +26,7 @@
 
 ## Documents to write
 
-1. **Privacy policy** - the facts above; purpose of each item; retention; rights (access, fix, delete); contact `support@engup.co.il` (receiving it: `support-email.md`). Israeli Privacy Protection Law incl. Amendment 13 (in force Aug 2025): check whether a database registration / privacy officer duty applies at our size.
+1. **Privacy policy** - the facts above; purpose of each item; retention; rights (access, fix, delete); contact `support@engup.co.il` (forwarded to the team via ImprovMX). Israeli Privacy Protection Law incl. Amendment 13 (in force Aug 2025): check whether a database registration / privacy officer duty applies at our size.
 2. **Terms of use** - what the service is (practice, not an official Ministry product, no grade guarantee); account rules; AI feedback can be wrong; content ownership (ours; literature texts not included, copyright); acceptable use; limitation of liability; Israeli law and court.
 3. **Minors and parental consent** - under-18 users: a consent checkbox at sign-up ("my parent/guardian agrees"), or a parent email confirmation for paid plans. Decide with the lawyer; build after.
 4. **Refunds** (before payments) - Israeli Consumer Protection Law: 14-day cancellation for distance purchases; how pass / pack refunds are prorated. `GUARANTEE` in `lib/plans.ts` turns on the page's refund line.
