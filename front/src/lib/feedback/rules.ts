@@ -12,18 +12,29 @@ export type RuleSet = {
 	capitalIsError: boolean;
 	/** Lesson advice panel + capital/period check. */
 	autoCheck: boolean;
+	/** Choice screens (single-answer mcq, cloze-pick), lessons only: tries before the verdict.
+	 *  A miss with tries left shows that option's feedback and the hint, and the student picks again. */
+	tries: number;
 };
 
 export type Rules = Partial<RuleSet> & { rulesLock?: boolean };
 
-export const RULE_KEYS = ['llmGrade', 'llmFix', 'maxTypos', 'capitalIsError', 'autoCheck'] as const;
+export const RULE_KEYS = [
+	'llmGrade',
+	'llmFix',
+	'maxTypos',
+	'capitalIsError',
+	'autoCheck',
+	'tries'
+] as const;
 
 export const DEFAULT_RULES: RuleSet = {
 	llmGrade: false,
 	llmFix: true,
 	maxTypos: 1,
 	capitalIsError: true,
-	autoCheck: true
+	autoCheck: true,
+	tries: 1
 };
 
 /** `chain` runs from the top (module) down to the screen; undefined levels are skipped. */

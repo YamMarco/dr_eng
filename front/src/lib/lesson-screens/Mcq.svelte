@@ -5,7 +5,7 @@
 	import { backOut } from 'svelte/easing';
 	import { mcqCorrect, type McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
-	import PickFeedback from './PickFeedback.svelte';
+	import TryAgain from './TryAgain.svelte';
 	import { optFeedback, optText } from './option';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
@@ -16,6 +16,8 @@
 	import { untrack } from 'svelte';
 	import ListenCard from './ListenCard.svelte';
 	import McqFeedback from './McqFeedback.svelte';
+	import { getRuleChain } from '$lib/feedback/context';
+	import { resolveRules } from '$lib/feedback/rules';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -47,6 +49,16 @@
 	let checked = $state(false);
 	let hintShown = $state(false);
 
+	// Tries before the verdict (lesson rules, then this screen). A miss with
+	// tries left locks that option, shows its feedback and lets the student pick
+	// again; one answer is recorded, at the verdict. Tick-N questions get one try.
+	const ruleChain = getRuleChain();
+	let tries = $derived(
+		mode === 'lesson' ? resolveRules([...ruleChain, { tries: screen.tries }]).tries : 1
+	);
+	let missed = $state<number[]>([]);
+	let lastMiss = $derived(missed.at(-1));
+
 	// Lesson mode shows the options in a fresh order each time, so "the answer
 	// is always the second one" can't be learned. `order[slot]` = the authored
 	// index shown in that slot; `picks` / `right` stay authored indices.
@@ -67,7 +79,7 @@
 	disabled = restored === undefined;
 
 	function pick(i: number) {
-		if (checked) return;
+		if (checked || missed.includes(i)) return;
 		if (needed === 1) picks = [i];
 		else if (picks.includes(i)) picks = picks.filter((p) => p !== i);
 		else if (picks.length < needed) picks = [...picks, i];
@@ -86,11 +98,16 @@
 			return;
 		}
 		if (!checked) {
+			const ok = picks.every((p) => right.includes(p));
+			if (!ok && needed === 1 && missed.length + 1 < tries) {
+				missed = [...missed, picks[0]];
+				picks = [];
+				disabled = true;
+				hintShown = true;
+				return;
+			}
 			checked = true;
-			recordAnswer(
-				score!,
-				picks.every((p) => right.includes(p))
-			);
+			recordAnswer(score!, ok);
 			label = i18n.dict.lesson.nextQuestionButton;
 		} else {
 			onAdvance();
@@ -174,9 +191,10 @@
 						: 'motion-safe:animate-shake-wrong'
 					: ''}
 			{@const pos = positions[slot]}
+			{@const isMissed = !checked && missed.includes(i)}
 			<button
 				type="button"
-				disabled={checked}
+				disabled={checked || isMissed}
 				onclick={() => pick(i)}
 				in:scale={{
 					start: 0.4,
@@ -191,9 +209,11 @@
 						: isSelected
 							? 'bg-miss-soft text-miss'
 							: 'bg-line/40 text-muted'
-					: isSelected
-						? 'bg-brand-soft text-brand-dark'
-						: 'bg-surface text-ink drop-shadow-[0_1px_2px_rgba(0,0,0,0.12)] hover:bg-brand-soft/50'}"
+					: isMissed
+						? 'bg-miss-soft text-miss line-through opacity-70'
+						: isSelected
+							? 'bg-brand-soft text-brand-dark'
+							: 'bg-surface text-ink drop-shadow-[0_1px_2px_rgba(0,0,0,0.12)] hover:bg-brand-soft/50'}"
 			>
 				<Md text={option} />
 			</button>
@@ -211,9 +231,10 @@
 						? 'motion-safe:animate-pop-correct'
 						: 'motion-safe:animate-shake-wrong'
 					: ''}
+			{@const isMissed = !checked && missed.includes(i)}
 			<button
 				type="button"
-				disabled={checked}
+				disabled={checked || isMissed}
 				onclick={() => pick(i)}
 				dir={textDir(option)}
 				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
@@ -222,14 +243,22 @@
 						: isSelected
 							? 'border-miss bg-miss-soft text-miss'
 							: 'border-line bg-surface opacity-50'
-					: isSelected
-						? 'border-brand bg-brand-soft/60'
-						: 'border-line bg-surface hover:border-brand'}"
+					: isMissed
+						? 'border-miss bg-miss-soft/60 text-miss line-through opacity-70'
+						: isSelected
+							? 'border-brand bg-brand-soft/60'
+							: 'border-line bg-surface hover:border-brand'}"
 			>
 				<Md text={option} />
 			</button>
 		{/each}
 	</div>
+{/if}
+
+{#if !checked && lastMiss !== undefined}
+	{#key lastMiss}
+		<TryAgain feedback={optFeedback(screen.options[lastMiss])} left={tries - missed.length} />
+	{/key}
 {/if}
 
 {#if checked}

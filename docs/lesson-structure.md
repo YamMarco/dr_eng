@@ -67,6 +67,7 @@ Scoring: exercises count 1, `passage-mcq` / `passage-quiz` 1 per question (`coun
   - **Conventions:** kicker `סיבוב N` (vocab nodes `סבב N`); optional rounds `סיבוב N (רשות)`, title `תרגול נוסף` or the round's goal. `level`: writing rounds = round number; the exam-level round 4 💎 (title "רמת בחינה"); optional extras by difficulty (🌟 2, 💎 4); a timed challenge 5 + `badge: '⏱️'`; an optional review for whoever is unsure: no level (flag). Mark-all drill rounds: titles `משפטים בעברית` / `משפטים באנגלית` / `פסקאות`. Never English labels ("YOUR TURN", "PRACTICE").
   - New opener strings need an entry in `translations/ar.json` (`node front/scripts/content-i18n.mjs`).
 - **`poem`** (literature): numbered lines grouped in stanzas (a story map: events grouped in parts); tapping a line shows its Hebrew. An empty `en` hides the line; a stanza `note` stands in for a text that can't be shown yet. Never scored.
+- **Tries** (`mcq`, `cloze-pick`): default 1; more via the rules cascade or the screen's `tries` (see `docs/feedback-framework.md`).
 - **`mcq.hint`**: a help button before checking (lessons only) shows it: the question's key words and a clue, never the answer.
 - **`video`** (COBE Part C): a clip with an optional Hebrew `caption`. Without `src` it shows a dashed placeholder marking where the clip goes. Never scored.
 - **`retryMissed: true`** on a round replays each wrongly-answered scored screen once at the end (score unchanged). Every round with a `spell-word` has it.

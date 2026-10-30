@@ -788,6 +788,10 @@ export const he = {
 		matchDefinitionsHint: 'בחרו הגדרה, ואז את המילה שמתאימה לה',
 		answerKeyLabel: 'מפתח התשובה',
 		hintButton: 'לא מבינים את השאלה? עזרה',
+		tryAgain: (left: number) =>
+			left === 1
+				? 'לא בדיוק. נסו שוב - נשאר ניסיון אחד'
+				: `לא בדיוק. נסו שוב - נשארו ${left} ניסיונות`,
 		answerLabel: 'התשובה:',
 		noColor: 'ללא צבע',
 		submitButton: 'בדיקה',

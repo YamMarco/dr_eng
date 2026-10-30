@@ -704,6 +704,19 @@
 											onInput={(v) => (screen.hint = v.trim() ? v : undefined)}
 										/>
 									</SettingsGroup>
+									{#if !isExam}
+										<SettingsGroup
+											title="ניסיונות עד הכרעה"
+											hint="פספוס כשנשארו ניסיונות: המשוב של התשובה שנבחרה (והרמז), והתלמיד בוחר שוב. ריק = בירושה מכללי הבדיקה (כרגע {inheritedRules.tries})."
+										>
+											<NumberField
+												label="ניסיונות"
+												min={1}
+												value={screen.tries}
+												onChange={(v) => (screen.tries = v)}
+											/>
+										</SettingsGroup>
+									{/if}
 								{:else if screen.type === 'order'}
 									<ListenField
 										checked={screen.listen ?? false}
@@ -769,6 +782,19 @@
 											onChange={(i, v) => (screen.options[i] = withFeedback(screen.options[i], v))}
 										/>
 									</SettingsGroup>
+									{#if !isExam}
+										<SettingsGroup
+											title="ניסיונות עד הכרעה"
+											hint="פספוס כשנשארו ניסיונות: המשוב של התשובה שנבחרה (והרמז), והתלמיד בוחר שוב. ריק = בירושה מכללי הבדיקה (כרגע {inheritedRules.tries})."
+										>
+											<NumberField
+												label="ניסיונות"
+												min={1}
+												value={screen.tries}
+												onChange={(v) => (screen.tries = v)}
+											/>
+										</SettingsGroup>
+									{/if}
 								{:else if screen.type === 'mark-all'}
 									<SettingsGroup title="טיימר">
 										<TimerField mode="make" bind:value={screen.timerKey} taken={timerIds} />
@@ -946,7 +972,12 @@
 											title="כללי בדיקה"
 											hint="ערך שלא הוגדר כאן מגיע מהשיעור / הפרק / המודול (⚙️ כללי בדיקה בראש העורך)."
 										>
-											<RuleFields own={screen} inherited={inheritedRules} onSet={setScreenRule} />
+											<RuleFields
+												own={screen}
+												inherited={inheritedRules}
+												onSet={setScreenRule}
+												showTries={false}
+											/>
 											{#if screen.llmGrade ?? inheritedRules.llmGrade}
 												<TextField
 													label="הערות לבודק ה-AI (באנגלית: מה תשובה טובה אומרת, טעויות נפוצות)"

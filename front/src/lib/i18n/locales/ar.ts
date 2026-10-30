@@ -300,6 +300,10 @@ export const ar: DictionaryOverride = {
 		matchDefinitionsHint: 'اختاروا تعريفًا، ثم الكلمة المناسبة له',
 		answerKeyLabel: 'مفتاح الإجابة',
 		hintButton: 'لم تفهموا السؤال؟ مساعدة',
+		tryAgain: (left: number) =>
+			left === 1
+				? 'ليس تمامًا. حاولوا مرة أخرى - بقيت محاولة واحدة'
+				: `ليس تمامًا. حاولوا مرة أخرى - بقيت ${left} محاولات`,
 		answerLabel: 'الإجابة:',
 		noColor: 'بدون لون',
 		submitButton: 'فحص',

@@ -16,11 +16,15 @@ typed text ───────────────────────
 
 ## Rules (Layer 1 settings)
 
-`RuleSet`: `llmGrade`, `llmFix`, `maxTypos`, `capitalIsError`, `autoCheck`. Levels **module → section → lesson → screen**; the nearest level that sets a field wins (resolved when read, never copied down).
+`RuleSet`: `llmGrade`, `llmFix`, `maxTypos`, `capitalIsError`, `autoCheck`, `tries` (choice screens, below). Levels **module → section → lesson → screen**; the nearest level that sets a field wins (resolved when read, never copied down).
 
 - Module / section / lesson values: `front/src/lib/content/rules.json`. Screen values: the `writing-task` fields themselves.
 - Editor: `/edit` → **⚙️ כללי בדיקה** (pick module / section / lesson), and on each writing-task screen the **כללי בדיקה** group. Unset rows show the inherited value.
 - **⬇ החלה על כל מה שמתחת** clears the fields this level sets from every level and screen below, except those with `rulesLock` (🔒). Saved by the one save button.
+
+## Tries (choice screens)
+
+`tries` (default 1) = picks before the verdict on single-answer `mcq` and `cloze-pick`, lessons only (tick-N and exams: one). A miss with tries left locks that option and shows its feedback, the hint and the tries left (`TryAgain.svelte`); the student picks again. One answer is recorded, at the verdict: right if found within the tries. Set it on a level in the rules panel or per screen ("ניסיונות עד הכרעה"); never written into content unless it differs.
 
 ## Gates (no API call, outright wrong)
 

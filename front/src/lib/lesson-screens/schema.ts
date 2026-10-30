@@ -314,6 +314,14 @@ export const mcqSchema = z
 			.describe(
 				'Lesson mode: a help button before checking shows it (key words of the question, a clue). Mini-markdown. Never give the answer away.'
 			),
+		tries: z
+			.number()
+			.int()
+			.min(1)
+			.optional()
+			.describe(
+				'Lesson mode: tries before the verdict (a miss with tries left shows its feedback and lets the student pick again). Unset = inherited from the module / section / lesson rules (default 1).'
+			),
 		partialFeedback: z
 			.string()
 			.optional()
@@ -352,6 +360,14 @@ export const clozePickSchema = z
 			.min(1)
 			.describe('Indices into options that count - any one passes.'),
 		explanation: z.string().optional(),
+		tries: z
+			.number()
+			.int()
+			.min(1)
+			.optional()
+			.describe(
+				'Lesson mode: tries before the verdict (a miss with tries left shows its feedback and lets the student pick again). Unset = inherited from the module / section / lesson rules (default 1).'
+			),
 		points: points.optional()
 	})
 	.describe(

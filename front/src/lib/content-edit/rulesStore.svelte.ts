@@ -73,7 +73,7 @@ class RulesStore {
 			lessons.flatMap((n) =>
 				[n.content.preface, ...n.content.rounds.map((r) => r.screens)]
 					.flat()
-					.filter((s) => s.type === 'writing-task')
+					.filter((s) => s.type === 'writing-task' || s.type === 'mcq' || s.type === 'cloze-pick')
 			) as Rules[],
 			fields
 		);

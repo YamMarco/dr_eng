@@ -7,7 +7,8 @@
 	let {
 		own,
 		inherited,
-		onSet
+		onSet,
+		showTries = true
 	}: {
 		/** What this level sets itself. */
 		own: Rules;
@@ -15,6 +16,8 @@
 		inherited: RuleSet;
 		/** `undefined` = back to inheriting. */
 		onSet: (key: keyof Rules, value: boolean | number | undefined) => void;
+		/** The choice-screen row (tries); off on a writing task. */
+		showTries?: boolean;
 	} = $props();
 
 	const BOOLS: { key: 'llmGrade' | 'llmFix' | 'autoCheck' | 'capitalIsError'; label: string }[] = [
@@ -52,6 +55,22 @@
 			{@render source('maxTypos')}
 		</div>
 	</div>
+	{#if showTries}
+		<div class="flex items-center gap-2 border-t border-line/60 pt-2">
+			<span class={isOwn('tries') ? 'font-semibold text-ink' : ''}
+				>ניסיונות עד הכרעה (שאלה אמריקאית, השלמה מרשימה)</span
+			>
+			<input
+				type="number"
+				min="1"
+				value={valueOf('tries')}
+				oninput={(e) =>
+					onSet('tries', e.currentTarget.value ? e.currentTarget.valueAsNumber : undefined)}
+				class="w-14 rounded-lg border-2 border-line bg-surface p-1"
+			/>
+			{@render source('tries')}
+		</div>
+	{/if}
 	<label class="mt-1 flex items-center gap-2 border-t border-line/60 pt-2">
 		<input
 			type="checkbox"
