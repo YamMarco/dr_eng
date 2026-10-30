@@ -1232,7 +1232,9 @@ export const he = {
 		title: 'ספרו לנו מה חשבתם',
 		description: 'אתם מהראשונים שמנסים את האפליקציה. כל באג, בלבול או רעיון עוזרים לנו לשפר.',
 		group: 'הצטרפו לקבוצת הבודקים',
-		groupDesc: 'קבוצת וואטסאפ סגורה, שם שולחים משוב וצילומי מסך'
+		groupDesc: 'קבוצת וואטסאפ סגורה, שם שולחים משוב וצילומי מסך',
+		email: 'שלחו לנו מייל',
+		emailSubject: 'משוב על EngUp'
 	},
 	/** Content titles by id (section / lesson / exam / exam part) - see titles.he.ts. */
 	titles: titlesHe

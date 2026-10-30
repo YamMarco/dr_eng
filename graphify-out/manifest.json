@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793371882.355854,
-    "ast_hash": "9befc143e3f219afecb9c376654a48bd",
+    "mtime": 1793372199.1468537,
+    "ast_hash": "981e95863a0c3e77f7555098e4b208e9",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -2385,8 +2385,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/FeedbackButton.svelte": {
-    "mtime": 1793371882.355854,
-    "ast_hash": "3ba78b034b91a101613febd965b0d7f9",
+    "mtime": 1793372199.1388946,
+    "ast_hash": "51c206038189491c85cbdfc500d155d7",
     "semantic_hash": ""
   },
   "docs/handoffs/about-later.md": {
