@@ -1,6 +1,6 @@
 # Module E plan
 
-Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and a reading section `e-1` (`lib/content/e/e-1.ts`): a copy of Module C's `c-1` (19 lessons, ids `e-...`), with its own progress, edited separately from C. Not built: the E-specific reading nodes below, mock exams.
+Based on the winter 2026 exam (questionnaire 016471, version A, "new format"). Module E serves both the 4-unit and 5-unit tracks (`lib/curriculum.ts`). Built: the vocabulary deck (the 4 Ministry lists of Band III Core I, 856 items) and the reading path `e-1` (`lib/content/e/e-1.ts`, 7 nodes, below). Not built: mock exams.
 
 ## The exam
 
@@ -32,17 +32,23 @@ Part II: each set is one word class (verbs `to attach`, nouns `criticism`, adjec
 
 ## Reading path (section `e-1`)
 
-Today the copy of C's reading lessons. Plan for adapting it to E (about 6-8 nodes); uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c.md`).
+Uses the reading round pattern (`lesson-structure.md`) and the definition of a 10 (`module-c.md`). Linear chain; `e-method` is a side node off `e-bridge` that nothing requires.
 
-1. **Bridge:** the C method (keyword -> locate -> read that sentence) on an E-length text. A check, not a re-teach.
-2. **Method detour** (optional): condensed c-l03.
-3. **What are we told in paragraph X:** new skill. Name the paragraph's topic in 3-4 words (who / how / why / what happened), then match it to an option. Distractors: a true detail that is not the topic, a topic from another paragraph, a "why" for a "how".
-4. **Topic MCQs, exam level:** the same skill on full texts, all 5 paragraphs.
-5. **Complete the answer / sentence from lines:** continue the given opener (`By` -> -ing, `Because they want to` / `They must` -> base verb).
-6. **Glossary + time:** use the glossary instead of stopping; about 50 min reading / 15 vocab / 10 check.
-7. **Mixed exam set** (timed).
+Text pool (original, consts at the top of `e-1.ts`): LIBRARY (bus library, 5 paragraphs + glossary), CORAL (coral gardeners, 5), SLEEP (teen sleep, Seattle 2016 study, 5 + glossary), REPAIR (Repair Café, 4 + glossary), SILBO (whistled language, 5 + glossary). Glossary = underlined words (`++word++`) and a last block `**Glossary**` with Hebrew / Arabic. Lesson passages have no line numbers, so questions cite paragraphs, not lines.
 
-Needs first: a text pool of E-length articles (5 paragraphs, line numbers, 3-4 glossary words).
+Grades are opinion until played; nothing has been played yet.
+
+| Node | Micro-skill | Grade | Main issue |
+|---|---|---|---|
+| e-bridge | Exam facts; the C method on a full article | 7.5 | |
+| e-method | Condensed C method (question word, keyword, synonym) | 7 | Optional side node |
+| e-topic | Topic vs detail, the 3 traps | 8 | |
+| e-topic-q | Topic MCQs on a full new article | 7.5 | |
+| e-complete | By + ing, to / must / can + base verb, ANSWER | 7.5 | Typed answers checked by one keyword |
+| e-glossary-time | Glossary use, 50 / 15 / 10 time split | 7 | Exam-level text is familiar (LIBRARY) |
+| e-final | Full Part I: 4 topic MCQs + 5 open, timed | 7.5 | Timer covers the MCQ screen only |
+
+Open: a second unseen full article for e-glossary-time; line-numbered lesson passages if exams keep citing lines.
 
 ## Vocabulary deck (section `words`)
 

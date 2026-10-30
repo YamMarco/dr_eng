@@ -40,10 +40,10 @@ export const sectionMeta: SectionMeta[] = [
 		id: 'e-1',
 		modules: ['e'],
 		skill: 'reading',
-		titleEn: 'Part B - Reading Skills',
+		titleEn: 'Part I - Reading',
 		intro: {
-			greeting: 'I search - I do not read',
-			goal: 'שמונה־עשר שיעורים ומבחן סיכום שבונים את הכלים: איך ניגשים לטקסט, איך מוצאים את התשובה, ואיך עונים על כל סוג שאלה.'
+			greeting: 'Name it, find it, finish it',
+			goal: 'שישה שיעורים ותרגול מסכם לחלק הקריאה: הבחינה והשיטה, על מה כל פסקה, השלמת תשובות, Glossary וניהול זמן.'
 		}
 	},
 	{
