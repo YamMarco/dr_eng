@@ -1675,8 +1675,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/support.ts": {
-    "mtime": 1793371752.850611,
-    "ast_hash": "9b6721361ab1bdf912d85b2628d3a2dd",
+    "mtime": 1793378243.6317747,
+    "ast_hash": "758ae52659673a59ae681ccc70dcaa0c",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/about/+page.svelte": {
@@ -2385,8 +2385,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/FeedbackButton.svelte": {
-    "mtime": 1793372199.1388946,
-    "ast_hash": "51c206038189491c85cbdfc500d155d7",
+    "mtime": 1793378243.6485066,
+    "ast_hash": "d9ed288e1484ebb155ef724f445d645d",
     "semantic_hash": ""
   },
   "docs/handoffs/about-later.md": {
@@ -2405,8 +2405,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/support-email.md": {
-    "mtime": 1793371708.9272814,
-    "ast_hash": "af64e13df0edc7b16dfaca80df6910ef",
+    "mtime": 1793378111.4475226,
+    "ast_hash": "5a4ff4e0c47b8975e102ad53ccbd7eb2",
     "semantic_hash": ""
   }
 }

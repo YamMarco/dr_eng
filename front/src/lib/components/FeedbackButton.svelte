@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ChevronLeft, Mail, MessageSquareText, Users } from '@lucide/svelte';
 	import Sheet from './Sheet.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { SUPPORT_EMAIL, TESTERS_GROUP, emailHref } from '$lib/support';
 
@@ -28,7 +29,7 @@
 <Sheet bind:open title={t.title} description={t.description}>
 	<!-- External links (invite, mail), not app routes. -->
 	<!-- eslint-disable svelte/no-navigation-without-resolve -->
-	{#if TESTERS_GROUP}
+	{#if TESTERS_GROUP && auth.loggedIn}
 		<a href={TESTERS_GROUP} target="_blank" rel="noopener" class={row}>
 			<span class={icon}><Users size={20} aria-hidden="true" /></span>
 			<span class="flex-1">
