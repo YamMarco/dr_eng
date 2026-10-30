@@ -1227,6 +1227,13 @@ export const he = {
 		subtitle: 'אפשר לחזור לדף הבית ולהמשיך משם.',
 		backButton: 'חזרה לדף הבית'
 	},
+	testerFeedback: {
+		button: 'משוב',
+		title: 'ספרו לנו מה חשבתם',
+		description: 'אתם מהראשונים שמנסים את האפליקציה. כל באג, בלבול או רעיון עוזרים לנו לשפר.',
+		group: 'הצטרפו לקבוצת הבודקים',
+		groupDesc: 'קבוצת וואטסאפ סגורה, שם שולחים משוב וצילומי מסך'
+	},
 	/** Content titles by id (section / lesson / exam / exam part) - see titles.he.ts. */
 	titles: titlesHe
 };

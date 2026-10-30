@@ -1,11 +1,5 @@
 * there are screen with too much content for a phone screen and you have to scroll them.
-* module c graph map's items look too small for a phone screen
-* writing task: 60-69 words = -1, 50-59 = -3, 40-49 = -6, 30-39 = -10, 25-29 = -15, under 25 = 0
 * the idea of submitting a text and then we work on fixing together it rather than improving it all over again is nice
-* Badges: yes, but only a few, tied to real mastery.
-Examples: "finished the Module C reading section", "first exam above 80", "100 words known".
-They should tell students where they stand rather than act as a prize stream. No leaderboard, which was the element in the study that backfired.
-* A streak freeze. the student has to acomplish some progress to earn it
 * AI feedback: the writing feedback prompts in lib/server/prompts/ probably make the AI answer in Hebrew. The fix would be to pass the UI language to them.
 * accessibility
 

@@ -3,6 +3,7 @@
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
 	import Paywall from '$lib/components/Paywall.svelte';
 	import Loader from '$lib/components/Loader.svelte';
+	import FeedbackButton from '$lib/components/FeedbackButton.svelte';
 	import StreakModal from '$lib/dashboard/StreakModal.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { access } from '$lib/access.svelte';
@@ -48,4 +49,8 @@
 
 {#if showNav}
 	<NavBar />
+{/if}
+
+{#if auth.ready}
+	<FeedbackButton />
 {/if}
