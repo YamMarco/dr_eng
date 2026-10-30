@@ -4,7 +4,7 @@ Present state only. Literature, 5-point path (unit group 5: E, F, G, COBE), leve
 
 ## Sections
 
-Skill `literature`. Each story starts at a root node.
+Skill `literature`. Each story starts at a root node. The two stories run side by side (x = -130 / 130), converging on the comparison node below them.
 
 | Section | Content |
 |---|---|

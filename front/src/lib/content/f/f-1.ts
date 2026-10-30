@@ -9,7 +9,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Key words',
 		required: [],
 		position: {
-			x: 0,
+			x: -130,
 			y: 130
 		},
 		big: false,
@@ -152,7 +152,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Understand 1',
 		required: ['f-summer-words'],
 		position: {
-			x: 70,
+			x: -130,
 			y: 250
 		},
 		big: false,
@@ -247,7 +247,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Understand 2',
 		required: ['f-summer-understand-1'],
 		position: {
-			x: 100,
+			x: -130,
 			y: 370
 		},
 		big: false,
@@ -352,7 +352,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Think',
 		required: ['f-summer-understand-2'],
 		position: {
-			x: 70,
+			x: -130,
 			y: 490
 		},
 		big: false,
@@ -420,7 +420,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Answer',
 		required: ['f-summer-think'],
 		position: {
-			x: 0,
+			x: -130,
 			y: 610
 		},
 		big: false,
@@ -485,7 +485,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Mastery',
 		required: ['f-summer-answer'],
 		position: {
-			x: -70,
+			x: -130,
 			y: 730
 		},
 		big: false,
@@ -524,7 +524,7 @@ export const f1Lessons: LessonNode[] = [
 		titleEn: 'Review',
 		required: ['f-summer-mastery'],
 		position: {
-			x: -100,
+			x: -130,
 			y: 850
 		},
 		big: false,

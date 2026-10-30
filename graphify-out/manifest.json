@@ -1440,8 +1440,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1793035304.183074,
-    "ast_hash": "8768560a684cff8ef0002aa9da148e37",
+    "mtime": 1793361877.1096787,
+    "ast_hash": "1d988d43ef90b42d4613e5b2c99e96dc",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/words/+page.svelte": {
@@ -2475,28 +2475,28 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-1.ts": {
-    "mtime": 1793352438.6057024,
-    "ast_hash": "38fcb4509e857ada0130ac0c9e387176",
+    "mtime": 1793361877.0572293,
+    "ast_hash": "4e693dfdc5ce28102b676f273281eb00",
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-2.ts": {
-    "mtime": 1793352438.6669405,
-    "ast_hash": "815e70bb7c51e247990e35b86bd30177",
+    "mtime": 1793361877.0686402,
+    "ast_hash": "b9f5efae78050bfc9b9c1677752780e6",
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-3.ts": {
-    "mtime": 1793352438.7233107,
-    "ast_hash": "295e0265d8b2cd74aa768645b561ae2a",
+    "mtime": 1793361877.077227,
+    "ast_hash": "3c6eea1d31ff69a80c6ac961df58a25c",
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-4.ts": {
-    "mtime": 1793352438.781146,
-    "ast_hash": "92cdf9013f908693c52d60d3ff95b79d",
+    "mtime": 1793361877.083866,
+    "ast_hash": "3ec9a6b12816ae1f7ccd34b364c333da",
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-5.ts": {
-    "mtime": 1793352438.8352256,
-    "ast_hash": "7e028ab1d20b62404304eb09ff87cc14",
+    "mtime": 1793361877.0899248,
+    "ast_hash": "0d5519a30bb92b12161631ba1c1164da",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Poem.svelte": {
@@ -2510,8 +2510,8 @@
     "semantic_hash": ""
   },
   "docs/material/modules/module-d.md": {
-    "mtime": 1793352462.963682,
-    "ast_hash": "0d10faa0b4797c71badfb45c55ed9e9b",
+    "mtime": 1793361904.093736,
+    "ast_hash": "fba9bdf9ed0e7eaf77077a35937f6bf9",
     "semantic_hash": ""
   },
   "front/scripts/module-f-import.py": {
@@ -2520,18 +2520,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/f/f-1.ts": {
-    "mtime": 1793357511.6615999,
-    "ast_hash": "9ac34c482a31961f3ce6e46818d9a46f",
+    "mtime": 1793361877.0940344,
+    "ast_hash": "b762da59d12d328c3ad73c7819c22b9a",
     "semantic_hash": ""
   },
   "front/src/lib/content/f/f-2.ts": {
-    "mtime": 1793357511.7183688,
-    "ast_hash": "1a7360c4a64634fda59254b6caffb663",
+    "mtime": 1793361877.097877,
+    "ast_hash": "a18d2471eaf5957f194c2157016e461e",
     "semantic_hash": ""
   },
   "front/src/lib/content/f/f-3.ts": {
-    "mtime": 1793357511.7322266,
-    "ast_hash": "43ac7169cebf824725044fc5552fbe6b",
+    "mtime": 1793361877.1030645,
+    "ast_hash": "8aad9af6504d1a7b18590c7845f16835",
     "semantic_hash": ""
   },
   "docs/material/modules/module-f.md": {

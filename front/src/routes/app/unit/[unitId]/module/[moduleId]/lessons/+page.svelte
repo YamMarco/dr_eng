@@ -92,7 +92,8 @@
 	let nodes = $derived.by(() => {
 		const result: PathNode[] = [];
 		// Sections ordered top to bottom by their topmost node; each one is
-		// pushed down by one SECTION_GAP per section above it.
+		// pushed down by one SECTION_GAP per distinct start row above it
+		// (side-by-side sections share a start row, so they stay aligned).
 		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
 		const sections = moduleSections(mod.id);
 		const verticalOrder = sections
@@ -101,9 +102,10 @@
 			.sort((a, b) => topY(a) - topY(b));
 		const top = TOP_Y + (hasDeck || hasChat ? GATEWAY_SPACE : 0);
 		const shiftY = verticalOrder.length ? top - topY(verticalOrder[0]) : 0;
+		const startRows = [...new Set(verticalOrder.map(topY))];
 		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
-			const sectionOffset = verticalOrder.indexOf(section.id) * SECTION_GAP;
+			const sectionOffset = startRows.indexOf(topY(section.id)) * SECTION_GAP;
 			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {
 				result.push({
 					lesson,
@@ -124,18 +126,29 @@
 	// One divider per section, above that section's topmost node (not array
 	// order — an intro node may be authored last in the file). Centred on the
 	// canvas, in the section's color, so it never reads as a node title.
+	// Sections that start on the same row sit side by side: their heading is a
+	// narrow pill over their own column instead.
 	let sectionHeadings = $derived.by(() => {
-		const top = new SvelteMap<string, { sectionId: string; theme: SectionTheme; y: number }>();
+		const top = new SvelteMap<
+			string,
+			{ sectionId: string; theme: SectionTheme; y: number; x: number; column: boolean }
+		>();
 		for (const node of nodes) {
 			const cur = top.get(node.sectionId);
 			if (cur && cur.y <= node.y) continue;
 			top.set(node.sectionId, {
 				sectionId: node.sectionId,
 				theme: node.theme,
-				y: node.y
+				y: node.y,
+				x: node.x,
+				column: false
 			});
 		}
-		return [...top.values()];
+		const headings = [...top.values()];
+		for (const heading of headings) {
+			heading.column = headings.some((h) => h !== heading && h.y === heading.y);
+		}
+		return headings;
 	});
 
 	// Sized to the real node extents (nodes sit at +-x from the centre, so their
@@ -525,20 +538,32 @@
 
 					{#each sectionHeadings as heading (heading.sectionId)}
 						<!-- Section divider: a hairline across the canvas with the section's
-						     name in a pill of its own color - unlike node titles (small, plain). -->
-						<div
-							class="absolute inset-x-0 flex items-center justify-center"
-							style="top: {heading.y - 56}px"
-							in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
-						>
-							<span class="absolute inset-x-6 h-px bg-line" aria-hidden="true"></span>
+						     name in a pill of its own color - unlike node titles (small, plain).
+						     Side-by-side sections get a narrow pill over their column. -->
+						{#if heading.column}
 							<p
-								class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
+								class="absolute w-28 -translate-x-1/2 rounded-2xl px-2 py-1 text-center text-xs leading-tight font-extrabold shadow-sm {heading
 									.theme.soft}"
+								style="left: {canvasCenter + heading.x}px; top: {heading.y - 62}px"
+								in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
 							>
 								{i18n.title(heading.sectionId, mod.id)}
 							</p>
-						</div>
+						{:else}
+							<div
+								class="absolute inset-x-0 flex items-center justify-center"
+								style="top: {heading.y - 56}px"
+								in:fade={{ duration: 180, delay: reducedMotion ? 0 : 40 }}
+							>
+								<span class="absolute inset-x-6 h-px bg-line" aria-hidden="true"></span>
+								<p
+									class="relative rounded-full px-4 py-1.5 text-sm font-extrabold shadow-sm ring-4 ring-canvas {heading
+										.theme.soft}"
+								>
+									{i18n.title(heading.sectionId, mod.id)}
+								</p>
+							</div>
+						{/if}
 					{/each}
 
 					{#each nodes as node, nodeIndex (node.lesson.id)}

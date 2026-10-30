@@ -14,7 +14,7 @@ One section per work, skill `literature` (one "ספרות" row on the module pag
 | d-4 | Thank You, Ma'am - Langston Hughes | story map (12 events, original paraphrase) |
 | d-5 | As I Grew Older - Langston Hughes | poem |
 
-8 nodes per work, a linear chain: `d-<work>-before` (screens 1-2), `-read` (3-5), `-meaning` (6-8), `-think` (9-11), `-answer` (12-13), `-challenge` (14), `-mastery` (15), `-samples` (16). One round each; `-answer` adds an optional round 2 (free writing, LLM-graded, 40-60 words).
+Sections run side by side, one column each (x = -240..240, same start row). 8 nodes per work, a linear chain: `d-<work>-before` (screens 1-2), `-read` (3-5), `-meaning` (6-8), `-think` (9-11), `-answer` (12-13), `-challenge` (14), `-mastery` (15), `-samples` (16). One round each; `-answer` adds an optional round 2 (free writing, LLM-graded, 40-60 words).
 
 ## Mapping (package -> screens)
 

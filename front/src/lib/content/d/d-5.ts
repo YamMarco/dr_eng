@@ -9,8 +9,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Before Reading',
 		required: [],
 		position: {
-			x: 0,
-			y: 4610
+			x: 240,
+			y: 130
 		},
 		big: false,
 		content: {
@@ -216,8 +216,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Understand the Poem',
 		required: ['d-grew-older-before'],
 		position: {
-			x: 70,
-			y: 4730
+			x: 240,
+			y: 250
 		},
 		big: false,
 		content: {
@@ -699,8 +699,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Speaker & Meaning',
 		required: ['d-grew-older-read'],
 		position: {
-			x: 100,
-			y: 4850
+			x: 240,
+			y: 370
 		},
 		big: false,
 		content: {
@@ -854,8 +854,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Think About It',
 		required: ['d-grew-older-meaning'],
 		position: {
-			x: 70,
-			y: 4970
+			x: 240,
+			y: 490
 		},
 		big: false,
 		content: {
@@ -1215,8 +1215,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Answer Like a Pro',
 		required: ['d-grew-older-think'],
 		position: {
-			x: 0,
-			y: 5090
+			x: 240,
+			y: 610
 		},
 		big: false,
 		content: {
@@ -1355,8 +1355,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Literature Challenge',
 		required: ['d-grew-older-answer'],
 		position: {
-			x: -70,
-			y: 5210
+			x: 240,
+			y: 730
 		},
 		big: false,
 		content: {
@@ -1464,8 +1464,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Mastery Check',
 		required: ['d-grew-older-challenge'],
 		position: {
-			x: -100,
-			y: 5330
+			x: 240,
+			y: 850
 		},
 		big: false,
 		content: {
@@ -1592,8 +1592,8 @@ export const d5Lessons: LessonNode[] = [
 		titleEn: 'Sample Answers',
 		required: ['d-grew-older-mastery'],
 		position: {
-			x: -70,
-			y: 5450
+			x: 240,
+			y: 970
 		},
 		big: true,
 		content: {

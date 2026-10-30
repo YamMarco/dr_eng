@@ -9,8 +9,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Key words',
 		required: [],
 		position: {
-			x: 0,
-			y: 1130
+			x: 130,
+			y: 130
 		},
 		big: false,
 		content: {
@@ -152,8 +152,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Understand 1',
 		required: ['f-know-all-words'],
 		position: {
-			x: 70,
-			y: 1250
+			x: 130,
+			y: 250
 		},
 		big: false,
 		content: {
@@ -245,8 +245,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Understand 2',
 		required: ['f-know-all-understand-1'],
 		position: {
-			x: 100,
-			y: 1370
+			x: 130,
+			y: 370
 		},
 		big: false,
 		content: {
@@ -344,8 +344,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Think',
 		required: ['f-know-all-understand-2'],
 		position: {
-			x: 70,
-			y: 1490
+			x: 130,
+			y: 490
 		},
 		big: false,
 		content: {
@@ -416,8 +416,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Answer',
 		required: ['f-know-all-think'],
 		position: {
-			x: 0,
-			y: 1610
+			x: 130,
+			y: 610
 		},
 		big: false,
 		content: {
@@ -489,8 +489,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Mastery',
 		required: ['f-know-all-answer'],
 		position: {
-			x: -70,
-			y: 1730
+			x: 130,
+			y: 730
 		},
 		big: false,
 		content: {
@@ -523,8 +523,8 @@ export const f2Lessons: LessonNode[] = [
 		titleEn: 'Review',
 		required: ['f-know-all-mastery'],
 		position: {
-			x: -100,
-			y: 1850
+			x: 130,
+			y: 850
 		},
 		big: false,
 		content: {

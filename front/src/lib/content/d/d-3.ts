@@ -10,7 +10,7 @@ export const d3Lessons: LessonNode[] = [
 		required: [],
 		position: {
 			x: 0,
-			y: 2370
+			y: 130
 		},
 		big: false,
 		content: {
@@ -218,8 +218,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Understand the Poem',
 		required: ['d-intro-poetry-before'],
 		position: {
-			x: 70,
-			y: 2490
+			x: 0,
+			y: 250
 		},
 		big: false,
 		content: {
@@ -569,8 +569,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Speaker & Meaning',
 		required: ['d-intro-poetry-read'],
 		position: {
-			x: 100,
-			y: 2610
+			x: 0,
+			y: 370
 		},
 		big: false,
 		content: {
@@ -726,8 +726,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Think About It',
 		required: ['d-intro-poetry-meaning'],
 		position: {
-			x: 70,
-			y: 2730
+			x: 0,
+			y: 490
 		},
 		big: false,
 		content: {
@@ -1041,7 +1041,7 @@ export const d3Lessons: LessonNode[] = [
 		required: ['d-intro-poetry-think'],
 		position: {
 			x: 0,
-			y: 2850
+			y: 610
 		},
 		big: false,
 		content: {
@@ -1180,8 +1180,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Literature Challenge',
 		required: ['d-intro-poetry-answer'],
 		position: {
-			x: -70,
-			y: 2970
+			x: 0,
+			y: 730
 		},
 		big: false,
 		content: {
@@ -1290,8 +1290,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Mastery Check',
 		required: ['d-intro-poetry-challenge'],
 		position: {
-			x: -100,
-			y: 3090
+			x: 0,
+			y: 850
 		},
 		big: false,
 		content: {
@@ -1418,8 +1418,8 @@ export const d3Lessons: LessonNode[] = [
 		titleEn: 'Sample Answers',
 		required: ['d-intro-poetry-mastery'],
 		position: {
-			x: -70,
-			y: 3210
+			x: 0,
+			y: 970
 		},
 		big: true,
 		content: {

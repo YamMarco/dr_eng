@@ -9,8 +9,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Before Reading',
 		required: [],
 		position: {
-			x: 0,
-			y: 3490
+			x: 120,
+			y: 130
 		},
 		big: false,
 		content: {
@@ -217,8 +217,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Understand the Story',
 		required: ['d-thank-you-before'],
 		position: {
-			x: 70,
-			y: 3610
+			x: 120,
+			y: 250
 		},
 		big: false,
 		content: {
@@ -480,8 +480,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Characters & Meaning',
 		required: ['d-thank-you-read'],
 		position: {
-			x: 100,
-			y: 3730
+			x: 120,
+			y: 370
 		},
 		big: false,
 		content: {
@@ -637,8 +637,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Think About It',
 		required: ['d-thank-you-meaning'],
 		position: {
-			x: 70,
-			y: 3850
+			x: 120,
+			y: 490
 		},
 		big: false,
 		content: {
@@ -913,8 +913,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Answer Like a Pro',
 		required: ['d-thank-you-think'],
 		position: {
-			x: 0,
-			y: 3970
+			x: 120,
+			y: 610
 		},
 		big: false,
 		content: {
@@ -1053,8 +1053,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Literature Challenge',
 		required: ['d-thank-you-answer'],
 		position: {
-			x: -70,
-			y: 4090
+			x: 120,
+			y: 730
 		},
 		big: false,
 		content: {
@@ -1162,8 +1162,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Mastery Check',
 		required: ['d-thank-you-challenge'],
 		position: {
-			x: -100,
-			y: 4210
+			x: 120,
+			y: 850
 		},
 		big: false,
 		content: {
@@ -1290,8 +1290,8 @@ export const d4Lessons: LessonNode[] = [
 		titleEn: 'Sample Answers',
 		required: ['d-thank-you-mastery'],
 		position: {
-			x: -70,
-			y: 4330
+			x: 120,
+			y: 970
 		},
 		big: true,
 		content: {

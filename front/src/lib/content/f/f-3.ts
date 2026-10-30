@@ -10,7 +10,7 @@ export const f3Lessons: LessonNode[] = [
 		required: ['f-summer-mastery', 'f-know-all-mastery'],
 		position: {
 			x: 0,
-			y: 2130
+			y: 970
 		},
 		big: false,
 		content: {

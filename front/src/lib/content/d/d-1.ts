@@ -9,7 +9,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Before Reading',
 		required: [],
 		position: {
-			x: 0,
+			x: -240,
 			y: 130
 		},
 		big: false,
@@ -217,7 +217,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Understand the Poem',
 		required: ['d-road-before'],
 		position: {
-			x: 70,
+			x: -240,
 			y: 250
 		},
 		big: false,
@@ -613,7 +613,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Speaker & Meaning',
 		required: ['d-road-read'],
 		position: {
-			x: 100,
+			x: -240,
 			y: 370
 		},
 		big: false,
@@ -778,7 +778,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Think About It',
 		required: ['d-road-meaning'],
 		position: {
-			x: 70,
+			x: -240,
 			y: 490
 		},
 		big: false,
@@ -1103,7 +1103,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Answer Like a Pro',
 		required: ['d-road-think'],
 		position: {
-			x: 0,
+			x: -240,
 			y: 610
 		},
 		big: false,
@@ -1240,7 +1240,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Literature Challenge',
 		required: ['d-road-answer'],
 		position: {
-			x: -70,
+			x: -240,
 			y: 730
 		},
 		big: false,
@@ -1349,7 +1349,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Mastery Check',
 		required: ['d-road-challenge'],
 		position: {
-			x: -100,
+			x: -240,
 			y: 850
 		},
 		big: false,
@@ -1479,7 +1479,7 @@ export const d1Lessons: LessonNode[] = [
 		titleEn: 'Sample Answers',
 		required: ['d-road-mastery'],
 		position: {
-			x: -70,
+			x: -240,
 			y: 970
 		},
 		big: true,

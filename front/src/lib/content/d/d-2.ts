@@ -9,8 +9,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Before Reading',
 		required: [],
 		position: {
-			x: 0,
-			y: 1250
+			x: -120,
+			y: 130
 		},
 		big: false,
 		content: {
@@ -225,8 +225,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Understand the Poem',
 		required: ['d-count-day-before'],
 		position: {
-			x: 70,
-			y: 1370
+			x: -120,
+			y: 250
 		},
 		big: false,
 		content: {
@@ -540,8 +540,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Speaker & Meaning',
 		required: ['d-count-day-read'],
 		position: {
-			x: 100,
-			y: 1490
+			x: -120,
+			y: 370
 		},
 		big: false,
 		content: {
@@ -698,8 +698,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Think About It',
 		required: ['d-count-day-meaning'],
 		position: {
-			x: 70,
-			y: 1610
+			x: -120,
+			y: 490
 		},
 		big: false,
 		content: {
@@ -990,8 +990,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Answer Like a Pro',
 		required: ['d-count-day-think'],
 		position: {
-			x: 0,
-			y: 1730
+			x: -120,
+			y: 610
 		},
 		big: false,
 		content: {
@@ -1127,8 +1127,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Literature Challenge',
 		required: ['d-count-day-answer'],
 		position: {
-			x: -70,
-			y: 1850
+			x: -120,
+			y: 730
 		},
 		big: false,
 		content: {
@@ -1236,8 +1236,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Mastery Check',
 		required: ['d-count-day-challenge'],
 		position: {
-			x: -100,
-			y: 1970
+			x: -120,
+			y: 850
 		},
 		big: false,
 		content: {
@@ -1364,8 +1364,8 @@ export const d2Lessons: LessonNode[] = [
 		titleEn: 'Sample Answers',
 		required: ['d-count-day-mastery'],
 		position: {
-			x: -70,
-			y: 2090
+			x: -120,
+			y: 970
 		},
 		big: true,
 		content: {
