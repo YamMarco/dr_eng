@@ -217,7 +217,7 @@
 			bind:this={board}
 			onscroll={onBoardScroll}
 			inert={loading}
-			class="-mx-4 flex snap-x snap-mandatory [scrollbar-width:none] items-start gap-3 overflow-x-auto overscroll-x-contain px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0"
+			class="-mx-4 flex snap-x snap-mandatory [scrollbar-width:none] items-stretch gap-3 overflow-x-auto overscroll-x-contain px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0"
 		>
 			{#each STATUSES as status (status)}
 				{@const column = sortTasks(

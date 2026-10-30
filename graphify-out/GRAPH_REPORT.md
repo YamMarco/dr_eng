@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8676cf15`
+- Built from commit: `705742bb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -47,13 +47,13 @@
 - extraction-spec.md
 - GraphEditor.svelte
 - content/index.ts
-- (site)/+page.svelte
+- billing.ts
 - WritingTask.svelte
 - db/schema.ts
-- billing.ts
+- scoring.ts
 - plans.ts
 - deck/index.ts
-- scoring.ts
+- llmGuard.ts
 - profile.svelte.ts
 - LessonScreen
 - lib/kanban.ts
@@ -66,7 +66,7 @@
 - Workflow
 - [id]/+server.ts
 - localize.svelte.ts
-- llmGuard.ts
+- (site)/+page.svelte
 - moduleLocation.svelte.ts
 - chatSpeaking.ts
 - WordImageField.svelte
@@ -114,14 +114,14 @@
 - .mcp.json
 - rubrics/index.ts
 - Platform: web, mobile, accounts
-- submitToLlm
+- edit-words/+page.svelte
 - edit-exam/+page.svelte
 - @eslint/js
 - AGENTS.md
 - Rules
 - ActivityStore
 - Handoff: support email (receive + send as support@engup.co.il)
-- edit-words/+page.svelte
+- submitToLlm
 - screenTypeNames.ts
 - checks/index.ts
 - content-i18n.mjs
@@ -290,6 +290,10 @@ Nodes (10): bands, canvasHeight, nodeHitbox(), nodePointerMove(), nodePointerUp(
 Cohesion: 0.10
 Nodes (25): c1Lessons, c2Lessons, c3Lessons, cobe1Lessons, cobe2Lessons, cobe3Lessons, d1Lessons, d2Lessons (+17 more)
 
+### Community 35 - "billing.ts"
+Cohesion: 0.14
+Nodes (20): Plan, accessEnd(), accessUntil(), BillingError, checkout(), CheckoutResult, completeOrder(), Coupon (+12 more)
+
 ### Community 36 - "WritingTask.svelte"
 Cohesion: 0.05
 Nodes (38): accepted, acceptedOk, allFilled, allOk, autoCheck, capitalIsError, checked, combinedText (+30 more)
@@ -298,9 +302,9 @@ Nodes (38): accepted, acceptedOk, allFilled, allOk, autoCheck, capitalIsError, c
 Cohesion: 0.12
 Nodes (22): db, coupons, llmUsage, orders, progress, pushSubscriptions, waitlist, isPushEndpoint() (+14 more)
 
-### Community 38 - "billing.ts"
-Cohesion: 0.14
-Nodes (20): Plan, accessEnd(), accessUntil(), BillingError, checkout(), CheckoutResult, completeOrder(), Coupon (+12 more)
+### Community 38 - "scoring.ts"
+Cohesion: 0.20
+Nodes (14): primaryAction(), FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), isOrderCorrect(), MATCH_PAIRS_MAX_MISTAKES, applyGrades() (+6 more)
 
 ### Community 39 - "plans.ts"
 Cohesion: 0.08
@@ -310,9 +314,9 @@ Nodes (33): APP, build(), COBE_ADDON, Cycle, CYCLE_MONTHS, CYCLES, defaultPlan()
 Cohesion: 0.06
 Nodes (65): listA, listB, listC, listD, w(), wordId(), eGlossAr, SKILLS (+57 more)
 
-### Community 41 - "scoring.ts"
-Cohesion: 0.20
-Nodes (14): primaryAction(), FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), isOrderCorrect(), MATCH_PAIRS_MAX_MISTAKES, applyGrades() (+6 more)
+### Community 41 - "llmGuard.ts"
+Cohesion: 0.24
+Nodes (12): access, billingEnabled, llmConfigured(), burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday() (+4 more)
 
 ### Community 42 - "profile.svelte.ts"
 Cohesion: 0.14
@@ -361,10 +365,6 @@ Nodes (14): kanbanTasks, kanbanDb(), taskColumns, taskFields, jsonBody(), DELETE
 ### Community 53 - "localize.svelte.ts"
 Cohesion: 0.22
 Nodes (9): cache, ensureLoaded(), loaders, loading, localizeContent(), Table, tables, translate() (+1 more)
-
-### Community 54 - "llmGuard.ts"
-Cohesion: 0.24
-Nodes (12): access, billingEnabled, llmConfigured(), burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday() (+4 more)
 
 ### Community 55 - "moduleLocation.svelte.ts"
 Cohesion: 0.22
@@ -510,6 +510,10 @@ Nodes (16): PhraseGroup, phraseGroups, CobeBand, CobeCriterion, CobeRubric, essa
 Cohesion: 0.17
 Nodes (11): Accounts (Supabase Auth, email + password), Builds, Install and daily reminder (web), Plans, checkout, access, Platform: web, mobile, accounts, Progress sync, Routes, Turning it on (+3 more)
 
+### Community 102 - "edit-words/+page.svelte"
+Cohesion: 0.33
+Nodes (4): changed, invalidCount, saving, ./$types
+
 ### Community 105 - "AGENTS.md"
 Cohesion: 0.29
 Nodes (6): content, mission, persona, read on demand (plain paths, don't preload), stack, workflow
@@ -521,10 +525,6 @@ Nodes (19): Accessibility, Animation, Anti-patterns (flag these), Content & Copy
 ### Community 108 - "Handoff: support email (receive + send as support@engup.co.il)"
 Cohesion: 0.40
 Nodes (4): After it works, Handoff: support email (receive + send as support@engup.co.il), Receive: ImprovMX (free forwarding), Send as support@ (Gmail "Send mail as")
-
-### Community 109 - "edit-words/+page.svelte"
-Cohesion: 0.33
-Nodes (4): changed, invalidCount, saving, ./$types
 
 ### Community 111 - "checks/index.ts"
 Cohesion: 0.13

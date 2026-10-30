@@ -2037,7 +2037,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 116,
+      "community": 117,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -2093,7 +2093,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 114,
+      "community": 116,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -11612,7 +11612,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_d",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "d()"
     },
@@ -11909,7 +11909,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_order_primaryaction",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "primaryaction()"
     },
@@ -12823,7 +12823,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_submittollm",
-      "community": 102,
+      "community": 109,
       "community_name": "submitToLlm",
       "norm_label": "submittollm()"
     },
@@ -12926,7 +12926,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_primaryaction",
-      "community": 102,
+      "community": 109,
       "community_name": "submitToLlm",
       "norm_label": "primaryaction()"
     },
@@ -14121,7 +14121,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_sentencecompletion_ts_front_src_lib_lesson_screens_sentencecompletion",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "sentencecompletion.ts"
     },
@@ -14132,7 +14132,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_sentencecompletion_filler",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "filler"
     },
@@ -14144,7 +14144,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_sentencecompletion_normalize",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "normalize()"
     },
@@ -14156,7 +14156,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_sentencecompletion_issentencecompletionmatch",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "issentencecompletionmatch()"
     },
@@ -14682,7 +14682,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_types_match_pairs_max_mistakes",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "match_pairs_max_mistakes"
     },
@@ -14694,7 +14694,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_types_ismarkallpass",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "ismarkallpass()"
     },
@@ -14742,7 +14742,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_types_isordercorrect",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "isordercorrect()"
     },
@@ -15366,7 +15366,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "front_src_lib_motion_reducedmotion",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "reducedmotion"
     },
@@ -15808,7 +15808,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_plan",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "plan"
     },
@@ -17174,7 +17174,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "scoring.ts"
     },
@@ -17187,7 +17187,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scored",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "scored"
     },
@@ -17212,7 +17212,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_normalize",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "normalize()"
     },
@@ -17224,7 +17224,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scorescreen",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "scorescreen()"
     },
@@ -17236,7 +17236,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_scorequiz",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "scorequiz()"
     },
@@ -17248,7 +17248,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_scoring_applygrades",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "applygrades()"
     },
@@ -17271,7 +17271,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "screenids.ts"
     },
@@ -17284,7 +17284,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids_identifiedscreen",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "identifiedscreen"
     },
@@ -17296,7 +17296,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_screenids_screenswithids",
-      "community": 41,
+      "community": 38,
       "community_name": "scoring.ts",
       "norm_label": "screenswithids()"
     },
@@ -17415,7 +17415,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_time",
-      "community": 129,
+      "community": 114,
       "community_name": "time.ts",
       "norm_label": "time.ts"
     },
@@ -17427,7 +17427,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_time_formattime",
-      "community": 129,
+      "community": 114,
       "community_name": "time.ts",
       "norm_label": "formattime()"
     },
@@ -18015,7 +18015,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_billing",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "billing.ts"
     },
@@ -18026,7 +18026,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingenabled",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "billingenabled"
     },
@@ -18039,7 +18039,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_db",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "db"
     },
@@ -18052,7 +18052,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_tx",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "tx"
     },
@@ -18065,7 +18065,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_coupon",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "coupon"
     },
@@ -18078,7 +18078,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_couponproblem",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "couponproblem"
     },
@@ -18091,7 +18091,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_quote",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "quote"
     },
@@ -18104,7 +18104,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingerror",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "billingerror"
     },
@@ -18116,7 +18116,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingerror_constructor",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": ".constructor()"
     },
@@ -18127,7 +18127,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "front_src_lib_server_billing_done",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "done"
     },
@@ -18139,7 +18139,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_normalizecode",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "normalizecode()"
     },
@@ -18152,7 +18152,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_access",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "access"
     },
@@ -18164,7 +18164,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_accessuntil",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "accessuntil()"
     },
@@ -18188,7 +18188,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_accessend",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "accessend()"
     },
@@ -18201,7 +18201,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_checkoutresult",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "checkoutresult"
     },
@@ -18213,7 +18213,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_checkout",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "checkout()"
     },
@@ -18225,7 +18225,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_completeorder",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "completeorder()"
     },
@@ -18742,7 +18742,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_llmconfigured",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "llmconfigured()"
     },
@@ -18790,7 +18790,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "llmguard.ts"
     },
@@ -18803,7 +18803,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_product",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "product"
     },
@@ -18814,7 +18814,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_calls",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "calls"
     },
@@ -18826,7 +18826,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_burstlimited",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "burstlimited()"
     },
@@ -18838,7 +18838,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_counttoday",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "counttoday()"
     },
@@ -18850,7 +18850,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_cobethismonth",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "cobethismonth()"
     },
@@ -18862,7 +18862,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_countalltoday",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "countalltoday()"
     },
@@ -18874,7 +18874,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_guardllm",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "guardllm()"
     },
@@ -18967,7 +18967,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_llmroute",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "llmroute.ts"
     },
@@ -18979,7 +18979,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmroute_llmroute",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "llmroute()"
     },
@@ -19002,7 +19002,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_payments",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "payments.ts"
     },
@@ -19015,7 +19015,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentrequest",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "paymentrequest"
     },
@@ -19028,7 +19028,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentstart",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "paymentstart"
     },
@@ -19040,7 +19040,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_startpayment",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "startpayment()"
     },
@@ -19295,7 +19295,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_ladderart",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "ladderart.svelte"
     },
@@ -19317,7 +19317,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_methoddemo",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "methoddemo.svelte"
     },
@@ -19339,7 +19339,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_phonemock",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "phonemock.svelte"
     },
@@ -19350,7 +19350,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_pulseline",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "pulseline.svelte"
     },
@@ -19361,7 +19361,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_stepvignette",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "stepvignette.svelte"
     },
@@ -19407,7 +19407,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_reveal",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "reveal.ts"
     },
@@ -19419,7 +19419,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_site_reveal_reveal",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "reveal()"
     },
@@ -19886,7 +19886,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_svelte_front_src_routes_admin_edit_words_page",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "edit-words/+page.svelte"
     },
@@ -19897,7 +19897,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_changed",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "changed"
     },
@@ -19909,7 +19909,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_invalid",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "invalid()"
     },
@@ -19920,7 +19920,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_invalidcount",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "invalidcount"
     },
@@ -19931,7 +19931,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_saving",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "saving"
     },
@@ -19954,7 +19954,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_types",
-      "community": 109,
+      "community": 102,
       "community_name": "edit-words/+page.svelte",
       "norm_label": "./$types"
     },
@@ -20134,7 +20134,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_site_page",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "(site)/+page.svelte"
     },
@@ -20146,7 +20146,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_page_i",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "i()"
     },
@@ -20157,7 +20157,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_site_about_page",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "about/+page.svelte"
     },
@@ -20169,7 +20169,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_about_page_f",
-      "community": 35,
+      "community": 54,
       "community_name": "(site)/+page.svelte",
       "norm_label": "f()"
     },
@@ -20350,7 +20350,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_access_server",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "access/+server.ts"
     },
@@ -20362,7 +20362,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_access_server_get",
-      "community": 54,
+      "community": 41,
       "community_name": "llmGuard.ts",
       "norm_label": "get()"
     },
@@ -20429,7 +20429,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_server",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "checkout/+server.ts"
     },
@@ -20441,7 +20441,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_server_post",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "post()"
     },
@@ -20452,7 +20452,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_body",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "body.ts"
     },
@@ -20464,7 +20464,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_body_checkoutbody",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "checkoutbody()"
     },
@@ -20475,7 +20475,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_quote_server",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "quote/+server.ts"
     },
@@ -20487,7 +20487,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_quote_server_post",
-      "community": 38,
+      "community": 35,
       "community_name": "billing.ts",
       "norm_label": "post()"
     },
@@ -75488,5 +75488,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8676cf155433aecec0614fa293ce0f9bb398a934"
+  "built_at_commit": "705742bb5018e5d79daeaf09d73d675bde224136"
 }

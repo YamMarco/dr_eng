@@ -2115,8 +2115,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/+page.svelte": {
-    "mtime": 1793035082.6687415,
-    "ast_hash": "1f43264ad0c777e4860765ce88411416",
+    "mtime": 1793372274.2429824,
+    "ast_hash": "ccce751aab6afda2bd09eb0a7441e10f",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/TaskCard.svelte": {
