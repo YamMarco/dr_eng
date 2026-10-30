@@ -209,7 +209,11 @@ export const passageSchema = z
 		title: z.string().optional(),
 		paragraphs: z
 			.array(z.strictObject({ id: z.string(), text: z.string() }))
-			.describe('Paragraphs, labelled I, II, III... in the margin. `id` is display order only.')
+			.describe('Paragraphs, labelled I, II, III... in the margin. `id` is display order only.'),
+		glossary: z
+			.array(z.strictObject({ term: z.string(), he: z.string() }))
+			.optional()
+			.describe('The exam glossary under the passage: English term, Hebrew meaning.')
 	})
 	.describe('A titled, scrollable reading passage. Exams only for now. Not scored.');
 
@@ -265,6 +269,10 @@ export const mcqSchema = z
 			.string()
 			.optional()
 			.describe('Shown after checking. Say why the others fail, not only why the answer is right.'),
+		partialFeedback: z
+			.string()
+			.optional()
+			.describe('Tick-N only: shown when some, but not all, picks are right.'),
 		listen: z
 			.string()
 			.optional()
@@ -398,11 +406,21 @@ export const matchDefinitionsSchema = z
 			.array(
 				z.strictObject({
 					text: z.string(),
-					itemIndex: index.describe('0-based index into items of the item this defines.')
+					itemIndex: index.describe('0-based index into items of the item this defines.'),
+					feedback: z
+						.string()
+						.optional()
+						.describe('Shown under the definition after checking (lessons) or in the exam report.')
 				})
 			)
 			.min(1)
 			.describe('The definitions to match. The exam uses 3, so 3 items stay unused.'),
+		itemGlosses: z
+			.array(z.string().nullable())
+			.optional()
+			.describe(
+				'One per item, same order: its Hebrew meaning, shown beside the item after checking. null / missing = none.'
+			),
 		points: points.optional()
 	})
 	.describe(
@@ -430,7 +448,15 @@ export const writingTaskSchema = z
 		modelAnswer: z
 			.string()
 			.optional()
-			.describe('Lesson mode: shown after the check, to compare with. Not scored.'),
+			.describe(
+				'Shown after the check (lessons) or the answer (exam: practice mode and the report), to compare with. Not scored.'
+			),
+		explanation: z
+			.string()
+			.optional()
+			.describe(
+				'Exams: shown with the model answer in practice mode and the report - why it is right, the evidence, a tip. Hebrew.'
+			),
 		checklist: z
 			.array(z.string())
 			.optional()

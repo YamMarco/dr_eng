@@ -39,6 +39,9 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 - **Exams are first-class**: always visible (the best score sits on every module tile) and
   always one tap away, in real conditions (timer, grade, no feedback until submit).
   **[decided]**
+- **Practice runs of the same exam** sit beside it ("תרגול עם משוב"): feedback after each
+  question, a retry when it wasn't fully right (the first answer is scored), no timer, and
+  not saved as a result. The exam itself stays in real conditions. **[decided]**
 - **But they're only *suggested* when the student is ready:** an exam left open, or at least
   75% of the module's lessons done (`EXAM_READY` in `dashboard/data.ts`). A student far
   from finishing the lessons is never pushed to an exam; the opening exam is an optional

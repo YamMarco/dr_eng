@@ -659,12 +659,40 @@
 											stacked
 										/>
 									</ListenField>
-									<SettingsGroup title="משוב לכל תשובה">
-										<OptionFeedbackList
-											options={screen.options}
-											correct={mcqCorrect(screen)}
-											onChange={(i, v) => (screen.options[i] = withFeedback(screen.options[i], v))}
-										/>
+									<SettingsGroup
+										title="משוב"
+										hint="משוב לכל תשובה מוצג אחרי הבדיקה (במבחן: בדוח), רק אם לא ריק. תשובה בלי משוב מסומנת רק כנכונה או שגויה."
+									>
+										<div class="space-y-2">
+											<OptionFeedbackList
+												options={screen.options}
+												correct={mcqCorrect(screen)}
+												onChange={(i, v) =>
+													(screen.options[i] = withFeedback(screen.options[i], v))}
+											/>
+											{#if screen.correctIndices}
+												<div>
+													<p class="mb-0.5 text-xs font-semibold text-muted">
+														רק חלק מהתשובות הנכונות נבחרו
+													</p>
+													<MarkdownInput
+														minRows={1}
+														value={screen.partialFeedback ?? ''}
+														onInput={(v) => (screen.partialFeedback = v.trim() ? v : undefined)}
+													/>
+												</div>
+											{/if}
+											<div>
+												<p class="mb-0.5 text-xs font-semibold text-muted">
+													מפתח התשובה (לכל התשובות)
+												</p>
+												<MarkdownInput
+													minRows={1}
+													value={screen.explanation ?? ''}
+													onInput={(v) => (screen.explanation = v.trim() ? v : undefined)}
+												/>
+											</div>
+										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'order'}
 									<ListenField
@@ -876,6 +904,33 @@
 										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
+									{#if isExam}
+										<SettingsGroup
+											title="משוב"
+											hint="תשובה לדוגמה והסבר מוצגים אחרי התשובה (תרגול) ובדוח. ההערות לבודק נשלחות רק ל-AI."
+										>
+											<div class="space-y-2">
+												<p class="text-xs font-semibold text-muted">תשובה לדוגמה</p>
+												<MarkdownInput
+													minRows={1}
+													dir="ltr"
+													value={screen.modelAnswer ?? ''}
+													onInput={(v) => (screen.modelAnswer = v.trim() ? v : undefined)}
+												/>
+												<p class="text-xs font-semibold text-muted">הסבר (עברית)</p>
+												<MarkdownInput
+													minRows={1}
+													value={screen.explanation ?? ''}
+													onInput={(v) => (screen.explanation = v.trim() ? v : undefined)}
+												/>
+												<TextField
+													label="הערות לבודק ה-AI (באנגלית)"
+													stacked
+													bind:value={screen.gradingNotes}
+												/>
+											</div>
+										</SettingsGroup>
+									{/if}
 									{#if !isExam}
 										<SettingsGroup
 											title="כללי בדיקה"

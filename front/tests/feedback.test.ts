@@ -142,3 +142,23 @@ test('rubric file matches the length rule in code', () => {
 	])
 		assert.ok(length.includes(`[${min}, ${off}]`), `${min}: -${off}`);
 });
+
+test('Module G rubric file matches its length table in code', () => {
+	const rubric = JSON.parse(
+		readFileSync('src/lib/content/rubrics/module-g-writing.json', 'utf8')
+	) as {
+		totalPoints: number;
+		criteria: { max: number }[];
+		lengthDeductions: { minWords: number; maxWords: number; pointsOff: number }[];
+	};
+	assert.equal(
+		rubric.criteria.reduce((n, c) => n + c.max, 0),
+		rubric.totalPoints
+	);
+	const length = readFileSync('src/lib/checks/length.ts', 'utf8');
+	for (const { minWords, maxWords, pointsOff } of rubric.lengthDeductions) {
+		// the whole-task row is the zero line
+		if (pointsOff >= rubric.totalPoints) assert.ok(length.includes(`zeroBelow: ${maxWords + 1}`));
+		else assert.ok(length.includes(`[${minWords}, ${pointsOff}]`), `${minWords}: -${pointsOff}`);
+	}
+});

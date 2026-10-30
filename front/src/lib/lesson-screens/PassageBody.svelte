@@ -63,3 +63,17 @@
 		</span>
 	{/snippet}
 </PassageMark>
+
+<!-- The exam's glossary, printed under the text like the paper. -->
+{#if passage.glossary?.length}
+	<dl class="mt-4 border-t border-line/70 pt-3 text-sm">
+		<dt class="mb-1 text-xs font-bold text-muted">GLOSSARY</dt>
+		{#each passage.glossary as entry (entry.term)}
+			<dd class="flex gap-2">
+				<span class="font-semibold">{entry.term}</span>
+				<span>-</span>
+				<span dir="rtl">{entry.he}</span>
+			</dd>
+		{/each}
+	</dl>
+{/if}

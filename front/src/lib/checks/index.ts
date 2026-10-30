@@ -39,7 +39,7 @@ export async function checkWriting(
 	return { length, issues, notEnglish: false };
 }
 
-/** Should the LLM be asked at all? Under 25 valid words the task scores 0 by rule. */
+/** Should the LLM be asked at all? Under the rubric's minimum (25 / 50 valid words) the task scores 0 by rule. */
 export function worthGrading(report: CheckReport): boolean {
 	return !report.notEnglish && !report.length.zero;
 }

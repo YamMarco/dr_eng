@@ -60,6 +60,11 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 			out.push(...outOfRange('correctIndex', mcqCorrect(screen), screen.options.length));
 			out.push(...duplicates('correctIndices', (screen.correctIndices ?? []).map(String)));
 			out.push(...duplicates('options', screen.options.map(optText)));
+			if (screen.partialFeedback && !screen.correctIndices)
+				out.push({
+					severity: 'warn',
+					message: 'partialFeedback מוצג רק בשאלה עם כמה תשובות נכונות'
+				});
 			break;
 		case 'cloze-pick':
 			out.push(...outOfRange('correctIndices', screen.correctIndices, screen.options.length));
@@ -72,6 +77,8 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 			});
 			break;
 		case 'match-definitions':
+			if ((screen.itemGlosses?.length ?? 0) > screen.items.length)
+				out.push({ severity: 'error', message: 'ב-itemGlosses יותר פריטים מ-items' });
 			out.push(
 				...outOfRange(
 					'itemIndex',

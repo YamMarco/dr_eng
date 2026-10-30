@@ -40,7 +40,7 @@ export function blankedExample(word: DeckWord): string | undefined {
 }
 
 /** Two words that would make a matching item ambiguous: one's headword shows up in the other's definition. */
-function clashes(a: DeckWord, b: DeckWord): boolean {
+export function clashes(a: DeckWord, b: DeckWord): boolean {
 	return (
 		b.defEn.toLowerCase().includes(a.word.toLowerCase()) ||
 		a.defEn.toLowerCase().includes(b.word.toLowerCase())

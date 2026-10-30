@@ -15,6 +15,7 @@
 	import { shuffle } from './shuffle';
 	import { untrack } from 'svelte';
 	import ListenCard from './ListenCard.svelte';
+	import McqFeedback from './McqFeedback.svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -216,11 +217,7 @@
 {/if}
 
 {#if checked}
-	{#each picks as p (p)}
-		{#if optFeedback(screen.options[p])}
-			<PickFeedback text={optFeedback(screen.options[p])} correct={right.includes(p)} />
-		{/if}
-	{/each}
+	<McqFeedback {screen} picks={order.filter((i) => picks.includes(i))} />
 {/if}
 
 {#if checked && screen.explanation}

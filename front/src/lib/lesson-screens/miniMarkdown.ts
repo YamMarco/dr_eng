@@ -33,8 +33,7 @@ export function textDir(text: string): 'auto' | 'rtl' | 'ltr' {
 	const letters = t.match(/[A-Za-z֐-׿؀-ۿ]/g);
 	if (!letters) return 'auto';
 	// Starts or ends in Hebrew / Arabic (punctuation / marks ignored) -> RTL.
-	if (/[֐-׿؀-ۿ]/.test(letters[0]) || /[֐-׿؀-ۿ]/.test(letters[letters.length - 1]))
-		return 'rtl';
+	if (/[֐-׿؀-ۿ]/.test(letters[0]) || /[֐-׿؀-ۿ]/.test(letters[letters.length - 1])) return 'rtl';
 	// English at both ends: RTL only if the line is mostly Hebrew / Arabic.
 	const he = (t.match(/[֐-׿؀-ۿ]/g) ?? []).length;
 	const en = letters.length - he;

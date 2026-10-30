@@ -28,7 +28,8 @@ const body = z.discriminatedUnion('kind', [
 		text,
 		notes,
 		fixes: z.boolean().optional(),
-		mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional()
+		mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional(),
+		rubric: z.enum(['c', 'g']).optional()
 	}),
 	z.object({
 		kind: z.literal('reading'),
@@ -56,7 +57,7 @@ export const POST = llmRoute('grading failed', 'app', async ({ request }) => {
 	return gradeEssay(req);
 });
 
-/** Dev only: the assembled prompt for ?kind=lesson|reading|essay, to copy into AI Studio. */
+/** Dev only: the assembled prompt for ?kind=lesson|reading|essay (&rubric=g), to copy into AI Studio. */
 export const GET: RequestHandler = ({ url }) => {
 	if (!dev) throw error(404);
 	const kind =
@@ -79,7 +80,7 @@ export const GET: RequestHandler = ({ url }) => {
 					...(kind === 'essay' && { mechanics: { spelling: 0, punctuation: 0, runOn: 0 } })
 				};
 	return new Response(
-		`${systemPrompt(kind)}\n\n----- user message -----\n${userPrompt(sample)}\n`,
+		`${systemPrompt(kind, url.searchParams.get('rubric') === 'g' ? 'g' : 'c')}\n\n----- user message -----\n${userPrompt(sample)}\n`,
 		{ headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
 	);
 };

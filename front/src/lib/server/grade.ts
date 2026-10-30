@@ -5,8 +5,9 @@ import { chatJson, type LlmRole } from './llm';
 import LESSON_PROMPT from './prompts/grade-short.md?raw';
 import READING_PROMPT from './prompts/grade-reading.md?raw';
 import ESSAY_PROMPT from './prompts/grade-essay.md?raw';
+import ESSAY_G_PROMPT from './prompts/grade-essay-g.md?raw';
 import { CONTENT_TAGS, FATAL_TAGS, TAG_IDS } from '$lib/feedback/tags';
-import { essayRubric } from '$lib/content/rubrics';
+import { writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
 import type {
 	EssayVerdict,
 	GradeRequest,
@@ -31,10 +32,12 @@ const KINDS: Record<
 	essay: { prompt: ESSAY_PROMPT, role: 'grade-essay', maxTokens: 3000, maxMarks: 8 }
 };
 
+const ESSAY_PROMPTS: Record<WritingRubricId, string> = { c: ESSAY_PROMPT, g: ESSAY_G_PROMPT };
+
 /** The system prompt exactly as the model gets it: the .md file, untouched, so it can be
  *  pasted as-is into Gemini's web UI (AI Studio) to try changes. */
-export function systemPrompt(kind: GradeRequest['kind']): string {
-	return KINDS[kind].prompt;
+export function systemPrompt(kind: GradeRequest['kind'], rubric: WritingRubricId = 'c'): string {
+	return kind === 'essay' ? ESSAY_PROMPTS[rubric] : KINDS[kind].prompt;
 }
 
 // Fences are stripped from the text, so a student can't close the block and write outside it.
@@ -90,8 +93,9 @@ function ask<S extends z.ZodType>(req: GradeRequest, schema: S): Promise<z.outpu
 	const { role } = KINDS[req.kind];
 	const maxTokens =
 		KINDS[req.kind].maxTokens + (req.kind === 'reading' ? 300 * req.items.length : 0);
+	const rubric = req.kind === 'essay' ? req.rubric : undefined;
 	return chatJson(
-		{ role, system: systemPrompt(req.kind), user: userPrompt(req), maxTokens },
+		{ role, system: systemPrompt(req.kind, rubric), user: userPrompt(req), maxTokens },
 		schema
 	);
 }
@@ -128,7 +132,7 @@ export async function gradeReading(req: ReadingRequest): Promise<ReadingVerdict>
 
 export async function gradeEssay(req: SingleRequest): Promise<EssayVerdict> {
 	const shape = Object.fromEntries(
-		essayRubric.criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
+		writingRubrics[req.rubric ?? 'c'].criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
 	);
 	const parsed = await ask(req, z.object({ scores: z.object(shape), marks: marksSchema }));
 	const scores = Object.fromEntries(

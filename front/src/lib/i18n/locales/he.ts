@@ -599,6 +599,11 @@ export const he = {
 		totalScoreLabel: 'ציון',
 		grading: 'בודקים את התשובות הפתוחות...',
 		openAnswersTitle: 'תשובות פתוחות',
+		closedAnswersTitle: 'שאלות סגורות',
+		gradedInReport: 'הציון על התשובה הזו יופיע בדוח בסוף.',
+		retryButton: 'נסו שוב',
+		modelAnswerLabel: 'תשובה לדוגמה',
+		unanswered: 'לא נבחרה תשובה.',
 		notGraded: 'לא נבדקה - הבדיקה לא זמינה כרגע. בינתיים נספרת כ-0.',
 		retryGrading: 'בדיקה חוזרת',
 		essayLabel: 'משימת כתיבה',
@@ -613,7 +618,7 @@ export const he = {
 		gateZero: {
 			empty: 'לא נכתבה תשובה.',
 			'not-english': 'התשובה לא באנגלית.',
-			'too-short': 'פחות מ-25 מילים - המשימה כולה מקבלת 0.'
+			'too-short': 'פחות מהמינימום של המילים - המשימה כולה מקבלת 0.'
 		} as Record<string, string>,
 		lastAttemptLabel: 'ניסיון אחרון',
 		timeLeftLabel: 'זמן שנותר',
@@ -666,7 +671,9 @@ export const he = {
 			'השאירו לפחות 20 דקות לכתיבה: עמדה, סיבה, דוגמה וסיכום, שבעים עד תשעים מילים. פחות משבעים מורידים נקודות, יותר מתשעים לא.'
 		],
 		resumeButton: 'התחלה',
-		retakeButton: 'ניסיון נוסף'
+		retakeButton: 'ניסיון נוסף',
+		practiceButton: 'תרגול עם משוב',
+		practiceHint: 'בתרגול רואים משוב אחרי כל שאלה ואפשר לנסות שוב. בלי שעון, והציון לא נשמר.'
 	},
 	unit: {
 		modulePrefix: 'מודול'

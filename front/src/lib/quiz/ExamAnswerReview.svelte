@@ -2,18 +2,29 @@
 	// One open exam answer in the report: its score, the answer with the errors
 	// highlighted in place, and for the essay the rubric breakdown.
 	import MarkedText from '$lib/feedback/MarkedText.svelte';
-	import { essayRubric } from '$lib/content/rubrics';
+	import { writingRubrics } from '$lib/content/rubrics';
 	import type { ExamGrade } from '$lib/feedback/types';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import ModelAnswer from './ModelAnswer.svelte';
 
 	let {
 		label,
 		prompt,
 		points,
-		grade
-	}: { label: string; prompt: string; points: number; grade?: ExamGrade } = $props();
+		grade,
+		modelAnswer,
+		explanation
+	}: {
+		label: string;
+		prompt: string;
+		points: number;
+		grade?: ExamGrade;
+		modelAnswer?: string;
+		explanation?: string;
+	} = $props();
 
 	const q = $derived(i18n.dict.quiz);
+	const rubric = $derived(writingRubrics[grade?.rubric ?? 'c']);
 	const scoreTone = $derived(
 		!grade || grade.status === 'failed'
 			? 'text-muted'
@@ -54,7 +65,7 @@
 		{/each}
 		{#if grade.criteria}
 			<ul class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-				{#each essayRubric.criteria as c (c.id)}
+				{#each rubric.criteria as c (c.id)}
 					<li class="flex justify-between gap-2">
 						<span class="text-muted">{q.criterion[c.id] ?? c.name}</span>
 						<span class="font-semibold tabular" dir="ltr">{grade.criteria[c.id] ?? 0}/{c.max}</span>
@@ -70,5 +81,6 @@
 		{#if grade.marks.length > 0}
 			<p class="text-xs text-muted">{i18n.dict.feedback.tapHint}</p>
 		{/if}
+		<ModelAnswer {modelAnswer} {explanation} />
 	{/if}
 </li>

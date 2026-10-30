@@ -7,7 +7,8 @@
 	import { profile } from '$lib/profile.svelte';
 	import { screensWithIds } from './screenIds';
 	import type { QuizNode } from './types';
-	import type { QuizScore } from './scoring';
+	import AnswerReview from './AnswerReview.svelte';
+	import { scoreScreen, type QuizScore } from './scoring';
 	import type { ExamGrade } from '$lib/feedback/types';
 
 	let {
@@ -51,6 +52,15 @@
 	// COBE before every recording is judged: no pass / fail yet.
 	const pending = $derived(hasSpeaking && !score.total);
 	const anyFailed = $derived(Object.values(grades).some((g) => g.status === 'failed'));
+	const closed = $derived(
+		quiz.parts.flatMap((part) =>
+			screensWithIds(part).flatMap(({ id, screen }) =>
+				screen.type === 'mcq' || screen.type === 'match-definitions'
+					? [{ id, screen, scored: scoreScreen(screen, answers[id]) }]
+					: []
+			)
+		)
+	);
 </script>
 
 <main class="app-col flex-1 overflow-y-auto px-4 pt-10 pb-12">
@@ -131,6 +141,25 @@
 		</ul>
 	</section>
 
+	{#if closed.length > 0}
+		<section class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
+			<h2 class="mb-3 text-base font-bold">{i18n.dict.quiz.closedAnswersTitle}</h2>
+			<ul class="flex flex-col divide-y divide-line/70">
+				{#each closed as c (c.id)}
+					<li class="py-4 first:pt-0 last:pb-0">
+						<AnswerReview
+							label={i18n.dict.quiz.questionProgress(numbers.get(c.id) ?? 0, numbers.size)}
+							screen={c.screen}
+							answer={answers[c.id]}
+							earned={c.scored.earned}
+							max={c.scored.max}
+						/>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 	{#if score.manual.items.length > 0}
 		<section class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
 			<div class="mb-3 flex items-center justify-between gap-3">
@@ -171,6 +200,8 @@
 							prompt={screen && 'prompt' in screen ? String(screen.prompt) : ''}
 							points={item.points}
 							{grade}
+							modelAnswer={screen?.type === 'writing-task' ? screen.modelAnswer : undefined}
+							explanation={screen?.type === 'writing-task' ? screen.explanation : undefined}
 						/>
 					{/if}
 				{/each}
