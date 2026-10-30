@@ -7,7 +7,7 @@
 	import { profile } from '$lib/profile.svelte';
 	import { screensWithIds } from './screenIds';
 	import type { QuizNode } from './types';
-	import ExamMcqReview from './ExamMcqReview.svelte';
+	import AnswerReview from './AnswerReview.svelte';
 	import { scoreScreen, type QuizScore } from './scoring';
 	import type { ExamGrade } from '$lib/feedback/types';
 
@@ -55,7 +55,9 @@
 	const closed = $derived(
 		quiz.parts.flatMap((part) =>
 			screensWithIds(part).flatMap(({ id, screen }) =>
-				screen.type === 'mcq' ? [{ id, screen, scored: scoreScreen(screen, answers[id]) }] : []
+				screen.type === 'mcq' || screen.type === 'match-definitions'
+					? [{ id, screen, scored: scoreScreen(screen, answers[id]) }]
+					: []
 			)
 		)
 	);
@@ -144,13 +146,15 @@
 			<h2 class="mb-3 text-base font-bold">{i18n.dict.quiz.closedAnswersTitle}</h2>
 			<ul class="flex flex-col divide-y divide-line/70">
 				{#each closed as c (c.id)}
-					<ExamMcqReview
-						label={i18n.dict.quiz.questionProgress(numbers.get(c.id) ?? 0, numbers.size)}
-						screen={c.screen}
-						answer={answers[c.id]}
-						earned={c.scored.earned}
-						max={c.scored.max}
-					/>
+					<li class="py-4 first:pt-0 last:pb-0">
+						<AnswerReview
+							label={i18n.dict.quiz.questionProgress(numbers.get(c.id) ?? 0, numbers.size)}
+							screen={c.screen}
+							answer={answers[c.id]}
+							earned={c.scored.earned}
+							max={c.scored.max}
+						/>
+					</li>
 				{/each}
 			</ul>
 		</section>
@@ -196,6 +200,8 @@
 							prompt={screen && 'prompt' in screen ? String(screen.prompt) : ''}
 							points={item.points}
 							{grade}
+							modelAnswer={screen?.type === 'writing-task' ? screen.modelAnswer : undefined}
+							explanation={screen?.type === 'writing-task' ? screen.explanation : undefined}
 						/>
 					{/if}
 				{/each}

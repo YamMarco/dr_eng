@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import Md from '$lib/components/Md.svelte';
+	import { staggerDelay } from '$lib/motion';
 	import type { MatchDefinitionsScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
@@ -13,27 +16,31 @@
 
 	let {
 		screen,
-		onAdvance,
+		onAdvance = () => {},
 		// eslint-disable-next-line no-useless-assignment
 		disabled = $bindable(true),
 		// eslint-disable-next-line no-useless-assignment
-		label = $bindable('')
+		label = $bindable(''),
+		review
 	}: {
 		screen: MatchDefinitionsScreen;
-		onAdvance: () => void;
+		onAdvance?: () => void;
 		disabled?: boolean;
 		label?: string;
+		/** Read-only, already checked, showing these picks (exam practice / report). */
+		review?: (number | null)[];
 	} = $props();
 
 	// picks[d] = the item index written next to definition d (null = empty).
 	// The exam's own layout: numbered items, definitions with a blank each.
-	const restored =
-		mode === 'quiz' ? (answerSlot!.get() as (number | null)[] | undefined) : undefined;
+	const restored = untrack(() =>
+		mode === 'quiz' && !review ? (answerSlot!.get() as (number | null)[] | undefined) : undefined
+	);
 	let picks = $state<(number | null)[]>(
-		untrack(() => restored ?? screen.definitions.map(() => null))
+		untrack(() => review ?? restored ?? screen.definitions.map(() => null))
 	);
 	let active = $state(0);
-	let checked = $state(false);
+	let checked = $state(untrack(() => !!review));
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -72,7 +79,7 @@
 	}
 </script>
 
-{#if mode === 'lesson'}
+{#if mode === 'lesson' && !review}
 	<ExerciseKindBadge label={i18n.dict.exerciseKind.matchDefinitions} />
 	<p class="mt-1 text-sm text-muted">{i18n.dict.exerciseKind.matchDefinitionsHint}</p>
 {/if}
@@ -87,9 +94,9 @@
 			onclick={() => focus(d)}
 			disabled={checked}
 			class="flex items-center gap-3 rounded-2xl border-2 px-3 py-3 text-start transition {wrong
-				? 'border-miss bg-miss-soft motion-safe:animate-shake-wrong'
+				? `border-miss bg-miss-soft ${review ? '' : 'motion-safe:animate-shake-wrong'}`
 				: right
-					? 'border-brand bg-brand-soft motion-safe:animate-pop-correct'
+					? `border-brand bg-brand-soft ${review ? '' : 'motion-safe:animate-pop-correct'}`
 					: active === d
 						? 'border-brand bg-brand-soft/40'
 						: 'border-line bg-surface'}"
@@ -113,6 +120,14 @@
 				{/if}
 			</span>
 		</button>
+		{#if checked && definition.feedback}
+			<div
+				in:fly={{ y: 8, duration: 240, delay: staggerDelay(d) }}
+				class="-mt-1 rounded-2xl bg-accent-soft p-3 text-sm leading-relaxed font-normal"
+			>
+				<Md block text={definition.feedback} />
+			</div>
+		{/if}
 	{/each}
 </div>
 
@@ -128,7 +143,13 @@
 				: 'border-line bg-surface hover:border-brand'}"
 		>
 			<span class="text-sm font-extrabold text-muted tabular">{i + 1}.</span>
-			{item}
+			<span class="min-w-0">
+				{item}
+				{#if checked && screen.itemGlosses?.[i]}
+					<span class="block text-sm font-normal text-muted" dir="rtl">{screen.itemGlosses[i]}</span
+					>
+				{/if}
+			</span>
 		</button>
 	{/each}
 </div>

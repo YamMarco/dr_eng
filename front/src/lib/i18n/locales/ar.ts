@@ -120,6 +120,7 @@ export const ar: DictionaryOverride = {
 		grading: 'نفحص الإجابات المفتوحة...',
 		openAnswersTitle: 'إجابات مفتوحة',
 		closedAnswersTitle: 'أسئلة الاختيار',
+		modelAnswerLabel: 'إجابة نموذجية',
 		unanswered: 'لم تُختر إجابة.',
 		notGraded: 'لم تُفحص - الفحص غير متاح الآن. حاليًا تُحسب 0.',
 		retryGrading: 'إعادة الفحص',

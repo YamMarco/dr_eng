@@ -52,6 +52,23 @@
 		removeFrom('options', i);
 	}
 
+	// match-definitions: glosses stay parallel to items (null = none), and
+	// definitions keep pointing at their item when one is removed.
+	function setItemGloss(i: number, v: string) {
+		const glosses: (string | null)[] = screen.items.map(
+			(_: string, j: number) => screen.itemGlosses?.[j] ?? null
+		);
+		glosses[i] = v.trim() ? v : null;
+		screen.itemGlosses = glosses.some((g) => g !== null) ? glosses : undefined;
+		touch();
+	}
+	function removeItem(i: number) {
+		if (screen.itemGlosses) screen.itemGlosses.splice(i, 1);
+		for (const d of screen.definitions)
+			d.itemIndex = d.itemIndex === i ? 0 : d.itemIndex > i ? d.itemIndex - 1 : d.itemIndex;
+		removeFrom('items', i);
+	}
+
 	// passage-mcq: {prompt, options, correctIndex}[] questions,
 	// edited inline in the same radio-button style as a plain mcq screen.
 	function addMcqQuestion() {
@@ -799,6 +816,121 @@
 				onclick={addParagraph}
 			>
 				+ פסקה
+			</button>
+			<p class="text-xs text-muted">מילון מונחים (GLOSSARY) מתחת לקטע</p>
+			{#each screen.glossary ?? [] as entry, i (i)}
+				<div class="flex items-center gap-2">
+					<input
+						bind:value={entry.term}
+						oninput={touch}
+						dir="ltr"
+						placeholder="term"
+						class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+					/>
+					<input
+						bind:value={entry.he}
+						oninput={touch}
+						dir="rtl"
+						placeholder="פירוש"
+						class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+					/>
+					<button
+						type="button"
+						class="text-xs text-danger"
+						onclick={() => {
+							screen.glossary = screen.glossary.filter((_: unknown, j: number) => j !== i);
+							if (!screen.glossary.length) screen.glossary = undefined;
+							touch();
+						}}>✕</button
+					>
+				</div>
+			{/each}
+			<button
+				type="button"
+				class="self-start text-xs font-semibold text-brand"
+				onclick={() => pushInto('glossary', { term: '', he: '' })}
+			>
+				+ מונח
+			</button>
+		{:else if screen.type === 'match-definitions'}
+			<p class="text-xs text-muted">פריטים (מספר + פירוש בעברית שמוצג אחרי הבדיקה)</p>
+			<ol class="space-y-1.5">
+				{#each screen.items as _item, i (i)}
+					<li class="flex items-center gap-2">
+						<span class="w-5 text-xs font-bold text-muted tabular">{i + 1}.</span>
+						<input
+							bind:value={screen.items[i]}
+							oninput={touch}
+							dir="ltr"
+							class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+						/>
+						<input
+							value={screen.itemGlosses?.[i] ?? ''}
+							oninput={(e) => setItemGloss(i, e.currentTarget.value)}
+							dir="rtl"
+							placeholder="פירוש"
+							class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+						/>
+						<button type="button" class="text-xs text-danger" onclick={() => removeItem(i)}
+							>✕</button
+						>
+					</li>
+				{/each}
+			</ol>
+			<button
+				type="button"
+				class="self-start text-xs font-semibold text-brand"
+				onclick={() => pushInto('items', '')}
+			>
+				+ פריט
+			</button>
+			<p class="text-xs text-muted">הגדרות (הפריט הנכון + משוב שמוצג אחרי הבדיקה)</p>
+			<div class="flex flex-col gap-2">
+				{#each screen.definitions as definition, d (d)}
+					<div class="space-y-1.5 rounded-xl border border-line bg-surface/70 p-2">
+						<div class="flex items-center gap-2">
+							<select
+								value={definition.itemIndex}
+								onchange={(e) => {
+									definition.itemIndex = Number(e.currentTarget.value);
+									touch();
+								}}
+								class="rounded-lg border border-line bg-canvas px-1 py-1 text-sm"
+								aria-label="הפריט הנכון"
+							>
+								{#each screen.items as item, i (i)}
+									<option value={i}>{i + 1}. {item}</option>
+								{/each}
+							</select>
+							<input
+								bind:value={definition.text}
+								oninput={touch}
+								dir="ltr"
+								class="min-w-0 flex-1 rounded-lg border-2 border-line bg-surface p-1.5"
+							/>
+							<button
+								type="button"
+								class="text-xs text-danger"
+								onclick={() => removeFrom('definitions', d)}>✕</button
+							>
+						</div>
+						<MarkdownInput
+							minRows={1}
+							value={definition.feedback ?? ''}
+							onInput={(v) => {
+								definition.feedback = v.trim() ? v : undefined;
+								touch();
+							}}
+						/>
+					</div>
+				{/each}
+			</div>
+			<button
+				type="button"
+				class="self-start text-xs font-semibold text-brand"
+				onclick={() => pushInto('definitions', { text: '', itemIndex: 0 })}
+			>
+				+ הגדרה
 			</button>
 		{:else if screen.type === 'sentence-completion'}
 			<p class="text-xs text-muted">לפני החלק שהתלמיד/ה ישלימו</p>

@@ -78,6 +78,8 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 			});
 			break;
 		case 'match-definitions':
+			if ((screen.itemGlosses?.length ?? 0) > screen.items.length)
+				out.push({ severity: 'error', message: 'ב-itemGlosses יותר פריטים מ-items' });
 			out.push(
 				...outOfRange(
 					'itemIndex',

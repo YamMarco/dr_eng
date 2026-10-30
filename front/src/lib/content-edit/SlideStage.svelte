@@ -903,6 +903,33 @@
 										</div>
 									</SettingsGroup>
 								{:else if screen.type === 'writing-task'}
+									{#if isExam}
+										<SettingsGroup
+											title="משוב"
+											hint="תשובה לדוגמה והסבר מוצגים אחרי התשובה (תרגול) ובדוח. ההערות לבודק נשלחות רק ל-AI."
+										>
+											<div class="space-y-2">
+												<p class="text-xs font-semibold text-muted">תשובה לדוגמה</p>
+												<MarkdownInput
+													minRows={1}
+													dir="ltr"
+													value={screen.modelAnswer ?? ''}
+													onInput={(v) => (screen.modelAnswer = v.trim() ? v : undefined)}
+												/>
+												<p class="text-xs font-semibold text-muted">הסבר (עברית)</p>
+												<MarkdownInput
+													minRows={1}
+													value={screen.explanation ?? ''}
+													onInput={(v) => (screen.explanation = v.trim() ? v : undefined)}
+												/>
+												<TextField
+													label="הערות לבודק ה-AI (באנגלית)"
+													stacked
+													bind:value={screen.gradingNotes}
+												/>
+											</div>
+										</SettingsGroup>
+									{/if}
 									{#if !isExam}
 										<SettingsGroup
 											title="כללי בדיקה"

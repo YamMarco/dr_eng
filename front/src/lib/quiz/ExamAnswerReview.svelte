@@ -5,13 +5,23 @@
 	import { writingRubrics } from '$lib/content/rubrics';
 	import type { ExamGrade } from '$lib/feedback/types';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import ModelAnswer from './ModelAnswer.svelte';
 
 	let {
 		label,
 		prompt,
 		points,
-		grade
-	}: { label: string; prompt: string; points: number; grade?: ExamGrade } = $props();
+		grade,
+		modelAnswer,
+		explanation
+	}: {
+		label: string;
+		prompt: string;
+		points: number;
+		grade?: ExamGrade;
+		modelAnswer?: string;
+		explanation?: string;
+	} = $props();
 
 	const q = $derived(i18n.dict.quiz);
 	const rubric = $derived(writingRubrics[grade?.rubric ?? 'c']);
@@ -71,5 +81,6 @@
 		{#if grade.marks.length > 0}
 			<p class="text-xs text-muted">{i18n.dict.feedback.tapHint}</p>
 		{/if}
+		<ModelAnswer {modelAnswer} {explanation} />
 	{/if}
 </li>
