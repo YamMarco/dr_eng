@@ -645,7 +645,7 @@
 								<div
 									class="pointer-events-none absolute top-full left-1/2 mt-1.5 flex w-28 -translate-x-1/2 flex-col items-center gap-1 text-center"
 								>
-									{#if node.lesson.id === startNodeId}
+									{#if node.lesson.id === startNodeId && !sectionHeadings.some((h) => h.column)}
 										<span
 											class="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-bold text-white"
 										>
