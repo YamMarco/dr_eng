@@ -67,10 +67,11 @@
 	data-no-screenshot
 	hidden={open}
 	onclick={start}
-	class="fixed inset-e-4 bottom-24 z-[60] flex min-h-11 items-center gap-1.5 rounded-full bg-brand px-4 text-sm font-bold text-white shadow-lg ring-2 ring-surface transition hover:bg-brand-dark active:scale-95 lg:inset-e-6 lg:bottom-6"
+	aria-label={t.button}
+	title={t.button}
+	class="fixed inset-e-4 bottom-24 z-[60] flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg ring-2 ring-surface transition hover:bg-brand-dark active:scale-95 lg:inset-e-6 lg:bottom-6"
 >
-	<MessageSquareText size={16} aria-hidden="true" />
-	{t.button}
+	<MessageSquareText size={22} aria-hidden="true" />
 </button>
 
 <div data-no-screenshot class="contents">

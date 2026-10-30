@@ -1610,8 +1610,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte",
-      "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "activity.svelte.ts"
     },
     {
@@ -1621,8 +1621,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_weekly_goal",
-      "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "weekly_goal"
     },
     {
@@ -1634,7 +1634,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_daykey",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": "daykey()"
     },
     {
@@ -1645,8 +1645,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_load",
-      "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "load()"
     },
     {
@@ -1659,7 +1659,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": "activitystore"
     },
     {
@@ -1670,8 +1670,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_constructor",
-      "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -1683,7 +1683,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_recordtoday",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".recordtoday()"
     },
     {
@@ -1695,7 +1695,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_practiced",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".practiced()"
     },
     {
@@ -1707,7 +1707,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_totaldays",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".totaldays()"
     },
     {
@@ -1719,7 +1719,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_weeksatgoal",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".weeksatgoal()"
     },
     {
@@ -1731,7 +1731,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_daysthisweek",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".daysthisweek()"
     },
     {
@@ -1743,7 +1743,7 @@
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_streak",
       "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community_name": "ActivityStore",
       "norm_label": ".streak()"
     },
     {
@@ -1753,8 +1753,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activity",
-      "community": 107,
-      "community_name": "activity.svelte.ts",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "activity"
     },
     {
@@ -2059,7 +2059,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 157,
+      "community": 159,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -2115,7 +2115,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 151,
+      "community": 157,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -2137,7 +2137,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "dictionaries.ts"
     },
@@ -2149,7 +2149,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries_bytes",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "bytes()"
     },
@@ -2161,7 +2161,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_dictionaries_browserdictionaries",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "browserdictionaries()"
     },
@@ -2438,7 +2438,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "mechanics.ts"
     },
@@ -2450,7 +2450,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_issue",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "issue()"
     },
@@ -2461,7 +2461,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_always_capital",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "always_capital"
     },
@@ -2472,7 +2472,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_connectors",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "connectors"
     },
@@ -2483,7 +2483,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_subordinators",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "subordinators"
     },
@@ -2494,7 +2494,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_subjects",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "subjects"
     },
@@ -2506,7 +2506,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_sentencespans",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "sentencespans()"
     },
@@ -2518,7 +2518,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_mechanics_mechanicsissues",
-      "community": 133,
+      "community": 139,
       "community_name": "mechanics.ts",
       "norm_label": "mechanicsissues()"
     },
@@ -2618,7 +2618,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_checks_typos",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "typos.ts"
     },
@@ -2631,7 +2631,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_dictdata",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "dictdata"
     },
@@ -2644,7 +2644,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_dictloader",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "dictloader"
     },
@@ -2656,7 +2656,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_utf8",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "utf8()"
     },
@@ -2668,7 +2668,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_loadspellers",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "loadspellers()"
     },
@@ -2679,7 +2679,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_allowed",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "allowed"
     },
@@ -2690,7 +2690,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_contractions",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "contractions"
     },
@@ -2702,7 +2702,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_sentencestarts",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "sentencestarts()"
     },
@@ -2714,7 +2714,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_checks_typos_typoissues",
-      "community": 120,
+      "community": 92,
       "community_name": "typos.ts",
       "norm_label": "typoissues()"
     },
@@ -3129,7 +3129,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_supportsection",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "supportsection.svelte"
     },
@@ -7593,7 +7593,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_index_getlesson",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "getlesson()"
     },
@@ -7605,7 +7605,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_index_getlessonsbysection",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "getlessonsbysection()"
     },
@@ -7640,7 +7640,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_index_modulesections",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "modulesections()"
     },
@@ -8356,7 +8356,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_modulesections",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "modulesections()"
     },
@@ -8368,7 +8368,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_lessonsinorder",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "lessonsinorder()"
     },
@@ -8380,7 +8380,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_moduleroute",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "moduleroute()"
     },
@@ -8577,7 +8577,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_todaylesson",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "todaylesson()"
     },
@@ -8683,7 +8683,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "debugstore"
     },
@@ -8695,7 +8695,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_enabled",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": ".enabled()"
     },
@@ -8707,7 +8707,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_unlockall",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": ".unlockall()"
     },
@@ -8719,7 +8719,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setenabled",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": ".setenabled()"
     },
@@ -8731,7 +8731,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setunlockall",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": ".setunlockall()"
     },
@@ -8753,7 +8753,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogress.svelte.ts"
     },
@@ -8766,7 +8766,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_progressmap",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "progressmap"
     },
@@ -8778,7 +8778,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_load",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "load()"
     },
@@ -8790,7 +8790,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_persist",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "persist()"
     },
@@ -8803,7 +8803,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogressstore"
     },
@@ -8815,7 +8815,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_constructor",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": ".constructor()"
     },
@@ -8827,7 +8827,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_get",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": ".get()"
     },
@@ -8839,7 +8839,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_apply",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": ".apply()"
     },
@@ -8851,7 +8851,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_migrate",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": ".migrate()"
     },
@@ -8863,7 +8863,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_resetall",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": ".resetall()"
     },
@@ -8874,7 +8874,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogress",
-      "community": 103,
+      "community": 133,
       "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogress"
     },
@@ -10649,7 +10649,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_speakingverdict",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingverdict"
     },
@@ -11300,8 +11300,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_load",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 114,
+      "community_name": "LastEngagementStore",
       "norm_label": "load()"
     },
     {
@@ -11313,8 +11313,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_lastengagementstore",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 114,
+      "community_name": "LastEngagementStore",
       "norm_label": "lastengagementstore"
     },
     {
@@ -11325,8 +11325,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_lastengagementstore_constructor",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 114,
+      "community_name": "LastEngagementStore",
       "norm_label": ".constructor()"
     },
     {
@@ -11337,8 +11337,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_lastengagementstore_record",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 114,
+      "community_name": "LastEngagementStore",
       "norm_label": ".record()"
     },
     {
@@ -11564,7 +11564,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "matchdefinitions.svelte"
     },
@@ -11575,7 +11575,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_active",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "active"
     },
@@ -11586,7 +11586,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_checked",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "checked"
     },
@@ -11598,7 +11598,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_choose",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "choose()"
     },
@@ -11610,7 +11610,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_focus",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "focus()"
     },
@@ -11634,7 +11634,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_d",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "d()"
     },
@@ -11646,7 +11646,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_matchdefinitions_i",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "i()"
     },
@@ -11727,7 +11727,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "mcq.svelte"
     },
@@ -11738,7 +11738,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_shuffled",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "shuffled"
     },
@@ -11749,7 +11749,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_order",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "order"
     },
@@ -11761,7 +11761,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_pick",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "pick()"
     },
@@ -11784,7 +11784,7 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_containerwidth",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "containerwidth"
     },
@@ -11795,7 +11795,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_cols",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "cols"
     },
@@ -11806,7 +11806,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_pitch",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "pitch"
     },
@@ -11817,7 +11817,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_hexw",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "hexw"
     },
@@ -11828,7 +11828,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_rows",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "rows"
     },
@@ -11839,7 +11839,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_positions",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "positions"
     },
@@ -11850,7 +11850,7 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_mcq_containerheight",
-      "community": 118,
+      "community": 109,
       "community_name": "Mcq.svelte",
       "norm_label": "containerheight"
     },
@@ -12845,7 +12845,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_submittollm",
-      "community": 152,
+      "community": 151,
       "community_name": "submitToLlm",
       "norm_label": "submittollm()"
     },
@@ -12948,7 +12948,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_primaryaction",
-      "community": 152,
+      "community": 151,
       "community_name": "submitToLlm",
       "norm_label": "primaryaction()"
     },
@@ -15029,7 +15029,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lessonpath",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "lessonpath.ts"
     },
@@ -15041,7 +15041,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_hascontent",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "hascontent()"
     },
@@ -15053,7 +15053,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_roundscompleted",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "roundscompleted()"
     },
@@ -15077,7 +15077,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessondone",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "islessondone()"
     },
@@ -15089,7 +15089,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessongold",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "islessongold()"
     },
@@ -15101,7 +15101,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessonunlocked",
-      "community": 82,
+      "community": 67,
       "community_name": "lessonPath.ts",
       "norm_label": "islessonunlocked()"
     },
@@ -15245,7 +15245,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocation.svelte.ts"
     },
     {
@@ -15258,7 +15258,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_entry",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "entry"
     },
     {
@@ -15271,7 +15271,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_locationmap",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "locationmap"
     },
     {
@@ -15283,7 +15283,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_load",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "load()"
     },
     {
@@ -15295,7 +15295,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_persist",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "persist()"
     },
     {
@@ -15308,7 +15308,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocationstore"
     },
     {
@@ -15320,7 +15320,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_constructor",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -15332,7 +15332,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_get",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".get()"
     },
     {
@@ -15344,7 +15344,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_set",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".set()"
     },
     {
@@ -15356,7 +15356,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_mostrecent",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".mostrecent()"
     },
     {
@@ -15367,7 +15367,7 @@
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocation",
       "community": 55,
-      "community_name": "onSyncedChange",
+      "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocation"
     },
     {
@@ -15377,7 +15377,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_motion",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "motion.ts"
     },
@@ -15388,7 +15388,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "front_src_lib_motion_reducedmotion",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "reducedmotion"
     },
@@ -15400,7 +15400,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_motion_staggerdelay",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "staggerdelay()"
     },
@@ -15526,8 +15526,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_load",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "load()"
     },
     {
@@ -15539,8 +15539,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "myphrases"
     },
     {
@@ -15551,8 +15551,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_constructor",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -15563,8 +15563,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_has",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".has()"
     },
     {
@@ -15575,8 +15575,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_toggle",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".toggle()"
     },
     {
@@ -15830,7 +15830,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_plan",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "plan"
     },
@@ -16130,7 +16130,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_profile_svelte_profilestore_name",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": ".name()"
     },
@@ -16345,8 +16345,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progresssync_svelte_onsyncedchange",
-      "community": 55,
-      "community_name": "onSyncedChange",
+      "community": 133,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "onsyncedchange()"
     },
     {
@@ -17437,7 +17437,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_time",
-      "community": 114,
+      "community": 152,
       "community_name": "time.ts",
       "norm_label": "time.ts"
     },
@@ -17449,7 +17449,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_time_formattime",
-      "community": 114,
+      "community": 152,
       "community_name": "time.ts",
       "norm_label": "formattime()"
     },
@@ -17682,7 +17682,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": "recorder"
     },
@@ -17694,7 +17694,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_constructor",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".constructor()"
     },
@@ -17706,7 +17706,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_take",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".take()"
     },
@@ -17718,7 +17718,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_start",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".start()"
     },
@@ -17730,7 +17730,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_stop",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".stop()"
     },
@@ -17742,7 +17742,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_destroy",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".destroy()"
     },
@@ -17754,7 +17754,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_openmic",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".#openmic()"
     },
@@ -17766,7 +17766,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_releasemic",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".#releasemic()"
     },
@@ -17778,7 +17778,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_recorder_svelte_recorder_cleartake",
-      "community": 139,
+      "community": 121,
       "community_name": "Recorder",
       "norm_label": ".#cleartake()"
     },
@@ -17978,7 +17978,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_screenshot",
-      "community": 111,
+      "community": 71,
       "community_name": "screenshot.ts",
       "norm_label": "screenshot.ts"
     },
@@ -17990,7 +17990,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_overlay",
-      "community": 111,
+      "community": 71,
       "community_name": "screenshot.ts",
       "norm_label": "overlay()"
     },
@@ -18002,7 +18002,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_capturescreen",
-      "community": 111,
+      "community": 71,
       "community_name": "screenshot.ts",
       "norm_label": "capturescreen()"
     },
@@ -18094,7 +18094,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_billing",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "billing.ts"
     },
@@ -18105,7 +18105,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingenabled",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "billingenabled"
     },
@@ -18118,7 +18118,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_db",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "db"
     },
@@ -18131,7 +18131,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_tx",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "tx"
     },
@@ -18144,7 +18144,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_coupon",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "coupon"
     },
@@ -18157,7 +18157,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_couponproblem",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "couponproblem"
     },
@@ -18170,8 +18170,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_quote",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "quote"
     },
     {
@@ -18183,8 +18183,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingerror",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "billingerror"
     },
     {
@@ -18195,8 +18195,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingerror_constructor",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": ".constructor()"
     },
     {
@@ -18206,7 +18206,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "front_src_lib_server_billing_done",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "done"
     },
@@ -18218,8 +18218,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_normalizecode",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "normalizecode()"
     },
     {
@@ -18231,7 +18231,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_access",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "access"
     },
@@ -18243,7 +18243,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_accessuntil",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "accessuntil()"
     },
@@ -18267,7 +18267,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_accessend",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "accessend()"
     },
@@ -18280,7 +18280,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_checkoutresult",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "checkoutresult"
     },
@@ -18292,8 +18292,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_checkout",
-      "community": 67,
-      "community_name": "billing.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "checkout()"
     },
     {
@@ -18304,7 +18304,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_completeorder",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "completeorder()"
     },
@@ -18419,7 +18419,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_server_db_schema_coupons",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "coupons"
     },
@@ -18941,7 +18941,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "llmguard.ts"
     },
@@ -18965,7 +18965,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_calls",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "calls"
     },
@@ -18977,7 +18977,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_burstlimited",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "burstlimited()"
     },
@@ -18989,7 +18989,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_counttoday",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "counttoday()"
     },
@@ -19001,7 +19001,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_cobethismonth",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "cobethismonth()"
     },
@@ -19013,7 +19013,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_countalltoday",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "countalltoday()"
     },
@@ -19025,7 +19025,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmguard_guardllm",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "guardllm()"
     },
@@ -19153,7 +19153,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_payments",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "payments.ts"
     },
@@ -19166,7 +19166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentrequest",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "paymentrequest"
     },
@@ -19179,7 +19179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentstart",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "paymentstart"
     },
@@ -19191,7 +19191,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_startpayment",
-      "community": 67,
+      "community": 82,
       "community_name": "billing.ts",
       "norm_label": "startpayment()"
     },
@@ -19272,7 +19272,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "server/speaking.ts"
     },
@@ -19283,7 +19283,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_max_audio_chars",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "max_audio_chars"
     },
@@ -19296,7 +19296,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_speakingrequest",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingrequest"
     },
@@ -19307,7 +19307,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_band",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "band"
     },
@@ -19318,7 +19318,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_verdictschema",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "verdictschema"
     },
@@ -19330,7 +19330,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_block",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "block()"
     },
@@ -19342,7 +19342,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_speakingprompt",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingprompt()"
     },
@@ -19354,7 +19354,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_gradespeakingaudio",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "gradespeakingaudio()"
     },
@@ -19446,7 +19446,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_ladderart",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "ladderart.svelte"
     },
@@ -19457,7 +19457,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_mediaframe",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "mediaframe.svelte"
     },
@@ -19468,7 +19468,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_methoddemo",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "methoddemo.svelte"
     },
@@ -19490,7 +19490,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_phonemock",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "phonemock.svelte"
     },
@@ -19501,7 +19501,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_pulseline",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "pulseline.svelte"
     },
@@ -19512,7 +19512,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_stepvignette",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "stepvignette.svelte"
     },
@@ -19523,7 +19523,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_media",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "media.ts"
     },
@@ -19536,7 +19536,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_site_media_media",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "media"
     },
@@ -19547,7 +19547,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "front_src_lib_site_media_homemedia",
-      "community": 54,
+      "community": 120,
       "community_name": "MatchDefinitions.svelte",
       "norm_label": "homemedia"
     },
@@ -19558,7 +19558,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_site_reveal",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "reveal.ts"
     },
@@ -19570,7 +19570,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_site_reveal_reveal",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "reveal()"
     },
@@ -19696,7 +19696,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_support",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "support.ts"
     },
@@ -19707,7 +19707,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "front_src_lib_support_support_email",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "support_email"
     },
@@ -19718,7 +19718,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "front_src_lib_support_support_whatsapp",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "support_whatsapp"
     },
@@ -19729,7 +19729,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_lib_support_testers_group",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "testers_group"
     },
@@ -19741,7 +19741,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_whatsapphref",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "whatsapphref()"
     },
@@ -19753,7 +19753,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_emailhref",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "emailhref()"
     },
@@ -20285,7 +20285,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_site_page",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "(site)/+page.svelte"
     },
@@ -20297,7 +20297,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_page_i",
-      "community": 71,
+      "community": 54,
       "community_name": "motion.ts",
       "norm_label": "i()"
     },
@@ -20501,7 +20501,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_access_server",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "access/+server.ts"
     },
@@ -20513,7 +20513,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_access_server_get",
-      "community": 109,
+      "community": 111,
       "community_name": "llmGuard.ts",
       "norm_label": "get()"
     },
@@ -20580,8 +20580,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_server",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "checkout/+server.ts"
     },
     {
@@ -20592,8 +20592,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_server_post",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "post()"
     },
     {
@@ -20603,8 +20603,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_body",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "body.ts"
     },
     {
@@ -20615,8 +20615,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_body_checkoutbody",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "checkoutbody()"
     },
     {
@@ -20626,8 +20626,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_quote_server",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "quote/+server.ts"
     },
     {
@@ -20638,8 +20638,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_checkout_quote_server_post",
-      "community": 121,
-      "community_name": "quote/+server.ts",
+      "community": 118,
+      "community_name": "checkout",
       "norm_label": "post()"
     },
     {
@@ -21354,7 +21354,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "speak/+server.ts"
     },
@@ -21365,7 +21365,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server_body",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "body"
     },
@@ -21376,7 +21376,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server_post",
-      "community": 92,
+      "community": 103,
       "community_name": "server/speaking.ts",
       "norm_label": "post"
     },
@@ -75951,5 +75951,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bfba736d21bd645eaede6c57084a9167e9fb11c3"
+  "built_at_commit": "c5976e1ff9a465df0016dcfe311a149bac8e5c2c"
 }
