@@ -7,6 +7,12 @@ Present state only. 5-unit module (unit group 5: E, G, COBE). Ids are `g-` prefi
 - **g-1, Part A - Reading** (`content/g/g-1.ts`, 18 nodes, linear chain). `requiredRounds: 2` on every node: round 1 = method on the shared DIGITAL MENTORING AT WORK text (5 paragraphs; WILD BEES I-II for lessons 9 and 12), round 2 = exam level on a new short text. `g-final` adds an optional round 3 (STUDY PODS full simulation). Round 2 of `g-final` is the exam-length text THIRD PLACES (6 paragraphs, about 520 words).
 - **g-2, Part B - Writing** (`content/g/g-2.ts`, 6 nodes, after `g-final`). The 4-paragraph opinion essay: map -> Present Perfect -> conditional -> inversion -> templates by question type -> full AI essay (120-150 words, 40-minute countdown).
 
+## Exams
+
+- `quiz/g/index.ts`: `g-exam-1`..`g-exam-5`, from `Module_G_App_Package.zip` (`module_g_content.json`; teacher copy in its .docx). Each: 5-paragraph article + 9 questions (60 pts), essay 120-140 words (40 pts), 1:45.
+- Mapping: `mc` -> `mcq`, `two` -> `mcq.correctIndices`, `open` / `complete` -> `writing-task` (LLM-graded; the stem goes in the prompt). Option feedback -> `explanation`; model answer + key quote -> `modelAnswer` + `gradingNotes`; model essay -> the essay's `modelAnswer`.
+- Not carried over (no exam screen for them yet): the 4-level writing help, self-check, practice/exam modes, the colored model-essay highlights, the G student rubric (8/10/16/6) and its length deduction table.
+
 ## Authoring rules
 
 - Typed answers (`passage-quiz`) use one stem keyword (`pollinat`, `embarrass`) that every correct phrasing contains. If no single word fits, the question is a `passage-mcq` instead.
@@ -17,5 +23,7 @@ Present state only. 5-unit module (unit group 5: E, G, COBE). Ids are `g-` prefi
 
 - Verify against the Ministry booklet: essay length (120-150 is assumed), exam length 1:45, reading = 60 points, 8-10 questions, "Hebrew answer = 0".
 - Arabic: no `ar.json` entries or `titles.ar.ts` titles yet (falls back to Hebrew).
-- No Module G exams (`quizzes.ts`) yet; THIRD PLACES and STUDY PODS could seed the first one.
+- Exam essays are graded with the Module C rubric scaled to 40, with no length deduction. The G rubric and deduction table (120-140, from the package) are not wired in.
+- Exams don't show `explanation` / `modelAnswer` in the report yet.
+- Essay length: the package says 120-140, g-2 assumes 120-150.
 - Not played by a student yet.
