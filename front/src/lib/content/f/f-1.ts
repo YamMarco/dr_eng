@@ -1,5 +1,5 @@
 // Module F, story 1: A Summer's Reading - Bernard Malamud (1956).
-// Source: docs/material/module-f/module_F_two_stories.json (scripts/module-f-import.py).
+// Source: the EngUp literature package (module_F_two_stories.json), imported once.
 import type { LessonNode } from '../types';
 
 export const f1Lessons: LessonNode[] = [

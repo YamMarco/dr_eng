@@ -1,7 +1,7 @@
 {
 	"id": "cobe",
 	"title": "COBE - Computerized Oral Bagrut Exam Rubrics",
-	"source": "Ministry of Education, Table of Specifications, Rubrics and Guidelines for 4 and 5 Point COBE, updated 15-09-2026 for Winter - Summer 2027 (docs/material/cobe/COBE20232024TableofSpecsANDRubrics.pdf)",
+	"source": "Ministry of Education, Table of Specifications, Rubrics and Guidelines for 4 and 5 Point COBE, updated 15-09-2026 for Winter - Summer 2027 (COBE20232024TableofSpecsANDRubrics.pdf; in git history before the docs cleanup)",
 	"examNumbers": { "4": "016486", "5": "016586" },
 	"timeLimitMinutes": 30,
 	"parts": [

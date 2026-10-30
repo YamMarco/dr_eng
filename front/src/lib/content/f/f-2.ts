@@ -1,5 +1,5 @@
 // Module F, story 2: Mr. Know-All - W. Somerset Maugham (1925).
-// Source: docs/material/module-f/module_F_two_stories.json (scripts/module-f-import.py).
+// Source: the EngUp literature package (module_F_two_stories.json), imported once.
 import type { LessonNode } from '../types';
 
 export const f2Lessons: LessonNode[] = [

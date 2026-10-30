@@ -1,5 +1,5 @@
 // Module G, Part B - Writing: the 4-paragraph opinion essay.
-// Source: docs/material/module-g/Module_G_Writing_Templates.docx + Module_G_Opinion_Essay_AI_Worksheet.docx
+// Source: Module_G_Writing_Templates.docx + Module_G_Opinion_Essay_AI_Worksheet.docx (partner package).
 import type { LessonNode } from '../types';
 
 export const g2Lessons: LessonNode[] = [

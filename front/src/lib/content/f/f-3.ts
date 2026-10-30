@@ -1,5 +1,5 @@
 // Module F: comparing the two stories (CD9).
-// Source: docs/material/module-f/module_F_two_stories.json (scripts/module-f-import.py).
+// Source: the EngUp literature package (module_F_two_stories.json), imported once.
 import type { LessonNode } from '../types';
 
 export const f3Lessons: LessonNode[] = [

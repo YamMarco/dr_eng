@@ -1,6 +1,6 @@
 /**
  * Offline "is it empty?" checks for a writing-task answer (tier 1 of the
- * writing-feedback ladder in docs/material/modules/module-c.md). Pure and deterministic:
+ * writing-feedback ladder). Pure and deterministic:
  * catches answers that pass the structural checks but say nothing, e.g.
  * "I think yes because it is good. For example it is good."
  */

@@ -152,7 +152,7 @@ Deterministic, free checks for student writing, run before (and instead of) the 
 
 ## Word deck (Module E vocabulary)
 
-A spaced-repetition deck, not nodes. Plan: `docs/material/modules/module-e.md`.
+A spaced-repetition deck, not nodes. Lists: `docs/material.md` (Module E).
 - Words: one file per list, `lib/content/e/list-a.ts` .. `list-d.ts` (`DeckWord`: word, class, English definition, Hebrew, example with the word in `**bold**`; when the bold part is exactly the word, the example also becomes a fill-the-blank). Register a list in `lib/deck/index.ts` (`decks`: id, letter, exam date). Arabic meanings: `lib/content/e/words.ar.ts` by word id (`localizeDeck`).
 - `lib/deck/scheduler.ts`: Leitner boxes 1-5 (1, 3, 7, 14, 30 days); right = up a box; wrong = first lapse down one box, later lapses box 1, due tomorrow.
 - `lib/deck/session.ts` builds the screens. New words two at a time (card, Hebrew meaning, copy-spelling, match-pairs). Reviews by box: 1 Hebrew meaning, 2 fill the blank, 3+ in one-class sets of 3 as `match-definitions` (leftovers: definition -> word). Words show as the exam prints them (`printed()`: `to cope`, `an essay`; exceptions in `form`).

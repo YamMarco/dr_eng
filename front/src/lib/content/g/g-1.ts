@@ -1,5 +1,5 @@
 // Module G, Part A - Reading Skills. 18 lessons on one exam-length text type.
-// Source: docs/material/module-g/Module_G_Reading_Lessons_APP_FINAL_REVISED.docx
+// Source: Module_G_Reading_Lessons_APP_FINAL_REVISED.docx (partner package).
 import type { LessonNode } from '../types';
 
 export const g1Lessons: LessonNode[] = [
