@@ -41,6 +41,8 @@
 	import { expandAccepted } from '$lib/lesson-screens/acceptedAnswers';
 	import SettingsGroup from './fields/SettingsGroup.svelte';
 	import OptionalGroup from './fields/OptionalGroup.svelte';
+	import OptionFeedbackList from './fields/OptionFeedbackList.svelte';
+	import { optText, withFeedback, withText } from '$lib/lesson-screens/option';
 	import NumberField from './fields/NumberField.svelte';
 	import TextField from './fields/TextField.svelte';
 	import TimerField from './fields/TimerField.svelte';
@@ -59,7 +61,7 @@
 		type MarkAllSwatch
 	} from '$lib/lesson-screens/markAllColors';
 	import { formatScreenLocation, type ScreenPath } from './screenPath';
-	import type { LessonScreen } from '$lib/lesson-screens/types';
+	import { mcqCorrect, type LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
 		model,
@@ -657,6 +659,13 @@
 											stacked
 										/>
 									</ListenField>
+									<SettingsGroup title="משוב לכל תשובה">
+										<OptionFeedbackList
+											options={screen.options}
+											correct={mcqCorrect(screen)}
+											onChange={(i, v) => (screen.options[i] = withFeedback(screen.options[i], v))}
+										/>
+									</SettingsGroup>
 								{:else if screen.type === 'order'}
 									<ListenField
 										checked={screen.listen ?? false}
@@ -687,7 +696,11 @@
 													aria-label="תשובה נכונה"
 												/>
 												<div class="w-full">
-													<MarkdownInput bind:value={screen.options[i]} minRows={1} />
+													<MarkdownInput
+														value={optText(screen.options[i])}
+														onInput={(v) => (screen.options[i] = withText(screen.options[i], v))}
+														minRows={1}
+													/>
 												</div>
 												<button
 													type="button"
@@ -711,6 +724,13 @@
 											+ אפשרות
 										</button>
 									</div>
+									<SettingsGroup title="משוב לכל תשובה">
+										<OptionFeedbackList
+											options={screen.options}
+											correct={screen.correctIndices ?? []}
+											onChange={(i, v) => (screen.options[i] = withFeedback(screen.options[i], v))}
+										/>
+									</SettingsGroup>
 								{:else if screen.type === 'mark-all'}
 									<SettingsGroup title="טיימר">
 										<TimerField mode="make" bind:value={screen.timerKey} taken={timerIds} />
@@ -827,6 +847,17 @@
 											taken={timerIds}
 										/>
 									</SettingsGroup>
+									{#if screen.type === 'passage-mcq'}
+										{#each screen.questions as q, qi (qi)}
+											<SettingsGroup title="משוב לכל תשובה - שאלה {qi + 1}">
+												<OptionFeedbackList
+													options={q.options}
+													correct={[q.correctIndex]}
+													onChange={(i, v) => (q.options[i] = withFeedback(q.options[i], v))}
+												/>
+											</SettingsGroup>
+										{/each}
+									{/if}
 								{:else if screen.type === 'time-comparison'}
 									<SettingsGroup title="טיימרים להשוואה">
 										<div class="flex flex-wrap gap-4">

@@ -2,6 +2,8 @@
 	import type { ClozePickScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import PickFeedback from './PickFeedback.svelte';
+	import { optFeedback, optText } from './option';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -66,13 +68,13 @@
 
 <p class="leading-relaxed font-semibold" dir="ltr">
 	{#if selected !== null}<span class="rounded-md bg-brand-soft px-1 text-brand-dark"
-			><Md text={screen.options[selected]} /></span
+			><Md text={optText(screen.options[selected])} /></span
 		>{:else}__________{/if}
 	<Md text={screen.clause} />
 </p>
 
 <div class="mt-5 flex flex-wrap gap-2" dir="ltr">
-	{#each screen.options as option, i (i)}
+	{#each screen.options as opt, i (i)}
 		{@const isCorrect = screen.correctIndices.includes(i)}
 		{@const isSelected = selected === i}
 		{@const feedback =
@@ -95,10 +97,17 @@
 					? 'border-brand bg-brand-soft/60'
 					: 'border-line bg-surface hover:border-brand'}"
 		>
-			<Md text={option} />
+			<Md text={optText(opt)} />
 		</button>
 	{/each}
 </div>
+
+{#if checked && selected !== null && optFeedback(screen.options[selected])}
+	<PickFeedback
+		text={optFeedback(screen.options[selected])}
+		correct={screen.correctIndices.includes(selected)}
+	/>
+{/if}
 
 {#if checked && screen.explanation}
 	<div class="mt-4 rounded-2xl bg-accent-soft p-3">

@@ -10,6 +10,12 @@
 import * as z from 'zod';
 import { MOVE_IDS } from './writingMoves';
 
+const option = z
+	.union([z.string(), z.tuple([z.string(), z.string()])])
+	.describe(
+		'An option: its text, or [text, feedback] to show feedback when the student picks it. Shown only if the feedback is not empty.'
+	);
+
 const dir = z.enum(['rtl', 'ltr']).describe('Text direction override. Omit to auto-detect.');
 const index = z.number().int().min(0).describe('0-based index');
 const points = z
@@ -244,7 +250,7 @@ export const mcqSchema = z
 	.strictObject({
 		type: z.literal('mcq'),
 		prompt: z.string(),
-		options: z.array(z.string()).min(2),
+		options: z.array(option).min(2),
 		correctIndex: index
 			.optional()
 			.describe('0-based index into options of the one right answer. Set this or correctIndices.'),
@@ -285,7 +291,7 @@ export const clozePickSchema = z
 				'The fixed part, appended after the picked tile, e.g. "schools should be open 5 days instead of six."'
 			),
 		options: z
-			.array(z.string())
+			.array(option)
 			.min(2)
 			.describe('Tiles for the blank: right answers mixed with decoys.'),
 		correctIndices: z
@@ -552,7 +558,7 @@ export const passageMcqSchema = z
 			.array(
 				z.strictObject({
 					prompt: z.string(),
-					options: z.array(z.string()).min(2),
+					options: z.array(option).min(2),
 					correctIndex: index,
 					points: points.optional(),
 					paragraphRef: paragraphRef.optional()

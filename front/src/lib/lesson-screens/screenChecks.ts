@@ -3,6 +3,7 @@
 // options, the dash rule). Messages are Hebrew - they're shown in the editor.
 import * as z from 'zod';
 import { lessonScreenSchema } from './schema';
+import { optText } from './option';
 import { isScreenEmpty, mcqCorrect, type LessonScreen } from './types';
 import { markAllSegments } from './markAllTokens';
 
@@ -58,16 +59,16 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 				});
 			out.push(...outOfRange('correctIndex', mcqCorrect(screen), screen.options.length));
 			out.push(...duplicates('correctIndices', (screen.correctIndices ?? []).map(String)));
-			out.push(...duplicates('options', screen.options));
+			out.push(...duplicates('options', screen.options.map(optText)));
 			break;
 		case 'cloze-pick':
 			out.push(...outOfRange('correctIndices', screen.correctIndices, screen.options.length));
-			out.push(...duplicates('options', screen.options));
+			out.push(...duplicates('options', screen.options.map(optText)));
 			break;
 		case 'passage-mcq':
 			screen.questions.forEach((q, i) => {
 				out.push(...outOfRange(`questions[${i}].correctIndex`, [q.correctIndex], q.options.length));
-				out.push(...duplicates(`questions[${i}].options`, q.options));
+				out.push(...duplicates(`questions[${i}].options`, q.options.map(optText)));
 			});
 			break;
 		case 'match-definitions':

@@ -10,6 +10,7 @@
 	import NumberField from './fields/NumberField.svelte';
 	import WordChips from './fields/WordChips.svelte';
 	import { mcqCorrect } from '$lib/lesson-screens/types';
+	import { optText, withText } from '$lib/lesson-screens/option';
 	import type { ScreenPath } from './screenPath';
 	import type { EditModelLike } from './editModelTypes';
 	import WordImageField from './WordImageField.svelte';
@@ -205,9 +206,9 @@
 							<MarkdownInput
 								bare
 								minRows={1}
-								value={screen.options[i]}
+								value={optText(screen.options[i])}
 								onInput={(v) => {
-									screen.options[i] = v;
+									screen.options[i] = withText(screen.options[i], v);
 									touch();
 								}}
 							/>
@@ -645,9 +646,12 @@
 										<MarkdownInput
 											bare
 											minRows={1}
-											value={screen.questions[qi].options[oi]}
+											value={optText(screen.questions[qi].options[oi])}
 											onInput={(v) => {
-												screen.questions[qi].options[oi] = v;
+												screen.questions[qi].options[oi] = withText(
+													screen.questions[qi].options[oi],
+													v
+												);
 												touch();
 											}}
 										/>

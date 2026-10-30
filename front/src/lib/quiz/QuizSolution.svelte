@@ -2,6 +2,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Md from '$lib/components/Md.svelte';
+	import { optText } from '$lib/lesson-screens/option';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { screensWithIds } from './screenIds';
 	import { mcqCorrect } from '$lib/lesson-screens/types';
@@ -23,7 +24,7 @@
 							<p class="font-semibold" dir="ltr"><Md text={screen.prompt} /></p>
 							<p class="mt-2 text-sm text-brand-dark" dir="ltr">
 								{i18n.dict.quiz.correctAnswerLabel}: {mcqCorrect(screen)
-									.map((i) => screen.options[i])
+									.map((i) => optText(screen.options[i]))
 									.join(' / ')}
 							</p>
 						</li>

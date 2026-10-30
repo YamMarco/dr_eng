@@ -5,6 +5,8 @@
 	import { backOut } from 'svelte/easing';
 	import { mcqCorrect, type McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import PickFeedback from './PickFeedback.svelte';
+	import { optFeedback, optText } from './option';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
@@ -145,7 +147,7 @@
 		dir="ltr"
 	>
 		{#each order as i, slot (i)}
-			{@const option = screen.options[i]}
+			{@const option = optText(screen.options[i])}
 			{@const isCorrect = right.includes(i)}
 			{@const isSelected = picks.includes(i)}
 			{@const feedback =
@@ -183,7 +185,7 @@
 {:else}
 	<div class="mt-5 flex flex-col gap-3">
 		{#each order as i (i)}
-			{@const option = screen.options[i]}
+			{@const option = optText(screen.options[i])}
 			{@const isCorrect = right.includes(i)}
 			{@const isSelected = picks.includes(i)}
 			{@const feedback =
@@ -211,6 +213,14 @@
 			</button>
 		{/each}
 	</div>
+{/if}
+
+{#if checked}
+	{#each picks as p (p)}
+		{#if optFeedback(screen.options[p])}
+			<PickFeedback text={optFeedback(screen.options[p])} correct={right.includes(p)} />
+		{/if}
+	{/each}
 {/if}
 
 {#if checked && screen.explanation}

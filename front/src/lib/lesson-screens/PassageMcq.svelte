@@ -5,6 +5,8 @@
 	import { textDir } from './miniMarkdown';
 	import PassageText from './PassageText.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
+	import PickFeedback from './PickFeedback.svelte';
+	import { optFeedback, optText } from './option';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
@@ -119,7 +121,8 @@
 			<Md block text={question.prompt} />
 		</div>
 		<div class="mt-3 flex flex-col gap-3">
-			{#each question.options as option, oi (oi)}
+			{#each question.options as opt, oi (oi)}
+				{@const option = optText(opt)}
 				{@const isCorrect = oi === question.correctIndex}
 				{@const isSelected = picked === oi}
 				{@const feedback =
@@ -147,5 +150,11 @@
 				</button>
 			{/each}
 		</div>
+		{#if checked && picked !== null && optFeedback(question.options[picked])}
+			<PickFeedback
+				text={optFeedback(question.options[picked])}
+				correct={picked === question.correctIndex}
+			/>
+		{/if}
 	</div>
 </div>
