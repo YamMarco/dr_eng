@@ -120,6 +120,8 @@ export const ar: DictionaryOverride = {
 		grading: 'نفحص الإجابات المفتوحة...',
 		openAnswersTitle: 'إجابات مفتوحة',
 		closedAnswersTitle: 'أسئلة الاختيار',
+		gradedInReport: 'ستظهر علامة هذه الإجابة في التقرير في النهاية.',
+		retryButton: 'حاولوا مرة أخرى',
 		modelAnswerLabel: 'إجابة نموذجية',
 		unanswered: 'لم تُختر إجابة.',
 		notGraded: 'لم تُفحص - الفحص غير متاح الآن. حاليًا تُحسب 0.',
@@ -188,7 +190,9 @@ export const ar: DictionaryOverride = {
 			'اتركوا 20 دقيقة على الأقل للكتابة: موقف، سبب، مثال وخلاصة، من سبعين إلى تسعين كلمة. أقل من سبعين تخسرون علامات، وأكثر من تسعين لا.'
 		],
 		resumeButton: 'البدء',
-		retakeButton: 'محاولة أخرى'
+		retakeButton: 'محاولة أخرى',
+		practiceButton: 'تدريب مع ملاحظات',
+		practiceHint: 'في التدريب ترون ملاحظات بعد كل سؤال ويمكن المحاولة مرة أخرى. بلا مؤقت، والعلامة لا تُحفظ.'
 	},
 	unit: {
 		modulePrefix: 'موديول'

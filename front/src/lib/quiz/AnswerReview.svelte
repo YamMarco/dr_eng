@@ -83,6 +83,16 @@
 				: screen.definitions.map(() => null)}
 		/>
 	{:else if screen.type === 'writing-task'}
+		<div class="text-sm text-muted" dir="ltr"><Md block text={screen.prompt} /></div>
+		{#if typeof answer === 'string' && answer.trim()}
+			<div
+				class="rounded-2xl border border-line bg-canvas p-3 text-sm whitespace-pre-line"
+				dir="ltr"
+			>
+				{answer}
+			</div>
+		{/if}
+		<p class="text-xs font-semibold text-muted">{i18n.dict.quiz.gradedInReport}</p>
 		<ModelAnswer modelAnswer={screen.modelAnswer} explanation={screen.explanation} />
 	{/if}
 </div>

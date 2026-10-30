@@ -600,6 +600,8 @@ export const he = {
 		grading: 'בודקים את התשובות הפתוחות...',
 		openAnswersTitle: 'תשובות פתוחות',
 		closedAnswersTitle: 'שאלות סגורות',
+		gradedInReport: 'הציון על התשובה הזו יופיע בדוח בסוף.',
+		retryButton: 'נסו שוב',
 		modelAnswerLabel: 'תשובה לדוגמה',
 		unanswered: 'לא נבחרה תשובה.',
 		notGraded: 'לא נבדקה - הבדיקה לא זמינה כרגע. בינתיים נספרת כ-0.',
@@ -669,7 +671,9 @@ export const he = {
 			'השאירו לפחות 20 דקות לכתיבה: עמדה, סיבה, דוגמה וסיכום, שבעים עד תשעים מילים. פחות משבעים מורידים נקודות, יותר מתשעים לא.'
 		],
 		resumeButton: 'התחלה',
-		retakeButton: 'ניסיון נוסף'
+		retakeButton: 'ניסיון נוסף',
+		practiceButton: 'תרגול עם משוב',
+		practiceHint: 'בתרגול רואים משוב אחרי כל שאלה ואפשר לנסות שוב. בלי שעון, והציון לא נשמר.'
 	},
 	unit: {
 		modulePrefix: 'מודול'
