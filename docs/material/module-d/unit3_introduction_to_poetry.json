@@ -1,0 +1,2101 @@
+{
+  "id": "introduction-to-poetry",
+  "module": "MODULE D · POETRY · UNIT 3",
+  "title": "Introduction to Poetry",
+  "author": "Billy Collins",
+  "authorShort": "Billy Collins",
+  "year": 1988,
+  "heTitle": "מבוא לשירה",
+  "textPending": true,
+  "poem": [
+    {
+      "n": 1,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 2,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 3,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 4,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 5,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 6,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 7,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 8,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 9,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 10,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 11,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 12,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 13,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 14,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 15,
+      "en": "",
+      "he": ""
+    },
+    {
+      "n": 16,
+      "en": "",
+      "he": ""
+    }
+  ],
+  "stanzas": [
+    [
+      1,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      12,
+      14
+    ],
+    [
+      15,
+      16
+    ]
+  ],
+  "stanzaNotes": [
+    {
+      "en": "Look at the poem against the light, like a color slide. (sight)",
+      "he": "המורה מבקש מהתלמידים להחזיק את השיר מול האור ולהסתכל בו, כמו בשקופית צבעונית – לגלות את הצבעים והפרטים. (חוש הראייה)"
+    },
+    {
+      "en": "Put your ear on the poem, like on a beehive, and listen. (hearing)",
+      "he": "או להצמיד אוזן לשיר, כמו לכוורת, ולהקשיב ל״זמזום״ שבתוכו. (חוש השמיעה)"
+    },
+    {
+      "en": "Drop a mouse into the poem and watch it slowly find its way out. (exploring)",
+      "he": "הוא מציע ״להכניס עכבר״ לתוך השיר ולצפות איך הוא מוצא לאט־לאט את הדרך החוצה. (סקרנות וחקירה)"
+    },
+    {
+      "en": "Walk into the poem like into a dark room and look for the light switch. (searching for understanding)",
+      "he": "או להיכנס לשיר כמו לחדר חשוך ולמשש את הקירות עד שמוצאים את מתג האור – את הרגע שבו ״נדלקת״ ההבנה. (חוש המישוש)"
+    },
+    {
+      "en": "Waterski across the poem for fun and wave hello to the poet on the shore. (enjoying)",
+      "he": "הוא רוצה שיחליקו על פני השיר בסקי מים, בכיף, ויגידו שלום לשם של המשורר שעומד על החוף. (הנאה)"
+    },
+    {
+      "en": "BUT the students tie the poem to a chair and try to force it to \"confess\". (forcing)",
+      "he": "אבל! כל מה שהתלמידים רוצים זה לקשור את השיר לכיסא ולהכריח אותו ״להודות״, כמו אסיר בחקירה. (כפייה)"
+    },
+    {
+      "en": "They even beat it with a hose – only to find out what it \"really means\". (violence)",
+      "he": "הם אפילו מכים אותו בצינור, רק כדי לגלות ״מה הוא באמת אומר״. (אלימות – בשביל תשובה אחת)"
+    }
+  ],
+  "screens": [
+    {
+      "phase": "Before Reading",
+      "phaseHe": "לפני הקריאה",
+      "title": "How do you feel about poems?",
+      "heTitle": "מה אתם מרגישים כשנותנים לכם שיר?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "המורה מחלק שיר בכיתה ושואל: ״מה המשורר רוצה להגיד?״ הרבה תלמידים מרגישים לחץ – כאילו יש תשובה אחת נכונה, והיא מוסתרת איפשהו."
+        },
+        {
+          "t": "he",
+          "text": "השיר שנלמד עכשיו מדבר בדיוק על זה – אבל מהצד של המורה! המורה בשיר מציע דרכים מיוחדות ומהנות לקרוא שיר, והתלמידים שלו... עושים משהו אחר לגמרי."
+        },
+        {
+          "t": "en",
+          "text": "In this poem, a poetry teacher tells us how he wants his students to read a poem – and what they really do."
+        }
+      ],
+      "widget": {
+        "type": "reflect",
+        "prompt": "When you get a new poem in class, you usually feel… · כשאתם מקבלים שיר חדש, אתם בדרך כלל מרגישים…",
+        "options": [
+          "curious",
+          "bored",
+          "confused – what does it mean?",
+          "excited"
+        ],
+        "feedback": "כל תחושה לגיטימית! הרבה תלמידים מרגישים ״מה הוא רוצה ממני?״. בסוף היחידה תראו שיש דרכים אחרות – ומהנות יותר – לפגוש שיר."
+      },
+      "cd": "D1"
+    },
+    {
+      "phase": "Before Reading",
+      "phaseHe": "לפני הקריאה",
+      "title": "The poet and the key words",
+      "heTitle": "המשורר ומילות המפתח",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "✍️",
+          "title": "Billy Collins (born 1941)",
+          "en": "An American poet. He was the Poet Laureate of the United States (2001-2003). His poems are clear, simple and often funny.",
+          "he": "משורר אמריקאי. בשנים 2001-2003 הוא היה ״המשורר הלאומי״ של ארצות הברית. השירים שלו כתובים בשפה פשוטה וברורה, ולעיתים קרובות הם מצחיקים – אבל תמיד יש בהם רעיון רציני."
+        },
+        {
+          "t": "card",
+          "icon": "📖",
+          "title": "A poem about poems",
+          "en": "Collins was also a teacher. This poem (1988) is about something he knew well: how students read poems in class.",
+          "he": "קולינס לימד ספרות אנגלית בקולג׳ שנים רבות. השיר (1988) מדבר על משהו שהוא הכיר היטב: איך תלמידים קוראים שירים בכיתה. זה ״שיר על שירים״!"
+        },
+        {
+          "t": "he",
+          "text": "לפני שקוראים – הכירו את המילים החשובות. לחצו על כל כרטיס כדי לראות את הפירוש."
+        }
+      ],
+      "widget": {
+        "type": "vocab",
+        "words": [
+          {
+            "en": "color slide",
+            "he": "שקופית צבעונית (תמונה שמסתכלים בה מול האור)",
+            "ex": "You hold a color slide up to the light to see the picture."
+          },
+          {
+            "en": "hive",
+            "he": "כוורת (הבית של הדבורים)",
+            "ex": "Bees live in a hive. It is full of buzzing."
+          },
+          {
+            "en": "probe",
+            "he": "לחקור, לגשש בזהירות",
+            "ex": "The mouse probes = it carefully searches for a way."
+          },
+          {
+            "en": "light switch",
+            "he": "מתג אור",
+            "ex": "In a dark room, you look for the light switch."
+          },
+          {
+            "en": "waterski",
+            "he": "לעשות סקי מים",
+            "ex": "to move fast on top of the water, pulled by a boat"
+          },
+          {
+            "en": "surface",
+            "he": "פני השטח, החלק העליון",
+            "ex": "the surface of the water = the top of the water"
+          },
+          {
+            "en": "shore",
+            "he": "חוף",
+            "ex": "People stand on the shore and wave."
+          },
+          {
+            "en": "rope",
+            "he": "חבל",
+            "ex": "The police tied the thief's hands with a rope."
+          },
+          {
+            "en": "confession",
+            "he": "הודאה (כמו בחקירה)",
+            "ex": "The police want a confession: \"Yes, I did it.\""
+          },
+          {
+            "en": "hose",
+            "he": "צינור (מים)",
+            "ex": "a long rubber tube for water in the garden"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "q": "In line 4, the teacher talks about a \"hive\". What is a hive?",
+          "opts": [
+            "a tall tree",
+            "a radio",
+            "the home of bees",
+            "a library"
+          ],
+          "a": 2,
+          "why": [
+            "עץ הוא tree.",
+            "רדיו לא מופיע בשיר – אבל גם מכוורת שומעים ״זמזום״!",
+            null,
+            "ספרייה היא library."
+          ],
+          "hint": "זז… זז… איזה בעל חיים גר שם?",
+          "he": "hive = כוורת, הבית של הדבורים. כשמצמידים אוזן לכוורת, שומעים ״זמזום״ – המון חיים בפנים. כך גם שיר: יש בו ״קולות״ שאפשר להקשיב להם.",
+          "kw": [
+            "hive – כוורת"
+          ],
+          "ev": {
+            "lines": [
+              4
+            ]
+          },
+          "tip": "לפעמים מילה אחת היא תמונה שלמה. נסו לדמיין אותה!",
+          "tag": "vocab"
+        },
+        {
+          "q": "In lines 5-6, a mouse \"probes\" its way out of the poem. \"Probe\" means…",
+          "opts": [
+            "to search carefully",
+            "to sleep",
+            "to eat",
+            "to run away very fast"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "העכבר לא ישן – הוא פעיל.",
+            "השורה לא מדברת על אוכל.",
+            "probe זה דווקא לאט ובזהירות, לא בריצה מהירה."
+          ],
+          "hint": "איך עכבר מתנהג במקום חדש? מהר או בזהירות?",
+          "he": "probe = לחקור, לגשש בזהירות. העכבר בודק כל פינה עד שהוא מוצא את הדרך – כמו קורא סקרן שחוקר שיר.",
+          "kw": [
+            "probe – לחקור, לגשש"
+          ],
+          "ev": {
+            "lines": [
+              5,
+              6
+            ]
+          },
+          "tip": "מילים כמו probe, explore, search – כולן קשורות לחקירה וגילוי.",
+          "tag": "vocab"
+        },
+        {
+          "q": "In lines 9-11, the reader moves across the \"surface\" of a poem. \"Surface\" means…",
+          "opts": [
+            "the bottom",
+            "the middle",
+            "the inside",
+            "the top or outside part"
+          ],
+          "a": 3,
+          "why": [
+            "זה ההפך – surface זה למעלה.",
+            "surface זה לא האמצע.",
+            "surface זה דווקא החוץ, לא הפנים.",
+            null
+          ],
+          "hint": "חשבו על סקי מים: נוסעים מתחת למים או מעליהם?",
+          "he": "surface = פני השטח. בסקי מים מחליקים על פני המים. כך המורה רוצה שהתלמידים ״יחליקו״ על השיר וייהנו ממנו.",
+          "kw": [
+            "surface – פני השטח"
+          ],
+          "ev": {
+            "lines": [
+              9,
+              10
+            ]
+          },
+          "tip": "surface מופיעה גם במבחני הבנת הנקרא – כדאי לזכור אותה.",
+          "tag": "vocab"
+        },
+        {
+          "q": "In lines 12-14, the students want a \"confession\" from the poem. A confession is…",
+          "opts": [
+            "a gift",
+            "when someone admits something",
+            "a question",
+            "a song"
+          ],
+          "a": 1,
+          "why": [
+            "מתנה היא gift.",
+            null,
+            "שאלה היא question.",
+            "שיר ששרים הוא song."
+          ],
+          "hint": "מה המשטרה רוצה לשמוע בחקירה?",
+          "he": "confession = הודאה. בחקירה רוצים שהחשוד יגיד ״כן, אני עשיתי את זה״. התלמידים מתנהגים כאילו השיר הוא חשוד שצריך ״להודות״ מה הוא אומר.",
+          "kw": [
+            "confession – הודאה"
+          ],
+          "ev": {
+            "lines": [
+              13,
+              14
+            ]
+          },
+          "tip": "מילים מעולם המשטרה (confession, tie, rope) יוצרות כאן תמונה של חקירה.",
+          "tag": "vocab"
+        }
+      ]
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Read the poem",
+      "heTitle": "קוראים את השיר",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "קראו את השיר כולו. מתחת לכל בית יש הסבר קצר בעברית ובאנגלית פשוטה. אל תדאגו אם לא הבנתם הכול – בשלב הבא נעבור על השיר חלק אחרי חלק."
+        },
+        {
+          "t": "tip",
+          "he": "לשיר יש 7 בתים קצרים ו־16 שורות. אין בו חריזה – זה ״שיר חופשי״ (free verse). שימו לב: חמשת הבתים הראשונים מדברים על המורה, ושני האחרונים – על התלמידים."
+        }
+      ],
+      "widget": {
+        "type": "poem"
+      },
+      "cd": "D4"
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Lines 1-8: The teacher's ideas",
+      "heTitle": "שורות 1-8: הרעיונות של המורה",
+      "blocks": [
+        {
+          "t": "quote",
+          "lines": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "t": "card",
+          "icon": "🧑‍🏫",
+          "title": "Stanzas 1-4",
+          "en": "The teacher (\"I\") gives his students (\"them\") four ideas: look at the poem against the light, listen to it, explore it like a mouse, and walk inside it like a dark room until you find the light switch.",
+          "he": "המורה (״I״) נותן לתלמידים שלו (״them״) ארבעה רעיונות: להסתכל בשיר מול האור, להקשיב לו, לחקור אותו כמו עכבר, ולהיכנס לתוכו כמו לחדר חשוך עד שמוצאים את מתג האור. שימו לב: כל רעיון משתמש בחוש אחר – ראייה, שמיעה, מישוש."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who is the \"I\" in the poem?",
+          "opts": [
+            "a student",
+            "a poetry teacher",
+            "a scientist",
+            "a police officer"
+          ],
+          "a": 1,
+          "why": [
+            "התלמידים הם ״them״ ו״they״ – לא ״I״.",
+            null,
+            "אין מדען בשיר, למרות העכבר!",
+            "יש תמונה של חקירה בסוף, אבל ה״I״ הוא לא שוטר."
+          ],
+          "hint": "מי ״מבקש מהם״ ו״אומר להם״ מה לעשות עם שיר?",
+          "he": "הדובר הוא מורה לשירה. הוא מדבר על ״them״ – התלמידים שלו – ועל מה שהוא מבקש מהם לעשות עם שיר.",
+          "kw": [
+            "Who – מי"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              5
+            ]
+          },
+          "tip": "בשיר שיש בו I ו־they, שאלו: מי מדבר, ועל מי?",
+          "tag": "text"
+        },
+        {
+          "q": "In lines 1-3, what does the teacher ask students to do with a poem?",
+          "opts": [
+            "throw it away",
+            "learn it by heart",
+            "translate it into Hebrew",
+            "look at it against the light, like a color slide"
+          ],
+          "a": 3,
+          "why": [
+            "ההפך – הוא רוצה שיסתכלו בו מקרוב.",
+            "השיר לא מדבר על שינון.",
+            "השיר לא מדבר על תרגום.",
+            null
+          ],
+          "hint": "מה עושים עם שקופית צבעונית?",
+          "he": "הוא מבקש להחזיק את השיר מול האור ולהסתכל בו כמו בשקופית צבעונית – לראות את כל הצבעים והפרטים שבו.",
+          "kw": [
+            "ask – מבקש"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2,
+              3
+            ]
+          },
+          "tip": "like = כמו. כשרואים like, יש השוואה – וזה כלי חשוב בשירה.",
+          "tag": "text"
+        },
+        {
+          "q": "Which sense is used in line 4 (the hive)?",
+          "opts": [
+            "hearing",
+            "taste",
+            "smell",
+            "sight"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "לא טועמים כוורת!",
+            "השורה לא מדברת על ריח.",
+            "ראייה מופיעה בבית הראשון (האור והשקופית)."
+          ],
+          "hint": "מה עושים עם האוזן?",
+          "he": "בשורה 4 מצמידים אוזן לשיר כמו לכוורת – זה חוש השמיעה. המורה רוצה שנשמע את ״המוזיקה״ של השיר.",
+          "kw": [
+            "sense – חוש"
+          ],
+          "ev": {
+            "lines": [
+              4
+            ]
+          },
+          "tip": "תמונות בשיר שמפעילות את החושים נקראות imagery.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Lines 9-16: Fun… and then BUT",
+      "heTitle": "שורות 9-16: כיף… ואז ״אבל״",
+      "blocks": [
+        {
+          "t": "quote",
+          "lines": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "t": "card",
+          "icon": "🎿",
+          "title": "Stanza 5",
+          "en": "The teacher's last idea: waterski across the poem – move on top of it, have fun, and wave hello to the poet on the shore.",
+          "he": "הרעיון האחרון של המורה: לעשות ״סקי מים״ על השיר – להחליק עליו בכיף ולנופף לשלום לשם של המשורר שעומד על החוף. קריאה של שיר יכולה להיות כמו יום כיף בים!"
+        },
+        {
+          "t": "card",
+          "icon": "⛓️",
+          "title": "Stanzas 6-7",
+          "en": "BUT the students want something else. They tie the poem to a chair, try to force it to \"confess\", and even beat it with a hose – only to find out what it \"really means\".",
+          "he": "אבל התלמידים רוצים משהו אחר לגמרי. הם קושרים את השיר לכיסא, מנסים להכריח אותו ״להודות״, ואפילו מכים אותו בצינור – רק כדי לגלות ״מה הוא באמת אומר״. זו תמונה של חקירה אלימה!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "In lines 9-11, the teacher wants his students to…",
+          "opts": [
+            "swim to the bottom of the sea",
+            "go fishing",
+            "enjoy the poem lightly, like waterskiing",
+            "build a boat"
+          ],
+          "a": 2,
+          "why": [
+            "ההפך – בסקי מים נשארים על פני המים.",
+            "אין דייג בשיר.",
+            null,
+            "אין בניית סירה בשיר."
+          ],
+          "hint": "איזה ספורט מופיע בשורה 9?",
+          "he": "המורה רוצה שהתלמידים ״יחליקו״ על השיר בכיף, כמו בסקי מים, ואפילו ינופפו לשלום למשורר. קריאה של שיר = חוויה מהנה.",
+          "kw": [
+            "wants – רוצה"
+          ],
+          "ev": {
+            "lines": [
+              9,
+              10,
+              11
+            ]
+          },
+          "tip": "בשאלות על ״מה הדמות רוצה״ – חפשו את המילה want בטקסט.",
+          "tag": "text"
+        },
+        {
+          "q": "Which word in line 12 starts the big change in the poem?",
+          "opts": [
+            "And",
+            "So",
+            "But",
+            "Or"
+          ],
+          "a": 2,
+          "why": [
+            "And מוסיפה – היא לא משנה כיוון.",
+            "So מסמנת תוצאה, וגם לא מופיעה שם.",
+            null,
+            "Or מופיעה בבתים הקודמים, כשהמורה מציע עוד רעיון."
+          ],
+          "hint": "איזו מילה מסמנת ניגוד – ״אבל״?",
+          "he": "המילה But (אבל) פותחת את שורה 12 ומשנה את כל השיר: עד עכשיו – הרעיונות היפים של המורה; מעכשיו – מה שהתלמידים באמת עושים.",
+          "kw": [
+            "change – שינוי"
+          ],
+          "ev": {
+            "lines": [
+              12
+            ]
+          },
+          "tip": "מילות ניגוד (But, However, Yet) הן ״תמרורים״. מה שבא אחריהן הוא בדרך כלל החשוב.",
+          "tag": "text"
+        },
+        {
+          "q": "What do the students want to do with the poem?",
+          "opts": [
+            "force it to tell them its meaning, like a prisoner",
+            "read it for fun",
+            "write their own poem",
+            "sing it"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "זה מה שהמורה רוצה – לא מה שהתלמידים עושים.",
+            "השיר לא מדבר על כתיבה.",
+            "אין שירה בקול בשיר."
+          ],
+          "hint": "מה עושים לאסיר בחקירה?",
+          "he": "התלמידים מתייחסים לשיר כמו לאסיר: קושרים אותו ומנסים להוציא ממנו בכוח ״הודאה״ – את המשמעות האחת ״הנכונה״.",
+          "kw": [
+            "students – תלמידים",
+            "want – רוצים"
+          ],
+          "ev": {
+            "lines": [
+              12,
+              13,
+              14
+            ]
+          },
+          "tip": "שימו לב להבדל בין מה שהמורה רוצה (want) למה שהתלמידים רוצים. זה לב השיר!",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "The speaker and his feelings",
+      "heTitle": "הדובר והרגשות שלו",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "🗣️",
+          "title": "Who is the speaker?",
+          "en": "The speaker is a poetry teacher. He talks about \"them\" / \"they\" – his students.",
+          "he": "הדובר הוא מורה לשירה. הוא מדבר על ״them״ ו־״they״ – התלמידים שלו. אפשר לחשוב שזה קולינס עצמו (הוא היה מרצה), אבל בתשובות כותבים: The speaker…"
+        },
+        {
+          "t": "he",
+          "text": "הרגשות של המורה משתנים לאורך השיר. עקבו אחריהם:"
+        },
+        {
+          "t": "feelings",
+          "items": [
+            {
+              "line": "1-8",
+              "word": "light, hive, mouse, room",
+              "en": "hopeful, creative",
+              "he": "מלא תקווה ויצירתי – מציע עוד ועוד רעיונות"
+            },
+            {
+              "line": "9-11",
+              "word": "waterski",
+              "en": "playful, happy",
+              "he": "שובב ושמח – קריאה כמו יום כיף בים"
+            },
+            {
+              "line": "12",
+              "word": "But…",
+              "en": "disappointed",
+              "he": "מאוכזב – התלמידים לא מקשיבים לו"
+            },
+            {
+              "line": "13-16",
+              "word": "chair, rope, hose",
+              "en": "frustrated (and a little funny)",
+              "he": "מתוסכל – אבל מתאר את זה בהגזמה מצחיקה"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "q": "How does the teacher feel in lines 1-11?",
+          "opts": [
+            "angry",
+            "bored",
+            "afraid",
+            "hopeful and creative"
+          ],
+          "a": 3,
+          "why": [
+            "הכעס/תסכול מגיע רק בסוף.",
+            "מי שמשועמם לא ממציא חמישה רעיונות שונים!",
+            "אין בשורות האלה פחד.",
+            null
+          ],
+          "hint": "כמה רעיונות שונים הוא מציע? מה זה אומר עליו?",
+          "he": "המורה מציע רעיון אחרי רעיון – אור, כוורת, עכבר, חדר, סקי מים. הוא יצירתי ומלא תקווה שהתלמידים ייהנו מהשיר.",
+          "kw": [
+            "How does … feel – איך הוא מרגיש"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              5,
+              9
+            ]
+          },
+          "tip": "לפעמים אין מילת רגש בטקסט. אז מסיקים את הרגש ממה שהדמות עושה.",
+          "tag": "meaning"
+        },
+        {
+          "q": "How does the teacher feel at the end of the poem?",
+          "opts": [
+            "proud of the students",
+            "frustrated and disappointed with the students",
+            "very happy",
+            "afraid of the students"
+          ],
+          "a": 1,
+          "why": [
+            "הוא לא גאה – הם עושים ההפך ממה שביקש.",
+            null,
+            "ה־But בשורה 12 מראה שמשהו לא בסדר.",
+            "הוא לא מפחד מהם – הוא מתוסכל מהם."
+          ],
+          "hint": "מה הוא מרגיש כשהתלמידים עושים ההפך ממה שביקש?",
+          "he": "המורה מאוכזב ומתוסכל: הוא הציע דרכים יפות, והתלמידים בוחרים ״לחקור״ את השיר באלימות. הוא מתאר את זה בהגזמה, ולכן זה גם קצת מצחיק.",
+          "kw": [
+            "at the end – בסוף"
+          ],
+          "ev": {
+            "lines": [
+              12,
+              15,
+              16
+            ]
+          },
+          "tip": "ביטויים טובים: frustrated (מתוסכל), disappointed (מאוכזב).",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D5"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "Images: what do they mean?",
+      "heTitle": "התמונות בשיר: מה הן אומרות?",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "🔑",
+          "title": "What is a metaphor?",
+          "en": "A metaphor compares two things without \"like\". A simile compares with \"like\" or \"as\".",
+          "he": "מטאפורה (metaphor) משווה בין שני דברים בלי המילה ״כמו״: ״השיר הוא חדר חשוך״. השוואה עם like או as נקראת simile: ״כמו שקופית צבעונית״. כל השיר הזה בנוי מהשוואות כאלה!"
+        },
+        {
+          "t": "he",
+          "text": "לחצו על כל כרטיס כדי לגלות מה התמונה אומרת על קריאת שירה:"
+        }
+      ],
+      "widget": {
+        "type": "reveal",
+        "cards": [
+          {
+            "front": "🖼️ A color slide (lines 1-3)",
+            "back": "Look closely and see all the colors and details. · להסתכל מקרוב ולגלות את כל הצבעים והפרטים."
+          },
+          {
+            "front": "🐝 A hive (line 4)",
+            "back": "Listen – a poem is full of sounds and life. · להקשיב – שיר מלא ״זמזום״, צלילים וחיים."
+          },
+          {
+            "front": "🐭 A mouse (lines 5-6)",
+            "back": "Explore slowly and find your own way. · לחקור לאט ולמצוא את הדרך שלך."
+          },
+          {
+            "front": "💡 A dark room (lines 7-8)",
+            "back": "Search until the light goes on – until you understand. · לחפש עד ש״נדלק האור״ – עד שמבינים."
+          },
+          {
+            "front": "🎿 Waterskiing (lines 9-11)",
+            "back": "Enjoy the poem and be friends with the poet. · ליהנות מהשיר ולהיות ״חברים״ של המשורר."
+          },
+          {
+            "front": "⛓️ A chair, a rope, a hose (lines 12-16)",
+            "back": "Forcing one \"correct\" answer out of the poem. · לנסות להוציא מהשיר בכוח תשובה אחת ״נכונה״."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "q": "Dropping a mouse into a poem (lines 5-6) is an image of…",
+          "opts": [
+            "a pet in the classroom",
+            "exploring the poem slowly and finding your own way",
+            "a scary animal",
+            "a mistake in the poem"
+          ],
+          "a": 1,
+          "why": [
+            "זו לא חיית מחמד אמיתית – זו תמונה.",
+            null,
+            "העכבר לא מפחיד כאן – הוא סקרן.",
+            "אין טעות בשיר."
+          ],
+          "hint": "מה עושה עכבר במבוך?",
+          "he": "העכבר מגשש, בודק כל פינה ומוצא לבד את הדרך. כך המורה רוצה שהתלמידים יחקרו את השיר – בסקרנות, בסבלנות, בדרך שלהם.",
+          "kw": [
+            "image – תמונה"
+          ],
+          "ev": {
+            "lines": [
+              5,
+              6
+            ]
+          },
+          "tip": "כשכותבים על תמונה בשיר: The image of ___ shows that ___.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Tying the poem to a chair and beating it (lines 12-16) is an image of…",
+          "opts": [
+            "a crime story",
+            "a game",
+            "a sports activity",
+            "forcing one \"correct\" meaning out of the poem"
+          ],
+          "a": 3,
+          "why": [
+            "זה נראה כמו סיפור פשע, אבל זו תמונה של קריאה.",
+            "זה לא משחק – זו כפייה.",
+            "הספורט (סקי מים) הוא בדרך של המורה.",
+            null
+          ],
+          "hint": "מה התלמידים רוצים לגלות בשורה 16?",
+          "he": "התמונה של חקירה אלימה מראה איך התלמידים ״לוחצים״ על השיר כדי שייתן להם תשובה אחת – במקום ליהנות ממנו.",
+          "kw": [
+            "image – תמונה"
+          ],
+          "ev": {
+            "lines": [
+              13,
+              15,
+              16
+            ]
+          },
+          "tip": "שימו לב לניגוד בין תמונות עדינות (אור, עכבר) לתמונות אלימות (חבל, צינור).",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "Theme and message",
+      "heTitle": "הנושא והמסר",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "📌",
+          "title": "Theme · נושא",
+          "en": "How to read and enjoy poetry.",
+          "he": "הנושא (theme) הוא ״על מה השיר״: איך קוראים שירה – ואיך נהנים ממנה."
+        },
+        {
+          "t": "card",
+          "icon": "💬",
+          "title": "Message · מסר",
+          "en": "We should explore a poem with curiosity and enjoy it, and not force it to give us one \"right\" answer.",
+          "he": "המסר (message): צריך לחקור שיר בסקרנות וליהנות ממנו, ולא ״לסחוט״ ממנו בכוח תשובה אחת ״נכונה״. לשיר יכולות להיות כמה משמעויות."
+        },
+        {
+          "t": "card",
+          "icon": "⚠️",
+          "title": "A common mistake",
+          "en": "Some students think the message is \"Poems have no meaning\" or \"The teacher hates his students\". No! Poems do have meaning – but we find it by exploring, not by force.",
+          "he": "טעות נפוצה: לחשוב שהמסר הוא ״לשירים אין משמעות״ או ״המורה שונא את התלמידים״. לא! לשיר יש משמעות – אבל מגלים אותה בחקירה ובהנאה, לא בכוח. והמורה לא שונא אותם – הוא מתוסכל כי אכפת לו."
+        },
+        {
+          "t": "tip",
+          "he": "רגע של אירוניה 😉: גם באפליקציה הזאת שואלים אתכם ״מה השיר אומר״. המטרה שלנו היא בדיוק מה שהמורה בשיר רוצה – לחקור ולגלות, לא ״לענות״ את השיר!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the main theme of the poem?",
+          "opts": [
+            "how to read and enjoy poetry",
+            "sports and the sea",
+            "animals",
+            "crime and the police"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "סקי מים הוא רק אחת התמונות.",
+            "העכבר והדבורים הם תמונות, לא הנושא.",
+            "החקירה היא תמונה – לא סיפור פשע אמיתי."
+          ],
+          "hint": "על מה המורה והתלמידים ״רבים״ לאורך כל השיר?",
+          "he": "הנושא הוא קריאת שירה: שתי דרכים לפגוש שיר – הדרך של המורה (חקירה והנאה) והדרך של התלמידים (כפייה).",
+          "kw": [
+            "theme – נושא"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              12,
+              16
+            ]
+          },
+          "tip": "נושא (theme) = מילה או כמה מילים. מסר (message) = משפט שלם.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Which sentence best describes the message of the poem?",
+          "opts": [
+            "Poems have no meaning.",
+            "Students should never study poems.",
+            "Poems should be explored and enjoyed, not forced to give one answer.",
+            "Only teachers can understand poems."
+          ],
+          "a": 2,
+          "why": [
+            "למשורר חשוב דווקא שנגלה את המשמעות – בדרך הנכונה.",
+            "המורה רוצה שילמדו שירים – בדרך אחרת.",
+            null,
+            "המורה רוצה שהתלמידים יבינו בעצמם."
+          ],
+          "hint": "מה ההבדל בין הדרך של המורה לדרך של התלמידים?",
+          "he": "המורה מציע לחקור וליהנות (שורות 1-11). התלמידים מנסים ״לסחוט״ משמעות אחת (שורות 12-16). המשורר מעדיף בבירור את הדרך הראשונה.",
+          "kw": [
+            "best describes – מתאר הכי טוב",
+            "message – מסר"
+          ],
+          "ev": {
+            "lines": [
+              9,
+              12,
+              16
+            ]
+          },
+          "tip": "כשיש ״best״ בשאלה – בחרו את התשובה המלאה והמדויקת ביותר.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D5"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "What does the poem say?",
+      "heTitle": "מה כתוב בשיר?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "בשאלות האלה התשובה כתובה בשיר. התפקיד שלכם: למצוא את השורה הנכונה. אפשר לפתוח את השיר בכל רגע בכפתור 📜 למעלה."
+        }
+      ],
+      "questions": [
+        {
+          "q": "How many stanzas are in the poem?",
+          "opts": [
+            "4",
+            "5",
+            "7",
+            "16"
+          ],
+          "a": 2,
+          "why": [
+            "יש יותר.",
+            "5 הבתים הראשונים הם של המורה – יש עוד שניים.",
+            null,
+            "16 זה מספר השורות."
+          ],
+          "hint": "stanza = בית. חלק מהבתים קצרים מאוד – אפילו שורה אחת!",
+          "he": "לשיר 7 בתים ו־16 שורות. יש בית של שורה אחת בלבד (שורה 4) – קצר, כמו רגע של הקשבה.",
+          "kw": [
+            "stanza – בית"
+          ],
+          "ev": {
+            "lines": []
+          },
+          "tip": "line = שורה, stanza = בית. אל תתבלבלו!",
+          "tag": "text"
+        },
+        {
+          "q": "Which of these is NOT one of the teacher's ideas?",
+          "opts": [
+            "looking at the poem against the light",
+            "listening to the poem",
+            "reading the poem ten times",
+            "walking in the poem like in a dark room"
+          ],
+          "a": 2,
+          "why": [
+            "זה מופיע – שורות 1-3.",
+            "זה מופיע – שורה 4.",
+            null,
+            "זה מופיע – שורות 7-8."
+          ],
+          "hint": "NOT = לא מופיע. בדקו כל אפשרות בשורות 1-11.",
+          "he": "המורה לא מבקש לקרוא שוב ושוב – הוא מציע חוויות: להסתכל, להקשיב, לחקור, למשש, ליהנות.",
+          "kw": [
+            "NOT – לא"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              4,
+              7
+            ]
+          },
+          "tip": "שימו לב למילה NOT! מסמנים אותה בעיגול לפני שעונים.",
+          "tag": "text"
+        },
+        {
+          "q": "In lines 9-11, whose name is on the shore?",
+          "opts": [
+            "the author's (the poet's)",
+            "the teacher's",
+            "a student's",
+            "nobody's"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "המורה הוא הדובר – השם על החוף שייך למישהו אחר.",
+            "התלמידים הם אלה שעושים סקי.",
+            "יש שם – ומנופפים לו!"
+          ],
+          "hint": "author = מי שכתב את השיר.",
+          "he": "על החוף עומד ״השם של הכותב״ – המשורר. מי שעושה סקי על השיר מנופף לו לשלום, כמו לחבר.",
+          "kw": [
+            "whose – של מי"
+          ],
+          "ev": {
+            "lines": [
+              11
+            ]
+          },
+          "tip": "author = הכותב. במבחנים: the author / the poet / the writer.",
+          "tag": "text"
+        },
+        {
+          "q": "In the last stanza, what do the students want to find out?",
+          "opts": [
+            "who wrote the poem",
+            "how long the poem is",
+            "when the poem was written",
+            "what the poem really means"
+          ],
+          "a": 3,
+          "why": [
+            "השם של המשורר כבר על ״החוף״ – זה לא מה שהם מחפשים.",
+            "השיר לא מדבר על אורך.",
+            "השיר לא מדבר על תאריך.",
+            null
+          ],
+          "hint": "השורה האחרונה.",
+          "he": "בשורה 16 התלמידים מנסים לגלות ״מה השיר באמת אומר״ – כאילו יש לו משמעות אחת סודית, שצריך להוציא בכוח.",
+          "kw": [
+            "find out – לגלות"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "השורה האחרונה בשיר היא בדרך כלל חשובה מאוד – כדאי לזכור אותה.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "Reading between the lines",
+      "heTitle": "מה מסתתר בין השורות?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "עכשיו התשובה לא כתובה במפורש. צריך להבין ממה שכתוב – כמו בלש שמחפש רמזים 🔍 (אבל בלי לקשור את השיר לכיסא!)."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why does the teacher use so many different images (light, hive, mouse, room, waterski)?",
+          "opts": [
+            "because he cannot decide",
+            "to show that there are many ways to experience a poem",
+            "to make the poem longer",
+            "because he likes animals"
+          ],
+          "a": 1,
+          "why": [
+            "הוא לא מתלבט – הוא מציע אפשרויות בכוונה.",
+            null,
+            "התמונות נועדו להעביר רעיון, לא להאריך.",
+            "חלק מהתמונות בכלל לא קשורות לבעלי חיים."
+          ],
+          "hint": "אם יש חמש דרכים – כמה ״תשובות נכונות״ יש?",
+          "he": "חמש תמונות שונות = חמש דרכים לפגוש שיר. זה כבר חלק מהמסר: אין רק דרך אחת לקרוא שיר, ואין רק תשובה אחת.",
+          "kw": [
+            "Why – למה",
+            "images – תמונות"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              4,
+              5,
+              7,
+              9
+            ]
+          },
+          "tip": "כשמשורר חוזר על רעיון בצורות שונות – שאלו: ״מה הוא רוצה להדגיש?״",
+          "tag": "meaning"
+        },
+        {
+          "q": "Waving hello to the author on the shore (line 11) suggests…",
+          "opts": [
+            "that the author is drowning",
+            "a friendly, relaxed relationship with the poet",
+            "that the students are lost at sea",
+            "that the poet is angry"
+          ],
+          "a": 1,
+          "why": [
+            "אף אחד לא טובע – זה יום כיף.",
+            null,
+            "הם לא אבודים – הם נהנים.",
+            "אין בשורה כעס."
+          ],
+          "hint": "למי מנופפים לשלום?",
+          "he": "מנופפים לחברים. המורה רוצה שהקורא ירגיש קרוב למשורר – לא מפחד ממנו, לא ״נבחן״ על ידו.",
+          "kw": [
+            "suggests – מרמז"
+          ],
+          "ev": {
+            "lines": [
+              11
+            ]
+          },
+          "tip": "suggests = מבקשים משהו שמשתמע, לא משהו שכתוב במפורש.",
+          "tag": "meaning"
+        },
+        {
+          "q": "The images in lines 12-16 are violent. Why?",
+          "opts": [
+            "because the poem is a crime story",
+            "because the students are really violent people",
+            "because the teacher wants to punish them",
+            "to show how harsh and wrong the students' way of reading is"
+          ],
+          "a": 3,
+          "why": [
+            "זה לא סיפור פשע – זו מטאפורה.",
+            "הם לא באמת אלימים – זו הגזמה.",
+            "המורה לא מעניש – הוא מתאר.",
+            null
+          ],
+          "hint": "מה ההבדל בין סקי מים לחבל ולצינור?",
+          "he": "הניגוד חד: אחרי תמונות עדינות ומהנות מגיעות תמונות של חקירה אלימה. כך המשורר מראה כמה הדרך של התלמידים ״אכזרית״ לשיר – ומיותרת.",
+          "kw": [
+            "Why – למה",
+            "violent – אלים"
+          ],
+          "ev": {
+            "lines": [
+              13,
+              14,
+              15
+            ]
+          },
+          "tip": "ניגוד (contrast) הוא כלי חזק. בתשובה: In lines… but in lines…",
+          "tag": "meaning"
+        },
+        {
+          "q": "Is the end of the poem serious, funny, or both?",
+          "opts": [
+            "both – it is funny because it is exaggerated, but it has a serious point",
+            "only sad",
+            "only scary",
+            "only happy"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "יש בו גם הומור.",
+            "ההגזמה הופכת אותו למצחיק, לא למפחיד.",
+            "יש בו גם ביקורת רצינית."
+          ],
+          "hint": "האם באמת מכים שירים בצינור? 😄",
+          "he": "אף אחד לא באמת מכה שיר בצינור – זו הגזמה מצחיקה. אבל מאחורי ההומור יש ביקורת רצינית על איך קוראים שירים בכיתה.",
+          "kw": [
+            "serious – רציני",
+            "funny – מצחיק"
+          ],
+          "ev": {
+            "lines": [
+              15,
+              16
+            ]
+          },
+          "tip": "מונח שימושי: exaggeration = הגזמה. משוררים מגזימים כדי להדגיש.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D4"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "What do you think?",
+      "heTitle": "מה אתם חושבים?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "עכשיו נחבר בין חלקים שונים בשיר ובין השיר לחיים. תשובות כאלה מרשימות מאוד את המורים!"
+        },
+        {
+          "t": "card",
+          "icon": "⚖️",
+          "title": "Teacher vs. students",
+          "en": "Lines 1-11 (the teacher): light, listening, exploring, fun. Lines 12-16 (the students): rope, force, a hose.",
+          "he": "השוו: שורות 1-11 (המורה) – אור, הקשבה, חקירה, הנאה. שורות 12-16 (התלמידים) – חבל, כפייה, צינור."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the main difference between lines 1-11 and lines 12-16?",
+          "opts": [
+            "Lines 1-11 are about the sea, and lines 12-16 are about a school.",
+            "Each part has a different speaker.",
+            "The teacher wants to explore and enjoy the poem; the students want to force one meaning out of it.",
+            "There is no difference."
+          ],
+          "a": 2,
+          "why": [
+            "הים הוא רק תמונה אחת.",
+            "יש דובר אחד – המורה – שמתאר את שני הצדדים.",
+            null,
+            "יש הבדל גדול – זה ניגוד!"
+          ],
+          "hint": "השוו את הפעלים: look, listen, walk, waterski מול tie, beat.",
+          "he": "החלק הראשון מתאר קריאה עדינה, סקרנית ומהנה. החלק השני מתאר קריאה אלימה וחסרת סבלנות. זה ניגוד (contrast) – והוא לב השיר.",
+          "kw": [
+            "difference – הבדל"
+          ],
+          "ev": {
+            "lines": [
+              9,
+              13
+            ]
+          },
+          "tip": "תשובה מצוינת להשוואה: On the one hand, the teacher… On the other hand, the students…",
+          "tag": "meaning"
+        },
+        {
+          "q": "Why do you think the poem is called \"Introduction to Poetry\"?",
+          "opts": [
+            "It is the first page of a book.",
+            "It introduces the poet's family.",
+            "It is like a first lesson about how to read poems.",
+            "It is about introducing two friends."
+          ],
+          "a": 2,
+          "why": [
+            "הכותרת לא מדברת על עמוד בספר.",
+            "אין בשיר משפחה.",
+            null,
+            "introduction כאן = מבוא, לא היכרות בין חברים."
+          ],
+          "hint": "באוניברסיטה, ״Introduction to…״ הוא שם של קורס ראשון.",
+          "he": "״Introduction to…״ הוא שם של קורס מבוא. השיר הוא כמו ״שיעור ראשון״ בשירה: הוא מלמד איך כדאי לקרוא שיר – ואיך לא.",
+          "kw": [
+            "Why do you think – למה לדעתך"
+          ],
+          "ev": {
+            "lines": [
+              1
+            ]
+          },
+          "tip": "שאלה על הכותרת? חשבו על המשמעות שלה ועל הקשר לרעיון המרכזי.",
+          "tag": "meaning"
+        },
+        {
+          "q": "This poem is often taught in school, and students answer questions about what it \"really means\". Why is this a little funny?",
+          "opts": [
+            "Because the poem itself warns against reading poems only to find \"the answer\".",
+            "Because the poem is short.",
+            "Because the poem rhymes.",
+            "It is not funny at all."
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "האורך לא קשור לאירוניה.",
+            "השיר בכלל לא מתחרז.",
+            "זה דווקא מצחיק – ונקרא ״אירוני״!"
+          ],
+          "hint": "מה התלמידים בשיר רוצים לגלות בשורה 16?",
+          "he": "אירוניה (irony) = פער מצחיק בין מה שמצופה למה שקורה. השיר מבקר את מי שמחפש ״מה השיר באמת אומר״ – ובכיתה שואלים עליו בדיוק את השאלה הזאת!",
+          "kw": [
+            "funny – מצחיק",
+            "ironic – אירוני (למתקדמים)"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "אם אתם כותבים על אירוניה, הסבירו את שני הצדדים: מה מצופה, ומה קורה בפועל.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D1, D3, D5"
+    },
+    {
+      "phase": "Answer Like a Pro",
+      "phaseHe": "עונים כמו מקצוענים",
+      "title": "The 3-step answer",
+      "heTitle": "תשובה בשלושה צעדים",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "במשימות ובמבחנים לא מספיק לדעת את התשובה – צריך לכתוב אותה נכון. זוכרים את שלושת הצעדים?"
+        },
+        {
+          "t": "steps",
+          "items": [
+            {
+              "n": "1",
+              "en": "ANSWER",
+              "he": "עונים על השאלה במשפט אחד ברור.",
+              "ex": "The teacher wants his students to…"
+            },
+            {
+              "n": "2",
+              "en": "PROVE",
+              "he": "מביאים ראיה מהשיר, עם מספר שורה.",
+              "ex": "For example, in lines 5-6 he…"
+            },
+            {
+              "n": "3",
+              "en": "EXPLAIN",
+              "he": "מסבירים מה הראיה מראה.",
+              "ex": "This shows that…"
+            }
+          ]
+        },
+        {
+          "t": "tip",
+          "he": "בתשובה אמיתית במבחן – הוסיפו ציטוט קצר מהשורות שאתם מזכירים, במירכאות."
+        },
+        {
+          "t": "he",
+          "text": "תרגול: סדרו את שלושת המשפטים לתשובה טובה. לחצו על המשפטים לפי הסדר הנכון."
+        }
+      ],
+      "widget": {
+        "type": "order",
+        "question": "How does the teacher want his students to read poems? Explain.",
+        "items": [
+          "The teacher wants his students to explore poems with curiosity and to enjoy them.",
+          "For example, in lines 5-6 he asks his students to watch a mouse as it slowly finds its way out of a poem.",
+          "This shows that reading a poem is like a small adventure: there is no quick answer, and every reader can find his own way."
+        ],
+        "labels": [
+          "ANSWER",
+          "PROVE",
+          "EXPLAIN"
+        ],
+        "done": "מצוין! זו תשובה מלאה: תשובה ← ראיה ← הסבר."
+      },
+      "questions": [
+        {
+          "q": "In the answer you built, which sentence is the ANSWER part?",
+          "opts": [
+            "The teacher wants his students to explore poems…",
+            "For example, in lines 5-6 he asks…",
+            "This shows that reading a poem is like…"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "זו הראיה – PROVE.",
+            "זה ההסבר – EXPLAIN."
+          ],
+          "hint": "איזה משפט עונה ישר על השאלה?",
+          "he": "משפט התשובה עונה ישר על השאלה, ומשתמש במילים שלה: How does the teacher want… ← The teacher wants…",
+          "kw": [
+            "ANSWER – תשובה"
+          ],
+          "ev": {
+            "lines": [
+              5,
+              6
+            ]
+          },
+          "tip": "טריק: התחילו את התשובה במילים מהשאלה. כך תמיד תענו על מה ששאלו.",
+          "tag": "writing"
+        }
+      ],
+      "cd": "D2, D4"
+    },
+    {
+      "phase": "Answer Like a Pro",
+      "phaseHe": "עונים כמו מקצוענים",
+      "title": "Build your own answer",
+      "heTitle": "בונים תשובה בעצמנו",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "השאלה: How do the students treat the poem? Explain. בחרו בכל שלב את המשפט הטוב ביותר."
+        }
+      ],
+      "widget": {
+        "type": "build",
+        "question": "How do the students treat the poem? Explain.",
+        "steps": [
+          {
+            "label": "ANSWER",
+            "opts": [
+              {
+                "s": "The poem has seven stanzas.",
+                "ok": false,
+                "why": "זו עובדה על המבנה, לא תשובה לשאלה."
+              },
+              {
+                "s": "The students treat the poem in a violent way: they try to force it to give them one meaning.",
+                "ok": true
+              },
+              {
+                "s": "The students like poems very much.",
+                "ok": false,
+                "why": "השיר מראה דווקא שהם לא נהנים מהשיר."
+              }
+            ]
+          },
+          {
+            "label": "PROVE",
+            "opts": [
+              {
+                "s": "For example, in lines 9-11 the reader waterskis across the poem.",
+                "ok": false,
+                "why": "זו הדרך של המורה, לא של התלמידים."
+              },
+              {
+                "s": "For example, in lines 13-14 they tie the poem to a chair and try to make it confess, like a prisoner.",
+                "ok": true
+              },
+              {
+                "s": "For example, in line 4 there is a hive.",
+                "ok": false,
+                "why": "הכוורת שייכת לרעיונות של המורה."
+              }
+            ]
+          },
+          {
+            "label": "EXPLAIN",
+            "opts": [
+              {
+                "s": "This shows that the students like sports.",
+                "ok": false,
+                "why": "אין קשר לספורט."
+              },
+              {
+                "s": "Billy Collins was born in 1941.",
+                "ok": false,
+                "why": "זה מידע על המשורר, לא הסבר."
+              },
+              {
+                "s": "This shows that they do not enjoy the poem; they only want the \"right answer\" quickly.",
+                "ok": true
+              }
+            ]
+          }
+        ]
+      },
+      "write": {
+        "prompt": "Now you! Which image in the poem do you like most? Explain why.",
+        "promptHe": "עכשיו תורכם! איזו תמונה בשיר אהבתם הכי הרבה? הסבירו למה. (40-60 מילים)",
+        "checklist": [
+          "I answered the question (I wrote which image). · עניתי על השאלה",
+          "I wrote the line numbers (and a short quote). · כתבתי מספרי שורות",
+          "I explained why, with \"because\" or \"This shows that\". · הסברתי למה",
+          "I wrote at least 40 words. · כתבתי לפחות 40 מילים"
+        ],
+        "model": "The image I like most is the mouse in lines 5-6. In my opinion, it is a funny and clever image. The mouse is curious and slowly finds its way out. This shows that a reader can also explore a poem slowly and find his own way. That is why I like this image.",
+        "starters": [
+          "The image I like most is in lines __:",
+          "In my opinion,",
+          "This shows that",
+          "That is why"
+        ]
+      },
+      "cd": "D3, D5"
+    },
+    {
+      "phase": "Literature Challenge",
+      "phaseHe": "אתגר ספרות",
+      "title": "Literature Challenge",
+      "heTitle": "אתגר: הכול ביחד",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "6 שאלות מעורבות. נסו לענות בלי לפתוח את השיר – ואם צריך, הוא תמיד כאן ב־📜."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Does the poem rhyme?",
+          "opts": [
+            "Yes, every line rhymes.",
+            "Only the first stanza rhymes.",
+            "Only the last stanza rhymes.",
+            "No – it is free verse."
+          ],
+          "a": 3,
+          "why": [
+            "אין בשיר חריזה קבועה.",
+            "גם בבית הראשון אין חריזה.",
+            "גם בבית האחרון אין חריזה.",
+            null
+          ],
+          "hint": "קראו בקול את סופי השורות. האם הם נשמעים אותו דבר?",
+          "he": "השיר כתוב ב־free verse – שיר חופשי, בלי חריזה ובלי קצב קבוע. הוא נשמע כמו דיבור רגיל של מורה.",
+          "kw": [
+            "rhyme – חריזה"
+          ],
+          "ev": {
+            "lines": []
+          },
+          "tip": "free verse = שיר חופשי. מונח טוב לתשובה על מבנה השיר.",
+          "tag": "text"
+        },
+        {
+          "q": "In lines 1-3, the poem is compared to a color slide with the word \"like\". This is a…",
+          "opts": [
+            "question",
+            "simile",
+            "rhyme",
+            "title"
+          ],
+          "a": 1,
+          "why": [
+            "אין כאן שאלה.",
+            null,
+            "אין כאן חריזה.",
+            "זה לא שם השיר."
+          ],
+          "hint": "השוואה עם like או as נקראת…?",
+          "he": "simile = השוואה עם like או as. בשורות 1-3 השיר מושווה לשקופית צבעונית בעזרת המילה like.",
+          "kw": [
+            "like – כמו"
+          ],
+          "ev": {
+            "lines": [
+              3
+            ]
+          },
+          "tip": "simile = עם like/as. metaphor = בלי like/as.",
+          "tag": "text"
+        },
+        {
+          "q": "Who are \"they\" in lines 12-16?",
+          "opts": [
+            "the poets",
+            "the students",
+            "the bees",
+            "the mice"
+          ],
+          "a": 1,
+          "why": [
+            "המשורר הוא אחד – ״the author״.",
+            null,
+            "הדבורים הן רק תמונה בשורה 4.",
+            "העכבר הוא רק תמונה בשורות 5-6."
+          ],
+          "hint": "למי המורה ״מבקש״ ו״אומר״ בתחילת השיר?",
+          "he": "״they״ = התלמידים. בתחילת השיר הם ״them״ (המורה מבקש מהם), ובסוף הם ״they״ (מה שהם עושים).",
+          "kw": [
+            "they – הם"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              12,
+              15
+            ]
+          },
+          "tip": "מילות גוף (he, she, they) מחליפות שמות. תמיד בדקו למי הן מתייחסות.",
+          "tag": "text"
+        },
+        {
+          "q": "Which word best describes the students' way of reading?",
+          "opts": [
+            "curious",
+            "relaxed",
+            "creative",
+            "forceful"
+          ],
+          "a": 3,
+          "why": [
+            "הסקרנות היא הדרך של המורה.",
+            "הם ממש לא רגועים – הם ״חוקרים״ בכוח.",
+            "היצירתיות שייכת למורה.",
+            null
+          ],
+          "hint": "forceful = בכוח.",
+          "he": "התלמידים קוראים בכוח ובחוסר סבלנות (forceful, impatient) – בדיוק ההפך מהמורה הסקרן והיצירתי.",
+          "kw": [
+            "best describes – מתאר הכי טוב"
+          ],
+          "ev": {
+            "lines": [
+              13,
+              15
+            ]
+          },
+          "tip": "מילים לתיאור דמויות: curious, creative, forceful, impatient, frustrated.",
+          "tag": "meaning"
+        },
+        {
+          "q": "A \"hose\" (line 15) is…",
+          "opts": [
+            "a long tube for water",
+            "a house",
+            "a horse",
+            "a rose"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "מלכודת! house נשמעת דומה.",
+            "מלכודת! horse נכתבת דומה.",
+            "מלכודת! rose מתחרזת, אבל זה פרח."
+          ],
+          "hint": "במה משקים את הגינה?",
+          "he": "hose = צינור מים. בשיר זה חלק מתמונת ה״חקירה״ האלימה.",
+          "kw": [
+            "hose – צינור"
+          ],
+          "ev": {
+            "lines": [
+              15
+            ]
+          },
+          "tip": "מילים שנראות דומות (hose / house / horse) – קראו לאט!",
+          "tag": "vocab"
+        },
+        {
+          "q": "Which sentence is NOT true according to the poem?",
+          "opts": [
+            "The teacher wants the students to explore the poem.",
+            "The students want to find one meaning.",
+            "The teacher is happy with how the students read.",
+            "The poem has seven stanzas."
+          ],
+          "a": 2,
+          "why": [
+            "זה נכון – שורות 1-11.",
+            "זה נכון – שורה 16.",
+            null,
+            "זה נכון."
+          ],
+          "hint": "NOT = לא נכון. מה מסמנת המילה But בשורה 12?",
+          "he": "המורה לא מרוצה – ה־But בשורה 12 והתמונות האלימות מראות שהוא מאוכזב מהדרך של התלמידים.",
+          "kw": [
+            "NOT true – לא נכון"
+          ],
+          "ev": {
+            "lines": [
+              12
+            ]
+          },
+          "tip": "שימו לב למילה NOT! מסמנים אותה בעיגול לפני שעונים.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D2, D4, D5"
+    },
+    {
+      "phase": "Mastery Check",
+      "phaseHe": "בדיקת שליטה",
+      "title": "Mastery Check",
+      "heTitle": "בדיקת שליטה",
+      "mastery": true,
+      "blocks": [
+        {
+          "t": "he",
+          "text": "8 שאלות אחרונות. כאן אין רמזים – רק משוב בסוף כל שאלה. בסוף תקבלו ציון והמלצה על מה לחזור."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who is the speaker of the poem?",
+          "opts": [
+            "a student",
+            "a police officer",
+            "a poetry teacher",
+            "a fisherman"
+          ],
+          "a": 2,
+          "why": [
+            "התלמידים הם them/they.",
+            "החקירה היא רק תמונה.",
+            null,
+            "הים הוא רק תמונה."
+          ],
+          "he": "הדובר הוא מורה לשירה שמדבר על התלמידים שלו.",
+          "kw": [
+            "speaker – דובר"
+          ],
+          "ev": {
+            "lines": [
+              1
+            ]
+          },
+          "tip": "I = הדובר. them/they = התלמידים.",
+          "tag": "text"
+        },
+        {
+          "q": "\"hive\" means…",
+          "opts": [
+            "the home of bees",
+            "a dark room",
+            "a light",
+            "a boat"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "החדר החשוך מופיע בשורות 7-8.",
+            "האור מופיע בשורה 2.",
+            "סירה לא מופיעה בשיר."
+          ],
+          "he": "hive = כוורת, הבית של הדבורים.",
+          "kw": [
+            "hive – כוורת"
+          ],
+          "ev": {
+            "lines": [
+              4
+            ]
+          },
+          "tip": "דמיינו את התמונה – זה עוזר לזכור.",
+          "tag": "vocab"
+        },
+        {
+          "q": "The poem is mostly about…",
+          "opts": [
+            "a day at the beach",
+            "a crime in a school",
+            "the life of Billy Collins",
+            "two different ways of reading a poem"
+          ],
+          "a": 3,
+          "why": [
+            "הים הוא רק תמונה אחת.",
+            "החקירה היא מטאפורה.",
+            "השיר לא ביוגרפיה.",
+            null
+          ],
+          "he": "השיר משווה בין הדרך של המורה (חקירה והנאה) לדרך של התלמידים (כפייה).",
+          "kw": [
+            "mostly about – בעיקר על"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              12
+            ]
+          },
+          "tip": "theme = על מה השיר.",
+          "tag": "meaning"
+        },
+        {
+          "q": "In which line does the big change begin?",
+          "opts": [
+            "line 1",
+            "line 9",
+            "line 12",
+            "line 16"
+          ],
+          "a": 2,
+          "why": [
+            "שורה 1 – תחילת הרעיונות של המורה.",
+            "שורה 9 – סקי מים, עדיין המורה.",
+            null,
+            "שורה 16 – סוף השיר."
+          ],
+          "he": "שורה 12 מתחילה במילה But – ומשם השיר עובר לתלמידים.",
+          "kw": [
+            "which line – איזו שורה"
+          ],
+          "ev": {
+            "lines": [
+              12
+            ]
+          },
+          "tip": "נקודת מפנה = turning point.",
+          "tag": "text"
+        },
+        {
+          "q": "The waterskiing image (lines 9-11) shows that…",
+          "opts": [
+            "poems are dangerous",
+            "we can enjoy a poem freely and lightly",
+            "the teacher loves the sea",
+            "the students are good at sports"
+          ],
+          "a": 1,
+          "why": [
+            "אין סכנה – יש כיף.",
+            null,
+            "הים הוא רק תמונה.",
+            "התמונה היא על קריאה, לא על ספורט."
+          ],
+          "he": "סקי מים = הנאה, תנועה וחופש. כך אפשר לפגוש שיר.",
+          "kw": [
+            "shows that – מראה ש"
+          ],
+          "ev": {
+            "lines": [
+              9,
+              10,
+              11
+            ]
+          },
+          "tip": "The image of ___ shows that ___.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Which lines are the best evidence for: \"The students are forceful\"?",
+          "opts": [
+            "lines 1-3 (the color slide)",
+            "line 4 (the hive)",
+            "lines 9-11 (waterskiing)",
+            "lines 12-14 (the chair and the rope)"
+          ],
+          "a": 3,
+          "why": [
+            "זה רעיון עדין של המורה.",
+            "זה רעיון של הקשבה.",
+            "זה רעיון של הנאה.",
+            null
+          ],
+          "he": "שורות 12-14 מתארות קשירה לכיסא והוצאת ״הודאה״ – הוכחה ישירה לכך שהתלמידים קוראים בכוח.",
+          "kw": [
+            "evidence – ראיה"
+          ],
+          "ev": {
+            "lines": [
+              12,
+              13,
+              14
+            ]
+          },
+          "tip": "ראיה טובה מוכיחה בדיוק את הטענה.",
+          "tag": "writing"
+        },
+        {
+          "q": "Which sentence is a good EXPLANATION (not just a fact)?",
+          "opts": [
+            "In line 15 they use a hose.",
+            "This shows that the students care only about finding one answer.",
+            "The poem has 16 lines.",
+            "Billy Collins is American."
+          ],
+          "a": 1,
+          "why": [
+            "זו עובדה מהשיר, לא הסבר.",
+            null,
+            "עובדה על המבנה.",
+            "עובדה על המשורר."
+          ],
+          "he": "הסבר מתחיל לרוב ב־This shows that… ואומר מה הראיה מלמדת.",
+          "kw": [
+            "explanation – הסבר"
+          ],
+          "ev": {
+            "lines": [
+              15,
+              16
+            ]
+          },
+          "tip": "ANSWER → PROVE → EXPLAIN.",
+          "tag": "writing"
+        },
+        {
+          "q": "Why does the poet make the end of the poem funny?",
+          "opts": [
+            "because the poem is not serious at all",
+            "to make fun of poets",
+            "because he forgot the message",
+            "to make his point clearly and in an enjoyable way"
+          ],
+          "a": 3,
+          "why": [
+            "יש מאחורי ההומור ביקורת רצינית.",
+            "הוא לא צוחק על משוררים – הוא מגן על שירה.",
+            "המסר ברור מאוד.",
+            null
+          ],
+          "he": "ההגזמה המצחיקה (צינור, חבל) עוזרת לנו לזכור את המסר. וגם: השיר עצמו כיף לקריאה – בדיוק כמו ששירה צריכה להיות!",
+          "kw": [
+            "humor – הומור",
+            "exaggeration – הגזמה"
+          ],
+          "ev": {
+            "lines": [
+              15,
+              16
+            ]
+          },
+          "tip": "הומור + רעיון רציני = שילוב שכדאי להזכיר בתשובה.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D4, D5"
+    },
+    {
+      "phase": "Sample Answers",
+      "phaseHe": "שאלות ותשובות לדוגמה",
+      "title": "Sample questions & answers",
+      "heTitle": "שאלות ותשובות לדוגמה",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "אלו שאלות בסגנון המשימות והמבחנים בבית הספר. התשובות כתובות באנגלית פשוטה. הביטויים המודגשים הם ״ביטויי זהב״ – אפשר להשתמש בהם בכל תשובה, על כל שיר וסיפור!"
+        },
+        {
+          "t": "tip",
+          "he": "בתשובות כאן מופיעים מספרי שורות. בתשובה שלכם במבחן – הוסיפו גם ציטוט קצר מהשורות, במירכאות."
+        }
+      ],
+      "widget": {
+        "type": "samples",
+        "items": [
+          {
+            "q": "How does the teacher want his students to read a poem? Explain.",
+            "a": "**The teacher wants his students to** explore a poem with curiosity and enjoy it. **For example, in lines 5-6** he asks them to watch a mouse as it slowly finds its way out of a poem. **In addition, in lines 9-11** he wants them to waterski across it, like a fun sport. **This shows that** reading a poem should be an adventure, not hard work."
+          },
+          {
+            "q": "How do the students read the poem? How do you know?",
+            "a": "**The students** read the poem in a violent and impatient way. **In lines 13-14**, they tie the poem to a chair and try to make it confess, like a prisoner. **In line 15**, they even beat it with a hose. **This shows that** they only want to find one \"right answer\" quickly. **I think** they miss the beauty of the poem."
+          },
+          {
+            "q": "What is the turning point of the poem? Explain.",
+            "a": "**In my opinion, the turning point is** line 12, which begins with the word \"But.\" Before this line, the teacher describes gentle and creative ways to read a poem. After it, he describes the students' violent way. **This shows that** there is a big contrast between what the teacher hopes for and what really happens in class."
+          },
+          {
+            "q": "What is the message of the poem? Do you agree with it? Explain.",
+            "a": "**The message of the poem is that** we should explore and enjoy poems, and not force them to give us one answer. **For example**, the teacher offers many fun ways to read a poem (lines 1-11), but the students only want to find out what it \"really means\" (line 16). **I agree with this message because** a poem can mean different things to different readers."
+          },
+          {
+            "q": "Why do you think the poet uses violent images at the end of the poem?",
+            "a": "**I think** the poet uses violent images **because** he wants to show how wrong the students' way is. **For example, in lines 13-15** the poem is treated like a prisoner: it is tied to a chair and beaten with a hose. **This shows that** forcing a poem is cruel and silly. **In addition**, the images are a little funny, so we remember the point."
+          },
+          {
+            "q": "Which image in the poem do you like most? Explain why.",
+            "a": "**The image I like most is** the waterskiing image in lines 9-11. **In my opinion**, it is fun and full of energy. The reader moves fast across the poem and even says hello to the poet, who stands on the beach. **This shows that** a poem can be a friendly experience, like a day at the sea. **That is why** this image makes me want to read more poems."
+          }
+        ]
+      }
+    }
+  ],
+  "phrases": [
+    {
+      "en": "The teacher wants his students to …",
+      "he": "המורה רוצה שהתלמידים שלו …"
+    },
+    {
+      "en": "In my opinion, …",
+      "he": "לדעתי, …"
+    },
+    {
+      "en": "I think that … because …",
+      "he": "אני חושב/ת ש… כי …"
+    },
+    {
+      "en": "For example, in lines __ the speaker …",
+      "he": "למשל, בשורות __ הדובר …"
+    },
+    {
+      "en": "The image of … shows that …",
+      "he": "התמונה של … מראה ש…"
+    },
+    {
+      "en": "This shows that …",
+      "he": "זה מראה ש…"
+    },
+    {
+      "en": "The message of the poem is that …",
+      "he": "המסר של השיר הוא ש…"
+    },
+    {
+      "en": "On the one hand … On the other hand …",
+      "he": "מצד אחד … מצד שני …"
+    },
+    {
+      "en": "Before this line, … After it, …",
+      "he": "לפני השורה הזאת … אחריה …"
+    },
+    {
+      "en": "In addition, …",
+      "he": "בנוסף, …"
+    },
+    {
+      "en": "I agree with this message because …",
+      "he": "אני מסכים/ה עם המסר כי …"
+    },
+    {
+      "en": "That is why …",
+      "he": "זו הסיבה ש…"
+    }
+  ],
+  "terms": [
+    {
+      "en": "speaker",
+      "he": "הדובר – הקול שמדבר בשיר (כאן: מורה)"
+    },
+    {
+      "en": "stanza",
+      "he": "בית בשיר"
+    },
+    {
+      "en": "free verse",
+      "he": "שיר חופשי – בלי חריזה וקצב קבוע"
+    },
+    {
+      "en": "image / imagery",
+      "he": "תמונה – תיאור שמפעיל את החושים"
+    },
+    {
+      "en": "simile",
+      "he": "השוואה עם like או as"
+    },
+    {
+      "en": "metaphor",
+      "he": "מטאפורה – השוואה בלי like או as"
+    },
+    {
+      "en": "contrast",
+      "he": "ניגוד – השוואה בין שני דברים הפוכים"
+    },
+    {
+      "en": "turning point",
+      "he": "נקודת מפנה – הרגע שבו הכול משתנה"
+    },
+    {
+      "en": "exaggeration",
+      "he": "הגזמה – כדי להדגיש רעיון (למתקדמים)"
+    },
+    {
+      "en": "irony",
+      "he": "אירוניה – פער בין מה שמצפים לו לבין מה שקורה באמת (למתקדמים)"
+    }
+  ],
+  "review": {
+    "vocab": {
+      "he": "אוצר מילים",
+      "screen": 1
+    },
+    "text": {
+      "he": "הבנת מה שכתוב בשיר",
+      "screen": 3
+    },
+    "meaning": {
+      "he": "תמונות, משמעות ומסר",
+      "screen": 6
+    },
+    "writing": {
+      "he": "כתיבת תשובה בשלושה צעדים",
+      "screen": 11
+    }
+  },
+  "unitNumber": 3,
+  "level": "D"
+}

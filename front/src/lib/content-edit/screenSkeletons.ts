@@ -32,6 +32,10 @@ export const SCREEN_TYPE_GROUPS: { label: string; types: LessonScreen['type'][] 
 	{
 		label: 'מבחן',
 		types: ['passage']
+	},
+	{
+		label: 'ספרות',
+		types: ['poem']
 	}
 ];
 
@@ -99,6 +103,8 @@ export function blankScreen(type: LessonScreen['type']): LessonScreen {
 			return { type, items: ['', ''], definitions: [{ text: '', itemIndex: 0 }] };
 		case 'passage':
 			return { type, paragraphs: [] };
+		case 'poem':
+			return { type, stanzas: [{ lines: [{ n: 1, en: '' }] }] };
 		case 'sentence-completion':
 			return { type, before: '', after: '', modelAnswers: [''] };
 	}

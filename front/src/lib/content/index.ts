@@ -4,6 +4,11 @@ import type { LessonNode } from './types';
 import { c1Lessons } from './c/c-1';
 import { c2Lessons } from './c/c-2';
 import { c3Lessons } from './c/c-3';
+import { d1Lessons } from './d/d-1';
+import { d2Lessons } from './d/d-2';
+import { d3Lessons } from './d/d-3';
+import { d4Lessons } from './d/d-4';
+import { d5Lessons } from './d/d-5';
 import { e1Lessons } from './e/e-1';
 import { g1Lessons } from './g/g-1';
 import { g2Lessons } from './g/g-2';
@@ -19,6 +24,11 @@ const all: LessonNode[] = [
 	...c1Lessons,
 	...c2Lessons,
 	...c3Lessons,
+	...d1Lessons,
+	...d2Lessons,
+	...d3Lessons,
+	...d4Lessons,
+	...d5Lessons,
 	...e1Lessons,
 	...g1Lessons,
 	...g2Lessons,

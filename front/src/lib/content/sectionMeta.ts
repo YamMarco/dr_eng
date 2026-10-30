@@ -37,6 +37,56 @@ export const sectionMeta: SectionMeta[] = [
 		}
 	},
 	{
+		id: 'd-1',
+		modules: ['d'],
+		skill: 'literature',
+		titleEn: 'The Road Not Taken',
+		intro: {
+			greeting: 'Robert Frost, 1916',
+			goal: 'שיר על בחירה בין שתי דרכים, ועל הסיפור שאנחנו מספרים אחר כך על הבחירות שלנו.'
+		}
+	},
+	{
+		id: 'd-2',
+		modules: ['d'],
+		skill: 'literature',
+		titleEn: 'Count That Day Lost',
+		intro: {
+			greeting: 'Anonymous',
+			goal: 'שיר על מה שהופך יום ליום ששווה משהו: מעשה טוב אחד, אפילו קטן.'
+		}
+	},
+	{
+		id: 'd-3',
+		modules: ['d'],
+		skill: 'literature',
+		titleEn: 'Introduction to Poetry',
+		intro: {
+			greeting: 'Billy Collins, 1988',
+			goal: 'מורה שרוצה שהתלמידים יחקרו שיר ויהנו ממנו, והתלמידים שרוצים רק ״להוציא ממנו תשובה״.'
+		}
+	},
+	{
+		id: 'd-4',
+		modules: ['d'],
+		skill: 'literature',
+		titleEn: "Thank You, Ma'am",
+		intro: {
+			greeting: 'Langston Hughes, 1958',
+			goal: 'סיפור על נער שמנסה לגנוב תיק, ועל אישה שעונה לו בחסד ובאמון.'
+		}
+	},
+	{
+		id: 'd-5',
+		modules: ['d'],
+		skill: 'literature',
+		titleEn: 'As I Grew Older',
+		intro: {
+			greeting: 'Langston Hughes, 1925',
+			goal: 'שיר על חלום, על חומה שעומדת בדרכו, ועל הכוח לשבור אותה.'
+		}
+	},
+	{
 		id: 'e-1',
 		modules: ['e'],
 		skill: 'reading',

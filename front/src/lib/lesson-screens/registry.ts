@@ -27,6 +27,7 @@ import Video from './Video.svelte';
 import MatchPairs from './MatchPairs.svelte';
 import MatchDefinitions from './MatchDefinitions.svelte';
 import Passage from './Passage.svelte';
+import Poem from './Poem.svelte';
 import SentenceCompletion from './SentenceCompletion.svelte';
 
 // Prop shapes differ per screen type, so this registry is intentionally
@@ -56,5 +57,6 @@ export const screenComponents: Record<LessonScreen['type'], Component<any>> = {
 	'match-pairs': MatchPairs,
 	'match-definitions': MatchDefinitions,
 	passage: Passage,
+	poem: Poem,
 	'sentence-completion': SentenceCompletion
 };

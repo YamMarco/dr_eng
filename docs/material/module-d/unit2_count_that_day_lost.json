@@ -1,0 +1,2053 @@
+{
+  "id": "count-that-day-lost",
+  "module": "MODULE D · POETRY · UNIT 2",
+  "title": "Count That Day Lost",
+  "author": "Anonymous (often attributed to George Eliot)",
+  "authorShort": "Anonymous",
+  "year": null,
+  "heTitle": "חשבו את היום הזה כאבוד",
+  "poem": [
+    {
+      "n": 1,
+      "en": "If you sit down at set of sun",
+      "he": "אם בסוף היום, כשהשמש שוקעת, אתם יושבים"
+    },
+    {
+      "n": 2,
+      "en": "And count the acts that you have done,",
+      "he": "ועוברים בראש על כל מה שעשיתם היום,"
+    },
+    {
+      "n": 3,
+      "en": "And, counting, find",
+      "he": "ותוך כדי כך מגלים"
+    },
+    {
+      "n": 4,
+      "en": "One self-denying deed, one word",
+      "he": "מעשה אחד שבו ויתרתם על משהו בשביל מישהו אחר, או מילה אחת"
+    },
+    {
+      "n": 5,
+      "en": "That eased the heart of him who heard,",
+      "he": "שגרמה למי ששמע אותה להרגיש טוב יותר,"
+    },
+    {
+      "n": 6,
+      "en": "One glance most kind",
+      "he": "או מבט אחד חם ואדיב"
+    },
+    {
+      "n": 7,
+      "en": "That fell like sunshine where it went —",
+      "he": "ששימח את מי שקיבל אותו, כמו קרן שמש –"
+    },
+    {
+      "n": 8,
+      "en": "Then you may count that day well spent.",
+      "he": "אז אתם יכולים להגיד שהיום הזה היה יום טוב, שניצלתם אותו נכון."
+    },
+    {
+      "n": 9,
+      "en": "But if, through all the livelong day,",
+      "he": "אבל אם במשך כל היום הארוך"
+    },
+    {
+      "n": 10,
+      "en": "You've cheered no heart, by yea or nay —",
+      "he": "לא שימחתם אף אחד – לא במילה ולא בשום דרך אחרת –"
+    },
+    {
+      "n": 11,
+      "en": "If, through it all",
+      "he": "אם במשך כל היום הזה"
+    },
+    {
+      "n": 12,
+      "en": "You've nothing done that you can trace",
+      "he": "אתם לא מוצאים שום דבר שעשיתם"
+    },
+    {
+      "n": 13,
+      "en": "That brought the sunshine to one face —",
+      "he": "שגרם לאדם אחד לחייך,"
+    },
+    {
+      "n": 14,
+      "en": "No act most small",
+      "he": "אפילו לא מעשה קטן מאוד"
+    },
+    {
+      "n": 15,
+      "en": "That helped some soul and nothing cost —",
+      "he": "שעזר למישהו ולא עלה לכם כלום –"
+    },
+    {
+      "n": 16,
+      "en": "Then count that day as worse than lost.",
+      "he": "אז היום הזה גרוע אפילו יותר מיום מבוזבז."
+    }
+  ],
+  "stanzas": [
+    [
+      1,
+      8
+    ],
+    [
+      9,
+      16
+    ]
+  ],
+  "screens": [
+    {
+      "phase": "Before Reading",
+      "phaseHe": "לפני הקריאה",
+      "title": "What makes a good day?",
+      "heTitle": "מה הופך יום ליום טוב?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "תחשבו על אתמול בערב, לפני השינה. איך ידעתם אם היה לכם יום טוב? אולי נהניתם, אולי קיבלתם ציון טוב, אולי פשוט נחתם."
+        },
+        {
+          "t": "he",
+          "text": "השיר שנלמד עכשיו נותן תשובה אחרת לשאלה הזאת: יום טוב הוא יום שבו עשינו משהו טוב בשביל מישהו אחר – אפילו משהו קטן מאוד."
+        },
+        {
+          "t": "en",
+          "text": "This poem asks a simple question: at the end of the day, did you do something kind for another person?"
+        }
+      ],
+      "widget": {
+        "type": "reflect",
+        "prompt": "For you, what makes a day good? · מה הופך בשבילכם יום ליום טוב?",
+        "options": [
+          "I had fun with friends",
+          "I got a good grade",
+          "I helped someone",
+          "I relaxed at home"
+        ],
+        "feedback": "כל התשובות לגיטימיות! עכשיו נראה מה הדובר בשיר חושב. בסוף היחידה תוכלו להשוות בין הדעה שלכם לדעה שלו."
+      },
+      "cd": "D1"
+    },
+    {
+      "phase": "Before Reading",
+      "phaseHe": "לפני הקריאה",
+      "title": "The poet and the key words",
+      "heTitle": "המשורר ומילות המפתח",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "✍️",
+          "title": "Who wrote the poem?",
+          "en": "We do not know for sure. Many books say that the writer is George Eliot, an English woman writer (1819-1880). The Ministry of Education lists the poem as \"Anonymous\" (the writer is unknown).",
+          "he": "לא בטוח מי כתב את השיר. בהרבה ספרים ואתרים כתוב שהכותבת היא ג׳ורג׳ אליוט – סופרת אנגלייה מהמאה ה־19, שכתבה בשם של גבר. ברשימה של משרד החינוך השיר מופיע כ־Anonymous, כלומר כותב לא ידוע. בתשובות כדאי לכתוב פשוט: the poet או the speaker."
+        },
+        {
+          "t": "card",
+          "icon": "🌇",
+          "title": "The idea of the poem",
+          "en": "At the end of the day, the speaker asks us to stop and check ourselves: did I do something good for someone today?",
+          "he": "בסוף היום הדובר מבקש מאיתנו לעצור ולעשות ״חשבון נפש״ קטן: האם עשיתי היום משהו טוב בשביל מישהו אחר? לפי התשובה, היום ״הצליח״ או ״הלך לאיבוד״."
+        },
+        {
+          "t": "he",
+          "text": "לפני שקוראים – הכירו את המילים החשובות. לחצו על כל כרטיס כדי לראות את הפירוש."
+        }
+      ],
+      "widget": {
+        "type": "vocab",
+        "words": [
+          {
+            "en": "set of sun",
+            "he": "שקיעה – סוף היום",
+            "ex": "at set of sun = when the sun goes down"
+          },
+          {
+            "en": "deed / act",
+            "he": "מעשה",
+            "ex": "a good deed = a good thing you do"
+          },
+          {
+            "en": "self-denying",
+            "he": "מוותר על עצמו למען אחרים",
+            "ex": "a self-denying deed = you give up something to help someone"
+          },
+          {
+            "en": "ease",
+            "he": "להקל, להרגיע",
+            "ex": "eased the heart = made someone feel better"
+          },
+          {
+            "en": "glance",
+            "he": "מבט קצר",
+            "ex": "one glance most kind = one very kind look"
+          },
+          {
+            "en": "well spent",
+            "he": "מנוצל היטב",
+            "ex": "a day well spent = a good, useful day"
+          },
+          {
+            "en": "livelong",
+            "he": "כל היום הארוך",
+            "ex": "all the livelong day = the whole long day"
+          },
+          {
+            "en": "cheer",
+            "he": "לשמח, לעודד",
+            "ex": "cheered no heart = made nobody happy"
+          },
+          {
+            "en": "trace",
+            "he": "למצוא, לאתר",
+            "ex": "nothing that you can trace = nothing you can find"
+          },
+          {
+            "en": "soul",
+            "he": "נפש; כאן: אדם",
+            "ex": "helped some soul = helped some person"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "q": "\"If you sit down at set of sun\" — when is \"set of sun\"?",
+          "opts": [
+            "in the morning",
+            "at noon",
+            "at the end of the day, when the sun goes down",
+            "at midnight"
+          ],
+          "a": 2,
+          "why": [
+            "בבוקר השמש זורחת, לא שוקעת.",
+            "בצהריים השמש גבוהה בשמיים.",
+            null,
+            "בחצות כבר חושך – השמש שקעה מזמן."
+          ],
+          "hint": "set = שוקעת. מתי השמש שוקעת?",
+          "he": "set of sun = sunset = שקיעה. זה סוף היום – הזמן שבו עוצרים וחושבים על מה שעשינו.",
+          "kw": [
+            "set of sun – שקיעה"
+          ],
+          "ev": {
+            "lines": [
+              1
+            ]
+          },
+          "tip": "בשירים ישנים סדר המילים לפעמים שונה: set of sun = sunset.",
+          "tag": "vocab"
+        },
+        {
+          "q": "\"One self-denying deed\" — what is a self-denying deed?",
+          "opts": [
+            "a good act for others, even when you give up something",
+            "something you do only for yourself",
+            "a bad act",
+            "an act you say you did not do"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "זה ההפך – self-denying זה לוותר על עצמך למען אחרים.",
+            "בשיר זה מעשה טוב, לא רע.",
+            "מלכודת! deny יכול להיות ״להכחיש״, אבל self-denying פירושו לוותר על משהו בשביל אחרים."
+          ],
+          "hint": "self = עצמי. deny = כאן: לוותר, לא לתת לעצמי.",
+          "he": "מעשה שבו מוותרים על משהו בשביל מישהו אחר. למשל: לתת לחבר את החטיף שלכם, או לוותר על משחק כדי לעזור לאמא.",
+          "kw": [
+            "self-denying – מוותר על עצמו",
+            "deed – מעשה"
+          ],
+          "ev": {
+            "lines": [
+              4
+            ]
+          },
+          "tip": "מילה מורכבת? פרקו אותה לחלקים: self + deny + ing.",
+          "tag": "vocab"
+        },
+        {
+          "q": "\"That eased the heart of him who heard\" — what does \"eased\" mean here?",
+          "opts": [
+            "broke someone's heart",
+            "made someone angry",
+            "surprised someone",
+            "made someone feel better"
+          ],
+          "a": 3,
+          "why": [
+            "זה ההפך – המילה מתארת הקלה, לא כאב.",
+            "אין בשורה כעס.",
+            "המילה לא מתארת הפתעה.",
+            null
+          ],
+          "hint": "ease קשורה ל־easy (קל).",
+          "he": "ease = להקל, להרגיע. המילה הטובה ״הקלה על הלב״ של מי ששמע אותה – הוא הרגיש טוב יותר.",
+          "kw": [
+            "eased – הקל",
+            "heart – לב"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              5
+            ]
+          },
+          "tip": "חפשו מילים מוכרות בתוך מילים חדשות: ease ← easy.",
+          "tag": "vocab"
+        },
+        {
+          "q": "\"You've cheered no heart\" — what does this mean?",
+          "opts": [
+            "You did not shout at a football game.",
+            "You did not make anyone happy.",
+            "You did not eat anything.",
+            "You did not sing."
+          ],
+          "a": 1,
+          "why": [
+            "מלכודת! cheer הוא גם ״לעודד במשחק״, אבל כאן cheer a heart = לשמח מישהו.",
+            null,
+            "אין קשר לאוכל.",
+            "אין קשר לשירה."
+          ],
+          "hint": "cheer someone up = לשמח מישהו.",
+          "he": "cheer = לשמח, לעודד. ״cheered no heart״ – לא שימחתם אף אחד במשך היום.",
+          "kw": [
+            "cheered – שימח",
+            "no heart – אף לב, אף אחד"
+          ],
+          "ev": {
+            "lines": [
+              10
+            ]
+          },
+          "tip": "למילה אחת יכולות להיות כמה משמעויות. ההקשר בשורה מחליט.",
+          "tag": "vocab"
+        }
+      ]
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Read the poem",
+      "heTitle": "קוראים את השיר",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "קראו את השיר כולו. לחצו על כל שורה כדי לראות מה היא אומרת בעברית פשוטה. אל תדאגו אם לא הבנתם הכול – בשלב הבא נעבור על כל בית בנפרד."
+        },
+        {
+          "t": "tip",
+          "he": "לשיר יש 2 בתים (stanzas), ובכל בית 8 שורות. שני הבתים בנויים אותו דבר: ״אם...״ ← רשימת מעשים ← ״אז...״."
+        }
+      ],
+      "widget": {
+        "type": "poem"
+      },
+      "cd": "D4"
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Stanza 1: A day well spent",
+      "heTitle": "בית 1: יום שנוצל היטב",
+      "blocks": [
+        {
+          "t": "quote",
+          "lines": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "t": "card",
+          "icon": "1️⃣",
+          "title": "Stanza 1",
+          "en": "At the end of the day, sit down and think about what you did. If you find one good act – one thing you gave up for someone, one kind word, or one kind look – then your day was \"well spent\".",
+          "he": "בסוף היום, שבו וחשבו על מה שעשיתם. אם תמצאו מעשה טוב אחד – ויתור קטן בשביל מישהו, מילה טובה אחת או מבט חם אחד – אז היום שלכם היה יום טוב. שימו לב: מספיק דבר אחד!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When does the speaker tell us to count our acts?",
+          "opts": [
+            "in the morning",
+            "at the end of the day",
+            "every hour",
+            "once a year"
+          ],
+          "a": 1,
+          "why": [
+            "הבוקר הוא תחילת היום, לא הסוף.",
+            null,
+            "השיר לא מדבר על כל שעה.",
+            "השיר מדבר על יום אחד, לא על שנה."
+          ],
+          "hint": "שורה 1: at set of sun.",
+          "he": "״at set of sun״ – בשקיעה, בסוף היום. זה הזמן להסתכל אחורה על היום שעבר.",
+          "kw": [
+            "When – מתי → מחפשים זמן"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2
+            ]
+          },
+          "tip": "שאלת When? = מחפשים ביטוי של זמן בטקסט.",
+          "tag": "text"
+        },
+        {
+          "q": "According to stanza 1, which of these makes a day \"well spent\"?",
+          "opts": [
+            "buying something new",
+            "sleeping late",
+            "winning a game",
+            "saying one kind word to someone"
+          ],
+          "a": 3,
+          "why": [
+            "השיר לא מדבר על קניות.",
+            "השיר לא מדבר על מנוחה.",
+            "ניצחון הוא הצלחה אישית – השיר מדבר על עזרה לאחרים.",
+            null
+          ],
+          "hint": "קראו את שורות 4-5: one word / That eased the heart…",
+          "he": "מילה אחת טובה ״שהקלה על הלב של מי ששמע״ – זה מספיק כדי שהיום ייחשב יום טוב.",
+          "kw": [
+            "According to – לפי",
+            "well spent – מנוצל היטב"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              5,
+              8
+            ]
+          },
+          "tip": "According to stanza 1 = התשובה נמצאת רק בבית הראשון. אל תחפשו בבית השני.",
+          "tag": "text"
+        },
+        {
+          "q": "How many good acts do you need for a day \"well spent\"?",
+          "opts": [
+            "at least one",
+            "many",
+            "exactly ten",
+            "none"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "הדובר לא דורש הרבה – רק אחד.",
+            "אין מספר כזה בשיר.",
+            "צריך לפחות מעשה אחד."
+          ],
+          "hint": "איזו מילה חוזרת בשורות 4 ו־6?",
+          "he": "המילה ״One״ חוזרת: one deed, one word, one glance. מספיק מעשה טוב אחד!",
+          "kw": [
+            "How many – כמה"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              6
+            ]
+          },
+          "tip": "כשמילה חוזרת כמה פעמים בשיר – היא כנראה חשובה.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Understand the Poem",
+      "phaseHe": "מבינים את השיר",
+      "title": "Stanza 2: A day worse than lost",
+      "heTitle": "בית 2: יום גרוע מיום אבוד",
+      "blocks": [
+        {
+          "t": "quote",
+          "lines": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "t": "card",
+          "icon": "2️⃣",
+          "title": "Stanza 2",
+          "en": "Now the opposite: what if, during the whole day, you made nobody happy? You did nothing – not even a very small thing that cost you nothing – to help someone. Then your day is \"worse than lost\".",
+          "he": "עכשיו ההפך: מה אם במשך כל היום לא שימחתם אף אחד? לא עשיתם שום דבר – אפילו לא דבר קטן מאוד שלא עלה לכם כלום – כדי לעזור למישהו. אז היום שלכם גרוע אפילו יותר מיום שהלך לאיבוד."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Stanza 2 describes a day when…",
+          "opts": [
+            "you helped many people",
+            "you were sick",
+            "you did nothing good for anyone",
+            "you worked very hard"
+          ],
+          "a": 2,
+          "why": [
+            "זה ההפך – בבית 2 לא עזרתם לאף אחד.",
+            "השיר לא מדבר על מחלה.",
+            null,
+            "השיר לא מדבר על עבודה קשה."
+          ],
+          "hint": "שורות 10 ו־12: cheered no heart / nothing done.",
+          "he": "בבית 2 מתואר יום שבו לא שימחתם אף אחד (״cheered no heart״) ולא עשיתם שום דבר טוב (״nothing done״).",
+          "kw": [
+            "describes – מתאר"
+          ],
+          "ev": {
+            "lines": [
+              10,
+              12
+            ]
+          },
+          "tip": "שימו לב למילים השוללות: no, nothing. הן מראות מה חסר ביום הזה.",
+          "tag": "text"
+        },
+        {
+          "q": "\"No act most small\" — what does this mean?",
+          "opts": [
+            "a very big act",
+            "a small room",
+            "not even a very small act",
+            "no time at all"
+          ],
+          "a": 2,
+          "why": [
+            "זה ההפך – small = קטן.",
+            "act זה מעשה, לא חדר.",
+            null,
+            "השורה לא מדברת על זמן."
+          ],
+          "hint": "most small = הכי קטן, קטן מאוד.",
+          "he": "״No act most small״ = אף לא מעשה אחד קטן מאוד. כלומר, לא עשיתם אפילו את הדבר הקטן ביותר.",
+          "kw": [
+            "act – מעשה",
+            "most small – קטן מאוד"
+          ],
+          "ev": {
+            "lines": [
+              14
+            ]
+          },
+          "tip": "בשירה ישנה כותבים לפעמים most small במקום smallest.",
+          "tag": "text"
+        },
+        {
+          "q": "How does the speaker describe such a day?",
+          "opts": [
+            "worse than lost",
+            "well spent",
+            "a lucky day",
+            "a quiet day"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "well spent מתאר את היום בבית 1.",
+            "השיר לא מדבר על מזל.",
+            "השיר לא מתאר את היום כשקט."
+          ],
+          "hint": "השורה האחרונה בשיר.",
+          "he": "״worse than lost״ – גרוע יותר מיום אבוד. זה משפט חזק מאוד!",
+          "kw": [
+            "describe – לתאר"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "השורה האחרונה בכל בית היא ״המסקנה״ שלו. כדאי לזכור את שתיהן: well spent / worse than lost.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "The speaker's voice",
+      "heTitle": "הקול של הדובר",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "🗣️",
+          "title": "Who is the speaker?",
+          "en": "The speaker is like a wise teacher or parent. The speaker talks directly to \"you\" – the reader – and gives advice.",
+          "he": "הדובר דומה למורה או להורה חכם. הוא פונה ישירות אלינו – ״you״ – ונותן לנו עצה איך לבדוק אם היום שלנו היה טוב. בתשובות כותבים: The speaker…"
+        },
+        {
+          "t": "he",
+          "text": "הקול של הדובר משתנה לאורך השיר. עקבו אחריו:"
+        },
+        {
+          "t": "feelings",
+          "items": [
+            {
+              "line": 1,
+              "word": "If you sit down…",
+              "en": "calm, giving advice",
+              "he": "רגוע – מזמין אותנו לעצור ולחשוב"
+            },
+            {
+              "line": 8,
+              "word": "well spent",
+              "en": "positive, encouraging",
+              "he": "מעודד – מספיק מעשה טוב אחד"
+            },
+            {
+              "line": 9,
+              "word": "But if…",
+              "en": "serious, a change",
+              "he": "רציני – המילה But מסמנת שינוי"
+            },
+            {
+              "line": 16,
+              "word": "worse than lost",
+              "en": "strict, a warning",
+              "he": "מזהיר – יום בלי טוב הוא בזבוז גדול"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "q": "Who does the speaker talk to?",
+          "opts": [
+            "a best friend",
+            "a teacher",
+            "George Eliot",
+            "\"you\" – the reader"
+          ],
+          "a": 3,
+          "why": [
+            "אין בשיר חבר.",
+            "הדובר עצמו דומה למורה – הוא לא מדבר אל מורה.",
+            "ג׳ורג׳ אליוט אולי כתבה את השיר – היא לא זו שאליה הוא פונה.",
+            null
+          ],
+          "hint": "איזו מילה חוזרת בשורות 1-2?",
+          "he": "הדובר פונה אל ״you״ – כלומר אל כל קורא. זה גורם לנו להרגיש שהשיר מדבר בדיוק אלינו.",
+          "kw": [
+            "Who – מי",
+            "talk to – מדבר אל"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2
+            ]
+          },
+          "tip": "כשבשיר יש you, הדובר פונה ישירות לקורא. זה הופך את השיר לעצה אישית.",
+          "tag": "meaning"
+        },
+        {
+          "q": "What is the tone of the last line?",
+          "opts": [
+            "funny",
+            "serious, like a warning",
+            "sad and lonely",
+            "excited"
+          ],
+          "a": 1,
+          "why": [
+            "אין כאן בדיחה.",
+            null,
+            "הדובר לא מדבר על עצמו או על בדידות.",
+            "אין כאן התלהבות."
+          ],
+          "hint": "איך מרגיש משפט כמו ״worse than lost״?",
+          "he": "״count that day as worse than lost״ – זה משפט חזק ורציני, כמו אזהרה: אל תבזבזו את היום שלכם!",
+          "kw": [
+            "tone – טון, אווירה"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "מילים לתיאור טון: serious, calm, warning, encouraging, wise.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D5"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "Symbols and images",
+      "heTitle": "סמלים ותמונות",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "🔑",
+          "title": "What is a symbol?",
+          "en": "A symbol is a thing that stands for a bigger idea.",
+          "he": "סמל (symbol) הוא דבר מוחשי שמייצג רעיון גדול יותר. בשיר הזה, השמש היא הרבה יותר ממזג אוויר."
+        },
+        {
+          "t": "he",
+          "text": "לחצו על כל כרטיס כדי לגלות מה הוא מסמל:"
+        }
+      ],
+      "widget": {
+        "type": "reveal",
+        "cards": [
+          {
+            "front": "☀️ Sunshine (lines 7, 13)",
+            "back": "Happiness and warmth that we give to others. · שמחה וחום שאנחנו נותנים לאחרים. מבט טוב ״נופל כמו קרן שמש״."
+          },
+          {
+            "front": "🌇 Set of sun (line 1)",
+            "back": "The end of the day – a time to stop and think. · סוף היום – זמן לעצור ולעשות חשבון נפש."
+          },
+          {
+            "front": "🧮 Counting (lines 2-3)",
+            "back": "Checking ourselves: what did I do today? · לבדוק את עצמנו: מה עשיתי היום, ובשביל מי?"
+          },
+          {
+            "front": "🤏 A small act (line 14)",
+            "back": "Even a very small act of kindness matters. · גם טוב קטן מאוד חשוב."
+          },
+          {
+            "front": "🆓 Nothing cost (line 15)",
+            "back": "Kindness is free – everyone can give it. · טוב לב לא עולה כסף – כל אחד יכול לתת אותו."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "q": "In the poem, \"sunshine\" is a symbol of…",
+          "opts": [
+            "hot weather",
+            "happiness and warmth that we give others",
+            "the summer holiday",
+            "the morning"
+          ],
+          "a": 1,
+          "why": [
+            "זה הפירוש המילולי. בשיר השמש מייצגת רעיון.",
+            null,
+            "השיר לא מדבר על חופש.",
+            "השיר מתרחש דווקא בשקיעה."
+          ],
+          "hint": "מה עושה מבט טוב, לפי שורה 7?",
+          "he": "השמש מביאה אור וחום. כך גם מעשה טוב: מבט חם ״נופל כמו קרן שמש״ (שורה 7), וחיוך הוא ״sunshine״ על הפנים (שורה 13).",
+          "kw": [
+            "symbol – סמל"
+          ],
+          "ev": {
+            "lines": [
+              6,
+              7,
+              13
+            ]
+          },
+          "tip": "כשכותבים על סמל: The ___ is a symbol of ___. This shows that ___.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Why does the speaker ask us to \"count\" our acts at the end of the day?",
+          "opts": [
+            "to practice math",
+            "to remember what to buy",
+            "to plan the next day",
+            "to check ourselves: did we do something good?"
+          ],
+          "a": 3,
+          "why": [
+            "count כאן לא קשור לחשבון.",
+            "השיר לא מדבר על קניות.",
+            "הספירה היא על היום שעבר, לא על מחר.",
+            null
+          ],
+          "hint": "מה מחפשים כש״סופרים״ את מה שעשינו?",
+          "he": "לספור את המעשים = לבדוק את עצמנו. בסוף היום שואלים: האם עשיתי משהו טוב בשביל מישהו? זה כמו ״חשבון נפש״.",
+          "kw": [
+            "Why – למה → מחפשים סיבה",
+            "count – לספור, לבדוק"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2,
+              3
+            ]
+          },
+          "tip": "המילה count מופיעה בשיר בשני מובנים: לספור (שורה 2) ולהחשיב (שורות 8, 16: count that day…).",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Speaker & Meaning",
+      "phaseHe": "הדובר והמשמעות",
+      "title": "Theme and message",
+      "heTitle": "הנושא והמסר",
+      "blocks": [
+        {
+          "t": "card",
+          "icon": "📌",
+          "title": "Theme · נושא",
+          "en": "Kindness and helping others.",
+          "he": "הנושא (theme) הוא ״על מה השיר״: טוב לב ועזרה לאחרים."
+        },
+        {
+          "t": "card",
+          "icon": "💬",
+          "title": "Message · מסר",
+          "en": "Even one small kind act can make our day meaningful. A day without kindness is a wasted day.",
+          "he": "המסר (message) הוא ״מה השיר רוצה ללמד אותנו״: אפילו מעשה טוב אחד וקטן נותן משמעות ליום שלנו. יום בלי שום טוב לאחרים הוא יום מבוזבז – ואפילו גרוע מזה."
+        },
+        {
+          "t": "card",
+          "icon": "⚠️",
+          "title": "A common mistake",
+          "en": "Some students think the poem is about big heroic acts or about money (\"cost\"). No! The poem says that small acts are enough, and that kindness costs nothing.",
+          "he": "טעות נפוצה: לחשוב שהשיר מדבר על מעשים גדולים והרואיים, או על כסף (בגלל המילה cost). לא! השיר אומר בדיוק ההפך: מספיק מעשה קטן – מילה, מבט, חיוך – וטוב לב לא עולה כלום."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the main theme of the poem?",
+          "opts": [
+            "kindness and helping others",
+            "money",
+            "the weather",
+            "sports"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "המילה cost מופיעה, אבל השיר אומר שטוב לב ״nothing cost״.",
+            "השמש היא סמל, לא הנושא.",
+            "אין בשיר ספורט."
+          ],
+          "hint": "על מה הדובר מדבר בשני הבתים?",
+          "he": "הנושא המרכזי הוא טוב לב ועזרה לאחרים. שני הבתים בודקים דבר אחד: האם עשינו טוב למישהו.",
+          "kw": [
+            "theme – נושא"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              5,
+              15
+            ]
+          },
+          "tip": "נושא (theme) = מילה או שתיים. מסר (message) = משפט שלם.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Which sentence best describes the message of the poem?",
+          "opts": [
+            "Only big heroic acts are important.",
+            "You should count your money every day.",
+            "Even one small kind act can make a day meaningful.",
+            "Never help strangers."
+          ],
+          "a": 2,
+          "why": [
+            "השיר אומר ההפך: גם ״act most small״ חשוב.",
+            "count כאן הוא בדיקה של מעשים, לא של כסף.",
+            null,
+            "השיר מבקש לעזור ל״some soul״ – לכל אדם."
+          ],
+          "hint": "מסר = מה השיר רוצה ללמד אותנו על החיים.",
+          "he": "לפי השיר, מספיק מעשה טוב אחד – מילה, מבט – כדי שהיום יהיה ״well spent״ (שורות 4-8).",
+          "kw": [
+            "best describes – מתאר הכי טוב",
+            "message – מסר"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              6,
+              8,
+              14
+            ]
+          },
+          "tip": "כשיש ״best״ בשאלה – בחרו את התשובה המלאה והמדויקת ביותר.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D5"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "What does the poem say?",
+      "heTitle": "מה כתוב בשיר?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "בשאלות האלה התשובה כתובה בשיר. התפקיד שלכם: למצוא את השורה הנכונה. אפשר לפתוח את השיר בכל רגע בכפתור 📜 למעלה."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Which of these is NOT mentioned in stanza 1 as a good act?",
+          "opts": [
+            "a self-denying deed",
+            "a kind word",
+            "a gift of money",
+            "a kind look"
+          ],
+          "a": 2,
+          "why": [
+            "זה מופיע – שורה 4.",
+            "זה מופיע – שורות 4-5.",
+            null,
+            "זה מופיע – שורה 6 (glance = מבט)."
+          ],
+          "hint": "NOT = לא מופיע. בדקו כל אפשרות בשורות 4-7.",
+          "he": "בבית 1 מופיעים שלושה מעשים: ויתור (deed), מילה (word) ומבט (glance). מתנה של כסף לא מופיעה – השיר מדבר על טוב לב שלא עולה כסף.",
+          "kw": [
+            "NOT – לא",
+            "mentioned – מוזכר"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              5,
+              6
+            ]
+          },
+          "tip": "שימו לב למילה NOT! מסמנים אותה בעיגול לפני שעונים.",
+          "tag": "text"
+        },
+        {
+          "q": "\"That fell like sunshine where it went\" (line 7) describes…",
+          "opts": [
+            "a kind glance",
+            "the sun",
+            "the rain",
+            "a gift"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "השמש היא רק ההשוואה – השורה מתארת משהו אחר.",
+            "אין גשם בשיר.",
+            "אין מתנה בשיר."
+          ],
+          "hint": "קראו את שורה 6 – מה ״נפל כמו קרן שמש״?",
+          "he": "שורות 6-7 הן משפט אחד: ״One glance most kind / That fell like sunshine…״ – המבט החם נפל כמו קרן שמש על מי שקיבל אותו.",
+          "kw": [
+            "describes – מתאר",
+            "like – כמו (השוואה)"
+          ],
+          "ev": {
+            "lines": [
+              6,
+              7
+            ]
+          },
+          "tip": "בשירה משפט אחד ממשיך לפעמים על פני כמה שורות. קראו גם את השורה שלפני!",
+          "tag": "text"
+        },
+        {
+          "q": "According to line 13, what did you NOT bring to anyone's face?",
+          "opts": [
+            "food",
+            "money",
+            "rain",
+            "sunshine"
+          ],
+          "a": 3,
+          "why": [
+            "אין אוכל בשיר.",
+            "אין כסף בשיר.",
+            "אין גשם בשיר.",
+            null
+          ],
+          "hint": "שורה 13.",
+          "he": "״That brought the sunshine to one face״ – לא הבאתם ״שמש״ לאף פנים, כלומר לא גרמתם לאף אחד לחייך.",
+          "kw": [
+            "face – פנים"
+          ],
+          "ev": {
+            "lines": [
+              12,
+              13
+            ]
+          },
+          "tip": "שאלה פשוטה? אל תחפשו תשובה מסובכת. התשובה בשורה.",
+          "tag": "text"
+        },
+        {
+          "q": "How many lines are in each stanza?",
+          "opts": [
+            "4",
+            "6",
+            "8",
+            "16"
+          ],
+          "a": 2,
+          "why": [
+            "יש יותר.",
+            "יש יותר.",
+            null,
+            "16 זה מספר השורות בכל השיר."
+          ],
+          "hint": "stanza = בית. ספרו את השורות בבית הראשון.",
+          "he": "בכל בית 8 שורות, ובשיר כולו 16 שורות. שני הבתים בנויים בדיוק אותו דבר.",
+          "kw": [
+            "stanza – בית",
+            "line – שורה"
+          ],
+          "ev": {
+            "lines": []
+          },
+          "tip": "line = שורה, stanza = בית. אל תתבלבלו!",
+          "tag": "text"
+        }
+      ],
+      "cd": "D4"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "Reading between the lines",
+      "heTitle": "מה מסתתר בין השורות?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "עכשיו התשובה לא כתובה במפורש. צריך להבין ממה שכתוב – כמו בלש שמחפש רמזים 🔍."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Why does the speaker repeat the word \"One\" (one deed, one word, one glance)?",
+          "opts": [
+            "because the speaker cannot count",
+            "to show that even one small act is enough",
+            "to make the poem longer",
+            "because only one person can be helped"
+          ],
+          "a": 1,
+          "why": [
+            "הדובר דווקא מבקש מאיתנו לספור.",
+            null,
+            "החזרה נועדה להדגיש רעיון, לא להאריך.",
+            "השיר מדבר על כל אדם – ״some soul״."
+          ],
+          "hint": "מה החזרה על ״one״ מדגישה?",
+          "he": "החזרה (repetition) על ״One״ מדגישה שלא צריך הרבה. מעשה טוב אחד מספיק כדי שהיום יהיה טוב.",
+          "kw": [
+            "Why – למה",
+            "repeat – לחזור על"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              6
+            ]
+          },
+          "tip": "כשמשורר חוזר על מילה – שאלו: ״מה הוא רוצה להדגיש?״",
+          "tag": "meaning"
+        },
+        {
+          "q": "\"That helped some soul and nothing cost\" — what does \"nothing cost\" mean?",
+          "opts": [
+            "The shop was closed.",
+            "The act did not cost money and was not hard to do.",
+            "The act was very expensive.",
+            "Nobody paid the speaker."
+          ],
+          "a": 1,
+          "why": [
+            "אין חנות בשיר.",
+            null,
+            "זה ההפך – nothing cost = לא עלה כלום.",
+            "השיר לא מדבר על משכורת."
+          ],
+          "hint": "nothing cost = cost nothing = לא עלה כלום.",
+          "he": "המעשה לא עלה כסף ולא דרש מאמץ גדול – כמו חיוך או מילה טובה. כל אחד יכול לעשות את זה!",
+          "kw": [
+            "nothing cost – לא עלה כלום"
+          ],
+          "ev": {
+            "lines": [
+              14,
+              15
+            ]
+          },
+          "tip": "שאלה כזאת הופיעה בעבר בבגרות! בתשובה הסבירו ״במילים שלכם״ – לא רק העתיקו מהשיר.",
+          "tag": "meaning"
+        },
+        {
+          "q": "\"You've cheered no heart, by yea or nay\" — what is the idea of \"by yea or nay\"?",
+          "opts": [
+            "by voting in an election",
+            "by shouting loudly",
+            "in a foreign language",
+            "in any way at all – even with one word like \"yes\" or \"no\""
+          ],
+          "a": 3,
+          "why": [
+            "אין בחירות בשיר.",
+            "השורה לא מדברת על צעקות.",
+            "yea ו־nay הן מילים באנגלית ישנה.",
+            null
+          ],
+          "hint": "yea = yes, nay = no (אנגלית ישנה).",
+          "he": "yea = כן, nay = לא. ״by yea or nay״ = בשום דרך, אפילו לא במילה אחת. לא שימחתם אף אחד – בכלל.",
+          "kw": [
+            "yea – כן (ישן)",
+            "nay – לא (ישן)"
+          ],
+          "ev": {
+            "lines": [
+              10
+            ]
+          },
+          "tip": "בשירים ישנים יש מילים ישנות. ההקשר עוזר להבין אותן גם בלי מילון.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Why is a day without kindness \"worse than lost\"?",
+          "opts": [
+            "because you missed a chance to make someone's life better",
+            "because you lost your keys",
+            "because the day was rainy",
+            "because you were late"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "lost כאן לא קשור לאיבוד חפצים.",
+            "השיר לא מדבר על מזג האוויר.",
+            "השיר לא מדבר על איחור."
+          ],
+          "hint": "מה הייתם יכולים לעשות באותו יום – ולא עשיתם?",
+          "he": "יום ״אבוד״ הוא יום שלא קרה בו כלום. אבל יום בלי טוב הוא ״גרוע מאבוד״, כי היה לנו סיכוי לשמח מישהו – ופספסנו אותו.",
+          "kw": [
+            "Why – למה",
+            "worse than – גרוע יותר מ…"
+          ],
+          "ev": {
+            "lines": [
+              15,
+              16
+            ]
+          },
+          "tip": "Why do you think…? → התחילו ב־I think that… והוסיפו because.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D4"
+    },
+    {
+      "phase": "Think About It",
+      "phaseHe": "חושבים על השיר",
+      "title": "What do you think?",
+      "heTitle": "מה אתם חושבים?",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "עכשיו נחבר בין חלקים שונים בשיר ובין השיר לחיים. תשובות כאלה מרשימות מאוד את המורים!"
+        },
+        {
+          "t": "compare",
+          "left": {
+            "title": "Stanza 1 (good day)",
+            "lines": [
+              7,
+              8
+            ]
+          },
+          "right": {
+            "title": "Stanza 2 (wasted day)",
+            "lines": [
+              13,
+              16
+            ]
+          },
+          "he": "השוו: בבית 1 נתתם ״sunshine״, והיום ״well spent״. בבית 2 לא הבאתם ״sunshine״ לאף אחד, והיום ״worse than lost״."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the main difference between the two stanzas?",
+          "opts": [
+            "Stanza 1 is about the morning, and stanza 2 is about the night.",
+            "Each stanza has a different speaker.",
+            "Stanza 1: a day with one kind act is well spent. Stanza 2: a day with no kind act is worse than lost.",
+            "There is no difference."
+          ],
+          "a": 2,
+          "why": [
+            "שני הבתים מדברים על אותו יום שלם, שנבדק בשקיעה.",
+            "יש דובר אחד שפונה ל״you״ בשני הבתים.",
+            null,
+            "יש הבדל גדול – התוצאה הפוכה."
+          ],
+          "hint": "השוו את השורה האחרונה בכל בית.",
+          "he": "הבתים בנויים אותו דבר (If… Then…), אבל התוצאה הפוכה: מעשה טוב ← ״well spent״; שום מעשה טוב ← ״worse than lost״. זה ניגוד (contrast).",
+          "kw": [
+            "difference – הבדל",
+            "stanzas – בתים"
+          ],
+          "ev": {
+            "lines": [
+              8,
+              16
+            ]
+          },
+          "tip": "תשובה מצוינת להשוואה: On the one hand, stanza 1… On the other hand, stanza 2…",
+          "tag": "meaning"
+        },
+        {
+          "q": "Why do you think the poem is called \"Count That Day Lost\"?",
+          "opts": [
+            "It is about a page lost from a calendar.",
+            "It is about counting numbers.",
+            "It warns us not to waste our days without helping others.",
+            "It is about a person who got lost."
+          ],
+          "a": 2,
+          "why": [
+            "אין בשיר לוח שנה.",
+            "count כאן = להחשיב, לא לספור מספרים.",
+            null,
+            "אף אחד לא הולך לאיבוד בשיר."
+          ],
+          "hint": "מאיפה לקוחה הכותרת? חפשו אותה בשורה האחרונה.",
+          "he": "הכותרת לקוחה מהשורה האחרונה. היא מזהירה אותנו: אם לא עשינו טוב לאף אחד – היום ״אבוד״. כך הכותרת גורמת לנו לחשוב איך אנחנו מבלים את הזמן.",
+          "kw": [
+            "Why do you think – למה לדעתך",
+            "called – נקרא"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "שאלה על הכותרת? בדקו אם היא מופיעה בתוך השיר, ומה היא מדגישה.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Which situation fits the message of the poem best?",
+          "opts": [
+            "Dana smiles and talks to a new student who sits alone.",
+            "Tom buys a new phone.",
+            "Noa sleeps all Saturday.",
+            "Eli wins a computer game alone."
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "קנייה לעצמך היא לא עזרה לאחר.",
+            "מנוחה זה בסדר – אבל זה לא מעשה טוב לאחרים.",
+            "ניצחון אישי לא עוזר לאף אחד אחר."
+          ],
+          "hint": "מי מהם עשה משהו קטן בשביל מישהו אחר?",
+          "he": "דנה עשתה בדיוק מה שהשיר מתאר: מבט חם ומילה טובה, שלא עלו לה כלום – והביאו ״sunshine״ לפנים של מישהו.",
+          "kw": [
+            "fits – מתאים",
+            "situation – מצב"
+          ],
+          "ev": {
+            "lines": [
+              6,
+              7,
+              13,
+              15
+            ]
+          },
+          "tip": "קישור בין השיר לחיים הוא דרישה נפוצה במשימות ספרות. תמיד חזרו למילים מהשיר.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D1, D3, D5"
+    },
+    {
+      "phase": "Answer Like a Pro",
+      "phaseHe": "עונים כמו מקצוענים",
+      "title": "The 3-step answer",
+      "heTitle": "תשובה בשלושה צעדים",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "במשימות ובמבחנים לא מספיק לדעת את התשובה – צריך לכתוב אותה נכון. זוכרים את שלושת הצעדים?"
+        },
+        {
+          "t": "steps",
+          "items": [
+            {
+              "n": "1",
+              "en": "ANSWER",
+              "he": "עונים על השאלה במשפט אחד ברור.",
+              "ex": "According to the poem, …"
+            },
+            {
+              "n": "2",
+              "en": "PROVE",
+              "he": "מביאים ראיה מהשיר, עם מספר שורה.",
+              "ex": "For example, in lines 4-5 the speaker says, \"…\""
+            },
+            {
+              "n": "3",
+              "en": "EXPLAIN",
+              "he": "מסבירים מה הראיה מראה.",
+              "ex": "This shows that…"
+            }
+          ]
+        },
+        {
+          "t": "he",
+          "text": "תרגול: סדרו את שלושת המשפטים לתשובה טובה. לחצו על המשפטים לפי הסדר הנכון."
+        }
+      ],
+      "widget": {
+        "type": "order",
+        "question": "According to the poem, what makes a day \"well spent\"? Explain.",
+        "items": [
+          "According to the poem, a day is \"well spent\" when we do at least one kind act for another person.",
+          "For example, in lines 4-5 the speaker talks about \"one word / That eased the heart of him who heard.\"",
+          "This shows that even one kind word can make our day meaningful, because it helps someone feel better."
+        ],
+        "labels": [
+          "ANSWER",
+          "PROVE",
+          "EXPLAIN"
+        ],
+        "done": "מצוין! זו תשובה מלאה: תשובה ← ראיה ← הסבר."
+      },
+      "questions": [
+        {
+          "q": "In the answer you built, which sentence is the PROVE part?",
+          "opts": [
+            "According to the poem, a day is \"well spent\"…",
+            "For example, in lines 4-5 the speaker talks about…",
+            "This shows that even one kind word…"
+          ],
+          "a": 1,
+          "why": [
+            "זה ה־ANSWER – התשובה עצמה.",
+            null,
+            "זה ה־EXPLAIN – ההסבר."
+          ],
+          "hint": "באיזה משפט יש ציטוט ומספרי שורות?",
+          "he": "משפט הראיה מביא ציטוט מהשיר עם מספרי שורות. הוא מתחיל בדרך כלל ב־For example, in line…",
+          "kw": [
+            "PROVE – ראיה"
+          ],
+          "ev": {
+            "lines": [
+              4,
+              5
+            ]
+          },
+          "tip": "כשמצטטים שתי שורות, מפרידים ביניהן בקו נטוי: \"one word / That eased the heart…\"",
+          "tag": "writing"
+        }
+      ],
+      "cd": "D2, D4"
+    },
+    {
+      "phase": "Answer Like a Pro",
+      "phaseHe": "עונים כמו מקצוענים",
+      "title": "Build your own answer",
+      "heTitle": "בונים תשובה בעצמנו",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "השאלה: Why do you think the poet uses the word \"sunshine\"? בחרו בכל שלב את המשפט הטוב ביותר."
+        }
+      ],
+      "widget": {
+        "type": "build",
+        "question": "Why do you think the poet uses the word \"sunshine\"? Explain.",
+        "steps": [
+          {
+            "label": "ANSWER",
+            "opts": [
+              {
+                "s": "The poem is about the weather.",
+                "ok": false,
+                "why": "השיר לא עוסק במזג האוויר – השמש היא סמל."
+              },
+              {
+                "s": "Sunshine is yellow and hot.",
+                "ok": false,
+                "why": "זה תיאור של השמש, לא תשובה לשאלה ״למה״."
+              },
+              {
+                "s": "I think the poet uses the word \"sunshine\" to show that a kind act makes another person feel warm and happy.",
+                "ok": true
+              }
+            ]
+          },
+          {
+            "label": "PROVE",
+            "opts": [
+              {
+                "s": "For example, in line 7 a kind glance \"fell like sunshine where it went.\"",
+                "ok": true
+              },
+              {
+                "s": "For example, the poem has two stanzas.",
+                "ok": false,
+                "why": "זו עובדה על המבנה, לא ראיה."
+              },
+              {
+                "s": "For example, in line 9 the day is \"livelong.\"",
+                "ok": false,
+                "why": "השורה הזאת לא קשורה לשמש."
+              }
+            ]
+          },
+          {
+            "label": "EXPLAIN",
+            "opts": [
+              {
+                "s": "This shows that the poet likes summer.",
+                "ok": false,
+                "why": "השיר לא מדבר על קיץ."
+              },
+              {
+                "s": "This shows that, like the sun, a small kind act can bring light and warmth into someone's day.",
+                "ok": true
+              },
+              {
+                "s": "George Eliot was an English writer.",
+                "ok": false,
+                "why": "זה מידע על הכותבת, לא הסבר."
+              }
+            ]
+          }
+        ]
+      },
+      "write": {
+        "prompt": "Now you! Give two examples of how you can use the message of the poem in your own life.",
+        "promptHe": "עכשיו תורכם! תנו שתי דוגמאות לאיך אתם יכולים ליישם את המסר של השיר בחיים שלכם. (40-60 מילים)",
+        "checklist": [
+          "I wrote the message of the poem in one sentence. · כתבתי את המסר",
+          "I gave two examples with \"First\" and \"Second\". · נתתי שתי דוגמאות",
+          "I connected my examples to words from the poem. · חיברתי למילים מהשיר",
+          "I wrote at least 40 words. · כתבתי לפחות 40 מילים"
+        ],
+        "model": "The message of the poem is that we should do at least one kind thing every day. First, I can help my little brother with his homework. Second, I can smile and say hello to a new student who sits alone. These acts are small and \"nothing cost\" (line 15), but they can make someone happy.",
+        "starters": [
+          "The message of the poem is that",
+          "First, I can",
+          "Second, I can",
+          "These acts are small, but"
+        ],
+        "extraCheck": [
+          "First + Second",
+          "first[\\s\\S]*second"
+        ]
+      },
+      "cd": "D3, D5"
+    },
+    {
+      "phase": "Literature Challenge",
+      "phaseHe": "אתגר ספרות",
+      "title": "Literature Challenge",
+      "heTitle": "אתגר: הכול ביחד",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "6 שאלות מעורבות. נסו לענות בלי לפתוח את השיר – ואם צריך, הוא תמיד כאן ב־📜."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Which word rhymes with \"sun\" (line 1)?",
+          "opts": [
+            "find",
+            "word",
+            "kind",
+            "done"
+          ],
+          "a": 3,
+          "why": [
+            "find מתחרזת עם kind (שורות 3, 6).",
+            "word מתחרזת עם heard (שורות 4-5).",
+            "kind מתחרזת עם find.",
+            null
+          ],
+          "hint": "חריזה = סוף מילה שנשמע אותו דבר. קראו בקול: sun…",
+          "he": "sun – done (שורות 1-2). לשיר יש חריזה קבועה, והיא עוזרת לזכור אותו.",
+          "kw": [
+            "rhymes – מתחרז"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2
+            ]
+          },
+          "tip": "מונח שימושי: rhyme = חריזה.",
+          "tag": "text"
+        },
+        {
+          "q": "Both stanzas are built on…",
+          "opts": [
+            "questions and answers",
+            "\"If… then…\" sentences",
+            "a story with many characters",
+            "a conversation between two people"
+          ],
+          "a": 1,
+          "why": [
+            "אין בשיר שאלות.",
+            null,
+            "אין דמויות בשיר – רק ״you״.",
+            "רק הדובר מדבר."
+          ],
+          "hint": "במה מתחילים שני הבתים? ובמה הם נגמרים?",
+          "he": "כל בית מתחיל ב־If (אם…) ונגמר ב־Then (…אז). זה מבנה של תנאי ותוצאה: מה שתעשו – יקבע איך היה היום.",
+          "kw": [
+            "built on – בנוי על"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              8,
+              9,
+              16
+            ]
+          },
+          "tip": "לזהות מבנה של שיר = להבין אותו טוב יותר. If… then… = סיבה ותוצאה.",
+          "tag": "text"
+        },
+        {
+          "q": "\"all the livelong day\" means…",
+          "opts": [
+            "a short day",
+            "the whole long day",
+            "a lively party",
+            "yesterday"
+          ],
+          "a": 1,
+          "why": [
+            "זה ההפך – long = ארוך.",
+            null,
+            "מלכודת! live/lively לא קשורים כאן למסיבה.",
+            "השורה לא מדברת על אתמול."
+          ],
+          "hint": "long = ארוך.",
+          "he": "livelong = כל היום הארוך. ״all the livelong day״ = במשך כל היום, מהבוקר עד הערב.",
+          "kw": [
+            "livelong – כל היום הארוך"
+          ],
+          "ev": {
+            "lines": [
+              9
+            ]
+          },
+          "tip": "מילים ישנות? חפשו בתוכן מילה שאתם מכירים: livelong ← long.",
+          "tag": "vocab"
+        },
+        {
+          "q": "Which words best describe the speaker?",
+          "opts": [
+            "angry and cruel",
+            "confused",
+            "funny",
+            "wise and caring – gives good advice"
+          ],
+          "a": 3,
+          "why": [
+            "הוא רציני, אבל לא אכזרי – הוא רוצה שנהיה טובים.",
+            "הדובר יודע בדיוק מה הוא חושב.",
+            "אין בשיר הומור.",
+            null
+          ],
+          "hint": "מה הדובר עושה לאורך כל השיר?",
+          "he": "הדובר נותן לנו עצה חכמה, כמו מורה או הורה שאכפת לו: איך לבדוק אם היום שלנו היה טוב.",
+          "kw": [
+            "best describe – מתארים הכי טוב"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              8
+            ]
+          },
+          "tip": "מילים לתיאור דובר: wise, caring, serious, kind, strict.",
+          "tag": "meaning"
+        },
+        {
+          "q": "\"That helped some soul\" — what does \"soul\" mean here?",
+          "opts": [
+            "a person",
+            "a type of music",
+            "the bottom of a shoe",
+            "the sun"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "מלכודת! soul music הוא סגנון מוזיקה, אבל לא כאן.",
+            "מלכודת! sole (סוליה) נשמעת אותו דבר, אבל נכתבת אחרת.",
+            "אין קשר לשמש."
+          ],
+          "hint": "soul = נפש. ״עזר לנפש כלשהי״ = עזר ל…?",
+          "he": "soul = נפש, וכאן: אדם. ״helped some soul״ = עזר לאדם כלשהו – לכל אדם שהוא.",
+          "kw": [
+            "soul – נפש, אדם"
+          ],
+          "ev": {
+            "lines": [
+              15
+            ]
+          },
+          "tip": "כמו בעברית: ״לא הייתה שם נפש חיה״ = לא היה שם אף אדם.",
+          "tag": "vocab"
+        },
+        {
+          "q": "Which sentence is NOT true according to the poem?",
+          "opts": [
+            "The speaker wants us to check our day.",
+            "Small acts are important.",
+            "Only expensive gifts make a day good.",
+            "A day without kindness is \"worse than lost\"."
+          ],
+          "a": 2,
+          "why": [
+            "זה נכון – שורות 1-3.",
+            "זה נכון – שורה 14.",
+            null,
+            "זה נכון – שורה 16."
+          ],
+          "hint": "NOT = לא נכון. חפשו את המשפט שהשיר סותר.",
+          "he": "השיר אומר שמעשה טוב ״nothing cost״ (שורה 15) – לא צריך מתנות יקרות. לכן המשפט הזה לא נכון.",
+          "kw": [
+            "NOT true – לא נכון"
+          ],
+          "ev": {
+            "lines": [
+              14,
+              15
+            ]
+          },
+          "tip": "שימו לב למילה NOT! מסמנים אותה בעיגול לפני שעונים.",
+          "tag": "text"
+        }
+      ],
+      "cd": "D2, D4, D5"
+    },
+    {
+      "phase": "Mastery Check",
+      "phaseHe": "בדיקת שליטה",
+      "title": "Mastery Check",
+      "heTitle": "בדיקת שליטה",
+      "mastery": true,
+      "blocks": [
+        {
+          "t": "he",
+          "text": "8 שאלות אחרונות. כאן אין רמזים – רק משוב בסוף כל שאלה. בסוף תקבלו ציון והמלצה על מה לחזור."
+        }
+      ],
+      "questions": [
+        {
+          "q": "When should you \"count the acts that you have done\"?",
+          "opts": [
+            "in the morning",
+            "at lunch",
+            "at set of sun",
+            "on your birthday"
+          ],
+          "a": 2,
+          "why": [
+            "הבוקר הוא תחילת היום.",
+            "לא כתוב בשיר.",
+            null,
+            "השיר מדבר על כל יום."
+          ],
+          "he": "״at set of sun״ – בשקיעה, בסוף היום.",
+          "kw": [
+            "When – מתי"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              2
+            ]
+          },
+          "tip": "set of sun = sunset.",
+          "tag": "text"
+        },
+        {
+          "q": "\"glance\" means…",
+          "opts": [
+            "a quick look",
+            "a glass",
+            "a song",
+            "a gift"
+          ],
+          "a": 0,
+          "why": [
+            null,
+            "glass = כוס, זכוכית.",
+            "song = שיר ששרים.",
+            "gift = מתנה."
+          ],
+          "he": "glance = מבט קצר. ״One glance most kind״ = מבט אחד חם ואדיב.",
+          "kw": [
+            "glance – מבט"
+          ],
+          "ev": {
+            "lines": [
+              6
+            ]
+          },
+          "tip": "מילים דומות במראה הן לא תמיד דומות במשמעות.",
+          "tag": "vocab"
+        },
+        {
+          "q": "The poem is mostly about…",
+          "opts": [
+            "the beauty of the sunset",
+            "how to save money",
+            "the life of George Eliot",
+            "how to know if our day was good – by our kindness to others"
+          ],
+          "a": 3,
+          "why": [
+            "השקיעה היא רק הזמן שבו בודקים את היום.",
+            "השיר אומר שטוב לב ״nothing cost״ – הוא לא עוסק בחיסכון.",
+            "השיר לא ביוגרפיה.",
+            null
+          ],
+          "he": "השיר עוסק בשאלה איך לדעת אם היום שלנו היה טוב – לפי הטוב שעשינו לאחרים.",
+          "kw": [
+            "mostly about – בעיקר על"
+          ],
+          "ev": {
+            "lines": [
+              1,
+              8,
+              16
+            ]
+          },
+          "tip": "theme = על מה השיר.",
+          "tag": "meaning"
+        },
+        {
+          "q": "In which line is the day \"well spent\"?",
+          "opts": [
+            "line 1",
+            "line 8",
+            "line 12",
+            "line 16"
+          ],
+          "a": 1,
+          "why": [
+            "שורה 1 – ״at set of sun״.",
+            null,
+            "שורה 12 – ״nothing done״.",
+            "שורה 16 – ״worse than lost״."
+          ],
+          "he": "שורה 8: ״Then you may count that day well spent.״",
+          "kw": [
+            "which line – איזו שורה"
+          ],
+          "ev": {
+            "lines": [
+              8
+            ]
+          },
+          "tip": "ציון מספר שורה מחזק כל תשובה.",
+          "tag": "text"
+        },
+        {
+          "q": "\"worse than lost\" shows that the speaker thinks…",
+          "opts": [
+            "losing things is bad",
+            "a day without kindness is a terrible waste",
+            "the day was too short",
+            "someone got lost"
+          ],
+          "a": 1,
+          "why": [
+            "אין בשיר חפצים שאבדו.",
+            null,
+            "השיר מדבר על ״all the livelong day״ – יום ארוך.",
+            "הדובר לא הלך לאיבוד."
+          ],
+          "he": "לפי הדובר, יום בלי שום טוב לאחרים הוא בזבוז גדול – אפילו גרוע מיום אבוד.",
+          "kw": [
+            "shows that – מראה ש"
+          ],
+          "ev": {
+            "lines": [
+              16
+            ]
+          },
+          "tip": "shows that = מבקשים משמעות.",
+          "tag": "meaning"
+        },
+        {
+          "q": "Which is the best evidence for: \"Even small acts are important\"?",
+          "opts": [
+            "\"If you sit down at set of sun\"",
+            "\"No act most small / That helped some soul and nothing cost\"",
+            "\"But if, through all the livelong day\"",
+            "\"If, through it all\""
+          ],
+          "a": 1,
+          "why": [
+            "השורה מתארת את הזמן, לא את המעשים.",
+            null,
+            "השורה מתארת את משך היום.",
+            "השורה לא מדברת על מעשים קטנים."
+          ],
+          "he": "השורות 14-15 מדברות במפורש על ״act most small״ – מעשה קטן מאוד שעוזר למישהו.",
+          "kw": [
+            "evidence – ראיה"
+          ],
+          "ev": {
+            "lines": [
+              14,
+              15
+            ]
+          },
+          "tip": "ראיה טובה מוכיחה בדיוק את הטענה – לא רק קשורה לשיר.",
+          "tag": "writing"
+        },
+        {
+          "q": "Which sentence is a good EXPLANATION (not just a quote)?",
+          "opts": [
+            "In line 6 the speaker says \"One glance most kind.\"",
+            "This shows that even a smile can make someone's day better.",
+            "The poem has 16 lines.",
+            "The poet is anonymous."
+          ],
+          "a": 1,
+          "why": [
+            "זה ציטוט, לא הסבר.",
+            null,
+            "עובדה על המבנה.",
+            "עובדה על הכותב."
+          ],
+          "he": "הסבר מתחיל לרוב ב־This shows that… ואומר מה הראיה מלמדת.",
+          "kw": [
+            "explanation – הסבר"
+          ],
+          "ev": {
+            "lines": [
+              6,
+              7
+            ]
+          },
+          "tip": "ANSWER → PROVE → EXPLAIN.",
+          "tag": "writing"
+        },
+        {
+          "q": "Why does the word \"sunshine\" appear in both stanzas?",
+          "opts": [
+            "because the poem is about summer",
+            "because the speaker likes the sun",
+            "by mistake",
+            "to connect the stanzas: in stanza 1 we give \"sunshine\" to others, in stanza 2 we don't"
+          ],
+          "a": 3,
+          "why": [
+            "השיר לא מדבר על קיץ.",
+            "זו לא הסיבה – לשמש יש משמעות סמלית.",
+            "משוררים חוזרים על מילים בכוונה.",
+            null
+          ],
+          "he": "״sunshine״ מחברת בין הבתים: בבית 1 המבט החם ״נופל כמו קרן שמש״ (שורה 7), ובבית 2 לא הבאנו ״sunshine״ לאף פנים (שורה 13). זה מחזק את הניגוד.",
+          "kw": [
+            "Why – למה",
+            "both – שניהם"
+          ],
+          "ev": {
+            "lines": [
+              7,
+              13
+            ]
+          },
+          "tip": "השוואה בין שני הבתים = תשובה ברמה גבוהה.",
+          "tag": "meaning"
+        }
+      ],
+      "cd": "D2, D4, D5"
+    },
+    {
+      "phase": "Sample Answers",
+      "phaseHe": "שאלות ותשובות לדוגמה",
+      "title": "Sample questions & answers",
+      "heTitle": "שאלות ותשובות לדוגמה",
+      "blocks": [
+        {
+          "t": "he",
+          "text": "אלו שאלות בסגנון המשימות והמבחנים בבית הספר. התשובות כתובות באנגלית פשוטה. הביטויים המודגשים הם ״ביטויי זהב״ – אפשר להשתמש בהם בכל תשובה, על כל שיר וסיפור!"
+        }
+      ],
+      "widget": {
+        "type": "samples",
+        "items": [
+          {
+            "q": "According to the speaker, what makes a day \"well spent\"? Explain.",
+            "a": "**According to the speaker**, a day is \"well spent\" when we do at least one kind thing for another person. **For example, in lines 4-5** the speaker talks about \"one word / That eased the heart of him who heard.\" **This shows that** we do not need to do something big. **In my opinion**, even a small act, like a kind word, can make someone's day better."
+          },
+          {
+            "q": "Why do you think the poet uses the word \"sunshine\"?",
+            "a": "**I think** the poet uses the word \"sunshine\" **because** a kind act is like the sun: it brings light and warmth. **For example, in line 7**, a kind glance \"fell like sunshine where it went.\" **This shows that** a kind look can make another person feel warm and happy. **In addition**, in line 13 \"sunshine\" means a smile on someone's face."
+          },
+          {
+            "q": "Explain in your own words what the speaker means by \"nothing cost\" (line 15).",
+            "a": "**The words \"nothing cost\" mean that** the kind act did not cost money and was not hard to do. **For example**, a smile or a kind word is free. **This shows that** everyone can help others, even people who do not have a lot of money. **In my opinion**, this is a very important idea, **because** it means that we have no excuse not to be kind."
+          },
+          {
+            "q": "What is the difference between the two stanzas?",
+            "a": "**On the one hand**, the first stanza talks about a day when we do at least one good thing for someone, and then the day is \"well spent\" (line 8). **On the other hand**, the second stanza talks about a day when we do nothing good for anyone, and then the day is \"worse than lost\" (line 16). **This shows that** our kindness decides the value of our day."
+          },
+          {
+            "q": "Why do you think the poem is called \"Count That Day Lost\"?",
+            "a": "**I think** the poem is called \"Count That Day Lost\" **because** it warns us. The speaker wants us to check our day and ask: \"Did I help anyone today?\" If not, the day is \"worse than lost\" (line 16). **This shows that** a day without kindness is a missed chance. **That is why** the title makes us think about how we spend our time."
+          },
+          {
+            "q": "Give two examples of how you can use the message of the poem in your own life.",
+            "a": "**The message of the poem is that** we should do at least one kind thing every day. **First**, I can help my little brother with his homework. **Second**, I can smile and say hello to a new student who sits alone in class. **Like the speaker says**, these acts are small and \"nothing cost\" (line 15), **but** they can bring \"sunshine\" to someone's face (line 13)."
+          }
+        ]
+      }
+    }
+  ],
+  "phrases": [
+    {
+      "en": "According to the speaker, …",
+      "he": "לפי הדובר, …"
+    },
+    {
+      "en": "In my opinion, …",
+      "he": "לדעתי, …"
+    },
+    {
+      "en": "I think that … because …",
+      "he": "אני חושב/ת ש… כי …"
+    },
+    {
+      "en": "For example, in line __ the speaker says, \"…\"",
+      "he": "למשל, בשורה __ הדובר אומר…"
+    },
+    {
+      "en": "This shows that …",
+      "he": "זה מראה ש…"
+    },
+    {
+      "en": "The message of the poem is that …",
+      "he": "המסר של השיר הוא ש…"
+    },
+    {
+      "en": "The words \"…\" mean that …",
+      "he": "המילים ״…״ אומרות ש…"
+    },
+    {
+      "en": "On the one hand … On the other hand …",
+      "he": "מצד אחד … מצד שני …"
+    },
+    {
+      "en": "First, … Second, …",
+      "he": "ראשית, … שנית, …"
+    },
+    {
+      "en": "In addition, …",
+      "he": "בנוסף, …"
+    },
+    {
+      "en": "Like the speaker says, …",
+      "he": "כמו שהדובר אומר, …"
+    },
+    {
+      "en": "That is why …",
+      "he": "זו הסיבה ש…"
+    }
+  ],
+  "terms": [
+    {
+      "en": "speaker",
+      "he": "הדובר – הקול שמדבר בשיר"
+    },
+    {
+      "en": "stanza",
+      "he": "בית בשיר"
+    },
+    {
+      "en": "line",
+      "he": "שורה"
+    },
+    {
+      "en": "rhyme",
+      "he": "חריזה – סוף מילים שנשמע אותו דבר"
+    },
+    {
+      "en": "repetition",
+      "he": "חזרה על מילים (one, sunshine, count)"
+    },
+    {
+      "en": "symbol",
+      "he": "סמל – דבר שמייצג רעיון גדול"
+    },
+    {
+      "en": "contrast",
+      "he": "ניגוד – השוואה בין שני דברים הפוכים"
+    },
+    {
+      "en": "theme",
+      "he": "נושא – על מה השיר"
+    },
+    {
+      "en": "message",
+      "he": "מסר – מה השיר מלמד אותנו"
+    },
+    {
+      "en": "tone",
+      "he": "טון – האווירה וההרגשה בשיר"
+    }
+  ],
+  "review": {
+    "vocab": {
+      "he": "אוצר מילים",
+      "screen": 1
+    },
+    "text": {
+      "he": "הבנת מה שכתוב בשיר",
+      "screen": 3
+    },
+    "meaning": {
+      "he": "משמעות, סמלים ומסר",
+      "screen": 6
+    },
+    "writing": {
+      "he": "כתיבת תשובה בשלושה צעדים",
+      "screen": 11
+    }
+  },
+  "unitNumber": 2,
+  "level": "D"
+}

@@ -504,7 +504,13 @@ export const he = {
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
 		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
-		skills: { vocab: 'אוצר מילים', reading: 'הבנת הנקרא', writing: 'כתיבה', speaking: 'דיבור' },
+		skills: {
+			vocab: 'אוצר מילים',
+			reading: 'הבנת הנקרא',
+			writing: 'כתיבה',
+			speaking: 'דיבור',
+			literature: 'ספרות'
+		},
 		hookResume: 'יש לכם מבחן שלא סיימתם',
 		hookReady: 'מוכנים למבחן!',
 		hookWords: (n: number) => `${n} מילים לחזרה היום`,
@@ -781,11 +787,15 @@ export const he = {
 		matchDefinitions: 'תרגיל: התאימו מילה להגדרה',
 		matchDefinitionsHint: 'בחרו הגדרה, ואז את המילה שמתאימה לה',
 		answerKeyLabel: 'מפתח התשובה',
+		hintButton: 'לא מבינים את השאלה? עזרה',
 		answerLabel: 'התשובה:',
 		noColor: 'ללא צבע',
 		submitButton: 'בדיקה',
 		passedFeedback: 'יפה מאוד!',
 		notPassedFeedback: 'כמעט — הצבע מראה מה פספסתם'
+	},
+	poem: {
+		tapHint: 'לחצו על שורה כדי לראות אותה בעברית'
 	},
 	answerLang: {
 		en: 'עונים באנגלית',

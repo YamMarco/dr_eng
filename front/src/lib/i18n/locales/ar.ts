@@ -31,7 +31,13 @@ export const ar: DictionaryOverride = {
 		daysToExam: (n: number) => `${n} يومًا حتى البجروت`,
 		daysShort: (n: number) => `${n} يومًا`,
 		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
-		skills: { vocab: 'المفردات', reading: 'فهم المقروء', writing: 'الكتابة', speaking: 'المحادثة' },
+		skills: {
+			vocab: 'المفردات',
+			reading: 'فهم المقروء',
+			writing: 'الكتابة',
+			speaking: 'المحادثة',
+			literature: 'الأدب'
+		},
 		hookResume: 'لديكم امتحان لم تنهوه',
 		hookReady: 'أنتم جاهزون للامتحان!',
 		hookWords: (n: number) => `${n} كلمات للمراجعة اليوم`,
@@ -192,7 +198,8 @@ export const ar: DictionaryOverride = {
 		resumeButton: 'البدء',
 		retakeButton: 'محاولة أخرى',
 		practiceButton: 'تدريب مع ملاحظات',
-		practiceHint: 'في التدريب ترون ملاحظات بعد كل سؤال ويمكن المحاولة مرة أخرى. بلا مؤقت، والعلامة لا تُحفظ.'
+		practiceHint:
+			'في التدريب ترون ملاحظات بعد كل سؤال ويمكن المحاولة مرة أخرى. بلا مؤقت، والعلامة لا تُحفظ.'
 	},
 	unit: {
 		modulePrefix: 'موديول'
@@ -292,11 +299,15 @@ export const ar: DictionaryOverride = {
 		matchDefinitions: 'تمرين: صِلوا الكلمة بالتعريف',
 		matchDefinitionsHint: 'اختاروا تعريفًا، ثم الكلمة المناسبة له',
 		answerKeyLabel: 'مفتاح الإجابة',
+		hintButton: 'لم تفهموا السؤال؟ مساعدة',
 		answerLabel: 'الإجابة:',
 		noColor: 'بدون لون',
 		submitButton: 'فحص',
 		passedFeedback: 'ممتاز!',
 		notPassedFeedback: 'تقريبًا - اللون يريكم ما فاتكم'
+	},
+	poem: {
+		tapHint: 'اضغطوا على سطر لرؤية معناه'
 	},
 	answerLang: {
 		en: 'الإجابة بالإنجليزية',

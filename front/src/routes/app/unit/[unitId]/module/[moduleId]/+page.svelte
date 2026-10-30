@@ -6,6 +6,7 @@
 	import {
 		BookOpen,
 		ClipboardCheck,
+		Feather,
 		Film,
 		FolderOpen,
 		Languages,
@@ -89,7 +90,8 @@
 		vocab: Languages,
 		reading: BookOpen,
 		writing: PenLine,
-		speaking: Mic
+		speaking: Mic,
+		literature: Feather
 	};
 
 	function skillSub(skill: Skill, kind: 'engine' | 'path'): string | undefined {

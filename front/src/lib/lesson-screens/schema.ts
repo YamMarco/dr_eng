@@ -8,7 +8,7 @@
 // Objects are strict: an unknown field is an error, so a misspelled or
 // invented field never slips through.
 import * as z from 'zod';
-import { MOVE_IDS } from './writingMoves';
+import { MOVE_IDS } from './writingMoves.ts';
 
 const option = z
 	.union([z.string(), z.tuple([z.string(), z.string()])])
@@ -217,6 +217,45 @@ export const passageSchema = z
 	})
 	.describe('A titled, scrollable reading passage. Exams only for now. Not scored.');
 
+export const poemSchema = z
+	.strictObject({
+		type: z.literal('poem'),
+		title: z
+			.string()
+			.optional()
+			.describe('The work and its author, e.g. "The Road Not Taken - Robert Frost".'),
+		stanzas: z
+			.array(
+				z.strictObject({
+					label: z.string().optional().describe('e.g. "Stanza 1", or a story part\'s name.'),
+					note: z
+						.string()
+						.optional()
+						.describe(
+							'Mini-markdown under the stanza: what it says, for a licensed text whose lines are not entered yet.'
+						),
+					lines: z.array(
+						z.strictObject({
+							n: z
+								.number()
+								.int()
+								.min(1)
+								.describe('Line (or story event) number, shown in the margin.'),
+							en: z.string().describe('The line. Empty = not entered yet (hidden).'),
+							he: z
+								.string()
+								.optional()
+								.describe('Plain Hebrew meaning, shown when the line is tapped.')
+						})
+					)
+				})
+			)
+			.min(1)
+	})
+	.describe(
+		'A poem (or a story map of numbered events), line by line; tapping a line shows its Hebrew. Not scored.'
+	);
+
 // ---- timing screens (not scored) ----
 
 export const timedReadingSchema = z
@@ -269,6 +308,12 @@ export const mcqSchema = z
 			.string()
 			.optional()
 			.describe('Shown after checking. Say why the others fail, not only why the answer is right.'),
+		hint: z
+			.string()
+			.optional()
+			.describe(
+				'Lesson mode: a help button before checking shows it (key words of the question, a clue). Mini-markdown. Never give the answer away.'
+			),
 		partialFeedback: z
 			.string()
 			.optional()
@@ -618,6 +663,7 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	speakSchema,
 	videoSchema,
 	passageSchema,
+	poemSchema,
 	sentenceCompletionSchema
 ]);
 

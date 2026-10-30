@@ -21,13 +21,14 @@ const writingSection: CurriculumSection = { id: 'writing' };
 
 export const modules: Record<string, CurriculumModule> = {
 	c: { id: 'c', letter: 'C', sections: [textSection, writingSection] },
+	d: { id: 'd', letter: 'D', sections: [textSection, writingSection] },
 	e: { id: 'e', letter: 'E', sections: [textSection, wordsSection] },
 	g: { id: 'g', letter: 'G', sections: [textSection, writingSection] },
 	cobe: { id: 'cobe', letter: 'COBE', sections: [] }
 };
 
 export const unitGroups: UnitGroup[] = [
-	{ id: '4', units: 4, moduleIds: ['c', 'e', 'cobe'] },
+	{ id: '4', units: 4, moduleIds: ['c', 'd', 'e', 'cobe'] },
 	{ id: '5', units: 5, moduleIds: ['e', 'g', 'cobe'] }
 ];
 

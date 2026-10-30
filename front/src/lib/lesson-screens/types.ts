@@ -30,6 +30,7 @@ export type SelfCheckScreen = z.infer<typeof s.selfCheckSchema>;
 export type SpeakScreen = z.infer<typeof s.speakSchema>;
 export type VideoScreen = z.infer<typeof s.videoSchema>;
 export type PassageScreen = z.infer<typeof s.passageSchema>;
+export type PoemScreen = z.infer<typeof s.poemSchema>;
 export type SentenceCompletionScreen = z.infer<typeof s.sentenceCompletionSchema>;
 export type LessonScreen = z.infer<typeof s.lessonScreenSchema>;
 
@@ -102,6 +103,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 			return screen.items.length < 2 || screen.definitions.length === 0;
 		case 'passage':
 			return screen.paragraphs.length === 0;
+		case 'poem':
+			return !screen.stanzas.some((s) => s.note?.trim() || s.lines.some((l) => l.en.trim()));
 		case 'sentence-completion':
 			return !screen.before.trim() && !screen.after.trim();
 		case 'time-result':

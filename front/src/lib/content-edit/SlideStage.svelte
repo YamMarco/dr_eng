@@ -694,6 +694,16 @@
 											</div>
 										</div>
 									</SettingsGroup>
+									<SettingsGroup
+										title="עזרה לפני תשובה"
+										hint="כפתור ״לא מבינים את השאלה? עזרה״ לפני הבדיקה (שיעורים בלבד). מילות השאלה ורמז, בלי לגלות את התשובה. ריק = אין כפתור."
+									>
+										<MarkdownInput
+											minRows={1}
+											value={screen.hint ?? ''}
+											onInput={(v) => (screen.hint = v.trim() ? v : undefined)}
+										/>
+									</SettingsGroup>
 								{:else if screen.type === 'order'}
 									<ListenField
 										checked={screen.listen ?? false}

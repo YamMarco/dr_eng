@@ -26,6 +26,7 @@ export const TYPE_HE: Record<LessonScreen['type'], string> = {
 	video: 'קליפ',
 	'sentence-completion': 'השלמת משפט',
 	passage: 'קטע קריאה (מבחן)',
+	poem: 'שיר / מפת סיפור',
 	'timed-reading': 'קריאה מתוזמנת',
 	'time-result': 'תוצאת זמן',
 	'time-comparison': 'השוואת זמנים'

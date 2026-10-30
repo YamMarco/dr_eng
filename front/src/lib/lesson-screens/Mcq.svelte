@@ -45,6 +45,7 @@
 		mode === 'quiz' ? (answerSlot!.get() as number | number[] | undefined) : undefined;
 	let picks = $state<number[]>(restored === undefined ? [] : [restored].flat());
 	let checked = $state(false);
+	let hintShown = $state(false);
 
 	// Lesson mode shows the options in a fresh order each time, so "the answer
 	// is always the second one" can't be learned. `order[slot]` = the authored
@@ -138,6 +139,21 @@
 </div>
 {#if needed > 1}
 	<p class="mt-1 text-sm font-semibold text-muted">{i18n.dict.exerciseKind.pickN(needed)}</p>
+{/if}
+{#if mode === 'lesson' && screen.hint && !checked}
+	{#if hintShown}
+		<div class="mt-3 rounded-2xl bg-accent-soft p-3 text-sm leading-relaxed">
+			<Md block text={screen.hint} />
+		</div>
+	{:else}
+		<button
+			type="button"
+			onclick={() => (hintShown = true)}
+			class="mt-3 text-sm font-semibold text-brand-dark underline underline-offset-4"
+		>
+			🔑 {i18n.dict.exerciseKind.hintButton}
+		</button>
+	{/if}
 {/if}
 
 {#if screen.layout === 'honeycomb'}
