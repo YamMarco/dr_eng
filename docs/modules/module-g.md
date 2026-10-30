@@ -10,7 +10,7 @@ Present state only. 5-unit module (unit group 5: E, G, COBE). Ids are `g-` prefi
 ## Exams
 
 - `quiz/g/index.ts`: `g-exam-1`..`g-exam-5`, from `Module_G_App_Package.zip` (`module_g_content.json`; teacher copy in its .docx). Each: 5-paragraph article + 9 questions (60 pts), essay 120-140 words (40 pts), 1:45.
-- Mapping: `mc` -> `mcq`, `two` -> `mcq.correctIndices`, `open` / `complete` -> `writing-task` (LLM-graded; the stem goes in the prompt). Option feedback -> `explanation`; model answer + key quote -> `modelAnswer` + `gradingNotes`; model essay -> the essay's `modelAnswer`.
+- Mapping: `mc` -> `mcq`, `two` -> `mcq.correctIndices`, `open` / `complete` -> `writing-task` (LLM-graded; the stem goes in the prompt). Option feedback -> `optionFeedback` (quote on its own line), the half-right line -> `partialFeedback`; model answer + key quote -> `modelAnswer` + `gradingNotes`; model essay -> the essay's `modelAnswer`.
 - Essay grading: the official G rubric (`content/rubrics/module-g-writing.json`, from FGExternalInternal2020.pdf; prompt `grade-essay-g.md`): content /8, vocabulary /10, language /16, mechanics /6. Length table for 120-140 in `checks/length.ts`; under 50 valid words = 0. Exams pick the rubric by `quiz.module`.
 - Not carried over (no exam screen for them yet): the 4-level writing help, self-check, practice/exam modes, the colored model-essay highlights.
 
@@ -24,5 +24,5 @@ Present state only. 5-unit module (unit group 5: E, G, COBE). Ids are `g-` prefi
 
 - Verify against the Ministry booklet: exam length 1:45, reading = 60 points, 8-10 questions, "Hebrew answer = 0".
 - Arabic: no `ar.json` entries or `titles.ar.ts` titles yet (falls back to Hebrew).
-- Exams don't show `explanation` / `modelAnswer` in the report yet.
+- The report doesn't show open questions' `modelAnswer` yet; the Hebrew checklists of open questions were not carried over.
 - Not played by a student yet.

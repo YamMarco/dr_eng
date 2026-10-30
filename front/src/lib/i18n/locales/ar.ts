@@ -119,6 +119,8 @@ export const ar: DictionaryOverride = {
 		totalScoreLabel: 'العلامة',
 		grading: 'نفحص الإجابات المفتوحة...',
 		openAnswersTitle: 'إجابات مفتوحة',
+		closedAnswersTitle: 'أسئلة الاختيار',
+		unanswered: 'لم تُختر إجابة.',
 		notGraded: 'لم تُفحص - الفحص غير متاح الآن. حاليًا تُحسب 0.',
 		retryGrading: 'إعادة الفحص',
 		essayLabel: 'مهمة كتابة',

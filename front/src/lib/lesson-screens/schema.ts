@@ -259,6 +259,16 @@ export const mcqSchema = z
 			.string()
 			.optional()
 			.describe('Shown after checking. Say why the others fail, not only why the answer is right.'),
+		optionFeedback: z
+			.array(z.string().nullable())
+			.optional()
+			.describe(
+				'One per option, same order: shown under a picked option after checking (lessons) or in the exam report. null / missing = no text, the option is only marked right or wrong.'
+			),
+		partialFeedback: z
+			.string()
+			.optional()
+			.describe('Tick-N only: shown when some, but not all, picks are right.'),
 		listen: z
 			.string()
 			.optional()

@@ -2,7 +2,7 @@ import type { QuizNode } from '../types';
 
 // One array literal of every Module G exam (same shape as quiz/c/index.ts).
 // Source: Module_G_App_Package (module_g_content.json), 5 units.
-// Option feedback -> mcq.explanation; model answers -> modelAnswer + gradingNotes.
+// Option feedback -> mcq.optionFeedback / partialFeedback; model answers -> modelAnswer + gradingNotes.
 export const gQuizzes: QuizNode[] = [
 	{
 		id: 'g-exam-1',
@@ -68,8 +68,12 @@ export const gQuizzes: QuizNode[] = [
 							'In the past, people were invited to fewer parties.'
 						],
 						correctIndex: 1,
-						explanation:
-							'בעבר שמעו על מסיבה רק למחרת, והיום אפשר לצפות בה בזמן שהיא מתרחשת: "in real time"\n\n"In the past, people did not compare themselves to others.": לא בדיוק. הכותב אומר שאנשים תמיד השוו את עצמם לאחרים - כלומר, זה לא חדש. מה שהשתנה הוא ההיקף: היום רואים הרבה יותר. חפשו בפסקה II את המילה: "scale"\n\n"Today, psychologists understand the feeling better.": לא בדיוק. הטקסט לא אומר שפסיכולוגים מבינים היום את התחושה טוב יותר. זכרו: תשובה שנשמעת הגיונית אבל לא כתובה בטקסט - אינה התשובה הנכונה.\n\n"In the past, people were invited to fewer parties.": לא בדיוק. הטקסט לא משווה בין מספר המסיבות בעבר ובהווה. ההבדל הוא מתי שומעים עליהן: פעם למחרת, והיום ברגע שהן קורות.',
+						optionFeedback: [
+							'לא בדיוק. הכותב אומר שאנשים תמיד השוו את עצמם לאחרים - כלומר, זה לא חדש. מה שהשתנה הוא ההיקף: היום רואים הרבה יותר. חפשו בפסקה II את המילה:\n"scale"',
+							'בעבר שמעו על מסיבה רק למחרת, והיום אפשר לצפות בה בזמן שהיא מתרחשת:\n"in real time"',
+							'לא בדיוק. הטקסט לא אומר שפסיכולוגים מבינים היום את התחושה טוב יותר. זכרו: תשובה שנשמעת הגיונית אבל לא כתובה בטקסט - אינה התשובה הנכונה.',
+							'לא בדיוק. הטקסט לא משווה בין מספר המסיבות בעבר ובהווה. ההבדל הוא מתי שומעים עליהן: פעם למחרת, והיום ברגע שהן קורות.'
+						],
 						points: 6,
 						paragraphRef: 'II'
 					},
@@ -94,8 +98,15 @@ export const gQuizzes: QuizNode[] = [
 							'spending more money on going out'
 						],
 						correctIndices: [1, 3],
-						explanation:
-							'זו אחת התוצאות שמופיעות בפסקה: "sleep less"\n\nזו אחת התוצאות שמופיעות בפסקה: "find it harder to concentrate in class"\n\n"getting lower grades": לא בדיוק. בפסקה כתוב שקשה להם להתרכז בכיתה, אבל לא כתוב שהציונים שלהם יורדים. אל תוסיפו מסקנות משלכם - בחרו רק במה שכתוב בטקסט.\n\n"losing close friends": לא בדיוק. בני הנוער מפחדים להישאר מחוץ לקבוצה, אבל הטקסט לא אומר שהם מאבדים חברים.\n\n"spending more money on going out": לא בדיוק. כסף לא מוזכר בפסקה III בכלל.',
+						optionFeedback: [
+							'לא בדיוק. בפסקה כתוב שקשה להם להתרכז בכיתה, אבל לא כתוב שהציונים שלהם יורדים. אל תוסיפו מסקנות משלכם - בחרו רק במה שכתוב בטקסט.',
+							'זו אחת התוצאות שמופיעות בפסקה:\n"sleep less"',
+							'לא בדיוק. בני הנוער מפחדים להישאר מחוץ לקבוצה, אבל הטקסט לא אומר שהם מאבדים חברים.',
+							'זו אחת התוצאות שמופיעות בפסקה:\n"find it harder to concentrate in class"',
+							'לא בדיוק. כסף לא מוזכר בפסקה III בכלל.'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. התוצאות מופיעות יחד, ברשימה אחת, מיד אחרי המילים:\n"Teens who report high levels of FOMO tend to…"',
 						points: 8,
 						paragraphRef: 'III'
 					},
@@ -120,8 +131,15 @@ export const gQuizzes: QuizNode[] = [
 							'rejecting all kinds of fun'
 						],
 						correctIndices: [1, 3],
-						explanation:
-							'זה בדיוק מה שהרעיון הזה הוא, לפי הטקסט: "it is about making conscious choices"\n\nמי שבוחר להישאר בבית מרגיש סיפוק, ולא אשמה: "feel satisfied rather than guilty"\n\n"avoiding friends who go out a lot": לא בדיוק. הטקסט אומר במפורש שהרעיון אינו הימנעות מחברים: "JOMO is not about avoiding friends"\n\n"staying online for less than an hour a day": לא בדיוק. בטקסט אין שום מגבלה של שעה ביום. התשובה נשמעת הגיונית, אבל היא לא כתובה בפסקה.\n\n"rejecting all kinds of fun": לא בדיוק. הטקסט אומר שהרעיון אינו ויתור על הנאה: "JOMO is not about … rejecting fun"',
+						optionFeedback: [
+							'לא בדיוק. הטקסט אומר במפורש שהרעיון אינו הימנעות מחברים:\n"JOMO is not about avoiding friends"',
+							'זה בדיוק מה שהרעיון הזה הוא, לפי הטקסט:\n"it is about making conscious choices"',
+							'לא בדיוק. בטקסט אין שום מגבלה של שעה ביום. התשובה נשמעת הגיונית, אבל היא לא כתובה בפסקה.',
+							'מי שבוחר להישאר בבית מרגיש סיפוק, ולא אשמה:\n"feel satisfied rather than guilty"',
+							'לא בדיוק. הטקסט אומר שהרעיון אינו ויתור על הנאה:\n"JOMO is not about … rejecting fun"'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. רמז: מה שהרעיון כן מופיע במשפט שמתחיל במילה:\n"Rather, …"',
 						points: 6,
 						paragraphRef: 'IV'
 					},
@@ -240,8 +258,12 @@ export const gQuizzes: QuizNode[] = [
 							"Noa's friend agreed with her"
 						],
 						correctIndex: 1,
-						explanation:
-							'הסקרים מראים שאנשים רבים חושדים בדיוק כמו נועה: "a large number of smartphone users share the same suspicion"\n\n"most people are not worried about privacy": לא בדיוק. הטקסט לא אומר שאנשים לא דואגים לפרטיות - להפך, נועה עצמה קצת מודאגת: "half joking and half worried"\n\n"the theory has been proven by scientists": לא בדיוק. סקר מראה מה אנשים חושבים, לא מה הוכח. ובפסקה II תראו שהמחקר בכלל לא מצא ראיות לכך.\n\n"Noa\'s friend agreed with her": לא בדיוק. הסקרים לא עוסקים בחברה של נועה, אלא במספר גדול של משתמשים.',
+						optionFeedback: [
+							'לא בדיוק. הטקסט לא אומר שאנשים לא דואגים לפרטיות - להפך, נועה עצמה קצת מודאגת:\n"half joking and half worried"',
+							'הסקרים מראים שאנשים רבים חושדים בדיוק כמו נועה:\n"a large number of smartphone users share the same suspicion"',
+							'לא בדיוק. סקר מראה מה אנשים חושבים, לא מה הוכח. ובפסקה II תראו שהמחקר בכלל לא מצא ראיות לכך.',
+							'לא בדיוק. הסקרים לא עוסקים בחברה של נועה, אלא במספר גדול של משתמשים.'
+						],
 						points: 6,
 						paragraphRef: 'I'
 					},
@@ -297,8 +319,12 @@ export const gQuizzes: QuizNode[] = [
 							'popular products and unpopular products'
 						],
 						correctIndex: 1,
-						explanation:
-							'המילה הראשונה מתארת פרסומות שהתאימו לשיחה ולכן נזכרות, והשנייה - את כל השאר, שאותן אנחנו שוכחים. "hits … misses"\n\n"ads we click on and ads we ignore": לא בדיוק. בפסקה אין שום אזכור של לחיצה על פרסומות.\n\n"apps that listen to us and apps that do not": לא בדיוק. המילים האלה מופיעות בפסקה שעוסקת בפסיכולוגיה ובאופן שבו אנחנו זוכרים פרסומות, ולא באפליקציות שמקשיבות.\n\n"popular products and unpopular products": לא בדיוק. הפסקה לא עוסקת בשאלה אילו מוצרים פופולריים.',
+						optionFeedback: [
+							'לא בדיוק. בפסקה אין שום אזכור של לחיצה על פרסומות.',
+							'המילה הראשונה מתארת פרסומות שהתאימו לשיחה ולכן נזכרות, והשנייה - את כל השאר, שאותן אנחנו שוכחים.\n"hits … misses"',
+							'לא בדיוק. המילים האלה מופיעות בפסקה שעוסקת בפסיכולוגיה ובאופן שבו אנחנו זוכרים פרסומות, ולא באפליקציות שמקשיבות.',
+							'לא בדיוק. הפסקה לא עוסקת בשאלה אילו מוצרים פופולריים.'
+						],
 						points: 6,
 						paragraphRef: 'IV'
 					},
@@ -321,8 +347,12 @@ export const gQuizzes: QuizNode[] = [
 							'to compare the privacy rules of different tech companies'
 						],
 						correctIndex: 1,
-						explanation:
-							'המאמר מסביר למה פרסומות נראות כל כך מדויקות (פסקאות III-IV), ובסוף ממליץ איך לשמור על הפרטיות (פסקה V).\n\n"to warn readers that their phones are secretly recording them": לא בדיוק. המאמר מראה דווקא שאין ראיות לכך שהטלפון מקליט אותנו.\n\n"to describe how advertising companies earn money from apps": לא בדיוק. המאמר לא מסביר איך חברות פרסום מרוויחות כסף.\n\n"to compare the privacy rules of different tech companies": לא בדיוק. המאמר לא משווה בין חברות טכנולוגיה שונות.',
+						optionFeedback: [
+							'לא בדיוק. המאמר מראה דווקא שאין ראיות לכך שהטלפון מקליט אותנו.',
+							'המאמר מסביר למה פרסומות נראות כל כך מדויקות (פסקאות III-IV), ובסוף ממליץ איך לשמור על הפרטיות (פסקה V).',
+							'לא בדיוק. המאמר לא מסביר איך חברות פרסום מרוויחות כסף.',
+							'לא בדיוק. המאמר לא משווה בין חברות טכנולוגיה שונות.'
+						],
 						points: 7
 					}
 				]
@@ -402,8 +432,15 @@ export const gQuizzes: QuizNode[] = [
 							'early bus times'
 						],
 						correctIndices: [0, 2],
-						explanation:
-							'זה אחד ההסברים של המבוגרים: "blame laziness"\n\nזה עוד הסבר של המבוגרים: "late-night phone use"\n\n"too much homework": לא בדיוק. שיעורי בית לא מוזכרים בטקסט.\n\n"health problems": לא בדיוק. בעיות בריאות מופיעות בפסקה III כתוצאה של חוסר שינה, ולא כהסבר שהמבוגרים נותנים.\n\n"early bus times": לא בדיוק. לוחות הזמנים של האוטובוסים מוזכרים רק בפסקה V, כטענה נגד שינוי שעת תחילת הלימודים.',
+						optionFeedback: [
+							'זה אחד ההסברים של המבוגרים:\n"blame laziness"',
+							'לא בדיוק. שיעורי בית לא מוזכרים בטקסט.',
+							'זה עוד הסבר של המבוגרים:\n"late-night phone use"',
+							'לא בדיוק. בעיות בריאות מופיעות בפסקה III כתוצאה של חוסר שינה, ולא כהסבר שהמבוגרים נותנים.',
+							'לא בדיוק. לוחות הזמנים של האוטובוסים מוזכרים רק בפסקה V, כטענה נגד שינוי שעת תחילת הלימודים.'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. ההסברים של המבוגרים מופיעים יחד, ברשימה אחת אחרי המילה:\n"blame"',
 						points: 6,
 						paragraphRef: 'I'
 					},
@@ -438,8 +475,12 @@ export const gQuizzes: QuizNode[] = [
 							'to explain why many adults start work early'
 						],
 						correctIndex: 1,
-						explanation:
-							'החוקר רוצה שמבוגרים ירגישו כמה קשה לנער להיות ערני בשעה שמוקדמת מאוד בשבילו.\n\n"to show that adults also suffer from a lack of sleep": לא בדיוק. ההשוואה לא באה להראות שגם מבוגרים סובלים, אלא לעזור למבוגרים להבין איך מרגיש נער בשבע בבוקר.\n\n"to suggest that teenagers should go to bed earlier": לא בדיוק. הטקסט אומר שבני נוער לא מצליחים להירדם מוקדם, גם כשהם מנסים: "even when they try"\n\n"to explain why many adults start work early": לא בדיוק. הטקסט לא עוסק בשאלה למה מבוגרים מתחילים לעבוד מוקדם.',
+						optionFeedback: [
+							'לא בדיוק. ההשוואה לא באה להראות שגם מבוגרים סובלים, אלא לעזור למבוגרים להבין איך מרגיש נער בשבע בבוקר.',
+							'החוקר רוצה שמבוגרים ירגישו כמה קשה לנער להיות ערני בשעה שמוקדמת מאוד בשבילו.',
+							'לא בדיוק. הטקסט אומר שבני נוער לא מצליחים להירדם מוקדם, גם כשהם מנסים:\n"even when they try"',
+							'לא בדיוק. הטקסט לא עוסק בשאלה למה מבוגרים מתחילים לעבוד מוקדם.'
+						],
 						points: 7,
 						paragraphRef: 'II'
 					},
@@ -476,8 +517,15 @@ export const gQuizzes: QuizNode[] = [
 							'Parents complained less about mornings.'
 						],
 						correctIndices: [0, 1],
-						explanation:
-							'התלמידים ישנו בממוצע יותר מחצי שעה נוספת בכל לילה: "they slept, on average, more than half an hour longer"\n\nזו התוצאה השנייה: "Their grades improved"\n\n"Teachers felt less tired.": לא בדיוק. מורים לא מוזכרים בפסקה.\n\n"Students used their phones less at night.": לא בדיוק. השימוש בטלפון לא מופיע בתוצאות הניסוי.\n\n"Parents complained less about mornings.": לא בדיוק. ההורים מוזכרים רק בפסקה V, כחלק מהביקורת על הרעיון.',
+						optionFeedback: [
+							'התלמידים ישנו בממוצע יותר מחצי שעה נוספת בכל לילה:\n"they slept, on average, more than half an hour longer"',
+							'זו התוצאה השנייה:\n"Their grades improved"',
+							'לא בדיוק. מורים לא מוזכרים בפסקה.',
+							'לא בדיוק. השימוש בטלפון לא מופיע בתוצאות הניסוי.',
+							'לא בדיוק. ההורים מוזכרים רק בפסקה V, כחלק מהביקורת על הרעיון.'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. תוצאות הניסוי מופיעות בשני המשפטים האחרונים של פסקה IV - קראו אותם שוב.',
 						points: 8,
 						paragraphRef: 'IV'
 					},
@@ -501,8 +549,12 @@ export const gQuizzes: QuizNode[] = [
 							'California Leads the Way in Education'
 						],
 						correctIndex: 1,
-						explanation:
-							'השעון הביולוגי של בני הנוער הוא הרעיון המרכזי של כל המאמר: "body clock"\n\n"Lazy Teens: A Growing Problem": לא בדיוק. המאמר טוען בדיוק את ההפך: הקושי לקום בבוקר אינו עצלות.\n\n"How Phones Are Ruining Our Sleep": לא בדיוק. הטלפונים מוזכרים רק בקצרה; הם לא הנושא המרכזי.\n\n"California Leads the Way in Education": לא בדיוק. קליפורניה היא רק דוגמה אחת בפסקה IV. כותרת טובה צריכה להתאים לכל המאמר, ולא לפרט אחד ממנו.',
+						optionFeedback: [
+							'לא בדיוק. המאמר טוען בדיוק את ההפך: הקושי לקום בבוקר אינו עצלות.',
+							'השעון הביולוגי של בני הנוער הוא הרעיון המרכזי של כל המאמר:\n"body clock"',
+							'לא בדיוק. הטלפונים מוזכרים רק בקצרה; הם לא הנושא המרכזי.',
+							'לא בדיוק. קליפורניה היא רק דוגמה אחת בפסקה IV. כותרת טובה צריכה להתאים לכל המאמר, ולא לפרט אחד ממנו.'
+						],
 						points: 6
 					}
 				]
@@ -599,8 +651,12 @@ export const gQuizzes: QuizNode[] = [
 							'to show that phone calls are becoming more expensive'
 						],
 						correctIndex: 0,
-						explanation:
-							'המספרים בסקר מראים שהפחד נפוץ בקרב צעירים: "this fear is widespread among young people"\n\n"to prove that older people answer every call": לא בדיוק. הסקר עוסק בצעירים. המבוגרים מוזכרים רק בסוף הפסקה, ואף אחד לא טוען שהם עונים לכל שיחה.\n\n"to compare British and Israeli teenagers": לא בדיוק. הסקר נערך בבריטניה, ואין בו שום השוואה לישראל.\n\n"to show that phone calls are becoming more expensive": לא בדיוק. מחיר השיחות לא מוזכר בכלל.',
+						optionFeedback: [
+							'המספרים בסקר מראים שהפחד נפוץ בקרב צעירים:\n"this fear is widespread among young people"',
+							'לא בדיוק. הסקר עוסק בצעירים. המבוגרים מוזכרים רק בסוף הפסקה, ואף אחד לא טוען שהם עונים לכל שיחה.',
+							'לא בדיוק. הסקר נערך בבריטניה, ואין בו שום השוואה לישראל.',
+							'לא בדיוק. מחיר השיחות לא מוזכר בכלל.'
+						],
 						points: 7,
 						paragraphRef: 'II'
 					},
@@ -625,8 +681,15 @@ export const gQuizzes: QuizNode[] = [
 							'Teenagers have too many friends to call.'
 						],
 						correctIndices: [0, 2],
-						explanation:
-							'ההסבר הראשון שהמומחים מציינים הוא חוסר ניסיון: "The most obvious is experience."\n\nבהודעה אפשר לחשוב, לכתוב, למחוק ולכתוב מחדש לפני ששולחים: "you can think, write, delete and rewrite before you reply"\n\n"Phone calls cost more than text messages.": לא בדיוק. מחיר השיחות לא מוזכר בפסקה III.\n\n"Smartphones have poor sound quality.": לא בדיוק. איכות הצליל לא מוזכרת.\n\n"Teenagers have too many friends to call.": לא בדיוק. מספר החברים לא מוזכר בכלל.',
+						optionFeedback: [
+							'ההסבר הראשון שהמומחים מציינים הוא חוסר ניסיון:\n"The most obvious is experience."',
+							'לא בדיוק. מחיר השיחות לא מוזכר בפסקה III.',
+							'בהודעה אפשר לחשוב, לכתוב, למחוק ולכתוב מחדש לפני ששולחים:\n"you can think, write, delete and rewrite before you reply"',
+							'לא בדיוק. איכות הצליל לא מוזכרת.',
+							'לא בדיוק. מספר החברים לא מוזכר בכלל.'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. בפסקה III יש שלושה הסברים: חוסר ניסיון, תחושת השליטה שיש בהודעות, והקורונה. מצאו ברשימה את ההסבר הנוסף שמופיע בה.',
 						points: 8,
 						paragraphRef: 'III'
 					},
@@ -757,8 +820,12 @@ export const gQuizzes: QuizNode[] = [
 							'to show that her grandmother already knew her friends'
 						],
 						correctIndex: 0,
-						explanation:
-							'שירה ענתה בלי להסס, כלומר היא בטוחה לגמרי שאלה החברים הכי טובים שלה. "without hesitating"\n\n"to show that Shira was rude to her grandmother": לא בדיוק. אין בטקסט שום רמז לכך ששירה הייתה לא מנומסת.\n\n"to show that Shira did not understand the question": לא בדיוק. שירה ענתה מיד ובבירור - היא הבינה את השאלה היטב.\n\n"to show that her grandmother already knew her friends": לא בדיוק. הסבתא שאלה עם מי שירה מדברת - סימן שהיא לא מכירה אותם.',
+						optionFeedback: [
+							'שירה ענתה בלי להסס, כלומר היא בטוחה לגמרי שאלה החברים הכי טובים שלה.\n"without hesitating"',
+							'לא בדיוק. אין בטקסט שום רמז לכך ששירה הייתה לא מנומסת.',
+							'לא בדיוק. שירה ענתה מיד ובבירור - היא הבינה את השאלה היטב.',
+							'לא בדיוק. הסבתא שאלה עם מי שירה מדברת - סימן שהיא לא מכירה אותם.'
+						],
 						points: 6,
 						paragraphRef: 'I'
 					},
@@ -794,8 +861,15 @@ export const gQuizzes: QuizNode[] = [
 							'Online friends often live in different time zones.'
 						],
 						correctIndices: [0, 2],
-						explanation:
-							'חבר מהרשת יכול להיעלם פשוט כשהוא מתנתק: "online friends can disappear simply by logging off"\n\nקשה לדעת אם האדם שבצד השני דובר אמת: "it is harder to know whether someone is being honest"\n\n"Online games are too expensive.": לא בדיוק. מחיר המשחקים לא מוזכר.\n\n"Teenagers forget how to write properly.": לא בדיוק. כתיבה לא מוזכרת בפסקה.\n\n"Online friends often live in different time zones.": לא בדיוק. אזורי זמן לא מוזכרים.',
+						optionFeedback: [
+							'חבר מהרשת יכול להיעלם פשוט כשהוא מתנתק:\n"online friends can disappear simply by logging off"',
+							'לא בדיוק. מחיר המשחקים לא מוזכר.',
+							'קשה לדעת אם האדם שבצד השני דובר אמת:\n"it is harder to know whether someone is being honest"',
+							'לא בדיוק. כתיבה לא מוזכרת בפסקה.',
+							'לא בדיוק. אזורי זמן לא מוזכרים.'
+						],
+						partialFeedback:
+							'כמעט! אחת התשובות שבחרתם נכונה. החששות מופיעים בפסקה III, מיד אחרי המילים:\n"Critics point out that…"',
 						points: 8,
 						paragraphRef: 'III'
 					},
@@ -840,8 +914,12 @@ export const gQuizzes: QuizNode[] = [
 							'The writer does not express any opinion about it.'
 						],
 						correctIndex: 1,
-						explanation:
-							'בפסקה V הכותב ממליץ לשלב בין שני העולמות: "the healthiest approach is to combine both worlds"\n\n"The writer is completely against it.": לא בדיוק. הכותב מציג גם את היתרונות של חברות ברשת (פסקה IV), ולכן הוא לא מתנגד לה לגמרי.\n\n"The writer believes it is better than face-to-face friendship.": לא בדיוק. הכותב לא אומר שחברות ברשת עדיפה, אלא ממליץ לשלב אותה עם חברויות בחיים האמיתיים.\n\n"The writer does not express any opinion about it.": לא בדיוק. בפסקה V הכותב מביע עמדה ברורה: הכי בריא לשלב בין שני העולמות.',
+						optionFeedback: [
+							'לא בדיוק. הכותב מציג גם את היתרונות של חברות ברשת (פסקה IV), ולכן הוא לא מתנגד לה לגמרי.',
+							'בפסקה V הכותב ממליץ לשלב בין שני העולמות:\n"the healthiest approach is to combine both worlds"',
+							'לא בדיוק. הכותב לא אומר שחברות ברשת עדיפה, אלא ממליץ לשלב אותה עם חברויות בחיים האמיתיים.',
+							'לא בדיוק. בפסקה V הכותב מביע עמדה ברורה: הכי בריא לשלב בין שני העולמות.'
+						],
 						points: 7
 					}
 				]

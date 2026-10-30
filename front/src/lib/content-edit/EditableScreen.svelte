@@ -41,6 +41,17 @@
 		touch();
 	}
 
+	// mcq: the option's feedback goes with it, and the right answers keep pointing at theirs.
+	function removeOption(i: number) {
+		const shift = (x: number) => (x > i ? x - 1 : x);
+		if (screen.optionFeedback) screen.optionFeedback.splice(i, 1);
+		if (screen.correctIndices)
+			screen.correctIndices = screen.correctIndices.filter((x: number) => x !== i).map(shift);
+		else if (screen.correctIndex !== undefined)
+			screen.correctIndex = screen.correctIndex === i ? 0 : shift(screen.correctIndex);
+		removeFrom('options', i);
+	}
+
 	// passage-mcq: {prompt, options, correctIndex}[] questions,
 	// edited inline in the same radio-button style as a plain mcq screen.
 	function addMcqQuestion() {
@@ -212,10 +223,8 @@
 								}}
 							/>
 						</div>
-						<button
-							type="button"
-							class="text-xs text-danger"
-							onclick={() => removeFrom('options', i)}>✕</button
+						<button type="button" class="text-xs text-danger" onclick={() => removeOption(i)}
+							>✕</button
 						>
 					</li>
 				{/each}

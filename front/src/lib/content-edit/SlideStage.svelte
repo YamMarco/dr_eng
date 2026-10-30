@@ -59,7 +59,7 @@
 		type MarkAllSwatch
 	} from '$lib/lesson-screens/markAllColors';
 	import { formatScreenLocation, type ScreenPath } from './screenPath';
-	import type { LessonScreen } from '$lib/lesson-screens/types';
+	import { mcqCorrect, type LessonScreen } from '$lib/lesson-screens/types';
 
 	let {
 		model,
@@ -144,6 +144,15 @@
 		if (!result.ok) return;
 		model.applyScreen(nodeId, path, result.screen);
 		rawOpen = false;
+	}
+
+	// ---- mcq per-option feedback: kept parallel to options, null = none ----
+	function setOptionFeedback(i: number, v: string) {
+		const fb: (string | null)[] = screen.options.map(
+			(_: string, j: number) => screen.optionFeedback?.[j] ?? null
+		);
+		fb[i] = v.trim() ? v : null;
+		screen.optionFeedback = fb.some((f) => f !== null) ? fb : undefined;
 	}
 
 	// ---- mark-all category marking ----
@@ -657,6 +666,55 @@
 											stacked
 										/>
 									</ListenField>
+									<SettingsGroup
+										title="משוב"
+										hint="משוב לכל תשובה מוצג מתחת לתשובה שנבחרה, אחרי הבדיקה (במבחן: בדוח). תשובה בלי משוב מסומנת רק כנכונה או שגויה."
+									>
+										<div class="space-y-2">
+											{#each screen.options as option, i (i)}
+												<div>
+													<p
+														class="mb-0.5 truncate text-xs font-semibold {mcqCorrect(
+															screen
+														).includes(i)
+															? 'text-brand-dark'
+															: 'text-muted'}"
+														dir="auto"
+													>
+														{mcqCorrect(screen).includes(i) ? '✓' : '✗'}
+														{option || '...'}
+													</p>
+													<MarkdownInput
+														minRows={1}
+														value={screen.optionFeedback?.[i] ?? ''}
+														onInput={(v) => setOptionFeedback(i, v)}
+													/>
+												</div>
+											{/each}
+											{#if screen.correctIndices}
+												<div>
+													<p class="mb-0.5 text-xs font-semibold text-muted">
+														רק חלק מהתשובות הנכונות נבחרו
+													</p>
+													<MarkdownInput
+														minRows={1}
+														value={screen.partialFeedback ?? ''}
+														onInput={(v) => (screen.partialFeedback = v.trim() ? v : undefined)}
+													/>
+												</div>
+											{/if}
+											<div>
+												<p class="mb-0.5 text-xs font-semibold text-muted">
+													מפתח התשובה (לכל התשובות)
+												</p>
+												<MarkdownInput
+													minRows={1}
+													value={screen.explanation ?? ''}
+													onInput={(v) => (screen.explanation = v.trim() ? v : undefined)}
+												/>
+											</div>
+										</div>
+									</SettingsGroup>
 								{:else if screen.type === 'order'}
 									<ListenField
 										checked={screen.listen ?? false}

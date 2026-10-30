@@ -599,6 +599,8 @@ export const he = {
 		totalScoreLabel: 'ציון',
 		grading: 'בודקים את התשובות הפתוחות...',
 		openAnswersTitle: 'תשובות פתוחות',
+		closedAnswersTitle: 'שאלות סגורות',
+		unanswered: 'לא נבחרה תשובה.',
 		notGraded: 'לא נבדקה - הבדיקה לא זמינה כרגע. בינתיים נספרת כ-0.',
 		retryGrading: 'בדיקה חוזרת',
 		essayLabel: 'משימת כתיבה',

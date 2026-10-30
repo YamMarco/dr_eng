@@ -59,6 +59,13 @@ export function screenProblems(screen: LessonScreen): ScreenProblem[] {
 			out.push(...outOfRange('correctIndex', mcqCorrect(screen), screen.options.length));
 			out.push(...duplicates('correctIndices', (screen.correctIndices ?? []).map(String)));
 			out.push(...duplicates('options', screen.options));
+			if ((screen.optionFeedback?.length ?? 0) > screen.options.length)
+				out.push({ severity: 'error', message: 'ב-optionFeedback יותר פריטים מאפשרויות' });
+			if (screen.partialFeedback && !screen.correctIndices)
+				out.push({
+					severity: 'warn',
+					message: 'partialFeedback מוצג רק בשאלה עם כמה תשובות נכונות'
+				});
 			break;
 		case 'cloze-pick':
 			out.push(...outOfRange('correctIndices', screen.correctIndices, screen.options.length));
