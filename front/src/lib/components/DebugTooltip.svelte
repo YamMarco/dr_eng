@@ -11,7 +11,7 @@
 
 <!-- Own view-transition layer: a fixed element inside the root snapshot gets
      cross-faded/jumped on every route change. -->
-<div class="fixed inset-e-4 bottom-20 z-40" style="view-transition-name: debug-tools">
+<div class="fixed inset-e-4 bottom-40 z-40 lg:bottom-20" style="view-transition-name: debug-tools">
 	<button
 		type="button"
 		aria-label="כלי דיבוג"

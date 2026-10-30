@@ -11,8 +11,8 @@
 	import { screenContext } from '$lib/screenContext.svelte';
 	import { SUPPORT_EMAIL, TESTERS_GROUP, emailHref } from '$lib/support';
 
-	// Testers' feedback, reachable from every app screen: a tab on the screen's
-	// edge, clear of the bottom bars and the lesson's action buttons. Signed in,
+	// Testers' feedback, reachable from every app screen: a pill in the bottom corner,
+	// above the phone's nav bar and the lesson / exam action bar. Signed in,
 	// it's a report form (text + a screenshot of the screen behind it, the URL and
 	// the lesson screen) that /api/feedback emails to support@; signed out, a mail link.
 	let t = $derived(i18n.dict.testerFeedback);
@@ -67,7 +67,7 @@
 	data-no-screenshot
 	hidden={open}
 	onclick={start}
-	class="fixed inset-e-0 top-1/2 z-[60] flex min-h-10 -translate-y-1/2 items-center gap-1.5 rounded-s-full bg-brand ps-3 pe-2.5 text-sm font-bold text-white shadow-lg transition hover:bg-brand-dark active:scale-95"
+	class="fixed inset-e-4 bottom-24 z-[60] flex min-h-11 items-center gap-1.5 rounded-full bg-brand px-4 text-sm font-bold text-white shadow-lg ring-2 ring-surface transition hover:bg-brand-dark active:scale-95 lg:inset-e-6 lg:bottom-6"
 >
 	<MessageSquareText size={16} aria-hidden="true" />
 	{t.button}
