@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "front/package.json": {
-    "mtime": 1793202870.4822507,
-    "ast_hash": "354f3e37c87a4927257e7b54349c73b2",
+    "mtime": 1793378694.4428113,
+    "ast_hash": "798e72b45754923e7250b5edfb4eb04c",
     "semantic_hash": ""
   },
   "front/prettier.config.js": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "front/src/app.d.ts": {
-    "mtime": 1792312572.2721586,
-    "ast_hash": "ce9768405ceea2a945a20ea2da41ed75",
+    "mtime": 1793378736.387228,
+    "ast_hash": "e5c8673229bc1b5351f46675bf828fb4",
     "semantic_hash": ""
   },
   "front/src/lib/components/AppBar.svelte": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/Sheet.svelte": {
-    "mtime": 1792821268.618313,
-    "ast_hash": "c56956594b56ce4e3309cee61b6b60f6",
+    "mtime": 1793378991.908051,
+    "ast_hash": "cdd8892d42d442781f13a58a0c3c4b66",
     "semantic_hash": ""
   },
   "front/src/lib/components/Toggle.svelte": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793372199.1468537,
-    "ast_hash": "981e95863a0c3e77f7555098e4b208e9",
+    "mtime": 1793378852.1266987,
+    "ast_hash": "d2be759affad239e83d47cc560070045",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1792833089.0370932,
-    "ast_hash": "5e1b097783345fc63ac4321f8f9ce992",
+    "mtime": 1793378722.4392085,
+    "ast_hash": "81c3c4da92315e1b35b68a15f312b43d",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuizRunner.svelte": {
-    "mtime": 1793348036.258284,
-    "ast_hash": "60f2bea66d8aa3a41c391134a8a6f305",
+    "mtime": 1793378722.4583328,
+    "ast_hash": "49d4c2a09233d66cc2270d24938d32f4",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/answers.svelte.ts": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/db/schema.ts": {
-    "mtime": 1793337416.0925486,
-    "ast_hash": "b112e9d4d177e620a289218252227abe",
+    "mtime": 1793378736.3893466,
+    "ast_hash": "e61514f9a05a01b9fa9aa3c4fd5c03ff",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
@@ -1285,8 +1285,8 @@
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1793202853.297639,
-    "ast_hash": "bbee92f8609180936ef2104ecf6bbd72",
+    "mtime": 1793378736.387228,
+    "ast_hash": "bf59ad8a0b6d249f42e1626eb1774a88",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1440,8 +1440,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/supabase.ts": {
-    "mtime": 1791972917.4151535,
-    "ast_hash": "8d27efe19cfd343147a87b68d09c7d42",
+    "mtime": 1793378736.387228,
+    "ast_hash": "824a7750ea251c0672c44246fdff1dc7",
     "semantic_hash": ""
   },
   "front/src/lib/supabase.ts": {
@@ -1450,8 +1450,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/account/+server.ts": {
-    "mtime": 1792822067.8379154,
-    "ast_hash": "46a30772f573f0bf2048250ce7919d90",
+    "mtime": 1793379067.3245,
+    "ast_hash": "616a816642b5c646294a62dac450ed69",
     "semantic_hash": ""
   },
   "front/src/vite-env.d.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793337439.1773205,
-    "ast_hash": "efc7a0cdadd9139d5160c96657121c9c",
+    "mtime": 1793379067.3272443,
+    "ast_hash": "c9bd3166db39ce52f76e0adea72c7568",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1600,8 +1600,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1793337416.0837958,
-    "ast_hash": "4341a7f0ea1cfa29123f8ce1031c5d59",
+    "mtime": 1793378742.5687156,
+    "ast_hash": "8bd5588905bcae03d8c510a4f7b143ec",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -2385,8 +2385,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/FeedbackButton.svelte": {
-    "mtime": 1793378243.6485066,
-    "ast_hash": "d9ed288e1484ebb155ef724f445d645d",
+    "mtime": 1793378991.9467344,
+    "ast_hash": "7614007a31cfc881b71fe311892ce23f",
     "semantic_hash": ""
   },
   "docs/handoffs/about-later.md": {
@@ -2400,13 +2400,43 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793371944.6139908,
-    "ast_hash": "9e9f27347a289fb3785165cbfcdae650",
+    "mtime": 1793379067.3341289,
+    "ast_hash": "25e5f2f4d1af0207525360845c4b8e8e",
     "semantic_hash": ""
   },
   "docs/handoffs/support-email.md": {
     "mtime": 1793378111.4475226,
     "ast_hash": "5a4ff4e0c47b8975e102ad53ccbd7eb2",
+    "semantic_hash": ""
+  },
+  "front/drizzle/0009_feedback_reports.sql": {
+    "mtime": 1793378746.5375156,
+    "ast_hash": "37bf37c68ebffbcde49ee3cd5427eabf",
+    "semantic_hash": ""
+  },
+  "front/drizzle/meta/0009_snapshot.json": {
+    "mtime": 1793378742.5687156,
+    "ast_hash": "eecae20c0afc0dcc9e43e65764e9b079",
+    "semantic_hash": ""
+  },
+  "front/src/lib/screenContext.svelte.ts": {
+    "mtime": 1793378707.529305,
+    "ast_hash": "0795872e6c6dbe43ded028e71d845364",
+    "semantic_hash": ""
+  },
+  "front/src/lib/screenshot.ts": {
+    "mtime": 1793378708.3297482,
+    "ast_hash": "d4b568d6e90c79e404b967cd9e95a986",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/feedbackEmail.ts": {
+    "mtime": 1793378763.8207395,
+    "ast_hash": "a3d64d8704bb4043108df9f2a0d00e36",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/feedback/+server.ts": {
+    "mtime": 1793378785.5015721,
+    "ast_hash": "90992c2df3ab6a953c89ca3f5c0be410",
     "semantic_hash": ""
   }
 }

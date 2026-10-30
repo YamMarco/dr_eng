@@ -45,6 +45,7 @@ const app: Handle = async ({ event, resolve }) => {
 		if (admin && !user.isAdmin) return new Response('staff only', { status: 403, headers });
 		event.locals.userId = user.id;
 		event.locals.isAdmin = user.isAdmin;
+		event.locals.email = user.email;
 	}
 
 	const response = await resolve(event);

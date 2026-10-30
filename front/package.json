@@ -53,6 +53,7 @@
 		"@lucide/svelte": "^1.37.0",
 		"@supabase/supabase-js": "^2.117.3",
 		"drizzle-orm": "^0.45.3",
+		"modern-screenshot": "4.7.0",
 		"nspell": "^2.1.5",
 		"postgres": "^3.4.9",
 		"web-push": "^3.6.7",

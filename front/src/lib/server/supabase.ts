@@ -12,7 +12,7 @@ export const accountsEnabled = Boolean(url && key);
 
 const client = url && key ? createClient(url, key, noSession) : null;
 
-export type SessionUser = { id: string; isAdmin: boolean };
+export type SessionUser = { id: string; isAdmin: boolean; email?: string };
 
 /** The signed-in user, or null when the token is missing, invalid or expired. */
 export async function userFrom(request: Request): Promise<SessionUser | null> {
@@ -22,7 +22,11 @@ export async function userFrom(request: Request): Promise<SessionUser | null> {
 		const { data, error } = await client.auth.getClaims(token);
 		if (error || !data) return null;
 		// app_metadata is writable only with the secret key, so the role can be trusted.
-		return { id: data.claims.sub, isAdmin: data.claims.app_metadata?.role === 'admin' };
+		return {
+			id: data.claims.sub,
+			isAdmin: data.claims.app_metadata?.role === 'admin',
+			email: data.claims.email
+		};
 	} catch {
 		return null; // malformed token, or the key set couldn't be fetched
 	}

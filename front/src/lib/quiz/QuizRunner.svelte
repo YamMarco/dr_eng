@@ -25,6 +25,7 @@
 	import QuestionNavigator from './QuestionNavigator.svelte';
 	import PassageBody from '$lib/lesson-screens/PassageBody.svelte';
 	import type { QuizNode } from './types';
+	import { screenContext } from '$lib/screenContext.svelte';
 
 	let {
 		quiz,
@@ -107,6 +108,13 @@
 	let retries = $state(0);
 
 	let currentEntry = $derived(allEntries[entryIndex]);
+
+	// Feedback reports name the screen the student is on.
+	$effect(() => {
+		if (!currentEntry) return;
+		screenContext.label = `${quiz.id} · ${currentEntry.id}`;
+		return () => (screenContext.label = '');
+	});
 	let reviewing = $derived(practice && !!currentEntry && reviewed.has(currentEntry.id));
 	let reviewScore = $derived(
 		reviewing && currentEntry

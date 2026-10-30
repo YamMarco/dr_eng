@@ -11,6 +11,7 @@
 - Push reminder subscriptions (`push_subscriptions`): endpoint + chosen hour.
 - AI usage counts (`llm_usage`): per user per day, for the daily quota.
 - Waitlist emails (`waitlist`).
+- Feedback reports (`feedback_reports`: user id + time, for the daily cap). The report itself (text, page URL, device, an optional screenshot of the screen) is emailed to support@ through Resend and lands in the team's Gmail via ImprovMX: say so, screenshots can show the student's answers.
 
 **Sent to an AI model (Google Gemini, via Vercel AI Gateway):**
 - Written answers and essays, for grading (`/api/grade`).
@@ -19,7 +20,7 @@
 
 **Stays on the device only:** recordings in lesson practice (IndexedDB, first + latest take), settings, theme, language.
 
-**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), Resend (auth emails), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No analytics or ads yet: update the policy when added.
+**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No analytics or ads yet: update the policy when added.
 
 **User rights already built:** delete account (settings; `/api/account` DELETE removes the user, progress, AI usage and push rows; orders stay, for tax records: say so). Add: export my data (by email request is enough at first).
 

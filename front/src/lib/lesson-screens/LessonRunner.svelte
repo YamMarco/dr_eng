@@ -21,7 +21,12 @@
 	import { isScreenEmpty, countQuestions } from './types';
 	import { debugStore } from '$lib/debug.svelte';
 	import { lockScroll } from '$lib/scrollLock';
-	import { screenPathsForRound, screensForRound } from '$lib/content-edit/screenPath';
+	import {
+		formatScreenLocation,
+		screenPathsForRound,
+		screensForRound
+	} from '$lib/content-edit/screenPath';
+	import { screenContext } from '$lib/screenContext.svelte';
 	import type { LessonNode } from '$lib/content';
 	import type { LessonScreen } from './types';
 
@@ -154,6 +159,13 @@
 
 	let currentScreen = $derived(screens[screenIndex]);
 	let currentPath = $derived(screenPaths?.[screenIndex]);
+
+	// Feedback reports name the screen the student is on.
+	$effect(() => {
+		if (!lesson || !currentPath) return;
+		screenContext.label = formatScreenLocation(lesson.id, currentPath);
+		return () => (screenContext.label = '');
+	});
 	let editHref = $derived.by(() => {
 		if (!dev || !lesson || !currentPath) return undefined;
 		const round = currentPath.bucket === 'preface' ? 0 : currentPath.bucket;

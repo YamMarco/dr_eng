@@ -7,6 +7,8 @@ declare global {
 			/** Supabase user id on every /api route, once accounts are on (see hooks.server.ts). */
 			userId?: string;
 			isAdmin?: boolean;
+			/** From the verified token (feedback reports reply to it). */
+			email?: string;
 		}
 		// interface PageData {}
 		interface PageState {

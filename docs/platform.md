@@ -108,6 +108,16 @@ The site installs as a home-screen app (PWA) and sends one push reminder a day, 
 3. `npm run db:migrate` (table `push_subscriptions`).
 4. Redeploy. Until the keys are set, the reminder row is hidden and the routes answer 503.
 
+## Feedback reports
+
+The "משוב" tab on every `/app` screen (`FeedbackButton.svelte`) opens a report sheet. Signed out it's a mail link to `support@engup.co.il`; signed in it's a form:
+
+- **Sent:** the text, the page URL, the lesson / exam screen (`$lib/screenContext.svelte.ts`, set by LessonRunner and QuizRunner), viewport, UI language and an optional screenshot.
+- **Screenshot:** taken when the sheet opens (`$lib/screenshot.ts`, `modern-screenshot`, loaded on first use). It captures the full-screen overlay if one is open (lesson, exam), else the visible part of the page. Elements marked `data-no-screenshot` (the tab, the sheet) are left out. JPEG, max 1280 px wide.
+- **`/api/feedback`:** signed-in only. Emails the report through Resend (`RESEND_API_KEY`, sender `team@engup.co.il`, reply-to the student) to `support@engup.co.il`, which ImprovMX forwards to the team's Gmail. Template: `server/feedbackEmail.ts`, all client text escaped.
+- **Caps:** 10 a day per user, 300 a day overall, counted in `feedback_reports` (user id + time only). Off (503) without `RESEND_API_KEY` or `DATABASE_URL`.
+- Testers' WhatsApp group: `TESTERS_GROUP` in `$lib/support.ts`, shown to signed-in users.
+
 ## Word-card images
 
 Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<file>`; `lesson-screens/vocabImage.ts` maps it to the bucket URL. `/edit` uploads go straight to the bucket (live at once). Bulk copy: `node --env-file=.env.local scripts/upload-vocab-images.mjs <folder>`.
