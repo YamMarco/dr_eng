@@ -1,17 +1,16 @@
 // A student's feedback report (the "משוב" sheet): emailed to support@ via Resend, with the
-// page URL, the lesson screen and an optional screenshot. Signed-in only; daily caps per
-// user and overall bound what one account or a script can send.
+// page URL, the lesson screen and an optional screenshot. Nothing is stored. Signed-in only,
+// with an in-memory limit per user (per instance: it stops loops and casual flooding, not a
+// determined script; Resend's own daily quota is the backstop).
 import { env } from '$env/dynamic/private';
 import { error, json } from '@sveltejs/kit';
-import { and, eq, gt, sql } from 'drizzle-orm';
 import { z } from 'zod';
-import { db } from '$lib/server/db';
-import { feedbackReports } from '$lib/server/db/schema';
 import { feedbackHtml, feedbackSubject } from '$lib/server/feedbackEmail';
 import type { RequestHandler } from './$types';
 
-const USER_DAILY = 10;
-const GLOBAL_DAILY = 300;
+const WINDOW_MS = 60 * 60_000;
+const PER_WINDOW = 5;
+const sent = new Map<string, number[]>();
 const TO = 'support@engup.co.il';
 const FROM = 'EngUp <team@engup.co.il>';
 const JPEG_PREFIX = 'data:image/jpeg;base64,';
@@ -30,29 +29,24 @@ const body = z.object({
 		.optional()
 });
 
-const lastDay = sql`now() - interval '1 day'`;
+/** Records this report unless the user already sent PER_WINDOW in the last hour. */
+function allowed(userId: string): boolean {
+	const now = Date.now();
+	const recent = (sent.get(userId) ?? []).filter((t) => now - t < WINDOW_MS);
+	if (recent.length >= PER_WINDOW) return false;
+	sent.set(userId, [...recent, now]);
+	return true;
+}
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!locals.userId) error(401, 'sign in required');
-	if (!db || !env.RESEND_API_KEY) error(503, 'feedback is off');
+	if (!env.RESEND_API_KEY) error(503, 'feedback is off');
 	const parsed = body.safeParse(await request.json().catch(() => null));
 	if (!parsed.success) error(400, 'invalid');
 	const report = parsed.data;
 	if (!report.message && !report.screenshot) error(400, 'empty');
 
-	const [mine, all] = await Promise.all([
-		db
-			.select({ count: sql<number>`count(*)::int` })
-			.from(feedbackReports)
-			.where(and(eq(feedbackReports.userId, locals.userId), gt(feedbackReports.createdAt, lastDay))),
-		db
-			.select({ count: sql<number>`count(*)::int` })
-			.from(feedbackReports)
-			.where(gt(feedbackReports.createdAt, lastDay))
-	]);
-	if (mine[0].count >= USER_DAILY || all[0].count >= GLOBAL_DAILY)
-		return json({ error: 'limit' }, { status: 429 });
-	await db.insert(feedbackReports).values({ userId: locals.userId });
+	if (!allowed(locals.userId)) return json({ error: 'limit' }, { status: 429 });
 
 	const email = {
 		...report,

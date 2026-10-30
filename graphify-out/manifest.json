@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793378852.1266987,
-    "ast_hash": "d2be759affad239e83d47cc560070045",
+    "mtime": 1793379306.2124093,
+    "ast_hash": "b644fef95ed3361d034b3a1b136d900c",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/db/schema.ts": {
-    "mtime": 1793378736.3893466,
-    "ast_hash": "e61514f9a05a01b9fa9aa3c4fd5c03ff",
+    "mtime": 1793379306.082492,
+    "ast_hash": "b112e9d4d177e620a289218252227abe",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
@@ -1450,8 +1450,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/account/+server.ts": {
-    "mtime": 1793379067.3245,
-    "ast_hash": "616a816642b5c646294a62dac450ed69",
+    "mtime": 1793379306.0921285,
+    "ast_hash": "46a30772f573f0bf2048250ce7919d90",
     "semantic_hash": ""
   },
   "front/src/vite-env.d.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793379067.3272443,
-    "ast_hash": "c9bd3166db39ce52f76e0adea72c7568",
+    "mtime": 1793379306.2124093,
+    "ast_hash": "3eab5ae44da18f7bf5981009ed9f4568",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1600,8 +1600,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1793378742.5687156,
-    "ast_hash": "8bd5588905bcae03d8c510a4f7b143ec",
+    "mtime": 1793379288.645109,
+    "ast_hash": "4341a7f0ea1cfa29123f8ce1031c5d59",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -2400,23 +2400,13 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793379067.3341289,
-    "ast_hash": "25e5f2f4d1af0207525360845c4b8e8e",
+    "mtime": 1793379306.2144203,
+    "ast_hash": "8639387ab5cd2d0c4581443a22171565",
     "semantic_hash": ""
   },
   "docs/handoffs/support-email.md": {
     "mtime": 1793378111.4475226,
     "ast_hash": "5a4ff4e0c47b8975e102ad53ccbd7eb2",
-    "semantic_hash": ""
-  },
-  "front/drizzle/0009_feedback_reports.sql": {
-    "mtime": 1793378746.5375156,
-    "ast_hash": "37bf37c68ebffbcde49ee3cd5427eabf",
-    "semantic_hash": ""
-  },
-  "front/drizzle/meta/0009_snapshot.json": {
-    "mtime": 1793378742.5687156,
-    "ast_hash": "eecae20c0afc0dcc9e43e65764e9b079",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2435,8 +2425,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/feedback/+server.ts": {
-    "mtime": 1793378785.5015721,
-    "ast_hash": "90992c2df3ab6a953c89ca3f5c0be410",
+    "mtime": 1793379306.2103987,
+    "ast_hash": "99f23ce07004433776125312f3677e7f",
     "semantic_hash": ""
   }
 }

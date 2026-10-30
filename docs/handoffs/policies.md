@@ -11,7 +11,7 @@
 - Push reminder subscriptions (`push_subscriptions`): endpoint + chosen hour.
 - AI usage counts (`llm_usage`): per user per day, for the daily quota.
 - Waitlist emails (`waitlist`).
-- Feedback reports (`feedback_reports`: user id + time, for the daily cap). The report itself (text, page URL, device, an optional screenshot of the screen) is emailed to support@ through Resend and lands in the team's Gmail via ImprovMX: say so, screenshots can show the student's answers.
+- Feedback reports are not stored: the report (text, page URL, device, an optional screenshot of the screen) is emailed to support@ through Resend and lands in the team's Gmail via ImprovMX: say so, screenshots can show the student's answers.
 
 **Sent to an AI model (Google Gemini, via Vercel AI Gateway):**
 - Written answers and essays, for grading (`/api/grade`).

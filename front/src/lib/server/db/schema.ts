@@ -134,14 +134,3 @@ export const kanbanTasks = pgTable('kanban_tasks', {
 	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
 	updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow()
 }).enableRLS();
-
-/** Feedback reports sent from the app (/api/feedback), for its daily caps. The report itself is emailed. */
-export const feedbackReports = pgTable(
-	'feedback_reports',
-	{
-		id: uuid().primaryKey().defaultRandom(),
-		userId: uuid().notNull(),
-		createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
-	},
-	(table) => [index().on(table.userId, table.createdAt)]
-).enableRLS();
