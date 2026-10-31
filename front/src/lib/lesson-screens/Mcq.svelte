@@ -16,6 +16,7 @@
 	import { untrack } from 'svelte';
 	import ListenCard from './ListenCard.svelte';
 	import McqFeedback from './McqFeedback.svelte';
+	import AnswerMark from './AnswerMark.svelte';
 	import { getRuleChain } from '$lib/feedback/context';
 	import { resolveRules } from '$lib/feedback/rules';
 
@@ -195,6 +196,7 @@
 			<button
 				type="button"
 				disabled={checked || isMissed}
+				aria-pressed={checked ? undefined : isSelected}
 				onclick={() => pick(i)}
 				in:scale={{
 					start: 0.4,
@@ -203,7 +205,7 @@
 					easing: backOut
 				}}
 				style="left: {pos.x}px; top: {pos.y}px; width: {hexW}px; height: {HEX_H}px; clip-path: {HEX_CLIP}"
-				class="absolute flex items-center justify-center px-2 text-center text-sm font-semibold whitespace-nowrap transition active:scale-90 {feedback} {checked
+				class="absolute flex items-center justify-center gap-1 px-2 text-center text-sm font-semibold whitespace-nowrap transition active:scale-90 {feedback} {checked
 					? isCorrect
 						? 'bg-brand-soft text-brand-dark'
 						: isSelected
@@ -216,6 +218,9 @@
 							: 'bg-surface text-ink drop-shadow-[0_1px_2px_rgba(0,0,0,0.12)] hover:bg-brand-soft/50'}"
 			>
 				<Md text={option} />
+				{#if (checked && (isCorrect || isSelected)) || isMissed}
+					<AnswerMark right={checked && isCorrect} size={14} />
+				{/if}
 			</button>
 		{/each}
 	</div>
@@ -235,9 +240,10 @@
 			<button
 				type="button"
 				disabled={checked || isMissed}
+				aria-pressed={checked ? undefined : isSelected}
 				onclick={() => pick(i)}
 				dir={textDir(option)}
-				class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
+				class="flex items-center gap-2 rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'
 						: isSelected
@@ -249,7 +255,10 @@
 							? 'border-brand bg-brand-soft/60'
 							: 'border-line bg-surface hover:border-brand'}"
 			>
-				<Md text={option} />
+				<span class="min-w-0 flex-1"><Md text={option} /></span>
+				{#if (checked && (isCorrect || isSelected)) || isMissed}
+					<AnswerMark right={checked && isCorrect} />
+				{/if}
 			</button>
 		{/each}
 	</div>

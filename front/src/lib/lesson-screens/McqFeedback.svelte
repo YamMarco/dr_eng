@@ -9,6 +9,7 @@
 	import { textDir } from './miniMarkdown';
 	import { optFeedback, optText } from './option';
 	import { mcqCorrect, type McqScreen } from './types';
+	import AnswerMark from './AnswerMark.svelte';
 
 	let { screen, picks }: { screen: McqScreen; picks: number[] } = $props();
 
@@ -43,9 +44,12 @@
 					: 'border-miss bg-miss-soft/60'}"
 			>
 				<p
-					class="mb-1 text-xs font-bold {item.ok ? 'text-brand-dark' : 'text-miss'}"
+					class="mb-1 flex items-center gap-1 text-xs font-bold {item.ok
+						? 'text-brand-dark'
+						: 'text-miss'}"
 					dir={textDir(optText(screen.options[item.p]))}
 				>
+					<AnswerMark right={item.ok} size={14} />
 					<Md text={optText(screen.options[item.p])} />
 				</p>
 				<div class="leading-relaxed"><Md block text={item.text} /></div>

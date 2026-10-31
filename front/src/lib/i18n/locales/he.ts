@@ -1258,6 +1258,11 @@ export const he = {
 		email: 'שלחו לנו מייל',
 		emailSubject: 'משוב על EngUp'
 	},
+	/** Screen-reader-only words (the eye gets an icon or a color). */
+	a11y: {
+		right: 'תשובה נכונה',
+		wrong: 'לא נכונה'
+	},
 	/** Shown once, on a tester's first visit to the app (TESTER_PHASE in $lib/support). */
 	testerWelcome: {
 		title: 'ברוכים הבאים לגרסת הניסיון!',
