@@ -6,7 +6,7 @@
 	import { fly } from 'svelte/transition';
 	import Md from '$lib/components/Md.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { textDir } from './miniMarkdown';
+	import { textDir, textLang } from './miniMarkdown';
 	import { optFeedback, optText } from './option';
 	import { mcqCorrect, type McqScreen } from './types';
 	import AnswerMark from './AnswerMark.svelte';
@@ -48,6 +48,7 @@
 						? 'text-brand-dark'
 						: 'text-miss'}"
 					dir={textDir(optText(screen.options[item.p]))}
+					lang={textLang(optText(screen.options[item.p]))}
 				>
 					<AnswerMark right={item.ok} size={14} />
 					<Md text={optText(screen.options[item.p])} />

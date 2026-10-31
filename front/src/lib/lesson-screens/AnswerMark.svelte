@@ -13,5 +13,6 @@
 	{:else}
 		<X {size} strokeWidth={3} aria-hidden="true" />
 	{/if}
-	<span class="sr-only">{right ? i18n.dict.a11y.right : i18n.dict.a11y.wrong}</span>
+	<!-- Inside English options: the a11y words are Hebrew (not translated yet). -->
+	<span class="sr-only" lang="he">{right ? i18n.dict.a11y.right : i18n.dict.a11y.wrong}</span>
 </span>

@@ -8,7 +8,7 @@
 	import McqFeedback from '$lib/lesson-screens/McqFeedback.svelte';
 	import { optText } from '$lib/lesson-screens/option';
 	import MatchDefinitions from '$lib/lesson-screens/MatchDefinitions.svelte';
-	import { textDir } from '$lib/lesson-screens/miniMarkdown';
+	import { textDir, textLang } from '$lib/lesson-screens/miniMarkdown';
 	import { mcqCorrect, type LessonScreen } from '$lib/lesson-screens/types';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import ModelAnswer from './ModelAnswer.svelte';
@@ -63,6 +63,7 @@
 							? 'border-miss bg-miss-soft/50 text-miss'
 							: 'border-line text-muted'}"
 					dir={textDir(option)}
+					lang={textLang(option)}
 				>
 					<span class="min-w-0 flex-1"><Md text={option} /></span>
 					{#if ok || picked}<AnswerMark right={ok} size={16} />{/if}

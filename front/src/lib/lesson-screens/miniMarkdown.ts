@@ -40,6 +40,23 @@ export function textDir(text: string): 'auto' | 'rtl' | 'ltr' {
 	return he > en ? 'rtl' : 'auto';
 }
 
+/** Language of a piece of text, by its dominant letters, so screen readers read
+ *  English in an English voice. Undefined when it has no letters. */
+export function textLang(text: string): 'en' | 'he' | 'ar' | undefined {
+	const t = text.replace(/<[^>]*>/g, '').replace(/&[#\w]+;/g, ' ');
+	const en = (t.match(/[A-Za-z]/g) ?? []).length;
+	const he = (t.match(/[֐-׿]/g) ?? []).length;
+	const ar = (t.match(/[؀-ۿ]/g) ?? []).length;
+	if (!en && !he && !ar) return undefined;
+	return en >= he && en >= ar ? 'en' : he >= ar ? 'he' : 'ar';
+}
+
+/** ` dir=".." lang=".."` for `text` (no dir when the line sets its own). */
+function langAttrs(text: string, dir?: string): string {
+	const lang = textLang(text);
+	return `${dir ? ` dir="${dir}"` : ''}${lang ? ` lang="${lang}"` : ''}`;
+}
+
 /** Wraps each sentence in its own direction isolate (see `textDir`), so a sentence in a
  *  different language than its neighbours takes its own direction from its
  *  first strong character (word order + punctuation) while the text keeps
@@ -70,7 +87,7 @@ function isolateSentences(html: string): string {
 	}
 	if (sentences.length === 0) return html;
 	sentences.push(html.slice(start));
-	return sentences.map((s) => `<span dir="${textDir(s)}">${s}</span>`).join(' ');
+	return sentences.map((s) => `<span${langAttrs(s, textDir(s))}>${s}</span>`).join(' ');
 }
 
 /** Wraps each `"quoted phrase"` in its own `dir="auto"` isolate. A quote is
@@ -222,7 +239,7 @@ function parseLine(raw: string): {
 		style: styles.join(';'),
 		// No explicit {d:..}: each line takes its direction from its first strong
 		// character, unless the line's dominant language disagrees (see textDir).
-		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${explicitDir ? '' : ` dir="${textDir(rest)}"`}`,
+		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${langAttrs(rest, explicitDir ? undefined : textDir(rest))}`,
 		rest,
 		kind: paragraph
 	};

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Flag } from '@lucide/svelte';
 	import type { OpenerScreen } from './types';
-	import { mdBlock, mdInline, textDir } from './miniMarkdown';
+	import { mdBlock, mdInline, textDir, textLang } from './miniMarkdown';
 	import { openerLevel } from './openerLevels';
 
 	// disabled/label are write-only here (never overridden): the runner reads
@@ -52,7 +52,8 @@
 		<span
 			class="rise rounded-full bg-brand-soft px-4 py-1.5 text-base font-semibold text-brand-dark"
 			style="--delay: 120ms"
-			dir={textDir(screen.kicker)}>{screen.kicker}</span
+			dir={textDir(screen.kicker)}
+			lang={textLang(screen.kicker)}>{screen.kicker}</span
 		>
 	{/if}
 	<!-- eslint-disable svelte/no-at-html-tags -->
@@ -60,6 +61,7 @@
 		class="rise max-w-lg text-3xl/snug font-bold text-balance text-ink"
 		style="--delay: 200ms"
 		dir={textDir(screen.title)}
+		lang={textLang(screen.title)}
 	>
 		{@html mdInline(screen.title)}
 	</h2>

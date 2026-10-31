@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
 	import Md from '$lib/components/Md.svelte';
-	import { textDir } from './miniMarkdown';
+	import { textDir, textLang } from './miniMarkdown';
 	import { backOut } from 'svelte/easing';
 	import { mcqCorrect, type McqScreen } from './types';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
@@ -243,6 +243,7 @@
 				aria-pressed={checked ? undefined : isSelected}
 				onclick={() => pick(i)}
 				dir={textDir(option)}
+				lang={textLang(option)}
 				class="flex items-center gap-2 rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 					? isCorrect
 						? 'border-brand bg-brand-soft text-brand-dark'

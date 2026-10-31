@@ -3,7 +3,7 @@
 	import ReadingPaper from './ReadingPaper.svelte';
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
-	import { textDir } from './miniMarkdown';
+	import { textDir, textLang } from './miniMarkdown';
 	import PassageText from './PassageText.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
 	import PickFeedback from './PickFeedback.svelte';
@@ -138,6 +138,7 @@
 					aria-pressed={checked ? undefined : isSelected}
 					onclick={() => pick(oi)}
 					dir={textDir(option)}
+					lang={textLang(option)}
 					class="flex items-center gap-2 rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 						? isCorrect
 							? 'border-brand bg-brand-soft text-brand-dark'
