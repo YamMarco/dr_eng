@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { cobeVisible } from '$lib/alpha';
+	import { auth } from '$lib/auth.svelte';
 	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -20,6 +22,8 @@
 
 	let t = $derived(i18n.dict.home);
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
+	// Staff-only COBE (alpha): everyone else sees it as "coming soon".
+	const locked = (id: string) => id === 'cobe' && !cobeVisible(auth.isAdmin);
 
 	let rows = $derived(
 		group.moduleIds.map((id) => {
@@ -31,7 +35,7 @@
 				meters: homeMeters(id, route),
 				hook: moduleHook(id, route),
 				href: `/app/unit/${group.id}/module/${id}`,
-				comingSoon: !route.length && !exams.total && !getDecks(id)
+				comingSoon: locked(id) || (!route.length && !exams.total && !getDecks(id))
 			};
 		})
 	);
@@ -47,7 +51,7 @@
 	let gridCols = $derived(GRID_COLS[Math.min(rows.length, 4)]);
 
 	// Back into the latest thing done, in any module of this unit level.
-	let resume = $derived(resumeItem(group.moduleIds));
+	let resume = $derived(resumeItem(group.moduleIds.filter((id) => !locked(id))));
 </script>
 
 {#if !profile.value}

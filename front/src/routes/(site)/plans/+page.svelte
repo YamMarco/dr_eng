@@ -3,6 +3,8 @@
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
+	import { cobeVisible } from '$lib/alpha';
+	import { auth } from '$lib/auth.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Segmented from '$lib/components/Segmented.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
@@ -62,6 +64,8 @@
 	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : 'month');
 	// COBE added per plan, off by default; the card switch and the table row share it.
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
+	// Staff-only COBE (alpha): no COBE options for anyone else.
+	let showCobe = $derived(cobeVisible(auth.isAdmin));
 
 	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
 		planById(planId(offer, c, cobe), now, pricing)!;
@@ -257,7 +261,9 @@
 						</li>
 					{/each}
 				</ul>
-				{@render cobeSwitch(offer)}
+				{#if showCobe}
+					{@render cobeSwitch(offer)}
+				{/if}
 				<Button variant={featured ? 'primary' : 'secondary'} href={checkoutHref(plan(offer).id)}>
 					{featured ? t.chooseFeatured : t.choose}
 				</Button>
@@ -331,33 +337,35 @@
 						{/each}
 					</tr>
 				{/each}
-				<tr>
-					<th scope="row" class="border-t border-line py-3 pe-2 text-start font-normal">
-						<span class="flex items-center gap-1 font-bold">
-							<Mic size={14} aria-hidden="true" />
-							COBE
-						</span>
-						<span class="text-xs text-muted">{t.addCobeHint}</span>
-					</th>
-					{#each TIERS as offer (offer)}
-						<td
-							class="border-t border-line px-1 py-2 text-center {offer === FEATURED_OFFER
-								? 'bg-brand-soft'
-								: ''}"
-						>
-							<div class="flex flex-col items-center">
-								<Toggle
-									checked={!!cobeOn[offer]}
-									label="{t.addCobe} - {t.offers[offer].name}"
-									onchange={(checked) => (cobeOn[offer] = checked)}
-								/>
-								<span class="text-xs font-bold tabular-nums" dir="ltr"
-									>{t.addCobePrice(addonPrice)}</span
-								>
-							</div>
-						</td>
-					{/each}
-				</tr>
+				{#if showCobe}
+					<tr>
+						<th scope="row" class="border-t border-line py-3 pe-2 text-start font-normal">
+							<span class="flex items-center gap-1 font-bold">
+								<Mic size={14} aria-hidden="true" />
+								COBE
+							</span>
+							<span class="text-xs text-muted">{t.addCobeHint}</span>
+						</th>
+						{#each TIERS as offer (offer)}
+							<td
+								class="border-t border-line px-1 py-2 text-center {offer === FEATURED_OFFER
+									? 'bg-brand-soft'
+									: ''}"
+							>
+								<div class="flex flex-col items-center">
+									<Toggle
+										checked={!!cobeOn[offer]}
+										label="{t.addCobe} - {t.offers[offer].name}"
+										onchange={(checked) => (cobeOn[offer] = checked)}
+									/>
+									<span class="text-xs font-bold tabular-nums" dir="ltr"
+										>{t.addCobePrice(addonPrice)}</span
+									>
+								</div>
+							</td>
+						{/each}
+					</tr>
+				{/if}
 				<tr>
 					<td class="pt-3"></td>
 					{#each TIERS as offer (offer)}
@@ -422,16 +430,18 @@
 		t.lessonChoose,
 		checkoutHref(lesson.id)
 	)}
-	{@render standalone(
-		'cobe',
-		Mic,
-		t.cobeOnlyTitle,
-		t.cobeOnlyBody,
-		perMonth(plan('cobe', cycle, false)),
-		t.perMonth,
-		t.cobeOnlyChoose,
-		checkoutHref(plan('cobe', cycle, false).id)
-	)}
+	{#if showCobe}
+		{@render standalone(
+			'cobe',
+			Mic,
+			t.cobeOnlyTitle,
+			t.cobeOnlyBody,
+			perMonth(plan('cobe', cycle, false)),
+			t.perMonth,
+			t.cobeOnlyChoose,
+			checkoutHref(plan('cobe', cycle, false).id)
+		)}
+	{/if}
 
 	<!-- FAQ -->
 	<section {@attach reveal} class="mx-auto flex w-full max-w-2xl flex-col gap-3">

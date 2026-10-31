@@ -7,6 +7,7 @@
 	import CodeField from '$lib/components/CodeField.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
+	import { cobeVisible } from '$lib/alpha';
 	import { auth } from '$lib/auth.svelte';
 	import {
 		access,
@@ -37,7 +38,7 @@
 	const requested = planById(page.url.searchParams.get('plan'));
 	let plan = $state(isPurchasable(requested) ? requested : defaultPlan());
 	// Order bump: COBE can be added to any plan but COBE itself and a lesson.
-	let canAddCobe = $derived(!!withCobe(plan, true));
+	let canAddCobe = $derived(cobeVisible(auth.isAdmin) && !!withCobe(plan, true));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');
 
 	let quote = $state<Quote | null>(null);

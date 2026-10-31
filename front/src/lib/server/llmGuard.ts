@@ -8,6 +8,7 @@
 import { dev } from '$app/environment';
 import { error } from '@sveltejs/kit';
 import { sql } from 'drizzle-orm';
+import { cobeVisible } from '$lib/alpha';
 import { access, billingEnabled } from './billing';
 import { accountsEnabled } from './supabase';
 import { db } from './db';
@@ -78,6 +79,7 @@ export async function guardLlm(
 	if (!dev && (!accountsEnabled || !db)) throw error(503, 'accounts are not configured');
 	if (accountsEnabled && !userId) throw error(401, 'sign in required');
 	if (burstLimited(userId ?? clientAddress)) throw error(429, 'too many requests');
+	if (!dev && product === 'cobe' && !cobeVisible(isAdmin)) throw error(403, 'not open yet');
 	if (!userId || isAdmin || !db) return;
 	if (billingEnabled && !(await access(userId))[product]) throw error(402, 'no active plan');
 	if ((await countAllToday()) >= GLOBAL_DAILY_LIMIT) throw error(503, 'service is busy');
