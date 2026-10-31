@@ -48,9 +48,10 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 - [ ] Decide: are Zoom lessons recorded? (`[[...]]` in `docs/legal/privacy-policy.md`)
 - [ ] Register the business (before payments), then fill the owner in the privacy policy
 - [ ] Choose the error-monitoring and analytics providers, then fill them in the policy's provider table
-- [ ] Lawyer: review the privacy policy and terms; DPO needed?; data-processing agreements with each provider; marketing-email consent for minors
+- [ ] Lawyer: review the privacy policy and terms of use (`docs/legal/`); DPO needed?; data-processing agreements with each provider; marketing-email consent for minors
 - [ ] With Claude: sign-up checkboxes (18+ or parent agrees; optional "send me updates", unticked), then move the approved draft to `/privacy`
-- [ ] With Claude: the terms of use draft
+- [ ] Terms (`docs/legal/terms-of-use.md`), decide: refund policy, private-lesson cancellation notice, unused Zoom lessons carry-over, lesson scheduling, court city
+- [ ] Lawyer: adapted reading passages (credit the source? permission needed?); liability cap of 12 months' payments
 - [ ] With Claude: accessibility statement (required for Israeli sites, IS 5568): publish with a contact address now, even before the accessibility pass
 
 ## Testers
