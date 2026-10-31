@@ -109,17 +109,20 @@
 					? i18n.dict.quiz.passedTitle
 					: i18n.dict.quiz.failedTitle}
 		</h1>
-		{#if headline.max > 0}
-			<p class="mt-4 text-lg font-bold text-brand-dark tabular" dir="ltr">
-				{headline.earned}/{headline.max}
-			</p>
-			<p class="mt-1 text-sm text-muted">
-				{score.total ? i18n.dict.quiz.totalScoreLabel : i18n.dict.quiz.autoScoreLabel}
-			</p>
-		{/if}
-		{#if grading}
-			<p class="mt-2 text-sm font-semibold text-muted">{i18n.dict.quiz.grading}</p>
-		{/if}
+		<!-- Grading finishes after the report opens: screen readers hear the final score. -->
+		<div aria-live="polite">
+			{#if headline.max > 0}
+				<p class="mt-4 text-lg font-bold text-brand-dark tabular" dir="ltr">
+					{headline.earned}/{headline.max}
+				</p>
+				<p class="mt-1 text-sm text-muted">
+					{score.total ? i18n.dict.quiz.totalScoreLabel : i18n.dict.quiz.autoScoreLabel}
+				</p>
+			{/if}
+			{#if grading}
+				<p class="mt-2 text-sm font-semibold text-muted">{i18n.dict.quiz.grading}</p>
+			{/if}
+		</div>
 	</div>
 
 	<section class="mt-8 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
