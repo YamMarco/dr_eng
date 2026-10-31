@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793379306.2124093,
-    "ast_hash": "b644fef95ed3361d034b3a1b136d900c",
+    "mtime": 1793427080.3885365,
+    "ast_hash": "272193bf3050af3aec34be51317e1d65",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1190,8 +1190,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-reading.md": {
-    "mtime": 1791995202.0574942,
-    "ast_hash": "9ebad53daadb8dc23a4bc0e50713067c",
+    "mtime": 1793386660.699994,
+    "ast_hash": "3743ebf34f4b44ea33c37a810738f0cc",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/fields/TimerField.svelte": {
@@ -1285,8 +1285,8 @@
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1793378736.387228,
-    "ast_hash": "bf59ad8a0b6d249f42e1626eb1774a88",
+    "mtime": 1793427054.2499,
+    "ast_hash": "b46c3b4ff2cce0c657e417d728bc91c7",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1360,8 +1360,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/settings/+page.svelte": {
-    "mtime": 1793040570.7162652,
-    "ast_hash": "25bde3022c0543c2456a942ec9c0d079",
+    "mtime": 1793427075.8915522,
+    "ast_hash": "f7ab9c0cfe35483a04916b5e5b94c5ec",
     "semantic_hash": ""
   },
   "front/src/routes/app/streak/+page.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793379306.2124093,
-    "ast_hash": "3eab5ae44da18f7bf5981009ed9f4568",
+    "mtime": 1793427267.001817,
+    "ast_hash": "06adacb6e67ae3783a4bb82578074e94",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2415,13 +2415,38 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/feedbackEmail.ts": {
-    "mtime": 1793378763.8207395,
-    "ast_hash": "a3d64d8704bb4043108df9f2a0d00e36",
+    "mtime": 1793385952.423787,
+    "ast_hash": "dc959b52af7268f2d392f52d972547a2",
     "semantic_hash": ""
   },
   "front/src/routes/api/feedback/+server.ts": {
     "mtime": 1793379306.2103987,
     "ast_hash": "99f23ce07004433776125312f3677e7f",
+    "semantic_hash": ""
+  },
+  "front/src/lib/expenses.ts": {
+    "mtime": 1793427054.1671317,
+    "ast_hash": "6c4f2ad84fadebf7d0e34a43b0d9f982",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/expenses.ts": {
+    "mtime": 1793427093.4620347,
+    "ast_hash": "e5dca753d6f550de158a09c379358ead",
+    "semantic_hash": ""
+  },
+  "front/src/routes/(admin)/expenses/+page.svelte": {
+    "mtime": 1793427230.640926,
+    "ast_hash": "a42e745e1a4cabfe5e8899ff2d7ea04a",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/expenses/+server.ts": {
+    "mtime": 1793427054.2223454,
+    "ast_hash": "dedb390b35a3993a18dcace32b2b2756",
+    "semantic_hash": ""
+  },
+  "docs/handoffs/llm-prompts-draft.md": {
+    "mtime": 1793387056.5578258,
+    "ast_hash": "f98875bbb1dfdf2d74744779ed247502",
     "semantic_hash": ""
   }
 }

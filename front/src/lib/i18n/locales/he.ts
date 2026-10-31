@@ -14,6 +14,7 @@ export const he = {
 		settings: 'הגדרות',
 		vocabImages: 'תמונות מילים',
 		kanban: 'לוח משימות',
+		expenses: 'הוצאות',
 		toSite: 'לדף הראשי'
 	},
 	appTitle: 'EngUp',
