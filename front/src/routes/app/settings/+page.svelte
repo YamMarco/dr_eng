@@ -215,11 +215,11 @@
 					</li>
 					<li>
 						<a
-							href={resolve('/expenses')}
+							href={resolve('/finance')}
 							data-sveltekit-preload-data="off"
 							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
 						>
-							{i18n.dict.nav.expenses}
+							{i18n.dict.nav.finance}
 							<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
 						</a>
 					</li>

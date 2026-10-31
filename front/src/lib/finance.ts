@@ -1,5 +1,5 @@
-// Staff expenses page: the shared shape. The list itself is server-only
-// ($lib/server/expenses), so it never ships in the client bundle.
+// Staff finance page: the shared shape. The list itself is server-only
+// ($lib/server/finance), so it never ships in the client bundle.
 
 export type Currency = 'USD' | 'ILS';
 export type Cycle = 'month' | 'year' | 'once';

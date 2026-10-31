@@ -1,7 +1,7 @@
-// Staff expenses list (GET).
+// Staff finance: expenses list (GET).
 import { error, json } from '@sveltejs/kit';
 import { checkAuth } from '$lib/content-edit/auth';
-import { expenses } from '$lib/server/expenses';
+import { expenses } from '$lib/server/finance';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ locals }) => {

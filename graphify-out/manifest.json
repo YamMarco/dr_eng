@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793427080.3885365,
-    "ast_hash": "272193bf3050af3aec34be51317e1d65",
+    "mtime": 1793427348.221424,
+    "ast_hash": "2699fd34717aba9a8b05b091095dfdf3",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1285,8 +1285,8 @@
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1793427054.2499,
-    "ast_hash": "b46c3b4ff2cce0c657e417d728bc91c7",
+    "mtime": 1793427348.1384926,
+    "ast_hash": "5a77ada875d5dca9bfe36702cf1ad5f8",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1360,8 +1360,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/settings/+page.svelte": {
-    "mtime": 1793427075.8915522,
-    "ast_hash": "f7ab9c0cfe35483a04916b5e5b94c5ec",
+    "mtime": 1793427348.1766443,
+    "ast_hash": "2812d6fcdeee6b4f075ce0f11ef592c3",
     "semantic_hash": ""
   },
   "front/src/routes/app/streak/+page.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793427267.001817,
-    "ast_hash": "06adacb6e67ae3783a4bb82578074e94",
+    "mtime": 1793427348.2542703,
+    "ast_hash": "7ce792a0bab53c01d006225dce25dfac",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2424,29 +2424,29 @@
     "ast_hash": "99f23ce07004433776125312f3677e7f",
     "semantic_hash": ""
   },
-  "front/src/lib/expenses.ts": {
-    "mtime": 1793427054.1671317,
-    "ast_hash": "6c4f2ad84fadebf7d0e34a43b0d9f982",
-    "semantic_hash": ""
-  },
-  "front/src/lib/server/expenses.ts": {
-    "mtime": 1793427093.4620347,
-    "ast_hash": "e5dca753d6f550de158a09c379358ead",
-    "semantic_hash": ""
-  },
-  "front/src/routes/(admin)/expenses/+page.svelte": {
-    "mtime": 1793427230.640926,
-    "ast_hash": "a42e745e1a4cabfe5e8899ff2d7ea04a",
-    "semantic_hash": ""
-  },
-  "front/src/routes/api/expenses/+server.ts": {
-    "mtime": 1793427054.2223454,
-    "ast_hash": "dedb390b35a3993a18dcace32b2b2756",
-    "semantic_hash": ""
-  },
   "docs/handoffs/llm-prompts-draft.md": {
     "mtime": 1793387056.5578258,
     "ast_hash": "f98875bbb1dfdf2d74744779ed247502",
+    "semantic_hash": ""
+  },
+  "front/src/lib/finance.ts": {
+    "mtime": 1793427348.1035652,
+    "ast_hash": "0929fa06b26426afd2d267af78f91ae7",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/finance.ts": {
+    "mtime": 1793427348.0655527,
+    "ast_hash": "c06254fbcc3359524c098f10be8616aa",
+    "semantic_hash": ""
+  },
+  "front/src/routes/(admin)/finance/+page.svelte": {
+    "mtime": 1793427347.985019,
+    "ast_hash": "28868229db23637fb2ff918ae042f403",
+    "semantic_hash": ""
+  },
+  "front/src/routes/api/finance/+server.ts": {
+    "mtime": 1793427348.0283983,
+    "ast_hash": "db2d91102c83064a481e275d3985cb7e",
     "semantic_hash": ""
   }
 }

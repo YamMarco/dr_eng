@@ -3,9 +3,9 @@
 	import { LoaderCircle } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
-	import { cycleLabel, monthly, type Currency, type Expense } from '$lib/expenses';
+	import { cycleLabel, monthly, type Currency, type Expense } from '$lib/finance';
 
-	// Staff list of our running costs, from $lib/server/expenses (/api/expenses).
+	// Staff list of our running costs, from $lib/server/finance (/api/finance).
 
 	let expenses = $state<Expense[]>([]);
 	let loading = $state(true);
@@ -36,16 +36,16 @@
 	}
 
 	onMount(async () => {
-		const res = await apiFetch('/api/expenses').catch(() => null);
+		const res = await apiFetch('/api/finance').catch(() => null);
 		if (res?.ok) expenses = await res.json();
 		else failed = true;
 		loading = false;
 	});
 </script>
 
-<svelte:head><title>הוצאות</title></svelte:head>
+<svelte:head><title>כספים</title></svelte:head>
 
-<AppBar title="הוצאות" back="/app/settings" />
+<AppBar title="כספים" back="/app/settings" />
 
 <main class="mx-auto w-full max-w-3xl flex-1 px-4 pt-6 pb-28">
 	{#if loading}

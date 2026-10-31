@@ -1,6 +1,6 @@
 // Our running costs, edited by hand (like the lessons' content). Served to staff
-// only by /api/expenses. Amounts of 0 are still to fill in.
-import type { Expense } from '$lib/expenses';
+// only by /api/finance. Amounts of 0 are still to fill in.
+import type { Expense } from '$lib/finance';
 
 export const expenses: Expense[] = [
 	{
