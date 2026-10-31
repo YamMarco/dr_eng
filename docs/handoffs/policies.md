@@ -1,6 +1,6 @@
 # Handoff: policies (privacy, terms, consent)
 
-`/privacy` and `/terms` have a first plain-Hebrew version (i18n `legal`, rendered by `$lib/site/LegalPage.svelte`); sign-up shows the consent line and the testers get a first-visit note (`TesterWelcome`). Students are mostly minors (16-18): the texts need an Israeli lawyer's review before paid launch. Write in plain Hebrew a student can read.
+`/privacy`, `/terms` and `/accessibility` are final (i18n `legal`, rendered by `$lib/site/LegalPage.svelte`); services not open yet are covered by their "שירות בפיתוח ובהרצה" clause. Sign-up shows the consent line and the testers get a first-visit note (`TesterWelcome`). Students are mostly minors (16-18). Write in plain Hebrew a student can read.
 
 ## Facts the texts must match
 

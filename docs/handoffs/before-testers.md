@@ -45,17 +45,13 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 
 ## Privacy and terms
 
-- [ ] Decide: are Zoom lessons recorded? (`[[...]]` in `docs/legal/privacy-policy.md`)
-- [ ] Register the business (before payments), then fill the owner in the privacy policy
-- [ ] Choose the error-monitoring and analytics providers, then fill them in the policy's provider table
-- [ ] Lawyer: review the privacy policy and terms of use (`docs/legal/`); marketing-email consent for minors
-- [ ] Data-processing agreements: sign each provider's DPA (Supabase, Vercel, Resend, Cloudflare: download/accept in their dashboards; ImprovMX offers one to paid plans only)
-- [ ] With Claude: move the approved drafts to `/privacy` and `/terms`
-- [ ] Before the first update / marketing email: a separate opt-in (unticked, e.g. in settings); Israeli anti-spam law needs explicit consent
-- [ ] Terms (`docs/legal/terms-of-use.md`), decide: private-lesson cancellation notice, unused Zoom lessons carry-over, lesson scheduling
-- [ ] Lawyer: refund policy (do 3/6-month and school-year plans count as an ongoing transaction needing prorated refunds?)
-- [ ] Lawyer: adapted reading passages (credit the source? permission needed?); liability cap of 12 months' payments
-- [ ] Lawyer: `/accessibility` lists only a role and email as contact (no name, phone or postal address): acceptable?
+Live at `/privacy`, `/terms`, `/accessibility` (i18n `legal` in `he.ts`); unopened services are covered by the "שירות בפיתוח ובהרצה" clause. Update the pages before each of these:
+
+- [ ] Data-processing agreements: accept each provider's DPA (Supabase, Vercel, Resend, Cloudflare in their dashboards; ImprovMX: paid plans only)
+- [ ] Payments: register the business, then name it in "מי אנחנו" (both pages) and add the payment provider to the privacy providers list and the terms
+- [ ] Zoom lessons: publish scheduling, cancellation notice and unused-lesson rules in the terms
+- [ ] Analytics / error monitoring: add the provider and its data to the privacy policy
+- [ ] First update / marketing email: a separate, unticked opt-in (Israeli anti-spam law)
 
 ## Testers
 
