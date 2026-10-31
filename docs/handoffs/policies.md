@@ -1,6 +1,6 @@
-# Handoff: policies (privacy, terms, consent)
+# Handoff: legal (privacy, terms, accessibility)
 
-`/privacy`, `/terms` and `/accessibility` are final (i18n `legal`, rendered by `$lib/site/LegalPage.svelte`); services not open yet are covered by their "שירות בפיתוח ובהרצה" clause. Sign-up shows the consent line and the testers get a first-visit note (`TesterWelcome`). Students are mostly minors (16-18). Write in plain Hebrew a student can read.
+`/privacy`, `/terms` and `/accessibility` are live and final: copy in i18n `legal` (`front/src/lib/i18n/locales/he.ts`), rendered by `$lib/site/LegalPage.svelte`, linked from the site footer, settings (accessibility), sign-up consent and `TesterWelcome`. Services not open yet are covered by the "שירות בפיתוח ובהרצה" clause in both privacy and terms. Students are mostly minors (16-18): plain Hebrew a student can read. Bump `legal.updated` on every change.
 
 ## Facts the texts must match
 
@@ -22,19 +22,34 @@
 
 **Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No analytics or ads yet: update the policy when added.
 
-**User rights already built:** delete account (settings; `/api/account` DELETE removes the user, progress, AI usage and push rows; orders stay, for tax records: say so). Add: export my data (by email request is enough at first).
+**User rights already built:** delete account (settings; `/api/account` DELETE removes the user, progress, AI usage and push rows; orders stay, for tax records: say so). Export: by email request (the policy says so).
 
-## Documents to write
+## Unfinished: owner
 
-1. **Privacy policy** - the facts above; purpose of each item; retention; rights (access, fix, delete); contact `support@engup.co.il` (forwarded to the team via ImprovMX). Israeli Privacy Protection Law incl. Amendment 13 (in force Aug 2025): check whether a database registration / privacy officer duty applies at our size.
-2. **Terms of use** - what the service is (practice, not an official Ministry product, no grade guarantee); account rules; AI feedback can be wrong; content ownership (ours; literature texts not included, copyright); acceptable use; limitation of liability; Israeli law and court.
-3. **Minors and parental consent** - under-18 users: a consent checkbox at sign-up ("my parent/guardian agrees"), or a parent email confirmation for paid plans. Decide with the lawyer; build after.
-4. **Refunds** (before payments) - Israeli Consumer Protection Law: 14-day cancellation for distance purchases; how pass / pack refunds are prorated. `GUARANTEE` in `lib/plans.ts` turns on the page's refund line.
-5. **Testers note** (now) - short text in the feedback sheet or the coupon message: a test version, data may be reset, feedback goes to a WhatsApp group where other testers see your number.
-6. **Accessibility statement** - required for Israeli websites (Equal Rights for Persons with Disabilities regs, standard IS 5568). Needs the accessibility pass first (postponed); publish a statement with a contact even before.
+- [ ] DPAs: accept each provider's data-processing agreement (Supabase, Vercel, Resend, Cloudflare: dashboards / terms; ImprovMX: paid plans only, free plan stores no mail content, metadata 7 days)
+- [ ] Register the business before payments
 
-## Where it goes in the app
+## Unfinished: update the pages before opening each service
 
-- Pages: `routes/(site)/privacy`, `routes/(site)/terms` (copy in `he.ts` `site`); add `/accessibility`.
-- Sign-up (`LoginScreen.svelte`): "by signing up you agree to the terms and privacy policy" + the minors checkbox.
-- Checkout: terms + refund line next to the pay button.
+- **Payments:** name the business in "מי אנחנו" (privacy + terms); add the payment provider to the privacy providers list and the terms' "תשלום" line; checkout needs a terms + refund link next to the pay button; `GUARANTEE` in `lib/plans.ts` turns on the refund line ("החזר מלא תוך 3 ימים").
+- **Zoom lessons:** publish scheduling, cancellation notice and unused-lesson rules in the terms (now: "הכללים יפורסמו כאן לפני שהשיעורים ייפתחו"); recording only with notice and consent.
+- **Analytics / error monitoring:** none installed; add the provider, its data and retention to the privacy policy first.
+- **Marketing emails:** sign-up has no opt-in yet; before the first update email add a separate, unticked opt-in (Israeli anti-spam law) and its stored consent to the policy.
+
+## Unfinished: accessibility gaps (listed on `/accessibility`)
+
+Fix as part of UI work (`docs/ux-principles.md` section 8); remove each from "מה עוד לא נגיש" when done:
+
+- Keyboard focus not visible on every screen
+- COBE listening / speaking: no full written alternative
+- Color contrast not checked on every screen (current teal kept on purpose)
+- Mixed Hebrew-English sentences read in one language
+- Videos: no captions
+
+## Owner decisions (accepted, no lawyer review)
+
+- Texts are final without a lawyer.
+- Accessibility contact: role + support@ email only; no name, phone or postal address.
+- No privacy officer (DPO).
+- Refund: 3 days full; days 4-14 minus fee (5% or ₪100, the lower); after 14 days none. Open risk: 3/6-month and school-year plans might count as an ongoing transaction (Consumer Protection Law 13D) requiring prorated refunds.
+- Liability capped at 12 months' payments; courts: Haifa district.

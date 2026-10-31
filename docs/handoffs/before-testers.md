@@ -45,13 +45,7 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 
 ## Privacy and terms
 
-Live at `/privacy`, `/terms`, `/accessibility` (i18n `legal` in `he.ts`); unopened services are covered by the "שירות בפיתוח ובהרצה" clause. Update the pages before each of these:
-
-- [ ] Data-processing agreements: accept each provider's DPA (Supabase, Vercel, Resend, Cloudflare in their dashboards; ImprovMX: paid plans only)
-- [ ] Payments: register the business, then name it in "מי אנחנו" (both pages) and add the payment provider to the privacy providers list and the terms
-- [ ] Zoom lessons: publish scheduling, cancellation notice and unused-lesson rules in the terms
-- [ ] Analytics / error monitoring: add the provider and its data to the privacy policy
-- [ ] First update / marketing email: a separate, unticked opt-in (Israeli anti-spam law)
+See `docs/handoffs/policies.md` (DPAs, business registration, page updates per new service).
 
 ## Testers
 

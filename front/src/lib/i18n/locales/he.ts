@@ -1297,7 +1297,7 @@ export const he = {
 		privacy: 'מדיניות הפרטיות',
 		start: 'הבנתי, מתחילים!'
 	},
-	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts in docs/handoffs/policies.md. */
+	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/handoffs/policies.md. */
 	legal: {
 		updated: 'עודכן לאחרונה: 31.10.2026',
 		contact: 'support@engup.co.il',

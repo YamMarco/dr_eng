@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793461032.5605457,
-    "ast_hash": "11a0d259669f050fe074607c9bfb903c",
+    "mtime": 1793461281.9423487,
+    "ast_hash": "c3bfe6c1c2a3b9f6a76ff7396600bebc",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -2400,8 +2400,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793461084.4534898,
-    "ast_hash": "f307b42a5bf733609cbd9daa3ab3348c",
+    "mtime": 1793461281.9096813,
+    "ast_hash": "d57a84a2414d2968b53dfb4cf4dcdf4e",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2460,8 +2460,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/before-testers.md": {
-    "mtime": 1793461084.4489686,
-    "ast_hash": "829636618cb14d0f84ed9fad3ea0b8d5",
+    "mtime": 1793461281.9096813,
+    "ast_hash": "f2d76550fb8bd9b421dd430cc098f651",
     "semantic_hash": ""
   },
   "front/src/lib/focusTrap.ts": {
