@@ -3,6 +3,7 @@
 	// the answer, and in the report's closed-questions section. Multiple choice
 	// marks the picks and the right answer; matching replays the screen read-only;
 	// an open answer shows the model answer (its score comes in the report).
+	import AnswerMark from '$lib/lesson-screens/AnswerMark.svelte';
 	import Md from '$lib/components/Md.svelte';
 	import McqFeedback from '$lib/lesson-screens/McqFeedback.svelte';
 	import { optText } from '$lib/lesson-screens/option';
@@ -56,14 +57,15 @@
 				{@const ok = right.includes(i)}
 				{@const picked = picks.includes(i)}
 				<li
-					class="rounded-xl border-2 px-3 py-2 text-sm {ok
+					class="flex items-center gap-2 rounded-xl border-2 px-3 py-2 text-sm {ok
 						? 'border-brand bg-brand-soft/50 text-brand-dark'
 						: picked
 							? 'border-miss bg-miss-soft/50 text-miss'
 							: 'border-line text-muted'}"
 					dir={textDir(option)}
 				>
-					<Md text={option} />
+					<span class="min-w-0 flex-1"><Md text={option} /></span>
+					{#if ok || picked}<AnswerMark right={ok} size={16} />{/if}
 				</li>
 			{/each}
 		</ul>
@@ -90,6 +92,7 @@
 			<div
 				class="rounded-2xl border border-line bg-canvas p-3 text-sm whitespace-pre-line"
 				dir="ltr"
+				lang="en"
 			>
 				{answer}
 			</div>
