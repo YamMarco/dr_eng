@@ -4,6 +4,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { trapFocus } from '$lib/focusTrap';
 
 	type Props = {
 		open: boolean;
@@ -14,6 +15,7 @@
 	};
 
 	let { open = $bindable(), title, description = '', onclose, children }: Props = $props();
+	const id = $props.id();
 
 	$effect(() => {
 		if (open) return lockScroll();
@@ -44,8 +46,11 @@
 		<div
 			role="dialog"
 			aria-modal="true"
-			aria-label={title}
-			class="relative max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-line bg-surface p-6 pb-8 shadow-2xl sm:rounded-3xl sm:pb-6"
+			aria-labelledby="{id}-title"
+			aria-describedby={description ? `${id}-desc` : undefined}
+			tabindex="-1"
+			{@attach trapFocus}
+			class="relative max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-line bg-surface p-6 pb-8 shadow-2xl outline-none sm:rounded-3xl sm:pb-6"
 			transition:fly={{ y: 240, duration: 160 }}
 		>
 			<div class="mx-auto mb-5 h-1.5 w-10 rounded-full bg-line sm:hidden"></div>
@@ -57,9 +62,9 @@
 			>
 				<X size={20} aria-hidden="true" />
 			</button>
-			<h2 class="pe-10 text-xl font-bold">{title}</h2>
+			<h2 id="{id}-title" class="pe-10 text-xl font-bold">{title}</h2>
 			{#if description}
-				<p class="mt-2 leading-relaxed text-muted">{description}</p>
+				<p id="{id}-desc" class="mt-2 leading-relaxed text-muted">{description}</p>
 			{/if}
 			<div class="mt-6 flex flex-col gap-3">{@render children()}</div>
 		</div>

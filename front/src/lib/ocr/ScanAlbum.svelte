@@ -13,6 +13,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { trapFocus } from '$lib/focusTrap';
 	import { previewUrl } from './scan';
 
 	// Bottom sheet for a scan: build the set of page photos (camera or gallery),
@@ -23,7 +24,8 @@
 	export type ScanPage = { file: File; rotation: number };
 	type Page = ScanPage & { id: number; url: string; source: Source };
 
-	let { onRead, onCancel }: { onRead: (pages: ScanPage[]) => void; onCancel: () => void } = $props();
+	let { onRead, onCancel }: { onRead: (pages: ScanPage[]) => void; onCancel: () => void } =
+		$props();
 
 	let pages = $state<Page[]>([]);
 	let nextId = 0;
@@ -104,9 +106,7 @@
 		'flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-sm font-semibold text-white';
 </script>
 
-<svelte:window
-	onkeydown={(e) => e.key === 'Escape' && (viewed ? (viewing = null) : onCancel())}
-/>
+<svelte:window onkeydown={(e) => e.key === 'Escape' && (viewed ? (viewing = null) : onCancel())} />
 
 <!-- `capture` opens the camera directly on phones; desktop falls back to a file dialog. -->
 <input
@@ -133,16 +133,21 @@
 		aria-modal="true"
 		aria-label={i18n.dict.ocr.albumTitle}
 		tabindex="-1"
+		{@attach trapFocus}
 		onclick={(e) => e.stopPropagation()}
 		onkeydown={() => {}}
-		class="flex max-h-[85dvh] w-full flex-col rounded-t-3xl bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-2xl"
+		class="flex max-h-[85dvh] w-full flex-col rounded-t-3xl bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-2xl outline-none"
 	>
 		<div class="flex items-center justify-between gap-2">
 			<h2 class="text-lg font-bold">{i18n.dict.ocr.albumTitle}</h2>
 			{#if pages.length}
 				<span class="flex items-center gap-3 text-sm font-semibold">
 					{#if selecting}
-						<button type="button" class="text-muted" onclick={() => (selected = pages.map((p) => p.id))}>
+						<button
+							type="button"
+							class="text-muted"
+							onclick={() => (selected = pages.map((p) => p.id))}
+						>
 							{i18n.dict.ocr.selectAll}
 						</button>
 						<button
@@ -168,7 +173,9 @@
 		</div>
 
 		{#if pages.length}
-			<ol class="mt-3 grid min-h-0 auto-rows-max rounded-2xl bg-line/40 p-2 grid-cols-2 items-start gap-3 sm:grid-cols-3 lg:grid-cols-4 overflow-y-auto">
+			<ol
+				class="mt-3 grid min-h-0 auto-rows-max grid-cols-2 items-start gap-3 overflow-y-auto rounded-2xl bg-line/40 p-2 sm:grid-cols-3 lg:grid-cols-4"
+			>
 				{#each pages as page, i (page.id)}
 					<li
 						class="overflow-hidden rounded-xl border-2 {selected.includes(page.id)
@@ -225,10 +232,14 @@
 
 		<div class="mt-4 grid shrink-0 grid-cols-2 gap-3 border-t-2 border-line pt-4">
 			<button type="button" onclick={() => open('camera')} class={sourceBtn}>
-				<Camera class="size-7 text-brand" />{pages.length ? i18n.dict.ocr.addPhoto : i18n.dict.ocr.takePhoto}
+				<Camera class="size-7 text-brand" />{pages.length
+					? i18n.dict.ocr.addPhoto
+					: i18n.dict.ocr.takePhoto}
 			</button>
 			<button type="button" onclick={() => open('gallery')} class={sourceBtn}>
-				<ImageUp class="size-7 text-brand" />{pages.length ? i18n.dict.ocr.addFromGallery : i18n.dict.ocr.pickPhotos}
+				<ImageUp class="size-7 text-brand" />{pages.length
+					? i18n.dict.ocr.addFromGallery
+					: i18n.dict.ocr.pickPhotos}
 			</button>
 		</div>
 

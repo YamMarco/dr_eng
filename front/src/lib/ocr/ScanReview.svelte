@@ -3,6 +3,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { trapFocus } from '$lib/focusTrap';
 
 	// Full-screen check of what OCR read, before it goes into the answer.
 	// Nothing is graded here: `onInsert` just pastes the edited text.
@@ -34,7 +35,9 @@
 	role="dialog"
 	aria-modal="true"
 	aria-label={i18n.dict.ocr.reviewTitle}
-	class="fixed inset-0 z-50 flex flex-col bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+	tabindex="-1"
+	{@attach trapFocus}
+	class="fixed inset-0 z-50 flex flex-col bg-surface p-4 pb-[max(1rem,env(safe-area-inset-bottom))] outline-none"
 >
 	<h2 class="text-xl font-bold">{i18n.dict.ocr.reviewTitle}</h2>
 	<p class="mt-1 text-sm leading-relaxed text-muted">{i18n.dict.ocr.reviewHint}</p>

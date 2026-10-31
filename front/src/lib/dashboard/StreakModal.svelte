@@ -7,6 +7,7 @@
 	import { activity, WEEKLY_GOAL } from '$lib/activity.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { lockScroll } from '$lib/scrollLock';
+	import { trapFocus } from '$lib/focusTrap';
 	import { reducedMotion } from '$lib/motion';
 	import { Flame } from '@lucide/svelte';
 
@@ -59,7 +60,9 @@
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="streak-title"
-			class="relative flex w-full max-w-sm flex-col items-center gap-4 rounded-3xl bg-surface px-6 pt-8 pb-6 text-center shadow-xl"
+			tabindex="-1"
+			{@attach trapFocus}
+			class="relative flex w-full max-w-sm flex-col items-center gap-4 rounded-3xl bg-surface px-6 pt-8 pb-6 text-center shadow-xl outline-none"
 			transition:scale={{ start: 0.85, duration: 300, easing: backOut }}
 		>
 			<Confetti />
