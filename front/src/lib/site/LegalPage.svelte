@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { reveal } from '$lib/site/reveal';
 
-	// /privacy and /terms: one layout, copy in i18n `legal`.
+	// /privacy and /terms: one layout, copy in i18n `legal`. No reveal motion: a document reads at once.
 	let { doc }: { doc: 'privacy' | 'terms' } = $props();
 
 	let t = $derived(i18n.dict.legal);
@@ -15,14 +14,14 @@
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-4 py-12">
-	<header class="flex flex-col gap-3 motion-safe:animate-rise">
+	<header class="flex flex-col gap-3">
 		<h1 class="text-3xl font-extrabold tracking-tight">{title}</h1>
 		<p class="text-sm text-muted">{t.updated}</p>
 		<p class="text-lg leading-relaxed">{page.intro}</p>
 	</header>
 
-	{#each page.sections as section, i (section.title)}
-		<section {@attach reveal} class="flex flex-col gap-2" style="--reveal-delay: {i * 40}ms">
+	{#each page.sections as section (section.title)}
+		<section class="flex flex-col gap-2">
 			<h2 class="text-xl font-bold text-balance">{section.title}</h2>
 			{#each section.body ?? [] as paragraph (paragraph)}
 				<p class="leading-relaxed">{paragraph}</p>
