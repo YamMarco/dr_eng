@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n/index.svelte';
 
-	// /privacy and /terms: one layout, copy in i18n `legal`. No reveal motion: a document reads at once.
-	let { doc }: { doc: 'privacy' | 'terms' } = $props();
+	// /privacy, /terms and /accessibility: one layout, copy in i18n `legal`. No reveal motion: a document reads at once.
+	let { doc }: { doc: 'privacy' | 'terms' | 'accessibility' } = $props();
 
 	let t = $derived(i18n.dict.legal);
 	let page = $derived(t[doc]);

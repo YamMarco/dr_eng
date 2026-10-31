@@ -74,6 +74,7 @@
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>
 	<a href={resolve('/terms')} class="hover:text-ink">{t.terms}</a>
+	<a href={resolve('/accessibility')} class="hover:text-ink">{t.accessibility}</a>
 	{#if auth.session}
 		<button type="button" onclick={() => auth.signOut()} class="hover:text-ink">
 			{t.navSignOut}

@@ -251,6 +251,15 @@
 						<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
 					</a>
 				</li>
+				<li>
+					<a
+						href={resolve('/accessibility')}
+						class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
+					>
+						{i18n.dict.site.accessibility}
+						<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+					</a>
+				</li>
 			{/if}
 			<li class="flex items-center justify-between gap-4 px-5 py-4">
 				<span class="font-semibold">{i18n.dict.settings.version}</span>

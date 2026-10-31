@@ -136,7 +136,7 @@ Keep the page to one phone screen where possible (checked at 360x640).
   - English text gets `lang="en"` (screen readers switch voice); never block zoom.
   - Status changes (grading done, saved) announced in a live region.
 - Listening and speaking tasks get a written alternative where the task allows.
-- Fixed a known gap? Update "מה עוד לא נגיש" in `docs/legal/accessibility-statement.md`.
+- Fixed a known gap? Update "מה עוד לא נגיש" in i18n `legal.accessibility` (`front/src/lib/i18n/locales/he.ts`, live at `/accessibility`).
 
 ## Evidence
 
