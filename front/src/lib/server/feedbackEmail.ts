@@ -31,7 +31,7 @@ function row(label: string, value: string, ltr = true) {
 
 export function feedbackSubject(report: FeedbackReport): string {
 	const first = report.message.trim().split('\n')[0].slice(0, 60);
-	return `משוב: ${first || report.screen || report.url}`;
+	return `משוב: ${first || report.screen || report.url} [tester report]`;
 }
 
 export function feedbackHtml(report: FeedbackReport, at: Date): string {
