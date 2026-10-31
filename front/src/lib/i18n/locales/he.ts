@@ -1264,7 +1264,8 @@ export const he = {
 		wrong: 'לא נכונה',
 		pairMatched: (en: string, he: string) => `זוג נכון: ${en}, ${he}`,
 		pairWrong: 'לא זוג. נסו שוב',
-		missed: 'היה צריך לסמן'
+		missed: 'היה צריך לסמן',
+		yourAnswer: 'התשובה שלכם'
 	},
 	/** Shown once, on a tester's first visit to the app (TESTER_PHASE in $lib/support). */
 	testerWelcome: {

@@ -90,6 +90,7 @@
 
 <AnswerLang {lang} />
 <textarea
+	aria-label={i18n.dict.a11y.yourAnswer}
 	dir={lang === 'en' ? 'ltr' : 'rtl'}
 	lang={lang === 'en' ? 'en' : undefined}
 	rows="4"

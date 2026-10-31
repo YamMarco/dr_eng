@@ -96,7 +96,9 @@
 	type="text"
 	dir="ltr"
 	disabled={checked}
+	lang="en"
 	value={input}
+	aria-label={i18n.dict.wordCard.inputPlaceholder}
 	oninput={(e) => (input = e.currentTarget.value)}
 	onpaste={(e) => e.preventDefault()}
 	ondrop={(e) => e.preventDefault()}

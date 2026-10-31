@@ -74,6 +74,7 @@
 		lang="en"
 		disabled={checked}
 		bind:value={answer}
+		aria-label={i18n.dict.a11y.yourAnswer}
 		class="mx-1 inline-block w-40 rounded-lg border-2 px-2 py-1 align-middle text-base font-semibold transition {checked
 			? correct
 				? 'border-brand bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'

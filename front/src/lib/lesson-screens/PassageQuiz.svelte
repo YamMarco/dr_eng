@@ -95,6 +95,7 @@
 					lang="en"
 					disabled={checked}
 					bind:value={answers[i]}
+					aria-label={i18n.dict.a11y.yourAnswer}
 					class="mt-2 w-full rounded-xl border-2 px-3 py-2 font-semibold transition {checked
 						? correct
 							? 'border-brand bg-brand-soft text-brand-dark motion-safe:animate-pop-correct'

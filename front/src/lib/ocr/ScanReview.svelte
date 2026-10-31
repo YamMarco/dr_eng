@@ -44,7 +44,9 @@
 
 	<textarea
 		dir="ltr"
+		lang="en"
 		bind:value={text}
+		aria-label={i18n.dict.ocr.reviewTitle}
 		disabled={!!progress}
 		class="mt-3 min-h-0 w-full flex-1 resize-none rounded-xl border-2 border-line bg-surface p-3 leading-relaxed focus:border-brand"
 	></textarea>

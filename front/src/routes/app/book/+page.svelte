@@ -280,6 +280,7 @@
 					</h2>
 					<textarea
 						bind:value={note}
+						aria-label={b.notePlaceholder}
 						rows="3"
 						placeholder={b.notePlaceholder}
 						class="mt-3 w-full resize-none rounded-2xl border-2 border-line bg-canvas px-4 py-3 text-sm text-ink transition focus:border-brand focus:outline-none"
