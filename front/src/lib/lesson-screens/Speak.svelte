@@ -139,6 +139,7 @@
 		onclick={toggle}
 		disabled={recorder.state === 'starting' || recorder.state === 'done'}
 		aria-label={label}
+		aria-pressed={recorder.state === 'recording'}
 		class="relative flex h-16 w-16 items-center justify-center rounded-full transition duration-200 active:scale-95 disabled:active:scale-100 {recorder.state ===
 		'recording'
 			? 'bg-brand text-white'
@@ -166,7 +167,7 @@
 	</div>
 
 	{#if recorder.state === 'recording'}
-		<p class="text-sm font-semibold text-brand-dark" in:fly={{ y: 6, duration: 200 }}>
+		<p role="status" class="text-sm font-semibold text-brand-dark" in:fly={{ y: 6, duration: 200 }}>
 			{recorder.micAvailable ? t.recording : t.noMic}
 		</p>
 	{/if}
