@@ -306,6 +306,8 @@
 			disabled={checked || grading}
 			bind:value={essayText}
 			placeholder={i18n.dict.answerLang.placeholderEn}
+			aria-label={i18n.dict.answerLang.placeholderEn}
+			aria-invalid={checked && !allOk}
 			class="mt-2 w-full rounded-xl border-2 p-3 leading-relaxed transition placeholder-shown:[direction:rtl] {checked
 				? allOk
 					? 'border-brand bg-brand-soft/40'
@@ -342,6 +344,8 @@
 					value={line}
 					oninput={(e) => (inputLines[i] = e.currentTarget.value)}
 					placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}
+					aria-label={i18n.dict.writingTask.linePlaceholder(i + 1)}
+					aria-invalid={checked && !allOk}
 					class="w-full rounded-xl border-2 px-3 py-2 leading-relaxed transition {checked
 						? allOk
 							? 'border-brand bg-brand-soft/40 motion-safe:animate-pop-correct'
