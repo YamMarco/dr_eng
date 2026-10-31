@@ -4,7 +4,9 @@ Things only the owner can do (dashboards, accounts, decisions). Tick and delete 
 
 ## 2FA on every account
 
-Use an authenticator app, save the recovery codes.
+2FA = a second step after the password (a code from an app on your phone), so a leaked password alone can't get in. Someone inside GitHub, Vercel or Supabase gets every student's data: start with those.
+
+How: install an authenticator app (Google Authenticator, Microsoft Authenticator or 1Password), turn on 2FA in each account's security settings, scan the QR code, and save the recovery codes somewhere safe (not only on the phone).
 
 - [ ] GitHub: Settings > Password and authentication
 - [ ] Vercel: Account Settings > Authentication
@@ -38,7 +40,7 @@ Use an authenticator app, save the recovery codes.
 
 ## Google AI Studio (Gemini fallback key's project)
 
-- [ ] aistudio.google.com/logs (Logs and Datasets): logging off for the project. If on, Google keeps students' answers there up to 55 days and the privacy policy must say so
+- [ ] aistudio.google.com/logs (Logs and Datasets): logging on, retention 14 days (the privacy policy says 14). Only fallback-key calls land there; the main path (AI Gateway) bills Vercel's account, not this project
 - [ ] Never share a logs dataset with Google (shared datasets are used for training)
 - [ ] Contributor Tier (discount for training on your data) is invite-only: decline if invited
 
