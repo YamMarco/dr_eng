@@ -4,6 +4,7 @@
 	import { Image } from '@lucide/svelte';
 	import type { Snippet } from 'svelte';
 	import { vocabImageUrl } from './vocabImage';
+	import { textLang } from './miniMarkdown';
 
 	let { src, alt = '', children }: { src?: string; alt?: string; children?: Snippet } = $props();
 </script>
@@ -12,7 +13,7 @@
 	class="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-3xl bg-accent-soft text-ink/40"
 >
 	{#if src}
-		<img src={vocabImageUrl(src)} {alt} class="h-full w-full object-cover" />
+		<img src={vocabImageUrl(src)} {alt} lang={textLang(alt)} class="h-full w-full object-cover" />
 	{:else}
 		<Image size={48} aria-hidden="true" />
 	{/if}
