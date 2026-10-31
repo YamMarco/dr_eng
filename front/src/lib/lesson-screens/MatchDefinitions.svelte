@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerMark from './AnswerMark.svelte';
 	import { untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Md from '$lib/components/Md.svelte';
@@ -84,7 +85,7 @@
 	<p class="mt-1 text-sm text-muted">{i18n.dict.exerciseKind.matchDefinitionsHint}</p>
 {/if}
 
-<div class="mt-4 flex flex-col gap-2" dir="ltr">
+<div class="mt-4 flex flex-col gap-2" dir="ltr" lang="en">
 	{#each screen.definitions as definition, d (d)}
 		{@const pick = picks[d]}
 		{@const right = checked && pick === definition.itemIndex}
@@ -93,6 +94,7 @@
 			type="button"
 			onclick={() => focus(d)}
 			disabled={checked}
+			aria-pressed={checked ? undefined : active === d}
 			class="flex items-center gap-3 rounded-2xl border-2 px-3 py-3 text-start transition {wrong
 				? `border-miss bg-miss-soft ${review ? '' : 'motion-safe:animate-shake-wrong'}`
 				: right
@@ -119,9 +121,11 @@
 					</span>
 				{/if}
 			</span>
+			{#if checked}<span class="ms-auto"><AnswerMark {right} /></span>{/if}
 		</button>
 		{#if checked && definition.feedback}
 			<div
+				lang="he"
 				in:fly={{ y: 8, duration: 240, delay: staggerDelay(d) }}
 				class="-mt-1 rounded-2xl bg-accent-soft p-3 text-sm leading-relaxed font-normal"
 			>
@@ -131,7 +135,7 @@
 	{/each}
 </div>
 
-<div class="mt-5 grid grid-cols-2 gap-2" dir="ltr">
+<div class="mt-5 grid grid-cols-2 gap-2" dir="ltr" lang="en">
 	{#each screen.items as item, i (i)}
 		{@const used = picks.includes(i)}
 		<button
@@ -146,7 +150,8 @@
 			<span class="min-w-0">
 				{item}
 				{#if checked && screen.itemGlosses?.[i]}
-					<span class="block text-sm font-normal text-muted" dir="rtl">{screen.itemGlosses[i]}</span
+					<span class="block text-sm font-normal text-muted" dir="rtl" lang="he"
+						>{screen.itemGlosses[i]}</span
 					>
 				{/if}
 			</span>
