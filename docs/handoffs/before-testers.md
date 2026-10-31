@@ -51,9 +51,10 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 - [ ] Lawyer: review the privacy policy and terms of use (`docs/legal/`); DPO needed?; data-processing agreements with each provider; marketing-email consent for minors
 - [ ] With Claude: move the approved drafts to `/privacy` and `/terms`
 - [ ] Before the first update / marketing email: a separate opt-in (unticked, e.g. in settings); Israeli anti-spam law needs explicit consent
-- [ ] Terms (`docs/legal/terms-of-use.md`), decide: refund policy, private-lesson cancellation notice, unused Zoom lessons carry-over, lesson scheduling, court city
+- [ ] Terms (`docs/legal/terms-of-use.md`), decide: refund policy, private-lesson cancellation notice, unused Zoom lessons carry-over, lesson scheduling
+- [ ] Lawyer: does the accessibility statement need a person's name, or is a role enough?
 - [ ] Lawyer: adapted reading passages (credit the source? permission needed?); liability cap of 12 months' payments
-- [ ] Accessibility statement (`docs/legal/accessibility-statement.md`): fill the coordinator's name, phone, postal address and reply time; then with Claude: an `/accessibility` page linked from the site footer and settings
+- [ ] Accessibility statement (`docs/legal/accessibility-statement.md`): get a virtual / business phone number and a postal address (a P.O. box works) for it; then with Claude: an `/accessibility` page linked from the site footer and settings
 
 ## Testers
 
