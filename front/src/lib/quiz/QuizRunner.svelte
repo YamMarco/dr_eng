@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { trapFocus } from '$lib/focusTrap';
 	import { setContext, untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
@@ -340,7 +341,14 @@
 	<QuizTimer seconds={remainingSeconds} warning={timerWarning} label={timerLabel} />
 {/snippet}
 
-<div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
+<div
+	role="dialog"
+	aria-modal="true"
+	aria-label={i18n.title(quiz.id)}
+	tabindex="-1"
+	{@attach trapFocus}
+	class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas outline-none"
+>
 	{#if submitted && score}
 		<QuizReport
 			{quiz}

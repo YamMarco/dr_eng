@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { trapFocus } from '$lib/focusTrap';
 	import Button from '$lib/components/Button.svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Md from '$lib/components/Md.svelte';
@@ -11,7 +12,14 @@
 	let { quiz, onBack }: { quiz: QuizNode; onBack: () => void } = $props();
 </script>
 
-<div class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas">
+<div
+	role="dialog"
+	aria-modal="true"
+	aria-label={i18n.dict.quiz.solutionTitle}
+	tabindex="-1"
+	{@attach trapFocus}
+	class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas outline-none"
+>
 	<AppBar title={i18n.dict.quiz.solutionTitle} onback={onBack} />
 
 	<main class="app-col flex-1 overflow-y-auto overscroll-contain px-4 pt-4 pb-12">

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { trapFocus } from '$lib/focusTrap';
 	import { untrack } from 'svelte';
 	import { Tween } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
@@ -264,7 +265,12 @@
 </script>
 
 <div
-	class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas"
+	role="dialog"
+	aria-modal="true"
+	aria-label={lessonLabel}
+	tabindex="-1"
+	{@attach trapFocus}
+	class="fixed inset-0 z-50 flex flex-col overscroll-none bg-canvas outline-none"
 	in:fly={{ y: 16, duration: 220, delay: 120, easing: cubicOut }}
 >
 	<AppBar title={lessonLabel} onback={onExit} backLabel={i18n.dict.lesson.exitLabel}>
