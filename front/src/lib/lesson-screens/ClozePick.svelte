@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerMark from './AnswerMark.svelte';
 	import type { ClozePickScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
 	import ExerciseKindBadge from './ExerciseKindBadge.svelte';
@@ -105,8 +106,9 @@
 		<button
 			type="button"
 			disabled={checked || isMissed}
+			aria-pressed={checked ? undefined : isSelected}
 			onclick={() => pick(i)}
-			class="rounded-xl border-2 px-3 py-2 text-base font-semibold transition active:scale-[0.97] {feedback} {checked
+			class="inline-flex items-center gap-1 rounded-xl border-2 px-3 py-2 text-base font-semibold transition active:scale-[0.97] {feedback} {checked
 				? isCorrect
 					? 'border-brand bg-brand-soft text-brand-dark'
 					: isSelected
@@ -119,6 +121,9 @@
 						: 'border-line bg-surface hover:border-brand'}"
 		>
 			<Md text={optText(opt)} />
+			{#if (checked && (isCorrect || isSelected)) || isMissed}
+				<AnswerMark right={checked && isCorrect} size={16} />
+			{/if}
 		</button>
 	{/each}
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AnswerMark from './AnswerMark.svelte';
 	import ReadingPaper from './ReadingPaper.svelte';
 	import type { PassageMcqScreen } from './types';
 	import Md from '$lib/components/Md.svelte';
@@ -134,9 +135,10 @@
 				<button
 					type="button"
 					disabled={checked}
+					aria-pressed={checked ? undefined : isSelected}
 					onclick={() => pick(oi)}
 					dir={textDir(option)}
-					class="rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
+					class="flex items-center gap-2 rounded-2xl border-2 px-4 py-3 text-start font-semibold transition active:scale-[0.97] {feedback} {checked
 						? isCorrect
 							? 'border-brand bg-brand-soft text-brand-dark'
 							: isSelected
@@ -146,7 +148,8 @@
 							? 'border-brand bg-brand-soft/60'
 							: 'border-line bg-surface hover:border-brand'}"
 				>
-					<Md text={option} />
+					<span class="min-w-0 flex-1"><Md text={option} /></span>
+					{#if checked && (isCorrect || isSelected)}<AnswerMark right={isCorrect} />{/if}
 				</button>
 			{/each}
 		</div>
