@@ -52,8 +52,8 @@ tagged `[P:motion]`.
 
 ## Overrides to the guidelines (this project)
 
-- **Accessibility and Focus States: deferred** to a later pass. Don't fix; report only
-  what breaks use for everyone (e.g. a label that isn't visible).
+- **Accessibility and Focus States:** check what the screen touches against
+  docs/ux-principles.md section 8 and fix it in the same change (no separate pass).
 - **Svelte, not React:** `onclick`/`bind:value` replace `onClick`/`onChange`; ignore
   `nuqs`, `suppressHydrationWarning`, `<Link>`. The app is client-rendered: skip
   Hydration Safety.

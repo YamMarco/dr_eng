@@ -123,6 +123,21 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
 
 Keep the page to one phone screen where possible (checked at 360x640).
 
+## 8. Accessibility
+
+- **Built as we go, not in a later pass:** every screen we build or change meets
+  IS 5568 / WCAG 2.0 AA for what it touches. **[decided]**
+- What a touched screen needs:
+  - Reachable by keyboard, with a visible focus ring (`focus-visible`).
+  - Every input has a label; every meaningful image an `alt` (a word card: the word).
+  - Right / wrong never by color alone: an icon or a word too.
+  - Dialogs and overlays: `role="dialog"`, `aria-modal`, focus moves in, Esc closes.
+  - Text contrast at least 4.5:1 (3:1 for large text), in both themes.
+  - English text gets `lang="en"` (screen readers switch voice); never block zoom.
+  - Status changes (grading done, saved) announced in a live region.
+- Listening and speaking tasks get a written alternative where the task allows.
+- Fixed a known gap? Update "מה עוד לא נגיש" in `docs/legal/accessibility-statement.md`.
+
 ## Evidence
 
 | Finding | Source | Strength |
