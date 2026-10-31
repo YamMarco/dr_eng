@@ -31,7 +31,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 
 Off until the env vars are set; the app then runs open, as before. Once set:
 
-- `/app` shows the login screen until there's a session (`$lib/auth.svelte.ts`, `LoginScreen.svelte`): sign in, sign up, forgot password.
+- `/app` shows the login screen until there's a session (`$lib/auth.svelte.ts`, `LoginScreen.svelte`): sign in, sign up, forgot password. Sign-up requires one checkbox (terms, privacy, 18+ or a parent agrees); its time is saved as `terms_accepted_at` in the user's metadata.
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images`, `/kanban` and `/finance` pages, the debug tools and the settings developer section; `/api/content-edit/*`, `/api/kanban/*` and `/api/finance` return 403 to non-staff. With accounts off, everything stays open (dev).

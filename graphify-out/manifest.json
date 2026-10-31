@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793428941.3599975,
-    "ast_hash": "729a045ae1334998ee5e9a1d5e16f7dc",
+    "mtime": 1793435539.5071244,
+    "ast_hash": "82601070198d5814598a33ab33e2b5f8",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -760,13 +760,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/auth.svelte.ts": {
-    "mtime": 1793035082.6395798,
-    "ast_hash": "6651d37d8182d3304c29331e2551a9c2",
+    "mtime": 1793435527.1054268,
+    "ast_hash": "5d6a7fc739b4ed1e8917dfcec98606b0",
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793431587.8886151,
-    "ast_hash": "a44d207e779e7618e1f90600de38d842",
+    "mtime": 1793435541.874991,
+    "ast_hash": "50a69e33dfeacac53892c8a0d02a1adf",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793431699.677505,
-    "ast_hash": "081502cf233f82468ae012c3f24c5060",
+    "mtime": 1793435654.5188148,
+    "ast_hash": "214d3b3865ce70082bd426c5935e20fe",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2457,6 +2457,21 @@
   "front/src/lib/site/LegalPage.svelte": {
     "mtime": 1793428221.881894,
     "ast_hash": "eb3a821d028f6953ff7ed805f9619cad",
+    "semantic_hash": ""
+  },
+  "docs/legal/privacy-policy.md": {
+    "mtime": 1793435654.5172498,
+    "ast_hash": "8eea1b2fc5602752244931df4ec5bb08",
+    "semantic_hash": ""
+  },
+  "docs/handoffs/before-testers.md": {
+    "mtime": 1793435654.5183039,
+    "ast_hash": "7581c6f78ab14d256c7b509d5bfcb09f",
+    "semantic_hash": ""
+  },
+  "docs/legal/terms-of-use.md": {
+    "mtime": 1793435426.7317655,
+    "ast_hash": "76644be1d344e2dfe934b19199d4cf26",
     "semantic_hash": ""
   }
 }

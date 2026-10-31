@@ -301,20 +301,22 @@
 								{/if}
 							</label>
 						{/if}
-						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
 						{#if mode === 'signup'}
-							<!-- New tab, so the half-filled form stays. -->
+							<!-- Required. Links open a new tab, so the half-filled form stays. -->
 							<!-- eslint-disable svelte/no-navigation-without-resolve -->
-							<p class="text-xs leading-relaxed text-muted">
-								{t.consentLead}<a href={termsHref} target="_blank" class={legalLink}
-									>{t.consentTerms}</a
-								>{t.consentAnd}<a href={privacyHref} target="_blank" class={legalLink}
-									>{t.consentPrivacy}</a
-								>.
-								{t.consentMinors}
-							</p>
+							<label class="flex items-start gap-2.5 text-sm leading-relaxed">
+								<input type="checkbox" required class="mt-1 h-5 w-5 shrink-0 accent-brand" />
+								<span>
+									{t.consentLead}<a href={termsHref} target="_blank" class={legalLink}
+										>{t.consentTerms}</a
+									>{t.consentAnd}<a href={privacyHref} target="_blank" class={legalLink}
+										>{t.consentPrivacy}</a
+									>{t.consentAge}
+								</span>
+							</label>
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
+						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
 
 						<div class="flex flex-wrap justify-between gap-x-2">
 							{#if mode === 'signin'}

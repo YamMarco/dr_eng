@@ -68,7 +68,12 @@ class AuthStore {
 		const { data, error } = await supabase!.auth.signUp({
 			email,
 			password,
-			options: { emailRedirectTo: returnTo, captchaToken }
+			// The sign-up form requires the terms / privacy / age checkbox: keep when it was ticked.
+			options: {
+				emailRedirectTo: returnTo,
+				captchaToken,
+				data: { terms_accepted_at: new Date().toISOString() }
+			}
 		});
 		if (error) throw error;
 		// A confirmed email signs up "successfully" with no identities and no
