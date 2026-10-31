@@ -49,6 +49,17 @@
 		for (const c of screen.categories ?? []) for (const i of c.indices) m.set(i, c.color);
 		return m;
 	});
+	// After the check, what each mark meant, for screen readers (the eye gets
+	// color, underline and strike-through); with its category's name if any.
+	let categoryNameByIndex = $derived(
+		Object.fromEntries((screen.categories ?? []).flatMap((c) => c.indices.map((i) => [i, c.name])))
+	);
+	function markMeaning(index: number, isTarget: boolean, isPicked: boolean): string {
+		const t = i18n.dict.a11y;
+		const verdict = isTarget ? (isPicked ? t.right : t.missed) : t.wrong;
+		const category = categoryNameByIndex[index];
+		return ` (${category ? `${verdict}, ${category}` : verdict})`;
+	}
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -142,7 +153,11 @@
 	</div>
 {/if}
 
-<p class="text-lg leading-loose whitespace-pre-wrap select-none" dir={screen.dir ?? 'ltr'}>
+<p
+	class="text-lg leading-loose whitespace-pre-wrap select-none"
+	dir={screen.dir ?? 'ltr'}
+	lang={screen.dir === 'rtl' ? 'he' : 'en'}
+>
 	{#each segments as seg (seg.token ? `t${seg.index}` : `w${seg.index}`)}{#if seg.token}{@const isTarget =
 				targets.has(seg.index)}{@const isPicked = picked.includes(seg.index)}{@const revealSwatch =
 				checked && isTarget && categoryColorByIndex.has(seg.index)
@@ -150,9 +165,12 @@
 					: null}<button
 				type="button"
 				disabled={checked}
+				aria-pressed={checked ? undefined : isPicked}
 				onclick={() => toggle(seg.index)}
 				style={revealSwatch ? `background:${revealSwatch.bg};color:${revealSwatch.fg}` : undefined}
-				class="rounded-sm px-0.5 font-semibold transition active:scale-95 {revealSwatch
+				class="rounded-sm px-0.5 font-semibold transition active:scale-95 {checked && isTarget
+					? 'underline decoration-2 underline-offset-4'
+					: ''} {revealSwatch
 					? ''
 					: checked
 						? isTarget
@@ -162,7 +180,10 @@
 								: 'opacity-60'
 						: isPicked
 							? 'bg-brand-soft ring-1 ring-brand/40'
-							: 'hover:bg-line/50'}">{seg.text}</button
+							: 'hover:bg-line/50'}"
+				>{seg.text}{#if checked && (isTarget || isPicked)}<span class="sr-only" lang="he"
+						>{markMeaning(seg.index, isTarget, isPicked)}</span
+					>{/if}</button
 			>{:else}{seg.text}{/if}{/each}
 </p>
 
