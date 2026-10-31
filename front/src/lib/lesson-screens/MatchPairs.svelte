@@ -8,6 +8,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { shuffle } from './shuffle';
+	import AnswerMark from './AnswerMark.svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -40,6 +41,13 @@
 	);
 	let wrong = $state<{ left: number; right: number } | null>(null);
 	let mistakes = $state(restoredMistakes ?? 0);
+	// Screen readers: matched cells just turn disabled, so say what happened.
+	// Cleared first, so a repeated "not a pair" is read again.
+	let announcement = $state('');
+	function announce(text: string) {
+		announcement = '';
+		setTimeout(() => (announcement = text), 50);
+	}
 	// eslint-disable-next-line no-useless-assignment
 	if (mode === 'quiz') disabled = restoredMistakes === undefined;
 
@@ -63,6 +71,7 @@
 		if (pair.left === pair.right) {
 			matched = [...matched, i];
 			wrong = null;
+			announce(i18n.dict.a11y.pairMatched(screen.pairs[i].en, screen.pairs[i].he));
 			if (matched.length === screen.pairs.length) {
 				if (mode === 'quiz') answerSlot!.set(mistakes);
 				else recordAnswer(score!, mistakes <= MATCH_PAIRS_MAX_MISTAKES);
@@ -71,6 +80,7 @@
 		} else {
 			mistakes += 1;
 			wrong = pair;
+			announce(i18n.dict.a11y.pairWrong);
 		}
 	}
 
@@ -96,9 +106,11 @@
 		{@const isWrong = wrong?.left === i}
 		<button
 			type="button"
+			lang="en"
 			disabled={done}
+			aria-pressed={done ? undefined : selected?.side === 'left' && selected.i === i}
 			onclick={() => pick('left', i)}
-			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
+			class="flex h-full items-center justify-center gap-1.5 rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrong
 				? 'border-miss bg-miss-soft text-miss motion-safe:animate-shake-wrong'
 				: done
 					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
@@ -107,6 +119,7 @@
 						: 'border-line bg-surface hover:border-brand'}"
 		>
 			{pair.en}
+			{#if isWrong || done}<AnswerMark right={!isWrong} size={16} />{/if}
 		</button>
 		{@const doneR = matched.includes(j)}
 		{@const isWrongR = wrong?.right === j}
@@ -114,8 +127,9 @@
 			type="button"
 			dir="rtl"
 			disabled={doneR}
+			aria-pressed={doneR ? undefined : selected?.side === 'right' && selected.i === j}
 			onclick={() => pick('right', j)}
-			class="h-full rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrongR
+			class="flex h-full items-center justify-center gap-1.5 rounded-2xl border-2 px-3 py-3 font-semibold transition active:scale-[0.97] {isWrongR
 				? 'border-miss bg-miss-soft text-miss motion-safe:animate-shake-wrong'
 				: doneR
 					? 'border-brand bg-brand-soft text-brand-dark opacity-60'
@@ -124,6 +138,8 @@
 						: 'border-line bg-surface hover:border-brand'}"
 		>
 			{screen.pairs[j].he}
+			{#if isWrongR || doneR}<AnswerMark right={!isWrongR} size={16} />{/if}
 		</button>
 	{/each}
 </div>
+<p aria-live="polite" class="sr-only">{announcement}</p>

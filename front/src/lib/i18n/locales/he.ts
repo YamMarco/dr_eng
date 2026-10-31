@@ -1261,7 +1261,9 @@ export const he = {
 	/** Screen-reader-only words (the eye gets an icon or a color). */
 	a11y: {
 		right: 'תשובה נכונה',
-		wrong: 'לא נכונה'
+		wrong: 'לא נכונה',
+		pairMatched: (en: string, he: string) => `זוג נכון: ${en}, ${he}`,
+		pairWrong: 'לא זוג. נסו שוב'
 	},
 	/** Shown once, on a tester's first visit to the app (TESTER_PHASE in $lib/support). */
 	testerWelcome: {
