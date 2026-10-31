@@ -2,10 +2,6 @@
 
 Things only the owner can do (dashboards, accounts, decisions). Tick and delete as done.
 
-## Blocking: database
-
-- [ ] Apply migrations 0007 + 0008 (production lacks `push_subscriptions.remind_hour` and `llm_usage.cobe_calls`: every AI check and the hourly reminders fail with 500). In `front/`: `DATABASE_MIGRATE_URL=<DATABASE_URL with port 5432> npx drizzle-kit migrate`
-
 ## Alpha on production
 
 Testers use production. COBE is staff-only: admins (Supabase `app_metadata.role = 'admin'`) see it; everyone else sees "coming soon", no COBE on /plans or checkout, and the COBE AI routes answer 403. Open it: `COBE_OPEN = true` in `front/src/lib/alpha.ts`.
