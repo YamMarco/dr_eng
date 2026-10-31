@@ -5,11 +5,13 @@
 	import Loader from '$lib/components/Loader.svelte';
 	import FeedbackButton from '$lib/components/FeedbackButton.svelte';
 	import StreakModal from '$lib/dashboard/StreakModal.svelte';
+	import TesterWelcome from '$lib/components/TesterWelcome.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { access } from '$lib/access.svelte';
 	import { profile } from '$lib/profile.svelte';
 	import { progressSync } from '$lib/progressSync.svelte';
 	import { page } from '$app/state';
+	import { TESTER_PHASE } from '$lib/support';
 
 	let { children } = $props();
 
@@ -49,6 +51,8 @@
 
 {#if showNav}
 	<NavBar />
+	<!-- Past onboarding, so it greets a tester on their first real screen. -->
+	{#if TESTER_PHASE}<TesterWelcome />{/if}
 {/if}
 
 {#if auth.ready}

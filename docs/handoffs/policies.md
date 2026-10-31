@@ -1,6 +1,6 @@
 # Handoff: policies (privacy, terms, consent)
 
-`/privacy` and `/terms` show only a "draft" line (`site.draft` in `he.ts`). Students are mostly minors (16-18), so these must be real before open testers, and reviewed by an Israeli lawyer before paid launch. Write in plain Hebrew a student can read.
+`/privacy` and `/terms` have a first plain-Hebrew version (i18n `legal`, rendered by `$lib/site/LegalPage.svelte`); sign-up shows the consent line and the testers get a first-visit note (`TesterWelcome`). Students are mostly minors (16-18): the texts need an Israeli lawyer's review before paid launch. Write in plain Hebrew a student can read.
 
 ## Facts the texts must match
 

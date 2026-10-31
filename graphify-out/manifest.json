@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793427348.221424,
-    "ast_hash": "2699fd34717aba9a8b05b091095dfdf3",
+    "mtime": 1793428941.3599975,
+    "ast_hash": "729a045ae1334998ee5e9a1d5e16f7dc",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793367277.3080082,
-    "ast_hash": "bef7c9b189dca275a2d1c7c51b0de57c",
+    "mtime": 1793431587.8886151,
+    "ast_hash": "a44d207e779e7618e1f90600de38d842",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -1330,18 +1330,18 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/privacy/+page.svelte": {
-    "mtime": 1791965260.188789,
-    "ast_hash": "313c248e092d172ebd5884aaa69c4fc1",
+    "mtime": 1793428221.927605,
+    "ast_hash": "86f8ddf451f9b24958ad8bc058ed6cf5",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/terms/+page.svelte": {
-    "mtime": 1791965260.2745736,
-    "ast_hash": "63c6638093bbf31c8a350e8edb22c7f4",
+    "mtime": 1793428221.996947,
+    "ast_hash": "cc11c398012ba677d9024f4133e59342",
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.svelte": {
-    "mtime": 1793371775.1841922,
-    "ast_hash": "17a9d050e926abfca34908137652cd96",
+    "mtime": 1793428250.5478354,
+    "ast_hash": "db51b5d80486e2d7affb9227c9713117",
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793427348.2542703,
-    "ast_hash": "7ce792a0bab53c01d006225dce25dfac",
+    "mtime": 1793431699.677505,
+    "ast_hash": "081502cf233f82468ae012c3f24c5060",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1675,8 +1675,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/support.ts": {
-    "mtime": 1793378243.6317747,
-    "ast_hash": "758ae52659673a59ae681ccc70dcaa0c",
+    "mtime": 1793428250.4599144,
+    "ast_hash": "0fa1ea7b8aacc40006f0e172c6945280",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/about/+page.svelte": {
@@ -2400,8 +2400,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793380112.81829,
-    "ast_hash": "ee65b1ada7e4e100a0190503dc2b5442",
+    "mtime": 1793431699.6595263,
+    "ast_hash": "c5d89f67a46b15d11aed4b338898a26d",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2447,6 +2447,16 @@
   "front/src/routes/api/finance/+server.ts": {
     "mtime": 1793427348.0283983,
     "ast_hash": "db2d91102c83064a481e275d3985cb7e",
+    "semantic_hash": ""
+  },
+  "front/src/lib/components/TesterWelcome.svelte": {
+    "mtime": 1793428941.0673912,
+    "ast_hash": "2f0a7a7ad56cf82af529a6fca911eb10",
+    "semantic_hash": ""
+  },
+  "front/src/lib/site/LegalPage.svelte": {
+    "mtime": 1793428221.881894,
+    "ast_hash": "eb3a821d028f6953ff7ed805f9619cad",
     "semantic_hash": ""
   }
 }

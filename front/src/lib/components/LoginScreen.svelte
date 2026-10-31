@@ -72,6 +72,11 @@
 		'w-full rounded-2xl border-2 border-line bg-canvas px-4 py-3 text-lg focus:border-brand focus:outline-none';
 	const linkBtn =
 		'min-h-11 rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]';
+	const legalLink = 'font-semibold text-brand-dark underline hover:no-underline';
+	// The legal pages live on the web site (the mobile build has no site routes).
+	const site = import.meta.env.VITE_API_BASE ?? '';
+	const termsHref = site + resolve('/terms');
+	const privacyHref = site + resolve('/privacy');
 
 	let head = $derived(
 		mode === 'signup'
@@ -297,6 +302,19 @@
 							</label>
 						{/if}
 						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
+						{#if mode === 'signup'}
+							<!-- New tab, so the half-filled form stays. -->
+							<!-- eslint-disable svelte/no-navigation-without-resolve -->
+							<p class="text-xs leading-relaxed text-muted">
+								{t.consentLead}<a href={termsHref} target="_blank" class={legalLink}
+									>{t.consentTerms}</a
+								>{t.consentAnd}<a href={privacyHref} target="_blank" class={legalLink}
+									>{t.consentPrivacy}</a
+								>.
+								{t.consentMinors}
+							</p>
+							<!-- eslint-enable svelte/no-navigation-without-resolve -->
+						{/if}
 
 						<div class="flex flex-wrap justify-between gap-x-2">
 							{#if mode === 'signin'}

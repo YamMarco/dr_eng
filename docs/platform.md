@@ -118,6 +118,7 @@ The "משוב" tab on every `/app` screen (`FeedbackButton.svelte`) opens a repo
 - **`/api/feedback`:** signed-in only. Emails the report through Resend (`RESEND_API_KEY`, sender `team@engup.co.il`, reply-to the student) to `support@engup.co.il`, which ImprovMX forwards to the team's Gmail. Template: `server/feedbackEmail.ts`, all client text escaped.
 - **Limit:** 5 an hour per user, in memory (per instance); nothing is stored. Off (503) without `RESEND_API_KEY`.
 - Testers' WhatsApp group: `TESTERS_GROUP` in `$lib/support.ts`, shown to signed-in users.
+- Tester phase (`TESTER_PHASE` in `$lib/support.ts`): `TesterWelcome.svelte` greets each tester once per device, after onboarding: a test version, the feedback button, AI can err, the group shows phone numbers.
 
 ## Word-card images
 
