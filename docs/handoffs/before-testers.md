@@ -40,7 +40,6 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 
 ## Google AI Studio (Gemini fallback key's project)
 
-- [ ] aistudio.google.com/logs (Logs and Datasets): logging on, retention 14 days (the privacy policy says 14). Only fallback-key calls land there; the main path (AI Gateway) bills Vercel's account, not this project
 - [ ] Never share a logs dataset with Google (shared datasets are used for training)
 - [ ] Contributor Tier (discount for training on your data) is invite-only: decline if invited
 
@@ -52,6 +51,7 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 - [ ] Lawyer: review the privacy policy and terms; DPO needed?; data-processing agreements with each provider; marketing-email consent for minors
 - [ ] With Claude: sign-up checkboxes (18+ or parent agrees; optional "send me updates", unticked), then move the approved draft to `/privacy`
 - [ ] With Claude: the terms of use draft
+- [ ] With Claude: accessibility statement (required for Israeli sites, IS 5568): publish with a contact address now, even before the accessibility pass
 
 ## Testers
 
