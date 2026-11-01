@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793556783.2237175,
-    "ast_hash": "53506a4a8a4078105c1079be2c1e942f",
+    "mtime": 1793557486.0987353,
+    "ast_hash": "7899e3704ad896ddb1eaa7f550331a7a",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1325,8 +1325,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+page.svelte": {
-    "mtime": 1793556802.2385433,
-    "ast_hash": "6fba4874e5160d222e7078200553875e",
+    "mtime": 1793557492.738338,
+    "ast_hash": "cbdf2bd9bab6d46dc6736e21eb8e5089",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/privacy/+page.svelte": {

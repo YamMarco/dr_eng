@@ -173,14 +173,14 @@
 				</h2>
 				<p class="max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl">{t.pressureBody}</p>
 			</div>
-			<ul class="relative grid grid-cols-3 gap-3 sm:gap-6">
+			<ul class="relative grid max-w-3xl grid-cols-2 gap-4 sm:gap-8">
 				{#each t.pressureStats as stat, i (stat.label)}
 					<li
 						{@attach reveal}
 						style="--reveal-delay: {i * 90}ms"
 						class="flex flex-col gap-1 border-s-2 border-brand ps-3 sm:ps-5"
 					>
-						<span class="text-4xl font-black text-brand tabular sm:text-6xl">
+						<span class="text-3xl leading-tight font-black text-brand tabular sm:text-6xl">
 							{stat.value}
 						</span>
 						<span class="text-sm leading-snug font-semibold text-white/75 sm:text-base">
