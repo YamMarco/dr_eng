@@ -146,7 +146,7 @@ export const he = {
 			pressureKicker: 'הגישה שלנו',
 			pressureTitle: 'קשה באימון.\nקל בבגרות.',
 			pressureBody:
-				'כל שיעור, כל מבחן וכל משוב מכוילים על ידי ד״ר לאנגלית ומורה לבגרות, כך שהאימון תמיד קצת יותר קשה מהדבר האמיתי. הלב דופק מהר לפני מבחן? זה הגוף שמתכונן.',
+				'כל חלק באפליקציה נבנה בהדרכת מורה לאנגלית עם שנים של הכנת תלמידי תיכון לבגרות, כדי להגיע לציון המקסימלי עם טכניקות וחשיבה שהוכחו בכיתה.',
 			methodKicker: 'השיטה',
 			methodTitle: 'ככה עוברים את הבגרות.',
 			methods: [
@@ -174,8 +174,8 @@ export const he = {
 				stuck: 'In my project I found that... um...',
 				pivot: "I don't remember the exact number, but what matters is..."
 			},
-			testersKicker: 'כניסה עם קוד',
-			testersTitle: 'קיבלתם קוד? אתם בפנים.',
+			testersKicker: 'גרסת אלפא',
+			testersTitle: 'אנחנו כרגע באלפא. קיבלתם קוד?',
 			testersBody: 'אנחנו פותחים את האפליקציה בהדרגה, ומי שקיבל קוד נכנס ראשון.',
 			perks: [
 				{
