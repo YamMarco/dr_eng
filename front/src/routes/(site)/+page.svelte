@@ -152,6 +152,47 @@
 		</div>
 	</section>
 
+	<!-- Built by a teacher: the trust claim, right under the promise -->
+	<section class="px-3 pb-20 sm:px-6 lg:pb-28">
+		<div
+			{@attach reveal}
+			class="relative mx-auto flex max-w-6xl flex-col gap-10 overflow-hidden rounded-[2.5rem] bg-overlay px-6 py-14 text-white ring-1 ring-white/10 sm:px-12 lg:py-20"
+		>
+			<div
+				class="pointer-events-none absolute -inset-e-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl"
+				aria-hidden="true"
+			></div>
+			<div
+				class="pointer-events-none absolute -inset-s-20 -bottom-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
+				aria-hidden="true"
+			></div>
+			<div class="relative flex max-w-3xl flex-col gap-5">
+				{@render kicker(t.pressureKicker, true)}
+				<h2 class="text-5xl font-black tracking-tight whitespace-pre-line sm:text-7xl lg:text-8xl">
+					{t.pressureTitle}
+				</h2>
+				<p class="max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl">{t.pressureBody}</p>
+			</div>
+			<ul class="relative grid grid-cols-3 gap-3 sm:gap-6">
+				{#each t.pressureStats as stat, i (stat.label)}
+					<li
+						{@attach reveal}
+						style="--reveal-delay: {i * 90}ms"
+						class="flex flex-col gap-1 border-s-2 border-brand ps-3 sm:ps-5"
+					>
+						<span class="text-4xl font-black text-brand tabular sm:text-6xl">
+							{stat.value}
+						</span>
+						<span class="text-sm leading-snug font-semibold text-white/75 sm:text-base">
+							{stat.label}
+						</span>
+					</li>
+				{/each}
+			</ul>
+			<div class="relative text-brand"><PulseLine /></div>
+		</div>
+	</section>
+
 	<!-- Method -->
 	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
 		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
@@ -256,31 +297,6 @@
 				</li>
 			{/each}
 		</ol>
-	</section>
-
-	<!-- Pressure is training -->
-	<section class="px-3 pb-20 sm:px-6 lg:pb-28">
-		<div
-			{@attach reveal}
-			class="relative mx-auto flex max-w-6xl flex-col gap-12 overflow-hidden rounded-[2.5rem] bg-overlay px-6 py-14 text-white ring-1 ring-white/10 sm:px-12 lg:py-20"
-		>
-			<div
-				class="pointer-events-none absolute -inset-e-24 -top-24 h-80 w-80 rounded-full bg-brand/30 blur-3xl"
-				aria-hidden="true"
-			></div>
-			<div
-				class="pointer-events-none absolute -inset-s-20 -bottom-32 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
-				aria-hidden="true"
-			></div>
-			<div class="relative flex max-w-2xl flex-col gap-4">
-				{@render kicker(t.pressureKicker, true)}
-				<h2 class="text-5xl font-black tracking-tight whitespace-pre-line sm:text-7xl">
-					{t.pressureTitle}
-				</h2>
-				<p class="text-lg leading-relaxed text-white/75 sm:text-xl">{t.pressureBody}</p>
-			</div>
-			<div class="relative text-brand"><PulseLine /></div>
-		</div>
 	</section>
 
 	<!-- Testers -->
