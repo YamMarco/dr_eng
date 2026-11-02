@@ -153,62 +153,43 @@ export const he = {
 			],
 			methodKicker: 'השיטה',
 			methodTitle: 'ככה עוברים את הבגרות.',
-			methodBody:
-				'לכל מודול בבגרות יש טכניקה משלו. לומדים אותה, מתרגלים אותה ומגיעים למבחן מוכנים.',
+			methodBody: 'ארבעה רעיונות שמשנים איך ניגשים לבגרות.',
 			methods: [
 				{
-					tag: 'Module C · קריאה',
-					title: 'מילת העוגן',
-					body: 'מוצאים בטקסט את המילים מהשאלה. התשובה כמעט תמיד יושבת לידן.'
+					tag: 'קריאה · Module C, E, G',
+					title: 'לא קוראים כל מילה.',
+					body: 'ממפים את הטקסט, מבינים מה השאלה מחפשת, מוצאים את המקום ומעתיקים משם את התשובה.'
 				},
 				{
-					tag: 'Module D + F · ספרות',
-					title: 'ANSWER, PROVE, EXPLAIN',
-					body: 'עונים במשפט אחד, מוכיחים מהטקסט עם מספר שורה, ומסבירים מה הראיה מראה.'
+					tag: 'בעל פה · COBE',
+					title: 'לא צריך מילים מושלמות.',
+					body: 'מה שנשמע בבחינה זה ביטחון. מתרגלים לדבר בנוחות, ויש משפט מוכן לרגע שנתקעים.'
 				},
 				{
-					tag: 'Module E · קריאה',
-					title: 'נושא, לא פרט',
-					body: 'על מה הפסקה? מחפשים את מה שכל הפסקה מדברת עליו, לא את הפרט הבולט.'
+					tag: 'אוצר מילים · Module E',
+					title: 'לא משננים רשימות.',
+					body: 'פוגשים כל מילה שוב ושוב, בכל פעם בהקשר קטן אחר. היא חוזרת בדיוק כשעומדים לשכוח, עד שהיא נשארת.'
 				},
 				{
-					tag: 'Module G · קריאה',
-					title: 'מפענחים את ההוראה',
-					body: 'ההוראה כבר אומרת כמה לכתוב ואיפה לחפש. לא מפספסים נקודות על ניסוח.'
-				},
-				{
-					tag: 'Module G · כתיבה',
-					title: 'מפת 4 הפסקאות',
-					body: 'פתיחה עם עמדה, שתי סיבות שונות וסיכום. יודעים מראש מה נכנס לכל פסקה.'
-				},
-				{
-					tag: 'COBE · בעל פה',
-					title: 'משפט ההצלה',
-					body: 'שכחתם עובדה באמצע ההקלטה? יש משפט מוכן שממשיך הלאה, בלי לקפוא.'
+					tag: 'כתיבה · Module C, G',
+					title: 'חיבור טוב בונים מחלקים.',
+					body: 'עמדה, סיבה, דוגמה, סיכום. לומדים כל אבן בניין לבד, ומרכיבים ממנה חיבור שלם.'
 				}
 			],
 			methodDemo: {
 				question: ['Why did the', 'last family', 'leave?'],
 				passage: ['In 1998, the', 'last family', 'moved out,', 'because the school closed.'],
-				instruction: ['Give', 'TWO', 'reasons.'],
-				slots: ['the school closed', 'no jobs'],
 				stuck: 'In my project I found that... um...',
 				pivot: "I don't remember the exact number, but what matters is...",
-				literature: {
-					question: 'Which road does the speaker take?',
-					steps: [
-						['ANSWER', 'He takes the less traveled road.'],
-						['PROVE', 'Line 19: "I took the one less traveled by"'],
-						['EXPLAIN', 'He chooses his own way.']
+				vocab: {
+					word: 'improve',
+					contexts: [
+						['Day 1', 'I want to improve my grade.'],
+						['Day 3', 'The weather improved by noon.'],
+						['Day 8', 'a big improvement in her English']
 					]
 				},
-				topic: {
-					question: 'What do we learn in paragraph II?',
-					topic: 'The village libraries closed, so Helen decided to help.',
-					details: 'She sold her car in May. The bus cost $4,000.',
-					answer: 'How Helen got her bus'
-				},
-				essay: ['I believe that...', 'First, ...', 'Second, ...', 'In conclusion, ...']
+				essay: ['I believe that...', 'because...', 'For example, ...', 'In conclusion, ...']
 			},
 			testersKicker: 'גרסת אלפא',
 			testersTitle: 'אנחנו כרגע באלפא. קיבלתם קוד?',

@@ -1,9 +1,8 @@
 <script module lang="ts">
-	export type DemoKind = 'anchor' | 'literature' | 'topic' | 'instruction' | 'essay' | 'rescue';
+	export type DemoKind = 'anchor' | 'rescue' | 'vocab' | 'essay';
 </script>
 
 <script lang="ts">
-	import { Check } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	// A looping demo of each exam technique (site.css: .m-*). Decorative: the card says it in words.
@@ -28,65 +27,19 @@
 			{d.passage[2]}
 			<span class="m-answer rounded px-0.5 font-semibold text-ink">{d.passage[3]}</span>
 		</p>
-	{:else if kind === 'instruction'}
-		<p class="text-base font-bold">
-			{d.instruction[0]}
-			<span class="relative inline-block px-1">
-				{d.instruction[1]}
-				<svg
-					class="absolute -inset-x-1.5 -inset-y-2 h-[calc(100%+1rem)] w-[calc(100%+0.75rem)] overflow-visible"
-					viewBox="0 0 100 50"
-					preserveAspectRatio="none"
-				>
-					<ellipse
-						class="m-circle"
-						cx="50"
-						cy="25"
-						rx="48"
-						ry="22"
-						fill="none"
-						pathLength="1"
-						stroke-width="3"
-						vector-effect="non-scaling-stroke"
-					/>
-				</svg>
-			</span>
-			{d.instruction[2]}
-		</p>
-		{#each d.slots as slot, i (slot)}
-			<span class="flex items-center gap-2 rounded-xl bg-surface px-3 py-2 ring-1 ring-line">
-				<span class="font-bold text-muted">{i + 1}.</span>
-				<span class="m-slot m-slot-{i + 1} flex-1">{slot}</span>
-				<Check size={15} class="m-tick m-tick-{i + 1} text-brand" />
-			</span>
-		{/each}
-	{:else if kind === 'literature'}
-		<p class="font-bold">{d.literature.question}</p>
+	{:else if kind === 'vocab'}
+		<p class="text-2xl font-black text-brand-dark">{d.vocab.word}</p>
 		<div class="flex flex-col gap-1.5">
-			{#each d.literature.steps as [label, text], i (label)}
+			{#each d.vocab.contexts as [day, text], i (day)}
 				<span
 					class="m-step m-step-{i +
-						1} flex items-baseline gap-2 rounded-xl bg-surface px-3 py-1.5 leading-snug ring-1 ring-line"
+						1} flex items-baseline gap-2 rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line"
 				>
-					<span class="w-14 shrink-0 text-[0.65rem] font-black tracking-wider text-brand-dark"
-						>{label}</span
-					>
+					<span class="w-10 shrink-0 text-xs font-bold text-muted">{day}</span>
 					<span>{text}</span>
 				</span>
 			{/each}
 		</div>
-	{:else if kind === 'topic'}
-		<p class="font-bold">{d.topic.question}</p>
-		<p class="leading-relaxed text-muted">
-			<span class="m-answer rounded px-0.5 font-semibold text-ink">{d.topic.topic}</span>
-			<span class="m-dim">{d.topic.details}</span>
-		</p>
-		<span
-			class="m-slot flex items-center gap-2 self-start rounded-xl bg-surface px-3 py-2 font-semibold ring-1 ring-line"
-		>
-			<Check size={15} class="text-brand" />
-			{d.topic.answer}
-		</span>
 	{:else if kind === 'essay'}
 		{#each d.essay as line, i (line)}
 			<span

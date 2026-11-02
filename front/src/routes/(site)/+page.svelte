@@ -51,14 +51,7 @@
 	const perkIcons = [KeyRound, Heart, RefreshCw];
 
 	// Per method card, in the order of `t.methods`.
-	const methodDemos: DemoKind[] = [
-		'anchor',
-		'literature',
-		'topic',
-		'instruction',
-		'essay',
-		'rescue'
-	];
+	const methodDemos: DemoKind[] = ['anchor', 'rescue', 'vocab', 'essay'];
 </script>
 
 <svelte:head>
@@ -292,7 +285,7 @@
 			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
 			<p class="text-lg text-muted">{t.methodBody}</p>
 		</header>
-		<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<ul class="grid gap-4 sm:grid-cols-2">
 			{#each t.methods as method, i (method.title)}
 				<li
 					{@attach reveal}

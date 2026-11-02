@@ -251,38 +251,6 @@ p + p .m-anchor {
 		opacity: 0.35;
 	}
 }
-.m-circle {
-	stroke: var(--color-accent);
-	stroke-dasharray: 1;
-	animation: m-circle 7s ease-in-out infinite;
-}
-@keyframes m-circle {
-	0%,
-	10% {
-		stroke-dashoffset: 1;
-	}
-	26%,
-	90% {
-		stroke-dashoffset: 0;
-		opacity: 1;
-	}
-	97%,
-	100% {
-		stroke-dashoffset: 0;
-		opacity: 0;
-	}
-}
-.m-slot,
-.m-tick {
-	animation: m-in 7s ease-out infinite;
-}
-.m-slot-2,
-.m-tick-2 {
-	animation-name: m-in-late;
-}
-.m-tick {
-	animation-delay: 0.3s;
-}
 /* Rows that land one after another, then leave together. */
 .m-step {
 	animation: 7s ease-out infinite;
@@ -354,38 +322,6 @@ p + p .m-anchor {
 		transform: translateY(4px);
 	}
 	64%,
-	90% {
-		opacity: 1;
-		transform: none;
-	}
-	97%,
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes m-in {
-	0%,
-	34% {
-		opacity: 0;
-		transform: translateY(4px);
-	}
-	40%,
-	90% {
-		opacity: 1;
-		transform: none;
-	}
-	97%,
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes m-in-late {
-	0%,
-	54% {
-		opacity: 0;
-		transform: translateY(4px);
-	}
-	60%,
 	90% {
 		opacity: 1;
 		transform: none;
@@ -573,9 +509,6 @@ p + p .m-anchor {
 	.m-anchor,
 	.m-answer,
 	.m-dim,
-	.m-circle,
-	.m-slot,
-	.m-tick,
 	.m-step,
 	.m-typing,
 	.m-pivot,
