@@ -2152,7 +2152,7 @@ export const c3Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "מה צריך בתשובה? שני דברים:\n💡 הצעה ספציפית: מה בדיוק כדאי לשנות?🎯 הסבר: למה זה יעזור?\n\nדוגמה:*In your opinion, what should schools change to help students?*\n❌ *Schools should be better.* (כללי מדי, אין הסבר)✅ *Schools should start at 9:00 instead of 8:00, because students will sleep more and concentrate better in class.*\n\nהנוסחה:      ‎ I think ___ should ___ because ___",
+          text: "{d:rtl}מה צריך בתשובה? **שני דברים**:\n{d:rtl}\n{d:rtl}💡 הצעה ספציפית: מה בדיוק כדאי לשנות?\n{d:rtl}🎯 הסבר: למה זה יעזור?\n\n{a:right}{d:rtl}דוגמה:\n{a:center}{d:rtl}*In your opinion, what should schools change to help *\n{a:center}{d:rtl}*students?*\n{a:left}{d:rtl}\n{a:left}{d:rtl}*Schools should be better*❌\n\n✅ *Schools should start at 9:00 instead of 8:00, because students will sleep more and concentrate better in class.*\n\n{d:rtl}הנוסחה:      ________ ‎ I think ___ should ___ because ",
         },
         {
           type: "preface",
