@@ -48,7 +48,8 @@
 					></span>
 					<span class="w-10 shrink-0 text-xs font-bold text-muted">{day}</span>
 					<span class="rounded-lg bg-surface px-2 py-1 ring-1 ring-line"
-						>{before}<mark class="rounded bg-mark-yellow px-0.5 font-bold text-mark-ink">{form}</mark
+						>{before}<mark class="rounded bg-mark-yellow px-0.5 font-bold text-mark-ink"
+							>{form}</mark
 						>{after}</span
 					>
 				</li>
