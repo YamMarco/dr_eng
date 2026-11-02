@@ -1,9 +1,12 @@
+<script module lang="ts">
+	export type DemoKind = 'anchor' | 'rescue' | 'vocab' | 'essay';
+</script>
+
 <script lang="ts">
-	import { Check } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	// A looping demo of each exam technique (site.css: .m-*). Decorative: the card says it in words.
-	let { kind }: { kind: number } = $props();
+	let { kind }: { kind: DemoKind } = $props();
 	let d = $derived(i18n.dict.site.home.methodDemo);
 </script>
 
@@ -12,7 +15,7 @@
 	class="flex h-48 flex-col justify-center gap-3 rounded-2xl bg-canvas p-4 text-start text-sm"
 	aria-hidden="true"
 >
-	{#if kind === 0}
+	{#if kind === 'anchor'}
 		<p class="font-bold">
 			{d.question[0]} <mark class="m-anchor rounded px-0.5">{d.question[1]}</mark>
 			{d.question[2]}
@@ -24,36 +27,43 @@
 			{d.passage[2]}
 			<span class="m-answer rounded px-0.5 font-semibold text-ink">{d.passage[3]}</span>
 		</p>
-	{:else if kind === 1}
-		<p class="text-base font-bold">
-			{d.instruction[0]}
-			<span class="relative inline-block px-1">
-				{d.instruction[1]}
-				<svg
-					class="absolute -inset-x-1.5 -inset-y-2 h-[calc(100%+1rem)] w-[calc(100%+0.75rem)] overflow-visible"
-					viewBox="0 0 100 50"
-					preserveAspectRatio="none"
-				>
-					<ellipse
-						class="m-circle"
-						cx="50"
-						cy="25"
-						rx="48"
-						ry="22"
-						fill="none"
-						pathLength="1"
-						stroke-width="3"
-						vector-effect="non-scaling-stroke"
-					/>
-				</svg>
+	{:else if kind === 'vocab'}
+		<!-- The same word, met again at growing gaps, a new form each time; the meter fills with it. -->
+		<div class="flex items-center gap-2">
+			<span class="text-xl font-black text-brand-dark">{d.vocab.word}</span>
+			<span class="font-semibold text-muted" dir="rtl">{d.vocab.gloss}</span>
+			<span class="ms-auto flex gap-1">
+				{#each d.vocab.contexts as [day], i (day)}
+					<span class="h-2 w-5 overflow-hidden rounded-full bg-line">
+						<span class="m-step m-step-{i + 1} block h-full bg-brand"></span>
+					</span>
+				{/each}
 			</span>
-			{d.instruction[2]}
-		</p>
-		{#each d.slots as slot, i (slot)}
-			<span class="flex items-center gap-2 rounded-xl bg-surface px-3 py-2 ring-1 ring-line">
-				<span class="font-bold text-muted">{i + 1}.</span>
-				<span class="m-slot m-slot-{i + 1} flex-1">{slot}</span>
-				<Check size={15} class="m-tick m-tick-{i + 1} text-brand" />
+		</div>
+		<ol class="flex flex-col gap-1.5 border-s-2 border-dashed border-line ps-3">
+			{#each d.vocab.contexts as [day, before, form, after], i (day)}
+				<li class="m-step m-step-{i + 1} relative flex items-baseline gap-2">
+					<span
+						class="absolute -start-[1.05rem] top-1.5 h-2 w-2 rounded-full bg-brand ring-2 ring-canvas"
+					></span>
+					<span class="w-10 shrink-0 text-xs font-bold text-muted">{day}</span>
+					<span class="rounded-lg bg-surface px-2 py-1 ring-1 ring-line"
+						>{before}<mark class="rounded bg-mark-yellow px-0.5 font-bold text-mark-ink"
+							>{form}</mark
+						>{after}</span
+					>
+				</li>
+			{/each}
+		</ol>
+	{:else if kind === 'essay'}
+		{#each d.essay as line, i (line)}
+			<span
+				class="m-step m-step-{i +
+					1} flex items-center gap-2 rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line"
+			>
+				<span class="font-bold text-muted tabular-nums">{i + 1}</span>
+				<span class="font-semibold">{line}</span>
+				<span class="ms-auto h-1.5 w-1/4 rounded-full bg-line"></span>
 			</span>
 		{/each}
 	{:else}

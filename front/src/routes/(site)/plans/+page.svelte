@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
+	import { BadgePercent, Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
@@ -24,6 +24,7 @@
 		TUTOR_HOUR,
 		formatPrice,
 		monthlyShekels,
+		savingPercent,
 		planById,
 		planId,
 		type Cycle,
@@ -60,8 +61,9 @@
 	let passOn = $derived(!!planById('premium-pass', now));
 	// The pass only while it's sold.
 	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn));
-	let chosen = $state<Cycle>('month');
-	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : 'month');
+	// Opens on the longest cycle: the lowest monthly price, its total shown under it.
+	let chosen = $state<Cycle | null>(null);
+	let cycle = $derived<Cycle>(chosen && cycles.includes(chosen) ? chosen : cycles.at(-1)!);
 	// COBE added per plan, off by default; the card switch and the table row share it.
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 	// Staff-only COBE (alpha): no COBE options for anyone else.
@@ -70,6 +72,9 @@
 	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
 		planById(planId(offer, c, cobe), now, pricing)!;
 	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
+	/** Percent saved against paying monthly; 0 on the monthly cycle. */
+	const saved = (offer: OfferId) =>
+		savingPercent(plan(offer), plan(offer, 'month', !!cobeOn[offer]));
 
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
 	let lesson = $derived(planById('lesson', now)!);
@@ -102,8 +107,15 @@
 
 {#snippet priceLine(offer: OfferId, big: boolean)}
 	{@const p = plan(offer)}
+	{@const monthly = plan(offer, 'month', p.cobe)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
+			{#if saved(offer)}
+				<s class="me-1 text-xl font-bold text-muted tabular-nums decoration-2">
+					<span class="sr-only">{t.instead}</span>
+					{perMonth(monthly)}
+				</s>
+			{/if}
 			<span class="{big ? 'text-5xl' : 'text-4xl'} font-extrabold">
 				<OfferPrice value={perMonth(p)} />
 			</span>
@@ -247,6 +259,16 @@
 						<Sparkles size={12} aria-hidden="true" />
 						{t.popular}
 					</span>
+				{/if}
+				{#if saved(offer)}
+					{#key saved(offer)}
+						<span
+							class="absolute inset-e-5 -top-4 flex -rotate-6 items-center gap-1 rounded-xl bg-accent px-3 py-1.5 text-sm font-black text-mark-ink shadow-md ring-2 ring-surface motion-safe:animate-pop-correct"
+						>
+							<BadgePercent size={16} aria-hidden="true" />
+							{t.save(saved(offer))}
+						</span>
+					{/key}
 				{/if}
 				<div>
 					<h2 class="text-xl font-bold">{item.name}</h2>
@@ -464,15 +486,6 @@
 </main>
 
 {#if debug}
-	<!-- One tap flips the page between its two versions. -->
-	<button
-		type="button"
-		onclick={() => (pricing = launch ? 'regular' : 'launch')}
-		class="fixed inset-x-0 bottom-20 z-50 mx-auto flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-5 text-sm font-bold text-white shadow-lg active:scale-[0.97]"
-	>
-		{t.debug.version}: {t.debug.pricings[pricing]}
-		<span class="text-white/70">⇄</span>
-	</button>
 	<details
 		class="fixed start-4 bottom-4 z-50 w-fit max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line open:w-80"
 	>
@@ -495,6 +508,14 @@
 				{t.debug.date}
 				<input type="date" bind:value={debugDate} class="rounded-lg bg-canvas px-2 py-1" />
 			</label>
+			<div class="flex items-center justify-between gap-2">
+				{t.debug.version}: {t.debug.pricings.launch}
+				<Toggle
+					checked={launch}
+					label={t.debug.version}
+					onchange={(on) => (pricing = on ? 'launch' : 'regular')}
+				/>
+			</div>
 			<div class="flex items-center justify-between gap-2">
 				{t.debug.guarantee}
 				<Toggle

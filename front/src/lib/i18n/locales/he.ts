@@ -112,7 +112,7 @@ export const he = {
 				}
 			],
 			loopKicker: 'המסלול',
-			loopTitle: 'שלוש שנות אנגלית. מיומנות קטנה אחת בכל פעם.',
+			loopTitle: 'שלוש שנים של אנגלית. מיומנות קטנה אחת בכל פעם.',
 			steps: [
 				{
 					title: 'שיעורים קצרים, בקצב שלכם',
@@ -148,35 +148,50 @@ export const he = {
 			pressureBody:
 				'כל חלק באפליקציה נבנה בהדרכת מורה לבגרות באנגלית. טכניקות מוכחות, בשביל הציון הכי גבוה שאפשר.',
 			pressureStats: [
-				{ value: '20', label: 'שנות הכנה לבגרות' },
+				{ value: '20', label: 'שנות ניסיון באנגלית' },
 				{ value: 'מבחני אמת', label: 'מבחנים נבחרים בתנאי בגרות אמיתיים' }
 			],
 			methodKicker: 'השיטה',
 			methodTitle: 'ככה עוברים את הבגרות.',
+			methodBody: 'השיטות לפיצוח הבגרות שמורים לבגרות מכירים, ורוב התלמידים לא שומעים עליהן.',
 			methods: [
 				{
-					tag: 'קריאה',
-					title: 'מילת העוגן',
-					body: 'מוצאים בטקסט את המילים מהשאלה. התשובה כמעט תמיד יושבת לידן.'
+					tag: 'קריאה · Module C, E, G',
+					title: 'לא צריך להבין כל מילה.',
+					body: 'רוב התלמידים קוראים את כל הטקסט לפני שהם בכלל מתחילים לענות, ומבזבזים זמן יקר. אצלנו זה הפוך.'
 				},
 				{
-					tag: 'שאלות פתוחות',
-					title: 'מפענחים את ההוראה',
-					body: 'ההוראה כבר אומרת כמה לכתוב ואיפה לחפש. לא מפספסים נקודות על ניסוח.'
+					tag: 'בעל פה · COBE',
+					title: 'הסוד הוא לא באנגלית שלכם.',
+					body: 'גם עם רעיון פשוט ומבטא לא מושלם אפשר לקבל ציון גבוה בבעל פה. השאלה היא איך.'
 				},
 				{
-					tag: 'בעל פה',
-					title: 'משפט ההצלה',
-					body: 'שכחתם עובדה באמצע ההקלטה? יש משפט מוכן שממשיך הלאה, בלי לקפוא.'
+					tag: 'אוצר מילים · Module E',
+					title: 'שכחתם מילה? מצוין.',
+					body: 'במקום לשנן כמו תוכי, לומדים ומבינים את המילה יותר ויותר, כל פעם קצת.'
+				},
+				{
+					tag: 'כתיבה · Module C, G',
+					title: 'אף אחד לא נולד יודע לכתוב חיבור.',
+					body: 'גם תלמידים חזקים קופאים מול דף ריק. כאן תלמדו מה לכתוב עוד לפני שהתחלתם את החיבור.'
 				}
 			],
 			methodDemo: {
 				question: ['Why did the', 'last family', 'leave?'],
 				passage: ['In 1998, the', 'last family', 'moved out,', 'because the school closed.'],
-				instruction: ['Give', 'TWO', 'reasons.'],
-				slots: ['the school closed', 'no jobs'],
 				stuck: 'In my project I found that... um...',
-				pivot: "I don't remember the exact number, but what matters is..."
+				pivot: "I don't remember the exact number, but what matters is...",
+				vocab: {
+					word: 'improve',
+					gloss: 'לשפר',
+					// [day, before, the word's form, after]
+					contexts: [
+						['Day 1', 'I want to ', 'improve', ' my grade.'],
+						['Day 3', 'The weather ', 'improved', ' by noon.'],
+						['Day 8', 'a big ', 'improvement', ' in her English']
+					]
+				},
+				essay: ['I believe that...', 'because...', 'For example, ...', 'In conclusion, ...']
 			},
 			testersKicker: 'גרסת אלפא',
 			testersTitle: 'אנחנו כרגע באלפא. קיבלתם קוד?',
@@ -186,7 +201,10 @@ export const he = {
 					title: 'גישה מלאה בחינם',
 					body: 'כל השיעורים, המילים והמבחנים, עד ההשקה.'
 				},
-				{ title: 'הקול שלכם משנה', body: 'אנחנו בונים את זה בשבילכם. ספרו לנו מה חסר, ונבנה את זה.' },
+				{
+					title: 'הקול שלכם משנה',
+					body: 'אנחנו בונים את זה בשבילכם. ספרו לנו מה חסר, ונבנה את זה.'
+				},
 				{ title: 'ההתקדמות נשמרת', body: 'הכול שמור בחשבון ועובר איתכם בין הטלפון למחשב.' }
 			],
 			noCode: 'אין לכם קוד? הצטרפו לרשימת ההמתנה',
@@ -197,8 +215,8 @@ export const he = {
 	about: {
 		title: 'אודות',
 		metaDescription:
-			'EngUp נבנתה מתוך 20 שנות הכנה לבגרות באנגלית: אסטרטגיות קריאה, תרגול ממוקד ומבחנים בתנאי אמת ל־4 ו־5 יחידות.',
-		lead: '20 שנות הוראת אנגלית. עכשיו גם באפליקציה.',
+			'EngUp נבנתה מתוך 20 שנות ניסיון באנגלית: אסטרטגיות קריאה, תרגול ממוקד ומבחנים בתנאי אמת ל־4 ו־5 יחידות.',
+		lead: '20 שנות ניסיון באנגלית. עכשיו גם באפליקציה.',
 		intro:
 			'EngUp נולדה בכיתה, מתוך שנים של הכנת תלמידים לבגרות ב־4 ו־5 יחידות. אנחנו מכירים את דרישות הבחינה, אבל חשוב מכך, אנחנו מכירים אתכם: את הקשיים, את הטעויות שחוזרות, ואת מה שבאמת עוזר להבין, להשתפר ולהצליח.',
 		motto: 'We Learn What We Teach.',
@@ -265,6 +283,8 @@ export const he = {
 		} as Record<string, string>,
 		passTotal: (months: number, total: string) => `עד 30.6, ${months} חודשים, ${total} ₪ בסך הכול`,
 		installments: (months: number, price: number) => `אפשר ב-${months} תשלומים של ${price} ₪`,
+		instead: 'במקום',
+		save: (percent: number) => `חוסכים ${percent}%`,
 		paidMonthly: 'משלמים חודש בחודש, בלי התחייבות',
 		packTotal: (months: number, total: string) => `תשלום אחד של ${total} ₪ ל-${months} חודשים`,
 		popular: 'הכי פופולרי',
@@ -1670,7 +1690,9 @@ export const he = {
 				},
 				{
 					title: 'מה עוד לא נגיש',
-					body: ['EngUp נמצאת בשלב פיתוח והרצה, ואנחנו משפרים את הנגישות שלה בכל עדכון. ידוע לנו על:'],
+					body: [
+						'EngUp נמצאת בשלב פיתוח והרצה, ואנחנו משפרים את הנגישות שלה בכל עדכון. ידוע לנו על:'
+					],
 					items: [
 						'ניווט במקלדת בלבד: לא בכל המסכים אפשר לראות איפה נמצאים.',
 						'תרגילי האזנה ודיבור (COBE): עדיין אין להם חלופה כתובה מלאה.',

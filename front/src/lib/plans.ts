@@ -21,6 +21,17 @@ const CYCLE_MONTHS: Record<Exclude<Cycle, 'pass'>, number> = { month: 1, pack3: 
 const per = (month: number, pack3: number, pack6: number, pass: number) =>
 	({ month, pack3, pack6, pass }) as Record<Cycle, number>;
 const APP = per(4900, 3900, 3400, 2900);
+
+/** Off the monthly price, per cycle (for prices derived with `ladder`). */
+const CYCLE_OFF: Record<Cycle, number> = { month: 0, pack3: 0.2, pack6: 0.3, pass: 0.4 };
+/** The nearest whole-shekel price ending in 4 or 9, in agorot. */
+const charm = (agorot: number) => (Math.round((agorot / 100 - 4) / 5) * 5 + 4) * 100;
+/** A monthly price and each longer cycle `CYCLE_OFF` cheaper. */
+const ladder = (month: number) =>
+	Object.fromEntries(CYCLES.map((c) => [c, charm(month * (1 - CYCLE_OFF[c]))])) as Record<
+		Cycle,
+		number
+	>;
 /** The teacher's part for the weekly group lesson. Launch: 80 on every cycle. */
 const GROUP_ZOOM = {
 	regular: per(13000, 12000, 11500, 11000),
@@ -44,7 +55,7 @@ const MONTHLY = Object.fromEntries(
 	(['regular', 'launch'] as const).map((pricing) => [
 		pricing,
 		{
-			premium: split(APP, per(0, 0, 0, 0)),
+			premium: split(ladder(6400), per(0, 0, 0, 0)),
 			group: split(APP, GROUP_ZOOM[pricing]),
 			// Rounded down to a price ending in 9: the app part takes the difference.
 			personal: split(per(4100, 3100, 2600, 2100), GROUP_ZOOM[pricing], PRIVATE),
@@ -212,6 +223,10 @@ export function isPurchasable(plan: Plan | undefined): plan is Plan {
 
 /** Whole shekels a month, rounded. */
 export const monthlyShekels = (agorot: number, months: number) => Math.round(agorot / months / 100);
+
+/** Whole percent a plan saves against paying monthly for the same months. */
+export const savingPercent = (plan: Plan, monthly: Plan) =>
+	Math.max(0, Math.round((1 - plan.price / (monthly.price * plan.months)) * 100));
 
 /** 4900 -> "49", 4950 -> "49.50" */
 export function formatPrice(agorot: number): string {
