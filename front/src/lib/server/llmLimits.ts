@@ -7,22 +7,22 @@ export type Activity = 'lesson' | 'reading' | 'essay' | 'ocr' | 'speak' | 'chat'
 /** Calls per user per day, by activity. */
 export const DAILY_CAPS: Record<Activity, number> = {
 	/** A free-text lesson answer. */
-	lesson: 60,
+	lesson: 36,
 	/** An exam's open reading answers, one call per passage. */
-	reading: 10,
-	essay: 10,
+	reading: 6,
+	essay: 6,
 	/** A photo of handwriting. */
-	ocr: 15,
+	ocr: 9,
 	/** COBE: feedback on one recording. */
-	speak: 20,
+	speak: 12,
 	/** COBE: one turn of the AI chat. */
-	chat: 100
+	chat: 60
 };
 
 /** All users together per day: the app-wide safety ceiling on spend. */
-export const GLOBAL_DAILY_CAP = 1000;
+export const GLOBAL_DAILY_CAP = 600;
 
 /** COBE calls (speak + chat) per user per calendar month (~₪0.06 each): keeps a heavy user below the COBE price. */
-export const COBE_MONTHLY_CAP = 400;
+export const COBE_MONTHLY_CAP = 240;
 
 export const COBE_ACTIVITIES: Activity[] = ['speak', 'chat'];
