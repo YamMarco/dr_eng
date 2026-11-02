@@ -3329,6 +3329,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "זיהום יכול לגרום לבעיות בריאות חמורות.",
               hookHe:
                 "cause = לגרום ל, וגם שם עצם: the cause = הסיבה. החץ: סיבה ← תוצאה.",
+              image: "/vocab-images/word-2969b816ad.jpg",
             },
             {
               type: "mcq",
@@ -3368,6 +3369,7 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "צריך פועל = affect. effect ו-effects הם שמות עצם. cause (גורם ל) לא מתאים לפני how well.",
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt: "Stress has a bad ______ on health.",
@@ -3376,6 +3378,7 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "a bad ___ = שם עצם = effect.",
             },
+            { type: "preface", text: "" },
             { type: "spell-word", word: "affect", mode: "copy" },
             {
               type: "match-pairs",
