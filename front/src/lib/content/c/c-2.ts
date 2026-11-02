@@ -1242,11 +1242,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.",
+          text: "{d:rtl}עוד כמה **מילות ניווט** שכדאי לזהות מהר.\n{d:rtl}\n{d:rtl}קראו את הקטע:\n{d:rtl}\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.",
         },
         {
           type: "preface",
-          text: "עכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}**found** ← יש כאן ממצא\n{p:ul}**decreased** ← משהו ירד\n{p:ul}**for example** ← עכשיו מגיעה דוגמה\n{p:ul}**increased** ← משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
+          text: "{d:rtl}עכשיו אל תתרגמו את כל המשפטים.\n{d:rtl}\n{d:rtl}נסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}{d:rtl}**found** ← יש כאן ממצא\n{p:ul}{d:rtl}**decreased** ← משהו ירד בכמות\n{p:ul}{d:rtl}**for example** ← עכשיו מגיעה דוגמה על הרעיון המרכזי\n{p:ul}{d:rtl}**increased** ← משהו עלה בכמות\n\n{d:rtl}אלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
@@ -4726,6 +4726,7 @@ export const c2Lessons: LessonNode[] = [
           type: "preface",
           text: "{d:rtl}ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n{d:rtl}**1. מילות תוכן: **מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n{d:rtl}**2. מילות ניווט: **מילים שעוזרות לעקוב אחרי הכיוון של הדיון בטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n{d:rtl}**3. מילות שאלה: **מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n\n{d:rtl}**אז בואו נתחיל !**",
         },
+        { type: "preface", text: "" },
       ],
       rounds: [{ screens: [] }],
     },
