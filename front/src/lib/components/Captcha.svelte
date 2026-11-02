@@ -59,6 +59,11 @@
 		});
 	}
 
+	/** Why there's no token: the widget errored (blocked or rejected) or still waits (often for a click). */
+	export function trouble(): 'blocked' | 'waiting' | null {
+		return token ? null : broken ? 'blocked' : 'waiting';
+	}
+
 	export function reset() {
 		token = null;
 		if (api && id) api.reset(id);

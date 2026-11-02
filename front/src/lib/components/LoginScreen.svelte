@@ -126,8 +126,14 @@
 			case 'session_not_found':
 			case 'session_expired':
 				return t.errors.linkExpired;
-			case 'captcha_failed':
-				return t.errors.captcha;
+			case 'captcha_failed': {
+				const trouble = captcha?.trouble();
+				return trouble === 'blocked'
+					? t.errors.captchaBlocked
+					: trouble === 'waiting'
+						? t.errors.captchaWaiting
+						: t.errors.captcha;
+			}
 			case 'over_email_send_rate_limit':
 			case 'over_request_rate_limit':
 				return t.errors.rateLimit;
