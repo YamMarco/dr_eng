@@ -263,7 +263,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The narrator's last words\n{p:text}At the end, the narrator says that at that moment he did not entirely dislike Mr. Kelada.\n{d:rtl}בסוף המספר אומר שבאותו רגע הוא כבר לא סלד ממר קלדה לגמרי.",
+              text: "### The narrator's last words\n{p:text}At the end, the narrator says that at that moment he did not entirely dislike Mr. Kelada.\n{d:rtl}\n{d:rtl}בסוף המספר אומר שבאותו רגע הוא כבר לא סלד ממר קלדה לגמרי.",
             },
             {
               type: "mcq",
