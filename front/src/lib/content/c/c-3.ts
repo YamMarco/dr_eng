@@ -2218,7 +2218,7 @@ export const c3Lessons: LessonNode[] = [
             {
               type: "writing-task",
               prompt:
-                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\nשלב 1 - השלד: 4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ I think schools should... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
+                '"In your opinion, what changes can be made to your school so that it can become a better place to learn? Give reasons to explain your opinion."\n\n{d:rtl}שלב 1 - השלד: \n{d:rtl}4 משפטים, כמו בשיעור In conclusion. עוד לא 70-90.\n✏️ I think schools should... because...\n✏️ For example,...\n✏️ In addition,...\n✏️ In conclusion, I believe...',
               wordBank: [
                 "I think",
                 "I believe",
