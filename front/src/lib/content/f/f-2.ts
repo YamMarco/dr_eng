@@ -197,7 +197,7 @@ export const f2Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "### The bet\n{p:text}The two men bet a hundred dollars. Mr. Kelada takes out a magnifying glass and examines the necklace. He is about to win.\n{d:rtl}שני הגברים מתערבים על מאה דולר. מר קלדה מוציא זכוכית מגדלת ובודק את השרשרת. הוא עומד לנצח.",
+              text: "### The bet\n{p:text}The two men bet a hundred dollars. Mr. Kelada takes out a magnifying glass and examines the necklace. He is about to win.\n{d:rtl}\n{d:rtl}שני הגברים מתערבים על מאה דולר. מר קלדה מוציא זכוכית מגדלת ובודק את השרשרת. הוא עומד לנצח.",
             },
             {
               type: "mcq",
@@ -212,7 +212,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### Mrs. Ramsay's face\n{p:text}Suddenly Mr. Kelada looks at Mrs. Ramsay. Her face is very pale, and her eyes beg him for help. Mr. Kelada understands.\n{d:rtl}פתאום מר קלדה מסתכל על גברת רמזי. הפנים שלה חיוורות מאוד, והעיניים שלה מתחננות לעזרה. מר קלדה מבין.",
+              text: "### Mrs. Ramsay's face\n{p:text}Suddenly Mr. Kelada looks at Mrs. Ramsay. Her face is very pale, and her eyes beg him for help. Mr. Kelada understands.\n{d:rtl}\n{d:rtl}פתאום מר קלדה מסתכל על גברת רמזי. הפנים שלה חיוורות מאוד, והעיניים שלה מתחננות לעזרה. מר קלדה מבין.",
             },
             {
               type: "mcq",
@@ -223,7 +223,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The decision\n{p:text}Mr. Kelada says that he was wrong and that the pearls are an imitation. He pays the hundred dollars. He does this on purpose, although he knows the truth.\n{d:rtl}מר קלדה אומר שטעה ושהפנינים מזויפות. הוא משלם מאה דולר. הוא עושה את זה בכוונה, למרות שהוא יודע את האמת.",
+              text: "### The decision\n{p:text}Mr. Kelada says that he was wrong and that the pearls are an imitation. He pays the hundred dollars. He does this on purpose, although he knows the truth.\n{d:rtl}\n{d:rtl}מר קלדה אומר שטעה ושהפנינים מזויפות. הוא משלם מאה דולר. הוא עושה את זה בכוונה, למרות שהוא יודע את האמת.",
             },
             {
               type: "writing-task",
@@ -236,7 +236,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The price of kindness\n{p:text}The story spreads around the ship. The passengers laugh at Mr. Kelada, the man who always knows everything. He loses his money and his pride.\n{d:rtl}הסיפור מתפשט באונייה, והנוסעים צוחקים על מר קלדה - ״זה שיודע הכול״. הוא מפסיד גם כסף וגם את הכבוד שלו.",
+              text: "### The price of kindness\n{p:text}The story spreads around the ship. The passengers laugh at Mr. Kelada, the man who always knows everything. He loses his money and his pride.\n{d:rtl}\n{d:rtl}הסיפור מתפשט באונייה, והנוסעים צוחקים על מר קלדה - ״זה שיודע הכול״. הוא מפסיד גם כסף וגם את הכבוד שלו.",
             },
             {
               type: "writing-task",
@@ -249,7 +249,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The next morning\n{p:text}The next morning, someone pushes an envelope under the cabin door. Inside is a hundred-dollar note. Mr. Kelada hints that a young wife should not spend a year alone in New York while her husband works far away.\n{d:rtl}למחרת בבוקר מישהו דוחף מעטפה מתחת לדלת התא, ובתוכה שטר של מאה דולר. מר קלדה רומז שאישה צעירה לא צריכה לבלות שנה לבד בניו יורק כשבעלה עובד רחוק.",
+              text: "### The next morning\n{p:text}The next morning, someone pushes an envelope under the cabin door. Inside is a hundred-dollar note. Mr. Kelada hints that a young wife should not spend a year alone in New York while her husband works far away.\n{d:rtl}\n{d:rtl}למחרת בבוקר מישהו דוחף מעטפה מתחת לדלת התא, ובתוכה שטר של מאה דולר. מר קלדה רומז שאישה צעירה לא צריכה לבלות שנה לבד בניו יורק כשבעלה עובד רחוק.",
             },
             {
               type: "writing-task",
