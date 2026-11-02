@@ -1246,7 +1246,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}עכשיו אל תתרגמו את כל המשפטים.\n{d:rtl}\n{d:rtl}נסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}{d:rtl}**found** ← יש כאן ממצא\n{p:ul}{d:rtl}**decreased** ← משהו ירד בכמות\n{p:ul}{d:rtl}**for example** ← עכשיו מגיעה דוגמה על הרעיון המרכזי\n{p:ul}{d:rtl}**increased** ← משהו עלה בכמות\n\n{d:rtl}אלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
+          text: "{d:rtl}\n{d:rtl}\n{d:rtl}נסו להבין מה כל מילה מודגשת **מסמנת**:\n{p:ul}{d:rtl}**found** ← יש כאן ממצא\n{p:ul}{d:rtl}**decreased** ← משהו ירד בכמות\n{p:ul}{d:rtl}**for example** ← עכשיו מגיעה דוגמה על הרעיון המרכזי\n{p:ul}{d:rtl}**increased** ← משהו עלה בכמות\n\n{d:rtl}אלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
