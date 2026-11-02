@@ -23,6 +23,8 @@ export type Feedback = {
 	/** Where the verdict came from. `partial` = the LLM was unavailable: marks only, no verdict. */
 	stage: 'l1-gate' | 'l1-accepted' | 'llm' | 'partial';
 	pass: boolean;
+	/** `partial` because today's AI quota is used up. */
+	limit?: boolean;
 	gate?: GateReason;
 	/** Layer 1 + Layer 2 together, sorted by position. */
 	marks: Mark[];
@@ -91,6 +93,8 @@ export type ExamGrade = {
 	kind: 'reading' | 'essay' | 'speaking';
 	/** failed = the LLM was unavailable; counts 0 until re-graded. */
 	status: 'graded' | 'failed';
+	/** Failed because today's AI quota is used up. */
+	limit?: boolean;
 	earned: number;
 	max: number;
 	/** The answer as submitted (marks point into it). */

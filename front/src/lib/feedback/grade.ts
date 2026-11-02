@@ -1,5 +1,5 @@
 // Client side of the loop: Layer 1 -> (gate | /api/grade) -> one Feedback.
-import { apiFetch } from '$lib/api';
+import { ApiError, apiFetch, isLimit } from '$lib/api';
 import { applyFixes, locateMarks, mergeMarks } from './merge';
 import { runLayer1, type Layer1Options } from './layer1';
 import type { RuleSet } from './rules';
@@ -12,7 +12,7 @@ export async function postGrade<T>(body: GradeRequest): Promise<T> {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(body)
 	});
-	if (!res.ok) throw new Error(`grade ${res.status}`);
+	if (!res.ok) throw new ApiError(res.status);
 	return res.json();
 }
 
@@ -34,9 +34,9 @@ export async function gradeLesson(
 			notes: task.notes,
 			fixes: task.fixes
 		});
-	} catch {
+	} catch (e) {
 		// LLM down or rate-limited: the local marks alone, no verdict
-		return { stage: 'partial', pass: false, marks: l1.marks };
+		return { stage: 'partial', pass: false, limit: isLimit(e), marks: l1.marks };
 	}
 	const marks = mergeMarks(l1.marks, locateMarks(text, corrected, verdict.marks));
 	const general = verdict.marks.filter((m) => !m.span.trim()).map((m) => m.tag);

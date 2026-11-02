@@ -50,11 +50,15 @@ const body = z.discriminatedUnion('kind', [
 	})
 ]);
 
-export const POST = llmRoute('grading failed', 'app', async ({ request }) => {
-	const req = await jsonBody(request, body);
-	if (req.kind === 'reading') return gradeReading(req);
-	if (req.kind === 'lesson') return gradeLesson(req);
-	return gradeEssay(req);
+export const POST = llmRoute({
+	failure: 'grading failed',
+	parse: ({ request }) => jsonBody(request, body),
+	activity: (req) => req.kind,
+	run: async (req) => {
+		if (req.kind === 'reading') return gradeReading(req);
+		if (req.kind === 'lesson') return gradeLesson(req);
+		return gradeEssay(req);
+	}
 });
 
 /** Dev only: the assembled prompt for ?kind=lesson|reading|essay (&rubric=g), to copy into AI Studio. */

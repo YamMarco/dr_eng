@@ -1,0 +1,1 @@
+ALTER TABLE "llm_usage" DROP COLUMN "cobe_calls";

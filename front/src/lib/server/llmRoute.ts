@@ -1,21 +1,27 @@
-// The shell every LLM endpoint shares: configured -> guardLlm (auth, the product's plan, quotas) ->
-// the handler -> JSON. An HTTP error thrown on purpose (401, 429, 400...) is logged as a
-// warning and passed on; any other failure is logged and becomes a 502.
+// The shell every LLM endpoint shares: configured -> parse the request -> guardLlm (auth, plan,
+// the activity's quotas) -> run -> JSON. The activity comes from the parsed request, so the
+// call is charged for what actually runs. An HTTP error thrown on purpose (401, 429, 400...)
+// is logged as a warning and passed on; any other failure is logged and becomes a 502.
 import { error, isHttpError, json, type RequestEvent, type RequestHandler } from '@sveltejs/kit';
 import type { z } from 'zod';
 import { llmConfigured } from './llm';
-import { guardLlm, type Product } from './llmGuard';
+import { guardLlm } from './llmGuard';
+import type { Activity } from './llmLimits';
 
-export function llmRoute(
-	failure: string,
-	product: Product,
-	handle: (event: RequestEvent) => Promise<unknown>
-): RequestHandler {
+export function llmRoute<T>(route: {
+	failure: string;
+	parse: (event: RequestEvent) => Promise<T>;
+	activity: Activity | ((req: T) => Activity);
+	run: (req: T) => Promise<unknown>;
+}): RequestHandler {
+	const { failure, parse, activity, run } = route;
 	return async (event) => {
 		try {
 			if (!llmConfigured()) throw error(503, 'LLM is not configured');
-			await guardLlm(event.locals, event.getClientAddress(), product);
-			return json(await handle(event));
+			const req = await parse(event);
+			const charged = typeof activity === 'function' ? activity(req) : activity;
+			await guardLlm(event.locals, event.getClientAddress(), charged);
+			return json(await run(req));
 		} catch (e) {
 			if (isHttpError(e)) {
 				// A rejection (auth, plan, quota, bad body) leaves no other trace in the logs.

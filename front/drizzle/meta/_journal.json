@@ -64,6 +64,20 @@
       "when": 1793261670128,
       "tag": "0008_cobe_calls",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793638573984,
+      "tag": "0009_llm_usage_activity",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1793638594793,
+      "tag": "0010_drop_cobe_calls",
+      "breakpoints": true
     }
   ]
 }

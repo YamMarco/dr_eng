@@ -11,6 +11,7 @@ import { screensWithIds } from '$lib/quiz/screenIds';
 import type { QuizNode } from '$lib/quiz/types';
 import type { WritingTaskScreen } from '$lib/lesson-screens/types';
 import { applyLength, mechanicsCount } from './exam';
+import { isLimit } from '$lib/api';
 import { postGrade } from './grade';
 import { issuesToMarks } from './layer1';
 import { applyFixes, locateMarks, mergeMarks, type Corrected } from './merge';
@@ -99,9 +100,10 @@ function withLlmMarks(c: Extract<Checked, { done?: undefined }>, marks: LlmMark[
 	};
 }
 
-const failed = (c: Extract<Checked, { done?: undefined }>): ExamGrade => ({
+const failed = (c: Extract<Checked, { done?: undefined }>, e?: unknown): ExamGrade => ({
 	kind: c.a.kind,
 	status: 'failed',
+	...(isLimit(e) && { limit: true }),
 	earned: 0,
 	max: maxOf(c.a),
 	text: c.a.text,
@@ -128,8 +130,8 @@ async function gradeReadingGroup(
 				notes: c.a.screen.gradingNotes
 			}))
 		});
-	} catch {
-		return group.map(failed);
+	} catch (e) {
+		return group.map((c) => failed(c, e));
 	}
 	const byId = new Map(verdict.answers.map((v) => [v.id, v]));
 	return group.map((c, i) => {
@@ -157,8 +159,8 @@ async function gradeEssay(c: Extract<Checked, { done?: undefined }>): Promise<Ex
 			mechanics: mechanicsCount(c.report.issues),
 			rubric: c.a.rubric
 		});
-	} catch {
-		return failed(c);
+	} catch (e) {
+		return failed(c, e);
 	}
 	const rubric = writingRubrics[c.a.rubric];
 	const order = rubric.criteria.map((cr) => cr.id);

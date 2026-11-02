@@ -11,20 +11,28 @@ import SYSTEM from '$lib/server/prompts/ocr.md?raw';
 
 const MAX_BYTES = 4 * 1024 * 1024;
 
-export const POST = llmRoute('OCR failed', 'app', async ({ request }) => {
-	if (request.headers.get('content-type') !== 'image/jpeg') throw error(415, 'expected image/jpeg');
-	const bytes = Buffer.from(await request.arrayBuffer());
-	if (bytes.length === 0 || bytes.length > MAX_BYTES) throw error(413, 'image is empty or too big');
-
-	const { text } = await chatJson(
-		{
-			role: 'ocr',
-			system: SYSTEM,
-			user: 'Transcribe this page.',
-			image: `data:image/jpeg;base64,${bytes.toString('base64')}`,
-			maxTokens: 2000
-		},
-		z.object({ text: z.string() })
-	);
-	return { text: text.trim() };
+export const POST = llmRoute({
+	failure: 'OCR failed',
+	parse: async ({ request }) => {
+		if (request.headers.get('content-type') !== 'image/jpeg')
+			throw error(415, 'expected image/jpeg');
+		const bytes = Buffer.from(await request.arrayBuffer());
+		if (bytes.length === 0 || bytes.length > MAX_BYTES)
+			throw error(413, 'image is empty or too big');
+		return bytes;
+	},
+	activity: 'ocr',
+	run: async (bytes) => {
+		const { text } = await chatJson(
+			{
+				role: 'ocr',
+				system: SYSTEM,
+				user: 'Transcribe this page.',
+				image: `data:image/jpeg;base64,${bytes.toString('base64')}`,
+				maxTokens: 2000
+			},
+			z.object({ text: z.string() })
+		);
+		return { text: text.trim() };
+	}
 });

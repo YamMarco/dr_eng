@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Camera } from '@lucide/svelte';
+	import { isLimit } from '$lib/api';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { scanHandwriting } from './scan';
 	import ScanAlbum, { type ScanPage } from './ScanAlbum.svelte';
@@ -27,8 +28,8 @@
 				const page = await scanHandwriting(file, rotation);
 				if (page) text = text.trim() ? `${text.trimEnd()}\n\n${page}` : page;
 				else error = i18n.dict.ocr.empty;
-			} catch {
-				error = i18n.dict.ocr.failed;
+			} catch (e) {
+				error = isLimit(e) ? i18n.dict.ocr.limit : i18n.dict.ocr.failed;
 			}
 		}
 		progress = '';

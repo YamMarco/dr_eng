@@ -66,19 +66,20 @@ export const orders = pgTable(
 	]
 ).enableRLS();
 
-/** LLM calls per user per day (UTC), for the daily quota in server/llmGuard.ts. */
+/** Today in Israel: the day the LLM quotas reset (midnight, not UTC). */
+export const israelToday = sql`(now() at time zone 'Asia/Jerusalem')::date`;
+
+/** LLM calls per user, day and activity, for the quotas in server/llmGuard.ts. */
 export const llmUsage = pgTable(
 	'llm_usage',
 	{
 		userId: uuid().notNull(),
-		day: date()
-			.notNull()
-			.default(sql`current_date`),
-		calls: integer().notNull().default(0),
-		/** Of `calls`, how many were COBE (its monthly quota). */
-		cobeCalls: integer().notNull().default(0)
+		day: date().notNull().default(israelToday),
+		/** An `Activity` of server/llmGuard.ts. */
+		activity: text().notNull(),
+		calls: integer().notNull().default(0)
 	},
-	(table) => [primaryKey({ columns: [table.userId, table.day] })]
+	(table) => [primaryKey({ columns: [table.userId, table.day, table.activity] })]
 ).enableRLS();
 
 /** The student's progress, one row per synced localStorage key ($lib/progressSync). */
