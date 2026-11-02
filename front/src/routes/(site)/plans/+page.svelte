@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
+	import { BadgePercent, Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
@@ -61,8 +61,9 @@
 	let passOn = $derived(!!planById('premium-pass', now));
 	// The pass only while it's sold.
 	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn));
-	let chosen = $state<Cycle>('month');
-	let cycle = $derived<Cycle>(cycles.includes(chosen) ? chosen : 'month');
+	// Opens on the longest cycle: the lowest monthly price, its total shown under it.
+	let chosen = $state<Cycle | null>(null);
+	let cycle = $derived<Cycle>(chosen && cycles.includes(chosen) ? chosen : cycles.at(-1)!);
 	// COBE added per plan, off by default; the card switch and the table row share it.
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 	// Staff-only COBE (alpha): no COBE options for anyone else.
@@ -71,6 +72,9 @@
 	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
 		planById(planId(offer, c, cobe), now, pricing)!;
 	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
+	/** Percent saved against paying monthly; 0 on the monthly cycle. */
+	const saved = (offer: OfferId) =>
+		savingPercent(plan(offer), plan(offer, 'month', !!cobeOn[offer]));
 
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
 	let lesson = $derived(planById('lesson', now)!);
@@ -104,10 +108,9 @@
 {#snippet priceLine(offer: OfferId, big: boolean)}
 	{@const p = plan(offer)}
 	{@const monthly = plan(offer, 'month', p.cobe)}
-	{@const saved = savingPercent(p, monthly)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
-			{#if saved}
+			{#if saved(offer)}
 				<s class="me-1 text-xl font-bold text-muted tabular-nums decoration-2">
 					<span class="sr-only">{t.instead}</span>
 					{perMonth(monthly)}
@@ -118,13 +121,6 @@
 			</span>
 			<span class="text-lg font-bold">{t.currency}</span>
 			<span class="text-sm text-muted">{t.perMonth}</span>
-			{#if saved}
-				<span
-					class="ms-1 rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand-dark tabular-nums motion-safe:animate-rise"
-				>
-					{t.save(saved)}
-				</span>
-			{/if}
 			{#if p.cobe}
 				<span
 					class="ms-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold motion-safe:animate-rise"
@@ -263,6 +259,16 @@
 						<Sparkles size={12} aria-hidden="true" />
 						{t.popular}
 					</span>
+				{/if}
+				{#if saved(offer)}
+					{#key saved(offer)}
+						<span
+							class="absolute inset-e-5 -top-4 flex -rotate-6 items-center gap-1 rounded-xl bg-accent px-3 py-1.5 text-sm font-black text-ink shadow-md ring-2 ring-surface motion-safe:animate-pop-correct"
+						>
+							<BadgePercent size={16} aria-hidden="true" />
+							{t.save(saved(offer))}
+						</span>
+					{/key}
 				{/if}
 				<div>
 					<h2 class="text-xl font-bold">{item.name}</h2>
