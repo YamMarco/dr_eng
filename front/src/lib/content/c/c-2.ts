@@ -1266,6 +1266,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הרבה חיות חיות כאן. לדוגמה, יש שועלים וינשופים.",
               hookHe:
                 "for example = לדוגמה. אחריה מגיע משהו קונקרטי: שם, מספר או מקום. זה לא רעיון חדש, זו הדגמה של מה שנאמר קודם.",
+              image: "/vocab-images/word-b4d474a89c.jpg",
             },
             {
               type: "mcq",
@@ -1300,6 +1301,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מספר הציפורים עלה ב-60%, אבל הרעש ירד.",
               hookHe:
                 "increase ↑ = עלה. decrease ↓ = ירד. תמיד לבדוק את הכיוון לפני שעונים, לפעמים זה ההבדל בין נכון לשגוי.",
+              image: "/vocab-images/word-676e8c7fcb.jpg",
             },
             {
               type: "mcq",
@@ -1337,6 +1339,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חוקרים מצאו שהליכה משפרת את הזיכרון.",
               hookHe:
                 "found (מצא) ו-discovered (גילה) בטקסט מסמנות ממצא, בדרך כלל של מחקר. אחריהן בא מה שנמצא.",
+              image: "/vocab-images/word-852033e9b9.jpg",
             },
             {
               type: "mcq",
