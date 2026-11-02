@@ -21,7 +21,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import LadderArt from '$lib/site/LadderArt.svelte';
 	import MediaFrame from '$lib/site/MediaFrame.svelte';
-	import MethodDemo from '$lib/site/MethodDemo.svelte';
+	import MethodDemo, { type DemoKind } from '$lib/site/MethodDemo.svelte';
 	import PhoneMock from '$lib/site/PhoneMock.svelte';
 	import PulseLine from '$lib/site/PulseLine.svelte';
 	import StepVignette from '$lib/site/StepVignette.svelte';
@@ -49,6 +49,16 @@
 		oral: Mic
 	};
 	const perkIcons = [KeyRound, Heart, RefreshCw];
+
+	// Per method card, in the order of `t.methods`.
+	const methodDemos: DemoKind[] = [
+		'anchor',
+		'literature',
+		'topic',
+		'instruction',
+		'essay',
+		'rescue'
+	];
 </script>
 
 <svelte:head>
@@ -280,15 +290,16 @@
 		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
 			{@render kicker(t.methodKicker)}
 			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
+			<p class="text-lg text-muted">{t.methodBody}</p>
 		</header>
-		<ul class="grid gap-4 md:grid-cols-3">
+		<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{#each t.methods as method, i (method.title)}
 				<li
 					{@attach reveal}
 					style="--reveal-delay: {i * 90}ms"
 					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
 				>
-					<MethodDemo kind={i} />
+					<MethodDemo kind={methodDemos[i]} />
 					<div class="flex flex-col gap-1 px-1 pb-1">
 						<span class="text-sm font-bold text-brand-dark">{method.tag}</span>
 						<span class="text-xl font-extrabold">{method.title}</span>

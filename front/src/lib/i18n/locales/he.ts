@@ -112,7 +112,7 @@ export const he = {
 				}
 			],
 			loopKicker: 'המסלול',
-			loopTitle: 'שלוש שנות אנגלית. מיומנות קטנה אחת בכל פעם.',
+			loopTitle: 'שלוש שנים של אנגלית. מיומנות קטנה אחת בכל פעם.',
 			steps: [
 				{
 					title: 'שיעורים קצרים, בקצב שלכם',
@@ -148,24 +148,41 @@ export const he = {
 			pressureBody:
 				'כל חלק באפליקציה נבנה בהדרכת מורה לבגרות באנגלית. טכניקות מוכחות, בשביל הציון הכי גבוה שאפשר.',
 			pressureStats: [
-				{ value: '20', label: 'שנות הכנה לבגרות' },
+				{ value: '20', label: 'שנות ניסיון באנגלית' },
 				{ value: 'מבחני אמת', label: 'מבחנים נבחרים בתנאי בגרות אמיתיים' }
 			],
 			methodKicker: 'השיטה',
 			methodTitle: 'ככה עוברים את הבגרות.',
+			methodBody:
+				'לכל מודול בבגרות יש טכניקה משלו. לומדים אותה, מתרגלים אותה ומגיעים למבחן מוכנים.',
 			methods: [
 				{
-					tag: 'קריאה',
+					tag: 'Module C · קריאה',
 					title: 'מילת העוגן',
 					body: 'מוצאים בטקסט את המילים מהשאלה. התשובה כמעט תמיד יושבת לידן.'
 				},
 				{
-					tag: 'שאלות פתוחות',
+					tag: 'Module D + F · ספרות',
+					title: 'ANSWER, PROVE, EXPLAIN',
+					body: 'עונים במשפט אחד, מוכיחים מהטקסט עם מספר שורה, ומסבירים מה הראיה מראה.'
+				},
+				{
+					tag: 'Module E · קריאה',
+					title: 'נושא, לא פרט',
+					body: 'על מה הפסקה? מחפשים את מה שכל הפסקה מדברת עליו, לא את הפרט הבולט.'
+				},
+				{
+					tag: 'Module G · קריאה',
 					title: 'מפענחים את ההוראה',
 					body: 'ההוראה כבר אומרת כמה לכתוב ואיפה לחפש. לא מפספסים נקודות על ניסוח.'
 				},
 				{
-					tag: 'בעל פה',
+					tag: 'Module G · כתיבה',
+					title: 'מפת 4 הפסקאות',
+					body: 'פתיחה עם עמדה, שתי סיבות שונות וסיכום. יודעים מראש מה נכנס לכל פסקה.'
+				},
+				{
+					tag: 'COBE · בעל פה',
 					title: 'משפט ההצלה',
 					body: 'שכחתם עובדה באמצע ההקלטה? יש משפט מוכן שממשיך הלאה, בלי לקפוא.'
 				}
@@ -176,7 +193,22 @@ export const he = {
 				instruction: ['Give', 'TWO', 'reasons.'],
 				slots: ['the school closed', 'no jobs'],
 				stuck: 'In my project I found that... um...',
-				pivot: "I don't remember the exact number, but what matters is..."
+				pivot: "I don't remember the exact number, but what matters is...",
+				literature: {
+					question: 'Which road does the speaker take?',
+					steps: [
+						['ANSWER', 'He takes the less traveled road.'],
+						['PROVE', 'Line 19: "I took the one less traveled by"'],
+						['EXPLAIN', 'He chooses his own way.']
+					]
+				},
+				topic: {
+					question: 'What do we learn in paragraph II?',
+					topic: 'The village libraries closed, so Helen decided to help.',
+					details: 'She sold her car in May. The bus cost $4,000.',
+					answer: 'How Helen got her bus'
+				},
+				essay: ['I believe that...', 'First, ...', 'Second, ...', 'In conclusion, ...']
 			},
 			testersKicker: 'גרסת אלפא',
 			testersTitle: 'אנחנו כרגע באלפא. קיבלתם קוד?',
@@ -200,8 +232,8 @@ export const he = {
 	about: {
 		title: 'אודות',
 		metaDescription:
-			'EngUp נבנתה מתוך 20 שנות הכנה לבגרות באנגלית: אסטרטגיות קריאה, תרגול ממוקד ומבחנים בתנאי אמת ל־4 ו־5 יחידות.',
-		lead: '20 שנות הוראת אנגלית. עכשיו גם באפליקציה.',
+			'EngUp נבנתה מתוך 20 שנות ניסיון באנגלית: אסטרטגיות קריאה, תרגול ממוקד ומבחנים בתנאי אמת ל־4 ו־5 יחידות.',
+		lead: '20 שנות ניסיון באנגלית. עכשיו גם באפליקציה.',
 		intro:
 			'EngUp נולדה בכיתה, מתוך שנים של הכנת תלמידים לבגרות ב־4 ו־5 יחידות. אנחנו מכירים את דרישות הבחינה, אבל חשוב מכך, אנחנו מכירים אתכם: את הקשיים, את הטעויות שחוזרות, ואת מה שבאמת עוזר להבין, להשתפר ולהצליח.',
 		motto: 'We Learn What We Teach.',

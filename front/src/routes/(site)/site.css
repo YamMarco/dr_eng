@@ -283,6 +283,86 @@ p + p .m-anchor {
 .m-tick {
 	animation-delay: 0.3s;
 }
+/* Rows that land one after another, then leave together. */
+.m-step {
+	animation: 7s ease-out infinite;
+}
+.m-step-1 {
+	animation-name: m-step-1;
+}
+.m-step-2 {
+	animation-name: m-step-2;
+}
+.m-step-3 {
+	animation-name: m-step-3;
+}
+.m-step-4 {
+	animation-name: m-step-4;
+}
+@keyframes m-step-1 {
+	0%,
+	10% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	16%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes m-step-2 {
+	0%,
+	26% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	32%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes m-step-3 {
+	0%,
+	42% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	48%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes m-step-4 {
+	0%,
+	58% {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	64%,
+	90% {
+		opacity: 1;
+		transform: none;
+	}
+	97%,
+	100% {
+		opacity: 0;
+	}
+}
 @keyframes m-in {
 	0%,
 	34% {
@@ -496,6 +576,7 @@ p + p .m-anchor {
 	.m-circle,
 	.m-slot,
 	.m-tick,
+	.m-step,
 	.m-typing,
 	.m-pivot,
 	.ladder-steps,

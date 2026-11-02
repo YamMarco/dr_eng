@@ -263,7 +263,7 @@
 				{#if saved(offer)}
 					{#key saved(offer)}
 						<span
-							class="absolute inset-e-5 -top-4 flex -rotate-6 items-center gap-1 rounded-xl bg-accent px-3 py-1.5 text-sm font-black text-ink shadow-md ring-2 ring-surface motion-safe:animate-pop-correct"
+							class="absolute inset-e-5 -top-4 flex -rotate-6 items-center gap-1 rounded-xl bg-accent px-3 py-1.5 text-sm font-black text-mark-ink shadow-md ring-2 ring-surface motion-safe:animate-pop-correct"
 						>
 							<BadgePercent size={16} aria-hidden="true" />
 							{t.save(saved(offer))}

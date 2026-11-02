@@ -22,7 +22,7 @@ teacher: {
 ```
 
 Meta description with the name:
-`EngUp נבנתה בהובלת ד״ר אמיל הלון, מתוך 20 שנות הכנה לבגרות באנגלית: ...`
+`EngUp נבנתה בהובלת ד״ר אמיל הלון, מתוך 20 שנות ניסיון באנגלית: ...`
 
 Before restoring: confirm the spelling "הלון" and that "צוות מורים" is accurate.
 
