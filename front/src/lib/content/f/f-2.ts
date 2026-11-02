@@ -249,7 +249,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The next morning\n{p:text}The next morning, someone pushes an envelope under the cabin door. Inside is a hundred-dollar note. Mr. Kelada hints that a young wife should not spend a year alone in New York while her husband works far away.\n{d:rtl}\n{d:rtl}למחרת בבוקר מישהו דוחף מעטפה מתחת לדלת התא, ובתוכה שטר של מאה דולר. מר קלדה רומז שאישה צעירה לא צריכה לבלות שנה לבד בניו יורק כשבעלה עובד רחוק.",
+              text: "### The next morning\n\n{p:text}The next morning, someone pushes an envelope under the cabin door. Inside is a hundred-dollar note. Mr. Kelada hints that a young wife should not spend a year alone in New York while her husband works far away.\n{d:rtl}\n{d:rtl}למחרת בבוקר מישהו דוחף מעטפה מתחת לדלת התא, ובתוכה שטר של מאה דולר. מר קלדה רומז שאישה צעירה לא צריכה לבלות שנה לבד בניו יורק כשבעלה עובד רחוק.",
             },
             {
               type: "writing-task",
@@ -263,7 +263,7 @@ export const f2Lessons: LessonNode[] = [
             },
             {
               type: "preface",
-              text: "### The narrator's last words\n{p:text}At the end, the narrator says that at that moment he did not entirely dislike Mr. Kelada.\n{d:rtl}\n{d:rtl}בסוף המספר אומר שבאותו רגע הוא כבר לא סלד ממר קלדה לגמרי.",
+              text: "### The narrator's last words\n\n{p:text}At the end, the narrator says that at that moment he did not entirely dislike Mr. Kelada.\n{d:rtl}\n{d:rtl}בסוף המספר אומר שבאותו רגע הוא כבר לא סלד ממר קלדה לגמרי.",
             },
             {
               type: "mcq",
