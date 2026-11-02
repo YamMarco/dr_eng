@@ -1,6 +1,14 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
 	"installCommand": "npm ci",
+	"redirects": [
+		{
+			"source": "/:path*",
+			"has": [{ "type": "host", "value": "dr-eng-five.vercel.app" }],
+			"destination": "https://www.engup.co.il/:path*",
+			"permanent": true
+		}
+	],
 	"headers": [
 		{
 			"source": "/(.*)",

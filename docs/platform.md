@@ -24,6 +24,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 - **Mobile:** `npm run build:mobile` (`vite build --mode mobile`) - `adapter-static` SPA in `build-mobile/`.
   - `$lib/platform.ts` `MOBILE_BUILD` is the compile-time switch.
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment (`https://www.engup.co.il`).
+- The only public host is `www.engup.co.il`: `front/vercel.json` 308-redirects `dr-eng-five.vercel.app` there (Turnstile only allows the real domain). Point webhooks and callbacks at engup.co.il, never vercel.app.
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
 - **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the mobile webview origin (`https://localhost`).
 
