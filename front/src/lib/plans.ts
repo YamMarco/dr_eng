@@ -213,6 +213,10 @@ export function isPurchasable(plan: Plan | undefined): plan is Plan {
 /** Whole shekels a month, rounded. */
 export const monthlyShekels = (agorot: number, months: number) => Math.round(agorot / months / 100);
 
+/** Whole percent a plan saves against paying monthly for the same months. */
+export const savingPercent = (plan: Plan, monthly: Plan) =>
+	Math.max(0, Math.round((1 - plan.price / (monthly.price * plan.months)) * 100));
+
 /** 4900 -> "49", 4950 -> "49.50" */
 export function formatPrice(agorot: number): string {
 	return agorot % 100 === 0 ? String(agorot / 100) : (agorot / 100).toFixed(2);

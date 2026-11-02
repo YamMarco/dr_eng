@@ -24,6 +24,7 @@
 		TUTOR_HOUR,
 		formatPrice,
 		monthlyShekels,
+		savingPercent,
 		planById,
 		planId,
 		type Cycle,
@@ -102,13 +103,28 @@
 
 {#snippet priceLine(offer: OfferId, big: boolean)}
 	{@const p = plan(offer)}
+	{@const monthly = plan(offer, 'month', p.cobe)}
+	{@const saved = savingPercent(p, monthly)}
 	<div class="flex flex-col gap-1">
 		<p class="flex flex-wrap items-baseline gap-1">
+			{#if saved}
+				<s class="me-1 text-xl font-bold text-muted tabular-nums decoration-2">
+					<span class="sr-only">{t.instead}</span>
+					{perMonth(monthly)}
+				</s>
+			{/if}
 			<span class="{big ? 'text-5xl' : 'text-4xl'} font-extrabold">
 				<OfferPrice value={perMonth(p)} />
 			</span>
 			<span class="text-lg font-bold">{t.currency}</span>
 			<span class="text-sm text-muted">{t.perMonth}</span>
+			{#if saved}
+				<span
+					class="ms-1 rounded-full bg-brand-soft px-2 py-0.5 text-xs font-bold text-brand-dark tabular-nums motion-safe:animate-rise"
+				>
+					{t.save(saved)}
+				</span>
+			{/if}
 			{#if p.cobe}
 				<span
 					class="ms-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold motion-safe:animate-rise"
@@ -464,15 +480,6 @@
 </main>
 
 {#if debug}
-	<!-- One tap flips the page between its two versions. -->
-	<button
-		type="button"
-		onclick={() => (pricing = launch ? 'regular' : 'launch')}
-		class="fixed inset-x-0 bottom-20 z-50 mx-auto flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-5 text-sm font-bold text-white shadow-lg active:scale-[0.97]"
-	>
-		{t.debug.version}: {t.debug.pricings[pricing]}
-		<span class="text-white/70">⇄</span>
-	</button>
 	<details
 		class="fixed start-4 bottom-4 z-50 w-fit max-w-[calc(100vw-2rem)] rounded-2xl bg-surface p-3 text-sm shadow-lg ring-1 ring-line open:w-80"
 	>
@@ -495,6 +502,14 @@
 				{t.debug.date}
 				<input type="date" bind:value={debugDate} class="rounded-lg bg-canvas px-2 py-1" />
 			</label>
+			<div class="flex items-center justify-between gap-2">
+				{t.debug.version}: {t.debug.pricings.launch}
+				<Toggle
+					checked={launch}
+					label={t.debug.version}
+					onchange={(on) => (pricing = on ? 'launch' : 'regular')}
+				/>
+			</div>
 			<div class="flex items-center justify-between gap-2">
 				{t.debug.guarantee}
 				<Toggle
