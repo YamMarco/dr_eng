@@ -68,6 +68,16 @@ export function getResults(quizId: string): ExamResult[] {
 	return safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId))) ?? [];
 }
 
+/** After a submit the exam can't be solved again (or practiced) for this long; review stays open. */
+export const RETAKE_WAIT_MS = 24 * 60 * 60_000;
+
+/** When the exam opens again, or null when it's open now. */
+export function retakeLockedUntil(quizId: string, now = Date.now()): number | null {
+	const last = Math.max(0, ...getResults(quizId).map((r) => r.at));
+	const until = last + RETAKE_WAIT_MS;
+	return until > now ? until : null;
+}
+
 export function saveInProgress(state: QuizInProgress) {
 	if (!hasStorage()) return;
 	localStorage.setItem(progressKey(state.quizId), JSON.stringify(state));

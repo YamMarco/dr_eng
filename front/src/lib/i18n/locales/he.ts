@@ -714,7 +714,10 @@ export const he = {
 		resumeButton: 'התחלה',
 		retakeButton: 'ניסיון נוסף',
 		practiceButton: 'תרגול עם משוב',
-		practiceHint: 'בתרגול רואים משוב אחרי כל שאלה ואפשר לנסות שוב. בלי שעון, והציון לא נשמר.'
+		practiceHint: 'בתרגול רואים משוב אחרי כל שאלה ואפשר לנסות שוב. בלי שעון, והציון לא נשמר.',
+		lockedNote: (when: string) =>
+			`אפשר לפתור את המבחן שוב ${when}. בינתיים אפשר לעבור על הפתרון ועל מה שטעיתם.`,
+		lockedWhen: (time: string, today: boolean) => `${today ? 'היום' : 'מחר'} ב-${time}`
 	},
 	unit: {
 		modulePrefix: 'מודול'
