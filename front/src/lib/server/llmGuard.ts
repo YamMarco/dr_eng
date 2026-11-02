@@ -90,6 +90,6 @@ export async function guardLlm(
 	if ((await countAllToday()) >= GLOBAL_DAILY_CAP) throw error(503, 'service is busy');
 	if (cobe && (await cobeThisMonth(userId)) >= COBE_MONTHLY_CAP)
 		throw error(429, 'monthly limit reached');
-	if ((await countToday(userId, activity)) > DAILY_CAPS[activity])
-		throw error(429, 'daily limit reached');
+	const count = await countToday(userId, activity);
+	if (count > (DAILY_CAPS[activity] ?? Infinity)) throw error(429, 'daily limit reached');
 }

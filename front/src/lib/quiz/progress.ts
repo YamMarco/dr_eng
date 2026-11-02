@@ -69,9 +69,18 @@ export function getResults(quizId: string): ExamResult[] {
 	return safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId))) ?? [];
 }
 
-/** When the exam opens again, or null when it's open now. */
+/**
+ * When the exam opens again, or null when it's open now. Like the server's lock, an attempt
+ * counts as done only once every open answer was graded (a failed grading leaves it open).
+ */
 export function retakeLockedUntil(quizId: string, now = Date.now()): number | null {
 	const last = Math.max(0, ...getResults(quizId).map((r) => r.at));
+	const attempt = getLastAttempt(quizId);
+	if (
+		attempt?.submittedAt === last &&
+		Object.values(attempt.grades ?? {}).some((g) => g.status === 'failed')
+	)
+		return null;
 	const until = last + RETAKE_WAIT_MS;
 	return until > now ? until : null;
 }

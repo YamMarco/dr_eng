@@ -1,5 +1,5 @@
 {
-  "id": "13e9e737-d3a6-42a1-83b5-0a3678ab4be8",
+  "id": "c5dc4e50-c7b2-472e-88f9-84284355b1a7",
   "prevId": "94f9bc01-e453-4e9c-9126-ad7d15b88ce0",
   "version": "7",
   "dialect": "postgresql",
@@ -82,12 +82,18 @@
           "primaryKey": false,
           "notNull": true
         },
-        "at": {
-          "name": "at",
-          "type": "timestamp with time zone",
+        "done_parts": {
+          "name": "done_parts",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "default": 0
+        },
+        "done_at": {
+          "name": "done_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

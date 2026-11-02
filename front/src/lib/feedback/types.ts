@@ -50,18 +50,9 @@ export type EssayVerdict = { scores: Record<string, number>; marks: LlmMark[] };
 export type MechanicsCount = { spelling: number; punctuation: number; runOn: number };
 
 /** One answer: lesson = pass/fail, essay = the module's rubric (C 30 points, G 40). */
-/** Which exam attempt an exam answer belongs to: the server's 24h retake lock (server/examLock). */
-export type ExamRef = {
-	quizId: string;
-	/** The attempt's submit time (ms), its id. */
-	attempt: number;
-	/** Practice: checked against the lock, never starts one. */
-	practice?: boolean;
-};
-
 export type SingleRequest = {
 	kind: 'lesson' | 'essay';
-	/** essay only (required by the server). */
+	/** essay: its exam attempt (required by the server). */
 	exam?: ExamRef;
 	/** The task's question, as the student saw it. */
 	question: string;
@@ -92,7 +83,7 @@ export type ReadingItem = {
 /** Every open reading answer of an exam passage at once; the passage is sent a single time. */
 export type ReadingRequest = {
 	kind: 'reading';
-	/** Required by the server. */
+	/** Its exam attempt (required by the server). */
 	exam?: ExamRef;
 	/** The passage with its paragraphs labelled "[I] ...", "[II] ...". */
 	passage: string;
@@ -100,6 +91,20 @@ export type ReadingRequest = {
 };
 
 export type GradeRequest = SingleRequest | ReadingRequest;
+
+/**
+ * Which exam attempt a grading request belongs to, for the server's 24h retake lock
+ * (server/examLock): the exam counts as done once all its `parts` were graded.
+ */
+export type ExamRef = {
+	quizId: string;
+	/** The attempt's submit time (ms), its id. */
+	attempt: number;
+	/** How many grading requests the whole attempt makes: a reading passage each + the essay. */
+	parts: number;
+	/** Practice: checked against the lock, never starts one. */
+	practice?: boolean;
+};
 
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */
 export type ExamGrade = {

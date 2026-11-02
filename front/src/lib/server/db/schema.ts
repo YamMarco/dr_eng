@@ -82,7 +82,7 @@ export const llmUsage = pgTable(
 	(table) => [primaryKey({ columns: [table.userId, table.day, table.activity] })]
 ).enableRLS();
 
-/** Each user's last submitted attempt per exam, for the 24h retake lock (server/examLock.ts). */
+/** Each user's latest attempt per exam, for the 24h retake lock (server/examLock.ts). */
 export const examAttempts = pgTable(
 	'exam_attempts',
 	{
@@ -90,8 +90,10 @@ export const examAttempts = pgTable(
 		quizId: text().notNull(),
 		/** The client's submit time (ms): the attempt's id. */
 		attempt: bigint({ mode: 'number' }).notNull(),
-		/** When the server first saw this attempt: the lock runs from here. */
-		at: timestamp({ withTimezone: true }).notNull().defaultNow()
+		/** Grading requests of this attempt that came back graded. */
+		doneParts: integer().notNull().default(0),
+		/** When the last part was graded (the exam is done); the lock runs from here. */
+		doneAt: timestamp({ withTimezone: true })
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.quizId] })]
 ).enableRLS();

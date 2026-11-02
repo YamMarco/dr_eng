@@ -12,7 +12,7 @@ export function llmRoute<T>(route: {
 	failure: string;
 	parse: (event: RequestEvent) => Promise<T>;
 	activity: Activity | ((req: T) => Activity);
-	run: (req: T) => Promise<unknown>;
+	run: (req: T, event: RequestEvent) => Promise<unknown>;
 }): RequestHandler {
 	const { failure, parse, activity, run } = route;
 	return async (event) => {
@@ -21,7 +21,7 @@ export function llmRoute<T>(route: {
 			const req = await parse(event);
 			const charged = typeof activity === 'function' ? activity(req) : activity;
 			await guardLlm(event.locals, event.getClientAddress(), charged);
-			return json(await run(req));
+			return json(await run(req, event));
 		} catch (e) {
 			if (isHttpError(e)) {
 				// A rejection (auth, plan, quota, bad body) leaves no other trace in the logs.

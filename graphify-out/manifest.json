@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/progress.ts": {
-    "mtime": 1793639911.0660248,
-    "ast_hash": "5856c6e0451aefaf3952099268813e49",
+    "mtime": 1793640879.689451,
+    "ast_hash": "7890a90d0af19208a57118e140ac16e1",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageBody.svelte": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/db/schema.ts": {
-    "mtime": 1793639911.0670376,
-    "ast_hash": "600d18bf3a7c0f5695bfdc156a0a27f9",
+    "mtime": 1793640843.2117734,
+    "ast_hash": "61834514be6771214fb265e0a0a8a74c",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
@@ -1065,7 +1065,7 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/grade.ts": {
-    "mtime": 1793638655.88281,
+    "mtime": 1793640819.806159,
     "ast_hash": "b5fc73bd71864abf35aaa720803eaa2a",
     "semantic_hash": ""
   },
@@ -1090,8 +1090,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/types.ts": {
-    "mtime": 1793639911.061706,
-    "ast_hash": "f9c42db49b1e63a9a3d72e0e1b5e584c",
+    "mtime": 1793640819.7895784,
+    "ast_hash": "cb0bf0261ba544bcdbaa3039b7cc4752",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchDefinitions.svelte": {
@@ -1105,8 +1105,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/grade/+server.ts": {
-    "mtime": 1793639911.0712886,
-    "ast_hash": "c96c51944aec8985ac8d35ab15b33bbc",
+    "mtime": 1793640863.6710722,
+    "ast_hash": "9c93e1bb66ed9549c759b603bb122e35",
     "semantic_hash": ""
   },
   "front/tests/deck.test.ts": {
@@ -1180,8 +1180,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/gradeExam.ts": {
-    "mtime": 1793639911.0596638,
-    "ast_hash": "5be2096990bfa42ef88ed51ed15ac7c4",
+    "mtime": 1793640830.709833,
+    "ast_hash": "9c7bf8a7e085f4d03250dc2314688f21",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/ExamAnswerReview.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793639911.0556638,
-    "ast_hash": "716039d5a3af924f12212370deb62a4c",
+    "mtime": 1793640916.3461666,
+    "ast_hash": "8444a3d659df9c1d96d80859644e599c",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1600,8 +1600,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1793639911.0576644,
-    "ast_hash": "c17d177769dabc59c466a40e59ccb618",
+    "mtime": 1793640845.8339646,
+    "ast_hash": "25357dd4a978086a8d91ef2e9c4fbf25",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -1665,8 +1665,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llmGuard.ts": {
-    "mtime": 1793638612.7993865,
-    "ast_hash": "a1973745ce38418ead12d4f6554346fa",
+    "mtime": 1793640744.7383838,
+    "ast_hash": "d55aad8c42aaf0e5b2dae80c1ac0b548",
     "semantic_hash": ""
   },
   "front/src/lib/server/payments.ts": {
@@ -1885,8 +1885,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llmRoute.ts": {
-    "mtime": 1793638633.4302628,
-    "ast_hash": "c186960c8a0d1cf93c8cf7f5334a9582",
+    "mtime": 1793640744.7364583,
+    "ast_hash": "0870b204a25b679ff0104f86abc60660",
     "semantic_hash": ""
   },
   "front/drizzle/0004_waitlist.sql": {
@@ -2505,18 +2505,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llmLimits.ts": {
-    "mtime": 1793639182.0471983,
-    "ast_hash": "dca38606e7cfedbd6e3e0b6e675a607b",
+    "mtime": 1793640744.73736,
+    "ast_hash": "b35811093eb0fb763cd4c316e4fa2738",
     "semantic_hash": ""
   },
   "front/drizzle/0011_exam_attempts.sql": {
-    "mtime": 1793639816.6250606,
-    "ast_hash": "3c6094eeea0088a65799187af0be774e",
+    "mtime": 1793640845.9343479,
+    "ast_hash": "2beca857ae040509af5ef9188f4e8638",
     "semantic_hash": ""
   },
   "front/drizzle/meta/0011_snapshot.json": {
-    "mtime": 1793639811.2302473,
-    "ast_hash": "6ecffa1fbd0b1e09cb50270ac9a3d49a",
+    "mtime": 1793640845.8339646,
+    "ast_hash": "ac781a429c9b8b463ef6409480c8a8a1",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/retake.ts": {
@@ -2525,8 +2525,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/examLock.ts": {
-    "mtime": 1793639825.4177153,
-    "ast_hash": "67980f3d5bc8e8a2a7944a94e00bb47a",
+    "mtime": 1793640863.618373,
+    "ast_hash": "d7e5d2bbafcc37d8a24b602201c7c191",
     "semantic_hash": ""
   }
 }

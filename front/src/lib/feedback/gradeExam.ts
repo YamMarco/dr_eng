@@ -1,4 +1,4 @@
-// Exam open answers, graded on final submit in 2 LLM calls, run in parallel:
+// Exam open answers, graded on final submit in parallel requests:
 //   - every short writing-task of the reading part, with its passage sent once
 //     -> 'reading': each scored 0..points (like a lesson task, but a score);
 //   - the writing-task with minWords -> 'essay': the official rubric, then the
@@ -15,7 +15,16 @@ import { isLimit } from '$lib/api';
 import { postGrade } from './grade';
 import { issuesToMarks } from './layer1';
 import { applyFixes, locateMarks, mergeMarks, type Corrected } from './merge';
-import type { EssayVerdict, ExamGrade, ExamRef, LlmMark, Mark, ReadingVerdict } from './types';
+import type {
+	EssayVerdict,
+	ExamGrade,
+	ExamRef,
+	LlmMark,
+	Mark,
+	ReadingRequest,
+	ReadingVerdict,
+	SingleRequest
+} from './types';
 
 type OpenAnswer = {
 	id: string;
@@ -34,6 +43,7 @@ type OpenAnswer = {
 type Checked =
 	| { a: OpenAnswer; done: ExamGrade }
 	| { a: OpenAnswer; report: CheckReport; l1: Mark[]; corrected: Corrected; done?: undefined };
+type Ready = Extract<Checked, { done?: undefined }>;
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const labelled = (paragraphs: { text: string }[]) =>
@@ -93,14 +103,14 @@ async function check(a: OpenAnswer): Promise<Checked> {
 }
 
 /** The student's own marks plus the model's, both pointing into the original text. */
-function withLlmMarks(c: Extract<Checked, { done?: undefined }>, marks: LlmMark[]) {
+function withLlmMarks(c: Ready, marks: LlmMark[]) {
 	return {
 		marks: mergeMarks(c.l1, locateMarks(c.a.text, c.corrected, marks)),
 		general: marks.filter((m) => !m.span.trim()).map((m) => m.tag)
 	};
 }
 
-const failed = (c: Extract<Checked, { done?: undefined }>, e?: unknown): ExamGrade => ({
+const failed = (c: Ready, e?: unknown): ExamGrade => ({
 	kind: c.a.kind,
 	status: 'failed',
 	...(isLimit(e) && { limit: true }),
@@ -110,34 +120,36 @@ const failed = (c: Extract<Checked, { done?: undefined }>, e?: unknown): ExamGra
 	marks: c.l1
 });
 
-/** One call for every reading answer of a passage. */
-async function gradeReadingGroup(
-	group: Extract<Checked, { done?: undefined }>[],
-	exam: ExamRef
-): Promise<ExamGrade[]> {
-	// short ids keep the prompt small; they map back by position
-	const ids = group.map((_, i) => `q${i + 1}`);
-	let verdict: ReadingVerdict;
-	try {
-		verdict = await postGrade<ReadingVerdict>({
-			kind: 'reading',
-			exam,
-			passage: group[0].a.passage,
-			items: group.map((c, i) => ({
-				id: ids[i],
-				question: c.a.screen.prompt,
-				paragraph: c.a.screen.paragraphRef,
-				points: maxOf(c.a),
-				text: c.corrected.text,
-				notes: c.a.screen.gradingNotes
-			}))
-		});
-	} catch (e) {
-		return group.map((c) => failed(c, e));
-	}
+// Reading: short ids keep the prompt small; they map back by position.
+const readingId = (i: number) => `q${i + 1}`;
+
+/** A passage's reading answers as one exam part; the passage is sent once. */
+const readingPart = (group: Ready[]): ReadingRequest => ({
+	kind: 'reading',
+	passage: group[0].a.passage,
+	items: group.map((c, i) => ({
+		id: readingId(i),
+		question: c.a.screen.prompt,
+		paragraph: c.a.screen.paragraphRef,
+		points: maxOf(c.a),
+		text: c.corrected.text,
+		notes: c.a.screen.gradingNotes
+	}))
+});
+
+const essayPart = (c: Ready): SingleRequest => ({
+	kind: 'essay',
+	question: c.a.screen.prompt,
+	text: c.corrected.text,
+	notes: c.a.screen.gradingNotes,
+	mechanics: mechanicsCount(c.report.issues),
+	rubric: c.a.rubric
+});
+
+function readingGrades(group: Ready[], verdict: ReadingVerdict): ExamGrade[] {
 	const byId = new Map(verdict.answers.map((v) => [v.id, v]));
 	return group.map((c, i) => {
-		const v = byId.get(ids[i]);
+		const v = byId.get(readingId(i));
 		if (!v) return failed(c);
 		return {
 			kind: 'reading',
@@ -150,24 +162,7 @@ async function gradeReadingGroup(
 	});
 }
 
-async function gradeEssay(
-	c: Extract<Checked, { done?: undefined }>,
-	exam: ExamRef
-): Promise<ExamGrade> {
-	let v: EssayVerdict;
-	try {
-		v = await postGrade<EssayVerdict>({
-			kind: 'essay',
-			exam,
-			question: c.a.screen.prompt,
-			text: c.corrected.text,
-			notes: c.a.screen.gradingNotes,
-			mechanics: mechanicsCount(c.report.issues),
-			rubric: c.a.rubric
-		});
-	} catch (e) {
-		return failed(c, e);
-	}
+function essayGrade(c: Ready, v: EssayVerdict): ExamGrade {
 	const rubric = writingRubrics[c.a.rubric];
 	const order = rubric.criteria.map((cr) => cr.id);
 	const criteria = applyLength(v.scores, order, c.report.length.deduction);
@@ -189,31 +184,40 @@ async function gradeEssay(
 }
 
 /**
- * Grades every open answer (or only `ids`, for a retry): one call per reading passage + one for
- * the essay. `exam` names the attempt, for the server's retake lock.
+ * Grades every open answer (or only `ids`, for a retry): one request per reading passage + one
+ * for the essay, in parallel. Each names the attempt and how many parts it has in all; the server
+ * marks the exam done (24h lock) once every part was graded.
  */
 export async function gradeExam(
 	quiz: QuizNode,
 	answers: Record<string, unknown>,
-	exam: ExamRef,
+	attempt: Omit<ExamRef, 'parts'>,
 	ids?: Set<string>
 ): Promise<Record<string, ExamGrade>> {
-	const todo = openAnswers(quiz, answers).filter((a) => !ids || ids.has(a.id));
-	const checked = await Promise.all(todo.map(check));
+	// Every answer is checked (locally, no LLM) so `parts` counts the whole attempt, even on a retry.
+	const checked = await Promise.all(openAnswers(quiz, answers).map(check));
 	const out: Record<string, ExamGrade> = {};
-	const groups = new Map<string, Extract<Checked, { done?: undefined }>[]>();
+	const byGroup = new Map<string, Ready[]>();
 	for (const c of checked) {
 		if (c.done) out[c.a.id] = c.done;
-		else groups.set(c.a.group, [...(groups.get(c.a.group) ?? []), c]);
+		else byGroup.set(c.a.group, [...(byGroup.get(c.a.group) ?? []), c]);
 	}
+	const exam: ExamRef = { ...attempt, parts: byGroup.size };
+	const todo = [...byGroup.values()].filter((g) => !ids || g.some((c) => ids.has(c.a.id)));
 	await Promise.all(
-		[...groups.values()].map(async (group) => {
-			const graded =
-				group[0].a.kind === 'essay'
-					? [await gradeEssay(group[0], exam)]
-					: await gradeReadingGroup(group, exam);
+		todo.map(async (group) => {
+			const essay = group[0].a.kind === 'essay';
+			let graded: ExamGrade[];
+			try {
+				graded = essay
+					? [essayGrade(group[0], await postGrade<EssayVerdict>({ ...essayPart(group[0]), exam }))]
+					: readingGrades(group, await postGrade<ReadingVerdict>({ ...readingPart(group), exam }));
+			} catch (e) {
+				graded = group.map((c) => failed(c, e));
+			}
 			group.forEach((c, i) => (out[c.a.id] = graded[i]));
 		})
 	);
+	if (ids) for (const id of Object.keys(out)) if (!ids.has(id)) delete out[id];
 	return out;
 }

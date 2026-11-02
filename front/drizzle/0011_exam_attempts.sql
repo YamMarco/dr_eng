@@ -2,7 +2,8 @@ CREATE TABLE "exam_attempts" (
 	"user_id" uuid NOT NULL,
 	"quiz_id" text NOT NULL,
 	"attempt" bigint NOT NULL,
-	"at" timestamp with time zone DEFAULT now() NOT NULL,
+	"done_parts" integer DEFAULT 0 NOT NULL,
+	"done_at" timestamp with time zone,
 	CONSTRAINT "exam_attempts_user_id_quiz_id_pk" PRIMARY KEY("user_id","quiz_id")
 );
 --> statement-breakpoint
