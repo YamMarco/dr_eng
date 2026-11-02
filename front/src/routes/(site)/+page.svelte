@@ -193,30 +193,6 @@
 		</div>
 	</section>
 
-	<!-- Method -->
-	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
-		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
-			{@render kicker(t.methodKicker)}
-			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
-		</header>
-		<ul class="grid gap-4 md:grid-cols-3">
-			{#each t.methods as method, i (method.title)}
-				<li
-					{@attach reveal}
-					style="--reveal-delay: {i * 90}ms"
-					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
-				>
-					<MethodDemo kind={i} />
-					<div class="flex flex-col gap-1 px-1 pb-1">
-						<span class="text-sm font-bold text-brand-dark">{method.tag}</span>
-						<span class="text-xl font-extrabold">{method.title}</span>
-						<p class="leading-relaxed text-muted">{method.body}</p>
-					</div>
-				</li>
-			{/each}
-		</ul>
-	</section>
-
 	<!-- Moments -->
 	<!-- Phone: a swipeable row that peeks the next card. Desktop: a bento, the first moment
 	     tall at the start, the other four in a 2x2 beside it. -->
@@ -227,7 +203,7 @@
 			<p class="text-lg text-muted">{t.momentsBody}</p>
 		</header>
 		<ul
-			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
+			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overflow-y-hidden px-4 pb-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
 		>
 			{#each t.moments as moment, i (moment.id)}
 				{@const art = momentArt[moment.id as keyof typeof momentArt]}
@@ -297,6 +273,30 @@
 				</li>
 			{/each}
 		</ol>
+	</section>
+
+	<!-- Method -->
+	<section class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-20 sm:px-6 lg:pb-28">
+		<header {@attach reveal} class="flex max-w-2xl flex-col gap-2">
+			{@render kicker(t.methodKicker)}
+			<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">{t.methodTitle}</h2>
+		</header>
+		<ul class="grid gap-4 md:grid-cols-3">
+			{#each t.methods as method, i (method.title)}
+				<li
+					{@attach reveal}
+					style="--reveal-delay: {i * 90}ms"
+					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+				>
+					<MethodDemo kind={i} />
+					<div class="flex flex-col gap-1 px-1 pb-1">
+						<span class="text-sm font-bold text-brand-dark">{method.tag}</span>
+						<span class="text-xl font-extrabold">{method.title}</span>
+						<p class="leading-relaxed text-muted">{method.body}</p>
+					</div>
+				</li>
+			{/each}
+		</ul>
 	</section>
 
 	<!-- Testers -->
