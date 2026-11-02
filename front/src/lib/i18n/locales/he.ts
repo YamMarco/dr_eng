@@ -153,7 +153,7 @@ export const he = {
 			],
 			methodKicker: 'השיטה',
 			methodTitle: 'ככה עוברים את הבגרות.',
-			methodBody: 'ארבעה דברים שמורים לבגרות יודעים, ורוב התלמידים לא שומעים.',
+			methodBody: 'השיטות לפיצוח הבגרות שמורים לבגרות מכירים, ורוב התלמידים לא שומעים עליהן.',
 			methods: [
 				{
 					tag: 'קריאה · Module C, E, G',
@@ -183,10 +183,12 @@ export const he = {
 				pivot: "I don't remember the exact number, but what matters is...",
 				vocab: {
 					word: 'improve',
+					gloss: 'לשפר',
+					// [day, before, the word's form, after]
 					contexts: [
-						['Day 1', 'I want to improve my grade.'],
-						['Day 3', 'The weather improved by noon.'],
-						['Day 8', 'a big improvement in her English']
+						['Day 1', 'I want to ', 'improve', ' my grade.'],
+						['Day 3', 'The weather ', 'improved', ' by noon.'],
+						['Day 8', 'a big ', 'improvement', ' in her English']
 					]
 				},
 				essay: ['I believe that...', 'because...', 'For example, ...', 'In conclusion, ...']

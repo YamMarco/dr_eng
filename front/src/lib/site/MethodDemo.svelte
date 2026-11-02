@@ -28,18 +28,32 @@
 			<span class="m-answer rounded px-0.5 font-semibold text-ink">{d.passage[3]}</span>
 		</p>
 	{:else if kind === 'vocab'}
-		<p class="text-2xl font-black text-brand-dark">{d.vocab.word}</p>
-		<div class="flex flex-col gap-1.5">
-			{#each d.vocab.contexts as [day, text], i (day)}
-				<span
-					class="m-step m-step-{i +
-						1} flex items-baseline gap-2 rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line"
-				>
-					<span class="w-10 shrink-0 text-xs font-bold text-muted">{day}</span>
-					<span>{text}</span>
-				</span>
-			{/each}
+		<!-- The same word, met again at growing gaps, a new form each time; the meter fills with it. -->
+		<div class="flex items-center gap-2">
+			<span class="text-xl font-black text-brand-dark">{d.vocab.word}</span>
+			<span class="font-semibold text-muted" dir="rtl">{d.vocab.gloss}</span>
+			<span class="ms-auto flex gap-1">
+				{#each d.vocab.contexts as [day], i (day)}
+					<span class="h-2 w-5 overflow-hidden rounded-full bg-line">
+						<span class="m-step m-step-{i + 1} block h-full bg-brand"></span>
+					</span>
+				{/each}
+			</span>
 		</div>
+		<ol class="flex flex-col gap-1.5 border-s-2 border-dashed border-line ps-3">
+			{#each d.vocab.contexts as [day, before, form, after], i (day)}
+				<li class="m-step m-step-{i + 1} relative flex items-baseline gap-2">
+					<span
+						class="absolute -start-[1.05rem] top-1.5 h-2 w-2 rounded-full bg-brand ring-2 ring-canvas"
+					></span>
+					<span class="w-10 shrink-0 text-xs font-bold text-muted">{day}</span>
+					<span class="rounded-lg bg-surface px-2 py-1 ring-1 ring-line"
+						>{before}<mark class="rounded bg-mark-yellow px-0.5 font-bold text-mark-ink">{form}</mark
+						>{after}</span
+					>
+				</li>
+			{/each}
+		</ol>
 	{:else if kind === 'essay'}
 		{#each d.essay as line, i (line)}
 			<span
