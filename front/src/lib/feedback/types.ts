@@ -50,8 +50,19 @@ export type EssayVerdict = { scores: Record<string, number>; marks: LlmMark[] };
 export type MechanicsCount = { spelling: number; punctuation: number; runOn: number };
 
 /** One answer: lesson = pass/fail, essay = the module's rubric (C 30 points, G 40). */
+/** Which exam attempt an exam answer belongs to: the server's 24h retake lock (server/examLock). */
+export type ExamRef = {
+	quizId: string;
+	/** The attempt's submit time (ms), its id. */
+	attempt: number;
+	/** Practice: checked against the lock, never starts one. */
+	practice?: boolean;
+};
+
 export type SingleRequest = {
 	kind: 'lesson' | 'essay';
+	/** essay only (required by the server). */
+	exam?: ExamRef;
 	/** The task's question, as the student saw it. */
 	question: string;
 	/** The student's text with Layer-1 typos already corrected. */
@@ -81,6 +92,8 @@ export type ReadingItem = {
 /** Every open reading answer of an exam passage at once; the passage is sent a single time. */
 export type ReadingRequest = {
 	kind: 'reading';
+	/** Required by the server. */
+	exam?: ExamRef;
 	/** The passage with its paragraphs labelled "[I] ...", "[II] ...". */
 	passage: string;
 	items: ReadingItem[];

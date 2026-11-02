@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/QuizRunner.svelte": {
-    "mtime": 1793436587.8398385,
-    "ast_hash": "e070e8757dda96d42c2b0c0768ba4def",
+    "mtime": 1793639911.063705,
+    "ast_hash": "c0ea8504984051f9555752b70e9de93d",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/answers.svelte.ts": {
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/progress.ts": {
-    "mtime": 1793639490.253039,
-    "ast_hash": "297d8e9b37f608a9ff712872ddf903d8",
+    "mtime": 1793639911.0660248,
+    "ast_hash": "5856c6e0451aefaf3952099268813e49",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageBody.svelte": {
@@ -805,8 +805,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/db/schema.ts": {
-    "mtime": 1793638586.3666954,
-    "ast_hash": "c15982ea9cc958644ddd987df042ad01",
+    "mtime": 1793639911.0670376,
+    "ast_hash": "600d18bf3a7c0f5695bfdc156a0a27f9",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
@@ -1090,8 +1090,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/types.ts": {
-    "mtime": 1793638655.88281,
-    "ast_hash": "38b2ae531e8f73f4e31fce1c647296b3",
+    "mtime": 1793639911.061706,
+    "ast_hash": "f9c42db49b1e63a9a3d72e0e1b5e584c",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchDefinitions.svelte": {
@@ -1105,8 +1105,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/grade/+server.ts": {
-    "mtime": 1793638634.2869756,
-    "ast_hash": "33dba9274bae9c1e65d09c4202730f3e",
+    "mtime": 1793639911.0712886,
+    "ast_hash": "c96c51944aec8985ac8d35ab15b33bbc",
     "semantic_hash": ""
   },
   "front/tests/deck.test.ts": {
@@ -1180,8 +1180,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/gradeExam.ts": {
-    "mtime": 1793638663.668496,
-    "ast_hash": "de569c58d91d4084987587e4eaf5f495",
+    "mtime": 1793639911.0596638,
+    "ast_hash": "5be2096990bfa42ef88ed51ed15ac7c4",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/ExamAnswerReview.svelte": {
@@ -1450,8 +1450,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/account/+server.ts": {
-    "mtime": 1793379306.0921285,
-    "ast_hash": "46a30772f573f0bf2048250ce7919d90",
+    "mtime": 1793639911.0692887,
+    "ast_hash": "0401a8a0b1efa331406a9639e7cd3519",
     "semantic_hash": ""
   },
   "front/src/vite-env.d.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793638873.8937562,
-    "ast_hash": "f352aa87cee0ff669042ab29dad4a0ab",
+    "mtime": 1793639911.0556638,
+    "ast_hash": "716039d5a3af924f12212370deb62a4c",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1600,8 +1600,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1793638594.7942417,
-    "ast_hash": "0c792560f817524c9f7c526bcec03f72",
+    "mtime": 1793639911.0576644,
+    "ast_hash": "c17d177769dabc59c466a40e59ccb618",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -2507,6 +2507,26 @@
   "front/src/lib/server/llmLimits.ts": {
     "mtime": 1793639182.0471983,
     "ast_hash": "dca38606e7cfedbd6e3e0b6e675a607b",
+    "semantic_hash": ""
+  },
+  "front/drizzle/0011_exam_attempts.sql": {
+    "mtime": 1793639816.6250606,
+    "ast_hash": "3c6094eeea0088a65799187af0be774e",
+    "semantic_hash": ""
+  },
+  "front/drizzle/meta/0011_snapshot.json": {
+    "mtime": 1793639811.2302473,
+    "ast_hash": "6ecffa1fbd0b1e09cb50270ac9a3d49a",
+    "semantic_hash": ""
+  },
+  "front/src/lib/quiz/retake.ts": {
+    "mtime": 1793639801.3072662,
+    "ast_hash": "6ff3489a8551ffa92ed4e0992f94e53d",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/examLock.ts": {
+    "mtime": 1793639825.4177153,
+    "ast_hash": "67980f3d5bc8e8a2a7944a94e00bb47a",
     "semantic_hash": ""
   }
 }

@@ -2,6 +2,7 @@
 // account ($lib/progressSync); the in-progress marker stays on the device.
 
 import '$lib/legacyIds';
+import { RETAKE_WAIT_MS } from './retake';
 import { scorePercent, type QuizScore } from './scoring';
 import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
@@ -67,9 +68,6 @@ export function getResults(quizId: string): ExamResult[] {
 	if (!hasStorage()) return [];
 	return safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId))) ?? [];
 }
-
-/** After a submit the exam can't be solved again (or practiced) for this long; review stays open. */
-export const RETAKE_WAIT_MS = 24 * 60 * 60_000;
 
 /** When the exam opens again, or null when it's open now. */
 export function retakeLockedUntil(quizId: string, now = Date.now()): number | null {

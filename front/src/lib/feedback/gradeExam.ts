@@ -15,7 +15,7 @@ import { isLimit } from '$lib/api';
 import { postGrade } from './grade';
 import { issuesToMarks } from './layer1';
 import { applyFixes, locateMarks, mergeMarks, type Corrected } from './merge';
-import type { EssayVerdict, ExamGrade, LlmMark, Mark, ReadingVerdict } from './types';
+import type { EssayVerdict, ExamGrade, ExamRef, LlmMark, Mark, ReadingVerdict } from './types';
 
 type OpenAnswer = {
 	id: string;
@@ -112,7 +112,8 @@ const failed = (c: Extract<Checked, { done?: undefined }>, e?: unknown): ExamGra
 
 /** One call for every reading answer of a passage. */
 async function gradeReadingGroup(
-	group: Extract<Checked, { done?: undefined }>[]
+	group: Extract<Checked, { done?: undefined }>[],
+	exam: ExamRef
 ): Promise<ExamGrade[]> {
 	// short ids keep the prompt small; they map back by position
 	const ids = group.map((_, i) => `q${i + 1}`);
@@ -120,6 +121,7 @@ async function gradeReadingGroup(
 	try {
 		verdict = await postGrade<ReadingVerdict>({
 			kind: 'reading',
+			exam,
 			passage: group[0].a.passage,
 			items: group.map((c, i) => ({
 				id: ids[i],
@@ -148,11 +150,15 @@ async function gradeReadingGroup(
 	});
 }
 
-async function gradeEssay(c: Extract<Checked, { done?: undefined }>): Promise<ExamGrade> {
+async function gradeEssay(
+	c: Extract<Checked, { done?: undefined }>,
+	exam: ExamRef
+): Promise<ExamGrade> {
 	let v: EssayVerdict;
 	try {
 		v = await postGrade<EssayVerdict>({
 			kind: 'essay',
+			exam,
 			question: c.a.screen.prompt,
 			text: c.corrected.text,
 			notes: c.a.screen.gradingNotes,
@@ -182,10 +188,14 @@ async function gradeEssay(c: Extract<Checked, { done?: undefined }>): Promise<Ex
 	};
 }
 
-/** Grades every open answer (or only `ids`, for a retry): one call per reading passage + one for the essay. */
+/**
+ * Grades every open answer (or only `ids`, for a retry): one call per reading passage + one for
+ * the essay. `exam` names the attempt, for the server's retake lock.
+ */
 export async function gradeExam(
 	quiz: QuizNode,
 	answers: Record<string, unknown>,
+	exam: ExamRef,
 	ids?: Set<string>
 ): Promise<Record<string, ExamGrade>> {
 	const todo = openAnswers(quiz, answers).filter((a) => !ids || ids.has(a.id));
@@ -199,7 +209,9 @@ export async function gradeExam(
 	await Promise.all(
 		[...groups.values()].map(async (group) => {
 			const graded =
-				group[0].a.kind === 'essay' ? [await gradeEssay(group[0])] : await gradeReadingGroup(group);
+				group[0].a.kind === 'essay'
+					? [await gradeEssay(group[0], exam)]
+					: await gradeReadingGroup(group, exam);
 			group.forEach((c, i) => (out[c.a.id] = graded[i]));
 		})
 	);

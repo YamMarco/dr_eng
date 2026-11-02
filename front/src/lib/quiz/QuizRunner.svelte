@@ -225,7 +225,8 @@
 	async function gradeOpen(ids?: Set<string>) {
 		if (!autoScore || autoScore.manual.items.length === 0) return;
 		grading = true;
-		const fresh = await gradeExam(quiz, scoredAnswers(), ids);
+		const exam = { quizId: quiz.id, attempt: submittedAt, practice };
+		const fresh = await gradeExam(quiz, scoredAnswers(), exam, ids);
 		grades = { ...grades, ...fresh };
 		score = applyGrades(quiz, autoScore, grades);
 		grading = false;

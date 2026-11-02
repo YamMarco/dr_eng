@@ -1,9 +1,11 @@
 // Layer 2 endpoint: the student's (already typo-corrected, anonymous) text and its
 // question in, a tag-and-span verdict out. No user info ever reaches the LLM.
-// An exam's open reading answers come as one batch per passage.
+// An exam's open reading answers come as one batch per passage. Exam calls (reading, essay)
+// name their attempt, for the 24h retake lock.
 import { dev } from '$app/environment';
 import { error } from '@sveltejs/kit';
 import { z } from 'zod';
+import { claimExamAttempt } from '$lib/server/examLock';
 import { jsonBody, llmRoute } from '$lib/server/llmRoute';
 import {
 	MAX_READING_ITEMS,
@@ -21,18 +23,31 @@ const count = z.number().int().min(0).max(500);
 const text = z.string().min(1).max(MAX_TEXT);
 const question = z.string().min(1).max(2000);
 const notes = z.string().max(2000).optional();
+const exam = z.object({
+	quizId: z.string().min(1).max(80),
+	attempt: z.number().int().positive(),
+	practice: z.boolean().optional()
+});
 const body = z.discriminatedUnion('kind', [
 	z.object({
-		kind: z.enum(['lesson', 'essay']),
+		kind: z.literal('lesson'),
 		question,
 		text,
 		notes,
-		fixes: z.boolean().optional(),
+		fixes: z.boolean().optional()
+	}),
+	z.object({
+		kind: z.literal('essay'),
+		exam,
+		question,
+		text,
+		notes,
 		mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional(),
 		rubric: z.enum(['c', 'g']).optional()
 	}),
 	z.object({
 		kind: z.literal('reading'),
+		exam,
 		passage: z.string().min(1).max(8000),
 		items: z
 			.array(
@@ -52,7 +67,11 @@ const body = z.discriminatedUnion('kind', [
 
 export const POST = llmRoute({
 	failure: 'grading failed',
-	parse: ({ request }) => jsonBody(request, body),
+	parse: async ({ request, locals }) => {
+		const req = await jsonBody(request, body);
+		if (req.kind !== 'lesson') await claimExamAttempt(locals, req.exam);
+		return req;
+	},
 	activity: (req) => req.kind,
 	run: async (req) => {
 		if (req.kind === 'reading') return gradeReading(req);
