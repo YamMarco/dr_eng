@@ -965,7 +965,7 @@ export const he = {
 		hookLabel: 'טיפ לזיכרון',
 		exampleLabel: 'בטקסט',
 		sentenceLabel: 'במשפט',
-		examLabel: 'כך זה נראה בבחינה',
+		examLabel: 'ככה זה יכול להיראות בבחינה',
 		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
 		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
 		inputPlaceholder: 'הקלידו כאן...',
