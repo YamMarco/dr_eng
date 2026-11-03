@@ -28,8 +28,7 @@ const notes = z.string().max(2000).optional();
 const exam = z.object({
 	quizId: z.string().min(1).max(80),
 	attempt: z.number().int().positive(),
-	parts: z.number().int().min(1).max(MAX_EXAM_PARTS),
-	practice: z.boolean().optional()
+	parts: z.number().int().min(1).max(MAX_EXAM_PARTS)
 });
 const body = z.discriminatedUnion('kind', [
 	z.object({

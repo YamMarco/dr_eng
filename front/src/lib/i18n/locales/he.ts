@@ -643,8 +643,6 @@ export const he = {
 		grading: 'בודקים את התשובות הפתוחות...',
 		openAnswersTitle: 'תשובות פתוחות',
 		closedAnswersTitle: 'שאלות סגורות',
-		gradedInReport: 'הציון על התשובה הזו יופיע בדוח בסוף.',
-		retryButton: 'נסו שוב',
 		modelAnswerLabel: 'תשובה לדוגמה',
 		unanswered: 'לא נבחרה תשובה.',
 		notGraded: 'לא נבדקה - הבדיקה לא זמינה כרגע. בינתיים נספרת כ-0.',
@@ -716,8 +714,6 @@ export const he = {
 		],
 		resumeButton: 'התחלה',
 		retakeButton: 'ניסיון נוסף',
-		practiceButton: 'תרגול עם משוב',
-		practiceHint: 'בתרגול רואים משוב אחרי כל שאלה ואפשר לנסות שוב. בלי שעון, והציון לא נשמר.',
 		lockedNote: (when: string) =>
 			`אפשר לפתור את המבחן שוב ${when}. בינתיים אפשר לעבור על הפתרון ועל מה שטעיתם.`,
 		lockedWhen: (time: string, today: boolean) => `${today ? 'היום' : 'מחר'} ב-${time}`

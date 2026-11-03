@@ -3,7 +3,7 @@
 	import { setContext, untrack } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
+	import { SvelteMap } from 'svelte/reactivity';
 	import { PASSAGE_MARKS, type PassageMarksStore } from '$lib/lesson-screens/passageMarks';
 	import { MediaQuery } from 'svelte/reactivity';
 	import AppBar from '$lib/components/AppBar.svelte';
@@ -16,8 +16,7 @@
 	import { createLessonSession } from '$lib/lesson-screens/session.svelte';
 	import { provideQuizAnswerSlot, type QuizAnswerSlot } from './answers.svelte';
 	import { screensWithIds } from './screenIds';
-	import { applyGrades, scoreQuiz, scoreScreen, type QuizScore } from './scoring';
-	import AnswerReview from './AnswerReview.svelte';
+	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
 	import { gradeExam } from '$lib/feedback/gradeExam';
 	import type { ExamGrade } from '$lib/feedback/types';
 	import { saveAttempt, saveInProgress } from './progress';
@@ -36,17 +35,12 @@
 		// edit never touches (or gets confused by) a real student's saved
 		// progress for the same quiz id.
 		preview = false,
-		// Practice: each question's feedback right after it is answered, a retry
-		// when it wasn't fully right (the first answer is the one scored), no
-		// timer, and the attempt isn't saved as an exam result.
-		practice = false,
 		startPartIndex = 0,
 		startScreenIndex = 0
 	}: {
 		quiz: QuizNode;
 		onExit: () => void;
 		preview?: boolean;
-		practice?: boolean;
 		startPartIndex?: number;
 		startScreenIndex?: number;
 	} = $props();
@@ -100,14 +94,6 @@
 	let screenInstance = $state<any>(null);
 	let direction = $state(1);
 
-	// Practice: questions answered and shown with their feedback, and the
-	// first answer to each (what the score counts, whatever the retries).
-	const reviewed = new SvelteSet<string>();
-	// The question types AnswerReview can show; others (a COBE recording) just move on.
-	const REVIEWED_TYPES = new Set(['mcq', 'match-definitions', 'writing-task']);
-	const firstAnswers: Record<string, unknown> = {};
-	let retries = $state(0);
-
 	let currentEntry = $derived(allEntries[entryIndex]);
 
 	// Feedback reports name the screen the student is on.
@@ -116,16 +102,6 @@
 		screenContext.label = `${quiz.id} · ${currentEntry.id}`;
 		return () => (screenContext.label = '');
 	});
-	let reviewing = $derived(practice && !!currentEntry && reviewed.has(currentEntry.id));
-	let reviewScore = $derived(
-		reviewing && currentEntry
-			? scoreScreen(currentEntry.screen, answers[currentEntry.id])
-			: undefined
-	);
-	// Auto-scored and not fully right: worth another go.
-	let canRetry = $derived(
-		!!reviewScore && reviewScore.auto && reviewScore.earned < reviewScore.max
-	);
 	let currentPart = $derived(currentEntry ? quiz.parts[currentEntry.partIndex] : quiz.parts[0]);
 	let isLastScreen = $derived(entryIndex === allEntries.length - 1);
 	let ScreenComponent = $derived(
@@ -181,9 +157,7 @@
 		new Set(allEntries.flatMap((entry, i) => (entry.isFirstOfPart ? [i] : [])))
 	);
 
-	let showTimer = $derived(
-		!practice && (quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined)
-	);
+	let showTimer = $derived(quiz.options.showTimer ?? quiz.options.durationMinutes !== undefined);
 	// One-time read: durationMinutes is a fixed prop for this runner's lifetime.
 	let remainingSeconds = $state(untrack(() => (quiz.options.durationMinutes ?? 0) * 60));
 	let timerWarning = $derived(remainingSeconds <= (quiz.options.warnAtMinutes ?? 5) * 60);
@@ -206,14 +180,9 @@
 	};
 	provideQuizAnswerSlot(slot);
 
-	/** What the score counts: in practice, each question's first answer. */
-	function scoredAnswers(): Record<string, unknown> {
-		return practice ? { ...$state.snapshot(answers), ...firstAnswers } : $state.snapshot(answers);
-	}
-
 	function submit() {
 		if (submitted) return;
-		autoScore = scoreQuiz(quiz, scoredAnswers());
+		autoScore = scoreQuiz(quiz, $state.snapshot(answers));
 		score = autoScore;
 		submitted = true;
 		submittedAt = Date.now();
@@ -225,8 +194,8 @@
 	async function gradeOpen(ids?: Set<string>) {
 		if (!autoScore || autoScore.manual.items.length === 0) return;
 		grading = true;
-		const exam = { quizId: quiz.id, attempt: submittedAt, practice };
-		const fresh = await gradeExam(quiz, scoredAnswers(), exam, ids);
+		const exam = { quizId: quiz.id, attempt: submittedAt };
+		const fresh = await gradeExam(quiz, $state.snapshot(answers), exam, ids);
 		grades = { ...grades, ...fresh };
 		score = applyGrades(quiz, autoScore, grades);
 		grading = false;
@@ -246,7 +215,7 @@
 	}
 
 	function persist() {
-		if (preview || practice || !score) return;
+		if (preview || !score) return;
 		saveAttempt({
 			quizId: quiz.id,
 			startedAt,
@@ -258,27 +227,12 @@
 	}
 
 	function advance() {
-		// Practice: a just-answered question stops for its feedback first.
-		const entry = currentEntry;
-		if (practice && entry && !reviewing && REVIEWED_TYPES.has(entry.screen.type)) {
-			if (!(entry.id in firstAnswers)) firstAnswers[entry.id] = $state.snapshot(answers[entry.id]);
-			reviewed.add(entry.id);
-			return;
-		}
 		direction = 1;
 		if (!isLastScreen) {
 			entryIndex += 1;
 		} else {
 			submit();
 		}
-	}
-
-	/** Practice: answer the shown question again from scratch (the first answer stays scored). */
-	function retry() {
-		if (!currentEntry) return;
-		delete answers[currentEntry.id];
-		reviewed.delete(currentEntry.id);
-		retries += 1;
 	}
 
 	function jump(index: number) {
@@ -294,7 +248,7 @@
 	// depending on it, so a manual submit just lets the next tick stop it.
 	$effect(() => {
 		const minutes = quiz.options.durationMinutes;
-		if (!minutes || practice) return;
+		if (!minutes) return;
 		const startSeconds = untrack(() => remainingSeconds);
 		const endsAt = Date.now() + startSeconds * 1000;
 		const interval = setInterval(() => {
@@ -316,7 +270,7 @@
 	// drives the "unfinished exam" badge until the next attempt is submitted
 	// (saveAttempt clears it).
 	$effect(() => {
-		if (preview || practice || submitted) return;
+		if (preview || submitted) return;
 		saveInProgress({ quizId: quiz.id, startedAt });
 	});
 
@@ -442,14 +396,8 @@
 					? 'lg:col-start-1 lg:row-start-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:pb-6'
 					: ''}
 			>
-				{#if currentEntry && reviewing}
+				{#if currentEntry && ScreenComponent}
 					{#key entryIndex}
-						<div in:fly={{ y: 8, duration: 200, easing: cubicOut }}>
-							<AnswerReview screen={currentEntry.screen} answer={answers[currentEntry.id]} />
-						</div>
-					{/key}
-				{:else if currentEntry && ScreenComponent}
-					{#key `${entryIndex}-${retries}`}
 						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
 							<ScreenComponent
 								screen={currentEntry.screen}
@@ -469,16 +417,9 @@
 			<div
 				class="app-col flex gap-2 {quizHasPassage ? 'lg:max-w-5xl lg:*:w-[calc(50%-1rem)]' : ''}"
 			>
-				{#if reviewing}
-					{#if canRetry}
-						<Button variant="secondary" onclick={retry}>{i18n.dict.quiz.retryButton}</Button>
-					{/if}
-					<Button onclick={advance}>{footerLabel}</Button>
-				{:else}
-					<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
-						{footerLabel}
-					</Button>
-				{/if}
+				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
+					{footerLabel}
+				</Button>
 			</div>
 		</div>
 
