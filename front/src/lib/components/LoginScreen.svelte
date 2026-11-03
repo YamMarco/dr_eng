@@ -61,6 +61,7 @@
 		const params = new URLSearchParams(location.hash.slice(1) || location.search);
 		const code = params.get('error_code');
 		if (!code) return;
+		mode = 'signin';
 		failed = code === 'otp_expired' ? t.errors.linkExpired : t.errors.generic;
 		replaceState(location.pathname, {});
 	});
