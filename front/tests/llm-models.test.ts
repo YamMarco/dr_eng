@@ -9,8 +9,8 @@ test('gateway first, then Gemini direct without the vendor prefix', () => {
 	assert.deepEqual(
 		t.map((x) => [x.gateway, x.models]),
 		[
-			[true, ['google/gemini-3.8-flash', 'anthropic/claude-sonnet-5.5']],
-			[false, ['gemini-3.8-flash']]
+			[true, ['google/gemini-3.8-flash', 'google/gemini-3.5-flash']],
+			[false, ['gemini-3.8-flash', 'gemini-3.5-flash']]
 		]
 	);
 });
@@ -27,7 +27,7 @@ test('one key is enough; none means not configured', () => {
 	assert.equal(llmTargets('ocr', {}).length, 0);
 });
 
-test('every role starts on Gemini, so the direct safety net always applies', () => {
+test('Google models only (the privacy policy names no other AI provider)', () => {
 	for (const role of Object.keys(LLM_MODELS) as LlmRole[])
-		assert.ok(LLM_MODELS[role][0].startsWith('google/'), role);
+		for (const model of LLM_MODELS[role]) assert.ok(model.startsWith('google/'), model);
 });

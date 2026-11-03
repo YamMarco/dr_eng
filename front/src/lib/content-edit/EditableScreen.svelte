@@ -332,6 +332,13 @@
 				oninput={(e) => set('src', e.currentTarget.value || undefined)}
 				class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
 			/>
+			<p class="text-xs font-bold text-muted">קישור לכתוביות באנגלית (‎.vtt, חובה כשיש קליפ)</p>
+			<input
+				dir="ltr"
+				value={screen.captions ?? ''}
+				oninput={(e) => set('captions', e.currentTarget.value || undefined)}
+				class="w-full rounded-lg border-2 border-line bg-surface p-2 text-sm"
+			/>
 			<p class="text-xs font-bold text-muted">שורה מתחת לקליפ (לא חובה)</p>
 			<MarkdownInput
 				bare

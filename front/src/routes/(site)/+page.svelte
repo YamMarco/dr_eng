@@ -165,7 +165,7 @@
 			<p class="text-lg text-muted">{t.momentsBody}</p>
 		</header>
 		<ul
-			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overflow-y-hidden px-4 pb-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
+			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overflow-y-hidden px-4 pb-2 focus-visible:-outline-offset-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
 		>
 			{#each t.moments as moment, i (moment.id)}
 				{@const art = momentArt[moment.id as keyof typeof momentArt]}

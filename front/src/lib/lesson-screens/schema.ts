@@ -199,8 +199,15 @@ export const videoSchema = z
 			.describe(
 				'Site path or URL of the clip. Omit while the clip is not ready: a placeholder marks its place.'
 			),
+		captions: z
+			.string()
+			.optional()
+			.describe(
+				'Site path or URL of the English captions (.vtt). Required with `src` (accessibility).'
+			),
 		caption: z.string().optional().describe('Hebrew line under the clip (what to watch for).')
 	})
+	.refine((v) => !v.src || v.captions, { message: 'a clip needs captions', path: ['captions'] })
 	.describe('A clip to watch before answering (COBE Part C). Not scored.');
 
 export const passageSchema = z

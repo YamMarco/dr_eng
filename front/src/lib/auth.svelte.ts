@@ -63,8 +63,16 @@ class AuthStore {
 		if (error) throw error;
 	}
 
-	/** `returnTo`: where the confirmation link lands (default /app; checkout passes itself). */
-	async signUp(email: string, password: string, returnTo = APP_URL, captchaToken?: string) {
+	/** `returnTo`: where the confirmation link lands (default /app; checkout passes itself).
+	 *  `updates`: the separate, optional marketing-email opt-in (anti-spam law: keep when given). */
+	async signUp(
+		email: string,
+		password: string,
+		returnTo = APP_URL,
+		captchaToken?: string,
+		updates = false
+	) {
+		const now = new Date().toISOString();
 		const { data, error } = await supabase!.auth.signUp({
 			email,
 			password,
@@ -72,7 +80,7 @@ class AuthStore {
 			options: {
 				emailRedirectTo: returnTo,
 				captchaToken,
-				data: { terms_accepted_at: new Date().toISOString() }
+				data: { terms_accepted_at: now, ...(updates && { marketing_consent_at: now }) }
 			}
 		});
 		if (error) throw error;
