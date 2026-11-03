@@ -41,6 +41,8 @@
 	let mode = $state<Mode>(auth.recovering ? 'recovery' : startWith);
 	let email = $state('');
 	let password = $state('');
+	/** Marketing emails: optional and unticked (anti-spam law). */
+	let updates = $state(false);
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
 	let busy = $state(false);
 	let failed = $state<string | null>(null);
@@ -175,7 +177,7 @@
 		if (mode === 'signin') return run((token) => auth.signIn(address, password, token));
 		if (mode === 'signup')
 			return run(
-				(token) => auth.signUp(address, password, returnTo, token),
+				(token) => auth.signUp(address, password, returnTo, token, updates),
 				() => ((sentKind = 'confirm'), go('sent'))
 			);
 		if (mode === 'forgot')
@@ -313,6 +315,14 @@
 										>{t.consentPrivacy}</a
 									>{t.consentAge}
 								</span>
+							</label>
+							<label class="flex items-start gap-2.5 text-sm leading-relaxed">
+								<input
+									type="checkbox"
+									bind:checked={updates}
+									class="mt-1 h-5 w-5 shrink-0 accent-brand"
+								/>
+								<span>{t.consentUpdates}</span>
 							</label>
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}

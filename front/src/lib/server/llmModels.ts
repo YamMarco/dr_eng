@@ -2,31 +2,24 @@
 // model is an edit here. Prompts live next to it in prompts/<role>.md.
 // Names are Vercel AI Gateway ids (`<vendor>/<model>`); `google/` ones also run on
 // Gemini's own API, the safety net while the gateway is new.
+// Google models only: the privacy policy names Google as the only AI provider.
 //
 // PRICES (Oct 2026, per 1M tokens in / out): gemini-3.8-flash 0.75 / 3.75 is an intro
 // rate that doubles to 1.50 / 7.50 on 2027-01-01 (COBE cost ~x2); gemini-3.1-flash-lite
-// 0.25 / 1.50; gpt-5.4-nano 0.20 / 1.25. Re-check before 2027; cheaper option then:
+// 0.25 / 1.50. Re-check before 2027; cheaper option then:
 // chat-speaking on a flash-lite model.
 
 export type LlmRole =
 	'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'chat-speaking' | 'ocr';
 
 export const LLM_MODELS: Record<LlmRole, string[]> = {
-	'grade-short': [
-		'google/gemini-3.1-flash-lite',
-		'google/gemini-3.5-flash-lite',
-		'openai/gpt-5.4-nano'
-	],
-	'grade-reading': [
-		'google/gemini-3.1-flash-lite',
-		'google/gemini-3.5-flash-lite',
-		'openai/gpt-5.4-nano'
-	],
-	'grade-essay': ['google/gemini-3.8-flash', 'anthropic/claude-sonnet-5.5'],
+	'grade-short': ['google/gemini-3.1-flash-lite', 'google/gemini-3.5-flash-lite'],
+	'grade-reading': ['google/gemini-3.1-flash-lite', 'google/gemini-3.5-flash-lite'],
+	'grade-essay': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
 	// audio in: Gemini only
 	'grade-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
 	'chat-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
-	ocr: ['google/gemini-3.8-flash', 'anthropic/claude-sonnet-5.5']
+	ocr: ['google/gemini-3.8-flash', 'google/gemini-3.5-flash']
 };
 
 export const GATEWAY_URL = 'https://ai-gateway.vercel.sh/v1';

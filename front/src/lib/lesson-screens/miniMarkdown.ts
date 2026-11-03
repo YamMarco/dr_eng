@@ -8,8 +8,8 @@
 // `code`, [text](https://url), {c:name}colored text{/c} (name = a key in
 // TEXT_COLOR_PALETTE).
 
-import { TEXT_COLOR_PALETTE } from './textColors';
-import { CALLOUT_ICONS } from './calloutIcons';
+import { TEXT_COLOR_PALETTE } from './textColors.ts';
+import { CALLOUT_ICONS } from './calloutIcons.ts';
 
 const ESCAPE: Record<string, string> = {
 	'&': '&amp;',
@@ -110,6 +110,49 @@ function isolateQuotes(html: string): string {
 	);
 }
 
+const LATIN_RUN = /[A-Za-z](?:[A-Za-z0-9'’.,:;!?-]|\s)*[A-Za-z0-9]|[A-Za-z]/g;
+const HEBREW_RUN = /[֐-׿](?:[֐-׿'".,:;!?-]|\s)*[֐-׿]|[֐-׿]/g;
+const UNESCAPE: Record<string, string> = Object.fromEntries(
+	Object.entries(ESCAPE).map(([c, e]) => [e, c])
+);
+const escapeText = (t: string) => t.replace(/[&<>"']/g, (c) => ESCAPE[c]);
+
+/** In text that mixes Hebrew and English, wraps each English run in `lang="en"` and
+ *  each Hebrew run in `lang="he"`, so a screen reader switches voice mid-sentence.
+ *  Single-language text is returned as is. Touches text between tags only. */
+function markLangRuns(html: string): string {
+	if (!/[A-Za-z]/.test(html.replace(/<[^>]*>|&[#\w]+;/g, '')) || !/[֐-׿]/.test(html)) return html;
+	return html
+		.split(/(<[^>]*>)/)
+		.map((part) => {
+			if (part.startsWith('<')) return part;
+			const text = part.replace(/&[#\w]+;/g, (e) => UNESCAPE[e] ?? e);
+			const runs = [
+				...[...text.matchAll(LATIN_RUN)].map((m) => ({
+					at: m.index,
+					end: m.index + m[0].length,
+					lang: 'en'
+				})),
+				...[...text.matchAll(HEBREW_RUN)].map((m) => ({
+					at: m.index,
+					end: m.index + m[0].length,
+					lang: 'he'
+				}))
+			].sort((a, b) => a.at - b.at);
+			if (!runs.length) return part;
+			let out = '';
+			let pos = 0;
+			for (const run of runs) {
+				if (run.at < pos) continue;
+				out += escapeText(text.slice(pos, run.at));
+				out += `<span lang="${run.lang}">${escapeText(text.slice(run.at, run.end))}</span>`;
+				pos = run.end;
+			}
+			return out + escapeText(text.slice(pos));
+		})
+		.join('');
+}
+
 export function mdInline(src: string): string {
 	if (!src) return '';
 
@@ -141,7 +184,7 @@ export function mdInline(src: string): string {
 	// _italic_ (only when not glued to word chars, so file_names survive)
 	s = s.replace(/(^|[^_\w])_([^_\n]+)_(?=$|[^_\w])/g, '$1<em>$2</em>');
 
-	return isolateQuotes(isolateSentences(s));
+	return markLangRuns(isolateQuotes(isolateSentences(s)));
 }
 
 /** `{p:text}` lines: English study text, visibly set apart from the app's

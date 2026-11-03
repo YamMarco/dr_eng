@@ -128,6 +128,13 @@
 					{status === 'sending' ? t.waitlist.sending : t.waitlist.submit}
 				</Button>
 			</div>
+			<p class="text-xs text-muted">
+				{t.waitlist.note}<a
+					href={resolve('/privacy')}
+					target="_blank"
+					class="font-semibold text-brand-dark underline hover:no-underline">{t.waitlist.privacy}</a
+				>.
+			</p>
 			{#if error}
 				<p class="text-sm font-semibold text-miss" role="alert">{t.waitlist.errors[error]}</p>
 			{/if}

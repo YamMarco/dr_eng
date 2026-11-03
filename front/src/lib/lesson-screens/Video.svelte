@@ -31,9 +31,9 @@
 
 <div in:fly={{ y: 10, duration: 250 }}>
 	{#if screen.src}
-		<!-- svelte-ignore a11y_media_has_caption -->
-		<video controls playsinline src={screen.src} class="aspect-video w-full rounded-2xl bg-ink"
-		></video>
+		<video controls playsinline src={screen.src} class="aspect-video w-full rounded-2xl bg-ink">
+			<track kind="captions" src={screen.captions} srclang="en" label="English" default />
+		</video>
 	{:else}
 		<div
 			class="flex aspect-video w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-surface p-4 text-center"
