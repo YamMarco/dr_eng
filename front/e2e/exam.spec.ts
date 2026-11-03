@@ -104,3 +104,17 @@ test('when time runs out the exam is submitted', async ({ page }) => {
 			.or(page.getByRole('heading', { name: q.failedTitle }))
 	).toBeVisible({ timeout: 15_000 });
 });
+
+test('passage lines keep the printed line breaks (no wrapping)', async ({ page }) => {
+	await page.goto('/app/unit/4/module/c/exam/c-exam-2');
+	await page.getByRole('button', { name: q.startButton }).click();
+	const wrapped = await page
+		.locator('p[data-line-key]')
+		.evaluateAll(
+			(ps) =>
+				ps.filter(
+					(p) => p.getBoundingClientRect().height > parseFloat(getComputedStyle(p).lineHeight) * 1.5
+				).length
+		);
+	expect(wrapped).toBe(0);
+});

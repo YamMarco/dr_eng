@@ -1,39 +1,36 @@
 # Handoff: test findings (from the testing plan runs)
 
-Found by `front/e2e` (Playwright) and persona runs. Fix, then tick.
+Found by `front/e2e` (Playwright) and hands-on persona runs. Run: `npm run e2e` (phone + desktop), `npm run e2e:content` (crawler, ~5 min).
 
-## Phase 2: smoke
+## Fixed
 
-Axe's color-contrast rule is off: the brand teal stays as is (owner's call). Listed below are only the unreadable cases.
+- [x] **A finished lesson was lost if the student left from the "כל הכבוד" screen** (saved only on "המשך לשיעור הבא" / "חזרה למסלול"). Now saved when the finish screen shows (`LessonRunner` `onPass`).
+- [x] **The day's streak popup opened over the next lesson.** Same cause; it now greets the finish screen.
+- [x] **Exam: "הגש מבחן" stayed disabled until the essay reached its minimum words.** A short or empty essay now submits (grading already deducts for length; the timer submitted it anyway).
+- [x] **Exam: a confirmed exit still showed the exam as unfinished** ("באמצע", "התחלה").
+- [x] **Exam passage on a phone: printed lines wrapped again** (ragged column, line numbers off from desktop; notes.txt). The text shrinks to fit the longest line (`PassageBody`): no wraps from 390px wide, at ~12-12.6px. Under 390px some lines still wrap (12px floor).
+- [x] **Exam header: an empty `<h1>`** (`AppBar` without a title).
+- [x] **Dark theme: module hero "continue" button unreadable** (light teal on white, 1.7:1).
+- [x] **Home page demo highlight unreadable** (1.2:1 dark): dark ink on the gold.
+- [x] **Home page card scroller not keyboard reachable.**
+- [x] **Lesson path nodes had no names for screen readers** (an emoji, or "ייפתח בקרוב" without the lesson). Now: title, plus "הושלם" / "נעול".
+- [x] **`c-vocab-test`: an empty screen** (a preface of only `{d:rtl}`; `isScreenEmpty` now ignores line attributes).
+- [x] **Home, module E: "6 מילים לחזרה היום" for a new student** (reviews + new): now "6 מילים להיום".
+- [x] **Tester welcome, 3rd item repeated itself.**
+- [x] **Streak page: two `<h1>`.**
+- [x] **Staff: the lesson runner's debug button sat under the feedback button.**
 
+## Open
 
-- [ ] **Dark theme: module hero "continue" button unreadable.** `bg-white text-brand-dark` = light teal on white, 1.7:1 (`/app/unit/*/module/*`).
-- [ ] **Home page: highlighted `<mark>` in the demo** (`m-anchor`): 1.2:1 in the dark theme.
-- [ ] **Home page: horizontal card scroller not keyboard reachable** (`ul.scrollbar-none`, axe scrollable-region-focusable).
-- [ ] **Staff: the lesson runner's debug button sits under the feedback button** (same corner, feedback is on top).
-
-## Phase 3: journeys
-
-
-- [ ] **A finished lesson is lost if the student leaves from the "כל הכבוד" screen.** The round is saved only when "המשך לשיעור הבא" / "חזרה למסלול" is tapped; closing, reloading or the X on the finish screen drops it. Save on reaching the finish screen.
-- [ ] **The day's streak popup opens over the next lesson** ("המשך לשיעור הבא"), not over the finish screen that earned it. Same root cause as above.
-
-- [ ] **Exam: "הגש מבחן" stays disabled until the essay reaches its minimum words** (e.g. 70). A short or missing essay blocks submitting the whole exam, though grading already scores it (length deduction, 0 under 25 words).
-- [ ] **Exam: after "יציאה מהמבחן" (confirmed, "nothing is kept") it still shows as unfinished**: "באמצע" in the list and "התחלה" instead of "התחלת מבחן". Clear the marker on a confirmed exit.
-- [ ] **Exam passage on a phone: every printed line wraps again** ("cannot see well or are / blind."), a ragged column; also why line numbers differ between phone and desktop (notes.txt).
-- [ ] **Exam dialog: an empty `<h1>`** in its header (screen readers announce a blank heading).
-
-- [ ] **Home, module E: "6 מילים לחזרה היום" for a new student**: the count is reviews + new words (the words page says 0 to review, 6 new). Copy: "להיום", not "לחזרה".
-- [ ] **Tester welcome, 3rd item repeats itself**: "אנחנו עדיין מכווננים את ה-AI" then "...נותן AI, ואנחנו עדיין מכווננים אותו".
-
-- [ ] **Streak page: two `<h1>`** ("הרצף שלי" and the week count).
-
-## Phase 5: content crawler
-
-330 lesson rounds, every screen, phone: no crashes, no sideways overflow.
-
-- [ ] **`c-vocab-test`: an empty screen.** A preface that is only `{d:rtl}` counts as text (`isScreenEmpty` doesn't strip directives).
+- [ ] **Arabic copy of `home.hookWords`** still says "for review" (same issue as the Hebrew one).
+- [ ] **Brand teal contrast** (white on teal 3.3:1): owner's call to keep it; axe's color-contrast rule is off.
 
 ## COBE (parked, not tested)
 
-- [ ] **AI chat and COBE speaking fail on the built site.** The CSP's `connect-src 'self'` blocks `fetch(blob:...)` of the recording (`chatAi.ts`, `speakingAi.ts`, `Speak.svelte`): every turn shows "לא הצלחנו לשמוע את התשובה". Dev server has no CSP, so it never showed there. Fix when COBE is back: `blob:` in `connect-src` (`vite.config.ts`).
+- [ ] **AI chat and COBE speaking fail on the built site.** The CSP's `connect-src 'self'` blocks `fetch(blob:...)` of the recording (`chatAi.ts`, `speakingAi.ts`, `Speak.svelte`): every turn shows "לא הצלחנו לשמוע את התשובה". Dev has no CSP. Fix: `blob:` in `connect-src` (`vite.config.ts`).
+
+## Not covered yet
+
+- Accounts on (phase 4) and the accounts-on API checks: waits for the test-Supabase decision.
+- COBE exam and chat (parked).
+- Persona runs as a scheduled job (phase 6): done by hand this round.

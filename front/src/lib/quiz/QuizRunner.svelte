@@ -19,7 +19,7 @@
 	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
 	import { gradeExam } from '$lib/feedback/gradeExam';
 	import type { ExamGrade } from '$lib/feedback/types';
-	import { saveAttempt, saveInProgress } from './progress';
+	import { clearInProgress, saveAttempt, saveInProgress } from './progress';
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
@@ -267,8 +267,8 @@
 	});
 
 	// An exam can't be resumed: leaving it loses the answers. This marker only
-	// drives the "unfinished exam" badge until the next attempt is submitted
-	// (saveAttempt clears it).
+	// drives the "unfinished exam" badge (the tab was closed mid-exam) until the next
+	// attempt is submitted (saveAttempt clears it) or the exit is confirmed.
 	$effect(() => {
 		if (preview || submitted) return;
 		saveInProgress({ quizId: quiz.id, startedAt });
@@ -276,6 +276,11 @@
 
 	function requestExit() {
 		showExitPrompt = true;
+	}
+
+	function confirmExit() {
+		clearInProgress(quiz.id);
+		onExit();
 	}
 </script>
 
@@ -428,7 +433,7 @@
 			title={i18n.dict.quiz.exitPromptTitle}
 			description={i18n.dict.quiz.exitPromptDesc}
 		>
-			<Button onclick={onExit}>{i18n.dict.quiz.exitConfirm}</Button>
+			<Button onclick={confirmExit}>{i18n.dict.quiz.exitConfirm}</Button>
 			<Button variant="ghost" onclick={() => (showExitPrompt = false)}>
 				{i18n.dict.quiz.exitCancel}
 			</Button>

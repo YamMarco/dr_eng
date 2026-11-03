@@ -550,7 +550,7 @@ export const he = {
 		},
 		hookResume: 'יש לכם מבחן שלא סיימתם',
 		hookReady: 'מוכנים למבחן!',
-		hookWords: (n: number) => `${n} מילים לחזרה היום`,
+		hookWords: (n: number) => `${n} מילים להיום`,
 		meterLessons: 'שיעורים',
 		hookToExam: (n: number) =>
 			n === 1 ? 'עוד שיעור אחד עד שמוכנים למבחן' : `עוד ${n} שיעורים עד שמוכנים למבחן`,
@@ -760,7 +760,10 @@ export const he = {
 	lessons: {
 		titlePrefix: 'שיעורים — מודול',
 		emptyTitle: (letter: string) => `השיעורים של מודול ${letter} יתווספו בקרוב`,
-		startHere: 'התחילו כאן'
+		startHere: 'התחילו כאן',
+		/** A path node's name for screen readers (the eye gets the icon and the caption). */
+		nodeLabel: (title: string, state: 'open' | 'done' | 'locked') =>
+			state === 'done' ? `${title}, הושלם` : state === 'locked' ? `${title}, נעול` : title
 	},
 	lesson: {
 		lessonLocked: 'השיעור הזה ייפתח בקרוב',
@@ -1312,7 +1315,7 @@ export const he = {
 			},
 			{
 				title: 'אנחנו עדיין מכווננים את ה-AI',
-				body: 'את המשוב על תשובות כתובות ועל COBE נותן AI, ואנחנו עדיין מכווננים אותו, אז הוא עלול לטעות. נראה לכם שטעה? דווחו לנו וכך נשפר אותו.'
+				body: 'את המשוב על תשובות כתובות ועל COBE נותן AI, והוא עלול לטעות. נראה לכם שטעה? דווחו לנו וכך נשפר אותו.'
 			},
 			{
 				title: 'קבוצת הבודקים בוואטסאפ',

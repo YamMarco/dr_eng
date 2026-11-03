@@ -32,8 +32,7 @@ for (const lesson of Object.values(allLessons)) {
 			await page.goto(`/app/unit/${units}/module/${moduleId}/lessons?lesson=${lesson.id}`);
 			const runner = page.getByRole('dialog');
 			await expect(runner).toBeVisible();
-			// The feedback button covers the debug button (same corner): click it by event.
-			await runner.getByRole('button', { name: 'כלי דיבוג' }).dispatchEvent('click');
+			await runner.getByRole('button', { name: 'כלי דיבוג' }).click();
 			const skip = runner.getByRole('button', { name: SKIP });
 			const bad: string[] = [];
 			for (let i = 0; i < 300 && (await skip.isVisible()); i++) {
@@ -47,7 +46,7 @@ for (const lesson of Object.values(allLessons)) {
 				});
 				if (!s.text && !s.media) bad.push(`screen ${i + 1}: empty`);
 				if (s.wide > 1) bad.push(`screen ${i + 1}: ${s.wide}px wider than the phone`);
-				await skip.dispatchEvent('click');
+				await skip.click();
 			}
 			expect(bad).toEqual([]);
 		});

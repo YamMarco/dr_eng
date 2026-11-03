@@ -51,7 +51,7 @@
 	<section class="{card} flex flex-col items-center gap-2 text-center">
 		<StreakFlame {days} goal={WEEKLY_GOAL} size={48} />
 		<div class="flex flex-col gap-0.5">
-			<h1 class="text-lg font-extrabold">{t.thisWeek(days, WEEKLY_GOAL)}</h1>
+			<h2 class="text-lg font-extrabold">{t.thisWeek(days, WEEKLY_GOAL)}</h2>
 			<p class="text-sm {left ? 'text-muted' : 'font-bold text-brand-dark'}">
 				{left ? t.toGoal(left) : t.goalMet}
 			</p>
