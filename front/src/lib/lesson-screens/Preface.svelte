@@ -25,5 +25,5 @@
 
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
 <div class="flex flex-col gap-1 text-lg leading-relaxed" dir={screen.dir ?? undefined}>
-	{@html mdBlock(screen.text)}
+	{@html mdBlock(screen.text, { cards: true })}
 </div>

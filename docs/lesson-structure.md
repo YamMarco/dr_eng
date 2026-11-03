@@ -88,6 +88,7 @@ Free-text fields (`preface.text`, `steps[]`, `summary.lines[]`, `question-previe
 - **Direction** (`textDir`): a line, sentence or quote is RTL when its first or last letter is Hebrew or it is mostly Hebrew (emoji, digits, punctuation don't count); else `dir="auto"`. `{d:..}` is a manual override.
 - **Flow arrows:** browsers never mirror `→` / `←`. Use `←` in a line that renders RTL, `→` in an English line or between two English words.
 - **Line-level** (leading tokens, `mdBlock` only): `{a:left|center|right}`, `{d:ltr|rtl}`, `{p:text}` (English study text card), `{p:callout}` (tip; `{i:warn|check|cross|star|fire|pin|ask}` swaps the icon, see `calloutIcons.ts`), `---` divider, `#`/`##`/`###` headers. Order: alignment/direction/paragraph tokens first, then the header, e.g. `{a:center}## כותרת`.
+- **Blocks** (teaching text: preface, steps, summary, question-preview intro, word-card hook, poem note): a line that is an English sentence and nothing else (no Hebrew, no `→` / `=`, starts with an English word, ends with an English word plus `. ? ! …`, 3+ words) shows as a `{p:text}` card without the token; mixed Hebrew-English lines stay plain. Adjacent `{p:text}` lines, or callouts with the same icon, merge into one box (a blank line keeps them apart). The editor still shows one block per line.
 
 ## Runner rules
 

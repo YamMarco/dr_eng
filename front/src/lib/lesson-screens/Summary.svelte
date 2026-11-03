@@ -28,7 +28,7 @@
 		{#each screen.lines as line (line)}
 			<li>
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				{@html mdBlock(line)}
+				{@html mdBlock(line, { cards: true })}
 			</li>
 		{/each}
 	</ul>

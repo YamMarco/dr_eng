@@ -35,7 +35,7 @@
 			{/if}
 			<div class="min-w-0 flex-1">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				{@html mdBlock(step)}
+				{@html mdBlock(step, { cards: true })}
 			</div>
 		</li>
 	{/each}
