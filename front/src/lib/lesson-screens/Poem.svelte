@@ -71,7 +71,7 @@
 			{#if stanza.note}
 				<div class="mt-1 text-sm leading-relaxed">
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-					{@html mdBlock(stanza.note)}
+					{@html mdBlock(stanza.note, { cards: true })}
 				</div>
 			{/if}
 		</section>

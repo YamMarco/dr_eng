@@ -22,7 +22,7 @@
 </script>
 
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="flex flex-col gap-1 font-semibold">{@html mdBlock(screen.intro)}</div>
+<div class="flex flex-col gap-1 font-semibold">{@html mdBlock(screen.intro, { cards: true })}</div>
 <ol class="mt-4 flex flex-col gap-3">
 	{#each screen.prompts as prompt (prompt)}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->

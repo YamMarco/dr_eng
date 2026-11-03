@@ -225,14 +225,31 @@ export function stripLineAttrs(raw: string): string {
  *  `#`/`##`/`###` header marker, stripped off before the rest is run through
  *  `mdInline`. Attribute tokens can appear in any order, before the header
  *  marker (if any). */
-function parseLine(raw: string): {
+/** An English-only sentence (3+ words ending in . ? ! …, no Hebrew or Arabic): a reading card in teaching text. */
+function isEnglishSentence(text: string): boolean {
+	const t = text.replace(/\{[a-z]:[^}]*\}|\{\/c\}|\]\([^)]*\)/g, ' ');
+	return (
+		!/[֐-׿؀-ۿ]/.test(t) && (t.match(/[A-Za-z]+/g) ?? []).length >= 3 && /[.?!…]["'”*_)\s]*$/.test(t)
+	);
+}
+
+type Line = ReturnType<typeof parseLine>;
+
+function parseLine(
+	raw: string,
+	cards = false
+): {
 	tag: string;
 	classes: string;
 	style: string;
 	attrs: string;
 	rest: string;
-	/** The `{p:..}` token, if any - so `mdBlock` can spot where a list run starts. */
+	/** The `{p:..}` token, if any (or `text` for an automatic reading card). */
 	kind: string;
+	/** The callout's icon token, so only same-icon callouts merge. */
+	icon: string;
+	/** Direction / language / alignment of the line alone, for a line inside a merged box. */
+	lineAttrs: string;
 } {
 	let rest = raw;
 	let align = '';
@@ -249,6 +266,7 @@ function parseLine(raw: string): {
 		else paragraph = m[2];
 		rest = rest.slice(m[0].length);
 	}
+	if (cards && !paragraph && !/^#{1,3}\s/.test(rest) && isEnglishSentence(rest)) paragraph = 'text';
 	const isText = paragraph === 'text';
 	const isCallout = paragraph === 'callout';
 	const isUl = paragraph === 'ul';
@@ -284,7 +302,9 @@ function parseLine(raw: string): {
 		// character, unless the line's dominant language disagrees (see textDir).
 		attrs: `${isText ? ' data-p="text"' : isCallout ? ' data-p="callout"' : isUl ? ' data-p="ul"' : isOl ? ' data-p="ol"' : ''}${langAttrs(rest, explicitDir ? undefined : textDir(rest))}`,
 		rest,
-		kind: paragraph
+		kind: paragraph,
+		icon,
+		lineAttrs: `${langAttrs(rest, explicitDir ? dir : textDir(rest))}${align ? ` style="text-align:${align}"` : ''}`
 	};
 }
 
@@ -292,29 +312,59 @@ function parseLine(raw: string): {
  *  block element carrying header size / text-align / direction, with
  *  `mdInline` applied to its content. Use in place of `mdInline` +
  *  `whitespace-pre-line` wherever a field should support per-line
- *  formatting. */
-export function mdBlock(src: string): string {
+ *  formatting.
+ *  Two passes: each line gets its kind (`cards`: an English-only sentence becomes a
+ *  reading card, for teaching text), then consecutive reading cards, or callouts with
+ *  the same icon, merge into one box (`edit`: never, the editor keeps a block per line). */
+export function mdBlock(src: string, { cards = false, edit = false } = {}): string {
 	if (!src) return '';
-	let prevKind = '';
-	return src
+	const lines = src
 		.split('\n')
-		.map((raw) => {
-			if (raw.trim() === '---') {
-				prevKind = '';
-				return '<hr class="my-3 border-line">';
-			}
-			const { tag, classes, style, attrs, rest, kind } = parseLine(raw);
-			// A fresh `{p:ul}`/`{p:ol}` run gets its own list-item counter scope,
-			// so numbering restarts after any line that isn't part of the run.
-			const startsListRun = (kind === 'ul' || kind === 'ol') && kind !== prevKind;
-			prevKind = kind;
-			const styleParts = [style, startsListRun ? 'counter-reset:list-item' : '']
-				.filter(Boolean)
-				.join(';');
-			const classAttr = classes ? ` class="${classes}"` : '';
-			const styleAttr = styleParts ? ` style="${styleParts}"` : '';
-			const inner = mdInline(rest) || '<br>';
-			return `<${tag}${classAttr}${styleAttr}${attrs}>${inner}</${tag}>`;
-		})
-		.join('');
+		.map((raw) => (raw.trim() === '---' ? null : parseLine(raw, cards && !edit)));
+	const boxOf = (p: Line | null | undefined) =>
+		p && p.tag === 'div' && (p.kind === 'text' || p.kind === 'callout')
+			? `${p.kind}:${p.icon}`
+			: '';
+	const out: string[] = [];
+	for (let i = 0; i < lines.length; i++) {
+		const line = lines[i];
+		if (!line) {
+			out.push('<hr class="my-3 border-line">');
+			continue;
+		}
+		const box = edit ? '' : boxOf(line);
+		let end = i;
+		while (box && boxOf(lines[end + 1]) === box) end++;
+		if (end === i) {
+			out.push(render(line, i));
+			continue;
+		}
+		// One box for the run: the first line's box, each line keeps its own direction.
+		const icon = line.style.match(/--callout-icon:[^;]*/)?.[0];
+		const inner = (lines.slice(i, end + 1) as Line[])
+			.map((l) => `<div${l.lineAttrs}>${mdInline(l.rest) || '<br>'}</div>`)
+			.join('');
+		// A callout's icon is its ::before: a flex row keeps it beside the lines.
+		const boxClass =
+			line.kind === 'text' ? TEXT_BLOCK_CLASS : `${CALLOUT_BLOCK_CLASS} flex items-start`;
+		const body = line.kind === 'text' ? inner : `<div class="min-w-0 flex-1">${inner}</div>`;
+		out.push(
+			`<div class="${boxClass}"${icon ? ` style="${icon}"` : ''} data-p="${line.kind}">${body}</div>`
+		);
+		i = end;
+	}
+	return out.join('');
+
+	function render({ tag, classes, style, attrs, rest, kind }: Line, i: number): string {
+		// A fresh `{p:ul}`/`{p:ol}` run gets its own list-item counter scope,
+		// so numbering restarts after any line that isn't part of the run.
+		const startsListRun = (kind === 'ul' || kind === 'ol') && kind !== lines[i - 1]?.kind;
+		const styleParts = [style, startsListRun ? 'counter-reset:list-item' : '']
+			.filter(Boolean)
+			.join(';');
+		const classAttr = classes ? ` class="${classes}"` : '';
+		const styleAttr = styleParts ? ` style="${styleParts}"` : '';
+		const inner = mdInline(rest) || '<br>';
+		return `<${tag}${classAttr}${styleAttr}${attrs}>${inner}</${tag}>`;
+	}
 }

@@ -41,7 +41,7 @@
 	let el = $state<HTMLDivElement>();
 
 	function mdToHtml(md: string): string {
-		return mdBlock(md);
+		return mdBlock(md, { edit: true });
 	}
 
 	/** Inline content of one line-block: mirrors mdInline's marks. */

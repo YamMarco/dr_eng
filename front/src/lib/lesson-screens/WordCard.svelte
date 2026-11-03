@@ -107,7 +107,7 @@
 		<div class="mt-3 w-full rounded-2xl border-2 border-dashed border-brand/40 p-3 text-start">
 			<p class="mb-1 text-xs font-bold text-brand-dark">💡 {i18n.dict.wordCard.hookLabel}</p>
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			<div class="leading-relaxed">{@html mdBlock(screen.hookHe)}</div>
+			<div class="leading-relaxed">{@html mdBlock(screen.hookHe, { cards: true })}</div>
 		</div>
 	{/if}
 </div>
