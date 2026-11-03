@@ -259,7 +259,7 @@ export const e1Lessons: LessonNode[] = [
             { type: "preface", text: "תורכם: שאלה, מילת מפתח, המשפט, תשובה." },
             {
               type: "passage-mcq",
-              text: "II  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
+              text: "**II ** On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
               questions: [
                 {
                   prompt: "What do the divers tie the coral to?",
@@ -285,7 +285,7 @@ export const e1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "II  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
+              text: "**II**  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
               prompt:
                 "Where do the divers move the coral after a year?\n\nכתבו את התשובה באנגלית, מהטקסט.",
               modelAnswer: "To damaged parts of the reef.",
