@@ -31,6 +31,8 @@
 - [ ] Register the business before payments
 - [ ] Keep the direct `GEMINI_API_KEY` on a paid tier (free tier may train on data; the policy says no training)
 - [ ] Waitlist: delete the list after the launch email (the policy promises it)
+- [ ] Tell testers (WhatsApp group) about the 03.11.2026 policy update: material changes need notice before they apply
+- [ ] Marketing withdrawals: no in-app toggle; removals come by email or the unsubscribe link, record them before the first campaign
 
 ## Unfinished: update the pages before opening each service
 
@@ -53,3 +55,7 @@ Listed as not accessible: COBE speaking (inherent to the exam; alternative on re
 - No privacy officer (DPO).
 - Refund: 3 days full; days 4-14 minus fee (5% or ₪100, the lower); after 14 days none. Open risk: 3/6-month and school-year plans might count as an ongoing transaction (Consumer Protection Law 13D) requiring prorated refunds.
 - Liability capped at 12 months' payments; courts: Haifa district.
+- Feedback emails: no fixed retention period (kept while needed for support, deleted on request).
+- AI: Google only (Gemini, logs kept 14 days); no other AI provider without updating the policy first.
+- Color contrast: not listed on `/accessibility` by choice (brand teal kept). Open risk: the statement claims AA, and teal on white is below 4.5:1 for small text.
+- Feedback screenshot is pre-ticked (the policy says so).

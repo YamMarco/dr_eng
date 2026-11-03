@@ -37,11 +37,11 @@ test('the pass is sold while 3 or more months are left', () => {
 test('a pass prices the months left and ends on 30.6', () => {
 	const pass = planById('premium-pass', FEB)!;
 	assert.equal(pass.months, 5);
-	assert.equal(pass.price, 2900 * 5);
+	assert.equal(pass.price, 3900 * 5);
 	assert.equal(pass.until!.toISOString(), '2027-06-30T20:59:59.000Z');
 });
 
-test('regular prices: 179 a month for the group, less for longer cycles', () => {
+test('regular prices: 179 a month for the group, 64 for premium, less for longer cycles', () => {
 	const month = (id: string) => planById(id, FEB)!.price / planById(id, FEB)!.months;
 	assert.deepEqual(
 		['group-month', 'group-pack3', 'group-pack6', 'group-pass'].map(month),
@@ -51,7 +51,10 @@ test('regular prices: 179 a month for the group, less for longer cycles', () => 
 		['personal-month', 'personal-pack3', 'personal-pack6', 'personal-pass'].map(month),
 		[52900, 50900, 49900, 48900]
 	);
-	assert.equal(planById('premium-pack6', FEB)!.price, 3400 * 6);
+	assert.deepEqual(
+		['premium-month', 'premium-pack3', 'premium-pack6', 'premium-pass'].map(month),
+		[6400, 4900, 4400, 3900]
+	);
 });
 
 test('a pack buys fixed months from the day of purchase', () => {
@@ -72,7 +75,7 @@ test('COBE adds to the app part of any plan but COBE itself and a lesson', () =>
 	const bundle = planById('group-month-cobe', FEB)!;
 	assert.equal(bundle.price, 17900 + COBE_ADDON.month);
 	assert.equal(bundle.app, 4900 + COBE_ADDON.month);
-	assert.equal(planById('premium-pack3-cobe', FEB)!.price, (3900 + COBE_ADDON.pack3) * 3);
+	assert.equal(planById('premium-pack3-cobe', FEB)!.price, (4900 + COBE_ADDON.pack3) * 3);
 	assert.equal(bundle.cobe, true);
 	assert.equal(bundle.bundle, true);
 	assert.equal(withCobe(planById('group-month', FEB)!, true, FEB)!.id, 'group-month-cobe');
@@ -98,7 +101,7 @@ test('the site charges PRICING; launch only lowers the group lessons, to 80 a mo
 		['group-month', 'group-pack3', 'group-pack6', 'group-pass'].map(launch),
 		[12900, 11900, 11400, 10900]
 	);
-	assert.equal(launch('premium-pass'), 2900);
+	assert.equal(launch('premium-pass'), 3900);
 	assert.equal(launch('personal-pack3'), 3100 + 8000 + 35800);
 	assert.equal(launch('personal-month'), 4100 + 8000 + 35800);
 	assert.equal(
