@@ -40,6 +40,10 @@ export type LlmMark = {
 	/** wrong-word: the word meant. missing-word: the word(s) to insert before `span`. */
 	fix?: string;
 };
+/** Longest answer /api/grade takes (characters): answer boxes cap at it, so a long paste
+ *  can't come back "not graded" on every retry. */
+export const MAX_TEXT = 4000;
+
 export type LessonVerdict = { pass: boolean; marks: LlmMark[] };
 /** Every open reading answer of one passage, graded in one call: points out of each POINTS. */
 export type ReadingVerdict = { answers: { id: string; score: number; marks: LlmMark[] }[] };

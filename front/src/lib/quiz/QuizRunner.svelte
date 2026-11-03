@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { trapFocus } from '$lib/focusTrap';
 	import { setContext, untrack } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { SvelteMap } from 'svelte/reactivity';
@@ -194,12 +195,15 @@
 	async function gradeOpen(ids?: Set<string>) {
 		if (!autoScore || autoScore.manual.items.length === 0) return;
 		grading = true;
-		const exam = { quizId: quiz.id, attempt: submittedAt };
-		const fresh = await gradeExam(quiz, $state.snapshot(answers), exam, ids);
-		grades = { ...grades, ...fresh };
-		score = applyGrades(quiz, autoScore, grades);
-		grading = false;
-		persist();
+		try {
+			const exam = { quizId: quiz.id, attempt: submittedAt };
+			const fresh = await gradeExam(quiz, $state.snapshot(answers), exam, ids);
+			grades = { ...grades, ...fresh };
+			score = applyGrades(quiz, autoScore, grades);
+			persist();
+		} finally {
+			grading = false; // never stuck on "checking..."
+		}
 	}
 
 	/** A COBE recording judged in the report: folded in like an LLM grade. */
@@ -282,6 +286,14 @@
 		clearInProgress(quiz.id);
 		onExit();
 	}
+
+	// Back (the phone's back gesture too) or a link mid-exam asks first, like the exit
+	// button; closing the tab gets the browser's own "leave?" warning.
+	beforeNavigate((navigation) => {
+		if (preview || submitted) return;
+		navigation.cancel();
+		if (navigation.type !== 'leave') showExitPrompt = true;
+	});
 </script>
 
 {#snippet navigator()}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { MAX_TEXT } from '$lib/feedback/types';
 	import ReadingPaper from './ReadingPaper.svelte';
 	import { untrack } from 'svelte';
 	import Md from '$lib/components/Md.svelte';
@@ -94,6 +95,7 @@
 					dir="ltr"
 					lang="en"
 					disabled={checked}
+					maxlength={MAX_TEXT}
 					bind:value={answers[i]}
 					aria-label={i18n.dict.a11y.yourAnswer}
 					class="mt-2 w-full rounded-xl border-2 px-3 py-2 font-semibold transition {checked

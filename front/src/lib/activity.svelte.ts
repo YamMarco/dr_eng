@@ -18,8 +18,8 @@ export function dayKey(date: Date): string {
 function load(): string[] {
 	if (typeof localStorage === 'undefined') return [];
 	try {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		return raw ? JSON.parse(raw) : [];
+		const days: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]');
+		return Array.isArray(days) ? days.filter((d) => typeof d === 'string') : [];
 	} catch {
 		return [];
 	}

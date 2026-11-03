@@ -6,6 +6,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { navigating } from '$app/state';
 	import Loader from '$lib/components/Loader.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore } from '$lib/theme.svelte';
@@ -49,7 +50,21 @@
 </svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-canvas">
-	{@render children()}
+	<!-- A render crash (e.g. a malformed stored value) shows this, never a blank page. -->
+	<svelte:boundary onerror={(e) => console.error(e)}>
+		{@render children()}
+		{#snippet failed()}
+			<main
+				class="mx-auto flex w-full max-w-lg flex-1 flex-col items-center justify-center px-4 py-16 text-center"
+			>
+				<h1 class="text-2xl font-bold">{i18n.dict.error.defaultMessage}</h1>
+				<p class="mt-2 text-muted">{i18n.dict.error.crashSubtitle}</p>
+				<div class="mt-8 w-full max-w-xs">
+					<Button onclick={() => location.reload()}>{i18n.dict.error.reload}</Button>
+				</div>
+			</main>
+		{/snippet}
+	</svelte:boundary>
 </div>
 
 {#if navigating.to}

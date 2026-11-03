@@ -224,7 +224,14 @@
 		i18n.dict.lesson.feedbackRight[score.log.length % i18n.dict.lesson.feedbackRight.length]
 	);
 
+	// A double tap would check the answer and skip its feedback in one go: right after
+	// the feedback shows, the button waits a beat.
+	let verdictAt = 0;
+	$effect(() => {
+		if (score.verdict !== null) verdictAt = performance.now();
+	});
 	function primary() {
+		if (score.verdict !== null && performance.now() - verdictAt < 400) return;
 		score.verdict = null;
 		screenInstance?.primaryAction();
 	}

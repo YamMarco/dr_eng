@@ -21,6 +21,8 @@ import { error, json } from '@sveltejs/kit';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import prettier from 'prettier';
+import * as z from 'zod';
+import { isRecord } from '$lib/storedJson';
 import { getLesson } from '$lib/content';
 import { checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/server/github';
@@ -37,6 +39,7 @@ import {
 	wordListFile,
 	type WordPatch
 } from '$lib/content-edit/wordsFile';
+import { lessonContentSchema, lessonNodeSchema, quizNodeSchema } from '$lib/lesson-screens/schema';
 import type { RequestHandler } from './$types';
 
 // One request either replaces a single lesson's `content` ({ lessonId,
@@ -86,6 +89,15 @@ type Body =
 	  };
 
 const MAX_TEXT = 400;
+/** A save goes live as is: anything the app can't render is refused here (400). */
+function assertValid(schema: z.ZodType, value: unknown, what: string) {
+	const r = schema.safeParse(value);
+	if (!r.success) {
+		const issue = r.error.issues[0];
+		throw error(400, `invalid ${what}: ${issue.message} at ${issue.path.join('.')}`);
+	}
+}
+
 const isText = (v: unknown, required = true): v is string =>
 	typeof v === 'string' && v.length <= MAX_TEXT && (!required || v.trim() !== '');
 
@@ -104,7 +116,8 @@ function sectionFile(sectionId: string) {
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
 
-	const body = (await request.json()) as Body;
+	const body = (await request.json().catch(() => null)) as Body | null;
+	if (!isRecord(body)) throw error(400, 'expected a JSON object');
 
 	// Which file, and how to transform its `= [ … ];` array literal.
 	let relPath: string;
@@ -165,6 +178,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		const { sectionId, upserts, deletes } = body;
 		if (!Array.isArray(upserts) || !Array.isArray(deletes))
 			throw error(400, 'missing upserts[]/deletes[]');
+		assertValid(z.array(lessonNodeSchema), upserts, 'lesson');
+		assertValid(z.array(z.string()), deletes, 'deletes');
 		const file = sectionFile(sectionId);
 		relPath = file.relPath;
 		label = `section ${sectionId}`;
@@ -180,6 +195,8 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		if (!/^[a-z]+$/.test(examModuleId)) throw error(400, `bad exam module id: ${examModuleId}`);
 		if (!Array.isArray(upserts) || !Array.isArray(deletes))
 			throw error(400, 'missing upserts[]/deletes[]');
+		assertValid(z.array(quizNodeSchema), upserts, 'exam');
+		assertValid(z.array(z.string()), deletes, 'deletes');
 		relPath = `src/lib/quiz/${examModuleId}/index.ts`;
 		label = `exams (${examModuleId})`;
 		transform = (raw) => {
@@ -192,6 +209,7 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	} else {
 		const { lessonId, content } = body;
 		if (!lessonId || !content) throw error(400, 'missing lessonId/content');
+		assertValid(lessonContentSchema, content, 'lesson content');
 		const meta = getLesson(lessonId);
 		if (!meta) throw error(404, `unknown lesson: ${lessonId}`);
 		const file = sectionFile(meta.section);

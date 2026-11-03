@@ -99,7 +99,7 @@ export async function playThrough(page: Page, typed = 'answer') {
 	const runner = page.getByRole('dialog').first();
 	const done = runner.getByRole('heading', { name: 'כל הכבוד!' });
 	const seen: string[] = [];
-	for (let i = 0; i < 150; i++) {
+	for (let i = 0; i < 400; i++) {
 		if (await done.isVisible()) return seen;
 		const main = runner.getByRole('main');
 		// The footer's main button: outside the screen, no icon-only aria-label.
@@ -107,6 +107,8 @@ export async function playThrough(page: Page, typed = 'answer') {
 		seen.push(((await main.innerText().catch(() => '')) ?? '').slice(0, 40));
 		if (await footer.isEnabled().catch(() => false)) {
 			await footer.click();
+			// Right after an answer's feedback the button ignores taps for a beat (LessonRunner).
+			await page.waitForTimeout(150);
 			continue;
 		}
 		const box = main.getByRole('textbox');
@@ -120,5 +122,5 @@ export async function playThrough(page: Page, typed = 'answer') {
 		if (await footer.isEnabled().catch(() => false)) await footer.click();
 		else throw new Error(`stuck on screen: ${seen.at(-1)}`);
 	}
-	throw new Error('no finish screen after 150 steps');
+	throw new Error('no finish screen after 400 steps');
 }

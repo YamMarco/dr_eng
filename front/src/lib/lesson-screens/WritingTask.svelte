@@ -23,7 +23,7 @@
 	import { gradeLesson } from '$lib/feedback/grade';
 	import FeedbackView from '$lib/feedback/FeedbackView.svelte';
 	import MarkedText from '$lib/feedback/MarkedText.svelte';
-	import type { Feedback } from '$lib/feedback/types';
+	import { MAX_TEXT, type Feedback } from '$lib/feedback/types';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -302,6 +302,7 @@
 			lang="en"
 			rows="7"
 			disabled={checked || grading}
+			maxlength={MAX_TEXT}
 			bind:value={essayText}
 			placeholder={i18n.dict.answerLang.placeholderEn}
 			aria-label={i18n.dict.answerLang.placeholderEn}
@@ -339,6 +340,7 @@
 					dir="ltr"
 					lang="en"
 					disabled={checked || grading}
+					maxlength={MAX_TEXT}
 					value={line}
 					oninput={(e) => (inputLines[i] = e.currentTarget.value)}
 					placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}

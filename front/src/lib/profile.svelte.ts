@@ -4,6 +4,7 @@
 
 import { examDate, type ExamSession } from './examSessions';
 import { onSyncedChange, saveSynced } from './progressSync.svelte';
+import { isRecord } from './storedJson';
 
 const STORAGE_KEY = 'profile';
 
@@ -18,8 +19,18 @@ export const NAME_MAX = 30;
 function load(): Profile | null {
 	if (typeof localStorage === 'undefined') return null;
 	try {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		return raw ? JSON.parse(raw) : null;
+		const p: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null');
+		if (!isRecord(p)) return null;
+		const exam = p.exam;
+		const validExam =
+			isRecord(exam) &&
+			(exam.season === 'winter' || exam.season === 'summer') &&
+			Number.isInteger(exam.year);
+		return {
+			units: p.units === '5' || p.units === 'undecided' ? p.units : '4',
+			exam: validExam ? (exam as ExamSession) : null,
+			name: typeof p.name === 'string' ? p.name : undefined
+		};
 	} catch {
 		return null;
 	}

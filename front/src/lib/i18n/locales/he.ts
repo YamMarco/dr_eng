@@ -1269,6 +1269,8 @@ export const he = {
 		examNotFound: 'המבחן המבוקש לא נמצא',
 		noDeck: 'אין אוצר מילים למודול הזה',
 		subtitle: 'אפשר לחזור לדף הבית ולהמשיך משם.',
+		crashSubtitle: 'נסו לרענן את העמוד. אם זה חוזר, ספרו לנו בכפתור המשוב.',
+		reload: 'רענון',
 		backButton: 'חזרה לדף הבית'
 	},
 	testerFeedback: {

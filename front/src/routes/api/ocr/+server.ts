@@ -19,6 +19,8 @@ export const POST = llmRoute({
 		const bytes = Buffer.from(await request.arrayBuffer());
 		if (bytes.length === 0 || bytes.length > MAX_BYTES)
 			throw error(413, 'image is empty or too big');
+		// The app always sends a JPEG (scan.ts): anything else never reaches the paid LLM call.
+		if (bytes[0] !== 0xff || bytes[1] !== 0xd8 || bytes[2] !== 0xff) throw error(415, 'not a JPEG');
 		return bytes;
 	},
 	activity: 'ocr',

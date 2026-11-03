@@ -18,7 +18,7 @@ import type {
 	SingleRequest
 } from '$lib/feedback/types';
 
-export const MAX_TEXT = 4000;
+export { MAX_TEXT } from '$lib/feedback/types';
 /** A reading batch holds at most this many answers (an exam passage has ~6 open questions). */
 export const MAX_READING_ITEMS = 15;
 
