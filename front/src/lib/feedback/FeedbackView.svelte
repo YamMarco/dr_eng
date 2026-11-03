@@ -13,7 +13,7 @@
 	{#if feedback.stage === 'l1-gate'}
 		<p class="font-semibold text-miss">✗ {t.gate[feedback.gate ?? 'empty']}</p>
 	{:else if feedback.stage === 'partial'}
-		<p class="font-semibold text-muted">{t.partial}</p>
+		<p class="font-semibold text-muted">{feedback.limit ? t.limit : t.partial}</p>
 	{:else}
 		<p class="font-semibold {feedback.pass ? 'text-brand-dark' : 'text-miss'}">
 			{feedback.pass ? '✓' : '✗'}

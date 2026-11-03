@@ -1,6 +1,6 @@
 // Client side of /api/ocr: shrinks the photo (phone cameras shoot 10+ MB;
 // handwriting reads fine at ~1600px) and returns the transcribed text.
-import { apiFetch } from '$lib/api';
+import { ApiError, apiFetch } from '$lib/api';
 
 const MAX_SIDE = 1600;
 
@@ -39,7 +39,7 @@ export async function scanHandwriting(file: File, rotation = 0): Promise<string>
 		headers: { 'Content-Type': 'image/jpeg' },
 		body: await toJpeg(file, rotation)
 	});
-	if (!res.ok) throw new Error(`OCR ${res.status}`);
+	if (!res.ok) throw new ApiError(res.status);
 	return ((await res.json()) as { text: string }).text;
 }
 

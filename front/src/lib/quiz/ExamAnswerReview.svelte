@@ -56,7 +56,7 @@
 			/>
 		{/if}
 		{#if grade.status === 'failed'}
-			<p class="text-xs font-semibold text-muted">{q.notGraded}</p>
+			<p class="text-xs font-semibold text-muted">{grade.limit ? q.notGradedLimit : q.notGraded}</p>
 		{:else if grade.gate}
 			<p class="text-xs font-semibold text-miss">{q.gateZero[grade.gate] ?? ''}</p>
 		{/if}

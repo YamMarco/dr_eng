@@ -4,6 +4,7 @@
 	// take and in the exam report (where the bands also fill the rubric).
 	import { fly } from 'svelte/transition';
 	import { LoaderCircle, Sparkles } from '@lucide/svelte';
+	import { isLimit } from '$lib/api';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { requestSpeakingFeedback } from './speakingAi';
 	import { myPhrases, quotedPhrases } from '$lib/phraseBank.svelte';
@@ -33,7 +34,7 @@
 	} = $props();
 
 	const t = $derived(i18n.dict.speakAi);
-	let status = $state<'idle' | 'listening' | 'failed'>('idle');
+	let status = $state<'idle' | 'listening' | 'failed' | 'limit'>('idle');
 	// svelte-ignore state_referenced_locally
 	let shown = $state(verdict);
 
@@ -44,8 +45,8 @@
 			shown = v;
 			status = 'idle';
 			onVerdict?.(v);
-		} catch {
-			status = 'failed';
+		} catch (e) {
+			status = isLimit(e) ? 'limit' : 'failed';
 		}
 	}
 </script>
@@ -120,8 +121,8 @@
 				<Sparkles size={16} aria-hidden="true" />{t.button}
 			{/if}
 		</button>
-		{#if status === 'failed'}
-			<p class="text-xs font-semibold text-miss">{t.failed}</p>
+		{#if status === 'failed' || status === 'limit'}
+			<p class="text-xs font-semibold text-miss">{status === 'limit' ? t.limit : t.failed}</p>
 		{/if}
 	</div>
 {/if}

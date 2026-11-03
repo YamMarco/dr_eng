@@ -8,7 +8,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import { getQuizNode } from '$lib/quiz';
 	import { localizeContent } from '$lib/content/localize.svelte';
-	import { getLastAttempt } from '$lib/quiz/progress';
+	import { getLastAttempt, retakeLockedUntil } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
@@ -32,6 +32,16 @@
 	let lastAttempt = $derived(quizNode && !running ? getLastAttempt(quizNode.id) : null);
 	let row = $derived(running ? undefined : examRow(quiz));
 	let taken = $derived(!!row?.percents.length);
+	// A submitted exam waits 24h before it can be solved again; an unfinished one can be resumed.
+	let lockedUntil = $derived(
+		quizNode && !running && !row?.inProgress ? retakeLockedUntil(quizNode.id) : null
+	);
+	let lockedWhen = $derived.by(() => {
+		if (!lockedUntil) return '';
+		const at = new Date(lockedUntil);
+		const time = at.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+		return t.lockedWhen(time, at.toDateString() === new Date().toDateString());
+	});
 
 	// The exam's structure, read from the quiz itself: reading texts and
 	// questions, the writing task when there is one, and the time.
@@ -90,9 +100,11 @@
 			<div>
 				<div>
 					<h2 class="text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
-					<p class="mt-1 text-sm leading-relaxed text-muted">
-						{taken ? t.prepAgainDesc : t.prepDesc}
-					</p>
+					{#if !lockedUntil}
+						<p class="mt-1 text-sm leading-relaxed text-muted">
+							{taken ? t.prepAgainDesc : t.prepDesc}
+						</p>
+					{/if}
 					<ul class="mt-2 flex flex-wrap gap-1.5">
 						{#each rules as rule (rule)}
 							<li
@@ -119,12 +131,17 @@
 			class="flex flex-col gap-3 lg:flex-row lg:*:flex-1"
 		>
 			{#if quizNode}
-				<Button onclick={() => start()}>
-					{row?.inProgress ? t.resumeButton : taken ? t.retakeButton : i18n.dict.quiz.startButton}
-				</Button>
-				<Button variant="secondary" onclick={() => start(true)}>{t.practiceButton}</Button>
+				{#if !lockedUntil}
+					<Button onclick={() => start()}>
+						{row?.inProgress ? t.resumeButton : taken ? t.retakeButton : i18n.dict.quiz.startButton}
+					</Button>
+					<Button variant="secondary" onclick={() => start(true)}>{t.practiceButton}</Button>
+				{/if}
 				{#if lastAttempt}
-					<Button variant="secondary" onclick={() => (viewingSolution = true)}>
+					<Button
+						variant={lockedUntil ? 'primary' : 'secondary'}
+						onclick={() => (viewingSolution = true)}
+					>
 						{i18n.dict.quiz.viewSolutionButton}
 					</Button>
 				{/if}
@@ -132,7 +149,11 @@
 				<Button disabled>{i18n.dict.common.comingSoon}</Button>
 			{/if}
 		</div>
-		{#if quizNode}
+		{#if lockedUntil}
+			<p class="-mt-1 text-center text-sm leading-relaxed font-semibold text-muted">
+				{t.lockedNote(lockedWhen)}
+			</p>
+		{:else if quizNode}
 			<p class="-mt-1 text-center text-xs leading-relaxed text-muted">{t.practiceHint}</p>
 		{/if}
 	</main>

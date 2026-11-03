@@ -1,6 +1,6 @@
 // Client side of /api/speak: a take's audio -> the AI's transcript, rubric
 // bands and tips. Works from the mobile build too (apiFetch).
-import { apiFetch } from '$lib/api';
+import { ApiError, apiFetch } from '$lib/api';
 import { toWavBase64 } from '$lib/audioWav';
 import type { CobeLevel, CobePart } from './speaking';
 import type { SpeakingVerdict } from './types';
@@ -24,6 +24,6 @@ export async function requestSpeakingFeedback(input: {
 			audio: await toWavBase64(blob)
 		})
 	});
-	if (!res.ok) throw new Error(`speak ${res.status}`);
+	if (!res.ok) throw new ApiError(res.status);
 	return res.json();
 }

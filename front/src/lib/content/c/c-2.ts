@@ -1242,11 +1242,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "עוד כמה **מילות ניווט** שכדאי לזהות מהר.\nקראו את הקטע:\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.",
+          text: "{d:rtl}עוד כמה **מילות ניווט** שכדאי לזהות מהר.\n{d:rtl}\n{d:rtl}קראו את הקטע:\n{d:rtl}\n{p:text}Scientists **found** that noise can hurt learning. Stress levels **decreased** in quiet classrooms. **For example**, in one school, stress fell by 35%, and the number of calm students **increased** by 20%.",
         },
         {
           type: "preface",
-          text: "עכשיו אל תתרגמו את כל המשפטים.\nנסו לזהות מה כל מילה מודגשת **מסמנת**:\n{p:ul}**found** ← יש כאן ממצא\n{p:ul}**decreased** ← משהו ירד\n{p:ul}**for example** ← עכשיו מגיעה דוגמה\n{p:ul}**increased** ← משהו עלה\n\nאלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
+          text: "{d:rtl}\n{d:rtl}\n{d:rtl}נסו להבין מה כל מילה מודגשת **מסמנת**:\n{p:ul}{d:rtl}**found** ← יש כאן ממצא\n{p:ul}{d:rtl}**decreased** ← משהו ירד בכמות\n{p:ul}{d:rtl}**for example** ← עכשיו מגיעה דוגמה על הרעיון המרכזי\n{p:ul}{d:rtl}**increased** ← משהו עלה בכמות\n\n{d:rtl}אלה המילים שעוזרות לנו להבין **מה קורה בטקסט ולאיזה כיוון הוא מתקדם**.",
         },
         {
           type: "preface",
@@ -1266,6 +1266,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "הרבה חיות חיות כאן. לדוגמה, יש שועלים וינשופים.",
               hookHe:
                 "for example = לדוגמה. אחריה מגיע משהו קונקרטי: שם, מספר או מקום. זה לא רעיון חדש, זו הדגמה של מה שנאמר קודם.",
+              image: "/vocab-images/word-b4d474a89c.jpg",
             },
             {
               type: "mcq",
@@ -1300,6 +1301,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "מספר הציפורים עלה ב-60%, אבל הרעש ירד.",
               hookHe:
                 "increase ↑ = עלה. decrease ↓ = ירד. תמיד לבדוק את הכיוון לפני שעונים, לפעמים זה ההבדל בין נכון לשגוי.",
+              image: "/vocab-images/word-676e8c7fcb.jpg",
             },
             {
               type: "mcq",
@@ -1337,6 +1339,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "חוקרים מצאו שהליכה משפרת את הזיכרון.",
               hookHe:
                 "found (מצא) ו-discovered (גילה) בטקסט מסמנות ממצא, בדרך כלל של מחקר. אחריהן בא מה שנמצא.",
+              image: "/vocab-images/word-852033e9b9.jpg",
             },
             {
               type: "mcq",
@@ -3326,6 +3329,7 @@ export const c2Lessons: LessonNode[] = [
               exampleHe: "זיהום יכול לגרום לבעיות בריאות חמורות.",
               hookHe:
                 "cause = לגרום ל, וגם שם עצם: the cause = הסיבה. החץ: סיבה ← תוצאה.",
+              image: "/vocab-images/word-2969b816ad.jpg",
             },
             {
               type: "mcq",
@@ -3365,6 +3369,7 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "צריך פועל = affect. effect ו-effects הם שמות עצם. cause (גורם ל) לא מתאים לפני how well.",
             },
+            { type: "preface", text: "" },
             {
               type: "mcq",
               prompt: "Stress has a bad ______ on health.",
@@ -3373,6 +3378,7 @@ export const c2Lessons: LessonNode[] = [
               layout: "honeycomb",
               explanation: "a bad ___ = שם עצם = effect.",
             },
+            { type: "preface", text: "" },
             { type: "spell-word", word: "affect", mode: "copy" },
             {
               type: "match-pairs",
@@ -4692,7 +4698,7 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}### 🎯 איך זה עובד?\n\n{d:rtl}✅ מסיימים שיעור אחד ⬇️\n{d:rtl}\n{d:rtl}✅ עוברים לשיעור הבא ⬇️\n{d:rtl}✅ בונים בסיס טוב ⬇️\n{d:rtl}\n{d:rtl}✅ מתרגלים ומגיעים מוכנים יותר לבחינה\n\n{d:rtl}תזכרו: כל שיעור מלמד משהו שתצטרכו בהמשך.",
+          text: "{d:rtl}### 🎯 איך זה עובד?\n\n{d:rtl}✅ מסיימים שיעור אחד ⬇️\n{d:rtl}\n{d:rtl}✅ עוברים לשיעור הבא ⬇️\n{d:rtl}\n{d:rtl}✅ בונים בסיס טוב ⬇️\n{d:rtl}\n{d:rtl}✅ מתרגלים ומגיעים מוכנים יותר לבחינה\n\n{d:rtl}תזכרו: כל שיעור מלמד משהו שתצטרכו בהמשך.",
         },
         {
           type: "preface",
@@ -4704,11 +4710,11 @@ export const c2Lessons: LessonNode[] = [
         },
         {
           type: "preface",
-          text: "{d:rtl}אך יש לנו שאלה לפני זה: **מה יכול לגרום לכם לאבד נקודות, גם אם הבנתם בערך את השאלה?**\n\n{d:rtl}בלא מעט פעמים זאת פשוט מילה אחת. מילה שלא הכרתם. או מילה שחשבתם שאתם יודעים, אבל הבנתם אותה לא נכון.\n\n{d:rtl}### 💡 מילה אחת יכולה לשנות את כל התשובה.",
+          text: "{d:rtl}אך יש לנו שאלה לפני זה: **מה יכול לגרום לכם לאבד נקודות, גם אם הבנתם בערך את השאלה?**\n\n{d:rtl}בלא מעט פעמים זאת פשוט מילה אחת בתוך השאלה. מילה שלא הכרתם. או מילה שחשבתם שאתם יודעים, אבל הבנתם אותה לא נכון.\n\n{d:rtl}### 💡 מילה אחת יכולה לשנות את כל התשובה.",
         },
         {
           type: "preface",
-          text: "{d:rtl}לכן ב־Module C, אוצר מילים הוא לא תוספת. הוא חלק מהדרך. אוצר מילים חזק יעזור לכם גם בטקטס וגם בחלק החיבור. ידע זה כוח! \n\n{d:rtl}אז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n{d:rtl}# \n{d:rtl}# 📚 לומדים את המילים שצריך להכיר\n\n{d:rtl}לא צריך לדעת כל מילה באנגלית.\n\n{d:rtl}צריך ללמוד ולדעת לזהות את המילים החשובות שיעזרו לכם להגיע לתשובה.",
+          text: "{d:rtl}לכן ב־Module C, אוצר מילים הוא לא תוספת. הוא חלק מהדרך. אוצר מילים חזק יעזור לכם גם בטקטס וגם בחלק החיבור. כמו שאומרים: ידע זה כוח! \n\n{d:rtl}אז לפני שנלמד שיטות ונפתור תרגילים, נתחיל מהבסיס:\n{d:rtl}# \n{d:rtl}# 📚 לומדים את המילים שצריך להכיר\n\n{d:rtl}לא צריך לדעת כל מילה באנגלית.\n\n{d:rtl}צריך ללמוד ולדעת לזהות את המילים החשובות שיעזרו לכם להגיע לתשובה.",
         },
         {
           type: "preface",
@@ -4726,6 +4732,7 @@ export const c2Lessons: LessonNode[] = [
           type: "preface",
           text: "{d:rtl}ב־Module C יש **שלוש קבוצות של מילים** שכדאי להכיר:\n\n{d:rtl}**1. מילות תוכן: **מילים שעוזרות להבין על מה הטקסט מדבר ומה המידע החשוב בו.\n\n{d:rtl}**2. מילות ניווט: **מילים שעוזרות לעקוב אחרי הכיוון של הדיון בטקסט: סיבה, תוצאה, ניגוד, דוגמה, הוספה ועוד.\n\n{d:rtl}**3. מילות שאלה: **מילים שחוזרות בהוראות ובשאלות, ואומרות לכם בדיוק מה צריך למצוא ומה צריך לכתוב.\n\n{d:rtl}**אז בואו נתחיל !**",
         },
+        { type: "preface", text: "" },
       ],
       rounds: [{ screens: [] }],
     },

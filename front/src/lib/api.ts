@@ -11,3 +11,13 @@ export function apiFetch(path: string, init: RequestInit = {}): Promise<Response
 	if (auth.accessToken) headers.set('Authorization', `Bearer ${auth.accessToken}`);
 	return fetch(API_BASE + path, { ...init, headers });
 }
+
+/** A failed call to our server, with its HTTP status. */
+export class ApiError extends Error {
+	constructor(readonly status: number) {
+		super(`api ${status}`);
+	}
+}
+
+/** The call hit a usage cap (429), e.g. today's AI quota for that activity. */
+export const isLimit = (e: unknown) => e instanceof ApiError && e.status === 429;

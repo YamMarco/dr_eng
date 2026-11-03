@@ -23,6 +23,8 @@ export type Feedback = {
 	/** Where the verdict came from. `partial` = the LLM was unavailable: marks only, no verdict. */
 	stage: 'l1-gate' | 'l1-accepted' | 'llm' | 'partial';
 	pass: boolean;
+	/** `partial` because today's AI quota is used up. */
+	limit?: boolean;
 	gate?: GateReason;
 	/** Layer 1 + Layer 2 together, sorted by position. */
 	marks: Mark[];
@@ -50,6 +52,8 @@ export type MechanicsCount = { spelling: number; punctuation: number; runOn: num
 /** One answer: lesson = pass/fail, essay = the module's rubric (C 30 points, G 40). */
 export type SingleRequest = {
 	kind: 'lesson' | 'essay';
+	/** essay: its exam attempt (required by the server). */
+	exam?: ExamRef;
 	/** The task's question, as the student saw it. */
 	question: string;
 	/** The student's text with Layer-1 typos already corrected. */
@@ -79,6 +83,8 @@ export type ReadingItem = {
 /** Every open reading answer of an exam passage at once; the passage is sent a single time. */
 export type ReadingRequest = {
 	kind: 'reading';
+	/** Its exam attempt (required by the server). */
+	exam?: ExamRef;
 	/** The passage with its paragraphs labelled "[I] ...", "[II] ...". */
 	passage: string;
 	items: ReadingItem[];
@@ -86,11 +92,27 @@ export type ReadingRequest = {
 
 export type GradeRequest = SingleRequest | ReadingRequest;
 
+/**
+ * Which exam attempt a grading request belongs to, for the server's 24h retake lock
+ * (server/examLock): the exam counts as done once all its `parts` were graded.
+ */
+export type ExamRef = {
+	quizId: string;
+	/** The attempt's submit time (ms), its id. */
+	attempt: number;
+	/** How many grading requests the whole attempt makes: a reading passage each + the essay. */
+	parts: number;
+	/** Practice: checked against the lock, never starts one. */
+	practice?: boolean;
+};
+
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */
 export type ExamGrade = {
 	kind: 'reading' | 'essay' | 'speaking';
 	/** failed = the LLM was unavailable; counts 0 until re-graded. */
 	status: 'graded' | 'failed';
+	/** Failed because today's AI quota is used up. */
+	limit?: boolean;
 	earned: number;
 	max: number;
 	/** The answer as submitted (marks point into it). */

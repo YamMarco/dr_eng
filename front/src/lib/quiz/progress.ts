@@ -2,6 +2,7 @@
 // account ($lib/progressSync); the in-progress marker stays on the device.
 
 import '$lib/legacyIds';
+import { RETAKE_WAIT_MS } from './retake';
 import { scorePercent, type QuizScore } from './scoring';
 import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
@@ -66,6 +67,22 @@ export function getLastAttempt(quizId: string): QuizAttempt | null {
 export function getResults(quizId: string): ExamResult[] {
 	if (!hasStorage()) return [];
 	return safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId))) ?? [];
+}
+
+/**
+ * When the exam opens again, or null when it's open now. Like the server's lock, an attempt
+ * counts as done only once every open answer was graded (a failed grading leaves it open).
+ */
+export function retakeLockedUntil(quizId: string, now = Date.now()): number | null {
+	const last = Math.max(0, ...getResults(quizId).map((r) => r.at));
+	const attempt = getLastAttempt(quizId);
+	if (
+		attempt?.submittedAt === last &&
+		Object.values(attempt.grades ?? {}).some((g) => g.status === 'failed')
+	)
+		return null;
+	const until = last + RETAKE_WAIT_MS;
+	return until > now ? until : null;
 }
 
 export function saveInProgress(state: QuizInProgress) {
