@@ -162,7 +162,6 @@ export const ar: DictionaryOverride = {
 		avgMinutesLabel: 'دقائق بالمعدل',
 		avgGradeLabel: 'معدل العلامات',
 		rulesTitle: 'مبنى الامتحان',
-		readingTextsRule: (n: number) => (n === 1 ? 'نص قراءة واحد' : `${n} نصوص قراءة`),
 		questionsRule: (n: number) => `${n} أسئلة`,
 		timeRule: (minutes: number) => `${minutes} دقيقة`,
 		writingRule: (min: number, max: number) => `مهمة كتابة: ${min} إلى ${max} كلمة`,
