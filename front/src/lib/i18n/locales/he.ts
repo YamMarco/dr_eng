@@ -1306,8 +1306,8 @@ export const he = {
 				body: 'כפתור המשוב נמצא בפינת כל מסך. הוא שולח לנו את מה שכתבתם יחד עם צילום של המסך.'
 			},
 			{
-				title: 'ה-AI עוד לומד',
-				body: 'את המשוב על תשובות כתובות ועל COBE נותן AI, והוא עלול לטעות. נראה לכם שטעה? דווחו לנו.'
+				title: 'אנחנו עדיין מכווננים את ה-AI',
+				body: 'את המשוב על תשובות כתובות ועל COBE נותן AI, ואנחנו עדיין מכווננים אותו, אז הוא עלול לטעות. נראה לכם שטעה? דווחו לנו וכך נשפר אותו.'
 			},
 			{
 				title: 'קבוצת הבודקים בוואטסאפ',
@@ -1319,6 +1319,7 @@ export const he = {
 		terms: 'תנאי השימוש',
 		and: ' וב',
 		privacy: 'מדיניות הפרטיות',
+		dontShow: 'לא להציג שוב',
 		start: 'הבנתי, מתחילים!'
 	},
 	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/handoffs/policies.md. */

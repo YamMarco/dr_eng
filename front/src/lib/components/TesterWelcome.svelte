@@ -8,19 +8,20 @@
 	import { TESTERS_GROUP } from '$lib/support';
 	import { resolve } from '$app/paths';
 
-	// A tester's first visit: what a test version means, where feedback goes, and
-	// that the WhatsApp group shows their number. Once per device.
+	// Tester greeting: what a test version means, where feedback goes, and that the
+	// WhatsApp group shows their number. Shown on each app load until "don't show again".
 	const SEEN_KEY = 'tester-welcome-seen';
 
 	let t = $derived(i18n.dict.testerWelcome);
 	let open = $state(!localStorage.getItem(SEEN_KEY));
+	let hide = $state(false);
 
 	const icons = [FlaskConical, MessageSquareText, Sparkles, Users];
 	const link = 'font-semibold text-brand-dark underline hover:no-underline';
 
 	function done() {
 		open = false;
-		localStorage.setItem(SEEN_KEY, '1');
+		if (hide) localStorage.setItem(SEEN_KEY, '1');
 	}
 </script>
 
@@ -55,6 +56,11 @@
 			class={link}>{t.privacy}</a
 		>.
 	</p>
+
+	<label class="flex items-center gap-2.5 text-sm">
+		<input type="checkbox" bind:checked={hide} class="h-5 w-5 shrink-0 accent-brand" />
+		{t.dontShow}
+	</label>
 
 	<Button onclick={done}>{t.start}</Button>
 </Sheet>
