@@ -42,3 +42,17 @@ test('mixed lines, prompts and the editor are left as they are', () => {
 	});
 	assert.equal(edit.match(/data-p="text"/g)?.length, 2);
 });
+
+test('a reading card is an English sentence only: starts and ends in English, nothing else', () => {
+	const card = (line: string) => /data-p="text"/.test(mdBlock(line, { cards: true }));
+	for (const yes of ['Dogs are popular pets.', '*What should change…?*', '"What does it mean?"'])
+		assert.ok(card(yes), yes);
+	for (const no of [
+		'1. **Complete the sentence**: People left the island.',
+		'started a project',
+		'look up → search.',
+		'Find the word. רמז: כאן.',
+		'Why was it built? (paragraph 2)'
+	])
+		assert.ok(!card(no), no);
+});

@@ -225,11 +225,21 @@ export function stripLineAttrs(raw: string): string {
  *  `#`/`##`/`###` header marker, stripped off before the rest is run through
  *  `mdInline`. Attribute tokens can appear in any order, before the header
  *  marker (if any). */
-/** An English-only sentence (3+ words ending in . ? ! …, no Hebrew or Arabic): a reading card in teaching text. */
+/** A reading card in teaching text: an English sentence and nothing else. No Hebrew or
+ *  Arabic, starts with an English word (after quotes / markup), and ends with an English
+ *  word plus . ? ! or … (closing quotes allowed). 3+ words and no → / = (glosses), so
+ *  phrases, labels and word notes stay plain. */
 function isEnglishSentence(text: string): boolean {
-	const t = text.replace(/\{[a-z]:[^}]*\}|\{\/c\}|\]\([^)]*\)/g, ' ');
+	const t = text
+		.replace(/\{[a-z]:[^}]*\}|\{\/c\}|\]\([^)]*\)/g, ' ')
+		.replace(/[*_~`+[\]]/g, '')
+		.trim();
 	return (
-		!/[֐-׿؀-ۿ]/.test(t) && (t.match(/[A-Za-z]+/g) ?? []).length >= 3 && /[.?!…]["'”*_)\s]*$/.test(t)
+		!/[֐-׿؀-ۿ]/.test(t) &&
+		!/[→←=]/.test(t) &&
+		/^["'“‘(]*[A-Za-z]/.test(t) &&
+		/[A-Za-z0-9)]["'”’]*\s*(?:[.?!…]|\.\.\.)+["'”’)]*$/.test(t) &&
+		(t.match(/[A-Za-z]+/g) ?? []).length >= 3
 	);
 }
 
