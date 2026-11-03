@@ -1,8 +1,6 @@
 <script lang="ts">
-	// One answered exam question with its feedback: in practice mode right after
-	// the answer, and in the report's closed-questions section. Multiple choice
-	// marks the picks and the right answer; matching replays the screen read-only;
-	// an open answer shows the model answer (its score comes in the report).
+	// One answered closed exam question in the report, with its score and feedback.
+	// Multiple choice marks the picks and the right answer; matching replays the screen read-only.
 	import AnswerMark from '$lib/lesson-screens/AnswerMark.svelte';
 	import Md from '$lib/components/Md.svelte';
 	import McqFeedback from '$lib/lesson-screens/McqFeedback.svelte';
@@ -11,7 +9,6 @@
 	import { textDir, textLang } from '$lib/lesson-screens/miniMarkdown';
 	import { mcqCorrect, type LessonScreen } from '$lib/lesson-screens/types';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import ModelAnswer from './ModelAnswer.svelte';
 
 	let {
 		screen,
@@ -22,10 +19,10 @@
 	}: {
 		screen: LessonScreen;
 		answer: unknown;
-		/** Report only: the question number and score line. */
-		label?: string;
-		earned?: number;
-		max?: number;
+		/** The question number and score line. */
+		label: string;
+		earned: number;
+		max: number;
 	} = $props();
 
 	const picks = $derived(
@@ -34,19 +31,17 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	{#if label !== undefined && earned !== undefined && max !== undefined}
-		<div class="flex items-baseline justify-between gap-3">
-			<span class="text-sm font-bold">{label}</span>
-			<span
-				class="font-bold tabular {earned === max
-					? 'text-brand-dark'
-					: earned === 0
-						? 'text-miss'
-						: 'text-ink'}"
-				dir="ltr">{Math.round(earned * 10) / 10}/{max}</span
-			>
-		</div>
-	{/if}
+	<div class="flex items-baseline justify-between gap-3">
+		<span class="text-sm font-bold">{label}</span>
+		<span
+			class="font-bold tabular {earned === max
+				? 'text-brand-dark'
+				: earned === 0
+					? 'text-miss'
+					: 'text-ink'}"
+			dir="ltr">{Math.round(earned * 10) / 10}/{max}</span
+		>
+	</div>
 
 	{#if screen.type === 'mcq'}
 		{@const right = mcqCorrect(screen)}
@@ -87,18 +82,5 @@
 				? (answer as (number | null)[])
 				: screen.definitions.map(() => null)}
 		/>
-	{:else if screen.type === 'writing-task'}
-		<div class="text-sm text-muted" dir="ltr"><Md block text={screen.prompt} /></div>
-		{#if typeof answer === 'string' && answer.trim()}
-			<div
-				class="rounded-2xl border border-line bg-canvas p-3 text-sm whitespace-pre-line"
-				dir="ltr"
-				lang="en"
-			>
-				{answer}
-			</div>
-		{/if}
-		<p class="text-xs font-semibold text-muted">{i18n.dict.quiz.gradedInReport}</p>
-		<ModelAnswer modelAnswer={screen.modelAnswer} explanation={screen.explanation} />
 	{/if}
 </div>

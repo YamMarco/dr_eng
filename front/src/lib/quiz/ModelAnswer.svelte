@@ -1,5 +1,5 @@
 <script lang="ts">
-	// An open exam answer's model answer and explanation (practice mode and the report).
+	// An open exam answer's model answer and explanation (in the report).
 	import Md from '$lib/components/Md.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 

@@ -517,13 +517,13 @@ export const writingTaskSchema = z
 			.string()
 			.optional()
 			.describe(
-				'Shown after the check (lessons) or the answer (exam: practice mode and the report), to compare with. Not scored.'
+				'Shown after the check (lessons) or the answer (exam: the report), to compare with. Not scored.'
 			),
 		explanation: z
 			.string()
 			.optional()
 			.describe(
-				'Exams: shown with the model answer in practice mode and the report - why it is right, the evidence, a tip. Hebrew.'
+				'Exams: shown with the model answer in the report - why it is right, the evidence, a tip. Hebrew.'
 			),
 		checklist: z
 			.array(z.string())

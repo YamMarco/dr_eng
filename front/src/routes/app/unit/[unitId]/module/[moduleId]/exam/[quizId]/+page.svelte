@@ -24,7 +24,6 @@
 		return node && localizeContent(node, i18n.language);
 	});
 	let running = $state(false);
-	let practice = $state(false);
 	let viewingSolution = $state(false);
 	let t = $derived(i18n.dict.quizzes);
 	// Re-read on return from the runner (running flips back to false), so a
@@ -65,8 +64,7 @@
 	});
 	let tips = $derived(data.mod.id === 'c' ? t.tipsC : t.tips);
 
-	function start(asPractice = false) {
-		practice = asPractice;
+	function start() {
 		running = true;
 		lastEngagement.record({ kind: 'exam', moduleId: data.mod.id, id: quiz.id });
 	}
@@ -75,7 +73,7 @@
 </script>
 
 {#if running && quizNode}
-	<QuizRunner quiz={quizNode} {practice} onExit={() => (running = false)} />
+	<QuizRunner quiz={quizNode} onExit={() => (running = false)} />
 {:else if viewingSolution && quizNode}
 	<QuizSolution quiz={quizNode} onBack={() => (viewingSolution = false)} />
 {:else}
@@ -132,10 +130,9 @@
 		>
 			{#if quizNode}
 				{#if !lockedUntil}
-					<Button onclick={() => start()}>
+					<Button onclick={start}>
 						{row?.inProgress ? t.resumeButton : taken ? t.retakeButton : i18n.dict.quiz.startButton}
 					</Button>
-					<Button variant="secondary" onclick={() => start(true)}>{t.practiceButton}</Button>
 				{/if}
 				{#if lastAttempt}
 					<Button
@@ -153,8 +150,6 @@
 			<p class="-mt-1 text-center text-sm leading-relaxed font-semibold text-muted">
 				{t.lockedNote(lockedWhen)}
 			</p>
-		{:else if quizNode}
-			<p class="-mt-1 text-center text-xs leading-relaxed text-muted">{t.practiceHint}</p>
 		{/if}
 	</main>
 {/if}

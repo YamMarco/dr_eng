@@ -102,8 +102,6 @@ export type ExamRef = {
 	attempt: number;
 	/** How many grading requests the whole attempt makes: a reading passage each + the essay. */
 	parts: number;
-	/** Practice: checked against the lock, never starts one. */
-	practice?: boolean;
 };
 
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */

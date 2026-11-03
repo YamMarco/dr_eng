@@ -1,7 +1,7 @@
 // The 24h retake lock, on the server. Each exam grading request names its attempt and how many
 // parts (requests) the attempt makes. A part graded successfully ticks the attempt; the last one
 // marks the exam done, and the lock runs from then. A new attempt within 24h of a done one is
-// refused (429), practice included. Practice never ticks. Staff are exempt.
+// refused (429). Staff are exempt.
 import { error } from '@sveltejs/kit';
 import { and, eq, sql } from 'drizzle-orm';
 import type { ExamRef } from '$lib/feedback/types';
@@ -24,7 +24,7 @@ export async function assertExamOpen(locals: App.Locals, exam: ExamRef): Promise
 
 /** Ticks one graded part; the attempt's last part marks the exam done (a retry keeps that time). */
 export async function recordExamPart(locals: App.Locals, exam: ExamRef): Promise<void> {
-	if (exempt(locals) || exam.practice) return;
+	if (exempt(locals)) return;
 	// In ON CONFLICT ... SET, the columns are the stored row's values.
 	const same = sql`${t.attempt} = ${exam.attempt}`;
 	const ticked = sql`case when ${same} then ${t.doneParts} + 1 else 1 end`;
