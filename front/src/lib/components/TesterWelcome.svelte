@@ -9,12 +9,12 @@
 	import { resolve } from '$app/paths';
 
 	// Tester greeting: what a test version means, where feedback goes, and that the
-	// WhatsApp group shows their number. Shown on each app load until "don't show again".
+	// WhatsApp group shows their number. Once per device ("don't show again" is pre-checked).
 	const SEEN_KEY = 'tester-welcome-seen';
 
 	let t = $derived(i18n.dict.testerWelcome);
 	let open = $state(!localStorage.getItem(SEEN_KEY));
-	let hide = $state(false);
+	let hide = $state(true);
 
 	const icons = [FlaskConical, MessageSquareText, Sparkles, Users];
 	const link = 'font-semibold text-brand-dark underline hover:no-underline';
