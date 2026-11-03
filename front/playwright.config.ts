@@ -17,8 +17,14 @@ export default defineConfig({
 		trace: 'retain-on-failure'
 	},
 	projects: [
-		{ name: 'phone', use: { ...devices['Pixel 7'] } },
-		{ name: 'desktop', use: { ...devices['Desktop Chrome'], colorScheme: 'dark' } }
+		{ name: 'phone', use: { ...devices['Pixel 7'] }, testIgnore: /content\.spec/ },
+		{
+			name: 'desktop',
+			use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
+			testIgnore: /(content|api)\.spec/
+		},
+		// The content crawler: slow (every lesson screen), phone only.
+		{ name: 'content', use: { ...devices['Pixel 7'] }, testMatch: /content\.spec/ }
 	],
 	webServer: {
 		command: `npm run build && npx vite preview --port ${PORT} --strictPort`,

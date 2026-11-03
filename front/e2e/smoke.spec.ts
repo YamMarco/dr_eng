@@ -16,7 +16,6 @@ const app = [
 		`/app/unit/4/module/${m}/exam`
 	]),
 	'/app/unit/4/module/e/words',
-	'/app/unit/4/module/cobe',
 	'/app/unit/5/module/f',
 	'/app/unit/5/module/g'
 ];
