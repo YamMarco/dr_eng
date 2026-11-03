@@ -36,19 +36,25 @@ Corrupt stored data, hand-typed URLs, hostile input, rushed and interrupted use,
 
 Held up: XSS (student text is escaped before markdown; `javascript:` links don't render; CSP), path traversal in the editor API (ids are regex-checked), code injection into content files (values emitted as escaped literals), coupon over-redemption (row lock), locked lessons via `?lesson=`, unknown units/modules/exams, `/api/grade`, `/api/speak` and `/api/chat-speak` input validation (400 on every malformed body).
 
-## Open
+## Your to-do (owner)
 
-- [ ] **Arabic copy of `home.hookWords`** still says "for review" (same issue as the Hebrew one).
-- [ ] **Brand teal contrast** (white on teal 3.3:1): owner's call to keep it; axe's color-contrast rule is off.
-- [ ] **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics). Scores live on the device anyway, so only the LLM spend matters, and the daily caps bound it. Server-side lookup by screen id would close it.
-- [ ] **Prompt injection in answers** ("ignore the rubric...") is untested: needs the real model. The prompts mark the answer as data.
+- [ ] **Check exam passages on a real phone**: printed lines now fit at ~12px (no wrapping from 390px wide). Too small? The alternative is wrapped lines.
+- [ ] **Decide the testing plan's open questions** (`testing-plan.md`): test Supabase project or local CLI (unblocks accounts-on tests), real-AI nightly smoke and its budget, persona runs on demand or weekly, e2e on every PR or only `main`.
+- [ ] **Look at the first CI run** on the PR (`.github/workflows/ci.yml`: unit, svelte-check, e2e); a red run uploads the Playwright report.
+- [ ] **Arabic `home.hookWords`** still says "for review": have the translator change it to "for today", like the Hebrew.
+- [ ] **When COBE comes back:** say so, and the parked items below get fixed and tested.
+
+## Where to continue (next session)
+
+1. **Phase 4, accounts on** (after the Supabase decision): sign up / confirm / sign in / reset, progress sync across two devices, delete account, coupon checkout, paywall, quota screens (429), 24h exam lock; plus the accounts-on API checks (401 without a token, no reading another user's rows).
+2. **Phase 6, persona runs**: a reusable driver (Claude + Playwright, one persona per run, report to `/kanban`). `playThrough` in `e2e/fixtures.ts` is the start.
+3. **Break-it, round 2**: real-AI prompt injection ("ignore the rubric..."), clock and date tampering (streak, exam timer), the mobile build (static bundle against the web API), performance on a low-end phone.
+4. **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics): look them up on the server by screen id. Low priority: scores live on the device; daily caps bound the spend.
+5. **Lint**: 9 errors were already there (`svelte/no-navigation-without-resolve`, lessons page and lesson screens); CI doesn't run lint yet.
+
+Not touched on purpose: the brand teal contrast (white on teal 3.3:1, owner's call; axe's color-contrast rule is off).
 
 ## COBE (parked, not tested)
 
 - [ ] **AI chat and COBE speaking fail on the built site.** The CSP's `connect-src 'self'` blocks `fetch(blob:...)` of the recording (`chatAi.ts`, `speakingAi.ts`, `Speak.svelte`): every turn shows "לא הצלחנו לשמוע את התשובה". Dev has no CSP. Fix: `blob:` in `connect-src` (`vite.config.ts`).
-
-## Not covered yet
-
-- Accounts on (phase 4) and the accounts-on API checks: waits for the test-Supabase decision.
-- COBE exam and chat (parked).
-- Persona runs as a scheduled job (phase 6): done by hand this round.
+- [ ] **No tests for COBE**: exam (fake mic + a long recording, `page.clock`), chat (`e2e` spec removed while parked), COBE lessons in the crawler (`UNITS` in `e2e/content.spec.ts`).
