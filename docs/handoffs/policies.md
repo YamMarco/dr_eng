@@ -13,14 +13,15 @@
 - Waitlist emails (`waitlist`).
 - Feedback reports are not stored: the report (text, page URL, device, an optional screenshot of the screen) is emailed to support@ through Resend and lands in the team's Gmail via ImprovMX: say so, screenshots can show the student's answers.
 
-**Sent to an AI model (Google Gemini, via Vercel AI Gateway):**
+**Sent to an AI model (Google Gemini via Vercel AI Gateway; fallbacks in `llmModels.ts`: OpenAI and Anthropic via the gateway, Gemini's own API direct; no user identifiers sent):**
 - Written answers and essays, for grading (`/api/grade`).
 - COBE recordings (12 kHz WAV, max 2 min) and AI-chat turns (`/api/speak`, `/api/chat-speak`). The app says "sent to AI only to answer, not saved" (`he.ts` cobe privacy line): confirm that matches Google's API data terms (no training on paid API data, retention period).
 - Photos of handwriting for OCR (`/api/ocr`).
+- COBE exam attempts keep the AI's transcript and feedback (synced `quiz:attempt:*`); the audio itself is never uploaded.
 
 **Stays on the device only:** recordings in lesson practice (IndexedDB, first + latest take), settings, theme, language.
 
-**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No analytics or ads yet: update the policy when added.
+**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), OpenAI and Anthropic (fallback models), browser push services (reminders), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No analytics or ads yet: update the policy when added.
 
 **User rights already built:** delete account (settings; `/api/account` DELETE removes the user, progress, AI usage and push rows; orders stay, for tax records: say so). Export: by email request (the policy says so).
 
@@ -28,6 +29,10 @@
 
 - [ ] DPAs: accept each provider's data-processing agreement (Supabase, Vercel, Resend, Cloudflare: dashboards / terms; ImprovMX: paid plans only, free plan stores no mail content, metadata 7 days)
 - [ ] Register the business before payments
+- [ ] Confirm the "Google keeps up to 14 days" line: public sources say paid Gemini API abuse logs last 55 days; also confirm the direct `GEMINI_API_KEY` is on a paid tier (free tier may train on data)
+- [ ] Turn on AI Gateway Zero Data Retention (team-wide) or drop the fallbacks the policy can't vouch for
+- [ ] Feedback emails: auto-delete after 6 months in the team Gmail (the policy promises it)
+- [ ] Waitlist: delete the list after the launch email (the policy promises it)
 
 ## Unfinished: update the pages before opening each service
 
