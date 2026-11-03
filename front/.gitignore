@@ -27,3 +27,7 @@ vite.config.ts.timestamp-*
 
 # Staff passwords written by scripts/create-admin.mjs
 admin-users.local.txt
+
+# Playwright output
+/test-results
+/playwright-report

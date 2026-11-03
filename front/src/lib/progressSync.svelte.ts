@@ -23,10 +23,14 @@ const BATCH = 100;
 // eslint-disable-next-line svelte/prefer-svelte-reactivity
 const reloaders = new Map<string, () => void>();
 
-/** A store re-reads its key when a sync changes it underneath. */
+/** A store re-reads its key when a sync (or another tab) changes it underneath. */
 export function onSyncedChange(key: string, reload: () => void) {
 	reloaders.set(key, reload);
 }
+
+// Another tab saved: reload that store, or this tab's next save would undo it.
+if (typeof window !== 'undefined')
+	window.addEventListener('storage', (e) => e.key && reloaders.get(e.key)?.());
 
 function readAt(): Record<string, number> {
 	try {

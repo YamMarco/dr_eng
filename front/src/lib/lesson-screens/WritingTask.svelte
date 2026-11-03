@@ -23,7 +23,7 @@
 	import { gradeLesson } from '$lib/feedback/grade';
 	import FeedbackView from '$lib/feedback/FeedbackView.svelte';
 	import MarkedText from '$lib/feedback/MarkedText.svelte';
-	import type { Feedback } from '$lib/feedback/types';
+	import { MAX_TEXT, type Feedback } from '$lib/feedback/types';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -207,10 +207,9 @@
 		}
 	}
 
-	// --- Quiz mode: a single free-text essay, no auto-check. Word count is
-	// just a live counter against minWords/maxWords, not a hard gate beyond
-	// minWords (report shows the raw text for manual review). ---
-	let essayOk = $derived(essayWords >= (screen.minWords ?? 1));
+	// --- Quiz mode: a single free-text essay, no auto-check. Word count is a live
+	// counter against minWords/maxWords, never a gate: a short or empty essay still
+	// submits (grading deducts for length; the timer submits it anyway). ---
 
 	// --- Lesson countdown (timeLimitMinutes): runs from mount until the check.
 	// Running out only shows a note - it is practice, not a gate. ---
@@ -231,12 +230,11 @@
 
 	$effect(() => {
 		if (checked) return;
-		disabled = grading || (mode === 'quiz' ? !essayOk : paragraph ? essayWords === 0 : !allFilled);
+		disabled = grading || (mode !== 'quiz' && (paragraph ? essayWords === 0 : !allFilled));
 	});
 
 	export function primaryAction() {
 		if (mode === 'quiz') {
-			if (!essayOk) return;
 			answerSlot!.set(essayText);
 			onAdvance();
 			return;
@@ -304,6 +302,7 @@
 			lang="en"
 			rows="7"
 			disabled={checked || grading}
+			maxlength={MAX_TEXT}
 			bind:value={essayText}
 			placeholder={i18n.dict.answerLang.placeholderEn}
 			aria-label={i18n.dict.answerLang.placeholderEn}
@@ -341,6 +340,7 @@
 					dir="ltr"
 					lang="en"
 					disabled={checked || grading}
+					maxlength={MAX_TEXT}
 					value={line}
 					oninput={(e) => (inputLines[i] = e.currentTarget.value)}
 					placeholder={i18n.dict.writingTask.linePlaceholder(i + 1)}

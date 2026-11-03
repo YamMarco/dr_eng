@@ -7,6 +7,7 @@
 
 import './legacyIds';
 import { onSyncedChange, saveSynced } from './progressSync.svelte';
+import { isRecord } from './storedJson';
 
 const STORAGE_KEY = 'module-location';
 
@@ -16,8 +17,11 @@ type LocationMap = Record<string, Entry>;
 function load(): LocationMap {
 	if (typeof localStorage === 'undefined') return {};
 	try {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		return raw ? JSON.parse(raw) : {};
+		const map: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}');
+		if (!isRecord(map)) return {};
+		return Object.fromEntries(
+			Object.entries(map).filter(([, e]) => isRecord(e) && typeof e.lessonId === 'string')
+		) as LocationMap;
 	} catch {
 		return {};
 	}

@@ -28,9 +28,10 @@
 			{#if sub}<p class="text-sm leading-snug text-white/85">{sub}</p>{/if}
 		</div>
 	</div>
+	<!-- Always white, so always the light theme's brand-dark (the dark theme's is a light teal). -->
 	<a
 		{href}
-		class="flex min-h-11 items-center justify-center rounded-full bg-white px-6 font-bold text-brand-dark shadow-sm transition active:scale-[0.98]"
+		class="flex min-h-11 items-center justify-center rounded-full bg-white px-6 font-bold text-[#23867b] shadow-sm transition active:scale-[0.98]"
 	>
 		{cta}
 	</a>

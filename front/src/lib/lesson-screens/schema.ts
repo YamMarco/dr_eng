@@ -690,6 +690,48 @@ export const lessonScreenSchema = z.discriminatedUnion('type', [
 	sentenceCompletionSchema
 ]);
 
+// What /api/content-edit accepts: a save is committed straight to the live site, and one
+// malformed node blanks the app for every student.
+const screens = z.array(lessonScreenSchema);
+
+export const lessonContentSchema = z.strictObject({
+	preface: screens,
+	rounds: z.array(z.strictObject({ screens, retryMissed: z.boolean().optional() })).min(1)
+});
+
+export const lessonNodeSchema = z.strictObject({
+	id: z.string().min(1),
+	section: z.string().min(1),
+	titleEn: z.string().optional(),
+	required: z.array(z.string()),
+	position: z.strictObject({ x: z.number(), y: z.number() }),
+	requiredRounds: z.number().int().positive().optional(),
+	big: z.boolean(),
+	image: z.string().optional(),
+	content: lessonContentSchema,
+	content5: lessonContentSchema.optional()
+});
+
+export const quizNodeSchema = z.strictObject({
+	id: z.string().min(1),
+	module: z.string().min(1),
+	uuid: z.string().min(1),
+	kind: z.enum(['assorted', 'ministry']),
+	year: z.number().int().optional(),
+	titleEn: z.string().optional(),
+	options: z.looseObject({}),
+	parts: z
+		.array(
+			z.strictObject({
+				id: z.string().min(1),
+				instructionsHe: z.string().optional(),
+				points: z.number().optional(),
+				screens
+			})
+		)
+		.min(1)
+});
+
 /** Every screen type with its schema, in the order above. */
 export const screenSchemas = Object.fromEntries(
 	lessonScreenSchema.options.map((s) => [s.shape.type.value, s])

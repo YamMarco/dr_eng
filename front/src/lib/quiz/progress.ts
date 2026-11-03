@@ -7,6 +7,7 @@ import { scorePercent, type QuizScore } from './scoring';
 import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
 import { saveSynced } from '$lib/progressSync.svelte';
+import { isRecord } from '$lib/storedJson';
 
 export interface QuizAttempt {
 	quizId: string;
@@ -60,13 +61,25 @@ export function saveAttempt(attempt: QuizAttempt) {
 
 export function getLastAttempt(quizId: string): QuizAttempt | null {
 	if (!hasStorage()) return null;
-	return safeParse<QuizAttempt>(localStorage.getItem(attemptKey(quizId)));
+	const attempt = safeParse<QuizAttempt>(localStorage.getItem(attemptKey(quizId)));
+	return isRecord(attempt) &&
+		isRecord(attempt.score) &&
+		isRecord(attempt.score.auto) &&
+		isRecord(attempt.answers) &&
+		typeof attempt.submittedAt === 'number'
+		? attempt
+		: null;
 }
 
 /** Every finished attempt, oldest first. */
 export function getResults(quizId: string): ExamResult[] {
 	if (!hasStorage()) return [];
-	return safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId))) ?? [];
+	const results = safeParse<ExamResult[]>(localStorage.getItem(resultsKey(quizId)));
+	return Array.isArray(results)
+		? results.filter(
+				(r) => isRecord(r) && typeof r.at === 'number' && typeof r.percent === 'number'
+			)
+		: [];
 }
 
 /**
@@ -92,7 +105,8 @@ export function saveInProgress(state: QuizInProgress) {
 
 export function getInProgress(quizId: string): QuizInProgress | null {
 	if (!hasStorage()) return null;
-	return safeParse<QuizInProgress>(localStorage.getItem(progressKey(quizId)));
+	const marker = safeParse<QuizInProgress>(localStorage.getItem(progressKey(quizId)));
+	return isRecord(marker) && typeof marker.startedAt === 'number' ? marker : null;
 }
 
 export function clearInProgress(quizId: string) {

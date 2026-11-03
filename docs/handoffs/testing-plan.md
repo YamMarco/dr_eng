@@ -4,7 +4,7 @@ Goal: catch broken flows before students do, with two kinds of runs:
 - **Scripted (regression):** deterministic Playwright journeys, run on every PR.
 - **Persona (human-like):** Claude drives a real browser as a student persona, explores, and reports bugs and friction. Run on demand or weekly.
 
-Now: 61 unit tests (`node --test`, logic only), no browser tests, no CI on PRs (`.github/workflows` has only the reminders cron).
+Now: unit tests (`npm test`), Playwright in `front/e2e` against the built site (`npm run e2e`: smoke + axe + focus walk, journeys, API; `npm run e2e:content`: the crawler), CI on PRs (`.github/workflows/ci.yml`: unit, svelte-check, e2e). Phases 1-3, 5 and the accounts-off part of 7 are in; findings in `test-findings.md`.
 
 ## Principles
 

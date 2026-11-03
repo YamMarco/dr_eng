@@ -48,6 +48,9 @@
 		hasNextLesson: boolean;
 		/** Leaving mid-exercise (or after a failed attempt) — never marks the round complete. */
 		onExit: () => void;
+		/** The finish screen showed with a passing score: the parent saves the round right away,
+		    so leaving from the finish screen (X, back, closing the app) keeps it. */
+		onPass?: () => void;
 		/** Finished with a passing score — parent marks the round complete and closes the runner. */
 		onFinish: () => void;
 		/** Finished with a passing score and there's a next lesson — marks complete and opens it. */
@@ -74,6 +77,7 @@
 		roundLabel,
 		hasNextLesson,
 		onExit,
+		onPass,
 		onFinish,
 		onFinishAndContinue,
 		onNextRound,
@@ -220,7 +224,14 @@
 		i18n.dict.lesson.feedbackRight[score.log.length % i18n.dict.lesson.feedbackRight.length]
 	);
 
+	// A double tap would check the answer and skip its feedback in one go: right after
+	// the feedback shows, the button waits a beat.
+	let verdictAt = 0;
+	$effect(() => {
+		if (score.verdict !== null) verdictAt = performance.now();
+	});
 	function primary() {
+		if (score.verdict !== null && performance.now() - verdictAt < 400) return;
 		score.verdict = null;
 		screenInstance?.primaryAction();
 	}
@@ -245,6 +256,10 @@
 			screenIndex += 1;
 		}
 	}
+
+	$effect(() => {
+		if (justFinished && passed) untrack(() => onPass?.());
+	});
 
 	function retry() {
 		direction = 1;
@@ -487,7 +502,7 @@
 	{#if debugStore.enabled && !justFinished}
 		<!-- Floating, absolutely positioned so it never affects the footer's
 		     layout — a dev-only shortcut, not part of the real lesson UI. -->
-		<div class="absolute inset-e-4 bottom-24 z-10 flex flex-col items-end gap-1.5">
+		<div class="absolute inset-e-4 bottom-40 z-10 flex flex-col items-end gap-1.5">
 			<button
 				type="button"
 				aria-label="כלי דיבוג"

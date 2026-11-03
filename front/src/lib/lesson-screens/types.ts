@@ -65,7 +65,8 @@ export function isScreenEmpty(screen: LessonScreen): boolean {
 	switch (screen.type) {
 		case 'preface':
 		case 'timed-reading':
-			return !screen.text.trim();
+			// Line attributes alone ({d:rtl}, {p:text}...) render nothing.
+			return !screen.text.replace(/\{(?:a|d|p|i):\w+\}/g, '').trim();
 		case 'opener':
 			return !screen.title.trim();
 		case 'steps':

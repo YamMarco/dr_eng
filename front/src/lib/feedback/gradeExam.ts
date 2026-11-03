@@ -195,7 +195,15 @@ export async function gradeExam(
 	ids?: Set<string>
 ): Promise<Record<string, ExamGrade>> {
 	// Every answer is checked (locally, no LLM) so `parts` counts the whole attempt, even on a retry.
-	const checked = await Promise.all(openAnswers(quiz, answers).map(check));
+	// The check fetches its dictionaries: offline it fails, and the answer is "not graded" (retry).
+	const checked = await Promise.all(
+		openAnswers(quiz, answers).map((a) =>
+			check(a).catch((): Checked => ({
+				a,
+				done: { kind: a.kind, status: 'failed', earned: 0, max: maxOf(a), text: a.text, marks: [] }
+			}))
+		)
+	);
 	const out: Record<string, ExamGrade> = {};
 	const byGroup = new Map<string, Ready[]>();
 	for (const c of checked) {

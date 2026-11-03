@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { trapFocus } from '$lib/focusTrap';
 	import { setContext, untrack } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { SvelteMap } from 'svelte/reactivity';
@@ -19,7 +20,7 @@
 	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
 	import { gradeExam } from '$lib/feedback/gradeExam';
 	import type { ExamGrade } from '$lib/feedback/types';
-	import { saveAttempt, saveInProgress } from './progress';
+	import { clearInProgress, saveAttempt, saveInProgress } from './progress';
 	import QuizReport from './QuizReport.svelte';
 	import QuizTimer from './QuizTimer.svelte';
 	import QuestionNavigator from './QuestionNavigator.svelte';
@@ -194,12 +195,15 @@
 	async function gradeOpen(ids?: Set<string>) {
 		if (!autoScore || autoScore.manual.items.length === 0) return;
 		grading = true;
-		const exam = { quizId: quiz.id, attempt: submittedAt };
-		const fresh = await gradeExam(quiz, $state.snapshot(answers), exam, ids);
-		grades = { ...grades, ...fresh };
-		score = applyGrades(quiz, autoScore, grades);
-		grading = false;
-		persist();
+		try {
+			const exam = { quizId: quiz.id, attempt: submittedAt };
+			const fresh = await gradeExam(quiz, $state.snapshot(answers), exam, ids);
+			grades = { ...grades, ...fresh };
+			score = applyGrades(quiz, autoScore, grades);
+			persist();
+		} finally {
+			grading = false; // never stuck on "checking..."
+		}
 	}
 
 	/** A COBE recording judged in the report: folded in like an LLM grade. */
@@ -267,8 +271,8 @@
 	});
 
 	// An exam can't be resumed: leaving it loses the answers. This marker only
-	// drives the "unfinished exam" badge until the next attempt is submitted
-	// (saveAttempt clears it).
+	// drives the "unfinished exam" badge (the tab was closed mid-exam) until the next
+	// attempt is submitted (saveAttempt clears it) or the exit is confirmed.
 	$effect(() => {
 		if (preview || submitted) return;
 		saveInProgress({ quizId: quiz.id, startedAt });
@@ -277,6 +281,19 @@
 	function requestExit() {
 		showExitPrompt = true;
 	}
+
+	function confirmExit() {
+		clearInProgress(quiz.id);
+		onExit();
+	}
+
+	// Back (the phone's back gesture too) or a link mid-exam asks first, like the exit
+	// button; closing the tab gets the browser's own "leave?" warning.
+	beforeNavigate((navigation) => {
+		if (preview || submitted) return;
+		navigation.cancel();
+		if (navigation.type !== 'leave') showExitPrompt = true;
+	});
 </script>
 
 {#snippet navigator()}
@@ -428,7 +445,7 @@
 			title={i18n.dict.quiz.exitPromptTitle}
 			description={i18n.dict.quiz.exitPromptDesc}
 		>
-			<Button onclick={onExit}>{i18n.dict.quiz.exitConfirm}</Button>
+			<Button onclick={confirmExit}>{i18n.dict.quiz.exitConfirm}</Button>
 			<Button variant="ghost" onclick={() => (showExitPrompt = false)}>
 				{i18n.dict.quiz.exitCancel}
 			</Button>

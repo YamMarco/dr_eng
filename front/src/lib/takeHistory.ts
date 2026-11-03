@@ -4,6 +4,7 @@
 // module page. The audio never leaves the device. Every read and write is
 // best-effort: no storage, no history.
 import { saveSynced } from './progressSync.svelte';
+import { isRecord } from './storedJson';
 
 export type SavedTake = { blob?: Blob; seconds: number; at: number };
 type Entry = { key: string; first: SavedTake; latest: SavedTake };
@@ -31,7 +32,11 @@ function openDb(): Promise<IDBDatabase> {
 
 function readStats(): Record<string, TakeStats> {
 	try {
-		return JSON.parse(localStorage.getItem(STATS_KEY) ?? '{}');
+		const stats: unknown = JSON.parse(localStorage.getItem(STATS_KEY) ?? '{}');
+		if (!isRecord(stats)) return {};
+		return Object.fromEntries(
+			Object.entries(stats).filter(([, row]) => isRecord(row) && typeof row.count === 'number')
+		) as Record<string, TakeStats>;
 	} catch {
 		return {};
 	}

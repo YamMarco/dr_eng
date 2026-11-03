@@ -342,6 +342,7 @@
 
 	function openNode(node: PathNode) {
 		openLabelId = null;
+		wasDoneBeforePass = null;
 		enterRunner();
 		activeId = node.lesson.id;
 		activeRoundIndex = nextRoundIndex(node);
@@ -354,6 +355,9 @@
 	}
 
 	function closeNode() {
+		// Left from the finish screen: the round is already saved, the path still celebrates.
+		if (activeId && wasDoneBeforePass !== null) celebrateIfNewlyDone(activeId, wasDoneBeforePass);
+		wasDoneBeforePass = null;
 		activeId = null;
 		exitRunner();
 	}
@@ -370,27 +374,39 @@
 		}, 900);
 	}
 
+	// The round is saved the moment its finish screen shows (passRound), so leaving from
+	// there keeps it; the finish buttons save again (a no-op then) and navigate.
+	// Whether the node was done before that save; null = not passed yet.
+	let wasDoneBeforePass: boolean | null = null;
+
+	function passRound() {
+		if (!activeId) return;
+		wasDoneBeforePass ??= isDone(activeId);
+		markRoundCompleted(activeId, activeRoundIndex);
+	}
+
+	function completeRound(lessonId: string) {
+		const wasDone = wasDoneBeforePass ?? isDone(lessonId);
+		markRoundCompleted(lessonId, activeRoundIndex);
+		celebrateIfNewlyDone(lessonId, wasDone);
+		wasDoneBeforePass = null;
+	}
+
 	function finishNode() {
-		if (activeId) {
-			const wasDone = isDone(activeId);
-			markRoundCompleted(activeId, activeRoundIndex);
-			celebrateIfNewlyDone(activeId, wasDone);
-		}
+		if (activeId) completeRound(activeId);
 		activeId = null;
 		exitRunner();
 	}
 
 	function nextRound() {
 		if (!activeId) return;
-		markRoundCompleted(activeId, activeRoundIndex);
+		completeRound(activeId);
 		activeRoundIndex += 1;
 	}
 
 	function finishNodeAndContinue() {
 		if (!activeNode) return;
-		const wasDone = isDone(activeNode.lesson.id);
-		markRoundCompleted(activeNode.lesson.id, activeRoundIndex);
-		celebrateIfNewlyDone(activeNode.lesson.id, wasDone);
+		completeRound(activeNode.lesson.id);
 		const next = nextNode(activeNode);
 		if (!next) {
 			activeId = null;
@@ -590,6 +606,10 @@
 								type="button"
 								disabled={!unlocked}
 								title={unlocked ? undefined : i18n.dict.lesson.lessonLocked}
+								aria-label={i18n.dict.lessons.nodeLabel(
+									i18n.title(node.lesson.id),
+									done ? 'done' : unlocked ? 'open' : 'locked'
+								)}
 								onclick={() => toggleLabel(node.lesson.id)}
 								class="flex shrink-0 items-center justify-center rounded-full font-extrabold transition-colors {size} {node
 									.lesson.id === justCompletedId
@@ -741,6 +761,7 @@
 				: undefined}
 			{hasNextLesson}
 			onExit={closeNode}
+			onPass={passRound}
 			onFinish={finishNode}
 			onFinishAndContinue={finishNodeAndContinue}
 			onNextRound={nextRound}

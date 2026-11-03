@@ -61,9 +61,14 @@
 		{:else}
 			<!-- dir=auto: an English exam title truncates at its own end, not its start;
 			     match-parent keeps it aligned with the page, beside the back button. -->
-			<h1 dir="auto" class="min-w-0 flex-1 truncate [text-align:match-parent] text-lg font-bold">
-				{title}
-			</h1>
+			{#if title}
+				<h1 dir="auto" class="min-w-0 flex-1 truncate [text-align:match-parent] text-lg font-bold">
+					{title}
+				</h1>
+			{:else}
+				<!-- No title: no empty heading for screen readers, just the space. -->
+				<div class="flex-1"></div>
+			{/if}
 		{/if}
 
 		{#if trailing}

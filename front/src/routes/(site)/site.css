@@ -210,6 +210,8 @@ p + p .m-anchor {
 	20%,
 	88% {
 		background: color-mix(in oklab, var(--color-accent), transparent 30%);
+		/* Dark ink on the gold, like a highlighter, in both themes (light text on it is unreadable). */
+		color: #1f2937;
 	}
 	96%,
 	100% {
