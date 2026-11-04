@@ -40,11 +40,11 @@
 	// pending promises, to preview each version; checkout always prices on the server's date.
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
-	// Everywhere but the real site (engup.co.il), where it takes ?debug.
+	// Everywhere but the real site (engup.co.il, or its vercel.app host), where it takes ?debug.
 	let debug = $derived(
 		mounted &&
 			(dev ||
-				!location.hostname.endsWith('engup.co.il') ||
+				!(location.hostname.endsWith('engup.co.il') || location.hostname === 'dr-eng-five.vercel.app') ||
 				new URLSearchParams(location.search).has('debug'))
 	);
 	let debugDate = $state('');
