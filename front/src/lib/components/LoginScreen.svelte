@@ -210,7 +210,10 @@
 </script>
 
 <main
-	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-3 sm:max-w-md sm:py-12"
+	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-3 sm:py-12 {mode ===
+	'signup'
+		? 'sm:max-w-xl'
+		: 'sm:max-w-md'}"
 >
 	{#if (homeLink && !MOBILE_BUILD) || mode === 'signup'}
 		<div class="-mx-2 mb-1 flex items-center justify-between gap-2">
@@ -291,7 +294,10 @@
 						</button>
 					</form>
 				{:else}
-					<form class="flex flex-col gap-3 sm:gap-4" onsubmit={submit}>
+					<form
+						class="grid gap-3 sm:gap-4 {mode === 'signup' ? 'sm:grid-cols-2' : ''}"
+						onsubmit={submit}
+					>
 						{#if needsEmail}
 							<label class="flex flex-col gap-1 text-sm font-semibold">
 								{t.emailLabel}
@@ -318,7 +324,7 @@
 							</label>
 						{/if}
 						{#if needsPassword}
-							<label class="flex flex-col gap-1 text-sm font-semibold">
+							<label class="flex flex-col gap-1 text-sm font-semibold sm:col-span-2">
 								<span>
 									{mode === 'recovery' ? t.newPasswordLabel : t.passwordLabel}
 									{#if mode !== 'signin'}
@@ -340,7 +346,7 @@
 							<!-- Required. Links open a new tab, so the half-filled form stays. -->
 							<!-- eslint-disable svelte/no-navigation-without-resolve -->
 							<label
-								class="flex items-start gap-2.5 text-xs leading-snug sm:text-sm sm:leading-relaxed"
+								class="flex items-start gap-2.5 text-xs leading-snug sm:col-span-2 sm:text-sm sm:leading-relaxed"
 							>
 								<input type="checkbox" required class="h-5 w-5 shrink-0 accent-brand" />
 								<span>
@@ -354,9 +360,15 @@
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
 						{#if needsCaptcha}
-							<Captcha bind:this={captcha} bind:status={captchaStatus} visible />
+							<div class="sm:col-span-2">
+								<Captcha bind:this={captcha} bind:status={captchaStatus} visible />
+							</div>
 						{/if}
-						<Button type="submit" {busy} disabled={needsCaptcha && captchaStatus === 'pending'}
+						<Button
+							type="submit"
+							class="sm:col-span-2"
+							{busy}
+							disabled={needsCaptcha && captchaStatus === 'pending'}
 							>{busy ? t.busy : submitLabel}</Button
 						>
 
