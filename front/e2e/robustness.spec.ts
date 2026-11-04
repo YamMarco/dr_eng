@@ -1,6 +1,6 @@
 // Break-it checks: malformed stored values (an old version, a bad sync, a hand edit) and
 // hand-typed URLs must never blank the app.
-import { test, expect } from './fixtures';
+import { test, expect, he } from './fixtures';
 
 const corrupt: Record<string, string[]> = {
 	'activity-days': ['{}', '123', 'null', '"x"'],
@@ -124,3 +124,24 @@ test.describe('two tabs', () => {
 		expect(Object.keys(progress.c).sort()).toEqual(['c-5cd02dfa', 'c-q-words-1']);
 	});
 });
+
+// A phone whose clock ran ahead, then got fixed: what it saved then is dated in the future.
+const takenAt = (label: string, at: number, locked: boolean) =>
+	test.describe(`exam taken ${label}`, () => {
+		test.use({
+			studentState: {
+				profile: { units: '4', exam: null },
+				'tester-welcome-seen': '1',
+				'quiz:results:c-exam-2': [{ at, percent: 70 }]
+			}
+		});
+		test(locked ? 'is locked for 24h' : "isn't locked", async ({ page }) => {
+			await page.goto('/app/unit/4/module/c/exam/c-exam-2');
+			await expect(page.getByRole('heading', { name: he.quizzes.scoreboardTitle })).toBeVisible();
+			await expect(page.getByRole('button', { name: he.quizzes.retakeButton })).toHaveCount(
+				locked ? 0 : 1
+			);
+		});
+	});
+takenAt('an hour ago', Date.now() - 60 * 60_000, true);
+takenAt("'next year' (clock ran ahead)", Date.now() + 365 * 24 * 60 * 60_000, false);

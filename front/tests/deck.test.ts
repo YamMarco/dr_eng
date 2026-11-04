@@ -65,6 +65,14 @@ test('dueWords: only due or overdue, most overdue first', () => {
 	assert.deepEqual(dueWords(progress, today), ['b', 'a']);
 });
 
+test('dueWords: a due day past the longest interval (clock ran ahead) is due now', () => {
+	const progress: DeckProgress = {
+		a: { box: 5, due: '2026-11-11', lapses: 0 },
+		b: { box: 5, due: '2027-10-12', lapses: 0 }
+	};
+	assert.deepEqual(dueWords(progress, today), ['b']);
+});
+
 test('lists: unique ids, every field filled, bold in every example', () => {
 	for (const [name, list] of Object.entries({ listA, listB, listC, listD })) {
 		assert.ok(list.length > 200, name);

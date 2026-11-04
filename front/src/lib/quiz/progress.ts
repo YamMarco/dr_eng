@@ -85,6 +85,8 @@ export function getResults(quizId: string): ExamResult[] {
 /**
  * When the exam opens again, or null when it's open now. Like the server's lock, an attempt
  * counts as done only once every open answer was graded (a failed grading leaves it open).
+ * An attempt dated in the future was taken while the device's clock ran ahead: open (the
+ * server's lock, on its own clock, still applies).
  */
 export function retakeLockedUntil(quizId: string, now = Date.now()): number | null {
 	const last = Math.max(0, ...getResults(quizId).map((r) => r.at));
@@ -95,7 +97,7 @@ export function retakeLockedUntil(quizId: string, now = Date.now()): number | nu
 	)
 		return null;
 	const until = last + RETAKE_WAIT_MS;
-	return until > now ? until : null;
+	return until > now && last <= now ? until : null;
 }
 
 export function saveInProgress(state: QuizInProgress) {

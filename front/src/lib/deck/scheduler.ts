@@ -34,10 +34,12 @@ export function review(state: WordState | undefined, correct: boolean, today: st
 	return { box, due: addDays(today, 1), lapses: state.lapses + 1 };
 }
 
-/** Ids of seen words due today or earlier, most overdue first. */
+/** Ids of seen words due today or earlier, most overdue first. A due day past the longest
+ *  interval was set while the device's clock ran ahead: due now, not lost until then. */
 export function dueWords(progress: DeckProgress, today: string): string[] {
+	const latest = addDays(today, INTERVAL_DAYS[MAX_BOX]);
 	return Object.entries(progress)
-		.filter(([, s]) => s.due <= today)
+		.filter(([, s]) => s.due <= today || s.due > latest)
 		.sort(([, a], [, b]) => a.due.localeCompare(b.due) || a.box - b.box)
 		.map(([id]) => id);
 }

@@ -4,13 +4,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import {
 	extractArrayLiteral,
 	parseArrayLiteral,
 	splitArrayHead
 } from '../src/lib/content-edit/fileEmit.ts';
 
-const lib = new URL('../src/lib/', import.meta.url).pathname;
+const lib = fileURLToPath(new URL('../src/lib/', import.meta.url));
 const dirs = (p: string) =>
 	readdirSync(lib + p, { withFileTypes: true })
 		.filter((d) => d.isDirectory())

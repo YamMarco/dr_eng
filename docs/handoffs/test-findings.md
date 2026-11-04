@@ -36,6 +36,16 @@ Corrupt stored data, hand-typed URLs, hostile input, rushed and interrupted use,
 
 Held up: XSS (student text is escaped before markdown; `javascript:` links don't render; CSP), path traversal in the editor API (ids are regex-checked), code injection into content files (values emitted as escaped literals), coupon over-redemption (row lock), locked lessons via `?lesson=`, unknown units/modules/exams, `/api/grade`, `/api/speak` and `/api/chat-speak` input validation (400 on every malformed body).
 
+## Fixed: break-it round 2 (clock and date)
+
+A phone whose clock ran ahead, then got fixed. Regression tests: `e2e/robustness.spec.ts` ("exam taken ..."), `tests/deck.test.ts`.
+
+- [x] **An exam taken while the clock ran ahead stayed locked until that date + 24h** (a year ahead = locked a year). An attempt dated in the future no longer locks on the device; the server's lock (its own clock) still applies with accounts on.
+- [x] **Word reviews scheduled while the clock ran ahead never came due.** A due day past the longest interval (30 days) counts as due now.
+
+Held up: pricing, coupon expiry, the 24h lock and quotas use the server's clock; a streak ignores future-dated days.
+Left as is: the exam timer runs on the wall clock, so changing the clock mid-exam shortens or stretches it (only cheats one's own practice; a monotonic timer would stop while the phone sleeps).
+
 ## Your to-do (owner)
 
 - [ ] **Check exam passages on a real phone**: printed lines now fit at ~12px (no wrapping from 390px wide). Too small? The alternative is wrapped lines.
@@ -48,9 +58,10 @@ Held up: XSS (student text is escaped before markdown; `javascript:` links don't
 
 1. **Phase 4, accounts on** (after the Supabase decision): sign up / confirm / sign in / reset, progress sync across two devices, delete account, coupon checkout, paywall, quota screens (429), 24h exam lock; plus the accounts-on API checks (401 without a token, no reading another user's rows).
 2. **Phase 6, persona runs**: a reusable driver (Claude + Playwright, one persona per run, report to `/kanban`). `playThrough` in `e2e/fixtures.ts` is the start.
-3. **Break-it, round 2**: real-AI prompt injection ("ignore the rubric..."), clock and date tampering (streak, exam timer), the mobile build (static bundle against the web API), performance on a low-end phone.
+3. **Break-it, round 2 (rest)**: real-AI prompt injection ("ignore the rubric..."), the mobile build (static bundle against the web API), performance on a low-end phone.
 4. **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics): look them up on the server by screen id. Low priority: scores live on the device; daily caps bound the spend.
 5. **Lint**: 9 errors were already there (`svelte/no-navigation-without-resolve`, lessons page and lesson screens); CI doesn't run lint yet.
+6. **Local build hangs with `.env.local`'s keys**: `npm run build` took 90 min (SvelteKit's prerender/write step), 1 min with `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL` blank. The e2e server builds with them blank (`playwright.config.ts`), like CI. Find what the prerender waits on.
 
 Not touched on purpose: the brand teal contrast (white on teal 3.3:1, owner's call; axe's color-contrast rule is off).
 

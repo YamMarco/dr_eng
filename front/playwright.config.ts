@@ -30,6 +30,8 @@ export default defineConfig({
 		command: `npm run build && npx vite preview --port ${PORT} --strictPort`,
 		port: PORT,
 		reuseExistingServer: !process.env.CI,
-		timeout: 180_000
+		timeout: 180_000,
+		// Accounts off like CI, even with .env.local's keys (with them, the build also hangs).
+		env: { VITE_SUPABASE_URL: '', VITE_SUPABASE_PUBLISHABLE_KEY: '', DATABASE_URL: '' }
 	}
 });
