@@ -1,6 +1,6 @@
 # Auth emails (Supabase)
 
-Sent by Supabase Auth through Resend SMTP (sender `team@engup.co.il`). Paste each file into Supabase → Authentication → Emails:
+Sent by Supabase Auth through Resend SMTP (sender `noreply@engup.co.il`). Paste each file into Supabase → Authentication → Emails:
 
 | File | Supabase template | Subject |
 |---|---|---|

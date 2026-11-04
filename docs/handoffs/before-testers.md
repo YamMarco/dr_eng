@@ -38,7 +38,7 @@ How: install an authenticator app (Google Authenticator, Microsoft Authenticator
 
 ## Supabase dashboard
 
-- [ ] Authentication > Emails > SMTP Settings: custom SMTP through Resend (`team@engup.co.il`). The built-in sender mails only the team, ~2 an hour: testers couldn't sign up
+- [ ] Authentication > Emails > SMTP Settings: custom SMTP through Resend (`noreply@engup.co.il`). The built-in sender mails only the team, ~2 an hour: testers couldn't sign up
 - [ ] Authentication > URL Configuration: Site URL `https://www.engup.co.il`, Redirect URLs `https://www.engup.co.il/**`
 - [ ] Authentication > Providers > Email: minimum password length 8
 
