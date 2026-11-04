@@ -1,5 +1,5 @@
 <script lang="ts">
-	// The logo's two "level up" chevrons climbing in a loop. Appears after a short
+	// The logo's two "level up" chevrons leapfrogging upwards in a loop. Appears after a short
 	// delay, so a wait that ends at once never flashes it. `screen` centers it in
 	// the whole viewport. Color is currentColor (brand by default).
 	type Props = {
@@ -33,14 +33,14 @@
 		: ''} {extra}"
 >
 	<svg viewBox="0 0 32 32" class="overflow-visible {box[size]}" aria-hidden="true">
-		{#each [0, 1, 2] as i (i)}
+		{#each [0, 1] as i (i)}
 			<path
 				class="chev"
-				style="animation-delay: {i * 0.4}s"
-				d="M7 20 16 11l9 9"
+				style="animation-delay: {i * -1.2}s"
+				d="M9.5 20.5 16 14l6.5 6.5"
 				fill="none"
 				stroke="currentColor"
-				stroke-width="4"
+				stroke-width="3.4"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			/>
@@ -57,11 +57,11 @@
 	.loader {
 		animation: appear 0.2s 0.25s backwards;
 	}
-	/* Each chevron rises from below, brightens at the logo's spot and fades out
-	   above: a staggered conveyor of "level ups". */
+	/* The logo's two chevrons (top at -4, bottom at +4). Each step the top one
+	   takes off and comes back from below into the bottom slot, while the bottom
+	   one climbs into the top slot. The second runs half a cycle behind. */
 	.chev {
-		opacity: 0;
-		animation: climb 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+		animation: climb 2.4s infinite;
 	}
 	@keyframes appear {
 		from {
@@ -69,42 +69,45 @@
 		}
 	}
 	@keyframes climb {
-		0% {
-			transform: translateY(9px);
+		0%,
+		29% {
+			transform: translateY(-4px);
+			opacity: 1;
+			animation-timing-function: cubic-bezier(0.5, 0, 1, 0.6);
+		}
+		40% {
+			transform: translateY(-15px);
 			opacity: 0;
 		}
-		35% {
-			opacity: 0.55;
+		40.01% {
+			transform: translateY(15px);
+			opacity: 0;
+			animation-timing-function: cubic-bezier(0, 0.4, 0.4, 1);
 		}
-		60% {
-			transform: translateY(-1px);
-			opacity: 1;
+		50%,
+		79% {
+			transform: translateY(4px);
+			opacity: 0.55;
+			animation-timing-function: cubic-bezier(0.5, 0, 0.3, 1);
 		}
 		100% {
-			transform: translateY(-10px);
-			opacity: 0;
+			transform: translateY(-4px);
+			opacity: 1;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.chev {
 			animation: pulse 1.2s ease-in-out infinite;
-		}
-		.chev:nth-child(1) {
-			transform: translateY(4px);
-		}
-		.chev:nth-child(2) {
 			transform: translateY(-4px);
 		}
-		.chev:nth-child(3) {
-			display: none;
+		.chev:nth-child(2) {
+			transform: translateY(4px);
+			opacity: 0.55;
+			animation: none;
 		}
 		@keyframes pulse {
-			0%,
-			100% {
-				opacity: 0.4;
-			}
 			50% {
-				opacity: 1;
+				opacity: 0.4;
 			}
 		}
 	}

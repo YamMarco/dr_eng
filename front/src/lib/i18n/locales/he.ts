@@ -543,8 +543,8 @@ export const he = {
 		resent: 'שלחנו שוב. בדקו גם בתיקיית הספאם.'
 	},
 	home: {
-		greeting: (part: 'morning' | 'noon' | 'evening' | 'night') =>
-			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}!`,
+		greeting: (part: 'morning' | 'noon' | 'evening' | 'night', name?: string) =>
+			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}${name ? `, ${name}` : ''}!`,
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
 		streak: (n: number) => (n === 1 ? 'יום אחד ברצף' : `${n} ימים ברצף`),

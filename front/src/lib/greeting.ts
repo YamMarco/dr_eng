@@ -1,5 +1,6 @@
-// "Good morning!" - the time of day only, never the student's name.
+// "Good morning, Noa!" - the time of day, plus the first name when given.
 import { i18n } from './i18n/index.svelte';
+import { profile } from './profile.svelte';
 
 export type DayPart = 'morning' | 'noon' | 'evening' | 'night';
 
@@ -12,5 +13,5 @@ export function dayPart(hour: number): DayPart {
 
 /** Reactive on the language: call from markup or $derived. */
 export function greeting(date = new Date()): string {
-	return i18n.dict.home.greeting(dayPart(date.getHours()));
+	return i18n.dict.home.greeting(dayPart(date.getHours()), profile.name);
 }
