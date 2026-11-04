@@ -67,10 +67,12 @@
 	});
 	// "Title – body" tips show the title bold.
 	let tips = $derived(
-		(data.mod.id === 'c' ? t.tipsC : data.mod.id === 'e' ? t.tipsE : t.tips).map((tip) => {
-			const [title, ...body] = tip.split(' – ');
-			return body.length ? { title, body: body.join(' – ') } : { title: '', body: tip };
-		})
+		((<Record<string, string[]>>{ c: t.tipsC, e: t.tipsE, g: t.tipsG })[data.mod.id] ?? t.tips).map(
+			(tip) => {
+				const [title, ...body] = tip.split(' – ');
+				return body.length ? { title, body: body.join(' – ') } : { title: '', body: tip };
+			}
+		)
 	);
 
 	function start() {
@@ -122,7 +124,11 @@
 				<h2 class="mt-3 shrink-0 text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
 				{#if !lockedUntil}
 					<p class="mt-1 shrink-0 text-sm leading-relaxed text-muted">
-						{taken ? t.prepAgainDesc : data.mod.id === 'e' ? t.prepDescE : t.prepDesc}
+						{taken
+							? t.prepAgainDesc
+							: data.mod.id === 'e' || data.mod.id === 'g'
+								? t.prepDescExam
+								: t.prepDesc}
 					</p>
 				{/if}
 				<h3 class="mt-4 shrink-0 text-sm font-bold lg:mt-3">{t.tipsTitle}</h3>
