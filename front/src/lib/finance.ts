@@ -27,3 +27,30 @@ export function monthly(expense: Expense): number {
 	if (expense.cycle === 'year') return expense.amount / 12;
 	return 0;
 }
+
+// Split 50/50 between the two partners.
+export type Partner = 'yam' | 'emil';
+
+export const partnerName: Record<Partner, string> = { yam: 'ים', emil: 'אמיל' };
+
+/** A real payment: a shared cost one of us paid, or a transfer between us. */
+export type LedgerEntry = {
+	/** ISO date. */
+	date?: string;
+	what: string;
+	amount: number;
+	currency: Currency;
+	paidBy: Partner;
+	/** A transfer to the other partner (not a shared cost). */
+	transfer?: boolean;
+};
+
+/** Per currency: how much Emil owes Yam (negative = Yam owes Emil). */
+export function emilOwesYam(ledger: LedgerEntry[], currency: Currency): number {
+	return ledger
+		.filter((e) => e.currency === currency)
+		.reduce((sum, e) => {
+			const credit = e.transfer ? e.amount : e.amount / 2;
+			return sum + (e.paidBy === 'yam' ? credit : -credit);
+		}, 0);
+}

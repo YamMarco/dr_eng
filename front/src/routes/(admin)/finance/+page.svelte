@@ -3,11 +3,20 @@
 	import { LoaderCircle } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
-	import { cycleLabel, monthly, type Currency, type Expense } from '$lib/finance';
+	import {
+		cycleLabel,
+		emilOwesYam,
+		monthly,
+		partnerName,
+		type Currency,
+		type Expense,
+		type LedgerEntry
+	} from '$lib/finance';
 
 	// Staff list of our running costs, from $lib/server/finance (/api/finance).
 
 	let expenses = $state<Expense[]>([]);
+	let ledger = $state<LedgerEntry[]>([]);
 	let loading = $state(true);
 	let failed = $state(false);
 
@@ -27,6 +36,13 @@
 			.filter((t) => t.monthly || t.once)
 	);
 
+	/** Per currency with payments: who owes whom. */
+	let balances = $derived(
+		currencies
+			.filter((currency) => ledger.some((e) => e.currency === currency))
+			.map((currency) => ({ currency, owed: emilOwesYam(ledger, currency) }))
+	);
+
 	function money(amount: number, currency: Currency) {
 		return new Intl.NumberFormat('he-IL', {
 			style: 'currency',
@@ -37,7 +53,7 @@
 
 	onMount(async () => {
 		const res = await apiFetch('/api/finance').catch(() => null);
-		if (res?.ok) expenses = await res.json();
+		if (res?.ok) ({ expenses, ledger } = await res.json());
 		else failed = true;
 		loading = false;
 	});
@@ -105,5 +121,53 @@
 				</li>
 			{/each}
 		</ul>
+
+		<h2 class="mt-10 mb-3 text-lg font-bold">חלוקה 50/50</h2>
+		<section class="mb-4 grid gap-3 sm:grid-cols-2">
+			{#each balances as balance (balance.currency)}
+				<div class="rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
+					<p class="text-sm font-bold text-muted">יתרה</p>
+					<p class="mt-1 text-xl font-bold">
+						{#if Math.abs(balance.owed) < 0.01}
+							מאוזן
+						{:else}
+							{partnerName[balance.owed > 0 ? 'emil' : 'yam']} חייב ל{partnerName[
+								balance.owed > 0 ? 'yam' : 'emil'
+							]}
+							<span class="tabular-nums">{money(Math.abs(balance.owed), balance.currency)}</span>
+						{/if}
+					</p>
+				</div>
+			{:else}
+				<p class="text-muted">עדיין אין תשלומים.</p>
+			{/each}
+		</section>
+
+		{#if ledger.length}
+			<ul
+				class="flex flex-col divide-y divide-line/70 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
+			>
+				{#each ledger as entry, i (i)}
+					<li class="flex items-start justify-between gap-4 px-5 py-4">
+						<span class="min-w-0">
+							<span class="block font-semibold">{entry.what}</span>
+							<span class="block text-sm text-muted">
+								{#if entry.transfer}
+									העברה מ{partnerName[entry.paidBy]} ל{partnerName[
+										entry.paidBy === 'yam' ? 'emil' : 'yam'
+									]}
+								{:else}
+									שילם: {partnerName[entry.paidBy]}
+								{/if}{#if entry.date}
+									· {entry.date}{/if}
+							</span>
+						</span>
+						<span class="shrink-0 font-semibold tabular-nums">
+							{money(entry.amount, entry.currency)}
+						</span>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 	{/if}
 </main>
