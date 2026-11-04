@@ -212,20 +212,16 @@
 <main
 	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-3 sm:max-w-md sm:py-12"
 >
-	{#if (homeLink && !MOBILE_BUILD) || mode === 'signin' || mode === 'signup'}
+	{#if (homeLink && !MOBILE_BUILD) || mode === 'signup'}
 		<div class="-mx-2 mb-1 flex items-center justify-between gap-2">
 			{#if homeLink && !MOBILE_BUILD}
 				<a href={resolve('/')} class="{linkBtn} flex items-center">{t.backToSite}</a>
 			{:else}
 				<span></span>
 			{/if}
-			{#if mode === 'signin' || mode === 'signup'}
-				<button
-					type="button"
-					class={linkBtn}
-					onclick={() => go(mode === 'signin' ? 'signup' : 'signin')}
-				>
-					{mode === 'signin' ? t.toSignUp : t.toSignIn}
+			{#if mode === 'signup'}
+				<button type="button" class={linkBtn} onclick={() => go('signin')}>
+					{t.backToSignIn}
 				</button>
 			{/if}
 		</div>
@@ -365,9 +361,14 @@
 						>
 
 						{#if mode === 'signin'}
-							<button type="button" class={linkBtn} onclick={() => go('forgot')}>
-								{t.forgot}
-							</button>
+							<div class="flex flex-wrap justify-between gap-x-2">
+								<button type="button" class={linkBtn} onclick={() => go('signup')}>
+									{t.toSignUp}
+								</button>
+								<button type="button" class={linkBtn} onclick={() => go('forgot')}>
+									{t.forgot}
+								</button>
+							</div>
 						{:else if mode === 'forgot'}
 							<button type="button" class={linkBtn} onclick={() => go('signin')}>
 								{t.backToSignIn}
