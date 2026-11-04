@@ -357,6 +357,10 @@
 								<button type="button" class={linkBtn} onclick={() => go('forgot')}>
 									{t.forgot}
 								</button>
+							{:else if mode === 'signup'}
+								<button type="button" class={linkBtn} onclick={() => go('signin')}>
+									{t.toSignIn}
+								</button>
 							{:else if mode === 'forgot'}
 								<button type="button" class={linkBtn} onclick={() => go('signin')}>
 									{t.backToSignIn}
