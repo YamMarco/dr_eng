@@ -33,6 +33,11 @@ export const unitGroups: UnitGroup[] = [
 	{ id: '5', units: 5, moduleIds: ['e', 'f', 'g', 'cobe'] }
 ];
 
+/** "מודול C"; COBE is a name, not a lettered module. */
+export function moduleName(mod: CurriculumModule, prefix: string): string {
+	return mod.id === 'cobe' ? mod.letter : `${prefix} ${mod.letter}`;
+}
+
 export function getUnitGroup(id: string): UnitGroup | undefined {
 	return unitGroups.find((group) => group.id === id);
 }

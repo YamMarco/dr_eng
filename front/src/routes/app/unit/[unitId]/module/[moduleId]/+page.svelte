@@ -19,6 +19,7 @@
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import type { Skill } from '$lib/content';
+	import { moduleName } from '$lib/curriculum';
 	import { moduleDeckToday } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { examStats } from '$lib/quiz/stats';
@@ -105,7 +106,7 @@
 	}
 </script>
 
-<AppBar title="{i18n.dict.unit.modulePrefix} {mod.letter}" back="/app" />
+<AppBar title={moduleName(mod, i18n.dict.unit.modulePrefix)} back="/app" />
 
 <main class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6">
 	{#if hero}
@@ -181,7 +182,9 @@
 						title={t.skills[row.skill]}
 						sub={skillSub(row.skill, row.kind)}
 						progress={total ? done / total : 0}
-						href={row.kind === 'engine' ? `${base}/words` : `${base}/lessons?section=${row.section}`}
+						href={row.kind === 'engine'
+							? `${base}/words`
+							: `${base}/lessons?section=${row.section}`}
 					>
 						{#snippet trailing()}
 							<span class="shrink-0 text-end text-sm font-bold tabular"

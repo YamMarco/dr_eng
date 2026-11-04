@@ -3,7 +3,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { MediaQuery } from 'svelte/reactivity';
 	import { BookOpen, ChevronLeft, ClipboardCheck, Languages, Play } from '@lucide/svelte';
-	import { modules } from '$lib/curriculum';
+	import { modules, moduleName } from '$lib/curriculum';
 	import { moduleDeckToday } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { continueHref, lessonSubtitle, type ContinueItem } from './data';
@@ -14,7 +14,7 @@
 	let { item, groupId }: Props = $props();
 
 	let t = $derived(i18n.dict.home);
-	let moduleLabel = $derived(`${i18n.dict.unit.modulePrefix} ${modules[item.moduleId].letter}`);
+	let moduleLabel = $derived(moduleName(modules[item.moduleId], i18n.dict.unit.modulePrefix));
 	const phone = new MediaQuery('pointer: coarse');
 
 	let view = $derived.by(() => {
