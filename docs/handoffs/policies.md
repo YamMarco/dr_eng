@@ -56,7 +56,7 @@ Listed as not accessible: COBE speaking (inherent to the exam; alternative on re
 - Texts are final without a lawyer.
 - Accessibility contact: role + support@ email only; no name, phone or postal address.
 - No privacy officer (DPO).
-- Refund: by law only: within 14 days minus fee (5% or ₪100, the lower); after 14 days none; no full-refund guarantee for now. Open risk: 3/6-month and school-year plans might count as an ongoing transaction (Consumer Protection Law 13D) requiring prorated refunds.
+- Refund (`$lib/refund.ts`, terms "ביטול והחזר כספי"): within 14 days everything minus the fee (5% of the price paid or ₪100, the lower) and teacher lessons held; after 14 days, 3/6-month and school-year plans get the months not started yet (price paid per month) minus the fee; a started month and a monthly plan get nothing. Prorating covers the ongoing-transaction reading of the law (13ג/13ד). No discount clawback.
 - Liability capped at 12 months' payments; courts: Haifa district.
 - Feedback emails: no fixed retention period (kept while needed for support, deleted on request).
 - AI: Google only; no other AI provider without updating the policy first.

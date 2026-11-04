@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793796262.6689022,
-    "ast_hash": "3beaae34076fceaacd12d83b5ea734ab",
+    "mtime": 1793799820.729705,
+    "ast_hash": "f623827407ca9e0f0ddfee4185986463",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793793137.0645666,
-    "ast_hash": "c2c4b9cf3d26a387360681414285a5a9",
+    "mtime": 1793799837.8153288,
+    "ast_hash": "51ab3f9f2a998bd0809485009e4197e1",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1655,8 +1655,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/plans.ts": {
-    "mtime": 1793637310.0773573,
-    "ast_hash": "9a89a0afe7ff0428af9e2e8397125044",
+    "mtime": 1793799780.9913044,
+    "ast_hash": "59fb01ed0e62ebbd9df632b701d6f731",
     "semantic_hash": ""
   },
   "front/src/lib/server/billing.ts": {
@@ -2400,8 +2400,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793796471.6782718,
-    "ast_hash": "bff739b9c4100fd2c811d592ad3fd888",
+    "mtime": 1793799837.8162935,
+    "ast_hash": "c020043d5c44327370f3db3bb105267b",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2627,6 +2627,16 @@
   "docs/handoffs/llm-prompts-draft.md": {
     "mtime": 1793387056.5578258,
     "ast_hash": "f98875bbb1dfdf2d74744779ed247502",
+    "semantic_hash": ""
+  },
+  "front/src/lib/refund.ts": {
+    "mtime": 1793799806.7625334,
+    "ast_hash": "ad9da84cdaba478e06a8d3ca0fc8b56e",
+    "semantic_hash": ""
+  },
+  "front/tests/refund.test.ts": {
+    "mtime": 1793799806.7635367,
+    "ast_hash": "7292ea51848d720f448adde821fe97b3",
     "semantic_hash": ""
   }
 }

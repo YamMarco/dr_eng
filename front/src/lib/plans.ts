@@ -113,7 +113,7 @@ export type Plan = {
 const COBE_SUFFIX = '-cobe';
 
 /** Year, month (0-11) and day in Israel. */
-function israelDate(at: Date) {
+export function israelDate(at: Date) {
 	const [y, m, d] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' })
 		.format(at)
 		.split('-')
