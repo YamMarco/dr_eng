@@ -6,7 +6,7 @@
 	import { activity, WEEKLY_GOAL } from '$lib/activity.svelte';
 	import StreakFlame from './StreakFlame.svelte';
 
-	// Global status: days to the exam and the weekly goal. On phone it sits in
+	// Global status: days to the exam and the practice streak. On phone it sits in
 	// home's header, on desktop in the top bar.
 	let { class: className = '' }: { class?: string } = $props();
 
@@ -27,10 +27,10 @@
 	<a
 		href={resolve('/app/streak')}
 		class="{chip} transition hover:bg-brand-soft active:scale-95"
-		title={t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}
+		title={t.streak(activity.streak)}
 	>
 		<StreakFlame days={activity.daysThisWeek} goal={WEEKLY_GOAL} />
-		<span class="sr-only">{t.weekly(activity.daysThisWeek, WEEKLY_GOAL)}</span>
-		<span aria-hidden="true" dir="ltr">{activity.daysThisWeek}/{WEEKLY_GOAL}</span>
+		<span class="sr-only">{t.streak(activity.streak)}</span>
+		<span aria-hidden="true">{activity.streak}</span>
 	</a>
 </div>

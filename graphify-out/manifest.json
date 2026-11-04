@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/ar.ts": {
-    "mtime": 1793731835.4315352,
-    "ast_hash": "3c6be26f940ab743e9cbdad44bc4b928",
+    "mtime": 1793805910.8422287,
+    "ast_hash": "9fa138bade7835104eae459b8ef7595f",
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793805686.896364,
-    "ast_hash": "a99b7dec021c37891bd0836ff80ee0f6",
+    "mtime": 1793805871.4697852,
+    "ast_hash": "cfacf9132ebb27f05b5162c04290902c",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1640,8 +1640,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/dashboard/StatusChips.svelte": {
-    "mtime": 1792221939.8516521,
-    "ast_hash": "48c7f33c9e7513657645a075e9b07608",
+    "mtime": 1793805871.3805625,
+    "ast_hash": "c744853e6463b55f6c089c3afddb2834",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/ReadingPaper.svelte": {

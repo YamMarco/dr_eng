@@ -547,7 +547,7 @@ export const he = {
 			`${{ morning: 'בוקר טוב', noon: 'צהריים טובים', evening: 'ערב טוב', night: 'לילה טוב' }[part]}!`,
 		daysToExam: (n: number) => `${n} ימים לבגרות`,
 		daysShort: (n: number) => `${n} ימים`,
-		weekly: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,
+		streak: (n: number) => (n === 1 ? 'יום אחד ברצף' : `${n} ימים ברצף`),
 		skills: {
 			vocab: 'אוצר מילים',
 			reading: 'הבנת הנקרא',

@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 510 files · ~474,229 words
+- 510 files · ~474,216 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ac109332`
+- Built from commit: `0fdc34c3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -52,9 +52,9 @@
 - data.ts
 - gradeExam.ts
 - plans.ts
-- [quizId]/+page.svelte
-- MarkAll.svelte
 - feedback.test.ts
+- ReviewNotesStore
+- saveSynced
 - LessonScreen
 - profile.svelte.ts
 - index.svelte.ts
@@ -77,7 +77,7 @@
 - speech.ts
 - progress.ts
 - settings/+page.svelte
-- saveSynced
+- cron/reminders/+server.ts
 - checkAuth
 - progressMerge.ts
 - snippet.md
@@ -86,7 +86,7 @@
 - motion.ts
 - server/supabase.ts
 - content-edit — the `/edit` and `/edit-exam` authoring workspaces
-- ReviewNotesStore
+- [quizId]/+page.svelte
 - create-coupon.mjs
 - measure-overflow.mjs
 - auth.svelte.ts
@@ -104,7 +104,7 @@
 - devDependencies
 - Handoff: About page, after launch
 - await-expressions.md
-- cron/reminders/+server.ts
+- MarkAll.svelte
 - miniMarkdown.ts
 - Md.svelte
 - Handoff: `/mcp` endpoint (removed)
@@ -236,8 +236,8 @@ Cohesion: 0.08
 Nodes (5): clone(), EditModel, screenList(), swapLevels(), versions()
 
 ### Community 5 - "llmGuard.ts"
-Cohesion: 0.22
-Nodes (15): cobeVisible(), israelToday, llmConfigured(), burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday() (+7 more)
+Cohesion: 0.24
+Nodes (14): cobeVisible(), llmConfigured(), burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday(), guardLlm() (+6 more)
 
 ### Community 6 - "Checklist"
 Cohesion: 0.10
@@ -252,8 +252,8 @@ Cohesion: 0.14
 Nodes (13): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, moduleResolution, resolveJsonModule, rewriteRelativeImportExtensions (+5 more)
 
 ### Community 10 - "db/schema.ts"
-Cohesion: 0.24
-Nodes (9): db, coupons, examAttempts, llmUsage, orders, progress, pushSubscriptions, waitlist (+1 more)
+Cohesion: 0.22
+Nodes (10): db, coupons, examAttempts, israelToday, llmUsage, orders, progress, pushSubscriptions (+2 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -335,17 +335,17 @@ Nodes (21): isLimit(), writingRubricId, applyLength(), mechanicsCount(), check()
 Cohesion: 0.08
 Nodes (22): APP, charm(), Cycle, CYCLE_MONTHS, CYCLE_OFF, CYCLES, FEATURED_OFFER, GROUP_ZOOM (+14 more)
 
-### Community 40 - "[quizId]/+page.svelte"
-Cohesion: 0.18
-Nodes (6): lockedUntil, lockedWhen, row, rules, taken, tips
-
-### Community 41 - "MarkAll.svelte"
-Cohesion: 0.27
-Nodes (5): cat(), MARK_ALL_DEFAULT, MARK_ALL_PALETTE, markAllSwatch, MarkAllSegment
-
-### Community 42 - "feedback.test.ts"
+### Community 40 - "feedback.test.ts"
 Cohesion: 0.18
 Nodes (14): gradeLesson(), applyFixes(), Corrected, Fix, FIX_TAGS, locateMarks(), mergeMarks(), toOriginal() (+6 more)
+
+### Community 41 - "ReviewNotesStore"
+Cohesion: 0.25
+Nodes (4): BLANK, ReviewNote, reviewNotes, ReviewNotesStore
+
+### Community 42 - "saveSynced"
+Cohesion: 0.21
+Nodes (11): delta, firstSeconds, newlyReached, saveSynced(), Entry, openDb(), readStats(), recordTake() (+3 more)
 
 ### Community 43 - "LessonScreen"
 Cohesion: 0.10
@@ -431,9 +431,9 @@ Nodes (20): ExamGrade, attemptKey(), clearInProgress(), ExamResult, getInProgres
 Cohesion: 0.12
 Nodes (8): install, InstallPromptEvent, InstallStore, Platform, MOBILE_BUILD, reminders, ReminderStatus, prerender
 
-### Community 65 - "saveSynced"
-Cohesion: 0.21
-Nodes (11): delta, firstSeconds, newlyReached, saveSynced(), Entry, openDb(), readStats(), recordTake() (+3 more)
+### Community 65 - "cron/reminders/+server.ts"
+Cohesion: 0.27
+Nodes (10): isPushEndpoint(), PUSH_HOSTS, pushEnabled, sendPush(), Subscription, authorized(), GET(), israelDay() (+2 more)
 
 ### Community 66 - "checkAuth"
 Cohesion: 0.24
@@ -463,9 +463,9 @@ Nodes (12): app(), APP_ORIGINS, cors(), handle, PUBLIC_APIS, accountsEnabled, ad
 Cohesion: 0.22
 Nodes (8): content-edit — the `/edit` and `/edit-exam` authoring workspaces, Detach, Exam editor — `ExamEditWorkspace.svelte` / `ExamEditorView.svelte`, Graph — `GraphEditor.svelte`, Layout, Lesson editor — `LessonEditorView.svelte` (PowerPoint-style), Local dev vs. production, Model & save
 
-### Community 74 - "ReviewNotesStore"
-Cohesion: 0.25
-Nodes (4): BLANK, ReviewNote, reviewNotes, ReviewNotesStore
+### Community 74 - "[quizId]/+page.svelte"
+Cohesion: 0.18
+Nodes (6): lockedUntil, lockedWhen, row, rules, taken, tips
 
 ### Community 75 - "create-coupon.mjs"
 Cohesion: 0.50
@@ -476,8 +476,8 @@ Cohesion: 0.08
 Nodes (19): emails, access, CheckoutError, fetchQuote(), placeOrder(), post(), Quote, COBE_OPEN (+11 more)
 
 ### Community 78 - "server/kanban.ts"
-Cohesion: 0.29
-Nodes (11): TITLE_MAX, kanbanTasks, kanbanDb(), tags, taskColumns, taskFields, DELETE(), PATCH() (+3 more)
+Cohesion: 0.27
+Nodes (13): TITLE_MAX, kanbanTasks, kanbanDb(), tags, taskColumns, taskFields, jsonBody(), DELETE() (+5 more)
 
 ### Community 82 - "localize.svelte.ts"
 Cohesion: 0.22
@@ -515,9 +515,9 @@ Nodes (4): Feedback link, Handoff: About page, after launch, Plans link, Teacher
 Cohesion: 0.22
 Nodes (8): Breaking changes, Caveats, Concurrency, Error handling, Forking, Indicating loading states, Server-side rendering, Synchronized updates
 
-### Community 92 - "cron/reminders/+server.ts"
+### Community 92 - "MarkAll.svelte"
 Cohesion: 0.27
-Nodes (10): isPushEndpoint(), PUSH_HOSTS, pushEnabled, sendPush(), Subscription, authorized(), GET(), israelDay() (+2 more)
+Nodes (5): cat(), MARK_ALL_DEFAULT, MARK_ALL_PALETTE, markAllSwatch, MarkAllSegment
 
 ### Community 93 - "miniMarkdown.ts"
 Cohesion: 0.07
@@ -588,8 +588,8 @@ Cohesion: 0.28
 Nodes (7): Item, localItem(), ProgressSync, readAt(), reloaders, syncedKeys(), writeLocal()
 
 ### Community 111 - "api/reminders/+server.ts"
-Cohesion: 0.29
-Nodes (9): jsonBody(), POST(), DELETE(), endpoint, key, POST(), ready(), subscribeBody (+1 more)
+Cohesion: 0.32
+Nodes (7): DELETE(), endpoint, key, POST(), ready(), subscribeBody, unsubscribeBody
 
 ### Community 112 - "content-i18n.mjs"
 Cohesion: 0.14

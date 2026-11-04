@@ -30,7 +30,6 @@ export const ar: DictionaryOverride = {
 			`${part === 'morning' ? 'صباح الخير' : 'مساء الخير'}!`,
 		daysToExam: (n: number) => `${n} يومًا حتى البجروت`,
 		daysShort: (n: number) => `${n} يومًا`,
-		weekly: (days: number, goal: number) => `${days} من ${goal} أيام تدريب هذا الأسبوع`,
 		skills: {
 			vocab: 'المفردات',
 			reading: 'فهم المقروء',
