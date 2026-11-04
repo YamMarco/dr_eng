@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/Button.svelte": {
-    "mtime": 1793367277.3060174,
-    "ast_hash": "4d92cb34882453cafcf2010416efe058",
+    "mtime": 1793806318.6624808,
+    "ast_hash": "fc42079d6007654a906fbbafa7b4a61e",
     "semantic_hash": ""
   },
   "front/src/lib/components/DebugTooltip.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793799837.8153288,
-    "ast_hash": "51ab3f9f2a998bd0809485009e4197e1",
+    "mtime": 1793806409.6348512,
+    "ast_hash": "0e000c8c1989d09f507712ec30349362",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1625,8 +1625,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/CodeField.svelte": {
-    "mtime": 1793367286.7347627,
-    "ast_hash": "1a74d30a2933d8ab26bb539dd600e3dc",
+    "mtime": 1793806318.7696826,
+    "ast_hash": "88624a665169214b70e63ec1685bc255",
     "semantic_hash": ""
   },
   "front/src/lib/components/Paywall.svelte": {
@@ -2375,8 +2375,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/Loader.svelte": {
-    "mtime": 1793367266.6595955,
-    "ast_hash": "eb21832d2660c5f8fee17fa5b663bfd1",
+    "mtime": 1793806318.5589797,
+    "ast_hash": "9e58ffb6e271be99beb9a2639e6b32e5",
     "semantic_hash": ""
   },
   "docs/material.md": {
@@ -2637,6 +2637,11 @@
   "front/tests/refund.test.ts": {
     "mtime": 1793799806.7635367,
     "ast_hash": "7292ea51848d720f448adde821fe97b3",
+    "semantic_hash": ""
+  },
+  "front/src/routes/(admin)/loader-lab/+page.svelte": {
+    "mtime": 1793806331.8848755,
+    "ast_hash": "166651d92e1e07289b0599ac2577b91a",
     "semantic_hash": ""
   }
 }

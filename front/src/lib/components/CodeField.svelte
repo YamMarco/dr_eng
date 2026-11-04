@@ -49,7 +49,7 @@
 			disabled={busy || !value.trim()}
 			class="inline-flex min-h-[52px] shrink-0 items-center gap-2 rounded-2xl border-2 border-brand px-5 font-semibold text-brand transition duration-100 hover:bg-brand-soft active:scale-[0.98] disabled:opacity-50"
 		>
-			{#if busy}<Loader size="sm" class="[&_.dot]:bg-current" />{/if}{action}
+			{#if busy}<Loader size="sm" inherit />{/if}{action}
 		</button>
 	</div>
 	{#if error}

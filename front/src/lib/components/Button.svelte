@@ -65,6 +65,6 @@
 		aria-busy={busy}
 		aria-expanded={expanded}
 		{onclick}
-		>{#if busy}<Loader size="sm" class="[&_.dot]:bg-current" />{/if}{@render children()}</button
+		>{#if busy}<Loader size="sm" inherit />{/if}{@render children()}</button
 	>
 {/if}
