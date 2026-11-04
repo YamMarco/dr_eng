@@ -348,7 +348,7 @@
 						<Button
 							type="submit"
 							{busy}
-							disabled={mode === 'signup' && needsCaptcha && captchaStatus === 'pending'}
+							disabled={needsCaptcha && captchaStatus === 'pending'}
 							>{busy ? t.busy : submitLabel}</Button
 						>
 

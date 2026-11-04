@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 508 files · ~472,275 words
+- 508 files · ~472,271 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2421 nodes · 4838 edges · 180 communities (131 shown, 49 thin omitted)
+- 2421 nodes · 4838 edges · 182 communities (134 shown, 48 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 105 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a15aceae`
+- Built from commit: `f5133db3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -121,7 +121,7 @@
 - Rules
 - quote/+server.ts
 - index.svelte.ts
-- PassageBody.svelte
+- PassageText.svelte
 - progressSync.svelte.ts
 - api/reminders/+server.ts
 - content-i18n.mjs
@@ -150,9 +150,9 @@
 - Handoff: exam lock trusts the client's part count
 - sectionThemes.ts
 - dictionary-en-gb
-- screenshot.ts
+- support.ts
 - render.md
-- edit-words/+page.svelte
+- book/+page.svelte
 - eslint-config-prettier
 - prettier-plugin-svelte
 - Handoff: text as blocks (future plan)
@@ -161,6 +161,8 @@
 - lessons/+page.svelte
 - @tailwindcss/forms
 - routes/+layout.svelte
+- edit-words/+page.svelte
+- screenshot.ts
 - typescript
 - UX principles
 - api.spec.ts
@@ -207,7 +209,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (180 total, 49 thin omitted)
+## Communities (182 total, 48 thin omitted)
 
 ### Community 1 - "CLI tools"
 Cohesion: 0.33
@@ -257,6 +259,10 @@ Nodes (14): Adding a screen type, Authoring a lesson, Conventions, Lesson struct
 Cohesion: 0.50
 Nodes (3): App, Locals, PageState
 
+### Community 17 - "Md.svelte"
+Cohesion: 0.13
+Nodes (6): Option, optText(), withFeedback(), KEY, LessonSession, i()
+
 ### Community 18 - "graphify reference: query, path, explain"
 Cohesion: 0.33
 Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
@@ -298,8 +304,8 @@ Cohesion: 0.15
 Nodes (12): applyBelow(), id, inherited, lessonId, lessons, moduleId, MODULES, own (+4 more)
 
 ### Community 35 - "[quizId]/+page.svelte"
-Cohesion: 0.07
-Nodes (11): status(), formattedDate, lockedUntil, lockedWhen, row, rules, taken, tips (+3 more)
+Cohesion: 0.11
+Nodes (7): status(), lockedUntil, lockedWhen, row, rules, taken, tips
 
 ### Community 36 - "WritingTask.svelte"
 Cohesion: 0.05
@@ -382,8 +388,8 @@ Cohesion: 0.24
 Nodes (4): RulesStore, clearBelow(), ownKeys(), Rules
 
 ### Community 56 - "mode.svelte.ts"
-Cohesion: 0.10
-Nodes (7): stripLineAttrs(), KEY, ScreenMode, gutter, lines, KEY, QuizAnswerSlot
+Cohesion: 0.13
+Nodes (4): KEY, ScreenMode, KEY, QuizAnswerSlot
 
 ### Community 57 - "SlideStage.svelte"
 Cohesion: 0.09
@@ -413,6 +419,10 @@ Nodes (18): allQuizNodes, avg(), examRows(), examStats, examTier, GREAT_PERCENT,
 Cohesion: 0.09
 Nodes (11): EditStore, full, ignite, install, InstallPromptEvent, InstallStore, Platform, MOBILE_BUILD (+3 more)
 
+### Community 65 - "motion.ts"
+Cohesion: 0.14
+Nodes (4): reducedMotion, ./$types, next, seen
+
 ### Community 66 - "checkAuth"
 Cohesion: 0.24
 Nodes (15): checkAuth(), getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), body, GET(), POST() (+7 more)
@@ -434,8 +444,8 @@ Cohesion: 0.12
 Nodes (27): CONTENT_TAGS, FATAL_TAGS, TAG_IDS, TagDef, GradeRequest, MAX_TEXT, ask(), block() (+19 more)
 
 ### Community 71 - "svelte/transition"
-Cohesion: 0.10
-Nodes (11): emails, i(), open, words, screenContext, previous, SUPPORT_EMAIL, SUPPORT_WHATSAPP (+3 more)
+Cohesion: 0.12
+Nodes (7): emails, i(), open, words, screenContext, previous, showNav
 
 ### Community 73 - "content-edit — the `/edit` and `/edit-exam` authoring workspaces"
 Cohesion: 0.22
@@ -554,12 +564,12 @@ Cohesion: 0.39
 Nodes (5): BillingError, quote, checkoutBody(), POST(), POST()
 
 ### Community 108 - "index.svelte.ts"
-Cohesion: 0.11
+Cohesion: 0.09
 Nodes (3): dictionaries, groups, phrase()
 
-### Community 109 - "PassageBody.svelte"
-Cohesion: 0.22
-Nodes (4): Highlight, MarkColor, PASSAGE_MARKS, PassageMarksStore
+### Community 109 - "PassageText.svelte"
+Cohesion: 0.15
+Nodes (7): stripLineAttrs(), Highlight, MarkColor, PASSAGE_MARKS, PassageMarksStore, gutter, lines
 
 ### Community 110 - "progressSync.svelte.ts"
 Cohesion: 0.14
@@ -598,7 +608,7 @@ Cohesion: 0.12
 Nodes (26): browserDictionaries(), bytes(), checkWriting(), ALWAYS_CAPITAL, CONNECTORS, issue(), mechanicsIssues(), sentenceSpans() (+18 more)
 
 ### Community 120 - "validate.ts"
-Cohesion: 0.16
+Cohesion: 0.17
 Nodes (16): bucketLabel(), Issue, screenIssues(), validateExam(), validateSection(), MarkAllSegment, markAllSegments(), checkScreen() (+8 more)
 
 ### Community 121 - "I18n"
@@ -618,8 +628,8 @@ Cohesion: 0.40
 Nodes (4): headers, installCommand, redirects, $schema
 
 ### Community 128 - "MatchDefinitions.svelte"
-Cohesion: 0.13
-Nodes (7): active, checked, Option, optText(), withFeedback(), i(), item()
+Cohesion: 0.25
+Nodes (3): active, checked, item()
 
 ### Community 130 - "score.svelte.ts"
 Cohesion: 0.10
@@ -637,9 +647,9 @@ Nodes (18): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLas
 Cohesion: 0.50
 Nodes (3): Fix, Handoff: exam lock trusts the client's part count, The gap
 
-### Community 141 - "edit-words/+page.svelte"
-Cohesion: 0.40
-Nodes (3): changed, invalidCount, saving
+### Community 139 - "support.ts"
+Cohesion: 0.25
+Nodes (4): SUPPORT_EMAIL, SUPPORT_WHATSAPP, TESTER_PHASE, TESTERS_GROUP
 
 ### Community 144 - "Handoff: text as blocks (future plan)"
 Cohesion: 0.40
@@ -652,6 +662,10 @@ Nodes (37): markRoundCompleted(), activeNode, activeRoundIndex, anchorRow, canva
 ### Community 149 - "routes/+layout.svelte"
 Cohesion: 0.12
 Nodes (3): DebugStore, ThemeMode, ThemeStore
+
+### Community 150 - "edit-words/+page.svelte"
+Cohesion: 0.40
+Nodes (3): changed, invalidCount, saving
 
 ### Community 156 - "UX principles"
 Cohesion: 0.17
@@ -672,7 +686,7 @@ Nodes (4): Motion and feedback are required, not polish, Overrides to the guidel
 ## Knowledge Gaps
 - **775 isolated node(s):** `svelte`, `lesson`, `UNITS`, `StudentState`, `PIXEL` (+770 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **49 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **48 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
