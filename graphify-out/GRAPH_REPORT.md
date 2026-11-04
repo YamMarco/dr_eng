@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 508 files · ~472,284 words
+- 508 files · ~472,298 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2421 nodes · 4838 edges · 179 communities (132 shown, 47 thin omitted)
+- 2421 nodes · 4838 edges · 180 communities (132 shown, 48 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 105 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1b1ec4af`
+- Built from commit: `580e9088`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -133,17 +133,17 @@
 - content/rules.ts
 - checks/index.ts
 - validate.ts
-- EditWorkspace.svelte
+- ProfileStore
 - hydratable.md
 - dependencies
 - Handoff: testing plan (automation + human-like runs)
 - inspect.md
 - vercel.json
 - MatchDefinitions.svelte
-- edit-words/+page.svelte
+- EditWorkspace.svelte
 - score.svelte.ts
 - @sveltejs/adapter-auto
-- globals
+- edit-words/+page.svelte
 - lessonIcon.ts
 - @sveltejs/kit
 - progress.ts
@@ -173,6 +173,7 @@
 - auth/README.md
 - @types/nspell
 - typescript-eslint
+- @eslint/js
 - app/+layout.ts
 - svelte
 - UI review
@@ -206,7 +207,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (179 total, 47 thin omitted)
+## Communities (180 total, 48 thin omitted)
 
 ### Community 1 - "CLI tools"
 Cohesion: 0.33
@@ -401,8 +402,8 @@ Cohesion: 0.06
 Nodes (60): listA, listB, listC, listD, w(), wordId(), eGlossAr, deckProgress (+52 more)
 
 ### Community 61 - "takeHistory.ts"
-Cohesion: 0.19
-Nodes (11): delta, firstSeconds, newlyReached, Entry, openDb(), readStats(), recordTake(), SavedTake (+3 more)
+Cohesion: 0.18
+Nodes (12): delta, firstSeconds, newlyReached, isRecord(), Entry, openDb(), readStats(), recordTake() (+4 more)
 
 ### Community 62 - "speech.ts"
 Cohesion: 0.24
@@ -429,8 +430,8 @@ Cohesion: 0.18
 Nodes (10): Explicit props, Exporting snippets, Implicit `children` snippet, Implicit props, Optional snippet props, Passing snippets to components, Programmatic snippets, Snippet scope (+2 more)
 
 ### Community 69 - "saveSynced"
-Cohesion: 0.10
-Nodes (12): ChatTurnReply, addChat(), chatCount(), ChatTurnError, Engagement, lastEngagement, LastEngagementStore, load() (+4 more)
+Cohesion: 0.15
+Nodes (10): ChatTurnReply, addChat(), chatCount(), ChatTurnError, Engagement, lastEngagement, LastEngagementStore, load() (+2 more)
 
 ### Community 70 - "server/grade.ts"
 Cohesion: 0.12
@@ -490,7 +491,7 @@ Nodes (11): countValidWords(), isCopiedWhole(), lengthReport(), MAX_WORDS, MIN_W
 
 ### Community 89 - "devDependencies"
 Cohesion: 0.08
-Nodes (25): @axe-core/playwright, dictionary-en, drizzle-kit, eslint, @eslint/js, eslint-plugin-svelte, devDependencies, @axe-core/playwright (+17 more)
+Nodes (25): @axe-core/playwright, dictionary-en, drizzle-kit, eslint, eslint-plugin-svelte, devDependencies, @axe-core/playwright, dictionary-en (+17 more)
 
 ### Community 90 - "Handoff: About page, after launch"
 Cohesion: 0.40
@@ -605,7 +606,7 @@ Cohesion: 0.12
 Nodes (26): browserDictionaries(), bytes(), checkWriting(), ALWAYS_CAPITAL, CONNECTORS, issue(), mechanicsIssues(), sentenceSpans() (+18 more)
 
 ### Community 120 - "validate.ts"
-Cohesion: 0.17
+Cohesion: 0.16
 Nodes (16): bucketLabel(), Issue, screenIssues(), validateExam(), validateSection(), MarkAllSegment, markAllSegments(), checkScreen() (+8 more)
 
 ### Community 123 - "dependencies"
@@ -624,21 +625,21 @@ Nodes (4): headers, installCommand, redirects, $schema
 Cohesion: 0.25
 Nodes (3): active, checked, item()
 
-### Community 129 - "edit-words/+page.svelte"
-Cohesion: 0.40
-Nodes (3): changed, invalidCount, saving
-
 ### Community 130 - "score.svelte.ts"
 Cohesion: 0.10
 Nodes (15): primaryAction(), announce(), announcement, mistakes, pick(), row(), shuffleNotIdentity(), primaryAction() (+7 more)
+
+### Community 132 - "edit-words/+page.svelte"
+Cohesion: 0.40
+Nodes (3): changed, invalidCount, saving
 
 ### Community 133 - "lessonIcon.ts"
 Cohesion: 0.67
 Nodes (3): hashString(), ICONS, lessonIcon()
 
 ### Community 135 - "progress.ts"
-Cohesion: 0.23
-Nodes (19): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLastAttempt(), getResults(), hasStorage(), progressKey() (+11 more)
+Cohesion: 0.25
+Nodes (18): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLastAttempt(), getResults(), hasStorage(), progressKey() (+10 more)
 
 ### Community 136 - "Handoff: exam lock trusts the client's part count"
 Cohesion: 0.50
@@ -675,7 +676,7 @@ Nodes (4): Motion and feedback are required, not polish, Overrides to the guidel
 ## Knowledge Gaps
 - **775 isolated node(s):** `svelte`, `lesson`, `UNITS`, `StudentState`, `PIXEL` (+770 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **47 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **48 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

@@ -209,19 +209,21 @@
 	);
 </script>
 
-<main class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-12">
+<main
+	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-6 sm:max-w-md sm:py-12"
+>
 	{#if homeLink && !MOBILE_BUILD}
 		<a href={resolve('/')} class="{linkBtn} -ms-2 mb-4 flex w-fit items-center">
 			{t.backToSite}
 		</a>
 	{/if}
-	<h1 class="text-3xl font-extrabold tracking-tight">{head[0]}</h1>
+	<h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">{head[0]}</h1>
 	{#if head[1]}<p class="mt-2 leading-relaxed text-muted">{head[1]}</p>{/if}
 	{#if note}<p class="mt-4 rounded-2xl bg-brand-soft px-4 py-3 text-sm leading-relaxed">
 			{note}
 		</p>{/if}
 
-	<div class="mt-8 rounded-3xl bg-surface p-5 shadow-md ring-1 ring-line/70">
+	<div class="mt-6 rounded-3xl bg-surface p-4 shadow-md ring-1 ring-line/70 sm:mt-8 sm:p-6">
 		{#key mode}
 			<div in:fly={{ y: 12, duration: 250, easing: cubicOut }}>
 				{#if mode === 'sent'}
