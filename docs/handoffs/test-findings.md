@@ -60,7 +60,7 @@ Left as is: the exam timer runs on the wall clock, so changing the clock mid-exa
 2. **Phase 6, persona runs**: a reusable driver (Claude + Playwright, one persona per run, report to `/kanban`). `playThrough` in `e2e/fixtures.ts` is the start.
 3. **Break-it, round 2 (rest)**: real-AI prompt injection ("ignore the rubric..."), the mobile build (static bundle against the web API), performance on a low-end phone.
 4. **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics): look them up on the server by screen id. Low priority: scores live on the device; daily caps bound the spend.
-5. **Lint**: 9 errors were already there (`svelte/no-navigation-without-resolve`, lessons page and lesson screens); CI doesn't run lint yet.
+5. **Lint**: 51 errors in 30 files (mostly `svelte/no-navigation-without-resolve` in shared components like Button, AppBar, NavBar, and unused vars in the editor); CI doesn't run lint yet. Full `eslint .` takes ~5 min here.
 6. **Local build hangs with `.env.local`'s keys**: `npm run build` took 90 min (SvelteKit's prerender/write step), 1 min with `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL` blank. The e2e server builds with them blank (`playwright.config.ts`), like CI. Find what the prerender waits on.
 
 Not touched on purpose: the brand teal contrast (white on teal 3.3:1, owner's call; axe's color-contrast rule is off).
