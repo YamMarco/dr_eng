@@ -146,6 +146,12 @@
 		fix = null;
 		resent = false;
 		const token = needsCaptcha ? await captcha?.getToken() : undefined;
+		// Still unsolved (e.g. a challenge waiting for a click): don't spend an attempt on a doomed request.
+		if (needsCaptcha && !token && captchaStatus === 'pending') {
+			failed = t.errors.captcha;
+			busy = false;
+			return;
+		}
 		try {
 			await action(token);
 			onDone?.();
