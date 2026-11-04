@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 510 files · ~474,223 words
+- 510 files · ~474,226 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9ce59900`
+- Built from commit: `6cef1899`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -324,8 +324,8 @@ Cohesion: 0.05
 Nodes (37): accepted, acceptedOk, allFilled, allOk, autoCheck, capitalIsError, checked, combinedText (+29 more)
 
 ### Community 37 - "data.ts"
-Cohesion: 0.12
-Nodes (28): getLessonsBySection(), moduleSections(), SKILLS, continueFrom(), ContinueItem, EXAM_READY, examAdvice, homeMeters (+20 more)
+Cohesion: 0.11
+Nodes (30): getLessonsBySection(), moduleSections(), SKILLS, continueFrom(), ContinueItem, EXAM_READY, examAdvice, homeMeters (+22 more)
 
 ### Community 38 - "gradeExam.ts"
 Cohesion: 0.19
@@ -673,7 +673,7 @@ Nodes (4): Handoff: text as blocks (future plan), Now, Steps, Target
 
 ### Community 147 - "lessons/+page.svelte"
 Cohesion: 0.08
-Nodes (38): hasContent(), markRoundCompleted(), activeNode, activeRoundIndex, anchorRow, canvasCenter, canvasHeight, canvasWidth (+30 more)
+Nodes (36): markRoundCompleted(), activeNode, activeRoundIndex, anchorRow, canvasCenter, canvasHeight, canvasWidth, celebrateIfNewlyDone() (+28 more)
 
 ### Community 149 - "$app/paths"
 Cohesion: 0.07

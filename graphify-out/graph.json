@@ -15815,8 +15815,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_hascontent",
-      "community": 147,
-      "community_name": "lessons/+page.svelte",
+      "community": 37,
+      "community_name": "data.ts",
       "norm_label": "hascontent()"
     },
     {
@@ -23332,8 +23332,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_nextnode",
-      "community": 147,
-      "community_name": "lessons/+page.svelte",
+      "community": 37,
+      "community_name": "data.ts",
       "norm_label": "nextnode()"
     },
     {
@@ -81893,5 +81893,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9ce59900939ba1307b64aa548dbc4145b0ede6c7"
+  "built_at_commit": "6cef1899e806c214486a3ed1c103b6919d322918"
 }
