@@ -45,6 +45,12 @@ class AuthStore {
 		return !supabase || this.session?.user.app_metadata?.role === 'admin';
 	}
 
+	/** First name given at sign-up (account metadata). */
+	get name(): string | undefined {
+		const n = this.session?.user.user_metadata?.name;
+		return typeof n === 'string' && n.trim() ? n.trim() : undefined;
+	}
+
 	get email() {
 		return this.session?.user.email;
 	}
@@ -70,7 +76,8 @@ class AuthStore {
 		password: string,
 		returnTo = APP_URL,
 		captchaToken?: string,
-		updates = false
+		updates = false,
+		name?: string
 	) {
 		const now = new Date().toISOString();
 		const { data, error } = await supabase!.auth.signUp({
@@ -80,7 +87,11 @@ class AuthStore {
 			options: {
 				emailRedirectTo: returnTo,
 				captchaToken,
-				data: { terms_accepted_at: now, ...(updates && { marketing_consent_at: now }) }
+				data: {
+					terms_accepted_at: now,
+					...(name && { name }),
+					...(updates && { marketing_consent_at: now })
+				}
 			}
 		});
 		if (error) throw error;

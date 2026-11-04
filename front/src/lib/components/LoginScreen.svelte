@@ -3,6 +3,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import Button from '$lib/components/Button.svelte';
 	import Captcha, { CAPTCHA_KEY } from '$lib/components/Captcha.svelte';
+	import { NAME_MAX } from '$lib/profile.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { onMount } from 'svelte';
@@ -41,6 +42,7 @@
 	let mode = $state<Mode>(auth.recovering ? 'recovery' : startWith);
 	let email = $state('');
 	let password = $state('');
+	let name = $state('');
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
 	let busy = $state(false);
 	let failed = $state<string | null>(null);
@@ -176,7 +178,7 @@
 		if (mode === 'signin') return run((token) => auth.signIn(address, password, token));
 		if (mode === 'signup')
 			return run(
-				(token) => auth.signUp(address, password, returnTo, token),
+				(token) => auth.signUp(address, password, returnTo, token, false, name.trim() || undefined),
 				() => ((sentKind = 'confirm'), go('sent'))
 			);
 		if (mode === 'forgot')
@@ -281,6 +283,18 @@
 									required
 									autocomplete="email"
 									bind:value={email}
+									class={input}
+								/>
+							</label>
+						{/if}
+						{#if mode === 'signup'}
+							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+								{t.nameLabel}
+								<input
+									type="text"
+									maxlength={NAME_MAX}
+									autocomplete="given-name"
+									bind:value={name}
 									class={input}
 								/>
 							</label>

@@ -482,6 +482,7 @@ export const he = {
 		emailLabel: 'כתובת מייל',
 		passwordLabel: 'סיסמה',
 		passwordHint: 'לפחות 8 תווים',
+		nameLabel: 'שם פרטי (לא חובה)',
 		busy: 'רגע...',
 		signIn: 'כניסה',
 		forgot: 'שכחתי סיסמה',

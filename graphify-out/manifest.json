@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793770860.6571555,
-    "ast_hash": "d03adb43e3df7e616ffb11c73fab2bbe",
+    "mtime": 1793771303.3092031,
+    "ast_hash": "a27a857ab2c35dd2a794a9cd060b4273",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -760,13 +760,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/auth.svelte.ts": {
-    "mtime": 1793731835.4179034,
-    "ast_hash": "32ed2e91aa5c04a59ec7a1366feb66c3",
+    "mtime": 1793771303.3551562,
+    "ast_hash": "9673396774030355ff2b15344a9e340e",
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793770867.8561323,
-    "ast_hash": "418637ad2c38139eacd9a628153f32a6",
+    "mtime": 1793771303.4637408,
+    "ast_hash": "bd7735af4f0f5510aa402540ebe6767a",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -970,8 +970,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/dashboard/Onboarding.svelte": {
-    "mtime": 1793035082.6462238,
-    "ast_hash": "eb80feffbe6c610b9e4dd136dad353c8",
+    "mtime": 1793771303.3718038,
+    "ast_hash": "4cf1da03df9f849785ea1043498eb722",
     "semantic_hash": ""
   },
   "front/src/lib/dashboard/data.ts": {

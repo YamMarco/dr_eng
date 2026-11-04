@@ -4,6 +4,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import ChoiceList from '$lib/components/ChoiceList.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import { NAME_MAX, profile, type UnitsGoal } from '$lib/profile.svelte';
 	import { parseSessionKey, sessionOptions, unitsOptions } from './goalOptions';
 
@@ -12,7 +13,7 @@
 	const TOTAL_STEPS = 3;
 
 	let step = $state(1);
-	let name = $state('');
+	let name = $state(auth.name ?? '');
 	let units = $state<UnitsGoal | undefined>();
 	let session = $state<string | undefined>();
 
