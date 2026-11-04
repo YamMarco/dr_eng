@@ -51,7 +51,7 @@
 		<button
 			type="button"
 			aria-label={i18n.dict.common.close}
-			class="absolute inset-0 bg-overlay/50"
+			class="absolute inset-0 bg-black/65 backdrop-blur-sm"
 			onclick={close}
 			transition:fade={{ duration: 150 }}
 		></button>
@@ -62,7 +62,7 @@
 			aria-labelledby="streak-title"
 			tabindex="-1"
 			{@attach trapFocus}
-			class="relative flex w-full max-w-sm flex-col items-center gap-4 rounded-3xl bg-surface px-6 pt-8 pb-6 text-center shadow-xl outline-none"
+			class="relative flex w-full max-w-sm flex-col items-center gap-4 rounded-3xl bg-surface px-6 pt-8 pb-6 text-center shadow-2xl ring-1 ring-line outline-none"
 			transition:scale={{ start: 0.85, duration: 300, easing: backOut }}
 		>
 			<Confetti />

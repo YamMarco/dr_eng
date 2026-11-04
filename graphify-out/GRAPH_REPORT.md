@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 510 files · ~474,226 words
+- 510 files · ~474,229 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6cef1899`
+- Built from commit: `ac109332`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -148,20 +148,20 @@
 - @sveltejs/kit
 - lessonIcon.ts
 - Handoff: exam lock trusts the client's part count
+- dictionary-en-gb
 - sectionThemes.ts
 - QuizAnswerSlot
-- @types/node
 - render.md
 - app/+layout.svelte
 - legacyIds.ts
-- @types/nspell
+- @types/node
 - Handoff: text as blocks (future plan)
 - service-worker.ts
 - svelte-reactivity.md
 - lessons/+page.svelte
 - @tailwindcss/forms
 - $app/paths
-- globals
+- @types/nspell
 - typescript-eslint
 - eslint-config-prettier
 - typescript
@@ -476,8 +476,8 @@ Cohesion: 0.08
 Nodes (19): emails, access, CheckoutError, fetchQuote(), placeOrder(), post(), Quote, COBE_OPEN (+11 more)
 
 ### Community 78 - "server/kanban.ts"
-Cohesion: 0.27
-Nodes (13): TITLE_MAX, kanbanTasks, kanbanDb(), tags, taskColumns, taskFields, jsonBody(), DELETE() (+5 more)
+Cohesion: 0.29
+Nodes (11): TITLE_MAX, kanbanTasks, kanbanDb(), tags, taskColumns, taskFields, DELETE(), PATCH() (+3 more)
 
 ### Community 82 - "localize.svelte.ts"
 Cohesion: 0.22
@@ -505,7 +505,7 @@ Nodes (10): SpeakingVerdict, band, block(), gradeSpeakingAudio(), MAX_AUDIO_CHAR
 
 ### Community 89 - "devDependencies"
 Cohesion: 0.08
-Nodes (25): @axe-core/playwright, dictionary-en, dictionary-en-gb, drizzle-kit, eslint, eslint-plugin-svelte, devDependencies, @axe-core/playwright (+17 more)
+Nodes (25): @axe-core/playwright, dictionary-en, drizzle-kit, eslint, eslint-plugin-svelte, devDependencies, @axe-core/playwright, dictionary-en (+17 more)
 
 ### Community 90 - "Handoff: About page, after launch"
 Cohesion: 0.40
@@ -588,8 +588,8 @@ Cohesion: 0.28
 Nodes (7): Item, localItem(), ProgressSync, readAt(), reloaders, syncedKeys(), writeLocal()
 
 ### Community 111 - "api/reminders/+server.ts"
-Cohesion: 0.32
-Nodes (7): DELETE(), endpoint, key, POST(), ready(), subscribeBody, unsubscribeBody
+Cohesion: 0.29
+Nodes (9): jsonBody(), POST(), DELETE(), endpoint, key, POST(), ready(), subscribeBody (+1 more)
 
 ### Community 112 - "content-i18n.mjs"
 Cohesion: 0.14
