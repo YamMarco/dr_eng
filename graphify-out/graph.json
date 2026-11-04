@@ -1075,8 +1075,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "front_package_devdependencies_globals",
-      "community": 89,
-      "community_name": "devDependencies",
+      "community": 141,
+      "community_name": "globals",
       "norm_label": "globals"
     },
     {
@@ -1086,8 +1086,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "globals",
-      "community": 89,
-      "community_name": "devDependencies",
+      "community": 141,
+      "community_name": "globals",
       "norm_label": "globals"
     },
     {
@@ -1163,8 +1163,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "front_package_devdependencies_svelte",
-      "community": 141,
-      "community_name": "svelte",
+      "community": 89,
+      "community_name": "devDependencies",
       "norm_label": "svelte"
     },
     {
@@ -1174,8 +1174,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "front_package_json_svelte",
-      "community": 141,
-      "community_name": "svelte",
+      "community": 89,
+      "community_name": "devDependencies",
       "norm_label": "svelte"
     },
     {
@@ -2174,7 +2174,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_alpha",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "alpha.ts"
     },
@@ -2185,7 +2185,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "front_src_lib_alpha_cobe_open",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "cobe_open"
     },
@@ -2552,7 +2552,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 173,
+      "community": 151,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -2608,7 +2608,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 171,
+      "community": 150,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -3339,7 +3339,7 @@
       "label": "settle()",
       "file_type": "code",
       "source_file": "front/src/lib/components/Captcha.svelte",
-      "source_location": "L44",
+      "source_location": "L48",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_components_captcha_settle",
@@ -3354,7 +3354,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_chatgateway",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "chatgateway.svelte"
     },
@@ -3365,7 +3365,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "paths",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "$app/paths"
     },
@@ -3464,7 +3464,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "navigation",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "$app/navigation"
     },
@@ -3475,7 +3475,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_logo",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "logo.svelte"
     },
@@ -3509,7 +3509,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_navbar",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "navbar.svelte"
     },
@@ -3521,7 +3521,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_components_navbar_homeicon",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "homeicon()"
     },
@@ -3533,7 +3533,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_components_navbar_bookicon",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "bookicon()"
     },
@@ -3545,7 +3545,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_components_navbar_settingsicon",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "settingsicon()"
     },
@@ -3556,7 +3556,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "state",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "$app/state"
     },
@@ -3622,8 +3622,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_supportsection",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "supportsection.svelte"
     },
     {
@@ -3656,7 +3656,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_themeswitch",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "themeswitch.svelte"
     },
@@ -6473,7 +6473,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_fields_rulefields",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "rulefields.svelte"
     },
@@ -8135,7 +8135,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "localize.svelte.ts"
     },
@@ -8148,7 +8148,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_table",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "table"
     },
@@ -8159,7 +8159,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_loaders",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "loaders"
     },
@@ -8170,7 +8170,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_tables",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "tables"
     },
@@ -8181,7 +8181,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_loading",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "loading"
     },
@@ -8192,7 +8192,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_cache",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "cache"
     },
@@ -8204,7 +8204,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_ensureloaded",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "ensureloaded()"
     },
@@ -8216,7 +8216,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_translate",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "translate()"
     },
@@ -8228,7 +8228,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_contentready",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "contentready()"
     },
@@ -8240,7 +8240,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_localizecontent",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "localizecontent()"
     },
@@ -9214,7 +9214,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckgateway",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "deckgateway.svelte"
     },
@@ -10238,7 +10238,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_context",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "context.ts"
     },
@@ -10249,7 +10249,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_feedback_context_key",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "key"
     },
@@ -10261,7 +10261,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_context_providerulechain",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "providerulechain()"
     },
@@ -10273,7 +10273,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_context_getrulechain",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "getrulechain()"
     },
@@ -10716,7 +10716,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_feedback_rules",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "feedback/rules.ts"
     },
@@ -10729,7 +10729,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_rules_ruleset",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "ruleset"
     },
@@ -10753,7 +10753,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_feedback_rules_rule_keys",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "rule_keys"
     },
@@ -10764,7 +10764,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "front_src_lib_feedback_rules_default_rules",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "default_rules"
     },
@@ -10776,7 +10776,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_rules_resolverules",
-      "community": 182,
+      "community": 102,
       "community_name": "feedback/rules.ts",
       "norm_label": "resolverules()"
     },
@@ -11361,7 +11361,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_i18n_index_svelte_language",
-      "community": 78,
+      "community": 82,
       "community_name": "localize.svelte.ts",
       "norm_label": "language"
     },
@@ -15733,7 +15733,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lessonicon",
-      "community": 137,
+      "community": 133,
       "community_name": "lessonIcon.ts",
       "norm_label": "lessonicon.ts"
     },
@@ -15744,7 +15744,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_icons",
-      "community": 137,
+      "community": 133,
       "community_name": "lessonIcon.ts",
       "norm_label": "icons"
     },
@@ -15756,7 +15756,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_hashstring",
-      "community": 137,
+      "community": 133,
       "community_name": "lessonIcon.ts",
       "norm_label": "hashstring()"
     },
@@ -15768,7 +15768,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonicon_lessonicon",
-      "community": 137,
+      "community": 133,
       "community_name": "lessonIcon.ts",
       "norm_label": "lessonicon()"
     },
@@ -18749,7 +18749,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_screenshot",
-      "community": 154,
+      "community": 139,
       "community_name": "screenshot.ts",
       "norm_label": "screenshot.ts"
     },
@@ -18761,7 +18761,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_overlay",
-      "community": 154,
+      "community": 139,
       "community_name": "screenshot.ts",
       "norm_label": "overlay()"
     },
@@ -18773,7 +18773,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_capturescreen",
-      "community": 154,
+      "community": 139,
       "community_name": "screenshot.ts",
       "norm_label": "capturescreen()"
     },
@@ -18818,7 +18818,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes",
-      "community": 151,
+      "community": 137,
       "community_name": "sectionThemes.ts",
       "norm_label": "sectionthemes.ts"
     },
@@ -18831,7 +18831,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_sectiontheme",
-      "community": 151,
+      "community": 137,
       "community_name": "sectionThemes.ts",
       "norm_label": "sectiontheme"
     },
@@ -18842,7 +18842,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_palette",
-      "community": 151,
+      "community": 137,
       "community_name": "sectionThemes.ts",
       "norm_label": "palette"
     },
@@ -18854,7 +18854,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_themeforsectionindex",
-      "community": 151,
+      "community": 137,
       "community_name": "sectionThemes.ts",
       "norm_label": "themeforsectionindex()"
     },
@@ -19278,7 +19278,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "front_src_lib_server_db_schema_kanbantasks",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "kanbantasks"
     },
@@ -19663,7 +19663,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_kanban_kanbandb",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "kanbandb()"
     },
@@ -19685,7 +19685,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_server_kanban_taskfields",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "taskfields"
     },
@@ -19696,7 +19696,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "front_src_lib_server_kanban_taskcolumns",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "taskcolumns"
     },
@@ -20108,7 +20108,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_push",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "push.ts"
     },
@@ -20119,7 +20119,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "front_src_lib_server_push_pushenabled",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "pushenabled"
     },
@@ -20130,7 +20130,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_lib_server_push_push_hosts",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "push_hosts"
     },
@@ -20142,7 +20142,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_push_ispushendpoint",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "ispushendpoint()"
     },
@@ -20155,7 +20155,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_push_subscription",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "subscription"
     },
@@ -20167,7 +20167,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_push_sendpush",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "sendpush()"
     },
@@ -20647,8 +20647,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_support",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "support.ts"
     },
     {
@@ -20658,8 +20658,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "front_src_lib_support_support_email",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "support_email"
     },
     {
@@ -20669,8 +20669,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "front_src_lib_support_support_whatsapp",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "support_whatsapp"
     },
     {
@@ -20680,8 +20680,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_lib_support_testers_group",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "testers_group"
     },
     {
@@ -20691,8 +20691,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "front_src_lib_support_tester_phase",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "tester_phase"
     },
     {
@@ -20703,8 +20703,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_whatsapphref",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "whatsapphref()"
     },
     {
@@ -20715,8 +20715,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_emailhref",
-      "community": 102,
-      "community_name": "support.ts",
+      "community": 71,
+      "community_name": "svelte/transition",
       "norm_label": "emailhref()"
     },
     {
@@ -20920,7 +20920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_admin_layout_svelte_front_src_routes_admin_layout",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "(admin)/+layout.svelte"
     },
@@ -21213,7 +21213,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_site_layout_svelte_front_src_routes_site_layout",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "(site)/+layout.svelte"
     },
@@ -21869,7 +21869,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "cron/reminders/+server.ts"
     },
@@ -21880,7 +21880,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server_messages",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "messages"
     },
@@ -21892,7 +21892,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server_authorized",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "authorized()"
     },
@@ -21904,7 +21904,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server_israelday",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "israelday()"
     },
@@ -21916,7 +21916,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server_israelhour",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "israelhour()"
     },
@@ -21928,7 +21928,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_cron_reminders_server_get",
-      "community": 77,
+      "community": 78,
       "community_name": "cron/reminders/+server.ts",
       "norm_label": "get()"
     },
@@ -22119,7 +22119,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_server",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "kanban/+server.ts"
     },
@@ -22131,7 +22131,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_server_get",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "get()"
     },
@@ -22143,7 +22143,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_server_post",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "post()"
     },
@@ -22154,7 +22154,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_id_server",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "[id]/+server.ts"
     },
@@ -22165,7 +22165,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_id_server_patchbody",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "patchbody"
     },
@@ -22177,7 +22177,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_id_server_taskid",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "taskid()"
     },
@@ -22189,7 +22189,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_id_server_patch",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "patch()"
     },
@@ -22201,7 +22201,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_kanban_id_server_delete",
-      "community": 66,
+      "community": 77,
       "community_name": "[id]/+server.ts",
       "norm_label": "delete()"
     },
@@ -22690,7 +22690,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_layout_svelte_front_src_routes_app_unit_unitid_module_moduleid_layout",
-      "community": 82,
+      "community": 66,
       "community_name": "$app/paths",
       "norm_label": "[moduleid]/+layout.svelte"
     },
@@ -34800,7 +34800,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/components/Captcha.svelte",
-      "source_location": "L44",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_components_captcha",
@@ -81468,5 +81468,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "521ef69d9c384e196492de1ac0531586103937d3"
+  "built_at_commit": "cb0ba1ca22e1f8bbcca8626ff06bdddedbfdbbc7"
 }

@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 508 files · ~472,141 words
+- 508 files · ~472,240 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2421 nodes · 4838 edges · 181 communities (133 shown, 48 thin omitted)
+- 2421 nodes · 4838 edges · 180 communities (132 shown, 48 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 105 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `521ef69d`
+- Built from commit: `cb0ba1ca`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -78,7 +78,7 @@
 - stats.ts
 - settings/+page.svelte
 - motion.ts
-- [id]/+server.ts
+- $app/paths
 - checkAuth
 - snippet.md
 - saveSynced
@@ -89,12 +89,12 @@
 - scoring.ts
 - create-coupon.mjs
 - measure-overflow.mjs
+- [id]/+server.ts
 - cron/reminders/+server.ts
-- localize.svelte.ts
 - lessonProgress.svelte.ts
 - content
 - checkout/+page.ts
-- $app/paths
+- localize.svelte.ts
 - Material
 - content-edit/+server.ts
 - feedback/+server.ts
@@ -114,7 +114,7 @@
 - .mcp.json
 - curriculum.ts
 - Platform: web, mobile, accounts
-- support.ts
+- feedback/rules.ts
 - QuizReport.svelte
 - @eslint/js
 - AGENTS.md
@@ -144,13 +144,15 @@
 - score.svelte.ts
 - @sveltejs/adapter-auto
 - edit-words/+page.svelte
+- lessonIcon.ts
 - @sveltejs/kit
 - progress.ts
 - Handoff: exam lock trusts the client's part count
-- lessonIcon.ts
+- sectionThemes.ts
 - dictionary-en-gb
+- screenshot.ts
 - render.md
-- svelte
+- globals
 - eslint-config-prettier
 - prettier-plugin-svelte
 - Handoff: text as blocks (future plan)
@@ -159,9 +161,7 @@
 - lessons/+page.svelte
 - @tailwindcss/forms
 - routes/+layout.svelte
-- sectionThemes.ts
 - index.svelte.ts
-- screenshot.ts
 - typescript
 - UX principles
 - api.spec.ts
@@ -176,7 +176,6 @@
 - @types/nspell
 - typescript-eslint
 - app/+layout.ts
-- feedback/rules.ts
 - UI review
 - vite
 - vite-env.d.ts
@@ -208,7 +207,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (181 total, 48 thin omitted)
+## Communities (180 total, 48 thin omitted)
 
 ### Community 1 - "CLI tools"
 Cohesion: 0.33
@@ -418,10 +417,6 @@ Nodes (18): allQuizNodes, avg(), examRows(), examStats, examTier, GREAT_PERCENT,
 Cohesion: 0.09
 Nodes (11): EditStore, full, ignite, install, InstallPromptEvent, InstallStore, Platform, MOBILE_BUILD (+3 more)
 
-### Community 66 - "[id]/+server.ts"
-Cohesion: 0.30
-Nodes (10): kanbanTasks, kanbanDb(), taskColumns, taskFields, DELETE(), PATCH(), patchBody, taskId() (+2 more)
-
 ### Community 67 - "checkAuth"
 Cohesion: 0.24
 Nodes (15): checkAuth(), getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), body, GET(), POST() (+7 more)
@@ -439,8 +434,8 @@ Cohesion: 0.12
 Nodes (27): CONTENT_TAGS, FATAL_TAGS, TAG_IDS, TagDef, GradeRequest, MAX_TEXT, ask(), block() (+19 more)
 
 ### Community 71 - "svelte/transition"
-Cohesion: 0.12
-Nodes (7): emails, i(), open, words, screenContext, previous, showNav
+Cohesion: 0.10
+Nodes (11): emails, i(), open, words, screenContext, previous, SUPPORT_EMAIL, SUPPORT_WHATSAPP (+3 more)
 
 ### Community 72 - "server/supabase.ts"
 Cohesion: 0.21
@@ -458,17 +453,21 @@ Nodes (14): FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), i
 Cohesion: 0.50
 Nodes (3): code, sql, { values, positionals }
 
-### Community 77 - "cron/reminders/+server.ts"
+### Community 77 - "[id]/+server.ts"
+Cohesion: 0.30
+Nodes (10): kanbanTasks, kanbanDb(), taskColumns, taskFields, DELETE(), PATCH(), patchBody, taskId() (+2 more)
+
+### Community 78 - "cron/reminders/+server.ts"
 Cohesion: 0.27
 Nodes (10): isPushEndpoint(), PUSH_HOSTS, pushEnabled, sendPush(), Subscription, authorized(), GET(), israelDay() (+2 more)
-
-### Community 78 - "localize.svelte.ts"
-Cohesion: 0.22
-Nodes (9): cache, ensureLoaded(), loaders, loading, localizeContent(), Table, tables, translate() (+1 more)
 
 ### Community 79 - "lessonProgress.svelte.ts"
 Cohesion: 0.12
 Nodes (13): activity, ActivityStore, dayKey(), load(), WEEKLY_GOAL, lessonProgress, LessonProgressStore, load() (+5 more)
+
+### Community 82 - "localize.svelte.ts"
+Cohesion: 0.22
+Nodes (9): cache, ensureLoaded(), loaders, loading, localizeContent(), Table, tables, translate() (+1 more)
 
 ### Community 83 - "Material"
 Cohesion: 0.25
@@ -538,9 +537,9 @@ Nodes (13): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), mo
 Cohesion: 0.15
 Nodes (12): Accounts (Supabase Auth, email + password), Builds, Feedback reports, Install and daily reminder (web), Plans, checkout, access, Platform: web, mobile, accounts, Progress sync, Routes (+4 more)
 
-### Community 102 - "support.ts"
-Cohesion: 0.25
-Nodes (4): SUPPORT_EMAIL, SUPPORT_WHATSAPP, TESTER_PHASE, TESTERS_GROUP
+### Community 102 - "feedback/rules.ts"
+Cohesion: 0.20
+Nodes (5): KEY, DEFAULT_RULES, resolveRules(), RULE_KEYS, RuleSet
 
 ### Community 103 - "QuizReport.svelte"
 Cohesion: 0.13
@@ -630,6 +629,10 @@ Nodes (15): primaryAction(), announce(), announcement, mistakes, pick(), row(), 
 Cohesion: 0.40
 Nodes (3): changed, invalidCount, saving
 
+### Community 133 - "lessonIcon.ts"
+Cohesion: 0.67
+Nodes (3): hashString(), ICONS, lessonIcon()
+
 ### Community 135 - "progress.ts"
 Cohesion: 0.25
 Nodes (18): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLastAttempt(), getResults(), hasStorage(), progressKey() (+10 more)
@@ -637,10 +640,6 @@ Nodes (18): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLas
 ### Community 136 - "Handoff: exam lock trusts the client's part count"
 Cohesion: 0.50
 Nodes (3): Fix, Handoff: exam lock trusts the client's part count, The gap
-
-### Community 137 - "lessonIcon.ts"
-Cohesion: 0.67
-Nodes (3): hashString(), ICONS, lessonIcon()
 
 ### Community 144 - "Handoff: text as blocks (future plan)"
 Cohesion: 0.40
@@ -669,10 +668,6 @@ Nodes (4): name, private, type, version
 ### Community 165 - "acceptedAnswers.ts"
 Cohesion: 0.70
 Nodes (4): expandAccepted(), expandPattern(), matchesAccepted(), normalize()
-
-### Community 182 - "feedback/rules.ts"
-Cohesion: 0.20
-Nodes (5): KEY, DEFAULT_RULES, resolveRules(), RULE_KEYS, RuleSet
 
 ### Community 190 - "UI review"
 Cohesion: 0.40

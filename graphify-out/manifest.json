@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793771303.4637408,
-    "ast_hash": "bd7735af4f0f5510aa402540ebe6767a",
+    "mtime": 1793771600.8172934,
+    "ast_hash": "ddd54ee037d99d5fa73821b7991ff952",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -2150,8 +2150,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/Captcha.svelte": {
-    "mtime": 1793035082.6415932,
-    "ast_hash": "59f4fc734c600ccd4dcbd531504e81dc",
+    "mtime": 1793771629.7786362,
+    "ast_hash": "8419fa651402258b417f91be56bf71a5",
     "semantic_hash": ""
   },
   "front/src/lib/components/ChatGateway.svelte": {

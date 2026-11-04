@@ -31,8 +31,12 @@
 <script lang="ts">
 	import { themeStore } from '$lib/theme.svelte';
 
-	// Invisible unless Cloudflare wants a click. Tokens are single-use: call reset()
-	// after every request that spent one.
+	// Invisible unless Cloudflare wants a click (or always shown, `visible`). Tokens are
+	// single-use: call reset() after every request that spent one. `status` lets a form
+	// hold its button until solved; 'failed' (blocked script) unlocks, Supabase decides.
+
+	type Props = { visible?: boolean; status?: 'pending' | 'solved' | 'failed' };
+	let { visible = false, status = $bindable() }: Props = $props();
 
 	let el: HTMLDivElement;
 	let api: Turnstile | undefined;
@@ -61,6 +65,7 @@
 
 	export function reset() {
 		token = null;
+		status = 'pending';
 		if (api && id) api.reset(id);
 	}
 
@@ -74,23 +79,26 @@
 					sitekey: CAPTCHA_KEY,
 					language: 'he',
 					theme: themeStore.resolved,
-					appearance: 'interaction-only',
+					appearance: visible ? 'always' : 'interaction-only',
 					callback: (value: string) => {
 						token = value;
 						broken = false;
+						status = 'solved';
 						settle(value);
 					},
-					'expired-callback': () => (token = null),
+					'expired-callback': () => ((token = null), (status = 'pending')),
 					'error-callback': (code: string) => {
 						console.warn('turnstile error', code);
 						token = null;
 						broken = true;
+						status = 'failed';
 						settle();
 					}
 				});
 			})
 			.catch(() => {
 				broken = true;
+				status = 'failed';
 				settle();
 			});
 		return () => {
@@ -102,4 +110,4 @@
 </script>
 
 <!-- Never display:none - Turnstile stalls in a hidden container. -->
-<div bind:this={el} class="flex justify-center"></div>
+<div bind:this={el} data-status={status} class="flex justify-center"></div>

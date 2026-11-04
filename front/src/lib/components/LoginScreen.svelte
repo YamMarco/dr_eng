@@ -50,6 +50,7 @@
 	let fix = $state<'resend' | 'existing' | null>(null);
 	let resent = $state(false);
 	let captcha = $state<ReturnType<typeof Captcha>>();
+	let captchaStatus = $state<'pending' | 'solved' | 'failed'>('pending');
 	/** Faces that call Supabase with a CAPTCHA token (recovery already has a session). */
 	let needsCaptcha = $derived(
 		!!CAPTCHA_KEY &&
@@ -331,7 +332,19 @@
 							</label>
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
-						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
+						{#if needsCaptcha}
+							<Captcha
+								bind:this={captcha}
+								bind:status={captchaStatus}
+								visible={mode === 'signup'}
+							/>
+						{/if}
+						<Button
+							type="submit"
+							{busy}
+							disabled={mode === 'signup' && needsCaptcha && captchaStatus === 'pending'}
+							>{busy ? t.busy : submitLabel}</Button
+						>
 
 						<div class="flex flex-wrap justify-between gap-x-2">
 							{#if mode === 'signin'}
@@ -370,9 +383,9 @@
 			</div>
 		{/key}
 
-		{#if needsCaptcha}
+		{#if needsCaptcha && mode === 'sent'}
 			<div class="mt-4">
-				<Captcha bind:this={captcha} />
+				<Captcha bind:this={captcha} bind:status={captchaStatus} />
 			</div>
 		{/if}
 
