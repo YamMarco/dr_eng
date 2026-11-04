@@ -33,6 +33,19 @@
 					{/each}
 				</ul>
 			{/if}
+			{#if section.links}
+				<ul class="flex flex-wrap gap-x-4 gap-y-1.5">
+					{#each section.links as link (link.href)}
+						<li>
+							<a
+								lang="en"
+								href={link.href}
+								class="font-semibold text-brand-dark underline hover:no-underline">{link.label}</a
+							>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</section>
 	{/each}
 </main>

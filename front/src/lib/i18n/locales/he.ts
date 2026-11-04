@@ -3,7 +3,13 @@ import { titlesHe } from './titles.he';
 /** A /privacy, /terms or /accessibility page: sections of paragraphs, then an optional list. */
 type LegalDoc = {
 	intro: string;
-	sections: { title: string; body?: string[]; items?: string[] }[];
+	/** `links`: English labels (rendered lang="en"), shown after the items. */
+	sections: {
+		title: string;
+		body?: string[];
+		items?: string[];
+		links?: { label: string; href: string }[];
+	}[];
 };
 
 export const he = {
@@ -1352,7 +1358,7 @@ export const he = {
 	},
 	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/handoffs/policies.md. */
 	legal: {
-		updated: 'עודכן לאחרונה: 03.11.2026',
+		updated: 'עודכן לאחרונה: 04.11.2026',
 		contact: 'support@engup.co.il',
 		privacy: {
 			intro:
@@ -1420,7 +1426,8 @@ export const he = {
 					items: [
 						'נשלחת רק התשובה עצמה, יחד עם השאלה. בלי שם, בלי מייל ובלי שום פרט שמזהה אתכם.',
 						'המידע נשלח רק כדי לבדוק ולענות, ולא משמש לאימון מודלים.',
-						'Vercel לא שומרת אותו. Google שומרת עותק עד 14 יום, כדי שנוכל לבדוק ולשפר את איכות המשוב ולזהות שימוש לרעה, ואז הוא נמחק.',
+						'עד 14 יום הצוות שלנו יכול לעיין בבדיקות, כדי לשפר את איכות המשוב.',
+						'Vercel ו-Google עשויות לשמור עותק לזמן מוגבל, לפי התנאים שלהן. הקישורים לתנאים בסעיף "עם מי המידע משותף".',
 						'הציון והמשוב של ה-AI הם הערכה לתרגול בלבד. הם עלולים לטעות, ואינם משפיעים על שום דבר מחוץ לאפליקציה.',
 						'אל תכתבו בתשובות פרטים אישיים שלא צריך.'
 					]
@@ -1429,16 +1436,28 @@ export const he = {
 					title: 'עם מי המידע משותף',
 					body: [
 						'אנחנו לא מוכרים מידע ולא מעבירים אותו למפרסמים. בתוך EngUp, רק אנשי צוות שצריכים את המידע לעבודתם יכולים לגשת אליו. נמסור מידע לרשויות רק אם החוק מחייב אותנו.',
-						'המידע משותף רק עם ספקי שירות שעובדים בשבילנו, ורק במה שהם צריכים כדי לתת את השירות:'
+						'המידע משותף רק עם ספקי שירות שעובדים בשבילנו, ורק במה שהם צריכים כדי לתת את השירות. כל ספק שומר ומעבד את המידע לפי התנאים ומדיניות הפרטיות שלו, בקישורים שבסוף הסעיף:'
 					],
 					items: [
 						'Supabase: מסד הנתונים והחשבונות (אירלנד).',
 						'Vercel: אחסון האתר, השרתים ושירות AI Gateway (ארה״ב ואירופה).',
 						'Google: מודל Gemini לבדיקת תשובות, ותיבת המייל של הצוות ב-Gmail (ארה״ב ועולמי).',
 						'Resend: שליחת מיילים, כמו אישור חשבון, איפוס סיסמה ודיווחי משוב (ארה״ב).',
-						'ImprovMX: העברת מיילים שנשלחים אלינו לתיבת הצוות. תוכן המיילים לא נשמר אצלו (צרפת וארה״ב).',
+						'ImprovMX: העברת מיילים שנשלחים אלינו לתיבת הצוות (צרפת וארה״ב).',
 						'כלי לניתוח שימוש: כדי להבין איך משתמשים באפליקציה ולשפר אותה. כשנוסיף אותו, נפרט כאן את שם הספק.',
 						'Cloudflare Turnstile: הגנה מפני רובוטים בהרשמה, בכניסה ובאיפוס סיסמה (ארה״ב ועולמי).'
+					],
+					links: [
+						{ label: 'Supabase', href: 'https://supabase.com/privacy' },
+						{ label: 'Vercel', href: 'https://vercel.com/legal/privacy-notice' },
+						{ label: 'Google Gemini API', href: 'https://ai.google.dev/gemini-api/terms' },
+						{ label: 'Google', href: 'https://policies.google.com/privacy' },
+						{ label: 'Resend', href: 'https://resend.com/legal/privacy-policy' },
+						{ label: 'ImprovMX', href: 'https://improvmx.com/privacy/' },
+						{
+							label: 'Cloudflare Turnstile',
+							href: 'https://www.cloudflare.com/turnstile-privacy-policy/'
+						}
 					]
 				},
 				{
@@ -1624,8 +1643,7 @@ export const he = {
 				{
 					title: 'ביטול והחזר כספי',
 					items: [
-						'תוך 3 ימים מהרכישה: מבטלים ומקבלים את כל הכסף בחזרה, בלי שאלות.',
-						'מהיום הרביעי ועד 14 יום מהרכישה: אפשר לבטל ולקבל החזר, בניכוי דמי ביטול של 5% מהמחיר או 100 ש״ח, הנמוך מביניהם.',
+						'תוך 14 יום מהרכישה: אפשר לבטל ולקבל החזר, בניכוי דמי ביטול של 5% מהמחיר או 100 ש״ח, הנמוך מביניהם, כפי שקובע חוק הגנת הצרכן.',
 						'שיעורים עם מורה שכבר התקיימו מנוכים מההחזר, לפי מחירם במסלול.',
 						'אחרי 14 יום: אין החזר. הגישה נשארת פתוחה עד סוף התקופה שרכשתם.',
 						'לביטול כתבו ל-support@engup.co.il מכתובת המייל של החשבון. ההחזר יינתן באמצעי התשלום שבו שילמתם, תוך 14 יום.'

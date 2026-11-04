@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793775532.5106516,
-    "ast_hash": "c77636ecfda5b90b393ade7eb6bc5d83",
+    "mtime": 1793796262.6689022,
+    "ast_hash": "3beaae34076fceaacd12d83b5ea734ab",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793733160.1357317,
-    "ast_hash": "f2ced1f20e46b99503db1baa99f86a7f",
+    "mtime": 1793793137.0645666,
+    "ast_hash": "c2c4b9cf3d26a387360681414285a5a9",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2175,8 +2175,8 @@
     "semantic_hash": ""
   },
   "emails/auth/README.md": {
-    "mtime": 1793035082.614821,
-    "ast_hash": "fe911d66be43ddbe505a1bdc0daf4873",
+    "mtime": 1793793137.0145879,
+    "ast_hash": "3ab2ba35ced3e46ad980a89080008136",
     "semantic_hash": ""
   },
   "emails/auth/confirm-signup.html": {
@@ -2185,8 +2185,8 @@
     "semantic_hash": ""
   },
   "docs/brand.md": {
-    "mtime": 1793040570.7870092,
-    "ast_hash": "0518830fb36b4605f74c55afbd56bc79",
+    "mtime": 1793793137.1734228,
+    "ast_hash": "802b4064caf7195bbb7e24e39d124cd7",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -2400,8 +2400,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1793731835.403367,
-    "ast_hash": "8ae0ac2e1f15d50a4891af3d6803727a",
+    "mtime": 1793796471.6782718,
+    "ast_hash": "bff739b9c4100fd2c811d592ad3fd888",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2450,13 +2450,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/site/LegalPage.svelte": {
-    "mtime": 1793460131.2102401,
-    "ast_hash": "81878e6ff9402a02050781163e431758",
+    "mtime": 1793796272.3200216,
+    "ast_hash": "32a5538b4ce18d598985d28cf4aae492",
     "semantic_hash": ""
   },
   "docs/handoffs/before-testers.md": {
-    "mtime": 1793463546.3347957,
-    "ast_hash": "8c49d0b9a1ffce8ea77e3bf6a18b523e",
+    "mtime": 1793793137.1176386,
+    "ast_hash": "24d9785ee7ed79721d0b94c98003d2cd",
     "semantic_hash": ""
   },
   "front/src/lib/focusTrap.ts": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/test-findings.md": {
-    "mtime": 1793785648.6744666,
-    "ast_hash": "35617519d7c67644314fc913ac1656ba",
+    "mtime": 1793786745.9589984,
+    "ast_hash": "0ff2e09f7e16503dad15f13da9adf3fb",
     "semantic_hash": ""
   },
   "docs/handoffs/testing-plan.md": {
