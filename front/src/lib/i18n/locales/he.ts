@@ -993,7 +993,7 @@ export const he = {
 		exampleLabel: 'בטקסט',
 		sentenceLabel: 'במשפט',
 		examLabel: 'ככה זה יכול להיראות בבחינה',
-		spellCopyPrompt: 'הקלידו את המילה שלמעלה',
+		spellCopyPrompt: 'הקלידו את המילה באנגלית',
 		spellListenPrompt: 'הקשיבו למילה והקלידו אותה',
 		inputPlaceholder: 'הקלידו כאן...',
 		correctFeedback: 'נכון!',

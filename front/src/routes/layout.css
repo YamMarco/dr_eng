@@ -31,14 +31,14 @@
 	--color-muted: #6b7280;
 	--color-line: #ece8e1;
 
-	--color-danger: #e76f51;
-	--color-danger-soft: #fdeae4;
+	--color-danger: #d14e2c;
+	--color-danger-soft: #fad5c9;
 
 	/* A wrong answer is data, not an alarm: answer feedback (picked-wrong
 	   option, missed word, "not passed" chips) uses this calm slate-navy
 	   instead of danger. danger stays for real errors and the final minutes. */
-	--color-miss: #4b5d7a;
-	--color-miss-soft: #e9edf3;
+	--color-miss: #3b4d6b;
+	--color-miss-soft: #d5ddea;
 
 	/* Passage-highlighter marks (PassageBody). Always light-toned so a fixed
 	   dark ink stays readable on top in both themes — see --color-mark-ink. */
@@ -79,10 +79,10 @@
 	--color-line: #2b3236;
 
 	--color-danger: #ee8267;
-	--color-danger-soft: #3a2019;
+	--color-danger-soft: #55291d;
 
-	--color-miss: #a9b8cf;
-	--color-miss-soft: #232b36;
+	--color-miss: #bccbe2;
+	--color-miss-soft: #2f3c50;
 
 	/* Dimmer than the light-mode marks so they don't glare against the dark
 	   canvas, but kept light enough that --color-mark-ink text still reads. */

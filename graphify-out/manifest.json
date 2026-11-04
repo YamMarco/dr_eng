@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793799820.729705,
-    "ast_hash": "f623827407ca9e0f0ddfee4185986463",
+    "mtime": 1793805191.3501003,
+    "ast_hash": "a3ae0c1aaf25383b91bfaf4285c44cc2",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/ExerciseKindBadge.svelte": {
-    "mtime": 1790526932.3175933,
-    "ast_hash": "241cc54ac664d9947027390315ae1605",
+    "mtime": 1793805228.2145863,
+    "ast_hash": "4b94bc975c562c2a3bfab0554790b34b",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
