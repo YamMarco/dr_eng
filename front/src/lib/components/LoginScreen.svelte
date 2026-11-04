@@ -41,8 +41,6 @@
 	let mode = $state<Mode>(auth.recovering ? 'recovery' : startWith);
 	let email = $state('');
 	let password = $state('');
-	/** Marketing emails: optional and unticked (anti-spam law). */
-	let updates = $state(false);
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
 	let busy = $state(false);
 	let failed = $state<string | null>(null);
@@ -83,7 +81,7 @@
 
 	let head = $derived(
 		mode === 'signup'
-			? [t.signUpTitle, t.signUpSubtitle]
+			? [t.signUpTitle, '']
 			: mode === 'forgot'
 				? [t.forgotTitle, t.forgotSubtitle]
 				: mode === 'recovery'
@@ -178,7 +176,7 @@
 		if (mode === 'signin') return run((token) => auth.signIn(address, password, token));
 		if (mode === 'signup')
 			return run(
-				(token) => auth.signUp(address, password, returnTo, token, updates),
+				(token) => auth.signUp(address, password, returnTo, token),
 				() => ((sentKind = 'confirm'), go('sent'))
 			);
 		if (mode === 'forgot')
@@ -317,14 +315,6 @@
 									>{t.consentAge}
 								</span>
 							</label>
-							<label class="flex items-start gap-2.5 text-sm leading-relaxed">
-								<input
-									type="checkbox"
-									bind:checked={updates}
-									class="mt-1 h-5 w-5 shrink-0 accent-brand"
-								/>
-								<span>{t.consentUpdates}</span>
-							</label>
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
 						<Button type="submit" {busy}>{busy ? t.busy : submitLabel}</Button>
@@ -337,7 +327,7 @@
 								<button type="button" class={linkBtn} onclick={() => go('forgot')}>
 									{t.forgot}
 								</button>
-							{:else if mode !== 'recovery'}
+							{:else if mode === 'forgot'}
 								<button type="button" class={linkBtn} onclick={() => go('signin')}>
 									{t.backToSignIn}
 								</button>
