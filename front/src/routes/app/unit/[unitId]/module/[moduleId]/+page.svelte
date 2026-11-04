@@ -106,7 +106,7 @@
 	}
 </script>
 
-<AppBar title={moduleName(mod, i18n.dict.unit.modulePrefix)} back="/app" />
+<AppBar title={moduleName(mod, i18n.dict.unit)} back="/app" />
 
 <main class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6">
 	{#if hero}

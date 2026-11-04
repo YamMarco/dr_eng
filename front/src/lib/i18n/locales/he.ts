@@ -727,7 +727,8 @@ export const he = {
 		lockedWhen: (time: string, today: boolean) => `${today ? 'היום' : 'מחר'} ב-${time}`
 	},
 	unit: {
-		modulePrefix: 'מודול'
+		modulePrefix: 'מודול',
+		cobeName: 'בחינה בעל פה'
 	},
 	module: {
 		examTitle: 'מבחנים'

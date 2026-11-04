@@ -14,7 +14,7 @@
 	let { item, groupId }: Props = $props();
 
 	let t = $derived(i18n.dict.home);
-	let moduleLabel = $derived(moduleName(modules[item.moduleId], i18n.dict.unit.modulePrefix));
+	let moduleLabel = $derived(moduleName(modules[item.moduleId], i18n.dict.unit));
 	const phone = new MediaQuery('pointer: coarse');
 
 	let view = $derived.by(() => {
