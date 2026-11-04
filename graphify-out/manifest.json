@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/ar.ts": {
-    "mtime": 1793805910.8422287,
-    "ast_hash": "9fa138bade7835104eae459b8ef7595f",
+    "mtime": 1793808321.2331352,
+    "ast_hash": "68021d366cd2aa11b7cd621854104937",
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793806900.283981,
-    "ast_hash": "7d0c3433867761a1560d63393beb9a9a",
+    "mtime": 1793808321.2331352,
+    "ast_hash": "13e0cf86539e5d41770c80e0c9dc8a06",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1360,8 +1360,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/settings/+page.svelte": {
-    "mtime": 1793771149.720029,
-    "ast_hash": "f6f479eb932bb01c40bada8fd1dbac9d",
+    "mtime": 1793808321.2331352,
+    "ast_hash": "247d83d4c9d4a49929d1e09efeff2cc0",
     "semantic_hash": ""
   },
   "front/src/routes/app/streak/+page.svelte": {

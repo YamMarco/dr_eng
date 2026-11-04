@@ -211,12 +211,6 @@
 				<span class="font-semibold">{i18n.dict.settings.version}</span>
 				<span class="text-sm text-muted" dir="ltr">{i18n.dict.settings.versionValue}</span>
 			</li>
-			<li class="px-5 py-4">
-				<span class="block font-semibold">{i18n.dict.settings.demoModeTitle}</span>
-				<span class="mt-1 block text-sm leading-relaxed text-muted">
-					{i18n.dict.settings.demoModeDesc}
-				</span>
-			</li>
 		</ul>
 	</section>
 

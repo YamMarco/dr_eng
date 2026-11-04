@@ -526,9 +526,7 @@ export const ar: DictionaryOverride = {
 		debugToolsDesc: 'إظهار زر تصحيح عائم في كل التطبيق',
 		aboutSection: 'حول التطبيق',
 		version: 'الإصدار',
-		versionValue: '0.1.0 (نسخة تجريبية محلية)',
-		demoModeTitle: 'وضع تجريبي',
-		demoModeDesc: 'هذه نسخة تجريبية محلية بدون اتصال بالإنترنت. التغييرات في هذه الشاشة لا تُحفظ.'
+		versionValue: '0.1.0'
 	},
 	book: {
 		title: 'حجز درس مع معلم',

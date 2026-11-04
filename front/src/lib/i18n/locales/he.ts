@@ -1235,9 +1235,7 @@ export const he = {
 		supportSubject: 'פנייה מהאפליקציה',
 		aboutSection: 'אודות',
 		version: 'גרסה',
-		versionValue: '0.1.0 (הדגמה מקומית)',
-		demoModeTitle: 'מצב הדגמה',
-		demoModeDesc: 'זהו דמו מקומי ללא חיבור לאינטרנט. שינויים במסך זה אינם נשמרים.'
+		versionValue: '0.1.0'
 	},
 	book: {
 		title: 'תיאום שיעור עם מורה',
