@@ -74,6 +74,8 @@
 
 	const input =
 		'w-full rounded-2xl border-2 border-line bg-canvas px-4 py-2 text-base sm:py-3 sm:text-lg focus:border-brand focus:outline-none';
+	// Only the two-column sign-up grid has a second column to span.
+	const span = $derived(mode === 'signup' ? 'sm:col-span-2' : '');
 	const linkBtn =
 		'min-h-11 rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]';
 	const legalLink = 'font-semibold text-brand-dark underline hover:no-underline';
@@ -324,7 +326,7 @@
 							</label>
 						{/if}
 						{#if needsPassword}
-							<label class="flex flex-col gap-1 text-sm font-semibold sm:col-span-2">
+							<label class="flex flex-col gap-1 text-sm font-semibold {span}">
 								<span>
 									{mode === 'recovery' ? t.newPasswordLabel : t.passwordLabel}
 									{#if mode !== 'signin'}
@@ -360,13 +362,13 @@
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
 						{#if needsCaptcha}
-							<div class="sm:col-span-2">
+							<div class={span}>
 								<Captcha bind:this={captcha} bind:status={captchaStatus} visible />
 							</div>
 						{/if}
 						<Button
 							type="submit"
-							class="sm:col-span-2"
+							class={span}
 							{busy}
 							disabled={needsCaptcha && captchaStatus === 'pending'}
 							>{busy ? t.busy : submitLabel}</Button

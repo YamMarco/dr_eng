@@ -67,7 +67,7 @@
 	});
 	// "Title – body" tips show the title bold.
 	let tips = $derived(
-		(data.mod.id === 'c' ? t.tipsC : t.tips).map((tip) => {
+		(data.mod.id === 'c' ? t.tipsC : data.mod.id === 'e' ? t.tipsE : t.tips).map((tip) => {
 			const [title, ...body] = tip.split(' – ');
 			return body.length ? { title, body: body.join(' – ') } : { title: '', body: tip };
 		})
