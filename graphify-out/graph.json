@@ -11510,7 +11510,7 @@
       "label": "Dictionary",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1735",
+      "source_location": "L1737",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -11523,7 +11523,7 @@
       "label": "DictionaryOverride",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1738",
+      "source_location": "L1740",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -57411,7 +57411,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1735",
+      "source_location": "L1737",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -57422,7 +57422,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1738",
+      "source_location": "L1740",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -81468,5 +81468,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9f9df9b7044c9bf1892d3d96858bcce1fb35fdf0"
+  "built_at_commit": "02209aa403896f5761b768e2c5668924e23ce297"
 }

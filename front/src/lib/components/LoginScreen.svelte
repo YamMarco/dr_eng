@@ -221,7 +221,7 @@
 			{/if}
 			{#if mode === 'signup'}
 				<button type="button" class={linkBtn} onclick={() => go('signin')}>
-					{t.backToSignIn}
+					{t.haveUser}
 				</button>
 			{/if}
 		</div>
@@ -260,7 +260,7 @@
 							otpSent = true;
 						}}
 					>
-						<label class="flex flex-col gap-1.5 text-sm font-semibold">
+						<label class="flex flex-col gap-1 text-sm font-semibold">
 							{t.phoneLabel}
 							<input
 								type="tel"
@@ -272,7 +272,7 @@
 							/>
 						</label>
 						{#if otpSent}
-							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+							<label class="flex flex-col gap-1 text-sm font-semibold">
 								{t.otpLabel}
 								<input
 									type="text"
@@ -293,7 +293,7 @@
 				{:else}
 					<form class="flex flex-col gap-3 sm:gap-4" onsubmit={submit}>
 						{#if needsEmail}
-							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+							<label class="flex flex-col gap-1 text-sm font-semibold">
 								{t.emailLabel}
 								<input
 									type="email"
@@ -306,7 +306,7 @@
 							</label>
 						{/if}
 						{#if mode === 'signup'}
-							<label class="flex flex-col gap-1.5 text-sm font-semibold">
+							<label class="flex flex-col gap-1 text-sm font-semibold">
 								{t.nameLabel}
 								<input
 									type="text"
@@ -318,8 +318,13 @@
 							</label>
 						{/if}
 						{#if needsPassword}
-							<label class="flex flex-col gap-1.5 text-sm font-semibold">
-								{mode === 'recovery' ? t.newPasswordLabel : t.passwordLabel}
+							<label class="flex flex-col gap-1 text-sm font-semibold">
+								<span>
+									{mode === 'recovery' ? t.newPasswordLabel : t.passwordLabel}
+									{#if mode !== 'signin'}
+										<span class="text-xs font-normal text-muted">· {t.passwordHint}</span>
+									{/if}
+								</span>
 								<input
 									type="password"
 									dir="ltr"
@@ -329,16 +334,15 @@
 									bind:value={password}
 									class={input}
 								/>
-								{#if mode !== 'signin'}
-									<span class="text-xs font-normal text-muted">{t.passwordHint}</span>
-								{/if}
 							</label>
 						{/if}
 						{#if mode === 'signup'}
 							<!-- Required. Links open a new tab, so the half-filled form stays. -->
 							<!-- eslint-disable svelte/no-navigation-without-resolve -->
-							<label class="flex items-start gap-2.5 text-sm leading-relaxed">
-								<input type="checkbox" required class="mt-1 h-5 w-5 shrink-0 accent-brand" />
+							<label
+								class="flex items-start gap-2.5 text-xs leading-snug sm:text-sm sm:leading-relaxed"
+							>
+								<input type="checkbox" required class="h-5 w-5 shrink-0 accent-brand" />
 								<span>
 									{t.consentLead}<a href={termsHref} target="_blank" class={legalLink}
 										>{t.consentTerms}</a
