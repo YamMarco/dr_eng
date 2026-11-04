@@ -122,7 +122,7 @@
 				<h2 class="mt-3 shrink-0 text-base font-bold">{taken ? t.prepAgainTitle : t.prepTitle}</h2>
 				{#if !lockedUntil}
 					<p class="mt-1 shrink-0 text-sm leading-relaxed text-muted">
-						{taken ? t.prepAgainDesc : t.prepDesc}
+						{taken ? t.prepAgainDesc : data.mod.id === 'e' ? t.prepDescE : t.prepDesc}
 					</p>
 				{/if}
 				<h3 class="mt-4 shrink-0 text-sm font-bold lg:mt-3">{t.tipsTitle}</h3>
