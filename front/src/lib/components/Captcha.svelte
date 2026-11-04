@@ -79,7 +79,7 @@
 					sitekey: CAPTCHA_KEY,
 					language: 'he',
 					theme: themeStore.resolved,
-					size: window.innerWidth < 380 ? 'compact' : 'normal',
+					size: window.innerWidth < 340 ? 'compact' : 'normal',
 					appearance: visible ? 'always' : 'interaction-only',
 					callback: (value: string) => {
 						token = value;

@@ -1,16 +1,16 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 508 files · ~472,298 words
+- 508 files · ~472,301 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2421 nodes · 4838 edges · 180 communities (132 shown, 48 thin omitted)
+- 2421 nodes · 4838 edges · 181 communities (133 shown, 48 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 105 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `580e9088`
+- Built from commit: `bea10be1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -150,8 +150,9 @@
 - Handoff: exam lock trusts the client's part count
 - sectionThemes.ts
 - dictionary-en-gb
-- screenshot.ts
+- support.ts
 - render.md
+- screenshot.ts
 - eslint-config-prettier
 - prettier-plugin-svelte
 - Handoff: text as blocks (future plan)
@@ -207,7 +208,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (180 total, 48 thin omitted)
+## Communities (181 total, 48 thin omitted)
 
 ### Community 1 - "CLI tools"
 Cohesion: 0.33
@@ -438,8 +439,8 @@ Cohesion: 0.12
 Nodes (27): CONTENT_TAGS, FATAL_TAGS, TAG_IDS, TagDef, GradeRequest, MAX_TEXT, ask(), block() (+19 more)
 
 ### Community 71 - "svelte/transition"
-Cohesion: 0.10
-Nodes (11): emails, i(), open, words, screenContext, previous, SUPPORT_EMAIL, SUPPORT_WHATSAPP (+3 more)
+Cohesion: 0.12
+Nodes (7): emails, i(), open, words, screenContext, previous, showNav
 
 ### Community 73 - "content-edit — the `/edit` and `/edit-exam` authoring workspaces"
 Cohesion: 0.22
@@ -606,7 +607,7 @@ Cohesion: 0.12
 Nodes (26): browserDictionaries(), bytes(), checkWriting(), ALWAYS_CAPITAL, CONNECTORS, issue(), mechanicsIssues(), sentenceSpans() (+18 more)
 
 ### Community 120 - "validate.ts"
-Cohesion: 0.16
+Cohesion: 0.17
 Nodes (16): bucketLabel(), Issue, screenIssues(), validateExam(), validateSection(), MarkAllSegment, markAllSegments(), checkScreen() (+8 more)
 
 ### Community 123 - "dependencies"
@@ -644,6 +645,10 @@ Nodes (18): attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLas
 ### Community 136 - "Handoff: exam lock trusts the client's part count"
 Cohesion: 0.50
 Nodes (3): Fix, Handoff: exam lock trusts the client's part count, The gap
+
+### Community 139 - "support.ts"
+Cohesion: 0.25
+Nodes (4): SUPPORT_EMAIL, SUPPORT_WHATSAPP, TESTER_PHASE, TESTERS_GROUP
 
 ### Community 144 - "Handoff: text as blocks (future plan)"
 Cohesion: 0.40

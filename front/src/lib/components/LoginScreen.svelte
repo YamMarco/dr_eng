@@ -73,7 +73,7 @@
 	});
 
 	const input =
-		'w-full rounded-2xl border-2 border-line bg-canvas px-4 py-3 text-lg focus:border-brand focus:outline-none';
+		'w-full rounded-2xl border-2 border-line bg-canvas px-4 py-2 text-base sm:py-3 sm:text-lg focus:border-brand focus:outline-none';
 	const linkBtn =
 		'min-h-11 rounded-lg px-2 text-sm font-semibold text-brand-dark hover:underline active:scale-[0.98]';
 	const legalLink = 'font-semibold text-brand-dark underline hover:no-underline';
@@ -210,10 +210,10 @@
 </script>
 
 <main
-	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-6 sm:max-w-md sm:py-12"
+	class="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-3 sm:max-w-md sm:py-12"
 >
 	{#if homeLink && !MOBILE_BUILD}
-		<a href={resolve('/')} class="{linkBtn} -ms-2 mb-4 flex w-fit items-center">
+		<a href={resolve('/')} class="{linkBtn} -ms-2 mb-1 flex w-fit items-center">
 			{t.backToSite}
 		</a>
 	{/if}
@@ -223,7 +223,7 @@
 			{note}
 		</p>{/if}
 
-	<div class="mt-6 rounded-3xl bg-surface p-4 shadow-md ring-1 ring-line/70 sm:mt-8 sm:p-6">
+	<div class="mt-4 rounded-3xl bg-surface p-4 shadow-md ring-1 ring-line/70 sm:mt-8 sm:p-6">
 		{#key mode}
 			<div in:fly={{ y: 12, duration: 250, easing: cubicOut }}>
 				{#if mode === 'sent'}
@@ -282,7 +282,7 @@
 						</button>
 					</form>
 				{:else}
-					<form class="flex flex-col gap-4" onsubmit={submit}>
+					<form class="flex flex-col gap-3 sm:gap-4" onsubmit={submit}>
 						{#if needsEmail}
 							<label class="flex flex-col gap-1.5 text-sm font-semibold">
 								{t.emailLabel}

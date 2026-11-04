@@ -2552,7 +2552,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 150,
+      "community": 151,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -2608,7 +2608,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 141,
+      "community": 150,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -3622,8 +3622,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_supportsection",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "supportsection.svelte"
     },
     {
@@ -6517,8 +6517,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_fields_textmarker",
-      "community": 120,
-      "community_name": "validate.ts",
+      "community": 57,
+      "community_name": "SlideStage.svelte",
       "norm_label": "textmarker.svelte"
     },
     {
@@ -18749,7 +18749,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_screenshot",
-      "community": 139,
+      "community": 141,
       "community_name": "screenshot.ts",
       "norm_label": "screenshot.ts"
     },
@@ -18761,7 +18761,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_overlay",
-      "community": 139,
+      "community": 141,
       "community_name": "screenshot.ts",
       "norm_label": "overlay()"
     },
@@ -18773,7 +18773,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_capturescreen",
-      "community": 139,
+      "community": 141,
       "community_name": "screenshot.ts",
       "norm_label": "capturescreen()"
     },
@@ -20647,8 +20647,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_support",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "support.ts"
     },
     {
@@ -20658,8 +20658,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "front_src_lib_support_support_email",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "support_email"
     },
     {
@@ -20669,8 +20669,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "front_src_lib_support_support_whatsapp",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "support_whatsapp"
     },
     {
@@ -20680,8 +20680,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_lib_support_testers_group",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "testers_group"
     },
     {
@@ -20691,8 +20691,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "front_src_lib_support_tester_phase",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "tester_phase"
     },
     {
@@ -20703,8 +20703,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_whatsapphref",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "whatsapphref()"
     },
     {
@@ -20715,8 +20715,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_support_emailhref",
-      "community": 71,
-      "community_name": "svelte/transition",
+      "community": 139,
+      "community_name": "support.ts",
       "norm_label": "emailhref()"
     },
     {
@@ -81468,5 +81468,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "580e9088e814c3e124c9606438fdf8bf7c20e78a"
+  "built_at_commit": "bea10be1a60d71050514738915d19dc0d4218159"
 }
