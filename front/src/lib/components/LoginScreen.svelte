@@ -345,10 +345,7 @@
 								visible={mode === 'signup'}
 							/>
 						{/if}
-						<Button
-							type="submit"
-							{busy}
-							disabled={needsCaptcha && captchaStatus === 'pending'}
+						<Button type="submit" {busy} disabled={needsCaptcha && captchaStatus === 'pending'}
 							>{busy ? t.busy : submitLabel}</Button
 						>
 
