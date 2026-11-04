@@ -1,7 +1,10 @@
 <script lang="ts">
-	// The logo's two "level up" chevrons leapfrogging upwards in a loop. Appears after a short
-	// delay, so a wait that ends at once never flashes it. `screen` centers it in
-	// the whole viewport. Color is currentColor (brand by default).
+	// Big waits (md/lg, screen): the logo's two "level up" chevrons leapfrogging
+	// upwards. Small inline waits (sm: buttons, checks): a plain spinning circle.
+	// Appears after a short delay, so a wait that ends at once never flashes it.
+	// Color is currentColor (brand by default).
+	import { LoaderCircle } from '@lucide/svelte';
+
 	type Props = {
 		size?: 'sm' | 'md' | 'lg';
 		/** Fill the page and center, for a route-level wait. */
@@ -23,7 +26,7 @@
 		class: extra = ''
 	}: Props = $props();
 
-	const box = { sm: 'h-4 w-4', md: 'h-8 w-8', lg: 'h-14 w-14' };
+	const box = { md: 'h-8 w-8', lg: 'h-14 w-14' };
 </script>
 
 <span
@@ -32,6 +35,9 @@
 		? 'min-h-dvh w-full flex-1'
 		: ''} {extra}"
 >
+	{#if size === 'sm'}
+		<LoaderCircle size={16} class="motion-safe:animate-spin" aria-hidden="true" />
+	{:else}
 	<svg viewBox="0 0 32 32" class="overflow-visible {box[size]}" aria-hidden="true">
 		{#each [0, 1] as i (i)}
 			<path
@@ -46,6 +52,7 @@
 			/>
 		{/each}
 	</svg>
+	{/if}
 	{#if showLabel}
 		<span class="text-sm font-semibold text-muted">{label}</span>
 	{:else}

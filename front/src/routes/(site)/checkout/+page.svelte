@@ -4,6 +4,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import Button from '$lib/components/Button.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 	import CodeField from '$lib/components/CodeField.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
@@ -43,6 +44,8 @@
 
 	let quote = $state<Quote | null>(null);
 	let busy = $state(false);
+	// Placing the order: a full-screen wait, kept on while the payment page loads.
+	let paying = $state(false);
 	let codeError = $state<string | null>(null);
 	let orderError = $state<string | null>(null);
 	let doneUntil = $state<string | null>(null);
@@ -75,17 +78,16 @@
 	});
 
 	async function submit() {
-		busy = true;
+		busy = paying = true;
 		orderError = null;
 		try {
 			const result = await placeOrder(plan.id, quote?.coupon?.code ?? null);
-			if (result.status === 'redirect') location.href = result.url;
-			else doneUntil = result.accessUntil;
+			if (result.status === 'redirect') return void (location.href = result.url);
+			doneUntil = result.accessUntil;
 		} catch (error) {
 			orderError = errorText(error);
-		} finally {
-			busy = false;
 		}
+		busy = paying = false;
 	}
 
 	function setCobe(on: boolean) {
@@ -244,4 +246,13 @@
 			{/if}
 		</section>
 	</main>
+{/if}
+
+<!-- Back from the payment page restores this one from the cache, mid-wait. -->
+<svelte:window onpageshow={(e) => e.persisted && (busy = paying = false)} />
+
+{#if paying}
+	<div class="fixed inset-0 z-50 flex bg-canvas/95">
+		<Loader screen size="lg" showLabel label={t.paying} />
+	</div>
 {/if}

@@ -440,6 +440,7 @@ export const he = {
 		activate: 'הפעלת הגישה',
 		pay: 'מעבר לתשלום',
 		checking: 'בודקים...',
+		paying: 'רגע, מאשרים את ההזמנה...',
 		bumpTitle: 'להוסיף את COBE?',
 		bumpBody: (price: string) => `תרגול לבחינה בעל פה עם שיחת AI, רק ${price} ₪ לחודש.`,
 		passLine: (months: number) => `גישה עד 30.6 (${months} חודשים)`,
