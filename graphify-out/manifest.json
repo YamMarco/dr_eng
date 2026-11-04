@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1793806409.6348512,
-    "ast_hash": "0e000c8c1989d09f507712ec30349362",
+    "mtime": 1793806980.6588821,
+    "ast_hash": "51ab3f9f2a998bd0809485009e4197e1",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2637,11 +2637,6 @@
   "front/tests/refund.test.ts": {
     "mtime": 1793799806.7635367,
     "ast_hash": "7292ea51848d720f448adde821fe97b3",
-    "semantic_hash": ""
-  },
-  "front/src/routes/(admin)/loader-lab/+page.svelte": {
-    "mtime": 1793806331.8848755,
-    "ast_hash": "166651d92e1e07289b0599ac2577b91a",
     "semantic_hash": ""
   }
 }
