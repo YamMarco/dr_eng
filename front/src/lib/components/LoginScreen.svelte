@@ -354,11 +354,7 @@
 							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						{/if}
 						{#if needsCaptcha}
-							<Captcha
-								bind:this={captcha}
-								bind:status={captchaStatus}
-								visible={mode === 'signup'}
-							/>
+							<Captcha bind:this={captcha} bind:status={captchaStatus} visible />
 						{/if}
 						<Button type="submit" {busy} disabled={needsCaptcha && captchaStatus === 'pending'}
 							>{busy ? t.busy : submitLabel}</Button

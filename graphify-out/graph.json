@@ -1031,8 +1031,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "front_package_devdependencies_eslint_config_prettier",
-      "community": 142,
-      "community_name": "eslint-config-prettier",
+      "community": 89,
+      "community_name": "devDependencies",
       "norm_label": "eslint-config-prettier"
     },
     {
@@ -1042,8 +1042,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "eslint_config_prettier",
-      "community": 142,
-      "community_name": "eslint-config-prettier",
+      "community": 89,
+      "community_name": "devDependencies",
       "norm_label": "eslint-config-prettier"
     },
     {
@@ -1075,8 +1075,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "front_package_devdependencies_globals",
-      "community": 89,
-      "community_name": "devDependencies",
+      "community": 141,
+      "community_name": "globals",
       "norm_label": "globals"
     },
     {
@@ -1086,8 +1086,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "globals",
-      "community": 89,
-      "community_name": "devDependencies",
+      "community": 141,
+      "community_name": "globals",
       "norm_label": "globals"
     },
     {
@@ -2608,7 +2608,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 141,
+      "community": 142,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -81468,5 +81468,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "02209aa403896f5761b768e2c5668924e23ce297"
+  "built_at_commit": "37e04e03e8b49819bb0b150a1ba214173297e3e2"
 }

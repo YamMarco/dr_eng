@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-11-04)
 
 ## Corpus Check
-- 508 files · ~472,325 words
+- 508 files · ~472,323 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `02209aa4`
+- Built from commit: `37e04e03`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -152,7 +152,7 @@
 - dictionary-en-gb
 - screenshot.ts
 - render.md
-- eslint-config-prettier
+- globals
 - prettier-plugin-svelte
 - Handoff: text as blocks (future plan)
 - service-worker.ts
@@ -491,7 +491,7 @@ Nodes (11): countValidWords(), isCopiedWhole(), lengthReport(), MAX_WORDS, MIN_W
 
 ### Community 89 - "devDependencies"
 Cohesion: 0.08
-Nodes (25): @axe-core/playwright, dictionary-en, drizzle-kit, eslint, eslint-plugin-svelte, devDependencies, @axe-core/playwright, dictionary-en (+17 more)
+Nodes (25): @axe-core/playwright, dictionary-en, drizzle-kit, eslint, eslint-config-prettier, eslint-plugin-svelte, devDependencies, @axe-core/playwright (+17 more)
 
 ### Community 90 - "Handoff: About page, after launch"
 Cohesion: 0.40
