@@ -4,6 +4,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import Captcha, { CAPTCHA_KEY } from '$lib/components/Captcha.svelte';
 	import { NAME_MAX } from '$lib/profile.svelte';
+	import { suggestEmail } from '$lib/emailTypo';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { afterNavigate, replaceState } from '$app/navigation';
@@ -40,6 +41,8 @@
 	// svelte-ignore state_referenced_locally
 	let mode = $state<Mode>(auth.recovering ? 'recovery' : startWith);
 	let email = $state('');
+	/** A corrected address to offer after leaving the email field (mistyped domain). */
+	let emailHint = $state<string | null>(null);
 	let password = $state('');
 	let name = $state('');
 	let sentKind = $state<'confirm' | 'reset'>('confirm');
@@ -170,6 +173,7 @@
 	function go(next: Mode) {
 		mode = next;
 		otpSent = false;
+		emailHint = null;
 		failed = null;
 		fix = null;
 		resent = false;
@@ -244,15 +248,29 @@
 				{#if mode === 'sent'}
 					<div class="flex flex-col gap-4">
 						<p class="leading-relaxed">
-							{#if sentKind === 'confirm'}
-								{t.confirmSent} <span class="font-semibold" dir="ltr">{email.trim()}</span>.
-								{t.confirmThenSignIn}
-							{:else}
-								{t.resetSent}
-							{/if}
+							{sentKind === 'confirm' ? t.confirmSent : t.resetSent}
 						</p>
+						<!-- The address, large: a typo here is a silent dead end (the email bounces). -->
+						<div class="rounded-2xl bg-canvas px-4 py-3 ring-1 ring-line/70">
+							{#if sentKind === 'reset'}
+								<span class="block text-xs text-muted">{t.enteredAddress}</span>
+							{/if}
+							<span class="block text-lg font-bold break-all" dir="ltr" data-sent-address>
+								{email.trim()}
+							</span>
+						</div>
 						{#if sentKind === 'confirm'}
-							<button type="button" class={linkBtn} disabled={busy} onclick={resend}>
+							<p class="leading-relaxed">{t.confirmThenSignIn}</p>
+						{/if}
+						<button
+							type="button"
+							class="{linkBtn} self-start"
+							onclick={() => go(sentKind === 'confirm' ? 'signup' : 'forgot')}
+						>
+							{t.wrongAddress}
+						</button>
+						{#if sentKind === 'confirm'}
+							<button type="button" class="{linkBtn} self-start" disabled={busy} onclick={resend}>
 								{t.resendConfirm}
 							</button>
 						{/if}
@@ -302,17 +320,37 @@
 						onsubmit={submit}
 					>
 						{#if needsEmail}
-							<label class="flex flex-col gap-1 text-sm font-semibold">
-								{t.emailLabel}
-								<input
-									type="email"
-									dir="ltr"
-									required
-									autocomplete="email"
-									bind:value={email}
-									class={input}
-								/>
-							</label>
+							<div class="flex flex-col gap-1">
+								<label class="flex flex-col gap-1 text-sm font-semibold">
+									{t.emailLabel}
+									<input
+										type="email"
+										dir="ltr"
+										required
+										autocomplete="email"
+										bind:value={email}
+										oninput={() => (emailHint = null)}
+										onblur={() => (emailHint = suggestEmail(email.trim()))}
+										class={input}
+									/>
+								</label>
+								{#if emailHint}
+									<!-- A suggestion only: other domains (a school's) are fine. -->
+									<p class="text-xs sm:text-sm" role="status">
+										{t.didYouMean}<bdi dir="ltr" class="font-semibold">{emailHint}</bdi>?
+										<button
+											type="button"
+											class="min-h-8 font-semibold text-brand-dark underline"
+											onclick={() => {
+												email = emailHint ?? email;
+												emailHint = null;
+											}}
+										>
+											{t.fixAddress}
+										</button>
+									</p>
+								{/if}
+							</div>
 						{/if}
 						{#if mode === 'signup'}
 							<label class="flex flex-col gap-1 text-sm font-semibold">

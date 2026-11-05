@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1793885977.1717498,
-    "ast_hash": "694e9c5023f8a2c60ec2a03691cb53cf",
+    "mtime": 1793886727.2663214,
+    "ast_hash": "56869e3afb4c1dc80965e09e0aee4944",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793875621.2258005,
-    "ast_hash": "a12927d5141fb3df372018e15ed9e377",
+    "mtime": 1793886765.842442,
+    "ast_hash": "5df3f80f1296a780d66bef193714825e",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/test-findings.md": {
-    "mtime": 1793886388.9386303,
-    "ast_hash": "2ec1065256453b3bbf63d3076851491e",
+    "mtime": 1793887090.970619,
+    "ast_hash": "3a2ad25d2c6477f792afc6d4d5e17eb1",
     "semantic_hash": ""
   },
   "docs/handoffs/testing-plan.md": {
@@ -2635,8 +2635,8 @@
     "semantic_hash": ""
   },
   "front/e2e/accounts.spec.ts": {
-    "mtime": 1793886010.4881518,
-    "ast_hash": "16ebaf3212f03f3c8a9b1b0cae3f2b99",
+    "mtime": 1793886765.9440377,
+    "ast_hash": "f057fc31d14bff6b1f623966771fcadb",
     "semantic_hash": ""
   },
   "front/e2e/personas.spec.ts": {
@@ -2697,6 +2697,16 @@
   "front/src/lib/components/HoldToConfirm.svelte": {
     "mtime": 1793886010.5933304,
     "ast_hash": "d7f8ea6cb9bd8c55a7d62c2242dd7e78",
+    "semantic_hash": ""
+  },
+  "front/src/lib/emailTypo.ts": {
+    "mtime": 1793886712.2049387,
+    "ast_hash": "e8e657bab163faf73a2c5c308609961d",
+    "semantic_hash": ""
+  },
+  "front/tests/email-typo.test.ts": {
+    "mtime": 1793886712.6281395,
+    "ast_hash": "346f6f6a9d75dc5fc0e3cf459d6afcad",
     "semantic_hash": ""
   }
 }

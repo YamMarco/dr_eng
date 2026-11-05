@@ -719,6 +719,110 @@ test('delete account: assistive technology (a plain click) arms it, the next cli
 	await ctx.close();
 });
 
+test('a mistyped email domain gets a "did you mean" hint; other domains do not', async ({
+	browser,
+	baseURL
+}) => {
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.goto(`${baseURL}/app`);
+	const email = page.getByLabel(t.emailLabel);
+	await expect(email).toBeVisible({ timeout: 20_000 });
+	await email.fill('dana@gamil.com');
+	await email.blur();
+	await expect(page.getByText(t.didYouMean)).toContainText('dana@gmail.com');
+	// The label keeps its own name: the hint is not part of it.
+	await expect(page.getByLabel(t.emailLabel, { exact: true })).toBeVisible();
+	await page.getByRole('button', { name: t.fixAddress }).click();
+	await expect(email).toHaveValue('dana@gmail.com');
+	await expect(page.getByText(t.didYouMean)).toHaveCount(0);
+	// Real, school and custom domains are left alone; typing again clears an old hint.
+	for (const ok of ['dana@gmail.com', 'dana@edu.gov.il', 'dana@ort.org.il']) {
+		await email.fill(ok);
+		await email.blur();
+		await expect(page.getByText(t.didYouMean)).toHaveCount(0);
+	}
+	await email.fill('dana@icloud.con');
+	await email.blur();
+	await expect(page.getByText(t.didYouMean)).toBeVisible();
+	await email.fill('dana@icloud.co');
+	await expect(page.getByText(t.didYouMean)).toHaveCount(0);
+	await ctx.close();
+});
+
+// The "check your email" screen, with the answers of Supabase and Cloudflare stubbed: nothing is
+// sent and no account is made.
+async function stubbed(browser: Browser) {
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.route('**/challenges.cloudflare.com/turnstile/v0/api.js*', (route) =>
+		route.fulfill({
+			contentType: 'text/javascript',
+			body: `window.turnstile={render:(el,o)=>{setTimeout(()=>o.callback('stub-token'),50);return 'w'},reset(){},remove(){}};`
+		})
+	);
+	await page.route('**/auth/v1/signup*', async (route) => {
+		const body = route.request().postDataJSON() as { email: string };
+		await route.fulfill({
+			contentType: 'application/json',
+			body: JSON.stringify({
+				id: crypto.randomUUID(),
+				aud: 'authenticated',
+				role: '',
+				email: body.email,
+				identities: [{ identity_id: crypto.randomUUID(), provider: 'email' }],
+				user_metadata: {},
+				app_metadata: { provider: 'email' },
+				created_at: new Date().toISOString()
+			})
+		});
+	});
+	await page.route('**/auth/v1/recover*', (route) =>
+		route.fulfill({ contentType: 'application/json', body: '{}' })
+	);
+	return { ctx, page };
+}
+
+test('check your email: the address is shown large and "wrong address?" goes back with it filled in', async ({
+	browser,
+	baseURL
+}) => {
+	const { ctx, page } = await stubbed(browser);
+	const typed = 'martina@icloud.con';
+	await page.goto(`${baseURL}/app`);
+	await page.getByRole('button', { name: t.toSignUp }).click();
+	await page.getByLabel(t.emailLabel).fill(typed);
+	await page.getByLabel(/^סיסמה/).fill('Some-Password-123!');
+	await page.getByRole('checkbox').first().check();
+	await page.getByRole('button', { name: t.signUp, exact: true }).click();
+	await expect(page.getByRole('heading', { name: t.checkEmailTitle })).toBeVisible({
+		timeout: 20_000
+	});
+	await expect(page.locator('[data-sent-address]')).toHaveText(typed);
+	await page.getByRole('button', { name: t.wrongAddress }).click();
+	await expect(page.getByRole('heading', { name: t.signUpTitle })).toBeVisible();
+	await expect(page.getByLabel(t.emailLabel)).toHaveValue(typed);
+	await ctx.close();
+});
+
+test('reset sent: the address is shown too, and "wrong address?" returns to the reset form', async ({
+	browser,
+	baseURL
+}) => {
+	const { ctx, page } = await stubbed(browser);
+	const typed = 'dana@gmail.com';
+	await page.goto(`${baseURL}/app`);
+	await page.getByRole('button', { name: t.forgot }).click();
+	await page.getByLabel(t.emailLabel).fill(typed);
+	await page.getByRole('button', { name: t.sendLink, exact: true }).click();
+	await expect(page.getByText(t.enteredAddress)).toBeVisible({ timeout: 20_000 });
+	await expect(page.locator('[data-sent-address]')).toHaveText(typed);
+	await page.getByRole('button', { name: t.wrongAddress }).click();
+	await expect(page.getByRole('heading', { name: t.forgotTitle })).toBeVisible();
+	await expect(page.getByLabel(t.emailLabel)).toHaveValue(typed);
+	await ctx.close();
+});
+
 test('captcha script that never arrives: the form says it is checking, then explains', async ({
 	browser,
 	baseURL
