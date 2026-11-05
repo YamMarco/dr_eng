@@ -25,8 +25,8 @@
 <div class="flex flex-col gap-1 font-semibold">{@html mdBlock(screen.intro, { cards: true })}</div>
 <ol class="mt-4 flex flex-col gap-3">
 	{#each screen.prompts as prompt (prompt)}
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<li class="rounded-2xl bg-surface p-4 ring-1 shadow-overlay/5 ring-line/70">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html mdBlock(prompt)}
 		</li>
 	{/each}

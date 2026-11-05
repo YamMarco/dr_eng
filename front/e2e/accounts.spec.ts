@@ -6,7 +6,7 @@
 //   node_modules is a junction)   then   E2E_ACCOUNTS=1 E2E_PORT=5199 npm run e2e:accounts
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import postgres from 'postgres';
-import { test, expect, type APIRequestContext, type Browser } from '@playwright/test';
+import { test, expect, type Browser } from '@playwright/test';
 import { playThrough } from './fixtures';
 
 test.skip(!process.env.E2E_ACCOUNTS, 'set E2E_ACCOUNTS=1 (creates and deletes test users)');

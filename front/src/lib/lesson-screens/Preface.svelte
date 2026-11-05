@@ -23,7 +23,7 @@
 	}
 </script>
 
-<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 <div class="flex flex-col gap-1 text-lg leading-relaxed" dir={screen.dir ?? undefined}>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html mdBlock(screen.text, { cards: true })}
 </div>

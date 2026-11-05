@@ -81,6 +81,7 @@
 
 	// Timer ids measured by screens in this lesson (what a time-result can show).
 	let timerIds = $derived.by(() => {
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a local, not state
 		const ids = new Set<string>();
 		for (const r of (isExam ? undefined : editModel.node(nodeId))?.content.rounds ?? [])
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -285,7 +286,7 @@
 					class="border-s border-line px-2 py-1 font-mono text-xs hover:bg-line/60"
 					title="קוד"
 					onmousedown={(e) => e.preventDefault()}
-					onclick={formatCode}>{'<>'}</button
+					onclick={formatCode}>&lt;&gt;</button
 				>
 				<button
 					type="button"

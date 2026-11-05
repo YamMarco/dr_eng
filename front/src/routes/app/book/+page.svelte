@@ -9,6 +9,7 @@
 	// Mock availability — same slots every workday.
 	const TIME_SLOTS = ['16:00', '16:45', '17:30', '18:15', '19:00'];
 
+	// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a local, not state
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 

@@ -80,8 +80,10 @@
 	function pick(id: string, additive: boolean) {
 		editModel.select(id);
 		if (additive) {
+			// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a copy assigned back to the state
 			const next = new Set(picked);
-			next.has(id) ? next.delete(id) : next.add(id);
+			if (next.has(id)) next.delete(id);
+			else next.add(id);
 			picked = next;
 		} else {
 			picked = new Set([id]);
@@ -195,6 +197,7 @@
 				return box.left < x1 && box.right > x0 && box.top < y1 && box.bottom > y0;
 			});
 			if (hit.length) {
+				// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a copy assigned back to the state
 				const next = new Set(picked);
 				for (const n of hit) next.add(n.id);
 				picked = next;

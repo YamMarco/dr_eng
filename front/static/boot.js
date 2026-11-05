@@ -5,9 +5,11 @@
 	// window.localStorage throws. Swap in an in-memory one, so the app runs for this visit.
 	['localStorage', 'sessionStorage'].forEach(function (name) {
 		try {
-			window[name].length;
+			void window[name].length;
 			return;
-		} catch (e) {}
+		} catch (e) {
+			// refused: fall through to the in-memory one
+		}
 		var data = {};
 		var api = {
 			getItem: function (k) {
@@ -40,7 +42,9 @@
 		});
 		try {
 			Object.defineProperty(window, name, { value: memory, configurable: true });
-		} catch (e) {}
+		} catch (e) {
+			// not replaceable: the app's own guards take over
+		}
 	});
 	try {
 		// Theme: no light-mode flash for dark/system users.
@@ -57,5 +61,7 @@
 				break;
 			}
 		}
-	} catch (e) {}
+	} catch (e) {
+		// no storage at all: the page still works, in the default theme
+	}
 })();
