@@ -63,6 +63,7 @@ Fixed (isolated):
 - [x] **Fast taps between pages threw unhandled "navigation aborted" / "Transition was skipped"** (`+layout.svelte` view transition): the expected rejections are caught.
 - [x] **Hyphenated words were spell-checked in pieces**: "pre-approved" flagged "pre" and the auto-fix sent "ere-approved" to the grader. Common prefixes (pre, re, co, ex, non, anti, ...) before a hyphen are accepted; the rest of the word is still checked (`checks/typos.ts`, `tests/typos.test.ts`).
 - [x] **Storage blocked entirely** (all cookies off: reading `localStorage` throws `SecurityError`) crashed the app. `static/boot.js`, the first script on every page, swaps in an in-memory storage when the real one throws; the visit works, nothing is saved.
+- [x] **Every page downloaded the 1.1 MB lesson content** (the root layout imported the dev-only `DebugTooltip`, which imports lesson progress and the content). Now loaded on demand, only for staff: public pages and settings went from ~1.4 MB to ~0.3 MB of JS. `/app` and lessons still load the content (see to fix later).
 
 ## Real LLM through the UI (`e2e/real-ai.spec.ts`, `npm run e2e:realai`)
 
@@ -75,7 +76,7 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 ## To fix later (not isolated, or low value)
 
-- [ ] **Lazy-load lesson content per module** (see above): imported by `lessonProgress.svelte.ts` / `lessonPath.ts` / `dashboard/data.ts`, which the root layout pulls in. Needs a metadata-only index (ids, titles, counts) for the shell and the lessons loaded when a module or lesson opens. Biggest win for slow phones.
+- [ ] **Lazy-load lesson content for `/app`** (the dashboard still downloads the 1.1 MB content chunk, 264 KB gzipped): `dashboard/data.ts`, `lessonPath.ts`, `lessonProgress.svelte.ts` import it synchronously. Needs a metadata-only index (ids, titles, counts) for the shell and lessons loaded when a module or lesson opens.
 
 
 - [ ] **Malformed `%` in a URL** (`/app/unit/%E0%A4%A/module/c`): the server answers a proper 400 page, but SvelteKit's client router logs "URI malformed". Framework; low.

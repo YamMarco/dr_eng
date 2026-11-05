@@ -2,7 +2,6 @@
 	import '@fontsource-variable/heebo';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { navigating } from '$app/state';
 	import Loader from '$lib/components/Loader.svelte';
@@ -79,6 +78,9 @@
 	/>
 {/if}
 
+<!-- Loaded on demand: it imports the lesson content, which every page would otherwise download. -->
 {#if debugStore.enabled}
-	<DebugTooltip />
+	{#await import('$lib/components/DebugTooltip.svelte') then { default: DebugTooltip }}
+		<DebugTooltip />
+	{/await}
 {/if}
