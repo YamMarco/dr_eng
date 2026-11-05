@@ -6,8 +6,7 @@
 	import { NAME_MAX } from '$lib/profile.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
-	import { onMount } from 'svelte';
-	import { replaceState } from '$app/navigation';
+	import { afterNavigate, replaceState } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { MOBILE_BUILD } from '$lib/platform';
 
@@ -57,8 +56,9 @@
 			(mode === 'signin' || mode === 'signup' || mode === 'forgot' || mode === 'sent')
 	);
 
-	// An expired or used email link comes back with the error in the URL.
-	onMount(() => {
+	// An expired or used email link comes back with the error in the URL. Runs once the router
+	// is ready (on first load, replaceState before that throws and crashes the page).
+	afterNavigate(() => {
 		const params = new URLSearchParams(location.hash.slice(1) || location.search);
 		const code = params.get('error_code');
 		if (!code) return;

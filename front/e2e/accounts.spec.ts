@@ -7,7 +7,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import postgres from 'postgres';
 import { test, expect, type Browser } from '@playwright/test';
-import { playThrough } from './fixtures';
+import { playThrough, he } from './fixtures';
 
 test.skip(!process.env.E2E_ACCOUNTS, 'set E2E_ACCOUNTS=1 (creates and deletes test users)');
 test.describe.configure({ mode: 'serial' });
@@ -453,4 +453,110 @@ test('exam lock: a new attempt within 24h of a finished one answers 429, after 2
 		}
 	});
 	expect(other.status()).not.toBe(429);
+});
+
+// ---------------------------------------------------------------------------------------------
+// Email links. The admin API makes the same links the emails carry (no CAPTCHA, no email sent).
+// Supabase's verify URL is followed without a browser; its redirect (tokens or an error in the
+// fragment) is replayed on the app under test, which is what a student's click lands on.
+const t = he.login;
+
+async function landing(
+	baseURL: string,
+	type: 'signup' | 'recovery',
+	email: string,
+	extra: Record<string, unknown> = {}
+): Promise<{ url: string; link: string }> {
+	const { data, error } = await admin.auth.admin.generateLink({
+		type,
+		email,
+		...extra,
+		options: { redirectTo: `${baseURL}/app`, ...(extra.options as object) }
+	} as Parameters<typeof admin.auth.admin.generateLink>[0]);
+	if (error) throw error;
+	const link = data.properties.action_link;
+	const res = await fetch(link, { redirect: 'manual' });
+	const where = res.headers.get('location');
+	if (!where) throw new Error(`no redirect from the verify link (${res.status})`);
+	const target = new URL(where);
+	return { url: `${baseURL}/app${target.search}${target.hash}`, link };
+}
+
+test('sign-up link: confirms the email, signs in, keeps consent and name', async ({
+	browser,
+	baseURL
+}) => {
+	const email = `e2e-${run}-conf@example.com`;
+	const at = new Date().toISOString();
+	const { url } = await landing(baseURL!, 'signup', email, {
+		password: crypto.randomUUID() + 'Aa1!',
+		options: { data: { terms_accepted_at: at, marketing_consent_at: at, name: 'e2e' } }
+	});
+	// generateLink created the user: remember it for the cleanup.
+	const created = (await admin.auth.admin.listUsers({ perPage: 1000 })).data.users.find(
+		(u) => u.email === email
+	)!;
+	users.conf = { id: created.id, email, token: '', session: null };
+
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.goto(url);
+	// Signed in, no plan yet: the paywall, not the login screen.
+	await expect(page.getByRole('heading', { name: 'עוד צעד אחד' })).toBeVisible({ timeout: 20_000 });
+	const { data } = await admin.auth.admin.getUserById(created.id);
+	expect(data.user?.email_confirmed_at, 'email confirmed').toBeTruthy();
+	expect(data.user?.user_metadata).toMatchObject({
+		terms_accepted_at: at,
+		marketing_consent_at: at,
+		name: 'e2e'
+	});
+	await ctx.close();
+});
+
+test('reset link: asks for a new password, rejects a weak one, saves a good one', async ({
+	browser,
+	baseURL
+}) => {
+	const u = await makeUser('rec');
+	users.rec = u;
+	const { url } = await landing(baseURL!, 'recovery', u.email);
+
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.goto(url);
+	await expect(page.getByRole('heading', { name: t.recoveryTitle })).toBeVisible({
+		timeout: 20_000
+	});
+	// Verifying the link already touched the user: compare from here.
+	const before = (await admin.auth.admin.getUserById(u.id)).data.user!.updated_at;
+	const field = page.getByLabel(t.newPasswordLabel);
+	// Too short: stays on the form, nothing changes.
+	await field.fill('a');
+	await page.getByRole('button', { name: t.savePassword }).click();
+	await expect(page.getByRole('heading', { name: t.recoveryTitle })).toBeVisible();
+	expect((await admin.auth.admin.getUserById(u.id)).data.user!.updated_at).toBe(before);
+	// A good one: saved, and the app opens (no plan: the paywall).
+	await field.fill(crypto.randomUUID() + 'Bb2!');
+	await page.getByRole('button', { name: t.savePassword }).click();
+	await expect(page.getByRole('heading', { name: 'עוד צעד אחד' })).toBeVisible({ timeout: 20_000 });
+	expect((await admin.auth.admin.getUserById(u.id)).data.user!.updated_at).not.toBe(before);
+	await ctx.close();
+});
+
+test('a used or expired link says so and offers the login', async ({ browser, baseURL }) => {
+	const u = await makeUser('used');
+	users.used = u;
+	const first = await landing(baseURL!, 'recovery', u.email);
+	expect(first.url).toContain('access_token');
+	// The same link again: Supabase answers with an error in the URL.
+	const again = await fetch(first.link, { redirect: 'manual' });
+	const where = new URL(again.headers.get('location')!);
+	expect(where.hash + where.search).toContain('otp_expired');
+
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.goto(`${baseURL}/app${where.search}${where.hash}`);
+	await expect(page.getByText(t.errors.linkExpired)).toBeVisible({ timeout: 20_000 });
+	await expect(page.getByRole('heading', { name: t.title })).toBeVisible();
+	await ctx.close();
 });
