@@ -3,14 +3,14 @@
 // what "continue" resumes.
 // Pure reads of the progress stores - call from $derived for reactivity.
 import {
-	getLesson,
-	getLessonsBySection,
+	getLessonMeta,
+	getLessonMetaBySection,
 	moduleSections as sectionsOf,
 	sectionMeta,
 	SKILLS,
-	type LessonNode,
+	type LessonMeta,
 	type Skill
-} from '$lib/content';
+} from '$lib/content/meta';
 import { i18n } from '$lib/i18n/index.svelte';
 import {
 	hasContent,
@@ -33,17 +33,17 @@ export type RouteSection = { id: string; done: number; gold: number; total: numb
 function moduleSections(moduleId: string): string[] {
 	return sectionsOf(moduleId)
 		.map((s) => s.id)
-		.filter((id) => getLessonsBySection(id).length > 0);
+		.filter((id) => getLessonMetaBySection(id).length > 0);
 }
 
 /** A section's lessons top to bottom, as they sit on the path. */
-function lessonsInOrder(sectionId: string): LessonNode[] {
-	return [...getLessonsBySection(sectionId)].sort((a, b) => a.position.y - b.position.y);
+function lessonsInOrder(sectionId: string): LessonMeta[] {
+	return [...getLessonMetaBySection(sectionId)].sort((a, b) => a.position.y - b.position.y);
 }
 
 export function moduleRoute(moduleId: string): RouteSection[] {
 	return moduleSections(moduleId).map((id) => {
-		const lessons = getLessonsBySection(id).filter(hasContent);
+		const lessons = getLessonMetaBySection(id).filter(hasContent);
 		return {
 			id,
 			done: lessons.filter((l) => isLessonDone(l.id)).length,
@@ -54,9 +54,8 @@ export function moduleRoute(moduleId: string): RouteSection[] {
 }
 
 /** Has a writing task anywhere - those are best done on a computer. */
-export function isWritingLesson(lesson: LessonNode): boolean {
-	const all = [lesson.content.preface, ...lesson.content.rounds.map((r) => r.screens)];
-	return all.some((screens) => screens.some((s) => s.type === 'writing-task'));
+export function isWritingLesson(lesson: LessonMeta): boolean {
+	return lesson.writing;
 }
 
 /** A module's lessons done out of those written. */
@@ -88,7 +87,11 @@ export function moduleSkills(moduleId: string, route: RouteSection[]): SkillRow[
 		if (skill === 'vocab' && getDecks(moduleId)) {
 			const won = moduleWon(moduleId);
 			return [
-				{ skill, kind: 'engine', progress: { done: won, total: nextMilestone(won), milestone: true } }
+				{
+					skill,
+					kind: 'engine',
+					progress: { done: won, total: nextMilestone(won), milestone: true }
+				}
 			];
 		}
 		const sections = route.filter((s) => skillOf(s.id) === skill);
@@ -161,11 +164,11 @@ export function moduleHook(moduleId: string, route: RouteSection[]): ModuleHook 
 
 /** Second line under a lesson: where the student is in it, or that it's better
  *  on a computer (writing). */
-export function lessonSubtitle(lesson: LessonNode, onPhone: boolean): string {
+export function lessonSubtitle(lesson: LessonMeta, onPhone: boolean): string {
 	const t = i18n.dict;
 	if (onPhone && isWritingLesson(lesson)) return t.home.desktopNote;
 	const done = roundsCompleted(lesson.id);
-	const rounds = lesson.content.rounds.length;
+	const rounds = lesson.rounds;
 	return [
 		done ? t.home.lessonMidway : t.home.lessonNext,
 		rounds > 1 ? t.lesson.roundLabel(Math.min(done + 1, rounds), rounds) : ''
@@ -175,7 +178,7 @@ export function lessonSubtitle(lesson: LessonNode, onPhone: boolean): string {
 }
 
 export type ContinueItem =
-	| { kind: 'lesson'; moduleId: string; lesson: LessonNode }
+	| { kind: 'lesson'; moduleId: string; lesson: LessonMeta }
 	| { kind: 'exam'; moduleId: string; quiz: Quiz }
 	| { kind: 'words'; moduleId: string };
 
@@ -229,8 +232,8 @@ export function resumeItem(moduleIds: string[]): ContinueItem | undefined {
 
 /** The lesson last opened if it isn't done yet, otherwise the first open,
  *  undone lesson along the route. Undefined once everything is done. */
-export function todayLesson(moduleId: string): LessonNode | undefined {
-	const recent = getLesson(moduleLocation.get(moduleId) ?? '');
+export function todayLesson(moduleId: string): LessonMeta | undefined {
+	const recent = getLessonMeta(moduleLocation.get(moduleId) ?? '');
 	if (recent && !isLessonDone(recent.id) && isLessonUnlocked(recent)) return recent;
 	for (const sectionId of moduleSections(moduleId)) {
 		const next = lessonsInOrder(sectionId).find((l) => !isLessonDone(l.id) && isLessonUnlocked(l));

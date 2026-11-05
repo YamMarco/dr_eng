@@ -3,15 +3,13 @@
 // read and written under the lesson's progress scope (see progressScope), not
 // the module being viewed, so a section shared by two modules (C and E
 // reading) has one progress for both.
-import { getLesson, progressScope, type LessonNode } from '$lib/content';
-import { isScreenEmpty } from '$lib/lesson-screens/types';
+import { getLessonMeta, progressScope, type LessonMeta } from '$lib/content/meta';
 import { debugStore } from '$lib/debug.svelte';
 import { lessonProgress } from '$lib/lessonProgress.svelte';
 
 /** No screens written yet anywhere — the node still shows (title only) but never unlocks. */
-export function hasContent(lesson: LessonNode): boolean {
-	const all = [lesson.content.preface, ...lesson.content.rounds.map((r) => r.screens)];
-	return all.some((screens) => screens.some((screen) => !isScreenEmpty(screen)));
+export function hasContent(lesson: LessonMeta): boolean {
+	return lesson.ready;
 }
 
 export function roundsCompleted(lessonId: string): number {
@@ -25,12 +23,12 @@ export function markRoundCompleted(lessonId: string, roundIndex: number) {
 }
 
 export function isLessonDone(lessonId: string): boolean {
-	return roundsCompleted(lessonId) >= (getLesson(lessonId)?.requiredRounds ?? 1);
+	return roundsCompleted(lessonId) >= (getLessonMeta(lessonId)?.requiredRounds ?? 1);
 }
 
 /** Every round played, not just the required ones - the path's gold node. */
-export function isLessonGold(lesson: LessonNode): boolean {
-	return roundsCompleted(lesson.id) >= lesson.content.rounds.length;
+export function isLessonGold(lesson: LessonMeta): boolean {
+	return roundsCompleted(lesson.id) >= lesson.rounds;
 }
 
 // The debug "unlock all" flag is a full override — it comes before every
@@ -40,7 +38,7 @@ export function isLessonGold(lesson: LessonNode): boolean {
 // used earlier to reach it out of order and its formal prerequisites
 // still aren't otherwise satisfied — turning "unlock all" back off must
 // never re-lock real progress.
-export function isLessonUnlocked(lesson: LessonNode): boolean {
+export function isLessonUnlocked(lesson: LessonMeta): boolean {
 	if (debugStore.unlockAll) return true;
 	if (isLessonDone(lesson.id)) return true;
 	if (!hasContent(lesson)) return false;

@@ -65,6 +65,7 @@ Fixed (isolated):
 - [x] **Storage blocked entirely** (all cookies off: reading `localStorage` throws `SecurityError`) crashed the app. `static/boot.js`, the first script on every page, swaps in an in-memory storage when the real one throws; the visit works, nothing is saved.
 - [x] **A deleted account's old access token kept working** (up to ~1 h): another signed-in device could sync after the deletion and re-create the user's `progress` rows. Now every write and LLM call (POST/DELETE) checks the user still exists (`server/userExists.ts`, `hooks.server.ts`; one primary-key lookup). Reads are unchanged.
 - [x] **Every page downloaded the 1.1 MB lesson content** (the root layout imported the dev-only `DebugTooltip`, which imports lesson progress and the content). Now loaded on demand, only for staff: public pages and settings went from ~1.4 MB to ~0.3 MB of JS. `/app` and lessons still load the content (see to fix later).
+- [x] **`/app` downloaded all 1.1 MB of lesson content to draw the home screen and lesson map.** The shell now reads generated metadata (35 KB: ids, positions, prerequisites, round counts; `content/meta.ts`, built by `scripts/lesson-meta.mjs`), and the screens load per file when a lesson opens (`content/load.ts`, warmed when the lesson label opens). `/app`: 1,660 -> 593 KB JS, longest blocking task ~1.5 s -> 0.8 s (CPU x6). All 314 lesson rounds in the crawler pass; `tests/lesson-meta.test.ts` keeps the three file lists in step.
 
 ## Claude-driven look at the app (phone, new student, screenshots by hand)
 
@@ -94,7 +95,6 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 ## To fix later (not isolated, or low value)
 
 
-- [ ] **Lazy-load lesson content for `/app`** (the dashboard still downloads the 1.1 MB content chunk, 264 KB gzipped): `dashboard/data.ts`, `lessonPath.ts`, `lessonProgress.svelte.ts` import it synchronously. Needs a metadata-only index (ids, titles, counts) for the shell and lessons loaded when a module or lesson opens.
 
 
 - [ ] **Malformed `%` in a URL** (`/app/unit/%E0%A4%A/module/c`): the server answers a proper 400 page, but SvelteKit's client router logs "URI malformed". Framework; low.

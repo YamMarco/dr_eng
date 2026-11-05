@@ -9,12 +9,10 @@
 	import LessonProgressBar from '$lib/components/LessonProgressBar.svelte';
 	import { editStore } from '$lib/content-edit/editStore.svelte';
 	import LessonRunner from '$lib/lesson-screens/LessonRunner.svelte';
-	import {
-		moduleSections,
-		getLessonsBySection,
-		lessonForUnits,
-		type LessonNode
-	} from '$lib/content';
+	import { moduleSections, getLessonMetaBySection, type LessonMeta } from '$lib/content/meta';
+	import { lessonForUnits } from '$lib/content/units';
+	import { loadLesson } from '$lib/content/load';
+	import type { LessonNode } from '$lib/content/types';
 	import { contentReady, localizeContent } from '$lib/content/localize.svelte';
 	import Loader from '$lib/components/Loader.svelte';
 	import { themeForSectionIndex, type SectionTheme } from '$lib/sectionThemes';
@@ -76,7 +74,7 @@
 	}
 
 	type PathNode = {
-		lesson: LessonNode;
+		lesson: LessonMeta;
 		sectionId: string;
 		/** 1-based position within its own section — shown on the node. */
 		lessonNumber: number;
@@ -95,10 +93,10 @@
 		// Sections ordered top to bottom by their topmost node; each one is
 		// pushed down by one SECTION_GAP per distinct start row above it
 		// (side-by-side sections share a start row, so they stay aligned).
-		const topY = (id: string) => Math.min(...getLessonsBySection(id).map((l) => l.position.y));
+		const topY = (id: string) => Math.min(...getLessonMetaBySection(id).map((l) => l.position.y));
 		const sections = moduleSections(mod.id);
 		const verticalOrder = sections
-			.filter((section) => getLessonsBySection(section.id).length > 0)
+			.filter((section) => getLessonMetaBySection(section.id).length > 0)
 			.map((section) => section.id)
 			.sort((a, b) => topY(a) - topY(b));
 		const top = TOP_Y + (hasDeck || hasChat ? GATEWAY_SPACE : 0);
@@ -107,7 +105,7 @@
 		sections.forEach((section, sectionIndex) => {
 			const theme = themeForSectionIndex(sectionIndex);
 			const sectionOffset = startRows.indexOf(topY(section.id)) * SECTION_GAP;
-			getLessonsBySection(section.id).forEach((lesson, lessonIndexInSection) => {
+			getLessonMetaBySection(section.id).forEach((lesson, lessonIndexInSection) => {
 				result.push({
 					lesson,
 					sectionId: section.id,
@@ -284,7 +282,7 @@
 	}
 
 	function totalRounds(node: PathNode): number {
-		return node.lesson.content.rounds.length;
+		return node.lesson.rounds;
 	}
 
 	/** The round to open next: the first not-yet-completed one, capped at the last. */
@@ -301,6 +299,8 @@
 
 	function toggleLabel(lessonId: string) {
 		openLabelId = openLabelId === lessonId ? null : lessonId;
+		// Warm the lesson's content, so "start" opens at once.
+		if (openLabelId) loadLesson(lessonId).catch(() => {});
 	}
 
 	// Which node (and which of its rounds) is currently open in the runner —
@@ -309,6 +309,27 @@
 	let activeRoundIndex = $state(0);
 
 	let activeNode = $derived(activeId ? nodeById.get(activeId) : undefined);
+
+	// The open lesson's screens: the path itself only holds metadata, the content loads here.
+	let activeLesson = $state.raw<LessonNode>();
+	let loadFailed = $state(false);
+	$effect(() => {
+		const id = activeId;
+		activeLesson = undefined;
+		loadFailed = false;
+		if (!id) return;
+		let stale = false;
+		loadLesson(id)
+			.then((lesson) => {
+				if (stale) return;
+				if (lesson) activeLesson = lesson;
+				else loadFailed = true;
+			})
+			.catch(() => {
+				if (!stale) loadFailed = true;
+			});
+		return () => (stale = true);
+	});
 
 	// "Start here" points a brand-new student at the topmost open node; once
 	// anything is done the path speaks for itself.
@@ -708,7 +729,7 @@
 										{#if started || required > 1}
 											<LessonProgressBar
 												compact
-												segments={node.lesson.content.rounds.map(() => 1)}
+												segments={Array.from({ length: node.lesson.rounds }, () => 1)}
 												current={Math.min(completed, totalRounds(node))}
 											/>
 										{/if}
@@ -744,16 +765,26 @@
 	<WritingLab onclose={closeWritingLab} />
 {/if}
 
-{#if activeNode && !contentReady(i18n.language)}
-	<!-- The lesson's translation table is still on its way. -->
+{#if activeNode && loadFailed}
+	<!-- The lesson's content could not load (offline, or a tab left open across a deploy). -->
+	<div
+		role="alert"
+		class="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-canvas p-6 text-center"
+	>
+		<p class="text-xl font-bold">{i18n.dict.error.defaultMessage}</p>
+		<p class="text-muted">{i18n.dict.error.crashSubtitle}</p>
+		<Button onclick={closeNode}>{i18n.dict.common.close}</Button>
+	</div>
+{:else if activeNode && (!activeLesson || !contentReady(i18n.language))}
+	<!-- The lesson's screens (and its translation table) are still on their way. -->
 	<div class="fixed inset-0 z-50 flex bg-canvas"><Loader screen /></div>
-{:else if activeNode}
+{:else if activeNode && activeLesson}
 	<!-- Keyed so "continue to next lesson"/"continue to next round" force a
 	     full remount instead of just handing the same runner instance new
 	     `lesson`/`roundIndex` props. -->
 	{#key `${activeId}-${activeRoundIndex}`}
 		<LessonRunner
-			lesson={localizeContent(lessonForUnits(activeNode.lesson, group.units), i18n.language)}
+			lesson={localizeContent(lessonForUnits(activeLesson, group.units), i18n.language)}
 			roundIndex={activeRoundIndex}
 			lessonLabel={i18n.title(activeNode.lesson.id)}
 			roundLabel={totalRounds(activeNode) > 1

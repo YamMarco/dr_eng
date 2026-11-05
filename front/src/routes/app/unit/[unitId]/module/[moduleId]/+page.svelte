@@ -18,7 +18,7 @@
 	} from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
-	import type { Skill } from '$lib/content';
+	import type { Skill } from '$lib/content/meta';
 	import { moduleName } from '$lib/curriculum';
 	import { moduleDeckToday } from '$lib/deck';
 	import { i18n } from '$lib/i18n/index.svelte';
