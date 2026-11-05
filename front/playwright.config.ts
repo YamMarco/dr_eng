@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 // Browser tests (docs/handoffs/testing-plan.md). Accounts off, AI mocked (e2e/fixtures.ts).
 // Runs against the built site (the CSP only applies to built pages).
-const PORT = 4173;
+const PORT = Number(process.env.E2E_PORT ?? 4173);
 
 export default defineConfig({
 	testDir: 'e2e',
@@ -17,14 +17,20 @@ export default defineConfig({
 		trace: 'retain-on-failure'
 	},
 	projects: [
-		{ name: 'phone', use: { ...devices['Pixel 7'] }, testIgnore: /(content|personas)\.spec/ },
+		{
+			name: 'phone',
+			use: { ...devices['Pixel 7'] },
+			testIgnore: /(content|personas|real-ai)\.spec/
+		},
 		// Persona runs (break-it): phone only, one worker (RAM).
 		{ name: 'persona', use: { ...devices['Pixel 7'] }, testMatch: /personas\.spec/ },
 		{
 			name: 'desktop',
 			use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
-			testIgnore: /(content|api|personas)\.spec/
+			testIgnore: /(content|api|personas|real-ai)\.spec/
 		},
+		// Real LLM through the UI: opt-in, needs a dev server (see the spec).
+		{ name: 'realai', use: { ...devices['Pixel 7'] }, testMatch: /real-ai.spec/ },
 		// The content crawler: slow (every lesson screen), phone only.
 		{ name: 'content', use: { ...devices['Pixel 7'] }, testMatch: /content\.spec/ }
 	],
