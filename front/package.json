@@ -17,6 +17,7 @@
 		"e2e:content": "playwright test --project=content",
 		"e2e:persona": "playwright test --project=persona --workers=1",
 		"e2e:realai": "playwright test --project=realai --workers=1",
+		"e2e:accounts": "playwright test --project=accounts --workers=1",
 		"format": "prettier --write .",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",

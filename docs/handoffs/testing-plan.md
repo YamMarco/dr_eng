@@ -4,7 +4,7 @@ Goal: catch broken flows before students do, with two kinds of runs:
 - **Scripted (regression):** deterministic Playwright journeys, run on every PR.
 - **Persona (human-like):** Claude drives a real browser as a student persona, explores, and reports bugs and friction. Run on demand or weekly.
 
-Now: unit tests (`npm test`), Playwright in `front/e2e` against the built site (`npm run e2e`: smoke + axe + focus walk, journeys, API; `npm run e2e:content`: the crawler), CI on PRs (`.github/workflows/ci.yml`: unit, svelte-check, e2e). Phases 1-3, 5, the accounts-off part of 7 and Phase 6 (scripted personas + monkey, `npm run e2e:persona`; Claude-driven runs still to do) and an opt-in real-LLM exam run (`npm run e2e:realai`, see its spec) are in; findings in `test-findings.md`.
+Now: unit tests (`npm test`), Playwright in `front/e2e` against the built site (`npm run e2e`: smoke + axe + focus walk, journeys, API; `npm run e2e:content`: the crawler), CI on PRs (`.github/workflows/ci.yml`: unit, svelte-check, e2e). Phases 1-3, 5, the accounts-off part of 7 and Phase 6 (scripted personas + monkey, `npm run e2e:persona`; Claude-driven runs still to do) an opt-in real-LLM exam run (`npm run e2e:realai`) and an opt-in accounts-on run against a real Supabase project (`npm run e2e:accounts`, creates and deletes its own users; see the spec's header) are in; findings in `test-findings.md`.
 
 ## Principles
 

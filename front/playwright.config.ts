@@ -20,15 +20,17 @@ export default defineConfig({
 		{
 			name: 'phone',
 			use: { ...devices['Pixel 7'] },
-			testIgnore: /(content|personas|real-ai)\.spec/
+			testIgnore: /(content|personas|real-ai|accounts)\.spec/
 		},
 		// Persona runs (break-it): phone only, one worker (RAM).
 		{ name: 'persona', use: { ...devices['Pixel 7'] }, testMatch: /personas\.spec/ },
 		{
 			name: 'desktop',
 			use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
-			testIgnore: /(content|api|personas|real-ai)\.spec/
+			testIgnore: /(content|api|personas|real-ai|accounts)\.spec/
 		},
+		// Accounts on, real Supabase project: opt-in, creates and deletes test users (see the spec).
+		{ name: 'accounts', use: { ...devices['Pixel 7'] }, testMatch: /accounts.spec/ },
 		// Real LLM through the UI: opt-in, needs a dev server (see the spec).
 		{ name: 'realai', use: { ...devices['Pixel 7'] }, testMatch: /real-ai.spec/ },
 		// The content crawler: slow (every lesson screen), phone only.
