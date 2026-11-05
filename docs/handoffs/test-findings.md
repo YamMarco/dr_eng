@@ -65,6 +65,14 @@ Fixed (isolated):
 - [x] **Storage blocked entirely** (all cookies off: reading `localStorage` throws `SecurityError`) crashed the app. `static/boot.js`, the first script on every page, swaps in an in-memory storage when the real one throws; the visit works, nothing is saved.
 - [x] **Every page downloaded the 1.1 MB lesson content** (the root layout imported the dev-only `DebugTooltip`, which imports lesson progress and the content). Now loaded on demand, only for staff: public pages and settings went from ~1.4 MB to ~0.3 MB of JS. `/app` and lessons still load the content (see to fix later).
 
+## Claude-driven look at the app (phone, new student, screenshots by hand)
+
+Landing, onboarding (3 steps), home, module and lesson map, exam passage, a mocked weak exam report. Clean overall: clear hierarchy, big touch targets, CTA disabled until a choice, no wrapped passage lines (line numbers and paragraph marks line up), a gentle fail state, per-question right/wrong with the correct answer. Observations, none blocking:
+- [ ] **The streak popup opens over the exam report** on the first activity of the day, so the student dismisses it before seeing the result they just waited for. Fine for lessons (a celebration); for an exam, consider showing it after the report or from "חזרה למבחנים".
+- [ ] **The tester feedback button (teal, bottom left) covers the start of text** in long screens such as the report's open answers, and sits almost on the primary CTA in onboarding. Testers only; revisit when it goes (or move it up).
+- [ ] **The lesson map opens with ~280px of empty space** above the first section on a `?lesson=` deep link to a locked lesson. May be the scroll position; check on a real phone.
+- The 12px exam passage is not needed on a 412px phone: it renders at a comfortable size. Still check on a 360px phone.
+
 ## Accounts on (`e2e/accounts.spec.ts`, `npm run e2e:accounts`)
 
 Run on 2026-11-05 against the real Supabase project (the only one), authorized by the owner. Opt-in (`E2E_ACCOUNTS=1`), never in CI. It creates throwaway users (`e2e-<run>-*@example.com`, confirmed through the admin API, so no emails), a throwaway coupon and their rows, and deletes all of it; it then checks nothing of the run is left (verified separately: 0 test users, coupons or orders; the 7 real users untouched). The dev server ran with the Supabase env and a dummy Gemini key, so no LLM call was possible. Sessions come from a one-time magic-link token (`generateLink` + `verifyOtp`), which skips the CAPTCHA.
@@ -103,7 +111,7 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 ## Where to continue (next session)
 
 1. **Phase 4, rest of accounts on**: sign up / confirm / sign in / reset through the UI (Turnstile + a real inbox), quota screens (429) and the 24h exam lock (they need LLM calls or counter rows; the shared daily cap makes this a staging job). See "Accounts on" above.
-2. **Phase 6, persona runs**: a reusable driver (Claude + Playwright, one persona per run, report to `/kanban`). `playThrough` in `e2e/fixtures.ts` is the start.
+2. **Phase 6, Claude-driven runs**: scripted personas and the monkey are in (`npm run e2e:persona`); one hands-on look is recorded above. Still open: a weekly scheduled run with a report to `/kanban`, and more personas (Arabic interface, 360px phone, tablet landscape).
 3. **Break-it, round 2 (rest)**: mobile build with a signed-in session (bearer token); lazy-load the lesson content for `/app` (see "to fix later"), then re-measure on a real low-end phone.
 4. **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics): look them up on the server by screen id. Low priority: scores live on the device; daily caps bound the spend.
 5. **Lint**: 51 errors in 30 files (mostly `svelte/no-navigation-without-resolve` in shared components like Button, AppBar, NavBar, and unused vars in the editor); CI doesn't run lint yet. Full `eslint .` takes ~5 min here.
