@@ -560,3 +560,74 @@ test('a used or expired link says so and offers the login', async ({ browser, ba
 	await expect(page.getByRole('heading', { name: t.title })).toBeVisible();
 	await ctx.close();
 });
+
+// The real Turnstile widget (needs VITE_TURNSTILE_SITE_KEY on the dev server) does not issue a token to
+// an automated browser, so the forms can't be completed here; what a student sees when the captcha
+// fails (an ad blocker, a school filter) and that Supabase enforces it on all three endpoints can be.
+test('captcha that never solves: each form answers 400 and says so in Hebrew', async ({
+	browser,
+	baseURL
+}) => {
+	test.skip(!process.env.VITE_TURNSTILE_SITE_KEY, 'no VITE_TURNSTILE_SITE_KEY in .env.local');
+	test.setTimeout(180_000);
+	const ctx = await browser.newContext({ locale: 'he-IL', viewport: { width: 1280, height: 800 } });
+	const page = await ctx.newPage();
+	const calls: string[] = [];
+	page.on(
+		'response',
+		(r) => r.url().includes('/auth/v1/') && calls.push(`${new URL(r.url()).pathname} ${r.status()}`)
+	);
+	const crashes: string[] = [];
+	page.on('pageerror', (e) => crashes.push(e.message));
+	const message = 'לא הצלחנו לוודא שאתם לא רובוט. נסו שוב.';
+
+	// The widget stays pending for a bot; a click makes it fail, which unlocks the button.
+	async function unlock(name: string) {
+		const button = page.getByRole('button', { name, exact: true });
+		for (let attempt = 0; attempt < 5 && !(await button.isEnabled()); attempt++) {
+			await page.waitForTimeout(5000);
+			const frame = page.frames().find((f) => f.url().includes('challenges.cloudflare.com'));
+			const box = frame ? await (await frame.frameElement()).boundingBox() : null;
+			if (box) await page.mouse.click(box.x + box.width - 28, box.y + box.height / 2);
+			await page.waitForTimeout(3000);
+		}
+		await expect(button).toBeEnabled({ timeout: 10_000 });
+	}
+
+	await page.goto(`${baseURL}/app`);
+	await page.getByLabel(t.emailLabel).fill('e2e-nobody@example.com');
+	await page.getByLabel(t.passwordLabel).fill('Wrong-Password-1!');
+	await unlock(t.signIn);
+	await page.getByRole('button', { name: t.signIn, exact: true }).click();
+	await expect(page.getByText(message)).toBeVisible();
+
+	await page.goto(`${baseURL}/app`);
+	await page.getByRole('button', { name: t.forgot }).click();
+	await page.getByLabel(t.emailLabel).fill('e2e-nobody@example.com');
+	await unlock(t.sendLink);
+	await page.getByRole('button', { name: t.sendLink, exact: true }).click();
+	await expect(page.getByText(message)).toBeVisible();
+
+	await page.goto(`${baseURL}/app`);
+	await page.getByRole('button', { name: t.toSignUp }).click();
+	await page.getByLabel(t.emailLabel).fill('e2e-nobody@example.com');
+	await page.getByLabel(/^סיסמה/).fill('Some-Password-123!');
+	await page.getByRole('checkbox').first().check();
+	await unlock(t.signUp);
+	await page.getByRole('button', { name: t.signUp, exact: true }).click();
+	await expect(page.getByText(message)).toBeVisible();
+
+	expect(
+		calls
+			.filter((c) => c.endsWith('400'))
+			.map((c) => c.split(' ')[0])
+			.sort()
+	).toEqual(['/auth/v1/recover', '/auth/v1/signup', '/auth/v1/token']);
+	expect(crashes).toEqual([]);
+	// Refused before anything was checked: no account came of it.
+	const created = (await admin.auth.admin.listUsers({ perPage: 1000 })).data.users.some(
+		(u) => u.email === 'e2e-nobody@example.com'
+	);
+	expect(created).toBe(false);
+	await ctx.close();
+});
