@@ -56,7 +56,8 @@ export function saveAttempt(attempt: QuizAttempt) {
 		results.push({ at: attempt.submittedAt, percent });
 		saveSynced(resultsKey(attempt.quizId), results);
 	}
-	activity.recordToday();
+	// The streak counts, but its popup would cover the result the student just waited for.
+	activity.recordToday({ celebrate: false });
 }
 
 export function getLastAttempt(quizId: string): QuizAttempt | null {

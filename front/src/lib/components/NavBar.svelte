@@ -119,6 +119,7 @@
 
 		{#each items as item (item.href)}
 			{@const active = item.match(path)}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -- fixed app paths from `items`, no base path -->
 			<a
 				href={item.href}
 				data-sveltekit-reload={item.external ? '' : undefined}
@@ -138,6 +139,7 @@
 				</span>
 				{item.label}
 			</a>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		{/each}
 
 		<StatusChips class="ms-auto max-lg:hidden" />

@@ -34,6 +34,11 @@ export default defineConfig(
 		}
 	},
 	{
+		// `{' '}` is deliberate here: it keeps the space Svelte would trim at an element's edge.
+		files: ['src/lib/feedback/MarkedText.svelte'],
+		rules: { 'svelte/no-useless-mustaches': 'off' }
+	},
+	{
 		// Override or add rule settings here, such as:
 		// 'svelte/button-has-type': 'error'
 		rules: {

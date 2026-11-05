@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "front/eslint.config.js": {
-    "mtime": 1793867545.2451947,
-    "ast_hash": "db62e0c01e8bda59162a6eacbf8da3df",
+    "mtime": 1793869345.0109448,
+    "ast_hash": "85db752285b13c62cfaf6b9e09eaae4c",
     "semantic_hash": ""
   },
   "front/package.json": {
@@ -40,13 +40,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/AppBar.svelte": {
-    "mtime": 1793857257.4093785,
-    "ast_hash": "41c620f52d09a22d58b0299930995a53",
+    "mtime": 1793869172.5285418,
+    "ast_hash": "aef957da215e4907fa9f1e95ff92c575",
     "semantic_hash": ""
   },
   "front/src/lib/components/Button.svelte": {
-    "mtime": 1793857257.411933,
-    "ast_hash": "fc42079d6007654a906fbbafa7b4a61e",
+    "mtime": 1793869134.1851504,
+    "ast_hash": "c66fb8850eae04494b7ba6166ed93777",
     "semantic_hash": ""
   },
   "front/src/lib/components/DebugTooltip.svelte": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/NavBar.svelte": {
-    "mtime": 1793857257.3577688,
-    "ast_hash": "66544b24eccd52060e49c3bd7018e02c",
+    "mtime": 1793869122.057447,
+    "ast_hash": "ab176599e960f2590ceba6376dec3862",
     "semantic_hash": ""
   },
   "front/src/lib/components/Sheet.svelte": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1793857257.3811038,
-    "ast_hash": "740660b8d751fc55a79e03b46487436a",
+    "mtime": 1793869336.7382405,
+    "ast_hash": "2af3d41ba659a36a1c62d83a7ae5aa5c",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/MarkdownInput.svelte": {
-    "mtime": 1793857257.3811038,
-    "ast_hash": "d82bc4ed55c7cf6298a725919d2d00a4",
+    "mtime": 1793869384.7001326,
+    "ast_hash": "a140375cc013c6688d78f766e90496b8",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/screenPath.ts": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/EditWorkspace.svelte": {
-    "mtime": 1793857257.3699374,
-    "ast_hash": "e5e5bdf063bbd17b29c152dc4eb19843",
+    "mtime": 1793869102.7370865,
+    "ast_hash": "745bfb2b9ece9727bc09e78f8d68158d",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/GraphEditor.svelte": {
@@ -705,8 +705,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/progress.ts": {
-    "mtime": 1793858308.6286204,
-    "ast_hash": "f4c4f4faad42239fb7963121040bfc91",
+    "mtime": 1793869021.9547799,
+    "ast_hash": "dddaa7251eb3989a73eeb78d0c061964",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageBody.svelte": {
@@ -720,8 +720,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ExamEditWorkspace.svelte": {
-    "mtime": 1793857257.372957,
-    "ast_hash": "6a8a952a67c0fae2342a8d22ab5f8408",
+    "mtime": 1793869103.1612434,
+    "ast_hash": "7bf61f1d41cb50a4f55d8b290d09d362",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/ExamEditorView.svelte": {
@@ -765,8 +765,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/LoginScreen.svelte": {
-    "mtime": 1793857257.3566723,
-    "ast_hash": "fb186cd2b148849b7497e9ac597e2998",
+    "mtime": 1793869135.032366,
+    "ast_hash": "cec3baf5a3a52b0bbf903eb62da98a3f",
     "semantic_hash": ""
   },
   "notes.txt": {
@@ -955,8 +955,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/activity.svelte.ts": {
-    "mtime": 1793857257.3800955,
-    "ast_hash": "0375cfdbe2a69aceac926515dd2e0ec0",
+    "mtime": 1793869021.7671652,
+    "ast_hash": "8719b2d3743f6c55ba4a4d4bf9a580a4",
     "semantic_hash": ""
   },
   "front/src/lib/components/ChoiceList.svelte": {
@@ -1385,13 +1385,13 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/+page.svelte": {
-    "mtime": 1793864902.436951,
-    "ast_hash": "0c4427b1fa4a0aa11ceb6c8a51a49aa9",
+    "mtime": 1793869090.3319309,
+    "ast_hash": "3e6f435a486ef2953635b638e2b45d17",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
-    "mtime": 1793857257.411933,
-    "ast_hash": "1a261d58ac19cd552b0351c3634c25ad",
+    "mtime": 1793869091.069279,
+    "ast_hash": "629f618138b35a633da6fbec42cf4fe4",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/exam/[quizId]/+page.svelte": {
@@ -1405,8 +1405,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1793864945.8728497,
-    "ast_hash": "69a170724c08fc97bc0c8ef5b59d85d0",
+    "mtime": 1793869102.030458,
+    "ast_hash": "3d5c341ed3396a46963df8f7d02f84c1",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/words/+page.svelte": {
@@ -1600,8 +1600,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1793857257.3531487,
-    "ast_hash": "25357dd4a978086a8d91ef2e9c4fbf25",
+    "mtime": 1793868977.5616844,
+    "ast_hash": "10b503fcc6805a39675c7323b6c1c591",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -1635,8 +1635,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/SupportSection.svelte": {
-    "mtime": 1793857257.3648038,
-    "ast_hash": "99e4aa6386f036008b8343a79c8f2355",
+    "mtime": 1793869134.9216247,
+    "ast_hash": "a203b66bdf98688e02b5b4f2a93e12c2",
     "semantic_hash": ""
   },
   "front/src/lib/dashboard/StatusChips.svelte": {
@@ -2450,8 +2450,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/site/LegalPage.svelte": {
-    "mtime": 1793857257.37407,
-    "ast_hash": "32a5538b4ce18d598985d28cf4aae492",
+    "mtime": 1793869148.3003664,
+    "ast_hash": "219f336c58ef712d2cf5fdf8d8a99062",
     "semantic_hash": ""
   },
   "docs/handoffs/before-testers.md": {
@@ -2540,8 +2540,8 @@
     "semantic_hash": ""
   },
   "front/e2e/exam.spec.ts": {
-    "mtime": 1793857257.3536553,
-    "ast_hash": "2295a0b211921025ba8a376600039269",
+    "mtime": 1793869027.2200663,
+    "ast_hash": "dfbf2b448f8dfabd42e17a3ca110aee4",
     "semantic_hash": ""
   },
   "front/e2e/fixtures.ts": {
@@ -2610,8 +2610,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/test-findings.md": {
-    "mtime": 1793868067.8744738,
-    "ast_hash": "51f2d5f995664910257295c69b63f6cb",
+    "mtime": 1793874298.3546767,
+    "ast_hash": "9172f25d71d90c18b4afa83b84ec0d4f",
     "semantic_hash": ""
   },
   "docs/handoffs/testing-plan.md": {
@@ -2635,8 +2635,8 @@
     "semantic_hash": ""
   },
   "front/e2e/accounts.spec.ts": {
-    "mtime": 1793867273.4754906,
-    "ast_hash": "4c0241e4ae6bc71e18f8f62c745c983d",
+    "mtime": 1793869172.333477,
+    "ast_hash": "5c8353e86427b08e0d407802a4f55e1c",
     "semantic_hash": ""
   },
   "front/e2e/personas.spec.ts": {
@@ -2682,6 +2682,16 @@
   "front/tests/typos.test.ts": {
     "mtime": 1793860069.0397522,
     "ast_hash": "ba40292c28bdf22efa92dfed48357633",
+    "semantic_hash": ""
+  },
+  "front/drizzle/0012_purge_user_data_on_delete.sql": {
+    "mtime": 1793868983.33749,
+    "ast_hash": "6b253da4753ac2be290d5f6c0ab6e2c3",
+    "semantic_hash": ""
+  },
+  "front/drizzle/meta/0012_snapshot.json": {
+    "mtime": 1793868977.5616844,
+    "ast_hash": "aac03f6ea770604d65cbf52b48007939",
     "semantic_hash": ""
   }
 }

@@ -5,6 +5,7 @@
 	// Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { examEditModel } from './examEditModel.svelte';
 	import { saveExamChanges, saveTitles } from './api';
@@ -72,7 +73,7 @@
 	function exit() {
 		if (examEditModel.dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
 		if (history.length > 1) history.back();
-		else goto('/app');
+		else goto(resolve('/app'));
 	}
 
 	let play = $state<{ quizId: string; partIndex: number; screenIndex: number } | null>(null);

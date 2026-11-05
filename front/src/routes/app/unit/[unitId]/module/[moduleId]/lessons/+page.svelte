@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterNavigate, beforeNavigate, pushState } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { FlaskConical } from '@lucide/svelte';
 	import { draw, fade, scale } from 'svelte/transition';
@@ -498,7 +499,7 @@
 			     Detachable — see src/lib/content-edit/README.md. -->
 			{#if nodes.length > 0 && !MOBILE_BUILD && auth.isAdmin}
 				<a
-					href="/edit?module={mod.id}&units={group.units}"
+					href="{resolve('/edit')}?module={mod.id}&units={group.units}"
 					title="עריכת תוכן"
 					class="inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-xs font-bold hover:bg-line/60"
 				>
@@ -744,7 +745,7 @@
 								     unlocked on the deployed site). Detachable — see
 								     src/lib/content-edit/README.md. -->
 										<a
-											href="/edit?section={node.lesson.section}&lesson={node.lesson
+											href="{resolve('/edit')}?section={node.lesson.section}&lesson={node.lesson
 												.id}&units={group.units}"
 											class="inline-flex items-center justify-center gap-1 rounded-xl border-2 border-dashed border-ink/40 px-3 py-1.5 text-xs font-semibold text-ink/70"
 										>

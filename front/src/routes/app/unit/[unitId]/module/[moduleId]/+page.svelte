@@ -18,6 +18,7 @@
 	} from '@lucide/svelte';
 	import type { Component } from 'svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
+	import { resolve } from '$app/paths';
 	import type { Skill } from '$lib/content/meta';
 	import { moduleName } from '$lib/curriculum';
 	import { moduleDeckToday } from '$lib/deck';
@@ -202,7 +203,10 @@
 {#snippet pathLink()}
 	{#if route.length}
 		<a
-			href="{base}/lessons"
+			href={resolve('/app/unit/[unitId]/module/[moduleId]/lessons', {
+				unitId: data.group.id,
+				moduleId: mod.id
+			})}
 			class="px-2 py-1.5 text-center text-sm font-semibold text-brand hover:underline"
 		>
 			{t.toPath}

@@ -155,7 +155,9 @@
 		const fromStart = rtl ? r.right - e.clientX : e.clientX - r.left;
 		// Anchored under the callout's start edge, where the icon sits.
 		picker =
-			fromStart > 0 && fromStart < 44 ? { block, x: rtl ? r.right : r.left, y: r.bottom, rtl } : null;
+			fromStart > 0 && fromStart < 44
+				? { block, x: rtl ? r.right : r.left, y: r.bottom, rtl }
+				: null;
 	}
 
 	function pickIcon(name: string) {
@@ -175,6 +177,7 @@
 	// so typing (which updates `value` via sync) never fights the caret.
 	$effect(() => {
 		void value;
+		// eslint-disable-next-line svelte/no-dom-manipulating -- a contenteditable: its DOM is the edit surface
 		if (el && value !== untrack(serialize)) el.innerHTML = mdToHtml(value);
 	});
 </script>

@@ -37,11 +37,13 @@
 				<ul class="flex flex-wrap gap-x-4 gap-y-1.5">
 					{#each section.links as link (link.href)}
 						<li>
+							<!-- eslint-disable svelte/no-navigation-without-resolve -- external provider links from the legal text -->
 							<a
 								lang="en"
 								href={link.href}
 								class="font-semibold text-brand-dark underline hover:no-underline">{link.label}</a
 							>
+							<!-- eslint-enable svelte/no-navigation-without-resolve -->
 						</li>
 					{/each}
 				</ul>

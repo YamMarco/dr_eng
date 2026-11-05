@@ -34,12 +34,14 @@ class ActivityStore {
 		onSyncedChange(STORAGE_KEY, () => (this.days = load()));
 	}
 
-	recordToday() {
+	/** `celebrate: false` counts the day without the streak modal (an exam, where the result
+	 *  is what the student is waiting for); the day's modal is then skipped altogether. */
+	recordToday({ celebrate = true } = {}) {
 		const today = dayKey(new Date());
 		if (this.days.includes(today)) return;
 		this.days = [...this.days, today].slice(-MAX_DAYS);
 		saveSynced(STORAGE_KEY, this.days);
-		this.celebrating = true;
+		this.celebrating = celebrate;
 	}
 
 	/** Whether the student practiced on this day. */

@@ -50,12 +50,14 @@
 </script>
 
 {#if href}
+	<!-- eslint-disable svelte/no-navigation-without-resolve -- the caller passes a ready path (no base path in this app) or an external URL -->
 	<a
 		{href}
 		class={classes}
 		style={variant === 'primary' ? puckStyle : undefined}
 		aria-disabled={disabled}>{@render children()}</a
 	>
+	<!-- eslint-enable svelte/no-navigation-without-resolve -->
 {:else}
 	<button
 		{type}

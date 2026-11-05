@@ -64,6 +64,7 @@
 		if (!code) return;
 		mode = 'signin';
 		failed = code === 'otp_expired' ? t.errors.linkExpired : t.errors.generic;
+		// eslint-disable-next-line svelte/no-navigation-without-resolve -- the current URL, already resolved
 		replaceState(location.pathname, {});
 	});
 

@@ -345,6 +345,25 @@ test('two devices: a finished lesson on one shows on the other', async ({ browse
 	await two.close();
 });
 
+test('a user deleted from the dashboard (no app cleanup) leaves no rows', async () => {
+	const [{ n }] =
+		await sql`select count(*)::int n from pg_trigger where tgname = 'purge_user_data'`;
+	test.skip(n === 0, 'migration 0012 (purge_user_data trigger) is not applied to this project');
+	const u = await makeUser('dash');
+	users.dash = u;
+	await sql`insert into progress (user_id, key, value, at) values (${u.id}, 'lesson-progress', '{}'::jsonb, 1)`;
+	await sql`insert into llm_usage (user_id, activity, calls) values (${u.id}, 'ocr', 3)`;
+	await sql`insert into exam_attempts (user_id, quiz_id, attempt, done_parts) values (${u.id}, 'c-exam-2', 1, 1)`;
+	await sql`insert into push_subscriptions (user_id, endpoint, p256dh, auth) values (${u.id}, ${'https://e2e.invalid/' + u.id}, 'k', 'a')`;
+	// What the Supabase dashboard does: delete the user only.
+	expect((await admin.auth.admin.deleteUser(u.id)).error).toBeNull();
+	for (const table of ['progress', 'llm_usage', 'exam_attempts', 'push_subscriptions'])
+		expect(
+			(await sql.unsafe(`select 1 from ${table} where user_id = $1`, [u.id])).length,
+			table
+		).toBe(0);
+});
+
 test('delete account: user, rows and the session are gone', async ({ request }) => {
 	const u = users.del;
 	await request.post('/api/progress', {
