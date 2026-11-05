@@ -47,6 +47,12 @@ const CONTRACTIONS: Record<string, string> = {
 
 const WORD = /\p{L}+(?:['’]\p{L}+)*/gu;
 
+/** Prefixes that only exist before a hyphen (pre-approved, re-read, ex-teacher): the dictionary
+ *  doesn't know them alone, but the word they start is fine. The rest is checked on its own. */
+const HYPHEN_PREFIXES = new Set(
+	'pre re co ex non anti semi multi mid pro post sub ultra mini mega'.split(' ')
+);
+
 function sentenceStarts(text: string): Set<number> {
 	const starts = new Set<number>();
 	const re = /(?:^|[.!?\n]\s*)(\p{L})/gu;
@@ -70,6 +76,11 @@ export function typoIssues(
 		const word = raw.replace(/’/g, "'");
 		const lower = word.toLowerCase();
 		if (word.length < 2 || skip.has(lower)) continue;
+		if (
+			HYPHEN_PREFIXES.has(lower) &&
+			/^-\p{L}/u.test(text.slice(m.index + raw.length, m.index + raw.length + 2))
+		)
+			continue;
 		// hebrew / other scripts are reported once as `notEnglish`, not as typos
 		if (!/^[A-Za-z']+$/.test(word)) continue;
 		// names and acronyms: a capital in the middle of a sentence, or ALL CAPS

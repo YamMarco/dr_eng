@@ -61,6 +61,7 @@ Weak student (hostile name, rushed lesson, mashed buttons), strong student (hand
 Fixed (isolated):
 - [x] **Full or failing `localStorage` (old phone, full disk) turned every page into "500 Internal Error"**: `legacyIds.ts` wrote at import time. Writes now go through `storeItem` (`storedJson.ts`: try/catch); the session keeps working from memory.
 - [x] **Fast taps between pages threw unhandled "navigation aborted" / "Transition was skipped"** (`+layout.svelte` view transition): the expected rejections are caught.
+- [x] **Hyphenated words were spell-checked in pieces**: "pre-approved" flagged "pre" and the auto-fix sent "ere-approved" to the grader. Common prefixes (pre, re, co, ex, non, anti, ...) before a hyphen are accepted; the rest of the word is still checked (`checks/typos.ts`, `tests/typos.test.ts`).
 
 ## Real LLM through the UI (`e2e/real-ai.spec.ts`, `npm run e2e:realai`)
 
@@ -75,7 +76,6 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 - [ ] **Lazy-load lesson content per module** (see above): imported by `lessonProgress.svelte.ts` / `lessonPath.ts` / `dashboard/data.ts`, which the root layout pulls in. Needs a metadata-only index (ids, titles, counts) for the shell and the lessons loaded when a module or lesson opens. Biggest win for slow phones.
 
-- [ ] **Hyphenated words are spell-checked in pieces** (`checks/typos.ts`, `WORD` splits on `-`): "pre-approved" flags "pre" and the auto-fix sends "ere-approved" to the grader. Likely also re-, co-, ex-, e-mail. Fix: accept a hyphenated compound when the joined word or a known prefix passes. Changes spelling results app-wide, so it needs its own tests.
 
 - [ ] **Storage blocked entirely** (Chrome with all cookies blocked: reading `window.localStorage` throws `SecurityError`): about 20 files read it directly. Needs one safe accessor used everywhere. Test parked as `test.fixme` in `personas.spec.ts`.
 - [ ] **Malformed `%` in a URL** (`/app/unit/%E0%A4%A/module/c`): the server answers a proper 400 page, but SvelteKit's client router logs "URI malformed". Framework; low.
