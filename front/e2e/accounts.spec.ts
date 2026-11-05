@@ -631,3 +631,22 @@ test('captcha that never solves: each form answers 400 and says so in Hebrew', a
 	expect(created).toBe(false);
 	await ctx.close();
 });
+
+test('logout still ends the session when the server never answers', async ({
+	browser,
+	baseURL
+}) => {
+	const u = await makeUser('lo');
+	users.lo = u;
+	const ctx = await signedIn(browser, u);
+	const page = await ctx.newPage();
+	await page.route('**/auth/v1/logout*', () => {}); // a hung call: never answered
+	await page.goto(`${baseURL}/app/settings`);
+	await page.getByRole('button', { name: 'יציאה מהחשבון' }).click();
+	// Within the wait (4 s), not "nothing happens until a refresh".
+	await expect(page.getByRole('heading', { name: t.title })).toBeVisible({ timeout: 10_000 });
+	expect(
+		await page.evaluate(() => Object.keys(localStorage).filter((k) => /^sb-.+-auth-token/.test(k)))
+	).toEqual([]);
+	await ctx.close();
+});

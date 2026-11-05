@@ -10,6 +10,8 @@ import { supabase } from './supabase';
 const WEB_BASE: string =
 	import.meta.env.VITE_API_BASE || (typeof location === 'undefined' ? '' : location.origin);
 const APP_URL = `${WEB_BASE}/app`;
+/** How long a sign-out waits for Supabase before ending the session on this device anyway. */
+const SIGN_OUT_WAIT_MS = 4000;
 
 class AuthStore {
 	session = $state<Session | null>(null);
@@ -124,8 +126,22 @@ class AuthStore {
 		this.recovering = false;
 	}
 
+	/** Ends the session. If the server call fails or hangs (a stuck auth lock, a flaky phone
+	 *  connection), the session is still dropped on this device: the student is never left on a
+	 *  screen where "log out" does nothing. */
 	async signOut() {
-		await supabase?.auth.signOut();
+		if (!supabase) return;
+		const ended = await Promise.race([
+			supabase.auth.signOut().then(
+				({ error }) => !error,
+				() => false
+			),
+			new Promise<boolean>((resolve) => setTimeout(() => resolve(false), SIGN_OUT_WAIT_MS))
+		]);
+		if (ended) return;
+		for (const key of Object.keys(localStorage))
+			if (/^sb-.+-auth-token(-code-verifier)?$/.test(key)) localStorage.removeItem(key);
+		this.session = null;
 	}
 }
 

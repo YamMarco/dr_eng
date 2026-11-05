@@ -21,7 +21,11 @@
 		'flex min-h-14 w-full items-center px-5 py-4 text-start font-semibold transition hover:bg-line/40 active:scale-[0.99]';
 
 	async function signOut() {
-		await reminders.disable().catch(() => {});
+		// Push calls can hang on some phones: never let them hold the sign-out.
+		await Promise.race([
+			reminders.disable().catch(() => {}),
+			new Promise((resolve) => setTimeout(resolve, 3000))
+		]);
 		await auth.signOut();
 	}
 
