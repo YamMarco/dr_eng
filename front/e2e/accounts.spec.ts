@@ -61,7 +61,7 @@ test.beforeAll(async () => {
 	if (!URL_ || !PUB || !SECRET || !DB_URL) throw new Error('Supabase env missing (.env.local)');
 	admin = createClient(URL_, SECRET, noSession);
 	sql = postgres(DB_URL, { max: 2 });
-	for (const label of ['a', 'b', 'c', 'del']) users[label] = await makeUser(label);
+	for (const label of ['a', 'b', 'c', 'del', 'q']) users[label] = await makeUser(label);
 });
 
 test.afterAll(async () => {
@@ -362,16 +362,76 @@ test('delete account: user, rows and the session are gone', async ({ request }) 
 			table
 		).toBe(0);
 
-	// KNOWN ISSUE (test-findings.md, "to fix later"): the access token is still signed and
-	// unexpired, so a second signed-in device can write the deleted user's progress back. Wanted: 401.
+	// The access token is still signed and unexpired: a second signed-in device must not be able
+	// to write the deleted user's data back (writes and LLM calls check the user still exists).
 	const after = await request.post('/api/progress', {
 		...auth(u),
 		data: { items: { 'lesson-progress': { value: {}, at: Date.now() } } }
 	});
-	const orphan = await sql`select 1 from progress where user_id = ${u.id}`;
-	if (after.status() !== 401 || orphan.length)
-		test.info().annotations.push({
-			type: 'known-issue',
-			description: `deleted user's old token: status ${after.status()}, ${orphan.length} orphan row(s)`
+	expect(after.status()).toBe(401);
+	expect((await request.post('/api/checkout', { ...auth(u), data: {} })).status()).toBe(401);
+	expect((await sql`select 1 from progress where user_id = ${u.id}`).length).toBe(0);
+});
+
+test('quota: the 10th OCR call of the day answers 429 (counted before the LLM runs)', async ({
+	request
+}) => {
+	const u = users.q;
+	await newCoupon('-Q');
+	expect(
+		(await request.post('/api/checkout', { ...auth(u), data: { coupon: coupon + '-Q' } })).status()
+	).toBe(200);
+	// A JPEG header is enough to reach the LLM call; the dummy key makes it fail (502), no cost.
+	const jpeg = Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0, 0, 0, 0]);
+	const call = () =>
+		request.post('/api/ocr', {
+			headers: { ...auth(u).headers, 'Content-Type': 'image/jpeg' },
+			data: jpeg
 		});
+	const statuses: number[] = [];
+	for (let i = 0; i < 10; i++) statuses.push((await call()).status());
+	expect(
+		statuses.slice(0, 9).every((s) => s !== 429 && s !== 402),
+		String(statuses)
+	).toBe(true);
+	expect(statuses[9], String(statuses)).toBe(429);
+	const [row] = await sql`select calls from llm_usage where user_id = ${u.id} and activity = 'ocr'`;
+	expect(row.calls).toBe(10);
+	// Other activities of the same student are not blocked by the OCR limit.
+	const grade = await request.post('/api/grade', {
+		...auth(u),
+		data: { kind: 'lesson', question: 'Describe your day.', text: 'I go to school.' }
+	});
+	expect(grade.status()).not.toBe(429);
+});
+
+test('exam lock: a new attempt within 24h of a finished one answers 429, after 24h it opens', async ({
+	request
+}) => {
+	const u = users.q;
+	const exam = (attempt: number) => ({ quizId: 'c-exam-2', attempt, parts: 2 });
+	const essay = (attempt: number) =>
+		request.post('/api/grade', {
+			...auth(u),
+			data: { kind: 'essay', exam: exam(attempt), question: 'Q?', text: 'I like it.' }
+		});
+	await sql`insert into exam_attempts (user_id, quiz_id, attempt, done_parts, done_at)
+		values (${u.id}, 'c-exam-2', 111, 2, now())
+		on conflict (user_id, quiz_id) do update set attempt = 111, done_parts = 2, done_at = now()`;
+	expect((await essay(222)).status(), 'a new attempt right after').toBe(429);
+	// The same attempt (a retry of a part) is not locked.
+	expect((await essay(111)).status(), 'a retry of the same attempt').not.toBe(429);
+	await sql`update exam_attempts set done_at = now() - interval '25 hours' where user_id = ${u.id}`;
+	expect((await essay(222)).status(), '25h later').not.toBe(429);
+	// Another exam is never locked by this one.
+	const other = await request.post('/api/grade', {
+		...auth(u),
+		data: {
+			kind: 'essay',
+			exam: { quizId: 'c-exam-3', attempt: 5, parts: 2 },
+			question: 'Q?',
+			text: 'Hi.'
+		}
+	});
+	expect(other.status()).not.toBe(429);
 });

@@ -63,6 +63,7 @@ Fixed (isolated):
 - [x] **Fast taps between pages threw unhandled "navigation aborted" / "Transition was skipped"** (`+layout.svelte` view transition): the expected rejections are caught.
 - [x] **Hyphenated words were spell-checked in pieces**: "pre-approved" flagged "pre" and the auto-fix sent "ere-approved" to the grader. Common prefixes (pre, re, co, ex, non, anti, ...) before a hyphen are accepted; the rest of the word is still checked (`checks/typos.ts`, `tests/typos.test.ts`).
 - [x] **Storage blocked entirely** (all cookies off: reading `localStorage` throws `SecurityError`) crashed the app. `static/boot.js`, the first script on every page, swaps in an in-memory storage when the real one throws; the visit works, nothing is saved.
+- [x] **A deleted account's old access token kept working** (up to ~1 h): another signed-in device could sync after the deletion and re-create the user's `progress` rows. Now every write and LLM call (POST/DELETE) checks the user still exists (`server/userExists.ts`, `hooks.server.ts`; one primary-key lookup). Reads are unchanged.
 - [x] **Every page downloaded the 1.1 MB lesson content** (the root layout imported the dev-only `DebugTooltip`, which imports lesson progress and the content). Now loaded on demand, only for staff: public pages and settings went from ~1.4 MB to ~0.3 MB of JS. `/app` and lessons still load the content (see to fix later).
 
 ## Claude-driven look at the app (phone, new student, screenshots by hand)
@@ -78,7 +79,8 @@ Landing, onboarding (3 steps), home, module and lesson map, exam passage, a mock
 Run on 2026-11-05 against the real Supabase project (the only one), authorized by the owner. Opt-in (`E2E_ACCOUNTS=1`), never in CI. It creates throwaway users (`e2e-<run>-*@example.com`, confirmed through the admin API, so no emails), a throwaway coupon and their rows, and deletes all of it; it then checks nothing of the run is left (verified separately: 0 test users, coupons or orders; the 7 real users untouched). The dev server ran with the Supabase env and a dummy Gemini key, so no LLM call was possible. Sessions come from a one-time magic-link token (`generateLink` + `verifyOtp`), which skips the CAPTCHA.
 
 Held up (11 tests): every student API answers 401 without a token, also via `/api/%67rade`; forged tokens (garbage, `alg: none`, tampered signature, swapped payload, self-made admin claim) answer 401; a student gets 403 on staff APIs; one student never sees or changes another's progress (a user id in the body is ignored); bad progress input gets 400/413; with the publishable key, neither a signed-in student nor anonymous can read or write `progress`, `orders`, `llm_usage`, `coupons`, `exam_attempts`, `push_subscriptions`, `waitlist`, `kanban_tasks`; a student with no plan gets 402 before any LLM call and nothing is counted; a single-use 100% coupon redeems exactly once under a 3-way race (the others get 400, one order); the paywall screen shows and a code in its box opens the app; a lesson finished on one device shows on another; deleting an account removes the user and all its rows.
-Not covered: sign-up/sign-in/reset through the UI (Turnstile and a real inbox), quota screens and the 24h exam lock (they need LLM calls or counter rows, and the daily cap is shared with real students).
+Also (13 tests in all): a deleted account's still-valid token is refused on writes and LLM calls (see Fixed); the 10th OCR call of the day answers 429 and the counter is 10; the 24h exam lock answers 429 for a new attempt after a finished one, not for a retry of the same attempt, not after 25h, not for another exam.
+Not covered: sign-up/sign-in/reset through the UI (Turnstile and a real inbox).
 
 ## Real LLM through the UI (`e2e/real-ai.spec.ts`, `npm run e2e:realai`)
 
@@ -91,7 +93,6 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 ## To fix later (not isolated, or low value)
 
-- [ ] **A deleted account's old access token keeps working** (up to its ~1 h expiry): another device still signed in can sync after the deletion and re-create `progress` rows for the deleted user (and, with a kept paid order, use the LLM). Account deletion removes every row, so this breaks the promise until the token expires. Fix: on writes and LLM calls, confirm the user still exists (one cheap lookup), or shorten the token lifetime. Touches the shared auth path. Shown as a `known-issue` annotation in `accounts.spec.ts`.
 
 - [ ] **Lazy-load lesson content for `/app`** (the dashboard still downloads the 1.1 MB content chunk, 264 KB gzipped): `dashboard/data.ts`, `lessonPath.ts`, `lessonProgress.svelte.ts` import it synchronously. Needs a metadata-only index (ids, titles, counts) for the shell and lessons loaded when a module or lesson opens.
 
@@ -101,6 +102,8 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 - [ ] **Pages sent `Access-Control-Allow-Origin: *` by `vite preview`**: probably preview-only (Vercel config differs); confirm on the deployed site's headers.
 
 ## Your to-do (owner)
+
+- [ ] **Delete 12 orphaned `progress` rows** of two accounts that no longer exist (found 2026-11-05; last written 2026-10-21 and 2026-11-02; not from the tests). Probably accounts deleted from the Supabase dashboard (that skips our row cleanup) or by the old token bug. Deleting a user in the dashboard leaves their rows: use the app's delete (or clear `progress`, `llm_usage`, `exam_attempts`, `push_subscriptions` by hand). I left them untouched.
 
 - [ ] **Check exam passages on a real phone**: printed lines now fit at ~12px (no wrapping from 390px wide). Too small? The alternative is wrapped lines.
 - [ ] **Decide the testing plan's open questions** (`testing-plan.md`): test Supabase project or local CLI (unblocks accounts-on tests), real-AI nightly smoke and its budget, persona runs on demand or weekly, e2e on every PR or only `main`.

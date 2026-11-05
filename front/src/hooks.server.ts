@@ -1,5 +1,6 @@
 import { redirect, type Handle } from '@sveltejs/kit';
 import { accountsEnabled, userFrom } from '$lib/server/supabase';
+import { userExists } from '$lib/server/userExists';
 
 // The app moved under /app; old bookmarks and installed shortcuts land there.
 const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
@@ -43,6 +44,9 @@ const app: Handle = async ({ event, resolve }) => {
 		const user = await userFrom(event.request);
 		if (!user) return new Response('sign in required', { status: 401, headers });
 		if (admin && !user.isAdmin) return new Response('staff only', { status: 403, headers });
+		// Writes and LLM calls: the token may outlive a deleted account.
+		if (event.request.method !== 'GET' && !(await userExists(user.id)))
+			return new Response('account deleted', { status: 401, headers });
 		event.locals.userId = user.id;
 		event.locals.isAdmin = user.isAdmin;
 		event.locals.email = user.email;
