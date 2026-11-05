@@ -151,3 +151,15 @@ export const kanbanTasks = pgTable('kanban_tasks', {
 	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
 	updatedAt: timestamp({ withTimezone: true }).notNull().defaultNow()
 }).enableRLS();
+
+/** Each student's registration in the weekly group Zoom lesson (server/zoom.ts). The join
+ *  link is personal: it opens the meeting under the registered name, so it stays server-side
+ *  and only goes to its own student. */
+export const zoomRegistrants = pgTable('zoom_registrants', {
+	userId: uuid().primaryKey(),
+	registrantId: text().notNull(),
+	joinUrl: text().notNull(),
+	/** The name the teacher sees in Zoom. */
+	displayName: text().notNull(),
+	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
+}).enableRLS();

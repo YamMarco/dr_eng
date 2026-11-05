@@ -36,10 +36,11 @@ export function normalizeCode(code: string | null | undefined): string | null {
 	return trimmed ? trimmed : null;
 }
 
-export type Access = { app: Date | null; cobe: Date | null };
+export type Access = { app: Date | null; cobe: Date | null; lessons: Date | null };
 
-/** Until when the user has the app and COBE (null = no access). A plan id the catalogue
- *  no longer knows (an older plan) opens both, as every plan did before COBE was sold apart. */
+/** Until when the user has the app, COBE and the group lessons (null = no access). A plan id
+ *  the catalogue no longer knows (an older plan) opens the app and COBE, as every plan did
+ *  before COBE was sold apart. */
 export async function access(userId: string): Promise<Access> {
 	const rows = await db!
 		.select({ planId: orders.planId, until: orders.accessUntil })
@@ -51,12 +52,12 @@ export async function access(userId: string): Promise<Access> {
 				gt(orders.accessUntil, sql`now()`)
 			)
 		);
-	const result: Access = { app: null, cobe: null };
+	const result: Access = { app: null, cobe: null, lessons: null };
 	const later = (a: Date | null, b: Date) => (a && a > b ? a : b);
 	for (const row of rows) {
-		const products = productsOf(row.planId) ?? { app: true, cobe: true };
-		if (products.app) result.app = later(result.app, row.until!);
-		if (products.cobe) result.cobe = later(result.cobe, row.until!);
+		const products = productsOf(row.planId) ?? { app: true, cobe: true, lessons: false };
+		for (const product of ['app', 'cobe', 'lessons'] as const)
+			if (products[product]) result[product] = later(result[product], row.until!);
 	}
 	return result;
 }

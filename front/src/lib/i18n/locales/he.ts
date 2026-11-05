@@ -595,6 +595,34 @@ export const he = {
 		wordsDone: 'סיימתם להיום',
 		toPath: 'למסלול המלא'
 	},
+	liveLesson: {
+		title: 'שיעור קבוצתי',
+		liveTitle: 'השיעור עכשיו',
+		noDate: 'מועד השיעור הבא יפורסם כאן בקרוב',
+		today: 'היום',
+		tomorrow: 'מחר',
+		join: 'הצטרפות לשיעור',
+		opensZoom: '(נפתח ב-Zoom בחלון חדש)',
+		calendar: 'ליומן',
+		calendarLabel: 'הוספה ליומן',
+		calendarTitle: 'שיעור קבוצתי באנגלית - EngUp',
+		calendarNote: 'נכנסים לשיעור מהאפליקציה:',
+		recording: 'צפייה בהקלטה של השיעור האחרון',
+		recordingCode: 'קוד:',
+		signUp: 'הרשמה לשיעורים',
+		nameLabel: 'איך יקראו לכם בשיעור?',
+		nameHint: 'זה השם שהמורה יראה ב-Zoom. שם פרטי ואות ראשונה של שם המשפחה מספיקים.',
+		save: 'הרשמה',
+		saving: 'נרשמים...',
+		cancel: 'ביטול',
+		errors: {
+			name: 'כתבו שם של 2 עד 30 אותיות.',
+			failed: 'ההרשמה לא הצליחה. נסו שוב בעוד רגע.'
+		},
+		upsellTitle: 'שיעור קבוצתי עם מורה',
+		upsellSub: 'כל שבוע, ב-Zoom',
+		upsellCta: 'לפרטים'
+	},
 	streak: {
 		title: 'הרצף שלי',
 		thisWeek: (days: number, goal: number) => `${days} מתוך ${goal} ימי תרגול השבוע`,

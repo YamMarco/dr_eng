@@ -87,10 +87,12 @@ test('COBE adds to the app part of any plan but COBE itself and a lesson', () =>
 });
 
 test('what an order opens never depends on the date', () => {
-	assert.deepEqual(productsOf('premium-pass'), { app: true, cobe: false });
-	assert.deepEqual(productsOf('premium-pass-cobe'), { app: true, cobe: true });
-	assert.deepEqual(productsOf('cobe-month'), { app: false, cobe: true });
-	assert.deepEqual(productsOf('lesson'), { app: true, cobe: false });
+	assert.deepEqual(productsOf('premium-pass'), { app: true, cobe: false, lessons: false });
+	assert.deepEqual(productsOf('premium-pass-cobe'), { app: true, cobe: true, lessons: false });
+	assert.deepEqual(productsOf('cobe-month'), { app: false, cobe: true, lessons: false });
+	assert.deepEqual(productsOf('lesson'), { app: true, cobe: false, lessons: false });
+	assert.deepEqual(productsOf('group-month'), { app: true, cobe: false, lessons: true });
+	assert.deepEqual(productsOf('personal-pack3-cobe'), { app: true, cobe: true, lessons: true });
 	// An older plan id: billing opens both.
 	assert.equal(productsOf('premium-year'), undefined);
 });

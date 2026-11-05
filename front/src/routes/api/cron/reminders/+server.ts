@@ -2,10 +2,10 @@
 // (hooks.server.ts) because no user calls it: it checks CRON_SECRET itself and fails closed.
 // Sends to devices whose chosen hour has come, and skips students who already practiced today
 // (their synced `activity-days`).
-import { timingSafeEqual } from 'node:crypto';
 import { error, json } from '@sveltejs/kit';
 import { and, between, eq, inArray, isNull, lt, or } from 'drizzle-orm';
 import { env } from '$env/dynamic/private';
+import { cronAuthorized } from '$lib/server/cron';
 import { db } from '$lib/server/db';
 import { progress, pushSubscriptions } from '$lib/server/db/schema';
 import { pushEnabled, sendPush } from '$lib/server/push';
@@ -16,12 +16,6 @@ const MESSAGES = [
 	'עוד יום של תרגול מקרב אתכם ליעד השבועי.',
 	'סבב קצר של מילים? זה לוקח פחות מחמש דקות.'
 ];
-
-function authorized(header: string | null): boolean {
-	const expected = Buffer.from(`Bearer ${env.CRON_SECRET}`);
-	const got = Buffer.from(header ?? '');
-	return got.length === expected.length && timingSafeEqual(got, expected);
-}
 
 /** A late or missed run still sends, up to this many hours after the chosen one. */
 const LATE_HOURS = 2;
@@ -39,7 +33,7 @@ const israelHour = () =>
 
 export const GET: RequestHandler = async ({ request }) => {
 	if (!env.CRON_SECRET || !pushEnabled || !db) error(503, 'reminders are not configured');
-	if (!authorized(request.headers.get('authorization'))) error(401, 'unauthorized');
+	if (!cronAuthorized(request.headers.get('authorization'))) error(401, 'unauthorized');
 
 	const today = israelDay();
 	const hour = israelHour();

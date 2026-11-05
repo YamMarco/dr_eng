@@ -12,12 +12,13 @@
 	import { getDecks } from '$lib/deck';
 	import Onboarding from '$lib/dashboard/Onboarding.svelte';
 	import ContinueBar from '$lib/dashboard/ContinueBar.svelte';
+	import LiveLessonCard from '$lib/dashboard/LiveLessonCard.svelte';
 	import ModuleRow from '$lib/dashboard/ModuleRow.svelte';
 	import StatusChips from '$lib/dashboard/StatusChips.svelte';
 
 	// Home = where the student stands, and a reason to go in: a way back to the
-	// latest thing done, and one concise row per Bagrut module. Every action lives
-	// on the module's own page.
+	// latest thing done, the weekly group lesson, and one concise row per Bagrut
+	// module. Every action lives on the module's own page.
 
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
 	// Staff-only COBE (alpha): everyone else sees it as "coming soon".
@@ -65,9 +66,10 @@
 			<StatusChips class="lg:hidden" />
 		</header>
 
-		{#if resume}
-			<div class="mb-4"><ContinueBar item={resume} groupId={group.id} /></div>
-		{/if}
+		<!-- Hidden when it has neither: a new student without lessons. -->
+		<div class="mb-4 flex flex-col gap-3 empty:hidden lg:gap-5">
+			{#if resume}<ContinueBar item={resume} groupId={group.id} />{/if}<LiveLessonCard />
+		</div>
 
 		<div class="flex flex-col gap-3 lg:grid lg:gap-5 {gridCols}">
 			{#each rows as row, i (row.mod.id)}

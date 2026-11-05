@@ -92,6 +92,13 @@
       "when": 1793868977562,
       "tag": "0012_purge_user_data_on_delete",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1793893670981,
+      "tag": "0013_zoom_registrants",
+      "breakpoints": true
     }
   ]
 }

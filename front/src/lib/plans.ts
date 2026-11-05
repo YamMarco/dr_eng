@@ -152,10 +152,19 @@ function parse(id: string): Parsed | undefined {
 	return { offer: offer as OfferId, cycle: cycle as Cycle, bundle };
 }
 
-/** What an order of this plan opens, whatever the date; undefined for an unknown id. */
-export function productsOf(id: string): { app: boolean; cobe: boolean } | undefined {
+export type Products = { app: boolean; cobe: boolean; lessons: boolean };
+
+/** What an order of this plan opens, whatever the date; undefined for an unknown id.
+ *  `lessons`: the weekly group Zoom lesson. */
+export function productsOf(id: string): Products | undefined {
 	const parsed = parse(id);
-	return parsed && { app: parsed.offer !== 'cobe', cobe: parsed.offer === 'cobe' || parsed.bundle };
+	return (
+		parsed && {
+			app: parsed.offer !== 'cobe',
+			cobe: parsed.offer === 'cobe' || parsed.bundle,
+			lessons: parsed.offer === 'group' || parsed.offer === 'personal'
+		}
+	);
 }
 
 /** "group-pass", "premium-month-cobe" or "lesson", priced on `at`. Undefined when not sold then.

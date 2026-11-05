@@ -55,7 +55,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 
 Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answers "active" for everyone and the app stays open.
 
-- **Plans** live in `$lib/plans.ts`; copy in i18n `plans`. The server prices orders from there, never from the client. Every price is `app` (ours; coupons discount only this part) + `zoom` (the teacher's share: group and private lessons).
+- **Plans** live in `$lib/plans.ts`; copy in i18n `plans`. The server prices orders from there, never from the client. Every price is `app` (ours; coupons discount only this part) + `zoom` (the teacher's share: the group lessons).
 - **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`), אישי (+ 2 private lessons a month), COBE alone, and a single private lesson (`lesson`, all to the teacher, a month of the app free). Ids: `<offer>-<month|pack3|pack6|pass>`, `+ -cobe` for COBE added on, and `lesson`. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
 - **Pass (שנת לימודים):** ends 30.6, priced as the months left × a lower monthly rate (from the 15th the current month is free; from July it's next year's, summer free); sold while 3+ months are left. Monthly plans add a month; access stacks, which is also how extensions work.
 - **Packs:** 3 or 6 months from the day of purchase.
@@ -70,6 +70,26 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Checkout** (`/checkout?plan=<id>&coupon=<code>`): sign up / in (the confirmation email returns to the same URL), apply a code (`/api/checkout/quote`), then `/api/checkout`. A 100% code completes at once (`free` order); access stacks on any remaining time. A paid total goes to `startPayment` in `server/payments.ts`, which returns null until a provider is wired (503 `payments-unavailable`). Wiring one: implement `startPayment`, add a webhook route that calls `completeOrder`.
 - **Coupons:** `node --env-file=.env.local scripts/create-coupon.mjs <RANDOM-CODE> --percent 100 --max 50 --expires 2027-01-01` (no code = list with use counts). The repo is public: a 100% code is random, never a word, and needs `--max` and `--expires`. Tester link: `<web>/checkout?coupon=<code>`.
 - **Migrations:** `npm run db:migrate` (needs `DATABASE_MIGRATE_URL`, the session pooler on 5432). Set `DATABASE_URL` (transaction pooler, 6543) on the host too.
+
+## Group lessons (Zoom)
+
+One weekly group lesson for plans with the `lessons` product (`productsOf`: the group and personal offers; staff pass). Students join from home's lesson card (`LiveLessonCard.svelte`); the meeting opens in Zoom, in a new tab.
+
+- **Personal links, no Zoom accounts:** the teacher's recurring meeting requires registration with manual approval. The first time, the student types the name the teacher will see; `/api/lessons` (POST) registers them through the Zoom API, approved at once, and keeps their personal join link in `zoom_registrants` (server-only). Anyone else who registers stays pending. Zoom gets an alias email per student (`aliasEmail` in `server/zoom.ts`), never the real one.
+- **`/api/lessons` (GET):** `locked` (no lessons in the plan; the card links to `/plans`, web only), `needs-name`, or `ready` with the next lesson, the join link and the latest recording. 503 (card hidden) without Zoom, the DB or a signed-in user.
+- **Schedule and recordings come from Zoom** (`schedule()`, cached 5 min per instance): the meeting's occurrences (a week the teacher deletes in Zoom is simply skipped) and its latest cloud recording's share link and passcode. Nothing is stored on our side.
+- **Card:** the next lesson's time (Israel), "ליומן" (a weekly `.ics` that links to `/app`, never to Zoom), the join button from 10 minutes before the start to 30 after the end (`joinOpen`, `$lib/liveLesson.ts`), and the latest recording.
+- **Access ends:** `/api/cron/lessons` (hourly, same workflow and `CRON_SECRET` as the reminders) cancels the registration of a student who has orders but no active lessons, so the link stops working. Registrants with no orders at all are staff and stay. Account deletion cancels it too.
+
+### Turning it on
+
+1. On the teacher's Zoom account, create one recurring meeting (weekly, fixed time):
+   - Registration required: register once, attend any; approval: manual; registration emails to registrants off.
+   - Waiting room on, passcode on, no join before host, screen share host only, no private chat between participants, auto-recording off (record to the cloud by hand, after telling the students).
+   - Cloud recording sharing: passcode protected, never public; auto-delete after 30 days (Pro has 5 GB).
+2. In the Zoom App Marketplace (same account), create a Server-to-Server OAuth app with scopes to read the meeting, add / delete its registrants and read its recordings. Activate it.
+3. Set on the host (server only): `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET`, and `ZOOM_MEETING_ID` (digits, no spaces).
+4. `npm run db:migrate` (table `zoom_registrants`), then redeploy.
 
 ## Waitlist
 
