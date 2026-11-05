@@ -23,10 +23,14 @@
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 		return new Promise((resolve) => {
-			document.startViewTransition(async () => {
+			const transition = document.startViewTransition(async () => {
 				resolve();
-				await navigation.complete;
+				// Aborted by a faster tap: expected, not an error.
+				await navigation.complete.catch(() => {});
 			});
+			// A newer navigation skips this transition; its promises then reject.
+			for (const p of [transition.ready, transition.finished, transition.updateCallbackDone])
+				p.catch(() => {});
 		});
 	});
 

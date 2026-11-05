@@ -17,11 +17,13 @@ export default defineConfig({
 		trace: 'retain-on-failure'
 	},
 	projects: [
-		{ name: 'phone', use: { ...devices['Pixel 7'] }, testIgnore: /content\.spec/ },
+		{ name: 'phone', use: { ...devices['Pixel 7'] }, testIgnore: /(content|personas)\.spec/ },
+		// Persona runs (break-it): phone only, one worker (RAM).
+		{ name: 'persona', use: { ...devices['Pixel 7'] }, testMatch: /personas\.spec/ },
 		{
 			name: 'desktop',
 			use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
-			testIgnore: /(content|api)\.spec/
+			testIgnore: /(content|api|personas)\.spec/
 		},
 		// The content crawler: slow (every lesson screen), phone only.
 		{ name: 'content', use: { ...devices['Pixel 7'] }, testMatch: /content\.spec/ }

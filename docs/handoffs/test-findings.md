@@ -54,6 +54,21 @@ Held up: every attack was graded as off-topic (fail, or 0 on every essay criteri
 Watch: a valid sentence plus an injected instruction failed with only `off-point` (non-fatal). Harmless (the strict side), but the model overrides "off-point doesn't fail".
 Not covered: the client-supplied question/editor notes (item 4 below), and COBE audio (parked).
 
+## Persona runs (`e2e/personas.spec.ts`, `npm run e2e:persona`)
+
+Weak student (hostile name, rushed lesson, mashed buttons), strong student (hand-typed junk URLs), keyboard-only (focus stays in the dialog, axe, every control named), distracted (failing storage, offline, storage cleared in another tab, reloads), parent (policy links, junk plan ids), and a seeded monkey (random taps, typing, back/forward, reloads; `PERSONA_SEED`, `PERSONA_STEPS`).
+
+Fixed (isolated):
+- [x] **Full or failing `localStorage` (old phone, full disk) turned every page into "500 Internal Error"**: `legacyIds.ts` wrote at import time. Writes now go through `storeItem` (`storedJson.ts`: try/catch); the session keeps working from memory.
+- [x] **Fast taps between pages threw unhandled "navigation aborted" / "Transition was skipped"** (`+layout.svelte` view transition): the expected rejections are caught.
+
+## To fix later (not isolated, or low value)
+
+- [ ] **Storage blocked entirely** (Chrome with all cookies blocked: reading `window.localStorage` throws `SecurityError`): about 20 files read it directly. Needs one safe accessor used everywhere. Test parked as `test.fixme` in `personas.spec.ts`.
+- [ ] **Malformed `%` in a URL** (`/app/unit/%E0%A4%A/module/c`): the server answers a proper 400 page, but SvelteKit's client router logs "URI malformed". Framework; low.
+- [ ] **Accounts-on tests** wait for the Supabase test project / local CLI decision. Only the production project exists, so none were run.
+- [ ] **Pages sent `Access-Control-Allow-Origin: *` by `vite preview`**: probably preview-only (Vercel config differs); confirm on the deployed site's headers.
+
 ## Your to-do (owner)
 
 - [ ] **Check exam passages on a real phone**: printed lines now fit at ~12px (no wrapping from 390px wide). Too small? The alternative is wrapped lines.

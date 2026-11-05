@@ -101,8 +101,8 @@ function migrate() {
 if (typeof localStorage !== 'undefined' && !localStorage.getItem(DONE_KEY)) {
 	try {
 		migrate();
+		localStorage.setItem(DONE_KEY, '1');
 	} catch {
-		// Corrupt storage: the stores already fall back to empty progress.
+		// Corrupt or full storage: the stores already fall back to empty progress.
 	}
-	localStorage.setItem(DONE_KEY, '1');
 }

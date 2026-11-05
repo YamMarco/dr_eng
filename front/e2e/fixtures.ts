@@ -19,7 +19,12 @@ export type StudentState = Record<string, unknown>;
 /** Seeds localStorage once per test (later navigations keep what the app wrote). */
 export async function seed(page: Page, state: StudentState) {
 	await page.addInitScript((s) => {
-		if (sessionStorage.getItem('e2e-seeded')) return;
+		// Opaque documents (about:blank, an error page) deny storage: nothing to seed there.
+		try {
+			if (sessionStorage.getItem('e2e-seeded')) return;
+		} catch {
+			return;
+		}
 		sessionStorage.setItem('e2e-seeded', '1');
 		for (const [k, v] of Object.entries(s))
 			localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));

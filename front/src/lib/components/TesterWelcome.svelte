@@ -6,6 +6,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { TESTERS_GROUP } from '$lib/support';
+	import { storeItem } from '$lib/storedJson';
 	import { resolve } from '$app/paths';
 
 	// Tester greeting: what a test version means, where feedback goes, and that the
@@ -21,7 +22,7 @@
 
 	function done() {
 		open = false;
-		if (hide) localStorage.setItem(SEEN_KEY, '1');
+		if (hide) storeItem(SEEN_KEY, '1');
 	}
 </script>
 

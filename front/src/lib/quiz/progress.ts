@@ -7,7 +7,7 @@ import { scorePercent, type QuizScore } from './scoring';
 import type { ExamGrade } from '$lib/feedback/types';
 import { activity } from '$lib/activity.svelte';
 import { saveSynced } from '$lib/progressSync.svelte';
-import { isRecord } from '$lib/storedJson';
+import { isRecord, storeItem } from '$lib/storedJson';
 
 export interface QuizAttempt {
 	quizId: string;
@@ -102,7 +102,7 @@ export function retakeLockedUntil(quizId: string, now = Date.now()): number | nu
 
 export function saveInProgress(state: QuizInProgress) {
 	if (!hasStorage()) return;
-	localStorage.setItem(progressKey(state.quizId), JSON.stringify(state));
+	storeItem(progressKey(state.quizId), JSON.stringify(state));
 }
 
 export function getInProgress(quizId: string): QuizInProgress | null {
