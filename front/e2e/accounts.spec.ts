@@ -6,7 +6,7 @@
 //   node_modules is a junction)   then   E2E_ACCOUNTS=1 E2E_PORT=5199 npm run e2e:accounts
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import postgres from 'postgres';
-import { test, expect, type Browser } from '@playwright/test';
+import { test, expect, type APIRequestContext, type Browser } from '@playwright/test';
 import { playThrough, he } from './fixtures';
 
 test.skip(!process.env.E2E_ACCOUNTS, 'set E2E_ACCOUNTS=1 (creates and deletes test users)');
@@ -535,11 +535,21 @@ test('reset link: asks for a new password, rejects a weak one, saves a good one'
 	await page.getByRole('button', { name: t.savePassword }).click();
 	await expect(page.getByRole('heading', { name: t.recoveryTitle })).toBeVisible();
 	expect((await admin.auth.admin.getUserById(u.id)).data.user!.updated_at).toBe(before);
+	const sessions = () =>
+		sql`select count(*)::int n from auth.sessions where user_id = ${u.id}`.then((r) => r[0].n);
+	expect(await sessions(), 'the link session plus the user').toBeGreaterThan(1);
 	// A good one: saved, and the app opens (no plan: the paywall).
 	await field.fill(crypto.randomUUID() + 'Bb2!');
 	await page.getByRole('button', { name: t.savePassword }).click();
 	await expect(page.getByRole('heading', { name: 'עוד צעד אחד' })).toBeVisible({ timeout: 20_000 });
 	expect((await admin.auth.admin.getUserById(u.id)).data.user!.updated_at).not.toBe(before);
+	// A reset signs the account out everywhere else: u.session (another device, made before the
+	// reset) can no longer be refreshed.
+	const other = await createClient(URL_!, PUB!, noSession).auth.refreshSession({
+		refresh_token: (u.session as { refresh_token: string }).refresh_token
+	});
+	expect(other.error, 'the other session survived the password reset').not.toBeNull();
+	expect(await sessions(), 'only this session is left').toBe(1);
 	await ctx.close();
 });
 
@@ -629,6 +639,122 @@ test('captcha that never solves: each form answers 400 and says so in Hebrew', a
 		(u) => u.email === 'e2e-nobody@example.com'
 	);
 	expect(created).toBe(false);
+	await ctx.close();
+});
+
+// Delete account (Settings): held, not tapped. A student with a plan, signed in, on /app/settings.
+async function onSettings(
+	browser: Browser,
+	baseURL: string,
+	request: APIRequestContext,
+	label: string
+) {
+	const u = await makeUser(label);
+	users[label] = u;
+	const code = `${coupon}-${label.toUpperCase()}`;
+	await sql`insert into coupons (code, percent_off, max_redemptions, expires_at, note)
+		values (${code}, 100, 1, now() + interval '1 day', 'e2e throwaway')`;
+	expect(
+		(await request.post('/api/checkout', { ...auth(u), data: { coupon: code } })).status()
+	).toBe(200);
+	const ctx = await signedIn(browser, u);
+	const page = await ctx.newPage();
+	await page.goto(`${baseURL}/app/settings`);
+	const del = page.getByRole('button', { name: /מחיקת חשבון/ });
+	await expect(del).toBeVisible({ timeout: 20_000 });
+	const exists = async () => (await admin.auth.admin.getUserById(u.id)).data.user !== null;
+	return { ctx, page, del, exists, u };
+}
+
+test('delete account: a tap or a short hold does nothing, a long hold deletes', async ({
+	browser,
+	baseURL,
+	request
+}) => {
+	const { ctx, page, del, exists } = await onSettings(browser, baseURL!, request, 'hold');
+	await del.click(); // a tap
+	await del.hover();
+	await page.mouse.down(); // a hold that is let go too early
+	await page.waitForTimeout(600);
+	await page.mouse.up();
+	await page.waitForTimeout(800);
+	expect(await exists(), 'a tap or a short hold deleted the account').toBe(true);
+	await del.hover();
+	await page.mouse.down();
+	await page.waitForTimeout(2300);
+	await page.mouse.up();
+	await expect.poll(exists, { timeout: 20_000 }).toBe(false);
+	await expect(page.getByRole('heading', { name: t.title })).toBeVisible({ timeout: 20_000 });
+	await ctx.close();
+});
+
+test('delete account: holding Enter works, a quick key press does not', async ({
+	browser,
+	baseURL,
+	request
+}) => {
+	const { ctx, page, del, exists } = await onSettings(browser, baseURL!, request, 'keyh');
+	await del.focus();
+	await page.keyboard.press('Enter'); // down and up at once
+	await page.waitForTimeout(800);
+	expect(await exists()).toBe(true);
+	await page.keyboard.down('Enter');
+	await page.waitForTimeout(2300);
+	await page.keyboard.up('Enter');
+	await expect.poll(exists, { timeout: 20_000 }).toBe(false);
+	await ctx.close();
+});
+
+test('delete account: assistive technology (a plain click) arms it, the next click confirms', async ({
+	browser,
+	baseURL,
+	request
+}) => {
+	const { ctx, page, del, exists } = await onSettings(browser, baseURL!, request, 'at');
+	await del.dispatchEvent('click'); // no pointer, no key: what a screen reader sends
+	await expect(page.getByText(he.settings.deleteConfirm)).toBeVisible();
+	expect(await exists()).toBe(true);
+	await del.dispatchEvent('click');
+	await expect.poll(exists, { timeout: 20_000 }).toBe(false);
+	await ctx.close();
+});
+
+test('captcha script that never arrives: the form says it is checking, then explains', async ({
+	browser,
+	baseURL
+}) => {
+	test.skip(!process.env.VITE_TURNSTILE_SITE_KEY, 'no VITE_TURNSTILE_SITE_KEY in .env.local');
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const page = await ctx.newPage();
+	await page.route('**/challenges.cloudflare.com/**', () => {}); // never answered
+	await page.goto(`${baseURL}/app`);
+	await expect(page.getByText(t.captchaLoading)).toBeVisible({ timeout: 20_000 });
+	await expect(page.getByRole('button', { name: t.signIn, exact: true })).toBeDisabled();
+	await expect(page.getByText(t.captchaSlow)).toBeVisible({ timeout: 15_000 });
+	await ctx.close();
+});
+
+test('a reset link opened in another tab does not put the form in the tab that asked', async ({
+	browser,
+	baseURL
+}) => {
+	const u = await makeUser('rtab');
+	users.rtab = u;
+	const { url } = await landing(baseURL!, 'recovery', u.email);
+	const ctx = await browser.newContext({ locale: 'he-IL' });
+	const asked = await ctx.newPage(); // the tab that asked for the reset
+	await asked.goto(`${baseURL}/app`);
+	await expect(asked.getByRole('heading', { name: t.title })).toBeVisible({ timeout: 20_000 });
+	const opened = await ctx.newPage(); // the tab the email link opens
+	await opened.goto(url);
+	await expect(opened.getByRole('heading', { name: t.recoveryTitle })).toBeVisible({
+		timeout: 20_000
+	});
+	// Same browser, so one session: the asking tab is signed in (the app), never a second form.
+	await expect(asked.getByRole('heading', { name: 'עוד צעד אחד' })).toBeVisible({
+		timeout: 20_000
+	});
+	await expect(asked.getByRole('heading', { name: t.recoveryTitle })).toHaveCount(0);
 	await ctx.close();
 });
 

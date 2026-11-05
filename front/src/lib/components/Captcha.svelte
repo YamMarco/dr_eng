@@ -30,6 +30,7 @@
 
 <script lang="ts">
 	import { themeStore } from '$lib/theme.svelte';
+	import { i18n } from '$lib/i18n/index.svelte';
 
 	// Invisible unless Cloudflare wants a click (or always shown, `visible`). Tokens are
 	// single-use: call reset() after every request that spent one. `status` lets a form
@@ -39,6 +40,10 @@
 	let { visible = false, status = $bindable() }: Props = $props();
 
 	let el: HTMLDivElement;
+	/** Cloudflare's script has arrived and the widget is drawn; until then the form says so. */
+	let rendered = $state(false);
+	let slow = $state(false);
+	let t = $derived(i18n.dict.login);
 	let api: Turnstile | undefined;
 	let id: string | undefined;
 	let token: string | null = null;
@@ -69,12 +74,20 @@
 		if (api && id) api.reset(id);
 	}
 
+	// A slow or blocked script (a slow connection, an ad blocker) leaves nothing to see: say what is going on.
+	$effect(() => {
+		if (rendered) return void (slow = false);
+		const timer = setTimeout(() => (slow = true), 8000);
+		return () => clearTimeout(timer);
+	});
+
 	$effect(() => {
 		let gone = false;
 		load()
 			.then((ts) => {
 				if (gone) return;
 				api = ts;
+				rendered = true;
 				id = ts.render(el, {
 					sitekey: CAPTCHA_KEY,
 					language: 'he',
@@ -110,5 +123,13 @@
 	});
 </script>
 
+{#if !rendered && status !== 'failed'}
+	<p
+		role="status"
+		class="rounded-2xl border border-line bg-canvas px-4 py-3 text-center text-sm font-semibold text-muted"
+	>
+		{slow ? t.captchaSlow : t.captchaLoading}
+	</p>
+{/if}
 <!-- Never display:none - Turnstile stalls in a hidden container. -->
 <div bind:this={el} data-status={status} class="flex justify-center"></div>

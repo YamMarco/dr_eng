@@ -28,9 +28,15 @@ class AuthStore {
 			this.session = data.session;
 			this.ready = true;
 		});
+		// supabase-js tells every tab of this browser about a recovery, but the new-password
+		// form belongs only to the tab the email link opened (read before supabase-js clears the
+		// URL); the others just become signed in, on the same session.
+		const openedFromRecoveryLink = /[#&?]type=recovery\b/.test(location.hash + location.search);
 		supabase.auth.onAuthStateChange((event, session) => {
 			this.session = session;
-			if (event === 'PASSWORD_RECOVERY') this.recovering = true;
+			if (event === 'PASSWORD_RECOVERY' && openedFromRecoveryLink) this.recovering = true;
+			// The password was saved (here or in another tab) or the session ended.
+			if (event === 'USER_UPDATED' || event === 'SIGNED_OUT') this.recovering = false;
 		});
 	}
 
