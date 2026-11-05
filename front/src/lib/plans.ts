@@ -83,9 +83,13 @@ const PASS_MIN_MONTHS = 3;
 /** A private tutor's hourly rate, in agorot: the page's price anchor. */
 export const TUTOR_HOUR = 15000;
 
-/** On only once the terms promise a 14-day refund / the payment provider takes installments. */
+/** On only once the terms promise a 14-day full refund. */
 export const GUARANTEE = false;
-export const INSTALLMENTS = false;
+/** Plans of 3+ months split into card installments, up to one a month (terms "מסלולים ותשלום"). */
+export const INSTALLMENTS = true;
+
+/** Most installments the payment page offers for a plan (1 = a single payment). */
+export const maxPayments = (plan: Plan) => (INSTALLMENTS ? plan.months : 1);
 
 /** The plans on the page, in order; the featured one is pushed. `personal` is priced but hidden for now. */
 export const TIERS = ['premium', 'group'] as const;

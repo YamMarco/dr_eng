@@ -31,7 +31,7 @@
 - [ ] Register the business before payments
 - [x] Keep the direct `GEMINI_API_KEY` on a paid tier (free tier may train on data; the policy says no training)
 - [ ] Waitlist: delete the list after the launch email (the policy promises it)
-- [ ] Tell testers (WhatsApp group) about the 04.11.2026 policy update (AI retention now per the providers' terms, refund per the law): material changes need notice before they apply
+- [ ] Tell testers (WhatsApp group) about the 04.11.2026 policy update (AI retention now per the providers' terms, refund per the law) and the 05.11.2026 one (installments, refund on the full price): material changes need notice before they apply
 - [ ] Marketing withdrawals: no in-app toggle; removals come by email or the unsubscribe link, record them before the first campaign
 - [ ] Private lessons are off, but the plans page still shows "רוצים רק שיעור פרטי?" with a checkout link (`lesson`, `LESSON` in `lib/plans.ts`), and `personal-*` plan ids still price at checkout by URL. Remove both before payments open
 - [ ] Zoom count: owner said 1 a month; plans copy says the group lesson is weekly ("כל שבוע", "4 שיעורים בחודש"). Align both before writing the terms
@@ -39,7 +39,7 @@
 
 ## Unfinished: update the pages before opening each service
 
-- **Payments:** name the business in "מי אנחנו" (privacy + terms); add the payment provider to the privacy providers list and the terms' "תשלום" line; checkout needs a terms + refund link next to the pay button; keep `GUARANTEE` (`lib/plans.ts`) off: its lines promise a full refund (plans: 14 days, checkout: 3 days), beyond the terms.
+- **Payments:** name the business in "מי אנחנו" (privacy + terms); add the payment provider to the privacy providers list and the terms' "תשלום" line; checkout needs a terms + refund link next to the pay button; keep `GUARANTEE` (`lib/plans.ts`) off: its lines promise a full refund (plans: 14 days, checkout: 3 days), beyond the terms. The provider must offer interest-free installments up to `maxPayments` (10 for a pass bought in September): the terms promise them.
 - **Zoom lessons:** replace "הכללים יפורסמו כאן לפני שהשיעורים ייפתחו" with the rule: the plan's lessons are per month; a lesson not attended is lost (no rollover, no refund). Say it on the plans page too, before purchase. Open: what the student gets when the teacher cancels. Recording only with notice and consent.
 - **Analytics / error monitoring:** the policy covers usage data for internal improvement; when installing, name the provider in the privacy providers list (the text promises it).
 - **Marketing emails:** none now, and no opt-in checkbox. Before the first update email: put the unticked opt-in back (sign-up passes `updates`, saving `marketing_consent_at`), send only to users with it, include a one-click unsubscribe, and honor removals.
@@ -62,5 +62,6 @@ Listed as not accessible: COBE speaking (inherent to the exam; alternative on re
 - AI: Google only; no other AI provider without updating the policy first.
 - Third parties: the texts promise only what we control (provider, purpose, region, what we send, no training); providers' own retention and handling = "לפי התנאים שלהם", linked from the privacy providers list (`links` in a legal section). Adding a provider: add its link too.
 - Zoom: group only, no private lessons; lessons are per month, use it or lose it.
+- Installments: plans of 3+ months, up to one payment a month, no interest; a refund is computed on the full price, whatever was collected so far.
 - Color contrast: not listed on `/accessibility` by choice (brand teal kept). Open risk: the statement claims AA, and teal on white is below 4.5:1 for small text.
 - Feedback screenshot is pre-ticked (the policy says so).

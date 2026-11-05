@@ -3,7 +3,7 @@
 import { and, eq, gt, inArray, sql } from 'drizzle-orm';
 import { db } from './db';
 import { coupons, orders } from './db/schema';
-import { defaultPlan, planById, productsOf, type Plan } from '$lib/plans';
+import { defaultPlan, maxPayments, planById, productsOf, type Plan } from '$lib/plans';
 import { startPayment } from './payments';
 
 export const billingEnabled = !!db;
@@ -133,7 +133,7 @@ export async function checkout(
 	returnUrl: string
 ): Promise<CheckoutResult> {
 	const code = normalizeCode(rawCode);
-	const order = await db!.transaction(async (tx) => {
+	const { order, plan } = await db!.transaction(async (tx) => {
 		if (code)
 			await tx.execute(sql`select 1 from ${coupons} where ${coupons.code} = ${code} for update`);
 		const { plan, quote } = await resolve(tx, planId, code, userId);
@@ -157,7 +157,7 @@ export async function checkout(
 				completedAt: free ? new Date() : null
 			})
 			.returning();
-		return row;
+		return { order: row, plan };
 	});
 
 	if (order.status === 'free')
@@ -166,6 +166,7 @@ export async function checkout(
 	const payment = await startPayment({
 		orderId: order.id,
 		amount: order.total,
+		maxPayments: maxPayments(plan),
 		description: order.planId,
 		returnUrl
 	});

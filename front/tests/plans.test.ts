@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	COBE_ADDON,
 	PRICING,
+	maxPayments,
 	passEnd,
 	passMonths,
 	planById,
@@ -108,4 +109,12 @@ test('the site charges PRICING; launch only lowers the group lessons, to 80 a mo
 		withCobe(planById('group-pack3', FEB, 'launch')!, true, FEB, 'launch')!.price,
 		(11900 + COBE_ADDON.pack3) * 3
 	);
+});
+
+test('installments: up to one a month of the plan, a single payment for a month or a lesson', () => {
+	const payments = (id: string) => maxPayments(planById(id, NOV)!);
+	assert.equal(payments('premium-month'), 1);
+	assert.equal(payments('lesson'), 1);
+	assert.equal(payments('group-pack3'), 3);
+	assert.equal(payments('premium-pass'), 8);
 });
