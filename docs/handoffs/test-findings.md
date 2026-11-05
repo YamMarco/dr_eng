@@ -95,6 +95,8 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 ## To fix later (not isolated, or low value)
 
+- [ ] **Deleting a user in the Supabase dashboard leaves their rows** (`progress`, `llm_usage`, `exam_attempts`, `push_subscriptions` have no FK to `auth.users`); only the app's delete cleans them. 12 such rows from two accounts were removed by hand on 2026-11-05. Fix: a Postgres trigger on `auth.users` delete (a migration) that purges those tables, so any deletion path is covered; orders stay (tax law).
+
 
 
 
@@ -104,7 +106,6 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 ## Your to-do (owner)
 
-- [ ] **Delete 12 orphaned `progress` rows** of two accounts that no longer exist (found 2026-11-05; last written 2026-10-21 and 2026-11-02; not from the tests). Probably accounts deleted from the Supabase dashboard (that skips our row cleanup) or by the old token bug. Deleting a user in the dashboard leaves their rows: use the app's delete (or clear `progress`, `llm_usage`, `exam_attempts`, `push_subscriptions` by hand). I left them untouched.
 
 - [ ] **Check exam passages on a real phone**: printed lines now fit at ~12px (no wrapping from 390px wide). Too small? The alternative is wrapped lines.
 - [ ] **Decide the testing plan's open questions** (`testing-plan.md`): test Supabase project or local CLI (unblocks accounts-on tests), real-AI nightly smoke and its budget, persona runs on demand or weekly, e2e on every PR or only `main`.
