@@ -111,9 +111,8 @@ export async function quote(planId: string | null, code: string | null, userId: 
 	return (await resolve(db!, planId, normalizeCode(code), userId)).quote;
 }
 
-/** A pass ends on its fixed date; any other plan adds its months to `start`. */
+/** A plan adds its months to `start`. */
 function accessEnd(plan: Plan, start: Date): Date {
-	if (plan.until && plan.until > start) return plan.until;
 	const until = new Date(start);
 	until.setMonth(until.getMonth() + plan.months);
 	return until;
@@ -187,8 +186,7 @@ export async function checkout(
 export async function completeOrder(orderId: string, status: 'paid' | 'failed') {
 	const [order] = await db!.select().from(orders).where(eq(orders.id, orderId));
 	if (!order || order.status !== 'pending') return;
-	// Priced and dated as on the day of the order.
-	const plan = planById(order.planId, order.createdAt);
+	const plan = planById(order.planId);
 	const current = await accessUntil(order.userId);
 	const start = current && current > new Date() ? current : new Date();
 	await db!

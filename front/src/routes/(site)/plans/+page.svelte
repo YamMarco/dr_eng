@@ -58,26 +58,23 @@
 		return debugDate ? new Date(`${debugDate}T12:00:00+02:00`) : new Date();
 	});
 
-	let passOn = $derived(!!planById('premium-pass', now));
-	// The pass only while it's sold.
-	let cycles = $derived(CYCLES.filter((c) => c !== 'pass' || passOn));
 	// Opens on the longest cycle: the lowest monthly price, its total shown under it.
 	let chosen = $state<Cycle | null>(null);
-	let cycle = $derived<Cycle>(chosen && cycles.includes(chosen) ? chosen : cycles.at(-1)!);
+	let cycle = $derived<Cycle>(chosen ?? CYCLES.at(-1)!);
 	// COBE added per plan, off by default; the card switch and the table row share it.
 	let cobeOn = $state<Partial<Record<OfferId, boolean>>>({});
 	// Staff-only COBE (alpha): no COBE options for anyone else.
 	let showCobe = $derived(cobeVisible(auth.isAdmin));
 
 	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
-		planById(planId(offer, c, cobe), now, pricing)!;
+		planById(planId(offer, c, cobe), pricing)!;
 	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
 	/** Percent saved against paying monthly; 0 on the monthly cycle. */
 	const saved = (offer: OfferId) =>
 		savingPercent(plan(offer), plan(offer, 'month', !!cobeOn[offer]));
 
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
-	let lesson = $derived(planById('lesson', now)!);
+	let lesson = $derived(planById('lesson')!);
 
 	// The anchor: a month of weekly private lessons against the featured plan's month.
 	const tutorMonth = (TUTOR_HOUR * 4) / 100;
@@ -132,9 +129,7 @@
 		<div class="flex min-h-11 flex-col items-start gap-1 text-sm text-muted">
 			{#if cycle !== 'month'}
 				<p>
-					{cycle === 'pass'
-						? t.passTotal(p.months, formatPrice(p.price))
-						: t.packTotal(p.months, formatPrice(p.price))}
+					{t.packTotal(p.months, formatPrice(p.price))}
 				</p>
 				{#if showInstallments}
 					<p class="font-bold text-ink">{t.installments(p.months, perMonth(p))}</p>
@@ -143,7 +138,7 @@
 				<p>{t.paidMonthly}</p>
 			{/if}
 			{#if launch}
-				{@const regular = perMonth(planById(p.id, now, 'regular')!)}
+				{@const regular = perMonth(planById(p.id, 'regular')!)}
 				{#if regular !== perMonth(p)}
 					<p class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink">
 						{t.launchLine(regular)}
@@ -195,7 +190,7 @@
 				{t.launchTitle}
 			</h2>
 			<p class="text-pretty">
-				{t.launchBody(perMonth(plan('group', passOn ? 'pass' : 'pack6', false)))}
+				{t.launchBody(perMonth(plan('group', 'pack6', false)))}
 			</p>
 			{#if days <= 31}
 				<p class="text-sm font-bold text-brand-dark tabular-nums">{t.launchCountdown(days)}</p>
@@ -236,7 +231,7 @@
 		<Segmented
 			label={t.cycleLabel}
 			value={cycle}
-			options={cycles.map((value) => ({ value, label: t.cycles[value] }))}
+			options={CYCLES.map((value) => ({ value, label: t.cycles[value] }))}
 			onchange={(value) => (chosen = value)}
 		/>
 	</div>
@@ -537,17 +532,17 @@
 				<thead>
 					<tr>
 						<th></th>
-						{#each cycles as c (c)}<th class="font-semibold">{t.cycles[c]}</th>{/each}
+						{#each CYCLES as c (c)}<th class="font-semibold">{t.cycles[c]}</th>{/each}
 					</tr>
 				</thead>
 				<tbody>
 					{#each TIERS as offer (offer)}
 						<tr>
 							<th scope="row" class="text-start font-semibold">{t.offers[offer].name}</th>
-							{#each cycles as c (c)}
+							{#each CYCLES as c (c)}
 								{@const id = planId(offer, c)}
-								{@const regular = perMonth(planById(id, now, 'regular')!)}
-								{@const launch = perMonth(planById(id, now, 'launch')!)}
+								{@const regular = perMonth(planById(id, 'regular')!)}
+								{@const launch = perMonth(planById(id, 'launch')!)}
 								<td class={regular === launch ? 'text-muted' : 'font-bold text-brand-dark'}>
 									{regular === launch ? regular : `${regular} / ${launch}`}
 								</td>

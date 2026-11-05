@@ -144,9 +144,7 @@
 				<div>
 					<p class="text-sm text-muted">{t.yourPlan}</p>
 					<p class="text-lg font-bold">{name}</p>
-					{#if plan.cycle === 'pass'}
-						<p class="text-sm text-muted">{t.passLine(plan.months)}</p>
-					{:else if plan.months > 1}
+					{#if plan.months > 1}
 						<p class="text-sm text-muted">{t.packLine(plan.months)}</p>
 					{/if}
 				</div>

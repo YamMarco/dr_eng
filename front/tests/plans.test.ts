@@ -1,5 +1,4 @@
-// Plan catalogue: the pass depends on the date (months left), coupons see the
-// app part only, and access per product never depends on the date.
+// Plan catalogue: coupons see the app part only, and access per product never depends on the date.
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -7,88 +6,49 @@ import {
 	COBE_ADDON,
 	PRICING,
 	maxPayments,
-	passEnd,
-	passMonths,
 	planById,
 	productsOf,
 	withCobe
 } from '../src/lib/plans.ts';
 
-const at = (iso: string) => new Date(`${iso}T12:00:00+02:00`);
-const NOV = at('2026-11-10');
-const FEB = at('2027-02-10');
-
-test('the pass counts this month to June; from the 15th this month is free', () => {
-	assert.equal(passMonths(at('2026-09-01')), 10);
-	assert.equal(passMonths(at('2026-10-29')), 8);
-	assert.equal(passMonths(NOV), 8);
-	assert.equal(passMonths(FEB), 5);
-	// Bought in the summer: the next school year, summer free.
-	assert.equal(passMonths(at('2027-07-10')), 10);
-	assert.equal(passEnd(at('2027-07-10')).toISOString(), '2028-06-30T20:59:59.000Z');
-});
-
-test('the pass is sold while 3 or more months are left', () => {
-	assert.ok(planById('premium-pass', at('2027-04-10')));
-	assert.equal(planById('premium-pass', at('2027-04-20')), undefined);
-	assert.equal(planById('premium-pass', at('2027-05-10')), undefined);
-	assert.ok(planById('premium-month', at('2027-05-10')));
-});
-
-test('a pass prices the months left and ends on 30.6', () => {
-	const pass = planById('premium-pass', FEB)!;
-	assert.equal(pass.months, 5);
-	assert.equal(pass.price, 3900 * 5);
-	assert.equal(pass.until!.toISOString(), '2027-06-30T20:59:59.000Z');
-});
-
 test('regular prices: 179 a month for the group, 64 for premium, less for longer cycles', () => {
-	const month = (id: string) => planById(id, FEB)!.price / planById(id, FEB)!.months;
+	const month = (id: string) => planById(id)!.price / planById(id)!.months;
+	assert.deepEqual(['group-month', 'group-pack3', 'group-pack6'].map(month), [17900, 15900, 14900]);
 	assert.deepEqual(
-		['group-month', 'group-pack3', 'group-pack6', 'group-pass'].map(month),
-		[17900, 15900, 14900, 13900]
+		['personal-month', 'personal-pack3', 'personal-pack6'].map(month),
+		[52900, 50900, 49900]
 	);
-	assert.deepEqual(
-		['personal-month', 'personal-pack3', 'personal-pack6', 'personal-pass'].map(month),
-		[52900, 50900, 49900, 48900]
-	);
-	assert.deepEqual(
-		['premium-month', 'premium-pack3', 'premium-pack6', 'premium-pass'].map(month),
-		[6400, 4900, 4400, 3900]
-	);
+	assert.deepEqual(['premium-month', 'premium-pack3', 'premium-pack6'].map(month), [6400, 4900, 4400]);
 });
 
 test('a pack buys fixed months from the day of purchase', () => {
-	const pack = planById('group-pack3', FEB)!;
-	assert.equal(pack.months, 3);
-	assert.equal(pack.until, undefined);
-	assert.equal(planById('group-pack6', at('2027-05-10'))!.months, 6);
+	assert.equal(planById('group-pack3')!.months, 3);
+	assert.equal(planById('group-pack6')!.months, 6);
+	assert.equal(planById('premium-pass'), undefined);
 });
 
-test('prices are the same on any date: no launch price', () => {
-	for (const id of ['group-month', 'group-pack3', 'personal-pack6'])
-		assert.equal(planById(id, NOV)!.price, planById(id, FEB)!.price, id);
-	assert.equal(planById('group-month', NOV)!.price, 17900);
-	assert.equal(planById('lesson', NOV)!.price, 17900);
+test('the regular list: a month of the group is 179, a lesson 179', () => {
+	assert.equal(planById('group-month')!.price, 17900);
+	assert.equal(planById('lesson')!.price, 17900);
 });
 
 test('COBE adds to the app part of any plan but COBE itself and a lesson', () => {
-	const bundle = planById('group-month-cobe', FEB)!;
+	const bundle = planById('group-month-cobe')!;
 	assert.equal(bundle.price, 17900 + COBE_ADDON.month);
 	assert.equal(bundle.app, 4900 + COBE_ADDON.month);
-	assert.equal(planById('premium-pack3-cobe', FEB)!.price, (4900 + COBE_ADDON.pack3) * 3);
+	assert.equal(planById('premium-pack3-cobe')!.price, (4900 + COBE_ADDON.pack3) * 3);
 	assert.equal(bundle.cobe, true);
 	assert.equal(bundle.bundle, true);
-	assert.equal(withCobe(planById('group-month', FEB)!, true, FEB)!.id, 'group-month-cobe');
-	assert.equal(withCobe(bundle, false, FEB)!.id, 'group-month');
+	assert.equal(withCobe(planById('group-month')!, true)!.id, 'group-month-cobe');
+	assert.equal(withCobe(bundle, false)!.id, 'group-month');
 	for (const id of ['cobe-month-cobe', 'lesson-cobe', 'group-month-cobe-cobe', 'group-year', 'x'])
-		assert.equal(planById(id, FEB), undefined, id);
-	assert.equal(withCobe(planById('lesson', FEB)!, true, FEB), undefined);
+		assert.equal(planById(id), undefined, id);
+	assert.equal(withCobe(planById('lesson')!, true), undefined);
 });
 
 test('what an order opens never depends on the date', () => {
-	assert.deepEqual(productsOf('premium-pass'), { app: true, cobe: false, lessons: false });
-	assert.deepEqual(productsOf('premium-pass-cobe'), { app: true, cobe: true, lessons: false });
+	assert.deepEqual(productsOf('premium-pack6'), { app: true, cobe: false, lessons: false });
+	assert.deepEqual(productsOf('premium-pack6-cobe'), { app: true, cobe: true, lessons: false });
 	assert.deepEqual(productsOf('cobe-month'), { app: false, cobe: true, lessons: false });
 	assert.deepEqual(productsOf('lesson'), { app: true, cobe: false, lessons: false });
 	assert.deepEqual(productsOf('group-month'), { app: true, cobe: false, lessons: true });
@@ -99,24 +59,24 @@ test('what an order opens never depends on the date', () => {
 
 test('the site charges PRICING; launch only lowers the group lessons, to 80 a month', () => {
 	assert.equal(PRICING, 'regular');
-	const launch = (id: string) => planById(id, FEB, 'launch')!.price / planById(id, FEB)!.months;
+	const launch = (id: string) => planById(id, 'launch')!.price / planById(id)!.months;
 	assert.deepEqual(
-		['group-month', 'group-pack3', 'group-pack6', 'group-pass'].map(launch),
-		[12900, 11900, 11400, 10900]
+		['group-month', 'group-pack3', 'group-pack6'].map(launch),
+		[12900, 11900, 11400]
 	);
-	assert.equal(launch('premium-pass'), 3900);
+	assert.equal(launch('premium-pack6'), 4400);
 	assert.equal(launch('personal-pack3'), 3100 + 8000 + 35800);
 	assert.equal(launch('personal-month'), 4100 + 8000 + 35800);
 	assert.equal(
-		withCobe(planById('group-pack3', FEB, 'launch')!, true, FEB, 'launch')!.price,
+		withCobe(planById('group-pack3', 'launch')!, true, 'launch')!.price,
 		(11900 + COBE_ADDON.pack3) * 3
 	);
 });
 
 test('installments: up to one a month of the plan, a single payment for a month or a lesson', () => {
-	const payments = (id: string) => maxPayments(planById(id, NOV)!);
+	const payments = (id: string) => maxPayments(planById(id)!);
 	assert.equal(payments('premium-month'), 1);
 	assert.equal(payments('lesson'), 1);
 	assert.equal(payments('group-pack3'), 3);
-	assert.equal(payments('premium-pass'), 8);
+	assert.equal(payments('premium-pack6'), 6);
 });

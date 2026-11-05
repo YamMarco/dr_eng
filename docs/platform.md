@@ -56,8 +56,8 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answers "active" for everyone and the app stays open.
 
 - **Plans** live in `$lib/plans.ts`; copy in i18n `plans`. The server prices orders from there, never from the client. Every price is `app` (ours; coupons discount only this part) + `zoom` (the teacher's share: the group lessons).
-- **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`), אישי (+ 2 private lessons a month), COBE alone, and a single private lesson (`lesson`, all to the teacher, a month of the app free). Ids: `<offer>-<month|pack3|pack6|pass>`, `+ -cobe` for COBE added on, and `lesson`. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
-- **Pass (שנת לימודים):** ends 30.6, priced as the months left × a lower monthly rate (from the 15th the current month is free; from July it's next year's, summer free); sold while 3+ months are left. Monthly plans add a month; access stacks, which is also how extensions work.
+- **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`), אישי (+ 2 private lessons a month), COBE alone, and a single private lesson (`lesson`, all to the teacher, a month of the app free). Ids: `<offer>-<month|pack3|pack6>`, `+ -cobe` for COBE added on, and `lesson`. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
+- **Cycles:** a month, 3 or 6 months, all from the day of purchase; access stacks, which is also how extensions work.
 - **Packs:** 3 or 6 months from the day of purchase.
 - **Pending promise:** `GUARANTEE` (a full-refund line on plans and checkout) is off until the terms match.
 - **Installments** (`INSTALLMENTS`, on): plans of 3+ months split into interest-free card installments, up to one a month (`maxPayments`, passed to `startPayment`). Shown on plans, checkout and the FAQ; the terms say a refund counts the full price.
