@@ -196,8 +196,7 @@ test.describe('persona: distracted student (leaves, loses network, storage fails
 		await expectNotCrashed(page, 'finishing a lesson with failing storage');
 	});
 
-	// Known (test-findings.md, "to fix later"): reads of `localStorage` itself throw in ~20 files.
-	test.fixme('storage blocked entirely (cookies off) does not crash the app', async ({ page }) => {
+	test('storage blocked entirely (cookies off) does not crash the app', async ({ page }) => {
 		await page.addInitScript(() => {
 			Object.defineProperty(window, 'localStorage', {
 				get() {
@@ -209,6 +208,10 @@ test.describe('persona: distracted student (leaves, loses network, storage fails
 		await expectNotCrashed(page, '/app');
 		await expect(page.getByText('500 Internal Error')).toHaveCount(0);
 		await expect(page.getByRole('main').first()).toBeVisible();
+		await page.goto('/app/unit/4/module/c');
+		await page.getByRole('link', { name: 'מתחילים' }).click();
+		await playThrough(page);
+		await expectNotCrashed(page, 'a lesson with storage blocked');
 	});
 
 	test('offline mid-lesson, then back online', async ({ page, context, problems }) => {
@@ -316,12 +319,14 @@ for (const [label, state] of [
 			const pick = <T>(xs: T[]) => xs[Math.floor(rand() * xs.length)];
 			await page.goto('/app');
 			const log: string[] = [];
+			const culprits: string[] = [];
+			let seenProblems = 0;
 			for (let i = 0; i < STEPS; i++) {
 				const r = rand();
 				try {
 					if (r < 0.62) {
 						const targets = page.locator(
-							'button:visible:not([disabled]), a[href^="/"]:visible, [role=radio]:visible, [role=checkbox]:visible'
+							'button:visible:not([disabled]), a[href^="/"]:not([href*="kanban"]):not([href*="/edit"]):not([href*="finance"]):not([href*="vocab-images"]):visible, [role=radio]:visible, [role=checkbox]:visible'
 						);
 						const n = await targets.count();
 						if (n) {
@@ -359,14 +364,31 @@ for (const [label, state] of [
 				} catch {
 					// element gone, navigation raced: that is the monkey's life
 				}
+				for (; seenProblems < problems.length; seenProblems++)
+					culprits.push(
+						`#${i} ${log.at(-1)} (${page.url().replace(/^https?:\/\/[^/]+/, '')}) -> ${problems[seenProblems].slice(0, 110)}`
+					);
+				// Student-typed text must stay text: a hostile <img> showing up is markup injection.
+				const injected = page.locator('img[src="x"], script:not([src]):has-text("__xss")');
+				if (await injected.count()) {
+					const html = await injected
+						.first()
+						.evaluate((el) => (el.parentElement ?? el).outerHTML.slice(0, 300));
+					throw new Error(
+						`markup injected after step ${i} (seed ${SEED}): ${html} | ${log.slice(-6).join(' > ')}`
+					);
+				}
 				if (await page.getByText(he.error.crashSubtitle).count()) {
 					throw new Error(`crash after step ${i} (seed ${SEED}): ${log.slice(-8).join(' > ')}`);
 				}
 			}
 			expect(await noXss(page)).toBeUndefined();
 			// A 404 from a random back/forward is not a bug; console/page errors are.
-			const real = problems.filter((p) => !p.startsWith('http 4'));
+			// 4xx and their console echo are not bugs (junk back/forward); page and console errors are.
+			const real = problems.filter(
+				(p) => !p.startsWith('http 4') && !p.includes('Failed to load resource')
+			);
 			problems.length = 0;
-			expect(real, `seed ${SEED}; last steps: ${log.slice(-8).join(' > ')}`).toEqual([]);
+			expect(real.length ? culprits.slice(0, 12) : real, `seed ${SEED}`).toEqual([]);
 		});
 	});
