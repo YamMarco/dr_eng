@@ -16,7 +16,9 @@ const loaders: Partial<Record<Language, () => Promise<{ default: Table }>>> = {
 
 // raw: the tables are read-only data, no need to proxy every entry.
 let tables = $state.raw<Partial<Record<Language, Table>>>({});
+// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a plain set, not state
 const loading = new Set<Language>();
+// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a plain cache, not state
 const cache = new Map<Language, WeakMap<object, unknown>>();
 
 function ensureLoaded(language: Language) {

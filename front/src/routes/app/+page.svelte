@@ -4,7 +4,6 @@
 	import { cobeVisible } from '$lib/alpha';
 	import { auth } from '$lib/auth.svelte';
 	import { getUnitGroup, modules } from '$lib/curriculum';
-	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { profile } from '$lib/profile.svelte';
 	import { greeting } from '$lib/greeting';
@@ -20,7 +19,6 @@
 	// latest thing done, and one concise row per Bagrut module. Every action lives
 	// on the module's own page.
 
-	let t = $derived(i18n.dict.home);
 	let group = $derived(getUnitGroup(profile.unitGroupId)!);
 	// Staff-only COBE (alpha): everyone else sees it as "coming soon".
 	const locked = (id: string) => id === 'cobe' && !cobeVisible(auth.isAdmin);

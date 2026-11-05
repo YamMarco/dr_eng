@@ -4,6 +4,8 @@
 // boots. Lives outside the settings page since NavBar/anything chrome-level
 // may want to read `resolved` later.
 
+import { storeItem } from './storedJson';
+
 const STORAGE_KEY = 'theme-mode';
 
 export type ThemeMode = 'system' | 'light' | 'dark';
@@ -36,7 +38,7 @@ class ThemeStore {
 
 	setMode(mode: ThemeMode) {
 		this.mode = mode;
-		if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, mode);
+		if (typeof localStorage !== 'undefined') storeItem(STORAGE_KEY, mode);
 	}
 }
 

@@ -11,7 +11,7 @@
 // and don't affect anything downstream.
 
 import './legacyIds';
-import { progressScope } from '$lib/content';
+import { progressScope } from '$lib/content/meta';
 import { activity } from './activity.svelte';
 import { onSyncedChange, saveSynced } from './progressSync.svelte';
 

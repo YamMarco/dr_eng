@@ -19,7 +19,12 @@ export type StudentState = Record<string, unknown>;
 /** Seeds localStorage once per test (later navigations keep what the app wrote). */
 export async function seed(page: Page, state: StudentState) {
 	await page.addInitScript((s) => {
-		if (sessionStorage.getItem('e2e-seeded')) return;
+		// Opaque documents (about:blank, an error page) deny storage: nothing to seed there.
+		try {
+			if (sessionStorage.getItem('e2e-seeded')) return;
+		} catch {
+			return;
+		}
 		sessionStorage.setItem('e2e-seeded', '1');
 		for (const [k, v] of Object.entries(s))
 			localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));
@@ -30,26 +35,28 @@ const PIXEL = Buffer.from('R0lGODlhAQABAAAAACw=', 'base64');
 
 type GradeBody = { kind: string; items?: { id: string; points: number }[]; rubric?: string };
 
-/** Canned AI replies. `grade`: 'good' passes everything, 'weak' fails, or an HTTP status. */
-export type Mocks = { grade: 'good' | 'weak' | number };
+/** Canned AI replies. `grade`: 'good' passes everything, 'weak' fails, an HTTP status, or 'real' (no mock: needs a dev server with a Gemini key). */
+export type Mocks = { grade: 'good' | 'weak' | 'real' | number };
 
 export async function mockApi(page: Page, mocks: Mocks) {
-	await page.route('**/api/grade', async (route) => {
-		if (typeof mocks.grade === 'number') return route.fulfill({ status: mocks.grade, body: '{}' });
-		const good = mocks.grade === 'good';
-		const body = route.request().postDataJSON() as GradeBody;
-		if (body.kind === 'lesson') return route.fulfill({ json: { pass: good, marks: [] } });
-		if (body.kind === 'reading')
-			return route.fulfill({
-				json: {
-					answers: body.items!.map((i) => ({ id: i.id, score: good ? i.points : 0, marks: [] }))
-				}
-			});
-		const scores = good
-			? { content: 10, vocabulary: 10, language: 10, mechanics: 10 }
-			: { content: 1, vocabulary: 1, language: 1, mechanics: 1 };
-		return route.fulfill({ json: { scores, marks: [] } });
-	});
+	if (mocks.grade !== 'real')
+		await page.route('**/api/grade', async (route) => {
+			if (typeof mocks.grade === 'number')
+				return route.fulfill({ status: mocks.grade, body: '{}' });
+			const good = mocks.grade === 'good';
+			const body = route.request().postDataJSON() as GradeBody;
+			if (body.kind === 'lesson') return route.fulfill({ json: { pass: good, marks: [] } });
+			if (body.kind === 'reading')
+				return route.fulfill({
+					json: {
+						answers: body.items!.map((i) => ({ id: i.id, score: good ? i.points : 0, marks: [] }))
+					}
+				});
+			const scores = good
+				? { content: 10, vocabulary: 10, language: 10, mechanics: 10 }
+				: { content: 1, vocabulary: 1, language: 1, mechanics: 1 };
+			return route.fulfill({ json: { scores, marks: [] } });
+		});
 	// Word-card images live in Supabase Storage (no Supabase URL in tests): a 1px stand-in.
 	await page.route('**/storage/v1/object/public/**', (route) =>
 		route.fulfill({ contentType: 'image/gif', body: PIXEL })

@@ -24,7 +24,7 @@
 <header
 	class="sticky top-0 z-20 border-b border-line/70 bg-canvas/85 backdrop-blur supports-backdrop-filter:bg-canvas/70"
 >
-	<div class="app-col relative flex h-16 items-center gap-2 px-4">
+	<div class="relative app-col flex h-16 items-center gap-2 px-4">
 		{#if overlay}
 			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
 				{@render overlay()}
@@ -51,6 +51,7 @@
 				{@render chevron()}
 			</button>
 		{:else if back}
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- a ready path from the caller (no base path in this app) -->
 			<a href={back} aria-label={resolvedBackLabel} class={backClasses}>
 				{@render chevron()}
 			</a>

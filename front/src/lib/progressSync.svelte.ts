@@ -8,6 +8,7 @@
 import { apiFetch } from './api';
 import { auth } from './auth.svelte';
 import { isSyncedKey, mergeItems, type Item } from './progressMerge';
+import { storeItem } from './storedJson';
 
 /** When each synced key last changed on this device: { [key]: ms }. */
 const AT_KEY = 'progress-at';
@@ -51,8 +52,8 @@ function localItem(key: string): Item | undefined {
 }
 
 function writeLocal(key: string, value: unknown, at: number) {
-	localStorage.setItem(key, JSON.stringify(value));
-	localStorage.setItem(AT_KEY, JSON.stringify({ ...readAt(), [key]: at }));
+	storeItem(key, JSON.stringify(value));
+	storeItem(AT_KEY, JSON.stringify({ ...readAt(), [key]: at }));
 }
 
 const syncedKeys = () => Object.keys(localStorage).filter(isSyncedKey);
@@ -83,7 +84,7 @@ class ProgressSync {
 		if (!userId) return;
 		const owner = localStorage.getItem(OWNER_KEY);
 		if (owner && owner !== userId) this.clearLocal();
-		localStorage.setItem(OWNER_KEY, userId);
+		storeItem(OWNER_KEY, userId);
 		// Same owner: this device is already close, so merge in the background.
 		this.ready = owner === userId;
 		if (!this.ready) setTimeout(() => (this.ready = true), PULL_TIMEOUT);

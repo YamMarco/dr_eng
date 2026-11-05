@@ -20,7 +20,7 @@ export default defineConfig(
 		rules: {
 			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
 			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-			"no-undef": 'off'
+			'no-undef': 'off'
 		}
 	},
 	{
@@ -34,8 +34,19 @@ export default defineConfig(
 		}
 	},
 	{
+		// `{' '}` is deliberate here: it keeps the space Svelte would trim at an element's edge.
+		files: ['src/lib/feedback/MarkedText.svelte'],
+		rules: { 'svelte/no-useless-mustaches': 'off' }
+	},
+	{
 		// Override or add rule settings here, such as:
 		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			// `_x` marks an intentionally unused name ({#each list as _item, i}, callback args).
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrors: 'none' }
+			]
+		}
 	}
 );

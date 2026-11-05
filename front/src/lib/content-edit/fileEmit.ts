@@ -59,7 +59,6 @@ export function extractArrayLiteral(
  *  objects) but not valid JSON - evaluate it as JS instead. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function parseArrayLiteral(src: string): any[] {
-	// eslint-disable-next-line @typescript-eslint/no-implied-eval
 	return new Function(`'use strict'; return (${src});`)();
 }
 

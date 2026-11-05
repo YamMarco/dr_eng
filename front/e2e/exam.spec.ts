@@ -49,6 +49,20 @@ test('good answers: a passing report with the essay criteria', async ({ page }) 
 		await expect(page.getByText(name).first()).toBeVisible();
 });
 
+test('an exam as the first thing of the day counts for the streak without the popup', async ({
+	page
+}) => {
+	await takeExam(page);
+	await expect(page.getByRole('heading', { name: q.passedTitle })).toBeVisible({ timeout: 15_000 });
+	// The result is not covered, and today is a practice day.
+	await expect(page.getByRole('dialog', { name: /יום ברצף/ })).toHaveCount(0);
+	const days = await page.evaluate(() => JSON.parse(localStorage.getItem('activity-days') ?? '[]'));
+	expect(days).toHaveLength(1);
+	// Later practice the same day does not bring the popup either.
+	await page.goto('/app/unit/4/module/c');
+	await expect(page.getByRole('dialog', { name: /יום ברצף/ })).toHaveCount(0);
+});
+
 test.describe('weak answers', () => {
 	test.use({ mocks: { grade: 'weak' } });
 	test('a failing report', async ({ page }) => {

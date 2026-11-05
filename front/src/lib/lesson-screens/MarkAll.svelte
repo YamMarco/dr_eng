@@ -45,6 +45,7 @@
 	);
 	// token index -> palette key, for colour-coding the reveal.
 	let categoryColorByIndex = $derived.by(() => {
+		// eslint-disable-next-line svelte/prefer-svelte-reactivity -- a local, not state
 		const m = new Map<number, string>();
 		for (const c of screen.categories ?? []) for (const i of c.indices) m.set(i, c.color);
 		return m;

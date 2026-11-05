@@ -2,7 +2,6 @@
 	import '@fontsource-variable/heebo';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import DebugTooltip from '$lib/components/DebugTooltip.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { navigating } from '$app/state';
 	import Loader from '$lib/components/Loader.svelte';
@@ -23,10 +22,14 @@
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 		return new Promise((resolve) => {
-			document.startViewTransition(async () => {
+			const transition = document.startViewTransition(async () => {
 				resolve();
-				await navigation.complete;
+				// Aborted by a faster tap: expected, not an error.
+				await navigation.complete.catch(() => {});
 			});
+			// A newer navigation skips this transition; its promises then reject.
+			for (const p of [transition.ready, transition.finished, transition.updateCallbackDone])
+				p.catch(() => {});
 		});
 	});
 
@@ -75,6 +78,9 @@
 	/>
 {/if}
 
+<!-- Loaded on demand: it imports the lesson content, which every page would otherwise download. -->
 {#if debugStore.enabled}
-	<DebugTooltip />
+	{#await import('$lib/components/DebugTooltip.svelte') then { default: DebugTooltip }}
+		<DebugTooltip />
+	{/await}
 {/if}

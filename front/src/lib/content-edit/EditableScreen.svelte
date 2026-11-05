@@ -14,7 +14,6 @@
 	import type { ScreenPath } from './screenPath';
 	import type { EditModelLike } from './editModelTypes';
 	import WordImageField from './WordImageField.svelte';
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let {
 		model,
 		nodeId,

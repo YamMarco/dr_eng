@@ -3,7 +3,8 @@ import adapterStatic from '@sveltejs/adapter-static';
 import adapterAuto from '@sveltejs/adapter-auto';
 import type { KitConfig } from '@sveltejs/kit';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
+import { writeLessonMeta } from './scripts/lesson-meta.mjs';
 
 // The Svelte inspector's "open in editor" action shells out via
 // `launch-editor`, which tries LAUNCH_EDITOR first, then guesses from the
@@ -47,11 +48,29 @@ function csp(mode: string): KitConfig['csp'] {
 	};
 }
 
+// src/lib/content/meta.generated.ts (the lessons without their screens, for the student shell)
+// is built from the lesson files: at start, and again whenever one of them changes in dev.
+function lessonMeta(): Plugin {
+	const isLessonFile = (file: string) =>
+		/[\\/]src[\\/]lib[\\/]content[\\/][a-z]+[\\/][\w-]+\.ts$/.test(file) &&
+		!/[\\/]content[\\/]e[\\/](list-|words)/.test(file);
+	return {
+		name: 'lesson-meta',
+		async buildStart() {
+			await writeLessonMeta();
+		},
+		async handleHotUpdate({ file }) {
+			if (isLessonFile(file)) await writeLessonMeta(String(Date.now()));
+		}
+	};
+}
+
 export default defineConfig(({ mode, command }) => ({
 	// Pre-bundle up front: deps discovered mid-load trigger a re-optimize that leaves open tabs
 	// holding stale hashes (504 Outdated Optimize Dep -> 500 page).
 	optimizeDeps: { include: ['@lucide/svelte', 'zod', 'nspell'] },
 	plugins: [
+		lessonMeta(),
 		tailwindcss(),
 		sveltekit({
 			compilerOptions: {

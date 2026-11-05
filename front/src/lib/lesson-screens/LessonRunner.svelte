@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { trapFocus } from '$lib/focusTrap';
 	import { untrack } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { Tween } from 'svelte/motion';
 	import { fly } from 'svelte/transition';
 	import { cubicOut, backOut } from 'svelte/easing';
@@ -176,7 +177,7 @@
 		const round = currentPath.bucket === 'preface' ? 0 : currentPath.bucket;
 		// Playing the 5-point version (lessonForUnits) opens that version.
 		const units = lesson.content5 && lesson.content === lesson.content5 ? '&units=5' : '';
-		return `/edit?section=${lesson.section}&lesson=${lesson.id}&round=${round}&screen=${currentPath.index}${units}`;
+		return `${resolve('/edit')}?section=${lesson.section}&lesson=${lesson.id}&round=${round}&screen=${currentPath.index}${units}`;
 	});
 
 	// "Glance back" sheet: the lesson's teaching preface, viewable over any
@@ -490,6 +491,7 @@
 	{#if editHref && !justFinished}
 		<!-- Dev-only deep link into the /edit workspace, focused on this screen.
 		     Detachable — see src/lib/content-edit/README.md. -->
+		<!-- eslint-disable svelte/no-navigation-without-resolve -- editHref is built from resolve() above -->
 		<a
 			href={editHref}
 			title="ערוך מסך זה"
@@ -497,6 +499,7 @@
 		>
 			✏️ ערוך מסך זה
 		</a>
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	{/if}
 
 	{#if debugStore.enabled && !justFinished}

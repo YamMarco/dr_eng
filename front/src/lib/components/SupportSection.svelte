@@ -26,6 +26,7 @@
 	<ul class="mt-2 flex flex-col divide-y divide-line/70">
 		{#if SUPPORT_WHATSAPP}
 			<li>
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external WhatsApp link -->
 				<a href={whatsappHref(t.supportMessage)} target="_blank" rel="noopener" class={row}>
 					<span class="{icon} bg-brand-soft text-brand">
 						<MessageCircle size={20} aria-hidden="true" />
@@ -39,6 +40,7 @@
 			</li>
 		{/if}
 		<li>
+			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- a mailto: link -->
 			<a href={emailHref(t.supportSubject)} class={row}>
 				<span class="{icon} bg-accent-soft text-ink">
 					<Mail size={20} aria-hidden="true" />

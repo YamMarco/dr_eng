@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import AppBar from '$lib/components/AppBar.svelte';
@@ -29,7 +30,7 @@
 	{#snippet trailing()}
 		{#if !MOBILE_BUILD && auth.isAdmin}
 			<a
-				href="/edit-exam?module={mod.id}"
+				href="{resolve('/edit-exam')}?module={mod.id}"
 				title="עריכת מבחנים"
 				class="inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-xs font-bold hover:bg-line/60"
 			>
@@ -56,7 +57,11 @@
 				{#each rows as row (row.quiz.id)}
 					<li>
 						<a
-							href="{base}/exam/{row.quiz.id}"
+							href={resolve('/app/unit/[unitId]/module/[moduleId]/exam/[quizId]', {
+								unitId: group.id,
+								moduleId: mod.id,
+								quizId: row.quiz.id
+							})}
 							class="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-md ring-1 shadow-overlay/5 ring-line/70 transition duration-150 hover:shadow-lg active:scale-[0.99]"
 						>
 							<span class="min-w-0 flex-1 text-sm font-bold">{i18n.title(row.quiz.id)}</span>

@@ -31,3 +31,4 @@ admin-users.local.txt
 # Playwright output
 /test-results
 /playwright-report
+src/lib/content/meta.generated.ts

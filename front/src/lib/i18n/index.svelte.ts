@@ -1,3 +1,4 @@
+import { storeItem } from '$lib/storedJson';
 import { he, type Dictionary } from './locales/he';
 import { ar } from './locales/ar';
 
@@ -46,7 +47,7 @@ class I18n {
 
 	setLanguage(lang: Language) {
 		this.language = lang;
-		if (typeof localStorage !== 'undefined') localStorage.setItem(STORAGE_KEY, lang);
+		if (typeof localStorage !== 'undefined') storeItem(STORAGE_KEY, lang);
 	}
 }
 

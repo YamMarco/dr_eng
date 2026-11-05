@@ -4,6 +4,7 @@
 	// path at once. Detachable — part of src/lib/content-edit/.
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import UndoRedoButtons from './UndoRedoButtons.svelte';
 	import { editModel } from './editModel.svelte';
 	import { saveRules, saveSection, saveTitles } from './api';
@@ -99,7 +100,7 @@
 	function exit() {
 		if (dirty && !confirm('יש שינויים שלא נשמרו. לצאת ולאבד אותם?')) return;
 		if (history.length > 1) history.back();
-		else goto('/app');
+		else goto(resolve('/app'));
 	}
 
 	let play = $state<{ nodeId: string; round: number; index: number } | null>(null);
