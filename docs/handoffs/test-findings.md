@@ -95,7 +95,7 @@ Opt-in (`E2E_REAL_AI=1`), never in CI, ~8 Gemini calls. Needs a dev server: `npx
 
 1. **Phase 4, accounts on** (after the Supabase decision): sign up / confirm / sign in / reset, progress sync across two devices, delete account, coupon checkout, paywall, quota screens (429), 24h exam lock; plus the accounts-on API checks (401 without a token, no reading another user's rows).
 2. **Phase 6, persona runs**: a reusable driver (Claude + Playwright, one persona per run, report to `/kanban`). `playThrough` in `e2e/fixtures.ts` is the start.
-3. **Break-it, round 2 (rest)**: mobile build with a signed-in session (bearer token), real-device performance after lazy-loading the content.
+3. **Break-it, round 2 (rest)**: mobile build with a signed-in session (bearer token); lazy-load the lesson content for `/app` (see "to fix later"), then re-measure on a real low-end phone.
 4. **`/api/grade` trusts the client's grading context** (question, editor notes, points, mechanics): look them up on the server by screen id. Low priority: scores live on the device; daily caps bound the spend.
 5. **Lint**: 51 errors in 30 files (mostly `svelte/no-navigation-without-resolve` in shared components like Button, AppBar, NavBar, and unused vars in the editor); CI doesn't run lint yet. Full `eslint .` takes ~5 min here.
 6. **Local build hangs with `.env.local`'s keys**: `npm run build` took 90 min (SvelteKit's prerender/write step), 1 min with `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `DATABASE_URL` blank. The e2e server builds with them blank (`playwright.config.ts`), like CI. Find what the prerender waits on.
