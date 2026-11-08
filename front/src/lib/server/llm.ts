@@ -17,8 +17,11 @@ export interface LlmResult {
 
 const keys = () => ({ gateway: env.AI_GATEWAY_API_KEY, gemini: env.GEMINI_API_KEY });
 
+/** Kill switch: false turns every LLM endpoint off (503) and the UI falls back to local marks. */
+export const LLM_ENABLED = false;
+
 export function llmConfigured(): boolean {
-	return Boolean(env.AI_GATEWAY_API_KEY || env.GEMINI_API_KEY);
+	return LLM_ENABLED && Boolean(env.AI_GATEWAY_API_KEY || env.GEMINI_API_KEY);
 }
 
 type ChatOptions = {
