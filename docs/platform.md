@@ -77,13 +77,14 @@ One weekly group lesson for plans with the `lessons` product (`productsOf`: the 
 
 - **Personal links, no Zoom accounts:** the teacher's recurring meeting requires registration with manual approval. The first time, the student types the name the teacher will see; `/api/lessons` (POST) registers them through the Zoom API, approved at once, and keeps their personal join link in `zoom_registrants` (server-only). Anyone else who registers stays pending. Zoom gets an alias email per student (`aliasEmail` in `server/zoom.ts`), never the real one.
 - **`/api/lessons` (GET):** `locked` (no lessons in the plan; the card links to `/plans`, web only), `needs-name`, or `ready` with the next lesson, the join link and the latest recording. 503 (card hidden) without Zoom, the DB or a signed-in user.
+- **The teacher owns the schedule, in Zoom:** he changes the recurring meeting's time, moves or deletes single occurrences, and we only mirror it. There is one meeting id (`ZOOM_MEETING_ID`); several meetings or groups would need a change here.
 - **Schedule and recordings come from Zoom** (`schedule()`, cached 5 min per instance): the meeting's occurrences (a week the teacher deletes in Zoom is simply skipped) and its latest cloud recording's share link and passcode. Nothing is stored on our side.
 - **Card:** the next lesson's time (Israel), "ליומן" (a weekly `.ics` that links to `/app`, never to Zoom), the join button from 10 minutes before the start to 30 after the end (`joinOpen`, `$lib/liveLesson.ts`), and the latest recording.
 - **Access ends:** `/api/cron/lessons` (hourly, same workflow and `CRON_SECRET` as the reminders) cancels the registration of a student who has orders but no active lessons, so the link stops working. Registrants with no orders at all are staff and stay. Account deletion cancels it too.
 
 ### Turning it on
 
-1. On the teacher's Zoom account, create one recurring meeting (weekly, fixed time):
+1. On the teacher's Zoom account, create one recurring meeting with fixed-time occurrences (weekly; he edits or skips any later, a "no fixed time" meeting has no schedule for the card; Zoom caps the occurrences, so renew it when they run out):
    - Registration required: register once, attend any; approval: manual; registration emails to registrants off.
    - Waiting room on, passcode on, no join before host, screen share host only, no private chat between participants, auto-recording off (record to the cloud by hand, after telling the students).
    - Cloud recording sharing: passcode protected, never public; auto-delete after 30 days (Pro has 5 GB).
