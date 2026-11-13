@@ -6,8 +6,8 @@ export type Activity = 'lesson' | 'exam' | 'ocr' | 'speak' | 'chat';
 
 /** Calls per user per day, by activity. */
 export const DAILY_CAPS: Partial<Record<Activity, number>> = {
-	/** Exam grading: a submit is one call per reading passage + the essay (~3). The 24h retake
-	 *  lock is keyed on the client's quizId/attempt, so this cap is what bounds a script. */
+	/** Exam grading: a submit is one call per reading passage + the essay (~3); a retry pays only
+	 *  for the parts that failed. The 24h retake lock (server/examLock) bounds the rest. */
 	exam: 40,
 	/** A free-text lesson answer. */
 	lesson: 36,

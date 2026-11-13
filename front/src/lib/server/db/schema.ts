@@ -7,6 +7,7 @@
 // the API roles' grants (see drizzle/0003). The server connects as the
 // database owner, which bypasses RLS.
 import { sql } from 'drizzle-orm';
+import type { PartVerdict } from '$lib/feedback/types';
 import {
 	bigint,
 	date,
@@ -90,9 +91,11 @@ export const examAttempts = pgTable(
 		quizId: text().notNull(),
 		/** The client's submit time (ms): the attempt's id. */
 		attempt: bigint({ mode: 'number' }).notNull(),
-		/** Grading requests of this attempt that came back graded. */
-		doneParts: integer().notNull().default(0),
-		/** When the last part was graded (the exam is done); the lock runs from here. */
+		/** The attempt's graded parts, by part id (quiz/examParts): never graded twice. */
+		grades: jsonb().$type<Record<string, PartVerdict>>().notNull().default({}),
+		/** When its first part was graded: an attempt that never finished locks from here. */
+		startedAt: timestamp({ withTimezone: true }),
+		/** When every part it sent came back graded (the exam is done); the lock runs from here. */
 		doneAt: timestamp({ withTimezone: true })
 	},
 	(table) => [primaryKey({ columns: [table.userId, table.quizId] })]

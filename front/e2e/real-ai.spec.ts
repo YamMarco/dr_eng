@@ -30,7 +30,8 @@ async function takeExam(page: Page, essay: string): Promise<Essay> {
 		if (!r.url().includes('/api/grade')) return;
 		const body = await r.json().catch(() => null);
 		if (r.status() !== 200) return;
-		if (body?.scores) verdict = body;
+		for (const v of Object.values(body?.results ?? {}) as (Essay | null)[])
+			if (v?.scores) verdict = v;
 	});
 	await page.goto('/app/unit/4/module/c/exam/c-exam-2');
 	await page.getByRole('button', { name: q.startButton }).click();

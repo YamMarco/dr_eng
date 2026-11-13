@@ -56,8 +56,6 @@ export type MechanicsCount = { spelling: number; punctuation: number; runOn: num
 /** One answer: lesson = pass/fail, essay = the module's rubric (C 30 points, G 40). */
 export type SingleRequest = {
 	kind: 'lesson' | 'essay';
-	/** essay: its exam attempt (required by the server). */
-	exam?: ExamRef;
 	/** The task's question, as the student saw it. */
 	question: string;
 	/** The student's text with Layer-1 typos already corrected. */
@@ -87,8 +85,6 @@ export type ReadingItem = {
 /** Every open reading answer of an exam passage at once; the passage is sent a single time. */
 export type ReadingRequest = {
 	kind: 'reading';
-	/** Its exam attempt (required by the server). */
-	exam?: ExamRef;
 	/** The passage with its paragraphs labelled "[I] ...", "[II] ...". */
 	passage: string;
 	items: ReadingItem[];
@@ -96,17 +92,22 @@ export type ReadingRequest = {
 
 export type GradeRequest = SingleRequest | ReadingRequest;
 
-/**
- * Which exam attempt a grading request belongs to, for the server's 24h retake lock
- * (server/examLock): the exam counts as done once all its `parts` were graded.
- */
+/** Which exam attempt, for the server's 24h retake lock (server/examLock). */
 export type ExamRef = {
 	quizId: string;
 	/** The attempt's submit time (ms), its id. */
 	attempt: number;
-	/** How many grading requests the whole attempt makes: a reading passage each + the essay. */
-	parts: number;
 };
+
+/** One grading part of an exam; `id` from quiz/examParts. */
+export type ExamPart = { id: string } & (ReadingRequest | (SingleRequest & { kind: 'essay' }));
+
+/** Every open answer of an exam attempt in one request: each part graded with its own prompt. */
+export type ExamRequest = ExamRef & { kind: 'exam'; parts: ExamPart[] };
+
+export type PartVerdict = ReadingVerdict | EssayVerdict;
+/** Per part id: its verdict, or null when it failed (a retry grades only those). */
+export type ExamVerdicts = { results: Record<string, PartVerdict | null> };
 
 /** One graded open exam answer, stored with the attempt so a report never re-grades. */
 export type ExamGrade = {

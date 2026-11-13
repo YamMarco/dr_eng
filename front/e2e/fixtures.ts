@@ -33,7 +33,8 @@ export async function seed(page: Page, state: StudentState) {
 
 const PIXEL = Buffer.from('R0lGODlhAQABAAAAACw=', 'base64');
 
-type GradeBody = { kind: string; items?: { id: string; points: number }[]; rubric?: string };
+type PartBody = { id?: string; kind: string; items?: { id: string; points: number }[] };
+type GradeBody = PartBody & { parts?: PartBody[] };
 
 /** Canned AI replies. `grade`: 'good' passes everything, 'weak' fails, an HTTP status, or 'real' (no mock: needs a dev server with a Gemini key). */
 export type Mocks = { grade: 'good' | 'weak' | 'real' | number };
@@ -46,16 +47,21 @@ export async function mockApi(page: Page, mocks: Mocks) {
 			const good = mocks.grade === 'good';
 			const body = route.request().postDataJSON() as GradeBody;
 			if (body.kind === 'lesson') return route.fulfill({ json: { pass: good, marks: [] } });
-			if (body.kind === 'reading')
+			const verdict = (part: PartBody) => {
+				if (part.kind === 'reading')
+					return {
+						answers: part.items!.map((i) => ({ id: i.id, score: good ? i.points : 0, marks: [] }))
+					};
+				const scores = good
+					? { content: 10, vocabulary: 10, language: 10, mechanics: 10 }
+					: { content: 1, vocabulary: 1, language: 1, mechanics: 1 };
+				return { scores, marks: [] };
+			};
+			if (body.kind === 'exam')
 				return route.fulfill({
-					json: {
-						answers: body.items!.map((i) => ({ id: i.id, score: good ? i.points : 0, marks: [] }))
-					}
+					json: { results: Object.fromEntries(body.parts!.map((p) => [p.id, verdict(p)])) }
 				});
-			const scores = good
-				? { content: 10, vocabulary: 10, language: 10, mechanics: 10 }
-				: { content: 1, vocabulary: 1, language: 1, mechanics: 1 };
-			return route.fulfill({ json: { scores, marks: [] } });
+			return route.fulfill({ json: verdict(body) });
 		});
 	// Word-card images live in Supabase Storage (no Supabase URL in tests): a 1px stand-in.
 	await page.route('**/storage/v1/object/public/**', (route) =>

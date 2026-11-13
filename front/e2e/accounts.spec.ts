@@ -353,7 +353,7 @@ test('a user deleted from the dashboard (no app cleanup) leaves no rows', async 
 	users.dash = u;
 	await sql`insert into progress (user_id, key, value, at) values (${u.id}, 'lesson-progress', '{}'::jsonb, 1)`;
 	await sql`insert into llm_usage (user_id, activity, calls) values (${u.id}, 'ocr', 3)`;
-	await sql`insert into exam_attempts (user_id, quiz_id, attempt, done_parts) values (${u.id}, 'c-exam-2', 1, 1)`;
+	await sql`insert into exam_attempts (user_id, quiz_id, attempt, done_at) values (${u.id}, 'c-exam-2', 1, now())`;
 	await sql`insert into push_subscriptions (user_id, endpoint, p256dh, auth) values (${u.id}, ${'https://e2e.invalid/' + u.id}, 'k', 'a')`;
 	// What the Supabase dashboard does: delete the user only.
 	expect((await admin.auth.admin.deleteUser(u.id)).error).toBeNull();
@@ -428,31 +428,32 @@ test('exam lock: a new attempt within 24h of a finished one answers 429, after 2
 	request
 }) => {
 	const u = users.q;
-	const exam = (attempt: number) => ({ quizId: 'c-exam-2', attempt, parts: 2 });
-	const essay = (attempt: number) =>
+	const part = { id: 'writing-0', kind: 'essay', question: 'Q?', text: 'I like it.' };
+	const essay = (attempt: number, quizId = 'c-exam-2') =>
 		request.post('/api/grade', {
 			...auth(u),
-			data: { kind: 'essay', exam: exam(attempt), question: 'Q?', text: 'I like it.' }
+			data: { kind: 'exam', quizId, attempt, parts: [part] }
 		});
-	await sql`insert into exam_attempts (user_id, quiz_id, attempt, done_parts, done_at)
-		values (${u.id}, 'c-exam-2', 111, 2, now())
-		on conflict (user_id, quiz_id) do update set attempt = 111, done_parts = 2, done_at = now()`;
+	await sql`insert into exam_attempts (user_id, quiz_id, attempt, started_at, done_at)
+		values (${u.id}, 'c-exam-2', 111, now(), now())
+		on conflict (user_id, quiz_id) do update set attempt = 111, grades = '{}', started_at = now(), done_at = now()`;
 	expect((await essay(222)).status(), 'a new attempt right after').toBe(429);
 	// The same attempt (a retry of a part) is not locked.
 	expect((await essay(111)).status(), 'a retry of the same attempt').not.toBe(429);
-	await sql`update exam_attempts set done_at = now() - interval '25 hours' where user_id = ${u.id}`;
+	// An attempt that never finished locks from its first graded part.
+	await sql`update exam_attempts set done_at = null where user_id = ${u.id}`;
+	expect((await essay(222)).status(), 'an unfinished attempt').toBe(429);
+	await sql`update exam_attempts set started_at = now() - interval '25 hours' where user_id = ${u.id}`;
 	expect((await essay(222)).status(), '25h later').not.toBe(429);
 	// Another exam is never locked by this one.
-	const other = await request.post('/api/grade', {
+	expect((await essay(5, 'c-exam-3')).status()).not.toBe(429);
+	// Only the exam's own parts: an unknown exam or part is refused before any LLM call.
+	expect((await essay(6, 'no-such-exam')).status()).toBe(400);
+	const fake = await request.post('/api/grade', {
 		...auth(u),
-		data: {
-			kind: 'essay',
-			exam: { quizId: 'c-exam-3', attempt: 5, parts: 2 },
-			question: 'Q?',
-			text: 'Hi.'
-		}
+		data: { kind: 'exam', quizId: 'c-exam-3', attempt: 6, parts: [{ ...part, id: 'made-up' }] }
 	});
-	expect(other.status()).not.toBe(429);
+	expect(fake.status()).toBe(400);
 });
 
 // ---------------------------------------------------------------------------------------------

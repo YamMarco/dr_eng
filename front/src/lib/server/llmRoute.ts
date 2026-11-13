@@ -12,15 +12,17 @@ export function llmRoute<T>(route: {
 	failure: string;
 	parse: (event: RequestEvent) => Promise<T>;
 	activity: Activity | ((req: T) => Activity);
+	/** LLM calls the request makes, for the quotas; default 1. */
+	calls?: (req: T) => number;
 	run: (req: T, event: RequestEvent) => Promise<unknown>;
 }): RequestHandler {
-	const { failure, parse, activity, run } = route;
+	const { failure, parse, activity, calls, run } = route;
 	return async (event) => {
 		try {
 			if (!llmConfigured()) throw error(503, 'LLM is not configured');
 			const req = await parse(event);
 			const charged = typeof activity === 'function' ? activity(req) : activity;
-			await guardLlm(event.locals, event.getClientAddress(), charged);
+			await guardLlm(event.locals, event.getClientAddress(), charged, calls?.(req) ?? 1);
 			return json(await run(req, event));
 		} catch (e) {
 			if (isHttpError(e)) {

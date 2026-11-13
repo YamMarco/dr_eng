@@ -3,7 +3,7 @@
 // the *authored* part.screens array, skipping empty screens entirely (they
 // never appear in the played sequence and never get an id).
 
-import { isScreenEmpty, type LessonScreen } from '$lib/lesson-screens/types';
+import { isScreenEmpty, type LessonScreen } from '../lesson-screens/types.ts';
 import type { QuizPart } from './types';
 
 export interface IdentifiedScreen {

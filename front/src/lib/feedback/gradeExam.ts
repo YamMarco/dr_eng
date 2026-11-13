@@ -1,12 +1,14 @@
-// Exam open answers, graded on final submit in parallel requests:
-//   - every short writing-task of the reading part, with its passage sent once
+// Exam open answers, graded on final submit in one request, a part each (quiz/examParts):
+//   - every short writing-task of a reading part, with its passage sent once
 //     -> 'reading': each scored 0..points (like a lesson task, but a score);
 //   - the writing-task with minWords -> 'essay': the official rubric, then the
 //     length deduction in code.
+// The server grades the parts in parallel, each with its own prompt.
 // Empty / not-English / under-25-words answers score 0 by rule and are never sent.
 import { checkWriting, type CheckReport } from '$lib/checks';
 import { browserDictionaries } from '$lib/checks/dictionaries';
 import { writingRubricId, writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
+import { partIdOf } from '$lib/quiz/examParts';
 import { screensWithIds } from '$lib/quiz/screenIds';
 import { countedIds } from '$lib/quiz/scoring';
 import type { QuizNode } from '$lib/quiz/types';
@@ -19,12 +21,12 @@ import { applyFixes, locateMarks, mergeMarks, type Corrected } from './merge';
 import type {
 	EssayVerdict,
 	ExamGrade,
+	ExamPart,
 	ExamRef,
+	ExamVerdicts,
 	LlmMark,
 	Mark,
-	ReadingRequest,
-	ReadingVerdict,
-	SingleRequest
+	ReadingVerdict
 } from './types';
 
 type OpenAnswer = {
@@ -32,7 +34,7 @@ type OpenAnswer = {
 	kind: ExamGrade['kind'];
 	screen: WritingTaskScreen;
 	text: string;
-	/** Answers sharing a group go in one call: the part's id (its passage) or the essay's own id. */
+	/** Its grading part (quiz/examParts): the reading part's id, or the essay's own id. */
 	group: string;
 	/** reading: the part's passage, paragraphs labelled [I], [II]... essay: every passage, for copy detection. */
 	passage: string;
@@ -71,7 +73,7 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 				kind: essay ? 'essay' : 'reading',
 				screen,
 				text,
-				group: essay ? id : part.id,
+				group: partIdOf(part.id, id, essay),
 				passage: essay ? allPassages : passage,
 				rubric: writingRubricId(quiz.module)
 			});
@@ -127,7 +129,8 @@ const failed = (c: Ready, e?: unknown): ExamGrade => ({
 const readingId = (i: number) => `q${i + 1}`;
 
 /** A passage's reading answers as one exam part; the passage is sent once. */
-const readingPart = (group: Ready[]): ReadingRequest => ({
+const readingPart = (group: Ready[]): ExamPart => ({
+	id: group[0].a.group,
 	kind: 'reading',
 	passage: group[0].a.passage,
 	items: group.map((c, i) => ({
@@ -140,7 +143,8 @@ const readingPart = (group: Ready[]): ReadingRequest => ({
 	}))
 });
 
-const essayPart = (c: Ready): SingleRequest => ({
+const essayPart = (c: Ready): ExamPart => ({
+	id: c.a.group,
 	kind: 'essay',
 	question: c.a.screen.prompt,
 	text: c.corrected.text,
@@ -187,20 +191,19 @@ function essayGrade(c: Ready, v: EssayVerdict): ExamGrade {
 }
 
 /**
- * Grades every open answer (or only `ids`, for a retry): one request per reading passage + one
- * for the essay, in parallel. Each names the attempt and how many parts it has in all; the server
- * marks the exam done (24h lock) once every part was graded.
+ * Grades every open answer (or only `ids`, for a retry) in one request for the attempt. The
+ * server grades each part once, stores it, and locks the exam (24h) when every part came back.
  */
 export async function gradeExam(
 	quiz: QuizNode,
 	answers: Record<string, unknown>,
-	attempt: Omit<ExamRef, 'parts'>,
+	attempt: ExamRef,
 	ids?: Set<string>
 ): Promise<Record<string, ExamGrade>> {
-	// Every answer is checked (locally, no LLM) so `parts` counts the whole attempt, even on a retry.
+	const wanted = openAnswers(quiz, answers).filter((a) => !ids || ids.has(a.id));
 	// The check fetches its dictionaries: offline it fails, and the answer is "not graded" (retry).
 	const checked = await Promise.all(
-		openAnswers(quiz, answers).map((a) =>
+		wanted.map((a) =>
 			check(a).catch((): Checked => ({
 				a,
 				done: { kind: a.kind, status: 'failed', earned: 0, max: maxOf(a), text: a.text, marks: [] }
@@ -213,22 +216,27 @@ export async function gradeExam(
 		if (c.done) out[c.a.id] = c.done;
 		else byGroup.set(c.a.group, [...(byGroup.get(c.a.group) ?? []), c]);
 	}
-	const exam: ExamRef = { ...attempt, parts: byGroup.size };
-	const todo = [...byGroup.values()].filter((g) => !ids || g.some((c) => ids.has(c.a.id)));
-	await Promise.all(
-		todo.map(async (group) => {
-			const essay = group[0].a.kind === 'essay';
-			let graded: ExamGrade[];
-			try {
-				graded = essay
-					? [essayGrade(group[0], await postGrade<EssayVerdict>({ ...essayPart(group[0]), exam }))]
-					: readingGrades(group, await postGrade<ReadingVerdict>({ ...readingPart(group), exam }));
-			} catch (e) {
-				graded = group.map((c) => failed(c, e));
-			}
-			group.forEach((c, i) => (out[c.a.id] = graded[i]));
-		})
-	);
-	if (ids) for (const id of Object.keys(out)) if (!ids.has(id)) delete out[id];
+	if (!byGroup.size) return out;
+	const groups = [...byGroup.values()];
+	let results: ExamVerdicts['results'];
+	try {
+		({ results } = await postGrade<ExamVerdicts>({
+			kind: 'exam',
+			...attempt,
+			parts: groups.map((g) => (g[0].a.kind === 'essay' ? essayPart(g[0]) : readingPart(g)))
+		}));
+	} catch (e) {
+		for (const g of groups) for (const c of g) out[c.a.id] = failed(c, e);
+		return out;
+	}
+	for (const group of groups) {
+		const v = results[group[0].a.group];
+		const graded = !v
+			? group.map((c) => failed(c))
+			: group[0].a.kind === 'essay'
+				? [essayGrade(group[0], v as EssayVerdict)]
+				: readingGrades(group, v as ReadingVerdict);
+		group.forEach((c, i) => (out[c.a.id] = graded[i]));
+	}
 	return out;
 }

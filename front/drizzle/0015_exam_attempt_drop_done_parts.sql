@@ -1,0 +1,1 @@
+ALTER TABLE "exam_attempts" DROP COLUMN "done_parts";

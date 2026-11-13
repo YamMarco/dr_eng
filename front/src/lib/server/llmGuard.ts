@@ -36,14 +36,14 @@ function burstLimited(key: string): boolean {
 
 const callsSum = sql<number>`coalesce(sum(${llmUsage.calls}), 0)::int`;
 
-/** Counts this call and returns the user's total for this activity today. */
-async function countToday(userId: string, activity: Activity): Promise<number> {
+/** Counts these calls and returns the user's total for this activity today. */
+async function countToday(userId: string, activity: Activity, calls: number): Promise<number> {
 	const [row] = await db!
 		.insert(llmUsage)
-		.values({ userId, activity, calls: 1 })
+		.values({ userId, activity, calls })
 		.onConflictDoUpdate({
 			target: [llmUsage.userId, llmUsage.day, llmUsage.activity],
-			set: { calls: sql`${llmUsage.calls} + 1` }
+			set: { calls: sql`${llmUsage.calls} + ${calls}` }
 		})
 		.returning({ calls: llmUsage.calls });
 	return row.calls;
@@ -71,11 +71,13 @@ async function countAllToday(): Promise<number> {
 	return row.calls;
 }
 
-/** Throws 402 (no plan with the product) or 429 (over a limit); otherwise counts the call. */
+/** Throws 402 (no plan with the product) or 429 (over a limit); otherwise counts the `calls`
+ *  this request makes (an exam: one per part still to grade; 0 = nothing to count). */
 export async function guardLlm(
 	locals: App.Locals,
 	clientAddress: string,
-	activity: Activity
+	activity: Activity,
+	calls = 1
 ): Promise<void> {
 	const { userId, isAdmin } = locals;
 	const cobe = COBE_ACTIVITIES.includes(activity);
@@ -84,12 +86,12 @@ export async function guardLlm(
 	if (accountsEnabled && !userId) throw error(401, 'sign in required');
 	if (burstLimited(userId ?? clientAddress)) throw error(429, 'too many requests');
 	if (!dev && cobe && !cobeVisible(isAdmin)) throw error(403, 'not open yet');
-	if (!userId || isAdmin || !db) return;
+	if (!userId || isAdmin || !db || calls === 0) return;
 	if (billingEnabled && !(await access(userId))[cobe ? 'cobe' : 'app'])
 		throw error(402, 'no active plan');
 	if ((await countAllToday()) >= GLOBAL_DAILY_CAP) throw error(503, 'service is busy');
 	if (cobe && (await cobeThisMonth(userId)) >= COBE_MONTHLY_CAP)
 		throw error(429, 'monthly limit reached');
-	const count = await countToday(userId, activity);
+	const count = await countToday(userId, activity, calls);
 	if (count > (DAILY_CAPS[activity] ?? Infinity)) throw error(429, 'daily limit reached');
 }
