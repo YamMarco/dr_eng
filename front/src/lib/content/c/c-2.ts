@@ -2555,19 +2555,6 @@ export const c2Lessons: LessonNode[] = [
               explanation:
                 "לא נשאר כלום = destroyed. protected הפוך (הגן), increased לא מתאים לבתים, ו-built הפוך (בנה).",
             },
-            {
-              type: "mcq",
-              prompt: "איזה משפט אומר שהיער נשאר בחיים?",
-              options: [
-                "Pollution can destroy forests.",
-                "Rangers protect the forest.",
-                "Fire destroyed the forest.",
-                "The forest was destroyed by the storm.",
-              ],
-              correctIndex: 1,
-              layout: "rows",
-              explanation: "protect = להגן, והיער נשאר. בשאר המשפטים הוא נהרס.",
-            },
             { type: "spell-word", word: "destroy", mode: "copy" },
             {
               type: "match-pairs",
