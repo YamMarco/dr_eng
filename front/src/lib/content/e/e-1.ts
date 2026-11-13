@@ -9,14 +9,14 @@ export const e1Lessons: LessonNode[] = [
     section: "e-1",
     titleEn: "The Exam and the Method",
     required: [],
-    requiredRounds: 3,
+    requiredRounds: 1,
     position: { x: 0, y: 550 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}ברוכים הבאים לחלק הקריאה של Module E!\n{d:rtl}\n{d:rtl}אם כבר תרגלתם את Module C, אתם מכירים את הגישה שלנו. ואם זה השאלון הראשון שלכם ברמת 5 יחידות, אין לכם מה לדאוג. **נתחיל מהבסיס, נתקדם צעד אחר צעד ונתרגל יחד את כל מה שצריך.**המטרה שלנו היא לא רק למצוא את התשובה הנכונה, אלא גם להבין למה היא נכונה, ואיך להימנע מטעויות נפוצות.\n{d:rtl}\n{d:rtl}**זכרו: לא צריך להבין כל מילה בטקסט כדי להצליח. צריך לדעת איך לקרוא את השאלה, מה לחפש ואיך לבחור את התשובה הנכונה.**\n{d:rtl}\n{d:rtl}קדימה, מתחילים!",
+          text: "{d:rtl}ברוכים הבאים לחלק הקריאה של Module E!\n\nהסוד הראשון: **לא צריך להבין כל מילה בכתבה.** צריך לדעת מה השאלה מבקשת, איפה לחפש ואיך לבחור.\n\nנתקדם צעד אחר צעד, ונבין לא רק מה התשובה, אלא גם למה. מתחילים?",
         },
         {
           type: "summary",
@@ -31,8 +31,8 @@ export const e1Lessons: LessonNode[] = [
           type: "summary",
           title: "9 השאלות",
           lines: [
-            "{d:rtl}ברך כלל יש 4 שאלות אמריקאיות: **What are we told in paragraph X?** \n{d:rtl}\n{d:rtl}שימו לב שהתשובות הן נושאים, לא פרטים. זה חדש, ויש על זה שיעור משלו.",
-            "{d:rtl}5 שאלות פתוחות בדרך כלל: ממשיכים תשובה שכבר התחילה (By... / Because they want to... / They must...), או כותבים תשובה קצרה.",
+            "{d:rtl}בדרך כלל יש 4 שאלות אמריקאיות: **What are we told in paragraph X?**\n{d:rtl}\n{d:rtl}שימו לב שהתשובות הן נושאים, לא פרטים. זה חדש, ויש על זה שיעור משלו.",
+            "{d:rtl}5 שאלות פתוחות בדרך כלל: ממשיכים תשובה שכבר התחילה (By... / Because they want to... / They must...), או כותבים תשובה קצרה.",
           ],
         },
       ],
@@ -82,99 +82,7 @@ export const e1Lessons: LessonNode[] = [
               ],
               correctIndex: 0,
               explanation:
-                "האפשרויות מתארות נושא (How he..., Why they...), לא עובדה אחת. נלמד את זה בשיעור הבא.",
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "preface",
-              text: "{d:rtl}תזכורת:  על פסקה קצרה. מוצאים את מילת המפתח, ואז קוראים רק את המשפט שלה. בואו נתרגל ביחד! ",
-            },
-            {
-              type: "passage-mcq",
-              text: "**II**  Every summer, the beaches of southern Spain fill with tourists, and lifeguards cannot watch everyone. For this reason, some beaches now use drones to help. When a swimmer is in trouble, a drone flies over the water in less than a minute and drops a life jacket. A lifeguard on a boat then arrives and brings the swimmer back to the beach.",
-              questions: [
-                {
-                  prompt:
-                    "{d:rtl}How does a drone help a swimmer in trouble?\n{d:rtl}\n{d:rtl} מה מילת המפתח לחיפוש?",
-                  options: ["in trouble", "summer", "tourists", "beach"],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "מצאתם את המשפט עם in trouble. מה התשובה?",
-                  options: [
-                    "It drops a life jacket",
-                    "It brings the swimmer back to the beach",
-                    "It watches all the tourists",
-                    "It calls a lifeguard on the beach",
-                  ],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "Why do some beaches use drones?",
-                  options: [
-                    "Because lifeguards cannot watch everyone",
-                    "Because drones are faster than boats",
-                    "Because tourists asked for them",
-                    "Because the water is dangerous in summer",
-                  ],
-                  correctIndex: 0,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          screens: [
-            {
-              type: "opener",
-              kicker: "סיבוב 3",
-              level: 4,
-              title: "רמת בחינה",
-              subtitle:
-                "כתבה מלאה, באורך בחינה, ו-3 שאלות. חפשו לפי השאלה, לא לפי הסדר.\nמילה עם קו תחתון? התרגום שלה מתחת לכתבה.",
-            },
-            {
-              type: "passage-mcq",
-              text: '{a:center}**THE LIBRARY ON WHEELS**\n\n**I**  Every Tuesday morning, an old yellow bus stops in the main square of Kerrow, a small village in the hills of northern Wales. The bus does not take anyone anywhere. Inside, instead of seats, there are shelves with more than 3,000 books. For the 400 people who live in Kerrow, it is the only library they have.\n\n**II ** The bus belongs to Helen Morgan, a former primary school teacher. In 2017, the local council closed eleven village libraries to save money. "I was angry," Helen says. "Children in villages were losing something that children in cities took for granted." She sold her car, used her ++savings++ to buy the bus from a school, and spent a whole summer building the shelves herself.\n\n**III**  At first, Helen was not sure anyone would come. On the first day, only six people climbed on board. However, word spread quickly. Today the bus visits nine villages a week and lends about 500 books. Helen does not charge anything. Readers can keep a book for as long as they need it, and nobody pays a ++fine++ for a late return.\n\n**IV**  The bus has become more than a place to borrow books. Older residents who live alone come for the conversation as much as for the novels. Teenagers use the free internet connection to do their homework. Once a month, a nurse joins Helen to check the ++blood pressure++ of elderly visitors. "People tell me it is the only day of the week they speak to anyone," Helen explains.\n\n**V **Running the bus is not easy. Fuel and repairs cost about 6,000 pounds a year, which Helen pays for with donations and a small ++grant++. Last winter the engine broke down twice, and she had to cancel visits for three weeks. Even so, she has no plans to stop. Two other villages have asked her to add them to the route, and a former student of hers has offered to drive a second bus.\n\n**Glossary**\n{d:rtl}savings - חסכונות \n{d:rtl}fine - קנס \n{d:rtl}blood pressure - לחץ דם\n{d:rtl}grant - מענק ',
-              label: "THE LIBRARY ON WHEELS",
-              timerKey: "e-bridge-library",
-              questions: [
-                {
-                  prompt: "Why did Helen start the library bus?",
-                  options: [
-                    "Because the council closed the village libraries",
-                    "Because she wanted to sell her car",
-                    "Because children in cities had no books",
-                    "Because a school gave her an old bus",
-                  ],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "How many villages does the bus visit today?",
-                  options: ["Nine", "Six", "Eleven", "Two"],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "What happened last winter?",
-                  options: [
-                    "The engine broke down and visits were cancelled",
-                    "Two villages joined the route",
-                    "A former student started driving a second bus",
-                    "Helen paid 6,000 pounds for a new engine",
-                  ],
-                  correctIndex: 0,
-                },
-              ],
-            },
-            {
-              type: "summary",
-              title: "במשפט אחד",
-              lines: [
-                "הכתבה ארוכה יותר, השיטה אותה שיטה: מילת מפתח ← המשפט ← תשובה.",
-              ],
+                "האפשרויות מתארות נושא (How he..., Why they...), לא עובדה אחת. יש לזה שיעור משלו.",
             },
           ],
         },
@@ -186,14 +94,14 @@ export const e1Lessons: LessonNode[] = [
     section: "e-1",
     titleEn: "The Method in Short",
     required: ["e-bridge"],
-    requiredRounds: 2,
-    position: { x: -110, y: 660 },
+    requiredRounds: 3,
+    position: { x: -70, y: 670 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "השיעור הזה למי שלא עשה את Module C, או רוצה רענון.\n\n4 צעדים, ואחריהם תרגול.",
+          text: "רוב השאלות בבחינה הן שאלות חיפוש: לא קוראים את כל הכתבה, מחפשים את המקום של התשובה.\n\n4 צעדים, ואחריהם תרגול.",
         },
         {
           type: "steps",
@@ -252,6 +160,42 @@ export const e1Lessons: LessonNode[] = [
               explanation:
                 "הטקסט כמעט אף פעם לא חוזר על מילות השאלה. מחפשים את הרעיון, וכאן הוא נמצא.",
             },
+            {
+              type: "preface",
+              text: "עכשיו על פסקה קצרה: מוצאים את מילת המפתח, ואז קוראים רק את המשפט שלה.",
+            },
+            {
+              type: "passage-mcq",
+              text: "II  Every summer, the beaches of southern Spain fill with tourists, and lifeguards cannot watch everyone. For this reason, some beaches now use drones to help. When a swimmer is in trouble, a drone flies over the water in less than a minute and drops a life jacket. A lifeguard on a boat then arrives and brings the swimmer back to the beach.",
+              questions: [
+                {
+                  prompt:
+                    "{d:rtl}How does a drone help a swimmer in trouble?\n{d:rtl}\n{d:rtl} מה מילת המפתח לחיפוש?",
+                  options: ["in trouble", "summer", "tourists", "beach"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "מצאתם את המשפט עם in trouble. מה התשובה?",
+                  options: [
+                    "It drops a life jacket",
+                    "It brings the swimmer back to the beach",
+                    "It watches all the tourists",
+                    "It calls a lifeguard on the beach",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "Why do some beaches use drones?",
+                  options: [
+                    "Because lifeguards cannot watch everyone",
+                    "Because drones are faster than boats",
+                    "Because tourists asked for them",
+                    "Because the water is dangerous in summer",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
           ],
         },
         {
@@ -259,7 +203,7 @@ export const e1Lessons: LessonNode[] = [
             { type: "preface", text: "תורכם: שאלה, מילת מפתח, המשפט, תשובה." },
             {
               type: "passage-mcq",
-              text: "**II ** On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
+              text: "II  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
               questions: [
                 {
                   prompt: "What do the divers tie the coral to?",
@@ -285,7 +229,7 @@ export const e1Lessons: LessonNode[] = [
             },
             {
               type: "self-check",
-              text: "**II**  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
+              text: "II  On the island of Mauritius, a group of local divers decided not to wait for governments to act. They collect small pieces of healthy coral that have broken off naturally and tie them to underwater frames made of metal. There, the pieces grow for about a year, like plants in a garden, before the divers move them to damaged parts of the reef.",
               prompt:
                 "Where do the divers move the coral after a year?\n\nכתבו את התשובה באנגלית, מהטקסט.",
               modelAnswer: "To damaged parts of the reef.",
@@ -297,6 +241,58 @@ export const e1Lessons: LessonNode[] = [
             },
           ],
         },
+        {
+          screens: [
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle:
+                "כתבה מלאה, באורך בחינה, ו-3 שאלות. חפשו לפי השאלה, לא לפי הסדר.\nמילה עם קו תחתון? התרגום שלה מתחת לכתבה.",
+            },
+            {
+              type: "passage-mcq",
+              text: '{a:center}**THE LIBRARY ON WHEELS**\n\nI  Every Tuesday morning, an old yellow bus stops in the main square of Kerrow, a small village in the hills of northern Wales. The bus does not take anyone anywhere. Inside, instead of seats, there are shelves with more than 3,000 books. For the 400 people who live in Kerrow, it is the only library they have.\n\nII  The bus belongs to Helen Morgan, a former primary school teacher. In 2017, the local council closed eleven village libraries to save money. "I was angry," Helen says. "Children in villages were losing something that children in cities took for granted." She sold her car, used her ++savings++ to buy the bus from a school, and spent a whole summer building the shelves herself.\n\nIII  At first, Helen was not sure anyone would come. On the first day, only six people climbed on board. However, word spread quickly. Today the bus visits nine villages a week and lends about 500 books. Helen does not charge anything. Readers can keep a book for as long as they need it, and nobody pays a ++fine++ for a late return.\n\nIV  The bus has become more than a place to borrow books. Older residents who live alone come for the conversation as much as for the novels. Teenagers use the free internet connection to do their homework. Once a month, a nurse joins Helen to check the ++blood pressure++ of elderly visitors. "People tell me it is the only day of the week they speak to anyone," Helen explains.\n\nV  Running the bus is not easy. Fuel and repairs cost about 6,000 pounds a year, which Helen pays for with donations and a small ++grant++. Last winter the engine broke down twice, and she had to cancel visits for three weeks. Even so, she has no plans to stop. Two other villages have asked her to add them to the route, and a former student of hers has offered to drive a second bus.\n\n**Glossary**\nsavings - חסכונות / مدّخرات\nfine - קנס / غرامة\nblood pressure - לחץ דם / ضغط الدم\ngrant - מענק / منحة',
+              label: "THE LIBRARY ON WHEELS",
+              timerKey: "e-method-library",
+              questions: [
+                {
+                  prompt: "Why did Helen start the library bus?",
+                  options: [
+                    "Because the council closed the village libraries",
+                    "Because she wanted to sell her car",
+                    "Because children in cities had no books",
+                    "Because a school gave her an old bus",
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "How many villages does the bus visit today?",
+                  options: ["Nine", "Six", "Eleven", "Two"],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What happened last winter?",
+                  options: [
+                    "The engine broke down and visits were cancelled",
+                    "Two villages joined the route",
+                    "A former student started driving a second bus",
+                    "Helen paid 6,000 pounds for a new engine",
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+            {
+              type: "summary",
+              title: "במשפט אחד",
+              lines: [
+                "הכתבה ארוכה יותר, השיטה אותה שיטה: מילת מפתח ← המשפט ← תשובה.",
+              ],
+            },
+          ],
+        },
       ],
     },
   },
@@ -304,9 +300,9 @@ export const e1Lessons: LessonNode[] = [
     id: "e-topic",
     section: "e-1",
     titleEn: "What Are We Told in Paragraph X?",
-    required: ["e-bridge"],
+    required: ["e-method"],
     requiredRounds: 3,
-    position: { x: 70, y: 680 },
+    position: { x: 70, y: 790 },
     big: false,
     content: {
       preface: [
@@ -542,7 +538,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Topic Questions: Exam Level",
     required: ["e-topic"],
     requiredRounds: 2,
-    position: { x: 100, y: 800 },
+    position: { x: 100, y: 910 },
     big: false,
     content: {
       preface: [
@@ -596,15 +592,15 @@ export const e1Lessons: LessonNode[] = [
             {
               type: "mcq",
               prompt:
-                "{d:rtl}פסקה נותנת עצות: put phones away, get up at the same time. איזו אפשרות מתארת אותה?\n{p:text}What are we told in paragraph V?",
+                "{d:rtl}פסקה נותנת עצות: write down what you spend, wait a day before you buy, keep cash in a jar. איזו אפשרות מתארת אותה?\n{p:text}What are we told in paragraph III?",
               options: [
-                "What students can do to sleep better",
-                "Why phones are bad for students",
-                "Why students sleep badly at weekends",
+                "How people can save money",
+                "Why people spend too much money",
+                "Why cash is better than a credit card",
               ],
               correctIndex: 0,
               explanation:
-                "הפסקה אומרת **מה** לעשות. Why phones are bad הוא פרט (blue light), ו-weekends מופיע רק בתוך עצה.",
+                "הפסקה אומרת **מה** לעשות. Why people spend too much - הפסקה לא מסבירה סיבה. cash מופיע רק בתוך עצה אחת.",
             },
           ],
         },
@@ -724,7 +720,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Complete the Answer",
     required: ["e-topic-q"],
     requiredRounds: 3,
-    position: { x: 70, y: 920 },
+    position: { x: 70, y: 1030 },
     big: false,
     content: {
       preface: [
@@ -907,13 +903,13 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Glossary and Time",
     required: ["e-complete"],
     requiredRounds: 2,
-    position: { x: 0, y: 1040 },
+    position: { x: 0, y: 1150 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}בבחינה אין מילון. במקומו**y**:מילים קשות שמסומנות בקו תחתון בכתבה, והתרגום שלהן מופיע מתחתיה.\n{p:text}She used her ++savings++ to buy the bus.\n{p:text}{d:rtl}savings - חסכונות",
+          text: "{d:rtl}בבחינה אין מילון. במקומו יש **Glossary**: מילים קשות שמסומנות בקו תחתון בכתבה, והתרגום שלהן מופיע מתחתיה.\n{p:text}She used her ++savings++ to buy the bus.\n{p:text}{d:rtl}savings - חסכונות",
         },
         {
           type: "preface",
@@ -990,53 +986,53 @@ export const e1Lessons: LessonNode[] = [
               level: 4,
               title: "רמת בחינה",
               subtitle:
-                "כתבה מוכרת עם Glossary, 4 שאלות, השעון רץ. מילה עם קו תחתון? התרגום שלה למטה.",
+                "כתבה חדשה עם Glossary, 4 שאלות, השעון רץ. מילה עם קו תחתון? התרגום שלה למטה.",
             },
             {
               type: "passage-mcq",
-              text: '{a:center}**THE LIBRARY ON WHEELS**\n\nI  Every Tuesday morning, an old yellow bus stops in the main square of Kerrow, a small village in the hills of northern Wales. The bus does not take anyone anywhere. Inside, instead of seats, there are shelves with more than 3,000 books. For the 400 people who live in Kerrow, it is the only library they have.\n\nII  The bus belongs to Helen Morgan, a former primary school teacher. In 2017, the local council closed eleven village libraries to save money. "I was angry," Helen says. "Children in villages were losing something that children in cities took for granted." She sold her car, used her ++savings++ to buy the bus from a school, and spent a whole summer building the shelves herself.\n\nIII  At first, Helen was not sure anyone would come. On the first day, only six people climbed on board. However, word spread quickly. Today the bus visits nine villages a week and lends about 500 books. Helen does not charge anything. Readers can keep a book for as long as they need it, and nobody pays a ++fine++ for a late return.\n\nIV  The bus has become more than a place to borrow books. Older residents who live alone come for the conversation as much as for the novels. Teenagers use the free internet connection to do their homework. Once a month, a nurse joins Helen to check the ++blood pressure++ of elderly visitors. "People tell me it is the only day of the week they speak to anyone," Helen explains.\n\nV  Running the bus is not easy. Fuel and repairs cost about 6,000 pounds a year, which Helen pays for with donations and a small ++grant++. Last winter the engine broke down twice, and she had to cancel visits for three weeks. Even so, she has no plans to stop. Two other villages have asked her to add them to the route, and a former student of hers has offered to drive a second bus.\n\n**Glossary**\nsavings - חסכונות / مدّخرات\nfine - קנס / غرامة\nblood pressure - לחץ דם / ضغط الدم\ngrant - מענק / منحة',
-              label: "THE LIBRARY ON WHEELS",
-              timerKey: "e-glossary-library",
+              text: '{a:center}**THE FRIDGE ON THE CORNER**\n\nI  On a quiet street in Berlin, an old white fridge stands outside a bakery. It does not belong to anyone. Every day, people open it to put food in or take food out, and nobody pays. Berlin now has dozens of these "community fridges", and the idea has spread to cities around the world.\n\nII  The first fridges were the idea of Lena Hoffmann, a university student who worked in a supermarket at weekends. She was shocked to see how much good food the shop threw away every evening, often because of a small ++dent++ in a can or a date on the package. She started taking the food home and sharing it with her neighbours. When there was too much to carry, she put a fridge in the street.\n\nIII  The rules are simple. Anyone may take food, and nobody asks questions. Volunteers clean each fridge twice a week and check that nothing inside has gone bad. Raw meat and fish are not allowed, because they can make people sick if they are not kept cold enough. Many fridges also have a shelf for bread, which bakeries leave at the end of the day.\n\nIV  Not everyone was happy at first. A few years later, health ++inspectors++ said that the fridges were dangerous and tried to close them. Hundreds of people signed a ++petition++, and after long discussions the city agreed to let the fridges stay, as long as each one has a person who is responsible for it.\n\nV  Supporters say the fridges do more than save food. "People who would never ask for help can take a yogurt without feeling ashamed," says volunteer Anna Weiss. Students, ++pensioners++ and families at the end of the month all use them. Some neighbours who had never spoken to each other now meet at the fridge and chat.\n\n**Glossary**\ndent - שקע, מכה קלה / انبعاج\ninspectors - מפקחים / مفتّشون\npetition - עצומה / عريضة\npensioners - פנסיונרים / متقاعدون',
+              label: "THE FRIDGE ON THE CORNER",
+              timerKey: "e-glossary-fridge",
               questions: [
                 {
-                  prompt: "What did Helen use to buy the bus?",
+                  prompt: "Why did the supermarket throw away good food?",
                   options: [
-                    "Her savings",
-                    "A grant from the council",
-                    "Donations from readers",
-                    "Money from the school",
+                    "Because the food had gone bad",
+                    "Because of a small dent or a date on the package",
+                    "Because nobody bought it at the end of the day",
+                    "Because the inspectors told it to",
+                  ],
+                  correctIndex: 1,
+                },
+                {
+                  prompt: "Who tried to close the fridges?",
+                  options: [
+                    "Some of the supermarkets",
+                    "The bakeries",
+                    "Health inspectors",
+                    "Neighbours who never spoke to each other",
+                  ],
+                  correctIndex: 2,
+                },
+                {
+                  prompt: "What did hundreds of people do to save the fridges?",
+                  options: [
+                    "They signed a petition",
+                    "They cleaned the fridges twice a week",
+                    "They became responsible for the fridges",
+                    "They brought bread from the bakeries",
                   ],
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What happens if a reader returns a book late?",
+                  prompt: "Why is raw meat not allowed in the fridges?",
                   options: [
-                    "Nothing - nobody pays a fine",
-                    "The reader pays a small fine",
-                    "The reader cannot borrow again",
-                    "Helen keeps the next book",
+                    "Supermarkets do not give it away",
+                    "The shelf is only for bread",
+                    "Volunteers clean the fridges only twice a week",
+                    "It can make people sick if it is not cold enough",
                   ],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "What does the nurse do once a month?",
-                  options: [
-                    "Checks the blood pressure of elderly visitors",
-                    "Drives the bus to the villages",
-                    "Talks to people who live alone",
-                    "Helps teenagers with their homework",
-                  ],
-                  correctIndex: 0,
-                },
-                {
-                  prompt: "How does Helen pay for fuel and repairs?",
-                  options: [
-                    "With donations and a small grant",
-                    "With money from selling books",
-                    "With fines from late readers",
-                    "With help from a former student",
-                  ],
-                  correctIndex: 0,
+                  correctIndex: 3,
                 },
               ],
             },
@@ -1051,7 +1047,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Final Practice",
     required: ["e-glossary-time"],
     requiredRounds: 1,
-    position: { x: 0, y: 1160 },
+    position: { x: 0, y: 1270 },
     big: false,
     content: {
       preface: [

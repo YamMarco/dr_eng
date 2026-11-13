@@ -75,20 +75,20 @@ export const eQuizzes: QuizNode[] = [
 								'How teenagers may use chatbots for schoolwork.',
 								'הפסקה מתארת שימושים בצ’אטבוטים ומעלה שאלה לגבי למידה אמיתית.\n"A student who does not understand a science question can ask the program to explain it in simpler words."'
 							],
-							['Why AI programs are difficult to operate.', 'אין תיאור קושי בהפעלה.'],
+							['How teachers check whether students used a chatbot.', 'הפסקה לא מתארת איך מורים בודקים שימוש בצ’אטבוט. המורים רק שואלים אם תשובה מהירה היא למידה.'],
 							[
 								'What question teachers are beginning to ask about AI.',
-								'הפסקה מתארת שימושים בצ’אטבוטים ומעלה שאלה לגבי למידה אמיתית.\n"A student who does not understand a science question can ask the program to explain it in simpler words."'
+								'הפסקה מסתיימת בשאלה שהמורים שואלים: האם תשובה מהירה היא באמת למידה.\n"teachers are asking an important question: does getting an answer quickly always mean that learning has taken place?"'
 							],
 							[
-								'Which school subjects have become less popular.',
-								'אין מידע על ירידה בפופולריות מקצועות.'
+								'Why chatbots sometimes give wrong answers.',
+								'זה הנושא של פסקה III (information that sounds correct but is actually wrong), לא של פסקה I.'
 							],
-							['How schools choose new textbooks.', 'אין תיאור בחירת ספרי לימוד.']
+							['How teachers use AI to create practice questions.', 'זה מופיע בפסקה II, לא בפסקה I.']
 						],
 						correctIndices: [1, 3],
 						explanation:
-							'מילות מפתח בשאלה: What do we learn; paragraph I\nמילות מפתח בטקסט: explain it in simpler words\n\nטיפ: בשאלת TWO correct answers בדקו כל אפשרות מול משפט מפורש בפסקה.',
+							'מילות מפתח בשאלה: What do we learn; paragraph I\nמילות מפתח בטקסט: explain it in simpler words; teachers are asking an important question\n\nטיפ: בשאלת TWO correct answers בדקו כל אפשרות מול משפט מפורש בפסקה.',
 						points: 14,
 						paragraphRef: 'I'
 					},
@@ -122,14 +122,14 @@ export const eQuizzes: QuizNode[] = [
 						prompt: 'Why do teachers advise students to check information from chatbots?',
 						options: [
 							['Because chatbots cannot explain difficult ideas.', 'נאמר שאפשר לבקש הסבר.'],
-							['Because textbooks never contain mistakes.', 'לא נאמר שספרים לעולם אינם טועים.'],
+							['Because students may hand in answers they do not understand.', 'זה נכון לפי פסקה III, אבל זו הבעיה כשהטכנולוגיה עושה את כל העבודה, לא הסיבה לבדוק מידע.'],
 							[
 								'Because chatbot answers may contain incorrect information.',
 								'המורים ממליצים לבדוק משום שתשובות הצ’אטבוט עלולות להיות שגויות גם כשהן נשמעות נכונות.\n"chatbots sometimes provide information that sounds correct but is actually wrong."'
 							],
 							[
-								'Because students are not allowed to use online sources.',
-								'אין איסור שימוש במקורות מקוונים.'
+								'Because chatbots take too long to answer.',
+								'פסקה I אומרת שהתשובות מגיעות within seconds.'
 							]
 						],
 						correctIndex: 2,
@@ -155,20 +155,20 @@ export const eQuizzes: QuizNode[] = [
 						prompt: 'What is the main purpose of the classroom activity described in paragraph IV?',
 						options: [
 							[
-								'To show that a chatbot always works faster than a student.',
-								'הטקסט אינו משווה מהירות.'
+								'To show that students’ answers are always better than a chatbot’s.',
+								'הטקסט לא קובע מי צודק. התלמידים מסבירים איזו תשובה הגיונית יותר.'
 							],
 							[
 								'To help students evaluate AI answers instead of accepting them immediately.',
 								'מטרת הפעילות היא ביקורת והערכה של תשובת הבינה המלאכותית במקום קבלה אוטומטית שלה.\n"The activity encourages them to examine the chatbot’s suggestions instead of accepting them immediately."'
 							],
 							[
-								'To teach students to write longer homework answers.',
-								'אין עיסוק באורך שיעורי הבית.'
+								'To help students finish their homework more quickly.',
+								'המטרה היא לבחון את תשובת הצ’אטבוט, לא לחסוך זמן. התלמידים פותרים את הבעיה פעמיים.'
 							],
 							[
-								'To encourage students to use AI without checking their work.',
-								'סותר את ההוראה לבדוק את התשובה.'
+								'To teach students how to ask a chatbot better questions.',
+								'הפעילות לא עוסקת בניסוח שאלות לצ’אטבוט, אלא בהשוואה בין שתי תשובות.'
 							]
 						],
 						correctIndex: 1,
@@ -200,25 +200,25 @@ export const eQuizzes: QuizNode[] = [
 					{
 						type: 'match-definitions',
 						items: [
-							'to attach',
-							'to consider',
+							'to prevent',
+							'to recommend',
 							'to react',
 							'to distinguish',
-							'to hire',
+							'to participate',
 							'to deserve'
 						],
 						definitions: [
 							{
-								text: 'to think carefully about something',
-								itemIndex: 1,
+								text: 'to take part in an activity',
+								itemIndex: 4,
 								feedback:
-									'ההגדרה באנגלית משמעה: לחשוב על דבר מה לעומק. הביטוי to consider פירושו לשקול, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: לקחת חלק בפעילות. הביטוי to participate פירושו להשתתף, ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'to connect one thing to another',
+								text: 'to stop something from happening',
 								itemIndex: 0,
 								feedback:
-									'ההגדרה באנגלית משמעה: לחבר דבר לדבר אחר. הביטוי to attach פירושו לחבר, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: לעצור דבר מה לפני שהוא קורה. הביטוי to prevent פירושו למנוע, ולכן הוא מתאים להגדרה.'
 							},
 							{
 								text: 'to see or understand the difference between things',
@@ -227,45 +227,45 @@ export const eQuizzes: QuizNode[] = [
 									'ההגדרה באנגלית משמעה: להבחין בהבדל בין דברים. הביטוי to distinguish פירושו להבחין, ולכן הוא מתאים להגדרה.'
 							}
 						],
-						itemGlosses: ['לחבר', 'לשקול', 'להגיב', 'להבחין', 'להעסיק', 'להיות ראוי'],
+						itemGlosses: ['למנוע', 'להמליץ', 'להגיב', 'להבחין', 'להשתתף', 'להיות ראוי'],
 						points: 6
 					},
 					{
 						type: 'match-definitions',
 						items: [
-							'a budget',
-							'a champion',
-							'a committee',
-							'a culture',
+							'a consequence',
+							'a discovery',
+							'a priority',
+							'a disaster',
 							'a dispute',
-							'a facility'
+							'an objective'
 						],
 						definitions: [
 							{
 								text: 'a disagreement between people',
 								itemIndex: 4,
 								feedback:
-									'ההגדרה באנגלית משמעה: חילוקי דעות בין אנשים. הביטוי a dispute פירושו מחלוקת, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: חילוקי דעות בין אנשים. הביטוי a dispute פירושו סכסוך, ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'a plan showing how much money can be spent',
-								itemIndex: 0,
+								text: 'something that is more important than other things',
+								itemIndex: 2,
 								feedback:
-									'ההגדרה באנגלית משמעה: תוכנית המפרטת הוצאות וכסף. הביטוי a budget פירושו תקציב, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: דבר שחשוב יותר מדברים אחרים. הביטוי a priority פירושו עדיפות, ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'a person who wins an important competition',
+								text: 'something that is found or learned for the first time',
 								itemIndex: 1,
 								feedback:
-									'ההגדרה באנגלית משמעה: מי שזוכה בתחרות חשובה. הביטוי a champion פירושו אלוף, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: דבר שמוצאים או לומדים בפעם הראשונה. הביטוי a discovery פירושו תגלית, ולכן הוא מתאים להגדרה.'
 							}
 						],
-						itemGlosses: ['תקציב', 'אלוף', 'ועדה', 'תרבות', 'מחלוקת', 'מתקן'],
+						itemGlosses: ['תוצאה, השלכה', 'תגלית', 'עדיפות', 'אסון', 'סכסוך', 'מטרה, יעד'],
 						points: 6
 					},
 					{
 						type: 'match-definitions',
-						items: ['reliable', 'generous', 'basic', 'hidden', 'appropriate', 'occasional'],
+						items: ['reliable', 'generous', 'frequent', 'hidden', 'appropriate', 'occasional'],
 						definitions: [
 							{
 								text: 'suitable for a particular situation',
@@ -286,57 +286,57 @@ export const eQuizzes: QuizNode[] = [
 									'ההגדרה באנגלית משמעה: אפשר לסמוך עליו. הביטוי reliable פירושו מהימן, ולכן הוא מתאים להגדרה.'
 							}
 						],
-						itemGlosses: ['מהימן', 'נדיב', 'בסיסי', 'נסתר', 'מתאים', 'מזדמן'],
+						itemGlosses: ['מהימן', 'נדיב', 'תכוף', 'נסתר', 'מתאים', 'מזדמן'],
 						points: 6
 					},
 					{
 						type: 'match-definitions',
-						items: ['eventually', 'previously', 'perfectly', 'generally', 'publicly', 'suddenly'],
+						items: ['deliberately', 'seldom', 'otherwise', 'besides', 'unfortunately', 'underneath'],
 						definitions: [
 							{
-								text: 'before this time',
+								text: 'not often',
 								itemIndex: 1,
 								feedback:
-									'ההגדרה באנגלית משמעה: בעבר, לפני הזמן הנוכחי. הביטוי previously פירושו בעבר, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: לא הרבה פעמים. הביטוי seldom פירושו לעתים רחוקות, ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'after some time or in the end',
+								text: 'on purpose; not by accident',
 								itemIndex: 0,
 								feedback:
-									'ההגדרה באנגלית משמעה: לבסוף, אחרי זמן מה. הביטוי eventually פירושו בסופו של דבר, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: בכוונה, לא במקרה. הביטוי deliberately פירושו בכוונה, ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'without warning',
+								text: 'below something else',
 								itemIndex: 5,
 								feedback:
-									'ההגדרה באנגלית משמעה: באופן פתאומי וללא התראה. הביטוי suddenly פירושו פתאום, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: מתחת לדבר אחר. הביטוי underneath פירושו מתחת, ולכן הוא מתאים להגדרה.'
 							}
 						],
-						itemGlosses: ['בסופו של דבר', 'בעבר', 'באופן מושלם', 'בדרך כלל', 'בפומבי', 'פתאום'],
+						itemGlosses: ['בכוונה', 'לעתים רחוקות', 'אחרת', 'חוץ מזה, בנוסף', 'לצערנו', 'מתחת'],
 						points: 6
 					},
 					{
 						type: 'match-definitions',
 						items: [
-							'to take up',
+							'to keep on',
 							'to mix up',
-							'to put off',
+							'to cut down',
 							'to focus on',
 							'to get rid of',
-							'to have in common'
+							'to make up your mind'
 						],
 						definitions: [
 							{
-								text: 'to begin a new activity',
+								text: 'to continue doing something',
 								itemIndex: 0,
 								feedback:
-									'ההגדרה באנגלית משמעה: להתחיל פעילות חדשה. הביטוי to take up פירושו להתחיל לעסוק ב־, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: להמשיך לעשות דבר מה. הביטוי to keep on פירושו להמשיך (לעשות), ולכן הוא מתאים להגדרה.'
 							},
 							{
-								text: 'to delay doing something',
+								text: 'to make the amount of something smaller',
 								itemIndex: 2,
 								feedback:
-									'ההגדרה באנגלית משמעה: לדחות עשייה של דבר מה. הביטוי to put off פירושו לדחות, ולכן הוא מתאים להגדרה.'
+									'ההגדרה באנגלית משמעה: להקטין את הכמות של דבר מה. הביטוי to cut down פירושו לצמצם, ולכן הוא מתאים להגדרה.'
 							},
 							{
 								text: 'to give special attention to something',
@@ -346,12 +346,12 @@ export const eQuizzes: QuizNode[] = [
 							}
 						],
 						itemGlosses: [
-							'להתחיל לעסוק ב־',
+							'להמשיך (לעשות)',
 							'לבלבל',
-							'לדחות',
+							'לצמצם',
 							'להתמקד ב־',
 							'להיפטר מ־',
-							'להיות משותף'
+							'להחליט'
 						],
 						points: 6
 					}
@@ -424,17 +424,17 @@ export const eQuizzes: QuizNode[] = [
 						prompt: 'What do we learn from paragraph I?',
 						options: [
 							['Why Maya decided to become a photographer.', 'אין מידע על בחירת מקצוע הצילום.'],
-							['Which modern cameras are the most expensive.', 'אין השוואת מחירי מצלמות.'],
+							['Why Maya’s friends bought film cameras too.', 'החברים של מאיה הופתעו מהבחירה שלה. לא נאמר שהם קנו מצלמות.'],
 							[
 								'What kinds of older products are attracting young people.',
 								'הפסקה מציינת אילו פריטים ישנים מושכים צעירים.\n"When sixteen-year-old Maya wanted a camera, she did not choose the latest model. Instead, she bought a second-hand film camera."'
 							],
 							[
-								'Why record companies stopped producing music.',
-								'אין טענה שחברות התקליטים הפסיקו לייצר מוזיקה.'
+								'How listening to a record is different from streaming.',
+								'החוויה של האזנה לתקליט מתוארת בפסקה II, לא בפסקה I.'
 							],
 							[
-								'What an example of a young person choosing an old-fashioned object looks like.',
+								'How one teenager chose an old-fashioned object.',
 								'הדוגמה של מאיה מציגה בחירה במצלמת פילם.\n"When sixteen-year-old Maya wanted a camera, she did not choose the latest model. Instead, she bought a second-hand film camera."'
 							],
 							['How film camera pictures are developed.', 'אין הסבר על פיתוח התמונות.']
@@ -478,8 +478,8 @@ export const eQuizzes: QuizNode[] = [
 								'Some of them can be expensive.',
 								'הטקסט מציין במפורש שפריטים נדירים יכולים לעלות הרבה.\n"rare vintage products sometimes become surprisingly expensive."'
 							],
-							['They are available only on shopping websites.', 'אין הגבלה לאתרי אינטרנט.'],
-							['Young people rarely buy them.', 'אין טענה על מיעוט קונים.']
+							['They are sold mainly on popular shopping websites.', 'פסקה III מזכירה חנויות יד שנייה. אתרי הקניות מוזכרים רק כמקום של בגדים חדשים.'],
+							['They are popular because they are cheap.', 'קנייה משומשת יכולה לעלות פחות, אבל פריטי וינטג׳ נדירים דווקא יקרים.']
 						],
 						correctIndex: 1,
 						explanation:
@@ -767,22 +767,22 @@ export const eQuizzes: QuizNode[] = [
 						prompt: 'What do we learn from paragraph I?',
 						options: [
 							[
-								'Why mathematics is the most difficult subject.',
-								'אין קביעה שמתמטיקה היא המקצוע הקשה ביותר.'
+								'Why Daniel found mathematics difficult.',
+								'דניאל התקשה לזכור כלל, אבל הפסקה לא מסבירה למה.'
 							],
 							[
 								'Which school subject Daniel was reviewing.',
 								'הטקסט מציין שדניאל ניסה להיזכר בכלל במתמטיקה.\n"When Daniel had trouble remembering a rule in mathematics, he searched for a short video on his phone. Daniel watched it twice and then tried a similar problem."'
 							],
-							['Why teachers refuse to make videos.', 'אין טענה שמורים מסרבים להכין סרטונים.'],
-							['How much time teenagers spend online.', 'אין נתונים על שעות השימוש באינטרנט.'],
+							['Why some short videos give wrong information.', 'זה הנושא של פסקה III (Others may share incorrect information).'],
+							['How teachers make short educational videos.', 'מוזכר שמורה הסביר בעזרת ציור פשוט, אבל לא איך מכינים סרטונים.'],
 							[
 								'How a teenager used a short video to review a school subject.',
 								'דניאל צפה פעמיים בסרטון ולאחר מכן ניסה לפתור תרגיל דומה.\n"When Daniel had trouble remembering a rule in mathematics, he searched for a short video on his phone. Daniel watched it twice and then tried a similar problem."'
 							],
 							[
-								'Why schools stopped teaching mathematics.',
-								'אין טענה שבתי ספר הפסיקו ללמד מתמטיקה.'
+								'How students can pause and replay a video.',
+								'זה מופיע בפסקה II, לא בפסקה I.'
 							]
 						],
 						correctIndices: [1, 4],
@@ -818,15 +818,15 @@ export const eQuizzes: QuizNode[] = [
 						type: 'mcq',
 						prompt: 'Why should students check who created a video?',
 						options: [
-							['Because every video costs money.', 'אין טענה שכל סרטון עולה כסף.'],
-							['Because short videos never use examples.', 'סרטונים דווקא עשויים להכיל דוגמאות.'],
+							['Because some videos are too long.', 'הבעיה בפסקה III היא פישוט יתר ומידע שגוי, לא אורך.'],
+							['Because attractive videos have music and images.', 'המוזיקה והתמונות מסבירות למה תלמידים זוכרים סרטון בלי להבין אותו, לא למה בודקים מי יצר אותו.'],
 							[
 								'Because some videos contain incorrect information.',
 								'יש לבדוק את המקור כי חלק מן הסרטונים מכילים מידע שגוי.\n"Others may share incorrect information."'
 							],
 							[
-								'Because only schools can publish online videos.',
-								'אין מגבלה לפרסום על ידי בתי ספר.'
+								'Because teachers want students to watch whole lessons.',
+								'שיעור שלם מוזכר בפסקה II רק להשוואה. המורים לא דורשים לצפות בשיעורים שלמים.'
 							]
 						],
 						correctIndex: 2,
@@ -853,9 +853,9 @@ export const eQuizzes: QuizNode[] = [
 								'Whether students have understood the information.',
 								'המטלה שלאחר הצפייה בודקת הבנה, לא רק זכירה של משפט מהסרטון.\n"These activities help teachers find out whether students have actually learned something."'
 							],
-							['Whether students enjoy background music.', 'מוזיקת רקע אינה יעד ההערכה.'],
-							['Which students own smartphones.', 'אין בדיקת בעלות על טלפון.'],
-							['Which videos are the shortest.', 'אורך הסרטון אינו נבדק.']
+							['Whether students can repeat sentences from a video.', 'הפסקה אומרת שחזרה על משפט מהסרטון לא מוכיחה למידה. המורים בודקים הבנה.'],
+							['Which videos are the most popular with students.', 'הפעילות לא בודקת אילו סרטונים פופולריים.'],
+							['How quickly students can solve a problem.', 'הפעילות בודקת אם התלמידים למדו, לא כמה מהר הם פותרים.']
 						],
 						correctIndex: 0,
 						explanation:
@@ -1108,18 +1108,18 @@ export const eQuizzes: QuizNode[] = [
 							],
 							[
 								'How a group of players works together in a game.',
-								'מתוארת עבודת צוות בתוך משחק.\n"Situations like this have led some educators to ask whether certain video games can help young people practise skills they also need outside the screen."'
+								'מתוארת עבודת צוות בתוך משחק.\n"One player studies a map, another collects useful objects and the others protect the team."'
 							],
-							['Which video game is the most popular.', 'אין דירוג פופולריות.'],
+							['How players can win a game more quickly.', 'הפסקה מתארת שיתוף פעולה, לא דרכים לנצח מהר.'],
 							[
-								'Why all teenagers prefer playing alone.',
-								'אין טענה שכל בני הנוער מעדיפים לשחק לבד.'
+								'Why some games are dangerous for young people.',
+								'הפסקה לא מזהירה מפני משחקים.'
 							],
 							[
 								'Why some educators are interested in games as a way to practise useful skills.',
 								'הפסקה מסבירה מדוע אנשי חינוך בוחנים אם משחקים מסייעים לתרגל מיומנויות שימושיות.\n"Situations like this have led some educators to ask whether certain video games can help young people practise skills they also need outside the screen."'
 							],
-							['Which online games have the largest number of players.', 'אין נתוני מספר משתתפים.']
+							['How teachers use games in their lessons.', 'זה הנושא של פסקה III.']
 						],
 						correctIndices: [1, 4],
 						explanation:
@@ -1157,13 +1157,13 @@ export const eQuizzes: QuizNode[] = [
 						prompt:
 							'Why does the teacher ask students to explain their choices after the town-building game?',
 						options: [
-							['To find out who played the fastest.', 'לא בודקים מהירות.'],
+							['To find out who built the best town.', 'הדיון לא נועד לדרג. הוא מחבר החלטות במשחק לרעיונות מהחיים.'],
 							[
 								'To help them connect the game to real-life ideas.',
 								'הדיון מסייע לחבר החלטות במשחק למושגים כמו תקציב ואחריות.\n"it helps students connect decisions made in the game with ideas such as budgeting, cooperation and responsibility."'
 							],
-							['To show that town planning is an easy job.', 'אין קביעה שתכנון עיר קל.'],
-							['To encourage them to buy more games.', 'אין עידוד לרכישה.']
+							['To check that students did not spend too much money.', 'הכסף המוגבל הוא חלק מהמשחק. הדיון נועד לחבר את ההחלטות לרעיונות כמו budgeting.'],
+							['To help them design a real town.', 'התלמידים מתכננים עיר קטנה בתוך המשחק, לא עיר אמיתית.']
 						],
 						correctIndex: 1,
 						explanation:
@@ -1186,13 +1186,13 @@ export const eQuizzes: QuizNode[] = [
 						prompt:
 							'According to paragraph IV, which factor affects whether a game is educational?',
 						options: [
-							['The colour of the screen.', 'צבע המסך אינו מוזכר.'],
-							['The number of games a player owns.', 'מספר המשחקים אינו גורם.'],
+							['The number of hours students play.', 'שעות משחק מוזכרות כבעיה (repeating actions without thinking), לא כגורם שקובע אם המשחק מלמד.'],
+							['How much the game costs.', 'מחיר המשחק לא מוזכר.'],
 							[
 								'The guidance students receive.',
 								'הכוונה שהתלמידים מקבלים משפיעה על ערכו הלימודי של המשחק.\n"the type of game, the tasks and the guidance students receive all make a difference."'
 							],
-							['The price of the computer.', 'מחיר המחשב אינו מוזכר.']
+							['Whether students enjoy the game.', 'פסקה V אומרת שהנאה היא לא העיקר. פסקה IV מונה סוג משחק, משימות והדרכה.']
 						],
 						correctIndex: 2,
 						explanation:
