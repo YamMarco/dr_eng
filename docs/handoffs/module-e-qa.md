@@ -33,7 +33,7 @@ Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and i
 - [ ] **Question types never taught:** true/false with justification, tables / timelines, "choose TWO", "Give TWO answers", non-article texts (interview, letter, review, ad).
 - [ ] **Typed answers are graded by keyword only** (`PassageQuiz.svelte`): "By joined a tour" passes, so the By + ing form is never checked. Wrong keys: Repair Café Q1 needs "free" (rejects "By organising a Repair Café"); Q2 accepts only "waste" (rejects "to teach people to fix things").
 - [ ] **Grading facts not taught:** grammar costs 1-3 points per question, spelling costs nothing.
-- [ ] Weak lesson distractors: "the" (e-method), "For thirty years", "The bus is yellow".
+- [x] Weak lesson distractors replaced with tempting ones: "libraries" (appears all over the text, so it's a poor keyword), "For a few weeks", "Helen spent a whole summer building the shelves" (a detail that sounds big), "היא לא מופיעה בכתבה בכלל".
 - [x] Typos: "ברך כלל", "במקומו**y**:", the bold run-on in the first screen, "תזכורת:  על פסקה קצרה".
 - [x] First screen within the phone limit (about 200 characters).
 - [x] Paragraph markers `**II**` / `**V **` → `II  ` (side marker).

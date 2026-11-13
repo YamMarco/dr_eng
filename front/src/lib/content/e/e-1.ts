@@ -129,10 +129,10 @@ export const e1Lessons: LessonNode[] = [
               type: "mcq",
               prompt:
                 "{p:text}When did the council close the libraries?\n\nמה מילת המפתח?",
-              options: ["close", "When", "did", "the"],
+              options: ["close", "When", "did", "libraries"],
               correctIndex: 0,
               explanation:
-                "When ו-did הן מילות שאלה ודקדוק. close היא הפעולה שמחפשים בטקסט.",
+                "When ו-did הן מילות שאלה ודקדוק. libraries מופיעה בכל הכתבה על הספרייה, אז היא לא תוביל למשפט אחד. close מובילה ישר למשפט הנכון.",
             },
             {
               type: "mcq",
@@ -221,7 +221,7 @@ export const e1Lessons: LessonNode[] = [
                     "About a year",
                     "Until the summer",
                     "Until the government acts",
-                    "For thirty years",
+                    "For a few weeks",
                   ],
                   correctIndex: 0,
                 },
@@ -357,7 +357,7 @@ export const e1Lessons: LessonNode[] = [
               options: [
                 "How Helen started her library bus",
                 "Helen sold her car",
-                "The bus is yellow",
+                "Helen spent a whole summer building the shelves",
                 "There are 3,000 books on the bus",
               ],
               correctIndex: 0,
@@ -583,7 +583,7 @@ export const e1Lessons: LessonNode[] = [
               options: [
                 "פסקה IV מדברת על בעיות, לא על יתרונות",
                 "היא פרט נכון מפסקה IV",
-                "היא נכונה ומתאימה לכל הפסקה",
+                "היא לא מופיעה בכתבה בכלל",
               ],
               correctIndex: 0,
               explanation:

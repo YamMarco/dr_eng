@@ -2015,8 +2015,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/e/e-1.ts": {
-    "mtime": 1794562857.358845,
-    "ast_hash": "5c48d29936fd9dd3ae6889b7e35bdca4",
+    "mtime": 1794564073.7839825,
+    "ast_hash": "eb1a11985a71432ac4d4e94def3cdfe9",
     "semantic_hash": ""
   },
   "front/drizzle/meta/0005_snapshot.json": {
@@ -2765,8 +2765,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-e-qa.md": {
-    "mtime": 1794563188.4018312,
-    "ast_hash": "2f2edfa4796520d79dc813d6a9fd1984",
+    "mtime": 1794564079.4159336,
+    "ast_hash": "9c373abde90d576e48ef06b96da84a8d",
     "semantic_hash": ""
   }
 }
