@@ -722,12 +722,22 @@ export const quizNodeSchema = z.strictObject({
 	options: z.looseObject({}),
 	parts: z
 		.array(
-			z.strictObject({
-				id: z.string().min(1),
-				instructionsHe: z.string().optional(),
-				points: z.number().optional(),
-				screens
-			})
+			z
+				.strictObject({
+					id: z.string().min(1),
+					instructionsHe: z.string().optional(),
+					points: z.number().optional(),
+					choose: z.number().int().positive().optional(),
+					screens
+				})
+				.refine(
+					(p) => {
+						if (p.choose === undefined) return true;
+						const points = p.screens.flatMap((s) => ('points' in s && s.points ? [s.points] : []));
+						return points.length > p.choose && new Set(points).size === 1;
+					},
+					{ message: '"choose N" needs more than N questions, all worth the same points' }
+				)
 		)
 		.min(1)
 });

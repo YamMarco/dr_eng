@@ -703,7 +703,15 @@ export const he = {
 		hidePassage: 'הסתרת הקטע',
 		passageLabel: 'קטע קריאה',
 		questionLabel: (label: string | number) => `שאלה ${label}`,
-		pointsShort: (points: number) => `${points} נק'`
+		pointsShort: (points: number) => `${points} נק'`,
+		chooseRule: (n: number, total: number) => `ענו על ${n} מתוך ${total}`,
+		chooseDone: (done: number, n: number) => `עניתם: ${done}/${n}`,
+		chooseOver: (n: number) => `עניתם על יותר מ-${n}: נספרות ${n} הראשונות`,
+		notCountedHere: 'התשובה הזו לא תיספר',
+		clearAnswer: 'ניקוי תשובה',
+		uncountedTitle: 'שאלות שלא נספרו',
+		notCounted: 'לא נספרה',
+		notChosen: 'לא נבחרה'
 	},
 	quizzes: {
 		assortedTitle: 'מגוון מבחנים',

@@ -346,6 +346,18 @@ class ExamEditModel implements EditModelLike {
 		this.dirty = true;
 	}
 
+	bucketChoose(quizId: string, bucketIndex: number) {
+		return this.node(quizId)?.parts[bucketIndex]?.choose;
+	}
+
+	setBucketChoose(quizId: string, bucketIndex: number, choose: number | undefined) {
+		const part = this.node(quizId)?.parts[bucketIndex];
+		if (!part) return;
+		if (choose === undefined) delete part.choose;
+		else part.choose = choose;
+		this.dirty = true;
+	}
+
 	setBucketLabel(quizId: string, bucketIndex: number, label: string) {
 		const part = this.node(quizId)?.parts[bucketIndex];
 		if (!part) return;

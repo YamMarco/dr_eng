@@ -17,7 +17,8 @@
 	import { createLessonSession } from '$lib/lesson-screens/session.svelte';
 	import { provideQuizAnswerSlot, type QuizAnswerSlot } from './answers.svelte';
 	import { screensWithIds } from './screenIds';
-	import { applyGrades, scoreQuiz, type QuizScore } from './scoring';
+	import { applyGrades, countedIds, isScored, scoreQuiz, type QuizScore } from './scoring';
+	import { isAnswered } from './choice';
 	import { gradeExam } from '$lib/feedback/gradeExam';
 	import type { ExamGrade } from '$lib/feedback/types';
 	import { clearInProgress, saveAttempt, saveInProgress } from './progress';
@@ -134,8 +135,53 @@
 
 	let showNavigator = $derived(quiz.options.showNavigator ?? true);
 	let answeredIndices = $derived(
-		new Set(allEntries.flatMap((entry, i) => (entry.id in answers ? [i] : [])))
+		new Set(allEntries.flatMap((entry, i) => (isAnswered(answers[entry.id]) ? [i] : [])))
 	);
+
+	// "Choose N" parts (QuizPart.choose): every question stays open; the first N answered count.
+	let choiceParts = $derived(
+		quiz.parts.map((part) => {
+			if (part.choose === undefined) return undefined;
+			const ids = screensWithIds(part).flatMap(({ id, screen }) => (isScored(screen) ? [id] : []));
+			const answered = ids.filter((id) => isAnswered(answers[id])).length;
+			return {
+				n: part.choose,
+				total: ids.length,
+				answered,
+				ids,
+				counted: countedIds(part, answers)
+			};
+		})
+	);
+	let currentChoice = $derived(currentEntry ? choiceParts[currentEntry.partIndex] : undefined);
+	let choiceIndices = $derived(
+		new Set(
+			allEntries.flatMap((entry, i) =>
+				choiceParts[entry.partIndex]?.ids.includes(entry.id) ? [i] : []
+			)
+		)
+	);
+	// Won't count: answered past N, or left open in a part that already has N answers.
+	let uncountedIndices = $derived(
+		new Set(
+			[...choiceIndices].filter((i) => {
+				const c = choiceParts[allEntries[i].partIndex]!;
+				return answeredIndices.has(i) ? !c.counted.has(allEntries[i].id) : c.answered >= c.n;
+			})
+		)
+	);
+	let currentUncounted = $derived(
+		answeredIndices.has(entryIndex) && uncountedIndices.has(entryIndex)
+	);
+	// Bumped by "clear answer": remounts the screen so it drops its own copy of the answer.
+	let clearCount = $state(0);
+	function clearAnswer() {
+		if (!currentEntry) return;
+		delete answers[currentEntry.id];
+		clearCount += 1;
+	}
+	// A choice question may be left unanswered: Next skips it.
+	let canSkip = $derived(!!currentChoice?.ids.includes(currentEntry?.id ?? ''));
 	let passageIndices = $derived(
 		new Set(allEntries.flatMap((entry, i) => (entry.screen.type === 'passage' ? [i] : [])))
 	);
@@ -306,6 +352,8 @@
 		{passageIndices}
 		{hiddenIndices}
 		{partBreaks}
+		choice={choiceIndices}
+		uncounted={uncountedIndices}
 	/>
 {/snippet}
 
@@ -373,6 +421,33 @@
 				{#if currentEntry?.isFirstOfPart && currentPart.instructionsHe}
 					<p class="-mt-1.5 text-sm leading-relaxed text-muted">{currentPart.instructionsHe}</p>
 				{/if}
+				{#if currentChoice}
+					{@const over = currentChoice.answered > currentChoice.n}
+					<div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+						<span
+							class="rounded-full px-2.5 py-1 {over
+								? 'bg-miss-soft text-miss'
+								: 'bg-accent-soft text-ink/80'}"
+							aria-live="polite"
+						>
+							{over
+								? i18n.dict.quiz.chooseOver(currentChoice.n)
+								: `${i18n.dict.quiz.chooseRule(currentChoice.n, currentChoice.total)} · ${i18n.dict.quiz.chooseDone(currentChoice.answered, currentChoice.n)}`}
+						</span>
+						{#if currentUncounted}
+							<span class="text-miss">{i18n.dict.quiz.notCountedHere}</span>
+						{/if}
+						{#if canSkip && answeredIndices.has(entryIndex)}
+							<button
+								type="button"
+								onclick={clearAnswer}
+								class="ms-auto min-h-9 rounded-lg px-2 text-muted underline underline-offset-2 active:scale-95"
+							>
+								{i18n.dict.quiz.clearAnswer}
+							</button>
+						{/if}
+					</div>
+				{/if}
 			</div>
 		</div>
 
@@ -414,7 +489,7 @@
 					: ''}
 			>
 				{#if currentEntry && ScreenComponent}
-					{#key entryIndex}
+					{#key `${entryIndex}:${clearCount}`}
 						<div in:fly={{ x: direction * 16, duration: 150, easing: cubicOut }}>
 							<ScreenComponent
 								screen={currentEntry.screen}
@@ -434,7 +509,10 @@
 			<div
 				class="app-col flex gap-2 {quizHasPassage ? 'lg:max-w-5xl lg:*:w-[calc(50%-1rem)]' : ''}"
 			>
-				<Button onclick={() => screenInstance?.primaryAction()} disabled={footerDisabled}>
+				<Button
+					onclick={() => (footerDisabled && canSkip ? advance() : screenInstance?.primaryAction())}
+					disabled={footerDisabled && !canSkip}
+				>
 					{footerLabel}
 				</Button>
 			</div>

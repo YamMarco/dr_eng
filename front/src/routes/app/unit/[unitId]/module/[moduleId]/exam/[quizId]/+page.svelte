@@ -10,6 +10,7 @@
 	import { localizeContent } from '$lib/content/localize.svelte';
 	import { getLastAttempt, retakeLockedUntil } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
+	import { isScored } from '$lib/quiz/scoring';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import QuizRunner from '$lib/quiz/QuizRunner.svelte';
 	import QuizSolution from '$lib/quiz/QuizSolution.svelte';
@@ -53,8 +54,12 @@
 		const questionPoints = questionParts.reduce((sum, part) => sum + (part.points ?? 0), 0);
 		const list = [
 			withPoints(
+				// A "choose N" part counts as the N questions the student answers.
 				t.questionsRule(
-					questionParts.flatMap((part) => part.screens).filter((s) => s.type !== 'passage').length
+					questionParts.reduce(
+						(sum, part) => sum + (part.choose ?? part.screens.filter(isScored).length),
+						0
+					)
 				),
 				questionPoints
 			)

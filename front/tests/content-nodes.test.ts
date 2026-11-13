@@ -23,6 +23,7 @@ import { cobe3Lessons } from '../src/lib/content/cobe/cobe-3.ts';
 import { cQuizzes } from '../src/lib/quiz/c/index.ts';
 import { eQuizzes } from '../src/lib/quiz/e/index.ts';
 import { gQuizzes } from '../src/lib/quiz/g/index.ts';
+import { cobeQuizzes } from '../src/lib/quiz/cobe/index.ts';
 
 const issues = (r: {
 	success: boolean;
@@ -57,10 +58,21 @@ test('every lesson node passes the save schema', () => {
 });
 
 test('every exam passes the save schema', () => {
-	const bad = [...cQuizzes, ...eQuizzes, ...gQuizzes].flatMap((q) =>
+	const bad = [...cQuizzes, ...eQuizzes, ...gQuizzes, ...cobeQuizzes].flatMap((q) =>
 		issues(quizNodeSchema.safeParse(q)).map((m) => `${q.id}: ${m}`)
 	);
 	assert.deepEqual(bad, []);
+});
+
+test('a "choose N" part needs more than N questions of equal points', () => {
+	const part = cobeQuizzes[0].parts[0];
+	const withChoose = (choose: number, points = [25, 25]) => ({
+		...cobeQuizzes[0],
+		parts: [{ ...part, choose, screens: points.map((p) => ({ ...part.screens[0], points: p })) }]
+	});
+	assert.equal(quizNodeSchema.safeParse(withChoose(1)).success, true);
+	assert.equal(quizNodeSchema.safeParse(withChoose(2)).success, false);
+	assert.equal(quizNodeSchema.safeParse(withChoose(1, [25, 20])).success, false);
 });
 
 test('a malformed node is refused', () => {

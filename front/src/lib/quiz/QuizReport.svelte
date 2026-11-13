@@ -8,7 +8,9 @@
 	import { screensWithIds } from './screenIds';
 	import type { QuizNode } from './types';
 	import AnswerReview from './AnswerReview.svelte';
-	import { scoreScreen, type QuizScore } from './scoring';
+	import { countedIds, isScored, scoreScreen, type QuizScore } from './scoring';
+	import { isAnswered } from './choice';
+	import ModelAnswer from './ModelAnswer.svelte';
 	import type { ExamGrade } from '$lib/feedback/types';
 
 	let {
@@ -52,6 +54,33 @@
 	// COBE before every recording is judged: no pass / fail yet.
 	const pending = $derived(hasSpeaking && !score.total);
 	const anyFailed = $derived(Object.values(grades).some((g) => g.status === 'failed'));
+	// "Choose N" parts: each question that didn't count, and why (answered past N / not picked).
+	const uncounted = $derived(
+		new Map(
+			quiz.parts.flatMap((part) => {
+				if (part.choose === undefined) return [];
+				const counted = countedIds(part, answers);
+				return screensWithIds(part).flatMap(({ id, screen }) =>
+					isScored(screen) && !counted.has(id)
+						? [
+								[
+									id,
+									isAnswered(answers[id]) ? i18n.dict.quiz.notCounted : i18n.dict.quiz.notChosen
+								] as const
+							]
+						: []
+				);
+			})
+		)
+	);
+	const uncountedOpen = $derived(
+		[...uncounted].flatMap(([id, note]) => {
+			const screen = screens.get(id);
+			return screen && screen.type !== 'mcq' && screen.type !== 'match-definitions'
+				? [{ id, note, screen }]
+				: [];
+		})
+	);
 	const closed = $derived(
 		quiz.parts.flatMap((part) =>
 			screensWithIds(part).flatMap(({ id, screen }) =>
@@ -156,6 +185,7 @@
 							answer={answers[c.id]}
 							earned={c.scored.earned}
 							max={c.scored.max}
+							note={uncounted.get(c.id)}
 						/>
 					</li>
 				{/each}
@@ -207,6 +237,34 @@
 							explanation={screen?.type === 'writing-task' ? screen.explanation : undefined}
 						/>
 					{/if}
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if uncountedOpen.length > 0}
+		<section class="mt-6 rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
+			<h2 class="mb-3 text-base font-bold">{i18n.dict.quiz.uncountedTitle}</h2>
+			<ul class="flex flex-col divide-y divide-line/70">
+				{#each uncountedOpen as u (u.id)}
+					{@const text = answers[u.id]}
+					<li class="flex flex-col gap-2 py-4 first:pt-0 last:pb-0">
+						<div class="flex items-baseline justify-between gap-3">
+							<span class="text-sm font-bold">
+								{i18n.dict.quiz.questionProgress(numbers.get(u.id) ?? 0, numbers.size)}
+							</span>
+							<span class="text-xs font-semibold text-muted">{u.note}</span>
+						</div>
+						{#if 'prompt' in u.screen}
+							<p class="text-sm text-muted" dir="ltr">{String(u.screen.prompt)}</p>
+						{/if}
+						{#if typeof text === 'string' && text.trim()}
+							<p class="rounded-xl border border-line bg-canvas p-3 text-sm" dir="ltr">{text}</p>
+						{/if}
+						{#if u.screen.type === 'writing-task'}
+							<ModelAnswer modelAnswer={u.screen.modelAnswer} explanation={u.screen.explanation} />
+						{/if}
+					</li>
 				{/each}
 			</ul>
 		</section>
