@@ -26,32 +26,36 @@
 		class: extra = ''
 	}: Props = $props();
 
+	// A route-level wait scales with the viewport; the chevron travel is in SVG units, so it follows.
 	const box = { md: 'h-8 w-8', lg: 'h-14 w-14' };
+	let boxClass = $derived(
+		screen && size !== 'sm' ? 'size-[clamp(8rem,28vmin,20rem)]' : box[size as 'md' | 'lg']
+	);
 </script>
 
 <span
 	role="status"
-	class="loader inline-flex flex-col items-center justify-center gap-3 {inherit ? '' : 'text-brand'} {screen
-		? 'min-h-dvh w-full flex-1'
-		: ''} {extra}"
+	class="loader inline-flex flex-col items-center justify-center gap-3 {inherit
+		? ''
+		: 'text-brand'} {screen ? 'min-h-dvh w-full flex-1' : ''} {extra}"
 >
 	{#if size === 'sm'}
 		<LoaderCircle size={16} class="motion-safe:animate-spin" aria-hidden="true" />
 	{:else}
-	<svg viewBox="0 0 32 32" class="overflow-visible {box[size]}" aria-hidden="true">
-		{#each [0, 1] as i (i)}
-			<path
-				class="chev"
-				style="animation-delay: {i * -1.2}s"
-				d="M9.5 20.5 16 14l6.5 6.5"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="3.4"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			/>
-		{/each}
-	</svg>
+		<svg viewBox="0 0 32 32" class="overflow-visible {boxClass}" aria-hidden="true">
+			{#each [0, 1] as i (i)}
+				<path
+					class="chev"
+					style="animation-delay: {i * -1.2}s"
+					d="M9.5 20.5 16 14l6.5 6.5"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="3.4"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			{/each}
+		</svg>
 	{/if}
 	{#if showLabel}
 		<span class="text-sm font-semibold text-muted">{label}</span>

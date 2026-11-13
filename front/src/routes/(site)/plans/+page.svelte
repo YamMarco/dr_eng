@@ -1,5 +1,14 @@
 <script lang="ts">
-	import { BadgePercent, Check, Minus, Mic, ShieldCheck, Sparkles, Video } from '@lucide/svelte';
+	import {
+		BadgePercent,
+		Building2,
+		Check,
+		Minus,
+		Mic,
+		ShieldCheck,
+		Sparkles,
+		Video
+	} from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
@@ -12,6 +21,7 @@
 	import { staggerDelay } from '$lib/motion';
 	import OfferPrice from '$lib/site/OfferPrice.svelte';
 	import { reveal } from '$lib/site/reveal';
+	import { emailHref } from '$lib/support';
 	import {
 		COBE_ADDON,
 		CYCLES,
@@ -447,6 +457,36 @@
 		t.lessonChoose,
 		checkoutHref(lesson.id)
 	)}
+	<section
+		{@attach reveal}
+		class="flex flex-col gap-4 rounded-3xl bg-surface p-6 ring-1 ring-line/70 sm:flex-row sm:items-center sm:gap-8"
+		aria-labelledby="enterprise-title"
+	>
+		<div class="flex flex-1 flex-col gap-3">
+			<div>
+				<p class="text-sm font-bold text-brand">{t.enterpriseName}</p>
+				<h2 id="enterprise-title" class="flex items-center gap-2 text-xl font-extrabold">
+					<Building2 size={20} aria-hidden="true" />
+					{t.enterpriseTitle}
+				</h2>
+				<p class="text-pretty text-muted">{t.enterpriseBody}</p>
+			</div>
+			<ul class="flex flex-col gap-2">
+				{#each t.enterpriseFeatures as feature (feature)}
+					<li class="flex items-start gap-2 leading-snug">
+						<Check size={18} class="mt-0.5 shrink-0 text-brand" aria-hidden="true" />
+						{feature}
+					</li>
+				{/each}
+			</ul>
+		</div>
+		<div class="flex flex-col gap-2 sm:w-56 sm:shrink-0">
+			<p class="text-2xl font-extrabold">{t.enterprisePrice}</p>
+			<Button variant="secondary" href={emailHref(t.enterpriseSubject)}>
+				{t.enterpriseChoose}
+			</Button>
+		</div>
+	</section>
 	{#if showCobe}
 		{@render standalone(
 			'cobe',
