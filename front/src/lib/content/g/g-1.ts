@@ -203,22 +203,48 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'What benefit of movement breaks was found by researchers?',
-									options: ['I', 'II', 'III', 'IV'],
+									options: [
+										['I', 'לא בדיוק. פסקה I מסבירה למה החברות הכניסו הפסקות: יושבים רוב היום.'],
+										[
+											'II',
+											'נכון. פסקה II פותחת ב-"Researchers studying these breaks found" - שם התועלת.'
+										],
+										['III', 'לא בדיוק. פסקה III עוסקת בעובדים שלא אהבו את הרעיון.'],
+										['IV', 'לא בדיוק. פסקה IV מספרת איך החברות פתרו בעיה, לא מה החוקרים מצאו.']
+									],
 									correctIndex: 1
 								},
 								{
 									prompt: 'Why were some workers unwilling to participate?',
-									options: ['I', 'II', 'III', 'IV'],
+									options: [
+										['I', 'לא בדיוק. פסקה I מסבירה למה ההפסקות הוכנסו, לא למה עובדים סירבו.'],
+										['II', 'לא בדיוק. פסקה II מתארת את התועלת שהחוקרים מצאו.'],
+										['III', 'נכון. "Not every employee welcomed the idea" - ומיד אחר כך הסיבות.'],
+										['IV', 'לא בדיוק. פסקה IV מתארת את הפתרון, אחרי שהבעיה כבר הוצגה.']
+									],
 									correctIndex: 2
 								},
 								{
 									prompt: "How did companies respond to employees' concerns?",
-									options: ['I', 'II', 'III', 'IV'],
+									options: [
+										['I', 'לא בדיוק. בפסקה I עוד אין חששות של עובדים.'],
+										['II', 'לא בדיוק. פסקה II עוסקת במחקר, לא בתגובת החברות.'],
+										['III', 'לא בדיוק. פסקה III מציגה את החששות עצמם. התגובה באה אחריהם.'],
+										['IV', 'נכון. "To solve this problem" = התגובה של החברות: הליכות בחוץ.']
+									],
 									correctIndex: 3
 								},
 								{
 									prompt: 'What change in modern work created the need for movement breaks?',
-									options: ['I', 'II', 'III', 'IV'],
+									options: [
+										[
+											'I',
+											'נכון. "employees spend most of the day sitting" - ולכן "therefore" הכניסו הפסקות.'
+										],
+										['II', 'לא בדיוק. פסקה II מספרת מה ההפסקות עושות, לא למה היה בהן צורך.'],
+										['III', 'לא בדיוק. פסקה III עוסקת בהתנגדות של עובדים.'],
+										['IV', 'לא בדיוק. פסקה IV מתארת פתרון לבעיה של ההשתתפות.']
+									],
 									correctIndex: 0
 								}
 							]
@@ -354,22 +380,38 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'How long has Sarah Mitchell worked at DataLink?',
 									options: [
-										'For over twelve years',
-										'For three months',
-										'For 23 years',
-										'For 45 years'
+										[
+											'For over twelve years',
+											'נכון. "has worked ... at DataLink for over twelve years".'
+										],
+										[
+											'For three months',
+											'לא בדיוק. three months זה הזמן ש-Ben Cohen בחברה: "joined the company just three months ago".'
+										],
+										['For 23 years', 'לא בדיוק. 23 זה הגיל של Ben Cohen. קראו מה המספר מודד.'],
+										['For 45 years', 'לא בדיוק. 45% מופיע בפסקה III, ומודד מנהלים, לא שנים.']
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'How old is Ben Cohen?',
-									options: ['23', '12', '3', '45'],
+									options: [
+										['23', 'נכון. "a 23-year-old recent graduate".'],
+										['12', 'לא בדיוק. twelve years זה הוותק של Sarah Mitchell.'],
+										['3', 'לא בדיוק. three months זה הזמן שהוא בחברה, לא הגיל שלו.'],
+										['45', 'לא בדיוק. 45% מפסקה III, אחוז המנהלים.']
+									],
 									correctIndex: 0
 								},
 								{
 									prompt:
 										'According to paragraph III, what percentage of managers felt more confident?',
-									options: ['45%', '60%', '23%', '300'],
+									options: [
+										['45%', 'נכון. "45% felt significantly more confident".'],
+										['60%', 'לא בדיוק. 60% לא מופיע בפסקאות האלה.'],
+										['23%', 'לא בדיוק. 23 זה הגיל של Ben Cohen בפסקה I.'],
+										['300', 'לא בדיוק. 300 זה מספר המנהלים בסקר, לא האחוז.']
+									],
 									correctIndex: 0
 								}
 							]
@@ -393,30 +435,66 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What do the figures 1,200 and 2,050 show?',
 									options: [
-										'Use of the program increased between the first and third months',
-										'The program had 2,050 users in its first month',
-										'Fewer students used the bicycles after three months',
-										'1,200 students stopped driving to campus'
+										[
+											'Use of the program increased between the first and third months',
+											'נכון. 1,200 נסיעות בחודש הראשון, 2,050 בחודש השלישי: "had risen".'
+										],
+										[
+											'The program had 2,050 users in its first month',
+											'לא בדיוק. 2,050 הן נסיעות (rides), לא משתמשים, וזה בחודש השלישי.'
+										],
+										[
+											'Fewer students used the bicycles after three months',
+											'לא בדיוק. המספר עלה, לא ירד: "had risen to 2,050".'
+										],
+										[
+											'1,200 students stopped driving to campus',
+											'לא בדיוק. 1,200 הן נסיעות באופניים. על נסיעה ברכב מדברים האחוזים.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What change is reflected in the figures 38% and 21%?',
 									options: [
-										'Fewer users were travelling to campus by car regularly',
-										'More users started driving to campus',
-										'21% of the rides were cancelled',
-										'38% of students used the bicycles every day'
+										[
+											'Fewer users were travelling to campus by car regularly',
+											'נכון. 38% הגיעו ברכב לפחות פעמיים בשבוע, ואחרי חצי שנה "that figure fell to 21%".'
+										],
+										[
+											'More users started driving to campus',
+											'לא בדיוק. האחוז ירד מ-38% ל-21%, כלומר פחות נסיעות ברכב.'
+										],
+										[
+											'21% of the rides were cancelled',
+											'לא בדיוק. ביטול נסיעות לא מוזכר. 21% מודד משתמשים שהגיעו ברכב.'
+										],
+										[
+											'38% of students used the bicycles every day',
+											'לא בדיוק. 38% מודד נסיעה ברכב בעבר, לא שימוש יומי באופניים.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What can we infer about the bicycle-sharing program?',
 									options: [
-										'It seems to have encouraged some students to replace car trips with bicycles',
-										'It made every student stop using a car',
-										'It was more popular in the first month than later',
-										'It was cancelled after six months'
+										[
+											'It seems to have encouraged some students to replace car trips with bicycles',
+											'נכון. השימוש באופניים עלה והנסיעות ברכב ירדו. "seems" מתאים: זו מסקנה, לא עובדה כתובה.'
+										],
+										[
+											'It made every student stop using a car',
+											'לא בדיוק. 21% עדיין הגיעו ברכב. every מוגזם.'
+										],
+										[
+											'It was more popular in the first month than later',
+											'לא בדיוק. ההפך: 1,200 נסיעות בחודש הראשון, 2,050 בשלישי.'
+										],
+										[
+											'It was cancelled after six months',
+											'לא בדיוק. אחרי שישה חודשים רק מדדו שוב. ביטול לא מוזכר.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -474,20 +552,35 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'Who explains the idea of reverse digital mentoring in paragraph II?',
 									options: [
-										'Dr. Noa Shapira, of Tel Aviv University',
-										'Sarah Mitchell, a marketing director',
-										'Ben Cohen, a recent graduate',
-										'Marcus Levy, the CEO of GlobalNet'
+										[
+											'Dr. Noa Shapira, of Tel Aviv University',
+											'נכון. "According to Dr. Noa Shapira" ו-"she explains" - היא מסבירה את הרעיון.'
+										],
+										[
+											'Sarah Mitchell, a marketing director',
+											'לא בדיוק. Mitchell מוזכרת בפסקה II רק כמי שמתרגלת את השיטה. היא לא מסבירה אותה.'
+										],
+										[
+											'Ben Cohen, a recent graduate',
+											'לא בדיוק. Cohen מוזכר רק כשותף של Mitchell. ההסבר בא מפי Dr. Shapira.'
+										],
+										['Marcus Levy, the CEO of GlobalNet', 'לא בדיוק. Levy בכלל לא מופיע בפסקה II.']
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'According to Dr. Shapira, when did the trend begin?',
 									options: [
-										'In the early 2010s',
-										'Twelve years ago',
-										'Three months ago',
-										'When she joined Tel Aviv University'
+										['In the early 2010s', 'נכון. "this trend began quietly in the early 2010s".'],
+										[
+											'Twelve years ago',
+											'לא בדיוק. twelve years זה הוותק של Mitchell בפסקה I, לא תחילת המגמה.'
+										],
+										['Three months ago', 'לא בדיוק. three months זה הזמן ש-Cohen בחברה.'],
+										[
+											'When she joined Tel Aviv University',
+											'לא בדיוק. הטקסט לא אומר מתי היא הצטרפה לאוניברסיטה.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -576,20 +669,44 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What does "this trend" in paragraph II refer to?',
 									options: [
-										'The practice of reverse digital mentoring',
-										'The idea that experience flows downward',
-										'The growth of Tel Aviv University',
-										'Companies of all sizes'
+										[
+											'The practice of reverse digital mentoring',
+											'נכון. חוזרים אחורה: המגמה היא מה שתואר קודם - "reverse digital mentoring", צעירים שמלמדים מנהלים.'
+										],
+										[
+											'The idea that experience flows downward',
+											'לא בדיוק. זה הרעיון הישן, והוא מופיע אחרי "this trend". refer to מחפשים לפני המילים.'
+										],
+										[
+											'The growth of Tel Aviv University',
+											'לא בדיוק. האוניברסיטה היא רק המקום של Dr. Shapira.'
+										],
+										[
+											'Companies of all sizes',
+											'לא בדיוק. המגמה התפשטה "to companies of all sizes". החברות הן לאן, לא מה.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What does Dr. Shapira imply about the traditional idea of mentoring?',
 									options: [
-										'It is being challenged, because knowledge can also flow upward',
-										'It is still the only way companies train workers',
-										'It began in the early 2010s',
-										'It works best in small companies'
+										[
+											'It is being challenged, because knowledge can also flow upward',
+											'נכון. "was always" מול "What we are seeing now": היא רומזת שהרעיון הישן כבר לא מספיק.'
+										],
+										[
+											'It is still the only way companies train workers',
+											'לא בדיוק. ההפך: עכשיו הידע זורם גם למעלה.'
+										],
+										[
+											'It began in the early 2010s',
+											'לא בדיוק. ב-2010s התחילה השיטה החדשה, לא הרעיון המסורתי.'
+										],
+										[
+											'It works best in small companies',
+											'לא בדיוק. גודל החברה לא קשור לרעיון המסורתי, והשיטה החדשה התפשטה לחברות מכל הגדלים.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -654,20 +771,44 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What does Bar imply about the response to quiet hours?',
 									options: [
-										'The service appealed to more people than the store expected',
-										'The store regretted introducing quiet hours',
-										'Only customers with sensory difficulties used the service',
-										'Bar planned the service for all shoppers from the start'
+										[
+											'The service appealed to more people than the store expected',
+											'נכון. "That surprised us... We expected the service to help a small group" - והוא עזר ליותר אנשים.'
+										],
+										[
+											'The store regretted introducing quiet hours',
+											'לא בדיוק. ההפתעה הייתה טובה: גם קונים אחרים נהנו. אין חרטה.'
+										],
+										[
+											'Only customers with sensory difficulties used the service',
+											'לא בדיוק. "other shoppers have also said they enjoy" - לא רק הם.'
+										],
+										[
+											'Bar planned the service for all shoppers from the start',
+											'לא בדיוק. השירות תוכנן "originally" לקבוצה קטנה.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What can we infer about the effect of the change on other customers?',
 									options: [
-										'Some customers without sensory difficulties also prefer a quieter shop',
-										'All shoppers dislike music in supermarkets',
-										'Other customers stopped shopping during quiet hours',
-										'Other customers asked for brighter lights'
+										[
+											'Some customers without sensory difficulties also prefer a quieter shop',
+											'נכון. "other shoppers ... enjoy the calmer atmosphere" = גם אחרים מעדיפים שקט.'
+										],
+										[
+											'All shoppers dislike music in supermarkets',
+											'לא בדיוק. All מוגזם. הטקסט מדבר על חלק מהקונים.'
+										],
+										[
+											'Other customers stopped shopping during quiet hours',
+											'לא בדיוק. ההפך: הם נהנים מהשעות השקטות.'
+										],
+										[
+											'Other customers asked for brighter lights',
+											'לא בדיוק. הטקסט לא מזכיר בקשה כזו, ואורות עמומים הם חלק ממה שנהנים ממנו.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -716,10 +857,22 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What do we learn about older employees from paragraph III?',
 									options: [
-										'Their confidence with digital tools increased after working with a younger colleague',
-										'They prefer learning in group sessions',
-										'They are better at asking questions than younger employees',
-										'Many of them refused to take part in the survey'
+										[
+											'Their confidence with digital tools increased after working with a younger colleague',
+											'נכון. פרפרזה של "45% felt significantly more confident using digital tools after working with a younger colleague".'
+										],
+										[
+											'They prefer learning in group sessions',
+											'סותרת את הטקסט: הם "feel embarrassed asking basic questions in a group setting".'
+										],
+										[
+											'They are better at asking questions than younger employees',
+											'לא כתוב בטקסט: אין השוואה כזו. להפך, קשה להם לשאול.'
+										],
+										[
+											'Many of them refused to take part in the survey',
+											'לא כתוב בטקסט: על סירוב לסקר לא מסופר. סירוב מופיע רק בפסקה IV, ולא לסקר.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -745,10 +898,22 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What can we understand from paragraph IV?',
 									options: [
-										'Changing the way the program was described led to more participation',
-										'Junior employees were paid to teach senior managers',
-										'CEO Levy introduced the program against his own wishes',
-										'All senior managers refused to take part'
+										[
+											'Changing the way the program was described led to more participation',
+											'נכון. "Once the language changed, participation rose by 60%" - במילים אחרות.'
+										],
+										[
+											'Junior employees were paid to teach senior managers',
+											'לא כתוב בטקסט: תשלום לא מוזכר. נשמע הגיוני, אבל אין לו תמיכה.'
+										],
+										[
+											'CEO Levy introduced the program against his own wishes',
+											'לא כתוב בטקסט: אין רמז לכך ש-Levy לא רצה בתוכנית. הוא דווקא שינה אותה כדי שתצליח.'
+										],
+										[
+											'All senior managers refused to take part',
+											'מוגזמת: "several senior managers" = כמה, לא כולם.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -773,10 +938,22 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What can we understand from the text?',
 									options: [
-										'How students use their notes may be more important than the format',
-										'Handwriting always leads to better exam results',
-										'Digital notes are useful only for university students',
-										'Researchers recommend that all students stop using paper'
+										[
+											'How students use their notes may be more important than the format',
+											'נכון. פרפרזה של "the quality of the study strategy mattered more than the device used".'
+										],
+										[
+											'Handwriting always leads to better exam results',
+											'מוגזמת וסותרת: always, והטקסט אומר "no single method that was best for everyone".'
+										],
+										[
+											'Digital notes are useful only for university students',
+											'מוגזמת: only. המחקר נעשה על סטודנטים, אבל לא נאמר שזה מועיל רק להם.'
+										],
+										[
+											'Researchers recommend that all students stop using paper',
+											'סותרת את הטקסט: חלק מהסטודנטים עדיין בוחרים בנייר, ואף שיטה לא עדיפה.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -784,10 +961,16 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'According to the study, who performed as well as students who wrote by hand?',
 									options: [
-										'Students who organized digital notes effectively',
-										'Students who used no notes at all',
-										'Students who studied in groups',
-										'Every university student'
+										[
+											'Students who organized digital notes effectively',
+											'נכון. "Students who organized digital notes effectively performed just as well".'
+										],
+										[
+											'Students who used no notes at all',
+											'לא כתוב בטקסט: סטודנטים בלי סיכומים לא מוזכרים.'
+										],
+										['Students who studied in groups', 'לא כתוב בטקסט: לימוד בקבוצה לא מוזכר.'],
+										['Every university student', 'מוגזמת: רק מי שארגן סיכומים דיגיטליים ביעילות.']
 									],
 									correctIndex: 0
 								}
@@ -909,10 +1092,22 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What difference between mason bees and honeybees does the text mention? A difference in (-).',
 									options: [
-										'the weather conditions in which they are active',
-										'the types of flowers they prefer',
-										'the number of flowers they visit per day',
-										'the types of trees near which they nest'
+										[
+											'the weather conditions in which they are active',
+											'נכון. mason bees עובדות "in cold weather", ו-honeybees יוצאות רק "above 10 degrees".'
+										],
+										[
+											'the types of flowers they prefer',
+											'לא בדיוק. שני סוגי הדבורים מוזכרים עם פרחי תפוח. אין הבדל בסוג הפרחים.'
+										],
+										[
+											'the number of flowers they visit per day',
+											'לא בדיוק. מספר הפרחים ביום לא מוזכר.'
+										],
+										[
+											'the types of trees near which they nest',
+											'לא בדיוק. יש הבדל בקינון (חורים בעץ או באבן מול כוורות), אבל לא בסוגי העצים.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -926,10 +1121,19 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What difference does paragraph IV describe between before and after the language was changed? A difference in (-).',
 									options: [
-										'the rate of participation',
-										'the age of the participants',
-										'the topics covered in sessions',
-										'the length of each session'
+										[
+											'the rate of participation',
+											'נכון. לפני: "several senior managers ... refused". אחרי: "participation rose by 60%".'
+										],
+										[
+											'the age of the participants',
+											'לא בדיוק. אותם מנהלים לפני ואחרי. רק הניסוח השתנה.'
+										],
+										[
+											'the topics covered in sessions',
+											'לא בדיוק. הנושאים לא השתנו, רק השם של הקשר: "two colleagues sharing expertise".'
+										],
+										['the length of each session', 'לא בדיוק. אורך המפגשים לא מוזכר.']
 									],
 									correctIndex: 0
 								}
@@ -955,10 +1159,16 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What difference between Garden A and Garden B is described? A difference in (-).',
 									options: [
-										'the frequency and length of watering sessions',
-										'the amount of water used each week',
-										'the types of vegetables they grow',
-										'the source of their water'
+										[
+											'the frequency and length of watering sessions',
+											'נכון. A: כל ערב, 10 דקות. B: פעמיים בשבוע, 40 דקות. כמה פעמים וכמה זמן.'
+										],
+										[
+											'the amount of water used each week',
+											'מלכודת: "approximately the same total amount" - בכמות דווקא אין הבדל.'
+										],
+										['the types of vegetables they grow', 'לא בדיוק. ירקות לא מוזכרים.'],
+										['the source of their water', 'לא בדיוק. מקור המים לא מוזכר.']
 									],
 									correctIndex: 0
 								}
@@ -972,10 +1182,16 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What difference between the two schools is described? A difference in (-).',
 									options: [
-										'when and where coding is taught',
-										'how much students enjoy coding',
-										'the age of the students',
-										'the number of coding teachers'
+										[
+											'when and where coding is taught',
+											'נכון. Hillside: חוג אחרי בית הספר, בימי שלישי. Lakeview: בתוך כל שיעור מתמטיקה.'
+										],
+										[
+											'how much students enjoy coding',
+											'מלכודת: "Both schools say their students enjoy the subject" - כאן אין הבדל.'
+										],
+										['the age of the students', 'לא בדיוק. גיל התלמידים לא מוזכר.'],
+										['the number of coding teachers', 'לא בדיוק. מורים לא מוזכרים.']
 									],
 									correctIndex: 0
 								}
@@ -1194,40 +1410,76 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'The school reduced waste by ...',
 									options: [
-										'changing how lunch was served',
-										'change how lunch was served',
-										'they changed how lunch was served',
-										'giving every student the same portion'
+										[
+											'changing how lunch was served',
+											'נכון. by + ing, והתוכן מהמשפט הראשון: "by changing how lunch was served".'
+										],
+										['change how lunch was served', 'דקדוק: אחרי by בא פועל עם ing, לא פועל בסיס.'],
+										[
+											'they changed how lunch was served',
+											'דקדוק: אחרי by לא פותחים משפט חדש עם נושא (they).'
+										],
+										[
+											'giving every student the same portion',
+											'הדקדוק נכון, התוכן לא: זה מה שהיה קודם, "Instead of giving every student the same portion".'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'Students could avoid wasting food by ...',
 									options: [
-										'requesting smaller servings',
-										'request smaller servings',
-										'to request smaller servings',
-										'returning their food to the kitchen'
+										[
+											'requesting smaller servings',
+											'נכון. by + ing, ו-"allowed students to request smaller servings".'
+										],
+										['request smaller servings', 'דקדוק: אחרי by צריך ing - requesting.'],
+										['to request smaller servings', 'דקדוק: by to לא קיים. אחרי by בא ing.'],
+										[
+											'returning their food to the kitchen',
+											'הדקדוק נכון, התוכן לא: הם יכלו לחזור לקחת עוד, לא להחזיר אוכל.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'The signs were placed near the bins in order to ...',
 									options: [
-										'remind students to take only what they expected to eat',
-										'reminding students to take only what they expected to eat',
-										'make the bins easier to find',
-										'they reminded students about food'
+										[
+											'remind students to take only what they expected to eat',
+											'נכון. in order to + פועל בסיס: "to remind students to take only what they expected to eat".'
+										],
+										[
+											'reminding students to take only what they expected to eat',
+											'דקדוק: אחרי to בא פועל בסיס (remind), לא ing.'
+										],
+										[
+											'make the bins easier to find',
+											'הדקדוק נכון, התוכן לא: השלטים נועדו להזכיר, לא לעזור למצוא פחים.'
+										],
+										[
+											'they reminded students about food',
+											'דקדוק: אחרי in order to לא פותחים משפט חדש עם נושא.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'Staff allowed students to return for more so as to ...',
 									options: [
-										'let them take more food if they were still hungry',
-										'letting them take more food if they were still hungry',
-										'make every portion the same size',
-										'they could eat more'
+										[
+											'let them take more food if they were still hungry',
+											'נכון. so as to = in order to, ואחריו פועל בסיס: let.'
+										],
+										[
+											'letting them take more food if they were still hungry',
+											'דקדוק: so as to, כמו in order to, מקבל פועל בסיס ולא ing.'
+										],
+										[
+											'make every portion the same size',
+											'הדקדוק נכון, התוכן לא: המטרה הייתה להפסיק לתת לכולם אותה מנה.'
+										],
+										['they could eat more', 'דקדוק: אחרי so as to לא בא נושא (they).']
 									],
 									correctIndex: 0
 								}
@@ -1452,10 +1704,19 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What disadvantage of the program is mentioned?',
 									options: [
-										'The theatre earned less on those evenings',
-										'Fewer young people came to the theatre',
-										'Tickets became more expensive',
-										'The performances were shorter'
+										[
+											'The theatre earned less on those evenings',
+											'נכון. "total income from those evenings was lower" = הרוויחו פחות.'
+										],
+										[
+											'Fewer young people came to the theatre',
+											'סותרת את הטקסט: "Attendance among people under 30 increased sharply".'
+										],
+										[
+											'Tickets became more expensive',
+											'לא כתוב בטקסט: "pay what you can" אפילו מוריד את המחיר.'
+										],
+										['The performances were shorter', 'לא כתוב בטקסט: אורך ההצגות לא מוזכר.']
 									],
 									correctIndex: 0
 								}
@@ -1554,30 +1815,60 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'"the boundary between work and personal time had become less clear" means:',
 									options: [
-										'It became harder to separate work time from private time',
-										'They worked fewer hours than office workers',
-										'Their homes were too small to work in',
-										'Their personal lives became more important than work'
+										[
+											'It became harder to separate work time from private time',
+											'נכון. boundary = גבול, less clear = פחות ברור. כלומר קשה להפריד.'
+										],
+										[
+											'They worked fewer hours than office workers',
+											'לא בדיוק. זה גם לא נכון לפי הטקסט: "did not necessarily work fewer hours".'
+										],
+										[
+											'Their homes were too small to work in',
+											'לא בדיוק. boundary כאן הוא גבול בזמן, לא בחלל של הבית.'
+										],
+										[
+											'Their personal lives became more important than work',
+											'לא בדיוק. הטקסט לא משווה מה חשוב יותר. הגבול פשוט מטושטש.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: '"they felt they should always be available" means:',
 									options: [
-										'They believed they had to be reachable at all times',
-										'They wanted more free time',
-										'They were happy to work late',
-										'They did not answer messages'
+										[
+											'They believed they had to be reachable at all times',
+											'נכון. available = זמין, always = כל הזמן. reachable at all times אומר את אותו הדבר.'
+										],
+										[
+											'They wanted more free time',
+											'לא בדיוק. זה אולי הגיוני, אבל המשפט מדבר על חובה להיות זמינים.'
+										],
+										[
+											'They were happy to work late',
+											'לא בדיוק. should = הרגישו שהם חייבים. אין שם שמחה.'
+										],
+										['They did not answer messages', 'לא בדיוק. ההפך: הם בדקו הודעות מאוחר בלילה.']
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What can we understand about one possible disadvantage of remote work?',
 									options: [
-										"Work may continue into people's free time",
-										'Remote workers earn less money',
-										'Remote workers work fewer hours',
-										'Messages are never answered at night'
+										[
+											"Work may continue into people's free time",
+											'נכון. גבול לא ברור והודעות בלילה = העבודה נכנסת לזמן הפנוי.'
+										],
+										['Remote workers earn less money', 'לא בדיוק. משכורת לא מוזכרת.'],
+										[
+											'Remote workers work fewer hours',
+											'לא בדיוק. "did not necessarily work fewer hours".'
+										],
+										[
+											'Messages are never answered at night',
+											'לא בדיוק. ההפך: "checked messages late at night".'
+										]
 									],
 									correctIndex: 0
 								}
@@ -1639,10 +1930,19 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What opinion do Dr. Shapira and Levy share in paragraph V?',
 									options: [
-										'Working together improves communication between younger and older employees',
-										'Mixed-age teams should be avoided',
-										'Only senior managers benefit from the program',
-										'Young employees should work alone'
+										[
+											'Working together improves communication between younger and older employees',
+											'נכון. Shapira: "both sides communicate more openly". Levy: "communication in mixed-age teams improves".'
+										],
+										[
+											'Mixed-age teams should be avoided',
+											'לא בדיוק. שניהם אומרים שצוותים מעורבים מתקשרים טוב יותר.'
+										],
+										[
+											'Only senior managers benefit from the program',
+											'לא בדיוק. Shapira אומרת שגם הצעירים מרוויחים: "their knowledge is valued".'
+										],
+										['Young employees should work alone', 'לא בדיוק. שניהם מדברים על עבודה משותפת.']
 									],
 									correctIndex: 0
 								}
@@ -1679,20 +1979,41 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: "In what way does Halevi's view add to Haddad's?",
 									options: [
-										'He adds that experts still need to set realistic limits',
-										'He says residents should not take part',
-										'He says professionals know what the neighborhood needs',
-										'He says projects should be built quickly'
+										[
+											'He adds that experts still need to set realistic limits',
+											'נכון. "agrees that participation matters, but adds that experts still need to set realistic limits".'
+										],
+										[
+											'He says residents should not take part',
+											'לא בדיוק. הוא "agrees that participation matters".'
+										],
+										[
+											'He says professionals know what the neighborhood needs',
+											'מלכודת של החלפה: התושבים יודעים מה השכונה צריכה, המקצוענים יודעים מה אפשר לבנות.'
+										],
+										['He says projects should be built quickly', 'לא בדיוק. מהירות לא מוזכרת.']
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'Which statement best summarizes their common position?',
 									options: [
-										'Local people should be involved, while professional knowledge also has a role',
-										'Experts should make all decisions alone',
-										'Community projects usually fail because residents disagree',
-										'Building projects should avoid public discussion'
+										[
+											'Local people should be involved, while professional knowledge also has a role',
+											'נכון. שניהם בעד שיתוף התושבים, ו-Halevi מוסיף את תפקיד המומחים.'
+										],
+										[
+											'Experts should make all decisions alone',
+											'לא בדיוק. שניהם רוצים שהתושבים ישתתפו.'
+										],
+										[
+											'Community projects usually fail because residents disagree',
+											'לא בדיוק. אף אחד מהם לא אומר שפרויקטים נכשלים.'
+										],
+										[
+											'Building projects should avoid public discussion',
+											'לא בדיוק. ההפך: הם בעד מעורבות של הציבור.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -1896,16 +2217,27 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'What percentage reduction was recorded?',
-									options: ['64%', '6%', '46%', '100%'],
+									options: [
+										['64%', 'נכון. "disposable-container use fell by 64%".'],
+										['6%', 'לא בדיוק. קראו את המספר בעיון: 64.'],
+										['46%', 'לא בדיוק. הספרות הפוכות. בטקסט: 64%.'],
+										['100%', 'לא בדיוק. השימוש ירד, אבל לא נעלם לגמרי.']
+									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'Why did the college add app reminders?',
 									options: [
-										'Many boxes were not returned within a week',
-										'Students lost their deposits',
-										'The boxes were too expensive',
-										'Students did not use the app'
+										[
+											'Many boxes were not returned within a week',
+											'נכון. "many boxes were not returned within a week, so the college added reminder messages".'
+										],
+										['Students lost their deposits', 'לא בדיוק. אובדן פיקדון לא מוזכר.'],
+										['The boxes were too expensive', 'לא בדיוק. מחיר הקופסאות לא מוזכר.'],
+										[
+											'Students did not use the app',
+											'לא בדיוק. הבעיה הייתה החזרת הקופסאות, לא שימוש באפליקציה.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -1913,10 +2245,22 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What can we infer about the deposit system before the reminders were added?',
 									options: [
-										'It reduced disposable use but did not make sure boxes came back quickly',
-										'It did not reduce the use of disposable containers',
-										'It made every student return the box on time',
-										'It was cancelled after the first semester'
+										[
+											'It reduced disposable use but did not make sure boxes came back quickly',
+											'נכון. מחברים שני פרטים: ירידה של 64%, אבל קופסאות לא חזרו תוך שבוע.'
+										],
+										[
+											'It did not reduce the use of disposable containers',
+											'סותרת את הטקסט: השימוש ירד ב-64%.'
+										],
+										[
+											'It made every student return the box on time',
+											'סותרת וגם מוגזמת: "many boxes were not returned within a week".'
+										],
+										[
+											'It was cancelled after the first semester',
+											'לא כתוב בטקסט: המערכת נמשכה, והוסיפו לה תזכורות.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -1974,10 +2318,22 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What can we understand from paragraph II?',
 									options: [
-										'The idea that knowledge only flows downward is being challenged',
-										'Companies started replacing senior employees with younger ones',
-										'Tel Aviv University began a digital mentoring program',
-										'Most companies have adopted reverse digital mentoring'
+										[
+											'The idea that knowledge only flows downward is being challenged',
+											'נכון. "experience flows downward" היה הרעיון הישן, ועכשיו "knowledge can also flow upward".'
+										],
+										[
+											'Companies started replacing senior employees with younger ones',
+											'לא כתוב בטקסט: הצעירים מלמדים את המנהלים, לא מחליפים אותם.'
+										],
+										[
+											'Tel Aviv University began a digital mentoring program',
+											'לא כתוב בטקסט: Dr. Shapira מהאוניברסיטה רק מסבירה את המגמה.'
+										],
+										[
+											'Most companies have adopted reverse digital mentoring',
+											'מוגזמת: "spread to companies of all sizes" לא אומר רוב החברות.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -1985,20 +2341,41 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What did CEO Levy do after senior managers refused to participate? (paragraph IV)',
 									options: [
-										'He changed the way the program was described',
-										'He cancelled the program',
-										'He made participation compulsory',
-										'He asked older managers to teach the juniors'
+										[
+											'He changed the way the program was described',
+											'נכון. "We had to reframe it completely" = הציגו את התוכנית אחרת.'
+										],
+										['He cancelled the program', 'סותרת את הטקסט: ההשתתפות אפילו עלתה ב-60%.'],
+										[
+											'He made participation compulsory',
+											'לא כתוב בטקסט: הוא שינה ניסוח, לא חייב אף אחד.'
+										],
+										[
+											'He asked older managers to teach the juniors',
+											'לא כתוב בטקסט: הניסוח החדש היה "two colleagues sharing expertise".'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What does paragraph IV tell us about the word "humiliating"?',
 									options: [
-										'It describes how senior managers saw the program at first',
-										'It is how Levy criticized his managers',
-										'It shows that junior employees felt uncomfortable teaching',
-										'It explains why DataLink stopped the program'
+										[
+											'It describes how senior managers saw the program at first',
+											'נכון. "They saw it as humiliating" - They = המנהלים שסירבו בהתחלה.'
+										],
+										[
+											'It is how Levy criticized his managers',
+											'לא בדיוק. Levy מתאר איך הם ראו את התוכנית, הוא לא מבקר אותם.'
+										],
+										[
+											'It shows that junior employees felt uncomfortable teaching',
+											'לא בדיוק. They מתייחס למנהלים הבכירים, לא לצעירים.'
+										],
+										[
+											'It explains why DataLink stopped the program',
+											'לא בדיוק. DataLink היא החברה של Mitchell, והתוכנית לא הופסקה.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -2006,10 +2383,22 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'According to paragraph IV, what happened after the language of the program was changed?',
 									options: [
-										'Participation rose by 60%',
-										'45% of managers felt more confident',
-										'Senior managers refused to participate',
-										'The sessions became one-on-one'
+										[
+											'Participation rose by 60%',
+											'נכון. "Once the language changed, participation rose by 60%".'
+										],
+										[
+											'45% of managers felt more confident',
+											'לא בדיוק. זה נתון מהסקר בפסקה III, לא מה שקרה אחרי השינוי.'
+										],
+										[
+											'Senior managers refused to participate',
+											'לא בדיוק. הסירוב היה לפני השינוי, "at first".'
+										],
+										[
+											'The sessions became one-on-one',
+											'לא בדיוק. one-on-one מופיע בפסקה III, בדברי Dr. Shapira.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -2017,10 +2406,22 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What can we understand from paragraph V about junior and senior employees?',
 									options: [
-										'The program improves communication across age groups',
-										'Junior employees earn more after the program',
-										'Senior employees choose the topics of each session',
-										'Junior employees feel less confident after teaching'
+										[
+											'The program improves communication across age groups',
+											'נכון. "communicate more openly" ו-"communication in mixed-age teams improves".'
+										],
+										[
+											'Junior employees earn more after the program',
+											'לא כתוב בטקסט: משכורת לא מוזכרת. הם מרגישים "a stronger sense of purpose".'
+										],
+										[
+											'Senior employees choose the topics of each session',
+											'לא כתוב בטקסט: מי בוחר נושאים לא מוזכר.'
+										],
+										[
+											'Junior employees feel less confident after teaching',
+											'סותרת את הטקסט: הם מרגישים שהידע שלהם מוערך.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -2080,20 +2481,44 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What did the Northbridge University researchers examine besides the number of friends participants had? (paragraph III)',
 									options: [
-										'How often participants visited shared public spaces',
-										'How much money participants spent in cafés',
-										'How many friends participants had online',
-										'Which city participants preferred'
+										[
+											'How often participants visited shared public spaces',
+											'נכון. "Rather than asking ... only how many friends", הם בדקו "how often participants visited shared public spaces".'
+										],
+										[
+											'How much money participants spent in cafés',
+											'לא בדיוק. כסף מוזכר רק בפסקה V, ולא כחלק מהמחקר.'
+										],
+										[
+											'How many friends participants had online',
+											'לא בדיוק. השאלה מבקשת מה בדקו מעבר למספר החברים, וחברים ברשת לא נבדקו.'
+										],
+										[
+											'Which city participants preferred',
+											'לא בדיוק. המחקר נערך בשלוש ערים, אבל לא שאל איזו עדיפה.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What can we infer from the final sentence of paragraph III?',
 									options: [
-										'Using public spaces and feeling you belong are not simply cause and effect',
-										'The researchers believe cafés are the best solution to loneliness',
-										'Lonely participants were not included in the study',
-										'Libraries were less useful than cafés'
+										[
+											'Using public spaces and feeling you belong are not simply cause and effect',
+											'נכון. "careful ... not to claim that visiting a café automatically makes people less lonely" = קשר, לא בהכרח סיבה.'
+										],
+										[
+											'The researchers believe cafés are the best solution to loneliness',
+											'סותרת: החוקרים נזהרו דווקא מטענה כזו.'
+										],
+										[
+											'Lonely participants were not included in the study',
+											'לא כתוב בטקסט: אין מידע על מי לא נכלל.'
+										],
+										[
+											'Libraries were less useful than cafés',
+											'לא כתוב בטקסט: ספריות ובתי קפה מוזכרים יחד, בלי השוואה.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -2101,10 +2526,19 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What does "a reason to stay, not merely a reason to pass through" mean? (paragraph IV)',
 									options: [
-										'A good public space makes people want to spend time there, not just walk through it',
-										'Public spaces should be built on main roads',
-										'People should not stay long in libraries',
-										'Every public space needs a café'
+										[
+											'A good public space makes people want to spend time there, not just walk through it',
+											'נכון. stay = להישאר, pass through = רק לעבור דרך. merely = רק.'
+										],
+										[
+											'Public spaces should be built on main roads',
+											'לא בדיוק. pass through לא מדבר על כבישים, אלא על אנשים שעוברים ולא נשארים.'
+										],
+										[
+											'People should not stay long in libraries',
+											'לא בדיוק. ההפך: ספרייה טובה היא מקום שנשארים בו.'
+										],
+										['Every public space needs a café', 'מוגזמת: every, ובית קפה לא מוזכר כאן.']
 									],
 									correctIndex: 0
 								},
@@ -2112,10 +2546,19 @@ export const g1Lessons: LessonNode[] = [
 									prompt:
 										'What question is raised in paragraph VI about the future of social life?',
 									options: [
-										'Where people will keep meeting others whose lives are different from their own',
-										'How cities can build more cafés',
-										'Why families are less important today',
-										'When online communities will replace schools'
+										[
+											'Where people will keep meeting others whose lives are different from their own',
+											'נכון. "where will people continue to encounter those whose lives are different from their own?"'
+										],
+										['How cities can build more cafés', 'לא בדיוק. בתי קפה לא מוזכרים בפסקה VI.'],
+										[
+											'Why families are less important today',
+											'לא בדיוק. משפחות מוזכרות כחלק מהחיים החברתיים, לא כפחות חשובות.'
+										],
+										[
+											'When online communities will replace schools',
+											'לא בדיוק. אף אחד לא טוען שקהילות ברשת יחליפו בתי ספר.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -2247,30 +2690,66 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt: 'What does the writer imply about a quiet study space in paragraph IV?',
 									options: [
-										'It may help, but study methods still matter',
-										'It guarantees better grades',
-										'It is useful only for individual tasks',
-										'Researchers have stopped comparing study methods'
+										[
+											'It may help, but study methods still matter',
+											'נכון. "users value the privacy", אבל "Students still need effective study habits".'
+										],
+										[
+											'It guarantees better grades',
+											'סותרת: החוקרים מזהירים "against assuming that a quiet room automatically leads to better academic performance".'
+										],
+										[
+											'It is useful only for individual tasks',
+											'מוגזמת: only. הטקסט רק אומר שחלק מהמשימות טובות יותר בקבוצה.'
+										],
+										[
+											'Researchers have stopped comparing study methods',
+											'סותרת: "The researchers are therefore comparing" - הם עדיין משווים.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What opinion does Elena Morris express about study pods?',
 									options: [
-										'Cities should adapt solutions to local needs rather than copy identical pods',
-										'Every city needs the same study pods',
-										'Study pods should replace public libraries',
-										'Riverton should stop the program'
+										[
+											'Cities should adapt solutions to local needs rather than copy identical pods',
+											'נכון. "not that every city needs identical pods" ו-"respond to the changing ways people study".'
+										],
+										[
+											'Every city needs the same study pods',
+											'סותרת: זה בדיוק מה שהיא אומרת שהוא לא הלקח.'
+										],
+										[
+											'Study pods should replace public libraries',
+											'לא כתוב בטקסט: היא לא מדברת על החלפת ספריות.'
+										],
+										[
+											'Riverton should stop the program',
+											'לא כתוב בטקסט: היא לא ממליצה להפסיק, רק לבדוק לפני שבונים.'
+										]
 									],
 									correctIndex: 0
 								},
 								{
 									prompt: 'What can we understand from the final paragraph about local data?',
 									options: [
-										'It should be collected before deciding whether and where to build study spaces',
-										'It shows that pods work the same way everywhere',
-										'It is collected by students in Riverton',
-										'It is less important than the opinion of experts'
+										[
+											'It should be collected before deciding whether and where to build study spaces',
+											'נכון. "she recommends collecting local data before deciding where, and whether".'
+										],
+										[
+											'It shows that pods work the same way everywhere',
+											'סותרת: "A successful solution in one neighborhood may be inappropriate in another".'
+										],
+										[
+											'It is collected by students in Riverton',
+											'לא כתוב בטקסט: לא נאמר מי אוסף את הנתונים.'
+										],
+										[
+											'It is less important than the opinion of experts',
+											'לא כתוב בטקסט: המומחית עצמה ממליצה לאסוף נתונים.'
+										]
 									],
 									correctIndex: 0
 								}
