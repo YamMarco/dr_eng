@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/DebugTooltip.svelte": {
-    "mtime": 1793380358.7995353,
-    "ast_hash": "f513b65a050afe70d456fc5929c70be7",
+    "mtime": 1794585165.6592577,
+    "ast_hash": "d677a320b6fbf7d282df2ddde098bef9",
     "semantic_hash": ""
   },
   "front/src/lib/components/NavBar.svelte": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/LessonRunner.svelte": {
-    "mtime": 1793874942.8168614,
-    "ast_hash": "2af3d41ba659a36a1c62d83a7ae5aa5c",
+    "mtime": 1794585156.564363,
+    "ast_hash": "3c12a7f62a50c415938350e64fad471f",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
@@ -1405,8 +1405,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/lessons/+page.svelte": {
-    "mtime": 1793874942.830731,
-    "ast_hash": "3d5c341ed3396a46963df8f7d02f84c1",
+    "mtime": 1794585165.477438,
+    "ast_hash": "3a2b1075d04a4c5e6a304311181daac3",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/words/+page.svelte": {
@@ -2822,6 +2822,11 @@
   "front/tests/exam-lock.test.ts": {
     "mtime": 1794581791.8061159,
     "ast_hash": "1689f801a8c52e793cbd9147a775f153",
+    "semantic_hash": ""
+  },
+  "front/src/lib/prefaceSeen.svelte.ts": {
+    "mtime": 1794585120.021364,
+    "ast_hash": "33e19d6d63399a029ef6059d05c4c9c7",
     "semantic_hash": ""
   }
 }

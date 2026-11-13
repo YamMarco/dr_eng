@@ -25,6 +25,7 @@
 		markRoundCompleted,
 		roundsCompleted as lessonRounds
 	} from '$lib/lessonPath';
+	import { prefaceSeen } from '$lib/prefaceSeen.svelte';
 	import { lessonIcon } from '$lib/lessonIcon';
 	import { SvelteMap } from 'svelte/reactivity';
 	import { debugStore } from '$lib/debug.svelte';
@@ -787,6 +788,8 @@
 		<LessonRunner
 			lesson={localizeContent(lessonForUnits(activeLesson, group.units), i18n.language)}
 			roundIndex={activeRoundIndex}
+			skipPreface={prefaceSeen.has(activeNode.lesson.id)}
+			onPrefaceSeen={() => prefaceSeen.add(activeNode.lesson.id)}
 			lessonLabel={i18n.title(activeNode.lesson.id)}
 			roundLabel={totalRounds(activeNode) > 1
 				? i18n.dict.lesson.roundLabel(activeRoundIndex + 1, totalRounds(activeNode))

@@ -43,6 +43,10 @@
 		roundIndex?: number;
 		/** Start the round on this index into the played list (used by /edit's "play from here"). */
 		startScreenIndex?: number;
+		/** Round 0 starts at its own screens: the preface was already seen. */
+		skipPreface?: boolean;
+		/** The student moved past the preface into round 0's screens. */
+		onPrefaceSeen?: () => void;
 		lessonLabel: string;
 		/** Shown beside the progress bar (e.g. "סבב 1 מתוך 4"), not in the header where it truncates. */
 		roundLabel?: string;
@@ -74,6 +78,8 @@
 		lesson,
 		roundIndex,
 		startScreenIndex = 0,
+		skipPreface = false,
+		onPrefaceSeen,
 		lessonLabel,
 		roundLabel,
 		hasNextLesson,
@@ -93,8 +99,17 @@
 
 	$effect(() => lockScroll());
 
+	// Set again by retry(): a failed round 0 replays without its preface (teaching only, no questions).
+	let prefaceSkipped = $state(untrack(() => skipPreface));
+	let prefaceCut = $derived(
+		lesson && prefaceSkipped && (roundIndex ?? 0) === 0 && lesson.content.rounds[0]?.screens.length
+			? lesson.content.preface.length
+			: 0
+	);
 	let allScreens = $derived(
-		lesson ? screensForRound(lesson.content, roundIndex ?? 0) : (staticScreens ?? [])
+		lesson
+			? screensForRound(lesson.content, roundIndex ?? 0).slice(prefaceCut)
+			: (staticScreens ?? [])
 	);
 	let allScreenPaths = $derived(
 		lesson
@@ -102,7 +117,7 @@
 					lesson.content.preface.length,
 					roundIndex ?? 0,
 					lesson.content.rounds[roundIndex ?? 0]?.screens.length ?? 0
-				)
+				).slice(prefaceCut)
 			: undefined
 	);
 
@@ -251,6 +266,8 @@
 			}
 		}
 		correctAtScreenStart = score.correct;
+		if (currentPath?.bucket === 'preface' && screenPaths?.[screenIndex + 1]?.bucket !== 'preface')
+			onPrefaceSeen?.();
 		if (isLastScreen) {
 			justFinished = true;
 		} else {
@@ -263,6 +280,7 @@
 	});
 
 	function retry() {
+		prefaceSkipped = true;
 		direction = 1;
 		screenIndex = 0;
 		footerDisabled = false;

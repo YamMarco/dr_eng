@@ -5,6 +5,7 @@
 	import { debugStore } from '$lib/debug.svelte';
 	import { lessonProgress } from '$lib/lessonProgress.svelte';
 	import { deckProgress } from '$lib/deck/deckProgress.svelte';
+	import { prefaceSeen } from '$lib/prefaceSeen.svelte';
 
 	let open = $state(false);
 </script>
@@ -41,6 +42,7 @@
 				onclick={() => {
 					lessonProgress.resetAll();
 					deckProgress.resetAll();
+					prefaceSeen.resetAll();
 				}}
 				class="mt-2 w-full rounded-xl border-2 border-line px-3 py-2 text-sm font-semibold transition hover:border-brand"
 			>
