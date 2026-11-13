@@ -37,7 +37,7 @@ export const g2Lessons: LessonNode[] = [
 					lines: [
 						'1 · פתיחה: הנושא + עמדה ברורה (I believe that...)',
 						'2 · סיבה ראשונה: משפט נושא + הסבר או דוגמה (First, ...)',
-						'3 · סיבה שנייה: סיבה **שונה** + פיתוח (Second, ...)',
+						'3 · סיבה שנייה: סיבה **שונה** + פיתוח, ואם יש - טיעון נגדי (Second, ...)',
 						'4 · סיכום: חוזרים על העמדה, בלי רעיון חדש (In conclusion, ...)'
 					]
 				}
@@ -509,14 +509,144 @@ export const g2Lessons: LessonNode[] = [
 		}
 	},
 	{
-		id: 'g-w-ai-essay',
+		id: 'g-w-body',
 		section: 'g-2',
-		titleEn: 'Full Essay: AI at School',
+		titleEn: 'Body Paragraph and Counter-Argument',
 		required: ['g-w-templates'],
 		requiredRounds: 2,
 		position: {
 			x: -70,
 			y: 3010
+		},
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: '{d:rtl}בחיבור של 120-140 מילים כל סיבה מקבלת **פסקה**. משפט אחד לא מספיק: הבודק מחפש **רעיון מפותח**, כלומר טענה עם הסבר ודוגמה.'
+				},
+				{
+					type: 'summary',
+					title: 'פסקת סיבה ב-3 צעדים',
+					lines: [
+						'1 · משפט נושא - הסיבה עצמה (First, ... / Second, ...)',
+						'2 · הסבר - למה זה נכון? (This is because ... / As a result, ...)',
+						'3 · דוגמה - מקרה מוחשי (For example, ...)'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'טיעון נגדי בשני משפטים',
+					lines: [
+						'{d:ltr}Some people argue that ... However, ...',
+						'מציגים את הצד השני במשפט אחד ועונים לו מיד. זה מחזק את העמדה, לא מחליש אותה.',
+						'המקום: סוף פסקה 3, לפני הסיכום. לא פסקה נפרדת, כך שנשארות 4 פסקאות.'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}First, phones distract students during lessons. Phones are really bad for school.\n\n{d:rtl}מה חסר בפסקה?',
+							options: [
+								'הסבר ודוגמה: למה ואיך זה קורה',
+								'משפט נושא עם הסיבה',
+								'מילת פתיחה כמו First'
+							],
+							correctIndex: 0,
+							explanation:
+								'משפט הנושא קיים (First, phones distract...). "Phones are really bad" לא מסביר כלום, רק חוזר על העמדה. חסרים This is because... ו-For example...'
+						},
+						{
+							type: 'order',
+							prompt: '{d:rtl}סדרו את הפסקה: משפט נושא, הסבר, דוגמה.',
+							tiles: [
+								'First, phones distract students during lessons.',
+								'This is because every new message pulls their attention away from the teacher.',
+								'For example, a student who checks one notification can miss a whole explanation.'
+							],
+							explanation: 'קודם הטענה, אחר כך למה היא נכונה, ובסוף מקרה מוחשי שמראה אותה.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}Some people argue that students need phones in case of an emergency.\n\n{d:rtl}איזה משפט עונה לטיעון הנגדי הכי טוב?',
+							options: [
+								[
+									'However, parents can always reach their children through the school office.',
+									'נכון. However מסמן שעונים לצד השני, והתשובה מראה שאפשר להסתדר גם בלי טלפון.'
+								],
+								[
+									'However, phones are very bad.',
+									'However במקום, אבל very bad לא עונה לטענה על מקרי חירום.'
+								],
+								[
+									'For example, many students have phones.',
+									'זו לא תשובה לטיעון. For example מדגים, הוא לא עונה.'
+								],
+								[
+									'In conclusion, phones should be banned.',
+									'זה משפט סיכום. לטיעון נגדי עונים מיד, בתוך הפסקה.'
+								]
+							],
+							correctIndex: 0
+						},
+						{
+							type: 'mcq',
+							prompt: '{d:rtl}איפה מקומו של הטיעון הנגדי בחיבור של 4 פסקאות?',
+							options: [
+								'בסוף פסקה 3, לפני הסיכום',
+								'בפסקה חמישית נפרדת',
+								'בפסקת הסיכום, כרעיון חדש'
+							],
+							correctIndex: 0,
+							explanation: 'כך המבנה נשאר 4 פסקאות, והסיכום רק חוזר על העמדה בלי רעיון חדש.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'writing-task',
+							prompt:
+								'Write the second reason paragraph for: "Should schools ban phones during the school day?" Reason: phones hurt concentration. Write a topic sentence, an explanation, an example, a counter-argument and your answer to it (5 sentences).',
+							wordBank: [
+								'Second,',
+								'This is because',
+								'For example,',
+								'Some people argue that',
+								'However,'
+							],
+							modelAnswer:
+								"Second, phones make it hard for students to concentrate in class. This is because every notification pulls their attention away from the lesson. For example, a student who checks one message can miss the teacher's whole explanation of a new topic. Some people argue that students need phones in case of an emergency. However, parents can always reach their children through the school office.",
+							checklist: [
+								'משפט נושא שאומר את הסיבה',
+								'הסבר: למה זה קורה',
+								'דוגמה מוחשית אחרי For example',
+								'טיעון נגדי, ותשובה שמתחילה ב-However'
+							],
+							requiredMoves: ['in-addition', 'because', 'for-example'],
+							wordCounter: true,
+							minSentences: 5,
+							minWordsUsed: 4
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'g-w-ai-essay',
+		section: 'g-2',
+		titleEn: 'Full Essay: AI at School',
+		required: ['g-w-body'],
+		requiredRounds: 2,
+		position: {
+			x: -100,
+			y: 3130
 		},
 		big: false,
 		content: {
@@ -609,6 +739,128 @@ export const g2Lessons: LessonNode[] = [
 							timeLimitMinutes: 40,
 							minSentences: 1,
 							minWordsUsed: 4,
+							minWords: 120,
+							maxWords: 140
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'g-w-timed-essay',
+		section: 'g-2',
+		titleEn: 'Timed Essay: A New Topic',
+		required: ['g-w-ai-essay'],
+		requiredRounds: 2,
+		position: {
+			x: -70,
+			y: 3250
+		},
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: '{d:rtl}עד עכשיו כתבתם על נושאים שראיתם קודם. בבחינה הנושא **חדש**. כאן מתרגלים בדיוק את זה: שאלה שלא ראיתם, בלי חיבור לדוגמה, 40 דקות.'
+				},
+				{
+					type: 'summary',
+					title: 'איך בודקים את החיבור (40 נק׳)',
+					lines: [
+						'📋 תוכן וארגון - 8: עונים על השאלה, רעיונות מפותחים, מבנה ברור',
+						'🔤 אוצר מילים - 10: מילים מגוונות ומדויקות',
+						'🧩 שימוש בשפה - 16: דקדוק ומבנים. החלק הגדול ביותר',
+						'✏️ מכניקה - 6: כתיב, פיסוק ואותיות גדולות'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'אורך: 120-140 מילים',
+					lines: [
+						'110-119 מילים ← 2 נקודות פחות',
+						'100-109 ← 4 · 90-99 ← 8 · 80-89 ← 12',
+						'פחות מ-50 מילים ← 0 על כל החיבור'
+					]
+				},
+				{
+					type: 'summary',
+					title: 'סדר העבודה ב-40 דקות',
+					lines: [
+						'5 דק׳ - מבינים את השאלה, בוחרים עמדה ושתי סיבות שונות',
+						'30 דק׳ - כותבים 4 פסקאות',
+						'5 דק׳ - בודקים: מספר מילים, עמדה ברורה, אין רעיון חדש בסיכום, כתיב'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'mcq',
+							prompt: '{d:rtl}איזה חלק שווה הכי הרבה נקודות בחיבור?',
+							options: ['שימוש בשפה: דקדוק ומבנים', 'מכניקה: כתיב ופיסוק', 'אוצר מילים'],
+							correctIndex: 0,
+							explanation:
+								'16 מתוך 40. לכן מבנים כמו Present Perfect, תנאי והיפוך שווים את המאמץ, כשהם נכונים.'
+						},
+						{
+							type: 'mcq',
+							prompt: '{d:rtl}כתבתם חיבור של 112 מילים. מה יקרה?',
+							options: ['יורדות 2 נקודות', 'החיבור מקבל 0', 'אין הורדה'],
+							correctIndex: 0,
+							explanation: '110-119 מילים = 2 נקודות פחות. רק מתחת ל-50 מילים החיבור מקבל 0.'
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}Some people believe that high school students should be allowed to choose some of their subjects. Do you agree?\n\n{d:rtl}איזה משפט פתיחה עונה על השאלה?',
+							options: [
+								[
+									'I believe that students should be allowed to choose some of their subjects because it makes them more motivated.',
+									'נכון. עמדה ברורה (should be allowed) וסיבה אחרי because.'
+								],
+								[
+									'School subjects are an interesting topic for many teenagers.',
+									'אין כאן עמדה. המשפט מציג נושא, אבל לא עונה: כן או לא?'
+								],
+								[
+									'I believe that students should study hard in every subject.',
+									'יש עמדה, אבל על שאלה אחרת. שואלים על בחירת מקצועות, לא על השקעה.'
+								]
+							],
+							correctIndex: 0
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'self-check',
+							prompt:
+								'Plan your essay in English (5 minutes): your position, your thesis, Reason 1, Reason 2 and a counter-argument, one line each.\n{p:text}Some people believe that high school students should be allowed to choose some of their subjects. Do you agree?',
+							modelAnswer:
+								'Position: YES or NO, one word.\nThesis: I believe that ... because ...\nReason 1: one idea + an example you can explain.\nReason 2: a different idea, not Reason 1 in other words.\nCounter-argument: Some people argue that ... However, ...'
+						},
+						{
+							type: 'writing-task',
+							prompt:
+								'Some people believe that high school students should be allowed to choose some of their subjects. Do you agree? Give reasons to explain your opinion. Write a 4-paragraph opinion essay (120-140 words).',
+							modelAnswer:
+								'In recent years, many schools have started to offer students more choice. I believe that high school students should be allowed to choose some of their subjects because it makes learning more meaningful.\n\nFirst, students work harder when they study what interests them. A student who loves biology will spend extra hours on it without being asked. For example, my cousin chose an advanced science track and raised her grades within one year.\n\nSecond, choosing subjects prepares teenagers for adult life. If students make these decisions at school, they will be ready for bigger decisions later. Some people argue that teenagers are too young to choose. However, teachers and counselors can help them make wise choices.\n\nIn conclusion, not only does choice motivate students, but it also teaches them to take responsibility for their own learning.',
+							gradingNotes:
+								'A clear YES or NO on letting high school students choose some of their subjects, two different reasons, each explained or supported. Off-topic: writing only about which subjects the student likes.',
+							checklist: [
+								'עמדה ברורה בפסקה הראשונה',
+								'שתי סיבות שונות, לכל אחת הסבר או דוגמה',
+								'טיעון נגדי עם However בסוף פסקה 3',
+								'בסיכום אין רעיון חדש',
+								'120-140 מילים'
+							],
+							requiredMoves: ['stance', 'in-conclusion'],
+							timeLimitMinutes: 40,
+							minSentences: 1,
+							minWordsUsed: 0,
 							minWords: 120,
 							maxWords: 140
 						}

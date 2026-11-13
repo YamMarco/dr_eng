@@ -631,8 +631,12 @@ export const passageQuizSchema = z
 					prompt: z.string(),
 					keywords: z
 						.array(z.string())
-						.describe('All must appear in the typed answer. Content words only, avoid numbers.'),
-					answerHint: z.string().describe('The correct answer, shown after submitting.'),
+						.describe(
+							'Fallback check (no LLM): all must appear in the typed answer; "a|b" = either. Content words only, avoid numbers.'
+						),
+					answerHint: z
+						.string()
+						.describe('The correct answer, shown after submitting; the LLM grades against it.'),
 					points: points.optional()
 				})
 			)

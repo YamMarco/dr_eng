@@ -1,5 +1,9 @@
 {
 	"modules": {},
-	"sections": {},
+	"sections": {
+		"g-1": {
+			"llmGrade": true
+		}
+	},
 	"lessons": {}
 }

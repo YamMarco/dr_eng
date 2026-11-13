@@ -12,7 +12,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { shuffle } from './shuffle';
+	import { fitOrder, optionOrder } from './shuffle';
 	import { untrack } from 'svelte';
 	import ListenCard from './ListenCard.svelte';
 	import McqFeedback from './McqFeedback.svelte';
@@ -64,14 +64,8 @@
 	// is always the second one" can't be learned. `order[slot]` = the authored
 	// index shown in that slot; `picks` / `right` stay authored indices.
 	// Quiz mode keeps the authored order (an exam paper is fixed).
-	const identity = (n: number) => Array.from({ length: n }, (_, i) => i);
-	const shuffled = untrack(() =>
-		mode === 'lesson' ? shuffle(identity(screen.options.length)) : identity(screen.options.length)
-	);
-	// The editor's live preview can add or remove options under a mounted screen.
-	let order = $derived(
-		shuffled.length === screen.options.length ? shuffled : identity(screen.options.length)
-	);
+	const shuffled = untrack(() => optionOrder(screen.options.length, mode === 'lesson'));
+	let order = $derived(fitOrder(shuffled, screen.options.length));
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;

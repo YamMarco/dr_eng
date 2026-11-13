@@ -119,7 +119,9 @@ Each story is a 7-lesson chain: **f-1** A Summer's Reading (`f-summer-*`), **f-2
 | g-w-conditional | משפט תנאי | 5 |
 | g-w-inversion | היפוך: Not only / Only by | 7 |
 | g-w-templates | תבניות לפי סוג שאלה | 8 |
+| g-w-body | פסקת גוף וטיעון נגדי (claim, explanation, example; counter-argument closes paragraph 3) | 8 |
 | g-w-ai-essay | חיבור מלא: AI בבית הספר (40 min) | 7 |
+| g-w-timed-essay | חיבור בזמן: נושא חדש (rubric + length table, unseen topic, no model before, 40 min) | 9 |
 
 Exams (article + 9 questions + essay, 1:45): `g-exam-1` Missing Out, `g-exam-2` Phone Listening, `g-exam-3` Teenagers Can't Wake Up, `g-exam-4` The Call Nobody Answers, `g-exam-5` Friends You've Never Met.
 
