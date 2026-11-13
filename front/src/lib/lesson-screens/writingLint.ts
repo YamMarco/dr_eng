@@ -48,7 +48,8 @@ export function usesWord(text: string, word: string): boolean {
 		.trim()
 		.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 		.replace(/\s+/g, '\\s+');
-	return new RegExp(`\\b${escaped}\\b`, 'i').test(text);
+	// lookarounds, not \b: an entry may end in punctuation ("First,")
+	return new RegExp(`(?<!\\w)${escaped}(?!\\w)`, 'i').test(text);
 }
 
 /** At most one issue per line (the most useful one), lines are 0-based.

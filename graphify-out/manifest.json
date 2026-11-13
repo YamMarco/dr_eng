@@ -380,8 +380,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/sectionMeta.ts": {
-    "mtime": 1794560866.2877944,
-    "ast_hash": "66d09d9c7b0cc20a32b69200bd5ca68a",
+    "mtime": 1794563862.8354313,
+    "ast_hash": "75b130e2396da07baf7c5b0a1b6127f3",
     "semantic_hash": ""
   },
   "front/src/lib/content/types.ts": {
@@ -775,8 +775,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/writingLint.ts": {
-    "mtime": 1794560866.249455,
-    "ast_hash": "a76207f787265359357bd83c087c6c73",
+    "mtime": 1794563912.224683,
+    "ast_hash": "62857379d219634418e6f0a4ab952eda",
     "semantic_hash": ""
   },
   "front/src/lib/writing-lab/WritingLab.svelte": {
@@ -950,8 +950,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/titles.he.ts": {
-    "mtime": 1794560866.256105,
-    "ast_hash": "bba3d58ae58e5b45cba7b74de649070f",
+    "mtime": 1794563862.5933483,
+    "ast_hash": "d2a47290bea2cdb28634efd3b721aaf4",
     "semantic_hash": ""
   },
   "front/src/lib/activity.svelte.ts": {
@@ -1990,8 +1990,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/g/g-2.ts": {
-    "mtime": 1794560866.264957,
-    "ast_hash": "787c22f9e7c01752c7bac171076b1ec4",
+    "mtime": 1794563883.714008,
+    "ast_hash": "42debab0c8ea3c27d50f4c0925fd9c5c",
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/cobe-3.ts": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/quiz/g/index.ts": {
-    "mtime": 1794560866.314663,
-    "ast_hash": "a1c066275be044da23679b8f8b308f1d",
+    "mtime": 1794563883.7809148,
+    "ast_hash": "80f8dcdff2748b67a0a13dc63c64f3bf",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay-g.md": {
@@ -2380,8 +2380,8 @@
     "semantic_hash": ""
   },
   "docs/material.md": {
-    "mtime": 1794560866.2664196,
-    "ast_hash": "193e841a6ee5fbb9c8777f221383a442",
+    "mtime": 1794563863.058477,
+    "ast_hash": "149d418826f77203ab0f6883e34b6df0",
     "semantic_hash": ""
   },
   "front/src/lib/components/FeedbackButton.svelte": {
@@ -2775,8 +2775,13 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-g-qa.md": {
-    "mtime": 1794563177.3704503,
-    "ast_hash": "061a0c513b3779fc4574d20402fedc0e",
+    "mtime": 1794563967.1617885,
+    "ast_hash": "0d9cbbdce139817063d599d3af106f87",
+    "semantic_hash": ""
+  },
+  "front/tests/writing-lint.test.ts": {
+    "mtime": 1794563919.4987109,
+    "ast_hash": "6386b648a4993f0b9e1c6b77da5a5c4c",
     "semantic_hash": ""
   }
 }
