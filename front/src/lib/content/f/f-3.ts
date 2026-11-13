@@ -7,7 +7,7 @@ export const f3Lessons: LessonNode[] = [
     id: "f-compare",
     section: "f-3",
     titleEn: "Compare",
-    required: ["f-summer-mastery", "f-know-all-mastery"],
+    required: ["f-know-all-review", "f-summer-review"],
     position: { x: 0, y: 970 },
     big: false,
     content: { preface: [], rounds: [{ screens: [], retryMissed: true }] },
