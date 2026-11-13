@@ -90,7 +90,7 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'Why did libraries begin lending non-book items?',
-									keywords: ['buy'],
+									keywords: ['buy|occasional'],
 									answerHint:
 										'Residents needed the items only occasionally and did not want to buy them.'
 								},
@@ -106,7 +106,7 @@ export const g1Lessons: LessonNode[] = [
 								},
 								{
 									prompt: 'What can we understand about the safety sessions?',
-									keywords: ['safe'],
+									keywords: ['safely|careful|properly|damag|repair|problem'],
 									answerHint: 'They help users handle some tools safely and reduce problems.'
 								}
 							]
@@ -300,7 +300,7 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'What did Rosen discover about birds living near busy roads?',
-									keywords: ['chang'],
+									keywords: ['chang|higher|pitch'],
 									answerHint: 'Some species had changed the pitch of their calls.'
 								},
 								{
@@ -310,7 +310,7 @@ export const g1Lessons: LessonNode[] = [
 								},
 								{
 									prompt: 'What does Rosen imply about species that cannot change their calls?',
-									keywords: ['communicat'],
+									keywords: ['communicat|hear|difficult|harder|problem'],
 									answerHint: 'They may have more difficulty communicating in noisy areas.'
 								}
 							]
@@ -510,7 +510,7 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'Who helped the students build the equipment they needed?',
-									keywords: ['salim'],
+									keywords: ['salim|engineer'],
 									answerHint: 'Amir Salim, the engineer.'
 								},
 								{
@@ -642,7 +642,7 @@ export const g1Lessons: LessonNode[] = [
 								},
 								{
 									prompt: 'What does "That" refer to?',
-									keywords: ['enjoy'],
+									keywords: ['enjoy|like|calm'],
 									answerHint: 'The fact that other shoppers also enjoy the calmer atmosphere.'
 								}
 							]
@@ -1061,7 +1061,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Why do older employees find it difficult to ask questions in groups? COMPLETE THE ANSWER: Because they ...',
-									keywords: ['embarrass'],
+									keywords: ['embarrass|ashamed|uncomfortable'],
 									answerHint:
 										'Because they feel embarrassed asking basic questions in a group setting.'
 								}
@@ -1086,7 +1086,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Why did the museum introduce slow-looking cards? COMPLETE THE ANSWER: Because visitors ...',
-									keywords: ['paint'],
+									keywords: ['paint|second|artwork|little time'],
 									answerHint: '...were spending very little time looking at each painting.'
 								},
 								{
@@ -1276,7 +1276,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'According to the text, how do mason bees help the apple harvest? COMPLETE THE ANSWER: By ...',
-									keywords: ['pollinat'],
+									keywords: ['pollinat|cold'],
 									answerHint:
 										'By pollinating the apple flowers in cold weather, when honeybees stay in their hives.'
 								}
@@ -1335,7 +1335,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'How can schools make playgrounds more comfortable? COMPLETE THE ANSWER: By ...',
-									keywords: ['tree'],
+									keywords: ['tree|shade'],
 									answerHint: '...planting or keeping mature trees that provide shade.'
 								},
 								{
@@ -1666,7 +1666,7 @@ export const g1Lessons: LessonNode[] = [
 							questions: [
 								{
 									prompt: 'What opinion do Haddad and Halevi share? ANSWER:',
-									keywords: ['resident'],
+									keywords: ['resident|participat|involv'],
 									answerHint:
 										'Both believe residents should be involved in planning community projects.'
 								}
@@ -1783,12 +1783,12 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Base your answer on lines 7-9. Why are the researchers careful about their conclusion?',
-									keywords: ['prove'],
+									keywords: ['prove|proof|not sure|certain'],
 									answerHint: 'They cannot prove that the flowers caused the change.'
 								},
 								{
 									prompt: 'What explanation do they suggest for the change?',
-									keywords: ['care'],
+									keywords: ['care|attractive|beautiful|nice'],
 									answerHint: 'People may take better care of public spaces that look attractive.'
 								}
 							]
@@ -2033,7 +2033,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Why do older employees find it difficult to ask questions in groups? COMPLETE THE ANSWER: Because they ...',
-									keywords: ['embarrass'],
+									keywords: ['embarrass|ashamed|uncomfortable'],
 									answerHint: '...feel embarrassed asking basic questions in a group setting.'
 								},
 								{
@@ -2128,7 +2128,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Why have researchers become interested in third places again? (paragraph II) COMPLETE THE ANSWER: Because modern routines ...',
-									keywords: ['home'],
+									keywords: ['home|online'],
 									answerHint:
 										'...allow many activities to be done without leaving home, and may reduce unplanned encounters.'
 								},
@@ -2200,7 +2200,7 @@ export const g1Lessons: LessonNode[] = [
 								{
 									prompt:
 										'Why did officials decide not to charge for every reservation? COMPLETE THE ANSWER: In order to ...',
-									keywords: ['access'],
+									keywords: ['access|income|afford'],
 									answerHint: '...avoid reducing access for people with limited incomes.'
 								},
 								{

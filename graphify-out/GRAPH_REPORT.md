@@ -1,26 +1,26 @@
-# Graph Report - dr_eng  (2026-11-13)
+# Graph Report - check_G  (2026-11-13)
 
 ## Corpus Check
-- 535 files · ~493,984 words
+- 538 files · ~495,321 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2531 nodes · 4993 edges · 197 communities (136 shown, 61 thin omitted)
+- 2584 nodes · 5171 edges · 206 communities (139 shown, 67 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 109 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ecaaef94`
+- Built from commit: `75e260c6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- api/lessons/+server.ts
+- liveLesson.ts
 - CLI tools
 - svelte-core-bestpractices/SKILL.md
 - lib/kanban.ts
 - EditModel
-- feedback/grade.ts
+- feedback/rules.ts
 - Checklist
 - What You Must Do When Invoked
 - AuthStore
@@ -37,7 +37,7 @@
 - llmGuard.ts
 - lesson-screens/types.ts
 - content/index.ts
-- motion.ts
+- svelte/transition
 - lesson-meta.mjs
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
@@ -51,28 +51,28 @@
 - scoring.ts
 - WritingTask.svelte
 - data.ts
-- validate.ts
+- SlideStage.svelte
 - plans.ts
 - checkAuth
 - checks/index.ts
-- zoom.ts
+- api/lessons/+server.ts
 - LessonScreen
 - takeHistory.ts
 - db/schema.ts
-- Md.svelte
+- 1. Reading comprehension (grade-reading)
 - writingLint.ts
 - Handoff: before testers (owner's to-do)
 - chatSpeaking.ts
 - layer1.ts
 - Workflow
-- Speak.svelte
+- miniMarkdown.ts
 - hooks.server.ts
-- lessonPath.ts
-- MarkAll.svelte
-- plans.test.ts
-- SlideStage.svelte
-- EditHistory
-- quizzes.ts
+- completeRound
+- rubrics/index.ts
+- planById
+- Opener.svelte
+- editModel.svelte.ts
+- stats.ts
 - deck/index.ts
 - test
 - speech.ts
@@ -83,14 +83,14 @@
 - progressMerge.ts
 - snippet.md
 - rulesStore.svelte.ts
-- feedback/types.ts
-- PassageText.svelte
-- length.ts
+- server/grade.ts
+- QuizRunner.svelte
+- examEditModel.svelte.ts
 - content-edit — the `/edit` and `/edit-exam` authoring workspaces
 - language.ts
 - create-coupon.mjs
 - measure-overflow.mjs
-- index.svelte.ts
+- Sheet.svelte
 - ActivityStore
 - content
 - checkout/+page.ts
@@ -105,8 +105,8 @@
 - Handoff: About page, after launch
 - await-expressions.md
 - accounts.spec.ts
-- miniMarkdown.ts
-- MatchPairs.svelte
+- activeField.svelte.ts
+- QuizAnswerSlot
 - Handoff: `/mcp` endpoint (removed)
 - attach.md
 - ExamEditModel
@@ -116,39 +116,40 @@
 - Platform: web, mobile, accounts
 - cron/reminders/+server.ts
 - QuizReport.svelte
-- saveSynced
+- progressSync.svelte.ts
 - AGENTS.md
 - Rules
-- AccountSection.svelte
+- getDecks
 - (site)/+page.svelte
 - he.ts
 - api/reminders/+server.ts
-- progressSync.svelte.ts
+- passageQuiz.ts
 - content-i18n.mjs
 - Handoff: test findings (from the testing plan runs)
-- access
+- RemindersStore
 - Submit → feedback framework
 - fixtures.ts
 - TitleEdits
 - load.ts
-- profile.svelte.ts
-- AppBar.svelte
+- goalOptions.ts
+- index.svelte.ts
+- ReviewNotesStore
 - hydratable.md
 - scripts
 - Handoff: testing plan (automation + human-like runs)
 - inspect.md
 - vercel.json
-- theme.svelte.ts
+- WordImage.svelte
 - personas.spec.ts
 - gradeExam.ts
 - @sveltejs/adapter-auto
 - refund.ts
-- acceptedAnswers.ts
+- PassageText.svelte
 - @sveltejs/kit
 - Handoff: Zoom group lessons, testing
 - Handoff: exam lock trusts the client's part count
-- lastEngagement.svelte.ts
-- support.ts
+- LastEngagementStore
+- nextRoundIndex
 - ProfileStore
 - render.md
 - screenshot.ts
@@ -159,9 +160,10 @@
 - svelte-reactivity.md
 - lessons/+page.svelte
 - @tailwindcss/forms
+- scan.ts
 - quote/+server.ts
 - sectionThemes.ts
-- @axe-core/playwright
+- EditWorkspace.svelte
 - fillFromScan
 - eslint-config-prettier
 - typescript
@@ -176,14 +178,20 @@
 - @playwright/test
 - auth/README.md
 - submitToLlm
+- examLock.ts
 - playwright.config.ts
+- reviewNotes.svelte.ts
 - app/+layout.ts
 - svelte
+- textColors.ts
 - smoke.spec.ts
+- Module G QA report
 - @eslint/js
+- .refresh
 - drizzle-kit
 - eslint
 - eslint-plugin-svelte
+- dictionary-en
 - svelte-check
 - @sveltejs/vite-plugin-svelte
 - tailwindcss
@@ -204,33 +212,33 @@
 2. `ExamEditModel` - 40 edges
 3. `LessonNode` - 36 edges
 4. `LessonScreen` - 32 edges
-5. `ScreenPath` - 28 edges
-6. `apiFetch()` - 28 edges
+5. `apiFetch()` - 28 edges
+6. `ScreenPath` - 28 edges
 7. `saveSynced()` - 23 edges
 8. `scripts` - 21 edges
 9. `EditModelLike` - 20 edges
 10. `Rules` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `IdentifiedScreen` --references--> `LessonScreen`  [EXTRACTED]
-  front/src/lib/quiz/screenIds.ts → front/src/lib/lesson-screens/types.ts
-- `syncedKeys()` --indirect_call--> `isSyncedKey()`  [INFERRED]
-  front/src/lib/progressSync.svelte.ts → front/src/lib/progressMerge.ts
 - `uploadImage()` --calls--> `apiFetch()`  [EXTRACTED]
   front/src/lib/content-edit/api.ts → front/src/lib/api.ts
-- `screenProblems()` --indirect_call--> `optText()`  [INFERRED]
-  front/src/lib/lesson-screens/screenChecks.ts → front/src/lib/lesson-screens/option.ts
-- `moduleRoute()` --indirect_call--> `hasContent()`  [INFERRED]
-  front/src/lib/dashboard/data.ts → front/src/lib/lessonPath.ts
+- `check()` --indirect_call--> `browserDictionaries()`  [INFERRED]
+  front/src/lib/feedback/gradeExam.ts → front/src/lib/checks/dictionaries.ts
+- `GET()` --calls--> `checkAuth()`  [EXTRACTED]
+  front/src/routes/api/finance/+server.ts → front/src/lib/content-edit/auth.ts
+- `issuesByNode()` --indirect_call--> `i()`  [INFERRED]
+  front/src/lib/content-edit/validate.ts → front/src/lib/content-edit/fields/OptionFeedbackList.svelte
+- `LessonRound` --references--> `LessonScreen`  [EXTRACTED]
+  front/src/lib/content/types.ts → front/src/lib/lesson-screens/types.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (197 total, 61 thin omitted)
+## Communities (206 total, 67 thin omitted)
 
-### Community 0 - "api/lessons/+server.ts"
-Cohesion: 0.16
-Nodes (21): addToCalendar(), dayKey(), endOf(), icsLocal(), icsText(), joinOpen(), lessonCalendar(), LessonsInfo (+13 more)
+### Community 0 - "liveLesson.ts"
+Cohesion: 0.25
+Nodes (13): addToCalendar(), dayKey(), endOf(), icsLocal(), icsText(), joinOpen(), lessonCalendar(), lessonWhen() (+5 more)
 
 ### Community 1 - "CLI tools"
 Cohesion: 0.33
@@ -246,11 +254,11 @@ Nodes (18): PEOPLE, Person, personLabel, Priority, priorityLabel, Sort, SortKey,
 
 ### Community 4 - "EditModel"
 Cohesion: 0.09
-Nodes (6): clone(), EditModel, screenList(), swapLevels(), versions(), getLessonsBySection()
+Nodes (5): clone(), EditModel, swapLevels(), versions(), getLessonsBySection()
 
-### Community 5 - "feedback/grade.ts"
-Cohesion: 0.16
-Nodes (17): isLimit(), gradeLesson(), postGrade(), Layer1Options, applyFixes(), Corrected, Fix, FIX_TAGS (+9 more)
+### Community 5 - "feedback/rules.ts"
+Cohesion: 0.12
+Nodes (10): KEY, clearBelow(), DEFAULT_RULES, resolveRules(), RULE_KEYS, RuleSet, FATAL_TAGS, TAG_IDS (+2 more)
 
 ### Community 6 - "Checklist"
 Cohesion: 0.10
@@ -265,8 +273,8 @@ Cohesion: 0.14
 Nodes (13): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, moduleResolution, resolveJsonModule, rewriteRelativeImportExtensions (+5 more)
 
 ### Community 10 - "localize.svelte.ts"
-Cohesion: 0.14
-Nodes (10): cache, ensureLoaded(), loaders, loading, localizeContent(), Table, tables, translate() (+2 more)
+Cohesion: 0.22
+Nodes (9): cache, ensureLoaded(), loaders, loading, localizeContent(), Table, tables, translate() (+1 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -281,8 +289,8 @@ Cohesion: 0.50
 Nodes (3): App, Locals, PageState
 
 ### Community 17 - "RulesPanel.svelte"
-Cohesion: 0.12
-Nodes (17): applyBelow(), id, inherited, lessonId, lessons, moduleId, MODULES, own (+9 more)
+Cohesion: 0.17
+Nodes (12): applyBelow(), id, inherited, lessonId, lessons, moduleId, MODULES, own (+4 more)
 
 ### Community 18 - "graphify reference: query, path, explain"
 Cohesion: 0.33
@@ -293,16 +301,16 @@ Cohesion: 0.24
 Nodes (13): cobeVisible(), israelToday, burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday(), guardLlm() (+5 more)
 
 ### Community 20 - "lesson-screens/types.ts"
-Cohesion: 0.06
-Nodes (30): screenComponents, KEY, LessonSession, ClozePickScreen, MarkAllCategory, MarkAllScreen, MatchDefinitionsScreen, MatchPairsScreen (+22 more)
+Cohesion: 0.04
+Nodes (45): active, checked, primaryAction(), primaryAction(), KEY, ScreenMode, primaryAction(), screenComponents (+37 more)
 
 ### Community 21 - "content/index.ts"
-Cohesion: 0.09
-Nodes (33): UNITS, c1Lessons, c2Lessons, c3Lessons, cobe1Lessons, cobe2Lessons, cobe3Lessons, d1Lessons (+25 more)
+Cohesion: 0.12
+Nodes (27): UNITS, c1Lessons, c2Lessons, c3Lessons, cobe1Lessons, cobe2Lessons, cobe3Lessons, d1Lessons (+19 more)
 
-### Community 22 - "motion.ts"
+### Community 22 - "svelte/transition"
 Cohesion: 0.08
-Nodes (10): reducedMotion, formattedDate, lockedUntil, lockedWhen, row, rules, taken, tips (+2 more)
+Nodes (10): emails, COBE_OPEN, dayPart, NAME_MAX, Profile, ./$types, next, seen (+2 more)
 
 ### Community 24 - "lesson-meta.mjs"
 Cohesion: 0.26
@@ -321,64 +329,64 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ### Community 31 - "apiFetch"
-Cohesion: 0.06
-Nodes (29): ApiError, apiFetch(), toWavBase64(), PhraseGroup, phraseGroups, BLANK, ReviewNote, reviewNotes (+21 more)
+Cohesion: 0.21
+Nodes (10): apiFetch(), toWavBase64(), register(), ChatTurnReply, addChat(), chatCount(), ChatTurnError, sendChatTurn() (+2 more)
 
 ### Community 33 - "GraphEditor.svelte"
 Cohesion: 0.10
 Nodes (10): bands, canvasHeight, nodeHitbox(), nodePointerMove(), nodePointerUp(), pick(), selectedId, selectedIsRoot (+2 more)
 
 ### Community 34 - "ExamEditWorkspace.svelte"
-Cohesion: 0.14
-Nodes (11): addExam(), errorCount, exit(), issues, issuesFor, onKey(), openExam(), playQuiz (+3 more)
+Cohesion: 0.15
+Nodes (11): addExam(), errorCount, issues, issuesFor, onKey(), openExam(), playQuiz, save() (+3 more)
 
 ### Community 35 - "scoring.ts"
-Cohesion: 0.19
-Nodes (15): primaryAction(), FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), isOrderCorrect(), isScreenEmpty(), MATCH_PAIRS_MAX_MISTAKES (+7 more)
+Cohesion: 0.21
+Nodes (14): FILLER, isSentenceCompletionMatch(), normalize(), isMarkAllPass(), isOrderCorrect(), isScreenEmpty(), MATCH_PAIRS_MAX_MISTAKES, applyGrades() (+6 more)
 
 ### Community 36 - "WritingTask.svelte"
 Cohesion: 0.05
 Nodes (37): accepted, acceptedOk, allFilled, allOk, autoCheck, capitalIsError, checked, combinedText (+29 more)
 
 ### Community 37 - "data.ts"
-Cohesion: 0.13
-Nodes (24): getLessonMetaBySection(), moduleSections(), continueFrom(), ContinueItem, EXAM_READY, examAdvice, homeMeters, isWritingLesson() (+16 more)
+Cohesion: 0.10
+Nodes (40): byId, getLessonMeta(), getLessonMetaBySection(), LessonMeta, moduleSections(), progressScope(), sectionMeta, SectionMeta (+32 more)
 
-### Community 38 - "validate.ts"
-Cohesion: 0.15
-Nodes (17): onMove(), onUp(), bucketLabel(), Issue, screenIssues(), validateExam(), validateSection(), markAllSegments() (+9 more)
+### Community 38 - "SlideStage.svelte"
+Cohesion: 0.05
+Nodes (40): onMove(), onUp(), i(), htmlToMd(), pickIcon(), serialize(), sync(), TYPE_HE (+32 more)
 
 ### Community 39 - "plans.ts"
 Cohesion: 0.08
-Nodes (20): APP, charm(), Cycle, CYCLE_MONTHS, CYCLE_OFF, FEATURED_OFFER, GROUP_ZOOM, GUARANTEE (+12 more)
+Nodes (26): APP, charm(), COBE_ADDON, Cycle, CYCLE_MONTHS, CYCLE_OFF, CYCLES, FEATURED_OFFER (+18 more)
 
 ### Community 40 - "checkAuth"
 Cohesion: 0.24
 Nodes (15): checkAuth(), getGithubFile(), ghHeaders(), putGithubFile(), repoUrl(), body, GET(), POST() (+7 more)
 
 ### Community 41 - "checks/index.ts"
-Cohesion: 0.13
-Nodes (21): ALWAYS_CAPITAL, CONNECTORS, issue(), mechanicsIssues(), sentenceSpans(), SUBJECTS, SUBORDINATORS, CheckIssue (+13 more)
+Cohesion: 0.14
+Nodes (23): countValidWords(), isCopiedWhole(), lengthReport(), MAX_WORDS, MIN_WORDS, normWords(), sentencesOf(), sharesRun() (+15 more)
 
-### Community 42 - "zoom.ts"
-Cohesion: 0.17
-Nodes (16): LessonRecording, LessonSlot, cronAuthorized(), orders, accessToken(), aliasEmail(), Meeting, meetingPath() (+8 more)
+### Community 42 - "api/lessons/+server.ts"
+Cohesion: 0.15
+Nodes (20): LessonRecording, LessonsInfo, LessonSlot, NAME_MAX, NAME_MIN, accessToken(), aliasEmail(), Meeting (+12 more)
 
 ### Community 43 - "LessonScreen"
-Cohesion: 0.08
-Nodes (11): LessonBucket, Bucket, EditModelLike, ScreenPath, blankScreen(), SCREEN_TYPE_GROUPS, SCREEN_TYPES, moduleSections() (+3 more)
+Cohesion: 0.11
+Nodes (6): screenList(), EditModelLike, ScreenPath, blankScreen(), LessonContent, LessonScreen
 
 ### Community 44 - "takeHistory.ts"
-Cohesion: 0.20
-Nodes (11): delta, firstSeconds, newlyReached, isRecord(), Entry, openDb(), readStats(), recordTake() (+3 more)
+Cohesion: 0.22
+Nodes (12): primaryAction(), record(), stop(), toggle(), Entry, openDb(), readStats(), recordTake() (+4 more)
 
 ### Community 45 - "db/schema.ts"
-Cohesion: 0.18
-Nodes (13): ExamRef, RETAKE_WAIT_MS, db, examAttempts, llmUsage, progress, pushSubscriptions, waitlist (+5 more)
+Cohesion: 0.19
+Nodes (14): access, cronAuthorized(), db, examAttempts, llmUsage, orders, progress, pushSubscriptions (+6 more)
 
-### Community 46 - "Md.svelte"
+### Community 46 - "1. Reading comprehension (grade-reading)"
 Cohesion: 0.08
-Nodes (13): active, checked, primaryAction(), primaryAction(), Option, optText(), withFeedback(), oi() (+5 more)
+Nodes (24): 1. Reading comprehension (grade-reading), 2. Essay (grade-essay), 3. Speaking recording (grade-speaking), 4. Speaking chat (chat-speaking), 5. Short lesson answers (grade-short), Error tags (also used by essay and short answers), How it works, How it works (+16 more)
 
 ### Community 47 - "writingLint.ts"
 Cohesion: 0.42
@@ -390,95 +398,91 @@ Nodes (9): 2FA on every account, Alpha on production, GitHub token, Google AI St
 
 ### Community 49 - "chatSpeaking.ts"
 Cohesion: 0.06
-Nodes (47): BANTER_TOPICS, BanterTopic, chatOpener(), PART_A_TOPICS, PROJECT_POINTS, validChatTopics(), chatEnds(), ChatLine (+39 more)
+Nodes (48): BANTER_TOPICS, BanterTopic, chatOpener(), PART_A_TOPICS, PROJECT_POINTS, validChatTopics(), CobeRubric, chatEnds() (+40 more)
 
 ### Community 50 - "layer1.ts"
-Cohesion: 0.27
-Nodes (10): browserDictionaries(), bytes(), checkWriting(), DictData, DictLoader, check(), issuesToMarks(), Layer1 (+2 more)
+Cohesion: 0.14
+Nodes (18): browserDictionaries(), bytes(), checkWriting(), ALLOWED, CONTRACTIONS, DictData, DictLoader, HYPHEN_PREFIXES (+10 more)
 
 ### Community 51 - "Workflow"
 Cohesion: 0.17
 Nodes (11): 1. Gather context (if needed), 1. list-sections, 2. get-documentation, 2. Read the target file, 3. Make changes, 3. svelte-autofixer, 4. Validate changes, 5. Fix any issues (+3 more)
 
-### Community 52 - "Speak.svelte"
-Cohesion: 0.29
-Nodes (8): primaryAction(), reached, record(), seconds, share, stop(), toggle(), takeKey()
+### Community 52 - "miniMarkdown.ts"
+Cohesion: 0.14
+Nodes (19): CALLOUT_BLOCK_CLASS, ESCAPE, escapeText(), HEADER_CLASS, isEnglishSentence(), isolateQuotes(), isolateSentences(), langAttrs() (+11 more)
 
 ### Community 53 - "hooks.server.ts"
-Cohesion: 0.19
-Nodes (13): app(), APP_ORIGINS, cors(), handle, PUBLIC_APIS, accountsEnabled, adminClient(), noSession (+5 more)
+Cohesion: 0.21
+Nodes (12): app(), APP_ORIGINS, cors(), handle, PUBLIC_APIS, accountsEnabled, adminClient(), noSession (+4 more)
 
-### Community 54 - "lessonPath.ts"
-Cohesion: 0.29
-Nodes (11): getLessonMeta(), LessonMeta, progressScope(), todayLesson(), hasContent(), isLessonDone(), isLessonGold(), isLessonUnlocked() (+3 more)
+### Community 54 - "completeRound"
+Cohesion: 0.25
+Nodes (11): celebrateIfNewlyDone(), closeNode(), closeWritingLab(), completeRound(), exitRunner(), finishNode(), finishNodeAndContinue(), isDone() (+3 more)
 
-### Community 55 - "MarkAll.svelte"
-Cohesion: 0.27
-Nodes (5): cat(), MARK_ALL_DEFAULT, MARK_ALL_PALETTE, markAllSwatch, MarkAllSegment
+### Community 55 - "rubrics/index.ts"
+Cohesion: 0.15
+Nodes (14): PhraseGroup, phraseGroups, CobeBand, CobeCriterion, essayRubric, Rubric, RubricCriterion, writingRubrics (+6 more)
 
-### Community 56 - "plans.test.ts"
-Cohesion: 0.17
-Nodes (14): build(), COBE_ADDON, defaultPlan(), israelDate(), passEnd(), passMonths(), planById(), planId() (+6 more)
+### Community 56 - "planById"
+Cohesion: 0.33
+Nodes (7): build(), defaultPlan(), planById(), planId(), withCobe(), resolve(), #each()
 
-### Community 57 - "SlideStage.svelte"
-Cohesion: 0.11
-Nodes (10): i(), htmlToMd(), pickIcon(), serialize(), sync(), TYPE_HE, issuesByNode(), OPENER_LEVELS (+2 more)
+### Community 58 - "editModel.svelte.ts"
+Cohesion: 0.14
+Nodes (6): EditHistory, LessonBucket, Bucket, SCREEN_TYPE_GROUPS, SCREEN_TYPES, moduleSections()
 
-### Community 59 - "quizzes.ts"
-Cohesion: 0.20
-Nodes (10): allQuizNodes, allQuizzes, AssortedQuiz, assortedQuizzes, getQuiz(), MinistryQuiz, ministryQuizzes, Quiz (+2 more)
+### Community 59 - "stats.ts"
+Cohesion: 0.10
+Nodes (20): moduleHook, I18n, allQuizNodes, avg(), examRows(), examStats, examTier, GREAT_PERCENT (+12 more)
 
 ### Community 60 - "deck/index.ts"
-Cohesion: 0.06
-Nodes (57): listA, listB, listC, listD, w(), eGlossAr, deckProgress, DeckProgressStore (+49 more)
+Cohesion: 0.07
+Nodes (50): listA, listB, listC, listD, w(), eGlossAr, deckProgress, DeckProgressStore (+42 more)
 
 ### Community 61 - "test"
 Cohesion: 0.22
 Nodes (6): test, Essay, corrupt, pages, takenAt(), he
 
 ### Community 62 - "speech.ts"
-Cohesion: 0.20
+Cohesion: 0.24
 Nodes (9): browserVoice, chatVoice, hush(), RATE, RULES, say(), speak(), speechSupported() (+1 more)
 
 ### Community 63 - "progress.ts"
-Cohesion: 0.16
-Nodes (26): ExamGrade, attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLastAttempt(), getResults(), hasStorage() (+18 more)
+Cohesion: 0.15
+Nodes (23): ExamGrade, attemptKey(), clearInProgress(), ExamResult, getInProgress(), getLastAttempt(), getResults(), hasStorage() (+15 more)
 
 ### Community 64 - "reminders.svelte.ts"
-Cohesion: 0.10
-Nodes (11): EditStore, install, InstallPromptEvent, InstallStore, Platform, MOBILE_BUILD, REMINDER_HOURS, reminders (+3 more)
-
-### Community 65 - "RulesStore"
-Cohesion: 0.19
-Nodes (4): RulesStore, KEY, clearBelow(), Rules
+Cohesion: 0.09
+Nodes (13): deleteAccount(), deleting, failed, signOut(), t, install, InstallPromptEvent, InstallStore (+5 more)
 
 ### Community 66 - "content-edit/api.ts"
 Cohesion: 0.20
 Nodes (13): post(), saveExamChanges(), saveLessonContent(), saveRules(), saveSection(), saveTitles(), saveWordGlossesAr(), saveWords() (+5 more)
 
 ### Community 67 - "progressMerge.ts"
-Cohesion: 0.24
-Nodes (16): byKey(), field(), isObj(), isSyncedKey(), Item, larger(), laterReview(), mergeFor() (+8 more)
+Cohesion: 0.25
+Nodes (15): byKey(), field(), isObj(), isSyncedKey(), larger(), laterReview(), mergeFor(), mergeItems() (+7 more)
 
 ### Community 68 - "snippet.md"
 Cohesion: 0.18
 Nodes (10): Explicit props, Exporting snippets, Implicit `children` snippet, Implicit props, Optional snippet props, Passing snippets to components, Programmatic snippets, Snippet scope (+2 more)
 
 ### Community 69 - "rulesStore.svelte.ts"
-Cohesion: 0.39
-Nodes (5): getLesson(), ownerModule(), ruleChain(), RulesFile, load()
+Cohesion: 0.33
+Nodes (6): RuleLevel, getLesson(), ownerModule(), ruleChain(), RulesFile, load()
 
-### Community 70 - "feedback/types.ts"
-Cohesion: 0.09
-Nodes (36): essayRubric, Rubric, RubricCriterion, writingRubricId, writingRubrics, CONTENT_TAGS, EssayVerdict, GradeRequest (+28 more)
+### Community 70 - "server/grade.ts"
+Cohesion: 0.14
+Nodes (23): CONTENT_TAGS, MAX_TEXT, ask(), block(), cleanMarks(), ESSAY_PROMPTS, gradeEssay(), gradeLesson() (+15 more)
 
-### Community 71 - "PassageText.svelte"
-Cohesion: 0.15
-Nodes (7): stripLineAttrs(), Highlight, MarkColor, PASSAGE_MARKS, PassageMarksStore, gutter, lines
+### Community 71 - "QuizRunner.svelte"
+Cohesion: 0.12
+Nodes (6): total(), Highlight, MarkColor, PASSAGE_MARKS, PassageMarksStore, screenContext
 
-### Community 72 - "length.ts"
-Cohesion: 0.30
-Nodes (11): countValidWords(), isCopiedWhole(), lengthReport(), MAX_WORDS, MIN_WORDS, normWords(), sentencesOf(), sharesRun() (+3 more)
+### Community 72 - "examEditModel.svelte.ts"
+Cohesion: 0.27
+Nodes (9): cQuizzes, cobeQuizzes, eQuizzes, gQuizzes, getQuizNodesByModule(), QuizKind, QuizNode, QuizOptions (+1 more)
 
 ### Community 73 - "content-edit — the `/edit` and `/edit-exam` authoring workspaces"
 Cohesion: 0.22
@@ -492,13 +496,13 @@ Nodes (8): base(), issue(), languageIssues(), MODALS, PAST, PHRASES, THIRD, UNCO
 Cohesion: 0.50
 Nodes (3): code, sql, { values, positionals }
 
-### Community 77 - "index.svelte.ts"
-Cohesion: 0.09
-Nodes (8): total(), open, dictionaries, groups, phrase(), words, screenContext, previous
+### Community 77 - "Sheet.svelte"
+Cohesion: 0.19
+Nodes (4): open, groups, words, previous
 
 ### Community 82 - "lib/finance.ts"
-Cohesion: 0.17
-Nodes (11): Currency, Cycle, cycleLabel, Expense, LedgerEntry, monthly(), Partner, partnerName (+3 more)
+Cohesion: 0.14
+Nodes (12): Currency, Cycle, cycleLabel, Expense, LedgerEntry, monthly(), Partner, partnerName (+4 more)
 
 ### Community 83 - "Material"
 Cohesion: 0.25
@@ -518,7 +522,7 @@ Nodes (38): autoCheck, clozePickSchema, dir, index, markAllCategorySchema, markA
 
 ### Community 89 - "devDependencies"
 Cohesion: 0.22
-Nodes (9): dictionary-en, devDependencies, dictionary-en, @types/node, @types/nspell, typescript-eslint, @types/node, @types/nspell (+1 more)
+Nodes (9): @axe-core/playwright, devDependencies, @axe-core/playwright, @types/node, @types/nspell, typescript-eslint, @types/node, @types/nspell (+1 more)
 
 ### Community 90 - "Handoff: About page, after launch"
 Cohesion: 0.40
@@ -532,13 +536,9 @@ Nodes (8): Breaking changes, Caveats, Concurrency, Error handling, Forking, Indi
 Cohesion: 0.16
 Nodes (10): auth(), coupon, makeUser(), noSession, onSettings(), run, signedIn(), studentRoutes (+2 more)
 
-### Community 93 - "miniMarkdown.ts"
-Cohesion: 0.06
-Nodes (51): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKind, currentBlock(), formatAlign(), formatBold() (+43 more)
-
-### Community 94 - "MatchPairs.svelte"
-Cohesion: 0.09
-Nodes (11): announce(), announcement, mistakes, pick(), row(), shuffleNotIdentity(), KEY, ScreenMode (+3 more)
+### Community 93 - "activeField.svelte.ts"
+Cohesion: 0.16
+Nodes (26): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKind, currentBlock(), formatAlign(), formatBold() (+18 more)
 
 ### Community 95 - "Handoff: `/mcp` endpoint (removed)"
 Cohesion: 0.40
@@ -548,17 +548,13 @@ Nodes (4): Before reviving, Handoff: `/mcp` endpoint (removed), How it worked, R
 Cohesion: 0.25
 Nodes (7): Attachment factories, Conditional attachments, Controlling when attachments re-run, Converting actions to attachments, Creating attachments programmatically, Inline attachments, Passing attachments to components
 
-### Community 97 - "ExamEditModel"
-Cohesion: 0.08
-Nodes (11): clone(), ExamEditModel, cQuizzes, cobeQuizzes, eQuizzes, gQuizzes, getQuizNodesByModule(), QuizKind (+3 more)
-
 ### Community 98 - "Handoff: legal (privacy, terms, accessibility)"
 Cohesion: 0.29
 Nodes (6): Accessibility (`/accessibility`), Facts the texts must match, Handoff: legal (privacy, terms, accessibility), Owner decisions (accepted, no lawyer review), Unfinished: owner, Unfinished: update the pages before opening each service
 
 ### Community 100 - "curriculum.ts"
-Cohesion: 0.16
-Nodes (12): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+4 more)
+Cohesion: 0.15
+Nodes (13): CurriculumModule, CurriculumSection, getModule(), getUnitGroup(), modules, textSection, UnitGroup, unitGroups (+5 more)
 
 ### Community 101 - "Platform: web, mobile, accounts"
 Cohesion: 0.13
@@ -569,12 +565,12 @@ Cohesion: 0.29
 Nodes (9): isPushEndpoint(), PUSH_HOSTS, pushEnabled, sendPush(), Subscription, GET(), israelDay(), israelHour() (+1 more)
 
 ### Community 103 - "QuizReport.svelte"
-Cohesion: 0.17
-Nodes (9): anyFailed, closed, hasSpeaking, headline, level, numbers, pending, RecorderState (+1 more)
+Cohesion: 0.09
+Nodes (17): announce(), announcement, mistakes, pick(), row(), shuffleNotIdentity(), phrase(), shuffle() (+9 more)
 
-### Community 104 - "saveSynced"
-Cohesion: 0.14
-Nodes (12): activity, load(), WEEKLY_GOAL, LessonProgressStore, load(), persist(), ProgressMap, rescope() (+4 more)
+### Community 104 - "progressSync.svelte.ts"
+Cohesion: 0.10
+Nodes (19): activity, load(), WEEKLY_GOAL, LessonProgressStore, load(), persist(), ProgressMap, rescope() (+11 more)
 
 ### Community 105 - "AGENTS.md"
 Cohesion: 0.29
@@ -584,13 +580,13 @@ Nodes (6): content, mission, persona, read on demand (plain paths, don't preload
 Cohesion: 0.10
 Nodes (19): Accessibility, Animation, Anti-patterns (flag these), Content & Copy, Content Handling, Dark Mode & Theming, Focus States, Forms (+11 more)
 
-### Community 107 - "AccountSection.svelte"
-Cohesion: 0.15
-Nodes (6): emails, deleteAccount(), deleting, failed, signOut(), t
+### Community 107 - "getDecks"
+Cohesion: 0.24
+Nodes (9): activeDecks(), deckStats(), getDecks(), moduleWon(), load(), ssr, ./$types, load() (+1 more)
 
 ### Community 108 - "(site)/+page.svelte"
-Cohesion: 0.17
-Nodes (4): focus(), homeMedia, Media, d
+Cohesion: 0.12
+Nodes (5): focus(), reducedMotion, homeMedia, Media, d
 
 ### Community 109 - "he.ts"
 Cohesion: 0.25
@@ -600,9 +596,9 @@ Nodes (6): ar, Dictionary, DictionaryOverride, LegalDoc, titlesAr, titlesHe
 Cohesion: 0.17
 Nodes (18): kanbanTasks, kanbanDb(), taskColumns, taskFields, jsonBody(), DELETE(), PATCH(), patchBody (+10 more)
 
-### Community 111 - "progressSync.svelte.ts"
-Cohesion: 0.22
-Nodes (8): localItem(), ProgressSync, readAt(), reloaders, syncedKeys(), writeLocal(), storeItem(), ThemeStore
+### Community 111 - "passageQuiz.ts"
+Cohesion: 0.29
+Nodes (9): ReadingRequest, ReadingVerdict, keywordMatch(), normalize(), QuizResult, quizResults(), readingRequest(), PassageQuizScreen (+1 more)
 
 ### Community 112 - "content-i18n.mjs"
 Cohesion: 0.14
@@ -612,9 +608,9 @@ Nodes (10): file, missing, stale, strings, table, collect(), hebrewContentString
 Cohesion: 0.13
 Nodes (14): Accounts on (`e2e/accounts.spec.ts`, `npm run e2e:accounts`), Break-it round 3: prompt injection on the real LLM, Claude-driven look at the app (phone, new student, screenshots by hand), COBE (parked, not tested), Fixed, Fixed: break-it round, Fixed: break-it round 2 (clock and date), Handoff: test findings (from the testing plan runs) (+6 more)
 
-### Community 114 - "access"
-Cohesion: 0.33
-Nodes (6): CYCLES, parse(), productsOf(), access, billingEnabled, GET()
+### Community 114 - "RemindersStore"
+Cohesion: 0.29
+Nodes (5): currentSubscription(), REMINDER_HOURS, RemindersStore, storedHour(), worker()
 
 ### Community 115 - "Submit → feedback framework"
 Cohesion: 0.18
@@ -628,9 +624,13 @@ Nodes (6): Fixtures, GradeBody, Mocks, PIXEL, playThrough(), states
 Cohesion: 0.33
 Nodes (5): loaded, Loader, loadLesson(), SECTIONS, toggleLabel()
 
-### Community 119 - "profile.svelte.ts"
-Cohesion: 0.11
-Nodes (14): sessionKey(), sessionOptions(), UNKNOWN_SESSION, full, ignite, examDate(), ExamSeason, ExamSession (+6 more)
+### Community 119 - "goalOptions.ts"
+Cohesion: 0.20
+Nodes (9): sessionKey(), sessionOptions(), UNKNOWN_SESSION, examDate(), ExamSeason, ExamSession, SEASON_DATE, upcomingSessions() (+1 more)
+
+### Community 120 - "index.svelte.ts"
+Cohesion: 0.05
+Nodes (14): full, ignite, pieces, dictionaries, status(), formattedDate, ./$types, lockedUntil (+6 more)
 
 ### Community 123 - "scripts"
 Cohesion: 0.04
@@ -649,16 +649,16 @@ Cohesion: 0.22
 Nodes (4): StudentState, HOSTILE, SEED, STEPS
 
 ### Community 130 - "gradeExam.ts"
-Cohesion: 0.21
-Nodes (18): applyLength(), mechanicsCount(), Checked, essayGrade(), essayPart(), failed(), gradeExam(), labelled() (+10 more)
+Cohesion: 0.10
+Nodes (40): isLimit(), writingRubricId, applyLength(), mechanicsCount(), gradeLesson(), check(), Checked, essayGrade() (+32 more)
 
 ### Community 132 - "refund.ts"
-Cohesion: 0.29
-Nodes (7): cancelFee(), monthsLeft(), Refund, REFUND_FULL_DAYS, refundOf(), RefundOrder, pack6
+Cohesion: 0.27
+Nodes (8): israelDate(), cancelFee(), monthsLeft(), Refund, REFUND_FULL_DAYS, refundOf(), RefundOrder, pack6
 
-### Community 133 - "acceptedAnswers.ts"
-Cohesion: 0.70
-Nodes (4): expandAccepted(), expandPattern(), matchesAccepted(), normalize()
+### Community 133 - "PassageText.svelte"
+Cohesion: 0.21
+Nodes (5): CALLOUT_ICONS, DEFAULT_CALLOUT_ICON, stripLineAttrs(), gutter, lines
 
 ### Community 135 - "Handoff: Zoom group lessons, testing"
 Cohesion: 0.25
@@ -668,17 +668,13 @@ Nodes (7): Before production, Checks, Handoff: Zoom group lessons, testing, Name
 Cohesion: 0.50
 Nodes (3): Fix, Handoff: exam lock trusts the client's part count, The gap
 
-### Community 137 - "lastEngagement.svelte.ts"
-Cohesion: 0.33
-Nodes (4): Engagement, lastEngagement, LastEngagementStore, load()
-
-### Community 138 - "support.ts"
+### Community 138 - "nextRoundIndex"
 Cohesion: 0.25
-Nodes (4): SUPPORT_EMAIL, SUPPORT_WHATSAPP, TESTER_PHASE, TESTERS_GROUP
+Nodes (8): enterRunner(), isUnlocked(), jumpToAnchor(), nextRoundIndex(), openNode(), remember(), roundsCompleted(), totalRounds()
 
 ### Community 142 - "moduleLocation.svelte.ts"
-Cohesion: 0.16
-Nodes (10): LEGACY_IDS, migrate(), PREFIXED, renamed(), rewriteJson(), Entry, load(), LocationMap (+2 more)
+Cohesion: 0.15
+Nodes (11): LEGACY_IDS, migrate(), PREFIXED, renamed(), rewriteJson(), Entry, load(), LocationMap (+3 more)
 
 ### Community 143 - "lessonIcon.ts"
 Cohesion: 0.67
@@ -689,8 +685,12 @@ Cohesion: 0.40
 Nodes (4): Handoff: text as blocks (future plan), Now, Steps, Target
 
 ### Community 147 - "lessons/+page.svelte"
-Cohesion: 0.08
-Nodes (36): markRoundCompleted(), activeNode, activeRoundIndex, anchorRow, canvasCenter, canvasHeight, canvasWidth, celebrateIfNewlyDone() (+28 more)
+Cohesion: 0.10
+Nodes (18): activeNode, activeRoundIndex, anchorRow, canvasCenter, canvasHeight, canvasWidth, delayForY(), edgeDelay() (+10 more)
+
+### Community 149 - "scan.ts"
+Cohesion: 0.47
+Nodes (4): ApiError, previewUrl(), scanHandwriting(), toJpeg()
 
 ### Community 150 - "quote/+server.ts"
 Cohesion: 0.39
@@ -704,37 +704,53 @@ Nodes (11): 1. Who and what for, 2. Tone, 3. The core loop, 4. Devices, 5. Motiv
 Cohesion: 0.70
 Nodes (3): COMMON, distance(), suggestEmail()
 
+### Community 169 - "examLock.ts"
+Cohesion: 0.53
+Nodes (4): RETAKE_WAIT_MS, assertExamOpen(), exempt(), recordExamPart()
+
+### Community 171 - "reviewNotes.svelte.ts"
+Cohesion: 0.40
+Nodes (3): BLANK, ReviewNote, reviewNotes
+
+### Community 174 - "textColors.ts"
+Cohesion: 0.40
+Nodes (3): HEX_TO_NAME, TEXT_COLOR_PALETTE, TextColorName
+
+### Community 177 - "Module G QA report"
+Cohesion: 0.50
+Nodes (3): Findings, Grades, Module G QA report
+
 ### Community 190 - "UI review"
 Cohesion: 0.40
 Nodes (4): Motion and feedback are required, not polish, Overrides to the guidelines (this project), Procedure, UI review
 
 ### Community 195 - "auth.svelte.ts"
-Cohesion: 0.09
-Nodes (15): access, AccessStore, CheckoutError, fetchQuote(), placeOrder(), post(), Quote, COBE_OPEN (+7 more)
+Cohesion: 0.07
+Nodes (15): access, CheckoutError, fetchQuote(), placeOrder(), post(), Quote, auth, EditStore (+7 more)
 
 ### Community 217 - "billing.ts"
-Cohesion: 0.15
-Nodes (17): maxPayments(), Plan, accessEnd(), accessUntil(), checkout(), CheckoutResult, completeOrder(), Coupon (+9 more)
+Cohesion: 0.13
+Nodes (18): Plan, accessEnd(), accessUntil(), billingEnabled, checkout(), CheckoutResult, completeOrder(), Coupon (+10 more)
 
 ## Knowledge Gaps
-- **807 isolated node(s):** `State`, `The issue`, `Next`, `Checks`, `Names` (+802 more)
+- **826 isolated node(s):** `svelte`, `run`, `noSession`, `TestUser`, `users` (+821 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **61 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **67 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `EditModel` connect `EditModel` to `RulesPanel.svelte`, `ExamEditWorkspace.svelte`, `LessonScreen`, `content/index.ts`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `apiFetch()` connect `apiFetch` to `reminders.svelte.ts`, `RulesStore`, `content-edit/api.ts`, `auth.svelte.ts`, `rulesStore.svelte.ts`, `feedback/grade.ts`, `AccountSection.svelte`, `progressSync.svelte.ts`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `he` connect `test` to `personas.spec.ts`, `he.ts`, `index.svelte.ts`, `fixtures.ts`, `accounts.spec.ts`?**
+- **Why does `apiFetch()` connect `apiFetch` to `reminders.svelte.ts`, `RulesStore`, `content-edit/api.ts`, `auth.svelte.ts`, `gradeExam.ts`, `rulesStore.svelte.ts`, `progressSync.svelte.ts`, `reviewNotes.svelte.ts`, `RemindersStore`, `.refresh`, `scan.ts`, `ReviewNotesStore`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **What connects `State`, `The issue`, `Next` to the rest of the system?**
-  _807 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `LessonScreen` connect `LessonScreen` to `ExamEditModel`, `scoring.ts`, `EditModel`, `SlideStage.svelte`, `examEditModel.svelte.ts`, `lesson-screens/types.ts`, `content/index.ts`, `editModel.svelte.ts`, `deck/index.ts`?**
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `EditModel` connect `EditModel` to `LessonScreen`, `RulesPanel.svelte`, `content/index.ts`, `EditWorkspace.svelte`, `editModel.svelte.ts`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **What connects `svelte`, `run`, `noSession` to the rest of the system?**
+  _826 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `svelte-core-bestpractices/SKILL.md` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `lib/kanban.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.11904761904761904 - nodes in this community are weakly interconnected._
 - **Should `EditModel` be split into smaller, more focused modules?**
-  _Cohesion score 0.08599033816425121 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09080841638981174 - nodes in this community are weakly interconnected._

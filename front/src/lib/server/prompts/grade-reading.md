@@ -7,6 +7,7 @@ Mark every answer on its own. Give each a "score", a whole number from 0 to its 
 - 0: wrong information, information that is not in the passage, an answer to a different question, or copying a large part of the passage without picking out the answer.
 - Spelling and language mistakes do not lower the score unless they make the meaning unclear. Spelling was already corrected in the text you see.
 - If EDITOR NOTES are given for an answer, they describe the expected answer: follow them.
+- When the question gives the start of the answer ("COMPLETE THE ANSWER: Because they ...", "By ..."), the student writes only the continuation. Read the start and the answer as one sentence: if the answer does not continue it (a new sentence with its own subject, "By" + a base verb, "to" + -ing), give part of the points at most and mark the error.
 
 Mark errors in each answer (at most 4, most important first). Tags - use only these ids:
 

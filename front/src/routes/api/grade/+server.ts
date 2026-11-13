@@ -49,7 +49,8 @@ const body = z.discriminatedUnion('kind', [
 	}),
 	z.object({
 		kind: z.literal('reading'),
-		exam,
+		// absent = a lesson's typed reading answers (lesson quota, no exam lock)
+		exam: exam.optional(),
 		passage: z.string().min(1).max(8000),
 		items: z
 			.array(
@@ -71,15 +72,15 @@ export const POST = llmRoute({
 	failure: 'grading failed',
 	parse: async ({ request, locals }) => {
 		const req = await jsonBody(request, body);
-		if (req.kind !== 'lesson') await assertExamOpen(locals, req.exam);
+		if (req.kind !== 'lesson' && req.exam) await assertExamOpen(locals, req.exam);
 		return req;
 	},
-	activity: (req) => (req.kind === 'lesson' ? 'lesson' : 'exam'),
+	activity: (req) => (req.kind === 'lesson' || !req.exam ? 'lesson' : 'exam'),
 	run: async (req, { locals }) => {
 		if (req.kind === 'lesson') return gradeLesson(req);
 		// a failure throws (502) before the tick: the exam is done only when every part is graded
 		const verdict = req.kind === 'reading' ? await gradeReading(req) : await gradeEssay(req);
-		await recordExamPart(locals, req.exam);
+		if (req.exam) await recordExamPart(locals, req.exam);
 		return verdict;
 	}
 });
