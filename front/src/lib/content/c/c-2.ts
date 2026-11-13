@@ -2433,11 +2433,11 @@ export const c2Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "{d:rtl}קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{p:text}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\n{d:rtl}כמה מהן אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
+          text: "{d:rtl}קראו את הקטע. המילים המודגשות הן מילות תוכן.\n\n{p:text}Pollution can **destroy** habitats and **reduce** the number of **species**. Projects that **protect** forests can **increase** the population of endangered animals.\n\n{d:rtl}כמה מהן בפסקה אתם בטוחים במשמעות שלהן, בלי לחשוב? אם פחות מחמש - השיעור הזה בשבילכם.",
         },
         {
           type: "preface",
-          text: "{d:rtl}חמש מילים על **שינוי וסביבה**: מה עולה, מה יורד, מה מוגן ומה נהרס.\n\n{d:rtl}הן חוזרות בכל טקסט על סביבה, בעלי חיים ואקלים, ולכיוון של המילה יש משמעות: עלייה או ירידה. כל מילה מגיעה עם תרגילים מיד אחריה.",
+          text: "{d:rtl}חמש מילים על **שינוי וסביבה**: מה עולה, מה יורד, מה מוגן ומה נהרס. הן חוזרות בכל טקסט על סביבה, בעלי חיים ואקלים, ולכיוון של המילה יש משמעות: עלייה או ירידה. כל מילה מגיעה עם תרגילים מיד אחריה.",
         },
       ],
       rounds: [
