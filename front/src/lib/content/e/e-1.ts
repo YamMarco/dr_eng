@@ -743,6 +743,15 @@ export const e1Lessons: LessonNode[] = [
           text: "{p:callout}{i:warn}ההתחלה + ההמשך שלכם = **משפט אחד**. קראו אותם יחד. לא כותבים שוב את ההתחלה, ולא פותחים משפט חדש (They...).",
         },
         {
+          type: "summary",
+          title: "על מה מורידים נקודות?",
+          lines: [
+            "✍️ שגיאת דקדוק: 1-3 נקודות פחות בשאלה",
+            "🔤 שגיאת כתיב: אפס. על כתיב לא מורידים, כל עוד מבינים את המילה",
+            "✅ לכן צורת הפועל אחרי By / to / must חשובה יותר מאיות מושלם",
+          ],
+        },
+        {
           type: "preface",
           text: "דוגמה מהכתבה על הספרייה:\n{p:text}How did Helen pay for the bus? COMPLETE THE ANSWER: By ...\n\nבטקסט: She **sold** her car, **used** her savings.\nאחרי By הפועל מקבל ing:\n{p:text}By **selling her car and using her savings**.",
         },
@@ -803,6 +812,19 @@ export const e1Lessons: LessonNode[] = [
               correctIndex: 0,
               explanation:
                 "המידע נכון, אבל הוא לא ממשיך את By. מעבירים את הפועל מהטקסט לצורה שמתאימה להתחלה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}How can guests learn about the bees?\nCOMPLETE THE ANSWER: By ...\n\nתלמיד כתב: **By joinning the beekeeper on a tour.** כמה נקודות יורידו לו?",
+              options: [
+                "אף נקודה - על כתיב לא מורידים",
+                "נקודה אחת - יש שגיאת כתיב",
+                "1-3 נקודות - כמו על שגיאת דקדוק",
+              ],
+              correctIndex: 0,
+              explanation:
+                "joinning כתוב לא נכון, אבל הצורה (By + ing) נכונה ומבינים את המילה. על כתיב לא מורידים. אילו כתב By joined - זו שגיאת דקדוק, ועליה כן מורידים.",
             },
           ],
         },
@@ -921,7 +943,7 @@ export const e1Lessons: LessonNode[] = [
           lines: [
             "📖 קריאה ו-9 שאלות - כ-50 דק׳ (כ-5 דק׳ לשאלה)",
             "🔤 אוצר מילים, 5 סטים - כ-15 דק׳",
-            "✅ בדיקה - כ-10 דק׳: אין שאלה ריקה, וכל המשך מתאים להתחלה שלו",
+            "✅ בדיקה - כ-10 דק׳: אין שאלה ריקה, וכל המשך מתאים להתחלה שלו (By + ing, to + פועל בסיס)",
           ],
         },
         {

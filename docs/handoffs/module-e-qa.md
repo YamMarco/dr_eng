@@ -11,6 +11,21 @@ Content audit of Module E (5-point level; 4 points has its own Module E content)
 
 Source: [5pointsbooklet2025.pdf](https://meyda.education.gov.il/files/pop/0files/english/Chativa-Elyona/Bagrut/updates/5pointsbooklet2025.pdf), pages 4-7.
 
+### Real papers (16471: winter 2024, winter 2025, summer 2025, and two more from 2023-2025)
+
+Every paper has the same frame:
+- One article, I-V, with line numbers in the margin. Glossary of about 4-8 underlined words, translated into 6 languages (Hebrew, Arabic, Spanish, Russian, French, Amharic).
+- **Exactly 9 questions, all compulsory, 7 or 8 points each (total 70).** No "answer X of Y", no "choose TWO", no true/false, no tables.
+- **4 multiple choice, one answer out of i-iv.** Q1 is always one of them ("What are we told in paragraph I?" / "What do we learn from paragraph I about storms?" / "What is presented in paragraph I?"). The other three mix:
+  - topic questions ("What are we told in paragraph III about daydreaming?")
+  - inference ("What can we understand about the residents...?")
+  - reference ("In line 24, the writer refers to 'the same goal.' What is that goal?")
+  - common ground ("What do the benefits described in paragraph III have in common?")
+- **5 open:** COMPLETE THE SENTENCE / COMPLETE THE ANSWER (Because..., In order to..., The same as...) / ANSWER. Often "Give ONE answer / example" (several are correct) and "Base your answer on lines 14–16".
+- Vocabulary: 5 sets, 6 items, 3 definitions, 2 points per match (the app's format is right).
+
+Downloaded from `meyda.education.gov.il/sheeloney_bagrut/<year>/<month>/HEB/16471.pdf`.
+
 ## Grades (10 = best)
 
 | Part | Student | Teacher |
@@ -29,10 +44,11 @@ Chain: e-bridge (exam facts) → e-method (method + Library exam-level text) →
 Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and its 3 traps (true detail, another paragraph's topic, wrong question word); e-complete's By + ing / to + base verb summary.
 
 - [ ] **Every passage-mcq answer is option 0.** `PassageMcq.svelte` doesn't shuffle, so the right answer is always first (all but the new glossary text). Planned: shuffle in lessons.
-- [ ] **Taught format ≠ exam format.** Lessons teach 9 questions (4 topic MCQs + 5 completions); the app exams have 7 (with "choose TWO" and "Give TWO answers"). Lessons say a true detail is a trap, but e-exam-3 Q1 marks a detail ("Which school subject Daniel was reviewing") as correct.
-- [ ] **Question types never taught:** true/false with justification, tables / timelines, "choose TWO", "Give TWO answers", non-article texts (interview, letter, review, ad).
+- [ ] **App exams ≠ real format.** The lessons' 9 questions (4 MCQs + 5 open) match the real papers. The app exams don't: they have 7 questions, "choose TWO" (14 points) and "Give TWO answers" (16 points). Their e-exam-3 Q1 marks a detail as correct, which clashes with e-topic. Fix the exams, not the lessons.
+- [ ] **Real question kinds never taught:** line references ("Base your answer on lines 14–16", "In line 24, the writer refers to..."), "Give ONE answer" (several are correct, pick one), inference MCQs ("What can we understand about..."), "What do we learn about X from paragraph Y", "What do ... have in common?". The real papers have no true/false or tables, so those wait.
+- [ ] **The lessons say "4 topic questions";** the real 4 MCQs are 1-2 topic questions plus inference / reference / about-X questions. Update the e-bridge summary.
 - [ ] **Typed answers are graded by keyword only** (`PassageQuiz.svelte`): "By joined a tour" passes, so the By + ing form is never checked. Wrong keys: Repair Café Q1 needs "free" (rejects "By organising a Repair Café"); Q2 accepts only "waste" (rejects "to teach people to fix things").
-- [ ] **Grading facts not taught:** grammar costs 1-3 points per question, spelling costs nothing.
+- [x] Grading facts taught in e-complete: grammar costs 1-3 points, spelling costs nothing (a summary screen + a "By joinning" question). The final-check line in e-glossary-time names the verb forms.
 - [x] Weak lesson distractors replaced with tempting ones: "libraries" (appears all over the text, so it's a poor keyword), "For a few weeks", "Helen spent a whole summer building the shelves" (a detail that sounds big), "היא לא מופיעה בכתבה בכלל".
 - [x] Typos: "ברך כלל", "במקומו**y**:", the bold run-on in the first screen, "תזכורת:  על פסקה קצרה".
 - [x] First screen within the phone limit (about 200 characters).
@@ -45,7 +61,8 @@ Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and i
 
 Strengths: readable texts; feedback on every option with a quote from the text.
 
-- [ ] **Off-spec format:** 7 questions (spec 8-10), with 14- and 16-point items.
+- [ ] **Off-spec format:** 7 questions with 14- and 16-point "TWO" items. Real papers: 9 questions of 7-8 points, 4 MCQs with one answer.
+- [ ] No line numbers in the passage, so line-reference questions can't be asked.
 - [ ] All four texts are the same genre (5-paragraph teens-and-tech argument). The sleep topic in e-topic-q repeats g-exam-3 (melatonin).
 - [ ] Gloss slips: "to run out of" → "שנגמר ל-", "exactly" → "בדיוק!", "behind" → "מפגר"; "an instruction" is defined with the uncountable meaning ("teaching").
 - [x] e-exam-1 vocabulary: all 30 items are now deck words (18 were outside the Ministry lists).

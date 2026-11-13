@@ -83,7 +83,7 @@ Open: Introduction to Poetry is licensed, so its poem screens show a summary unt
 | e-bridge | הבחינה והשיטה (exam facts) | 7 |
 | e-method | השיטה בקצרה (method, then the exam-level Library text) | 16 |
 | e-topic / e-topic-q | על מה הפסקה? / שאלות נושא | 19 / 9 |
-| e-complete | משלימים את התשובה | 13 |
+| e-complete | משלימים את התשובה | 15 |
 | e-glossary-time | Glossary וניהול זמן | 10 |
 | e-final | תרגול מסכם בזמן | 4 |
 
