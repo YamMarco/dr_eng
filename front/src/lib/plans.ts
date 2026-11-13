@@ -2,13 +2,13 @@
 // prices orders from here, never from the client). Copy lives in i18n (`plans`).
 //
 // Every price has two parts: `app` (the app and COBE, ours) and `zoom` (the teacher's:
-// group lessons and private lessons). Coupons take off the app part only.
+// the group lessons). Coupons take off the app part only.
 // Cycles: `month`, `pack3` and `pack6` (months from the day of purchase). Longer cycles
 // cost less a month.
 // Two price lists: `regular` and `launch`. The site charges PRICING; the other is only
 // previewed in the /plans debug panel.
 
-export type OfferId = 'premium' | 'group' | 'personal' | 'cobe' | 'lesson';
+export type OfferId = 'premium' | 'group' | 'cobe';
 export type Cycle = 'month' | 'pack3' | 'pack6';
 export const CYCLES: Cycle[] = ['month', 'pack3', 'pack6'];
 type Split = { app: number; zoom: number };
@@ -36,9 +36,6 @@ const GROUP_ZOOM = {
 	regular: per(13000, 12000, 11500),
 	launch: per(8000, 8000, 8000)
 };
-/** Two private lessons a month (2 x LESSON), never discounted. */
-const PRIVATE = 35800;
-
 export type Pricing = keyof typeof GROUP_ZOOM;
 /** What the site charges. */
 export const PRICING: Pricing = 'regular';
@@ -56,22 +53,17 @@ const MONTHLY = Object.fromEntries(
 		{
 			premium: split(ladder(6400), per(0, 0, 0)),
 			group: split(APP, GROUP_ZOOM[pricing]),
-			// Rounded down to a price ending in 9: the app part takes the difference.
-			personal: split(per(4100, 3100, 2600), GROUP_ZOOM[pricing], PRIVATE),
 			cobe: split(per(5900, 5500, 5000), per(0, 0, 0))
 		}
 	])
-) as Record<Pricing, Record<Exclude<OfferId, 'lesson'>, Record<Cycle, Split>>>;
+) as Record<Pricing, Record<OfferId, Record<Cycle, Split>>>;
 
-/** Per cycle; `lessons`: private lessons a month, added to the Zoom part. */
-function split(app: Record<Cycle, number>, zoom: Record<Cycle, number>, lessons = 0) {
-	return Object.fromEntries(
-		CYCLES.map((c) => [c, { app: app[c], zoom: zoom[c] + lessons }])
-	) as Record<Cycle, Split>;
+function split(app: Record<Cycle, number>, zoom: Record<Cycle, number>) {
+	return Object.fromEntries(CYCLES.map((c) => [c, { app: app[c], zoom: zoom[c] }])) as Record<
+		Cycle,
+		Split
+	>;
 }
-
-/** One private Zoom lesson: all of it goes to the teacher; a month of the app comes free. */
-const LESSON: Split = { app: 0, zoom: 17900 };
 
 /** COBE added to a plan, per month (cheaper than COBE alone). */
 export const COBE_ADDON = per(3900, 3500, 3200);
@@ -87,15 +79,14 @@ export const INSTALLMENTS = true;
 /** Most installments the payment page offers for a plan (1 = a single payment). */
 export const maxPayments = (plan: Plan) => (INSTALLMENTS ? plan.months : 1);
 
-/** The plans on the page, in order; the featured one is pushed. `personal` is priced but hidden for now. */
+/** The plans on the page, in order; the featured one is pushed. */
 export const TIERS = ['premium', 'group'] as const;
 export const FEATURED_OFFER: OfferId = 'group';
 
 export type Plan = {
 	id: string;
 	offer: OfferId;
-	/** null for a lesson. */
-	cycle: Cycle | null;
+	cycle: Cycle;
 	/** Total in agorot = app + zoom. */
 	price: number;
 	app: number;
@@ -119,11 +110,10 @@ export function israelDate(at: Date) {
 	return { y, m: m - 1, d };
 }
 
-type Parsed = { offer: OfferId; cycle: Cycle | null; bundle: boolean };
+type Parsed = { offer: OfferId; cycle: Cycle; bundle: boolean };
 
 /** "premium-month-cobe" -> its parts; undefined for an id the catalogue doesn't know. */
 function parse(id: string): Parsed | undefined {
-	if (id === 'lesson') return { offer: 'lesson', cycle: null, bundle: false };
 	const bundle = id.endsWith(COBE_SUFFIX);
 	const [offer, cycle, ...rest] = (bundle ? id.slice(0, -COBE_SUFFIX.length) : id).split('-');
 	if (rest.length || !CYCLES.includes(cycle as Cycle) || !(offer in MONTHLY.regular)) return;
@@ -141,19 +131,21 @@ export function productsOf(id: string): Products | undefined {
 		parsed && {
 			app: parsed.offer !== 'cobe',
 			cobe: parsed.offer === 'cobe' || parsed.bundle,
-			lessons: parsed.offer === 'group' || parsed.offer === 'personal'
+			lessons: parsed.offer === 'group'
 		}
 	);
 }
 
-/** "group-pack6", "premium-month-cobe" or "lesson"; undefined for an unknown id.
+/** "group-pack6" or "premium-month-cobe"; undefined for an unknown id.
  *  `pricing` other than PRICING is for the page's preview only. */
-export function planById(id: string | null | undefined, pricing: Pricing = PRICING): Plan | undefined {
+export function planById(
+	id: string | null | undefined,
+	pricing: Pricing = PRICING
+): Plan | undefined {
 	const parsed = id ? parse(id) : undefined;
 	if (!id || !parsed) return;
 	const { offer, cycle, bundle } = parsed;
-	if (!cycle) return build(id, offer, null, LESSON, 1, false);
-	const monthly = MONTHLY[pricing][offer as Exclude<OfferId, 'lesson'>][cycle];
+	const monthly = MONTHLY[pricing][offer][cycle];
 	const split = { ...monthly, app: monthly.app + (bundle ? COBE_ADDON[cycle] : 0) };
 	return build(id, offer, cycle, split, CYCLE_MONTHS[cycle], bundle);
 }
@@ -161,7 +153,7 @@ export function planById(id: string | null | undefined, pricing: Pricing = PRICI
 function build(
 	id: string,
 	offer: OfferId,
-	cycle: Cycle | null,
+	cycle: Cycle,
 	monthly: Split,
 	months: number,
 	bundle: boolean
@@ -186,7 +178,6 @@ export const planId = (offer: OfferId, cycle: Cycle, cobe = false) =>
 
 /** The same plan with COBE added or removed; undefined when it can't take COBE. */
 export function withCobe(plan: Plan, on: boolean, pricing: Pricing = PRICING): Plan | undefined {
-	if (!plan.cycle) return;
 	return planById(planId(plan.offer, plan.cycle, on), pricing);
 }
 

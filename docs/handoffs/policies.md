@@ -33,7 +33,6 @@
 - [ ] Waitlist: delete the list after the launch email (the policy promises it)
 - [ ] Tell testers (WhatsApp group) about the 04.11.2026 policy update (AI retention now per the providers' terms, refund per the law) and the 05.11.2026 one (installments, refund on the full price): material changes need notice before they apply
 - [ ] Marketing withdrawals: no in-app toggle; removals come by email or the unsubscribe link, record them before the first campaign
-- [ ] Private lessons are off, but the plans page still shows "רוצים רק שיעור פרטי?" with a checkout link (`lesson`, `LESSON` in `lib/plans.ts`), and `personal-*` plan ids still price at checkout by URL. Remove both before payments open
 - [ ] Zoom count: owner said 1 a month; plans copy says the group lesson is weekly ("כל שבוע", "4 שיעורים בחודש"). Align both before writing the terms
 
 

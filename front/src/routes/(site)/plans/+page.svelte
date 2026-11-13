@@ -6,8 +6,7 @@
 		Minus,
 		Mic,
 		ShieldCheck,
-		Sparkles,
-		Video
+		Sparkles
 	} from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
@@ -84,7 +83,6 @@
 		savingPercent(plan(offer), plan(offer, 'month', !!cobeOn[offer]));
 
 	let addonPrice = $derived(formatPrice(COBE_ADDON[cycle]));
-	let lesson = $derived(planById('lesson')!);
 
 	// The anchor: a month of weekly private lessons against the featured plan's month.
 	const tutorMonth = (TUTOR_HOUR * 4) / 100;
@@ -413,7 +411,7 @@
 		</table>
 	</section>
 
-	<!-- Standalone: a private lesson, COBE alone -->
+	<!-- Standalone: COBE alone -->
 	{#snippet standalone(
 		id: string,
 		icon: typeof Mic,
@@ -447,16 +445,6 @@
 			</div>
 		</section>
 	{/snippet}
-	{@render standalone(
-		'lesson',
-		Video,
-		t.lessonTitle,
-		t.lessonBody,
-		lesson.price / 100,
-		t.perLesson,
-		t.lessonChoose,
-		checkoutHref(lesson.id)
-	)}
 	<section
 		{@attach reveal}
 		class="flex flex-col gap-4 rounded-3xl bg-surface p-6 ring-1 ring-line/70 sm:flex-row sm:items-center sm:gap-8"

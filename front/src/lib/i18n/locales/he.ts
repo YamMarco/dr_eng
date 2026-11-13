@@ -311,11 +311,6 @@ export const he = {
 			{ label: 'אוצר מילים עם חזרות חכמות', values: [true, true] },
 			{ label: 'שיעור זום קבוצתי עם מורה', values: [false, 'כל שבוע'] }
 		] as { label: string; values: (boolean | string)[] }[],
-		lessonTitle: 'רוצים רק שיעור פרטי?',
-		lessonBody:
-			'שיעור זום פרטי של שעה עם מורה, ממוקד במה שקשה לכם. בחודש של השיעור מקבלים גם את האפליקציה במתנה.',
-		perLesson: 'לשיעור',
-		lessonChoose: 'קביעת שיעור',
 		enterpriseName: 'ארגונים',
 		enterpriseTitle: 'בית ספר, מכללה או קבוצת לימוד?',
 		enterpriseBody: 'מסלול לכיתות ולבתי ספר שלמים, בתמחור שמותאם לכם.',
@@ -396,18 +391,7 @@ export const he = {
 					'4 שיעורים בחודש, בפחות משליש ממחיר של מורה פרטי'
 				]
 			},
-			personal: {
-				name: 'אישי',
-				tagline: 'למי שצריך קפיצה גדולה בציון',
-				features: [
-					'כל מה שבמסלול הקבוצתי',
-					'2 שיעורים פרטיים בזום בחודש',
-					'תוכנית אישית מול הנקודות החלשות',
-					'תיאום שיעורים ישר מהאפליקציה'
-				]
-			},
-			cobe: { name: 'COBE', tagline: '', features: [] },
-			lesson: { name: 'שיעור פרטי בזום', tagline: '', features: [] }
+			cobe: { name: 'COBE', tagline: '', features: [] }
 		} as Record<string, { name: string; tagline: string; features: string[] }>,
 		withCobe: ' + COBE',
 		debug: {
@@ -447,7 +431,6 @@ export const he = {
 		packLine: (months: number) => `גישה ל-${months} חודשים מיום הרכישה`,
 		installments: (months: number) => `עד ${months} תשלומים`,
 		guarantee: 'לא מתאים? החזר מלא תוך 3 ימים.',
-		lessonDone: 'נחזור אליכם במייל לתיאום מועד השיעור.',
 		doneTitle: 'הגישה פעילה!',
 		doneBody: 'אפשר להתחיל ללמוד.',
 		until: 'בתוקף עד',

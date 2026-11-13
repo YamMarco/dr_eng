@@ -56,7 +56,7 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answers "active" for everyone and the app stays open.
 
 - **Plans** live in `$lib/plans.ts`; copy in i18n `plans`. The server prices orders from there, never from the client. Every price is `app` (ours; coupons discount only this part) + `zoom` (the teacher's share: the group lessons).
-- **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`), אישי (+ 2 private lessons a month), COBE alone, and a single private lesson (`lesson`, all to the teacher, a month of the app free). Ids: `<offer>-<month|pack3|pack6>`, `+ -cobe` for COBE added on, and `lesson`. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
+- **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`) and COBE alone. Ids: `<offer>-<month|pack3|pack6>`, `+ -cobe` for COBE added on. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
 - **Cycles:** a month, 3 or 6 months, all from the day of purchase; access stacks, which is also how extensions work.
 - **Packs:** 3 or 6 months from the day of purchase.
 - **Pending promise:** `GUARANTEE` (a full-refund line on plans and checkout) is off until the terms match.
@@ -73,7 +73,7 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 
 ## Group lessons (Zoom)
 
-One weekly group lesson for plans with the `lessons` product (`productsOf`: the group and personal offers; staff pass). Students join from home's lesson card (`LiveLessonCard.svelte`); the meeting opens in Zoom, in a new tab.
+One weekly group lesson for plans with the `lessons` product (`productsOf`: the group offer; staff pass). Students join from home's lesson card (`LiveLessonCard.svelte`); the meeting opens in Zoom, in a new tab.
 
 - **Personal links, no Zoom accounts:** the teacher's recurring meeting requires registration with manual approval. The first time, the student types the name the teacher will see; `/api/lessons` (POST) registers them through the Zoom API, approved at once, and keeps their personal join link in `zoom_registrants` (server-only). Anyone else who registers stays pending. Zoom gets an alias email per student (`aliasEmail` in `server/zoom.ts`), never the real one.
 - **`/api/lessons` (GET):** `locked` (no lessons in the plan; the card links to `/plans`, web only), `needs-name`, or `ready` with the next lesson, the join link and the latest recording. 503 (card hidden) without Zoom, the DB or a signed-in user.

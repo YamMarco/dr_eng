@@ -97,7 +97,7 @@
 
 	let name = $derived(
 		i18n.dict.plans.offers[plan.offer].name +
-			(plan.cycle ? `, ${i18n.dict.plans.cycles[plan.cycle]}` : '') +
+			`, ${i18n.dict.plans.cycles[plan.cycle]}` +
 			(plan.bundle ? i18n.dict.plans.withCobe : '')
 	);
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
@@ -127,9 +127,6 @@
 			<h1 class="text-3xl font-extrabold tracking-tight">{t.doneTitle}</h1>
 			<p class="text-lg text-muted">{t.doneBody}</p>
 			<p class="text-sm text-muted">{t.until} {date(doneUntil)}</p>
-			{#if plan.offer === 'lesson'}
-				<p class="text-muted">{t.lessonDone}</p>
-			{/if}
 			<Button href={resolve('/app')} class="mt-4">{t.toApp}</Button>
 		</div>
 	</main>
@@ -179,7 +176,7 @@
 					<div class="flex min-w-0 flex-1 flex-col leading-snug">
 						<span class="font-bold">{t.bumpTitle}</span>
 						<span class="text-sm text-muted">
-							{t.bumpBody(formatPrice(COBE_ADDON[plan.cycle!]))}
+							{t.bumpBody(formatPrice(COBE_ADDON[plan.cycle]))}
 						</span>
 					</div>
 					<Toggle checked={plan.bundle} label={t.bumpTitle} onchange={setCobe} />
