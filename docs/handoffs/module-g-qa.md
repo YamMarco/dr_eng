@@ -21,6 +21,15 @@ Exam texts here: 451-469 words, 9 questions, reading parts sum to 60. Matches.
 
 Still holding it back: the LLM being off (#2 grades by keywords until it is on), untaught exam question types (#5).
 
+## Open, by priority
+
+1. **#5** teach the 4 untaught exam question types (biggest gap for students)
+2. **#12** wrong quote in exam 3 (a factual error, one line)
+3. **#13** exam answer positions (B in 7 of 9)
+4. **#16** Arabic for the new text (run the i18n script)
+5. **#14** grading notes in exams 1-2
+6. **#9 / #10 / #8** writing extras: second conditional, the 4 templates, AI essay transfer
+
 ---
 
 ## Reading lessons
@@ -59,7 +68,8 @@ Still holding it back: the LLM being off (#2 grades by keywords until it is on),
 Some wrong options are now as long as the right one; options now shuffle (#1).
 
 ### 5. Exam question types never taught - ⬜
-Why the writer mentions X, best title, main purpose, writer's attitude.
+Exams 2-5 ask them (mention X: exams 2 and 4, main purpose: 2, best title: 3, attitude: 5). No g-1 lesson practices them, so students meet them first in the exam.
+**Suggested fix:** one lesson (or a round in `g-mc-eliminate`) per type, each with the trap: a true detail that is too narrow for a title or purpose.
 
 ### 6. Small issues - ✅
 - Intro no longer mentions "magnets" before they are taught
@@ -104,13 +114,13 @@ Names 4 templates but only shows the master template's openers.
 **Fix (all 5):** 4 paragraphs, 132-139 words, clear stance, first conditional only. Counter-arguments at the end of paragraph 3 (exams 2-5). Exam 4's intro is 2 sentences; exam 5 now disagrees.
 
 ### 12. Wrong quote in exam 3 - ⬜
-Title feedback quotes "body clock", which is not in the passage (`quiz/g/index.ts`, title question).
+`g-exam-3` ("Why Teenagers Can't Wake Up"): the best-title feedback (`quiz/g/index.ts` ~line 596) quotes "body clock", but the passage says "biology" ("more to do with biology than with character"). Quote that line instead.
 
 ### 13. Answer-position pattern - ⬜
-Single-answer MCQ correct = B in 6 of 8.
+Single-answer exam MCQs: correct = B in 7 of 9 (A in the other 2). Exams keep authored order (a fixed paper), so the lesson shuffle (#1) doesn't help here; reorder the options in the content.
 
 ### 14. Weak grading notes - ⬜
-Key texts like "However" and "this approach" don't help the grader.
+Key texts that don't locate the answer: `"this approach"` (exam 1, ~line 168) and `"However"` (exam 2, ~line 299). Quote the sentence that holds the answer.
 
 ---
 
@@ -121,5 +131,5 @@ Key texts like "However" and "this approach" don't help the grader.
 Fixed with lookarounds (`writingLint.ts`); test in `tests/writing-lint.test.ts`.
 
 ### 16. Arabic missing for new text - ⬜
-New Hebrew strings (option feedback, 2 lessons, titles, the "שאלות בסגנון בחינה" opener title, the dictionary card) show in Hebrew in the Arabic UI.
-Run `node scripts/content-i18n.mjs`.
+New Hebrew strings (option feedback, 2 lessons, titles, the "שאלות בסגנון בחינה" opener title, the dictionary card) show in Hebrew in the Arabic UI. `titles.ar.ts` has no entry for `g-w-body` / `g-w-timed-essay`.
+Run `node scripts/content-i18n.mjs` (generated, not hand-written).
