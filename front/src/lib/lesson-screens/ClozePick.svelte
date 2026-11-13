@@ -12,6 +12,8 @@
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
+	import { fitOrder, optionOrder } from './shuffle';
+	import { untrack } from 'svelte';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -43,6 +45,10 @@
 	);
 	let missed = $state<number[]>([]);
 	let lastMiss = $derived(missed.at(-1));
+
+	// Lesson mode shuffles the options; quiz mode keeps the paper's order (see Mcq.svelte).
+	const shuffled = untrack(() => optionOrder(screen.options.length, mode === 'lesson'));
+	let order = $derived(fitOrder(shuffled, screen.options.length));
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -93,7 +99,8 @@
 </p>
 
 <div class="mt-5 flex flex-wrap gap-2" dir="ltr">
-	{#each screen.options as opt, i (i)}
+	{#each order as i (i)}
+		{@const opt = screen.options[i]}
 		{@const isCorrect = screen.correctIndices.includes(i)}
 		{@const isSelected = selected === i}
 		{@const isMissed = !checked && missed.includes(i)}

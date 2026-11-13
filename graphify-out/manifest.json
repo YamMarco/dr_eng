@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Mcq.svelte": {
-    "mtime": 1794560866.290342,
-    "ast_hash": "da1646e1d0b0e003ad712389240f7873",
+    "mtime": 1794575843.3330908,
+    "ast_hash": "ce711295d81bf4f7d5607d55b5c3e754",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Preface.svelte": {
@@ -350,8 +350,8 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1794562924.5469265,
-    "ast_hash": "c689070c150590d20e625da554724b04",
+    "mtime": 1794575897.2894516,
+    "ast_hash": "d0aab62f051b58fea571c44e09f5f382",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
@@ -425,8 +425,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/PassageMcq.svelte": {
-    "mtime": 1794560866.302818,
-    "ast_hash": "8a77787c3c9626890b65a030e621cc76",
+    "mtime": 1794575843.954463,
+    "ast_hash": "1587568de72053865edfcf0848748796",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/api.ts": {
@@ -565,8 +565,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/ClozePick.svelte": {
-    "mtime": 1794560866.2788372,
-    "ast_hash": "95997e657ea43ffc855705f80ef6c2c6",
+    "mtime": 1794575844.3911097,
+    "ast_hash": "0fdaca538f652344d08df724774ba9f3",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchPairs.svelte": {
@@ -905,8 +905,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/shuffle.ts": {
-    "mtime": 1794560866.3795195,
-    "ast_hash": "783f1cbdc19dbd598957ad68e5f86aa1",
+    "mtime": 1794575842.8518536,
+    "ast_hash": "1952cfc6f2b648735a100fa792586332",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/SelfReview.svelte": {
@@ -2775,8 +2775,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-g-qa.md": {
-    "mtime": 1794564780.7026734,
-    "ast_hash": "ef191cd9980f9f1a0a3f5f83542c0e75",
+    "mtime": 1794575901.9345896,
+    "ast_hash": "9ff2b74740f47664cc379da7e27989ae",
     "semantic_hash": ""
   },
   "front/tests/writing-lint.test.ts": {

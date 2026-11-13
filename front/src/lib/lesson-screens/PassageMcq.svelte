@@ -11,6 +11,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { getLessonScore, recordAnswer } from './score.svelte';
 	import { getLessonSession } from './session.svelte';
+	import { fitOrder, optionOrder } from './shuffle';
+	import { untrack } from 'svelte';
 
 	const score = getLessonScore();
 
@@ -42,6 +44,10 @@
 
 	let question = $derived(screen.questions[qi]);
 	let isLastQuestion = $derived(qi === screen.questions.length - 1);
+
+	// Options show in a fresh order per question (see Mcq.svelte); indices stay authored.
+	const shuffled = untrack(() => screen.questions.map((q) => optionOrder(q.options.length)));
+	let order = $derived(fitOrder(shuffled[qi] ?? [], question.options.length));
 
 	// eslint-disable-next-line no-useless-assignment
 	label = i18n.dict.exerciseKind.submitButton;
@@ -122,8 +128,8 @@
 			<Md block text={question.prompt} />
 		</div>
 		<div class="mt-3 flex flex-col gap-3">
-			{#each question.options as opt, oi (oi)}
-				{@const option = optText(opt)}
+			{#each order as oi (`${qi}-${oi}`)}
+				{@const option = optText(question.options[oi])}
 				{@const isCorrect = oi === question.correctIndex}
 				{@const isSelected = picked === oi}
 				{@const feedback =

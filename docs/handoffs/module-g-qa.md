@@ -6,27 +6,29 @@ Graded twice: as a 5-point student trying to learn, and as a Bagrut teacher judg
 **Spec check** (Ministry papers 016582): reading 60 points, writing 40, essay 120-140 words.
 Exam texts here: 451-469 words, 9 questions, reading parts sum to 60. Matches.
 
-**Status marks:** ✅ fixed · 🟡 partly fixed · ⏳ planned elsewhere · ⬜ open
+**Status marks:** ✅ fixed · 🟡 partly fixed · ⬜ open
 
 ---
 
 ## Grades (before → now)
 
-- **Reading lessons** - student 5.5 → 7.5 · teacher 7 → 8.5
+- **Reading lessons** - student 5.5 → 8 · teacher 7 → 8.5
 - **Writing lessons** - student 6 → 7 · teacher 5 → 7
 - **Exams** - student 8 → 8 · teacher 8.5 → 9
-- **Overall** - student 6 → 7.5 · teacher 7 → 8.5
+- **Overall** - student 6 → 8 · teacher 7 → 8.5
 
-**QA grade: 6.5 → 8 / 10**
+**QA grade: 6.5 → 8.5 / 10**
 
-Still holding it back: option order (#1, shuffle planned), the LLM being off (#2 grades by keywords until it is on), untaught exam question types (#5).
+Still holding it back: the LLM being off (#2 grades by keywords until it is on), untaught exam question types (#5).
 
 ---
 
 ## Reading lessons
 
-### 1. Options never shuffle - ⏳ shuffle planned
-`passage-mcq` / `cloze-pick` keep authored order. Correct answer = first option in 71/77 g-1 cases; every cloze-pick is `[0]`.
+### 1. Options never shuffle - ✅
+**Problem:** `passage-mcq` / `cloze-pick` kept authored order; correct = first option in 71/77 g-1 cases, every cloze-pick `[0]`.
+
+**Fix:** both now shuffle in lessons like `mcq` (shared `optionOrder` in `lesson-screens/shuffle.ts`); exams keep authored order.
 
 ### 2. Typed answers graded by keyword - ✅
 **Problem:** keyword substring match. Valid paraphrases fail (`chang`, `home`), echoing the question passes (`safe`), the stem's grammar is never checked.
@@ -54,7 +56,7 @@ Still holding it back: option order (#1, shuffle planned), the LLM being off (#2
 - Swapped roles (residents vs professionals, juniors teaching vs learning)
 - Plausible but unstated ideas (remote workers feel lonely, visitors come more often)
 
-Some wrong options are now as long as the right one. Option order is still #1.
+Some wrong options are now as long as the right one; options now shuffle (#1).
 
 ### 5. Exam question types never taught - ⬜
 Why the writer mentions X, best title, main purpose, writer's attitude.
