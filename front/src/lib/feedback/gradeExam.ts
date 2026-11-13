@@ -8,6 +8,7 @@ import { checkWriting, type CheckReport } from '$lib/checks';
 import { browserDictionaries } from '$lib/checks/dictionaries';
 import { writingRubricId, writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
 import { screensWithIds } from '$lib/quiz/screenIds';
+import { countedIds } from '$lib/quiz/scoring';
 import type { QuizNode } from '$lib/quiz/types';
 import type { WritingTaskScreen } from '$lib/lesson-screens/types';
 import { applyLength, mechanicsCount } from './exam';
@@ -58,9 +59,11 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 	const out: OpenAnswer[] = [];
 	for (const part of quiz.parts) {
 		let passage = '';
+		const counted = countedIds(part, answers);
 		for (const { id, screen } of screensWithIds(part)) {
 			if (screen.type === 'passage') passage = labelled(screen.paragraphs);
-			if (screen.type !== 'writing-task') continue;
+			// Answers beyond a part's `choose` aren't scored, so never sent.
+			if (screen.type !== 'writing-task' || !counted.has(id)) continue;
 			const text = typeof answers[id] === 'string' ? (answers[id] as string) : '';
 			const essay = screen.minWords !== undefined;
 			out.push({

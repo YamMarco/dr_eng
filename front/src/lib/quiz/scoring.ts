@@ -8,8 +8,9 @@ import {
 	MATCH_PAIRS_MAX_MISTAKES,
 	mcqCorrect
 } from '$lib/lesson-screens/types';
-import type { QuizNode } from './types';
+import type { QuizNode, QuizPart } from './types';
 import { screensWithIds } from './screenIds';
+import { pickCounted } from './choice';
 import { isSentenceCompletionMatch } from '$lib/lesson-screens/sentenceCompletion';
 import type { ExamGrade } from '$lib/feedback/types';
 
@@ -143,6 +144,18 @@ export function scoreScreen(screen: LessonScreen, userAnswer: unknown): Scored {
 	}
 }
 
+/** Teaching screens (passage, video...) score nothing and are left out of scoring and the report. */
+export const isScored = (screen: LessonScreen) => {
+	const s = scoreScreen(screen, undefined);
+	return !(s.auto && s.max === 0 && s.earned === 0);
+};
+
+/** The part's questions that count toward the score: all of them, or the chosen N (choice.ts). */
+export function countedIds(part: QuizPart, answers: Record<string, unknown>): Set<string> {
+	const ids = screensWithIds(part).flatMap(({ id, screen }) => (isScored(screen) ? [id] : []));
+	return pickCounted(ids, part.choose, answers);
+}
+
 export function scoreQuiz(quiz: QuizNode, answers: Record<string, unknown>): QuizScore {
 	const auto = { earned: 0, max: 0 };
 	const manual: QuizScore['manual'] = { max: 0, items: [] };
@@ -152,11 +165,12 @@ export function scoreQuiz(quiz: QuizNode, answers: Record<string, unknown>): Qui
 		let partEarned = 0;
 		let partMax = 0;
 		let partHasManual = false;
+		const counted = countedIds(part, answers);
 
 		for (const { id, screen } of screensWithIds(part)) {
+			// Teaching screens and answers beyond a part's `choose`: nothing to add.
+			if (!counted.has(id)) continue;
 			const scored = scoreScreen(screen, answers[id]);
-			// Teaching / not-yet-scorable screens: nothing to add or report.
-			if (scored.auto && scored.max === 0 && scored.earned === 0) continue;
 
 			partMax += scored.max;
 			if (scored.auto) {

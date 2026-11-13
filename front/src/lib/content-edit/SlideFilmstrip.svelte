@@ -311,6 +311,27 @@
 				✏️ שינוי כותרת
 			</button>
 		{/if}
+		{#if model.setBucketChoose}
+			<button
+				type="button"
+				class="block w-full rounded px-2 py-1.5 hover:bg-line/50"
+				onclick={() => {
+					const current = model.bucketChoose?.(nodeId, bi);
+					const raw = prompt('ענו על כמה שאלות? (ריק = כל השאלות חובה)', String(current ?? ''));
+					if (raw !== null) {
+						const n = Number(raw.trim());
+						const choose = raw.trim() && Number.isInteger(n) && n > 0 ? n : undefined;
+						if (raw.trim() && choose === undefined) alert('מספר שלם גדול מ-0, או ריק');
+						else model.setBucketChoose?.(nodeId, bi, choose);
+					}
+					closeMenu();
+				}}
+			>
+				🔢 ענו על N מתוך...{model.bucketChoose?.(nodeId, bi)
+					? ` (${model.bucketChoose(nodeId, bi)})`
+					: ''}
+			</button>
+		{/if}
 		<button
 			type="button"
 			class="block w-full rounded px-2 py-1.5 hover:bg-line/50"

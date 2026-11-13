@@ -10,7 +10,9 @@
 		style = 'numbers',
 		passageIndices,
 		hiddenIndices,
-		partBreaks
+		partBreaks,
+		choice,
+		uncounted
 	}: {
 		total: number;
 		currentIndex: number;
@@ -22,6 +24,10 @@
 		hiddenIndices?: Set<number>;
 		/** Indices where a new part starts (a small divider is drawn just before them). */
 		partBreaks?: Set<number>;
+		/** Questions in a "choose N" part: a dashed outline while unanswered. */
+		choice?: Set<number>;
+		/** Choice questions that won't count (the part is full, or answered past N): dimmed. */
+		uncounted?: Set<number>;
 	} = $props();
 
 	let labels = $derived.by(() => {
@@ -54,6 +60,7 @@
 		{@const isAnswered = answered.has(i)}
 		{@const isCurrent = i === currentIndex}
 		{@const isPassage = passageIndices?.has(i)}
+		{@const isUncounted = uncounted?.has(i)}
 		{#if !hiddenIndices?.has(i)}
 			{#if labels[i] > 1 && (partBreaks?.has(i) || (hiddenIndices?.has(i - 1) && partBreaks?.has(i - 1)))}
 				<span class="mx-0.5 h-5 w-px shrink-0 bg-line" aria-hidden="true"></span>
@@ -62,9 +69,10 @@
 				bind:this={buttonEls[i]}
 				type="button"
 				aria-current={isCurrent ? 'step' : undefined}
-				aria-label={isPassage
+				aria-label={(isPassage
 					? `${i18n.dict.quiz.passageLabel}, ${i18n.dict.quiz.questionLabel(labels[i])}`
-					: i18n.dict.quiz.questionLabel(labels[i])}
+					: i18n.dict.quiz.questionLabel(labels[i])) +
+					(isUncounted ? `, ${i18n.dict.quiz.notCounted}` : '')}
 				onclick={() => onJump(i)}
 				class="flex h-11 min-w-11 shrink-0 items-center justify-center transition active:scale-90"
 			>
@@ -76,7 +84,9 @@
 							? 'border-transparent'
 							: 'border-line'} {isAnswered
 						? 'bg-brand-soft text-brand-dark'
-						: 'bg-surface text-muted'}"
+						: 'bg-surface text-muted'} {choice?.has(i) ? 'border-dashed' : ''} {isUncounted
+						? 'opacity-50'
+						: ''}"
 				>
 					{#if style === 'dots'}
 						<span class="h-2 w-2 rounded-full {isAnswered ? 'bg-brand-dark' : 'bg-line'}"></span>

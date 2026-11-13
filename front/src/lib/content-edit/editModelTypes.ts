@@ -43,4 +43,7 @@ export interface EditModelLike {
 	/** Only meaningful where a bucket has its own display name (exam parts) -
 	 *  lesson rounds don't, so editModel leaves this unimplemented. */
 	setBucketLabel?(nodeId: string, bucketIndex: number, label: string): void;
+	/** Exam parts only: "answer N of these" (QuizPart.choose); undefined = all compulsory. */
+	bucketChoose?(nodeId: string, bucketIndex: number): number | undefined;
+	setBucketChoose?(nodeId: string, bucketIndex: number, choose: number | undefined): void;
 }

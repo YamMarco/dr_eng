@@ -15,7 +15,8 @@
 		answer,
 		label,
 		earned,
-		max
+		max,
+		note
 	}: {
 		screen: LessonScreen;
 		answer: unknown;
@@ -23,6 +24,8 @@
 		label: string;
 		earned: number;
 		max: number;
+		/** Shown instead of the score (a question a "choose N" part didn't count). */
+		note?: string;
 	} = $props();
 
 	const picks = $derived(
@@ -33,14 +36,18 @@
 <div class="flex flex-col gap-2">
 	<div class="flex items-baseline justify-between gap-3">
 		<span class="text-sm font-bold">{label}</span>
-		<span
-			class="font-bold tabular {earned === max
-				? 'text-brand-dark'
-				: earned === 0
-					? 'text-miss'
-					: 'text-ink'}"
-			dir="ltr">{Math.round(earned * 10) / 10}/{max}</span
-		>
+		{#if note}
+			<span class="text-xs font-semibold text-muted">{note}</span>
+		{:else}
+			<span
+				class="font-bold tabular {earned === max
+					? 'text-brand-dark'
+					: earned === 0
+						? 'text-miss'
+						: 'text-ink'}"
+				dir="ltr">{Math.round(earned * 10) / 10}/{max}</span
+			>
+		{/if}
 	</div>
 
 	{#if screen.type === 'mcq'}

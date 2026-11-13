@@ -17,6 +17,7 @@ export const cobeQuizzes: QuizNode[] = [
 				instructionsHe:
 					'בחרו נושא אחד מתוך שניים וענו על שתי השאלות שלו בהקלטה אחת. פחות מ-20 שניות מקבל 0.',
 				points: 25,
+				choose: 1,
 				screens: [
 					{
 						type: 'speak',
@@ -24,7 +25,15 @@ export const cobeQuizzes: QuizNode[] = [
 						points: 25,
 						targetSeconds: 60,
 						prompt:
-							'Choose ONE topic and answer both of its questions in one recording.\n\n**Topic 1: Friendship**\n1. What makes someone a good friend?\n2. Tell me about a time a friend helped you.\n\n**Topic 2: Technology**\n1. Which piece of technology could you not live without? Why?\n2. How has technology changed the way teenagers spend their free time?'
+							'**Topic 1: Friendship**\n1. What makes someone a good friend?\n2. Tell me about a time a friend helped you.'
+					},
+					{
+						type: 'speak',
+						part: 'A',
+						points: 25,
+						targetSeconds: 60,
+						prompt:
+							'**Topic 2: Technology**\n1. Which piece of technology could you not live without? Why?\n2. How has technology changed the way teenagers spend their free time?'
 					}
 				]
 			},

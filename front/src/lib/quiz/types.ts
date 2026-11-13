@@ -32,6 +32,9 @@ export interface QuizPart {
 	instructionsHe?: string;
 	/** For display only (e.g. "20 נק'") - screen-level `points` are the scoring source of truth. */
 	points?: number;
+	/** "Answer N of these": the first N answered questions count (see choice.ts).
+	 *  Its questions must all be worth the same points. */
+	choose?: number;
 	screens: LessonScreen[];
 }
 
