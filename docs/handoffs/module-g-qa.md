@@ -12,12 +12,12 @@ Exam texts here: 451-469 words, 9 questions, reading parts sum to 60. Matches.
 
 ## Grades (before → now)
 
-- **Reading lessons** - student 5.5 → 7 · teacher 7 → 8
+- **Reading lessons** - student 5.5 → 7.5 · teacher 7 → 8.5
 - **Writing lessons** - student 6 → 7 · teacher 5 → 7
 - **Exams** - student 8 → 8 · teacher 8.5 → 9
-- **Overall** - student 6 → 7 · teacher 7 → 8
+- **Overall** - student 6 → 7.5 · teacher 7 → 8.5
 
-**QA grade: 6.5 → 7.5 / 10**
+**QA grade: 6.5 → 8 / 10**
 
 Still holding it back: option order (#1, shuffle planned), the LLM being off (#2 grades by keywords until it is on), untaught exam question types (#5).
 
@@ -45,20 +45,28 @@ Still holding it back: option order (#1, shuffle planned), the LLM being off (#2
 - `g-by-to`: grammar error vs content error
 - `g-difference`: the "same in both" traps
 
-### 4. Weak distractors - ⬜
-Absolute or silly options; the longest hedged option is nearly always right.
+### 4. Weak distractors - ✅
+**Problem:** absolute or silly options (cancelled, paid, cafés, main roads); the longest hedged option was nearly always right.
+
+**Fix:** 35 wrong options replaced, each with new feedback. The new ones tempt:
+- A real detail from the text that answers a different question (technology changing fast, twenty cities asking, 60% participation)
+- One speaker's opinion offered as the shared one (two-opinions lessons)
+- Swapped roles (residents vs professionals, juniors teaching vs learning)
+- Plausible but unstated ideas (remote workers feel lonely, visitors come more often)
+
+Some wrong options are now as long as the right one. Option order is still #1.
 
 ### 5. Exam question types never taught - ⬜
 Why the writer mentions X, best title, main purpose, writer's attitude.
 
-### 6. Small issues - ⬜
-- Intro mentions "magnets" before they are taught
-- `g-question-words` quotes paragraph IV before it is shown
-- `g-names` asks for person/place but targets a University
-- `g-line-refs` round 1 has no line references
-- "Hebrew answer = 0" taught 4 times
-- "רמת בחינה" rounds use 60-100 word texts
-- Dictionary use never taught
+### 6. Small issues - ✅
+- Intro no longer mentions "magnets" before they are taught
+- `g-question-words`: the imply question now shows Levy's quote itself
+- `g-names` instruction: person, organization or place
+- `g-line-refs` round 1: new line-reference passage (2 questions); the traps are true details from the wrong lines
+- "Hebrew = 0": the repeat in `g-line-refs` removed (an answer that's true but doesn't answer the question took its place); now taught in the intro and `g-open-answer` only
+- The 17 short-text rounds are now titled "שאלות בסגנון בחינה"; only `g-final` (full-length texts) is "רמת בחינה"
+- Dictionary use: a card + a question in `g-time` (look up only words the answer depends on)
 
 ---
 
@@ -111,5 +119,5 @@ Key texts like "However" and "this approach" don't help the grader.
 Fixed with lookarounds (`writingLint.ts`); test in `tests/writing-lint.test.ts`.
 
 ### 16. Arabic missing for new text - ⬜
-New Hebrew strings (option feedback, 2 lessons, titles) show in Hebrew in the Arabic UI.
+New Hebrew strings (option feedback, 2 lessons, titles, the "שאלות בסגנון בחינה" opener title, the dictionary card) show in Hebrew in the Arabic UI.
 Run `node scripts/content-i18n.mjs`.

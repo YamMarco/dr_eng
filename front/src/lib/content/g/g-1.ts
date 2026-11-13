@@ -80,9 +80,9 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
-								'שלב 1: קראו את השאלה. שלב 2: סמנו לעצמכם מילת שאלה או מגנט. שלב 3: מצאו משפט תומך, ורק אז ענו.'
+								'שלב 1: קראו את השאלה. שלב 2: סמנו לעצמכם מילה מהשאלה שקל לחפש בטקסט. שלב 3: מצאו משפט תומך, ורק אז ענו.'
 						},
 						{
 							type: 'passage-quiz',
@@ -193,7 +193,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'אל תקראו הכול לעומק. קראו את פתיחת כל פסקה, ואז בחרו לכל שאלה את הפסקה שתקראו **ראשונה**.'
 						},
@@ -317,7 +317,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle: '🔴 מה שואלים? 🟡 איזה רמז יעזור למצוא? 🟢 קראו סביב הרמז ובדקו את התשובה.'
 						},
 						{
@@ -424,7 +424,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'מספרים הם רמזים, לא תשובות. מצאו את המספר ואת מה שהוא מודד: מה השתנה? מה הוא מראה?'
 						},
@@ -484,16 +484,16 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. השימוש באופניים עלה והנסיעות ברכב ירדו. "seems" מתאים: זו מסקנה, לא עובדה כתובה.'
 										],
 										[
-											'It made every student stop using a car',
-											'לא בדיוק. 21% עדיין הגיעו ברכב. every מוגזם.'
+											'It made most students stop driving to campus',
+											'לא בדיוק. רק חלק הפסיקו: מ-38% ל-21% מהמשתמשים. most מוגזם.'
 										],
 										[
 											'It was more popular in the first month than later',
 											'לא בדיוק. ההפך: 1,200 נסיעות בחודש הראשון, 2,050 בשלישי.'
 										],
 										[
-											'It was cancelled after six months',
-											'לא בדיוק. אחרי שישה חודשים רק מדדו שוב. ביטול לא מוזכר.'
+											'It reduced car use more than any other campus program',
+											'לא כתוב בטקסט: אין השוואה לתוכניות אחרות.'
 										]
 									],
 									correctIndex: 0
@@ -541,7 +541,7 @@ export const g1Lessons: LessonNode[] = [
 					screens: [
 						{
 							type: 'mark-all',
-							instruction: 'סמנו את כל המילים שהן חלק משם (אדם או מקום).',
+							instruction: 'סמנו את כל המילים שהן חלק משם (אדם, ארגון או מקום).',
 							text: 'According to Dr. Noa Shapira of Tel Aviv University, this trend began quietly in the early 2010s and has since spread to companies of all sizes.',
 							correctIndices: [2, 3, 4, 6, 7, 8]
 						},
@@ -578,8 +578,8 @@ export const g1Lessons: LessonNode[] = [
 										],
 										['Three months ago', 'לא בדיוק. three months זה הזמן ש-Cohen בחברה.'],
 										[
-											'When she joined Tel Aviv University',
-											'לא בדיוק. הטקסט לא אומר מתי היא הצטרפה לאוניברסיטה.'
+											'When technology began changing faster than ever',
+											'לא בדיוק. "technology changes faster than ever" מסביר למה המגמה קיימת, לא מתי התחילה.'
 										]
 									],
 									correctIndex: 0
@@ -594,7 +594,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle: 'מצאו את השם בשאלה, מצאו אותו בטקסט, וקראו את הפעולה שמופיעה לידו.'
 						},
 						{
@@ -678,8 +678,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. זה הרעיון הישן, והוא מופיע אחרי "this trend". refer to מחפשים לפני המילים.'
 										],
 										[
-											'The growth of Tel Aviv University',
-											'לא בדיוק. האוניברסיטה היא רק המקום של Dr. Shapira.'
+											'The fast pace of technological change',
+											'לא בדיוק. השינוי המהיר בטכנולוגיה הוא הסיבה שהמגמה קיימת, לא המגמה עצמה.'
 										],
 										[
 											'Companies of all sizes',
@@ -704,8 +704,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. ב-2010s התחילה השיטה החדשה, לא הרעיון המסורתי.'
 										],
 										[
-											'It works best in small companies',
-											'לא בדיוק. גודל החברה לא קשור לרעיון המסורתי, והשיטה החדשה התפשטה לחברות מכל הגדלים.'
+											'It has spread to companies of all sizes',
+											'לא בדיוק. מה שהתפשט לחברות מכל הגדלים הוא השיטה החדשה, לא הרעיון המסורתי.'
 										]
 									],
 									correctIndex: 0
@@ -726,7 +726,7 @@ export const g1Lessons: LessonNode[] = [
 						{
 							type: 'mcq',
 							prompt:
-								'{p:text}What does the writer imply about senior managers who refused to participate?\n\n{d:rtl}מה מחפשים בטקסט?',
+								'{p:text}CEO Marcus Levy recalls that several senior managers at first refused to participate. "They saw it as humiliating," he says.\n\n{p:text}What does Levy imply about these senior managers?\n\n{d:rtl}מה מחפשים בטקסט?',
 							options: [
 								'מילים שמראות יחס, כמו humiliating, ומה הן רומזות',
 								'מספר שמופיע ליד המילה managers',
@@ -744,7 +744,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'לפני כל תשובה, זהו את מילת השאלה: According to = ישיר · refer to = למה זה מתייחס · imply / infer = מסקנה נתמכת.'
 						},
@@ -776,8 +776,8 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. "That surprised us... We expected the service to help a small group" - והוא עזר ליותר אנשים.'
 										],
 										[
-											'The store regretted introducing quiet hours',
-											'לא בדיוק. ההפתעה הייתה טובה: גם קונים אחרים נהנו. אין חרטה.'
+											'Bar was disappointed that few customers used the service',
+											'לא בדיוק. surprised כאן חיובי: הופתעו שיותר אנשים נהנו, לא שמעטים השתמשו.'
 										],
 										[
 											'Only customers with sensory difficulties used the service',
@@ -806,8 +806,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. ההפך: הם נהנים מהשעות השקטות.'
 										],
 										[
-											'Other customers asked for brighter lights',
-											'לא בדיוק. הטקסט לא מזכיר בקשה כזו, ואורות עמומים הם חלק ממה שנהנים ממנו.'
+											'Other customers now visit the shop more often',
+											'לא כתוב בטקסט: הם נהנים מהאווירה, אבל לא נאמר שהם מגיעים יותר.'
 										]
 									],
 									correctIndex: 0
@@ -870,8 +870,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא כתוב בטקסט: אין השוואה כזו. להפך, קשה להם לשאול.'
 										],
 										[
-											'Many of them refused to take part in the survey',
-											'לא כתוב בטקסט: על סירוב לסקר לא מסופר. סירוב מופיע רק בפסקה IV, ולא לסקר.'
+											'They prefer to learn from colleagues of their own age',
+											'סותרת את הטקסט: דווקא מפגש עם עמית צעיר "removes that pressure entirely".'
 										]
 									],
 									correctIndex: 0
@@ -907,8 +907,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא כתוב בטקסט: תשלום לא מוזכר. נשמע הגיוני, אבל אין לו תמיכה.'
 										],
 										[
-											'CEO Levy introduced the program against his own wishes',
-											'לא כתוב בטקסט: אין רמז לכך ש-Levy לא רצה בתוכנית. הוא דווקא שינה אותה כדי שתצליח.'
+											'Senior managers asked for the program to be renamed',
+											'לא כתוב בטקסט: המנהלים סירבו, ואת השינוי עשו Levy והחברה: "We had to reframe it".'
 										],
 										[
 											'All senior managers refused to take part',
@@ -927,7 +927,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'התשובה הנכונה היא לרוב **פרפרזה** או **מסקנה**, לא העתקה. הסירו אפשרויות מוחלטות או לא נתמכות.'
 						},
@@ -947,8 +947,8 @@ export const g1Lessons: LessonNode[] = [
 											'מוגזמת וסותרת: always, והטקסט אומר "no single method that was best for everyone".'
 										],
 										[
-											'Digital notes are useful only for university students',
-											'מוגזמת: only. המחקר נעשה על סטודנטים, אבל לא נאמר שזה מועיל רק להם.'
+											'Students who write by hand remember more than others',
+											'סותרת: מי שארגן סיכומים דיגיטליים "performed just as well".'
 										],
 										[
 											'Researchers recommend that all students stop using paper',
@@ -966,8 +966,8 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. "Students who organized digital notes effectively performed just as well".'
 										],
 										[
-											'Students who used no notes at all',
-											'לא כתוב בטקסט: סטודנטים בלי סיכומים לא מוזכרים.'
+											'Students who chose paper when preparing for exams',
+											'מלכודת: אלה הכותבים ביד עצמם. השאלה מי הצליח כמוהם.'
 										],
 										['Students who studied in groups', 'לא כתוב בטקסט: לימוד בקבוצה לא מוזכר.'],
 										['Every university student', 'מוגזמת: רק מי שארגן סיכומים דיגיטליים ביעילות.']
@@ -1035,7 +1035,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'בדקו כל אפשרות לבד מול הטקסט. V רק אם יש לה תמיכה ברורה. בסוף: בדיוק שתיים.'
 						},
@@ -1147,7 +1147,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'שאלו את עצמכם: במה שני הדברים שונים? בזמן? בכמות? בשיטה? בתדירות? זה התחום.'
 						},
@@ -1291,7 +1291,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'קראו את הגזע יחד עם התשובה שלכם. זה צריך להיות משפט אחד נכון, שמתאים לטקסט. כתבו רק את ההמשך.'
 						},
@@ -1400,7 +1400,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle: 'בחרו את ההמשך שגם נכון בדקדוק וגם נכון לפי הטקסט.'
 						},
 						{
@@ -1576,7 +1576,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'קודם מוצאים את הפעולה בטקסט. רק אחר כך מתאימים אותה לצורה By + ing. כתבו רק את ההמשך.'
 						},
@@ -1676,7 +1676,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'שימו לב למילת השאלה ולמספר הרעיונות שמבקשים. כתבו תשובה קצרה, רק עם מידע מהטקסט.'
 						},
@@ -1716,7 +1716,10 @@ export const g1Lessons: LessonNode[] = [
 											'Tickets became more expensive',
 											'לא כתוב בטקסט: "pay what you can" אפילו מוריד את המחיר.'
 										],
-										['The performances were shorter', 'לא כתוב בטקסט: אורך ההצגות לא מוזכר.']
+										[
+											'Fewer people bought full-price tickets',
+											'סותרת את הטקסט: מבקרים חדשים "later returned and bought full-price tickets".'
+										]
 									],
 									correctIndex: 0
 								}
@@ -1804,7 +1807,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle: 'הבינו את הרעיון, ואז מצאו את האפשרות שאומרת אותו במילים אחרות.'
 						},
 						{
@@ -1824,8 +1827,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. זה גם לא נכון לפי הטקסט: "did not necessarily work fewer hours".'
 										],
 										[
-											'Their homes were too small to work in',
-											'לא בדיוק. boundary כאן הוא גבול בזמן, לא בחלל של הבית.'
+											'They found it harder to finish their work on time',
+											'לא בדיוק. הגבול הוא בין זמן עבודה לזמן פרטי, לא עמידה בזמנים.'
 										],
 										[
 											'Their personal lives became more important than work',
@@ -1849,7 +1852,10 @@ export const g1Lessons: LessonNode[] = [
 											'They were happy to work late',
 											'לא בדיוק. should = הרגישו שהם חייבים. אין שם שמחה.'
 										],
-										['They did not answer messages', 'לא בדיוק. ההפך: הם בדקו הודעות מאוחר בלילה.']
+										[
+											'Their managers asked them to answer messages at night',
+											'לא בדיוק. felt they should = הם עצמם הרגישו כך. לא כתוב שמישהו ביקש.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -1860,14 +1866,17 @@ export const g1Lessons: LessonNode[] = [
 											"Work may continue into people's free time",
 											'נכון. גבול לא ברור והודעות בלילה = העבודה נכנסת לזמן הפנוי.'
 										],
-										['Remote workers earn less money', 'לא בדיוק. משכורת לא מוזכרת.'],
+										[
+											'Remote workers often feel lonely at home',
+											'לא כתוב בטקסט: בדידות היא חיסרון מוכר, אבל הטקסט לא מזכיר אותה.'
+										],
 										[
 											'Remote workers work fewer hours',
 											'לא בדיוק. "did not necessarily work fewer hours".'
 										],
 										[
-											'Messages are never answered at night',
-											'לא בדיוק. ההפך: "checked messages late at night".'
+											'Managers expect remote workers to reply immediately',
+											'לא כתוב בטקסט: הלחץ בא מהעובדים עצמם ("they felt"), לא ממנהלים.'
 										]
 									],
 									correctIndex: 0
@@ -1915,13 +1924,13 @@ export const g1Lessons: LessonNode[] = [
 								'{p:text}Dr. Shapira: "Older employees often feel embarrassed asking basic questions in a group setting. A one-on-one session with a younger colleague removes that pressure entirely."\n{p:text}CEO Levy: "We had to reframe it completely, not as \'your junior is teaching you\', but as \'two colleagues sharing expertise.\'"\n\nWhat opinion do Dr. Shapira and CEO Levy share?',
 							options: [
 								"The way the relationship between the colleagues is set up affects the program's success",
-								'Older employees should learn in large groups',
-								'Junior employees should be paid for teaching',
-								'The program should be stopped'
+								'Older employees learn best in one-on-one sessions',
+								"Changing the program's name is the key to its success",
+								'Junior employees should lead every session'
 							],
 							correctIndex: 0,
 							explanation:
-								'Shapira: מפגש אחד על אחד מוריד את הלחץ. Levy: ניסוח מחדש של היחסים גרם לזה לעבוד. המשותף: האופן שבו מציגים את הקשר חשוב.'
+								'Shapira: מפגש אחד על אחד מוריד את הלחץ. Levy: ניסוח מחדש של היחסים גרם לזה לעבוד. המשותף: האופן שבו מציגים את הקשר חשוב. המלכודות: one-on-one היא דעה של Shapira בלבד, השינוי בשם של Levy בלבד.'
 						},
 						{
 							type: 'passage-mcq',
@@ -1935,14 +1944,17 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. Shapira: "both sides communicate more openly". Levy: "communication in mixed-age teams improves".'
 										],
 										[
-											'Mixed-age teams should be avoided',
-											'לא בדיוק. שניהם אומרים שצוותים מעורבים מתקשרים טוב יותר.'
+											'Junior employees feel a stronger sense of purpose',
+											'נכון בטקסט, אבל זה מה שהעובדים הצעירים אומרים, לא דעה של Shapira ו-Levy.'
 										],
 										[
 											'Only senior managers benefit from the program',
 											'לא בדיוק. Shapira אומרת שגם הצעירים מרוויחים: "their knowledge is valued".'
 										],
-										['Young employees should work alone', 'לא בדיוק. שניהם מדברים על עבודה משותפת.']
+										[
+											"Young people's knowledge is valued by companies",
+											'רק Shapira אומרת את זה. Levy מדבר על תקשורת.'
+										]
 									],
 									correctIndex: 0
 								}
@@ -1956,7 +1968,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'כתבו לעצמכם במשפט קצר מה אומר כל דובר. אחר כך חפשו רעיון אחד ששניהם באמת תומכים בו.'
 						},
@@ -1991,7 +2003,10 @@ export const g1Lessons: LessonNode[] = [
 											'He says professionals know what the neighborhood needs',
 											'מלכודת של החלפה: התושבים יודעים מה השכונה צריכה, המקצוענים יודעים מה אפשר לבנות.'
 										],
-										['He says projects should be built quickly', 'לא בדיוק. מהירות לא מוזכרת.']
+										[
+											'He says residents should plan projects from the beginning',
+											'זו הדעה של Haddad. השאלה מה Halevi מוסיף.'
+										]
 									],
 									correctIndex: 0
 								},
@@ -2007,12 +2022,12 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. שניהם רוצים שהתושבים ישתתפו.'
 										],
 										[
-											'Community projects usually fail because residents disagree',
-											'לא בדיוק. אף אחד מהם לא אומר שפרויקטים נכשלים.'
+											'Residents know better than experts what can be built',
+											'מלכודת של החלפה: לפי Halevi המקצוענים יודעים מה אפשר לבנות.'
 										],
 										[
-											'Building projects should avoid public discussion',
-											'לא בדיוק. ההפך: הם בעד מעורבות של הציבור.'
+											'Professionals should decide what the neighborhood needs',
+											'מלכודת של החלפה: "Residents know what the neighborhood needs".'
 										]
 									],
 									correctIndex: 0
@@ -2062,24 +2077,60 @@ export const g1Lessons: LessonNode[] = [
 								'{p:text}Why did several senior managers refuse to participate at first?\n\n{d:rtl}איזו תשובה תקבל ניקוד מלא?',
 							options: [
 								'Because they saw the program as humiliating.',
-								'כי הם הרגישו מושפלים.',
+								'Because participation rose by 60%.',
 								'Because they were bored and tired.',
 								'Senior managers refused to participate at first.'
 							],
 							correctIndex: 0,
 							explanation:
-								'העברית מקבלת 0. bored and tired מומצא. האחרונה רק חוזרת על השאלה ולא נותנת מידע.'
+								'participation rose by 60% כתוב בטקסט, אבל לא עונה על "למה". bored and tired מומצא. האחרונה רק חוזרת על השאלה ולא נותנת מידע.'
 						},
 						{
-							type: 'mcq',
-							prompt: '{p:text}Because they were bored and tired.\n\n{d:rtl}מה יקרה לתשובה הזו?',
-							options: [
-								'ניכוי - המידע לא כתוב בטקסט',
-								'ניקוד מלא - זו סיבה הגיונית',
-								'ניקוד מלא - היא באנגלית'
-							],
-							correctIndex: 0,
-							explanation: 'סיבה הגיונית לא מספיקה. התשובה חייבת להיות נתמכת בטקסט.'
+							type: 'passage-mcq',
+							text: '(Lines 1-4) Many students say they study better with music. A survey of 500 students found that 70% listen to music while doing homework.\n\n(Lines 5-8) However, a study at Bayview College tested students in silence and with songs that have words. Students who studied in silence remembered more of the material.\n\n(Lines 9-11) The researchers add that music without words seemed to cause fewer problems.',
+							questions: [
+								{
+									prompt: 'Base your answer on lines 5-8. What did the Bayview study find?',
+									options: [
+										[
+											'Students remembered more when they studied in silence',
+											'נכון. שורות 5-8: "Students who studied in silence remembered more".'
+										],
+										[
+											'Most students listen to music while doing homework',
+											'נכון בטקסט, אבל משורות 1-4. השאלה מבקשת 5-8.'
+										],
+										[
+											'Music without words caused fewer problems',
+											'נכון בטקסט, אבל משורות 9-11. השאלה מבקשת 5-8.'
+										],
+										[
+											'Students study better with music',
+											'זה מה שהתלמידים אומרים בשורות 1-4, והמחקר דווקא סותר את זה.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'Base your answer on lines 9-11. What do the researchers add?',
+									options: [
+										[
+											'Music without words seemed less harmful to studying',
+											'נכון. "music without words seemed to cause fewer problems" - במילים אחרות.'
+										],
+										[
+											'Students who studied in silence remembered more',
+											'נכון בטקסט, אבל משורות 5-8. השאלה מבקשת 9-11.'
+										],
+										[
+											'Music with words helps students remember',
+											'סותרת: שירים עם מילים הם מה שפגע בזכירה בשורות 5-8.'
+										],
+										['70% of students listen to music', 'נכון בטקסט, אבל משורות 1-4.']
+									],
+									correctIndex: 0
+								}
+							]
 						}
 					]
 				},
@@ -2089,7 +2140,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle: 'קראו רק את השורות שהשאלה נותנת. ענו מהן, בלי להוסיף מידע מבחוץ.'
 						},
 						{
@@ -2157,11 +2208,34 @@ export const g1Lessons: LessonNode[] = [
 				{
 					type: 'preface',
 					text: '{p:callout}{i:warn}{d:rtl}שאלה מעכבת אתכם? סמנו אותה וחזרו בסוף. עדיף זמן לכל השאלות מאשר להיתקע על אחת.'
+				},
+				{
+					type: 'summary',
+					title: '📖 המילון: מתי לפתוח אותו',
+					lines: [
+						'✅ מילה שהשאלה תלויה בה: בשאלה עצמה או במשפט שבו נמצאת התשובה',
+						'🧩 מילה אחרת? קודם מנסים להבין מההקשר וממשיכים לקרוא',
+						'📌 מחפשים פעם אחת, כותבים את הפירוש ליד המילה בטקסט'
+					]
 				}
 			],
 			rounds: [
 				{
 					screens: [
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}Why are teenagers particularly vulnerable to FOMO?\n\n{d:rtl}אתם לא מכירים את המילה vulnerable. מה עושים?',
+							options: [
+								['מחפשים אותה במילון', 'נכון. היא חלק מהשאלה עצמה, ובלעדיה לא ברור מה שואלים.'],
+								[
+									'מחפשים במילון כל מילה לא מוכרת בפסקה',
+									'זה גוזל את רוב הזמן. מחפשים רק מילים שהתשובה תלויה בהן.'
+								],
+								['מדלגים על השאלה', 'חבל: חיפוש של דקה מציל שאלה שלמה.']
+							],
+							correctIndex: 0
+						},
 						{
 							type: 'mcq',
 							prompt: '{d:rtl}עברו 7 דקות על שאלה 3 ועדיין אין תשובה. מה עושים?',
@@ -2205,7 +2279,7 @@ export const g1Lessons: LessonNode[] = [
 							type: 'opener',
 							kicker: 'סיבוב 2',
 							level: 4,
-							title: 'רמת בחינה',
+							title: 'שאלות בסגנון בחינה',
 							subtitle:
 								'השעון רץ. התחילו בשאלות עם מספר או תשובה ישירה. השאירו את שאלת ה-infer לסוף.'
 						},
@@ -2233,7 +2307,10 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. "many boxes were not returned within a week, so the college added reminder messages".'
 										],
 										['Students lost their deposits', 'לא בדיוק. אובדן פיקדון לא מוזכר.'],
-										['The boxes were too expensive', 'לא בדיוק. מחיר הקופסאות לא מוזכר.'],
+										[
+											'Disposable-container use was still too high',
+											'לא בדיוק. השימוש ירד ב-64%. התזכורות נועדו להחזרת הקופסאות.'
+										],
 										[
 											'Students did not use the app',
 											'לא בדיוק. הבעיה הייתה החזרת הקופסאות, לא שימוש באפליקציה.'
@@ -2258,8 +2335,8 @@ export const g1Lessons: LessonNode[] = [
 											'סותרת וגם מוגזמת: "many boxes were not returned within a week".'
 										],
 										[
-											'It was cancelled after the first semester',
-											'לא כתוב בטקסט: המערכת נמשכה, והוסיפו לה תזכורות.'
+											'It worked better after the deposit was raised',
+											'לא כתוב בטקסט: הפיקדון לא שונה. מה ששיפר את ההחזרות היו התזכורות.'
 										]
 									],
 									correctIndex: 0
@@ -2345,7 +2422,10 @@ export const g1Lessons: LessonNode[] = [
 											'He changed the way the program was described',
 											'נכון. "We had to reframe it completely" = הציגו את התוכנית אחרת.'
 										],
-										['He cancelled the program', 'סותרת את הטקסט: ההשתתפות אפילו עלתה ב-60%.'],
+										[
+											'He offered the managers one-on-one sessions',
+											'לא בדיוק. one-on-one מופיע בפסקה III, בדברי Dr. Shapira. Levy שינה את הניסוח.'
+										],
 										[
 											'He made participation compulsory',
 											'לא כתוב בטקסט: הוא שינה ניסוח, לא חייב אף אחד.'
@@ -2373,8 +2453,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. They מתייחס למנהלים הבכירים, לא לצעירים.'
 										],
 										[
-											'It explains why DataLink stopped the program',
-											'לא בדיוק. DataLink היא החברה של Mitchell, והתוכנית לא הופסקה.'
+											'It is how Dr. Shapira describes group sessions',
+											'לא בדיוק. Dr. Shapira אומרת embarrassed בפסקה III. humiliating הוא ציטוט של Levy על המנהלים.'
 										]
 									],
 									correctIndex: 0
@@ -2411,8 +2491,8 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. "communicate more openly" ו-"communication in mixed-age teams improves".'
 										],
 										[
-											'Junior employees earn more after the program',
-											'לא כתוב בטקסט: משכורת לא מוזכרת. הם מרגישים "a stronger sense of purpose".'
+											'Junior employees gain technical skills from senior colleagues',
+											'הפוך: הצעירים הם שמלמדים. בפסקה V הם מרגישים "a stronger sense of purpose".'
 										],
 										[
 											'Senior employees choose the topics of each session',
@@ -2494,8 +2574,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא בדיוק. השאלה מבקשת מה בדקו מעבר למספר החברים, וחברים ברשת לא נבדקו.'
 										],
 										[
-											'Which city participants preferred',
-											'לא בדיוק. המחקר נערך בשלוש ערים, אבל לא שאל איזו עדיפה.'
+											'Whether participants recognized people they knew well',
+											'כמעט: הם בדקו אם המשתתפים מזהים אנשים "they did not know personally", לא מכרים קרובים.'
 										]
 									],
 									correctIndex: 0
@@ -2531,12 +2611,12 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. stay = להישאר, pass through = רק לעבור דרך. merely = רק.'
 										],
 										[
-											'Public spaces should be built on main roads',
-											'לא בדיוק. pass through לא מדבר על כבישים, אלא על אנשים שעוברים ולא נשארים.'
+											'A good public space should be easy to walk through quickly',
+											'הפוך: "not merely a reason to pass through" = לא רק לעבור דרכו.'
 										],
 										[
-											'People should not stay long in libraries',
-											'לא בדיוק. ההפך: ספרייה טובה היא מקום שנשארים בו.'
+											'Public spaces should offer things to buy',
+											'סותרת את פסקה V: מקום שמצפה לקנייה "can exclude people with limited income".'
 										],
 										['Every public space needs a café', 'מוגזמת: every, ובית קפה לא מוזכר כאן.']
 									],
@@ -2550,7 +2630,10 @@ export const g1Lessons: LessonNode[] = [
 											'Where people will keep meeting others whose lives are different from their own',
 											'נכון. "where will people continue to encounter those whose lives are different from their own?"'
 										],
-										['How cities can build more cafés', 'לא בדיוק. בתי קפה לא מוזכרים בפסקה VI.'],
+										[
+											'How public spaces can solve social isolation on their own',
+											'סותרת: "do not suggest that public spaces can solve social isolation on their own".'
+										],
 										[
 											'Why families are less important today',
 											'לא בדיוק. משפחות מוזכרות כחלק מהחיים החברתיים, לא כפחות חשובות.'
@@ -2703,8 +2786,8 @@ export const g1Lessons: LessonNode[] = [
 											'מוגזמת: only. הטקסט רק אומר שחלק מהמשימות טובות יותר בקבוצה.'
 										],
 										[
-											'Researchers have stopped comparing study methods',
-											'סותרת: "The researchers are therefore comparing" - הם עדיין משווים.'
+											'Privacy is the main reason students choose the pods',
+											'לא כתוב בטקסט: המשתמשים מעריכים פרטיות, אבל לא נאמר שזו הסיבה העיקרית.'
 										]
 									],
 									correctIndex: 0
@@ -2717,8 +2800,8 @@ export const g1Lessons: LessonNode[] = [
 											'נכון. "not that every city needs identical pods" ו-"respond to the changing ways people study".'
 										],
 										[
-											'Every city needs the same study pods',
-											'סותרת: זה בדיוק מה שהיא אומרת שהוא לא הלקח.'
+											'Pods should be placed mainly near transport stations',
+											'זה פרט על Riverton, לא דעה של Morris. לדבריה כל מקום שונה.'
 										],
 										[
 											'Study pods should replace public libraries',
@@ -2747,8 +2830,8 @@ export const g1Lessons: LessonNode[] = [
 											'לא כתוב בטקסט: לא נאמר מי אוסף את הנתונים.'
 										],
 										[
-											'It is less important than the opinion of experts',
-											'לא כתוב בטקסט: המומחית עצמה ממליצה לאסוף נתונים.'
+											'It shows that more than twenty cities want pods',
+											'מלכודת: עשרים רשויות ביקשו מידע. זה לא נתון מקומי, ולא אומר שהן רוצות פודים.'
 										]
 									],
 									correctIndex: 0

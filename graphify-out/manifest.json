@@ -1985,8 +1985,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/g/g-1.ts": {
-    "mtime": 1794563170.6049137,
-    "ast_hash": "c2e457927137d4e1f7dff2da67244457",
+    "mtime": 1794564760.1673715,
+    "ast_hash": "f24d6909af0a01464a1355500357e2b4",
     "semantic_hash": ""
   },
   "front/src/lib/content/g/g-2.ts": {
@@ -2775,8 +2775,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-g-qa.md": {
-    "mtime": 1794563967.1617885,
-    "ast_hash": "0d9cbbdce139817063d599d3af106f87",
+    "mtime": 1794564780.7026734,
+    "ast_hash": "ef191cd9980f9f1a0a3f5f83542c0e75",
     "semantic_hash": ""
   },
   "front/tests/writing-lint.test.ts": {
