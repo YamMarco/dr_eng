@@ -38,7 +38,7 @@ export const he = {
 		siteNav: 'ניווט באתר',
 		navAbout: 'אודות',
 		navPlans: 'מסלולים',
-		navSchools: 'בתי ספר',
+		navSchools: 'מוסדות',
 		navEnter: 'כניסה',
 		navApp: 'לאפליקציה',
 		navSignOut: 'יציאה',
