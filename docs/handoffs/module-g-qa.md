@@ -1,6 +1,6 @@
 # Module G QA report
 
-**Scope:** `content/g/g-1.ts` (18 reading lessons), `content/g/g-2.ts` (8 writing lessons), `quiz/g/index.ts` (5 exams).
+**Scope:** `content/g/g-1.ts` (20 reading lessons), `content/g/g-2.ts` (8 writing lessons), `quiz/g/index.ts` (5 exams).
 Graded twice: as a 5-point student trying to learn, and as a Bagrut teacher judging the material.
 
 **Spec check** (Ministry papers 016582): reading 60 points, writing 40, essay 120-140 words.
@@ -12,23 +12,19 @@ Exam texts here: 451-469 words, 9 questions, reading parts sum to 60. Matches.
 
 ## Grades (before → now)
 
-- **Reading lessons** - student 5.5 → 8 · teacher 7 → 8.5
+- **Reading lessons** - student 5.5 → 8.5 · teacher 7 → 9
 - **Writing lessons** - student 6 → 7 · teacher 5 → 7
-- **Exams** - student 8 → 8 · teacher 8.5 → 9
-- **Overall** - student 6 → 8 · teacher 7 → 8.5
+- **Exams** - student 8 → 8.5 · teacher 8.5 → 9.5
+- **Overall** - student 6 → 8.5 · teacher 7 → 9
 
-**QA grade: 6.5 → 8.5 / 10**
+**QA grade: 6.5 → 9 / 10**
 
-Still holding it back: the LLM being off (#2 grades by keywords until it is on), untaught exam question types (#5).
+Still holding it back: the LLM being off (#2 grades by keywords until it is on), the writing extras.
 
 ## Open, by priority
 
-1. **#5** teach the 4 untaught exam question types (biggest gap for students)
-2. **#12** wrong quote in exam 3 (a factual error, one line)
-3. **#13** exam answer positions (B in 7 of 9)
-4. **#16** Arabic for the new text (run the i18n script)
-5. **#14** grading notes in exams 1-2
-6. **#9 / #10 / #8** writing extras: second conditional, the 4 templates, AI essay transfer
+1. **#16** Arabic for the new text (run the i18n script)
+2. **#9 / #10 / #8** writing extras: second conditional, the 4 templates, AI essay transfer
 
 ---
 
@@ -67,9 +63,13 @@ Still holding it back: the LLM being off (#2 grades by keywords until it is on),
 
 Some wrong options are now as long as the right one; options now shuffle (#1).
 
-### 5. Exam question types never taught - ⬜
-Exams 2-5 ask them (mention X: exams 2 and 4, main purpose: 2, best title: 3, attitude: 5). No g-1 lesson practices them, so students meet them first in the exam.
-**Suggested fix:** one lesson (or a round in `g-mc-eliminate`) per type, each with the trap: a true detail that is too narrow for a title or purpose.
+### 5. Exam question types never taught - ✅
+**Problem:** exams 2-5 ask "why mention X", main purpose, best title and attitude; no g-1 lesson practiced them.
+
+**Fix:** two lessons between `g-line-refs` and `g-time` (g-time, g-final and all g-2 nodes moved down 240):
+- `g-why-mention`: what X is there to prove, not what it says. Trap taught head-on: an answer that repeats X's detail is true but not "why" (Finland meta question). Round 2: library of things, 3 questions.
+- `g-whole-text`: title / purpose / attitude. Traps: a true detail too narrow (one example, one paragraph), the right topic with the wrong action, a quoted person's opinion as the writer's (Prof. Gold meta question), extreme attitudes. Round 2: voluntourism (4 paragraphs, 4 questions, one "why mention").
+- `g-time`'s order card: whole-text questions last.
 
 ### 6. Small issues - ✅
 - Intro no longer mentions "magnets" before they are taught
@@ -113,14 +113,14 @@ Names 4 templates but only shows the master template's openers.
 
 **Fix (all 5):** 4 paragraphs, 132-139 words, clear stance, first conditional only. Counter-arguments at the end of paragraph 3 (exams 2-5). Exam 4's intro is 2 sentences; exam 5 now disagrees.
 
-### 12. Wrong quote in exam 3 - ⬜
-`g-exam-3` ("Why Teenagers Can't Wake Up"): the best-title feedback (`quiz/g/index.ts` ~line 596) quotes "body clock", but the passage says "biology" ("more to do with biology than with character"). Quote that line instead.
+### 12. Wrong quote in exam 3 - ✅
+The best-title feedback quoted "body clock", which the passage never says. Now quotes "more to do with biology than with character".
 
-### 13. Answer-position pattern - ⬜
-Single-answer exam MCQs: correct = B in 7 of 9 (A in the other 2). Exams keep authored order (a fixed paper), so the lesson shuffle (#1) doesn't help here; reorder the options in the content.
+### 13. Answer-position pattern - ✅
+Was B in 7 of 9 single-answer exam MCQs. Options reordered in the content (exams keep authored order): now A 1 · B 2 · C 3 · D 3, no letter twice in a row within an exam. Two-answer MCQs still lean on [0, 2] (3 of 6); low risk, left as is.
 
-### 14. Weak grading notes - ⬜
-Key texts that don't locate the answer: `"this approach"` (exam 1, ~line 168) and `"However"` (exam 2, ~line 299). Quote the sentence that holds the answer.
+### 14. Weak grading notes - ✅
+Exam 1 "this approach" and exam 2 "However" now quote the sentences that hold the answer.
 
 ---
 
@@ -131,5 +131,5 @@ Key texts that don't locate the answer: `"this approach"` (exam 1, ~line 168) an
 Fixed with lookarounds (`writingLint.ts`); test in `tests/writing-lint.test.ts`.
 
 ### 16. Arabic missing for new text - ⬜
-New Hebrew strings (option feedback, 2 lessons, titles, the "שאלות בסגנון בחינה" opener title, the dictionary card) show in Hebrew in the Arabic UI. `titles.ar.ts` has no entry for `g-w-body` / `g-w-timed-essay`.
+New Hebrew strings (option feedback, 4 lessons, titles, the "שאלות בסגנון בחינה" opener title, the dictionary card, exam 3's title feedback) show in Hebrew in the Arabic UI. `titles.ar.ts` has no entry for `g-w-body` / `g-w-timed-essay` / `g-why-mention` / `g-whole-text`.
 Run `node scripts/content-i18n.mjs` (generated, not hand-written).

@@ -11,7 +11,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 0,
-			y: 2410
+			y: 2650
 		},
 		big: false,
 		content: {
@@ -134,7 +134,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 70,
-			y: 2530
+			y: 2770
 		},
 		big: false,
 		content: {
@@ -228,7 +228,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 100,
-			y: 2650
+			y: 2890
 		},
 		big: false,
 		content: {
@@ -311,7 +311,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 70,
-			y: 2770
+			y: 3010
 		},
 		big: false,
 		content: {
@@ -404,7 +404,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 0,
-			y: 2890
+			y: 3130
 		},
 		big: false,
 		content: {
@@ -516,7 +516,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: -70,
-			y: 3010
+			y: 3250
 		},
 		big: false,
 		content: {
@@ -646,7 +646,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: -100,
-			y: 3130
+			y: 3370
 		},
 		big: false,
 		content: {
@@ -755,7 +755,7 @@ export const g2Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: -70,
-			y: 3250
+			y: 3490
 		},
 		big: false,
 		content: {

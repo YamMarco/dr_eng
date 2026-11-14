@@ -67,19 +67,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. הכותב אומר שאנשים תמיד השוו את עצמם לאחרים - כלומר, זה לא חדש. מה שהשתנה הוא ההיקף: היום רואים הרבה יותר. חפשו בפסקה II את המילה:\n"scale"'
 							],
 							[
-								'Today, people can see events while they are taking place.',
-								'בעבר שמעו על מסיבה רק למחרת, והיום אפשר לצפות בה בזמן שהיא מתרחשת:\n"in real time"'
-							],
-							[
 								'Today, psychologists understand the feeling better.',
 								'לא בדיוק. הטקסט לא אומר שפסיכולוגים מבינים היום את התחושה טוב יותר. זכרו: תשובה שנשמעת הגיונית אבל לא כתובה בטקסט - אינה התשובה הנכונה.'
+							],
+							[
+								'Today, people can see events while they are taking place.',
+								'בעבר שמעו על מסיבה רק למחרת, והיום אפשר לצפות בה בזמן שהיא מתרחשת:\n"in real time"'
 							],
 							[
 								'In the past, people were invited to fewer parties.',
 								'לא בדיוק. הטקסט לא משווה בין מספר המסיבות בעבר ובהווה. ההבדל הוא מתי שומעים עליהן: פעם למחרת, והיום ברגע שהן קורות.'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 2,
 						points: 6,
 						paragraphRef: 'II'
 					},
@@ -165,7 +165,7 @@ export const gQuizzes: QuizNode[] = [
 						modelAnswer:
 							'Making conscious choices about how to spend your time and enjoying what you are doing (JOMO).',
 						gradingNotes:
-							'Model answer: Making conscious choices about how to spend your time and enjoying what you are doing (JOMO). Key text: "this approach".',
+							'Model answer: Making conscious choices about how to spend your time and enjoying what you are doing (JOMO). Key text: "The concept encourages people to stop worrying about what they might be missing and to enjoy what they are actually doing" + "Rather, it is about making conscious choices".',
 						points: 5,
 						paragraphRef: 'IV'
 					},
@@ -296,7 +296,7 @@ export const gQuizzes: QuizNode[] = [
 						modelAnswer:
 							"(i) apps were secretly recording (users') conversations (ii) recorded users' screens and sent the images to other companies (without users knowing)",
 						gradingNotes:
-							'Model answer: (i) apps were secretly recording (users\') conversations (ii) recorded users\' screens and sent the images to other companies (without users knowing). Key text: "However". 4 points per part.',
+							'Model answer: (i) apps were secretly recording (users\') conversations (ii) recorded users\' screens and sent the images to other companies (without users knowing). Key text: (i) "to see whether any of them were secretly recording conversations. They found no evidence of this" (ii) "some apps were recording users\' screens and sending the images to other companies". 4 points per part.',
 						points: 8,
 						paragraphRef: 'II'
 					},
@@ -340,19 +340,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. בפסקה אין שום אזכור של לחיצה על פרסומות.'
 							],
 							[
-								'ads that match our conversations and ads that do not',
-								'המילה הראשונה מתארת פרסומות שהתאימו לשיחה ולכן נזכרות, והשנייה - את כל השאר, שאותן אנחנו שוכחים.\n"hits … misses"'
+								'popular products and unpopular products',
+								'לא בדיוק. הפסקה לא עוסקת בשאלה אילו מוצרים פופולריים.'
 							],
 							[
 								'apps that listen to us and apps that do not',
 								'לא בדיוק. המילים האלה מופיעות בפסקה שעוסקת בפסיכולוגיה ובאופן שבו אנחנו זוכרים פרסומות, ולא באפליקציות שמקשיבות.'
 							],
 							[
-								'popular products and unpopular products',
-								'לא בדיוק. הפסקה לא עוסקת בשאלה אילו מוצרים פופולריים.'
+								'ads that match our conversations and ads that do not',
+								'המילה הראשונה מתארת פרסומות שהתאימו לשיחה ולכן נזכרות, והשנייה - את כל השאר, שאותן אנחנו שוכחים.\n"hits … misses"'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 3,
 						points: 6,
 						paragraphRef: 'IV'
 					},
@@ -374,19 +374,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. המאמר מראה דווקא שאין ראיות לכך שהטלפון מקליט אותנו.'
 							],
 							[
-								'to explain why ads seem accurate and how to protect privacy',
-								'המאמר מסביר למה פרסומות נראות כל כך מדויקות (פסקאות III-IV), ובסוף ממליץ איך לשמור על הפרטיות (פסקה V).'
-							],
-							[
 								'to describe how advertising companies earn money from apps',
 								'לא בדיוק. המאמר לא מסביר איך חברות פרסום מרוויחות כסף.'
+							],
+							[
+								'to explain why ads seem accurate and how to protect privacy',
+								'המאמר מסביר למה פרסומות נראות כל כך מדויקות (פסקאות III-IV), ובסוף ממליץ איך לשמור על הפרטיות (פסקה V).'
 							],
 							[
 								'to compare the privacy rules of different tech companies',
 								'לא בדיוק. המאמר לא משווה בין חברות טכנולוגיה שונות.'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 2,
 						points: 7
 					}
 				]
@@ -510,19 +510,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. ההשוואה לא באה להראות שגם מבוגרים סובלים, אלא לעזור למבוגרים להבין איך מרגיש נער בשבע בבוקר.'
 							],
 							[
-								'to show how difficult it is for teenagers to be alert so early',
-								'החוקר רוצה שמבוגרים ירגישו כמה קשה לנער להיות ערני בשעה שמוקדמת מאוד בשבילו.'
+								'to explain why many adults start work early',
+								'לא בדיוק. הטקסט לא עוסק בשאלה למה מבוגרים מתחילים לעבוד מוקדם.'
 							],
 							[
 								'to suggest that teenagers should go to bed earlier',
 								'לא בדיוק. הטקסט אומר שבני נוער לא מצליחים להירדם מוקדם, גם כשהם מנסים:\n"even when they try"'
 							],
 							[
-								'to explain why many adults start work early',
-								'לא בדיוק. הטקסט לא עוסק בשאלה למה מבוגרים מתחילים לעבוד מוקדם.'
+								'to show how difficult it is for teenagers to be alert so early',
+								'החוקר רוצה שמבוגרים ירגישו כמה קשה לנער להיות ערני בשעה שמוקדמת מאוד בשבילו.'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 3,
 						points: 7,
 						paragraphRef: 'II'
 					},
@@ -592,19 +592,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. המאמר טוען בדיוק את ההפך: הקושי לקום בבוקר אינו עצלות.'
 							],
 							[
-								'The Body Clock Behind the Morning Struggle',
-								'השעון הביולוגי של בני הנוער הוא הרעיון המרכזי של כל המאמר:\n"body clock"'
-							],
-							[
 								'How Phones Are Ruining Our Sleep',
 								'לא בדיוק. הטלפונים מוזכרים רק בקצרה; הם לא הנושא המרכזי.'
+							],
+							[
+								'The Body Clock Behind the Morning Struggle',
+								'כל המאמר מסביר שהקושי לקום בבוקר נובע מהביולוגיה של בני הנוער (השעון הביולוגי שלהם), ולא מעצלות:\n"more to do with biology than with character"'
 							],
 							[
 								'California Leads the Way in Education',
 								'לא בדיוק. קליפורניה היא רק דוגמה אחת בפסקה IV. כותרת טובה צריכה להתאים לכל המאמר, ולא לפרט אחד ממנו.'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 2,
 						points: 6
 					}
 				]
@@ -873,12 +873,12 @@ export const gQuizzes: QuizNode[] = [
 							'Why does the writer mention that Shira answered her grandmother "without hesitating"?',
 						options: [
 							[
-								'to show that Shira was sure they were her real friends',
-								'שירה ענתה בלי להסס, כלומר היא בטוחה לגמרי שאלה החברים הכי טובים שלה.\n"without hesitating"'
-							],
-							[
 								'to show that Shira was rude to her grandmother',
 								'לא בדיוק. אין בטקסט שום רמז לכך ששירה הייתה לא מנומסת.'
+							],
+							[
+								'to show that Shira was sure they were her real friends',
+								'שירה ענתה בלי להסס, כלומר היא בטוחה לגמרי שאלה החברים הכי טובים שלה.\n"without hesitating"'
 							],
 							[
 								'to show that Shira did not understand the question',
@@ -889,7 +889,7 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. הסבתא שאלה עם מי שירה מדברת - סימן שהיא לא מכירה אותם.'
 							]
 						],
-						correctIndex: 0,
+						correctIndex: 1,
 						points: 6,
 						paragraphRef: 'I'
 					},
@@ -979,19 +979,19 @@ export const gQuizzes: QuizNode[] = [
 								'לא בדיוק. הכותב מציג גם את היתרונות של חברות ברשת (פסקה IV), ולכן הוא לא מתנגד לה לגמרי.'
 							],
 							[
-								'The writer thinks it works best alongside real-life friendships.',
-								'בפסקה V הכותב ממליץ לשלב בין שני העולמות:\n"the healthiest approach is to combine both worlds"'
+								'The writer does not express any opinion about it.',
+								'לא בדיוק. בפסקה V הכותב מביע עמדה ברורה: הכי בריא לשלב בין שני העולמות.'
 							],
 							[
 								'The writer believes it is better than face-to-face friendship.',
 								'לא בדיוק. הכותב לא אומר שחברות ברשת עדיפה, אלא ממליץ לשלב אותה עם חברויות בחיים האמיתיים.'
 							],
 							[
-								'The writer does not express any opinion about it.',
-								'לא בדיוק. בפסקה V הכותב מביע עמדה ברורה: הכי בריא לשלב בין שני העולמות.'
+								'The writer thinks it works best alongside real-life friendships.',
+								'בפסקה V הכותב ממליץ לשלב בין שני העולמות:\n"the healthiest approach is to combine both worlds"'
 							]
 						],
-						correctIndex: 1,
+						correctIndex: 3,
 						points: 7
 					}
 				]

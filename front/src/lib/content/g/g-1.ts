@@ -2171,14 +2171,437 @@ export const g1Lessons: LessonNode[] = [
 		}
 	},
 	{
-		id: 'g-time',
+		id: 'g-why-mention',
 		section: 'g-1',
-		titleEn: 'Time Management',
+		titleEn: 'Why Does the Writer Mention…?',
 		required: ['g-line-refs'],
 		requiredRounds: 2,
 		position: {
 			x: 0,
 			y: 2050
+		},
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: '{d:rtl}שאלה נפוצה בבחינה: **Why does the writer mention X?** או **The writer mentions X in order to…**\n\n{d:rtl}לא שואלים **מה** כתוב על X, אלא **למה הוא שם**: איזה רעיון הוא מדגים או מוכיח.'
+				},
+				{
+					type: 'summary',
+					title: 'שלושה צעדים',
+					lines: [
+						'1️⃣ מוצאים את X בטקסט.',
+						'2️⃣ קוראים את המשפט שלפניו: איזה רעיון X בא לחזק?',
+						'3️⃣ בוחרים את האפשרות שמתארת את התפקיד: דוגמה, הוכחה או ביקורת.',
+						'❌ המלכודת: אפשרות שחוזרת על פרט מ-X, אבל לא אומרת למה הוא שם.'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: "III  Not everyone agrees that homework helps young children. In Finland, primary school pupils get very little homework, yet the country's students regularly score near the top in international reading tests. Some teachers say this proves that time to play and rest matters as much as extra practice.",
+							questions: [
+								{
+									prompt: 'The writer mentions Finland in order to ____.',
+									options: [
+										[
+											'show that less homework does not mean weaker results',
+											'נכון. המשפט הראשון מטיל ספק בשיעורי בית, ו-Finland היא ההוכחה: מעט שיעורי בית, ובכל זאת "near the top".'
+										],
+										[
+											'show that Finnish pupils read more books than other pupils',
+											'לא כתוב בטקסט: מדובר בציונים במבחני קריאה, לא בכמה ספרים קוראים.'
+										],
+										[
+											'prove that homework is harmful to all children',
+											'מוגזמת: הטקסט אומר שלא כולם בטוחים ששיעורי בית עוזרים, לא שהם מזיקים לכל הילדים.'
+										],
+										[
+											'describe a typical school day in Finland',
+											'לא כתוב בטקסט: אין תיאור של יום לימודים. Finland מוזכרת כהוכחה לרעיון שבמשפט הראשון.'
+										]
+									],
+									correctIndex: 0
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}Why does the writer mention Finland?\n{p:text}Because Finnish pupils get very little homework.\n\n{d:rtl}התשובה הזו נכונה לפי הטקסט, ובכל זאת היא לא מקבלת ניקוד מלא. למה?',
+							options: [
+								[
+									'היא חוזרת על פרט על Finland, אבל לא אומרת איזה רעיון הוא מוכיח',
+									'נכון. התשובה המלאה: Finland מוכיחה שמעט שיעורי בית לא חייב להוביל לציונים נמוכים.'
+								],
+								['היא סותרת את הטקסט', 'לא בדיוק. הפרט עצמו נכון: "very little homework".'],
+								[
+									'היא מוגזמת',
+									'לא בדיוק. אין בה מילה מוחלטת כמו all או always. הבעיה היא שהיא עונה על "מה", לא על "למה".'
+								]
+							],
+							correctIndex: 0
+						},
+						{
+							type: 'passage-mcq',
+							text: 'II  Many cities are trying to make cycling safer. Copenhagen is often given as an example. More than 60% of its residents ride a bike to work or school every day, and the city has built over 380 kilometers of protected bike lanes. Other cities hope that similar lanes will bring similar results.',
+							questions: [
+								{
+									prompt: 'Why does the writer mention Copenhagen?',
+									options: [
+										[
+											'to give an example of safe bike lanes leading to more cycling',
+											'נכון. "Copenhagen is often given as an example": שבילים מוגנים, והרבה רוכבים. ערים אחרות מקוות לאותה תוצאה.'
+										],
+										[
+											'to show that Copenhagen has more bike lanes than any other city',
+											'לא כתוב בטקסט: אין השוואה לערים אחרות. המספר 380 מסביר למה רבים רוכבים שם.'
+										],
+										[
+											'to argue that cycling is dangerous in most cities',
+											'מוגזמת: הטקסט אומר שערים מנסות להפוך רכיבה לבטוחה יותר, לא שהיא מסוכנת ברוב הערים.'
+										],
+										[
+											'to explain why Copenhagen residents prefer bikes to buses',
+											'לא כתוב בטקסט: אוטובוסים לא מוזכרים.'
+										]
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'שאלות בסגנון בחינה',
+							subtitle: 'לכל שאלה: מצאו את הפרט, קראו את המשפט שלפניו, ושאלו: **למה הוא כאן?**'
+						},
+						{
+							type: 'passage-mcq',
+							text: 'I  When Tom Fischer needed a drill to hang a single shelf, he did not buy one. Instead, he borrowed it from his local "library of things," a place where people can borrow tools, tents and even sewing machines for free. According to one study, the average home drill is used for only 13 minutes in its entire life.\n\nII  Libraries of things have opened in hundreds of towns in Europe and North America. Supporters say they save money and reduce waste. Critics, however, note that borrowed items are sometimes returned broken, and that some libraries have closed after a year because volunteers lost interest.',
+							questions: [
+								{
+									prompt: 'The writer mentions Tom Fischer in order to ____.',
+									options: [
+										[
+											'give a real-life example of how a library of things works',
+											'נכון. טום צריך מקדחה לפעם אחת, ולכן שואל אותה במקום לקנות. זו בדיוק הדרך שבה ספריית חפצים עובדת.'
+										],
+										[
+											'show that most people cannot afford to buy a drill',
+											'לא כתוב בטקסט: הטקסט לא אומר שאנשים לא יכולים לקנות מקדחה.'
+										],
+										[
+											'describe the problems of borrowing tools',
+											'לא בדיוק. הבעיות מופיעות בפסקה II, אצל המבקרים. טום הוא דוגמה חיובית.'
+										],
+										[
+											'prove that there is a library of things in every town',
+											'מוגזמת: "hundreds of towns", לא כל עיר. וטום לא מוכיח את זה.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt:
+										'Why does the writer mention that a home drill is used for only 13 minutes?',
+									options: [
+										[
+											'to show that many things people own are hardly ever used',
+											'נכון. 13 דקות בכל חייה = כמעט לא בשימוש. זה הרעיון שמאחורי ספריית חפצים: למה לקנות משהו שכמעט לא משתמשים בו?'
+										],
+										[
+											'to show that drills break after a short time',
+											'לא כתוב בטקסט: המקדחה לא מתקלקלת. פשוט כמעט לא משתמשים בה.'
+										],
+										[
+											'to explain why Tom needed to hang a shelf',
+											'לא בדיוק. המדף הוא הסיבה שטום היה צריך מקדחה, אבל 13 הדקות לא מסבירות אותו.'
+										],
+										[
+											'to show that people do not know how to use tools',
+											'לא כתוב בטקסט: אין מילה על כך שאנשים לא יודעים להשתמש בכלים.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt:
+										'Why does the writer mention that some libraries have closed after a year?',
+									options: [
+										[
+											'to present a weakness of the idea',
+											'נכון. זה חלק מהביקורת שמתחילה ב-"Critics, however": חיסרון של הרעיון.'
+										],
+										[
+											'to show that the idea is becoming more popular',
+											'סותרת: ספרייה שנסגרת היא סימן לבעיה, לא להצלחה.'
+										],
+										[
+											'to explain why borrowed items are returned broken',
+											'לא בדיוק. זו בעיה אחרת שהמבקרים מציינים, והסגירה לא מסבירה אותה.'
+										],
+										[
+											'to show that the volunteers were not paid enough',
+											'לא כתוב בטקסט: המתנדבים איבדו עניין. תשלום לא מוזכר.'
+										]
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'g-whole-text',
+		section: 'g-1',
+		titleEn: 'Title, Purpose and Attitude',
+		required: ['g-why-mention'],
+		requiredRounds: 2,
+		position: {
+			x: 70,
+			y: 2170
+		},
+		big: false,
+		content: {
+			preface: [
+				{
+					type: 'preface',
+					text: "{d:rtl}שלוש שאלות בבחינה עוסקות **בטקסט כולו**, לא בפסקה אחת: **best title**, **main purpose** ו-**the writer's attitude**.\n\n{d:rtl}עונים עליהן **בסוף**, אחרי שכבר הכרתם את כל הפסקאות."
+				},
+				{
+					type: 'summary',
+					title: 'המלכודות',
+					lines: [
+						'🏷️ כותרת: פרט נכון, אבל צר מדי (דוגמה אחת, פסקה אחת)',
+						'🎯 מטרה: הנושא נכון, אבל הפעולה לא (to warn / to describe / to compare)',
+						'💬 עמדה: דעה של אדם שמצוטט, או עמדה מוגזמת (completely, always)',
+						'✅ הבדיקה: האפשרות מתאימה לפסקה הראשונה **וגם** לאחרונה?'
+					]
+				}
+			],
+			rounds: [
+				{
+					screens: [
+						{
+							type: 'passage-mcq',
+							text: 'I  Every year, millions of birds die after flying into glass windows. Birds cannot see clear glass. They see the sky or trees reflected in it and fly straight ahead.\n\nII  The good news is that the problem can be reduced cheaply. Small dots or stripes on the outside of a window, about ten centimeters apart, show birds that something solid is there. A study in Canada found that such markings cut collisions by up to 90%.\n\nIII  Some city buildings now use bird-friendly glass by law. Still, most collisions happen at ordinary homes. A few stickers on a window are a small price to pay for saving a life.',
+							questions: [
+								{
+									prompt: 'Which of the following is the best title for the text?',
+									options: [
+										[
+											'A Simple Way to Stop Birds Hitting Windows',
+											'נכון. היא מתאימה לכל הטקסט: הבעיה (I), הפתרון (II) והקריאה לבעלי בתים (III).'
+										],
+										[
+											'A Canadian Study on Birds',
+											'צרה מדי: המחקר בקנדה הוא פרט אחד מפסקה II. כותרת טובה מכסה את כל הטקסט.'
+										],
+										[
+											'Why Birds Cannot See Glass',
+											'צרה מדי: זה ההסבר מפסקה I בלבד. הטקסט ממשיך לפתרון ולמה שבעלי בתים יכולים לעשות.'
+										],
+										['New Laws for City Buildings', 'צרה מדי: החוקים מוזכרים במשפט אחד בפסקה III.']
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'What is the main purpose of the text?',
+									options: [
+										[
+											'to explain a problem and encourage people to help solve it',
+											'נכון. פסקה I מסבירה את הבעיה, ופסקאות II-III מציגות פתרון וקוראות לבעלי בתים לפעול.'
+										],
+										[
+											'to describe how birds see the world',
+											'צרה מדי: זה רק ההסבר בפסקה I. בדקו מה הטקסט **עושה** מתחילתו ועד סופו.'
+										],
+										[
+											'to compare city buildings and private homes',
+											'לא בדיוק. שניהם מוזכרים בפסקה III, אבל הטקסט לא משווה ביניהם.'
+										],
+										[
+											'to criticize scientists for ignoring the problem',
+											'לא כתוב בטקסט: אין ביקורת על מדענים. להפך, מחקר מקנדה הוא חלק מהפתרון.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: "What is the writer's attitude towards putting stickers on windows?",
+									options: [
+										[
+											'The writer thinks it is worth doing.',
+											'נכון. "a small price to pay for saving a life" = שווה את המאמץ.'
+										],
+										[
+											'The writer thinks it does not really help.',
+											'סותרת: מחקר מצא ירידה של עד 90%, והכותב קורא להשתמש בזה.'
+										],
+										[
+											'The writer thinks only city buildings need it.',
+											'סותרת: לפי הכותב, רוב ההתנגשויות קורות דווקא בבתים רגילים.'
+										],
+										[
+											'The writer does not express an opinion.',
+											'לא בדיוק. המשפט האחרון הוא דעה: "a small price to pay for saving a life".'
+										]
+									],
+									correctIndex: 0
+								}
+							]
+						},
+						{
+							type: 'mcq',
+							prompt:
+								'{p:text}"Online classes will never replace real teachers," says Professor Dan Gold. However, online courses have already helped millions of people who cannot get to a university.\n\n{d:rtl}השאלה: What is the writer\'s attitude towards online classes? תלמיד ענה: The writer is against them. מה הטעות?',
+							options: [
+								[
+									'הוא ענה לפי הדעה של Gold, לא לפי מה שהכותב עצמו אומר',
+									'נכון. Gold נגד, אבל הכותב מוסיף אחרי However יתרון: "have already helped millions".'
+								],
+								['אין טעות: הכותב באמת נגד', 'לא בדיוק. רק Gold נגד. הכותב עצמו מציג יתרון ברור.'],
+								[
+									'הטקסט לא אומר דבר על עמדת הכותב',
+									'לא בדיוק. המשפט שאחרי However הוא דברי הכותב, והוא מראה עמדה חיובית.'
+								]
+							],
+							correctIndex: 0,
+							explanation:
+								'עמדת הכותב = מה שהוא עצמו אומר, לרוב אחרי however או בסוף הטקסט. ציטוט של מומחה הוא הדעה של המומחה.'
+						}
+					]
+				},
+				{
+					screens: [
+						{
+							type: 'opener',
+							kicker: 'סיבוב 2',
+							level: 4,
+							title: 'שאלות בסגנון בחינה',
+							subtitle: 'קראו את כל הטקסט. כל תשובה צריכה להתאים **לכל** הפסקאות, לא לאחת מהן.'
+						},
+						{
+							type: 'passage-mcq',
+							text: "I  Every summer, thousands of young people from wealthy countries travel to Africa, Asia and South America to volunteer. They build schools, teach English or work in children's homes, and they often post proud photos online. This trend, known as \"voluntourism,\" has grown into a business worth billions of dollars.\n\nII  The volunteers' intentions are usually good, and many say the experience changed the way they see the world. However, some experts question who really benefits. Volunteers often have no training in building or teaching, and a school wall built by tourists may have to be rebuilt by local workers after they leave.\n\nIII  Children's homes raise even greater concern. When volunteers stay for two weeks and then disappear, young children may feel abandoned again and again. In Cambodia, investigators found that some children's homes had taken in children who still had parents, simply to attract volunteers and their money.\n\nIV  None of this means that young people should stay at home. A better choice is to look for programs that are run by local organizations, last for months rather than weeks, and match the volunteers' real skills. Good intentions are a start. They are not enough.",
+							questions: [
+								{
+									prompt: 'Which of the following is the best title for the text?',
+									options: [
+										[
+											'Helping Abroad: Good Intentions Are Not Enough',
+											'נכון. היא מתאימה לכל הטקסט: הטרנד (I), הבעיות (II-III) וההמלצה (IV). והיא כמעט זהה למשפט האחרון.'
+										],
+										[
+											"The Children's Homes of Cambodia",
+											'צרה מדי: Cambodia היא דוגמה אחת מפסקה III.'
+										],
+										[
+											'Why Young People Should Stay at Home',
+											'סותרת: "None of this means that young people should stay at home".'
+										],
+										[
+											'How Volunteering Changes the Way We See the World',
+											'צרה מדי: זה מה שמתנדבים אומרים במשפט אחד בפסקה II. רוב הטקסט עוסק בבעיות ובפתרון.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'What is the main purpose of the text?',
+									options: [
+										[
+											'to show the problems of voluntourism and suggest a better way to volunteer',
+											'נכון. פסקאות II-III מציגות את הבעיות, ופסקה IV מציעה דרך טובה יותר.'
+										],
+										[
+											'to persuade young people never to volunteer abroad',
+											'סותרת: הכותב אומר שלא צריך להישאר בבית, ומציע איך להתנדב טוב יותר.'
+										],
+										[
+											'to describe the work volunteers do in Africa, Asia and South America',
+											'צרה מדי: תיאור העבודה מופיע רק בפסקה I. הטקסט ממשיך לבעיות ולהמלצה.'
+										],
+										[
+											'to explain how voluntourism companies earn billions of dollars',
+											'לא בדיוק. הסכום מוזכר במשפט אחד, אבל הטקסט לא מסביר איך החברות מרוויחות.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: "What is the writer's attitude towards volunteering abroad?",
+									options: [
+										[
+											'It can be worthwhile if it is done in the right way.',
+											'נכון. פסקה IV: לא להישאר בבית, אלא לבחור תוכניות מקומיות וארוכות. "Good intentions are a start."'
+										],
+										[
+											'It is a completely positive experience.',
+											'סותרת: רוב הטקסט מציג בעיות (פסקאות II-III).'
+										],
+										[
+											'It always harms local children.',
+											'מוגזמת: always. הכותב מציג בעיות, אבל גם דרך טובה להתנדב.'
+										],
+										[
+											'It changes the way young people see the world.',
+											'זו הדעה של המתנדבים ("many say…"), לא העמדה של הכותב.'
+										]
+									],
+									correctIndex: 0
+								},
+								{
+									prompt: 'Why does the writer mention the school wall in paragraph II?',
+									options: [
+										[
+											'to show that untrained volunteers may not really help',
+											'נכון. המשפט מתחיל ב-"Volunteers often have no training", והקיר שצריך לבנות מחדש הוא הדוגמה.'
+										],
+										[
+											'to show that local workers cannot build schools',
+											'סותרת: הפועלים המקומיים הם אלה שבונים את הקיר מחדש.'
+										],
+										[
+											'to describe the photos that volunteers post online',
+											'לא בדיוק. התמונות מוזכרות בפסקה I, ואין להן קשר לקיר.'
+										],
+										[
+											'to prove that most schools in poor countries are badly built',
+											'לא כתוב בטקסט: הבעיה היא בקיר שבנו התיירים, לא בבתי הספר באופן כללי.'
+										]
+									],
+									correctIndex: 0
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		id: 'g-time',
+		section: 'g-1',
+		titleEn: 'Time Management',
+		required: ['g-whole-text'],
+		requiredRounds: 2,
+		position: {
+			x: 100,
+			y: 2290
 		},
 		big: false,
 		content: {
@@ -2202,7 +2625,8 @@ export const g1Lessons: LessonNode[] = [
 					title: 'סדר מומלץ',
 					lines: [
 						'⚡ קודם: שאלות אמריקאיות, Two Correct Answers, הפניות לשורות',
-						'🐢 אחר כך: Complete the Answer, ANSWER:, שאלות imply / infer'
+						'🐢 אחר כך: Complete the Answer, ANSWER:, שאלות imply / infer',
+						'🏁 בסוף: שאלות על הטקסט כולו (title, purpose, attitude)'
 					]
 				},
 				{
@@ -2368,7 +2792,7 @@ export const g1Lessons: LessonNode[] = [
 		requiredRounds: 2,
 		position: {
 			x: 70,
-			y: 2170
+			y: 2410
 		},
 		big: false,
 		content: {

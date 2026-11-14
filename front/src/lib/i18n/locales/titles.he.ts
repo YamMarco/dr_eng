@@ -88,6 +88,8 @@ export const titlesHe: Record<string, string> = {
 	'g-paraphrase': 'פרפרזה: אותו רעיון, מילים אחרות',
 	'g-two-opinions': 'השוואת שתי דעות',
 	'g-line-refs': 'הפניות לשורות ודיוק',
+	'g-why-mention': 'למה הכותב מזכיר את זה?',
+	'g-whole-text': 'כותרת, מטרה ועמדה',
 	'g-time': 'ניהול זמן',
 	'g-final': 'תרגול מסכם',
 	'g-w-essay-map': 'מפת 4 הפסקאות',
