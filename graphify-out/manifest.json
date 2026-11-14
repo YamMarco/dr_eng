@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1794578561.7273917,
-    "ast_hash": "673a09f8d4087c9d05649ca042fd7b33",
+    "mtime": 1794645040.874091,
+    "ast_hash": "13b887324421ac24b0de63bef93ea632",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1315,8 +1315,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.svelte": {
-    "mtime": 1793460132.1091483,
-    "ast_hash": "495635d7e8e6ed59d11ca7c613dcf1de",
+    "mtime": 1794645040.8769784,
+    "ast_hash": "00b1231909b487b67e7717540368b13d",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1794581837.608836,
-    "ast_hash": "f072ba680f1391b0853bab0f6b2adea2",
+    "mtime": 1794645040.8720021,
+    "ast_hash": "fc7fb496ba33debcae13450f250b0d3e",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1695,8 +1695,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/plans/+page.svelte": {
-    "mtime": 1794578573.6357334,
-    "ast_hash": "91dec4b437648cd0008fe415269f6658",
+    "mtime": 1794645040.8784156,
+    "ast_hash": "c54001fdfe79ebad13bcd1b57be09569",
     "semantic_hash": ""
   },
   "front/src/routes/api/access/+server.ts": {
@@ -2814,11 +2814,6 @@
     "ast_hash": "92ec37a92a53139b50c68cd2cde252ee",
     "semantic_hash": ""
   },
-  "front/src/lib/prefaceSeen.svelte.ts": {
-    "mtime": 1794585120.021364,
-    "ast_hash": "33e19d6d63399a029ef6059d05c4c9c7",
-    "semantic_hash": ""
-  },
   "front/src/lib/quiz/examParts.ts": {
     "mtime": 1794581778.9608223,
     "ast_hash": "495ef5d8d12bd39611e25133e3cef3a8",
@@ -2827,6 +2822,26 @@
   "front/tests/exam-lock.test.ts": {
     "mtime": 1794581791.8061159,
     "ast_hash": "1689f801a8c52e793cbd9147a775f153",
+    "semantic_hash": ""
+  },
+  "front/src/lib/prefaceSeen.svelte.ts": {
+    "mtime": 1794585120.021364,
+    "ast_hash": "33e19d6d63399a029ef6059d05c4c9c7",
+    "semantic_hash": ""
+  },
+  "front/src/lib/site/ClassMock.svelte": {
+    "mtime": 1794645040.8748846,
+    "ast_hash": "c4a8b11226dd312f3e3d6c1e5696c88f",
+    "semantic_hash": ""
+  },
+  "front/src/lib/site/Faq.svelte": {
+    "mtime": 1794645040.875976,
+    "ast_hash": "1b418517c380bf2abb4844f569b8a721",
+    "semantic_hash": ""
+  },
+  "front/src/routes/(site)/schools/+page.svelte": {
+    "mtime": 1794645040.879412,
+    "ast_hash": "f38ef749444b492136eb0fd5b511c8a3",
     "semantic_hash": ""
   }
 }

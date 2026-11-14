@@ -18,7 +18,8 @@
 
 	let links = $derived([
 		{ href: resolve('/about'), label: t.navAbout },
-		{ href: resolve('/plans'), label: t.navPlans }
+		{ href: resolve('/plans'), label: t.navPlans },
+		{ href: resolve('/schools'), label: t.navSchools }
 	]);
 </script>
 
@@ -34,14 +35,14 @@
 				<a
 					href={link.href}
 					aria-current={page.url.pathname === link.href ? 'page' : undefined}
-					class="min-h-11 content-center rounded-xl px-2 text-sm font-semibold text-muted transition duration-100 hover:bg-line/60 hover:text-ink active:scale-[0.98] aria-[current=page]:text-ink sm:px-3"
+					class="min-h-11 content-center rounded-xl px-1 text-sm font-semibold whitespace-nowrap text-muted transition duration-100 hover:bg-line/60 hover:text-ink active:scale-[0.98] aria-[current=page]:text-ink min-[380px]:px-1.5 sm:px-3"
 				>
 					{link.label}
 				</a>
 			{/each}
 			<a
 				href={resolve('/app')}
-				class="ms-1 min-h-10 content-center rounded-xl bg-brand px-4 text-sm font-semibold text-white transition duration-100 hover:bg-brand-dark active:scale-[0.98]"
+				class="ms-1 min-h-10 content-center rounded-xl bg-brand px-3 text-sm font-semibold whitespace-nowrap text-white transition duration-100 hover:bg-brand-dark active:scale-[0.98] min-[380px]:px-4"
 			>
 				<span class="signed-in">{t.navApp}</span>
 				<span class="signed-out">{t.navEnter}</span>
@@ -72,6 +73,7 @@
 	</span>
 	<a href={resolve('/about')} class="hover:text-ink">{t.navAbout}</a>
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
+	<a href={resolve('/schools')} class="hover:text-ink">{t.navSchools}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>
 	<a href={resolve('/terms')} class="hover:text-ink">{t.terms}</a>
 	<a href={resolve('/accessibility')} class="hover:text-ink">{t.accessibility}</a>

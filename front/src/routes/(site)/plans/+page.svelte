@@ -19,8 +19,8 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import OfferPrice from '$lib/site/OfferPrice.svelte';
+	import Faq from '$lib/site/Faq.svelte';
 	import { reveal } from '$lib/site/reveal';
-	import { emailHref } from '$lib/support';
 	import {
 		COBE_ADDON,
 		CYCLES,
@@ -470,7 +470,7 @@
 		</div>
 		<div class="flex flex-col gap-2 sm:w-56 sm:shrink-0">
 			<p class="text-2xl font-extrabold">{t.enterprisePrice}</p>
-			<Button variant="secondary" href={emailHref(t.enterpriseSubject)}>
+			<Button variant="secondary" href={resolve('/schools')}>
 				{t.enterpriseChoose}
 			</Button>
 		</div>
@@ -488,24 +488,7 @@
 		)}
 	{/if}
 
-	<!-- FAQ -->
-	<section {@attach reveal} class="mx-auto flex w-full max-w-2xl flex-col gap-3">
-		<h2 class="text-center text-2xl font-extrabold">{t.faqTitle}</h2>
-		{#each faq as entry (entry.q)}
-			<details class="group rounded-2xl bg-surface ring-1 ring-line/70">
-				<summary
-					class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 font-semibold transition duration-100 hover:text-brand active:scale-[0.99]"
-				>
-					{entry.q}
-					<span
-						class="text-xl leading-none text-muted transition-transform duration-200 group-open:rotate-45"
-						aria-hidden="true">+</span
-					>
-				</summary>
-				<p class="px-5 pb-4 text-pretty text-muted">{entry.a}</p>
-			</details>
-		{/each}
-	</section>
+	<Faq title={t.faqTitle} items={faq} />
 </main>
 
 {#if debug}
