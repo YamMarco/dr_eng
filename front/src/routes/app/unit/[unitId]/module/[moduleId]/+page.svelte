@@ -110,7 +110,7 @@
 
 <AppBar title={moduleName(mod, i18n.dict.unit)} back="/app" />
 
-<!-- COBE goes two columns from tablet width: exams and speaking | lessons. -->
+<!-- COBE goes two columns from tablet width: lessons | exams and speaking. -->
 <main
 	class="{mod.id === 'cobe'
 		? 'app-wide'
@@ -126,9 +126,9 @@
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
 			class="grid gap-2.5 sm:gap-3 md:grid-cols-2 md:items-start"
 		>
-			<div class="md:col-start-1">{@render examsCard()}</div>
+			<div class="md:col-start-2">{@render examsCard()}</div>
 			<section
-				class="{card} md:col-start-2 md:row-span-2 md:row-start-1"
+				class="{card} md:col-start-1 md:row-span-2 md:row-start-1"
 				aria-labelledby="cobe-parts"
 			>
 				<h2 id="cobe-parts" class={heading}>{t.cobeParts}</h2>
@@ -147,7 +147,7 @@
 					</HubRow>
 				{/each}
 			</section>
-			<section class="{card} md:col-start-1" aria-labelledby="cobe-speaking">
+			<section class="{card} md:col-start-2" aria-labelledby="cobe-speaking">
 				<h2 id="cobe-speaking" class={heading}>{t.cobeSpeaking}</h2>
 				<HubRow
 					icon={MessagesSquare}

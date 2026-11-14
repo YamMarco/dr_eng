@@ -30,9 +30,11 @@
 	// A tappable card (row layout); add padding, gap and background per use.
 	const card =
 		'flex items-center rounded-2xl text-start shadow-sm ring-1 transition duration-100 hover:ring-brand active:scale-[0.98]';
-	const topicCard = `${card} gap-2.5 p-3`;
-	// A topic's picture tile; add a background per use.
-	const pic = 'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl';
+	// A topic tile: a photo (or art) filling the card, its title on a shaded strip.
+	const tile =
+		'group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl text-start shadow-sm ring-1 transition duration-100';
+	const shade =
+		'flex flex-col gap-0.5 bg-linear-to-t from-black/80 via-black/45 to-transparent px-3 pt-8 pb-2.5 text-white';
 </script>
 
 <AppBar title={t.title} {back} />
@@ -74,19 +76,19 @@
 						type="button"
 						in:fly={{ y: 12, duration: 250, delay: staggerDelay(i), easing: cubicOut }}
 						onclick={() => start('banter', [topic.id])}
-						class="{topicCard} bg-surface ring-line/70"
+						class="{tile} bg-brand-soft ring-line/70 hover:ring-brand active:scale-[0.98]"
 					>
 						<img
 							src={topicPhoto(topic.id)}
 							alt=""
-							width="160"
-							height="160"
+							width="480"
+							height="480"
 							loading="lazy"
-							class="{pic} bg-brand-soft object-cover"
+							class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 						/>
-						<span class="flex min-w-0 flex-col gap-0.5">
+						<span class={shade}>
 							<span class="font-bold">{topic.he}</span>
-							<span class="truncate text-xs text-muted" lang="en" dir="ltr">{topic.en}</span>
+							<span class="truncate text-xs text-white/80" lang="en" dir="ltr">{topic.en}</span>
 						</span>
 					</button>
 				{/each}
@@ -99,12 +101,16 @@
 						easing: cubicOut
 					}}
 					onclick={surprise}
-					class="{topicCard} bg-brand-soft ring-brand/40"
+					class="{tile} bg-brand ring-brand/40 hover:ring-brand active:scale-[0.98]"
 				>
-					<span class="{pic} bg-surface text-brand"><Shuffle size={20} aria-hidden="true" /></span>
-					<span class="flex min-w-0 flex-col gap-0.5">
-						<span class="font-bold text-brand-dark">{t.surprise}</span>
-						<span class="text-xs text-muted">{t.surpriseSub}</span>
+					<Shuffle
+						size={40}
+						aria-hidden="true"
+						class="absolute inset-0 -z-10 m-auto text-white/90 transition-transform duration-300 group-hover:scale-110"
+					/>
+					<span class={shade}>
+						<span class="font-bold">{t.surprise}</span>
+						<span class="text-xs text-white/80">{t.surpriseSub}</span>
 					</span>
 				</button>
 				<!-- Not built yet: shown so students know it's coming. -->
@@ -117,10 +123,10 @@
 						delay: staggerDelay(BANTER_TOPICS.length + 1),
 						easing: cubicOut
 					}}
-					class="flex items-center gap-2.5 rounded-2xl border border-dashed border-line p-3 text-start text-muted"
+					class="{tile} border-2 border-dashed border-line text-muted shadow-none ring-0"
 				>
-					<span class="{pic} bg-line/50"><PenLine size={20} aria-hidden="true" /></span>
-					<span class="flex min-w-0 flex-col gap-0.5">
+					<PenLine size={36} aria-hidden="true" class="absolute inset-0 -z-10 m-auto" />
+					<span class="flex flex-col gap-0.5 px-3 pb-2.5">
 						<span class="font-bold">{t.ownTopic}</span>
 						<span class="text-xs">{t.ownTopicSub}</span>
 					</span>
