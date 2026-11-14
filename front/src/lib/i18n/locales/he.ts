@@ -690,7 +690,9 @@ export const he = {
 		examsFirst: 'למבחן הראשון',
 		examsNext: 'למבחן הבא',
 		wordsDone: 'סיימתם להיום',
-		toPath: 'למסלול המלא'
+		toPath: 'למסלול המלא',
+		cobeParts: 'שיעורים לפי חלקי הבחינה',
+		cobeSpeaking: 'תרגול דיבור'
 	},
 	liveLesson: {
 		title: 'שיעור קבוצתי',
@@ -1040,6 +1042,8 @@ export const he = {
 		tabCobe: 'COBE קצר',
 		surprise: 'הפתעה',
 		surpriseSub: 'נושא אקראי',
+		ownTopic: 'נושא משלכם',
+		ownTopicSub: 'בקרוב',
 		partA: 'חלק א׳ - שאלה אישית',
 		partADesc: 'בוחרים אחד משני נושאים, עונים על 2 שאלות ושאלת המשך',
 		partB: 'חלק ב׳ - הפרויקט',

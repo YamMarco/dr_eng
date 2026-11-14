@@ -3,7 +3,7 @@
 	// a time; "another chat" comes back here.
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { MessagesSquare, Shuffle, User, FolderOpen } from '@lucide/svelte';
+	import { MessagesSquare, PenLine, Shuffle, User, FolderOpen } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import ChatSession from '$lib/chat/ChatSession.svelte';
 	import { BANTER_TOPICS, PART_A_TOPICS } from '$lib/content/cobe/chatTopics';
@@ -27,8 +27,12 @@
 	const surprise = () =>
 		start('banter', [BANTER_TOPICS[Math.floor(Math.random() * BANTER_TOPICS.length)].id]);
 
+	// A tappable card (row layout); add padding, gap and background per use.
 	const card =
-		'flex flex-col items-start gap-0.5 rounded-2xl bg-surface p-3 text-start shadow-sm ring-1 ring-line/70 transition duration-100 hover:ring-brand active:scale-[0.98]';
+		'flex items-center rounded-2xl text-start shadow-sm ring-1 transition duration-100 hover:ring-brand active:scale-[0.98]';
+	const topicCard = `${card} gap-2.5 p-3`;
+	// A topic's picture tile; add a background per use.
+	const pic = 'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xl leading-none';
 </script>
 
 <AppBar title={t.title} {back} />
@@ -70,10 +74,13 @@
 						type="button"
 						in:fly={{ y: 12, duration: 250, delay: staggerDelay(i), easing: cubicOut }}
 						onclick={() => start('banter', [topic.id])}
-						class={card}
+						class="{topicCard} bg-surface ring-line/70"
 					>
-						<span class="font-bold">{topic.he}</span>
-						<span class="text-xs text-muted" dir="ltr">{topic.en}</span>
+						<span class="{pic} bg-brand-soft" aria-hidden="true">{topic.emoji}</span>
+						<span class="flex min-w-0 flex-col gap-0.5">
+							<span class="font-bold">{topic.he}</span>
+							<span class="truncate text-xs text-muted" lang="en" dir="ltr">{topic.en}</span>
+						</span>
 					</button>
 				{/each}
 				<button
@@ -85,13 +92,31 @@
 						easing: cubicOut
 					}}
 					onclick={surprise}
-					class="{card} bg-brand-soft ring-brand/40"
+					class="{topicCard} bg-brand-soft ring-brand/40"
 				>
-					<span class="flex items-center gap-1.5 font-bold text-brand-dark">
-						<Shuffle size={16} aria-hidden="true" />
-						{t.surprise}
+					<span class="{pic} bg-surface text-brand"><Shuffle size={20} aria-hidden="true" /></span>
+					<span class="flex min-w-0 flex-col gap-0.5">
+						<span class="font-bold text-brand-dark">{t.surprise}</span>
+						<span class="text-xs text-muted">{t.surpriseSub}</span>
 					</span>
-					<span class="text-xs text-muted">{t.surpriseSub}</span>
+				</button>
+				<!-- Not built yet: shown so students know it's coming. -->
+				<button
+					type="button"
+					disabled
+					in:fly={{
+						y: 12,
+						duration: 250,
+						delay: staggerDelay(BANTER_TOPICS.length + 1),
+						easing: cubicOut
+					}}
+					class="flex items-center gap-2.5 rounded-2xl border border-dashed border-line p-3 text-start text-muted"
+				>
+					<span class="{pic} bg-line/50"><PenLine size={20} aria-hidden="true" /></span>
+					<span class="flex min-w-0 flex-col gap-0.5">
+						<span class="font-bold">{t.ownTopic}</span>
+						<span class="text-xs">{t.ownTopicSub}</span>
+					</span>
 				</button>
 			</div>
 		{:else}
@@ -101,7 +126,7 @@
 						type="button"
 						in:fly={{ y: 12, duration: 250, delay: staggerDelay(i), easing: cubicOut }}
 						onclick={() => start(part.mode, part.mode === 'cobe-a' ? drawTwo(PART_A_TOPICS) : [])}
-						class="{card} flex-row items-center gap-3 p-4"
+						class="{card} gap-3 bg-surface p-4 ring-line/70"
 					>
 						<span
 							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand"

@@ -87,6 +87,7 @@
 
 	const card =
 		'flex flex-col rounded-3xl bg-surface p-1.5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	const heading = 'px-2 pt-1.5 pb-0.5 text-xs font-bold text-muted';
 
 	const skillIcon: Record<Skill, Component> = {
 		vocab: Languages,
@@ -130,20 +131,13 @@
 	</section>
 
 	{#if mod.id === 'cobe'}
-		<!-- COBE: chat first, then the lessons by exam part in one card, then speaking practice. -->
+		<!-- COBE: the lessons by exam part, then speaking practice (AI chat, recordings). -->
 		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
 		>
-			<section class={card}>
-				<HubRow
-					icon={MessagesSquare}
-					title={i18n.dict.chat.title}
-					sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
-					href="{base}/chat"
-				/>
-			</section>
-			<section class={card}>
+			<section class={card} aria-labelledby="cobe-parts">
+				<h2 id="cobe-parts" class={heading}>{t.cobeParts}</h2>
 				{#each route as part, i (part.id)}
 					<HubRow
 						icon={partIcons[i] ?? Mic}
@@ -159,15 +153,23 @@
 					</HubRow>
 				{/each}
 			</section>
-			{#if speaking.questions}
-				<section class={card}>
+			<section class={card} aria-labelledby="cobe-speaking">
+				<h2 id="cobe-speaking" class={heading}>{t.cobeSpeaking}</h2>
+				<HubRow
+					icon={MessagesSquare}
+					title={i18n.dict.chat.title}
+					sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
+					href="{base}/chat"
+				/>
+				{#if speaking.questions}
 					<HubRow
 						icon={Mic}
 						title={t.skills.speaking}
 						sub={i18n.dict.cobeReview.practiced(speaking.questions, speaking.reachedPercent)}
+						href="{base}/lessons"
 					/>
-				</section>
-			{/if}
+				{/if}
+			</section>
 			{@render pathLink()}
 		</div>
 	{:else}
