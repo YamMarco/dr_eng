@@ -30,11 +30,14 @@
 	// A tappable card (row layout); add padding, gap and background per use.
 	const card =
 		'flex items-center rounded-2xl text-start shadow-sm ring-1 transition duration-100 hover:ring-brand active:scale-[0.98]';
-	// A topic tile: a photo (or art) filling the card, its title on a shaded strip.
+	// A topic tile: a photo (or art) filling the card, a gradient over all of it and the
+	// title on one line at the bottom (Hebrew at the start, English at the end).
 	const tile =
-		'group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl text-start shadow-sm ring-1 transition duration-100';
+		'group relative isolate flex h-18.5 flex-col justify-end overflow-hidden rounded-2xl text-start shadow-sm ring-1 transition duration-100';
 	const shade =
-		'flex flex-col gap-0.5 bg-linear-to-t from-black/80 via-black/45 to-transparent px-3 pt-8 pb-2.5 text-white';
+		'absolute inset-0 flex items-end bg-linear-to-t from-black/90 via-black/35 via-50% to-black/5 px-3 pb-2.5 text-white';
+	const titleRow = 'flex w-full min-w-0 items-baseline justify-between gap-2 text-shadow-sm';
+	const enLabel = 'truncate text-[0.6875rem] font-semibold tracking-wider text-white/75 uppercase';
 </script>
 
 <AppBar title={t.title} {back} />
@@ -76,7 +79,7 @@
 						type="button"
 						in:fly={{ y: 12, duration: 250, delay: staggerDelay(i), easing: cubicOut }}
 						onclick={() => start('banter', [topic.id])}
-						class="{tile} bg-brand-soft ring-line/70 hover:ring-brand active:scale-[0.98]"
+						class="{tile} bg-neutral-800 ring-black/10 hover:ring-brand active:scale-[0.98]"
 					>
 						<img
 							src={topicPhoto(topic.id)}
@@ -87,8 +90,10 @@
 							class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 						/>
 						<span class={shade}>
-							<span class="font-bold">{topic.he}</span>
-							<span class="truncate text-xs text-white/80" lang="en" dir="ltr">{topic.en}</span>
+							<span class={titleRow}>
+								<span class="shrink-0 font-bold">{topic.he}</span>
+								<span class={enLabel} lang="en" dir="ltr">{topic.en}</span>
+							</span>
 						</span>
 					</button>
 				{/each}
@@ -104,13 +109,15 @@
 					class="{tile} bg-brand ring-brand/40 hover:ring-brand active:scale-[0.98]"
 				>
 					<Shuffle
-						size={40}
+						size={22}
 						aria-hidden="true"
-						class="absolute inset-0 -z-10 m-auto text-white/90 transition-transform duration-300 group-hover:scale-110"
+						class="absolute inset-x-0 top-2.5 -z-10 mx-auto text-white/90 transition-transform duration-300 group-hover:scale-110"
 					/>
 					<span class={shade}>
-						<span class="font-bold">{t.surprise}</span>
-						<span class="text-xs text-white/80">{t.surpriseSub}</span>
+						<span class={titleRow}>
+							<span class="shrink-0 font-bold">{t.surprise}</span>
+							<span class="truncate text-xs text-white/80">{t.surpriseSub}</span>
+						</span>
 					</span>
 				</button>
 				<!-- Not built yet: shown so students know it's coming. -->
@@ -125,10 +132,10 @@
 					}}
 					class="{tile} border-2 border-dashed border-line text-muted shadow-none ring-0"
 				>
-					<PenLine size={36} aria-hidden="true" class="absolute inset-0 -z-10 m-auto" />
-					<span class="flex flex-col gap-0.5 px-3 pb-2.5">
-						<span class="font-bold">{t.ownTopic}</span>
-						<span class="text-xs">{t.ownTopicSub}</span>
+					<PenLine size={22} aria-hidden="true" class="absolute inset-x-0 top-2.5 -z-10 mx-auto" />
+					<span class="flex w-full items-baseline justify-between gap-2 px-3 pb-2.5">
+						<span class="shrink-0 font-bold">{t.ownTopic}</span>
+						<span class="truncate text-xs">{t.ownTopicSub}</span>
 					</span>
 				</button>
 			</div>

@@ -1,16 +1,16 @@
 # Graph Report - things  (2026-11-14)
 
 ## Corpus Check
-- 552 files · ~512,833 words
+- 552 files · ~519,964 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2659 nodes · 5333 edges · 215 communities (155 shown, 60 thin omitted)
+- 2659 nodes · 5333 edges · 213 communities (154 shown, 59 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 116 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fe51f38a`
+- Built from commit: `5bfe4b41`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -205,11 +205,9 @@
 - vite
 - vite-env.d.ts
 - prettier-plugin-svelte
-- content-edit-files.test.ts
 - greeting.ts
 - calloutIcons.ts
 - @types/node
-- smoke.spec.ts
 - @types/nspell
 - sectionThemes.ts
 - typescript-eslint
@@ -243,7 +241,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (215 total, 60 thin omitted)
+## Communities (213 total, 59 thin omitted)
 
 ### Community 0 - "dependencies"
 Cohesion: 0.11
@@ -486,8 +484,8 @@ Cohesion: 0.09
 Nodes (35): CONTENT_TAGS, FATAL_TAGS, TAG_IDS, TagDef, TAGS, EssayVerdict, MAX_TEXT, SingleRequest (+27 more)
 
 ### Community 71 - "takeHistory.ts"
-Cohesion: 0.22
-Nodes (12): primaryAction(), record(), stop(), toggle(), Entry, openDb(), readStats(), recordTake() (+4 more)
+Cohesion: 0.20
+Nodes (13): primaryAction(), record(), stop(), toggle(), isRecord(), Entry, openDb(), readStats() (+5 more)
 
 ### Community 72 - "completeRound"
 Cohesion: 0.24
@@ -522,8 +520,8 @@ Cohesion: 0.25
 Nodes (7): COBE (4 and 5 points, oral), Material, Module C (4 points), Module D (4 points, literature), Module E (4 and 5 points), Module F (5 points, literature), Module G (5 points)
 
 ### Community 84 - "content-edit/+server.ts"
-Cohesion: 0.20
-Nodes (19): wordId(), emit(), extractArrayLiteral(), matchingBracketEnd(), mergeById(), parseArrayLiteral(), splitArrayHead(), sq() (+11 more)
+Cohesion: 0.17
+Nodes (21): wordId(), emit(), extractArrayLiteral(), matchingBracketEnd(), mergeById(), parseArrayLiteral(), splitArrayHead(), sq() (+13 more)
 
 ### Community 85 - "feedback/+server.ts"
 Cohesion: 0.31
@@ -626,8 +624,8 @@ Cohesion: 0.18
 Nodes (10): Exams, Gates (no API call, outright wrong), Layer 2, Next, One attempt, Rules (Layer 1 settings), Submit → feedback framework, Tries (choice screens) (+2 more)
 
 ### Community 116 - "fixtures.ts"
-Cohesion: 0.18
-Nodes (7): Fixtures, GradeBody, Mocks, PartBody, PIXEL, playThrough(), states
+Cohesion: 0.13
+Nodes (9): Fixtures, GradeBody, Mocks, PartBody, PIXEL, playThrough(), states, app (+1 more)
 
 ### Community 118 - "RemindersStore"
 Cohesion: 0.29
@@ -793,10 +791,6 @@ Nodes (5): getLesson(), ownerModule(), ruleChain(), RulesFile, load()
 Cohesion: 0.40
 Nodes (3): HEX_TO_NAME, TEXT_COLOR_PALETTE, TextColorName
 
-### Community 201 - "content-edit-files.test.ts"
-Cohesion: 0.40
-Nodes (3): f(), files, lib
-
 ### Community 217 - "llmGuard.ts"
 Cohesion: 0.19
 Nodes (16): cobeVisible(), israelToday, llmConfigured(), burstLimited(), calls, cobeThisMonth(), countAllToday(), countToday() (+8 more)
@@ -808,7 +802,7 @@ Nodes (13): PartVerdict, examLocked(), db, examAttempts, llmUsage, progress, pus
 ## Knowledge Gaps
 - **853 isolated node(s):** `svelte`, `run`, `noSession`, `TestUser`, `users` (+848 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **60 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **59 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

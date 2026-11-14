@@ -1280,8 +1280,8 @@
     "semantic_hash": ""
   },
   "docs/ux-principles.md": {
-    "mtime": 1794657457.649469,
-    "ast_hash": "3261465c4fa911b0fd3e9e79eccdaf6a",
+    "mtime": 1794657625.7507198,
+    "ast_hash": "434af1e67947ae10742262e2e07229d1",
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
@@ -1385,8 +1385,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/+page.svelte": {
-    "mtime": 1794657381.0609903,
-    "ast_hash": "698fdac2bdc7a35a47acbe2a8e686abb",
+    "mtime": 1794657625.6380584,
+    "ast_hash": "63fa57fc7835e159f65237d741f70488",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/exam/+page.svelte": {
@@ -1760,8 +1760,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/cobe/chatTopics.ts": {
-    "mtime": 1794657346.5002563,
-    "ast_hash": "23d698d90406fe591f7ac73126a8f77c",
+    "mtime": 1794657698.1413383,
+    "ast_hash": "8f4c2e288a4a0f306190d6e9f0e40323",
     "semantic_hash": ""
   },
   "front/src/lib/feedback/chat.ts": {
@@ -1805,8 +1805,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/chat/+page.svelte": {
-    "mtime": 1794657346.9640067,
-    "ast_hash": "9acd69c082b3a8b5f49e4e19ee93f102",
+    "mtime": 1794657919.602165,
+    "ast_hash": "de1cb95a2b00bb1cb10723fd6386e077",
     "semantic_hash": ""
   },
   "front/src/routes/app/unit/[unitId]/module/[moduleId]/chat/+page.ts": {
@@ -2850,53 +2850,53 @@
     "semantic_hash": ""
   },
   "front/static/chat/food.webp": {
-    "mtime": 1794657329.900189,
-    "ast_hash": "2aedb157835c5ee55b0cf994ba81bf1e",
+    "mtime": 1794657582.7127833,
+    "ast_hash": "4f76636e5f220c242682b3abe144e8db",
     "semantic_hash": ""
   },
   "front/static/chat/free-time.webp": {
-    "mtime": 1794657329.818995,
-    "ast_hash": "f72844557d6b6aca8f54bfdf99d8902e",
+    "mtime": 1794657582.5012348,
+    "ast_hash": "5158137ff680b20fe17826a8f1067875",
     "semantic_hash": ""
   },
   "front/static/chat/friendship.webp": {
-    "mtime": 1794657329.9523787,
-    "ast_hash": "a717e2a0dac4aba4069b2b6b474f7684",
+    "mtime": 1794657582.8530295,
+    "ast_hash": "90a6d63490df4e303226a7ac29b0f81f",
     "semantic_hash": ""
   },
   "front/static/chat/future.webp": {
-    "mtime": 1794657330.0341315,
-    "ast_hash": "56b45bd8160bd2df78ab805fe1343003",
+    "mtime": 1794657583.1192744,
+    "ast_hash": "ef2e7dc75485555c7e21719c52bf6717",
     "semantic_hash": ""
   },
   "front/static/chat/hometown.webp": {
-    "mtime": 1794657330.0026336,
-    "ast_hash": "4e1c62fe06172125c81499adf5179673",
+    "mtime": 1794657583.0609772,
+    "ast_hash": "a551400a2bdfd71567fab208114f3b4d",
     "semantic_hash": ""
   },
   "front/static/chat/movies.webp": {
-    "mtime": 1794657329.8730638,
-    "ast_hash": "d5c7d5f77d3d53545862769e142ce1b9",
+    "mtime": 1794657582.630895,
+    "ast_hash": "7ae346aa8d67633942eb4feac9d8ea1e",
     "semantic_hash": ""
   },
   "front/static/chat/music.webp": {
-    "mtime": 1794657329.8552582,
-    "ast_hash": "1e7ce8a1531ff428b1b73c880d1a46ce",
+    "mtime": 1794657582.561144,
+    "ast_hash": "206d1297b25b40de2c47ea518acd3f5c",
     "semantic_hash": ""
   },
   "front/static/chat/sports.webp": {
-    "mtime": 1794657329.98163,
-    "ast_hash": "5b6d89bef8e34b9f258889b9b3ab71e5",
+    "mtime": 1794657582.9853635,
+    "ast_hash": "a4367051451b2d5412d7d67f9e028d34",
     "semantic_hash": ""
   },
   "front/static/chat/technology.webp": {
-    "mtime": 1794657329.9099884,
-    "ast_hash": "dc586b714ac9810dcc5af5340c91913a",
+    "mtime": 1794657582.7780683,
+    "ast_hash": "f38ba66d7a4909bd6d61f7aec70f604a",
     "semantic_hash": ""
   },
   "front/static/chat/vacations.webp": {
-    "mtime": 1794657329.9699543,
-    "ast_hash": "41b76998934f575c157a5a4861ffd3c5",
+    "mtime": 1794657582.9264495,
+    "ast_hash": "8b51d836d89a35b30759c8c2807e0691",
     "semantic_hash": ""
   }
 }

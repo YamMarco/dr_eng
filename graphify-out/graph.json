@@ -666,8 +666,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec",
-      "community": 206,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "smoke.spec.ts"
     },
     {
@@ -677,8 +677,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_site",
-      "community": 206,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "site"
     },
     {
@@ -688,8 +688,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_app",
-      "community": 206,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "app"
     },
     {
@@ -700,8 +700,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_focuswalk",
-      "community": 206,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "focuswalk()"
     },
     {
@@ -22530,8 +22530,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_storedjson",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 71,
+      "community_name": "takeHistory.ts",
       "norm_label": "storedjson.ts"
     },
     {
@@ -22542,8 +22542,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_storedjson_isrecord",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 71,
+      "community_name": "takeHistory.ts",
       "norm_label": "isrecord()"
     },
     {
@@ -23256,8 +23256,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_about_page_f",
-      "community": 201,
-      "community_name": "content-edit-files.test.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "f()"
     },
     {
@@ -25790,8 +25790,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test",
-      "community": 201,
-      "community_name": "content-edit-files.test.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "content-edit-files.test.ts"
     },
     {
@@ -25801,8 +25801,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_lib",
-      "community": 201,
-      "community_name": "content-edit-files.test.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "lib"
     },
     {
@@ -25813,8 +25813,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_dirs",
-      "community": 201,
-      "community_name": "content-edit-files.test.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "dirs()"
     },
     {
@@ -25824,8 +25824,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_files",
-      "community": 201,
-      "community_name": "content-edit-files.test.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "files"
     },
     {
@@ -62053,7 +62053,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "front/src/routes/app/unit/[unitId]/module/[moduleId]/chat/+page.svelte",
-      "source_location": "L144",
+      "source_location": "L157",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_routes_app_unit_unitid_module_moduleid_chat_page_svelte_front_src_routes_app_unit_unitid_module_moduleid_chat_page",
@@ -89819,5 +89819,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "fe51f38ac7cf37906609150b592604c6cf18aba0"
+  "built_at_commit": "5bfe4b410fc81d9e5f7b73fa2b288fc7e1936079"
 }
