@@ -151,10 +151,11 @@
 		failed = null;
 		fix = null;
 		resent = false;
-		const token = needsCaptcha ? await captcha?.getToken() : undefined;
+		// The widget usually solves itself within a moment; a tap meanwhile waits for it.
+		const token = needsCaptcha ? await captcha?.getToken(4000) : undefined;
 		// Still unsolved (e.g. a challenge waiting for a click): don't spend an attempt on a doomed request.
 		if (needsCaptcha && !token && captchaStatus === 'pending') {
-			failed = t.errors.captcha;
+			failed = t.errors.captchaPending;
 			busy = false;
 			return;
 		}
@@ -168,6 +169,13 @@
 			// Single-use: the next request needs a fresh one.
 			if (token) captcha?.reset();
 		}
+	}
+
+	// A notice appears next to the button just tapped; on a short screen (or with the
+	// keyboard open) bring it into view.
+	function reveal(el: HTMLElement) {
+		const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+		el.scrollIntoView({ block: 'nearest', behavior: still ? 'auto' : 'smooth' });
 	}
 
 	function go(next: Mode) {
@@ -274,6 +282,7 @@
 								{t.resendConfirm}
 							</button>
 						{/if}
+						{@render notices()}
 						<Button variant="secondary" onclick={() => go('signin')}>{t.backToSignIn}</Button>
 					</div>
 				{:else if mode === 'otp'}
@@ -405,13 +414,8 @@
 								<Captcha bind:this={captcha} bind:status={captchaStatus} visible />
 							</div>
 						{/if}
-						<Button
-							type="submit"
-							class={span}
-							{busy}
-							disabled={needsCaptcha && captchaStatus === 'pending'}
-							>{busy ? t.busy : submitLabel}</Button
-						>
+						{@render notices()}
+						<Button type="submit" class={span} {busy}>{busy ? t.busy : submitLabel}</Button>
 
 						{#if mode === 'signin'}
 							<div class="flex flex-wrap justify-between gap-x-2">
@@ -455,34 +459,43 @@
 				<Captcha bind:this={captcha} bind:status={captchaStatus} />
 			</div>
 		{/if}
-
-		{#if resent}
-			<p class="mt-4 text-sm text-muted" role="status" in:fly={{ y: 6, duration: 200 }}>
-				{t.resent}
-			</p>
-		{/if}
-		{#if failed}
-			<div
-				class="mt-4 rounded-2xl bg-miss-soft px-4 py-3 text-sm leading-relaxed font-semibold text-miss"
-				role="alert"
-				in:fly={{ y: 6, duration: 200 }}
-			>
-				{failed}
-				{#if fix === 'resend'}
-					<button type="button" class="mt-1 block underline" onclick={resend}>
-						{t.resendConfirm}
-					</button>
-				{:else if fix === 'existing'}
-					<span class="mt-1 flex flex-wrap gap-x-4">
-						<button type="button" class="underline" onclick={() => go('signin')}>
-							{t.backToSignIn}
-						</button>
-						<button type="button" class="underline" onclick={() => go('forgot')}>
-							{t.forgot}
-						</button>
-					</span>
-				{/if}
-			</div>
-		{/if}
 	</div>
 </main>
+
+<!-- Right above the button that caused it, so the answer lands where the student is looking. -->
+{#snippet notices()}
+	{#if resent}
+		<p
+			class="text-sm text-muted {span}"
+			role="status"
+			in:fly={{ y: 6, duration: 200 }}
+			{@attach reveal}
+		>
+			{t.resent}
+		</p>
+	{/if}
+	{#if failed}
+		<div
+			class="rounded-2xl bg-miss-soft px-4 py-3 text-sm leading-relaxed font-semibold text-miss {span}"
+			role="alert"
+			in:fly={{ y: 6, duration: 200 }}
+			{@attach reveal}
+		>
+			{failed}
+			{#if fix === 'resend'}
+				<button type="button" class="mt-1 block underline" onclick={resend}>
+					{t.resendConfirm}
+				</button>
+			{:else if fix === 'existing'}
+				<span class="mt-1 flex flex-wrap gap-x-4">
+					<button type="button" class="underline" onclick={() => go('signin')}>
+						{t.backToSignIn}
+					</button>
+					<button type="button" class="underline" onclick={() => go('forgot')}>
+						{t.forgot}
+					</button>
+				</span>
+			{/if}
+		</div>
+	{/if}
+{/snippet}

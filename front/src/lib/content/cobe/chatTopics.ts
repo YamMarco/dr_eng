@@ -14,6 +14,13 @@ export type BanterTopic = {
 	opener: string;
 };
 
+/** A banter topic's card photo: static/chat/<id>.webp, 480px square. All CC0 or public
+ *  domain (via Openverse): free-time Ted Mielczarek, music Abdulla Al Muhairi, movies
+ *  polkbritton, food Cole Kennedy, technology StockyPics, friendship Matt Byford,
+ *  vacations Bernard Spragg, sports Michal Jarmoluk, hometown Image Catalog,
+ *  future NOAASatellites. */
+export const topicPhoto = (id: string) => `/chat/${id}.webp`;
+
 export const BANTER_TOPICS: BanterTopic[] = [
 	{
 		id: 'free-time',

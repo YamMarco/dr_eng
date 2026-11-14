@@ -87,6 +87,7 @@
 
 	const card =
 		'flex flex-col rounded-3xl bg-surface p-1.5 shadow-md ring-1 shadow-overlay/5 ring-line/70';
+	const heading = 'px-2 pt-1.5 pb-0.5 text-xs font-bold text-muted';
 
 	const skillIcon: Record<Skill, Component> = {
 		vocab: Languages,
@@ -109,41 +110,28 @@
 
 <AppBar title={moduleName(mod, i18n.dict.unit)} back="/app" />
 
-<main class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6">
+<!-- COBE goes two columns from tablet width: lessons | exams and speaking. -->
+<main
+	class="{mod.id === 'cobe'
+		? 'app-wide'
+		: 'app-col'} flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6"
+>
 	{#if hero}
 		<NextStepHero {...hero} />
 	{/if}
 
-	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }} class={card}>
-		<HubRow
-			icon={ClipboardCheck}
-			title={t.examsTitle}
-			sub={exams.total
-				? exams.taken
-					? t.examsSummary(exams.taken, exams.total, exams.best!)
-					: t.examsOpen(exams.total)
-				: t.examsSoonDesc}
-			href={exams.total ? `${base}/exam` : undefined}
-		>
-			{#snippet trailing()}<ExamNugget {exams} />{/snippet}
-		</HubRow>
-	</section>
-
 	{#if mod.id === 'cobe'}
-		<!-- COBE: chat first, then the lessons by exam part in one card, then speaking practice. -->
+		<!-- Phone order: exams, lessons by exam part, then speaking practice (AI chat, recordings). -->
 		<div
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+			class="grid gap-2.5 sm:gap-3 md:grid-cols-2 md:items-start"
 		>
-			<section class={card}>
-				<HubRow
-					icon={MessagesSquare}
-					title={i18n.dict.chat.title}
-					sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
-					href="{base}/chat"
-				/>
-			</section>
-			<section class={card}>
+			<div class="md:col-start-2">{@render examsCard()}</div>
+			<section
+				class="{card} md:col-start-1 md:row-span-2 md:row-start-1"
+				aria-labelledby="cobe-parts"
+			>
+				<h2 id="cobe-parts" class={heading}>{t.cobeParts}</h2>
 				{#each route as part, i (part.id)}
 					<HubRow
 						icon={partIcons[i] ?? Mic}
@@ -159,18 +147,29 @@
 					</HubRow>
 				{/each}
 			</section>
-			{#if speaking.questions}
-				<section class={card}>
+			<section class="{card} md:col-start-2" aria-labelledby="cobe-speaking">
+				<h2 id="cobe-speaking" class={heading}>{t.cobeSpeaking}</h2>
+				<HubRow
+					icon={MessagesSquare}
+					title={i18n.dict.chat.title}
+					sub={chats ? i18n.dict.chat.rowCount(chats) : i18n.dict.chat.rowSub}
+					href="{base}/chat"
+				/>
+				{#if speaking.questions}
 					<HubRow
 						icon={Mic}
 						title={t.skills.speaking}
 						sub={i18n.dict.cobeReview.practiced(speaking.questions, speaking.reachedPercent)}
+						href="{base}/lessons"
 					/>
-				</section>
-			{/if}
-			{@render pathLink()}
+				{/if}
+			</section>
 		</div>
+		{@render pathLink()}
 	{:else}
+		<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}>
+			{@render examsCard()}
+		</div>
 		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
@@ -199,6 +198,23 @@
 		</div>
 	{/if}
 </main>
+
+{#snippet examsCard()}
+	<section class={card}>
+		<HubRow
+			icon={ClipboardCheck}
+			title={t.examsTitle}
+			sub={exams.total
+				? exams.taken
+					? t.examsSummary(exams.taken, exams.total, exams.best!)
+					: t.examsOpen(exams.total)
+				: t.examsSoonDesc}
+			href={exams.total ? `${base}/exam` : undefined}
+		>
+			{#snippet trailing()}<ExamNugget {exams} />{/snippet}
+		</HubRow>
+	</section>
+{/snippet}
 
 {#snippet pathLink()}
 	{#if route.length}
