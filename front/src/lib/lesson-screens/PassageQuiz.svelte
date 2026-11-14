@@ -78,7 +78,7 @@
 	<ReadingPaper>
 		<ExerciseKindBadge label={i18n.dict.exerciseKind.passageQuiz} />
 		{#if hasParagraphMarkers(screen.text)}
-			<PassageText text={screen.text} />
+			<PassageText text={screen.text} lineNumbers={screen.lineNumbers} />
 		{:else}
 			<div class="leading-relaxed"><Md block text={screen.text} /></div>
 		{/if}

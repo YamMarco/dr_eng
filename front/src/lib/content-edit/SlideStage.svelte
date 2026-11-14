@@ -61,7 +61,12 @@
 		type MarkAllSwatch
 	} from '$lib/lesson-screens/markAllColors';
 	import { formatScreenLocation, type ScreenPath } from './screenPath';
-	import { mcqCorrect, type LessonScreen } from '$lib/lesson-screens/types';
+	import {
+		mcqCorrect,
+		type LessonScreen,
+		type PassageMcqScreen,
+		type PassageQuizScreen
+	} from '$lib/lesson-screens/types';
 
 	let {
 		model,
@@ -218,6 +223,19 @@
 	// exams never auto-check).
 	const AUTO_CHECK_TYPES = new Set(['writing-task', 'self-check']);
 </script>
+
+{#snippet lineNumbersToggle(s: PassageMcqScreen | PassageQuizScreen)}
+	<SettingsGroup title="תצוגה">
+		<label class="flex items-center gap-2 text-xs text-muted">
+			<input
+				type="checkbox"
+				checked={s.lineNumbers ?? false}
+				onchange={(e) => (s.lineNumbers = e.currentTarget.checked || undefined)}
+			/>
+			מספרי שורות (כמו בבחינה: שורה שמסתיימת ב-Enter אחד = שורה מודפסת)
+		</label>
+	</SettingsGroup>
+{/snippet}
 
 {#if !path || !screen}
 	<div class="flex h-full items-center justify-center p-10 text-center text-sm text-muted">
@@ -913,6 +931,7 @@
 										/>
 									</SettingsGroup>
 									{#if screen.type === 'passage-mcq'}
+										{@render lineNumbersToggle(screen)}
 										{#each screen.questions as q, qi (qi)}
 											<SettingsGroup title="משוב לכל תשובה - שאלה {qi + 1}">
 												<OptionFeedbackList
@@ -923,6 +942,8 @@
 											</SettingsGroup>
 										{/each}
 									{/if}
+								{:else if screen.type === 'passage-quiz'}
+									{@render lineNumbersToggle(screen)}
 								{:else if screen.type === 'time-comparison'}
 									<SettingsGroup title="טיימרים להשוואה">
 										<div class="flex flex-wrap gap-4">

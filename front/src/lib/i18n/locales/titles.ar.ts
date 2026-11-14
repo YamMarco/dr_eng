@@ -86,6 +86,7 @@ export const titlesAr: Record<string, string> = {
 	'e-topic': 'عن ماذا تتحدث الفقرة؟ موضوع لا تفصيل',
 	'e-topic-q': 'أسئلة الموضوع - مستوى الامتحان',
 	'e-complete': 'نُكمل الإجابة',
+	'e-question-kinds': 'أسطر، إحالات واستنتاجات',
 	'e-glossary-time': 'Glossary وإدارة الوقت',
 	'e-final': 'تدريب ختامي بالوقت'
 };

@@ -115,7 +115,7 @@
 				</span>
 			</div>
 		{/if}
-		<PassageText text={screen.text} />
+		<PassageText text={screen.text} lineNumbers={screen.lineNumbers} />
 	</ReadingPaper>
 
 	<div class="mt-6 lg:mt-0 lg:min-h-0 lg:overflow-y-auto">

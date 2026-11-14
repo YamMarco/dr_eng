@@ -84,10 +84,11 @@ Open: Introduction to Poetry is licensed, so its poem screens show a summary unt
 | e-method | השיטה בקצרה (method, then the exam-level Library text) | 16 |
 | e-topic / e-topic-q | על מה הפסקה? / שאלות נושא | 19 / 9 |
 | e-complete | משלימים את התשובה | 15 |
+| e-question-kinds | שורות, הפניות ומסקנות (line refs, refers to, Give ONE, inference, about X, in common) | 13 |
 | e-glossary-time | Glossary וניהול זמן | 10 |
 | e-final | תרגול מסכם בזמן | 4 |
 
-Exams: `e-exam-1` Can AI Make Students Smarter?, `e-exam-2` Gen Z Old Trends, `e-exam-3` TikTok Learning, `e-exam-4` Video Games.
+Exams: `e-exam-1` Can AI Make Students Smarter?, `e-exam-2` Gen Z Old Trends, `e-exam-3` TikTok Learning, `e-exam-4` Video Games. Each is the real 16471 frame: 9 compulsory questions (4 one-answer MCQs, Q1 a paragraph-I topic question; 5 open), 7-8 points, 70 in all, plus 5 vocabulary sets.
 
 ## Module F (5 points, literature)
 

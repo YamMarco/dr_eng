@@ -31,8 +31,8 @@ export const e1Lessons: LessonNode[] = [
           type: "summary",
           title: "9 השאלות",
           lines: [
-            "{d:rtl}בדרך כלל יש 4 שאלות אמריקאיות: **What are we told in paragraph X?**\n{d:rtl}\n{d:rtl}שימו לב שהתשובות הן נושאים, לא פרטים. זה חדש, ויש על זה שיעור משלו.",
-            "{d:rtl}5 שאלות פתוחות בדרך כלל: ממשיכים תשובה שכבר התחילה (By... / Because they want to... / They must...), או כותבים תשובה קצרה.",
+            "{d:rtl}4 אמריקאיות, תשובה אחת מתוך 4. שאלה 1 תמיד: **What are we told in paragraph I?** (נושא, לא פרט). בשאר גם מסקנות והפניות לשורות. לכל סוג יש שיעור.",
+            "{d:rtl}5 פתוחות: ממשיכים תשובה שכבר התחילה (By... / Because they want to...), או כותבים תשובה קצרה.",
           ],
         },
       ],
@@ -308,7 +308,7 @@ export const e1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "בבחינה יש 4 שאלות כאלה:\n{p:text}**What are we told in paragraph III?**\n{p:text}**What do we learn in paragraph II?**\n\nכאן מילת מפתח לא תעזור: המילים של כמה אפשרויות מופיעות באותה פסקה.",
+          text: "בבחינה יש 1-2 שאלות כאלה, ושאלה 1 היא תמיד אחת מהן:\n{p:text}**What are we told in paragraph III?**\n{p:text}**What do we learn in paragraph II?**\n\nכאן מילת מפתח לא תעזור: המילים של כמה אפשרויות מופיעות באותה פסקה.",
         },
         {
           type: "preface",
@@ -920,12 +920,329 @@ export const e1Lessons: LessonNode[] = [
     },
   },
   {
+    id: "e-question-kinds",
+    section: "e-1",
+    titleEn: "Lines, References and Inferences",
+    required: ["e-complete"],
+    requiredRounds: 3,
+    position: { x: 0, y: 1150 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "{d:rtl}מתוך 4 השאלות האמריקאיות, בדרך כלל רק 1-2 הן שאלות נושא. השאר, וגם חלק מהשאלות הפתוחות, בנויות מניסוחים קבועים.\n\nבשיעור הזה: 6 ניסוחים שחוזרים בכל בחינה, ומה עושים בכל אחד.",
+        },
+        {
+          type: "summary",
+          title: "שאלות על שורות",
+          lines: [
+            "📍 **Base your answer on lines 14-16** ← התשובה נמצאת בשורות האלה, לא במקום אחר",
+            "👉 **In line 24, the writer refers to \"the same goal.\"** ← למה המילים מפנות? כמעט תמיד למשהו שכבר נאמר לפני כן",
+            "🔢 בשוליים מסומנת כל שורה חמישית: 5, 10, 15. שורה 13 = שלוש שורות אחרי 10",
+          ],
+        },
+        {
+          type: "summary",
+          title: "שאלות חשיבה",
+          lines: [
+            "1️⃣ **Give ONE answer** ← יש כמה תשובות נכונות. כותבים אחת",
+            "💭 **What can we understand...?** ← התשובה לא מצוטטת: אותו רעיון, במילים אחרות",
+            "🔍 **What do we learn about X from paragraph III?** ← מחפשים בפסקה את המשפט על X",
+            "🔗 **What do ... have in common?** ← מה שנכון לשני הצדדים, לא רק לאחד",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}Base your answer on lines 14-16.\n\nאיפה מחפשים את התשובה?",
+              options: [
+                "בשורות 14-16. מותר להציץ במשפט שלפניהן כדי להבין את ההקשר",
+                "בכל הפסקה שהשורות האלה נמצאות בה",
+                "בשורות 14-16 ובפסקה שאחריהן",
+              ],
+              correctIndex: 0,
+              explanation:
+                "השאלה כבר אמרה איפה התשובה. פרט נכון מחוץ לשורות האלה הוא מלכודת: הוא נכון לכתבה, אבל לא עונה על השאלה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}They then ask a chatbot to solve **the same problem**.\n\nלמה מפנה the same problem?",
+              options: [
+                "לבעיה שהוזכרה במשפט שלפני",
+                "לבעיה שתוזכר בפסקה הבאה",
+                "לנושא של כל הכתבה",
+              ],
+              correctIndex: 0,
+              explanation:
+                "the same, this, it ו-they מפנים כמעט תמיד אחורה. קוראים את המשפט שלפני השורה ומוצאים את מה שהמילים מחליפות.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: "I  At Kallio School in Helsinki, there are no bells.\nLessons begin and end when teachers decide, and\nstudents move between classes when they are ready.\nThe head teacher, Mari Lehto, removed the bells in\n2019. She says they made the school feel like a\nfactory.\n\nII  Not everyone liked this idea at first. Some\nparents worried that students would arrive late,\nand a few teachers missed the clear signal. After a\nyear, however, the number of late students had\nfallen. Students say the corridors are calmer, and\nteachers say lessons no longer stop in the middle\nof a good discussion.",
+              questions: [
+                {
+                  prompt:
+                    'In line 7, the writer refers to "this idea." What is that idea?',
+                  options: [
+                    [
+                      "A school day without bells",
+                      'נכון. this idea מפנה אחורה, לפסקה I: "Mari Lehto, removed the bells".',
+                    ],
+                    [
+                      "Letting students arrive late",
+                      "ההורים חששו שזה יקרה. זה לא הרעיון עצמו.",
+                    ],
+                    [
+                      "Making the school feel like a factory",
+                      "זה מה שהפעמונים עשו לפי המנהלת, לא הרעיון שלה.",
+                    ],
+                    [
+                      "Calmer corridors",
+                      "זו תוצאה מסוף פסקה II, לא הרעיון שהוזכר לפני שורה 7.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "Base your answer on lines 9-11. What happened after a year?",
+                  options: [
+                    [
+                      "Fewer students arrived late",
+                      'נכון. "the number of late students had fallen" = פחות תלמידים מאחרים.',
+                    ],
+                    [
+                      "Parents worried that students would arrive late",
+                      "זה בשורות 7-8, וזה מה שקרה בהתחלה, לא אחרי שנה.",
+                    ],
+                    [
+                      "A few teachers missed the clear signal",
+                      "זה בשורה 9, אבל לפני After a year. קראו את המשפט הנכון בתוך השורות.",
+                    ],
+                    [
+                      "The school brought the bells back",
+                      "זה לא כתוב בכלל.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "תורכם: שאלות חשיבה על אותו קטע. קודם מזהים את סוג השאלה, ואז מחפשים.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}Give ONE reason why...\n\nבטקסט יש 3 סיבות. מה כותבים?",
+              options: [
+                "סיבה אחת, זו שהכי ברור לי שהיא נכונה",
+                "את שלוש הסיבות, ליתר ביטחון",
+                "רק את הסיבה הראשונה בטקסט, אחרת זה לא נחשב",
+              ],
+              correctIndex: 0,
+              explanation:
+                "כל אחת מהסיבות נכונה. תשובה נוספת לא מוסיפה נקודות, ועלולה להכניס טעות.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: "I  At Kallio School in Helsinki, there are no bells.\nLessons begin and end when teachers decide, and\nstudents move between classes when they are ready.\nThe head teacher, Mari Lehto, removed the bells in\n2019. She says they made the school feel like a\nfactory.\n\nII  Not everyone liked this idea at first. Some\nparents worried that students would arrive late,\nand a few teachers missed the clear signal. After a\nyear, however, the number of late students had\nfallen. Students say the corridors are calmer, and\nteachers say lessons no longer stop in the middle\nof a good discussion.",
+              questions: [
+                {
+                  prompt:
+                    "What can we understand about the head teacher from lines 4-6?",
+                  options: [
+                    [
+                      "She did not like the way the bells made the school feel",
+                      'נכון. "like a factory" הוא לא מחמאה: במילים אחרות, הפעמונים יצרו אווירה לא נעימה.',
+                    ],
+                    [
+                      "She thought the bells were too loud",
+                      "הרעש לא מוזכר. זו המצאה שנשמעת הגיונית.",
+                    ],
+                    [
+                      "She used to work in a factory",
+                      "קריאה מילולית מדי. factory הוא דימוי, לא מקום העבודה שלה.",
+                    ],
+                    [
+                      "The students asked her to remove the bells",
+                      "לא כתוב מי ביקש. כתוב רק שהיא הסירה אותם.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What do we learn about the parents from paragraph II?",
+                  options: [
+                    [
+                      "Some of them were worried about the change at first",
+                      'נכון. "Some parents worried that students would arrive late".',
+                    ],
+                    [
+                      "They asked the school to bring the bells back",
+                      "לא כתוב. הם חששו, אבל לא כתוב שביקשו משהו.",
+                    ],
+                    [
+                      "All of them liked the idea",
+                      "סותר: Not everyone liked this idea.",
+                    ],
+                    [
+                      "They thought lessons stopped at bad moments",
+                      "את זה אומרים המורים, בסוף הפסקה.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "What do the comments of the students and the teachers in lines 11-13 have in common?",
+                  options: [
+                    [
+                      "Both describe a good result of the change",
+                      "נכון. התלמידים: מסדרונות רגועים. המורים: שיעורים לא נקטעים. שניהם טובים.",
+                    ],
+                    [
+                      "Both talk about the corridors",
+                      "רק התלמידים מדברים על המסדרונות. נכון לצד אחד בלבד.",
+                    ],
+                    [
+                      "Both complain about the change",
+                      "ההפך: שניהם מתארים שיפור.",
+                    ],
+                    [
+                      "Both talk about late students",
+                      "האיחורים מוזכרים לפני כן, לא בדברי התלמידים והמורים.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle:
+                "כתבה חדשה עם מספרי שורות. בכל שאלה: מה סוג השאלה, ואיפה בדיוק התשובה.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: '{a:center}**A LIBRARY OF PEOPLE**\n\nI  In most libraries, you borrow a book. At a Human\nLibrary, you borrow a person. Each "book" is a\nvolunteer with a life story, such as a refugee, a\nfirefighter or someone who has lost their sight.\nReaders sit with their "book" for about thirty\nminutes and can ask any question they like.\n\nII  The first Human Library took place in Copenhagen\nin 2000. Its organisers wanted to fight ++prejudice++\nby bringing together people who might never meet in\neveryday life. The idea is simple: it is harder to\njudge a group of people after you have had a real\nconversation with one of them.\n\nIII  Today, Human Library events are held in more than\neighty countries, in schools, festivals and\noffices. Some readers say the conversation changed\nthe way they see others. The "books" also gain\nsomething. Many say that telling their story to a\nstranger who listens carefully makes them feel\nunderstood.\n\n**Glossary**\nprejudice - דעה קדומה / تحيّز',
+              label: "A LIBRARY OF PEOPLE",
+              timerKey: "e-question-kinds-library",
+              questions: [
+                {
+                  prompt: 'In line 12, who does "them" refer to?',
+                  options: [
+                    [
+                      "People in a group that someone might judge",
+                      'נכון. "a group of people ... one of them" = אחד מאנשי הקבוצה.',
+                    ],
+                    [
+                      "The organisers of the first Human Library",
+                      "המארגנים מוזכרים בשורה 8, אבל them בשורה 12 מפנה לקבוצה שבשורה 11.",
+                    ],
+                    [
+                      "Readers who ask questions",
+                      "הקוראים מוזכרים בפסקה I, לא במשפט הזה.",
+                    ],
+                    [
+                      "People in Copenhagen",
+                      "קופנהגן היא רק המקום של האירוע הראשון.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    'What do the readers and the "books" in paragraph III have in common?',
+                  options: [
+                    [
+                      "Both gain something from the conversation",
+                      'נכון. הקוראים רואים אחרים אחרת, וה"ספרים" מרגישים מובנים. "The books also gain something" - המילה also מראה שזה נכון לשניהם.',
+                    ],
+                    [
+                      "Both are volunteers",
+                      "רק ה\"ספרים\" הם מתנדבים (פסקה I).",
+                    ],
+                    [
+                      "Both tell their life stories",
+                      "רק ה\"ספרים\" מספרים את הסיפור. הקוראים שואלים ומקשיבים.",
+                    ],
+                    [
+                      "Both organise events in schools",
+                      "לא כתוב מי מארגן את האירועים היום.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+            {
+              type: "passage-quiz",
+              lineNumbers: true,
+              text: '{a:center}**A LIBRARY OF PEOPLE**\n\nI  In most libraries, you borrow a book. At a Human\nLibrary, you borrow a person. Each "book" is a\nvolunteer with a life story, such as a refugee, a\nfirefighter or someone who has lost their sight.\nReaders sit with their "book" for about thirty\nminutes and can ask any question they like.\n\nII  The first Human Library took place in Copenhagen\nin 2000. Its organisers wanted to fight ++prejudice++\nby bringing together people who might never meet in\neveryday life. The idea is simple: it is harder to\njudge a group of people after you have had a real\nconversation with one of them.\n\nIII  Today, Human Library events are held in more than\neighty countries, in schools, festivals and\noffices. Some readers say the conversation changed\nthe way they see others. The "books" also gain\nsomething. Many say that telling their story to a\nstranger who listens carefully makes them feel\nunderstood.\n\n**Glossary**\nprejudice - דעה קדומה / تحيّز',
+              questions: [
+                {
+                  prompt:
+                    'Base your answer on lines 3-4. Who can be a "book"? Give ONE example. ANSWER: ...',
+                  keywords: ["refugee|firefighter|fire|sight|blind"],
+                  answerHint:
+                    "A refugee / a firefighter / someone who has lost their sight (one is enough).",
+                },
+                {
+                  prompt:
+                    "Base your answer on lines 7-10. Why did the organisers start the Human Library? COMPLETE THE ANSWER: Because they wanted to ...",
+                  keywords: ["prejudice|together|meet"],
+                  answerHint:
+                    "Because they wanted to fight prejudice (by bringing people together).",
+                },
+                {
+                  prompt:
+                    'Base your answer on lines 16-19. How do many "books" feel after telling their story? ANSWER: ...',
+                  keywords: ["understood|understand"],
+                  answerHint: "They feel understood.",
+                },
+              ],
+            },
+            {
+              type: "summary",
+              title: "במשפט אחד",
+              lines: [
+                "קודם מזהים את סוג השאלה: שורות? הפניה? מסקנה? משהו משותף? ואז מחפשים רק במקום שהשאלה נותנת.",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: "e-glossary-time",
     section: "e-1",
     titleEn: "Glossary and Time",
-    required: ["e-complete"],
+    required: ["e-question-kinds"],
     requiredRounds: 2,
-    position: { x: 0, y: 1150 },
+    position: { x: -70, y: 1270 },
     big: false,
     content: {
       preface: [
@@ -1069,13 +1386,13 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Final Practice",
     required: ["e-glossary-time"],
     requiredRounds: 1,
-    position: { x: 0, y: 1270 },
+    position: { x: 0, y: 1390 },
     big: false,
     content: {
       preface: [
         {
           type: "preface",
-          text: "התרגול המסכם: כתבה אחת ו-9 שאלות, בדיוק כמו חלק I בבחינה.\n\nתכננו כ-50 דקות, ואל תיתקעו על שאלה אחת. השתמשו בכל מה שלמדנו: שם לכל פסקה, מילת מפתח, המשך שמתאים להתחלה, ו-Glossary.",
+          text: "התרגול המסכם: כתבה אחת ו-9 שאלות, בדיוק כמו חלק I בבחינה.\n\nתכננו כ-50 דקות, ואל תיתקעו על שאלה אחת. השתמשו בכל מה שלמדנו: קודם מזהים את סוג השאלה, ואז שם לכל פסקה, מילת מפתח או השורות שהשאלה נותנת, המשך שמתאים להתחלה, ו-Glossary.",
         },
       ],
       rounds: [
@@ -1092,7 +1409,8 @@ export const e1Lessons: LessonNode[] = [
             },
             {
               type: "passage-mcq",
-              text: '{a:center}**THE LANGUAGE THAT IS WHISTLED**\n\nI  On La Gomera, one of the Canary Islands off the coast of Africa, the hills are so ++steep++ and the valleys so deep that walking to the next village can take hours. For centuries, ++shepherds++ and farmers solved this problem with a language that is not spoken but whistled. It is called Silbo Gomero, and a good whistler can be heard several kilometres away.\n\nII  Silbo is not a code with a few signals. It is a way of whistling Spanish. Whistlers put a finger in their mouth and change the ++pitch++ of the sound to copy the vowels and consonants of spoken words. Because of this, almost anything that can be said in Spanish can also be whistled, from "Come home for dinner" to news about a wedding.\n\nIII  In the middle of the twentieth century, the language almost disappeared. Roads and telephones reached the villages, and young people moved to the cities to find work. Whistling began to seem old-fashioned, something only grandparents did. By the 1980s, only a small number of ++elderly++ whistlers were left.\n\nIV  The islanders decided to fight back. In 1999, the local government made Silbo a required subject in all of the island\'s primary schools, and today every child on La Gomera learns to whistle. Ten years later, UNESCO added Silbo to its list of the world\'s cultural treasures. Tourists now visit restaurants where waiters whistle to each other across the room.\n\nV  Scientists have also become interested. Studies of whistlers show that the brain treats Silbo as a real language, not as music. Whistled forms of language are known in dozens of communities around the world, but most of them are in danger. "When a whistled language dies," says linguist Dr. Pablo Reyes, "we lose a window into how the human brain deals with language."\n\n**Glossary**\nsteep - תלול / شديد الانحدار\nshepherds - רועי צאן / رُعاة\npitch - גובה הצליל / طبقة الصوت\nelderly - קשישים / مُسنّون',
+              lineNumbers: true,
+              text: "{a:center}**THE LANGUAGE THAT IS WHISTLED**\n\nI  On La Gomera, one of the Canary Islands off the\ncoast of Africa, the hills are so ++steep++ and the\nvalleys so deep that walking to the next village\ncan take hours. For centuries, ++shepherds++ and\nfarmers solved this problem with a language that\nis not spoken but whistled. It is called Silbo\nGomero, and a good whistler can be heard several\nkilometres away.\n\nII  Silbo is not a code with a few signals. It is a\nway of whistling Spanish. Whistlers put a finger\nin their mouth and change the ++pitch++ of the sound\nto copy the vowels and consonants of spoken words.\nBecause of this, almost anything that can be said\nin Spanish can also be whistled, from \"Come home\nfor dinner\" to news about a wedding.\n\nIII  In the middle of the twentieth century, the\nlanguage almost disappeared. Roads and telephones\nreached the villages, and young people moved to\nthe cities to find work. Whistling began to seem\nold-fashioned, something only grandparents did. By\nthe 1980s, only a small number of ++elderly++\nwhistlers were left.\n\nIV  The islanders decided to fight back. In 1999, the\nlocal government made Silbo a required subject in\nall of the island's primary schools, and today\nevery child on La Gomera learns to whistle. Ten\nyears later, UNESCO added Silbo to its list of the\nworld's cultural treasures. Tourists now visit\nrestaurants where waiters whistle to each other\nacross the room.\n\nV  Scientists have also become interested. Studies of\nwhistlers show that the brain treats Silbo as a\nreal language, not as music. Whistled forms of\nlanguage are known in dozens of communities around\nthe world, but most of them are in danger. \"When a\nwhistled language dies,\" says linguist Dr. Pablo\nReyes, \"we lose a window into how the human brain\ndeals with language.\"\n\n**Glossary**\nsteep - תלול / شديد الانحدار\nshepherds - רועי צאן / رُعاة\npitch - גובה הצליל / طبقة الصوت\nelderly - קשישים / مُسنّون",
               label: "THE LANGUAGE THAT IS WHISTLED",
               timerKey: "e-final-silbo",
               questions: [
@@ -1107,12 +1425,47 @@ export const e1Lessons: LessonNode[] = [
                   correctIndex: 0,
                 },
                 {
-                  prompt: "What do we learn in paragraph II?",
+                  prompt:
+                    'In line 5, the writer refers to "this problem." What is that problem?',
                   options: [
-                    "How Silbo works",
-                    "That whistlers use a finger",
-                    "Who learns Silbo today",
-                    "Why Silbo almost disappeared",
+                    [
+                      "Walking to the next village took a long time",
+                      "נכון. this problem מפנה למשפט שלפניו: walking to the next village can take hours.",
+                    ],
+                    [
+                      "The hills were too steep for farming",
+                      "steep מופיע בשורה 2, אבל הבעיה היא הדרך הארוכה בין הכפרים, לא החקלאות.",
+                    ],
+                    [
+                      "Young people moved to the cities",
+                      "זו בעיה מפסקה III, הרבה אחרי שורה 5.",
+                    ],
+                    [
+                      "The language almost disappeared",
+                      "גם זו בעיה מפסקה III. this מפנה למשהו שכבר נאמר.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What can we understand from lines 13-15?",
+                  options: [
+                    [
+                      "Silbo can carry almost any message",
+                      'נכון. "almost anything that can be said in Spanish can also be whistled" = כמעט כל מסר.',
+                    ],
+                    [
+                      "Silbo is used only for short signals",
+                      "סותר את שורה 9: Silbo is not a code with a few signals.",
+                    ],
+                    [
+                      "Whistlers mostly share news about weddings",
+                      "חתונה היא רק דוגמה אחת. mostly לא כתוב.",
+                    ],
+                    [
+                      "Spanish is easier to whistle than other languages",
+                      "השורות לא משוות בין שפות.",
+                    ],
                   ],
                   correctIndex: 0,
                 },
@@ -1126,21 +1479,12 @@ export const e1Lessons: LessonNode[] = [
                   ],
                   correctIndex: 0,
                 },
-                {
-                  prompt: "What do we learn in paragraph V?",
-                  options: [
-                    "Why scientists are interested in whistled languages",
-                    "How many communities whistle",
-                    "How Silbo joined UNESCO's list",
-                    "How whistlers change the pitch",
-                  ],
-                  correctIndex: 0,
-                },
               ],
             },
             {
               type: "passage-quiz",
-              text: '{a:center}**THE LANGUAGE THAT IS WHISTLED**\n\nI  On La Gomera, one of the Canary Islands off the coast of Africa, the hills are so ++steep++ and the valleys so deep that walking to the next village can take hours. For centuries, ++shepherds++ and farmers solved this problem with a language that is not spoken but whistled. It is called Silbo Gomero, and a good whistler can be heard several kilometres away.\n\nII  Silbo is not a code with a few signals. It is a way of whistling Spanish. Whistlers put a finger in their mouth and change the ++pitch++ of the sound to copy the vowels and consonants of spoken words. Because of this, almost anything that can be said in Spanish can also be whistled, from "Come home for dinner" to news about a wedding.\n\nIII  In the middle of the twentieth century, the language almost disappeared. Roads and telephones reached the villages, and young people moved to the cities to find work. Whistling began to seem old-fashioned, something only grandparents did. By the 1980s, only a small number of ++elderly++ whistlers were left.\n\nIV  The islanders decided to fight back. In 1999, the local government made Silbo a required subject in all of the island\'s primary schools, and today every child on La Gomera learns to whistle. Ten years later, UNESCO added Silbo to its list of the world\'s cultural treasures. Tourists now visit restaurants where waiters whistle to each other across the room.\n\nV  Scientists have also become interested. Studies of whistlers show that the brain treats Silbo as a real language, not as music. Whistled forms of language are known in dozens of communities around the world, but most of them are in danger. "When a whistled language dies," says linguist Dr. Pablo Reyes, "we lose a window into how the human brain deals with language."\n\n**Glossary**\nsteep - תלול / شديد الانحدار\nshepherds - רועי צאן / رُعاة\npitch - גובה הצליל / طبقة الصوت\nelderly - קשישים / مُسنّون',
+              lineNumbers: true,
+              text: "{a:center}**THE LANGUAGE THAT IS WHISTLED**\n\nI  On La Gomera, one of the Canary Islands off the\ncoast of Africa, the hills are so ++steep++ and the\nvalleys so deep that walking to the next village\ncan take hours. For centuries, ++shepherds++ and\nfarmers solved this problem with a language that\nis not spoken but whistled. It is called Silbo\nGomero, and a good whistler can be heard several\nkilometres away.\n\nII  Silbo is not a code with a few signals. It is a\nway of whistling Spanish. Whistlers put a finger\nin their mouth and change the ++pitch++ of the sound\nto copy the vowels and consonants of spoken words.\nBecause of this, almost anything that can be said\nin Spanish can also be whistled, from \"Come home\nfor dinner\" to news about a wedding.\n\nIII  In the middle of the twentieth century, the\nlanguage almost disappeared. Roads and telephones\nreached the villages, and young people moved to\nthe cities to find work. Whistling began to seem\nold-fashioned, something only grandparents did. By\nthe 1980s, only a small number of ++elderly++\nwhistlers were left.\n\nIV  The islanders decided to fight back. In 1999, the\nlocal government made Silbo a required subject in\nall of the island's primary schools, and today\nevery child on La Gomera learns to whistle. Ten\nyears later, UNESCO added Silbo to its list of the\nworld's cultural treasures. Tourists now visit\nrestaurants where waiters whistle to each other\nacross the room.\n\nV  Scientists have also become interested. Studies of\nwhistlers show that the brain treats Silbo as a\nreal language, not as music. Whistled forms of\nlanguage are known in dozens of communities around\nthe world, but most of them are in danger. \"When a\nwhistled language dies,\" says linguist Dr. Pablo\nReyes, \"we lose a window into how the human brain\ndeals with language.\"\n\n**Glossary**\nsteep - תלול / شديد الانحدار\nshepherds - רועי צאן / رُعاة\npitch - גובה הצליל / طبقة الصوت\nelderly - קשישים / مُسنّون",
               questions: [
                 {
                   prompt:
@@ -1156,10 +1500,10 @@ export const e1Lessons: LessonNode[] = [
                 },
                 {
                   prompt:
-                    "Silbo is a required subject. COMPLETE THE SENTENCE: Every child on La Gomera must ...",
-                  keywords: ["learn"],
+                    "Base your answer on lines 23-26. How did the islanders fight back? Give ONE answer. COMPLETE THE ANSWER: By ...",
+                  keywords: ["school|subject|child|teach"],
                   answerHint:
-                    "Every child on La Gomera must learn to whistle (learn Silbo).",
+                    "By making Silbo a required subject in primary schools / By teaching every child to whistle (one is enough).",
                 },
                 {
                   prompt:
@@ -1170,7 +1514,7 @@ export const e1Lessons: LessonNode[] = [
                 },
                 {
                   prompt:
-                    "According to Dr. Reyes, what do we lose when a whistled language dies? ANSWER: ...",
+                    "Base your answer on lines 35-38. According to Dr. Reyes, what do we lose when a whistled language dies? ANSWER: ...",
                   keywords: ["brain"],
                   answerHint:
                     "A window into how the human brain deals with language.",

@@ -12,22 +12,26 @@
 </script>
 
 <script lang="ts">
-	import PassageMark from './PassageMark.svelte';
+	import PassageLines, { type PassageLine } from './PassageLines.svelte';
 	import { stripLineAttrs } from './miniMarkdown';
 
 	// Markable passage text (select-and-highlight, see PassageMark) with a
-	// roman-numeral gutter. Shared by passage-mcq and self-check. `stripLineAttrs`
-	// drops any authored `{a:center}`-style block token, since these lines only
-	// run through inline markdown.
-	let { text }: { text: string } = $props();
+	// roman-numeral gutter. Shared by passage-mcq, passage-quiz and self-check.
+	// `stripLineAttrs` drops any authored `{a:center}`-style block token, since
+	// these lines only run through inline markdown. With `lineNumbers`, every
+	// line of a roman-marked paragraph counts (the author writes the printed line
+	// breaks as single `\n`); the title and glossary don't.
+	let { text, lineNumbers = false }: { text: string; lineNumbers?: boolean } = $props();
 
 	// No gutter at all when the passage has no paragraph markers.
 	let gutter = $derived(hasParagraphMarkers(text));
 
 	let lines = $derived.by(() => {
-		const result: { key: number; text: string; roman: string | null; rowClass?: string }[] = [];
+		const result: PassageLine[] = [];
 		let n = 0;
+		let printed = 0;
 		text.split('\n\n').forEach((paragraph) => {
+			let counted = false;
 			paragraph.split('\n').forEach((raw, li) => {
 				let line = stripLineAttrs(raw);
 				if (!line.trim()) return;
@@ -37,24 +41,21 @@
 					if (m) {
 						roman = m[1];
 						line = line.slice(m[0].length);
+						counted = true;
 					}
 				}
 				n += 1;
-				result.push({ key: n, text: line, roman, rowClass: li === 0 && n > 1 ? 'mt-3' : '' });
+				result.push({
+					key: n,
+					text: line,
+					roman,
+					lineNumber: lineNumbers && counted ? ++printed : null,
+					rowClass: li === 0 && n > 1 ? 'mt-3' : ''
+				});
 			});
 		});
 		return result;
 	});
 </script>
 
-<PassageMark {lines}>
-	{#snippet leading(line)}
-		{#if gutter}<span
-				class="mt-0.5 flex h-6 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
-					? 'bg-accent-soft text-ink/70'
-					: ''}"
-			>
-				{line.roman ?? ''}
-			</span>{/if}
-	{/snippet}
-</PassageMark>
+<PassageLines {lines} {gutter} numbered={lineNumbers} />
