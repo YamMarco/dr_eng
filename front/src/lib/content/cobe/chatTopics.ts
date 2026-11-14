@@ -7,8 +7,6 @@ import type { ChatMode } from '$lib/feedback/chat';
 
 export type BanterTopic = {
 	id: string;
-	/** The topic's small picture on its card. */
-	emoji: string;
 	/** The official Part A topic it comes from. */
 	en: string;
 	he: string;
@@ -16,73 +14,70 @@ export type BanterTopic = {
 	opener: string;
 };
 
+/** A banter topic's card photo: static/chat/<id>.webp, 160px square. All CC0 or public
+ *  domain (via Openverse): free-time Ted Mielczarek, music Abdulla Al Muhairi, movies
+ *  polkbritton, food Cole Kennedy, technology StockyPics, friendship Matt Byford,
+ *  vacations Bernard Spragg, sports Michal Jarmoluk, hometown Image Catalog,
+ *  future NOAASatellites. */
+export const topicPhoto = (id: string) => `/chat/${id}.webp`;
+
 export const BANTER_TOPICS: BanterTopic[] = [
 	{
 		id: 'free-time',
-		emoji: '🎮',
 		en: 'Free time activities',
 		he: 'זמן פנוי',
 		opener: "Hi! Let's talk about free time. What did you do last weekend?"
 	},
 	{
 		id: 'music',
-		emoji: '🎧',
 		en: 'Music',
 		he: 'מוזיקה',
 		opener: "Hi! Let's talk about music. What have you been listening to lately?"
 	},
 	{
 		id: 'movies',
-		emoji: '🎬',
 		en: 'Favorite books and movies',
 		he: 'סרטים וספרים',
 		opener: "Hi! Let's talk about movies and series. What's the last thing you watched?"
 	},
 	{
 		id: 'food',
-		emoji: '🍕',
 		en: 'Food',
 		he: 'אוכל',
 		opener: "Hi! Let's talk about food. What's your favorite thing to eat?"
 	},
 	{
 		id: 'technology',
-		emoji: '📱',
 		en: 'Technology',
 		he: 'טכנולוגיה',
 		opener: "Hi! Let's talk about phones and apps. Which app do you use the most?"
 	},
 	{
 		id: 'friendship',
-		emoji: '🤝',
 		en: 'Friendship',
 		he: 'חברים',
 		opener: "Hi! Let's talk about friends. What do you like to do with your friends?"
 	},
 	{
 		id: 'vacations',
-		emoji: '✈️',
 		en: 'Vacations',
 		he: 'חופשות',
 		opener: "Hi! Let's talk about vacations. What's the best trip you've ever had?"
 	},
 	{
 		id: 'sports',
-		emoji: '⚽',
 		en: 'Sports',
 		he: 'ספורט',
 		opener: "Hi! Let's talk about sports. Do you play any sport, or watch one?"
 	},
 	{
 		id: 'hometown',
-		emoji: '🏙️',
 		en: 'Hometown',
 		he: 'העיר שלי',
 		opener: "Hi! Let's talk about where you live. What's your favorite place in your town?"
 	},
 	{
 		id: 'future',
-		emoji: '🚀',
 		en: 'Future plans',
 		he: 'תוכניות לעתיד',
 		opener: "Hi! Let's talk about the future. What would you like to do after school?"

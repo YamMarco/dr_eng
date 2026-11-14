@@ -117,7 +117,8 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
    vocabulary section; sections are tagged with `skill` in `sectionMeta`. On a phone the
    writing row notes it's better on a computer.
    COBE instead: a lessons card with a row per exam part (חלק א׳ / ב׳ / ג׳), then its own
-   speaking card (AI chat, recording practice); each card has a small muted heading.
+   speaking card (AI chat, recording practice); each card has a small muted heading. From
+   `md` it is two columns: exams and speaking | lessons.
 4. A link to the full lesson path.
 
 Keep the page to one phone screen where possible (checked at 360x640).

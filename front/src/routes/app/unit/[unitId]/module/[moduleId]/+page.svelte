@@ -110,33 +110,27 @@
 
 <AppBar title={moduleName(mod, i18n.dict.unit)} back="/app" />
 
-<main class="app-col flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6">
+<!-- COBE goes two columns from tablet width: exams and speaking | lessons. -->
+<main
+	class="{mod.id === 'cobe'
+		? 'app-wide'
+		: 'app-col'} flex flex-1 flex-col gap-2.5 px-4 pt-3 pb-3 sm:gap-3 sm:pt-4 sm:pb-6"
+>
 	{#if hero}
 		<NextStepHero {...hero} />
 	{/if}
 
-	<section in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }} class={card}>
-		<HubRow
-			icon={ClipboardCheck}
-			title={t.examsTitle}
-			sub={exams.total
-				? exams.taken
-					? t.examsSummary(exams.taken, exams.total, exams.best!)
-					: t.examsOpen(exams.total)
-				: t.examsSoonDesc}
-			href={exams.total ? `${base}/exam` : undefined}
-		>
-			{#snippet trailing()}<ExamNugget {exams} />{/snippet}
-		</HubRow>
-	</section>
-
 	{#if mod.id === 'cobe'}
-		<!-- COBE: the lessons by exam part, then speaking practice (AI chat, recordings). -->
+		<!-- Phone order: exams, lessons by exam part, then speaking practice (AI chat, recordings). -->
 		<div
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+			class="grid gap-2.5 sm:gap-3 md:grid-cols-2 md:items-start"
 		>
-			<section class={card} aria-labelledby="cobe-parts">
+			<div class="md:col-start-1">{@render examsCard()}</div>
+			<section
+				class="{card} md:col-start-2 md:row-span-2 md:row-start-1"
+				aria-labelledby="cobe-parts"
+			>
 				<h2 id="cobe-parts" class={heading}>{t.cobeParts}</h2>
 				{#each route as part, i (part.id)}
 					<HubRow
@@ -153,7 +147,7 @@
 					</HubRow>
 				{/each}
 			</section>
-			<section class={card} aria-labelledby="cobe-speaking">
+			<section class="{card} md:col-start-1" aria-labelledby="cobe-speaking">
 				<h2 id="cobe-speaking" class={heading}>{t.cobeSpeaking}</h2>
 				<HubRow
 					icon={MessagesSquare}
@@ -170,9 +164,12 @@
 					/>
 				{/if}
 			</section>
-			{@render pathLink()}
 		</div>
+		{@render pathLink()}
 	{:else}
+		<div in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}>
+			{@render examsCard()}
+		</div>
 		<div
 			in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 			class="mt-2 flex flex-col gap-2.5 sm:gap-3"
@@ -201,6 +198,23 @@
 		</div>
 	{/if}
 </main>
+
+{#snippet examsCard()}
+	<section class={card}>
+		<HubRow
+			icon={ClipboardCheck}
+			title={t.examsTitle}
+			sub={exams.total
+				? exams.taken
+					? t.examsSummary(exams.taken, exams.total, exams.best!)
+					: t.examsOpen(exams.total)
+				: t.examsSoonDesc}
+			href={exams.total ? `${base}/exam` : undefined}
+		>
+			{#snippet trailing()}<ExamNugget {exams} />{/snippet}
+		</HubRow>
+	</section>
+{/snippet}
 
 {#snippet pathLink()}
 	{#if route.length}

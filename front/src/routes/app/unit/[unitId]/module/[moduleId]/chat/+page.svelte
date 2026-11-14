@@ -6,7 +6,7 @@
 	import { MessagesSquare, PenLine, Shuffle, User, FolderOpen } from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import ChatSession from '$lib/chat/ChatSession.svelte';
-	import { BANTER_TOPICS, PART_A_TOPICS } from '$lib/content/cobe/chatTopics';
+	import { BANTER_TOPICS, PART_A_TOPICS, topicPhoto } from '$lib/content/cobe/chatTopics';
 	import { drawTwo, type ChatMode } from '$lib/feedback/chat';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -32,7 +32,7 @@
 		'flex items-center rounded-2xl text-start shadow-sm ring-1 transition duration-100 hover:ring-brand active:scale-[0.98]';
 	const topicCard = `${card} gap-2.5 p-3`;
 	// A topic's picture tile; add a background per use.
-	const pic = 'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xl leading-none';
+	const pic = 'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl';
 </script>
 
 <AppBar title={t.title} {back} />
@@ -76,7 +76,14 @@
 						onclick={() => start('banter', [topic.id])}
 						class="{topicCard} bg-surface ring-line/70"
 					>
-						<span class="{pic} bg-brand-soft" aria-hidden="true">{topic.emoji}</span>
+						<img
+							src={topicPhoto(topic.id)}
+							alt=""
+							width="160"
+							height="160"
+							loading="lazy"
+							class="{pic} bg-brand-soft object-cover"
+						/>
 						<span class="flex min-w-0 flex-col gap-0.5">
 							<span class="font-bold">{topic.he}</span>
 							<span class="truncate text-xs text-muted" lang="en" dir="ltr">{topic.en}</span>
