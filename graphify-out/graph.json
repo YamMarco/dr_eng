@@ -12402,7 +12402,7 @@
       "label": "Dictionary",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1919",
+      "source_location": "L1920",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -12415,7 +12415,7 @@
       "label": "DictionaryOverride",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1922",
+      "source_location": "L1923",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -22530,8 +22530,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_storedjson",
-      "community": 71,
-      "community_name": "takeHistory.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "storedjson.ts"
     },
     {
@@ -22542,8 +22542,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_storedjson_isrecord",
-      "community": 71,
-      "community_name": "takeHistory.ts",
+      "community": 84,
+      "community_name": "content-edit/+server.ts",
       "norm_label": "isrecord()"
     },
     {
@@ -23256,8 +23256,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_about_page_f",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 201,
+      "community_name": "content-edit-files.test.ts",
       "norm_label": "f()"
     },
     {
@@ -25790,8 +25790,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 201,
+      "community_name": "content-edit-files.test.ts",
       "norm_label": "content-edit-files.test.ts"
     },
     {
@@ -25801,8 +25801,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_lib",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 201,
+      "community_name": "content-edit-files.test.ts",
       "norm_label": "lib"
     },
     {
@@ -25813,8 +25813,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_dirs",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 201,
+      "community_name": "content-edit-files.test.ts",
       "norm_label": "dirs()"
     },
     {
@@ -25824,8 +25824,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_files",
-      "community": 84,
-      "community_name": "content-edit/+server.ts",
+      "community": 201,
+      "community_name": "content-edit-files.test.ts",
       "norm_label": "files"
     },
     {
@@ -35486,7 +35486,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "front/src/lib/components/LoginScreen.svelte",
-      "source_location": "L259",
+      "source_location": "L267",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_components_loginscreen",
@@ -62194,7 +62194,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1919",
+      "source_location": "L1920",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -62205,7 +62205,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1922",
+      "source_location": "L1923",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -89819,5 +89819,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5bfe4b410fc81d9e5f7b73fa2b288fc7e1936079"
+  "built_at_commit": "5a611cd88712e85706bae1aa7cf5ffa502d9439b"
 }

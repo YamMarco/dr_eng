@@ -1,16 +1,16 @@
 # Graph Report - things  (2026-11-14)
 
 ## Corpus Check
-- 552 files · ~519,964 words
+- 552 files · ~520,057 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2659 nodes · 5333 edges · 213 communities (154 shown, 59 thin omitted)
+- 2659 nodes · 5333 edges · 214 communities (155 shown, 59 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 116 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5bfe4b41`
+- Built from commit: `5a611cd8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -205,6 +205,7 @@
 - vite
 - vite-env.d.ts
 - prettier-plugin-svelte
+- content-edit-files.test.ts
 - greeting.ts
 - calloutIcons.ts
 - @types/node
@@ -241,7 +242,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (213 total, 59 thin omitted)
+## Communities (214 total, 59 thin omitted)
 
 ### Community 0 - "dependencies"
 Cohesion: 0.11
@@ -484,8 +485,8 @@ Cohesion: 0.09
 Nodes (35): CONTENT_TAGS, FATAL_TAGS, TAG_IDS, TagDef, TAGS, EssayVerdict, MAX_TEXT, SingleRequest (+27 more)
 
 ### Community 71 - "takeHistory.ts"
-Cohesion: 0.20
-Nodes (13): primaryAction(), record(), stop(), toggle(), isRecord(), Entry, openDb(), readStats() (+5 more)
+Cohesion: 0.22
+Nodes (12): primaryAction(), record(), stop(), toggle(), Entry, openDb(), readStats(), recordTake() (+4 more)
 
 ### Community 72 - "completeRound"
 Cohesion: 0.24
@@ -520,8 +521,8 @@ Cohesion: 0.25
 Nodes (7): COBE (4 and 5 points, oral), Material, Module C (4 points), Module D (4 points, literature), Module E (4 and 5 points), Module F (5 points, literature), Module G (5 points)
 
 ### Community 84 - "content-edit/+server.ts"
-Cohesion: 0.17
-Nodes (21): wordId(), emit(), extractArrayLiteral(), matchingBracketEnd(), mergeById(), parseArrayLiteral(), splitArrayHead(), sq() (+13 more)
+Cohesion: 0.20
+Nodes (19): wordId(), emit(), extractArrayLiteral(), matchingBracketEnd(), mergeById(), parseArrayLiteral(), splitArrayHead(), sq() (+11 more)
 
 ### Community 85 - "feedback/+server.ts"
 Cohesion: 0.31
@@ -790,6 +791,10 @@ Nodes (5): getLesson(), ownerModule(), ruleChain(), RulesFile, load()
 ### Community 195 - "textColors.ts"
 Cohesion: 0.40
 Nodes (3): HEX_TO_NAME, TEXT_COLOR_PALETTE, TextColorName
+
+### Community 201 - "content-edit-files.test.ts"
+Cohesion: 0.40
+Nodes (3): f(), files, lib
 
 ### Community 217 - "llmGuard.ts"
 Cohesion: 0.19
