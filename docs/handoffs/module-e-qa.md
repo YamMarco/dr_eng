@@ -30,7 +30,7 @@ Downloaded from `meyda.education.gov.il/sheeloney_bagrut/<year>/<month>/HEB/1647
 
 | Part | Student | Teacher |
 |---|---|---|
-| Part I reading lessons | 8 | 7.5 |
+| Part I reading lessons | 8.5 | 8 |
 | Practice exams | 7.5 | 7.5 |
 | Word decks | 8.5 | 8.5 |
 | **Module E overall** | **8** | |
