@@ -46,7 +46,7 @@ Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and i
 - [x] App exams match the real format (see Practice exams).
 - [x] Real question kinds taught in e-question-kinds: line references, "refers to", "Give ONE answer", inference, "about X from paragraph Y", "have in common". Its passages have exam-margin line numbers (`lineNumbers` on passage-mcq / passage-quiz).
 - [x] e-bridge and e-topic no longer say the 4 MCQs are all topic questions: Q1 is a topic question, the rest mix topic, inference and line references.
-- [ ] e-final's 4 MCQs are all topic questions; real papers mix in inference and reference.
+- [x] e-final mirrors a real paper: line-numbered article; MCQs = 2 topic + "refers to" + inference; open = By / Because / Give ONE / 2 line-based.
 - [ ] **Typed answers are graded by keyword only:** "By joined a tour" passes, so the By + ing form is never checked. Wrong keys: Repair Café Q1 needs "free" (rejects "By organising a Repair Café"); Q2 accepts only "waste" (rejects "to teach people to fix things"). The fix exists (Module G uses it): `"e-1": { "llmGrade": true }` in `content/rules.json` sends them to the LLM reading grader against each question's `answerHint`; keywords stay as the fallback and take `a|b` alternatives.
 - [x] Right answer no longer always first: lesson passage-mcq and cloze-pick shuffle their options (shared with mcq).
 - [x] Grading facts taught in e-complete: grammar costs 1-3 points, spelling costs nothing (a summary screen + a "By joinning" question). The final-check line in e-glossary-time names the verb forms.
@@ -79,5 +79,5 @@ Strengths: readable texts; feedback on every option with a quote from the text.
 - [ ] "go ahead": the definition is a verb, the Hebrew is an interjection ("קדימה, בבקשה").
 - [ ] Unnatural examples: "show around the visitors", "take out my mom", "The money will transfer", "will be expecting her first baby in May" (should be "is expecting").
 - [ ] US and UK spelling mixed in one sentence ("offense" with "licence").
-- [ ] 38 definitions give the word away in matching ("painful = causing pain", "forgetful = often forgetting things").
+- [ ] 44 definitions give the word away in matching ("painful = causing pain", "forgetful = often forgetting things"); full list with suggested rewrites in `module-e-word-fixes.docx`.
 - [ ] Vocabulary practice is matching and fill-the-blank only; the spec also uses multiple choice.

@@ -2015,8 +2015,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/e/e-1.ts": {
-    "mtime": 1794643970.518684,
-    "ast_hash": "a1abaa8ba9a8d35d1807a44a608615d0",
+    "mtime": 1794645197.1038618,
+    "ast_hash": "63a33ea10f69bb5d714864c7f4f5e3f1",
     "semantic_hash": ""
   },
   "front/drizzle/meta/0005_snapshot.json": {
@@ -2765,8 +2765,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-e-qa.md": {
-    "mtime": 1794644070.6148107,
-    "ast_hash": "9f96bc7840a2fc7fb3414f45264793fd",
+    "mtime": 1794645253.161073,
+    "ast_hash": "151c6f0ee7575751bf972d7f631c3e1e",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/choice.ts": {
