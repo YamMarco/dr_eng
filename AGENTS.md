@@ -6,7 +6,8 @@
 # workflow
 - avoid screenshot tests if possible
 - commit after every medium+ change that works
-- you only create Hebrew UI text
+- only create Hebrew UI text
+- if we about to change inter-module feature => layout a plan + tell what will change => wait for approval
 
 ## content
 - material structure: unit - module - section - lesson - screen
