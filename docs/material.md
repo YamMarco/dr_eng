@@ -108,7 +108,7 @@ Each story is a 7-lesson chain: **f-1** A Summer's Reading (`f-summer-*`), **f-2
 
 ## Module G (5 points)
 
-**g-1 Part A - Reading** (18 lessons, a chain, 2 rounds each: method, then exam level): g-reading-intro, g-scan, g-traffic-light, g-numbers, g-names, g-question-words, g-mc-eliminate, g-two-correct, g-difference, g-complete-answer, g-by-to, g-by-ing, g-open-answer, g-paraphrase, g-two-opinions, g-line-refs, g-time, g-final (5-15 screens each).
+**g-1 Part A - Reading** (20 lessons, a chain, 2 rounds each: method, then exam level): g-reading-intro, g-scan, g-traffic-light, g-numbers, g-names, g-question-words, g-mc-eliminate, g-two-correct, g-difference, g-complete-answer, g-by-to, g-by-ing, g-open-answer, g-paraphrase, g-two-opinions, g-line-refs, g-why-mention (why mention X / in order to), g-whole-text (best title, main purpose, attitude), g-time, g-final (5-15 screens each).
 
 **g-2 Part B - Writing** (4-paragraph opinion essay, 120-140 words):
 
