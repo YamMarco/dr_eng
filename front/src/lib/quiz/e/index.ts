@@ -16,7 +16,7 @@ export const eQuizzes: QuizNode[] = [
 		parts: [
 			{
 				id: 'reading',
-				instructionsHe: 'קראו את הכתבה וענו על שאלות 1-7 באנגלית, לפי הטקסט. בלי מילון.',
+				instructionsHe: 'קראו את הכתבה וענו על כל 9 השאלות באנגלית, לפי הטקסט. בלי מילון.',
 				points: 70,
 				screens: [
 					{
@@ -65,44 +65,50 @@ export const eQuizzes: QuizNode[] = [
 					},
 					{
 						type: 'mcq',
-						prompt: 'What do we learn from paragraph I?',
+						prompt: 'What are we told in paragraph I?',
 						options: [
 							[
-								'Why some students have stopped using textbooks.',
-								'לא נטען שתלמידים הפסיקו להשתמש בספרים.'
+								'How students use chatbots and a question this raises.',
+								'נכון. הפסקה מתארת שימושים בצ’אטבוט לשיעורי בית, ומסתיימת בשאלה של המורים.\n"teachers are asking an important question: does getting an answer quickly always mean that learning has taken place?"'
 							],
-							[
-								'How teenagers may use chatbots for schoolwork.',
-								'הפסקה מתארת שימושים בצ’אטבוטים ומעלה שאלה לגבי למידה אמיתית.\n"A student who does not understand a science question can ask the program to explain it in simpler words."'
-							],
-							['How teachers check whether students used a chatbot.', 'הפסקה לא מתארת איך מורים בודקים שימוש בצ’אטבוט. המורים רק שואלים אם תשובה מהירה היא למידה.'],
-							[
-								'What question teachers are beginning to ask about AI.',
-								'הפסקה מסתיימת בשאלה שהמורים שואלים: האם תשובה מהירה היא באמת למידה.\n"teachers are asking an important question: does getting an answer quickly always mean that learning has taken place?"'
-							],
-							[
-								'Why chatbots sometimes give wrong answers.',
-								'זה הנושא של פסקה III (information that sounds correct but is actually wrong), לא של פסקה I.'
-							],
-							['How teachers use AI to create practice questions.', 'זה מופיע בפסקה II, לא בפסקה I.']
+							['Why some students have stopped using textbooks.', 'הפסקה משווה צ’אטבוט לספר לימוד, אבל לא אומרת שתלמידים הפסיקו להשתמש בספרים.'],
+							['That chatbots can give answers within seconds.', 'פרט נכון מהפסקה, אבל משפט אחד ממנה, לא הנושא שלה.'],
+							['Why chatbots sometimes give wrong answers.', 'זה הנושא של פסקה III (information that sounds correct but is actually wrong), לא של פסקה I.']
 						],
-						correctIndices: [1, 3],
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: What do we learn; paragraph I\nמילות מפתח בטקסט: explain it in simpler words; teachers are asking an important question\n\nטיפ: בשאלת TWO correct answers בדקו כל אפשרות מול משפט מפורש בפסקה.',
-						points: 14,
+							'מילות מפתח בשאלה: What are we told; paragraph I\nמילות מפתח בטקסט: asking a chatbot for help; an important question\n\nטיפ: תנו לפסקה שם ב-3-4 מילים לפני שאתם קוראים את האפשרויות. פרט נכון הוא עדיין לא הנושא.',
+						points: 7,
 						paragraphRef: 'I'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'How can AI tools help students learn? Give TWO answers from paragraph II. COMPLETE THE ANSWERS.\n\n(1) By ____________.\n\n(2) By ____________.',
-						modelAnswer:
-							'By asking for alternative explanations; by creating practice questions or checking learning.',
+							'According to paragraph II, how can AI tools help students learn? Give ONE answer. COMPLETE THE ANSWER.\n\nBy ____________.',
+						modelAnswer: 'asking the chatbot for a different explanation',
 						explanation:
-							'הפסקה מציעה שני יתרונות נפרדים: הסבר חוזר בדרך אחרת ותרגול עצמי בעזרת שאלות.\n"If the first explanation is confusing, they can ask the chatbot to try a different one."\n\nמילות מפתח בשאלה: help students learn; TWO answers\nמילות מפתח בטקסט: different one\n\nטיפ: בשאלת Give TWO answers כתבו שתי נקודות שונות, לא שני ניסוחים לאותו רעיון.',
+							'בפסקה כמה תשובות נכונות, ומספיקה אחת: הסבר אחר, הסבר בכל זמן, או שאלות תרגול.\n"If the first explanation is confusing, they can ask the chatbot to try a different one."\n\nמילות מפתח בשאלה: help students learn; Give ONE answer\nמילות מפתח בטקסט: explanations whenever they need them; a different one; practice questions\n\nטיפ: Give ONE answer = כותבים תשובה אחת בלבד. אחרי By בא פועל + ing.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: By asking for alternative explanations; by creating practice questions or checking learning. | By explaining a subject in different ways; by helping students practise or check what they have learned.. Evidence: "If the first explanation is confusing, they can ask the chatbot to try a different one." 8 points per answer.',
-						points: 16,
+							'Several answers are correct; the student gives ONE. Accept any one of: By asking the chatbot for a different explanation | By getting explanations whenever they need them | By creating practice questions and checking what they have learned. The answer continues "By", so the verb takes -ing; a wrong verb form (By ask, By asked) is a grammar error, spelling is not.',
+						points: 8,
+						paragraphRef: 'II'
+					},
+					{
+						type: 'mcq',
+						prompt: 'What can we understand about some students from lines 13-16?',
+						options: [
+							[
+								'They do not like asking questions in front of their classmates.',
+								'נכון. "uncomfortable asking questions in front of their classmates" = לא נוח להם לשאול מול הכיתה.\n"This may be especially useful for students who feel uncomfortable asking questions in front of their classmates."'
+							],
+							['They learn better when they study with classmates.', 'השורות אומרות ההפך: מול חברים לכיתה לא נוח להם.'],
+							['They think chatbots explain better than teachers.', 'השורות לא משוות בין צ’אטבוט למורה.'],
+							['They never ask their teachers questions.', 'never חזק מדי. כתוב שלא נוח להם לשאול, לא שהם אף פעם לא שואלים.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: What can we understand; lines 13-16\nמילות מפתח בטקסט: uncomfortable asking questions\n\nטיפ: בשאלת What can we understand התשובה לא מצוטטת. מחפשים את האפשרות שאומרת אותו דבר במילים אחרות, ופוסלים מילים מוחלטות כמו never.',
+						points: 8,
 						paragraphRef: 'II'
 					},
 					{
@@ -111,71 +117,72 @@ export const eQuizzes: QuizNode[] = [
 							'What might happen if students let AI do all their work? COMPLETE THE SENTENCE.\n\nThey might ____________.',
 						modelAnswer: 'hand in a well-written answer without understanding it',
 						explanation:
-							'הטקסט מזהיר מפני הגשת תשובה שנכתבה היטב בלי שהתלמיד מבין אותה.\n"They may hand in a well-written answer without understanding it."\n\nמילות מפתח בשאלה: if students let AI do all their work\nמילות מפתח בטקסט: without understanding it\n\nטיפ: אתרו את מילת התנאי if בשאלה והשוו אותה לתנאי בפסקה.',
+							'הטקסט מזהיר מפני הגשת תשובה שנכתבה היטב בלי שהתלמיד מבין אותה.\n"They may hand in a well-written answer without understanding it."\n\nמילות מפתח בשאלה: if students let AI do all their work\nמילות מפתח בטקסט: complete all their work; without understanding it\n\nטיפ: אחרי might בא פועל בסיס: hand in, לא handing.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: hand in a well-written answer without understanding it | hand in an answer without understanding it.. Evidence: "They may hand in a well-written answer without understanding it."',
-						points: 8,
-						paragraphRef: 'III'
-					},
-					{
-						type: 'mcq',
-						prompt: 'Why do teachers advise students to check information from chatbots?',
-						options: [
-							['Because chatbots cannot explain difficult ideas.', 'נאמר שאפשר לבקש הסבר.'],
-							['Because students may hand in answers they do not understand.', 'זה נכון לפי פסקה III, אבל זו הבעיה כשהטכנולוגיה עושה את כל העבודה, לא הסיבה לבדוק מידע.'],
-							[
-								'Because chatbot answers may contain incorrect information.',
-								'המורים ממליצים לבדוק משום שתשובות הצ’אטבוט עלולות להיות שגויות גם כשהן נשמעות נכונות.\n"chatbots sometimes provide information that sounds correct but is actually wrong."'
-							],
-							[
-								'Because chatbots take too long to answer.',
-								'פסקה I אומרת שהתשובות מגיעות within seconds.'
-							]
-						],
-						correctIndex: 2,
-						explanation:
-							'מילות מפתח בשאלה: Why; check information\nמילות מפתח בטקסט: actually wrong\n\nטיפ: בשאלת Why חפשו במשפט הסמוך ביטוי סיבתי כמו For this reason.',
+							'Expected: hand in a well-written answer without understanding it | hand in an answer they do not understand. Evidence: "They may hand in a well-written answer without understanding it." The answer continues "They might", so a base verb follows.',
 						points: 8,
 						paragraphRef: 'III'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'What do students do before asking the chatbot for an answer in the classroom activity? COMPLETE THE SENTENCE.\n\nThey ____________.',
-						modelAnswer: 'solve a problem by themselves',
+							'Base your answer on lines 22-26. Why do teachers advise students to compare information with reliable sources? COMPLETE THE ANSWER.\n\nBecause chatbots ____________.',
+						modelAnswer: 'sometimes give information that sounds correct but is wrong',
 						explanation:
-							'הפעולה הראשונה בפעילות היא פתרון עצמאי, לפני הפנייה לבינה מלאכותית.\n"students first solve a problem by themselves."\n\nמילות מפתח בשאלה: before asking the chatbot\nמילות מפתח בטקסט: by themselves\n\nטיפ: מילות רצף כגון first ו-then מצביעות על סדר הפעולות.',
+							'For this reason מחבר את העצה לסיבה שבמשפט שלפניה.\n"chatbots sometimes provide information that sounds correct but is actually wrong. For this reason, teachers advise students to compare..."\n\nמילות מפתח בשאלה: lines 22-26; Why; compare\nמילות מפתח בטקסט: For this reason; actually wrong\n\nטיפ: Base your answer on lines... = קוראים רק את השורות האלה. מילה כמו For this reason מצביעה על הסיבה שלפניה.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: solve a problem by themselves | solve the problem by themselves.. Evidence: "students first solve a problem by themselves."',
+							'Expected: sometimes give information that sounds correct but is (actually) wrong | can give wrong information. Evidence (lines 22-26): "chatbots sometimes provide information that sounds correct but is actually wrong. For this reason, teachers advise students to compare important information with reliable sources". An answer about students not understanding their work (lines 19-21) is outside the given lines and does not answer the question.',
+						points: 8,
+						paragraphRef: 'III'
+					},
+					{
+						type: 'writing-task',
+						prompt:
+							'In the classroom activity, what do students do before they ask the chatbot? COMPLETE THE SENTENCE.\n\nThey ____________.',
+						modelAnswer: 'solve the problem by themselves',
+						explanation:
+							'הפעולה הראשונה בפעילות היא פתרון עצמאי, לפני הפנייה לצ’אטבוט.\n"students first solve a problem by themselves. They then ask a chatbot..."\n\nמילות מפתח בשאלה: before they ask the chatbot\nמילות מפתח בטקסט: first; then\n\nטיפ: מילות רצף כמו first ו-then מראות את סדר הפעולות.',
+						gradingNotes:
+							'Expected: solve the problem by themselves | (first) solve a problem on their own. Evidence: "students first solve a problem by themselves."',
 						points: 8,
 						paragraphRef: 'IV'
 					},
 					{
 						type: 'mcq',
-						prompt: 'What is the main purpose of the classroom activity described in paragraph IV?',
+						prompt: 'In line 30, the writer refers to "the same problem." What is that problem?',
 						options: [
 							[
-								'To show that students’ answers are always better than a chatbot’s.',
-								'הטקסט לא קובע מי צודק. התלמידים מסבירים איזו תשובה הגיונית יותר.'
+								'The problem the students first solved by themselves.',
+								'נכון. the same מפנה לבעיה שהוזכרה בשורה הקודמת.\n"students first solve a problem by themselves. They then ask a chatbot to solve the same problem"'
 							],
-							[
-								'To help students evaluate AI answers instead of accepting them immediately.',
-								'מטרת הפעילות היא ביקורת והערכה של תשובת הבינה המלאכותית במקום קבלה אוטומטית שלה.\n"The activity encourages them to examine the chatbot’s suggestions instead of accepting them immediately."'
-							],
-							[
-								'To help students finish their homework more quickly.',
-								'המטרה היא לבחון את תשובת הצ’אטבוט, לא לחסוך זמן. התלמידים פותרים את הבעיה פעמיים.'
-							],
-							[
-								'To teach students how to ask a chatbot better questions.',
-								'הפעילות לא עוסקת בניסוח שאלות לצ’אטבוט, אלא בהשוואה בין שתי תשובות.'
-							]
+							['The problem of students who do not understand their own answers.', 'זו בעיה מפסקה III, לא הבעיה שהתלמידים פותרים בפעילות.'],
+							['The problem of chatbots that give wrong information.', 'גם זו בעיה מפסקה III. the same מפנה למשהו שהוזכר ממש לפני כן.'],
+							['The difference between the two answers.', 'ההבדל בין התשובות מוזכר אחרי the same problem, ולא הוא הבעיה שפותרים.']
 						],
-						correctIndex: 1,
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: main purpose; classroom activity\nמילות מפתח בטקסט: examine the chatbot’s suggestions\n\nטיפ: בשאלת purpose קראו במיוחד את משפט הסיכום של תיאור הפעילות.',
+							'מילות מפתח בשאלה: line 30; the same problem\nמילות מפתח בטקסט: first solve a problem\n\nטיפ: בשאלת refers to קוראים את המשפט שלפני השורה. the same, this, it ו-they מפנים כמעט תמיד למשהו שכבר הוזכר.',
 						points: 8,
 						paragraphRef: 'IV'
+					},
+					{
+						type: 'mcq',
+						prompt:
+							'What do the teachers’ advice in paragraph III and the classroom activity in paragraph IV have in common?',
+						options: [
+							[
+								'Both teach students to check what a chatbot tells them.',
+								'נכון. בפסקה III משווים מידע למקורות מהימנים, ובפסקה IV בוחנים את תשובת הצ’אטבוט במקום לקבל אותה.\n"The activity encourages them to examine the chatbot’s suggestions instead of accepting them immediately."'
+							],
+							['Both tell students to stop using chatbots.', 'אף אחת מהפסקאות לא אומרת להפסיק. שתיהן מלמדות להשתמש בזהירות.'],
+							['Both take place in a classroom.', 'רק הפעילות בפסקה IV מתוארת בכיתה. העצה בפסקה III כללית.'],
+							['Both help students finish their homework faster.', 'בפעילות התלמידים פותרים פעמיים. המטרה היא בדיקה, לא מהירות.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: have in common; paragraph III; paragraph IV\nמילות מפתח בטקסט: compare important information; examine the chatbot’s suggestions\n\nטיפ: בשאלת have in common מנסחים במילה אחת מה כל צד עושה, ובוחרים את האפשרות שנכונה לשניהם, לא רק לאחד.',
+						points: 7,
+						paragraphRef: 'III-IV'
 					},
 					{
 						type: 'writing-task',
@@ -183,9 +190,9 @@ export const eQuizzes: QuizNode[] = [
 							'According to paragraph V, what is the most important skill students should develop? COMPLETE THE SENTENCE.\n\nThey should learn how to ____________.',
 						modelAnswer: 'decide whether an answer is useful and correct',
 						explanation:
-							'היכולת החשובה היא שיפוט עצמאי של האיכות והנכונות של התשובה.\n"It is learning how to decide whether that answer is useful and correct."\n\nמילות מפתח בשאלה: most important skill; develop\nמילות מפתח בטקסט: useful and correct\n\nטיפ: בפסקת סיכום חפשו ניסוחים המדגישים most important או it is.',
+							'המבנה not ... It is מציג קודם את מה שלא חשוב ואז את מה שחשוב.\n"It is learning how to decide whether that answer is useful and correct."\n\nמילות מפתח בשאלה: most important skill\nמילות מפתח בטקסט: most important skill is not; It is\n\nטיפ: בפסקת סיכום, not X ... It is Y = התשובה היא Y.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: decide whether an answer is useful and correct | decide whether an AI answer is useful and correct.. Evidence: "It is learning how to decide whether that answer is useful and correct."',
+							'Expected: decide whether an answer is useful and correct | judge if the answer is correct and useful. Evidence: "It is learning how to decide whether that answer is useful and correct." "get an answer from a machine" is what the writer says is NOT the most important skill.',
 						points: 8,
 						paragraphRef: 'V'
 					}
@@ -372,7 +379,7 @@ export const eQuizzes: QuizNode[] = [
 		parts: [
 			{
 				id: 'reading',
-				instructionsHe: 'קראו את הכתבה וענו על שאלות 1-7 באנגלית, לפי הטקסט. בלי מילון.',
+				instructionsHe: 'קראו את הכתבה וענו על כל 9 השאלות באנגלית, לפי הטקסט. בלי מילון.',
 				points: 70,
 				screens: [
 					{
@@ -421,113 +428,133 @@ export const eQuizzes: QuizNode[] = [
 					},
 					{
 						type: 'mcq',
-						prompt: 'What do we learn from paragraph I?',
+						prompt: 'What are we told in paragraph I?',
 						options: [
-							['Why Maya decided to become a photographer.', 'אין מידע על בחירת מקצוע הצילום.'],
-							['Why Maya’s friends bought film cameras too.', 'החברים של מאיה הופתעו מהבחירה שלה. לא נאמר שהם קנו מצלמות.'],
 							[
-								'What kinds of older products are attracting young people.',
-								'הפסקה מציינת אילו פריטים ישנים מושכים צעירים.\n"When sixteen-year-old Maya wanted a camera, she did not choose the latest model. Instead, she bought a second-hand film camera."'
+								'Young people’s growing interest in old objects.',
+								'נכון. מאיה היא דוגמה, והפסקה מרחיבה לכל הצעירים.\n"Maya is part of a growing interest among young people in objects that were popular long before they were born."'
 							],
-							[
-								'How listening to a record is different from streaming.',
-								'החוויה של האזנה לתקליט מתוארת בפסקה II, לא בפסקה I.'
-							],
-							[
-								'How one teenager chose an old-fashioned object.',
-								'הדוגמה של מאיה מציגה בחירה במצלמת פילם.\n"When sixteen-year-old Maya wanted a camera, she did not choose the latest model. Instead, she bought a second-hand film camera."'
-							],
-							['How film camera pictures are developed.', 'אין הסבר על פיתוח התמונות.']
+							['That Maya’s friends were surprised by her choice.', 'פרט נכון מהפסקה, אבל משפט אחד ממנה, לא הנושא שלה.'],
+							['Why Maya decided to become a photographer.', 'הפסקה לא מדברת על בחירת מקצוע.'],
+							['How listening to a record is different from streaming.', 'החוויה של האזנה לתקליט מתוארת בפסקה II, לא בפסקה I.']
 						],
-						correctIndices: [2, 4],
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: TWO CORRECT ANSWERS\nמילות מפתח בטקסט: second-hand film camera\n\nטיפ: בשאלה המבקשת TWO correct answers יש לבדוק כל היגד בנפרד ולמצוא שתי אפשרויות הנתמכות בפסקה.',
-						points: 14,
+							'מילות מפתח בשאלה: What are we told; paragraph I\nמילות מפתח בטקסט: a growing interest among young people\n\nטיפ: כשפסקה פותחת בסיפור על אדם אחד, הנושא הוא בדרך כלל הרעיון הכללי שהסיפור מדגים.',
+						points: 7,
 						paragraphRef: 'I'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph II, what makes older objects attractive? Give TWO answers. COMPLETE THE ANSWERS.\n\n(1) They can make an activity feel ____________.\n\n(2) They require people to ____________.',
-						modelAnswer: 'more special; be patient / take more time',
+							'Give ONE example from paragraph II of an extra step that older objects require. COMPLETE THE SENTENCE.\n\nPeople have to ____________.',
+						modelAnswer: 'turn a record over halfway through',
 						explanation:
-							'הצעדים הנוספים מייחדים את הפעילות ומחייבים סבלנות לפני שרואים תוצאה.\n"For some teenagers, these extra steps make an ordinary activity feel more special."\n\nמילות מפתח בשאלה: TWO answers\nמילות מפתח בטקסט: more special; patience\n\nטיפ: בשאלת TWO answers הקפידו להבחין בין ההרגשה הנוצרת לבין הפעולה הנדרשת.',
+							'בפסקה כמה צעדים נוספים, ומספיק אחד: לבחור אלבום, להפוך את התקליט באמצע, או לחכות לתמונות בלי למחוק.\n"Listening to a record, for example, means choosing an album and turning it over halfway through."\n\nמילות מפתח בשאלה: Give ONE example; extra step\nמילות מפתח בטקסט: for example; requires patience\n\nטיפ: Give ONE = תשובה אחת. אחרי have to בא פועל בסיס: turn, לא turning.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: more special; be patient / take more time | more special, be patient / take more time. Evidence: "For some teenagers, these extra steps make an ordinary activity feel more special." 8 points per answer.',
-						points: 16,
+							'Several answers are correct; the student gives ONE. Accept any one of: choose an album | turn a record over (halfway through) | be patient / wait to see their photographs | not delete a bad photograph immediately. The answer continues "People have to", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'II'
+					},
+					{
+						type: 'mcq',
+						prompt: 'What can we understand from paragraph II about teenagers who use older objects?',
+						options: [
+							[
+								'They do not mind spending more time on an activity.',
+								'נכון. הצעדים הנוספים לוקחים זמן, ובכל זאת הם הופכים את הפעילות למיוחדת בעיניהם.\n"For some teenagers, these extra steps make an ordinary activity feel more special."'
+							],
+							['They find modern technology too difficult to use.', 'הפסקה לא אומרת שטכנולוגיה מודרנית קשה להם.'],
+							['They often delete unsuccessful photographs.', 'ההפך: במצלמת פילם אי אפשר למחוק מיד.'],
+							['They listen to whole albums every day.', 'כתוב שבוחרים אלבום והופכים אותו. every day לא כתוב.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: What can we understand; teenagers\nמילות מפתח בטקסט: requires patience; extra steps; more special\n\nטיפ: בשאלת What can we understand מחברים שני פרטים מהפסקה למסקנה אחת, ופוסלים אפשרות שהטקסט לא אומר.',
+						points: 8,
 						paragraphRef: 'II'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'Why might teenagers choose second-hand clothes, according to paragraph III? COMPLETE THE SENTENCE.\n\nThey may want to ____________.',
-						modelAnswer: 'express their personal style / wear something different',
+							'Why might teenagers choose second-hand clothes, according to paragraph III? COMPLETE THE ANSWER.\n\nBecause they want to ____________.',
+						modelAnswer: 'express their personal style',
 						explanation:
-							'קניית בגדים משומשים מאפשרת ליצור סגנון שאינו זהה לבגדים המפורסמים באתרי קניות.\n"They can create an outfit that looks different from the ones advertised on popular shopping websites."\n\nמילות מפתח בשאלה: Why\nמילות מפתח בטקסט: different from the ones advertised\n\nטיפ: אתרו את המשפט המתאר את המטרה של הקונים, ולא רק את המקום שבו הם קונים.',
+							'משפט הפתיחה של הפסקה נותן את הסיבה, והמשפטים אחריו מסבירים אותה.\n"Another attraction is the chance to express a personal style."\n\nמילות מפתח בשאלה: Why; second-hand clothes\nמילות מפתח בטקסט: attraction; express a personal style\n\nטיפ: אחרי want to בא פועל בסיס: express, לא expressing.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: express their personal style / wear something different. Evidence: "They can create an outfit that looks different from the ones advertised on popular shopping websites."',
+							'Expected: express their (personal) style | look different from others | create an outfit that looks different | save money / pay less (also supported: "Buying used items can also cost less"). Evidence: "Another attraction is the chance to express a personal style." The answer continues "Because they want to", so a base verb follows.',
 						points: 8,
 						paragraphRef: 'III'
 					},
 					{
 						type: 'mcq',
-						prompt: 'What does paragraph III tell us about vintage products?',
+						prompt: 'What do we learn about prices from paragraph III?',
 						options: [
-							['They are always cheaper than new ones.', 'סותר את החריגים.'],
 							[
-								'Some of them can be expensive.',
-								'הטקסט מציין במפורש שפריטים נדירים יכולים לעלות הרבה.\n"rare vintage products sometimes become surprisingly expensive."'
+								'Used items often cost less, but some rare ones are expensive.',
+								'נכון. although מחבר את שני החלקים.\n"Buying used items can also cost less, although rare vintage products sometimes become surprisingly expensive."'
 							],
-							['They are sold mainly on popular shopping websites.', 'פסקה III מזכירה חנויות יד שנייה. אתרי הקניות מוזכרים רק כמקום של בגדים חדשים.'],
-							['They are popular because they are cheap.', 'קנייה משומשת יכולה לעלות פחות, אבל פריטי וינטג׳ נדירים דווקא יקרים.']
+							['Vintage products are always cheaper than new ones.', 'always סותר את המשפט: מוצרי וינטג׳ נדירים יכולים להיות יקרים.'],
+							['Popular shopping websites have the lowest prices.', 'אתרי הקניות מוזכרים רק בהקשר של סגנון, לא של מחיר.'],
+							['Teenagers buy second-hand clothes only because they are cheap.', 'only סותר את הפסקה: הסיבה הראשונה היא סגנון אישי.']
 						],
-						correctIndex: 1,
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: vintage products\nמילות מפתח בטקסט: surprisingly expensive\n\nטיפ: שימו לב למילות הסתייגות כמו although, sometimes.',
-						points: 8,
+							'מילות מפתח בשאלה: What do we learn about prices\nמילות מפתח בטקסט: cost less; although; expensive\n\nטיפ: בשאלת What do we learn about X מחפשים את המשפט על X (כאן מחיר), וקוראים אותו עד הסוף: although משנה את המשמעות.',
+						points: 7,
 						paragraphRef: 'III'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'What have some clothing companies done in response to the trend? COMPLETE THE SENTENCE.\n\nThey have ____________.',
-						modelAnswer: 'started selling new products that look old',
+							'Base your answer on lines 25-30. How have businesses reacted to the trend? Give ONE answer. COMPLETE THE ANSWER.\n\nBy ____________.',
+						modelAnswer: 'selling new products that look old',
 						explanation:
-							'חברות מגיבות לביקוש באמצעות מוצרים חדשים בעלי מראה של פעם.\n"Some clothing companies have begun selling new products that look as if they were made decades ago."\n\nמילות מפתח בשאלה: companies done\nמילות מפתח בטקסט: new products that look\n\nטיפ: זהו את נושא המשפט: מה עשו החברות, לא מה עשו הלקוחות.',
+							'בשורות 25-30 שלוש תגובות של עסקים, ומספיקה אחת.\n"Some clothing companies have begun selling new products that look as if they were made decades ago."\n\nמילות מפתח בשאלה: lines 25-30; businesses; Give ONE\nמילות מפתח בטקסט: Businesses have noticed the trend\n\nטיפ: אחרי By בא פועל + ing: selling, offering, introducing.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: started selling new products that look old | started selling new products that look old / as if made decades ago. Evidence: "Some clothing companies have begun selling new products that look as if they were made decades ago."',
-						points: 8
-					},
-					{
-						type: 'mcq',
-						prompt: 'What do we learn from paragraph IV?',
-						options: [
-							[
-								'Young people often use older and newer technologies together.',
-								'צעירים יכולים להשתמש בחפצים ישנים ובטכנולוגיה חדשה בו בזמן.\n"Many use older objects alongside their smartphones and streaming services."'
-							],
-							['Most young people have given up their smartphones.', 'סותר את השימוש בסמארטפונים.'],
-							['Music shops now sell only records.', 'לא נאמר שחנויות מוכרות רק תקליטים.'],
-							[
-								'All camera makers have stopped selling digital cameras.',
-								'אין טענה שכל היצרנים הפסיקו לייצר דיגיטליות.'
-							]
-						],
-						correctIndex: 0,
-						explanation:
-							'מילות מפתח בשאלה: What do we learn\nמילות מפתח בטקסט: alongside their smartphones\n\nטיפ: השוו מילים מוחלטות כגון most, only, all למה שבאמת כתוב.',
+							'Several answers are correct; the student gives ONE. Accept any one of: By selling new products that look old | By offering more records | By making / introducing cameras that look traditional. The answer continues "By", so the verb takes -ing.',
 						points: 8,
 						paragraphRef: 'IV'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph V, what is the writer’s main conclusion? COMPLETE THE SENTENCE.\n\nYoung people enjoy ____________.',
+							'Base your answer on lines 30-32. What do many young people do with older objects? COMPLETE THE SENTENCE.\n\nThey use them ____________.',
+						modelAnswer: 'alongside their smartphones and streaming services',
+						explanation:
+							'However מסמן את המעבר מהעסקים אל הלקוחות.\n"Many use older objects alongside their smartphones and streaming services."\n\nמילות מפתח בשאלה: lines 30-32; older objects\nמילות מפתח בטקסט: However; alongside\n\nטיפ: alongside מופיעה ב-Glossary: "לצד". מילה עם קו? מציצים למטה וממשיכים.',
+						gradingNotes:
+							'Expected: alongside / together with their smartphones and streaming services | with modern technology. Evidence: "Many use older objects alongside their smartphones and streaming services." "instead of their smartphones" contradicts the text.',
+						points: 8,
+						paragraphRef: 'IV'
+					},
+					{
+						type: 'mcq',
+						prompt: 'What are we told in paragraph V?',
+						options: [
+							[
+								'What old objects really mean to Gen Z.',
+								'נכון. הפסקה מסבירה מה חשוב לצעירים: שילוב תקופות, מה אפשר לעשות עם החפץ ואיך הוא גורם להם להרגיש.\n"What matters to them is not simply how old an object is, but what they can do with it and how it makes them feel."'
+							],
+							['That Gen Z wants to live in the past.', 'הפסקה אומרת את ההפך: does not necessarily mean that Gen Z wants to live in the past.'],
+							['Why companies sell products that look old.', 'זה הנושא של פסקה IV.'],
+							['How old an object must be to become popular.', 'הפסקה אומרת שהגיל של החפץ הוא לא העיקר.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: What are we told; paragraph V\nמילות מפתח בטקסט: does not necessarily mean; Instead; What matters to them\n\nטיפ: בפסקת סיכום Instead ו-not ... but מובילים לרעיון המרכזי.',
+						points: 8,
+						paragraphRef: 'V'
+					},
+					{
+						type: 'writing-task',
+						prompt:
+							'According to paragraph V, what do young people enjoy? COMPLETE THE SENTENCE.\n\nYoung people enjoy ____________.',
 						modelAnswer: 'combining ideas from different periods',
 						explanation:
-							'המסר הסופי הוא שילוב רעיונות מתקופות שונות, לא רצון לחיות בעבר.\n"young people enjoy combining ideas from different periods."\n\nמילות מפתח בשאלה: main conclusion\nמילות מפתח בטקסט: combining ideas from different periods\n\nטיפ: בשאלת conclusion חפשו את הניגוד instead בפסקה האחרונה.',
+							'המסר הסופי הוא שילוב רעיונות מתקופות שונות, לא רצון לחיות בעבר.\n"young people enjoy combining ideas from different periods."\n\nמילות מפתח בשאלה: enjoy\nמילות מפתח בטקסט: enjoy combining\n\nטיפ: אחרי enjoy בא פועל + ing: combining, לא to combine.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: combining ideas from different periods | combining ideas from different periods / old and new things. Evidence: "young people enjoy combining ideas from different periods."',
+							'Expected: combining ideas from different periods | mixing old and new things. Evidence: "young people enjoy combining ideas from different periods." The answer continues "enjoy", so the verb takes -ing.',
 						points: 8,
 						paragraphRef: 'V'
 					}
@@ -715,7 +742,7 @@ export const eQuizzes: QuizNode[] = [
 		parts: [
 			{
 				id: 'reading',
-				instructionsHe: 'קראו את הכתבה וענו על שאלות 1-7 באנגלית, לפי הטקסט. בלי מילון.',
+				instructionsHe: 'קראו את הכתבה וענו על כל 9 השאלות באנגלית, לפי הטקסט. בלי מילון.',
 				points: 70,
 				screens: [
 					{
@@ -764,114 +791,133 @@ export const eQuizzes: QuizNode[] = [
 					},
 					{
 						type: 'mcq',
-						prompt: 'What do we learn from paragraph I?',
+						prompt: 'What are we told in paragraph I?',
 						options: [
 							[
-								'Why Daniel found mathematics difficult.',
-								'דניאל התקשה לזכור כלל, אבל הפסקה לא מסבירה למה.'
+								'How teenagers use short videos to review school subjects.',
+								'נכון. דניאל הוא דוגמה, והמשפט האחרון מרחיב לכל בני הנוער.\n"Short educational videos have become a common way for teenagers to review school subjects"'
 							],
-							[
-								'Which school subject Daniel was reviewing.',
-								'הטקסט מציין שדניאל ניסה להיזכר בכלל במתמטיקה.\n"When Daniel had trouble remembering a rule in mathematics, he searched for a short video on his phone. Daniel watched it twice and then tried a similar problem."'
-							],
+							['Which school subject Daniel was reviewing.', 'פרט נכון (mathematics), אבל מילה אחת מהפסקה, לא הנושא שלה.'],
 							['Why some short videos give wrong information.', 'זה הנושא של פסקה III (Others may share incorrect information).'],
-							['How teachers make short educational videos.', 'מוזכר שמורה הסביר בעזרת ציור פשוט, אבל לא איך מכינים סרטונים.'],
-							[
-								'How a teenager used a short video to review a school subject.',
-								'דניאל צפה פעמיים בסרטון ולאחר מכן ניסה לפתור תרגיל דומה.\n"When Daniel had trouble remembering a rule in mathematics, he searched for a short video on his phone. Daniel watched it twice and then tried a similar problem."'
-							],
-							[
-								'How students can pause and replay a video.',
-								'זה מופיע בפסקה II, לא בפסקה I.'
-							]
+							['How teachers make short educational videos.', 'מוזכר מורה שמסביר בציור, אבל לא איך מכינים סרטונים.']
 						],
-						correctIndices: [1, 4],
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: What do we learn; paragraph I; TWO\nמילות מפתח בטקסט: tried a similar problem\n\nטיפ: בשאלה המבקשת TWO correct answers יש לבדוק כל היגד בנפרד ולמצוא שתי אפשרויות הנתמכות בפסקה.',
-						points: 14,
+							'מילות מפתח בשאלה: What are we told; paragraph I\nמילות מפתח בטקסט: a common way for teenagers to review school subjects\n\nטיפ: כשפסקה פותחת בסיפור על אדם אחד, הנושא הוא בדרך כלל הרעיון הכללי שהסיפור מדגים.',
+						points: 7,
 						paragraphRef: 'I'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph II, what are TWO advantages of short educational videos? COMPLETE THE ANSWERS.\n\n(1) Students can choose ____________.\n\n(2) Students can ____________ difficult parts.',
-						modelAnswer: 'exactly what they want to learn; pause or replay difficult parts',
+							'According to paragraph II, what is an advantage of short educational videos? Give ONE answer. COMPLETE THE SENTENCE.\n\nStudents can ____________.',
+						modelAnswer: 'choose exactly what they want to learn',
 						explanation:
-							'אפשר לבחור נושא נקודתי ולצפות שוב בחלק שלא הובן.\n"Students can pause a video or replay a difficult part as often as they like."\n\nמילות מפתח בשאלה: TWO advantages; short educational videos\nמילות מפתח בטקסט: pause; replay\n\nטיפ: חפשו שתי פעולות או יתרונות המנוסחים בצורה נפרדת.',
+							'בפסקה כמה יתרונות, ומספיק אחד.\n"students can choose exactly what they want to learn." / "Students can pause a video or replay a difficult part"\n\nמילות מפתח בשאלה: advantage; Give ONE answer\nמילות מפתח בטקסט: One advantage; can also; Students can\n\nטיפ: Give ONE = תשובה אחת. אחרי can בא פועל בסיס.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: exactly what they want to learn; pause or replay difficult parts | exactly what they want to learn / a single idea, pause or replay / watch again. Evidence: "Students can pause a video or replay a difficult part as often as they like." 8 points per answer.',
-						points: 16,
+							'Several answers are correct; the student gives ONE. Accept any one of: choose exactly what they want to learn | look for a single idea that confuses them | understand information more easily (pictures, explanations and examples) | pause a video or replay a difficult part. The answer continues "Students can", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'II'
+					},
+					{
+						type: 'mcq',
+						prompt: 'In line 12, the writer refers to "The combination." What is combined?',
+						options: [
+							[
+								'Pictures, spoken explanations and examples.',
+								'נכון. המילים שאחרי combination of אומרות מה משולב.\n"The combination of pictures, spoken explanations and examples can also make information easier to understand."'
+							],
+							['A whole lesson and a single idea.', 'השורה הקודמת משווה בין שיעור שלם לרעיון אחד. זה לא שילוב.'],
+							['Pausing and replaying a video.', 'אלה שתי פעולות מסוף הפסקה, לא מה שמשולב.'],
+							['Music and images.', 'מוזיקה ותמונות מוזכרות בפסקה III, בהקשר אחר.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: line 12; The combination\nמילות מפתח בטקסט: The combination of\n\nטיפ: בשאלת refers to מחפשים את המילה בשורה, וקוראים מה בא מיד לפניה או אחריה.',
+						points: 8,
 						paragraphRef: 'II'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'What problem can result from oversimplifying a subject? COMPLETE THE SENTENCE.\n\nImportant details may be ____________.',
-						modelAnswer: 'left out / missing',
+							'Base your answer on lines 18-20. What can happen when creators simplify a subject too much? COMPLETE THE SENTENCE.\n\nImportant details may be ____________.',
+						modelAnswer: 'left out',
 						explanation:
-							'פישוט יתר עלול להשמיט מידע חשוב.\n"they leave out important details."\n\nמילות מפתח בשאלה: problem; oversimplifying\nמילות מפתח בטקסט: leave out important details\n\nטיפ: הביטוי leave out פירושו להשמיט; אפשר לענות בפרפרזה מדויקת.',
+							'פישוט יתר עלול להשמיט מידע חשוב.\n"Some creators simplify a subject so much that they leave out important details."\n\nמילות מפתח בשאלה: lines 18-20; simplify\nמילות מפתח בטקסט: so much that; leave out\n\nטיפ: may be + צורת עבר שלישית: left out, לא leave out.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: left out / missing. Evidence: "they leave out important details."',
-						points: 8
+							'Expected: left out | missing | lost. Evidence: "Some creators simplify a subject so much that they leave out important details." The sentence is passive ("may be ..."), so "leave out" is a grammar error, the meaning is right.',
+						points: 8,
+						paragraphRef: 'III'
 					},
 					{
 						type: 'mcq',
-						prompt: 'Why should students check who created a video?',
+						prompt: 'What can we understand from lines 21-23?',
 						options: [
-							['Because some videos are too long.', 'הבעיה בפסקה III היא פישוט יתר ומידע שגוי, לא אורך.'],
-							['Because attractive videos have music and images.', 'המוזיקה והתמונות מסבירות למה תלמידים זוכרים סרטון בלי להבין אותו, לא למה בודקים מי יצר אותו.'],
 							[
-								'Because some videos contain incorrect information.',
-								'יש לבדוק את המקור כי חלק מן הסרטונים מכילים מידע שגוי.\n"Others may share incorrect information."'
+								'Enjoying a video does not mean learning from it.',
+								'נכון. אפשר לזכור את המוזיקה והתמונות בלי להבין את הרעיון.\n"Students who see an attractive video may remember its music or images without really understanding the idea it presents."'
 							],
-							[
-								'Because teachers want students to watch whole lessons.',
-								'שיעור שלם מוזכר בפסקה II רק להשוואה. המורים לא דורשים לצפות בשיעורים שלמים.'
-							]
+							['Videos with music are easier to understand.', 'השורות אומרות שזוכרים את המוזיקה בלי להבין, לא שמבינים יותר.'],
+							['Students should not watch videos with music.', 'אין בשורות האלה עצה כזאת.'],
+							['Most short videos give incorrect information.', 'most חזק מדי, ומידע שגוי מוזכר בשורה 20, לא בשורות 21-23.']
 						],
-						correctIndex: 2,
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: Why; check who created\nמילות מפתח בטקסט: incorrect information\n\nטיפ: מילת השאלה Why דורשת סיבה, לא פרט אקראי על הסרטונים.',
-						points: 8
+							'מילות מפתח בשאלה: What can we understand; lines 21-23\nמילות מפתח בטקסט: attractive video; without really understanding\n\nטיפ: בשאלת What can we understand התשובה לא מצוטטת. בוחרים את האפשרות שאומרת אותו דבר במילים אחרות.',
+						points: 7,
+						paragraphRef: 'III'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'What do teachers ask students to do after watching a video in some classrooms? COMPLETE THE SENTENCE.\n\nThey ask students to ____________.',
-						modelAnswer: 'solve a new problem / explain the idea in their own words',
+							'Why do teachers encourage students to check who made a video? COMPLETE THE ANSWER.\n\nBecause some videos ____________.',
+						modelAnswer: 'share incorrect information',
 						explanation:
-							'המורים מבקשים יישום או הסבר עצמאי כדי לראות אם התקיימה למידה.\n"they must solve a new problem or explain the idea in their own words."\n\nמילות מפתח בשאלה: after watching; ask students\nמילות מפתח בטקסט: solve a new problem; own words\n\nטיפ: שימו לב למילה after שמגדירה מה נעשה בעקבות הצפייה.',
+							'That is why מפנה לבעיות שבפסקה: מידע שגוי ופרטים חסרים.\n"Others may share incorrect information." ... "That is why teachers encourage students to check who made a video"\n\nמילות מפתח בשאלה: Why; check who made a video\nמילות מפתח בטקסט: That is why\n\nטיפ: That is why = "בגלל זה". הסיבה כתובה לפני הביטוי, לא אחריו.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: solve a new problem / explain the idea in their own words. Evidence: "they must solve a new problem or explain the idea in their own words."',
-						points: 8
+							'Expected: share / give incorrect information | leave out important details | are not reliable. Evidence: "Others may share incorrect information." ... "That is why teachers encourage students to check who made a video". The answer continues "Because some videos", so a verb in the present follows.',
+						points: 8,
+						paragraphRef: 'III'
+					},
+					{
+						type: 'writing-task',
+						prompt:
+							'In some classrooms, what must students do after they watch a short explanation? Give ONE answer. COMPLETE THE SENTENCE.\n\nThey must ____________.',
+						modelAnswer: 'solve a new problem',
+						explanation:
+							'שתי תשובות נכונות מחוברות ב-or, ומספיקה אחת.\n"they must solve a new problem or explain the idea in their own words."\n\nמילות מפתח בשאלה: after they watch; Give ONE\nמילות מפתח בטקסט: After students watch; must\n\nטיפ: or במשפט = שתי תשובות נכונות. Give ONE = כותבים אחת.',
+						gradingNotes:
+							'Several answers are correct; the student gives ONE. Accept either: solve a new problem | explain the idea in their own words. Evidence: "they must solve a new problem or explain the idea in their own words." The answer continues "They must", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'IV'
 					},
 					{
 						type: 'mcq',
-						prompt: 'What does the classroom approach in paragraph IV help teachers discover?',
+						prompt: 'What does the approach in paragraph IV help teachers find out?',
 						options: [
 							[
-								'Whether students have understood the information.',
-								'המטלה שלאחר הצפייה בודקת הבנה, לא רק זכירה של משפט מהסרטון.\n"These activities help teachers find out whether students have actually learned something."'
+								'Whether students have really learned the idea.',
+								'נכון. המשימה אחרי הצפייה בודקת הבנה, לא רק זכירה.\n"These activities help teachers find out whether students have actually learned something."'
 							],
-							['Whether students can repeat sentences from a video.', 'הפסקה אומרת שחזרה על משפט מהסרטון לא מוכיחה למידה. המורים בודקים הבנה.'],
+							['Whether students can repeat sentences from a video.', 'הפסקה אומרת שחזרה על משפט מהסרטון לא מוכיחה למידה.'],
 							['Which videos are the most popular with students.', 'הפעילות לא בודקת אילו סרטונים פופולריים.'],
 							['How quickly students can solve a problem.', 'הפעילות בודקת אם התלמידים למדו, לא כמה מהר הם פותרים.']
 						],
 						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: help teachers discover\nמילות מפתח בטקסט: actually learned something\n\nטיפ: לשאלת מה הפעילות מאפשרת לגלות, חפשו את תוצאת הפעילות במשפט הבא.',
+							'מילות מפתח בשאלה: help teachers find out\nמילות מפתח בטקסט: find out whether; actually learned\n\nטיפ: לפעמים מילות השאלה מופיעות בטקסט כמעט כמו שהן (find out). אז קוראים את ההמשך שלהן.',
 						points: 8,
 						paragraphRef: 'IV'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph V, why are videos not enough on their own? COMPLETE THE SENTENCE.\n\nStudents also need opportunities to ____________.',
+							'According to paragraph V, why are videos not enough on their own? COMPLETE THE SENTENCE.\n\nStudents still need time to ____________.',
 						modelAnswer: 'ask questions, make mistakes and apply what they have learned',
 						explanation:
-							'סרטונים הם נקודת התחלה בלבד; למידה מחייבת תרגול, שאלות ויישום.\n"students still need time to ask questions, make mistakes and apply what they have learned."\n\nמילות מפתח בשאלה: why; not enough on their own\nמילות מפתח בטקסט: ask questions; make mistakes; apply\n\nטיפ: בפסקת סיכום הבחינו בין כלי עזר לבין תחליף מלא ללמידה.',
+							'סרטונים הם נקודת התחלה בלבד. למידה צריכה גם שאלות, טעויות ויישום.\n"students still need time to ask questions, make mistakes and apply what they have learned."\n\nמילות מפתח בשאלה: not enough on their own\nמילות מפתח בטקסט: rather than; but students still need\n\nטיפ: אחרי to בא פועל בסיס: ask, make, apply.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: ask questions, make mistakes and apply what they have learned | ask questions, make mistakes and apply what they learn / practise. Evidence: "students still need time to ask questions, make mistakes and apply what they have learned."',
+							'Expected: ask questions, make mistakes and apply what they have learned (one or more of these is enough) | practise what they learned. Evidence: "students still need time to ask questions, make mistakes and apply what they have learned."',
 						points: 8,
 						paragraphRef: 'V'
 					}
@@ -1051,7 +1097,7 @@ export const eQuizzes: QuizNode[] = [
 		parts: [
 			{
 				id: 'reading',
-				instructionsHe: 'קראו את הכתבה וענו על שאלות 1-7 באנגלית, לפי הטקסט. בלי מילון.',
+				instructionsHe: 'קראו את הכתבה וענו על כל 9 השאלות באנגלית, לפי הטקסט. בלי מילון.',
 				points: 70,
 				screens: [
 					{
@@ -1100,55 +1146,61 @@ export const eQuizzes: QuizNode[] = [
 					},
 					{
 						type: 'mcq',
-						prompt: 'What do we learn from paragraph I?',
+						prompt: 'What are we told in paragraph I?',
 						options: [
 							[
-								'Why online games are replacing school lessons.',
-								'לא נטען שמשחקים מחליפים שיעורים.'
+								'Why some educators are interested in video games.',
+								'נכון. הסיפור על ארבעת החברים מוביל לשאלה של אנשי החינוך.\n"Situations like this have led some educators to ask whether certain video games can help young people practise skills they also need outside the screen."'
 							],
-							[
-								'How a group of players works together in a game.',
-								'מתוארת עבודת צוות בתוך משחק.\n"One player studies a map, another collects useful objects and the others protect the team."'
-							],
-							['How players can win a game more quickly.', 'הפסקה מתארת שיתוף פעולה, לא דרכים לנצח מהר.'],
-							[
-								'Why some games are dangerous for young people.',
-								'הפסקה לא מזהירה מפני משחקים.'
-							],
-							[
-								'Why some educators are interested in games as a way to practise useful skills.',
-								'הפסקה מסבירה מדוע אנשי חינוך בוחנים אם משחקים מסייעים לתרגל מיומנויות שימושיות.\n"Situations like this have led some educators to ask whether certain video games can help young people practise skills they also need outside the screen."'
-							],
+							['That the four friends must cooperate to succeed.', 'פרט נכון מהפסקה, אבל הוא רק הדוגמה, לא הנושא.'],
+							['Why online games are replacing school lessons.', 'הפסקה לא אומרת שמשחקים מחליפים שיעורים.'],
 							['How teachers use games in their lessons.', 'זה הנושא של פסקה III.']
 						],
-						correctIndices: [1, 4],
+						correctIndex: 0,
 						explanation:
-							'מילות מפתח בשאלה: What do we learn; TWO correct\nמילות מפתח בטקסט: skills outside the screen\n\nטיפ: בשאלה המבקשת TWO correct answers יש לבדוק כל היגד בנפרד ולמצוא שתי אפשרויות הנתמכות בפסקה.',
-						points: 14,
+							'מילות מפתח בשאלה: What are we told; paragraph I\nמילות מפתח בטקסט: Situations like this have led some educators to ask\n\nטיפ: Situations like this מחבר את הדוגמה לרעיון. הנושא נמצא אחרי החיבור.',
+						points: 7,
 						paragraphRef: 'I'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph II, which TWO skills may cooperative or strategy games develop? COMPLETE THE ANSWERS.\n\n(1) Players may learn to ____________.\n\n(2) Players may learn to ____________.',
-						modelAnswer:
-							'work towards a shared goal / divide tasks / listen to suggestions; plan / solve problems / compare actions',
+							'Base your answer on lines 9-12. What may a team need to do in a cooperative game? Give ONE answer. COMPLETE THE SENTENCE.\n\nThe team may need to ____________.',
+						modelAnswer: 'divide tasks',
 						explanation:
-							'הפסקה מבחינה בין עבודה בצוות לבין תכנון, החלטה ופתרון בעיות.\n"A team may need to divide tasks, listen to different suggestions and change its plan when something goes wrong."\n\nמילות מפתח בשאלה: TWO skills; cooperative or strategy games\nמילות מפתח בטקסט: divide tasks; listen; change its plan\n\nטיפ: בבקשת TWO skills אל תתנו שתי דוגמאות של אותה מיומנות אם אפשר לבחור שני סוגים.',
+							'בשורות 10-12 רשימה של שלוש פעולות, ומספיקה אחת.\n"A team may need to divide tasks, listen to different suggestions and change its plan when something goes wrong."\n\nמילות מפתח בשאלה: lines 9-12; team; Give ONE\nמילות מפתח בטקסט: A team may need to\n\nטיפ: רשימה עם פסיקים ו-and = כמה תשובות נכונות. Give ONE = בוחרים אחת.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: work towards a shared goal / divide tasks / listen to suggestions; plan / solve problems / compare actions | work towards a shared goal / divide tasks / listen to suggestions, plan / solve problems / compare possible actions. Evidence: "A team may need to divide tasks, listen to different suggestions and change its plan when something goes wrong." 8 points per answer.',
-						points: 16,
+							'Several answers are correct; the student gives ONE. Accept any one of: divide tasks | listen to different suggestions | change its plan when something goes wrong | work towards a shared goal. The answer continues "may need to", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'II'
+					},
+					{
+						type: 'mcq',
+						prompt: 'What do the game activities described in paragraph II have in common?',
+						options: [
+							[
+								'They can all involve planning and problem-solving.',
+								'נכון. These activities מסכם את מה שתואר לפניו.\n"These activities can involve planning and problem-solving"'
+							],
+							['They all lead to success in everyday life.', 'הפסקה אומרת את ההפך: success in a game does not automatically mean success in everyday life.'],
+							['They all require quick reactions.', 'תגובות מהירות מוזכרות בפסקה IV, כמשחק שלא מלמד הרבה.'],
+							['They are all played alone.', 'משחקים שיתופיים משוחקים בצוות.']
+						],
+						correctIndex: 0,
+						explanation:
+							'מילות מפתח בשאלה: have in common; paragraph II\nמילות מפתח בטקסט: These activities can involve\n\nטיפ: בשאלת have in common מחפשים משפט שמסכם כמה דברים יחד (These..., All of them..., Both...).',
+						points: 8,
 						paragraphRef: 'II'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'What does paragraph II say about success in games? COMPLETE THE SENTENCE.\n\nIt does not necessarily lead to ____________.',
+							'What does paragraph II say about success in games? COMPLETE THE SENTENCE.\n\nIt does not automatically mean ____________.',
 						modelAnswer: 'success in everyday life',
 						explanation:
-							'הצלחה במשחק אינה מעידה אוטומטית על הצלחה בחיים מחוץ למסך.\n"success in a game does not automatically mean success in everyday life."\n\nמילות מפתח בשאלה: success in games\nמילות מפתח בטקסט: does not automatically mean\n\nטיפ: ביטויים כמו does not automatically mean מסייגים את המסקנה.',
+							'הצלחה במשחק לא מבטיחה הצלחה בחיים מחוץ למסך.\n"success in a game does not automatically mean success in everyday life."\n\nמילות מפתח בשאלה: success in games\nמילות מפתח בטקסט: although; does not automatically mean\n\nטיפ: although מסייג את מה שנאמר לפניו. ההסתייגות היא בדיוק מה ששואלים.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: success in everyday life. Evidence: "success in a game does not automatically mean success in everyday life."',
+							'Expected: success in everyday life | success in real life. Evidence: "success in a game does not automatically mean success in everyday life."',
 						points: 8,
 						paragraphRef: 'II'
 					},
@@ -1160,55 +1212,68 @@ export const eQuizzes: QuizNode[] = [
 							['To find out who built the best town.', 'הדיון לא נועד לדרג. הוא מחבר החלטות במשחק לרעיונות מהחיים.'],
 							[
 								'To help them connect the game to real-life ideas.',
-								'הדיון מסייע לחבר החלטות במשחק למושגים כמו תקציב ואחריות.\n"it helps students connect decisions made in the game with ideas such as budgeting, cooperation and responsibility."'
+								'נכון. הדיון מחבר החלטות במשחק למושגים כמו תקציב ואחריות.\n"it helps students connect decisions made in the game with ideas such as budgeting, cooperation and responsibility."'
 							],
 							['To check that students did not spend too much money.', 'הכסף המוגבל הוא חלק מהמשחק. הדיון נועד לחבר את ההחלטות לרעיונות כמו budgeting.'],
 							['To help them design a real town.', 'התלמידים מתכננים עיר קטנה בתוך המשחק, לא עיר אמיתית.']
 						],
 						correctIndex: 1,
 						explanation:
-							'מילות מפתח בשאלה: Why; explain their choices\nמילות מפתח בטקסט: connect decisions\n\nטיפ: בשאלת Why קראו את ההסבר שמופיע אחרי תיאור הפעילות.',
-						points: 8
+							'מילות מפתח בשאלה: Why; explain their choices\nמילות מפתח בטקסט: The discussion is important: it helps\n\nטיפ: נקודתיים (:) אחרי משפט מובילות להסבר שלו.',
+						points: 7,
+						paragraphRef: 'III'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'Give ONE idea students can learn from the town-building activity. COMPLETE THE ANSWER.\n\nThey can learn about ____________.',
-						modelAnswer: 'budgeting / cooperation / responsibility',
+							'In line 21, the writer mentions "limited money and resources." What must students do with them in the game? COMPLETE THE SENTENCE.\n\nThey must ____________.',
+						modelAnswer: 'design a small town',
 						explanation:
-							'כל אחד משלושת המושגים מופיע במפורש כתחום למידה מן הפעילות.\n"ideas such as budgeting, cooperation and responsibility."\n\nמילות מפתח בשאלה: Give ONE idea; learn\nמילות מפתח בטקסט: budgeting; cooperation; responsibility\n\nטיפ: כשמבקשים ONE idea, בחרו דוגמה אחת בלבד מן הרשימה בטקסט.',
+							'השורה ממשיכה משפט שהתחיל בשורה 20.\n"students might play a game in which they must design a small town with limited money and resources."\n\nמילות מפתח בשאלה: line 21; limited money and resources\nמילות מפתח בטקסט: they must design\n\nטיפ: שאלה על שורה אחת? קוראים את כל המשפט שהשורה שייכת לו, גם אם הוא מתחיל בשורה הקודמת.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: budgeting / cooperation / responsibility. Evidence: "ideas such as budgeting, cooperation and responsibility."',
-						points: 8
+							'Expected: design / build a small town (with them). Evidence (lines 20-21): "they must design a small town with limited money and resources." The answer continues "They must", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'III'
+					},
+					{
+						type: 'writing-task',
+						prompt:
+							'Base your answer on lines 27-32. Why may some games not teach much? Give ONE answer. COMPLETE THE ANSWER.\n\nBecause players may ____________.',
+						modelAnswer: 'repeat actions without thinking about them',
+						explanation:
+							'בשורות כמה סיבות, ומספיקה אחת: חזרה בלי מחשבה, הפסקת הקשבה לחברי הצוות, או מעט עבודת צוות.\n"players can spend hours repeating actions without thinking about them."\n\nמילות מפתח בשאלה: lines 27-32; not teach much; Give ONE\nמילות מפתח בטקסט: Not all games; In addition\n\nטיפ: In addition מוסיף סיבה שנייה. Give ONE = כותבים רק אחת. אחרי may בא פועל בסיס.',
+						gradingNotes:
+							'Several answers are correct; the student gives ONE. Accept any one of: repeat actions without thinking (about them) | stop listening to their teammates (when they become frustrated) | not need much teamwork / only need quick reactions. The answer continues "Because players may", so a base verb follows.',
+						points: 8,
+						paragraphRef: 'IV'
 					},
 					{
 						type: 'mcq',
-						prompt:
-							'According to paragraph IV, which factor affects whether a game is educational?',
+						prompt: 'According to paragraph IV, what makes a difference to how much students learn from a game?',
 						options: [
 							['The number of hours students play.', 'שעות משחק מוזכרות כבעיה (repeating actions without thinking), לא כגורם שקובע אם המשחק מלמד.'],
 							['How much the game costs.', 'מחיר המשחק לא מוזכר.'],
 							[
 								'The guidance students receive.',
-								'הכוונה שהתלמידים מקבלים משפיעה על ערכו הלימודי של המשחק.\n"the type of game, the tasks and the guidance students receive all make a difference."'
+								'נכון. הדרכה היא אחד משלושת הגורמים שמשפיעים.\n"the type of game, the tasks and the guidance students receive all make a difference."'
 							],
 							['Whether students enjoy the game.', 'פסקה V אומרת שהנאה היא לא העיקר. פסקה IV מונה סוג משחק, משימות והדרכה.']
 						],
 						correctIndex: 2,
 						explanation:
-							'מילות מפתח בשאלה: which factor; educational\nמילות מפתח בטקסט: type of game; tasks; guidance\n\nטיפ: בשאלת factor חפשו משפט שמונה במפורש גורמים משפיעים.',
+							'מילות מפתח בשאלה: makes a difference\nמילות מפתח בטקסט: therefore; make a difference\n\nטיפ: therefore מסכם את הפסקה. המשפט שאחריו הוא בדרך כלל התשובה.',
 						points: 8,
 						paragraphRef: 'IV'
 					},
 					{
 						type: 'writing-task',
 						prompt:
-							'According to paragraph V, what should educators consider besides whether students enjoy a game? COMPLETE THE SENTENCE.\n\nThey should consider ____________.',
-						modelAnswer: 'what students learn from playing',
+							'According to paragraph V, what is the important question about video games? COMPLETE THE ANSWER.\n\nWhat students ____________.',
+						modelAnswer: 'learn from the experience',
 						explanation:
-							'המדד החשוב אינו רק הנאה אלא הידע או ההרגלים שהתלמידים מפיקים.\n"The important question is not simply whether students enjoy playing, but what they learn from the experience."\n\nמילות מפתח בשאלה: what; besides whether students enjoy\nמילות מפתח בטקסט: what they learn\n\nטיפ: מבנה not simply ... but מדגיש את הנקודה החשובה באמת.',
+							'המבנה not simply ... but מציג קודם את מה שפחות חשוב, ואז את העיקר.\n"The important question is not simply whether students enjoy playing, but what they learn from the experience."\n\nמילות מפתח בשאלה: the important question\nמילות מפתח בטקסט: not simply; but\n\nטיפ: not simply X, but Y = התשובה היא Y.',
 						gradingNotes:
-							'Accept any wording with the same meaning, supported by the passage. Expected: what students learn from playing | what students learn from playing / what they learn from the experience. Evidence: "The important question is not simply whether students enjoy playing, but what they learn from the experience."',
+							'Expected: learn from the experience | learn from playing. Evidence: "The important question is not simply whether students enjoy playing, but what they learn from the experience." "enjoy playing" is what the writer says is NOT the main question.',
 						points: 8,
 						paragraphRef: 'V'
 					}

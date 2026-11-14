@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import Md from '$lib/components/Md.svelte';
-	import PassageMark from './PassageMark.svelte';
+	import PassageLines, { type PassageLine } from './PassageLines.svelte';
 	import { PASSAGE_MARKS, type PassageMarksStore } from './passageMarks';
 	import { stripLineAttrs } from './miniMarkdown';
 	import type { PassageScreen } from './types';
@@ -19,15 +19,8 @@
 	// printed passage would - continuous across the whole passage, marked
 	// every 5th line, same convention as a real exam sheet's margin (which
 	// sits on the left, the same side the LTR text starts from).
-	type Line = {
-		key: number;
-		text: string;
-		roman: string | null;
-		lineNumber: number;
-		rowClass?: string;
-	};
 	let lines = $derived.by(() => {
-		const result: Line[] = [];
+		const result: PassageLine[] = [];
 		let n = 0;
 		passage.paragraphs.forEach((paragraph, pi) => {
 			paragraph.text.split('\n').forEach((raw, li) => {
@@ -43,38 +36,19 @@
 		});
 		return result;
 	});
-
-	// A printed line that wraps on a phone turns the column ragged ("see well or are /
-	// blind."): the text shrinks just enough for the longest line to fit (CSS below).
-	let longest = $derived(
-		Math.max(1, ...lines.map((line) => line.text.replace(/[*_~`+]/g, '').length))
-	);
 </script>
 
 {#if passage.title}
 	<h2 class="mb-3 text-lg font-bold" dir="ltr"><Md text={stripLineAttrs(passage.title)} /></h2>
 {/if}
 
-<div class="passage-fit" style="--chars: {longest}">
-	<PassageMark
-		{lines}
-		marks={marksStore?.get(passage)}
-		onMarks={(h) => marksStore?.set(passage, h)}
-	>
-		{#snippet leading(line)}
-			<span
-				class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold {line.roman
-					? 'bg-accent-soft text-ink/70'
-					: ''}"
-			>
-				{line.roman ?? ''}
-			</span>
-			<span class="w-5 shrink-0 text-start text-xs text-muted tabular">
-				{line.lineNumber % 5 === 0 ? line.lineNumber : ''}
-			</span>
-		{/snippet}
-	</PassageMark>
-</div>
+<PassageLines
+	{lines}
+	gutter
+	numbered
+	marks={marksStore?.get(passage)}
+	onMarks={(h) => marksStore?.set(passage, h)}
+/>
 
 <!-- The exam's glossary, printed under the text like the paper. -->
 {#if passage.glossary?.length}
@@ -89,14 +63,3 @@
 		{/each}
 	</dl>
 {/if}
-
-<style>
-	.passage-fit {
-		container-type: inline-size;
-	}
-	/* 3.75rem: the roman numeral and line-number gutter. 0.49em: the widest exam lines (~25em for 52 characters).
-	   Never below 12px: past that a line may still wrap. */
-	.passage-fit :global(p[data-line-key]) {
-		font-size: clamp(0.75rem, calc((100cqi - 3.75rem) / (var(--chars) * 0.49)), 1rem);
-	}
-</style>

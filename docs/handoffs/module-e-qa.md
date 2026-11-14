@@ -30,22 +30,23 @@ Downloaded from `meyda.education.gov.il/sheeloney_bagrut/<year>/<month>/HEB/1647
 
 | Part | Student | Teacher |
 |---|---|---|
-| Part I reading lessons | 7 | 6.5 |
-| Practice exams | 6.5 | 5.5 |
+| Part I reading lessons | 8 | 7.5 |
+| Practice exams | 7.5 | 7.5 |
 | Word decks | 8.5 | 8.5 |
-| **Module E overall** | **7** | |
+| **Module E overall** | **8** | |
 
-The biggest open items are the format mismatch between the lessons and the exams, the missing question types, and keyword-only grading of typed answers.
+The biggest open items are keyword-only grading of typed lesson answers and four exam texts of the same genre.
 
 ## Part I - reading lessons
 
-Chain: e-bridge (exam facts) → e-method (method + Library exam-level text) → e-topic → e-topic-q → e-complete → e-glossary-time → e-final.
+Chain: e-bridge (exam facts) → e-method (method + Library exam-level text) → e-topic → e-topic-q → e-complete → e-question-kinds → e-glossary-time → e-final.
 
 Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and its 3 traps (true detail, another paragraph's topic, wrong question word); e-complete's By + ing / to + base verb summary.
 
-- [ ] **App exams ≠ real format.** The lessons' 9 questions (4 MCQs + 5 open) match the real papers. The app exams don't: they have 7 questions, "choose TWO" (14 points) and "Give TWO answers" (16 points). Their e-exam-3 Q1 marks a detail as correct, which clashes with e-topic. Fix the exams, not the lessons.
-- [ ] **Real question kinds never taught:** line references ("Base your answer on lines 14–16", "In line 24, the writer refers to..."), "Give ONE answer" (several are correct, pick one), inference MCQs ("What can we understand about..."), "What do we learn about X from paragraph Y", "What do ... have in common?". The real papers have no true/false or tables, so those wait.
-- [ ] **The lessons say "4 topic questions";** the real 4 MCQs are 1-2 topic questions plus inference / reference / about-X questions. Update the e-bridge summary.
+- [x] App exams match the real format (see Practice exams).
+- [x] Real question kinds taught in e-question-kinds: line references, "refers to", "Give ONE answer", inference, "about X from paragraph Y", "have in common". Its passages have exam-margin line numbers (`lineNumbers` on passage-mcq / passage-quiz).
+- [x] e-bridge and e-topic no longer say the 4 MCQs are all topic questions: Q1 is a topic question, the rest mix topic, inference and line references.
+- [ ] e-final's 4 MCQs are all topic questions; real papers mix in inference and reference.
 - [ ] **Typed answers are graded by keyword only:** "By joined a tour" passes, so the By + ing form is never checked. Wrong keys: Repair Café Q1 needs "free" (rejects "By organising a Repair Café"); Q2 accepts only "waste" (rejects "to teach people to fix things"). The fix exists (Module G uses it): `"e-1": { "llmGrade": true }` in `content/rules.json` sends them to the LLM reading grader against each question's `answerHint`; keywords stay as the fallback and take `a|b` alternatives.
 - [x] Right answer no longer always first: lesson passage-mcq and cloze-pick shuffle their options (shared with mcq).
 - [x] Grading facts taught in e-complete: grammar costs 1-3 points, spelling costs nothing (a summary screen + a "By joinning" question). The final-check line in e-glossary-time names the verb forms.
@@ -61,8 +62,8 @@ Strengths: e-topic's "name the paragraph in 3-4 words, then choose" method and i
 
 Strengths: readable texts; feedback on every option with a quote from the text.
 
-- [ ] **Off-spec format:** 7 questions with 14- and 16-point "TWO" items. Real papers: 9 questions of 7-8 points, 4 MCQs with one answer, all compulsory (the runner's "answer N of these" parts aren't needed here).
-- [ ] No line numbers in the passage, so line-reference questions can't be asked.
+- [x] Real format: 9 compulsory questions, 4 one-answer MCQs (Q1 = paragraph I topic, with a true-detail trap) + 5 open, 7-8 points, 70 in all. No "TWO" items. e-exam-3 Q1 no longer marks a detail as correct.
+- [x] Real question kinds in every exam: line references and "refers to" (the exam passage numbers every 5th line), "Give ONE answer" (grading notes list every accepted answer), inference, "about X", "have in common".
 - [ ] All four texts are the same genre (5-paragraph teens-and-tech argument). The sleep topic in e-topic-q repeats g-exam-3 (melatonin).
 - [ ] Gloss slips: "to run out of" → "שנגמר ל-", "exactly" → "בדיוק!", "behind" → "מפגר"; "an instruction" is defined with the uncountable meaning ("teaching").
 - [x] e-exam-1 vocabulary: all 30 items are now deck words (18 were outside the Ministry lists).

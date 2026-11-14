@@ -619,12 +619,19 @@ export const sentenceCompletionSchema = z
 	})
 	.describe('before ___ after: the student types the blank. Scored: 1 point.');
 
+const lineNumbers = z
+	.boolean()
+	.describe(
+		'Exam-margin line numbers (every 5th) on the roman-marked paragraphs; write each printed line ending with a single \\n, about 50 characters.'
+	);
+
 export const passageQuizSchema = z
 	.strictObject({
 		type: z.literal('passage-quiz'),
 		text: z
 			.string()
 			.describe('Paragraphs may start with a roman numeral and two spaces ("I  For years...").'),
+		lineNumbers: lineNumbers.optional(),
 		questions: z
 			.array(
 				z.strictObject({
@@ -650,6 +657,7 @@ export const passageMcqSchema = z
 		text: z
 			.string()
 			.describe('Paragraphs may start with a roman numeral and two spaces ("I  For years...").'),
+		lineNumbers: lineNumbers.optional(),
 		label: z.string().optional().describe('Shown beside the stopwatch when timerKey is set.'),
 		timerKey: timerKey.optional(),
 		questions: z

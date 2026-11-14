@@ -31,8 +31,8 @@ export const e1Lessons: LessonNode[] = [
           type: "summary",
           title: "9 השאלות",
           lines: [
-            "{d:rtl}בדרך כלל יש 4 שאלות אמריקאיות: **What are we told in paragraph X?**\n{d:rtl}\n{d:rtl}שימו לב שהתשובות הן נושאים, לא פרטים. זה חדש, ויש על זה שיעור משלו.",
-            "{d:rtl}5 שאלות פתוחות בדרך כלל: ממשיכים תשובה שכבר התחילה (By... / Because they want to... / They must...), או כותבים תשובה קצרה.",
+            "{d:rtl}4 אמריקאיות, תשובה אחת מתוך 4. שאלה 1 תמיד: **What are we told in paragraph I?** (נושא, לא פרט). בשאר גם מסקנות והפניות לשורות. לכל סוג יש שיעור.",
+            "{d:rtl}5 פתוחות: ממשיכים תשובה שכבר התחילה (By... / Because they want to...), או כותבים תשובה קצרה.",
           ],
         },
       ],
@@ -308,7 +308,7 @@ export const e1Lessons: LessonNode[] = [
       preface: [
         {
           type: "preface",
-          text: "בבחינה יש 4 שאלות כאלה:\n{p:text}**What are we told in paragraph III?**\n{p:text}**What do we learn in paragraph II?**\n\nכאן מילת מפתח לא תעזור: המילים של כמה אפשרויות מופיעות באותה פסקה.",
+          text: "בבחינה יש 1-2 שאלות כאלה, ושאלה 1 היא תמיד אחת מהן:\n{p:text}**What are we told in paragraph III?**\n{p:text}**What do we learn in paragraph II?**\n\nכאן מילת מפתח לא תעזור: המילים של כמה אפשרויות מופיעות באותה פסקה.",
         },
         {
           type: "preface",
@@ -920,12 +920,329 @@ export const e1Lessons: LessonNode[] = [
     },
   },
   {
+    id: "e-question-kinds",
+    section: "e-1",
+    titleEn: "Lines, References and Inferences",
+    required: ["e-complete"],
+    requiredRounds: 3,
+    position: { x: 0, y: 1150 },
+    big: false,
+    content: {
+      preface: [
+        {
+          type: "preface",
+          text: "{d:rtl}מתוך 4 השאלות האמריקאיות, בדרך כלל רק 1-2 הן שאלות נושא. השאר, וגם חלק מהשאלות הפתוחות, בנויות מניסוחים קבועים.\n\nבשיעור הזה: 6 ניסוחים שחוזרים בכל בחינה, ומה עושים בכל אחד.",
+        },
+        {
+          type: "summary",
+          title: "שאלות על שורות",
+          lines: [
+            "📍 **Base your answer on lines 14-16** ← התשובה נמצאת בשורות האלה, לא במקום אחר",
+            "👉 **In line 24, the writer refers to \"the same goal.\"** ← למה המילים מפנות? כמעט תמיד למשהו שכבר נאמר לפני כן",
+            "🔢 בשוליים מסומנת כל שורה חמישית: 5, 10, 15. שורה 13 = שלוש שורות אחרי 10",
+          ],
+        },
+        {
+          type: "summary",
+          title: "שאלות חשיבה",
+          lines: [
+            "1️⃣ **Give ONE answer** ← יש כמה תשובות נכונות. כותבים אחת",
+            "💭 **What can we understand...?** ← התשובה לא מצוטטת: אותו רעיון, במילים אחרות",
+            "🔍 **What do we learn about X from paragraph III?** ← מחפשים בפסקה את המשפט על X",
+            "🔗 **What do ... have in common?** ← מה שנכון לשני הצדדים, לא רק לאחד",
+          ],
+        },
+      ],
+      rounds: [
+        {
+          screens: [
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}Base your answer on lines 14-16.\n\nאיפה מחפשים את התשובה?",
+              options: [
+                "בשורות 14-16. מותר להציץ במשפט שלפניהן כדי להבין את ההקשר",
+                "בכל הפסקה שהשורות האלה נמצאות בה",
+                "בשורות 14-16 ובפסקה שאחריהן",
+              ],
+              correctIndex: 0,
+              explanation:
+                "השאלה כבר אמרה איפה התשובה. פרט נכון מחוץ לשורות האלה הוא מלכודת: הוא נכון לכתבה, אבל לא עונה על השאלה.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}They then ask a chatbot to solve **the same problem**.\n\nלמה מפנה the same problem?",
+              options: [
+                "לבעיה שהוזכרה במשפט שלפני",
+                "לבעיה שתוזכר בפסקה הבאה",
+                "לנושא של כל הכתבה",
+              ],
+              correctIndex: 0,
+              explanation:
+                "the same, this, it ו-they מפנים כמעט תמיד אחורה. קוראים את המשפט שלפני השורה ומוצאים את מה שהמילים מחליפות.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: "I  At Kallio School in Helsinki, there are no bells.\nLessons begin and end when teachers decide, and\nstudents move between classes when they are ready.\nThe head teacher, Mari Lehto, removed the bells in\n2019. She says they made the school feel like a\nfactory.\n\nII  Not everyone liked this idea at first. Some\nparents worried that students would arrive late,\nand a few teachers missed the clear signal. After a\nyear, however, the number of late students had\nfallen. Students say the corridors are calmer, and\nteachers say lessons no longer stop in the middle\nof a good discussion.",
+              questions: [
+                {
+                  prompt:
+                    'In line 7, the writer refers to "this idea." What is that idea?',
+                  options: [
+                    [
+                      "A school day without bells",
+                      'נכון. this idea מפנה אחורה, לפסקה I: "Mari Lehto, removed the bells".',
+                    ],
+                    [
+                      "Letting students arrive late",
+                      "ההורים חששו שזה יקרה. זה לא הרעיון עצמו.",
+                    ],
+                    [
+                      "Making the school feel like a factory",
+                      "זה מה שהפעמונים עשו לפי המנהלת, לא הרעיון שלה.",
+                    ],
+                    [
+                      "Calmer corridors",
+                      "זו תוצאה מסוף פסקה II, לא הרעיון שהוזכר לפני שורה 7.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "Base your answer on lines 9-11. What happened after a year?",
+                  options: [
+                    [
+                      "Fewer students arrived late",
+                      'נכון. "the number of late students had fallen" = פחות תלמידים מאחרים.',
+                    ],
+                    [
+                      "Parents worried that students would arrive late",
+                      "זה בשורות 7-8, וזה מה שקרה בהתחלה, לא אחרי שנה.",
+                    ],
+                    [
+                      "A few teachers missed the clear signal",
+                      "זה בשורה 9, אבל לפני After a year. קראו את המשפט הנכון בתוך השורות.",
+                    ],
+                    [
+                      "The school brought the bells back",
+                      "זה לא כתוב בכלל.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "preface",
+              text: "תורכם: שאלות חשיבה על אותו קטע. קודם מזהים את סוג השאלה, ואז מחפשים.",
+            },
+            {
+              type: "mcq",
+              prompt:
+                "{p:text}Give ONE reason why...\n\nבטקסט יש 3 סיבות. מה כותבים?",
+              options: [
+                "סיבה אחת, זו שהכי ברור לי שהיא נכונה",
+                "את שלוש הסיבות, ליתר ביטחון",
+                "רק את הסיבה הראשונה בטקסט, אחרת זה לא נחשב",
+              ],
+              correctIndex: 0,
+              explanation:
+                "כל אחת מהסיבות נכונה. תשובה נוספת לא מוסיפה נקודות, ועלולה להכניס טעות.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: "I  At Kallio School in Helsinki, there are no bells.\nLessons begin and end when teachers decide, and\nstudents move between classes when they are ready.\nThe head teacher, Mari Lehto, removed the bells in\n2019. She says they made the school feel like a\nfactory.\n\nII  Not everyone liked this idea at first. Some\nparents worried that students would arrive late,\nand a few teachers missed the clear signal. After a\nyear, however, the number of late students had\nfallen. Students say the corridors are calmer, and\nteachers say lessons no longer stop in the middle\nof a good discussion.",
+              questions: [
+                {
+                  prompt:
+                    "What can we understand about the head teacher from lines 4-6?",
+                  options: [
+                    [
+                      "She did not like the way the bells made the school feel",
+                      'נכון. "like a factory" הוא לא מחמאה: במילים אחרות, הפעמונים יצרו אווירה לא נעימה.',
+                    ],
+                    [
+                      "She thought the bells were too loud",
+                      "הרעש לא מוזכר. זו המצאה שנשמעת הגיונית.",
+                    ],
+                    [
+                      "She used to work in a factory",
+                      "קריאה מילולית מדי. factory הוא דימוי, לא מקום העבודה שלה.",
+                    ],
+                    [
+                      "The students asked her to remove the bells",
+                      "לא כתוב מי ביקש. כתוב רק שהיא הסירה אותם.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt: "What do we learn about the parents from paragraph II?",
+                  options: [
+                    [
+                      "Some of them were worried about the change at first",
+                      'נכון. "Some parents worried that students would arrive late".',
+                    ],
+                    [
+                      "They asked the school to bring the bells back",
+                      "לא כתוב. הם חששו, אבל לא כתוב שביקשו משהו.",
+                    ],
+                    [
+                      "All of them liked the idea",
+                      "סותר: Not everyone liked this idea.",
+                    ],
+                    [
+                      "They thought lessons stopped at bad moments",
+                      "את זה אומרים המורים, בסוף הפסקה.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    "What do the comments of the students and the teachers in lines 11-13 have in common?",
+                  options: [
+                    [
+                      "Both describe a good result of the change",
+                      "נכון. התלמידים: מסדרונות רגועים. המורים: שיעורים לא נקטעים. שניהם טובים.",
+                    ],
+                    [
+                      "Both talk about the corridors",
+                      "רק התלמידים מדברים על המסדרונות. נכון לצד אחד בלבד.",
+                    ],
+                    [
+                      "Both complain about the change",
+                      "ההפך: שניהם מתארים שיפור.",
+                    ],
+                    [
+                      "Both talk about late students",
+                      "האיחורים מוזכרים לפני כן, לא בדברי התלמידים והמורים.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          screens: [
+            {
+              type: "opener",
+              kicker: "סיבוב 3",
+              level: 4,
+              title: "רמת בחינה",
+              subtitle:
+                "כתבה חדשה עם מספרי שורות. בכל שאלה: מה סוג השאלה, ואיפה בדיוק התשובה.",
+            },
+            {
+              type: "passage-mcq",
+              lineNumbers: true,
+              text: '{a:center}**A LIBRARY OF PEOPLE**\n\nI  In most libraries, you borrow a book. At a Human\nLibrary, you borrow a person. Each "book" is a\nvolunteer with a life story, such as a refugee, a\nfirefighter or someone who has lost their sight.\nReaders sit with their "book" for about thirty\nminutes and can ask any question they like.\n\nII  The first Human Library took place in Copenhagen\nin 2000. Its organisers wanted to fight ++prejudice++\nby bringing together people who might never meet in\neveryday life. The idea is simple: it is harder to\njudge a group of people after you have had a real\nconversation with one of them.\n\nIII  Today, Human Library events are held in more than\neighty countries, in schools, festivals and\noffices. Some readers say the conversation changed\nthe way they see others. The "books" also gain\nsomething. Many say that telling their story to a\nstranger who listens carefully makes them feel\nunderstood.\n\n**Glossary**\nprejudice - דעה קדומה / تحيّز',
+              label: "A LIBRARY OF PEOPLE",
+              timerKey: "e-question-kinds-library",
+              questions: [
+                {
+                  prompt: 'In line 12, who does "them" refer to?',
+                  options: [
+                    [
+                      "People in a group that someone might judge",
+                      'נכון. "a group of people ... one of them" = אחד מאנשי הקבוצה.',
+                    ],
+                    [
+                      "The organisers of the first Human Library",
+                      "המארגנים מוזכרים בשורה 8, אבל them בשורה 12 מפנה לקבוצה שבשורה 11.",
+                    ],
+                    [
+                      "Readers who ask questions",
+                      "הקוראים מוזכרים בפסקה I, לא במשפט הזה.",
+                    ],
+                    [
+                      "People in Copenhagen",
+                      "קופנהגן היא רק המקום של האירוע הראשון.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+                {
+                  prompt:
+                    'What do the readers and the "books" in paragraph III have in common?',
+                  options: [
+                    [
+                      "Both gain something from the conversation",
+                      'נכון. הקוראים רואים אחרים אחרת, וה"ספרים" מרגישים מובנים. "The books also gain something" - המילה also מראה שזה נכון לשניהם.',
+                    ],
+                    [
+                      "Both are volunteers",
+                      "רק ה\"ספרים\" הם מתנדבים (פסקה I).",
+                    ],
+                    [
+                      "Both tell their life stories",
+                      "רק ה\"ספרים\" מספרים את הסיפור. הקוראים שואלים ומקשיבים.",
+                    ],
+                    [
+                      "Both organise events in schools",
+                      "לא כתוב מי מארגן את האירועים היום.",
+                    ],
+                  ],
+                  correctIndex: 0,
+                },
+              ],
+            },
+            {
+              type: "passage-quiz",
+              lineNumbers: true,
+              text: '{a:center}**A LIBRARY OF PEOPLE**\n\nI  In most libraries, you borrow a book. At a Human\nLibrary, you borrow a person. Each "book" is a\nvolunteer with a life story, such as a refugee, a\nfirefighter or someone who has lost their sight.\nReaders sit with their "book" for about thirty\nminutes and can ask any question they like.\n\nII  The first Human Library took place in Copenhagen\nin 2000. Its organisers wanted to fight ++prejudice++\nby bringing together people who might never meet in\neveryday life. The idea is simple: it is harder to\njudge a group of people after you have had a real\nconversation with one of them.\n\nIII  Today, Human Library events are held in more than\neighty countries, in schools, festivals and\noffices. Some readers say the conversation changed\nthe way they see others. The "books" also gain\nsomething. Many say that telling their story to a\nstranger who listens carefully makes them feel\nunderstood.\n\n**Glossary**\nprejudice - דעה קדומה / تحيّز',
+              questions: [
+                {
+                  prompt:
+                    'Base your answer on lines 3-4. Who can be a "book"? Give ONE example. ANSWER: ...',
+                  keywords: ["refugee|firefighter|fire|sight|blind"],
+                  answerHint:
+                    "A refugee / a firefighter / someone who has lost their sight (one is enough).",
+                },
+                {
+                  prompt:
+                    "Base your answer on lines 7-10. Why did the organisers start the Human Library? COMPLETE THE ANSWER: Because they wanted to ...",
+                  keywords: ["prejudice|together|meet"],
+                  answerHint:
+                    "Because they wanted to fight prejudice (by bringing people together).",
+                },
+                {
+                  prompt:
+                    'Base your answer on lines 16-19. How do many "books" feel after telling their story? ANSWER: ...',
+                  keywords: ["understood|understand"],
+                  answerHint: "They feel understood.",
+                },
+              ],
+            },
+            {
+              type: "summary",
+              title: "במשפט אחד",
+              lines: [
+                "קודם מזהים את סוג השאלה: שורות? הפניה? מסקנה? משהו משותף? ואז מחפשים רק במקום שהשאלה נותנת.",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: "e-glossary-time",
     section: "e-1",
     titleEn: "Glossary and Time",
-    required: ["e-complete"],
+    required: ["e-question-kinds"],
     requiredRounds: 2,
-    position: { x: 0, y: 1150 },
+    position: { x: -70, y: 1270 },
     big: false,
     content: {
       preface: [
@@ -1069,7 +1386,7 @@ export const e1Lessons: LessonNode[] = [
     titleEn: "Final Practice",
     required: ["e-glossary-time"],
     requiredRounds: 1,
-    position: { x: 0, y: 1270 },
+    position: { x: 0, y: 1390 },
     big: false,
     content: {
       preface: [

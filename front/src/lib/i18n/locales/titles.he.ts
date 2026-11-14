@@ -182,6 +182,7 @@ export const titlesHe: Record<string, string> = {
 	'e-topic': 'על מה הפסקה? נושא ולא פרט',
 	'e-topic-q': 'שאלות נושא - רמת בחינה',
 	'e-complete': 'משלימים את התשובה',
+	'e-question-kinds': 'שורות, הפניות ומסקנות',
 	'e-glossary-time': 'Glossary וניהול זמן',
 	'e-final': 'תרגול מסכם בזמן',
 	'e-exam-1': 'Can AI Make Students Smarter?',
