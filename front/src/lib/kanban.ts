@@ -44,6 +44,13 @@ export const SORTS = {
 	created: { label: 'תאריך יצירה', value: (t) => t.createdAt, desc: true }
 } satisfies Record<string, Sort>;
 
+/** Done tasks untouched this long fold into the column's collapsed archive. */
+export const ARCHIVE_DAYS = 14;
+
+export function isArchived(task: Task, now = Date.now()): boolean {
+	return task.status === 'done' && now - Date.parse(task.updatedAt) >= ARCHIVE_DAYS * 86_400_000;
+}
+
 export type SortKey = keyof typeof SORTS;
 
 export function sortTasks(tasks: Task[], key: SortKey, desc: boolean): Task[] {

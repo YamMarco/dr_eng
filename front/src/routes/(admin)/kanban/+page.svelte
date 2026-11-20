@@ -1,12 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { ArrowDownWideNarrow, ArrowUpNarrowWide, LoaderCircle } from '@lucide/svelte';
+	import {
+		ArrowDownWideNarrow,
+		ArrowUpNarrowWide,
+		ChevronLeft,
+		LoaderCircle
+	} from '@lucide/svelte';
 	import AppBar from '$lib/components/AppBar.svelte';
 	import { apiFetch } from '$lib/api';
 	import {
+		ARCHIVE_DAYS,
 		SORTS,
 		STATUSES,
 		TITLE_MAX,
+		isArchived,
 		sortTasks,
 		statusLabel,
 		type SortKey,
@@ -129,6 +136,20 @@
 	}
 </script>
 
+{#snippet card(task: Task)}
+	<TaskCard
+		{task}
+		tagListId="kanban-tags"
+		onsave={(patch) => save(task.id, patch)}
+		ondelete={() => remove(task)}
+		ondragstart={() => (dragId = task.id)}
+		ondragend={() => {
+			dragId = null;
+			dropStatus = null;
+		}}
+	/>
+{/snippet}
+
 <svelte:head><title>לוח משימות</title></svelte:head>
 
 <AppBar title="לוח משימות" back="/app/settings" />
@@ -225,6 +246,7 @@
 					sort.key,
 					sort.desc
 				)}
+				{@const archived = column.filter((t) => isArchived(t))}
 				<section
 					aria-label={statusLabel[status]}
 					ondragover={(event) => {
@@ -247,21 +269,33 @@
 						{statusLabel[status]}
 						<span class="text-sm font-semibold text-muted">{column.length}</span>
 					</h2>
-					{#each column as task (task.id)}
-						<TaskCard
-							{task}
-							tagListId="kanban-tags"
-							onsave={(patch) => save(task.id, patch)}
-							ondelete={() => remove(task)}
-							ondragstart={() => (dragId = task.id)}
-							ondragend={() => {
-								dragId = null;
-								dropStatus = null;
-							}}
-						/>
+					{#each column.filter((t) => !isArchived(t)) as task (task.id)}
+						{@render card(task)}
 					{:else}
-						<p class="px-1 py-4 text-center text-sm text-muted">אין משימות</p>
+						{#if !archived.length}
+							<p class="px-1 py-4 text-center text-sm text-muted">אין משימות</p>
+						{/if}
 					{/each}
+					{#if archived.length}
+						<details class="group rounded-2xl">
+							<summary
+								class="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-xl px-2 text-sm font-semibold text-muted transition hover:bg-surface/60 [&::-webkit-details-marker]:hidden"
+							>
+								<ChevronLeft
+									size={16}
+									class="transition group-open:-rotate-90"
+									aria-hidden="true"
+								/>
+								ארכיון ({ARCHIVE_DAYS}+ ימים ללא עריכה)
+								<span class="ms-auto tabular-nums">{archived.length}</span>
+							</summary>
+							<div class="mt-3 flex flex-col gap-3">
+								{#each archived as task (task.id)}
+									{@render card(task)}
+								{/each}
+							</div>
+						</details>
+					{/if}
 				</section>
 			{/each}
 		</div>
