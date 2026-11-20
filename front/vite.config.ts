@@ -4,7 +4,7 @@ import adapterAuto from '@sveltejs/adapter-auto';
 import type { KitConfig } from '@sveltejs/kit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
-import { writeLessonMeta } from './scripts/lesson-meta.mjs';
+import { writeContentMeta } from './scripts/lesson-meta.mjs';
 
 // The Svelte inspector's "open in editor" action shells out via
 // `launch-editor`, which tries LAUNCH_EDITOR first, then guesses from the
@@ -48,19 +48,20 @@ function csp(mode: string): KitConfig['csp'] {
 	};
 }
 
-// src/lib/content/meta.generated.ts (the lessons without their screens, for the student shell)
-// is built from the lesson files: at start, and again whenever one of them changes in dev.
+// The student shell's content indexes (lessons, exams, word lists; scripts/lesson-meta.mjs) are
+// built from the content files: at start, and again whenever one of them changes in dev.
 function lessonMeta(): Plugin {
-	const isLessonFile = (file: string) =>
-		/[\\/]src[\\/]lib[\\/]content[\\/][a-z]+[\\/][\w-]+\.ts$/.test(file) &&
-		!/[\\/]content[\\/]e[\\/](list-|words)/.test(file);
+	const isContentFile = (file: string) =>
+		/[\\/]src[\\/]lib[\\/](content[\\/][a-z]+[\\/][\w.-]+|quiz[\\/][a-z]+[\\/]index)\.ts$/.test(
+			file
+		);
 	return {
 		name: 'lesson-meta',
 		async buildStart() {
-			await writeLessonMeta();
+			await writeContentMeta();
 		},
 		async handleHotUpdate({ file }) {
-			if (isLessonFile(file)) await writeLessonMeta(String(Date.now()));
+			if (isContentFile(file)) await writeContentMeta(String(Date.now()));
 		}
 	};
 }

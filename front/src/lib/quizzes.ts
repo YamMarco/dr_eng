@@ -1,9 +1,8 @@
-// The exam list/routing registry - derived from the actual QuizNode content
-// (allQuizNodes) instead of hand-maintained separately, so there's exactly
-// one place (a QuizNode's own id/uuid/kind/year/module fields) that
-// can drift out of sync. Content-edit only ever writes QuizNode files; this
-// module has nothing of its own to save.
-import { allQuizNodes, type QuizKind } from './quiz';
+// The exam list/routing registry for the student shell: every exam without its parts, generated
+// from the QuizNode files (scripts/lesson-meta.mjs), so there's one source and the shell never
+// carries the exams themselves. The exam loads when its page opens (quiz/load.ts).
+import { quizMeta } from './quiz/meta.generated';
+import type { QuizKind } from './quiz/types';
 
 export type { QuizKind };
 
@@ -12,6 +11,8 @@ type QuizBase = {
 	/** Same exam, different format - short id shaped `<module letter>-t-xxxx`, alongside the readable `id` slug. */
 	uuid: string;
 	moduleId: string;
+	/** The exam file it lives in (quiz/load.ts key), e.g. 'c'. */
+	file: string;
 };
 
 export type AssortedQuiz = QuizBase & {
@@ -25,17 +26,7 @@ export type MinistryQuiz = QuizBase & {
 
 export type Quiz = AssortedQuiz | MinistryQuiz;
 
-export const allQuizzes: Quiz[] = allQuizNodes.map((q) =>
-	q.kind === 'ministry'
-		? {
-				id: q.id,
-				uuid: q.uuid,
-				moduleId: q.module,
-				kind: 'ministry',
-				year: q.year ?? 0
-			}
-		: { id: q.id, uuid: q.uuid, moduleId: q.module, kind: 'assorted' }
-);
+export const allQuizzes: Quiz[] = quizMeta;
 
 export const assortedQuizzes: AssortedQuiz[] = allQuizzes.filter(
 	(q): q is AssortedQuiz => q.kind === 'assorted'

@@ -53,18 +53,18 @@ class DeckProgressStore {
 	/** Moves progress saved under an old key (a module) to every deck holding
 	 *  the word, without overwriting newer state. Runs again whenever synced
 	 *  data arrives, since an older device may still send the old key. */
-	migrate(oldKey: string, decks: { id: string; words: { id: string }[] }[]) {
+	migrate(oldKey: string, decks: { id: string; wordIds: string[] }[]) {
 		const run = () => {
 			const old = this.map[oldKey];
 			if (!old) return;
 			const map = { ...this.map };
 			delete map[oldKey];
 			for (const deck of decks) {
-				const moved = deck.words.filter((w) => old[w.id] && !map[deck.id]?.[w.id]);
+				const moved = deck.wordIds.filter((id) => old[id] && !map[deck.id]?.[id]);
 				if (moved.length)
 					map[deck.id] = {
 						...map[deck.id],
-						...Object.fromEntries(moved.map((w) => [w.id, old[w.id]]))
+						...Object.fromEntries(moved.map((id) => [id, old[id]]))
 					};
 			}
 			this.map = map;

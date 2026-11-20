@@ -1,10 +1,16 @@
-// The student shell reads generated lesson metadata and loads lesson content per file: all three
-// lists of lesson files (generator, loader map, content index) must agree, and the metadata
-// must match what the lesson files say.
+// The student shell reads generated indexes (lessons, exams, word lists) and loads the content
+// on entry: the generator's file lists must match the loader maps, and no content leaks in.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buildLessonMeta, SECTION_FILES } from '../scripts/lesson-meta.mjs';
+import {
+	buildDeckMeta,
+	buildLessonMeta,
+	buildQuizMeta,
+	DECK_FILES,
+	QUIZ_FILES,
+	SECTION_FILES
+} from '../scripts/lesson-meta.mjs';
 
 const read = (path: string) => readFileSync(new URL(path, import.meta.url), 'utf8');
 
@@ -40,5 +46,44 @@ test('the 5-point version has the same round count (the metadata holds one numbe
 		for (const l of mod[name])
 			if (l.content5)
 				assert.equal(l.content5.rounds.length, l.content.rounds.length, `${l.id}: rounds differ`);
+	}
+});
+
+/** The keys of a loader map: the `name: () =>` lines of its first object literal. */
+const loaderKeys = (path: string, name: string) => {
+	const text = read(path);
+	const block = text.slice(
+		text.indexOf(`${name}:`),
+		text.indexOf('\n};', text.indexOf(`${name}:`))
+	);
+	return [...block.matchAll(/^\t'?([\w/-]+)'?: \(\) =>/gm)].map((m) => m[1]).sort();
+};
+
+test('exams: the loader map and the generator list the same files; no parts in the index', async () => {
+	assert.deepEqual(
+		loaderKeys('../src/lib/quiz/load.ts', 'QUIZ_FILES'),
+		QUIZ_FILES.map((e) => e[0]).sort()
+	);
+	const meta = await buildQuizMeta();
+	assert.equal(
+		new Set(meta.map((q: { id: string }) => q.id)).size,
+		meta.length,
+		'duplicate exam ids'
+	);
+	assert.ok(meta.length > 0);
+	for (const q of meta) assert.equal('parts' in q, false);
+	assert.ok(JSON.stringify(meta).length < 10_000, 'exam index grew too large');
+});
+
+test('word lists: the loader map and the generator list the same decks; ids only in the index', async () => {
+	assert.deepEqual(
+		loaderKeys('../src/lib/deck/load.ts', 'DECK_FILES'),
+		DECK_FILES.map((d) => d[1]).sort()
+	);
+	const decks = Object.values(await buildDeckMeta()).flat();
+	assert.equal(decks.length, DECK_FILES.length);
+	for (const d of decks as { wordIds: unknown[] }[]) {
+		assert.ok(d.wordIds.length > 0);
+		for (const id of d.wordIds) assert.equal(typeof id, 'string');
 	}
 });

@@ -10,14 +10,8 @@
 	import { deckProgress } from '$lib/deck/deckProgress.svelte';
 	import { dayKey } from '$lib/deck/scheduler';
 	import { buildSession, EXAM_BOX, wordResults, type DeckSession } from '$lib/deck/session';
-	import {
-		deckStats,
-		deckToday,
-		dueToday,
-		localizeDeck,
-		nextMilestone,
-		type Deck
-	} from '$lib/deck';
+	import { deckStats, deckToday, dueToday, nextMilestone, type DeckWithWords } from '$lib/deck';
+	import { localizeDeck } from '$lib/deck/load';
 	import { lastEngagement } from '$lib/lastEngagement.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { MOBILE_BUILD } from '$lib/platform';
@@ -49,24 +43,29 @@
 			lists[0]
 	);
 
-	let session = $state<{ deck: Deck; built: DeckSession } | null>(null);
+	let session = $state<{ deck: DeckWithWords; built: DeckSession } | null>(null);
 	// Answers per screen index, filled by the runner as each screen is left.
 	let results: Record<number, boolean[]> = {};
 
-	function start(deck: Deck) {
+	function start(deck: DeckWithWords) {
 		results = {};
 		const t = i18n.dict.deck;
 		const progress = deckProgress.get(deck.id);
 		const { reviews, fresh } = deckToday(deck);
-		const built = buildSession(localizeDeck(mod.id, deck.words, i18n.language), progress, today, {
-			// Nothing left today: practice the soonest-due words anyway.
-			extra: !(reviews + fresh),
-			prompts: {
-				meaning: t.promptMeaning,
-				context: t.promptContext,
-				definition: t.promptDefinition
+		const built = buildSession(
+			localizeDeck(deck.words, data.glosses, i18n.language),
+			progress,
+			today,
+			{
+				// Nothing left today: practice the soonest-due words anyway.
+				extra: !(reviews + fresh),
+				prompts: {
+					meaning: t.promptMeaning,
+					context: t.promptContext,
+					definition: t.promptDefinition
+				}
 			}
-		});
+		);
 		session = { deck, built };
 		lastEngagement.record({ kind: 'words', moduleId: mod.id });
 	}
@@ -78,7 +77,7 @@
 		session = null;
 	}
 
-	function listTitle(deck: Deck): string {
+	function listTitle(deck: DeckWithWords): string {
 		return t.listTitle(deck.letter);
 	}
 </script>

@@ -6,7 +6,6 @@
 	import StatTile from '$lib/components/StatTile.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import { getQuizNode } from '$lib/quiz';
 	import { localizeContent } from '$lib/content/localize.svelte';
 	import { getLastAttempt, retakeLockedUntil } from '$lib/quiz/progress';
 	import { examRow } from '$lib/quiz/stats';
@@ -20,10 +19,7 @@
 	let quiz = $derived(data.quiz);
 	let examBase = $derived(`/app/unit/${data.group.id}/module/${data.mod.id}/exam`);
 	// Played / shown in the UI language (the editor keeps the authored Hebrew).
-	let quizNode = $derived.by(() => {
-		const node = getQuizNode(quiz.id);
-		return node && localizeContent(node, i18n.language);
-	});
+	let quizNode = $derived(localizeContent(data.node, i18n.language));
 	let running = $state(false);
 	let viewingSolution = $state(false);
 	let t = $derived(i18n.dict.quizzes);

@@ -1,50 +1,29 @@
 // Word decks by module. A module listed here gets a "words" page and a
 // dashboard link (see routes/app/unit/[unitId]/module/[moduleId]/words).
 // Module E has one deck per Ministry list (Band III Core I, A-D); all four are tested.
-import { listA } from '$lib/content/e/list-a';
-import { listB } from '$lib/content/e/list-b';
-import { listC } from '$lib/content/e/list-c';
-import { listD } from '$lib/content/e/list-d';
-import { eGlossAr } from '$lib/content/e/words.ar';
-import type { Language } from '$lib/i18n/index.svelte';
+// The shell holds only each list's word ids (generated, scripts/lesson-meta.mjs); the words
+// themselves load on the words page (load.ts).
 import { deckProgress } from './deckProgress.svelte';
+import { deckMeta } from './meta.generated';
 import { dayKey, dueWords } from './scheduler';
 import { MAX_REVIEWS, NEW_PER_SESSION } from './session';
 import type { DeckWord } from './types';
 
-/** One list: `id` is its progress key, `letter` labels it. */
+/** One list: `id` is its progress key, `letter` labels it, `wordIds` its words' ids. */
 export type Deck = {
 	id: string;
 	letter: string;
-	words: DeckWord[];
+	wordIds: string[];
 };
 
-export const decks: Record<string, Deck[]> = {
-	e: [
-		{ id: 'e-a', letter: '1', words: listA },
-		{ id: 'e-b', letter: '2', words: listB },
-		{ id: 'e-c', letter: '3', words: listC },
-		{ id: 'e-d', letter: '4', words: listD }
-	]
-};
+/** A list with its words (loaded, see load.ts). */
+export type DeckWithWords = Deck & { words: DeckWord[] };
 
 // Progress saved before the split was keyed by module; each word joins every list it is in.
-deckProgress.migrate('e', decks.e);
+deckProgress.migrate('e', deckMeta.e);
 
 export function getDecks(moduleId: string): Deck[] | undefined {
-	return decks[moduleId];
-}
-
-/** Each module's meanings in other UI languages, by word id (Hebrew is `he` itself). */
-const glosses: Record<string, Partial<Record<Language, Record<string, string>>>> = {
-	e: { ar: eGlossAr }
-};
-
-/** The words with `he` holding the meaning in the UI language (falls back to
- *  Hebrew per word), so the session builder stays language-agnostic. */
-export function localizeDeck(moduleId: string, words: DeckWord[], language: Language): DeckWord[] {
-	const table = glosses[moduleId]?.[language];
-	return table ? words.map((w) => ({ ...w, he: table[w.id] ?? w.he })) : words;
+	return deckMeta[moduleId];
 }
 
 /** Today's session size for one list: reviews first, new words only while
@@ -52,7 +31,7 @@ export function localizeDeck(moduleId: string, words: DeckWord[], language: Lang
 export function deckToday(deck: Deck): { reviews: number; fresh: number } {
 	const progress = deckProgress.get(deck.id);
 	const due = dueWords(progress, dayKey(new Date())).length;
-	const unseen = deck.words.filter((w) => !progress[w.id]).length;
+	const unseen = deck.wordIds.filter((id) => !progress[id]).length;
 	return {
 		reviews: Math.min(due, MAX_REVIEWS),
 		fresh: due >= MAX_REVIEWS ? 0 : Math.min(NEW_PER_SESSION, unseen)
@@ -73,9 +52,9 @@ export function nextMilestone(n: number): number {
 export function deckStats(deck: Deck): { seen: number; won: number; total: number } {
 	const progress = deckProgress.get(deck.id);
 	return {
-		seen: deck.words.filter((w) => progress[w.id]).length,
-		won: deck.words.filter((w) => (progress[w.id]?.box ?? 0) >= WON_BOX).length,
-		total: deck.words.length
+		seen: deck.wordIds.filter((id) => progress[id]).length,
+		won: deck.wordIds.filter((id) => (progress[id]?.box ?? 0) >= WON_BOX).length,
+		total: deck.wordIds.length
 	};
 }
 

@@ -32,3 +32,5 @@ admin-users.local.txt
 /test-results
 /playwright-report
 src/lib/content/meta.generated.ts
+src/lib/quiz/meta.generated.ts
+src/lib/deck/meta.generated.ts
