@@ -277,7 +277,7 @@
 						{/if}
 					{/each}
 					{#if archived.length}
-						<details class="group rounded-2xl">
+						<details class="group mt-auto rounded-2xl">
 							<summary
 								class="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-xl px-2 text-sm font-semibold text-muted transition hover:bg-surface/60 [&::-webkit-details-marker]:hidden"
 							>
