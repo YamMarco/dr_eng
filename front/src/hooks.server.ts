@@ -11,7 +11,7 @@ const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
 // Student APIs are open to the mobile build's webview origins.
 const APP_ORIGINS = new Set(['https://localhost']);
 // Authoring and staff-board APIs: staff only, same-origin.
-const ADMIN_APIS = /^\/api\/(content-edit|kanban|finance)(\/|$)/;
+const ADMIN_APIS = /^\/api\/(content-edit|kanban|finance|dashboard)(\/|$)/;
 // Open to anyone, by name: the home page waitlist form, and the hourly crons
 // (no user; they check CRON_SECRET themselves).
 const PUBLIC_APIS = new Set(['/api/waitlist', '/api/cron/reminders', '/api/cron/lessons']);
