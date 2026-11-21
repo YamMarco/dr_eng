@@ -83,6 +83,9 @@
 
 	$effect(() => {
 		let gone = false;
+		// A fresh widget (the form remounted on a face change) starts unsolved, whatever
+		// the parent's bound status still says from the old one.
+		status = 'pending';
 		load()
 			.then((ts) => {
 				if (gone) return;

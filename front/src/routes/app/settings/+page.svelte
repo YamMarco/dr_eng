@@ -245,6 +245,16 @@
 					</li>
 					<li>
 						<a
+							href={resolve('/dashboard')}
+							data-sveltekit-preload-data="off"
+							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
+						>
+							{i18n.dict.nav.dashboard}
+							<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
+						</a>
+					</li>
+					<li>
+						<a
 							href={resolve('/kanban')}
 							data-sveltekit-preload-data="off"
 							class="flex items-center justify-between gap-4 px-5 py-4 font-semibold transition hover:bg-brand-soft"
