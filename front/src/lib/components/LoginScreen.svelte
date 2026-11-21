@@ -147,12 +147,16 @@
 	}
 
 	async function run(action: (token?: string) => Promise<void>, onDone?: () => void) {
+		// A second tap or an autofill auto-submit while one is in flight.
+		if (busy) return;
 		busy = true;
 		failed = null;
 		fix = null;
 		resent = false;
-		// The widget usually solves itself within a moment; a tap meanwhile waits for it.
-		const token = needsCaptcha ? await captcha?.getToken(4000) : undefined;
+		// The widget usually solves itself within a moment; a submit meanwhile (e.g. right
+		// after the browser autofills) waits for it and then goes on by itself. Long enough
+		// for a challenge that needs a click.
+		const token = needsCaptcha ? await captcha?.getToken(20000) : undefined;
 		// Still unsolved (e.g. a challenge waiting for a click): don't spend an attempt on a doomed request.
 		if (needsCaptcha && !token && captchaStatus === 'pending') {
 			failed = t.errors.captchaPending;
@@ -196,6 +200,10 @@
 
 	function submit(event: SubmitEvent) {
 		event.preventDefault();
+		// Some browsers autofill without firing input events, so the bound state can lag.
+		const data = new FormData(event.currentTarget as HTMLFormElement);
+		email = (data.get('email') as string | null) ?? email;
+		password = (data.get('password') as string | null) ?? password;
 		const address = email.trim();
 		if (mode === 'signin') return run((token) => auth.signIn(address, password, token));
 		if (mode === 'signup')
@@ -336,6 +344,7 @@
 										type="email"
 										dir="ltr"
 										required
+										name="email"
 										autocomplete="email"
 										bind:value={email}
 										oninput={() => (emailHint = null)}
@@ -385,6 +394,7 @@
 									type="password"
 									dir="ltr"
 									required
+									name="password"
 									minlength={mode === 'signin' ? undefined : 8}
 									autocomplete={mode === 'signin' ? 'current-password' : 'new-password'}
 									bind:value={password}
