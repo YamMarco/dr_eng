@@ -625,8 +625,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/speech.ts": {
-    "mtime": 1795251874.313709,
-    "ast_hash": "6b9c45a6b05c34031304ac0c5ea0b68d",
+    "mtime": 1795253000.0980988,
+    "ast_hash": "82c8dfd05c115809ec000b8600f39f95",
     "semantic_hash": ""
   },
   "front/src/lib/quizzes.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795252242.8206563,
-    "ast_hash": "86f0e0da82464e32a28faacc72787326",
+    "mtime": 1795253000.9534738,
+    "ast_hash": "0319769d31a1681a67fdcf63ee480e9d",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2900,8 +2900,8 @@
     "semantic_hash": ""
   },
   "front/scripts/vocab-audio.py": {
-    "mtime": 1795251986.120623,
-    "ast_hash": "9152987834bf4bc1c2c3919f339f64e4",
+    "mtime": 1795252996.7763703,
+    "ast_hash": "9da1fe540d6235d3efb594b5daba4120",
     "semantic_hash": ""
   },
   "front/scripts/vocab-words.mjs": {
@@ -2915,8 +2915,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/vocabAudio.ts": {
-    "mtime": 1795251863.7586765,
-    "ast_hash": "58e6356b0a3dc2d0792cf3b776a6962f",
+    "mtime": 1795252998.4632106,
+    "ast_hash": "ff2caadf10ae90a4d0e771b0515ba909",
     "semantic_hash": ""
   },
   "front/src/lib/voicePref.svelte.ts": {

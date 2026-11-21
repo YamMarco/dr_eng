@@ -666,8 +666,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec",
-      "community": 214,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "smoke.spec.ts"
     },
     {
@@ -677,8 +677,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_site",
-      "community": 214,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "site"
     },
     {
@@ -688,8 +688,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_app",
-      "community": 214,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "app"
     },
     {
@@ -700,8 +700,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_e2e_smoke_spec_focuswalk",
-      "community": 214,
-      "community_name": "smoke.spec.ts",
+      "community": 116,
+      "community_name": "fixtures.ts",
       "norm_label": "focuswalk()"
     },
     {
@@ -1063,8 +1063,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_package_devdependencies_eslint_js",
-      "community": 179,
-      "community_name": "@eslint/js",
+      "community": 78,
+      "community_name": "devDependencies",
       "norm_label": "@eslint/js"
     },
     {
@@ -1074,8 +1074,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "eslint_js",
-      "community": 179,
-      "community_name": "@eslint/js",
+      "community": 78,
+      "community_name": "devDependencies",
       "norm_label": "@eslint/js"
     },
     {
@@ -1195,8 +1195,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "front_package_devdependencies_tailwindcss_forms",
-      "community": 78,
-      "community_name": "devDependencies",
+      "community": 44,
+      "community_name": "@tailwindcss/forms",
       "norm_label": "@tailwindcss/forms"
     },
     {
@@ -1206,8 +1206,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "tailwindcss_forms",
-      "community": 78,
-      "community_name": "devDependencies",
+      "community": 44,
+      "community_name": "@tailwindcss/forms",
       "norm_label": "@tailwindcss/forms"
     },
     {
@@ -2277,7 +2277,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "front/scripts/vocab-audio.py",
-      "source_location": "L28",
+      "source_location": "L27",
       "_callable": true,
       "_origin": "ast",
       "id": "front_scripts_vocab_audio_main",
@@ -3973,8 +3973,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_debugtooltip",
-      "community": 148,
-      "community_name": "auth.svelte.ts",
+      "community": 110,
+      "community_name": "storeItem",
       "norm_label": "debugtooltip.svelte"
     },
     {
@@ -3984,8 +3984,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_components_feedbackbutton",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "feedbackbutton.svelte"
     },
     {
@@ -6513,8 +6513,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_editstore_svelte_editstore_available",
-      "community": 104,
-      "community_name": "progressSync.svelte.ts",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": ".available()"
     },
     {
@@ -9528,7 +9528,7 @@
       "_origin": "ast",
       "id": "front_src_lib_dashboard_livelessoncard_addtocalendar",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "addtocalendar()"
     },
     {
@@ -12048,8 +12048,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_examref",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "examref"
     },
     {
@@ -12087,8 +12087,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_partverdict",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "partverdict"
     },
     {
@@ -14782,8 +14782,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_markalltokens",
-      "community": 65,
-      "community_name": "validate.ts",
+      "community": 173,
+      "community_name": "markAllColors.ts",
       "norm_label": "markalltokens.ts"
     },
     {
@@ -14795,8 +14795,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_markalltokens_markallsegment",
-      "community": 65,
-      "community_name": "validate.ts",
+      "community": 173,
+      "community_name": "markAllColors.ts",
       "norm_label": "markallsegment"
     },
     {
@@ -14819,8 +14819,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_markalltokens_markalltokenspans",
-      "community": 65,
-      "community_name": "validate.ts",
+      "community": 173,
+      "community_name": "markAllColors.ts",
       "norm_label": "markalltokenspans()"
     },
     {
@@ -17141,7 +17141,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "livelesson.ts"
     },
     {
@@ -17166,8 +17166,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_livelesson_lessonrecording",
-      "community": 132,
-      "community_name": "zoom.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "lessonrecording"
     },
     {
@@ -17180,7 +17180,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_lessonsinfo",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "lessonsinfo"
     },
     {
@@ -17191,7 +17191,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_name_min",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "name_min"
     },
     {
@@ -17202,7 +17202,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_name_max",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "name_max"
     },
     {
@@ -17213,7 +17213,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_name_pattern",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "name_pattern"
     },
     {
@@ -17225,7 +17225,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_startof",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "startof()"
     },
     {
@@ -17237,7 +17237,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_endof",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "endof()"
     },
     {
@@ -17249,7 +17249,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_joinopen",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "joinopen()"
     },
     {
@@ -17261,7 +17261,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_nextslot",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "nextslot()"
     },
     {
@@ -17273,7 +17273,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_daykey",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "daykey()"
     },
     {
@@ -17285,7 +17285,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_lessonwhen",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "lessonwhen()"
     },
     {
@@ -17297,7 +17297,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_icslocal",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "icslocal()"
     },
     {
@@ -17309,7 +17309,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_icstext",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "icstext()"
     },
     {
@@ -17321,7 +17321,7 @@
       "_origin": "ast",
       "id": "front_src_lib_livelesson_lessoncalendar",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "lessoncalendar()"
     },
     {
@@ -19618,8 +19618,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_retake_examlocked",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "examlocked()"
     },
     {
@@ -20497,8 +20497,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_screencontext_svelte",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "screencontext.svelte.ts"
     },
     {
@@ -20508,8 +20508,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "front_src_lib_screencontext_svelte_screencontext",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "screencontext"
     },
     {
@@ -20519,8 +20519,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_screenshot",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "screenshot.ts"
     },
     {
@@ -20531,8 +20531,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_overlay",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "overlay()"
     },
     {
@@ -20543,8 +20543,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_screenshot_capturescreen",
-      "community": 54,
-      "community_name": "app/+layout.svelte",
+      "community": 148,
+      "community_name": "auth.svelte.ts",
       "norm_label": "capturescreen()"
     },
     {
@@ -20927,8 +20927,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_cron",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "cron.ts"
     },
     {
@@ -20939,8 +20939,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_cron_cronauthorized",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "cronauthorized()"
     },
     {
@@ -20994,8 +20994,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "front_src_lib_server_db_schema_orders",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "orders"
     },
     {
@@ -21005,8 +21005,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "front_src_lib_server_db_schema_israeltoday",
-      "community": 45,
-      "community_name": "llmGuard.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "israeltoday"
     },
     {
@@ -21093,8 +21093,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_examlock",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "examlock.ts"
     },
     {
@@ -21105,8 +21105,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_examlock_exempt",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "exempt()"
     },
     {
@@ -21117,8 +21117,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_examlock_openattempt",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "openattempt()"
     },
     {
@@ -21129,8 +21129,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_examlock_saveattempt",
-      "community": 44,
-      "community_name": "examLock.ts",
+      "community": 219,
+      "community_name": "db/schema.ts",
       "norm_label": "saveattempt()"
     },
     {
@@ -22201,8 +22201,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "front_src_lib_server_zoom_zoomenabled",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "zoomenabled"
     },
     {
@@ -22568,7 +22568,7 @@
       "label": "speechSupported()",
       "file_type": "code",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L12",
+      "source_location": "L15",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_speech_speechsupported",
@@ -22580,7 +22580,7 @@
       "label": "speak()",
       "file_type": "code",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L17",
+      "source_location": "L20",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_speech_speak",
@@ -22592,7 +22592,7 @@
       "label": "speakWord()",
       "file_type": "code",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L27",
+      "source_location": "L30",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_speech_speakword",
@@ -22604,7 +22604,7 @@
       "label": "say()",
       "file_type": "code",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L45",
+      "source_location": "L50",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_speech_say",
@@ -22616,7 +22616,7 @@
       "label": "hush()",
       "file_type": "code",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L73",
+      "source_location": "L78",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_speech_hush",
@@ -23714,8 +23714,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_layout",
-      "community": 148,
-      "community_name": "auth.svelte.ts",
+      "community": 110,
+      "community_name": "storeItem",
       "norm_label": "routes/+layout.svelte"
     },
     {
@@ -23725,8 +23725,8 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "heebo",
-      "community": 148,
-      "community_name": "auth.svelte.ts",
+      "community": 110,
+      "community_name": "storeItem",
       "norm_label": "@fontsource-variable/heebo"
     },
     {
@@ -24120,8 +24120,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_cron_lessons_server",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "cron/lessons/+server.ts"
     },
     {
@@ -24132,8 +24132,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_cron_lessons_server_get",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 132,
+      "community_name": "zoom.ts",
       "norm_label": "get()"
     },
     {
@@ -24556,8 +24556,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "api/lessons/+server.ts"
     },
     {
@@ -24567,8 +24567,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server_namebody",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "namebody"
     },
     {
@@ -24579,8 +24579,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server_entitled",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "entitled()"
     },
     {
@@ -24591,8 +24591,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server_info",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "info()"
     },
     {
@@ -24603,8 +24603,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server_get",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "get()"
     },
     {
@@ -24615,8 +24615,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_lessons_server_post",
-      "community": 219,
-      "community_name": "db/schema.ts",
+      "community": 42,
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "post()"
     },
     {
@@ -26376,7 +26376,7 @@
       "_origin": "ast",
       "id": "front_tests_live_lesson_test",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "live-lesson.test.ts"
     },
     {
@@ -26387,7 +26387,7 @@
       "_origin": "ast",
       "id": "front_tests_live_lesson_test_slot",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "slot"
     },
     {
@@ -26399,7 +26399,7 @@
       "_origin": "ast",
       "id": "front_tests_live_lesson_test_at",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "at()"
     },
     {
@@ -26410,7 +26410,7 @@
       "_origin": "ast",
       "id": "front_tests_live_lesson_test_words",
       "community": 42,
-      "community_name": "liveLesson.ts",
+      "community_name": "api/lessons/+server.ts",
       "norm_label": "words"
     },
     {
@@ -33723,7 +33723,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/scripts/vocab-audio.py",
-      "source_location": "L28",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_scripts_vocab_audio",
@@ -82792,7 +82792,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L73",
+      "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech",
@@ -82814,7 +82814,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L45",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech",
@@ -82825,7 +82825,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L17",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech",
@@ -82836,7 +82836,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L27",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech",
@@ -82847,7 +82847,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech",
@@ -82940,7 +82940,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L78",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_hush",
@@ -82952,7 +82952,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L46",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_say",
@@ -82964,7 +82964,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L68",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_say",
@@ -82976,7 +82976,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L30",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_speakword",
@@ -82988,7 +82988,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L28",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_speakword",
@@ -83001,7 +83001,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_speakword",
@@ -83012,7 +83012,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L58",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_say",
@@ -83025,7 +83025,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front/src/lib/speech.ts",
-      "source_location": "L47",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_speech_say",
@@ -90663,5 +90663,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1441d6d833fb47be61eda9b1bd9017662ae959f6"
+  "built_at_commit": "5d998b999f124f0e0cf57d47bed864e59455b767"
 }

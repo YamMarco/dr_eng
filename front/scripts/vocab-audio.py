@@ -3,9 +3,9 @@
 # dependencies = ["kokoro-onnx==0.4.9", "soundfile>=0.13"]
 # ///
 """Records every vocab word (scripts/vocab-words.mjs) with Kokoro, offline, in
-both voices (src/lib/vocabAudio.ts VOICES), at normal and slow speed, as MP3:
-<out>/<voice>/<key>.mp3 and <key>.slow.mp3. Files already in <out> are skipped,
-so a re-run only records new words. Then upload with scripts/upload-vocab-audio.mjs.
+both voices (src/lib/vocabAudio.ts VOICES), as MP3: <out>/<voice>/<key>.mp3 (the
+app slows it down itself). Files already in <out> are skipped, so a re-run only
+records new words. Then upload with scripts/upload-vocab-audio.mjs.
 
 The engine stays on this PC; only the MP3s ship. Model files (kokoro-v1.0.onnx,
 voices-v1.0.bin) come from github.com/thewh1teagle/kokoro-onnx/releases.
@@ -22,7 +22,6 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 VOICES = ["bf_emma", "bm_george"]  # keep in step with VOICES in src/lib/vocabAudio.ts
-SPEEDS = {"": 1.0, ".slow": 0.7}  # file suffix -> Kokoro speed
 
 
 def main() -> None:
@@ -46,14 +45,16 @@ def main() -> None:
     for voice in VOICES:
         (out / voice).mkdir(parents=True, exist_ok=True)
         for w in words:
-            for suffix, speed in SPEEDS.items():
-                path = out / voice / f"{w['key']}{suffix}.mp3"
-                if path.exists():
-                    skipped += 1
-                    continue
-                samples, rate = kokoro.create(w["text"], voice=voice, speed=speed, lang="en-gb")
-                sf.write(path, samples, rate, format="MP3")
-                made += 1
+            path = out / voice / f"{w['key']}.mp3"
+            if path.exists():
+                skipped += 1
+                continue
+            samples, rate = kokoro.create(w["text"], voice=voice, lang="en-gb")
+            # Write to a temp name first, so a stopped run never leaves a half file behind.
+            tmp = path.with_suffix(".part")
+            sf.write(tmp, samples, rate, format="MP3")
+            tmp.replace(path)
+            made += 1
         print(f"{voice}: done", flush=True)
     print(f"recorded {made}, already there {skipped}")
 

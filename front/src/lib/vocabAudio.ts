@@ -1,6 +1,6 @@
 // Recorded vocab words (Kokoro, generated offline by scripts/vocab-audio.py) live
-// in the public `vocab-audio` Supabase Storage bucket: <voice>/<key>.mp3 and
-// <voice>/<key>.slow.mp3. The key comes from the word itself, so content needs
+// in the public `vocab-audio` Supabase Storage bucket: <voice>/<key>.mp3 (slow
+// = the same file played slower). The key comes from the word itself, so content needs
 // no audio field; a word without a recording falls back to the browser voice.
 import { speechText } from './speechText.ts';
 
@@ -17,8 +17,8 @@ export function vocabAudioKey(word: string): string {
 
 const BASE = `${import.meta.env?.VITE_SUPABASE_URL ?? ''}/storage/v1/object/public/vocab-audio/`;
 
-export function vocabAudioUrl(word: string, gender: VoiceGender, slow: boolean): string | null {
+export function vocabAudioUrl(word: string, gender: VoiceGender): string | null {
 	const key = vocabAudioKey(word);
 	if (!key || !import.meta.env?.VITE_SUPABASE_URL) return null;
-	return `${BASE}${VOICES[gender]}/${key}${slow ? '.slow' : ''}.mp3`;
+	return `${BASE}${VOICES[gender]}/${key}.mp3`;
 }

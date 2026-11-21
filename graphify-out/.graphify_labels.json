@@ -41,9 +41,9 @@
   "39": "plans.ts",
   "40": "checkAuth",
   "41": "checks/index.ts",
-  "42": "liveLesson.ts",
+  "42": "api/lessons/+server.ts",
   "43": "LessonScreen",
-  "44": "examLock.ts",
+  "44": "@tailwindcss/forms",
   "45": "llmGuard.ts",
   "46": "1. Reading comprehension (grade-reading)",
   "47": "writingLint.ts",
@@ -172,7 +172,6 @@
   "176": "ocr.md",
   "177": "Module G QA report",
   "178": "boot.js",
-  "179": "@eslint/js",
   "180": "[unitId]/+page.ts",
   "181": "quote/+server.ts",
   "182": "apiFetch",
@@ -193,7 +192,6 @@
   "208": "sectionThemes.ts",
   "212": "grade-essay.md",
   "213": "grade-short.md",
-  "214": "smoke.spec.ts",
   "216": "grade-reading.md",
   "219": "db/schema.ts"
 }

@@ -9,6 +9,9 @@ export { speechText };
 
 export const RATE = { normal: 1, slow: 0.4 } as const;
 
+/** A recording's slow speed: stretched in the browser, pitch kept (slower smears it). */
+const RECORDING_SLOW = 0.75;
+
 export function speechSupported(): boolean {
 	return typeof window !== 'undefined' && 'speechSynthesis' in window;
 }
@@ -26,11 +29,13 @@ let player: HTMLAudioElement | undefined;
  */
 export function speakWord(word: string, rate: number) {
 	hush();
-	const url = vocabAudioUrl(word, voicePref.gender, rate === RATE.slow);
+	const url = vocabAudioUrl(word, voicePref.gender);
 	if (!url || typeof Audio === 'undefined') return speak(word, rate);
 	player ??= new Audio();
 	const audio = player;
 	audio.src = url;
+	audio.preservesPitch = true;
+	audio.playbackRate = rate === RATE.slow ? RECORDING_SLOW : 1;
 	// A missing file (404), a network error or a blocked autoplay: the browser voice instead.
 	const fallback = () => {
 		if (audio.src === url) speak(word, rate);
