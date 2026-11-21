@@ -2,61 +2,34 @@
 # requires-python = ">=3.10"
 # dependencies = ["kokoro-onnx==0.4.9", "soundfile>=0.13"]
 # ///
-"""Records every vocab word (scripts/vocab-words.mjs) with Kokoro, offline, in
-both voices (src/lib/vocabAudio.ts VOICES), as MP3: <out>/<voice>/<key>.mp3 (the
-app slows it down itself). Files already in <out> are skipped, so a re-run only
-records new words. Then upload with scripts/upload-vocab-audio.mjs.
+"""Records vocab words with Kokoro, offline, as MP3: <out>/<voice>/<key>.mp3.
+Run by scripts/vocab-audio.mjs, which picks the words missing from the bucket.
 
-The engine stays on this PC; only the MP3s ship. Model files (kokoro-v1.0.onnx,
-voices-v1.0.bin) come from github.com/thewh1teagle/kokoro-onnx/releases.
+  uv run scripts/vocab-audio.py <model-dir> <jobs.json> <out-dir>
 
-  uv run scripts/vocab-audio.py <model-dir> <out-dir> [--only key1,key2]
+jobs.json: [{"voice": "bf_emma", "key": "look-forward-to", "text": "look forward to"}]
+Model files (kokoro-v1.0.onnx, voices-v1.0.bin): github.com/thewh1teagle/kokoro-onnx/releases.
 """
 
 import json
-import subprocess
 import sys
 from pathlib import Path
 
 import soundfile as sf
 from kokoro_onnx import Kokoro
 
-VOICES = ["bf_emma", "bm_george"]  # keep in step with VOICES in src/lib/vocabAudio.ts
-
 
 def main() -> None:
-    args = sys.argv[1:]
-    if len(args) < 2:
+    if len(sys.argv) != 4:
         sys.exit(__doc__)
-    model_dir, out = Path(args[0]), Path(args[1])
-    only = set(args[3].split(",")) if len(args) > 3 and args[2] == "--only" else None
-
-    front = Path(__file__).resolve().parent.parent
-    words = json.loads(
-        subprocess.run(
-            ["node", "scripts/vocab-words.mjs"], cwd=front, check=True, capture_output=True, text=True
-        ).stdout
-    )
-    if only:
-        words = [w for w in words if w["key"] in only]
-
+    model_dir, jobs, out = Path(sys.argv[1]), json.loads(Path(sys.argv[2]).read_text("utf8")), Path(sys.argv[3])
     kokoro = Kokoro(str(model_dir / "kokoro-v1.0.onnx"), str(model_dir / "voices-v1.0.bin"))
-    made = skipped = 0
-    for voice in VOICES:
-        (out / voice).mkdir(parents=True, exist_ok=True)
-        for w in words:
-            path = out / voice / f"{w['key']}.mp3"
-            if path.exists():
-                skipped += 1
-                continue
-            samples, rate = kokoro.create(w["text"], voice=voice, lang="en-gb")
-            # Write to a temp name first, so a stopped run never leaves a half file behind.
-            tmp = path.with_suffix(".part")
-            sf.write(tmp, samples, rate, format="MP3")
-            tmp.replace(path)
-            made += 1
-        print(f"{voice}: done", flush=True)
-    print(f"recorded {made}, already there {skipped}")
+    for i, job in enumerate(jobs, 1):
+        (out / job["voice"]).mkdir(parents=True, exist_ok=True)
+        samples, rate = kokoro.create(job["text"], voice=job["voice"], lang="en-gb")
+        sf.write(out / job["voice"] / f"{job['key']}.mp3", samples, rate, format="MP3")
+        if i % 50 == 0 or i == len(jobs):
+            print(f"recorded {i}/{len(jobs)}", flush=True)
 
 
 if __name__ == "__main__":

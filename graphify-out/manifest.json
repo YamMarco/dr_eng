@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795255244.324927,
-    "ast_hash": "0319769d31a1681a67fdcf63ee480e9d",
+    "mtime": 1795255474.9015992,
+    "ast_hash": "fe13ba9f97519a0b34c7bedbe4be2ac8",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2894,19 +2894,14 @@
     "ast_hash": "8b51d836d89a35b30759c8c2807e0691",
     "semantic_hash": ""
   },
-  "front/scripts/upload-vocab-audio.mjs": {
-    "mtime": 1795255244.3405037,
-    "ast_hash": "41352ab0c26e1d01f972efed2da29e25",
-    "semantic_hash": ""
-  },
   "front/scripts/vocab-audio.py": {
-    "mtime": 1795255244.3413126,
-    "ast_hash": "9da1fe540d6235d3efb594b5daba4120",
+    "mtime": 1795255415.2413027,
+    "ast_hash": "eb31b8e2a4e6ec112534b091d742b5cd",
     "semantic_hash": ""
   },
   "front/scripts/vocab-words.mjs": {
-    "mtime": 1795255244.3413126,
-    "ast_hash": "1749e14d5fd5cdf8aea8db5275acb97f",
+    "mtime": 1795255416.1887853,
+    "ast_hash": "0d91614900f17e6f233143d08f3b6599",
     "semantic_hash": ""
   },
   "front/src/lib/speechText.ts": {
@@ -2942,6 +2937,16 @@
   "front/src/routes/(admin)/voice-check/+page.svelte": {
     "mtime": 1795255244.351943,
     "ast_hash": "9bd97e1ece1240737e603f6c335bce59",
+    "semantic_hash": ""
+  },
+  "front/scripts/vocab-audio.mjs": {
+    "mtime": 1795255478.7191987,
+    "ast_hash": "1594676c755f52f617f1ad921eb01958",
+    "semantic_hash": ""
+  },
+  "docs/handoffs/voice.md": {
+    "mtime": 1795255475.7522068,
+    "ast_hash": "d51e31b3ecc715e5f22b96ae7251573c",
     "semantic_hash": ""
   }
 }
