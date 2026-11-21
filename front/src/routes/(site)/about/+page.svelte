@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { BookOpen, Lightbulb, PenLine, Target, Timer } from '@lucide/svelte';
+	import { BookOpen, Camera, Check, Lightbulb, Mail, PenLine, Target, Timer } from '@lucide/svelte';
+	import { resolve } from '$app/paths';
 	import { i18n } from '$lib/i18n/index.svelte';
+	import { staggerDelay } from '$lib/motion';
 	import JoinCtas from '$lib/site/JoinCtas.svelte';
 	import { reveal } from '$lib/site/reveal';
+	import { emailHref } from '$lib/support';
 
 	let t = $derived(i18n.dict.about);
 
@@ -21,6 +24,33 @@
 		<h1 class="text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">{t.lead}</h1>
 		<p class="text-lg leading-relaxed">{t.intro}</p>
 	</header>
+
+	<figure
+		class="flex flex-col gap-4 rounded-[2rem] bg-surface p-5 shadow-sm ring-1 ring-line/70 motion-safe:animate-rise sm:p-6"
+		style="animation-delay: {staggerDelay(1)}ms"
+	>
+		<div class="flex items-center gap-4">
+			<!-- Photo placeholder: swap for <img src=… alt={t.teacher.name} class="size-20 rounded-full object-cover" /> -->
+			<span
+				class="grid size-20 shrink-0 place-items-center rounded-full border-2 border-dashed border-line bg-brand-soft text-brand-dark"
+				aria-hidden="true"
+			>
+				<Camera size={28} />
+			</span>
+			<div class="flex flex-col">
+				<span class="text-xl font-extrabold">{t.teacher.name}</span>
+				<span class="text-muted">{t.teacher.role}</span>
+			</div>
+		</div>
+		<ul class="flex flex-col gap-2">
+			{#each t.teacher.credentials as credential (credential)}
+				<li class="flex items-start gap-2">
+					<Check size={18} class="mt-1 shrink-0 text-brand" aria-hidden="true" />
+					{credential}
+				</li>
+			{/each}
+		</ul>
+	</figure>
 
 	{#each t.sections as section, i (section.title)}
 		<section {@attach reveal} class="flex flex-col gap-2" style="--reveal-delay: {i * 60}ms">
@@ -41,6 +71,18 @@
 					{/each}
 				</ul>
 			{/if}
+			{#if section.feedback}
+				<!-- mailto, not a route -->
+				<!-- eslint-disable svelte/no-navigation-without-resolve -->
+				<a
+					href={emailHref(t.feedbackSubject)}
+					class="mt-1 flex min-h-11 w-fit items-center gap-2 font-semibold text-brand-dark transition duration-100 hover:underline active:scale-[0.98]"
+				>
+					<Mail size={18} aria-hidden="true" />
+					{section.feedback}
+				</a>
+				<!-- eslint-enable svelte/no-navigation-without-resolve -->
+			{/if}
 		</section>
 	{/each}
 
@@ -49,5 +91,11 @@
 		<p class="-mt-3 text-sm text-muted">{t.mottoGloss}</p>
 		<h2 class="mt-4 text-2xl font-extrabold">{t.finalTitle}</h2>
 		<div class="flex w-full justify-center text-start"><JoinCtas id="join" /></div>
+		<a
+			href={resolve('/plans')}
+			class="min-h-11 content-center font-semibold text-muted transition duration-100 hover:text-ink active:scale-[0.98]"
+		>
+			{i18n.dict.site.seePlans}
+		</a>
 	</section>
 </main>
