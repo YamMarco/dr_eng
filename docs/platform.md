@@ -154,5 +154,5 @@ Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<fil
 
 - Vocab words (word cards, spell-word, Module E decks) play recordings: public bucket `vocab-audio`, `<voice>/<key>.mp3` (slow = the same file at 0.75x, pitch kept), key from the word (`vocabAudio.ts`), so content has no audio field. Voices: Kokoro `bf_emma` / `bm_george`, picked in settings (`voicePref`, device only).
 - Everything else, and a word without a recording, uses the browser's `speechSynthesis` (`speech.ts`).
-- The engine runs only on the dev PC, never in the app or on Vercel. After adding words: `uv run scripts/vocab-audio.py <model-dir> <out-dir>` (records only new words; model files from github.com/thewh1teagle/kokoro-onnx releases), then `node --env-file=.env.local scripts/upload-vocab-audio.mjs <out-dir>`.
+- The engine runs only on the dev PC, never in the app or on Vercel. It lives in `C:\Users\yam\Documents\projects\SDK\kokoro` (`model/`: files from github.com/thewh1teagle/kokoro-onnx releases; `vocab-audio/`: every recorded clip). After adding words, from `front/`: `uv run scripts/vocab-audio.py ../../SDK/kokoro/model ../../SDK/kokoro/vocab-audio` (records only new words), then `node --env-file=.env.local scripts/upload-vocab-audio.mjs ../../SDK/kokoro/vocab-audio`.
 
