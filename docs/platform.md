@@ -150,3 +150,9 @@ The "משוב" tab on every `/app` screen (`FeedbackButton.svelte`) opens a repo
 
 Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<file>`; `lesson-screens/vocabImage.ts` maps it to the bucket URL. `/edit` uploads go straight to the bucket (live at once). Bulk copy: `node --env-file=.env.local scripts/upload-vocab-images.mjs <folder>`.
 
+## Voice
+
+- Vocab words (word cards, spell-word, Module E decks) play recordings: public bucket `vocab-audio`, `<voice>/<key>.mp3` and `<key>.slow.mp3`, key from the word (`vocabAudio.ts`), so content has no audio field. Voices: Kokoro `bf_emma` / `bm_george`, picked in settings (`voicePref`, device only).
+- Everything else, and a word without a recording, uses the browser's `speechSynthesis` (`speech.ts`).
+- The engine runs only on the dev PC, never in the app or on Vercel. After adding words: `uv run scripts/vocab-audio.py <model-dir> <out-dir>` (records only new words; model files from github.com/thewh1teagle/kokoro-onnx releases), then `node --env-file=.env.local scripts/upload-vocab-audio.mjs <out-dir>`.
+

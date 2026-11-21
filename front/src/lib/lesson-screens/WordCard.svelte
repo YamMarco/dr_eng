@@ -47,7 +47,7 @@
 
 	<div class="flex items-center gap-2 {screen.image ? 'mt-5' : ''}" dir="ltr">
 		<p class="text-3xl font-extrabold">{screen.word}</p>
-		<SpeakButtons text={screen.word} />
+		<SpeakButtons text={screen.word} word />
 	</div>
 
 	{#if screen.definitionEn}

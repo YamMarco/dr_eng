@@ -7,7 +7,7 @@
 	import { getScreenMode } from './mode.svelte';
 	import { getQuizAnswerSlot } from '$lib/quiz/answers.svelte';
 	import { onMount } from 'svelte';
-	import { RATE, speak, speechSupported } from '$lib/speech';
+	import { RATE, speakWord, speechSupported } from '$lib/speech';
 
 	const mode = getScreenMode();
 	const score = mode === 'lesson' ? getLessonScore() : undefined;
@@ -39,7 +39,7 @@
 	onMount(() => {
 		canSpeak = speechSupported();
 		// Play once on arrival; the buttons replay it.
-		if (screen.mode === 'listen' && canSpeak) speak(screen.word, RATE.normal);
+		if (screen.mode === 'listen' && canSpeak) speakWord(screen.word, RATE.normal);
 	});
 
 	// eslint-disable-next-line no-useless-assignment
@@ -86,7 +86,7 @@
 	</p>
 {:else}
 	<p class="mb-2 text-sm font-semibold text-muted">{i18n.dict.wordCard.spellListenPrompt}</p>
-	<div class="mb-4"><SpeakButtons text={screen.word} size="lg" disabled={checked} /></div>
+	<div class="mb-4"><SpeakButtons text={screen.word} word size="lg" disabled={checked} /></div>
 	{#if screen.hintHe}
 		<p class="-mt-2 mb-4 text-sm text-muted" dir="rtl">{screen.hintHe}</p>
 	{/if}

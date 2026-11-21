@@ -16,6 +16,8 @@
 	import { i18n, type Language } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore, type ThemeMode } from '$lib/theme.svelte';
+	import { voicePref } from '$lib/voicePref.svelte';
+	import { RATE, speakWord } from '$lib/speech';
 	import { staggerDelay } from '$lib/motion';
 	import { NAME_MAX, profile, type UnitsGoal } from '$lib/profile.svelte';
 	import {
@@ -110,6 +112,24 @@
 					<span class="block text-sm text-muted">{i18n.dict.settings.soundEffectsDesc}</span>
 				</span>
 				<Toggle bind:checked={soundEffects} label={i18n.dict.settings.soundEffects} />
+			</li>
+			<li class="flex items-center justify-between gap-4 px-5 py-4">
+				<span>
+					<span class="block font-semibold">{i18n.dict.settings.voice}</span>
+					<span class="block text-sm text-muted">{i18n.dict.settings.voiceDesc}</span>
+				</span>
+				<Segmented
+					options={[
+						{ value: 'female', label: i18n.dict.settings.voiceFemale },
+						{ value: 'male', label: i18n.dict.settings.voiceMale }
+					]}
+					value={voicePref.gender}
+					label={i18n.dict.settings.voice}
+					onchange={(gender) => {
+						voicePref.set(gender);
+						speakWord('Welcome', RATE.normal);
+					}}
+				/>
 			</li>
 			{#if reminders.available}
 				<ReminderRow />
