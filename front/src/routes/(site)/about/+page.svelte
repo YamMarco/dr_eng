@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {
 		BookOpen,
-		Camera,
 		Check,
 		Compass,
 		Lightbulb,
@@ -41,12 +40,12 @@
 		style="animation-delay: {staggerDelay(1)}ms"
 	>
 		<div class="flex items-center gap-4">
-			<!-- Photo placeholder: swap for <img src=… alt={t.teacher.name} class="size-20 rounded-full object-cover" /> -->
+			<!-- Until a photo: swap for <img src=… alt={t.teacher.name} class="size-20 rounded-full object-cover" /> -->
 			<span
-				class="grid size-20 shrink-0 place-items-center rounded-full border-2 border-dashed border-line bg-brand-soft text-brand-dark"
+				class="grid size-20 shrink-0 place-items-center rounded-full bg-brand-dark text-2xl font-extrabold text-white"
 				aria-hidden="true"
 			>
-				<Camera size={28} />
+				{t.teacher.initials}
 			</span>
 			<div class="flex flex-col">
 				<span class="text-xl font-extrabold">{t.teacher.name}</span>
