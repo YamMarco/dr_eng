@@ -2687,7 +2687,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_daykey",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": "daykey()"
     },
@@ -2712,7 +2712,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": "activitystore"
     },
@@ -2736,7 +2736,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_recordtoday",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".recordtoday()"
     },
@@ -2748,7 +2748,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_practiced",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".practiced()"
     },
@@ -2760,7 +2760,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_totaldays",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".totaldays()"
     },
@@ -2772,7 +2772,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_weeksatgoal",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".weeksatgoal()"
     },
@@ -2784,7 +2784,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_daysthisweek",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".daysthisweek()"
     },
@@ -2796,7 +2796,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_activity_svelte_activitystore_streak",
-      "community": 100,
+      "community": 108,
       "community_name": "ActivityStore",
       "norm_label": ".streak()"
     },
@@ -3162,7 +3162,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "svelte_svelte",
-      "community": 204,
+      "community": 205,
       "community_name": "svelte",
       "norm_label": "svelte"
     },
@@ -3218,7 +3218,7 @@
       "confidence": "EXTRACTED",
       "_origin": "ast",
       "id": "lucide_svelte_svelte",
-      "community": 195,
+      "community": 204,
       "community_name": "@lucide/svelte",
       "norm_label": "@lucide/svelte"
     },
@@ -5034,7 +5034,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activefield.svelte.ts"
     },
@@ -5047,7 +5047,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_activefield",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activefield"
     },
@@ -5060,7 +5060,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_activeline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activeline"
     },
@@ -5072,7 +5072,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_withactive",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "withactive()"
     },
@@ -5084,7 +5084,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_currentblock",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "currentblock()"
     },
@@ -5096,7 +5096,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_selectedblocks",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "selectedblocks()"
     },
@@ -5108,7 +5108,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_notifyinput",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "notifyinput()"
     },
@@ -5120,7 +5120,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_updateactiveline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "updateactiveline()"
     },
@@ -5132,7 +5132,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatbold",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatbold()"
     },
@@ -5144,7 +5144,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatitalic",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatitalic()"
     },
@@ -5156,7 +5156,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatunderline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatunderline()"
     },
@@ -5168,7 +5168,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatstrike",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatstrike()"
     },
@@ -5180,7 +5180,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcode",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcode()"
     },
@@ -5192,7 +5192,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatlink",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatlink()"
     },
@@ -5204,7 +5204,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcolor",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcolor()"
     },
@@ -5216,7 +5216,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatheader",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatheader()"
     },
@@ -5228,7 +5228,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatalign",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatalign()"
     },
@@ -5241,7 +5241,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_blockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "blockkind"
     },
@@ -5252,7 +5252,7 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_block_kind_class",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "block_kind_class"
     },
@@ -5264,7 +5264,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_applyblockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "applyblockkind()"
     },
@@ -5276,7 +5276,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_toggleblockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "toggleblockkind()"
     },
@@ -5288,7 +5288,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formattextblock",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formattextblock()"
     },
@@ -5300,7 +5300,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcallout",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcallout()"
     },
@@ -5312,7 +5312,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatbulletlist",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatbulletlist()"
     },
@@ -5324,7 +5324,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatnumberlist",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatnumberlist()"
     },
@@ -5336,7 +5336,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatdivider",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatdivider()"
     },
@@ -5348,7 +5348,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatdirection",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatdirection()"
     },
@@ -8435,7 +8435,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_a",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "list-a.ts"
     },
     {
@@ -8446,7 +8446,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_a_lista",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "lista"
     },
     {
@@ -8457,7 +8457,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_b",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "list-b.ts"
     },
     {
@@ -8468,7 +8468,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_b_listb",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "listb"
     },
     {
@@ -8479,7 +8479,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_c",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "list-c.ts"
     },
     {
@@ -8490,7 +8490,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_c_listc",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "listc"
     },
     {
@@ -8501,7 +8501,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_d",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "list-d.ts"
     },
     {
@@ -8512,7 +8512,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_list_d_listd",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "listd"
     },
     {
@@ -8523,7 +8523,7 @@
       "_origin": "ast",
       "id": "front_src_lib_content_e_word",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "word.ts"
     },
     {
@@ -8546,7 +8546,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_e_word_w",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "w()"
     },
@@ -8557,7 +8557,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_e_words_ar",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "words.ar.ts"
     },
@@ -8568,7 +8568,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "front_src_lib_content_e_words_ar_eglossar",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "eglossar"
     },
@@ -8770,7 +8770,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_load",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "load.ts"
     },
@@ -8783,7 +8783,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_load_loader",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "loader"
     },
@@ -8794,7 +8794,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "front_src_lib_content_load_sections",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "sections"
     },
@@ -8805,7 +8805,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_src_lib_content_load_loaded",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "loaded"
     },
@@ -8817,7 +8817,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_load_loadlesson",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "loadlesson()"
     },
@@ -8828,7 +8828,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "localize.svelte.ts"
     },
@@ -8841,7 +8841,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_table",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "table"
     },
@@ -8852,7 +8852,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_loaders",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "loaders"
     },
@@ -8863,7 +8863,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_tables",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "tables"
     },
@@ -8874,7 +8874,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_loading",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "loading"
     },
@@ -8885,7 +8885,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_cache",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "cache"
     },
@@ -8897,7 +8897,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_ensureloaded",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "ensureloaded()"
     },
@@ -8909,7 +8909,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_translate",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "translate()"
     },
@@ -8921,7 +8921,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_contentready",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "contentready()"
     },
@@ -8933,7 +8933,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_localize_svelte_localizecontent",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "localizecontent()"
     },
@@ -8957,7 +8957,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_meta_lessonmeta",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lessonmeta"
     },
@@ -8980,7 +8980,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_meta_getlessonmeta",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "getlessonmeta()"
     },
@@ -8992,7 +8992,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_meta_getlessonmetabysection",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "getlessonmetabysection()"
     },
@@ -9004,7 +9004,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_meta_modulesections",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "modulesections()"
     },
@@ -9016,7 +9016,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_meta_progressscope",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "progressscope()"
     },
@@ -9660,7 +9660,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "data.ts"
     },
@@ -9673,7 +9673,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_routesection",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "routesection"
     },
@@ -9685,7 +9685,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_modulesections",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "modulesections()"
     },
@@ -9697,7 +9697,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_lessonsinorder",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lessonsinorder()"
     },
@@ -9709,7 +9709,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_moduleroute",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "moduleroute()"
     },
@@ -9721,7 +9721,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_iswritinglesson",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "iswritinglesson()"
     },
@@ -9733,7 +9733,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_lessonstats",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lessonstats()"
     },
@@ -9746,7 +9746,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_progress",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "progress"
     },
@@ -9759,7 +9759,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_skillrow",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "skillrow"
     },
@@ -9771,8 +9771,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_moduleskills",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 53,
+      "community_name": "data.ts",
       "norm_label": "moduleskills()"
     },
     {
@@ -9782,7 +9782,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_exam_ready",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "exam_ready"
     },
@@ -9808,8 +9808,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_homemeters",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 53,
+      "community_name": "data.ts",
       "norm_label": "homemeters"
     },
     {
@@ -9821,7 +9821,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_modulehook",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "modulehook"
     },
@@ -9833,7 +9833,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_lessonsubtitle",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lessonsubtitle()"
     },
@@ -9846,7 +9846,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_continueitem",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "continueitem"
     },
@@ -9858,7 +9858,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_continuehref",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "continuehref()"
     },
@@ -9870,7 +9870,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_continuefrom",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "continuefrom()"
     },
@@ -9882,7 +9882,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_latestengagement",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "latestengagement()"
     },
@@ -9894,7 +9894,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_resumeitem",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "resumeitem()"
     },
@@ -9906,7 +9906,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_dashboard_data_todaylesson",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "todaylesson()"
     },
@@ -10012,7 +10012,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore",
-      "community": 148,
+      "community": 150,
       "community_name": "DebugStore",
       "norm_label": "debugstore"
     },
@@ -10024,7 +10024,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_enabled",
-      "community": 148,
+      "community": 150,
       "community_name": "DebugStore",
       "norm_label": ".enabled()"
     },
@@ -10036,7 +10036,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_unlockall",
-      "community": 148,
+      "community": 150,
       "community_name": "DebugStore",
       "norm_label": ".unlockall()"
     },
@@ -10048,7 +10048,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setenabled",
-      "community": 148,
+      "community": 150,
       "community_name": "DebugStore",
       "norm_label": ".setenabled()"
     },
@@ -10060,7 +10060,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_debug_svelte_debugstore_setunlockall",
-      "community": 148,
+      "community": 150,
       "community_name": "DebugStore",
       "norm_label": ".setunlockall()"
     },
@@ -10082,7 +10082,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "deckprogress.svelte.ts"
     },
@@ -10095,7 +10095,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_progressmap",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "progressmap"
     },
@@ -10107,8 +10107,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_load",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": "load()"
     },
     {
@@ -10119,8 +10119,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_persist",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": "persist()"
     },
     {
@@ -10132,8 +10132,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": "deckprogressstore"
     },
     {
@@ -10144,8 +10144,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_constructor",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": ".constructor()"
     },
     {
@@ -10156,8 +10156,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_get",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": ".get()"
     },
     {
@@ -10168,8 +10168,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_apply",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": ".apply()"
     },
     {
@@ -10180,8 +10180,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_migrate",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": ".migrate()"
     },
     {
@@ -10192,8 +10192,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_resetall",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 109,
+      "community_name": "DeckProgressStore",
       "norm_label": ".resetall()"
     },
     {
@@ -10203,7 +10203,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogress",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "deckprogress"
     },
@@ -10214,7 +10214,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_index",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "deck/index.ts"
     },
@@ -10227,7 +10227,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_deck",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "deck"
     },
@@ -10238,7 +10238,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_deck_index_decks",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "decks"
     },
@@ -10251,7 +10251,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_index_getdecks",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "getdecks()"
     },
     {
@@ -10261,7 +10261,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_lib_deck_index_glosses",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "glosses"
     },
@@ -10273,7 +10273,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_localizedeck",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "localizedeck()"
     },
@@ -10285,7 +10285,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_decktoday",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "decktoday()"
     },
@@ -10297,8 +10297,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_nextmilestone",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 53,
+      "community_name": "data.ts",
       "norm_label": "nextmilestone()"
     },
     {
@@ -10310,7 +10310,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_index_deckstats",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "deckstats()"
     },
     {
@@ -10322,7 +10322,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_index_activedecks",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "activedecks()"
     },
     {
@@ -10333,7 +10333,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_duetoday",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "duetoday()"
     },
@@ -10346,7 +10346,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_index_modulewon",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "modulewon()"
     },
     {
@@ -10357,8 +10357,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_index_moduledecktoday",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 53,
+      "community_name": "data.ts",
       "norm_label": "moduledecktoday()"
     },
     {
@@ -10368,7 +10368,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "scheduler.ts"
     },
@@ -10379,7 +10379,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_interval_days",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "interval_days"
     },
@@ -10390,7 +10390,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_max_box",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "max_box"
     },
@@ -10402,7 +10402,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_daykey",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "daykey()"
     },
@@ -10414,7 +10414,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_adddays",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "adddays()"
     },
@@ -10426,7 +10426,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_review",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "review()"
     },
@@ -10438,7 +10438,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_duewords",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "duewords()"
     },
@@ -10449,7 +10449,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_session",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "session.ts"
     },
@@ -10461,7 +10461,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_session_new_per_session",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "new_per_session"
     },
     {
@@ -10472,7 +10472,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_session_max_reviews",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "max_reviews"
     },
     {
@@ -10483,7 +10483,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_session_exam_box",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "exam_box"
     },
     {
@@ -10495,7 +10495,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_decksession",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "decksession"
     },
@@ -10508,7 +10508,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_rng",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "rng"
     },
@@ -10520,7 +10520,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_shuffle",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "shuffle()"
     },
@@ -10532,7 +10532,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_blankedexample",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "blankedexample()"
     },
@@ -10544,7 +10544,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_clashes",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "clashes()"
     },
@@ -10556,7 +10556,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_printed",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "printed()"
     },
@@ -10568,7 +10568,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_wordclass",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "wordclass()"
     },
@@ -10580,7 +10580,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_decoys",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "decoys()"
     },
@@ -10592,7 +10592,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_explanation",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "explanation()"
     },
@@ -10605,7 +10605,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_deckprompts",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "deckprompts"
     },
@@ -10617,7 +10617,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_meaningmcq",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "meaningmcq()"
     },
@@ -10629,7 +10629,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_wordmcq",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "wordmcq()"
     },
@@ -10641,7 +10641,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_contextmcq",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "contextmcq()"
     },
@@ -10653,7 +10653,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_definitionmcq",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "definitionmcq()"
     },
@@ -10665,7 +10665,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_matchdefinitions",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "matchdefinitions()"
     },
@@ -10677,7 +10677,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_spellable",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "spellable()"
     },
@@ -10689,7 +10689,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_buildsession",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "buildsession()"
     },
@@ -10701,7 +10701,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_session_wordresults",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "wordresults()"
     },
@@ -10713,7 +10713,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_types",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "deck/types.ts"
     },
     {
@@ -10726,7 +10726,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_types_wordpos",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "wordpos"
     },
     {
@@ -10739,7 +10739,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_types_deckword",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "deckword"
     },
     {
@@ -10752,7 +10752,7 @@
       "_origin": "ast",
       "id": "front_src_lib_deck_types_wordstate",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "wordstate"
     },
     {
@@ -10764,7 +10764,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_types_deckprogress",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "deckprogress"
     },
@@ -12149,7 +12149,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_feedback_types_speakingverdict",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingverdict"
     },
@@ -12399,7 +12399,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_i18n_index_svelte_language",
-      "community": 61,
+      "community": 66,
       "community_name": "localize.svelte.ts",
       "norm_label": "language"
     },
@@ -12548,7 +12548,7 @@
       "label": "Dictionary",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1872",
+      "source_location": "L1880",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -12561,7 +12561,7 @@
       "label": "DictionaryOverride",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1875",
+      "source_location": "L1883",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -13012,7 +13012,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lastengagement.svelte.ts"
     },
@@ -13025,7 +13025,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_engagement",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "engagement"
     },
@@ -13085,7 +13085,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "front_src_lib_lastengagement_svelte_lastengagement",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lastengagement"
     },
@@ -13752,8 +13752,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "passagetext.svelte"
     },
     {
@@ -13763,8 +13763,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext_gutter",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "gutter"
     },
     {
@@ -13774,8 +13774,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext_lines",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "lines"
     },
     {
@@ -14585,7 +14585,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_submittollm",
-      "community": 192,
+      "community": 195,
       "community_name": "submitToLlm",
       "norm_label": "submittollm()"
     },
@@ -14677,7 +14677,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingtask_primaryaction",
-      "community": 192,
+      "community": 195,
       "community_name": "submitToLlm",
       "norm_label": "primaryaction()"
     },
@@ -15083,8 +15083,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_striplineattrs",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "striplineattrs()"
     },
     {
@@ -16235,7 +16235,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_textcolors",
-      "community": 150,
+      "community": 152,
       "community_name": "textColors.ts",
       "norm_label": "textcolors.ts"
     },
@@ -16246,7 +16246,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_textcolors_text_color_palette",
-      "community": 150,
+      "community": 152,
       "community_name": "textColors.ts",
       "norm_label": "text_color_palette"
     },
@@ -16259,7 +16259,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_textcolors_textcolorname",
-      "community": 150,
+      "community": 152,
       "community_name": "textColors.ts",
       "norm_label": "textcolorname"
     },
@@ -16270,7 +16270,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_textcolors_hex_to_name",
-      "community": 150,
+      "community": 152,
       "community_name": "textColors.ts",
       "norm_label": "hex_to_name"
     },
@@ -16282,7 +16282,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_textcolors_colornamefromhex",
-      "community": 150,
+      "community": 152,
       "community_name": "textColors.ts",
       "norm_label": "colornamefromhex()"
     },
@@ -16889,7 +16889,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingmoves",
-      "community": 152,
+      "community": 153,
       "community_name": "writingMoves.ts",
       "norm_label": "writingmoves.ts"
     },
@@ -16900,7 +16900,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingmoves_move_ids",
-      "community": 152,
+      "community": 153,
       "community_name": "writingMoves.ts",
       "norm_label": "move_ids"
     },
@@ -16913,7 +16913,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingmoves_moveid",
-      "community": 152,
+      "community": 153,
       "community_name": "writingMoves.ts",
       "norm_label": "moveid"
     },
@@ -16924,7 +16924,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingmoves_markers",
-      "community": 152,
+      "community": 153,
       "community_name": "writingMoves.ts",
       "norm_label": "markers"
     },
@@ -16936,7 +16936,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_writingmoves_missingmoves",
-      "community": 152,
+      "community": 153,
       "community_name": "writingMoves.ts",
       "norm_label": "missingmoves()"
     },
@@ -16993,7 +16993,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lessonpath",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "lessonpath.ts"
     },
@@ -17005,7 +17005,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_hascontent",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "hascontent()"
     },
@@ -17017,7 +17017,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_roundscompleted",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "roundscompleted()"
     },
@@ -17029,7 +17029,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_markroundcompleted",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "markroundcompleted()"
     },
@@ -17041,7 +17041,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessondone",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "islessondone()"
     },
@@ -17053,7 +17053,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessongold",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "islessongold()"
     },
@@ -17065,7 +17065,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lessonpath_islessonunlocked",
-      "community": 65,
+      "community": 53,
       "community_name": "data.ts",
       "norm_label": "islessonunlocked()"
     },
@@ -17399,7 +17399,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocation.svelte.ts"
     },
@@ -17412,7 +17412,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_entry",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "entry"
     },
@@ -17425,7 +17425,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_locationmap",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "locationmap"
     },
@@ -17437,7 +17437,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_load",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "load()"
     },
@@ -17449,7 +17449,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_persist",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "persist()"
     },
@@ -17462,7 +17462,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocationstore"
     },
@@ -17474,7 +17474,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_constructor",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".constructor()"
     },
@@ -17486,7 +17486,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_get",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".get()"
     },
@@ -17498,7 +17498,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_set",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".set()"
     },
@@ -17510,7 +17510,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocationstore_mostrecent",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": ".mostrecent()"
     },
@@ -17521,7 +17521,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "front_src_lib_modulelocation_svelte_modulelocation",
-      "community": 66,
+      "community": 67,
       "community_name": "moduleLocation.svelte.ts",
       "norm_label": "modulelocation"
     },
@@ -17681,7 +17681,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_load",
-      "community": 153,
+      "community": 160,
       "community_name": "MyPhrases",
       "norm_label": "load()"
     },
@@ -17694,7 +17694,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases",
-      "community": 153,
+      "community": 160,
       "community_name": "MyPhrases",
       "norm_label": "myphrases"
     },
@@ -17706,7 +17706,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_constructor",
-      "community": 153,
+      "community": 160,
       "community_name": "MyPhrases",
       "norm_label": ".constructor()"
     },
@@ -17718,7 +17718,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_has",
-      "community": 153,
+      "community": 160,
       "community_name": "MyPhrases",
       "norm_label": ".has()"
     },
@@ -17730,7 +17730,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_phrasebank_svelte_myphrases_toggle",
-      "community": 153,
+      "community": 160,
       "community_name": "MyPhrases",
       "norm_label": ".toggle()"
     },
@@ -17896,7 +17896,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_pricing",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "pricing"
     },
@@ -17941,7 +17941,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "front_src_lib_plans_cobe_addon",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "cobe_addon"
     },
@@ -17986,7 +17986,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_maxpayments",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "maxpayments()"
     },
@@ -18119,7 +18119,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_planid",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "planid()"
     },
@@ -18131,7 +18131,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_plans_withcobe",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "withcobe()"
     },
@@ -18440,7 +18440,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_progressmerge",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "progressmerge.ts"
     },
@@ -18465,7 +18465,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_issyncedkey",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "issyncedkey()"
     },
@@ -18478,7 +18478,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_obj",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "obj"
     },
@@ -18490,7 +18490,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_isobj",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "isobj()"
     },
@@ -18502,7 +18502,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_num",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "num()"
     },
@@ -18514,7 +18514,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_field",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "field()"
     },
@@ -18526,7 +18526,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_strings",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "strings()"
     },
@@ -18538,7 +18538,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_bykey",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "bykey()"
     },
@@ -18550,7 +18550,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_larger",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "larger()"
     },
@@ -18562,7 +18562,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_laterreview",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "laterreview()"
     },
@@ -18574,7 +18574,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_mergefor",
-      "community": 79,
+      "community": 100,
       "community_name": "progressMerge.ts",
       "norm_label": "mergefor()"
     },
@@ -18586,7 +18586,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_progressmerge_mergeitems",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "mergeitems()"
     },
@@ -19134,7 +19134,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_quiztimer",
-      "community": 186,
+      "community": 192,
       "community_name": "QuizTimer.svelte",
       "norm_label": "quiztimer.svelte"
     },
@@ -19962,7 +19962,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_quiz_time",
-      "community": 186,
+      "community": 192,
       "community_name": "QuizTimer.svelte",
       "norm_label": "time.ts"
     },
@@ -19974,7 +19974,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_quiz_time_formattime",
-      "community": 186,
+      "community": 192,
       "community_name": "QuizTimer.svelte",
       "norm_label": "formattime()"
     },
@@ -20656,7 +20656,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes",
-      "community": 171,
+      "community": 181,
       "community_name": "sectionThemes.ts",
       "norm_label": "sectionthemes.ts"
     },
@@ -20669,7 +20669,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_sectiontheme",
-      "community": 171,
+      "community": 181,
       "community_name": "sectionThemes.ts",
       "norm_label": "sectiontheme"
     },
@@ -20680,7 +20680,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_palette",
-      "community": 171,
+      "community": 181,
       "community_name": "sectionThemes.ts",
       "norm_label": "palette"
     },
@@ -20692,7 +20692,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_sectionthemes_themeforsectionindex",
-      "community": 171,
+      "community": 181,
       "community_name": "sectionThemes.ts",
       "norm_label": "themeforsectionindex()"
     },
@@ -20714,7 +20714,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "front_src_lib_server_billing_billingenabled",
-      "community": 181,
+      "community": 182,
       "community_name": "access",
       "norm_label": "billingenabled"
     },
@@ -20840,7 +20840,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_billing_access",
-      "community": 181,
+      "community": 182,
       "community_name": "access",
       "norm_label": "access"
     },
@@ -21590,7 +21590,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_llm",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llm.ts"
     },
@@ -21603,7 +21603,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_llmresult",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llmresult"
     },
@@ -21615,7 +21615,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_keys",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "keys()"
     },
@@ -21626,7 +21626,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "front_src_lib_server_llm_llm_enabled",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llm_enabled"
     },
@@ -21651,7 +21651,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_chatoptions",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "chatoptions"
     },
@@ -21663,7 +21663,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_chat",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "chat()"
     },
@@ -21675,7 +21675,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llm_chatjson",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "chatjson()"
     },
@@ -21836,7 +21836,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llmmodels.ts"
     },
@@ -21849,7 +21849,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_llmrole",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llmrole"
     },
@@ -21860,7 +21860,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_llm_models",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llm_models"
     },
@@ -21871,7 +21871,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_gateway_url",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "gateway_url"
     },
@@ -21882,7 +21882,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_gemini_url",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "gemini_url"
     },
@@ -21895,7 +21895,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_llmtarget",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llmtarget"
     },
@@ -21907,7 +21907,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_llmmodels_llmtargets",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llmtargets()"
     },
@@ -21953,7 +21953,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_payments",
-      "community": 182,
+      "community": 186,
       "community_name": "payments.ts",
       "norm_label": "payments.ts"
     },
@@ -21966,7 +21966,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentrequest",
-      "community": 182,
+      "community": 186,
       "community_name": "payments.ts",
       "norm_label": "paymentrequest"
     },
@@ -21979,7 +21979,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_paymentstart",
-      "community": 182,
+      "community": 186,
       "community_name": "payments.ts",
       "norm_label": "paymentstart"
     },
@@ -21991,7 +21991,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_payments_startpayment",
-      "community": 182,
+      "community": 186,
       "community_name": "payments.ts",
       "norm_label": "startpayment()"
     },
@@ -22072,7 +22072,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "server/speaking.ts"
     },
@@ -22083,7 +22083,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_max_audio_chars",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "max_audio_chars"
     },
@@ -22096,7 +22096,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_speakingrequest",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingrequest"
     },
@@ -22107,7 +22107,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_band",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "band"
     },
@@ -22118,7 +22118,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_verdictschema",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "verdictschema"
     },
@@ -22130,7 +22130,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_block",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "block()"
     },
@@ -22142,7 +22142,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_speakingprompt",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "speakingprompt()"
     },
@@ -22154,7 +22154,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_server_speaking_gradespeakingaudio",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "gradespeakingaudio()"
     },
@@ -23296,7 +23296,7 @@
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_types",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "./$types"
     },
     {
@@ -23307,7 +23307,7 @@
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_ts_front_src_routes_admin_edit_words_page",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "edit-words/+page.ts"
     },
     {
@@ -23318,7 +23318,7 @@
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_ssr",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "ssr"
     },
     {
@@ -23330,7 +23330,7 @@
       "_origin": "ast",
       "id": "front_src_routes_admin_edit_words_page_load",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "load()"
     },
     {
@@ -23609,11 +23609,11 @@
       "label": "f()",
       "file_type": "code",
       "source_file": "front/src/routes/(site)/about/+page.svelte",
-      "source_location": "L74",
+      "source_location": "L75",
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_about_page_f",
-      "community": 160,
+      "community": 171,
       "community_name": "content-edit-files.test.ts",
       "norm_label": "f()"
     },
@@ -23671,7 +23671,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_checkout_page_setcobe",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "setcobe()"
     },
@@ -23739,7 +23739,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_site_plans_page_each",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "#each()"
     },
@@ -23862,7 +23862,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_access_server",
-      "community": 181,
+      "community": 182,
       "community_name": "access",
       "norm_label": "access/+server.ts"
     },
@@ -23874,7 +23874,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_access_server_get",
-      "community": 181,
+      "community": 182,
       "community_name": "access",
       "norm_label": "get()"
     },
@@ -24774,7 +24774,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_progress_server",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "progress/+server.ts"
     },
@@ -24786,7 +24786,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_progress_server_scope",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "scope()"
     },
@@ -24798,7 +24798,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_progress_server_get",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "get()"
     },
@@ -24810,7 +24810,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_progress_server_parseitems",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "parseitems()"
     },
@@ -24822,7 +24822,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_api_progress_server_post",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "post()"
     },
@@ -24924,7 +24924,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "speak/+server.ts"
     },
@@ -24935,7 +24935,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server_body",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "body"
     },
@@ -24946,7 +24946,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "front_src_routes_api_speak_server_post",
-      "community": 59,
+      "community": 61,
       "community_name": "server/speaking.ts",
       "norm_label": "post"
     },
@@ -25057,7 +25057,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_routes_app_book_page",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "book/+page.svelte"
     },
@@ -25068,7 +25068,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "front_src_routes_app_book_page_formatteddate",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "formatteddate"
     },
@@ -25080,7 +25080,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_book_page_submit",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "submit()"
     },
@@ -25092,7 +25092,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_book_page_reset",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "reset()"
     },
@@ -25104,7 +25104,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_book_page_chip",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "chip()"
     },
@@ -25116,7 +25116,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_book_page_i",
-      "community": 142,
+      "community": 148,
       "community_name": "book/+page.svelte",
       "norm_label": "i()"
     },
@@ -25276,8 +25276,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_page_if",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 53,
+      "community_name": "data.ts",
       "norm_label": "if()"
     },
     {
@@ -25635,7 +25635,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_jumptoanchor",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "jumptoanchor()"
     },
@@ -25659,7 +25659,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_isdone",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "isdone()"
     },
@@ -25671,7 +25671,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_roundscompleted",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "roundscompleted()"
     },
@@ -25683,7 +25683,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_totalrounds",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "totalrounds()"
     },
@@ -25695,7 +25695,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_nextroundindex",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "nextroundindex()"
     },
@@ -25707,7 +25707,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_isunlocked",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "isunlocked()"
     },
@@ -25719,7 +25719,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_togglelabel",
-      "community": 138,
+      "community": 65,
       "community_name": "load.ts",
       "norm_label": "togglelabel()"
     },
@@ -25775,7 +25775,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_nextnode",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "nextnode()"
     },
@@ -25798,7 +25798,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_opennode",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "opennode()"
     },
@@ -25810,7 +25810,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_remember",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "remember()"
     },
@@ -25822,7 +25822,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_closenode",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "closenode()"
     },
@@ -25834,7 +25834,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_celebrateifnewlydone",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "celebrateifnewlydone()"
     },
@@ -25846,7 +25846,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_passround",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "passround()"
     },
@@ -25858,7 +25858,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_completeround",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "completeround()"
     },
@@ -25870,7 +25870,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_finishnode",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "finishnode()"
     },
@@ -25882,7 +25882,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_nextround",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "nextround()"
     },
@@ -25894,7 +25894,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_finishnodeandcontinue",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "finishnodeandcontinue()"
     },
@@ -25929,7 +25929,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_enterrunner",
-      "community": 116,
+      "community": 142,
       "community_name": "nextRoundIndex",
       "norm_label": "enterrunner()"
     },
@@ -25941,7 +25941,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_exitrunner",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "exitrunner()"
     },
@@ -25953,7 +25953,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_lessons_page_closewritinglab",
-      "community": 67,
+      "community": 79,
       "community_name": "completeRound",
       "norm_label": "closewritinglab()"
     },
@@ -26009,7 +26009,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_words_page_start",
-      "community": 52,
+      "community": 60,
       "community_name": "deck/index.ts",
       "norm_label": "start()"
     },
@@ -26021,7 +26021,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_words_page_finish",
-      "community": 60,
+      "community": 31,
       "community_name": "session.ts",
       "norm_label": "finish()"
     },
@@ -26045,7 +26045,7 @@
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_words_types",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "./$types"
     },
     {
@@ -26056,7 +26056,7 @@
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_words_page_ts_front_src_routes_app_unit_unitid_module_moduleid_words_page",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "words/+page.ts"
     },
     {
@@ -26068,7 +26068,7 @@
       "_origin": "ast",
       "id": "front_src_routes_app_unit_unitid_module_moduleid_words_page_load",
       "community": 52,
-      "community_name": "deck/index.ts",
+      "community_name": "getDecks",
       "norm_label": "load()"
     },
     {
@@ -26204,7 +26204,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test",
-      "community": 160,
+      "community": 171,
       "community_name": "content-edit-files.test.ts",
       "norm_label": "content-edit-files.test.ts"
     },
@@ -26215,7 +26215,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_lib",
-      "community": 160,
+      "community": 171,
       "community_name": "content-edit-files.test.ts",
       "norm_label": "lib"
     },
@@ -26227,7 +26227,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_dirs",
-      "community": 160,
+      "community": 171,
       "community_name": "content-edit-files.test.ts",
       "norm_label": "dirs()"
     },
@@ -26238,7 +26238,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "front_tests_content_edit_files_test_files",
-      "community": 160,
+      "community": 171,
       "community_name": "content-edit-files.test.ts",
       "norm_label": "files"
     },
@@ -26388,7 +26388,7 @@
       "_origin": "ast",
       "id": "front_tests_deck_test",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "deck.test.ts"
     },
     {
@@ -26400,7 +26400,7 @@
       "_origin": "ast",
       "id": "front_tests_deck_test_seeded",
       "community": 60,
-      "community_name": "session.ts",
+      "community_name": "deck/index.ts",
       "norm_label": "seeded()"
     },
     {
@@ -26546,7 +26546,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_llm_models_test",
-      "community": 53,
+      "community": 59,
       "community_name": "llm.ts",
       "norm_label": "llm-models.test.ts"
     },
@@ -26590,7 +26590,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_plans_test",
-      "community": 108,
+      "community": 116,
       "community_name": "plans.test.ts",
       "norm_label": "plans.test.ts"
     },
@@ -26601,7 +26601,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_tests_progress_merge_test",
-      "community": 109,
+      "community": 138,
       "community_name": "progress/+server.ts",
       "norm_label": "progress-merge.test.ts"
     },
@@ -62679,7 +62679,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "front/src/routes/(site)/about/+page.svelte",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_routes_site_about_page",
@@ -62784,7 +62784,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1872",
+      "source_location": "L1880",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -62795,7 +62795,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1875",
+      "source_location": "L1883",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -84318,7 +84318,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/routes/(site)/about/+page.svelte",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_routes_site_about_page",
@@ -91037,5 +91037,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "82cfe7dc4e3f42ea86c42c37496ea3178c7bd233"
+  "built_at_commit": "5d3fea650bc79750c439dfb3249bb8fd4e281a13"
 }

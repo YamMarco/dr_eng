@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		ArrowLeft,
 		BookOpen,
 		Check,
 		Compass,
@@ -81,6 +82,15 @@
 						</li>
 					{/each}
 				</ul>
+			{/if}
+			{#if section.plansLink}
+				<a
+					href={resolve('/plans')}
+					class="mt-1 flex min-h-11 w-fit items-center gap-2 font-semibold text-brand-dark transition duration-100 hover:underline active:scale-[0.98]"
+				>
+					{section.plansLink}
+					<ArrowLeft size={18} aria-hidden="true" />
+				</a>
 			{/if}
 			{#if section.feedback}
 				<!-- mailto, not a route -->
