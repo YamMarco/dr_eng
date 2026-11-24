@@ -11,7 +11,7 @@
 	import { onMount } from 'svelte';
 	import { dev } from '$app/environment';
 	import { resolve } from '$app/paths';
-	import { cobeVisible } from '$lib/alpha';
+	import { cobeVisible } from '$lib/flags';
 	import { auth } from '$lib/auth.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Segmented from '$lib/components/Segmented.svelte';
@@ -98,7 +98,8 @@
 			(entry) =>
 				!entry.needs ||
 				(entry.needs === 'launch' && launch) ||
-				(entry.needs === 'guarantee' && showGuarantee)
+				(entry.needs === 'guarantee' && showGuarantee) ||
+				(entry.needs === 'cobe' && showCobe)
 		)
 	);
 

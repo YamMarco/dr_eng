@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { cobeVisible } from '$lib/alpha';
+	import { cobeVisible } from '$lib/flags';
 	import { auth } from '$lib/auth.svelte';
 	import { getUnitGroup, modules } from '$lib/curriculum';
 	import { staggerDelay } from '$lib/motion';

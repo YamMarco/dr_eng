@@ -6,7 +6,7 @@ import { checkoutBody } from './body';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request, locals, url }) => {
-	const { plan, coupon, userId } = await checkoutBody(request, locals.userId);
+	const { plan, coupon, userId } = await checkoutBody(request, locals);
 	try {
 		return json(await checkout(plan, coupon, userId, `${url.origin}/app`));
 	} catch (failure) {

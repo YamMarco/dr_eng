@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { Check, Play, Target, Trophy } from '@lucide/svelte';
+	import { COBE_OPEN } from '$lib/flags';
 	import { i18n } from '$lib/i18n/index.svelte';
 
 	// A still of the app's home screen (continue bar + module rows), drawn for the site.
 	// Not the live dashboard components: those read the student's stores.
 	let t = $derived(i18n.dict.site.home.mock);
 	const tiers = [Trophy, Check, Target];
+	// Three rows; the COBE row only while COBE is open (the site is static: no staff view).
+	let modules = $derived(t.modules.filter((m) => COBE_OPEN || !m.cobe).slice(0, 3));
 </script>
 
 <div
@@ -32,7 +35,7 @@
 				<span class="truncate text-[0.7rem] text-white/70">{t.continueSub}</span>
 			</span>
 		</div>
-		{#each t.modules as mod, i (mod.name)}
+		{#each modules as mod, i (mod.name)}
 			{@const Tier = tiers[i]}
 			<div class="flex flex-col gap-2 rounded-2xl bg-surface p-3 shadow-sm ring-1 ring-line/70">
 				<div class="flex items-center justify-between">

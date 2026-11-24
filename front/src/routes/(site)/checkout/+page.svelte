@@ -8,7 +8,7 @@
 	import CodeField from '$lib/components/CodeField.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import LoginScreen from '$lib/components/LoginScreen.svelte';
-	import { cobeVisible } from '$lib/alpha';
+	import { cobeVisible } from '$lib/flags';
 	import { auth } from '$lib/auth.svelte';
 	import {
 		access,
@@ -27,17 +27,23 @@
 		formatPrice,
 		isPurchasable,
 		planById,
+		productsOf,
 		withCobe
 	} from '$lib/plans';
 
 	// /checkout?plan=<id>&coupon=<code>: plan -> account -> code -> activate or pay.
-	// A tester link carries the code; sign-up's confirmation email returns here
+	// A promo link carries the code; sign-up's confirmation email returns here
 	// with the same query, so nothing is lost on the way.
 
 	let t = $derived(i18n.dict.checkout);
 	// Shown as priced today; the server prices the order itself.
 	const requested = planById(page.url.searchParams.get('plan'));
-	let plan = $state(isPurchasable(requested) ? requested : defaultPlan());
+	// A COBE plan while COBE is closed falls back to the default (the server refuses it too).
+	let plan = $state(
+		isPurchasable(requested) && (!productsOf(requested.id)?.cobe || cobeVisible(auth.isAdmin))
+			? requested
+			: defaultPlan()
+	);
 	// Order bump: COBE can be added to any plan but COBE itself and a lesson.
 	let canAddCobe = $derived(cobeVisible(auth.isAdmin) && !!withCobe(plan, true));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');

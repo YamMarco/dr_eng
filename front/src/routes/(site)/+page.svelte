@@ -15,6 +15,7 @@
 		Trophy
 	} from '@lucide/svelte';
 	import { resolve } from '$app/paths';
+	import { COBE_OPEN } from '$lib/flags';
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -50,6 +51,14 @@
 
 	// Per method card, in the order of `t.methods`.
 	const methodDemos: DemoKind[] = ['anchor', 'rescue', 'vocab', 'essay'];
+
+	// COBE cards only while COBE is open (the site is static: no staff view).
+	let moments = $derived(t.moments.filter((m) => COBE_OPEN || !m.cobe));
+	let methods = $derived(
+		t.methods
+			.map((method, i) => ({ ...method, demo: methodDemos[i] }))
+			.filter((m) => COBE_OPEN || !m.cobe)
+	);
 </script>
 
 <svelte:head>
@@ -169,7 +178,7 @@
 			aria-label={t.momentsTitle}
 			class="scrollbar-none flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overflow-y-hidden px-4 pb-2 focus-visible:-outline-offset-2 sm:scroll-px-6 sm:px-6 lg:grid lg:h-[40rem] lg:grid-cols-3 lg:grid-rows-2 lg:gap-4 lg:overflow-visible lg:pb-0"
 		>
-			{#each t.moments as moment, i (moment.id)}
+			{#each moments as moment, i (moment.id)}
 				{@const art = momentArt[moment.id as keyof typeof momentArt]}
 				{@const ChipIcon = momentChipIcons[moment.id as keyof typeof momentChipIcons]}
 				<li
@@ -178,7 +187,7 @@
 					class="group relative aspect-[3/4] w-[78%] shrink-0 snap-start sm:w-80 lg:aspect-auto lg:w-auto {i ===
 					0
 						? 'lg:row-span-2'
-						: ''}"
+						: ''} {i === 3 && moments.length === 4 ? 'lg:col-span-2' : ''}"
 				>
 					<MediaFrame
 						media={homeMedia[moment.id]}
@@ -288,13 +297,16 @@
 			<p class="text-lg text-muted">{t.methodBody}</p>
 		</header>
 		<ul class="grid gap-4 sm:grid-cols-2">
-			{#each t.methods as method, i (method.title)}
+			{#each methods as method, i (method.title)}
 				<li
 					{@attach reveal}
 					style="--reveal-delay: {i * 90}ms"
-					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+					class="flex flex-col gap-4 rounded-4xl bg-surface p-4 shadow-sm ring-1 ring-line/70 transition duration-200 hover:-translate-y-1 hover:shadow-lg {i ===
+						methods.length - 1 && methods.length % 2
+						? 'sm:col-span-2'
+						: ''}"
 				>
-					<MethodDemo kind={methodDemos[i]} />
+					<MethodDemo kind={method.demo} />
 					<div class="flex flex-col gap-1 px-1 pb-1">
 						<span class="text-sm font-bold text-brand-dark">{method.tag}</span>
 						<span class="text-xl font-extrabold">{method.title}</span>

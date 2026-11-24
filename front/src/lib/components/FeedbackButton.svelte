@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronLeft, Mail, MessageSquareText, Users } from '@lucide/svelte';
+	import { ChevronLeft, Mail, MessageSquareText } from '@lucide/svelte';
 	import Sheet from './Sheet.svelte';
 	import Button from './Button.svelte';
 	import Loader from './Loader.svelte';
@@ -9,7 +9,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { captureScreen } from '$lib/screenshot';
 	import { screenContext } from '$lib/screenContext.svelte';
-	import { SUPPORT_EMAIL, TESTERS_GROUP, emailHref } from '$lib/support';
+	import { SUPPORT_EMAIL, emailHref } from '$lib/support';
 
 	// Testers' feedback, reachable from every app screen: a pill in the bottom corner,
 	// above the phone's nav bar and the lesson / exam action bar. Signed in,
@@ -139,16 +139,6 @@
 			</form>
 		{/if}
 
-		{#if TESTERS_GROUP && auth.loggedIn}
-			<a href={TESTERS_GROUP} target="_blank" rel="noopener" class={row}>
-				<span class={icon}><Users size={20} aria-hidden="true" /></span>
-				<span class="flex-1">
-					<span class="block font-semibold">{t.group}</span>
-					<span class="block text-sm text-muted">{t.groupDesc}</span>
-				</span>
-				<ChevronLeft size={18} class="text-muted" aria-hidden="true" />
-			</a>
-		{/if}
 		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	</Sheet>
 </div>

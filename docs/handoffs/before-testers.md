@@ -2,9 +2,9 @@
 
 Things only the owner can do (dashboards, accounts, decisions). Tick and delete as done.
 
-## Alpha on production
+## COBE flag
 
-Testers use production. COBE is staff-only: admins (Supabase `app_metadata.role = 'admin'`) see it; everyone else sees "coming soon", no COBE on /plans or checkout, and the COBE AI routes answer 403. Open it: `COBE_OPEN = true` in `front/src/lib/alpha.ts`.
+COBE is staff-only: admins (Supabase `app_metadata.role = 'admin'`) see it; everyone else sees "coming soon" in the app, no COBE cards on the site, /plans or checkout, and the COBE AI and checkout routes answer 403. Open it: `COBE_OPEN = true` in `front/src/lib/flags.ts`.
 
 ## 2FA on every account
 

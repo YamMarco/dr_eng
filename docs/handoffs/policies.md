@@ -1,6 +1,6 @@
 # Handoff: legal (privacy, terms, accessibility)
 
-`/privacy`, `/terms` and `/accessibility` are live and final: copy in i18n `legal` (`front/src/lib/i18n/locales/he.ts`), rendered by `$lib/site/LegalPage.svelte`, linked from the site footer, settings (accessibility), sign-up consent and `TesterWelcome`. Services not open yet are covered by the "שירות בפיתוח ובהרצה" clause in both privacy and terms. Students are mostly minors (16-18): plain Hebrew a student can read. Bump `legal.updated` on every change.
+`/privacy`, `/terms` and `/accessibility` are live and final: copy in i18n `legal` (`front/src/lib/i18n/locales/he.ts`), rendered by `$lib/site/LegalPage.svelte`, linked from the site footer, settings (accessibility) and sign-up consent. New services are covered by "עדכונים ומשוב" (privacy) and "שינויים בשירות" (terms). Students are mostly minors (16-18): plain Hebrew a student can read. Bump `legal.updated` on every change.
 
 ## Facts the texts must match
 

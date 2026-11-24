@@ -8,7 +8,7 @@
 import { dev } from '$app/environment';
 import { error } from '@sveltejs/kit';
 import { and, eq, inArray, sql } from 'drizzle-orm';
-import { cobeVisible } from '$lib/alpha';
+import { cobeVisible } from '$lib/flags';
 import { access, billingEnabled } from './billing';
 import { accountsEnabled } from './supabase';
 import { db } from './db';

@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 	import Paywall from '$lib/components/Paywall.svelte';
 	import { access } from '$lib/access.svelte';
-	import { cobeVisible } from '$lib/alpha';
+	import { cobeVisible } from '$lib/flags';
 	import { auth } from '$lib/auth.svelte';
 
 	// The app and COBE are sold apart: a module the plan lacks shows a lock.
