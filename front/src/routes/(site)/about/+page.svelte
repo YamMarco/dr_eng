@@ -75,7 +75,8 @@
 					{#each section.features as feature, f (feature)}
 						{@const Icon = featureIcons[f]}
 						<li
-							class="flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-sm font-semibold text-brand-dark"
+							class="about-chip flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-sm font-semibold text-brand-dark"
+							style="--i: {f}; --tilt: {f % 2 ? 7 : -7}deg"
 						>
 							<Icon size={16} aria-hidden="true" />
 							{feature}
