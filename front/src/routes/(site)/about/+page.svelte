@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { BookOpen, Camera, Check, Lightbulb, Mail, PenLine, Target, Timer } from '@lucide/svelte';
-	import { resolve } from '$app/paths';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import JoinCtas from '$lib/site/JoinCtas.svelte';
@@ -90,12 +89,6 @@
 		<p lang="en" dir="ltr" class="text-lg font-bold italic">{t.motto}</p>
 		<p class="-mt-3 text-sm text-muted">{t.mottoGloss}</p>
 		<h2 class="mt-4 text-2xl font-extrabold">{t.finalTitle}</h2>
-		<div class="flex w-full justify-center text-start"><JoinCtas id="join" /></div>
-		<a
-			href={resolve('/plans')}
-			class="min-h-11 content-center font-semibold text-muted transition duration-100 hover:text-ink active:scale-[0.98]"
-		>
-			{i18n.dict.site.seePlans}
-		</a>
+		<div class="flex w-full justify-center text-start"><JoinCtas /></div>
 	</section>
 </main>

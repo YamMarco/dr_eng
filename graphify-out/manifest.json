@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795499154.7506306,
-    "ast_hash": "062bfd6d6eb0c14cc78edbf794c7c466",
+    "mtime": 1795499737.182876,
+    "ast_hash": "0c5b21b3dc69b728d91cb214cf45ad0b",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1325,8 +1325,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+page.svelte": {
-    "mtime": 1793731835.4587932,
-    "ast_hash": "ef2d2cb745d385bd39c87dc62a1fa5ba",
+    "mtime": 1795499725.3249288,
+    "ast_hash": "5d51c401896e1f28683f147b89a04c1b",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/privacy/+page.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795499183.2713935,
-    "ast_hash": "92056d37094cb0392b1552f89d2c6f7f",
+    "mtime": 1795499764.7057352,
+    "ast_hash": "6c125388d911bdab64c01ff883fb89d9",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1680,8 +1680,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/about/+page.svelte": {
-    "mtime": 1795243964.709039,
-    "ast_hash": "3ee7c93460a66bcd3fdfb96a714258c0",
+    "mtime": 1795499740.5364206,
+    "ast_hash": "29fac8d2b4eee0a90d76a22b612e815e",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/checkout/+page.svelte": {
@@ -1910,8 +1910,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/site/JoinCtas.svelte": {
-    "mtime": 1793731835.4567883,
-    "ast_hash": "d3de166eabd6902aea5ea7f3bd71b280",
+    "mtime": 1795499725.3231711,
+    "ast_hash": "7fd33594214a7bcc61836500db303d08",
     "semantic_hash": ""
   },
   "front/src/lib/site/LadderArt.svelte": {

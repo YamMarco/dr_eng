@@ -95,7 +95,7 @@ One weekly group lesson for plans with the `lessons` product (`productsOf`: the 
 
 ## Waitlist
 
-The home page CTAs (`$lib/site/JoinCtas.svelte`: waitlist or code, side by side) post an email to `/api/waitlist`: no account, stored lower-cased in the `waitlist` table (email + time only, users are minors). Duplicates are ignored, a honeypot field drops bots, and a daily cap (`DAILY_CAP`, 429) bounds what a script can write. Off (503) without `DATABASE_URL`. Read the list in Supabase's table editor.
+The site no longer links to it (`$lib/site/JoinCtas.svelte` = pick a plan or sign in); `/api/waitlist` still takes an email: no account, stored lower-cased in the `waitlist` table (email + time only, users are minors). Duplicates are ignored, a honeypot field drops bots, and a daily cap (`DAILY_CAP`, 429) bounds what a script can write. Off (503) without `DATABASE_URL`. Read the list in Supabase's table editor.
 
 ## Progress sync
 

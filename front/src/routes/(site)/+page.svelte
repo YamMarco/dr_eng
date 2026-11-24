@@ -6,7 +6,6 @@
 		Coffee,
 		Flame,
 		Heart,
-		KeyRound,
 		Layers,
 		Mic,
 		PenLine,
@@ -29,8 +28,8 @@
 	import { homeMedia } from '$lib/site/media';
 	import { reveal } from '$lib/site/reveal';
 
-	// Public front door, for testers now and strangers later: what this is, why it
-	// works, one way in (a tester code). Everything else lives in /app.
+	// Public front door: what this is, why it works, one way in (a plan).
+	// Everything else lives in /app.
 
 	let t = $derived(i18n.dict.site.home);
 
@@ -48,7 +47,7 @@
 		exam: Timer,
 		oral: Mic
 	};
-	const perkIcons = [KeyRound, Heart, RefreshCw];
+	const perkIcons = [BookOpen, Heart, RefreshCw];
 
 	// Per method card, in the order of `t.methods`.
 	const methodDemos: DemoKind[] = ['anchor', 'rescue', 'vocab', 'essay'];
@@ -99,7 +98,7 @@
 				class="flex w-full flex-col gap-3 motion-safe:animate-rise"
 				style="animation-delay: {staggerDelay(3)}ms"
 			>
-				<JoinCtas id="join" />
+				<JoinCtas />
 			</div>
 		</div>
 
@@ -307,31 +306,22 @@
 		</ul>
 	</section>
 
-	<!-- Testers -->
+	<!-- What you get -->
 	<section class="px-3 pb-20 sm:px-6 lg:pb-28">
 		<div
 			{@attach reveal}
 			class="mx-auto grid max-w-6xl gap-10 rounded-[2.5rem] bg-brand-soft px-6 py-12 sm:px-12 lg:grid-cols-[1fr_1.2fr] lg:py-16"
 		>
 			<div class="flex flex-col items-start gap-4">
-				{@render kicker(t.testersKicker)}
+				{@render kicker(t.perksKicker)}
 				<h2 class="text-3xl font-black tracking-tight text-balance sm:text-5xl">
-					{t.testersTitle}
+					{t.perksTitle}
 				</h2>
-				<p class="text-lg leading-relaxed text-muted">{t.testersBody}</p>
-				<div class="mt-2 flex w-full flex-col gap-3">
-					<Button href={resolve('/checkout')} class="sm:w-auto sm:self-start sm:px-8">
-						<KeyRound size={20} aria-hidden="true" />
-						{t.ctaCode}
-					</Button>
-					<a
-						href="#join"
-						class="flex items-center gap-1 text-sm font-semibold text-brand-dark hover:underline"
-					>
-						{t.noCode}
-						<ArrowLeft size={14} aria-hidden="true" />
-					</a>
-				</div>
+				<p class="text-lg leading-relaxed text-muted">{t.perksBody}</p>
+				<Button href={resolve('/plans')} class="mt-2 sm:w-auto sm:self-start sm:px-8">
+					{t.ctaStart}
+					<ArrowLeft size={20} aria-hidden="true" />
+				</Button>
 			</div>
 			<ul class="flex flex-col gap-3">
 				{#each t.perks as perk, i (perk.title)}
@@ -359,7 +349,7 @@
 		<div {@attach reveal} class="flex flex-col items-center gap-4">
 			<h2 class="text-4xl font-black tracking-tight text-balance sm:text-6xl">{t.finalTitle}</h2>
 			<p class="max-w-xl text-lg text-muted">{t.finalBody}</p>
-			<div class="mt-2 flex w-full justify-center text-start"><JoinCtas id="join-end" /></div>
+			<div class="mt-2 flex w-full justify-center text-start"><JoinCtas /></div>
 		</div>
 	</section>
 </main>
