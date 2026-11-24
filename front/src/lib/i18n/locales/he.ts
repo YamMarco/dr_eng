@@ -55,8 +55,9 @@ export const he = {
 			titleTail: 'אותה.',
 			intro:
 				'לא סתם פותרים: מקבלים טכניקה למינימום סטרס ומקסימום ציון במבחן, כל זאת עם פידבק מיידי ואישי.',
-			ctaStart: 'מתחילים עכשיו',
-			ctaSignIn: 'כבר יש לי חשבון',
+			ctaHero: 'התחילו עכשיו',
+			ctaPerks: 'לבחירת מסלול',
+			ctaFinal: 'בואו נתחיל',
 			heroAlt: 'תלמידה לומדת אנגלית בטלפון',
 			mock: {
 				label: 'תצוגה של מסך הבית באפליקציה',
@@ -374,7 +375,8 @@ export const he = {
 			}
 		],
 		feedbackSubject: 'משוב על EngUp',
-		finalTitle: 'מוכנים להתחיל?'
+		finalTitle: 'מוכנים להתחיל?',
+		cta: 'הצטרפו אלינו'
 	},
 	plans: {
 		title: 'מסלולים',
@@ -438,12 +440,8 @@ export const he = {
 			'COBE הוא שיחה חיה באנגלית עם בינה מלאכותית, עם משוב אחרי כל תשובה. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
 		cobeOnlyChoose: 'רק COBE',
 		faqTitle: 'שאלות נפוצות',
-		/** `needs`: shown only on the launch version, or once that promise is on (plans.ts GUARANTEE / INSTALLMENTS). */
+		/** `needs`: shown only on the launch version, or once the guarantee is on (plans.ts GUARANTEE). */
 		faq: [
-			{
-				q: 'יש חיוב מתחדש?',
-				a: 'לא. קונים פעם אחת את התקופה שבחרתם. כשהיא נגמרת, מחליטים אם להמשיך.'
-			},
 			{
 				q: 'מה זה מחיר השקה?',
 				a: 'מי שמצטרף עד 31.12 משלם פחות על השיעורים הקבוצתיים, והמחיר נשאר לכל התקופה שבחר.',
@@ -452,11 +450,6 @@ export const he = {
 			{
 				q: 'כמה זה יוצא לעומת מורה פרטי?',
 				a: 'שיעור פרטי בשבוע עולה בערך 600 ₪ בחודש. במסלול הקבוצתי מקבלים 4 שיעורים עם מורה ותרגול יומי באפליקציה, בפחות משליש מהמחיר.'
-			},
-			{
-				q: 'אפשר לשלם בתשלומים?',
-				a: 'כן. במסלולים של 3 חודשים ומעלה משלמים בתשלום חודשי.',
-				needs: 'installments'
 			},
 			{
 				q: 'ומה אם זה לא מתאים לנו?',
@@ -474,12 +467,8 @@ export const he = {
 			{
 				q: 'מה מתאים לי, 4 או 5 יחידות?',
 				a: 'כל המסלולים כוללים את שתי הרמות. בוחרים רמה באפליקציה ואפשר להחליף בכל רגע.'
-			},
-			{
-				q: 'צריכים עוד זמן אחרי יוני?',
-				a: 'מאריכים בעוד חודש בכל רגע, והזמן מתווסף לזמן שנשאר לכם.'
 			}
-		] as { q: string; a: string; needs?: 'launch' | 'guarantee' | 'installments' }[],
+		] as { q: string; a: string; needs?: 'launch' | 'guarantee' }[],
 		offers: {
 			premium: {
 				name: 'עצמאי',
@@ -1328,10 +1317,9 @@ export const he = {
 	},
 	settings: {
 		title: 'הגדרות',
-		languageSection: 'שפה',
 		interfaceLanguage: 'שפת הממשק',
 		interfaceLanguageEn: 'Interface language',
-		appearanceSection: 'מראה',
+		appearanceSection: 'מראה ושפה',
 		theme: 'ערכת נושא',
 		themeSystem: 'אוטומטי',
 		themeLight: 'בהיר',
@@ -1345,8 +1333,8 @@ export const he = {
 		soundEffectsDesc: 'צליל בתשובה נכונה או שגויה',
 		voice: 'קול המילים',
 		voiceDesc: 'מי מקריא את מילות אוצר המילים',
-		voiceFemale: 'אישה',
-		voiceMale: 'גבר',
+		voiceFemale: 'אמה',
+		voiceMale: 'ג׳ורג׳',
 		dailyReminders: 'תזכורת יומית',
 		dailyRemindersDesc: 'התראה אחת בשעה שתבחרו, רק בימים שעוד לא תרגלתם',
 		remindersHour: 'שעת התזכורת',

@@ -98,8 +98,7 @@
 			(entry) =>
 				!entry.needs ||
 				(entry.needs === 'launch' && launch) ||
-				(entry.needs === 'guarantee' && showGuarantee) ||
-				(entry.needs === 'installments' && showInstallments)
+				(entry.needs === 'guarantee' && showGuarantee)
 		)
 	);
 
@@ -446,6 +445,20 @@
 			</div>
 		</section>
 	{/snippet}
+	{#if showCobe}
+		{@render standalone(
+			'cobe',
+			Mic,
+			t.cobeOnlyTitle,
+			t.cobeOnlyBody,
+			perMonth(plan('cobe', cycle, false)),
+			t.perMonth,
+			t.cobeOnlyChoose,
+			checkoutHref(plan('cobe', cycle, false).id)
+		)}
+	{/if}
+
+	<!-- Organizations: right above the FAQ. -->
 	<section
 		{@attach reveal}
 		class="flex flex-col gap-4 rounded-3xl bg-surface p-6 ring-1 ring-line/70 sm:flex-row sm:items-center sm:gap-8"
@@ -476,18 +489,6 @@
 			</Button>
 		</div>
 	</section>
-	{#if showCobe}
-		{@render standalone(
-			'cobe',
-			Mic,
-			t.cobeOnlyTitle,
-			t.cobeOnlyBody,
-			perMonth(plan('cobe', cycle, false)),
-			t.perMonth,
-			t.cobeOnlyChoose,
-			checkoutHref(plan('cobe', cycle, false).id)
-		)}
-	{/if}
 
 	<Faq title={t.faqTitle} items={faq} />
 </main>

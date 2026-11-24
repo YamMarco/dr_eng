@@ -2,7 +2,8 @@
 	import { BookOpen, Camera, Check, Lightbulb, Mail, PenLine, Target, Timer } from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
-	import JoinCtas from '$lib/site/JoinCtas.svelte';
+	import { resolve } from '$app/paths';
+	import Button from '$lib/components/Button.svelte';
 	import { reveal } from '$lib/site/reveal';
 	import { emailHref } from '$lib/support';
 
@@ -89,6 +90,6 @@
 		<p lang="en" dir="ltr" class="text-lg font-bold italic">{t.motto}</p>
 		<p class="-mt-3 text-sm text-muted">{t.mottoGloss}</p>
 		<h2 class="mt-4 text-2xl font-extrabold">{t.finalTitle}</h2>
-		<div class="flex w-full justify-center text-start"><JoinCtas /></div>
+		<div class="w-full max-w-xs"><Button href={resolve('/plans')}>{t.cta}</Button></div>
 	</section>
 </main>

@@ -47,11 +47,45 @@
 <AppBar title={i18n.dict.settings.title} />
 
 <main class="app-col flex-1 px-4 pt-6 pb-28">
+	<section
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
+		class="rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
+	>
+		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.appearanceSection}</h2>
+		<ul class="mt-2 flex flex-col divide-y divide-line/70">
+			<li class="flex flex-wrap items-center justify-between gap-4 px-5 py-4">
+				<span class="font-semibold">{i18n.dict.settings.theme}</span>
+				<Segmented
+					options={themeOptions.map((o) => ({ value: o.value, label: o.label() }))}
+					value={themeStore.mode}
+					label={i18n.dict.settings.theme}
+					onchange={(mode) => themeStore.setMode(mode)}
+				/>
+			</li>
+			<li class="flex items-center justify-between gap-4 px-5 py-4">
+				<span>
+					<span class="block font-semibold">{i18n.dict.settings.interfaceLanguage}</span>
+					<span class="block text-sm text-muted">{i18n.dict.settings.interfaceLanguageEn}</span>
+				</span>
+				<select
+					value={i18n.language}
+					onchange={(e) => i18n.setLanguage(e.currentTarget.value as Language)}
+					aria-label={i18n.dict.settings.interfaceLanguage}
+					class="min-h-11 rounded-xl border-2 border-line bg-canvas px-3 py-2 font-semibold text-ink transition focus:border-brand"
+				>
+					{#each languages as option (option.value)}
+						<option value={option.value}>{option.label}</option>
+					{/each}
+				</select>
+			</li>
+		</ul>
+	</section>
+
 	{#if profile.value}
 		{@const current = profile.value}
 		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(0), easing: cubicOut }}
-			class="rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+			class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 		>
 			<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.goalSection}</h2>
 			<ul class="mt-2 flex flex-col divide-y divide-line/70">
@@ -101,7 +135,7 @@
 	{/if}
 
 	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(1), easing: cubicOut }}
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
 		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 	>
 		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.practiceSection}</h2>
@@ -151,57 +185,14 @@
 		</ul>
 	</section>
 
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(2), easing: cubicOut }}
-		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
-	>
-		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.appearanceSection}</h2>
-		<ul class="mt-2 flex flex-col divide-y divide-line/70">
-			<li class="flex items-center justify-between gap-4 px-5 py-4">
-				<span class="font-semibold">{i18n.dict.settings.theme}</span>
-				<Segmented
-					options={themeOptions.map((o) => ({ value: o.value, label: o.label() }))}
-					value={themeStore.mode}
-					label={i18n.dict.settings.theme}
-					onchange={(mode) => themeStore.setMode(mode)}
-				/>
-			</li>
-		</ul>
-	</section>
-
-	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(3), easing: cubicOut }}
-		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
-	>
-		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.languageSection}</h2>
-		<ul class="mt-2 flex flex-col divide-y divide-line/70">
-			<li class="flex items-center justify-between gap-4 px-5 py-4">
-				<span>
-					<span class="block font-semibold">{i18n.dict.settings.interfaceLanguage}</span>
-					<span class="block text-sm text-muted">{i18n.dict.settings.interfaceLanguageEn}</span>
-				</span>
-				<select
-					value={i18n.language}
-					onchange={(e) => i18n.setLanguage(e.currentTarget.value as Language)}
-					aria-label={i18n.dict.settings.interfaceLanguage}
-					class="min-h-11 rounded-xl border-2 border-line bg-canvas px-3 py-2 font-semibold text-ink transition focus:border-brand"
-				>
-					{#each languages as option (option.value)}
-						<option value={option.value}>{option.label}</option>
-					{/each}
-				</select>
-			</li>
-		</ul>
-	</section>
-
 	{#if auth.enabled}
-		<AccountSection index={4} />
+		<AccountSection index={3} />
 	{/if}
 
-	<SupportSection index={5} />
+	<SupportSection index={4} />
 
 	<section
-		in:fly={{ y: 12, duration: 300, delay: staggerDelay(6), easing: cubicOut }}
+		in:fly={{ y: 12, duration: 300, delay: staggerDelay(5), easing: cubicOut }}
 		class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 	>
 		<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.aboutSection}</h2>
@@ -236,7 +227,7 @@
 
 	{#if auth.isAdmin}
 		<section
-			in:fly={{ y: 12, duration: 300, delay: staggerDelay(7), easing: cubicOut }}
+			in:fly={{ y: 12, duration: 300, delay: staggerDelay(6), easing: cubicOut }}
 			class="mt-6 rounded-3xl bg-surface shadow-md ring-1 shadow-overlay/5 ring-line/70"
 		>
 			<h2 class="px-5 pt-5 text-sm font-bold text-muted">{i18n.dict.settings.developerSection}</h2>

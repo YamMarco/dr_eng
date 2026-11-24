@@ -24,7 +24,6 @@
 	import PhoneMock from '$lib/site/PhoneMock.svelte';
 	import PulseLine from '$lib/site/PulseLine.svelte';
 	import StepVignette from '$lib/site/StepVignette.svelte';
-	import JoinCtas from '$lib/site/JoinCtas.svelte';
 	import { homeMedia } from '$lib/site/media';
 	import { reveal } from '$lib/site/reveal';
 
@@ -95,10 +94,10 @@
 				{t.intro}
 			</p>
 			<div
-				class="flex w-full flex-col gap-3 motion-safe:animate-rise"
+				class="w-full max-w-xs motion-safe:animate-rise"
 				style="animation-delay: {staggerDelay(3)}ms"
 			>
-				<JoinCtas />
+				<Button href={resolve('/plans')}>{t.ctaHero}</Button>
 			</div>
 		</div>
 
@@ -319,7 +318,7 @@
 				</h2>
 				<p class="text-lg leading-relaxed text-muted">{t.perksBody}</p>
 				<Button href={resolve('/plans')} class="mt-2 sm:w-auto sm:self-start sm:px-8">
-					{t.ctaStart}
+					{t.ctaPerks}
 					<ArrowLeft size={20} aria-hidden="true" />
 				</Button>
 			</div>
@@ -349,7 +348,7 @@
 		<div {@attach reveal} class="flex flex-col items-center gap-4">
 			<h2 class="text-4xl font-black tracking-tight text-balance sm:text-6xl">{t.finalTitle}</h2>
 			<p class="max-w-xl text-lg text-muted">{t.finalBody}</p>
-			<div class="mt-2 flex w-full justify-center text-start"><JoinCtas /></div>
+			<div class="mt-2 w-full max-w-xs"><Button href={resolve('/plans')}>{t.ctaFinal}</Button></div>
 		</div>
 	</section>
 </main>

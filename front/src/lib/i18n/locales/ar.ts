@@ -504,10 +504,9 @@ export const ar: DictionaryOverride = {
 	},
 	settings: {
 		title: 'الإعدادات',
-		languageSection: 'اللغة',
 		interfaceLanguage: 'لغة الواجهة',
 		interfaceLanguageEn: 'Interface language',
-		appearanceSection: 'المظهر',
+		appearanceSection: 'المظهر واللغة',
 		theme: 'السمة',
 		themeSystem: 'تلقائي',
 		themeLight: 'فاتح',
