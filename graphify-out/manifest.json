@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795505276.3268406,
-    "ast_hash": "35043a5a55f5a93fea3dd0e5fb023308",
+    "mtime": 1795517160.1185856,
+    "ast_hash": "1067c4a6ac54a94dc9e60c7b23bc931d",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1680,8 +1680,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/about/+page.svelte": {
-    "mtime": 1795501006.6467218,
-    "ast_hash": "34e36bd08e99734457b44fb5a214132c",
+    "mtime": 1795517138.8663323,
+    "ast_hash": "d5b34b15fd7e7e35c31624b50a6e2502",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/checkout/+page.svelte": {
@@ -2947,6 +2947,11 @@
   "front/scripts/voice-ab.py": {
     "mtime": 1795503375.6322975,
     "ast_hash": "ed47f6ff0f19d5389c0a2d292514b44d",
+    "semantic_hash": ""
+  },
+  "docs/handoffs/session-timeout.md": {
+    "mtime": 1795517009.6398652,
+    "ast_hash": "189748b76fee85960132df513c96b860",
     "semantic_hash": ""
   }
 }

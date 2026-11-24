@@ -1,5 +1,16 @@
 <script lang="ts">
-	import { BookOpen, Camera, Check, Lightbulb, Mail, PenLine, Target, Timer } from '@lucide/svelte';
+	import {
+		BookOpen,
+		Camera,
+		Check,
+		Compass,
+		Lightbulb,
+		Mail,
+		MessageSquareText,
+		PenLine,
+		Target,
+		Timer
+	} from '@lucide/svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
 	import { resolve } from '$app/paths';
@@ -10,7 +21,7 @@
 	let t = $derived(i18n.dict.about);
 
 	// Same order as about.sections[].features.
-	const featureIcons = [Lightbulb, Target, BookOpen, PenLine, Timer];
+	const featureIcons = [Compass, Lightbulb, Target, BookOpen, PenLine, Timer, MessageSquareText];
 </script>
 
 <svelte:head>
@@ -50,6 +61,7 @@
 				</li>
 			{/each}
 		</ul>
+		<blockquote class="border-s-4 border-brand ps-4 leading-relaxed">״{t.teacher.quote}״</blockquote>
 	</figure>
 
 	{#each t.sections as section, i (section.title)}
