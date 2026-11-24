@@ -5034,7 +5034,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activefield.svelte.ts"
     },
@@ -5047,7 +5047,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_activefield",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activefield"
     },
@@ -5060,7 +5060,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_activeline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "activeline"
     },
@@ -5072,7 +5072,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_withactive",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "withactive()"
     },
@@ -5084,7 +5084,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_currentblock",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "currentblock()"
     },
@@ -5096,7 +5096,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_selectedblocks",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "selectedblocks()"
     },
@@ -5108,7 +5108,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_notifyinput",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "notifyinput()"
     },
@@ -5120,7 +5120,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_updateactiveline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "updateactiveline()"
     },
@@ -5132,7 +5132,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatbold",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatbold()"
     },
@@ -5144,7 +5144,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatitalic",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatitalic()"
     },
@@ -5156,7 +5156,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatunderline",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatunderline()"
     },
@@ -5168,7 +5168,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatstrike",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatstrike()"
     },
@@ -5180,7 +5180,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcode",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcode()"
     },
@@ -5192,7 +5192,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatlink",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatlink()"
     },
@@ -5204,7 +5204,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcolor",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcolor()"
     },
@@ -5216,7 +5216,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatheader",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatheader()"
     },
@@ -5228,7 +5228,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatalign",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatalign()"
     },
@@ -5241,7 +5241,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_blockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "blockkind"
     },
@@ -5252,7 +5252,7 @@
       "source_location": "L203",
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_block_kind_class",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "block_kind_class"
     },
@@ -5264,7 +5264,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_applyblockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "applyblockkind()"
     },
@@ -5276,7 +5276,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_toggleblockkind",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "toggleblockkind()"
     },
@@ -5288,7 +5288,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formattextblock",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formattextblock()"
     },
@@ -5300,7 +5300,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatcallout",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatcallout()"
     },
@@ -5312,7 +5312,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatbulletlist",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatbulletlist()"
     },
@@ -5324,7 +5324,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatnumberlist",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatnumberlist()"
     },
@@ -5336,7 +5336,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatdivider",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatdivider()"
     },
@@ -5348,7 +5348,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_content_edit_activefield_svelte_formatdirection",
-      "community": 31,
+      "community": 10,
       "community_name": "activeField.svelte.ts",
       "norm_label": "formatdirection()"
     },
@@ -10082,8 +10082,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogress.svelte.ts"
     },
     {
@@ -10095,8 +10095,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_progressmap",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "progressmap"
     },
     {
@@ -10107,8 +10107,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_load",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "load()"
     },
     {
@@ -10119,8 +10119,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_persist",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "persist()"
     },
     {
@@ -10132,8 +10132,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogressstore"
     },
     {
@@ -10144,8 +10144,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_constructor",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".constructor()"
     },
     {
@@ -10156,8 +10156,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_get",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".get()"
     },
     {
@@ -10168,8 +10168,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_apply",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".apply()"
     },
     {
@@ -10180,8 +10180,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_migrate",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".migrate()"
     },
     {
@@ -10192,8 +10192,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogressstore_resetall",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": ".resetall()"
     },
     {
@@ -10203,8 +10203,8 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "front_src_lib_deck_deckprogress_svelte_deckprogress",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogress"
     },
     {
@@ -10368,8 +10368,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "scheduler.ts"
     },
     {
@@ -10379,8 +10379,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_interval_days",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "interval_days"
     },
     {
@@ -10390,8 +10390,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_max_box",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "max_box"
     },
     {
@@ -10414,8 +10414,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_adddays",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "adddays()"
     },
     {
@@ -10426,8 +10426,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_review",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "review()"
     },
     {
@@ -10438,8 +10438,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_scheduler_duewords",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 60,
+      "community_name": "session.ts",
       "norm_label": "duewords()"
     },
     {
@@ -10751,8 +10751,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_types_wordstate",
-      "community": 60,
-      "community_name": "session.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "wordstate"
     },
     {
@@ -10764,8 +10764,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "front_src_lib_deck_types_deckprogress",
-      "community": 52,
-      "community_name": "deck/index.ts",
+      "community": 31,
+      "community_name": "deckProgress.svelte.ts",
       "norm_label": "deckprogress"
     },
     {
@@ -12548,7 +12548,7 @@
       "label": "Dictionary",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1882",
+      "source_location": "L1883",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -12561,7 +12561,7 @@
       "label": "DictionaryOverride",
       "file_type": "code",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1885",
+      "source_location": "L1886",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -13752,8 +13752,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "passagetext.svelte"
     },
     {
@@ -13763,8 +13763,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext_gutter",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "gutter"
     },
     {
@@ -13774,8 +13774,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_passagetext_lines",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "lines"
     },
     {
@@ -15083,8 +15083,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "front_src_lib_lesson_screens_minimarkdown_striplineattrs",
-      "community": 10,
-      "community_name": "PassageText.svelte",
+      "community": 93,
+      "community_name": "miniMarkdown.ts",
       "norm_label": "striplineattrs()"
     },
     {
@@ -62784,7 +62784,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1882",
+      "source_location": "L1883",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -62795,7 +62795,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "front/src/lib/i18n/locales/he.ts",
-      "source_location": "L1885",
+      "source_location": "L1886",
       "weight": 1.0,
       "_origin": "ast",
       "source": "front_src_lib_i18n_locales_he",
@@ -91037,5 +91037,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f5503e970ae008890ddd8dafaafd916be8839766"
+  "built_at_commit": "a6859fd96092b3a43eddf9568f376e91f4dba6be"
 }

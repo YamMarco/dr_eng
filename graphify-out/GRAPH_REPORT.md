@@ -1,7 +1,7 @@
 # Graph Report - dr_eng  (2026-11-24)
 
 ## Corpus Check
-- 563 files · ~522,280 words
+- 563 files · ~522,318 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f5503e97`
+- Built from commit: `a6859fd9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -25,7 +25,7 @@
 - What You Must Do When Invoked
 - AuthStore
 - compilerOptions
-- PassageText.svelte
+- activeField.svelte.ts
 - graphify reference: extra exports and benchmark
 - Lesson structure
 - eslint.config.js
@@ -44,7 +44,7 @@
 - graphify reference: incremental update and cluster-only
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
-- activeField.svelte.ts
+- deckProgress.svelte.ts
 - extraction-spec.md
 - GraphEditor.svelte
 - [id]/+server.ts
@@ -273,9 +273,9 @@ Nodes (24): For /graphify add and --watch, For /graphify query, For the commit h
 Cohesion: 0.14
 Nodes (13): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, moduleResolution, resolveJsonModule, rewriteRelativeImportExtensions (+5 more)
 
-### Community 10 - "PassageText.svelte"
-Cohesion: 0.50
-Nodes (3): stripLineAttrs(), gutter, lines
+### Community 10 - "activeField.svelte.ts"
+Cohesion: 0.16
+Nodes (26): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKind, currentBlock(), formatAlign(), formatBold() (+18 more)
 
 ### Community 11 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -325,9 +325,9 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
-### Community 31 - "activeField.svelte.ts"
-Cohesion: 0.16
-Nodes (26): ActiveField, ActiveLine, applyBlockKind(), BLOCK_KIND_CLASS, BlockKind, currentBlock(), formatAlign(), formatBold() (+18 more)
+### Community 31 - "deckProgress.svelte.ts"
+Cohesion: 0.18
+Nodes (11): deckProgress, DeckProgressStore, load(), persist(), ProgressMap, addDays(), INTERVAL_DAYS, MAX_BOX (+3 more)
 
 ### Community 33 - "GraphEditor.svelte"
 Cohesion: 0.10
@@ -406,8 +406,8 @@ Cohesion: 0.17
 Nodes (11): 1. Gather context (if needed), 1. list-sections, 2. get-documentation, 2. Read the target file, 3. Make changes, 3. svelte-autofixer, 4. Validate changes, 5. Fix any issues (+3 more)
 
 ### Community 52 - "deck/index.ts"
-Cohesion: 0.08
-Nodes (34): eGlossAr, homeMeters, moduleSkills(), deckProgress, DeckProgressStore, load(), persist(), ProgressMap (+26 more)
+Cohesion: 0.13
+Nodes (23): eGlossAr, homeMeters, moduleSkills(), activeDecks(), Deck, decks, deckStats(), deckToday() (+15 more)
 
 ### Community 53 - "llm.ts"
 Cohesion: 0.22
@@ -434,8 +434,8 @@ Cohesion: 0.22
 Nodes (11): SpeakingVerdict, chatJson(), band, block(), gradeSpeakingAudio(), MAX_AUDIO_CHARS, speakingPrompt(), SpeakingRequest (+3 more)
 
 ### Community 60 - "session.ts"
-Cohesion: 0.12
-Nodes (30): listA, listB, listC, listD, w(), blankedExample(), buildSession(), clashes() (+22 more)
+Cohesion: 0.13
+Nodes (30): listA, listB, listC, listD, w(), dueWords(), blankedExample(), buildSession() (+22 more)
 
 ### Community 61 - "localize.svelte.ts"
 Cohesion: 0.22
@@ -550,8 +550,8 @@ Cohesion: 0.13
 Nodes (9): Fixtures, GradeBody, Mocks, PartBody, PIXEL, playThrough(), states, app (+1 more)
 
 ### Community 93 - "miniMarkdown.ts"
-Cohesion: 0.11
-Nodes (21): CALLOUT_ICONS, DEFAULT_CALLOUT_ICON, CALLOUT_BLOCK_CLASS, ESCAPE, escapeText(), HEADER_CLASS, isEnglishSentence(), isolateQuotes() (+13 more)
+Cohesion: 0.10
+Nodes (24): CALLOUT_ICONS, DEFAULT_CALLOUT_ICON, CALLOUT_BLOCK_CLASS, ESCAPE, escapeText(), HEADER_CLASS, isEnglishSentence(), isolateQuotes() (+16 more)
 
 ### Community 94 - "zoom.ts"
 Cohesion: 0.16

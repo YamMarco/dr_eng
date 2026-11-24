@@ -536,22 +536,33 @@ p + p .m-anchor {
 	}
 }
 
-/* About: feature chips drop in like tiles, then one light passes through them once. */
+/* About: feature chips drop in like tiles, a light passes through them once, then they
+   keep floating, each on its own phase. */
 @media (prefers-reduced-motion: no-preference) {
 	.about-chip {
-		transition: translate 150ms ease-out;
+		transition: scale 150ms ease-out;
 		animation:
 			chip-drop 560ms cubic-bezier(0.3, 1.45, 0.5, 1) both,
-			chip-light 650ms ease-in-out;
+			chip-light 650ms ease-in-out,
+			chip-float 2.8s ease-in-out infinite alternate;
 		animation-delay:
 			calc(var(--i) * 90ms),
-			calc(1000ms + var(--i) * 170ms);
+			calc(1000ms + var(--i) * 170ms),
+			calc(var(--i) * -0.7s);
 	}
 	.about-chip svg {
 		animation: chip-icon 650ms ease-in-out;
 		animation-delay: calc(1000ms + var(--i) * 170ms);
 	}
 	.about-chip:hover {
+		scale: 1.06;
+	}
+}
+@keyframes chip-float {
+	from {
+		translate: 0 2px;
+	}
+	to {
 		translate: 0 -3px;
 	}
 }
