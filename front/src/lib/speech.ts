@@ -52,13 +52,13 @@ export function say(text: string, rate: number): Promise<void> {
 	const spoken = speechText(text);
 	if (!spoken) return Promise.resolve();
 	const utterance = new SpeechSynthesisUtterance(spoken);
-	utterance.lang = 'en-GB';
+	utterance.lang = 'en-US';
 	utterance.rate = rate;
-	// Android reports `en_GB`. The voice list can still be empty on the first
+	// Android reports `en_US`. The voice list can still be empty on the first
 	// call; `lang` alone then lets the browser choose.
 	const voice = speechSynthesis
 		.getVoices()
-		.find((v) => v.lang.replace('_', '-').toLowerCase() === 'en-gb');
+		.find((v) => v.lang.replace('_', '-').toLowerCase() === 'en-us');
 	if (voice) utterance.voice = voice;
 	hush();
 	return new Promise((resolve) => {

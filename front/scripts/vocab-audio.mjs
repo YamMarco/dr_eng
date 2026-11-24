@@ -75,12 +75,18 @@ try {
 
 	for (const { voice, key } of jobs) {
 		const path = `${voice}/${key}.mp3`;
-		const { error } = await storage.from(BUCKET).upload(path, readFileSync(join(out, path)), {
-			contentType: 'audio/mpeg',
-			cacheControl: '31536000',
-			upsert: false
-		});
-		if (error) throw new Error(`${path}: ${error.message}`);
+		const body = readFileSync(join(out, path));
+		// Retries: after the long recording, the first request can hit a closed idle connection.
+		for (let attempt = 1; ; attempt++) {
+			const { error } = await storage.from(BUCKET).upload(path, body, {
+				contentType: 'audio/mpeg',
+				cacheControl: '31536000',
+				upsert: false
+			});
+			if (!error) break;
+			if (attempt === 3) throw new Error(`${path}: ${error.message}`);
+			await new Promise((r) => setTimeout(r, 1000 * attempt));
+		}
 	}
 	console.log(`uploaded ${jobs.length}`);
 } finally {

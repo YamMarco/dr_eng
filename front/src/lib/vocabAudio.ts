@@ -4,7 +4,7 @@
 // no audio field; a word without a recording falls back to the browser voice.
 import { speechText } from './speechText.ts';
 
-export const VOICES = { female: 'bf_emma', male: 'bm_george' } as const;
+export const VOICES = { female: 'af_sky', male: 'am_adam' } as const;
 export type VoiceGender = keyof typeof VOICES;
 
 /** File-name key for a word: 'Look forward to' -> 'look-forward-to'. Empty = not recordable. */

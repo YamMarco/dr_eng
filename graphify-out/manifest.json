@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795503595.8978975,
-    "ast_hash": "443c1b273258ac2af61fe8680a4e2ff3",
+    "mtime": 1795505276.3268406,
+    "ast_hash": "35043a5a55f5a93fea3dd0e5fb023308",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -625,8 +625,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/speech.ts": {
-    "mtime": 1795255244.347212,
-    "ast_hash": "82c8dfd05c115809ec000b8600f39f95",
+    "mtime": 1795505276.2865758,
+    "ast_hash": "df4e7a8d2225fa02cbb6f59b49c08962",
     "semantic_hash": ""
   },
   "front/src/lib/quizzes.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795502607.4604833,
-    "ast_hash": "4bdf9512eccba8864231e5663d0b0d56",
+    "mtime": 1795505276.36569,
+    "ast_hash": "2ef2c18f76ee3a34da92f85ced8e9cbe",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -2880,8 +2880,8 @@
     "semantic_hash": ""
   },
   "front/scripts/vocab-audio.py": {
-    "mtime": 1795255415.2413027,
-    "ast_hash": "eb31b8e2a4e6ec112534b091d742b5cd",
+    "mtime": 1795505282.0005589,
+    "ast_hash": "08eceb4cd8b295d0adc217b9d3f30783",
     "semantic_hash": ""
   },
   "front/scripts/vocab-words.mjs": {
@@ -2890,13 +2890,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/speechText.ts": {
-    "mtime": 1795255244.347212,
-    "ast_hash": "7abcbeafa9388a56f96fa00e7fdc4475",
+    "mtime": 1795505266.4653807,
+    "ast_hash": "a7f3319966fbc4cdef01fa15134d02f3",
     "semantic_hash": ""
   },
   "front/src/lib/vocabAudio.ts": {
-    "mtime": 1795255244.347212,
-    "ast_hash": "ff2caadf10ae90a4d0e771b0515ba909",
+    "mtime": 1795505267.417965,
+    "ast_hash": "fd467d0cbdddfab4ad9d2d232e372394",
     "semantic_hash": ""
   },
   "front/src/lib/voicePref.svelte.ts": {
@@ -2925,8 +2925,8 @@
     "semantic_hash": ""
   },
   "front/scripts/vocab-audio.mjs": {
-    "mtime": 1795255478.7191987,
-    "ast_hash": "1594676c755f52f617f1ad921eb01958",
+    "mtime": 1795508535.6199918,
+    "ast_hash": "b1a5413db4d7128ccf4f3b23ed0501f3",
     "semantic_hash": ""
   },
   "docs/handoffs/voice.md": {

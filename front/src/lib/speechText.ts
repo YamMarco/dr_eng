@@ -6,6 +6,7 @@
 // reader a new quirk.
 const RULES: [RegExp, string][] = [
 	[/\*\*|\{\/?\w*:?[^}]*\}/g, ''], // mini-markdown markers: **bold**, {c:red}...{/c}
+	[/\s*\([^)]*\)/g, ''], // (optional words) are not read: '(all) on your own' -> 'on your own'
 	[/\s*\/\s*/g, ', '] // singular/plural -> a short pause between the forms
 ];
 
