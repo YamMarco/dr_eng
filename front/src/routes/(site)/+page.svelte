@@ -15,7 +15,6 @@
 		Trophy
 	} from '@lucide/svelte';
 	import { resolve } from '$app/paths';
-	import { COBE_OPEN } from '$lib/flags';
 	import Button from '$lib/components/Button.svelte';
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { staggerDelay } from '$lib/motion';
@@ -52,13 +51,8 @@
 	// Per method card, in the order of `t.methods`.
 	const methodDemos: DemoKind[] = ['anchor', 'rescue', 'vocab', 'essay'];
 
-	// COBE cards only while COBE is open (the site is static: no staff view).
-	let moments = $derived(t.moments.filter((m) => COBE_OPEN || !m.cobe));
-	let methods = $derived(
-		t.methods
-			.map((method, i) => ({ ...method, demo: methodDemos[i] }))
-			.filter((m) => COBE_OPEN || !m.cobe)
-	);
+	let moments = $derived(t.moments);
+	let methods = $derived(t.methods.map((method, i) => ({ ...method, demo: methodDemos[i] })));
 </script>
 
 <svelte:head>
@@ -187,7 +181,7 @@
 					class="group relative aspect-[3/4] w-[78%] shrink-0 snap-start sm:w-80 lg:aspect-auto lg:w-auto {i ===
 					0
 						? 'lg:row-span-2'
-						: ''} {i === 3 && moments.length === 4 ? 'lg:col-span-2' : ''}"
+						: ''}"
 				>
 					<MediaFrame
 						media={homeMedia[moment.id]}
