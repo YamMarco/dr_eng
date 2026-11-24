@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795255244.3441222,
-    "ast_hash": "76fe1428bbba8faa725b3397fdd597ca",
+    "mtime": 1795499154.7506306,
+    "ast_hash": "062bfd6d6eb0c14cc78edbf794c7c466",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -1315,8 +1315,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.svelte": {
-    "mtime": 1794645040.8769784,
-    "ast_hash": "00b1231909b487b67e7717540368b13d",
+    "mtime": 1795499140.359185,
+    "ast_hash": "97b0873e351927c56520d486e2cb9e43",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/+layout.ts": {
@@ -1340,8 +1340,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.svelte": {
-    "mtime": 1793428250.5478354,
-    "ast_hash": "db51b5d80486e2d7affb9227c9713117",
+    "mtime": 1795499140.2741745,
+    "ast_hash": "17a9d050e926abfca34908137652cd96",
     "semantic_hash": ""
   },
   "front/src/routes/app/+layout.ts": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795255474.9015992,
-    "ast_hash": "fe13ba9f97519a0b34c7bedbe4be2ac8",
+    "mtime": 1795499183.2713935,
+    "ast_hash": "92056d37094cb0392b1552f89d2c6f7f",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1675,8 +1675,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/support.ts": {
-    "mtime": 1793428250.4599144,
-    "ast_hash": "0fa1ea7b8aacc40006f0e172c6945280",
+    "mtime": 1795499146.255717,
+    "ast_hash": "758ae52659673a59ae681ccc70dcaa0c",
     "semantic_hash": ""
   },
   "front/src/routes/(site)/about/+page.svelte": {
@@ -1695,8 +1695,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/(site)/plans/+page.svelte": {
-    "mtime": 1794645040.8784156,
-    "ast_hash": "c54001fdfe79ebad13bcd1b57be09569",
+    "mtime": 1795499157.6475134,
+    "ast_hash": "01d4326b10810162864c17992d695d70",
     "semantic_hash": ""
   },
   "front/src/routes/api/access/+server.ts": {
@@ -2105,8 +2105,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/kanban.ts": {
-    "mtime": 1795243589.7417955,
-    "ast_hash": "d00f9243dc5aae0f5d91a1f2072ac046",
+    "mtime": 1795499174.768425,
+    "ast_hash": "c80d54c9ad06299c664f445980614dc2",
     "semantic_hash": ""
   },
   "front/src/lib/server/kanban.ts": {
@@ -2115,13 +2115,13 @@
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/+page.svelte": {
-    "mtime": 1795243589.7538326,
-    "ast_hash": "92869d7c5a5bc27e576f9024336fd968",
+    "mtime": 1795499178.5502248,
+    "ast_hash": "a9c6a0b1bd3e8637deda41347afcd244",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/kanban/TaskCard.svelte": {
-    "mtime": 1793040660.394555,
-    "ast_hash": "318a3e185cec405429fe5a38d2111c75",
+    "mtime": 1795499173.8795874,
+    "ast_hash": "9c6bf5470b1a2a9332fc44102d7188cd",
     "semantic_hash": ""
   },
   "front/src/routes/api/kanban/+server.ts": {
@@ -2440,8 +2440,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/components/TesterWelcome.svelte": {
-    "mtime": 1793874942.8006456,
-    "ast_hash": "05ac04c341d272a082e4fada06fbcdab",
+    "mtime": 1795499146.3494787,
+    "ast_hash": "286d115d0eb0ffa6f6c7f6e985683ca4",
     "semantic_hash": ""
   },
   "front/src/lib/site/LegalPage.svelte": {
@@ -2947,6 +2947,11 @@
   "docs/handoffs/voice.md": {
     "mtime": 1795255475.7522068,
     "ast_hash": "d51e31b3ecc715e5f22b96ae7251573c",
+    "semantic_hash": ""
+  },
+  "front/src/routes/(site)/schools/+page.ts": {
+    "mtime": 1795499153.198198,
+    "ast_hash": "66eafcd5935d40e4ca13209787990e6c",
     "semantic_hash": ""
   }
 }

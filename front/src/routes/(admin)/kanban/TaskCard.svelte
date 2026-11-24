@@ -2,6 +2,7 @@
 	import { ChevronDown, ChevronsUp, Equal, Trash2, X } from '@lucide/svelte';
 	import {
 		PEOPLE,
+		PRIORITIES,
 		STATUSES,
 		TAGS_MAX,
 		TAG_MAX,
@@ -51,11 +52,6 @@
 		return `linear-gradient(to right, ${bands.join(', ')})`;
 	});
 
-	/** low -> medium -> high -> low */
-	function nextPriority() {
-		onsave({ priority: ((task.priority % 3) + 1) as Task['priority'] });
-	}
-
 	function saveTitle(event: Event) {
 		const input = event.currentTarget as HTMLTextAreaElement;
 		const title = input.value.trim();
@@ -103,15 +99,22 @@
 	</div>
 
 	<div class="flex flex-wrap gap-2">
-		<button
-			type="button"
-			onclick={nextPriority}
-			aria-label="עדיפות {priorityLabel[task.priority]} - לחיצה לשינוי"
-			title="עדיפות {priorityLabel[task.priority]}"
-			class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition active:scale-95 {priority.badge}"
+		<label
+			class="inline-flex min-h-9 items-center gap-1 rounded-lg ps-2 focus-within:ring-2 focus-within:ring-brand {priority.badge}"
 		>
 			<priority.icon size={18} strokeWidth={2.5} aria-hidden="true" />
-		</button>
+			<select
+				value={task.priority}
+				onchange={(event) =>
+					onsave({ priority: Number(event.currentTarget.value) as Task['priority'] })}
+				aria-label="עדיפות"
+				class="min-h-9 cursor-pointer rounded-lg bg-transparent pe-2 text-sm font-semibold outline-none"
+			>
+				{#each PRIORITIES as level (level)}
+					<option value={level}>{priorityLabel[level]}</option>
+				{/each}
+			</select>
+		</label>
 		<select
 			value={task.assignee ?? ''}
 			onchange={(event) => {

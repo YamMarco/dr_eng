@@ -21,6 +21,7 @@
 	import OfferPrice from '$lib/site/OfferPrice.svelte';
 	import Faq from '$lib/site/Faq.svelte';
 	import { reveal } from '$lib/site/reveal';
+	import { emailHref } from '$lib/support';
 	import {
 		COBE_ADDON,
 		CYCLES,
@@ -470,7 +471,7 @@
 		</div>
 		<div class="flex flex-col gap-2 sm:w-56 sm:shrink-0">
 			<p class="text-2xl font-extrabold">{t.enterprisePrice}</p>
-			<Button variant="secondary" href={resolve('/schools')}>
+			<Button variant="secondary" href={emailHref(t.enterpriseEmailSubject)}>
 				{t.enterpriseChoose}
 			</Button>
 		</div>

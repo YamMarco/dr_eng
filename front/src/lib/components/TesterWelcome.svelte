@@ -11,6 +11,7 @@
 
 	// Tester greeting: what a test version means, where feedback goes, and that the
 	// WhatsApp group shows their number. Once per device ("don't show again" is pre-checked).
+	// Not mounted for now: render it in routes/app/+layout.svelte (under NavBar) to bring it back.
 	const SEEN_KEY = 'tester-welcome-seen';
 
 	let t = $derived(i18n.dict.testerWelcome);

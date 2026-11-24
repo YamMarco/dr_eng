@@ -18,8 +18,7 @@
 
 	let links = $derived([
 		{ href: resolve('/about'), label: t.navAbout },
-		{ href: resolve('/plans'), label: t.navPlans },
-		{ href: resolve('/schools'), label: t.navSchools }
+		{ href: resolve('/plans'), label: t.navPlans }
 	]);
 </script>
 
@@ -73,7 +72,6 @@
 	</span>
 	<a href={resolve('/about')} class="hover:text-ink">{t.navAbout}</a>
 	<a href={resolve('/plans')} class="hover:text-ink">{t.navPlans}</a>
-	<a href={resolve('/schools')} class="hover:text-ink">{t.navSchools}</a>
 	<a href={resolve('/privacy')} class="hover:text-ink">{t.privacy}</a>
 	<a href={resolve('/terms')} class="hover:text-ink">{t.terms}</a>
 	<a href={resolve('/accessibility')} class="hover:text-ink">{t.accessibility}</a>

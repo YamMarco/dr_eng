@@ -6,6 +6,8 @@ export type Status = (typeof STATUSES)[number];
 export type Person = (typeof PEOPLE)[number];
 /** 1 = low, 2 = medium, 3 = high. */
 export type Priority = 1 | 2 | 3;
+/** Dropdown order: high first. */
+export const PRIORITIES: Priority[] = [3, 2, 1];
 
 export const TITLE_MAX = 300;
 export const TAG_MAX = 30;

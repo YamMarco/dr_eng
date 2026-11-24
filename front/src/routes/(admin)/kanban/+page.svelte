@@ -277,19 +277,21 @@
 						{/if}
 					{/each}
 					{#if archived.length}
-						<details class="group mt-auto rounded-2xl">
+						<!-- The column's last card; opens downward. -->
+						<details class="group rounded-2xl bg-surface/60 p-1 ring-1 ring-line/70">
 							<summary
-								class="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-xl px-2 text-sm font-semibold text-muted transition hover:bg-surface/60 [&::-webkit-details-marker]:hidden"
+								title="משימות שהושלמו ולא נערכו {ARCHIVE_DAYS} ימים ומעלה"
+								class="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-xl px-2 text-sm font-semibold text-muted transition hover:bg-surface [&::-webkit-details-marker]:hidden"
 							>
 								<ChevronLeft
 									size={16}
 									class="transition group-open:-rotate-90"
 									aria-hidden="true"
 								/>
-								ארכיון ({ARCHIVE_DAYS}+ ימים ללא עריכה)
+								ארכיון
 								<span class="ms-auto tabular-nums">{archived.length}</span>
 							</summary>
-							<div class="mt-3 flex flex-col gap-3">
+							<div class="flex flex-col gap-3 p-2">
 								{#each archived as task (task.id)}
 									{@render card(task)}
 								{/each}

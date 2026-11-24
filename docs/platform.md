@@ -6,7 +6,7 @@ One SvelteKit codebase (`front/`), two build targets.
 
 | Path | What | Web | Mobile |
 |---|---|---|---|
-| `/`, `/about`, `/plans`, `/schools`, `/privacy`, `/terms`, `/accessibility` | `routes/(site)` - public pages, pre-rendered (`/schools`: the organizations page; its form opens a prefilled email for now) | yes | redirects to `/app` |
+| `/`, `/about`, `/plans`, `/schools`, `/privacy`, `/terms`, `/accessibility` | `routes/(site)` - public pages, pre-rendered (`/schools`: organizations page, hidden - returns 404, unlinked; organizations email us from the /plans card) | yes | redirects to `/app` |
 | `/checkout` | `routes/(site)/checkout` - client-only (needs the session) | yes | redirects to `/app` |
 | `/app/...` | `routes/app` - the student app, client-only (`ssr = false`) | yes | yes (the whole bundle) |
 | `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |

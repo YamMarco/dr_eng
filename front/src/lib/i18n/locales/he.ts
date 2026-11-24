@@ -448,7 +448,8 @@ export const he = {
 			'ליווי והטמעה אישיים'
 		],
 		enterprisePrice: 'התאמה אישית',
-		enterpriseChoose: 'לכל הפרטים',
+		enterpriseChoose: 'כתבו לנו',
+		enterpriseEmailSubject: 'מסלול ארגונים',
 		cobeOnlyTitle: 'צריכים רק את הבחינה בעל פה?',
 		cobeOnlyBody:
 			'COBE הוא שיחה חיה באנגלית עם בינה מלאכותית, עם משוב אחרי כל תשובה. אפשר להוסיף אותו לכל מסלול, או לקנות רק אותו.',
@@ -1487,7 +1488,7 @@ export const he = {
 		missed: 'היה צריך לסמן',
 		yourAnswer: 'התשובה שלכם'
 	},
-	/** Shown once, on a tester's first visit to the app (TESTER_PHASE in $lib/support). */
+	/** TesterWelcome: a tester greeting, currently not mounted. */
 	testerWelcome: {
 		title: 'ברוכים הבאים לגרסת הניסיון!',
 		intro: 'אתם בין הראשונים שמתרגלים ב-EngUp. כמה דברים שחשוב לדעת:',
