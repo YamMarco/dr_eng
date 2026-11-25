@@ -5,7 +5,6 @@
 		Check,
 		Compass,
 		Lightbulb,
-		Mail,
 		MessageSquareText,
 		PenLine,
 		Target,
@@ -16,7 +15,6 @@
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import { reveal } from '$lib/site/reveal';
-	import { emailHref } from '$lib/support';
 
 	let t = $derived(i18n.dict.about);
 
@@ -92,18 +90,6 @@
 					{section.plansLink}
 					<ArrowLeft size={18} aria-hidden="true" />
 				</a>
-			{/if}
-			{#if section.feedback}
-				<!-- mailto, not a route -->
-				<!-- eslint-disable svelte/no-navigation-without-resolve -->
-				<a
-					href={emailHref(t.feedbackSubject)}
-					class="mt-1 flex min-h-11 w-fit items-center gap-2 font-semibold text-brand-dark transition duration-100 hover:underline active:scale-[0.98]"
-				>
-					<Mail size={18} aria-hidden="true" />
-					{section.feedback}
-				</a>
-				<!-- eslint-enable svelte/no-navigation-without-resolve -->
 			{/if}
 		</section>
 	{/each}
