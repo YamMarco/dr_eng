@@ -5,7 +5,7 @@
 
 # workflow
 - avoid screenshot tests if possible
-- commit after every medium+ change that works
+- medium+ change =>  pseudo code outline how the change will implmented & change and wait for approval, commit when its working and done
 - only create Hebrew UI text
 - if we about to change inter-module feature => layout a plan + tell what will change => wait for approval
 - keep RAM usage < 100% when working
