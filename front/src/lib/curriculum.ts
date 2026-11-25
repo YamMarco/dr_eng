@@ -1,3 +1,5 @@
+import { i18n } from '$lib/i18n/index.svelte';
+
 export type CurriculumSection = {
 	id: string;
 };
@@ -33,12 +35,16 @@ export const unitGroups: UnitGroup[] = [
 	{ id: '5', units: 5, moduleIds: ['e', 'f', 'g', 'cobe'] }
 ];
 
-/** "מודול C"; COBE is the oral exam, not a lettered module. */
+const literatureModules = new Set(['d', 'f']);
+
+/** "מודול C", "מודול D - ספרות"; COBE is the oral exam, not a lettered module. */
 export function moduleName(
 	mod: CurriculumModule,
 	unit: { modulePrefix: string; cobeName: string }
 ): string {
-	return mod.id === 'cobe' ? unit.cobeName : `${unit.modulePrefix} ${mod.letter}`;
+	if (mod.id === 'cobe') return unit.cobeName;
+	const name = `${unit.modulePrefix} ${mod.letter}`;
+	return literatureModules.has(mod.id) ? `${name} - ${i18n.dict.home.skills.literature}` : name;
 }
 
 export function getUnitGroup(id: string): UnitGroup | undefined {
