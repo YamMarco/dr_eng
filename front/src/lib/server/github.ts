@@ -13,13 +13,19 @@ function ghHeaders() {
 	};
 }
 
+/** No fallback: a preview without its own GITHUB_BRANCH must not commit to main. */
+function githubBranch(): string {
+	if (!env.GITHUB_BRANCH) throw new Error('GITHUB_BRANCH is not set');
+	return env.GITHUB_BRANCH;
+}
+
 function repoUrl(path: string) {
 	return `${API}/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${path}`;
 }
 
 /** `path` is repo-root-relative, e.g. "front/src/lib/content/c/c-3.ts". */
 export async function getGithubFile(path: string): Promise<{ content: string; sha: string }> {
-	const branch = env.GITHUB_BRANCH || 'main';
+	const branch = githubBranch();
 	const res = await fetch(`${repoUrl(path)}?ref=${branch}`, { headers: ghHeaders() });
 	if (!res.ok) throw new Error(`GitHub GET ${path} failed: ${res.status} ${await res.text()}`);
 	const data = (await res.json()) as { content: string; sha: string };
@@ -35,7 +41,7 @@ export async function putGithubFile(
 	sha: string | undefined,
 	message: string
 ): Promise<void> {
-	const branch = env.GITHUB_BRANCH || 'main';
+	const branch = githubBranch();
 	const res = await fetch(repoUrl(path), {
 		method: 'PUT',
 		headers: { ...ghHeaders(), 'content-type': 'application/json' },
