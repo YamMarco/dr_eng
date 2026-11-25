@@ -796,6 +796,10 @@ export const he = {
 		} as Record<string, string>,
 		lengthDeduction: (points: number, words: number) =>
 			`הורדה על אורך (${words} מילים): ${points}- נק'`,
+		readingDeduction: (grammar: number, spelling: number) =>
+			[grammar && `הורדה על דקדוק: ${grammar}- נק'`, spelling && `הורדה על כתיב: ${spelling}- נק'`]
+				.filter(Boolean)
+				.join(' · '),
 		gateZero: {
 			empty: 'לא נכתבה תשובה.',
 			'not-english': 'התשובה לא באנגלית.',
@@ -1844,9 +1848,7 @@ export const he = {
 				},
 				{
 					title: 'מה עוד לא נגיש',
-					body: [
-						'אנחנו משפרים את הנגישות של EngUp בכל עדכון. ידוע לנו על:'
-					],
+					body: ['אנחנו משפרים את הנגישות של EngUp בכל עדכון. ידוע לנו על:'],
 					items: [
 						'תרגילי הדיבור (COBE) דורשים דיבור, כי זו מהות הבחינה. מתקשים לדבר? פנו אלינו, ונמצא יחד דרך לתרגל.'
 					]

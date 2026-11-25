@@ -63,6 +63,11 @@
 		{#each grade.general ?? [] as tag (tag)}
 			<p class="text-xs font-semibold text-miss">• {i18n.dict.feedback.tag[tag] ?? tag}</p>
 		{/each}
+		{#if grade.deductions}
+			<p class="text-xs font-semibold text-miss">
+				{q.readingDeduction(grade.deductions.grammar, grade.deductions.spelling)}
+			</p>
+		{/if}
 		{#if grade.criteria}
 			<ul class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
 				{#each rubric.criteria as c (c.id)}

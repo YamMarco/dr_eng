@@ -1,43 +1,9 @@
 import type { CheckOptions, LengthReport } from './types';
+import { LENGTH_TABLES as TABLES } from '../content/rubrics/modules';
 
 /** Module C writing: required length (the default range). */
 export const MIN_WORDS = 70;
 export const MAX_WORDS = 90;
-
-/** Official deduction tables by required range (content/rubrics/*.json):
- *  [from words, points off], taken off Content first; under `zeroBelow` the task scores 0. */
-const TABLES: { min: number; max: number; zeroBelow: number; rows: [number, number][] }[] = [
-	// Module C
-	{
-		min: 70,
-		max: 90,
-		zeroBelow: 25,
-		rows: [
-			[70, 0],
-			[60, 1],
-			[50, 3],
-			[40, 6],
-			[30, 10],
-			[25, 15]
-		]
-	},
-	// Module G
-	{
-		min: 120,
-		max: 140,
-		zeroBelow: 50,
-		rows: [
-			[120, 0],
-			[110, 2],
-			[100, 4],
-			[90, 8],
-			[80, 12],
-			[70, 16],
-			[60, 18],
-			[50, 20]
-		]
-	}
-];
 /** A range with no official table (lesson tasks): no deduction, zero under 25. */
 const ZERO_BELOW = 25;
 /** Consecutive words shared with the source/prompt that make a sentence "copied". */

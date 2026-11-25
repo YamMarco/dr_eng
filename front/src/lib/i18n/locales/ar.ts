@@ -138,6 +138,13 @@ export const ar: DictionaryOverride = {
 		} as Record<string, string>,
 		lengthDeduction: (points: number, words: number) =>
 			`خصم بسبب الطول (${words} كلمة): -${points} نقاط`,
+		readingDeduction: (grammar: number, spelling: number) =>
+			[
+				grammar && `خصم بسبب القواعد: -${grammar} نقاط`,
+				spelling && `خصم بسبب الإملاء: -${spelling} نقاط`
+			]
+				.filter(Boolean)
+				.join(' · '),
 		gateZero: {
 			empty: 'لم تُكتب إجابة.',
 			'not-english': 'الإجابة ليست بالإنجليزية.',

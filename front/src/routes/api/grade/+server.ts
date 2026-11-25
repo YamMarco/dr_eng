@@ -18,6 +18,7 @@ import {
 	userPrompt
 } from '$lib/server/grade';
 import { getQuizNode } from '$lib/quiz';
+import { MODULE_RULES, moduleId, type ModuleId } from '$lib/content/rubrics';
 import { examParts } from '$lib/quiz/examParts';
 import type { GradeRequest, PartVerdict } from '$lib/feedback/types';
 import type { RequestHandler } from './$types';
@@ -50,8 +51,7 @@ const essay = z.object({
 	question,
 	text,
 	notes,
-	mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional(),
-	rubric: z.enum(['c', 'g']).optional()
+	mechanics: z.object({ spelling: count, punctuation: count, runOn: count }).optional()
 });
 const partId = z.string().min(1).max(80);
 const body = z.discriminatedUnion('kind', [
@@ -78,27 +78,35 @@ const body = z.discriminatedUnion('kind', [
 ]);
 type ExamBody = Extract<z.output<typeof body>, { kind: 'exam' }>;
 
-/** Only the exam's own parts, each once and of its kind; anything else is a 400. */
-function checkParts(req: ExamBody) {
+/** Only the exam's own parts, each once and of its kind; anything else is a 400. The module
+ *  (and so every prompt and rule) comes from the exam itself, never from the client. */
+function checkParts(req: ExamBody): ModuleId {
 	const quiz = getQuizNode(req.quizId);
 	if (!quiz) throw error(400, 'unknown exam');
+	const module = moduleId(quiz.module);
+	if (!module) throw error(400, 'exam has no open answers');
 	const expected = examParts(quiz);
 	const ids = new Set(req.parts.map((p) => p.id));
-	if (ids.size !== req.parts.length || req.parts.some((p) => expected.get(p.id) !== p.kind))
+	if (
+		ids.size !== req.parts.length ||
+		req.parts.some((p) => expected.get(p.id) !== p.kind) ||
+		(req.parts.some((p) => p.kind === 'essay') && !MODULE_RULES[module].essay)
+	)
 		throw error(400, 'bad exam parts');
+	return module;
 }
 
 /** Each part not graded yet, in parallel; a failed part stays out (null) for a retry. */
-async function gradeParts(req: ExamBody & { done: Record<string, PartVerdict> }) {
+async function gradeParts(req: ExamBody & { module: ModuleId; done: Record<string, PartVerdict> }) {
 	const graded: Record<string, PartVerdict> = {};
 	await Promise.all(
 		req.parts
 			.filter((p) => !req.done[p.id])
 			.map(async (p) => {
 				try {
-					if (p.kind === 'essay') graded[p.id] = await gradeEssay(p);
+					if (p.kind === 'essay') graded[p.id] = await gradeEssay(p, req.module);
 					else {
-						const verdict = await gradeReading(p);
+						const verdict = await gradeReading(p, req.module);
 						// an answer the model skipped fails the part: a retry grades it again
 						if (verdict.answers.length === p.items.length) graded[p.id] = verdict;
 					}
@@ -118,8 +126,8 @@ export const POST = llmRoute({
 	parse: async ({ request, locals }) => {
 		const req = await jsonBody(request, body);
 		if (req.kind !== 'exam') return req;
-		checkParts(req);
-		return { ...req, done: await openAttempt(locals, req) };
+		const module = checkParts(req);
+		return { ...req, module, done: await openAttempt(locals, req) };
 	},
 	activity: (req) => (req.kind === 'exam' ? 'exam' : 'lesson'),
 	calls: (req) => (req.kind === 'exam' ? req.parts.filter((p) => !req.done[p.id]).length : 1),
@@ -132,7 +140,7 @@ export const POST = llmRoute({
 	}
 });
 
-/** Dev only: the assembled prompt for ?kind=lesson|reading|essay (&rubric=g), to copy into AI Studio. */
+/** Dev only: the assembled prompt for ?kind=lesson|reading|essay (&module=c|e|g), to copy into AI Studio. */
 export const GET: RequestHandler = ({ url }) => {
 	if (!dev) throw error(404);
 	const kind =
@@ -155,7 +163,7 @@ export const GET: RequestHandler = ({ url }) => {
 					...(kind === 'essay' && { mechanics: { spelling: 0, punctuation: 0, runOn: 0 } })
 				};
 	return new Response(
-		`${systemPrompt(kind, url.searchParams.get('rubric') === 'g' ? 'g' : 'c')}\n\n----- user message -----\n${userPrompt(sample)}\n`,
+		`${systemPrompt(kind, moduleId(url.searchParams.get('module') ?? '') ?? 'c')}\n\n----- user message -----\n${userPrompt(sample)}\n`,
 		{ headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
 	);
 };

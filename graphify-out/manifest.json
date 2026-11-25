@@ -85,13 +85,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/ar.ts": {
-    "mtime": 1795501056.7296302,
-    "ast_hash": "1dfa41e54d460c0ade8cb1ebeafa9f4a",
+    "mtime": 1795604960.9527707,
+    "ast_hash": "1261808a1fb69604bb8c61f97134a186",
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795587043.3093395,
-    "ast_hash": "7ff0506c2e51dbc2ac05929a89945d15",
+    "mtime": 1795604960.9085395,
+    "ast_hash": "e38ff733e1f76095754a29883c9eacc4",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -850,8 +850,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/checks/length.ts": {
-    "mtime": 1793348036.22364,
-    "ast_hash": "e3ba35597c2b620c35b75ef0e546adc4",
+    "mtime": 1795604803.6065414,
+    "ast_hash": "f11f57af58ffa329fd9e9063754829f8",
     "semantic_hash": ""
   },
   "front/src/lib/checks/mechanics.ts": {
@@ -1090,8 +1090,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/types.ts": {
-    "mtime": 1794581640.9295442,
-    "ast_hash": "59e3f927c0fbf73c31406df9c52063f1",
+    "mtime": 1795604960.6010196,
+    "ast_hash": "016cc5cd2ece1de96e1e2fd24e577793",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/MatchDefinitions.svelte": {
@@ -1100,13 +1100,13 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/grade.ts": {
-    "mtime": 1793731835.4515657,
-    "ast_hash": "9680a9b2d1f2513d65f5ab16237972c5",
+    "mtime": 1795604960.4897149,
+    "ast_hash": "dd0fb40c3ca52ad9b718541042c14010",
     "semantic_hash": ""
   },
   "front/src/routes/api/grade/+server.ts": {
-    "mtime": 1794581847.1236763,
-    "ast_hash": "3bd293462739a0094975a77115d6a7ba",
+    "mtime": 1795604960.5343504,
+    "ast_hash": "86a4202cd01a097d8b82e5937c4742ba",
     "semantic_hash": ""
   },
   "front/tests/deck.test.ts": {
@@ -1115,18 +1115,18 @@
     "semantic_hash": ""
   },
   "front/tests/feedback.test.ts": {
-    "mtime": 1793348036.2700076,
-    "ast_hash": "7e0153d79d081926967397a1cb9c0a9f",
+    "mtime": 1795604960.4006178,
+    "ast_hash": "bb6e38c572d743418e0b7bea3221b8c3",
     "semantic_hash": ""
   },
   "docs/feedback-framework.md": {
-    "mtime": 1794581837.608836,
-    "ast_hash": "66f166360af7e52d370e0c4c6cee7af2",
+    "mtime": 1795605089.6623244,
+    "ast_hash": "03abf7e27098b93dbc110d6479a51bd9",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay.md": {
-    "mtime": 1791995202.068905,
-    "ast_hash": "be8c678156b0523010300d53529ad32f",
+    "mtime": 1795604970.280527,
+    "ast_hash": "641f1ded318e222a35862a7615d6d945",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-short.md": {
@@ -1165,8 +1165,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/rubrics/index.ts": {
-    "mtime": 1793348036.2305548,
-    "ast_hash": "40c13f18e8795a5a86fdb5e8899d2329",
+    "mtime": 1795604815.2680583,
+    "ast_hash": "d2ba4f5475babc4b212652171b1f9675",
     "semantic_hash": ""
   },
   "front/src/lib/content/rubrics/module-c-writing.json": {
@@ -1180,18 +1180,18 @@
     "semantic_hash": ""
   },
   "front/src/lib/feedback/gradeExam.ts": {
-    "mtime": 1794581706.951371,
-    "ast_hash": "006edc151b153fcacf2c51f9a25998d8",
+    "mtime": 1795604960.5851526,
+    "ast_hash": "a82a411208a7069994e886754a9b6d6a",
     "semantic_hash": ""
   },
   "front/src/lib/quiz/ExamAnswerReview.svelte": {
-    "mtime": 1793638663.6694944,
-    "ast_hash": "fc8662e03cbe980f5353483e4f06c365",
+    "mtime": 1795604938.1290174,
+    "ast_hash": "e17b62c9dfe80bf5fdd540ae07c48e1d",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-reading.md": {
-    "mtime": 1794576790.2491336,
-    "ast_hash": "27ad3be1bcee361b999f297463f7ae3e",
+    "mtime": 1795604847.7246346,
+    "ast_hash": "e817fa778a04b36c5285c6ba77b54647",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/fields/TimerField.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795589351.743321,
-    "ast_hash": "d12ba8f0966b12736cdf9aa173581ab1",
+    "mtime": 1795590961.8629124,
+    "ast_hash": "d23de7c3fee6ac73d962f60bbfc56db7",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1720,7 +1720,7 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1795587712.913199,
+    "mtime": 1795590903.6126602,
     "ast_hash": "0e8980cece95ce67c8706e4aa0c3d402",
     "semantic_hash": ""
   },
@@ -1825,7 +1825,7 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/chat-speaking.md": {
-    "mtime": 1792307065.1166506,
+    "mtime": 1795605043.8366797,
     "ast_hash": "dfaf78450719d10676e55dab0aab3628",
     "semantic_hash": ""
   },
@@ -1860,8 +1860,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/github.ts": {
-    "mtime": 1795589787.174453,
-    "ast_hash": "789ceeb693641f59b2b88828de43748c",
+    "mtime": 1795590961.8650942,
+    "ast_hash": "20aea550ba18e537bffefed25ced42b9",
     "semantic_hash": ""
   },
   "front/vercel.json": {
@@ -2310,8 +2310,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay-g.md": {
-    "mtime": 1793348036.2660086,
-    "ast_hash": "ded59a15b3792d5e1b1d37f1f4d5e467",
+    "mtime": 1795604970.2644994,
+    "ast_hash": "09bdd37d5c6aa2443d3fe69401b90d96",
     "semantic_hash": ""
   },
   "front/src/lib/content/d/d-1.ts": {
@@ -2355,8 +2355,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/content/f/f-2.ts": {
-    "mtime": 1793637309.827999,
-    "ast_hash": "cc34f2b8f4c6ea2dd87c328159db1a12",
+    "mtime": 1795590961.8650942,
+    "ast_hash": "e433e13f55e6816dc450b53acd1a74f4",
     "semantic_hash": ""
   },
   "front/src/lib/content/f/f-3.ts": {
@@ -2962,6 +2962,131 @@
   "front/src/lib/content-edit/unlock.svelte.ts": {
     "mtime": 1795589220.5738535,
     "ast_hash": "608f0ab95bdb27a53a92d906f10dd747",
+    "semantic_hash": ""
+  },
+  "front/src/lib/content/rubrics/modules.ts": {
+    "mtime": 1795604802.6835923,
+    "ast_hash": "0938250ccc44abb0a6191bbe6fd60502",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/prompts/grade-essay-c.md": {
+    "mtime": 1795604970.2617822,
+    "ast_hash": "13a12d7ea66cea8accb27c5152e8d68e",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/prompts/grade-reading-c.md": {
+    "mtime": 1795605036.9618523,
+    "ast_hash": "6d1a74f84125b5bf998e8f7b0a4ad6a2",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/prompts/grade-reading-e.md": {
+    "mtime": 1795605036.9691024,
+    "ast_hash": "0fd74b6e13834cf17c2bdfbd647de8a2",
+    "semantic_hash": ""
+  },
+  "front/src/lib/server/prompts/grade-reading-g.md": {
+    "mtime": 1795605036.974758,
+    "ast_hash": "aa9078b9b54eccca553ada66e2f4035a",
+    "semantic_hash": ""
+  },
+  "rubrics/C-answer-key.md": {
+    "mtime": 1795599177.8435016,
+    "ast_hash": "69326fae7e3b472c089576d50d838e6b",
+    "semantic_hash": ""
+  },
+  "rubrics/C-writing.md": {
+    "mtime": 1795599095.7850173,
+    "ast_hash": "db58114f14788ef920bd48c153ccb793",
+    "semantic_hash": ""
+  },
+  "rubrics/COBE-specs-and-rubrics.md": {
+    "mtime": 1795602454.9770176,
+    "ast_hash": "f3e9eb87ad1ee970890648ca4906c079",
+    "semantic_hash": ""
+  },
+  "rubrics/D-literature.md": {
+    "mtime": 1795599068.9110744,
+    "ast_hash": "45d65dc30450d9903eeba86f7ba57c9b",
+    "semantic_hash": ""
+  },
+  "rubrics/E-answer-key.md": {
+    "mtime": 1795599178.695729,
+    "ast_hash": "f56d47574cbff9ffaa83e7cfa27e7e2c",
+    "semantic_hash": ""
+  },
+  "rubrics/F-literature.md": {
+    "mtime": 1795599069.734676,
+    "ast_hash": "1579e075c5f1aebe2fff4e4e8ffc9932",
+    "semantic_hash": ""
+  },
+  "rubrics/G-answer-key.md": {
+    "mtime": 1795599179.5383015,
+    "ast_hash": "bd1736b07115352cacc77cbd8c0d3e82",
+    "semantic_hash": ""
+  },
+  "rubrics/G-writing.md": {
+    "mtime": 1795602450.8134458,
+    "ast_hash": "f7bd641e1073957445565e748c327c31",
+    "semantic_hash": ""
+  },
+  "rubrics/handbook-4pt-2025.md": {
+    "mtime": 1795602452.55769,
+    "ast_hash": "7592d1d8aadd511d440bada56f03e0a5",
+    "semantic_hash": ""
+  },
+  "rubrics/handbook-5pt-2025.md": {
+    "mtime": 1795602454.1758418,
+    "ast_hash": "fce236a74de4822cc2f0fd3318f19535",
+    "semantic_hash": ""
+  },
+  "rubrics/C-answer-key.pdf": {
+    "mtime": 1795598410.7532687,
+    "ast_hash": "c3ada66d968723deb1c5c92bb6822fc0",
+    "semantic_hash": ""
+  },
+  "rubrics/C-writing.pdf": {
+    "mtime": 1795598407.5889065,
+    "ast_hash": "c7ffbfff7b97bd63fe2342622c6895a8",
+    "semantic_hash": ""
+  },
+  "rubrics/COBE-specs-and-rubrics.pdf": {
+    "mtime": 1795598410.620112,
+    "ast_hash": "b088f9b1963562f105dd0283e20b09a9",
+    "semantic_hash": ""
+  },
+  "rubrics/D-literature.pdf": {
+    "mtime": 1795598408.3974242,
+    "ast_hash": "ed6446e759257c20b2be664ff8c8dce6",
+    "semantic_hash": ""
+  },
+  "rubrics/E-answer-key.pdf": {
+    "mtime": 1795598410.8890212,
+    "ast_hash": "6c6f48d51673f3bfa7886f77a4e22e04",
+    "semantic_hash": ""
+  },
+  "rubrics/F-literature.pdf": {
+    "mtime": 1795598408.6386163,
+    "ast_hash": "35ab059bd07d41f5ca499f21362ee752",
+    "semantic_hash": ""
+  },
+  "rubrics/G-answer-key.pdf": {
+    "mtime": 1795598411.025397,
+    "ast_hash": "ec7e6a033d773681c43412fa61d9b987",
+    "semantic_hash": ""
+  },
+  "rubrics/G-writing.pdf": {
+    "mtime": 1795598407.9911852,
+    "ast_hash": "b29b25f21465ddf0db50f35ccbd97999",
+    "semantic_hash": ""
+  },
+  "rubrics/handbook-4pt-2025.pdf": {
+    "mtime": 1795598409.6578133,
+    "ast_hash": "4eb3b07c768af8fc913ed7cad639139b",
+    "semantic_hash": ""
+  },
+  "rubrics/handbook-5pt-2025.pdf": {
+    "mtime": 1795598409.9870963,
+    "ast_hash": "530ac1a4c78a7977affbcb5143ee79d5",
     "semantic_hash": ""
   }
 }

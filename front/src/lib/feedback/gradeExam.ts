@@ -1,13 +1,22 @@
 // Exam open answers, graded on final submit in one request, a part each (quiz/examParts):
 //   - every short writing-task of a reading part, with its passage sent once
-//     -> 'reading': each scored 0..points (like a lesson task, but a score);
-//   - the writing-task with minWords -> 'essay': the official rubric, then the
+//     -> 'reading': each scored 0..points for content, then the module's grammar /
+//     spelling deductions in code;
+//   - the writing-task with minWords -> 'essay': the module's official rubric, then the
 //     length deduction in code.
-// The server grades the parts in parallel, each with its own prompt.
+// The server grades the parts in parallel, each with its kind's prompt for the exam's module.
+// Every module rule lives in content/rubrics/modules.ts.
 // Empty / not-English / under-25-words answers score 0 by rule and are never sent.
 import { checkWriting, type CheckReport } from '$lib/checks';
 import { browserDictionaries } from '$lib/checks/dictionaries';
-import { writingRubricId, writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
+import {
+	MODULE_RULES,
+	moduleId,
+	readingDeductions,
+	writingRubrics,
+	type ModuleId,
+	type WritingRubricId
+} from '$lib/content/rubrics';
 import { partIdOf } from '$lib/quiz/examParts';
 import { screensWithIds } from '$lib/quiz/screenIds';
 import { countedIds } from '$lib/quiz/scoring';
@@ -38,9 +47,12 @@ type OpenAnswer = {
 	group: string;
 	/** reading: the part's passage, paragraphs labelled [I], [II]... essay: every passage, for copy detection. */
 	passage: string;
-	/** essay: the exam module's writing rubric. */
-	rubric: WritingRubricId;
+	/** The exam's module: its grading rules (content/rubrics/modules.ts). */
+	module: ModuleId;
 };
+
+/** The module's essay rubric (Module C's when a module has none, which the server refuses). */
+const rubricOf = (a: OpenAnswer): WritingRubricId => MODULE_RULES[a.module].essay?.rubric ?? 'c';
 
 /** An answer after the local checks: either finished (scored 0 by rule) or ready to send. */
 type Checked =
@@ -75,7 +87,7 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 				text,
 				group: partIdOf(part.id, id, essay),
 				passage: essay ? allPassages : passage,
-				rubric: writingRubricId(quiz.module)
+				module: moduleId(quiz.module) ?? 'c'
 			});
 		}
 	}
@@ -83,7 +95,7 @@ export function openAnswers(quiz: QuizNode, answers: Record<string, unknown>): O
 }
 
 const maxOf = (a: OpenAnswer) =>
-	a.screen.points ?? (a.kind === 'essay' ? writingRubrics[a.rubric].totalPoints : 1);
+	a.screen.points ?? (a.kind === 'essay' ? writingRubrics[rubricOf(a)].totalPoints : 1);
 
 async function check(a: OpenAnswer): Promise<Checked> {
 	const base = { kind: a.kind, max: maxOf(a), text: a.text, status: 'graded' as const };
@@ -149,8 +161,7 @@ const essayPart = (c: Ready): ExamPart => ({
 	question: c.a.screen.prompt,
 	text: c.corrected.text,
 	notes: c.a.screen.gradingNotes,
-	mechanics: mechanicsCount(c.report.issues),
-	rubric: c.a.rubric
+	mechanics: mechanicsCount(c.report.issues)
 });
 
 function readingGrades(group: Ready[], verdict: ReadingVerdict): ExamGrade[] {
@@ -158,11 +169,22 @@ function readingGrades(group: Ready[], verdict: ReadingVerdict): ExamGrade[] {
 	return group.map((c, i) => {
 		const v = byId.get(readingId(i));
 		if (!v) return failed(c);
+		const max = maxOf(c.a);
+		// the content score, then the module's official points off (never below 0)
+		const off = readingDeductions(
+			c.a.module,
+			max,
+			v.grammar ?? 'none',
+			mechanicsCount(c.report.issues).spelling
+		);
+		const grammar = Math.min(v.score, off.grammar);
+		const spelling = Math.min(v.score - grammar, off.spelling);
 		return {
 			kind: 'reading',
 			status: 'graded',
-			earned: v.score,
-			max: maxOf(c.a),
+			earned: v.score - grammar - spelling,
+			max,
+			...(grammar + spelling > 0 && { deductions: { grammar, spelling } }),
 			text: c.a.text,
 			...withLlmMarks(c, v.marks)
 		};
@@ -170,7 +192,7 @@ function readingGrades(group: Ready[], verdict: ReadingVerdict): ExamGrade[] {
 }
 
 function essayGrade(c: Ready, v: EssayVerdict): ExamGrade {
-	const rubric = writingRubrics[c.a.rubric];
+	const rubric = writingRubrics[rubricOf(c.a)];
 	const order = rubric.criteria.map((cr) => cr.id);
 	const criteria = applyLength(v.scores, order, c.report.length.deduction);
 	const raw = order.reduce((sum, id) => sum + (criteria[id] ?? 0), 0);
@@ -183,7 +205,7 @@ function essayGrade(c: Ready, v: EssayVerdict): ExamGrade {
 		max,
 		text: c.a.text,
 		criteria,
-		rubric: c.a.rubric,
+		rubric: rubricOf(c.a),
 		lengthDeduction: c.report.length.deduction,
 		validWords: c.report.length.valid,
 		...withLlmMarks(c, v.marks)

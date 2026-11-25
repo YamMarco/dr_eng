@@ -4,10 +4,14 @@ import { z } from 'zod';
 import { chatJson, type LlmRole } from './llm';
 import LESSON_PROMPT from './prompts/grade-short.md?raw';
 import READING_PROMPT from './prompts/grade-reading.md?raw';
+import READING_C from './prompts/grade-reading-c.md?raw';
+import READING_E from './prompts/grade-reading-e.md?raw';
+import READING_G from './prompts/grade-reading-g.md?raw';
 import ESSAY_PROMPT from './prompts/grade-essay.md?raw';
-import ESSAY_G_PROMPT from './prompts/grade-essay-g.md?raw';
+import ESSAY_C from './prompts/grade-essay-c.md?raw';
+import ESSAY_G from './prompts/grade-essay-g.md?raw';
 import { CONTENT_TAGS, FATAL_TAGS, TAG_IDS } from '$lib/feedback/tags';
-import { writingRubrics, type WritingRubricId } from '$lib/content/rubrics';
+import { MODULE_RULES, writingRubrics, type ModuleId } from '$lib/content/rubrics';
 import type {
 	EssayVerdict,
 	GradeRequest,
@@ -32,12 +36,18 @@ const KINDS: Record<
 	essay: { prompt: ESSAY_PROMPT, role: 'grade-essay', maxTokens: 3000, maxMarks: 8 }
 };
 
-const ESSAY_PROMPTS: Record<WritingRubricId, string> = { c: ESSAY_PROMPT, g: ESSAY_G_PROMPT };
+/** Each module's own section of the exam prompts (the module's rules: content/rubrics/modules.ts). */
+const MODULE_PROMPTS: Record<'reading' | 'essay', Partial<Record<ModuleId, string>>> = {
+	reading: { c: READING_C, e: READING_E, g: READING_G },
+	essay: { c: ESSAY_C, g: ESSAY_G }
+};
 
-/** The system prompt exactly as the model gets it: the .md file, untouched, so it can be
- *  pasted as-is into Gemini's web UI (AI Studio) to try changes. */
-export function systemPrompt(kind: GradeRequest['kind'], rubric: WritingRubricId = 'c'): string {
-	return kind === 'essay' ? ESSAY_PROMPTS[rubric] : KINDS[kind].prompt;
+/** The system prompt exactly as the model gets it: the kind's .md file with the module's section
+ *  in place of {{MODULE}} (none for a lesson). `GET /api/grade` prints it to paste into AI Studio. */
+export function systemPrompt(kind: GradeRequest['kind'], module?: ModuleId): string {
+	if (kind === 'lesson') return KINDS.lesson.prompt;
+	const section = module ? (MODULE_PROMPTS[kind][module] ?? '') : '';
+	return KINDS[kind].prompt.replace(section ? '{{MODULE}}' : '{{MODULE}}\n\n', section.trim());
 }
 
 // Fences are stripped from the text, so a student can't close the block and write outside it.
@@ -89,13 +99,16 @@ function cleanMarks(marks: z.infer<typeof markSchema>[], kind: GradeRequest['kin
 }
 
 // maxTokens also covers the model's hidden reasoning (Gemini "thinking"): too low cuts the JSON off.
-function ask<S extends z.ZodType>(req: GradeRequest, schema: S): Promise<z.output<S>> {
+function ask<S extends z.ZodType>(
+	req: GradeRequest,
+	schema: S,
+	module?: ModuleId
+): Promise<z.output<S>> {
 	const { role } = KINDS[req.kind];
 	const maxTokens =
 		KINDS[req.kind].maxTokens + (req.kind === 'reading' ? 300 * req.items.length : 0);
-	const rubric = req.kind === 'essay' ? req.rubric : undefined;
 	return chatJson(
-		{ role, system: systemPrompt(req.kind, rubric), user: userPrompt(req), maxTokens },
+		{ role, system: systemPrompt(req.kind, module), user: userPrompt(req), maxTokens },
 		schema
 	);
 }
@@ -109,12 +122,24 @@ export async function gradeLesson(req: SingleRequest): Promise<LessonVerdict> {
 	return { pass: parsed.pass && !marks.some((m) => FATAL_TAGS.has(m.tag)), marks };
 }
 
-export async function gradeReading(req: ReadingRequest): Promise<ReadingVerdict> {
+/** `module` = an exam's; a lesson's reading answers go without one (content only, no deductions). */
+export async function gradeReading(
+	req: ReadingRequest,
+	module?: ModuleId
+): Promise<ReadingVerdict> {
 	const parsed = await ask(
 		req,
 		z.object({
-			answers: z.array(z.object({ id: z.string(), score: z.number(), marks: marksSchema }))
-		})
+			answers: z.array(
+				z.object({
+					id: z.string(),
+					score: z.number(),
+					grammar: z.enum(['none', 'minor', 'major']).catch('none'),
+					marks: marksSchema
+				})
+			)
+		}),
+		module
 	);
 	const byId = new Map(parsed.answers.map((a) => [a.id, a]));
 	// answers the model skipped are left out; the client counts them as not graded
@@ -125,16 +150,18 @@ export async function gradeReading(req: ReadingRequest): Promise<ReadingVerdict>
 		let marks = cleanMarks(a.marks, 'reading');
 		// a full-score answer can't be off-topic or incomplete: drop contradicting content tags
 		if (score === item.points) marks = marks.filter((m) => !CONTENT_TAGS.has(m.tag));
-		return [{ id: item.id, score, marks }];
+		return [{ id: item.id, score, grammar: a.grammar, marks }];
 	});
 	return { answers };
 }
 
-export async function gradeEssay(req: SingleRequest): Promise<EssayVerdict> {
+/** An exam essay, by its module's rubric; the caller makes sure the module has an essay. */
+export async function gradeEssay(req: SingleRequest, module: ModuleId): Promise<EssayVerdict> {
+	const rubric = writingRubrics[MODULE_RULES[module].essay?.rubric ?? 'c'];
 	const shape = Object.fromEntries(
-		writingRubrics[req.rubric ?? 'c'].criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
+		rubric.criteria.map((c) => [c.id, z.number().min(0).max(c.max)])
 	);
-	const parsed = await ask(req, z.object({ scores: z.object(shape), marks: marksSchema }));
+	const parsed = await ask(req, z.object({ scores: z.object(shape), marks: marksSchema }), module);
 	const scores = Object.fromEntries(
 		Object.entries(parsed.scores as Record<string, number>).map(([k, v]) => [k, Math.round(v)])
 	);

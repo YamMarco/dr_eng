@@ -24,13 +24,11 @@ export type Rubric = {
 
 export const essayRubric = moduleCWriting as Rubric;
 
-/** Exam writing rubrics by module; other modules use Module C's. */
+/** Exam writing rubrics by id (each module's essay names its own: modules.ts). */
 export const writingRubrics = { c: essayRubric, g: moduleGWriting as Rubric };
 export type WritingRubricId = keyof typeof writingRubrics;
 
-export function writingRubricId(moduleId: string): WritingRubricId {
-	return moduleId === 'g' ? 'g' : 'c';
-}
+export * from './modules';
 
 /** COBE (oral exam): one rubric per level (4 / 5 points), the same four
  *  criteria with different weights. A criterion is judged in one of four

@@ -8,6 +8,7 @@ import { FATAL_TAGS, TAGS, TAG_IDS } from '../src/lib/feedback/tags.ts';
 import type { Mark } from '../src/lib/feedback/types.ts';
 import { readFileSync } from 'node:fs';
 import { applyLength, mechanicsCount } from '../src/lib/feedback/exam.ts';
+import { MODULE_RULES, readingDeductions } from '../src/lib/content/rubrics/modules.ts';
 
 test('nearest level wins, screen overrides section', () => {
 	const r = resolveRules([{ llmGrade: true, maxTypos: 3 }, undefined, { maxTypos: 0 }, {}]);
@@ -124,41 +125,59 @@ test('mechanics count buckets by kind', () => {
 	);
 });
 
-test('rubric file matches the length rule in code', () => {
-	const rubric = JSON.parse(
-		readFileSync('src/lib/content/rubrics/module-c-writing.json', 'utf8')
-	) as { totalPoints: number; criteria: { max: number }[]; lengthDeductions: unknown[] };
-	assert.equal(
-		rubric.criteria.reduce((n, c) => n + c.max, 0),
-		rubric.totalPoints
-	);
-	const length = readFileSync('src/lib/checks/length.ts', 'utf8');
-	for (const [min, off] of [
-		[60, 1],
-		[50, 3],
-		[40, 6],
-		[30, 10],
-		[25, 15]
-	])
-		assert.ok(length.includes(`[${min}, ${off}]`), `${min}: -${off}`);
+for (const id of ['c', 'g'] as const)
+	test(`Module ${id.toUpperCase()} rubric file matches its rules in modules.ts`, () => {
+		const rubric = JSON.parse(
+			readFileSync(`src/lib/content/rubrics/module-${id}-writing.json`, 'utf8')
+		) as {
+			totalPoints: number;
+			requiredWords: { min: number; max: number };
+			criteria: { max: number }[];
+			lengthDeductions: { minWords: number; maxWords: number; pointsOff: number }[];
+		};
+		assert.equal(
+			rubric.criteria.reduce((n, c) => n + c.max, 0),
+			rubric.totalPoints
+		);
+		const length = MODULE_RULES[id].essay!.length;
+		assert.deepEqual(
+			[length.min, length.max],
+			[rubric.requiredWords.min, rubric.requiredWords.max]
+		);
+		for (const { minWords, maxWords, pointsOff } of rubric.lengthDeductions) {
+			// the whole-task row is the zero line
+			if (pointsOff >= rubric.totalPoints) assert.equal(length.zeroBelow, maxWords + 1);
+			else
+				assert.ok(
+					length.rows.some(([from, off]) => from === minWords && off === pointsOff),
+					`${minWords}: -${pointsOff}`
+				);
+		}
+	});
+
+test('open answers lose the official points for grammar and spelling, per module', () => {
+	// C: 5-7 pts -1, 8-10 pts -1..-2, spelling free
+	assert.deepEqual(readingDeductions('c', 7, 'major', 3), { grammar: 1, spelling: 0 });
+	assert.deepEqual(readingDeductions('c', 8, 'minor', 0), { grammar: 1, spelling: 0 });
+	assert.deepEqual(readingDeductions('c', 8, 'major', 0), { grammar: 2, spelling: 0 });
+	// E: 5-7 pts -1..-2, 8-10 pts -2..-3, spelling free
+	assert.deepEqual(readingDeductions('e', 7, 'minor', 2), { grammar: 1, spelling: 0 });
+	assert.deepEqual(readingDeductions('e', 8, 'major', 0), { grammar: 3, spelling: 0 });
+	// G: same grammar as E, 1 point for any spelling mistake in the answer
+	assert.deepEqual(readingDeductions('g', 8, 'none', 1), { grammar: 0, spelling: 1 });
+	assert.deepEqual(readingDeductions('g', 6, 'minor', 0), { grammar: 1, spelling: 0 });
+	// outside the handbook's ranges: the nearest row
+	assert.deepEqual(readingDeductions('c', 3, 'major', 0), { grammar: 1, spelling: 0 });
+	assert.deepEqual(readingDeductions('g', 12, 'major', 0), { grammar: 3, spelling: 0 });
 });
 
-test('Module G rubric file matches its length table in code', () => {
-	const rubric = JSON.parse(
-		readFileSync('src/lib/content/rubrics/module-g-writing.json', 'utf8')
-	) as {
-		totalPoints: number;
-		criteria: { max: number }[];
-		lengthDeductions: { minWords: number; maxWords: number; pointsOff: number }[];
-	};
-	assert.equal(
-		rubric.criteria.reduce((n, c) => n + c.max, 0),
-		rubric.totalPoints
-	);
-	const length = readFileSync('src/lib/checks/length.ts', 'utf8');
-	for (const { minWords, maxWords, pointsOff } of rubric.lengthDeductions) {
-		// the whole-task row is the zero line
-		if (pointsOff >= rubric.totalPoints) assert.ok(length.includes(`zeroBelow: ${maxWords + 1}`));
-		else assert.ok(length.includes(`[${minWords}, ${pointsOff}]`), `${minWords}: -${pointsOff}`);
+test('every exam module has its prompt sections', () => {
+	const base = (kind: string) => readFileSync(`src/lib/server/prompts/grade-${kind}.md`, 'utf8');
+	assert.ok(base('reading').includes('{{MODULE}}'));
+	assert.ok(base('essay').includes('{{MODULE}}'));
+	for (const [id, rules] of Object.entries(MODULE_RULES)) {
+		assert.ok(readFileSync(`src/lib/server/prompts/grade-reading-${id}.md`, 'utf8').trim(), id);
+		if (rules.essay)
+			assert.ok(readFileSync(`src/lib/server/prompts/grade-essay-${id}.md`, 'utf8').trim(), id);
 	}
 });

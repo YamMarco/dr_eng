@@ -47,16 +47,18 @@ A lesson task is answered once, like every other question. Wrong → the student
 
 Graded on final submit in **2 calls, in parallel**: one for every open reading answer of the passage (the passage sent once, paragraphs labelled [I], [II]...), one for the essay. Stored with the attempt (`QuizAttempt.grades`) so the report never re-grades.
 
-- **Open reading questions** (`writing-task` without `minWords`): like a lesson task, but each answer carries its `paragraphRef` and `points`; the reply has a score out of `points` per answer id. Spelling/language mistakes cost nothing unless the meaning is lost. A full score drops contradicting content tags.
-- **Essay** (`writing-task` with `minWords`): the exam module's official rubric (`writingRubrics` in `content/rubrics/index.ts`): Module C (`module-c-writing.json`, `grade-essay.md`; content /10, vocabulary /8, language /8, mechanics /4, 70-90 words) or Module G (`module-g-writing.json`, `grade-essay-g.md`; /8, /10, /16, /6, 120-140 words). Mechanics come from the software's spelling / punctuation / run-on counts. Code then applies the range's length table (`checks/length.ts`), starting with Content (rubric rule 5). Under the zero line (C 25, G 50 valid words), empty or not English = 0 with no call.
+**Per module.** The server takes the module from the exam (`quizId`), never from the client. Each module's rules live in `content/rubrics/modules.ts` (open-answer grammar/spelling deductions, essay rubric id, length table; sources in `/rubrics`). Its prompts are the kind's base file with `{{MODULE}}` replaced by `grade-<kind>-<module>.md` (reading: c, e, g; essay: c, g). A new module = one entry + its prompt sections.
+
+- **Open reading questions** (`writing-task` without `minWords`): each answer carries its `paragraphRef`, `points` and answer key (`gradingNotes`, Ministry notation: `[given opening]`, `(optional)`, `a / b`, `OR`). The LLM scores content only (0..points) and judges `grammar` none / minor / major; code takes off the module's points (C: 5-7 pts -1, 8-10 -1..-2; E and G: -1..-2 / -2..-3; G also -1 for any spelling mistake, from Layer 1). The report shows the deduction. A full score drops contradicting content tags. A lesson's reading answers use the same base prompt without a module and no deductions.
+- **Essay** (`writing-task` with `minWords`): the exam module's official rubric (`writingRubrics`): Module C (`module-c-writing.json`; content /10, vocabulary /8, language /8, mechanics /4, 70-90 words) or Module G (`module-g-writing.json`; /8, /10, /16, /6, 120-140 words). Mechanics come from the software's spelling / punctuation / run-on counts. Code then applies the module's length table, starting with Content (rubric rule 5). Under the zero line (C 25, G 50 valid words), empty or not English = 0 with no call.
 - **Score**: `applyGrades` adds them to the auto score; the pass threshold runs on the whole exam (/100). A failed call counts 0, and the report offers **בדיקה חוזרת**.
 - **Report**: total, per part, and every open answer with its score, the answer highlighted in place, and the essay's criteria + length deduction.
 
 ## Tuning prompts in Gemini's web UI (AI Studio)
 
-1. Open `front/src/lib/server/prompts/grade-short.md` (lessons), `grade-reading.md` (exam open questions) or `grade-essay.md` / `grade-essay-g.md` (exam essay, C / G) and paste it **as-is** into _System instructions_. The file is exactly what the app sends.
+1. Lessons: paste `front/src/lib/server/prompts/grade-short.md` **as-is** into _System instructions_. Exams: open `GET /api/grade?kind=reading|essay&module=c|e|g` on the dev server and paste the assembled prompt (base + module section), exactly what the app sends.
 2. Set the model to the role's (see `server/llm.ts`), output format JSON.
-3. User message, same shape the app sends (reading: `PASSAGE` once, then an `ANSWER q1` block per answer with `QUESTION`, `PARAGRAPH`, `POINTS`, `STUDENT ANSWER`; essay adds `MECHANICS COUNT: spelling 2, punctuation/capitalization 1, run-on sentences 0`; `GET /api/grade?kind=reading|essay` on the dev server prints a full sample):
+3. User message, same shape the app sends (reading: `PASSAGE` once, then an `ANSWER q1` block per answer with `QUESTION`, `PARAGRAPH`, `POINTS`, `STUDENT ANSWER`; essay adds `MECHANICS COUNT: spelling 2, punctuation/capitalization 1, run-on sentences 0`; the same GET prints a full sample):
 
 ```
 QUESTION:
@@ -75,7 +77,7 @@ I think students should wear uniforms because it make everyone equal.
 """
 ```
 
-4. When a change works, paste it back into the `.md` file. Adding or renaming a tag also means `tags.ts` and `he.ts` (the test tells you).
+4. When a change works, paste it back into the `.md` file (exam rules: the module's section file). Adding or renaming a tag also means `tags.ts` and `he.ts` (the test tells you).
 
 ## Where things are
 
@@ -85,8 +87,8 @@ I think students should wear uniforms because it make everyone equal.
 | Layer 1 + client loop              | `feedback/layer1.ts`, `feedback/grade.ts`                                                                             |
 | Result UI                          | `feedback/FeedbackView.svelte`; Hebrew in `i18n` `feedback.*`                                                         |
 | Layer 2 server                     | `server/grade.ts`, `routes/api/grade/+server.ts`                                                                      |
-| Prompts                            | `server/prompts/grade-short.md`, `grade-reading.md`, `grade-essay.md`, `grade-essay-g.md`, `grade-speaking.md`, `chat-speaking.md`                            |
-| Rubric                             | `content/rubrics/module-c-writing.json`, `module-g-writing.json` (+ `index.ts`)                                                                |
+| Prompts                            | `server/prompts/grade-short.md`, `grade-reading.md` + `grade-reading-{c,e,g}.md`, `grade-essay.md` + `grade-essay-{c,g}.md`, `grade-speaking.md`, `chat-speaking.md` |
+| Module rules, rubrics              | `content/rubrics/modules.ts` (per-module deductions, length tables), `module-c-writing.json`, `module-g-writing.json` (+ `index.ts`); official sources in `/rubrics` |
 | Exam grading                       | `feedback/gradeExam.ts`, `feedback/exam.ts` (pure), `quiz/scoring.ts` `applyGrades`, `quiz/ExamAnswerReview.svelte`   |
 | Rule levels above the screen       | `content/rules.json`, `content/rules.ts`                                                                              |
 | Rules editor                       | `content-edit/RulesPanel.svelte`, `fields/RuleFields.svelte`, `rulesStore.svelte.ts`, `routes/api/content-edit/rules` |
