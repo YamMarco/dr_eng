@@ -60,7 +60,7 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`) and COBE alone. Ids: `<offer>-<month|pack3|pack6>`, `+ -cobe` for COBE added on. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
 - **Cycles:** a month, 3 or 6 months, all from the day of purchase; access stacks, which is also how extensions work.
 - **Packs:** 3 or 6 months from the day of purchase.
-- **Pending promise:** `GUARANTEE` (a full-refund line on plans and checkout) is off until the terms match.
+- **Pending promise:** `GUARANTEE` (a full-refund line on plans and checkout) is off until the terms match. Decided: a full refund (no fee) within 48 hours of purchase; `refundOf`, the terms and the guarantee copy change together.
 - **Installments** (`INSTALLMENTS`, on): plans of 3+ months split into interest-free card installments, up to one a month (`maxPayments`, passed to `startPayment`). Shown on plans, checkout and the FAQ; the terms say a refund counts the full price.
 - **Refunds:** `refundOf` in `$lib/refund.ts` is the terms' rule: within 14 days everything minus the fee (5% of the price paid or ₪100, the lower) and teacher lessons held; after that, the paid months not started yet at the price paid per month, minus the fee (a monthly plan gets nothing). Months count back from the order's `access_until`, so extensions and a pass's free months work. Refunds and the terms change together.
 - **Price lists:** `regular` and `launch` (the group lessons at 80 a month on every cycle). The site charges `PRICING`; switching it is the only change needed to go live with the other list.
