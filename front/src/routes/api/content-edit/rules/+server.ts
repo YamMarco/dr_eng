@@ -7,7 +7,7 @@ import { error, json } from '@sveltejs/kit';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { z } from 'zod';
-import { checkAuth } from '$lib/content-edit/auth';
+import { assertWriteUnlocked, checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/server/github';
 import type { RequestHandler } from './$types';
 
@@ -42,6 +42,7 @@ export const GET: RequestHandler = async ({ locals }) => {
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
+	assertWriteUnlocked(request);
 	const parsed = fileSchema.safeParse(await request.json().catch(() => null));
 	if (!parsed.success) throw error(400, parsed.error.issues[0]?.message ?? 'bad rules file');
 

@@ -1,6 +1,7 @@
 // Thin wrapper around the content-edit endpoints. apiFetch attaches the
 // signed-in staff session; the server checks the role.
 import { apiFetch } from '$lib/api';
+import { editFetch } from './unlock.svelte';
 import type { LessonContent, LessonNode } from '$lib/content';
 import type { QuizNode } from '$lib/quiz';
 import type { RulesFile } from '$lib/content/rules';
@@ -21,7 +22,7 @@ async function post(
 	body: unknown,
 	url = '/api/content-edit'
 ): Promise<{ ok: true; committed: boolean }> {
-	const res = await apiFetch(url, {
+	const res = await editFetch(url, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify(body)

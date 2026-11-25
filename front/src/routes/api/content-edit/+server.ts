@@ -24,7 +24,7 @@ import prettier from 'prettier';
 import * as z from 'zod';
 import { isRecord } from '$lib/storedJson';
 import { getLesson } from '$lib/content';
-import { checkAuth } from '$lib/content-edit/auth';
+import { assertWriteUnlocked, checkAuth } from '$lib/content-edit/auth';
 import { getGithubFile, putGithubFile } from '$lib/server/github';
 import {
 	splitArrayHead,
@@ -115,6 +115,7 @@ function sectionFile(sectionId: string) {
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!checkAuth(locals)) throw error(403, 'staff only');
+	assertWriteUnlocked(request);
 
 	const body = (await request.json().catch(() => null)) as Body | null;
 	if (!isRecord(body)) throw error(400, 'expected a JSON object');

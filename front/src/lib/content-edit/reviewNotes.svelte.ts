@@ -6,6 +6,7 @@
 // the LessonNode schema on purpose: this is authoring scratch state, not
 // curriculum content.
 import { apiFetch } from '$lib/api';
+import { editFetch } from './unlock.svelte';
 
 export type ReviewNote = { preface: boolean; rounds: boolean[]; comment: string };
 
@@ -41,7 +42,7 @@ class ReviewNotesStore {
 
 	async #save(id: string) {
 		this.#timers.delete(id);
-		await apiFetch('/api/content-edit/review', {
+		await editFetch('/api/content-edit/review', {
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ id, patch: this.notes[id] })

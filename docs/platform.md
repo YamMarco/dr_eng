@@ -21,13 +21,28 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 
 ## Builds
 
-- **Web:** `npm run build` - `adapter-auto` (picks Vercel/Netlify/Cloudflare on the host). Vercel is only the dev site for now. Security headers and the install command (`npm ci`) are in `front/vercel.json`; the CSP (built pages only) in `vite.config.ts` - a new external origin (fonts, CDN, analytics) must be added there.
+- **Web:** `npm run build` - `adapter-auto` (picks Vercel/Netlify/Cloudflare on the host). Security headers and the install command (`npm ci`) are in `front/vercel.json`; the CSP (built pages only) in `vite.config.ts` - a new external origin (fonts, CDN, analytics) must be added there.
 - **Mobile:** `npm run build:mobile` (`vite build --mode mobile`) - `adapter-static` SPA in `build-mobile/`.
   - `$lib/platform.ts` `MOBILE_BUILD` is the compile-time switch.
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment (`https://www.engup.co.il`).
-- The only public host is `www.engup.co.il`: `front/vercel.json` 308-redirects `dr-eng-five.vercel.app` there (Turnstile only allows the real domain). Point webhooks and callbacks at engup.co.il, never vercel.app.
+- The public hosts are `www.engup.co.il` and `dev.engup.co.il` (staging): `front/vercel.json` 308-redirects `dr-eng-five.vercel.app` there (Turnstile only allows the real domain). Point webhooks and callbacks at engup.co.il, never vercel.app.
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
 - **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the mobile webview origin (`https://localhost`).
+
+## Environments and release
+
+| Branch | Site | What |
+|---|---|---|
+| `dev` | `dev.engup.co.il` (Vercel preview, branch domain) | staging: code merges here and content is edited here (`GITHUB_BRANCH=dev`); `noindex` (`front/vercel.json`) |
+| `main` | `www.engup.co.il` | production: changes only by a release |
+
+- **Code:** short feature branches -> `dev`. Never push to `main` directly.
+- **Content:** edited on `dev.engup.co.il/edit`; every save is a commit on `dev`.
+- **Release (Yam only):** check dev, then a GitHub PR `dev` -> `main`, merge. Rollback: Vercel "Instant Rollback".
+- **Production editor is locked:** on production (`VERCEL_ENV=production`) a git-committing save (`/api/content-edit`, `/review`, `/rules`) also needs `CONTENT_EDIT_PASSWORD` (ASCII, header `x-edit-password`, 423 otherwise; unset = always locked). The editor asks for it in a dialog (`content-edit/unlock.svelte.ts`). A save there commits to `main`, so after one: merge `main` into `dev`.
+- **One database for both:** staging writes real rows; test with a staff/test account. A migration hits production at once, so it must work with the code already live (add, never rename/drop before the release).
+- **Env vars:** production ones are target Production; staging needs its own copy as Preview, branch `dev` (`GITHUB_*` with `GITHUB_BRANCH=dev`, `DATABASE_URL`, `AI_GATEWAY_API_KEY`, `RESEND_API_KEY`). Other preview branches get only the all-Preview vars.
+- **External allow-lists include `dev.engup.co.il`:** Turnstile hostnames, Supabase Auth redirect URLs.
 
 ## Accounts (Supabase Auth, email + password)
 
