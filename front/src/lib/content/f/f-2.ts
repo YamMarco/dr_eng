@@ -97,7 +97,7 @@ export const f2Lessons: LessonNode[] = [
           screens: [
             {
               type: "preface",
-              text: "### The ship\n{p:text}The story takes place soon after World War I, on a crowded ship from San Francisco to Japan. There are not enough rooms, so the narrator must share a small cabin with a stranger, Mr. Kelada.\n{d:rtl}\n{d:rtl}הסיפור מתרחש זמן קצר אחרי מלחמת העולם הראשונה, באונייה צפופה מסן פרנסיסקו ליפן. אין מספיק חדרים, ולכן המספר חייב לחלוק תא קטן עם אדם זר שהוא מר קלדה.",
+              text: "### The ship\n{p:text}The story takes place soon after World War I, on a crowded ship from San-Francisco to Japan. There are not enough rooms, so the narrator must share a small cabin with a stranger, Mr. Kelada.\n{d:rtl}\n{d:rtl}הסיפור מתרחש זמן קצר אחרי מלחמת העולם הראשונה, באונייה צפופה מסן פרנסיסקו ליפן. אין מספיק חדרים, ולכן המספר חייב לחלוק תא קטן עם אדם זר שהוא מר קלדה.",
             },
             {
               type: "mcq",
