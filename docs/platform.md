@@ -41,7 +41,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 - **Release (Yam only):** check dev, then a GitHub PR `dev` -> `main`, merge. Rollback: Vercel "Instant Rollback".
 - **Production editor is locked:** on production (`VERCEL_ENV=production`) a git-committing save (`/api/content-edit`, `/review`, `/rules`) also needs `CONTENT_EDIT_PASSWORD` (ASCII, header `x-edit-password`, 423 otherwise; unset = always locked). The editor asks for it in a dialog (`content-edit/unlock.svelte.ts`). A save there commits to `main`, so after one: merge `main` into `dev`.
 - **One database for both:** staging writes real rows; test with a staff/test account. A migration hits production at once, so it must work with the code already live (add, never rename/drop before the release).
-- **Env vars:** production ones are target Production; staging needs its own copy as Preview, branch `dev` (`GITHUB_*` with `GITHUB_BRANCH=dev`, `DATABASE_URL`, `AI_GATEWAY_API_KEY`, `RESEND_API_KEY`). Other preview branches get only the all-Preview vars.
+- **Env vars:** server secrets are Production + Preview (`GITHUB_TOKEN/OWNER/REPO`, `DATABASE_URL`, `AI_GATEWAY_API_KEY`, `RESEND_API_KEY`, ...). `GITHUB_BRANCH` is set only for production (`main`) and Preview branch `dev` (`dev`); `server/github.ts` has no fallback, so other previews can't commit. Previews other than `dev.engup.co.il` need a Vercel login (protection: all except custom domains).
 - **External allow-lists include `dev.engup.co.il`:** Turnstile hostnames, Supabase Auth redirect URLs.
 
 ## Accounts (Supabase Auth, email + password)
