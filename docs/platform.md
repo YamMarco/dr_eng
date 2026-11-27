@@ -31,6 +31,8 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
 
 ## Environments and release
 
+**Until further notice: `dev` is paused.** Code and content go straight to `main` (production): commit and push to `main`, edit content on `www.engup.co.il/edit` (with the password). Don't edit on `dev.engup.co.il`. The flow below applies again when the owner says so.
+
 | Branch | Site | What |
 |---|---|---|
 | `dev` | `dev.engup.co.il` (Vercel preview, branch domain) | staging: code merges here and content is edited here (`GITHUB_BRANCH=dev`); `noindex` (`front/vercel.json`) |
