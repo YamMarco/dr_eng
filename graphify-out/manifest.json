@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "front/package.json": {
-    "mtime": 1793874942.7918105,
-    "ast_hash": "3bc0cc314c7d8abfc71ed0b26db270a0",
+    "mtime": 1795758949.148273,
+    "ast_hash": "2f04fd7f3393650fab02f70475d48cf9",
     "semantic_hash": ""
   },
   "front/prettier.config.js": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795604960.9085395,
-    "ast_hash": "e38ff733e1f76095754a29883c9eacc4",
+    "mtime": 1795759352.2344558,
+    "ast_hash": "83622b563dffafba564a278936c1b205",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -180,8 +180,8 @@
     "semantic_hash": ""
   },
   "front/vite.config.ts": {
-    "mtime": 1793874942.8366377,
-    "ast_hash": "c1a05c78026069d09577c5a6ea6d7bd1",
+    "mtime": 1795759145.070637,
+    "ast_hash": "99b01b04e54032d2a57cd781692b178b",
     "semantic_hash": ""
   },
   ".claude/skills/graphify/SKILL.md": {
@@ -820,8 +820,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llm.ts": {
-    "mtime": 1794556473.380844,
-    "ast_hash": "5501c04b9f6331ea359ded0c9c3a5844",
+    "mtime": 1795758221.9358604,
+    "ast_hash": "8e73350db154ed9dd904b250f4b2d791",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/calloutIcons.ts": {
@@ -1120,8 +1120,8 @@
     "semantic_hash": ""
   },
   "docs/feedback-framework.md": {
-    "mtime": 1795605089.6623244,
-    "ast_hash": "03abf7e27098b93dbc110d6479a51bd9",
+    "mtime": 1795758228.013794,
+    "ast_hash": "348cafc7f0d2e587256c768450404ce2",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay.md": {
@@ -1285,8 +1285,8 @@
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1795244002.2392046,
-    "ast_hash": "1cdac8728c1ccf658538984f3afe7f37",
+    "mtime": 1795759150.565867,
+    "ast_hash": "1e43cec67d10e54be59574b5cacae5e8",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1460,8 +1460,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795590961.8629124,
-    "ast_hash": "d23de7c3fee6ac73d962f60bbfc56db7",
+    "mtime": 1795759353.1334493,
+    "ast_hash": "7a195e297af67580786b2b76f19f775b",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1825,8 +1825,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/chat-speaking.md": {
-    "mtime": 1795605043.8366797,
-    "ast_hash": "dfaf78450719d10676e55dab0aab3628",
+    "mtime": 1795758627.9140477,
+    "ast_hash": "1bd39098c9dc2886545bb1fe19bc5085",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -1885,8 +1885,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/llmRoute.ts": {
-    "mtime": 1794581672.4381402,
-    "ast_hash": "507045d8566ca651a4862bf058cb575a",
+    "mtime": 1795759000.3737578,
+    "ast_hash": "e7b1c1544fa1258e6ce8ab83f19f228b",
     "semantic_hash": ""
   },
   "front/drizzle/0004_waitlist.sql": {
@@ -2390,8 +2390,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/policies.md": {
-    "mtime": 1795502607.4677455,
-    "ast_hash": "94dbf28f5704b7e73a9a51a9cd1fd3bc",
+    "mtime": 1795759362.0122879,
+    "ast_hash": "5d85a1e2a78315cb8c290ff690a5af98",
     "semantic_hash": ""
   },
   "front/src/lib/screenContext.svelte.ts": {
@@ -2437,11 +2437,6 @@
   "front/src/lib/site/LegalPage.svelte": {
     "mtime": 1793874942.8228095,
     "ast_hash": "219f336c58ef712d2cf5fdf8d8a99062",
-    "semantic_hash": ""
-  },
-  "docs/handoffs/before-testers.md": {
-    "mtime": 1795502607.4677455,
-    "ast_hash": "4f0de40060c908964dc425cee5a60941",
     "semantic_hash": ""
   },
   "front/src/lib/focusTrap.ts": {
@@ -2775,8 +2770,8 @@
     "semantic_hash": ""
   },
   "docs/handoffs/module-g-qa.md": {
-    "mtime": 1794643855.767553,
-    "ast_hash": "9bbbd8a4aaea0eb0edf13b5f2bdee985",
+    "mtime": 1795758222.0727255,
+    "ast_hash": "3462e29cb17a8648118b87837d50aa38",
     "semantic_hash": ""
   },
   "front/drizzle/0014_exam_attempt_grades.sql": {
@@ -2987,6 +2982,16 @@
   "front/src/lib/server/prompts/grade-reading-g.md": {
     "mtime": 1795607898.6942632,
     "ast_hash": "65ce540e2c0001ea8ed4e25316d89724",
+    "semantic_hash": ""
+  },
+  "front/src/hooks.client.ts": {
+    "mtime": 1795759091.649726,
+    "ast_hash": "61779d146c3aab0e03f48e4e0b339344",
+    "semantic_hash": ""
+  },
+  "front/src/lib/sentry.ts": {
+    "mtime": 1795759081.460168,
+    "ast_hash": "93a2274adbf847a081e3af83cfa238cc",
     "semantic_hash": ""
   }
 }

@@ -150,6 +150,17 @@ The site installs as a home-screen app (PWA) and sends one push reminder a day, 
 3. `npm run db:migrate` (table `push_subscriptions`).
 4. Redeploy. Until the keys are set, the reminder row is hidden and the routes answer 503.
 
+## Error monitoring (Sentry)
+
+Org `anglit`, project `engup`, EU region (`de.sentry.io`). Errors only: no tracing, replay or user feedback.
+
+- **Config:** `$lib/sentry.ts` (DSN, shared options); client init in `hooks.client.ts`, server init at the top of `hooks.server.ts` (adapter-auto doesn't support `instrumentation.server.ts`), plus `sentryHandle` and `handleError` there. `llmRoute` reports its 502s itself (an HttpError never reaches `handleError`).
+- **Privacy (users are minors):** `dataCollection` turns off IP, cookies, headers, bodies, query strings, AI inputs/outputs and stack-frame variables; console breadcrumbs are dropped. The server tags the account id only (`Sentry.setUser({ id })`), never the email. Named in the privacy policy's providers list.
+- **Environments:** `production` (www), `dev` (dev.engup.co.il / Vercel previews), `mobile`, `local` (`npm run preview`). The dev server sends nothing.
+- **Source maps:** made, uploaded and deleted from the build only when `SENTRY_AUTH_TOKEN` is set at build time (Vercel, sensitive); without it none are generated. Never on the mobile build.
+- **CSP:** the ingest origin is in `connect-src` (`vite.config.ts`).
+- **Alerts:** in the Sentry dashboard (email on a new issue).
+
 ## Feedback reports
 
 The "משוב" tab on every `/app` screen (`FeedbackButton.svelte`) opens a report sheet. Signed out it's a mail link to `support@engup.co.il`; signed in it's a form:

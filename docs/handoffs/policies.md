@@ -21,7 +21,7 @@
 
 **Stays on the device only:** recordings in lesson practice (IndexedDB, first + latest take), settings, theme, language.
 
-**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), browser push services (reminders), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), WhatsApp (testers group, external). No ads. Analytics: the policy already reserves usage data for internal product improvement (no provider named yet).
+**Third parties:** Supabase (DB, auth), Vercel (hosting, AI Gateway), Google (Gemini), browser push services (reminders), Resend (auth and feedback emails), ImprovMX (support@ forwarding), Cloudflare Turnstile (captcha), Sentry (error reports, EU; account id only, no email, IP or answers), WhatsApp (testers group, external). No ads. Analytics: the policy already reserves usage data for internal product improvement (no provider named yet).
 
 **User rights already built:** delete account (settings; `/api/account` DELETE removes the user, progress, AI usage, exam attempts and push rows; orders stay, for tax records: say so). Export: by email request (the policy says so).
 
@@ -40,7 +40,7 @@
 
 - **Payments:** name the business in "מי אנחנו" (privacy + terms); add the payment provider to the privacy providers list and the terms' "תשלום" line; checkout needs a terms + refund link next to the pay button; keep `GUARANTEE` (`lib/plans.ts`) off: its lines promise a full refund (plans: 14 days, checkout: 3 days), beyond the terms. The provider must offer interest-free installments up to `maxPayments` (10 for a pass bought in September): the terms promise them.
 - **Zoom lessons:** replace "הכללים יפורסמו כאן לפני שהשיעורים ייפתחו" with the rule: the plan's lessons are per month; a lesson not attended is lost (no rollover, no refund). Say it on the plans page too, before purchase. Open: what the student gets when the teacher cancels. Recording only with notice and consent.
-- **Analytics / error monitoring:** the policy covers usage data for internal improvement; when installing, name the provider in the privacy providers list (the text promises it).
+- **Analytics:** the policy covers usage data for internal improvement; when installing, name the provider in the privacy providers list (the text promises it). Error monitoring (Sentry) is already listed.
 - **Marketing emails:** none now, and no opt-in checkbox. Before the first update email: put the unticked opt-in back (sign-up passes `updates`, saving `marketing_consent_at`), send only to users with it, include a one-click unsubscribe, and honor removals.
 
 ## Accessibility (`/accessibility`)

@@ -42,7 +42,7 @@ Still holding it back: the LLM being off (#2 grades by keywords until it is on),
 - `passage-quiz` uses the LLM reading grader (`llmGrade` on section g-1): passage sent once, `answerHint` as the expected answer.
 - Stem-continuation rule added to `grade-reading.md` (exams share it).
 - Keywords stay as the fallback, now with `a|b` alternatives; 15 weak keyword sets widened.
-- **Live only once `LLM_ENABLED` is true** (`server/llm.ts`). Until then the fallback grades.
+- Live: `LLM_ENABLED` is true (`server/llm.ts`); without an LLM the keyword fallback grades.
 
 ### 3. No per-option feedback - ✅
 **Problem:** none of the ~50 g-1 `passage-mcq` questions said why an option is wrong.

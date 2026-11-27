@@ -3,6 +3,8 @@ import adapterStatic from '@sveltejs/adapter-static';
 import adapterAuto from '@sveltejs/adapter-auto';
 import type { KitConfig } from '@sveltejs/kit';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { sentrySvelteKit } from '@sentry/sveltekit/vite';
+import { SENTRY_INGEST } from './src/lib/sentry.ts';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { writeLessonMeta } from './scripts/lesson-meta.mjs';
 
@@ -39,7 +41,7 @@ function csp(mode: string): KitConfig['csp'] {
 			'img-src': ['self', 'data:', 'blob:', ...supabase],
 			'media-src': ['self', 'blob:', ...supabase],
 			'font-src': ['self', 'data:'],
-			'connect-src': ['self', ...supabase, ...origin(env.VITE_API_BASE)],
+			'connect-src': ['self', ...supabase, ...origin(env.VITE_API_BASE), SENTRY_INGEST as Host],
 			'object-src': ['none'],
 			'base-uri': ['self'],
 			'form-action': ['self'],
@@ -72,6 +74,16 @@ export default defineConfig(({ mode, command }) => ({
 	plugins: [
 		lessonMeta(),
 		tailwindcss(),
+		// Before sveltekit(). Source maps are made, uploaded and deleted from the build only when
+		// SENTRY_AUTH_TOKEN is set (Vercel build env); otherwise none are generated.
+		sentrySvelteKit({
+			org: 'anglit',
+			project: 'engup',
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			autoUploadSourceMaps: mode !== 'mobile' && Boolean(process.env.SENTRY_AUTH_TOKEN),
+			autoInstrument: false,
+			telemetry: false
+		}),
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.

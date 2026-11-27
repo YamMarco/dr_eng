@@ -1474,7 +1474,7 @@ export const he = {
 	},
 	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/handoffs/policies.md. */
 	legal: {
-		updated: 'עודכן לאחרונה: 24.11.2026',
+		updated: 'עודכן לאחרונה: 27.11.2026',
 		contact: 'support@engup.co.il',
 		privacy: {
 			intro:
@@ -1561,7 +1561,8 @@ export const he = {
 						'Resend: שליחת מיילים, כמו אישור חשבון, איפוס סיסמה ודיווחי משוב (ארה״ב).',
 						'ImprovMX: העברת מיילים שנשלחים אלינו לתיבת הצוות (צרפת וארה״ב).',
 						'כלי לניתוח שימוש: כדי להבין איך משתמשים באפליקציה ולשפר אותה. כשנוסיף אותו, נפרט כאן את שם הספק.',
-						'Cloudflare Turnstile: הגנה מפני רובוטים בהרשמה, בכניסה ובאיפוס סיסמה (ארה״ב ועולמי).'
+						'Cloudflare Turnstile: הגנה מפני רובוטים בהרשמה, בכניסה ובאיפוס סיסמה (ארה״ב ועולמי).',
+						'Sentry: דיווח על תקלות, כדי שנוכל לתקן אותן מהר. נשלחים פרטי התקלה, הדף שבו קרתה, סוג הדפדפן והמכשיר ומספר החשבון, בלי מייל, בלי כתובת IP ובלי התשובות שלכם (גרמניה).'
 					],
 					links: [
 						{ label: 'Supabase', href: 'https://supabase.com/privacy' },
@@ -1573,7 +1574,8 @@ export const he = {
 						{
 							label: 'Cloudflare Turnstile',
 							href: 'https://www.cloudflare.com/turnstile-privacy-policy/'
-						}
+						},
+						{ label: 'Sentry', href: 'https://sentry.io/privacy/' }
 					]
 				},
 				{

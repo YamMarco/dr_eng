@@ -1,6 +1,14 @@
+import * as Sentry from '@sentry/sveltekit';
 import { redirect, type Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
 import { accountsEnabled, userFrom } from '$lib/server/supabase';
 import { userExists } from '$lib/server/userExists';
+import { sentryOptions } from '$lib/sentry';
+
+// Initialized here, not in instrumentation.server.ts: adapter-auto doesn't support that file.
+// Errors only, so the missing early auto-instrumentation (tracing) doesn't matter.
+const vercel = process.env.VERCEL_ENV;
+Sentry.init(sentryOptions(vercel === 'production' ? 'production' : vercel ? 'dev' : 'local'));
 
 // The app moved under /app; old bookmarks and installed shortcuts land there.
 const MOVED = /^\/(unit|settings|streak|book)(\/|$)/;
@@ -50,6 +58,8 @@ const app: Handle = async ({ event, resolve }) => {
 		event.locals.userId = user.id;
 		event.locals.isAdmin = user.isAdmin;
 		event.locals.email = user.email;
+		// Errors carry the account id only, never the email.
+		Sentry.setUser({ id: user.id });
 	}
 
 	const response = await resolve(event);
@@ -57,4 +67,5 @@ const app: Handle = async ({ event, resolve }) => {
 	return response;
 };
 
-export const handle = app;
+export const handle = sequence(Sentry.sentryHandle(), app);
+export const handleError = Sentry.handleErrorWithSentry();

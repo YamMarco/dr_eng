@@ -2,6 +2,7 @@
 // the activity's quotas) -> run -> JSON. The activity comes from the parsed request, so the
 // call is charged for what actually runs. An HTTP error thrown on purpose (401, 429, 400...)
 // is logged as a warning and passed on; any other failure is logged and becomes a 502.
+import * as Sentry from '@sentry/sveltekit';
 import { error, isHttpError, json, type RequestEvent, type RequestHandler } from '@sveltejs/kit';
 import type { z } from 'zod';
 import { llmConfigured } from './llm';
@@ -31,6 +32,8 @@ export function llmRoute<T>(route: {
 				throw e;
 			}
 			console.error(`${failure}:`, e);
+			// A 502 is an HttpError, so handleError never sees it: report it here.
+			Sentry.captureException(e, { tags: { route: event.route.id, failure } });
 			throw error(502, failure);
 		}
 	};
