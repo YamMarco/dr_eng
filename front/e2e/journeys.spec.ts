@@ -18,8 +18,6 @@ test.describe('new student', () => {
 		await next.click();
 		await page.getByRole('radio', { name: t.examUnknown }).click();
 		await page.getByRole('button', { name: t.finish }).click();
-		// The tester welcome shows once, then the dashboard.
-		await page.getByRole('dialog').getByRole('button', { name: he.common.close }).first().click();
 		await expect(page.getByRole('navigation', { name: he.nav.mainNav })).toBeVisible();
 		await expect(page.getByRole('link', { name: moduleC })).toBeVisible();
 		await page.reload();

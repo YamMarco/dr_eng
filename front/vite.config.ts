@@ -7,6 +7,19 @@ import { sentrySvelteKit } from '@sentry/sveltekit/vite';
 import { SENTRY_INGEST } from './src/lib/sentry.ts';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { writeLessonMeta } from './scripts/lesson-meta.mjs';
+import { execSync } from 'node:child_process';
+
+// One version id for the whole build. Kit's default (a timestamp) can be computed twice in one
+// local build, so the pages and the JS read different `__sveltekit_<id>` globals and nothing starts.
+const VERSION =
+	process.env.VERCEL_GIT_COMMIT_SHA ||
+	(() => {
+		try {
+			return execSync('git rev-parse HEAD').toString().trim();
+		} catch {
+			return 'local';
+		}
+	})();
 
 // The Svelte inspector's "open in editor" action shells out via
 // `launch-editor`, which tries LAUNCH_EDITOR first, then guesses from the
@@ -99,6 +112,7 @@ export default defineConfig(({ mode, command }) => ({
 			...(command === 'build' && { csp: csp(mode) }),
 			// Install + push reminders are a web feature (src/service-worker.ts).
 			serviceWorker: { register: mode !== 'mobile' },
+			version: { name: VERSION },
 
 			// Svelte inspector: hold Alt (Option on Mac) and click any element in
 			// the dev server to jump straight to its source in your editor.

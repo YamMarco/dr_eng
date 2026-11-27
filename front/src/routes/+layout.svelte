@@ -9,6 +9,7 @@
 	import { i18n } from '$lib/i18n/index.svelte';
 	import { debugStore } from '$lib/debug.svelte';
 	import { themeStore } from '$lib/theme.svelte';
+	import { captureException } from '@sentry/sveltekit';
 	// Catches the browser's one-time install prompt, whichever page it fires on.
 	import '$lib/install.svelte';
 
@@ -54,7 +55,13 @@
 
 <div class="flex min-h-dvh flex-col bg-canvas">
 	<!-- A render crash (e.g. a malformed stored value) shows this, never a blank page. -->
-	<svelte:boundary onerror={(e) => console.error(e)}>
+	<!-- A caught crash never reaches handleError, so it is reported here. -->
+	<svelte:boundary
+		onerror={(e) => {
+			console.error(e);
+			captureException(e, { tags: { boundary: 'root' } });
+		}}
+	>
 		{@render children()}
 		{#snippet failed()}
 			<main

@@ -84,17 +84,25 @@ export const test = base.extend<Fixtures>({
 	// eslint-disable-next-line no-empty-pattern -- Playwright fixtures must destructure
 	problems: async ({}, use) => use([]),
 	page: async ({ page, studentState, mocks, problems }, use) => {
-		page.on('console', (m) => m.type() === 'error' && problems.push(`console: ${m.text()}`));
+		page.on('console', (m) => {
+			const lessons503 =
+				m.text().includes('status of 503') && m.location().url.endsWith('/api/lessons');
+			if (m.type() === 'error' && !lessons503) problems.push(`console: ${m.text()}`);
+		});
 		page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
 		page.on('requestfailed', (r) => {
 			const why = r.failure()?.errorText ?? '';
 			// Navigating away aborts in-flight media/prefetch: not a bug.
 			if (!why.includes('ERR_ABORTED')) problems.push(`requestfailed: ${r.url()} ${why}`);
 		});
-		page.on(
-			'response',
-			(r) => r.status() >= 400 && problems.push(`http ${r.status()}: ${r.url()}`)
-		);
+		// Expected: /api/lessons answers 503 without Zoom (the lesson card hides), as in production
+		// before Zoom is set up. The browser also logs that 503 as a console error.
+		const expected = (url: string, status: number) =>
+			status === 503 && new URL(url).pathname === '/api/lessons';
+		page.on('response', (r) => {
+			if (r.status() >= 400 && !expected(r.url(), r.status()))
+				problems.push(`http ${r.status()}: ${r.url()}`);
+		});
 		await seed(page, studentState);
 		await mockApi(page, mocks);
 		await use(page);

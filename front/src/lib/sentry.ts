@@ -12,8 +12,8 @@ export const sentryOptions = (environment: string) =>
 	({
 		dsn: SENTRY_DSN,
 		environment,
-		// The dev server stays quiet; a local `npm run preview` reports as 'local'.
-		enabled: !import.meta.env.DEV,
+		// Only real deployments report: the dev server, local previews and e2e/CI runs stay quiet.
+		enabled: !import.meta.env.DEV && environment !== 'local',
 		// Console breadcrumbs can hold student text; keep clicks, navigation and fetch URLs.
 		integrations: (defaults: { name: string }[]) => defaults.filter((i) => i.name !== 'Console'),
 		dataCollection: {

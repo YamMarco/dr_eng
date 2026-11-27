@@ -5,6 +5,7 @@
 // - Caps (server/llmLimits.ts), counted in Postgres so they hold across instances: per user per
 //   activity per day, app-wide per day, and COBE per user per month.
 // - A short burst limiter in memory (per instance) catches loops and scripts.
+import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/environment';
 import { error } from '@sveltejs/kit';
 import { and, eq, inArray, sql } from 'drizzle-orm';
@@ -20,6 +21,15 @@ import {
 	GLOBAL_DAILY_CAP,
 	type Activity
 } from './llmLimits';
+
+// The app-wide cap cuts AI off for every student: tell the team (Sentry), once a day per instance.
+let capReportedOn = '';
+function reportCapOnce() {
+	const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jerusalem' });
+	if (capReportedOn === today) return;
+	capReportedOn = today;
+	Sentry.captureMessage(`LLM app-wide daily cap reached (${GLOBAL_DAILY_CAP})`, 'warning');
+}
 
 const BURST_WINDOW_MS = 5 * 60_000;
 const BURST_MAX = 30;
@@ -89,7 +99,10 @@ export async function guardLlm(
 	if (!userId || isAdmin || !db || calls === 0) return;
 	if (billingEnabled && !(await access(userId))[cobe ? 'cobe' : 'app'])
 		throw error(402, 'no active plan');
-	if ((await countAllToday()) >= GLOBAL_DAILY_CAP) throw error(503, 'service is busy');
+	if ((await countAllToday()) >= GLOBAL_DAILY_CAP) {
+		reportCapOnce();
+		throw error(503, 'service is busy');
+	}
 	if (cobe && (await cobeThisMonth(userId)) >= COBE_MONTHLY_CAP)
 		throw error(429, 'monthly limit reached');
 	const count = await countToday(userId, activity, calls);
