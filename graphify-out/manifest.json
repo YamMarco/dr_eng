@@ -904,12 +904,6 @@
     "ast_hash": "2abaad89f3067cb7238f0fb9d56abe96",
     "semantic_hash": ""
   },
-  "CLAUDE.md": {
-    "mtime": 1792232744.7960138,
-    "seen": 1795791511.9842901,
-    "ast_hash": "d9c1aa00474b45b2de5f587fe328cb8d",
-    "semantic_hash": ""
-  },
   "front/src/lib/auth.svelte.ts": {
     "mtime": 1793887447.1880615,
     "seen": 1795791511.983541,
@@ -2063,9 +2057,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1795759566.6059904,
-    "seen": 1795791511.9842885,
-    "ast_hash": "0e8980cece95ce67c8706e4aa0c3d402",
+    "mtime": 1795843045.7787838,
+    "seen": 1795846068.0529284,
+    "ast_hash": "57db8ab7dea10776023fe82e3542c4f1",
     "semantic_hash": ""
   },
   "docs/security.md": {
@@ -2555,9 +2549,9 @@
     "semantic_hash": ""
   },
   "docs/content.md": {
-    "mtime": 1795255244.324927,
-    "seen": 1795791511.9842935,
-    "ast_hash": "f4a990527e3d15399914f56c5551316b",
+    "mtime": 1795842998.4604907,
+    "seen": 1795846068.052933,
+    "ast_hash": "352ada67ae171d7a53a8d4b21265861a",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/Opener.svelte": {
