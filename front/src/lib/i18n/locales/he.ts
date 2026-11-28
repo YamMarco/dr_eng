@@ -1472,7 +1472,7 @@ export const he = {
 		missed: 'היה צריך לסמן',
 		yourAnswer: 'התשובה שלכם'
 	},
-	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/handoffs/policies.md. */
+	/** /privacy, /terms and /accessibility. Plain Hebrew a student can read; facts and open items in docs/policies.md. */
 	legal: {
 		updated: 'עודכן לאחרונה: 27.11.2026',
 		contact: 'support@engup.co.il',
