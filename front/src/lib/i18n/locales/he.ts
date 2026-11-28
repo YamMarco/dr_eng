@@ -129,16 +129,38 @@ export const he = {
 				}
 			],
 			vignette: {
+				tipWord: 'eventually',
+				tipMeaning: 'בסוף',
+				tipLabel: 'הסבר',
 				question: 'The plan _____ worked.',
 				options: ['eventually', 'weird', 'attach'],
+				lessonProgress: 'התקדמות בשיעור',
 				cardWord: 'to get rid of',
 				cardMeaning: 'להיפטר מ־',
-				cardDue: 'חוזרת בעוד 3 ימים',
+				memory: 'זיכרון',
+				forget: 'כאן שוכחים',
+				reviewDays: ['יום 1', 'יום 3', 'יום 7', 'יום 14'],
 				timerLabel: 'מבחן מודול E',
-				timerQuestion: 'שאלה 6 מתוך 9',
-				feedbackAnswer: 'They moved to the city.',
-				feedbackScore: '5/8',
-				feedbackNote: 'כמעט. חסרה הסיבה: הוסיפו because ואת מה שכתוב בשורה 12.'
+				timerQuestion: (n: number) => `שאלה ${n} מתוך 9`,
+				feedbackQuestion:
+					"Why did Maya's family leave the village? Give TWO reasons. (lines 10-14)",
+				feedbackAnswers: [
+					{
+						answer: 'Because life in the village was boring.',
+						score: '0/8',
+						note: 'זה לא כתוב בטקסט. חפשו בשורות 10-14 מה קרה לבית הספר.'
+					},
+					{
+						answer: 'The school closed.',
+						score: '4/8',
+						note: 'נכון, אבל ביקשו שתי סיבות. מה עוד כתוב שם על העבודה של האבא?'
+					},
+					{
+						answer: 'The school closed, and her father lost his job at the mine.',
+						score: '8/8',
+						note: 'מצוין: שתי סיבות, שתיהן מהטקסט, ובמילים שלכם.'
+					}
+				]
 			},
 			pressureKicker: 'הגישה שלנו',
 			pressureTitle: 'קשה באימון.\nקל בבגרות.',

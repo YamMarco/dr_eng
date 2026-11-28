@@ -159,6 +159,15 @@
 .vig-dot {
 	animation: pop-in 240ms ease-out backwards;
 }
+.vig-draw {
+	stroke-dasharray: 1;
+	animation: vig-draw 2.2s 200ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+@keyframes vig-draw {
+	from {
+		stroke-dashoffset: 1;
+	}
+}
 @keyframes pop-in {
 	from {
 		opacity: 0;
@@ -188,7 +197,8 @@
 	.vig-pop,
 	.vig-flip,
 	.vig-tick,
-	.vig-dot {
+	.vig-dot,
+	.vig-draw {
 		animation: none;
 	}
 }
@@ -545,10 +555,7 @@ p + p .m-anchor {
 			chip-drop 560ms cubic-bezier(0.3, 1.45, 0.5, 1) both,
 			chip-light 650ms ease-in-out,
 			chip-float 2.8s ease-in-out infinite alternate;
-		animation-delay:
-			calc(var(--i) * 90ms),
-			calc(1000ms + var(--i) * 170ms),
-			calc(var(--i) * -0.7s);
+		animation-delay: calc(var(--i) * 90ms), calc(1000ms + var(--i) * 170ms), calc(var(--i) * -0.7s);
 	}
 	.about-chip svg {
 		animation: chip-icon 650ms ease-in-out;
