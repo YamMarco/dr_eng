@@ -71,8 +71,8 @@ export const COBE_ADDON = per(3900, 3500, 3200);
 /** A private tutor's hourly rate, in agorot: the page's price anchor. */
 export const TUTOR_HOUR = 15000;
 
-/** On only once the terms promise a 14-day full refund. */
-export const GUARANTEE = false;
+/** The full-refund line on plans and checkout: the terms' 7 days on a first purchase. */
+export const GUARANTEE = true;
 /** Plans of 3+ months split into card installments, up to one a month (terms "מסלולים ותשלום"). */
 export const INSTALLMENTS = true;
 
@@ -180,6 +180,11 @@ export const planId = (offer: OfferId, cycle: Cycle, cobe = false) =>
 export function withCobe(plan: Plan, on: boolean, pricing: Pricing = PRICING): Plan | undefined {
 	return planById(planId(plan.offer, plan.cycle, on), pricing);
 }
+
+/** What a paid plan renews as when its period ends: the same offer, monthly, at the regular
+ *  price (terms "מסלולים ותשלום"). */
+export const renewalOf = (plan: Plan): Plan =>
+	planById(planId(plan.offer, 'month', plan.bundle), 'regular')!;
 
 /** What a coupon without its own plan unlocks, and what the in-app code box redeems. */
 export const defaultPlan = (): Plan => planById('premium-pack6')!;

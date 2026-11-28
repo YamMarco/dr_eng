@@ -20,27 +20,20 @@ Contact: role + support@ only. Listed as not accessible: COBE speaking (alternat
 
 Code: `docs/platform.md` "Plans, checkout, access".
 
-**Live** (terms "ביטול והחזר כספי", `$lib/refund.ts`), one-time plans:
-- Within 14 days: everything minus the fee and teacher lessons held. After: unstarted months at the price paid per month, minus the fee; a started month or a monthly plan: nothing. No discount clawback.
+Terms "מסלולים ותשלום" and "ביטול והחזר כספי"; rule in `$lib/refund.ts`. Payment-provider work: `docs/handoffs/payments.md`.
+- Seller: Yam's עוסק פטור; no VAT, prices final, receipts (קבלה). Track revenue against the ceiling (accountant); above it VAT comes out of the same prices.
+- **Auto-renewal:** a `paid` plan renews until cancelled; `pack3`/`pack6` renew as the same offer's monthly (COBE kept) at the regular price (`renewalOf`). No stop at the exam date. Coupons discount the first payment only; a free (100% coupon) order never renews. Sign-up consent to the terms covers it; no extra tick.
+- **Reminder:** email 7 days before the period ends (plan, amount, date, link to settings). No forgot-to-cancel refund.
+- **Cancel:** any time in settings; no further charges, access to the end of the paid period. Plans and checkout state the renewal, its price and how to cancel.
+- **Refunds:** first-ever purchase within 7 days: everything, no fee, nothing deducted (`GUARANTEE` line, on). Within 14 days: everything minus the fee and teacher lessons held. After: unstarted months at the price paid per month, minus the fee; a started month or a monthly plan: nothing. Renewal charges: nothing. No discount clawback.
 - Fee: 5% of the price paid or ₪100, the lower. Refund is on the full price, also with installments.
 - Installments: plans of 3+ months, up to one a month, interest-free (provider must allow `maxPayments`).
-- `GUARANTEE` stays off: its copy promises more than the terms.
-
-**Decided, not built.** Build only when asked, with the payment provider; terms, FAQ, plans and checkout copy ship in the same release.
-- Seller: Yam's עוסק פטור; no VAT, prices final, receipts (קבלה). Track revenue against the ceiling (accountant); above it VAT comes out of the same prices. Name the owner in "מי אנחנו".
-- Auto-renew until cancelled. `pack3`/`pack6` renew as the same offer's monthly (COBE kept) at the regular price. No stop at the exam date. Coupons discount the first payment only; a 100% coupon never renews.
-- Reminder email 7 days before every charge (plan, amount, date, cancel link). No forgot-to-cancel refund.
-- Cancel any time in settings: no further charges, access to the end of the period. Plans and checkout state renewal, price and how to cancel; the parent consents explicitly.
-- Refunds: first-ever purchase within 7 days: everything, no fee (`GUARANTEE` copy becomes this). Other purchases: the live rules. Renewal charges: none.
-- Provider needs: hosted page, installments (first payment), saved card token, automatic receipts, signed webhooks, refunds via API.
-- To change: `refund.ts`, `plans.ts` (`GUARANTEE`, pack renewal), plans/checkout copy (renewal, consent, terms + refund link at the pay button), FAQ + terms (drop "בלי חיוב מתחדש", provider in "תשלום"), privacy (provider, card token), settings (status, cancel), reminder email, renewal job.
-- Ask lawyer/accountant: 14-day right per renewal, or partial refund of a started month; notice before a renewal and before a pack turns monthly; parent consent for a minor's renewals; whether the 7-day refund deducts teacher lessons; failed charge (proposed: retry daily for 3 days, email the parent, then access ends).
 
 ## Open (owner)
 
 - DPAs: Supabase, Vercel, Resend, Cloudflare. ImprovMX has DPAs on paid plans only (free stores no content, metadata 7 days).
-- Register the business before payments.
-- Notify testers of the 04.11.2026 and 05.11.2026 policy updates.
-- Zoom: owner said 1 a month, plans copy says weekly; align both. Then replace "הכללים יפורסמו כאן לפני שהשיעורים ייפתחו" with: lessons are per month, a missed one is lost (no rollover, no refund), also on the plans page. Open: teacher cancels. Recording only with notice and consent.
+- Register the business before payments; name the owner in "מי אנחנו" (privacy + terms).
+- Zoom: one group lesson a week; a missed one is lost (terms say so). Open: what the student gets when the teacher cancels.
+- Notify existing users of the 28.11.2026 terms change (auto-renewal) before it applies to them.
 - Analytics: name the provider in the privacy list when installed.
 - Marketing email, before the first one: restore the unticked opt-in (`updates` saves `marketing_consent_at`), send only to opted-in users, one-click unsubscribe, record removals (no in-app toggle).

@@ -28,6 +28,7 @@
 		isPurchasable,
 		planById,
 		productsOf,
+		renewalOf,
 		withCobe
 	} from '$lib/plans';
 
@@ -232,8 +233,14 @@
 			<Button {busy} disabled={!quote} onclick={submit}>
 				{busy ? t.checking : quote?.total === 0 ? t.activate : t.pay}
 			</Button>
-			{#if GUARANTEE && quote?.total}
-				<p class="-mt-2 text-center text-sm text-muted">{t.guarantee}</p>
+			{#if quote?.total}
+				<p class="-mt-2 text-center text-sm text-muted">
+					{#if GUARANTEE}{t.guarantee}{/if}
+					{t.renewal(money(renewalOf(plan).price))}
+					<a href={resolve('/terms')} class="font-semibold text-brand-dark underline"
+						>{t.termsLink}</a
+					>
+				</p>
 			{/if}
 
 			{#if orderError}

@@ -22,7 +22,12 @@ const APP_ORIGINS = new Set(['https://localhost']);
 const ADMIN_APIS = /^\/api\/(content-edit|kanban|finance|dashboard)(\/|$)/;
 // Open to anyone, by name: the home page waitlist form, and the hourly crons
 // (no user; they check CRON_SECRET themselves).
-const PUBLIC_APIS = new Set(['/api/waitlist', '/api/cron/reminders', '/api/cron/lessons']);
+const PUBLIC_APIS = new Set([
+	'/api/waitlist',
+	'/api/cron/reminders',
+	'/api/cron/lessons',
+	'/api/cron/renewals'
+]);
 
 function cors(origin: string): Record<string, string> {
 	return {

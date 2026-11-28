@@ -1,4 +1,4 @@
-// Refund on cancellation: 14 days full minus the fee, then the months not started.
+// Refund on cancellation: first purchase 7 days free, 14 days minus the fee, then the months not started.
 // Run: npm test
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -104,4 +104,19 @@ test('an extension that starts later: all its months are still ahead', () => {
 		at('2026-12-01T12:00:00+02:00')
 	);
 	assert.equal(r.monthsBack, 3);
+});
+
+test('first purchase within 7 days: everything back, no fee, lessons not deducted', () => {
+	const r = refundOf({ ...pack6, firstPurchase: true }, at('2026-11-10T12:00:00+02:00'), 3000);
+	assert.deepEqual(r, { amount: 89400, fee: 0, monthsBack: 6, withinFull: true });
+});
+
+test('first purchase, day 8-14: the fee and lessons held come off', () => {
+	const r = refundOf({ ...pack6, firstPurchase: true }, at('2026-11-12T12:00:00+02:00'), 3000);
+	assert.equal(r.amount, 89400 - 4470 - 3000);
+});
+
+test('a renewal charge: nothing back', () => {
+	const r = refundOf({ ...pack6, renewal: true }, at('2026-11-05T12:00:00+02:00'));
+	assert.equal(r.amount, 0);
 });

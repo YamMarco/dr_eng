@@ -1,9 +1,9 @@
 // Plans, coupons, orders and access. Prices always come from $lib/plans, never
 // from the client. Billing is off (everyone has access) until DATABASE_URL is set.
-import { and, eq, gt, inArray, sql } from 'drizzle-orm';
+import { and, desc, eq, gt, inArray, isNull, sql } from 'drizzle-orm';
 import { db } from './db';
 import { coupons, orders } from './db/schema';
-import { defaultPlan, maxPayments, planById, productsOf, type Plan } from '$lib/plans';
+import { defaultPlan, maxPayments, planById, productsOf, renewalOf, type Plan } from '$lib/plans';
 import { startPayment } from './payments';
 
 export const billingEnabled = !!db;
@@ -197,4 +197,54 @@ export async function completeOrder(orderId: string, status: 'paid' | 'failed') 
 			accessUntil: status === 'paid' && plan ? accessEnd(plan, start) : null
 		})
 		.where(and(eq(orders.id, orderId), eq(orders.status, 'pending')));
+}
+
+export type Subscription = {
+	orderId: string;
+	planId: string;
+	/** The current period's end: the next charge, unless cancelled. */
+	until: Date;
+	renews: boolean;
+	/** What the renewal charges: the same offer, monthly, regular price. */
+	renewPlanId: string;
+	renewPrice: number;
+};
+
+/** The user's running subscription: the latest-ending paid order still in its period.
+ *  Free (coupon) orders never renew, so they aren't one. */
+export async function subscription(userId: string): Promise<Subscription | null> {
+	const [order] = await db!
+		.select()
+		.from(orders)
+		.where(
+			and(eq(orders.userId, userId), eq(orders.status, 'paid'), gt(orders.accessUntil, sql`now()`))
+		)
+		.orderBy(desc(orders.accessUntil))
+		.limit(1);
+	const plan = order && planById(order.planId);
+	if (!order || !plan) return null;
+	const next = renewalOf(plan);
+	return {
+		orderId: order.id,
+		planId: order.planId,
+		until: order.accessUntil!,
+		renews: !order.renewCancelledAt,
+		renewPlanId: next.id,
+		renewPrice: next.price
+	};
+}
+
+/** Turns auto-renewal off: no further charges; access runs to the end of the paid period. */
+export async function cancelRenewal(userId: string) {
+	await db!
+		.update(orders)
+		.set({ renewCancelledAt: new Date() })
+		.where(
+			and(
+				eq(orders.userId, userId),
+				eq(orders.status, 'paid'),
+				gt(orders.accessUntil, sql`now()`),
+				isNull(orders.renewCancelledAt)
+			)
+		);
 }

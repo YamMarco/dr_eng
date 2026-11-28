@@ -6,6 +6,7 @@ import {
 	COBE_ADDON,
 	PRICING,
 	maxPayments,
+	renewalOf,
 	planById,
 	productsOf,
 	withCobe
@@ -78,4 +79,14 @@ test('installments: up to one a month of the plan, a single payment for a month'
 	assert.equal(payments('premium-month'), 1);
 	assert.equal(payments('group-pack3'), 3);
 	assert.equal(payments('premium-pack6'), 6);
+});
+
+test('a pack renews as the same offer monthly, COBE kept, at the regular price', () => {
+	assert.equal(renewalOf(planById('group-pack6')!).id, 'group-month');
+	assert.equal(renewalOf(planById('premium-pack3-cobe')!).id, 'premium-month-cobe');
+	assert.equal(renewalOf(planById('cobe-month')!).id, 'cobe-month');
+	assert.equal(
+		renewalOf(planById('group-pack6', 'launch')!).price,
+		planById('group-month', 'regular')!.price
+	);
 });

@@ -1,12 +1,15 @@
 // Refund on cancellation (terms "ביטול והחזר כספי"; Consumer Protection Law 14ה, 13ד).
+// The account's first-ever purchase, within 7 days: everything back, no fee.
 // Within 14 days of payment: everything back, minus the fee and `held` (teacher lessons already
 // given, priced by the caller). After that: the paid months not
 // started yet, at the price actually paid per month; a month that started is not refunded.
+// A renewal charge is never refunded: cancelling stops the next ones.
 // Fee: 5% of the price paid or ₪100, the lower.
 // Paid months are the last `months` before `accessUntil`: this covers extensions (access
 // stacked after earlier time) and a pass's free months (the rest of a month from the 15th, summer).
 import { israelDate } from './plans.ts';
 
+export const REFUND_FREE_DAYS = 7;
 export const REFUND_FULL_DAYS = 14;
 const FEE_RATE = 0.05;
 const FEE_CAP = 10000;
@@ -19,6 +22,10 @@ export type RefundOrder = {
 	months: number;
 	paidAt: Date;
 	accessUntil: Date;
+	/** The account's first-ever paid order. */
+	firstPurchase?: boolean;
+	/** An automatic renewal charge. */
+	renewal?: boolean;
 };
 
 export type Refund = { amount: number; fee: number; monthsBack: number; withinFull: boolean };
@@ -33,8 +40,12 @@ function monthsLeft(at: Date, end: Date): number {
 }
 
 export function refundOf(order: RefundOrder, cancelAt: Date, held = 0): Refund {
+	if (order.renewal) return { amount: 0, fee: 0, monthsBack: 0, withinFull: false };
+	const since = cancelAt.getTime() - order.paidAt.getTime();
+	if (order.firstPurchase && since <= REFUND_FREE_DAYS * DAY_MS)
+		return { amount: order.total, fee: 0, monthsBack: order.months, withinFull: true };
 	const fee = cancelFee(order.total);
-	if (cancelAt.getTime() - order.paidAt.getTime() <= REFUND_FULL_DAYS * DAY_MS) {
+	if (since <= REFUND_FULL_DAYS * DAY_MS) {
 		const amount = Math.max(0, order.total - fee - held);
 		return { amount, fee, monthsBack: order.months, withinFull: true };
 	}

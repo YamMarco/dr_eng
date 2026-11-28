@@ -304,6 +304,7 @@
 				{t.guarantee}
 			</p>
 		{/if}
+		<p class="text-muted">{t.renewal}</p>
 		<p class="text-muted">{t.extension}</p>
 	</div>
 

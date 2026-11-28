@@ -113,6 +113,13 @@
       "when": 1794581742289,
       "tag": "0015_exam_attempt_drop_done_parts",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1795857459347,
+      "tag": "0016_order_renewal",
+      "breakpoints": true
     }
   ]
 }

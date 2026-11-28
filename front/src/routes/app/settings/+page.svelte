@@ -4,6 +4,7 @@
 	import AppBar from '$lib/components/AppBar.svelte';
 	import Toggle from '$lib/components/Toggle.svelte';
 	import AccountSection from '$lib/components/AccountSection.svelte';
+	import SubscriptionSection from '$lib/components/SubscriptionSection.svelte';
 	import SupportSection from '$lib/components/SupportSection.svelte';
 	import ReminderRow from '$lib/components/ReminderRow.svelte';
 	import Segmented from '$lib/components/Segmented.svelte';
@@ -186,6 +187,7 @@
 	</section>
 
 	{#if auth.enabled}
+		<SubscriptionSection index={3} />
 		<AccountSection index={3} />
 	{/if}
 

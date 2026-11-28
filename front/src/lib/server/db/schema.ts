@@ -38,7 +38,8 @@ export const coupons = pgTable('coupons', {
 
 /**
  * One row per checkout. Access = a `paid` or `free` order whose accessUntil is
- * still ahead. `pending` waits for the payment provider (not wired yet).
+ * still ahead. `pending` waits for the payment provider (not wired yet). The user's
+ * latest-ending `paid` order is the subscription: it renews unless renewCancelledAt.
  */
 export const orders = pgTable(
 	'orders',
@@ -57,7 +58,11 @@ export const orders = pgTable(
 		providerRef: text(),
 		accessUntil: timestamp({ withTimezone: true }),
 		createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
-		completedAt: timestamp({ withTimezone: true })
+		completedAt: timestamp({ withTimezone: true }),
+		/** Set when the student turns auto-renewal off (a `paid` order renews until then). */
+		renewCancelledAt: timestamp({ withTimezone: true }),
+		/** The renewal reminder email went out (7 days before accessUntil). */
+		renewalRemindedAt: timestamp({ withTimezone: true })
 	},
 	(table) => [
 		index().on(table.userId),
