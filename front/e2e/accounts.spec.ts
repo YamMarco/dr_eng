@@ -207,7 +207,6 @@ test('database: a signed-in student cannot read or write other tables directly',
 			'coupons',
 			'exam_attempts',
 			'push_subscriptions',
-			'waitlist',
 			'kanban_tasks'
 		]) {
 			const res = await client.from(table).select('*').limit(5);

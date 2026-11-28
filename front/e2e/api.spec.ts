@@ -15,9 +15,8 @@ test('AI grading is closed without accounts and a database', async ({ request })
 	expect((await request.post('/api/%67rade', { data: lesson })).status()).toBe(503);
 });
 
-test('cron, waitlist and progress are off without their secrets', async ({ request }) => {
+test('cron and progress are off without their secrets', async ({ request }) => {
 	expect((await request.get('/api/cron/reminders')).status()).toBe(503);
-	expect((await request.post('/api/waitlist', { data: { email: 'a@b.co' } })).status()).toBe(503);
 	expect((await request.get('/api/progress')).status()).toBe(503);
 });
 

@@ -1,5 +1,4 @@
-// The flat content model. One Lesson = one path node = one future DB row
-// (see schema.sql). Screens keep the existing strict union so authoring
+// The flat content model. One Lesson = one path node. Screens keep the existing strict union so authoring
 // and the runner share one type.
 import type { LessonScreen } from '$lib/lesson-screens/types';
 

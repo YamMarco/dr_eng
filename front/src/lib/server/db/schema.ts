@@ -137,13 +137,6 @@ export const pushSubscriptions = pgTable(
 	(table) => [index().on(table.userId)]
 ).enableRLS();
 
-/** Emails waiting for open sign-up (the home page form). Email only: users are minors. */
-export const waitlist = pgTable('waitlist', {
-	/** Stored trimmed and lower-cased. */
-	email: text().primaryKey(),
-	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow()
-}).enableRLS();
-
 /** Staff kanban board of project tasks (/kanban). Values: $lib/kanban.ts. */
 export const kanbanTasks = pgTable('kanban_tasks', {
 	id: uuid().primaryKey().defaultRandom(),

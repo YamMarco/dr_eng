@@ -11,7 +11,7 @@ One SvelteKit codebase (`front/`), two build targets.
 | `/app/...` | `routes/app` - the student app, client-only (`ssr = false`) | yes | yes (the whole bundle) |
 | `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images` | `routes/(admin)` - authoring tools | yes | redirects to `/app`, links hidden |
 | `/kanban` | `routes/(admin)/kanban` - staff task board (to do / doing / done; assignee, priority, tags), table `kanban_tasks` via `/api/kanban`; on mobile the columns swipe (tabs on top) and a card select moves tasks | yes | redirects to `/app`, link hidden |
-| `/dashboard` | `routes/(admin)/dashboard` - staff dashboard: non-staff user count and waitlist size, fetched on entering the page from `/api/dashboard` | yes | redirects to `/app`, link hidden |
+| `/dashboard` | `routes/(admin)/dashboard` - staff dashboard: non-staff user count, fetched on entering the page from `/api/dashboard` | yes | redirects to `/app`, link hidden |
 | `/finance` | `routes/(admin)/finance` - staff finance page: running costs with monthly / yearly totals per currency; edit the list by hand in `lib/server/finance.ts` (server-only), served by `/api/finance` | yes | redirects to `/app`, link hidden |
 | `/api/...` | server routes | yes | absent - the app calls the web deployment |
 
@@ -27,7 +27,7 @@ Old app URLs (`/unit/...`, `/settings`, `/streak`, `/book`) 308 to `/app/...` (`
   - `.env.mobile` (committed, public values only) sets `VITE_API_BASE` to the web deployment (`https://www.engup.co.il`).
 - The public hosts are `www.engup.co.il` and `dev.engup.co.il` (staging): `front/vercel.json` 308-redirects `dr-eng-five.vercel.app` there (Turnstile only allows the real domain). Point webhooks and callbacks at engup.co.il, never vercel.app.
 - **All calls to our server go through `apiFetch` (`$lib/api.ts`):** base URL + the session's bearer token.
-- **CORS:** the student APIs (`STUDENT_APIS` in `hooks.server.ts`) accept the mobile webview origin (`https://localhost`).
+- **CORS:** every non-staff API accepts the mobile webview origin (`APP_ORIGINS` in `hooks.server.ts`, `https://localhost`).
 
 ## Environments and release
 
@@ -54,10 +54,10 @@ Off until the env vars are set; the app then runs open, as before. Once set:
 - **The email only verifies.** Sign-up and password reset send a link; everyday sign-in is email + password. Links open in a browser and point at the web deployment (`VITE_API_BASE` from the mobile app, else the current origin) + `/app`. A reset link lands on `/app` in "choose a new password" mode.
 - The phone-code (OTP) sign-in is a disabled mockup (`OTP_ENABLED` in `LoginScreen.svelte`), not wired to anything.
 - **Roles:** staff have `app_metadata.role = "admin"` (set only with the secret key: `node --env-file=.env.local scripts/create-admin.mjs <email>...`, passwords to `front/admin-users.local.txt`). `auth.isAdmin` gates the editing links, the `/edit`, `/edit-exam`, `/edit-words`, `/vocab-images`, `/kanban`, `/finance` and `/dashboard` pages, the debug tools and the settings developer section; `/api/content-edit/*`, `/api/kanban/*`, `/api/finance` and `/api/dashboard` return 403 to non-staff. With accounts off, everything stays open (dev).
-- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except those named in `PUBLIC_APIS` (`hooks.server.ts`): `/api/waitlist` and `/api/cron/reminders` (checks `CRON_SECRET`). `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
+- Every `/api` route needs `Authorization: Bearer <token>`, otherwise 401, except the hourly jobs named in `PUBLIC_APIS` (`hooks.server.ts`): `/api/cron/reminders`, `/api/cron/lessons`, `/api/cron/renewals`, each checking `CRON_SECRET` itself (fails closed). `hooks.server.ts` matches on `event.route.id`, never the raw path (`/api/%67rade` routes to `/api/grade`), and handlers check `locals` again.
 - **LLM spend guard** (`server/llmGuard.ts`, on `/api/grade`, `/api/speak`, `/api/chat-speak`, `/api/ocr`): outside dev, accounts and `DATABASE_URL` on and a signed-in user (fails closed, so a preview without a DB has no LLM); with billing on, a plan with the route's product (402 otherwise; staff pass); caps from `server/llmLimits.ts` (same for every user, days reset at Israel midnight), counted in `llm_usage` per user, day and activity: a daily cap per user per activity (lesson, exam, ocr, speak, chat; exam grading is capped too, since the retake lock trusts the client's quiz id and attempt; 429, the UI shows a Hebrew "quota used up today" per activity), an app-wide daily cap (503) and a monthly COBE cap per user (429); a per-instance burst limit. `llmRoute` charges the activity of the parsed request.
 - **Exam retake lock** (24h; review stays open). One exam mode: start, submit, get feedback, then locked: an attempt's open answers go to `/api/grade` in one `exam` request, a part per reading passage + the essay (part ids from the exam content, `quiz/examParts.ts`; any other part or exam is a 400). Each part is graded once per attempt and stored in `exam_attempts.grades`; a retry grades only the missing parts and is charged only for them. The attempt is done when every part of a request came back graded (`server/examLock.ts`). `/api/grade` refuses a new attempt within 24h of a done one, or of an unfinished one's first graded part (`examLocked`, `quiz/retake.ts`); the exam page hides start (from the synced attempt, unless a grade failed). Staff are exempt.
-- **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting also removes the account's progress and LLM usage rows and clears this device's; orders stay (purchase records for tax law).
+- **Settings > account:** sign out, and delete account (`DELETE /api/account`, which uses the secret key). Deleting removes the user, its progress, LLM usage, exam attempts, push subscriptions and Zoom registration (cancelled in Zoom too), and clears this device; orders stay (purchase records for tax law).
 
 ### Turning it on
 
@@ -76,7 +76,6 @@ Off until `DATABASE_URL` is set (and accounts are on): `/api/access` then answer
 - **Plans** live in `$lib/plans.ts`; copy in i18n `plans`. The server prices orders from there, never from the client. Every price is `app` (ours; coupons discount only this part) + `zoom` (the teacher's share: the group lessons).
 - **Offers:** עצמאי (the app), קבוצתי (+ weekly group Zoom, featured, anchored against a tutor's `TUTOR_HOUR`) and COBE alone. Ids: `<offer>-<month|pack3|pack6>`, `+ -cobe` for COBE added on. Longer cycles cost less a month, on both parts. The page shows each as a plain price, never as a discount.
 - **Cycles:** a month, 3 or 6 months, all from the day of purchase; access stacks, which is also how extensions work.
-- **Packs:** 3 or 6 months from the day of purchase.
 - **Refund, renewal, installments, `GUARANTEE` rules:** `docs/policies.md`. `refundOf` in `$lib/refund.ts` counts months back from the order's `access_until`, so extensions and a pass's free months work; it and the terms change together.
 - **Installments** (`INSTALLMENTS`, on): `maxPayments` passed to `startPayment`; shown on plans, checkout and the FAQ.
 - **Price lists:** `regular` and `launch` (the group lessons at 80 a month on every cycle). The site charges `PRICING`; switching it is the only change needed to go live with the other list.
@@ -109,10 +108,6 @@ One weekly group lesson for plans with the `lessons` product (`productsOf`: the 
 2. In the Zoom App Marketplace (same account), create a Server-to-Server OAuth app with scopes to read the meeting, add / delete its registrants and read its recordings. Activate it.
 3. Set on the host (server only): `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET`, and `ZOOM_MEETING_ID` (digits, no spaces).
 4. `npm run db:migrate` (table `zoom_registrants`), then redeploy.
-
-## Waitlist
-
-The site no longer links to it (its CTAs lead to /plans); `/api/waitlist` still takes an email: no account, stored lower-cased in the `waitlist` table (email + time only, users are minors). Duplicates are ignored, a honeypot field drops bots, and a daily cap (`DAILY_CAP`, 429) bounds what a script can write. Off (503) without `DATABASE_URL`. Read the list in Supabase's table editor.
 
 ## Progress sync
 
@@ -181,5 +176,4 @@ Public Supabase Storage bucket `vocab-images`. Content keeps `/vocab-images/<fil
 - Vocab words (word cards, spell-word, Module E decks) play recordings: public bucket `vocab-audio`, `<voice>/<key>.mp3` (slow = the same file at 0.75x, pitch kept), key from the word as spoken (`vocabAudio.ts`; `speechText.ts` drops markup and `(...)`), so content has no audio field. Voices: Kokoro `af_sky` / `am_adam` (US English, like the browser voice), picked in settings (`voicePref`, device only).
 - Everything else, and a word without a recording, uses the browser's `speechSynthesis` (`speech.ts`).
 - The engine runs only on the dev PC, never in the app or on Vercel. Its model lives in `C:\Users\yam\Documents\projects\SDK\kokoro\model` (files from github.com/thewh1teagle/kokoro-onnx releases). After adding words, from `front/`: `node --env-file=.env.local scripts/vocab-audio.mjs`. It compares the bucket with the app's word list (`scripts/vocab-words.mjs`), records only the missing words (`scripts/vocab-audio.py`, via `uv`) in a temp folder, uploads them and deletes the folder. No clips are kept locally; it also lists bucket clips no word uses any more.
-- Still on the browser voice: docs/handoffs/voice.md.
 

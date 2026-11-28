@@ -77,13 +77,7 @@ learn (lesson) -> practice (words) -> **prove (exam)** -> see where you stand ->
 
 ## 6. Monetization
 
-- Freemium: free tier has ads, premium removes them. **[decided]**
-- Until the free tier exists: the app needs an active plan, bought or given with a promo code.
-  **[decided]**
-- Ads only at natural breaks (end of a lesson), **never** inside a lesson or exam. **[decided]**
-- **Progress is saved before any ad.** An ad never holds progress hostage. **[decided]**
-- Formats: an interstitial at a break (skippable, not after every lesson), and opt-in
-  rewarded ads (e.g. unlock a full explanation). Under-18 audience: non-personalized ads. *(planned)*
+- **No ads.** The app needs an active plan, bought or given with a promo code. **[decided]**
 
 ## 7. Home and the module page
 
@@ -105,7 +99,6 @@ page holds the detail and the actions.** Each fact lives in exactly one place. *
   > "N lessons until you're ready for the exam" (the goal-gradient) > a plain invitation.
 - Rows on phone and tablet (a hook needs width); on desktop (`lg`) the rows become equal-height
   vertical tiles, three across, so the hook wraps instead of truncating. **[decided]**
-- Ads, when they come: bottom of home only.
 
 **Module page** (`/app/unit/<level>/module/<id>`), **the same order for every module**:
 

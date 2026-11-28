@@ -14,7 +14,7 @@ import { adminClient } from '$lib/server/supabase';
 import { renewalHtml, renewalSubject } from '$lib/server/renewalEmail';
 import type { RequestHandler } from './$types';
 
-const FROM = 'EngUp <team@engup.co.il>';
+const FROM = 'EngUp <noreply@engup.co.il>';
 const REPLY_TO = 'support@engup.co.il';
 const REMIND_DAYS = 7;
 

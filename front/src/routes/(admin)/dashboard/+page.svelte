@@ -6,7 +6,7 @@
 
 	// Staff numbers from /api/dashboard. Fetched on entering the page only.
 
-	let stats = $state<{ users: number; waitlist: number } | null>(null);
+	let stats = $state<{ users: number } | null>(null);
 	let loading = $state(true);
 	let failed = $state(false);
 
@@ -39,10 +39,6 @@
 			<div class="rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
 				<p class="text-sm font-bold text-muted">משתמשים</p>
 				<p class="mt-1 text-3xl font-extrabold">{format.format(stats.users)}</p>
-			</div>
-			<div class="rounded-3xl bg-surface p-5 shadow-md ring-1 shadow-overlay/5 ring-line/70">
-				<p class="text-sm font-bold text-muted">ברשימת ההמתנה</p>
-				<p class="mt-1 text-3xl font-extrabold">{format.format(stats.waitlist)}</p>
 			</div>
 		</section>
 	{/if}

@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/i18n/locales/he.ts": {
-    "mtime": 1795857735.6469734,
-    "ast_hash": "825faf53cb0a8fe156e94d038e878020",
+    "mtime": 1795858439.6929624,
+    "ast_hash": "79b5b35f82022c440a7d6a554cd2f396",
     "semantic_hash": ""
   },
   "front/src/lib/index.ts": {
@@ -350,8 +350,8 @@
     "semantic_hash": ""
   },
   "docs/lesson-structure.md": {
-    "mtime": 1794645407.8215854,
-    "ast_hash": "ff51b93fbea3a5ac756d784ffe14f89b",
+    "mtime": 1795858434.7872324,
+    "ast_hash": "4ac12ab67c3acf91645255992053f960",
     "semantic_hash": ""
   },
   "front/src/lib/content/c/c-1.ts": {
@@ -374,19 +374,14 @@
     "ast_hash": "9425eb75d9ace5b6c090608dcf92bb96",
     "semantic_hash": ""
   },
-  "front/src/lib/content/schema.sql": {
-    "mtime": 1788444316.462276,
-    "ast_hash": "42891fa3ccbe3bcfe3edca451bdd6889",
-    "semantic_hash": ""
-  },
   "front/src/lib/content/sectionMeta.ts": {
     "mtime": 1794576790.2384727,
     "ast_hash": "75b130e2396da07baf7c5b0a1b6127f3",
     "semantic_hash": ""
   },
   "front/src/lib/content/types.ts": {
-    "mtime": 1793351700.4644296,
-    "ast_hash": "0e2cfe63e0a681a8837036c2751a78ea",
+    "mtime": 1795858415.8046095,
+    "ast_hash": "035b7e92be4975b58ac7425161b955f9",
     "semantic_hash": ""
   },
   "front/src/lib/content-edit/editStore.svelte.ts": {
@@ -800,8 +795,8 @@
     "semantic_hash": ""
   },
   "front/src/lib/server/db/schema.ts": {
-    "mtime": 1795857736.6311097,
-    "ast_hash": "1ed6502f7a94db5f8e6936c804b3b4a1",
+    "mtime": 1795858446.1241977,
+    "ast_hash": "dbe7ecce80ddd087bf7aa339447c7297",
     "semantic_hash": ""
   },
   "front/src/lib/lesson-screens/schema.ts": {
@@ -1115,8 +1110,8 @@
     "semantic_hash": ""
   },
   "docs/feedback-framework.md": {
-    "mtime": 1795759953.4303846,
-    "ast_hash": "348cafc7f0d2e587256c768450404ce2",
+    "mtime": 1795858434.7891958,
+    "ast_hash": "5be1264cd1ae586caaa26313d256510c",
     "semantic_hash": ""
   },
   "front/src/lib/server/prompts/grade-essay.md": {
@@ -1275,13 +1270,13 @@
     "semantic_hash": ""
   },
   "docs/ux-principles.md": {
-    "mtime": 1795502607.4604833,
-    "ast_hash": "eac37673208012626dc884759e025ae1",
+    "mtime": 1795858434.7872324,
+    "ast_hash": "9f1463dc9e70bacdfad546035f56610b",
     "semantic_hash": ""
   },
   "front/src/hooks.server.ts": {
-    "mtime": 1795857501.4188704,
-    "ast_hash": "5c31fdf7c766aba9d9d7d6c310a71b0e",
+    "mtime": 1795858445.9600923,
+    "ast_hash": "f63068344d598a7877ac2347efa77a7e",
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/edit-exam/+page.svelte": {
@@ -1455,8 +1450,8 @@
     "semantic_hash": ""
   },
   "docs/platform.md": {
-    "mtime": 1795857780.1212227,
-    "ast_hash": "fda1ad678f940c568dcefe3095fc8c08",
+    "mtime": 1795858434.800807,
+    "ast_hash": "0c1ff14983e6712a0a719f5f3d043fe9",
     "semantic_hash": ""
   },
   "front/scripts/create-admin.mjs": {
@@ -1595,8 +1590,8 @@
     "semantic_hash": ""
   },
   "front/drizzle/meta/_journal.json": {
-    "mtime": 1795857459.3472552,
-    "ast_hash": "5e1d25e5b038c8c1174039ff9f179371",
+    "mtime": 1795858393.5730648,
+    "ast_hash": "9d7053e96cd2441d394343d4ff1eec96",
     "semantic_hash": ""
   },
   "front/scripts/create-coupon.mjs": {
@@ -1944,11 +1939,6 @@
     "ast_hash": "c00549ea75d368d0c6eb8130b7764639",
     "semantic_hash": ""
   },
-  "front/src/routes/api/waitlist/+server.ts": {
-    "mtime": 1792598342.5532563,
-    "ast_hash": "d401c2eec1238499fc4fd02a0071ab43",
-    "semantic_hash": ""
-  },
   "front/src/lib/content-edit/wordsFile.ts": {
     "mtime": 1792686805.0070403,
     "ast_hash": "f157a10206c56af5301b711434bcb1cb",
@@ -2175,8 +2165,8 @@
     "semantic_hash": ""
   },
   "docs/brand.md": {
-    "mtime": 1795846281.5493755,
-    "ast_hash": "039c2de19b7d394a6a5e4f62fe19c4cf",
+    "mtime": 1795858434.8017664,
+    "ast_hash": "c9f30ab422df149d81c3e46c965094d4",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -2485,8 +2475,8 @@
     "semantic_hash": ""
   },
   "front/e2e/api.spec.ts": {
-    "mtime": 1793731835.40924,
-    "ast_hash": "40182225754ebc029c234926cb84e842",
+    "mtime": 1795858446.1456976,
+    "ast_hash": "d79aa7c4f48f9b27277840576981d37b",
     "semantic_hash": ""
   },
   "front/e2e/content.spec.ts": {
@@ -2575,8 +2565,8 @@
     "semantic_hash": ""
   },
   "front/e2e/accounts.spec.ts": {
-    "mtime": 1794581821.672621,
-    "ast_hash": "33eb02db246ea86767be276deec7cd7a",
+    "mtime": 1795858446.3182302,
+    "ast_hash": "356b1345b00c565160128d7115b97749",
     "semantic_hash": ""
   },
   "front/e2e/personas.spec.ts": {
@@ -2855,13 +2845,13 @@
     "semantic_hash": ""
   },
   "front/src/routes/(admin)/dashboard/+page.svelte": {
-    "mtime": 1795244002.2392046,
-    "ast_hash": "aa99e2a9f83537263fdc5ea1d6eaa2d3",
+    "mtime": 1795858446.0681913,
+    "ast_hash": "76f51e2d223c4e8e309ea4bc91c8e86e",
     "semantic_hash": ""
   },
   "front/src/routes/api/dashboard/+server.ts": {
-    "mtime": 1795244002.2392046,
-    "ast_hash": "07ded845135d2d957896403536c6e4f6",
+    "mtime": 1795858445.9896767,
+    "ast_hash": "7b4c504feef6f49e26cedb606dc17243",
     "semantic_hash": ""
   },
   "front/tests/vocab-audio.test.ts": {
@@ -2945,8 +2935,8 @@
     "semantic_hash": ""
   },
   "docs/policies.md": {
-    "mtime": 1795857780.1202185,
-    "ast_hash": "3f4fa1fd64c32035e3e4f1c4f6e9878e",
+    "mtime": 1795858434.800807,
+    "ast_hash": "1480c969be1d7f94375ffa944d125a84",
     "semantic_hash": ""
   },
   "front/drizzle/0016_order_renewal.sql": {
@@ -2970,8 +2960,8 @@
     "semantic_hash": ""
   },
   "front/src/routes/api/cron/renewals/+server.ts": {
-    "mtime": 1795857675.708892,
-    "ast_hash": "b1439f3e1b904598e247cf72210620ff",
+    "mtime": 1795858400.089357,
+    "ast_hash": "e2639ff650e3a41d14be30ae38b0fe31",
     "semantic_hash": ""
   },
   "front/src/routes/api/subscription/+server.ts": {
@@ -2982,6 +2972,16 @@
   "docs/handoffs/payments.md": {
     "mtime": 1795857780.6586978,
     "ast_hash": "aaaed424b37dc73a5712576ad8522e9d",
+    "semantic_hash": ""
+  },
+  "front/drizzle/0017_drop_waitlist.sql": {
+    "mtime": 1795858393.5740402,
+    "ast_hash": "212874043baaf3e25f140fbe1f84f8fb",
+    "semantic_hash": ""
+  },
+  "front/drizzle/meta/0017_snapshot.json": {
+    "mtime": 1795858393.5730648,
+    "ast_hash": "35b52b892418735c1e32d2cb234a7d3e",
     "semantic_hash": ""
   }
 }
