@@ -1,45 +1,44 @@
 // Which models each LLM role uses, in fallback order: swapping or reordering a
 // model is an edit here. Prompts live next to it in prompts/<role>.md.
-// Names are Vercel AI Gateway ids (`<vendor>/<model>`); `google/` ones also run on
-// Gemini's own API, the safety net while the gateway is new.
-// Google models only: the privacy policy names Google as the only AI provider.
+// Names are Vercel AI Gateway ids (`<vendor>/<model>`); `openai/` ones also run on
+// OpenAI's own API, the safety net when the gateway fails.
+// The privacy policy names OpenAI as the only AI provider: another vendor needs a policy update first.
 //
-// PRICES (Oct 2026, per 1M tokens in / out): gemini-3.8-flash 0.75 / 3.75 is an intro
-// rate that doubles to 1.50 / 7.50 on 2027-01-01 (COBE cost ~x2); gemini-3.1-flash-lite
-// 0.25 / 1.50. Re-check before 2027; cheaper option then:
-// chat-speaking on a flash-lite model.
+// PRICES (Nov 2026, per 1M tokens in / out): gpt-6-luna 0.10 / 0.50, gpt-6.1-terra 1.00 / 5.00.
+// COBE (audio in) has no model yet: docs/handoffs/cobe-audio.md.
 
 export type LlmRole =
 	'grade-short' | 'grade-reading' | 'grade-essay' | 'grade-speaking' | 'chat-speaking' | 'ocr';
 
 export const LLM_MODELS: Record<LlmRole, string[]> = {
-	'grade-short': ['google/gemini-3.1-flash-lite', 'google/gemini-3.5-flash-lite'],
-	'grade-reading': ['google/gemini-3.1-flash-lite', 'google/gemini-3.5-flash-lite'],
-	'grade-essay': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
-	// audio in: Gemini only
-	'grade-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
-	'chat-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
-	ocr: ['google/gemini-3.8-flash', 'google/gemini-3.5-flash']
+	'grade-short': ['openai/gpt-6-luna'],
+	'grade-reading': ['openai/gpt-6-luna'],
+	'grade-essay': ['openai/gpt-6.1-terra'],
+	'grade-speaking': [],
+	'chat-speaking': [],
+	ocr: ['openai/gpt-6.1-terra']
 };
 
 export const GATEWAY_URL = 'https://ai-gateway.vercel.sh/v1';
-export const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai';
+export const OPENAI_URL = 'https://api.openai.com/v1';
 
 export type LlmTarget = { url: string; key: string; models: string[]; gateway: boolean };
 
-/** Where to send a role's call, in order: the gateway, then Gemini direct (its `google/` models). */
+/** Where to send a role's call, in order: the gateway, then OpenAI direct (its `openai/` models). */
 export function llmTargets(
 	role: LlmRole,
-	keys: { gateway?: string; gemini?: string }
+	keys: { gateway?: string; openai?: string }
 ): LlmTarget[] {
 	const models = LLM_MODELS[role];
-	const gemini = models
-		.filter((m) => m.startsWith('google/'))
-		.map((m) => m.slice('google/'.length));
+	const openai = models
+		.filter((m) => m.startsWith('openai/'))
+		.map((m) => m.slice('openai/'.length));
 	return [
-		...(keys.gateway ? [{ url: GATEWAY_URL, key: keys.gateway, models, gateway: true }] : []),
-		...(keys.gemini && gemini.length
-			? [{ url: GEMINI_URL, key: keys.gemini, models: gemini, gateway: false }]
+		...(keys.gateway && models.length
+			? [{ url: GATEWAY_URL, key: keys.gateway, models, gateway: true }]
+			: []),
+		...(keys.openai && openai.length
+			? [{ url: OPENAI_URL, key: keys.openai, models: openai, gateway: false }]
 			: [])
 	];
 }

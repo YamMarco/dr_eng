@@ -37,7 +37,7 @@ A lesson task is answered once, like every other question. Wrong → the student
 ## Layer 2
 
 - Client sends `{ kind, question, text (typo-corrected), notes?, mechanics? }`, for reading `{ kind, passage, items: [{ id, question, paragraph?, points, text, notes? }] }`, or for an exam `{ kind: 'exam', quizId, attempt, parts: [{ id, ...reading or essay }] }` (each part graded with its own prompt, in parallel; reply `{ results: { [id]: verdict | null } }`). The LLM gets only the submitted text or recording, never who sent it. The route needs a signed-in user and is capped per user (`llmGuard`, `docs/platform.md` "LLM spend guard").
-- Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points; sent alone = a lesson `passage-quiz`: lesson quota, no exam lock, 2 points per answer, full = correct), `essay` → `grade-essay` (official rubric; exams only), COBE recordings → `grade-speaking` (`/api/speak`, audio in), COBE chat turns → `chat-speaking` (`/api/chat-speak`). Models per role, in fallback order, in `server/llmModels.ts`: Vercel AI Gateway (`AI_GATEWAY_API_KEY`) first, then Gemini direct (`GEMINI_API_KEY`, its `google/` models) as the safety net; a gateway failure moves on, a direct one only on 429/5xx; every model overloaded → one more round after 2 s. Workers call `chatJson` (`llm.ts`): the reply is zod-validated, and a cut-off, malformed or off-schema reply gets one retry. Every LLM endpoint is wrapped in `llmRoute` (`server/llmRoute.ts`): configured check, `guardLlm`, body validation (`jsonBody`), unexpected errors → logged 502.
+- Kinds and roles: `lesson` → `grade-short` (pass/fail), `reading` → `grade-reading` (exam open question, 0..points; sent alone = a lesson `passage-quiz`: lesson quota, no exam lock, 2 points per answer, full = correct), `essay` → `grade-essay` (official rubric; exams only), COBE recordings → `grade-speaking` (`/api/speak`, audio in), COBE chat turns → `chat-speaking` (`/api/chat-speak`). Models per role, in fallback order, in `server/llmModels.ts`: Vercel AI Gateway (`AI_GATEWAY_API_KEY`) first, then OpenAI direct (`OPENAI_API_KEY`, its `openai/` models) as the safety net; every call asks for low reasoning; a role with no model (COBE today) answers 503; a gateway failure moves on, a direct one only on 429/5xx; every model overloaded → one more round after 2 s. Workers call `chatJson` (`llm.ts`): the reply is zod-validated, and a cut-off, malformed or off-schema reply gets one retry. Every LLM endpoint is wrapped in `llmRoute` (`server/llmRoute.ts`): configured check, `guardLlm`, body validation (`jsonBody`), unexpected errors → logged 502.
 - The LLM returns only tags + quoted spans, no prose: `{"pass": bool, "marks": [{"span", "tag", "nth", "fix"}]}`. `fix` only on `wrong-word` / `word-choice` (the word meant: span shown struck through with the fix above it) and `missing-word` (span = word after the gap; the fix is ghosted in before it); it becomes the mark's `suggestions`. The `llmFix` rule (default on) turns it off per level: the request sends `fixes: false`, the user message adds `FIXES: off`, and the server drops any `fix` anyway (lessons only; exams always on). Whole-answer tags (`off-topic`, `incomplete`) have an empty span and show as a general line. A fatal tag forces fail. Spans are mapped back onto the student's original text.
 - Tags: `feedback/tags.ts` (ids), the prompt files (English descriptions), `i18n` `feedback.tag` (Hebrew). `tests/feedback.test.ts` fails if they drift apart.
 
@@ -52,10 +52,10 @@ Graded on final submit in **2 calls, in parallel**: one for every open reading a
 - **Score**: `applyGrades` adds them to the auto score; the pass threshold runs on the whole exam (/100). A failed call counts 0, and the report offers **בדיקה חוזרת**.
 - **Report**: total, per part, and every open answer with its score, the answer highlighted in place, and the essay's criteria + length deduction.
 
-## Tuning prompts in Gemini's web UI (AI Studio)
+## Tuning prompts in the OpenAI Playground
 
-1. Lessons: paste `front/src/lib/server/prompts/grade-short.md` **as-is** into _System instructions_. Exams: open `GET /api/grade?kind=reading|essay&module=c|e|g` on the dev server and paste the assembled prompt (base + module section), exactly what the app sends.
-2. Set the model to the role's (see `server/llm.ts`), output format JSON.
+1. Lessons: paste `front/src/lib/server/prompts/grade-short.md` **as-is** into the system message. Exams: open `GET /api/grade?kind=reading|essay&module=c|e|g` on the dev server and paste the assembled prompt (base + module section), exactly what the app sends.
+2. Set the model to the role's (see `server/llmModels.ts`), reasoning low, output format JSON.
 3. User message, same shape the app sends (reading: `PASSAGE` once, then an `ANSWER q1` block per answer with `QUESTION`, `PARAGRAPH`, `POINTS`, `STUDENT ANSWER`; essay adds `MECHANICS COUNT: spelling 2, punctuation/capitalization 1, run-on sentences 0`; the same GET prints a full sample):
 
 ```
@@ -96,4 +96,4 @@ Debug showcase of every layer-2 output (all tags, verdict lines, exam report; st
 
 ## Next
 
-Calibration on real answers (AI Studio), especially essay scores against teacher marks.
+Calibration on real answers (OpenAI Playground), especially essay scores against teacher marks.

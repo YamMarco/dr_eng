@@ -1573,13 +1573,12 @@ export const he = {
 				{
 					title: 'בדיקה בעזרת AI',
 					body: [
-						'כדי לתת לכם משוב, תשובות כתובות, חיבורים, הקלטות COBE, שיחות עם בן השיח וצילומי כתב יד נשלחים למודל Gemini של Google, דרך שירות AI Gateway של Vercel. אם השירות של Vercel לא זמין, הבדיקה נשלחת ישירות ל-Google.'
+						'כדי לתת לכם משוב, תשובות כתובות, חיבורים וצילומי כתב יד נשלחים למודל GPT של OpenAI, דרך שירות AI Gateway של Vercel. אם השירות של Vercel לא זמין, הבדיקה נשלחת ישירות ל-OpenAI.'
 					],
 					items: [
 						'נשלחת רק התשובה עצמה, יחד עם השאלה. בלי שם, בלי מייל ובלי שום פרט שמזהה אתכם.',
 						'המידע נשלח רק כדי לבדוק ולענות, ולא משמש לאימון מודלים.',
-						'עד 14 יום הצוות שלנו יכול לעיין בבדיקות, כדי לשפר את איכות המשוב.',
-						'Vercel ו-Google עשויות לשמור עותק לזמן מוגבל, לפי התנאים שלהן. הקישורים לתנאים בסעיף "עם מי המידע משותף".',
+						'Vercel ו-OpenAI עשויות לשמור עותק לזמן מוגבל, לפי התנאים שלהן. הקישורים לתנאים בסעיף "עם מי המידע משותף".',
 						'הציון והמשוב של ה-AI הם הערכה לתרגול בלבד. הם עלולים לטעות, ואינם משפיעים על שום דבר מחוץ לאפליקציה.',
 						'אל תכתבו בתשובות פרטים אישיים שלא צריך.'
 					]
@@ -1593,7 +1592,8 @@ export const he = {
 					items: [
 						'Supabase: מסד הנתונים והחשבונות (אירלנד).',
 						'Vercel: אחסון האתר, השרתים ושירות AI Gateway (ארה״ב ואירופה).',
-						'Google: מודל Gemini לבדיקת תשובות, ותיבת המייל של הצוות ב-Gmail (ארה״ב ועולמי).',
+						'OpenAI: מודל GPT לבדיקת תשובות ולקריאת צילומי כתב יד (ארה״ב).',
+						'Google: תיבת המייל של הצוות ב-Gmail (ארה״ב ועולמי).',
 						'Resend: שליחת מיילים, כמו אישור חשבון, איפוס סיסמה ודיווחי משוב (ארה״ב).',
 						'ImprovMX: העברת מיילים שנשלחים אלינו לתיבת הצוות (צרפת וארה״ב).',
 						'כלי לניתוח שימוש: כדי להבין איך משתמשים באפליקציה ולשפר אותה. כשנוסיף אותו, נפרט כאן את שם הספק.',
@@ -1603,8 +1603,8 @@ export const he = {
 					links: [
 						{ label: 'Supabase', href: 'https://supabase.com/privacy' },
 						{ label: 'Vercel', href: 'https://vercel.com/legal/privacy-notice' },
-						{ label: 'Google Gemini API', href: 'https://ai.google.dev/gemini-api/terms' },
 						{ label: 'Google', href: 'https://policies.google.com/privacy' },
+						{ label: 'OpenAI API', href: 'https://openai.com/policies/row-privacy-policy/' },
 						{ label: 'Resend', href: 'https://resend.com/legal/privacy-policy' },
 						{ label: 'ImprovMX', href: 'https://improvmx.com/privacy/' },
 						{

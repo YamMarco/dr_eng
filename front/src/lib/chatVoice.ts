@@ -1,5 +1,5 @@
 // The COBE chat's AI voice. Today the browser's own voice (speech.ts); a
-// server voice (e.g. Gemini TTS through /api) would be another ChatVoice
+// server voice (e.g. a TTS model through /api) would be another ChatVoice
 // with the same two calls, and the chat screen stays as is.
 import { RATE, hush, say } from './speech';
 

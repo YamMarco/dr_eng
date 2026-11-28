@@ -18,7 +18,7 @@ export const expenses: Expense[] = [
 		url: 'https://supabase.com/dashboard'
 	},
 	{ name: 'Vercel AI Gateway', amount: 0, currency: 'USD', cycle: 'month', note: 'לפי שימוש' },
-	{ name: 'Gemini API', amount: 0, currency: 'USD', cycle: 'month', note: 'לפי שימוש' },
+	{ name: 'OpenAI API', amount: 0, currency: 'USD', cycle: 'month', note: 'לפי שימוש' },
 	{ name: 'Resend', amount: 0, currency: 'USD', cycle: 'month', url: 'https://resend.com' },
 	{ name: 'GitHub', amount: 0, currency: 'USD', cycle: 'month' },
 	{ name: 'דומיין', amount: 94, currency: 'ILS', cycle: 'year' }
