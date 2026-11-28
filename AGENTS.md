@@ -5,7 +5,7 @@
 
 # workflow
 - avoid screenshot tests if possible
-- medium+ or 2 modules change =>  pseudo code outline how the change will implmented & change and wait for approval, commit when its working and done
+- medium+ or 2+ modules change => plan in plain pseudo code (user flows, data, conditions, an example; no file/function names), wait for approval; commit when working and done
 - only create Hebrew UI text
 - keep RAM usage < 100% when working
 - Be direct about technical limitations and disagreements.
