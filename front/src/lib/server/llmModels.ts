@@ -2,7 +2,8 @@
 // model is an edit here. Prompts live next to it in prompts/<role>.md.
 // Names are Vercel AI Gateway ids (`<vendor>/<model>`); `google/` ones also run on
 // Gemini's own API, the safety net while the gateway is new.
-// Google models only: the privacy policy names Google as the only AI provider.
+// AI providers are named in the privacy policy: Google for all roles, OpenAI for ocr.
+// A model from another vendor needs a policy update first.
 //
 // PRICES (Oct 2026, per 1M tokens in / out): gemini-3.8-flash 0.75 / 3.75 is an intro
 // rate that doubles to 1.50 / 7.50 on 2027-01-01 (COBE cost ~x2); gemini-3.1-flash-lite
@@ -19,7 +20,8 @@ export const LLM_MODELS: Record<LlmRole, string[]> = {
 	// audio in: Gemini only
 	'grade-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
 	'chat-speaking': ['google/gemini-3.8-flash', 'google/gemini-3.5-flash'],
-	ocr: ['google/gemini-3.8-flash', 'google/gemini-3.5-flash']
+	// gateway only; Gemini as the fallback
+	ocr: ['openai/gpt-6.1-terra', 'google/gemini-3.8-flash']
 };
 
 export const GATEWAY_URL = 'https://ai-gateway.vercel.sh/v1';
