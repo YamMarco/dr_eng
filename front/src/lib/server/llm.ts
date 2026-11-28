@@ -1,7 +1,8 @@
 // LLM client (OpenAI-compatible HTTP). Callers pick a role, not a vendor; the
 // role's models and their order are in llmModels.ts. Vercel AI Gateway first,
-// Gemini's own API as the safety net while the gateway is new.
+// OpenAI's own API as the safety net.
 import { env } from '$env/dynamic/private';
+import { error } from '@sveltejs/kit';
 import type { z } from 'zod';
 import { llmTargets, type LlmRole } from './llmModels';
 
@@ -15,13 +16,13 @@ export interface LlmResult {
 	outputTokens: number;
 }
 
-const keys = () => ({ gateway: env.AI_GATEWAY_API_KEY, gemini: env.GEMINI_API_KEY });
+const keys = () => ({ gateway: env.AI_GATEWAY_API_KEY, openai: env.OPENAI_API_KEY });
 
 /** Kill switch: false turns every LLM endpoint off (503) and the UI falls back to local marks. */
 export const LLM_ENABLED = true;
 
 export function llmConfigured(): boolean {
-	return LLM_ENABLED && Boolean(env.AI_GATEWAY_API_KEY || env.GEMINI_API_KEY);
+	return LLM_ENABLED && Boolean(env.AI_GATEWAY_API_KEY || env.OPENAI_API_KEY);
 }
 
 type ChatOptions = {
@@ -41,8 +42,10 @@ type ChatOptions = {
  */
 export async function chat(opts: ChatOptions): Promise<LlmResult> {
 	const targets = llmTargets(opts.role, keys());
-	if (!targets.length) throw new Error('LLM is not configured');
-	const body = (model: string) =>
+	// a role without a model (COBE today) is "unavailable", not a crash
+	if (!targets.length) error(503, 'LLM is not configured');
+	// OpenAI's own API takes max_completion_tokens; low reasoning: same grades, ~2x faster (tested)
+	const body = (model: string, gateway: boolean) =>
 		JSON.stringify({
 			model,
 			messages: [
@@ -62,7 +65,8 @@ export async function chat(opts: ChatOptions): Promise<LlmResult> {
 							: opts.user
 				}
 			],
-			max_tokens: opts.maxTokens ?? 1500,
+			[gateway ? 'max_tokens' : 'max_completion_tokens']: opts.maxTokens ?? 1500,
+			reasoning_effort: 'low',
 			...(opts.json && { response_format: { type: 'json_object' } })
 		});
 	const calls = targets.flatMap((t) => t.models.map((model) => ({ ...t, model })));
@@ -75,7 +79,7 @@ export async function chat(opts: ChatOptions): Promise<LlmResult> {
 			res = await fetch(`${call.url}/chat/completions`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${call.key}` },
-				body: body(call.model),
+				body: body(call.model, call.gateway),
 				signal: AbortSignal.timeout(60_000)
 			});
 		} catch (e) {
@@ -85,7 +89,7 @@ export async function chat(opts: ChatOptions): Promise<LlmResult> {
 		}
 		if (res.ok) break;
 		failure = `${call.model} ${res.status}: ${(await res.text()).slice(0, 300)}`;
-		// The gateway is new: any failure there moves on (next model, then Gemini direct).
+		// Any gateway failure moves on (next model, then OpenAI direct).
 		// Direct, only overloaded or rate-limited does; anything else is final.
 		if (call.gateway || res.status === 429 || res.status >= 500) {
 			console.warn(`${opts.role}: ${failure}`);

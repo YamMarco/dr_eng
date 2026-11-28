@@ -98,7 +98,7 @@ function cleanMarks(marks: z.infer<typeof markSchema>[], kind: GradeRequest['kin
 	return marks.filter((m) => TAG_IDS.has(m.tag)).slice(0, KINDS[kind].maxMarks);
 }
 
-// maxTokens also covers the model's hidden reasoning (Gemini "thinking"): too low cuts the JSON off.
+// maxTokens also covers the model's hidden reasoning (reasoning tokens): too low cuts the JSON off.
 function ask<S extends z.ZodType>(
 	req: GradeRequest,
 	schema: S,
