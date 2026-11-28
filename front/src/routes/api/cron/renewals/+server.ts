@@ -1,7 +1,7 @@
 // Renewal reminder email, 7 days before a subscription renews; run hourly
 // (.github/workflows/reminders.yml). Public route by name (hooks.server.ts): it checks
-// CRON_SECRET itself and fails closed. Once per order (renewalRemindedAt). Only the user's
-// latest-ending paid order renews, so a reminder goes out for that one alone.
+// CRON_SECRET itself and fails closed. Once per order (renewalRemindedAt). Per product, only
+// the latest-ending paid order renews, so each product gets its own reminder.
 // The renewal charge itself waits for the payment provider (docs/handoffs/payments.md).
 import { error, json } from '@sveltejs/kit';
 import { and, eq, gt, isNull, lte, sql } from 'drizzle-orm';
@@ -9,7 +9,7 @@ import { env } from '$env/dynamic/private';
 import { cronAuthorized } from '$lib/server/cron';
 import { db } from '$lib/server/db';
 import { orders } from '$lib/server/db/schema';
-import { subscription } from '$lib/server/billing';
+import { subscriptions } from '$lib/server/billing';
 import { adminClient } from '$lib/server/supabase';
 import { renewalHtml, renewalSubject } from '$lib/server/renewalEmail';
 import type { RequestHandler } from './$types';
@@ -39,8 +39,8 @@ export const GET: RequestHandler = async ({ request }) => {
 
 	let sent = 0;
 	for (const order of due) {
-		const sub = await subscription(order.userId);
-		if (sub?.orderId !== order.id || !sub.renews) continue;
+		const sub = (await subscriptions(order.userId)).find((s) => s.orderId === order.id);
+		if (!sub?.renews) continue;
 		const { data } = await admin.auth.admin.getUserById(order.userId);
 		const to = data.user?.email;
 		if (!to) continue;

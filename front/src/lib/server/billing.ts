@@ -1,9 +1,19 @@
 // Plans, coupons, orders and access. Prices always come from $lib/plans, never
 // from the client. Billing is off (everyone has access) until DATABASE_URL is set.
+// Each product (the app plan, COBE) is its own order, period, renewal and cancel; a
+// checkout of both makes two orders with one checkoutId and one payment.
 import { and, desc, eq, gt, inArray, isNull, sql } from 'drizzle-orm';
 import { db } from './db';
 import { coupons, orders } from './db/schema';
-import { defaultPlan, maxPayments, planById, productsOf, renewalOf, type Plan } from '$lib/plans';
+import {
+	defaultPlan,
+	maxPayments,
+	planById,
+	productsOf,
+	renewalOf,
+	type Plan,
+	type Product
+} from '$lib/plans';
 import { startPayment } from './payments';
 
 export const billingEnabled = !!db;
@@ -15,7 +25,8 @@ type Coupon = typeof coupons.$inferSelect;
 export type CouponProblem = 'unknown' | 'expired' | 'used-up' | 'wrong-plan' | 'already-used';
 
 export type Quote = {
-	planId: string;
+	/** Each product's own price, before the coupon. */
+	items: { planId: string; price: number }[];
 	price: number;
 	discount: number;
 	total: number;
@@ -30,6 +41,8 @@ export class BillingError extends Error {
 }
 
 const DONE = ['paid', 'free'] as const;
+/** Products in one checkout: the app plan and COBE. */
+const MAX_ITEMS = 2;
 
 export function normalizeCode(code: string | null | undefined): string | null {
 	const trimmed = code?.trim().toUpperCase();
@@ -39,8 +52,7 @@ export function normalizeCode(code: string | null | undefined): string | null {
 export type Access = { app: Date | null; cobe: Date | null; lessons: Date | null };
 
 /** Until when the user has the app, COBE and the group lessons (null = no access). A plan id
- *  the catalogue no longer knows (an older plan) opens the app and COBE, as every plan did
- *  before COBE was sold apart. */
+ *  the catalogue no longer knows (an older plan) opens the app and COBE. */
 export async function access(userId: string): Promise<Access> {
 	const rows = await db!
 		.select({ planId: orders.planId, until: orders.accessUntil })
@@ -62,21 +74,16 @@ export async function access(userId: string): Promise<Access> {
 	return result;
 }
 
-/** The latest end date of any access, for "already active" in checkout. */
-export async function accessUntil(userId: string): Promise<Date | null> {
-	const { app, cobe } = await access(userId);
-	return app && (!cobe || app > cobe) ? app : cobe;
-}
-
 async function couponProblem(
 	tx: Tx | Db,
 	coupon: Coupon | undefined,
-	plan: Plan,
+	plans: Plan[],
 	userId: string
 ): Promise<CouponProblem | null> {
 	if (!coupon) return 'unknown';
 	if (coupon.expiresAt && coupon.expiresAt.getTime() < Date.now()) return 'expired';
-	if (coupon.planId && coupon.planId !== plan.id) return 'wrong-plan';
+	if (coupon.planId && !plans.some((p) => p.id === coupon.planId)) return 'wrong-plan';
+	// A coupon goes on one order of a checkout, so each row is one redemption.
 	const used = await tx
 		.select({ userId: orders.userId })
 		.from(orders)
@@ -86,29 +93,43 @@ async function couponProblem(
 	return null;
 }
 
-/** Without a plan, a coupon decides it (its own plan, else defaultPlan). A coupon takes off
- *  the app part only: the Zoom part is the teacher's. */
-async function resolve(tx: Tx | Db, planId: string | null, code: string | null, userId: string) {
+/** The products of one checkout, priced. Without plans, a coupon decides (its own plan, else
+ *  defaultPlan). At most one plan per product. COBE costs its with-app price when the app is
+ *  in the cart or still running. The coupon takes off one item's app part (its own plan, else
+ *  the app plan): the Zoom part is the teacher's. */
+async function resolve(tx: Tx | Db, planIds: string[], code: string | null, userId: string) {
 	const [coupon] = code ? await tx.select().from(coupons).where(eq(coupons.code, code)) : [];
-	const id = planId ?? coupon?.planId;
-	const plan = id ? planById(id) : defaultPlan();
-	if (!plan || plan.price === 0) throw new BillingError('unknown-plan');
-	const problem = code ? await couponProblem(tx, coupon, plan, userId) : null;
+	const ids = planIds.length ? planIds : [coupon?.planId ?? defaultPlan().id];
+	const base = ids.map((id) => planById(id));
+	if (ids.length > MAX_ITEMS || base.some((p) => !p || p.price === 0))
+		throw new BillingError('unknown-plan');
+	const products = base.map((p) => p!.product);
+	if (new Set(products).size < products.length) throw new BillingError('unknown-plan');
+	const appRuns = products.includes('app') || !!(await access(userId)).app;
+	const plans = ids.map((id) => planById(id, undefined, appRuns)!);
+
+	const problem = code ? await couponProblem(tx, coupon, plans, userId) : null;
 	const applied = code && !problem ? coupon : undefined;
-	const discount = applied ? Math.round((plan.app * applied.percentOff) / 100) : 0;
+	const target = applied
+		? (plans.find((p) => p.id === applied.planId) ??
+			plans.find((p) => p.product === 'app') ??
+			plans[0])
+		: undefined;
+	const discount = target ? Math.round((target.app * applied!.percentOff) / 100) : 0;
+	const price = plans.reduce((sum, p) => sum + p.price, 0);
 	const quote: Quote = {
-		planId: plan.id,
-		price: plan.price,
+		items: plans.map((p) => ({ planId: p.id, price: p.price })),
+		price,
 		discount,
-		total: plan.price - discount,
+		total: price - discount,
 		coupon: applied ? { code: applied.code, percentOff: applied.percentOff } : null,
 		couponProblem: problem
 	};
-	return { plan, quote };
+	return { plans, quote, target };
 }
 
-export async function quote(planId: string | null, code: string | null, userId: string) {
-	return (await resolve(db!, planId, normalizeCode(code), userId)).quote;
+export async function quote(planIds: string[], code: string | null, userId: string) {
+	return (await resolve(db!, planIds, normalizeCode(code), userId)).quote;
 }
 
 /** A plan adds its months to `start`. */
@@ -118,91 +139,111 @@ function accessEnd(plan: Plan, start: Date): Date {
 	return until;
 }
 
+/** Where a new period of `product` starts: the end of the one still running, else now. */
+function startOf(current: Access, product: Product): Date {
+	const until = current[product];
+	return until && until > new Date() ? until : new Date();
+}
+
 export type CheckoutResult =
 	{ status: 'active'; accessUntil: string } | { status: 'redirect'; url: string };
 
 /**
- * Free (100% coupon): the order completes at once. Paid: a pending order and
- * the provider's payment page. The coupon row is locked so its limit holds
- * under concurrent redemptions.
+ * One order per product, one checkoutId, one payment for the total. Free (100% coupon):
+ * every order completes at once. Paid: pending orders and the provider's payment page.
+ * The coupon row is locked so its limit holds under concurrent redemptions.
  */
 export async function checkout(
-	planId: string | null,
+	planIds: string[],
 	rawCode: string | null,
 	userId: string,
 	returnUrl: string
 ): Promise<CheckoutResult> {
 	const code = normalizeCode(rawCode);
-	const { order, plan } = await db!.transaction(async (tx) => {
+	const checkoutId = crypto.randomUUID();
+	const { rows, plans, total } = await db!.transaction(async (tx) => {
 		if (code)
 			await tx.execute(sql`select 1 from ${coupons} where ${coupons.code} = ${code} for update`);
-		const { plan, quote } = await resolve(tx, planId, code, userId);
+		const { plans, quote, target } = await resolve(tx, planIds, code, userId);
 		if (quote.couponProblem) throw new BillingError(quote.couponProblem);
 
-		// Stacks on any access the user still has.
-		const current = await accessUntil(userId);
-		const start = current && current > new Date() ? current : new Date();
+		const current = await access(userId);
 		const free = quote.total === 0;
-		const [row] = await tx
+		const rows = await tx
 			.insert(orders)
-			.values({
-				userId,
-				planId: plan.id,
-				price: quote.price,
-				discount: quote.discount,
-				total: quote.total,
-				couponCode: quote.coupon?.code ?? null,
-				status: free ? 'free' : 'pending',
-				accessUntil: free ? accessEnd(plan, start) : null,
-				completedAt: free ? new Date() : null
-			})
+			.values(
+				plans.map((plan) => {
+					const discount = plan === target ? quote.discount : 0;
+					return {
+						userId,
+						checkoutId,
+						planId: plan.id,
+						price: plan.price,
+						discount,
+						total: plan.price - discount,
+						couponCode: plan === target ? quote.coupon!.code : null,
+						status: free ? ('free' as const) : ('pending' as const),
+						accessUntil: free ? accessEnd(plan, startOf(current, plan.product)) : null,
+						completedAt: free ? new Date() : null
+					};
+				})
+			)
 			.returning();
-		return { order: row, plan };
+		return { rows, plans, total: quote.total };
 	});
 
-	if (order.status === 'free')
-		return { status: 'active', accessUntil: order.accessUntil!.toISOString() };
+	if (total === 0) {
+		const until = Math.max(...rows.map((row) => row.accessUntil!.getTime()));
+		return { status: 'active', accessUntil: new Date(until).toISOString() };
+	}
 
 	const payment = await startPayment({
-		orderId: order.id,
-		amount: order.total,
-		maxPayments: maxPayments(plan),
-		description: order.planId,
+		checkoutId,
+		amount: total,
+		maxPayments: Math.max(...plans.map(maxPayments)),
+		description: plans.map((p) => p.id).join(' + '),
 		returnUrl
 	});
 	if (!payment) {
-		await db!.update(orders).set({ status: 'failed' }).where(eq(orders.id, order.id));
+		await db!.update(orders).set({ status: 'failed' }).where(eq(orders.checkoutId, checkoutId));
 		throw new BillingError('payments-unavailable');
 	}
 	await db!
 		.update(orders)
 		.set({ provider: payment.provider, providerRef: payment.providerRef })
-		.where(eq(orders.id, order.id));
+		.where(eq(orders.checkoutId, checkoutId));
 	return { status: 'redirect', url: payment.redirectUrl };
 }
 
-/** For the provider webhook: grants access from the moment of payment. Idempotent: a
- *  repeated or concurrent webhook for the same order finds it no longer pending. */
-export async function completeOrder(orderId: string, status: 'paid' | 'failed') {
-	const [order] = await db!.select().from(orders).where(eq(orders.id, orderId));
-	if (!order || order.status !== 'pending') return;
-	const plan = planById(order.planId);
-	const current = await accessUntil(order.userId);
-	const start = current && current > new Date() ? current : new Date();
-	await db!
-		.update(orders)
-		.set({
-			status,
-			completedAt: new Date(),
-			accessUntil: status === 'paid' && plan ? accessEnd(plan, start) : null
-		})
-		.where(and(eq(orders.id, orderId), eq(orders.status, 'pending')));
+/** For the provider webhook: grants each product its period from the moment of payment.
+ *  Idempotent: a repeated or concurrent webhook finds the orders no longer pending. */
+export async function completeCheckout(checkoutId: string, status: 'paid' | 'failed') {
+	const pending = await db!
+		.select()
+		.from(orders)
+		.where(and(eq(orders.checkoutId, checkoutId), eq(orders.status, 'pending')));
+	if (!pending.length) return;
+	const current = await access(pending[0].userId);
+	for (const order of pending) {
+		const plan = planById(order.planId);
+		await db!
+			.update(orders)
+			.set({
+				status,
+				completedAt: new Date(),
+				accessUntil:
+					status === 'paid' && plan ? accessEnd(plan, startOf(current, plan.product)) : null
+			})
+			.where(and(eq(orders.id, order.id), eq(orders.status, 'pending')));
+	}
 }
 
 export type Subscription = {
 	orderId: string;
 	planId: string;
-	/** The current period's end: the next charge, unless cancelled. */
+	product: Product;
+	/** The current period; its end is the next charge, unless cancelled. */
+	from: Date;
 	until: Date;
 	renews: boolean;
 	/** What the renewal charges: the same offer, monthly, regular price. */
@@ -210,35 +251,49 @@ export type Subscription = {
 	renewPrice: number;
 };
 
-/** The user's running subscription: the latest-ending paid order still in its period.
- *  Free (coupon) orders never renew, so they aren't one. */
-export async function subscription(userId: string): Promise<Subscription | null> {
-	const [order] = await db!
+/** The user's running subscriptions, one per product: its latest-ending paid order still in
+ *  its period. Free (coupon) orders never renew, so they aren't one. COBE renews at the
+ *  with-app price when the app still runs at that date. */
+export async function subscriptions(userId: string): Promise<Subscription[]> {
+	const rows = await db!
 		.select()
 		.from(orders)
 		.where(
 			and(eq(orders.userId, userId), eq(orders.status, 'paid'), gt(orders.accessUntil, sql`now()`))
 		)
-		.orderBy(desc(orders.accessUntil))
-		.limit(1);
-	const plan = order && planById(order.planId);
-	if (!order || !plan) return null;
-	const next = renewalOf(plan);
-	return {
-		orderId: order.id,
-		planId: order.planId,
-		until: order.accessUntil!,
-		renews: !order.renewCancelledAt,
-		renewPlanId: next.id,
-		renewPrice: next.price
-	};
+		.orderBy(desc(orders.accessUntil));
+	const latest = new Map<Product, { row: (typeof rows)[number]; plan: Plan }>();
+	for (const row of rows) {
+		const plan = planById(row.planId);
+		if (plan && !latest.has(plan.product)) latest.set(plan.product, { row, plan });
+	}
+	const app = latest.get('app');
+	const appUntil = (await access(userId)).app;
+	return [...latest.values()].map(({ row, plan }) => {
+		const until = row.accessUntil!;
+		const appRuns = (!!app && !app.row.renewCancelledAt) || (!!appUntil && appUntil > until);
+		const next = renewalOf(plan, appRuns);
+		const from = new Date(until);
+		from.setMonth(from.getMonth() - plan.months);
+		return {
+			orderId: row.id,
+			planId: row.planId,
+			product: plan.product,
+			from,
+			until,
+			renews: !row.renewCancelledAt,
+			renewPlanId: next.id,
+			renewPrice: next.price
+		};
+	});
 }
 
-/** Turns auto-renewal off: no further charges; access runs to the end of the paid period. */
-export async function cancelRenewal(userId: string) {
-	await db!
-		.update(orders)
-		.set({ renewCancelledAt: new Date() })
+/** Turns auto-renewal off for one product, or all: no further charges; access runs to the end
+ *  of each paid period. Every running order of that product stops, so none renews later. */
+export async function cancelRenewal(userId: string, product: Product | 'all') {
+	const running = await db!
+		.select({ id: orders.id, planId: orders.planId })
+		.from(orders)
 		.where(
 			and(
 				eq(orders.userId, userId),
@@ -247,4 +302,9 @@ export async function cancelRenewal(userId: string) {
 				isNull(orders.renewCancelledAt)
 			)
 		);
+	const ids = running
+		.filter((row) => product === 'all' || planById(row.planId)?.product === product)
+		.map((row) => row.id);
+	if (ids.length)
+		await db!.update(orders).set({ renewCancelledAt: new Date() }).where(inArray(orders.id, ids));
 }

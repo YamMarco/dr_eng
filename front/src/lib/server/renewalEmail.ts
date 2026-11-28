@@ -17,14 +17,13 @@ const israelDay = (at: Date) =>
 
 export function planName(planId: string): string {
 	const plan = planById(planId);
-	if (!plan) return planId;
-	const name = he.plans.offers[plan.offer].name;
-	return plan.bundle ? name + he.plans.withCobe : name;
+	return plan ? he.plans.offers[plan.offer].name : planId;
 }
 
 export type Renewal = { planId: string; price: number; at: Date };
 
-export const renewalSubject = (r: Renewal) => `תזכורת: המנוי ל-EngUp מתחדש ב-${israelDay(r.at)}`;
+export const renewalSubject = (r: Renewal) =>
+	`תזכורת: המנוי ${planName(r.planId)} מתחדש ב-${israelDay(r.at)}`;
 
 export function renewalHtml(r: Renewal): string {
 	const p = `${font}font-size:16px;line-height:26px;color:#1F2937;margin:0 0 14px;`;

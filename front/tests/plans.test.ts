@@ -6,10 +6,10 @@ import {
 	COBE_ADDON,
 	PRICING,
 	maxPayments,
+	cart,
 	renewalOf,
 	planById,
-	productsOf,
-	withCobe
+	productsOf
 } from '../src/lib/plans.ts';
 
 test('regular prices: 179 a month for the group, 64 for premium, less for longer cycles', () => {
@@ -31,17 +31,28 @@ test('the regular list: a month of the group is 179', () => {
 	assert.equal(planById('group-month')!.price, 17900);
 });
 
-test('COBE adds to the app part of any plan but COBE itself', () => {
-	const bundle = planById('group-month-cobe')!;
-	assert.equal(bundle.price, 17900 + COBE_ADDON.month);
-	assert.equal(bundle.app, 4900 + COBE_ADDON.month);
-	assert.equal(planById('premium-pack3-cobe')!.price, (4900 + COBE_ADDON.pack3) * 3);
-	assert.equal(bundle.cobe, true);
-	assert.equal(bundle.bundle, true);
-	assert.equal(withCobe(planById('group-month')!, true)!.id, 'group-month-cobe');
-	assert.equal(withCobe(bundle, false)!.id, 'group-month');
+test('COBE is its own product: cheaper with an app plan, full price alone', () => {
+	assert.equal(planById('cobe-month')!.price, 5900);
+	assert.equal(planById('cobe-month', 'regular', true)!.price, COBE_ADDON.month);
+	assert.equal(planById('cobe-pack3', 'regular', true)!.price, COBE_ADDON.pack3 * 3);
+	assert.equal(planById('cobe-month')!.product, 'cobe');
+	assert.equal(planById('group-month')!.product, 'app');
+	// withApp never changes an app plan's price
+	assert.equal(planById('group-month', 'regular', true)!.price, 17900);
+	const both = cart('group', 'month', true);
+	assert.deepEqual(
+		both.items.map((p) => p.id),
+		['group-month', 'cobe-month']
+	);
+	assert.equal(both.price, 17900 + COBE_ADDON.month);
+	assert.equal(both.cobe, true);
+	assert.deepEqual(
+		cart('cobe', 'month', true).items.map((p) => p.id),
+		['cobe-month']
+	);
 	for (const id of [
 		'cobe-month-cobe',
+		'group-month-cobe',
 		'personal-month',
 		'lesson',
 		'group-month-cobe-cobe',
@@ -53,11 +64,11 @@ test('COBE adds to the app part of any plan but COBE itself', () => {
 
 test('what an order opens never depends on the date', () => {
 	assert.deepEqual(productsOf('premium-pack6'), { app: true, cobe: false, lessons: false });
-	assert.deepEqual(productsOf('premium-pack6-cobe'), { app: true, cobe: true, lessons: false });
 	assert.deepEqual(productsOf('cobe-month'), { app: false, cobe: true, lessons: false });
 	assert.deepEqual(productsOf('group-month'), { app: true, cobe: false, lessons: true });
-	// An older plan id: billing opens both.
+	// An older plan id (premium-year, the old premium-month-cobe): billing opens both.
 	assert.equal(productsOf('premium-year'), undefined);
+	assert.equal(productsOf('premium-month-cobe'), undefined);
 });
 
 test('the site charges PRICING; launch only lowers the group lessons, to 80 a month', () => {
@@ -68,10 +79,7 @@ test('the site charges PRICING; launch only lowers the group lessons, to 80 a mo
 		[12900, 11900, 11400]
 	);
 	assert.equal(launch('premium-pack6'), 4400);
-	assert.equal(
-		withCobe(planById('group-pack3', 'launch')!, true, 'launch')!.price,
-		(11900 + COBE_ADDON.pack3) * 3
-	);
+	assert.equal(cart('group', 'pack3', true, 'launch').price, (11900 + COBE_ADDON.pack3) * 3);
 });
 
 test('installments: up to one a month of the plan, a single payment for a month', () => {
@@ -81,10 +89,12 @@ test('installments: up to one a month of the plan, a single payment for a month'
 	assert.equal(payments('premium-pack6'), 6);
 });
 
-test('a pack renews as the same offer monthly, COBE kept, at the regular price', () => {
+test('a pack renews as the same offer monthly, at the regular price', () => {
 	assert.equal(renewalOf(planById('group-pack6')!).id, 'group-month');
-	assert.equal(renewalOf(planById('premium-pack3-cobe')!).id, 'premium-month-cobe');
-	assert.equal(renewalOf(planById('cobe-month')!).id, 'cobe-month');
+	assert.equal(renewalOf(planById('cobe-pack3')!).id, 'cobe-month');
+	// COBE: the with-app price while the app still runs at renewal, else full
+	assert.equal(renewalOf(planById('cobe-pack3')!, true).price, COBE_ADDON.month);
+	assert.equal(renewalOf(planById('cobe-pack3', 'regular', true)!, false).price, 5900);
 	assert.equal(
 		renewalOf(planById('group-pack6', 'launch')!).price,
 		planById('group-month', 'regular')!.price

@@ -3,12 +3,13 @@
 // Grow, Stripe...):
 //   1. startPayment: create the provider's hosted payment page for the order
 //      (offering up to `maxPayments` interest-free installments), save its id
-//      in orders.providerRef, return its URL.
+//      in orders.providerRef (every order of the checkout), return its URL.
 //   2. a webhook route (/api/payments/<provider>): verify the signature, then
-//      completeOrder(orderId, 'paid') from billing.ts.
+//      completeCheckout(checkoutId, 'paid') from billing.ts.
 
 export type PaymentRequest = {
-	orderId: string;
+	/** The orders paid together (one per product). */
+	checkoutId: string;
 	/** Agorot. */
 	amount: number;
 	/** Most card installments to offer (1 = a single payment). */

@@ -65,7 +65,8 @@ function split(app: Record<Cycle, number>, zoom: Record<Cycle, number>) {
 	>;
 }
 
-/** COBE added to a plan, per month (cheaper than COBE alone). */
+/** COBE a month while the student holds an app plan (or buys one with it): cheaper than COBE
+ *  alone. Each product is its own order, period, renewal and cancel. */
 export const COBE_ADDON = per(3900, 3500, 3200);
 
 /** A private tutor's hourly rate, in agorot: the page's price anchor. */
@@ -93,13 +94,13 @@ export type Plan = {
 	zoom: number;
 	/** Months paid for. */
 	months: number;
-	/** Includes COBE: COBE alone or added on. */
-	cobe: boolean;
-	/** COBE added on: the id ends with COBE_SUFFIX. */
-	bundle: boolean;
+	/** What it opens: the app (premium, group) or COBE. */
+	product: Product;
+	/** COBE at the with-app price (COBE_ADDON). */
+	withApp: boolean;
 };
 
-const COBE_SUFFIX = '-cobe';
+export type Product = 'app' | 'cobe';
 
 /** Year, month (0-11) and day in Israel. */
 export function israelDate(at: Date) {
@@ -110,15 +111,11 @@ export function israelDate(at: Date) {
 	return { y, m: m - 1, d };
 }
 
-type Parsed = { offer: OfferId; cycle: Cycle; bundle: boolean };
-
-/** "premium-month-cobe" -> its parts; undefined for an id the catalogue doesn't know. */
-function parse(id: string): Parsed | undefined {
-	const bundle = id.endsWith(COBE_SUFFIX);
-	const [offer, cycle, ...rest] = (bundle ? id.slice(0, -COBE_SUFFIX.length) : id).split('-');
+/** "premium-month" -> its parts; undefined for an id the catalogue doesn't know. */
+function parse(id: string): { offer: OfferId; cycle: Cycle } | undefined {
+	const [offer, cycle, ...rest] = id.split('-');
 	if (rest.length || !CYCLES.includes(cycle as Cycle) || !(offer in MONTHLY.regular)) return;
-	if (bundle && offer === 'cobe') return;
-	return { offer: offer as OfferId, cycle: cycle as Cycle, bundle };
+	return { offer: offer as OfferId, cycle: cycle as Cycle };
 }
 
 export type Products = { app: boolean; cobe: boolean; lessons: boolean };
@@ -130,61 +127,60 @@ export function productsOf(id: string): Products | undefined {
 	return (
 		parsed && {
 			app: parsed.offer !== 'cobe',
-			cobe: parsed.offer === 'cobe' || parsed.bundle,
+			cobe: parsed.offer === 'cobe',
 			lessons: parsed.offer === 'group'
 		}
 	);
 }
 
-/** "group-pack6" or "premium-month-cobe"; undefined for an unknown id.
- *  `pricing` other than PRICING is for the page's preview only. */
+/** "group-pack6" or "cobe-month"; undefined for an unknown id. `withApp`: COBE at the
+ *  with-app price. `pricing` other than PRICING is for the page's preview only. */
 export function planById(
 	id: string | null | undefined,
-	pricing: Pricing = PRICING
+	pricing: Pricing = PRICING,
+	withApp = false
 ): Plan | undefined {
 	const parsed = id ? parse(id) : undefined;
 	if (!id || !parsed) return;
-	const { offer, cycle, bundle } = parsed;
+	const { offer, cycle } = parsed;
+	const product: Product = offer === 'cobe' ? 'cobe' : 'app';
+	const cheaper = withApp && product === 'cobe';
 	const monthly = MONTHLY[pricing][offer][cycle];
-	const split = { ...monthly, app: monthly.app + (bundle ? COBE_ADDON[cycle] : 0) };
-	return build(id, offer, cycle, split, CYCLE_MONTHS[cycle], bundle);
-}
-
-function build(
-	id: string,
-	offer: OfferId,
-	cycle: Cycle,
-	monthly: Split,
-	months: number,
-	bundle: boolean
-): Plan {
-	const app = monthly.app * months;
+	const months = CYCLE_MONTHS[cycle];
+	const app = (cheaper ? COBE_ADDON[cycle] : monthly.app) * months;
 	const zoom = monthly.zoom * months;
-	return {
-		id,
-		offer,
-		cycle,
-		price: app + zoom,
-		app,
-		zoom,
-		months,
-		cobe: offer === 'cobe' || bundle,
-		bundle
-	};
+	return { id, offer, cycle, price: app + zoom, app, zoom, months, product, withApp: cheaper };
 }
 
-export const planId = (offer: OfferId, cycle: Cycle, cobe = false) =>
-	`${offer}-${cycle}${cobe ? COBE_SUFFIX : ''}`;
-
-/** The same plan with COBE added or removed; undefined when it can't take COBE. */
-export function withCobe(plan: Plan, on: boolean, pricing: Pricing = PRICING): Plan | undefined {
-	return planById(planId(plan.offer, plan.cycle, on), pricing);
-}
+export const planId = (offer: OfferId, cycle: Cycle) => `${offer}-${cycle}`;
 
 /** What a paid plan renews as when its period ends: the same offer, monthly, at the regular
- *  price (terms "מסלולים ותשלום"). */
-export const renewalOf = (plan: Plan): Plan =>
-	planById(planId(plan.offer, 'month', plan.bundle), 'regular')!;
+ *  price (terms "מסלולים ותשלום"). COBE at the with-app price while the app still runs then. */
+export const renewalOf = (plan: Plan, appRuns = false): Plan =>
+	planById(planId(plan.offer, 'month'), 'regular', appRuns)!;
+
+/** One checkout: an app plan, with COBE of the same cycle when `addCobe`, or COBE alone.
+ *  For display; the server prices each item itself. */
+export type Cart = { items: Plan[]; price: number; months: number; cobe: boolean };
+
+export function cart(
+	offer: OfferId,
+	cycle: Cycle,
+	addCobe = false,
+	pricing: Pricing = PRICING
+): Cart {
+	const main = planById(planId(offer, cycle), pricing)!;
+	const items =
+		addCobe && main.product === 'app'
+			? [main, planById(planId('cobe', cycle), pricing, true)!]
+			: [main];
+	return {
+		items,
+		price: items.reduce((sum, p) => sum + p.price, 0),
+		months: main.months,
+		cobe: items.some((p) => p.product === 'cobe')
+	};
+}
 
 /** What a coupon without its own plan unlocks, and what the in-app code box redeems. */
 export const defaultPlan = (): Plan => planById('premium-pack6')!;
@@ -197,8 +193,10 @@ export function isPurchasable(plan: Plan | undefined): plan is Plan {
 export const monthlyShekels = (agorot: number, months: number) => Math.round(agorot / months / 100);
 
 /** Whole percent a plan saves against paying monthly for the same months. */
-export const savingPercent = (plan: Plan, monthly: Plan) =>
-	Math.max(0, Math.round((1 - plan.price / (monthly.price * plan.months)) * 100));
+export const savingPercent = (
+	plan: { price: number; months: number },
+	monthly: { price: number }
+) => Math.max(0, Math.round((1 - plan.price / (monthly.price * plan.months)) * 100));
 
 /** 4900 -> "49", 4950 -> "49.50" */
 export function formatPrice(agorot: number): string {

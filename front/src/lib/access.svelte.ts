@@ -52,7 +52,7 @@ export type CheckoutError =
 	| 'network';
 
 export type Quote = {
-	planId: string;
+	items: { planId: string; price: number }[];
 	price: number;
 	discount: number;
 	total: number;
@@ -78,16 +78,17 @@ async function post<T>(path: string, body: object): Promise<T> {
 	return data as T;
 }
 
-export function fetchQuote(plan: string | null, coupon: string | null) {
-	return post<Quote>('/api/checkout/quote', { plan, coupon });
+/** `plans`: one per product (the app plan, COBE); empty = the coupon decides. */
+export function fetchQuote(plans: string[], coupon: string | null) {
+	return post<Quote>('/api/checkout/quote', { plans, coupon });
 }
 
 /** Activates (100% coupon) or returns the payment page to go to. Throws a CheckoutError.
  *  On activation the store re-checks, since the plan decides which products open. */
-export async function placeOrder(plan: string | null, coupon: string | null) {
+export async function placeOrder(plans: string[], coupon: string | null) {
 	const result = await post<
 		{ status: 'active'; accessUntil: string } | { status: 'redirect'; url: string }
-	>('/api/checkout', { plan, coupon });
+	>('/api/checkout', { plans, coupon });
 	if (result.status === 'active') await access.refresh();
 	return result;
 }

@@ -8,9 +8,9 @@ Hosted payment page; interest-free installments up to `maxPayments` (first payme
 
 ## To build with it
 
-- `startPayment` + webhook route calling `completeOrder` (`server/payments.ts` has the steps). Save the card token on the order.
-- Renewal job: at `access_until` of a renewing subscription, charge `renewalOf(plan)` and insert a new `paid` order (access stacks). A failed charge: proposed retry daily for 3 days with an email to the parent, then access ends. Not decided.
-- Refunds: an admin action using `refundOf` (`firstPurchase` = the account's first `paid` order, `renewal` = a renewal order; needs a column marking renewal orders), then the provider's refund API. Today refunds are by email to support@.
+- `startPayment` (one payment per checkout, its orders share `checkout_id`) + webhook route calling `completeCheckout` (`server/payments.ts` has the steps). Save the card token on the orders.
+- Renewal job: per product, at `access_until` of a renewing subscription, charge `renewalOf(plan, appRuns)` (COBE at the with-app price while the app plan still runs) and insert a new `paid` order (stacks on that product). A failed charge: proposed retry daily for 3 days with an email to the parent, then access ends. Not decided.
+- Refunds: an admin action using `refundOf` (`firstPurchase` = the account's first paid checkout, one refund for all its orders, `renewal` = a renewal order; needs a column marking renewal orders), then the provider's refund API. Today refunds are by email to support@.
 - Cancel at the provider too, if it holds its own recurring schedule.
 - Copy: privacy (provider in the providers list + its link, saved card token), terms "תשלום" (name the provider).
 

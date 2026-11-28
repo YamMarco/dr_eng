@@ -35,12 +35,12 @@
 		formatPrice,
 		monthlyShekels,
 		savingPercent,
-		planById,
+		cart,
 		planId,
+		type Cart,
 		type Cycle,
 		type OfferId,
-		type Pricing,
-		type Plan
+		type Pricing
 	} from '$lib/plans';
 
 	let t = $derived(i18n.dict.plans);
@@ -76,9 +76,10 @@
 	// Staff-only COBE (alpha): no COBE options for anyone else.
 	let showCobe = $derived(cobeVisible(auth.isAdmin));
 
-	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Plan =>
-		planById(planId(offer, c, cobe), pricing)!;
-	const perMonth = (p: Plan) => monthlyShekels(p.price, p.months);
+	// An offer as shown: its plan, plus COBE at the with-app price when switched on.
+	const plan = (offer: OfferId, c: Cycle = cycle, cobe = !!cobeOn[offer]): Cart =>
+		cart(offer, c, cobe, pricing);
+	const perMonth = (p: Cart) => monthlyShekels(p.price, p.months);
 	/** Percent saved against paying monthly; 0 on the monthly cycle. */
 	const saved = (offer: OfferId) =>
 		savingPercent(plan(offer), plan(offer, 'month', !!cobeOn[offer]));
@@ -103,7 +104,10 @@
 		)
 	);
 
-	const checkoutHref = (id: string) => `${resolve('/checkout')}?plan=${id}`;
+	const checkoutQuery = (offer: OfferId, cobe = !!cobeOn[offer]) =>
+		`?plan=${planId(offer, cycle)}${cobe ? '&cobe=1' : ''}`;
+	const checkoutHref = (offer: OfferId, cobe?: boolean) =>
+		`${resolve('/checkout')}${checkoutQuery(offer, cobe)}`;
 </script>
 
 <svelte:head>
@@ -147,7 +151,7 @@
 				<p>{t.paidMonthly}</p>
 			{/if}
 			{#if launch}
-				{@const regular = perMonth(planById(p.id, 'regular')!)}
+				{@const regular = perMonth(cart(offer, cycle, p.cobe, 'regular'))}
 				{#if regular !== perMonth(p)}
 					<p class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-bold text-ink">
 						{t.launchLine(regular)}
@@ -290,7 +294,7 @@
 				{#if showCobe}
 					{@render cobeSwitch(offer)}
 				{/if}
-				<Button variant={featured ? 'primary' : 'secondary'} href={checkoutHref(plan(offer).id)}>
+				<Button variant={featured ? 'primary' : 'secondary'} href={checkoutHref(offer)}>
 					{featured ? t.chooseFeatured : t.choose}
 				</Button>
 			</li>
@@ -399,7 +403,7 @@
 						{@const featured = offer === FEATURED_OFFER}
 						<td class="px-1 pt-3 pb-3 {featured ? 'rounded-b-2xl bg-brand-soft' : ''}">
 							<a
-								href="{resolve('/checkout')}?plan={plan(offer).id}"
+								href="{resolve('/checkout')}{checkoutQuery(offer)}"
 								class="flex min-h-11 items-center justify-center rounded-xl px-1 text-sm font-bold transition duration-100 active:scale-[0.97] {featured
 									? 'bg-brand text-white hover:bg-brand-dark'
 									: 'border-2 border-brand text-brand hover:bg-brand-soft'}"
@@ -456,7 +460,7 @@
 			perMonth(plan('cobe', cycle, false)),
 			t.perMonth,
 			t.cobeOnlyChoose,
-			checkoutHref(plan('cobe', cycle, false).id)
+			checkoutHref('cobe', false)
 		)}
 	{/if}
 
@@ -555,9 +559,8 @@
 						<tr>
 							<th scope="row" class="text-start font-semibold">{t.offers[offer].name}</th>
 							{#each CYCLES as c (c)}
-								{@const id = planId(offer, c)}
-								{@const regular = perMonth(planById(id, 'regular')!)}
-								{@const launch = perMonth(planById(id, 'launch')!)}
+								{@const regular = perMonth(cart(offer, c, false, 'regular'))}
+								{@const launch = perMonth(cart(offer, c, false, 'launch'))}
 								<td class={regular === launch ? 'text-muted' : 'font-bold text-brand-dark'}>
 									{regular === launch ? regular : `${regular} / ${launch}`}
 								</td>

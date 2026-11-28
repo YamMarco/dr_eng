@@ -28,7 +28,7 @@
 		busy = true;
 		failed = null;
 		try {
-			const result = await placeOrder(null, value);
+			const result = await placeOrder([], value);
 			if (result.status === 'redirect') failed = errors['payments-unavailable'];
 		} catch (error) {
 			failed = errors[error as CheckoutError] ?? errors.network;

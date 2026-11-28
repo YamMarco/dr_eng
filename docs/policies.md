@@ -22,9 +22,10 @@ Code: `docs/platform.md` "Plans, checkout, access".
 
 Terms "מסלולים ותשלום" and "ביטול והחזר כספי"; rule in `$lib/refund.ts`. Payment-provider work: `docs/handoffs/payments.md`.
 - Seller: Yam's עוסק פטור; no VAT, prices final, receipts (קבלה). Track revenue against the ceiling (accountant); above it VAT comes out of the same prices.
-- **Auto-renewal:** a `paid` plan renews until cancelled; `pack3`/`pack6` renew as the same offer's monthly (COBE kept) at the regular price (`renewalOf`). No stop at the exam date. Coupons discount the first payment only; a free (100% coupon) order never renews. Sign-up consent to the terms covers it; no extra tick.
-- **Reminder:** email 7 days before the period ends (plan, amount, date, link to settings). No forgot-to-cancel refund.
-- **Cancel:** any time in settings; stops the whole renewal (app, COBE, lessons) on every running paid order; no further charges, access to the end of the paid period. Plans and checkout state the renewal, its price and how to cancel.
+- **Products:** the app plan and COBE are separate subscriptions, each with its own dates, renewal and cancel, also when bought together (one payment). COBE costs less while an app plan runs.
+- **Auto-renewal:** each `paid` subscription renews until cancelled; `pack3`/`pack6` renew as the same offer's monthly at the regular price (`renewalOf`); COBE at the full price once the app plan has ended. No stop at the exam date. Coupons discount the first payment only; a free (100% coupon) order never renews. Sign-up consent to the terms covers it; no extra tick.
+- **Reminder:** email per subscription 7 days before its period ends (product, amount, date, link to settings). No forgot-to-cancel refund.
+- **Cancel:** any time in settings, per subscription or all at once; no further charges for it, access to the end of its paid period. Plans and checkout state the renewal, its price and how to cancel.
 - **Refunds:** first-ever purchase within 7 days: everything, no fee, no teacher lessons deducted (`GUARANTEE` line, on). Within 14 days: everything minus the fee and teacher lessons held. After: unstarted months at the price paid per month, minus the fee; a started month or a monthly plan: nothing. Renewal charges: nothing. No discount clawback.
 - Fee: 5% of the price paid or ₪100, the lower. Refund is on the full price, also with installments.
 - Installments: plans of 3+ months, up to one a month, interest-free (provider must allow `maxPayments`).

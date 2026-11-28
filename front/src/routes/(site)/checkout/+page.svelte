@@ -23,16 +23,16 @@
 		COBE_ADDON,
 		GUARANTEE,
 		INSTALLMENTS,
+		cart,
 		defaultPlan,
 		formatPrice,
 		isPurchasable,
 		planById,
-		productsOf,
-		renewalOf,
-		withCobe
+		renewalOf
 	} from '$lib/plans';
 
-	// /checkout?plan=<id>&coupon=<code>: plan -> account -> code -> activate or pay.
+	// /checkout?plan=<id>&cobe=1&coupon=<code>: plan -> account -> code -> activate or pay.
+	// `cobe=1` adds COBE to an app plan: two products, each its own subscription, one payment.
 	// A promo link carries the code; sign-up's confirmation email returns here
 	// with the same query, so nothing is lost on the way.
 
@@ -40,13 +40,15 @@
 	// Shown as priced today; the server prices the order itself.
 	const requested = planById(page.url.searchParams.get('plan'));
 	// A COBE plan while COBE is closed falls back to the default (the server refuses it too).
-	let plan = $state(
-		isPurchasable(requested) && (!productsOf(requested.id)?.cobe || cobeVisible(auth.isAdmin))
+	const plan =
+		isPurchasable(requested) && (requested.product === 'app' || cobeVisible(auth.isAdmin))
 			? requested
-			: defaultPlan()
-	);
-	// Order bump: COBE can be added to any plan but COBE itself and a lesson.
-	let canAddCobe = $derived(cobeVisible(auth.isAdmin) && !!withCobe(plan, true));
+			: defaultPlan();
+	// Order bump: COBE added to an app plan, at its with-app price.
+	let canAddCobe = $derived(cobeVisible(auth.isAdmin) && plan.product === 'app');
+	let addCobe = $state(page.url.searchParams.get('cobe') === '1');
+	let items = $derived(cart(plan.offer, plan.cycle, canAddCobe && addCobe).items);
+	let ids = $derived(items.map((item) => item.id));
 	let code = $state(page.url.searchParams.get('coupon') ?? '');
 
 	let quote = $state<Quote | null>(null);
@@ -67,7 +69,7 @@
 		codeError = null;
 		orderError = null;
 		try {
-			quote = await fetchQuote(plan.id, coupon);
+			quote = await fetchQuote(ids, coupon);
 			if (quote.couponProblem) codeError = errorText(quote.couponProblem);
 		} catch (error) {
 			orderError = errorText(error);
@@ -88,7 +90,7 @@
 		busy = paying = true;
 		orderError = null;
 		try {
-			const result = await placeOrder(plan.id, quote?.coupon?.code ?? null);
+			const result = await placeOrder(ids, quote?.coupon?.code ?? null);
 			if (result.status === 'redirect') return void (location.href = result.url);
 			doneUntil = result.accessUntil;
 		} catch (error) {
@@ -98,14 +100,21 @@
 	}
 
 	function setCobe(on: boolean) {
-		plan = withCobe(plan, on)!;
+		addCobe = on;
 		loadQuote(quote?.coupon?.code ?? (code.trim() || null));
 	}
 
-	let name = $derived(
-		i18n.dict.plans.offers[plan.offer].name +
-			`, ${i18n.dict.plans.cycles[plan.cycle]}` +
-			(plan.bundle ? i18n.dict.plans.withCobe : '')
+	const itemName = (id: string) => {
+		const item = planById(id)!;
+		return `${i18n.dict.plans.offers[item.offer].name}, ${i18n.dict.plans.cycles[item.cycle]}`;
+	};
+	let name = $derived(itemName(plan.id));
+	// Each product renews on its own, monthly; together on the first renewal.
+	let renewPrice = $derived(
+		items.reduce(
+			(sum, item) => sum + renewalOf(item, item.product === 'cobe' && items.length > 1).price,
+			0
+		)
 	);
 	const money = (agorot: number) => `${formatPrice(agorot)} ${i18n.dict.plans.currency}`;
 	const date = (iso: string) => new Date(iso).toLocaleDateString('he-IL');
@@ -176,7 +185,7 @@
 
 			{#if canAddCobe}
 				<div
-					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {plan.bundle
+					class="flex items-center gap-3 rounded-2xl px-4 py-2 transition-colors duration-200 {addCobe
 						? 'bg-accent-soft'
 						: 'bg-canvas'}"
 				>
@@ -186,7 +195,7 @@
 							{t.bumpBody(formatPrice(COBE_ADDON[plan.cycle]))}
 						</span>
 					</div>
-					<Toggle checked={plan.bundle} label={t.bumpTitle} onchange={setCobe} />
+					<Toggle checked={addCobe} label={t.bumpTitle} onchange={setCobe} />
 				</div>
 			{/if}
 
@@ -210,10 +219,19 @@
 					class="flex flex-col gap-1.5 border-t border-line pt-4"
 					in:fly={{ y: 6, duration: 200 }}
 				>
-					<div class={row}>
-						<dt class="text-muted">{t.price}</dt>
-						<dd class="tabular-nums">{money(quote.price)}</dd>
-					</div>
+					{#if quote.items.length > 1}
+						{#each quote.items as item (item.planId)}
+							<div class={row}>
+								<dt class="text-muted">{itemName(item.planId)}</dt>
+								<dd class="tabular-nums">{money(item.price)}</dd>
+							</div>
+						{/each}
+					{:else}
+						<div class={row}>
+							<dt class="text-muted">{t.price}</dt>
+							<dd class="tabular-nums">{money(quote.price)}</dd>
+						</div>
+					{/if}
 					{#if quote.discount}
 						<div class="{row} text-brand-dark" in:fly={{ y: 6, duration: 200 }}>
 							<dt>{t.discount} ({quote.coupon?.code})</dt>
@@ -236,7 +254,7 @@
 			{#if quote?.total}
 				<p class="-mt-2 text-center text-sm text-muted">
 					{#if GUARANTEE}{t.guarantee}{/if}
-					{t.renewal(money(renewalOf(plan).price))}
+					{t.renewal(money(renewPrice))}
 					<a href={resolve('/terms')} class="font-semibold text-brand-dark underline"
 						>{t.termsLink}</a
 					>

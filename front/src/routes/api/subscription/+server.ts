@@ -1,28 +1,32 @@
-// The signed-in user's subscription (settings): GET its state, DELETE turns auto-renewal off.
-// `null` when there is none (billing off, no paid order running, or staff).
+// The signed-in user's subscriptions (settings), one per product: GET the list; DELETE
+// { product: 'app' | 'cobe' | 'all' } turns that auto-renewal off and returns the list.
+// Empty when there is none (billing off, no paid order running).
 import { error, json } from '@sveltejs/kit';
-import { billingEnabled, cancelRenewal, subscription } from '$lib/server/billing';
+import { billingEnabled, cancelRenewal, subscriptions } from '$lib/server/billing';
 import type { RequestHandler } from './$types';
 
-const view = async (userId: string) => {
-	const sub = await subscription(userId);
-	return (
-		sub && {
-			planId: sub.planId,
-			until: sub.until.toISOString(),
-			renews: sub.renews,
-			renewPrice: sub.renewPrice
-		}
-	);
-};
+const view = async (userId: string) =>
+	(await subscriptions(userId)).map((sub) => ({
+		product: sub.product,
+		planId: sub.planId,
+		from: sub.from.toISOString(),
+		until: sub.until.toISOString(),
+		renews: sub.renews,
+		renewPrice: sub.renewPrice
+	}));
 
 export const GET: RequestHandler = async ({ locals }) => {
-	if (!billingEnabled || !locals.userId) return json(null);
+	if (!billingEnabled || !locals.userId) return json([]);
 	return json(await view(locals.userId));
 };
 
-export const DELETE: RequestHandler = async ({ locals }) => {
+const TARGETS = ['app', 'cobe', 'all'] as const;
+
+export const DELETE: RequestHandler = async ({ locals, request }) => {
 	if (!billingEnabled || !locals.userId) error(404, 'no subscription');
-	await cancelRenewal(locals.userId);
+	const body = (await request.json().catch(() => ({}))) as { product?: unknown };
+	const product = TARGETS.find((target) => target === body.product);
+	if (!product) error(400, 'product must be app, cobe or all');
+	await cancelRenewal(locals.userId, product);
 	return json(await view(locals.userId));
 };

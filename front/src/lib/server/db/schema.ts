@@ -37,9 +37,10 @@ export const coupons = pgTable('coupons', {
 }).enableRLS();
 
 /**
- * One row per checkout. Access = a `paid` or `free` order whose accessUntil is
- * still ahead. `pending` waits for the payment provider (not wired yet). The user's
- * latest-ending `paid` order is the subscription: it renews unless renewCancelledAt.
+ * One row per product bought (a checkout of the app plan + COBE makes two, one checkoutId).
+ * Access = a `paid` or `free` order whose accessUntil is still ahead. `pending` waits for the
+ * payment provider (not wired yet). Per product, the latest-ending `paid` order is its
+ * subscription: it renews unless renewCancelledAt.
  */
 export const orders = pgTable(
 	'orders',
@@ -62,10 +63,13 @@ export const orders = pgTable(
 		/** Set when the student turns auto-renewal off (a `paid` order renews until then). */
 		renewCancelledAt: timestamp({ withTimezone: true }),
 		/** The renewal reminder email went out (7 days before accessUntil). */
-		renewalRemindedAt: timestamp({ withTimezone: true })
+		renewalRemindedAt: timestamp({ withTimezone: true }),
+		/** Orders placed together (one product each) share it, and one payment. */
+		checkoutId: uuid()
 	},
 	(table) => [
 		index().on(table.userId),
+		index().on(table.checkoutId),
 		index()
 			.on(table.couponCode)
 			.where(sql`${table.status} in ('paid', 'free')`)

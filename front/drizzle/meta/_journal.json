@@ -127,6 +127,13 @@
       "when": 1795858393573,
       "tag": "0017_drop_waitlist",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1795867324643,
+      "tag": "0018_order_checkout",
+      "breakpoints": true
     }
   ]
 }
